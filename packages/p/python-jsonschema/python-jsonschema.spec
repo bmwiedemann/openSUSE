@@ -21,7 +21,7 @@
 Name:           python-jsonschema
 # v3 incompatibility with OpenStack raised upstream at
 # https://github.com/Julian/jsonschema/issues/604
-Version:        3.0.2
+Version:        3.2.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
@@ -30,6 +30,7 @@ Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/json
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jsonpointer > 1.13}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyrsistent >= 0.14.0}
@@ -42,6 +43,7 @@ BuildRequires:  %{python_module webcolors}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 17.4.0
+Requires:       python-importlib-metadata
 Requires:       python-pyrsistent >= 0.14.0
 Requires:       python-six >= 1.11.0
 Requires(post): update-alternatives
@@ -88,6 +90,9 @@ for Python (supporting 2.6+ including Python 3).
 %license COPYING
 %doc README.rst
 %python_alternative %{_bindir}/jsonschema
-%{python_sitelib}/*
+%dir %{python_sitelib}/jsonschema
+%{python_sitelib}/jsonschema/*
+%dir %{python_sitelib}/jsonschema-%{version}-py*.egg-info
+%{python_sitelib}/jsonschema-%{version}-py*.egg-info
 
 %changelog
