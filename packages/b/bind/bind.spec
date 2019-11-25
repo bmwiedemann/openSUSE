@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Don't forget to update the package names also in baselibs.conf
-%define bind9_sonum 160
+# Note that the sonums are LIBINTERFACE - LIBAGE
+%define bind9_sonum 1302
 %define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 169
+%define dns_sonum 1311
 %define libdns libdns%{dns_sonum}
-%define irs_sonum 160
+%define irs_sonum 1301
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 166
+%define isc_sonum 1310
 %define libisc libisc%{isc_sonum}
-%define isccc_sonum 160
+%define isccc_sonum 1302
 %define libisccc libisccc%{isccc_sonum}
-%define isccfg_sonum 160
+%define isccfg_sonum 1302
 %define libisccfg libisccfg%{isccfg_sonum}
-%define lwres_sonum 160
-%define liblwres liblwres%{lwres_sonum}
+%define libns_sonum 1307
+
 %define	VENDOR SUSE
 # Defines for user and group add
 %define	NAMED_UID 44
@@ -45,8 +46,10 @@
 %define	USERMOD_NAMED getent passwd %{NAMED_UID_NAME} >/dev/null || %{_sbindir}/usermod -s %{NAMED_SHELL} -d  %{NAMED_HOMEDIR} %{NAMED_UID_NAME}
 %if 0%{?suse_version} >= 1500
 %define with_systemd 1
+%define with_geoip 0
 %else
 %define with_systemd 0
+%define with_geoip 1
 %endif
 %if 0%{?suse_version} < 1315
 %define with_sfw2 1
@@ -59,7 +62,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.11.2
+Version:        9.14.8
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -68,27 +71,19 @@ Url:            http://isc.org/sw/bind/
 Source:         ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.gz
 Source1:        vendor-files.tar.bz2
 Source2:        baselibs.conf
-Source3:        ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.gz.asc
+Source3:        ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.gz.sha512.asc
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source4:        %{name}.keyring
 Source9:        ftp://ftp.internic.net/domain/named.root
-# url http://www.venaas.no/ldap/bind-sdb/dnszone-schema.txt no longer exists...
 Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
 # configuation files for systemd-tmpfiles
 Source70:       bind.conf
 Source71:       bind-chrootenv.conf
-Patch0:         configure.in.diff
 Patch1:         Makefile.in.diff
-Patch2:         bind-99-libidn.patch
-Patch4:         perl-path.diff
 Patch51:        pie_compile.diff
 Patch52:        named-bootconf.diff
-Patch53:        bind-sdb-ldap.patch
-Patch54:        bind-CVE-2017-3145.patch
-Patch55:        bug-4697-Restore-workaround-for-Microsoft-Windows-T.patch
 Patch56:        bind-ldapdump-use-valid-host.patch
-Patch57:        bind-fix-fips.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libopenssl-devel
@@ -99,10 +94,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-ply
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(geoip)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libidn)
+%if %{with_geoip}
+BuildRequires:  pkgconfig(geoip)
+%else
+BuildRequires:  pkgconfig(libmaxminddb)
+%endif
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-chrootenv
 Requires:       %{name}-utils
@@ -110,8 +109,8 @@ Requires(post): %fillup_prereq
 Requires(post): bind-utils
 Requires(post): coreutils
 Requires(pre):  shadow
-Provides:       bind8
-Provides:       bind9
+Provides:       bind8 = %{version}
+Provides:       bind9 = %{version}
 Provides:       dns_daemon
 Obsoletes:      bind8 < %{version}
 Obsoletes:      bind9 < %{version}
@@ -156,7 +155,7 @@ internal database function for both nominated and all zones. SDB
 allows a user-written driver to supply zone data either from
 alternate data sources (for instance, a relational database) or using
 specialized algorithms (for instance, for load-balancing).
-[Book links for SDB: "Pro DNS and BIND 10", R. Aitchison, Apress]
+[Book links for SDB: "Pro DNS and BIND 10", R. Aitchison, Apress]
 
 %package -n %{libirs}
 Summary:        The BIND Information Retrieval System library
@@ -208,28 +207,14 @@ Group:          System/Libraries
 %description -n %{libisccfg}
 This BIND library contains the configuration file parser.
 
-%package -n %{liblwres}
-Summary:        Lightweight Resolver API library
-Group:          System/Libraries
-
-%description -n %{liblwres}
-The BIND 9 lightweight resolver library is a name service independent
-stub resolver library. It provides hostname-to-address and
-address-to-hostname lookup services to applications by transmitting
-lookup requests to a resolver daemon, lwresd, running on the local
-host. The resover daemon performs the lookup using the DNS or
-possibly other name service protocols, and returns the results to the
-application through the library. The library and resolver daemon
-communicate using a UDP-based protocol.
-
 %package chrootenv
-Summary:        Chroot environment for BIND named and lwresd
+Summary:        Chroot environment for BIND named
 Group:          Productivity/Networking/DNS/Servers
 Requires(pre):  shadow
 
 %description chrootenv
 This package contains all directories and files which are common to the
-chroot environment of BIND named and lwresd.  Most is part of the
+chroot environment of BIND named.  Most is part of the
 structure below %{_localstatedir}/lib/named.
 
 %package devel
@@ -241,7 +226,6 @@ Requires:       %{libirs} = %{version}
 Requires:       %{libisccc} = %{version}
 Requires:       %{libisccfg} = %{version}
 Requires:       %{libisc} = %{version}
-Requires:       %{liblwres} = %{version}
 Provides:       bind8-devel
 Provides:       bind9-devel
 Obsoletes:      bind8-devel < %{version}
@@ -262,26 +246,6 @@ BuildArch:      noarch
 Documentation of the Berkeley Internet Name Domain (BIND) Domain Name
 System implementation of the Domain Name System (DNS) protocols.  This
 includes also the BIND Administrator Reference Manual (ARM).
-
-%package lwresd
-Summary:        Lightweight Resolver Daemon
-Group:          Productivity/Networking/DNS/Utilities
-Requires:       %{name}-chrootenv
-Requires(pre):  shadow
-Requires(pre):  sysvinit(network)
-Requires(pre):  sysvinit(syslog)
-Provides:       dns_daemon
-%if !%{with_systemd}
-Requires(post): %insserv_prereq
-%endif
-
-%description lwresd
-Bind-lwresd provides resolution services to local clients using a
-combination of the lightweight resolver library liblwres and the
-resolver daemon process lwresd running on the local host.  These
-communicate using a simple UDP-based protocol, the "lightweight
-resolver protocol" that is distinct from and simpler than the full DNS
-protocol.
 
 %package utils
 Summary:        Utilities to query and test DNS
@@ -311,17 +275,10 @@ This package provides a module which allows commands to be sent to rndc directly
 
 %prep
 %setup -q -a1
-%patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch4
-%patch51
-%patch52
-%patch53
-%patch54 -p1
-%patch55 -p1
+%patch51 -p1
+%patch52 -p1
 %patch56 -p1
-%patch57 -p1
 
 # use the year from source gzip header instead of current one to make reproducible rpms
 year=$(perl -e 'sysread(STDIN, $h, 8); print (1900+(gmtime(unpack("l",substr($h,4))))[5])' < %{SOURCE0})
@@ -338,16 +295,14 @@ function replaceStrings()
 		-i "${file}"
 }
 pushd vendor-files
-for file in docu/README tools/createNamedConfInclude config/{README,named.conf} init/{named,lwresd} system/{named.init,lwresd.init} sysconfig/{named-common,named-named,syslog-named}; do
+for file in docu/README tools/createNamedConfInclude config/{README,named.conf} init/named system/named.init sysconfig/{named-common,named-named,syslog-named}; do
 	replaceStrings ${file}
 done
 popd
-cp contrib/sdb/ldap/ldapdb.c bin/named/
-cp contrib/sdb/ldap/ldapdb.h bin/named/include/
 
 %build
 autoreconf -fvi
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -DNO_VERSION_DATE"
 %configure \
 	--with-python=%{_bindir}/python3 \
 	--includedir=%{_includedir}/bind \
@@ -364,7 +319,12 @@ export CFLAGS="%{optflags}"
 	--with-pic \
 	--disable-openssl-version-check \
 	--with-tuning=large \
+%if %{with_geoip}
 	--with-geoip \
+%else
+	--without-geoip \
+	--with-geoip2 \
+%endif
 	--with-dlopen \
 	--with-gssapi=yes \
 	--disable-isc-spnego \
@@ -391,7 +351,7 @@ mkdir -p \
 	%{buildroot}/%{_datadir}/bind \
 	%{buildroot}/%{_datadir}/susehelp/meta/Administration/System \
 	%{buildroot}/%{_defaultdocdir}/bind \
-	%{buildroot}%{_localstatedir}/lib/named/{etc/named.d,dev,dyn,log,master,slave,var/{lib,run/{lwresd,named}}} \
+	%{buildroot}%{_localstatedir}/lib/named/{etc/named.d,dev,dyn,log,master,slave,var/{lib,run/named}} \
 	%{buildroot}%{_mandir}/{man1,man3,man5,man8} \
 	%{buildroot}%{_fillupdir} \
 	%{buildroot}/%{_rundir} \
@@ -410,12 +370,12 @@ rm -f %{buildroot}/%{_libdir}/lib*.{la,a}
 mv vendor-files/config/named.conf %{buildroot}/%{_sysconfdir}
 mv vendor-files/config/bind.reg %{buildroot}/%{_sysconfdir}/slp.reg.d
 mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
-for file in lwresd.conf named.conf.include; do
+for file in named.conf.include; do
 	touch %{buildroot}/%{_sysconfdir}/${file}
 done
 
 %if %{with_systemd}
-	for file in lwresd named; do
+	for file in named; do
         	install -D -m 0644 vendor-files/system/${file}.service %{buildroot}%{_unitdir}/${file}.service
                 install -m 0755 vendor-files/system/${file}.init %{buildroot}/usr/sbin/${file}.init
 		ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
@@ -426,7 +386,7 @@ done
 	install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
 	install -m 0644 bind.keys %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/named.root.key
 %else
-	for file in lwresd named; do
+	for file in named; do
 		install -m 0754 vendor-files/init/${file} %{buildroot}%{_initddir}/${file}
 		ln -sf %{_initddir}/${file} %{buildroot}%{_sbindir}/rc${file}
 	done
@@ -444,7 +404,6 @@ touch %{buildroot}%{_localstatedir}/lib/named%{_sysconfdir}/{localtime,named.con
 touch %{buildroot}%{_localstatedir}/lib/named/dev/log
 ln -s ../.. %{buildroot}%{_localstatedir}/lib/named%{_localstatedir}/lib/named
 ln -s ../log %{buildroot}%{_localstatedir}/lib/named%{_localstatedir}
-ln -s ..%{_localstatedir}/lib/named%{_localstatedir}/run/lwresd %{buildroot}/run
 ln -s ..%{_localstatedir}/lib/named%{_localstatedir}/run/named %{buildroot}/run
 for file in named-common named-named syslog-named; do
 	install -m 0644 vendor-files/sysconfig/${file} %{buildroot}%{_fillupdir}/sysconfig.${file}
@@ -457,10 +416,9 @@ rm doc/misc/Makefile*
 find doc/arm -type f ! -name '*.html' -print0 | xargs -0 rm -f
 # Create doc as we want it in bind and not bind-doc
 cp -a vendor-files/docu/README %{buildroot}/%{_defaultdocdir}/bind/README.%{VENDOR}
-cp -a vendor-files/docu/dnszonehowto.html contrib/sdb/ldap/
 mkdir -p vendor-files/config/ISC-examples
 cp -a bin/tests/*.conf* vendor-files/config/ISC-examples
-for file in CHANGES COPYRIGHT README version contrib doc/{arm,misc} vendor-files/config contrib/sdb/ldap/INSTALL.ldap; do
+for file in CHANGES COPYRIGHT README version contrib doc/{arm,misc} vendor-files/config; do
 	basename=$( basename ${file})
 	cp -a ${file} %{buildroot}/%{_defaultdocdir}/bind/${basename}
 	echo "%doc %{_defaultdocdir}/bind/${basename}" >>filelist-bind-doc
@@ -520,8 +478,6 @@ fi
 %postun -n %{libisccc} -p /sbin/ldconfig
 %post   -n %{libisccfg} -p /sbin/ldconfig
 %postun -n %{libisccfg} -p /sbin/ldconfig
-%post   -n %{liblwres} -p /sbin/ldconfig
-%postun -n %{liblwres} -p /sbin/ldconfig
 %pre chrootenv
 %{GROUPADD_NAMED}
 %{USERADD_NAMED}
@@ -533,49 +489,13 @@ fi
 %tmpfiles_create bind-chrootenv.conf
 %endif
 
-%pre lwresd
-%{GROUPADD_NAMED}
-%{USERADD_NAMED}
-%if %{with_systemd}
-%service_add_pre lwresd.service
-%endif
-
-%post lwresd
-# delete an emtpy lwresd.conf file
-if [ ! -s etc/lwresd.conf ]; then
-    rm -f etc/lwresd.conf
-fi
-%if %{with_systemd}
-%service_add_post lwresd.service
-%else
-if [ $1 -le 1 ]; then
-    %{fillup_and_insserv -fy lwresd}
-fi
-%endif
-
-%preun lwresd
-%stop_on_removal lwresd
-%if %{with_systemd}
-%service_del_preun lwresd.service
-%else
-%stop_on_removal lwresd
-%endif
-
-%postun lwresd
-%if %{with_systemd}
-%service_del_postun lwresd.service
-%else
-%restart_on_update lwresd
-%insserv_cleanup
-%endif
-
 %post utils
 
 %files
 %license LICENSE
 %attr(0644,root,named) %config(noreplace) /%{_sysconfdir}/named.conf
 %dir %{_sysconfdir}/slp.reg.d
-%attr(0644,root,root) /%{_sysconfdir}/slp.reg.d/bind.reg
+%attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
 %attr(0644,root,named) %ghost /%{_sysconfdir}/named.conf.include
 %if %{with_systemd}
 %config %{_unitdir}/named.service
@@ -595,6 +515,8 @@ fi
 %{_sbindir}/named-checkconf
 %{_sbindir}/named-checkzone
 %{_sbindir}/named-compilezone
+%dir %{_libdir}/named
+%{_libdir}/named/filter-aaaa.so
 %{_mandir}/man1/bind9-config.1%{ext_man}
 %{_mandir}/man1/named-rrchecker.1%{ext_man}
 %{_mandir}/man5/named.conf.5%{ext_man}
@@ -602,6 +524,7 @@ fi
 %{_mandir}/man8/named-checkzone.8%{ext_man}
 %{_mandir}/man8/named.8%{ext_man}
 %{_mandir}/man8/named-compilezone.8%{ext_man}
+%{_mandir}/man8/filter-aaaa.8%{ext_man}
 %dir %{_datadir}/bind
 %{_datadir}/bind/createNamedConfInclude
 %{_datadir}/bind/ldapdump
@@ -630,15 +553,13 @@ fi
 
 %files -n %{libisc}
 %{_libdir}/libisc.so.%{isc_sonum}*
+%{_libdir}/libns.so.%{libns_sonum}*
 
 %files -n %{libisccc}
 %{_libdir}/libisccc.so.%{isccc_sonum}*
 
 %files -n %{libisccfg}
 %{_libdir}/libisccfg.so.%{isccfg_sonum}*
-
-%files -n %{liblwres}
-%{_libdir}/liblwres.so.%{lwres_sonum}*
 
 %files chrootenv
 %if %{with_systemd}
@@ -672,27 +593,12 @@ fi
 %{_libdir}/libbind9.so
 %{_libdir}/libdns.so
 %{_libdir}/libisc*.so
-%{_libdir}/liblwres.so
+%{_libdir}/libns.so
 %{_includedir}/bind
-%{_mandir}/man3/lwres*.3*
 
 %files doc -f filelist-bind-doc
 %dir %doc %{_defaultdocdir}/bind
 %doc %{_datadir}/susehelp
-
-%files lwresd
-%ghost %attr(0644,root,named) %config(noreplace) /%{_sysconfdir}/lwresd.conf
-%if %{with_systemd}
-%config %{_unitdir}/lwresd.service
-%{_sbindir}/lwresd.init
-%else
-%config %{_initddir}/lwresd
-%endif
-%{_sbindir}/rclwresd
-%{_sbindir}/lwresd
-%{_mandir}/man8/lwresd.8%{ext_man}
-%ghost %{_rundir}/lwresd
-%attr(-,named,named) %dir %{_var}/lib/named%{_localstatedir}/run/lwresd
 
 %files utils
 %dir %{_sysconfdir}/named.d
@@ -722,8 +628,9 @@ fi
 %{_sbindir}/dnssec-checkds
 %{_sbindir}/dnssec-coverage
 %{_sbindir}/dnssec-keymgr
-%{_sbindir}/genrandom
-%{_sbindir}/isc-hmac-fixup
+%{_sbindir}/dnssec-cds
+# %%{_sbindir}/genrandom
+# %%{_sbindir}/isc-hmac-fixup
 %{_sbindir}/named-journalprint
 %{_sbindir}/nsec3hash
 %{_sbindir}/rndc
@@ -752,8 +659,9 @@ fi
 %{_mandir}/man8/dnssec-checkds.8%{ext_man}
 %{_mandir}/man8/dnssec-coverage.8%{ext_man}
 %{_mandir}/man8/dnssec-keymgr.8%{ext_man}
-%{_mandir}/man8/genrandom.8%{ext_man}
-%{_mandir}/man8/isc-hmac-fixup.8%{ext_man}
+%{_mandir}/man8/dnssec-cds.8%{ext_man}
+# %%{_mandir}/man8/genrandom.8%%{ext_man}
+# %%{_mandir}/man8/isc-hmac-fixup.8%%{ext_man}
 %{_mandir}/man8/named-journalprint.8%{ext_man}
 %{_mandir}/man8/nsec3hash.8%{ext_man}
 %{_mandir}/man8/rndc.8%{ext_man}

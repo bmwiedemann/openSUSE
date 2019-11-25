@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:09:35 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.14.8:
+  * Set a limit on the number of concurrently served pipelined TCP
+    queries.
+  * Some other bug fixing, see CHANGES file.
+  [CVE-2019-6477, bsc#1157051]
+
+-------------------------------------------------------------------
+Fri Nov  8 12:50:00 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.14.7
+  * removed dnsperf, idn, nslint, perftcpdns, query-loc-0.4.0,
+    queryperf, sdb, zkt from contrib as they are not supported
+    any more
+  * Added support for the GeoIP2 API from MaxMind
+  * See CHANGES file in the source RPM.
+  [bsc#1111722, bsc#1156205, CVE-2019-6476, CVE-2019-6475,
+  CVE-2019-6471, CVE-2018-5743, CVE-2019-6467, CVE-2019-6465,
+  CVE-2018-5745, CVE-2018-5744, CVE-2018-5740, CVE-2018-5738,
+  CVE-2018-5737, CVE-2018-5736, CVE-2017-3145,
+  configure.in.diff, bind-99-libidn.patch, perl-path.diff,
+  bind-sdb-ldap.patch, bind-CVE-2017-3145.patch,
+  bug-4697-Restore-workaround-for-Microsoft-Windows-T.patch,
+  bind-fix-fips.patch]
+
+-------------------------------------------------------------------
 Fri Jul 12 08:43:29 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service from Factory, since SuSEfirewall2 has been

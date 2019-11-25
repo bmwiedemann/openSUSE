@@ -1,13 +1,12 @@
-Index: bind-9.11.2/bin/named/Makefile.in
+Index: bind-9.14.7/bin/named/Makefile.in
 ===================================================================
---- bind-9.11.2.orig/bin/named/Makefile.in	2017-07-24 07:36:50.000000000 +0200
-+++ bind-9.11.2/bin/named/Makefile.in	2017-08-15 10:27:54.263889946 +0200
-@@ -168,9 +168,7 @@ installdirs:
- install:: named@EXEEXT@ lwresd@EXEEXT@ installdirs
+--- bind-9.14.7.orig/bin/named/Makefile.in
++++ bind-9.14.7/bin/named/Makefile.in
+@@ -173,8 +173,7 @@ installdirs:
+ 
+ install:: named@EXEEXT@ installdirs
  	${LIBTOOL_MODE_INSTALL} ${INSTALL_PROGRAM} named@EXEEXT@ ${DESTDIR}${sbindir}
- 	(cd ${DESTDIR}${sbindir}; rm -f lwresd@EXEEXT@; @LN@ named@EXEEXT@ lwresd@EXEEXT@)
 -	${INSTALL_DATA} ${srcdir}/named.8 ${DESTDIR}${mandir}/man8
--	${INSTALL_DATA} ${srcdir}/lwresd.8 ${DESTDIR}${mandir}/man8
 -	${INSTALL_DATA} ${srcdir}/named.conf.5 ${DESTDIR}${mandir}/man5
 +	for m in ${MANPAGES}; do ${INSTALL_DATA} ${srcdir}/$$m ${DESTDIR}${mandir}/man$${m##*.}; done
  
