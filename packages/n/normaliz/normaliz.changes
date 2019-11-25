@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 24 16:21:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8.2
+  * Some improvement in convex hull computation for algebraic
+    polytopes.
+  * Code cleaned up and formatted; also in the installation files.
+
+-------------------------------------------------------------------
 Sun Sep 29 14:42:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.8.1
