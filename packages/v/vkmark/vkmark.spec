@@ -1,8 +1,8 @@
 #
 # spec file for package vkmark
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2018-2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 
 Name:           vkmark
-Version:        2017.08+git.20180530
+Version:        2017.08+git.20191115
 Release:        0
 Summary:        Vulkan benchmark utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/vkmark/vkmark
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE vkmark-skip-glm-dep-check.patch malcolmlewis@opensuse.org -- No pc file present in development package, so check fails.
-Patch0:         vkmark-skip-glm-dep-check.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
 BuildRequires:  meson
@@ -36,14 +34,13 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
-ExcludeArch:    %arm %ix86
+ExcludeArch:    %{arm} %{ix86}
 
 %description
 An extensible Vulkan benchmarking suite with targeted, configurable scenes.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup
 
 %build
 %meson

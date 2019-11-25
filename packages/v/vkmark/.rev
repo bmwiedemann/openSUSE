@@ -15,4 +15,12 @@
     <comment>- Do not try to build on 32 bit architectures</comment>
     <requestid>745333</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>15ddca4de38085b964d686b7d0a2f8ed</srcmd5>
+    <version>2017.08+git.20191115</version>
+    <time>1574691807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750739</requestid>
+  </revision>
 </revisionlist>
