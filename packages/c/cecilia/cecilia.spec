@@ -62,7 +62,7 @@ the wildest imaginable sonic contortions.
 %py3_install
 for s in 16 32 48 64 96 128 192 256 512; do
   mkdir -pv %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
-  convert -resize ${s} scripts/Cecilia5_512.png %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
+  convert -strip -resize ${s} scripts/Cecilia5_512.png %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
 done
 mv %{buildroot}%{_bindir}/Cecilia5.py %{buildroot}%{_bindir}/%{name}
 %suse_update_desktop_file -c %{name} %{name} "Sound synthesis and audio signal processing environment" %{name} %{name} "Audio;AudioVideoEditing;"
