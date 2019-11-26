@@ -1,7 +1,7 @@
 #
 # spec file for package antlr3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,6 @@
 %endif
 Version:        %{antlr_version}
 Release:        0
-License:        BSD-3-Clause
-Group:          Development/Libraries/Java
 URL:            https://www.antlr3.org/
 Source0:        https://github.com/antlr/antlr3/archive/%{antlr_version}.tar.gz
 Patch0:         0001-java8-fix.patch
@@ -42,15 +40,17 @@ Patch1:         osgi-manifest.patch
 Patch100:       antlr3-generated_sources.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(antlr:antlr)
 BuildRequires:  mvn(org.antlr:stringtemplate)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
-BuildRequires:  unzip
 BuildArch:      noarch
 %if %{with runtime}
 Name:           antlr3-java
 Summary:        Java run-time support for ANTLR-generated parsers
+License:        BSD-3-Clause
+Group:          Development/Libraries/Java
 
 %description
 Java run-time support for ANTLR-generated parsers
@@ -58,6 +58,9 @@ Java run-time support for ANTLR-generated parsers
 %else
 
 Summary:        ANother Tool for Language Recognition
+License:        BSD-3-Clause
+Group:          Development/Libraries/Java
+BuildRequires:  unzip
 BuildRequires:  mvn(org.antlr:ST4)
 BuildRequires:  mvn(org.antlr:antlr-runtime)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -65,7 +68,6 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-compiler-api)
 BuildRequires:  mvn(xerces:dom3-xml-apis)
-BuildRequires:  unzip
 
 %if %{with bootstrap}
 Name:           antlr3-bootstrap
@@ -170,10 +172,12 @@ sed -i 's/jsr14/1.6/' antlr3-maven-archetype/src/main/resources/archetype-resour
 %{mvn_file} :antlr-maven-plugin antlr3-maven-plugin
 
 %build
+%{mvn_build} -f \
 %if %{with bootstrap}
-%{mvn_build} -f -j
-%else
-%{mvn_build} -f
+	-j \
+%endif
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
 %endif
 
 %if %{without runtime} &&  %{without bootstrap}
