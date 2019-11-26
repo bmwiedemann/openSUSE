@@ -1,0 +1,12 @@
+diff --git a/src/Makefile b/src/Makefile
+index 8226038..d04cc01 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -46,7 +46,6 @@ clean:
+ 
+ module-install:
+ 	@$(MAKE) -C $(KERNELDIR) M=$(PWD) modules_install
+-	$(DEPMOD) -a $(KERNELRELEASE)
+ 
+ install: module-install tools-install
+ 

@@ -1,0 +1,3736 @@
+-------------------------------------------------------------------
+Mon Oct 28 20:53:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Drop debian packaging related files:
+  * debian.tar.xz
+  * wireguard.dsc
+
+-------------------------------------------------------------------
+Mon Oct 28 20:47:57 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Don't rename gpg signature
+
+-------------------------------------------------------------------
+Sat Oct 12 18:13:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20191012
+  * netns: add test for failing 5.3 FIB changes
+  * noise: recompare stamps after taking write lock
+  * netlink: allow preventing creation of new peers when updating
+
+-------------------------------------------------------------------
+Mon Sep 16 20:43:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20190913
+  * compat: support newer PaX
+  * compat: don't rewrite siphash when it's from compat
+  * Kbuild: squelch warnings for stack limit on broken kernel configs
+  * compat: support rhel/centos 7.7
+
+-------------------------------------------------------------------
+Sun Sep  8 20:42:00 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20190905
+  * Lots of compat work.
+  * netlink: enforce that unused bits of flags are zero
+  * noise: immediately rekey all peers after changing device
+    private key
+  * netlink: skip peers with invalid keys
+  * wg-quick: linux: don't fail down when using systemd-resolved
+- Update patch:
+  * wireguard-remove-depmod.diff
+
+-------------------------------------------------------------------
+Sat Jul 13 20:26:16 UTC 2019 - Adam Mizerski <adam@mizerski.pl>
+
+- refresh wireguard-fix-leap151.patch
+
+-------------------------------------------------------------------
+Tue Jul  2 13:41:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20190702
+  * curve25519: not all linkers support bmi2 and adx
+  * qemu: show signal when failing
+  * compat: some kernels weirdly backport prandom_u32_max
+  * compat: unify custom function prefix/suffix
+  * global: switch to coarse ktime
+  * netlink: cast struct over cb->args for type safety
+  * peer: use LIST_HEAD macro
+  * receive: queue dead packets to napi queue instead of empty
+    rx_queue
+
+-------------------------------------------------------------------
+Wed Jun 12 22:42:34 UTC 2019 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- fix build on openSUSE 15.1
+  * update wireguard-fix-leap151.patch
+
+-------------------------------------------------------------------
+Sat Jun  1 18:52:28 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20190601
+ * compat: don't call xgetbv on cpus with no XSAVE
+
+-------------------------------------------------------------------
+Sat Jun  1 08:16:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20190531
+  * tools: add wincompat layer to wg(8)
+  * compat: udp_tunnel: force cast sk_data_ready
+  * socket: set ignore_df=1 on xmit
+  * wg-quick: look up existing routes properly
+  * wg-quick: specify protocol to ip(8), because of inconsistencies
+  * netlink: use new strict length types in policy for 5.2
+  * kbuild: account for recent upstream changes
+  * zinc: arm64: use cpu_get_elf_hwcap accessor for 5.2
+  * timers: add jitter on ack failure reinitiation
+  * blake2s,chacha: latency tweak
+  * blake2s: shorten ssse3 loop
+  * tools: allow setting WG_ENDPOINT_RESOLUTION_RETRIES
+
+-------------------------------------------------------------------
+Sat Apr  6 12:28:21 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20190406
+  * allowedips: initialize list head when removing intermediate nodes
+  * wg-quick: freebsd: rebreak interface loopback, while fixing localhost
+  * wg-quick: freebsd: export TMPDIR when restoring and don't make empty
+  * tools: genkey: account for short reads of /dev/urandom
+  * tools: warn if an AllowedIP has a nonzero host part
+  * wg-quick: add 'strip' subcommand
+  * tools: avoid unneccessary next_peer assignments in sort_peers()
+  * qemu: set framewarn 1280 for 64bit and 1024 for 32bit
+  * blake2s: simplify
+  * blake2s: remove outlen parameter from final
+  * global: the _bh variety of rcu helpers have been unified
+  * compat: nf_nat_core.h was removed upstream
+  * compat: backport skb_mark_not_on_list
+  * compat fixes for Linux 5.1.
+
+-------------------------------------------------------------------
+Wed Feb 27 21:51:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20190227
+  * tools: remove unused check phony declaration
+  * highlighter: when subtracting char, cast to unsigned
+  * chacha20: name enums
+  * tools: fight compiler slightly harder
+  * tools: c_acc doesn't need to be initialized
+  * queueing: more reasonable allocator function convention
+  * systemd: wg-quick should depend on nss-lookup.target
+  * compat: backport ALIGN_DOWN
+  * noise: whiten the nanoseconds portion of the timestamp
+  * hashtables: decouple hashtable allocations from the main
+    device allocation.
+  * chacha20poly1305: permit unaligned strides on certain platforms
+  * The map allocations required to fix this are mostly slower than
+    unaligned paths.
+  * noise: store clamped key instead of raw key
+  * compat: ipv6_stub is sometimes null
+  * Makefile: don't duplicate code in install and modules-install
+  * Makefile: make the depmod path configurable
+  * queueing: net-next has changed signature of
+    skb_probe_transport_header
+  * netlink: don't remove allowed ips for new peers
+  * peer: only synchronize_rcu_bh and traverse trie once when
+    removing all peers
+  * allowedips: maintain per-peer list of allowedips
+- Update patches:
+  * wireguard-fix-systemd-service.patch
+  * wireguard-remove-depmod.diff
+
+-------------------------------------------------------------------
+Tue Feb 26 19:31:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * wireguard-fix-leap151.patch
+
+-------------------------------------------------------------------
+Wed Feb  6 21:17:15 UTC 2019 - mardnh@gmx.de
+
+- Be more verbose during build with "make V=1"
+
+-------------------------------------------------------------------
+Wed Jan 23 15:44:53 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.0.20190123
+  * tools: curve25519: handle unaligned loads/stores safely
+  * netlink: auth socket changes against namespace of socket
+  * ratelimiter: build tests with !IPV6
+  * noise: replace getnstimeofday64 with ktime_get_real_ts64
+  * ratelimiter: totalram_pages is now a function
+  * qemu: enable FP on MIPS
+  * keygen-html: bring back pure javascript implementation
+  * contrib: introduce simple highlighter library
+
+-------------------------------------------------------------------
+Sat Jan  5 22:24:53 UTC 2019 - mardnh@gmx.de
+
+- Fix systemd handling
+- Add patch:
+  * wireguard-fix-systemd-service.patch
+
+-------------------------------------------------------------------
+Tue Dec 18 16:36:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20181218
+  * jerry-rig: replace S_shipped with pl
+  * chacha20,poly1305: simplify perlasm fanciness
+  * compat: don't undef BUILD_BUG_ON for Clang >=8
+  * embeddable-wg-library: do not warn on unrecognized netlink attributes
+  * chacha20: do not define unused asm function
+  * compat: account for Clang CFI
+  * wg-quick: bring interface up while setting MTU
+  * makefile: use immediate expansion and use correct template patterns
+
+-------------------------------------------------------------------
+Mon Nov 19 18:46:28 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20181119
+  * chacha20,poly1305: fix up for win64
+  * poly1305: only export neon symbols when in use
+  * poly1305: cleanup leftover debugging changes
+  * crypto: resolve target prefix on buggy kernels
+  * chacha20,poly1305: don't do compiler testing in generator and remove xor helper
+  * crypto: better path resolution and more specific generated .S
+  * poly1305: make frame pointers for auxiliary calls
+  * chacha20,poly1305: do not use xlate
+
+-------------------------------------------------------------------
+Thu Nov 15 20:27:31 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20181115
+  == Changes ==
+  * Zinc no longer ships generated assembly code. Rather, we now
+    bundle in the original perlasm generator for it. The primary purpose
+    of this snapshot is to get testing of this.
+  * Clarify the peer removal logic and make lifetimes more precise.
+  * Use READ_ONCE for is_valid and is_dead.
+  * No need to use atomic when the recounter is mutex protected.
+  * Fix up macros and annotations in allowedips.
+  * Increment drop counter when staged packets are dropped.
+  * Use static constants instead of enums for 64-bit values in selftest.
+  * Mark large constants as ULL in poly1305-donna64.
+  * Fix sparse warnings in allowedips debugging code.
+  * Do not use wg_peer_get_maybe_zero in timer callbacks, since we now can
+    carefully control the lifetime of these functions and ensure they never
+    execute after dropping the last reference.
+  * Cleanup hashing in ratelimiter.
+  * Do not guard timer removals, since del_timer is always okay.
+  * We now check for PM_AUTOSLEEP, which makes the clear*on-suspend decision a
+    bit more general.
+  * Set csum_level to ~0, since the poly1305 authenticator certainly means
+    that no data was modified in transit.
+  * Use CHECKSUM_PARTIAL check for skb_checksum_help instead of
+    skb_checksum_setup check.
+  * wg.8: specify that wg(8) shows runtime info too
+  * wg.8: AllowedIPs isn't actually required
+  * keygen-html: add missing glue macro
+  * wg-quick: android: do not choke on empty allowed-ips
+
+-------------------------------------------------------------------
+Mon Oct 22 14:32:20 UTC 2018 - Adam Mizerski <adam@mizerski.pl>
+
+- fix building multiple kernel flavors
+
+-------------------------------------------------------------------
+Thu Oct 18 17:26:09 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20181018
+== Changes ==
+
+  * compat: don't output for grep errors
+  * compat: look in Kbuild and Makefile since they differ based on arch
+  * create-patch: blacklist instead of whitelist
+  
+  This should solve the last of the compat issues introduced with the revamped
+  build system and upstream changes.
+  
+  * qemu: kill after 20 minutes
+  
+  Our test suite now accounts for hangs.
+  
+  * global: prefix functions used in callbacks with wg_
+  * global: rename struct wireguard_ to struct wg_
+  * global: more nits
+  * timers: avoid using control statements in macro
+  * allowedips: remove control statement from macro by rewriting
+  * device: use textual error labels always
+  * global: give if statements brackets and other cleanups
+  * main: change module description
+  * main: get rid of unloaded debug message
+  
+  Stylistic cleanups from upstream.
+  
+  * netlink: do not stuff index into nla type
+  
+  It's not used for anything, and LKML doesn't like the type being used as an
+  index value. Technically this changes UAPI, but in practice nobody used this,
+  and if they did use it for anything, that thing was probably broken anyway.
+  
+  * allowedips: swap endianness early on
+  
+  Otherwise if gcc's optimizer is able to look far in but not overly far
+  in, we wind up with "warning: 'key' may be used uninitialized in this
+  function [-Wmaybe-uninitialized]".
+  
+  * tools: use libc's endianness macro if no compiler macro
+  * tools: compile on gnu99
+  
+  This lets us be compiled with ancient gcc.
+  
+  * tools: don't fail if a netlink interface dump is inconsistent
+  
+  Netlink returns NLM_F_DUMP_INTR if the set of all tunnels changed
+  during the dump. That's unfortunate, but is pretty common on busy
+  systems that are adding and removing tunnels all the time. Rather
+  than retrying, potentially indefinitely, we just work with the
+  partial results.
+  
+  
+  * tools: wg-quick: wait for interface to disappear on freebsd
+  
+  This should improve init scripts that restart tunnels using wg-quick.
+
+-------------------------------------------------------------------
+Sun Oct  7 15:38:42 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20181007
+== Changes ==
+
+  * makefile: do more generic wildcard so as to avoid rename issues
+  
+  Yesterday's snapshot broke DKMS installation, which is the majority of distros
+  using WireGuard, so we're rushing out a fix the day after so that people can
+  actually run it.
+  
+  * compat: account for ancient ARM assembler
+  * compat: make asm/simd.h conditional on its existence
+  * compat: clang cannot handle __builtin_constant_p
+  
+  Yesterday's snapshot broke old ARM kernels and Android kernels using Clang.
+  
+  * crypto: disable broken implementations in selftests
+  
+  If the selftests determine a particular crypto implementation doesn't work, it
+  prints a warning -- since that would be a pretty grave bug -- but it also just
+  disables that implementation so that we don't compute anything incorrectly.
+  
+  * crypto: use BIT(i) & bitmap instead of (bitmap >> i) & 1
+  * allowedips: document additional nobs
+  * crypto: clean up remaining .h->.c
+  * global: style nits
+  
+  Various cleanups and style nits.
+
+-------------------------------------------------------------------
+Sat Oct  6 10:29:00 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20181006
+== Changes ==
+
+  * Account for big-endian 2^26 conversion in Poly1305.
+  * Account for big-endian NEON in Curve25519.
+  * Fix macros in big-endian AArch64 code so that this will actually run there
+    at all.
+  * Prefer if (IS_ENABLED(...)) over ifdef mazes when possible.
+  * Call simd_relax() within any preempt-disabling glue code every once in a
+    while so as not to increase latency if folks pass in super long buffers.
+  * Prefer compiler-defined architecture macros in assembly code, which puts us
+    in closer alignment with upstream CRYPTOGAMS code, and is cleaner.
+  * Non-static symbols are prefixed with wg_ to avoid polluting the global
+    namespace.
+  * Return a bool from simd_relax() indicating whether or not we were
+    rescheduled.
+  * Reflect the proper simd conditions on arm.
+  * Do not reorder lines in Kbuild files for the simd asm-generic addition,
+    since we don't want to cause merge conflicts.
+  * WARN() if the selftests fail in Zinc, since if this is an initcall, it won't
+    block module loading, so we want to be loud.
+  * Document some interdependencies beside include statements.
+  * Add missing static statement to fpu init functions.
+  * Use union in chacha to access state words as a flat matrix, instead of
+    casting a struct to a u8 and hoping all goes well. Then, by passing around
+    that array as a struct for as long as possible, we can update counter[0]
+    instead of state[12] in the generic blocks, which makes it clearer what's
+    happening.
+  * Remove __aligned(32) for chacha20_ctx since we no longer use vmovdqa on x86,
+    and the other implementations do not require that kind of alignment either.
+  * Submit patch to ARM tree for adjusting RiscPC's cflags to be -march=armv3 so
+    that we can build code that uses umull.
+  * Allow CONFIG_ARM[64] to imply [!]CONFIG_64BIT, and use zinc arch config
+    variables consistently throughout.
+  * Document rationale for the 2^26->2^64/32 conversion in code comments.
+  * Convert all of remaining BUG_ON to WARN_ON.
+  * Replace `bxeq lr` with `reteq lr` in ARM assembler to be compatible with old
+    ISAs via the macro in <asm/assembler.h>.
+  * Do not allow WireGuard to be a built-in if IPv6 is a module.
+  * Writeback the base register and reorder multiplications in the NEON x25519
+    implementation.
+  * Try all combinations of different implementations in selftests, so that
+    potential bugs are more immediately unearthed.
+  * Self tests and SIMD glue code work with #include, which lets the compiler
+    optimize these. Previously these files were .h, because they were included,
+    but a simple grep of the kernel tree shows 259 other files that carry out
+    this same pattern. Only they prefer to instead name the files with a .c
+    instead of a .h, so we now follow the convention.
+  * Support many more platforms in QEMU, especially big endian ones.
+  * Kernels < 3.17 don't have read_cpuid_part, so fix building there.
+
+-------------------------------------------------------------------
+Tue Sep 25 21:34:13 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180925
+== Changes ==
+
+  * poly1305: better module description
+  * blake2s: simplify final function
+  * poly1305: no need to trick gcc 8.1
+  * chacha20: prefer crypto_xor_cpy to avoid memmove
+  * poly1305: account for simd being toggled off midway
+  * crypto: do not waste space on selftest items
+  * poly1305-mips32r2: remove all reorder directives
+  * chacha20-mips32r2: fix typo to allow reorder again
+  * chacha20-mips32r2: remove reorder directives
+  * chacha20-arm: go with Ard's version to optimize for Cortex-A7
+  * chacha20-mips32r2: use simpler calling convention
+  * chacha20-mips32r2: reduce jumptable entry size and stack usage
+  * chacha20: add chunked selftest and test sliding alignments and hchacha20
+  * crypto-arm: rework KERNEL_MODE_NEON handling
+  * chacha20-arm: use new scalar implementation
+  * curve25519-fiat32: work around m68k compiler stack frame bug
+  * crypto: flatten out makefile
+  * crypto-arm: rework KERNEL_MODE_NEON handling again
+  * poly1305-mips64: remove useless preprocessor error
+  * chacha20-arm: updated scalar code from Andy
+  * chacha20-arm: remove unused preambles
+  * hchacha20: keep in native endian in words
+  * crypto: make constant naming scheme consistent
+  * chacha20-mips32r2: reduce stack and branches in loop, refactor jumptable handling
+  * chacha20: add bounds checking to selftests
+  * curve25519-hacl64: reduce stack usage under KASAN
+  
+  Tons of improvements to our cryptography API, including some nice performance
+  boosts on ARM Cortex-A7 and MIPS32r2.
+  
+  * allowedips: change from BUG_ON to WARN_ON
+  * allowedips: work around kasan stack frame bug in selftest
+  * global: put SPDX identifier on its own line
+  * netlink: reverse my christmas trees
+  * global: reduce stack frame size
+  
+  Style and correctness changes. We now use less stack space as well.
+
+-------------------------------------------------------------------
+Tue Sep 18 20:44:10 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180918
+== Changes ==
+
+  * blake2s-x86_64: fix whitespace errors
+  * crypto: do not use compound literals in selftests
+  * crypto: make sure UML is properly disabled
+  * kconfig: make NEON depend on CPU_V7
+  * poly1305: rename finish to final
+  * chacha20: add constant for words in block
+  * curve25519-x86_64: remove useless define
+  * poly1305: precompute 5*r in init instead of blocks
+  * chacha20-arm: swap scalar and neon functions
+  * simd: add __must_check annotation
+  * poly1305: do not require simd context for arch
+  * chacha20-x86_64: cascade down implementations
+  * crypto: pass simd by reference
+  * chacha20-x86_64: don't activate simd for small blocks
+  * poly1305-x86_64: don't activate simd for small blocks
+  * crypto: do not use -include trick
+  * crypto: turn Zinc into individual modules
+  * chacha20poly1305: relax simd between sg chunks
+  * chacha20-x86_64: more limited cascade
+  * crypto: allow for disabling simd in zinc modules
+  * poly1305-x86_64: show full struct for state
+  * chacha20-x86_64: use correct cut off for avx512-vl
+  * curve25519-arm: only compile if symbols will be used
+  * chacha20poly1305: add __init to selftest helper functions
+  * chacha20: add independent self test
+  
+  Tons of improvements all around the board to our cryptography library,
+  including some performance boosts with how we handle SIMD for small packets.
+  
+  * send/receive: reduce number of sg entries
+  
+  This quells a powerpc stack usage warning.
+  
+  * global: remove non-essential inline annotations
+  
+  We now allow the compiler to determine whether or not to inline certain
+  functions, while still manually choosing so for a few performance-critical
+  sections.
+
+-------------------------------------------------------------------
+Tue Sep 11 19:33:39 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180910
+== Changes ==
+
+  * curve25519: arm: do not modify sp directly
+  * compat: support neon.h on old kernels
+  * compat: arch-namespace certain includes
+  * compat: move simd.h from crypto to compat since it's going upstream
+  
+  This fixes a decent amount of compat breakage and thumb2-mode breakage
+  introduced by our move to Zinc.
+  
+  * crypto: use CRYPTOGAMS license
+  
+  Rather than using code from OpenSSL, use code directly from AndyP.
+  
+  * poly1305: rewrite self tests from scratch
+  * poly1305: switch to donna
+  
+  This makes our C Poly1305 implementation a bit more intensely tested and also
+  faster, especially on 64-bit systems. It also sets the stage for moving to a
+  HACL* implementation when that's ready.
+
+-------------------------------------------------------------------
+Tue Sep  4 18:37:47 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180904
+== Changes ==
+
+  * wg-quick: darwin: prefer system paths for tools
+  
+  The only things wg-quick(8) needs from Homebrew are bash(1) and wg(8).
+  Other than that, it's explicitly coded against the native system
+  utilities. Since wg-quick(8) and bash(1) are invoked in auto_su by their
+  full absolute path (via $SELF and $BASH, respectively), we can simply
+  set the $PATH to be prefixed by the default system binary paths. This
+  way, if users install tools that conflict with system tools -- such as
+  GNU coreutils -- we won't accidently call those.
+  
+  * wg-quick: check correct variable for route deduplication
+  
+  This should avoid adding duplicate routes when adding the allowed IPs as
+  interface routes automatically.
+  
+  * Kconfig: use new-style help marker
+  * global: run through clang-format
+  * uapi: reformat
+  * global: satisfy check_patch.pl errors
+  * global: prefer sizeof(*pointer) when possible
+  * global: always find OOM unlikely
+  
+  Tons of style cleanups.
+  
+  * crypto: use unaligned helpers
+  
+  We now avoid unaligned accesses for generic users of the crypto API.
+  
+  * crypto: import zinc
+  
+  More style cleanups and a rearrangement of the crypto routines to fit how this
+  is going to work upstream. This required some fairly big changes to our build
+  system, so there may be some build errors we'll have to address in subsequent
+  snapshots.
+  
+  * compat: rng_is_initialized made it into 4.19
+  
+  We therefore don't need it in the compat layer anymore.
+  
+  * curve25519-hacl64: use formally verified C for comparisons
+  
+  The previous code had been proved in Z3, but this new code from upstream
+  KreMLin is directly generated from the F*, which is preferable. The
+  assembly generated is identical.
+  
+  * curve25519-x86_64: let the compiler decide when/how to load constants
+  
+  Small performance boost.
+  
+  * curve25519-arm: reformat
+  * curve25519-arm: cleanups from lkml
+  * curve25519-arm: add spaces after commas
+  * curve25519-arm: use ordinary prolog and epilogue
+  * curve25519-arm: do not waste 32 bytes of stack
+  * curve25519-arm: prefix immediates with #
+  
+  This incorporates ASM nits from upstream review.
+  
+  * netlink: insert peer version placeholder
+  * tools: ipc: do not warn on unrecognized netlink attributes
+
+-------------------------------------------------------------------
+Fri Aug 10 09:40:13 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180809
+== Changes ==
+
+  * send: switch handshake stamp to an atomic
+  
+  Rather than abusing the handshake lock, we're much better off just using
+  a boring atomic64 for this. It's simpler and performs better. Also, while
+  we're at it, we set the handshake stamp both before and after the
+  calculations, in case the calculations block for a really long time waiting
+  for the RNG to initialize. 
+  
+  * compat: better atomic acquire/release backport
+  
+  This should fix compilation and correctness on several platforms.
+  
+  * crypto: move simd context to specific type
+  
+  This was a suggestion from Andy Lutomirski on LKML.
+  
+  * chacha20poly1305: selftest: use arrays for test vectors
+  
+  We no longer have lines so long that they're rejected by SMTP servers.
+  
+  * qemu: add easy git harness
+  
+  This makes it a bit easier to use our qemu harness for testing our mainline
+  integration tree.
+  
+  * curve25519-x86_64: avoid use of r12
+  
+  This causes problems with RAP and KERNEXEC for PaX, as r12 is a
+  reserved register.
+  
+  * chacha20: use memmove in case buffers overlap
+  
+  A small correctness fix that we never actually hit in WireGuard but is
+  important especially for moving this into a general purpose library.
+  
+  * curve25519-hacl64: simplify u64_eq_mask
+  * curve25519-hacl64: correct u64_gte_mask
+  
+  Two bitmath fixes from Samuel, which come complete with a z3 script proving
+  their correctness.
+  
+  * timers: include header in right file
+  
+  This fixes compilation in some environments.
+  
+  * netlink: don't start over iteration on multipart non-first allowedips
+  
+  Matt Layher found a bug where a netlink dump of peers would never terminate in
+  some circumstances, causing wg(8) to keep trying forever. We now have a fix as
+  well as a unit test to mitigate this, and we'll be looking to create a fuzzer
+  out of Matt's nice library.
+
+-------------------------------------------------------------------
+Fri Aug  3 15:51:09 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180802
+== Changes ==
+
+  * chacha20poly1305: selftest: split up test vector constants
+  
+  The test vectors are encoded as long strings -- really long strings -- and
+  apparently RFC821 doesn't like lines longer than 998.
+  https://cr.yp.to/smtp/message.html
+  
+  * queueing: keep reference to peer after setting atomic state bit
+  
+  This fixes a regression introduced when preparing the LKML submission.
+  
+  * allowedips: prevent double read in kref
+  * allowedips: avoid window of disappeared peer
+  * hashtables: document immediate zeroing semantics
+  * peer: ensure resources are freed when creation fails
+  * queueing: document double-adding and reference conditions
+  * queueing: ensure strictly ordered loads and stores
+  * cookie: returned keypair might disappear if rcu lock not held
+  * noise: free peer references on failure
+  * peer: ensure destruction doesn't race
+  
+  Various fixes, as well as lots of code comment documentation, for a
+  small variety of the less obvious aspects of object lifecycles,
+  focused on correctness.
+  
+  * allowedips: free root inside of RCU callback
+  * allowedips: use different macro names so as to avoid confusion
+  
+  These incorporate two suggestions from LKML.
+
+-------------------------------------------------------------------
+Tue Jul 31 18:30:54 UTC 2018 - mardnh@gmx.de
+
+- Upate to version 0.0.20180731
+== Changes ==
+
+  * receive: check against proper return value type
+  
+  Ensure error counters are correct in the receive path.
+  
+  * embeddable-wg-library: do not left shift negative numbers
+  
+  Avoids implementation-defined C behavior and also improves performance.
+  
+  * wg-quick: android: allow package to be overridden
+  * wg-quick: android: remove compat code
+  
+  Small android fixes.
+  
+  * qemu: show log if process crashes
+  * qemu: update musl and kernel
+  
+  The usual QEMU suite bump.
+  
+  * curve25519-x86_64: tighten the x25519 assembly
+  
+  Small performance optimization from Samuel.
+  The wide multiplication by 38 in mul_a24_eltfp25519_1w is redundant:
+  (2^256-1) * 121666 / 2^256 is at most 121665, and therefore a 64-bit
+  multiplication can never overflow.
+  
+  * curve25519-x86_64: tighten reductions modulo 2^256-38
+  
+  Small performance optimization from Samuel.
+  At this stage the value if C[4] is at most ((2^256-1) + 38*(2^256-1)) / 2^256 = 38,
+  so there is no need to use a wide multiplication.
+  
+  * curve25519-x86_64: simplify the final reduction by adding 19 beforehand
+  
+  Small performance optimization from Samuel.
+  At this stage the value if C[4] is at most ((2^256-1) + 38*(2^256-1)) / 2^256 = 38,
+  Correctness can be quickly verified with the following z3py script:
+  
+  >>> from z3 import *
+  >>> x = BitVec("x", 256) # any 256-bit value
+  >>> ref = URem(x, 2**255 - 19) # correct value
+  >>> t = Extract(255, 255, x); x &= 2**255 - 1; # btrq $63, %3
+  >>> u = If(t != 0, BitVecVal(38, 256), BitVecVal(19, 256)) # cmovncl %k5, %k4
+  >>> x += u # addq %4, %0; adcq $0, %1; adcq $0, %2; adcq $0, %3;
+  >>> t = Extract(255, 255, x); x &= 2**255 - 1; # btrq $63, %3
+  >>> u = If(t != 0, BitVecVal(0, 256), BitVecVal(19, 256)) # cmovncl %k5, %k4
+  >>> x -= u # subq %4, %0; sbbq $0, %1; sbbq $0, %2; sbbq $0, %3;
+  >>> prove(x == ref)
+  proved
+  
+  * ratelimiter: prevent init/uninit race
+  
+  Fixes a classic ABA problem that isn't actually reachable because of
+  rtnl_lock, but it's good to be correct anyway.
+  
+  * peer: simplify rcu reference counts
+  
+  Use RCU reference counts only when we must, and otherwise use a more
+  reasonably named function.
+  
+  * main: add missing chacha20poly1305 header
+  * send: address of variable is never null
+  * noise: remove outdated comment
+  * main: properly name label
+  * noise: use hex constant for tai64n offset
+  * device: adjust comment
+
+-------------------------------------------------------------------
+Thu Jul 19 07:26:19 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180718
+== Changes ==
+
+  * tools: only error on wg show if all interfaces fail
+
+  wg(8) now has a more reasonable error code semantic.
+
+  * receive: account for zero or negative budget
+
+  A correctness fix that no other drivers implement but that we really should
+  be doing anyway.
+
+  * recieve: disable NAPI busy polling
+
+  This avoids adding one reference per peer to the napi_hash hashtable, as
+  normally done by netif_napi_add(). Since we potentially could have up to
+  2^20 peers this would make busy polling very slow globally. This approach is
+  preferable to having only a single napi struct because we get one gro_list
+  per peer, which means packets can be combined nicely even if we have a large
+  number of peers. This is also done by gro_cells_init() in net/core/gro_cells.c.
+
+  * receive: use gro call instead of plain call
+
+  This enables incredible performance improvements in some cases. Benchmark and
+  see for yourself. It should affect large TCP flows.
+
+  * wg-quick: allow link local default gateway
+
+  IPv6 endpoints will now work better on BSD and Darwin.
+
+  * device: destroy workqueue before freeing queue
+
+  Another small correctness fix.
+
+-------------------------------------------------------------------
+Sun Jul  8 17:08:45 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180708
+== Changes ==
+
+  * device: print daddr not saddr in missing peer error
+  * receive: style
+  
+  Debug messages now make sense again.
+  
+  * wg-quick: android: support excluding applications
+  
+  Android now supports excluding certain apps (uids) from the tunnel.
+  
+  * selftest: ratelimiter: improve chance of success via retry
+  * qemu: bump default kernel version
+  * qemu: decide debug kernel based on KERNEL_VERSION
+  
+  Some improvements to our testing infrastructure.
+  
+  * receive: use NAPI on the receive path
+  
+  This is a big change that should both improve preemption latency (by not
+  disabling it unconditionally) and vastly improve rx performance on most
+  systems by using NAPI. The main purpose of this snapshot is to test out this
+  technique.
+
+-------------------------------------------------------------------
+Mon Jun 25 18:01:02 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180625
+== Changes ==
+
+  * receive: don't toggle bh
+  
+  The last snapshot caused a big performance regression, which we partially
+  revert here. This general matter, though, will be revisited in the future,
+  perhaps by switching to NAPI.
+  
+  * main: test poly1305 before chacha20poly1305
+  * poly1305: give linker the correct constant data section size
+  
+  While the default bfd linker did the right thing, gold would sometimes merge
+  section incorrectly because of an incorrect section length field, resulting in
+  wrong calculations.
+  
+  * simd: add missing header
+  
+  Fixes a compile error on a few odd kernels.
+  
+  * global: fix a few typos
+  * manpages: eliminate whitespace at the end of the line
+  * tools: fix misspelling of strchrnul in comment
+  
+  Cosmetic fixups.
+  
+  * global: use ktime boottime instead of jiffies
+  * global: use fast boottime instead of normal boottime
+  * compat: more robust ktime backport
+  
+  We now use the equivalent of clock_gettime(CLOCK_BOOTTIME) for doing age
+  checks on time-limited objects, such as ephemeral keys, so that on systems
+  where we don't clear before sleep (like Android), we make sure to invalidate
+  the objects after the proper amount of time, taking into account time spent
+  asleep.
+  
+  * wg-quick: android: prevent outgoing handshake packets from being dropped
+  
+  Recent android phones block outgoing packets using iptables while the system
+  is asleep. This makes sense for most services, but not for a tunnel device
+  itself, so we work around this by inserting our own iptables rule.
+
+-------------------------------------------------------------------
+Wed Jun 20 20:15:01 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180620
+== Changes ==
+
+  * chacha20poly1305: use slow crypto on -rt kernels on arm too
+  
+  Leftover from the last commit of the previous snapshot that we forgot to
+  handle.
+  
+  * tools: getentropy requires macOS 10.12
+  
+  Small build time fixup for old versions of macOS.
+  
+  * queueing: remove useless spinlocks on sc
+  * queueing: re-enable preemption periodically to lower latency
+  * simd: encapsulate fpu amortization into nice functions
+  * simd: no need to restore fpu state when no preemption
+  
+  This will improve general system latency on preempt-enabled systems, like
+  desktops.
+  
+  * dns-hatchet: apply resolv.conf's selinux context to new resolv.conf
+  
+  Fixes wg-quick's dns hatchet on CentOS.
+  
+  * qemu: bump default kernel
+  
+  By bumping to 4.17.2, we actually uncovered a bug in the SLUB allocator, which
+  upstream is now fixing: https://lkml.org/lkml/2018/6/18/1407
+  
+  * noise: take locks for ss precomputation
+  * netlink: maintain static_identity lock over entire private key update
+  
+  Minor locking correctness fixes and optimizations.
+  
+  * noise: wait for crng before taking locks
+  
+  We now make sure that an outgoing packet which needs a potentially unseeded
+  rng won't block a call to wg(8), which takes similar locks for retrieving
+  data.
+  
+  * receive: drop handshake packets if rng is not initialized
+  
+  If the rng is unseeded, we drop incoming handshake packets, so that it's not
+  possible for an attacker to fill the handshake queue thereby provoking
+  cookies.
+  
+  * ratelimiter: mitigate reference underflow
+  * ratelimiter: do not allow concurrent init and uninit
+  
+  Minor correctness and hardening fixes, which don't fix anything particular in
+  WireGuard, but might be useful if our ratelimiter is ever used elsewhere.
+  
+  * compat: use stabler lkml links
+  * poly1305: add missing string.h header
+  
+  Minor fixups.
+
+-------------------------------------------------------------------
+Wed Jun 13 18:07:07 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180613
+== Changes ==
+
+  * wg-quick: android: change name of intent
+  * wg-quick: android: delay setting users until end
+  
+  `ndc users add` eventually invokes SOCK_DESTROY on user sockets, causing
+  them to reconnect. By delaying this until after routes are set, we
+  ensure that the sockets reconnect using the tunnel, rather than the old
+  route. This fixes push notifications on Android.
+  
+  * chacha20: add missing include to header
+  
+  Fixes a compile error on some kernels.
+  
+  * tools: encoding: add missing static array constraints
+  
+  Makes static analyzers happier.
+  
+  * tools: support getentropy(3)
+  
+  This lets us take advantage of both recent glibc calls as well as the long
+  standing getentropy functions on the BSDs.
+  
+  * chacha20poly1305: use slow crypto on -rt kernels
+  
+  In rt kernels, spinlocks call schedule(), which means preemption can't
+  be disabled. The FPU disables preemption. Hence, we can either
+  restructure things to move the calls to kernel_fpu_begin/end to be
+  really close to the actual crypto routines, or we can do the slower
+  lazier solution of just not using the FPU at all on -rt kernels. This
+  patch goes with the latter lazy solution. The reason why we don't
+  place the calls to kernel_fpu_begin/end close to the crypto routines
+  in the first place is that they're very expensive, as it usually
+  involves a call to XSAVE. So on sane kernels, we benefit from only
+  having to call it once.
+
+-------------------------------------------------------------------
+Fri Jun  1 16:41:35 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180531
+  == Changes ==
+  * compat: don't clash with get_random_u32 backports
+
+  This should allow running on recent Qualcomm msm8998 kernels.
+
+  * wg-quick: determine IPs when saving interface
+  * wg-quick: darwin: add multiple IP addresses
+  * wg-quick: freebsd: configure as p2p link
+  * wg-quick: darwin: set DNS servers after delay on route change
+
+  Usual set of wg-quick changes, since the recent cross platform additions.
+
+  * curve25519: x86_64: satisfy sparse
+  * curve25519: x86_64: make symbol static
+  * crypto: consistent constification
+
+  Small cleanups in the crypto primitives.
+
+  * chacha20poly1305: split up into separate files
+  * chacha20poly1305: combine stack variables into union
+  * chacha20poly1305: test scattergather functions too
+  * chacha20poly1305: test for authtag failure
+
+  We've reorganized our chapoly implementation and added lots of new tests as
+  well. The generic C chacha should be slightly faster in the process.
+
+  * poly1305: mips: compute S on fly
+
+  Small speedup on MIPS.
+
+  * device: do not assume dst is always valid
+
+  Fixes a crash when forwarding packets from devices that use flow offloading.
+
+  * tools: constanter time encoding
+
+-------------------------------------------------------------------
+Fri Jun  1 16:15:39 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180524
+  == Changes ==
+  * allowedips: set pointer to null before freeing
+  * ncat-client-server: do not always call sudo and use env bash
+  * qemu: bump default kernel for gcc 8.1
+  * compat: work around qcom 4.9 backports
+
+  The usual fixes.
+
+  * tools: fix OpenBSD build
+  * tools: always pass -v as first argument to install
+
+  Portability changes.
+
+  * wg-quick: darwin: rename namefile environment variable
+  * wg-quick: darwin: do not remove routes when no real interface
+  * wg-quick: freebsd: add new implementation
+  * wg-quick: openbsd: add new implementation
+  * wg-quick: support FreeBSD/Darwin search path
+  * wg-quick: better bash completion for non-renaming OSes
+  * wg-quick: allow enumeration of socket files
+
+-------------------------------------------------------------------
+Sat May 19 06:16:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180519
+  == Changes ==
+
+  * chacha20poly1305: add mips32 implementation
+  
+  "The OpenWRT Commit" - this significantly speeds up performance on cheap
+  plastic MIPS routers, and presumably the remaining MIPS32r2 super computers
+  out there.
+  
+  * timers: reinitialize state on init
+  * timers: round up instead of down in slack_time
+  * timers: remove slack_time
+  * timers: clear send_keepalive timer on sending handshake response
+  * timers: no need to clear keepalive in persistent keepalive
+  
+  Andrew He and I have helped simplify the timers and remove some old warts,
+  making the whole system a bit easier to analyze.
+  
+  * tools: fix errno propagation and messages
+  
+  Error messages are now more coherent.
+  
+  * wg-quick: use invoking shell in auto rooting
+  
+  Rather than letting sudo use bash from PATH, we now have it use whatever bash
+  is currently executing the script.
+  
+  * device: remove allowedips before individual peers
+  
+  This avoids an O(n^2) traversal in favor of an O(n) one. Before systems with
+  many peers would grind when deleting the interface.
+  
+  * dns-hatchet: update paths
+  
+  Our reorganizing of the wg-quick bash paths was not sync'd with this patch,
+  resulting in some trivial problems for Fedora and OpenSUSE.
+  
+  * compat: backport for OpenSUSE 15
+  
+  Usual compat fixes.
+  
+  * wg-quick: add darwin implementation
+  
+  We released a Darwin implementation of wg-quick(8), to be used with the new
+  wireguard-go snapshot.
+  
+  * wg-quick: darwin: ensure socket directory exists
+  * wg-quick: darwin: remove v6 routes after shutdown
+  * wg-quick: darwin: bash correctness
+  * wg-quick: darwin: restore DNS on down
+  * wg-quick: darwin: use bash from environment and require bash 4+
+  * wg-quick: darwin: sometimes there are no network services
+  * wg-quick: darwin: avoid routing loop if no default
+  * wg-quick: darwin: networksetup does not like missing stdio
+  * wg-quick: darwin: reorder functions
+  * wg-quick: darwin: simpler inclusion check
+  
+  After a pretty intense first few days of the new macOS port, we've fixed a few
+  bugs and improved functionality of wg-quick(8).
+  
+  * ncat-client-server: add wg-quick variant
+  
+  We now have client-quick.sh that does the same as client.sh except it builds a
+  file for wg-quick(8), which can then be used in `wg-quick up demo`.
+
+- Add patch:
+  * wireguard-fix-dns-hatchet-apply-dot-sh.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue May 15 19:22:35 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180514
+  * compat: backport for OpenSUSE 15
+- Add patch:
+  * wireguard-fix-dns-hatchet-apply-dot-sh.patch
+
+-------------------------------------------------------------------
+Mon May 14 17:56:34 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180513
+  == Changes ==
+  * keygen-html: add zip file example
+  
+  The alpha Android app now supports importing from .zip files, so the example
+  contrib code has been updated to show people how to trivially generate .zip
+  files from ... javascript. That's right, the WireGuard repo now contains some
+  more demo javascript.
+  
+  * qemu: retry on 404 in wget for kernel.org race
+  
+  Simple fix for build.wireguard.com's handling of new kernels.
+  
+  * embeddable-wg-library: zero attribute padding
+  
+  This imports 37c876b55a2c00424ccda5a300ab5fdec1d88b22 from upstream libmnl.
+  
+  * allowedips: add selftest for allowedips_walk_by_peer
+  * allowedips: use native endian on lookup
+  * allowedips: produce better assembly with unsigned arithmetic
+  * allowedips: simplify arithmetic
+  
+  A series of bitmath improvements make allowedips lookups sleeker and faster.
+  
+  * socket: use skb_put_data
+  
+  This follows 59ae1d127ac0ae404baf414c434ba2651b793f46 in the kernel.
+  
+  * chacha20poly1305: make gcc 8.1 happy
+  
+  GCC 8.1 does not know about the invariant `0 <= ctx->num < POLY1305_BLOCK_SIZE`.
+  This results in a warning that `memcpy(ctx->data + num, inp, len);` may
+  overflow the `data` field, which is correct for arbitrary values of `num`.
+  
+  To make the invariant explicit we ensure that `num` is in the required range.
+  An alternative would be to change `ctx->num` to a 4-bit bitfield at the point
+  of declaration.
+  
+  This changes the code from `test ebp, ebp; jz end` to `and ebp, 15; jz
+  end`, which have identical performance characteristics.
+  
+  * queueing: preserve pfmemalloc header bit
+  
+  Precautionary measure. Further work on this function goes on in the netdev
+  thread: https://marc.info/?l=linux-netdev&m=152607982125178&w=2
+  
+  * compat: handle RHEL 7.5's recent backports
+  * compat: don't clear header bits on RHEL
+  
+  WireGuard now supports RHEL's latest kernel, which involved fixing some pretty
+  major crashes and clashes with RHEL's backports.
+
+-------------------------------------------------------------------
+Mon Apr 23 08:30:49 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180420
+  == Changes ==
+  * wg-quick: account for specified fwmark in auto routing mode
+  
+  If we're doing automatic routing with default routes, but the config has
+  also specified an explicit fwmark, then use that explicit fwmark, even
+  if it's conflicting, since the administrator has explicitly opted into
+  using it. Also, when shutting down the interface, we only now remove the
+  fancy rules if we're in automatic routing mode with default routes.
+  
+  * send: account for route-based MTU
+  
+  It might be that a particular route has a different MTU than the
+  interface, via `ip route add ... dev wg0 mtu 1281`, for example. In this
+  case, it's important that we don't accidently pad beyond the end of the
+  MTU. We accomplish that in this patch by carrying forward the MTU from
+  the dst if it exists. We also add a unit test for this issue.
+  
+  * send: simplify skb_padding with nice macro
+  * blake2s: remove unused helper
+  * compat: remove unused dev_recursion_level backport
+  
+  Cleanups.
+  
+  * poly1305: do not place constants in different sections
+  
+  We're referencing these constants as one contiguous blob, so if there's
+  any merging that goes on with other constants elsewhere (such as the
+  kernel's current poly1305 implementation that we hope to replace), then
+  these will be reordered and have the wrong values.
+
+-------------------------------------------------------------------
+Fri Apr 13 13:13:27 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180413
+  == Changes ==
+  * wg-quick.8: fix typo
+  * wg-quick: hide errors on save
+
+  This fixes a small regression in the resolvconf save handling on Debian.
+
+  * compat: stable kernels are now receiving b87b619
+  * compat: silence warning on frankenkernels
+  * compat: support OpenSUSE 15
+
+  Usual set of fixes for weird kernels.
+
+  * curve25519: use precomp implementation instead of sandy2x
+  * curve25519: use cmov instead of xor for cswap
+  * curve25519: memzero in batches
+  * curve25519: precomp const correctness
+
+  Rather than using sandy2x, which requires use of the vector registers and simd
+  instructions (and therefore thermal throttling and register save/restores), we
+  instead use BMI2 and ADX instructions to achieve better performance, using:
+    - https://eprint.iacr.org/2017/264
+    - https://github.com/armfazh/rfc7748_precomputed
+
+  * curve25519: add self tests from wycheproof
+  * chacha20poly1305: add self tests from wycheproof
+
+  Wycheproof now provides sneaky test vectors, so we've imported them into our
+  self-tests to mitigate regressions. More info can be found at:
+    - https://github.com/google/wycheproof
+
+- Remove patch:
+  * wireguard-sles15-compat.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Mar 12 20:00:37 UTC 2018 - mardnh@gmx.de
+
+- Package /etc/wireguard/
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  9 13:20:11 UTC 2018 - mardnh@gmx.de
+
+- Add patch:
+  * wireguard-sles15-compat.patch
+
+-------------------------------------------------------------------
+Sun Mar  4 18:25:45 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180304
+== Changes ==
+
+  * NOTICE: off the grid
+  
+  Do note that I'll be going off the grid from the end of this coming week until
+  April 1. This snapshot is expected to be fairly stable in the interim.
+  
+  * queueing: skb_reset: mark as xnet
+  
+  This allows cgroups to classify packets.
+  
+  * contrib: embedded-wg-library: add ability to add and del interfaces
+  * contrib: embedded-wg-library: add key generation functions
+  
+  The embeddable library gains a few extra tricks, for people implementing
+  plugins for various network managers.
+  
+  * crypto: read only after init
+  * allowedips: fix comment style
+  * messages: MESSAGE_TOTAL is unused
+  * global: in gnu code, use un-underscored asm
+  * noise: fix function prototype
+  
+  Small cleanups.
+  
+  * compat: workaround netlink refcount bug
+  
+  An upstream refcounting bug meant that in certain situations it became
+  impossible to unload the module. So, we work around it in the compat code. The
+  problem has been fixed in 4.16.
+  
+  * contrib: keygen-html: rewrite in pure javascript
+  * Revert "contrib: keygen-html: rewrite in pure javascript"
+  
+  We nearly moved away from emscripten'ing the fiat32 code, but the resultant
+  floating point javascript was just too terrifying.
+  
+  * Kconfig: require DST_CACHE explicitly
+  
+  Required for certain frankenkernels.
+  
+  * compat: use correct -include path
+  
+  Fixes certain out-of-tree build systems.
+  
+  * noise: align static_identity keys
+  
+  Gives us better alignment of private keys.
+  
+  * wg-quick: if resolvconf/interface-order exists, use it
+  * wg-quick: if resolvconf/run/iface exists, use it
+  
+  Better compatibility with Debian's resolvconf.
+  
+  * contrib: add extract-handshakes kprobe example
+
+-------------------------------------------------------------------
+Mon Feb 19 18:26:05 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180218
+== Changes ==
+
+  * keygen-html: fix up copyright
+  
+  Copy and paste errors.
+  
+  * tools: do not collide types with libc clashes
+  * tools: FreeBSD doesn't have EAI_NODATA
+  * tools: fixup errno handling
+  * tools: endian.h is not portable
+  
+  Fixes compilation and correctness several places.
+  
+  * tools: allow in-line comments
+  
+  You can now put a # comment anywhere in a line, in which case, it extends
+  until the end of the line.
+  
+  * wg-quick: match from beginning rather than shift right
+  
+  This raises the proper error when providing interface names that are too long.
+  
+  * qemu: add support for powerpc
+  
+  Now that we have known PPC users, it's probably a good thing to ensure we
+  don't introduce bugs, so PPC has been added to our CI on build.wireguard.com.
+  
+  * poly1305: fix up selftest counter
+  
+  Make sure we're using the right array length in the debug-mode-only
+  self-tests.
+  
+  * netns: replace n0 ip with ip0, per custom
+  
+  Fixes up console output consistency.
+  
+  * qemu: more granular memleak detection
+  
+  This avoids us getting memory leak errors due to upstream's power management
+  drivers leaking, or the like, when we're only interested in WireGuard memory
+  leaks.
+  
+  * socket: free skb if there isn't an endpoint
+  
+  Fixes a memory leak.
+  
+  * allowedips: indicate to clang-analyzer that trie is non-null
+  
+  Hopefully future versions are slightly smarter...
+  
+  * blake2s: use union instead of casting
+  
+  Similarly fixes a clang-analyzer issue, as well as ensuring alignment.
+  
+  * tools: normalize strncpy/snprintf usage
+  
+  Correctness.
+  
+  * contrib: add embeddable wireguard library
+
+-------------------------------------------------------------------
+Fri Feb  2 19:27:20 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180202
+== Changes ==
+
+  * curve25519-fiat32: uninline certain functions
+  
+  This results in much smaller code size and significanat speed gains on smaller
+  hardware.
+  
+  * poly1305: add poly-specific self-tests
+  
+  Poly is easy to get wrong, so we've added quite a few tests that examine
+  certain edge cases and places where other implementations of historically
+  failed.
+  
+  * tools: dedup secret normalization
+  * tools: share curve25519 implementations with kernel
+  * contrib: keygen-html: share curve25519 implementation with kernel
+  
+  There is now only one place where we ship 25519 code.
+  
+  * qemu: disable PIE for compilation
+  * qemu: disable AVX-512 in userland
+  * qemu: update base versions
+  
+  Test suite enhancements.
+  
+  * device: let udev know what kind of device we are
+  
+  This enables folks to query the device type via udev, which is what systemd's
+  networkctl uses.
+  
+  * tools: fread doesn't change errno
+  
+  This fixes clearing pre-shared keys on old glibc.
+  
+  * chacha20poly1305: use existing rol32 function
+  * chacha20poly1305: better buffer alignment
+  
+  Small enhancements.
+  
+  * curve25519: verify that specialized basepoint implementations are correct
+  
+  Since some implementations have a specialized function for computing
+  basepoints, it's important to do some basic sanity checking with them.
+  
+  * curve25519: replace hacl64 with fiat64
+  
+  For about 24 hours, fiat64 was faster.
+  
+  * curve25519: replace fiat64 with faster hacl64
+  
+  Then hacl64 caught up, so we moved back to it.
+  
+  * curve25519: break more things with more test cases
+  
+  These extra test cases help break the current "rfc7748_precomputed"
+  implementation, which we're not using here at the moment, but it is still
+  useful to ensure that we don't fall victim to the same bugs.
+
+-------------------------------------------------------------------
+Thu Jan 18 18:03:33 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.20180118
+== Changes ==
+
+  * receive: treat packet checking as irrelevant for timers
+
+  Small simplification to the state machine, as discussed with Mathias
+  Hall-Andersen.
+
+  * socket: check for null socket before fishing out sport
+  * wg-quick: ifnames have max len of 15
+  * tools: plug memleak in config error path
+
+  Important bug fixes.
+
+  * external-tests: add python implementation
+
+  Piotr Lizonczyk has contributed a test vector written in Python.
+
+  * poly1305: remove indirect calls
+
+  From Samuel Neves, we now are in a better position to mitigate speculative
+  execution attacks.
+
+  * curve25519: modularize implementation
+  * curve25519: import 32-bit fiat-crypto implementation
+  * curve25519: import 64-bit hacl-star implementation
+  * curve25519: resolve symbol clash between fe types
+  * curve25519: wire up new impls and remove donna
+  * tools: import new curve25519 implementations
+  * contrib: keygen-html: update curve25519 implementation
+
+  Two of our Curve25519 implementations now use formally verified C. Read this
+  mailing list post for more information:
+    https://lists.zx2c4.com/pipermail/wireguard/2018-January/002304.html
+
+-------------------------------------------------------------------
+Fri Dec 21 08:04:50 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171221
+== Changes ==
+
+  * keygen-html: remove prebuilt file
+
+  This follows our mailing list discussion.
+
+  * wg-quick: add the "Table" config option
+
+  In collaboration with Luis Ressel, wg-quick(8) grew an option! We generally
+  do not like to add things to wg-quick or allow feature-creep, but this was
+  basic enough and mostly involves disabling functionality. Specifically,
+  wg-quick now accepts a Table= parameter with these semantics:
+
+    ~ Table=auto (default) selects the current behaviour
+    ~ Table=off disables creation of routes from allowed ips altogether
+    ~ All other values are passed through to "ip route add"'s table option
+
+  This should enable people to do basic policy routing. It also matches the
+  functionality provided by LEDE/OpenWRT's uci config as well as NixOS's
+  networking configuration.
+
+  * wg-quick: dumber matching for default routes
+
+  Efficiency.
+
+  * crypto: compile on UML
+
+  UML allows you to compile a Linux Kernel as a standalone ELF binary that runs
+  within normal Linux. WireGuard can now be compiled as a normal Linux program,
+  runnable on Linux, which is useful for the test suite... and other things.
+
+  * compat: kernels < 3.13 modified genl_ops
+
+  This fixes a rather important bug with 3.10, 3.11, and 3.12 kernels, where in
+  some cases, gcc failed to de-constify a struct that was marked as const when
+  it should not have been on on these older kernels, triggering an oops at
+  module insertion time.
+
+
+-------------------------------------------------------------------
+Thu Dec 14 15:40:51 UTC 2017 - mardnh@gmx.de
+
+- spec-file-cleanup
+
+-------------------------------------------------------------------
+Mon Dec 11 18:49:05 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171211
+== Changes ==
+
+  * curve25519: explictly depend on AS_AVX
+  * curve25519: modularize dispatch
+  
+  It's now much cleaner to see which implementation we're calling, and it will
+  be simpler to add more implementations in the future.
+  
+  * compat: support RAP in assembly
+  
+  This should fix PaX/Grsecurity support.
+  
+  * device: do not clear keys during sleep on Android
+  
+  While we want to clear keys when going to sleep on ordinary Linux, this
+  doesn't make sense in the Android world, where phones often sleep but are
+  woken up every few milliseconds by the radios to process packets.
+  
+  * compat: fix 3.10 backport
+  
+  Important compat fixes for non-x86.
+  
+  * device: clear last handshake timer on ifdown
+  
+  When bringing up an interface, we don't want the rate limiting to handshakes
+  to apply.
+  
+  * netlink: rename symbol to avoid clashes
+  
+  Allows coexistance with horrible Android drivers.
+  
+  * kernel-tree: jury rig is the more common spelling
+  * tools: no need to put this on the stack
+  * blake2s-x86_64: fix spacing
+  
+  Small fixes.
+  
+  * contrib: keygen-html for generating keys in the browser
+  
+  This was covered here:
+  https://lists.zx2c4.com/pipermail/wireguard/2017-December/002127.html
+  
+  * tools: remove undocumented unused syntax
+  
+  Not only did nobody know about this or use it, but the implementation actually
+  exposed compiler bugs in Qualcomm's "Snapdragon Clang".
+  
+  * poly1305: update x86-64 kernel to AVX512F only
+  
+  From Samuel Neves, this pulls in Andy Polyakov's changes to only require F and
+  not VL for the Poly implementation.
+  
+  * chacha20-arm: fix with clang -fno-integrated-as.
+  
+  This pulls in David Benjamin's clang fix.
+  
+  * global: add SPDX tags to all files
+  
+  From Greg KH, we now have SPDX annotations on all files, matching upstream
+  kernel's new approach to file licenses.
+  
+  * chacha20poly1305: cleaner generic code
+  
+  This entirely removes the last remains of Martin Willi's ChaCha
+  implementation, and now the generic C implementation is extremely small and
+  clearly written, while delivering a small performance boost too.
+  
+  * poly1305: fix avx512f alignment bug
+  
+  Unlucky people may have had their linkers misalign a constant. This fixes that
+  potential.
+  
+  * chacha20: avx512vl implementation
+  
+  From Samuel Neves, this imports Andy Polyakov's AVX512VL implementation of
+  ChaCha which should have a ~50% performance improvement over AVX2, though it
+  is still much slower than our AVX512F implementation.
+  
+  * chacha20poly1305: wire up avx512vl for skylake-x
+  
+  Some Skylake machines do not have two FMA units (though others do), so we
+  prefer the AVX512VL implementation over the should-be-faster AVX512F
+  implementation on those machines. What's needed now is to read the PIROM in
+  order to determine at runtime whether the particular Skylake-X machine
+  actually has the second FMA unit or not, but until that happens, we just fall
+  back to the VL implementation for all Skylake-X.
+
+-------------------------------------------------------------------
+Mon Nov 27 19:06:30 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171127
+== Changes ==
+
+  * compat: support timespec64 on old kernels
+  * compat: support AVX512BW+VL by lying
+  * compat: fix typo and ranges
+  * compat: support 4.15's netlink and barrier changes
+  * poly1305-avx512: requires AVX512F+VL+BW
+  
+  Numerous compat fixes which should keep us supporting 3.10-4.15-rc1.
+  
+  * blake2s: AVX512F+VL implementation
+  * blake2s: tweak avx512 code
+  * blake2s: hmac space optimization
+  
+  Another terrific submission from Samuel Neves: we now have an implementation
+  of Blake2s using AVX512, which is extremely fast.
+  
+  * allowedips: optimize
+  * allowedips: simplify
+  * chacha20: directly assign constant and initial state
+  
+  Small performance tweaks.
+  
+  * tools: fix removing preshared keys
+  * qemu: use netfilter.org https site
+  * qemu: take shared lock for untarring
+  
+  Small bug fixes.
+
+-------------------------------------------------------------------
+Wed Nov 22 18:49:21 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171122
+== Changes ==
+
+  * chacha20poly1305: fast primitives from Andy Polyakov
+  
+  Samuel Neves and I have spent considerable time and headaches porting,
+  reworking, and partially rewriting Andy's optimized implementations of
+  ChaCha20 and Poly1305. We now support the following:
+  
+  On x86_64:
+    - Poly1305: integer unit
+    - ChaCha20: SSSE3
+    - HChaCha20: SSSE3
+    - Poly1305: AVX
+    - ChaCha20: AVX2
+    - Poly1305: AVX2
+    - ChaCha20: AVX512
+    - Poly1305: AVX512
+  
+  On ARM:
+    - Poly1305: integer unit
+    - ChaCha20: NEON
+    - Poly1305: NEON
+  
+  On ARM64:
+    - Poly1305: integer unit
+    - ChaCha20: NEON
+    - Poly1305: NEON
+  
+  On MIPS64:
+    - Poly1305: integer unit
+  
+  All others:
+    - ChaCha20: generic C
+    - Poly1305: generic C
+  
+  This is a pretty substantial amount of new handrolled assembly. It will
+  perhaps MURDER KITTENS, so please tread lightly with this snapshot and adjust
+  expectations accordingly. I'm looking forward to quickly fixing any issues
+  folks find while testing.
+  
+  Performance-wise, this should see increases all around. The biggest speedups
+  will be on ARM and ARM64, but x86_64 and MIPS64 should also see modest speed
+  improvements too, especially on Skylake systems supporting AVX512.
+  
+  * chacha20poly1305: add more test vectors, some of which are weird
+  
+  Test vectors are pretty important, so we added more to catch odd edge cases
+  using the following butcher's code:
+  
+    from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+    import os
+    
+    def encode_blob(blob):
+        a = ""
+        for i in blob:
+            a += "\\x" + hex(i)[2:]
+        return a
+    
+    enc = [ ]
+    dec = [ ]
+    
+    def make_vector(plen, adlen):
+        key = os.urandom(32)
+        nonce = os.urandom(8)
+        p = os.urandom(plen)
+        ad = os.urandom(adlen)
+        c = ChaCha20Poly1305(key).encrypt(nonce=bytes(4) + nonce, data=p, associated_data=ad)
+    
+        out = "{\n"
+        out += "\t.key\t= \"" + encode_blob(key) + "\",\n"
+        out += "\t.nonce\t= \"" + encode_blob(nonce) + "\",\n"
+        out += "\t.assoc\t= \"" + encode_blob(ad) + "\",\n"
+        out += "\t.alen\t= " + str(len(ad)) + ",\n"
+        out += "\t.input\t= \"" + encode_blob(p) + "\",\n"
+        out += "\t.ilen\t= " + str(len(p)) + ",\n"
+        out += "\t.result\t= \"" + encode_blob(c) + "\"\n"
+        out += "}"
+        enc.append(out)
+    
+    
+        out = "{\n"
+        out += "\t.key\t= \"" + encode_blob(key) + "\",\n"
+        out += "\t.nonce\t= \"" + encode_blob(nonce) + "\",\n"
+        out += "\t.assoc\t= \"" + encode_blob(ad) + "\",\n"
+        out += "\t.alen\t= " + str(len(ad)) + ",\n"
+        out += "\t.input\t= \"" + encode_blob(c) + "\",\n"
+        out += "\t.ilen\t= " + str(len(c)) + ",\n"
+        out += "\t.result\t= \"" + encode_blob(p) + "\"\n"
+        out += "}"
+        dec.append(out)
+    
+    
+    make_vector(0, 0)
+    make_vector(0, 8)
+    make_vector(1, 8)
+    make_vector(1, 0)
+    make_vector(129, 7)
+    make_vector(256, 0)
+    make_vector(512, 0)
+    make_vector(513, 9)
+    make_vector(1024, 16)
+    make_vector(1933, 7)
+    make_vector(2011, 63)
+    
+    print("======== encryption vectors ========")
+    print(", ".join(enc))
+    
+    print("\n\n\n======== decryption vectors ========")
+    print(", ".join(dec))
+  
+  * wg-quick: document localhost exception and v6 rule
+  
+  Probably a "kill switch" wants this too:
+     -m addrtype ! --dst-type LOCAL
+  so that basic local services can continue to work.
+  
+  * selftest: allowedips: randomized test mutex update
+  * allowedips: do not write out of bounds
+  * device: uninitialize socket first in destruction
+  * tools: tighten up strtoul parsing
+  
+  Small fixups.
+  
+  * qemu: update kernel
+  * qemu: use unprefixed strip when not cross-compiling
+  
+  Fedora/Redhat doesn't ship with a prefixed strip, and we don't need
+  to use it anyway when we're not cross compiling, so don't.
+  
+  * compat: 3.16.50 got proper rt6_get_cookie
+  * compat: stable finally backported fix
+  * compat: new kernels have netlink fixes
+  * compat: fix compilation with PaX
+  
+  Usual set of compatibility updates.
+  
+  * curve25519-neon: compile in thumb mode
+  
+  In thumb mode, it's not possible to use sp as an operand of and, so
+  we have to muck around with r3 as a scratch register.
+  
+  * socket: only free socket after successful creation of new
+  
+  When an interface is down, the socket port can change freely. A socket
+  will be allocated when the interface comes up, and if a socket can't be
+  allocated, the interface doesn't come up.
+  
+  However, a socket port can change while the interface is up. In this
+  case, if a new socket with a new port cannot be allocated, it's
+  important to keep the interface in a consistent state. The choices are
+  either to bring down the interface or to preserve the old socket. This
+  patch implements the latter.
+  
+  * global: switch from timeval to timespec
+  
+  This gets us nanoseconds instead of microseconds, which is better, and
+  we can do this pretty much without freaking out existing userspace,
+  which doesn't actually make use of the nano/microseconds field. The below
+  test program shows that this won't break existing sizes:
+  
+    zx2c4@thinkpad ~ $ cat a.c
+    void main()
+    {
+        puts(sizeof(struct timeval) == sizeof(struct timespec) ?
+          "success" : "failure");
+    }
+    zx2c4@thinkpad ~ $ gcc a.c -m64 && ./a.out
+    success
+    zx2c4@thinkpad ~ $ gcc a.c -m32 && ./a.out
+    success
+
+-------------------------------------------------------------------
+Sat Nov 11 18:47:44 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171111
+  == Changes ==
+
+  * Kconfig: remove trailing whitespace
+  * allowedips: rename from routingtable
+  * tools: remove ioctl cruft
+  * global: revert checkpatch.pl changes
+  
+  Cleanliness.
+  
+  * device: please lockdep
+  * device: wait for all peers to be freed before destroying
+  
+  These make the various checkers happy.
+  
+  * netlink: plug memory leak
+  * qemu: check for memory leaks
+  
+  There was a small memory leak on the netlink configuration layer that's now
+  been fixed.
+  
+  * receive: hoist fpu outside of receive loop
+  
+  Should be a small speedup on x86_64.
+  
+  * qemu: more debugging
+  * qemu: bump kernel version
+  
+  Significantly more debugging checkers have been turned on.
+  
+  * wg-quick: stat the correct enclosing folder of config file
+  * wg-quick: allow for tabs in keys
+  
+  Minor fixups for wg-quick(8).
+  
+  * compat: 4.4.0 has strange ECN function
+  
+  Nobody actually runs base 4.4.0, but this is more correct anyway.
+  
+  * netlink: make sure we reserve space for NLMSG_DONE
+  
+  A rather important change - due to an upstream kernel bug, that's existed
+  since the advent of netlink itself, sometimes wg(8) failed to receive valid
+  data back from kernelspace, resulting in "ENOBUFS" when trying to dump all
+  peers. This patch works around it while we wait for upstream to commit the
+  fix.
+  
+  * curve25519: reject deriving from NULL private keys
+  * tools: allow for NULL keys everywhere
+  
+  A null 25519 private point isn't a valid point (prior to normalization), which
+  is why we use it as the "unsetting" value. Conversely, however, except for
+  psk, we should be using the existence of it in the netlink message being an
+  indication of whether or not it's set, for the tools.
+
+-------------------------------------------------------------------
+Sat Nov 11 15:15:23 UTC 2017 - lbeltrame@kde.org
+
+- Adjust BuildRequires for Tumbleweed 
+
+-------------------------------------------------------------------
+Wed Nov  1 09:10:19 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171101
+== Changes ==
+
+  Sorry guys. 20171031, the Halloween edition, had a show stopper bug. Luckily
+  few folks have packaged it yet, so we're releasing this small bugfix
+  immediately.
+  
+  * wg-quick: save all hooks on save
+  
+  Tiny bug fix for 'wg-quick save'.
+  
+  * timers: switch to kees' new timer_list functions
+  
+  Shiny new things for Linux 4.14.
+  
+  * compat: unbreak unloading on kernels 4.6 through 4.9
+
+-------------------------------------------------------------------
+Tue Oct 31 20:51:50 UTC 2017 - mardnh@gmx.de
+
+- Fix wg-quick's DNS= directive with a hatchet
+- Update to version 0.0.20171031
+== Changes ==
+
+  * netns: use read built-in instead of ncat hack for dmesg
+  * netns: use time-based test instead of quantity-based
+  * qemu: allow for cross compilation
+  * qemu: work around ccache bugs
+  * qemu: test using four cores
+  * selftest: initialize mutex in routingtable selftest
+  
+  We now cross compile and run in QEMU for x86_64, i686,
+  ARMv7, Aarch64, and MIPS. You can see the current build
+  status on: https://www.wireguard.com/build-status/
+  
+  * stats: more robust accounting
+  * compat: fix up stat calculation for udp tunnel
+  
+  The statistics from `ip link -stats` or from `wg show` are
+  now much more accurate.
+  
+  * global: accept decent check_patch.pl suggestions
+  * global: infuriating kernel iterator style
+  * global: style nits
+  * global: use fewer BUG_ONs
+  * global: get rid of useless forward declarations
+  * blake2: include headers for macros
+  * tools: correct type for CTRL_ATTR_FAMILY_ID
+  
+  Lots of style cleanups.
+  
+  * crypto/avx: make sure we can actually use ymm registers
+  
+  This fixes an issue on some Xen platforms that expose
+  conflicting CPU features.
+  
+  * peer: get rid of peer_for_each magic
+  * peer: store total number of peers instead of iterating
+  
+  A major cleanup of our peer iteration logic, getting rid
+  of a big ugly macro and clarifying our locking semantics.
+  
+  * compat: be sure to include header before testing
+  
+  * wg-quick: allow specifiying multiple hooks
+  
+  You can now specify {Post,Pre}{Down,Up} multiple times, and
+  the commands will then run in succession.
+  
+  * wg-quick: remember to rewind DNS settings on failure
+  
+  Small consistency fix.
+  
+  * wg-quick: allow for saving existing interface
+  
+  There is now a 'save' option for saving an existing
+  configuration without having to bring down the device.
+  
+  * wg-quick: fsync the temporary file before renaming
+  
+  In case the system looses power, you are now left with
+  either the old file or the new file but not an empty file.
+  
+  * wg-quick: allow for the hatchet, but not by default
+  
+  In order to account for distributions that do not have an
+  implementation of resolvconf(8), the contrib directory ships
+  with an alternative implementation that may be patched in.
+  This was extensively discussed and debated on the mailing
+  list.
+  
+  * device: only take reference if netns is different
+  
+  Solves an important memory leak when tearing down network
+  namespaces that haven't moved the wireguard device.
+  
+  * device: expand scope of destruct lock
+  * timers: guard entire setting in block
+  
+  Just to be certain.
+  
+  * curve25519: only enable int128 if compiler support is sound
+  
+  Allows building for Aarch64 with old gcc (such as that used
+  by Android) where we don't want to branch to a __multi3.
+  
+  * contrib: add reresolve-dns
+  
+  A small script that's been passed around for a while now for
+  reresolving DNS entries from a cronjob.
+
+-------------------------------------------------------------------
+Wed Oct 18 19:19:36 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171017
+== Changes ==
+
+  * noise: handshake constants can be read-only after init
+  * noise: no need to take the RCU lock if we're not dereferencing
+  * send: improve dead packet control flow
+  * receive: improve control flow
+  * socket: eliminate dead code
+  * device: our use of queues means this check is worthless
+  * device: no need to take lock for integer comparison
+  * blake2s: modernize API and have faster _final
+  * compat: support READ_ONCE
+  * compat: just make ro_after_init read_mostly
+  
+  Assorted cleanups to the module, including nice things like marking our
+  precomputations as const.
+  
+  * Makefile: even prettier output
+  * Makefile: do not clean before cloc
+  * selftest: better test index for rate limiter
+  * netns: disable accept_dad for all interfaces
+  
+  Fixes in our testing and build infrastructure. Now works on the 4.14 rc
+  series.
+  
+  * qemu: add build-only target
+  * qemu: work on ubuntu toolchain
+  * qemu: add more debugging options to main makefile
+  * qemu: simplify shutdown
+  * qemu: open /dev/console if we're started early
+  * qemu: phase out bitbanging
+  * qemu: always create directory before untarring
+  * qemu: newer packages
+  * qemu: put hvc directive into configuration
+  
+  This is the beginning of working out a cross building test suite, so we do
+  several tricks to be less platform independent.
+  
+  * tools: encoding: be more paranoid
+  * tools: retry resolution except when fatal
+  * tools: don't insist on having a private key
+  * tools: add pass example to wg-quick man page
+  * tools: style
+  * tools: newline after warning
+  * tools: account for padding being in zero attribute
+  
+  Several important tools fixes, one of which suppresses a needless warning.
+
+-------------------------------------------------------------------
+Wed Oct 11 18:47:35 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171011
+== Changes ==
+
+  * receive: do not consider 0 jiffies as being set
+  
+  This should fix some issues on 32-bit platforms with sending cookie reply
+  messages when they're not required.
+  
+  * socket: compare while unlocked first
+  * socket: don't bother recomparing afterwards
+  * socket: gcc inlining makes this faster
+  
+  We no longer take a lock when updating the endpoint, which should yield
+  some performance benefits.
+  
+  * tools: try again if dump is interrupted
+  
+  The tools will now try again to get information about a device if somebody
+  tries to modify the device while a dump is occurring.
+  
+  * Makefile: quiet recursive make
+  
+  Our makefile produces slightly slicker output now.
+  
+  * qemu: bump stable kernel
+  
+  Usual test suite house maintenance.
+  
+  * crypto/x86_64: satisfy stack validation 2.0
+  
+  The kernel's new objtool used to warn on some things in our AVX
+  implementations, especially code generated from qhasm which uses its own
+  stack layout. This commit works around it to squelch warnings.
+  
+  * routingtable: only use device's mutex, not a special rt one
+  * routingtable: iterate progressively
+  * tools: store tail pointer to make coalescing peers fast
+  
+  We replace the Netlink algorithms for grabbing the allowed IPs, so
+  that they're now O(n) instead of O(n^2).
+  
+  * tools: warn once on unrecognized items
+  
+  This follows this LKML discussion:
+  https://www.spinics.net/lists/netdev/msg457468.html
+  
+  * compat: move version logic to compat.h and out of main .c
+  * contrib: filter compat lines
+  
+  Should make it easier to produce a compat-free WireGuard tree.
+  
+  * send: do not requeue if packet is dead
+  * socket: set skb->mark in addition to flowi
+  
+  Mangle tables now work with wg-quick.
+  
+  * tools: man: include kill-switch documentation using fwmark
+  
+  Essentially:
+  iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -j REJECT
+  
+  * receive: disable bh before using stats seq lock
+  
+  This avoids a potential deadlock with interrupts and the stats counters.
+
+-------------------------------------------------------------------
+Fri Oct  6 20:46:56 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171005
+  == Changes ==
+
+  * tools: simmer down silly compilers
+  * tools: compile on non-Linux
+  * contrib: remove worthless build artifact
+  * kernel-tree: remember UAPI in patch creation
+  * curve25519-neon-arm: force ARM encoding, since this is unrepresentable in Thumb
+  * compat: support ptr_ring for old kernels
+  * compat: conditionally redefine GENL_UNS_ADMIN_PERM
+  * compat: RHEL backported netlink changes
+  
+  These here are all compatibility-related fixes mostly left over from churn of
+  the previous snapshots, where we lost some compatibility with old kernels and
+  weird toolchains. The above series of fixes brings us back up to par, and
+  should make life slightly easier for a few packagers who had to work-around
+  things in the last snapshot.
+  
+  * compat: macro rewrite netlink instead of cluttering
+  * global: satisfy bitshift pedantry
+  * global: use _WG prefix for include guards
+  * global: add space around variable declarations
+  * queueing: cleanup skb_padding
+  
+  Style, mostly.
+  
+  * Makefile: add non-verbose mode to tools
+  * Makefile: clang now builds the kernel, so use scan-build
+  
+  One touch static analysis: `make check`.
+  
+  * receive: simplify message type validation
+  * receive: use local keypair, not ctx keypair in error path
+  * send: put keypair reference
+  * receive: we're not planning on turning that into a while loop now
+  * queueing: use ptr_ring instead of linked lists
+  * receive: do not store endpoint in ctx
+  * queueing: move from ctx to cb
+  
+  This is another huge change, and the main motivation for releasing this
+  snapshot. We move from using a linked list-based queue to a ring buffer-based
+  queue, which yields considerable performance increases. It also allows us to
+  entirely rid ourselves of a memory cache object, which further increases
+  performance and decreases latency. The move to a ring buffer will also make
+  writing lock-less algorithms easier, which will eventually increase our
+  performance on systems with extremely high core counts.
+
+-------------------------------------------------------------------
+Mon Oct  2 10:29:55 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20171001
+  == Changes ==
+
+  * receive: use netif_receive_skb instead of netif_rx
+  
+  netif_rx queues things up to a per-cpu backlog, whereas
+  netif_receive_skb immediately delivers the packet to the underlying
+  network device and mostly never fails. In the event where decrypting
+  packets is actually happening faster than the networking subsystem
+  receive them -- like with 65k packets with UDPv6 in `make test-qemu`
+  -- then this backlog fills up and we wind up dropping some packets.
+  This is fine and not all together terrible, but it does raise the
+  question of why we bothered spending CPU cycles decrypting those
+  packets if they were just going to be dropped anyway. So, moving from
+  netif_rx to netif_receive_skb means that whatever time netif_receive_skb
+  needs winds up slowing down the dequeuing of decryption packets, which
+  in turn means the decryption receive queue fills up sooner, so that we
+  drop packets before decryption, rather than after, thus saving precious
+  CPU cycles.
+  
+  * contrib: add sticky sockets example code
+  
+  A description of how our socket roaming algorithm works by translating it
+  into userspace as an example for others.
+  
+  * queueing: no need to memzero struct
+  * send: don't take uninitialized lock
+  * device: properly arrange structs
+  * peer: rearrange structs
+  * queueing: clean up worthless helper
+  * queueing: rename cpumask function
+  * timers: convert to use netif_running
+  * config: do not reset device port
+  * tools: use key_is_zero for comparing to zeros
+  * queueing: more standard init/uninit names
+  * receive: mark function static
+  * tools: uapi: only make sure socket file is socket
+  * receive: do not consider netfilter drop a real drop
+  * peer: ensure that lookup tables are added last
+  * timers: ensure safe timer removal
+  * peer: remove from RCU lists when the kref is zero
+  * noise: use spinlock for rotating keys
+  * messages: reduce maximum staged packets per peer
+  * ratelimiter: wait for destruction, not for read_unlock
+  * tools: do not warn on unrecognized items
+  * wg-quick: anchor sysctl regex to start and end
+  * wg-quick: verify wireguard interface in more clever way
+  * wg-quick: check permissions of parent directory
+  
+  Tons of bug fixes and cleanups, some of which were quite important. This
+  was a very important development life-cycle for shaking out some subtle
+  issues.
+  
+  * netns: disable rp_filter for final test
+  * debug: add better insert target
+  * qemu: add watchdog for not hanging on oops
+  
+  Some improvements to our debugging tools, most notably a watchdog timer
+  so that build.wireguard.com can properly report OOPSes.
+  
+  * netlink: switch from ioctl to netlink for configuration
+  
+  This is fairly huge, and one of the most important things we needed
+  to do for reaching mainline inclusion. Rather than ioctl, we now use
+  netlink. This was mostly a terrible experience, adding bloat and
+  complexity, and making things a lot harder to understand. But upstream
+  requires it. I think we did an okay job, and things should go smoothly,
+  but all and all I was unimpressed by the clunkiness of the whole
+  endeavour. Implementors wishing to integrate WireGuard into their
+  network managers can refer to the uapi/wireguard.h documentation header:
+  <https://git.zx2c4.com/WireGuard/tree/src/uapi/wireguard.h>.
+
+-------------------------------------------------------------------
+Mon Sep 18 19:30:50 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170907
+  == Changes ==
+
+  * queue: entirely rework parallel system
+  
+  This is one of the most significant changes in WireGuard's codebase
+  in a long time, so I'd appreciate some thorough testing of this
+  snapshot. Work here began as part of Samuel Holland (smaeul)'s project
+  for Google Summer of Code, and then I gradually morphed it into its
+  present design.
+  
+  It's a rewrite of the entire multicore processing algorithm of WireGuard.
+  No longer are we relying on padata, an inefficient kernel library that
+  weighs a whopping 1000 lines of code alone. Instead, we've implemented
+  parallel processing using algorithms specifically tailored for WireGuard's
+  structures and ordering concerns. In spite of having to provide ourselves
+  what this library priorly provided, this snapshot actually weighs in
+  _shorter_ than the previous one, which goes to show how cumbersome even
+  using padata's APIs were and how much leaner we can make things.
+  
+  The result is a big improvement in performance on most systems. On my laptop,
+  I'm seeing about 1.4x performance as before, which is quite nice. We're
+  still working on the best way to scale this to systems with absurd quantities
+  of cores, but overall it's working quite well. Future work also involves
+  using the DQL and qdisc systems.
+  
+  In the process, the entire project's code was significantly cleaned up and
+  revised.
+  
+  Samuel was extremely instrumental in kickstarting these efforts, and his
+  GSoC was most certainly valuable for getting this project started. He knows
+  large parts of the WireGuard codebase well, and I expect for him to be
+  a valuable colleague moving forward.
+  
+  * device: IFF_NO_QUEUE is a private flag, not a public one
+  
+  This will prevent the weird "20000" flag from showing up in
+  ip-link when the device is down.
+  
+  * socket: satisfy sparse
+  * routingtable: satisfy sparse
+  * timers: style
+  * compat: ensure we can build without compat.h
+  * send: no need to check for NULL since ref is valid
+  
+  Style and correctness fixes.
+  
+  * qemu: enable debug info for debug qemu
+  
+  A welcome improvement for all those trying to debug things.
+  
+  * compat: support RHEL 7.4
+  
+  This snapshot drops support for RHEL 7.3, moving on instead
+  to RHEL 7.4.
+
+-------------------------------------------------------------------
+Thu Sep  7 17:31:55 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170810
+== Changes ==
+
+  * socket: improve reply-to-src algorithm
+  
+  This follows an extensive discussion on the mailing list.
+  
+  We store the destination IP of incoming packets as the source IP of
+  outgoing packets. When we send outgoing packets, we then ask the routing
+  table for which interface to use and which source address, given our
+  inputs of the destination address and a suggested source address. This
+  all is good and fine, since it means we'll successfully reply using the
+  correct source address, correlating with the destination address for
+  incoming packets. However, what happens when default routes change? Or
+  when interface IP addresses change?
+  
+  Prior to this commit, after getting the response from the routing table
+  of the source address, destination address, and interface, we would then
+  make sure that the source address actually belonged to the outbound
+  interface. If it didn't, we'd reset our source address to zero and
+  re-ask the routing table, in which case the routing table would then
+  give us the default IP address for sending that packet. This worked
+  mostly fine for most purposes, but there was a problem: what if
+  WireGuard legitimately accepted an inbound packet on a default interface
+  using an IP of another interface? In this case, falling back to asking
+  for the default source IP was not a good strategy, since it'd nearly
+  always mean we'd fail to reply using the right source.
+  
+  So, this commit changes the algorithm slightly. Rather than falling back
+  to using the default IP if the preferred source IP doesn't belong to the
+  outbound interface, we have two checks: we make sure that the source IP
+  address belongs to _some_ interface on the system, no matter which one
+  (so long as it's within the network namespace), and we check whether or
+  not the interface of an incoming packet matches the returned interface
+  for the outbound traffic. If both these conditions are true, then we
+  proceed with using this source IP address. If not, we fall back to the
+  default IP address.
+  
+  * tools: fix removal of psk
+  
+  Small bug fix for some leftovers of moving from interface-psk to peer-psk way
+  back when.
+  
+  * wg-quick: only bash complete existing interfaces for down
+  
+  Bash completion is smarter now.
+  
+  * compat: fix padata to work with 4.13
+  
+  WireGuard now works with the newly released 4.13 kernel.
+
+-------------------------------------------------------------------
+Thu Aug 10 06:13:54 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170810
+
+-------------------------------------------------------------------
+Wed Jul 26 12:57:45 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170706
+  == Changes ==
+
+  * global: wireguard.io --> wireguard.com
+
+  We have a new domain name -- WireGuard.com -- moving away from the .io, due to
+  security concerns. Along with the new domain, we also have a commonly
+  requested page for donations: https://www.wireguard.com/donations/ in addition
+  to a Patreon page for those who are into that: https://www.patreon.com/zx2c4 .
+
+  * ratelimiter: consistently use non-bh rcu
+  * socket: style
+  * wg-quick: usage typos
+  * qemu: update default testing kernel
+  * qemu: warn on all unseeded random usage when in debug mode
+  * compat: work around odd kernels that backport kvfree
+  * selftests: ensure that there isnt CPU lag when testing rate limiter
+
+  The usual set of small fixes.
+
+  * send: orphan skbs when buffering longterm
+
+  This works around situations where some apps use the same socket for multiple
+  interfaces. It's important in this case that indefinately queued packets don't
+  eat away at the socket's send buffer; otherwise sending to other interfaces
+  will be blocked.
+
+  * device: support 4.13's extact newlink param
+
+  We continue to support the newest kernels, in this case adjusting to recent
+  changes in the upcoming 4.13 release.
+
+  * global: use pointer to net_device
+
+  This follows an upstream recommendation.
+
+  * ratelimiter: use KMEM_CACHE macro
+  * data: use KMEM_CACHE macro
+  * data: simplify no-keypair failure case
+  * send: use skb_queue_empty where appropriate
+
+  Some nice cleanups from Samuel Holland, one of this summer's GSoC students.
+
+  * blake2s: move compression loop to assembly
+  * blake2s: fix up alignment issues
+
+  Our BLAKE2s implementation now runs a bit faster, thanks to a commit and some
+  additional suggestions from Samuel Neves, one of the BLAKE2 authors.
+
+  * wg-quick: do not set explicit src route for v6 default route
+
+  Clueless network operators were trying to use fec0::/10 as a global address,
+  except that range doesn't have the scope. Previously I worked around this by
+  adding an explicit `src ...` to the routing table for all v6, but this is
+  actually undesirable in some caes, so it's better that network operators give
+  out the correct IPs (likely in fc00::/7).
+
+  * wg-quick: do not use grep
+
+  This reduces the set of dependencies for wg-quick.
+
+  * wg-quick: add explicit support for common DNS usage
+
+  wg-quick supports a DNS = field for common usages of DNS. Folks doing
+  complicated things or who don't want to use resolvconf can continue to use
+  PostUp for this.
+
+  * android: add port of wg-quick
+
+  wg-quick now runs on Android using the ndc command to interact with Android's
+  built-in network management daemons.
+
+
+-------------------------------------------------------------------
+Sun Jul 16 15:40:42 UTC 2017 - mardnh@gmx.de
+
+- Updated URL
+
+-------------------------------------------------------------------
+Thu Jul  6 18:25:24 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170706
+  * ratelimiter: use kvzalloc for hash table allocation
+  * ratelimiter: use IPv6 /64 instead of /96
+  * ratelimiter: add self-test
+  
+  These should make the rate-limiting a bit faster. We also switch to using
+  a /64 instead of a /96 for IPv6, which seems to be what various RFCs
+  recommend for this sort of thing.
+  
+  * receive: cleanup error handlers
+  * gitignore: ignore split DWARF debug info
+  * socket: the checkers distinguish between _bh and non _bh
+  * counter: use correct unit for indices
+  
+  Various cleanups.
+  
+  * compat: support OpenSUSE's backports
+  * compat: workaround Ubuntu 16.10 kernel weirdness
+  * compat: priv_destructor got backported
+  * device: cleanup register_netdev logic
+  
+  This is the main reason why this snapshot is being released a bit early.
+  Kernel 4.11.9 came out, which backported some changes from 4.12, so
+  we had to adjust the compat layer. This snapshot should now work with
+  this recently released kernel (and all others >= 3.10) too. We also
+  add support to a few more odd distro kernels.
+
+-------------------------------------------------------------------
+Fri Jun 30 05:34:20 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170629
+  This release fixes a regression reported by Reuben Martin, which we
+  then debugged together on his hardware.
+  
+  Certain length checking conflicted with GRO on particular hardware which only
+  pulled the precise UDP header into the skb head fragment. This caused certain
+  packets to be rejected unnecessarily.
+  
+  The regression was introduced during a cleanup of the last snapshot. The
+  static analysis suite is being augmented to catch these types of errors in the
+  future.
+
+-------------------------------------------------------------------
+Thu Jun 29 18:30:58 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170628
+  * main: annotate init/exit functions to save memory
+  * selftest: remove antique siphash self test
+  * haskell: re-add updated haskell example
+  * socket: use ip_rt_put instead of dst_release
+  * device: avoid double icmp send on routing loop
+  * compat: clean up cruft
+  * global: cleanup IP header checking
+  * compat: do not export symbols unnecessarily
+Various cleanups and updates.
+  
+  * device: netdevice destruction logic change for 4.12
+  
+  When Linux 4.12 is released next week, we're good to go.
+  
+  * device: only use one sleep notifier
+  
+  Rather than have a separate sleep notification for every interface, we now
+  have a single notifier for every interface. This improves performance,
+  especially when creating many interfaces at once.
+  
+  * device: remove icmp conntrack hacks
+  
+  We're moving hacks upstream the proper way, and then backporting them to
+  compat.
+  
+  * receive: extend rate limiting to 1 second after under load detection
+  
+  After we determine that we're under load, we now wait 1 second before not
+  being under load again, a timer which is global across all interfaces on a
+  given system.
+  
+  * curve25519: satisfy sparse and use short types
+  * curve25519: keep certain sandy2x functions in C
+  
+  Certain functions have been made into C, which should improve stack frames and
+  reliability.
+  
+  * ratelimiter: rewrite from scratch
+  
+  This is a big change. We no longer rely on x_tables or xt_hashlimit, instead
+  using a super minimal and sleek token bucket ratelimiter. This works much
+  better than the old cruft and should allow us to run more places. It also has
+  the benefit of being global, so that it's possible to have thousands of
+  interfaces without killing the system with separate GCs and vmallocs, which is
+  what happened prior.
+  
+  * socket: verify saddr belongs to interface
+  
+  We now more quickly react to changes of the v4 routing table, by ensuring that
+  the sticky source address is actually still valid.
+  
+  * wg-quick: properly match IPv6 endpoint
+  
+  wg-quick now works better with IPv6.
+  
+  * wg-quick: use printf -v instead of namerefs for bash 4.2
+  
+  This adds support for old bash, which means wg-quick should be generically
+  "bash 4 and up". I'm not happy about this but EL7 uses old bash, so we're
+  stuck with it.
+  
+  * compat: support EL7.3
+  
+  Support for RHEL, CentOS, ScientificLinux, and so forth.
+  
+  * compat: support Ubuntu 14.04
+  
+  An old crufty Ubuntu is now supported, since it's LTS.
+
+-------------------------------------------------------------------
+Sun Jun 18 19:21:56 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.20170613
+  Apologies for such a quick bump after yesterday's. Ivan Kozik noticed
+  that on systems with very little entropy in the RNG, systems would hang
+  when WireGuard interface configuration was a blocking item in the boot
+  sequence.
+  
+  The previous snapshot added some checks to ensure that ephemeral keys and
+  nonces are not generated dangerously before the RNG has enough entropy. It
+  did this by simply making interface configuration block the caller until
+  it was ready. However, doing this while holding rtnl_lock() meant that it
+  would also block the configuration of other interfaces. This in turn meant
+  that everything would come to a halt, and enough entropy would only be
+  generated after many minutes, which could exceed particular udevd timeouts.
+  
+  The solution is to move the waiting for entropy to be at exactly the moment
+  when entropy is needed: immediately before generating an ephemeral key or a
+  nonce. After quite a bit of testing, this works very well. A WireGuard
+  interface can be fully configured as early as possible in the boot sequence,
+  but it will only ever complete a handshake sometime later, after it has
+  gathered enough entropy. Since nothing except handshake processing itself is
+  blocked, the rest of the system is freed up to go gather lots of entropy from
+  its usual sources.
+  
+  This is a continuation of the work begun on the upstream Linux kernel,
+  described in this LWN article:
+      https://lwn.net/SubscriberLink/724643/6a0cd411eefcce75/
+  
+  Because this could be something of a large annoyance, I'm releasing this
+  quick patch a day after the previous snapshot.
+
+
+- Update to version 0.0.20170612
+  * timers: queue up killing ephemerals only if not already
+  
+  We fix up a small detail in the timer logic that changed during the last
+  snapshot.
+  
+  * receive: trim incoming packets to IP header length
+  
+  Packets are now trimmed to their actual length, not their length+padding,
+  before handing to the rest of the network subsystem, so that packets look
+  pretty in tcpdump. This doesn't actually affect what userspace sees, since the
+  kernel trims it at a later stage, but it does make pcaps a bit nicer to use.
+  
+  * curve25519: use more standard label convention in asm
+  
+  This ensures that perf(1) shows the function name instead of the label name.
+  
+  * compat: remove padata hotplug code
+  
+  Fixes building on kernels that have HOTPLUG enabled but no PADATA support.
+  
+  * config: add new line for style
+  * device: do-while assignment style
+  * peer: explicitly initialize atomic
+  
+  Style.
+  
+  * noise: fix race when replacing handshake
+  
+  Handle a situation in which three peers, all running on the same system, begin
+  a handshake with all three of each other, at exactly the same time, on a
+  multi-CPU system.
+  
+  * config: ensure the RNG is initialized before setting
+  * compat: use sys_getrandom instead of add_random_ready_callback
+  
+  We've been working with upstream to add a new API to the kernel for ensuring
+  that the RNG actually is seeded. Until they merge it for 4.13, we provide a
+  poly-fill to the compat code. This means that WireGuard will block during
+  configuration until the RNG has enough entropy, so that it's never in a
+  circumstance in which ephemeral keys are generated from bad randomness.
+  
+  * go test: properly pad message
+  * go test: correct tai64n and formatting
+  * external-tests: add keepalive packet
+  * go test: use x/crypto for blake2s now that we have 128-bit mac
+  * external-tests: trim the fat
+  
+  Improvements for the external tests.
+  
+  * wg-quick: make sure we have empty table for both v6 and v4
+  * wg-quick: match ipv6 default route more broadly
+  
+  Tiny nits with wg-quick, one of which should now allow multiple v6-only
+  wg-quick instances running at the same time.
+
+-------------------------------------------------------------------
+Wed May 31 14:51:56 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170517
+  This rather large snapshot touches quite a few sensitive areas, so I'm
+  releasing it now rather than later to receive feedback on any possible issues.
+  It also contains fixes, so everybody should upgrade.
+
+  * man: fix psk mention in wg-quick man page
+  * man: update wg-quick(8) to show Debian resolvconf braindamage
+
+  Documentation cleanups.
+
+  * wg-quick: use src routing for default routes in v6
+
+  ip-rule(8) doesn't do the right thing with source addresses, unless we
+  explicitly set it inside the route. This fixes wg-quick on IPv6 systems.
+
+  * curve25519: actually, do some things on heap sometimes
+  * curve25519: align the basepoint to 32 bytes
+  * curve25519: add NEON versions for ARM
+  * data: enable BH during parallel crypto on ARM/NEON
+  * chacha20poly1305: move constants to rodata
+  * chacha20poly1305: add NEON versions for ARM and ARM64
+
+  We now have faster primitives on ARM and ARM64 processors, which should
+  improve performance.
+
+  * handshake: process in parallel
+
+    Handshakes are now processed in parallel using all cores, which should improve
+  throughput during a storm.
+
+  * noise: no need to store ephemeral public key
+  * noise: precompute static-static ECDH operation
+
+  We can precompute the ECDH(s, s) calculation, which improves handshake
+  initiation message performance by double.
+
+  * style: spaces after for loops
+  * peer: use iterator macro instead of callback
+
+  The most unreadable C ever produced. It might be wise to find a sexier-looking
+  alternative at some point.
+
+  * compat: remove warning for < 4.1
+  * compat: ship padata if kernel doesn't have it
+
+  The usual array of annoying compat things.
+
+  * rust test: convert screech test to snow
+  * rust test: add icmp ping
+
+  We now use Jake's snow library for Noise in the test, which we've expanded to
+  complete a ping.
+
+  * config: do not error out when getting if no peers
+  * tools: allow creating device with no peers
+
+  Fixing some small things in the tool/config interaction.
+
+  * device: keep going when share_check fails
+  * routingtable: remove unnecessary check in node_placement()
+  * config: it's faster to memcpy than strncpy
+  * timers: fix typo in comment
+
+  Nits.
+
+  * debug: print interface name in dmesg
+
+  For those who compile with `make debug`, you'll be happy to see a bit better
+  information in dmesg.
+
+  * timers: rework handshake reply control flow
+  * timers: the completion of a handshake also is on key confirmation
+  * timers: reset retry-attempt counter when not retrying
+
+  Tightening up our timer implementation, which is quite important.
+
+-------------------------------------------------------------------
+Wed May 17 18:31:27 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170517
+  This is a substantial release, containing lots of changes and
+  fixes over last four weeks, including a major protocol improvement.
+  Since this is a lot of churn, I imagine there will be a considerable
+  amount of feedback, resulting in a new snapshot not too long after
+  this one.
+  
+  * compat: use existing iptunnel_xmit function for stats
+  * compat: ssse3 support
+  * compat: work around ubnt offloading
+  * compat: use real crypto_memneq
+  * compat: remember to call iptunnel_xmit_stats
+  
+  We've made quite a few improvements to our compat layer, which
+  should add support to more platforms.
+  
+  * tools: retry name resolution on temporary failure
+  
+  If you're using wg(8) in an init script, you'll be happy about
+  this. If DNS resolution fails, we'll keep trying for a little
+  while before eventually giving up. This should allow for a looser
+  init service ordering, for those who like to use tunnels with DNS
+  endpoints.
+  
+  * tools: wg-quick: auto MTU discovery
+  
+  The wg-quick utility now makes a conservative guestiment on the
+  correct MTU, if you don't explicitly specify it yourself with the
+  new MTU= directive.
+  
+  * chacha20poly1305: implement vectorized hchacha20
+  
+  Our implementation of HChaCha20 is now optimized via SSSE3, which should
+  improve cookie encryption and decryption speed, which uses XChaCha20.
+  
+  * qemu: new packages and better debugging
+  * qemu: new location for test kernels
+  * Kbuild: optimize debug builds too
+  
+  The usual set of improvements to our testing and debugging facilities.
+  
+  * jerry-rig: symlinks are better for tree patching
+  
+  The jerry-rig script now uses symlinks, which should improve its
+  compatibility in more odd environments.
+  
+  * tools: stricter key file reading
+  
+  The wg(8) utility is now a bit stricter on garbage at the end of
+  key files.
+  
+  * tests: check for stats counter increases
+  
+  The test suite checks to see whether the interface stats are actually
+  being incremented.
+  
+  * tools: check for proto error on set too
+  * tools: opt-in globally to GNU-isms to keep the BSDs happy
+  
+  General improvements.
+  
+  * noise: redesign preshared key mode
+  
+  Preshared keys are now local to each peer rather than to each interface. This
+  allows different peers to have different preshared keys, which improves the
+  compromise model. This has been joint work with Trevor Perrin's Noise project,
+  and today revision 32 [1] has been published, which adds the handshake pattern
+  used by WireGuard -- IKpsk2. This is a protocol change -- an accepted
+  potentiality of a still experimental project -- and as such all peers will
+  need to be updated to this latest snapshot. The wg(8) utility has been
+  updated to account for the change of preshared-key being attached to the
+  interface to now being attached to each peer. The WireGuard paper [2],
+  protocol webpage [3], and Tamarin model all have been updated accordingly.
+  
+  * tools: support text-based ipc
+  
+  As discussed on the mailing list, the wg(8) tool now talks to userspace
+  WireGuard implementations using a text-based format [4] over a UNIX socket that
+  has been designed to be exceedingly easy to parse in all languages. The wg(8)
+  tool now runs fine on FreeBSD. [5]
+
+-------------------------------------------------------------------
+Sat Apr 22 13:20:28 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170421
+  * tools: check for malloc failure
+  * tools: argc is always 1
+  * tools: no hyphen in preshared, to keep uniformity
+  * device: use rcu_barrier_bh
+  * cookie: move the bangs
+  * config: don't allow no-privatekey to mask preshared
+  * receive: netif_rx consumes
+
+  General bug fixes.
+
+  * qemu: work on ARM64
+  * netns: cleanup and add diagram
+
+  Our QEMU test suite now works on ARM64.
+
+  * tools: side channel resistant base64
+
+  Our implementation of base64 in wg(8) no longer uses the
+  system base64 and instead uses a handrolled constant time
+  implementation, in order to avoid timing side-channel attacks
+  on private key data.
+
+  * compat: work on old 3.10
+
+  Supporting ancient 3.10 allows us to run on the Ubiquiti
+  EdgeRouter. There's now a package for this:
+  https://community.ubnt.com/t5/EdgeMAX/Release-WireGuard-for-EdgeRouter/td-p/1904764
+
+  * routingtable: rewrite core functions
+
+  The routing table has had some core utilities rewritten, bugs
+  fixed, and the test suite greatly expanded, complete with a
+  randomized comparison against a slow reference implementation
+  and a graphviz output option, which produced these amazing PDFs:
+  https://data.zx2c4.com/trie_v4.pdf
+  https://data.zx2c4.com/trie_v6.pdf
+
+-------------------------------------------------------------------
+Sun Apr  9 18:33:54 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170409
+  * compat: allow create-patch to work on debian-based builds
+  * main: add /sys/module/wireguard/version
+  * tools: do not use addrconfig with port in gai
+  
+  * config: do not allow peers with public keys the same as the interface
+  * curve25519: protect against potential invalid point attacks
+  * chacha20poly1305: enforce authtag checking with compiler
+  
+  While Noise is resilliant to invalid point attacks, it's still better to check
+  explicitly for NULLs from 25519. While we're at it, we make the compile warn
+  if we don't check the return value of sensitive crypto functions.
+  
+  * locking: always use _bh
+  * chacha20poly1305: check return values of sgops
+  * data: simplify flow
+  * data: cleanup parallel workqueue and use two max_active
+  * data: alloca is actually as dangerous as they say
+  
+  These should improve stability in certain cases, though this involved
+  some potentially big rewrites, so I'll keep an eye on incoming bug
+  reports.
+  
+  * compat: support 3.16
+  * compat: support 3.14
+  * compat: support 3.12
+  * compat: support 3.10
+  * compat: careful with destructors
+  * compat: warn on < 4.1
+  
+  We now experimentally support kernels going back to 3.10. This means
+  that WireGuard should run on nearly all Android devices, the Ubiquiti
+  EdgeRouter, and probably most other random Linux devices that you can
+  find. I'm looking forward to seeing the community pick up the work
+  producing pre-compiled modules for various things.
+
+-------------------------------------------------------------------
+Fri Mar 24 06:57:42 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170324
+  * curve25519: 128-bit integer != x86_64
+  
+  This will fix build problems on AArch64.
+  
+  * tools: document # comments in wg(8) man page
+  
+  * socket: avoid deadlock on port retry
+  
+  Fixes systems under port exhaustion.
+  
+  * wg-quick: various cleanups
+  
+  * uapi: add version magic
+  
+  While the problem will go away entirely when we switch (back) to
+  Netlink, for now it's nice to warn users when wg(8) is out of sync
+  with the module, so we do this by adding a version field.
+
+-------------------------------------------------------------------
+Mon Mar 20 18:27:14 UTC 2017 - mardnh@gmx.de
+
+- update to 0.0.20170320.1
+  This is a critical same-day re-release for a bug affecting Sandy
+  Bridge systems. All packagers who updated to 20170320 should update
+  to this snapshot.
+
+-------------------------------------------------------------------
+Mon Mar 20 06:56:59 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170320
+  * device: 4.11 uses cnf for addr_gen_mode
+  * receive: last_rx use is discouraged and removed in recent kernels
+  * data: transition to skb_reset_tc for 4.11
+  
+  This snapshot now should work with 4.11.
+  
+  * create-patch: add context below to work with busybox patch
+  
+  It turns out that busybox has a patch that doesn't do fuzzy matching.
+  
+  * device: move sysctl toggling to open time
+  * compat: use maybe_unused macro over gcc-specific
+  * timers: elide enable check
+  * config: satisfy sparse
+  
+  Cleanups.
+  
+  * hashtables: get_random_int is now more secure, so expose directly
+  * cookie: no need to hash rng
+  
+  We're trusting the Linux RNG to not be backdoored!
+  
+  * tools: wg-quick: support old ip(8)
+  
+  This should allow wg-quick usage with Ubuntu 16.04.
+  
+  * data: big refactoring
+  
+  A rather invasive refactoring that may bring bugs with it. Please report
+  strange behavior from this release, if any.
+  
+  * blake2s: add AVX implementation
+  * curve25519: add AVX implementation
+
+-------------------------------------------------------------------
+Mon Feb 27 08:04:18 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170223
+ * device: disable ICMP redirects
+  
+  We now no longer send ICMP redirect messages when forwarding packets between
+  two WireGuard peers on the same interface.
+  
+  * socket: do not try to create v6 socket when disabled
+  
+  This allows WireGuard to work on systems booted with ipv6.disable=1.
+  
+  * wg-quick: allow config files without trailing newline
+  * tools: give "off" value for fwmark
+  * tools: fix bash completion spaces
+  
+  * tools: add wg show [interface] dump
+  
+  The wg(8) command learns a new way of dumping information, which should be a
+  boost for script writers.
+  
+  * contrib: add wg-json utility
+  
+  Using the aforementioned new dump command, it's trivial to transform into JSON
+  using a bash script, so this is provided as an example.
+  
+  * extract-keys: respect compat directives
+  
+  The extract-keys helper now builds with the new compat system, which should
+  enable wireshark dissectors and such to work.
+
+-------------------------------------------------------------------
+Tue Feb 14 16:25:46 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170214
+ * wg-quick: unquote fwmark for bash 4.3
+
+-------------------------------------------------------------------
+Tue Feb 14 07:05:02 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170213
+ * curve25519: do everything on the stack
+  
+  Now that OpenWRT ships the MIPS SoftIRQ stack patch, and it's also made it
+  upstream, we no longer need to do the mallocing, which should improve
+  performance.
+  
+  * tools: man: recommend correct port
+  
+  Before we used 41414 in the documentation, which we should be suggesting the
+  use of 51820.
+  
+  * tools: wg-quick: recommend using resolvconf in exclusive mode
+  
+  -x prevents DNS leakage.
+  
+  * timers: use setup_timer macro helper
+  * timers: use simpler uninit sync technique
+  
+  Simplifies code a bit.
+  
+  * socket: synchronize net on socket tear down
+  * device: shorter workqueue names to fit in ps
+  * main: add `wg` type alias
+  
+  * socket: general ephemeral ports instead of name-based ports
+  
+  If no port is specified, a port is selected ephemerally, instead of trying to
+  be overly clever with the interface name.
+  
+  * socket: enable setting of fwmark
+  
+  This is a nice new feature which enables policy-based routing on fwmarks, used
+  by Android and wg-quick.
+  
+  * tools: setconf should remove existing psk
+  * tools: remove key for any empty file
+  * tools: wg-quick: support v6 dual stack
+  * tools: wg-quick: set LC_ALL for consistent regex
+  
+  * Kconfig: can be a module
+  * create-patch: be sure it's actually after NETFILTER
+  
+  * compat: backport siphash & dst_cache from mainline
+  
+  Since siphash is upstream now, we use the mainline implementation. While we're
+  at it with reorganizing compat, we also backport dst_cache, so older kernels
+  can benefit from it.
+
+-------------------------------------------------------------------
+Sun Jan 15 13:02:19 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170115
+  * tools: wg-quick: enforce good permissions
+  * tools: wg-quick: parse IPv6 endpoints correctly
+  * tools: wg-quick: better removal of suppress_prefix rule
+  
+  The former is good practice, in the likes of SSH's warnings. The
+  latter two are bug fixes.
+  
+  * tools: error on short ret reads
+  * tools: ipc: read from socket incrementally
+  * uapi: add missing userspace headers
+  * uapi: use flag instead of C bitfield for portability
+  * uapi: use sockaddr union instead of sockaddr_storage
+  
+  This makes the UAPI a bit more portable across languages, which assists
+  with the Go implementation efforts.
+  
+  * config: useless newline
+  * Use __read_mostly attribute when possible
+  
+  General code quality improvements.
+  
+  * ratelimiter: 800ms too fast, decrease to 2s sustained rate
+  
+  There's no need to allow 800ms handshakes, when there's already bursting
+  and when more than 1 every 5 seconds is already too much, when under DoS.
+
+-------------------------------------------------------------------
+Thu Jan  5 20:27:58 UTC 2017 - mardnh@gmx.de
+
+- install wg-quick
+
+-------------------------------------------------------------------
+Thu Jan  5 09:45:06 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.0.20170105
+  * tools: add bash completion for wg(8)
+  * tools: add wg-quick
+  * tools: add makefile instructions
+  * tools: add systemd unit and auto-detection
+
+  This is an all-tools release. The new wg-quick tool
+  could use some testing and exposure, so we're posting
+  this snapshot a bit early to solicit feedback.
+
+-------------------------------------------------------------------
+Fri Dec 30 17:14:58 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.0.20161230
+  This is a fairly small release, and if you're a lazy package maintainer, you
+  can skip it if you don't have the time. The primary improvement and motivation
+  for making this snapshot is Android support.
+  
+  * tools: rename 'bandwidth' to 'transfer' in output
+  
+  Nice catch from Tomasz Torcz.
+  
+  * external-tests: update to latest
+  
+  The Go/Rust/Haskell examples have been updated.
+  
+  * cookie: optimize
+  * blake2s: cleanup
+  
+  Some nice optimizations and cleanups to increase code quality.
+  
+  * wg-config: use ip rules instead of tungate
+  
+  Rather than launching a routing daemon, we just use ip-rule(8). This should be
+  more straight-forward, and work on more systems, such as Android.
+  
+  * tools: syscall.h should actually be sys/syscall.h
+  * compat: support 3.18, 3.19, 4.0
+
+-------------------------------------------------------------------
+Fri Dec 23 21:40:35 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.0.20161223
+  * config: allow removing multiple peers at once
+  
+  Before, specifying several peers to remove on the command line at the same
+  time would not work. This is now fixed.
+  
+  * routing-table: simplify and mask reparented root
+  
+  Now reparented entries in the routing table are properly masked, so that you
+  don't wind up with strange entries like "192.0.0.0/0".
+  
+  * tools: allowed-ips is easier to parse with spaces instead of ", "
+  
+  This is a slight change in the tools CLI that should make it easier to parse
+  with scripts.
+  
+  * tools: do not use AI_ADDRCONFIG
+  
+  It is now possible to configure IPv6 endpoints before IPv6 interfaces have
+  successfully gotten their IPs.
+  
+  * wg-config: cleanup ip parsing
+  * wg-config: cleanups
+  
+  General cleanups.
+  
+  * cookies: use xchacha20poly1305 instead of chacha20poly1305
+  
+  This is a big change. To simplify the security analysis, improve speed, and
+  simplify the code, we now use XChaChaPoly1305 with a random 24-byte nonce,
+  instead of using a random 32-byte salt.
+
+-------------------------------------------------------------------
+Sun Dec 18 18:26:08 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.0.20161218
+  * This is a quick snapshot to fix an error with the last one on big endian
+    systems. Probably only OpenWRT cares about this, and everybody else can
+    happily wait for the next more substantial snapshot.
+
+-------------------------------------------------------------------
+Fri Dec 16 18:42:07 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.0.20161216
+  * messages: increase header by 3 bytes for alignment
+  
+  PACKAGERS PLEASE UPDATE, as this is a protocol-breaking change.
+  
+  * device: disable ipv6 auto address generation
+  
+  Now finally we have working tcpdump and no useless automatic IPv6 addresses.
+  
+  * device: rc -> ret
+  * device: dellink is already implictly unregister_netdevice_queue
+  * device: simplify device_init, since it only returns -EEXIST
+  * main: consistent lines
+  * device: clean up xmit error path
+  * device: allocate tstats in newlink
+  * global: move to consistent use of uN instead of uintN_t for kernel code
+  * crypto: use kernel's bitops functions
+  * messages: remove unused constants
+  * blake2s: move self tests to correct directory
+  * tools: fix latest-handshake typo in documentation
+  * noise: update comments
+  * config: cleanups
+  * types: enforce consistency
+  
+  Numerous code quality cleanups.
+  
+  * device: ensure icmp skb length check is done for v6
+  * receive: simplify ip header checking logic
+  
+  This adds a missing length check and generally simplifies length checks
+  throughout.
+  
+  * peer: don't use sockaddr_storage to reduce memory usage
+  
+  Now that we have struct endpoint, ditching sockaddr_storage is a no-brainer.
+  It has the affect of making parallel decryption faster because it requires
+  less of an allocation for the ctx, and thus our kmemcache can be merged.
+  
+  * tests: avoid non-strict writes via printf
+  
+  Finally fixing this silly old bug.
+  
+  * ratelimiter: drop family from action for 4.10
+  
+  We're getting ready for the first rc of Linux 4.10.
+  
+  * siphash: update against upstream submission
+  
+  I've been preparing a big patch for upstream Linux to include SipHash, and in
+  the process I improved the implementation considerably.
+  
+  * hashtables: use counter and int to ensure forward progress
+  
+  This gives the best of both worlds between the two hashtable rng designs.
+
+-------------------------------------------------------------------
+Sat Dec 10 09:35:04 UTC 2016 - mardnh@gmx.de
+
+- rebased patch: wireguard-remove-depmod.diff
+- fix URL
+- update to version 0.0.20161209
+  * hashtable: use random number each time
+  
+  This reverts some hashtable changes from a while back.
+  
+  * tests: make sure ncat gets killed
+  * tests: directly kill nmap
+  * qemu: bump kernel version
+  
+  Now running `make test` cleans up some zombie ncat processes.
+  
+  * build system: add dkms installation
+  
+  This is a biggie for packagers. You can now run `make dkms-install` to install
+  the source and dkms.conf file to an environment-variable specified location.
+  Since the majority of downstreams are using dkms, providing it upstream makes
+  sense.
+  
+  * data: reset tc when resetting skb
+  
+  Correctness fix.
+  
+  * device: clear all peer ephemeral keys on sleep
+  * device: make suspend code conditional on CONFIG_PM_SLEEP
+  
+  WireGuard is now the only VPN software that will clear your ephemeral keys
+  before the computer goes into sleep. This is a nice security feature for
+  extreme cases.
+  
+  * timers: add random jitter to handshake retry
+  * socket: clear src address when retrying handshake
+  
+  This increases the reliability of reconnections succeeding in the case of
+  connection trouble.
+  
+  * device: cleaner error teardown
+  * main: cleaner error teardown
+  * device: traditional if is cleaner than switch for this small
+  * compat: build dep errors belong here, since it's out of tree specific
+  * cookie: kill redundant forward declaration
+  
+  Just code cleanups.
+  
+  * contrib: add wg-config
+  
+  This is a nice new example utility for adding a wireguard device and
+  configuring its IPs and routes all in one go. It's extensively documented in
+  its contrib directory and comes with a Makefile installer.
+
+-------------------------------------------------------------------
+Wed Nov 30 20:09:55 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161129
+  * send: send packet initiation only after requeuing to prevent race
+  * tests: be sure we get all messages
+  * tests: veth does not come up immediately
+  
+  We've made the internal testing suite a bit more reliable.
+  
+  * main: add version to dmesg
+  
+  The module insertion message now shows the snapshot build date or the git
+  revision, depending, which will help with more easily determining what's
+  happening from people's logs. Too many incompetent bug reporters have
+  inexplicably neglected to mention the version or commit being used when
+  reporting a bug. This commit works around this human error, requested by
+  Kalin Kozhuharov and others.
+  
+  * device: conntrack is optional
+  
+  WireGuard can now run on machines that do not have connection tracking,
+  requested by Willy Tarreau and Baptiste Jonglez.
+  
+  * ratelimiter: load hashlimit at modinsert time
+  
+  Alex Xu pointed out an interesting deadlock, and we were able to trace it to
+  internal kernel infrastructure locking things in opposing orders. To work
+  around these bugs, WireGuard now loads the hashlimit module at insertion time
+  rather than at interface creation time.
+  
+  * tools: warn about clock going backward
+  
+  In the event that some script on your system is making the clock go wild
+  backward, the tools should probably indicate that the "last handshake
+  completed" date can't be correct, and that subsequent connections might fail.
+  This was reported by W. Kennington.
+
+-------------------------------------------------------------------
+Wed Nov 16 20:49:41 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161116.1
+  * The earlier snapshot today broke some builds on kernels <= 4.3.
+    Packagers only need to bump versions for this single commit if
+    distribution kernels use <= 4.3.
+
+-------------------------------------------------------------------
+Wed Nov 16 19:53:49 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161116
+  * socket: keep track of src address in sending packets
+  * socket: ensure that saddr routing can deal with interface removal
+  
+  This is a rather important change. WireGuard will now reply using the same
+  source address on which it received a packet. This improves compatibility with
+  multi-homed hosts.
+  
+  * debug: cleanup skb printing
+  * compat: rearrange
+  * tests: use private ipv6 addresses
+  * tests: trim output
+  * various: nits from willy
+  * packets: consolidate constants
+  * device: better debug message
+  
+  A whole series of cleanups.
+  
+  * device: we need NONE for libpcap
+  
+  In the previous snapshot, we switched to using a VOID device type, so that
+  IPv6 autoconfiguration wouldn't assign a useless IP. But this broke libpcap
+  and tcpdump. So, we're back to using the NONE type, and getting a useless v6
+  address. This requires upstream Linux fixes to solve.
+  
+  * chacha20poly1305: rely on avx and avx2
+  
+  This works around braindead VPS providers who disable random opcodes.
+
+-------------------------------------------------------------------
+Thu Nov 10 18:50:07 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161110
+  * data: we care about per-peer, not per-device, inflight encryptions
+  * data: squelch compiler warning on PARALLEL=n
+  * socket: release dst on routing loop
+  
+  These are cleanups of the previous refactoring.
+  
+  * qemu: use sparsemem always, for kasan
+  * qemu: kasan needs more memory
+  
+  Automatically detecting memory corruption bugs should not be much easier.
+  
+  * send: remove redundant time stamp
+  * cookie: avoid void pointer arithmatic
+  * debug: support dynamic debug on skb addr
+  * data: only uses kmem_cache for parallism
+  * chacha20poly1305: don't forget version header
+  
+  General bug fixes.
+  
+  * socket: use more reasonable skb padding
+  
+  Rather than the somewhat arbitrary ETH_HLEN + VLAN_HLEN + 16, we now use
+  NET_SKB_PAD.
+  
+  * chacha20poly1305: it's just as fast to use these more simple unaligned access helpers
+  
+  This completes our fixup of chacha20poly1305 for platforms with slow unaligned
+  access, such as MIPS.
+  
+  * send: simplify handshake initiation queueing and introduce lock
+  
+  Rate limiting is now applied globally, and while locked, which should make it
+  impossible for two threads to simultaneously cause a new handshake.
+  
+  * selftest: add routing table tests for small subnets
+  * routing-table: mask self for better IP display
+  
+  Giving allowed IPs an address like 192.168.121.128/16 will now be normalized
+  to 192.168.0.0/16 automatically.
+  
+  * curve25519: use kmalloc in order to not overflow stack
+  
+  This is HUGE. And OPENWRT PEOPLE SHOULD UPDATE IMMEDIATELY. This is a major
+  fix for platforms that do not use a separate IRQ stack, such as MIPS. All MIPS
+  users should update immediately for improved stability. An interesting mailing
+  list thread crossposted to LKML is on this list.
+
+-------------------------------------------------------------------
+Sun Nov  6 11:19:51 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161105
+  * socket: use dst_cache instead of handrolled cache
+  * compat: stub out dst_cache for old kernels
+  * socket: route() returns an error pointer, not NULL on failure
+  * socket: big refactoring
+  
+  Rather than our hand rolled routing cache, we now use the kernel's own
+  dst_cache, which was added to the kernel after 4.5 and wasn't available when
+  wireguard was first developed. The performance is on par with ours, but this
+  way we reduce complexity.
+  
+  * data: take reference to peer
+  * data: use smaller types
+  * send: queue bundles on same CPU
+  * data: keep FPU on when possible
+  * data: use a memory cache for parallel ctx
+  * compat: fix variable assumptions
+  
+  This series of optimizations is huge, resulting in *doubled throughput* on my
+  development laptop. This is a major performance win, achieved by batching up
+  sequential packets on the same processor core, with the observation that
+  waiting for cores to synchronize takes time and defeats multi-core
+  improvements. Wireguard should now scale better to systems with tons of cores. 
+  
+  * compat: some grsec have get_random_long; others do not
+  
+  Wireguard now builds with the stable release of grsec that used to be testing.
+  In otherwords, distro stable grsec packages that are out of date and
+  unmaintained can now use wireguard without modification.
+  
+  * qemu: move build outside of kernel dir to avoid kernel's make clean
+  * qemu: work around termio race condition
+  * qemu: move marker to top and flush
+  * qemu: fail if module selftests fail
+  
+  The qemu test suite received more stability improvements and a workaround for
+  a virtio bug.
+  
+  * tools: chill modern gcc out
+  * c89: the static keyword is okay in c99, but not in c89
+  * chacha20poly1305: cleanup magic constants
+  
+  General code and compiler fixes.
+
+-------------------------------------------------------------------
+Thu Nov  3 21:43:28 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161102
+
+  * timers: take reference like a lookup table
+  * qemu: newer default kernel
+  
+  Small improvements as usual.
+  
+  * device: use ARPHDR_VOID instead of ARPHDR_NONE
+  
+  We now avoid auto-assigning randomly generated IPv6 addresses to interfaces,
+  since this doesn't make sense in the context of cryptokey routing. This should
+  prevent those pesky log messages about trying to send to unrouted RA IPs.
+  
+  * chacha20poly1305: src is different from dst on last piece
+  
+  This is a critical patch and the reason why this snapshot is being cut so soon
+  after the previous. PACKAGERS: bump your packages.
+
+-------------------------------------------------------------------
+Wed Nov  2 20:12:55 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161102
+
+  * peer: kref is most likely to succeed
+  * data: do not allow usage of keypair just before hash removal
+  * kref: elide checks
+  
+  These fix a potential race condition that could trigger kernel warning
+  messages.
+  
+  * tools: everybody hates automatic stripping
+  * tools: abstract pkg-config to PKG_CONFIG
+
+-------------------------------------------------------------------
+Sun Oct 30 08:48:27 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161025
+  * noise: comment/document the key swapping
+  
+  It turns out this is a bit interesting, and there's an interesting TODO item
+  in there now regarding a KPI choice that may or may not be an issue.
+  
+  * debug: keep alive -> keepalive
+  * device: better debug message for unroutable packets
+  
+  The latter should make it more clear why certain packets aren't being sent. In
+  most cases for properly configured interfaces, this will just show v6 RA
+  addresses.
+  
+  * timers: avoid thundering herd for simultaneous initiation
+  
+  By applying slack time to the initiation schedule, we can take advantage of
+  the fact that jiffies does not have the same exact start quantum on all
+  computers, giving us the natural jitter we need.
+  
+  * timers: kill half-open handshakes after a while
+  
+  This ensures partial ephemeral sessions are cleared, even if they're never
+  used.
+  
+  * timers: always delay handshakes for responder
+  * timers: only have initiator rekey
+  
+  These are two different solutions to the same problem. Namely, we don't want
+  the responder to reinitiate a handshake at the same time as the initiator, in
+  the case that a TCP SYN is sent after 120 seconds of the session. See the
+  individual commit messages for an in depth explanation of the two different
+  approaches and the one I ultimately chose.
+  
+  * receive: always send confirmation, even if queue is empty
+  
+  It's essential that the initiator always sends confirmation to the responder,
+  so that the responder can send packets using the new key ASAP. This is
+  required when handshakes roll-over during sparsely utilized links.
+  
+  
+  * compat: support PaX constify plugin
+  * data: reset all packet fields like tun.c
+  * compat: grsecurity backports get_random_long
+  
+  WireGuard now compiles and runs fine on both grsecurity/PaX stable and testing.
+
+-------------------------------------------------------------------
+Fri Oct 14 19:02:32 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161014
+  * send: only avoid parallel path when there aren't inflight jobs
+  * send: requeue jobs for later if padata is full
+  * send: ensure that rekey retries are staggered
+  * device: show debug message when no peer has allowed-ips for packet
+  * compat: more functions moved upstream into 4.9
+
+-------------------------------------------------------------------
+Sat Oct  1 08:05:11 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20161001
+  * poly1305: optimize unaligned access
+  This is a very appreciated fix from René van Dorst, adjusting the arithmetic
+  in Poly1305 to work fast on platforms with slow unaligned access, such as
+  MIPS. According to his calculation, this gives a 50% improvement on small MIPS
+  boxes.
+  
+  * hashtables: use rdrand() instead of counter
+  
+  Rather than incrementing a counter, we instead use rdrand, which gives us an
+  extremely fast source of random numbers. We're still running this through
+  siphash with a secret, so a backdoored rdrand implementation won't be a
+  problem.
+  
+  * examples: add nat-hole-punching
+  
+  https://lists.zx2c4.com/pipermail/wireguard/2016-August/000372.html
+  https://git.zx2c4.com/WireGuard/tree/contrib/examples/nat-hole-punching/README
+  
+  * examples: add key extractor
+  
+  https://lists.zx2c4.com/pipermail/wireguard/2016-August/000373.html
+  https://git.zx2c4.com/WireGuard/tree/contrib/examples/extract-keys/README
+  
+  * tools: allow multiple AllowedIPs invocations
+  
+  Multiple AllowedIPs= lines can now be specified, which could improve
+  readability of the config files.
+  
+  * send: properly encapsulate ECN
+  
+  Thanks to the guidance of Dave Taht, we now support ECN.
+  
+  * Rework headers and includes
+  * compat: Isolate more functions
+  
+  In anticipation of upstreaming WireGuard, we've now moved most of our
+  version-specific #ifdefs to compat.h, where we use horrible macro tricks to
+  redefine functions for old versions. This allows us to keep the actual code as
+  clean as possible. When we merge to mainline, compat.h will be deleted
+  wholesale.
+  
+  * tests: test jumbo frames with more transfer
+  * tests: add crypto-RP filter test
+  * qemu: enhancements
+  
+  With this an numerous other commits, we've further expanded the test suite.
+
+-------------------------------------------------------------------
+Sun Aug 14 12:36:23 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20160808
+  * timers: upstream removed the slack concept
+  We now group timers ourselves, this time with the ability to round down. This
+  ensures that we don't wind up rescheduling timers for every packet, but
+  instead keeping things within a quarter second window.
+  
+  * c: specify static array size in function params
+  See https://hamberg.no/erlend/posts/2013-02-18-static-array-indices.html
+  
+  * contrib: move patchers to contrib/kernel-tree
+  There are now two patchers:
+    - contrib/kernel-tree/create-patch.sh This patcher simply spits out a patch
+      for use with `patch(1)` to stdout.
+    - contrib/kernel-tree/jerry-rig.sh This is the old hack that patches into
+      the kernel tree a reference to the WireGuard tree.
+  
+  * tools: do not show private keys in pretty output
+  The `WG_HIDE_KEYS` environment variable now determines whether or not keys are
+  shown in the pretty `wg show` output.
+  
+  * persistent-keepalive: change range to [1,65535]
+  Linux connection tracking is granular to 1 second, so it's important that we
+  do the same.
+  
+  * selftest: move to subfolder
+  * Kbuild: move module deps out of tests/
+  * tests: use makefile and expand greatly
+  This is a big one. The entire testing subsystem has been entirely expanded.
+  With the help of Alex Xu and Naveen Nathan, the test suite is now hugely
+  expanded, and even does NAT testing with the persistent-keepalive feature. Not
+  only that, but the QEMU runner now builds from a Makefile and is much more
+  robust. We now build and run 7 kernels for every single commit, with the test
+  results published on https://www.wireguard.io/build-status/
+  
+  * ratelimiter: do not require IPv6
+  CONFIG_IPV6 is no longer required at all for WireGuard.
+
+-------------------------------------------------------------------
+Fri Jul 22 20:09:18 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20160722
+  * tools: abstract sockets are dangerous
+  * tools: Use seqpacket instead of dgram
+  * tools: use stream instead of seqpacket* tools: propagate set errno
+  * tools: add default cflag
+  * tools: add -MP to makefile
+  * socket: simpler debug message
+  * socket: reset IPv4 socket to NULL after free
+  * socket: fix compat for 4.1 v6 sockets 
+  * cookie: do not expose csprng directly
+  * index hashtable: run random indices through siphash
+
+-------------------------------------------------------------------
+Thu Jul 21 12:36:12 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20160721
+  * tests: improve test suite and add qemu tester
+    You can now run `make test` to do some nice functional testing of the
+    module. As well, there's now src/tests/qemu.sh which builds and installs a
+    mini userspace and kernel, boots it up in qemu, and runs the tests. This
+    does not require root access, and provides a good way of testing for
+    packagers. Note that I very much would like to see some patches cleaning up
+    qemu.sh if anybody is interested.
+  
+  * Kconfig: select IP6_NF_IPTABLES if using IPV6
+  * build system: revamp building and configuration
+    This build system is much more robust, and we've gotten all the dependencies
+    worked out. Check out wireguard.io/install/ and scroll to the bottom to see
+    all the information about kernel dependencies.
+  
+  * tools: fix numbering in man page
+  * tools: first additions of userspace integration
+  * tools: support horrible freebsd/osx/unix semantics
+  * tools: rename kernel to ipc
+    The wg(8) tool now implements the neccessary protocol to work with new
+    WireGuard userspace implementations! The extremely simple IPC protocol is
+    documented here -- wireguard.io/xplatform/ -- and is essentially the same
+    way in which wg(8) communicates with the kernel. This should be exceedingly
+    simple to implement, and we fully expect for all userspace implementation
+    efforts currently occurring to use this, so that wg(8) can administer any
+    kind of implementation with the same interface. It also compiles on OS X now
+    and there's a pull request for including this in Homebrew:
+    https://github.com/Homebrew/homebrew-core/pull/3183
+
+-------------------------------------------------------------------
+Mon Jul 11 18:10:04 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20160711
+  * persistent keepalive: use authenticated keepalives
+    This is by far the biggest and most important change of this snapshot, and
+    indeed is the entire reason why we're releasing another one for folks to
+    test out. It was pointed out on the mailing list that if keepalives aren't
+    authenticated, it's impossible for the receiver to update the source IP/port
+    of the sender. So, we make them authenticated, which means turning on the
+    "persistent-keepalive" feature is basically saying "always hold an active
+    session open". WireGuard is by default non-chatty -- there won't be an active
+    session if you're not sending anything. So, if this is a problem with
+    wanting to receive connections while idle and behind NAT, then you can use
+    this feature for always maintaining an active session.
+  * timers: rename *authorized* functions to *authenticated*
+  * timers: do not consider keepalives to be data sent
+  * examples: update ncat-client-server readme
+  * keepalives: only queue keepalive when queue is empty
+  * persistent keepalive: use unsigned long to avoid multiplication in hotpath
+  * timers: document conditions for calling
+  * timers: move timer calls out of hot loop
+  * timers: apply slack to hotpath timers
+  * receive: no need to test for !len
+  * receive: assume we usually succeed with userspace
+
+-------------------------------------------------------------------
+Fri Jul  8 15:44:14 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20160708.1
+  * persistent keepalive: start sending immediately -- the previously released
+    feature was not useful without this extra commit. So, getting this in here
+    now so that people can actually test this out. Sorry for the churn. Don't
+    bother packaging the previous snapshot.
+
+-------------------------------------------------------------------
+Fri Jul  8 15:31:15 UTC 2016 - mardnh@gmx.de
+
+- update to version experimental-0.0.20160708
+  * Remove old development scripts and cruft from contrib/.
+  * Reorganize contrib/examples. Distribution packagers are now encouraged to
+    install contrib/examples to /usr/share/${pkg}/examples.
+  * Make sure we add 4611686018427387914 to TAI64N second stamps, to be in spec.
+  * Improve error reporting and detection in wg(8), ignoring extra input and
+    generally being more helpful.
+  * Enable always falling back to /dev/urandom when getrandom(2) fails.
+  * Add synergy example script.
+  * Use `pkg-config` for libmnl in tools Makefile if it exists. Otherwise we
+    fallback to just specifying -lmnl statically.
+  * Improve go test to send and receive ICMP ping packet through tunnel.
+  * Add the new persistent keepalive mechanism, as discussed on the mailing
+    list. This is available via `wg set wg0 peer ABCD persistent-keepalive 25`
+    as well as `PersistentKeepalive = 25` in the `[Peer]` section of
+    configuration files. This is off by default, as it's only useful for users
+    behind NAT or stateful firewall that expect to receive external VPN
+    connections while they are idle. This has been documented in the wg(8) man
+    page as well as a small blurb on the quick start page of the website.
+- removed patch:
+  * wireguard-set-libmnl-includedir-with-pkgconfig.diff (fixed upstream)
+- packaged examples from contrib/examples
+
+-------------------------------------------------------------------
+
+Wed Jul  6 21:29:07 UTC 2016 - mardnh@gmx.de
+
+- renamed subpackage for the userspace-tool
+  wireguard -> wireguard-tools
+
+-------------------------------------------------------------------
+Tue Jul  5 21:50:01 UTC 2016 - mardnh@gmx.de
+
+- use snapshot tags instead of of pulling from the git directly
+
+-------------------------------------------------------------------
+Tue Jul  5 17:27:07 UTC 2016 - mardnh@gmx.de
+
+- initial package
+
