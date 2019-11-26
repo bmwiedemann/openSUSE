@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 25 11:58:17 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.2012
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.2012   2019-11-22
+  
+    [TESTS]
+  
+    - adjust test of missing package to accomodate new diagnostic message in
+      perl 5.31.6 (RT#130929)
+
+-------------------------------------------------------------------
 Thu May 17 05:39:30 UTC 2018 - coolo@suse.com
 
 - updated to 2.2011
