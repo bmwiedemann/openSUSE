@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 BuildRequires:  gnutls-devel
 BuildRequires:  libidn2-devel
