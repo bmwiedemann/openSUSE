@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Tue Nov 19 10:34:38 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update spec file
+  * Remove doc files not needed and perl-FFI-CheckLib-rpmlintrc
+
+-------------------------------------------------------------------
+Tue Nov  5 09:17:20 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- added perl-FFI-CheckLib-rpmlintrc to allow building with older 
+  rpmlint
+
+-------------------------------------------------------------------
+Wed Jun 26 05:08:19 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.25      2019-06-25 12:27:58 -0400
+    - Add support for Alien::Base with alien option (gh#18)
+
+-------------------------------------------------------------------
+Sun Apr 28 05:11:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.24      2019-04-27 09:14:34 -0400
+    - Add try_linker_script option (gh#13, gh#15)
+
+-------------------------------------------------------------------
+Thu Dec  6 15:40:26 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.23      2018-11-18 00:07:49 -0500
+    - Handle DLLs on Windows with "dashed" version numbers (example: foo-1-2-3.dll)
+      (gh#10, gh#11, SLAFFAN++)
+
+-------------------------------------------------------------------
+Thu Nov  8 06:20:47 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.22      2018-10-13 22:24:46 -0400
+    - Production version identical to 0.21_01
+  
+  0.21_01   2018-10-11 22:53:43 -0400
+    - Documentation fixes
+    - Handle DLLs with upper-case characters in extension on MSWin32 (gh#9)
+
+-------------------------------------------------------------------
+Sun Jun 10 05:25:04 UTC 2018 - coolo@suse.com
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.20      2018-06-04 18:18:09 -0400
+    - Add system_path function.
+  
+  0.19      2018-05-30 21:09:32 -0400
+    - Administrative release to note that this dist is moving its
+      repository to the Perl5-FFI org on github.com
+
+-------------------------------------------------------------------
+Thu Oct 26 05:18:55 UTC 2017 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.18      2017-10-25 10:00:47 -0400
+    - Production version identical to 0.17_02
+  
+  0.17_02   2017-10-14 01:03:04 -0400
+    - Fix Windows testing regression introduced in 0.17_01
+  
+  0.17_01   2017-10-13 15:58:30 -0400
+    - Filter out broken and recursive symlinks
+    - Better handle symlinked .so files on platforms that support that.
+  
+      Previously, we preferred the longer .so names (ie, libfoo.so.1.2.3)
+      over the shorter .so names (libfoo.so) since the latter is usually a
+      symlink, and the former may have useful "version" information in the
+      filename.  That is a problem when a system is using symlinks to indicate
+      a preference, (for example, if there are both libfoo.so.1.2.3,
+      libfoo.so.1.2.4 and libfoo.so is a symlink to one of those).
+      
+      Now we still endevour to return the long .so name, but use the short
+      name to see which one is preferred by the operating system, or user.
+      
+      In the absense of any symlinks to disambiguate two libraries with the
+      same name, we prefer the one with a newer version number.   That is
+      libfoo.so.2.3.4 would be preferred over libfoo.so.1.2.3
+     
+    - Slightly more consistent diagnostic messages.
+    - Added functions: which, where, has_symbols
+      None are exported by default, but may be requested.
+
+-------------------------------------------------------------------
+Wed Aug  9 05:34:48 UTC 2017 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.16      2017-08-08 10:24:49 -0400
+    - Tentative support for msys
+
+-------------------------------------------------------------------
+Mon May 23 11:49:55 UTC 2016 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.15      2016-05-05 19:53:32 -0400
+    - Add MSYS2 support
+
+-------------------------------------------------------------------
+Wed Sep 23 08:37:21 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.14      2015-09-09 08:25:15 -0400
+    - Version identical to 0.12
+      (0.12 was accidentally removed from CPAN)
+  
+  0.12      2015-08-06 16:09:32 -0400
+    - Switch to MakeMaker since we are not using any features
+      that require Module::Build
+
+-------------------------------------------------------------------
+Tue Feb 17 13:43:04 UTC 2015 - coolo@suse.com
+
+- initial package 0.11
+    * created by cpanspec 1.78.08
+
