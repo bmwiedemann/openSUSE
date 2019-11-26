@@ -1,7 +1,7 @@
 #
 # spec file for package maven-install-plugin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://maven.apache.org/plugins/maven-install-plugin
 Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(commons-codec:commons-codec)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -39,7 +40,6 @@ BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -64,7 +64,11 @@ API documentation for %{name}.
 %pom_add_dep org.apache.maven:maven-compat
 
 %build
-%{mvn_build} -f -- -DmavenVersion=3.1.1
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=6 \
+%endif
+	-DmavenVersion=3.1.1
 
 %install
 %mvn_install
