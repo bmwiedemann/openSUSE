@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 23 18:37:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Skip junk files when migrating savestates from 3.32 or earlier.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct  5 14:42:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:
