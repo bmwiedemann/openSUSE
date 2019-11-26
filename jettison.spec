@@ -1,7 +1,7 @@
 #
 # spec file for package jettison
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,8 +63,10 @@ chmod -x src/main/resources/META-INF/LICENSE
 %pom_xpath_remove pom:Private-Package
 
 %build
-# Disable the tests until BZ#796739 is fixed:
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
