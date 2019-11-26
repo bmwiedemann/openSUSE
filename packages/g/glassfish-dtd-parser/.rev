@@ -15,4 +15,12 @@
     <comment>Build as a modular jar</comment>
     <requestid>735432</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>026e038506dd8c97f3fde92b2c6da45a</srcmd5>
+    <version>1.4</version>
+    <time>1574783801</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750531</requestid>
+  </revision>
 </revisionlist>

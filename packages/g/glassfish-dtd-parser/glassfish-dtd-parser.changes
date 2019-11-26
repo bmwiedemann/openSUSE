@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 24 12:24:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+- Do not build modular jar with any java version
+
+-------------------------------------------------------------------
 Sat Oct  5 18:15:24 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - BuildRequire java-devel > 9, so that we compile the

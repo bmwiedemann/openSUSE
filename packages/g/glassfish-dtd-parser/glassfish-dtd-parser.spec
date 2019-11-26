@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-dtd-parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          Development/Libraries/Java
 URL:            http://java.net/projects/dtd-parser
 Source0:        https://github.com/javaee/jaxb-dtd-parser/archive/%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildArch:      noarch
@@ -45,12 +44,13 @@ This package contains javadoc for %{name}.
 
 %build
 pushd dtd-parser
-%if %{?pkg_vcmp:%pkg_vcmp java-devel < 9}%{!?pkg_vcmp:1}
 rm -f src/module-info.java
-%endif
 
 %{mvn_file} :dtd-parser %{name}
-%{mvn_build} -f -j
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=7
+%endif
 
 popd
 
@@ -63,9 +63,7 @@ popd
 %files -f dtd-parser/.mfiles
 %license dtd-parser/LICENSE.txt
 
-%if 0
 %files javadoc -f dtd-parser/.mfiles-javadoc
 %license dtd-parser/LICENSE.txt
-%endif
 
 %changelog
