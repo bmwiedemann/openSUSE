@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 14:31:58 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with jdk < 9, since some apis are not found
+  otherwise
+
+-------------------------------------------------------------------
 Thu Nov 14 12:48:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of netty3 3.10.6 compatibility version

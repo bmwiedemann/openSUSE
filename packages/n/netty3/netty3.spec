@@ -1,7 +1,7 @@
 #
 # spec file for package netty3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,7 @@ BuildRequires:  mvn(org.jboss.logging:jboss-logging)
 BuildRequires:  mvn(org.jboss.marshalling:jboss-marshalling)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
+BuildConflicts: java-devel >= 9
 Requires:       netty-tcnative
 BuildArch:      noarch
 
@@ -123,9 +124,7 @@ rm -v src/main/java/org/jboss/netty/handler/ssl/JettyNpnSslEngine.java
 %{mvn_file}  : %{name}
 
 %build
-
-# skipping tests because we don't have easymockclassextension
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f
 
 %install
 %mvn_install
