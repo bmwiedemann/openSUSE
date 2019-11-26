@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 Name:           afl
-Version:        2.52c
+Version:        2.58c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
@@ -58,10 +58,11 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %ifnarch %{ix86} x86_64
 export AFL_NO_X86=1
 %endif
-make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} DESTDIR=%{buildroot} install
+make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} MAN_PATH=%{_mandir}/man8 DESTDIR=%{buildroot} install
 
 %files
-%doc docs/ChangeLog docs/COPYING docs/README docs/*.txt
+%license docs/COPYING 
+%doc docs/ChangeLog docs/README.* docs/*.txt
 %{_bindir}/%{name}-*
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as
@@ -71,5 +72,6 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %{_datadir}/%{name}/testcases/*
 %dir %{_datadir}/afl/dictionaries/
 %{_datadir}/afl/dictionaries/*
+%{_mandir}/man8/afl*.8*
 
 %changelog

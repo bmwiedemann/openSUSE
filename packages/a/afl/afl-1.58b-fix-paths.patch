@@ -2,11 +2,11 @@
  Makefile |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: afl-2.32b/Makefile
+Index: AFLplusplus-2.58c/Makefile
 ===================================================================
---- afl-2.32b.orig/Makefile
-+++ afl-2.32b/Makefile
-@@ -18,8 +18,8 @@ VERSION     = $(shell grep '^\#define VE
+--- AFLplusplus-2.58c.orig/Makefile
++++ AFLplusplus-2.58c/Makefile
+@@ -21,8 +21,8 @@ VERSION     = $(shell grep '^\#define VE
  
  PREFIX     ?= /usr/local
  BIN_PATH    = $(PREFIX)/bin
@@ -15,5 +15,5 @@ Index: afl-2.32b/Makefile
 +HELPER_PATH = $(LIBEXEC_DIR)/afl
 +DOC_PATH    = $(DOC_DIR)/afl
  MISC_PATH   = $(PREFIX)/share/afl
+ MAN_PATH    = $(PREFIX)/man/man8
  
- # PROGS intentionally omit afl-as, which gets installed elsewhere.

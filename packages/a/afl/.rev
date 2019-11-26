@@ -406,4 +406,41 @@
     <comment></comment>
     <requestid>739467</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4bf57340ef562a229a5a1d27d3fe5723</srcmd5>
+    <version>2.58c</version>
+    <time>1574784126</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.58c
+  - reverted patch to not unlink and recreate the input file, it resulted in performance loss of ~10%
+  - added test/test-performance.sh script
+  - (re)added gcc_plugin, fast inline instrumentation is not yet finished, however it includes the whitelisting and persistance feature! by hexcoder-
+  - gcc_plugin tests added to testing framework
+- jump to 2.57 instead of 2.55 to catch up with Google's versioning
+  - persistent mode for QEMU (see qemu_mode/README.md)
+  - custom mutator library is now an additional mutator, to exclusivly use it
+  - add AFL_CUSTOM_MUTATOR_ONLY (that will trigger the previous behaviour)
+  - new library qemu_mode/unsigaction which filters sigaction events
+  - afl-fuzz: new command line option -I to execute a command on a new crash
+  - no more unlinking the input file, this way the input file can also be a
+  - FIFO or disk partition
+  - setting LLVM_CONFIG for llvm_mode will now again switch to the selected
+  - llvm version. If your setup is correct.
+  - fuzzing strategy yields for custom mutator were missing from the UI, added them :)
+  - added &quot;make tests&quot; which will perform checks to see that all functionality
+  - is working as expected. this is currently the starting point, its not complete :)
+  - added mutation documentation feature (&quot;make document&quot;), creates afl-fuzz-document
+  - and saves all mutations of the first run on the first file into out/queue/mutations
+  - libtokencap and libdislocator now compile to the afl_root directory and are
+  - installed to the .../lib/afl directory when present during make install
+  - more BSD support, e.g. free CPU binding code for FreeBSD (thanks to devnexen)
+  - reducing duplicate code in afl-fuzz
+  - added &quot;make help&quot;
+  - removed compile warnings from python internal stuff
+  - added man page for afl-clang-fast[++]
+  - updated documentation
+  - Wine mode to run Win32 binaries with the QEMU instrumentation (-W)
+  - CompareCoverage for ARM target in QEMU/Unicorn</comment>
+    <requestid>750847</requestid>
+  </revision>
 </revisionlist>
