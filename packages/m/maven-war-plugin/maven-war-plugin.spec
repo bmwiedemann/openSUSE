@@ -1,7 +1,7 @@
 #
 # spec file for package maven-war-plugin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://maven.apache.org/plugins/maven-war-plugin/
 Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(com.thoughtworks.xstream:xstream)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -39,7 +40,6 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -59,7 +59,10 @@ API documentation for %{name}.
 %pom_remove_plugin :maven-enforcer-plugin
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
