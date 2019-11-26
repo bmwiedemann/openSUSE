@@ -23,4 +23,12 @@
     <comment>not needed any more to hint obs which package use</comment>
     <requestid>734295</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7f28d00dcea8cd553b50e2d0b7f862a1</srcmd5>
+    <version>1.5</version>
+    <time>1574784010</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750613</requestid>
+  </revision>
 </revisionlist>

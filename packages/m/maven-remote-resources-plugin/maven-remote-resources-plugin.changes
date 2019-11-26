@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:33:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
 Tue Oct  1 12:23:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Not needed any more the hint to require mvn(log4j:log4j)
