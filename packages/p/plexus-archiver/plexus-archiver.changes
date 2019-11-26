@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 24 14:42:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.2.1
+- Modified patch:
+  * 0001-Remove-support-for-snappy.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Mon Apr  1 23:12:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Describe package, not the project vision.

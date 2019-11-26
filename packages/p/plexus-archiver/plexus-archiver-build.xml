@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-archiver"/>
-  <property name="project.version" value="3.6.0"/>
+  <property name="project.version" value="4.2.1"/>
 
   <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>
@@ -32,18 +32,11 @@
 
   <path id="build.classpath">
     <fileset dir="lib">
-      <!-- plexus-container-default-1.0-alpha-30 plexus-classworlds-1.2-alpha-9
-           plexus-utils-3.1.0 plexus-io-3.0.1 commons-io-2.6
-           commons-compress-1.16.1 objenesis-2.6 jsr305-3.0.2 -->
       <include name="**/*"/>
     </fileset>
   </path>
   <path id="build.test.classpath">
     <fileset dir="lib">
-      <!-- plexus-container-default-1.0-alpha-30 plexus-classworlds-1.2-alpha-9
-           plexus-utils-3.1.0 plexus-io-3.0.1 commons-io-2.6
-           commons-compress-1.16.1 objenesis-2.6 jsr305-3.0.2
-           junit-4.12 hamcrest-core-1.3 xz-1.8 -->
       <include name="**/*"/>
     </fileset>
   </path>

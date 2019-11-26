@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-archiver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with tests
 %bcond_with snappy
 Name:           plexus-archiver
-Version:        3.6.0
+Version:        4.2.1
 Release:        0
 Summary:        Plexus Archiver Component
 License:        Apache-2.0
@@ -35,9 +35,9 @@ BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  jsr-305
-BuildRequires:  plexus-containers-container-default
-BuildRequires:  plexus-io
-BuildRequires:  plexus-utils
+BuildRequires:  plexus-containers-container-default >= 2.1
+BuildRequires:  plexus-io >= 3.2
+BuildRequires:  plexus-utils >= 3.3
 BuildRequires:  xz-java
 Requires:       mvn(org.apache.commons:commons-compress)
 Requires:       mvn(org.codehaus.plexus:plexus-io)
