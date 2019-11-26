@@ -15,4 +15,12 @@
     <comment>warn but don't fail with misconfigured plugin</comment>
     <requestid>735978</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ed2c1add4b6d40e0f549551328002a06</srcmd5>
+    <version>3.1.0</version>
+    <time>1574784023</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750625</requestid>
+  </revision>
 </revisionlist>
