@@ -140,17 +140,6 @@
  
  # Stop daemon when libclamav reports out of memory condition.
  #ExitOnOOM yes
-@@ -613,6 +609,10 @@ Example
- ##
- ## On-access Scan Settings
- ##
-+#
-+# When enabling this, you most probably have to set "User root" above,
-+# so that clamav can access the files to be scanned.
-+#
- 
- # Enable on-access scanning. Currently, this is supported via fanotify.
- # Clamuko/Dazuko support has been deprecated.
 --- etc/freshclam.conf.sample.orig
 +++ etc/freshclam.conf.sample
 @@ -1,12 +1,8 @@

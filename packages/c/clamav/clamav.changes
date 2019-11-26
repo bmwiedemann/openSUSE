@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Nov 20 19:01:10 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.102.1
+  * CVE-2019-15961: A Denial-of-Service (DoS) vulnerability may
+    occur when scanning a specially crafted email file as a result
+    of excessively long scan times. The issue is resolved by
+    implementing several maximums in parsing MIME messages and by
+    optimizing use of memory allocation.
+  * Build system fixes to build clamav-milter, to correctly link
+    with libxml2 when detected, and to correctly detect fanotify
+    for on-access scanning feature support.
+  * Signature load time is significantly reduced by changing to a
+    more efficient algorithm for loading signature patterns and
+    allocating the AC trie. Patch courtesy of Alberto Wu.
+  * Introduced a new configure option to statically link libjson-c
+    with libclamav. Static linking with libjson is highly
+    recommended to prevent crashes in applications that use
+    libclamav alongside another JSON parsing library.
+  * Null-dereference fix in email parser when using the
+    --gen-json metadata option.
+  * Fixes for Authenticode parsing and certificate signature
+    (.crb database) bugs.
+- dropped clamav-fix_building_milter.patch (upstreamed)
+
+-------------------------------------------------------------------
+Fri Nov  1 09:46:17 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.102.0
+  * The On-Access Scanning feature has been migrated out of clamd
+    and into a brand new utility named clamonacc. This utility is
+    similar to clamdscan and clamav-milter in that it acts as a
+    client to clamd. This separation from clamd means that clamd no
+    longer needs to run with root privileges while scanning potentially
+    malicious files. Instead, clamd may drop privileges to run under an
+    account that does not have super-user. In addition to improving the
+    security posture of running clamd with On-Access enabled, this
+    update fixed a few outstanding defects:
+    - On-Access scanning for created and moved files (Extra-Scanning)
+      is fixed.
+    - VirusEvent for On-Access scans is fixed.
+    - With clamonacc, it is now possible to copy, move, or remove a
+      file if the scan triggered an alert, just like with clamdscan.
+  * The freshclam database update utility has undergone a significant
+    update. This includes:
+    - Added support for HTTPS.
+    - Support for database mirrors hosted on ports other than 80.
+    - Removal of the mirror management feature (mirrors.dat).
+    - An all new libfreshclam library API.
+- created new subpackage libfreshclam2
+- dropped clamav-max_patch.patch (upstreamed)
+- added clamav-fix_building_milter.patch to fix build of milter
+
+-------------------------------------------------------------------
 Fri Oct 25 14:53:06 UTC 2019 - Reinhard Max <max@suse.com>
 
 - bsc#1151839: Increase the startup timeout of clamd to 5 minutes

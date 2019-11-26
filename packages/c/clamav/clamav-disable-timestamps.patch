@@ -32,15 +32,15 @@ Index: configure
 --- configure.orig
 +++ configure
 @@ -814,6 +814,7 @@ FGREP
- SED
- LIBTOOL
+ LIBFRESHCLAM_VERSION
+ LIBCLAMAV_VERSION_NUM
  LIBCLAMAV_VERSION
 +ENABLE_TIMESTAMPS
+ PACKAGE_VERSION_NUM
  EGREP
  GREP
- CPP
 @@ -924,6 +925,7 @@ ac_user_opts='
- enable_option_checking
+ enable_mmap_for_cross_compiling
  enable_dependency_tracking
  enable_silent_rules
 +enable_timestamps
@@ -82,4 +82,4 @@ Index: configure
 +_ACEOF
  
  
- VERSION="0.101.4"
+ VERSION="0.102.1"

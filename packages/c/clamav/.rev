@@ -1013,4 +1013,12 @@
   long as needed.</comment>
     <requestid>742982</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>1b6875ad59d27e9965ccd0c10fa5b1e0</srcmd5>
+    <version>0.102.1</version>
+    <time>1574784150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750886</requestid>
+  </revision>
 </revisionlist>

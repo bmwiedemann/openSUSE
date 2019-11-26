@@ -1,7 +1,7 @@
 #
 # spec file for package clamav
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 
 %define clamav_check --enable-check
 Name:           clamav
-Version:        0.101.4
+Version:        0.102.1
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
 Group:          Productivity/Security
-Url:            http://www.clamav.net
+URL:            http://www.clamav.net
 Source0:        http://www.clamav.net/downloads/production/%name-%version.tar.gz
 Source1:        http://www.clamav.net/downloads/production/%name-%version.tar.gz.sig
 Source4:        clamav-rpmlintrc
@@ -39,8 +39,6 @@ Patch4:         clamav-disable-timestamps.patch
 Patch5:         clamav-obsolete-config.patch
 Patch6:         clamav-disable-yara.patch
 Patch7:         clamav-str-h.patch
-#PATCH-FIX-UPSTREAM clamav-max_patch.patch
-Patch8:         clamav-max_patch.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -94,6 +92,14 @@ Group:          System/Libraries
 ClamAV is an antivirus engine designed for detecting trojans,
 viruses, malware and other malicious threats.
 
+%package -n libfreshclam2
+Summary:        ClamAV updater library
+Group:          System/Libraries
+
+%description -n libfreshclam2
+ClamAV is an antivirus engine designed for detecting trojans,
+viruses, malware and other malicious threats.
+
 %package -n libclammspack0
 Summary:        ClamAV antivirus engine runtime
 Group:          System/Libraries
@@ -106,6 +112,7 @@ viruses, malware and other malicious threats.
 Summary:        Development files for libclamav, an antivirus engine
 Group:          Development/Libraries/C and C++
 Requires:       libclamav9 = %version
+Requires:       libfreshclam2 = %version
 
 %description devel
 ClamAV is an antivirus engine designed for detecting trojans,
@@ -121,7 +128,6 @@ that want to make use of libclamav.
 %patch5
 %patch6
 %patch7
-%patch8
 
 %build
 CFLAGS="-fstack-protector"
@@ -195,7 +201,9 @@ VALGRIND_GENSUP=1 make check
 
 %post   -n libclamav9 -p /sbin/ldconfig
 %postun -n libclamav9 -p /sbin/ldconfig
-%post -n libclammspack0 -p /sbin/ldconfig
+%post   -n libfreshclam2 -p /sbin/ldconfig
+%postun -n libfreshclam2 -p /sbin/ldconfig
+%post   -n libclammspack0 -p /sbin/ldconfig
 %postun -n libclammspack0 -p /sbin/ldconfig
 
 %files
@@ -218,6 +226,9 @@ VALGRIND_GENSUP=1 make check
 %files -n libclamav9
 %_libdir/libclam*.so.9*
 
+%files -n libfreshclam2
+%_libdir/libfreshclam.so.2*
+
 %if %{with clammspack}
 %files -n libclammspack0
 %_libdir/libclammspack.so.0*
@@ -226,6 +237,7 @@ VALGRIND_GENSUP=1 make check
 %files devel
 %_libdir/pkgconfig/*
 %_libdir/libclam*.so
+%_libdir/libfreshclam*.so
 %_includedir/*
 
 %pre
