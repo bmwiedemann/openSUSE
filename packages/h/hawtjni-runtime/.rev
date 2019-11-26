@@ -33,4 +33,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>736415</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7b6d04d9370e55fabd411815ec54ec16</srcmd5>
+    <version>1.16</version>
+    <time>1574783951</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750587</requestid>
+  </revision>
 </revisionlist>
