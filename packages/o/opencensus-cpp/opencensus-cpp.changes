@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Nov 13 18:30:40 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Exclude arch to %ix86
+
+-------------------------------------------------------------------
+Mon Nov 11 23:26:36 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Define OpenSSL Bazel repository
+
+-------------------------------------------------------------------
+Mon Nov 11 16:21:11 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add patch which fixes the rpmlint issue about random values
+  returned:
+  * 0002-Stackdriver-stats-Return-false-in-matcher-when-type-.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 22:34:55 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Initial release
