@@ -1,7 +1,7 @@
 #
 # spec file for package treelayout
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,12 +39,14 @@ are built fast.
 
 %package demo
 Summary:        TreeLayout Core Demo
+Group:          Development/Libraries/Java
 
 %description demo
 Demo for "org.abego.treelayout.core".
 
 %package javadoc
 Summary:        Javadoc for %{name}
+Group:          Development/Libraries/Java
 
 %description javadoc
 This package contains javadoc for %{name}.
@@ -87,7 +89,10 @@ mv %{core}/src/main/java/org/abego/treelayout/package-info.java.tmp \
 
 %build
 
-%{mvn_build} -sf
+%{mvn_build} -sf \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
