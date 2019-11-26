@@ -1,7 +1,7 @@
 #
 # spec file for package jatl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ generate XHTML or XML in a micro DSL builder/fluent style.
 
 %package javadoc
 Summary:        Javadoc for %{name}
+Group:          Development/Libraries/Java
 
 %description javadoc
 This package contains javadoc for %{name}.
@@ -56,12 +57,14 @@ This package contains javadoc for %{name}.
 
 %pom_remove_plugin org.apache.maven.plugins:maven-enforcer-plugin
 
-
 %{mvn_file} :%{name} %{name}
 
 %build
 
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
