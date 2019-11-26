@@ -8,14 +8,14 @@
 
   <property file="build.properties"/>
 
-  <property name="project.version" value="0.9.0"/>
+  <property name="project.version" value="0.11.0"/>
   <property name="project.groupId" value="org.apache.maven.shared"/>
   <property name="project.artifactId" value="maven-artifact-transfer"/>
   <property name="project.name" value="Apache Maven Artifact Transfer"/>
 
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
-  <property name="spec.version" value="0.9"/>
+  <property name="spec.version" value="0.11"/>
 
   <property name="compiler.source" value="1.6"/>
   <property name="compiler.target" value="${compiler.source}"/>

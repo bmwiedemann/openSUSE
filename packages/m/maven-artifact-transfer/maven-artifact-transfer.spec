@@ -1,7 +1,7 @@
 #
 # spec file for package maven-artifact-transfer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           maven-artifact-transfer
-Version:        0.9.0
+Version:        0.11.0
 Release:        0
 Summary:        Apache Maven Artifact Transfer
 License:        Apache-2.0
@@ -28,7 +28,8 @@ Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{
 Source1:        %{name}-build.xml
 Patch0:         0001-Compatibility-with-Maven-3.0.3-and-later.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli apache-commons-codec
+BuildRequires:  apache-commons-cli
+BuildRequires:  apache-commons-codec
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
