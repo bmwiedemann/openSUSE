@@ -195,4 +195,15 @@
     <comment></comment>
     <requestid>717535</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2056679ebbe276d9a96f23d187e8be92</srcmd5>
+    <version>1.2.3</version>
+    <time>1574784286</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer build python2 variant: This did not really work anyway
+  as python-nautilus-commonp_files was not that common between py2
+  and py3: the .so file actually linked one of the python
+  interpreters directly (boo#1157305). (forwarded request 750078 from dimstar)</comment>
+    <requestid>750960</requestid>
+  </revision>
 </revisionlist>
