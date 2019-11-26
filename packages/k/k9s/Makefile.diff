@@ -1,0 +1,24 @@
+--- k9s-0.9.3/Makefile.orig	2019-10-30 00:03:44.000000000 +0000
++++ k9s-0.9.3/Makefile	2019-11-07 13:11:51.587983262 +0000
+@@ -1,8 +1,8 @@
+ NAME    := k9s
+ PACKAGE := github.com/derailed/$(NAME)/internal
+ VERSION := dev
+-GIT     := $(shell git rev-parse --short HEAD)
+-DATE    := $(shell date +%FT%T%Z)
++#GIT     := $(shell git rev-parse --short HEAD)
++#DATE    := $(shell date +%FT%T%Z)
+ VERSION  := v0.9.3
+ IMG_NAME := derailed/k9s
+ IMAGE    := ${IMG_NAME}:${VERSION}
+@@ -17,8 +17,8 @@
+ 	@go tool cover --html=cov.out
+ 
+ build:     ## Builds the CLI
+-	@go build \
+-	-ldflags "-w -X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
++	@go build -mod vendor -buildmode=pie \
++	-ldflags "-X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
+ 	-a -tags netgo -o execs/${NAME} *.go
+ 
+ img:  ## Build Docker Image
