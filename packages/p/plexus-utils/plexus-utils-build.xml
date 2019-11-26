@@ -11,7 +11,7 @@
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.fragment" value="utils"/>
   <property name="project.artifactId" value="plexus-${project.fragment}"/>
-  <property name="project.version" value="3.1.1"/>
+  <property name="project.version" value="3.3.0"/>
   <property name="project.name" value="Plexus Common Utilities"/>
   <property name="project.description" value="A collection of various utility classes to ease working with strings, files, command lines, XML and more."/>
   <property name="project.organization.name" value="Codehaus Plexus"/>

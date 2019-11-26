@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:05:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.3.0
+- Removed patch:
+  * 0001-Follow-symlinks-in-NioFiles.copy.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Tue Apr  9 16:52:48 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove reference to the parent pom since we are not building

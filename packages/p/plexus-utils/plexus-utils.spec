@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-utils
-Version:        3.1.1
+Version:        3.3.0
 Release:        0
 Summary:        Plexus Common Utilities
 License:        Apache-1.1 AND Apache-2.0 AND xpp AND BSD-3-Clause AND SUSE-Public-Domain
@@ -26,8 +26,6 @@ URL:            https://codehaus-plexus.github.io/plexus-utils/
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
 Source2:        http://apache.org/licenses/LICENSE-2.0.txt
-# https://github.com/codehaus-plexus/plexus-utils/issues/45
-Patch1:         0001-Follow-symlinks-in-NioFiles.copy.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -49,8 +47,6 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-
-%patch1 -p1
 
 cp %{SOURCE1} build.xml
 cp %{SOURCE2} .
