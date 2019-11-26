@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-shell
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,10 @@ This package contains the API documentation for %{name}.
 %{mvn_file} : felix/%{bundle}
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=8
+%endif
 
 %install
 %mvn_install
