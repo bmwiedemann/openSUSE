@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 13 10:28:31 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update spec file:
+  * Use https and metacpan.org in URL and source
+  * Move COPYING to the license tag
+  * Update summary and description sections
+
+-------------------------------------------------------------------
+Mon Nov 11 12:29:06 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Change architecture to 'noarch'
+
+-------------------------------------------------------------------
 Wed Sep 16 15:13:49 UTC 2015 - vcizek@suse.com
 
 - ipcount: fix the use of + in the address range (boo#942108)
