@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 25 11:54:43 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.863
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.863 Sun Nov 26 20:00:00 EST 2019
+  
+    * On Cygwin, silently use Mutex in MCE::Channel when Threads is specified
+      for better performance.
+  
+    * New defer capability in MCE::Signal. This applies to MCE::Shared 1.863.
+      See POD section labled "DEFER SIGNAL" in MCE::Signal.
+  
+    * Reverted $child->exit back to sending the SIGQUIT signal in MCE::Child
+      now that MCE::Shared::Server 1.863 defers signal during IPC.
+  
+    * Improved reliability for spawning MCE and MCE::Child inside threads
+      including nested parallelization, made possible using a global lock
+      $MCE::_GMUTEX.
+  
+    * Updated signal handling in mce-examples/framebuffer on GitHub.
+
+-------------------------------------------------------------------
 Fri Sep 20 08:28:49 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.862
