@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-io
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %bcond_with tests
 Name:           plexus-io
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        Plexus IO Components
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/%{name}
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
-Source1:        %{name}-%{version}-build.xml
+Source1:        %{name}-build.xml
 Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  jsr-305
-BuildRequires:  plexus-utils
+BuildRequires:  plexus-utils >= 3.3.0
 Requires:       mvn(commons-io:commons-io)
 Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch

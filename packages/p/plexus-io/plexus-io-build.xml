@@ -10,7 +10,7 @@
 
   <property name="project.artifactId" value="plexus-io"/>
   <property name="project.groupId" value="org.codehaus.plexus"/>
-  <property name="project.version" value="3.0.0"/>
+  <property name="project.version" value="3.2.0"/>
   
   <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>
