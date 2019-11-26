@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:30:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
 Wed Apr  3 09:16:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of the non-bootstrap version of

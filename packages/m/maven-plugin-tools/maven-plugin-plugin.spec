@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -133,7 +133,11 @@ API documentation for %{name}.
 %build
 pushd %{name}
 %{mvn_file} :%{name} %{base_name}/%{name}
-%{mvn_build} -f -- -Dmaven.compiler.source=6 -Dmaven.compiler.target=6
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
+
 popd
 
 %install
