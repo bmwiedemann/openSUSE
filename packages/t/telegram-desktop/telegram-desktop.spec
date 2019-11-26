@@ -29,7 +29,7 @@
 %endif
 
 Name:           telegram-desktop
-Version:        1.8.9
+Version:        1.8.15
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -49,8 +49,8 @@ Source5:        GSL-master.zip
 Source6:        variant-master.zip
 # curl https://codeload.github.com/grishka/libtgvoip/zip/public -o libtgvoip.zip
 Source7:        libtgvoip.zip
-# curl https://raw.githubusercontent.com/philsquared/Catch/master/single_include/catch.hpp -o catch.hpp
-Source8:        catch.hpp
+# curl https://codeload.github.com/catchorg/Catch2/master -o Catch2-master.zip
+Source8:        Catch2-master.zip
 # curl https://codeload.github.com/ericniebler/range-v3/zip/master -o range-v3-master.zip
 Source9:        range-v3-master.zip
 # curl https://codeload.github.com/telegramdesktop/crl/zip/master -o crl-master.zip
@@ -61,8 +61,10 @@ Source11:       xxHash-master.zip
 Source12:       lz4-dev.zip
 # curl https://codeload.github.com/john-preston/rlottie/zip/master -o rlottie-master.zip
 Source13:       rlottie-master.zip
+Source14:       qt_functions.cpp 
 
 Patch0:         tdesktop.patch
+Patch1:         default-gtk2.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -91,6 +93,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
+BuildRequires:  pkgconfig(dee-1.0)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -128,6 +131,7 @@ BuildRequires:  pkgconfig(opusurl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(tslib)
+BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
@@ -142,6 +146,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       ffmpeg
 Requires:       hicolor-icon-theme
 Requires:       icu
+Requires:       libappindicator1
 Requires:       openssl
 ExclusiveArch:  x86_64
 
@@ -155,9 +160,6 @@ The service also provides APIs to independent developers.
 %prep
 %setup -q -n tdesktop-%{version}
 cp %{SOURCE8} Telegram/SourceFiles/base
-
-# Already included in %{S:8}
-sed -i "/catch_reporter_compact.hpp/d" Telegram/SourceFiles/base/tests_main.cpp
 
 cp %{_sourcedir}/GSL-master.zip . && unzip GSL-master.zip
 mv GSL-master GSL
@@ -192,13 +194,18 @@ cp %{_sourcedir}/xxHash-master.zip . && unzip xxHash-master.zip
 mv xxHash-master xxHash
 mv xxHash %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
 
+cp %{_sourcedir}/Catch2-master.zip . && unzip Catch2-master.zip
+mv Catch2-master Catch
+mv Catch %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
+
 cp %{_sourcedir}/tdesktop.patch %{_builddir}/tdesktop-%{version}
 cd %{_builddir}/tdesktop-%{version}
 
 %patch0 -p1
-
+%patch1 -p1
 cp %{_sourcedir}/patch.py . && python3 ./patch.py
-cp %{_sourcedir}/catch.hpp ./Telegram/SourceFiles/
+cp %{_sourcedir}/qt_functions.cpp Telegram/SourceFiles/
+sed -i '1i<(src_loc)/qt_functions.cpp' Telegram/gyp/telegram/sources.txt
 
 %setup -q -T -c -n breakpad -a 1
 %setup -q -T -c -n breakpad-lss -a 2

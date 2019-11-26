@@ -93,7 +93,6 @@ def load_json(filename):
     return json.loads(read_file_to_proper_json(open(filename)))
 
 def save_json(jsonobj, filename):
-    # pass
     j = transform_back(jsonobj)
     # backup = filename + ".orig"
     # copyfile(filename, backup)
@@ -118,51 +117,20 @@ def process_telegram_linux(jsonobj):
     child.append("'zlib'")
     child.append("'minizip'")
     child.append("'openssl'")
-    child = jsonobj["'conditions'"][0][1]["'variables'"]["'linux_path_opus_include%'"]
-    child = "'/usr/include/opus'"
-    child = jsonobj["'conditions'"][0][1]["'variables'"]["'linux_path_breakpad%'"]
-    child = "'<(libs_loc)/breakpad'"
-    child = jsonobj["'conditions'"][0][1]["'include_dirs'"]
-    child.remove("'/usr/local/include'")
-    child.remove("'<(linux_path_ffmpeg)/include'")
-    child.remove("'<(linux_path_openal)/include'")
-    child.append("'/usr/include/openssl'")
-    child.append("'/usr/include'")
-    child = jsonobj["'conditions'"][0][1]["'library_dirs'"]
-    child.remove("'/usr/local/lib'")
-    child.remove("'<(linux_path_ffmpeg)/lib'")
-    child.remove("'<(linux_path_openal)/lib'")
-    child.remove("'<(linux_path_va)/lib'")
-    child.remove("'<(linux_path_vdpau)/lib'")
-    child.append("'/usr/lib64/'")
 
     child = jsonobj["'conditions'"][0][1]["'libraries'"]
-    child.remove("'breakpad_client'")
-    child.remove("'composeplatforminputcontextplugin'")
-    child.remove("'ibusplatforminputcontextplugin'")
-    child.remove("'fcitxplatforminputcontextplugin'")
-    child.remove("'himeplatforminputcontextplugin'")
-    child.remove("'nimfplatforminputcontextplugin'")
-    child.remove("'liblzma.a'")
-    child.remove("'libopenal.a'")
-    child.remove("'libavformat.a'")
-    child.remove("'libavcodec.a'")
-    child.remove("'libswresample.a'")
-    child.remove("'libswscale.a'")
-    child.remove("'libavutil.a'")
-    child.remove("'libopus.a'")
-    child.remove("'libva-x11.a'")
-    child.remove("'libva-drm.a'")
-    child.remove("'libva.a'")
-    child.remove("'libvdpau.a'")
-    child.remove("'libdrm.a'")
-    child.remove("'libz.a'")
-    child.append("'libbreakpad_client.a'")
-    child.append("'<!(pkg-config 2> /dev/null --libs <@(pkgconfig_libs))'")
+    child.remove("'-lcomposeplatforminputcontextplugin'")
+    child.remove("'-lfcitxplatforminputcontextplugin'")
+    child.remove("'-lhimeplatforminputcontextplugin'")
+    child.remove("'-libusplatforminputcontextplugin'")
+    child.remove("'-lnimfplatforminputcontextplugin'")
+
     child = jsonobj["'conditions'"][0][1]["'cflags_cc'"]
     child.append("'<!(pkg-config --cflags <@(pkgconfig_libs))'")
-    child = jsonobj["'conditions'"][0][1]["'conditions'"][1][1]["'cflags_cc'"]
-    child.remove("'<!(pkg-config 2> /dev/null --cflags dee-1.0)'")
+    
+    child = jsonobj["'conditions'"][0][1]["'ldflags'"]
+    child.remove("'-Wl,-Bstatic'")
+    
     return json.dumps(jsonobj)
 
 def process_qt(jsonobj):
@@ -214,6 +182,7 @@ def process_qt(jsonobj):
 
     child = jsonobj["'include_dirs'"]
     del child[:]
+    child.append("'/usr/include/ffmpeg'")
     child.append("'/usr/include/qt5'")
     child.append("'/usr/include/qt5/QtCore'")
     child.append("'/usr/include/qt5/QtGui'")
@@ -269,7 +238,7 @@ def process_telegram(jsonobj):
     child.append("'TDESKTOP_DISABLE_AUTOUPDATE'")
     child.append("'TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME'")
     child.append("'TDESKTOP_DISABLE_UNITY_INTEGRATION'")
-    child.append("'TDESKTOP_DISABLE_GTK_INTEGRATION'")
+    # child.append("'TDESKTOP_DISABLE_GTK_INTEGRATION'")
     child.append("'TDESKTOP_DISABLE_OPENAL_EFFECTS'")
     child.remove("'AL_LIBTYPE_STATIC'")
     child = jsonobj["'targets'"][0]["'include_dirs'"]
@@ -284,14 +253,13 @@ def process_telegram(jsonobj):
     child.remove("'<(sp_media_key_tap_loc)'")
     child.append("'<(libs_loc)/breakpad/include/breakpad'")
     child.append("'/usr/include/minizip'")
+    child.append("'/usr/include/ffmpeg'")
     return json.dumps(jsonobj)
 
-def process_moc(jsonobj):
-    jsonobj["'rules'"][0]["'action'"][0] = "'/usr/bin/moc-qt5'"
-    return json.dumps(jsonobj)
-
-def process_rcc(jsonobj):
-    jsonobj["'rules'"][0]["'action'"][0] = "'/usr/bin/rcc-qt5'"
+def process_libffmpeg(jsonobj):
+    include_dirs = jsonobj["'targets'"][0]["'include_dirs'"]
+    include_dirs.remove("'<(libs_loc)/ffmpeg'")
+    include_dirs.append("'/usr/include/ffmpeg'")
     return json.dumps(jsonobj)
 
 def process(filename, op):
@@ -299,13 +267,14 @@ def process(filename, op):
     json = op(json)
     save_json(json, filename)
 
-tl_path = './Telegram/gyp/telegram_linux.gypi'
-settings_path = './Telegram/gyp/settings_linux.gypi'
-qt_path = './Telegram/gyp/qt.gypi'
-tg_path = './Telegram/gyp/Telegram.gyp'
-moc_path = './Telegram/gyp/qt_moc.gypi'
-rcc_path = './Telegram/gyp/qt_rcc.gypi'
-tg_srcs = './Telegram/gyp/telegram_sources.txt'
+tl_path = './Telegram/gyp/telegram/linux.gypi'
+tg_srcs = './Telegram/gyp/telegram/sources.txt'
+settings_path = './Telegram/gyp/common/linux.gypi'
+tg_path = './Telegram/gyp/telegram/telegram.gypi'
+qt_path = './Telegram/gyp/modules/qt.gypi'
+moc_path = './Telegram/gyp/modules/qt_moc.gypi'
+rcc_path = './Telegram/gyp/modules/qt_rcc.gypi'
+libffmpeg_path="./Telegram/gyp/lib_ffmpeg.gyp"
 
 print("Patching %s ..." % tl_path)
 process(tl_path, process_telegram_linux)
@@ -313,11 +282,9 @@ print("Patching %s ..." % settings_path)
 process(settings_path, process_settings_linux)
 print("Patching %s ..." % qt_path)
 process(qt_path, process_qt)
-print("Patching %s ..." % moc_path)
-process(moc_path, process_moc)
-print("Patching %s ..." % rcc_path)
-process(rcc_path, process_rcc)
 print("Patching %s ..." % tg_path)
 process(tg_path, process_telegram)
+print("Patching %s ..." % libffmpeg_path)
+process(libffmpeg_path, process_libffmpeg)
 
 print("Patching complete!")

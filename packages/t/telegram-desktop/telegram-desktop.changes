@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  5 20:51:58 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Remove the TDESKTOP_DISABLE_GTK_INTEGRATION macro in patch.py
+  * Enable the native notification on all platforms.
+- Add default-gtk2.patch: Use GTK 2 theme by default to harmonize
+  the libqt5-prioritise-gtk2-platformtheme.patch (boo#1149986)
+  in libqt5-qtbase.
+
+-------------------------------------------------------------------
+Sat Nov  2 11:54:41 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Update to 1.8.15
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
 Sat Sep 28 11:04:43 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 1.8.9
