@@ -1,0 +1,12 @@
+diff --git a/cobbler/modules/managers/import_signatures.py b/cobbler/modules/managers/import_signatures.py
+index 44bf52798..f7085ddc1 100644
+--- a/cobbler/modules/managers/import_signatures.py
++++ b/cobbler/modules/managers/import_signatures.py
+@@ -41,6 +41,7 @@
+ 
+ import cobbler.templar as templar
+ import cobbler.utils as utils
++import cobbler.items.repo as item_repo
+ 
+ 
+ def register():

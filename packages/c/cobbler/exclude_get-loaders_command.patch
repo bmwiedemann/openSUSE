@@ -1,8 +1,8 @@
-Index: cobbler-3.0.0+git20190529.1ba49e14/cobbler/cli.py
+Index: cobbler-3.0.1+git20191008.21acab67/cobbler/cli.py
 ===================================================================
---- cobbler-3.0.0+git20190529.1ba49e14.orig/cobbler/cli.py	2019-05-29 17:37:14.000000000 +0200
-+++ cobbler-3.0.0+git20190529.1ba49e14/cobbler/cli.py	2019-06-03 15:38:27.347073554 +0200
-@@ -63,7 +63,7 @@ OBJECT_TYPES = list(OBJECT_ACTIONS_MAP.k
+--- cobbler-3.0.1+git20191008.21acab67.orig/cobbler/cli.py	2019-10-08 16:08:04.000000000 +0200
++++ cobbler-3.0.1+git20191008.21acab67/cobbler/cli.py	2019-10-08 16:37:26.492555510 +0200
+@@ -56,7 +56,7 @@ OBJECT_TYPES = list(OBJECT_ACTIONS_MAP.k
  OBJECT_ACTIONS = []
  for actions in list(OBJECT_ACTIONS_MAP.values()):
      OBJECT_ACTIONS += actions
@@ -11,7 +11,7 @@ Index: cobbler-3.0.0+git20190529.1ba49e14/cobbler/cli.py
  
  ####################################################
  
-@@ -587,9 +587,7 @@ class CobblerCLI(object):
+@@ -580,9 +580,7 @@ class CobblerCLI(object):
              (options, args) = self.parser.parse_args()
              task_id = self.start_task("validate_autoinstall_files", options)
          elif action_name == "get-loaders":

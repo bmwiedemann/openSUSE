@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:20:39 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
+
+- Fix for cobbler import and buildiso (bsc#1156574)
+
+- Added:
+  * kopts-utils-path.diff
+  * no-system-in-kopts-call.diff
+  * item-repo-import-fix.diff
+
+-------------------------------------------------------------------
+Fri Oct 25 16:19:06 UTC 2019 - trenn@suse.de
+
+- Update to latest git HEAD code base (commit fbebd758)
+- Adjusted manpage creation (needs sphinx as BuildRequires)
+
+-------------------------------------------------------------------
+Tue Oct  8 15:01:22 UTC 2019 - trenn@suse.de
+
+- Switch to openSUSE latest_mulitarch_work for shortterm until
+  everything is in place and submitted mainline
+- started to switch to Sphinx manpage generation, but comment out.
+  SuMa people must have done this already somewhere.
+- Already mainline:
+D fix_module_renaming.diff
+
+-------------------------------------------------------------------
+Wed Sep 18 14:28:06 UTC 2019 - trenn@suse.de
+
+- Fix cobbler sync for dhcp and dns enabled due to latest module
+  renaming patches
+
+-------------------------------------------------------------------
+Tue Sep 17 06:40:42 UTC 2019 - trenn@suse.de
+
+- Update to latest git HEAD
+   - Fixes permission denied in apache2 context when trying to write
+     cobbler log
+   - Fixes a bad import in import_signature (item)
+   - Fixes bad shebang bash path in mkgrub.sh (used in post section)
+
+-------------------------------------------------------------------
+Wed Sep 11 10:21:46 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+
+- Now track Github master branch
+  WARNING: This release contains breaking changes for your settings file! 
+  * Notable changes:
+    - Now using standard python logger
+    - Updated dhcpd.template 
+- Removed fix_shebang.patch: now in upstream. 
+- added -s parameter to fdupes call to prevent hardlink across 
+  partititons
+
+-------------------------------------------------------------------
 Tue Jul 23 15:14:36 UTC 2019 - trenn@suse.de
 
 - Update to latest v3.0.0 cobbler release

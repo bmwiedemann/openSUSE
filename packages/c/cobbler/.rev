@@ -1053,4 +1053,12 @@ A exclude_get-loaders_command.patch
   31a1aa31d26c4a Remove apache IfVersion tags from apache configs</comment>
     <requestid>718255</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b12495fb3b8a153f3751fa0a691ae4dc</srcmd5>
+    <version>3.0.1+git20191025.fbebd758</version>
+    <time>1574784042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750674</requestid>
+  </revision>
 </revisionlist>

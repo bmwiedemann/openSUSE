@@ -25,7 +25,7 @@
 %define _binaries_in_noarch_packages_terminate_build 0
 %global debug_package %{nil}
 Name:           cobbler
-Version:        3.0.0
+Version:        3.0.1+git20191025.fbebd758
 Release:        0
 Summary:        Boot server configurator
 License:        GPL-2.0-or-later
@@ -37,9 +37,12 @@ Source0:        cobbler-%{version}.tar.xz
 Source1:        AUTHORS
 Source2:        logrotate_cobbler
 Source3:        fence_ipmitool.template
-Patch0:         fix_hardcoded_libpath_for_websession.patch
-Patch1:         fix_shebang.patch
+Patch1:         fix_hardcoded_libpath_for_websession.patch
 Patch2:         exclude_get-loaders_command.patch
+Patch3:         kopts-utils-path.diff
+Patch4:         no-system-in-kopts-call.diff
+Patch5:         item-repo-import-fix.diff
+
 
 BuildRequires:  python3-Cheetah3
 BuildRequires:  apache-rpm-macros
@@ -54,6 +57,8 @@ BuildRequires:  python3-distro
 BuildRequires:  python3-coverage
 BuildRequires:  python3-future
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-Sphinx
+BuildRequires:  gzip
 BuildRequires:  pkgconfig(systemd)
 # Workaround so that /srv/tftpboot file exists during
 # build, but is not owned by cobbler
@@ -124,17 +129,31 @@ Web interface for Cobbler that allows visiting
 http://server/cobbler_web to configure the install server.
 
 %prep
-%setup -q -n cobbler-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %python_build
 cp %{SOURCE1} AUTHORS
 
+%python_exec setup.py build_sphinx -b man
+
+for manpage in build/sphinx/man/*;do
+  if [ %{?ext_man} == ".xz" ];then
+    ZIPPER="xz --stdout "
+  elif [ %{?ext_man} == ".gz" ];then
+    ZIPPER="gzip --stdout "
+  else
+    ZIPPER="gzip --stdout "
+  fi
+  $ZIPPER --stdout $manpage >$manpage%{?ext_man};
+done
+
 %install
 %python_install
+
+install -D -m 0600 build/sphinx/man/cobbler-cli.1%{?ext_man}  %{buildroot}%{_mandir}/man1/cobbler-cli.1%{?ext_man}
+install -D -m 0600 build/sphinx/man/cobblerd.1%{?ext_man}  %{buildroot}%{_mandir}/man1/cobblerd.1%{?ext_man}
+install -D -m 0600 build/sphinx/man/cobbler.conf.5%{?ext_man}  %{buildroot}%{_mandir}/man5/cobbler_conf.5%{?ext_man}
 
 ln -sf service %{buildroot}%{_sbindir}/rccobblerd
 rm -rf %{buildroot}%{_initddir}
@@ -156,7 +175,7 @@ install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/cobbler/power/fence_ipmitoo
 cp -r tests/ $RPM_BUILD_ROOT/usr/share/cobbler/
 %endif
 
-%fdupes %{buildroot}%{_prefix}
+%fdupes -s %{buildroot}%{_prefix}
 
 %pre
 %service_add_pre cobblerd.service
@@ -241,9 +260,12 @@ sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{python_sitelib}/c
 %{_bindir}/cobbler-ext-nodes
 %{_bindir}/cobblerd
 %{_datadir}/%{name}/bin/mkgrub.sh
+%{_datadir}/%{name}/bin/settings-migration-v1-to-v2.sh
 %{_datadir}/cobbler/web
 %attr(750, root, root) %{_localstatedir}/log/cobbler
-%{_mandir}/man1/cobbler.1%{?ext_man}
+%{_mandir}/man1/cobbler-cli.1%{?ext_man}
+%{_mandir}/man1/cobblerd.1%{?ext_man}
+%{_mandir}/man5/cobbler_conf.5%{?ext_man}
 %{_sbindir}/tftpd.py*
 %{_sbindir}/rccobblerd
 %{_sbindir}/fence_ipmitool
@@ -254,7 +276,7 @@ sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{python_sitelib}/c
 
 %config(noreplace) %{_sysconfdir}/cobbler
 %config(noreplace) %{_localstatedir}/lib/cobbler
-%config(noreplace) %{_sysconfdir}/%{apachedir}/conf.d/cobbler.conf
+%config(noreplace) %{_sysconfdir}/%{apachedir}/vhosts.d/cobbler.conf
 # ToDo: This is used by systemd service file:
 # ExecStartPost=/usr/bin/touch /usr/share/cobbler/web/cobbler.wsgi
 # Get this into cobbler-web somehow
@@ -272,7 +294,7 @@ sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{python_sitelib}/c
 %files web
 %license COPYING
 %doc AUTHORS
-%config(noreplace) %{_sysconfdir}/%{apachedir}/conf.d/cobbler_web.conf
+%config(noreplace) %{_sysconfdir}/%{apachedir}/vhosts.d/cobbler_web.conf
 %defattr(-,%{apache_user},%{apache_group},-)
 /%{www_path}/www/cobbler_webui_content/
 

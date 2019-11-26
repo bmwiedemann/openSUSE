@@ -2,13 +2,14 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/cobbler/cobbler</param>
     <param name="scm">git</param>
-    <param name="revision">v3.0.0</param>
+    <param name="revision">HEAD</param>
     <param name="changesgenerate">disable</param>
     <param name="filename">cobbler</param>
-    <param name="versionformat">3.0.0</param>
     <!--
-    <param name="versionformat">3.0.0+git%cd.%h</param>
+    <param name="versionformat">3.0.1</param>
     -->
+    <param name="versionformat">3.0.1+git%cd.%h</param>
+    
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
