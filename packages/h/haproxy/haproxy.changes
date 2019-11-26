@@ -17,7 +17,7 @@ Tue Nov 19 13:55:05 UTC 2019 - mrueckert@suse.de
 -------------------------------------------------------------------
 Tue Nov 19 13:54:57 UTC 2019 - mrueckert@suse.de
 
-- Update to version 2.0.9+git0.efac87ee (fixes CVE-2019-14241):
+- Update to version 2.0.9+git0.efac87ee (bsc#1154980) (CVE-2019-18277):
   * [RELEASE] Released version 2.0.9
   * BUG/MINOR: mux-h1: Don't set CS_FL_EOS on a read0 when receiving data to pipe
   * BUG/MEDIUM: filters: Don't call TCP callbacks for HTX streams
