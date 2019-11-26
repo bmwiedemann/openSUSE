@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-testing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,6 +130,7 @@ build-jar-repository -s lib \
 	maven/maven-resolver-provider \
 	maven/maven-settings \
 	maven-resolver/maven-resolver-api \
+	maven-shared-utils/maven-shared-utils \
 	maven-wagon/provider-api \
 	objectweb-asm/asm \
 	org.eclipse.sisu.inject \
