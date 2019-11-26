@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:17:04 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
 Sun Apr 14 09:56:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid trivial name repetition in the summary.

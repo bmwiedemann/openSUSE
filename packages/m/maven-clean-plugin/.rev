@@ -15,4 +15,12 @@
     <comment>- Avoid trivial name repetition in the summary. (forwarded request 694039 from jengelh)</comment>
     <requestid>694045</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b26776f33ec1e749581538308e5b1a9d</srcmd5>
+    <version>3.1.0</version>
+    <time>1574783973</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750599</requestid>
+  </revision>
 </revisionlist>
