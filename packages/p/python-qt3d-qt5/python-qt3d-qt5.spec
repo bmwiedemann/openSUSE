@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qt3d-qt5
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Python bindings for the Qt5 3D framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtchart/intro
-Source:         https://www.riverbankcomputing.com/static/Downloads/PyQt3D/%{version}/PyQt3D_gpl-%{version}.tar.gz
+Source:         https://www.riverbankcomputing.com/static/Downloads/PyQt3D/%{version}/PyQt3D-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.1}
@@ -76,7 +76,7 @@ BuildArch:      noarch
 This package provides %{name} examples.
 
 %prep
-%setup -q -n PyQt3D_gpl-%{version}
+%setup -q -n PyQt3D-%{version}
 %{python_expand mkdir build_%{$python_bin_suffix}
 cp *.py build_%{$python_bin_suffix}
 cp -r sip build_%{$python_bin_suffix}
