@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 26 00:51:45 UTC 2019 - 9@cirno.systems
+
+- Clean up spec file
+- Update to version 2.8.0~20191105.g354625c:
+  * Allow push to accept no arguments (#937)
+  * mute/unmute command (#934)
+  * Add `continue_album` option (#927)
+  * Fix a crash when moving all tracks in a view (#916)
+  * fixed playlist name searching (#906)
+  * misc_init: remove variable user_name (#898)
+  * Makes :quit only prompt if -i is given (#888)
+  * ip/mp4: add metadata support for bpm/tempo (#878)
+
+-------------------------------------------------------------------
 Sat Feb 23 02:33:47 UTC 2019 - 9@cirno.systems
 
 - Update to version 2.8.0~20190219.ge27e813:

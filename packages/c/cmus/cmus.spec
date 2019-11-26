@@ -1,7 +1,7 @@
 #
 # spec file for package cmus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2007-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,34 +18,17 @@
 
 
 %bcond_without sndio
-
 Name:           cmus
-Version:        2.8.0~20190219.ge27e813
+Version:        2.8.0~20191105.g354625c
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
-Url:            https://cmus.github.io/
+URL:            https://cmus.github.io/
 Source:         %{name}-%{version}.tar.xz
-# cmus only builds with gcc >= 4.9
-%if 0%{?suse_version} > 1320
-BuildRequires:  gcc
-%else
-%if 0%{?sle_version} == 120200
-# Leap 42.2
-BuildRequires:  gcc6
-%else
-# Leap 42.3+ / SLE12SP3Backports
-BuildRequires:  gcc7
-%endif
-%endif
 BuildRequires:  git-core
 BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig
-%if %{with sndio}
-BuildRequires:  sndio-devel
-%endif
-BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa) >= 1.0.11
 BuildRequires:  pkgconfig(ao)
@@ -60,7 +43,7 @@ BuildRequires:  pkgconfig(libmikmod)
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.19
 BuildRequires:  pkgconfig(libsystemd)
-# BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(vorbisfile)
@@ -69,10 +52,10 @@ Recommends:     %{name}-plugin-cue = %{version}-%{release}
 Recommends:     %{name}-plugin-ffmpeg = %{version}-%{release}
 # cmus has problems with lavf and 24-bit audio
 Recommends:     %{name}-plugin-flac = %{version}-%{release}
-# these are not provided by tumbleweed ffmpeg yet
-Recommends:     %{name}-plugin-mpc = %{version}-%{release}
 Recommends:     %{name}-plugin-pulse = %{version}-%{release}
-Recommends:     %{name}-plugin-wavpack = %{version}-%{release}
+%if %{with sndio}
+BuildRequires:  sndio-devel
+%endif
 
 %description
 C* Music Player is a small and fast text mode (ncurses-based) music player
@@ -209,11 +192,11 @@ Requires:       %{name}-plugin-modplug = %{version}-%{release}
 Requires:       %{name}-plugin-mpc = %{version}-%{release}
 Requires:       %{name}-plugin-opus = %{version}-%{release}
 Requires:       %{name}-plugin-pulse = %{version}-%{release}
+Requires:       %{name}-plugin-vorbis = %{version}-%{release}
+Requires:       %{name}-plugin-wavpack = %{version}-%{release}
 %if %{with sndio}
 Requires:       %{name}-plugin-sndio = %{version}-%{release}
 %endif
-Requires:       %{name}-plugin-vorbis = %{version}-%{release}
-Requires:       %{name}-plugin-wavpack = %{version}-%{release}
 
 %description plugins-all
 This package pulls in all the plugins for the C* Music Player.
@@ -223,10 +206,6 @@ This package pulls in all the plugins for the C* Music Player.
 
 %build
 # not autoconf
-export CC=gcc
-test -x "$(type -p gcc-5)" && export CC=gcc-5
-test -x "$(type -p gcc-6)" && export CC=gcc-6
-test -x "$(type -p gcc-7)" && export CC=gcc-7
 ./configure \
     prefix="%{_prefix}" \
     bindir="%{_bindir}" \
@@ -242,7 +221,7 @@ test -x "$(type -p gcc-7)" && export CC=gcc-7
     USE_FALLBACK_IP=y \
     CFLAGS="%{optflags}"
 
-make %{?_smp_mflags} V=1 CC=${CC}
+make %{?_smp_mflags} V=1
 
 %install
 %make_install
@@ -254,10 +233,9 @@ This subpackage is empty but requires all the available %{name} plugin packages
 EOF
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README.md
+%license COPYING
+%doc AUTHORS README.md
 %doc cmus-status-display
-%doc data/rc
 %{_bindir}/cmus
 %{_bindir}/cmus-remote
 %dir %{_libdir}/cmus
@@ -269,69 +247,54 @@ EOF
 %dir %{_datadir}/cmus
 %{_datadir}/cmus/*.theme
 %config(noreplace) %{_datadir}/cmus/rc
-%{_mandir}/man1/cmus*.1%{ext_man}
-%{_mandir}/man7/cmus-tutorial.7%{ext_man}
+%{_mandir}/man1/cmus*.1%{?ext_man}
+%{_mandir}/man7/cmus-tutorial.7%{?ext_man}
 
 %files plugin-libao
-%defattr(-,root,root)
 %{_libdir}/cmus/op/ao.so
 
 %files plugin-jack
-%defattr(-,root,root)
 %{_libdir}/cmus/op/jack.so
 
 %files plugin-pulse
-%defattr(-,root,root)
 %{_libdir}/cmus/op/pulse.so
 
 %if %{with sndio}
 %files plugin-sndio
-%defattr(-,root,root)
 %{_libdir}/cmus/op/sndio.so
 %endif
 
 %files plugin-cdio
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/cdio.so
 
 %files plugin-cue
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/cue.so
 
 %files plugin-flac
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/flac.so
 
 %files plugin-vorbis
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/vorbis.so
 
 %files plugin-ffmpeg
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/ffmpeg.so
 
 %files plugin-mikmod
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/mikmod.so
 
 %files plugin-modplug
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/modplug.so
 
 %files plugin-mpc
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/mpc.so
 
 %files plugin-opus
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/opus.so
 
 %files plugin-wavpack
-%defattr(-,root,root)
 %{_libdir}/cmus/ip/wavpack.so
 
 %files plugins-all
-%defattr(-,root,root)
 %doc README.plugins-all
 
 %changelog
