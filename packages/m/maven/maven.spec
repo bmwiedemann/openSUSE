@@ -1,7 +1,7 @@
 #
 # spec file for package maven
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 %bcond_with  logback
 Name:           maven
-Version:        3.5.4
+Version:        3.6.2
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -32,13 +32,12 @@ URL:            http://maven.apache.org/
 Source0:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz
 Source1:        maven-bash-completion
 Source2:        mvn.1
-Source10:       apache-%{name}-build.tar.xz
+Source10:       apache-%{name}-%{version}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
 # Used only when %%without logback is in effect
 Patch2:         0002-Invoke-logback-via-reflection.patch
-# We don't have mockito 2 yet
-Patch3:         0003-Revert-MNG-6335-Update-Mockito-to-2.12.0.patch
+Patch4:         0004-Use-non-shaded-HTTP-wagon.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
@@ -71,7 +70,7 @@ BuildRequires:  maven-wagon-file
 BuildRequires:  maven-wagon-http
 BuildRequires:  maven-wagon-http-shared
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  modello
+BuildRequires:  modello >= 1.10
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-cipher
 BuildRequires:  plexus-classworlds
@@ -89,7 +88,8 @@ BuildRequires:  slf4j-sources
 BuildRequires:  unix2dos
 BuildRequires:  xbean
 BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve xmvn-subst
+BuildRequires:  xmvn-resolve
+BuildRequires:  xmvn-subst
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 Requires:       %{name}-lib = %{version}-%{release}
 Requires(post): aaa_base
@@ -181,7 +181,7 @@ BuildArch:      noarch
 %setup -q -n apache-%{name}-%{version} -a10
 
 %patch1 -p1
-%patch3 -p1
+%patch4 -p1
 
 # not really used during build, but a precaution
 find -name '*.jar' -not -path '*/test/*' -delete
@@ -367,7 +367,7 @@ update-alternatives --install %{_bindir}/mvn mvn %{homedir}/bin/mvn %{?maven_alt
 
 %postun
 if [ $1 -eq 0 ]; then
-  update-alternatives --remove %{name} %{homedir}/bin/mvn
+  update-alternatives --remove mvn %{homedir}/bin/mvn
 fi
 
 %files lib -f .mfiles

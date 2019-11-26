@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:53:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.6.2
+- Modified patche:
+  * 0002-Invoke-logback-via-reflection.patch
+    + adapt to changed context
+- Removed patch:
+  * 0003-Revert-MNG-6335-Update-Mockito-to-2.12.0.patch
+    + we don't need this patch, since we are not running tests
+      by default
+- Added patch:
+  * 0004-Use-non-shaded-HTTP-wagon.patch
+    + we don't use/distribute shared wagon-http
+
+-------------------------------------------------------------------
 Mon Apr  1 23:29:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Adjust RPM groups. Avoid bashisms in %postun.

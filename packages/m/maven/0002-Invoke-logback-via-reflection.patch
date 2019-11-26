@@ -1,17 +1,17 @@
-From 4e1e32e3a96c6876a22cca6743288b8c8df4adb0 Mon Sep 17 00:00:00 2001
+From 7610a10691e680db00edcbd4ce6767a30641cd71 Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Tue, 6 Jun 2017 13:47:43 +0200
-Subject: [PATCH 2/3] Invoke logback via reflection
+Subject: [PATCH 2/4] Invoke logback via reflection
 
 ---
  .../logging/impl/LogbackConfiguration.java    | 19 ++++++++++++++-----
  1 file changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/maven-embedder/src/main/java/org/apache/maven/cli/logging/impl/LogbackConfiguration.java b/maven-embedder/src/main/java/org/apache/maven/cli/logging/impl/LogbackConfiguration.java
-index 5d9fab7..ced38cb 100644
+index 5d9fab744..ced38cb5a 100644
 --- a/maven-embedder/src/main/java/org/apache/maven/cli/logging/impl/LogbackConfiguration.java
 +++ b/maven-embedder/src/main/java/org/apache/maven/cli/logging/impl/LogbackConfiguration.java
-@@ -35,22 +35,31 @@ public class LogbackConfiguration
+@@ -35,22 +35,31 @@
      @Override
      public void setRootLoggerLevel( Level level )
      {
@@ -49,5 +49,5 @@ index 5d9fab7..ced38cb 100644
  
      @Override
 -- 
-2.17.1
+2.21.0
 
