@@ -1,7 +1,7 @@
 #
 # spec file for package gmavenplus-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://groovy.github.io/GMavenPlus/
 Source0:        https://github.com/groovy/GMavenPlus/archive/%{version}.tar.gz
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(jline:jline)
@@ -74,15 +75,15 @@ This package contains javadoc for %{name}.
 rm -r src/test/java/org/codehaus/gmavenplus/mojo/AbstractGroovyMojoTest.java
 
 # Convert from dos to unix line ending
-sed -i.orig 's|\r||g' README.markdown
-touch -r README.markdown.orig README.markdown
-rm README.markdown.orig
+dos2unix README.markdown
 
 %{mvn_file} : %{name}
 
 %build
-# Disable tests for now due to incompatibility with new mockito 2.x
-%{mvn_build} -f -- -Pnonindy -Dsource=6
+%{mvn_build} -f -- -Pnonindy \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
