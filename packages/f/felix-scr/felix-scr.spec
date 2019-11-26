@@ -1,7 +1,7 @@
 #
 # spec file for package felix-scr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source2:        http://svn.apache.org/repos/asf/felix/releases/1.0.0/NOTICE
 Patch0:         osgi-metadata.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  xz
 BuildRequires:  mvn(net.sf.kxml:kxml2)
 BuildRequires:  mvn(org.apache.felix:felix-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -43,7 +44,6 @@ BuildRequires:  mvn(org.osgi:osgi.annotation)
 BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(xpp3:xpp3)
-BuildRequires:  xz
 BuildArch:      noarch
 
 %description
@@ -89,8 +89,10 @@ sed -i -e '/IgnoreJRERequirement/d' src/main/java/org/apache/felix/scr/impl/mana
 %{mvn_file} : felix/%{bundle}
 
 %build
-# No test deps availables e.g org.ops4j.pax.url:pax-url-wrap
-%{mvn_build} -f
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
