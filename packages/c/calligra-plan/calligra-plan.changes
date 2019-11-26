@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Nov 14 10:48:45 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.2.0
+- General:
+  * Add drag/drop and copy/paste using text/html and text/plain
+    mimetypes
+  * Landscape printing/export was not possible (kde#412063)
+  * Add project templates
+  * calligraplan didn't load translations from calligraplanlibs.mo
+    (kde#412325)
+  * Add hyper link handling to description editor
+  * Use project name in recent projects list instead of file name
+  * Collect project settings into separate Project menu
+  * Add view options to the View menu
+  * Open description from treeviews on doubleclick
+  * Improve edit/view Documents
+  * Add documents to project dialog
+  * Add dialog to reload assignments of shared resources
+  * Always save currency in case project is opened in a different
+    locale
+  * Fix crash when creating new project with separate holiday
+    calendar
+- Help and Documentation:
+  * Help is provided using What's this (Shift-F1)
+  * Documentation has been improved (still WIP)
+- Task editor:
+  * Add copy/paste of tasks, also possible using drag/drop
+  * Allow to indent/unindent multiple tasks (kde#412749)
+  * Add option to specify dependencies manually (kde#412341)
+  * Allow for entering estimates in minutes (kde#412134)
+  * Add priority feature, use value for levelling/scheduling
+    (kde#309038)
+  * Allow to drag/drop non-baselined tasks on a baselined project
+  * Fix bug "Unable to delete tasks" (kde#406127)
+  * TaskModules: Improve task modules handling
+- Dependency Editor:
+  * Fix bug in Finish-Finish dependency check in dependency editor
+    (kde#401511)
+- Scheduling:
+  * Add automatic scheduling mode
+  * Use task priority (kde#309038)
+  * Handle removed task/resource during scheduling
+  * Fix crash on close when scheduling is running
+- Ganttview:
+  * Enable editing of completion
+  * Extend the "View" menu (Zoom, Scale, Timeformat, Year Format,
+    Grid) in Gantt view mode (kde#284361)
+  * Add timeline
+  * Add contextmenu -> Show Unscheduled Tasks
+  * Trigger an update of the chart when project start may have
+    changed
+  * Enable context menu from gantt chart
+- Performance charts:
+  * Coordinate rubberband selection, drag&drop and context menus
+- Reports:
+  * Improve report templates and generation
+  * Add documentation
+- Filters:
+  * ICalExport filter: Enable user to choose what to export
+  * Add import filter for Gnome Planner project files
+- Workpackage handling:
+  * Improve workpackage handling
+  * Fix bug in merging workpackage used effort (kde#287563)
+  * Fix "Can not edit a progress entry of a task" (kde#342574),
+    improve progress dialog in general
+- PlanWork:
+  * Enable opening documents from gantt view
+  * Enable sorting gantt view
+  * Fix sorting by dattime
+  * Mark finished tasks with a checkmark
+- Drop patches merged upstream:
+  * Fix-build-with-Qt-511.patch
+  * Fix-compilation-after-recent-KCalCore-API-changes.patch
+  * Fix-build-with-Qt-5_13.patch
+
+-------------------------------------------------------------------
 Mon Aug 12 08:51:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Fix-build-with-Qt-5_13.patch

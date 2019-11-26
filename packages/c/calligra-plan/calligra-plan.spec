@@ -17,30 +17,23 @@
 
 
 Name:           calligra-plan
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Project Management Application
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/calligra/%{version}/calligraplan-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- Fix-build-with-Qt-511.patch
-Patch0:         Fix-build-with-Qt-511.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Fix-compilation-after-recent-KCalCore-API-changes.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         Fix-build-with-Qt-5_13.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  perl-base
 BuildRequires:  update-desktop-files
+BuildRequires:  zlib-devel
 BuildRequires:  cmake(KChart)
 BuildRequires:  cmake(KF5Activities)
-BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5GuiAddons)
@@ -50,7 +43,6 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
@@ -61,15 +53,11 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KGantt)
-BuildRequires:  cmake(KPropertyWidgets)
-BuildRequires:  cmake(KReport)
+BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
@@ -85,7 +73,7 @@ Plan is the project management application of the Calligra Suite.
 %lang_package
 
 %prep
-%autosetup -p1 -n calligraplan-%{version}
+%setup -q -n calligraplan-%{version}
 
 %build
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
@@ -99,7 +87,7 @@ Plan is the project management application of the Calligra Suite.
 %suse_update_desktop_file -r org.kde.calligraplanwork   Qt KDE Office ProjectManagement
 
 # not needed
-rm %{buildroot}/%{_kf5_libdir}/libkplato*.so %{buildroot}/%{_kf5_libdir}/libplan*.so
+rm %{buildroot}/%{_kf5_libdir}/libplan*.so
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -113,12 +101,12 @@ rm %{buildroot}/%{_kf5_libdir}/libkplato*.so %{buildroot}/%{_kf5_libdir}/libplan
 %{_kf5_appstreamdir}/org.kde.calligraplan.appdata.xml
 %{_kf5_bindir}/calligraplan
 %{_kf5_bindir}/calligraplanwork
+%dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/calligraplan*.kcfg
 %{_kf5_iconsdir}/hicolor/
 %{_kf5_kxmlguidir}/calligraplan/
 %{_kf5_kxmlguidir}/calligraplanwork/
 %{_kf5_libdir}/libkdeinit5_calligraplan*.so
-%{_kf5_libdir}/libkplato*.so.*
 %{_kf5_libdir}/libplan*.so.*
 %{_kf5_plugindir}/calligraplan/
 %{_kf5_plugindir}/calligraplanworkpart.so
