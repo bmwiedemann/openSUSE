@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shade-plugin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           maven-shade-plugin
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Capability to package the artifact in an uber-jar
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/plugins/%{name}
 Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
-Patch0:         0001-Port-to-maven-dependency-tree-3.0.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.google.guava:guava:19.0)
+BuildRequires:  unzip
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -45,7 +45,6 @@ BuildRequires:  mvn(org.jdom:jdom2)
 BuildRequires:  mvn(org.ow2.asm:asm)
 BuildRequires:  mvn(org.ow2.asm:asm-commons)
 BuildRequires:  mvn(org.vafer:jdependency)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -62,13 +61,17 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q
-%patch0 -p1
 rm src/test/jars/plexus-utils-1.4.1.jar
 ln -s $(build-classpath plexus/utils) src/test/jars/plexus-utils-1.4.1.jar
 
+%pom_remove_dep 'com.google.guava:guava:'
+%pom_add_dep 'com.google.guava:guava'
+
 %build
-# A class from aopalliance is not found. Simply adding BR does not solve it
-%{mvn_build} -f
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=7
+%endif
 
 %install
 %mvn_install
