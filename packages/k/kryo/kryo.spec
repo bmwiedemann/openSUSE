@@ -1,7 +1,7 @@
 #
 # spec file for package kryo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,18 +71,20 @@ This package contains javadoc for %{name}.
   </instructions>
 </configuration>"
 
-# remove shaded deps
-%pom_xpath_remove "pom:dependency[pom:classifier = 'shaded']"
-
 cp -p %{SOURCE1} .
 sed -i 's/\r//' license.txt LICENSE-2.0.txt
 
 %{mvn_file} :%{name} %{name}
 %{mvn_alias} :%{name} "com.esotericsoftware.%{name}:%{name}"
 
+%mvn_package :%{name}-parent __noinstall
+
 %build
 
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -f pom-main.xml \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8
+%endif
 
 %install
 %mvn_install
