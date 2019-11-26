@@ -1,0 +1,4 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+# there are source files which are parsed with pybind11, so they have to be included
+addFilter("python3-onnx.* devel-file-in-non-devel-package")
