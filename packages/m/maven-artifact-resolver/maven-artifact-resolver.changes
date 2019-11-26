@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 21 18:19:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
 Fri Apr  5 15:15:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Intial packaging of maven-artifact-resolver 1.0
