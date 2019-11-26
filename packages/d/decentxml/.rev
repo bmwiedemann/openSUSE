@@ -15,4 +15,12 @@
     <comment>Minor nits</comment>
     <requestid>707347</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>19514aa1a2ad96c731b7135e39577af7</srcmd5>
+    <version>1.4</version>
+    <time>1574783772</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750525</requestid>
+  </revision>
 </revisionlist>
