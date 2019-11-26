@@ -1,8 +1,8 @@
 Index: src/AboutDialog.cpp
 ===================================================================
---- src/AboutDialog.cpp.orig	2018-02-14 09:11:20.000000000 +0200
-+++ src/AboutDialog.cpp	2018-02-22 11:19:34.839783711 +0200
-@@ -64,7 +64,7 @@ hold information about one contributor t
+--- src/AboutDialog.cpp.orig	2019-11-15 01:28:15.000000000 +0200
++++ src/AboutDialog.cpp	2019-11-25 12:08:49.331580095 +0200
+@@ -65,7 +65,7 @@ hold information about one contributor t
  #ifdef REV_LONG
  #define REV_IDENT wxString( "[[https://github.com/audacity/audacity/commit/" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME 
  #else
@@ -11,19 +11,21 @@ Index: src/AboutDialog.cpp
  #endif
  
  extern wxString FormatHtmlText( const wxString & Text );
-@@ -75,7 +75,7 @@ const wxString VerCheckArgs(){
- #ifdef REV_LONG
-    result += wxString("&CommitId=")+wxString(REV_LONG).Left(6);
- #endif
--   result += wxString("&Time=") + wxString( __DATE__ ) + wxString( __TIME__ );
-+   result += wxString("&Time=") + wxString( "17 March 2017" ) + wxString( "23:15" );
-    result.Replace(" ","");
-    return result;
- }
+@@ -604,8 +604,8 @@ void AboutDialog::PopulateInformationPag
+    informationStr += _("Build Information");
+    informationStr += wxT("</h3>\n<table>");
+ 
+-   // Current date
+-   AddBuildinfoRow(&informationStr, _("Program build date: "), __TDATE__);
++   /*/ Current date
++   AddBuildinfoRow(&informationStr, _("Program build date: "), __TDATE__);*/
+    AddBuildinfoRow(&informationStr, _("Commit Id:"), REV_IDENT );
+ 
+    // Not translated in 2.3.1.
 Index: lib-src/portaudio-v19/qa/loopback/src/paqa.c
 ===================================================================
---- lib-src/portaudio-v19/qa/loopback/src/paqa.c.orig	2018-02-14 09:11:20.000000000 +0200
-+++ lib-src/portaudio-v19/qa/loopback/src/paqa.c	2018-02-22 11:19:34.839783711 +0200
+--- lib-src/portaudio-v19/qa/loopback/src/paqa.c.orig	2019-11-15 01:28:15.000000000 +0200
++++ lib-src/portaudio-v19/qa/loopback/src/paqa.c	2019-11-25 11:46:54.896516478 +0200
 @@ -1460,7 +1460,7 @@ int main( int argc, char **argv )
  	int justMath = 0;
      char *executableName = argv[0];

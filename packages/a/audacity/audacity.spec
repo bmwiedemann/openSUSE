@@ -23,11 +23,11 @@
 %endif
 
 Name:           audacity
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
+Group:          Multimedia;Sound Editors;Audio Editors;Audio Effects;
 Url:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 #Source:         https://www.fosshub.com/Audacity.html/%%{name}-minsrc-%%{version}.tar.xz
