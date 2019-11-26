@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 19 09:35:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the appmenu-qt requirement. appmenu-qt is unmaintained and
+  will be removed from Leap 15.2 and factory soon.
+
+-------------------------------------------------------------------
+Sat Oct 19 04:25:09 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- update version 0.7.3
+  * fixes blacklist and multimodule
+- changes in version 0.7.2
+  * Meson and various fixes
+
+-------------------------------------------------------------------
+Sun Apr 28 12:11:08 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update spec file: new upstream Url
+
+-------------------------------------------------------------------
 Mon Sep 10 05:32:18 UTC 2018 - i@marguerite.su
 
 - update version 0.7.1

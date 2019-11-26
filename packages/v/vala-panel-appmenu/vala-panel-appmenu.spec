@@ -1,7 +1,7 @@
 #
 # spec file for package vala-panel-appmenu
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vala-panel-appmenu
-Version:        0.7.1
+Version:        0.7.3
 Release:        0
 Summary:        AppMenu plugin for xfce4-panel, mate-panel and vala-panel
 License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/rilian-la-te/vala-panel-appmenu
-Source:         %{name}-%{version}.tar.gz
+Url:            https://gitlab.com/vala-panel-project/vala-panel-appmenu
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bamf-daemon
 BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
@@ -31,6 +31,7 @@ BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  systemd
 BuildRequires:  vala >= 0.24
+BuildRequires:  vala-cmake-modules
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
@@ -162,7 +163,6 @@ Summary:        AppMenu (Global Menu) plugin for xfce4-panel
 Group:          System/GUI/XFCE
 Requires:       appmenu-gtk2-module = %{version}
 Requires:       appmenu-gtk3-module = %{version}
-Requires:       appmenu-qt
 Requires:       appmenu-registrar = %{version}
 Requires:       bamf-daemon
 Requires:       xfce4-panel
@@ -178,7 +178,6 @@ Summary:        AppMenu (Global Menu) plugin for mate-panel
 Group:          System/GUI/Other
 Requires:       appmenu-gtk2-module = %{version}
 Requires:       appmenu-gtk3-module = %{version}
-Requires:       appmenu-qt
 Requires:       appmenu-registrar = %{version}
 Requires:       bamf-daemon
 Requires:       mate-panel
@@ -193,7 +192,6 @@ Summary:        AppMenu (Global Menu) plugin for vala-panel
 Group:          System/GUI/Other
 Requires:       appmenu-gtk2-module = %{version}
 Requires:       appmenu-gtk3-module = %{version}
-Requires:       appmenu-qt
 Requires:       appmenu-registrar
 Requires:       vala-panel
 Recommends:     vala-panel-plugin-appmenu-lang
@@ -268,7 +266,7 @@ make %{?_smp_mflags} V=1
 %files -n libappmenu-gtk2-parser0
 %defattr(-,root,root)
 %{_libdir}/libappmenu-gtk2-parser.so.0
-%{_libdir}/libappmenu-gtk2-parser.so.0.7.1
+%{_libdir}/libappmenu-gtk2-parser.so.%{version}
 
 %files -n libappmenu-gtk2-parser-devel
 %defattr(-,root,root)
@@ -278,7 +276,7 @@ make %{?_smp_mflags} V=1
 %files -n libappmenu-gtk3-parser0
 %defattr(-,root,root)
 %{_libdir}/libappmenu-gtk3-parser.so.0
-%{_libdir}/libappmenu-gtk3-parser.so.0.7.1
+%{_libdir}/libappmenu-gtk3-parser.so.%{version}
 
 %files -n libappmenu-gtk3-parser-devel
 %defattr(-,root,root)
@@ -322,7 +320,7 @@ make %{?_smp_mflags} V=1
 %dir %{_libdir}/vala-panel/applets
 %dir %{_datadir}/vala-panel/
 %dir %{_datadir}/vala-panel/applets/
-%{_datadir}/vala-panel/applets/appmenu.plugin
+%{_datadir}/vala-panel/applets/org.valapanel.appmenu.plugin
 %{_libdir}/vala-panel/applets/libappmenu.so
 %{_datadir}/glib-2.0/schemas/org.valapanel.appmenu.gschema.xml
 %endif
