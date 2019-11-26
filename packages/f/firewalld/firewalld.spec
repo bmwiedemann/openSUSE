@@ -28,7 +28,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 Url:            http://www.firewalld.org
 Source:         %{name}-%{version}.tar.xz
-Patch0:		    0001-firewall-backend-Switch-default-backend-to-iptables.patch
+Patch0:         0001-firewall-backend-Switch-default-backend-to-iptables.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -111,18 +111,10 @@ firewalld.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 # bsc#1078223
 rm config/services/high-availability.xml
-
-# 
-# Patch added: opensuse still uses iptables by default,
-# so let's make this the default for anything << Tumbleweed
-#
-%if 0%{?sle_version} > 0 && 0%{?suse_version} < 1550 
-%patch0 -p1 
-%endif
 
 %build
 export PYTHON="%{_bindir}/python3"

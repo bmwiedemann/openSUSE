@@ -915,4 +915,12 @@ This is a bug fix only release.
     firewalld.conf is available. It does filtering based on RFC3964</comment>
     <requestid>750645</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>39ab826becf9db5327e510244644666f</srcmd5>
+    <version>0.7.2</version>
+    <time>1574783413</time>
+    <user>dimstar_suse</user>
+    <comment>without shift to nft</comment>
+    <requestid>751072</requestid>
+  </revision>
 </revisionlist>
