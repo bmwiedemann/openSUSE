@@ -127,4 +127,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736565</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0c9db9641540ce087ba5b020a6c1d8da</srcmd5>
+    <version>3.34.2</version>
+    <time>1574784270</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750453 from iznogood)</comment>
+    <requestid>750943</requestid>
+  </revision>
 </revisionlist>
