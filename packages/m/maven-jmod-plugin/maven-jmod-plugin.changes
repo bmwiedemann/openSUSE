@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:22:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+- Added patch:
+  * maven-jmod-plugin-plexus-languages-1.0.patch
+    + fix building against plexus-languages >= 1.0
+
+-------------------------------------------------------------------
 Fri Apr  5 15:33:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of maven-jmod-plugin 3.0.0-alpha1

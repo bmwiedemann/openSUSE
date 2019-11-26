@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jmod-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-jmod-plugin/
 Source0:        https://archive.apache.org/dist/maven/plugins/%{name}-%{basever}-%{opt}-%{optver}-source-release.zip
+Patch0:         maven-jmod-plugin-plexus-languages-1.0.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -37,7 +39,6 @@ BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-java)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -52,9 +53,13 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{basever}-%{opt}-%{optver}
+%patch0 -p1
 
 %build
-%{mvn_build}
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=8
+%endif
 
 %install
 %mvn_install
