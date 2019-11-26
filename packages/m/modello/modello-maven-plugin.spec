@@ -1,7 +1,7 @@
 #
 # spec file for package modello-maven-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Modello Maven Plugin
 License:        MIT AND Apache-2.0
@@ -29,6 +29,7 @@ Source0:        http://repo2.maven.org/maven2/org/codehaus/%{parent}/%{parent}/%
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
@@ -48,7 +49,6 @@ BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xsd) = %{version}
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
-BuildRequires:  unzip
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
 #!BuildRequires: maven-javadoc-plugin-bootstrap

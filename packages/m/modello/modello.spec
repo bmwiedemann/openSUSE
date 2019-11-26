@@ -1,7 +1,7 @@
 #
 # spec file for package modello
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           modello
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Modello Data Model toolkit
 License:        MIT AND Apache-2.0
@@ -29,6 +29,7 @@ Source100:      %{name}-build.tar.xz
 Patch0:         modello-cli-domasxpp3.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  jsoup
 BuildRequires:  junit
@@ -39,10 +40,12 @@ BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  snakeyaml
 BuildRequires:  unzip
-Requires:       guava20
+Requires:       guava
 # Explicit javapackages-tools requires since modello script uses
 # /usr/share/java-utils/java-functions
+Requires:       guava
 Requires:       javapackages-tools
+Requires:       xbean
 Requires:       mvn(junit:junit)
 Requires:       mvn(org.codehaus.plexus:plexus-compiler-api)
 Requires:       mvn(org.codehaus.plexus:plexus-compiler-javac)
@@ -51,7 +54,6 @@ Requires:       mvn(org.codehaus.plexus:plexus-utils)
 Requires:       mvn(org.jsoup:jsoup)
 Requires:       mvn(org.sonatype.plexus:plexus-build-api)
 Requires:       mvn(org.yaml:snakeyaml)
-Requires:       xbean
 BuildArch:      noarch
 
 %description
@@ -88,7 +90,7 @@ sed -i s/maven-project/maven-core/ modello-maven-plugin/pom.xml
 mkdir -p lib
 build-jar-repository -s lib plexus/classworlds plexus/utils plexus/plexus-build-api \
   plexus-containers/plexus-container-default plexus-compiler/plexus-compiler-api junit \
-  plexus-compiler/plexus-compiler-javac jsoup snakeyaml guava20/guava-20.0 xbean/xbean-reflect
+  plexus-compiler/plexus-compiler-javac jsoup snakeyaml guava/guava xbean/xbean-reflect
 # skip tests because we have too old xmlunit in openSUSE now (1.5)
 %{ant} \
   -Dtest.skip=true \
@@ -141,7 +143,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:plexus-containers/plexus-container-default:plexus/classworlds:plexus/utils:plexus/plexus-build-api:xbean/xbean-reflect:guava20 %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:plexus-containers/plexus-container-default:plexus/classworlds:plexus/utils:plexus/plexus-build-api:xbean/xbean-reflect:guava %{name} true
 
 %files -f .mfiles
 %license LICENSE
