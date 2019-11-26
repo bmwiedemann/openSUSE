@@ -30,6 +30,9 @@ unsorted:
   - ColPack-devel 
   - ColPack-devel-32bit: [x86_64] 
   - ColorFull-devel 
+  - ComputeLibrary: [x86_64] 
+  - ComputeLibrary-devel: [x86_64] 
+  - ComputeLibrary-sample-data: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -651,6 +654,12 @@ unsorted:
   - armadillo-devel 
   - armadillo-devel-32bit: [x86_64] 
   - armadillo-doc 
+  - armnn: [x86_64] 
+  - armnn-devel: [x86_64] 
+  - armnn-extratests: [x86_64] 
+  - armnn-opencl: [x86_64] 
+  - armnn-opencl-devel: [x86_64] 
+  - armnn-opencl-extratests: [x86_64] 
   - arp-scan 
   - arpack-ng-devel 
   - arpack-ng-devel-32bit: [x86_64] 
@@ -1778,12 +1787,12 @@ unsorted:
   - codespell 
   - cogl-devel 
   - collectd 
+  - collectd-plugin-connectivity 
   - collectd-plugin-dbi 
   - collectd-plugin-gps 
   - collectd-plugin-ipmi 
   - collectd-plugin-java 
   - collectd-plugin-lua 
-  - collectd-plugin-lvm 
   - collectd-plugin-mcelog 
   - collectd-plugin-memcachec 
   - collectd-plugin-mysql 
@@ -1794,11 +1803,14 @@ unsorted:
   - collectd-plugin-pcie 
   - collectd-plugin-pinba 
   - collectd-plugin-postgresql 
+  - collectd-plugin-procevent 
   - collectd-plugin-python3 
   - collectd-plugin-sigrok 
   - collectd-plugin-smart 
   - collectd-plugin-snmp 
   - collectd-plugin-synproxy 
+  - collectd-plugin-sysevent 
+  - collectd-plugin-uptime 
   - collectd-plugin-virt 
   - collectd-plugin-write_stackdriver 
   - collectd-plugin-write_syslog 
@@ -3063,6 +3075,8 @@ unsorted:
   - focuswriter-lang 
   - folder-color-common 
   - folder-color-common-lang 
+  - foliate 
+  - foliate-lang 
   - folks-devel 
   - folks-tools 
   - foma 
@@ -4334,6 +4348,7 @@ unsorted:
   - glassfish-annotation-api 
   - glassfish-annotation-api-javadoc 
   - glassfish-dtd-parser 
+  - glassfish-dtd-parser-javadoc 
   - glassfish-el 
   - glassfish-el-api 
   - glassfish-el-javadoc 
@@ -4530,6 +4545,7 @@ unsorted:
   - gnome-vfs2-lang 
   - gnome-video-effects-devel 
   - gnonograms 
+  - gnonograms-devel 
   - gnonograms-lang 
   - gnote 
   - gnote-lang 
@@ -5801,7 +5817,6 @@ unsorted:
   - javacc-manual 
   - javacc-maven-plugin 
   - javacc-maven-plugin-javadoc 
-  - javadoc 
   - javaewah 
   - javaewah-javadoc 
   - javahelp2 
@@ -6150,6 +6165,7 @@ unsorted:
   - k3b-devel 
   - k3s 
   - k3s-hyperkube 
+  - k9s: [x86_64] 
   - kaccounts-integration-32bit: [x86_64] 
   - kaccounts-integration-devel 
   - kaccounts-integration-devel-32bit: [x86_64] 
@@ -7685,8 +7701,21 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
+  - libarm_compute16: [x86_64] 
   - libarmadillo9 
   - libarmadillo9-32bit: [x86_64] 
+  - libarmnn19: [x86_64] 
+  - libarmnn19-opencl: [x86_64] 
+  - libarmnnCaffeParser19: [x86_64] 
+  - libarmnnCaffeParser19-opencl: [x86_64] 
+  - libarmnnOnnxParser19: [x86_64] 
+  - libarmnnOnnxParser19-opencl: [x86_64] 
+  - libarmnnSerializer19: [x86_64] 
+  - libarmnnSerializer19-opencl: [x86_64] 
+  - libarmnnTfLiteParser19: [x86_64] 
+  - libarmnnTfLiteParser19-opencl: [x86_64] 
+  - libarmnnTfParser19: [x86_64] 
+  - libarmnnTfParser19-opencl: [x86_64] 
   - libarpack2 
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
@@ -9025,6 +9054,7 @@ unsorted:
   - libgnomecanvas-lang 
   - libgnomekbd-devel 
   - libgnomesu-devel 
+  - libgnonograms-core0 
   - libgnuastro6 
   - libgnuradio-3_8_0 
   - libgnuradio-fcdproplus-devel 
@@ -10233,6 +10263,7 @@ unsorted:
   - libnm-util2 
   - libnm-util2-32bit: [x86_64] 
   - libnma-devel 
+  - libnma-lang 
   - libnormaliz3 
   - libnoson1 
   - libnotify-devel 
@@ -10334,6 +10365,7 @@ unsorted:
   - libopenblas_serial-devel 
   - libopenblas_serial0 
   - libopencascade7 
+  - libopencensus-cpp0: [x86_64] 
   - libopencsg1 
   - libopencv4_1 
   - libopendkim10 
@@ -10687,6 +10719,7 @@ unsorted:
   - libprimesieve9 
   - libprofiler0 
   - libproj15 
+  - libprometheus-cpp0 
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
@@ -11432,7 +11465,7 @@ unsorted:
   - libspnav0 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_27_2-0 
+  - libsqlcipher-3_28_0-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -11743,6 +11776,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
+  - libupb0 
   - libupm1 
   - libupnp-devel 
   - libupnp13-32bit: [x86_64] 
@@ -14837,6 +14871,8 @@ unsorted:
   - openbsc-bs11-utils 
   - openbsc-bsc-sccplite 
   - opencc-devel 
+  - opencensus-cpp-devel: [x86_64] 
+  - opencensus-cpp-source: [x86_64] 
   - opencensus-proto-source 
   - opencl-cpp-headers 
   - opencl-headers 
@@ -15536,6 +15572,8 @@ unsorted:
   - perl-Algorithm-C3 
   - perl-Algorithm-CheckDigits 
   - perl-Algorithm-Combinatorics 
+  - perl-Alien-Build 
+  - perl-Alien-Libxml2 
   - perl-Alien-SDL 
   - perl-Alien-Tidyp 
   - perl-Alien-wxWidgets 
@@ -15796,6 +15834,7 @@ unsorted:
   - perl-ExtUtils-Manifest 
   - perl-ExtUtils-Typemaps-Default 
   - perl-ExtUtils-XSpp 
+  - perl-FFI-CheckLib 
   - perl-Feed-Find 
   - perl-Fennec-Lite 
   - perl-File-BaseDir 
@@ -16010,6 +16049,7 @@ unsorted:
   - perl-Module-ScanDeps 
   - perl-Module-Starter 
   - perl-Module-Util 
+  - perl-Mojo-DOM58 
   - perl-Mojo-IOLoop-ReadWriteProcess 
   - perl-Mojo-Pg 
   - perl-Mojo-RabbitMQ-Client: [x86_64] 
@@ -16734,7 +16774,6 @@ unsorted:
   - plexus-component-metadata-javadoc 
   - plexus-components-pom 
   - plexus-containers-component-annotations 
-  - plexus-containers-component-javadoc 
   - plexus-containers-container-default 
   - plexus-containers-javadoc 
   - plexus-i18n 
@@ -16971,7 +17010,6 @@ unsorted:
   - preludedb-tools 
   - premake4 
   - presage 
-  - prewikka-core 
   - prewikka-lang 
   - primesieve 
   - primus 
@@ -17009,6 +17047,7 @@ unsorted:
   - projectM-devel 
   - projectlibre 
   - prometheus-client-model-source 
+  - prometheus-cpp-devel 
   - pronsole 
   - pronterface 
   - prosody 
@@ -18707,8 +18746,6 @@ unsorted:
   - python2-napalm-asa 
   - python2-napalm-procurve 
   - python2-natsort 
-  - python2-nautilus 
-  - python2-nautilus-devel 
   - python2-nbconvert 
   - python2-nbdime 
   - python2-nbformat 
@@ -18930,7 +18967,6 @@ unsorted:
   - python2-prelude-correlator 
   - python2-premailer 
   - python2-pretend 
-  - python2-prewikka 
   - python2-proboscis 
   - python2-process-tests 
   - python2-proglog 
@@ -21263,6 +21299,8 @@ unsorted:
   - python3-odorik 
   - python3-oic 
   - python3-onionshare 
+  - python3-onnx 
+  - python3-onnx-devel 
   - python3-opcodes 
   - python3-openapi-core 
   - python3-openapi-spec-validator 
@@ -24508,15 +24546,15 @@ unsorted:
   - tensorflow-avx2-gnu-hpc: [x86_64] 
   - tensorflow-avx2-gnu-mvapich2-hpc: [x86_64] 
   - tensorflow-avx2-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-hpc-devel: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-hpc-doc: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-mvapich2-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-mvapich2-hpc-doc: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow-avx2_1_13_1-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-hpc: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-hpc-devel: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-hpc-doc: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-mvapich2-hpc: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-mvapich2-hpc-devel: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-mvapich2-hpc-doc: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow-avx2_1_13_2-gnu-openmpi2-hpc-doc: [x86_64] 
   - tensorflow-devel: [x86_64] 
   - tensorflow-doc: [x86_64] 
   - tensorflow-gnu-hpc: [x86_64] 
@@ -24524,15 +24562,15 @@ unsorted:
   - tensorflow-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow-lite: [x86_64] 
   - tensorflow-lite-devel: [x86_64] 
-  - tensorflow_1_13_1-gnu-hpc: [x86_64] 
-  - tensorflow_1_13_1-gnu-hpc-devel: [x86_64] 
-  - tensorflow_1_13_1-gnu-hpc-doc: [x86_64] 
-  - tensorflow_1_13_1-gnu-mvapich2-hpc: [x86_64] 
-  - tensorflow_1_13_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - tensorflow_1_13_1-gnu-mvapich2-hpc-doc: [x86_64] 
-  - tensorflow_1_13_1-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow_1_13_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow_1_13_1-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow_1_13_2-gnu-hpc: [x86_64] 
+  - tensorflow_1_13_2-gnu-hpc-devel: [x86_64] 
+  - tensorflow_1_13_2-gnu-hpc-doc: [x86_64] 
+  - tensorflow_1_13_2-gnu-mvapich2-hpc: [x86_64] 
+  - tensorflow_1_13_2-gnu-mvapich2-hpc-devel: [x86_64] 
+  - tensorflow_1_13_2-gnu-mvapich2-hpc-doc: [x86_64] 
+  - tensorflow_1_13_2-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow_1_13_2-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow_1_13_2-gnu-openmpi2-hpc-doc: [x86_64] 
   - tepl-4-lang 
   - tepl-devel 
   - termcap 
@@ -32477,6 +32515,8 @@ unsorted:
   - unshield-devel 
   - unzip-rcc 
   - unzix 
+  - upb-devel 
+  - upb-source 
   - update-bootloader-rpm-macros 
   - update-checker 
   - update-desktop-files 
@@ -32917,6 +32957,8 @@ unsorted:
   - winpr2-devel 
   - winrs 
   - wipe 
+  - wireguard-kmp-pae: [i586] 
+  - wireguard-tools 
   - wireshark-devel 
   - wireshark-plugin-libvirt 
   - withlock 
@@ -33246,6 +33288,7 @@ unsorted:
   - xmvn-parent 
   - xmvn-resolve 
   - xmvn-subst 
+  - xmvn-tools-javadoc 
   - xob 
   - xom 
   - xonotic 
