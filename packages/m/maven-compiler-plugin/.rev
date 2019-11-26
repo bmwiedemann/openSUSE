@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>690931</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c08def5c44b726016280942761ed07b2</srcmd5>
+    <version>3.8.0</version>
+    <time>1574783729</time>
+    <user>dimstar_suse</user>
+    <comment>fix build against plexus-languages &gt;= 1.0</comment>
+    <requestid>750520</requestid>
+  </revision>
 </revisionlist>

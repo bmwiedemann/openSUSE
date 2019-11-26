@@ -1,7 +1,7 @@
 #
-# spec file for package maven
+# spec file for package maven-compiler-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ URL:            http://maven.apache.org/plugins/maven-compiler-plugin
 Source0:        http://archive.apache.org/dist/maven/plugins/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
+Patch1:         00-plexus-languages-1.0.patch
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
@@ -87,6 +88,7 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %if %{with bootstrap}
@@ -106,7 +108,10 @@ build-jar-repository -s lib \
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \
-	-Dmaven.test.skip=true -Dsource=7 \
+	-Dmaven.test.skip=true \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=7 \
+%endif
 	package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 
