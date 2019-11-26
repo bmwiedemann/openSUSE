@@ -1,7 +1,7 @@
 #
 # spec file for package maven-invoker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           maven-invoker
-Version:        2.2
+Version:        3.0.1
 Release:        0
 Summary:        An API for firing a maven build in a clean environment
 License:        Apache-2.0
@@ -31,10 +31,12 @@ Patch1:         %{name}-MSHARED-279.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
+BuildRequires:  maven-shared-utils
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  unzip
+Requires:       mvn(org.apache.maven.shared:maven-shared-utils)
 Requires:       mvn(org.codehaus.plexus:plexus-component-annotations)
 Requires:       mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
@@ -73,7 +75,7 @@ cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus-containers/plexus-component-annotations
+build-jar-repository -s lib plexus/utils plexus-containers/plexus-component-annotations maven-shared-utils/maven-shared-utils
 %if %{with tests}
   export M2_HOME=%{_datadir}/xmvn
 %endif
