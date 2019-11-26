@@ -40,4 +40,12 @@
     <comment>New stable rel (forwarded request 624884 from iznogood)</comment>
     <requestid>624995</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54f281e013afd0a98c78a42f51a52362</srcmd5>
+    <version>4.2.1</version>
+    <time>1574784223</time>
+    <user>dimstar_suse</user>
+    <comment>new stable rel (forwarded request 750075 from iznogood)</comment>
+    <requestid>750929</requestid>
+  </revision>
 </revisionlist>
