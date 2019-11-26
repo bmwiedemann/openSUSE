@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Nov 20 10:17:45 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to version 38
+  38 (19-Jul-2019)
+    - Add `maven-dependency-plugin` as managed, with version 3.1.1
+    - `version.javadoc.plugin` to 3.0.1 from 3.0.0-M1
+  37 (20-May-2019)
+    - `version.plugin.deploy` to 3.0.0-M1 from 2.8.2
+    - `version.plugin.install` to 3.0.0-M1 from 2.5.2
+    - `version.plugin.jar` to 3.1.2 from 2.5
+    - `version.plugin.source` to 3.0.1 from 2.1.2
+    - `version.plugin.surefire` to 2.22.2 from 2.22.0 (for JDK11)
+    - `jdepend-pmaven-plugin` to 2.0 from 2.0-beta-2
+  36 (18-May-2019)
+    - `version.plugin.bundle` to 4.2.0 (from 3.2.0)
+  35 (04-Mar-2019)
+    - Update `version.plugin.shade` to `3.2.1` (from `2.4.3`)
+    - Moditect now `1.0.0.Beta2`
+  34 (05-Dec-2018)
+    - Update `version.plugin.compiler` to 3.8.0 (from 3.7.0)
+    - Update `version.plugin.surefire` to 2.22.0 (from 2.17)
+    - Add new `version.plugin.moditect` at 1.0.0.Beta1;
+  default version for "org.moditect#moditect-maven-plugin"
+    - Update `asm` to `7.0`
+  32 (27-Mar-2018)
+    - Update `maven-clean-plugin` to 2.6.1 (from 2.5)
+    - Update `maven-compiler-plugin` to 3.7.0 (from 3.2)
+    - Update `maven-deploy-plugin` to 2.8.2 (from 2.7)
+    - Update `maven-install-plugin` to 2.5.2 (from 2.4)
+    - Update `maven-javadoc-plugin` to 3.0.0-M1 for Java 9
+    - Update `maven-resources-plugin` to 2.7 (from 2.6)
+    - Update `maven-gpg-pluging` to 1.6 (from 1.4)
+  31 (09-Sep-2017)
+    - Update `maven-replacer-plugin` 1.5.2 -> 1.5.3
+    - Reorganize dependency management slightly
+  30 (09-Aug-2017)
+    - Update `cobertura-maven-plugin` 2.6 -> 2.7
+  (to work with Java 8)
+    - Make `maven-enforcer-plugin` version pluggable, update 1.3.1 -> 1.4.1
+  28 (24-Feb-2017)
+    - Update maven-bundle-plugin: 3.0.1 -> 3.2.0
+    - Remove "_nosuses=false" from bundle plugin
+    - Update maven-install-plugin: 2.3.1 -> 2.4 (to allow 'skip')
+  27 (29-Apr-2016)
+    - Update maven-release-plugin: 2.5.2 -> 2.5.3
+    - Update maven-shade-plugin:   2.4   -> 2.4.3
+    - Update maven-bundle-plugin:  2.5.3 -> 3.0.1
+
+-------------------------------------------------------------------
 Tue Apr 30 15:00:19 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of fasterxml oss-parent version 26
