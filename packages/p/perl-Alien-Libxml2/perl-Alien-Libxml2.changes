@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Nov 18 11:14:40 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Initial packaging
+   0.11      2019-10-28 09:54:24 -0600
+     - Production release identical to 0.11.
+   0.10_01   2019-07-05 09:36:21 -0400
+     - Prefer xml2-config over pkg-config (gh#11, gh#12)
+   0.09      2019-05-14 06:57:21 -0600
+     - Production release identical to 0.08_01.
+   0.08_01   2019-05-13 22:10:45 -0600
+     - Fix bug in xml2-config logic
+   0.07      2019-03-27 11:37:47 -0400
+     - Add ability to find libxml2 via pkg-config (requires Alien::Build
+       1.61 or better).  Previous methods for finding libxml2 like
+       xml2-config or if -lxml2 happens to work will still work (gh#6).
+   0.06      2019-03-19 22:54:55 -0400
+     - Fixes for Windows (gh#2, gh#3)
+   0.05      2019-03-03 14:36:02 -0500
+     - Use http instead of ftp to fetch libxml2 sources.
+   0.04_01   2018-07-10 14:15:41 -0400
+     - Fixed the blacklist of bad versions of libxml2.  It is based
+       on the list of versions rejected by XML-LibXML.
+     - As with XML-LibXML, you can force Alien-Libxml2 to install by
+       setting the environment variable FORCE to a true value.
+   0.03      2017-09-22 06:46:14 -0400
+     - Look for libxml2 in some standard places.
+       OS X, for example provides a libxml2, but (unhelpfully) does not
+       provide the .pc file to go along with it.
+     - Do not accept same bad versions refused by XML::LibXML
+       on share install
+   0.02      2017-08-08 15:17:54 -0400
+     - Require Alien::Build 0.73 for bug fixes
+       related to parallel builds
+   0.01      2017-03-30 18:05:22 -0400
+     - initial version
