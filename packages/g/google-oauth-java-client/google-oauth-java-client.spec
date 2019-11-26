@@ -1,7 +1,7 @@
 #
 # spec file for package google-oauth-java-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ Google App Engine.
 
 %package java6
 Summary:        Google OAuth Client Java 6 extensions
+Group:          Development/Libraries/Java
 
 %description java6
 Java 6 (and higher) extensions to the
@@ -53,12 +54,14 @@ Google OAuth Client Library for Java.
 
 %package parent
 Summary:        Google OAuth Client Parent POM
+Group:          Development/Libraries/Java
 
 %description parent
 Parent POM for the Google OAuth Client Library for Java.
 
 %package servlet
 Summary:        Google OAuth Client Servlet and JDO extensions
+Group:          Development/Libraries/Java
 
 %description servlet
 Servlet and JDO extensions to the
@@ -128,7 +131,10 @@ This package contains javadoc for %{name}.
 
 %build
 
-%{mvn_build} -s -f -- -Dsource=6
+%{mvn_build} -s -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
