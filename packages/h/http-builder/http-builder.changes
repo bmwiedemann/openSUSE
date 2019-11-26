@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 24 12:38:44 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+- Run fdupes on javadoc
+
+-------------------------------------------------------------------
 Sun Nov 17 20:02:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of http-builder 0.7.2

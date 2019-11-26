@@ -1,7 +1,7 @@
 #
 # spec file for package http-builder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://github.com/jgritman/httpbuilder
 Source0:        https://github.com/jgritman/httpbuilder/archive/%{name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.sf.json-lib:json-lib)
 BuildRequires:  mvn(net.sourceforge.nekohtml:nekohtml)
@@ -103,10 +104,14 @@ rm src/test/groovy/groovyx/net/http/HttpURLClientTest.groovy
 
 %build
 
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 # README file contains also project license
