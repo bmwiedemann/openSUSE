@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-codestyle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-codestyle
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        Pytest plugin to run pycodestyle
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycodestyle
 Requires:       python-pytest
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 

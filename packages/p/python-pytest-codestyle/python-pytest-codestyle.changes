@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 18 08:07:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.0:
+  * Read native config of pycodestyle (#58)
+  * Remove fnmatch (#64)
+  * Rename 'codestyle' to 'pycodestyle' (#59)
+  * Rename test_pytest_codestyle.py to test_pytest_pycodestyle.py (#60)
+  * Update README.md (#62)
+- Update the patch fix-super.patch that fixes python2 execution
+
+-------------------------------------------------------------------
 Thu Aug 22 08:49:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix pytest call
