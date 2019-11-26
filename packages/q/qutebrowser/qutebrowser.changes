@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 26 04:39:55 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 1.8.2
+Fixed
+  * Unbinding keys via config.bind(key, None) accidentally worked
+    in v1.7.0 but raises an exception in v1.8.0. It now works
+    again, but is deprecated and shows an error. Note that
+    :config-py-write did write such invalid lines before v1.8.0,
+    so existing config files might need adjustments.
+  * The readability-js userscript now handles encodings correctly
+    (which it didn't before for some websites).
+  * can now be used to paste text starting with a hyphen.
+  * Following hints via the number keypad now works properly again.
+  * Errors while reading the state file are now displayed instead
+    of causing a crash.
+  * Crash when using :debug-log-level without a console attached.
+  * Downloads are now hidden properly when the browser is in
+    fullscreen mode.
+  * Crash when setting colors.webpage.bg to an empty value with
+    QtWebKit.
+  * Crash when the history database file is not a proper sqlite
+    database.
+
+-------------------------------------------------------------------
 Thu Oct 17 22:57:12 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.8.1

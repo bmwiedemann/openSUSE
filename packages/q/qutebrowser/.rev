@@ -1080,4 +1080,31 @@ Changed
     netrc files.</comment>
     <requestid>740914</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e71344b9859baba876d3a12ccbe578ff</srcmd5>
+    <version>1.8.2</version>
+    <time>1574784179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2
+Fixed
+  * Unbinding keys via config.bind(key, None) accidentally worked
+    in v1.7.0 but raises an exception in v1.8.0. It now works
+    again, but is deprecated and shows an error. Note that
+    :config-py-write did write such invalid lines before v1.8.0,
+    so existing config files might need adjustments.
+  * The readability-js userscript now handles encodings correctly
+    (which it didn't before for some websites).
+  * can now be used to paste text starting with a hyphen.
+  * Following hints via the number keypad now works properly again.
+  * Errors while reading the state file are now displayed instead
+    of causing a crash.
+  * Crash when using :debug-log-level without a console attached.
+  * Downloads are now hidden properly when the browser is in
+    fullscreen mode.
+  * Crash when setting colors.webpage.bg to an empty value with
+    QtWebKit.
+  * Crash when the history database file is not a proper sqlite
+    database.</comment>
+    <requestid>750898</requestid>
+  </revision>
 </revisionlist>
