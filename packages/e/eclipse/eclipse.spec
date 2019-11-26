@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,7 @@ Patch2:         eclipse-ignore-version-when-calculating-home.patch
 Patch3:         eclipse-remove-jgit-provider.patch
 Patch4:         eclipse-secondary-arches.patch
 Patch5:         eclipse-debug-symbols.patch
-Patch6:  eclipse-test-support.patch
+Patch6:         eclipse-test-support.patch
 # https://bugs.eclipse.org/bugs/show_bug.cgi?id=408138
 Patch12:        eclipse-fix-dropins.patch
 # org.mockito -> org.mockito.mockito-core
@@ -108,6 +108,8 @@ Patch30:        eclipse-hide-droplets-from-install-wizard.patch
 Patch31:        eclipse-suse-batik.patch
 # Fix build of ImageDescriptor.createImage(boolean, Device)
 Patch32:        eclipse-imagedescriptor.patch
+# Fix build on ppc64 big endian
+Patch33:        eclipse-ppc64.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -140,6 +142,8 @@ BuildRequires:  batik-css >= 1.10
 BuildRequires:  cbi-plugins
 BuildRequires:  desktop-file-utils
 BuildRequires:  easymock
+BuildRequires:  eclipse-ecf-core >= 3.14.1
+BuildRequires:  eclipse-emf-core > 2.14.99
 BuildRequires:  eclipse-license2
 BuildRequires:  gcc
 BuildRequires:  glassfish-el > 3.0.0
@@ -206,8 +210,6 @@ BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  eclipse-ecf-core >= 3.14.1
-BuildRequires:  eclipse-emf-core > 2.14.99
 BuildConflicts: java-devel >= 9
 %if %{with bootstrap}
 Name:           eclipse-bootstrap
@@ -497,6 +499,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch30 -p1
 %patch31 -p1
 %patch32 -p1
+%patch33 -p1
 
 # Use ecj when bootstrapping
 %if %{with bootstrap}

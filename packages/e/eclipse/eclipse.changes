@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 24 06:50:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-ppc64.patch
+    + Fix build of SWT on ppc64 big endian
+- Modified patch:
+  * eclipse-secondary-arches.patch
+    + Fix build on ppc64 big endian
+
+-------------------------------------------------------------------
 Mon Nov 11 12:23:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of eclipse 4.9.0 as a _multibuild package in
