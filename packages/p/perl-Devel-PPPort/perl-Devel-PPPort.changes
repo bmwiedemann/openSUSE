@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov  8 10:40:14 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.55
+   see /usr/share/doc/packages/perl-Devel-PPPort/Changes
+
+   3.55 - 2019-11-07
+  
+    * Fix p5-Text-Xslate on Perl 5.8.5 (Nicolas R)
+    * Fix EBCDIC build problem (Karl Williamson)
+    * Fix isGRAPH_L1() bug (Karl Williamson)
+    * utf8_to_uvchr_buf: Fix error checking on early EBCDICs and proper length (Karl Williamson)
+    * HACKERS: fix typos and clarification (Karl Williamson)
+    * Update bugtracker and repository URLs (Nicolas R)  (upstream/urls)
+    * Add warning about UTF-8 unreliable in early perls (Karl Williamson)
+    * Add withinCOUNT and inRANGE (Karl Williamson)
+    * Implement G_RETHROW for eval_sv (Pali)
+    * Backport some isFOO_LC macros (Karl Williamson)
+    * Backport isFOO_LC_utf8_safe() (Karl Williamson)
+    * Backport toFOO_uvchr() (Karl Williamson)
+    * Backport isFOO_uvchr() (Karl Williamson)
+    * Backport isFOO_utf8_safe() macros (Karl Williamson)
+    * Backport toLOWER_utf8_safe and kin (Karl Williamson)
+    * Backport UTF8_MAXBYTES_CASE (Karl Williamson)
+    * Backport UTF8_CHK_SKIP (Karl Williamson)
+    * Backport UTF8_SKIP (Karl Williamson)
+    * Backport UNI to/from NATIVE (Karl Williamson)
+
+-------------------------------------------------------------------
 Sat Sep 28 13:45:02 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.54
