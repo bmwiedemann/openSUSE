@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 23 22:51:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.38.3:
+  + Autotools: Dist meson build files.
+  + Data: Remove useless Comment: from rygel.desktop.
+
+-------------------------------------------------------------------
 Sun Oct 20 07:07:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.38.2:
