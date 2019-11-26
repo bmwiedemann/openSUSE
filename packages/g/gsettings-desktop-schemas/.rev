@@ -439,4 +439,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736576</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>a864a8438f9364baa9383849147264de</srcmd5>
+    <version>3.34.0</version>
+    <time>1574784197</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing bug reference needed for SP2 submit (forwarded request 749780 from mgorse)</comment>
+    <requestid>750924</requestid>
+  </revision>
 </revisionlist>
