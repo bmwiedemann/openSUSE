@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 25 20:10:15 UTC 2019 - markus.beth@web.de
+
+- update to version 1.9.3
+  * Added IMAP CLIENTID / SMTP CLIENTID support
+  * Use Cyrus SASL 2.1.27
+- update to version 1.9.2
+  * Support of TLS SNI
+  * LMDB for cache DB
+  * Fixed build with recent versions of curl
+
+-------------------------------------------------------------------
 Fri Sep 21 21:01:32 UTC 2018 - markus.beth@web.de
 
 - update to version 1.9.1
