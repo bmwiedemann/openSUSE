@@ -162,4 +162,31 @@
   use-system-qtwebengine-files.patch</comment>
     <requestid>749298</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7f368d3a4a1dfaf3af1128166404c206</srcmd5>
+    <version>3.3.3</version>
+    <time>1574784624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3:
+  Improvements:
+  * Tie button behaves as a toggle now
+  * Enable changing notes duration if selecting note stem, hook or
+    a range
+  * Visual improvements for palettes
+  * Mark notes that are out of instrument range with red or yellow
+    color even when they are selected
+  * Save Online is now fully synchronised with the musescore.com
+    upload page
+  Fixes
+  * Export Pdf on Mac with Muse Jazz Text was garbled and
+    unreadable if no printers were setup on a machine
+  * Entering notes with mouse failed in Italian TAB
+  * Scoreview jumped back to start of score during note input on
+    (auto)save
+  * Sticking could not be copy-pasted
+  * Extensions could not be installed on macOS Catalina
+- Update correct-revision.patch
+</comment>
+    <requestid>751057</requestid>
+  </revision>
 </revisionlist>
