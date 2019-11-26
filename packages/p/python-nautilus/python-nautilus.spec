@@ -1,7 +1,7 @@
 #
 # spec file for package python-nautilus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name nautilus-python
+%define skip_python2 1
 
 Name:           python-nautilus
 Version:        1.2.3
@@ -40,10 +41,6 @@ Requires:       %{name}-common-files = %{version}
 Requires:       python-gobject
 # we can't have automatic typelib() Requires here: it's C code: PyImport_ImportModule("gi.repository.Nautilus")
 Requires:       typelib(Nautilus)
-%ifpython2
-Obsoletes:      %{oldpython}-nautilus < 1.2.1
-Provides:       %{oldpython}-nautilus = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -54,7 +51,6 @@ so that Nautilus functionality can be easily extended.
 %package -n %{name}-common-files
 Summary:        Python nautilus files shared between python interpreter versions
 Group:          Development/Libraries/Python
-Requires:       %{name} = %{version}
 Provides:       %{python_module nautilus-common-files = %{version}}
 
 %description -n %{name}-common-files
