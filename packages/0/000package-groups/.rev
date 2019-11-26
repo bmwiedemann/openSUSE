@@ -668,4 +668,12 @@ remove obsolete _opt patterns</comment>
     <time>1573122656</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="94" vrev="92">
+    <srcmd5>492c96dce14c80579f1bf09a2e3cd685</srcmd5>
+    <version>unknown</version>
+    <time>1574784552</time>
+    <user>dimstar_suse</user>
+    <comment>Java bootstrap packages that should not end up on user machine</comment>
+    <requestid>750991</requestid>
+  </revision>
 </revisionlist>
