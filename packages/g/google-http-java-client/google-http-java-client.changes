@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 12:32:45 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
 Wed Nov 13 06:27:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of google-http-java-client 1.22.0

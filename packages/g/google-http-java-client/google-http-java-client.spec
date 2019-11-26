@@ -1,7 +1,7 @@
 #
 # spec file for package google-http-java-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/google/google-http-java-client/
 Source0:        https://github.com/google/google-http-java-client/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  protobuf-devel
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
 BuildRequires:  mvn(com.google.code.findbugs:findbugs)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
@@ -42,7 +43,6 @@ BuildRequires:  mvn(org.codehaus.jackson:jackson-core-asl)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildRequires:  mvn(xpp3:xpp3)
-BuildRequires:  protobuf-devel
 # google-http-client/src/main/java/com/google/api/client/util/Base64.java
 Provides:       bundled(apache-commons-codec) = 1.8
 BuildArch:      noarch
@@ -58,48 +58,56 @@ web (EE), Android, and Google App Engine.
 
 %package findbugs
 Summary:        Google HTTP Client Findbugs plugin
+Group:          Development/Libraries/Java
 
 %description findbugs
 Google APIs Client Library Findbugs custom plugin.
 
 %package gson
 Summary:        Google HTTP Client GSON extensions
+Group:          Development/Libraries/Java
 
 %description gson
 GSON extensions to the Google HTTP Client Library for Java.
 
 %package jackson
 Summary:        Google HTTP Client Jackson extensions
+Group:          Development/Libraries/Java
 
 %description jackson
 Jackson extensions to the Google HTTP Client Library for Java.
 
 %package jackson2
 Summary:        Google HTTP Client Jackson 2 extensions
+Group:          Development/Libraries/Java
 
 %description jackson2
 Jackson 2 extensions to the Google HTTP Client Library for Java.
 
 %package jdo
 Summary:        Google HTTP Client JDO extensions
+Group:          Development/Libraries/Java
 
 %description jdo
 JDO extensions to the Google HTTP Client Library for Java.
 
 %package parent
 Summary:        Google HTTP Client Parent POM
+Group:          Development/Libraries/Java
 
 %description parent
 Parent POM for the Google HTTP Client Library for Java.
 
 %package protobuf
 Summary:        Google HTTP Client Protocol Buffer extensions
+Group:          Development/Libraries/Java
 
 %description protobuf
 Protocol Buffer extensions to the Google HTTP Client Library for Java.
 
 %package test
 Summary:        Google HTTP Client Test support
+Group:          Development/Libraries/Java
 
 %description test
 Shared classes used for testing of artifacts in the
@@ -107,6 +115,7 @@ Google HTTP Client Library for Java.
 
 %package xml
 Summary:        Google HTTP Client XML extensions
+Group:          Development/Libraries/Java
 
 %description xml
 XML extensions to the Google HTTP Client Library for Java.
@@ -229,7 +238,10 @@ rm -r google-http-client/src/test/java/com/google/api/client/http/apache/ApacheH
 
 %build
 
-%{mvn_build} -s -f -- -Dsource=6
+%{mvn_build} -s -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
