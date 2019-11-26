@@ -29,7 +29,7 @@ Wed Sep 11 11:47:40 UTC 2019 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Tue Sep 10 16:01:35 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
-- Update to version 1.71.0
+- Update to version 1.71.0 (jsc#SLE-8571)
   Breaking changes:
   * Uuid: MD5 name-based uuid generation was corrected to be identical
     on all endian systems. Define BOOST_UUID_COMPAT_PRE_1_71_MD5 to
