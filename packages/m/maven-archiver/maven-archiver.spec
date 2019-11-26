@@ -1,7 +1,7 @@
 #
 # spec file for package maven-archiver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           maven-archiver
-Version:        3.2.0
+Version:        3.5.0
 Release:        0
 Summary:        Maven Archiver
 License:        Apache-2.0
@@ -27,21 +27,19 @@ URL:            http://maven.apache.org/shared/maven-archiver/
 Source0:        http://repo1.maven.org/maven2/org/apache/maven/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 Patch0:         0001-Port-tests-to-Eclipse-Aether.patch
-# Test fails with OpenJDK on Linux
-# Reported upstream: https://issues.apache.org/jira/browse/MSHARED-448
-Patch1:         0002-MSHARED-448-Skip-failing-assertion.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
 BuildRequires:  maven-shared-utils
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
-BuildRequires:  plexus-archiver
-BuildRequires:  plexus-interpolation
+BuildRequires:  plexus-archiver >= 4.2.0
+BuildRequires:  plexus-interpolation >= 1.25
+BuildRequires:  plexus-utils >= 3.3.0
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
+BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -68,7 +66,6 @@ Javadoc for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 %patch0 -p1
-%patch1 -p1
 
 %build
 mkdir -p lib

@@ -10,11 +10,11 @@
 
   <property name="project.groupId" value="org.apache.maven"/>
   <property name="project.artifactId" value="maven-archiver"/>
-  <property name="project.version" value="3.2.0"/>
+  <property name="project.version" value="3.5.0"/>
   <property name="project.name" value="Apache Maven Archiver"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
-  <property name="spec.version" value="3.2"/>
+  <property name="spec.version" value="3.5"/>
 
   <property name="compiler.source" value="1.6"/>
   <property name="compiler.target" value="${compiler.source}"/>
