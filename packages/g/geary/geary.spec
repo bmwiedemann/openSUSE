@@ -1,7 +1,7 @@
 #
 # spec file for package geary
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        LGPL-2.1-or-later AND CC-BY-3.0 AND BSD-2-Clause
