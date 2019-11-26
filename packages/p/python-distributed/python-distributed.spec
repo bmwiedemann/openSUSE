@@ -1,7 +1,7 @@
 #
 # spec file for package python-distributed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Test requires network connection
 %bcond_with     test
 Name:           python-distributed
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
