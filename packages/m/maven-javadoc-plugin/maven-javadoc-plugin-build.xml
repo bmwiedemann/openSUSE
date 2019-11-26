@@ -14,10 +14,10 @@
             value="The Apache Maven Javadoc Plugin is a plugin that uses the javadoc tool for generating javadocs for the specified project."/>
   <property name="project.groupId" value="org.apache.maven.plugins"/>
   <property name="project.artifactId" value="maven-javadoc-plugin"/>
-  <property name="project.version" value="3.0.1"/>
+  <property name="project.version" value="3.1.1"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
-  <property name="spec.version" value="3.0"/>
+  <property name="spec.version" value="3.1"/>
 
   <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>

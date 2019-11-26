@@ -1,7 +1,7 @@
 #
-# spec file for package maven
+# spec file for package maven-javadoc-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-javadoc-plugin
-Version:        3.0.1
+Version:        3.1.1
 Release:        0
 Summary:        Maven plugin for creating javadocs
 License:        Apache-2.0
@@ -58,6 +58,7 @@ BuildRequires:  maven-invoker
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-reporting-api
+BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver
@@ -125,8 +126,7 @@ cp %{SOURCE1} build.xml
 %patch1 -p1
 %patch2 -p1
 
-%pom_remove_plugin :maven-enforcer-plugin
-
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 %pom_remove_dep :::test:
 
 %build
@@ -159,6 +159,7 @@ build-jar-repository -s lib \
 	maven/maven-settings \
 	maven-plugin-tools/maven-plugin-annotations \
 	maven-reporting-api/maven-reporting-api \
+	maven-shared-utils/maven-shared-utils \
 	maven-wagon/provider-api \
 	objectweb-asm/asm \
 	org.eclipse.sisu.inject \
@@ -178,6 +179,9 @@ build-jar-repository -s lib \
 %else
 xmvn --batch-mode --offline \
 	-Dmaven.test.skip=true -DmavenVersion=3.5.0 \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=7 \
+%endif
 	package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 

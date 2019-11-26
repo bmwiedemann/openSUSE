@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:40:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.1
+- Modified patch:
+  * maven-javadoc-plugin-bootstrap-resources.patch
+    + Regenerate patch from the non-bootstrap build
+
+-------------------------------------------------------------------
+Thu Nov 21 16:33:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-invoker-3.0.1 that has a new dependency
+  on maven-shared-utils
+
+-------------------------------------------------------------------
 Mon Oct  7 13:50:06 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible-footer.patch to override build date (boo#1047218)
