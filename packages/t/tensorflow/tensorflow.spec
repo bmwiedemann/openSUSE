@@ -1,7 +1,7 @@
 #
 # spec file for package tensorflow
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 #
 %define pname tensorflow
-%define vers 1.13.1
-%define _vers 1_13_1
+%define vers 1.13.2
+%define _vers 1_13_2
 %define python_ver_hack python3.[0-9]
 
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -164,7 +164,7 @@ Release:        0
 Summary:        A framework used for deep learning
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND FSFUL AND MIT AND MPL-2.0 AND OpenSSL AND Python-2.0
 Group:          Development/Languages/Python
-Url:            https://www.tensorflow.org/
+URL:            https://www.tensorflow.org/
 Source0:        https://github.com/tensorflow/tensorflow/archive/v%{version}.tar.gz#/tensorflow-%{version}.tar.gz
 Source1:        tensorflow-rpmlintrc
 # IMPORTANT
@@ -174,8 +174,6 @@ Source1:        tensorflow-rpmlintrc
 #   * bazel and the obs version have different symbols due to hidden compiler flags
 # License10: Apache-2.0
 Source10:       https://github.com/bazelbuild/rules_closure/archive/dbb96841cc0a5fb2664c37822803b06dab20c7d1.tar.gz#/rules_closure.tar.gz
-# License11: BSD-3-Clause
-Source11:       https://github.com/protocolbuffers/protobuf/archive/v3.6.1.2.tar.gz#/protobuf_v3.6.1.2.tar.gz
 # License12:  Python-2.0
 Source12:       https://pypi.python.org/packages/bc/cc/3cdb0a02e7e96f6c70bd971bc8a90b8463fda83e264fa9c5c1c98ceabd81/backports.weakref-1.0rc1.tar.gz#/backports.weakref-1.0rc1.tar.gz
 # License13: BSD-3-Clause
@@ -214,30 +212,18 @@ Source28:       https://mirror.bazel.build/docs.python.org/2.7/_sources/license.
 Source29:       https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz#/json-cpp-1.8.4.tar.gz
 # License30: FSFUL
 Source30:       http://www.kurims.kyoto-u.ac.jp/~ooura/fft.tgz#/fft.tar.gz
-# License31: Apache-2.0
-Source31:       https://github.com/grpc/grpc/archive/v1.13.0.tar.gz#/grpc-v1.13.0.gz
-# License32: BSD-3.0
-Source32:       https://github.com/google/re2/archive/2018-10-01.tar.gz#/re2-2018-10-01.tar.gz
 # License33: Apache-2.0
 Source33:       https://github.com/aws/aws-sdk-cpp/archive/1.3.15.tar.gz#/aws-sdk-cpp-1.3.15.tar.gz
 # License34: BSD-3-Clause and Intel
 Source34:       https://github.com/edenhill/librdkafka/archive/v0.11.5.tar.gz#/kafka-v0.11.5.tar.gz
-# The factory protobuf library has other symbols due to hidden compiler flags
 # License35: Apache-2.0
 Source35:       https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/v0.4.0.tar.gz#/google-cloud-cpp.tar.gz
 # License36: Apache-2.0
 Source36:       https://github.com/nlopezgi/bazel-toolchains/archive/3f8c58fe530fedc446de04673bc1e32985887dea.tar.gz#/bazel-toolchains.tar.gz
 # License37: Apache-2.0
 Source37:       https://github.com/bazelbuild/rules_docker/archive/a9bb1dab84cdf46e34d1b34b53a17bda129b5eba.tar.gz#/rules_docker.tar.gz
-# License38: MIT
-Source38:       https://github.com/keras-team/keras-preprocessing/archive/1.0.9.tar.gz#/keras-preprocessing-1.0.9.tar.gz
-# License39: MIT
-Source39:       https://github.com/keras-team/keras-applications/archive/1.0.6.tar.gz#/keras-applications-1.0.6.tar.gz
 # License40: MIT
 Source40:       https://github.com/google/nsync/archive/1.20.1.tar.gz#/google-nsync-1.20.1.tar.gz
-# License41: Apache-2.0
-# something between 1.16.1 and 1.18~pre
-Source41:       https://github.com/grpc/grpc/archive/69b6c047bc767b4d80e7af4d00ccb7c45b683dae.tar.gz#/grpc.tar.gz
 # License42: Apache-2.0
 Source42:       https://github.com/google/flatbuffers/archive/1f5eae5d6a135ff6811724f6c57f911d1f46bb15.tar.gz#/google-flatbuffers-1.10.0~pre.tar.gz
 # License43: BSD and ICU License
@@ -258,6 +244,8 @@ Patch2:         fix_mvapich_mpi_bzl.patch
 Patch3:         tensorflow-make_aws_sdk_work_on_aarch64.patch
 # PATCH-FIX-OPENSUSE - Use installed flatbuffers lib for Tensorflow-Lite
 Patch4:         tensorflow-fix_lite.patch
+Patch5:         remove-keras.patch
+Patch6:         grpc-namespace-corrections.patch
 
 Requires:       python3
 Requires:       python3-Keras-Applications
@@ -295,10 +283,9 @@ BuildRequires:  fdupes
 BuildRequires:  flatbuffers-devel
 %endif
 BuildRequires:  fftw3-devel
-BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
-#BuildRequires:  grpc-devel >= 1.12
-#BuildRequires:  jemalloc-devel
+BuildRequires:  grpc-devel
+BuildRequires:  jemalloc-devel
 BuildRequires:  libjpeg-turbo
 %if 0%{?suse_version} < 1550
 BuildRequires:  libjpeg62-turbo
@@ -311,6 +298,8 @@ BuildRequires:  lmdb-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  pcre-devel
+BuildRequires:  protobuf-devel
+BuildRequires:  protobuf-java
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-Keras-Applications
@@ -321,10 +310,12 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-mock
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-pip
+BuildRequires:  python3-protobuf
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  python3-termcolor
 BuildRequires:  python3-wheel
+BuildRequires:  re2-devel
 BuildRequires:  snappy-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  swig
@@ -397,14 +388,13 @@ This package provides examples from the website.
 # macro for removing nested directories
 %define sanitize_dir() _uglydir=$(ls -d *); shopt -s dotglob;mv $_uglydir/* .; rmdir $_uglydir
 # macro for copying the files to the bazel cache dir
-%define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%(sha256sum %1 | cut -f 1 -d ' ')/; cp %1 %{bz_cachdir}/content_addressable/sha256/$(sha256sum %1 | cut -f 1 -d ' ')/file ; 
+%define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/; cp %1 %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/file ; 
 
 # make clean for rebuild
 mkdir -p %{bazeldir}
 
 #create right direcory for bazel cache which depends on the actual source file
 %makebazelcache %{SOURCE10}
-%makebazelcache %{SOURCE11}
 %makebazelcache %{SOURCE12}
 %makebazelcache %{SOURCE13}
 %makebazelcache %{SOURCE14}
@@ -424,17 +414,12 @@ mkdir -p %{bazeldir}
 %makebazelcache %{SOURCE28}
 %makebazelcache %{SOURCE29}
 %makebazelcache %{SOURCE30}
-%makebazelcache %{SOURCE31}
-%makebazelcache %{SOURCE32}
 %makebazelcache %{SOURCE33}
 %makebazelcache %{SOURCE34}
 %makebazelcache %{SOURCE35}
 %makebazelcache %{SOURCE36}
 %makebazelcache %{SOURCE37}
-%makebazelcache %{SOURCE38}
-%makebazelcache %{SOURCE39}
 %makebazelcache %{SOURCE40}
-%makebazelcache %{SOURCE41}
 %makebazelcache %{SOURCE42}
 %makebazelcache %{SOURCE43}
 %makebazelcache %{SOURCE44}
@@ -442,13 +427,18 @@ mkdir -p %{bazeldir}
 
 # unpack tensorflow
 
-%setup -q -c -n tensorflow-%{version}
+%setup -q -c -n %{pname}-%{version}
 %sanitize_dir
 pwd
 %patch1 -p 1
 %patch2 -p 1
 %patch3 -p 1
 %patch4 -p 1
+%patch5 -p 1
+# grpc patches only needed for TW atm
+%if 0%{?suse_version} > 1500
+%patch6 -p 1
+%endif
 
 echo $MPI_DIR
 
@@ -465,7 +455,6 @@ tar xzf abseil-cpp.tar.gz -C tmp && mv tmp/* absl
 unzip %{SOURCE101} -d neon_2_sse
 tar xzf %{SOURCE102} -C tmp && mv tmp/* farmhash
 # We use installed flatbuffers
-# tar xzf %{SOURCE103} -C tmp && mv tmp/* flatbuffers
 tar xzf %{SOURCE104} -C tmp && mv tmp/* fft2d
 # sed fixes from tensorflow/lite/tools/make/download_dependencies.sh
 sed -i -e 's#static uint32x4_t p4ui_CONJ_XOR = vld1q_u32( conj_XOR_DATA );#static uint32x4_t p4ui_CONJ_XOR; // = vld1q_u32( conj_XOR_DATA ); - Removed by script#' \
@@ -511,8 +500,7 @@ export TF_ENABLE_XLA=0
 export TF_NEED_VERBS=0 
 export TF_NEED_OPENCL=0 
 export TF_NEED_ROCM=0
-export TF_SYSTEM_LIBS="nasm,jpeg,png_archive,org_sqlite,gif_archive,six_archive,astor_archive,termcolor_archive,pcre,swig,curl,lmdb,zlib_archive,snappy,cython"
-#export TF_SYSTEM_LIBS="com_googlesource_code_re2,nasm,jpeg,png_archive,org_sqlite,gif_archive,six_archive,astor_archive,termcolor_archive,pcre,swig,curl,grpc,lmdb,zlib_archive,snappy,cython,jemalloc"
+export TF_SYSTEM_LIBS="com_google_protobuf,com_google_protobuf_cc,protobuf_archive,nasm,com_googlesource_code_re2,nasm,jpeg,png_archive,org_sqlite,gif_archive,six_archive,astor_archive,termcolor_archive,pcre,swig,curl,lmdb,zlib_archive,snappy,cython,grpc"
 %if %{with cuda}
 export TF_NEED_CUDA=1 
 %else
@@ -541,7 +529,7 @@ export PATH=%{_topdir}/bin/:${PATH}
 cd -
 ./configure
 bazel build --repository_cache=%{bz_cachdir} --ignore_unsupported_sandboxing \
-	--verbose_failures --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" \
+	--verbose_failures --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" \
 	%{?copts} --jobs %{?jobs} \
 	//tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package %{_topdir}/%{name}-%{version}

@@ -1,0 +1,2082 @@
+From 8aa4199217e328537cd037009e420f0e1f048d89 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Tue, 15 Oct 2019 17:48:45 +0200
+Subject: [PATCH] grpc namespace corrections
+
+---
+ tensorflow/compiler/xla/rpc/grpc_service.cc        |  22 ++--
+ tensorflow/compiler/xla/rpc/grpc_service.h         |  22 ++--
+ tensorflow/compiler/xla/rpc/grpc_service_main.cc   |   2 +-
+ tensorflow/compiler/xla/rpc/grpc_stub.cc           |  36 +++---
+ .../kernels/test_kernels/bigtable_test_client.cc   |  30 ++---
+ .../kernels/test_kernels/bigtable_test_client.h    |  30 ++---
+ .../contrib/tpu/profiler/capture_tpu_profile.cc    |  12 +-
+ tensorflow/contrib/verbs/grpc_verbs_client.cc      |   4 +-
+ tensorflow/contrib/verbs/grpc_verbs_client.h       |   2 +-
+ tensorflow/contrib/verbs/grpc_verbs_service.cc     |   4 +-
+ tensorflow/contrib/verbs/grpc_verbs_service.h      |   6 +-
+ .../contrib/verbs/grpc_verbs_service_impl.cc       |   2 +-
+ tensorflow/contrib/verbs/grpc_verbs_service_impl.h |  12 +-
+ tensorflow/contrib/verbs/verbs_server_lib.cc       |   2 +-
+ tensorflow/core/debug/debug_grpc_testlib.cc        |   4 +-
+ tensorflow/core/debug/debug_grpc_testlib.h         |   2 +-
+ tensorflow/core/debug/debug_io_utils.cc            |   2 +-
+ tensorflow/core/debug/debug_io_utils.h             |   4 +-
+ tensorflow/core/distributed_runtime/master_test.cc |  12 +-
+ .../rpc/eager/grpc_eager_client.cc                 |   8 +-
+ .../rpc/eager/grpc_eager_service.cc                |  14 +--
+ .../rpc/eager/grpc_eager_service.h                 |  91 +++++++--------
+ .../rpc/eager/grpc_eager_service_impl.cc           |   2 +-
+ .../rpc/eager/grpc_eager_service_impl.h            |   4 +-
+ .../core/distributed_runtime/rpc/grpc_call.h       |  20 ++--
+ .../core/distributed_runtime/rpc/grpc_channel.cc   |   6 +-
+ .../core/distributed_runtime/rpc/grpc_channel.h    |   2 +-
+ .../distributed_runtime/rpc/grpc_client_cq_tag.h   |   2 +-
+ .../distributed_runtime/rpc/grpc_master_service.cc |   6 +-
+ .../distributed_runtime/rpc/grpc_master_service.h  |   6 +-
+ .../rpc/grpc_master_service_impl.cc                |  20 ++--
+ .../rpc/grpc_master_service_impl.h                 | 127 ++++++++++-----------
+ .../distributed_runtime/rpc/grpc_remote_master.cc  |  28 ++---
+ .../distributed_runtime/rpc/grpc_remote_worker.cc  |   6 +-
+ .../distributed_runtime/rpc/grpc_remote_worker.h   |   6 +-
+ .../distributed_runtime/rpc/grpc_rpc_factory.cc    |   2 +-
+ .../distributed_runtime/rpc/grpc_rpc_factory.h     |   4 +-
+ .../distributed_runtime/rpc/grpc_server_lib.cc     |  10 +-
+ .../core/distributed_runtime/rpc/grpc_server_lib.h |   4 +-
+ .../core/distributed_runtime/rpc/grpc_state.h      |   6 +-
+ .../core/distributed_runtime/rpc/grpc_util.h       |   2 +-
+ .../distributed_runtime/rpc/grpc_worker_cache.cc   |   4 +-
+ .../distributed_runtime/rpc/grpc_worker_service.cc |   8 +-
+ .../distributed_runtime/rpc/grpc_worker_service.h  |   7 +-
+ .../rpc/grpc_worker_service_impl.h                 |   5 -
+ 45 files changed, 295 insertions(+), 315 deletions(-)
+
+diff --git a/tensorflow/compiler/xla/rpc/grpc_service.cc b/tensorflow/compiler/xla/rpc/grpc_service.cc
+index d8123a6de2..eeb2728dec 100644
+--- a/tensorflow/compiler/xla/rpc/grpc_service.cc
++++ b/tensorflow/compiler/xla/rpc/grpc_service.cc
+@@ -32,14 +32,14 @@ namespace xla {
+   return tensorflow::ToGrpcStatus(s);
+ }
+ 
+-::grpc::Status GRPCService::Unregister(::grpc::ServerContext* context,
++::grpc::Status GRPCService::Unregister(::grpc_impl::ServerContext* context,
+                                        const UnregisterRequest* arg,
+                                        UnregisterResponse* result) {
+   return DelegateRPC(
+       [this, arg, result]() { return service_->Unregister(arg, result); });
+ }
+ 
+-::grpc::Status GRPCService::DeconstructTuple(::grpc::ServerContext* context,
++::grpc::Status GRPCService::DeconstructTuple(::grpc_impl::ServerContext* context,
+                                              const DeconstructTupleRequest* arg,
+                                              DeconstructTupleResponse* result) {
+   return DelegateRPC([this, arg, result]() {
+@@ -47,21 +47,21 @@ namespace xla {
+   });
+ }
+ 
+-::grpc::Status GRPCService::Compile(::grpc::ServerContext* /*context*/,
++::grpc::Status GRPCService::Compile(::grpc_impl::ServerContext* /*context*/,
+                                     const CompileRequest* arg,
+                                     CompileResponse* result) {
+   return DelegateRPC(
+       [this, arg, result]() { return service_->Compile(arg, result); });
+ }
+ 
+-::grpc::Status GRPCService::Execute(::grpc::ServerContext* /*context*/,
++::grpc::Status GRPCService::Execute(::grpc_impl::ServerContext* /*context*/,
+                                     const ExecuteRequest* arg,
+                                     ExecuteResponse* result) {
+   return DelegateRPC(
+       [this, arg, result]() { return service_->Execute(arg, result); });
+ }
+ 
+-::grpc::Status GRPCService::WaitForExecution(::grpc::ServerContext* context,
++::grpc::Status GRPCService::WaitForExecution(::grpc_impl::ServerContext* context,
+                                              const WaitForExecutionRequest* arg,
+                                              WaitForExecutionResponse* result) {
+   return DelegateRPC([this, arg, result]() {
+@@ -69,7 +69,7 @@ namespace xla {
+   });
+ }
+ 
+-::grpc::Status GRPCService::TransferToClient(::grpc::ServerContext* context,
++::grpc::Status GRPCService::TransferToClient(::grpc_impl::ServerContext* context,
+                                              const TransferToClientRequest* arg,
+                                              TransferToClientResponse* result) {
+   return DelegateRPC([this, arg, result]() {
+@@ -77,7 +77,7 @@ namespace xla {
+   });
+ }
+ 
+-::grpc::Status GRPCService::TransferToServer(::grpc::ServerContext* context,
++::grpc::Status GRPCService::TransferToServer(::grpc_impl::ServerContext* context,
+                                              const TransferToServerRequest* arg,
+                                              TransferToServerResponse* result) {
+   return DelegateRPC([this, arg, result]() {
+@@ -85,7 +85,7 @@ namespace xla {
+   });
+ }
+ 
+-::grpc::Status GRPCService::TransferToInfeed(::grpc::ServerContext* context,
++::grpc::Status GRPCService::TransferToInfeed(::grpc_impl::ServerContext* context,
+                                              const TransferToInfeedRequest* arg,
+                                              TransferToInfeedResponse* result) {
+   return DelegateRPC([this, arg, result]() {
+@@ -94,21 +94,21 @@ namespace xla {
+ }
+ 
+ ::grpc::Status GRPCService::TransferFromOutfeed(
+-    ::grpc::ServerContext* context, const TransferFromOutfeedRequest* arg,
++    ::grpc_impl::ServerContext* context, const TransferFromOutfeedRequest* arg,
+     TransferFromOutfeedResponse* result) {
+   return DelegateRPC([this, arg, result]() {
+     return service_->TransferFromOutfeed(arg, result);
+   });
+ }
+ 
+-::grpc::Status GRPCService::ResetDevice(::grpc::ServerContext* context,
++::grpc::Status GRPCService::ResetDevice(::grpc_impl::ServerContext* context,
+                                         const ResetDeviceRequest* arg,
+                                         ResetDeviceResponse* result) {
+   return DelegateRPC(
+       [this, arg, result]() { return service_->ResetDevice(arg, result); });
+ }
+ 
+-::grpc::Status GRPCService::GetShape(::grpc::ServerContext* context,
++::grpc::Status GRPCService::GetShape(::grpc_impl::ServerContext* context,
+                                      const GetShapeRequest* arg,
+                                      GetShapeResponse* result) {
+   return DelegateRPC(
+diff --git a/tensorflow/compiler/xla/rpc/grpc_service.h b/tensorflow/compiler/xla/rpc/grpc_service.h
+index 3e586b288a..8cdb6f2e02 100644
+--- a/tensorflow/compiler/xla/rpc/grpc_service.h
++++ b/tensorflow/compiler/xla/rpc/grpc_service.h
+@@ -31,47 +31,47 @@ class GRPCService : public grpc::XlaService::Service {
+   static StatusOr<std::unique_ptr<GRPCService>> NewService(
+       se::Platform* platform = nullptr);
+ 
+-  ::grpc::Status Unregister(::grpc::ServerContext* context,
++  ::grpc::Status Unregister(::grpc_impl::ServerContext* context,
+                             const UnregisterRequest* arg,
+                             UnregisterResponse* result) override;
+ 
+-  ::grpc::Status DeconstructTuple(::grpc::ServerContext* context,
++  ::grpc::Status DeconstructTuple(::grpc_impl::ServerContext* context,
+                                   const DeconstructTupleRequest* arg,
+                                   DeconstructTupleResponse* result) override;
+ 
+-  ::grpc::Status Compile(::grpc::ServerContext* context,
++  ::grpc::Status Compile(::grpc_impl::ServerContext* context,
+                          const CompileRequest* arg,
+                          CompileResponse* result) override;
+ 
+-  ::grpc::Status Execute(::grpc::ServerContext* context,
++  ::grpc::Status Execute(::grpc_impl::ServerContext* context,
+                          const ExecuteRequest* arg,
+                          ExecuteResponse* result) override;
+ 
+-  ::grpc::Status WaitForExecution(::grpc::ServerContext* context,
++  ::grpc::Status WaitForExecution(::grpc_impl::ServerContext* context,
+                                   const WaitForExecutionRequest* arg,
+                                   WaitForExecutionResponse* result) override;
+ 
+-  ::grpc::Status TransferToClient(::grpc::ServerContext* context,
++  ::grpc::Status TransferToClient(::grpc_impl::ServerContext* context,
+                                   const TransferToClientRequest* arg,
+                                   TransferToClientResponse* result) override;
+ 
+-  ::grpc::Status TransferToServer(::grpc::ServerContext* context,
++  ::grpc::Status TransferToServer(::grpc_impl::ServerContext* context,
+                                   const TransferToServerRequest* arg,
+                                   TransferToServerResponse* result) override;
+ 
+-  ::grpc::Status TransferToInfeed(::grpc::ServerContext* context,
++  ::grpc::Status TransferToInfeed(::grpc_impl::ServerContext* context,
+                                   const TransferToInfeedRequest* arg,
+                                   TransferToInfeedResponse* result) override;
+ 
+   ::grpc::Status TransferFromOutfeed(
+-      ::grpc::ServerContext* context, const TransferFromOutfeedRequest* arg,
++      ::grpc_impl::ServerContext* context, const TransferFromOutfeedRequest* arg,
+       TransferFromOutfeedResponse* result) override;
+ 
+-  ::grpc::Status ResetDevice(::grpc::ServerContext* context,
++  ::grpc::Status ResetDevice(::grpc_impl::ServerContext* context,
+                              const ResetDeviceRequest* arg,
+                              ResetDeviceResponse* result) override;
+ 
+-  ::grpc::Status GetShape(::grpc::ServerContext* context,
++  ::grpc::Status GetShape(::grpc_impl::ServerContext* context,
+                           const GetShapeRequest* arg,
+                           GetShapeResponse* result) override;
+ 
+diff --git a/tensorflow/compiler/xla/rpc/grpc_service_main.cc b/tensorflow/compiler/xla/rpc/grpc_service_main.cc
+index 522ab99fb1..7ab7cd6e24 100644
+--- a/tensorflow/compiler/xla/rpc/grpc_service_main.cc
++++ b/tensorflow/compiler/xla/rpc/grpc_service_main.cc
+@@ -55,7 +55,7 @@ int RealMain(int argc, char** argv) {
+   std::unique_ptr<xla::GRPCService> service =
+       xla::GRPCService::NewService(platform).ConsumeValueOrDie();
+ 
+-  ::grpc::ServerBuilder builder;
++  ::grpc_impl::ServerBuilder builder;
+   string server_address(
+       absl::StrFormat("%s:%d", any_address ? "[::]" : "localhost", port));
+ 
+diff --git a/tensorflow/compiler/xla/rpc/grpc_stub.cc b/tensorflow/compiler/xla/rpc/grpc_stub.cc
+index 66abf66cfd..92edaeff48 100644
+--- a/tensorflow/compiler/xla/rpc/grpc_stub.cc
++++ b/tensorflow/compiler/xla/rpc/grpc_stub.cc
+@@ -21,57 +21,57 @@ namespace xla {
+ GRPCStub::~GRPCStub() = default;
+ 
+ Status MakeRPC(
+-    const std::function<::grpc::Status(::grpc::ClientContext*)>& rpc_method) {
+-  ::grpc::ClientContext context;
++    const std::function<::grpc::Status(::grpc_impl::ClientContext*)>& rpc_method) {
++  ::grpc_impl::ClientContext context;
+   ::grpc::Status s = rpc_method(&context);
+   return tensorflow::FromGrpcStatus(s);
+ }
+ 
+ Status GRPCStub::TransferToClient(const TransferToClientRequest* request,
+                                   TransferToClientResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->TransferToClient(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::TransferToServer(const TransferToServerRequest* request,
+                                   TransferToServerResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->TransferToServer(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::TransferToInfeed(const TransferToInfeedRequest* request,
+                                   TransferToInfeedResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->TransferToInfeed(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::TransferFromOutfeed(const TransferFromOutfeedRequest* request,
+                                      TransferFromOutfeedResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->TransferFromOutfeed(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::ResetDevice(const ResetDeviceRequest* request,
+                              ResetDeviceResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->ResetDevice(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::Compile(const CompileRequest* request,
+                          CompileResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->Compile(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::Execute(const ExecuteRequest* request,
+                          ExecuteResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->Execute(context, *request, response);
+   });
+ }
+@@ -79,21 +79,21 @@ Status GRPCStub::Execute(const ExecuteRequest* request,
+ Status GRPCStub::ExecuteGraphParallel(
+     const ExecuteGraphParallelRequest* request,
+     ExecuteParallelResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->ExecuteGraphParallel(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::WaitForExecution(const WaitForExecutionRequest* request,
+                                   WaitForExecutionResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->WaitForExecution(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::DeconstructTuple(const DeconstructTupleRequest* request,
+                                   DeconstructTupleResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->DeconstructTuple(context, *request, response);
+   });
+ }
+@@ -101,28 +101,28 @@ Status GRPCStub::DeconstructTuple(const DeconstructTupleRequest* request,
+ Status GRPCStub::GetComputationGraphStats(
+     const ComputationGraphStatsRequest* request,
+     ComputationStatsResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->GetComputationGraphStats(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::GetShape(const GetShapeRequest* request,
+                           GetShapeResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->GetShape(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::GetDeviceHandles(const GetDeviceHandlesRequest* request,
+                                   GetDeviceHandlesResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->GetDeviceHandles(context, *request, response);
+   });
+ }
+ 
+ Status GRPCStub::CreateChannelHandle(const CreateChannelHandleRequest* request,
+                                      CreateChannelHandleResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->CreateChannelHandle(context, *request, response);
+   });
+ }
+@@ -130,7 +130,7 @@ Status GRPCStub::CreateChannelHandle(const CreateChannelHandleRequest* request,
+ Status GRPCStub::ComputeConstantGraph(
+     const ComputeConstantGraphRequest* request,
+     ComputeConstantResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->ComputeConstantGraph(context, *request, response);
+   });
+ }
+@@ -138,7 +138,7 @@ Status GRPCStub::ComputeConstantGraph(
+ // Methods used by GlobalData.
+ Status GRPCStub::Unregister(const UnregisterRequest* request,
+                             UnregisterResponse* response) {
+-  return MakeRPC([this, request, response](::grpc::ClientContext* context) {
++  return MakeRPC([this, request, response](::grpc_impl::ClientContext* context) {
+     return grpc_stub_->Unregister(context, *request, response);
+   });
+ }
+diff --git a/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.cc b/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.cc
+index 3fe71a2ea7..d69646594b 100644
+--- a/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.cc
++++ b/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.cc
+@@ -310,7 +310,7 @@ class MutateRowsResponse : public grpc::ClientReaderInterface<
+ };
+ 
+ grpc::Status BigtableTestClient::MutateRow(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     google::bigtable::v2::MutateRowRequest const& request,
+     google::bigtable::v2::MutateRowResponse* response) {
+   mutex_lock l(mu_);
+@@ -322,14 +322,14 @@ grpc::Status BigtableTestClient::MutateRow(
+   return grpc::Status::OK;
+ }
+ grpc::Status BigtableTestClient::CheckAndMutateRow(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     google::bigtable::v2::CheckAndMutateRowRequest const& request,
+     google::bigtable::v2::CheckAndMutateRowResponse* response) {
+   return grpc::Status(grpc::StatusCode::UNIMPLEMENTED,
+                       "CheckAndMutateRow not implemented.");
+ }
+ grpc::Status BigtableTestClient::ReadModifyWriteRow(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     google::bigtable::v2::ReadModifyWriteRowRequest const& request,
+     google::bigtable::v2::ReadModifyWriteRowResponse* response) {
+   return grpc::Status(grpc::StatusCode::UNIMPLEMENTED,
+@@ -338,7 +338,7 @@ grpc::Status BigtableTestClient::ReadModifyWriteRow(
+ std::unique_ptr<
+     grpc::ClientReaderInterface<google::bigtable::v2::ReadRowsResponse>>
+ BigtableTestClient::ReadRows(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     google::bigtable::v2::ReadRowsRequest const& request) {
+   return MakeUnique<ReadRowsResponse>(this, request);
+ }
+@@ -346,14 +346,14 @@ BigtableTestClient::ReadRows(
+ std::unique_ptr<
+     grpc::ClientReaderInterface<google::bigtable::v2::SampleRowKeysResponse>>
+ BigtableTestClient::SampleRowKeys(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     google::bigtable::v2::SampleRowKeysRequest const& request) {
+   return MakeUnique<SampleRowKeysResponse>(this);
+ }
+ std::unique_ptr<
+     grpc::ClientReaderInterface<google::bigtable::v2::MutateRowsResponse>>
+ BigtableTestClient::MutateRows(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     google::bigtable::v2::MutateRowsRequest const& request) {
+   mutex_lock l(mu_);
+   for (auto i = request.entries().begin(); i != request.entries().end(); ++i) {
+@@ -369,9 +369,9 @@ BigtableTestClient::MutateRows(
+ std::unique_ptr<grpc::ClientAsyncResponseReaderInterface<
+     google::bigtable::v2::MutateRowResponse>>
+ BigtableTestClient::AsyncMutateRow(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     google::bigtable::v2::MutateRowRequest const& request,
+-    grpc::CompletionQueue* cq) {
++    grpc_impl::CompletionQueue* cq) {
+   LOG(WARNING) << "Call to InMemoryDataClient::" << __func__
+                << "(); this will likely cause a crash!";
+   return nullptr;
+@@ -380,9 +380,9 @@ BigtableTestClient::AsyncMutateRow(
+ std::unique_ptr<::grpc::ClientAsyncReaderInterface<
+     ::google::bigtable::v2::SampleRowKeysResponse>>
+ BigtableTestClient::AsyncSampleRowKeys(
+-    ::grpc::ClientContext* context,
++    ::grpc_impl::ClientContext* context,
+     const ::google::bigtable::v2::SampleRowKeysRequest& request,
+-    ::grpc::CompletionQueue* cq, void* tag) {
++    ::grpc_impl::CompletionQueue* cq, void* tag) {
+   LOG(WARNING) << "Call to InMemoryDataClient::" << __func__
+                << "(); this will likely cause a crash!";
+   return nullptr;
+@@ -391,9 +391,9 @@ BigtableTestClient::AsyncSampleRowKeys(
+ std::unique_ptr<::grpc::ClientAsyncReaderInterface<
+     ::google::bigtable::v2::MutateRowsResponse>>
+ BigtableTestClient::AsyncMutateRows(
+-    ::grpc::ClientContext* context,
++    ::grpc_impl::ClientContext* context,
+     const ::google::bigtable::v2::MutateRowsRequest& request,
+-    ::grpc::CompletionQueue* cq, void* tag) {
++    ::grpc_impl::CompletionQueue* cq, void* tag) {
+   LOG(WARNING) << "Call to InMemoryDataClient::" << __func__
+                << "(); this will likely cause a crash!";
+   return nullptr;
+@@ -402,15 +402,15 @@ BigtableTestClient::AsyncMutateRows(
+ std::unique_ptr<grpc::ClientAsyncResponseReaderInterface<
+     google::bigtable::v2::CheckAndMutateRowResponse>>
+ BigtableTestClient::AsyncCheckAndMutateRow(
+-    grpc::ClientContext* context,
++    grpc_impl::ClientContext* context,
+     const google::bigtable::v2::CheckAndMutateRowRequest& request,
+-    grpc::CompletionQueue* cq) {
++    grpc_impl::CompletionQueue* cq) {
+   LOG(WARNING) << "Call to InMemoryDataClient::" << __func__
+                << "(); this will likely cause a crash!";
+   return nullptr;
+ }
+ 
+-std::shared_ptr<grpc::Channel> BigtableTestClient::Channel() {
++std::shared_ptr<grpc_impl::Channel> BigtableTestClient::Channel() {
+   LOG(WARNING) << "Call to InMemoryDataClient::Channel(); this will likely "
+                   "cause a crash!";
+   return nullptr;
+diff --git a/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.h b/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.h
+index 8570590457..df58133279 100644
+--- a/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.h
++++ b/tensorflow/contrib/bigtable/kernels/test_kernels/bigtable_test_client.h
+@@ -32,62 +32,62 @@ class BigtableTestClient : public ::google::cloud::bigtable::DataClient {
+   }
+ 
+   grpc::Status MutateRow(
+-      grpc::ClientContext* context,
++      grpc_impl::ClientContext* context,
+       google::bigtable::v2::MutateRowRequest const& request,
+       google::bigtable::v2::MutateRowResponse* response) override;
+ 
+   grpc::Status CheckAndMutateRow(
+-      grpc::ClientContext* context,
++      grpc_impl::ClientContext* context,
+       google::bigtable::v2::CheckAndMutateRowRequest const& request,
+       google::bigtable::v2::CheckAndMutateRowResponse* response) override;
+ 
+   grpc::Status ReadModifyWriteRow(
+-      grpc::ClientContext* context,
++      grpc_impl::ClientContext* context,
+       google::bigtable::v2::ReadModifyWriteRowRequest const& request,
+       google::bigtable::v2::ReadModifyWriteRowResponse* response) override;
+ 
+   std::unique_ptr<
+       grpc::ClientReaderInterface<google::bigtable::v2::ReadRowsResponse>>
+-  ReadRows(grpc::ClientContext* context,
++  ReadRows(grpc_impl::ClientContext* context,
+            google::bigtable::v2::ReadRowsRequest const& request) override;
+   std::unique_ptr<
+       grpc::ClientReaderInterface<google::bigtable::v2::SampleRowKeysResponse>>
+   SampleRowKeys(
+-      grpc::ClientContext* context,
++      grpc_impl::ClientContext* context,
+       google::bigtable::v2::SampleRowKeysRequest const& request) override;
+ 
+   std::unique_ptr<
+       grpc::ClientReaderInterface<google::bigtable::v2::MutateRowsResponse>>
+-  MutateRows(grpc::ClientContext* context,
++  MutateRows(grpc_impl::ClientContext* context,
+              google::bigtable::v2::MutateRowsRequest const& request) override;
+ 
+   std::unique_ptr<grpc::ClientAsyncResponseReaderInterface<
+       google::bigtable::v2::MutateRowResponse>>
+-  AsyncMutateRow(grpc::ClientContext* context,
++  AsyncMutateRow(grpc_impl::ClientContext* context,
+                  google::bigtable::v2::MutateRowRequest const& request,
+-                 grpc::CompletionQueue* cq) override;
++                 grpc_impl::CompletionQueue* cq) override;
+ 
+   std::unique_ptr<::grpc::ClientAsyncReaderInterface<
+       ::google::bigtable::v2::SampleRowKeysResponse>>
+   AsyncSampleRowKeys(
+-      ::grpc::ClientContext* context,
++      ::grpc_impl::ClientContext* context,
+       const ::google::bigtable::v2::SampleRowKeysRequest& request,
+-      ::grpc::CompletionQueue* cq, void* tag) override;
++      ::grpc_impl::CompletionQueue* cq, void* tag) override;
+ 
+   std::unique_ptr<::grpc::ClientAsyncReaderInterface<
+       ::google::bigtable::v2::MutateRowsResponse>>
+-  AsyncMutateRows(::grpc::ClientContext* context,
++  AsyncMutateRows(::grpc_impl::ClientContext* context,
+                   const ::google::bigtable::v2::MutateRowsRequest& request,
+-                  ::grpc::CompletionQueue* cq, void* tag) override;
++                  ::grpc_impl::CompletionQueue* cq, void* tag) override;
+ 
+   std::unique_ptr<grpc::ClientAsyncResponseReaderInterface<
+       google::bigtable::v2::CheckAndMutateRowResponse>>
+   AsyncCheckAndMutateRow(
+-      grpc::ClientContext* context,
++      grpc_impl::ClientContext* context,
+       const google::bigtable::v2::CheckAndMutateRowRequest& request,
+-      grpc::CompletionQueue* cq) override;
++      grpc_impl::CompletionQueue* cq) override;
+ 
+-  std::shared_ptr<grpc::Channel> Channel() override;
++  std::shared_ptr<grpc_impl::Channel> Channel() override;
+ 
+  private:
+   friend class SampleRowKeysResponse;
+diff --git a/tensorflow/contrib/tpu/profiler/capture_tpu_profile.cc b/tensorflow/contrib/tpu/profiler/capture_tpu_profile.cc
+index 1c5ea2d997..054be2c00f 100644
+--- a/tensorflow/contrib/tpu/profiler/capture_tpu_profile.cc
++++ b/tensorflow/contrib/tpu/profiler/capture_tpu_profile.cc
+@@ -95,8 +95,8 @@ bool Profile(const string& service_addr, const string& logdir, int duration_ms,
+   ProfileRequest request =
+       PopulateProfileRequest(duration_ms, repository_root, session_id, opts);
+ 
+-  ::grpc::ClientContext context;
+-  ::grpc::ChannelArguments channel_args;
++  ::grpc_impl::ClientContext context;
++  ::grpc_impl::ChannelArguments channel_args;
+   // TODO(qiuminxu): use `NewHostPortGrpcChannel` instead once their
+   // `ValidateHostPortPair` checks for empty host string case.
+   channel_args.SetInt(GRPC_ARG_MAX_MESSAGE_LENGTH,
+@@ -140,8 +140,8 @@ bool NewSession(const string& service_addr,
+     new_session_request.add_hosts(hostname);
+   }
+ 
+-  ::grpc::ClientContext context;
+-  ::grpc::ChannelArguments channel_args;
++  ::grpc_impl::ClientContext context;
++  ::grpc_impl::ChannelArguments channel_args;
+   // TODO(qiuminxu): use `NewHostPortGrpcChannel` instead once their
+   // `ValidateHostPortPair` checks for empty host string case.
+   channel_args.SetMaxReceiveMessageSize(std::numeric_limits<int32>::max());
+@@ -226,8 +226,8 @@ void StartMonitoring(const tensorflow::string& service_addr, int duration_ms,
+     MonitorRequest request =
+         PopulateMonitorRequest(duration_ms, monitoring_level);
+ 
+-    ::grpc::ClientContext context;
+-    ::grpc::ChannelArguments channel_args;
++    ::grpc_impl::ClientContext context;
++    ::grpc_impl::ChannelArguments channel_args;
+     channel_args.SetInt(GRPC_ARG_MAX_MESSAGE_LENGTH,
+                         std::numeric_limits<int32>::max());
+     std::unique_ptr<TPUProfiler::Stub> stub =
+diff --git a/tensorflow/contrib/verbs/grpc_verbs_client.cc b/tensorflow/contrib/verbs/grpc_verbs_client.cc
+index 608a9140d3..07c11c2ea0 100644
+--- a/tensorflow/contrib/verbs/grpc_verbs_client.cc
++++ b/tensorflow/contrib/verbs/grpc_verbs_client.cc
+@@ -24,7 +24,7 @@ namespace tensorflow {
+ Status GrpcVerbsClient::GetRemoteAddress(CallOptions* call_options,
+                                          const GetRemoteAddressRequest* request,
+                                          GetRemoteAddressResponse* response) {
+-  ::grpc::ClientContext ctx;
++  ::grpc_impl::ClientContext ctx;
+   ctx.set_fail_fast(false);
+   SetDeadline(&ctx, call_options->GetTimeout());
+   return FromGrpcStatus(stub_->GetRemoteAddress(&ctx, *request, response));
+@@ -37,7 +37,7 @@ Status GrpcVerbsClient::GetRemoteAddress(const GetRemoteAddressRequest* request,
+   return GetRemoteAddress(&call_options, request, response);
+ }
+ 
+-void GrpcVerbsClient::SetDeadline(::grpc::ClientContext* ctx,
++void GrpcVerbsClient::SetDeadline(::grpc_impl::ClientContext* ctx,
+                                   int64 time_in_ms) {
+   if (time_in_ms > 0) {
+     ctx->set_deadline(gpr_time_from_millis(time_in_ms, GPR_TIMESPAN));
+diff --git a/tensorflow/contrib/verbs/grpc_verbs_client.h b/tensorflow/contrib/verbs/grpc_verbs_client.h
+index e07085502f..eb499ec91c 100644
+--- a/tensorflow/contrib/verbs/grpc_verbs_client.h
++++ b/tensorflow/contrib/verbs/grpc_verbs_client.h
+@@ -40,7 +40,7 @@ class GrpcVerbsClient {
+  private:
+   std::unique_ptr<grpc::VerbsService::Stub> stub_;
+ 
+-  void SetDeadline(::grpc::ClientContext* ctx, int64 time_in_ms);
++  void SetDeadline(::grpc_impl::ClientContext* ctx, int64 time_in_ms);
+ 
+   TF_DISALLOW_COPY_AND_ASSIGN(GrpcVerbsClient);
+ };
+diff --git a/tensorflow/contrib/verbs/grpc_verbs_service.cc b/tensorflow/contrib/verbs/grpc_verbs_service.cc
+index af29abd91f..b45b0a6101 100644
+--- a/tensorflow/contrib/verbs/grpc_verbs_service.cc
++++ b/tensorflow/contrib/verbs/grpc_verbs_service.cc
+@@ -26,7 +26,7 @@ limitations under the License.
+ namespace tensorflow {
+ 
+ GrpcVerbsService::GrpcVerbsService(const WorkerEnv* worker_env,
+-                                   ::grpc::ServerBuilder* builder)
++                                   ::grpc_impl::ServerBuilder* builder)
+     : is_shutdown_(false), worker_env_(worker_env) {
+   builder->RegisterService(&verbs_service_);
+   cq_ = builder->AddCompletionQueue().release();
+@@ -158,7 +158,7 @@ Status GrpcVerbsService::GetRemoteAddressSync(
+ 
+ // Create a GrpcVerbsService, then assign it to a given handle.
+ void SetNewVerbsService(GrpcVerbsService** handle, const WorkerEnv* worker_env,
+-                        ::grpc::ServerBuilder* builder) {
++                        ::grpc_impl::ServerBuilder* builder) {
+   *handle = new GrpcVerbsService(worker_env, builder);
+ }
+ 
+diff --git a/tensorflow/contrib/verbs/grpc_verbs_service.h b/tensorflow/contrib/verbs/grpc_verbs_service.h
+index 444c863b94..09dcd0931b 100644
+--- a/tensorflow/contrib/verbs/grpc_verbs_service.h
++++ b/tensorflow/contrib/verbs/grpc_verbs_service.h
+@@ -35,7 +35,7 @@ namespace tensorflow {
+ 
+ class GrpcVerbsService : public AsyncServiceInterface {
+  public:
+-  GrpcVerbsService(const WorkerEnv* worker_env, ::grpc::ServerBuilder* builder);
++  GrpcVerbsService(const WorkerEnv* worker_env, ::grpc_impl::ServerBuilder* builder);
+   ~GrpcVerbsService();
+   void HandleRPCsLoop() override;
+   void Shutdown() override;
+@@ -50,7 +50,7 @@ class GrpcVerbsService : public AsyncServiceInterface {
+   Status GetRemoteAddressSync(const GetRemoteAddressRequest* request,
+                               GetRemoteAddressResponse* response);
+ 
+-  ::grpc::ServerCompletionQueue* cq_;
++  ::grpc_impl::ServerCompletionQueue* cq_;
+   grpc::VerbsService::AsyncService verbs_service_;
+   mutex shutdown_mu_;
+   bool is_shutdown_ GUARDED_BY(shutdown_mu_);
+@@ -64,7 +64,7 @@ class GrpcVerbsService : public AsyncServiceInterface {
+ 
+ // Create a GrpcVerbsService, then assign it to a given handle.
+ void SetNewVerbsService(GrpcVerbsService** handle, const WorkerEnv* worker_env,
+-                        ::grpc::ServerBuilder* builder);
++                        ::grpc_impl::ServerBuilder* builder);
+ 
+ }  // namespace tensorflow
+ 
+diff --git a/tensorflow/contrib/verbs/grpc_verbs_service_impl.cc b/tensorflow/contrib/verbs/grpc_verbs_service_impl.cc
+index 4da7b59c69..3b56cff0e3 100644
+--- a/tensorflow/contrib/verbs/grpc_verbs_service_impl.cc
++++ b/tensorflow/contrib/verbs/grpc_verbs_service_impl.cc
+@@ -47,7 +47,7 @@ VerbsService::Stub::Stub(
+                                   channel) {}
+ 
+ ::grpc::Status VerbsService::Stub::GetRemoteAddress(
+-    ::grpc::ClientContext* context, const GetRemoteAddressRequest& request,
++    ::grpc_impl::ClientContext* context, const GetRemoteAddressRequest& request,
+     GetRemoteAddressResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_GetRemoteAddress_, context, request, response);
+diff --git a/tensorflow/contrib/verbs/grpc_verbs_service_impl.h b/tensorflow/contrib/verbs/grpc_verbs_service_impl.h
+index cfb9b7ddd7..9da415afa8 100644
+--- a/tensorflow/contrib/verbs/grpc_verbs_service_impl.h
++++ b/tensorflow/contrib/verbs/grpc_verbs_service_impl.h
+@@ -49,14 +49,14 @@ class VerbsService GRPC_FINAL {
+    public:
+     virtual ~StubInterface() {}
+     virtual ::grpc::Status GetRemoteAddress(
+-        ::grpc::ClientContext* context, const GetRemoteAddressRequest& request,
++        ::grpc_impl::ClientContext* context, const GetRemoteAddressRequest& request,
+         GetRemoteAddressResponse* response) = 0;
+   };
+   class Stub GRPC_FINAL : public StubInterface {
+    public:
+     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
+     ::grpc::Status GetRemoteAddress(
+-        ::grpc::ClientContext* context, const GetRemoteAddressRequest& request,
++        ::grpc_impl::ClientContext* context, const GetRemoteAddressRequest& request,
+         GetRemoteAddressResponse* response) GRPC_OVERRIDE;
+ 
+    private:
+@@ -72,10 +72,10 @@ class VerbsService GRPC_FINAL {
+     AsyncService();
+     virtual ~AsyncService();
+     void RequestGetRemoteAddress(
+-        ::grpc::ServerContext* context, GetRemoteAddressRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<GetRemoteAddressResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, GetRemoteAddressRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<GetRemoteAddressResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(0, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+diff --git a/tensorflow/contrib/verbs/verbs_server_lib.cc b/tensorflow/contrib/verbs/verbs_server_lib.cc
+index 5b72b1604a..04dba25c7c 100644
+--- a/tensorflow/contrib/verbs/verbs_server_lib.cc
++++ b/tensorflow/contrib/verbs/verbs_server_lib.cc
+@@ -133,7 +133,7 @@ Status VerbsServer::Create(const ServerDef& server_def, Env* env,
+                            std::unique_ptr<ServerInterface>* out_server) {
+   std::unique_ptr<VerbsServer> ret(new VerbsServer(server_def, Env::Default()));
+   ServiceInitFunction service_func = [&ret](const WorkerEnv* worker_env,
+-                                            ::grpc::ServerBuilder* builder) {
++                                            ::grpc_impl::ServerBuilder* builder) {
+     return SetNewVerbsService(&ret->verbs_service_, worker_env, builder);
+   };
+   TF_RETURN_IF_ERROR(ret->Init(service_func, NewRdmaRendezvousMgr));
+diff --git a/tensorflow/core/debug/debug_grpc_testlib.cc b/tensorflow/core/debug/debug_grpc_testlib.cc
+index f70931e926..613f1c060f 100644
+--- a/tensorflow/core/debug/debug_grpc_testlib.cc
++++ b/tensorflow/core/debug/debug_grpc_testlib.cc
+@@ -29,7 +29,7 @@ namespace tensorflow {
+ namespace test {
+ 
+ ::grpc::Status TestEventListenerImpl::SendEvents(
+-    ::grpc::ServerContext* context,
++    ::grpc_impl::ServerContext* context,
+     ::grpc::ServerReaderWriter<::tensorflow::EventReply, ::tensorflow::Event>*
+         stream) {
+   Event event;
+@@ -137,7 +137,7 @@ void TestEventListenerImpl::RequestDebugOpStateChangeAtNextStream(
+ }
+ 
+ void TestEventListenerImpl::RunServer(const int server_port) {
+-  ::grpc::ServerBuilder builder;
++  ::grpc_impl::ServerBuilder builder;
+   builder.AddListeningPort(strings::StrCat("localhost:", server_port),
+                            ::grpc::InsecureServerCredentials());
+   builder.RegisterService(this);
+diff --git a/tensorflow/core/debug/debug_grpc_testlib.h b/tensorflow/core/debug/debug_grpc_testlib.h
+index 93376613b6..ea520a59c7 100644
+--- a/tensorflow/core/debug/debug_grpc_testlib.h
++++ b/tensorflow/core/debug/debug_grpc_testlib.h
+@@ -37,7 +37,7 @@ class TestEventListenerImpl final : public EventListener::Service {
+   void StopServer();
+ 
+   ::grpc::Status SendEvents(
+-      ::grpc::ServerContext* context,
++      ::grpc_impl::ServerContext* context,
+       ::grpc::ServerReaderWriter< ::tensorflow::EventReply,
+                                   ::tensorflow::Event>* stream);
+ 
+diff --git a/tensorflow/core/debug/debug_io_utils.cc b/tensorflow/core/debug/debug_io_utils.cc
+index 6994dec3b5..951b0bf91f 100644
+--- a/tensorflow/core/debug/debug_io_utils.cc
++++ b/tensorflow/core/debug/debug_io_utils.cc
+@@ -727,7 +727,7 @@ DebugGrpcChannel::DebugGrpcChannel(const string& server_stream_addr)
+       url_(strings::StrCat(DebugIO::kGrpcURLScheme, server_stream_addr)) {}
+ 
+ Status DebugGrpcChannel::Connect(const int64 timeout_micros) {
+-  ::grpc::ChannelArguments args;
++  ::grpc_impl::ChannelArguments args;
+   args.SetInt(GRPC_ARG_MAX_MESSAGE_LENGTH, std::numeric_limits<int32>::max());
+   // Avoid problems where default reconnect backoff is too long (e.g., 20 s).
+   args.SetInt("grpc.testing.fixed_reconnect_backoff_ms", 1000);
+diff --git a/tensorflow/core/debug/debug_io_utils.h b/tensorflow/core/debug/debug_io_utils.h
+index 5390ce408a..adf3fcd7db 100644
+--- a/tensorflow/core/debug/debug_io_utils.h
++++ b/tensorflow/core/debug/debug_io_utils.h
+@@ -322,8 +322,8 @@ class DebugGrpcChannel {
+  private:
+   string server_stream_addr_;
+   string url_;
+-  ::grpc::ClientContext ctx_;
+-  std::shared_ptr<::grpc::Channel> channel_;
++  ::grpc_impl::ClientContext ctx_;
++  std::shared_ptr<::grpc_impl::Channel> channel_;
+   std::unique_ptr<EventListener::Stub> stub_;
+   std::unique_ptr<::grpc::ClientReaderWriterInterface<Event, EventReply>>
+       reader_writer_;
+diff --git a/tensorflow/core/distributed_runtime/master_test.cc b/tensorflow/core/distributed_runtime/master_test.cc
+index 62b18a45b1..d4c79f5fcb 100644
+--- a/tensorflow/core/distributed_runtime/master_test.cc
++++ b/tensorflow/core/distributed_runtime/master_test.cc
+@@ -62,7 +62,7 @@ class MasterTest : public ::testing::Test {
+ 
+   Status CreateSession(const GraphDef& def, string* handle,
+                        int64* initial_version) {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     CreateSessionRequest req;
+     *(req.mutable_graph_def()) = def;
+     // Invokes placement frequently.
+@@ -78,7 +78,7 @@ class MasterTest : public ::testing::Test {
+ 
+   Status ExtendSession(const string& handle, const GraphDef& def,
+                        int64 current_version, int64* new_version) {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     ExtendSessionRequest req;
+     req.set_session_handle(handle);
+     *(req.mutable_graph_def()) = def;
+@@ -94,7 +94,7 @@ class MasterTest : public ::testing::Test {
+   Status RunStep(const string& handle,
+                  const std::vector<std::pair<string, const Tensor*> >& feed,
+                  const std::map<string, Tensor*>& fetch) {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     RunStepRequest req;
+     req.set_session_handle(handle);
+     for (const auto& p : feed) {
+@@ -121,7 +121,7 @@ class MasterTest : public ::testing::Test {
+   }
+ 
+   Status CloseSession(const string& handle) {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     CloseSessionRequest req;
+     req.set_session_handle(handle);
+     CloseSessionResponse resp;
+@@ -129,7 +129,7 @@ class MasterTest : public ::testing::Test {
+   }
+ 
+   Status Reset() {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     ResetRequest req;
+     ResetResponse resp;
+     return FromGrpcStatus(master_->Reset(&ctx, req, &resp));
+@@ -146,7 +146,7 @@ TEST_F(MasterTest, CreateClose) {
+ }
+ 
+ TEST_F(MasterTest, ListDevices) {
+-  ::grpc::ClientContext ctx;
++  ::grpc_impl::ClientContext ctx;
+   ListDevicesRequest req;
+   ListDevicesResponse resp;
+   const Status s = FromGrpcStatus(master_->ListDevices(&ctx, req, &resp));
+diff --git a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_client.cc b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_client.cc
+index 3626a48171..61b38fab82 100644
+--- a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_client.cc
++++ b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_client.cc
+@@ -30,7 +30,7 @@ namespace {
+ class GrpcEagerClient : public EagerClient {
+  public:
+   GrpcEagerClient(const tensorflow::SharedGrpcChannelPtr& channel,
+-                  ::grpc::CompletionQueue* cq)
++                  ::grpc_impl::CompletionQueue* cq)
+       : stub_(channel), cq_(cq) {}
+   ~GrpcEagerClient() override {}
+ 
+@@ -55,7 +55,7 @@ class GrpcEagerClient : public EagerClient {
+ 
+  private:
+   ::grpc::GenericStub stub_;
+-  ::grpc::CompletionQueue* cq_;
++  ::grpc_impl::CompletionQueue* cq_;
+ };
+ 
+ class GrpcEagerClientCache : public EagerClientCache {
+@@ -120,10 +120,10 @@ class GrpcEagerClientCache : public EagerClientCache {
+       thread_.reset();
+     }
+ 
+-    ::grpc::CompletionQueue* completion_queue() { return &completion_queue_; }
++    ::grpc_impl::CompletionQueue* completion_queue() { return &completion_queue_; }
+ 
+    private:
+-    ::grpc::CompletionQueue completion_queue_;
++    ::grpc_impl::CompletionQueue completion_queue_;
+     std::unique_ptr<Thread> thread_;
+   };  // GrpcEagerClientThread
+ 
+diff --git a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.cc b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.cc
+index ab3aa3fd1d..f7a3b21b6f 100644
+--- a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.cc
++++ b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.cc
+@@ -68,13 +68,13 @@ EagerService::Stub::Stub(
+                             ::grpc::internal::RpcMethod::NORMAL_RPC, channel) {}
+ 
+ ::grpc::Status EagerService::Stub::CreateContext(
+-    ::grpc::ClientContext* context, const CreateContextRequest& request,
++    ::grpc_impl::ClientContext* context, const CreateContextRequest& request,
+     CreateContextResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_CreateContext_, context, request, response);
+ }
+ 
+-::grpc::Status EagerService::Stub::Enqueue(::grpc::ClientContext* context,
++::grpc::Status EagerService::Stub::Enqueue(::grpc_impl::ClientContext* context,
+                                            const EnqueueRequest& request,
+                                            EnqueueResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Enqueue_,
+@@ -82,13 +82,13 @@ EagerService::Stub::Stub(
+ }
+ 
+ ::grpc::Status EagerService::Stub::WaitQueueDone(
+-    ::grpc::ClientContext* context, const WaitQueueDoneRequest& request,
++    ::grpc_impl::ClientContext* context, const WaitQueueDoneRequest& request,
+     WaitQueueDoneResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_WaitQueueDone_, context, request, response);
+ }
+ 
+-::grpc::Status EagerService::Stub::KeepAlive(::grpc::ClientContext* context,
++::grpc::Status EagerService::Stub::KeepAlive(::grpc_impl::ClientContext* context,
+                                              const KeepAliveRequest& request,
+                                              KeepAliveResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+@@ -96,20 +96,20 @@ EagerService::Stub::Stub(
+ }
+ 
+ ::grpc::Status EagerService::Stub::CloseContext(
+-    ::grpc::ClientContext* context, const CloseContextRequest& request,
++    ::grpc_impl::ClientContext* context, const CloseContextRequest& request,
+     CloseContextResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_CloseContext_, context, request, response);
+ }
+ 
+ ::grpc::Status EagerService::Stub::RegisterFunction(
+-    ::grpc::ClientContext* context, const RegisterFunctionRequest& request,
++    ::grpc_impl::ClientContext* context, const RegisterFunctionRequest& request,
+     RegisterFunctionResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_RegisterFunction_, context, request, response);
+ }
+ 
+-::grpc::Status EagerService::Stub::SendTensor(::grpc::ClientContext* context,
++::grpc::Status EagerService::Stub::SendTensor(::grpc_impl::ClientContext* context,
+                                               const SendTensorRequest& request,
+                                               SendTensorResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+diff --git a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.h b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.h
+index 521e0ac4fa..23c3becf46 100644
+--- a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.h
++++ b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service.h
+@@ -27,13 +27,6 @@ limitations under the License.
+ 
+ #include "tensorflow/core/protobuf/eager_service.pb.h"
+ 
+-namespace grpc {
+-class CompletionQueue;
+-class Channel;
+-class RpcService;
+-class ServerCompletionQueue;
+-class ServerContext;
+-}  // namespace grpc
+ 
+ namespace tensorflow {
+ namespace eager {
+@@ -51,50 +44,50 @@ class EagerService final {
+   class StubInterface {
+    public:
+     virtual ~StubInterface() {}
+-    virtual ::grpc::Status CreateContext(::grpc::ClientContext* context,
++    virtual ::grpc::Status CreateContext(::grpc_impl::ClientContext* context,
+                                          const CreateContextRequest& request,
+                                          CreateContextResponse* response) = 0;
+-    virtual ::grpc::Status Enqueue(::grpc::ClientContext* context,
++    virtual ::grpc::Status Enqueue(::grpc_impl::ClientContext* context,
+                                    const EnqueueRequest& request,
+                                    EnqueueResponse* response) = 0;
+-    virtual ::grpc::Status WaitQueueDone(::grpc::ClientContext* context,
++    virtual ::grpc::Status WaitQueueDone(::grpc_impl::ClientContext* context,
+                                          const WaitQueueDoneRequest& request,
+                                          WaitQueueDoneResponse* response) = 0;
+-    virtual ::grpc::Status KeepAlive(::grpc::ClientContext* context,
++    virtual ::grpc::Status KeepAlive(::grpc_impl::ClientContext* context,
+                                      const KeepAliveRequest& request,
+                                      KeepAliveResponse* response) = 0;
+-    virtual ::grpc::Status CloseContext(::grpc::ClientContext* context,
++    virtual ::grpc::Status CloseContext(::grpc_impl::ClientContext* context,
+                                         const CloseContextRequest& request,
+                                         CloseContextResponse* response) = 0;
+     virtual ::grpc::Status RegisterFunction(
+-        ::grpc::ClientContext* context, const RegisterFunctionRequest& request,
++        ::grpc_impl::ClientContext* context, const RegisterFunctionRequest& request,
+         RegisterFunctionResponse* response) = 0;
+-    virtual ::grpc::Status SendTensor(::grpc::ClientContext* context,
++    virtual ::grpc::Status SendTensor(::grpc_impl::ClientContext* context,
+                                       const SendTensorRequest& request,
+                                       SendTensorResponse* response) = 0;
+   };
+   class Stub final : public StubInterface {
+    public:
+     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
+-    ::grpc::Status CreateContext(::grpc::ClientContext* context,
++    ::grpc::Status CreateContext(::grpc_impl::ClientContext* context,
+                                  const CreateContextRequest& request,
+                                  CreateContextResponse* response) override;
+-    ::grpc::Status Enqueue(::grpc::ClientContext* context,
++    ::grpc::Status Enqueue(::grpc_impl::ClientContext* context,
+                            const EnqueueRequest& request,
+                            EnqueueResponse* response) override;
+-    ::grpc::Status WaitQueueDone(::grpc::ClientContext* context,
++    ::grpc::Status WaitQueueDone(::grpc_impl::ClientContext* context,
+                                  const WaitQueueDoneRequest& request,
+                                  WaitQueueDoneResponse* response) override;
+-    ::grpc::Status KeepAlive(::grpc::ClientContext* context,
++    ::grpc::Status KeepAlive(::grpc_impl::ClientContext* context,
+                              const KeepAliveRequest& request,
+                              KeepAliveResponse* response) override;
+-    ::grpc::Status CloseContext(::grpc::ClientContext* context,
++    ::grpc::Status CloseContext(::grpc_impl::ClientContext* context,
+                                 const CloseContextRequest& request,
+                                 CloseContextResponse* response) override;
+     ::grpc::Status RegisterFunction(
+-        ::grpc::ClientContext* context, const RegisterFunctionRequest& request,
++        ::grpc_impl::ClientContext* context, const RegisterFunctionRequest& request,
+         RegisterFunctionResponse* response) override;
+-    ::grpc::Status SendTensor(::grpc::ClientContext* context,
++    ::grpc::Status SendTensor(::grpc_impl::ClientContext* context,
+                               const SendTensorRequest& request,
+                               SendTensorResponse* response) override;
+ 
+@@ -117,58 +110,58 @@ class EagerService final {
+     AsyncService();
+     virtual ~AsyncService();
+     void RequestCreateContext(
+-        ::grpc::ServerContext* context, CreateContextRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<CreateContextResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, CreateContextRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<CreateContextResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(0, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestEnqueue(
+-        ::grpc::ServerContext* context, EnqueueRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<EnqueueResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, EnqueueRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<EnqueueResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(1, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestWaitQueueDone(
+-        ::grpc::ServerContext* context, WaitQueueDoneRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<WaitQueueDoneResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, WaitQueueDoneRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<WaitQueueDoneResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(2, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestKeepAlive(
+-        ::grpc::ServerContext* context, KeepAliveRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<KeepAliveResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, KeepAliveRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<KeepAliveResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(3, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestCloseContext(
+-        ::grpc::ServerContext* context, CloseContextRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<CloseContextResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, CloseContextRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<CloseContextResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(4, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestRegisterFunction(
+-        ::grpc::ServerContext* context, RegisterFunctionRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<RegisterFunctionResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, RegisterFunctionRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<RegisterFunctionResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(5, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestSendTensor(
+-        ::grpc::ServerContext* context, SendTensorRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<SendTensorResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, SendTensorRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<SendTensorResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(6, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+diff --git a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.cc b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.cc
+index f511674e1f..8d3e0fe2ba 100644
+--- a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.cc
++++ b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.cc
+@@ -26,7 +26,7 @@ namespace tensorflow {
+ namespace eager {
+ 
+ GrpcEagerServiceImpl::GrpcEagerServiceImpl(
+-    const WorkerEnv* env, ::grpc::ServerBuilder* server_builder)
++    const WorkerEnv* env, ::grpc_impl::ServerBuilder* server_builder)
+     : env_(env), local_impl_(env) {
+   server_builder->RegisterService(&service_);
+   cq_ = server_builder->AddCompletionQueue();
+diff --git a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.h b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.h
+index 537e9043bd..99f8ffe0df 100644
+--- a/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.h
++++ b/tensorflow/core/distributed_runtime/rpc/eager/grpc_eager_service_impl.h
+@@ -36,7 +36,7 @@ class GrpcEagerServiceImpl : public AsyncServiceInterface {
+                          RequestMessage, ResponseMessage>;
+ 
+   GrpcEagerServiceImpl(const WorkerEnv* env,
+-                       ::grpc::ServerBuilder* server_builder);
++                       ::grpc_impl::ServerBuilder* server_builder);
+   virtual ~GrpcEagerServiceImpl() {}
+ 
+   void HandleRPCsLoop() override;
+@@ -70,7 +70,7 @@ class GrpcEagerServiceImpl : public AsyncServiceInterface {
+ 
+   std::unique_ptr<::grpc::Alarm> shutdown_alarm_;
+ 
+-  std::unique_ptr<::grpc::ServerCompletionQueue> cq_;
++  std::unique_ptr<::grpc_impl::ServerCompletionQueue> cq_;
+   tensorflow::eager::grpc::EagerService::AsyncService service_;
+ 
+   TF_DISALLOW_COPY_AND_ASSIGN(GrpcEagerServiceImpl);
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_call.h b/tensorflow/core/distributed_runtime/rpc/grpc_call.h
+index 90666def60..803ce07c72 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_call.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_call.h
+@@ -37,7 +37,7 @@ namespace tensorflow {
+ // * `UntypedCall<Service>`: The base class represents a call that
+ //   could be associated with any of the methods on a service of type
+ //   `Service`. Also defines a `Tag` nested class that can be used as
+-//   the tag in a `grpc::CompletionQueue`.  Each class that
++//   the tag in a `grpc_impl::CompletionQueue`.  Each class that
+ //   instantiates `Service` should have a completion queue polling
+ //   loop that knows about `UntypedCall<Service>::Tag` objects, and
+ //   invokes their `OnCompleted()` method to continue processing.
+@@ -92,10 +92,10 @@ class UntypedCall : public core::RefCounted {
+   // This method will be called either (i) when the server is notified
+   // that the request has been canceled, or (ii) when the request completes
+   // normally. The implementation should distinguish these cases by querying
+-  // the `grpc::ServerContext` associated with the request.
++  // the `grpc_impl::ServerContext` associated with the request.
+   virtual void RequestCancelled(Service* service, bool ok) = 0;
+ 
+-  // Associates a tag in a `::grpc::CompletionQueue` with a callback
++  // Associates a tag in a `::grpc_impl::CompletionQueue` with a callback
+   // for an incoming RPC.  An active Tag owns a reference on the corresponding
+   // Call object.
+   class Tag {
+@@ -139,9 +139,9 @@ class Call : public UntypedCall<Service> {
+   // `GrpcService::RequestFoo()` method, where `Foo` is the name of an
+   // RPC method.
+   using EnqueueFunction = void (GrpcService::*)(
+-      ::grpc::ServerContext*, RequestMessage*,
+-      ::grpc::ServerAsyncResponseWriter<ResponseMessage>*,
+-      ::grpc::CompletionQueue*, ::grpc::ServerCompletionQueue*, void*);
++      ::grpc_impl::ServerContext*, RequestMessage*,
++      ::grpc_impl::ServerAsyncResponseWriter<ResponseMessage>*,
++      ::grpc_impl::CompletionQueue*, ::grpc_impl::ServerCompletionQueue*, void*);
+ 
+   // Represents the generic signature of a `Service::HandleFoo()`
+   // method, where `Foo` is the name of an RPC method.
+@@ -194,7 +194,7 @@ class Call : public UntypedCall<Service> {
+   // The request will be handled with the given
+   // `handle_request_function`.
+   static void EnqueueRequest(GrpcService* grpc_service,
+-                             ::grpc::ServerCompletionQueue* cq,
++                             ::grpc_impl::ServerCompletionQueue* cq,
+                              EnqueueFunction enqueue_function,
+                              HandleRequestFunction handle_request_function,
+                              bool supports_cancel) {
+@@ -216,7 +216,7 @@ class Call : public UntypedCall<Service> {
+   // The request will be handled with the given
+   // `handle_request_function`.
+   static void EnqueueRequestForMethod(
+-      GrpcService* grpc_service, ::grpc::ServerCompletionQueue* cq,
++      GrpcService* grpc_service, ::grpc_impl::ServerCompletionQueue* cq,
+       int method_id, HandleRequestFunction handle_request_function,
+       bool supports_cancel) {
+     auto call = new Call<Service, GrpcService, RequestMessage, ResponseMessage>(
+@@ -249,8 +249,8 @@ class Call : public UntypedCall<Service> {
+   }
+ 
+   HandleRequestFunction handle_request_function_;
+-  ::grpc::ServerContext ctx_;
+-  ::grpc::ServerAsyncResponseWriter<ResponseMessage> responder_;
++  ::grpc_impl::ServerContext ctx_;
++  ::grpc_impl::ServerAsyncResponseWriter<ResponseMessage> responder_;
+ 
+   // Used as void* completion markers from grpc to indicate different
+   // events of interest for a Call.
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_channel.cc b/tensorflow/core/distributed_runtime/rpc/grpc_channel.cc
+index e5634d38bd..d107cee30e 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_channel.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_channel.cc
+@@ -56,9 +56,9 @@ Status ValidateHostPortPair(const string& host_port) {
+ 
+ }  // namespace
+ 
+-::grpc::ChannelArguments GetChannelArguments(const RPCOptions* rpc_options) {
++::grpc_impl::ChannelArguments GetChannelArguments(const RPCOptions* rpc_options) {
+   // TODO(mrry): Implement secure channels.
+-  ::grpc::ChannelArguments args;
++  ::grpc_impl::ChannelArguments args;
+   args.SetInt(GRPC_ARG_MAX_MESSAGE_LENGTH, std::numeric_limits<int32>::max());
+   args.SetInt(GRPC_ARG_KEEPALIVE_TIME_MS, std::numeric_limits<int>::max());
+   args.SetInt(GRPC_ARG_KEEPALIVE_TIMEOUT_MS, std::numeric_limits<int>::max());
+@@ -94,7 +94,7 @@ Status NewHostPortGrpcChannel(const string& target,
+   // Minimally ensure that the target is valid
+   TF_RETURN_IF_ERROR(ValidateHostPortPair(target));
+ 
+-  ::grpc::ChannelArguments args = GetChannelArguments(rpc_options);
++  ::grpc_impl::ChannelArguments args = GetChannelArguments(rpc_options);
+   *channel_pointer = ::grpc::CreateCustomChannel(
+       "dns:///" + target, ::grpc::InsecureChannelCredentials(), args);
+   return Status::OK();
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_channel.h b/tensorflow/core/distributed_runtime/rpc/grpc_channel.h
+index 57d16218e8..c9290603f1 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_channel.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_channel.h
+@@ -87,7 +87,7 @@ GrpcChannelCache* NewGrpcChannelCache(const GrpcChannelSpec& channel_spec,
+ 
+ // Below here are internal-only functions.
+ 
+-::grpc::ChannelArguments GetChannelArguments(const RPCOptions* rpc_options);
++::grpc_impl::ChannelArguments GetChannelArguments(const RPCOptions* rpc_options);
+ 
+ ChannelCreationFunction ConvertToChannelCreationFunction(
+     const std::function<Status(string, const RPCOptions*,
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_client_cq_tag.h b/tensorflow/core/distributed_runtime/rpc/grpc_client_cq_tag.h
+index 6e7f5dbd13..bb7735a016 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_client_cq_tag.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_client_cq_tag.h
+@@ -25,7 +25,7 @@ limitations under the License.
+ namespace tensorflow {
+ 
+ // Represents a pending asynchronous client call as a tag that can be
+-// stored in a `grpc::CompletionQueue`.
++// stored in a `grpc_impl::CompletionQueue`.
+ class GrpcClientCQTag {
+  public:
+   GrpcClientCQTag() {}
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_master_service.cc b/tensorflow/core/distributed_runtime/rpc/grpc_master_service.cc
+index 127dea2882..62070d1410 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_master_service.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_master_service.cc
+@@ -48,7 +48,7 @@ namespace tensorflow {
+ class GrpcMasterService : public AsyncServiceInterface {
+  public:
+   GrpcMasterService(Master* master, const ConfigProto& default_session_config,
+-                    ::grpc::ServerBuilder* builder)
++                    ::grpc_impl::ServerBuilder* builder)
+       : master_impl_(master),
+         is_shutdown_(false),
+         default_session_config_(default_session_config) {
+@@ -134,7 +134,7 @@ class GrpcMasterService : public AsyncServiceInterface {
+ 
+  private:
+   Master* master_impl_ = nullptr;  // Not owned.
+-  std::unique_ptr<::grpc::ServerCompletionQueue> cq_;
++  std::unique_ptr<::grpc_impl::ServerCompletionQueue> cq_;
+   grpc::MasterService::AsyncService master_service_;
+ 
+   mutex mu_;
+@@ -301,7 +301,7 @@ class GrpcMasterService : public AsyncServiceInterface {
+ 
+ AsyncServiceInterface* NewGrpcMasterService(
+     Master* master, const ConfigProto& default_session_config,
+-    ::grpc::ServerBuilder* builder) {
++    ::grpc_impl::ServerBuilder* builder) {
+   return new GrpcMasterService(master, default_session_config, builder);
+ }
+ 
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_master_service.h b/tensorflow/core/distributed_runtime/rpc/grpc_master_service.h
+index f0fe5b0c4e..e80a9aa9f7 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_master_service.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_master_service.h
+@@ -20,9 +20,9 @@ limitations under the License.
+ #include "tensorflow/core/platform/types.h"
+ #include "tensorflow/core/protobuf/master.pb.h"
+ 
+-namespace grpc {
++namespace grpc_impl {
+ class ServerBuilder;
+-}  // namespace grpc
++} // namespace grpc_impl
+ 
+ namespace tensorflow {
+ 
+@@ -31,7 +31,7 @@ class Master;
+ 
+ AsyncServiceInterface* NewGrpcMasterService(
+     Master* master, const ConfigProto& default_session_config,
+-    ::grpc::ServerBuilder* builder);
++    ::grpc_impl::ServerBuilder* builder);
+ 
+ }  // namespace tensorflow
+ 
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.cc b/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.cc
+index 770a0fcf14..68e4d4b75a 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.cc
+@@ -77,27 +77,27 @@ MasterService::Stub::Stub(
+                                  channel) {}
+ 
+ ::grpc::Status MasterService::Stub::CreateSession(
+-    ::grpc::ClientContext* context, const CreateSessionRequest& request,
++    ::grpc_impl::ClientContext* context, const CreateSessionRequest& request,
+     CreateSessionResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_CreateSession_, context, request, response);
+ }
+ 
+ ::grpc::Status MasterService::Stub::ExtendSession(
+-    ::grpc::ClientContext* context, const ExtendSessionRequest& request,
++    ::grpc_impl::ClientContext* context, const ExtendSessionRequest& request,
+     ExtendSessionResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_ExtendSession_, context, request, response);
+ }
+ 
+ ::grpc::Status MasterService::Stub::PartialRunSetup(
+-    ::grpc::ClientContext* context, const PartialRunSetupRequest& request,
++    ::grpc_impl::ClientContext* context, const PartialRunSetupRequest& request,
+     PartialRunSetupResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_PartialRunSetup_, context, request, response);
+ }
+ 
+-::grpc::Status MasterService::Stub::RunStep(::grpc::ClientContext* context,
++::grpc::Status MasterService::Stub::RunStep(::grpc_impl::ClientContext* context,
+                                             const RunStepRequest& request,
+                                             RunStepResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_RunStep_,
+@@ -105,20 +105,20 @@ MasterService::Stub::Stub(
+ }
+ 
+ ::grpc::Status MasterService::Stub::CloseSession(
+-    ::grpc::ClientContext* context, const CloseSessionRequest& request,
++    ::grpc_impl::ClientContext* context, const CloseSessionRequest& request,
+     CloseSessionResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_CloseSession_, context, request, response);
+ }
+ 
+ ::grpc::Status MasterService::Stub::ListDevices(
+-    ::grpc::ClientContext* context, const ListDevicesRequest& request,
++    ::grpc_impl::ClientContext* context, const ListDevicesRequest& request,
+     ListDevicesResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_ListDevices_, context, request, response);
+ }
+ 
+-::grpc::Status MasterService::Stub::Reset(::grpc::ClientContext* context,
++::grpc::Status MasterService::Stub::Reset(::grpc_impl::ClientContext* context,
+                                           const ResetRequest& request,
+                                           ResetResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Reset_,
+@@ -126,21 +126,21 @@ MasterService::Stub::Stub(
+ }
+ 
+ ::grpc::Status MasterService::Stub::MakeCallable(
+-    ::grpc::ClientContext* context, const MakeCallableRequest& request,
++    ::grpc_impl::ClientContext* context, const MakeCallableRequest& request,
+     MakeCallableResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_MakeCallable_, context, request, response);
+ }
+ 
+ ::grpc::Status MasterService::Stub::RunCallable(
+-    ::grpc::ClientContext* context, const RunCallableRequest& request,
++    ::grpc_impl::ClientContext* context, const RunCallableRequest& request,
+     RunCallableResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_RunCallable_, context, request, response);
+ }
+ 
+ ::grpc::Status MasterService::Stub::ReleaseCallable(
+-    ::grpc::ClientContext* context, const ReleaseCallableRequest& request,
++    ::grpc_impl::ClientContext* context, const ReleaseCallableRequest& request,
+     ReleaseCallableResponse* response) {
+   return ::grpc::internal::BlockingUnaryCall(
+       channel_.get(), rpcmethod_ReleaseCallable_, context, request, response);
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.h b/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.h
+index 751f2633e7..b19e3b04f0 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_master_service_impl.h
+@@ -27,13 +27,6 @@ limitations under the License.
+ 
+ #include "tensorflow/core/protobuf/master.pb.h"
+ 
+-namespace grpc {
+-class CompletionQueue;
+-class Channel;
+-class RpcService;
+-class ServerCompletionQueue;
+-class ServerContext;
+-}  // namespace grpc
+ 
+ namespace tensorflow {
+ 
+@@ -48,68 +41,68 @@ class MasterService final {
+   class StubInterface {
+    public:
+     virtual ~StubInterface() {}
+-    virtual ::grpc::Status CreateSession(::grpc::ClientContext* context,
++    virtual ::grpc::Status CreateSession(::grpc_impl::ClientContext* context,
+                                          const CreateSessionRequest& request,
+                                          CreateSessionResponse* response) = 0;
+-    virtual ::grpc::Status ExtendSession(::grpc::ClientContext* context,
++    virtual ::grpc::Status ExtendSession(::grpc_impl::ClientContext* context,
+                                          const ExtendSessionRequest& request,
+                                          ExtendSessionResponse* response) = 0;
+     virtual ::grpc::Status PartialRunSetup(
+-        ::grpc::ClientContext* context, const PartialRunSetupRequest& request,
++        ::grpc_impl::ClientContext* context, const PartialRunSetupRequest& request,
+         PartialRunSetupResponse* response) = 0;
+-    virtual ::grpc::Status RunStep(::grpc::ClientContext* context,
++    virtual ::grpc::Status RunStep(::grpc_impl::ClientContext* context,
+                                    const RunStepRequest& request,
+                                    RunStepResponse* response) = 0;
+-    virtual ::grpc::Status CloseSession(::grpc::ClientContext* context,
++    virtual ::grpc::Status CloseSession(::grpc_impl::ClientContext* context,
+                                         const CloseSessionRequest& request,
+                                         CloseSessionResponse* response) = 0;
+-    virtual ::grpc::Status ListDevices(::grpc::ClientContext* context,
++    virtual ::grpc::Status ListDevices(::grpc_impl::ClientContext* context,
+                                        const ListDevicesRequest& request,
+                                        ListDevicesResponse* response) = 0;
+-    virtual ::grpc::Status Reset(::grpc::ClientContext* context,
++    virtual ::grpc::Status Reset(::grpc_impl::ClientContext* context,
+                                  const ResetRequest& request,
+                                  ResetResponse* response) = 0;
+-    virtual ::grpc::Status MakeCallable(::grpc::ClientContext* context,
++    virtual ::grpc::Status MakeCallable(::grpc_impl::ClientContext* context,
+                                         const MakeCallableRequest& request,
+                                         MakeCallableResponse* response) = 0;
+-    virtual ::grpc::Status RunCallable(::grpc::ClientContext* context,
++    virtual ::grpc::Status RunCallable(::grpc_impl::ClientContext* context,
+                                        const RunCallableRequest& request,
+                                        RunCallableResponse* response) = 0;
+     virtual ::grpc::Status ReleaseCallable(
+-        ::grpc::ClientContext* context, const ReleaseCallableRequest& request,
++        ::grpc_impl::ClientContext* context, const ReleaseCallableRequest& request,
+         ReleaseCallableResponse* response) = 0;
+   };
+   class Stub final : public StubInterface {
+    public:
+     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
+-    ::grpc::Status CreateSession(::grpc::ClientContext* context,
++    ::grpc::Status CreateSession(::grpc_impl::ClientContext* context,
+                                  const CreateSessionRequest& request,
+                                  CreateSessionResponse* response) override;
+-    ::grpc::Status ExtendSession(::grpc::ClientContext* context,
++    ::grpc::Status ExtendSession(::grpc_impl::ClientContext* context,
+                                  const ExtendSessionRequest& request,
+                                  ExtendSessionResponse* response) override;
+-    ::grpc::Status PartialRunSetup(::grpc::ClientContext* context,
++    ::grpc::Status PartialRunSetup(::grpc_impl::ClientContext* context,
+                                    const PartialRunSetupRequest& request,
+                                    PartialRunSetupResponse* response) override;
+-    ::grpc::Status RunStep(::grpc::ClientContext* context,
++    ::grpc::Status RunStep(::grpc_impl::ClientContext* context,
+                            const RunStepRequest& request,
+                            RunStepResponse* response) override;
+-    ::grpc::Status CloseSession(::grpc::ClientContext* context,
++    ::grpc::Status CloseSession(::grpc_impl::ClientContext* context,
+                                 const CloseSessionRequest& request,
+                                 CloseSessionResponse* response) override;
+-    ::grpc::Status ListDevices(::grpc::ClientContext* context,
++    ::grpc::Status ListDevices(::grpc_impl::ClientContext* context,
+                                const ListDevicesRequest& request,
+                                ListDevicesResponse* response) override;
+-    ::grpc::Status Reset(::grpc::ClientContext* context,
++    ::grpc::Status Reset(::grpc_impl::ClientContext* context,
+                          const ResetRequest& request,
+                          ResetResponse* response) override;
+-    ::grpc::Status MakeCallable(::grpc::ClientContext* context,
++    ::grpc::Status MakeCallable(::grpc_impl::ClientContext* context,
+                                 const MakeCallableRequest& request,
+                                 MakeCallableResponse* response) override;
+-    ::grpc::Status RunCallable(::grpc::ClientContext* context,
++    ::grpc::Status RunCallable(::grpc_impl::ClientContext* context,
+                                const RunCallableRequest& request,
+                                RunCallableResponse* response) override;
+-    ::grpc::Status ReleaseCallable(::grpc::ClientContext* context,
++    ::grpc::Status ReleaseCallable(::grpc_impl::ClientContext* context,
+                                    const ReleaseCallableRequest& request,
+                                    ReleaseCallableResponse* response) override;
+ 
+@@ -135,82 +128,82 @@ class MasterService final {
+     AsyncService();
+     virtual ~AsyncService();
+     void RequestCreateSession(
+-        ::grpc::ServerContext* context, CreateSessionRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<CreateSessionResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, CreateSessionRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<CreateSessionResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(0, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestExtendSession(
+-        ::grpc::ServerContext* context, ExtendSessionRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<ExtendSessionResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, ExtendSessionRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<ExtendSessionResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(1, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestPartialRunSetup(
+-        ::grpc::ServerContext* context, PartialRunSetupRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<PartialRunSetupResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, PartialRunSetupRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<PartialRunSetupResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(2, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestRunStep(
+-        ::grpc::ServerContext* context, RunStepRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<RunStepResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, RunStepRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<RunStepResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(3, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestCloseSession(
+-        ::grpc::ServerContext* context, CloseSessionRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<CloseSessionResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, CloseSessionRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<CloseSessionResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(4, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestListDevices(
+-        ::grpc::ServerContext* context, ListDevicesRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<ListDevicesResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, ListDevicesRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<ListDevicesResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(5, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestReset(
+-        ::grpc::ServerContext* context, ResetRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<ResetResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, ResetRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<ResetResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(6, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestMakeCallable(
+-        ::grpc::ServerContext* context, MakeCallableRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<MakeCallableResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, MakeCallableRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<MakeCallableResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(7, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestRunCallable(
+-        ::grpc::ServerContext* context, RunCallableRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<RunCallableResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, RunCallableRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<RunCallableResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(8, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+     void RequestReleaseCallable(
+-        ::grpc::ServerContext* context, ReleaseCallableRequest* request,
+-        ::grpc::ServerAsyncResponseWriter<ReleaseCallableResponse>* response,
+-        ::grpc::CompletionQueue* new_call_cq,
+-        ::grpc::ServerCompletionQueue* notification_cq, void* tag) {
++        ::grpc_impl::ServerContext* context, ReleaseCallableRequest* request,
++        ::grpc_impl::ServerAsyncResponseWriter<ReleaseCallableResponse>* response,
++        ::grpc_impl::CompletionQueue* new_call_cq,
++        ::grpc_impl::ServerCompletionQueue* notification_cq, void* tag) {
+       ::grpc::Service::RequestAsyncUnary(9, context, request, response,
+                                          new_call_cq, notification_cq, tag);
+     }
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_remote_master.cc b/tensorflow/core/distributed_runtime/rpc/grpc_remote_master.cc
+index b832a2115c..de908424a6 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_remote_master.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_remote_master.cc
+@@ -43,7 +43,7 @@ class GrpcRemoteMaster : public MasterInterface {
+   Status CreateSession(CallOptions* call_options,
+                        const CreateSessionRequest* request,
+                        CreateSessionResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::CreateSession);
+   }
+@@ -51,7 +51,7 @@ class GrpcRemoteMaster : public MasterInterface {
+   Status ExtendSession(CallOptions* call_options,
+                        const ExtendSessionRequest* request,
+                        ExtendSessionResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::ExtendSession);
+   }
+@@ -59,14 +59,14 @@ class GrpcRemoteMaster : public MasterInterface {
+   Status PartialRunSetup(CallOptions* call_options,
+                          const PartialRunSetupRequest* request,
+                          PartialRunSetupResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::PartialRunSetup);
+   }
+ 
+   Status RunStep(CallOptions* call_options, RunStepRequestWrapper* request,
+                  MutableRunStepResponseWrapper* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     auto trace = TraceRpc("RunStep/Client", &ctx);
+     return Call(&ctx, call_options, &request->ToProto(),
+                 get_proto_from_wrapper(response), &MasterServiceStub::RunStep);
+@@ -75,7 +75,7 @@ class GrpcRemoteMaster : public MasterInterface {
+   Status CloseSession(CallOptions* call_options,
+                       const CloseSessionRequest* request,
+                       CloseSessionResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::CloseSession);
+   }
+@@ -83,14 +83,14 @@ class GrpcRemoteMaster : public MasterInterface {
+   Status ListDevices(CallOptions* call_options,
+                      const ListDevicesRequest* request,
+                      ListDevicesResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::ListDevices);
+   }
+ 
+   Status Reset(CallOptions* call_options, const ResetRequest* request,
+                ResetResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::Reset);
+   }
+@@ -98,21 +98,21 @@ class GrpcRemoteMaster : public MasterInterface {
+   Status MakeCallable(CallOptions* call_options,
+                       const MakeCallableRequest* request,
+                       MakeCallableResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::MakeCallable);
+   }
+   Status RunCallable(CallOptions* call_options,
+                      const RunCallableRequest* request,
+                      RunCallableResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::RunCallable);
+   }
+   Status ReleaseCallable(CallOptions* call_options,
+                          const ReleaseCallableRequest* request,
+                          ReleaseCallableResponse* response) override {
+-    ::grpc::ClientContext ctx;
++    ::grpc_impl::ClientContext ctx;
+     return Call(&ctx, call_options, request, response,
+                 &MasterServiceStub::ReleaseCallable);
+   }
+@@ -120,22 +120,22 @@ class GrpcRemoteMaster : public MasterInterface {
+  private:
+   // Start tracing, attaching a unique ID to both the trace and the RPC.
+   tracing::ScopedActivity TraceRpc(StringPiece name,
+-                                   ::grpc::ClientContext* ctx) {
++                                   ::grpc_impl::ClientContext* ctx) {
+     string trace_id = strings::StrCat(tracing::GetUniqueArg());
+     ctx->AddMetadata(GrpcIdKey(), trace_id);
+     return tracing::ScopedActivity(name, trace_id);
+   }
+ 
+-  void SetDeadline(::grpc::ClientContext* ctx, int64 time_in_ms) {
++  void SetDeadline(::grpc_impl::ClientContext* ctx, int64 time_in_ms) {
+     if (time_in_ms > 0) {
+       ctx->set_deadline(gpr_time_from_millis(time_in_ms, GPR_TIMESPAN));
+     }
+   }
+ 
+   template <typename Request, typename Response>
+-  Status Call(::grpc::ClientContext* ctx, CallOptions* call_options,
++  Status Call(::grpc_impl::ClientContext* ctx, CallOptions* call_options,
+               const Request* request, Response* response,
+-              ::grpc::Status (MasterServiceStub::*pfunc)(::grpc::ClientContext*,
++              ::grpc::Status (MasterServiceStub::*pfunc)(::grpc_impl::ClientContext*,
+                                                          const Request&,
+                                                          Response*)) {
+     ctx->set_fail_fast(false);
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.cc b/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.cc
+index 2daefcb399..a63b3d4eb7 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.cc
+@@ -42,7 +42,7 @@ namespace tensorflow {
+ class GrpcRemoteWorker : public WorkerInterface {
+  public:
+   explicit GrpcRemoteWorker(SharedGrpcChannelPtr channel,
+-                            ::grpc::CompletionQueue* completion_queue,
++                            ::grpc_impl::CompletionQueue* completion_queue,
+                             thread::ThreadPool* callback_threadpool,
+                             WorkerCacheLogger* logger)
+       : channel_(std::move(channel)),
+@@ -277,7 +277,7 @@ class GrpcRemoteWorker : public WorkerInterface {
+ 
+   SharedGrpcChannelPtr channel_;
+   ::grpc::GenericStub stub_;
+-  ::grpc::CompletionQueue* cq_;
++  ::grpc_impl::CompletionQueue* cq_;
+   thread::ThreadPool* callback_threadpool_;
+ 
+   const ::grpc::string getstatus_;
+@@ -303,7 +303,7 @@ class GrpcRemoteWorker : public WorkerInterface {
+ };
+ 
+ WorkerInterface* NewGrpcRemoteWorker(SharedGrpcChannelPtr channel,
+-                                     ::grpc::CompletionQueue* completion_queue,
++                                     ::grpc_impl::CompletionQueue* completion_queue,
+                                      thread::ThreadPool* callback_threadpool,
+                                      WorkerCacheLogger* logger) {
+   return new GrpcRemoteWorker(std::move(channel), completion_queue,
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.h b/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.h
+index d1f0e94ba5..5d33db7b48 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_remote_worker.h
+@@ -21,16 +21,12 @@ limitations under the License.
+ #include "tensorflow/core/distributed_runtime/rpc/grpc_util.h"
+ #include "tensorflow/core/lib/core/threadpool.h"
+ 
+-namespace grpc {
+-class CompletionQueue;
+-}
+-
+ namespace tensorflow {
+ class WorkerCacheLogger;
+ class WorkerInterface;
+ 
+ WorkerInterface* NewGrpcRemoteWorker(SharedGrpcChannelPtr channel,
+-                                     ::grpc::CompletionQueue* completion_queue,
++                                     ::grpc_impl::CompletionQueue* completion_queue,
+                                      thread::ThreadPool* callback_threadpool,
+                                      WorkerCacheLogger* logger);
+ 
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.cc b/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.cc
+index 4f5975bbc1..8c02a40910 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.cc
+@@ -154,7 +154,7 @@ void GrpcRPCFactory::Call(OpKernelContext* ctx, int64 num_elements,
+ 
+ GrpcRPCFactory::ChannelPtr GrpcRPCFactory::CreateChannelForAddress(
+     const string& address) {
+-  ::grpc::ChannelArguments args;
++  ::grpc_impl::ChannelArguments args;
+   args.SetInt(GRPC_ARG_MAX_MESSAGE_LENGTH, std::numeric_limits<int32>::max());
+ 
+   // Set a standard backoff timeout of 1s instead of the
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.h b/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.h
+index 29394c84b5..c214b32676 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_rpc_factory.h
+@@ -44,7 +44,7 @@ class GrpcRPCFactory : public RPCFactory {
+             AsyncOpKernel::DoneCallback done) override;
+ 
+  protected:
+-  typedef std::shared_ptr<::grpc::Channel> ChannelPtr;
++  typedef std::shared_ptr<::grpc_impl::Channel> ChannelPtr;
+   virtual ChannelPtr CreateChannelForAddress(const string& address);
+ 
+  private:
+@@ -64,7 +64,7 @@ class GrpcRPCFactory : public RPCFactory {
+ 
+   bool fail_fast_;
+   int64 timeout_in_ms_;
+-  ::grpc::CompletionQueue completion_queue_;
++  ::grpc_impl::CompletionQueue completion_queue_;
+   Thread* polling_thread_;  // Owned.
+ 
+   mutex mu_;
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc b/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc
+index 08518606f6..02e4beadd0 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.cc
+@@ -58,9 +58,9 @@ namespace {
+ 
+ // Define an option subclass in order to disable SO_REUSEPORT for the
+ // server socket.
+-class NoReusePortOption : public ::grpc::ServerBuilderOption {
++class NoReusePortOption : public ::grpc_impl::ServerBuilderOption {
+  public:
+-  void UpdateArguments(::grpc::ChannelArguments* args) override {
++  void UpdateArguments(::grpc_impl::ChannelArguments* args) override {
+     args->SetInt(GRPC_ARG_ALLOW_REUSEPORT, 0);
+   }
+ 
+@@ -110,7 +110,7 @@ GrpcServer::~GrpcServer() {
+   // - worker_env_.compute_pool
+ }
+ 
+-void GrpcServer::MaybeMutateBuilder(::grpc::ServerBuilder* builder) {}
++void GrpcServer::MaybeMutateBuilder(::grpc_impl::ServerBuilder* builder) {}
+ 
+ Status GrpcServer::Init(
+     ServiceInitFunction service_func,
+@@ -189,7 +189,7 @@ Status GrpcServer::Init(
+   // TODO(mrry): Provide a general mechanism for dynamically setting
+   // the identities of tasks in the worker pool after the service is
+   // running.
+-  ::grpc::ServerBuilder builder;
++  ::grpc_impl::ServerBuilder builder;
+   builder.AddListeningPort(strings::StrCat("0.0.0.0:", requested_port),
+                            GetServerCredentials(server_def_), &bound_port_);
+   builder.SetMaxMessageSize(std::numeric_limits<int32>::max());
+@@ -199,7 +199,7 @@ Status GrpcServer::Init(
+                              std::numeric_limits<int>::max());
+ 
+   builder.SetOption(
+-      std::unique_ptr<::grpc::ServerBuilderOption>(new NoReusePortOption));
++      std::unique_ptr<::grpc_impl::ServerBuilderOption>(new NoReusePortOption));
+   // Allow subclasses to specify more args to pass to the gRPC server.
+   MaybeMutateBuilder(&builder);
+   master_impl_ = CreateMaster(&master_env_);
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.h b/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.h
+index c7f543e5bf..17ff3f5a1f 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_server_lib.h
+@@ -49,7 +49,7 @@ typedef std::function<CollectiveExecutorMgrInterface*(
+ 
+ // function that registers a service to the server. The service needs to
+ // be registered before builder.BuildAndStart().
+-typedef std::function<void(const WorkerEnv*, ::grpc::ServerBuilder*)>
++typedef std::function<void(const WorkerEnv*, ::grpc_impl::ServerBuilder*)>
+     ServiceInitFunction;
+ 
+ // function that creates a grpc based worker implementation.
+@@ -62,7 +62,7 @@ class GrpcServer : public ServerInterface {
+   GrpcServer(const ServerDef& server_def, Env* env);
+   // Allow children classes to override this and provide custom args to the
+   // server before it is constructed. Default behavior is to do nothing.
+-  virtual void MaybeMutateBuilder(::grpc::ServerBuilder* builder);
++  virtual void MaybeMutateBuilder(::grpc_impl::ServerBuilder* builder);
+ 
+  public:
+   static Status Create(const ServerDef& server_def, Env* env,
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_state.h b/tensorflow/core/distributed_runtime/rpc/grpc_state.h
+index b67f3c4563..89caec0f35 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_state.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_state.h
+@@ -35,7 +35,7 @@ template <class Response>
+ class RPCState : public GrpcClientCQTag {
+  public:
+   // Default behavior is to set fail_fast = False and handle timeouts manually.
+-  RPCState(::grpc::GenericStub* stub, ::grpc::CompletionQueue* cq,
++  RPCState(::grpc::GenericStub* stub, ::grpc_impl::CompletionQueue* cq,
+            const ::grpc::string& method, const protobuf::Message& request,
+            Response* response, StatusCallback done, CallOptions* call_opts,
+            thread::ThreadPool* threadpool)
+@@ -44,7 +44,7 @@ class RPCState : public GrpcClientCQTag {
+                  /*timeout_in_ms=*/0) {}
+ 
+   template <typename Request>
+-  RPCState(::grpc::GenericStub* stub, ::grpc::CompletionQueue* cq,
++  RPCState(::grpc::GenericStub* stub, ::grpc_impl::CompletionQueue* cq,
+            const ::grpc::string& method, const Request& request,
+            Response* response, StatusCallback done, CallOptions* call_opts,
+            thread::ThreadPool* threadpool, bool fail_fast, int64 timeout_in_ms)
+@@ -108,7 +108,7 @@ class RPCState : public GrpcClientCQTag {
+ 
+  private:
+   CallOptions* call_opts_;
+-  ::grpc::ClientContext context_;
++  ::grpc_impl::ClientContext context_;
+   thread::ThreadPool* threadpool_;
+   std::unique_ptr<::grpc::GenericClientAsyncResponseReader> call_;
+   Response* response_;
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_util.h b/tensorflow/core/distributed_runtime/rpc/grpc_util.h
+index 45259aa2ec..272e3660a1 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_util.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_util.h
+@@ -101,7 +101,7 @@ inline ::grpc::Status ToGrpcStatus(const ::tensorflow::Status& s) {
+   }
+ }
+ 
+-typedef std::shared_ptr<::grpc::Channel> SharedGrpcChannelPtr;
++typedef std::shared_ptr<::grpc_impl::Channel> SharedGrpcChannelPtr;
+ 
+ inline string GrpcIdKey() { return "tf-rpc"; }
+ 
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_worker_cache.cc b/tensorflow/core/distributed_runtime/rpc/grpc_worker_cache.cc
+index 60d5881d4c..2709452dfd 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_worker_cache.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_worker_cache.cc
+@@ -121,10 +121,10 @@ class GrpcWorkerCache : public WorkerCachePartial {
+       thread_.reset();
+     }
+ 
+-    ::grpc::CompletionQueue* completion_queue() { return &completion_queue_; }
++    ::grpc_impl::CompletionQueue* completion_queue() { return &completion_queue_; }
+ 
+    private:
+-    ::grpc::CompletionQueue completion_queue_;
++    ::grpc_impl::CompletionQueue completion_queue_;
+     std::unique_ptr<Thread> thread_;
+   };  // GrpcWorkerCacheThread
+ 
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.cc b/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.cc
+index de80992095..628dd38688 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.cc
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.cc
+@@ -55,7 +55,7 @@ class GrpcWorkerService : public AsyncServiceInterface {
+   static constexpr const size_t kGrpcWorkerServiceThreadCount = 8;
+ 
+  public:
+-  GrpcWorkerService(GrpcWorker* worker, ::grpc::ServerBuilder* builder)
++  GrpcWorkerService(GrpcWorker* worker, ::grpc_impl::ServerBuilder* builder)
+       : is_shutdown_(false) {
+     builder->RegisterService(&worker_service_);
+     for (int i = 0; i < kGrpcWorkerServiceThreadCount; i++) {
+@@ -121,7 +121,7 @@ class GrpcWorkerService : public AsyncServiceInterface {
+   class GrpcWorkerServiceThread {
+    public:
+     explicit GrpcWorkerServiceThread(
+-        GrpcWorker* worker, ::grpc::ServerBuilder* builder,
++        GrpcWorker* worker, ::grpc_impl::ServerBuilder* builder,
+         grpc::WorkerService::AsyncService* worker_service)
+         : worker_(worker),
+           worker_service_(worker_service),
+@@ -398,7 +398,7 @@ class GrpcWorkerService : public AsyncServiceInterface {
+     }
+ 
+     GrpcWorker* const worker_ = nullptr;  // Not owned.
+-    std::unique_ptr<::grpc::ServerCompletionQueue> cq_;
++    std::unique_ptr<::grpc_impl::ServerCompletionQueue> cq_;
+     std::unique_ptr<Thread> thread_;
+     grpc::WorkerService::AsyncService* const worker_service_;
+ 
+@@ -640,7 +640,7 @@ std::unique_ptr<GrpcWorker> NewGrpcWorker(WorkerEnv* env,
+ }
+ 
+ std::unique_ptr<AsyncServiceInterface> NewGrpcWorkerService(
+-    GrpcWorker* worker, ::grpc::ServerBuilder* builder) {
++    GrpcWorker* worker, ::grpc_impl::ServerBuilder* builder) {
+   return std::unique_ptr<AsyncServiceInterface>(
+       new GrpcWorkerService(worker, builder));
+ }
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.h b/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.h
+index 996617d385..36cc994b7c 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_worker_service.h
+@@ -21,9 +21,12 @@ limitations under the License.
+ 
+ namespace grpc {
+ class ByteBuffer;
+-class ServerBuilder;
+ }  // namespace grpc
+ 
++namespace grpc_impl {
++class ServerBuilder;
++}
++
+ namespace tensorflow {
+ 
+ class AsyncServiceInterface;
+@@ -59,7 +62,7 @@ std::unique_ptr<GrpcWorker> NewGrpcWorker(WorkerEnv* worker_env,
+ 
+ // Returns an implementation of WorkerService rpc service.
+ std::unique_ptr<AsyncServiceInterface> NewGrpcWorkerService(
+-    GrpcWorker* worker, ::grpc::ServerBuilder* builder);
++    GrpcWorker* worker, ::grpc_impl::ServerBuilder* builder);
+ 
+ }  // namespace tensorflow
+ 
+diff --git a/tensorflow/core/distributed_runtime/rpc/grpc_worker_service_impl.h b/tensorflow/core/distributed_runtime/rpc/grpc_worker_service_impl.h
+index 7915c3aafd..09b5d56319 100644
+--- a/tensorflow/core/distributed_runtime/rpc/grpc_worker_service_impl.h
++++ b/tensorflow/core/distributed_runtime/rpc/grpc_worker_service_impl.h
+@@ -31,11 +31,6 @@ limitations under the License.
+ #include "tensorflow/core/protobuf/worker.pb.h"
+ 
+ namespace grpc {
+-class CompletionQueue;
+-class Channel;
+-class RpcService;
+-class ServerCompletionQueue;
+-class ServerContext;
+ 
+ // Support parsing/unparsing of tensorflow::TensorResponse.
+ // Wire-format is identical to RecvTensorResponse.
+-- 
+2.16.4
+

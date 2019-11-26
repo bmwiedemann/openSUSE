@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov 22 08:55:51 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Apply grpc-namespace-corrections.patch for Tumbleweed only
+
+-------------------------------------------------------------------
+Tue Oct 15 19:24:06 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to tensorflow 0.13.2
+- dropped grpc.tar.gz and grpc-v1.13.0.gz as system grpc is used, this
+  fixes the broken builds which were introduced with gcc9 (bsc#1152671)
+  * added grpc-namespace-corrections.patch in order to use system grpc
+- dropped re2-2018-10-01.tar.gz as system re2 is used now
+
+-------------------------------------------------------------------
+Wed Sep 25 14:18:48 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added remove-keras.patch which removes keras sources and uses
+  distribution keras libaries
+  * removed keras-applications-1.0.6.tar.gz
+  * removed keras-preprocessing-1.0.9.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep 23 09:25:08 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- using now system protobuf instead of building it (bsc#1151150) 
+
+-------------------------------------------------------------------
 Tue Sep 17 21:08:12 UTC 2019 - guillaume.gardet@opensuse.org
 
 - Ajust %limit_build to avoid OOM errors

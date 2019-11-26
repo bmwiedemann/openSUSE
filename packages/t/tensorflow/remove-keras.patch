@@ -1,0 +1,66 @@
+From c31c1df30f3966c1f8ca94d823917d0da04ab028 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Wed, 25 Sep 2019 15:13:15 +0200
+Subject: [PATCH] remove keras
+
+---
+ tensorflow/python/keras/BUILD      | 1 -
+ tensorflow/tools/pip_package/BUILD | 2 --
+ tensorflow/workspace.bzl           | 2 --
+ 3 files changed, 5 deletions(-)
+
+diff --git a/tensorflow/python/keras/BUILD b/tensorflow/python/keras/BUILD
+index 4259e6d..b42e404 100755
+--- a/tensorflow/python/keras/BUILD
++++ b/tensorflow/python/keras/BUILD
+@@ -64,7 +64,6 @@ py_library(
+         "//tensorflow/python:training",
+         "//tensorflow/python/keras/optimizer_v2",
+         "//tensorflow/python/saved_model",
+-        "@keras_applications_archive//:keras_applications",
+     ],
+ )
+ 
+diff --git a/tensorflow/tools/pip_package/BUILD b/tensorflow/tools/pip_package/BUILD
+index 4ed2f6c..15667f4 100644
+--- a/tensorflow/tools/pip_package/BUILD
++++ b/tensorflow/tools/pip_package/BUILD
+@@ -111,7 +111,6 @@ COMMON_PIP_DEPS_V1 = COMMON_PIP_DEPS + [
+     "//tensorflow/contrib/eager/python:evaluator",
+     "//tensorflow/contrib/gan:gan",
+     "//tensorflow/contrib/graph_editor:graph_editor_pip",
+-    "//tensorflow/contrib/keras:keras",
+     "//tensorflow/contrib/labeled_tensor:labeled_tensor_pip",
+     "//tensorflow/contrib/nn:nn_py",
+     "//tensorflow/contrib/predictor:predictor_pip",
+@@ -171,7 +170,6 @@ filegroup(
+         "@highwayhash//:LICENSE",
+         "@icu//:icu4c/LICENSE",
+         "@jpeg//:LICENSE.md",
+-        "@keras_applications_archive//:LICENSE",
+         "@lmdb//:LICENSE",
+         "@local_config_sycl//sycl:LICENSE.text",
+         "@nasm//:LICENSE",
+diff --git a/tensorflow/workspace.bzl b/tensorflow/workspace.bzl
+index dff1512..9d37b5e 100755
+--- a/tensorflow/workspace.bzl
++++ b/tensorflow/workspace.bzl
+@@ -28,7 +28,6 @@ load("//third_party/icu:workspace.bzl", icu = "repo")
+ load("//third_party/jpeg:workspace.bzl", jpeg = "repo")
+ load("//third_party/nasm:workspace.bzl", nasm = "repo")
+ load("//third_party/kissfft:workspace.bzl", kissfft = "repo")
+-load("//third_party/keras_applications_archive:workspace.bzl", keras_applications = "repo")
+ 
+ def initialize_third_party():
+     """ Load third party repositories.  See above load() statements. """
+@@ -37,7 +36,6 @@ def initialize_third_party():
+     highwayhash()
+     hwloc()
+     icu()
+-    keras_applications()
+     kissfft()
+     jpeg()
+     nasm()
+-- 
+2.16.4
+
