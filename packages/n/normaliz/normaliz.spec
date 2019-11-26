@@ -20,7 +20,7 @@
 
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later
@@ -35,10 +35,8 @@ BuildRequires:  libtool
 BuildRequires:  mpfr-devel
 
 %description
-Normaliz is an open source tool for computations in affine monoids,
-vector configurations, lattice polytopes, and rational cones.
-
-Computation goals
+Normaliz is a tool for computations in affine monoids, vector configurations,
+lattice polytopes, and rational cones. It supports,
 
 * convex hulls and dual cones
 * conversion from generators to constraints and vice versa
@@ -56,8 +54,8 @@ Summary:        C++ API for Normaliz, a tool for computation of rotational cones
 Group:          System/Libraries
 
 %description -n %lname
-Normaliz is an open source tool for computations in affine monoids,
-vector configurations, lattice polytopes, and rational cones.
+Normaliz is a tool for computations in affine monoids, vector configurations,
+lattice polytopes, and rational cones.
 
 Normaliz offers an API - libnormaliz - that allows the user to access
 the Normaliz computations from any C++ program.
@@ -69,8 +67,8 @@ Requires:       %lname = %version
 Requires:       gmp-devel
 
 %description devel
-Normaliz is an open source tool for computations in affine monoids,
-vector configurations, lattice polytopes, and rational cones.
+Normaliz is a tool for computations in affine monoids, vector configurations,
+lattice polytopes, and rational cones.
 
 Normaliz offers an API - libnormaliz - that allows the user to access
 the Normaliz computations from any C++ program.
