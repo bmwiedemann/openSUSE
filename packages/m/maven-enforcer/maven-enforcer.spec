@@ -1,7 +1,7 @@
 #
 # spec file for package maven-enforcer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ Source0:        http://repo1.maven.org/maven2/org/apache/maven/enforcer/enforcer
 # TODO forward upstream
 # https://issues.apache.org/jira/browse/MENFORCER-267
 Patch0:         0001-Port-to-Maven-3-API.patch
+Patch1:         0002-Port-to-artifact-transfer-0.11.0.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(commons-lang:commons-lang)
 BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
@@ -47,7 +49,6 @@ BuildRequires:  mvn(org.beanshell:bsh)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-i18n)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -55,12 +56,14 @@ Enforcer is a build rule execution framework.
 
 %package javadoc
 Summary:        Javadoc for %{name}
+Group:          Development/Libraries/Java
 
 %description javadoc
 API documentation for %{name}.
 
 %package api
 Summary:        Enforcer API
+Group:          Development/Libraries/Java
 
 %description api
 This component provides the generic interfaces needed to
@@ -68,12 +71,14 @@ implement custom rules for the maven-enforcer-plugin.
 
 %package rules
 Summary:        Enforcer Rules
+Group:          Development/Libraries/Java
 
 %description rules
 This component contains the standard Enforcer Rules.
 
 %package plugin
 Summary:        Enforcer Rules
+Group:          Development/Libraries/Java
 
 %description plugin
 This component contains the standard Enforcer Rules.
@@ -81,6 +86,7 @@ This component contains the standard Enforcer Rules.
 %prep
 %setup -q -n enforcer-%{version}
 %patch0 -p1
+%patch1 -p1
 
 # Avoid dependency cycle
 %pom_xpath_inject pom:build/pom:pluginManagement/pom:plugins "
@@ -95,7 +101,10 @@ sed -e "s|<artifactId>plexus-maven-plugin</artifactId>|<artifactId>plexus-compon
     -i enforcer-{api,rules}/pom.xml
 
 %build
-%{mvn_build} -s -f -- -Dmaven.compiler.source=6 -Dmaven.compiler.target=6 -Dsource=6
+%{mvn_build} -s -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
