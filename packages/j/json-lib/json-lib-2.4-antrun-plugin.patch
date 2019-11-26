@@ -29,7 +29,7 @@ index cc191ee..37bb10a 100644
 +               </dependency>
 +               <dependency>
 +                  <groupId>asm</groupId>
-+                  <artifactId>asm-all</artifactId>
++                  <artifactId>asm</artifactId>
 +                  <version>any</version>
 +               </dependency>
 +               <dependency>

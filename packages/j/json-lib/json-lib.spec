@@ -1,7 +1,7 @@
 #
 # spec file for package json-lib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,8 @@ Patch100:       %{name}-%{version}-Use-Jenkins-default-values.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  maven-local
-BuildRequires:  maven-shared
-BuildRequires:  maven-surefire-provider-junit
 BuildRequires:  mvn(antlr:antlr)
-BuildRequires:  mvn(asm:asm-all)
+BuildRequires:  mvn(asm:asm)
 BuildRequires:  mvn(commons-beanutils:commons-beanutils)
 BuildRequires:  mvn(commons-cli:commons-cli)
 BuildRequires:  mvn(commons-collections:commons-collections)
@@ -45,6 +43,7 @@ BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(log4j:log4j:1.2.14)
 BuildRequires:  mvn(net.sf.ezmorph:ezmorph)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache:apache:pom:)
 BuildRequires:  mvn(org.codehaus.groovy:groovy18-all:1.8)
 BuildRequires:  mvn(org.codehaus.groovy:groovy18:1.8)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
@@ -118,11 +117,18 @@ popd
 
 %build
 %{mvn_file} : %{name}
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=6
+%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=6
+%endif
 
 # build Jenkins JSON lib
 pushd jenkins-%{name}-%{version}
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
+
 popd
 
 %install
