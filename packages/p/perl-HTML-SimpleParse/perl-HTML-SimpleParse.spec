@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-SimpleParse
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           perl-HTML-SimpleParse
 Version:        0.12
-Release:        266
+Release:        0
 Provides:       HTML-SimpleParse
 Conflicts:      perlmod
-AutoReqProv:    on
-Group:          Development/Libraries/Perl
-License:        Artistic-1.0
 Url:            http://search.cpan.org/perldoc?HTML::SimpleParse
 Summary:        a bare-bones HTML parser
+License:        Artistic-1.0
+Group:          Development/Libraries/Perl
 Source:         HTML-SimpleParse-%{version}.tar.gz 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildArch:      noarch
 
 %description
 This is the HTML::SimpleParse module.  It is a bare-bones HTML parser,
@@ -69,18 +67,12 @@ make %{?_smp_mflags} all
 make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install_vendor
+%perl_make_install
 %perl_process_packlist
+%perl_gen_filelist
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%files
+%files -f %{name}.files
 %defattr(-, root, root)
 %doc Changes README
-%doc %{_mandir}/man?/*
-%{perl_vendorlib}/HTML
-%{perl_vendorarch}/auto/HTML
 
 %changelog
