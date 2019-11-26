@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 24 14:21:38 UTC 2019 - malcolmlewis@opensuse.org
+
+- Update to version 0.38.9:
+  + Auto replacement of symbols as you type is now configurable in
+    preferences dialog, tab Text.
+  + Ctrl+Space to toggle To-Do List Item State; fixed multilevel
+    bug.
+  + Paste/import from html – added basic support.
+  + In codeboxes use code font for both plain text and syntax
+    hilighting.
+  + Fix paste as plain text into CodeBox cause losing CodeBox
+    content (#538).
+  + Export to html, stylesheet revamp.
+- Run spec-cleaner.
+- Add python-xml to requires.
+
+-------------------------------------------------------------------
 Sat Mar  2 20:02:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.38.8:

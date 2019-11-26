@@ -533,4 +533,12 @@
     <comment></comment>
     <requestid>681421</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b9e4135013f2038d2647b8458e1ba31a</srcmd5>
+    <version>0.38.9</version>
+    <time>1574784308</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to version 0.38.9, add python-xml to requires as well as run spec-cleaner. (forwarded request 750652 from malcolmlewis)</comment>
+    <requestid>750966</requestid>
+  </revision>
 </revisionlist>
