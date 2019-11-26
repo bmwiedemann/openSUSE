@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jarsigner-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,10 @@ This package contains the API documentation for %{name}.
 
 %build
 %{mvn_file} :%{name} %{name}
-%{mvn_build}
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=7
+%endif
 
 %install
 %mvn_install
