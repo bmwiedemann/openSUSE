@@ -44,4 +44,15 @@
   * Fix argv check in JEP (cpython under Java) environment.</comment>
     <requestid>722569</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa5ddb70a668ae6d0770052f11768904</srcmd5>
+    <version>0.98</version>
+    <time>1574784163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.98
+  * Fix that a duplicate argument to a lmdb method would cause
+    an assert.
+  * Fix crash under debug cpython when mdb_cursor_open failed</comment>
+    <requestid>750894</requestid>
+  </revision>
 </revisionlist>
