@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 19:10:20 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.10
+  * Add support for parsing pathlib.Path objects which contain a
+    configuration
+
+-------------------------------------------------------------------
 Fri Nov 22 20:04:46 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.9
