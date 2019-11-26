@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 28 10:55:54 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.031
+   see /usr/share/doc/packages/perl-MIME-Lite/changes.pod
+
+  =item Version 3.031
+  
+  Add an SSL option to connect to the SMTP relay via SSL on port 465. (thanks,
+  Max Maischein)
+  
+  Document some tips on using non-ASCII content with MIME::Lite (thanks,
+  traveljury.com and Tom Hukins)
+
+-------------------------------------------------------------------
 Mon Nov 25 07:36:22 UTC 2013 - coolo@suse.com
 
 - updated to 3.030
