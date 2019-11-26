@@ -1,0 +1,78 @@
+--- xmvn-3.1.0/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java	2019-06-14 13:04:11.000000000 +0200
++++ xmvn-3.1.0/xmvn-connector-gradle/src/main/java/org/fedoraproject/xmvn/connector/gradle/GradleResolver.java	2019-11-21 14:38:15.619695681 +0100
+@@ -25,7 +25,6 @@
+ import org.gradle.api.artifacts.ModuleVersionIdentifier;
+ import org.gradle.api.artifacts.component.ComponentArtifactIdentifier;
+ import org.gradle.api.artifacts.component.ModuleComponentIdentifier;
+-import org.gradle.api.internal.ExperimentalFeatures;
+ import org.gradle.api.internal.artifacts.ImmutableModuleIdentifierFactory;
+ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ConfiguredModuleComponentRepository;
+ import org.gradle.api.internal.artifacts.ivyservice.ivyresolve.ModuleComponentRepositoryAccess;
+@@ -35,13 +34,10 @@
+ import org.gradle.api.internal.artifacts.repositories.AbstractArtifactRepository;
+ import org.gradle.api.internal.artifacts.repositories.ResolutionAwareRepository;
+ import org.gradle.api.internal.artifacts.repositories.resolver.MetadataFetchingCost;
+-import org.gradle.api.internal.attributes.ImmutableAttributesFactory;
+ import org.gradle.api.internal.component.ArtifactType;
+-import org.gradle.api.internal.model.NamedObjectInstantiator;
+ import org.gradle.internal.component.external.model.DefaultModuleComponentArtifactMetadata;
+ import org.gradle.internal.component.external.model.DefaultMutableMavenModuleResolveMetadata;
+ import org.gradle.internal.component.external.model.FixedComponentArtifacts;
+-import org.gradle.internal.component.external.model.MavenDependencyDescriptor;
+ import org.gradle.internal.component.external.model.ModuleComponentArtifactMetadata;
+ import org.gradle.internal.component.external.model.ModuleComponentResolveMetadata;
+ import org.gradle.internal.component.external.model.ModuleDependencyMetadata;
+@@ -84,27 +80,17 @@
+ {
+     public GradleResolver( MetaDataParser<MutableMavenModuleResolveMetadata> pomParser,
+                            ImmutableModuleIdentifierFactory moduleIdentifierFactory,
+-                           FileResourceRepository fileRepository, ImmutableAttributesFactory immutableAttributesFactory,
+-                           NamedObjectInstantiator objectInstantiator, ExperimentalFeatures experimentalFeatures )
++                           FileResourceRepository fileRepository )
+     {
+         this.pomParser = pomParser;
+         this.moduleIdentifierFactory = moduleIdentifierFactory;
+         this.fileRepository = fileRepository;
+-        this.immutableAttributesFactory = immutableAttributesFactory;
+-        this.experimentalFeatures = experimentalFeatures;
+-        this.objectInstantiator = objectInstantiator;
+     }
+ 
+     private MetaDataParser<MutableMavenModuleResolveMetadata> pomParser;
+ 
+     private ImmutableModuleIdentifierFactory moduleIdentifierFactory;
+ 
+-    private ImmutableAttributesFactory immutableAttributesFactory;
+-
+-    private ExperimentalFeatures experimentalFeatures;
+-
+-    private NamedObjectInstantiator objectInstantiator;
+-
+     private FileResourceRepository fileRepository;
+ 
+     private final Logger logger = LoggerFactory.getLogger( GradleResolver.class );
+@@ -233,11 +219,8 @@
+                     logger.debug( "Artifact {} found, returning minimal model", artifact3 );
+                     ModuleVersionIdentifier mvi =
+                         moduleIdentifierFactory.moduleWithVersion( id.getGroup(), id.getModule(), id.getVersion() );
+-                    DefaultMutableMavenModuleResolveMetadata metaData =
+-                        new DefaultMutableMavenModuleResolveMetadata( mvi, id,
+-                                                                      Collections.<MavenDependencyDescriptor>emptyList(),
+-                                                                      immutableAttributesFactory, objectInstantiator,
+-                                                                      experimentalFeatures );
++                    MutableModuleComponentResolveMetadata metaData =
++                        DefaultMutableMavenModuleResolveMetadata.missing( mvi, id );
+                     result.resolved( metaData.asImmutable() );
+                     return;
+                 }
+--- xmvn-3.1.0/xmvn-parent/pom.xml	2019-06-14 13:04:11.000000000 +0200
++++ xmvn-3.1.0/xmvn-parent/pom.xml	2019-11-21 14:36:19.831099473 +0100
+@@ -84,7 +84,7 @@
+     <atinjectVersion>1</atinjectVersion>
+     <ivyVersion>2.5.0-rc1</ivyVersion>
+     <jcommanderVersion>1.72</jcommanderVersion>
+-    <gradleVersion>4.5.1</gradleVersion>
++    <gradleVersion>4.4.1</gradleVersion>
+     <groovyVersion>2.4.12</groovyVersion>
+     <mavenInvokerVersion>3.0.1</mavenInvokerVersion>
+     <mavenResolverVersion>1.3.1</mavenResolverVersion>

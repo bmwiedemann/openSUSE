@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 21 14:23:27 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.1.0
+- Removed patches:
+  * 0001-Fix-installer-plugin-loading.patch
+  * 0001-Port-to-Gradle-4.2.patch
+  * 0001-Port-to-Gradle-4.3.1.patch
+  * 0001-Support-setting-Xdoclint-none-in-m-javadoc-p-3.0.0.patch
+  * 0001-Fix-configuration-of-aliased-plugins.patch
+  * 0001-Don-t-use-JAXB-for-converting-bytes-to-hex-string.patch
+  * 0001-Use-apache-commons-compress-for-manifest-injection-a.patch
+  * 0001-port-to-gradle-4.4.1.patch
+  * 0001-Replace-JAXB-parser.patch
+    + Integrated in this version
+
+-------------------------------------------------------------------
 Wed Mar 27 06:27:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of xmvn-connector-aether 3.0.0

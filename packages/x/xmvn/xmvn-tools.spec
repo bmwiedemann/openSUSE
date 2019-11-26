@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn-tools
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global parent xmvn
 %global subname tools
 Name:           %{parent}-%{subname}
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Local Extensions for Apache Maven
 License:        Apache-2.0
@@ -27,22 +27,16 @@ Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/xmvn/releases/download/%{version}/%{parent}-%{version}.tar.xz
 Source1:        %{parent}-build.tar.xz
-Patch0:         0001-Fix-installer-plugin-loading.patch
-Patch1:         0001-Port-to-Gradle-4.2.patch
-Patch2:         0001-Port-to-Gradle-4.3.1.patch
-Patch3:         0001-Support-setting-Xdoclint-none-in-m-javadoc-p-3.0.0.patch
-Patch4:         0001-Fix-configuration-of-aliased-plugins.patch
-Patch5:         0001-Don-t-use-JAXB-for-converting-bytes-to-hex-string.patch
-Patch6:         0001-Use-apache-commons-compress-for-manifest-injection-a.patch
-Patch7:         0001-port-to-gradle-4.4.1.patch
-Patch8:         0001-Replace-JAXB-parser.patch
+Patch1:         0001-Prefer-namespaced-metadata-when-duplicates-are-found.patch
+Patch2:         0002-Make-xmvn-subst-honor-settings-for-ignoring-duplicat.patch
+Patch3:         0003-Fix-requires-generation-for-self-depending-packages.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  beust-jcommander
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  maven-invoker
+BuildRequires:  maven-invoker >= 3.0
 BuildRequires:  modello
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations
@@ -138,24 +132,20 @@ This package provides XMvn Install, which is a command-line interface
 to XMvn installer.  The installer reads reactor metadata and performs
 artifact installation according to specified configuration.
 
-%package -n javadoc
+%package javadoc
 Summary:        API documentation for %{name}
 Group:          Documentation/HTML
+Obsoletes:      javadoc
 
-%description -n javadoc
+%description javadoc
 This package provides %{summary}.
 
 %prep
 %setup -q -n %{parent}-%{version} -a1
-%patch0 -p1
+
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 # Bisect IT has no chances of working in local, offline mode, without
 # network access - it needs to access remote repositories.
@@ -204,7 +194,8 @@ mkdir -p lib
 build-jar-repository -s lib \
 	beust-jcommander commons-compress maven-invoker/maven-invoker \
 	objectweb-asm/asm plexus-containers/plexus-component-annotations \
-	plexus-containers/plexus-container-default plexus/utils slf4j/api
+	plexus-containers/plexus-container-default plexus/utils slf4j/api \
+	maven-shared-utils/maven-shared-utils
 %{ant} -Dtest.skip=true package javadoc
 
 %install
@@ -264,7 +255,7 @@ done
 %files -n %{parent}-install -f .mfiles-install
 %{_bindir}/%{parent}-install
 
-%files -n javadoc
+%files javadoc
 %license LICENSE NOTICE
 %{_javadocdir}/%{parent}
 

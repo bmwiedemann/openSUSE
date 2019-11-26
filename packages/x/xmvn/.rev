@@ -23,4 +23,12 @@
     <comment>Build the xmvn-connector-gradle package too</comment>
     <requestid>749225</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf24cdf002f10d93c776d787dbb92d9e</srcmd5>
+    <version>3.1.0</version>
+    <time>1574784185</time>
+    <user>dimstar_suse</user>
+    <comment>3.1.0</comment>
+    <requestid>750911</requestid>
+  </revision>
 </revisionlist>
