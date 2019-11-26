@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-interpolation
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_with tests
 Name:           plexus-interpolation
-Version:        1.22
+Version:        1.26
 Release:        0
 Summary:        Plexus Interpolation API
 License:        Apache-2.0 AND Apache-1.1 AND MIT
 Group:          Development/Libraries/Java
-URL:            https://github.com/codehaus-plexus/plexus-interpolation
-Source0:        https://github.com/sonatype/%{name}/archive/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/codehaus-plexus/%{name}
+Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
