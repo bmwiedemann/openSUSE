@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>690938</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>20abb76f4c6f94eadbc1df1d682411aa</srcmd5>
+    <version>3.1.0</version>
+    <time>1574784027</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750626</requestid>
+  </revision>
 </revisionlist>

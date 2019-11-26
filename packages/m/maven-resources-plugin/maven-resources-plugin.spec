@@ -1,7 +1,7 @@
 #
-# spec file for package maven
+# spec file for package maven-resources-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,6 +105,9 @@ build-jar-repository -s lib \
 %else
 xmvn --batch-mode --offline \
 	-Dmaven.test.skip=true \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=7 \
+%endif
 	package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 
