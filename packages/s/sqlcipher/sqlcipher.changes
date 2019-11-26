@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 25 11:53:56 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.2.0:
+  * Adds PRAGMA cipher_integrity_check to perform independent
+    verification of page HMACs
+  * Updates baseline to upstream SQLite 3.28.0
+  * Improves PRAGMA cipher_migrate to handle keys containing
+    non-terminating zero bytes
+
+-------------------------------------------------------------------
 Mon May 13 07:57:02 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v4.1.0:

@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define         lib_version 3.27.2
-%define         lib_name lib%{name}-3_27_2-0
+%define         lib_version 3.28.0
+%define         lib_name lib%{name}-3_28_0-0
 Name:           sqlcipher
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
