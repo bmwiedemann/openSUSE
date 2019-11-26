@@ -24,4 +24,12 @@
     <comment></comment>
     <requestid>634478</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5cab73aea26b1e0f0e445d4215c3bb5</srcmd5>
+    <version>1.4.2</version>
+    <time>1574784130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 750850 from awissu)</comment>
+    <requestid>750851</requestid>
+  </revision>
 </revisionlist>

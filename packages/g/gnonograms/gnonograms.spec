@@ -15,9 +15,11 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%define soname libgnonograms-core
+%define sover 0
 
 Name:           gnonograms
-Version:        1.3.0
+Version:        1.4.2
 Release:        0
 Summary:        Program for creating and solving gnonogram puzzles
 License:        GPL-3.0-or-later
@@ -33,12 +35,31 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(granite)
+BuildRequires:  pkgconfig(granite) >= 5.2.0
 BuildRequires:  pkgconfig(gtk+-3.0) > 3.22.0
 Recommends:     %{name}-lang
 
 %description
 An implementation of the Japanese logic puzzle "Nonograms".
+
+%package -n     %{soname}%{sover}
+Summary:        The core library for %{name}
+Group:          System/Libraries
+
+%description -n %{soname}%{sover}
+An implementation of the Japanese logic puzzle "Nonograms".
+
+This package contains the shared library.
+
+%package        devel
+Summary:        Development Files for %{name}
+Group:          Development/Libraries/Other
+Requires:       %{soname}%{sover} = %{version}
+
+%description    devel
+An implementation of the Japanese logic puzzle "Nonograms".
+
+This package contains the development files for %{name}.
 
 %lang_package
 
@@ -60,16 +81,27 @@ find %{buildroot} -name com.github.jeremypw.gnonograms-extra.mo -exec rm {} +
 %find_lang com.github.jeremypw.gnonograms %{name}.lang
 %fdupes %{buildroot}/%{_datadir}
 
+%post -n %{soname}%{sover} -p /sbin/ldconfig
+%postun -n %{soname}%{sover} -p /sbin/ldconfig
+
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/com.github.jeremypw.gnonograms
 %{_datadir}/appdata/com.github.jeremypw.gnonograms.appdata.xml
 %{_datadir}/applications/com.github.jeremypw.gnonograms.desktop
-%{_datadir}/icons/hicolor/*/*/com.github.jeremypw.gnonograms.??g
-%{_datadir}/icons/hicolor/*/*/application-x-gnonogram-puzzle.??g
+%{_datadir}/icons/hicolor/*/*/*.??g
 %{_datadir}/glib-2.0/schemas/com.github.jeremypw.gnonograms.gschema.xml
 %{_datadir}/mime/packages/com.github.jeremypw.gnonograms.mimeinfo.xml
+
+%files -n %{soname}%{sover}
+%{_libdir}/%{soname}.so.*
+
+%files devel
+%{_includedir}/gnonograms-core.h
+%{_libdir}/%{soname}.so
+%{_libdir}/pkgconfig/gnonograms-core.pc
+%{_datadir}/vala/vapi/gnonograms-core.*
 
 %files lang -f %{name}.lang
 
