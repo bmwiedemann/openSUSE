@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 24 06:47:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Regenerate to include the new slf4j-api.jar in the tarball
+
+-------------------------------------------------------------------
 Mon Nov 18 09:27:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of binary boostrap version of gradle 4.4.1
