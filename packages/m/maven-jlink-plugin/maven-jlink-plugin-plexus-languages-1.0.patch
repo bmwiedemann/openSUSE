@@ -1,0 +1,11 @@
+--- maven-jlink-plugin-3.0.0-alpha-1/src/main/java/org/apache/maven/plugins/jlink/JLinkMojo.java	2017-09-09 16:11:26.000000000 +0200
++++ maven-jlink-plugin-3.0.0-alpha-1/src/main/java/org/apache/maven/plugins/jlink/JLinkMojo.java	2019-11-22 11:53:47.920138538 +0100
+@@ -49,7 +49,7 @@
+ import org.codehaus.plexus.languages.java.jpms.LocationManager;
+ import org.codehaus.plexus.languages.java.jpms.ResolvePathsRequest;
+ import org.codehaus.plexus.languages.java.jpms.ResolvePathsResult;
+-import org.codehaus.plexus.languages.java.jpms.ResolvePathsResult.ModuleNameSource;
++import org.codehaus.plexus.languages.java.jpms.ModuleNameSource;
+ import org.codehaus.plexus.util.FileUtils;
+ import org.codehaus.plexus.util.cli.Commandline;
+ 
