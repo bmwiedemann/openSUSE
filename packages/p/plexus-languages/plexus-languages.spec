@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-languages
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-languages
-Version:        0.9.10
+Version:        1.0.3
 Release:        0
 Summary:        Plexus Languages
 License:        Apache-2.0
@@ -32,11 +32,12 @@ Source100:      plexus-java-build.xml
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-local
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  qdox >= 2
+BuildRequires:  sisu-inject
 Requires:       java >= 1.7
 Requires:       mvn(com.thoughtworks.qdox:qdox)
 Requires:       mvn(org.ow2.asm:asm)
@@ -61,10 +62,11 @@ cp %{SOURCE100} plexus-java/build.xml
 
 %pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>" .
 %pom_remove_parent .
+%pom_xpath_remove pom:project/pom:profiles plexus-java
 
 %build
 mkdir -p lib
-build-jar-repository -s lib qdox javax.inject plexus-containers/plexus-component-annotations objectweb-asm/asm
+build-jar-repository -s lib qdox javax.inject plexus-containers/plexus-component-annotations objectweb-asm/asm org.eclipse.sisu.inject
 pushd plexus-java
 %{ant} -Dtest.skip=true package javadoc
 popd

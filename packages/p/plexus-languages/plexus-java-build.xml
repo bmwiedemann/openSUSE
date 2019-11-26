@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-java"/>
-  <property name="project.version" value="0.9.10"/>
+  <property name="project.version" value="1.0.3"/>
 
   <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>
@@ -19,8 +19,6 @@
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
-  <property name="build.outputDir9" value="${build.outputDir}/META-INF/versions/9"/>
-  <property name="build.srcDir9" value="src/main/java9"/>
   <property name="build.resourceDir" value="src/main/resources"/>
   <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
   <property name="build.testDir" value="src/test/java"/>
@@ -83,44 +81,25 @@
   </target>
 
   <!-- ====================================================================== -->
-  <!-- Java 9 compilation target                                              -->
+  <!-- Sisu javax.inject.Named generation target                              -->
   <!-- ====================================================================== -->
 
-  <condition property="isJava9">
-    <not>
-      <or>
-        <equals arg1="${ant.java.version}" arg2="1.1"/>
-        <equals arg1="${ant.java.version}" arg2="1.2"/>
-        <equals arg1="${ant.java.version}" arg2="1.3"/>
-        <equals arg1="${ant.java.version}" arg2="1.4"/>
-        <equals arg1="${ant.java.version}" arg2="1.5"/>
-        <equals arg1="${ant.java.version}" arg2="1.6"/>
-        <equals arg1="${ant.java.version}" arg2="1.7"/>
-        <equals arg1="${ant.java.version}" arg2="1.8"/>
-      </or>
-    </not>
-  </condition>
-
-  <target name="compile9" depends="compile" description="Compile the java9 code" if="isJava9">
-    <mkdir dir="${build.outputDir9}"/>
-    <javac destdir="${build.outputDir9}"
-           nowarn="false"
-           debug="true"
-           encoding="utf-8"
-           optimize="false"
-           deprecation="true"
-           target="9"
-           verbose="false"
-           fork="false"
-           source="9">
-      <src>
-        <pathelement location="${build.srcDir9}"/>
-      </src>
-      <classpath>
-        <path refid="build.classpath"/>
-        <pathelement location="${build.outputDir}"/>
-      </classpath>
-    </javac>
+  <target name="sisu"
+          depends="compile"
+          description="Generate javax.inject.Name index">
+    <sequential>
+	  <java classname="org.eclipse.sisu.space.SisuIndex"
+	        failonerror="true"
+			fork="true">
+        <classpath>
+          <path refid="build.classpath"/>
+        </classpath>
+        <arg value="${build.outputDir}"/>
+      </java>
+      <move todir="${build.outputDir}/META-INF">
+        <fileset dir="META-INF"/>
+      </move>
+	</sequential>
   </target>
 
   <!-- ====================================================================== -->
@@ -251,7 +230,7 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="compile9,test" description="Package the application">
+  <target name="package" depends="sisu,test" description="Package the application">
     <jar jarfile="${build.dir}/${build.finalName}.jar"
          compress="true"
          index="false"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 21 19:33:41 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.0.3
+- Do not build the compile9 target even when building with modular
+  java.
+
+-------------------------------------------------------------------
 Tue Apr  2 13:22:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Put a condition to the compile9 target in order to allow building
