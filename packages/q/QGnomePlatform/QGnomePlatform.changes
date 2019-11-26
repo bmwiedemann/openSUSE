@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 24 07:36:12 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to 0.6
+  * Window decorations on Wayland
+  * Qt 5.13 compatibility
+  * Modified description to match upstream
+
+-------------------------------------------------------------------
 Thu Mar 14 09:16:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Tweak spec, use modern macros where possible.

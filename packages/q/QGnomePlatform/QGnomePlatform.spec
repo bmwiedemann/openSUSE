@@ -19,7 +19,7 @@
 
 
 Name:           QGnomePlatform
-Version:        0.5
+Version:        0.6.0
 Release:        0
 Summary:        A better Qt application inclusion in GNOME
 # Most code is LGPL-2.1-or-later but qgtk3dialoghelpers files forked from
@@ -35,19 +35,27 @@ BuildRequires:  gcc-c++
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5PlatformSupport-private-headers-devel
+BuildRequires:  libqt5-qtwayland-devel
+BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrender)
 Requires:       adwaita-qt5
 
 %description
-QGnomePlatform is a Qt Platform Theme aimed to accommodate as much of GNOME
-settings as possible and utilize them in Qt applications without modifying them -
-making them fit into the environment as well as possible.
+QGnomePlatform is a Qt Platform Theme designed to use as many of the GNOME
+settings as possible in unmodified Qt applications. It allows Qt applications
+to fit into the environment as well as possible.
 
-%define libqt5_archdatadir	%{_libdir}/qt5
-%define libqt5_plugindir	%{libqt5_archdatadir}/plugins
+%define libqt5_archdatadir  %{_libdir}/qt5
+%define libqt5_plugindir    %{libqt5_archdatadir}/plugins
 
 %prep
 %autosetup -p1
@@ -65,5 +73,6 @@ make %{?_smp_mflags}
 %dir %{libqt5_plugindir}
 %dir %{libqt5_plugindir}/platformthemes
 %{libqt5_plugindir}/platformthemes/libqgnomeplatform.so
+%{libqt5_plugindir}/wayland-decoration-client/libqgnomeplatformdecoration.so
 
 %changelog
