@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 14:59:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add psgml-texinfo-6.7.patch: Fix build with texinfo 6.7, which
+  defaults to UTF-8 unless differently specified.
+
+-------------------------------------------------------------------
 Mon Jul 23 13:20:56 UTC 2018 - ke@suse.com
 
 - In comments, escape macros.

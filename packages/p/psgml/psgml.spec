@@ -1,7 +1,7 @@
 #
 # spec file for package psgml
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ BuildRequires:  unzip
 %define tdtd tdtd.zip
 Requires:       emacs_program
 Summary:        Emacs Add-On to edit SGML/XML documents
-License:        GPL-2.0+ and SUSE-Public-Domain
+License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Editors/Emacs
 Version:        1.4.1
 Release:        0
@@ -47,9 +47,10 @@ Patch5:         psgml-xxml-namespace-face.diff
 Patch6:         tdtd-dtd-patch
 Patch7:         xxml-indentation.diff
 Patch8:         flavour.patch
+Patch9:         psgml-texinfo-6.7.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Url:            http://sourceforge.net/projects/psgml/
+URL:            http://sourceforge.net/projects/psgml/
 PreReq:         %install_info_prereq
 
 %description
@@ -77,6 +78,7 @@ Authors:
 %prep
 %setup -q
 %patch -p1
+%patch9 -p1
 cp -p %{SOURCE1} .
 # xxml
 mkdir xxml
@@ -154,7 +156,7 @@ ln -f dot_emacs tdtd.dot.emacs
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 %install_info --info-dir=%{_infodir} %{_infodir}/psgml-api.info.gz
 
-%postun
+%preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/psgml-api.info.gz
 
@@ -168,7 +170,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc suse-start-psgml.el
 %doc psgml-jade
 %doc tdtd-readme.txt tdtd-tutorial.txt tdtd.dot.emacs
-# %config %%{_prefix}/share/emacs/site-lisp/suse-start-psgml.el
+# %%config %%{_prefix}/share/emacs/site-lisp/suse-start-psgml.el
 %{_prefix}/share/emacs/site-lisp/psgml
 %doc %{_infodir}/psgml-api.info*
 %doc %{_infodir}/psgml.info*

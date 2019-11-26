@@ -1,0 +1,9 @@
+diff -ur psgml-1.4.1.orig/psgml.texi psgml-1.4.1/psgml.texi
+--- psgml-1.4.1.orig/psgml.texi	2013-07-27 15:03:45.000000000 +0200
++++ psgml-1.4.1/psgml.texi	2019-11-25 15:57:56.928114579 +0100
+@@ -1,4 +1,5 @@
+ \input texinfo   @c -*-texinfo-*-
++@documentencoding ISO-8859-1
+ @c %**start of header
+ @setfilename psgml.info
+ @settitle psgml
