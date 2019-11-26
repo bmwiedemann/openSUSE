@@ -1,7 +1,7 @@
 #
 # spec file for package stringtemplate4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,10 +80,12 @@ sed -i /testMissingImportString/s/@Test// test/org/stringtemplate/v4/test/TestGr
 rm -r test/org/stringtemplate/v4/test/TestEarlyEvaluation.java
 
 %build
+%{mvn_build} -f \
 %if %{with bootstrap}
-%{mvn_build} -fj
-%else
-%{mvn_build} -f
+	-j \
+%endif
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
 %endif
 
 %install
