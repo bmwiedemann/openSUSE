@@ -1,7 +1,7 @@
 #
 # spec file for package signpost-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,7 +79,10 @@ sed -i 's/\r//' LICENSE
 %{mvn_file} :signpost-commonshttp4 signpost-commonshttp4
 
 %build
-%{mvn_build} -s -f -- -Dsource=6
+%{mvn_build} -s -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
