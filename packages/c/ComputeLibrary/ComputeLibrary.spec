@@ -1,0 +1,154 @@
+#
+# spec file for package ComputeLibrary
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+%define so_ver 16
+
+# Disable validation tests by default due to CL
+%bcond_with computelibrary_tests
+
+Name:           ComputeLibrary
+Version:        19.08
+Release:        0
+Summary:        ARM Compute Library
+License:        MIT
+Group:          Productivity/Graphics/Other
+Url:            https://developer.arm.com/technologies/compute-library
+Source:         https://github.com/ARM-software/ComputeLibrary/archive/v%{version}.tar.gz#/ComputeLibrary-%{version}.tar.gz
+BuildRequires:  gcc-c++
+BuildRequires:  git
+BuildRequires:  ocl-icd-devel
+BuildRequires:  scons >= 2.4
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExclusiveArch:  aarch64 armv7l armv7hl x86_64
+Recommends:     %{name}-sample-data
+
+%description
+A software library for computer vision and machine learning.
+The Compute Library is a collection of low-level functions optimized for Arm CPU and GPU architectures targeted at image processing, computer vision, and machine learning.
+Examples binaries part.
+
+%package -n libarm_compute%{so_ver}
+Summary:        ARM Compute Library -- libs
+Group:          System/Libraries
+
+%description -n libarm_compute%{so_ver}
+A software library for computer vision and machine learning.
+The Compute Library is a collection of low-level functions optimized for Arm CPU and GPU architectures targeted at image processing, computer vision, and machine learning.
+Library part.
+
+
+%package devel
+Summary:        ARM Compute Library -- devel
+Group:          Development/Languages/C and C++
+Requires:       %{name} = %{version}
+Requires:       libarm_compute%{so_ver} = %{version}
+
+%description devel
+A software library for computer vision and machine learning.
+The Compute Library is a collection of low-level functions optimized for Arm CPU and GPU architectures targeted at image processing, computer vision, and machine learning.
+Devel part, including headers.
+
+%package sample-data
+%define sampledir sample-data
+Summary:        Compute Library sample data
+Group:          Productivity/Graphics/Visualization/Other
+
+%description sample-data
+Free *.npy and *.ppm files to use with example binaries.
+
+%prep
+%setup -q -n ComputeLibrary-%{version}
+
+%build
+scons os=linux build=native \
+      set_soname=1 \
+      examples=1 \
+      gles_compute=0 \
+      opencl=1 \
+%if %{with computelibrary_tests}
+      validation_tests=1 \
+%else
+      validation_tests=0 \
+%endif
+%ifarch aarch64 aarch64_ilp32
+      neon=1 arch=arm64-v8a \
+%else
+%ifarch armv7l armv7hl
+      neon=0 arch=armv7a \
+%else
+      neon=0 arch=x86_64 \
+%endif
+%endif
+      extra_cxx_flags="%{optflags}" \
+      Werror=0 %{?_smp_mflags}
+
+%install
+rm build/examples/*.o
+mkdir -p %{buildroot}%{_bindir}
+cp -a build/examples/* %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_libdir}
+cp -a build/*.so* %{buildroot}%{_libdir}/
+mkdir -p %{buildroot}%{_includedir}/
+cp -a arm_compute/ include/half/ include/libnpy/ support/ utils/ %{buildroot}%{_includedir}/
+# Remove *.cpp files from includedir
+rm -f $(find %{buildroot}%{_includedir}/ -name *.cpp)
+# Install sample data
+mkdir -p %{buildroot}%{_datadir}/ComputeLibrary/%{sampledir}
+cp -r data/* %{buildroot}%{_datadir}/ComputeLibrary/%{sampledir}
+# Install scripts
+cp scripts/* %{buildroot}%{_bindir}
+# Fix Python scripts interpreter
+for pyfile in `ls %{buildroot}%{_bindir}/*.py`; do
+  sed -i -e 's|#!/usr/bin/env python|#!/usr/bin/python|' $pyfile
+done
+
+%post -n libarm_compute%{so_ver} -p /sbin/ldconfig
+
+%postun -n libarm_compute%{so_ver} -p /sbin/ldconfig
+
+%if %{with computelibrary_tests}
+%check
+LD_LIBRARY_PATH="build/" build/tests/arm_compute_validation
+%endif
+
+%files
+%defattr(-,root,root)
+%{_bindir}/*
+
+%files -n libarm_compute%{so_ver}
+%defattr(-,root,root)
+%{_libdir}/*.so.%{so_ver}*
+
+%files devel
+%defattr(-,root,root)
+%dir %{_includedir}/arm_compute
+%dir %{_includedir}/half
+%dir %{_includedir}/libnpy
+%dir %{_includedir}/support
+%dir %{_includedir}/utils
+%{_includedir}/arm_compute/*
+%{_includedir}/half/*
+%{_includedir}/libnpy/*
+%{_includedir}/support/*
+%{_includedir}/utils/*
+%{_libdir}/*.so
+
+%files sample-data
+%dir %{_datadir}/ComputeLibrary/
+%{_datadir}/ComputeLibrary/%{sampledir}
+
+%changelog
