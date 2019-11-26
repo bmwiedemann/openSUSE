@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 13:04:59 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1574510263.217a2c530:
+  * Bring back 'xorg-x11-fonts' needed for chromium startup
+
+-------------------------------------------------------------------
 Fri Nov 22 20:21:55 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1574454088.33c0b7556:
