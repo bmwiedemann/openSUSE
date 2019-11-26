@@ -1,7 +1,7 @@
 #
 # spec file for package tesla-polyglot
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -216,7 +216,10 @@ rm polyglot-yaml/src/test/java/org/sonatype/maven/polyglot/yaml/SnakeYamlModelRe
 %if %{without bootstrap}
 	-s \
 %endif
-	-f -- -Dproject.build.sourceEncoding=UTF-8
+	-f -- -Dproject.build.sourceEncoding=UTF-8 \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=7
+%endif
 
 %install
 %mvn_install
