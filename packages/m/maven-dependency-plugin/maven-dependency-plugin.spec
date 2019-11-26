@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/plugins/%{name}
 Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Patch0:         00-maven-artifact-transfer-0.11.0.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(classworlds:classworlds)
 BuildRequires:  mvn(commons-collections:commons-collections)
 BuildRequires:  mvn(commons-io:commons-io)
@@ -52,7 +54,6 @@ BuildRequires:  mvn(org.apache.maven:maven-repository-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-io)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -70,6 +71,7 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q
+%patch0 -p1
 
 %pom_remove_plugin :maven-enforcer-plugin
 
@@ -78,7 +80,10 @@ Group:          Documentation/HTML
 
 %build
 # Tests require legacy Maven
-%{mvn_build} -f
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=7
+%endif
 
 %install
 %mvn_install
