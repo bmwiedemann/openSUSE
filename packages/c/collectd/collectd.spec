@@ -34,6 +34,20 @@
   wireless write_graphite write_http write_log write_sensu write_tsdb write_prometheus \\\
   zfs_arc zookeeper
 
+%if !0%{?is_opensuse}
+%if 0%{?sle_version} <= 150100
+%define lvm2app 1
+%else
+%define lvm2app 0
+%endif
+%else
+%if !0%{?suse_version} > 1500
+%define lvm2app 1
+%else
+%define lvm2app 0
+%endif
+%endif
+
 %ifnarch s390 s390x
 %define sensors    1
 %define sensors_plugin sensors
@@ -42,7 +56,7 @@
 %define sensors_plugin %{nil}
 %endif
 Name:           collectd
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT
@@ -97,7 +111,11 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  xfsprogs-devel
 BuildRequires:  pkgconfig(OpenIPMI)
 BuildRequires:  pkgconfig(OpenIPMIpthread)
+%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
 BuildRequires:  pkgconfig(Qgpsmm)
+BuildRequires:  pkgconfig(libgps)
+BuildRequires:  pkgconfig(libsigrok)
+%endif
 BuildRequires:  pkgconfig(dbi)
 BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(freetype2)
@@ -108,7 +126,6 @@ BuildRequires:  pkgconfig(libart-2.0)
 BuildRequires:  pkgconfig(libatasmart)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libevent)
-BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libmicrohttpd)
@@ -117,14 +134,14 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(librrd)
-BuildRequires:  pkgconfig(libsigrok)
-BuildRequires:  pkgconfig(libstatgrab)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libupsclient)
 BuildRequires:  pkgconfig(libvirt)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
+%if %{?lvm2app}
 BuildRequires:  pkgconfig(lvm2app)
+%endif
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(xtables)
 BuildRequires:  pkgconfig(zlib)
@@ -240,6 +257,7 @@ Requires:       %{name} = %{version}-%{release}
 This plugin for collectd provides Network UPS Tools support.
 %endif
 
+%if %{?lvm2app}
 %package plugin-lvm
 Summary:        LVM plugin for collectd
 Group:          System/Monitoring
@@ -247,6 +265,7 @@ Requires:       %{name} = %{version}-%{release}
 
 %description plugin-lvm
 This plugin collects information from lvm.
+%endif
 
 %package plugin-pcie
 Summary:        PCIe Monitoring Plugin for %{name}
@@ -317,6 +336,7 @@ Requires:       %{name} = %{version}-%{release}
 Optional %{name} plugin to receive and dispatch timing values from Pinba, a
 profiling extension for PHP.
 
+%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
 %package plugin-sigrok
 Summary:        Sigrok Monitoring Plugin for %{name}
 Group:          System/Monitoring
@@ -325,6 +345,7 @@ Requires:       %{name} = %{version}-%{release}
 %description plugin-sigrok
 Optional %{name} plugin to collect measurements from
 various devices supported by libsigrok.
+%endif
 
 %package plugin-smart
 Summary:        SMART Monitoring Plugin for %{name}
@@ -344,6 +365,7 @@ Requires:       lua
 %description plugin-lua
 Optional %{name} Lua API in order to write %{name} plugins in Lua.
 
+%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
 %package plugin-gps
 Summary:        GPSD monitoring plugin for %{name}
 Group:          System/Monitoring
@@ -351,6 +373,7 @@ Requires:       %{name} = %{version}-%{release}
 
 %description plugin-gps
 Optional %{name} plugin to monitor gpsd.
+%endif
 
 %package plugin-mcelog
 Summary:        Machine Check Exceptions plugin for %{name}
@@ -392,16 +415,56 @@ Requires:       %{name} = %{version}-%{release}
 %description plugin-write_syslog
 Optional %{name} plugin to write values lists as syslog messages.
 
+%package plugin-uptime
+Summary:        Uptime plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-uptime
+Optional %{name} plugin to collect system uptime statistics.
+
+%package plugin-connectivity
+Summary:        Connectivity plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-connectivity
+Optional %{name} plugin to collect Event-based interface status.
+
+
+%package plugin-procevent
+Summary:        Procevent plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-procevent
+Optional %{name} plugin to listen for process starts and exits via netlink.
+
+
+%package plugin-sysevent
+Summary:        Sysevent plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-sysevent
+Optional %{name} plugin to listen to rsyslog events and submit matched values.
+.
+
 %package plugins-all
 Summary:        All Monitoring Plugins for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}-plugin-connectivity = %{version}-%{release}
 Requires:       %{name}-plugin-dbi = %{version}-%{release}
+%if 0%{?sle_version} < 150000  || 0%{?is_opensuse}
 Requires:       %{name}-plugin-gps = %{version}-%{release}
+%endif
 Requires:       %{name}-plugin-ipmi = %{version}-%{release}
 Requires:       %{name}-plugin-java = %{version}-%{release}
 Requires:       %{name}-plugin-lua = %{version}-%{release}
+%if %{?lvm2app}
 Requires:       %{name}-plugin-lvm = %{version}-%{release}
+%endif
 Requires:       %{name}-plugin-mcelog = %{version}-%{release}
 Requires:       %{name}-plugin-memcachec = %{version}-%{release}
 Requires:       %{name}-plugin-mysql = %{version}-%{release}
@@ -411,11 +474,16 @@ Requires:       %{name}-plugin-ovs = %{version}-%{release}
 Requires:       %{name}-plugin-pcie = %{version}-%{release}
 Requires:       %{name}-plugin-pinba = %{version}-%{release}
 Requires:       %{name}-plugin-postgresql = %{version}-%{release}
+Requires:       %{name}-plugin-procevent = %{version}-%{release}
 Requires:       %{name}-plugin-python3 = %{version}-%{release}
+%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
 Requires:       %{name}-plugin-sigrok = %{version}-%{release}
+%endif
 Requires:       %{name}-plugin-smart = %{version}-%{release}
 Requires:       %{name}-plugin-snmp = %{version}-%{release}
 Requires:       %{name}-plugin-synproxy = %{version}-%{release}
+Requires:       %{name}-plugin-sysevent = %{version}-%{release}
+Requires:       %{name}-plugin-uptime = %{version}-%{release}
 Requires:       %{name}-plugin-virt = %{version}-%{release}
 Requires:       %{name}-plugin-write_stackdriver = %{version}-%{release}
 Requires:       %{name}-plugin-write_syslog = %{version}-%{release}
@@ -688,9 +756,11 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/collectd/snmp*.la
 %{_mandir}/man5/collectd-snmp.5%{?ext_man}
 
+%if %{?lvm2app}
 %files plugin-lvm
 %{_libdir}/collectd/lvm.so
 %{_libdir}/collectd/lvm.la
+%endif
 
 %files plugin-pinba
 %{_libdir}/collectd/pinba.so
@@ -733,9 +803,17 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/collectd/memcachec.so
 %{_libdir}/collectd/memcachec.la
 
+%if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
+
 %files plugin-sigrok
 %{_libdir}/collectd/sigrok.so
 %{_libdir}/collectd/sigrok.la
+
+%files plugin-gps
+%{_libdir}/collectd/gps.so
+%{_libdir}/collectd/gps.la
+
+%endif
 
 %files plugin-smart
 %{_libdir}/collectd/smart.so
@@ -745,10 +823,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/collectd/lua.so
 %{_libdir}/collectd/lua.la
 %{_mandir}/man5/collectd-lua.5%{?ext_man}
-
-%files plugin-gps
-%{_libdir}/collectd/gps.so
-%{_libdir}/collectd/gps.la
 
 %files plugin-openldap
 %{_libdir}/collectd/openldap.so
@@ -773,6 +847,22 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files plugin-write_syslog
 %{_libdir}/collectd/write_syslog.so
 %{_libdir}/collectd/write_syslog.la
+
+%files plugin-uptime
+%{_libdir}/collectd/check_uptime.la
+%{_libdir}/collectd/check_uptime.so
+
+%files plugin-connectivity
+%{_libdir}/collectd/connectivity.la
+%{_libdir}/collectd/connectivity.so
+
+%files plugin-procevent
+%{_libdir}/collectd/procevent.la
+%{_libdir}/collectd/procevent.so
+
+%files plugin-sysevent
+%{_libdir}/collectd/sysevent.la
+%{_libdir}/collectd/sysevent.so
 
 %if 0%{?suse_version} >= 1330
 %files plugin-nut

@@ -282,4 +282,12 @@ Packaging :
     <comment></comment>
     <requestid>709935</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c03de9fb9b3b25d29cef8cd4c8da0af2</srcmd5>
+    <version>5.10.0</version>
+    <time>1574784599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751020</requestid>
+  </revision>
 </revisionlist>
