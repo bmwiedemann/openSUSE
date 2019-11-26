@@ -489,4 +489,12 @@ No LGPL-2.1+ licenses found in package (forwarded request 105656 from babelworx)
     <comment>Scripted push from {project}</comment>
     <requestid>736487</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0b813bfc8a14c649d19e85f45b3e1966</srcmd5>
+    <version>3.34.2</version>
+    <time>1574784205</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 750051 from iznogood)</comment>
+    <requestid>750927</requestid>
+  </revision>
 </revisionlist>
