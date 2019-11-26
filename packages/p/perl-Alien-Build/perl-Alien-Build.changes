@@ -1,0 +1,397 @@
+-------------------------------------------------------------------
+Tue Nov 19 10:07:39 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update spec file
+
+-------------------------------------------------------------------
+Tue Nov  5 09:15:53 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.92
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.92      2019-11-04 04:33:57 -0700
+    - Require Test2::API 1.302096 for features used in test suite.
+  
+  1.91      2019-11-01 20:19:19 -0600
+    - Fix bug where Test::Alien::Diag could crash for Aliens without
+      dynamic libraries.
+  
+  1.90      2019-11-01 16:15:32 -0700
+    - Added Test::Alien::Diag (gh#142)
+    - Test::Alien ffi_ok add api option. (gh#143)
+
+-------------------------------------------------------------------
+Thu Sep 26 08:14:32 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.89
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.89      2019-09-25 07:58:39 -0600
+    - Production release identical to 1.88_01
+  
+  1.88_01   2019-09-24 11:53:18 -0600
+    - Add options cbuilder_check amd cbuilder_config to Test::Alien xs_ok
+      function (gh#140, Test-Alien-CPP#3, Test-Alien-CPP#4)
+  
+  1.87_01   2019-09-24 07:38:31 -0600
+    - Test::Alien directive with_subtest will attempt to catch SEGV and bail
+      on on test file with a helpful diagnostic.  The prove util frequently
+      does not provide a useful diagnostic for SEGV on its own (gh#138, gh#139).
+
+-------------------------------------------------------------------
+Mon Sep 16 12:00:20 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.86
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.86      2019-09-13 06:27:21 -0600
+    - PAUSE permission fix
+
+-------------------------------------------------------------------
+Sat Aug 31 12:12:41 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.85
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.85      2019-08-30 14:19:16 -0400
+    - Production release identical to 1.84_01
+  
+  1.84_01   2019-08-26 10:59:58 -0400
+    - Delay removal of temp files for Test::Alien till `make clean` instead of
+      test termination on Windows (only) to avoid warning on test termination.
+      (gh#130, gh#136)
+
+-------------------------------------------------------------------
+Tue Aug 20 05:01:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.83
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.83      2019-08-19 18:31:19 -0400
+    - Production release identical to 1.81_01
+  
+  1.82_01   2019-08-18 19:47:10 -0400
+    - Stricter Perl::Critic policies (gh#135)
+  
+  1.81_01   2019-08-16 19:16:33 -0400
+    - Fix log class inheritence bug.
+  
+  1.80_01   2019-08-15 20:52:50 -0400
+    - Use Perl::Critic Freenode policies for development (gh#128)
+    - Add new configurable log class (gh#123)
+
+-------------------------------------------------------------------
+Tue Jul 16 09:07:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.79
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.79      2019-07-15 14:26:16 -0400
+    - Fix CBuilder probe plugin on platforms where /tmp is mounted noexec (gh#133, gh#134)
+
+-------------------------------------------------------------------
+Mon Jul  1 05:00:59 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.78
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.78      2019-06-30 21:31:23 -0400
+    - Production release identical to 1.77_01
+  
+  1.77_01   2019-06-28 12:08:12 -0400
+    - _alien/alien.json file is generated using ->canonical(1) for reproducibility
+      (gh#132 Grinnz++ for the suggestion)
+    - _alien/alien.json file is generated using ->ascii to avoid warnings / errors
+      when unicode is included in install/runtime properties.
+      (gh#132 Grinnz++ for the suggestion)
+
+-------------------------------------------------------------------
+Mon Jun 24 05:01:06 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
+
+- updated to 1.76
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.76      2019-06-23 11:01:08 -0400
+    - Production release identical to 1.75_01
+  
+  1.75_01   2019-06-07 15:06:30 -0400
+    - Download::Negotiate defaults to Deocde::Mojo instead of Decode::HTML for
+      share installs that require parsing an HTML index (gh#127, gh#115).
+
+-------------------------------------------------------------------
+Fri May 24 05:00:55 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.74
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.74      2019-05-22 08:43:10 -0400
+    - Check if share directory exists before clean_install
+      (gh#114, gh#126 zmughal++ for the report)
+
+-------------------------------------------------------------------
+Tue May 21 05:01:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.73
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.73      2019-05-20 14:49:10 -0400
+    - Production release identical to 1.72_01
+  
+  1.72_01   2019-05-11 04:12:13 -0600
+    - Merged Alien-Build-Plugin-Decode-Mojo into this dist (gh#18)
+    - Put Alien -l flags first in xs_ok (gh#121 kiwiroy++)
+  
+  1.71_01   2019-04-30 05:41:40 -0400
+    - Add clean_install hook (gh#111, gh#114)
+    - EXPERIMENTAL Add mm_install method to Alien::Build::MM (gh#111, gh#114)
+    - EXPERIMENTAL CAUTION Add alien_clean_install target to Makefile generated
+      by Alien::Build::MM (gh#111, gh#114)
+  
+  1.70_01   2019-04-29 18:57:53 -0400
+    - Add alien_clean target for Alien::Build::MM (gh#118, gh#119)
+
+-------------------------------------------------------------------
+Sun Apr 28 05:01:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.69
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.69      2019-04-27 10:59:10 -0400
+    - Add runtime property ffi_checklib (gh#117)
+      Related to https://github.com/Perl5-FFI/FFI-CheckLib/issues/13
+  
+  1.68      2019-04-23 04:57:49 -0400
+    - Add decoder property to Download::Negotiate plugin (gh#115, gh#116)
+
+-------------------------------------------------------------------
+Tue Apr 23 05:01:05 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.67
+   see /usr/share/doc/packages/perl-Alien-Build/Changes.Alien-Base-Wrapper
+
+-------------------------------------------------------------------
+Fri Apr 12 05:01:04 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.65
+   see /usr/share/doc/packages/perl-Alien-Build/Changes.Alien-Base-Wrapper
+
+-------------------------------------------------------------------
+Tue Apr  9 05:01:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.63      2019-04-08 17:19:03 -0400
+    - Documentation improvements
+    - Fixed bug in Test::Alien::Build alienfile_skip_if_missing_prereqs
+      where subtest / test was always skipped regardless of requirements.
+      It now (correctly) only skips if there are missing requirements.
+
+-------------------------------------------------------------------
+Sat Mar 30 06:01:02 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.62      2019-03-27 11:34:00 -0400
+    - Production release identical to 1.61_01
+  
+  1.61_01   2019-03-25 15:35:06 -0400
+    - Add hook property `version` for probe hook (gh#99, gh#100).
+    - Improvements for Fetch CurlCommand plugin (gh#101).
+
+-------------------------------------------------------------------
+Wed Mar 13 15:42:15 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.60      2019-03-01 03:16:23 -0500
+    - Documentation improvemens.  (gh#50, gh#84).
+  
+  1.59_01   2019-02-27 21:40:24 -0500
+    - Fix test fail for download negotiation plugin introduced in 1.58_01
+      which was expressed on systems without curl installed.
+  
+  1.58_01   2019-02-27 12:50:20 -0500
+    - Prefer Fetch::CurlCommand over Fetch::HTTPTiny for https when:
+       * Net::SSLeay and IO::Socket::SSL are not installed
+       * AND curl is installed
+       * AND curl supports https
+      This makes AB more reliable on platforms like OS X when openssl
+      is broken without a third party package system like homebrew,
+      and on older Perls like 5.8.x where Net::SSLeay frequently does
+      not install or pass tests.
+      The existing behavior of prefer Fetch::HTTPTiny when:
+       * Net::SSLeay and IO::Socket::SSL are already installed
+       * OR the URL is http
+       * OR curl is not already installed
+      is still in effect. (gh#93, gh#94)
+  
+  1.57_01   2019-02-26 08:52:34 -0500
+    - Test unzip command before blindly using it (tests were already
+      being made for tarballs) (gh#90)
+  
+  1.56_01   2019-02-24 14:09:23 -0500
+    - Prefer Alien::unzip over Archive::Zip.  The latter turns out to be broken
+      on one platform or another for much of the time.  (gh#74, gh#89).
+
+-------------------------------------------------------------------
+Mon Feb 25 06:01:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.55
+   see /usr/share/doc/packages/perl-Alien-Build/Changes.Alien-Base-Wrapper
+
+-------------------------------------------------------------------
+Sun Feb 10 06:01:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.52      2019-02-09 05:45:12 -0500
+    - Use $alien->libs -L flags to help find system dynamic libs.
+
+-------------------------------------------------------------------
+Sun Jan 20 06:00:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.51      2019-01-19 14:23:23 -0500
+    - cmake plugin sets CMAKE_INSTALL_LIBDIR:PATH to lib for share installs
+      for cmake projects using GNUInstallDirs on platforms that default to
+      something other than lib.
+
+-------------------------------------------------------------------
+Thu Jan 17 06:00:55 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.50      2019-01-16 12:55:08 -0500
+    - Removed temp testing files unintentionally included in the previous
+      release.
+    - Require ExtUtils::MakeMaker 6.64, for Alien::Build::MM, which can
+      sometimes have its BUILD_REQUIRES or TEST_REQUIRES overridden by
+      Dist::Zilla otherwise.
+
+-------------------------------------------------------------------
+Thu Dec  6 15:20:57 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.49      2018-11-04 15:22:40 -0500
+    - Added Alien::Build::Plugin::Test::Mock
+    - Added alienfile_skip_if_missing_prereqs function to Test::Alien::Build
+    - Remove run-time dependency on Test2::Suite
+      Test2::API is still a run-time dependency, but that has
+      been in-core since 5.26.
+
+-------------------------------------------------------------------
+Fri Jul  6 05:01:15 UTC 2018 - coolo@suse.com
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+-------------------------------------------------------------------
+Tue Jun 26 05:01:19 UTC 2018 - coolo@suse.com
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+-------------------------------------------------------------------
+Mon Jun  4 05:01:21 UTC 2018 - coolo@suse.com
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.43      2018-06-03 06:41:28 -0400
+    - Documentation fixes
+    - Use a custom site.config to ensure libraries are installed in lib
+      and not lib64 or lib/64 for share installs
+
+-------------------------------------------------------------------
+Thu May 10 05:01:23 UTC 2018 - coolo@suse.com
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.42      2018-05-09 08:19:18 -0400
+    - Corrected typo for install_prop->{old}->{prefix} (had been preifx)
+
+-------------------------------------------------------------------
+Wed Apr 25 05:01:17 UTC 2018 - coolo@suse.com
+
+- updated to 1.41
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.41      2018-04-24 06:19:18 -0400
+    - before and after directives in alienfile triggers requirement on Alien::Build 1.40
+  
+  1.40_01   2018-04-12 09:21:05 -0400
+    - Add before and after directives to alienfile syntax
+
+-------------------------------------------------------------------
+Tue Apr 10 04:39:13 UTC 2018 - coolo@suse.com
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.39      2018-03-09 05:51:47 -0500
+    - Production release identical to 1.38_01
+  
+  1.38_01   2018-03-01 03:27:29 -0500
+    - Additional testing diagnostics
+  
+  1.37      2018-02-23 10:13:44 -0500
+    - Fixed cmake test which would fail without a C++ compiler (gh#53 ppisar++)
+  
+  1.36      2018-02-05 10:51:59 -0500
+    - Production release identical to 1.35_01
+  
+  1.35_01   2017-12-28 12:42:56 -0500
+    - Improve diagnostic in command line extraction test
+  
+  1.34_01   2017-12-27 10:30:10 -0500
+    - Add env_interpolate meta property.
+    - PkgConfig plugins now attempt to set PKG_CONFIG environment variable during build
+  
+  1.33_01   2017-11-08 11:54:19 -0500
+    - Improve diagnostic for partially installed Alien error
+  
+  1.32      2017-11-03 13:15:35 -0400
+    - Add ALIEN_INSTALL_NETWORK environment variable.  Set to false if you don't
+      want to allow network fetch.
+  
+  1.31_01   2017-10-31 16:50:52 -0400
+    - Fix testing prereq bug introduced in 1.30_01.
+  
+  1.30_01   2017-10-31 14:24:15 -0400
+    - Add prefer property to Download::Negotiate plugin
+  
+  1.29_01   2017-10-30 09:54:22 -0400
+    - Fix bug in Alien::Base::Wrapper where -l flags were being ignored by EUMM
+    - MSYS plugin works with ffi build
+    - Windows specific fixes for Alien::Base::Wrapper
+    - Removed optional dependency on Test::Exec
+  
+  1.28      2017-10-29 19:39:19 -0400
+    - Production release identical to 1.27_01
+  
+  1.27_01   2017-10-27 10:26:18 -0400
+    - Fix incompatibility with older versions of ExtUtils::MakeMaker where test
+      directive in alienfile was ignored.
+  
+  1.26_01   2017-10-25 12:28:58 -0400
+    - Fix Test::Alien bug where -L could be placed after directories specified in %Config
+      (this was already handled correctly by Alien::Base::Wrapper).
+    - Remove cpp and C++ options for xs_ok (I don't believe these were used in practice
+      and were issuing deprecation warnings for a while).
+    - A number of documentation errors have been fixed (jjatria++ leto++)
+
+-------------------------------------------------------------------
+Tue Oct 10 05:19:19 UTC 2017 - coolo@suse.com
+
+- initial package 1.25
+ * created by cpanspec 1.78.08
