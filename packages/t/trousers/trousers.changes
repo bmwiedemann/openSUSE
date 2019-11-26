@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 09:14:39 UTC 2019 - matthias.gerstner@suse.com
+
+- Fix a local symlink attack problem with the %posttrans scriptlet
+  (bsc#1157651, CVE-2019-18898). A rogue tss user could have used this attack
+  to gain ownership of arbitrary files in the system during
+  installation/update of the trousers package.
+
+-------------------------------------------------------------------
 Mon Sep  9 14:12:22 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
 
 - add fix-lto.patch: This fixes the rpmlint error:

@@ -118,7 +118,7 @@ mv -v %{buildroot}/%{_lib}/*.a %{buildroot}%{_libdir}
 
 %pretrans
 # this scriplet and the counterpart in %posttrans work around a packaging bug
-# that was present in all trousers packages since around 2008.
+# that was present in all trousers packages since around 2008 until 2018.
 # /var/lib/tpm/system.data.* was wrongly packaged as runtime state data
 # instead of package resource data in /usr/share. After removal of these files
 # from packaging, during updating they will be deleted. Since users could have
@@ -152,8 +152,8 @@ for data in system.data.auth system.data.noauth; do
 	[ -e "${file}" ] && continue
 	# restore the original file
 	echo "restoring backup of $file"
-	mv ${file}.rpmsave ${file}
-	chown tss:tss "${file}"
+	mv --no-target-directory ${file}.rpmsave ${file}
+	chown --no-dereference tss:tss "${file}"
 done
 
 %postun

@@ -346,4 +346,15 @@ SPDX format (forwarded request 109060 from babelworx)</comment>
   is kept compatible with unaware tools and fixes the error.</comment>
     <requestid>729491</requestid>
   </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>632366d840332d7678af48a22e35dd32</srcmd5>
+    <version>0.3.14</version>
+    <time>1574784311</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a local symlink attack problem with the %posttrans scriptlet
+  (bsc#1157651, CVE-2019-18898). A rogue tss user could have used this attack
+  to gain ownership of arbitrary files in the system during
+  installation/update of the trousers package.</comment>
+    <requestid>750985</requestid>
+  </revision>
 </revisionlist>
