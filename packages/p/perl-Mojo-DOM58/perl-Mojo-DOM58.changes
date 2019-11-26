@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Nov 19 10:03:41 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Add cpanspec.yml file
+
+-------------------------------------------------------------------
+Mon Nov 18 14:32:22 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Initial packaging
+  * 2.000     2018-12-17 20:49:49 EST
+    - Fixed warnings in collection uniq method when collection contains undefined
+      values. (from Mojolicious 7.75)
+    - Added support for namespace selectors like "ns|*". (from Mojolicious 7.77)
+    - Added support for hyphen-separated list attribute selectors like
+      "[hreflang|=en]". (from Mojolicious 7.77)
+    - Added support for :link and :visited pseudo-classes. (from Mojolicious 7.77)
+    - Improved performance of all DOM manipulation methods significantly when
+      reusing Mojo::DOM58 objects. (from Mojolicious 7.78)
+    - Added new_tag method. (from Mojolicious 7.78)
+    - Added tag_to_html function. (from Mojolicious 7.78)
+    - Added selector method. (from Mojolicious 7.79)
+    - Improved HTML5.2 compliance. (from Mojolicious 8.02)
+  * 1.005     2018-02-06 14:28:11 EST
+    - Improved HTML Living Standard compliance (from Mojolicious 7.60)
+  * 1.004     2017-11-11 16:46:13 EST
+    - Added with_roles method to Mojo::DOM58 and collection objects to support
+      applying roles with Role::Tiny. (from Mojolicious 7.43)
+  * 1.003     2017-07-20 02:44:32 EDT
+    - Added EXPERIMENTAL support for :matches pseudo-class and :not pseudo-class
+      with compound selectors. (from Mojolicious 7.33)
+    - Fixed a few form element value extraction bugs. (from Mojolicious 7.33)
+    - Performance improvements (from Mojolicious 7.34)
+  * 1.002     2017-04-01 16:11:40 EDT
+    - Added html_attr_unescape function to Mojo::DOM58::Entities. (from
+      Mojolicious 7.29)
+    - Fixed unescaping of HTML5 attribute values. (from Mojolicious 7.29)
+  * 1.001     2016-11-23 16:17:25 EST
+    - Fix bug in Mojo::DOM58::Entities where the DATA handle would be mentioned
+      in error messages. (from Mojolicious 7.03)
+  * 1.000     2016-08-10 21:57:48 EDT
+    - (INCOMPATIBLE CHANGE) Removed support for smart whitespace trimming from
+      all_text and text methods, and fix whitespace bugs (from Mojolicious 7.0)
+    - Fixed CSS selector for value-less attributes (from Mojolicious 7.0)
+  * 0.999     2016-08-01 04:24:01 EDT (TRIAL RELEASE)
+    - (INCOMPATIBLE CHANGE) Removed support for smart whitespace trimming from
+      all_text and text methods, and fix whitespace bugs (from Mojolicious 7.0)
+    - Fixed CSS selector for value-less attributes (from Mojolicious 7.0)
+  * 0.002     2016-06-14 01:28:10 EDT
+    - Added recognition of <slot> element (from Mojolicious 6.59)
+    - Recognize legacy HTML entities without semicolons again (from Mojolicious 6.64)
+  * 0.001     2016-03-27 16:12:42 EDT
+    - First release
