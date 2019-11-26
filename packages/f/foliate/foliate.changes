@@ -1,0 +1,351 @@
+-------------------------------------------------------------------
+Tue Sep 03 08:47:04 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.5.3:
+  * Fix stuff not escaped for Pango markup
+  * Move constant out of the loop
+  * Show author in headerbar
+  * Fallback when unable to get section
+  * Show chapter name in bookmarks list
+  * Update Brazilian Portuguese translation (#160)
+  * Fix wrong Wiktionary link when looking up again due to capitalization
+  * Fix Wikipedia lookup broken after previous commit
+  * Make internal links work in footnote popover
+  * Make TTS available for selection
+  * Fix wrong popover position in continous scrolling mode
+  * Make navbar buttons flat
+  * Temporary fix for invisible popovers due to wrong position values
+  * Fix internal link broken when popup footnote is disabled
+  * Add continuous scrolling option
+  * Support getting current chapter for TOC items with anchors
+  * Update translations
+  * Improve HTML to Pango markup conversion
+  * Don't push to history if the location doesn't change
+  * Fix empty state padding
+  * Suppress promise rejection warnings
+  * Change "chapter" to "section"
+  * Add option to go to CFI
+  * Extract code for getting popover position to a function
+  * Move util functions forward and main functions to the end
+  * Add some comments
+  * Move wheel and keyboard event code to more sensible location
+  * Make it possible to select across pages
+  * Fix pt_BR.po
+  * Update Brazilian Portuguese translation (#153)
+  * Lint assets
+  * Lint main.js
+  * Cleanup HTML and txt export code
+  * Fix ampersand troubles
+  * Use markup for Wikipedia extract
+  * Fix soft hyphens confusing Festival
+  * Add translation info to AppData
+  * Update French translation (#151)
+  * Update Dutch translation (#150)
+  * Update README.md
+  * Update translations
+  * Improve HTML to Pango markup conversion
+  * Update screenshots
+  * Use GtkLabel instead of WebView to display book description
+  * Improve HTML to Pango markup conversion
+  * Handle invalid cover image
+  * Fix utils.js not included when CSP is disabled
+  * Enable popover footnote by default
+  * Add BibTeX export support (#130)
+  * Make it possible to lookup Wikipedia when clicking on "Lookup"
+  * Offer to search on Wiktionary when entry not found
+  * Fix Python not found in Flatpak
+  * Revert label change
+  * Use markup for footnote popover
+  * Fix soft hyphen and word joiner causing lookup to fail
+  * Refactor lookup
+  * Improve footnote extraction
+  * Fix about dialog not closing when the close button is clicked
+  * Improve footnote extraction
+  * Update translations
+  * Fix typo
+  * Update Brazilian Portuguese translation (#144)
+
+-------------------------------------------------------------------
+Fri Jul 19 05:39:28 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.5.2:
+  * Fix temporary directory not being removed on close
+  * Fix not being able to get image when src isn't a blob URL
+  * Fix TOC navigation not working with some books
+  * Update Russian translation
+  * Specify input type instead of letting Epub.js guess
+
+-------------------------------------------------------------------
+Thu Jul 18 01:22:13 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.5.1:
+  * Fix debian dependencies
+  * Fix ToC shortcut
+  * Update Brazilian Portuguese translation (#138)
+  * Update Dutch translation (#135)
+  * Update French translation (#132)
+  * Update Russian translation (#131)
+
+-------------------------------------------------------------------
+Sun Jul 14 16:44:18 UTC 2019 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Fix rpmlint error 
+
+-------------------------------------------------------------------
+Sun Jul 14 15:00:49 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.5.0:
+  * Update translations
+  * Update README.md
+  * Add .mobi and .azw support with KindleUnpack
+  * Some cleanup
+  * Handle situation where there are no annotations
+  * Use book language for Wikipedia
+  * Add support for exporting annotations to HTML and plain text
+  * Add JSON export
+  * Stop TTS when tts-command is changed
+  * Update README.md
+  * Add shortcut for TTS
+  * Add shortcuts to popovers that don't have shortcuts
+  * Fix typo
+  * Improve TTS UI
+  * Use tts-command value to determine whether or not to show TTS menu items
+  * Stop reading at the end of the book
+  * Make TTS command configurable
+  * Better way to check and use flatpak-spawn
+  * Replace "smart" punctuation because Festival doesn't understand them
+  * Stop TTS when window is closed
+  * Only show TTS menu items when Festival is detected
+  * Fix `reject()` not called
+  * Use SIGINT instead of SIGTERM to stop speaking
+  * Add basic Text-to-Speech support with Festival
+  * Update Dutch (Netherlands) translation (#121)
+  * Fix IndexSizeError
+  * Build instruction fixes in README.md
+  * Add option to build development version
+  * Update translations
+  * Add preference to disable CSP
+  * Use CSP to block unsafe resources
+  * Fix typo in README.md (#116)
+  * Update Brazilian Portuguese translation (#113)
+  * Update Russian translation (#112)
+  * Update control
+  * Fix dictionary not accessible if it's not the default action
+  * Update French translation (#109)
+  * Update Dutch translation (#108)
+
+-------------------------------------------------------------------
+Sun Jul 07 16:43:41 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.4.0:
+  * Update screenshots
+  * Update translations again
+  * Don't remember file if it wasn't successfully opened
+  * Allow opening files from the error screen
+  * Remove stack switcher padding
+  * Update translations
+  * Update README.md
+  * Prepare for release
+  * Fix popover positioning
+  * Add selection action preference
+  * Add footnote preference
+  * Refactor cursor preference
+  * Add preference to restore last file automatically
+  * Add sidebar preference
+  * Don't show footnote when there's no footnote
+  * Use GtkStack in preference window
+  * Fix not being able to toggle navbar when there's no navbar
+  * Prevent selection when switching stack items
+  * Fix stuff not working when starting with the reading progress bar hidden
+  * Escape ampersands
+  * Use Wikimedia REST API
+  * Improve popover placement
+  * Allow setting target language for Google Translate
+  * Add Google Translate
+  * Add Wikipedia lookup
+  * Don't highlight or lookup on selection
+  * Refactor popover
+  * Set max width because some dictionaries don't wrap
+  * Add default width to "About This Book" dialog
+  * Update README.md
+  * Update README.md
+  * Add support for dictd
+  * Remove trailing whitespaces
+  * Farewell to Libsoup
+  * Refactor dictionary lookup
+  * Make font-weight override less agressive
+  * Add list-{remove,add}-symbolic as fallback in accordance with SpinButton
+  * Add backspace shortcut
+  * Update README.md
+  * Disable resize polling in Epub.js
+  * Update Debian package specification
+  * Add Debian package specification
+  * Use sentence case for tooltip text
+  * Add copyright notice
+  * Make handling of ByteArrays compatible with older versions of GJS
+  * Make things more compatible with older environments
+  * Initial support for popup footnotes/endnotes
+  * Remember sidebar page
+  * Update README.md
+  * Redraw annotations on view change
+  * Add separators to notes and bookmarks list
+  * Add page entry
+  * Add tooltip to TOC items
+  * Restore frame to search results
+  * Add optional sidebar UI for TOC, bookmarks, and annotations
+  * Refactor TOC, bookmarks, and annotations popover
+  * Add option to search current chapter only
+
+-------------------------------------------------------------------
+Sat Jun 29 02:49:00 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.3.1:
+  * Remove unnecessary set_value call
+  * Update Russian translation (#90)
+  * Update Italian translation (#89)
+  * Update Brazilian Portuguese translation (#84)
+  * Update Russian translation (#83)
+  * Updated Dutch translation (#82)
+
+-------------------------------------------------------------------
+Tue Jun 18 09:15:34 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.3.0:
+  * Update screenshot
+  * Fix page divider not showing up when viewer width is 800
+  * Update Spanish translation (#81)
+  * Add Czech translation (#80)
+  * Update French translation (#61)
+  * Add GJS version requirement
+  * Use font on font button
+  * Allow setting font-style, because it's shown in the font chooser
+  * Update translations
+  * Add UI for adding and removing themes
+  * Add support for auto-hiding cursor
+  * Add shortcut for leaving fullscreen
+  * Use const instead of let
+  * Add shortcut for closing current window
+  * Add shortcut for toggling reading progress bar
+  * Handle selection on mouseup
+  * Prefer opening annotation popover from the bottom
+  * Add Indonesian translation (#72)
+  * Prettify config JSON
+  * Add UI for tweaking themes
+
+-------------------------------------------------------------------
+Thu Jun 13 16:23:39 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.2.1:
+  * Add Brazilian Portuguese translation (#70)
+  * Add Spanish translation (#65)
+  * Update Italian translation (#66)
+  * Update Russian translation (#62)
+  * Improve reading time estimate for CJK languages
+  * Make step size smaller for font-size and spacing
+  * Build fixes (#64)
+  * Update translations
+  * Add title to file chooser dialog
+  * Fix gigantic spinner with some themes
+  * Fix currentLocation.start being undefined sometimes
+  * Add time left in chapter
+  * Remove unnecessary rounding
+  * Show time left in tooltip
+  * Prevent page flip when zoomed
+  * Add support for zooming and copying images
+  * Update translations
+  * Use plural form for margins label
+  * More gettext workaround
+  * Tweak brightness slider
+  * Add brightness slider
+  * Use theme colors to display book description
+  * Make j and k scroll one line
+  * Set shortcuts in more appropriate places
+  * Use title case in menu
+  * Update Italian translation (#57)
+  * Update translations again
+  * Add "Bookmark current location" to shortcuts window
+  * Update translations
+  * Add custom margin support
+  * Inherit alignment instead of left when not justified
+  * Add shortcut for quit
+  * Show bookmark status on bookmarks button
+  * Add French translation (#54)
+  * Update Russian translation (#55)
+  * Add support for custom themes
+  * Add workaround for gettext bug
+  * Fix error when switching locale
+  * Updated Dutch translation (#51)
+  * Finally fix some books not rendering sometimes
+  * Apply justification to `p` only
+  * Proper patch to fix image width
+  * Update README.md
+  * Update Italian translation (#50)
+  * Add Fedora installation instructions (#39)
+  * Update Russian translation (#48)
+  * Fix book not rendering sometimes
+
+-------------------------------------------------------------------
+Thu Jun 06 04:34:51 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.2.0:
+  * Update screenshot
+  * Update translations
+  * Add instruction for enabling auto-hyphenation
+  * Store generated locations in user cache dir instead of localStorage
+
+-------------------------------------------------------------------
+Wed Jun 05 17:32:13 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.1.1:
+  * Remove note from Void instructions (#47)
+  * Add option to enable single page view
+  * Add option for justification and hyphenation
+  * Add hyphenation
+  * Catch localStorage error
+  * Improve 'use publisher font' mode
+  * Update Russian translation (#33)
+  * Add Void Linux instructions to Readme (#36)
+
+-------------------------------------------------------------------
+Mon Jun 03 03:53:00 UTC 2019 - dead_mozay@opensuse.org
+
+- Update Dutch translation (#31)
+- Update Russian translation (#29)
+
+-------------------------------------------------------------------
+Sun Jun 02 14:05:17 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.1.0:
+  * Update README.md
+  * Update translations
+  *  Fix opening files with would-be-percent-encoded characters
+  * Update Russian translation (#25)
+  * Prevent navigation from wheel event when zoomed in
+  * Add option to disable dictionary lookup
+  * Add option to hide the navbar
+  * Improve scrolling and page navigation
+  * Improve handling of wheel events
+  * Improve shortcuts
+  * Add Dutch translation (#16)
+  * Fix opening files with percent-encoding in their name or path
+  * Add even more aggressive overrides and a switch to disable custom font
+
+-------------------------------------------------------------------
+Sat Jun 01 12:17:53 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.0.1:
+  * Add Russian translation
+  * Add Italian translation
+  * Fix error screen misalignment
+  * Update translations
+  * Fix leftover from example project template
+  * Build and run from source without installing, fixed markdown line breaks according to spec
+  * Add AUR package links to README.md
+  * Clarify gesture feature
+  * Add more navigation shortcuts
+  * Fix a regression that breaks layout switching
+
+-------------------------------------------------------------------
+Sat Jun  1 12:16:44 UTC 2019 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Initial package 
