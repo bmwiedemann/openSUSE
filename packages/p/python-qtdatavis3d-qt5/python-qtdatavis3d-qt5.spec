@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qtdatavis3d-qt5
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Python bindings for the Qt5 Data Visualization library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualization/intro
-Source:         https://www.riverbankcomputing.com/static/Downloads/PyQtDataVisualization/%{version}/PyQtDataVisualization_gpl-%{version}.tar.gz
+Source:         https://www.riverbankcomputing.com/static/Downloads/PyQtDataVisualization/%{version}/PyQtDataVisualization-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.1}
@@ -73,7 +73,7 @@ BuildArch:      noarch
 This package provides %{name} examples.
 
 %prep
-%setup -q -n PyQtDataVisualization_gpl-%{version}
+%setup -q -n PyQtDataVisualization-%{version}
 %{python_expand mkdir build_%{$python_bin_suffix}
 cp *.py build_%{$python_bin_suffix}
 cp -r sip build_%{$python_bin_suffix}
