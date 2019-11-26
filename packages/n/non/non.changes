@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 26 00:12:52 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Add non-desktop-files.patch
+  Use correct desktop file categories
+
+-------------------------------------------------------------------
 Sat Feb 23 01:53:46 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Run the build system in Python 2 due to incompatibility with
