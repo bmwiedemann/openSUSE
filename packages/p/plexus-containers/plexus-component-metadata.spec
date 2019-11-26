@@ -1,7 +1,7 @@
 #
-# spec file for package plexus
+# spec file for package plexus-component-metadata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global comp_name plexus-component-metadata
 %bcond_with tests
 Name:           %{comp_name}
-Version:        1.7.1
+Version:        2.1.0
 Release:        0
 Summary:        Component metadata from %{base_name}
 # Most of the files are either under ASL 2.0 or MIT
@@ -33,24 +33,21 @@ URL:            https://github.com/codehaus-plexus/plexus-containers
 Source0:        https://github.com/codehaus-plexus/%{base_name}/archive/%{base_name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        LICENSE.MIT
-Patch0:         0001-Port-to-current-qdox.patch
+Patch0:         plexus-containers-asm6.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.thoughtworks.qdox:qdox)
-BuildRequires:  mvn(commons-cli:commons-cli)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-cli)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
 BuildRequires:  mvn(org.jdom:jdom2)
-BuildRequires:  mvn(org.ow2.asm:asm-all)
+BuildRequires:  mvn(org.ow2.asm:asm)
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
 #!BuildRequires: maven-javadoc-plugin-bootstrap
@@ -95,9 +92,6 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 %pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
 %pom_add_dep org.ow2.asm:asm-commons:5.0.3:runtime plexus-container-default
 
-%pom_remove_dep com.sun:tools plexus-component-javadoc
-%pom_add_dep com.sun:tools plexus-component-javadoc
-
 # Generate OSGI info
 %pom_xpath_inject "pom:project" "
     <packaging>bundle</packaging>
@@ -120,17 +114,18 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 # to prevent ant from failing
 mkdir -p plexus-component-annotations/src/test/java
 
-# integration tests fix
-sed -i "s|<version>2.3</version>|<version> %{javadoc_plugin_version}</version>|" plexus-component-javadoc/src/it/basic/pom.xml
-
 %build
 pushd %{comp_name}
 %{mvn_file} :%{comp_name} %{base_name}/%{comp_name}
-%if %{with tests}
-  %{mvn_build}
-%else
-  %{mvn_build} -f
+%{mvn_build} \
+%if %{without tests}
+	-f \
 %endif
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
+
+# empty line, keep
 popd
 
 %install

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 24 14:46:44 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.0
+  * Does not build plexus-component-javadoc any more
+- Removed patch:
+  * 0001-Port-to-current-qdox.patch
+    + integrated upstream
+- Do not force building with java < 9 any more
+
+-------------------------------------------------------------------
 Tue Apr  9 17:10:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove references to parent poms since we are not building with

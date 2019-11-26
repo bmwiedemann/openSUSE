@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-metadata-generator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global comp_name component-metadata
 %bcond_with tests
 Name:           plexus-metadata-generator
-Version:        1.7.1
+Version:        2.1.0
 Release:        0
 Summary:        Component metadata from %{base_name}
 # Most of the files are either under ASL 2.0 or MIT
@@ -34,7 +34,8 @@ Source0:        https://github.com/codehaus-plexus/%{base_name}/archive/%{base_n
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        LICENSE.MIT
 Source100:      %{base_name}-build.tar.xz
-Patch0:         0001-Port-to-current-qdox.patch
+Patch0:         plexus-containers-asm6.patch
+Patch1:         plexus-metadata-generator-cli.patch
 Patch1000:      %{name}-nomojo.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
@@ -50,9 +51,8 @@ BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  qdox >= 2
 BuildRequires:  xbean
-BuildConflicts: java-devel >= 9
 Requires:       apache-commons-cli
-Requires:       guava20
+Requires:       guava
 Requires:       jdom2
 Requires:       objectweb-asm
 Requires:       plexus-cli
@@ -90,6 +90,7 @@ build-jar-repository -s lib hamcrest/core
 %endif
 
 %patch0 -p1
+%patch1 -p1
 
 %patch1000 -p1
 
@@ -108,9 +109,6 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 # ASM dependency was changed to "provided" in XBean 4.x, so we need to provide ASM
 %pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
 %pom_add_dep org.ow2.asm:asm-commons:5.0.3:runtime plexus-container-default
-
-%pom_remove_dep com.sun:tools plexus-component-javadoc
-%pom_add_dep com.sun:tools plexus-component-javadoc
 
 # Generate OSGI info
 %pom_xpath_inject "pom:project" "
@@ -134,17 +132,12 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 # to prevent ant from failing
 mkdir -p plexus-component-annotations/src/test/java
 
-# integration tests fix
-sed -i "s|<version>2.3</version>|<version> %{javadoc_plugin_version}</version>|" plexus-component-javadoc/src/it/basic/pom.xml
-
 rm -rf plexus-%{comp_name}/src/main/java/org/codehaus/plexus/maven
 rm -rf plexus-%{comp_name}/src/main/resources/META-INF/maven
 
 %pom_remove_dep :maven-core plexus-%{comp_name}
 %pom_remove_dep :maven-model plexus-%{comp_name}
 %pom_remove_dep :maven-plugin-api plexus-%{comp_name}
-%pom_remove_dep :maven-project plexus-%{comp_name}
-%pom_remove_dep :maven-plugin-annotations plexus-%{comp_name}
 
 %pom_remove_parent plexus-%{comp_name}
 %pom_xpath_inject "pom:project" "
@@ -176,7 +169,7 @@ install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr plexus-%{comp_name}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 # script
-%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:%{base_name}/plexus-container-default:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus-classworlds:plexus/utils:jdom2/jdom2:commons-cli:qdox:plexus/cli:guava20/guava-20.0:xbean/xbean-reflect %{name}
+%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:%{base_name}/plexus-container-default:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus-classworlds:plexus/utils:jdom2/jdom2:commons-cli:qdox:plexus/cli:guava/guava:xbean/xbean-reflect %{name}
 
 %files -f .mfiles
 %license LICENSE-2.0.txt LICENSE.MIT

@@ -44,4 +44,12 @@
     <comment>Fix plexus-component-metadata dependency</comment>
     <requestid>693346</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f0853999258e6035cf30c8a2116ad343</srcmd5>
+    <version>2.1.0</version>
+    <time>1574784036</time>
+    <user>dimstar_suse</user>
+    <comment>2.1</comment>
+    <requestid>750672</requestid>
+  </revision>
 </revisionlist>

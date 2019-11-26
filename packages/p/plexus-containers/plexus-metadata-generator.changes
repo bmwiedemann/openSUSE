@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 24 14:50:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.0
+- Removed patch:
+  * 0001-Port-to-current-qdox.patch
+    + integrated upstream
+- Added patches:
+  * plexus-containers-asm6.patch
+    + allow building against asm6
+  * plexus-metadata-generator-cli.patch
+    + bring back the PlexusMetadataGeneratorCli.java removed by
+      upstream, but which we use heavily
+
+-------------------------------------------------------------------
 Tue Apr  9 17:17:04 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove reference to parent pom, since we are not building with
