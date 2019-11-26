@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 21 18:50:01 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Use maven.compiler.release when building with JDK versions that
+  support it -> avoid 1.5 as source/target levels on JDKs that
+  do not support it.
+
+-------------------------------------------------------------------
 Mon Aug 26 06:45:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use expanded description.

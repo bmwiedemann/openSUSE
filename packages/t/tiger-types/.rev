@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>726062</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ed72297946900d2f4c28c508d8a79fb0</srcmd5>
+    <version>2.2</version>
+    <time>1574783766</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750523</requestid>
+  </revision>
 </revisionlist>
