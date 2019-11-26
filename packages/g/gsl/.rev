@@ -393,4 +393,14 @@
   correctly</comment>
     <requestid>748898</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>58af8cf2486dd8ee4b5c1d485392303e</srcmd5>
+    <version>2.6</version>
+    <time>1574784578</time>
+    <user>dimstar_suse</user>
+    <comment>Only adding references to changelog
+
+- update to gsl 2.6: (jsc#SLE-8538)</comment>
+    <requestid>750996</requestid>
+  </revision>
 </revisionlist>
