@@ -15,4 +15,12 @@
     <comment>junit 5 provider</comment>
     <requestid>712859</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2dec8c7a7e0570fc22d181c5b7c94d70</srcmd5>
+    <version>2.22.0</version>
+    <time>1574784028</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750628</requestid>
+  </revision>
 </revisionlist>
