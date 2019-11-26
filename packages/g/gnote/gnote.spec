@@ -1,7 +1,7 @@
 #
 # spec file for package gnote
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,33 @@
 #
 
 
-%define base_version 3.32
+%define base_version 3.34
+
 Name:           gnote
-Version:        3.32.1
+Version:        3.34.1
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
-Source0:        https://download.gnome.org/sources/%{name}/%{base_version}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnote/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
+BuildRequires:  libboost_test-devel >= 1.5.1
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32
+BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.18
-BuildRequires:  pkgconfig(gtkspell3-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.8
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(uuid)
-Recommends:     %{name}-lang
-%if 0%{?suse_version} < 1330
-%glib2_gsettings_schema_requires
-%endif
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_test-devel >= 1.5.1
-%else
-BuildRequires:  boost-devel >= 1.5.1
-%endif
 
 %description
 It is the same note taking application, including most of the add-ins (more are
@@ -72,12 +65,14 @@ search results from documents.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -88,19 +83,9 @@ desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications
 
 %post
 /sbin/ldconfig
-%if 0%{?suse_version} < 1330
-%glib2_gsettings_schema_post
-%desktop_database_post
-%icon_theme_cache_post
-%endif
 
 %postun
 /sbin/ldconfig
-%if 0%{?suse_version} < 1330
-%glib2_gsettings_schema_postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

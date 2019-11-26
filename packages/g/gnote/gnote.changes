@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:10:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Added manual for Online Folder sync.
+  + Lowerer gspell requirement to 1.6.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 21 20:44:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Upate to version 3.34.0:
+  + New Features:
+    - Add OARS and update appdata.
+    - Use GSpell instead of GtkSpell for spellchecking.
+  + Updated translations.
+- Replace pkgconfig(gtkspell3-3.0) with pkgconfig(gspell-1)
+  BuildRequires following upstream changes.
+- Bump base version to 3.34.
+- Use modern macros.
+- Drop conditionals for obsolete versions of openSUSE.
+- Drop gnote-lang Recommends: No longer needed, automatic
+  supplements in place.
+
+-------------------------------------------------------------------
+Mon Sep  2 16:34:22 CST 2019 - yfjiang@suse.com
+
+- Update to version 3.33.0:
+   + Manual updates.
+   + Add Online Folder synchronization plugin.
+   + Updated translations.
+
+-------------------------------------------------------------------
 Sun Apr 14 15:51:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:
