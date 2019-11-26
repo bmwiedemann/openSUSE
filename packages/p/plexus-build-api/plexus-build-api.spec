@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-build-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/sonatype/sisu-build-api
 Source0:        sonatype-sisu-build-api-plexus-build-api-0.0.7-0-g883ea67.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        %{name}-build.xml
+Patch0:         plexus-build-api-utils-3.3.0.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -49,6 +50,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n sonatype-sisu-build-api-f1f8849
+%patch0 -p1
 cp -p %{SOURCE1} .
 cp -p %{SOURCE2} build.xml
 

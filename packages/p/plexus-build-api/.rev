@@ -7,4 +7,12 @@
     <comment>New package</comment>
     <requestid>688976</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a417c3fcc6fe8a1d266d348b63e251b7</srcmd5>
+    <version>0.0.7</version>
+    <time>1574783905</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against plexus-utils 3.3.0</comment>
+    <requestid>750561</requestid>
+  </revision>
 </revisionlist>
