@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:00:42 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS release 12.13.1:
+  * improved experimental support for building Node.js with Python3
+  * ICU time zone data is updated to version 2019c - fixing TZ
+    offset for Brazil
+  * deps:
+    + upgrade to libuv 1.33.1
+    + upgrade npm to 6.12.1
+
+-------------------------------------------------------------------
 Tue Nov  5 08:27:58 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - skip_no_console.patch: skip tests with dumb console
@@ -7,7 +18,7 @@ Tue Nov  5 08:27:58 UTC 2019 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Mon Oct 21 12:27:14 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
-- Update to LTS release 12.13.0 (jira#SLE-8947):
+- Update to LTS release 12.13.0 (jsc#SLE-8947):
   * deps: update npm to 6.12.0
   * doc:
     + fix --enable-source-maps flag in v12.12.0 changelog
