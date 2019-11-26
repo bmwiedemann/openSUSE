@@ -1,0 +1,119 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fc68f3af..3616ae8e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,7 @@ project(armnn)
+ 
+ set(additional_cmake_files)
+ list(APPEND additional_cmake_files
++    cmake/armnnVersion.cmake
+     cmake/Utils.cmake
+     cmake/GlobalConfig.cmake
+     cmake/AddDllCopyCommands.cmake)
+@@ -15,6 +16,21 @@ foreach(cmake_file ${additional_cmake_files})
+     include(${cmake_file})
+ endforeach()
+ 
++
++# Define LIB version
++set(GENERIC_LIB_VERSION "${ARMNN_MAJOR_VERSION}.${ARMNN_MINOR_VERSION}")
++# Define LIB soversion
++set(GENERIC_LIB_SOVERSION "${ARMNN_MAJOR_VERSION}")
++# Define _ARMNN_VERSION string to be used in include/armnn/Version.hpp for ARMNN_VERSION string
++set(_ARMNN_VERSION
++    "20${ARMNN_MAJOR_VERSION}${ARMNN_MINOR_VERSION}${ARMNN_BUILD_VERSION}")
++if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
++    add_definitions(-D_ARMNN_VERSION=${_ARMNN_VERSION})
++else()
++    add_compile_definitions(_ARMNN_VERSION=${_ARMNN_VERSION})
++endif()
++
++
+ if (DYNAMIC_BACKEND_PATHS)
+     # It's expected to have the format: DYNAMIC_BACKEND_PATHS="PATH_1:PATH_2...:PATH_N"
+     add_definitions('-DDYNAMIC_BACKEND_PATHS="${DYNAMIC_BACKEND_PATHS}"')
+@@ -95,6 +111,7 @@ if(BUILD_CAFFE_PARSER)
+ 
+     target_link_libraries(armnnCaffeParser armnn)
+     target_link_libraries(armnnCaffeParser ${PROTOBUF_LIBRARIES})
++    set_target_properties(armnnCaffeParser PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+ 
+ endif()
+ 
+@@ -119,6 +136,7 @@ if(BUILD_ONNX_PARSER)
+ 
+     # Protobuf
+     target_link_libraries(armnnOnnxParser ${PROTOBUF_LIBRARIES})
++    set_target_properties(armnnOnnxParser PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+ endif()
+ 
+ if(BUILD_TF_PARSER)
+@@ -142,6 +160,7 @@ if(BUILD_TF_PARSER)
+ 
+     # Protobuf (use the specific version tensorflow wants)
+     target_link_libraries(armnnTfParser ${PROTOBUF_LIBRARIES})
++    set_target_properties(armnnTfParser PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+ endif()
+ 
+ if(BUILD_ARMNN_QUANTIZER AND ARMNNREF)
+@@ -200,6 +219,8 @@ if(BUILD_ARMNN_QUANTIZER AND ARMNNREF)
+         target_link_libraries(ArmnnQuantizer pthread)
+     endif()
+ 
++    set_target_properties(ArmnnQuantizer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
++
+ endif()
+ 
+ 
+@@ -539,6 +560,7 @@ endif()
+ if(PROFILING_BACKEND_STREAMLINE)
+     target_link_libraries(armnn pthread)
+ endif()
++set_target_properties( armnn PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+ 
+ if(BUILD_UNIT_TESTS)
+     set(unittest_sources)
+diff --git a/cmake/armnnVersion.cmake b/cmake/armnnVersion.cmake
+new file mode 100644
+index 00000000..68783370
+--- /dev/null
++++ b/cmake/armnnVersion.cmake
+@@ -0,0 +1,4 @@
++# ArmNN version number components.
++set(ARMNN_MAJOR_VERSION 19)
++set(ARMNN_MINOR_VERSION 08)
++set(ARMNN_BUILD_VERSION 00)
+diff --git a/include/armnn/Version.hpp b/include/armnn/Version.hpp
+index 9d73cd54..735be6b9 100644
+--- a/include/armnn/Version.hpp
++++ b/include/armnn/Version.hpp
+@@ -9,4 +9,5 @@
+ //   YYYY = 4-digit year number
+ //   MM   = 2-digit month number
+ //   PP   = 2-digit patch number
+-#define ARMNN_VERSION "20190800"
++// Defined in CMakeLists.txt
++#define ARMNN_VERSION _ARMNN_VERSION
+diff --git a/src/armnnSerializer/CMakeLists.txt b/src/armnnSerializer/CMakeLists.txt
+index 225999bb..ccc924e6 100755
+--- a/src/armnnSerializer/CMakeLists.txt
++++ b/src/armnnSerializer/CMakeLists.txt
+@@ -43,4 +43,5 @@ if(BUILD_ARMNN_SERIALIZER)
+ 
+     install(TARGETS armnnSerializer
+             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++    set_target_properties(armnnSerializer PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+ endif()
+diff --git a/src/armnnTfLiteParser/CMakeLists.txt b/src/armnnTfLiteParser/CMakeLists.txt
+index 17d4cf68..ae60079a 100755
+--- a/src/armnnTfLiteParser/CMakeLists.txt
++++ b/src/armnnTfLiteParser/CMakeLists.txt
+@@ -21,6 +21,8 @@ if(BUILD_TF_LITE_PARSER)
+     target_link_libraries(armnnTfLiteParser ${Boost_FILESYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY})
+     target_link_libraries(armnnTfLiteParser armnn ${FLATBUFFERS_LIBRARY})
+ 
++    set_target_properties(armnnTfLiteParser PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
++
+     install(TARGETS armnnTfLiteParser
+             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

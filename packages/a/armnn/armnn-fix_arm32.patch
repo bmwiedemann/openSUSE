@@ -1,0 +1,79 @@
+From d9f7c8ba3949823a623b407f4bd80d120ca0b5be Mon Sep 17 00:00:00 2001
+From: Aron Virginas-Tar <Aron.Virginas-Tar@arm.com>
+Date: Fri, 13 Sep 2019 13:37:03 +0100
+Subject: [PATCH] IVGCVSW-3858 Fix RefTensorHandleTests on Raspberry Pi
+
+* Fix alignment check to use sizeof(size_t) instead of a hard-coded value
+
+Signed-off-by: Aron Virginas-Tar <Aron.Virginas-Tar@arm.com>
+Change-Id: I092c4464c6cecb2403da9b7744b68ad063ddbad1
+---
+ src/backends/backendsCommon/test/EndToEndTestImpl.hpp |  6 ++----
+ src/backends/reference/RefTensorHandle.cpp            |  5 +++--
+ src/backends/reference/test/RefTensorHandleTests.cpp  | 10 ++++++----
+ 3 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/src/backends/backendsCommon/test/EndToEndTestImpl.hpp b/src/backends/backendsCommon/test/EndToEndTestImpl.hpp
+index 8a3e44fc..040782bf 100644
+--- a/src/backends/backendsCommon/test/EndToEndTestImpl.hpp
++++ b/src/backends/backendsCommon/test/EndToEndTestImpl.hpp
+@@ -210,14 +210,12 @@ inline void ImportNonAlignedPointerTest(std::vector<BackendId> backends)
+     };
+ 
+     // Misaligned input
+-    float * misalignedInputData = inputData.data();
+-    misalignedInputData++;
++    float* misalignedInputData = reinterpret_cast<float*>(reinterpret_cast<char*>(inputData.data()) + 1);
+ 
+     std::vector<float> outputData(5);
+ 
+     // Misaligned output
+-    float * misalignedOutputData = outputData.data();
+-    misalignedOutputData++;
++    float* misalignedOutputData = reinterpret_cast<float*>(reinterpret_cast<char*>(outputData.data()) + 1);
+ 
+     InputTensors inputTensors
+     {
+diff --git a/src/backends/reference/RefTensorHandle.cpp b/src/backends/reference/RefTensorHandle.cpp
+index 42ac7f08..84a74edc 100644
+--- a/src/backends/reference/RefTensorHandle.cpp
++++ b/src/backends/reference/RefTensorHandle.cpp
+@@ -110,8 +110,9 @@ bool RefTensorHandle::Import(void* memory, MemorySource source)
+     {
+         if (source == MemorySource::Malloc)
+         {
+-            // Checks the 16 byte memory alignment.
+-            if (reinterpret_cast<uint64_t>(memory) % 16)
++            // Check memory alignment
++            constexpr uintptr_t alignment = sizeof(size_t);
++            if (reinterpret_cast<uintptr_t>(memory) % alignment)
+             {
+                 if (m_Imported)
+                 {
+diff --git a/src/backends/reference/test/RefTensorHandleTests.cpp b/src/backends/reference/test/RefTensorHandleTests.cpp
+index 2c5d6d49..be229bf8 100644
+--- a/src/backends/reference/test/RefTensorHandleTests.cpp
++++ b/src/backends/reference/test/RefTensorHandleTests.cpp
+@@ -92,15 +92,17 @@ BOOST_AUTO_TEST_CASE(MisalignedPointer)
+     TensorInfo info({2}, DataType::Float32);
+     RefTensorHandle handle(info, memoryManager, static_cast<unsigned int>(MemorySource::Malloc));
+ 
+-    // Allocates a 2 int array
++    // Allocate a 2 int array
+     int* testPtr = new int[2];
+-    int* misalignedPtr = testPtr + 1;
+ 
+-    BOOST_CHECK(!handle.Import(static_cast<void *>(misalignedPtr), MemorySource::Malloc));
++    // Increment pointer by 1 byte
++    void* misalignedPtr = static_cast<void*>(reinterpret_cast<char*>(testPtr) + 1);
++
++    BOOST_CHECK(!handle.Import(misalignedPtr, MemorySource::Malloc));
+ 
+     delete[] testPtr;
+ }
+ 
+ #endif
+ 
+-BOOST_AUTO_TEST_SUITE_END()
+\ No newline at end of file
++BOOST_AUTO_TEST_SUITE_END()
