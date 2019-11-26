@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 25 11:45:56 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.091
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.091 23 November 2019
+  
+        * More updates for memory leak in raw_decoder
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/1
+          08e80080b0d94e17eb1e9ceed589b145cdaf8495
+          ac9b6e5c9c6966a40d1a6caf2f2c6dc021ed50d9
+  
+        * Silence compiler warning
+          https://github.com/pmqs/Compress-Raw-Lzma/issues/1
+          c496f8716b3651cab2753cf90a3aa47a7ce0a339
+
+-------------------------------------------------------------------
+Sun Nov 10 10:02:21 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.090
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.090 9 November 2019
+  
+        * Memory leak in raw_decoder
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/1
+          05c0eac3ab1edd05e5bc945463af004dcbc88c00
+          b020045e17a7ab7338c010f5100ec63e8e8e9040
+
+-------------------------------------------------------------------
 Mon Nov  4 11:11:47 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.089

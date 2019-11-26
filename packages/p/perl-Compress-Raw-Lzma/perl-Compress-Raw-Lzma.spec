@@ -17,7 +17,7 @@
 
 
 Name:           perl-Compress-Raw-Lzma
-Version:        2.089
+Version:        2.091
 Release:        0
 %define cpan_name Compress-Raw-Lzma
 Summary:        Low-Level Interface to lzma compression library
