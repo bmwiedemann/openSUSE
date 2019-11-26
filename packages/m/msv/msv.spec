@@ -1,7 +1,7 @@
 #
 # spec file for package msv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,10 +55,10 @@ conformance to RELAX NG/W3C XML standards and JAXP masquerading.
 Summary:        Multi-Schema Validator Core
 # src/com/sun/msv/reader/xmlschema/DOMLSInputImpl.java is under ASL 2.0
 # msv/src/com/sun/msv/writer/ContentHandlerAdaptor.java is partially under Public Domain
-License:        BSD-3-Clause AND Apache-1.1 AND Apache-2.0 AND SUSE-Public-Domain
-Group:          Development/Libraries/Java
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
+License:        BSD-3-Clause AND Apache-1.1 AND Apache-2.0 AND SUSE-Public-Domain
+Group:          Development/Libraries/Java
 Requires:       javapackages-tools
 
 %description msv
@@ -66,9 +66,10 @@ Requires:       javapackages-tools
 
 %package rngconv
 Summary:        Multi-Schema Validator RNG Converter
-Group:          Development/Libraries/Java
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
+License:        BSD-3-Clause AND Apache-1.1
+Group:          Development/Libraries/Java
 Requires:       javapackages-tools
 
 %description rngconv
@@ -76,9 +77,10 @@ Requires:       javapackages-tools
 
 %package xmlgen
 Summary:        Multi-Schema Validator Generator
-Group:          Development/Libraries/Java
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
+License:        BSD-3-Clause AND Apache-1.1
+Group:          Development/Libraries/Java
 Requires:       javapackages-tools
 
 %description xmlgen
@@ -86,6 +88,7 @@ Requires:       javapackages-tools
 
 %package xsdlib
 Summary:        Multi-Schema Validator XML Schema Library
+License:        BSD-3-Clause AND Apache-1.1
 Group:          Development/Libraries/Java
 
 %description xsdlib
@@ -122,7 +125,9 @@ Requires:       msv-xsdlib
 
 %pom_remove_plugin :buildnumber-maven-plugin
 
-# Needed becuase of patch3
+# Apply patches
+%patch1 -p1
+# Needed becuase of patch
 %pom_add_dep xml-resolver:xml-resolver
 
 # ASL 2.0 license text
@@ -140,9 +145,6 @@ rm -f testharness/src/*.java
 for m in $(find . -name MANIFEST.MF) ; do
   sed --in-place -e '/^[Cc]lass-[Pp]ath:/d' $m
 done
-
-# Apply patches
-%patch1 -p1
 
 # Fix isorelax groupId
 %pom_xpath_replace "pom:dependency[pom:groupId[text()='com.sun.xml.bind.jaxb']]/pom:groupId" "<groupId>isorelax</groupId>"
@@ -169,7 +171,10 @@ done
 %{mvn_package} ":%{name}{,-core}::{}:" %{name}-msv
 
 %build
-%{mvn_build} -s -f -- -Dsource=6
+%{mvn_build} -s -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
