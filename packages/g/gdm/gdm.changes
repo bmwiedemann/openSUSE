@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:52:53 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Drop gdm-disable-wayland-for-proprietary-nvidia-machines.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
 Fri Nov  8 01:36:08 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
 
 - Add gdm-switch-user-tty7.patch: Switch to tty7 when switch user
@@ -351,6 +357,14 @@ Wed Jan 30 16:04:12 UTC 2019 - alarrosa@suse.com
   systemd-tmpfiles in order to support transactional updates.
 - Mark directories under /var as %ghost so they're not created
   during package installation (related to boo#1098063, fate#325524)
+
+-------------------------------------------------------------------
+Wed Jan  9 10:29:25 UTC 2019 - qkzhu@suse.com
+
+- Add gdm-disable-wayland-for-proprietary-nvidia-machines.patch: At
+  the moment GLX applications don't work well when the proprietary
+  nvidia driver is used with a wayland session. so disable wayland
+  on that hardware (glgo#GNOME#gdm!46 bsc#1112578).
 
 -------------------------------------------------------------------
 Tue Jul 31 12:43:52 UTC 2018 - bwiedemann@suse.com
