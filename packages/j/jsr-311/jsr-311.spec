@@ -1,7 +1,7 @@
 #
 # spec file for package jsr-311
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,10 @@ This package contains javadoc for %{name}.
 %build
 
 %{mvn_file} :jsr311-api %{name} javax.ws.rs/%{name}
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=6
+%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
