@@ -1334,4 +1334,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>Scripted push from {project}</comment>
     <requestid>736505</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>a8c18716843e1dcafb746e0867f3d40c</srcmd5>
+    <version>3.34.2</version>
+    <time>1574784247</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750380 from iznogood)</comment>
+    <requestid>750939</requestid>
+  </revision>
 </revisionlist>
