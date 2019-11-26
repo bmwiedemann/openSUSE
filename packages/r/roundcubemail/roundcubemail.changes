@@ -1,4 +1,253 @@
 -------------------------------------------------------------------
+Fri Nov 22 14:49:44 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to version 1.4.1:
+  * new defaults for smtp_* config options
+  * changed default password_charset to UTF-8
+  * login page returning 401 Unauthorized status
+
+-------------------------------------------------------------------
+Sun Nov 10 09:47:19 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to version 1.4.0:
+  * Update to jQuery 3.4.1
+  * Update to TinyMCE 4.8.2
+  * Update to jQuery-MiniColors 2.3.4
+  * Clarified 'address_book_type' option behavior (#6680)
+  * Added cookie mismatch detection, display an error message informing the user to clear cookies
+  * Renamed 'log_session' option to 'session_debug'
+  * Removed 'delete_always' option (#6782)
+  * Don't log full session identifiers in userlogins log (#6625)
+  * Support $HasAttachment/$HasNoAttachment keywords (#6201)
+  * Support PECL memcached extension as a session and cache storage driver (experimental)
+  * Switch to IDNA2008 variant (#6806)
+  * installto.sh: Add possibility to run the update even on the up-to-date installation (#6533)
+  * Plugin API: Add 'render_folder_selector' hook
+  * Added 'keyservers' option to define list of HKP servers for Enigma/Mailvelope (#6326)
+  * Added flag to disable server certificate validation via Mysql DSN argument (#6848)
+  * Select all records on the current list page with CTRL + A (#6813)
+  * Use Left/Right Arrow keys to faster move over threaded messages list (#6399)
+  * Changes in display_next setting (#6795):
+  *   * Move it to Preferences > User Interface > Main Options
+  *   * Make it apply to Contacts interface too
+  *   * Make it apply only if deleting/moving a previewed message/contact
+  * Redis: Support connection to unix socket
+  * Put charset meta specification before a title tag, add page title automatically (#6811)
+  * Elastic: Various internal refactorings
+  * Elastic: Add Prev/Next buttons on message page toolbar (#6648)
+  * Elastic: Close search options on Enter key press in quick-search input (#6660)
+  * Elastic: Changed some icons (#6852)
+  * Elastic: Changed read/unread icons (#6636)
+  * Elastic: Changed "Move to..." icon (#6637)
+  * Elastic: Add hide/show for advanced preferences (#6632)
+  * Elastic: Add default icon on Settings/Preferences lists for external plugins (#6814)
+  * Elastic: Add indicator for popover menu items that open a submenu (#6868)
+  * Elastic: Move compose attachments/options to the right side (#6839)
+  * Elastic: Add border/background to attachments list widget (#6842)
+  * Elastic: Add "Show unread messages" button to the search bar (#6587)
+  * Elastic: Fix bug where toolbar disappears on attachment menu use in Chrome (#6677)
+  * Elastic: Fix folders list scrolling on touch devices (#6706)
+  * Elastic: Fix non-working pretty selects in Chrome browser (#6705)
+  * Elastic: Fix issue with absolute positioned mail content (#6739)
+  * Elastic: Fix bug where some menu actions could cause a browser popup warning
+  * Elastic: Fix handling mailto: URL parameters in contact menu (#6751)
+  * Elastic: Fix keyboard navigation in some menus, e.g. the contact menu
+  * Elastic: Fix visual issue with long buttons in .boxwarning (#6797)
+  * Elastic: Fix handling new-line in text pasted to a recipient input
+  * Elastic: Fix so search is not reset when returning from the message preview page (#6847)
+  * Larry: Fix regression where menu actions didn't work with keyboard (#6740)
+  * ACL: Display user/group names (from ldap) instead of acl identifier
+  * Password: Added ldap_exop driver (#4992)
+  * Password: Added support for SSHA512 password algorithm (#6805)
+  * Managesieve: Fix bug where global includes were requested for vacation (#6716)
+  * Managesieve: Use RFC-compliant line endings, CRLF instead of LF (#6686)
+  * Managesieve: Fix so "Create filter" option does not show up when Filters menu is disabled (#6723)
+  * Enigma: For verified signatures, display the user id associated with the sender address (#5958)
+  * Enigma: Fix bug where revoked users/keys were not greyed out in key info
+  * Enigma: Fix error message when trying to encrypt with a revoked key (#6607)
+  * Enigma: Fix "decryption oracle" bug [CVE-2019-10740] (#6638)
+  * Enigma: Fix bug where signature verification could have been skipped for some message structures (#6838)
+  * Fix language selection for spellchecker in html mode (#6915)
+  * Fix css styles leak from replied/forwarded message to the rest of the composed text (#6831)
+  * Fix invalid path to "add contact" icon when using assets_path setting
+  * Fix invalid path to blocked.gif when using assets_path setting (#6752)
+  * Fix so advanced search dialog is not automatically displayed on searchonly addressbooks (#6679)
+  * Fix so an error is logged when more than one attachment plugin has been enabled, initialize the first one (#6735)
+  * Fix bug where flag change could have been passed to a preview frame when not expected
+  * Fix bug in HTML parser that could cause missing text fragments when there was no head/body tag (#6713)
+  * Fix bug where HTML messages with a xml:namespace tag were not rendered (#6697)
+  * Fix TinyMCE download location (#6694)
+  * Fix so "Open in new window" consistently displays "external window" interface (#6659)
+  * Fix bug where next row wasn't selected after deleting a collapsed thread (#6655)
+  * Fix bug where external content (e.g. mail body) was passed to templates parsing code (#6640)
+  * Fix bug where attachment preview didn't work with x_frame_options=deny (#6688)
+  * Fix so bin/install-jsdeps.sh returns error code on error (#6704)
+  * Fix bug where bmp images couldn't be displayed on some systems (#6728)
+  * Fix bug in parsing vCard data using PHP 7.3 due to an invalid regexp (#6744)
+  * Fix bug where bold/strong text was converted to upper-case on html-to-text conversion (6758)
+  * Fix bug in rcube_utils::parse_hosts() where %t, %d, %z could return only tld (#6746)
+  * Fix bug where Next/Prev button in mail view didn't work with multi-folder search result (#6793)
+  * Fix bug where selection of columns on messages list wasn't working
+  * Fix bug in converting multi-page Tiff images to Jpeg (#6824)
+  * Fix bug where handling multiple messages from multi-folder search result could not work (#6845)
+  * Fix bug where unread count wasn't updated after moving multi-folder result (#6846)
+  * Fix wrong messages order after returning to a multi-folder search result (#6836)
+  * Fix some PHP 7.4 compat. issues (#6884, #6866)
+  * Fix bug where it was possible to bypass the position:fixed CSS check in received messages (#6898)
+  * Fix bug where some strict remote URIs in url() style were unintentionally blocked (#6899)
+  * Fix bug where it was possible to bypass the CSS jail in HTML messages using :root pseudo-class (#6897)
+  * Fix bug where it was possible to bypass href URI check with data:application/xhtml+xml URIs (#6896)
+  * Changed 'password_charset' default to 'UTF-8' (#6522)
+  * Add skins_allowed option (#6483)
+  * SMTP GSSAPI support via krb_authentication plugin (#6417)
+  * Avoid Referer leaking by using Referrer-Policy:same-origin header (#6385)
+  * Removed 'referer_check' option (#6440)
+  * Use constant prefix for temp file names, don't remove temp files from other apps (#6511)
+  * Ignore 'Sender' header on Reply-All action (#6506)
+  * deluser.sh: Add option to delete users who have not logged in for more than X days (#6340)
+  * HTML5 Upload Progress - as a replacement for the old server-side solution (#6177)
+  * Prevent from using deprecated timezone names from jsTimezoneDetect
+  * Force session.gc_probability=1 when using custom session handlers (#6560)
+  * Support simple field labels (e.g. LetterHub examples) in csv imports (#6541)
+  * Add cache busters also to images used by templates (#6610)
+  * Plugin API: Added 'raise_error' hook (#6199)
+  * Plugin API: Added 'common_headers' hook (#6385)
+  * Plugin API: Added 'ldap_connected' hook
+  * Enigma: Update to OpenPGPjs 4.2.1 - fixes user name encoding issues in key generation (#6524)
+  * Enigma: Fixed multi-host synchronization of private and deleted keys and pubring.kbx file
+  * Managesieve: Added support for 'editheader' extension - RFC5293 (#5954)
+  * Managesieve: Fix bug where custom header or variable could be lost on form submission (#6594)
+  * Markasjunk: Integrate markasjunk2 features into markasjunk - marking as non-junk + learning engine (#6504)
+  * Password: Added 'modoboa' driver (#6361)
+  * Password: Fix bug where password_dovecotpw_with_method setting could be ignored (#6436)
+  * Password: Fix bug where new users could skip forced password change (#6434)
+  * Password: Allow drivers to override default password comparisons (eg new is not same as current) (#6473)
+  * Password: Allow drivers to override default strength checks (eg allow for 'not the same as last x passwords') (#246)
+  * Passowrd: Allow drivers to define password strength rules displayed to the user
+  * Password: Allow separate password saving and strength drivers for use of strength checking services (#5040)
+  * Password: Add zxcvbn driver for checking password strength (#6479)
+  * Password: Disallow control characters in passwords
+  * Password: Add support for Plesk >= 17.8 (#6526)
+  * Elastic: Improved datepicker displayed always in parent window
+  * Elastic: On touch devices display attachment icons on messages list (#6296)
+  * Elastic: Make menu button inactive if all subactions are inactive (#6444)
+  * Elastic: On mobile/tablet jump to the list on folder selection (#6415)
+  * Elastic: Various improvements on mail compose screen (#6413)
+  * Elastic: Support new-line char as a separator for pasted recipients (#6460)
+  * Elastic: Improved UX of search dialogs (#6416)
+  * Elastic: Fix unwanted thread expanding when selecting a collapsed thread in non-mobile mode (#6445)
+  * Elastic: Fix too small height of mailvelope mail preview frame (#6600)
+  * Elastic: Add "status bar" for mobile in mail composer
+  * Elastic: Add selection options on contacts list (#6595)
+  * Elastic: Fix unintentional layout preference overwrite (#6613)
+  * Elastic: Fix bug where Enigma options in mail compose could sometimes be ignored (#6515)
+  * Log errors caused by low pcre.backtrack_limit when sending a mail message (#6433)
+  * Fix regression where drafts were not deleted after sending the message (#6756)
+  * Fix so max_message_size limit is checked also when forwarding messages as attachments (#6580)
+  * Fix so performance stats are logged to the main console log also when per_user_logging=true
+  * Fix malformed message saved into Sent folder when using big attachments and low memory limit (#6498)
+  * Fix incorrect IMAP SASL GSSAPI negotiation (#6308)
+  * Fix so unicode in local part of the email address is also supported in recipient inputs (#6490)
+  * Fix bug where autocomplete list could be displayed out of screen (#6469)
+  * Fix style/navigation on error page depending on authentication state (#6362)
+  * Fix so invalid smtp_helo_host is never used, fallback to localhost (#6408)
+  * Fix custom logo size in Elastic (#6424)
+  * Fix listing the same attachment multiple times on forwarded messages
+  * Fix bug where a message/rfc822 part without a filename wasn't listed on the attachments list (#6494)
+  * Fix inconsistent offset for various time zones - always display Standard Time offset (#6531)
+  * Fix dummy Message-Id when resuming a draft without Message-Id header (#6548)
+  * Fix handling of empty entries in vCard import (#6564)
+  * Fix bug in parsing some IMAP command responses that include unsolicited replies (#6577)
+  * Fix PHP 7.2 compatibility in debug_logger plugin (#6586)
+  * Fix so ANY record is not used for email domain validation, use A, MX, CNAME, AAAA instead (#6581)
+  * Fix so mime_content_type check in Installer uses files that should always be available (i.e. from program/resources) (#6599)
+  * Fix missing CSRF token on a link to download too-big message part (#6621)
+  * Fix bug when aborting dragging with ESC key didn't stop the move action (#6623)
+  * Improved Mailvelope integration
+  *   * Added private key listing and generating to identity settings
+  *   * Enable encrypt & sign option if Mailvelope supports it
+  * Allow contacts without an email address (#5079)
+  * Support SMTPUTF8 and relax email address validation to support unicode in local part (#5120)
+  * Support for IMAP folders that cannot contain both folders and messages (#5057)
+  * Remove sample PHP configuration from .htaccess and .user.ini files (#5850)
+  * Extend skin_logo setting to allow per skin logos (#6272)
+  * Use Masterminds/HTML5 parser for better HTML5 support (#5761)
+  * Add More actions button in Contacts toolbar with Copy/Move actions (#6081)
+  * Display an error when clicking disabled link to register protocol handler (#6079)
+  * Add option trusted_host_patterns (#6009, #5752)
+  * Support additional connect parameters in PostgreSQL database wrapper
+  * Use UI dialogs instead of confirm() and alert() where possible
+  * Display value of the SMTP message size limit in the error message (#6032)
+  * Show message flagged status in message view (#5080)
+  * Skip redundant INSERT query on successful logon when using PHP7
+  * Replace display_version with display_product_version (#5904)
+  * Extend disabled_actions config so it accepts also button names (#5903)
+  * Handle remote stylesheets the same as remote images, ask the user to allow them (#5994)
+  * Add Message-ID to the sendmail log (#5871)
+  * Add option to hide folders in share/other-user namespace or outside of the personal namespace root (#5073)
+  * Archive: Fix archiving by sender address on cyrus-imap
+  * Archive: Style Archive folder also on folder selector and folder manager lists
+  * Archive: Add Thunderbird compatible Month option (#5623)
+  * Archive: Create archive folder automatically if it's configured, but does not exist (#6076)
+  * Enigma: Add button to send mail unencrypted if no key was found (#5913)
+  * Enigma: Add options to set PGP cipher/digest algorithms (#5645)
+  * Enigma: Multi-host support
+  * Managesieve: Add ability to disable filter sets and other actions (#5496, #5898)
+  * Managesieve: Add option managesieve_forward to enable settings dialog for simple forwarding (#6021)
+  * Managesieve: Support filter action with custom IMAP flags (#6011)
+  * Managesieve: Support 'mime' extension tests - RFC5703 (#5832)
+  * Managesieve: Support GSSAPI authentication with krb_authentication plugin (#5779)
+  * Managesieve: Support enabling the plugin for specified hosts only (#6292)
+  * Password: Support host variables in password_db_dsn option (#5955)
+  * Password: Automatic virtualmin domain setting, removed password_virtualmin_format option (#5759)
+  * Password: Added password_username_format option (#5766)
+  * subscriptions_option: show \Noselect folders greyed out (#5621)
+  * zipdownload: Added option to define size limit for multiple messages download (#5696)
+  * vcard_attachments: Add possibility to send contact vCard from Contacts toolbar (#6080)
+  * Changed defaults for smtp_user (%u), smtp_pass (%p) and smtp_port (587)
+  * Composer: Fix certificate validation errors by using packagist only (#5148)
+  * Add --get and --extract arguments and CACHEDIR env-variable support to install-jsdeps.sh (#5882)
+  * Support _filter and _scope as GET arguments for opening mail UI (#5825)
+  * Various improvements for templating engine and skin behaviours
+  *   * Support conditional include
+  *   * Support for 'link' objects
+  *   * Support including files with path relative to templates directory
+  *   * Use instead of for submit button on logon screen
+  * Support skin localization (#5853)
+  * Reset onerror on images if placeholder does not exist to prevent from requests storm
+  * Unified and simplified code for loading content frame for responses and identities
+  * Display contact import and advanced search in popup dialogs
+  * Display a dialog for mail import with supported format description and upload size hint
+  * Make possible to set (some) config options from a skin
+  * Added optional checkbox selection for the list widget
+  * Make 'compose' command always enabled
+  * Add .log suffix to all log file names, add option log_file_ext to control this (#313)
+  * Return "401 Unauthorized" status when login fails (#5663)
+  * Support both comma and semicolon as recipient separator, drop recipients_separator option (#5092)
+  * Plugin API: Added 'show_bytes' hook (#5001)
+  * Add option to not indent quoted text on top-posting reply (#5105)
+  * Removed global $CONFIG variable
+  * Removed debug_level setting
+  * Support AUTHENTICATE LOGIN for IMAP connections (#5563)
+  * Support LDAP GSSAPI authentication (#5703)
+  * Localized timezone selector (#4983)
+  * Use 7bit encoding for ISO-2022-* charsets in sent mail (#5640)
+  * Handle inline images also inside multipart/mixed messages (#5905)
+  * Allow style tags in HTML editor on composed/reply messages (#5751)
+  * Use Github API as a fallback to fetch js dependencies to workaround throttling issues (#6248)
+  * Show confirm dialog when moving folders using drag and drop (#6119)
+  * Fix bug where new_user_dialog email check could have been circumvented by deleting / abandoning session (#5929)
+  * Fix skin extending for assets (#5115)
+  * Fix handling of forwarded messages inside of a TNEF message (#5632)
+  * Fix bug where attachment size wasn't visible when the filename was too long (#6033)
+  * Fix checking table columns when there's more schemas/databases in postgres/mysql (#6047)
+  * Fix css conflicts in user interface and e-mail content (#5891)
+  * Fix duplicated signature when using Back button in Chrome (#5809)
+  * Fix touch event issue on messages list in IE/Edge (#5781)
+  * Fix so links over images are not removed in plain text signatures converted from HTML (#4473)
+  * Fix various issues when downloading files with names containing non-ascii chars, use RFC 2231 (#5772)
+
+-------------------------------------------------------------------
 Wed Aug 28 21:57:02 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to version 1.3.10:

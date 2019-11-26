@@ -17,7 +17,7 @@
 
 
 Name:           roundcubemail
-Version:        1.3.10
+Version:        1.4.1
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -280,6 +280,8 @@ exit 0
 %config(noreplace) %{apache_sysconfdir}/conf.d/roundcubemail.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{roundcubepath}/composer.json-dist
+%{roundcubepath}/composer.json
+%{roundcubepath}/composer.lock
 %{roundcubepath}/config
 %{roundcubepath}/index.php
 %{roundcubepath}/robots.txt
@@ -300,7 +302,5 @@ exit 0
 %{_datadir}/php%{php_major_version}/Roundcube/
 %attr(-, wwwrun, root) %{_localstatedir}/log/%{name}
 %attr(-, wwwrun, root) %{_localstatedir}/lib/%{name}
-# RW need for PGP plugin
-%attr(0700, wwwrun, root) %dir %{roundcubepath}/plugins/enigma/home
 
 %changelog
