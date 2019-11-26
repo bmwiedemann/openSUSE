@@ -1,7 +1,7 @@
 #
 # spec file for package prewikka
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,41 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           prewikka
-Version:        4.0.0
+Version:        5.1.1
 Release:        0
 Summary:        Graphical front-end analysis console for the Prelude Framework
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Frontends
 Url:            https://www.prelude-siem.org
-Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
-Patch0:         prewikka-fix_python3.patch
-BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module lesscpy}
-BuildRequires:  %{python_module setuptools}
+Source0:        https://www.prelude-siem.org/pkg/src/5.1.0/%{name}-%{version}.tar.gz
+Patch0:         prewikka-fix_shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext
-BuildRequires:  python-devel
-BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Babel
 BuildRequires:  python3-devel
-Requires:       prewikka-core >= %{version}
+BuildRequires:  python3-lesscpy
+BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-setuptools
 Requires:       prewikka-lang >= %{version}
-Requires:       python-Babel
-Requires:       python-Mako
-Requires:       python-PyYAML
-Requires:       python-Werkzeug
-Requires:       python-libprelude
-Requires:       python-libpreludedb
-Requires:       python-python-dateutil
-Requires:       python-pytz
+Requires:       python3-Babel
+Requires:       python3-Mako
+Requires:       python3-PyYAML
+Requires:       python3-Werkzeug
+Requires:       python3-croniter
+Requires:       python3-gevent
+Requires:       python3-lark-parser
+Requires:       python3-libprelude
+Requires:       python3-libpreludedb
+Requires:       python3-python-dateutil
+Requires:       python3-pytz
+Requires:       python3-voluptuous
 Requires:       xorg-x11-fonts
 BuildArch:      noarch
+Obsoletes:      prewikka-core < %{version}-%{release}
+Provides:       prewikka-core = %{version}-%{release}
 
 %python_subpackages
 
@@ -55,13 +57,6 @@ Prewikka is the graphical front-end analysis console for the Prelude
 Universal SIM. Prewikka provides alert aggregation and sensor and
 hearbeat views, and has user management and configurable filters, as
 well as access to external tools such as whois and traceroute.
-
-%package core
-Summary:        Prewikka core files
-Group:          Productivity/Networking/Web/Frontends
-
-%description core
-Core files for prewikka.
 
 %package lang
 Summary:        Prewikka lang files
@@ -77,42 +72,33 @@ Lang files for prewikka.
 %build
 
 %install
-install -d -m 0755 %{buildroot}%{_sbindir}
-
-%{python_expand $python setup.py install -O1 --force --root %{buildroot}
-mv %{buildroot}%{_bindir}/%{name}-httpd %{buildroot}%{_sbindir}/%{name}-httpd-%{$python_bin_suffix}
-%fdupes %{buildroot}%{$python_sitelib}/prewikka
-}
-
-ln -s ./%{name}-httpd-%{python3_bin_suffix} %{buildroot}%{_sbindir}/%{name}-httpd
+python3 setup.py install -O1 --force --root %{buildroot}
+%fdupes %{buildroot}%{$python3_sitelib}/prewikka
 
 install -d -m 0755 %{buildroot}%{_datadir}/locale
-cp -r %{buildroot}%{python2_sitelib}/%{name}/locale/* %{buildroot}%{_datadir}/locale/
-rm -rf %{buildroot}%{python2_sitelib}/%{name}/locale
+cp -r %{buildroot}%{python3_sitelib}/%{name}/locale/* %{buildroot}%{_datadir}/locale/
 rm -rf %{buildroot}%{python3_sitelib}/%{name}/locale
-ln -s %{_datadir}/locale %{buildroot}%{python2_sitelib}/%{name}/locale
 ln -s %{_datadir}/locale %{buildroot}%{python3_sitelib}/%{name}/locale
-
-rm %{buildroot}%{_sysconfdir}/%{name}/*-dist
 
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-%{version}
 
+find %{buildroot} -name __pycache__ -exec rm -rfv {} +
+
 %find_lang %{name}
 
-%files -n %{name}-core
+%files -n python3-%{name}
 %defattr(-, root, root, -)
 %attr(0750, -,-) %dir %{_sysconfdir}/%{name}/
 %config(noreplace) %attr(0640, -,-) %{_sysconfdir}/%{name}/%{name}.conf
 %config(noreplace) %attr(0640, -,-) %{_sysconfdir}/%{name}/menu.yml
 %{_datadir}/%{name}
 %doc COPYING* AUTHORS README NEWS HACKING.README
+%{python3_sitelib}/prewikka/
+%{python3_sitelib}/prewikka*.egg-info
+%{_bindir}/prewikka-httpd
+%{_bindir}/prewikka-cli
+%{_bindir}/prewikka-crontab
 
 %files -n %{name}-lang -f %{name}.lang
-
-%files %python_files
-%{python_sitelib}/prewikka/
-%{python_sitelib}/prewikka*.egg-info
-%{_sbindir}/prewikka-httpd-%{python_bin_suffix}
-%python3_only %{_sbindir}/prewikka-httpd
 
 %changelog

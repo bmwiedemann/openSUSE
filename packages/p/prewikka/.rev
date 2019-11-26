@@ -41,4 +41,39 @@ It needs SR 405816 for python-libpreludedb</comment>
     <comment></comment>
     <requestid>577606</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15240690791e5b673602f0eca92cd301</srcmd5>
+    <version>5.1.1</version>
+    <time>1574784153</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.1.1
+  - Use the correct hook in heartbeat detail
+  - Fix grouping errors with datasearch:update
+  - Reload plugins if needed in prewikka-crontab
+- Add missing depends (see INSTALL file):
+  - python3-croniter
+  - python3-gevent
+  - python3-voluptuous
+  - python3-lark-parser
+Bump version 5.1.0
+  - Update frameworks
+  - Add prewikka-cli, prewikka in command line
+  - Add new options in config file
+  - Various fixes
+  - Separate dataprovider backend and instance
+  - Implement support for time-spanning data
+  - Add past periods to the control menu
+  - Add comparison operators for additional data
+- Use the correct hook in heartbeat detail
+- Remove patchs:
+  - prewikka-fix_python3.patch
+    - Fixed upstream
+- Add patchs:
+  - prewikka-fix_shebang.patch
+    - Non executives files do not need shebang
+- Remove python2
+  - Python 2 will be removed step by step in all Linux distributions
+</comment>
+    <requestid>750892</requestid>
+  </revision>
 </revisionlist>
