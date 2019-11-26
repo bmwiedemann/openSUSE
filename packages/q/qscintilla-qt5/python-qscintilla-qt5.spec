@@ -1,7 +1,7 @@
 #
 # spec file for package python-qscintilla-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qscintilla-qt5
-Version:        2.11.2
+Version:        2.11.3
 Release:        0
 Summary:        Python  Bindings for the C++ Editor Class Library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.riverbankcomputing.co.uk/qscintilla
-Source:         https://www.riverbankcomputing.com/static/Downloads/QScintilla/%{version}/QScintilla_gpl-%{version}.tar.gz
+Source:         https://www.riverbankcomputing.com/static/Downloads/QScintilla/%{version}/QScintilla-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE: Rename qscintilla2 to qscintilla2-qt5:
 Patch0:         python-config.diff
 BuildRequires:  %{python_module devel}
@@ -63,7 +63,7 @@ python3-qscintilla packages. It contains sip files  used to generate
 bindings to QScintilla
 
 %prep
-%setup -q -n QScintilla_gpl-%{version}
+%setup -q -n QScintilla-%{version}
 %patch0 -p1
 
 %build
@@ -97,7 +97,7 @@ popd
 
 %files %{python_files}
 %license LICENSE
-%doc NEWS README
+%doc NEWS
 %{python_sitearch}/PyQt5/Qsci.so
 
 %files -n %{name}-sip

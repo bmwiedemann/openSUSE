@@ -1,7 +1,7 @@
 #
 # spec file for package qscintilla-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define sonum   15
 %define debug_package_requires libqscintilla2_qt5-%{sonum} = %{version}-%{release}
 Name:           qscintilla-qt5
-Version:        2.11.2
+Version:        2.11.3
 Release:        0
 Summary:        C++ Editor Class Library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.riverbankcomputing.co.uk/software/qscintilla/intro
-Source:         https://www.riverbankcomputing.com/static/Downloads/QScintilla/%{version}/QScintilla_gpl-%{version}.tar.gz
+Source:         https://www.riverbankcomputing.com/static/Downloads/QScintilla/%{version}/QScintilla-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE: Adapt to the openSUSE Qt5 build
 Patch0:         qscintilla-qt5.diff
 BuildRequires:  pkgconfig
@@ -83,7 +83,7 @@ This is a Qt port from the original Scintilla class
 This package contains the development files for %{name}.
 
 %prep
-%setup -q -n QScintilla_gpl-%{version}
+%setup -q -n QScintilla-%{version}
 %patch0 -p1
 
 %build
@@ -109,7 +109,7 @@ popd
 
 %files -n qscintilla2_qt5
 %license LICENSE
-%doc NEWS README
+%doc NEWS
 %{_datadir}/qt5/qsci/
 %{_datadir}/qt5/translations/
 %dir %{_libdir}/qt5/plugins/designer
