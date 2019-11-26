@@ -1,7 +1,7 @@
 #
 # spec file for package gradle
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -378,6 +378,7 @@ ln -sf $(find-jar ecj/ecj) inst/lib/plugins/ecj.jar
 xmvn-subst -s $(find inst/lib -type f)
 # TODO figure out why this one is missing
 ln -s $(find-jar commons-lang) inst/lib/
+ln -s $(find-jar slf4j/slf4j-api) inst/lib/
 cp -a inst %{buildroot}%{_datadir}/%{name}
 
 %mvn_install

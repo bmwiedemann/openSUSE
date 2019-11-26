@@ -62,4 +62,12 @@
     <comment>Build a proper gradle 4.4.1 instead of just a little api subset</comment>
     <requestid>749228</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f19e8e657a34f2d9cbf1452dae0df51d</srcmd5>
+    <version>4.4.1</version>
+    <time>1574783657</time>
+    <user>dimstar_suse</user>
+    <comment>Some gradle plugins need jar named slf4j-api.jar</comment>
+    <requestid>750481</requestid>
+  </revision>
 </revisionlist>
