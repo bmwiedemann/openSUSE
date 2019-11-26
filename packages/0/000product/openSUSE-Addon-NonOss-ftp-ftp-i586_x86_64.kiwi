@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-Addon-NonOss___20191125" schemaversion="4.1">
+<image name="OBS__openSUSE-Addon-NonOss___20191126" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -36,11 +36,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191125</productvar>
+      <productvar name="VERSION">20191126</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-addon-nonoss:20191125,openSUSE NonOSS Addon</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-addon-nonoss:20191126,openSUSE NonOSS Addon</productinfo>
       <productinfo name="LINGUAS">af ar be_BY bg br ca cy el et ga gl gu_IN he hi_IN hr ka km ko lt mk nn pa_IN rw sk sl sr_CS ss st tg th tr uk ve vi xh zu </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20191125/i586 obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20191125/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20191126/i586 obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20191126/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -55,7 +55,10 @@
     </metadata>
     <repopackages>
       <repopackage name="*"/>
+      <repopackage name="ant-scala-bootstrap" onlyarch="skipit"/>
       <repopackage name="antlr-bootstrap" onlyarch="skipit"/>
+      <repopackage name="antlr-bootstrap" onlyarch="skipit"/>
+      <repopackage name="antlr3-bootstrap-tool" onlyarch="skipit"/>
       <repopackage name="bonnie-ctcs2-glue" onlyarch="skipit"/>
       <repopackage name="bootdisk" onlyarch="skipit"/>
       <repopackage name="bootpmac" onlyarch="skipit"/>
@@ -86,6 +89,18 @@
       <repopackage name="desktop-data-SLED-extra-gnome" onlyarch="skipit"/>
       <repopackage name="desktop-data-SLES-extra-gnome" onlyarch="skipit"/>
       <repopackage name="dummy-release" onlyarch="skipit"/>
+      <repopackage name="eclipse-bootstrap-debuginfo" onlyarch="skipit"/>
+      <repopackage name="eclipse-bootstrap-debugsource" onlyarch="skipit"/>
+      <repopackage name="eclipse-contributor-tools-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-equinox-osgi-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-jdt-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-p2-discovery-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-pde-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-platform-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-platform-bootstrap-debuginfo" onlyarch="skipit"/>
+      <repopackage name="eclipse-swt-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-swt-bootstrap-debuginfo" onlyarch="skipit"/>
+      <repopackage name="eclipse-tests-bootstrap" onlyarch="skipit"/>
       <repopackage name="enchant-zemberek" onlyarch="skipit"/>
       <repopackage name="epiphany-branding-SLED" onlyarch="skipit"/>
       <repopackage name="gcc41" onlyarch="skipit"/>
@@ -181,6 +196,9 @@
       <repopackage name="glib2-branding-SLES" onlyarch="skipit"/>
       <repopackage name="gnome-menus-branding-SLED" onlyarch="skipit"/>
       <repopackage name="gnome-panel-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="gpars-bootstrap" onlyarch="skipit"/>
+      <repopackage name="gradle-bootstrap" onlyarch="skipit"/>
+      <repopackage name="groovy-bootstrap" onlyarch="skipit"/>
       <repopackage name="gtk2-branding-SLED" onlyarch="skipit"/>
       <repopackage name="gtk2-theme-SLED" onlyarch="skipit"/>
       <repopackage name="gtk3-branding-SLED" onlyarch="skipit"/>
@@ -200,7 +218,11 @@
       <repopackage name="java-1_7_0-openjdk-bootstrap-devel" onlyarch="skipit"/>
       <repopackage name="java-1_7_0-openjdk-bootstrap-headless" onlyarch="skipit"/>
       <repopackage name="java-cup-bootstrap" onlyarch="skipit"/>
+      <repopackage name="java-cup-bootstrap" onlyarch="skipit"/>
+      <repopackage name="javacc-bootstrap" onlyarch="skipit"/>
       <repopackage name="jaxen-bootstrap" onlyarch="skipit"/>
+      <repopackage name="jflex-bootstrap" onlyarch="skipit"/>
+      <repopackage name="jgit-bootstrap" onlyarch="skipit"/>
       <repopackage name="kiwi-image-livecd-gnome" onlyarch="skipit"/>
       <repopackage name="kiwi-image-livecd-gnome-original" onlyarch="skipit"/>
       <repopackage name="kiwi-image-livecd-gnome-promo" onlyarch="skipit"/>
@@ -371,6 +393,14 @@
       <repopackage name="libudev-mini-devel" onlyarch="skipit"/>
       <repopackage name="libudev-mini1" onlyarch="skipit"/>
       <repopackage name="libudf0-mini" onlyarch="skipit"/>
+      <repopackage name="maven-compiler-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-failsafe-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-jar-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-javadoc-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-plugin-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-resources-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-surefire-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-surefire-report-plugin-bootstrap" onlyarch="skipit"/>
       <repopackage name="MozillaFirefox-branding-SLED" onlyarch="skipit"/>
       <repopackage name="OpenOffice_org-branding-SLED" onlyarch="skipit"/>
       <repopackage name="openSUSE-Addon-Lang-release" onlyarch="skipit"/>
@@ -413,6 +443,10 @@
       <repopackage name="package-lists-openSUSE-X11-cd" onlyarch="skipit"/>
       <repopackage name="policycoreutils-gui" onlyarch="skipit"/>
       <repopackage name="promo-dvd-parts" onlyarch="skipit"/>
+      <repopackage name="sbt-bootstrap" onlyarch="skipit"/>
+      <repopackage name="scala-bootstrap" onlyarch="skipit"/>
+      <repopackage name="scala-bootstrap-apidoc" onlyarch="skipit"/>
+      <repopackage name="scala-bootstrap-swing" onlyarch="skipit"/>
       <repopackage name="skelcd" onlyarch="skipit"/>
       <repopackage name="skelcd-control-openSUSE" onlyarch="skipit"/>
       <repopackage name="skelcd-control-openSUSE-LangAddOn" onlyarch="skipit"/>
@@ -424,6 +458,7 @@
       <repopackage name="sled-release-sp" onlyarch="skipit"/>
       <repopackage name="sles-release-sp" onlyarch="skipit"/>
       <repopackage name="splashy-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="stringtemplate4-bootstrap" onlyarch="skipit"/>
       <repopackage name="sysbench-ctcs-glue" onlyarch="skipit"/>
       <repopackage name="systemd-mini" onlyarch="skipit"/>
       <repopackage name="systemd-mini-analyze" onlyarch="skipit"/>
@@ -431,7 +466,11 @@
       <repopackage name="systemd-mini-devel" onlyarch="skipit"/>
       <repopackage name="systemd-mini-sysvinit" onlyarch="skipit"/>
       <repopackage name="sysvinit" onlyarch="skipit"/>
+      <repopackage name="tycho-bootstrap" onlyarch="skipit"/>
       <repopackage name="udev-mini" onlyarch="skipit"/>
+      <repopackage name="xml-commons-apis-bootstrap" onlyarch="skipit"/>
+      <repopackage name="xml-commons-resolver-bootstrap" onlyarch="skipit"/>
+      <repopackage name="xml-commons-which-bootstrap" onlyarch="skipit"/>
       <repopackage name="yast2-all-packages" onlyarch="skipit"/>
       <repopackage name="yast2-branding-SLED" onlyarch="skipit"/>
       <repopackage name="yast2-branding-SLES" onlyarch="skipit"/>

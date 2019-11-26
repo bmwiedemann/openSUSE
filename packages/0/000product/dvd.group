@@ -2065,6 +2065,7 @@
     <package name="libfreeipmi17" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="libfreerdp2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libfreshclam2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libfribidi0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libftgl2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -5212,6 +5213,7 @@
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wiggle" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="wireguard-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wireshark" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
