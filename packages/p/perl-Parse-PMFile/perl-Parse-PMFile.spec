@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Parse-PMFile
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Parse-PMFile
-Version:        0.41
+Version:        0.42
 Release:        0
 %define cpan_name Parse-PMFile
-Summary:        Parses .Pm File As Pause Does
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Parses .pm file as PAUSE does
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Parse-PMFile/
-Source0:        http://www.cpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.07
+BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.08
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(JSON::PP) >= 2.00
 BuildRequires:  perl(Test::More) >= 0.88
@@ -52,11 +53,11 @@ meta files intentionally.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -68,4 +69,3 @@ meta files intentionally.
 %doc Changes README
 
 %changelog
-

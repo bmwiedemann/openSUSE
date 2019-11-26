@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 10 10:10:21 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.42
+   see /usr/share/doc/packages/perl-Parse-PMFile/Changes
+
+  0.42 2019/11/09
+    - no code changes
+    - explicitly declared ExtUtils::MakeMaker::CPANfile as a configure
+      requirement (Nikolo++)
+
+-------------------------------------------------------------------
 Tue Jun 06 13:38:00 CET 2016 - sriedel@suse.de
 
 - initial version (0.41)

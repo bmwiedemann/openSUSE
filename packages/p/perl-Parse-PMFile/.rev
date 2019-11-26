@@ -7,4 +7,12 @@
     <comment>This package is required to fix perl-App-cpanminus, which is currently broken in Tumbleweed and Leap. (https://bugzilla.novell.com/show_bug.cgi?id=983472)</comment>
     <requestid>501379</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c954ca37280abb2553be3c800759d47f</srcmd5>
+    <version>0.42</version>
+    <time>1574783570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748278</requestid>
+  </revision>
 </revisionlist>
