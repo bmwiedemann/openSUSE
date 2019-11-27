@@ -290,4 +290,12 @@ Packaging :
     <comment></comment>
     <requestid>751020</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>c0b7cd854bc1e51e206b7765d3f96dfd</srcmd5>
+    <version>5.10.0</version>
+    <time>1574859322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751118</requestid>
+  </revision>
 </revisionlist>
