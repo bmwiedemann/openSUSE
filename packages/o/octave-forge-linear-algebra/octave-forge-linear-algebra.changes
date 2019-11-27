@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 27 10:25:25 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.2.3:
+  * The following functions have been removed from the package.
+    They have been in Octave core since version 4.4 or earlier:
+    + condeig
+    + gsvd
+    + pgmres (superseded by gmres in core Octave)
+- Drop upstream patches:
+  0001-CmplxGSVD-dbleGSVD-replace-include-config.h-with-oct.patch
+  0002-Remove-autotools-cruft-from-the-very-old-times-of-Oc.patch
+- Drop no longer required build dependencies, make package noarch
+
+-------------------------------------------------------------------
 Thu Mar  7 17:20:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with current octave versions:

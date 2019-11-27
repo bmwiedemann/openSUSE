@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>682614</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5265e8b17e83f8a1d52f773ae07573e1</srcmd5>
+    <version>2.2.3</version>
+    <time>1574867109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.3:
+  * The following functions have been removed from the package.
+    They have been in Octave core since version 4.4 or earlier:
+    + condeig
+    + gsvd
+    + pgmres (superseded by gmres in core Octave)
+- Drop upstream patches:
+  0001-CmplxGSVD-dbleGSVD-replace-include-config.h-with-oct.patch
+  0002-Remove-autotools-cruft-from-the-very-old-times-of-Oc.patch
+- Drop no longer required build dependencies, make package noarch
+</comment>
+    <requestid>751321</requestid>
+  </revision>
 </revisionlist>
