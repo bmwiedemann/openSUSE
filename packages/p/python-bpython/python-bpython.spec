@@ -23,8 +23,7 @@ Version:        0.18
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://www.bpython-interpreter.org/
+URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
@@ -74,7 +73,6 @@ ideas to enhance the standard interpreter without getting carried away.
 
 %package        -n %{name}-common
 Summary:        Fancy Interface to the Python Interpreter - common files
-Group:          Development/Languages/Python
 Provides:       %{python_module bpython-common = %{version}}
 
 %description    -n %{name}-common
@@ -84,7 +82,6 @@ require it will pull it in automatically.
 
 %package        -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Documentation/HTML
 Provides:       %{python_module bpython-doc = %{version}}
 
 %description    -n %{name}-doc

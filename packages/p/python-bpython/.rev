@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>693126</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>00b7d8f2e4f1f8ecef0b50e12209ee90</srcmd5>
+    <version>0.18</version>
+    <time>1574859086</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>745360</requestid>
+  </revision>
 </revisionlist>
