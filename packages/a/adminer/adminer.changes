@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 27 01:35:49 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 4.7.5:
+  * Release 4.7.5
+  * Re-apply https://github.com/vrana/adminer/pull/363/commits/89b6e9bb
+  * Update zh-tw.inc.php
+  * Update zh.inc.php
+  * Stop using adsrc column
+  * fixed: SQL command for insert, create table, etc. new: create/rename table, add/drop/change type for column
+  * Fix brazilian portuguese translation
+  * Swedish translation
+  * Update hever design
+  * Don't overwrite variable
+  * Add id="" to cells with failed inline edit (bug #708)
+  * Unify dumpTable declarations (bug #707)
+  * PostgreSQL, Oracle: Set schema for EXPLAIN queries in SQL command (bug #706)
+  * Initialize version-noverify sooner (bug #705)
+  * Make context in qsa() optional
+  * Delete extra newlines
+  * correct complement of responsive media query
+  * update lucas-sandery theme
+  * Add funding
+
+-------------------------------------------------------------------
 Tue Oct 22 13:32:40 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 4.7.4:
