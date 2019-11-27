@@ -1,7 +1,7 @@
 #
 # spec file for package screenfetch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           screenfetch
-Version:        3.8.0
+Version:        3.9.1
 Release:        0
 Summary:        Fetches system/theme information in terminal for Linux desktop screenshots
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
 URL:            https://github.com/KittyKatt/screenFetch
-Source0:        https://github.com/KittyKatt/screenFetch/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Requires:       bc
 Requires:       xprop
 Recommends:     curl
@@ -31,7 +31,6 @@ Recommends:     lsb-release
 Recommends:     scrot
 Recommends:     xdpyinfo
 BuildArch:      noarch
-Patch1:         screenfetch-empty_fb_fix.patch 
 
 %description
 screenFetch is a "Bash Screenshot Information Tool". This handy Bash
@@ -44,8 +43,7 @@ screenshot upon displaying info, and even customizing the screenshot
 command! This script is very easy to add to and can be easily extended.
 
 %prep
-%setup -q -n screenFetch-%{version}
-%patch1 -p1
+%autosetup -n screenFetch-%{version}
 
 %build
 sed -i "s|%{_bindir}/env |/bin/|g" %{name}-dev

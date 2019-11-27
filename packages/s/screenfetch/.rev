@@ -119,4 +119,20 @@
     <comment></comment>
     <requestid>710844</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a71af6d0fe81a1a12a3188404b00153c</srcmd5>
+    <version>3.9.1</version>
+    <time>1574859355</time>
+    <user>dimstar_suse</user>
+    <comment>- Small changelog cleanup
+
+- New upstream release 3.9.1
+	* Fix GTK3 detection issues
+	* LXQt proper detection and theme detection
+	* Updated README to point to new wiki pages
+	* Some miscellanious awk fixes
+	* Miscellanious spacing fixes
+- Drop screenfetch-empty_fb_fix.patch</comment>
+    <requestid>751227</requestid>
+  </revision>
 </revisionlist>
