@@ -28,7 +28,9 @@ Conflicts:      ocaml-jbuilder
 Conflicts:      ocaml-jbuilder-debuginfo
 Conflicts:      ocaml-jbuilder-debugsource
 Source:         %{name}-%{version}.tar.xz
+Requires:       ocamlfind(compiler-libs)
 BuildRequires:  ocaml(ocaml_base_version) < 4.06
+BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocaml-rpm-macros >= 20191101
 
 %description
