@@ -1,7 +1,7 @@
 #
 # spec file for package bazel0.29
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,6 @@
 %define shortname bazel
 %define shortver 0.29
 
-#Workaround for aarch64 boo#1138529
-%ifarch aarch64
-%if 0%{?suse_version} > 1500
-%define openjdktouse java-12-openjdk-devel
-%else
-%define openjdktouse java-11-openjdk-devel
-%endif
-%else
-%define openjdktouse java-1_8_0-openjdk-devel
-%endif
-
 Name:           bazel%{shortver}
 Version:        0.29.1
 Release:        0
@@ -41,8 +30,8 @@ URL:            http://bazel.io/
 Source0:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip
 Source1:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip.sig
 Patch0:         0001-fix-build-for-Power.patch
-BuildRequires:  %{openjdktouse}
 BuildRequires:  gcc-c++
+BuildRequires:  java-1_8_0-openjdk-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  unzip
@@ -51,7 +40,7 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(zlib)
 Requires(post):	update-alternatives
 Requires(postun): update-alternatives
-Requires:       %{openjdktouse}
+Requires:       java-1_8_0-openjdk-devel
 Provides:       bazel = %{version}
 ExcludeArch:    %ix86
 
