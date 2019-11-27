@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cassandra-driver
-Version:        3.19.0
+Version:        3.20.2
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/datastax/python-driver
 Source:         https://github.com/datastax/python-driver/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
