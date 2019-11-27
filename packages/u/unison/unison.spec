@@ -12,28 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           unison
-Version:        2.48.4
+Version:        2.48.15
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
 License:        GPL-3.0+
 Group:          Productivity/Networking/Other
-Url:            http://www.cis.upenn.edu/~bcpierce/unison
-Source0:        http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-%{version}.tar.gz
-Source1:        http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-%{version}-manual.html
+Url:            https://github.com/bcpierce00/unison
+Source0:        %{name}-%{version}.tar.xz
+#https://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html
+Source1:        unison-2.48.4-manual.html
 Source2:        %{name}.desktop
 Source3:        %{name}.png
+Patch0:         Compatibility-with-OCaml-4.08.patch
+Patch1:         Fix-for-lablgtk-2.18.6.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-lablgtk2-devel < 2.18.8
+BuildRequires:  ocaml-lablgtk2-devel > 2.18.5
 BuildRequires:  ocaml-rpm-macros >= 4.03.0
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Unison is a file synchronization tool for Unix and Windows. It allows
@@ -43,7 +45,7 @@ separately, then brought up to date by propagating the changes in each
 replica to the other.
 
 %prep
-%setup -qn src
+%autosetup -p1
 
 %build
 # This package failed when testing with -Wl,-as-needed being default.
@@ -66,7 +68,6 @@ install -m 644 %{SOURCE1} unison-manual.html
 %suse_update_desktop_file -i %name Utility SyncUtility
 
 %files
-%defattr(-,root,root)
 %doc BUGS.txt CONTRIB COPYING NEWS README ROADMAP.txt unison-manual.html
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/unison.png
