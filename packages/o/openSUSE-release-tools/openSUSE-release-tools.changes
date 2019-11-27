@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Nov 26 16:07:13 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191126.ac861592:
+  * Remove linkpac code - the api is doing this (for the main package)
+  * No longer ignore exceptions on unstage
+  * Reenable the move test
+  * stagingapi: Supersedes request is from the same project
+  * Implement select --move by unselect+select
+  * Repair repair command
+  * Fix test suite for accept
+  * Fix local links
+  * Accept all stagings at the same time
+  * remove links before accepting staging projects
+  * Collect packages for all stagings and ready before accepting
+  * Fix accept command to force accept through API
+  * Move accept logic into accept_command
+  * stagingapi: just superseding old obsoleted request
+  * stagingapi: Don't do any change for excluded request
+  * One more fix for unignore command
+  * Reenable Locking (was disabled to ease testing)
+  * Added release to PUBLISH for SLE15-SP2
+  * Simplify request list calculation
+  * Remove nonfree handling
+  * stagingapi: Remove ignored requests part from rq_to_prj()
+  * unignore: use dict iteration to matching the key
+  * stagingapi: make sure the key of ignored_requests is integer type
+  * Adopt to latest API changes
+  * Disable splitter info until we find a better place to store it
+  * Speedup select: Avoid supersede calculation if pointless
+  * Fix unignore command
+  * Remove comments tests for selecting
+  * Fix check_tests - and reduce what we test there
+  * Disable move test for now
+  * Fix for frozen_enough test
+  * Fix test_add_sr not to add twice
+  * Fix rm_from_project test
+  * Fix accept: first comment then cleanup (comments)
+  * Run delayed job in the api container
+  * Adopt accept_tests: Selecting no longer leaves a comment
+  * stagingapi: Remove unneeded logging in get_package_for_request_id()
+  * suppkg_rebuild: Move to new staging api
+  * Fix supersede: we need to unstage always with new api
+  * Fix for unselect with message: need to ignore afterwards
+  * Fix for reviews (OBS issue is fixed)
+  * Fix rebuild command
+  * adi_command: another adi command fixes (#3)
+  * Fix for staging-report
+  * Fix for ignore command
+  * Setup staging workflow in tests
+  * Fix request list: the API was changed not to require status for obsolete
+  * Fix for unselect command
+  * Fix adi command for checks
+  * Optimize request_id_for_package
+  * Fixes for adi command
+  * Fix for status checks in check command
+  * Adopt to the new staging_projects api not revealing all infos
+  * Some fixes for supersede and unselect
+  * Started to fix the adi command
+  * fix for staging-installcheck
+  * Fix for unselect
+  * Fix select command
+  * Fix for check command
+  * Work on adi command
+  * Work on select command
+  * Work on accept command - not yet done
+  * Remove config command - the config isn't used any more
+  * Remove update comments - are now obs history
+  * Port unselect command to new API
+  * Adopt check command to the new staging API
+  * Register new adi projects
+
+-------------------------------------------------------------------
 Wed Nov 20 15:28:46 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191120.6abc7942:
