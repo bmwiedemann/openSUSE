@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:40:34 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable neon on armv7
+
+-------------------------------------------------------------------
 Wed Oct  9 08:49:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix Python scripts interpreter

@@ -88,7 +88,7 @@ scons os=linux build=native \
       neon=1 arch=arm64-v8a \
 %else
 %ifarch armv7l armv7hl
-      neon=0 arch=armv7a \
+      neon=1 arch=armv7a \
 %else
       neon=0 arch=x86_64 \
 %endif
