@@ -1,7 +1,7 @@
 #
 # spec file for package lonote
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,8 @@ Name:           lonote
 Version:        3.2.13
 Release:        0
 Summary:        A personal note-taking application
-License:        GPL-3.0 AND Apache-2.0
-Group:          Productivity/Office/Organizers
-Url:            https://bitbucket.org/civalin/lonote
+License:        GPL-3.0-only AND Apache-2.0
+URL:            https://bitbucket.org/civalin/lonote
 Source0:        https://bitbucket.org/civalin/lonote/get/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python3-devel
@@ -41,7 +40,7 @@ auto reloading, archiving and versioning.
 %setup -q -c -T
 tar xzf %{SOURCE0} --strip-components=1
 
-sed -i "s|#!/usr/bin/python3||" lonotelib/diff_match_patch.py # Fix non-executable script
+sed -i "s|#!%{_bindir}/python3||" lonotelib/diff_match_patch.py # Fix non-executable script
 sed -i '/^#!\/usr\/bin\/env/d' lonotelib/bottle.py
 chmod -x server/static/diff-match-patch/diff_match_patch.js \
          server/static/glyphicons/fonts/glyphiconshalflings-regular.svg
@@ -69,8 +68,8 @@ find %{buildroot} -type f -name ".hgempty" -delete
 %fdupes %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc README.rst doc/{Apache_License,CHANGELOG.rst,LICENSE.rst}
+%license doc/{Apache_License,CHANGELOG.rst,LICENSE.rst}
+%doc README.rst
 %{_bindir}/lonote
 %{python3_sitelib}/*
 %{_datadir}/applications/%{name}.desktop
