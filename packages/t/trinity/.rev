@@ -600,4 +600,12 @@
     <comment>fix build</comment>
     <requestid>749253</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>7011464d0fde93fca8d633d386ff1997</srcmd5>
+    <version>1.9+git.20191119</version>
+    <time>1574859348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>751195</requestid>
+  </revision>
 </revisionlist>

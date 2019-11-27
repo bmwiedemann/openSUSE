@@ -16,17 +16,15 @@
 #
 
 
-%define version_unconverted 1.9+git.20190801
+%define version_unconverted 1.9+git.20191119
 Name:           trinity
-Version:        1.9+git.20190801
+Version:        1.9+git.20191119
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            http://codemonkey.org.uk/projects/trinity/
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-modify_ldt-include-linux-types.h-before-ASSEMBLY-1.patch
-Patch1:         0001-syscalls-remove-arch_prctl-from-x86_32.patch
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls

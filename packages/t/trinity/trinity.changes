@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 08:00:22 UTC 2019 - jslaby@suse.com
+
+- Update to version 1.9+git.20191119:
+  * syscalls: remove arch_prctl from x86_32
+  * modify_ldt: include linux/types.h before ASSEMBLY == 1
+- drop 0001-modify_ldt-include-linux-types.h-before-ASSEMBLY-1.patch and
+  0001-syscalls-remove-arch_prctl-from-x86_32.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Nov 18 09:13:22 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - add 0001-modify_ldt-include-linux-types.h-before-ASSEMBLY-1.patch and
