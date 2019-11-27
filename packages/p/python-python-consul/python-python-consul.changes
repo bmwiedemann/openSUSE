@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Nov  5 11:49:40 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.1.0
+  * add support for nodemeta to catalog and health end points
+  * update Check.script to use args, as Consul 1.1 has dropped the script
+    parameter
+  * Support for Python 3.4 dropped
+  * Add support for Consul 1.0.0
+  * Expose all 400 errors and add tests for common callback handler
+  * Add header parameter to http check
+  * Add basic Transaction HTTP API support
+  * Fix invalid url error when specifying credentials via host (Issue #167)
+  * Add a common base client for shared functionality between different HTTP clients
+  * Fix request quoting issue
+  * Fix installation issue due to aiohttp only being available for Python>=3.4.2
+  * Added support for current release of aiohttp
+  * Improved Tornado example
+  * Add and use ACL token in Event.fire
+  * Add client side cert support
+  * Add token params to catalog registe
+  * Add support for DeregisterCriticalServiceAfter
+  * Improve reliability of test suite
+  * Update CI: Add py35 and py36 to tests
+
+-------------------------------------------------------------------
+Sat Mar  3 18:40:40 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * don't use python_module for Requires
+
+-------------------------------------------------------------------
+Tue Jul 11 06:02:21 UTC 2017 - tbechtold@suse.com
+
+- Initial package (version 0.7.0)
