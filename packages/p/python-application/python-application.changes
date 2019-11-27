@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sun Nov 17 18:34:40 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Convert inline changelog to python-application.changes
+- Drop patch (obsolete)
+  * python-application-1.0.9.dif
+
+-------------------------------------------------------------------
+Thu Sep 27 00:00:00 UTC 2007 - poeml@suse.de
+
+- fixed build, adding python-application-1.0.9.dif
+
+-------------------------------------------------------------------
+Mon Sep 24 00:00:00 UTC 2007 - Peter Nixon
+
+- Initial release
+
+
