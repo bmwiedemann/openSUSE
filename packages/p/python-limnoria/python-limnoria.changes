@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 17 19:01:04 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to version 2019-11-09:
+  + Fix log on SASL failure.
+  + Math: Rewrite calc functions with a proper evaluator. 
+  + Log SASL mechanism on failure. Closes GH-1014. 
+  + Config: Add : prefix to network-specific values listed by 'config list'.
+  + Web: Catch more errors in getTitle.
+  + Split 'CAP REQ' commands to not exceed 512 bytes.
+  + Reset capability set state on reconnection.
+  + Fix conditional on CTCP in urlSnarfer
+  + Use a real invalid email in supybot.authors.unknown
+  + Don't repeat nick in supybot.Author if nick and name are the same
+  + regexp_wrapper: return None instead of False when search times out
+
+-------------------------------------------------------------------
 Wed Sep 11 07:47:17 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2019-09-08:
