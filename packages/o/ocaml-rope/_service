@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/Chris00/ocaml-rope.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <!-- 0.6.2 -->
+    <param name="revision">a7409da8758bb3b5f6213099c0997cf537e22a86</param>
+    <param name="filename">ocaml-rope</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

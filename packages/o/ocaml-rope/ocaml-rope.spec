@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,11 @@ Release:        0
 Summary:        Ropes ("heavyweight strings") for OCaml
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
-
-URL:            http://rope.forge.ocamlcore.org/
-Source0:        https://github.com/Chris00/ocaml-rope/archive/%{version}/%{name}-%{version}.tar.gz
-
+URL:            https://github.com/Chris00/ocaml-rope
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20191101
 BuildRequires:  ocamlfind(benchmark)
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(compiler-libs.toplevel)
@@ -57,6 +55,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+dune_release_pkgs='rope'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -68,8 +67,6 @@ developing applications that use %{name}.
 %ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE.md
-%doc README.md
 
 %files devel -f %{name}.files.devel
 
