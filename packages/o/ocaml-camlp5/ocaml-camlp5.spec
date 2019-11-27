@@ -29,6 +29,7 @@ URL:            https://camlp5.github.io/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(compiler-libs)
 
 %description
 Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.

@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746691</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6732f85572d7be106c90b455ed5e0bf5</srcmd5>
+    <version>7.10</version>
+    <time>1574859235</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-libs-devel to BuildRequires (bsc#1156934)</comment>
+    <requestid>750772</requestid>
+  </revision>
 </revisionlist>
