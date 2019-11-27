@@ -535,6 +535,17 @@ bazel build --repository_cache=%{bz_cachdir} --ignore_unsupported_sandboxing \
 bazel-bin/tensorflow/tools/pip_package/build_pip_package %{_topdir}/%{name}-%{version}
 bazel build -c opt //tensorflow:libtensorflow.so
 bazel build -c opt //tensorflow:libtensorflow_cc.so
+
+# Generate protobuf (for armNN) - https://github.com/ARM-software/armnn/blob/branches/armnn_19_08/scripts/generate_tensorflow_protobuf.sh
+export TF_PROTO_FILES=tensorflow/contrib/makefile/tf_proto_files.txt
+export OUTPUT_DIR=./pb/
+mkdir -p $OUTPUT_DIR
+for i in `cat $TF_PROTO_FILES`; do
+    protoc $i \
+      --proto_path=. \
+      --proto_path=%{_includedir} \
+      --cpp_out=$OUTPUT_DIR
+done
 %endif
 
 %install
@@ -611,6 +622,11 @@ if [ expr [ module-info mode load ] || [module-info mode display ] ] {
 
 EOF
 %endif
+
+# Install generated protobuf
+export OUTPUT_DIR=./pb/
+find -name *.pb.*
+cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow/include/tensorflow/
 
 # %%{is_lite}
 %endif
