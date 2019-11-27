@@ -1185,4 +1185,14 @@
   * Bug fixes.</comment>
     <requestid>750530</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>d15ffa4be3381caaea6fafc3fe030a12</srcmd5>
+    <version>1.2.16</version>
+    <time>1574859329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.16:
+  * Fix a crash (glgo#World/lollypop#2106).
+  * Handle radios in lyrics view (glgo#World/lollypop#2131).</comment>
+    <requestid>751140</requestid>
+  </revision>
 </revisionlist>
