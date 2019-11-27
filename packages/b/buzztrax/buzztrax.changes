@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov 26 09:21:42 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to git snapshot version 0.10.2+git20191028 includes
+  Bernard's reproducible build: Use NEWS date instead of build date
+- Upstream changes:
+  *core:fix format strings in logger
+  *tests:add init handling to fuzzer and update docs
+  *tests:add a fuzzer for reading song files
+  *test:make the test helper builable with older gtk versions
+  *tests:remove unused code
+  *Use NEWS date instead of build date
+  *test:set a GdkDevice in the synthetic events to silence a warning
+  *tests:swap out the screenshoting code.
+  *tests:use top_abs_* more often
+  *tests:update location of valgrind suppressions
+  *tests:extract local var for readability
+  *tests:more debugging for the flaky screenshotting
+  *tests:fix action signal emission.
+  *tests:test the analyzer dialog for the master
+  *sink-bin:guard some properties with a class check
+  *tests:fix bad property in handwritten song
+  *tests:move the call to get the window size out of the ifdef
+  *icons:add the apps dir
+  *tests:disable the cairo hack
+  *help:only copy the images
+  *tests:add ref_sink() before releasing to fix a warning.
+  *edit/tools:extract some common code into a help and add tests
+  *tests:add a workaround for snapshotting images
+  *help:fix typo in path for image generation target
+  *tests:udpate new manual doc path for tests
+  *help:fix make check target
+
+-------------------------------------------------------------------
 Sun Aug 11 08:14:05 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Update to git snapshot version 0.10.2+git20190809 which no longer

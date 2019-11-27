@@ -16,7 +16,7 @@
 #
 
 
-%define rev eb51b04c45f075577f71199d3a62c8fc6c5996f2
+%define rev e08d73311d45b8bd73cbbd1fe95bc95b5ad52d2f
 %define relver 0.11.0
 
 %define gir gobject-introspection-1.0
@@ -31,7 +31,7 @@
 %define glib_version 2.32.0
 %define gst_version 1.2.0
 Name:           buzztrax
-Version:        0.10.2+git20190809
+Version:        0.10.2+git20191028
 Release:        0
 Summary:        A music studio inspired by Buzz
 License:        GPL-2.0-or-later
@@ -51,13 +51,16 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  shared-mime-info
+BuildRequires:  yelp-devel
+BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(%{gir})
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(clutter-gtk-1.0)
-#BuildRequires:  pkgconfig(fluidsynth)
-BuildRequires:  yelp-devel
-BuildRequires:  yelp-tools
+#Doesn't build with fluidsynth 2 yet
+%if 0%{?suse_version} <= 1500
+BuildRequires:  pkgconfig(fluidsynth)
+%endif
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
@@ -76,6 +79,8 @@ BuildRequires:  pkgconfig(orc-0.4)
 BuildRequires:  pkgconfig(pango)
 Requires:       %{name}-plugins = %{version}
 Requires:       gstreamer-1_0-plugins-buzztrax = %{version}
+Requires:       yelp
+Recommends:     gstreamer-plugins-good-jack
 # We provide appdata(buzztrax-edit.appdata.xml) to prevent installation system error see:
 # boo#961304 which is marked duplicate of boo#952304
 #Provides:       appdata(buzztrax-edit.appdata.xml)
@@ -223,6 +228,9 @@ export CXXFLAGS="$CFLAGS"
 /bin/sh ./autogen.sh --noconfigure
 %configure --disable-static \
     --disable-schemas-compile \
+    --disable-update-mime \
+    --disable-update-desktop \
+    --disable-update-icon-cache \
     --disable-silent-rules \
     --enable-deprecated \
     --enable-debug \
@@ -255,17 +263,6 @@ typelib-1_0-BuzztraxIc-1_1\n
 \t+^%{typelibdir}/BuzztraxIc-%{girsoname}.typelib$\n
 typelib-1_0-BuzztraxCore-1_1\n
 \t+^%{typelibdir}/BuzztraxCore-%{girsoname}.typelib$\n' > %{_sourcedir}/baselibs.conf
-
-# Anything that doesn't work goes here
-%if 1 == 0
-%pre -f %{name}.schemas_pre
-
-%posttrans -f %{name}.schemas_posttrans
- -f %{name}.schemas_list
-
-%preun -f %{name}.schemas_preun
-
-%endif
 
 %post
 %glib2_gsettings_schema_post

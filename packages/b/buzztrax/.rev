@@ -125,4 +125,12 @@ Fix gcc8 build failure with -Wno-error=restrict.
     <comment></comment>
     <requestid>722311</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ccd9a95e7ff0c2759c42a91342ec2601</srcmd5>
+    <version>0.10.2+git20191028</version>
+    <time>1574859251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751045</requestid>
+  </revision>
 </revisionlist>
