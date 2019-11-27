@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Nov 16 17:24:43 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * python3 only
+
+- update to version 6.2.0:
+  * Added
+    + Support for Python 3.8 (@hugovk, issue #104)
+  * Changed
+    + index_natsorted internally now uses tuples for index-element
+      pairs instead of lists
+    + Added a TOC to the README
+    + Python 3.4 is no longer included in testing
+  * Fixed
+    + Pin testing dependencies to prevent CI breaking due to
+      third-party library changes
+  * Removed
+    + Introduction page in documentation
+  * Removed
+    + Support for Python 2
+
+-------------------------------------------------------------------
+Sun Nov 10 16:44:50 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.1.0:
+  * Added
+    + Expose numeric_regex_chooser as a public function for ease in
+      making key functions
+    + Example in the documentation on how to sort numbers with units
+    + Automated testing support for macos and Windows (issue #91)
+  * Changed
+    + Update CHANGELOG format to style from
+      https://keepachangelog.com/ (issue #92)
+  * Fixed
+    + Removed dependency on sudo in TravisCI configuration (@hugovk,
+      issue #99)
+    + Documentation typos (@jdufresne, issue #94) (@cpburnz, issue
+      #95)
+
+-------------------------------------------------------------------
 Sun Feb 10 22:29:18 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:

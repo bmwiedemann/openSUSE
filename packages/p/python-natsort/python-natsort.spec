@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-natsort
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        Natural sorting in Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/SethMMorton/natsort
 Source:         https://files.pythonhosted.org/packages/source/n/natsort/natsort-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
@@ -38,9 +38,6 @@ Requires:       python-setuptools
 Recommends:     python-PyICU >= 1.0.0
 Recommends:     python-fastnumbers >= 2.0.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python2-pathlib
-%endif
 %python_subpackages
 
 %description
@@ -70,9 +67,9 @@ pytest-%{$python_bin_suffix}
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG.rst
-%python3_only %{_mandir}/man1/natsort.1%{ext_man}
-%python3_only %{_bindir}/natsort
+%doc README.rst CHANGELOG.md
+%{_mandir}/man1/natsort.1%{ext_man}
+%{_bindir}/natsort
 %{python_sitelib}/natsort*
 
 %changelog
