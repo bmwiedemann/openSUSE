@@ -509,8 +509,11 @@ install -D -m 0644 u-boot-with-spl.sfp %{buildroot}%{uboot_dir}/u-boot-with-spl.
 install -D -m 0644 spl/boot.bin %{buildroot}%{uboot_dir}/boot.bin
 %endif
 %if "%{name}" == "u-boot-rpi3"
-echo -e "# Boot in AArch64 mode\narm_control=0x200" > %{buildroot}%{uboot_dir}/ubootconfig.txt
+echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootconfig.txt
 echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.txt
+%endif
+%if "%{name}" == "u-boot-rpi4" || "%{name}" == "u-boot-rpiarm64"
+echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootconfig.txt
 %endif
 
 %if 0%{?is_rpi}

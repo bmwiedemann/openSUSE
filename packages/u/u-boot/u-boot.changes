@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 16:47:54 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- set boot option to arm64 in ubootconfig.txt. This allows us to
+  theoretically build U-Boot for RPi3/4 with 32 bit.
+
+-------------------------------------------------------------------
 Mon Nov 25 14:10:58 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
 
 - RPi3 revert ubootconfig.txt changes to fix tumbleweed update path

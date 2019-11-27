@@ -1371,4 +1371,12 @@ boundary checks.
     <comment></comment>
     <requestid>750810</requestid>
   </revision>
+  <revision rev="116" vrev="7">
+    <srcmd5>36da7318a1656cfbfc784266f0dcfb5b</srcmd5>
+    <version>2019.10</version>
+    <time>1574859352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751224</requestid>
+  </revision>
 </revisionlist>
