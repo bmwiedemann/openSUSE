@@ -12,15 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-# Ignore all generated modules *except* CalendarLib, since everything
-# now appears in that namespace.
-%global __ocaml_requires_opts -i Calendar_builder -i Calendar_sig -i Date -i Date_sig -i Fcalendar -i Ftime -i Period -i Printer -i Time -i Time_sig -i Time_Zone -i Utils -i Version
-%global __ocaml_provides_opts -i Calendar_builder -i Calendar_sig -i Date -i Date_sig -i Fcalendar -i Ftime -i Period -i Printer -i Time -i Time_sig -i Time_Zone -i Utils -i Version
-
+%bcond_with ocaml_do_dune_runtest
 Name:           ocaml-calendar
 Version:        2.04
 Release:        0
@@ -28,16 +24,16 @@ Release:        0
 Summary:        Objective Caml library for managing dates and times
 License:        LGPL-2.0
 Group:          Development/Languages/OCaml
-Url:            http://calendar.forge.ocamlcore.org/
-Source0:        http://forge.ocamlcore.org/frs/download.php/1481/calendar-2.04.tar.gz
-Patch1:         calendar-2.04-enable-debug.patch
-Patch2:         ocaml-calendar-buildcompare.patch
-BuildRequires:  gawk
-BuildRequires:  ocaml >= 4.00.1
-BuildRequires:  ocaml-findlib-devel >= 1.3.3-3
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Url:            https://github.com/ocaml-community/calendar
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  ocaml
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(re)
+BuildRequires:  ocamlfind(unix)
+%if %{with ocaml_do_dune_runtest}
+BuildRequires:  ocamlfind(alcotest)
+%endif
 
 %description
 Objective Caml library for managing dates and times.
@@ -52,48 +48,26 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n calendar-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
-./configure --libdir=%{_libdir}
-make %{?_smp_mflags}
-make %{?_smp_mflags} doc
-
-mv TODO TODO.old
-iconv -f iso-8859-1 -t utf-8 < TODO.old > TODO
+sed -i~ '/system date/d' src/dune
+diff -u "$_"~ "$_" && exit 1
+dune_release_pkgs='calendar'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-export DESTDIR=%{buildroot}
-export OCAMLFIND_DESTDIR=%{buildroot}%{_libdir}/ocaml
-mkdir -p $OCAMLFIND_DESTDIR
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root,-)
-%doc CHANGES README TODO LGPL COPYING
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
+%if %{with ocaml_do_dune_runtest}
+%check
+%ocaml_dune_test
 %endif
 
-%files devel
-%defattr(-,root,root,-)
-%doc CHANGES README TODO LGPL COPYING doc/*
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%{_libdir}/ocaml/*/*.o
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmo
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files -f %{name}.files
+
+%files devel -f %{name}.files.devel
 
 %changelog

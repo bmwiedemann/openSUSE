@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/anuragsoni/calendar.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">2.04</param>
+    <!-- 1.6 -->
+    <param name="revision">pervasives-deprecated-408</param>
+    <param name="filename">ocaml-calendar</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

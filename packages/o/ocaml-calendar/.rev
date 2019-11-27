@@ -19,4 +19,15 @@
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>512517</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>174956e8ac3060c43b255896dde42ddf</srcmd5>
+    <version>2.04</version>
+    <time>1574859174</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current dune macros
+- Use _service file
+- Remove obsolete calendar-2.04-enable-debug.patch and
+  ocaml-calendar-buildcompare.patch</comment>
+    <requestid>748357</requestid>
+  </revision>
 </revisionlist>
