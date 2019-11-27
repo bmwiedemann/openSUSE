@@ -94,4 +94,39 @@
   * Use selection foreground color for underlines as well (#1982)</comment>
     <requestid>734028</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dd1fa1815baf622f670a747466082f0d</srcmd5>
+    <version>0.15.0</version>
+    <time>1574859344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.0:
+  * Add a new action detach_window that can be used to move the current window
+    into a different tab (#1310)
+  * Add a new action launch that unifies launching of processes in new kitty
+    windows/tabs.
+  * Add a new style powerline for tab bar rendering, see tab_bar_style (#2021)
+  * Allow changing colors by mapping a keyboard shortcut to read a kitty config
+    file with color definitions. See the FAQ for details (#2083)
+  * hints kitten: Allow completely customizing the matching and actions
+    performed by the kitten using your own script (#2124)
+  * Wayland: Fix key repeat not being stopped when focus leaves window. This is
+    expected behavior on Wayland, apparently (#2014)
+  * When drawing unicode symbols that are followed by spaces, use multiple
+    cells to avoid resized or cut-off glyphs (#1452)
+  * diff kitten: Allow diffing remote files easily via ssh (#727)
+  * unicode input kitten: Add an option kitty +kitten unicode_input
+    --emoji-variation to control the presentation variant of selected emojis
+    (#2139)
+  * Add specialised rendering for a few more box powerline and unicode symbols
+    (#2074 and #2021)
+  * Add a new socket only mode for allow_remote_control. This makes it possible
+    for programs running on the local machine to control kitty but not programs
+    running over ssh.
+  * hints kitten: Allow using named groups in the regular expression. The named
+    groups are passed to the invoked program for further processing.
+  * Fix a regression in 0.14.5 that caused rendering of private use glyphs with
+    and without spaces to be identical (#2117)
+  * Wayland: Fix incorrect scale used when first creating an OS window (#2133)</comment>
+    <requestid>751189</requestid>
+  </revision>
 </revisionlist>
