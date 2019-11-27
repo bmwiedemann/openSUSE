@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-lssa
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  lssa
 Name:           octave-forge-%{octpkg}
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Least squares spectral analysis for Octave
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# PATCh-FIX-UPSTREAM lssa-complex-real-imag.patch -- https://savannah.gnu.org/bugs/?48425
-Patch1:         lssa-complex-real-imag.patch
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 3.6.0
@@ -39,7 +37,6 @@ This is part of the Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch1 -p0
 %octave_pkg_src
 
 %build
