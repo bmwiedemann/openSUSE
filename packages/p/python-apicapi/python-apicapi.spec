@@ -1,7 +1,7 @@
 #
 # spec file for package python-apicapi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,11 @@ Version:        1.6.0
 Release:        0
 Summary:        Python interface to the APIC REST API
 License:        Apache-2.0
-Group:          Development/Languages/Python
-Url:            http://github.com/noironetworks/apicapi/
+URL:            https://github.com/noironetworks/apicapi/
 Source:         https://github.com/noironetworks/apicapi/archive/%{version}.tar.gz
-Patch1:         python-apicapi-disableparseconfigtest.patch
 # https://github.com/noironetworks/apicapi/pull/85
 Source99:       http://www.apache.org/licenses/LICENSE-2.0.txt
+Patch1:         python-apicapi-disableparseconfigtest.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module click >= 5.1}
