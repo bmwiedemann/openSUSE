@@ -19,4 +19,19 @@
   * Updated documentation interface (#241).</comment>
     <requestid>733401</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f98facde304d4138c9eed1eb1c179569</srcmd5>
+    <version>0.7.8</version>
+    <time>1574859106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.7.8
+  * Fuzzy command name search (#247, #122).
+  * Configure DepHell with environment variables (#248).
+  * Colored JSON output (#262, #260, #205).
+  * Table output with --table (#277, #267, #206).
+  * New attrs (#261).
+  * ruamel.yaml instead of pyyaml (#275)
+  * pip 19.3.1 support</comment>
+    <requestid>745368</requestid>
+  </revision>
 </revisionlist>

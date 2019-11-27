@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        Dependency resolution for Python
 License:        MIT
@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Cerberus
 Requires:       python-Jinja2
-Requires:       python-PyYAML
 Requires:       python-aiohttp
 Requires:       python-appdirs
 Requires:       python-attrs
@@ -50,12 +49,16 @@ Requires:       python-dephell-versioning
 Requires:       python-docker
 Requires:       python-dockerpty
 Requires:       python-fissix
+Requires:       python-flatdict
 Requires:       python-html5lib
 Requires:       python-m2r
 Requires:       python-packaging
 Requires:       python-pip >= 18.0
+Requires:       python-pygments
 Requires:       python-requests
+Requires:       python-ruamel.yaml
 Requires:       python-setuptools
+Requires:       python-tabulate
 Requires:       python-tomlkit
 Requires:       python-yaspin
 Recommends:     git-core
@@ -68,7 +71,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Cerberus}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module aioresponses}
 BuildRequires:  %{python_module appdirs}
@@ -87,14 +89,18 @@ BuildRequires:  %{python_module dephell-versioning}
 BuildRequires:  %{python_module dockerpty}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module fissix}
+BuildRequires:  %{python_module flatdict}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module m2r}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip >= 18.0}
+BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module tomlkit}
 BuildRequires:  %{python_module yaspin}
 BuildRequires:  git-core

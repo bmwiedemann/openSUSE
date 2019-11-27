@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 25 02:02:16 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.7.8
+  * Fuzzy command name search (#247, #122).
+  * Configure DepHell with environment variables (#248).
+  * Colored JSON output (#262, #260, #205).
+  * Table output with --table (#277, #267, #206).
+  * New attrs (#261).
+  * ruamel.yaml instead of pyyaml (#275)
+  * pip 19.3.1 support
+
+-------------------------------------------------------------------
 Thu Sep 26 10:52:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7.7:
