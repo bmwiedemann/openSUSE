@@ -116,4 +116,12 @@ See http://drush.ws, the homepage for the drush project.</comment>
     <comment></comment>
     <requestid>742961</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>21fcf56f3ad0a8d78ace0ef49874da9e</srcmd5>
+    <version>8.3.2</version>
+    <time>1574859341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751166</requestid>
+  </revision>
 </revisionlist>
