@@ -269,4 +269,15 @@
     <comment>- Require lablgtk2 &lt; 2.18.8</comment>
     <requestid>744822</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d8edd8d37f270f24345d87e634397f12</srcmd5>
+    <version>2.48.15</version>
+    <time>1574859170</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.48v4, via _service file
+- Add Compatibility-with-OCaml-4.08.patch
+- Add Fix-for-lablgtk-2.18.6.patch
+- Require lablgtk2 &gt; 2.18.5</comment>
+    <requestid>748254</requestid>
+  </revision>
 </revisionlist>
