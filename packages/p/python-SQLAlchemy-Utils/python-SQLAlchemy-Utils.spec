@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-SQLAlchemy-Utils
-Version:        0.34.2
+Version:        0.35.0
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/kvesteri/sqlalchemy-utils
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy-Utils/SQLAlchemy-Utils-%{version}.tar.gz
 BuildRequires:  %{python_module Babel >= 1.3}
