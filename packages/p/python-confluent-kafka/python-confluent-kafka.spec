@@ -1,7 +1,7 @@
 #
 # spec file for package python-confluent-kafka
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-confluent-kafka
-Version:        0.11.6
+Version:        1.1.0
 Release:        0
 Summary:        Confluent's Apache Kafka client for Python
 License:        Apache-2.0
@@ -49,7 +49,7 @@ Confluent's Apache Kafka client for Python
 
 %prep
 %setup -q -n confluent-kafka-%{version}
-%patch1 -p1
+%patch1
 
 %build
 export CFLAGS="%{optflags}"

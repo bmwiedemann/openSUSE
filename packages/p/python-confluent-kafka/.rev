@@ -7,4 +7,28 @@
     <comment></comment>
     <requestid>655554</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c48bb297cf760c61ebb2e54c6b216b06</srcmd5>
+    <version>1.1.0</version>
+    <time>1574859112</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * confluent-kafka-python is based on librdkafka v1.1.0, see the librdkafka v1.1.0 release notes for a complete list of changes, enhancements, fixes and upgrade considerations.
+  * ssl.endpoint.identification.algorithm=https (off by default) to validate the broker hostname matches the certificate. Requires OpenSSL &gt;= 1.0.2(included with Wheel installations))
+  * Improved GSSAPI/Kerberos ticket refresh
+  * Confluent monitoring interceptor package bumped to v0.11.1 (#634)
+  New configuration properties:
+  * ssl.key.pem - client's private key as a string in PEM format
+  * ssl.certificate.pem - client's public key as a string in PEM format
+  * enable.ssl.certificate.verification - enable(default)/disable OpenSSL's builtin broker certificate verification.
+  * enable.ssl.endpoint.identification.algorithm - to verify the broker's hostname with its certificate (disabled by default).
+  * Add new rd_kafka_conf_set_ssl_cert() to pass PKCS#12, DER or PEM certs in (binary) memory form to the configuration object.
+  * The private key data is now securely cleared from memory after last use.
+  * SASL GSSAPI/Kerberos: Don't run kinit refresh for each broker, just per client instance.
+  * SASL GSSAPI/Kerberos: Changed sasl.kerberos.kinit.cmd to first attempt ticket refresh, then acquire.
+  * SASL: Proper locking on broker name acquisition.
+  * Consumer: max.poll.interval.ms now correctly handles blocking poll calls, allowing a longer poll timeout than the max poll interval.
+  * configure: Fix libzstd static lib detection</comment>
+    <requestid>745369</requestid>
+  </revision>
 </revisionlist>

@@ -1,12 +1,10 @@
-Index: confluent-kafka-0.11.6/setup.py
-===================================================================
---- confluent-kafka-0.11.6.orig/setup.py
-+++ confluent-kafka-0.11.6/setup.py
-@@ -48,7 +48,6 @@ setup(name='confluent-kafka',
+--- setup.py
++++ setup.py
+@@ -45,7 +45,6 @@
        url='https://github.com/confluentinc/confluent-kafka-python',
        ext_modules=[module],
        packages=find_packages(exclude=("tests", "tests.*")),
 -      data_files=[('', ['LICENSE.txt'])],
        install_requires=INSTALL_REQUIRES,
        extras_require={
-           'avro': ['fastavro', 'requests', avro],
+           'avro': [
