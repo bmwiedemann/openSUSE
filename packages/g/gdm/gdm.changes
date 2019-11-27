@@ -289,6 +289,8 @@ Wed Apr 17 03:29:51 UTC 2019 - bjorn.lie@gmail.com
   + Add more debug logging.
   + Updated translations.
 - Drop gdm-CVE-2018-14424.patch: Fixed upstream.
+- Drop gdm-quit-plymouth-when-xdmcp-is-the-only-allowed-connection.patch:
+  Fixed upstream
 - Add gdm-ignore-spurios-SeatNew-signal.patch: Fix crashes.
 
 -------------------------------------------------------------------
@@ -417,6 +419,17 @@ Fri Apr 13 10:07:57 UTC 2018 - bjorn.lie@gmail.com
   + Properly stop boot splash even if local login screen is
     disabled (bsc#1083646 bgo#795120).
   + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 10 23:58:19 UTC 2018 - yfjiang@suse.com
+
+- Add gdm-quit-plymouth-when-xdmcp-is-the-only-allowed-connection.patch:
+  gdm is responsible to kill plymouth by spawning the "plymouth
+  quit" subprocesses in gdm-manager. The current code pathes of
+  quiting plymouth can never be reached when xdmcp is the only
+  connection allowed. The patch handles this edge case by quit
+  plymouth immediately when the condition is detected (bsc#1083646
+  bgo#795120).
 
 -------------------------------------------------------------------
 Sun Apr  8 12:33:28 UTC 2018 - fezhang@suse.com

@@ -1655,4 +1655,12 @@
     <comment> (forwarded request 749473 from dimstar)</comment>
     <requestid>750919</requestid>
   </revision>
+  <revision rev="221" vrev="4">
+    <srcmd5>430020c831e5c55c946e15c0250df215</srcmd5>
+    <version>3.34.1</version>
+    <time>1574867118</time>
+    <user>dimstar_suse</user>
+    <comment>Complement a missing of legacy Changelog entry that was in SLE. (forwarded request 751169 from yfjiang)</comment>
+    <requestid>751360</requestid>
+  </revision>
 </revisionlist>
