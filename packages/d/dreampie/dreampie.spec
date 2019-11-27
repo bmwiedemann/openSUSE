@@ -1,7 +1,7 @@
 #
 # spec file for package dreampie
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,8 @@ Name:           dreampie
 Version:        1.2.1
 Release:        0
 Summary:        Multi-pane Python shell
-License:        GPL-3.0+
-Group:          Development/Languages/Python
-Url:            http://www.dreampie.org/
+License:        GPL-3.0-or-later
+URL:            http://www.dreampie.org/
 Source:         https://github.com/noamraph/dreampie/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM https://github.com/noamraph/dreampie/pull/69
 Patch0:         appdata.patch
@@ -31,9 +30,7 @@ BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 Requires:       python-gtk
 Requires:       python-gtksourceview
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%py_requires
 
 %description
 DreamPie is a Python shell and features a new concept for an
@@ -76,7 +73,7 @@ cat  %{buildroot}%{_datadir}/applications/dreampie.desktop
 %desktop_database_postun
 
 %files -f filelist
-%doc dulwich/AUTHORS dulwich/COPYING dulwich/README COPYING README.md
-%defattr(-,root,root)
+%license dulwich/COPYING COPYING
+%doc dulwich/AUTHORS dulwich/README README.md
 
 %changelog
