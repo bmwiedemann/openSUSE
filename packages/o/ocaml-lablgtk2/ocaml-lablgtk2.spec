@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Version:        2.18.5
+Version:        2.18.8
 Release:        0
 %{?ocaml_preserve_bytecode}
 %global __ocaml_requires_opts -i GtkSourceView_types -i GtkSourceView2_types
 Name:           ocaml-lablgtk2
-Source0:        lablgtk-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  gtk2-devel
 BuildRequires:  gtksourceview2-devel
 BuildRequires:  gtkspell-devel
@@ -29,10 +29,9 @@ BuildRequires:  libglade2-devel
 BuildRequires:  libgnomecanvas-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  ocaml
-BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-lablgl-devel
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
+BuildRequires:  ocaml-rpm-macros >= 20191101
 BuildRequires:  xorg-x11
 BuildRequires:  zlib-devel
 Requires:       ocaml
@@ -40,10 +39,9 @@ Provides:       lablgtk2 = %{version}
 Obsoletes:      lablgtk2 < %{version}
 Provides:       ocaml-lablgtk = %{version}
 Obsoletes:      ocaml-lablgtk < %{version}
-Url:            http://lablgtk.forge.ocamlcore.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Url:            https://github.com/garrigue/lablgtk
 Summary:        An Objective Caml Interface to gtk2+
-License:        LGPL-2.1+
+License:        LGPL-2.1-only
 Group:          Development/Languages/OCaml
 
 %description
@@ -52,16 +50,6 @@ strongly typed, yet very comfortable, object-oriented interface to
 GTK2+. Objective Caml threads are supported, including for the top
 level, which allows the interactive use of the library.
 
-
-
-Authors:
---------
-    Jacques Garrigue <garrigue@kurims.kyoto-u.ac.jp>
-    Benjamin Monate  <monate@lix.polytechnique.fr>
-    Olivier Andrieu  <oandrieu@nerim.net>
-    Jun Furuse       <Jun.Furuse@inria.fr>
-    Hubert Fauque    <hubert.fauque@wanadoo.fr>
-    Koji Kagawa      <kagawa@eng.kagawa-u.ac.jp>
 
 %package devel
 Summary:        An Objective Caml interface to gtk2+
@@ -82,24 +70,13 @@ strongly typed, yet very comfortable, object-oriented interface to
 GTK2+. Objective Caml threads are supported, including for the top
 level, which allows for interactive use of the library.
 
-
-
-Authors:
---------
-    Jacques Garrigue <garrigue@kurims.kyoto-u.ac.jp>
-    Benjamin Monate  <monate@lix.polytechnique.fr>
-    Olivier Andrieu  <oandrieu@nerim.net>
-    Jun Furuse       <Jun.Furuse@inria.fr>
-    Hubert Fauque    <hubert.fauque@wanadoo.fr>
-    Koji Kagawa      <kagawa@eng.kagawa-u.ac.jp>
-
 %prep
-%setup -q -n lablgtk-%{version}
+%autosetup -p1
+
+%build
 find -name ".cvsignore" -print -delete
 # fix README file executable permissions
 chmod a-x README
-
-%build
 export CFLAGS="$RPM_OPT_FLAGS"
 make configure 
 %configure --with-gnomecanvas
@@ -118,44 +95,17 @@ popd
 # Remove ld.conf (part of main OCaml dist).
 rm $RPM_BUILD_ROOT%{_libdir}/ocaml/ld.conf
 #
-mkdir -vp %{buildroot}/etc/ld.so.conf.d/
-tee %{buildroot}/etc/ld.so.conf.d/%{name}.conf <<_EOF_
-%{_libdir}/ocaml/lablgtk2
-_EOF_
-#
+%ocaml_create_file_list
 
 %post   -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
-%files
-%defattr(-, root, root)
-%doc CHANGES COPYING README examples
-/etc/ld.so.conf.d/*.conf
+%files -f %{name}.files
+%doc CHANGES README
 %{_bindir}/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
-%{_libdir}/ocaml/*/*.so
 
-%files devel
-%defattr(-, root, root)
-%doc examples
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/*.a
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%{_libdir}/ocaml/*/*.o
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmo
-%{_libdir}/ocaml/*/*.h
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 %{_libdir}/ocaml/*/propcc
 %{_libdir}/ocaml/*/varcc
 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
+
+- Require current rpm macros
+- Use _service file
+
+-------------------------------------------------------------------
+Wed Oct 30 21:56:14 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.18.6.
+  * finish transition for applications subdirectory.
+  * prepare for 4.06: -safe-string transition and warnings.
+- Update to version 2.18.7.
+  * Support property "expand" of GtkTreeViewColumn.
+  * ensure we compile on ocaml 4.05.
+  * put examples explicitly in the public domain.
+  * In GToolbox, add support for declaring dialogs transient for a
+    parent.
+  * Add some properties to GText.tag
+  * Add require for threads in META
+- Update to version 2.18.8.
+  * remove -warn-error to allow compilation on future versions of
+    ocaml
+  * mark Gdk.PointArray.t and Gdk.SegmentArray.t as [@@ boxed]
+- Change License to LGPL-2.1-only, as indicated by file headers.
+- Remove non-free applications subdirectory.
+
+-------------------------------------------------------------------
 Fri May 18 23:52:25 UTC 2018 - bjorn.lie@gmail.com
 
 - Drop optional libgnomeui-devel BuildRequires.

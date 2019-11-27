@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/garrigue/lablgtk.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">2.18.8</param>
+    <!-- 2.18.8 -->
+    <param name="revision">lablgtk2188</param>
+    <param name="filename">ocaml-lablgtk2</param>
+<param name="exclude">.cvsignore</param>
+<param name="exclude">applications</param>
+<param name="exclude">doc</param>
+<param name="exclude">examples</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
