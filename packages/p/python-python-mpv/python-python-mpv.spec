@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-mpv
-Version:        0.3.10
+Version:        0.4.0
 Release:        0
 Summary:        Python interface to the mpv media player
 License:        AGPL-3.0-or-later
