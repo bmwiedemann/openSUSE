@@ -12,30 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.yaml.cmd
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
-License:        MIT
 Summary:        Command line utility to manipulate YAML files
-Url:            https://bitbucket.org/ruamel/yaml.cmd
+License:        MIT
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml.cmd/ruamel.yaml.cmd-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Url:            https://bitbucket.org/ruamel/yaml.cmd
+Source:         https://bitbucket.org/ruamel/yaml.cmd/downloads/ruamel.yaml.cmd-%{version}.tar.xz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module configobj}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.std.argparse >= 0.8}
-BuildRequires:  %{python_module ruamel.yaml >= 0.15.71}
+BuildRequires:  %{python_module ruamel.yaml >= 0.16.1}
 BuildRequires:  %{python_module ruamel.yaml.convert >= 0.3}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-configobj
 Requires:       python-ruamel.std.argparse >= 0.8
-Requires:       python-ruamel.yaml >= 0.15.71
+Requires:       python-ruamel.yaml >= 0.16.1
 Requires:       python-ruamel.yaml.convert >= 0.3
 Suggests:       python-configobj
 BuildArch:      noarch
@@ -54,16 +56,46 @@ sed -i '/namespace_packages=/d' setup.py
 %python_build
 
 %install
+%{python_expand mkdir -p %{buildroot}%{$python_sitelib}
+cp -r %{$python_sitelib}/ruamel* %{buildroot}%{$python_sitelib}
+}
+
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
-%python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/ruamel/__* %{buildroot}%{$python_sitelib}/ruamel/yaml/__*
-%fdupes %{buildroot}%{$python_sitelib}
+%{python_expand %{$python_install}
+mkdir -p build/bin
+cp %{buildroot}/%{_bindir}/yaml build/bin/
+}
+
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export LANG=en_US.UTF-8
+%{python_expand export PATH=${PWD}/build/bin/:$PATH
+export PYTHONPATH=%{buildroot}%{$python_sitelib}:%{$python_sitelib}:%{$python_sitearch}
+$python -Sm pytest _test/test_*.py
+}
+
+%{python_expand # Remove other ruamel packages
+rm -r %{buildroot}%{$python_sitelib}/ruamel/__*
+rm -r %{buildroot}%{$python_sitelib}/ruamel/base/
+rm -r %{buildroot}%{$python_sitelib}/ruamel.base*
+rm -r %{buildroot}%{$python_sitelib}/ruamel/std/
+rm -r %{buildroot}%{$python_sitelib}/ruamel.std*
+rm -r %{buildroot}%{$python_sitelib}/ruamel.yaml-*
+rm %{buildroot}%{$python_sitelib}/ruamel/yaml/*.py* %{buildroot}%{$python_sitelib}/ruamel/yaml/py.typed
+rm -rf %{buildroot}%{$python_sitelib}/ruamel/yaml/__*
+rm -r %{buildroot}%{$python_sitelib}/ruamel/yaml/convert/
+rm -r %{buildroot}%{$python_sitelib}/ruamel.yaml.convert-*
+rm -rf %{buildroot}%{$python_sitelib}/ruamel/ordereddict/
+rm -rf %{buildroot}%{$python_sitelib}/ruamel.ordereddict*
+rm -rf %{buildroot}%{$python_sitelib}/ruamel.yaml.clib*
 }
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %python3_only %{_bindir}/yaml
-%{python_sitelib}/*
+%{python_sitelib}/ruamel/yaml/cmd/
+%{python_sitelib}/ruamel.yaml.cmd-*.egg-info
 
 %changelog
