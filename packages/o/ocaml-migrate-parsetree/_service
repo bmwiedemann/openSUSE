@@ -2,9 +2,9 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/ocaml-ppx/ocaml-migrate-parsetree.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">1.4.0</param>
-    <!-- v1.4.0 -->
-    <param name="revision">cf49ec820afe1670a7ca870970ec1764201e1207</param>
+    <param name="versionformat">1.5.0</param>
+    <!-- v1.5.0 -->
+    <param name="revision">940db942838f1811e499e6afd6bbb0ccb0f1763e</param>
     <param name="filename">ocaml-migrate-parsetree</param>
   </service>
   <service name="recompress" mode="disabled">

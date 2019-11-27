@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-migrate-parsetree
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library for conversion between different OCaml parsetrees versions
