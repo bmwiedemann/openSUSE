@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov  3 14:20:27 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0
+  * Ensure server_cert_validation=ignore supersedes
+    ca_trust_path/env overrides.
+  * Added deprecated warnings if CA trusts defined by environment
+    variables are used.
+  * Set minimum version of requests-credssp to support Kerberos
+    auth over CredSSP and other changes.
+  * Added proxy support where it can be defined within the
+    application, with the ability to specify the proxy within the
+    application.
+  * Fix for shell not setting all environment variables.
+  * Fix session clixml encoding on Python 3.
+  * Protocol.close_shell(shell_id) will now close the session(and
+    TCP connections) to the Windows machine. close_session option
+    has been added in case of leaving the session alone.
+  * Add a function to send input to a running process.
+- Use tarball from github instead of pypi
+- Drop not longer needed file LICENSE (it's part of the upstream
+  tarball
+- Add %{python_module kerberos} to BuildRequires since it's used
+  in some tests
+
+-------------------------------------------------------------------
 Tue Dec  4 12:53:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

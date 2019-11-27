@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywinrm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pywinrm
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Python library for Windows Remote Management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/diyan/pywinrm/
-Source:         https://files.pythonhosted.org/packages/source/p/pywinrm/pywinrm-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/diyan/pywinrm/master/LICENSE
+Source:         https://github.com/diyan/pywinrm/archive/v%{version}.tar.gz#/pywinrm-%{version}.tar.gz
+BuildRequires:  %{python_module kerberos}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.1}
@@ -56,8 +56,6 @@ Microsoft's WinRM http://msdn.microsoft.com/en-us/library/aa384426.aspx
 
 %prep
 %setup -q -n pywinrm-%{version}
-# FIXME - License should be included in the pypi tarball
-cp %{SOURCE1} .
 
 %build
 %python_build
