@@ -1,0 +1,16 @@
+Index: matrix-synapse-ldap3-0.1.3/tests/__init__.py
+===================================================================
+--- matrix-synapse-ldap3-0.1.3.orig/tests/__init__.py
++++ matrix-synapse-ldap3-0.1.3/tests/__init__.py
+@@ -5,7 +5,10 @@ from twisted.python.components import re
+ from ldaptor.inmemory import fromLDIFFile
+ from ldaptor.interfaces import IConnectedLDAPEntry
+ from ldaptor.protocols.ldap.ldapserver import LDAPServer
+-from cStringIO import StringIO
++try:
++    from cStringIO import StringIO
++except ImportError:
++    from io import StringIO
+ 
+ from ldap_auth_provider import LdapAuthProvider
+ 

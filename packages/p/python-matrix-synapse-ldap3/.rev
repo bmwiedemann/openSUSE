@@ -7,4 +7,18 @@
     <comment>Initial submission, requirement for matrix-synapse, see home:okurz:matrix-synapse</comment>
     <requestid>507978</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3dcab802108d48f5792cfaadeb947d73</srcmd5>
+    <version>0.1.3</version>
+    <time>1574859098</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix py3 testsuite execution:
+  * py3compat.patch
+- Disable python3 package as the thing can't work with py3
+
+- Update to 0.1.3:
+  * various bugfixes
+- Enable tests (fail with py3)</comment>
+    <requestid>745364</requestid>
+  </revision>
 </revisionlist>
