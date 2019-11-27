@@ -23,7 +23,6 @@ Version:        1.2.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/certbot/josepy
 Source0:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{libname}-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{libname}-%{version}.tar.gz.asc
