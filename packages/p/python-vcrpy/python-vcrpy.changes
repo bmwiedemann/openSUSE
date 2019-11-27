@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  3 14:00:28 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.1
+  * Format code with black
+  * Improve documentation about custom matchers
+  * Fix exception when body is empty
+  * Fix yarl and python3.5 version issue
+  * Fix header matcher for boto3
+
+-------------------------------------------------------------------
 Mon Sep 16 10:48:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.0:

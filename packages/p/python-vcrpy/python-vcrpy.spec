@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vcrpy
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Python module to mock and replay HTTP interactions
 License:        MIT

@@ -45,4 +45,12 @@
 - Drop merged patch python-vcrpy-fix-tunnel-uri-generation.patch</comment>
     <requestid>731252</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a67f5a721a1ee468a29c12dc99ead175</srcmd5>
+    <version>2.1.1</version>
+    <time>1574859059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745107</requestid>
+  </revision>
 </revisionlist>
