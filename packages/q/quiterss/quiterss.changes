@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 17:20:31 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.19.2
+  * Added: App style: dark
+  * Fixed: Images are not displayed in some feeds
+  * Fixed: Sometimes news filter did not work when updating feeds
+
+-------------------------------------------------------------------
 Sun Nov 17 19:14:27 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.19.1
