@@ -58,4 +58,12 @@ If this request is accepted it will be followed up by a delete request for pytho
     <comment></comment>
     <requestid>640779</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b41349d92fc8e8304ae0c74e36864f8f</srcmd5>
+    <version>1.9.10</version>
+    <time>1574859123</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>745374</requestid>
+  </revision>
 </revisionlist>

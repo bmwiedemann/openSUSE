@@ -1,7 +1,7 @@
 #
 # spec file for package moinmoin-wiki
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,8 +27,7 @@ Version:        1.9.10
 Release:        0
 Summary:        Wiki engine written in Python
 License:        GPL-2.0-or-later AND Apache-2.0
-Group:          Productivity/Networking/Web/Frontends
-Url:            http://moinmo.in/MoinMoinWiki
+URL:            https://moinmo.in/MoinMoinWiki
 Source0:        http://static.moinmo.in/files/moin-%{version}.tar.gz
 Source1:        moin.wsgi
 Source2:        moin-apache22.conf
@@ -45,16 +44,15 @@ Source99:       moinmoin-wiki.rpmlintrc
 BuildRequires:  apache2
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+Requires:       apache2-mod_wsgi
+Requires:       python2-xml
+Obsoletes:      python-moin < 1.9.8-50.0
+Provides:       python-moin = %{version}
 %if 0%{?sle_version} < 120300
 BuildRequires:  python-devel >= 2.5
 %else
 BuildRequires:  python2-devel >= 2.5
 %endif
-Requires:       apache2-mod_wsgi
-Requires:       python2-xml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Obsoletes:      python-moin < 1.9.8-50.0
-Provides:       python-moin = %{version}
 
 %description
 MoinMoin is an extensible wiki engine. It focuss on collaboration on
@@ -67,8 +65,8 @@ This package configures MoinMoin to serve wiki pages via the Apache web server.
 %setup -q -n moin-%{version}
 
 # Always use python2
-grep -rl "#!/usr/bin/env python" . | xargs -L 1 --verbose sed -i -e "s|#!/usr/bin/env python|#!/usr/bin/python2|g"
-sed -i -e "s|#!/usr/bin/python|#!/usr/bin/python2|g" wiki/server/moin.fcgi
+grep -rl "#!%{_bindir}/env python" . | xargs -L 1 --verbose sed -i -e "s|#!%{_bindir}/env python|#!%{_bindir}/python2|g"
+sed -i -e "s|#!%{_bindir}/python|#!%{_bindir}/python2|g" wiki/server/moin.fcgi
 
 # remove pre-built applet JARs
 find . -type f -name "*.jar" -print -delete
@@ -115,7 +113,6 @@ if [ "$1" = 1 ]; then
 fi
 
 %files
-%defattr(-, root, root)
 %doc README.rst docs/* README.SUSE
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/moin.conf
 %{_bindir}/moin
@@ -124,7 +121,7 @@ fi
 %{python_sitelib}
 %dir /srv/moin
 %config(noreplace) /srv/moin/moin.wsgi
-%{_mandir}/man1/moin.1.gz
-%{_mandir}/man8/mkwiki.moin.8.gz
+%{_mandir}/man1/moin.1%{?ext_man}
+%{_mandir}/man8/mkwiki.moin.8%{?ext_man}
 
 %changelog
