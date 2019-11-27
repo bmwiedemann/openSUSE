@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 27 10:55:40 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.3.0:
+  * New functions:
+    idxmatrix: creates a matrix with each element corresponding to
+    its subindex in the matrix.
+    hc2ind: Hilbert curve to linear indices
+  * The function publish has been removed from the miscellaneous
+    package because it is now released with Octave core since
+    version 4.2.  Note that it's API is slightly different.
+  * The package is no longer dependent on the general package.
+  * pkg update for octave 5.1+ functionality
+
+-------------------------------------------------------------------
 Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
 
 - Split from octave-forge package, version 1.2.1
