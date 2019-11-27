@@ -8,11 +8,11 @@ Git-repo: https://github.com/cobbler/cobbler.git
 
 Signed-off-by: Thomas Renninger <trenn@suse.com>
 
-Index: cobbler-3.0.1+git20191008.21acab67/setup.py
+Index: cobbler-3.0.1+git20191120.24c4ae8e/setup.py
 ===================================================================
---- cobbler-3.0.1+git20191008.21acab67.orig/setup.py	2019-10-08 16:08:04.000000000 +0200
-+++ cobbler-3.0.1+git20191008.21acab67/setup.py	2019-10-08 16:36:37.312552860 +0200
-@@ -304,10 +304,6 @@ class install(_install):
+--- cobbler-3.0.1+git20191120.24c4ae8e.orig/setup.py	2019-11-20 20:24:53.000000000 +0100
++++ cobbler-3.0.1+git20191120.24c4ae8e/setup.py	2019-11-26 16:14:52.964793914 +0100
+@@ -315,10 +315,6 @@ class install(_install):
          # Run the usual stuff.
          _install.run(self)
  
@@ -23,7 +23,7 @@ Index: cobbler-3.0.1+git20191008.21acab67/setup.py
          # Hand over some directories to the webserver user
          path = os.path.join(self.install_data, 'share/cobbler/web')
          try:
-@@ -318,9 +314,7 @@ class install(_install):
+@@ -329,9 +325,7 @@ class install(_install):
          if not os.path.abspath(libpath):
              # The next line only works for absolute libpath
              raise Exception("libpath is not absolute.")
@@ -33,4 +33,4 @@ Index: cobbler-3.0.1+git20191008.21acab67/setup.py
 +        path = os.path.join(self.root + libpath, 'webui_sessions')
          try:
              self.change_owner(path, http_user)
-         except KeyError as e:
+         except Exception as e:

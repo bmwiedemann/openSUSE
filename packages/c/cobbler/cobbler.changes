@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:44:24 UTC 2019 - trenn@suse.de
+
+- Update to latest git HEAD code base
+  This version (from mainline so for quite a while already)
+  also includes fixes for "bsc#1149075" and bsc#1151875
+  These patches are mainline already:
+D kopts-utils-path.diff
+D item-repo-import-fix.diff
+D no-system-in-kopts-call.diff
+  This patch is going to be submitted mainline:
+A cobbler_management_mac.diff
+- Fix up manpage creation: Do not zip manpages ourselves
+  Thanks to namtrac.
+    
+
+-------------------------------------------------------------------
 Tue Nov 19 10:20:39 UTC 2019 - Jochen Breuer <jbreuer@suse.de>
 
 - Fix for cobbler import and buildiso (bsc#1156574)

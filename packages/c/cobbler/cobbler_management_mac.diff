@@ -1,0 +1,30 @@
+--- a/cobbler/tftpgen.py	2019-11-22 10:48:06.917115664 +0100
++++ b/cobbler/tftpgen.py	2019-11-26 15:55:55.076953544 +0100
+@@ -567,6 +543,7 @@
+         """
+ 
+         management_interface = None
++        management_mac = None
+         if system is not None:
+             blended = utils.blender(self.api, False, system)
+             # find the first management interface
+@@ -574,6 +551,8 @@
+                 for intf in list(system.interfaces.keys()):
+                     if system.interfaces[intf]["management"]:
+                         management_interface = intf
++                        if system.interfaces[intf]["mac_address"]:
++                            management_mac = system.interfaces[intf]["mac_address"]
+                         break
+             except:
+                 # just skip this then
+@@ -637,8 +616,8 @@
+                     append_line = append_line.replace('ksdevice=bootif', 'ksdevice=${net0/mac}')
+             elif distro.breed == "suse":
+                 append_line = "%s autoyast=%s" % (append_line, autoinstall_path)
+-                if management_interface:
+-                    append_line += "netdevice=%s" % management_interface
++                if management_mac:
++                    append_line += " netdevice=%s" % management_mac
+             elif distro.breed == "debian" or distro.breed == "ubuntu":
+                 append_line = "%s auto-install/enable=true priority=critical netcfg/choose_interface=auto url=%s" % (append_line, autoinstall_path)
+                 if management_interface:

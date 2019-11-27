@@ -1061,4 +1061,12 @@ A exclude_get-loaders_command.patch
     <comment></comment>
     <requestid>750674</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8a855ca231806279ee28954280d4d9c1</srcmd5>
+    <version>3.0.1+git20191120.24c4ae8e</version>
+    <time>1574859255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751077</requestid>
+  </revision>
 </revisionlist>

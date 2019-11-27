@@ -25,7 +25,7 @@
 %define _binaries_in_noarch_packages_terminate_build 0
 %global debug_package %{nil}
 Name:           cobbler
-Version:        3.0.1+git20191025.fbebd758
+Version:        3.0.1+git20191120.24c4ae8e
 Release:        0
 Summary:        Boot server configurator
 License:        GPL-2.0-or-later
@@ -39,10 +39,7 @@ Source2:        logrotate_cobbler
 Source3:        fence_ipmitool.template
 Patch1:         fix_hardcoded_libpath_for_websession.patch
 Patch2:         exclude_get-loaders_command.patch
-Patch3:         kopts-utils-path.diff
-Patch4:         no-system-in-kopts-call.diff
-Patch5:         item-repo-import-fix.diff
-
+Patch3:         cobbler_management_mac.diff
 
 BuildRequires:  python3-Cheetah3
 BuildRequires:  apache-rpm-macros
@@ -58,7 +55,6 @@ BuildRequires:  python3-coverage
 BuildRequires:  python3-future
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-Sphinx
-BuildRequires:  gzip
 BuildRequires:  pkgconfig(systemd)
 # Workaround so that /srv/tftpboot file exists during
 # build, but is not owned by cobbler
@@ -137,23 +133,8 @@ cp %{SOURCE1} AUTHORS
 
 %python_exec setup.py build_sphinx -b man
 
-for manpage in build/sphinx/man/*;do
-  if [ %{?ext_man} == ".xz" ];then
-    ZIPPER="xz --stdout "
-  elif [ %{?ext_man} == ".gz" ];then
-    ZIPPER="gzip --stdout "
-  else
-    ZIPPER="gzip --stdout "
-  fi
-  $ZIPPER --stdout $manpage >$manpage%{?ext_man};
-done
-
 %install
 %python_install
-
-install -D -m 0600 build/sphinx/man/cobbler-cli.1%{?ext_man}  %{buildroot}%{_mandir}/man1/cobbler-cli.1%{?ext_man}
-install -D -m 0600 build/sphinx/man/cobblerd.1%{?ext_man}  %{buildroot}%{_mandir}/man1/cobblerd.1%{?ext_man}
-install -D -m 0600 build/sphinx/man/cobbler.conf.5%{?ext_man}  %{buildroot}%{_mandir}/man5/cobbler_conf.5%{?ext_man}
 
 ln -sf service %{buildroot}%{_sbindir}/rccobblerd
 rm -rf %{buildroot}%{_initddir}
@@ -263,9 +244,9 @@ sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{python_sitelib}/c
 %{_datadir}/%{name}/bin/settings-migration-v1-to-v2.sh
 %{_datadir}/cobbler/web
 %attr(750, root, root) %{_localstatedir}/log/cobbler
-%{_mandir}/man1/cobbler-cli.1%{?ext_man}
-%{_mandir}/man1/cobblerd.1%{?ext_man}
-%{_mandir}/man5/cobbler_conf.5%{?ext_man}
+%{_mandir}/man1/cobbler.1%{?ext_man}
+%{_mandir}/man5/cobbler.conf.5%{?ext_man}
+%{_mandir}/man8/cobblerd.8%{?ext_man}
 %{_sbindir}/tftpd.py*
 %{_sbindir}/rccobblerd
 %{_sbindir}/fence_ipmitool
