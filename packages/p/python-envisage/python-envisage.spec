@@ -21,23 +21,20 @@
 %define         X_display         ":98"
 %bcond_with     test
 Name:           python-envisage
-Version:        4.7.2
+Version:        4.9.0
 Release:        0
 Summary:        Extensible application framework for Python
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
 License:        BSD-3-Clause AND Python-2.0 AND LGPL-3.0-only AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0 AND SUSE-Public-Domain
-Group:          Development/Libraries/Python
-Url:            https://github.com/enthought/envisage
+URL:            https://github.com/enthought/envisage
 Source:         https://files.pythonhosted.org/packages/source/e/envisage/envisage-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/enthought/envisage/%{version}/LICENSE.txt
-Source11:       https://raw.githubusercontent.com/enthought/envisage/%{version}/image_LICENSE.txt
-Source12:       https://raw.githubusercontent.com/enthought/envisage/%{version}/image_LICENSE_CP.txt
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-traits
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module apptools}
@@ -45,9 +42,6 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module traitsui}
 BuildRequires:  xorg-x11-server
 %endif
-Requires:       python-traits
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,9 +57,6 @@ Part of the Enthought Tool Suite (ETS).
 
 %prep
 %setup -q -n envisage-%{version}
-cp %{SOURCE10} .
-cp %{SOURCE11} .
-cp %{SOURCE12} .
 
 %build
 %python_build
@@ -90,7 +81,6 @@ popd
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt image_LICENSE.txt image_LICENSE_CP.txt
 %{python_sitelib}/envisage/
