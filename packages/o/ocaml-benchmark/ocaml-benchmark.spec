@@ -12,86 +12,53 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 Name:           ocaml-benchmark
-Version:        1.4
+Version:        1.6
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Benchmarking module for OCaml
 License:        LGPL-3.0-or-later WITH OCaml-linking-exception
 Group:          Development/Languages/OCaml
-
-URL:            http://ocaml-benchmark.forge.ocamlcore.org/
-Source0:        https://github.com/Chris00/ocaml-benchmark/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+URL:            https://github.com/Chris00/ocaml-benchmark
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamlbuild
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(unix)
 
 %description
 Benchmark provides functions to measure and compare the run-time of functions.
 It is inspired by the Perl module of the same name.
-
 
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Languages/OCaml
 Requires:       %{name} = %{version}
 
-
 %description    devel
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
-%setup -q -n %{name}-%{version}
-
+%autosetup -p1
 
 %build
-%oasis_setup
-%ocaml_oasis_configure --enable-docs
-%ocaml_oasis_build
-%ocaml_oasis_doc
-
+dune_release_pkgs='benchmark'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
+%ocaml_dune_install
+%ocaml_create_file_list
 
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root,-)
-%doc README.md LICENSE.txt
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%files -f %{name}.files
 
-
-%files devel
-%defattr(-,root,root,-)
-%{oasis_docdir_html}
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog
-
