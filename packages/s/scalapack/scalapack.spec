@@ -147,8 +147,8 @@ ExclusiveArch:  do_not_build
 ExclusiveArch:  do_not_build
 %endif
 
-# For compatibility package names
-%if "%{mpi_flavor}" != "openmpi" || "%{mpi_vers}" != "1"
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15 
+%if 0%{?suse_version} >= 1550 || "%{mpi_flavor}" != "openmpi" || "%{mpi_vers}" != "1"
 %define mpi_ext %{?mpi_vers}
 %endif
 
@@ -285,6 +285,9 @@ Group:          Development/Libraries/Parallel
 Requires:       %{libname %_vers} = %{version}
 %if %{without hpc}
 Requires:       %{mpi_flavor}%{?mpi_ext}-devel
+%if "%{mpi_flavor}%{?mpi_ext}" == "openmpi1"
+Provides:       lib%{pname}%{so_ver}-openmpi-devel
+%endif
 %else
 %hpc_requires_devel
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
@@ -355,6 +358,9 @@ This package contains development libraries for BLACS, compiled against %{mpi_fl
 Summary:        Development libraries for BLACS (%{mpi_flavor}%{?mpi_vers})
 Group:          Development/Libraries/Parallel
 Requires:       %{libblacsname %_vers}-devel = %{version}
+%if "%{mpi_flavor}%{?mpi_ext}" == "openmpi1"
+Provides:       libblacs%{so_ver}-openmpi-devel
+%endif
 
 %{?with_hpc:%{hpc_master_package -n %{libblacs_plain}-devel -N blacs -s %so_ver -a devel}}
 

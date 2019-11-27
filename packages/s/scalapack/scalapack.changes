@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 22:06:18 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reflect renaming of openmpi packages to openmpi1 in Tumbleweed,
+  fixes unresolvable packages.
+
+-------------------------------------------------------------------
 Tue Sep 10 06:58:49 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Use -ffat-lto-objects to provide a proper static library. 
