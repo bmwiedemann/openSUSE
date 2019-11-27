@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Oct 21 09:42:14 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.22.0, dropping merged patches
+
+-------------------------------------------------------------------
+Sat Oct 12 13:49:07 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Add patch 38ca5de2.patch and update-userpath.patch to support
+  using latest python-userpath instead of unmaintained python-adduserpath
+- Add unmerged fixes in upstream pull requests:
+  * pr_59.patch: Add decorator to tests which require internet connection
+  * pr_60.patch: Avoid installing tests as a package
+  * pr_62.patch: Fixed bad encoding for Python 3.7
+
+-------------------------------------------------------------------
+Thu Aug  2 19:17:22 UTC 2018 - aboe76@gmail.com
+
+- Update to v0.20.0
+
+-------------------------------------------------------------------
+Mon Sep 11 07:39:28 UTC 2017 - thomas.schraitle@suse.com
+
+- First public version 0.9.1
