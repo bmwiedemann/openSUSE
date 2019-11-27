@@ -1,7 +1,7 @@
 #
 # spec file for package bazel0.25
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,6 @@
 #
 
 
-#Workaround for aarch64 boo#1138529
-%ifarch aarch64
-%if 0%{?suse_version} > 1500
-%define openjdktouse java-12-openjdk-devel
-%else
-%define openjdktouse java-11-openjdk-devel
-%endif
-%else
-%define openjdktouse java-1_8_0-openjdk-devel
-%endif
-
 %define bashcompdir %(pkg-config --variable=completionsdir bash-completion 2>/dev/null)
 %define shortname bazel
 %define shortver 0.25
@@ -39,8 +28,8 @@ Group:          Development/Tools/Building
 URL:            http://bazel.io/
 Source0:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip
 Source1:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip.sig
-BuildRequires:  %{openjdktouse}
 BuildRequires:  gcc-c++
+BuildRequires:  java-1_8_0-openjdk-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  unzip
@@ -49,7 +38,7 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(zlib)
 Requires(post):	update-alternatives
 Requires(postun): update-alternatives
-Requires:       %{openjdktouse}
+Requires:       java-1_8_0-openjdk-devel
 Provides:       bazel = %{version}
 ExclusiveArch:  x86_64 aarch64
 
