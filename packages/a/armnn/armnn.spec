@@ -100,9 +100,6 @@ Patch3:         armnn-fix_boost.patch
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/266
 Patch4:         armnn-fix_arm32_dep.patch 
 Patch5:         armnn-fix_arm32.patch 
-# https://github.com/ARM-software/armnn/issues/207
-# FIXME: remove this patch once *.pb.cc files are packaged properly in tensorflow-devel - https://github.com/ARM-software/armnn/issues/269
-Patch100:       armnn-fix_tensorflow_link.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -367,7 +364,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch100 -p1
 %patch200 -p1
 %patch201 -p1
 %patch202 -p1
