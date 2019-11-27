@@ -1,0 +1,263 @@
+From f4eb6bb74d7e99733f9a273f212dc51ea1e4f915 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Mon, 9 Sep 2019 11:49:04 +0200
+Subject: [PATCH] automated convertion form 2to3
+
+---
+ codegen/x86_64.py               | 44 +++++++++++++++++------------------------
+ codegen/x86_64_nacl_test.py     | 12 ++++++-----
+ codegen/x86_64_test_encoding.py |  7 ++++---
+ 3 files changed, 29 insertions(+), 34 deletions(-)
+
+diff --git a/codegen/x86_64.py b/codegen/x86_64.py
+index 82a4fee..a4c9d74 100644
+--- a/codegen/x86_64.py
++++ b/codegen/x86_64.py
+@@ -1,6 +1,7 @@
+ # This file is part of PeachPy package and is licensed under the Simplified BSD license.
+ #    See license.rst for the full text of the license.
+ 
++
+ from __future__ import print_function
+ import opcodes
+ import copy
+@@ -81,8 +82,7 @@ def aggregate_instruction_forms(instruction_forms):
+         if len(form.operands) != len(other_form.operands):
+             return None
+         different_operand_numbers = \
+-            list(filter(lambda n: form.operands[n].type != other_form.operands[n].type,
+-                        range(len(form.operands))))
++            list([n for n in range(len(form.operands)) if form.operands[n].type != other_form.operands[n].type])
+         if len(different_operand_numbers) == 1:
+             return different_operand_numbers[0]
+         else:
+@@ -616,7 +616,7 @@ def get_out_operands(instruction_form):
+ 
+ def get_isa_extensions(instruction_form):
+     """Returns a hashable immutable set with names of ISA extensions required for this instructions form"""
+-    return frozenset(map(operator.attrgetter("name"), instruction_form.isa_extensions))
++    return frozenset(list(map(operator.attrgetter("name"), instruction_form.isa_extensions)))
+ 
+ 
+ def go_name_init(code, instruction_form):
+@@ -729,8 +729,7 @@ def instruction_branch_label_form_init(code, instruction_form, instruction_subfo
+         gas_name_init(code, instruction_form)
+ 
+     for form in ([instruction_form] + list(map(operator.itemgetter(1), instruction_subforms))):
+-        encoding_lambdas = list(map(lambda e: generate_encoding_lambda(e, form.operands, use_off_argument=True),
+-                                    form.encodings))
++        encoding_lambdas = list([generate_encoding_lambda(e, form.operands, use_off_argument=True) for e in form.encodings])
+         assert len(encoding_lambdas) == 1, \
+             "Branch label instructions are expected to have only one encoding for each operand type"
+         flags, encoding_lambda = encoding_lambdas[0]
+@@ -769,8 +768,7 @@ def instruction_form_init(code, instruction_form, instruction_subforms,
+         code.line("if %s:" % operand_check)
+         with CodeBlock():
+             # Record lambda functions that encode the instruction subform
+-            encoding_lambdas = map(lambda e: generate_encoding_lambda(e, instruction_subform.operands),
+-                                   instruction_subform.encodings)
++            encoding_lambdas = [generate_encoding_lambda(e, instruction_subform.operands) for e in instruction_subform.encodings]
+             flags = 0
+             if instruction_subform.operands[operand_number].is_variable:
+                 assert instruction_subform.operands[operand_number].type in {"al", "ax", "eax", "rax"}, \
+@@ -782,7 +780,7 @@ def instruction_form_init(code, instruction_form, instruction_subforms,
+                 code.line("self.encodings.append((0x%02X, %s))" % (flags | encoding_flags, encoding_lambda))
+ 
+     # Record lambda functions that encode the most generic instruction form
+-    encodings = map(lambda e: generate_encoding_lambda(e, instruction_form.operands), instruction_form.encodings)
++    encodings = [generate_encoding_lambda(e, instruction_form.operands) for e in instruction_form.encodings]
+     for (flags, encoding_lambda) in encodings:
+         code.line("self.encodings.append((0x%02X, %s))" % (flags, encoding_lambda))
+ 
+@@ -836,8 +834,7 @@ def reduce_operand_types(operand_types_list):
+             if len(operand_types) != len(other_operand_types):
+                 continue
+             different_operand_numbers = \
+-                list(filter(lambda n: operand_types[n] != other_operand_types[n],
+-                            range(len(operand_types))))
++                list([n for n in range(len(operand_types)) if operand_types[n] != other_operand_types[n]])
+             if len(different_operand_numbers) == 1:
+                 operand_number = different_operand_numbers[0]
+                 if (operand_types[operand_number], other_operand_types[operand_number]) in nested_operand_types:
+@@ -878,8 +875,7 @@ def reduce_operand_types(operand_types_list):
+             if len(operand_types) != len(other_operand_types):
+                 continue
+             different_operand_numbers = \
+-                list(filter(lambda n: operand_types[n] != other_operand_types[n],
+-                       range(len(operand_types))))
++                list([n for n in range(len(operand_types)) if operand_types[n] != other_operand_types[n]])
+             if len(different_operand_numbers) == 1:
+                 operand_number = different_operand_numbers[0]
+                 if (other_operand_types[operand_number], operand_types[operand_number]) in mergeble_operand_types:
+@@ -897,7 +893,7 @@ def reduce_operand_types(operand_types_list):
+ 
+ def score_isa_extensions(isa_extensions):
+     if isa_extensions:
+-        return max(map(operator.attrgetter("score"), isa_extensions))
++        return max(list(map(operator.attrgetter("score"), isa_extensions)))
+     return 0
+ 
+ 
+@@ -920,12 +916,12 @@ def supported_forms_comment(code, instruction_forms):
+         return reduce_operand_types(operand_types_list)
+ 
+     def get_isa_extensions(instruction_forms):
+-        isa_extensions = map(operator.attrgetter("isa_extensions"), instruction_forms)
+-        isa_extensions = map(lambda ext: sorted(ext, key=operator.attrgetter("score")), isa_extensions)
++        isa_extensions = list(map(operator.attrgetter("isa_extensions"), instruction_forms))
++        isa_extensions = [sorted(ext, key=operator.attrgetter("score")) for ext in isa_extensions]
+         return isa_extensions
+ 
+     form_descriptions = format_form_descriptions(instruction_forms[0].name, get_operand_types_list(instruction_forms))
+-    padding_length = max(map(len, form_descriptions))
++    padding_length = max(list(map(len, form_descriptions)))
+ 
+     form_isa_extensions_options = sorted(set(map(tuple, get_isa_extensions(instruction_forms))),
+                                          key=lambda isa_tuple: score_isa_extensions(isa_tuple))
+@@ -933,7 +929,7 @@ def supported_forms_comment(code, instruction_forms):
+         isa_description = ""
+         if isa_extensions_option:
+             isa_description = "[" + " and ".join(map(str, isa_extensions_option)) + "]"
+-        isa_forms = list(filter(lambda form: tuple(sorted(form.isa_extensions, key=operator.attrgetter("score"))) == isa_extensions_option, instruction_forms))
++        isa_forms = list([form for form in instruction_forms if tuple(sorted(form.isa_extensions, key=operator.attrgetter("score"))) == isa_extensions_option])
+         for form_description in format_form_descriptions(instruction_forms[0].name, get_operand_types_list(isa_forms)):
+             if isa_description:
+                 padding = " " * (4 + padding_length - len(form_description))
+@@ -974,7 +970,7 @@ def main(package_root="."):
+                 code.line()
+                 for name in instruction_names:
+                     # Instructions with `name` name
+-                    name_instructions = list(filter(lambda i: i.name == name, instruction_set))
++                    name_instructions = list([i for i in instruction_set if i.name == name])
+                     if not name_instructions:
+                         print("No forms for instruction: " + name)
+                         continue
+@@ -1043,9 +1039,7 @@ def main(package_root="."):
+                                     code.line("%s len(self.operands) == %d:" % ("if" if index == 0 else "elif", count))
+                                 with CodeBlock(consider_operand_count):
+                                     # Consider only instruction forms that have exactly `count` operands
+-                                    count_operand_form_trees = list(filter(lambda form_subforms:
+-                                                                           len(form_subforms[0].operands) == count,
+-                                                                           six.iteritems(instruction_forms)))
++                                    count_operand_form_trees = list([form_subforms for form_subforms in six.iteritems(instruction_forms) if len(form_subforms[0].operands) == count])
+                                     # Make sure operand forms with simpler ISA are checked first.
+                                     # This is needed because AVX instructions can be encoded as AVX-512 instructions.
+                                     # Thus, we should first check if operands match AVX specification, and only if that
+@@ -1065,10 +1059,10 @@ def main(package_root="."):
+                                     out_operands_options = set(map(get_out_operands, count_operand_forms))
+                                     common_out_operands = combine_attrs and len(out_operands_options) == 1
+                                     # Check how many gas names exist
+-                                    gas_names = set(map(lambda form: form.gas_name, count_operand_forms))
++                                    gas_names = set([form.gas_name for form in count_operand_forms])
+                                     common_gas_name = combine_attrs and len(gas_names) == 1
+                                     # Check how many go names exist
+-                                    go_names = set(map(lambda form: str(form.go_name), count_operand_forms))
++                                    go_names = set([str(form.go_name) for form in count_operand_forms])
+                                     common_go_name = combine_attrs and len(go_names) == 1
+                                     # Check how many mmx modes exist
+                                     mmx_modes = set(map(operator.attrgetter("mmx_mode"), count_operand_forms))
+@@ -1108,9 +1102,7 @@ def main(package_root="."):
+                                         for (form_index, (instruction_form, instruction_subforms)) \
+                                                 in enumerate(count_operand_form_trees):
+                                             is_avx512 = is_avx512_instruction_form(instruction_form)
+-                                            operand_checks = map(
+-                                                lambda o: generate_operand_check(o[0], o[1], evex_form=is_avx512),
+-                                                enumerate(instruction_form.operands))
++                                            operand_checks = [generate_operand_check(o[0], o[1], evex_form=is_avx512) for o in enumerate(instruction_form.operands)]
+                                             code.line("%s %s:" % ("if" if form_index == 0 else "elif", " and ".join(operand_checks)))
+                                             with CodeBlock():
+                                                 instruction_form_init(code, instruction_form, instruction_subforms,
+diff --git a/codegen/x86_64_nacl_test.py b/codegen/x86_64_nacl_test.py
+index c2b1374..36fcfd8 100644
+--- a/codegen/x86_64_nacl_test.py
++++ b/codegen/x86_64_nacl_test.py
+@@ -1,11 +1,13 @@
+ # This file is part of PeachPy package and is licensed under the Simplified BSD license.
+ #    See license.rst for the full text of the license.
+ 
++
+ from __future__ import print_function
+ from opcodes.x86_64 import *
+ from codegen.code import CodeWriter, CodeBlock
+ import operator
+ import json
++import os
+ 
+ 
+ instruction_set = read_instruction_set()
+@@ -69,13 +71,13 @@ from peachpy.x86_64 import *\n\
+ \n\
+ instruction_list = []\n\
+ ", file=out)
+-    for group, instruction_names in instruction_groups.iteritems():
++    for group, instruction_names in instruction_groups.items():
+         with CodeWriter() as code:
+             code.line("# " + group)
+             for name in instruction_names:
+ 
+                 # Instructions with `name` name
+-                name_instructions = filter(lambda i: i.name == name, instruction_set)
++                name_instructions = [i for i in instruction_set if i.name == name]
+                 if not name_instructions:
+                     print("No forms for instruction: " + name)
+                     continue
+@@ -84,8 +86,8 @@ instruction_list = []\n\
+ 
+                 code.line()
+                 for instruction_form in filter_instruction_forms(name_instruction.forms):
+-                    operands = map(generate_operand, instruction_form.operands)
+-                    if not any(map(lambda op: op is None, operands)):
++                    operands = list(map(generate_operand, instruction_form.operands))
++                    if not any([op is None for op in operands]):
+                         instruction_text = "%s(%s)" % (instruction_form.name, ", ".join(operands))
+                         if any(map(operator.attrgetter("is_memory"), instruction_form.operands)):
+                             code.line("instruction_list.append((\"%s\", (MOV(esi, esi), %s)))" % (str(instruction_form), instruction_text))
+@@ -111,4 +113,4 @@ for (text, instructions) in instruction_list:\n\
+     print(\"\\t\\\"%s\\\",\" % text, file=names)\n\
+ \n\
+ print(\"};\\n\", file=names)\n\
+-print(\"};\\n\", file=bundles)", file=out)
+\ No newline at end of file
++print(\"};\\n\", file=bundles)", file=out)
+diff --git a/codegen/x86_64_test_encoding.py b/codegen/x86_64_test_encoding.py
+index d0d097f..a5246e1 100644
+--- a/codegen/x86_64_test_encoding.py
++++ b/codegen/x86_64_test_encoding.py
+@@ -1,6 +1,7 @@
+ # This file is part of PeachPy package and is licensed under the Simplified BSD license.
+ #    See license.rst for the full text of the license.
+ 
++
+ from __future__ import print_function
+ from opcodes.x86_64 import *
+ from codegen.code import CodeWriter, CodeBlock
+@@ -200,7 +201,7 @@ def generate_operand(operand, operand_number, peachpy=True, evex=False):
+ tab = " " * 4
+ 
+ def main(package_root="."):
+-    for group, instruction_names in instruction_groups.items():
++    for group, instruction_names in list(instruction_groups.items()):
+         with open(os.path.join (package_root, "test", "x86_64", "encoding", "test_%s.py" % group), "w") as out:
+             with CodeWriter() as code:
+                 code.line("# This file is auto-generated by /codegen/x86_64_test_encoding.py")
+@@ -217,7 +218,7 @@ def main(package_root="."):
+                         code.line("def runTest(self):")
+                         with CodeBlock():
+                             # Instructions with `name` name
+-                            name_instructions = list(filter(lambda i: i.name == name, instruction_set))
++                            name_instructions = list([i for i in instruction_set if i.name == name])
+                             if not name_instructions:
+                                 print("No forms for instruction: " + name)
+                                 continue
+@@ -231,7 +232,7 @@ def main(package_root="."):
+                                                     in enumerate(instruction_form.operands)]
+                                 gas_operands = [generate_operand(o, i, peachpy=False, evex=is_avx512) for (i, o)
+                                                 in enumerate(instruction_form.operands)]
+-                                if not any(map(lambda op: op is None, gas_operands)):
++                                if not any([op is None for op in gas_operands]):
+                                     gas_assembly = "%s %s" % (instruction_form.name, ", ".join(gas_operands))
+                                     peachpy_assembly = "%s(%s)" % (instruction_form.name, ", ".join(peachpy_operands))
+                                     reference_bytecode = binutils_encode(gas_assembly)
+-- 
+2.16.4
+
