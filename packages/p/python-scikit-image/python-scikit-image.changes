@@ -7,7 +7,7 @@ Sat Nov  9 14:58:21 UTC 2019 - Arun Persaud <arun@gmx.de>
     - fix_numpy_matrix_warning_test.patch
   * add test requirement imageio
 
-- update to version 0.16.2:
+- update to version 0.16.2 (bsc#1157707):
   * Bug fixes
     + Migrate to networkx 2.x (#4236, #4237)
     + Sync required numpy and dask to runtime versions (#4233, #4239)

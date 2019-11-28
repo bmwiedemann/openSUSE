@@ -100,4 +100,12 @@
     <comment></comment>
     <requestid>747195</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6fe46b4ee34d7ee82d5ad96a37bcd813</srcmd5>
+    <version>0.16.2</version>
+    <time>1574932341</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.16.2 (bsc#1157707):</comment>
+    <requestid>750915</requestid>
+  </revision>
 </revisionlist>
