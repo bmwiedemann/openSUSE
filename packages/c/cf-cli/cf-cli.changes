@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 28 07:33:04 UTC 2019 - thardeck@suse.com
+
+- update to version 6.47.2
+  ## Fixes
+  - Built with Golang 1.12.12 to address security vulnerabilities and other bugs. See the Golang release summaries for details.
+
+-------------------------------------------------------------------
+Mon Oct 21 22:34:16 UTC 2019 - thardeck@suse.com
+
+- update to version 6.47.1
+  ## Bugs
+  - Fixes regression for cf login
+  - create-buildpack will now retry if attempting to create a large buildpack and the fresh token is about to expire story
+  - now when you push an application with a buildpack, and if you delete the buildpack, and then subsequently push the same app with multiple buildpacks, push should stage your app story
+  ## Enhancements
+  - Since usernames are not unique, users with the same name can exist in different external identity providers. This release supports a new flag on login: --origin which allow users to disambiguate the user and identity provider they want to log in to. story
+  - Adds a deprecation warning to cf login and cf auth for custom clients. In CLI V7, we are encouraging users to adopt the client credential workflow because it is more secure (secrets are not written to the config). story and story
+  - If you are not logged in and attempt to run commands, now a slightly more verbose output appears to prompt the user to run either 'cf login' or 'cf login --sso' to log in.. story
+  - the CF_DIAL_TIMEOUT default has been updated from 5 to 6 seconds to avoid race conditions story
+
+-------------------------------------------------------------------
 Mon Aug 26 21:29:43 UTC 2019 - thardeck@suse.com
 
 - update to version 6.46.1
