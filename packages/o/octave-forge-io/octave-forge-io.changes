@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 27 00:45:19 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.4.13:
+  * Bug fixes:
+    - COM interface: restore writing formulas to spreadsheet
+    - OCT interface: ignore NA and NaN values when writing .ods and
+      .gnumeric (bug #56375)
+    - OCT interface: don't truncate arrays when using single
+      cell-range input with oct2ods and oct2xls functions (bug #56444)
+    - csv2cell: properly process leading tilde in file name (bug #53591)
+  * Code improvements:
+    - COM interface: better support for creating file formats other than
+      .xlsx
+    - ditto for UNO interface
+    - Remove references to legacy Java package, as io depends on Octave
+      >= 4.0 where core Octave should have built-in Java support anyway
+    - Replace calls to strmatch() with calls to str(n)cmp(i)()
+    - Replace calls to __octave_config_info__() and __have_feature__() by
+      javachk() (bug #47480)
+  * Various:
+    - The io package now needs Octave >= 4.0.0, due to dependence on javachk
+
+-------------------------------------------------------------------
 Wed Nov 21 10:56:19 UTC 2018 - badshah400@gmail.com
 
 - Update to version 2.4.12:
