@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 27 14:53:06 MST 2019 - carnold@suse.com
+
+- bsc#1156964 - import a exist disk for creating PV guest failed
+  virtinst-pvgrub2-bootloader.patch
+- Refreshed patches
+  virtinst-change-location-for-grub_xen.patch
+  virtinst-set-cache-mode-unsafe-for-install.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 13:50:11 MST 2019 - carnold@suse.com
 
 - bsc#1157097 - PV guest on_reboot event be set to 'destroy' by

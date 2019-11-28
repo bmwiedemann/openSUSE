@@ -6,7 +6,17 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
 ===================================================================
 --- virt-manager-2.2.1.orig/virtinst/install/installer.py
 +++ virt-manager-2.2.1/virtinst/install/installer.py
-@@ -436,6 +436,20 @@ class Installer(object):
+@@ -167,7 +167,8 @@ class Installer(object):
+ 
+     def _alter_treemedia_bootconfig(self, guest):
+         if not self._treemedia:
+-            return
++            if not self._treemedia_bootconfig or "grub.xen" not in self._treemedia_bootconfig[0]:
++                return
+ 
+         kernel, initrd, kernel_args = self._treemedia_bootconfig
+         if kernel:
+@@ -436,6 +437,20 @@ class Installer(object):
          install_xml = None
          if self.has_install_phase():
              install_xml = self._get_install_xml(guest, meter)

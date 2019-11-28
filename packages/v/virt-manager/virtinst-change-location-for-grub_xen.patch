@@ -4,7 +4,7 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
 ===================================================================
 --- virt-manager-2.2.1.orig/virtinst/install/installer.py
 +++ virt-manager-2.2.1/virtinst/install/installer.py
-@@ -445,7 +445,10 @@ class Installer(object):
+@@ -446,7 +446,10 @@ class Installer(object):
                  guest.bootloader = "pygrub"
              else:
                  guest.bootloader = None
