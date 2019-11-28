@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-instrument-control
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  instrument-control
 Name:           octave-forge-%{octpkg}
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Instrument Control for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM instrument-control-no-return-in-nonvoid-function.patch badshah400@gmail.com -- Fix non-void functions not returning data typically at the end of an if-elseif-else block.
 Patch0:         instrument-control-no-return-in-nonvoid-function.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  octave-devel
-Requires:       octave-cli >= 3.2.0
+BuildRequires:  octave-devel >= 3.8.0
+Requires:       octave-cli >= 3.8.0
 
 %description
 Low level I/O functions for serial, i2c, parallel, tcp, gpib, vxi11 and usbtmc interfaces.
@@ -38,7 +38,9 @@ This is part of the Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch0 -p1
+pushd %{octpkg}-%{version}
+%patch0 -p2
+popd
 %octave_pkg_src
 
 %build

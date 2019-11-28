@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 26 23:52:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.4.0:
+  * SERIAL: added 'status', 'bytesavailable', 'name' and 'type'
+    properties, and the following functions:
+    + seriallist
+    + flushinput
+    + flushoutput
+  * UDP: added 'status' and 'bytesavailable' properties and the
+    following functions:
+    + flushinput
+    + flushoutput
+  * TCP: added properties to object, added overridden functions:
+    + get
+    + set
+    + fprintf
+    + fread
+    + fwrite
+    + flushinput
+    + flushoutput
+  * tcpip(): added wrapper to be matlab compatible(ish)
+  * distribute rpc generated files
+  * verify -M option will work on rpcgen
+  * detect if rpc_error functions allow use of const inputs
+  * prefer libtirpc over builtin rpc when detecting vxi11 functionality
+  * add lock functions used on pkg load/unlock to lock .oct files
+  * implemented instrhwinfo serial list for mac
+
+-------------------------------------------------------------------
 Wed Jun  6 08:26:07 UTC 2018 - badshah400@gmail.com
 
 - Update to version 0.3.1:
