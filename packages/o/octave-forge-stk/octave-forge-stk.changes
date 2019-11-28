@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Nov 27 12:06:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.1:
+  * Documentation
+    + stk_factorialdesign: Provide missing help text. (ticket #91)
+    + Fix HTML doc (INDEX structure was broken).
+- Update to version 2.6.0:
+  * Required Octave version
+    + Required Octave version number has been raised to 3.8.
+  * Parameter estimation
+    + stk_param_init: The syntax with an additional do_estim_lnv parameter
+      is now deprecated. Set model.lognoisevariance to NaN if you want an
+      initial estimate for the variance of the noise.
+    + stk_param_init_lnv: Refuse noiseless models (error).
+    + stk_model_gpposterior: Trigger parameter estimation when lognoisevariance
+      is NaN. In the (experimental) case where lognoisevariance is a noise
+      model object, parameter estimation is triggered as soon as at least one
+      of the optimizable parameters of the model is NaN. (ticket #93)
+    + stk_param_relik: Return [] instead of NaN when the derivative with
+      respect to lnv is requested for a noiseless model.
+    + stk_param_relik: Detect duplicated observation points automatically
+      and raise an error for noiseless models.
+    + stk_param_getdefaultbounds: Estimation bounds for the regularity parameter
+      of the Matérn covariance function are now customizable through the options
+      nu_min_dimfun and nu_max_dimfun.
+  * Covariance functions
+    + Deprecated: stk_noisecov.
+  * Models
+    + stk_get_input_data, stk_get_output_data, stk_get_prior_model: New getters
+      for model properties, that replace get_input_data, get_output_data and
+      get_prior_model respectively (now deprecated).
+    + stk_get_observation_variances: New getter, which returns the vector of
+      variances associated to the observations that have been used to build a model.
+    + stk_gaussiannoise_, stk_gaussiannoise_het0: New classes representing Gaussian
+      noise models. Currently in experimental state, these two classes are merely a
+      proof-of-concept. Other noise model classes can be defined by subclassing
+      stk_gaussiannoise_. (ticket #38)
+    + stk_example_misc05: Demonstrate the use of noise model objects to estimate
+      the dispersion parameter in an heteroscedatic case.
+    + stk_simulate_noise: New function to simulate noise sample replicates.
+  * stk_dataframe and related classes
+    + stk_dataframe: Accept char vectors (or strings) as colnames or rownames
+      argument when there is only one column or one row (ticket #92)
+    + @stk_dataframe/sort: Argument dim can now be skipped, as in the base sort function.
+    + @stk_dataframe/unique: Overload base function.
+  * Graphics
+    + stk_plot1d: Do not create a legend systematically. (ticket #82)
+    + stk_legend: New function to create a legend, using the graphical objects for
+      which a non-empty DisplayName has been provided.
+    + stk_plot_shadedci: Change gray levels and improve legend.
+  * Miscellaneous
+    + stk_options_set: Make it possible to set all options at once using an option
+      structure. Add help text.
+    + stk_runtests: Return test results in a structure.
+    + stk_sampling_nesteddesign: Fix help text.
+
+-------------------------------------------------------------------
 Wed Jul 18 08:48:23 UTC 2018 - badshah400@gmail.com
 
 - Update to version 2.5.1:
