@@ -375,4 +375,24 @@ Test cases:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>729010</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f01b8fe22863ee41d5e42bf68def1d46</srcmd5>
+    <version>2.0.15</version>
+    <time>1574932350</time>
+    <user>dimstar_suse</user>
+    <comment>Stable release of the SUSE XSL stylesheets 2.0.15:
+
+General:
+* Update architecture names to current nomenclature
+
+HTML + PDF:
+* Fix old documentation link www.suse.com/documentation
+  and replace it with https://documentation.suse.com/
+  (#402)
+* Disable intra-xrefs
+  If we point to another book AND we have an @xrefstyle
+  -&gt; output the same text content as the original xref
+  template but remove the link(#398)</comment>
+    <requestid>750917</requestid>
+  </revision>
 </revisionlist>
