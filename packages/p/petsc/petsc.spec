@@ -1,7 +1,7 @@
 #
 # spec file for package petsc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -145,18 +145,16 @@ BuildArch:      noarch
 ExclusiveArch:  do_not_build
 %endif
 
-%if %{without hpc}
-%if 0%{!?package_name:1}
-%define package_name() %{pname}%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
+%if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi"  || "%{mpi_vers}" != "1"
+%define mpi_ext %{?mpi_vers}
 %endif
+
+%if %{without hpc}
+%define package_name() %{pname}%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
 %define libname() lib%{pname}%{so_ver}%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
 %else
 %{hpc_init -c %compiler_family -m %mpi_family %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
-
-# For compatibility package names
-%if "%{mpi_family}" != "openmpi"  || "%{mpi_ver}" != "1"
-%define mpi_ext %{?mpi_ver}
-%endif
 
 %define package_name() %{hpc_package_name %_vers}
 %define libname() lib%{pname}%{expand:%%{hpc_package_name_tail %{**}}}
@@ -199,9 +197,9 @@ Source:         ftp://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-%{versio
 Patch0:         petsc-3.3-p2-fix-shared-libs-sonames.patch
 Patch1:         petsc-3.3-p2-no-rpath.patch
 Patch2:         petsc-3.3-p2-dont-check-for-option-mistakes.patch
-Patch3:         petsc-3.3-fix-error-detection-in-makefile.patch 
-Patch4:         petsc-3.7-fix-pastix-detection.patch       
-Url:            https://www.mcs.anl.gov/petsc/
+Patch3:         petsc-3.3-fix-error-detection-in-makefile.patch
+Patch4:         petsc-3.7-fix-pastix-detection.patch
+URL:            https://www.mcs.anl.gov/petsc/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{!?makedoc:1}
 BuildRequires:  fdupes
@@ -256,7 +254,7 @@ BuildRequires:  zlib-devel
 
 %description
 PETSc is a suite of data structures and routines for the scalable
-(parallel) solution of scientific applications modeled by partial 
+(parallel) solution of scientific applications modeled by partial
 differential equations.
 
 %package -n %{libname %_vers}
@@ -270,7 +268,7 @@ Requires:       libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_fam
 
 %description -n %{libname %_vers}
 PETSc is a suite of data structures and routines for the scalable
-(parallel) solution of scientific applications modeled by partial 
+(parallel) solution of scientific applications modeled by partial
 differential equations.
 
 %{?with_hpc:%{hpc_master_package -n %{libname_plain} -l -L}}
@@ -292,6 +290,9 @@ Requires:       hypre-%{mpi_family}%{?mpi_ext}-devel
 Requires:       ptscotch-%{mpi_family}%{?mpi_ext}-devel
 Requires:       ptscotch-parmetis-%{mpi_family}%{?mpi_ext}-devel
 Requires:       scalapack-%{mpi_family}%{?mpi_ext}-devel
+  %if "%{mpi_family}%{?mpi_ext}" == "openmpi1"
+Provides:       %{pname}%-openmpi-devel
+  %endif
  %endif
 %else # with hpc
 Requires:       %{libname %_vers} = %{version}
@@ -303,7 +304,7 @@ Requires:       libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_fam
 
 %description %{?n_pre}devel
 PETSc is a suite of data structures and routines for the scalable
-(parallel) solution of scientific applications modeled by partial 
+(parallel) solution of scientific applications modeled by partial
 differential equations.
 
 %{?with_hpc:%{hpc_master_package -a devel}}
@@ -420,7 +421,7 @@ export ARCHCFLAGS=-fPIC
         --with-hdf5-include=$HDF5_INC
 %endif
 
-make 
+make
 
 %install
 
@@ -458,7 +459,7 @@ for f in petsc/%{version}/%petsc_arch/lib/*.so*; do
 done
 popd
 
-# Module files 
+# Module files
 mkdir -p %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}
 cat << EOF > %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_ext}}
 #%%Module
@@ -599,7 +600,7 @@ done
 ##
 %post -n %{libname %_vers} -p /sbin/ldconfig
 
-%postun -n %{libname %_vers} 
+%postun -n %{libname %_vers}
 /sbin/ldconfig
 %{?with_hpc:%{hpc_module_delete_if_default}}
 
