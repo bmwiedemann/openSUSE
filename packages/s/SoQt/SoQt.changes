@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 25 22:37:23 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix invalid Requires: in pkgconfig file, replace Qt(4) with Qt5.
+
+-------------------------------------------------------------------
 Mon May 13 15:22:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop invalid requires of doc sub package

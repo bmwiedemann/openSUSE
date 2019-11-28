@@ -94,6 +94,8 @@ the resulting large gains in productivity.
 %setup -q -n soqt-%{version}
 %patch0
 %patch1 -p1
+# Fix broken Qt4 requires in pkgconfig file
+sed -i -e '/Requires:/ s/Qt\([^ ,]*\)/Qt5\1/g' SoQt.pc.cmake.in
 
 %build
 # using the cmake macro leads to compile errors
