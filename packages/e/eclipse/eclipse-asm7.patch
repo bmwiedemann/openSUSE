@@ -1,0 +1,42 @@
+--- eclipse-platform-sources-I20180906-0745/eclipse.pde.ui/apitools/org.eclipse.pde.api.tools/META-INF/MANIFEST.MF	2018-09-06 06:27:51.000000000 +0200
++++ eclipse-platform-sources-I20180906-0745/eclipse.pde.ui/apitools/org.eclipse.pde.api.tools/META-INF/MANIFEST.MF	2019-11-26 17:36:52.106389515 +0100
+@@ -14,12 +14,12 @@
+  org.eclipse.text;bundle-version="[3.4.0,4.0.0)",
+  org.eclipse.core.filebuffers;bundle-version="[3.4.0,4.0.0)",
+  org.eclipse.ant.core;bundle-version="[3.1.300,4.0.0)",
+- org.objectweb.asm;bundle-version="[6.0.0,7.0.0)",
++ org.objectweb.asm;bundle-version="[6.0.0,8.0.0)",
+  org.eclipse.team.core;bundle-version="[3.4.0,4.0.0)",
+  org.eclipse.core.filesystem;bundle-version="[1.2.0,2.0.0)",
+  org.eclipse.equinox.frameworkadmin;bundle-version="[2.0.0,3.0.0)",
+  org.eclipse.core.variables;bundle-version="[3.2.0,4.0.0)",
+- org.objectweb.asm.tree;bundle-version="[6.0.0,7.0.0)"
++ org.objectweb.asm.tree;bundle-version="[6.0.0,8.0.0)"
+ Export-Package: org.eclipse.pde.api.tools.internal;x-friends:="org.eclipse.pde.api.tools.tests,org.eclipse.pde.api.tools.ui,org.eclipse.pde.api.tools.generator",
+  org.eclipse.pde.api.tools.internal.builder;x-friends:="org.eclipse.pde.api.tools.ui,org.eclipse.pde.api.tools.tests",
+  org.eclipse.pde.api.tools.internal.comparator;x-friends:="org.eclipse.pde.api.tools.ui,org.eclipse.pde.api.tools.tests",
+--- eclipse-platform-sources-I20180906-0745/eclipse.pde.ui/apitools/org.eclipse.pde.api.tools.generator/META-INF/MANIFEST.MF	2018-06-13 09:08:22.000000000 +0200
++++ eclipse-platform-sources-I20180906-0745/eclipse.pde.ui/apitools/org.eclipse.pde.api.tools.generator/META-INF/MANIFEST.MF	2019-11-26 17:25:34.327043868 +0100
+@@ -5,7 +5,7 @@
+ Bundle-Version: 1.1.200.qualifier
+ Bundle-Vendor: %providerName
+ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+-Require-Bundle: org.objectweb.asm;bundle-version="[6.0.0,7.0.0)",
++Require-Bundle: org.objectweb.asm;bundle-version="[6.0.0,8.0.0)",
+  org.eclipse.pde.api.tools;bundle-version="[1.0.600,2.0.0)",
+  org.eclipse.jdt.core;bundle-version="[3.8.1,4.0.0)",
+  org.eclipse.core.runtime;bundle-version="[3.11.0,4.0.0)"
+--- eclipse-platform-sources-I20180906-0745/eclipse.pde.ui/apitools/org.eclipse.pde.api.tools.tests/META-INF/MANIFEST.MF	2018-09-06 06:27:51.000000000 +0200
++++ eclipse-platform-sources-I20180906-0745/eclipse.pde.ui/apitools/org.eclipse.pde.api.tools.tests/META-INF/MANIFEST.MF	2019-11-26 17:36:35.738329589 +0100
+@@ -22,9 +22,9 @@
+  org.eclipse.jdt.core.tests.builder;bundle-version="[3.8.0,4.0.0)",
+  org.eclipse.jdt.core.tests.compiler;bundle-version="[3.8.0,4.0.0)",
+  org.eclipse.ant.core,
+- org.objectweb.asm;bundle-version="[6.0.0,7.0.0)",
++ org.objectweb.asm;bundle-version="[6.0.0,8.0.0)",
+  org.eclipse.jface;bundle-version="3.8.0",
+- org.objectweb.asm.tree;bundle-version="[6.0.0,7.0.0)"
++ org.objectweb.asm.tree;bundle-version="[6.0.0,8.0.0)"
+ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ Export-Package: org.eclipse.pde.api.tools.anttasks.tests,
+  org.eclipse.pde.api.tools.apiusescan.tests,

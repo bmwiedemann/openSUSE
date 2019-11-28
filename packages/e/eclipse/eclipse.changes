@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:37:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-asm7.patch
+    + Allow building with objectweb-asm >= 7
+
+-------------------------------------------------------------------
 Sun Nov 24 06:50:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,6 +110,8 @@ Patch31:        eclipse-suse-batik.patch
 Patch32:        eclipse-imagedescriptor.patch
 # Fix build on ppc64 big endian
 Patch33:        eclipse-ppc64.patch
+# Fix build with objectweb-asm 7
+Patch34:        eclipse-asm7.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -500,6 +502,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
 
 # Use ecj when bootstrapping
 %if %{with bootstrap}
