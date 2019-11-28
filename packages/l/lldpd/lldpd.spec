@@ -31,7 +31,7 @@ Release:        0
 Summary:        Implementation of IEEE 802.1ab (LLDP)
 # We have some GPL linux headers in include/linux, they are used on
 # platforms where glibc headers are not recent enough
-License:        MIT AND GPL-2.0-or-later
+License:        ISC AND GPL-2.0-or-later
 Group:          System/Daemons
 URL:            http://vincentbernat.github.com/lldpd/
 Source0:        http://media.luffy.cx/files/lldpd/%{name}-%{version}.tar.gz
