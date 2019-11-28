@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 27 12:15:22 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.6.2:
+  * all source files are now utf-8 encoded
+- Update to version 4.5:
+  * the following functions have been moved into the
+    NaN-toolbox:
+    detrend, histo, histo2, histo3, histo4
+  * detrend: the 2nd output (trend) can be interpolated and
+    should not contain any NaN.
+- Update to version 4.4.5:
+  * make TSA-package dependent of NaN-package
+  * avoid compiling the same core functions from the NaN-toolbox
+- Update to version 4.4.4:
+  * fixes bug #49468 - NaN-toolbox is not required anymore
+    when using Octave's pkg installer
+
+-------------------------------------------------------------------
 Fri Jun 10 17:54:19 UTC 2016 - dmitry_r@opensuse.org
 
 - Update to version 4.4.1
