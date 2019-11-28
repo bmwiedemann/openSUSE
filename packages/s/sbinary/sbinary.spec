@@ -1,7 +1,7 @@
 #
 # spec file for package sbinary
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,10 @@ Source0:        https://github.com/harrah/sbinary/archive/v%{sbinary_version}.ta
 Source1:        https://raw.github.com/willb/climbing-nemesis/master/climbing-nemesis.py
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  scala
 BuildRequires:  mvn(net.sourceforge.fmpp:fmpp)
 BuildRequires:  mvn(org.beanshell:bsh)
 BuildRequires:  mvn(org.freemarker:freemarker)
-BuildRequires:  mvn(org.scala-lang:scala-compiler)
 BuildRequires:  mvn(xml-resolver:xml-resolver)
 Requires:       javapackages-tools
 Requires:       scala
