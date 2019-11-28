@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ga
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  ga
 Name:           octave-forge-%{octpkg}
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Genetic optimization code for Octave
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  octave-devel
+BuildRequires:  octave-devel >= 3.4.0
 Requires:       octave-cli >= 3.4.0
 
 %description
