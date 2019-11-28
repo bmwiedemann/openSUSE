@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Nov 27 00:32:19 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.0.0
+  * This version of the package is not backward compatible for the
+    following reasons:
+    +  Functions have changed their name
+	 beltproblem      --> beltProblem
+	 closed_path      --> closedPath
+	 shapearea        --> shapeArea
+	 shapecentroid    --> shapeCentroid
+	 shapeplot        --> plotShape
+	 shapetransform   --> transformShape
+         simplifypolygon  --> simplifyPoligon
+         simplifyPolyline --> simplifyPolyline
+     + Functions that are in GNU Octave core since 4.0.1
+	 rad2deg deg2rad
+  * Added Functions:
+    isAxisHandle isPolygonCCW isPolygonCW_Clipper joinPolygons polygon2patch
+    orientPolygon boundedVoronoi2d drawGraphEdges clipGraph grAdjacentEdges
+    grAdjacentNodes grEdgeLengths centroidalVoronoi2d clipGraphPolygon
+    cvtUpdate intersectEdgePolygon intersectLinePolygon isPointInPolygon
+    polygonBounds polygonContains convexHull minimumCaliperDiameter
+    grShortestPath drawNodeLabels nndist createRotation3dLineAngle drawPlane3d
+    rotation3dAxisAndAngle boxToMesh checkMeshAdjacentFaces
+    clipConvexPolyhedronHP clipMeshVertices createDodecahedron
+    createDurerPolyhedron createIcosahedron createMengerSponge createOctahedron
+    createRhombododecahedron createSoccerBall createTetrahedron
+    createTetrakaidecahedron cylinderMesh drawFaceNormals drawPolyhedron
+    ellipsoidMesh faceCentroids faceNormal intersectLineMesh3d intersectPlaneMesh
+    mergeCoplanarFaces meshAdjacencyMatrix meshDihedralAngles meshEdgeFaces
+    meshEdgeLength meshEdges meshFace meshFaceAdjacency meshFaceEdges
+    meshFaceNumber meshFacePolygons meshSurfaceArea meshVolume minConvexHull
+    polyhedra polyhedronCentroid polyhedronMeanBreadth polyhedronNormalAngle
+    polyhedronSlice readMesh_off removeMeshVertices smoothMesh sphereMesh
+    steinerPolytope subdivideMesh surfToMesh tetrahedronVolume torusMesh
+    triangulateFaces trimMesh trimeshEdgeFaces trimeshMeanBreadth
+    trimeshSurfaceArea vertexNormal distancePoints clipLine3d
+    drawLine3d eulerAnglesToRotation3d intersectLineSphere linePosition3d
+    recenterTransform3d transformLine3d transformVector3d intersectPolylines
+    clipPolyline clipPolyline_clipper clipPolygon clipPolygon_clipper
+  * Improved Functions
+    + drawPolygon is more efficent when drawing polygons in cells and now it
+      takes an axis handle as first argument (optional). Added demo and tests
+    + intersectEdges accepts tolerance as third argument
+    + polygon2patch demo fixed, missing third argument for patch.
+
+-------------------------------------------------------------------
 Fri Jun 10 16:14:46 UTC 2016 - dmitry_r@opensuse.org
 
 - Update to version 2.1.1

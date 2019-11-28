@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-geometry
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  geometry
 Name:           octave-forge-%{octpkg}
-Version:        2.1.1
+Version:        3.0.0
 Release:        0
 Summary:        Computational Geometry for Octave
-License:        GPL-3.0+ and BSD-2-Clause
+License:        GPL-3.0-or-later AND BSD-2-Clause
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-BuildRequires:  octave-devel
-Requires:       octave-cli >= 4.0.0
-BuildArch:      noarch
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+BuildRequires:  octave-devel >= 4.0.1
+Requires:       octave-cli >= 4.0.1
 
 %description
 Library for geometric computing extending MatGeom functions. Useful to create,
@@ -56,5 +55,6 @@ This is part of Octave-Forge project.
 %files
 %defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
+%{octlib_dir}/%{octpkg}-%{version}
 
 %changelog
