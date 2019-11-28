@@ -1,7 +1,7 @@
 #
 # spec file for package scotch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -137,8 +137,8 @@ ExclusiveArch:  do_not_build
 %{?with_hpc:%{!?compiler_family:%global compiler_family gnu}}
 %{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
 
-# For compatibility package names
-%if "%{mpi_family}" != "openmpi" || "%{mpi_vers}" != "1"
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
+%if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi"  || "%{mpi_vers}" != "1"
 %define mpi_ext %{?mpi_vers}
 %endif
 
@@ -187,7 +187,7 @@ Group:          Productivity/Scientific/Math
 Name:           %{package_name}
 Version:        %{vers}
 Release:        0
-Url:            http://www.labri.fr/perso/pelegrin/scotch/
+URL:            http://www.labri.fr/perso/pelegrin/scotch/
 Source0:        https://gforge.inria.fr/frs/download.php/latestfile/298/scotch_%{version}.tar.gz
 Source1:        scotch-Makefile.inc.in
 BuildRequires:  autoconf
