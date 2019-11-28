@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Nov 27 16:05:54 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 3.2.2
+  + Bugs fixed
+    * Python format error when trying to report that the system is not reported
+      on Windows.
+    * The setup script would error on build if R is not installed. It is now
+      printing an error message.
+- Update to version 3.2.1
+  + Bugs fixed
+    * The wrapper for the R package `dbplyr` could not import the underlying
+      package (refactoring elsewhere was not propagated there).
+    * Creating R objects called `names` `globalenv` caused the method
+      :meth:`Sexp.names` to fail.
+    * Whenever the pandas conversion was activated :class:`FloatSexpVector` instances
+      with the R class `POSIXct` attached where not corrected mapped back to pandas
+      datetime arrays..
+    * Fix installation when an installation when a prefix without write access is used.
+- Update to version 3.2.0
+  + New features
+    * rpy2 can built and used with :mod:`cffi`'s ABI or API modes (releases 3.0.x and
+      3.1.x were using the ABI mode exclusively). At the time of writing the default
+      is still the ABI mode but the choice can be controlled through the environment variable
+      `RPY2_CFFI_MODE`. If set, possible values are `ABI` (default if the environment
+      variable is not set), `API`, or `BOTH`. When the latter, both `API` and `ABI`
+      modes are built, and the choice of which one to use can be made at run time.
+  + Changes
+    * The "consoleread" callback (reading input to the R console) is now assuming UTF-8
+      (was previously assuming ASCII) and is no longer trying to add a "new line" character
+      at the end of the input.
+    * Querying an R environment with an invalid key will generate a :class:`TypeError`
+      or a :class:`ValueError` depending on the issue (rather than always :class:`ValueError`
+      before.
+  + Bugs fixed
+    * `setup.py` is now again compatible with Python2.
+    * Unit tests were failing if numpy is not installed.
+    * :mod:`rpy2.situation` is no longer breaking when R is not the in path and
+      there is no environment variable `R_HOME`.
+    * Build script for the cffi interface is now using the environment
+      variable `R_HOME` whenever defined (rather that always infer it from the
+      R in the PATH).
+    * Converting R strings back to Python was incorrectly using `Latin1` while `UTF-8` was
+      intended.
+- Update to version 3.1.0
+  + New features
+    * Python matrix multiplication (`__matmul__` / `@`) added to
+      R :class:`Matrix` objects.
+    * An :class:`threading.RLock` is added to :mod:`rpy2.rinterface_lib.openrlib` and is
+      used by the context manager :func:`rpy2.rinterface_lib.memorymanagement.rmemory`
+      to ensure that protect/unprotect cycles cannot be broken by thread switching, at least
+      as long as the context manager is used to handle such cycles (see issue #571).
+    * The documentation covers the use of notebooks (mainly Jupyter/Jupyterlab).
+    * The PNG output in Jupyter notebooks R cells can now specify an argument `--type`
+      (passed as the named argument `type` in the R function `png`).
+      For example on some Linux systems and R installations, the type `cairo`
+      can fix issues when alpha transparency is used.
+  + Changes
+    * Added callbacks for `ptr_R_Busy()` and `ptr_R_ProcessEvents()`.
+    * `rstart` now an objects in :mod:`rpy2.rinterface_lib.embedded`
+      (set to `None` until R is initialized).
+    * Unit tests are included in a subpackage :mod:`rpy2.tests` as was the
+      case before release 3.0.0.
+    * Experimental initialization for Microsoft Windows.
+    * :mod:`rpy2.situation` is now also reporting the rpy2 version.
+    * :func:`rpy2.robjecs.package_utils.default_symbol_check_after` was
+      renamed  :func:`rpy2.robjecs.package_utils.default_symbol_resolve`.
+      The named parameters `default_symbol_check_after` present in few methods
+      in :mod:`rpy2.robjects.packages` and :mod:`rpy2.robjects.functions` were
+      modified to keep a consistent naming.
+    * Trying to instantiate an :class:`rpy2.rlike.container.OrdDict` with a
+      a :class:`dict` will result in a :class:`TypeError` rather than a
+      :class:`ValueError`.
+    * Methods of :class:`rpy2.rlike.container.OrdDict` now raises a
+      :class:`NotImplementedError` when not implemented.
+    * The creation of R vectors from Python sequences is now relying on a method
+      :meth:`_populate_r_vector` that allows vectorized implementation to
+      to improve speed.
+    * Continuous integration tests run against Python 3.6, 3.7, and 3.8. It is
+      no longer checked against Python 3.5.
+  + Bugs fixed
+    * `aes` in :mod:`rpy2.robjects.lib.ggplot2` had stopped working with the
+      R package ggplot2 reaching version 3.2.0..
+    * Better handling of recent :mod:`pandas` arrays with missing values.
+    * The mapping of the R operator `%in%` reachable through the attribute `ro`
+      of R vectors was always returning `True`. It is now working properly.
+    * R POSIXct vectors with `NA` dates were triggering an error when converted
+      in a data frame converted to :mod:`pandas`.
+
+-------------------------------------------------------------------
 Thu Jul 25 17:54:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to Release 3.0.5

@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-rpy2
-Version:        3.0.5
+Version:        3.2.2
 Release:        0
 Summary:        A Python interface to the R Programming Language
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/Python
-Url:            https://bitbucket.org/rpy2/rpy2
+URL:            https://bitbucket.org/rpy2/rpy2
 Source:         https://files.pythonhosted.org/packages/source/r/rpy2/rpy2-%{version}.tar.gz
-BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module cffi >= 1.13.1}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  R-base >= 3.2
@@ -35,11 +34,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  texinfo
 BuildRequires:  texlive-latex
 Requires:       R-base >= 2.12
-Requires:       python-cffi >= 1.0.0
+Requires:       python-cffi >= 1.13.1
 Requires:       python-numpy
 Requires:       readline
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -52,7 +50,7 @@ can be used from Python.
 This code is inspired by RSPython from the Omegahat project.
 
 %prep
-%setup -qn rpy2-%{version}
+%setup -q -n rpy2-%{version}
 sed -i 's/\r$//' README.rst
 
 %build
@@ -77,7 +75,7 @@ export CFLAGS="%{optflags}"
 %license gpl-2.0.txt
 %{python_sitelib}/rpy2/
 %{python_sitelib}/rpy2-%{version}-py*.egg-info
-%pycache_only %{python_sitelib}/__pycache__/_rinterface_cffi*.pyc*
-%{python_sitelib}/_rinterface_cffi.py*
+%pycache_only %{python_sitelib}/__pycache__/_rinterface*.py*
+%{python_sitelib}/_rinterface*.py*
 
 %changelog
