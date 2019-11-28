@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-ecf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ URL:            https://www.eclipse.org/ecf/
 Source0:        http://git.eclipse.org/c/ecf/org.eclipse.ecf.git/snapshot/org.eclipse.ecf-%{git_tag}.tar.xz
 # Change how feature deps are specified, to avoid embedding versions
 Patch0:         eclipse-ecf-feature-deps.patch
+Patch1:         eclipse-ecf-asm7.patch
 BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
 BuildRequires:  eclipse-license
@@ -125,6 +126,7 @@ find . -type f -name "*.jar" -exec rm {} \;
 find . -type f -name "*.class" -exec rm {} \;
 
 %patch0
+%patch1 -p1
 
 # Correction for content of runtime package
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.presence']" releng/features/org.eclipse.ecf.core/feature.xml
