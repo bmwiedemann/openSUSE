@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 27 21:04:19 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1574886568.694f13bc7:
+  * Use the cache tmp directory for temporary download files created by the cache service
+  * Use info instead of warn messages (so monitoring does not get triggered) and quote all string values
+  * Allow for very quiet cache service tests
+  * Be a little less verbose with init log messages
+  * Allow from_worker to set attributes as well
+  * Remove redundant error message
+  * Format cache service logs to start with a newline
+  * Improve cache service log messages to help with debugging issues of missing assets
+  * Log all cache service output on both sides (cache service and worker) and fix many small test issues
+  * Handle cache model logging through an attribute
+  * Make resetting locks a little safer with a --reset-locks command line option
+  * Change CI badge in README.asciidoc
+  * Stabilize t/api/14-plugin_obs_rsync_async.t
+  * Reset all leftover Gru locks after restart
+
+-------------------------------------------------------------------
 Mon Nov 25 13:04:59 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1574510263.217a2c530:

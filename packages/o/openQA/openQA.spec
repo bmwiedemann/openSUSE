@@ -65,7 +65,7 @@
 %define devel_requires %build_requires %test_requires rsync curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1574510263.217a2c530
+Version:        4.6.1574886568.694f13bc7
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -81,7 +81,7 @@ BuildRequires:  fdupes
 Requires:       %{main_requires}
 Requires:       openQA-client = %{version}
 Requires:       openQA-common = %{version}
-Requires:       perl(Minion) >= 9.13
+Requires:       perl(Minion) >= 10.0
 # we need to have the same sha1 as expected
 %requires_eq    perl-Mojolicious-Plugin-AssetPack
 Recommends:     %{name}-local-db
