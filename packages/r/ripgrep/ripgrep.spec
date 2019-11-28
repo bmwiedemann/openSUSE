@@ -1,7 +1,7 @@
 #
 # spec file for package ripgrep
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ripgrep
-Version:        0.9.0
+Version:        11.0.2
 Release:        0
 Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense
@@ -27,8 +27,7 @@ Source:         https://github.com/BurntSushi/ripgrep/archive/%{version}.tar.gz#
 Source1:        vendor.tar.xz
 BuildRequires:  asciidoc
 BuildRequires:  cargo
-BuildRequires:  rust
-BuildRequires:  rust-std
+BuildRequires:  rust >= 1.31
 
 %description
 ripgrep is a line oriented search tool that combines the usability of
@@ -82,7 +81,7 @@ cargo build --release %{?_smp_mflags}
 
 %install
 export CARGO_HOME=$PWD/cargo-home
-cargo install --root=%{buildroot}%{_prefix}
+cargo install --path . --root=%{buildroot}%{_prefix}
 
 # remove residue crate file
 rm %{buildroot}%{_prefix}/.crates.toml

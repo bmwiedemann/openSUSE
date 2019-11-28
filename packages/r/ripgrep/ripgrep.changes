@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Nov 11 15:52:55 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 11.0.2
+  * See included CHANGELOG.md for the complete changelog
+
+-------------------------------------------------------------------
+Sun Sep 16 02:44:51 UTC 2018 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Updated to version 0.10.0
+- Breaking change
+  * The match semantics of -w/--word-regexp have changed slightly.
+    They used to be \b(?:<your pattern>)\b. Now, it's
+    (?:^|\W)(?:<your pattern>)(?:$|\W). This matches the behavior
+    of GNU grep and is believed to be closer to the intended
+    semantics of the flag. 
+- Features
+  * Add -U/--multiline flag that permits matching over multiple lines.
+  * Add -P/--pcre2 flag that gives support for look-around and
+    backreferences.
+  * Add --json flag that prints results in a JSON Lines format.
+  * --one-file-system flag to skip directories on different file systems.
+  * Add --sort and --sortr flag for more sorting. Deprecate --sort-files.
+  * The --trim flag strips prefix whitespace from all lines printed.
+  * Add --null-data flag, which makes ripgrep use NUL as a line terminator.
+  * The --passthru flag now works with the --replace flag.
+  * Add --line-buffered and --block-buffered for forcing a buffer strategy.
+  * Add --pre-glob for filtering files through the --pre flag.
+- Bug fixes
+  * Searching with non-zero context can now use memory maps if
+    appropriate.
+  * ripgrep will now stop correctly when its output pipe is closed.
+  * The -w/--word-regexp flag now works more intuitively.
+  * Detection of readable stdin has improved on Windows.
+  * Matching empty lines now works correctly in several corner cases.
+  * Color escape sequences now coalesce, which reduces output size.
+  * ripgrep is now more robust with respect to memory maps failing.
+  * Color escape sequences are no longer emitted for empty matches.
+  * Context from the --passthru flag should not impact process exit status.
+  * Fixes bug in ignore crate where first path was always treated
+    as a symlink.
+  * Read stderr asynchronously when running a process.
+  * Add compile time and runtime CPU features to --version output.
+  * Don't complete bare pattern after -f in zsh.
+
+-------------------------------------------------------------------
 Mon Aug 27 16:26:04 UTC 2018 - jengelh@inai.de
 
 - Update RPM groups and summary.
