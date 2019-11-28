@@ -24,13 +24,13 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.2.7.1
+Version:        4.2.8.2
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
-Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/krita/4.2.8/krita-%{version}.tar.xz
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules

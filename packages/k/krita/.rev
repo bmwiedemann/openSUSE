@@ -416,4 +416,12 @@
   * Fix artifacts when moving control points of a path shape</comment>
     <requestid>735352</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9887b977dd8c1b1028d4c1237e83d260</srcmd5>
+    <version>4.2.8.2</version>
+    <time>1574932632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751467</requestid>
+  </revision>
 </revisionlist>
