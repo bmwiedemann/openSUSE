@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-nan
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  nan
 Name:           octave-forge-%{octpkg}
-Version:        3.1.4
+Version:        3.4.3
 Release:        0
 Summary:        A statistics and machine learning toolbox
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-BuildRequires:  octave-devel
-Requires:       octave-cli >= 3.2.0
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Patch0:         fix_missing_return.patch
+BuildRequires:  libsvm-devel
+BuildRequires:  octave-devel >= 3.8.0
+Requires:       octave-cli >= 3.8.0
 
 %description
 A statistics and machine learning toolbox for data with and w/o missing values.
@@ -34,7 +36,10 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-sed -i 's/-lblas/-l%{octave_blas}/g' %{octpkg}-%{version}/src/Makefile
+pushd %{octpkg}-%{version}
+%patch0 -p1
+popd
+sed -i 's/-lblas/-l%{octave_blas}/g' %{octpkg}-%{version}/src/Makefile.in
 %octave_pkg_src
 
 %build
