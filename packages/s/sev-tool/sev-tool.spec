@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Productivity/Security
 Url:            https://github.com/AMDESE/sev-tool
 Source:         %{name}_%{version}.orig.tar.gz
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -34,9 +35,10 @@ BuildRequires: openssl-devel
 %else
 BuildRequires: libopenssl-devel
 %endif
-BuildRequires:  libvirt-devel
-BuildRequires:  openssl >= 1.1.0
 
+BuildRequires:  libvirt-devel
+BuildRequires:  make
+BuildRequires:  openssl >= 1.1.0
 %description
 A tool for provisioning SEV encrypted virtual guests, executing hardware tests, and running host machine introspection.
 
