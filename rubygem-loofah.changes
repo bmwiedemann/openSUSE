@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 28 07:22:05 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.4.0
+
+  ### Features
+
+  * Allow CSS property `max-width` [#175] (Thanks, @bchaney!)
+  * Allow CSS sizes expressed in `rem` [#176, #177]
+  * Add `frozen_string_literal: true` magic comment to all `lib` files. [#118]
+
+-------------------------------------------------------------------
 Tue Nov 12 15:24:24 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.3.1
