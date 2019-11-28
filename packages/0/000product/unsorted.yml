@@ -10606,7 +10606,8 @@ unsorted:
   - libpetsc-gnu-openmpi2-hpc 
   - libpetsc-gnu-openmpi3-hpc 
   - libpetsc3 
-  - libpetsc3-openmpi 
+  - libpetsc3-openmpi1 
+  - libpetsc3-openmpi2 
   - libpetsc_3_11_3-gnu-mpich-hpc 
   - libpetsc_3_11_3-gnu-mvapich2-hpc 
   - libpetsc_3_11_3-gnu-openmpi1-hpc 
@@ -10770,7 +10771,7 @@ unsorted:
   - libptscotch-gnu-openmpi3-hpc 
   - libptscotch0-mpich 
   - libptscotch0-mvapich2 
-  - libptscotch0-openmpi 
+  - libptscotch0-openmpi1 
   - libptscotch0-openmpi2 
   - libptscotch_6_0_7-gnu-mpich-hpc 
   - libptscotch_6_0_7-gnu-mvapich2-hpc 
@@ -15246,6 +15247,7 @@ unsorted:
   - palm-db-tools 
   - pam-devel-32bit: [x86_64] 
   - pam-python 
+  - pam-test 
   - pam_cap 
   - pam_cap-32bit: [x86_64] 
   - pam_ccreds 
@@ -15332,6 +15334,7 @@ unsorted:
   - parboiled 
   - parboiled-javadoc 
   - parboiled-scala 
+  - parboiled-scala-javadoc 
   - pari-devel 
   - pari-elldata 
   - pari-galdata 
@@ -16578,7 +16581,8 @@ unsorted:
   - petsc-gnu-openmpi1-hpc-devel 
   - petsc-gnu-openmpi2-hpc-devel 
   - petsc-gnu-openmpi3-hpc-devel 
-  - petsc-openmpi-devel 
+  - petsc-openmpi1-devel 
+  - petsc-openmpi2-devel 
   - petsc_3_11_3-gnu-mpich-hpc-devel 
   - petsc_3_11_3-gnu-mpich-hpc-saws 
   - petsc_3_11_3-gnu-mvapich2-hpc-devel 
@@ -17146,15 +17150,15 @@ unsorted:
   - ptscotch-mvapich2 
   - ptscotch-mvapich2-devel 
   - ptscotch-mvapich2-devel-static 
-  - ptscotch-openmpi 
-  - ptscotch-openmpi-devel 
-  - ptscotch-openmpi-devel-static 
+  - ptscotch-openmpi1 
+  - ptscotch-openmpi1-devel 
+  - ptscotch-openmpi1-devel-static 
   - ptscotch-openmpi2 
   - ptscotch-openmpi2-devel 
   - ptscotch-openmpi2-devel-static 
   - ptscotch-parmetis-mpich-devel 
   - ptscotch-parmetis-mvapich2-devel 
-  - ptscotch-parmetis-openmpi-devel 
+  - ptscotch-parmetis-openmpi1-devel 
   - ptscotch-parmetis-openmpi2-devel 
   - ptscotch_6_0_7-gnu-mpich-hpc 
   - ptscotch_6_0_7-gnu-mpich-hpc-devel 
@@ -17385,8 +17389,8 @@ unsorted:
   - python-nlopt 
   - python-notify 
   - python-notify-devel 
-  - python-notmuch 
-  - python-notmuch-doc 
+  - python-notmuch: [x86_64] 
+  - python-notmuch-doc: [x86_64] 
   - python-novaclient-doc 
   - python-obexftp 
   - python-octaviaclient-doc 
