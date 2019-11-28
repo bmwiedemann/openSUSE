@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware-config
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-config
-Version:        2019.11.06
+Version:        2019.11.19
 Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
 License:        MIT

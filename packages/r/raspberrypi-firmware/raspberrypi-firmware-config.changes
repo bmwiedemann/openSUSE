@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov 26 17:30:58 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Enable rpi4-cma dt overlay to properly setup CMA on that platform (SLE-7771)
+- Enable rpi4-pcie-ib-size-fix dt overlay to properly setup PCIe on that
+  platform (SLE-7771)
+
+-------------------------------------------------------------------
+Tue Nov 26 16:13:12 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 6e4a7232c (2019-11-19):
+  * firmware: platform: Differentiate between boostable and turbo clocks
+  * firmware: arm_dt: Set WL_ON and BT_ON from .dtb
+  * firmware: Fixup chosing of bit depth in legacy graphics
+    See: raspberrypi/linux#3331
+  * firmware: vec: Setup WideScreen Signalling outside of copy protection
+    See: https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=256489
+  * firmware: Add global reset mailbox
+  * firmware: 2711: De-couple start.elf clock setup from the bootloader
+  * firmware: scaler: Correct defines for SCALER_POS0_START_Y_[MASK|SHIFT] (HVS4)
+  * firmware: platform: Fix missing HDMI PHY power down bit
+  * firmware: Reduce voltage as part of DVFS
+  * firmware: arm-loader: Inherit 2711 mac-address from the bootloader
+    See: http://git/vc4/vc4/merge_requests/687
+  * firmware: arm_loader: Respect all required frequencies when throttling
+  * firmware: Fixup vcgencmd display_power return values
+
+-------------------------------------------------------------------
+Mon Nov 25 16:19:23 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- If booting RPi in arm64 mode or not will be set by u-boot through
+  ubootconfig.txt. This allows to build u-boot for RPi3/4 with 32-bit.
+
+-------------------------------------------------------------------
 Fri Nov 15 21:17:32 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
 
 - config changes for RPi3:

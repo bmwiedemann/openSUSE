@@ -44,15 +44,15 @@ sdram_freq=400
 
 [pi3]
 
-arm_control=0x200
-
 # These are not applied automatically? Needed to use respective upstream drivers.
 dtoverlay=vc4-kms-v3d
 dtoverlay=dwc2
 
 [pi4]
-arm_64bit=1
+
 dtoverlay=disable-vc4
+dtoverlay=rpi4-cma
+dtoverlay=rpi4-pcie-ib-size-fix
 
 [all]
 
