@@ -1188,6 +1188,7 @@ unsorted:
   - blobwars 
   - blobwars-lang 
   - blockout 
+  - blockzone-fonts 
   - blog-devel 
   - blog-plymouth 
   - blogbench 
@@ -1385,6 +1386,7 @@ unsorted:
   - cadabra2-examples 
   - cadabra2-gui 
   - cadaver 
+  - cadsondemak-fonts 
   - caffe 
   - caffe-devel 
   - caffe-examples 
@@ -1488,6 +1490,7 @@ unsorted:
   - capnproto 
   - cardpeek 
   - cargo 
+  - cargo-c 
   - cargo-doc 
   - caribou 
   - caribou-common 
@@ -6536,6 +6539,7 @@ unsorted:
   - kohsuke-pom 
   - kolor-manager 
   - kompare-devel 
+  - kompose 
   - konkretcmpi-devel 
   - konkretcmpi-python 
   - konqueror 
@@ -7474,6 +7478,10 @@ unsorted:
   - libSwiften4 
   - libTMCG-devel 
   - libTMCG18 
+  - libTutf-devel 
+  - libTutf1 
+  - libTw-devel 
+  - libTw5 
   - libUTF0_3 
   - libUil4 
   - libUil4-32bit: [x86_64] 
@@ -16662,6 +16670,7 @@ unsorted:
   - picocli-javadoc 
   - picocom 
   - picojson-devel 
+  - picom 
   - pidentd 
   - pidgin-devel 
   - pidgin-plugin-advanced-sound-notification 
@@ -17752,6 +17761,7 @@ unsorted:
   - python2-apptools 
   - python2-apsw 
   - python2-arabic-reshaper 
+  - python2-arf 
   - python2-argcomplete 
   - python2-argh 
   - python2-argon2-cffi 
@@ -19274,6 +19284,7 @@ unsorted:
   - python2-python-sql 
   - python2-python-stdnum 
   - python2-python-subunit 
+  - python2-python-ternary 
   - python2-python-twitter 
   - python2-python-utils 
   - python2-python-vlc 
@@ -20070,6 +20081,7 @@ unsorted:
   - python3-apsw 
   - python3-ara 
   - python3-arabic-reshaper 
+  - python3-arf 
   - python3-argcomplete: [i586] 
   - python3-argh 
   - python3-argon2-cffi 
@@ -20926,6 +20938,7 @@ unsorted:
   - python3-importlab 
   - python3-importlib-metadata: [i586] 
   - python3-imread 
+  - python3-imreg 
   - python3-infinity 
   - python3-inflect 
   - python3-inflection 
@@ -21506,6 +21519,7 @@ unsorted:
   - python3-proselint 
   - python3-protobuf 
   - python3-pscript 
+  - python3-psychtoolbox 
   - python3-psycopg2 
   - python3-ptpython 
   - python3-ptpython-ptipython 
@@ -21810,6 +21824,7 @@ unsorted:
   - python3-python-sql 
   - python3-python-stdnum 
   - python3-python-subunit 
+  - python3-python-ternary 
   - python3-python-twitter 
   - python3-python-utils 
   - python3-python-vlc 
@@ -23232,7 +23247,6 @@ unsorted:
   - ruby2.6-rubygem-mustermann-testsuite 
   - ruby2.6-rubygem-mysql2-doc 
   - ruby2.6-rubygem-mysql2-doc-0.4 
-  - ruby2.6-rubygem-mysql2-testsuite 
   - ruby2.6-rubygem-mysql2-testsuite-0.4 
   - ruby2.6-rubygem-net-ldap-doc 
   - ruby2.6-rubygem-net-ldap-testsuite 
@@ -32254,6 +32268,7 @@ unsorted:
   - tvtime-lang 
   - twemoji-color-font 
   - twilio-utils 
+  - twin 
   - twind 
   - twinkle 
   - twm 
