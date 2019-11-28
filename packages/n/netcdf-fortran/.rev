@@ -80,4 +80,13 @@
     <comment></comment>
     <requestid>734397</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>84eeb13f3612805a86b2de85a90c9035</srcmd5>
+    <version>4.5.2</version>
+    <time>1574945496</time>
+    <user>dimstar_suse</user>
+    <comment>- Add constraints for disk and memory, this will hopefully fix
+  build issues with 15.2 (bsc#1157973).</comment>
+    <requestid>751572</requestid>
+  </revision>
 </revisionlist>
