@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-doctest
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  doctest
 Name:           octave-forge-%{octpkg}
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Octave-Forge documentation tests
 License:        GPL-3.0-or-later AND BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  octave-devel
+BuildRequires:  octave-devel >= 4.2.0
 Requires:       octave-cli >= 4.2.0
 BuildArch:      noarch
 
