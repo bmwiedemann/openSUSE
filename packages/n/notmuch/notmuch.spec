@@ -1,7 +1,7 @@
 #
 # spec file for package notmuch
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           notmuch
-Version:        0.29.2
+Version:        0.29.3
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
@@ -29,7 +29,7 @@ Source3:        %{URL}/releases/test-databases/database-v1.tar.xz
 # key fingerprint: 7A18 807F 100A 4570 C596  8420 7E4E 65C8 720B 706B
 Source4:        notmuch.keyring
 
-%{bcond_without python}
+%{bcond_with python}
 %{bcond_without python3}
 %{bcond_without emacs}
 

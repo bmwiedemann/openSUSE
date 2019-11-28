@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:14:18 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.29.3
+
+  Disable python-notmuch building following upstream with the Debian package
+
+  General
+  -------
+
+  Fix for use-after-free in notmuch_config_list_{key,val}.
+
+  Fix for double close of file in notmuch-dump.
+
+-------------------------------------------------------------------
 Mon Oct 21 07:59:45 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.29.2

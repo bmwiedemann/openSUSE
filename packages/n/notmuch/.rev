@@ -211,4 +211,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>746279</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>95990a2b7ed4e8f80aa67536e63616b0</srcmd5>
+    <version>0.29.3</version>
+    <time>1574945492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751569</requestid>
+  </revision>
 </revisionlist>
