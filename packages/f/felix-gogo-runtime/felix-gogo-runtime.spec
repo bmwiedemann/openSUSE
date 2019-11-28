@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-runtime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  mvn(org.apache.felix:gogo-parent:pom:) >= 4
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.osgi:osgi.core)
-BuildConflicts: java-devel >= 9
 BuildArch:      noarch
 
 %description
@@ -51,7 +50,10 @@ This package contains the API documentation for %{name}.
 %{mvn_file} : felix/%{bundle}
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=8
+%endif
 
 %install
 %mvn_install
