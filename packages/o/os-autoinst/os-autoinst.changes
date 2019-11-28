@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 26 19:17:35 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1574795840.3973b078:
+  * t: Catch output in 18-backend-qemu.t
+  * Remove obsolete AUTO_INST after more than a year past c670720d
+  * Prevent duplicate "Saving QEMU state to qemu_state.json"
+  * Avoid the word "killing" to have nicer wording and discern it from POSIX "kill"
+  * svirt: Wait for logfile from script in open_serial_console_via_ssh
+  * backend: Extract 'truncate_serial_file' into base class
+  * Delete vim footer in files that still have it
+
+-------------------------------------------------------------------
 Fri Nov 22 13:39:02 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1574429927.5158b63b:
