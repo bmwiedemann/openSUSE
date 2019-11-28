@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 27 11:46:17 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191127.ae1b6ea1:
+  * Fix all E22x errors
+  * Some flake8 improvements
+
+-------------------------------------------------------------------
+Wed Nov 27 10:34:14 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191127.b07939d2:
+  * Gracefully handle utf8 errors in installcheck
+
+-------------------------------------------------------------------
 Tue Nov 26 16:07:13 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191126.ac861592:
