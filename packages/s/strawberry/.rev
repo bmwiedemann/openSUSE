@@ -340,4 +340,27 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>747023</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>645c24b9558dad5e22b9a3b024772ae1</srcmd5>
+    <version>0.6.7</version>
+    <time>1574932640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.7
+ + Fixed crash when cancelling scrobbler authentication
+ + Fixed &quot;Double clicking a song in the playlist&quot; behaviour setting
+ + Fixed &quot;Pressing Previous in player&quot; behaviour setting
+ + Fixed updating compilations where there are spaces or special characters in filenames
+ + Fixed cases where songs were stuck in &quot;Various Artists&quot; because not all songs in
+   the same compilation was removed from the model before readded with actual artist.
+ + Fixed a bug when importing playlists where metadata was reset
+ + Fixed scrobbler to also scrobble songs without album title
+ + Fixed text for replay gain setting not loading in backend setting
+ + Added back lyrics from Chartlyrics
+ + Added ability to show fullsize cover on double-click in playing widget
+ + Added separator between &quot;unset cover&quot; and &quot;show fullsize&quot; in popup menu
+ + Removed left click on analyzer to popup menu
+ + (Windows) Added killproc executable to terminate running process before uninstalling
+</comment>
+    <requestid>751470</requestid>
+  </revision>
 </revisionlist>

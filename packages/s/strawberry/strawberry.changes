@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 27 22:21:09 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.6.7
+ + Fixed crash when cancelling scrobbler authentication
+ + Fixed "Double clicking a song in the playlist" behaviour setting
+ + Fixed "Pressing Previous in player" behaviour setting
+ + Fixed updating compilations where there are spaces or special characters in filenames
+ + Fixed cases where songs were stuck in "Various Artists" because not all songs in
+   the same compilation was removed from the model before readded with actual artist.
+ + Fixed a bug when importing playlists where metadata was reset
+ + Fixed scrobbler to also scrobble songs without album title
+ + Fixed text for replay gain setting not loading in backend setting
+ + Added back lyrics from Chartlyrics
+ + Added ability to show fullsize cover on double-click in playing widget
+ + Added separator between "unset cover" and "show fullsize" in popup menu
+ + Removed left click on analyzer to popup menu
+ + (Windows) Added killproc executable to terminate running process before uninstalling
+
+-------------------------------------------------------------------
 Sat Nov  9 16:29:10 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
 
 - Update to version 0.6.6
