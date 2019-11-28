@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-jar-plugin
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Maven JAR Plugin
 License:        Apache-2.0
@@ -35,11 +35,12 @@ Patch0:         %{base_name}-bootstrap-resources.patch
 Patch1:         01-allow-replacing-artifacts.patch
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-BuildRequires:  maven-archiver
+BuildRequires:  maven-archiver >= 3.5.0
+BuildRequires:  maven-file-management
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
-BuildRequires:  plexus-archiver
-BuildRequires:  plexus-utils
+BuildRequires:  plexus-archiver >= 4.2.0
+BuildRequires:  plexus-utils >= 3.3.0
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
@@ -94,6 +95,7 @@ cp %{SOURCE1} build.xml
 %if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
+	maven-file-management/file-management \
 	maven-archiver/maven-archiver \
 	maven/maven-artifact \
 	maven/maven-core \
