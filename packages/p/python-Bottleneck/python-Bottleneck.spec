@@ -1,7 +1,7 @@
 #
 # spec file for package python-Bottleneck
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Bottleneck
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        A collection of fast NumPy array functions
-License:        BSD-2-Clause and BSD-3-Clause
-Group:          Development/Libraries/Python
-Url:            http://berkeleyanalytics.com/bottleneck/
+License:        BSD-2-Clause AND BSD-3-Clause
+URL:            http://berkeleyanalytics.com/bottleneck/
 Source0:        https://files.pythonhosted.org/packages/source/B/Bottleneck/Bottleneck-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.9.1}
 BuildRequires:  %{python_module setuptools}
@@ -49,8 +47,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%defattr(-,root,root)
-%doc README.rst RELEASE.rst LICENSE
+%license LICENSE
+%doc README.rst RELEASE.rst
 %{python_sitearch}/bottleneck/
 %{python_sitearch}/Bottleneck-%{version}-py*.egg-info
 
