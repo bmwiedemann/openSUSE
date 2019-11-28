@@ -17,8 +17,11 @@
 
 
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_libexecdir}/tmpfiles.d}
+
+%define         profile_dir %{_prefix}/lib/%{name}
+
 Name:           tuned
-Version:        2.12.0
+Version:        2.22.0
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -50,7 +53,6 @@ Requires:       python3-linux-procfs
 Requires:       python3-pyudev
 Requires:       util-linux
 Requires:       virt-what
-Obsoletes:      pm-profiler
 BuildArch:      noarch
 %{?systemd_requires}
 
@@ -152,14 +154,14 @@ instead of fewer large ones).
 %build
 # The tuned daemon is written in pure Python. Nothing requires to be built.
 # Just a hack to avoid installation in a wrong directory
-sed -i 's|usr/libexec/tuned|%{_libexecdir}/%{name}|' Makefile
+sed -i 's|usr/libexec/tuned|%{profile_dir}|' Makefile
 
 %install
-%make_install
+%make_install TUNED_PROFILESDIR=%{profile_dir}
 %py3_compile %{buildroot}/%{python3_sitelib}
 rm -rf %{buildroot}/%{_datadir}/doc
 # Remove unwanted stuff instead of excluding them in files list
-rm -rf %{buildroot}%{_libexecdir}/%{name}/{default,desktop-powersave,laptop-ac-powersave,server-powersave,laptop-battery-powersave,enterprise-storage,spindown-disk}
+rm -rf %{buildroot}%{profile_dir}/{default,desktop-powersave,laptop-ac-powersave,server-powersave,laptop-battery-powersave,enterprise-storage,spindown-disk}
 rm %{buildroot}%{_mandir}/man7/tuned-profiles-compat.7
 ln -sf service %{buildroot}%{_sbindir}/rctuned
 
@@ -189,7 +191,6 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %endif
 
 %files
-
 %dir %{_sysconfdir}/modprobe.d
 %license COPYING
 %doc AUTHORS README
@@ -203,17 +204,18 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %exclude %{_sysconfdir}/tuned/realtime-variables.conf
 %exclude %{_sysconfdir}/tuned/realtime-virtual-guest-variables.conf
 %exclude %{_sysconfdir}/tuned/realtime-virtual-host-variables.conf
-%exclude %{_libexecdir}/tuned/realtime-virtual-guest
-%exclude %{_libexecdir}/tuned/realtime-virtual-host
-%exclude %{_libexecdir}/tuned/sap-netweaver
-%exclude %{_libexecdir}/tuned/sap-hana
+%exclude %{profile_dir}/realtime-virtual-guest
+%exclude %{profile_dir}/realtime-virtual-host
+%exclude %{profile_dir}/sap-netweaver
+%exclude %{profile_dir}/sap-hana
 %exclude %{_mandir}/man7/tuned-profiles-sap*.7.gz
-%exclude %{_libexecdir}/tuned/atomic-host
-%exclude %{_libexecdir}/tuned/atomic-guest
-%exclude %{_libexecdir}/tuned/oracle
-%exclude %{_libexecdir}/tuned/realtime
-%exclude %{_libexecdir}/tuned/defirqaffinity*
-%{_libexecdir}/tuned
+%exclude %{profile_dir}/atomic-host
+%exclude %{profile_dir}/atomic-guest
+%exclude %{profile_dir}/oracle
+%exclude %{profile_dir}/realtime
+%exclude %{profile_dir}/defirqaffinity*
+%{profile_dir}/pmqos-static.py
+%{profile_dir}
 # active_profile might be empty when built via build service, but typically
 # not on a real install -> better do not mark it %%ghost
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/active_profile
@@ -251,34 +253,33 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 
 %if !0%{?sle_version}
 %files profiles-sap
-%{_libexecdir}/tuned/sap-netweaver
+%{profile_dir}/sap-netweaver
 %{_mandir}/man7/tuned-profiles-sap.7%{?ext_man}
 
 %files profiles-sap-hana
-%{_libexecdir}/tuned/sap-hana
+%{profile_dir}/sap-hana
 %{_mandir}/man7/tuned-profiles-sap-hana.7%{?ext_man}
 %endif
 
 %files profiles-atomic
-%{_libexecdir}/tuned/atomic-host
-%{_libexecdir}/tuned/atomic-guest
+%{profile_dir}/atomic-host
+%{profile_dir}/atomic-guest
 %{_mandir}/man7/tuned-profiles-atomic.7%{?ext_man}
 
 %files profiles-realtime
 %config(noreplace) %{_sysconfdir}/tuned/realtime-variables.conf
-%{_libexecdir}/tuned/realtime
+%{profile_dir}/realtime
 %{_mandir}/man7/tuned-profiles-realtime.7%{?ext_man}
 
 %files profiles-oracle
-%{_libexecdir}/tuned/oracle
+%{profile_dir}/oracle
 %{_mandir}/man7/tuned-profiles-oracle.7%{?ext_man}
 
 %files profiles-nfv
 %config(noreplace) %{_sysconfdir}/tuned/realtime-virtual-guest-variables.conf
 %config(noreplace) %{_sysconfdir}/tuned/realtime-virtual-host-variables.conf
-%{_libexecdir}/tuned/realtime-virtual-guest
-%{_libexecdir}/tuned/realtime-virtual-host
-%{_libexecdir}/tuned/defirqaffinity*
+%{profile_dir}/realtime-virtual-guest
+%{profile_dir}/realtime-virtual-host
 %{_mandir}/man7/tuned-profiles-nfv-*.7%{?ext_man}
 
 %files utils
