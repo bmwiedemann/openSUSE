@@ -1,7 +1,7 @@
 #
 # spec file for package php7-xdebug
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define pkg_name    xdebug
 %define pkg_version %{version}
 Name:           php7-%{pkg_name}
-Version:        2.7.2
+Version:        2.8.0
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
