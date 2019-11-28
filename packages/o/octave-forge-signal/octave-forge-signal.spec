@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-signal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define octpkg  signal
 Name:           octave-forge-%{octpkg}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Signal processing tools for Octave
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
@@ -37,9 +37,6 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-# gripes.h replaced by errwarn.h (deprecated in 4.2, removed in 4.6)
-sed -i -s -e 's/gripes.h/errwarn.h/' -e 's/gripe_/err_/g' %{octpkg}-%{version}/src/*.cc
-sed -i -s -e 's/NINT/octave::math::nint/g' %{octpkg}-%{version}/src/*.cc
 %octave_pkg_src
 
 %build
