@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Microsoft Azure Resource Management bundle
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-sdk-for-python
+URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt/azure-mgmt-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module setuptools}
@@ -60,16 +60,16 @@ Requires:       python-azure-mgmt-cognitiveservices < 6.0.0
 Requires:       python-azure-mgmt-cognitiveservices >= 5.0.0
 Requires:       python-azure-mgmt-commerce < 2.0.0
 Requires:       python-azure-mgmt-commerce >= 1.0.1
-Requires:       python-azure-mgmt-compute < 8.0.0
-Requires:       python-azure-mgmt-compute >= 7.0.0
+Requires:       python-azure-mgmt-compute < 11.0.0
+Requires:       python-azure-mgmt-compute >= 10.0.0
 Requires:       python-azure-mgmt-consumption < 4.0.0
 Requires:       python-azure-mgmt-consumption >= 3.0.0
 Requires:       python-azure-mgmt-containerinstance < 2.0.0
 Requires:       python-azure-mgmt-containerinstance >= 1.4.0
 Requires:       python-azure-mgmt-containerregistry < 4.0.0
 Requires:       python-azure-mgmt-containerregistry >= 3.0.0
-Requires:       python-azure-mgmt-containerservice < 8.0.0
-Requires:       python-azure-mgmt-containerservice >= 7.0.0
+Requires:       python-azure-mgmt-containerservice < 9.0.0
+Requires:       python-azure-mgmt-containerservice >= 8.0.0
 Requires:       python-azure-mgmt-cosmosdb < 1.0.0
 Requires:       python-azure-mgmt-cosmosdb >= 0.5.2
 Requires:       python-azure-mgmt-costmanagement < 1.0.0
@@ -150,8 +150,8 @@ Requires:       python-azure-mgmt-msi < 2.0.0
 Requires:       python-azure-mgmt-msi >= 1.0.0
 Requires:       python-azure-mgmt-netapp < 1.0.0
 Requires:       python-azure-mgmt-netapp >= 0.5.0
-Requires:       python-azure-mgmt-network < 6.0.0
-Requires:       python-azure-mgmt-network >= 5.0.0
+Requires:       python-azure-mgmt-network < 9.0.0
+Requires:       python-azure-mgmt-network >= 8.0.0
 Requires:       python-azure-mgmt-notificationhubs < 3.0.0
 Requires:       python-azure-mgmt-notificationhubs >= 2.0.0
 Requires:       python-azure-mgmt-peering < 1.0.0
@@ -198,8 +198,8 @@ Requires:       python-azure-mgmt-sql < 1.0.0
 Requires:       python-azure-mgmt-sql >= 0.11.0
 Requires:       python-azure-mgmt-sqlvirtualmachine < 1.0.0
 Requires:       python-azure-mgmt-sqlvirtualmachine >= 0.2.0
-Requires:       python-azure-mgmt-storage < 5.0.0
-Requires:       python-azure-mgmt-storage >= 4.0.0
+Requires:       python-azure-mgmt-storage < 7.0.0
+Requires:       python-azure-mgmt-storage >= 6.0.0
 Requires:       python-azure-mgmt-storagecache < 1.0.0
 Requires:       python-azure-mgmt-storagecache >= 0.1.0
 Requires:       python-azure-mgmt-storagesync < 1.0.0
