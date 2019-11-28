@@ -7886,9 +7886,9 @@ unsorted:
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
-  - libblacs2-openmpi 
-  - libblacs2-openmpi-devel 
-  - libblacs2-openmpi-devel-static 
+  - libblacs2-openmpi1 
+  - libblacs2-openmpi1-devel 
+  - libblacs2-openmpi1-devel-static 
   - libblacs2-openmpi2 
   - libblacs2-openmpi2-devel 
   - libblacs2-openmpi2-devel-static 
@@ -11274,11 +11274,11 @@ unsorted:
   - libscalapack2-mvapich2-devel 
   - libscalapack2-mvapich2-devel-32bit: [x86_64] 
   - libscalapack2-mvapich2-devel-static 
-  - libscalapack2-openmpi 
-  - libscalapack2-openmpi-32bit: [x86_64] 
-  - libscalapack2-openmpi-devel 
-  - libscalapack2-openmpi-devel-32bit: [x86_64] 
-  - libscalapack2-openmpi-devel-static 
+  - libscalapack2-openmpi1 
+  - libscalapack2-openmpi1-32bit: [x86_64] 
+  - libscalapack2-openmpi1-devel 
+  - libscalapack2-openmpi1-devel-32bit: [x86_64] 
+  - libscalapack2-openmpi1-devel-static 
   - libscalapack2-openmpi2 
   - libscalapack2-openmpi2-32bit: [x86_64] 
   - libscalapack2-openmpi2-devel 
@@ -11785,6 +11785,8 @@ unsorted:
   - liburcu6-32bit: [x86_64] 
   - liburfkill-glib-devel 
   - liburfkill-glib0 
+  - liburing-devel 
+  - liburing1 
   - liburiparser1 
   - liburiparser1-32bit: [x86_64] 
   - libusb-0_1-4-32bit: [x86_64] 
@@ -12636,6 +12638,7 @@ unsorted:
   - lua51-devel 
   - lua51-doc 
   - lua51-ldbus 
+  - lua51-ldoc 
   - lua51-lgi 
   - lua51-lgi-doc 
   - lua51-lpeg 
@@ -12654,9 +12657,11 @@ unsorted:
   - lua51-luasocket 
   - lua51-luasocket-devel 
   - lua51-luasql 
+  - lua51-luasystem 
   - lua51-luaterm 
   - lua51-luv 
   - lua51-luv-devel 
+  - lua51-markdown 
   - lua51-messagepack 
   - lua51-mpack 
   - lua51-say 
@@ -12665,6 +12670,7 @@ unsorted:
   - lua53-devel 
   - lua53-doc 
   - lua53-ldbus 
+  - lua53-ldoc 
   - lua53-lgi 
   - lua53-lgi-doc 
   - lua53-lpeg 
@@ -12680,9 +12686,11 @@ unsorted:
   - lua53-luasec 
   - lua53-luasocket-devel 
   - lua53-luasql 
+  - lua53-luasystem 
   - lua53-luaterm 
   - lua53-luv 
   - lua53-luv-devel 
+  - lua53-markdown 
   - lua53-messagepack 
   - lua53-mpack 
   - lua53-say 
@@ -17024,6 +17032,7 @@ unsorted:
   - procps-devel 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
+  - product-builder-plugin-openSUSE 
   - profanity 
   - profanity-mini 
   - profanity-standard 
@@ -17593,6 +17602,7 @@ unsorted:
   - python2-PasteDeploy 
   - python2-PasteScript 
   - python2-Paver 
+  - python2-PeachPy: [x86_64] 
   - python2-PeakUtils 
   - python2-Pebble 
   - python2-Pillow-tk 
@@ -17603,6 +17613,7 @@ unsorted:
   - python2-PyAutoGUI 
   - python2-PyBindGen 
   - python2-PyBrowserID 
+  - python2-PyChart 
   - python2-PyDispatcher 
   - python2-PyECLib 
   - python2-PyExecJS 
@@ -17736,6 +17747,7 @@ unsorted:
   - python2-apicapi 
   - python2-apipkg 
   - python2-appindicator 
+  - python2-application 
   - python2-applicationinsights 
   - python2-apptools 
   - python2-apsw 
@@ -18350,6 +18362,7 @@ unsorted:
   - python2-flask-peewee 
   - python2-flask-restplus 
   - python2-flatbuffers 
+  - python2-flatdict 
   - python2-flex 
   - python2-flexmock 
   - python2-flickrapi 
@@ -18426,6 +18439,7 @@ unsorted:
   - python2-gphoto2 
   - python2-gpod 
   - python2-gprof2dot 
+  - python2-gps3 
   - python2-gpsd 
   - python2-gpxpy 
   - python2-grab 
@@ -18745,7 +18759,6 @@ unsorted:
   - python2-napalm 
   - python2-napalm-asa 
   - python2-napalm-procurve 
-  - python2-natsort 
   - python2-nbconvert 
   - python2-nbdime 
   - python2-nbformat 
@@ -19091,6 +19104,7 @@ unsorted:
   - python2-pymacaroons-pynacl 
   - python2-pymad 
   - python2-pymarc 
+  - python2-pymavlink 
   - python2-pymediainfo 
   - python2-pymemcache 
   - python2-pymisp 
@@ -19116,6 +19130,7 @@ unsorted:
   - python2-pypuppetdb 
   - python2-pyqtgraph 
   - python2-pyquery 
+  - python2-pyrad 
   - python2-pyramid 
   - python2-pyramid-chameleon 
   - python2-pyramid-debugtoolbar 
@@ -19218,6 +19233,7 @@ unsorted:
   - python2-python-bidi 
   - python2-python-box 
   - python2-python-cjson 
+  - python2-python-consul 
   - python2-python-coveralls 
   - python2-python-crfsuite 
   - python2-python-crontab 
@@ -19651,6 +19667,7 @@ unsorted:
   - python2-urwid 
   - python2-user-agents 
   - python2-user_agent 
+  - python2-userpath 
   - python2-validate_email 
   - python2-validators 
   - python2-varlink 
@@ -19719,10 +19736,12 @@ unsorted:
   - python2-wxPython-lang 
   - python2-xapp 
   - python2-xattr 
+  - python2-xcaplib 
   - python2-xcffib 
   - python2-xdis 
   - python2-xerox 
   - python2-xhtml2pdf 
+  - python2-xkbgroup 
   - python2-xlrd 
   - python2-xlwt 
   - python2-xmldiff 
@@ -19884,6 +19903,7 @@ unsorted:
   - python3-PasteDeploy 
   - python3-PasteScript 
   - python3-Paver 
+  - python3-PeachPy: [x86_64] 
   - python3-PeakUtils 
   - python3-Pebble 
   - python3-Pillow-tk 
@@ -19897,6 +19917,7 @@ unsorted:
   - python3-PyAutoGUI 
   - python3-PyBindGen 
   - python3-PyBrowserID 
+  - python3-PyChart 
   - python3-PyChromecast 
   - python3-PyDispatcher 
   - python3-PyECLib 
@@ -20043,6 +20064,7 @@ unsorted:
   - python3-anyjson 
   - python3-apache-libcloud 
   - python3-apipkg 
+  - python3-application 
   - python3-applicationinsights 
   - python3-apptools 
   - python3-apsw 
@@ -20741,6 +20763,7 @@ unsorted:
   - python3-flask-peewee 
   - python3-flask-restplus 
   - python3-flatbuffers 
+  - python3-flatdict 
   - python3-flex 
   - python3-flexmock 
   - python3-flexx 
@@ -20827,6 +20850,7 @@ unsorted:
   - python3-gphoto2 
   - python3-gpiod 
   - python3-gprof2dot 
+  - python3-gps3 
   - python3-gpsd 
   - python3-gpxpy 
   - python3-gr-iqbal 
@@ -20849,6 +20873,7 @@ unsorted:
   - python3-hanzidentifier 
   - python3-happybase 
   - python3-haproxyctl 
+  - python3-hatch 
   - python3-hawkauthlib 
   - python3-hawkey 
   - python3-hdf5storage 
@@ -21156,7 +21181,6 @@ unsorted:
   - python3-matplotlib-web 
   - python3-matplotlib-wx 
   - python3-matrix-synapse 
-  - python3-matrix-synapse-ldap3 
   - python3-maxminddb 
   - python3-mbstrdecoder 
   - python3-mccabe 
@@ -21430,6 +21454,7 @@ unsorted:
   - python3-pip-tools 
   - python3-pipdeptree 
   - python3-pipreqs 
+  - python3-pipx 
   - python3-pivy 
   - python3-pkgconfig 
   - python3-pkginfo 
@@ -21589,6 +21614,7 @@ unsorted:
   - python3-pymacaroons-pynacl 
   - python3-pymad 
   - python3-pymarc 
+  - python3-pymavlink 
   - python3-pymediainfo 
   - python3-pymemcache 
   - python3-pymetar 
@@ -21623,6 +21649,7 @@ unsorted:
   - python3-pypuppetdb 
   - python3-pyqtgraph 
   - python3-pyquery 
+  - python3-pyrad 
   - python3-pyramid 
   - python3-pyramid-chameleon 
   - python3-pyramid-debugtoolbar 
@@ -21738,6 +21765,7 @@ unsorted:
   - python3-python-bidi 
   - python3-python-box 
   - python3-python-cjson 
+  - python3-python-consul 
   - python3-python-coveralls 
   - python3-python-crfsuite 
   - python3-python-crontab 
@@ -22205,6 +22233,7 @@ unsorted:
   - python3-urlgrabber 
   - python3-user-agents 
   - python3-user_agent 
+  - python3-userpath 
   - python3-uvloop 
   - python3-validate_email 
   - python3-validators 
@@ -22286,11 +22315,14 @@ unsorted:
   - python3-xapp 
   - python3-xarray 
   - python3-xattr 
+  - python3-xcaplib 
   - python3-xcb-proto-devel 
   - python3-xcffib 
   - python3-xdis 
   - python3-xerox 
   - python3-xhtml2pdf 
+  - python3-xkbgroup 
+  - python3-xkcdpass 
   - python3-xlrd 
   - python3-xlwt 
   - python3-xmldiff 
@@ -23696,7 +23728,7 @@ unsorted:
   - scala-bootstrap-swing 
   - scala-swing 
   - scalapack-mvapich2-test 
-  - scalapack-openmpi-test 
+  - scalapack-openmpi1-test 
   - scalapack-openmpi2-test 
   - scalapack-openmpi3-test 
   - scalapack_2_0_2-gnu-mpich-hpc-module 
