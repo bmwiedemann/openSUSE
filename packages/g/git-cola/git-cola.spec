@@ -1,7 +1,7 @@
 #
 # spec file for package git-cola
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           git-cola
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
-Url:            https://git-cola.github.io/
+URL:            https://git-cola.github.io/
 
 %{!?python_sitelib: %global python_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 

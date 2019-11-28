@@ -345,4 +345,63 @@ https://github.com/git-cola/git-cola/issues/991
 </comment>
     <requestid>732755</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4f3a96ed489e59ecb18cbeaf0cd702e1</srcmd5>
+    <version>3.6</version>
+    <time>1574932498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6
+- Usability, bells and whistles
+* The remote editor is much faster since it no longer queries
+  remotes, and uses the cached information instead.
+  https://github.com/git-cola/git-cola/issues/986
+* Commit message templates can now be loaded automatically by setting
+  ``git config cola.autoloadcommittemplate true``.
+  https://github.com/git-cola/git-cola/pull/1013
+  https://github.com/git-cola/git-cola/pull/735
+* The UI layout can now be reset back to its initial state by selecting
+  the &quot;Reset Layout&quot; action.  This reverts the layout to the same state
+  as when the app first launched.
+  https://github.com/git-cola/git-cola/pull/1008
+  https://github.com/git-cola/git-cola/issues/994
+* Files can now be ignored in either the project's `.gitignore`, or in the
+  repository's private local `.git/info/exclude` ignore file.
+  https://github.com/git-cola/git-cola/pull/1006
+  https://github.com/git-cola/git-cola/issues/1000
+* New remotes are now selected when they are added in the &quot;Edit Remotes&quot; tool.
+  https://github.com/git-cola/git-cola/pull/1002
+* The &quot;Recent&quot; repositories list is now saved to disk when opening a
+  repository.  Previously, this list was only updated when exiting the app.
+  https://github.com/git-cola/git-cola/pull/1001
+* The bookmarks tool now has a &quot;Delete&quot; option in its right-click menu.
+  https://github.com/git-cola/git-cola/pull/999
+* The current repository is no longer listed in the &quot;File/Open Recent&quot; menu.
+  https://github.com/git-cola/git-cola/pull/998
+- Translations
+* Updated Hungarian translation.
+  https://github.com/git-cola/git-cola/pull/1005
+  https://github.com/git-cola/git-cola/pull/1018
+* Updated Turkish translation.
+  https://github.com/git-cola/git-cola/pull/1003
+  https://github.com/git-cola/git-cola/pull/1011
+- Fixes
+* Better support for Python 3.8's line buffering modes.
+  https://github.com/git-cola/git-cola/pull/1014
+* The default `ssh-askpass` script now uses a more generic `#!` shebang line.
+  https://github.com/git-cola/git-cola/pull/1012
+* Fetch, push, and pull operations will now refresh the model and display when
+  operations complete.
+  https://github.com/git-cola/git-cola/issues/996
+* The branches widget now refreshes its display when changing branches.
+  https://github.com/git-cola/git-cola/pull/992
+- Packaging
+* The `share/git-cola/bin/git-xbase` script will now have its `#!` lines
+  updated during installation.
+  https://github.com/git-cola/git-cola/pull/991
+- Development
+* The unit tests were made more platform-independent.
+  https://github.com/git-cola/git-cola/pull/993
+</comment>
+    <requestid>751369</requestid>
+  </revision>
 </revisionlist>
