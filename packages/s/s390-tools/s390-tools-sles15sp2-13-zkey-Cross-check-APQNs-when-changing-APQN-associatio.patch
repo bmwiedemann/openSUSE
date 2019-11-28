@@ -1,0 +1,86 @@
+Subject: zkey: Cross check APQNs when changing APQN associations
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: 0b4cbf00412f27456d28ff7f86ec5335a39e3416
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Cross check APQNs when changing APQN associations
+
+             Perform a cross check of the APQNs when the APQN association of a
+             secure AES key in the key repository is changed. When adding new APQNs,
+             or associating a new set of APQNs to a secure key, then the APQNs are
+             cross checked. If all associated APQNs are removed, then all currently
+             available APQNs are cross checked. If a master key mismatch is detected,
+             then the change is rejected.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |   31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -1886,7 +1886,11 @@ int keystore_change_key(struct keystore
+ 					 .nomsg = 0 };
+ 	struct key_filenames file_names = { NULL, NULL, NULL };
+ 	struct properties *key_props = NULL;
++	size_t secure_key_size;
++	char *apqns_prop;
++	u8 *secure_key;
+ 	char temp[30];
++	u64 mkvp;
+ 	int rc;
+ 
+ 	util_assert(keystore != NULL, "Internal error: keystore is NULL");
+@@ -1932,6 +1936,33 @@ int keystore_change_key(struct keystore
+ 						  &apqn_check);
+ 		if (rc != 0)
+ 			goto out;
++
++		secure_key = read_secure_key(file_names.skey_filename,
++					     &secure_key_size,
++					     keystore->verbose);
++		if (secure_key == NULL) {
++			rc = -ENOENT;
++			goto out;
++		}
++
++		rc = get_master_key_verification_pattern(secure_key,
++							 secure_key_size,
++							 &mkvp,
++							 keystore->verbose);
++		free(secure_key);
++		if (rc)
++			goto out;
++
++		apqns_prop = properties_get(key_props, PROP_NAME_APQNS);
++		rc = cross_check_apqns(apqns_prop, mkvp, true,
++				       keystore->verbose);
++		free(apqns_prop);
++		if (rc == -ENOTSUP)
++			rc = 0;
++		if (rc != 0 && noapqncheck == 0) {
++			warnx("Your master key setup is improper");
++			goto out;
++		}
+ 	}
+ 
+ 	if (sector_size >= 0) {

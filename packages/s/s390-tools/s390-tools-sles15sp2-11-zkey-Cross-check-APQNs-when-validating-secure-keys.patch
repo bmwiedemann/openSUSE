@@ -1,0 +1,123 @@
+Subject: zkey: Cross check APQNs when validating secure keys
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: 7f8e31e8619b32297b432a4882d78af79de37a58
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Cross check APQNs when validating secure keys
+
+             Perform a cross check of the APQNs when a secure AES key is validated.
+             When a set of APQNs are associated to a secure key, these APQNs are
+             cross checked. If a secure key is validated outside of the key repository,
+             or no APQNs are associated to a secure key inside the key repository,
+             then all currently available APQNs are cross checked. If a master key
+             mismatch is detected, then an error message is issued.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |   34 ++++++++++++----------------------
+ zkey/zkey.c     |    9 +++++++++
+ 2 files changed, 21 insertions(+), 22 deletions(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -2252,43 +2252,32 @@ struct validate_info {
+ /**
+  * Displays the status of the associated APQNs.
+  *
++ * @param[in] keystore the key store
+  * @param[in] properties  the properties of the key
+- * @param[in] name        the name of the key
++ * @param[in] mkvp        the master key verification pattern of the key
+  *
+  * @returns 0 in case of success, 1 if at least one of the APQNs is not
+- *          available
++ *          available or has a master key mismatch
+  */
+-static int _keystore_display_apqn_status(struct properties *properties,
+-					 const char *name)
++static int _keystore_display_apqn_status(struct keystore *keystore,
++					 struct properties *properties,
++					 u64 mkvp)
+ {
+-	int i, rc, card, domain, warning = 0;
+-	char **apqn_list;
++	int rc, warning = 0;
+ 	char *apqns;
+ 
+ 	apqns = properties_get(properties, PROP_NAME_APQNS);
+ 	if (apqns == NULL)
+ 		return 0;
+-	apqn_list = str_list_split(apqns);
+-
+-	for (i = 0; apqn_list[i] != NULL; i++) {
+-
+-		if (sscanf(apqn_list[i], "%x.%x", &card, &domain) != 2)
+-			continue;
+ 
+-		rc = sysfs_is_apqn_online(card, domain);
+-		if (rc != 1) {
+-			printf("WARNING: The APQN %02x.%04x associated with "
+-			       "key '%s' is %s\n", card, domain, name,
+-			       rc == -1 ? "not a CCA card" : "not online");
+-			warning = 1;
+-		}
+-	}
++	rc = cross_check_apqns(apqns, mkvp, true, keystore->verbose);
++	if (rc != 0 && rc != -ENOTSUP)
++		warning = 1;
+ 
+ 	if (warning)
+ 		printf("\n");
+ 
+ 	free(apqns);
+-	str_list_free_string_array(apqn_list);
+ 	return warning;
+ }
+ /**
+@@ -2405,7 +2394,8 @@ static int _keystore_process_validate(st
+ 		info->num_warnings++;
+ 	}
+ 	if (info->noapqncheck == 0)
+-		if (_keystore_display_apqn_status(properties, name) != 0)
++		if (_keystore_display_apqn_status(keystore, properties,
++						  mkvp) != 0)
+ 			info->num_warnings++;
+ 	if (_keystore_display_volume_status(properties, name) != 0)
+ 		info->num_warnings++;
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -1380,6 +1380,15 @@ static int command_validate_file(void)
+ 	printf("                         %.*s\n", VERIFICATION_PATTERN_LEN / 2,
+ 	       &vp[VERIFICATION_PATTERN_LEN / 2]);
+ 
++	rc = cross_check_apqns(NULL, mkvp, true, g.verbose);
++	if (rc == -EINVAL)
++		return EXIT_FAILURE;
++	if (rc != 0 && rc != -ENOTSUP) {
++		warnx("Your master key setup is improper");
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
+ out:
+ 	free(secure_key);
+ 	return rc;

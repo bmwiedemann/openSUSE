@@ -37,7 +37,7 @@ diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 index b79cff0..607fd1c 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
-@@ -21,6 +21,7 @@
+@@ -23,6 +23,7 @@
  
  #include "dasdfmt.h"
  
@@ -45,7 +45,7 @@ index b79cff0..607fd1c 100644
  #define BUSIDSIZE  8
  #define SEC_PER_DAY (60 * 60 * 24)
  #define SEC_PER_HOUR (60 * 60)
-@@ -456,44 +457,40 @@ static void program_interrupt_signal(int sig)
+@@ -463,44 +464,40 @@ static void program_interrupt_signal(int sig)
  /*
   * check given device name for blanks and some special characters
   */
@@ -107,37 +107,198 @@ index b79cff0..607fd1c 100644
  	}
  }
  
-@@ -1457,24 +1454,86 @@ static void do_format_dasd(dasdfmt_info_t *info, char *devname,
+@@ -518,7 +515,7 @@ static void get_blocksize(const char *de
+ /*
+  * Check whether a specified blocksize matches the blocksize of the device
+  */
+-static void check_blocksize(dasdfmt_info_t *info, unsigned int blksize)
++static void check_blocksize(dasdfmt_info_t *info, char *dev_filename, unsigned int blksize)
+ {
+ 	unsigned int dev_blksize;
+ 
+@@ -756,7 +753,7 @@ static void check_hashmarks(dasdfmt_info
+  * This function checks whether a range of tracks is in regular format
+  * with the specified block size.
+  */
+-static format_check_t check_track_format(dasdfmt_info_t *info, format_data_t *p)
++static format_check_t check_track_format(dasdfmt_info_t *info, char *dev_filename, format_data_t *p)
+ {
+ 	format_check_t cdata = {
+ 		.expect = {
+@@ -812,7 +809,7 @@ static int process_tracks(dasdfmt_info_t
+ 			step.stop_unit = cur_trk + step_value - 1;
+ 
+ 		if (info->check) {
+-			cdata = check_track_format(info, &step);
++			cdata = check_track_format(info, dev_filename, &step);
+ 			if (cdata.result) {
+ 				cyl = cur_trk / heads + 1;
+ 				draw_progress(info, cyl, cylinders, 1);
+@@ -858,7 +855,7 @@ static void check_disk_format(dasdfmt_in
+ 		return;
  	}
+ 
+-	check_blocksize(info, check_params->blksize);
++	check_blocksize(info, dev_filename, check_params->blksize);
+ 	check_layout(info, check_params->intensity);
+ 
+ 	/*
+@@ -1188,7 +1185,7 @@ static void dasdfmt_write_labels(dasdfmt
+  * that the device is formatted to a certain extent. Otherwise the
+  * process is terminated.
+  */
+-static void dasdfmt_find_start(dasdfmt_info_t *info, unsigned int cylinders,
++static void dasdfmt_find_start(dasdfmt_info_t *info, char *dev_filename, unsigned int cylinders,
+ 			       unsigned heads, format_data_t *format_params)
+ {
+ 	format_check_t cdata;
+@@ -1197,11 +1194,11 @@ static void dasdfmt_find_start(dasdfmt_i
+ 	unsigned int right = (cylinders * heads) - 1;
+ 	unsigned int first = left;
+ 
+-	check_blocksize(info, format_params->blksize);
++	check_blocksize(info, dev_filename, format_params->blksize);
+ 
+ 	format_params->start_unit = 0;
+ 	format_params->stop_unit = 4;
+-	cdata = check_track_format(info, format_params);
++	cdata = check_track_format(info, dev_filename, format_params);
+ 
+ 	if (cdata.result) {
+ 		evaluate_format_error(info, &cdata, heads);
+@@ -1217,7 +1214,7 @@ static void dasdfmt_find_start(dasdfmt_i
+ 
+ 		format_params->start_unit = middle;
+ 		format_params->stop_unit = middle;
+-		cdata = check_track_format(info, format_params);
++		cdata = check_track_format(info, dev_filename, format_params);
+ 		if (cdata.blksize != format_params->blksize) {
+ 			first = middle;
+ 			right = middle - 1;
+@@ -1266,6 +1263,7 @@ static void dasdfmt_release_space(dasdfm
  }
  
-+void do_dasdfmt(char *dev_filename, dasdfmt_info_t *info,
-+		volume_label_t *orig_vlabel)
+ static void dasdfmt_prepare_and_format(dasdfmt_info_t *info,
++				       char *dev_filename,
+ 				       unsigned int cylinders,
+ 				       unsigned int heads, format_data_t *p)
+ {
+@@ -1324,7 +1322,7 @@ static void dasdfmt_prepare_and_format(d
+ /*
+  * This function will start the expand format process.
+  */
+-static void dasdfmt_expand_format(dasdfmt_info_t *info, unsigned int cylinders,
++static void dasdfmt_expand_format(dasdfmt_info_t *info, char *dev_filename, unsigned int cylinders,
+ 				  unsigned int heads, format_data_t *p)
+ {
+ 	if (!(info->withoutprompt && (info->verbosity < 1)))
+@@ -1351,7 +1349,7 @@ static void dasdfmt_expand_format(dasdfm
+  * This function will only format the first two tracks of a DASD.
+  * The rest of the DASD is untouched and left as is.
+  */
+-static void dasdfmt_quick_format(dasdfmt_info_t *info, unsigned int cylinders,
++static void dasdfmt_quick_format(dasdfmt_info_t *info, char *dev_filename, unsigned int cylinders,
+ 				 unsigned int heads, format_data_t *p)
+ {
+ 	format_check_t cdata = { .expect = {0}, 0 };
+@@ -1363,18 +1361,18 @@ static void dasdfmt_quick_format(dasdfmt
+ 	} else if (info->ese) {
+ 		printf("Skipping format check due to thin-provisioned device.\n");
+ 	} else {
+-		check_blocksize(info, p->blksize);
++		check_blocksize(info, dev_filename, p->blksize);
+ 
+ 		printf("Checking the format of selected tracks...\n");
+ 
+ 		/* Check device format on the first and last 3 regular tracks */
+ 		tmp.start_unit = 2;
+ 		tmp.stop_unit = 4;
+-		cdata = check_track_format(info, &tmp);
++		cdata = check_track_format(info, dev_filename, &tmp);
+ 		if (!cdata.result) {
+ 			tmp.start_unit = (cylinders * heads) - 3;
+ 			tmp.stop_unit = (cylinders * heads) - 1;
+-			cdata = check_track_format(info, &tmp);
++			cdata = check_track_format(info, dev_filename, &tmp);
+ 		}
+ 		if (cdata.result) {
+ 			evaluate_format_error(info, &cdata, heads);
+@@ -1419,7 +1417,7 @@ static void do_format_dasd(dasdfmt_info_
+ 		p->stop_unit = 1;
+ 		break;
+ 	case EXPAND: /* only the end of the disk */
+-		dasdfmt_find_start(info, cylinders, heads, p);
++		dasdfmt_find_start(info, devname, cylinders, heads, p);
+ 		p->stop_unit  = (cylinders * heads) - 1;
+ 		break;
+ 	}
+@@ -1468,24 +1466,24 @@ static void do_format_dasd(dasdfmt_info_
+ 
+ 		switch (mode) {
+ 		case FULL:
+-			dasdfmt_prepare_and_format(info, cylinders, heads, p);
++			dasdfmt_prepare_and_format(info, devname, cylinders, heads, p);
+ 			break;
+ 		case QUICK:
+ 			dasdfmt_release_space(info);
+-			dasdfmt_quick_format(info, cylinders, heads, p);
++			dasdfmt_quick_format(info, devname, cylinders, heads, p);
+ 			break;
+ 		case EXPAND:
+-			dasdfmt_expand_format(info, cylinders, heads, p);
++			dasdfmt_expand_format(info, devname, cylinders, heads, p);
+ 			break;
+ 		}
+ 
+ 		printf("Finished formatting the device.\n");
+ 
+ 		if (!(info->writenolabel || mode == EXPAND))
+-			dasdfmt_write_labels(info, vlabel, cylinders, heads);
++			dasdfmt_write_labels(info, devname, vlabel, cylinders, heads);
+ 
+ 		printf("Rereading the partition table... ");
+-		err = dasd_reread_partition_table(dev_filename, 5);
++		err = dasd_reread_partition_table(devname, 5);
+ 		if (err != 0) {
+ 			ERRMSG("%s: error during rereading the partition "
+ 			       "table: %s.\n", prog_name, strerror(err));
+@@ -1508,23 +1506,88 @@ static void do_format_dasd(dasdfmt_info_t *info, char *devname,
+ 		mode = info->ese ? QUICK : FULL;
+ }
+ 
++void do_dasdfmt(char *dev_filename, dasdfmt_info_t info,
++		volume_label_t *orig_vlabel, format_data_t format_params)
 +{
 +	volume_label_t vlabel;
 +	char old_volser[7];
 +	char str[ERR_LENGTH];
-+	unsigned int cylinders, heads;
++	unsigned int cylinders, heads; int rc;
 +
 +	filedes = open(dev_filename, O_RDWR);
 +	if (filedes == -1)
 +		ERRMSG_EXIT(EXIT_FAILURE, "%s: Unable to open device %s: %s\n",
 +			    prog_name, dev_filename, strerror(errno));
++	close(filedes);
 +
-+	get_device_info(info);
++	rc = dasd_get_info(dev_filename, &info.dasd_info);
++	if (rc != 0)
++		ERRMSG_EXIT(EXIT_FAILURE, "%s: the ioctl call to retrieve "
++			    "device information for %s failed (%s).\n",
++			    prog_name, dev_filename, strerror(rc));
++
 +	memcpy(&vlabel, orig_vlabel, sizeof(vlabel));
 +	/* Either let the user specify the blksize or get it from the kernel */
-+	if (!info->blksize_specified) {
++	if (!info.blksize_specified) {
 +		if (!(mode == FULL ||
-+		      info->dasd_info.format == DASD_FORMAT_NONE)
-+		    || info->check)
-+			get_blocksize(&format_params.blksize);
++		      info.dasd_info.format == DASD_FORMAT_NONE)
++		    || info.check)
++			get_blocksize(dev_filename, &format_params.blksize);
 +		else
 +			format_params = ask_user_for_blksize(format_params);
 +	}
 +
-+	if (info->keep_volser) {
-+		if (info->labelspec) {
++	if (info.keep_volser) {
++		if (info.labelspec) {
 +			ERRMSG_EXIT(EXIT_MISUSE, "%s: The -k and -l options "
 +				    "are mutually exclusive\n", prog_name);
 +		}
@@ -148,7 +309,7 @@ index b79cff0..607fd1c 100644
 +		}
 +
 +		if (dasdfmt_get_volser(dev_filename,
-+				       &info->dasd_info, old_volser) == 0)
++				       &info.dasd_info, old_volser) == 0)
 +			vtoc_volume_label_set_volser(&vlabel, old_volser);
 +		else
 +			ERRMSG_EXIT(EXIT_FAILURE,
@@ -156,23 +317,19 @@ index b79cff0..607fd1c 100644
 +				    prog_name, dev_filename);
 +	}
 +
-+	check_disk(info, dev_filename);
++	check_disk(&info, dev_filename);
 +
 +	if (check_param(str, ERR_LENGTH, &format_params) < 0)
 +		ERRMSG_EXIT(EXIT_MISUSE, "%s: %s\n", prog_name, str);
 +
-+	set_geo(info, &cylinders, &heads);
-+	set_label(info, &vlabel, &format_params, cylinders);
++	set_geo(&info, &cylinders, &heads);
++	set_label(&info, &vlabel, &format_params, cylinders);
 +
-+	if (info->check)
-+		check_disk_format(info, cylinders, heads, &format_params);
++	if (info.check)
++		check_disk_format(&info, cylinders, heads, &format_params);
 +	else
-+		do_format_dasd(info, dev_filename, &vlabel,
++		do_format_dasd(&info, dev_filename, &vlabel,
 +			       &format_params, cylinders, heads);
-+
-+	if (close(filedes) != 0)
-+		ERRMSG("%s: error during close: %s\ncontinuing...\n",
-+		       prog_name, strerror(errno));
 +
 +}
 +
@@ -184,7 +341,6 @@ index b79cff0..607fd1c 100644
  	volume_label_t vlabel;
 -	char old_volser[7];
  
--	char dev_filename[PATH_MAX];
 -	char str[ERR_LENGTH];
 +	char *dev_filename[MAX_DEVICES];
  	char buf[7];
@@ -199,35 +355,30 @@ index b79cff0..607fd1c 100644
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1634,61 +1693,21 @@ int main(int argc, char *argv[])
+@@ -1686,59 +1751,24 @@ int main(int argc, char *argv[])
  	if (info.print_hashmarks)
  		PARSE_PARAM_INTO(info.hashstep, hashstep_str, 10, "hashstep");
  
 -	get_device_name(dev_filename, optind, argc, argv);
 -
--	filedes = open(dev_filename, O_RDWR);
--	if (filedes == -1)
--		ERRMSG_EXIT(EXIT_FAILURE, "%s: Unable to open device %s: %s\n",
--			    prog_name, dev_filename, strerror(errno));
+-	rc = dasd_get_info(dev_filename, &info.dasd_info);
+-	if (rc != 0)
+-		ERRMSG_EXIT(EXIT_FAILURE, "%s: the ioctl call to retrieve "
+-			    "device information failed (%s).\n",
+-			    prog_name, strerror(rc));
 -
--	get_device_info(&info);
-+	while (optind < argc) {
-+		if (optind >= argc)
-+			ERRMSG_EXIT(EXIT_MISUSE, "%s: No device specified!\n",
-+				    prog_name);
- 
+-	info.ese = dasd_sys_ese(dev_filename);
+-	eval_format_mode(&info);
+-
 -	/* Either let the user specify the blksize or get it from the kernel */
 -	if (!info.blksize_specified) {
 -		if (!(mode == FULL ||
 -		      info.dasd_info.format == DASD_FORMAT_NONE) || info.check)
--			get_blocksize(&format_params.blksize);
+-			get_blocksize(dev_filename, &format_params.blksize);
 -		else
 -			format_params = ask_user_for_blksize(format_params);
-+		get_device_name(dev_filename, numdev, argv[optind]);
-+		optind++;
-+		numdev++;
- 	}
- 
+-	}
+-
 -	if (info.keep_volser) {
 -		if (info.labelspec) {
 -			ERRMSG_EXIT(EXIT_MISUSE, "%s: The -k and -l options "
@@ -246,8 +397,19 @@ index b79cff0..607fd1c 100644
 -			ERRMSG_EXIT(EXIT_FAILURE,
 -				    "%s: VOLSER not found on device %s\n",
 -				    prog_name, dev_filename);
--	}
--
++	while (optind < argc) {
++		if (optind >= argc)
++			ERRMSG_EXIT(EXIT_MISUSE, "%s: No device specified!\n",
++				    prog_name);
++
++		info.ese = dasd_sys_ese(dev_filename[numdev]);
++		eval_format_mode(&info);
++
++		get_device_name(dev_filename, numdev, argv[optind]);
++		optind++;
++		numdev++;
+ 	}
+
 -	check_disk(&info, dev_filename);
 -
 -	if (check_param(str, ERR_LENGTH, &format_params) < 0)
@@ -261,16 +423,12 @@ index b79cff0..607fd1c 100644
 -	else
 -		do_format_dasd(&info, dev_filename, &vlabel,
 -			       &format_params, cylinders, heads);
--
--	if (close(filedes) != 0)
--		ERRMSG("%s: error during close: %s\ncontinuing...\n",
--		       prog_name, strerror(errno));
 +	if (!numdev)
 +		ERRMSG_EXIT(EXIT_MISUSE, "%s: No device specified!\n",
 +			    prog_name);
  
 +	for (i = 0; i < numdev; i++)
-+		do_dasdfmt(dev_filename[i], &info, &vlabel);
++		do_dasdfmt(dev_filename[i], info, &vlabel, format_params);
  	return 0;
  }
 -- 

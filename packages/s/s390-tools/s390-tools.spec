@@ -22,7 +22,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.1.0
+Version:        2.11.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -86,108 +86,57 @@ Source98:       zfcp_disk_configure.8
 Source99:       zfcp_host_configure.8
 ###
 
-Patch1:         s390-tools-sles12-zipl_boot_msg.patch
-Patch2:         s390-tools-sles12-sysconfig-compatible-dumpconf.patch
-Patch3:         s390-tools-sles12-create-filesystem-links.patch
-Patch4:         s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch
-Patch5:         s390-tools-sles15-Fixup-dasdfmt_get_volser.patch
-Patch6:         s390-tools-sles15-Fixup-device-name-handling.patch
-Patch7:         s390-tools-sles15-Drop-device_id-parameter.patch
-Patch8:         s390-tools-sles15-Allow-multiple-device-arguments.patch
-Patch9:         s390-tools-sles15-Format-devices-in-parallel.patch
-Patch10:        s390-tools-sles15-Implement-Y-yast_mode.patch
-Patch11:        s390-tools-sles15-Implement-f-for-backwards-compability.patch
-Patch12:        dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
-Patch13:        59-dasd.rules-wait_for.patch
-Patch14:        s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
-Patch15:        s390-tools-sles15-Fix-truncation-warning.patch
-Patch16:        s390-tools-sles15-iucvterm-include-ctype-for-toupper.patch
-Patch17:        s390-tools-sles15-zdev-Use-correct-path-to-vmcp-binary.patch
-Patch18:        s390-tools-sles15-cpi-add-unit-install-section.patch
-Patch19:        s390-tools-sles15-zipl-remove-invalid-dasdview-command-line-option.patch
-Patch20:        s390-tools-sles15-ziomon-re-add-missing-line.patch
-Patch21:        s390-tools-sles15-cpuplugd-Improve-systemctl-start-error-handling.patch
-Patch22:        s390-tools-sles15-mon_tools-Improve-systemctl-start-error-handling.patch
-Patch23:        s390-tools-sles15-lsluns-do-not-scan-all-if-filters-match-nothing.patch
-Patch24:        s390-tools-sles15-lsluns-do-not-print-confusing-messages-when-a-filter.patch
-Patch25:        s390-tools-sles15-lsluns-fix-flawed-formatting-of-man-page.patch
-Patch26:        s390-tools-sles15-lsluns-enhance-usage-statement-and-man-page.patch
-Patch27:        s390-tools-sles15-lsluns-clarify-discovery-use-case-relation-to-NPIV-a.patch
-Patch28:        s390-tools-sles15-lsluns-point-out-IBM-Storwize-configuration-requirem.patch
-Patch29:        s390-tools-sles15-lsluns-document-restriction-to-zfcp-only-systems.patch
-Patch30:        s390-tools-sles15-lsluns-complement-alternative-tools-with-lszdev.patch
-Patch31:        s390-tools-sles15-zdev-Enable-running-chzdev-from-unknown-root-devices.patch
-Patch32:        s390-tools-sles15-zdev-Fix-zdev-dracut-module-aborting-on-unknown-root.patch
-Patch33:        s390-tools-sles15-hmcdrvfs-fix-parsing-of-link-count.patch
-Patch34:        s390-tools-sles15-dbginfo-add-data-for-ps-cpprot.patch
-Patch35:        s390-tools-sles15-mon_procd-fix-parsing-of-proc-pid-stat.patch
-Patch36:        s390-tools-sles15-1-lstape-fix-output-with-SCSI-lin_tape-and-multiple-pa.patch
-Patch37:        s390-tools-sles15-2-lstape-fix-to-prefer-sysfs-to-find-lin_tape-device-n.patch
-Patch38:        s390-tools-sles15-3-lstape-fix-output-without-SCSI-generic-sg.patch
-Patch39:        s390-tools-sles15-4-lsluns-fix-to-prevent-error-messages-if-there-are-no.patch
-Patch40:        s390-tools-sles15-5-lstape-fix-to-prevent-error-messages-if-there-are-no.patch
-Patch41:        s390-tools-sles15-6-lstape-fix-description-of-type-and-devbusid-filter-f.patch
-Patch42:        s390-tools-sles15-7-lstape-fix-SCSI-output-description-in-man-page.patch
-Patch43:        s390-tools-sles15-8-lstape-fix-SCSI-HBA-CCW-device-bus-ID-e.g.-for-virti.patch
-Patch44:        s390-tools-sles15sp1-0001-zkey-Add-properties-file-handling-routines.patch
-Patch45:        s390-tools-sles15sp1-0002-zkey-Add-build-dependency-to-OpenSSL-libcrypto.patch
-Patch46:        s390-tools-sles15sp1-0003-zkey-Add-helper-functions-for-comma-separated-string.patch
-Patch47:        s390-tools-sles15sp1-0004-zkey-Externalize-secure-key-back-end-functions.patch
-Patch48:        s390-tools-sles15sp1-0005-zkey-Add-keystore-implementation.patch
-Patch49:        s390-tools-sles15sp1-0006-zkey-Add-keystore-related-commands.patch
-Patch50:        s390-tools-sles15sp1-0007-zkey-Create-key-repository-and-group-during-make-ins.patch
-Patch51:        s390-tools-sles15sp1-0008-zkey-Man-page-updates.patch
-Patch52:        s390-tools-sles15sp1-0009-zkey-let-packaging-create-the-zkeyadm-group-and-perm.patch
-Patch53:        s390-tools-sles15sp1-0010-zkey-Update-README-to-add-info-about-packaging-requi.patch
-Patch54:        s390-tools-sles15sp1-0011-zkey-Typo-in-message.patch
-Patch55:        s390-tools-sles15sp1-0012-zkey-Fix-memory-leak.patch
-Patch56:        s390-tools-sles15sp1-0013-zkey-Fix-APQN-validation-routine.patch
-Patch57:        s390-tools-sles15sp1-0014-zkey-Fix-generate-and-import-leaving-key-in-an-incon.patch
-Patch58:        s390-tools-sles15sp1-0015-zkey-Add-zkey-cryptsetup-tool.patch
-Patch59:        s390-tools-sles15sp1-0016-zkey-Add-man-page-for-zkey-cryptsetup.patch
-Patch60:        s390-tools-sles15sp1-0017-zkey-Add-build-dependency-for-libcryptsetup-and-json.patch
-Patch61:        s390-tools-sles15sp1-0018-zkey-Add-key-verification-pattern-property.patch
-Patch62:        s390-tools-sles15sp1-0019-zkey-Add-volume-type-property-to-support-LUKS2-volum.patch
-Patch63:        s390-tools-sles15sp1-01-lszcrypt-CEX6S-exploitation.patch
-Patch64:        s390-tools-sles15sp1-02-lszcrypt-fix-date-and-wrong-indentation.patch
-Patch65:        s390-tools-sles15sp1-01-chzcrypt-Corrections-at-the-chzcrypt-man-page.patch
-Patch66:        s390-tools-sles15sp1-02-lszcrypt-support-for-alternate-zcrypt-device-drivers.patch
-Patch67:        s390-tools-sles15sp1-01-zcryptctl-new-tool-zcryptctl-for-multiple-zcrypt-node.patch
-Patch68:        s390-tools-sles15sp1-01-cpumf-Add-extended-counter-defintion-files-for-IBM-z.patch
-Patch69:        s390-tools-sles15sp1-02-cpumf-z14-split-counter-sets-according-to-CFVN-CSVN-.patch
-Patch70:        s390-tools-sles15sp1-03-cpumf-cpumf_helper-read-split-counter-sets-part-2-2.patch
-Patch71:        s390-tools-sles15sp1-04-cpumf-correct-z14-counter-number.patch
-Patch72:        s390-tools-sles15sp1-05-cpumf-add-missing-Description-tag-for-z13-z14-ctr-12.patch
-Patch73:        s390-tools-sles15sp1-06-cpumf-correct-counter-name-for-z13-and-z14.patch
-Patch74:        s390-tools-sles15sp1-07-cpumf-Add-IBM-z14-ZR1-to-the-CPU-Measurement-Facilit.patch
-Patch75:        s390-tools-sles15sp1-01-util_path-add-function-to-check-if-a-path-exists.patch
-Patch76:        s390-tools-sles15sp1-02-util_path-Add-description-for-util_path_exists.patch
-Patch77:        s390-tools-sles15sp1-03-util_path-Make-true-false-handling-consistent-with-o.patch
-Patch78:        s390-tools-sles15sp1-04-zpcictl-Introduce-new-tool-zpcictl.patch
-Patch79:        s390-tools-sles15sp1-05-zpcictl-include-sys-sysmacros.h-to-avoid-minor-major.patch
-Patch80:        s390-tools-sles15sp1-06-zpcictl-Rephrase-man-page-entries-and-tool-output.patch
-Patch81:        s390-tools-sles15sp1-07-zpcictl-Use-fopen-instead-of-open-for-writes.patch
-Patch82:        s390-tools-sles15sp1-08-zpcictl-Read-device-link-to-obtain-device-address.patch
-Patch83:        s390-tools-sles15sp1-09-zpcictl-Make-device-node-for-NVMe-optional.patch
-Patch84:        s390-tools-sles15sp1-10-zpcictl-Change-wording-of-man-page-and-help-output.patch
-Patch85:        s390-tools-sles15sp1-dbginfo-gather-nvme-related-data.patch
-Patch86:        s390-tools-sles15sp1-01-zdev-use-libutil-provided-path-functions.patch
-Patch87:        s390-tools-sles15sp1-02-zdev-Prepare-for-firmware-configuration-file-support.patch
-Patch88:        s390-tools-sles15sp1-03-zdev-Add-support-for-reading-firmware-configuration-.patch
-Patch89:        s390-tools-sles15sp1-04-zdev-Implement-no-settle.patch
-Patch90:        s390-tools-sles15sp1-05-zdev-Write-zfcp-lun-udev-rules-to-separate-files.patch
-Patch91:        s390-tools-sles15sp1-06-zdev-Add-support-for-handling-auto-configuration-dat.patch
-Patch92:        s390-tools-sles15sp1-07-zdev-Integrate-firmware-auto-configuration-with-drac.patch
-Patch93:        s390-tools-sles15sp1-08-zdev-Integrate-firmware-auto-configuration-with-init.patch
-Patch94:        s390-tools-sles15sp1-09-zdev-Implement-internal-device-attributes.patch
-Patch95:        s390-tools-sles15sp1-10-zdev-Implement-support-for-early-device-configuratio.patch
-Patch96:        s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
-Patch97:        s390-tools-sles15sp1-zdev-fix-qeth-BridgePort-and-VNICC-conflict-checking.patch
-Patch98:        s390-tools-sles15sp1-qethqoat-add-OSA-Express7S-support.patch
-Patch99:        s390-tools-sles15sp1-01-zkey-Include-sbin-into-PATH-when-executing-commands.patch
-Patch100:       s390-tools-sles15sp1-zkey-Enhance-error-message-about-missing-CCA-library.patch
-Patch101:       s390-tools-sles15sp1-zdev-Also-include-the-ctc-driver-in-the-initrd.patch
-Patch102:       s390-tools-sles15sp1-zcrypt-refine-lszcrypt-man-page.patch
+Patch1:         s390-tools-sles15sp2-01-zkey-Separate-and-rework-CCA-host-library-loading.patch
+Patch2:         s390-tools-sles15sp2-02-zkey-Move-utility-functions-into-separate-source-fil.patch
+Patch3:         s390-tools-sles15sp2-03-zkey-Add-utility-function-to-get-the-serial-number-o.patch
+Patch4:         s390-tools-sles15sp2-04-zkey-Add-utility-function-to-get-the-mkvp-of-a-crypt.patch
+Patch5:         s390-tools-sles15sp2-05-zkey-add-function-to-iterate-over-all-available-CCA-.patch
+Patch6:         s390-tools-sles15sp2-06-zkey-Add-function-to-print-the-MKVPs-of-APQNs.patch
+Patch7:         s390-tools-sles15sp2-07-zkey-Add-function-to-cross-check-APQNs-for-valid-mas.patch
+Patch8:         s390-tools-sles15sp2-08-zkey-Add-function-to-obtain-the-mkvp-of-a-secure-key.patch
+Patch9:         s390-tools-sles15sp2-09-zkey-Display-MKVP-when-validating-a-secure-key.patch
+Patch10:        s390-tools-sles15sp2-10-zkey-Cross-check-APQNs-when-generating-secure-keys.patch
+Patch11:        s390-tools-sles15sp2-11-zkey-Cross-check-APQNs-when-validating-secure-keys.patch
+Patch12:        s390-tools-sles15sp2-12-zkey-Cross-check-APQNs-when-importing-secure-keys.patch
+Patch13:        s390-tools-sles15sp2-13-zkey-Cross-check-APQNs-when-changing-APQN-associatio.patch
+Patch14:        s390-tools-sles15sp2-14-zkey-Add-function-to-select-a-specific-CCA-adapter.patch
+Patch15:        s390-tools-sles15sp2-15-zkey-Add-function-to-select-a-CCA-adapter-by-mkvp.patch
+Patch16:        s390-tools-sles15sp2-16-zkey-Select-CCA-adapter-when-re-enciphering.patch
+Patch17:        s390-tools-sles15sp2-17-zkey-cryptsetup-Add-to-new-and-from-old-options.patch
+Patch18:        s390-tools-sles15sp2-18-zkey-Display-key-type-with-list-and-validate-command.patch
+Patch19:        s390-tools-sles15sp2-19-zkey-Allow-to-filter-list-output-by-key-type.patch
+Patch20:        s390-tools-sles15sp2-20-zkey-Allow-to-specify-the-key-type-with-the-generate.patch
+Patch21:        s390-tools-sles15sp2-21-zkey-Preparations-for-introducing-a-new-key-type.patch
+Patch22:        s390-tools-sles15sp2-22-zkey-Introduce-the-CCA-AESCIPHER-key-type.patch
+Patch23:        s390-tools-sles15sp2-23-zkey-Add-wrappers-for-the-new-IOCTLs-with-fallback-t.patch
+Patch24:        s390-tools-sles15sp2-24-zkey-Add-helper-functions-to-build-lists-of-APQNs.patch
+Patch25:        s390-tools-sles15sp2-25-zkey-Add-support-for-generating-AES-CIPHER-keys.patch
+Patch26:        s390-tools-sles15sp2-26-zkey-Add-support-for-validating-AES-CIPHER-keys.patch
+Patch27:        s390-tools-sles15sp2-27-zkey-Add-support-for-re-enciphering-AES-CIPHER-keys.patch
+Patch28:        s390-tools-sles15sp2-28-zkey-Check-crypto-card-level-during-APQN-cross-check.patch
+Patch29:        s390-tools-sles15sp2-29-zkey-Add-helper-function-to-query-the-CCA-firmware-v.patch
+Patch30:        s390-tools-sles15sp2-30-zkey-Add-helper-function-to-convert-secure-keys-betw.patch
+Patch31:        s390-tools-sles15sp2-31-zkey-Add-helper-function-to-restrict-export-of-secur.patch
+Patch32:        s390-tools-sles15sp2-32-zkey-Add-helper-function-to-check-an-AES-CIPHER-key.patch
+Patch33:        s390-tools-sles15sp2-33-zkey-Add-key-checks-when-importing-a-CCA-AESCIPHER-k.patch
+Patch34:        s390-tools-sles15sp2-34-zkey-Add-convert-command-to-convert-keys-from-one-ty.patch
+Patch35:        s390-tools-sles15sp2-35-zkey-Allow-zkey-cryptsetup-setkey-to-set-different-k.patch
+Patch36:        s390-tools-sles15sp2-zcrypt-CEX7S-exploitation-support.patch
+Patch37:        s390-tools-sles15sp2-zcryptstats-Add-support-for-CEX7.patch
+
+# SUSE patches
+Patch900:       s390-tools-sles12-zipl_boot_msg.patch
+Patch901:       s390-tools-sles12-sysconfig-compatible-dumpconf.patch
+Patch902:       s390-tools-sles12-create-filesystem-links.patch
+Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch
+Patch904:       s390-tools-sles15-Allow-multiple-device-arguments.patch
+Patch905:       s390-tools-sles15-Format-devices-in-parallel.patch
+Patch906:       s390-tools-sles15-Implement-Y-yast_mode.patch
+Patch907:       s390-tools-sles15-Implement-f-for-backwards-compability.patch
+Patch908:       dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
+Patch909:       59-dasd.rules-wait_for.patch
+Patch910:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
+Patch911:       s390-tools-sles15sp2-Close-file-descriptor-when-checking-for-read-only.patch
 
 BuildRequires:  dracut
 BuildRequires:  fuse-devel
@@ -286,12 +235,21 @@ gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
 %install
 mkdir -p %{buildroot}/boot/zipl
-mkdir -p %{buildroot}%{_sysconfdir}//zkey/repository
+mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
 %make_install \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{release} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
      HAVE_DRACUT=1
+
+# The make install command puts things in /etc/sysconfig and not the
+# fillup-templates directory. Let's try moving them where they belong
+mkdir -p %{buildroot}%{_fillupdir}
+pushd %{buildroot}%{_sysconfdir}/sysconfig/
+for sysconffile in *
+  do mv -vi $sysconffile %{buildroot}%{_fillupdir}/sysconfig.$sysconffile
+  done
+popd
 
 install -m 755 read_values %{buildroot}/%{_bindir}/
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
@@ -304,10 +262,6 @@ install -D -m644 etc/udev/rules.d/40-z90crypt.rules %{buildroot}%{_prefix}/lib/u
 install -D -m644 etc/udev/rules.d/57-osasnmpd.rules %{buildroot}%{_prefix}/lib/udev/rules.d/57-osasnmpd.rules
 install -D -m644 etc/udev/rules.d/59-dasd.rules %{buildroot}%{_prefix}/lib/udev/rules.d/59-dasd.rules
 install -D -m644 etc/udev/rules.d/90-cpi.rules %{buildroot}%{_prefix}/lib/udev/rules.d/90-cpi.rules
-install -D -m644 etc/sysconfig/cpi %{buildroot}%{_fillupdir}/sysconfig.cpi
-install -D -m644 etc/sysconfig/dumpconf %{buildroot}%{_fillupdir}/sysconfig.dumpconf
-install -D -m644 etc/sysconfig/mon_fsstatd %{buildroot}%{_fillupdir}/sysconfig.mon_fsstatd
-install -D -m644 etc/sysconfig/mon_procd %{buildroot}%{_fillupdir}/sysconfig.mon_procd
 mv iucvterm/doc/ts-shell/iucvconn_on_login %{buildroot}%{_bindir}/iucvconn_on_login
 install -D -m644 %{SOURCE26} %{buildroot}/%{_unitdir}/cio_ignore.service
 install -D -m755 %{SOURCE27} %{buildroot}%{_prefix}/lib/systemd/scripts/setup_cio_ignore.sh
@@ -368,7 +322,7 @@ if [ ! -d %{_bindir} ]; then
     rm -f %{_bindir}
     mkdir -p %{_bindir}
 fi
-install -D -m755 %{SOURCE24} usr/bin/cputype
+install -D -m755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
 
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
 

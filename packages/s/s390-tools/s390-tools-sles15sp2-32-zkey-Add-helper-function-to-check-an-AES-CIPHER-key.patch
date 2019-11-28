@@ -1,0 +1,192 @@
+Subject: zkey: Add helper function to check an AES CIPHER key
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: Add support for CCA AES CIPHER keys
+Description: With CCA 5 there is a new secure key type, the so called 
+             variable length symmetric cipher key token. This token format
+             can hold AES keys with size 128, 192 and 256 bits together
+             with additional attributes cryptographic bound to the key
+             token. The attributes may limit the usage of the key, for
+             example restrict export or usability scope. So this key type
+             is considered to be even more secure than the traditional 
+             secure key token. This key token type is also called "CCA
+             AES CIPHER key", where the formerly used key token is called
+             "CCA AES DATA key".
+             The zkey as well as the zkey-cryptsetup tools are enhanced
+             to support AES CIPHER keys. That is, zkey can manage AES DATA 
+             keys, as well as AES CIPHER keys. The key type must be specified
+             at key generation time, the default is to generate AED DATA
+             keys.
+Upstream-ID: 7fede7021ece58b9960532e17d963f844fe0de02
+Problem-ID:  SEC1717
+
+Upstream-Description:
+
+             zkey: Add helper function to check an AES CIPHER key
+
+             The helper function performs a deep check of the AES CIPHER key
+             token and checks for any potentially insecure attributes.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/pkey.c |  137 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ zkey/pkey.h |    1 
+ 2 files changed, 138 insertions(+)
+
+--- a/zkey/pkey.c
++++ b/zkey/pkey.c
+@@ -1650,3 +1650,140 @@ int get_min_card_level_for_keytype(const
+ 
+ 	return -1;
+ }
++
++/**
++ * Performs extended checks on an AES CIPHER key. It checks the key usage
++ * fields (KUFs) and key management fields (KMFs) of the key. The function
++ * returns -EINVAL and issues warning messages if a mismatch is detected.
++ *
++ * @param[in] key           the secure key token
++ * @param[in] key_size      the size of the secure key
++ *
++ * @returns 0 on success, a negative errno in case of an error
++ */
++int check_aes_cipher_key(const u8 *key, size_t key_size)
++{
++	struct aescipherkeytoken *cipherkey = (struct aescipherkeytoken *)key;
++	bool mismatch = false;
++
++	if (!is_cca_aes_cipher_key(key, key_size)) {
++		warnx("The key is not of type '"KEY_TYPE_CCA_AESCIPHER"'");
++		return -EINVAL;
++	}
++
++	if ((cipherkey->kuf1 & 0x8000) == 0) {
++		printf("WARNING: The secure key can not be used for "
++		       "encryption\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kuf1 & 0x4000) == 0) {
++		printf("WARNING: The secure key can not be used for "
++		       "decryption\n");
++		mismatch = true;
++	}
++	if (cipherkey->kuf1 & 0x2000) {
++		printf("INFO: The secure key can be used for data translate\n");
++		mismatch = true;
++	}
++	if (cipherkey->kuf1 & 0x1000) {
++		printf("WARNING: The secure key can only be used in UDXs\n");
++		mismatch = true;
++	}
++
++	if (cipherkey->kmf1 & 0x8000) {
++		printf("WARNING: The secure key can be exported using a "
++		       "symmetric key\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf1 & 0x4000) {
++		printf("WARNING: The secure key can be exported using an "
++		       "unauthenticated asymmetric key\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf1 & 0x2000) {
++		printf("WARNING: The secure key can be exported using an "
++		       "authenticated asymmetric key\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf1 & 0x1000) {
++		printf("WARNING: The secure key can be exported using a RAW "
++		       "key\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kmf1 & 0x0800) == 0) {
++		printf("WARNING: The secure key can not be transformed into a "
++		       "CPACF protected key\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kmf1 & 0x0080) == 0) {
++		printf("WARNING: The secure key can be exported using a DES "
++		       "key\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kmf1 & 0x0040) == 0) {
++		printf("WARNING: The secure key can be exported using an AES "
++		       "key\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kmf1 & 0x0008) == 0) {
++		printf("WARNING: The secure key can be exported using an RSA "
++		       "key\n");
++		mismatch = true;
++	}
++
++	if (cipherkey->kmf2 & 0xC000) {
++		printf("WARNING: The secure key is incomplete\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf2 & 0x0010) {
++		printf("WARNING: The secure key was previously encrypted with "
++		       "an untrusted KEK\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf2 & 0x0008) {
++		printf("WARNING: The secure key was previously in a format "
++		       "without type or usage attributes\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf2 & 0x0004) {
++		printf("WARNING: The secure key was previously encrypted with "
++		       "a key weaker than itself\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf2 & 0x0002) {
++		printf("WARNING: The secure key was previously in a non-CCA "
++		       "format\n");
++		mismatch = true;
++	}
++	if (cipherkey->kmf2 & 0x0001) {
++		printf("WARNING: The secure key was previously encrypted in "
++		       "ECB mode\n");
++		mismatch = true;
++	}
++
++	if ((cipherkey->kmf3 & 0xFF00) == 0x0000 ||
++	    (cipherkey->kmf3 & 0x00FF) == 0x0000)	{
++		printf("WARNING: The secure key was created by an unknown "
++		       "method\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kmf3 & 0xFF00) == 0x0400 ||
++	    (cipherkey->kmf3 & 0x00FF) == 0x0004)	{
++		printf("WARNING: The secure key was created from cleartext key "
++		       "components\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kmf3 & 0xFF00) == 0x0500 ||
++	    (cipherkey->kmf3 & 0x00FF) == 0x0005)	{
++		printf("WARNING: The secure key was entered as a cleartext key "
++		       "value\n");
++		mismatch = true;
++	}
++	if ((cipherkey->kmf3 & 0x00FF) == 0x0012)	{
++		printf("WARNING: The secure key was converted from a CCA "
++		       "key-token that had no export control attributes\n");
++		mismatch = true;
++	}
++
++	return mismatch ? -EINVAL : 0;
++}
+--- a/zkey/pkey.h
++++ b/zkey/pkey.h
+@@ -265,5 +265,6 @@ bool is_xts_key(const u8 *key, size_t ke
+ int get_key_bit_size(const u8 *key, size_t key_size, size_t *bitsize);
+ const char *get_key_type(const u8 *key, size_t key_size);
+ int get_min_card_level_for_keytype(const char *key_type);
++int check_aes_cipher_key(const u8 *key, size_t key_size);
+ 
+ #endif

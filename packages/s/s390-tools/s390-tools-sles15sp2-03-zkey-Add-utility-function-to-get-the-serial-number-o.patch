@@ -1,0 +1,112 @@
+Subject: zkey: Add utility function to get the serial number of a crypto card
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: a84d1c5d58fa4a0c9e087357eec009803ea06ef2
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Add utility function to get the serial number of a crypto card
+
+             With recent changes in the zcrypt device driver, the serial number of
+             a crypto card can be obtained by reading the sysfs attribute 'serialnr'
+             of a crypto card device of type CCA-Coprocessor. The sysfs attribute
+             can be found under '/sys/devices/ap/cardnn/', where nn specifies the
+             card number in hex.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/utils.c |   52 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ zkey/utils.h |    2 ++
+ 2 files changed, 54 insertions(+)
+
+--- a/zkey/utils.c
++++ b/zkey/utils.c
+@@ -22,6 +22,11 @@
+ 
+ #include "utils.h"
+ 
++#define pr_verbose(verbose, fmt...)	do {				\
++						if (verbose)		\
++							warnx(fmt);	\
++					} while (0)
++
+ /**
+  * Checks if the specified card is of type CCA and is online
+  *
+@@ -107,3 +112,50 @@ out:
+ 	return rc;
+ }
+ 
++/**
++ * Gets the 8 character ASCII serial number string of an card from the sysfs.
++ *
++ * @param[in] card      card number
++ * @param[out] serialnr Result buffer
++ * @param[in] verbose   if true, verbose messages are printed
++ *
++ * @returns 0 if the serial number was returned. -ENODEV if the APQN is not
++ *          available, or is not a CCA card. -ENOTSUP if the serialnr sysfs
++ *          attribute is not available, because the zcrypt kernel module is
++ *          on an older level.
++ */
++int sysfs_get_serialnr(int card, char serialnr[9], bool verbose)
++{
++	char *dev_path;
++	int rc = 0;
++
++	if (serialnr == NULL)
++		return -EINVAL;
++
++	if (sysfs_is_card_online(card) != 1)
++		return -ENODEV;
++
++	dev_path = util_path_sysfs("bus/ap/devices/card%02x", card);
++	if (!util_path_is_dir(dev_path)) {
++		rc = -ENODEV;
++		goto out;
++	}
++	if (util_file_read_line(serialnr, 9, "%s/serialnr", dev_path) != 0) {
++		rc = -ENOTSUP;
++		goto out;
++	}
++
++	if (strlen(serialnr) == 0) {
++		rc = -ENODEV;
++		goto out;
++	}
++
++	pr_verbose(verbose, "Serial number of %02x: %s", card, serialnr);
++out:
++	if (rc != 0)
++		pr_verbose(verbose, "Failed to get serial number for "
++			   "%02x: %s", card, strerror(-rc));
++
++	free(dev_path);
++	return rc;
++}
+--- a/zkey/utils.h
++++ b/zkey/utils.h
+@@ -18,4 +18,6 @@ int sysfs_is_card_online(int card);
+ 
+ int sysfs_is_apqn_online(int card, int domain);
+ 
++int sysfs_get_serialnr(int card, char serialnr[9], bool verbose);
++
+ #endif

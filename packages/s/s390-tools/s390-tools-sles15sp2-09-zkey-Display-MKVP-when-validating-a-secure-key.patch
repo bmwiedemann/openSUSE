@@ -1,0 +1,176 @@
+Subject: zkey: Display MKVP when validating a secure key
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: c2244a57950f4eb35e3209151dcf48de66828df1
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Display MKVP when validating a secure key
+
+             Display the master key verification pattern of a secure key while
+             'zkey validate' and 'zkey-cryptsetup validate'
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c        |   20 ++++++++++++++------
+ zkey/zkey-cryptsetup.c |   16 +++++++++++++---
+ zkey/zkey.c            |   14 ++++++++++++--
+ 3 files changed, 39 insertions(+), 11 deletions(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -2107,7 +2107,7 @@ static void _keystore_print_record(struc
+ 				   bool validation, const char *skey_filename,
+ 				   size_t secure_key_size,
+ 				   size_t clear_key_bitsize, bool valid,
+-				   bool is_old_mk, bool reenc_pending)
++				   bool is_old_mk, bool reenc_pending, u64 mkvp)
+ {
+ 	char temp_vp[VERIFICATION_PATTERN_LEN + 2];
+ 	char *volumes_argz = NULL;
+@@ -2169,10 +2169,11 @@ static void _keystore_print_record(struc
+ 	if (validation) {
+ 		if (valid)
+ 			util_rec_set(rec, REC_MASTERKEY,
+-				     is_old_mk ? "OLD CCA master key" :
+-						     "CURRENT CCA master key");
++				     "%s CCA master key (MKVP: %016llx)",
++				     is_old_mk ? "OLD" : "CURRENT", mkvp);
+ 		else
+-			util_rec_set(rec, REC_MASTERKEY, "(unknown)");
++			util_rec_set(rec, REC_MASTERKEY,
++				     "(unknown, MKVP: %016llx)", mkvp);
+ 	}
+ 	if (volumes_argz != NULL)
+ 		util_rec_set_argz(rec, REC_VOLUMES, volumes_argz,
+@@ -2350,6 +2351,7 @@ static int _keystore_process_validate(st
+ 	u8 *secure_key;
+ 	int is_old_mk;
+ 	int rc, valid;
++	u64 mkvp;
+ 
+ 	rc = _keystore_ensure_keyfiles_exist(file_names, name);
+ 	if (rc != 0)
+@@ -2373,12 +2375,18 @@ static int _keystore_process_validate(st
+ 		info->num_valid++;
+ 		valid = 1;
+ 	}
++
++	rc = get_master_key_verification_pattern(secure_key, secure_key_size,
++						 &mkvp, keystore->verbose);
+ 	free(secure_key);
++	if (rc)
++		goto out;
+ 
+ 	_keystore_print_record(info->rec, name, properties, 1,
+ 			       file_names->skey_filename, secure_key_size,
+ 			       clear_key_bitsize, valid, is_old_mk,
+-			       _keystore_reencipher_key_exists(file_names));
++			       _keystore_reencipher_key_exists(file_names),
++			       mkvp);
+ 
+ 	if (valid && is_old_mk) {
+ 		util_print_indented("WARNING: The secure key is currently "
+@@ -3131,7 +3139,7 @@ static int _keystore_display_key(struct
+ 			       IS_XTS(secure_key_size) ? secure_key->bitsize * 2
+ 						       : secure_key->bitsize,
+ 			       0, 0,
+-			       _keystore_reencipher_key_exists(file_names));
++			       _keystore_reencipher_key_exists(file_names), 0);
+ 
+ out:
+ 	free(secure_key);
+--- a/zkey/zkey-cryptsetup.c
++++ b/zkey/zkey-cryptsetup.c
+@@ -1834,6 +1834,7 @@ static int command_validate(void)
+ 	char *prompt;
+ 	char *msg;
+ 	int token;
++	u64 mkvp;
+ 	int rc;
+ 
+ 	util_asprintf(&prompt, "Enter passphrase for '%s': ", g.pos_arg);
+@@ -1864,6 +1865,14 @@ static int command_validate(void)
+ 			vp_tok_avail = 1;
+ 	}
+ 
++	rc = get_master_key_verification_pattern((u8 *)key, keysize,
++						 &mkvp, g.verbose);
++	if (rc != 0) {
++		warnx("Failed to get the master key verification pattern: %s",
++		      strerror(-rc));
++		goto out;
++	}
++
+ 	printf("Validation of secure volume key of device '%s':\n", g.pos_arg);
+ 	printf("  Status:                %s\n", is_valid ? "Valid" : "Invalid");
+ 	printf("  Secure key size:       %lu bytes\n", keysize);
+@@ -1871,11 +1880,12 @@ static int command_validate(void)
+ 	       keysize > SECURE_KEY_SIZE ? "Yes" : "No");
+ 	if (is_valid) {
+ 		printf("  Clear key size:        %lu bits\n", clear_keysize);
+-		printf("  Enciphered with:       %s CCA master key\n",
+-		       is_old_mk ? "OLD" : "CURRENT");
++		printf("  Enciphered with:       %s CCA master key (MKVP: "
++		       "%016llx)\n", is_old_mk ? "OLD" : "CURRENT", mkvp);
+ 	} else {
+ 		printf("  Clear key size:        (unknown)\n");
+-		printf("  Enciphered with:       (unknown)\n");
++		printf("  Enciphered with:       (unknown, MKVP: %016llx)\n",
++		       mkvp);
+ 	}
+ 	if (vp_tok_avail)
+ 		print_verification_pattern(vp_tok.verification_pattern);
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -1300,6 +1300,7 @@ static int command_validate_file(void)
+ 	size_t clear_key_size;
+ 	u8 *secure_key;
+ 	int is_old_mk;
++	u64 mkvp;
+ 	int rc;
+ 
+ 	if (g.name != NULL) {
+@@ -1346,14 +1347,23 @@ static int command_validate_file(void)
+ 		goto out;
+ 	}
+ 
++	rc = get_master_key_verification_pattern(secure_key, secure_key_size,
++						 &mkvp, g.verbose);
++	if (rc != 0) {
++		warnx("Failed to get the master key verification pattern: %s",
++		      strerror(-rc));
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
+ 	printf("Validation of secure key in file '%s':\n", g.pos_arg);
+ 	printf("  Status:                Valid\n");
+ 	printf("  Secure key size:       %lu bytes\n", secure_key_size);
+ 	printf("  Clear key size:        %lu bits\n", clear_key_size);
+ 	printf("  XTS type key:          %s\n",
+ 	       secure_key_size > SECURE_KEY_SIZE ? "Yes" : "No");
+-	printf("  Enciphered with:       %s CCA master key\n",
+-	       is_old_mk ? "OLD" : "CURRENT");
++	printf("  Enciphered with:       %s CCA master key (MKVP: %016llx)\n",
++	       is_old_mk ? "OLD" : "CURRENT", mkvp);
+ 	printf("  Verification pattern:  %.*s\n", VERIFICATION_PATTERN_LEN / 2,
+ 	       vp);
+ 	printf("                         %.*s\n", VERIFICATION_PATTERN_LEN / 2,

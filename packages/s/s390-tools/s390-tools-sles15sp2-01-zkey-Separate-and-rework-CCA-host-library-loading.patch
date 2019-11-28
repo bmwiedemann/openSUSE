@@ -1,0 +1,795 @@
+Subject: zkey: Separate and rework CCA host library loading
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: 95c7258ea783c5bd6aa12fc0e3d5fbe65647af03
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Separate and rework CCA host library loading
+
+             As preparation for future changes, rework the loading of the
+             CCA host library so that the exported symbols are not passed
+             individually to the functions that use it. Pass a structure
+             that contains all entry points of all loaded CCA functions
+             instead. This will make it easier to add further CCA functions
+             at a later time.
+
+             Also add a version query for the CCA host library since some
+             future functions might be dependent on the library version.
+
+             While at it, separate the CCA related functions and definitions,
+             and move them into a separate source file (cca.h/cca.h).
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/Makefile          |   11 +-
+ zkey/cca.c             |  215 +++++++++++++++++++++++++++++++++++++++++++++++++
+ zkey/cca.h             |   54 ++++++++++++
+ zkey/keystore.c        |   26 ++---
+ zkey/keystore.h        |    3 
+ zkey/pkey.c            |  142 --------------------------------
+ zkey/pkey.h            |   17 ---
+ zkey/zkey-cryptsetup.c |   15 +--
+ zkey/zkey.c            |   19 +---
+ 9 files changed, 306 insertions(+), 196 deletions(-)
+
+--- a/zkey/Makefile
++++ b/zkey/Makefile
+@@ -64,18 +64,19 @@ zkey-cryptsetup-skip-jsonc:
+ 
+ all: $(BUILD_TARGETS)
+ 
+-zkey.o: zkey.c pkey.h misc.h
++zkey.o: zkey.c pkey.h cca.h misc.h
+ pkey.o: pkey.c pkey.h
++cca.o: cca.c cca.h pkey.h
+ properties.o: check-dep-zkey properties.c properties.h
+-keystore.o: keystore.c keystore.h properties.h
+-zkey-cryptsetup.o: check-dep-zkey-cryptsetup zkey-cryptsetup.c pkey.h misc.h
++keystore.o: keystore.c keystore.h properties.h pkey.h cca.h
++zkey-cryptsetup.o: check-dep-zkey-cryptsetup zkey-cryptsetup.c pkey.h cca.h misc.h
+ 
+ zkey: LDLIBS = -ldl -lcrypto
+-zkey: zkey.o pkey.o properties.o keystore.o $(libs)
++zkey: zkey.o pkey.o cca.o properties.o keystore.o $(libs)
+ 	$(LINK) $(ALL_LDFLAGS) $^ $(LDLIBS) -o $@
+ 
+ zkey-cryptsetup: LDLIBS = -ldl -lcryptsetup -ljson-c
+-zkey-cryptsetup: zkey-cryptsetup.o pkey.o $(libs)
++zkey-cryptsetup: zkey-cryptsetup.o pkey.o cca.o $(libs)
+ 	$(LINK) $(ALL_LDFLAGS) $^ $(LDLIBS) -o $@
+ 
+ install-common:
+--- /dev/null
++++ b/zkey/cca.c
+@@ -0,0 +1,215 @@
++/*
++ * zkey - Generate, re-encipher, and validate secure keys
++ *
++ * Copyright IBM Corp. 2019
++ *
++ * s390-tools is free software; you can redistribute it and/or modify
++ * it under the terms of the MIT license. See LICENSE for details.
++ */
++
++#include <dlfcn.h>
++#include <err.h>
++#include <errno.h>
++#include <stdbool.h>
++#include <stdio.h>
++#include <string.h>
++#include <stdint.h>
++#include <sys/types.h>
++#include <unistd.h>
++
++#include "lib/util_panic.h"
++
++#include "cca.h"
++#include "pkey.h"
++
++#define pr_verbose(verbose, fmt...)	do {				\
++						if (verbose)		\
++							warnx(fmt);	\
++					} while (0)
++
++/*
++ * Definitions for the CCA library
++ */
++#define CCA_LIBRARY_NAME	"libcsulcca.so"
++#define CCA_WEB_PAGE		"http://www.ibm.com/security/cryptocards"
++
++/**
++ * Prints CCA return and reason code information for certain known CCA
++ * error situations.
++ *
++ * @param return_code  the CCA return code
++ * @param reason_code  the CCA reason code
++ */
++static void print_CCA_error(int return_code, int reason_code)
++{
++	switch (return_code) {
++	case 8:
++		switch (reason_code) {
++		case 48:
++			warnx("The secure key has a CCA master key "
++			      "verification pattern that is not valid");
++			break;
++		}
++		break;
++	case 12:
++		switch (reason_code) {
++		case 764:
++			warnx("The CCA master key is not loaded and "
++			      "therefore a secure key cannot be enciphered");
++			break;
++		}
++		break;
++	}
++}
++
++/**
++ * Returns the version, release and modification number of the used CCA library.
++ *
++ * @param[in] cca           the CCA library structure
++ * @param[in] verbose       if true, verbose messages are printed
++ *
++ * @returns 0 on success, a negative errno in case of an error
++ */
++static int get_cca_version(struct cca_lib *cca, bool verbose)
++{
++	unsigned char exit_data[4] = { 0, };
++	unsigned char version_data[20];
++	long return_code, reason_code;
++	long version_data_length;
++	long exit_data_len = 0;
++	char date[20];
++
++	util_assert(cca != NULL, "Internal error: cca is NULL");
++
++	memset(version_data, 0, sizeof(version_data));
++	version_data_length = sizeof(version_data);
++	cca->dll_CSUACFV(&return_code, &reason_code,
++			 &exit_data_len, exit_data,
++			 &version_data_length, version_data);
++	pr_verbose(verbose, "CSUACFV (Cryptographic Facility Version) "
++		   "returned: return_code: %ld, reason_code: %ld", return_code,
++		   reason_code);
++	if (return_code != 0) {
++		print_CCA_error(return_code, reason_code);
++		return -EIO;
++	}
++
++	version_data[sizeof(version_data) - 1] = '\0';
++	pr_verbose(verbose, "CCA Version string: %s", version_data);
++
++	if (sscanf((char *)version_data, "%u.%u.%uz%s", &cca->version.ver,
++		   &cca->version.rel, &cca->version.mod, date) != 4) {
++		warnx("CCA library version is invalid: %s", version_data);
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++/**
++ * Loads the CCA library and provides the entry point of the CSNBKTC function.
++ *
++ * @param[out] cca           on return this contains the address of the CCA
++ *                           library and certain CCA symbols. dlclose() should
++ *                           be used to free the library when no longer needed.
++ * @param verbose            if true, verbose messages are printed
++ *
++ * @returns 0 on success, -ELIBACC in case of library load errors
++ */
++int load_cca_library(struct cca_lib *cca, bool verbose)
++{
++	util_assert(cca != NULL, "Internal error: caa is NULL");
++
++	/* Load the CCA library */
++	cca->lib_csulcca = dlopen(CCA_LIBRARY_NAME, RTLD_GLOBAL | RTLD_NOW);
++	if (cca->lib_csulcca == NULL) {
++		pr_verbose(verbose, "%s", dlerror());
++		warnx("The command requires the IBM CCA Host Libraries and "
++		      "Tools.\nFor the supported environments and downloads, "
++		      "see:\n%s", CCA_WEB_PAGE);
++		return  -ELIBACC;
++	}
++
++	/* Get the Cryptographic Facility Version function */
++	cca->dll_CSUACFV = (t_CSUACFV)dlsym(cca->lib_csulcca, "CSUACFV");
++
++	/* Get the Key Token Change function */
++	cca->dll_CSNBKTC = (t_CSNBKTC)dlsym(cca->lib_csulcca, "CSNBKTC");
++
++	if (cca->dll_CSUACFV == NULL ||
++	    cca->dll_CSNBKTC == NULL) {
++		pr_verbose(verbose, "%s", dlerror());
++		warnx("The command requires the IBM CCA Host Libraries and "
++		      "Tools.\nFor the supported environments and downloads, "
++		      "see:\n%s", CCA_WEB_PAGE);
++		dlclose(cca->lib_csulcca);
++		cca->lib_csulcca = NULL;
++		return -ELIBACC;
++	}
++
++	pr_verbose(verbose, "CCA library '%s' has been loaded successfully",
++		   CCA_LIBRARY_NAME);
++
++	return get_cca_version(cca, verbose);
++}
++
++/**
++ * Re-enciphers a secure key.
++ *
++ * @param[in] cca              the CCA libraray structure
++ * @param[in] secure_key       a buffer containing the secure key
++ * @param[in] secure_key_size  the size of the secure key
++ * @param[in] method           the re-enciphering method. METHOD_OLD_TO_CURRENT
++ *                             or METHOD_CURRENT_TO_NEW.
++ * @param[in] verbose          if true, verbose messages are printed
++ *
++ * @returns 0 on success, -EIO in case of an error
++ */
++int key_token_change(struct cca_lib *cca,
++		     u8 *secure_key, unsigned int secure_key_size,
++		     char *method, bool verbose)
++{
++	long exit_data_len = 0, rule_array_count;
++	unsigned char rule_array[2 * 8] = { 0, };
++	unsigned char exit_data[4] = { 0, };
++	long return_code, reason_code;
++
++	util_assert(cca != NULL, "Internal error: cca is NULL");
++	util_assert(secure_key != NULL, "Internal error: secure_key is NULL");
++	util_assert(secure_key_size > 0,
++		    "Internal error: secure_key_size is 0");
++	util_assert(method != NULL, "Internal error: method is NULL");
++
++	memcpy(rule_array, method, 8);
++	memcpy(rule_array + 8, "AES     ", 8);
++	rule_array_count = 2;
++
++	cca->dll_CSNBKTC(&return_code, &reason_code,
++			 &exit_data_len, exit_data,
++			 &rule_array_count, rule_array,
++			 secure_key);
++
++	pr_verbose(verbose, "CSNBKTC (Key Token Change) with '%s' returned: "
++		   "return_code: %ld, reason_code: %ld", method, return_code,
++		   reason_code);
++	if (return_code != 0) {
++		print_CCA_error(return_code, reason_code);
++		return -EIO;
++	}
++
++	if (secure_key_size == 2 * SECURE_KEY_SIZE) {
++		cca->dll_CSNBKTC(&return_code, &reason_code,
++				 &exit_data_len, exit_data,
++				 &rule_array_count, rule_array,
++				 secure_key + SECURE_KEY_SIZE);
++
++		pr_verbose(verbose, "CSNBKTC (Key Token Change) with '%s' "
++			   "returned: return_code: %ld, reason_code: %ld",
++			   method, return_code, reason_code);
++		if (return_code != 0) {
++			print_CCA_error(return_code, reason_code);
++			return -EIO;
++		}
++	}
++	return 0;
++}
+--- /dev/null
++++ b/zkey/cca.h
+@@ -0,0 +1,54 @@
++/*
++ * zkey - Generate, re-encipher, and validate secure keys
++ *
++ * This header file defines the interface to the CCA host library.
++ *
++ * Copyright IBM Corp. 2019
++ *
++ * s390-tools is free software; you can redistribute it and/or modify
++ * it under the terms of the MIT license. See LICENSE for details.
++ */
++
++#ifndef CCA_H
++#define CCA_H
++
++#include "lib/zt_common.h"
++
++#define METHOD_OLD_TO_CURRENT	"RTCMK   "
++#define METHOD_CURRENT_TO_NEW	"RTNMK   "
++
++typedef void (*t_CSNBKTC)(long *return_code,
++			  long *reason_code,
++			  long *exit_data_length,
++			  unsigned char *exit_data,
++			  long *rule_array_count,
++			  unsigned char *rule_array,
++			  unsigned char *key_identifier);
++
++typedef void (*t_CSUACFV)(long *return_code,
++			  long *reason_code,
++			  long *exit_data_length,
++			  unsigned char *exit_data,
++			  long *version_data_length,
++			  unsigned char *version_data);
++
++struct cca_version {
++	unsigned int ver;
++	unsigned int rel;
++	unsigned int mod;
++};
++
++struct cca_lib {
++	void *lib_csulcca;
++	t_CSNBKTC dll_CSNBKTC;
++	t_CSUACFV dll_CSUACFV;
++	struct cca_version version;
++};
++
++int load_cca_library(struct cca_lib *cca, bool verbose);
++
++int key_token_change(struct cca_lib *cca,
++		     u8 *secure_key, unsigned int secure_key_size,
++		     char *method, bool verbose);
++
++#endif
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -33,6 +33,7 @@
+ 
+ #include "keystore.h"
+ #include "pkey.h"
++#include "cca.h"
+ #include "properties.h"
+ 
+ struct key_filenames {
+@@ -2522,7 +2523,7 @@ struct reencipher_params {
+ struct reencipher_info {
+ 	struct reencipher_params params;
+ 	int pkey_fd;
+-	t_CSNBKTC dll_CSNBKTC;
++	struct cca_lib *cca;
+ 	unsigned long num_reenciphered;
+ 	unsigned long num_failed;
+ 	unsigned long num_skipped;
+@@ -2533,7 +2534,7 @@ struct reencipher_info {
+  *
+  * @param[in] keystore   the keystore
+  * @param[in] name       the name of the key
+- * @param[in] dll_CSNBKTC the CCA key token change function
++ * @param[in] cca        the CCA library struct
+  * @param[in] params     reenciphering parameters
+  * @param[in] secure_key a buffer containing the secure key
+  * @param[in] secure_key_size the size of the secure key
+@@ -2544,7 +2545,7 @@ struct reencipher_info {
+  */
+ static int _keystore_perform_reencipher(struct keystore *keystore,
+ 					const char *name,
+-					t_CSNBKTC dll_CSNBKTC,
++					struct cca_lib *cca,
+ 					struct reencipher_params *params,
+ 					u8 *secure_key, size_t secure_key_size,
+ 					bool is_old_mk)
+@@ -2584,8 +2585,7 @@ static int _keystore_perform_reencipher(
+ 			   "Secure key '%s' will be re-enciphered from OLD "
+ 			   "to the CURRENT CCA master key", name);
+ 
+-		rc = key_token_change(dll_CSNBKTC,
+-				      secure_key, secure_key_size,
++		rc = key_token_change(cca, secure_key, secure_key_size,
+ 				      METHOD_OLD_TO_CURRENT,
+ 				      keystore->verbose);
+ 		if (rc != 0) {
+@@ -2602,8 +2602,7 @@ static int _keystore_perform_reencipher(
+ 		if (params->inplace == -1)
+ 			params->inplace = 0;
+ 
+-		rc = key_token_change(dll_CSNBKTC,
+-				      secure_key, secure_key_size,
++		rc = key_token_change(cca, secure_key, secure_key_size,
+ 				      METHOD_CURRENT_TO_NEW,
+ 				      keystore->verbose);
+ 		if (rc != 0) {
+@@ -2696,10 +2695,9 @@ static int _keystore_process_reencipher(
+ 	if (!params.complete) {
+ 		printf("Re-enciphering key '%s'\n", name);
+ 
+-		rc = _keystore_perform_reencipher(keystore, name,
+-						  info->dll_CSNBKTC, &params,
+-						  secure_key, secure_key_size,
+-						  is_old_mk);
++		rc = _keystore_perform_reencipher(keystore, name, info->cca,
++						  &params, secure_key,
++						  secure_key_size, is_old_mk);
+ 		if (rc < 0)
+ 			goto out;
+ 		if (rc > 0) {
+@@ -2802,6 +2800,8 @@ out:
+  * @param[in] inplace      if true, the key will be re-enciphere in-place
+  * @param[in] staged       if true, the key will be re-enciphere not in-place
+  * @param[in] complete     if true, a pending re-encipherment is completed
++ * @param[in] pkey_fd      the file descriptor of /dev/pkey
++ * @param[in] cca          the CCA library struct
+  * Note: if both from Old and toNew are FALSE, then the reencipherement mode is
+  *       detected automatically. If both are TRUE then the key is reenciphered
+  *       from the OLD to the NEW CCA master key.
+@@ -2814,7 +2814,7 @@ int keystore_reencipher_key(struct keyst
+ 			    const char *apqn_filter,
+ 			    bool from_old, bool to_new, bool inplace,
+ 			    bool staged, bool complete, int pkey_fd,
+-			    t_CSNBKTC dll_CSNBKTC)
++			    struct cca_lib *cca)
+ {
+ 	struct reencipher_info info;
+ 	int rc;
+@@ -2830,7 +2830,7 @@ int keystore_reencipher_key(struct keyst
+ 		info.params.inplace = 0;
+ 	info.params.complete = complete;
+ 	info.pkey_fd = pkey_fd;
+-	info.dll_CSNBKTC = dll_CSNBKTC;
++	info.cca = cca;
+ 	info.num_failed = 0;
+ 	info.num_reenciphered = 0;
+ 	info.num_skipped = 0;
+--- a/zkey/keystore.h
++++ b/zkey/keystore.h
+@@ -14,6 +14,7 @@
+ 
+ #include <stdbool.h>
+ 
++#include "cca.h"
+ #include "pkey.h"
+ 
+ struct keystore {
+@@ -54,7 +55,7 @@ int keystore_reencipher_key(struct keyst
+ 			    const char *apqn_filter,
+ 			    bool from_old, bool to_new, bool inplace,
+ 			    bool staged, bool complete, int pkey_fd,
+-			    t_CSNBKTC dll_CSNBKTC);
++			    struct cca_lib *cca);
+ 
+ int keystore_copy_key(struct keystore *keystore, const char *name,
+ 		      const char *newname, const char *volumes);
+--- a/zkey/pkey.c
++++ b/zkey/pkey.c
+@@ -44,57 +44,7 @@
+ 
+ #define MAX_CIPHER_LEN		32
+ 
+-/*
+- * Definitions for the CCA library
+- */
+-#define CCA_LIBRARY_NAME	"libcsulcca.so"
+-#define CCA_WEB_PAGE		"http://www.ibm.com/security/cryptocards"
+-
+-#define DEFAULT_KEYBITS 256
+-
+-/**
+- * Loads the CCA library and provides the entry point of the CSNBKTC function.
+- *
+- * @param[out] lib_csulcca   on return this contains the address of the CCA
+- *                           library. dlclose() should be used to free this
+- *                           when no longer needed.
+- * @param[out] dll_CSNBKTC   on return this contains the address of the
+- *                           CSNBKTC function.
+- * @param verbose            if true, verbose messages are printed
+- *
+- * @returns 0 on success, -ELIBACC in case of library load errors
+- */
+-int load_cca_library(void **lib_csulcca, t_CSNBKTC *dll_CSNBKTC, bool verbose)
+-{
+-	util_assert(lib_csulcca != NULL, "Internal error: lib_csulcca is NULL");
+-	util_assert(dll_CSNBKTC != NULL, "Internal error: dll_CSNBKTC is NULL");
+-
+-	/* Load the CCA library */
+-	*lib_csulcca = dlopen(CCA_LIBRARY_NAME, RTLD_GLOBAL | RTLD_NOW);
+-	if (*lib_csulcca == NULL) {
+-		pr_verbose(verbose, "%s", dlerror());
+-		warnx("The command requires the IBM CCA Host Libraries and "
+-		      "Tools.\nFor the supported environments and downloads, "
+-		      "see:\n%s", CCA_WEB_PAGE);
+-		return  -ELIBACC;
+-	}
+-
+-	/* Get the Key Token Change function */
+-	*dll_CSNBKTC = (t_CSNBKTC)dlsym(*lib_csulcca, "CSNBKTC");
+-	if (*dll_CSNBKTC == NULL) {
+-		pr_verbose(verbose, "%s", dlerror());
+-		warnx("The command requires the IBM CCA Host Libraries and "
+-		      "Tools.\nFor the supported environments and downloads, "
+-		      "see:\n%s", CCA_WEB_PAGE);
+-		dlclose(*lib_csulcca);
+-		*lib_csulcca = NULL;
+-		return -ELIBACC;
+-	}
+-
+-	pr_verbose(verbose, "CCA library '%s' has been loaded successfully",
+-		   CCA_LIBRARY_NAME);
+-	return 0;
+-}
++#define DEFAULT_KEYBITS		256
+ 
+ /**
+  * Opens the pkey device and returns its file descriptor.
+@@ -523,96 +473,6 @@ out:
+ }
+ 
+ /**
+- * Prints CCA return and reason code information for certain known CCA
+- * error situations.
+- *
+- * @param return_code  the CCA return code
+- * @param reason_code  the CCA reason code
+- */
+-static void print_CCA_error(int return_code, int reason_code)
+-{
+-	switch (return_code) {
+-	case 8:
+-		switch (reason_code) {
+-		case 48:
+-			warnx("The secure key has a CCA master key "
+-			      "verification pattern that is not valid");
+-			break;
+-		}
+-		break;
+-	case 12:
+-		switch (reason_code) {
+-		case 764:
+-			warnx("The CCA master key is not loaded and "
+-			      "therefore a secure key cannot be enciphered");
+-			break;
+-		}
+-		break;
+-	}
+-}
+-
+-/**
+- * Re-enciphers a secure key.
+- *
+- * @param[in] dll_CSNBKTC      the address of the CCA CSNBKTC function
+- * @param[in] secure_key       a buffer containing the secure key
+- * @param[in] secure_key_size  the size of the secure key
+- * @param[in] method           the re-enciphering method. METHOD_OLD_TO_CURRENT
+- *                             or METHOD_CURRENT_TO_NEW.
+- * @param[in] verbose          if true, verbose messages are printed
+- *
+- * @returns 0 on success, -EIO in case of an error
+- */
+-int key_token_change(t_CSNBKTC dll_CSNBKTC,
+-		     u8 *secure_key, unsigned int secure_key_size,
+-		     char *method, bool verbose)
+-{
+-	long exit_data_len = 0, rule_array_count;
+-	unsigned char rule_array[2 * 80] = { 0, };
+-	unsigned char exit_data[4] = { 0, };
+-	long return_code, reason_code;
+-
+-	util_assert(dll_CSNBKTC != NULL, "Internal error: dll_CSNBKTC is NULL");
+-	util_assert(secure_key != NULL, "Internal error: secure_key is NULL");
+-	util_assert(secure_key_size > 0,
+-		    "Internal error: secure_key_size is 0");
+-	util_assert(method != NULL, "Internal error: method is NULL");
+-
+-	memcpy(rule_array, method, 8);
+-	memcpy(rule_array + 8, "AES     ", 8);
+-	rule_array_count = 2;
+-
+-	dll_CSNBKTC(&return_code, &reason_code,
+-		      &exit_data_len, exit_data,
+-		      &rule_array_count, rule_array,
+-		      secure_key);
+-
+-	pr_verbose(verbose, "CSNBKTC (Key Token Change) with '%s' returned: "
+-		   "return_code: %ld, reason_code: %ld", method, return_code,
+-		   reason_code);
+-	if (return_code != 0) {
+-		print_CCA_error(return_code, reason_code);
+-		return -EIO;
+-	}
+-
+-	if (secure_key_size == 2 * SECURE_KEY_SIZE) {
+-		dll_CSNBKTC(&return_code, &reason_code,
+-			      &exit_data_len, exit_data,
+-			      &rule_array_count, rule_array,
+-			      secure_key + SECURE_KEY_SIZE);
+-
+-		pr_verbose(verbose, "CSNBKTC (Key Token Change) with '%s' "
+-			   "returned: return_code: %ld, reason_code: %ld",
+-			   method, return_code, reason_code);
+-		if (return_code != 0) {
+-			print_CCA_error(return_code, reason_code);
+-			return -EIO;
+-		}
+-	}
+-	return 0;
+-}
+-
+-/**
+  * Validates an XTS secure key (the second part)
+  *
+  * @param[in] pkey_fd       the pkey file descriptor
+--- a/zkey/pkey.h
++++ b/zkey/pkey.h
+@@ -82,23 +82,10 @@ struct pkey_verifykey {
+ 
+ #define PKEY_VERIFYKEY _IOWR(PKEY_IOCTL_MAGIC, 0x07, struct pkey_verifykey)
+ 
+-#define METHOD_OLD_TO_CURRENT	"RTCMK   "
+-#define METHOD_CURRENT_TO_NEW	"RTNMK   "
+-
+-typedef void (*t_CSNBKTC)(long *return_code,
+-			  long *reason_code,
+-			  long *exit_data_length,
+-			  unsigned char *exit_data,
+-			  long *rule_array_count,
+-			  unsigned char *rule_array,
+-			  unsigned char *key_identifier);
+-
+ #define PAES_BLOCK_SIZE             16
+ #define ENC_ZERO_LEN                (2 * PAES_BLOCK_SIZE)
+ #define VERIFICATION_PATTERN_LEN    (2 * ENC_ZERO_LEN + 1)
+ 
+-int load_cca_library(void **lib_csulcca, t_CSNBKTC *dll_CSNBKTC, bool verbose);
+-
+ int open_pkey_device(bool verbose);
+ 
+ int generate_secure_key_random(int pkey_fd, const char *keyfile,
+@@ -122,10 +109,6 @@ int validate_secure_key(int pkey_fd,
+ 			size_t *clear_key_bitsize, int *is_old_mk,
+ 			bool verbose);
+ 
+-int key_token_change(t_CSNBKTC dll_CSNBKTC,
+-		     u8 *secure_key, unsigned int secure_key_size,
+-		     char *method, bool verbose);
+-
+ int generate_key_verification_pattern(const char *key, size_t key_size,
+ 				      char *vp, size_t vp_len, bool verbose);
+ 
+--- a/zkey/zkey-cryptsetup.c
++++ b/zkey/zkey-cryptsetup.c
+@@ -34,6 +34,7 @@
+ 
+ #include "misc.h"
+ #include "pkey.h"
++#include "cca.h"
+ 
+ /* Detect if cryptsetup 2.1 or later is available */
+ #ifdef CRYPT_LOG_DEBUG_JSON
+@@ -101,8 +102,7 @@ static struct zkey_cryptsetup_globals {
+ 	bool batch_mode;
+ 	bool debug;
+ 	bool verbose;
+-	void *lib_csulcca;
+-	t_CSNBKTC dll_CSNBKTC;
++	struct cca_lib cca;
+ 	int pkey_fd;
+ 	struct crypt_device *cd;
+ } g = {
+@@ -1578,7 +1578,7 @@ static int reencipher_prepare(int token)
+ 	util_print_indented(msg, 0);
+ 	free(msg);
+ 
+-	rc = key_token_change(g.dll_CSNBKTC, (u8 *)key, keysize,
++	rc = key_token_change(&g.cca, (u8 *)key, keysize,
+ 			      is_old_mk ? METHOD_OLD_TO_CURRENT :
+ 					  METHOD_CURRENT_TO_NEW,
+ 			      g.verbose);
+@@ -1700,7 +1700,7 @@ static int reencipher_complete(int token
+ 			goto out;
+ 		}
+ 
+-		rc = key_token_change(g.dll_CSNBKTC, (u8 *)key, keysize,
++		rc = key_token_change(&g.cca, (u8 *)key, keysize,
+ 				      METHOD_OLD_TO_CURRENT, g.verbose);
+ 		if (rc != 0) {
+ 			warnx("Failed to re-encipher the secure volume key for "
+@@ -2288,8 +2288,7 @@ int main(int argc, char *argv[])
+ 	}
+ 
+ 	if (command->need_cca_library) {
+-		rc = load_cca_library(&g.lib_csulcca, &g.dll_CSNBKTC,
+-				      g.verbose);
++		rc = load_cca_library(&g.cca, g.verbose);
+ 		if (rc != 0) {
+ 			rc = EXIT_FAILURE;
+ 			goto out;
+@@ -2331,8 +2330,8 @@ int main(int argc, char *argv[])
+ 	rc = command->function();
+ 
+ out:
+-	if (g.lib_csulcca)
+-		dlclose(g.lib_csulcca);
++	if (g.cca.lib_csulcca)
++		dlclose(g.cca.lib_csulcca);
+ 	if (g.pkey_fd >= 0)
+ 		close(g.pkey_fd);
+ 	if (g.cd)
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -27,6 +27,7 @@
+ #include "lib/util_prg.h"
+ #include "lib/zt_common.h"
+ 
++#include "cca.h"
+ #include "keystore.h"
+ #include "misc.h"
+ #include "pkey.h"
+@@ -80,8 +81,7 @@ static struct zkey_globals {
+ 	bool force;
+ 	bool open;
+ 	bool format;
+-	void *lib_csulcca;
+-	t_CSNBKTC dll_CSNBKTC;
++	struct cca_lib cca;
+ 	int pkey_fd;
+ 	struct keystore *keystore;
+ } g = {
+@@ -1194,8 +1194,7 @@ static int command_reencipher_file(void)
+ 		pr_verbose("Secure key will be re-enciphered from OLD to the "
+ 			   "CURRENT CCA master key");
+ 
+-		rc = key_token_change(g.dll_CSNBKTC,
+-				      secure_key, secure_key_size,
++		rc = key_token_change(&g.cca, secure_key, secure_key_size,
+ 				      METHOD_OLD_TO_CURRENT,
+ 				      g.verbose);
+ 		if (rc != 0) {
+@@ -1209,8 +1208,7 @@ static int command_reencipher_file(void)
+ 		pr_verbose("Secure key will be re-enciphered from CURRENT "
+ 			   "to the NEW CCA master key");
+ 
+-		rc = key_token_change(g.dll_CSNBKTC,
+-				      secure_key, secure_key_size,
++		rc = key_token_change(&g.cca, secure_key, secure_key_size,
+ 				      METHOD_CURRENT_TO_NEW, g.verbose);
+ 		if (rc != 0) {
+ 			warnx("Re-encipher from CURRENT to NEW CCA "
+@@ -1270,7 +1268,7 @@ static int command_reencipher_repository
+ 
+ 	rc = keystore_reencipher_key(g.keystore, g.name, g.apqns, g.fromold,
+ 				     g.tonew, g.inplace, g.staged, g.complete,
+-				     g.pkey_fd, g.dll_CSNBKTC);
++				     g.pkey_fd, &g.cca);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+@@ -1867,8 +1865,7 @@ int main(int argc, char *argv[])
+ 	}
+ 
+ 	if (command->need_cca_library) {
+-		rc = load_cca_library(&g.lib_csulcca, &g.dll_CSNBKTC,
+-				      g.verbose);
++		rc = load_cca_library(&g.cca, g.verbose);
+ 		if (rc != 0) {
+ 			rc = EXIT_FAILURE;
+ 			goto out;
+@@ -1887,8 +1884,8 @@ int main(int argc, char *argv[])
+ 	rc = command->function();
+ 
+ out:
+-	if (g.lib_csulcca)
+-		dlclose(g.lib_csulcca);
++	if (g.cca.lib_csulcca)
++		dlclose(g.cca.lib_csulcca);
+ 	if (g.pkey_fd >= 0)
+ 		close(g.pkey_fd);
+ 	if (g.keystore)

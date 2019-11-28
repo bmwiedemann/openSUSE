@@ -1,0 +1,289 @@
+Subject: zkey-cryptsetup: Add --to-new and --from-old options
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: a0ed6709cf3c62b1fc9dfa28358e70215c1da55a
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey-cryptsetup: Add --to-new and --from-old options
+
+             To allow better control about the secure AES volume key re-enciphering
+             with 'zkey-cryptsetup reencipher', add options '--to-new' and '--from-old'
+             to specify if a re-enciphering from CURRENT to NEW, or OLD to CURRENT master
+             key registers is to be performed. If these options are not specified, then
+             it is auto-detected, based on the master key that the secure key is currently
+             re-enciphered with.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/zkey-cryptsetup.1 |   49 ++++++++++++++---
+ zkey/zkey-cryptsetup.c |  137 ++++++++++++++++++++++++++++++++++++-------------
+ 2 files changed, 142 insertions(+), 44 deletions(-)
+
+--- a/zkey/zkey-cryptsetup.1
++++ b/zkey/zkey-cryptsetup.1
+@@ -91,6 +91,8 @@ behave in the same way as with \fBcrypts
+ .B zkey\-cryptsetup
+ .BR reencipher | re
+ .I device
++.RB [ \-\-to\-new | \-N ]
++.RB [ \-\-from\-old | \-O ]
+ .RB [ \-\-staged | \-s ]
+ .RB [ \-\-in\-place | \-i ]
+ .RB [ \-\-complete | \-c ]
+@@ -128,17 +130,36 @@ register can still be used until the mas
+ The \fBNEW\fP register contains the new master key to be set.
+ The master key in the \fBNEW\fP register cannot be used until it is made
+ the current master key. You can pro-actively re-encipher a secure key with the
+-\fBNEW\fP master key before this key is made the \fBCURRENT\fP key.
++\fBNEW\fP master key before this key is made the \fBCURRENT\fP key. Use the
++.B \-\-to-new
++option to do this.
+ .RE
+ .PP
+-\fBzkey\-cryptsetup\fP automatically detects whether the secure volume key
+-is currently enciphered with the master key in the \fBOLD\fP register or with
+-the master key in the \fBCURRENT\fP register. If currently enciphered with the
+-master key in the \fBOLD\fP register, it is re-enciphered with the master key
+-in the \fBCURRENT\fP register. If it is currently enciphered with the master
+-key in the \fBCURRENT\fP register, it is re-enciphered with the master key in
+-the \fBNEW\fP register. If for this case the \fBNEW\fP register does not
+-contain a valid master key, then the re-encipher operation fails.
++Use the
++.B \-\-from\-old
++option to re-encipher a secure volume key that is currently enciphered with
++the master key in the \fBOLD\fP register with the master key in the
++\fBCURRENT\fP register.
++.PP
++.PP
++If both the
++.B \-\-from-old
++and
++.B \-\-to-new
++options are specified, a secure volume key that is currently enciphered
++with the master key in the \fBOLD\fP register is re-enciphered with the
++master key in the \fBNEW\fP register.
++.RE
++.PP
++If both options are omitted, \fBzkey-cryptsetup\fP automatically detects whether
++the secure volume key is currently enciphered with the master key in the
++\fBOLD\fP register or with the master key in the \fBCURRENT\fP register.
++If currently enciphered with the master key in the \fBOLD\fP register,
++it is re-enciphered with the master key in the \fBCURRENT\fP register.
++If it is currently enciphered with the master key in the \fBCURRENT\fP
++register, it is re-enciphered with the master key in the \fBNEW\fP register.
++If for this case the \fBNEW\fP register does not contain a valid master key,
++then the re-encipher operation fails.
+ .PP
+ Re-enciphering a secure volume key of a volume encrypted with
+ \fBLUKS2\fP and the \fBpaes\fP cipher can be performed \fBin-place\fP, or in
+@@ -326,6 +347,16 @@ relevance.
+ .
+ .SS "Options for the reencipher command"
+ .TP
++.BR \-N ", " \-\-to\-new
++Re-enciphers a secure volume key in the LUKS2 header that is currently
++enciphered with the master key in the CURRENT register with the master key in
++the NEW register.
++.TP
++.BR \-O ", " \-\-from\-old
++Re-enciphers a secure volume key in the LUKS2 header that is currently
++enciphered with the master key in the OLD register with the master key in the
++CURRENT register.
++.TP
+ .BR \-i ", " \-\-in-place
+ Forces an in-place re-enciphering of a secure volume key in the LUKS2
+ header. This option immediately replaces the secure volume key in the LUKS2
+--- a/zkey/zkey-cryptsetup.c
++++ b/zkey/zkey-cryptsetup.c
+@@ -95,6 +95,8 @@ static struct zkey_cryptsetup_globals {
+ 	long long keyfile_offset;
+ 	long long keyfile_size;
+ 	long long tries;
++	bool tonew;
++	bool fromold;
+ 	bool complete;
+ 	bool inplace;
+ 	bool staged;
+@@ -163,6 +165,22 @@ static struct util_opt opt_vec[] = {
+ 		.command = COMMAND_REENCIPHER,
+ 	},
+ 	{
++		.option = {"to-new", 0, NULL, 'N'},
++		.desc = "Re-enciphers a secure volume key in the LUKS2 header "
++			"that is currently enciphered with the master key in "
++			"the CURRENT register with the master key in the NEW "
++			"register",
++		.command = COMMAND_REENCIPHER,
++	},
++	{
++		.option = {"from-old", 0, NULL, 'O'},
++		.desc = "Re-enciphers a secure volume key in the LUKS2 header "
++			"that is currently enciphered with the master key in "
++			"the OLD register with the master key in the CURRENT "
++			"register",
++		.command = COMMAND_REENCIPHER,
++	},
++	{
+ 		.option = {"staged", 0, NULL, 's'},
+ 		.desc = "Forces that the re-enciphering of a secure volume "
+ 			"key in the LUKS2 header is performed in staged mode",
+@@ -1572,13 +1590,28 @@ static int reencipher_prepare(int token)
+ 	if (rc < 0)
+ 		goto out;
+ 
+-	util_asprintf(&msg, "The secure volume key of device '%s' is "
+-		      "enciphered with the %s CCA master key and is being "
+-		      "re-enciphered with the %s CCA master key.",
+-		      g.pos_arg, is_old_mk ? "OLD" : "CURRENT",
+-		      is_old_mk ? "CURRENT" : "NEW");
+-	util_print_indented(msg, 0);
+-	free(msg);
++	if (!g.fromold && !g.tonew) {
++		/* Autodetect reencipher mode */
++		if (is_old_mk) {
++			g.fromold = 1;
++			util_asprintf(&msg, "The secure volume key of device "
++				      "'%s' is enciphered with the OLD CCA "
++				      "master key and is being re-enciphered "
++				      "with the CURRENT CCA master key.",
++				      g.pos_arg);
++			util_print_indented(msg, 0);
++			free(msg);
++		} else {
++			g.tonew = 1;
++			util_asprintf(&msg, "The secure volume key of device "
++				      "'%s' is enciphered with the CURRENT CCA "
++				      "master key and is being re-enciphered "
++				      "with the NEW CCA master key.",
++				      g.pos_arg);
++			util_print_indented(msg, 0);
++			free(msg);
++		}
++	}
+ 
+ 	rc = get_master_key_verification_pattern((u8 *)key, keysize, &mkvp,
+ 						 g.verbose);
+@@ -1588,36 +1621,64 @@ static int reencipher_prepare(int token)
+ 		goto out;
+ 	}
+ 
+-	rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
+-					is_old_mk ? FLAG_SEL_CCA_MATCH_OLD_MKVP
+-						: FLAG_SEL_CCA_MATCH_CUR_MKVP |
+-						  FLAG_SEL_CCA_NEW_MUST_BE_SET,
+-					g.verbose);
+-	if (rc == -ENOTSUP) {
+-		rc = 0;
+-		selected = 0;
+-	}
+-	if (rc != 0) {
+-		util_asprintf(&msg, "No APQN found that is suitable for "
+-			      "re-enciphering the secure AES volume key%s",
+-			      !is_old_mk ? " and has the NEW master key loaded"
+-					 : "");
+-		util_print_indented(msg, 0);
+-		free(msg);
+-		goto out;
++	if (g.fromold) {
++		rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
++						FLAG_SEL_CCA_MATCH_OLD_MKVP,
++						g.verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			util_print_indented("No APQN found that is suitable "
++					    "for re-enciphering the secure AES "
++					    "volume key from the OLD to the "
++					    "CURRENT CCA master key.", 0);
++			goto out;
++		}
++
++		rc = key_token_change(&g.cca, (u8 *)key, keysize,
++				      METHOD_OLD_TO_CURRENT, g.verbose);
++		if (rc != 0) {
++			warnx("Failed to re-encipher the secure volume key of "
++			      "device '%s'\n", g.pos_arg);
++			if (!selected)
++				print_msg_for_cca_envvars(
++						"secure AES volume key");
++			rc = -EINVAL;
++			goto out;
++		}
+ 	}
+ 
+-	rc = key_token_change(&g.cca, (u8 *)key, keysize,
+-			      is_old_mk ? METHOD_OLD_TO_CURRENT :
+-					  METHOD_CURRENT_TO_NEW,
+-			      g.verbose);
+-	if (rc != 0) {
+-		warnx("Failed to re-encipher the secure volume key of device "
+-		      "'%s'\n", g.pos_arg);
+-		if (!selected)
+-			print_msg_for_cca_envvars("secure AES volume key");
+-		rc = -EINVAL;
+-		goto out;
++	if (g.tonew) {
++		rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
++						FLAG_SEL_CCA_MATCH_CUR_MKVP |
++						FLAG_SEL_CCA_NEW_MUST_BE_SET,
++						g.verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			util_print_indented("No APQN found that is suitable "
++					    "for re-enciphering the secure AES "
++					    "volume key from the CURRENT to "
++					    "the NEW CCA master key.", 0);
++			goto out;
++		}
++
++		rc = key_token_change(&g.cca, (u8 *)key, keysize,
++				      METHOD_CURRENT_TO_NEW,
++				      g.verbose);
++		if (rc != 0) {
++			warnx("Failed to re-encipher the secure volume key of "
++			      "device '%s'\n", g.pos_arg);
++			if (!selected)
++				print_msg_for_cca_envvars(
++						"secure AES volume key");
++			rc = -EINVAL;
++			goto out;
++		}
+ 	}
+ 
+ 	rc = crypt_keyslot_add_by_key(g.cd, CRYPT_ANY_SLOT, key, keysize,
+@@ -2276,6 +2337,12 @@ int main(int argc, char *argv[])
+ 		if (c == -1)
+ 			break;
+ 		switch (c) {
++		case 'N':
++			g.tonew = 1;
++			break;
++		case 'O':
++			g.fromold = 1;
++			break;
+ 		case 'c':
+ 			g.complete = 1;
+ 			break;

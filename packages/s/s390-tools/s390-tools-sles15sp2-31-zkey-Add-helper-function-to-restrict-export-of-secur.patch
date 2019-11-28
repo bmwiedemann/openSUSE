@@ -1,0 +1,182 @@
+Subject: zkey: Add helper function to restrict export of secure keys
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: Add support for CCA AES CIPHER keys
+Description: With CCA 5 there is a new secure key type, the so called 
+             variable length symmetric cipher key token. This token format
+             can hold AES keys with size 128, 192 and 256 bits together
+             with additional attributes cryptographic bound to the key
+             token. The attributes may limit the usage of the key, for
+             example restrict export or usability scope. So this key type
+             is considered to be even more secure than the traditional 
+             secure key token. This key token type is also called "CCA
+             AES CIPHER key", where the formerly used key token is called
+             "CCA AES DATA key".
+             The zkey as well as the zkey-cryptsetup tools are enhanced
+             to support AES CIPHER keys. That is, zkey can manage AES DATA 
+             keys, as well as AES CIPHER keys. The key type must be specified
+             at key generation time, the default is to generate AED DATA
+             keys.
+Upstream-ID: e7d79d5c5c0928c1bdbd6b669a6e70b8fd3352a5
+Problem-ID:  SEC1717
+
+Upstream-Description:
+
+             zkey: Add helper function to restrict export of secure keys
+
+             Secure keys of type CCA-AESCIPHER can be export restricted, so that
+             these keys can not be exported by another key.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/cca.c |   83 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ zkey/cca.h |   19 +++++++++++++
+ 2 files changed, 101 insertions(+), 1 deletion(-)
+
+--- a/zkey/cca.c
++++ b/zkey/cca.c
+@@ -165,13 +165,17 @@ int load_cca_library(struct cca_lib *cca
+ 	/* Get the Key Translate 2 function */
+ 	cca->dll_CSNBKTR2 = (t_CSNBKTR2)dlsym(cca->lib_csulcca, "CSNBKTR2");
+ 
++	/* Get the Restrict Key Attribute function */
++	cca->dll_CSNBRKA = (t_CSNBRKA)dlsym(cca->lib_csulcca, "CSNBRKA");
++
+ 	if (cca->dll_CSUACFV == NULL ||
+ 	    cca->dll_CSNBKTC == NULL ||
+ 	    cca->dll_CSNBKTC2 == NULL ||
+ 	    cca->dll_CSUACFQ == NULL ||
+ 	    cca->dll_CSUACRA == NULL ||
+ 	    cca->dll_CSUACRD == NULL ||
+-	    cca->dll_CSNBKTR2 == NULL) {
++	    cca->dll_CSNBKTR2 == NULL ||
++	    cca->dll_CSNBRKA == NULL) {
+ 		pr_verbose(verbose, "%s", dlerror());
+ 		warnx("The command requires the IBM CCA Host Libraries and "
+ 		      "Tools.\nFor the supported environments and downloads, "
+@@ -898,3 +902,80 @@ int convert_aes_data_to_cipher_key(struc
+ 	return 0;
+ }
+ 
++/*
++ * Restrict the exportability of an AES CIPHER key. It restricts export by means
++ * of NOEX-AES, NOEX-DES, NOEX-RSA, NOEX-SYM, NOEXUASY, NOEXAASY, NOEX-RAW
++ * keywords.
++ * When this function is called with an AES DATA key, it does nothing and
++ * returns 0. AES DATA keys can not be export restricted.
++ *
++ * @param[in] cca       the CCA library structure
++ * @param[in] secure_key the secure key to restrict
++ * @param[in] secure_key_size the size of the secure key to restrict
++ * @param[in] verbose          if true, verbose messages are printed
++ *
++ * @returns 0 on success, a negative errno in case of an error.
++ */
++int restrict_key_export(struct cca_lib *cca, u8 *secure_key,
++			unsigned int secure_key_size, bool verbose)
++{
++	struct aescipherkeytoken *cipherkey =
++					(struct aescipherkeytoken *)secure_key;
++	long exit_data_len = 0, rule_array_count = 0;
++	unsigned char rule_array[8 * 8] = { 0, };
++	unsigned char exit_data[4] = { 0, };
++	long return_code, reason_code;
++	long token_length, zero = 0;
++
++	util_assert(cca != NULL, "Internal error: cca is NULL");
++	util_assert(secure_key != NULL, "Internal error: secure_key is NULL");
++
++	if (!is_cca_aes_cipher_key(secure_key, secure_key_size))
++		return 0;
++
++	memcpy(rule_array, "AES     ", 8);
++	memcpy(rule_array + 8, "NOEX-AES", 8);
++	memcpy(rule_array + 16, "NOEX-DES", 8);
++	memcpy(rule_array + 24, "NOEX-RSA", 8);
++	memcpy(rule_array + 32, "NOEX-SYM", 8);
++	memcpy(rule_array + 40, "NOEXUASY", 8);
++	memcpy(rule_array + 48, "NOEXAASY", 8);
++	memcpy(rule_array + 56, "NOEX-RAW", 8);
++	rule_array_count = 8;
++
++	token_length = cipherkey->length;
++	cca->dll_CSNBRKA(&return_code, &reason_code,
++			 &exit_data_len, exit_data,
++			 &rule_array_count, rule_array,
++			 &token_length, (unsigned char *)secure_key,
++			 &zero, NULL, &zero, NULL, &zero, NULL);
++
++	pr_verbose(verbose, "CSNBRKA (Restrict Key Attribute) "
++		   "returned: return_code: %ld, reason_code: %ld", return_code,
++		   reason_code);
++	if (return_code != 0) {
++		print_CCA_error(return_code, reason_code);
++		return -EIO;
++	}
++
++	if (is_xts_key(secure_key, secure_key_size)) {
++		cipherkey = (struct aescipherkeytoken *)(secure_key +
++							 AESCIPHER_KEY_SIZE);
++		token_length = cipherkey->length;
++		cca->dll_CSNBRKA(&return_code, &reason_code,
++				 &exit_data_len, exit_data,
++				 &rule_array_count, rule_array,
++				 &token_length, (unsigned char *)cipherkey,
++				 &zero, NULL, &zero, NULL, &zero, NULL);
++
++		pr_verbose(verbose, "CSNBRKA (Restrict Key Attribute) "
++			   "returned: return_code: %ld, reason_code: %ld",
++			   return_code, reason_code);
++		if (return_code != 0) {
++			print_CCA_error(return_code, reason_code);
++			return -EIO;
++		}
++	}
++
++	return 0;
++}
+--- a/zkey/cca.h
++++ b/zkey/cca.h
+@@ -83,6 +83,21 @@ typedef void (*t_CSNBKTR2)(long *return_
+ 			   long *output_key_token_length,
+ 			   unsigned char *output_key_token);
+ 
++typedef void (*t_CSNBRKA)(long *return_code,
++			  long *reason_code,
++			  long *exit_data_length,
++			  unsigned char *exit_data,
++			  long *rule_array_count,
++			  unsigned char *rule_array,
++			  long *key_identifier_length,
++			  unsigned char *key_identifier,
++			  long *ey_encrypting_key_identifier_length,
++			  unsigned char *ey_encrypting_key_identifier,
++			  long *opt_parameter1_length,
++			  unsigned char *opt_parameter1,
++			  long *opt_parameter2_length,
++			  unsigned char *opt_parameter2);
++
+ struct cca_version {
+ 	unsigned int ver;
+ 	unsigned int rel;
+@@ -98,6 +113,7 @@ struct cca_lib {
+ 	t_CSUACRA dll_CSUACRA;
+ 	t_CSUACRD dll_CSUACRD;
+ 	t_CSNBKTR2 dll_CSNBKTR2;
++	t_CSNBRKA dll_CSNBRKA;
+ 	struct cca_version version;
+ };
+ 
+@@ -124,4 +140,7 @@ int convert_aes_data_to_cipher_key(struc
+ 				   unsigned int *output_key_size,
+ 				   bool verbose);
+ 
++int restrict_key_export(struct cca_lib *cca, u8 *secure_key,
++			unsigned int secure_key_size, bool verbose);
++
+ #endif

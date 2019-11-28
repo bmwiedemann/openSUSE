@@ -1,0 +1,91 @@
+Subject: zkey: Cross check APQNs when generating secure keys
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: a5b58038a0dbf1c3eb202a6933265f0d2e57e130
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Cross check APQNs when generating secure keys
+
+             Perform a cross check of the APQNs when a new secure AES key is
+             generated. When a set of APQNs are associated to a new secure key,
+             these APQNs are cross checked. If a new secure key is generated
+             outside of the key repository, or no APQNs are associated to a secure
+             key generated inside the key repository, then all currently available
+             APQNs are cross checked. If a master key mismatch is detected, then
+             the key generation is rejected.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |    8 ++++++++
+ zkey/zkey.c     |   11 +++++++++++
+ 2 files changed, 19 insertions(+)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -1685,6 +1685,14 @@ int keystore_generate_key(struct keystor
+ 	if (rc != 0)
+ 		goto out_free_key_filenames;
+ 
++	rc = cross_check_apqns(apqns, 0, true, keystore->verbose);
++	if (rc == -EINVAL)
++		goto out_free_key_filenames;
++	if (rc != 0 && rc != -ENOTSUP && noapqncheck == 0) {
++		warnx("Your master key setup is improper");
++		goto out_free_key_filenames;
++	}
++
+ 	rc = _keystore_get_card_domain(apqns, &card, &domain);
+ 	if (rc != 0)
+ 		goto out_free_key_filenames;
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -31,6 +31,7 @@
+ #include "keystore.h"
+ #include "misc.h"
+ #include "pkey.h"
++#include "utils.h"
+ 
+ /*
+  * Program configuration
+@@ -1060,6 +1061,8 @@ static int command_generate_repository(v
+  */
+ static int command_generate(void)
+ {
++	int rc;
++
+ 	if (g.pos_arg != NULL && g.name != NULL) {
+ 		warnx(" Option '--name|-N' is not valid for generating a key "
+ 		      "outside of the repository");
+@@ -1100,6 +1103,14 @@ static int command_generate(void)
+ 			return EXIT_FAILURE;
+ 		}
+ 
++		rc = cross_check_apqns(NULL, 0, true, g.verbose);
++		if (rc == -EINVAL)
++			return EXIT_FAILURE;
++		if (rc != 0 && rc != -ENOTSUP) {
++			warnx("Your master key setup is improper");
++			return EXIT_FAILURE;
++		}
++
+ 		return g.clearkeyfile ? command_generate_clear()
+ 				      : command_generate_random();
+ 	}

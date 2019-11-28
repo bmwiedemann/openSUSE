@@ -1,0 +1,225 @@
+Subject: zkey: Add key checks when importing a CCA-AESCIPHER key
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: Add support for CCA AES CIPHER keys
+Description: With CCA 5 there is a new secure key type, the so called 
+             variable length symmetric cipher key token. This token format
+             can hold AES keys with size 128, 192 and 256 bits together
+             with additional attributes cryptographic bound to the key
+             token. The attributes may limit the usage of the key, for
+             example restrict export or usability scope. So this key type
+             is considered to be even more secure than the traditional 
+             secure key token. This key token type is also called "CCA
+             AES CIPHER key", where the formerly used key token is called
+             "CCA AES DATA key".
+             The zkey as well as the zkey-cryptsetup tools are enhanced
+             to support AES CIPHER keys. That is, zkey can manage AES DATA 
+             keys, as well as AES CIPHER keys. The key type must be specified
+             at key generation time, the default is to generate AED DATA
+             keys.
+Upstream-ID: 0d9e42264db9935e28f663802c5b95795af79160
+Problem-ID:  SEC1717
+
+Upstream-Description:
+
+             zkey: Add key checks when importing a CCA-AESCIPHER key
+
+             Perform extended checks on a secure key that is imported into
+             the key repository. Warn the user if the imported key is by
+             any means insecure, e.g. has been originally created in an
+             insecure way. Prompt the user to continue the import if a
+             potential insecurity is detected.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |   60 ++++++++++++++++++++++++++++++++++++++++++++++----------
+ zkey/keystore.h |    3 +-
+ zkey/utils.c    |   24 ++++++++++++++++++++++
+ zkey/utils.h    |    2 +
+ zkey/zkey.1     |    6 +++++
+ zkey/zkey.c     |    2 -
+ 6 files changed, 85 insertions(+), 12 deletions(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -1801,18 +1801,21 @@ out_free_key_filenames:
+  *                        default is used.
+  * @param[in] import_file The name of a secure key containing the key to import
+  * @param[in] volume_type the type of volume
++ * @param[in] cca        the CCA library struct
+  *
+  * @returns 0 for success or a negative errno in case of an error
+  */
+ int keystore_import_key(struct keystore *keystore, const char *name,
+ 			const char *description, const char *volumes,
+ 			const char *apqns, bool noapqncheck, size_t sector_size,
+-			const char *import_file, const char *volume_type)
++			const char *import_file, const char *volume_type,
++			struct cca_lib *cca)
+ {
+ 	struct key_filenames file_names = { NULL, NULL, NULL };
+ 	struct properties *key_props = NULL;
+ 	size_t secure_key_size;
+ 	const char *key_type;
++	int selected = 1;
+ 	u8 *secure_key;
+ 	u64 mkvp;
+ 	int rc;
+@@ -1862,6 +1865,51 @@ int keystore_import_key(struct keystore
+ 		goto out_free_key;
+ 	}
+ 
++	if (is_cca_aes_cipher_key(secure_key, secure_key_size)) {
++		if (cca->lib_csulcca == NULL) {
++			rc = load_cca_library(cca, keystore->verbose);
++			if (rc != 0)
++				goto out_free_key;
++		}
++
++		rc = select_cca_adapter_by_mkvp(cca, mkvp, apqns,
++						FLAG_SEL_CCA_MATCH_CUR_MKVP |
++						FLAG_SEL_CCA_MATCH_OLD_MKVP,
++						keystore->verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			warnx("No APQN found that is suitable for "
++			      "working with the secure AES key '%s'", name);
++			rc = 0;
++			goto out_free_key;
++		}
++
++		rc = restrict_key_export(cca, secure_key, secure_key_size,
++					 keystore->verbose);
++		if (rc != 0) {
++			warnx("Failed to export-restrict the imported secure "
++			      "key: %s", strerror(-rc));
++			if (!selected)
++				print_msg_for_cca_envvars("secure AES key");
++			goto out_free_key;
++		}
++
++		rc = check_aes_cipher_key(secure_key, secure_key_size);
++		if (rc != 0) {
++			warnx("The secure key to import might not be secure");
++			printf("%s: Do you want to import it anyway [y/N]? ",
++			       program_invocation_short_name);
++			if (!prompt_for_yes(keystore->verbose)) {
++				warnx("Operation aborted");
++				rc = -ECANCELED;
++				goto out_free_key;
++			}
++		}
++	}
++
+ 	rc = write_secure_key(file_names.skey_filename, secure_key,
+ 			      secure_key_size, keystore->verbose);
+ 	free(secure_key);
+@@ -3180,7 +3228,6 @@ static int _keystore_prompt_for_remove(s
+ 				       struct key_filenames *file_names)
+ {
+ 	struct properties *key_prop;
+-	char str[20];
+ 	char *msg;
+ 	int rc;
+ 
+@@ -3198,14 +3245,7 @@ static int _keystore_prompt_for_remove(s
+ 
+ 	printf("%s: Remove key '%s' [y/N]? ", program_invocation_short_name,
+ 	       name);
+-	if (fgets(str, sizeof(str), stdin) == NULL) {
+-		rc = -EIO;
+-		goto out;
+-	}
+-	if (str[strlen(str) - 1] == '\n')
+-		str[strlen(str) - 1] = '\0';
+-	pr_verbose(keystore, "Prompt reply: '%s'", str);
+-	if (strcasecmp(str, "y") != 0 && strcasecmp(str, "yes") != 0) {
++	if (!prompt_for_yes(keystore->verbose)) {
+ 		warnx("Operation aborted");
+ 		rc = -ECANCELED;
+ 		goto out;
+--- a/zkey/keystore.h
++++ b/zkey/keystore.h
+@@ -37,7 +37,8 @@ int keystore_generate_key(struct keystor
+ int keystore_import_key(struct keystore *keystore, const char *name,
+ 			const char *description, const char *volumes,
+ 			const char *apqns, bool noapqncheck, size_t sector_size,
+-			const char *import_file, const char *volume_type);
++			const char *import_file, const char *volume_type,
++			struct cca_lib *cca);
+ 
+ int keystore_change_key(struct keystore *keystore, const char *name,
+ 			const char *description, const char *volumes,
+--- a/zkey/utils.c
++++ b/zkey/utils.c
+@@ -793,3 +793,27 @@ int cross_check_apqns(const char *apqns,
+ 
+ 	return rc;
+ }
++
++/*
++ * Prompts for yes or no. Returns true if 'y' or 'yes' was entered.
++ *
++ * @param[in] verbose   if true, verbose messages are printed
++ *
++ * @returns true if 'y' or 'yes' was entered (case insensitive). Returns false
++ * otherwise.
++ */
++bool prompt_for_yes(bool verbose)
++{
++	char str[20];
++
++	if (fgets(str, sizeof(str), stdin) == NULL)
++		return false;
++
++	if (str[strlen(str) - 1] == '\n')
++		str[strlen(str) - 1] = '\0';
++	pr_verbose(verbose, "Prompt reply: '%s'", str);
++	if (strcasecmp(str, "y") == 0 || strcasecmp(str, "yes") == 0)
++		return true;
++
++	return false;
++}
+--- a/zkey/utils.h
++++ b/zkey/utils.h
+@@ -53,4 +53,6 @@ int print_mk_info(const char *apqns, boo
+ int cross_check_apqns(const char *apqns, u64 mkvp, int min_level,
+ 		      bool print_mks, bool verbose);
+ 
++bool prompt_for_yes(bool verbose);
++
+ #endif
+--- a/zkey/zkey.1
++++ b/zkey/zkey.1
+@@ -349,6 +349,12 @@ additional information can be associated
+ , or the
+ .B \-\-sector-size
+ options.
++.PP
++.B Note:
++The \fBimport\fP command requires the CCA host library (libcsulcca.so)
++to be installed when secure keys of type \fBCCA-AESCIPHER\fP are imported.
++For the supported environments and downloads, see:
++\fIhttp://www.ibm.com/security/cryptocards\fP
+ .
+ .SS "Export AES secure keys from the secure key repository"
+ .
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -1522,7 +1522,7 @@ static int command_import(void)
+ 
+ 	rc = keystore_import_key(g.keystore, g.name, g.description, g.volumes,
+ 				 g.apqns, g.noapqncheck, g.sector_size,
+-				 g.pos_arg, g.volume_type);
++				 g.pos_arg, g.volume_type, &g.cca);
+ 
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }

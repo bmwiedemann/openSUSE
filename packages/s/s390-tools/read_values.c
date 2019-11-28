@@ -1,6 +1,6 @@
 /********************************************************************************/
 /*										*/
-/*	Copyright (C) 2014-2015, SUSE LLC					*/
+/*	Copyright (C) 2014-2015, 2019 SUSE LLC					*/
 /*										*/
 /*	All rights reserved.
 
@@ -63,6 +63,10 @@ struct machinetype {
 	{ "2827", "2827 = z12-EC  IBM zEnterprise EC12" },
 	{ "2828", "2828 = z12-BC  IBM zEnterprise BC12" },
 	{ "2964", "2964 = z13     IBM z13" },
+	{ "2965", "2965 = z13s    IBM z13s (single frame)" },
+	{ "3906", "3906 = z14     IBM z14" },
+	{ "3907", "3907 = z14 ZR1 IBM z14 ZR1" },
+	{ "8561", "8561 = z15     IBM z15" },
 	};
 
 int	debug = 0;

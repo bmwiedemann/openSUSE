@@ -1,0 +1,361 @@
+Subject: zkey: Check crypto card level during APQN cross checking
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: Add support for CCA AES CIPHER keys
+Description: With CCA 5 there is a new secure key type, the so called 
+             variable length symmetric cipher key token. This token format
+             can hold AES keys with size 128, 192 and 256 bits together
+             with additional attributes cryptographic bound to the key
+             token. The attributes may limit the usage of the key, for
+             example restrict export or usability scope. So this key type
+             is considered to be even more secure than the traditional 
+             secure key token. This key token type is also called "CCA
+             AES CIPHER key", where the formerly used key token is called
+             "CCA AES DATA key".
+             The zkey as well as the zkey-cryptsetup tools are enhanced
+             to support AES CIPHER keys. That is, zkey can manage AES DATA 
+             keys, as well as AES CIPHER keys. The key type must be specified
+             at key generation time, the default is to generate AED DATA
+             keys.
+Upstream-ID: b7bb90c552f9b62c0b4ddc1295e76769149ee6bb
+Problem-ID:  SEC1717
+
+Upstream-Description:
+
+             zkey: Check crypto card level during APQN cross checking
+
+             Secure keys of type CCA-AESCIPHER require a CEX6C or newer crypto
+             card. Also check for the minimum required card level during cross
+             checking of APQNs. Also display the card level in the APQN report.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |   25 +++++++++++++----
+ zkey/pkey.c     |   20 ++++++++++++++
+ zkey/pkey.h     |    1 
+ zkey/utils.c    |   80 ++++++++++++++++++++++++++++++++++++++++++++++++++++----
+ zkey/utils.h    |    6 ++--
+ zkey/zkey.c     |    9 ++++--
+ 6 files changed, 126 insertions(+), 15 deletions(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -1722,7 +1722,9 @@ int keystore_generate_key(struct keystor
+ 	if (rc != 0)
+ 		goto out_free_key_filenames;
+ 
+-	rc = cross_check_apqns(apqns, 0, true, keystore->verbose);
++	rc = cross_check_apqns(apqns, 0,
++			       get_min_card_level_for_keytype(key_type), true,
++			       keystore->verbose);
+ 	if (rc == -EINVAL)
+ 		goto out_free_key_filenames;
+ 	if (rc != 0 && rc != -ENOTSUP && noapqncheck == 0) {
+@@ -1850,7 +1852,9 @@ int keystore_import_key(struct keystore
+ 		goto out_free_key;
+ 	}
+ 
+-	rc = cross_check_apqns(apqns, mkvp, true, keystore->verbose);
++	rc = cross_check_apqns(apqns, mkvp,
++			       get_min_card_level_for_keytype(key_type), true,
++			       keystore->verbose);
+ 	if (rc == -EINVAL)
+ 		goto out_free_key;
+ 	if (rc != 0 && rc != -ENOTSUP && noapqncheck == 0) {
+@@ -1937,8 +1941,8 @@ int keystore_change_key(struct keystore
+ 					 .nomsg = 0 };
+ 	struct key_filenames file_names = { NULL, NULL, NULL };
+ 	struct properties *key_props = NULL;
++	char *apqns_prop, *key_type;
+ 	size_t secure_key_size;
+-	char *apqns_prop;
+ 	u8 *secure_key;
+ 	char temp[30];
+ 	u64 mkvp;
+@@ -2005,9 +2009,12 @@ int keystore_change_key(struct keystore
+ 			goto out;
+ 
+ 		apqns_prop = properties_get(key_props, PROP_NAME_APQNS);
+-		rc = cross_check_apqns(apqns_prop, mkvp, true,
+-				       keystore->verbose);
++		key_type = properties_get(key_props, PROP_NAME_KEY_TYPE);
++		rc = cross_check_apqns(apqns_prop, mkvp,
++				       get_min_card_level_for_keytype(key_type),
++				       true, keystore->verbose);
+ 		free(apqns_prop);
++		free(key_type);
+ 		if (rc == -ENOTSUP)
+ 			rc = 0;
+ 		if (rc != 0 && noapqncheck == 0) {
+@@ -2373,12 +2380,17 @@ static int _keystore_display_apqn_status
+ {
+ 	int rc, warning = 0;
+ 	char *apqns;
++	char *key_type;
+ 
+ 	apqns = properties_get(properties, PROP_NAME_APQNS);
+ 	if (apqns == NULL)
+ 		return 0;
+ 
+-	rc = cross_check_apqns(apqns, mkvp, true, keystore->verbose);
++	apqns = properties_get(properties, PROP_NAME_APQNS);
++	key_type = properties_get(properties, PROP_NAME_KEY_TYPE);
++	rc = cross_check_apqns(apqns, mkvp,
++			       get_min_card_level_for_keytype(key_type), true,
++			       keystore->verbose);
+ 	if (rc != 0 && rc != -ENOTSUP)
+ 		warning = 1;
+ 
+@@ -2386,6 +2398,7 @@ static int _keystore_display_apqn_status
+ 		printf("\n");
+ 
+ 	free(apqns);
++	free(key_type);
+ 	return warning;
+ }
+ /**
+--- a/zkey/pkey.c
++++ b/zkey/pkey.c
+@@ -1630,3 +1630,23 @@ const char *get_key_type(const u8 *key,
+ 
+ 	return NULL;
+ }
++
++/**
++ * Returns the minimum card level for a specific key type
++ *
++ * @param[in] key_type       the type of the key
++ *
++ * @returns the minimum card level, or -1 for unknown key types
++ */
++int get_min_card_level_for_keytype(const char *key_type)
++{
++	if (key_type == NULL)
++		return -1;
++
++	if (strcasecmp(key_type, KEY_TYPE_CCA_AESDATA) == 0)
++		return 3;
++	if (strcasecmp(key_type, KEY_TYPE_CCA_AESCIPHER) == 0)
++		return 6;
++
++	return -1;
++}
+--- a/zkey/pkey.h
++++ b/zkey/pkey.h
+@@ -264,5 +264,6 @@ bool is_cca_aes_cipher_key(const u8 *key
+ bool is_xts_key(const u8 *key, size_t key_size);
+ int get_key_bit_size(const u8 *key, size_t key_size, size_t *bitsize);
+ const char *get_key_type(const u8 *key, size_t key_size);
++int get_min_card_level_for_keytype(const char *key_type);
+ 
+ #endif
+--- a/zkey/utils.c
++++ b/zkey/utils.c
+@@ -119,6 +119,49 @@ out:
+ }
+ 
+ /**
++ * Returns the level of the card. For a CEX3C 3 is returned, for a CEX4C 4,
++ * and so on.
++ *
++ * @param[in] card      card number
++ *
++ * @returns The card level, or -1 of the level can not be determined.
++ */
++int sysfs_get_card_level(int card)
++{
++	char *dev_path;
++	char type[20];
++	int rc;
++
++	dev_path = util_path_sysfs("bus/ap/devices/card%02x", card);
++	if (!util_path_is_dir(dev_path)) {
++		rc = -1;
++		goto out;
++	}
++	if (util_file_read_line(type, sizeof(type), "%s/type", dev_path) != 0) {
++		rc = -1;
++		goto out;
++	}
++	if (strncmp(type, "CEX", 3) != 0 || strlen(type) < 5) {
++		rc = -1;
++		goto out;
++	}
++	if (type[4] != 'C') {
++		rc = -1;
++		goto out;
++	}
++	if (type[3] < '1' || type[3] > '9') {
++		rc = -1;
++		goto out;
++	}
++
++	rc = type[3] - '0';
++
++out:
++	free(dev_path);
++	return rc;
++}
++
++/**
+  * Gets the 8 character ASCII serial number string of an card from the sysfs.
+  *
+  * @param[in] card      card number
+@@ -436,12 +479,14 @@ static int print_apqn_mk_info(int card,
+ {
+ 	struct print_apqn_info *info = (struct print_apqn_info *)handler_data;
+ 	struct mk_info mk_info;
+-	int rc;
++	int rc, level;
+ 
+ 	rc = sysfs_get_mkvps(card, domain, &mk_info, info->verbose);
+ 	if (rc == -ENOTSUP)
+ 		return rc;
+ 
++	level = sysfs_get_card_level(card);
++
+ 	util_rec_set(info->rec, "APQN", "%02x.%04x", card, domain);
+ 
+ 	if (rc == 0) {
+@@ -470,6 +515,11 @@ static int print_apqn_mk_info(int card,
+ 		util_rec_set(info->rec, "OLD", "?");
+ 	}
+ 
++	if (level > 0)
++		util_rec_set(info->rec, "TYPE", "CEX%dC", level);
++	else
++		util_rec_set(info->rec, "TYPE", "?");
++
+ 	util_rec_print(info->rec);
+ 
+ 	return 0;
+@@ -499,6 +549,7 @@ int print_mk_info(const char *apqns, boo
+ 	util_rec_def(info.rec, "NEW", UTIL_REC_ALIGN_LEFT, 16, "NEW MK");
+ 	util_rec_def(info.rec, "CUR", UTIL_REC_ALIGN_LEFT, 16, "CURRENT MK");
+ 	util_rec_def(info.rec, "OLD", UTIL_REC_ALIGN_LEFT, 16, "OLD MK");
++	util_rec_def(info.rec, "TYPE", UTIL_REC_ALIGN_LEFT, 6, "TYPE");
+ 	util_rec_print_hdr(info.rec);
+ 
+ 	rc = handle_apqns(apqns, print_apqn_mk_info, &info, verbose);
+@@ -511,6 +562,7 @@ struct cross_check_info {
+ 	u64	mkvp;
+ 	u64	new_mkvp;
+ 	bool	key_mkvp;
++	int	min_level;
+ 	u32	num_cur_match;
+ 	u32	num_old_match;
+ 	u32	num_new_match;
+@@ -525,7 +577,7 @@ static int cross_check_mk_info(int card,
+ 	struct cross_check_info *info = (struct cross_check_info *)handler_data;
+ 	struct mk_info mk_info;
+ 	char temp[200];
+-	int rc;
++	int rc, level;
+ 
+ 	rc = sysfs_get_mkvps(card, domain, &mk_info, info->verbose);
+ 	if (rc == -ENODEV) {
+@@ -539,6 +591,19 @@ static int cross_check_mk_info(int card,
+ 
+ 	info->num_checked++;
+ 
++	if (info->min_level >= 0) {
++		level = sysfs_get_card_level(card);
++
++		if (level < info->min_level) {
++			info->print_mks = 1;
++			info->mismatch = 1;
++			sprintf(temp, "WARNING: APQN %02x.%04x: The card level "
++				"is less than CEX%dC.", card, domain,
++				info->min_level);
++			util_print_indented(temp, 0);
++		}
++	}
++
+ 	if (mk_info.new_mk.mk_state == MK_STATE_PARTIAL) {
+ 		info->print_mks = 1;
+ 		sprintf(temp, "INFO: APQN %02x.%04x: The NEW master key "
+@@ -662,6 +727,8 @@ static int cross_check_mk_info(int card,
+  * @param[in] mkvp      The master key verification pattern of a secure key.
+  *                      If this is all zero, then the master keys are not
+  *                      matched against it.
++ * @param[in] min_level The minimum card level required. If min_level is -1 then
++ *                      the card level is not checked.
+  * @param[in] print_mks if true, then a the full master key info of all
+  *                      specified APQns is printed, in case of a mismatch.
+  * @param[in] verbose   if true, verbose messages are printed
+@@ -671,7 +738,8 @@ static int cross_check_mk_info(int card,
+  *          -ENOTSUP is returned when the mkvps sysfs attribute is not
+  *          available, because the zcrypt kernel module is on an older level.
+  */
+-int cross_check_apqns(const char *apqns, u64 mkvp, bool print_mks, bool verbose)
++int cross_check_apqns(const char *apqns, u64 mkvp, int min_level,
++		      bool print_mks, bool verbose)
+ {
+ 	struct cross_check_info info;
+ 	char temp[200];
+@@ -680,10 +748,12 @@ int cross_check_apqns(const char *apqns,
+ 	memset(&info, 0, sizeof(info));
+ 	info.key_mkvp = mkvp != 0;
+ 	info.mkvp = mkvp;
++	info.min_level = min_level;
+ 	info.verbose = verbose;
+ 
+-	pr_verbose(verbose, "Cross checking APQNs with mkvp 0x%016llx: %s",
+-		   mkvp, apqns != NULL ? apqns : "ANY");
++	pr_verbose(verbose, "Cross checking APQNs with mkvp 0x%016llx and "
++		   "min-level %d: %s", mkvp, min_level,
++		   apqns != NULL ? apqns : "ANY");
+ 
+ 	rc = handle_apqns(apqns, cross_check_mk_info, &info, verbose);
+ 	if (rc != 0)
+--- a/zkey/utils.h
++++ b/zkey/utils.h
+@@ -18,6 +18,8 @@ int sysfs_is_card_online(int card);
+ 
+ int sysfs_is_apqn_online(int card, int domain);
+ 
++int sysfs_get_card_level(int card);
++
+ int sysfs_get_serialnr(int card, char serialnr[9], bool verbose);
+ 
+ #define MK_STATE_EMPTY		0
+@@ -48,7 +50,7 @@ int handle_apqns(const char *apqns, apqn
+ 
+ int print_mk_info(const char *apqns, bool verbose);
+ 
+-int cross_check_apqns(const char *apqns, u64 mkvp, bool print_mks,
+-		      bool verbose);
++int cross_check_apqns(const char *apqns, u64 mkvp, int min_level,
++		      bool print_mks, bool verbose);
+ 
+ #endif
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -1122,7 +1122,9 @@ static int command_generate(void)
+ 			return EXIT_FAILURE;
+ 		}
+ 
+-		rc = cross_check_apqns(NULL, 0, true, g.verbose);
++		rc = cross_check_apqns(NULL, 0,
++				get_min_card_level_for_keytype(g.key_type),
++				true, g.verbose);
+ 		if (rc == -EINVAL)
+ 			return EXIT_FAILURE;
+ 		if (rc != 0 && rc != -ENOTSUP) {
+@@ -1447,7 +1449,10 @@ static int command_validate_file(void)
+ 	printf("                         %.*s\n", VERIFICATION_PATTERN_LEN / 2,
+ 	       &vp[VERIFICATION_PATTERN_LEN / 2]);
+ 
+-	rc = cross_check_apqns(NULL, mkvp, true, g.verbose);
++	rc = cross_check_apqns(NULL, mkvp,
++			       get_min_card_level_for_keytype(
++				     get_key_type(secure_key, secure_key_size)),
++			       true, g.verbose);
+ 	if (rc == -EINVAL)
+ 		return EXIT_FAILURE;
+ 	if (rc != 0 && rc != -ENOTSUP) {

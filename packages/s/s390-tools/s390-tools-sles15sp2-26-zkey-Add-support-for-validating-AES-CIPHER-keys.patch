@@ -1,0 +1,425 @@
+Subject: zkey: Add support for validating AES CIPHER keys
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: Add support for CCA AES CIPHER keys
+Description: With CCA 5 there is a new secure key type, the so called 
+             variable length symmetric cipher key token. This token format
+             can hold AES keys with size 128, 192 and 256 bits together
+             with additional attributes cryptographic bound to the key
+             token. The attributes may limit the usage of the key, for
+             example restrict export or usability scope. So this key type
+             is considered to be even more secure than the traditional 
+             secure key token. This key token type is also called "CCA
+             AES CIPHER key", where the formerly used key token is called
+             "CCA AES DATA key".
+             The zkey as well as the zkey-cryptsetup tools are enhanced
+             to support AES CIPHER keys. That is, zkey can manage AES DATA 
+             keys, as well as AES CIPHER keys. The key type must be specified
+             at key generation time, the default is to generate AED DATA
+             keys.
+Upstream-ID: 0fab6bdf2aa01e093f8a4f3d86c9183889a587fe
+Problem-ID:  SEC1717
+
+Upstream-Description:
+
+             zkey: Add support for validating AES CIPHER keys
+
+             Add support for validating secure keys using the new pkey
+             IOCTLs. This allows to validate secure keys of type CCA-AESDATA
+             as well as CCA-AESCIPHER.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c        |   24 ++++++
+ zkey/pkey.c            |  178 +++++++++++++++++++++++++------------------------
+ zkey/pkey.h            |    2 
+ zkey/zkey-cryptsetup.c |    6 -
+ zkey/zkey.c            |    4 -
+ 5 files changed, 120 insertions(+), 94 deletions(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -2451,8 +2451,10 @@ static int _keystore_process_validate(st
+ 				      void *private)
+ {
+ 	struct validate_info *info = (struct validate_info *)private;
++	char **apqn_list = NULL;
+ 	size_t clear_key_bitsize;
+ 	size_t secure_key_size;
++	char *apqns = NULL;
+ 	u8 *secure_key;
+ 	int is_old_mk;
+ 	int rc, valid;
+@@ -2469,9 +2471,13 @@ static int _keystore_process_validate(st
+ 		goto out;
+ 	}
+ 
++	apqns = properties_get(properties, PROP_NAME_APQNS);
++	if (apqns != NULL)
++		apqn_list = str_list_split(apqns);
++
+ 	rc = validate_secure_key(info->pkey_fd, secure_key, secure_key_size,
+ 				 &clear_key_bitsize, &is_old_mk,
+-				 keystore->verbose);
++				 (const char **)apqn_list, keystore->verbose);
+ 	if (rc != 0) {
+ 		valid = 0;
+ 		info->num_invalid++;
+@@ -2510,6 +2516,10 @@ static int _keystore_process_validate(st
+ 		info->num_warnings++;
+ 
+ out:
++	if (apqns != NULL)
++		free(apqns);
++	if (apqn_list != NULL)
++		str_list_free_string_array(apqn_list);
+ 	if (rc != 0)
+ 		pr_verbose(keystore, "Failed to validate key '%s': %s",
+ 			   name, strerror(-rc));
+@@ -2726,7 +2736,9 @@ static int _keystore_process_reencipher(
+ 	struct reencipher_params params = info->params;
+ 	size_t clear_key_bitsize;
+ 	size_t secure_key_size;
++	char **apqn_list = NULL;
+ 	u8 *secure_key = NULL;
++	char *apqns = NULL;
+ 	char *out_file;
+ 	int is_old_mk;
+ 	char *temp;
+@@ -2763,9 +2775,13 @@ static int _keystore_process_reencipher(
+ 		goto out;
+ 	}
+ 
++	apqns = properties_get(properties, PROP_NAME_APQNS);
++	if (apqns != NULL)
++		apqn_list = str_list_split(apqns);
++
+ 	rc = validate_secure_key(info->pkey_fd, secure_key, secure_key_size,
+ 				 &clear_key_bitsize, &is_old_mk,
+-				 keystore->verbose);
++				 (const char **)apqn_list, keystore->verbose);
+ 	if (rc != 0) {
+ 		if (params.complete) {
+ 			warnx("Key '%s' is not valid, re-enciphering is not "
+@@ -2864,6 +2880,10 @@ static int _keystore_process_reencipher(
+ 	info->num_reenciphered++;
+ 
+ out:
++	if (apqns != NULL)
++		free(apqns);
++	if (apqn_list != NULL)
++		str_list_free_string_array(apqn_list);
+ 	if (secure_key != NULL)
+ 		free(secure_key);
+ 
+--- a/zkey/pkey.c
++++ b/zkey/pkey.c
+@@ -1153,84 +1153,58 @@ out:
+  * Validates an XTS secure key (the second part)
+  *
+  * @param[in] pkey_fd       the pkey file descriptor
++ * @param[in] apqn          the APQN to verify the key with
+  * @param[in] secure_key    a buffer containing the secure key
+  * @param[in] secure_key_size the secure key size
+  * @param[in] part1_keysize the key size of the first key part
+- * @param[in] part1_attributes the attributes of the first key part
++ * @param[in] part1_flags   the flags of the first key part
+  * @param[out] clear_key_bitsize on return , the cryptographic size of the
+  *                          clear key
+  * @param[in] verbose       if true, verbose messages are printed
+  *
+  * @returns 0 on success, a negative errno in case of an error
+  */
+-static int validate_secure_xts_key(int pkey_fd,
++static int validate_secure_xts_key(int pkey_fd, struct pkey_apqn *apqn,
+ 				   u8 *secure_key, size_t secure_key_size,
+-				   u16 part1_keysize, u32 part1_attributes,
+-				   size_t *clear_key_bitsize, bool verbose)
++				   enum pkey_key_size part1_keysize,
++				   u32 part1_flags, size_t *clear_key_bitsize,
++				   bool verbose)
+ {
+-	struct aesdatakeytoken *token = (struct aesdatakeytoken *)secure_key;
+-	struct pkey_verifykey verifykey;
+-	struct aesdatakeytoken *token2;
++	struct pkey_verifykey2 verifykey2;
+ 	int rc;
+ 
+ 	util_assert(pkey_fd != -1, "Internal error: pkey_fd is -1");
+ 	util_assert(secure_key != NULL, "Internal error: secure_key is NULL");
++	util_assert(apqn != NULL, "Internal error: apqn is NULL");
+ 
+-	/* XTS uses 2 secure key tokens concatenated to each other */
+-	token2 = (struct aesdatakeytoken *)(secure_key + AESDATA_KEY_SIZE);
++	memset(&verifykey2, 0, sizeof(verifykey2));
++	verifykey2.key = secure_key + (secure_key_size / 2);
++	verifykey2.keylen = secure_key_size / 2;
++	verifykey2.cardnr = apqn->card;
++	verifykey2.domain = apqn->domain;
+ 
+-	if (secure_key_size != 2 * AESDATA_KEY_SIZE) {
+-		pr_verbose(verbose, "Size of secure key is too small: "
+-			   "%lu expected %lu", secure_key_size,
+-			   2 * AESDATA_KEY_SIZE);
+-		return -EINVAL;
+-	}
+-
+-	if (token->bitsize != token2->bitsize) {
+-		pr_verbose(verbose, "XTS secure key contains 2 clear keys of "
+-			   "different sizes");
+-		return -EINVAL;
+-	}
+-	if (token->keysize != token2->keysize) {
+-		pr_verbose(verbose, "XTS secure key contains 2 keys of "
+-			   "different sizes");
+-		return -EINVAL;
+-	}
+-	if (memcmp(&token->mkvp, &token2->mkvp, sizeof(token->mkvp)) != 0) {
+-		pr_verbose(verbose, "XTS secure key contains 2 keys using "
+-			   "different CCA master keys");
+-		return -EINVAL;
+-	}
+-
+-	memcpy(&verifykey.seckey, token2, sizeof(verifykey.seckey));
+-
+-	rc = ioctl(pkey_fd, PKEY_VERIFYKEY, &verifykey);
++	rc = pkey_verifyseck2(pkey_fd, &verifykey2, verbose);
+ 	if (rc < 0) {
+-		rc = -errno;
+-		pr_verbose(verbose, "Failed to validate a secure key: %s",
+-			   strerror(-rc));
++		pr_verbose(verbose, "Failed to validate the 2nd part of the "
++			   "XTS secure key on APQN %02x.%04x: %s", apqn->card,
++			   apqn->domain, strerror(-rc));
+ 		return rc;
+ 	}
+ 
+-	if ((verifykey.attributes & PKEY_VERIFY_ATTR_AES) == 0) {
+-		pr_verbose(verbose, "Secure key is not an AES key");
+-		return -EINVAL;
+-	}
+-
+-	if (verifykey.keysize != part1_keysize) {
++	if (verifykey2.size != part1_keysize) {
+ 		pr_verbose(verbose, "XTS secure key contains 2 keys using "
+ 			   "different key sizes");
+ 		return -EINVAL;
+ 	}
+ 
+-	if (verifykey.attributes != part1_attributes) {
++	if (verifykey2.flags != part1_flags) {
+ 		pr_verbose(verbose, "XTS secure key contains 2 keys using "
+-			   "different attributes");
++			   "different master keys");
+ 		return -EINVAL;
+ 	}
+ 
+-	if (clear_key_bitsize)
+-		*clear_key_bitsize += verifykey.keysize;
++	if (clear_key_bitsize && verifykey2.size != PKEY_SIZE_UNKNOWN)
++		*clear_key_bitsize += verifykey2.size;
+ 
+ 	return 0;
+ }
+@@ -1245,6 +1219,8 @@ static int validate_secure_xts_key(int p
+  *                          clear key
+  * @param[out] is_old_mk    in return set to 1 to indicate if the secure key
+  *                          is currently enciphered by the OLD CCA master key
++ * @param[in] apqns         a zero terminated array of pointers to APQN-strings,
++ *                          or NULL for AUTOSELECT
+  * @param[in] verbose       if true, verbose messages are printed
+  *
+  * @returns 0 on success, a negative errno in case of an error
+@@ -1252,59 +1228,89 @@ static int validate_secure_xts_key(int p
+ int validate_secure_key(int pkey_fd,
+ 			u8 *secure_key, size_t secure_key_size,
+ 			size_t *clear_key_bitsize, int *is_old_mk,
+-			bool verbose)
++			const char **apqns, bool verbose)
+ {
+-	struct aesdatakeytoken *token = (struct aesdatakeytoken *)secure_key;
+-	struct pkey_verifykey verifykey;
++	struct pkey_verifykey2 verifykey2;
++	struct pkey_apqn *list = NULL;
++	u32 i, list_entries = 0;
++	bool xts, valid;
+ 	int rc;
+ 
+ 	util_assert(pkey_fd != -1, "Internal error: pkey_fd is -1");
+ 	util_assert(secure_key != NULL, "Internal error: secure_key is NULL");
+ 
+-	if (secure_key_size < AESDATA_KEY_SIZE) {
+-		pr_verbose(verbose, "Size of secure key is too small: "
+-			   "%lu expected %lu", secure_key_size,
+-			   AESDATA_KEY_SIZE);
+-		return -EINVAL;
+-	}
+-
+-	memcpy(&verifykey.seckey, token, sizeof(verifykey.seckey));
++	xts = is_xts_key(secure_key, secure_key_size);
+ 
+-	rc = ioctl(pkey_fd, PKEY_VERIFYKEY, &verifykey);
+-	if (rc < 0) {
+-		rc = -errno;
+-		pr_verbose(verbose, "Failed to validate a secure key: %s",
+-			   strerror(-rc));
++	rc = build_apqn_list_for_key(pkey_fd, secure_key,
++				     HALF_KEYSIZE_FOR_XTS(secure_key_size, xts),
++				     PKEY_FLAGS_MATCH_CUR_MKVP |
++						PKEY_FLAGS_MATCH_ALT_MKVP,
++				     apqns, &list, &list_entries, verbose);
++	if (rc != 0) {
++		pr_verbose(verbose, "Failed to build a list of APQNs that can "
++			   "validate this secure key: %s", strerror(-rc));
+ 		return rc;
+ 	}
+ 
+-	if ((verifykey.attributes & PKEY_VERIFY_ATTR_AES) == 0) {
+-		pr_verbose(verbose, "Secure key is not an AES key");
+-		return -EINVAL;
+-	}
+-
+-	if (clear_key_bitsize)
+-		*clear_key_bitsize = verifykey.keysize;
+-
+-	/* XTS uses 2 secure key tokens concatenated to each other */
+-	if (secure_key_size > AESDATA_KEY_SIZE) {
+-		rc = validate_secure_xts_key(pkey_fd,
+-					     secure_key, secure_key_size,
+-					     verifykey.keysize,
+-					     verifykey.attributes,
+-					     clear_key_bitsize,
+-					     verbose);
+-		if (rc != 0)
+-			return rc;
++	if (is_old_mk != NULL)
++		*is_old_mk = true;
++	if (clear_key_bitsize != NULL)
++		*clear_key_bitsize = 0;
++
++	valid = false;
++	for (i = 0; i < list_entries; i++) {
++		memset(&verifykey2, 0, sizeof(verifykey2));
++		verifykey2.key = secure_key;
++		verifykey2.keylen = HALF_KEYSIZE_FOR_XTS(secure_key_size, xts);
++		verifykey2.cardnr = list[i].card;
++		verifykey2.domain = list[i].domain;
++
++		rc = pkey_verifyseck2(pkey_fd, &verifykey2, verbose);
++		if (rc < 0) {
++			pr_verbose(verbose, "Failed to validate the secure key "
++				   "on APQN %02x.%04x: %s", list[i].card,
++				   list[i].domain, strerror(-rc));
++			continue;
++		}
++
++		if (is_xts_key(secure_key, secure_key_size)) {
++			rc = validate_secure_xts_key(pkey_fd, &list[i],
++						     secure_key,
++						     secure_key_size,
++						     verifykey2.size,
++						     verifykey2.flags,
++						     clear_key_bitsize,
++						     verbose);
++			if (rc != 0)
++				continue;
++
++		}
++
++		valid = true;
++
++		if (clear_key_bitsize) {
++			if (verifykey2.size != PKEY_SIZE_UNKNOWN)
++				*clear_key_bitsize += verifykey2.size;
++			clear_key_bitsize = NULL; /* Set it only once */
++		}
++
++		/*
++		 * If at least one of the APQNs have a matching current MK,
++		 * then don't report OLD, even if some match the old MK.
++		 */
++		if (is_old_mk &&
++		    (verifykey2.flags & PKEY_FLAGS_MATCH_CUR_MKVP))
++			*is_old_mk = false;
+ 	}
+ 
+-	if (is_old_mk)
+-		*is_old_mk = (verifykey.attributes &
+-			      PKEY_VERIFY_ATTR_OLD_MKVP) != 0;
++	if (!valid)
++		return -ENODEV;
+ 
+ 	pr_verbose(verbose, "Secure key validation completed successfully");
+ 
+-	return 0;
++	if (list != NULL)
++		free(list);
++	return rc;
+ }
+ 
+ /**
+--- a/zkey/pkey.h
++++ b/zkey/pkey.h
+@@ -251,7 +251,7 @@ int write_secure_key(const char *keyfile
+ int validate_secure_key(int pkey_fd,
+ 			u8 *secure_key, size_t secure_key_size,
+ 			size_t *clear_key_bitsize, int *is_old_mk,
+-			bool verbose);
++			const char **apqns, bool verbose);
+ 
+ int generate_key_verification_pattern(const u8 *key, size_t key_size,
+ 				      char *vp, size_t vp_len, bool verbose);
+--- a/zkey/zkey-cryptsetup.c
++++ b/zkey/zkey-cryptsetup.c
+@@ -1492,7 +1492,7 @@ static int validate_keyslot(int keyslot,
+ 	keyslot = rc;
+ 
+ 	rc = validate_secure_key(g.pkey_fd, (u8 *)vkey, vkeysize, clear_keysize,
+-				 &is_old, g.verbose);
++				 &is_old, NULL, g.verbose);
+ 	if (rc != 0) {
+ 		if (invalid_msg != NULL)
+ 			warnx("%s", invalid_msg);
+@@ -1972,7 +1972,7 @@ static int command_validate(void)
+ 		goto out;
+ 
+ 	rc = validate_secure_key(g.pkey_fd, (u8 *)key, keysize, &clear_keysize,
+-				 &is_old_mk, g.verbose);
++				 &is_old_mk, NULL, g.verbose);
+ 	is_valid = (rc == 0);
+ 
+ 	token = find_token(g.cd, PAES_REENC_TOKEN_NAME);
+@@ -2139,7 +2139,7 @@ static int command_setkey(void)
+ 		goto out;
+ 
+ 	rc = validate_secure_key(g.pkey_fd, newkey, newkey_size, NULL,
+-				 &is_old_mk, g.verbose);
++				 &is_old_mk, NULL, g.verbose);
+ 	if (rc != 0) {
+ 		warnx("The secure key in file '%s' is not valid",
+ 		      g.master_key_file);
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -1188,7 +1188,7 @@ static int command_reencipher_file(void)
+ 		return EXIT_FAILURE;
+ 
+ 	rc = validate_secure_key(g.pkey_fd, secure_key, secure_key_size, NULL,
+-				 &is_old_mk, g.verbose);
++				 &is_old_mk, NULL, g.verbose);
+ 	if (rc != 0) {
+ 		warnx("The secure key in file '%s' is not valid", g.pos_arg);
+ 		rc = EXIT_FAILURE;
+@@ -1404,7 +1404,7 @@ static int command_validate_file(void)
+ 		return EXIT_FAILURE;
+ 
+ 	rc = validate_secure_key(g.pkey_fd, secure_key, secure_key_size,
+-				 &clear_key_size, &is_old_mk, g.verbose);
++				 &clear_key_size, &is_old_mk, NULL, g.verbose);
+ 	if (rc != 0) {
+ 		warnx("The secure key in file '%s' is not valid", g.pos_arg);
+ 		rc = EXIT_FAILURE;

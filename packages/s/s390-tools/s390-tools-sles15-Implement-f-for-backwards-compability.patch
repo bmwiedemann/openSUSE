@@ -41,7 +41,7 @@ diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 index 5b6023a..cdd80df 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
-@@ -74,6 +74,10 @@ static struct util_opt opt_vec[] = {
+@@ -77,6 +77,10 @@ static struct util_opt opt_vec[] = {
  		.desc = "Format devices in parallel",
  		.flags = UTIL_OPT_FLAG_NOLONG,
  	},
@@ -52,7 +52,7 @@ index 5b6023a..cdd80df 100644
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -1597,6 +1601,10 @@ int main(int argc, char *argv[])
+@@ -1649,6 +1653,10 @@ int main(int argc, char *argv[])
  			}
  			info.layout_specified = 1;
  			break;

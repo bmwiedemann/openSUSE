@@ -1,0 +1,679 @@
+Subject: zkey: Add 'convert' command to convert keys from one type to another
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: Add support for CCA AES CIPHER keys
+Description: With CCA 5 there is a new secure key type, the so called 
+             variable length symmetric cipher key token. This token format
+             can hold AES keys with size 128, 192 and 256 bits together
+             with additional attributes cryptographic bound to the key
+             token. The attributes may limit the usage of the key, for
+             example restrict export or usability scope. So this key type
+             is considered to be even more secure than the traditional 
+             secure key token. This key token type is also called "CCA
+             AES CIPHER key", where the formerly used key token is called
+             "CCA AES DATA key".
+             The zkey as well as the zkey-cryptsetup tools are enhanced
+             to support AES CIPHER keys. That is, zkey can manage AES DATA 
+             keys, as well as AES CIPHER keys. The key type must be specified
+             at key generation time, the default is to generate AED DATA
+             keys.
+Upstream-ID: a86e41a51827b524c5f88db5e24282166df9b3c8
+Problem-ID:  SEC1717
+
+Upstream-Description:
+
+             zkey: Add 'convert' command to convert keys from one type to another
+
+             Add a new 'convert' command. It allows to convert a secure key from
+             one key type to another. Currently only keys of type CCA-AESDATA can be
+             converted to CCA-AESCIPHER.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |  212 +++++++++++++++++++++++++++++++++++++++++++++++
+ zkey/keystore.h |    4 
+ zkey/zkey.1     |   93 ++++++++++++++++++++
+ zkey/zkey.c     |  249 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 557 insertions(+), 1 deletion(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -3947,6 +3947,218 @@ int keystore_crypttab(struct keystore *k
+ }
+ 
+ /**
++ * Converts a secure keys in the keystore
++ *
++ * @param[in] keystore the key store
++ * @param[in] name         the name of the key to convert
++ * @param[in] key_type     the type of the key to convert it to
++ * @param[in] noapqncheck  if true, the specified APQN(s) are not checked for
++ *                         existence and type.
++ * @param[in] pkey_fd      the file descriptor of /dev/pkey
++ * @param[in] cca          the CCA library struct
++ *
++ * @returns 0 for success or a negative errno in case of an error
++ */
++int keystore_convert_key(struct keystore *keystore, const char *name,
++			 const char *key_type, bool noapqncheck, bool quiet,
++			 int pkey_fd, struct cca_lib *cca)
++{
++	struct key_filenames file_names = { NULL, NULL, NULL };
++	u8 output_key[2 * MAX_SECURE_KEY_SIZE];
++	struct properties *properties = NULL;
++	int rc, min_level, selected = 1;
++	unsigned int output_key_size;
++	char *cur_key_type = NULL;
++	char **apqn_list = NULL;
++	size_t secure_key_size;
++	u8 *secure_key = NULL;
++	char *apqns = NULL;
++	char *temp;
++	u64 mkvp;
++
++	util_assert(keystore != NULL, "Internal error: keystore is NULL");
++	util_assert(name != NULL, "Internal error: name is NULL");
++
++	rc = _keystore_get_key_filenames(keystore, name, &file_names);
++	if (rc != 0)
++		goto out;
++
++	rc = _keystore_ensure_keyfiles_exist(&file_names, name);
++	if (rc != 0)
++		goto out;
++
++	properties = properties_new();
++	rc = properties_load(properties, file_names.info_filename, 1);
++	if (rc != 0) {
++		warnx("Key '%s' does not exist or is invalid", name);
++		goto out;
++	}
++
++	cur_key_type = _keystore_get_key_type(properties);
++	if (strcasecmp(cur_key_type, key_type) == 0) {
++		warnx("The secure key '%s' is already of type %s", name,
++		      cur_key_type);
++		rc = 0;
++		goto out;
++	}
++	if (strcasecmp(cur_key_type, KEY_TYPE_CCA_AESDATA) != 0) {
++		warnx("Only secure keys of type %s can "
++		      "be converted. The secure key '%s' is of type %s",
++		      KEY_TYPE_CCA_AESDATA, name, cur_key_type);
++		rc = 0;
++		goto out;
++	}
++
++	secure_key = read_secure_key(file_names.skey_filename,
++				     &secure_key_size, keystore->verbose);
++	if (secure_key == NULL) {
++		rc = -ENOENT;
++		goto out;
++	}
++
++	min_level = get_min_card_level_for_keytype(key_type);
++	if (min_level < 0) {
++		warnx("Invalid key-type specified: %s", key_type);
++		rc = -EINVAL;
++		goto out;
++	}
++
++	apqns = properties_get(properties, PROP_NAME_APQNS);
++	if (apqns != NULL)
++		apqn_list = str_list_split(apqns);
++
++	rc = cross_check_apqns(apqns, 0, min_level, true, keystore->verbose);
++	if (rc == -EINVAL)
++		goto out;
++	if (rc != 0 && rc != -ENOTSUP && !noapqncheck) {
++		warnx("Your master key setup is improper for converting key "
++		      "'%s'", name);
++		goto out;
++	}
++
++	rc = validate_secure_key(pkey_fd, secure_key, secure_key_size,
++				 NULL, NULL, (const char **)apqn_list,
++				 keystore->verbose);
++	if (rc != 0)
++		goto out;
++
++	rc = get_master_key_verification_pattern(secure_key, secure_key_size,
++						 &mkvp, keystore->verbose);
++	if (rc)
++		goto out;
++
++	rc = select_cca_adapter_by_mkvp(cca, mkvp, NULL,
++					FLAG_SEL_CCA_MATCH_CUR_MKVP,
++					keystore->verbose);
++	if (rc == -ENOTSUP) {
++		rc = 0;
++		selected = 0;
++	}
++	if (rc != 0) {
++		warnx("No APQN found that is suitable for "
++		      "converting the secure AES key '%s'", name);
++		goto out;
++	}
++
++	if (!quiet) {
++		util_print_indented("ATTENTION: Converting a secure key is "
++				    "irreversible, and might have an effect "
++				    "on the volumes encrypted with it!", 0);
++		_keystore_msg_for_volumes("The following volumes are encrypted "
++					  "with this key:", properties, NULL);
++		printf("%s: Convert key '%s [y/N]'? ",
++		       program_invocation_short_name, name);
++		if (!prompt_for_yes(keystore->verbose)) {
++			warnx("Operation aborted");
++			rc = -ECANCELED;
++			goto out;
++		}
++	}
++
++	memset(output_key, 0, sizeof(output_key));
++	output_key_size = sizeof(output_key);
++	rc = convert_aes_data_to_cipher_key(cca, secure_key,
++					    secure_key_size, output_key,
++					    &output_key_size,
++					    keystore->verbose);
++	if (rc != 0) {
++		warnx("Converting the secure key '%s' from %s to %s has failed",
++		      name, KEY_TYPE_CCA_AESDATA, key_type);
++		if (!selected)
++			print_msg_for_cca_envvars("secure AES key");
++		goto out;
++	}
++
++	rc = restrict_key_export(cca, output_key, output_key_size,
++				 keystore->verbose);
++	if (rc != 0) {
++		warnx("Export restricting the converted secure key '%s' has "
++		      "failed", name);
++		if (!selected)
++			print_msg_for_cca_envvars("secure AES key");
++		goto out;
++	}
++
++	rc = properties_set2(properties, PROP_NAME_KEY_TYPE, key_type, true);
++	if (rc != 0) {
++		warnx("Invalid characters in key-type");
++		goto out;
++	}
++
++	rc = properties_save(properties, file_names.info_filename, 1);
++	if (rc != 0) {
++		pr_verbose(keystore,
++			   "Failed to write key info file '%s': %s",
++			   file_names.info_filename, strerror(-rc));
++		goto out;
++	}
++
++	rc = write_secure_key(file_names.skey_filename, output_key,
++			      output_key_size, keystore->verbose);
++	if (rc != 0)
++		goto out;
++
++	pr_verbose(keystore, "Secure key '%s' was converted successfully",
++		   name);
++
++	util_asprintf(&temp, "The following LUKS2 volumes are "
++		      "encrypted with key '%s'. These volumes still contain "
++		      "the secure AES volume key of type CCA-AESDATA. To "
++		      "change the secure AES volume key in the LUKS2 header, "
++		      "run command 'zkey-cryptsetup setkey <device> "
++		      "--master-key-file %s':", name,
++		      file_names.skey_filename);
++	_keystore_msg_for_volumes(temp, properties, VOLUME_TYPE_LUKS2);
++	free(temp);
++	util_asprintf(&temp, "The following plain mode volumes are "
++		      "encrypted with key '%s'. You must adapt the crypttab "
++		      "entries for this volumes and change the key size "
++		      "parameter to 'size=%u' or run command 'zkey crypttab "
++		      "--volumes <device>' for each volume to re-generate the "
++		      "crypttab entries:", name, output_key_size * 8, name);
++	_keystore_msg_for_volumes(temp, properties, VOLUME_TYPE_PLAIN);
++	free(temp);
++
++out:
++	_keystore_free_key_filenames(&file_names);
++	if (properties != NULL)
++		properties_free(properties);
++	if (secure_key != NULL)
++		free(secure_key);
++	if (apqns != NULL)
++		free(apqns);
++	if (apqn_list != NULL)
++		str_list_free_string_array(apqn_list);
++	if (cur_key_type != NULL)
++		free(cur_key_type);
++
++	if (rc != 0)
++		pr_verbose(keystore, "Failed to convert key '%s': %s",
++			   name, strerror(-rc));
++	return rc;
++}
++
++/**
+  * Frees a keystore object
+  *
+  * @param[in] keystore the key store
+--- a/zkey/keystore.h
++++ b/zkey/keystore.h
+@@ -81,6 +81,10 @@ int keystore_crypttab(struct keystore *k
+ 		      const char *volume_type, const char *keyfile,
+ 		      size_t keyfile_offset, size_t keyfile_size, size_t tries);
+ 
++int keystore_convert_key(struct keystore *keystore, const char *name,
++			 const char *key_type, bool noapqncheck, bool quiet,
++			 int pkey_fd, struct cca_lib *cca);
++
+ void keystore_free(struct keystore *keystore);
+ 
+ 
+--- a/zkey/zkey.1
++++ b/zkey/zkey.1
+@@ -62,7 +62,8 @@ in size.
+ The \fBzkey\fP tool can operate in two modes. When argument
+ .I secure\-key\-file
+ is specified then it operates on the secure key contained in the specified file.
+-This applies to commands \fBgenerate\fP, \fBvalidate\fP, and \fBreencipher\fP.
++This applies to commands \fBgenerate\fP, \fBvalidate\fP, \fBreencipher\fP, and
++\fBconvert\fP.
+ When the
+ .B \-\-name
+ option is specified then it operates on a secure key contained in the secure
+@@ -680,6 +681,72 @@ questions, you can specify the
+ option. These options are passed to the generated command(s) and behave in the
+ same way as with \fBcryptsetup\fP.
+ .
++.SS "Convert existing AES secure keys from one key type to another type"
++.
++.B zkey
++.BR convert | con
++.I secure\-key\-file
++.RB \-\-key-type | \-K
++.IR type
++.RB [ \-\-no\-apqn\-check ]
++.RB [ \-\-force | \-F ]
++.RB [ \-\-verbose | \-V ]
++.
++.PP
++.B zkey
++.BR convert | con
++.B \-\-name | \-N
++.IR key-name
++.RB \-\-key-type | \-K
++.IR type
++.RB [ \-\-no\-apqn\-check ]
++.RB [ \-\-force | \-F ]
++.RB [ \-\-verbose | \-V ]
++.
++.PP
++Use the
++.B convert
++command to convert an existing secure key from one key type to another type.
++You can convert secure keys of type CCA-AESDATA to type CCA-AESCIPHER only.
++
++.B Note:
++Secure keys converted to type \fBCCA-AESCIPHER\fP require an IBM cryptographic
++adapter in CCA coprocessor mode of version 6 or later, e.g. a CEX6C.
++
++The secure key can either be contained in a file in the file system, or in a
++secure key repository. To convert a secure key contained in a file, specify
++the file name with option \fIsecure\-key\-file\fP. To convert a secure key
++contained in the secure key repository, specify the name of the key
++that is to be converted using the
++.B \-\-name
++option. You cannot use wildcards. The convert command prompts for
++a confirmation, unless you specify the
++.B \-\-force
++option.
++.PP
++.B Note:
++Converting a secure key is irreversible!
++When converting a secure key that is associated with one or multiple volumes,
++a message informs you about the associated volumes. When the secure key is
++converted, this might have an effect on these volumes.
++.P
++For volumes with volume type \fBplain\fP, you must adapt the crypttab entries
++and change the key size parameter to \fBsize=<new-key-size-in-bits>\fP or run
++command \fBzkey crypttab --volumes <device>\fP for each associated volume to
++re-generate the crypttab entries.
++.P
++Associated volumes of type \fLUKS2\fP still contain the secure AES volume key of
++the original type. To change the secure AES volume key in the LUKS2 header,
++run command \fBzkey-cryptsetup setkey <device> --master-key-file
++<converted-key>\fP for each associated volume.
++.
++.P
++.B Note:
++The \fBconvert\fP command requires the CCA host library (libcsulcca.so)
++to be installed. The required CCA IBM cryptographic adapter firmware version
++is 6.3.27 or later. For the supported environments and downloads, see:
++\fIhttp://www.ibm.com/security/cryptocards\fP
++.
+ .
+ .
+ .
+@@ -1203,6 +1270,30 @@ cryptsetup command(s).
+ .
+ .
+ .
++.SS "Options for the convert command"
++.TP
++.BR \-N ", " \-\-name\~\fIkey-name\fP
++Specifies the name of the secure key in the secure key repository. You cannot
++use wildcards.
++This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-K ", " \-\-key-type\~\fItype\fP
++Specifies the key type to which the secure key shall be converted to.
++Possible values are \fBCCA-AESCIPHER\fP. Secure keys of type \fBCCA-AESCIPHER\fP
++require an IBM cryptographic adapter in CCA coprocessor mode of version 6 or
++later, e.g. a CEX6C.
++.TP
++.BR \-\-no\-apqn\-check
++Do not check if the associated APQNs are available and capable of converting
++the secure key to type CCA-AESCIPHER.
++This option is only used for secure keys contained in the secure key repository.
++.TP
++.BR \-F ", " \-\-force\fP
++The user is prompted to confirm the convertion of a secure key. Use this option
++to convert a secure key without prompting for a confirmation.
++.
++.
++.
+ .SS "General options"
+ .TP
+ .BR \-V ", " \-\-verbose
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -106,6 +106,7 @@ static struct zkey_globals {
+ #define COMMAND_COPY		"copy  "
+ #define COMMAND_CRYPTTAB	"crypttab"
+ #define COMMAND_CRYPTSETUP	"cryptsetup"
++#define COMMAND_CONVERT		"convert"
+ 
+ #define ZKEY_COMMAND_MAX_LEN	10
+ 
+@@ -767,6 +768,38 @@ static struct util_opt opt_vec[] = {
+ 	/***********************************************************/
+ 	{
+ 		.flags = UTIL_OPT_FLAG_SECTION,
++		.desc = "OPTIONS",
++		.command = COMMAND_CONVERT,
++	},
++	{
++		.option = { "name", required_argument, NULL, 'N'},
++		.argument = "NAME",
++		.desc = "Name of the secure AES key in the repository that is "
++			"to be converted",
++		.command = COMMAND_CONVERT,
++	},
++	{
++		.option = { "key-type", required_argument, NULL, 'K'},
++		.argument = "type",
++		.desc = "The type of the key to convert the secure key to. "
++			"Possible values are '"KEY_TYPE_CCA_AESCIPHER"'. ",
++		.command = COMMAND_CONVERT,
++	},
++	{
++		.option = {"no-apqn-check", 0, NULL, OPT_NO_APQN_CHECK},
++		.desc = "Do not check if the associated APQN(s) are available",
++		.command = COMMAND_CONVERT,
++		.flags = UTIL_OPT_FLAG_NOSHORT,
++	},
++	{
++		.option = {"force", 0, NULL, 'F'},
++		.desc = "Do not prompt for a confirmation when converting a "
++			"key",
++		.command = COMMAND_CONVERT,
++	},
++	/***********************************************************/
++	{
++		.flags = UTIL_OPT_FLAG_SECTION,
+ 		.desc = "COMMON OPTIONS"
+ 	},
+ 	{
+@@ -812,6 +845,7 @@ static int command_rename(void);
+ static int command_copy(void);
+ static int command_crypttab(void);
+ static int command_cryptsetup(void);
++static int command_convert(void);
+ 
+ static struct zkey_command zkey_commands[] = {
+ 	{
+@@ -946,6 +980,21 @@ static struct zkey_command zkey_commands
+ 		.has_options = 1,
+ 		.need_keystore = 1,
+ 	},
++	{
++		.command = COMMAND_CONVERT,
++		.abbrev_len = 3,
++		.function = command_convert,
++		.need_cca_library = 1,
++		.need_pkey_device = 1,
++		.short_desc = "Convert a secure AES key",
++		.long_desc = "Convert an existing secure AES key that is "
++			     "either contained in SECURE-KEY-FILE or is stored "
++			     "in the repository from one key type to another "
++			     "type.",
++		.has_options = 1,
++		.pos_arg = "[SECURE-KEY-FILE]",
++		.pos_arg_optional = 1,
++	},
+ 	{ .command = NULL }
+ };
+ 
+@@ -1691,6 +1740,206 @@ static int command_cryptsetup(void)
+ 	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+ 
++/*
++ * Command handler for 'convert'.
++ *
++ * Converts secure keys from one key type to another
++ */
++static int command_convert_file(void)
++{
++	u8 output_key[2 * MAX_SECURE_KEY_SIZE];
++	unsigned int output_key_size;
++	size_t secure_key_size;
++	int rc, is_old_mk;
++	int selected = 1;
++	u8 *secure_key;
++	int min_level;
++	u64 mkvp;
++
++	if (g.name != NULL) {
++		warnx("Option '--name|-N' is not valid for "
++		      "re-enciphering a key outside of the repository");
++		util_prg_print_parse_error();
++		return EXIT_FAILURE;
++	}
++	if (g.noapqncheck) {
++		warnx("Option '--no-apqn-check' is not valid for "
++		      "converting a key outside of the repository");
++		util_prg_print_parse_error();
++		return EXIT_FAILURE;
++	}
++
++	min_level = get_min_card_level_for_keytype(g.key_type);
++	if (min_level < 0) {
++		warnx("Invalid key-type specified: %s", g.key_type);
++		return EXIT_FAILURE;
++	}
++
++	rc = cross_check_apqns(NULL, 0, min_level, true, g.verbose);
++	if (rc == -EINVAL)
++		return EXIT_FAILURE;
++	if (rc != 0 && rc != -ENOTSUP) {
++		warnx("Your master key setup is improper");
++		return EXIT_FAILURE;
++	}
++
++	/* Read the secure key to be re-enciphered */
++	secure_key = read_secure_key(g.pos_arg, &secure_key_size, g.verbose);
++	if (secure_key == NULL)
++		return EXIT_FAILURE;
++
++	rc = validate_secure_key(g.pkey_fd, secure_key, secure_key_size, NULL,
++				 &is_old_mk, NULL, g.verbose);
++	if (rc != 0) {
++		warnx("The secure key in file '%s' is not valid", g.pos_arg);
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
++	rc = get_master_key_verification_pattern(secure_key, secure_key_size,
++						 &mkvp, g.verbose);
++	if (rc != 0) {
++		warnx("Failed to get the master key verification pattern: %s",
++		      strerror(-rc));
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
++	if (strcasecmp(get_key_type(secure_key, secure_key_size),
++		       g.key_type) == 0) {
++		warnx("The secure key in file '%s' is already of type %s",
++		      g.pos_arg, get_key_type(secure_key, secure_key_size));
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
++	if (is_cca_aes_data_key(secure_key, secure_key_size)) {
++		if (strcasecmp(g.key_type, KEY_TYPE_CCA_AESCIPHER) != 0) {
++			warnx("The secure key in file '%s' can not be "
++			      "converted into type %s", g.pos_arg, g.key_type);
++			rc = EXIT_FAILURE;
++			goto out;
++		}
++	} else if (is_cca_aes_cipher_key(secure_key, secure_key_size)) {
++		warnx("The secure key in file '%s' is already of type %s",
++		      g.pos_arg, KEY_TYPE_CCA_AESCIPHER);
++		rc = EXIT_FAILURE;
++		goto out;
++	} else {
++		warnx("The secure key in file '%s' has an unsupported key type",
++		      g.pos_arg);
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
++	rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
++					FLAG_SEL_CCA_MATCH_CUR_MKVP,
++					g.verbose);
++	if (rc == -ENOTSUP) {
++		rc = 0;
++		selected = 0;
++	}
++	if (rc != 0) {
++		warnx("No APQN found that is suitable for "
++		      "converting the secure AES key in file '%s'", g.pos_arg);
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
++	if (!g.force) {
++		util_print_indented("ATTENTION: Converting a secure key is "
++				    "irreversible, and might have an effect "
++				    "on the volumes encrypted with it!", 0);
++		printf("%s: Convert key in file '%s' [y/N]? ",
++		       program_invocation_short_name, g.pos_arg);
++		if (!prompt_for_yes(g.verbose)) {
++			warnx("Operation aborted");
++			rc = EXIT_FAILURE;
++			goto out;
++		}
++	}
++
++	memset(output_key, 0, sizeof(output_key));
++	output_key_size = sizeof(output_key);
++	rc = convert_aes_data_to_cipher_key(&g.cca, secure_key, secure_key_size,
++					    output_key, &output_key_size,
++					    g.verbose);
++	if (rc != 0) {
++		warnx("Converting the secure key from %s to %s has failed",
++		      get_key_type(secure_key, secure_key_size), g.key_type);
++		if (!selected)
++			print_msg_for_cca_envvars("secure AES key");
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
++	rc = restrict_key_export(&g.cca, output_key, output_key_size,
++				 g.verbose);
++	if (rc != 0) {
++		warnx("Export restricting the converted secure key has failed");
++		if (!selected)
++			print_msg_for_cca_envvars("secure AES key");
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
++	pr_verbose("Secure key was converted successfully");
++
++	/* Write the converted secure key */
++	rc = write_secure_key(g.outputfile ? g.outputfile : g.pos_arg,
++			      output_key, output_key_size, g.verbose);
++	if (rc != 0)
++		rc = EXIT_FAILURE;
++out:
++	free(secure_key);
++	return rc;
++}
++
++/*
++ * Command handler for 'convert in repository'.
++ *
++ * Converts secure keys from one key type to another
++ */
++static int command_convert_repository(void)
++{
++	int rc;
++
++	if (g.name == NULL) {
++		misc_print_required_parm("--name/-N");
++		return EXIT_FAILURE;
++	}
++
++	rc = keystore_convert_key(g.keystore, g.name, g.key_type, g.noapqncheck,
++				  g.force, g.pkey_fd, &g.cca);
++
++	return rc != 0 ? EXIT_FAILURE : EXIT_SUCCESS;
++}
++
++/*
++ * Command handler for 'convert'.
++ *
++ * Converts secure keys from one key type to another
++ */
++static int command_convert(void)
++{
++	if (g.key_type == NULL) {
++		misc_print_required_parm("--key-type/-K");
++		return EXIT_FAILURE;
++	}
++	if (strcasecmp(g.key_type, KEY_TYPE_CCA_AESCIPHER) != 0) {
++		warnx("Secure keys can only be converted into key type %s",
++		      KEY_TYPE_CCA_AESCIPHER);
++		return EXIT_FAILURE;
++	}
++
++	if (g.pos_arg != NULL)
++		return command_convert_file();
++	else
++		return command_convert_repository();
++
++	return EXIT_SUCCESS;
++}
++
+ /**
+  * Opens the keystore. The keystore directory is either the
+  * default directory or as specified in an environment variable

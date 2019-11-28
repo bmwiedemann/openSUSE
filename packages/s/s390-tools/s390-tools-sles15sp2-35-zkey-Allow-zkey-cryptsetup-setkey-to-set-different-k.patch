@@ -1,0 +1,63 @@
+Subject: zkey: Allow 'zkey-cryptsetup setkey' to set different key types
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: Add support for CCA AES CIPHER keys
+Description: With CCA 5 there is a new secure key type, the so called 
+             variable length symmetric cipher key token. This token format
+             can hold AES keys with size 128, 192 and 256 bits together
+             with additional attributes cryptographic bound to the key
+             token. The attributes may limit the usage of the key, for
+             example restrict export or usability scope. So this key type
+             is considered to be even more secure than the traditional 
+             secure key token. This key token type is also called "CCA
+             AES CIPHER key", where the formerly used key token is called
+             "CCA AES DATA key".
+             The zkey as well as the zkey-cryptsetup tools are enhanced
+             to support AES CIPHER keys. That is, zkey can manage AES DATA 
+             keys, as well as AES CIPHER keys. The key type must be specified
+             at key generation time, the default is to generate AED DATA
+             keys.
+Upstream-ID: bc987c8d18ddeb6fec46113a7fe7588555b592e7
+Problem-ID:  SEC1717
+
+Upstream-Description:
+
+             zkey: Allow 'zkey-cryptsetup setkey' to set different key types
+
+             When a secure key has been converted from type CCA-AESDATA to type
+             CCA-AESCIPHER, the secure key stored in the LUKS2 header of a volume
+             encrypted with that key should also changed.
+
+             Command 'zkey-cryptsetup setkey' allows to set (replace) the volume
+             key in the LUKS2 header. It now accepts keys to be set that have
+             a different size of the original volume keys. CCA-AESCIPHER keys
+             are larger than CCA-AESDATA keys.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/zkey-cryptsetup.c |    9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+--- a/zkey/zkey-cryptsetup.c
++++ b/zkey/zkey-cryptsetup.c
+@@ -2169,14 +2169,7 @@ static int command_setkey(void)
+ 	if (rc < 0)
+ 		goto out;
+ 
+-	if (keysize != newkey_size) {
+-		warnx("The secure key in file '%s' has an invalid size",
+-		      g.master_key_file);
+-		rc = -EINVAL;
+-		goto out;
+-	}
+-
+-	if (memcmp(newkey, key, keysize) == 0) {
++	if (keysize == newkey_size && memcmp(newkey, key, keysize) == 0) {
+ 		warnx("The secure key in file '%s' is equal to the current "
+ 		      "volume key, setkey is ignored", g.master_key_file);
+ 		rc = 0;

@@ -1,0 +1,397 @@
+Subject: zkey: Select CCA adapter when re-enciphering
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: 552a915465301b768268cddc7ccb65a6d167e432
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Select CCA adapter when re-enciphering
+
+             When re-enciphering secure AES keys, select the correct APQN for used
+             with the CCA host library. Re-enciphering a secure key requires the use
+             of the CCA host library. The APQN is selected based on the master key
+             verification pattern obtained from the secure key to re-encipher.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/cca.c             |   19 ++++++++++++++
+ zkey/cca.h             |    2 +
+ zkey/keystore.c        |   57 ++++++++++++++++++++++++++++++++++++-------
+ zkey/zkey-cryptsetup.c |   64 +++++++++++++++++++++++++++++++++++++++++++++++--
+ zkey/zkey.c            |   50 ++++++++++++++++++++++++++++++++++++--
+ 5 files changed, 179 insertions(+), 13 deletions(-)
+
+--- a/zkey/cca.c
++++ b/zkey/cca.c
+@@ -18,6 +18,8 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
++#include "lib/util_base.h"
++#include "lib/util_libc.h"
+ #include "lib/util_panic.h"
+ 
+ #include "cca.h"
+@@ -607,3 +609,20 @@ int select_cca_adapter_by_mkvp(struct cc
+ 	rc = select_cca_adapter(cca, info.card, info.domain, verbose);
+ 	return rc;
+ }
++
++void print_msg_for_cca_envvars(const char *key_name)
++{
++	char *msg;
++
++	util_asprintf(&msg, "WARNING: You must set environment variables "
++			    "%s and %s to the desired card and domain that is "
++			    "set up with the AES master key used by this %s. "
++			    "%s specifies the domain as decimal number. %s "
++			    "specifies the adapter number as 'CRPnn', where "
++			    "'nn' is the adapter number. See the CCA "
++			    "documentation for more details.\n",
++			    CCA_DOMAIN_ENVAR, CCA_ADAPTER_ENVAR, key_name,
++			    CCA_DOMAIN_ENVAR, CCA_ADAPTER_ENVAR);
++	util_print_indented(msg, 0);
++	free(msg);
++}
+--- a/zkey/cca.h
++++ b/zkey/cca.h
+@@ -90,4 +90,6 @@ int select_cca_adapter(struct cca_lib *c
+ int select_cca_adapter_by_mkvp(struct cca_lib *cca, u64 mkvp, const char *apqns,
+ 			       unsigned int flags, bool verbose);
+ 
++void print_msg_for_cca_envvars(const char *key_name);
++
+ #endif
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -2535,6 +2535,7 @@ struct reencipher_info {
+  * @param[in] secure_key_size the size of the secure key
+  * @param[in] is_old_mk  if true the key is currently re-enciphered with the
+  *            OLD master key
++ * @param[in] apqns      the associated APQNs (or NULL if none)
+  * @returns 0 if the re-enciphering is successful, a negative errno value
+  *          otherwise, 1 if it was skipped
+  */
+@@ -2543,9 +2544,18 @@ static int _keystore_perform_reencipher(
+ 					struct cca_lib *cca,
+ 					struct reencipher_params *params,
+ 					u8 *secure_key, size_t secure_key_size,
+-					bool is_old_mk)
++					bool is_old_mk, const char *apqns)
+ {
+-	int rc;
++	int rc, selected = 1;
++	u64 mkvp;
++
++	rc = get_master_key_verification_pattern(secure_key, secure_key_size,
++						 &mkvp, keystore->verbose);
++	if (rc != 0) {
++		warnx("Failed to get the master key verification pattern: %s",
++		      strerror(-rc));
++		return rc;
++	}
+ 
+ 	if (!params->from_old && !params->to_new) {
+ 		/* Autodetect reencipher mode */
+@@ -2567,12 +2577,6 @@ static int _keystore_perform_reencipher(
+ 	}
+ 
+ 	if (params->from_old) {
+-		if (!is_old_mk) {
+-			printf("The secure key '%s' is already enciphered "
+-			       "with the CURRENT CCA master key\n", name);
+-			return 1;
+-		}
+-
+ 		if (params->inplace == -1)
+ 			params->inplace = 1;
+ 
+@@ -2580,12 +2584,27 @@ static int _keystore_perform_reencipher(
+ 			   "Secure key '%s' will be re-enciphered from OLD "
+ 			   "to the CURRENT CCA master key", name);
+ 
++		rc = select_cca_adapter_by_mkvp(cca, mkvp, apqns,
++						FLAG_SEL_CCA_MATCH_OLD_MKVP,
++						keystore->verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			warnx("No APQN found that is suitable for "
++			      "re-enciphering this secure AES key");
++			return rc;
++		}
++
+ 		rc = key_token_change(cca, secure_key, secure_key_size,
+ 				      METHOD_OLD_TO_CURRENT,
+ 				      keystore->verbose);
+ 		if (rc != 0) {
+ 			warnx("Failed to re-encipher '%s' from OLD to "
+ 			      "CURRENT CCA master key", name);
++			if (!selected)
++				print_msg_for_cca_envvars("secure AES key");
+ 			return rc;
+ 		}
+ 	}
+@@ -2597,12 +2616,30 @@ static int _keystore_perform_reencipher(
+ 		if (params->inplace == -1)
+ 			params->inplace = 0;
+ 
++		rc = select_cca_adapter_by_mkvp(cca, mkvp, apqns,
++						FLAG_SEL_CCA_MATCH_CUR_MKVP |
++						FLAG_SEL_CCA_NEW_MUST_BE_SET,
++						keystore->verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			util_print_indented("No APQN found that is suitable "
++					    "for re-enciphering this secure "
++					    "AES key and has the NEW master "
++					    "key loaded", 0);
++			return rc;
++		}
++
+ 		rc = key_token_change(cca, secure_key, secure_key_size,
+ 				      METHOD_CURRENT_TO_NEW,
+ 				      keystore->verbose);
+ 		if (rc != 0) {
+ 			warnx("Failed to re-encipher '%s' from CURRENT to "
+ 			      "NEW CCA master key", name);
++			if (!selected)
++				print_msg_for_cca_envvars("secure AES key");
+ 			return rc;
+ 		}
+ 	}
+@@ -2692,7 +2729,9 @@ static int _keystore_process_reencipher(
+ 
+ 		rc = _keystore_perform_reencipher(keystore, name, info->cca,
+ 						  &params, secure_key,
+-						  secure_key_size, is_old_mk);
++						  secure_key_size, is_old_mk,
++						  properties_get(properties,
++							PROP_NAME_APQNS));
+ 		if (rc < 0)
+ 			goto out;
+ 		if (rc > 0) {
+--- a/zkey/zkey-cryptsetup.c
++++ b/zkey/zkey-cryptsetup.c
+@@ -1514,10 +1514,12 @@ static int reencipher_prepare(int token)
+ 	char *password = NULL;
+ 	size_t password_len;
+ 	char *key = NULL;
++	int selected = 1;
+ 	size_t keysize;
+ 	int is_old_mk;
+ 	char *prompt;
+ 	char *msg;
++	u64 mkvp;
+ 	int rc;
+ 
+ 	if (token >= 0) {
+@@ -1578,13 +1580,42 @@ static int reencipher_prepare(int token)
+ 	util_print_indented(msg, 0);
+ 	free(msg);
+ 
++	rc = get_master_key_verification_pattern((u8 *)key, keysize, &mkvp,
++						 g.verbose);
++	if (rc != 0) {
++		warnx("Failed to get the master key verification pattern: %s",
++		      strerror(-rc));
++		goto out;
++	}
++
++	rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
++					is_old_mk ? FLAG_SEL_CCA_MATCH_OLD_MKVP
++						: FLAG_SEL_CCA_MATCH_CUR_MKVP |
++						  FLAG_SEL_CCA_NEW_MUST_BE_SET,
++					g.verbose);
++	if (rc == -ENOTSUP) {
++		rc = 0;
++		selected = 0;
++	}
++	if (rc != 0) {
++		util_asprintf(&msg, "No APQN found that is suitable for "
++			      "re-enciphering the secure AES volume key%s",
++			      !is_old_mk ? " and has the NEW master key loaded"
++					 : "");
++		util_print_indented(msg, 0);
++		free(msg);
++		goto out;
++	}
++
+ 	rc = key_token_change(&g.cca, (u8 *)key, keysize,
+ 			      is_old_mk ? METHOD_OLD_TO_CURRENT :
+ 					  METHOD_CURRENT_TO_NEW,
+ 			      g.verbose);
+ 	if (rc != 0) {
+ 		warnx("Failed to re-encipher the secure volume key of device "
+-		      "'%s'", g.pos_arg);
++		      "'%s'\n", g.pos_arg);
++		if (!selected)
++			print_msg_for_cca_envvars("secure AES volume key");
+ 		rc = -EINVAL;
+ 		goto out;
+ 	}
+@@ -1651,10 +1682,12 @@ static int reencipher_complete(int token
+ 	char *password = NULL;
+ 	size_t password_len;
+ 	char *key = NULL;
++	int selected = 1;
+ 	size_t keysize;
+ 	int is_old_mk;
+ 	char *prompt;
+ 	char *msg;
++	u64 mkvp;
+ 	int rc;
+ 
+ 	rc = get_reencipher_token(g.cd, token, &tok, true);
+@@ -1700,11 +1733,38 @@ static int reencipher_complete(int token
+ 			goto out;
+ 		}
+ 
++		rc = get_master_key_verification_pattern((u8 *)key, keysize,
++							 &mkvp, g.verbose);
++		if (rc != 0) {
++			warnx("Failed to get the master key verification "
++			      "pattern: %s",
++			      strerror(-rc));
++			goto out;
++		}
++
++		rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
++						FLAG_SEL_CCA_MATCH_OLD_MKVP,
++						g.verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			util_print_indented("No APQN found that is suitable "
++					    "for re-enciphering the secure AES "
++					    "volume key from the OLD to the "
++					    "CURRENT CCA master key.", 0);
++			goto out;
++		}
++
+ 		rc = key_token_change(&g.cca, (u8 *)key, keysize,
+ 				      METHOD_OLD_TO_CURRENT, g.verbose);
+ 		if (rc != 0) {
+ 			warnx("Failed to re-encipher the secure volume key for "
+-			      "device '%s'", g.pos_arg);
++			      "device '%s'\n", g.pos_arg);
++			if (!selected)
++				print_msg_for_cca_envvars(
++						"secure AES volume key");
+ 			rc = -EINVAL;
+ 			goto out;
+ 		}
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -1128,7 +1128,9 @@ static int command_reencipher_file(void)
+ {
+ 	size_t secure_key_size;
+ 	int rc, is_old_mk;
++	int selected = 1;
+ 	u8 *secure_key;
++	u64 mkvp;
+ 
+ 	if (g.name != NULL) {
+ 		warnx("Option '--name|-N' is not valid for "
+@@ -1174,6 +1176,15 @@ static int command_reencipher_file(void)
+ 		goto out;
+ 	}
+ 
++	rc = get_master_key_verification_pattern(secure_key, secure_key_size,
++						 &mkvp, g.verbose);
++	if (rc != 0) {
++		warnx("Failed to get the master key verification pattern: %s",
++		      strerror(-rc));
++		rc = EXIT_FAILURE;
++		goto out;
++	}
++
+ 	if (!g.fromold && !g.tonew) {
+ 		/* Autodetect reencipher option */
+ 		if (is_old_mk) {
+@@ -1205,12 +1216,28 @@ static int command_reencipher_file(void)
+ 		pr_verbose("Secure key will be re-enciphered from OLD to the "
+ 			   "CURRENT CCA master key");
+ 
++		rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
++						FLAG_SEL_CCA_MATCH_OLD_MKVP,
++						g.verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			warnx("No APQN found that is suitable for "
++			      "re-enciphering the secure AES volume key");
++			rc = EXIT_FAILURE;
++			goto out;
++		}
++
+ 		rc = key_token_change(&g.cca, secure_key, secure_key_size,
+ 				      METHOD_OLD_TO_CURRENT,
+ 				      g.verbose);
+ 		if (rc != 0) {
+ 			warnx("Re-encipher from OLD to CURRENT CCA "
+-			      "master key has failed");
++			      "master key has failed\n");
++			if (!selected)
++				print_msg_for_cca_envvars("secure AES key");
+ 			rc = EXIT_FAILURE;
+ 			goto out;
+ 		}
+@@ -1219,11 +1246,30 @@ static int command_reencipher_file(void)
+ 		pr_verbose("Secure key will be re-enciphered from CURRENT "
+ 			   "to the NEW CCA master key");
+ 
++		rc = select_cca_adapter_by_mkvp(&g.cca, mkvp, NULL,
++						FLAG_SEL_CCA_MATCH_CUR_MKVP |
++						FLAG_SEL_CCA_NEW_MUST_BE_SET,
++						g.verbose);
++		if (rc == -ENOTSUP) {
++			rc = 0;
++			selected = 0;
++		}
++		if (rc != 0) {
++			util_print_indented("No APQN found that is suitable "
++					    "for re-enciphering this secure "
++					    "AES key and has the NEW master "
++					    "key loaded", 0);
++			rc = EXIT_FAILURE;
++			goto out;
++		}
++
+ 		rc = key_token_change(&g.cca, secure_key, secure_key_size,
+ 				      METHOD_CURRENT_TO_NEW, g.verbose);
+ 		if (rc != 0) {
+ 			warnx("Re-encipher from CURRENT to NEW CCA "
+-			      "master key has failed");
++			      "master key has failed\n");
++			if (!selected)
++				print_msg_for_cca_envvars("secure AES key");
+ 			rc = EXIT_FAILURE;
+ 			goto out;
+ 		}

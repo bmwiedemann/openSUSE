@@ -19,19 +19,17 @@ diff --git a/fdasd/fdasd.c b/fdasd/fdasd.c
 index 4503d3e..f04dc3d 100644
 --- a/fdasd/fdasd.c
 +++ b/fdasd/fdasd.c
-@@ -1247,9 +1247,12 @@
- 	}
+@@ -1229,10 +1229,12 @@
+  */
+ static void fdasd_reread_partition_table(fdasd_anchor_t *anc)
+ {
++	int rc = 0 ;
+ 	if (!anc->silent)
+ 		printf("rereading partition table...\n");
  
- 	if (ioctl(fd, BLKRRPART, NULL) != 0) {
--		close(fd);
--		fdasd_error(anc, unable_to_ioctl, "Error while rereading "
--			    "partition table.\nPlease reboot!");
-+		if (errno == EINVAL && !anc->force_virtual) {
-+			close(fd);
-+			fdasd_error(anc, unable_to_ioctl,
-+				    "Error while rereading "
-+				    "partition table.\nPlease reboot!");
-+		}
+-	if (dasd_reread_partition_table(options.device, 1) != 0) {
++	rc = dasd_reread_partition_table(options.device, 1);
++	if (rc == EINVAL && !anc->force_virtual) {
+ 		fdasd_error(anc, unable_to_ioctl, "Error while rereading "
+ 			    "partition table.\nPlease reboot!");
  	}
- 	close(fd);
- }

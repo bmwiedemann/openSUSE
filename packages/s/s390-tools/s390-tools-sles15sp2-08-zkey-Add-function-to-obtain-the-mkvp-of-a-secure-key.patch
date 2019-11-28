@@ -1,0 +1,74 @@
+Subject: zkey: Add function to obtain the mkvp of a secure key
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary:     zkey: check master key consistency
+Description: Enhances the zkey tool to perform a cross check whether the
+             APQNs associated with a secure key have the same master key.
+             Display the master key verification pattern of a secure key
+             during the zkey validate command. This helps to better identify
+             which master key is the correct one, in case of master key 
+             inconsistencies.
+             Select an appropriate APQN when re-enciphering a secure key.
+             Re-enciphering is done using the CCA host library. Special
+             handling is required to select an appropriate APQN for use with
+             the CCA host library.
+Upstream-ID: ea7cc9ea606dd879e4cdfae06a6f13d8fa3afff4
+Problem-ID:  SEC1916
+
+Upstream-Description:
+
+             zkey: Add function to obtain the mkvp of a secure key
+
+             A secure AES key token contains the master key verification pattern
+             of the master key it is encrypted with. Add a function to obtain the
+             master key verification pattern of a secure key token.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/pkey.c |   21 +++++++++++++++++++++
+ zkey/pkey.h |    4 ++++
+ 2 files changed, 25 insertions(+)
+
+--- a/zkey/pkey.c
++++ b/zkey/pkey.c
+@@ -769,3 +769,24 @@ out:
+ 
+ 	return rc;
+ }
++
++int get_master_key_verification_pattern(const u8 *secure_key,
++					size_t secure_key_size, u64 *mkvp,
++					bool verbose)
++{
++	struct secaeskeytoken *token = (struct secaeskeytoken *)secure_key;
++
++	util_assert(secure_key != NULL, "Internal error: secure_key is NULL");
++	util_assert(mkvp != NULL, "Internal error: mkvp is NULL");
++
++	if (secure_key_size < SECURE_KEY_SIZE) {
++		pr_verbose(verbose, "Size of secure key is too small: "
++			   "%lu expected %lu", secure_key_size,
++			   SECURE_KEY_SIZE);
++		return -EINVAL;
++	}
++
++	*mkvp = token->mkvp;
++
++	return 0;
++}
+--- a/zkey/pkey.h
++++ b/zkey/pkey.h
+@@ -112,4 +112,8 @@ int validate_secure_key(int pkey_fd,
+ int generate_key_verification_pattern(const char *key, size_t key_size,
+ 				      char *vp, size_t vp_len, bool verbose);
+ 
++int get_master_key_verification_pattern(const u8 *secure_key,
++					size_t secure_key_size, u64 *mkvp,
++					bool verbose);
++
+ #endif

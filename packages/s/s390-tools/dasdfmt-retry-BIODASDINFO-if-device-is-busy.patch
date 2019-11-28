@@ -23,16 +23,16 @@ diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 index e1877ac..f03cbad 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
-@@ -588,7 +616,7 @@
+@@ -580,7 +580,7 @@
   */
  static void check_disk(dasdfmt_info_t *info, char *devname)
  {
--	int ro, errno_save;
-+	int ro, errno_save, i = 0;
+-	int err;
++	int err, index = 0 ;
+ 	bool ro;
  
- 	if (ioctl(filedes, BLKROGET, &ro) != 0) {
- 		errno_save = errno;
-@@ -602,9 +630,27 @@
+ 	err = dasd_is_ro(devname, &ro);
+@@ -593,9 +593,27 @@
  	if (ro)
  		ERRMSG_EXIT(EXIT_FAILURE, "Disk is read only!\n");
  
@@ -47,9 +47,9 @@ index e1877ac..f03cbad 100644
 +		 * And confusing the hell out ouf anyone else.
 +		 * Bah.
 +		*/
-+		for ( i = 0 ; i < 6 ; i++ ) {
++		for ( index = 0 ; index < 6 ; index++ ) {
 +			if (info->dasd_info.open_count > 1) {
-+				get_device_info(info);
++				dasd_get_info(dev_filename, &info->dasd_info);
 +				sleep(1);
 +			}
 +			else break;

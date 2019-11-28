@@ -1,0 +1,78 @@
+Subject: zcryptstats: Add support for CEX7
+From: Harald Freudenberger <freude@linux.ibm.com>
+
+Summary:     s390-tools: CEX7S exploitation support
+Description: CEX7S exploitation support to lszcrypt, chzcrypt
+             and zcryptstats.
+Upstream-ID: e15e8a1bfa15e2179f30c6fe2e937ddd1a5e53c1
+Problem-ID:  SEC1808
+
+Upstream-Description:
+
+             zcryptstats: Add support for CEX7
+
+             Add the CEX7 crypto card to the list of known crypto cards.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Harald Freudenberger <freude@linux.ibm.com>
+---
+ zconf/zcrypt/zcryptstats.c |   23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+
+--- a/zconf/zcrypt/zcryptstats.c
++++ b/zconf/zcrypt/zcryptstats.c
+@@ -147,8 +147,9 @@ struct chsc_cmb_area {
+ #define CRYPTO_TYPE_CEX4S	10
+ #define CRYPTO_TYPE_CEX5S	11
+ #define CRYPTO_TYPE_CEX6S	12
++#define CRYPTO_TYPE_CEX7S	13
+ 
+-#define CRYPTO_TYPE_TOLERATION	CRYPTO_TYPE_CEX6S
++#define CRYPTO_TYPE_TOLERATION	CRYPTO_TYPE_CEX7S
+ 
+ struct crypto_counter {
+ 	const char *name;
+@@ -235,8 +236,8 @@ const struct crypto_mode mode_pcica[1] =
+ 		  .counters = counter_pcica },
+ };
+ 
+-#define NUM_CEX456_MODES	11
+-const struct crypto_mode mode_cex456[NUM_CEX456_MODES] = {
++#define NUM_CEX4567_MODES	11
++const struct crypto_mode mode_cex4567[NUM_CEX4567_MODES] = {
+ 		{ 0 },
+ 		{ 0 },
+ 		{ 0 },
+@@ -256,7 +257,7 @@ const struct crypto_mode mode_cex456[NUM
+ 		  .counters = counter_ep11 },
+ };
+ 
+-#define NUM_CRYPTO_TYPES	13
++#define NUM_CRYPTO_TYPES	14
+ const struct crypto_type crypto_types[NUM_CRYPTO_TYPES] = {
+ 		{ 0 },
+ 		{ 0 },
+@@ -275,12 +276,14 @@ const struct crypto_type crypto_types[NU
+ 		  .modes = mode_accel },
+ 		{ .name = "CEX3C", .num_modes = NUM_COPROC_MODES,
+ 		  .modes = mode_coproc },
+-		{ .name = "CEX4", .num_modes = NUM_CEX456_MODES,
+-		  .modes = mode_cex456 },
+-		{ .name = "CEX5", .num_modes = NUM_CEX456_MODES,
+-		  .modes = mode_cex456 },
+-		{ .name = "CEX6", .num_modes = NUM_CEX456_MODES,
+-		  .modes = mode_cex456 },
++		{ .name = "CEX4", .num_modes = NUM_CEX4567_MODES,
++		  .modes = mode_cex4567 },
++		{ .name = "CEX5", .num_modes = NUM_CEX4567_MODES,
++		  .modes = mode_cex4567 },
++		{ .name = "CEX6", .num_modes = NUM_CEX4567_MODES,
++		  .modes = mode_cex4567 },
++		{ .name = "CEX7", .num_modes = NUM_CEX4567_MODES,
++		  .modes = mode_cex4567 },
+ };
+ 
+ 

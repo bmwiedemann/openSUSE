@@ -41,7 +41,7 @@ diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 index 6dd28fa..5b6023a 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
-@@ -129,6 +129,10 @@ static struct util_opt opt_vec[] = {
+@@ -137,6 +137,10 @@ static struct util_opt opt_vec[] = {
  		.option = { "percentage", no_argument, NULL, 'Q' },
  		.desc = "Show progress in percent",
  	},
@@ -52,7 +52,7 @@ index 6dd28fa..5b6023a 100644
  	UTIL_OPT_SECTION("MISC"),
  	{
  		.option = { "check_host_count", no_argument, NULL, 'C' },
-@@ -351,7 +355,8 @@ static void evaluate_format_error(dasdfmt_info_t *info, format_check_t *cdata,
+@@ -343,7 +347,8 @@ static void evaluate_format_error(dasdfmt_info_t *info, format_check_t *cdata,
  	unsigned int kl = 0;
  	int blksize = cdata->expect.blksize;
  
@@ -62,7 +62,7 @@ index 6dd28fa..5b6023a 100644
  		printf("\n");
  
  	/*
-@@ -758,9 +763,9 @@ static void check_hashmarks(dasdfmt_info_t *info)
+@@ -749,9 +754,9 @@ static void check_hashmarks(dasdfmt_info_t *info)
  			       "using the default.\n");
  			info->hashstep = 10;
  		}
@@ -75,7 +75,16 @@ index 6dd28fa..5b6023a 100644
  	}
  }
  
-@@ -1445,16 +1450,18 @@ static void do_format_dasd(dasdfmt_info_t *info, char *devname,
+@@ -985,7 +990,7 @@ static int dasdfmt_get_volser(char *devn
+ /*
+  * do all the labeling (volume label and initial VTOC)
+  */
+-static void dasdfmt_write_labels(dasdfmt_info_t *info, volume_label_t *vlabel,
++static void dasdfmt_write_labels(dasdfmt_info_t *info, char *dev_filename, volume_label_t *vlabel,
+ 				 unsigned int cylinders, unsigned int heads)
+ {
+ 	int label_position;
+@@ -1483,17 +1488,19 @@ static void do_format_dasd(dasdfmt_info_t *info, char *devname,
  			break;
  		}
  
@@ -84,31 +93,32 @@ index 6dd28fa..5b6023a 100644
 +			printf("Finished formatting the device.\n");
  
  		if (!(info->writenolabel || mode == EXPAND))
- 			dasdfmt_write_labels(info, vlabel, cylinders, heads);
+ 			dasdfmt_write_labels(info, devname, vlabel, cylinders, heads);
  
 -		printf("Rereading the partition table... ");
 +		if (!info->yast_mode)
 +			printf("Rereading the partition table... ");
- 		if (reread_partition_table()) {
+ 		err = dasd_reread_partition_table(devname, 5);
+ 		if (err != 0) {
  			ERRMSG("%s: error during rereading the partition "
- 			       "table: %s.\n", prog_name, strerror(errno));
+ 			       "table: %s.\n", prog_name, strerror(err));
 -		} else {
 +		} else if (!info->yast_mode) {
  			printf("ok\n");
  		}
  	}
-@@ -1511,6 +1518,8 @@ void do_dasdfmt(char *dev_filename, dasdfmt_info_t *info,
+@@ -1569,6 +1576,8 @@ void do_dasdfmt(char *dev_filename, dasdfmt_info_t *info,
  		ERRMSG_EXIT(EXIT_MISUSE, "%s: %s\n", prog_name, str);
  
- 	set_geo(info, &cylinders, &heads);
-+	if (info->yast_mode)
+ 	set_geo(&info, &cylinders, &heads);
++	if (info.yast_mode)
 +		printf("%d\n", cylinders);
- 	set_label(info, &vlabel, &format_params, cylinders);
+ 	set_label(&info, &vlabel, &format_params, cylinders);
  
- 	if (info->check)
-@@ -1665,6 +1674,10 @@ int main(int argc, char *argv[])
- 					    "more information.\n",
- 					    prog_name, optarg);
+ 	if (info.check)
+@@ -1721,6 +1730,10 @@ int main(int argc, char *argv[])
+ 		case OPT_NODISCARD:
+ 			info.no_discard = 1;
  			break;
 +		case 'Y':
 +			/* YaST mode */
@@ -121,9 +131,9 @@ diff --git a/dasdfmt/dasdfmt.h b/dasdfmt/dasdfmt.h
 index fb6fc34..fe0cc7f 100644
 --- a/dasdfmt/dasdfmt.h
 +++ b/dasdfmt/dasdfmt.h
-@@ -308,6 +308,7 @@ typedef struct dasdfmt_info {
- 	int   layout_specified;
- 	int   check;
+@@ -96,6 +96,7 @@ typedef struct dasdfmt_info {
+ 	int   ese;
+ 	int   no_discard;
  	int   procnum;
 +	int   yast_mode;
  } dasdfmt_info_t;
