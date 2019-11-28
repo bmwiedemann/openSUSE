@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:08:41 UTC 2019 - wbauer@tmo.at
+
+- Update to 4.2.8.2:
+  * See https://krita.org/en/item/krita-4-2-8-released/
+  * Fix the sliders in the performance settings page (kde#414092)
+  * Fix the color space of the onion skin cache (kde#407251)
+  * Fix transforming layers that have onion skins enabled
+    (kde#408152)
+  * Also save the preferences when closing the preferences dialog
+    with the titlebar close button
+  * Fix a bug in the polygon tool that adds an extra point
+    (kde#411059)
+  * Save the last used export settings (kde#409044)
+  * Make it possible to save the "All" tag as the current tag
+    (kde#409748)
+  * Show the correct blending mode in the brush preset editor
+    (kde#410136)
+  * Fix saving color profiles that are not sRGB to PNG files
+  * Make the transform tool work correctly with the selection
+    mask's overlay
+  * Fix a crash when editing the global selection mask (kde#412747)
+  * Remove the "Show Decorations" option from the transform tool
+    (kde#413573)
+  * Remove the CSV export filter (it hasn't worked for ages)
+  * Fix slowdown in the Warp transform tool (kde#413157)
+  * Fix possible data loss when pressing the escape key multiple
+    times (kde#412561)
+  * Fix a crash when opening an image with a clone layer when
+    instant preview is active (kde#412278)
+  * Fix a crash when editing vector shapes (kde#413932)
+  * Fix visibility of Reference Layer and Global Selection Mask in
+    Timeline (kde#412905)
+  * Fix random crashes when converting image color space
+    (kde#410776)
+  * Rewrite the "auto precision" option in the brush preset editor
+    (kde#413085)
+  * Fix legacy convolution filters on images with non-transparent
+    background (kde#411159)
+  * Fix an assert when force-autosaving the image right during the
+    stroke (kde#412835)
+  * Fix crash when using Contiguous Selection tool with Feather
+    option (kde#412622)
+  * Fix an issue where temporary files were created in the folder
+    above the current folder
+  * Improve the rendering of the transform tool handles while
+    actually making a transformation
+  * Use the actual mimetype instead of the extension to identify
+    files when creating thumbnails for the recent files display
+  * Improve the logging to detect whether Krita has closed
+    improperly
+  * Fix exporting compositions from the compositions docker
+    (kde#412953, kde#412470)
+  * Fix Color Adjustment Curves not processing (kde#412491)
+  * Fix artifacts on layers with colorize mask *and* disabled
+    layer styles
+  * Make Separate Channels work (kde#336694, kde#412624)
+  * Make it possible to create vector shapes on images that are
+    bigger than QImage's limits (kde#408936)
+  * Disable adjustmentlayer support on the raindrop filter
+    (kde#412522)
+  * Make it possible to use .kra files as file layers
+    (kde#412549)
+  * Fix Crop tool loosing aspect ratio on move (kde#343586)
+  * Fix Rec2020 display format (kde#410918)
+  * Improve error messages when loading and saving fails
+  * Fix jumping of vector shapes when resizing them
+  * Add hi-res input events for pan, zoom and rotate (kde#409460)
+  * Fix crash when using Pencil Tool with a tablet (kde#412530)
+  * Fix wrong aspect ratio on loading SVG files (kde#407425)
+
+-------------------------------------------------------------------
 Fri Oct  4 14:53:41 UTC 2019 - wbauer@tmo.at
 
 - Update to 4.2.7.1:
