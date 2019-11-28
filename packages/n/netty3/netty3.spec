@@ -43,14 +43,11 @@ BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.felix:org.osgi.compendium)
 BuildRequires:  mvn(org.apache.felix:org.osgi.core)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
 BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk15on)
 BuildRequires:  mvn(org.jboss.logging:jboss-logging)
 BuildRequires:  mvn(org.jboss.marshalling:jboss-marshalling)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
-BuildConflicts: java-devel >= 9
 Requires:       netty-tcnative
 BuildArch:      noarch
 
@@ -83,8 +80,10 @@ rm -rf jar doc license
 %pom_remove_plugin :maven-jxr-plugin
 %pom_remove_plugin :maven-checkstyle-plugin
 %pom_remove_plugin org.eclipse.m2e:lifecycle-mapping
-%pom_remove_dep javax.activation:activation
 %pom_remove_plugin :animal-sniffer-maven-plugin
+%pom_remove_plugin :maven-enforcer-plugin
+
+%pom_remove_dep javax.activation:activation
 %pom_remove_dep :npn-api
 %pom_xpath_remove "pom:extension[pom:artifactId[text()='os-maven-plugin']]"
 %pom_xpath_remove "pom:execution[pom:id[text()='remove-examples']]"
@@ -93,10 +92,11 @@ rm -rf jar doc license
 # Set scope of optional compile dependencies to 'provided'
 %pom_xpath_set "pom:dependency[pom:scope[text()='compile'] and pom:optional[text()='true']]/pom:scope" provided
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "6"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "6"
+
 # Force use servlet 3.1 apis
 %pom_change_dep :servlet-api javax.servlet:javax.servlet-api:3.1.0
-
-%pom_xpath_set "pom:dependency[pom:artifactId = 'log4j']/pom:version" 12
 
 # Uneeded tasks
 %pom_remove_plugin :maven-assembly-plugin
@@ -124,7 +124,7 @@ rm -v src/main/java/org/jboss/netty/handler/ssl/JettyNpnSslEngine.java
 %{mvn_file}  : %{name}
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- -Dsource=6
 
 %install
 %mvn_install

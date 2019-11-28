@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 27 10:13:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with jdk >= 9
+
+-------------------------------------------------------------------
 Sun Nov 24 14:31:58 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with jdk < 9, since some apis are not found
