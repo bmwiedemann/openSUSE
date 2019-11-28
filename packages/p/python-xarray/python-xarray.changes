@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Fri Nov 22 06:11:38 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.14.1:
+  * Breaking changes
+    + Broken compatibility with cftime < 1.0.3 . By Deepak Cherian.
+      Warning:
+      cftime version 1.0.4 is broken (cftime/126); please use version
+      1.0.4.2 instead.
+    + All leftover support for dates from non-standard calendars
+      through netcdftime, the module included in versions of netCDF4
+      prior to 1.4 that eventually became the cftime package, has been
+      removed in favor of relying solely on the standalone cftime
+      package (PR3450). By Spencer Clark.
+  * New Features
+    + Added the sparse option to unstack(), unstack(), reindex(),
+      reindex() (GH3518). By Keisuke Fujii.
+    + Added the fill_value option to DataArray.unstack() and
+      Dataset.unstack() (GH3518, PR3541). By Keisuke Fujii.
+    + Added the max_gap kwarg to interpolate_na() and
+      interpolate_na(). This controls the maximum size of the data gap
+      that will be filled by interpolation. By Deepak Cherian.
+    + Added Dataset.drop_sel() & DataArray.drop_sel() for dropping
+      labels. Dataset.drop_vars() & DataArray.drop_vars() have been
+      added for dropping variables (including coordinates). The
+      existing Dataset.drop() & DataArray.drop() methods remain as a
+      backward compatible option for dropping either labels or
+      variables, but using the more specific methods is
+      encouraged. (PR3475) By Maximilian Roos
+    + Added Dataset.map() & GroupBy.map() & Resample.map() for mapping
+      / applying a function over each item in the collection,
+      reflecting the widely used and least surprising name for this
+      operation. The existing apply methods remain for backward
+      compatibility, though using the map methods is
+      encouraged. (PR3459) By Maximilian Roos
+    + Dataset.transpose() and DataArray.transpose() now support an
+      ellipsis (...) to represent all ‘other’ dimensions. For example,
+      to move one dimension to the front, use .transpose('x',
+      ...). (PR3421) By Maximilian Roos
+    + Changed xr.ALL_DIMS to equal python’s Ellipsis (...), and
+      changed internal usages to use ... directly. As before, you can
+      use this to instruct a groupby operation to reduce over all
+      dimensions. While we have no plans to remove xr.ALL_DIMS, we
+      suggest using .... (PR3418) By Maximilian Roos
+    + xarray.dot(), and DataArray.dot() now support the
+      dims=... option to sum over the union of dimensions of all input
+      arrays (GH3423) by Mathias Hauser.
+    + Added new Dataset._repr_html_() and DataArray._repr_html_() to
+      improve representation of objects in Jupyter. By default this
+      feature is turned off for now. Enable it with
+      xarray.set_options(display_style="html"). (PR3425) by Benoit
+      Bovy and Julia Signell.
+    + Implement dask deterministic hashing for xarray objects. Note
+      that xarray objects with a dask.array backend already used
+      deterministic hashing in previous releases; this change
+      implements it when whole xarray objects are embedded in a dask
+      graph, e.g. when DataArray.map() is invoked. (GH3378, PR3446,
+      PR3515) By Deepak Cherian and Guido Imperiale.
+    + Add the documented-but-missing
+      DatasetGroupBy.quantile(). (GH3525, PR3527). By Justus Magin.
+  * Bug fixes
+    + Ensure an index of type CFTimeIndex is not converted to a
+      DatetimeIndex when calling Dataset.rename(),
+      Dataset.rename_dims() and Dataset.rename_vars(). By Mathias
+      Hauser. (GH3522).
+    + Fix a bug in DataArray.set_index() in case that an existing
+      dimension becomes a level variable of MultiIndex. (PR3520). By
+      Keisuke Fujii.
+    + Harmonize _FillValue, missing_value during encoding and decoding
+      steps. (PR3502) By Anderson Banihirwe.
+    + Fix regression introduced in v0.14.0 that would cause a crash if
+      dask is installed but cloudpickle isn’t (GH3401) by Rhys Doyle
+    + Fix grouping over variables with NaNs. (GH2383, PR3406). By
+      Deepak Cherian.
+    + Make alignment and concatenation significantly more efficient by
+      using dask names to compare dask objects prior to comparing
+      values after computation. This change makes it more convenient
+      to carry around large non-dimensional coordinate variables
+      backed by dask arrays. Existing workarounds involving
+      reset_coords(drop=True) should now be unnecessary in most
+      cases. (GH3068, GH3311, GH3454, PR3453). By Deepak Cherian.
+    + Add support for cftime>=1.0.4. By Anderson Banihirwe.
+    + Rolling reduction operations no longer compute dask arrays by
+      default. (GH3161). In addition, the allow_lazy kwarg to reduce
+      is deprecated. By Deepak Cherian.
+    + Fix GroupBy.reduce() when reducing over multiple
+      dimensions. (GH3402). By Deepak Cherian
+    + Allow appending datetime and bool data variables to zarr
+      stores. (GH3480). By Akihiro Matsukawa.
+    + Add support for numpy >=1.18 (); bugfix mean() on datetime64
+      arrays on dask backend (GH3409, PR3537). By Guido Imperiale.
+    + Add support for pandas >=0.26 (GH3440). By Deepak Cherian.
+    + Add support for pseudonetcdf >=3.1 (PR3485). By Barron
+      Henderson.
+  * Documentation
+    + Fix leap year condition in monthly means example. By Mickaël
+      Lalande.
+    + Fix the documentation of DataArray.resample() and
+      Dataset.resample(), explicitly stating that a datetime-like
+      dimension is required. (PR3400) By Justus Magin.
+    + Update the Terminology page to address multidimensional
+      coordinates. (PR3410) By Jon Thielen.
+    + Fix the documentation of Dataset.integrate() and
+      DataArray.integrate() and add an example to
+      Dataset.integrate(). (PR3469) By Justus Magin.
+  * Internal Changes
+    + Added integration tests against pint. (PR3238, PR3447, PR3493,
+      PR3508) by Justus Magin.
+      Note:
+      At the moment of writing, these tests as well as the ability to
+      use pint in general require a highly experimental version of
+      pint (install with pip install
+      git+https://github.com/andrewgsavage/pint.git@refs/pull/6/head). Even
+      with it, interaction with non-numpy array libraries, e.g. dask
+      or sparse, is broken.
+    + Use Python 3.6 idioms throughout the codebase. (PR3419) By
+      Maximilian Roos
+    + Run basic CI tests on Python 3.8. (PR3477) By Maximilian Roos
+    + Enable type checking on default sentinel values (PR3472) By
+      Maximilian Roos
+    + Add Variable._replace() for simpler replacing of a subset of
+      attributes (PR3472) By Maximilian Roos
+
+-------------------------------------------------------------------
 Thu Oct 24 19:52:12 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - update to version 0.14.0
