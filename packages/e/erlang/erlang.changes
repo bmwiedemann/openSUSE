@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:00:15 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
+
+- Changes for 22.1.8
+  * http://erlang.org/download/OTP-22.1.8.README
+  * erts: Large amounts of quickly executed dirty work could
+    cause heavy contention on an internal spin lock. The
+    spin lock was replaced by a mutex which behaves much
+    better under these conditions.
+
+-------------------------------------------------------------------
 Mon Nov 11 11:22:05 UTC 2019 - Gabriele Santomaggio <gsantomaggio@gmail.com>
 
 - Changes for 22.1.7
