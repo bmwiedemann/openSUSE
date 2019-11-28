@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 28 07:19:54 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.69.1
+
+  * Fix mistake in proxy connection error handling
+  * Raise better proxy connection errors
+
+-------------------------------------------------------------------
 Tue Nov 12 16:30:10 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 0.68.0
