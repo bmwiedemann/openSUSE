@@ -1,0 +1,18 @@
+/*
+ * The PCie controller on the RPi4 has a HW bug that prevents it from accessing
+ * memory higher than 0xc0000000. This fixes the dma-ranges so this is
+ * reflected. In the future close future this will be fixed by firmware.
+ */
+/dts-v1/;
+/plugin/;
+
+/{
+	compatible = "brcm,bcm2711";
+
+	fragment@0 {
+		target = <&genet>;
+		__overlay__ {
+			compatible = "brcm,bcm2711-genet-v5";
+		};
+	};
+};

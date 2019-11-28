@@ -27,6 +27,7 @@ Source:         raspberrypi-firmware-dt-%{version}.tar.xz
 Source1:        disable-vc4-overlay.dts
 Source2:        rpi4-cma-overlay.dts
 Source3:        rpi4-pcie-ib-size-fix-overlay.dts
+Source4:        rpi4-genet-overlay.dts
 Source100:      get-from-git.sh
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
@@ -54,7 +55,7 @@ for dts in arch/arm/boot/dts/bcm27*dts arch/arm64/boot/dts/broadcom/bcm27*dts; d
 done
 
 export DTC_FLAGS="-R 0 -p 0 -@ -H epapr"
-for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3}; do
+for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4}; do
     target=$(basename ${dts%*.dts})
     target=${target%*-overlay}
     mkdir -p $PPDIR/overlays

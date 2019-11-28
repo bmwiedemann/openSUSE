@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 17:42:56 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Add rpi4-genet-overlay.dts which sets the upstream compatible for the
+  network device. (jsc#SLE-7771)
+
+-------------------------------------------------------------------
 Tue Nov 26 17:21:44 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add rpi4-cma-overlay.dts, which properly configures CMA on the RPi4 (SLE-7771)
