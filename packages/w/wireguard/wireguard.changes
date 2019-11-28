@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 27 19:01:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20191127
+  * messages: recalculate rekey max based on a one minute flood
+  * allowedips: safely dereference rcu roots
+  * socket: remove redundant check of new4
+  * allowedips: avoid double lock in selftest error case
+  * wg-quick: linux: only touch net.ipv4 for v4
+  * wg-quick: linux: filter bogus injected packets and don't
+    disable rpfilter
+  * reresolve-dns: remove invalid anchors on regex match
+  * tools: add syncconf command
+
+-------------------------------------------------------------------
 Mon Oct 28 20:53:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Drop debian packaging related files:
