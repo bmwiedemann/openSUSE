@@ -120,4 +120,12 @@ Obligations most akin to http://www.spdx.org/licenses/HPND (forwarded request 11
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="19" vrev="65">
+    <srcmd5>d01ea9d9374a95ebfaf026d02cefc1a8</srcmd5>
+    <version>1.0.2</version>
+    <time>1574932650</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>751485</requestid>
+  </revision>
 </revisionlist>
