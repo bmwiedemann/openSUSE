@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 26 23:52:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.2.0
+  * new function sgrid
+  * New function: ss2ss
+  * Fixed many warnings
+  * added demos to rlocus, pzmap, bode, nichols, nyquist, impulse, lsim,
+    ramp and step
+  * improved pzmap to plot with only zeros
+- Update to version 3.1.0
+  * New function: damp
+  * Changed nelem to numel and length to numel to remove the warnings
+    during installation.
+  * The Impulse section has been rewritten, and a new file - imp_invar.m -
+    added. The old system tried to use the "zoh" to get an impulse response
+    but that is impossible.
+  * The new function "imp_invar.m" converts a Laplace tranfer function
+    to a discrete tranfer function.
+  * New functions: acker, dsort, esort.
+  * Function lsim now plots inputs as well.
+  * Class 'ss' should now work with complex inputs.
+  * Extend nyquist plots.
+  * Fixed warnings with newer Octave versions.
+
+-------------------------------------------------------------------
 Sat Oct 31 19:56:24 UTC 2015 - dmitry_r@opensuse.org
 
 - Update to version 3.0.0
