@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-database
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,23 @@
 
 %define octpkg  database
 Name:           octave-forge-%{octpkg}
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Octave plugin interfacing PostgreSQL
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         add_missing_iostream_include.patch
 # PATCH-FIX-OPENSUSE -- boo#1120035, pg_config is no longer in the postgresql-devel package, use pkg-config instead
 Patch1:         0001-Use-pkg-config-instead-of-pg_config.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  octave-devel
+BuildRequires:  octave-devel >= 4.0.0
 BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel >= 8.3
-Requires:       octave-cli >= 3.6.2
+Requires:       octave-cli >= 4.0.0
 Requires:       octave-forge-struct >= 1.0.12
 
 %description
@@ -43,8 +43,8 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch0 -p1
 pushd %{octpkg}-%{version}
+%patch0 -p1
 %patch1 -p1
 popd
 %octave_pkg_src

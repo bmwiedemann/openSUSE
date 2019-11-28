@@ -10,7 +10,7 @@ Subject: [PATCH] Use pkg-config instead of pg_config
  3 files changed, 7 insertions(+), 50 deletions(-)
 
 diff --git a/src/Makefile.in b/src/Makefile.in
-index 509d9ac..ef91bf2 100644
+index fd9882a..9efb1a5 100644
 --- a/src/Makefile.in
 +++ b/src/Makefile.in
 @@ -39,7 +39,7 @@ endif
@@ -22,7 +22,7 @@ index 509d9ac..ef91bf2 100644
  #
  
  CANONICAL_HOST_TYPE := $(shell $(OCTAVE_CONFIG) -p CANONICAL_HOST_TYPE))
-@@ -82,18 +82,18 @@ pq_interface.oct: $(IFOBJECTS)
+@@ -82,11 +82,11 @@ pq_interface.oct: $(IFOBJECTS)
  	$(MKOCTFILE) $< error-helpers.o
  
  converters.o: converters.cc converters.h wrap_endian.h config.h error-helpers.h
@@ -36,6 +36,7 @@ index 509d9ac..ef91bf2 100644
  
  error-helpers.o: error-helpers.cc error-helpers.h config.h
  	CXXFLAGS="$(CXXFLAGS)" $(MKOCTFILE) -c error-helpers.cc
+@@ -96,7 +96,7 @@ pkglock.o: pkglock.cc
  
  # be on the safe side with respect to include files
  %.o: %.cc converters.h pq_connection.h command.h config.h error-helpers.h
@@ -44,7 +45,7 @@ index 509d9ac..ef91bf2 100644
  
  doc: $(INFOFILE)
  
-@@ -133,7 +133,7 @@ RDEFUNX_DLD := DEFUNX_DLD_REPLACEMENT_FOR_PACKAGE_DOCS
+@@ -136,7 +136,7 @@ RDEFUNX_DLD := DEFUNX_DLD_REPLACEMENT_FOR_PACKAGE_DOCS
  %.bin: %.cc
  	if grep -q $(RDEFUN_DLD) $<; then echo "The string '$(RDEFUN_DLD)' must not be present in source code, but is in $<."; exit 1; fi
  	if grep -q $(RDEFUNX_DLD) $<; then echo "The string '$(RDEFUNX_DLD)' must not be present in source code, but is in $<."; exit 1; fi
@@ -54,10 +55,10 @@ index 509d9ac..ef91bf2 100644
  clean:
  	$(RM) *.o octave-core *.oct *.cc.docstrings MFDOCSTRINGS *~
 diff --git a/src/configure b/src/configure
-index 8a6ad6a..b6a706b 100755
+index 4a57240..50bafe9 100755
 --- a/src/configure
 +++ b/src/configure
-@@ -2014,46 +2014,7 @@ fi
+@@ -2216,46 +2216,7 @@ fi
  if test -z "$OCTAVE_CONFIG"; then
  as_fn_error 1 "octave-config not found" "$LINENO" 5;
  fi
@@ -104,7 +105,7 @@ index 8a6ad6a..b6a706b 100755
  for ac_prog in gawk mawk nawk awk
  do
    # Extract the first word of "$ac_prog", so it can be a program name with args.
-@@ -3447,7 +3408,7 @@ fi
+@@ -3649,7 +3610,7 @@ fi
  # Check for PostgreSQL version.
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether PostgreSQL version >= 8.3" >&5
  $as_echo_n "checking whether PostgreSQL version >= 8.3... " >&6; }
@@ -114,7 +115,7 @@ index 8a6ad6a..b6a706b 100755
  $as_echo "no" >&6; }
    as_fn_error 1 "package \"database\" does not work with PostgreSQL version < 8.3" "$LINENO" 5;
 diff --git a/src/configure.ac b/src/configure.ac
-index 45fa5fb..1a1df1e 100644
+index 143b4ac..65c5bda 100644
 --- a/src/configure.ac
 +++ b/src/configure.ac
 @@ -37,10 +37,6 @@ AC_CHECK_PROG(OCTAVE_CONFIG, octave-config, octave-config)
