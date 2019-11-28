@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 25 21:25:58 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable OIDN for all builds, until accepted in Factory
+
+-------------------------------------------------------------------
+Thu Nov 21 19:09:12 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.81:
+  *way* too many changes to list here, for an overview, check:
+  https://wiki.blender.org/wiki/Reference/Release_Notes/2.81
+- Add OpenImageDenoise support
+- Sync build options with blender_release.cmake
+- Remove SSE compile options, they are enabled for x86_64 by default
+- Rebase both patches:
+  * 0006-add_ppc64el-s390x_support.patch
+  * make_python_3.6_compatible.patch
+- delete make_python_3.6_compatible.diff by renaming.
+
+-------------------------------------------------------------------
 Wed Nov 20 09:46:30 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - use build conditionals for python_36 selection

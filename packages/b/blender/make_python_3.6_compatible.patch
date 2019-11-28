@@ -2,7 +2,7 @@ Index: b/CMakeLists.txt
 ===================================================================
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -772,8 +772,8 @@ if(WITH_PYTHON)
+@@ -789,8 +789,8 @@ if(WITH_PYTHON)
    # Do this before main 'platform_*' checks,
    # because UNIX will search for the old Python paths which may not exist.
    # giving errors about missing paths before this case is met.
@@ -12,12 +12,12 @@ Index: b/CMakeLists.txt
 +    message(FATAL_ERROR "At least Python 3.6 is required to build")
    endif()
  
-   if(NOT EXISTS "${CMAKE_SOURCE_DIR}/release/scripts/addons/modules")
+   file(GLOB RESULT "${CMAKE_SOURCE_DIR}/release/scripts/addons")
 Index: b/source/blender/python/intern/bpy_rna.c
 ===================================================================
 --- a/source/blender/python/intern/bpy_rna.c
 +++ b/source/blender/python/intern/bpy_rna.c
-@@ -8651,9 +8651,11 @@ static PyObject *pyrna_register_class(Py
+@@ -8685,9 +8685,11 @@ static PyObject *pyrna_register_class(Py
    }
  
    /* Call classed register method. */
@@ -30,7 +30,7 @@ Index: b/source/blender/python/intern/bpy_rna.c
        if (ret) {
          Py_DECREF(ret);
        }
-@@ -8662,8 +8664,8 @@ static PyObject *pyrna_register_class(Py
+@@ -8696,8 +8698,8 @@ static PyObject *pyrna_register_class(Py
        }
        break;
      }
@@ -41,7 +41,7 @@ Index: b/source/blender/python/intern/bpy_rna.c
      }
    }
  
-@@ -8757,9 +8759,11 @@ static PyObject *pyrna_unregister_class(
+@@ -8791,9 +8793,11 @@ static PyObject *pyrna_unregister_class(
    }
  
    /* Call classed unregister method. */
@@ -54,7 +54,7 @@ Index: b/source/blender/python/intern/bpy_rna.c
        if (ret) {
          Py_DECREF(ret);
        }
-@@ -8768,8 +8772,8 @@ static PyObject *pyrna_unregister_class(
+@@ -8802,8 +8806,8 @@ static PyObject *pyrna_unregister_class(
        }
        break;
      }

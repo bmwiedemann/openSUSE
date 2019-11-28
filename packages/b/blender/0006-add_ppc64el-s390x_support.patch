@@ -6,13 +6,13 @@ Subject: add_ppc64el-s390x_support
  intern/numaapi/source/build_config.h | 26 ++++++++++++++++++++++++++
  1 file changed, 26 insertions(+)
 
-diff --git a/intern/numaapi/source/build_config.h b/intern/numaapi/source/build_config.h
-index 444adcc..488238c 100644
+Index: b/intern/numaapi/source/build_config.h
+===================================================================
 --- a/intern/numaapi/source/build_config.h
 +++ b/intern/numaapi/source/build_config.h
-@@ -307,6 +307,26 @@
- #    define ARCH_CPU_32_BITS 1
- #    define ARCH_CPU_BIG_ENDIAN 1
+@@ -318,6 +318,16 @@
+ #  else
+ #    error Please define your endianness
  #  endif
 +#elif (defined(__PPC64__) || defined(__PPC__)) && defined(__BIG_ENDIAN__)
 +#  define ARCH_CPU_PPC64_FAMILY 1
@@ -24,22 +24,12 @@ index 444adcc..488238c 100644
 +#  define ARCH_CPU_PPC64 1
 +#  define ARCH_CPU_64_BITS 1
 +#  define ARCH_CPU_LITTLE_ENDIAN 1
-+#elif defined(__s390x__)
-+#  define ARCH_CPU_S390_FAMILY 1
-+#  define ARCH_CPU_S390X 1
-+#  define ARCH_CPU_64_BITS 1
-+#  define ARCH_CPU_BIG_ENDIAN 1
-+#elif defined(__s390__)
-+#  define ARCH_CPU_S390_FAMILY 1
-+#  define ARCH_CPU_S390 1
-+#  define ARCH_CPU_31_BITS 1
-+#  define ARCH_CPU_BIG_ENDIAN 1
- #else
- #  error Please add support for your architecture in build_config.h
- #endif
-@@ -337,6 +357,12 @@
- #if !defined(ARCH_CPU_MIPS64_FAMILY)
- #  define ARCH_CPU_MIPS64_FAMILY 0
+ #elif defined(__s390x__)
+ #  define ARCH_CPU_S390_FAMILY 1
+ #  define ARCH_CPU_S390X 1
+@@ -338,6 +348,12 @@
+ #if !defined(ARCH_CPU_BIG_ENDIAN)
+ #  define ARCH_CPU_BIG_ENDIAN 0
  #endif
 +#if !defined(ARCH_CPU_PPC64_FAMILY)
 +#  define ARCH_CPU_PPC64_FAMILY 0
@@ -48,5 +38,5 @@ index 444adcc..488238c 100644
 +#  define ARCH_CPU_S390_FAMILY 0
 +#endif
  
- ////////////////////////////////////////////////////////////////////////////////
- // Sizes of platform-dependent types.
+ #if !defined(ARCH_CPU_32_BITS)
+ #  define ARCH_CPU_32_BITS 0

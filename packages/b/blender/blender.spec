@@ -1,8 +1,8 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2019 SUSE LLC.
-# Copyright (c) 2019 LISA GMbH, Bingen, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,10 @@
 %bcond_without collada
 %ifarch x86_64
 %bcond_without embree
+%bcond_with oidn
 %else
 %bcond_with embree
+%bcond_with oidn
 %endif
 %bcond_without opensubdiv
 %bcond_without openvdb
@@ -43,15 +45,15 @@
 %define _version %(echo %{version} | cut -b 1-4)
 
 Name:           blender
-Version:        2.80
+Version:        2.81
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
 # http://download.blender.org/source/
-Source0:        https://download.blender.org/source/%{name}-%{version}.tar.gz
-Source1:        https://download.blender.org/source/%{name}-%{version}.tar.gz.md5sum
+Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
+Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
 Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
@@ -59,7 +61,7 @@ Source8:        %{name}.appdata.xml
 Patch0:         0006-add_ppc64el-s390x_support.patch
 # only rely on patch availibility, if python_36 is requested
 %if %{with python_36}
-Patch1:         make_python_3.6_compatible.diff
+Patch1:         make_python_3.6_compatible.patch
 %endif
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
@@ -94,7 +96,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libtool
 BuildRequires:  llvm-devel
 BuildRequires:  lzo-devel
 BuildRequires:  memory-constraints
@@ -150,6 +151,9 @@ BuildRequires:  openCOLLADA-devel
 %endif
 %if %{with embree}
 BuildRequires:  embree-devel-static
+%endif
+%if %{with oidn}
+BuildRequires:  OpenImageDenoise-devel
 %endif
 %if %{with opensubdiv}
 BuildRequires:  OpenSubdiv-devel
@@ -228,10 +232,6 @@ for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python
 %build
 %limit_build -m 1000
 echo "optflags: " %{optflags}
-# sse options only on supported archs
-%ifarch %{ix86} x86_64
-sseflags='-msse -msse2'
-%endif
 # Find python3 version and abiflags
 export psver=$(pkg-config python3 --modversion)
 export pver=$(pkg-config python3 --modversion)$(python3-config --abiflags)
@@ -251,8 +251,8 @@ cmake ../ \
       -DWITH_MEM_VALGRIND:BOOL=ON \
       -DWITH_ASSERT_ABORT:BOOL=ON \
 %else
-      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags} -fopenmp " \
-      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags} -fopenmp " \
+      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp " \
+      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp " \
 %endif
       -DCMAKE_VERBOSE_MAKEFILE=ON \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
@@ -324,6 +324,9 @@ cmake ../ \
       -DWITH_OPENCOLLADA:BOOL=OFF \
 %endif
       -DWITH_OPENCOLORIO:BOOL=ON \
+%if %{with oidn}
+      -DWITH_OPENIMAGEDENOISE:BOOL=ON \
+%endif
       -DWITH_OPENIMAGEIO:BOOL=ON \
       -DWITH_OPENMP:BOOL=ON \
 %if %{with opensubdiv}
@@ -341,17 +344,20 @@ cmake ../ \
       -DPYTHON_LIBRARY=python$pver \
       -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
       -DWITH_PYTHON_INSTALL_NUMPY=OFF \
+      -DWITH_QUADRIFLOW:BOOL=ON \
 %ifnarch x86_64
       -DWITH_RAYOPTIMIZATION:BOOL=OFF \
 %else
       -DWITH_RAYOPTIMIZATION:BOOL=ON \
 %endif
       -DWITH_SDL:BOOL=ON \
+      -DWITH_TBB:BOOL=ON \
       -DWITH_SYSTEM_GLEW:BOOL=ON \
       -DWITH_X11_XINPUT:BOOL=ON \
       -DWITH_X11_XF86VMODE:BOOL=ON \
       -DWITH_DOC_MANPAGE:BOOL=ON \
       -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
+
 make $_smp_mflags
 
 %install
