@@ -1,7 +1,7 @@
 #
 # spec file for package truth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           truth
-Version:        0.23
+Version:        0.24
 Release:        0
 Summary:        An assertion framework for Java unit tests
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/google/truth
-# Created from revision 3c4492b0f72290c8b4a32f1b313b13501e96f44d
-# of git@github.com:google/truth.git using the following command:
-# git archive --format=tar --prefix=truth-0.23/ 3c4492b |xz >truth-0.23.tar.xz
-Source0:        truth-0.23.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.auto.value:auto-value)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
@@ -34,7 +32,6 @@ BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
-BuildConflicts: java-devel >= 9
 BuildArch:      noarch
 
 %description
@@ -61,10 +58,14 @@ This package contains the API documentation for %{name}.
           </testExcludes>" core
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-- -Dmaven.compiler.release=6
+%endif
 
 %install
 %mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %doc README.md
