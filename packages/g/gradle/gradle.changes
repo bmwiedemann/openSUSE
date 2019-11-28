@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 11:14:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * gradle-4.4.1-asm7.patch
+    + fix build with objectweb-asm 7.2
+
+-------------------------------------------------------------------
 Wed Nov 20 21:31:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Gradle looks for slf4j-api.jar, so we provide a link there

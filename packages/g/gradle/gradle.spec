@@ -54,6 +54,8 @@ Patch0017:      0017-Set-core-api-source-level-to-8.patch
 
 Patch100:       gradle-CVE-2019-16370.patch
 
+Patch200:       gradle-4.4.1-asm7.patch
+
 BuildRequires:  gradle-local
 BuildRequires:  xmvn-subst
 

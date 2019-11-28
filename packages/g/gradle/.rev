@@ -70,4 +70,12 @@
     <comment>Some gradle plugins need jar named slf4j-api.jar</comment>
     <requestid>750481</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a118f7eb5ecae9dcfe549f3db60c769f</srcmd5>
+    <version>4.4.1</version>
+    <time>1574945442</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with objectweb-asm &gt;=  7</comment>
+    <requestid>751519</requestid>
+  </revision>
 </revisionlist>
