@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 22 15:12:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.4.2
+  * Limit the version of semantic_version to <=2.6.0 to work around a Deprecation warning.
+- Update to 2.4.1
+  * Define the ``in`` operator for top-level ``AsdfFile`` objects.
+  * Overhaul packaging infrastructure. Remove use of ``astropy_helpers``.
+  * Automatically register schema tester plugin. Do not enable schema tests by
+    default. Add configuration setting and command line option to enable schema
+    tests.
+  * Enable handling of subclasses of known custom types by using decorators for
+    convenience.
+  * Add support for jsonschema 3.x.
+- Add allow_recent_semantic_version.patch to provide support for
+  the version of python-semantic_version we have.
+  From: https://github.com/spacetelescope/asdf/pull/715
+  See: https://github.com/spacetelescope/asdf/issues/702
+
+-------------------------------------------------------------------
 Tue Aug  6 14:12:12 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Does not support jsonschema 3 (this will be fixed in version 2.4).

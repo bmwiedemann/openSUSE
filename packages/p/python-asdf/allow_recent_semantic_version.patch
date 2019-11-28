@@ -1,0 +1,71 @@
+From 20bc46348fa1826e75ef18968dc882045b525a11 Mon Sep 17 00:00:00 2001
+From: Nadia Dencheva <nadia.dencheva@gmail.com>
+Date: Fri, 15 Nov 2019 11:32:16 -0500
+Subject: [PATCH 1/2] replace SpecItem with SimpleSpec
+
+---
+ asdf/versioning.py | 9 +++++----
+ setup.cfg          | 2 +-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/asdf/versioning.py b/asdf/versioning.py
+index 81df4f3e..61994e22 100644
+--- a/asdf/versioning.py
++++ b/asdf/versioning.py
+@@ -5,6 +5,7 @@
+ This module deals with things that change between different versions
+ of the ASDF spec.
+ """
++
+ from functools import total_ordering
+ 
+ import yaml
+@@ -14,7 +15,7 @@
+ else:  # pragma: no cover
+     _yaml_base_loader = yaml.SafeLoader
+ 
+-from semantic_version import Version, SpecItem, Spec
++from semantic_version import Version, SimpleSpec
+ 
+ from . import generic_io
+ from . import resolver
+@@ -83,7 +84,7 @@ class AsdfVersionMixin:
+ 
+     def __eq__(self, other):
+         # Seems like a bit of a hack...
+-        if isinstance(other, SpecItem):
++        if isinstance(other, SimpleSpec):
+             return other == self
+         if isinstance(other, (str, tuple, list)):
+             other = AsdfVersion(other)
+@@ -123,7 +124,7 @@ def __init__(self, version):
+         super(AsdfVersion, self).__init__(version)
+ 
+ 
+-class AsdfSpec(SpecItem, Spec):
++class AsdfSpec(SimpleSpec):
+ 
+     def __init__(self, *args, **kwargs):
+         super(AsdfSpec, self).__init__(*args, **kwargs)
+@@ -147,7 +148,7 @@ def filter(self, versions):
+ 
+     def __eq__(self, other):
+         """Equality between Spec and Version, string, or tuple, means match"""
+-        if isinstance(other, SpecItem):
++        if isinstance(other, SimpleSpec):
+             return super(AsdfSpec, self).__eq__(other)
+         return self.match(other)
+ 
+diff --git a/setup.cfg b/setup.cfg
+index 339f3b74..e038988a 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -31,7 +31,7 @@ package_dir =
+ 	asdf.reference_files = asdf-standard/reference_files
+ include_package_data = True
+ install_requires = 
+-	semantic_version>=2.3.1,<=2.6.0
++	semantic_version>=2.8
+ 	pyyaml>=3.10
+ 	jsonschema>=2.3,<4
+ 	six>=1.9.0
