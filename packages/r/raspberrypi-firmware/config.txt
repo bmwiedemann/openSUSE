@@ -53,6 +53,7 @@ dtoverlay=dwc2
 dtoverlay=disable-vc4
 dtoverlay=rpi4-cma
 dtoverlay=rpi4-pcie-ib-size-fix
+dtoverlay=rpi4-genet
 
 [all]
 

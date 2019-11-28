@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 27 17:49:15 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Load rpi4-genet-overlay to fix the compatible for the network device (jsc#SLE-7771)
+
+-------------------------------------------------------------------
 Tue Nov 26 17:30:58 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Enable rpi4-cma dt overlay to properly setup CMA on that platform (SLE-7771)
