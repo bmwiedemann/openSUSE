@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-compiler-plugin
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Maven Compiler Plugin
 License:        Apache-2.0

@@ -1,5 +1,5 @@
---- maven-compiler-plugin-3.8.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-compiler-plugin-3.8.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	2019-04-01 10:49:48.537467091 +0200
+--- maven-compiler-plugin-3.8.1/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-compiler-plugin-3.8.1/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	2019-11-25 17:47:55.264289561 +0100
 @@ -0,0 +1,720 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<plugin>
@@ -721,9 +721,8 @@
 +    </mojo>
 +  </mojos>
 +</plugin>
-diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-INF/maven/plugin.xml maven-compiler-plugin-3.8.0/src/main/filtered-resources/META-INF/maven/plugin.xml
---- maven-compiler-plugin-3.8.0/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-compiler-plugin-3.8.0/src/main/filtered-resources/META-INF/maven/plugin.xml	2019-04-01 10:52:00.226118248 +0200
+--- maven-compiler-plugin-3.8.1/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-compiler-plugin-3.8.1/src/main/filtered-resources/META-INF/maven/plugin.xml	2019-11-25 17:48:57.728635290 +0100
 @@ -0,0 +1,1396 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<plugin>
@@ -1883,19 +1882,19 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-model</artifactId>
 +      <type>jar</type>
-+      <version>3.5.4</version>
++      <version>3.6.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-classworlds</artifactId>
 +      <type>jar</type>
-+      <version>2.5.2</version>
++      <version>2.6.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-utils</artifactId>
 +      <type>jar</type>
-+      <version>3.1.0</version>
++      <version>3.2.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.eclipse.sisu</groupId>
@@ -1925,13 +1924,13 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-settings</artifactId>
 +      <type>jar</type>
-+      <version>3.5.4</version>
++      <version>3.6.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.resolver</groupId>
 +      <artifactId>maven-resolver-util</artifactId>
 +      <type>jar</type>
-+      <version>1.1.1</version>
++      <version>1.4.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.eclipse.sisu</groupId>
@@ -1958,22 +1957,10 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <version>any</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>com.google.guava</groupId>
-+      <artifactId>guava</artifactId>
-+      <type>jar</type>
-+      <version>20.0</version>
-+    </dependency>
-+    <dependency>
 +      <groupId>com.google.inject</groupId>
 +      <artifactId>guice</artifactId>
 +      <type>jar</type>
-+      <version>4.2.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>cglib</groupId>
-+      <artifactId>cglib</artifactId>
-+      <type>jar</type>
-+      <version>3.2.0</version>
++      <version>4.2.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>aopalliance</groupId>
@@ -1982,16 +1969,34 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <version>1.0</version>
 +    </dependency>
 +    <dependency>
++      <groupId>cglib</groupId>
++      <artifactId>cglib</artifactId>
++      <type>jar</type>
++      <version>3.2.0</version>
++    </dependency>
++    <dependency>
++      <groupId>com.google.guava</groupId>
++      <artifactId>guava</artifactId>
++      <type>jar</type>
++      <version>19.0</version>
++    </dependency>
++    <dependency>
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-resolver-provider</artifactId>
 +      <type>jar</type>
-+      <version>3.5.4</version>
++      <version>3.6.2</version>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <type>jar</type>
++      <version>1.7.25</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.resolver</groupId>
 +      <artifactId>maven-resolver-api</artifactId>
 +      <type>jar</type>
-+      <version>1.1.1</version>
++      <version>1.4.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>javax.inject</groupId>
@@ -2003,25 +2008,19 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <groupId>org.apache.maven.resolver</groupId>
 +      <artifactId>maven-resolver-impl</artifactId>
 +      <type>jar</type>
-+      <version>1.1.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.slf4j</groupId>
-+      <artifactId>slf4j-api</artifactId>
-+      <type>jar</type>
-+      <version>1.7.25</version>
++      <version>1.4.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-repository-metadata</artifactId>
 +      <type>jar</type>
-+      <version>3.5.4</version>
++      <version>3.6.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.resolver</groupId>
 +      <artifactId>maven-resolver-spi</artifactId>
 +      <type>jar</type>
-+      <version>1.1.1</version>
++      <version>1.4.1</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
@@ -2033,19 +2032,19 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-model-builder</artifactId>
 +      <type>jar</type>
-+      <version>3.5.4</version>
++      <version>3.6.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-builder-support</artifactId>
 +      <type>jar</type>
-+      <version>3.5.4</version>
++      <version>3.6.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-settings-builder</artifactId>
 +      <type>jar</type>
-+      <version>3.5.4</version>
++      <version>3.6.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.sonatype.plexus</groupId>
@@ -2087,7 +2086,7 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <groupId>org.ow2.asm</groupId>
 +      <artifactId>asm</artifactId>
 +      <type>jar</type>
-+      <version>6.2</version>
++      <version>7.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>com.thoughtworks.qdox</groupId>
@@ -2117,7 +2116,7 @@ diff -urEbwBN maven-compiler-plugin-3.8.0.orig/src/main/filtered-resources/META-
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-interpolation</artifactId>
 +      <type>jar</type>
-+      <version>1.24</version>
++      <version>1.25</version>
 +    </dependency>
 +  </dependencies>
 +</plugin>
