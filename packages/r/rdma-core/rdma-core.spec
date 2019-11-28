@@ -1,7 +1,7 @@
 #
 # spec file for package rdma-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 %define with_static 0
 %define with_pyverbs 1
 
-%define         git_ver .0.1841d48eec9d
+%define         git_ver .0.9f820de9ca7d
 Name:           rdma-core
-Version:        25.1
+Version:        26.1
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        GPL-2.0-only OR BSD-2-Clause
@@ -53,7 +53,7 @@ Group:          Productivity/Networking/Other
 #  providers/ipathverbs/ Dual licensed using a BSD license with an extra patent clause
 #  providers/rxe/ Incorporates code from ipathverbs and contains the patent clause
 #  providers/hfi1verbs Uses the 3 Clause BSD license
-Url:            https://github.com/linux-rdma/rdma-core
+URL:            https://github.com/linux-rdma/rdma-core
 Source:         rdma-core-%{version}%{git_ver}.tar.gz
 Source1:        baselibs.conf
 Source2:        post_download.sh

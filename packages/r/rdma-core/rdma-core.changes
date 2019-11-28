@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:59:01 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to rdma-core v26.1 (jsc#SLE-8388, jsc#SLE-8394, jsc#SLE-8463, jsc#SLE-8399,
+   jsc#SLE-8254, jsc#SLE-9840, jsc#SLE-9763, jsc#SLE-9925, jsc#SLE-9846, jsc#SLE-9913,
+   jsc#SLE-9729, jsc#SLE-8666)
+
+-------------------------------------------------------------------
 Tue Nov 12 07:33:01 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add libefa1 to baselibs.conf
