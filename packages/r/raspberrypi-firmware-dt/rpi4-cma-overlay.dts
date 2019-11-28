@@ -1,0 +1,31 @@
+/*
+ * arm64 reserves the CMA by default somewhere
+ * in ZONE_DMA32, that's not good enough for the
+ * bcm2711 as some devices can only address the
+ * lower 1G of memory (ZONE_DMA).
+ */
+/dts-v1/;
+/plugin/;
+
+/{
+	compatible = "brcm,bcm2711";
+
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			reserved-memory {
+				#address-cells = <2>;
+				#size-cells = <1>;
+				ranges;
+
+				linux,cma {
+					compatible = "shared-dma-pool";
+					size = <0x2000000>; /* 32MB */
+					alloc-ranges = <0x0 0x00000000 0x40000000>;
+					reusable;
+					linux,cma-default;
+				};
+			};
+		};
+	};
+};

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 26 17:21:44 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-cma-overlay.dts, which properly configures CMA on the RPi4 (SLE-7771)
+- Add rpi4-pcie-ib-size-fix-overlay.dts, which fixes RPi4 PCIe's dma-ranges
+  (SLE-7771)
+
+-------------------------------------------------------------------
 Mon Nov 11 18:29:08 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add disable-vc4-overlay.dts, which simply disables vc4 (SLE-7771)
