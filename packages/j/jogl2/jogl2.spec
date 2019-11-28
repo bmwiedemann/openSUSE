@@ -1,7 +1,7 @@
 #
 # spec file for package jogl2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Java bindings for the OpenGL API
 License:        BSD-2-Clause
 Group:          Development/Libraries/Java
-Url:            http://jogamp.org/jogl/www/
+URL:            http://jogamp.org/jogl/www/
 Source0:        http://jogamp.org/deployment/v%{version}/archive/Sources/%{src_name}.tar.xz
 Patch0:         %{name}-0000-update-antlr-ant-contrib-jars.patch
 Patch1:         %{name}-0001-update-ant-contrib-tasks.patch
@@ -31,6 +31,7 @@ Patch2:         jogl2-disable-tests.patch
 Patch3:         jogl2-ppc64.patch
 Patch4:         jogl2-getPeer.patch
 Patch5:         jogl2-nojavah.patch
+Patch6:         jogl2-s390x.patch
 BuildRequires:  ant >= 1.9.8
 BuildRequires:  ant-contrib
 BuildRequires:  eclipse-swt
@@ -73,6 +74,7 @@ rm -fr src/newt/classes/com/jogamp/newt/util/applet/VersionApplet3.java
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # Fix wrong-script-end-of-line-encoding
 rm make/scripts/*.bat

@@ -90,4 +90,12 @@ Depends on SR#545523 to fully fix ARM compilation.</comment>
     <comment>Fix build with jdk10</comment>
     <requestid>563220</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>48205ff41bd479804075f4dc844fad1d</srcmd5>
+    <version>2.3.2</version>
+    <time>1574945414</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on s390</comment>
+    <requestid>751503</requestid>
+  </revision>
 </revisionlist>
