@@ -40,4 +40,12 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>719557</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e964e364feb443749ca739f8bfd2ac3b</srcmd5>
+    <version>0.10.2</version>
+    <time>1574932411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750719</requestid>
+  </revision>
 </revisionlist>

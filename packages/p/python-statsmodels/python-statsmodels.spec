@@ -1,7 +1,7 @@
 #
 # spec file for package python-statsmodels
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-statsmodels
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-Url:            http://statsmodels.sourceforge.net/
+URL:            http://statsmodels.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools >= 0.6}
 BuildRequires:  %{python_module matplotlib >= 1.0.0}
 BuildRequires:  %{python_module numpy-devel >= 1.7.0}
 BuildRequires:  %{python_module pandas >= 0.7.1}
 BuildRequires:  %{python_module patsy >= 0.3.0}
 BuildRequires:  %{python_module scipy >= 0.9.0}
+BuildRequires:  %{python_module setuptools >= 0.6}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 Requires:       python-numpy >= 1.7.0
 Requires:       python-pandas >= 0.7.1
 Requires:       python-patsy >= 0.3.0
 Requires:       python-scipy >= 0.9.0
 Recommends:     python-matplotlib >= 1.0.0
-
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description

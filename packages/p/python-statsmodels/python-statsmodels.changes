@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:37:28 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.10.2:
+  * This is a bug release and adds compatibility with Python 3.8.
+
+-------------------------------------------------------------------
 Mon Jul 29 10:28:57 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Stop packaging unreproducible .pyc files
