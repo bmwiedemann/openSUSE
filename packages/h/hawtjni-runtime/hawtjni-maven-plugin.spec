@@ -16,17 +16,13 @@
 #
 
 
-%global base_name hawtjni
-# That is the maven-release-plugin generated commit, but it's not tagged for some reason
-# https://github.com/fusesource/hawtjni/issues/46
-%global commit    fa1fd5dfdd0a1a5a67b61fa7d7ee7126b300c8f0
 Name:           hawtjni-maven-plugin
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        Use HawtJNI from a maven plugin
 License:        Apache-2.0 AND EPL-1.0 AND BSD-3-Clause
 URL:            https://github.com/fusesource/hawtjni
-Source0:        https://github.com/fusesource/hawtjni/archive/%{commit}/hawtjni-%{commit}.tar.gz
+Source0:        https://github.com/fusesource/hawtjni/archive/hawtjni-project-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -34,6 +30,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-artifact-manager)
+BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
@@ -59,7 +56,7 @@ Summary:        Javadocs for %{name}
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n hawtjni-%{commit}
+%setup -q -n hawtjni-hawtjni-project-%{version}
 
 # We build only the maven plugin in this one
 %pom_disable_module hawtjni-example
@@ -67,6 +64,8 @@ This package contains the API documentation for %{name}.
 %pom_disable_module hawtjni-runtime
 
 %pom_remove_plugin -r :maven-eclipse-plugin
+
+%pom_add_dep org.apache.maven:maven-compat:\${mavenVersion}: hawtjni-maven-plugin
 
 %{mvn_package} :hawtjni-project __noinstall
 

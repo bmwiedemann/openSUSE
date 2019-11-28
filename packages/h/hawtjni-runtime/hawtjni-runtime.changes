@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 11:36:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upsteam version 1.17
+- Add dependency on mvn(commons-lang:commons-lang) that is missing
+
+-------------------------------------------------------------------
 Wed Oct  2 07:59:14 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Correct the URL that does not exist anymore

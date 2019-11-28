@@ -16,18 +16,15 @@
 #
 
 
-%global base_name hawtjni
-# That is the maven-release-plugin generated commit, but it's not tagged for some reason
-# https://github.com/fusesource/hawtjni/issues/46
-%global commit    fa1fd5dfdd0a1a5a67b61fa7d7ee7126b300c8f0
 Name:           hawtjni-runtime
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        HawtJNI Runtime
 License:        Apache-2.0 AND EPL-1.0 AND BSD-3-Clause
 URL:            https://github.com/fusesource/hawtjni
-Source0:        https://github.com/fusesource/hawtjni/archive/%{commit}/hawtjni-%{commit}.tar.gz
+Source0:        https://github.com/fusesource/hawtjni/archive/hawtjni-project-%{version}.tar.gz
 BuildRequires:  apache-commons-cli
+BuildRequires:  apache-commons-lang
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
@@ -49,6 +46,7 @@ This package contains the API documentation for hawtjni.
 Summary:        Code generator that produces the JNI code
 Requires:       %{name} = %{version}
 Requires:       apache-commons-cli
+Requires:       apache-commons-lang
 Requires:       javapackages-tools
 Requires:       objectweb-asm >= 5
 Requires:       xbean
@@ -61,12 +59,15 @@ that is part of the SWT Tools project which is used to generate all the
 JNI code which powers the eclipse platform.
 
 %prep
-%setup -q -n hawtjni-%{commit}
+%setup -q -n hawtjni-hawtjni-project-%{version}
 
 %pom_disable_module hawtjni-example
 %pom_disable_module hawtjni-maven-plugin
 %pom_remove_plugin -r :maven-shade-plugin
 %pom_remove_plugin -r :maven-eclipse-plugin
+
+# this dependency seems to be missing
+%pom_add_dep commons-lang:commons-lang hawtjni-generator
 
 for mod in runtime generator; do
   %pom_remove_parent hawtjni-${mod}
@@ -83,13 +84,13 @@ jar cf hawtjni-runtime.jar -C hawtjni-runtime/build/classes .
 mkdir -p  hawtjni-generator/build/classes
 javac -d hawtjni-generator/build/classes \
   -source 6 -target 6 \
-  -cp $(build-classpath commons-cli objectweb-asm/asm objectweb-asm/asm-commons xbean/xbean-finder xbean/xbean-asm-util):hawtjni-runtime.jar \
+  -cp $(build-classpath commons-cli commons-lang objectweb-asm/asm objectweb-asm/asm-commons xbean/xbean-finder xbean/xbean-asm-util):hawtjni-runtime.jar \
   $(find hawtjni-generator/src/main/java/ -name *.java | xargs)
 jar cf hawtjni-generator.jar -C hawtjni-generator/build/classes .
 jar uf hawtjni-generator.jar -C hawtjni-generator/src/main/resources .
 mkdir -p hawtjni-runtime/build/apidoc
 javadoc -d hawtjni-runtime/build/apidoc -source 6 \
-  -classpath $(build-classpath commons-cli objectweb-asm/asm objectweb-asm/asm-commons xbean/xbean-finder xbean/xbean-asm-util) \
+  -classpath $(build-classpath commons-cli commons-lang objectweb-asm/asm objectweb-asm/asm-commons xbean/xbean-finder xbean/xbean-asm-util) \
   $(find hawtjni-runtime/src/main/java/ -name *.java && \
     find hawtjni-generator/src/main/java/ -name *.java| xargs)
 
@@ -112,7 +113,7 @@ install -dm 755 %{buildroot}%{_javadocdir}/hawtjni
 cp -pr  hawtjni-runtime/build/apidoc/* %{buildroot}%{_javadocdir}/hawtjni/
 %fdupes -s %{buildroot}%{_javadocdir}/hawtjni/
 
-%{jpackage_script org.fusesource.hawtjni.generator.HawtJNI "" "" commons-cli:objectweb-asm/asm:objectweb-asm/asm-commons:xbean/xbean-finder:xbean/xbean-asm-util:hawtjni/hawtjni-runtime:hawtjni/hawtjni-generator hawtjni-generator true}
+%{jpackage_script org.fusesource.hawtjni.generator.HawtJNI "" "" commons-cli:commons-lang:objectweb-asm/asm:objectweb-asm/asm-commons:xbean/xbean-finder:xbean/xbean-asm-util:hawtjni/hawtjni-runtime:hawtjni/hawtjni-generator hawtjni-generator true}
 
 %files -f .mfiles
 %license license.txt
