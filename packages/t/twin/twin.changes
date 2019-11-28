@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Nov 22 07:24:14 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Apply Shared Library Policy
+- Remove macro for old openSUSE versions
+
+-------------------------------------------------------------------
+Thu Nov 14 18:35:25 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update from 0.6.2 to 0.8.0
+- Remove .la files
+- Remove libtt. It's not useful yet.
+  See: https://github.com/cosmos72/twin/issues/55
+- Cleanup spec
+
+-------------------------------------------------------------------
+Tue Oct 13 14:03:00 UTC 2015 - mvetter@suse.com
+
+- Cleanup spec
+
+-------------------------------------------------------------------
+Sun Sep  9 22:37:31 UTC 2012 - malcolmlewis@opensuse.org
+
+- Initial build. 
+
