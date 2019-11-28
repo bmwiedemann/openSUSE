@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-microos
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Patterns for openSUSE MicroOS
 License:        MIT
 Group:          Metapackages
-Url:            http://en.opensuse.org/Patterns
+URL:            http://en.opensuse.org/Patterns
 Source0:        %name-rpmlintrc
 ExclusiveArch:  x86_64 armv7l armv7hl aarch64 ppc64le s390x
 
@@ -82,6 +82,7 @@ Requires:       kernel-base
 Requires:       kmod
 Requires:       kubic-locale-archive
 Requires:       less
+Requires:       libnss_usrfiles2
 Requires:       login
 Requires:       logrotate
 Requires:       microos-tools
