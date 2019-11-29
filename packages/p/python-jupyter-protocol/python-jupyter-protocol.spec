@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/j/jupyter-protoco
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
-BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module pyzmq >= 13}
 BuildRequires:  %{python_module traitlets}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module mock}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-jupyter_core
+Requires:       python-jupyter-core
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-pyzmq >= 13
 Requires:       python-traitlets
