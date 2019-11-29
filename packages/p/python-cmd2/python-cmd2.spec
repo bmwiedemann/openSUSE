@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmd2
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define         skip_python2 1
 Name:           python-cmd2
-# Do not update beyond what is supported by cliff!
 Version:        0.9.20
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
 URL:            https://github.com/python-cmd2/cmd2
 Source:         https://files.pythonhosted.org/packages/source/c/cmd2/cmd2-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wcwidth}
-BuildRequires:  python-enum34
+BuildRequires:  %{pythons}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-subprocess32
-BuildRequires:  python3
-Requires:       python-pyparsing >= 2.0.1
-Requires:       python-pyperclip
-Requires:       python-six
-Requires:       python-wcwidth
+BuildRequires:  vim
+Requires:       python
+Requires:       python-attrs >= 16.3.0
+Requires:       python-colorama >= 0.3.7
+Requires:       python-pyperclip >= 1.6
+Requires:       python-wcwidth >= 0.1.7
 BuildArch:      noarch
+%if %{python3_version_nodots} < 35
+Requires:       python-contextlib2
+Requires:       python-typing
+%endif
 # SECTION Test requirements
 BuildRequires:  %{python_module attrs >= 16.3.0}
 BuildRequires:  %{python_module colorama >= 0.3.7}
@@ -48,12 +50,10 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth >= 0.1.7}
 # Required by tests.
-BuildRequires:  fdupes
 BuildRequires:  vim
 %if 0%{?suse_version} <= 1315
 BuildRequires:  %{python_module contextlib2}
-Requires:       python-enum34
-Requires:       python-subprocess32
+BuildRequires:  %{python_module typing}
 %endif
 # /SECTION
 %python_subpackages
@@ -79,11 +79,10 @@ Drop-in replacement adds several features for command-prompt tools:
 
 %prep
 %setup -q -n cmd2-%{version}
+# Fix non-executable-script
+sed -i -e '/^#!\//, 1d' cmd2/cmd2.py
 # Fix spurious-executable-perm
 chmod a-x README.md
-
-# Remove spurious shebang
-sed -i -e '/^#!\/usr\/bin\/env python/d' cmd2/cmd2.py
 
 %build
 %python_build
@@ -97,7 +96,7 @@ sed -i -e '/^#!\/usr\/bin\/env python/d' cmd2/cmd2.py
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc CHANGELOG.md CODEOWNERS README.md
 %{python3_sitelib}/*
 
 %changelog

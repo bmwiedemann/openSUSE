@@ -364,4 +364,12 @@
   with &gt;= 0.9.0 atm</comment>
     <requestid>748740</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>23a409b1e58cda86410125705ec2d903</srcmd5>
+    <version>0.9.20</version>
+    <time>1575039349</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix up dependencies and everything after last update to 0.9.20</comment>
+    <requestid>750700</requestid>
+  </revision>
 </revisionlist>
