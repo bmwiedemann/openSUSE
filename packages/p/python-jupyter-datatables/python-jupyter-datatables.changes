@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 12 17:49:40 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.8
+  * Update setup.py
+  * Add JS headers 
+  * Move dt related events into single function 
+- Update to 0.3.7
+  * New file toolbar.js
+  * New file config.js
+  * New file components.js
+  * Do not allow Histogram for string dtypes
+- Update to 0.3.6
+  * Also disable pointer events for disabled charts
+  * Tooltips do not interrupt the animation anymore
+  * Do not update active chart
+  * Mark active chart in the settings 
+- Update to 0.3.4
+  * Disable chart which are not allowed for the current dtype
+  * Export Scatter graph object
+- Update to 0.3.3
+  * Fix tooltips for non-integer indices
+- Update to 0.3.2
+  * Initial implementation of a chart Toolbar
+
+
+-------------------------------------------------------------------
 Sun Jul 28 20:28:42 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.3.1

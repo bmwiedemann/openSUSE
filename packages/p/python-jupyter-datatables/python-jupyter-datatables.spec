@@ -18,7 +18,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-datatables
-Version:        0.3.1
+Version:        0.3.8
 Release:        0
 License:        MIT
 Summary:        Jupyter Notebook extension to levarage pandas DataFrames
