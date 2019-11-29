@@ -17,7 +17,7 @@
 
 
 Name:           jupyter-rise
-Version:        5.5.1
+Version:        5.6.0
 Release:        0
 Summary:        Jupyter Slideshow Extension
 License:        BSD-3-Clause AND MIT
@@ -50,7 +50,6 @@ show/do inside the notebook itself (but in a "slidy" way).
 %install
 %python3_install
 rm %{buildroot}%{python3_sitelib}/rise/static/reveal.js/.travis.yml
-rm %{buildroot}%{python3_sitelib}/rise/static/reveal.js/.npmignore
 
 %{jupyter_move_config}
 %{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
