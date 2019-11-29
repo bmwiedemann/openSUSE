@@ -71,7 +71,7 @@ BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.2
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.10.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.53.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.11.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3

@@ -1240,4 +1240,13 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment></comment>
     <requestid>738472</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>d98e27d43efb8f07a42265c7f5aba6e9</srcmd5>
+    <version>3.34.1+0</version>
+    <time>1575039398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gnome-settings-daemon-notify-idle-resumed.patch with
+  proper xml tag names. (forwarded request 750120 from mgorse)</comment>
+    <requestid>750931</requestid>
+  </revision>
 </revisionlist>

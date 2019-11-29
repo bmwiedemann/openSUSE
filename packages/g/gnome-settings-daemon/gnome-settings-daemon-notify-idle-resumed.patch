@@ -1,23 +1,23 @@
-Index: gnome-settings-daemon-3.34.0/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
+Index: gnome-settings-daemon-3.34.1+3/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
 ===================================================================
---- gnome-settings-daemon-3.34.0.orig/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
-+++ gnome-settings-daemon-3.34.0/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
+--- gnome-settings-daemon-3.34.1+3.orig/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in	2019-11-21 15:37:24.539068623 +0100
++++ gnome-settings-daemon-3.34.1+3/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in	2019-11-21 15:37:54.099067245 +0100
 @@ -41,5 +41,10 @@
        <summary>Power button action</summary>
        <description>The action to take when the system power button is pressed. This action is hard-coded (and the setting ignored) on virtual machines (power off) and tablets (suspend).</description>
      </key>
 +    <key name="notify-idle-resumed" type="b">
 +      <default>true</default>
-+      <_summary>If an information message should be displayed when returning from idle sleep.</_summary>
-+      <_description>If an information message should be displayed when returning from idle sleep.</_description>
++      <summary>If an information message should be displayed when returning from idle sleep.</summary>
++      <description>If an information message should be displayed when returning from idle sleep.</description>
 +    </key>
    </schema>
  </schemalist>
-Index: gnome-settings-daemon-3.34.0/plugins/power/gsd-power-manager.c
+Index: gnome-settings-daemon-3.34.1+3/plugins/power/gsd-power-manager.c
 ===================================================================
---- gnome-settings-daemon-3.34.0.orig/plugins/power/gsd-power-manager.c
-+++ gnome-settings-daemon-3.34.0/plugins/power/gsd-power-manager.c
-@@ -157,6 +157,7 @@ struct _GsdPowerManager
+--- gnome-settings-daemon-3.34.1+3.orig/plugins/power/gsd-power-manager.c	2019-11-21 15:37:24.539068623 +0100
++++ gnome-settings-daemon-3.34.1+3/plugins/power/gsd-power-manager.c	2019-11-21 15:37:35.435068115 +0100
+@@ -157,6 +157,7 @@
          NotifyNotification      *notification_ups_discharging;
          NotifyNotification      *notification_low;
          NotifyNotification      *notification_sleep_warning;
@@ -25,7 +25,7 @@ Index: gnome-settings-daemon-3.34.0/plugins/power/gsd-power-manager.c
          GsdPowerActionType       sleep_action_type;
          gboolean                 battery_is_low; /* laptop battery low, or UPS discharging */
  
-@@ -191,6 +192,7 @@ struct _GsdPowerManager
+@@ -191,6 +192,7 @@
          gboolean                 inhibit_suspend_taken;
          guint                    inhibit_lid_switch_timer_id;
          gboolean                 is_virtual_machine;
@@ -33,7 +33,7 @@ Index: gnome-settings-daemon-3.34.0/plugins/power/gsd-power-manager.c
  
          /* Idles */
          GnomeIdleMonitor        *idle_monitor;
-@@ -1497,6 +1499,49 @@ is_session_active (GsdPowerManager *mana
+@@ -1497,6 +1499,49 @@
  }
  
  static void
@@ -83,7 +83,7 @@ Index: gnome-settings-daemon-3.34.0/plugins/power/gsd-power-manager.c
  idle_set_mode (GsdPowerManager *manager, GsdPowerIdleMode mode)
  {
          gboolean ret = FALSE;
-@@ -1573,6 +1618,7 @@ idle_set_mode (GsdPowerManager *manager,
+@@ -1573,6 +1618,7 @@
                          action_type = g_settings_get_enum (manager->settings,
                                                             "sleep-inactive-ac-type");
                  }
@@ -91,7 +91,7 @@ Index: gnome-settings-daemon-3.34.0/plugins/power/gsd-power-manager.c
                  do_power_action_type (manager, action_type);
  
          /* turn on screen and restore user-selected brightness level */
-@@ -2353,6 +2399,12 @@ handle_suspend_actions (GsdPowerManager
+@@ -2353,6 +2399,12 @@
  static void
  handle_resume_actions (GsdPowerManager *manager)
  {
