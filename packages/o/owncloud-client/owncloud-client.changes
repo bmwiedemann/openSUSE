@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Nov 28 12:01:41 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python3-nautilus instead of nautilus: the py2 variant of
+  the plugin has been dropped (EOL of py2 approaching) and the
+  owncloud plugin has been able to handle py3 already for a while.
+
+-------------------------------------------------------------------
+Sat Nov 16 08:46:39 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to Version 2.6.0 with the following major changes:
+  Major changes and additions:
+  * Rewrote discovery code for performance improvements and better maintainability.
+  * Tech Preview: Add native virtual files mode for Windows 10.
+    (https://github.com/owncloud/client/wiki/Virtual-Files-on-Windows-10)
+  * Tech Preview: Improvements and fixes for all virtual files mode
+    (https://github.com/owncloud/client/wiki/Virtual-Files)
+  * Add basic support for libcloudproviders for gtk/gnome integration (#7209)
+  * Remove support for Shibboleth auth, please use OAuth2 server app (#6451)
+  * Many bugfixes and other improvements, more to read at 
+    https://github.com/owncloud/client/releases/tag/v2.6.0
+
+-------------------------------------------------------------------
+Sat Nov  2 10:01:07 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to 2.6.0 RC4. 
+
+-------------------------------------------------------------------
+Tue Oct 22 16:13:51 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to 2.6.0 RC2. 
+
+-------------------------------------------------------------------
+Thu Sep  5 08:59:40 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to 2.6.0 RC1. 
+
+-------------------------------------------------------------------
 Mon May 20 12:36:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly require zlib to build owncloud-client.

@@ -178,4 +178,12 @@
     <comment>- Explicitly require zlib to build owncloud-client.</comment>
     <requestid>704236</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3d80312211974fa13f740bb6bbcbe087</srcmd5>
+    <version>2.6.0.13018</version>
+    <time>1575039573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751731</requestid>
+  </revision>
 </revisionlist>

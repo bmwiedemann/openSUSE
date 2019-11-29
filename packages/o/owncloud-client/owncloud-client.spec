@@ -1,7 +1,7 @@
 #
 # spec file for package owncloud-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           owncloud-client
 
-Version:        2.5.4
+Version:        2.6.0.13018 
 Release:        0
 
 Summary:        The ownCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Productivity/Networking/Other
-Url:            http://owncloud.com
+URL:            https://owncloud.org/download
 Source0:        owncloudclient-%{version}.tar.xz
 Source1:        101-sync-inotify.conf
 Source2:        README.source
@@ -157,7 +157,7 @@ Group:          Productivity/Networking/Other
 Requires:       nautilus
 Supplements:    packageand(%{name}:nautilus)
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       python-nautilus
+Requires:       python3-nautilus
 
 %description -n %{name}-nautilus
 This package provides overlay icons to visualize the synchronization state
@@ -282,7 +282,11 @@ done
 %{_datadir}/applications/owncloud.desktop
 %{_datadir}/icons/hicolor
 %{_datadir}/mime/packages/owncloud.xml
-%doc CONTRIBUTING.md COPYING ChangeLog README.md README.source COPYING.documentation
+%{_libdir}/ownCloud/plugins/owncloudsync_vfs_suffix.so
+%dir %{_libdir}/ownCloud/
+%dir %{_libdir}/ownCloud/plugins
+%doc CONTRIBUTING.md ChangeLog README.md README.source
+%license COPYING COPYING.documentation
 
 %config /etc/ownCloud
 # https://github.com/owncloud/client/issues/4107
