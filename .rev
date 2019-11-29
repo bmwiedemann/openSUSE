@@ -930,4 +930,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment></comment>
     <requestid>749377</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>a6ba6c02f3a46bc909ec1d03c009e28d</srcmd5>
+    <version>0.58.3</version>
+    <time>1575039437</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750469 from iznogood)</comment>
+    <requestid>750947</requestid>
+  </revision>
 </revisionlist>
