@@ -146,4 +146,15 @@
     <comment>- Skip TestSetupReadline.test_import because of gh#davidhalter/jedi#1429</comment>
     <requestid>742710</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>b476940770f66a2fc5a8c3a9e2182ce2</srcmd5>
+    <version>0.15.1</version>
+    <time>1575039337</time>
+    <user>dimstar_suse</user>
+    <comment>- So, this is completely boring, non-offensive changelog record,
+  which says, that I have also add previously missing skip over
+  test_compiled_signature test case, because of
+  gh#davidhalter/jedi#1429</comment>
+    <requestid>750559</requestid>
+  </revision>
 </revisionlist>

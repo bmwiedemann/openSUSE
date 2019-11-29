@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,8 @@ export LANG="en_US.UTF-8"
 # in OBS venv isn't working and builtin completion tests dont work with unbundled typeshed
 # test_static_analysis is flaky
 # test_os_path_join is time based
-# test_import gh#davidhalter/jedi#1429
-%pytest -k "not (test_venv_and_pths or test_completion or test_builtin_details or test_static_analysis or test_os_path_join or test_import)"
+# test_import and test_compiled_signature gh#davidhalter/jedi#1429
+%pytest -k "not (test_venv_and_pths or test_completion or test_builtin_details or test_static_analysis or test_os_path_join or test_import or test_compiled_signature)"
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGELOG.rst README.rst
