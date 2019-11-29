@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 24 19:37:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Load Album Covers on demand.
+  + Restore support for "Album Artist" tag.
+  + Disable online search by default.
+  + CoreModel misc cleanups and fixes.
+  + MPRIS misc cleanups and fixes.
+  + Bugs fixed: glgo#GNOME/gnome-music#328,
+    glgo#GNOME/gnome-music#332, glgo#GNOME/gnome-music#335,
+    glgo#GNOME/gnome-music#337, glgo#GNOME/gnome-music#312,
+    glgo#GNOME/gnome-music#338, glgo#GNOME/gnome-music#331,
+    glgo#GNOME/gnome-music#317.
+
+-------------------------------------------------------------------
 Fri Oct 25 16:57:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

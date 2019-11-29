@@ -395,4 +395,12 @@
   + Updated translations. (forwarded request 742981 from iznogood)</comment>
     <requestid>743761</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d779f69e373fa9fc2569815ad979ec80</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039451</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750635 from iznogood)</comment>
+    <requestid>750952</requestid>
+  </revision>
 </revisionlist>
