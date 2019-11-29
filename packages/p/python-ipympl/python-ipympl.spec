@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %define labver  0.4.2
 %define mainver 0.3.3
 %bcond_with     test
@@ -31,12 +32,12 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipympl/ipympl-%
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  npm
 BuildRequires:  python-backports.functools_lru_cache
-BuildRequires:  python-notebook
 BuildRequires:  python-rpm-macros
 BuildRequires:  jupyter-jupyterlab-filesystem
 Requires:       python-ipython
