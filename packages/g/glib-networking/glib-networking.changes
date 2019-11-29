@@ -55,7 +55,7 @@ Fri May  3 17:15:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.60.2:
   + OpenSSL backend now defaults to system trust store.
-  + Fix client auth failure error with GnuTLS 3.6.7.
+  + Fix client auth failure error with GnuTLS 3.6.7 (bsc#1134795).
 - Drop 0001-gnutls-Handle-new-GNUTLS_E_CERTIFICATE_REQUIRED.patch:
   fixed upstream.
 

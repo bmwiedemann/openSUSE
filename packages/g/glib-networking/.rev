@@ -518,4 +518,12 @@ a newer version not fitting</comment>
     <comment>Scripted push from {project}</comment>
     <requestid>736520</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>a1eed6c836cc5e457844e9d57d597ebf</srcmd5>
+    <version>2.62.1</version>
+    <time>1575039568</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 751279 from dimstar)</comment>
+    <requestid>751363</requestid>
+  </revision>
 </revisionlist>
