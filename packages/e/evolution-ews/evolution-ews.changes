@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 22 11:11:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Some meetings shown as plain events.
+  + Disconnect signal handlers on connection object in dispose of
+    book/calendar backend.
+  + Bugs fixed: glgo#GNOME/evolution-ews#64,
+    glgo#GNOME/evolution-ews#70.
+
+-------------------------------------------------------------------
 Mon Oct  7 08:22:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:
