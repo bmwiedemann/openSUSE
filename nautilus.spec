@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -70,6 +70,7 @@ Nautilus is the file manager for the GNOME desktop.
 %package -n libnautilus-extension1
 Summary:        File Manager for the GNOME Desktop -- Extension Library
 Group:          System/Libraries
+Conflicts:      nautilus-totem < 3.31.91
 
 %description  -n libnautilus-extension1
 Nautilus is the file manager for the GNOME desktop.
