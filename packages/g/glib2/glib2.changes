@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:25:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.3:
+  + Use `poll()` in `g_spawn_sync()` rather than `select()`, which
+    is subject to FD limits.
+  + Fix undefined behaviour with `g_utf8_find_prev_char()`.
+  + Bugs fixed: glgo#GNOME/GLib#954, glgo#GNOME/GLib#1318,
+    glgo#GNOME/GLib#1897, glgo#GNOME/GLib#1903,
+    glgo#GNOME/GLib#1916, glgo#GNOME/GLib#1917,
+    glgo#GNOME/GLib!1174, glgo#GNOME/GLib!1184,
+    glgo#GNOME/GLib!1194, glgo#GNOME/GLib!1203,
+    glgo#GNOME/GLib!1207, glgo#GNOME/GLib!1215,
+    glgo#GNOME/GLib!1219, glgo#GNOME/GLib!1222,
+    glgo#GNOME/GLib!1228.
+
+-------------------------------------------------------------------
 Tue Nov  5 20:12:37 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Re-enable systemtap, and require systemtap-headers and
