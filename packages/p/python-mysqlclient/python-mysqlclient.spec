@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-mysqlclient
-Version:        1.4.4
+Version:        1.4.6
 Release:        0
 Summary:        Python interface to MySQL
 License:        GPL-2.0-or-later
