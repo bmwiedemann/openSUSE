@@ -16,6 +16,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-jupyter-server
 Version:        0.1.1
 Release:        0
@@ -33,8 +34,8 @@ BuildRequires:  %{python_module Send2Trash}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython_genutils}
-BuildRequires:  %{python_module jupyter_client >= 5.2.0}
-BuildRequires:  %{python_module jupyter_core >= 4.4.0}
+BuildRequires:  %{python_module jupyter-client >= 5.2.0}
+BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module nbval}
@@ -56,8 +57,8 @@ Requires:       python-Jinja2
 Requires:       python-Send2Trash
 Requires:       python-ipykernel
 Requires:       python-ipython_genutils
-Requires:       python-jupyter_client >= 5.2.0
-Requires:       python-jupyter_core >= 4.4.0
+Requires:       python-jupyter-client >= 5.2.0
+Requires:       python-jupyter-core >= 4.4.0
 Requires:       python-nbconvert
 Requires:       python-nbformat
 Requires:       python-prometheus_client
@@ -84,8 +85,8 @@ This package provides the python interface.
 %package     -n jupyter-jupyter-server
 Summary:        The Jupyter Server
 Requires:       jupyter-ipykernel
-Requires:       jupyter-jupyter_client >= 5.2.0
-Requires:       jupyter-jupyter_core >= 4.4.0
+Requires:       jupyter-jupyter-client >= 5.2.0
+Requires:       jupyter-jupyter-core >= 4.4.0
 Requires:       jupyter-nbconvert
 Requires:       jupyter-nbformat
 Requires:       python3-jupyter-server = %{version}
