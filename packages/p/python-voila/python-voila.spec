@@ -16,8 +16,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-voila
-Version:        0.1.9
+Version:        0.1.20
 Release:        0
 License:        BSD-3-Clause
 Summary:        Plugin for serving read-only live Jupyter notebooks

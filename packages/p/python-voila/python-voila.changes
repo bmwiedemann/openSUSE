@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Mon Nov 18 16:02:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.20
+  * nbconvert requirement
+- Update to 0.1.19
+  * Add cell error instruction configurable
+  * feat: execute cells in a thread, this will unblock the server's event loop
+
+-------------------------------------------------------------------
+Wed Nov 13 16:40:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+
+-------------------------------------------------------------------
+Tue Nov 12 15:29:23 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.18
+  * Fixup woff public path
+  * move to mathjax3
+  * Resolve unpacking issue in case of execution error
+  * Remove cell outputs
+- Update to 0.1.17
+  * Compatibility with nbconvert 5.5
+- Update to 0.1.16
+  * Fixup voila configuration
+  * Added GridspecLayout example
+- Update to 0.1.15
+  * Include both jupyter_server and notebook server
+  * Fix filtering of empty code cells
+  * spinner macro
+  * Document when dict conversion is needed
+  * Test configuring template-related resource in JSON file
+  * Add test for resources used in template system
+  * Read config file as plain JSON
+  * Remove check to allow for all base template configs
+  * Get parent directory for sure
+  * Include template-related config from JSON file
+  * Improve code formally (minor)
+  * Fix Binder link
+  * Update contributing guidelines
+  * Use Jupyter visual identity
+  * Allow comm_close messages by default
+  * Allow comm open messages
+  * chore: improve release instructions and include ipywidgets as test dep ( 
+- Update to 0.1.14
+  * Strip code cell warnings
+  * Filter empty cells
+  * fix: the voila side output widget did not handle error msges 
+  * Added a link to the documentation in the README.md
+  * add auto port detection as in jupyter notebook 
+  * Add .vscode to gitignore
+  * add note about installing and verifying the server extension
+  * Add release instructions for the JLab extension
+  * Expose base_url to browser-open template
+  * Clean and improve templates
+  * Update package_lock
+  * Fix CSS name
+  * Check for 'outputs' key in the cell
+  * Update nbconvert version in setup.py
+  * Update nbconvert in travis
+  * Strip errors if not in debug mode
+  * Fix spinner CSS
+  * DOC: README.md: typos
+- Update to 0.1.13
+  * Handle cell error
+  * Inline svg logo
+  * Speed up progressive rendering
+  * Use Voila logo for the spinner
+  * fix: allow voila to run a server extension for notebook <5
+  * Mention `jupyter_config.json` in Binder docs
+- Update to 0.1.12
+  * Fix exporter for non progressive rendering
+  * New voila logo
+  * Update copyright statements before moving to voila-dashboards
+- Update to 0.1.11
+  * Optimize svg icons, fix JLab 1.1 issue
+  * Add docs for deploying to Binder
+  * extra docs for running scripts 
+  * Update docs/source/customize.rst
+  * docs: descript script support and static files
+  * docs: improved release instructions
+- Update to 0.1.10
+  * fix: filter_empty_code_cells extra argument
+  * remove console.log
+  * yield after writing out and flushing chunk
+  * html fixes
+  * subdivide body block to avoid having to call body's super in other te…
+  * add more docs
+  * feat: progressive cell rendering
+  * py27 fix
+  * style: support theming for spinner
+  * feat(template): allow kernel starting and notebook execution control …
+  * test: make sure the test dont accidently pass
+  * Update tests/app/tree_test.py
+  * feat: add support for script files
+  * fix: support nested output widgets in voila executor
+  * Align Render on Save vertically
+  * Add Render on Save checkbox to the toolbar
+  * Correct render on save behavior
+  * Rename plugin to @jupyter-voila/jupyterlab-preview
+  * Add settings for the voila preview extension
+  * Auto-refresh Voila preview on notebook save
+  * feat: serve static files similar to the notebook, but limited by whit…
+  * Add section for sharing with ngrok to the docs
+  * Add the Voila Gallery to README.md
+  * Fix nbextension commands for local install
+  * Add RELEASE.md 
+
+-------------------------------------------------------------------
 Sun Aug 11 04:44:15 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.1.9
