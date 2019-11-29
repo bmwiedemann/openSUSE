@@ -473,4 +473,13 @@
     <comment></comment>
     <requestid>701855</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>91052c3255fb6e51a22636fdb085f350</srcmd5>
+    <version>1.12</version>
+    <time>1575039466</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop no longer required PreReq's, obsolete with switch to file
+  trigger based pre/post scripts. (forwarded request 750889 from StefanBruens)</comment>
+    <requestid>750958</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package shared-mime-info
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,7 @@ BuildRequires:  libxml2-tools
 BuildRequires:  translation-update-upstream
 # libgio-2_0-0 Requires: shared-mime-info, but this can't exist yet. We explicitly ignore this dependency here.
 #!BuildIgnore:  shared-mime-info
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         libglib-2_0-0
 # needed by update-mime-database
-PreReq:         libxml2-2
 Recommends:     %{name}-lang
 Provides:       %{name}-devel = %{version}-%{release}
 
