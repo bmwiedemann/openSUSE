@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
 Requires:       python-ipykernel
-Requires:       python-jupyter_client
+Requires:       python-jupyter-client
 Requires:       python-nbconvert
 Requires:       python-nbformat
 Requires:       python-pyflakes
@@ -43,7 +43,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module jupyter_client}
+BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pyflakes}
