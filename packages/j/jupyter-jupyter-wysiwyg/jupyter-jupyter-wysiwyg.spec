@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           jupyter-jupyter-wysiwyg
-Version:        19.7
+Version:        19.10
 Release:        0
 Summary:        WYSIWYG editing functionality for markdown/HTML cells in Jupyter
 License:        BSD-3-Clause
