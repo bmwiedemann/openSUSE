@@ -350,4 +350,12 @@
 - Drop intltool dependency.</comment>
     <requestid>738649</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0735b56bdb00f90e3c93339def02c96a</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039423</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750449 from iznogood)</comment>
+    <requestid>750940</requestid>
+  </revision>
 </revisionlist>
