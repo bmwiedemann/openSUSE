@@ -1062,4 +1062,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736612</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>b04e73e0c7d1843ca393437569c1d8e5</srcmd5>
+    <version>3.34.1</version>
+    <time>1575039586</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 751282 from dimstar)</comment>
+    <requestid>751366</requestid>
+  </revision>
 </revisionlist>
