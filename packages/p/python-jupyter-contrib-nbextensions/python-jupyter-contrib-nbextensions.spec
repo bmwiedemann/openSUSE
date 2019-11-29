@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %bcond_without  test
 Name:           python-jupyter-contrib-nbextensions
 Version:        0.5.1
@@ -33,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jupyter_nbextensions_configurator >= 0.2.8
 Requires:       python-jupyter_contrib_core >= 0.3.3
-Requires:       python-jupyter_core
+Requires:       python-jupyter-core
 Requires:       python-jupyter_highlight_selected_word >= 0.2
 Requires:       python-jupyter_latex_envs >= 1.3.8
 Requires:       python-nbconvert >= 4.2
@@ -51,7 +52,7 @@ Requires:       jupyter-jupyter-contrib-nbextensions = %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module jupyter_contrib_core >= 0.3.3}
-BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module jupyter_highlight_selected_word >= 0.2}
 BuildRequires:  %{python_module jupyter_latex_envs >= 1.3.8}
 BuildRequires:  %{python_module jupyter_nbextensions_configurator >= 0.2.8}
@@ -84,7 +85,7 @@ Requires:       jupyter-jupyter_contrib_core >= 0.3.3
 Requires:       jupyter-jupyter_highlight_selected_word >= 0.2
 Requires:       jupyter-jupyter_latex_envs >= 1.3.8
 Requires:       jupyter-jupyter_nbextensions_configurator >= 0.2.8
-Requires:       jupyter-jupyter_core
+Requires:       jupyter-jupyter-core
 Requires:       jupyter-notebook >= 4.0
 Requires:       python3-jupyter-contrib-nbextensions = %{version}
 
