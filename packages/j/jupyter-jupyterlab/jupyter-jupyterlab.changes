@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:13:06 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.2.2
+  + User-facing changes
+    * Select cells from the current cell to the top of the notebook with ``Shift Home``, to the bottom of the notebook with ``Shift End``
+    * Add a log console extension to display unhandled messages and other activity
+    * Allow the npm ``max-old-space`` option to be specified outside of JupyterLab
+    * Only display node structure in a JSON tree view for arrays and empty objects
+    * Make much smaller distribution packages by not building JavaScript source maps for releases.
+    * Add support for pasting cell attachments and dragging attachments from the file browser
+    * Add a new ``registry`` configuration parameter to override the default yarn repository when building
+  + For developers
+    * Update the Markdown renderer (``marked``) to 0.7.0
+    * Remove datagrid as a singleton, allowing extensions to use newer versions
+    * Add metadata to the kernelspec information
+    * Allow different mimetypes for the clipboard data
+    * Add inline svg icon support to toolbar buttons
+    * Add PageConfig functions to query if a plugin is deferred or disabled
+    * Allow for renderers for nbformat.ierror to be created
+    * Refactor ``fileeditor-extension`` for modularization
+    * Add execution timing to cells
+  + Bugfixes
+    * Fix the ``file-browser-path`` query parameter
+    * Skip custom click behavior on links when the download attribute is set
+    * Fix opening multiple browser tabs in Safari
+    * Fix context menus on SVG icons
+    * Fix overwriting of target attribute of anchors rendered by ``IPython.display``
+    * Fix multi-cursor backspacing
+    * Fix mult-cursor cell splitting
+
+
+-------------------------------------------------------------------
 Mon Aug 26 16:57:00 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Use better way to handle tornado version compatibility.

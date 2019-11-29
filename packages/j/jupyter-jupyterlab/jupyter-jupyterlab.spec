@@ -17,7 +17,7 @@
 
 
 Name:           jupyter-jupyterlab
-Version:        1.0.9
+Version:        1.2.2
 Release:        0
 Summary:        The JupyterLab notebook server extension
 License:        BSD-3-Clause
@@ -34,9 +34,8 @@ BuildRequires:  npm >= 5
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.5
 BuildRequires:  python3-pip
-BuildRequires:  python3-tornado
-BuildConflicts: python3-tornado >= 6
-Requires:       jupyter-jupyter_core
+BuildRequires:  python3-tornado5
+Requires:       jupyter-jupyter-core
 Requires:       jupyter-jupyterlab-filesystem
 Requires:       jupyter-jupyterlab-server >= 1.0.0
 Requires:       jupyter-notebook >= 4.3.1
@@ -44,8 +43,7 @@ Requires:       nodejs
 Requires:       npm >= 5
 Requires:       python3-base >= 3.5
 Requires:       python3-Jinja2 >= 2.10
-Requires:       python3-tornado
-Conflicts:      python3-tornado >= 6
+Requires:       python3-tornado5
 Provides:       python3-jupyter_jupyterlab = %{version}
 Obsoletes:      python3-jupyter_jupyterlab < %{version}
 Provides:       python3-jupyterlab = %{version}
@@ -91,7 +89,7 @@ chmod a+x %{buildroot}%{python3_sitelib}/jupyterlab/staging/yarn.js
 export PYTHONDONTWRITEBYTECODE=1
 # Disable build checks that pull in remote resources with npm
 pytest-%{python3_bin_suffix} %{buildroot}%{python3_sitelib}/jupyterlab/ -k \
-    'not (test_build or test_clear or test_build_check or test_build_custom or test_uninstall_core_extension)'
+    'not (test_build or test_clear or test_build_check or test_build_custom or test_uninstall_core_extension or test_install_and_uninstall_pinned or test_install_and_uninstall_pinned_folder)'
 
 %files
 %license %{python3_sitelib}/jupyterlab-%{version}.dist-info/LICENSE
