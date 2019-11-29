@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:22:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.4:
+  + Panic when reading an invalid stylesheet URL in an XML
+    processing instruction.
+  + Consider specificity when applying CSS selector matches.
+  + Provide an usage example in the librsvg crate docs.
+- Drop patches fixed upstream:
+  + 0001-croco.rs-Add-struct-definition-for-CRSimpleSel.patch
+  + 0002-Compute-the-specificity-of-CSS-selectors.patch
+  + 0003-525-Consider-specificity-when-applying-CSS-selector-.patch
+
+-------------------------------------------------------------------
 Wed Nov 13 08:09:23 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
 
 - Add explicit conflicts between rsvg-convert and rsvg-view <=2.45.7.

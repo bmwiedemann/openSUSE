@@ -772,4 +772,12 @@
     <comment></comment>
     <requestid>749280</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>5143096565e052096481cff1c0fc8b91</srcmd5>
+    <version>2.46.4</version>
+    <time>1575039455</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750706 from iznogood)</comment>
+    <requestid>750954</requestid>
+  </revision>
 </revisionlist>
