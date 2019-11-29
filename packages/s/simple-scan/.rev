@@ -538,4 +538,12 @@
     <comment>New stable rel (forwarded request 735543 from iznogood)</comment>
     <requestid>735603</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>2e3631f27b6424b2462983c59c21d702</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039477</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750268 from iznogood)</comment>
+    <requestid>750962</requestid>
+  </revision>
 </revisionlist>
