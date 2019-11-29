@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 13 16:40:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+
+-------------------------------------------------------------------
+Tue Nov 12 16:58:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.2.4
+  + Improvements
+    * The documentation includes a mention on how to set metadata filters at the command line
+    * Jupytext will not catch any error when the flag ``--warn-only`` is not set
+  + BugFixes
+    * Now the flag ``--warn-only`` catches every possible error
+    * ``.md`` and ``.markdown`` files are treated identically
+    * Fixed ``--set-kernel`` when using pipes
+    * Fixed utf-8 encoding on stdout on Python 2
+- Update to 1.2.3
+  + BugFixes
+    * Dependency on ``setuptools`` in ``pandoc.py`` made optional to fix the build of the conda package
+- Update to 1.2.2
+  + Improvements
+    * Documentation includes a section on how to use Jupytext as a Python library
+    * Mention of the server extension in the documentation
+    * Text notebooks can be tested with `jupytext --execute notebook.md`
+    * The default value of `as_version` in `jupytext.read` is `nbformat.NO_CONVERT`, as for `nbformat.read`
+    * Jupytext tests are now included in sdist
+  + BugFixes
+    * Fixed the download notebook error when `c.notebook_extensions` has a custom value
+    * Fixed the usability of the `fmt` argument in `jupytext.read`
+    * String delimiters in commented text are now ignored
+
+-------------------------------------------------------------------
 Sun Aug 11 04:30:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.2.1
