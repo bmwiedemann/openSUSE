@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Wed Nov 27 13:48:56 UTC 2019 - dimstar@opensuse.org
+
+- Update to version 1.44.7+11:
+  * Add a test for ellipsis shaping
+  * Use shape flags for ellipsis
+  * test-shape: Cosmetics
+
+-------------------------------------------------------------------
+Sat Nov 02 17:41:58 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.44.7+8:
+  + Undo fontset deprecations.
+  + Adjust expected test outputs.
+  + Fix ItemProperties handling.
+  + Don't treat rise as a no-shape attribute.
+  + Drop an unused ItemProperties use.
+  + Go back to ignoring underlines for itemization.
+  + fc: remove another assertion that might trigger.
+- Switch to using pango 1.44 stable git branch.
+
+-------------------------------------------------------------------
+Fri Oct 25 08:29:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.7:
+  + Fix tests without libthai.
+  + Small speedup to Emoji iteration.
+  + Bring back PangoFontsetSimple (pygtk bind it).
+
+-------------------------------------------------------------------
+Fri Oct 11 21:38:39 UTC 2019 - bjorn.lie@gmail.com
+
+- Switch to git-checkout via source service, explicit tag. Upstream
+  tarball is borked.
+
+-------------------------------------------------------------------
+Sat Sep 14 13:46:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Modernize spec, prepare for possible spliting of package.
+
+-------------------------------------------------------------------
+Tue Sep  3 15:23:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.6:
+  + docs: Fix symbol indices.
+  + Fix Thai line breaking.
+  + Re-add symbols needed by some bindings.
+  + Don't insert hyphens for some languages.
+  + Fix a crash with hyphenation.
+
+-------------------------------------------------------------------
+Wed Aug 14 17:28:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.5:
+  + Revert a broken change (causing crashes on OS X).
+
+-------------------------------------------------------------------
+Tue Aug 13 21:51:26 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.4:
+  + Add an insert-hyphens attribute.
+  + Reinstate the return type of pango_fc_font_lock_face.
+  + Fix a problem with ellipses getting the wrong font.
+  + fc: Improve filtering by font format.
+  + Re-add PangoFcFont to public headers.
+  + Install PangoFc and PangoOT introspection files.
+  + Fix ink rectangles to have positive height.
+  + Fix mark positioning.
+  + Switch to using harfbuzz for metrics.
+
+-------------------------------------------------------------------
+Sun Aug  4 06:31:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.3:
+  + Install pango-ot headers.
+  + Make subpixel positioning optional.
+  + fc: Ignore fonts with unsupported formats.
+
+-------------------------------------------------------------------
+Sat Aug  3 10:25:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.2:
+  + Disable ligatures when letterspacing.
+  + Set design coords on hb_font_t.
+  + Expose more font options in pango-view.
+  + OS X: Make 'system-ui' font work.
+  + Keep deprecated pango-fc apis in headers.
+  + Make hex boxes work, always.
+  + introspection:
+    - Various build fixes.
+    - Add PangoPT, PangoFT2 namespaces.
+  + layout: Make the new line-spacing opt-in.
+
+-------------------------------------------------------------------
+Mon Jul 29 08:35:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.1:
+  + Fix a crash with allow_break attributes.
+  + Fix Emoji spacing.
+  + Fix up includes and pkg-config requires.
+  + Correct some cases for hyphen insertion.
+
+-------------------------------------------------------------------
+Sat Jul 27 17:07:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.0:
+  + Use harfbuzz for shaping on all platforms.
+  + Add a getter for hb_font_t.
+  + Make PangoCoverage a GObject.
+  + Add a pango_tailor_break api.
+  + font metrics: Add line height.
+  + layout:
+    - Support line spacing.
+    - Draw hyphens for line breaks.
+  + Add an attribute to suppress line breaking.
+  + cairo: Don't render hex boxes for space.
+  + Add an attribute to show invisible characters.
+  + Stop quantizing glyph positions.
+  + Add tests for itemization and line breaking.
+  + Remove language and shape engine remnants.
+  + Rename meson options: gtk_doc, introspection.
+  + Require GLib 2.59.2.
+  + Require Harfbuzz 2.0.
+
+-------------------------------------------------------------------
 Wed May  8 09:28:33 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

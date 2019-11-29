@@ -1,7 +1,7 @@
 #
 # spec file for package pango
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           pango
-Version:        1.43.0
+Version:        1.44.7+11
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.pango.org/
-Source0:        https://download.gnome.org/sources/pango/1.43/%{name}-%{version}.tar.xz
+URL:            https://pango.gnome.org/
+Source0:        %{name}-%{version}.tar.xz
 Source2:        macros.pango
 Source99:       baselibs.conf
+
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  help2man
@@ -35,10 +36,10 @@ BuildRequires:  pkgconfig(cairo) >= 1.12.10
 BuildRequires:  pkgconfig(fontconfig) >= 2.11.91
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.7
-BuildRequires:  pkgconfig(glib-2.0) >= 2.33.12
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.33.12
+BuildRequires:  pkgconfig(glib-2.0) >= 2.59.2
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.59.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(harfbuzz) >= 1.4.2
+BuildRequires:  pkgconfig(harfbuzz) >= 2.0
 BuildRequires:  pkgconfig(libthai) >= 0.1.9
 BuildRequires:  pkgconfig(xft) >= 2.0.0
 BuildRequires:  pkgconfig(xrender)
@@ -117,23 +118,22 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson \
-	-Denable_docs=true \
-	-Dgir=true \
+	-Dgtk_doc=true \
+	-Dintrospection=true \
+	-Dinstall-tests=false \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+
 # Install rpm macros
 mkdir -p %{buildroot}%_rpmmacrodir
 cp %{SOURCE2} %{buildroot}%_rpmmacrodir
-# Remove tests, we have no need for them - FIXME if any one can figure out how to disable build of these with meson == awesome
-rm -rf %{buildroot}%{_libexecdir}/installed-tests
-rm -rf %{buildroot}%{_datadir}/installed-tests
 
 %post -n libpango-1_0-0 -p /sbin/ldconfig
 %postun -n libpango-1_0-0 -p /sbin/ldconfig
@@ -141,13 +141,18 @@ rm -rf %{buildroot}%{_datadir}/installed-tests
 %files -n libpango-1_0-0
 %license COPYING
 %doc NEWS README.md
-%{_libdir}/lib*.so.*
+%{_libdir}/libpango-1.0.so.*
+%{_libdir}/libpangocairo-1.0.so.*
+%{_libdir}/libpangoft2-1.0.so.*
+%{_libdir}/libpangoxft-1.0.so.*
 
 %files -n typelib-1_0-Pango-1_0
 %{_libdir}/girepository-1.0/Pango-1.0.typelib
 %{_libdir}/girepository-1.0/PangoCairo-1.0.typelib
 %{_libdir}/girepository-1.0/PangoFT2-1.0.typelib
 %{_libdir}/girepository-1.0/PangoXft-1.0.typelib
+%{_libdir}/girepository-1.0/PangoFc-1.0.typelib
+%{_libdir}/girepository-1.0/PangoOT-1.0.typelib
 
 %files tools
 %{_bindir}/pango-list
@@ -157,10 +162,21 @@ rm -rf %{buildroot}%{_datadir}/installed-tests
 %files devel
 %doc CODING_STYLE.md THANKS
 %doc %{_datadir}/gtk-doc/html/pango/
-%{_libdir}/lib*.so
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/pango-1.0/
-%{_datadir}/gir-1.0/*.gir
 %_rpmmacrodir/macros.pango
+%{_includedir}/pango-1.0/
+%{_libdir}/libpango-1.0.so
+%{_libdir}/libpangocairo-1.0.so
+%{_libdir}/libpangoft2-1.0.so
+%{_libdir}/libpangoxft-1.0.so  
+%{_libdir}/pkgconfig/pango.pc
+%{_libdir}/pkgconfig/pangocairo.pc
+%{_libdir}/pkgconfig/pangoft2.pc
+%{_libdir}/pkgconfig/pangoxft.pc
+%{_datadir}/gir-1.0/Pango-1.0.gir
+%{_datadir}/gir-1.0/PangoCairo-1.0.gir
+%{_datadir}/gir-1.0/PangoFT2-1.0.gir
+%{_datadir}/gir-1.0/PangoFc-1.0.gir
+%{_datadir}/gir-1.0/PangoOT-1.0.gir
+%{_datadir}/gir-1.0/PangoXft-1.0.gir
 
 %changelog
