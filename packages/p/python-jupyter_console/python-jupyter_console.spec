@@ -32,14 +32,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module jupyter_client}
+BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pyzmq}
 # /SECTION
-Requires:       python-jupyter_client
+Requires:       python-jupyter-client
 Requires:       python-ipykernel
 Requires:       python-ipython
 Requires:       python-prompt_toolkit >= 2
