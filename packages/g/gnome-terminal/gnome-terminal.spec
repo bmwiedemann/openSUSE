@@ -48,12 +48,6 @@ BuildRequires:  pkgconfig(vte-2.91) >= 0.58.0
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  filesystem
 Recommends:     %{name}-lang
-%if 0%{?sle_version}
-BuildRequires:  pkgconfig(gconf-2.0) >= 2.31.3
-%endif
-%if 0%{?sle_version}
-Requires(pre):  gconf2
-%endif
 
 %description
 This package provides the GNOME terminal emulator application.
@@ -89,9 +83,6 @@ translation-update-upstream
 %build
 %configure \
 	--disable-static \
-%if !0%{?sle_version}
-	--disable-migration \
-%endif
 	--with-gtk=3.0 \
 	--with-nautilus-extension \
 	%{nil}
@@ -113,9 +104,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/org.gnome.Terminal.appdata.xml
 %{_datadir}/applications/org.gnome.Terminal.desktop
 %{_libexecdir}/gnome-terminal-server
-%if 0%{?sle_version}
-%{_libexecdir}/gnome-terminal-migration
-%endif
 %{_datadir}/dbus-1/services/org.gnome.Terminal.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Terminal.gschema.xml
 %{_userunitdir}/gnome-terminal-server.service
