@@ -1311,4 +1311,25 @@ Still we will be working in upstream with more easily &quot;merge-able&quot; imp
     <comment>- Don't recommend -lang subpackage (forwarded request 744802 from namtrac)</comment>
     <requestid>746218</requestid>
   </revision>
+  <revision rev="151" vrev="3">
+    <srcmd5>03f044673c5545b41a17926a7d58b084</srcmd5>
+    <version>3.24.12+32</version>
+    <time>1575039515</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes/Provides to baselibs.conf to ensure
+  gtk3-immodules-tigrigna-32bit can be upgraded from old version.
+
+  + CSS: Use multiple font-family values (bsc#1134059,
+    glgo#GNOME/gtk#1854).
+      . Fix problems gdk_x11_get_parent_relative (glgo#GNOME/gtk#1280).
+    glgo#GNOME/GTK#450, glgo#GNOME/gtk#550, glgo#GNOME/GTK#792, 
+    glgo#GNOME/GTK#898, glgo#GNOME/GTK#997, glgo#GNOME/GTK#1053, 
+    glgo#GNOME/GTK#1059, glgo#GNOME/GTK#1065, glgo#GNOME/GTK#1069, 
+    glgo#GNOME/GTK#1088, glgo#GNOME/GTK#1115, glgo#GNOME/GTK#1134, 
+    glgo#GNOME/GTK#1160, glgo#GNOME/GTK#1165, glgo#GNOME/GTK#1166, 
+    bgo#407242, bgo#686109, bgo#765327, bgo#772817, bgo#773299, 
+    bgo#775279, bgo#786524, bgo#787867, bgo#789215, bgo#791542, 
+    bgo#791802, boo#1136605, boo#1134062. (forwarded request 751052 from mgorse)</comment>
+    <requestid>751357</requestid>
+  </revision>
 </revisionlist>

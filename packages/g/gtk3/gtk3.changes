@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 11:00:51 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Add Obsoletes/Provides to baselibs.conf to ensure
+  gtk3-immodules-tigrigna-32bit can be upgraded from old version.
+
+-------------------------------------------------------------------
 Fri Nov  1 19:36:09 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Don't recommend -lang subpackage 
@@ -80,7 +86,8 @@ Tue Jun 18 17:28:26 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
     - Fix handling of cursor hotspots that was reading
       uninitialized memory.
     - Update tablet cursors when scale changes.
-  + CSS: Use multiple font-family values.
+  + CSS: Use multiple font-family values (bsc#1134059,
+    glgo#GNOME/gtk#1854).
   + Emoji: Populate the Emoji chooser incrementally.
   + Printing: Require CUPS 1.7.
   + Scrolling: Add a gtk-overlay-scrolling setting that can be used
@@ -192,7 +199,7 @@ Mon Jan 14 18:29:04 UTC 2019 - bjorn.lie@gmail.com
       . Fix hi-dpi cursor scaling.
     - placessidebar: Insert drops in the right place.
     - x11:
-      . Fix problems gdk_x11_get_parent_relative.
+      . Fix problems gdk_x11_get_parent_relative (glgo#GNOME/gtk#1280).
       . Fix Wacom tool types.
     - icons: Recolor polygons as well in symbolic icons.
     - switch: Use Unicode symbols for I/O instead of translations.
@@ -369,13 +376,14 @@ Sun Jun 24 03:15:50 UTC 2018 - luc14n0@linuxmail.org
   + Other new apis: gdk_window_move_to_rect.
   + Bugs fixed: glgo#GNOME/GTK#85, glgo#GNOME/GTK#154,
     glgo#GNOME/GTK#193, glgo#GNOME/GTK#199, glgo#GNOME/GTK#292,
-    glgo#GNOME/GTK#450, glgo#GNOME/GTK#792, glgo#GNOME/GTK#898,
-    glgo#GNOME/GTK#997, glgo#GNOME/GTK#1053, glgo#GNOME/GTK#1059,
-    glgo#GNOME/GTK#1065, glgo#GNOME/GTK#1069, glgo#GNOME/GTK#1088,
-    glgo#GNOME/GTK#1115, glgo#GNOME/GTK#1134, glgo#GNOME/GTK#1160,
-    glgo#GNOME/GTK#1165, glgo#GNOME/GTK#1166, bgo#407242,
-    bgo#686109, bgo#765327, bgo#772817, bgo#773299, bgo#775279,
-    bgo#786524, bgo#787867, bgo#789215, bgo#791542, bgo#791802.
+    glgo#GNOME/GTK#450, glgo#GNOME/gtk#550, glgo#GNOME/GTK#792, 
+    glgo#GNOME/GTK#898, glgo#GNOME/GTK#997, glgo#GNOME/GTK#1053, 
+    glgo#GNOME/GTK#1059, glgo#GNOME/GTK#1065, glgo#GNOME/GTK#1069, 
+    glgo#GNOME/GTK#1088, glgo#GNOME/GTK#1115, glgo#GNOME/GTK#1134, 
+    glgo#GNOME/GTK#1160, glgo#GNOME/GTK#1165, glgo#GNOME/GTK#1166, 
+    bgo#407242, bgo#686109, bgo#765327, bgo#772817, bgo#773299, 
+    bgo#775279, bgo#786524, bgo#787867, bgo#789215, bgo#791542, 
+    bgo#791802, boo#1136605, boo#1134062.
   + Updated translations.
 - Drop gtk3-filechooserbutton-Fix-reserved-pointers.patch: fixed
   upstream.
