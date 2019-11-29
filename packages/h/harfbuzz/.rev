@@ -647,4 +647,12 @@
     <comment></comment>
     <requestid>744259</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>d21443aadd423f35d1920c3ea64d5fab</srcmd5>
+    <version>2.6.4</version>
+    <time>1575039448</time>
+    <user>dimstar_suse</user>
+    <comment>harfbuzz 2.6.4 (forwarded request 750624 from AndreasStieger)</comment>
+    <requestid>750951</requestid>
+  </revision>
 </revisionlist>
