@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-bqplot
-Version:        0.11.6
+Version:        0.12.1
 Release:        0
 Summary:        Interactive plotting package for the Jupyter notebook
 License:        Apache-2.0
@@ -72,6 +73,7 @@ This package provides the jupyter notebook extension.
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_nb_notebook_confdir}
 %fdupes %{buildroot}%{_jupyter_nbextension_dir}

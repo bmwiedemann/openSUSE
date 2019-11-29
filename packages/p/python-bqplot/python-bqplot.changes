@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Mon Nov 18 16:07:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.1
+  * Axis width fix
+  * fix: call super.process_hover/click consistently and without argument as array
+
+-------------------------------------------------------------------
+Tue Nov 12 17:07:04 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.0
+  * Add cross marker
+  * Add same view padding as in the base Scatter
+  * Add triangle-up triangle-down markers
+  * Add validators Python side on the row and column array sizes
+  * Added missing import 'd3-selection-multi'
+  * Added support for cell labels
+  * Attributes update refactoring
+  * Binary support for all Marks and Selectors
+  * Bugfix for d3.event -> d3.getEvent()
+  * Bugfix for styles
+  * Bugfixes to bars & hist for d3.event, and move to new processing
+  * Classes to distinguish figure and interaction
+  * Clean ScatterGL implementation
+  * Convert Axis, Figure, Scale and Tooltip to use es2015 classes.
+  * Convert Bars to es2015 classes.
+  * Convert build to use TS 3.4
+  * Convert scale hierarchy to use es2015 classes
+  * Disable strict and noImplicitAny
+  * Don’t shadow the _ global.
+  * Enable webpack production mode
+  * Expose python2.7 issue
+  * Figure: DOM simplification for overlay pattern and small fixes
+  * Figure: fix 'timing' issue with setting interact
+  * Figure: fixes annoying Infinity error caused by a non-physical min_as… 
+  * Figure: support for pixel_ratio for WebGL pixel size control (~=retin…
+  * Fix Bars multi-selection
+  * Fix BoxPlot selection
+  * Fix ColorScaleModel domain type
+  * Fix DateColorScale
+  * Fix Graph selection
+  * Fix GridHeatMap color update
+  * Fix GridHeatMap selection
+  * Fix GridHeatMapModel model
+  * Fix MarkModel model
+  * Fix MarketMap color when data is NaN
+  * Fix MarketMap coloring issue
+  * Fix OHLCModel model
+  * Fix Pie chart
+  * Fix Pie selection
+  * Fix PieModel model
+  * Fix Scales models
+  * Fix SquareMarkerMap by removing it
+  * Fix animation filename in introduction.rst 
+  * Fix colormap creation and take color domain into account
+  * Fix compilation errors in Bar.ts
+  * Fix compilation errors.
+  * Fix date serialization
+  * Fix error message to mention bqplot
+  * Fix exports
+  * Fix figure model
+  * Fix heatmap in the case of a reversed scale
+  * Fix index
+  * Fix labels models
+  * Fix missing OHLC model attribute
+  * Fix multiselection in the Scatter plot
+  * Fix number of attributes issue for Firefox
+  * Fix offset issue in OrdinalScale
+  * Fix or hack around compilation errors from d3
+  * Fix package.json for Jupyter Lab extension
+  * Fix padding update
+  * Fix rangeBand -> bandwidth
+  * Fix reset_hover method name collision
+  * Fix scale assignment
+  * Fix tooltip color and click event for MarketMap
+  * Fix tooltip layout issue
+  * Fix/workaround for when nan's enter brush selector causing infinite loop
+  * Fixed ColorAxis export
+  * Fixed Map.ts
+  * Fixed MultiSelector
+  * Fixed OrdinalScale padding
+  * Fixed boxplot: rangeBand -> bandwidth
+  * Fixed drag in ScatterBase.ts
+  * Fixed padding in ordinal scale
+  * Fixed selectors
+  * Fixup color axis domain
+  * Import d3 by itself.
+  * Inherit `process_interactions` from Mark
+  * Large scatter plots using WebGL
+  * Make fill_opcities work with fill=inside
+  * Move mixins to duplicated code instead.
+  * Only add on click handler to newly added elements. Fixes bug.
+  * Only create WebGL context when needed
+  * Polyfill jupyterlab CSS variables
+  * Refactor event handling into subhandlers
+  * Refactored marker circle,square and arrow, almost pixel perfect
+  * Replaced var with const and let
+  * Revert "adding labels to cells natively"
+  * Revise outlier selection method
+  * Set # of axis ticks for DateScale by width 
+  * Set auto width
+  * Specify a type for THREE.Color.
+  * Switch off overlay when no figure interaction
+  * Update to jupyterlab 1.0
+  * Upgraded to d3 v5
+  * Use CSS variables
+  * Use binary buffers for Map.selected attribute
+  * Use const instead of let
+  * Use css variables
+  * Use d3-scale-chromatic to fix error
+  * We never use the output of invert_pixel, so make the function return …
+  * WebGL support for bqplot (threejs based)
+  * accept non-numbers for data
+  * accept string types at the kernel side
+  * add ability to disable bar chart stroke outline
+  * add square marker, and make it fast (no texture)
+  * add support for Boxplot selection
+  * add theme trait to Figure
+  * added color data
+  * added legend support
+  * added support for labels in grid heat map by adding two attributes: d… 
+  * added support for string type (this should fix the infinite recursive…
+  * adding serializer for image x,y
+  * allow for nans to stay in the brush selector
+  * allow scaling up of png images and have a good default for high dpi
+  * bugfix: make panzoom take scale-reversal into account
+  * expose bug of not supporting ordinal values in lines
+  * fix array deserialization for some versions of python/numpy
+  * fix scales for x, y, and size to match bqplot
+  * fix scatter color updating
+  * fix webgl canvas: take margin changes into account
+  * fix(events): add new transparent rectangle in figure to catch events
+  * fix(scattergl): color scale uniforms should update when color changes
+  * fix: Upgrade to raw-loader 2 (like jupyter lab) so that we can load t… 
+  * fix: after changing geo, material needs updating
+  * fix: always make the (webgl) canvas absolute and skip pointer events
+  * fix: brush selectors threw exception with no selection, fixed order o…
+  * fix: close vbox as well as figure to avoid issues with voila
+  * fix: events from the background were never captured because they were… 
+  * fix: implement relayout for ScatterGL
+  * fix: selection not using get_typed_field
+  * fix: timing of relayout
+  * fix: use the default value or premultipliedAlpha: true
+  * fixed an issue where 'selected' wasn't getting updated on empty brush
+  * fixed code where d3.format fails for null formats
+  * fixes: BrushSelector was sending lists causing roundtrips
+  * increased pie label font size to 12px
+  * initial start for binary serialization
+  * no need to call layout before marks are done (fixes a bug)
+  * performance fix: Float32Array.from is slow, use a loop, 100x faster
+  * prevent zero bar width and make sure plot is still drawn when bar width
+  * refactor png rendering and sanity check by checking a pixel color
+  * removed layout attribute, since it's causing problems on JS side 
+  * removed metadata and using pyplot wherever possible
+  * removed setting opacity of polylines
+  * renamed Mega to GL
+  * respect animation_duraction of Figure
+  * scaling of scatter goes as sqrt(size)
+  * scatter label colors
+  * silence brush events on selected_changed
+  * support arrays with object type if they are all strings
+  * using var(--bq-content-font-color) for pie polyline stroke
+
+-------------------------------------------------------------------
 Sat Jul 27 03:09:40 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.11.6
