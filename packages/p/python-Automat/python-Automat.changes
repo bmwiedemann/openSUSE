@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 25 03:40:42 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 0.8.0:
+  * Retrieve the version from the installed distribution.
+  * Add support for Python 3.8
+  * Remove support for 3.4
+
+-------------------------------------------------------------------
 Thu Mar  7 09:09:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add mulitbuild to make sure we do not cycle

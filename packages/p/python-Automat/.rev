@@ -22,4 +22,15 @@
 - update to version v0.6.0</comment>
     <requestid>682364</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>23e9f1482dab9cb5f08471d9532c0ac9</srcmd5>
+    <version>0.8.0</version>
+    <time>1575039346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0:
+  * Retrieve the version from the installed distribution.
+  * Add support for Python 3.8
+  * Remove support for 3.4</comment>
+    <requestid>750658</requestid>
+  </revision>
 </revisionlist>
