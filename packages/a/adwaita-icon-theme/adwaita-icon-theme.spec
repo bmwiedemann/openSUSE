@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
+BuildRequires:  gtk3-tools >= 3.24.2
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 # To make sure the icon theme cache gets generated

@@ -191,4 +191,13 @@
     <comment>New stable release (forwarded request 746563 from iznogood)</comment>
     <requestid>747637</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2ac043b9a90c2e241d07e6cae6cb8d39</srcmd5>
+    <version>3.34.3</version>
+    <time>1575039538</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure we have a recent enough version of gtk3-tools to build
+  the package. (forwarded request 751121 from mgorse)</comment>
+    <requestid>751359</requestid>
+  </revision>
 </revisionlist>
