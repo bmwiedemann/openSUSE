@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 21 01:09:07 UTC 2019 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-update-packages-in-all-openSUSE.patch: Handle
+  Tumbleweed upgrade in update-packages as well so that it doesn't
+  break other components.
+
+-------------------------------------------------------------------
+Wed Nov 13 02:00:32 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Add PackageKit-zypp-upgrade-system.patch: zypp: implement
+  upgrade-system method (bsc#1155638, bsc#1154973,
+  gh#hughsie/PackageKit/commit/d060dd24).
+- Add PackageKit-zypp-get-files-string-array.patch: zypp: pass an
+  array of strings to pk_backend_job_files()
+  (gh#hughsie/PackageKit#351).
+
+------------------------------------------------------------------
 Mon Oct 14 07:00:32 UTC 2019 - Jonathan Kang <sckang@suse.com>
 
 - Remove zypp-Switch-to-doUpgrade-solver-when-required-by-distribution.patch,
