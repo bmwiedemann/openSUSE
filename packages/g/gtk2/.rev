@@ -1252,4 +1252,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>732880</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>fe0db1db23b81265444658435f915052</srcmd5>
+    <version>2.24.32+67</version>
+    <time>1575039491</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project} (forwarded request 751008 from dimstar)</comment>
+    <requestid>751354</requestid>
+  </revision>
 </revisionlist>
