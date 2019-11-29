@@ -22,13 +22,13 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        2.3.15
+Version:        2.4.1
 Release:        0
 Summary:        Audio processing engine
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 Url:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/2.3.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/2.4.x/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gsequencer.0-fix-makefile-am.patch -- fix opensuse specific locations
 Patch0:         gsequencer.0-fix-makefile-am.patch
 BuildRequires:  cunit-devel
@@ -78,7 +78,7 @@ export CPPFLAGS='-std=gnu99 -include errno.h -DAGS_RC_FILENAME=\"'%{_datadir}'/g
 %if %{with run_functional_tests}
     --enable-run-functional-tests \ 
 %endif
-    --disable-oss --enable-gtk-doc --enable-gtk-doc-html
+    --without-included-regex --enable-threads=posix --disable-oss --enable-gtk-doc --enable-gtk-doc-html
 
 %make_build all
 %make_build html
