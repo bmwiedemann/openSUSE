@@ -1,7 +1,7 @@
 #
 # spec file for package python-gtk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,6 +29,8 @@ URL:            http://www.pygtk.org/
 Source:         http://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM pygtk-2.22.0-capsule.patch bgo#623965 bnc#669802 jmatejek@novell.com -- Conditionally use the new Capsule API instead of PyCObject
 Patch0:         pygtk-2.22.0-capsule.patch
+# pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch -- Drop the PangoFont find_shaper virtual method
+Patch1:         https://raw.githubusercontent.com/flathub/org.glimpse_editor.Glimpse/master/patches/pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch
 BuildRequires:  fdupes
 # Only for directory ownership:
 BuildRequires:  gtk-doc
@@ -74,6 +76,7 @@ python's benefits.
 %prep
 %setup -q -n pygtk-%{version}
 %patch0 -p1
+%patch1 -p1
 
 find examples -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python|#!%{_bindir}/python2|" {} \;
 find examples -type f -name "*.py" -exec sed -i "s|#! %{_bindir}/env python|#!%{_bindir}/python2|" {} \;
