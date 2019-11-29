@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-software
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,17 @@
 
 %define gs_plugin_api 13
 Name:           gnome-software
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
 Source0:        https://download.gnome.org/sources/gnome-software/3.34/%{name}-%{version}.tar.xz
+%if 0%{?sle_version}
+# PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
+Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
+%endif 0%{?sle_version}
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -86,6 +90,20 @@ GNOME software store plugins.
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 
+%if !0%{?is_opensuse}
+#workaround until bsc#1157928 is resolved, otherwise SLES users get authentication popup all the time
+cat << EOF >> %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
+Hidden=true
+EOF
+
+cat << EOF > %{buildroot}%{_datadir}/glib-2.0/schemas/00_org.gnome.software.gschema.override
+#workaround until bsc#1157928 is resolved, otherwise SLES users get authentication popup all the time
+[org.gnome.desktop.search-providers]
+disabled=["org.gnome.Software.desktop"]
+EOF
+
+%endif
+
 %files
 %license COPYING
 %doc NEWS README.md
@@ -101,13 +119,14 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Fwupd.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Odrs.metainfo.xml
-# Test shipping gnome-software-local-file in GN
-# Currently not shipped, as this is not yet functional (boo#941862)
 %{_datadir}/applications/gnome-software-local-file.desktop
 %{_datadir}/applications/org.gnome.Software.desktop
 %{_datadir}/dbus-1/services/org.gnome.Software.service
 %{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/glib-2.0/schemas/org.gnome.software.gschema.xml
+%if !0%{?is_opensuse}
+%{_datadir}/glib-2.0/schemas/00_org.gnome.software.gschema.override
+%endif
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Software-search-provider.ini
