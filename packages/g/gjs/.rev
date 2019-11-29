@@ -1518,4 +1518,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>Scripted push from {project}</comment>
     <requestid>736519</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>473631e9ae4d234ff5425328f44e931a</srcmd5>
+    <version>1.58.3</version>
+    <time>1575039552</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 751204 from yfjiang)</comment>
+    <requestid>751361</requestid>
+  </revision>
 </revisionlist>

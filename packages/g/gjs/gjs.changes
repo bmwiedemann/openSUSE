@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 25 19:26:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.58.3:
+  + Emergency release, intended to correct two mistakes in 1.58.2,
+    both coming from crash fixes that had unexpected other effects
+    on working code.
+
+-------------------------------------------------------------------
+Sun Nov 24 09:46:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.58.2:
+  + GObject based class initialization checks.
+  + Silently leaked return value of callbacks.
+  + Crash when calling Gio.Initable.async_init with not
+    vfunc_async_init implementation.
+  + [cairo] insufficient checking.
+  + Various crash fixes backported from the development branch.
+
+-------------------------------------------------------------------
 Mon Oct  7 07:42:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.58.1:
@@ -395,7 +414,7 @@ Sun Jul  8 01:53:01 UTC 2018 - luc14n0@linuxmail.org
   + Fixed bugs:
     - Tweener: Add min/max properties;
     - `ARGV` encoding issues (glgo#GNOME/gjs#22);
-    - Make GC much more aggressive (glgo#GNOME/gjs#62);
+    - Make GC much more aggressive (glgo#GNOME/gjs#62 bsc#1093541);
     - Queue GC when a GObject reference is toggled down
       (glgo#GNOME/gjs#140);
     - overrides: support Gtk template callbacks;

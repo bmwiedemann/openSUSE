@@ -1,7 +1,7 @@
 #
 # spec file for package gjs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # remove all conditional macros and enable systemtap.
 %bcond_with     systemtap
 Name:           gjs
-Version:        1.58.1
+Version:        1.58.3
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        MIT AND LGPL-2.0-or-later
@@ -38,9 +38,9 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(cairo-xlib)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.53.4
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
