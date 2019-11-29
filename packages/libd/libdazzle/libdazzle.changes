@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:33:29 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Add explicit Conflicts on old libdazzle for dazzle-list-counters,
+  allowing upgrade from older release.
+
+-------------------------------------------------------------------
 Sat Oct  5 08:14:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

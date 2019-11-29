@@ -155,4 +155,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736587</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>14b21c7d24a9a1f3cb2ddfd35bf0609b</srcmd5>
+    <version>3.34.1</version>
+    <time>1575039365</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 749496 from dimstar)</comment>
+    <requestid>750920</requestid>
+  </revision>
 </revisionlist>

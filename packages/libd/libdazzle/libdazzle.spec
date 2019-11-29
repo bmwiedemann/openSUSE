@@ -45,6 +45,7 @@ isn't quite generic enough to work for everyone.
 %package -n     dazzle-list-counters
 Summary:        Collection of fancy features for GLib and Gtk+
 Group:          Development/Tools/Other
+Conflicts:      libdazzle < 3.34.1
 
 %description -n dazzle-list-counters
 This package provides the dazzle-list-counters binary.
