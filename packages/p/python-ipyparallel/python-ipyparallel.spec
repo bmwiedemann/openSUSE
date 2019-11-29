@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-ipyparallel
 Version:        6.2.4
 %define doc_ver 6.2.3
@@ -40,8 +41,8 @@ BuildRequires:  %{python_module ipykernel >= 4.4}
 BuildRequires:  %{python_module ipython >= 4}
 BuildRequires:  %{python_module ipython-iptest >= 4}
 BuildRequires:  %{python_module ipython_genutils}
-BuildRequires:  %{python_module jupyter_client}
-BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module jupyter-client}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -55,7 +56,7 @@ Requires:       python-decorator
 Requires:       python-ipykernel >= 4.4
 Requires:       python-ipython >= 4
 Requires:       python-ipython_genutils
-Requires:       python-jupyter_client
+Requires:       python-jupyter-client
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-pyzmq >= 13
 Requires:       python-tornado >= 4
@@ -80,7 +81,7 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyparallel
 Summary:        Interactive parallel computing library for IPython
-Requires:       jupyter-jupyter_core
+Requires:       jupyter-jupyter-core
 Requires:       jupyter-notebook
 Requires:       python3-ipyparallel = %{version}
 Provides:       python-jupyter_ipyparallel-nbextension = %{version}
