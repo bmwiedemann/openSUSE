@@ -17,7 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without tests
+%define         skip_python2 1
+%bcond_without  tests
 Name:           python-jupyter_contrib_core
 Version:        0.3.3
 Release:        0
@@ -30,14 +31,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with tests}
-BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module notebook >= 4.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  python-mock
 %endif
-Requires:       python-jupyter_core
+Requires:       python-jupyter-core
 Requires:       python-notebook >= 4.0
 Requires:       python-setuptools
 Requires:       python-tornado
@@ -62,7 +63,7 @@ This package provides the python interface.
 %package     -n jupyter-jupyter_contrib_core
 Summary:        Libraries and Languages for Jupyter
 Group:          Development/Languages/Python
-Requires:       jupyter-jupyter_core
+Requires:       jupyter-jupyter-core
 Requires:       jupyter-notebook >= 4.0
 Requires:       python3-jupyter_contrib_core = %{version}
 
