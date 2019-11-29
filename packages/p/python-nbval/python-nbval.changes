@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 17:32:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.9.3
+  * Use a MULTILINE anchored regex when removing carriage returns
+- Drop python2 support due to python-notebook dropping python2 support
+
+-------------------------------------------------------------------
 Mon Jul 29 02:33:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.9.2

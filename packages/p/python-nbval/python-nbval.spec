@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-nbval
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        A pytest plugin to validate Jupyter notebooks
 License:        BSD-3-Clause
@@ -31,7 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-certifi
 Requires:       python-coverage
 Requires:       python-ipykernel
-Requires:       python-jupyter_client
+Requires:       python-jupyter-client
 Requires:       python-nbdime
 Requires:       python-nbformat
 Requires:       python-pytest >= 2.8
@@ -47,7 +48,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module jupyter_client}
+BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nbdime}
 BuildRequires:  %{python_module nbformat}
