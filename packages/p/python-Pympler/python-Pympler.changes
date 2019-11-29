@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 25 00:39:27 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.8:
+  Added
+  * Python 3.8 support
+  * Compatibility with Django Debug Toolbar 2.x
+  Removed
+  * Python 3.3 support
+  * Compatibility with Django Debug Toolbar 1.x
+  Fixed
+  * Include dicts which aren't tracked by garbage collector in summary diff
+  * Fix formatting of Python 3 class names in summary diff
+
+-------------------------------------------------------------------
 Tue Aug 13 07:39:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix flaky tests:

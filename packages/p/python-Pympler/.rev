@@ -7,4 +7,21 @@
     <comment></comment>
     <requestid>722997</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4f77ad5f1859999c9cfe82449a7d947</srcmd5>
+    <version>0.8</version>
+    <time>1575039340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8:
+  Added
+  * Python 3.8 support
+  * Compatibility with Django Debug Toolbar 2.x
+  Removed
+  * Python 3.3 support
+  * Compatibility with Django Debug Toolbar 1.x
+  Fixed
+  * Include dicts which aren't tracked by garbage collector in summary diff
+  * Fix formatting of Python 3 class names in summary diff</comment>
+    <requestid>750650</requestid>
+  </revision>
 </revisionlist>
