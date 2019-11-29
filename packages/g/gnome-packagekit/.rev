@@ -987,4 +987,12 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 695609 from dimstar)</comment>
     <requestid>695713</requestid>
   </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>81aa218214bb78153a7703409f9aa3a4</srcmd5>
+    <version>3.32.0</version>
+    <time>1575039361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749279</requestid>
+  </revision>
 </revisionlist>

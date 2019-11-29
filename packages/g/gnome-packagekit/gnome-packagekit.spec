@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-packagekit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,10 @@ Patch2:         bnc#881245-update-test-affects-package-manager-should-restart-gp
 Patch3:         bnc-946886-install-signatures-in-viewer.patch
 # PATCH-FIX-SLED bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch rlmu@suse.com -- Fixed asks for passwd too early.
 Patch4:         bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch
-#PATCH-FIX-UPSTREAM gnome-packagekit-fix-not-responding-after-update.patch bgo#782673, bsc#1036542 sckang@suse.com -- Fix gpk-update-viewer not responding after installing available updates.
+# PATCH-FIX-UPSTREAM gnome-packagekit-fix-not-responding-after-update.patch bgo#782673, bsc#1036542 sckang@suse.com -- Fix gpk-update-viewer not responding after installing available updates.
 Patch5:         gnome-packagekit-fix-not-responding-after-update.patch
+# PATCH-FIX-OPENSUSE gnome-packagekit-upgrade-system.patch bsc#1155638 sckang@suse.com -- Call upgrade-system instead of update-packages when cliking the install button in Tumbleweed
+Patch6:         gnome-packagekit-upgrade-system.patch
 
 BuildRequires:  PackageKit-devel
 BuildRequires:  desktop-file-utils

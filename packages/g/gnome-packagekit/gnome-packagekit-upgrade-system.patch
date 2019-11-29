@@ -1,0 +1,98 @@
+From 50daec7b84098a3367bf212af6448dfa86b4ad16 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Tue, 12 Nov 2019 16:24:07 +0800
+Subject: [PATCH] gpk-update-viewer: Call upgrade-system when clicking install
+ button
+
+In Tumbleweed, you should use upgrade-system instead of update-packages
+to update the system. Adapt to that changes in zypp backend.
+---
+ src/gpk-task.c          |  4 ++--
+ src/gpk-update-viewer.c | 14 ++++++++------
+ 2 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/src/gpk-task.c b/src/gpk-task.c
+index ab903ec2..3c638362 100644
+--- a/src/gpk-task.c
++++ b/src/gpk-task.c
+@@ -103,7 +103,7 @@ gpk_task_untrusted_question (PkTask *task, guint request, PkResults *results)
+ 
+ 	/* message */
+ 	g_object_get (results, "role", &role, NULL);
+-	if (role == PK_ROLE_ENUM_UPDATE_PACKAGES) {
++	if (role == PK_ROLE_ENUM_UPGRADE_SYSTEM) {
+ 		message = g_strdup_printf ("%s\n%s\n\n%s\n%s",
+ 					   /* TRANSLATORS: is not GPG signed */
+ 					   _("The software is not signed by a trusted provider."),
+@@ -434,7 +434,7 @@ gpk_task_simulate_question (PkTask *task, guint request, PkResults *results)
+ 		/* TRANSLATORS: message text of a dependency dialog */
+ 		message = ngettext ("To remove this package, additional software also has to be modified.",
+ 				    "To remove these packages, additional software also has to be modified.", inputs);
+-	} else if (role == PK_ROLE_ENUM_UPDATE_PACKAGES) {
++	} else if (role == PK_ROLE_ENUM_UPGRADE_SYSTEM) {
+ 
+ 		/* TRANSLATORS: message text of a dependency dialog */
+ 		message = ngettext ("To update this package, additional software also has to be modified.",
+diff --git a/src/gpk-update-viewer.c b/src/gpk-update-viewer.c
+index c9a8f29f..c8d5fc1f 100644
+--- a/src/gpk-update-viewer.c
++++ b/src/gpk-update-viewer.c
+@@ -431,8 +431,6 @@ gpk_update_viewer_update_packages_cb (PkTask *_task, GAsyncResult *res, gpointer
+ 		gpk_update_viewer_check_restart ();
+ 		gpk_update_viewer_quit ();
+ 		goto out;
+-	} else {
+-		goto out;
+ 	}
+ 
+ 	/* hide close button */
+@@ -788,7 +786,7 @@ gpk_update_viewer_progress_cb (PkProgress *progress,
+ 		model = gtk_tree_view_get_model (treeview);
+ 
+ 		/* enable or disable the correct spinners */
+-		if (role == PK_ROLE_ENUM_UPDATE_PACKAGES) {
++		if (role == PK_ROLE_ENUM_UPGRADE_SYSTEM) {
+ 			path = gpk_update_viewer_model_get_path (model, package_id);
+ 			if (path != NULL) {
+ 				if (info == PK_INFO_ENUM_FINISHED)
+@@ -841,7 +839,7 @@ gpk_update_viewer_progress_cb (PkProgress *progress,
+ 		gtk_tree_model_get_iter (model, &iter, path);
+ 
+ 		/* if we are adding deps, then select the checkbox */
+-		if (role == PK_ROLE_ENUM_UPDATE_PACKAGES) {
++		if (role == PK_ROLE_ENUM_UPGRADE_SYSTEM) {
+ 			gtk_tree_store_set (array_store_updates, &iter,
+ 					    GPK_UPDATES_COLUMN_SELECT, TRUE,
+ 					    -1);
+@@ -855,7 +853,7 @@ gpk_update_viewer_progress_cb (PkProgress *progress,
+ 		}
+ 
+ 		/* only change the status when we're doing the actual update */
+-		if (role == PK_ROLE_ENUM_UPDATE_PACKAGES) {
++		if (role == PK_ROLE_ENUM_UPGRADE_SYSTEM) {
+ 			/* if the info is finished, change the status to past tense */
+ 			if (info == PK_INFO_ENUM_FINISHED) {
+ 				/* clear the remaining size */
+@@ -1099,7 +1097,7 @@ gpk_update_viewer_button_install_cb (GtkWidget *widget, gpointer user_data)
+ 	package_ids = pk_ptr_array_to_strv (array);
+ 
+ 	/* the backend is able to do UpdatePackages */
+-	pk_task_update_packages_async (task, package_ids, cancellable,
++	pk_task_upgrade_system_async (task, NULL, PK_UPGRADE_KIND_ENUM_DEFAULT, cancellable,
+ 				       (PkProgressCallback) gpk_update_viewer_progress_cb, NULL,
+ 				       (GAsyncReadyCallback) gpk_update_viewer_update_packages_cb, NULL);
+ 
+@@ -2339,6 +2337,10 @@ gpk_update_viewer_get_updates_cb (PkClient *client, GAsyncResult *res, gpointer
+ 		if (!pk_bitfield_contain (roles, PK_ROLE_ENUM_UPDATE_PACKAGES))
+ 			sensitive = FALSE;
+ 
++		/* Make the checkbox unselectable as we're using upgrade-system
++		 * in Tumbleweed. Updating specific packages is not supported. */
++		sensitive = FALSE;
++
+ 		/* add to model */
+ 		gtk_tree_store_append (array_store_updates, &iter, &parent);
+ 		gtk_tree_store_set (array_store_updates, &iter,
+-- 
+2.24.0
+
