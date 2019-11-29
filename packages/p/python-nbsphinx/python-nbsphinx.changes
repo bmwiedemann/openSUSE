@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 13 19:27:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Latest release drops python2 support.
+
+-------------------------------------------------------------------
+Tue Nov 12 16:51:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.3
+  * Add option nbsphinx_requirejs_path (and nbsphinx_requirejs_options)
+
+-------------------------------------------------------------------
 Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.4.2

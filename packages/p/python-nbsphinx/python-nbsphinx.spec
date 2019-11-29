@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-nbsphinx
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
