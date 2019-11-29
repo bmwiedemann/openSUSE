@@ -3546,6 +3546,7 @@ unsorted:
   - gedit-plugin-multiedit 
   - gedit-plugin-session-saver 
   - gedit-plugin-smartspaces 
+  - gedit-plugin-synctex 
   - gedit-plugin-terminal 
   - gedit-plugin-textsize 
   - gedit-plugin-translate 
@@ -10500,7 +10501,7 @@ unsorted:
   - libossp-uuid_dce16 
   - libostree-devel 
   - libostree-grub2 
-  - libotb6 
+  - libotb7 
   - libotf 
   - libotf-devel 
   - libotf-devel-32bit: [x86_64] 
@@ -17389,8 +17390,6 @@ unsorted:
   - python-nlopt 
   - python-notify 
   - python-notify-devel 
-  - python-notmuch: [x86_64] 
-  - python-notmuch-doc: [x86_64] 
   - python-novaclient-doc 
   - python-obexftp 
   - python-octaviaclient-doc 
@@ -17741,7 +17740,6 @@ unsorted:
   - python2-alembic 
   - python2-alsa 
   - python2-altair 
-  - python2-altair-widgets 
   - python2-altgraph 
   - python2-amqp 
   - python2-amqplib 
@@ -18033,7 +18031,6 @@ unsorted:
   - python2-botocore 
   - python2-bottle 
   - python2-bpython 
-  - python2-bqplot 
   - python2-branca 
   - python2-breathe 
   - python2-brewer2mpl 
@@ -18541,8 +18538,6 @@ unsorted:
   - python2-iptables 
   - python2-ipy 
   - python2-ipykernel 
-  - python2-ipympl 
-  - python2-ipyparallel 
   - python2-ipython 
   - python2-ipython-iptest 
   - python2-ipython_genutils 
@@ -18598,12 +18593,9 @@ unsorted:
   - python2-junitxml 
   - python2-junos-eznc 
   - python2-jupyter-client 
-  - python2-jupyter-contrib-nbextensions 
   - python2-jupyter-core 
-  - python2-jupyter-server 
-  - python2-jupyter_contrib_core 
-  - python2-jupyter_highlight_selected_word 
-  - python2-jupytext 
+  - python2-jupyter-packaging 
+  - python2-jupyter-sphinx 
   - python2-jwcrypto 
   - python2-k5test 
   - python2-kafka-python 
@@ -18676,7 +18668,6 @@ unsorted:
   - python2-limnoria 
   - python2-line_profiler 
   - python2-linecache2 
-  - python2-lineup-widget 
   - python2-linux-procfs 
   - python2-lit 
   - python2-llfuse 
@@ -18774,13 +18765,9 @@ unsorted:
   - python2-napalm-asa 
   - python2-napalm-procurve 
   - python2-nbconvert 
-  - python2-nbdime 
   - python2-nbformat 
   - python2-nbindex-jupyter 
   - python2-nbsmoke 
-  - python2-nbsphinx 
-  - python2-nbsphinx-link 
-  - python2-nbval 
   - python2-nbxmpp 
   - python2-nbxmpp-doc 
   - python2-ncclient 
@@ -18811,8 +18798,6 @@ unsorted:
   - python2-nose2 
   - python2-nose_warnings_filters 
   - python2-nosexcover 
-  - python2-notebook 
-  - python2-notebook-lang 
   - python2-notify2 
   - python2-novaclient 
   - python2-nss 
@@ -18885,7 +18870,6 @@ unsorted:
   - python2-oslotest 
   - python2-osmviz 
   - python2-osprofiler 
-  - python2-otb 
   - python2-outcome 
   - python2-ovirt-engine-sdk 
   - python2-ovs 
@@ -19706,7 +19690,6 @@ unsorted:
   - python2-vispy 
   - python2-vistir 
   - python2-vobject 
-  - python2-voila 
   - python2-voluptuous 
   - python2-vsts 
   - python2-vsts-cd-manager 
@@ -21038,9 +21021,11 @@ unsorted:
   - python3-jupyter-core 
   - python3-jupyter-datatables 
   - python3-jupyter-nbutils 
+  - python3-jupyter-packaging 
   - python3-jupyter-protocol 
   - python3-jupyter-require 
   - python3-jupyter-server 
+  - python3-jupyter-sphinx 
   - python3-jupyter_console 
   - python3-jupyter_contrib_core 
   - python3-jupyter_highlight_selected_word 
@@ -24182,6 +24167,7 @@ unsorted:
   - sphinx 
   - sphinxbase 
   - sphinxbase-devel 
+  - spi-tools 
   - spice-gtk 
   - spice-gtk-devel 
   - spice-gtk-lang 
