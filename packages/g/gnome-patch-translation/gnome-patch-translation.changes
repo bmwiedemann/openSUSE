@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Mar  6 20:08:11 CET 2018 - sbrabec@suse.cz
 
-- Updated ko, lt, nn, pl, sk, sv, uk, zh_TW.
+- Updated ko, lt, nn, pl, sk, sv, uk, zh_TW (bsc#1085376).
 - Version bump to 15.0:
   * Updated for the latest Factory (1 new strings, obsolete xchat,
     gstreamer-0_10).

@@ -475,4 +475,12 @@ Intended for both Factory and 13.1. (forwarded request 203836 from sbrabec)</com
     <comment></comment>
     <requestid>584551</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>8513ed0e82f37519b1aa6baa01c02609</srcmd5>
+    <version>15.0</version>
+    <time>1575039576</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 751280 from dimstar)</comment>
+    <requestid>751364</requestid>
+  </revision>
 </revisionlist>
