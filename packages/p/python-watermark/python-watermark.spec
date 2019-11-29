@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-watermark
-Version:        1.8.2
+Version:        2.0.1
 Release:        0
 Summary:        IPython magic function to psystem information
 License:        BSD-3-Clause
