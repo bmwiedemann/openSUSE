@@ -18,7 +18,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-require
-Version:        0.3.0
+Version:        0.4.2
 Release:        0
 License:        MIT
 Summary:        Jupyter nbextension for loading non-python dependencies in Jupyter notebooks
