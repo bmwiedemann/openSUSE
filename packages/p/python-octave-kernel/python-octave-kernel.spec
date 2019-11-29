@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/o/octave-kernel/o
 # PATCH-FIX-UPSTREAM fix_octave5.patch -- gh#Calysto/octave_kernel#160
 Patch0:         fix_octave5.patch
 BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module jupyter_client >= 4.3.0}
+BuildRequires:  %{python_module jupyter-client >= 4.3.0}
 BuildRequires:  %{python_module metakernel >= 0.24.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module jupyter_kernel_test}
 BuildRequires:  octave-cli
 # /SECTION
 Requires:       python-ipykernel
-Requires:       python-jupyter_client >= 4.3.0
+Requires:       python-jupyter-client >= 4.3.0
 Requires:       python-metakernel >= 0.24.0
 Requires:       jupyter-octave-kernel = %{version}
 Provides:       python-jupyter_octave_kernel = %{version}

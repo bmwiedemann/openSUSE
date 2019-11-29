@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:44:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- jupyter_client renamed to jupyter-client
+
+-------------------------------------------------------------------
 Sun Aug 11 03:27:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Switch from wheel to sdist.
