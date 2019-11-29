@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:59:04 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20191128.c2eb3f7:
+  * fix ModemManager1.Time whitelisting (bsc#1156961)
+
+-------------------------------------------------------------------
 Fri Nov 22 13:26:20 UTC 2019 - malte.kraus@suse.com
 
 - Update to version 13.2+20191122.eb9cc80:

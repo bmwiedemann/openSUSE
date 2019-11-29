@@ -1568,4 +1568,13 @@ for 12.3</comment>
   * whitelist org.freedesktop.ModemManager1.Modem.Time (bsc#1156961)</comment>
     <requestid>750304</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>58f2c68f2531c60578130f5092281938</srcmd5>
+    <version>13.2+20191128.c2eb3f7</version>
+    <time>1575039650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20191128.c2eb3f7:
+  * fix ModemManager1.Time whitelisting (bsc#1156961)</comment>
+    <requestid>751586</requestid>
+  </revision>
 </revisionlist>
