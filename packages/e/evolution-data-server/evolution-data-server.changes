@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 22 11:01:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + EWeatherSource: Use g_signal_connect_object() in
+    e_weather_source_parse().
+  + Correct runtime warning from camel_network_service_can_reach().
+  + ESoupSession: Do not presend credentials on insecure
+    connections.
+  + EBackend: Slightly enhance g_warning() messages with an ESource
+    identification.
+  + ESource: Required signals not connected after EDBusObject is
+    replaced.
+  + LDAP: Change how LDAP query is constructed.
+  + Bugs fixed: glgo#GNOME/evolution-data-server#156,
+    glgo#GNOME/evolution-data-server#159,
+    glgo#GNOME/evolution-data-server#162,
+    glgo#GNOME/evolution-data-server#164,
+    glgo#GNOME/evolution-data-server#169,
+    glgo#GNOME/evolution-data-server#173.
+
+-------------------------------------------------------------------
 Mon Oct  7 08:00:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

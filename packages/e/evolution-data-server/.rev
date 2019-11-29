@@ -1771,4 +1771,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>Scripted push from {project}</comment>
     <requestid>736509</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>cdee49cfa4108bbc35caab04d5433147</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039409</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750271 from iznogood)</comment>
+    <requestid>750934</requestid>
+  </revision>
 </revisionlist>
