@@ -16,16 +16,15 @@
 #
 
 
-%define sover 17
+%define sover 19
 Name:           liblouis
-Version:        3.8.0
+Version:        3.11.0
 Release:        0
 Summary:        Two-way braille translator
 License:        LGPL-3.0-or-later
 Group:          Productivity/Other
 URL:            http://liblouis.org/
 Source0:        https://github.com/liblouis/liblouis/releases/download/v%{version}/liblouis-%{version}.tar.gz
-Patch0:         gcc9-fixed-memory-leaks-created-by-block-scope-compound-l.patch
 
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
@@ -126,7 +125,6 @@ This subpackage contains the Python3 bindings.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure --disable-static --enable-ucs4
