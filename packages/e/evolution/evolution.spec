@@ -1,7 +1,7 @@
 #
 # spec file for package evolution
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite

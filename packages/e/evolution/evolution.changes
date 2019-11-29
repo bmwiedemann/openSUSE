@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 22 11:06:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Fix a crash when changing Archive folder.
+  + Calendar: Show only the last part of the timezone above the
+    time column in the Day View.
+  + ESimpleAsyncResult: Avoid thread scheduling race when finishing
+    on idle.
+  + Bugs fixed: glgo#GNOME/evolution#659, glgo#GNOME/evolution#680,
+    glgo#GNOME/evolution#681, glgo#GNOME/evolution#696,
+    glgo#GNOME/evolution#701, glgo#GNOME/evolution#702,
+    glgo#GNOME/evolution#709, glgo#GNOME/evolution#711. 
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct  7 08:16:46 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:
@@ -382,15 +397,16 @@ Sat Feb  9 03:31:03 UTC 2019 - bjorn.lie@gmail.com
     call.
   + Bugs fixed: bgo#228772, bgo#561799, bgo#610741, bgo#652821,
     bgo#741363, bgo#769396, bgo#781122, bgo#795202,
-    glgo#GNOME/evolution#113, glgo#GNOME/evolution#120,
-    glgo#GNOME/evolution#140, glgo#GNOME/evolution#163,
-    glgo#GNOME/evolution#164, glgo#GNOME/evolution#166,
-    glgo#GNOME/evolution#176, glgo#GNOME/evolution#180,
-    glgo#GNOME/evolution#181, glgo#GNOME/evolution#182,
-    glgo#GNOME/evolution#183, glgo#GNOME/evolution#187,
-    glgo#GNOME/evolution#190, glgo#GNOME/evolution#196,
-    glgo#GNOME/evolution#198, glgo#GNOME/evolution#208,
-    glgo#GNOME/evolution#211, glgo#GNOME/evolution#214.
+    glgo#GNOME/evolution#113, glgo#GNOME/evolution#120
+    (boo#1125230 CVE-2018-15587), glgo#GNOME/evolution#140,
+    glgo#GNOME/evolution#163, glgo#GNOME/evolution#164,
+    glgo#GNOME/evolution#166, glgo#GNOME/evolution#176,
+    glgo#GNOME/evolution#180, glgo#GNOME/evolution#181,
+    glgo#GNOME/evolution#182, glgo#GNOME/evolution#183,
+    glgo#GNOME/evolution#187, glgo#GNOME/evolution#190,
+    glgo#GNOME/evolution#196, glgo#GNOME/evolution#198,
+    glgo#GNOME/evolution#208, glgo#GNOME/evolution#211,
+    glgo#GNOME/evolution#214.
   + Updated translations.
 - Changes from version 3.31.1:
   + Update Flatpak build scripts to better integrate with the host

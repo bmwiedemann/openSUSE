@@ -1928,4 +1928,12 @@ Recommended for 12.3</comment>
     <comment>Scripted push from {project}</comment>
     <requestid>736507</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>8d1ab19de8c1150cdf2112bea766b268</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039411</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750273 from iznogood)</comment>
+    <requestid>750935</requestid>
+  </revision>
 </revisionlist>
