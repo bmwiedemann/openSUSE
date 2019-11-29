@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov 28 09:48:12 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Don't start gnome-software at startup and disable its search
+  extension on SLE until bsc#1157928 is fixed properly.
+
+-------------------------------------------------------------------
+Wed Nov 27 10:22:33 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Rebase gnome-software-launch-gpk-update-viewer-for-updates.patch
+
+-------------------------------------------------------------------
+Mon Nov 25 10:18:26 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Do not show a crazy error when installing packages.
+  + Do not show non-applications in the installed panel.
+  + Download Flatpak updates in the correct installation.
+  + Fix a potential threading crash when using flatpak.
+  + Fix a small memory leaks.
+  + Set the shell extension origin correctly in all cases.
+  + Speed up flatpak loading in some situations.
+  + Updated translations.
+- Drop gnome-software-fwupd-dependency.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Nov 19 07:10:33 UTC 2019 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-software-fwupd-dependency.patch: fwupd: Fix compile
+  with old versions of fwupd (bsc#1156960,
+  gh#hughsie/gnome-software!362). 
+
+-------------------------------------------------------------------
 Mon Oct  7 16:55:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:
@@ -446,6 +478,12 @@ Fri Apr 20 11:53:57 UTC 2018 - lnussel@suse.de
 - require fwupd, gnome-software doesn't work without (boo#1090042)
 
 -------------------------------------------------------------------
+Thu Apr 19 08:56:34 UTC 2018 - sckang@suse.com
+
+- Mark gnome-software-launch-gpk-update-viewer-for-updates.patch
+  as PATCH-FIX-OPENSUSE, as Leap 15 need it as well (boo#1090042).
+
+-------------------------------------------------------------------
 Mon Apr  9 21:59:29 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 3.28.1:
@@ -485,6 +523,13 @@ Tue Mar 13 08:06:25 UTC 2018 - dimstar@opensuse.org
   + snap: Fix invalid metadata after cancelled refine.
   + snap: Launch command line snaps with 'snap run'.
   + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 13 02:47:18 UTC 2018 - sckang@suse.com
+
+- Add gnome-software-launch-gpk-update-viewer-for-updates.patch:
+  Don't launch gnome-software when clicking the updates
+  notification. Launch gpk-update-viewer instead (bsc#1077332).
 
 -------------------------------------------------------------------
 Tue Mar  6 03:27:52 UTC 2018 - dimstar@opensuse.org
