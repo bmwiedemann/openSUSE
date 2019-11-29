@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:42:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- jupyter_client renamed to jupyter-client
+- jupyter_core renamed to jupyter-core
+
+-------------------------------------------------------------------
+Mon Nov 11 18:33:27 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 6.0.2
+  * Update JQuery dependency to version 3.4.1 to fix security vulnerability (CVE-2019-11358)
+  * Update CodeMirror to version 5.48.4 to fix Python formatting issues
+  * Continue removing obsolete Python 2.x code/dependencies
+  * Multiple documentation updates
+- Update to 6.0.1
+  * Attempt to re-establish websocket connection to Gateway
+  * Add missing react-dom js to package data
+- Update to 6.0
+  * Remove Python 2.x support in favor of Python 3.5 and higher.
+  * Multiple accessibility enhancements and bug-fixes.
+  * Multiple translation enhancements and bug-fixes.
+  * Remove deprecated ANSI CSS styles.
+  * Native support to forward requests to Jupyter Gateway(s) (Embedded NB2KG).
+  * Use JavaScript to redirect users to notebook homepage.
+  * Enhanced SSL/TLS security by using PROTOCOL_TLS which selects the highest ssl/tls
+  p  rotocol version available that both the client and server support. When PROTOCOL_TLS
+    is not available use PROTOCOL_SSLv23.
+  * Add ``?no_track_activity=1`` argument to allow API requests.
+    to not be registered as activity (e.g. API calls by external activity monitors).
+  * Kernels shutting down due to an idle timeout is no longer considered
+    an activity-updating event.
+  * Further improve compatibility with tornado 6 with improved
+    checks for when websockets are closed.
+  * Launch the browser with a local file which redirects to the server address including
+    the authentication token. This prevents another logged-in user from stealing the token
+    from command line arguments and authenticating to the server.
+    The single-use token previously used to mitigate this has been removed.
+    Thanks to Dr. Owain Kenway for suggesting the local file approach.
+  * Respect nbconvert entrypoints as sources for exporters
+  * Update to CodeMirror to 5.37, which includes f-string syntax for Python 3.6.
+  * Update jquery-ui to 1.12
+  * Execute cells by clicking icon in input prompt.
+  * New "Save as" menu option.
+  * When serving on a loopback interface, protect against DNS rebinding by
+    checking the ``Host`` header from the browser.
+    This check can be disabled if necessary by setting
+    ``NotebookApp.allow_remote_access``.
+  * Add kernel_info_timeout traitlet to enable restarting slow kernels.
+  * Add ``custom_display_host`` config option to override displayed URL.
+  * Add /metrics endpoint for Prometheus Metrics.
+  * Optimize large file uploads.
+  * Allow access control headers to be overriden in jupyter_notebook_config.py to support
+    greater CORS and proxy configuration flexibility.
+  * Add support for terminals on windows.
+  * Add a "restart and run all" button to the toolbar.
+  * Frontend/extension-config: allow default json files in a .d directory.
+  * Allow setting token via jupyter_token env.
+  * Cull idle kernels using ``--MappingKernelManager.cull_idle_timeout``.
+  * Allow read-only notebooks to be trusted.
+  * Convert JS tests to Selenium.
+
+-------------------------------------------------------------------
 Tue May 28 06:21:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.
