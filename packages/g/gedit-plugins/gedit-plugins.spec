@@ -1,7 +1,7 @@
 #
 # spec file for package gedit-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gedit-plugins
-Version:        3.34.0
+Version:        3.34.1
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
@@ -224,6 +224,15 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/session-saver.plugin
 %description -n gedit-plugin-session-saver
 The gedit session-saver plugin
 
+%package -n gedit-plugin-synctex
+Summary:        Gedit synctex plugin
+Group:          Productivity/Text/Editors
+Requires:       %{name}-data = %{version}
+Provides:       gedit-plugins:%{_libdir}/gedit/plugins/synctex.plugin
+
+%description -n gedit-plugin-synctex
+The gedit synctex plugin
+
 %package -n gedit-plugin-terminal
 Summary:        Gedit terminal plugin
 Group:          Productivity/Text/Editors
@@ -386,6 +395,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gedit/plugins/sessionsaver/
 %{_libdir}/gedit/plugins/sessionsaver.plugin
 %{_libdir}/gedit/plugins/sessionsaver/
+
+%files -n gedit-plugin-synctex
+# synctex
+%{_datadir}/metainfo/gedit-synctex.metainfo.xml
+%{_libdir}/gedit/plugins/synctex.plugin
+%{_libdir}/gedit/plugins/synctex/
 
 %files -n gedit-plugin-terminal
 # terminal
