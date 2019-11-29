@@ -595,4 +595,41 @@
     <comment></comment>
     <requestid>686192</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>ab4d18a2a40b718015a2d4ca01094a87</srcmd5>
+    <version>1.12.0</version>
+    <time>1575039359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.0
+  + Modem interface:
+    - Updated logic to avoid assuming that setting bands or modes
+      is immediate, the daemon will now actively monitor for those
+      updates to happen before returning success.
+  + 3GPP interface:
+    - libmm-glib: deprecated the mm_pco_list_free() helper method.
+  + Simple interface:
+    - api,libmm-glib: deprecated the 'subscription state' property.
+  + Location interface:
+    - Fixed 'unknown' lat/long/alt numeric values.
+    - Added support for MSB A-GPS in addition to MSA A-GPS.
+  + Voice interface:
+    - Improved voice call management with call id detection and
+      tracking.
+    - Improved detailed call state transitions on generic modems
+      that support call list polling.
+    - Added support for GSM supplementary services, including call
+      waiting, call transfer, call deflection, multiparty calls...
+    - Added emergency call support, allowing voice call to
+      emergency numbers even without SIM or with SIM-PIN locked.
+    - Deprecated all properties except for 'number' in the
+      CreateCall() method.
+  + Messaging interface:
+    - Updated to report SMS timestamps in correct ISO8601 format.
+  + Bearer:
+    - Improved unused CID lookup to allow selecting non-sequential
+      CIDs.
+    - Disabled all AT protocol based context monitoring when PPP
+      is used for the connection, in order to properly sync with (forwarded request 746198 from mnhauke)</comment>
+    <requestid>746228</requestid>
+  </revision>
 </revisionlist>

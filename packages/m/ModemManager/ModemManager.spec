@@ -18,7 +18,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           ModemManager
-Version:        1.10.0
+Version:        1.12.0
 Release:        0
 Summary:        DBus interface for modem handling
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(mbim-glib) >= 1.18.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
-BuildRequires:  pkgconfig(qmi-glib) >= 1.22.0
+BuildRequires:  pkgconfig(qmi-glib) >= 1.24.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       hicolor-icon-theme
@@ -117,6 +117,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %find_lang ModemManager %{name}.lang
 
+%check
+make %{?_smp_mflags} check
+
 %pre
 %service_add_pre ModemManager.service
 
@@ -145,6 +148,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %{_datadir}/dbus-1/system-services/org.freedesktop.ModemManager1.service
 %{_datadir}/icons/hicolor/*/*/ModemManager.png
 %{_datadir}/polkit-1/actions/org.freedesktop.ModemManager1.policy
+%dir %{_datadir}/ModemManager
+%{_datadir}/ModemManager/mm-dell-dw5821e-carrier-mapping.conf
 %{_udevdir}/rules.d/*-mm-*.rules
 %{_unitdir}/ModemManager.service
 %{_mandir}/man1/mmcli.1%{?ext_man}
