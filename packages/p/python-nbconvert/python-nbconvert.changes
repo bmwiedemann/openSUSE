@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:32:59 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.6.1
+  + New Features
+    * Add support for alt tags for jpeg and png images
+    * Allow HTML header anchor text to be HTML
+    * Change RegExRemove to remove code cells with output
+    * Added cell tag data attributes to HTML exporter
+  + Fixing Problems
+    * Update svg2pdf.py to search the PATH for inkscape
+    * Fix latex dependencies installation command for Ubuntu systems
+  + Testing, Docs, and Builds
+    * Added Circle CI builds for documentation
+    * Fix typo in argument name in docstring (TagRemovePreprocessor)
+    * Changelog typo fix
+    * Updated API page for TagRemovePreprocessor and TemplateExporter
+    * Added remove_input_tag traitlet to the docstring
+
+-------------------------------------------------------------------
 Sun Aug 11 03:24:23 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 5.6.0

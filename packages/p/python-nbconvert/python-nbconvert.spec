@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define doc_ver 5.6.0
+%define doc_ver 5.6.1
 Name:           python-nbconvert
-Version:        5.6.0
+Version:        5.6.1
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause
@@ -41,8 +41,8 @@ BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module entrypoints >= 0.2.2}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter_client >= 5.3.1}
-BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module jupyter-client >= 5.3.1}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module mistune >= 0.7.4}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nbformat >= 4.4}
@@ -59,8 +59,8 @@ Requires:       python-Pygments
 Requires:       python-bleach
 Requires:       python-defusedxml
 Requires:       python-entrypoints >= 0.2.2
-Requires:       python-jupyter_core
-Requires:       python-jupyter_client >= 5.3.1
+Requires:       python-jupyter-core
+Requires:       python-jupyter-client >= 5.3.1
 Requires:       python-mistune >= 0.7.4
 Requires:       python-nbformat >= 4.4
 Requires:       python-pandocfilters >= 1.4.1
@@ -83,8 +83,8 @@ This package provides the python interface.
 %package     -n jupyter-nbconvert
 Summary:        Conversion of Jupyter Notebooks
 Requires:       jupyter-ipykernel
-Requires:       jupyter-jupyter_client >= 4.2
-Requires:       jupyter-jupyter_core
+Requires:       jupyter-jupyter-client >= 4.2
+Requires:       jupyter-jupyter-core
 Requires:       jupyter-nbformat >= 4.4
 Requires:       python3-nbconvert = %{version}
 Conflicts:      python3-jupyter_nbconvert < 5.5.0
