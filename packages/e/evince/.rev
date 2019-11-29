@@ -1058,4 +1058,12 @@
     <comment> (forwarded request 746058 from iznogood)</comment>
     <requestid>746225</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>5e1c5ef46c0c65f51be8df686730a9e7</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039429</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750455 from iznogood)</comment>
+    <requestid>750945</requestid>
+  </revision>
 </revisionlist>
