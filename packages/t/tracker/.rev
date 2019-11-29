@@ -1020,4 +1020,12 @@
     <comment></comment>
     <requestid>738473</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>9daa4da2a90f2ab166a73b398a3fe3f0</srcmd5>
+    <version>2.3.1</version>
+    <time>1575039531</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable test suite / %check section. (forwarded request 751073 from dimstar)</comment>
+    <requestid>751358</requestid>
+  </revision>
 </revisionlist>

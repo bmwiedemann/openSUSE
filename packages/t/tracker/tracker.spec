@@ -1,7 +1,7 @@
 #
 # spec file for package tracker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -232,6 +232,9 @@ mkdir -p %{buildroot}%{_datadir}/tracker/icons/
 %fdupes %{buildroot}%{_datadir}/vala/
 %fdupes %{buildroot}%{_datadir}/gtk-doc
 rm -f %{buildroot}%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.a
+
+%check
+%meson_test
 
 %post -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
 %postun -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig

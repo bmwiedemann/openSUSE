@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:46:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable test suite / %check section.
+
+-------------------------------------------------------------------
 Sat Oct 12 16:21:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.3.1:
@@ -181,7 +186,8 @@ Wed Dec 19 13:27:05 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Nov  8 14:13:28 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add tracker-sqlte-3.25-rename-tables.patch: drop FTS table/view
-  before ontology update (glgo#GNOME/tracker#40, boo#1110090)
+  before ontology update (glgo#GNOME/tracker#40, boo#1110090,
+  boo#1131229)
 
 -------------------------------------------------------------------
 Wed Nov  7 06:52:58 UTC 2018 - bjorn.lie@gmail.com
@@ -225,7 +231,7 @@ Thu Aug 16 09:14:00 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 2.1.2:
   + libtracker-sparql:
-    - Delete TrackerResource elements one by one.
+    - Delete TrackerResource elements one by one (boo#1123869).
     - Fix compilation with C++.
   + build:
     - Fixes for FreeBSD.
