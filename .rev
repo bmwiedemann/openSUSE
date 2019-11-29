@@ -1575,4 +1575,12 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <user>dimstar_suse</user>
     <comment>Revert - https://bugzilla.opensuse.org/show_bug.cgi?id=1155624</comment>
   </revision>
+  <revision rev="195" vrev="16">
+    <srcmd5>564499e6b59334b2487c4e397513e63f</srcmd5>
+    <version>1.1.12</version>
+    <time>1575039382</time>
+    <user>dimstar_suse</user>
+    <comment>handle tumbleweed upgrade in update-packages as well so that it doesn't break other component. (forwarded request 750038 from JonathanKang)</comment>
+    <requestid>750926</requestid>
+  </revision>
 </revisionlist>

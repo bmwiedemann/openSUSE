@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -60,6 +60,12 @@ Patch8:         PackageKit-zypp-get-updates-dup-or-up.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch gh#hughsie/PackageKit#345 sckang@suse.com -- zypp: Don't set upgrade mode in update-packages
 Patch9:         PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch
 Patch10:        zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-upgrade-system.patch bsc#1155638, bsc#1154973, gh#hughsie/PackageKit/commit/d060dd24 sckang@suse.com -- zypp: implement upgrade-system method
+Patch11:        PackageKit-zypp-upgrade-system.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-get-files-string-array.patch gh#hughsie/PackageKit#351 sckang@suse.com -- zypp: pass an array of strings to pk_backend_job_files()
+Patch12:        PackageKit-zypp-get-files-string-array.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-update-packages-in-all-openSUSE.patch sckang@suse.com -- Handle Tumbleweed upgrade in update-packages as well so that it doesn't break other components.
+Patch13:        PackageKit-zypp-update-packages-in-all-openSUSE.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  fdupes
