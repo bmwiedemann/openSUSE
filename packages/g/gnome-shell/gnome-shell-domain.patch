@@ -333,7 +333,7 @@ Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
 +                                                    }));
 +        this._updateCancelButton();
 +        this._showPrompt();
-+    },
++    }
 +
      _startSession(serviceName) {
          this._bindOpacity();
@@ -345,7 +345,7 @@ Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
 +    _hideUserListAskForDomainUsernameAndBeginVerification() {
 +        this._hideUserList();
 +        this._askForDomainUsernameAndBeginVerification();
-+    },
++    }
 +
      _hideUserListAndBeginVerification() {
          this._hideUserList();

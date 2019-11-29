@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.34.1+7
+Version:        3.34.1+14
 Release:        0
 Summary:        GNOME Shell
 License:        GPL-2.0-or-later
@@ -95,7 +95,7 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 0.13.2
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.8
-BuildRequires:  pkgconfig(libecal-2.0) >= 3.5.3
+BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.2
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
 BuildRequires:  pkgconfig(libmutter-5) >= 3.33.92

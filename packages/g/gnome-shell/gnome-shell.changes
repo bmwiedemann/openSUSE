@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:58:13 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Update gnome-shell-domain.patch to fix syntax errors.
+
+-------------------------------------------------------------------
+Tue Nov 19 12:09:59 UTC 2019 - dimstar@opensuse.org
+
+- Update to version 3.34.1+14:
+  * windowManager: Replace left-over calls to _removeEffect()
+  * Update Russian translation
+  * windowManager: Complete interrupted size change effects
+  * windowManager: Use Sets to track ongoing effects
+  * ci: Fix checking out mutter on stable branches
+  * theme: Adjust system-menu-action buttons
+  * calendar-server: Uses wrong timezone for event times
+
+-------------------------------------------------------------------
 Fri Nov  1 08:03:00 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Rebase patch gnome-shell-domain.patch and
@@ -425,7 +442,7 @@ Thu Feb 21 12:00:59 UTC 2019 - bjorn.lie@gmail.com
   + Remove top bar translucency.
   + Support emojis and keypads in on-screen keyboard.
   + Don't allow popups to re-enable keyboard shortcuts on lock
-    screen (CVE-2019-3820).
+    screen (bsc#1124493, glgo#GNOME/gnome-shell#851, CVE-2019-3820).
   + Replace app menu.
   + Include commonly copied+pasted extension helpers.
   + Misc. bug fixes and cleanups: glgo#GNOME/gnome-shell#780,
