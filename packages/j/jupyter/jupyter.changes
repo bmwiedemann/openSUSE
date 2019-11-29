@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 17:40:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- jupyter_core has been renamed to jupyter-core
+- jupyter_client has been renamed to jupyter-client
+
+-------------------------------------------------------------------
 Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Rename to to match jupyter package naming guidelines.

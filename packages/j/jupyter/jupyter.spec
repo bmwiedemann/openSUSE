@@ -29,15 +29,17 @@ Source2:        https://buildmedia.readthedocs.org/media/htmlzip/jupyter/latest/
 BuildRequires:  fdupes
 BuildRequires:  jupyter-ipykernel
 BuildRequires:  jupyter-ipywidgets
+BuildRequires:  jupyter-jupyter-client
+BuildRequires:  jupyter-jupyter-core
 BuildRequires:  jupyter-jupyter_console
-BuildRequires:  jupyter-jupyter_core
 BuildRequires:  jupyter-nbconvert
 BuildRequires:  jupyter-notebook
 BuildRequires:  jupyter-qtconsole
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  unzip
-Requires:       jupyter-jupyter_core
+Requires:       jupyter-jupyter-client
+Requires:       jupyter-jupyter-core
 Recommends:     jupyter-ipykernel
 Recommends:     jupyter-ipywidgets
 Recommends:     jupyter-jupyter_console
@@ -63,16 +65,16 @@ can be installed separately.
 %package        doc
 Summary:        HTML documentation for %{name}
 Group:          Development/Languages/Python
-Provides:       %{name}-doc-pdf = %{version}
 Provides:       %{name}-doc-html = %{version}
+Provides:       %{name}-doc-pdf = %{version}
 Provides:       %{python_module %{name}-doc = %{version}}
-Provides:       %{python_module %{name}-doc-pdf = %{version}}
 Provides:       %{python_module %{name}-doc-html = %{version}}
+Provides:       %{python_module %{name}-doc-pdf = %{version}}
 # Change from <= to < when (and if) there is a next release after 1.0.0
-Obsoletes:      %{name}-doc-pdf <= %{version}
 Obsoletes:      %{name}-doc-html <= %{version}
-Obsoletes:      %{python_module %{name}-doc-pdf <= %{version}}
+Obsoletes:      %{name}-doc-pdf <= %{version}
 Obsoletes:      %{python_module %{name}-doc-html <= %{version}}
+Obsoletes:      %{python_module %{name}-doc-pdf <= %{version}}
 
 %description    doc
 Documentation and help files for %{name}.

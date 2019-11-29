@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           jupyter-filesystem
 Url:            https://jupyter.org/
 Version:        20190823
-%define tar_ver 1.0.0
 Release:        0
+%define tar_ver 1.0.0
 Summary:        Common directories shared by Jupyter packages
+License:        BSD-3-Clause
+Group:          System/Fhs
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter/jupyter-%{tar_ver}.tar.gz
 Source10:       macros.jupyter_core
 Source11:       macros.jupyter_notebook
 Source12:       macros.jupyterlab
-License:        BSD-3-Clause
-Group:          System/Fhs
 
 %description
 This package provides common directories and macros used by many 
@@ -35,9 +36,10 @@ jupyter packages.
 
 %package     -n jupyter-jupyter_core-filesystem
 Summary:        Common directories shared by Jupyter packages
-Provides:       jupyter-jupyter_core-macros-devel = %{version}
+Group:          System/Fhs
 Provides:       %{python_module jupyter_core-filesystem = %{version}}
 Provides:       %{python_module jupyter_core-macros-devel = %{version}}
+Provides:       jupyter-jupyter_core-macros-devel = %{version}
 
 %description -n jupyter-jupyter_core-filesystem
 This package provides common directories and macros used by many 
@@ -52,11 +54,12 @@ jupyter_core.
 
 %package     -n jupyter-notebook-filesystem
 Summary:        Common directories shared by Jupyter notebook packages
+Group:          System/Fhs
 Requires:       jupyter-jupyter_core-filesystem = %{version}
 Requires:       python-rpm-macros
-Provides:       jupyter-notebook-macros-devel = %{version}
 Provides:       %{python_module notebook-filesystem = %{version}}
 Provides:       %{python_module notebook-macros-devel = %{version}}
+Provides:       jupyter-notebook-macros-devel = %{version}
 
 %description -n jupyter-notebook-filesystem
 This package provides common directories and macros used by many 
@@ -84,10 +87,11 @@ the Jupyter notebook.
 
 %package     -n jupyter-jupyterlab-filesystem
 Summary:        Common directories shared by JupyterLab packages
+Group:          System/Fhs
 Requires:       jupyter-jupyter_core-filesystem = %{version}
-Provides:       jupyter-jupyterlab-macros-devel = %{version}
 Provides:       %{python_module jupyterlab-filesystem = %{version}}
 Provides:       %{python_module jupyterlab-macros-devel = %{version}}
+Provides:       jupyter-jupyterlab-macros-devel = %{version}
 # jupyterlab-widgets is no longer available as a python package
 Provides:       jupyter-jupyterlab-widgets = 0.7
 Obsoletes:      jupyter-jupyterlab-widgets < 0.7
@@ -140,7 +144,6 @@ mkdir -p %{buildroot}%{_jupyter_nb_tree_confdir}
 # jupyterlab directories
 mkdir -p %{buildroot}%{_jupyter_lab_dir}
 mkdir -p %{buildroot}%{_jupyter_labextensions_dir}
-
 
 %files -n jupyter-jupyter_core-filesystem
 %license LICENSE
