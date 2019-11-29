@@ -34,4 +34,12 @@
   to upgrade enchant-backends in baselibs.conf. (forwarded request 746628 from fcrozat)</comment>
     <requestid>747638</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8665e1b21990c2ec737c46acfb5b23c5</srcmd5>
+    <version>1.6.1</version>
+    <time>1575039369</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 749498 from dimstar)</comment>
+    <requestid>750921</requestid>
+  </revision>
 </revisionlist>
