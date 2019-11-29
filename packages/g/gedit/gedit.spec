@@ -1,7 +1,7 @@
 #
 # spec file for package gedit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        3.34.0
+Version:        3.34.1
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
