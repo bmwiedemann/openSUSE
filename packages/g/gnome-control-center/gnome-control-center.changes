@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:22:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Applications: Fix a memory leak.
+  + Background: Fix crash if a BgRecentSource is unreffed during an
+    async operation.
+  + Display: Use correct mode for supported scale checking.
+  + Printer: Provide a scheme to address parser.
+  + User Accounts: Fix password dialog crashes and hangs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 19 08:19:16 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Drop patches fixed upstream:
+  + control-center-fix-crash-due-to-object-name-clashes.patch
+  + control-center-fix-crash-opening-hidden-network.patch
+  + control-center-sharing-fix-margin-issue.patch
+  + gnome-control-center-fix-users-crash.patch
+  + gnome-control-center-periodic-wifi-scan.patch
+  + gnome-control-center-users-empty-state.patch
+
+-------------------------------------------------------------------
 Fri Nov 15 04:40:33 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Rebase gnome-control-center-bring-back-firewall-zone.patch
@@ -119,11 +142,20 @@ Fri May 24 23:40:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Updated translations.
 
 -------------------------------------------------------------------
+Fri May 17 07:01:42 UTC 2019 - Chingkai <qkzhu@suse.com>
+
+- Update gnome-control-center-more-power-button-actions.patch:
+  Rename 'Shutdown' to 'Force Off' and adjust the order by severity
+  (bsc#1091796).
+
+-------------------------------------------------------------------
 Thu May 16 08:57:24 UTC 2019 - Jonathan Kang <sckang@suse.com>
 
 - Add control-center-fix-mtu-label.patch: network: Fix mtu label
   not requesting enough space (glgo#GNOME/gnome-control-center!475,
   bsc#1040055).
+- Modify gnome-control-center-bring-back-firewall-zone.patch:
+  rebase patch with control-center-fix-mtu-label.patch applied.
 
 -------------------------------------------------------------------
 Thu May  9 06:52:13 UTC 2019 - Jonathan Kang <sckang@suse.com>
@@ -209,6 +241,14 @@ Tue Mar  5 06:10:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
     - Allow bigger custom avatars.
   + Updated translations.
 - Add pkgconfig(udisks2) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Feb 28 07:49:15 UTC 2019 - sckang@suse.com
+
+- Modify gnome-control-center-bring-back-firewall-zone.patch,
+  Add control-center-network-fix-ce-apply-button.patch:
+  network: disable the "Apply" button until a change has been made
+  (glgo#GNOME/gnome-control-center!402 bsc#1040054).
 
 -------------------------------------------------------------------
 Wed Feb 27 02:50:29 UTC 2019 - sckang@suse.com
@@ -316,6 +356,12 @@ Thu Nov  1 00:03:14 UTC 2018 - bjorn.lie@gmail.com
   + Region: Fix double-free when closing the input chooser dialog.
   + Wi-Fi: Disable periodic scan only when Wi-Fi is disabled.
   + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 23 02:57:44 UTC 2018 - sckang@suse.com
+
+- Add gnome-control-center-periodic-wifi-scan.patch: Request
+  periodic Wi-Fi scans (bsc#1097347, bgo#793647).
 
 -------------------------------------------------------------------
 Wed Sep 26 11:12:34 UTC 2018 - bjorn.lie@gmail.com
@@ -458,6 +504,11 @@ Fri May 25 00:25:57 UTC 2018 - sckang@suse.com
   wifi: only manage Wi-Fi devices managed by NM (bsc#1079320).
 
 -------------------------------------------------------------------
+Sat May 12 10:54:19 UTC 2018 - lnussel@suse.de
+
+- BuildRequire translation-update-upstream also for Leap
+
+-------------------------------------------------------------------
 Tue May  8 10:21:28 UTC 2018 - qkzhu@suse.com
 
 - Drop gnome-control-center-890979-change-remote-passwd.patch:
@@ -466,6 +517,23 @@ Tue May  8 10:21:28 UTC 2018 - qkzhu@suse.com
   gnome-control-center-more-power-button-actions.patch and
   gnome-control-center-bring-back-firewall-zone.patch in Leap15
   (bsc#1091305).
+
+-------------------------------------------------------------------
+Tue May  8 07:17:49 UTC 2018 - sckang@suse.com
+
+- Add control-center-fix-crash-due-to-object-name-clashes.patch and
+  control-center-fix-crash-opening-hidden-network.patch: fix crash
+  due to object name clashes in NM and g-c-c
+  (bsc#1083668, bgo#785099).
+- Add control-center-sharing-fix-margin-issue.patch: set end margin
+  for labels in Networks list box (bsc#1087134).
+
+-------------------------------------------------------------------
+Thu Apr 26 18:50:49 UTC 2018 - mgorse@suse.com
+
+- Add gnome-control-center-users-empty-state.patch and
+  gnome-control-center-fix-users-crash.patch: fix crash opening
+  users as root (bsc#1087583 bgo#773673).
 
 -------------------------------------------------------------------
 Tue Apr 17 09:44:03 UTC 2018 - bjorn.lie@gmail.com
@@ -5913,6 +5981,11 @@ Sat Jan 17 01:54:00 CET 2009 - crrodriguez@suse.de
 
 - remove "la" files, baby step to clean up all references
   to libavahi-*.la
+
+-------------------------------------------------------------------
+Fri Jan  9 14:04:20 CST 2009 - federico@novell.com
+
+- Remove gnome-control-center-randr-gerror.diff. Fixed upstream
 
 -------------------------------------------------------------------
 Fri Jan  9 14:04:20 CST 2009 - federico@novell.com
