@@ -521,4 +521,12 @@
     <comment>- Add gnome-boxes-fix-build-vala.patch: Fix build with new vala. (forwarded request 747440 from iznogood)</comment>
     <requestid>747642</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>51a18ac3bdbaae8cbe50fbbc8b2e9040</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039443</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 750498 from iznogood)</comment>
+    <requestid>750950</requestid>
+  </revision>
 </revisionlist>

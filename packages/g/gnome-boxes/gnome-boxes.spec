@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-boxes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,15 +22,13 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
 Source0:        https://download.gnome.org/sources/gnome-boxes/3.34/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-boxes-fix-build-vala.patch -- Fix build with new vala
-Patch0:         gnome-boxes-fix-build-vala.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
@@ -173,7 +171,7 @@ translation-update-upstream
 
 %install
 %meson_install
-%suse_update_desktop_file org.gnome.Boxes %{name} Emulator
+%suse_update_desktop_file -r org.gnome.Boxes %{name} GNOME GTK System Emulator
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
