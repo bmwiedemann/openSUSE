@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %bcond_with     test
 Name:           python-altair-widgets
-Version:        0.1.2
+Version:        0.2.2
 Release:        0
 Summary:        Interactive visualization package for statistical data for Python
 License:        BSD-3-Clause
@@ -29,18 +30,18 @@ Source:         https://files.pythonhosted.org/packages/source/a/altair_widgets/
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-altair
+Requires:       python-altair >= 2.0.0
 Requires:       python-ipython
-Requires:       python-ipywidgets
+Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-pandas
 Requires:       python-vega >= 0.4.4
 Provides:       python-jupyter_altair-widgets = %{version}
 Obsoletes:      python-jupyter_altair-widgets <= %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module altair}
+BuildRequires:  %{python_module altair >= 2.0.0}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module vega >= 0.4.4}

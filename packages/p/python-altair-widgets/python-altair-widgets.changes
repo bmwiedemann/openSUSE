@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 27 15:40:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to missing python2 support in dependencies.
+
+-------------------------------------------------------------------
+Tue Nov 12 16:54:17 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.2
+  * MAINT: get working with latest versions of Altair and ipywidgets
+  * BUG: work with current versions of altair and ipywidgets
+  * Instead of using a hard-coded list, pull the channels from altair API
+  * MAINT: disable options button
+  * Pulling functions from the altair API
+  * Pulling mark names from the altair API
+  * Pulling the typecodes from the altair API
+
+-------------------------------------------------------------------
 Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Rename to to match python package naming guidelines.
