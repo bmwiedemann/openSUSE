@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov 28 17:41:02 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Drop matrix-synapse-ldap from enabled conditional requirements, because the
+  package is not longer available in openSUSE repos. If someone really wants
+  the feature they can help re-package it.
+
+-------------------------------------------------------------------
+Thu Nov 28 12:04:57 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.6.1.
+
+  * Clean up local threepids from user on account deactivation.
+  * Fix startup error when http proxy is defined.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
+Thu Nov 28 08:48:16 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.6.0.
+
+  + Add federation support for cross-signing.
+  + Increase default room version from 4 to 5, thereby enforcing server key
+    validity period checks.
+  + Add support for outbound http proxying via http_proxy/HTTPS_PROXY env vars.
+  + Implement label-based filtering on /sync and /messages (MSC2326).
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Mon Nov 18 11:16:03 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 1.5.1.

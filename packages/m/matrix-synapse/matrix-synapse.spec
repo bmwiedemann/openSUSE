@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-synapse
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
 %bcond_without email_notifs
-%bcond_without ldap
 %bcond_without postgres
 %bcond_without saml
 %bcond_without url_preview
 %bcond_without jwt
+# matrix-synapse-ldap isn't packaged on openSUSE.
+%bcond_with    ldap
 # txacme is broken in openSUSE.
 %bcond_with    acme
 # sentry-sdk isn't packaged on openSUSE.
@@ -43,7 +44,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.5.1
+Version:        1.6.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -52,7 +53,6 @@ URL:            https://github.com/matrix-org/synapse
 Source0:        %{pkgname}-%{version}.tar.xz
 Source50:       %{pkgname}.service
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module psutil >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module treq >= 15.1.0}
 BuildRequires:  fdupes
@@ -80,7 +80,6 @@ Requires:       python-msgpack >= 0.5.2
 Requires:       python-netaddr >= 0.7.18
 Requires:       python-phonenumbers >= 8.2.0
 Requires:       python-prometheus_client >= 0.4.0
-Requires:       python-psutil >= 2.0.0
 Requires:       python-pyOpenSSL >= 16.0.0
 Requires:       python-pyasn1 >= 0.1.9
 Requires:       python-pyasn1-modules >= 0.0.7
