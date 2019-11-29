@@ -1452,4 +1452,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>744682</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>7b9443ce768fbe2e10615763469e106a</srcmd5>
+    <version>3.34.1+14</version>
+    <time>1575039507</time>
+    <user>dimstar_suse</user>
+    <comment>screen (bsc#1124493, glgo#GNOME/gnome-shell#851, CVE-2019-3820). (forwarded request 751049 from mgorse)</comment>
+    <requestid>751356</requestid>
+  </revision>
 </revisionlist>
