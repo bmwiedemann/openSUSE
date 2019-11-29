@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Test files missing
+%define         skip_python2 1
 %bcond_with     test
 Name:           python-jupyter_highlight_selected_word
 Version:        0.2.0

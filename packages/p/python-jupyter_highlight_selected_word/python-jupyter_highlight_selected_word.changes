@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 12 17:38:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+
+-------------------------------------------------------------------
 Wed May  1 18:52:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Split jupyter components into own package
