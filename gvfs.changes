@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:57:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.2:
+  + gdbus: Add workaround for deadlocks when cancelling jobs.
+
+-------------------------------------------------------------------
+Tue Nov 19 08:05:54 UTC 2019 - QK ZHU <qkzhu@suse.com>
+
+- Drop fixed upstream patches by version 1.40.2:
+  + gvfs-CVE-2019-12447.patch.
+  + gvfs-CVE-2019-12448.patch.
+  + gvfs-CVE-2019-12449.patch.
+  + gvfs-CVE-2019-12795.patch.
+
+-------------------------------------------------------------------
 Mon Oct 21 07:45:59 UTC 2019 - QK ZHU <qkzhu@suse.com>
 
 - Rebase SLE patches gvfs-nds.patch and gvfs-nvvfs.patch for version
@@ -94,6 +109,34 @@ Wed Jul 17 10:07:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + gmountsource: Fix deadlocks in synchronous API.
   + afp: Fix afp backend crash when no username supplied.
   + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 21 06:32:04 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12795.patch: Backport from upstream commit
+  70dbfc68 to check that the connecting client is the same user
+  (boo#1137930, CVE-2019-12795).
+
+-------------------------------------------------------------------
+Fri Jun 21 06:13:59 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12447.patch: Backport from upstream commit
+  3895e09d and daf1163a to fix a mishandles file ownership issue
+  (boo#1136986, CVE-2019-12447).
+
+-------------------------------------------------------------------
+Tue Jun 18 09:07:16 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12448.patch: Backport from upstream commit
+  5cd76d62 to add query_info_on_read/write functionality
+  (boo#1136981, CVE-2019-12448).
+
+-------------------------------------------------------------------
+Tue Jun 18 08:18:18 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12449.patch: Backport from upstream commit
+  d5dfd823 to ensure correct ownership when moving to file:// uri
+  (boo#1136992, CVE-2019-12449).
 
 -------------------------------------------------------------------
 Fri May 17 09:26:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
