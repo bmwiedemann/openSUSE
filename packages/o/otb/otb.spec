@@ -1,7 +1,7 @@
 #
 # spec file for package otb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2017 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,52 +18,45 @@
 
 
 %define tarname OTB
-%define filerelease 6.6
-%define libversion 6
+%define fullversion 7.0.0
+%define filerelease 7.0
+%define libversion 7
+# OTBTemporalGapFilling https://gitlab.orfeo-toolbox.org/jinglada/temporalgapfilling/ - latest git rev. (cmake follows master head)
+%define tgfrev 0010532
 
 # Enable remote module by default
 %bcond_without enable_remote_module
 
 Name:           otb
-Version:        6.6.1
+Version:        %{fullversion}
 Release:        0
 Summary:        A C++ library for remote sensing image processing
 License:        Apache-2.0
 Group:          Productivity/Scientific/Other
-Url:            http://www.orfeo-toolbox.org
+URL:            http://www.orfeo-toolbox.org
 Source0:        https://www.orfeo-toolbox.org/packages/archives/OTB/%{tarname}-%{version}.tar.xz
-# OTBTemporalGapFilling - http://tully.ups-tlse.fr/jordi/temporalgapfilling.git - git rev. selected by cmake file
-Source10:       temporalgapfilling-4fc4a71.tar.xz
+Source10:       temporalgapfilling-%{tgfrev}.tar.xz
 # PATCH-FIX-UPSTREAM - otb-fix_lib64_handling.patch: fix lib64 path handling
 Patch0:         otb-fix_lib64_handling.patch
-# PATCH-FIX-UPSTREAM - otb-fix_VERSION_file_install.patch: fix install path of VERSION
-Patch1:         otb-fix_VERSION_file_install.patch
 # PATCH-FIX-UPSTREAM https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/merge_requests/625
 Patch2:         otb-6.6.1-reproducible.patch
 # PATCH-FIX-OPENSUSE cmake file wants to clone the GIT repo. We are offline, so patch cmake file to be able to use our tarball instead of git clone
 Patch10:        fix_non_git_usage.patch
 BuildRequires:  boost-devel
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.10.2
 BuildRequires:  fdupes
-BuildRequires:  xz
-%if 0%{?suse_version} < 1500
-# With the default gcc 4.8, the compilation fails on Leap 42.x
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gdal-devel
 BuildRequires:  geotiff-devel
 BuildRequires:  insighttoolkit-devel
 BuildRequires:  libOpenThreads-devel
 BuildRequires:  libcurl-devel
-# does not work with GDAL3 yet (on next major update replace this and the requires for devel with gdal-devel again)
-BuildRequires:  libgdal20-devel
 BuildRequires:  libproj-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libsvm-devel
+BuildRequires:  xz
 %if %{with enable_remote_module}
 BuildRequires:  git
 # GSL is needed by OTBTemporalGapFilling module
@@ -75,24 +68,18 @@ BuildRequires:  libsvm2
 BuildRequires:  libtool
 BuildRequires:  muparser-devel
 BuildRequires:  muparserx-devel
-BuildRequires:  ossim-devel
-BuildRequires:  python2-devel
-BuildRequires:  qwt6-devel
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python2-numpy-devel
-%else
-BuildRequires:  python-numpy-devel
-%endif
+# Actually opencv 4 should be supported, but not 4.1
 %if 0%{?suse_version} >= 1550
 BuildRequires:  opencv3-devel
 %else
-BuildRequires:  opencv-devel < 4.0
+BuildRequires:  opencv-devel < 4.1
 %endif
+BuildRequires:  ossim-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
+BuildRequires:  qwt6-devel
 BuildRequires:  swig
 BuildRequires:  tinyxml-devel
-Obsoletes:      OrfeoToolbox
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -105,7 +92,7 @@ This package contains the command line tools illustrating OTB features.
 
 %package devel
 Summary:        ORFEO Toolbox development files
-Group:          Productivity/Scientific/Other
+Group:          Development/Libraries/C and C++
 Requires:       boost-devel
 Requires:       cmake
 Requires:       gcc
@@ -115,7 +102,7 @@ Requires:       insighttoolkit-devel
 Requires:       lib%{name}%{libversion} = %{version}
 Requires:       libOpenThreads-devel
 Requires:       libcurl-devel
-Requires:       libgdal20-devel
+Requires:       gdal-devel
 Requires:       libgeotiff-devel
 Requires:       libglfw-devel
 Requires:       libqt5-linguist-devel
@@ -125,10 +112,11 @@ Requires:       libsvm2
 Requires:       libtool
 Requires:       muparser-devel
 Requires:       muparserx-devel
+# Actually opencv 4 should be supported, but not 4.1
 %if 0%{?suse_version} >= 1550
 Requires:       opencv3-devel
 %else
-Requires:       opencv-devel < 4.0
+Requires:       opencv-devel < 4.1
 %endif
 Requires:       ossim-devel
 Requires:       qwt6-devel
@@ -163,11 +151,9 @@ This package contains the command line applications illustrating OTB features.
 
 %package -n monteverdi
 Summary:        Application based on OrfeoToolbox (OTB) for remote sensing image processing
-Group:          Development/Libraries
+Group:          System/Libraries
 Requires:       lib%{name}%{libversion} = %{version}
 Requires:       otb-qt
-Obsoletes:      monteverdi < %{version}
-Provides:       monteverdi = %{version}
 
 %description -n monteverdi
 Monteverdi is an image processing workshop based on the OTB library. It takes
@@ -178,7 +164,6 @@ file format I/O.
 %package -n lib%{name}%{libversion}
 Summary:        ORFEO Toolbox shared library of image processing algorithms
 Group:          System/Libraries
-Obsoletes:      OrfeoToolbox
 
 %description -n lib%{name}%{libversion}
 ORFEO Toolbox (OTB) is a library of image processing algorithms. OTB
@@ -193,7 +178,6 @@ Monteverdi2 and the OTB applications.
 Summary:        ORFEO Toolbox graphical user interface applications
 Group:          System/Libraries
 Requires:       lib%{name}%{libversion} = %{version}
-Obsoletes:      OrfeoToolbox
 
 %description -n %{name}-qt
 ORFEO Toolbox (OTB) is a library of image processing algorithms. OTB
@@ -204,31 +188,26 @@ general and for high spatial resolution images in particular.
 This package contains the GUI tools illustrating OTB features (using plugins
 provided by otb package).
 
-%package -n python2-%{name}
-Summary:        ORFEO Toolbox Python2 API for applications
-Group:          Development/Languages/Python
-Requires:       lib%{name}%{libversion} = %{version}
-Obsoletes:      OrfeoToolbox
-
-%description -n python2-%{name}
-ORFEO Toolbox Python 2 API for applications.
-
 %package -n python3-%{name}
-Summary:        ORFEO Toolbox Python2 API for applications
+Summary:        ORFEO Toolbox Python3 API for applications
 Group:          Development/Languages/Python
 Requires:       lib%{name}%{libversion} = %{version}
-Obsoletes:      OrfeoToolbox
+Obsoletes:      python2-%{name}
 
 %description -n python3-%{name}
-ORFEO Toolbox Python 3 API for applications.
+ORFEO Toolbox (OTB) is a library of image processing algorithms. OTB
+is based on the medical image processing library ITK and offers
+particular functionalities for remote sensing image processing in
+general and for high spatial resolution images in particular.
+
+This package contains the ORFEO Toolbox Python 3 API for applications.
 
 %prep
 %if %{with enable_remote_module}
 %setup -q -n temporalgapfilling -b 10
 %endif
-%setup -q -n %{tarname}-release-%{filerelease}
+%setup -q -c
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
 %patch10 -p0
 %if %{with enable_remote_module}
@@ -236,17 +215,7 @@ mv ../temporalgapfilling/ Modules/Remote/OTBTemporalGapFilling
 %endif
 
 %build
-# Disable MPI for now since OTB apps do not start easily (we must add MPI libs to LD_LIBRARY_PATH to start apps)
-# # Find MPI
-# if [ -f %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh ]; then
-#   source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
-# fi
-
 %cmake  \
-%if 0%{?suse_version} < 1500
-  -DCMAKE_C_COMPILER=gcc-7 \
-  -DCMAKE_CXX_COMPILER=g++-7 \
-%endif
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
   -DBUILD_SHARED_LIBS:BOOL=ON \
   -DBUILD_EXAMPLES:BOOL=OFF \
@@ -255,7 +224,6 @@ mv ../temporalgapfilling/ Modules/Remote/OTBTemporalGapFilling
   -DOTB_USE_CURL:BOOL=ON \
   -DOTB_USE_LIBKML:BOOL=OFF \
   -DOTB_USE_LIBSVM:BOOL=ON \
-  -DOTB_USE_MAPNIK:BOOL=OFF \
   -DOTB_USE_MPI:BOOL=OFF \
   -DOTB_USE_SPTW:BOOL=ON \
   -DOTB_USE_MUPARSER:BOOL=ON \
@@ -269,13 +237,10 @@ mv ../temporalgapfilling/ Modules/Remote/OTBTemporalGapFilling
   -DOTB_USE_QWT:BOOL=ON \
   -DQWT_INCLUDE_DIR=%{_includedir}/qt5/qwt6 \
   -DOTB_USE_SIFTFAST:BOOL=ON \
-  -DOTB_WRAP_JAVA:BOOL=OFF \
   -DOTB_WRAP_PYTHON:BOOL=ON \
-  -DOTB_WRAP_PYTHON3:BOOL=ON \
   -DOTB_INSTALL_LIBRARY_DIR:STRING=%{_lib} \
-  -DOTB_INSTALL_PYTHON_DIR:STRING=%{_lib}/otb/python \
-  -DOTB_INSTALL_PYTHON3_DIR:STRING=%{_lib}/otb/python3 \
-  -DOTB_INSTALL_APP_DIR:STRING=%{_lib}/otb/applications \
+  -DOTB_INSTALL_PYTHON_DIR:STRING=%{_lib}/otb/python3 \
+  -DOTB_INSTALL_APP_DIR:STRING=%{_lib}/otb%{libversion}/applications \
 %if %{with enable_remote_module}
   -DModule_OTBTemporalGapFilling:BOOL=ON \
 %endif
@@ -284,33 +249,9 @@ mv ../temporalgapfilling/ Modules/Remote/OTBTemporalGapFilling
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
-%cmake_install 
 
-# install -d %%{buildroot}%{_sysconfdir}/ld.so.conf.d
-# LDCONFIG_FILE=%%{buildroot}%{_sysconfdir}/ld.so.conf.d/otb.conf
-# %%if "%%{_lib}" == "lib64"
-# cat > "$LDCONFIG_FILE" <<EOF
-# # Orfeo Toolbox related search paths
-# /usr/lib64/otb
-# EOF
-# %%else
-# cat > "$LDCONFIG_FILE" <<EOF
-# # Orfeo Toolbox related search paths
-# /usr/lib/otb
-# EOF
-# %%endif
-
-# %%if "%%{_lib}" == "lib64"
-# mkdir -p %%{buildroot}/usr/lib64
-# mv %%{buildroot}/usr/lib/* %%{buildroot}/usr/lib64/
-# %%endif
-
-rm -rf %{buildroot}%{_datadir}/doc
-rm -rf %{buildroot}%{_libexecdir}/debug
-rm -rf %{buildroot}/usr/lib/*.a
-# Remove spurious executable bits
-chmod 0644 %{buildroot}/usr/share/applications/monteverdi.desktop
-chmod 0644 %{buildroot}/usr/share/pixmaps/monteverdi.xpm
+%cmake_install
+rm -rf %{buildroot}%{_datadir}/%{name}/swig
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -319,9 +260,15 @@ chmod 0644 %{buildroot}/usr/share/pixmaps/monteverdi.xpm
 %postun -n lib%{name}%{libversion} -p /sbin/ldconfig
 
 %files -n %{name}-bin
+%license LICENSE
+%doc NOTICE PSC.md README.md RELEASE_NOTES.txt
 %defattr(755,root,root,755)
 %{_bindir}/otbcli_*
 %{_bindir}/otbcli
+%{_bindir}/otbTestDriver
+%{_bindir}/otbApplicationLauncherCommandLine
+%{_bindir}/otbApplicationLauncherQt
+%{_bindir}/otbQgisDescriptor
 
 %files -n %{name}-qt
 %defattr(755,root,root,755)
@@ -336,34 +283,21 @@ chmod 0644 %{buildroot}/usr/share/pixmaps/monteverdi.xpm
 %defattr(755,root,root,755)
 %{_bindir}/monteverdi
 %{_bindir}/mapla
+%defattr(644,root,root,755)
 %{_datadir}/applications/monteverdi.desktop
 %{_datadir}/icons/*
 %{_datadir}/pixmaps/monteverdi*
 
 %files -n lib%{name}%{libversion}
 %defattr(644,root,root,755)
-# %config %{_sysconfdir}/ld.so.conf.d/otb.conf
-%dir %{_libdir}/otb/
+%dir %{_libdir}/otb%{libversion}/
 %{_libdir}/*.so.*
-%dir %{_libdir}/otb/applications/
-%{_libdir}/otb/applications/otbapp_*.so
-%defattr(755,root,root,755)
-%{_bindir}/otbTestDriver
-%{_bindir}/otbApplicationLauncherCommandLine
-%{_bindir}/otbApplicationLauncherQt
-%{_bindir}/otbQgisDescriptor
-%dir %{_datadir}/otb
-%dir %{_datadir}/otb/description
-%{_datadir}/otb/description/*.txt
-%{_datadir}/otb/VERSION
-
-%files -n python2-%{name}
-%defattr(644,root,root,755)
-%dir %{_libdir}/otb/python/
-%{_libdir}/otb/python/*
+%dir %{_libdir}/otb%{libversion}/applications/
+%{_libdir}/otb%{libversion}/applications/otbapp_*.so
 
 %files -n python3-%{name}
 %defattr(644,root,root,755)
+%dir %{_libdir}/otb/
 %dir %{_libdir}/otb/python3/
 %{_libdir}/otb/python3/*
 
@@ -372,5 +306,10 @@ chmod 0644 %{buildroot}/usr/share/pixmaps/monteverdi.xpm
 %{_includedir}/OTB-%{filerelease}/
 %{_libdir}/lib*.so
 %{_libdir}/cmake/
+%dir %{_datadir}/otb
+%dir %{_datadir}/otb/description
+%{_datadir}/otb/description/*.txt
+%exclude %{_datadir}/doc
+%doc CONTRIBUTING.md 
 
 %changelog

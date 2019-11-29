@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 19 15:17:32 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to OTB version 7.0.0
+
+  * Documentation:
+    * The Cookbook has been refactored !
+    * The Software guide has been removed, most of its content has been migrated
+      to the Cookbook.
+  * New applications:
+    * ZonalStatistics : Object based statistics computation
+    * TrainVectorRegression , TrainImagesRegression , VectorRegression and
+      ImageRegression : Refactoring of the regression framework, based on
+      the classification framework.
+    * LocalRxDetection and EndmemberNumberEstimation: Hyperspectral image processing.
+  * Other changes includes:
+    * The minimum CMake version required to compile OTB is now 3.10.2 .
+    * The Mosaic Remote Module has been moved inside the OTB.
+    * The Python wrapper support logging.
+    * Python 2 is not supported by the wrapper anymore
+    * The Java wrapper has been removed.
+    * Support for GDAL 3.X has been added, support for GDAL 1.X has been removed.
+    * Support for OpenCV 4 has been added.
+    * OTB has a new continuous integration system.
+    * New SAR sensor Model : CosmoSkymed
+    * A generic functorImageFilter has been added.
+ * Drop obsolete patch: otb-fix_VERSION_file_install.patch
+ * Cleanup spec file a lot
+
+-------------------------------------------------------------------
 Thu Oct 31 23:14:04 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add otb-6.6.1-reproducible.patch: Make build more reproducible.
