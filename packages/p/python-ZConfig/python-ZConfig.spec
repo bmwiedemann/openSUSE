@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZConfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        ZPL-2.1
 Group:          Development/Libraries/Python
 URL:            https://github.com/zopefoundation/ZConfig
 Source:         https://files.pythonhosted.org/packages/source/Z/ZConfig/ZConfig-%{version}.tar.gz
+# UPSTREAM PATCH (partial): gh#zopefoundation/ZConfig#70
+Patch0:         python-38-support.patch
 # Testing requirements:
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module manuel}
@@ -64,6 +66,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n ZConfig-%{version}
+%autopatch -p1
 rm -rf ZConfig.egg-info
 rm doc/make.bat
 # test works only in git repo
