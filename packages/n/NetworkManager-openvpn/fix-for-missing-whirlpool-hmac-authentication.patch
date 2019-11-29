@@ -1,0 +1,24 @@
+Index: NetworkManager-openvpn-1.8.10/properties/nm-openvpn-editor.c
+===================================================================
+--- NetworkManager-openvpn-1.8.10.orig/properties/nm-openvpn-editor.c	2019-11-27 11:25:10.604366570 +0100
++++ NetworkManager-openvpn-1.8.10/properties/nm-openvpn-editor.c	2019-11-27 11:25:12.468366651 +0100
+@@ -912,6 +912,7 @@
+ 		{ NM_OPENVPN_AUTH_SHA384,    N_("SHA-384") },
+ 		{ NM_OPENVPN_AUTH_SHA512,    N_("SHA-512") },
+ 		{ NM_OPENVPN_AUTH_RIPEMD160, N_("RIPEMD-160") },
++		{ NM_OPENVPN_AUTH_WHIRLPOOL, N_("whirlpool") },
+ 	};
+ 
+ 	store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN);
+Index: NetworkManager-openvpn-1.8.10/shared/nm-service-defines.h
+===================================================================
+--- NetworkManager-openvpn-1.8.10.orig/shared/nm-service-defines.h	2019-11-27 11:25:12.468366651 +0100
++++ NetworkManager-openvpn-1.8.10/shared/nm-service-defines.h	2019-11-27 11:26:18.756369541 +0100
+@@ -101,6 +101,7 @@
+ #define NM_OPENVPN_AUTH_SHA256    "SHA256"
+ #define NM_OPENVPN_AUTH_SHA384    "SHA384"
+ #define NM_OPENVPN_AUTH_SHA512    "SHA512"
++#define NM_OPENVPN_AUTH_WHIRLPOOL "whirlpool"
+ 
+ #define NM_OPENVPN_CONTYPE_PASSWORD     "password"
+ #define NM_OPENVPN_CONTYPE_PASSWORD_TLS "password-tls"

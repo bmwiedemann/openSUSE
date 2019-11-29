@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  1 19:42:24 UTC 2019 - stefan.pledl@mesutronic.de
+
+- Enable missing whirlpool HMAC authentication (boo#1132946).
+  + fix-for-missing-whirlpool-hmac-authentication.patch
+
+-------------------------------------------------------------------
 Fri Feb  8 17:31:09 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 1.8.10:

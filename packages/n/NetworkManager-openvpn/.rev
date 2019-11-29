@@ -606,4 +606,12 @@
     <comment></comment>
     <requestid>672889</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>dbd14b6c8a0810c282dfd63454760f69</srcmd5>
+    <version>1.8.10</version>
+    <time>1575039582</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 751281 from dimstar)</comment>
+    <requestid>751365</requestid>
+  </revision>
 </revisionlist>

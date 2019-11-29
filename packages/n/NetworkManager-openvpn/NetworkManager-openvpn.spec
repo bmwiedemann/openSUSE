@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openvpn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager
 Source0:        https://download.gnome.org/sources/NetworkManager-openvpn/1.8/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-OPENSUSE fix-for-missing-whirlpool-hmac-authentication.patch boo#1132946
+Patch0:         fix-for-missing-whirlpool-hmac-authentication.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
