@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ BuildRequires:  pkgconfig(libarchive) >= 2.8.0
 BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ostree-1) >= 2018.7
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
@@ -79,7 +80,6 @@ Recommends:     %{name}-lang = %{version}
 # Remove after openSUSE Leap 42 is out of scope
 Provides:       xdg-app = %{version}
 Obsoletes:      xdg-app < %{version}
-%{?systemd_requires}
 
 %description
 flatpak is a system for building, distributing and running sandboxed desktop
@@ -179,6 +179,8 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-flatpak.conf
 rm -Rf %{buildroot}%{_libexecdir}/systemd/user-environment-generators/
 %endif
 
+mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
+
 %find_lang %{name}
 
 %pre -n system-user-flatpak -f system-user-flatpak.pre
@@ -230,6 +232,7 @@ rm -Rf %{buildroot}%{_libexecdir}/systemd/user-environment-generators/
 %{_mandir}/man5/flatpak-remote.5%{ext_man}
 %{_datadir}/%{name}/
 %config %{_sysconfdir}/profile.d/flatpak.sh
+%{_sysconfdir}/flatpak
 # Own dirs so we don't have to depend on gdm for building.
 %dir %{_datadir}/gdm/
 %dir %{_datadir}/gdm/env.d/
