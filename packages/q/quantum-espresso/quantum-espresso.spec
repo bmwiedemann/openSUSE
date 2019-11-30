@@ -23,28 +23,24 @@
 %define _openmpi 1
 %endif
 
+%if 0%{?suse_version} >= 1550
 %define omp_ver 1
+%else
+%define omp_ver %{nil}
+%endif
 
 %define _mpi %{?_openmpi:openmpi}%{omp_ver} %{?_mvapich2:mvapich2}
 
 Name:           quantum-espresso
-Version:        5.1.2
+Version:        6.4.1
 Release:        0
 Summary:        A suite for electronic-structure calculations and materials modeling
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 Url:            http://www.quantum-espresso.org
-Source0:        http://qe-forge.org/gf/download/frsrelease/185/753/espresso-%{version}.tar.gz
-Source1:        http://qe-forge.org/gf/download/frsrelease/185/760/neb-%{version}.tar.gz
-Source2:        http://qe-forge.org/gf/download/frsrelease/185/755/PHonon-%{version}.tar.gz
-Source3:        http://qe-forge.org/gf/download/frsrelease/185/756/pwcond-%{version}.tar.gz
-Source4:        http://qe-forge.org/gf/download/frsrelease/185/752/atomic-%{version}.tar.gz
-Source5:        http://qe-forge.org/gf/download/frsrelease/185/758/tddfpt-%{version}.tar.gz
-Source6:        http://qe-forge.org/gf/download/frsrelease/185/757/xspectra-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM espresso-implicit-pointer-decl.patch
-Patch0:         espresso-implicit-pointer-decl.patch
-Patch1:         quantum_espresso_add_ppc64le_archi_to_configure.patch
-Patch2:         quantum_espresso_do_not_set_xlf_for_powerpc.patch
+Source0:        https://gitlab.com/QEF/q-e/-/archive/qe-%{version}/q-e-qe-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM backports-6.4.1.git-diff badshah400@gmail.com -- Backported fixes for version 6.4.1 from upstream
+Patch0:         https://gitlab.com/QEF/q-e/wikis/uploads/3e4b6d3844989c02d0ebb03a935e1976/backports-6.4.1.git-diff
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-fortran
@@ -56,7 +52,7 @@ BuildRequires:  openmpi%{omp_ver}-devel
 BuildRequires:  mvapich2-devel
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    ppc
+ExclusiveArch:  x86_64
 
 %description
 Quantum ESPRESSO is an integrated suite of Open-Source computer codes for
@@ -99,13 +95,7 @@ This package contains the nespresso binary compiled with mvapich2 support.
 %endif
 
 %prep
-%setup -q -n espresso-%{version}
-%setup -q -n espresso-%{version} -a1 -a2 -a3 -a5 -a4 -a6
-%patch0 -p1
-%ifarch ppc64 ppc64le
-%patch1 -p1
-%patch2 -p1
-%endif
+%autosetup -p1 -n q-e-qe-%{version}
 
 echo "prepare parallel builds: %_mpi"
 set -- *
@@ -152,18 +142,21 @@ done
 
 %files
 %defattr(-,root,root)
-%doc License README
+%doc README.md
+%license License
 %{_bindir}/*.x
 
 %files openmpi
 %defattr(-,root,root)
-%doc License README
+%doc README.md
+%license License
 %{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/*.x
 
 %if 0%{?sles_version}
 %files mvapich2
 %defattr(-,root,root)
-%doc License README
+%doc README.md
+%license License
 %{_libdir}/mpi/gcc/mvapich2/bin/*.x
 %endif
 

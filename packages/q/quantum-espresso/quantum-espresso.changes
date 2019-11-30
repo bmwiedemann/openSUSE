@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Nov  7 00:52:39 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add backports-6.4.1.git-diff: Backported fixes for version
+  6.4.1 from upstream:
+  * Bug in spin-polarized meta-GGA
+  * Unphysical fractional translations (tau/n with n/=2,3,4,6)
+    were not explicitly discarded, thus leading in unfortunate
+    cases to strange values for FFT factors and grids. Also: if
+    "nosym" is true, inversion symmetry flag (invsym) and info on
+    FFT factors (fft_fact) must also be reset
+  * PPACF wasn't working any longer in v.6.4 and 6.4.1 for nspin=2
+    and for hybrid functionals
+  * option "write_unkg" of pw2wannier90.f90 wasn't working as
+    expected
+  * Input parameters (for restarting DFPT+U calculations)
+    read_dns_bare and d2ns_type were missing in the PH input
+    namelist, and moreover they were not broadcasted.
+
+-------------------------------------------------------------------
+Thu Nov  7 00:48:21 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.1:
+  * A warning is issued if the lattice parameter seems to be a
+    conversion factor instead of a true lattice parameter.
+  * A warning is issued if ibrav=0 is used for systems having
+    symmetry.
+  * [HP] the code was not working correctly when fractional
+    translations were present
+  * [HP] there was a bug in the case when either there is only one
+    k point, or when k pools are used and some of the pools have
+    only one k point.
+  * Restart of ph.x with 2D boundary conditions has been fixed
+    (see gitlab issue #102 (closed))
+  * XML file correctly written if tetrahedra are used (see gitlab
+    issue #103 (closed))
+- Major changes since last packaged version including backward
+  incomaptible changes: See
+  * https://gitlab.com/QEF/q-e/-/tags/qe-6.0.0
+  * https://gitlab.com/QEF/q-e/-/tags/qe-6.1.0
+  * https://gitlab.com/QEF/q-e/-/tags/qe-6.2.0
+  * https://gitlab.com/QEF/q-e/wikis/Releases/Quantum-Espresso-6.3-Release-Notes
+  * https://gitlab.com/QEF/q-e/wikis/Releases/Quantum-Espresso-6.4-Release-Notes
+- Drop patches no longer compatible or needed with updated
+  version:
+  * quantum_espresso_do_not_set_xlf_for_powerpc.patch
+  * quantum_espresso_add_ppc64le_archi_to_configure.patch
+  * espresso-implicit-pointer-decl.patch
+
+-------------------------------------------------------------------
+Thu Nov  7 00:06:36 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix unresolvable status for openSUSE < 1550 where openmpi1 is
+  still called openmpi.
+
+-------------------------------------------------------------------
 Fri Nov  1 14:35:58 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - openmpi has been renamed to openmpi1; adapt BuildRequires and

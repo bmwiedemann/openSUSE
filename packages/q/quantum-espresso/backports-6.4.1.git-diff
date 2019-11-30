@@ -1,0 +1,566 @@
+diff --git a/FFTXlib/fft_types.f90 b/FFTXlib/fft_types.f90
+index c0d56bf4e..8d66c2e8a 100644
+--- a/FFTXlib/fft_types.f90
++++ b/FFTXlib/fft_types.f90
+@@ -853,6 +853,7 @@ CONTAINS
+      SUBROUTINE realspace_grid_init( dfft, at, bg, gcutm, fft_fact )
+        !
+        ! ... Sets optimal values for dfft%nr[123] and dfft%nr[123]x
++       ! ... If input dfft%nr[123] are non-zero, leaves them unchanged
+        ! ... If fft_fact is present, force nr[123] to be multiple of fft_fac([123])
+        !
+        USE fft_support, only: good_fft_dimension, good_fft_order
+@@ -876,28 +877,29 @@ CONTAINS
+          dfft%nr2 = int ( sqrt (gcutm) * sqrt (at(1, 2)**2 + at(2, 2)**2 + at(3, 2)**2) ) + 1
+          dfft%nr3 = int ( sqrt (gcutm) * sqrt (at(1, 3)**2 + at(2, 3)**2 + at(3, 3)**2) ) + 1
+ 
+-         !write (6,*) sqrt(gcutm)*sqrt(at(1,1)**2 + at(2,1)**2 + at(3,1)**2) , dfft%nr1
+-         !write (6,*) sqrt(gcutm)*sqrt(at(1,2)**2 + at(2,2)**2 + at(3,2)**2) , dfft%nr2
+-         !write (6,*) sqrt(gcutm)*sqrt(at(1,3)**2 + at(2,3)**2 + at(3,3)**2) , dfft%nr3
++#if defined (__DEBUG)
++         write (6,*) sqrt(gcutm)*sqrt(at(1,1)**2 + at(2,1)**2 + at(3,1)**2) , dfft%nr1
++         write (6,*) sqrt(gcutm)*sqrt(at(1,2)**2 + at(2,2)**2 + at(3,2)**2) , dfft%nr2
++         write (6,*) sqrt(gcutm)*sqrt(at(1,3)**2 + at(2,3)**2 + at(3,3)**2) , dfft%nr3
++#endif
+          !
+          CALL grid_set( dfft, bg, gcutm, dfft%nr1, dfft%nr2, dfft%nr3 )
+          !
++         IF ( PRESENT(fft_fact) ) THEN
++            dfft%nr1 = good_fft_order( dfft%nr1, fft_fact(1) )
++            dfft%nr2 = good_fft_order( dfft%nr2, fft_fact(2) )
++            dfft%nr3 = good_fft_order( dfft%nr3, fft_fact(3) )
++         ELSE
++            dfft%nr1 = good_fft_order( dfft%nr1 )
++            dfft%nr2 = good_fft_order( dfft%nr2 )
++            dfft%nr3 = good_fft_order( dfft%nr3 )
++         ENDIF
+ #if defined (__DEBUG)
+        ELSE
+           WRITE( stdout, '( /, 3X,"Info: using nr1, nr2, nr3 values from input" )' )
+ #endif
+        END IF
+-
+-       IF (PRESENT(fft_fact)) THEN
+-          dfft%nr1 = good_fft_order( dfft%nr1, fft_fact(1) )
+-          dfft%nr2 = good_fft_order( dfft%nr2, fft_fact(2) )
+-          dfft%nr3 = good_fft_order( dfft%nr3, fft_fact(3) )
+-       ELSE
+-          dfft%nr1 = good_fft_order( dfft%nr1 )
+-          dfft%nr2 = good_fft_order( dfft%nr2 )
+-          dfft%nr3 = good_fft_order( dfft%nr3 )
+-       END IF
+-
++       !
+        dfft%nr1x  = good_fft_dimension( dfft%nr1 )
+        dfft%nr2x  = dfft%nr2
+        dfft%nr3x  = good_fft_dimension( dfft%nr3 )
+diff --git a/PHonon/PH/bcast_ph_input.f90 b/PHonon/PH/bcast_ph_input.f90
+index 6d8078c1b..4b454872a 100644
+--- a/PHonon/PH/bcast_ph_input.f90
++++ b/PHonon/PH/bcast_ph_input.f90
+@@ -42,6 +42,7 @@ subroutine bcast_ph_input ( )
+   USE YAMBO,      ONLY : elph_yambo,dvscf_yambo
+   ! YAMBO <
+   USE elph_tetra_mod, ONLY : lshift_q
++  USE ldaU_ph,        ONLY : read_dns_bare, d2ns_type
+ 
+   implicit none
+   !
+@@ -67,6 +68,7 @@ subroutine bcast_ph_input ( )
+   call mp_bcast (only_wfc, meta_ionode_id, world_comm )
+   call mp_bcast (only_init, meta_ionode_id, world_comm )
+   call mp_bcast (search_sym, meta_ionode_id, world_comm)
++  call mp_bcast (read_dns_bare, meta_ionode_id, world_comm)
+   ! YAMBO >
+   call mp_bcast (elph_yambo, meta_ionode_id, world_comm)
+   call mp_bcast (dvscf_yambo, meta_ionode_id, world_comm)
+@@ -119,6 +121,7 @@ subroutine bcast_ph_input ( )
+   call mp_bcast (tmp_dir, meta_ionode_id, world_comm )
+   call mp_bcast (prefix, meta_ionode_id, world_comm )
+   call mp_bcast (electron_phonon, meta_ionode_id, world_comm )
++  call mp_bcast (d2ns_type, meta_ionode_id, world_comm )
+   !
+   ! derived type (one bit at a time)
+   !
+diff --git a/PHonon/PH/dynmat_hub_bare.f90 b/PHonon/PH/dynmat_hub_bare.f90
+index 0d57abcbc..22b932cb6 100644
+--- a/PHonon/PH/dynmat_hub_bare.f90
++++ b/PHonon/PH/dynmat_hub_bare.f90
+@@ -82,6 +82,8 @@ SUBROUTINE dynmat_hub_bare
+   !
+   CALL start_clock ( 'dynmat_hub_bare' )
+   !
++  ios = 0
++  !
+   ldim = 2*Hubbard_lmax + 1
+   !
+   ALLOCATE (dyn_hub_bare(3*nat,3*nat))  
+diff --git a/PHonon/PH/dynmat_hub_scf.f90 b/PHonon/PH/dynmat_hub_scf.f90
+index 363327c2b..86c51f37c 100644
+--- a/PHonon/PH/dynmat_hub_scf.f90
++++ b/PHonon/PH/dynmat_hub_scf.f90
+@@ -118,7 +118,7 @@ SUBROUTINE dynmat_hub_scf (irr, nu_i0, nper)
+   ! interrupted before the call of this routine)
+   !
+   IF (rec_code_read==10) THEN
+-     WRITE(stdout,*) 'rec_code_read', rec_code_read
++     !WRITE(stdout,*) 'rec_code_read', rec_code_read
+      CALL dnsq_scf (nper, lmetq0, nu_i0, irr, .true.)  
+   ENDIF
+   !
+diff --git a/PHonon/PH/phq_readin.f90 b/PHonon/PH/phq_readin.f90
+index 57ed4dd3e..088044227 100644
+--- a/PHonon/PH/phq_readin.f90
++++ b/PHonon/PH/phq_readin.f90
+@@ -119,7 +119,7 @@ SUBROUTINE phq_readin()
+                        elph_nbnd_min, elph_nbnd_max, el_ph_ngauss, &
+                        el_ph_nsigma, el_ph_sigma,  electron_phonon, &
+                        q_in_band_form, q2d, qplot, low_directory_check, &
+-                       lshift_q
++                       lshift_q, read_dns_bare, d2ns_type
+ 
+   ! tr2_ph       : convergence threshold
+   ! amass        : atomic masses
+diff --git a/PP/src/ppacf.f90 b/PP/src/ppacf.f90
+index c7b5e9ef6..a55d6649f 100644
+--- a/PP/src/ppacf.f90
++++ b/PP/src/ppacf.f90
+@@ -58,6 +58,7 @@ PROGRAM do_ppacf
+   USE vdW_DF_scale,         ONLY : xc_vdW_DF_ncc, xc_vdW_DF_spin_ncc, &
+                                    get_q0cc_on_grid, get_q0cc_on_grid_spin
+   USE vasp_xml,             ONLY : readxmlfile_vasp
++  USE symm_base,            ONLY : fft_fact
+ 
+   ! 
+   IMPLICIT NONE
+@@ -217,9 +218,7 @@ PROGRAM do_ppacf
+   IF (code_num == 1) THEN
+      !
+      tmp_dir=TRIM(outdir) 
+-!     CALL read_xml_file_internal(.TRUE.)
+      CALL  read_file()
+-
+ !     Check exchange correlation functional
+      iexch = get_iexch()
+      icorr = get_icorr()
+@@ -685,6 +684,7 @@ PROGRAM do_ppacf
+   DEALLOCATE ( igk_buf, gk )
+   !
+ !  CALL setup()
++  fft_fact(:)=1
+   CALL exx_grid_init()
+   CALL exx_mp_init()
+   CALL exx_div_check()
+diff --git a/PP/src/pw2wannier90.f90 b/PP/src/pw2wannier90.f90
+index d9e2c870e..5d977a4f0 100644
+--- a/PP/src/pw2wannier90.f90
++++ b/PP/src/pw2wannier90.f90
+@@ -1162,7 +1162,7 @@ SUBROUTINE pw2wan_set_symm (nsym, sr, tvec)
+    !
+    ! Uses nkqs and index_sym from module pw2wan, computes rir
+    !
+-   USE symm_base,       ONLY : s, ftau, allfrac
++   USE symm_base,       ONLY : s, ft, allfrac
+    USE fft_base,        ONLY : dffts
+    USE cell_base,       ONLY : at, bg
+    USE wannier,         ONLY : rir, read_sym
+@@ -1174,8 +1174,8 @@ SUBROUTINE pw2wan_set_symm (nsym, sr, tvec)
+    INTEGER  , intent(in) :: nsym
+    REAL(DP) , intent(in) :: sr(3,3,nsym), tvec(3,nsym)
+    REAL(DP) :: st(3,3), v(3)
+-   INTEGER, allocatable :: s_in(:,:,:), ftau_in(:,:)
+-   !REAL(DP), allocatable:: ftau_in(:,:)
++   INTEGER, allocatable :: s_in(:,:,:)
++   REAL(DP), allocatable:: ft_in(:,:)
+    INTEGER :: nxxs, nr1,nr2,nr3, nr1x,nr2x,nr3x
+    INTEGER :: ikq, isym, i,j,k, ri,rj,rk, ir
+    LOGICAL :: ispresent(nsym)
+@@ -1189,7 +1189,7 @@ SUBROUTINE pw2wan_set_symm (nsym, sr, tvec)
+    nxxs = nr1x*nr2x*nr3x
+    !
+    !  sr -> s
+-   ALLOCATE(s_in(3,3,nsym), ftau_in(3,nsym))
++   ALLOCATE(s_in(3,3,nsym), ft_in(3,nsym))
+    IF(read_sym ) THEN
+       IF(allfrac) THEN
+          call errore("pw2wan_set_symm", "use_all_frac = .true. + read_sym = .true. not supported", 1)
+@@ -1199,17 +1199,17 @@ SUBROUTINE pw2wan_set_symm (nsym, sr, tvec)
+          st = transpose( matmul(transpose(bg), transpose(sr(:,:,isym))) )
+          s_in(:,:,isym) = nint( matmul(transpose(at), st) )
+          v = matmul(transpose(bg), tvec(:,isym))
+-         ftau_in(1,isym) = nint(v(1)*nr1)
+-         ftau_in(2,isym) = nint(v(2)*nr2)
+-         ftau_in(3,isym) = nint(v(3)*nr3)
++         ft_in(1,isym) = v(1)
++         ft_in(2,isym) = v(2)
++         ft_in(3,isym) = v(3)
+       END DO
+-      IF( any(s(:,:,1:nsym) /= s_in(:,:,1:nsym)) .or. any(ftau_in(:,1:nsym) /= ftau(:,1:nsym)) ) THEN
++      IF( any(s(:,:,1:nsym) /= s_in(:,:,1:nsym)) .or. any(ft_in(:,1:nsym) /= ft(:,1:nsym)) ) THEN
+          write(stdout,*) " Input symmetry is different from crystal symmetry"
+          write(stdout,*)
+       END IF
+    ELSE
+       s_in = s(:,:,1:nsym)
+-      ftau_in = ftau(:,1:nsym)
++      ft_in = ft(:,1:nsym)
+    END IF
+    !
+    IF(.not. allocated(rir)) ALLOCATE(rir(nxxs,nsym))
+@@ -1240,7 +1240,7 @@ SUBROUTINE pw2wan_set_symm (nsym, sr, tvec)
+             ENDDO
+          ENDDO
+    ENDDO
+-   DEALLOCATE(s_in, ftau_in)
++   DEALLOCATE(s_in, ft_in)
+ END SUBROUTINE pw2wan_set_symm
+ 
+ !-----------------------------------------------------------------------
+@@ -4142,7 +4142,7 @@ SUBROUTINE write_parity
+        ! 0-th Order
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! 1
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! 1
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+@@ -4150,21 +4150,21 @@ SUBROUTINE write_parity
+        ! 1st Order
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! x
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! x
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! y
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! y
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 1.d0 <= eps6) ) THEN ! z
++            (abs(g_abc(3,igv) - 1.d0) <= eps6) ) THEN ! z
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+@@ -4172,63 +4172,63 @@ SUBROUTINE write_parity
+        ! 2nd Order
+        IF ( (abs(g_abc(1,igv) - 2.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! x^2
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! x^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! xy
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! xy
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) + 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! xy
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! xy
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 1.d0 <= eps6) ) THEN ! xz
++            (abs(g_abc(3,igv) - 1.d0) <= eps6) ) THEN ! xz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 1.d0 <= eps6) ) THEN ! xz
++            (abs(g_abc(3,igv) + 1.d0) <= eps6) ) THEN ! xz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 2.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! y^2
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! y^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 1.d0 <= eps6) ) THEN ! yz
++            (abs(g_abc(3,igv) - 1.d0) <= eps6) ) THEN ! yz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 1.d0 <= eps6) ) THEN ! yz
++            (abs(g_abc(3,igv) + 1.d0) <= eps6) ) THEN ! yz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 2.d0 <= eps6) ) THEN ! z^2
++            (abs(g_abc(3,igv) - 2.d0) <= eps6) ) THEN ! z^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+@@ -4236,133 +4236,133 @@ SUBROUTINE write_parity
+        ! 3rd Order
+        IF ( (abs(g_abc(1,igv) - 3.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! x^3
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! x^3
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 2.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! x^2y
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! x^2y
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 2.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) + 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! x^2y
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! x^2y
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 2.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 1.d0 <= eps6) ) THEN ! x^2z
++            (abs(g_abc(3,igv) - 1.d0) <= eps6) ) THEN ! x^2z
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 2.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 1.d0 <= eps6) ) THEN ! x^2z
++            (abs(g_abc(3,igv) + 1.d0) <= eps6) ) THEN ! x^2z
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 2.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! xy^2
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! xy^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) + 2.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! xy^2
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! xy^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 1.d0 <= eps6) ) THEN ! xyz
++            (abs(g_abc(3,igv) - 1.d0) <= eps6) ) THEN ! xyz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 1.d0 <= eps6) ) THEN ! xyz
++            (abs(g_abc(3,igv) + 1.d0) <= eps6) ) THEN ! xyz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) + 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 1.d0 <= eps6) ) THEN ! xyz
++            (abs(g_abc(3,igv) - 1.d0) <= eps6) ) THEN ! xyz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) + 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 1.d0 <= eps6) ) THEN ! xyz
++            (abs(g_abc(3,igv) + 1.d0) <= eps6) ) THEN ! xyz
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 2.d0 <= eps6) ) THEN ! xz^2
++            (abs(g_abc(3,igv) - 2.d0) <= eps6) ) THEN ! xz^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 1.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 2.d0 <= eps6) ) THEN ! xz^2
++            (abs(g_abc(3,igv) + 2.d0) <= eps6) ) THEN ! xz^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 3.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 0.d0 <= eps6) ) THEN ! y^3
++            (abs(g_abc(3,igv) - 0.d0) <= eps6) ) THEN ! y^3
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 2.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 1.d0 <= eps6) ) THEN ! y^2z
++            (abs(g_abc(3,igv) - 1.d0) <= eps6) ) THEN ! y^2z
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 2.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 1.d0 <= eps6) ) THEN ! y^2z
++            (abs(g_abc(3,igv) + 1.d0) <= eps6) ) THEN ! y^2z
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 2.d0 <= eps6) ) THEN ! yz^2
++            (abs(g_abc(3,igv) - 2.d0) <= eps6) ) THEN ! yz^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and.&
+             (abs(g_abc(2,igv) - 1.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) + 2.d0 <= eps6) ) THEN ! yz^2
++            (abs(g_abc(3,igv) + 2.d0) <= eps6) ) THEN ! yz^2
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+        ENDIF
+        IF ( (abs(g_abc(1,igv) - 0.d0) <= eps6) .and. &
+             (abs(g_abc(2,igv) - 0.d0) <= eps6) .and. &
+-            (abs(g_abc(3,igv)) - 3.d0 <= eps6) ) THEN ! z^3
++            (abs(g_abc(3,igv) - 3.d0) <= eps6) ) THEN ! z^3
+            num_G(mpime+1) = num_G(mpime+1) + 1
+            ig_idx(num_G(mpime+1))=igv
+            CYCLE
+diff --git a/PP/src/vasp_read_chgcar_mod.f90 b/PP/src/vasp_read_chgcar_mod.f90
+index c5187e024..536f5344c 100644
+--- a/PP/src/vasp_read_chgcar_mod.f90
++++ b/PP/src/vasp_read_chgcar_mod.f90
+@@ -64,7 +64,6 @@ MODULE vasp_read_chgcar
+       INTEGER                  :: ngxf, ngyf, ngzf, nalloc
+       INTEGER                  :: ispin, iat, iz, ixy, nread
+       REAL(DP), ALLOCATABLE    :: rho_r_(:,:), atomom(:)
+-      REAL(DP), ALLOCATABLE    :: rho_r_up(:), rho_r_dn(:)
+       CHARACTER(LEN=80)        :: errmsg
+       !
+       ierr = 0
+@@ -102,15 +101,6 @@ MODULE vasp_read_chgcar
+          END DO
+ 
+          CLOSE(iunchg)
+-         IF(nspin==2) THEN 
+-            ALLOCATE(rho_r_up(dfftp%nr1x*dfftp%nr2x*dfftp%nr3x))
+-            ALLOCATE(rho_r_dn(dfftp%nr1x*dfftp%nr2x*dfftp%nr3x))
+-            rho_r_up=0.5_DP*(rho_r_(:,1)+rho_r_(:,2))
+-            rho_r_dn=0.5_DP*(rho_r_(:,1)-rho_r_(:,2))
+-            rho_r_(:,1)=rho_r_up
+-            rho_r_(:,2)=rho_r_dn
+-            DEALLOCATE(rho_r_up, rho_r_dn)
+-         END IF
+       END IF 
+ !      CALL mp_bcast( atm,             ionode_id, intra_image_comm )
+       DO ispin = 1, nspin
+diff --git a/PW/src/setup.f90 b/PW/src/setup.f90
+index 276588917..92543ddce 100644
+--- a/PW/src/setup.f90
++++ b/PW/src/setup.f90
+@@ -137,7 +137,7 @@ SUBROUTINE setup()
+         IF (ecutfock /= 4*ecutwfc) CALL infomsg &
+            ('setup','Warning: US/PAW use ecutfock=4*ecutwfc, ecutfock ignored')
+         IF ( lmd .OR. lbfgs ) CALL errore &
+-           ('setup','forces for hybrid functionals + US/PAW not implemented')
++           ('setup','forces for hybrid functionals + US/PAW not implemented',1)
+         IF ( noncolin ) CALL errore &
+            ('setup','Noncolinear hybrid XC for USPP not implemented',1)
+      END IF
+@@ -519,7 +519,11 @@ SUBROUTINE setup()
+   !
+   ! ... nosym: do not use any point-group symmetry (s(:,:,1) is the identity)
+   !
+-  IF ( nosym ) nsym = 1
++  IF ( nosym ) THEN
++     nsym = 1
++     invsym = .FALSE.
++     fft_fact(:) = 1
++  END IF
+   !
+   IF ( nsym > 1 .AND. ibrav == 0 ) CALL infomsg('setup', &
+        'DEPRECATED: symmetry with ibrav=0, use correct ibrav instead')
+diff --git a/PW/src/symm_base.f90 b/PW/src/symm_base.f90
+index 9d6cabf5c..4106be76a 100644
+--- a/PW/src/symm_base.f90
++++ b/PW/src/symm_base.f90
+@@ -515,11 +515,14 @@ SUBROUTINE sgam_at ( nat, tau, ityp, sym, no_z_inv)
+               !
+               !    ft_ is in crystal axis and is a valid fractional translation
+               !    only if ft_(i)=0 or ft_(i)=1/n, with n=2,3,4,6
+-              !    The check below is less strict: n must be integer
+               !
+               DO i=1,3
+                  IF ( ABS (ft_(i)) > eps2 ) THEN
+-                    ftaux(i) = ABS (1.0_dp/ft_(i) - NINT(1.0_dp/ft_(i)) ) 
++                    ftaux(i) = ABS (1.0_dp/ft_(i) - NINT(1.0_dp/ft_(i)) )
++                    nfrac = NINT(1.0_dp/ABS(ft_(i)))
++                    IF ( ftaux(i) < eps2 .AND. nfrac /= 2 .AND. &
++                         nfrac /= 3 .AND. nfrac /= 4 .AND. nfrac /= 6 ) &
++                         ftaux(i) = 2*eps2
+                  ELSE
+                     ftaux(i) = 0.0_dp
+                  END IF
+diff --git a/PW/src/v_of_rho.f90 b/PW/src/v_of_rho.f90
+index 7782924f1..295da64fe 100644
+--- a/PW/src/v_of_rho.f90
++++ b/PW/src/v_of_rho.f90
+@@ -221,7 +221,7 @@ SUBROUTINE v_xc_meta( rho, rho_core, rhog_core, etxc, vtxc, v, kedtaur )
+         !    spin-polarised case
+         !
+         rhoup = ( rho%of_r(k, 1) + rho%of_r(k, 2) )*0.5d0
+-        rhodw = ( rho%of_r(k, 2) - rho%of_r(k, 2) )*0.5d0
++        rhodw = ( rho%of_r(k, 1) - rho%of_r(k, 2) )*0.5d0
+         
+         rh   = rhoup + rhodw 
+         
