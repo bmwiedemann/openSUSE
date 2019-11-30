@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Nov  7 19:50:41 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.3:
+  * Added support for reading and inspecting Bowtie 2 indexes.
+    Bowtie 2 indexes can now be used with either Bowtie or Bowtie
+    2.
+  * Added support for building an index from a gzipped-compressed
+    FASTA.
+  * Fixed issue preventing bowtie from reporting repeated
+    alignments when -M is specified.
+  * Fixed issue with -F mode omitting final base of each read.
+  * Fixed clipping of first letter of first read in batches after
+    first.
+  * Fixed an issue preventing bowtie wrapper script from finding
+    indexes.
+- New BuildRequires: tbb-devel.
+- Fix env based hashbangs.
+- Use %%license to install LICENSE.
+- Only build on 64-bit, building on 32-bit is no longer supported.
+
+-------------------------------------------------------------------
+Thu May  5 18:12:12 UTC 2016 - flyos@mailoo.org
+
+- Initial release
