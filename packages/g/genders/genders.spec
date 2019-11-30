@@ -1,7 +1,7 @@
 #
 # spec file for package genders
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define c_api 0
 %define cpp_api 2
-%define slash_ver 1-26-1
+%define slash_ver 1-27-3
 
 Name:           genders
-Version:        1.26
+Version:        1.27.3
 Release:        0
 Summary:        Static cluster configuration database
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ Source:         https://github.com/chaos/genders/archive/genders-%{slash_ver}/%{
 Patch1:         Fix-Python-package-installation-use-root.patch
 Patch2:         Remove-PERL_DESTDIR-use-DESTDIR-instead.patch
 Patch4:         lua_bindings.patch
-Url:            https://github.com/chaos/genders
+URL:            https://github.com/chaos/genders
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -45,7 +45,6 @@ BuildRequires:  python-devel
 BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       %{name}-base
 
 %description
@@ -144,7 +143,7 @@ mv genders-genders-%{slash_ver}/* .
 rm -r genders-genders-%{slash_ver}
 %patch1 -p1
 %patch2 -p1
-%patch4 -p1 -R
+%patch4 -p1 
 
 %build
 aclocal --force --install -I config
@@ -162,6 +161,7 @@ autoconf --force
     %{?_without_python_extensions} \
     %{?_with_cplusplus_extensions} \
     %{?_without_cplusplus_extensions} \
+    --with-lua-extensions \
     --without-java-extensions \
     --disable-static
 
@@ -222,19 +222,16 @@ sed -i -e 's/^\([^#]\)/## \1/' %{buildroot}%{_sysconfdir}/genders
 %{_bindir}/*
 
 %files base
-%defattr(-,root,root)
 %doc README NEWS ChangeLog DISCLAIMER DISCLAIMER.UC TUTORIAL genders.sample
 %license COPYING
 %config(noreplace) %{_sysconfdir}/genders
 
 %files perl-compat
-%defattr(-,root,root)
 %dir %{_prefix}/lib/genders
 %{_prefix}/lib/genders/*
 %{_mandir}/man3/gendlib*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/libgenders.so
 %if %{?_with_cplusplus_extensions:1}%{!?_with_cplusplus_extensions:0}

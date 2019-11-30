@@ -50,4 +50,17 @@
     <comment>Add Jira feature ID</comment>
     <requestid>734533</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>db6cb7da04d50eff42e3f42b904390a1</srcmd5>
+    <version>1.27.3</version>
+    <time>1575106815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.3:
+  * Fix parsing corner case, newlines are not required at end 
+    of lines 
+  * Add make target for genders_query.tab.c to fix gentoo build issue.
+  * javadoc fix &amp;&amp; to &amp; amp;&amp; amp;
+  * fix testsuite to operate where there isn't a default genders file</comment>
+    <requestid>752382</requestid>
+  </revision>
 </revisionlist>
