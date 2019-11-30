@@ -24,6 +24,7 @@
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
 %global __ocaml_requires_opts -c -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
 %global __ocaml_provides_opts -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
+%bcond_with ocaml_make_testsuite
 
 Name:           ocaml
 Version:        4.05.0
@@ -41,13 +42,13 @@ Patch5:         ocaml-3.08.3-gcc4.patch
 Patch8:         ocaml-4.05.0-CVE-2018-9838.patch
 # FIX-UPSTREAM backport 'AArch64 GOT fixed' - https://github.com/ocaml/ocaml/pull/1330
 Patch9:         ocaml-fix_aarch64_build.patch
-# This gets ocamlobjinfo to work with .cmxs files
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  ocaml-rpm-macros >= 20191101
+Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
 Obsoletes:      ocaml-docs
 Provides:       ocaml(compiler) = %{ocaml_base_version}
@@ -116,7 +117,7 @@ This package contains a documentation generator for OCaml.
 Summary:        Libraries used internal to the OCaml Compiler
 License:        QPL-1.0
 Group:          Development/Languages/OCaml
-Requires:       ncurses-devel
+Requires:       ocaml = %{version}-%{release}
 
 %description compiler-libs
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -130,7 +131,7 @@ be helpful in the development of certain applications.
 Summary:        Libraries used internal to the OCaml Compiler
 License:        QPL-1.0
 Group:          Development/Languages/OCaml
-Requires:       ocaml-compiler-libs = %{version}
+Requires:       ocaml-compiler-libs = %{version}-%{release}
 
 %description compiler-libs-devel
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -409,8 +410,11 @@ do
 	ocamldoc)
 	files='files.ocamldoc.META'
 	;;
-	*)
+	compiler-libs)
 	files='files.compiler-libs.META'
+	;;
+	*)
+	files='files.ocaml.META'
 	;;
 	esac
 	d=%{_libdir}/ocaml/${ocamlfind}
@@ -479,6 +483,9 @@ done
 %{_libdir}/ocaml/threads/*.cma
 %{_libdir}/ocaml/threads/*.cmti
 %exclude %{_libdir}/ocaml/graphicsX11.cmi
+%exclude %{_libdir}/ocaml/topdirs.cmi
+%exclude %{_libdir}/ocaml/topdirs.cmt
+%exclude %{_libdir}/ocaml/topdirs.cmti
 %doc Changes
 %license LICENSE
 
@@ -494,11 +501,18 @@ done
 %{_libdir}/ocaml/ocamldoc
 %doc ocamldoc/Changes.txt
 
-%files compiler-libs -f files.compiler-libs.META
-%license LICENSE
+%files compiler-libs
 %dir %{_libdir}/ocaml
+%{_libdir}/ocaml/topdirs.cmi
+%{_libdir}/ocaml/topdirs.cmt
+%{_libdir}/ocaml/topdirs.cmti
+%{_libdir}/ocaml/compiler-libs/*.cma
+%{_libdir}/ocaml/compiler-libs/*.cmi
+%{_libdir}/ocaml/compiler-libs/*.cmo
+%{_libdir}/ocaml/compiler-libs/*.cmt
+%{_libdir}/ocaml/compiler-libs/*.cmti
 
-%files compiler-libs-devel
+%files compiler-libs-devel -f files.compiler-libs.META
 %dir %{_libdir}/ocaml/compiler-libs
 %if %{ocaml_native_compiler}
 %{_libdir}/ocaml/compiler-libs/*.a
@@ -506,11 +520,6 @@ done
 %{_libdir}/ocaml/compiler-libs/*.cmx
 %{_libdir}/ocaml/compiler-libs/*.cmxa
 %endif
-%{_libdir}/ocaml/compiler-libs/*.cma
-%{_libdir}/ocaml/compiler-libs/*.cmi
-%{_libdir}/ocaml/compiler-libs/*.cmo
-%{_libdir}/ocaml/compiler-libs/*.cmt
-%{_libdir}/ocaml/compiler-libs/*.cmti
 %{_libdir}/ocaml/compiler-libs/*.mli
 
 %if %{with ocaml_make_testsuite}

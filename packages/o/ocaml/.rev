@@ -628,4 +628,16 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
 - Remove code that populated compiler-libs</comment>
     <requestid>745386</requestid>
   </revision>
+  <revision rev="73" vrev="13">
+    <srcmd5>206cf7c23e3b2bfcc775ed6ef1ef0017</srcmd5>
+    <version>4.05.0</version>
+    <time>1575106545</time>
+    <user>dimstar_suse</user>
+    <comment>- move topdirs.cmi/cmt/cmti from runtime to compiler-libs-devel
+  so that runtime does not depend on a devel pkg (bsc#1156934)
+- split place for META files, some go to ocaml, some to compiler-libs-devel
+- move ncurses-devel requires to ocaml, it is used by BYTECCLIBS
+- initialize bcond ocaml_make_testsuite</comment>
+    <requestid>750769</requestid>
+  </revision>
 </revisionlist>
