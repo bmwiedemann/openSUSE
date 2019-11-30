@@ -42,4 +42,12 @@ trim changes file</comment>
 - Use _smp_mflags instead of nproc for parallel build</comment>
     <requestid>745385</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>176438b9411b45f00eb2e8ff1e6ba503</srcmd5>
+    <version>20191101</version>
+    <time>1575106530</time>
+    <user>dimstar_suse</user>
+    <comment>- Install also LGPL as license, needed by ocaml-lablgtk2</comment>
+    <requestid>750767</requestid>
+  </revision>
 </revisionlist>

@@ -113,6 +113,7 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	LICENSE \\\
 	LICENSE.md \\\
 	LICENSE.txt \\\
+	LGPL \\\
 	;\
 	do\
 %if 0%{?suse_version} > 1315
