@@ -19,15 +19,17 @@
 %define soversion 6
 %bcond_without lang
 Name:           digikam
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            http://www.digikam.org/
-Source0:        http://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+URL:            https://www.digikam.org/
+Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch -- The OpenGL slideshow depends on Desktop GL, see kde#383715
 Patch0:         0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch
+# PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
+Patch1:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
 BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
 BuildRequires:  boost-devel
@@ -172,6 +174,10 @@ The main digikam libraries that are being shared between showfoto and digikam
 %ifarch %{arm} aarch64
 # Disable OpenGL slideshow on embedded platforms
 %patch0 -p1
+%endif
+%if 0%{?suse_version} <= 1500
+# Leap 15 only has exiv2 0.26
+%patch1 -p1
 %endif
 
 # Remove build time references so build-compare can do its work

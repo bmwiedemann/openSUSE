@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 21 21:38:08 UTC 2019 - wbauer@tmo.at
+
+- Add patch to make it build with exiv2 0.26 on Leap 15:
+  * 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+  (boo#1156937)
+- Update to latest upstream 6.4.0 source tarball
+
+-------------------------------------------------------------------
+Sat Nov  9 23:41:23 UTC 2019 - wbauer@tmo.at
+
+- Update to 6.4.0
+  * https://www.digikam.org/news/2019-11-09-6.4.0_release_announcement/
+- New features (from NEWS):
+General    : new RawImport plugin interface to delegate Raw
+             decoding function to extra engine with ImageEditor.
+General    : new DImg plugin interface to externalize image loaders
+             from core implementation.
+General    : new HEIC image loader compatible with media generated
+             by Apple devices.
+Import     : add new option to convert on the fly to HEIC lossless
+             format while downloading.
+ImageEditor: add new setting from setup dialog to select right Raw
+             Import plugin.
+ImageEditor: add new clone tool to fix artifacts on image.
+ImageEditor: add new tool to import RAW image using UFRaw.
+ImageEditor: add new tool to import RAW image using RawTherapee.
+ImageEditor: add new tool to import RAW image using DarkTable.
+BQM        : add new tool to convert to HEIC format.
+- 75 bugs fixed
+
+-------------------------------------------------------------------
 Tue Oct  1 13:07:53 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Do not enable Faces Engine DNN for ppc64le to avoid build error

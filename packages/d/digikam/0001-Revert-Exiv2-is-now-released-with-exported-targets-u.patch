@@ -1,0 +1,249 @@
+From 64454b942be9c61f3c981f7a18a77b332944d58a Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Tue, 12 Nov 2019 11:15:21 +0100
+Subject: [PATCH] Revert "Exiv2 is now released with exported targets using
+ cmake rules. No need to have a dedicated find exiv2 cmake script. Bump
+ minimal version to 0.27.1"
+
+This reverts commit 06e77271d72fe5e4abeb38641f3addc2cfbff126.
+
+Fixes build on Leap 15.x which only have exiv2 0.26.
+As there haven't been any changes other than to rely on the new cmake
+files in exiv2 0.27, there should be no problems with the older version.
+---
+ core/CMakeLists.txt                     |  14 +--
+ core/app/DigikamCoreTarget.cmake        |   2 +-
+ core/cmake/modules/FindExiv2.cmake      | 116 ++++++++++++++++++++++++++++++++
+ core/libs/metadataengine/CMakeLists.txt |  10 ++-
+ 4 files changed, 126 insertions(+), 16 deletions(-)
+ create mode 100644 core/cmake/modules/FindExiv2.cmake
+
+diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
+index e31e267772..d14364dc1e 100644
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -56,7 +56,7 @@ set(ECM_MIN_VERSION       "1.7.0")
+ set(KF5_MIN_VERSION       "5.1.0")
+ set(QT_MIN_VERSION        "5.6.0")
+ set(LENSFUN_MIN_VERSION   "0.2.6.0")
+-set(EXIV2_MIN_VERSION     "0.27.0")
++set(EXIV2_MIN_VERSION     "0.26")
+ set(OPENCV_MIN_VERSION    "3.1.0")
+ set(QTAV_MIN_VERSION      "1.12.0")
+ set(KSANE_MIN_VERSION     "5.0.0")         # For digital scanner support.
+@@ -248,9 +248,9 @@ find_package(EXPAT)    # For DNGWriter: XMP SDK need Expat library to compile.
+ find_package(Threads)  # For DNGWriter and LibRaw which needs native threads support.
+ find_package(X265)     # For HEIF encoding support.
+ 
+-find_package(exiv2 REQUIRED)
++find_package(Exiv2 ${EXIV2_MIN_VERSION} REQUIRED)
+ 
+-set_package_properties("exiv2"     PROPERTIES
++set_package_properties("Exiv2"     PROPERTIES
+                        DESCRIPTION "Required to build digiKam"
+                        URL         "http://www.exiv2.org"
+                        TYPE        RECOMMENDED
+@@ -257,10 +257,6 @@ set_package_properties("Exiv2"     PROPERTIES
+                        PURPOSE     "Library to manage image metadata"
+ )
+ 
+-if("${exiv2_VERSION}" VERSION_LESS ${EXIV2_MIN_VERSION})
+-    message(FATAL_ERROR "Exiv2 version is too old (${exiv2_VERSION})! Minimal version required:${EXIV2_MIN_VERSION}.")
+-endif()
+-
+ # -- check Media player --------------------------------------------------------
+ 
+ find_package(FFmpeg COMPONENTS AVCODEC AVFILTER AVFORMAT AVUTIL SWSCALE)
+@@ -585,7 +585,7 @@ PRINT_COMPONENT_COMPILE_STATUS("FacesEngine DNN Support" ENABLE_FACESENGINE_DNN)
+ # ==============================================================================
+ 
+ PRINT_LIBRARY_STATUS("libboostgraph" "http://www.boost.org/doc/libs"                    "(version >= 1.43.0)"                Boost_FOUND)
+-PRINT_LIBRARY_STATUS("libexiv2"      "http://www.exiv2.org"                             "(version >= ${EXIV2_MIN_VERSION}"   exiv2_FOUND)
++PRINT_LIBRARY_STATUS("libexiv2"      "http://www.exiv2.org"                             "(version >= ${EXIV2_MIN_VERSION}"   Exiv2_FOUND)
+ PRINT_LIBRARY_STATUS("libexpat"      "http://expat.sourceforge.net"                     "(version >= 2.0.0)"                 EXPAT_FOUND)
+ PRINT_LIBRARY_STATUS("libjpeg"       "http://www.ijg.org"                               "(version >= 6b)"                    JPEG_FOUND)
+ PRINT_LIBRARY_STATUS("libkde"        "http://www.kde.org"                               "(version >= ${KF5_MIN_VERSION})"    KF5_FOUND)
+@@ -627,7 +627,7 @@ PRINT_OPTIONAL_LIBRARY_STATUS("OpenGL"            "https://www.mesa3d.org"
+ # ==============================================================================
+ 
+ if(Boost_FOUND                          AND
+-   exiv2_FOUND                          AND
++   Exiv2_FOUND                          AND
+    EXPAT_FOUND                          AND
+    JPEG_FOUND                           AND
+    KF5_FOUND                            AND
+diff --git a/core/app/DigikamCoreTarget.cmake b/core/app/DigikamCoreTarget.cmake
+index 72b424cb36..7aa6dc5a1e 100644
+--- a/core/app/DigikamCoreTarget.cmake
++++ b/core/app/DigikamCoreTarget.cmake
+@@ -116,7 +116,7 @@ target_link_libraries(digikamcore
+                       ${TIFF_LIBRARIES}
+                       PNG::PNG
+                       ${JPEG_LIBRARIES}
+-                      exiv2lib
++                      ${EXIV2_LIBRARIES}
+ 
+                       ${FFMPEG_LIBRARIES}
+ 
+diff --git a/core/cmake/modules/FindExiv2.cmake b/core/cmake/modules/FindExiv2.cmake
+new file mode 100644
+index 0000000000..912ffaee0c
+--- /dev/null
++++ b/core/cmake/modules/FindExiv2.cmake
+@@ -0,0 +1,116 @@
++# - Try to find the Exiv2 library
++#
++#  EXIV2_MIN_VERSION - You can set this variable to the minimum version you need
++#                      before doing FIND_PACKAGE(Exiv2). The default is 0.26.
++#
++# Once done this will define
++#
++#  EXIV2_FOUND       - system has libexiv2
++#  EXIV2_VERSION     - the version of libexiv2
++#  EXIV2_INCLUDE_DIR - the libexiv2 include directory
++#  EXIV2_LIBRARIES   - Link these to use libexiv2
++#  EXIV2_DEFINITIONS - Compiler switches required for using libexiv2
++#
++# The minimum required version of Exiv2 can be specified using the
++# standard syntax, e.g. find_package(Exiv2 0.26)
++#
++# For compatibility, also the variable EXIV2_MIN_VERSION can be set to the minimum version
++# you need before doing FIND_PACKAGE(Exiv2). The default is 0.26.
++#
++# Copyright (c) 2010,      Alexander Neundorf, <neundorf at kde dot org>
++# Copyright (c) 2008-2019, Gilles Caulier, <caulier dot gilles at gmail dot com>
++#
++# Redistribution and use is allowed according to the terms of the BSD license.
++# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
++
++# Support EXIV2_MIN_VERSION for compatibility:
++
++if(NOT Exiv2_FIND_VERSION)
++
++    set(Exiv2_FIND_VERSION "${EXIV2_MIN_VERSION}")
++
++endif()
++
++# The minimum version of exiv2 we require
++if(NOT Exiv2_FIND_VERSION)
++
++    set(Exiv2_FIND_VERSION "0.26")
++
++endif()
++
++if(NOT WIN32)
++
++   # use pkg-config to get the directories and then use these values
++   # in the FIND_PATH() and FIND_LIBRARY() calls
++   find_package(PkgConfig)
++   pkg_check_modules(PC_EXIV2 QUIET exiv2)
++   set(EXIV2_DEFINITIONS ${PC_EXIV2_CFLAGS_OTHER})
++
++endif()
++
++find_path(EXIV2_INCLUDE_DIR NAMES exiv2/exif.hpp
++          HINTS
++          ${PC_EXIV2_INCLUDEDIR}
++          ${PC_EXIV2_INCLUDE_DIRS}
++        )
++
++find_library(EXIV2_LIBRARY NAMES exiv2 libexiv2 exiv2lib
++             HINTS
++             ${PC_EXIV2_LIBDIR}
++             ${PC_EXIV2_LIBRARY_DIRS}
++            )
++
++if (EXIV2_INCLUDE_DIR  AND NOT  EXIV2_VERSION)
++
++    # For Exiv2 <= 0.26, get the version number from exiv2/version.hpp and store it in the cache:
++
++    file(READ ${EXIV2_INCLUDE_DIR}/exiv2/version.hpp EXIV2_VERSION_CONTENT)
++    string(REGEX MATCH "#define EXIV2_MAJOR_VERSION +\\( *([0-9]+) *\\)"  _dummy "${EXIV2_VERSION_CONTENT}")
++    set(EXIV2_VERSION_MAJOR "${CMAKE_MATCH_1}")
++
++    string(REGEX MATCH "#define EXIV2_MINOR_VERSION +\\( *([0-9]+) *\\)"  _dummy "${EXIV2_VERSION_CONTENT}")
++    set(EXIV2_VERSION_MINOR "${CMAKE_MATCH_1}")
++
++    string(REGEX MATCH "#define EXIV2_PATCH_VERSION +\\( *([0-9]+) *\\)"  _dummy "${EXIV2_VERSION_CONTENT}")
++    set(EXIV2_VERSION_PATCH "${CMAKE_MATCH_1}")
++
++    if(NOT "${EXIV2_VERSION_MAJOR}" STREQUAL "" AND
++       NOT "${EXIV2_VERSION_MINOR}" STREQUAL "" AND
++       NOT "${EXIV2_VERSION_PATCH}" STREQUAL "")
++
++        set(EXIV2_VERSION "${EXIV2_VERSION_MAJOR}.${EXIV2_VERSION_MINOR}.${EXIV2_VERSION_PATCH}"
++            CACHE STRING "Version number of Exiv2" FORCE)
++    else()
++
++        # For Exiv2 >= 0.27, get the version number from exiv2/exv_conf.h and store it in the cache:
++
++        file(READ ${EXIV2_INCLUDE_DIR}/exiv2/exv_conf.h EXIV2_VERSION_CONTENT)
++        string(REGEX MATCH "#define EXIV2_MAJOR_VERSION +\\( *([0-9]+) *\\)"  _dummy "${EXIV2_VERSION_CONTENT}")
++        set(EXIV2_VERSION_MAJOR "${CMAKE_MATCH_1}")
++
++        string(REGEX MATCH "#define EXIV2_MINOR_VERSION +\\( *([0-9]+) *\\)"  _dummy "${EXIV2_VERSION_CONTENT}")
++        set(EXIV2_VERSION_MINOR "${CMAKE_MATCH_1}")
++
++        string(REGEX MATCH "#define EXIV2_PATCH_VERSION +\\( *([0-9]+) *\\)"  _dummy "${EXIV2_VERSION_CONTENT}")
++        set(EXIV2_VERSION_PATCH "${CMAKE_MATCH_1}")
++
++        set(EXIV2_VERSION "${EXIV2_VERSION_MAJOR}.${EXIV2_VERSION_MINOR}.${EXIV2_VERSION_PATCH}"
++            CACHE STRING "Version number of Exiv2" FORCE)
++
++    endif()
++
++endif()
++
++set(EXIV2_LIBRARIES "${EXIV2_LIBRARY}")
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Exiv2 REQUIRED_VARS EXIV2_LIBRARY EXIV2_INCLUDE_DIR
++                                        VERSION_VAR   EXIV2_VERSION)
++
++MESSAGE(STATUS "EXIV2_FOUND       = ${EXIV2_FOUND}")
++MESSAGE(STATUS "EXIV2_VERSION     = ${EXIV2_VERSION}")
++MESSAGE(STATUS "EXIV2_INCLUDE_DIR = ${EXIV2_INCLUDE_DIR}")
++MESSAGE(STATUS "EXIV2_LIBRARY     = ${EXIV2_LIBRARY}")
++MESSAGE(STATUS "EXIV2_DEFINITIONS = ${EXIV2_DEFINITIONS}")
++
++mark_as_advanced(EXIV2_INCLUDE_DIR EXIV2_LIBRARY)
+diff --git a/core/libs/metadataengine/CMakeLists.txt b/core/libs/metadataengine/CMakeLists.txt
+index 64754c882c..da6fac050a 100644
+--- a/core/libs/metadataengine/CMakeLists.txt
++++ b/core/libs/metadataengine/CMakeLists.txt
+@@ -7,14 +7,13 @@
+ 
+ kde_enable_exceptions()
+ 
+-# TODO: How to extract exiv2lib definitions properties with cmake import interface?
+-#add_definitions($<TARGET_PROPERTY:exiv2lib,INTERFACE_COMPILE_DEFINITIONS>)
++add_definitions(${EXIV2_DEFINITIONS})
+ 
+ if(WIN32)
+-    add_definitions(-DEXV_HAVE_DLL)
++    add_definitions( -DEXV_HAVE_DLL )
+ endif()
+ 
+-if("${exiv2_VERSION}" VERSION_LESS "0.27.99")
++if("${EXIV2_VERSION}" VERSION_LESS "0.27.99")
+ 
+     # Exiv2 version < 0.28 use auto_ptr instead unique_ptr which is deprecated.
+     DISABLE_GCC_COMPILER_WARNINGS("5.99.99" "-Wno-deprecated")
+@@ -64,13 +63,12 @@ set(libdmetadata_SRCS
+ )
+ 
+ include_directories(
++    ${EXIV2_INCLUDE_DIR}
+     $<TARGET_PROPERTY:Qt5::Gui,INTERFACE_INCLUDE_DIRECTORIES>
+     $<TARGET_PROPERTY:Qt5::Core,INTERFACE_INCLUDE_DIRECTORIES>
+ 
+     $<TARGET_PROPERTY:KF5::ConfigCore,INTERFACE_INCLUDE_DIRECTORIES>
+     $<TARGET_PROPERTY:KF5::I18n,INTERFACE_INCLUDE_DIRECTORIES>
+-
+-    $<TARGET_PROPERTY:exiv2lib,INTERFACE_INCLUDE_DIRECTORIES>
+ )
+ 
+ add_library(dmetadata_src OBJECT ${libdmetadata_SRCS})
+-- 
+2.16.4
+
