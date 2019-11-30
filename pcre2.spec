@@ -1,7 +1,7 @@
 #
 # spec file for package pcre2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pcre2
-Version:        10.33
+Version:        10.34
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
@@ -174,7 +174,7 @@ API.
 autoreconf -fiv
 export LDFLAGS="-Wl,-z,relro,-z,now"
 %configure \
-%ifarch %{ix86} x86_64 %{arm} ppc ppc64 ppc64le mips sparc
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc ppc64 ppc64le mips sparc
 	    --enable-jit \
         --enable-jit-sealloc \
 %endif
