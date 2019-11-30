@@ -1,7 +1,7 @@
 #
 # spec file for package php7-redis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define php_name    php7
 %define pkg_name    redis
 Name:           %{php_name}-%{pkg_name}
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        API for communicating with Redis servers
 License:        PHP-3.01
