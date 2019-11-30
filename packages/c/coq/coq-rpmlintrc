@@ -1,0 +1,7 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+# Unfortunate choice, but we can't easily change that.
+addFilter("hidden-file-or-dir .*/.coq-native")
+# These are loaded manually by the OCaml runtime and need no dependency information.
+addFilter("shared-lib-without-dependency-information .*\.cmxs")

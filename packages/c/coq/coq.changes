@@ -1,0 +1,228 @@
+-------------------------------------------------------------------
+Tue Nov 12 22:31:20 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix findlib build dependency.
+
+-------------------------------------------------------------------
+Sun Nov  3 18:06:05 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use memory-constraints package to limit number of threads.
+- Add dependencies to fix installation issues.
+
+-------------------------------------------------------------------
+Wed Sep 25 20:16:34 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Prevent OOM by limiting the number of threads.
+
+-------------------------------------------------------------------
+Tue Sep 24 22:13:12 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Change license tag to LGPL-2.1-only.
+- Remove obsolete %defattr and other spec-cleaner suggestions.
+
+-------------------------------------------------------------------
+Sat Aug  3 13:22:18 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.9.0.
+  * Kernel: mutually recursive records are now supported.
+  * Notations:
+    + Support for autonomous grammars of terms called “custom
+      entries”.
+    + Deprecated notations of the standard library will be removed
+      in the next version of Coq, see the next subsection for a
+      script to ease porting.
+    + Added the "Numeral Notation" command for registering decimal
+      numeral notations for custom types.
+  * Tactics: Introduction tactics intro/intros on a goal that is an
+    existential variable now force a refinement of the goal into a
+    dependent product rather than failing.
+  * Decision procedures: deprecation of tactic romega in favor of
+    lia and removal of fourier, replaced by lra which subsumes it.
+  * Proof language: focusing bracket { now supports named goals,
+    e.g. [x]:{ will focus on a goal (existential variable) named x.
+  * SSReflect: the implementation of delayed clear was simplified:
+    the variables are always renamed using inaccessible names when
+    the clear switch is processed and finally cleared at the end of
+    the intro pattern. In addition to that, the use-and-discard
+    flag {} typical of rewrite rules can now be also applied to
+    views, e.g. => {}/v applies v and then clears v.
+    See Section Introduction in the context.
+  * Vernacular:
+    + Experimental support for attributes on commands, as in
+      "#[local] Lemma foo : bar". Tactics and tactic notations now
+      support the deprecated attribute.
+    + Removed deprecated commands "Arguments Scope" and "Implicit
+      Arguments" in favor of "Arguments (scopes)" and "Arguments
+      (implicits)".
+    + New flag "Uniform Inductive Parameters" to avoid repeating
+      uniform parameters in constructor declarations.
+    + New commands "Hint Variables" and "Hint Constants" for
+      controlling the opacity status of variables and constants in
+      hint databases. It is recommended to always use these
+      commands after creating a hint database with Create HintDb.
+    + Multiple sections with the same name are now allowed.
+  * Library: additions and changes in the VectorDef, Ascii, and
+    String libraries. Syntax notations are now available only when
+    using "Import" of libraries and not merely "Require".
+    (Source of incompatibility, see Change Log for details)
+  * Toplevels: coqtop and coqide can now display diffs between
+    proof steps in color, using the Diffs option.
+  * Documentation: we integrated a large number of fixes to the new
+    Sphinx documentation.
+  * Tools: removed gallina utility and homebrewed Emacs mode.
+- Update to version 8.9.1, which contains
+  * some quality-of-life bug fixes,
+  * many improvements to the documentation,
+  * a critical bug fix related to primitive projections and
+    native_compute.
+- Remove unnecessary dependencies: ncurses-devel is no longer
+  needed, and the docs aren't build with TeX and hevea anymore.
+- Remove dependencies that are automatically detected.
+- Remove icon that is also available from the tarball.
+- Replace some identical files by symlinks.
+- Fix executable bits and shebangs.
+- Separate runtime from devel files by ending.
+- Use %license for LICENSE and CREDITS.
+- Be more explicit in %files.
+- Add mime type for Coq source files so they open with the IDE.
+- Add rpmlintrc for issues that are hard to fix.
+
+-------------------------------------------------------------------
+Thu Oct 11 09:35:41 UTC 2018 - ptrommler@icloud.com
+
+- update to 8.8.2 
+
+-------------------------------------------------------------------
+Sun Jan  7 10:41:00 UTC 2018 - ptrommler@icloud.com
+
+- update to 8.7.1 
+
+-------------------------------------------------------------------
+Thu Nov  2 15:32:20 UTC 2017 - ptrommler@icloud.com
+
+- update to 8.7.0
+  * I need this in class b/c coq-ide reads _CoqProject files 
+
+-------------------------------------------------------------------
+Thu Apr 13 11:34:12 UTC 2017 - peter.trommler@ohm-hochschule.de
+
+- update to 8.6 from upstream 
+
+-------------------------------------------------------------------
+Fri Dec  2 14:30:06 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- update to 8.5pl3 from upstream 
+
+-------------------------------------------------------------------
+Fri Oct 21 18:11:31 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- update to 8.5pl2 from upstream 
+
+-------------------------------------------------------------------
+Sun Apr 10 10:32:12 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- update to 8.5 from upstream 
+
+-------------------------------------------------------------------
+Sat May 31 18:46:45 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 8.4pl4 from upstream 
+
+-------------------------------------------------------------------
+Sun Jan 12 11:17:04 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 8.4pl3 from upstream
+- follow upstream versioning 
+
+-------------------------------------------------------------------
+Sun Nov 10 08:45:53 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- revert to our own lablgtk on older systems
+* coq-ide cannot be built using 12.2 lablgtk2 
+
+-------------------------------------------------------------------
+Wed Nov  6 19:53:49 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- use system provided lablgtk2 
+
+-------------------------------------------------------------------
+Mon Apr  8 11:31:02 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 8.4pl2
+- coqtop: handle interrupt signals reliably
+- restor old behavior for code extraction (AccessOpaque)  
+
+-------------------------------------------------------------------
+Wed Dec 26 19:49:24 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 8.4pl1 from upstream
+- dropped f0b93...055.patch (integrated upstream)
+- use ocamlfind to find lablgtk2 
+
+-------------------------------------------------------------------
+Mon Dec  3 10:14:09 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- add patch for lablgtk2 v 2.16 
+
+-------------------------------------------------------------------
+Thu Nov 29 20:18:17 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- mark config file 
+
+-------------------------------------------------------------------
+Sun Nov 11 18:53:41 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- give up on old ocaml names and require ocaml-lablgtk2-devel
+- clean up spec file 
+
+-------------------------------------------------------------------
+Thu Oct 18 13:28:32 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- remove requires and rely on automatic dependency generation
+  for ocaml 
+
+-------------------------------------------------------------------
+Wed Oct 17 16:01:25 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- packaged new file coq.png 
+
+-------------------------------------------------------------------
+Sun Oct  7 15:59:53 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 8.4 from upstream 
+
+-------------------------------------------------------------------
+Thu Apr 12 12:14:04 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- add ocaml- prefix to lablgtk-devel Buildrequires 
+
+-------------------------------------------------------------------
+Wed Apr 11 17:32:25 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- add Buildrequires hevea needed for documentation 
+
+-------------------------------------------------------------------
+Wed Apr 11 16:56:52 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- cleaned up spec file (BuildRequires and Requires one each line)
+- SPDX license tag 
+
+-------------------------------------------------------------------
+Wed Apr 11 16:26:24 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- upgraded to 8.3pl4 from upstream
+Bug fixes:
+
+- #2724 (using notations with binders in cases patterns was provoking an anomaly)
+- #2723 (alpha-conversion bug #2723 introduced in r12485-12486)
+- #2732 (anomaly when using the tolerance for writing "f atomic_tac"
+    as a short-hand for "f ltac:(atomic_tac)")
+- #2729 (vm_compute: function used to decompose constructors did not handle let-ins)
+- #2728 (compatibility with camlp5 6.05)
+- #2682 (Fail discard the effects of a successful command)
+- #2703 (Undetected universe inconsistency)
+- #2667 (Coq crashes when "Arguments Scope" has too many parameters)
+- Compilation of coqide under MacOS with gtk >= 2.24.11
+- Coqdoc: Fixing missing newline when using "Proof term."
+ 
+

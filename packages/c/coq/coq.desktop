@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Coq IDE
+GenericName=Proof Assistant
+Comment=Proof Assistant based on the Calculus of Inductive Constructions
+Categories=Education;Science;Math;
+MimeType=text/x-coqsrc;
+Exec=coqide %F
+Icon=coq
