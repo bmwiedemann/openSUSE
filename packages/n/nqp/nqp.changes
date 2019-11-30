@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 29 09:36:46 CET 2019 - nine@detonation.org
+
+- update to version 2019.11
+  * Map nqp::vmeventsubscribe to configure VM Event Subscription
+  * Map new nqp::intify op
+  * Provide better compatibility with Perl6 Metamodel
+  * Use nqp::const for socket family constants
+  * First stab at making num use explicit
+  * Type constrain the value passed to (I|N)Val.new
+  * $/.Int should actually use integer calculations
+  * sprintf fix for the JVM, bartolin++
+  * profiler: expose "stolen gen2 roots" in sql output
+  * profiler: one line per statement like earlier versions
+  * fix profiling gc/deallocations bug swapping thread/seqnum
+  * output "stage parse" later (for nested output), also flush stderr every line
+  * make sql output smaller with multi-insert statements
+
+-------------------------------------------------------------------
 Thu Jul 22 17:00:00 CEST 2019 - nine@detonation.org
 
 - Fix installed perl6 not finding its NQP modules
