@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Nov  7 23:39:44 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.0
+  * Release notes unavailable.
+- Implement multibuild using mpich and serial flavours (others
+  fail during %%check and are not recommended anyway).
+- Implement %%check section.
+- Disable all but x86_64: no other arch supported.
+- Add diy-disable-memory-heavy-tests.patch: disable a few tests
+  that are extremely memory expensive (>= 10 GB).
+
+-------------------------------------------------------------------
+Wed Nov 23 10:51:08 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+

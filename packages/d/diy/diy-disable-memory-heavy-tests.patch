@@ -1,0 +1,33 @@
+Index: diy-3.5.0/tests/CMakeLists.txt
+===================================================================
+--- diy-3.5.0.orig/tests/CMakeLists.txt
++++ diy-3.5.0/tests/CMakeLists.txt
+@@ -133,14 +133,6 @@ if                          (mpi AND MPI
+       endforeach            (b)
+   endforeach                (p)
+ 
+-  foreach                   (p 2 3)
+-      math                  (EXPR b "${p} + 1")
+-      add_test              (NAME simple-test-p${p}-b${b}
+-                             COMMAND ${MPIEXEC} -np ${p} $<TARGET_FILE:simple-test> -b ${b}
+-                            )
+-      set_tests_properties  (simple-test-p${p}-b${b} PROPERTIES TIMEOUT 300 RUN_SERIAL ON)
+-  endforeach                (p)
+-
+   foreach                   (p RANGE 1 ${maxp})
+       foreach               (b 2 4 8 9 12 24 36)
+           add_test          (NAME rexchange-test-p${p}-b${b}
+@@ -191,13 +183,6 @@ else                        (mpi AND MPI
+                             )
+   endforeach                (b)
+ 
+-  foreach                   (b 3 4)
+-      add_test              (NAME simple-test-nompi-b${b}
+-                             COMMAND simple-test -b ${b}
+-                            )
+-      set_tests_properties  (simple-test-nompi-b${b} PROPERTIES TIMEOUT 300 RUN_SERIAL ON)
+-  endforeach                (b)
+-
+   foreach                   (b 2 4 8 9 12 24 36)
+       add_test              (NAME rexchange-test-nompi-b${b}
+                              COMMAND rexchange-test -b ${b}
