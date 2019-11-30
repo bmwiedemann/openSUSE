@@ -385,4 +385,13 @@ Latest changes:
   kernel module package is not available on sle</comment>
     <requestid>749522</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>201cc06befdde967da9b608db3adc3a8</srcmd5>
+    <version>0.7.4</version>
+    <time>1575106694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.4
+  * Fixed broken formatting in 90-nvidia-udev-pm-G05.rules (issue #40)</comment>
+    <requestid>751712</requestid>
+  </revision>
 </revisionlist>

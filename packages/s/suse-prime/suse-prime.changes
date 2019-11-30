@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 21:44:21 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.4
+  * Fixed broken formatting in 90-nvidia-udev-pm-G05.rules (issue #40) 
+
+-------------------------------------------------------------------
 Tue Nov 19 12:49:23 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - only package suse-prime-bbswitch on openSUSE, since bbswitch
