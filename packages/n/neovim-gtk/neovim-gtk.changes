@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Sun Nov 24 23:47:42 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1570090897.3ace1d2:
+  * Fix the logic error
+  * Update dependencies
+  * Update Rust to 1.38 for AppVeyor
+  * Clippy fixes
+
+-------------------------------------------------------------------
+Wed Jul 17 20:23:28 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1563130800.6b0687d:
+  * Add the username to logname
+
+-------------------------------------------------------------------
+Mon Jul 08 09:10:20 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1562530001.44982f9:
+  * Explicit `dyn` for trait objects
+  * Update dependencies
+
+-------------------------------------------------------------------
+Mon May 27 15:05:06 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1558343550.dfb97c8:
+  * Add openSUSE link from #160
+
+-------------------------------------------------------------------
+Sun May 19 20:19:00 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1557694118.1b89b26:
+  * Expand tabs to fill tabline
+
+-------------------------------------------------------------------
+Sat May 11 17:36:44 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1557330294.f3aa855:
+  * Update README.md
+
+-------------------------------------------------------------------
+Wed May 08 09:26:38 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1556702287.3c5d6e8:
+
+  * Create CHANGELOG.md
+  * Termcolors
+  * Fix install script
+  * Migration to rust 2018 edition
+  * Migrate to new gtk version
+  * Extract function
+  * Load file after all initialization complete
+  * Use git describe version (fix #191)
+  * Remove enable-swap option (fix #150)
+  * Space render optimization
+  * Small optimization
+  * Fix crash (#179)
+  * Update rustc version
+  * Fix model update bug
+  * Cleanup
+  * Use new hl api to get theme colors
+  * Use fnv hasher
+  * Update minimum supported version
+  * Fix test
+  * Use HighlightMap in cmdline
+  * Update cmdline API
+  * Cleanup
+  * Fix highlits
+  * Fix tests build
+  * Fix scroll
+  * Yeah, now it starts
+  * Update internal api to use new methods
+  * Highlight api
+  * grid resize/default colors set
+  * grid scroll
+  * Some new grid events
+  * implement grid_line call
+
+-------------------------------------------------------------------
+Sat Apr 20 23:51:40 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Fix %prep section: remove unnecessary double extraction of
+  tarballs, and use %autopatch instead of %autosetup.
+
+-------------------------------------------------------------------
+Mon Apr 15 10:14:21 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.1.2~git.1555146623.8d26c90:
+  * New command ShowProjectView #189
+
+-------------------------------------------------------------------
+Mon Apr 08 05:35:52 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.1.2~git.1553003517.c8b11cb:
+  * Update used Rust version for AppVeyor
+  * Update dependencies
+  * Fix .trim_right_matches() -> .trim_end_matches()
+
+-------------------------------------------------------------------
+Sun Feb 17 20:07:27 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1.2~git.1550348053.c075c32:
+  * Add the most recent versions of gio, cairo, and glib crates.
+- Remove fix_dependencies.patch, accepted upstream.
+
+-------------------------------------------------------------------
+Fri Feb  8 08:32:09 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade Gnome libraries
+
+-------------------------------------------------------------------
+Fri Jan 25 12:47:35 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1.2~git.1548079905.6c3af02:
+  * Extract draw cursor to function
+  * Fix subpixel font rendering
+
+-------------------------------------------------------------------
+Sun Jan 20 19:55:47 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1.2~git.1548079905.6c3af02:
+  * Extract draw cursor to function
+  * Fix subpixel font rendering
+  * Wrong itemize split must not crash application (fix #170)
+
+-------------------------------------------------------------------
+Wed Jan 16 10:24:37 UTC 2019 - Matěj Cepl <mcepl@suse.com>
+
+- /usr/bin/nvim-gtk should certainly be executable.
+
+-------------------------------------------------------------------
+Fri Jan 11 22:22:28 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1.2~git.1546506277.7cda84c:
+  * Don't use -i option for sed to make it more compatible with non-GNU sed.
+
+-------------------------------------------------------------------
+Fri Dec 21 23:01:16 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1.2~git.1544347959.a440248:
+  * Add completeopt preview option support #162, #34
+  * Add Gitter badge
+  * Add patterns to event subscriptions and test with settable title prefix
+
+-------------------------------------------------------------------
+Sun Nov 25 17:24:30 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1.2~git.1542529989.828a78b:
+  * Code cleanup
+  * Migrate all arguments
+  * Parse command line with clap.
+
+-------------------------------------------------------------------
+Fri Nov 16 13:54:15 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.1.2~git.1541923441.011c1d5:
+  * Correct symbolic version of the icon
+  * Added option --enable-swap (#150)
+  * Split font names by comma and use existing (fixes #158)
+  * No warning on empty font
+  * Change colors in design-file of symbolic icon
+  * Correct icons file renaming in Makefile
+  * Correct transparency on symbolic icon
+  * Add symbolic versioned icon for GNOME's top-bar
+
+-------------------------------------------------------------------
+Fri Nov 16 11:24:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for neovim-gtk 0.1.1

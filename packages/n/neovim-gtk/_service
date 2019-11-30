@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionprefix">0.2.0+git</param>
+    <param name="url">https://github.com/daa84/neovim-gtk</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git*</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">Matej Cepl &lt;mcepl@cepl.eu&gt;</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
