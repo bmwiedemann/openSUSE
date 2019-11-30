@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:27:02 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.15
+- New Features and Improvements
+  + ZBXNEXT-5493, ZBX-16540 Moved lld rules from parent templates to linked templates for module
+    host-resources-mib snmpv2, module interfaces windows snmpv2, net arista snmpv2, os windows snmpv2
+  + ZBX-16871 Fixed not setting the default values of multiselects on initial load
+  + ZBX-16776 Reworked custom item select to multiselect
+  + ZBXNEXT-5532 Disabled guest user by default
+  + ZBXNEXT-4825 Implemented in monitoring -> problems the button "export to csv" to export all pages
+- Bug Fixes
+  + ZBX-16955 Fixed performance of history syncers and timer processes by not locking
+    each other when suppressing events
+  + ZBX-16842 Added range validation and optional conversion to is_double()
+  + ZBX-16790 Fixed log rotation on windows
+  + ZBX-16865 Fixed dynamic graphs not updating when changing host in combo box
+  + ZBX-9146 Fixed json null value being treated as empty string for lld filters
+  + ZBX-16828 Fixed array_db validation when validated value is not an array
+  + ZBX-11659 Made user profile icon visible for guest user
+  + ZBX-16849 Moved interface_type_priority definition to misc.c
+  + ZBX-16844 Fixed the process of saving the scroll position on the latest data page in internet explorer
+  + ZBX-16343 Fixed lld not to create items on wrong host if there are failed transactions
+  + ZBX-16730 Fixed disappearance of successful modification message while saving the dashboards
+  + ZBX-16679 Fixed username and password fields resetting and saving for
+    item, item prototype and lld rule on type change
+  + ZBX-16785 Improved performance of timer process when reading from "problem_tag" table
+  + ZBX-16696 Fixed multiselect suggest box clipping when overflowing not allowed in parent containers
+  + ZBX-16809 Fixed undefined offset error in action operation condition form
+  + ZBX-16595 Optimized active logs checks monitoring when buffer flushing fails
+  + ZBX-16682 Fixed wrong element label update in map constructor
+  + ZBX-16815 Fixed widget form positioing when changing widget type from graph to any other type
+  + ZBX-16706 Fixed unneeded padding for dashboard url widget
+  + ZBX-16784 Fixed oracle performance by using "between" operator in sql queries
+  + ZBX-16579 Fixed long text wrapping in the latest data history
+  + ZBX-16767 Fixed possible null pointer arithmetic; thanks to mikhail grigorev for the patch
+  + ZBX-16500 Fixed sla calculation when requested time window starts during
+    the service time; fixed downtime time calculation
+  + ZBX-16805 Fixed when the httptest api selects too many entries from the httpstep
+    table when editing a specific web scenario
+  + ZBX-10618 Fixed disappearing dependent trigger cells and rows in overview
+  + ZBX-16596 Added handling of bom to detect encoding for vfs.file.contents, vfs.file.regex and vfs.file.regmatch
+  + ZBX-16771 Fixed wrong tab number being remembered when several browser tabs are in use
+  + ZBX-16548 Fixed sort order in plain text screen 
+
+-------------------------------------------------------------------
 Wed Oct 30 08:58:50 UTC 2019 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.14
