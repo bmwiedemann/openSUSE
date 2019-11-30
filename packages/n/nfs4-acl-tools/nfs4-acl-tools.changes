@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 28 03:36:22 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- nfs4-acl-tools-0.3.5.tar.gz - new upstream release
+- Refresh nfs-acl-tools-xattr.patch
+- Delete allow-spaces-in-principal-names.patch - included upstream
+  Includes fix for bug 967251 : setting inheritable ACLs with -R
+  Includes other fixes including an fd leak, man page typos and
+  proper handling of DENY ACEs.
+  (bsc#96725, boo#1157915)
+
+-------------------------------------------------------------------
 Thu May 29 04:59:29 UTC 2014 - crrodriguez@opensuse.org
 
 - nfs-acl-tools-xattr.patch For over 10 years the *xattr*

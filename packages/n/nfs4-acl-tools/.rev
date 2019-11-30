@@ -109,4 +109,18 @@ GPL matches are for e.g. Makefile. Consolidate to BSD (as per Fedora) (forwarded
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6eeadb0240e61411d9c0cabf2482fcbe</srcmd5>
+    <version>0.3.5</version>
+    <time>1575106701</time>
+    <user>dimstar_suse</user>
+    <comment>- nfs4-acl-tools-0.3.5.tar.gz - new upstream release
+- Refresh nfs-acl-tools-xattr.patch
+- Delete allow-spaces-in-principal-names.patch - included upstream
+  Includes fix for bug 967251 : setting inheritable ACLs with -R
+  Includes other fixes including an fd leak, man page typos and
+  proper handling of DENY ACEs.
+  (bsc#96725, boo#1157915)</comment>
+    <requestid>751726</requestid>
+  </revision>
 </revisionlist>

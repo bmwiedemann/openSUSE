@@ -1,7 +1,7 @@
 #
 # spec file for package nfs4-acl-tools
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           nfs4-acl-tools
-Version:        0.3.3
+Version:        0.3.5
 Release:        0
 Summary:        Command line tools for managing ACLs over NFSv4
 License:        BSD-3-Clause
 Group:          System/Filesystems
-Url:            http://www.citi.umich.edu/projects/nfsv4/linux/
+Url:            http://linux-nfs.org/~bfields/nfs4-acl-tools/
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}-%{version}-git4cb4187e83.tar.bz2
-# PATCH-FIX-UPSTREAM allow-spaces-in-principal-names.patch bnc#772896 nfbrown@suse.com
-Patch1:         allow-spaces-in-principal-names.patch
+Source0:        %{name}-%{version}.tar.gz
 Patch2:         nfs-acl-tools-xattr.patch
 BuildRequires:  libtool
 
@@ -37,8 +35,7 @@ when using NFSv4 to access a remote filesystem. The remote filesystem
 must also support ACLs.
 
 %prep
-%setup -q -n %{name}-%{version}-git4cb4187e83
-%patch1 -p1
+%setup -q -n %{name}-%{version}
 %patch2 -p1
 
 %build
