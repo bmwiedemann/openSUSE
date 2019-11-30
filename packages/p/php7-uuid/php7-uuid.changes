@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 29 08:36:03 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgraded to version 1.1.0
+  * add uuid_generate_md5 and uuid_generate_sha1 functions
+
+- Upgraded to version 1.0.5
+  * add missing constant UUID_VARIANT_NCS
+
+-------------------------------------------------------------------
 Thu Mar 30 10:24:52 UTC 2017 - jweberhofer@weberhofer.at
 
 - added license to package

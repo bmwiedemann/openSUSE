@@ -1,7 +1,7 @@
 #
 # spec file for package php7-uuid
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,18 +20,17 @@
 %define pkg_name    uuid
 #
 Name:           php7-uuid
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        PHP UUID support functions
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Productivity/Networking/Web/Servers
-Url:            https://pecl.php.net/uuid
+URL:            https://pecl.php.net/uuid
 Source:         https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 BuildRequires:  libuuid-devel
 BuildRequires:  php7-devel
 Provides:       php-%{pkg_name} = %{version}
 Obsoletes:      php-%{pkg_name} < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{?php_zend_api}0
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
@@ -85,6 +84,6 @@ fi
 %defattr(-,root,root,-)
 %{_libdir}/%{php_name}/extensions/%{pkg_name}.so
 %config(noreplace) %{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
-%doc LICENSE
+%license LICENSE
 
 %changelog
