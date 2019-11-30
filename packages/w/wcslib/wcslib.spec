@@ -1,7 +1,7 @@
 #
 # spec file for package wcslib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libver  6
 Name:           wcslib
-Version:        6.2
+Version:        6.4
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
@@ -87,8 +87,7 @@ opened with %{name}.
 
 %build
 %configure --docdir=%{_docdir}/%{name} --without-pgplot
-# Sometimes %%{?_smp_mflags} make compilation fail, so don't use it
-make
+%make_build
 
 %install
 %make_install
