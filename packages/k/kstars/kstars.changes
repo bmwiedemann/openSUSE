@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Nov 18 10:50:59 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.3.8
+  * Fix dome status for rolloff dome when sending status messages
+  * Disable the move to polar message action and just display it as
+    a message instead to alert the user
+  * Fix another crash in poly plotting. Check if array is empty
+  * Adding the polynomial and focus position to the focus graph as
+    well as tooltips
+  * Fix incorrect labels
+  * Use backend instead of type to avoid confusion
+  * Add solver and astrometry solver types
+  * Add error dialog if ASTAP is not found and open options dialog
+    automatically after that
+  * Solve crashing in creating WCS file and use simpler WCS update
+  * Fix condition where previous values of solver type can cause
+    crash in the 3.3.7 version
+
+-------------------------------------------------------------------
+Sat Nov  9 08:23:55 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.3.7
+  * http://knro.blogspot.com/2019/11/kstars-v337-released.html
+  * New ASTAP integration in the Align module
+  * Observatory module: added a dedicated weather widget with live
+    plotting for each parameter
+  * Further improvements to the FITS loading mechanism which
+    resulted in speed ups during sequence capturing
+  * Fixed HFR calculation in the FITS Data class
+  * Two new Ekos options (dusk and dawn offsets), located in the
+    Scheduler option pane
+  * Some improvements to PHD2 integration with Ekos
+  * Added download time estimation to the capture module
+  * Solved several issues with guiding & dithering in both capture
+    & scheduling
+  * Fixed gain setting in capture module
+  * Fixed focus HFR-averaging issue
+  * Connect Scheduler sleep timer to Simulation Clock scale change
+  * Handling of aborts during parking/unparking of rolloff roofs
+    corrected
+  * Hitting a constraint sets a job to IDLE instead of COMPLETE so
+    that it might be restarted later
+  * Update OpenNGC to v20191019
+
+-------------------------------------------------------------------
 Mon Sep  9 12:18:16 UTC 2019 - wbauer@tmo.at
 
 - Update to 3.3.6
