@@ -1276,6 +1276,8 @@ unsorted:
   - bouncycastle-pg 
   - bouncycastle-pkix 
   - bouncycastle-tls 
+  - bowtie: [x86_64] 
+  - bowtie2: [x86_64] 
   - bpftool 
   - bpm-tools 
   - bpython 
@@ -1911,6 +1913,9 @@ unsorted:
   - coolkey 
   - coolkey-32bit: [x86_64] 
   - coolkey-devel 
+  - coq 
+  - coq-devel 
+  - coq-ide 
   - coreboot-utils 
   - coredns 
   - coredns-extras 
@@ -2076,6 +2081,7 @@ unsorted:
   - crossc-devel 
   - crossguid-devel 
   - crosstool-ng 
+  - crow-translate 
   - crudini 
   - cryfs 
   - cryptctl: [x86_64] 
@@ -2342,6 +2348,7 @@ unsorted:
   - distribution-logos-openSUSE-Leap 
   - distribution-logos-openSUSE-MicroOS 
   - dita 
+  - diy-devel: [x86_64] 
   - djvu2pdf 
   - djvulibre-djview4 
   - djvulibre-doc 
@@ -2370,6 +2377,7 @@ unsorted:
   - dnscrypt-proxy-devel 
   - dnsdiag 
   - dnsmasq-utils 
+  - dnsmeter 
   - dnstracer 
   - docbook-css-stylesheets 
   - docbook-simple 
@@ -3030,6 +3038,8 @@ unsorted:
   - fkwnn-devel 
   - flac-devel 
   - flac-devel-32bit: [x86_64] 
+  - flacon 
+  - flacon-lang 
   - flamerobin 
   - flameshot 
   - flameshot-bash-completion 
@@ -6753,6 +6763,7 @@ unsorted:
   - ladspa-cmt 
   - ladspa-devel 
   - ladspa-guitarix 
+  - ladspa-lsp-plugins 
   - ladspa-matched 
   - ladspa-preamp 
   - ladspa-pvoc 
@@ -8680,7 +8691,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_23-0: [x86_64] 
+  - libevtlog-3_23-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -9064,7 +9075,7 @@ unsorted:
   - libgnomekbd-devel 
   - libgnomesu-devel 
   - libgnonograms-core0 
-  - libgnuastro6 
+  - libgnuastro9 
   - libgnuradio-3_8_0 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
@@ -11546,6 +11557,46 @@ unsorted:
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
+  - libsundials3 
+  - libsundials3-mvapich2 
+  - libsundials3-openmpi1 
+  - libsundials3-openmpi2 
+  - libsundials3-openmpi3 
+  - libsundials_arkode4 
+  - libsundials_arkode4-mvapich2 
+  - libsundials_arkode4-openmpi1 
+  - libsundials_arkode4-openmpi2 
+  - libsundials_arkode4-openmpi3 
+  - libsundials_cvode5 
+  - libsundials_cvode5-mvapich2 
+  - libsundials_cvode5-openmpi1 
+  - libsundials_cvode5-openmpi2 
+  - libsundials_cvode5-openmpi3 
+  - libsundials_cvodes5 
+  - libsundials_cvodes5-mvapich2 
+  - libsundials_cvodes5-openmpi1 
+  - libsundials_cvodes5-openmpi2 
+  - libsundials_cvodes5-openmpi3 
+  - libsundials_ida5 
+  - libsundials_ida5-mvapich2 
+  - libsundials_ida5-openmpi1 
+  - libsundials_ida5-openmpi2 
+  - libsundials_ida5-openmpi3 
+  - libsundials_idas4 
+  - libsundials_idas4-mvapich2 
+  - libsundials_idas4-openmpi1 
+  - libsundials_idas4-openmpi2 
+  - libsundials_idas4-openmpi3 
+  - libsundials_kinsol5 
+  - libsundials_kinsol5-mvapich2 
+  - libsundials_kinsol5-openmpi1 
+  - libsundials_kinsol5-openmpi2 
+  - libsundials_kinsol5-openmpi3 
+  - libsundials_nvec5 
+  - libsundials_nvec5-mvapich2 
+  - libsundials_nvec5-openmpi1 
+  - libsundials_nvec5-openmpi2 
+  - libsundials_nvec5-openmpi3 
   - libsuperlu-gnu-hpc 
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
@@ -12624,6 +12675,7 @@ unsorted:
   - lshw-gui 
   - lshw-lang 
   - lsp-plugins 
+  - lsp-plugins-common 
   - lsp-plugins-doc 
   - lswm 
   - lsyncd 
@@ -12736,6 +12788,7 @@ unsorted:
   - lv2-docs 
   - lv2-examples 
   - lv2-guitarix 
+  - lv2-lsp-plugins 
   - lv2-swh-plugins 
   - lv2-zam-plugins 
   - lvm2-devel 
@@ -13563,14 +13616,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_3_3_1-gnu-hpc 
-  - mpich-ofi_3_3_1-gnu-hpc-devel 
-  - mpich-ofi_3_3_1-gnu-hpc-devel-static 
-  - mpich-ofi_3_3_1-gnu-hpc-macros-devel 
-  - mpich_3_3_1-gnu-hpc 
-  - mpich_3_3_1-gnu-hpc-devel 
-  - mpich_3_3_1-gnu-hpc-devel-static 
-  - mpich_3_3_1-gnu-hpc-macros-devel 
+  - mpich-ofi_3_3_2-gnu-hpc 
+  - mpich-ofi_3_3_2-gnu-hpc-devel 
+  - mpich-ofi_3_3_2-gnu-hpc-devel-static 
+  - mpich-ofi_3_3_2-gnu-hpc-macros-devel 
+  - mpich_3_3_2-gnu-hpc 
+  - mpich_3_3_2-gnu-hpc-devel 
+  - mpich_3_3_2-gnu-hpc-devel-static 
+  - mpich_3_3_2-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -14016,6 +14069,7 @@ unsorted:
   - neomutt-doc 
   - neomutt-lang 
   - neovim 
+  - neovim-gtk 
   - neovim-lang 
   - nested 
   - nestopia 
@@ -20723,6 +20777,7 @@ unsorted:
   - python3-fastcluster 
   - python3-fasteners 
   - python3-fastimport 
+  - python3-fastjet 
   - python3-fastnumbers 
   - python3-fastparquet 
   - python3-fastremap 
@@ -22523,9 +22578,9 @@ unsorted:
   - qtractor 
   - quagga-devel 
   - quakespasm 
-  - quantum-espresso 
-  - quantum-espresso-doc 
-  - quantum-espresso-openmpi 
+  - quantum-espresso: [x86_64] 
+  - quantum-espresso-doc: [x86_64] 
+  - quantum-espresso-openmpi: [x86_64] 
   - quassel-base 
   - quassel-client 
   - quassel-client-qt5 
@@ -24351,6 +24406,12 @@ unsorted:
   - suitesparse-devel 
   - suitesparse-devel-static 
   - sundanese-unicode-fonts 
+  - sundials-devel 
+  - sundials-doc 
+  - sundials-mvapich2-devel 
+  - sundials-openmpi1-devel 
+  - sundials-openmpi2-devel 
+  - sundials-openmpi3-devel 
   - sunpinyin-devel 
   - sunpinyin-tools 
   - sunwait 
@@ -24442,15 +24503,15 @@ unsorted:
   - sysinfo 
   - syslinux-debuginfo-x86_64: [x86_64] 
   - syslinux-x86_64: [x86_64] 
-  - syslog-ng: [x86_64] 
-  - syslog-ng-curl: [x86_64] 
-  - syslog-ng-devel: [x86_64] 
-  - syslog-ng-geoip: [x86_64] 
-  - syslog-ng-java: [x86_64] 
-  - syslog-ng-python: [x86_64] 
-  - syslog-ng-redis: [x86_64] 
-  - syslog-ng-smtp: [x86_64] 
-  - syslog-ng-sql: [x86_64] 
+  - syslog-ng 
+  - syslog-ng-curl 
+  - syslog-ng-devel 
+  - syslog-ng-geoip 
+  - syslog-ng-java 
+  - syslog-ng-python 
+  - syslog-ng-redis 
+  - syslog-ng-smtp 
+  - syslog-ng-sql 
   - syslogd 
   - sysprof 
   - sysprof-capture-devel-static 
@@ -32865,6 +32926,7 @@ unsorted:
   - vpp-plugins: [x86_64] 
   - vpx-tools 
   - vsqlite++-devel 
+  - vst-lsp-plugins 
   - vtable-dumper 
   - vtcl 
   - vte-devel 

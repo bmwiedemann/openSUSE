@@ -50,7 +50,6 @@
     <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
-    <package name="WindowMaker-applets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="WindowMaker-themes" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="a2ps" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
