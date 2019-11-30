@@ -1,7 +1,7 @@
 #
 # spec file for package restic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
 Group:          Productivity/Archiving/Backup
-Url:            https://restic.net
+URL:            https://restic.net
 Source0:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
