@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fastjet
-Version:        3.2.1
+Version:        3.3.2
 Release:        0
 Summary:        Package for jet finding in pp and e+e- collisions
-License:        GPL-2.0
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Url:            http://fastjet.fr/
 Source:         http://fastjet.fr/repo/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  python3-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -120,18 +122,30 @@ jet-algorithm, and the inclusive anti-kt algorithm.
 This package provides the develoment files for SISCone plugin for
 fastjet.
 
+%package -n python3-%{name}
+Summary:        Python3 bindings for fastjet
+Group:          Development/Libraries/Python
+
+%description -n python3-%{name}
+FastJet is a software package for jet finding in pp and e+e-
+collisions.
+
+This package provides python3 bindings for fastjet.
+
 %prep
 %setup -q
 
 %build
-%configure --disable-static --enable-allcxxplugins
+%configure --disable-static --enable-allcxxplugins --enable-pyext
 make %{?_smp_mflags}
 
 %install
 %make_install
 
 # REMOVE libtool ARCHIVES
-rm %{buildroot}%{_libdir}/*.la
+find %{buildroot} -name "*.la" -delete -print
+
+%fdupes %{buildroot}%{python3_sitelib}/
 
 %post -n libfastjet0 -p /sbin/ldconfig
 
@@ -164,5 +178,10 @@ rm %{buildroot}%{_libdir}/*.la
 %defattr(-,root,root)
 %{_libdir}/libsiscone*.so
 %{_includedir}/siscone/
+
+%files -n python3-%{name}
+%defattr(-,root,root)
+%{python3_sitelib}/fastjet.*
+%{python3_sitearch}/_fastjet.*
 
 %changelog
