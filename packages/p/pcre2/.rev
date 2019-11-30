@@ -132,4 +132,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>699961</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>afc7859c17242cdc8cc52dc6a68672d1</srcmd5>
+    <version>10.34</version>
+    <time>1575106566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751375</requestid>
+  </revision>
 </revisionlist>

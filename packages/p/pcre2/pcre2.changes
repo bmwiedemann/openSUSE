@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 26 21:24:43 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Enable JIT on aarch64
+
+-------------------------------------------------------------------
+Fri Nov 22 19:55:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.34:
+  * implement the documented maximum number of capturing
+    subpatterns of 65535
+  * Improve the invalid utf32 support of the JIT compiler
+  * Add support for matching in invalid UTF strings to the pcre2_match()
+  * Give more error detail for invalid UTF-8 when detected in pcre2grep
+  * support for invalid UTF-8 to pcre2grep.
+  * Adjust the limit for "must have" code unit searching, in particular,
+  * increase it substantially for non-anchored patterns.
+  * Allow (*ACCEPT) to be quantified, because an ungreedy quantifier
+    with a zero minimum is potentially useful.
+  * Some changes to the way the minimum subject length is handled
+  * Check for integer overflow when computing lookbehind lengths
+  * Implement non-atomic positive lookaround assertions
+  * Upgraded to Unicode 12.1.0
+  * Make pcre2test -C show if libreadline or libedit is supported
+  * Various bug fixes and improvements
+
+-------------------------------------------------------------------
 Thu May  2 00:36:59 UTC 2019 - Jason Sikes <jsikes@suse.de>
 
 - Update to 10.33-RC1 to fix issue with LTO (boo#1133274).
