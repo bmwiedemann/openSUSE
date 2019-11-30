@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 15:03:43 UTC 2019 - peter czanik <peter@czanik.hu>
+
+- remove ExcludeArch as bison workaround no more needed
+- remove dependency on libgeoip to fix bnc#1156203
+  (of course libmaxminddb is still supported) 
+
+-------------------------------------------------------------------
 Tue Sep  3 13:53:13 UTC 2019 - peter czanik <peter@czanik.hu>
 
 - updated to 3.23.1 to resolve bnc#1143190

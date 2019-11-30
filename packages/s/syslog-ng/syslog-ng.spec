@@ -16,9 +16,6 @@
 #
 
 
-# workaround for bison bug
-ExcludeArch:    i586 s390x
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -94,7 +91,6 @@ BuildRequires:  glib2-devel
 BuildRequires:  libcurl-devel
 %endif
 %if %{with geoip}
-BuildRequires:  libGeoIP-devel
 %if 0%{?leap_version} >= 420200
 BuildRequires:  libmaxminddb-devel
 %endif
@@ -210,12 +206,12 @@ This package provides the afsmtp module providing support for
 logging into SMTP.
 
 %package geoip
-Summary:        GeoIP support for syslog-ng
+Summary:        GeoIP (MaxMindDB) support for syslog-ng
 Group:          System/Daemons
 Requires:       %{name} = %{version}
 
 %description geoip
-This package provides GeoIP modules providing support for
+This package provides GeoIP (MaxMindDB) modules providing support for
 logging geo-location information.
 
 %package redis
@@ -273,10 +269,6 @@ sed -i 's|^#!/usr/bin/env python|#!/usr/bin/python3|' lib/merge-grammar.py
 ##
 export CFLAGS="%{optflags}"
 
-%if %{with geoip}
-export GEOIP_LIBS="-lGeoIP"
-%endif
-
 export AM_YFLAGS=-d
 
 %configure \
@@ -313,9 +305,6 @@ export AM_YFLAGS=-d
         --enable-mongodb                        \
 %else
         --disable-mongodb                       \
-%endif
-%if %{with geoip}
-	--enable-geoip				\
 %endif
 %if %{with redis}
 	--enable-redis				\
@@ -711,7 +700,6 @@ chmod 640 "${additional_sockets#/}"
 %files geoip
 %defattr(-,root,root)
 %dir %{_libdir}/syslog-ng
-%attr(755,root,root) %{_libdir}/syslog-ng/libgeoip-plugin.so
 %if 0%{?leap_version} >= 420200
 %attr(755,root,root) %{_libdir}/syslog-ng/libgeoip2-plugin.so
 %endif
