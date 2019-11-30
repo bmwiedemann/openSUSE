@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 12:57:54 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191128.fe8e6c23:
+  * check_source: query all repos if source info yields error
+
+-------------------------------------------------------------------
 Wed Nov 27 11:46:17 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191127.ae1b6ea1:
