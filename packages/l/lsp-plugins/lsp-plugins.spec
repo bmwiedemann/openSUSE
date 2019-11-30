@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 Name:           lsp-plugins
 Version:        1.1.10
 Release:        0
-Summary:        Linux Studio Plugins Project
+Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-only AND Zlib
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://lsp-plug.in/
+URL:            https://lsp-plug.in/
 Source:         https://github.com/sadko4u/lsp-plugins/archive/lsp-plugins-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM lsp-plugins-fix_memory_corruption.patch
 Patch0:         lsp-plugins-fix_memory_corruption.patch
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
+Requires:       %{name}-common = %{version}
 
 %description
 LSP (Linux Studio Plugins) is a collection of open-source plugins
@@ -46,12 +47,61 @@ currently compatible with LADSPA, LV2 and LinuxVST formats.
 The basic idea is to fill the lack of good and useful plugins under
 the GNU/Linux platform.
 
+%package        common
+Summary:        Linux Studio Plugins (Common files)
+Group:          Productivity/Multimedia/Sound/Utilities
+
+%description    common
+Common files for lsp-plugins.
+
 %package        doc
 Summary:        Linux Studio Plugins Documents
 Group:          Documentation/HTML
 
 %description    doc
 Documents for Linux Studio Plugins Project
+
+%package -n     lv2-%{name}
+Summary:        Linux Studio Plugins Documents (LV2)
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}-common = %{version}
+
+%description -n lv2-%{name}
+LSP (Linux Studio Plugins) is a collection of open-source plugins
+currently compatible with LADSPA, LV2 and LinuxVST formats.
+
+The basic idea is to fill the lack of good and useful plugins under
+the GNU/Linux platform.
+
+This is the LV2 version of the plugins.
+
+%package -n     vst-%{name}
+Summary:        Linux Studio Plugins Documents (VST)
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}-common = %{version}
+
+%description -n vst-%{name}
+LSP (Linux Studio Plugins) is a collection of open-source plugins
+currently compatible with LADSPA, LV2 and LinuxVST formats.
+
+The basic idea is to fill the lack of good and useful plugins under
+the GNU/Linux platform.
+
+This is the VST version of the plugins.
+
+%package -n     ladspa-%{name}
+Summary:        Linux Studio Plugins Documents (LADSPA)
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}-common = %{version}
+
+%description -n ladspa-%{name}
+LSP (Linux Studio Plugins) is a collection of open-source plugins
+currently compatible with LADSPA, LV2 and LinuxVST formats.
+
+The basic idea is to fill the lack of good and useful plugins under
+the GNU/Linux platform.
+
+This is the LADSPA version of the plugins.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
@@ -68,13 +118,22 @@ export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 %fdupes -s %{buildroot}%{_libdir}
 
 %files
-%license LICENSE.txt
 %{_bindir}/%{name}-*
-%{_libdir}/ladspa/%{name}-ladspa.so
+
+%files common
+%license LICENSE.txt
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/%{name}-jack-core-%{version}.so
 %{_libdir}/%{name}/%{name}-r3d-glx.so
+
+%files -n ladspa-%{name}
+%{_libdir}/ladspa/%{name}-ladspa.so
+
+%files -n lv2-%{name}
+%dir %{_libdir}/lv2
 %{_libdir}/lv2/%{name}.lv2
+
+%files -n vst-%{name}
 %dir %{_libdir}/vst
 %{_libdir}/vst/%{name}-lxvst-%{version}
 
