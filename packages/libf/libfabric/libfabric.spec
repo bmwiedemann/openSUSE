@@ -17,10 +17,10 @@
 
 
 #
-%define git_ver .0.ec571b35a216
+%define git_ver .0.53734d7108ee
 
 Name:           libfabric
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        GPL-2.0-only OR BSD-2-Clause
@@ -117,6 +117,7 @@ rm -f %{buildroot}%{_libdir}/*.la
 %{_includedir}/rdma/fabric.h
 %{_includedir}/rdma/fi_atomic.h
 %{_includedir}/rdma/fi_cm.h
+%{_includedir}/rdma/fi_collective.h
 %{_includedir}/rdma/fi_domain.h
 %{_includedir}/rdma/fi_eq.h
 %{_includedir}/rdma/fi_rma.h
