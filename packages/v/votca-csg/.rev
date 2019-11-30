@@ -208,4 +208,12 @@
     <comment>Fix i585 build</comment>
     <requestid>734849</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>48df7a80bd36a7ccb102401892f2d2b9</srcmd5>
+    <version>1.5.1</version>
+    <time>1575106624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750179</requestid>
+  </revision>
 </revisionlist>

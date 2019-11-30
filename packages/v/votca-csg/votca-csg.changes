@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 21 14:56:55 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Upgrade to 1.5.1
+  * bug fixes for gcc-5
+  * some bugfixes for the lammps reader
+  * support dynamics box size in h5md
+  * fix build on CentOs7
+
+-------------------------------------------------------------------
 Thu Oct  3 22:48:09 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - Disabled some test on i585 (comparison fixed in upstream master)
