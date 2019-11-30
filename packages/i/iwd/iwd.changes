@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 27 20:37:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable testsuite and openssl BuildRequires, it fails on the obs,
+  but leave them behind as the tests works fine on a checkout.
+- Modernize spec.
+
+-------------------------------------------------------------------
+Fri Nov  1 08:21:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Execute testsuite
+
+-------------------------------------------------------------------
+Wed Oct 30 16:22:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0:
+  * Add support for stable D-Bus interfaces.
+  * Add support for network configuration documentation.
+
+-------------------------------------------------------------------
+Sun Oct 27 21:01:48 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- ver 0.23:
+  * Fix issue with strict certificate chain checks.
+  * Fix issue with parsing RSNE_ADVANCE information.
+  * Fix issue with parsing RSN information for WPA1.
+  * Fix issue with logic error in scan frequency validation.
+  * Fix issue with integer overflow and authentication frames.
+  * Add support for installing various manual pages.
+
+- ver 0.22:
+  * Fix issue with hotplug and device capability detection.
+  * Add support for IPv6 network configuration handling.
+  * Add support for embedding certificates in profiles.
+
+-------------------------------------------------------------------
 Fri Sep 20 11:45:38 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
 
 - ver 0.21:

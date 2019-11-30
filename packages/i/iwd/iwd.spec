@@ -1,7 +1,7 @@
 #
 # spec file for package iwd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,24 @@
 
 
 Name:           iwd
-Version:        0.21
+Version:        1.0
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later
-Group:          Productivity/Networking/Other
 URL:            https://git.kernel.org/pub/scm/network/wireless/iwd.git
 Source:         https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.xz
 Source2:        https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.sign
 # https://kernel.org/doc/wot/holtmann.html
 Source3:        %{name}.keyring
+
+# Disable openssl as we have disabled the tests on obs
+# needed for the tests to generate certificates
+#BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ell) >= 0.23
+BuildRequires:  pkgconfig(ell) >= 0.26
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
@@ -42,19 +45,24 @@ of storage, runtime memory and link-time costs. It utilises the
 features provided by the Linux kernel.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
-  --libexecdir=%{_libexecdir}/%{name} \
-  --enable-external-ell
-make %{?_smp_mflags} V=1
+	--libexecdir=%{_libexecdir}/%{name} \
+	--enable-external-ell \
+	%{nil}
+%make_build
 
 %install
 %make_install
 
 mkdir -p %{buildroot}%{_sbindir}/
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
+
+# Disable tests as they fail on the obs, but works on a checkout
+#%%check
+#make %%{?_smp_mflags} check
 
 %pre
 %service_add_pre %{name}.service
@@ -77,6 +85,8 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 %{_libexecdir}/%{name}/
 %dir %{_libexecdir}/modules-load.d/
 %{_libexecdir}/modules-load.d/pkcs8.conf
+%dir %{_libexecdir}/systemd/network
+%{_libexecdir}/systemd/network/80-iwd.link
 %{_unitdir}/%{name}.service
 %if 0%{?suse_version} >= 1500
 %dir %{_datadir}/dbus-1/system.d/
@@ -85,5 +95,10 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 %{_sysconfdir}/dbus-1/system.d/%{name}*.conf
 %endif
 %{_datadir}/dbus-1/system-services/*%{name}.service
+%{_mandir}/man1/iwctl.1%{?ext_man}
+%{_mandir}/man1/iwmon.1%{?ext_man}
+%{_mandir}/man5/iwd.config.5%{?ext_man}
+%{_mandir}/man5/iwd.network.5%{?ext_man}
+%{_mandir}/man8/iwd.8%{?ext_man}
 
 %changelog
