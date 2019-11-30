@@ -1108,4 +1108,12 @@
     <comment>- Update to release 2019.11.22</comment>
     <requestid>750183</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>3ef5f71d26d153aaf85ed8403796ba59</srcmd5>
+    <version>2019.11.28</version>
+    <time>1575106691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751683</requestid>
+  </revision>
 </revisionlist>
