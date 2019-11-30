@@ -160,4 +160,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment>Update to 2019.07</comment>
     <requestid>729693</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5eb378d34d19ab78137fe99f27706ddc</srcmd5>
+    <version>2019.11</version>
+    <time>1575106800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751856</requestid>
+  </revision>
 </revisionlist>

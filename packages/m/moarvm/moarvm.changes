@@ -1,3 +1,36 @@
+-------------------------------------------------------------------
+Fri Nov 29 08:12:59 CET 2019 - nine@detonation.org
+
+- update to version 2019.11
+
+Features;
++ Update Unicode to 12.1
++ Add GB18030 encode, decode and decodestream support
++ Introduce vmevent, "VM Event Subscription"
++ Improvements to the profiler, including a new heapsnapshot format with zstd
+  support and improvements to the profiler's "confprog" probe language
++ Add MVM_vm_run_bytecode() as alternative to MVM_vm_run_file()
++ Improve hostname resolution with better support for IPv6
++ Partial escape analysis
++ Support JIT compilation of floating point operations
++ Support for deoptimization in the expression JIT
++ Jit getuniprop_(int|bool|str), captureposarg_n, smrt_intify
++ Various smaller performance improvements
++ Fix more than 40 garbage collection related bugs leading to segfaults and other issues
++ Make MVM_file_is_rwx honor root and groups
++ Fix crashes when destroying threads
++ Stability fixes
++ Fix pointer arithmetic in inlined CArrays in CStruct/CPPStruct REPRs
++ Put limits on local and inline counts for inlining to avoid overly long spesh blockages
++ Fixed some memory leaks
++ Improvements to the debug server
++ NativeCall: improvments to error messages
++ Improve Unicode handling with paths
++ Show correct bad bytes in encoding errors
++ Improvements to documentation
+
+- Remove fix-build.patch as the issue has been fixed upstream
+
 Tue Jul 18 10:10:00 CEST 2019 - nine@detonation.org
 
 - update to version 2019.07

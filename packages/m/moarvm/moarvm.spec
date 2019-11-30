@@ -1,7 +1,7 @@
 #
 # spec file for package moarvm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%global mvrel 2019.07
+%global mvrel 2019.11
 Name:           moarvm
 Version:        %mvrel
 Release:        2.1
 Summary:        A virtual machine built especially for Rakudo Perl 6
 License:        Artistic-2.0
 Group:          Development/Libraries/Other
-Url:            http://moarvm.org
+URL:            http://moarvm.org
 Source:         http://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
-Patch1:         fix-build.patch
 BuildRequires:  perl(ExtUtils::Command)
 
 %description
@@ -47,7 +46,6 @@ MoarVM (Metamodel On A Runtime) development headers.
 %prep
 %setup -q -n MoarVM-%{mvrel}
 %patch0 -p1
-%patch1 -p1
 
 %build
 perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3
@@ -64,10 +62,11 @@ mkdir -p $RPM_BUILD_ROOT/%{_libdir}/moar/share
 %{_bindir}/moar
 %{_libdir}/libmoar*
 %{_libdir}/moar
-%{_datadir}/*
+%{_datadir}/nqp
 
 %files devel
 %defattr(-,root,root)
 %{_includedir}/*
+%{_datadir}/pkgconfig
 
 %changelog
