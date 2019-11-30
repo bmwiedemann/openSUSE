@@ -291,4 +291,41 @@
   * CSV plugin: Fixed exporting of grouped tile layers</comment>
     <requestid>704673</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1a0968a135fa4fa34dc5d7179d4b779f</srcmd5>
+    <version>1.3.1</version>
+    <time>1575106621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * Added reloading of object types when changed externally (by Jacob Coughenour, #2674)
+  * Added a status bar to the startup screen
+  * Made the shortcuts for the tools configurable (#2666)
+  * Made Undo/Redo shortcuts configurable (#2669)
+  * Fixed importing of keyboard settings (.kms files) (#2671)
+  * Fixed small window showing up on startup for a split second
+  * Windows: Fixed the shipped version of OpenSSL (fixes new version notification)
+  * Tiled Quick: Don't compile/install by default (#2673)
+- Remove tiled-1.3.0-disable-quick.patch: upstreamed
+
+- Update to 1.3.0:
+  * Added support for extending Tiled with JavaScript (#949)
+  * Added error and warning counts to the status bar
+  * Added Issues view where you can see warnings and errors and interact with them
+  * Added configuration of keyboard shortcuts (#215)
+  * Added status bar notification on new releases (replacing Sparkle and WinSparkle)
+  * Added option to show tile collision shapes on the map (#799)
+  * Added switching current layer with Ctrl + Right Click in map view
+  * Added search filter to the Objects view (#1467)
+  * Added icons to objects in the Objects view
+  * Added dynamic wrapping mode to the tileset view (#1241)
+  * Added a *.world file filter when opening a world file
+  * Added support for .world files in tmxrasterizer (by Samuel Magnan, #2067)
+  * Added synchronization of selected layers and tileset when switching between maps in a world (by JustinZhengBC, #2087)
+  * Added actions to show/hide and lock/unlock the selected layers
+  * Added toggle button for &quot;Highlight Current Layer&quot; action
+  * Added custom output chunk size option to map properties (by Markus, #2130)
+  * Added support for Zstandard compression and configurable compression level (with BRULE Herman and Michael de Lang, #1888)
+  * Added option to minimize output on export (#944)</comment>
+    <requestid>749935</requestid>
+  </revision>
 </revisionlist>

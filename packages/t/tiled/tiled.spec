@@ -12,17 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tiled
-Version:        1.2.4
+Version:        1.3.1
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Other
-Url:            http://www.mapeditor.org
+URL:            https://www.mapeditor.org
 Source:         https://github.com/bjorn/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -33,6 +32,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  zlib-devel
+BuildRequires:  cmake(Qt5Qml)
 Recommends:     tmxtools
 Provides:       tiled-qt
 
@@ -45,7 +45,6 @@ framework.
 %package -n tmxtools
 Summary:        Commandline Tools for Tiled MapEditor
 License:        BSD-2-Clause
-Group:          Productivity/Graphics/Other
 
 %description -n tmxtools
 This package contains tmxviewer, a simple application to view Tiled maps
@@ -54,7 +53,6 @@ and tmxrasterizer which is also a command line tool.
 %package -n libtiled1
 Summary:        Library for Tiled MapEditor
 License:        BSD-2-Clause
-Group:          Development/Libraries/C and C++
 
 %description -n libtiled1
 This package contains libtiled a library for the Tiled map editor.
@@ -100,7 +98,8 @@ rm %{buildroot}%{_libdir}/lib%{name}.so
 %endif
 
 %files -f %{name}.lang
-%doc AUTHORS NEWS.md README.md COPYING LICENSE.GPL LICENSE.BSD
+%license COPYING LICENSE.GPL LICENSE.BSD
+%doc AUTHORS NEWS.md README.md
 %{_bindir}/%{name}
 %{_bindir}/terraingenerator
 %{_datadir}/applications/org.mapeditor.Tiled.desktop
@@ -111,20 +110,18 @@ rm %{buildroot}%{_libdir}/lib%{name}.so
 %dir %{_datadir}/%{name}/
 %dir %{_datadir}/%{name}/translations
 %{_libdir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files -n libtiled1
-%doc LICENSE.BSD
+%license LICENSE.BSD
 %{_libdir}/lib%{name}.so.*
 
 %files -n tmxtools
-%doc LICENSE.BSD
-%{_bindir}/automappingconverter
+%license LICENSE.BSD
 %{_bindir}/tmxrasterizer
 %{_bindir}/tmxviewer
-%{_mandir}/man1/tmxviewer.1%{ext_man}
-%{_mandir}/man1/tmxrasterizer.1%{ext_man}
-%{_mandir}/man1/automappingconverter.1%{ext_man}
+%{_mandir}/man1/tmxviewer.1%{?ext_man}
+%{_mandir}/man1/tmxrasterizer.1%{?ext_man}
 %dir %{_datadir}/thumbnailers/
 %{_datadir}/thumbnailers/tiled.thumbnailer
 %dir %{_datadir}/metainfo/
