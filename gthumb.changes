@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 18 19:33:35 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.8.2:
+  + User visible changes:
+    - Use menus instead of popovers for menu buttons on the header
+      bar, to show icons and accelerators.
+    - Header bar: align menus to the right for menu buttons on the
+      right side.
+    - Tools menu: show the accelerators.
+    - Search: show the matching files during the search operation.
+    - Rename dialog: activate on enter.
+  + Bugs fixed:
+    - Fixed filesize test for big files.
+    - Overwrite dialog: do not show an error after cancelling the
+      operation.
+    - Fixed crash when moving files to the trash.
+    - Install missing UI files.
+    - Added image/webp support in .desktop file.
+    - Fix callback signature for value-changed signal when setting
+      zoom.
+    - Help: corrected wiki link.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep  9 20:01:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.8.1:
