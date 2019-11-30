@@ -1,7 +1,7 @@
 #
 # spec file for package gnuastro
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,21 @@
 #
 
 
-%define sover 6
+%bcond_with     tests
+
+%define sover 9
 Name:           gnuastro
-Version:        0.8
+Version:        0.11
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
-Group:          Productivity/Scientific/Astronomy
 URL:            https://www.gnu.org/software/gnuastro/
 Source:         https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gnuastro&download=1#/%{name}.keyring
+%if %{with tests}
 BuildRequires:  ghostscript_any
+%endif
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
@@ -40,6 +43,7 @@ BuildRequires:  pkgconfig(wcslib)
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 Recommends:     %{name}-doc
+Recommends:     ghostscript_any >= 9.10
 
 %description
 The GNU Astronomy Utilities (Gnuastro) contains various programs and
@@ -48,7 +52,6 @@ data.
 
 %package -n libgnuastro%{sover}
 Summary:        Libraries for the GNU Astronomy Utilities
-Group:          System/Libraries
 
 %description -n libgnuastro%{sover}
 Libraries for the manipulation and analysis of astronomical data,
@@ -56,7 +59,6 @@ part of the GNU Astronomy Utilities (Gnuastro).
 
 %package devel
 Summary:        Development files for gnuastro
-Group:          Development/Libraries/C and C++
 Requires:       libgnuastro%{sover} = %{version}
 
 %description devel
@@ -65,7 +67,6 @@ Utilities (Gnuastro).
 
 %package doc
 Summary:        Documentation for the GNU Astromomy Utilities
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
@@ -78,12 +79,18 @@ Additional documentation for the GNU Astromomy Utilities.
 %configure \
 	--docdir=%{_docdir}/%{name} \
 	--disable-static \
+	--disable-rpath \
 	CPPFLAGS="$(pkg-config cfitsio --cflags)"
 make %{?_smp_mflags}
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+%if %{with tests}
+make check
+%endif
 
 %post -n libgnuastro%{sover} -p /sbin/ldconfig
 %postun -n libgnuastro%{sover} -p /sbin/ldconfig
@@ -98,7 +105,7 @@ for infoname in %{name}.info %{name}.info-{1..6}; do
 done
 
 %files
-%license COPYING
+%license COPYING*
 %doc ChangeLog README NEWS THANKS AUTHORS
 %config %{_sysconfdir}/*.conf
 %{_bindir}/*
@@ -109,7 +116,7 @@ done
 %{_libdir}/libgnuastro.so.*
 
 %files devel
-%license COPYING
+%license COPYING*
 %{_includedir}/gnuastro
 %{_libdir}/libgnuastro.so
 %{_libdir}/pkgconfig/*.pc

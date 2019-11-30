@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 26 17:04:05 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.11 (library 9.0.0):
+  * documentation updates
+  * Updates and extensions to multiple operations
+- drop upstreamed patch
+  0001-Reference-wcslib-by-correct-name-in-gnuastro.pc-pkgc.patch
+
+-------------------------------------------------------------------
+Sun Nov 10 15:05:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix wrong automatic pkgconfig(wcs) requires, add
+  0001-Reference-wcslib-by-correct-name-in-gnuastro.pc-pkgc.patch
+- Drop ghostscript BuildRequires, only needed for running tests
+  (not done), the PDF exporter is built unconditionally. At runtime,
+  the exporter uses a "gs" executable in PATH, so add a Recommends.
+- Add bcond for running tests, keep it disabled by default.
+
+-------------------------------------------------------------------
+Sun Nov  3 16:02:38 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.10 (library 8.0.0):
+  * Report/warn when using arrays memory-mapped to non-volatile
+    storage. Users should use --minmapsize to allow use of available
+    RAM, --quietmmap' option to disable the messages
+  * Various additions and extensions to operators and tools
+  * crop now supports 3D datasets (data cubes)
+  * documentation updates and bug fixes
+- includes changes from 0.9:
+  * --checkconfig: print the names and values given to options as
+    they are parsed on the command-line or in various configuration
+    files
+  * Multithreaded operation for many operators 
+  * Add bash scripts for common higher-level usage
+
+-------------------------------------------------------------------
 Fri Dec 28 20:36:45 UTC 2018 - astieger@suse.com
 
 - update to 0.8:
