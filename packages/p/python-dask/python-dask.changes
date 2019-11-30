@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:35:04 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.8.1:
+  * Array
+    + Use auto rechunking in da.rechunk if no value given (:pr:`5605`)
+      Matthew Rocklin
+  * Core
+    + Add simple action to activate GH actions (:pr:`5619`) James
+      Bourbeau
+  * DataFrame
+    + Fix "file_path_0" bug in aggregate_row_groups (:pr:`5627`)
+      Richard J Zamora
+    + Add chunksize argument to read_parquet (:pr:`5607`) Richard J
+      Zamora
+    + Change test_repartition_npartitions to support arch64
+      architecture (:pr:`5620`) ossdev07
+    + Categories lost after groupby + agg (:pr:`5423`) Oliver Hofkens
+    + Fixed relative path issue with parquet metadata file
+      (:pr:`5608`) Nuno Gomes Silva
+    + Enable gpu-backed covariance/correlation in dataframes
+      (:pr:`5597`) Richard J Zamora
+  * Documentation
+    + Fix institutional faq and unknown doc warnings (:pr:`5616`)
+      James Bourbeau
+    + Add doc for some utils (:pr:`5609`) Tom Augspurger
+    + Removes html_extra_path (:pr:`5614`) James Bourbeau
+    + Fixed See Also referencence (:pr:`5612`) Tom Augspurger
+
+-------------------------------------------------------------------
 Sat Nov 16 17:53:12 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.8.0:

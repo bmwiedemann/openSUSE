@@ -1,7 +1,7 @@
 #
 # spec file for package python-dask
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
