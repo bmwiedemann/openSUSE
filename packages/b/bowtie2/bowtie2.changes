@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Thu Nov  7 20:11:08 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.5.1:
+  * Added official support for BAM input files.
+  * Added official support for CMake build system.
+  * Added changes to Makefile for creating Reproducible builds
+    [gh#BenLangmead/bowtie2#210].
+  * Fix an issue whereby building on aarch64 would require
+    patching sed commands [gh#BenLangmead/bowtie2#243].
+  * Fix an issue whereby `bowtie2` would incorrectly throw an
+    error while processing `--interleaved` input.
+- Changes from version 2.3.5:
+  * Added support for obtaining input reads directly from the
+    Sequence Read Archive, via NCBI's [NGS language
+    bindings](https://github.com/ncbi/ngs).  This is activated via
+    the [`--sra-acc`](manual.shtml#bowtie2-options-sra-acc)
+    option.  This implementation is based on Daehwan Kim's in
+    [HISAT2](https://ccb.jhu.edu/software/hisat2).  Supports both
+    unpaired and paired-end inputs.
+  * Bowtie 2 now compiles on ARM architectures (via
+    [gh#BenLangmead/bowtie2#216].
+  * `--interleaved` can now be combined with FASTA inputs (worked
+    only with FASTQ before).
+  * Fixed issue whereby large indexes were not successfully found
+    in the `$BOWTIE2_INDEXES` directory.
+  * Fixed input from FIFOs (e.g. via process substitution) to
+    distinguish gzip-compressed versus uncompressed input.
+  * Fixed issue whereby arguments containing `bz2` `lz4` were
+    misinterpretted as files.
+  * Fixed several compiler warnings.
+  * Fixed issue whereby both ends of a paired-end read could have
+    negative TLEN if they exactly coincided
+  * Fixed issue whereby `bowtie2-build` would hang on end-of-file
+    [gh#BenLangmead/bowtie2#228].
+  * Fixed issue whereby wrapper script would sometimes create
+    zombie processes [gh#BenLangmead/bowtie2#51].
+  * Fixed issue whereby `bowtie2-build` and `bowtie2-inspect`
+    wrappers would fail on some versions of Python/PyPy.
+  * Replaced old, unhelpful `README.md` in the project with a
+    version that includes badges, links and some highlights from
+    the manual.
+
+-------------------------------------------------------------------
+Wed Feb 28 13:14:53 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.3.4.1:
+  * Fixed an issue with --reorder that caused bowtie2 to crash
+    while reordering SAM output
+- Changes from version 2.3.4:
+  * Fixed major issue causing corrupt SAM output when using many
+    threads (-p/--threads) on certain systems.
+  * Fixed an issue whereby bowtie2 processes could overwrite each
+    others' named pipes on HPC systems.
+  * Fixed an issue causing bowtie2-build and bowtie2-inspect to
+    return prematurely on Windows.
+  * Fixed issues raised by compiler "sanitizers" that could
+    potentially have caused memory corruption or undefined
+    behavior.
+  * Added the "continuous FASTA" input format (-F) for aligning
+    all the k-mers in the sequences of a FASTA file. Useful for
+    determining mapability of regions of the genome, and similar
+    tasks.
+- Run sed on binaries to modify env based hashbangs to ones that
+  directly call executables.
+- Drop bowtie2-gcc6.patch; incorporated upstream.
+
+-------------------------------------------------------------------
+Mon Sep  4 10:17:15 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.3.2:
+  * Added support for interleaved paired-end FASTQ inputs
+    (--interleaved)
+  * Now reports MREVERSE SAM flag for unaligned end when only one
+    end of a pair aligns
+  * Fixed issue where first character of some read names was
+    omitted from SAM output when using tabbed input formats.
+  * Added --sam-no-qname-trunc option.
+  * Fixed compilation error caused by pointer comparison issue in aligner_result.cpp
+  * Removed termcap and readline dependencies introduced in v2.3.1
+  * Fixed compilation issues caused by gzbuffer function when
+    compiling with zlib v1.2.3.5 and earlier.
+  * Fixed issue that would cause Bowtie 2 hang when aligning FASTA
+    inputs with more than one thread
+- Changes for version 2.3.0:
+  * Code related to read parsing was completely rewritten to improve
+    scalability to many threads.
+  * TBB is now the default threading library.
+  * Bowtie now uses a queue-based lock rather than a spin or
+    heavyweight lock.
+  * Unnecessary thread synchronization removed
+  * Fixed issue with parsing FASTA records with greater-than symbol
+    in the name
+  * Changed default for --bmaxdivn to yield better memory footprint
+    and running time when building an index with many threads
+- Add bowtie2-gcc6.patch (fixes compilation with gcc6+)
+- Build using optflags
+- Update download url
+- Small package cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu May  5 18:42:35 UTC 2016 - flyos@mailoo.org
+
+- Initial release
