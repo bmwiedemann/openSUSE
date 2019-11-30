@@ -17,7 +17,7 @@
 
 
 Name:           datovka
-Version:        4.13.1
+Version:        4.14.1
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later

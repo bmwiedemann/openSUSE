@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 28 12:34:08 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- Update to 4.14.1
+  * Able to log from command line into an account that user a MEP login
+    procedure.
+  * Able to verify qualified time stamps in a new format which is used in
+    the testing environment since the end of August 2019 and is going to be used
+    in the production environment.
+  * Allowing *.pfx files for login certificates.
+  * Sharing account credentials code with mobile application.
+  * Fixed a problem with non-functional account deletion in Qt-5.10 and later.
+  * Using username together with testing flag to internally identify accounts.
+  * Added MEP (mobile key) login procedure, libisds-0.11 is required.
+
+-------------------------------------------------------------------
 Tue May 28 07:13:58 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - Update to 4.13.1
