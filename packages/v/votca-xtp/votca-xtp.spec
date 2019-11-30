@@ -18,7 +18,7 @@
 
 
 Name:           votca-xtp
-Version:        1.5
+Version:        1.5.1
 %define         uversion %{version}
 %define         sover 5
 Release:        0
@@ -130,7 +130,7 @@ make #%{?_smp_mflags}
 
 %install
 make -C build install DESTDIR=%{buildroot}
-sed -i -e '1s@env python@python2@'  %{buildroot}/%{_bindir}/xtp_*
+sed -i -e '1s@env @@'  %{buildroot}/%{_bindir}/xtp_*
 
 %define pkgdocdir %{_docdir}/%{name}
 mkdir -p %{buildroot}%{pkgdocdir}
