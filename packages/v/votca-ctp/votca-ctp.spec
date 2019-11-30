@@ -18,7 +18,7 @@
 
 
 Name:           votca-ctp
-Version:        1.5
+Version:        1.5.1
 %define         uversion %{version}
 %define         sover 5
 Release:        0
