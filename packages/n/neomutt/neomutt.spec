@@ -1,7 +1,7 @@
 #
 # spec file for package neomutt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           neomutt
-Version:        20180716
+Version:        20191111
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-Url:            https://neomutt.org
-Source:         https://github.com/neomutt/neomutt/archive/%{name}-%{version}.tar.gz
+URL:            https://neomutt.org
+Source:         https://github.com/neomutt/neomutt/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
@@ -68,7 +68,7 @@ and requirements.
 %lang_package macro
 
 %prep
-%setup -q -n neomutt-%{name}-%{version}
+%setup -q
 
 %build
 export CFLAGS="%{optflags}"
@@ -129,6 +129,7 @@ make %{?_smp_mflags}
 %dir %doc %{_docdir}/%{name}/logo/
 %doc %{_docdir}/%{name}/logo/neomutt*
 %dir %doc %{_docdir}/%{name}/samples/
+%doc %{_docdir}/%{name}/samples/*.pl
 %doc %{_docdir}/%{name}/samples/*.rc
 %doc %{_docdir}/%{name}/samples/colors.*
 %doc %{_docdir}/%{name}/samples/sample.*

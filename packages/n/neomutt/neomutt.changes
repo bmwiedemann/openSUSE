@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 28 05:16:45 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20191111:
+  Bug fixes:
+  * browser: fix directory view
+  * fix crash in mutt_extract_token()
+  * force a screen refresh
+  * fix crash sending message from command line
+  * notmuch: use nm_default_uri if no mailbox data
+  * fix forward attachments
+  * fix: vfprintf undefined behaviour in body_handler
+  * Fix relative symlink resolution
+  * fix: trash to non-existent file/dir
+  * fix re-opening of mbox Mailboxes
+  * close logging as late as possible
+  * log unknown mailboxes
+  * fix crash in command line postpone
+  * fix memory leaks
+  * fix icommand parsing
+  * fix new mail interaction with mail_check_recent
+
+-------------------------------------------------------------------
 Tue Jul 17 09:26:21 UTC 2018 - kbabioch@suse.com
 
 - Updated to 20180716
