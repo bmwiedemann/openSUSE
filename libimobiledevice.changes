@@ -6,7 +6,7 @@ Tue Jun 12 01:28:19 UTC 2018 - i@marguerite.su
   * Added IDEVICE_DEVICE_PAIRED event constant matching the corresponding
   * Define htobe16 if not defined
   * Fix parameter check of instproxy_check_capabilities_match()
-  * Avoid double free with OpenSSL 1.1.0
+  * Avoid double free with OpenSSL 1.1.0 (boo#1103546)
   * Don't use ERR_remove_thread_state() with OpenSSL 1.1.0
   * #ifdef out code which is a no-op with OpenSSL 1.1.0
   * cython: Fix build error after error constant rename
