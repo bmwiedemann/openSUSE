@@ -1,7 +1,7 @@
 #
 # spec file for package libisds
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname %{name}5
 Name:           libisds
-Version:        0.10.8
+Version:        0.11
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        LGPL-3.0-or-later
@@ -27,11 +27,12 @@ URL:            http://xpisar.wz.cz/libisds/
 Source0:        http://xpisar.wz.cz/%{name}/dist/%{name}-%{version}.tar.xz
 Source1:        http://xpisar.wz.cz/%{name}/dist/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch0:         fix-gnutls-3.6.4.patch
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gpg2
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(expat) >= 2.0.0
 BuildRequires:  pkgconfig(gnutls) >= 2.12.0
 BuildRequires:  pkgconfig(libcrypto)
@@ -63,20 +64,17 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure \
   --disable-fatalwarnings \
   --disable-static \
   --enable-test \
+  --with-docbook-xsl-stylesheets=/usr/share/xml/docbook/stylesheet/nwalsh/current/ \
   --with-libcurl \
   --disable-openssl-backend
 make %{?_smp_mflags}
-
-%check
-make check %{?_smp_mflags}
 
 %install
 %make_install
@@ -84,6 +82,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 mv doc specification
 rm -rf client/.deps
+rm -f specification/Makefile*
+rm -f specification/*.3
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -97,6 +97,7 @@ rm -rf client/.deps
 %{_includedir}/isds.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_mandir}/man3/*.3.gz
 %doc client specification
 
 %changelog

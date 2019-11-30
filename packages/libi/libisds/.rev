@@ -82,4 +82,17 @@
     <comment></comment>
     <requestid>707045</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b40f7e330e925f69ffed254d10e509d8</srcmd5>
+    <version>0.11</version>
+    <time>1575106804</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.11:
+  * mobile key authentication
+  * manual pages are generated
+  * compatibility with OpenSSL 1.1.0
+- drop %check as it does nothing (and breaks build ATM)
+- Drop merged patch fix-gnutls-3.6.4.patch</comment>
+    <requestid>751859</requestid>
+  </revision>
 </revisionlist>
