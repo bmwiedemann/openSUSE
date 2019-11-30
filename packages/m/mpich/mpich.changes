@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 13:21:55 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mpich 3.3.2 (jsc#SLE-8574)
+  - See CHANGES for a list of changes
+
+-------------------------------------------------------------------
 Thu Sep 26 11:16:46 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mpich 3.3.1 (jsc#SLE-8574)

@@ -1,7 +1,7 @@
 #
 # spec file for package mpich
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  3.3.1
-%define _vers 3_3_1
+%define vers  3.3.2
+%define _vers 3_3_2
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -149,7 +149,7 @@ Release:        0
 Summary:        High-performance and widely portable implementation of MPI
 License:        MIT
 Group:          Development/Libraries/Parallel
-Url:            http://www.mpich.org/
+URL:            http://www.mpich.org/
 Source0:        http://www.mpich.org/static/downloads/%{version}/mpich-%{vers}.tar.gz
 Source1:        mpivars.sh
 Source2:        mpivars.csh
