@@ -68,4 +68,12 @@ I was not aware that %doc AUTHORS... does not overwrite /usr/share/doc/packages/
     <comment></comment>
     <requestid>627093</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>68e4769a953d2cb48a76aedfb9a9f95f</srcmd5>
+    <version>0.8.4</version>
+    <time>1575106688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751675</requestid>
+  </revision>
 </revisionlist>
