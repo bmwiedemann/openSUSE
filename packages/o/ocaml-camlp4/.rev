@@ -51,4 +51,12 @@
 - Use _service file</comment>
     <requestid>745388</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2af5ddf4456016bb6e1e7bf70bdc626f</srcmd5>
+    <version>4.05</version>
+    <time>1575106550</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-libs-devel to BuildRequires (bsc#1156934)</comment>
+    <requestid>750771</requestid>
+  </revision>
 </revisionlist>

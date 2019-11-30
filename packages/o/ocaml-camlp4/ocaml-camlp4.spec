@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml-ocamlbuild
 BuildRequires:  ocaml-rpm-macros >= 20191101
 BuildRequires:  ocaml(ocaml_base_version) = 4.05
+BuildRequires:  ocamlfind(compiler-libs)
 Conflicts:      ocaml < 4.05.0
 Requires:       ocaml-runtime = 4.05.0
 
