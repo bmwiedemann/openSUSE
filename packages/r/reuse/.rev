@@ -57,4 +57,33 @@
     <comment></comment>
     <requestid>738631</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8534b6d9fbf8e31cb78e5ed2cc867724</srcmd5>
+    <version>0.7.0</version>
+    <time>1575106680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0:
+  + Git submodules are ignored by default. Use --include-submodules
+    to include them again.
+  + Upstream name changed from fsfe-reuse to reuse.
+  + addheader improvements.
+- Update to version 0.5.0:
+  + The tool is now compliant with REUSE v3.0
+- Update to version 0.3.3:
+  + Files ending in .spdx are no longer considered licenses.
+- Update to version 0.3.1:
+  + Finding of root directory fixed when using pygit2.
+- Update to version 0.3.0:
+  + Bill of materials output is now deterministic.  Entries are
+    sorted.
+- Update to version 0.2.0:
+  + Added translations for Dutch, Esperanto and Spanish.
+  + Added new `-only` and `-or-later` SPDX tags for GPL.
+  + Based on argparse instead of click.
+- Remove xfail-test.patch.
+- Added package, version 0.1.1.
+- Add xfail-test.patch to ignore a test that fails occasionally.
+</comment>
+    <requestid>751629</requestid>
+  </revision>
 </revisionlist>

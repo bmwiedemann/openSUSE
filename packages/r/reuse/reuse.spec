@@ -18,13 +18,13 @@
 
 
 Name:           reuse
-Version:        0.5.0
-Release:        0
+Version:        0.7.0
+Release:        1%{?dist}
 Summary:        A tool for compliance with the REUSE recommendations
 License:        GPL-3.0-or-later AND CC-BY-SA-4.0 AND Apache-2.0 AND CC0-1.0
 Group:          Development/Languages/Python
 Url:            https://git.fsfe.org/reuse/reuse
-Source:         https://files.pythonhosted.org/packages/source/f/fsfe-reuse/fsfe-reuse-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/reuse/reuse-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  git
@@ -55,7 +55,7 @@ it is a linter that checks for a project's compliance, and a compiler that
 generates a project's bill of materials.
 
 %prep
-%setup -q -n fsfe-reuse-%{version}
+%setup -q -n reuse-%{version}
 
 %build
 %python3_build
