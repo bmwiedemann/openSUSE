@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 29 09:21:47 UTC 2019 - ecsos@opensuse.org
+
+- Update to 4.5.0
+  New features
+  - title: "Driver for the new PocketBook Inkpad X"
+  - title: "Driver for the new Bookeen Diva HD"
+  - title: "PDF Output: Add an option to shift text horizontally on
+    odd/even pages."
+  - title: "Image viewing popup dialog: Add a checkbox to fit image
+    to window."
+  - title: "Edit book: Create @font-face rules when importing 
+    multiple font files into book automatically, similar to how it
+    is done when importing a single font file."
+  Bug fixes
+  - title: "PDF Output: Fix incorrect rendering if the input 
+    document has too many anchors."
+  - title: "Fix a regression that could cause window layout
+    settings to sometimes not be saved during shutdown"
+  Improved recipes
+  - "L'express"
+  - The Toronto Star
+
+-------------------------------------------------------------------
 Fri Nov 22 10:34:08 UTC 2019 - ecsos@opensuse.org
 
 - Update to 4.4.0
