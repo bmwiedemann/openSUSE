@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 17:43:37 CET 2019 - tiwai@suse.de
+
+- Update to alsa-plugins 1.2.1:
+  * pulse: Add DEVICE parameter
+
+-------------------------------------------------------------------
 Fri May 10 11:57:35 CEST 2019 - tiwai@suse.de
 
 - Update to alsa-plugins 1.1.9:
