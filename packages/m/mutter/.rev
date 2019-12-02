@@ -1210,4 +1210,11 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Scripted push from {project} (forwarded request 751010 from dimstar)</comment>
     <requestid>751355</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>1d1d616a19e2b388119e7fc614439773</srcmd5>
+    <version>3.34.1+27</version>
+    <time>1575285583</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, fixes focus issues</comment>
+  </revision>
 </revisionlist>

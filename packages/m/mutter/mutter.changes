@@ -1,44 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov 19 11:56:58 UTC 2019 - dimstar@opensuse.org
-
-- Update to version 3.34.1+57:
-  * cursor-renderer/native: Fix cursor drawing in combination with panel_orientation_transform
-  * output-kms: Fix "panel orientation" kms-prop being ignored on native outputs
-  * compositor: Plug cairo_region_t leak
-  * backends: Plug MetaKmsPageFlipData leak
-  * input-settings/x11: Add missing clutter_x11_trap_x_errors around XIGetProperty
-  * plugin-manager: Kill window effects on destroy
-  * plugins/default: Handle skipped animations
-  * wayland/surface: Don't double scale when getting absolute coordinates
-  * window-props: Don't set override redirect windows as top-level parent
-  * window-props: Don't look for parent multiple times
-  * window: Assert we only set a NULL workspace when unmanaging
-  * window: Warn if O-R window workspace state is used
-  * wayland/actor-surface: Always store away frame callbacks on commit
-  * ci: Fix checking out gnome-shell on stable branches
-  * x11-display: Don't unset the X11 focused window after setting one
-  * tests/monitor-unit-tests: Add another tiling window hot plug test
-  * window: Reset tile monitor number when untiling
-  * tests/monitor-unit-tests: Add window tiling hot plug test
-  * tests/runner: Move window shown synchronization to helper
-  * tests/monitor-unit-tests: Move test client sanity check into helper
-  * window: Always update tile monitor number on hot plug
-  * plugins/default: Clean up tile preview when closing display
-  * plugin/default: Init quark before using
-  * display: Add 'closing' signal
-  * renderer-native: Separate offscreen and shadowfb
-  * clutter/stage-view: Separate offscreen and shadowfb
-
--------------------------------------------------------------------
-Wed Oct 30 15:43:16 UTC 2019 - dimstar@opensuse.org
-
-- Update to version 3.34.1+31:
-  * wayland: Check stylus serials on meta_wayland_seat_can_popup()
-  * x11: Limit touch replay pointer events to when replaying
-  * display: Move finishing of touch sequence to the backend
-  * x11: Update X11 focus before updating MetaDisplay focus
-
--------------------------------------------------------------------
 Wed Oct 23 18:14:18 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.34.1+27:
@@ -698,7 +658,7 @@ Fri Jun 22 02:32:53 UTC 2018 - luc14n0@linuxmail.org
 -------------------------------------------------------------------
 Sun Jun  3 02:40:36 UTC 2018 - luc14n0@linuxmail.org
 
-- Update to version 3.29.1 (bsc#1093541):
+- Update to version 3.29.1:
   + Fix various input-method regressions glgo#GNOME/mutter#65,
     glgo#GNOME/mutter#74, glgo#GNOME/mutter#66,
     glgo#GNOME/mutter#112).
@@ -856,7 +816,7 @@ Tue Mar  6 08:37:38 UTC 2018 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Mar  1 03:27:51 UTC 2018 - dimstar@opensuse.org
 
-- Update to version 3.27.91 (bsc#1133445):
+- Update to version 3.27.91:
   + Fix handling of trackball settings on wayland (bgo#787804).
   + Apply font settings on wayland (bgo645433).
   + Fix keybindings getting mixed up with some layouts
@@ -866,14 +826,12 @@ Thu Mar  1 03:27:51 UTC 2018 - dimstar@opensuse.org
   + Support platforms that export EGL_KHR_platform_gbm
     (bgo#780668).
   + Add keyboard accessibility support on wayland (bgo#788564).
-  + Fix missing cursor when using screen magnifier (bsc#1120290
-    bgo#754806).
+  + Fix missing cursor when using screen magnifier (bgo#754806).
   + Fix external monitor shutting off on wayland when lid closes
     (bgo#788915).
   + Add xdg-output support (bgo#787363).
   + Add Xwayland grab keyboard support (bgo#783342).
-  + Allow shortcut inhibition of the super key (bsc#1120372
-    bgo#790627).
+  + Allow shortcut inhibition of the super key (bgo#790627).
   + Take "panel orientation" drm_connector property into account
     (bgo#782294).
   + Fix focus window ending up below other windows on wayland
