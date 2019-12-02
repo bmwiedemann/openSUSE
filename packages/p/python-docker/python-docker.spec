@@ -1,7 +1,7 @@
 #
 # spec file for package python-docker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-docker
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        Docker API Client
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module docker-pycreds >= 0.4.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module paramiko >= 2.4.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 2.9.1}
+BuildRequires:  %{python_module pytest >= 4.3.1}
 BuildRequires:  %{python_module pytest-cov >= 2.1.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.2.1}
 BuildRequires:  %{python_module requests >= 2.20.0}
