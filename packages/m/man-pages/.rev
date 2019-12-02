@@ -1690,4 +1690,12 @@
   + man-pages-tcp_fack.patch</comment>
     <requestid>742829</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>f7e1106f0460102627b94e81d38fa348</srcmd5>
+    <version>5.04</version>
+    <time>1575282691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>751218</requestid>
+  </revision>
 </revisionlist>

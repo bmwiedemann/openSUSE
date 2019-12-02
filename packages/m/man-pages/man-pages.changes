@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 20 08:13:59 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.04
+  * clone.2
+        Document clone3()
+  * wait.2
+        Add P_PIDFD for waiting on a child referred to by a PID file descriptor
+  * bpf-helpers.7
+        Refresh against kernel v5.4-rc7
+  * see Changes for other changes
+
+-------------------------------------------------------------------
 Fri Oct 25 07:39:55 UTC 2019 - pgajdos@suse.com
 
 - tcp.7: correct documentation of tcp_fack, document tcp_recovery
