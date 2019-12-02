@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 29 21:33:02 UTC 2019 - suse+build@de-korte.org
+
+- Use correct macro to reference metadata (boo#1158112)
+- Clean-up spec, use https for downloading
+
+-------------------------------------------------------------------
 Mon Jan  7 18:24:45 UTC 2019 - ecsos@opensuse.org
 
 - New upstream release 1.8.1
