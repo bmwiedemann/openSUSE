@@ -1,10 +1,9 @@
-diff -Nru azure-cli-2.0.15.orig/az azure-cli-2.0.15/az
---- azure-cli-2.0.15.orig/az	2017-08-28 22:11:38.000000000 +0200
-+++ azure-cli-2.0.15/az	2017-09-18 13:18:43.389216387 +0200
-@@ -10,5 +10,5 @@
+diff -Nru azure-cli-2.0.77.orig/az azure-cli-2.0.77/az
+--- azure-cli-2.0.77.orig/az	2019-11-22 06:26:37.000000000 +0100
++++ azure-cli-2.0.77/az	2019-11-26 11:55:29.693046152 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
  
- export PYTHONPATH="${DIR}/src:${PYTHONPATH}"
- 
--python -m azure.cli "$@"
-+python3 -m azure.cli "$@"
- 
+ import sys
+ import os
