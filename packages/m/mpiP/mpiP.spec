@@ -1,7 +1,7 @@
 #
 # spec file for package mpiP
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@
 %define vers 3.4.1
 %define _vers 3_4_1
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI3
-%else
+%if 0%{?sle_version} >= 150200
+%define DisOMPI1 ExclusiveArch:  do_not_build
+%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
@@ -76,6 +77,14 @@ ExclusiveArch:  do_not_build
 %define mpi_ver 1
 %endif
 
+%if "%{flavor}" == "gnu7-openmpi2-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 7
+%define mpi_family openmpi
+%define mpi_ver 2
+%endif
+
 %if "%{flavor}" == "gnu7-openmpi3-hpc"
 %{?DisOMPI3}
 %global compiler_family gnu
@@ -96,6 +105,78 @@ ExclusiveArch:  do_not_build
 %define mpi_family mpich
 %endif
 
+%if "%{flavor}" == "gnu8-openmpi-hpc"
+%{?DisOMPI1}
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_family openmpi
+%define mpi_ver 1
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi3-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_family openmpi
+%define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi2-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_family openmpi
+%define mpi_ver 2
+%endif
+
+%if "%{flavor}" == "gnu8-mvapich2-hpc"
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_family mvapich2
+%endif
+
+%if "%{flavor}" == "gnu8-mpich-hpc"
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_family mpich
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi-hpc"
+%{?DisOMPI1}
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_family openmpi
+%define mpi_ver 1
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi2-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_family openmpi
+%define mpi_ver 2
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi3-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_family openmpi
+%define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu9-mvapich2-hpc"
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_family mvapich2
+%endif
+
+%if "%{flavor}" == "gnu9-mpich-hpc"
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_family mpich
+%endif
+
 %{?hpc_init:%{hpc_init -c %compiler_family -m %mpi_family %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}}
 
 Name:           %{?hpc_package_name:%{hpc_package_name %_vers}}%{!?hpc_package_name:%pname}
@@ -104,7 +185,7 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
 Version:        %vers
 Release:        0
-Url:            http://mpip.sourceforge.net/
+URL:            http://mpip.sourceforge.net/
 Source0:        http://sourceforge.net/projects/mpip/files/mpiP/mpiP-3.4.1/mpiP-%{version}.tar.gz
 Patch1:         mpip.unwinder.patch
 
