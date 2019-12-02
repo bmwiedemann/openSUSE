@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 29 21:05:32 UTC 2019 - suse+build@de-korte.org
+
+- New upstream release 1.10.4
+  * Fix E_STRICT errors introduced in the previous release
+  * Fix deprecation warning for get_magic_quotes_runtime() use on
+    PHP 7.4
+  * Fix Bug #21255: Boundary gets added twice when using
+    setContentType()
+  * PHP 7.2 compatibility fixes
+- Use correct macro to reference metadata (boo#1158112)
+- Clean-up spec, use https for downloading
+
+-------------------------------------------------------------------
 Wed Nov  8 15:31:04 UTC 2017 - jweberhofer@weberhofer.at
 
 - Move to new unified spec
