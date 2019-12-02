@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:42:16 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Replace incorrect usage of %_libexecdir/rpm with %_rpmconfigdir
+
+-------------------------------------------------------------------
 Wed Jan 20 18:33:51 UTC 2016 - pgajdos@suse.com
 
 - version 20161120

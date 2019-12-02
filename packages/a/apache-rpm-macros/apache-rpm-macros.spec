@@ -53,7 +53,7 @@
 %endif
 #
 %if 0%{?suse_version} > 1230
-%define macros_dir            %{_libexecdir}/rpm/macros.d
+%define macros_dir            %{_rpmconfigdir}/macros.d
 %else
 %define macros_dir            %{_sysconfdir}/rpm
 %endif

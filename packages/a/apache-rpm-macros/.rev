@@ -88,4 +88,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>357215</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0943ff31419361999d5f97695e220d22</srcmd5>
+    <version>20160120</version>
+    <time>1575282560</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace incorrect usage of %_libexecdir/rpm with %_rpmconfigdir (forwarded request 750621 from Pharaoh_Atem)</comment>
+    <requestid>750688</requestid>
+  </revision>
 </revisionlist>
