@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 06:23:11 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- shim-install: add check for btrfs is used as root file system to enable
+  relative path lookup for file. (bsc#1153953) 
+
+-------------------------------------------------------------------
 Fri Aug 16 04:07:30 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Fix a typo in shim-install (bsc#1145802)

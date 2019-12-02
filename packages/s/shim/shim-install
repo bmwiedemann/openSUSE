@@ -294,8 +294,13 @@ make_grubcfg () {
 grub_cfg_dirname=`dirname $grub_cfg`
 grub_cfg_basename=`basename $grub_cfg`
 cfg_fs_uuid=`"$grub_probe" --target=fs_uuid "$grub_cfg_dirname"`
+# bsc#1153953 - Leap 42.3 boot error snapshot missing
+# We have to check btrfs is used as root file system to enable relative path
+# lookup for file to be on par with other utility which also accounts for it.
+GRUB_FS="$(stat -f --printf=%T / || echo unknown)"
 
-if test "x$SUSE_BTRFS_SNAPSHOT_BOOTING" = "xtrue"; then
+if test "x$SUSE_BTRFS_SNAPSHOT_BOOTING" = "xtrue" &&
+   [ "x${GRUB_FS}" = "xbtrfs" ] ; then
 cat <<EOF
 set btrfs_relative_path="yes"
 EOF
