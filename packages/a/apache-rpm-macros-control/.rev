@@ -15,4 +15,12 @@
     <comment>- fix typo in %apache_request_restart (forwarded request 349588 from cboltz)</comment>
     <requestid>350166</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>176b2ddd152df8b1c4cbdd34828d0ee9</srcmd5>
+    <version>20151110</version>
+    <time>1575282563</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace incorrect usage of %_libexecdir/rpm with %_rpmconfigdir (forwarded request 750622 from Pharaoh_Atem)</comment>
+    <requestid>750689</requestid>
+  </revision>
 </revisionlist>
