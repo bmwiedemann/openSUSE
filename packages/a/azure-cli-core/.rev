@@ -55,4 +55,12 @@
     <comment>- Update Azure CLI to latest version (boo#1154393) (forwarded request 742558 from glaubitz)</comment>
     <requestid>742683</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cee226ab0035e1b8f9b3aba01c61fd1f</srcmd5>
+    <version>2.0.77</version>
+    <time>1575282456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751656</requestid>
+  </revision>
 </revisionlist>

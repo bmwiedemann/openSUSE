@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           azure-cli-core
-Version:        2.0.75
+Version:        2.0.77
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
 Group:          System/Management
-Url:            https://github.com/Azure/azure-cli
+URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure-cli-core-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  azure-cli-nspkg
@@ -54,7 +54,8 @@ Requires:       python3-paramiko >= 2.0.8
 Requires:       python3-pip
 Requires:       python3-pyOpenSSL >= 17.1.0
 Requires:       python3-requests >= 2.20.0
-Requires:       python3-six
+Requires:       python3-six < 2.0.0
+Requires:       python3-six >= 1.12
 Requires:       python3-wheel >= 0.30.0
 %if %{python3_version_nodots} < 34
 Requires:       python-enum34 >= 1.0.4
