@@ -297,4 +297,12 @@
     <comment>- Update to version 2.14.02:</comment>
     <requestid>681814</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>b228cba051e09551ba44ecff4f19c749</srcmd5>
+    <version>2.14.02</version>
+    <time>1575289997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752831</requestid>
+  </revision>
 </revisionlist>
