@@ -1,7 +1,7 @@
 #
 # spec file for package aaa_base
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20191017.bf0a315
+Version:        84.87+git20191120.98f1524
 Release:        0
-Url:            https://github.com/openSUSE/aaa_base
+URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
 # want to pull in tons of dependencies
 Conflicts:      sysvinit-init

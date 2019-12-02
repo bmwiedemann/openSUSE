@@ -3669,4 +3669,15 @@
   * fix string test to arithmetic test in /etc/profile.d/wsl.sh</comment>
     <requestid>738955</requestid>
   </revision>
+  <revision rev="458" vrev="1">
+    <srcmd5>d2dac3657575f273809e5ee82fa43d4a</srcmd5>
+    <version>84.87+git20191120.98f1524</version>
+    <time>1575282385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20191120.98f1524:
+  * merged PR 65
+  * dash fixes
+  * handle /usr/etc/login.defs for wsl</comment>
+    <requestid>749969</requestid>
+  </revision>
 </revisionlist>
