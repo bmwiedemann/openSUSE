@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/SUSE/pam-config
 Source:         %{name}-%{version}.tar.xz
+Patch1:         bsc1153630-prevent-systemd-pam_mount.patch
 PreReq:         pam >= 1.3.0
 
 %description
@@ -35,6 +36,8 @@ add/adjust/remove other PAM modules and their options.
 
 %prep
 %setup -q
+
+%patch1 -p1
 
 %build
 %configure

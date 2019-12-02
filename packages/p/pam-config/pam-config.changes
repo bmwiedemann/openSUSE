@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 25 08:02:48 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Prevent systemd-user to call pam_mount when opening/closing a
+  (PAM) session as it drops privileges in between and so when closing
+  it may be unable to undo things set up during opening.
+  [bsc#1153630, bsc1153630-prevent-systemd-pam_mount.patch]
+
+-------------------------------------------------------------------
 Fri Aug 16 17:37:33 UTC 2019 - kukuk@suse.de
 
 - Update to version 1.2:

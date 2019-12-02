@@ -1,0 +1,17 @@
+Index: pam-config-1.2/src/mod_pam_mount.c
+===================================================================
+--- pam-config-1.2.orig/src/mod_pam_mount.c
++++ pam-config-1.2/src/mod_pam_mount.c
+@@ -135,7 +135,12 @@ write_config_mount (  pam_module_t *this
+     }
+     /* pam_thinkfinger.so is not enabled so we can safely add
+      * pam_mount.so
++     * We'll also add a line preventing systemd-user from invoking pam_mount.so as it
++     * causes problems at least when (trying) to umount a user partition as it drops privileges between
++     * opening and closing a (PAM) session.
++     * Note that this doesn't break anything if systemd is not used.
+      */
++    fprintf(fp, "session  [success=1 default=ignore]\tpam_succeed_if.so\tservice = systemd-user\n");
+     fprintf (fp, "session  optional\tpam_mount.so\n");
+   }
+   return close_service_file (fp,gl_service);
