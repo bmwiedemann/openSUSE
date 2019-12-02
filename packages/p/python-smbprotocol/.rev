@@ -36,4 +36,12 @@
   * Simplified the fallback NTLM context object</comment>
     <requestid>732117</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93308cf29519a23ffbf42d4aac79792b</srcmd5>
+    <version>1.0.0</version>
+    <time>1575282955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752810</requestid>
+  </revision>
 </revisionlist>
