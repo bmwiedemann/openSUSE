@@ -20,7 +20,7 @@
 # baseversion - version of kubernetes for this package
 %define baseversion 1.16
 Name:           kubectl
-Version:        %{baseversion}.2
+Version:        %{baseversion}.3
 Release:        0
 Summary:        Kubectl (Kubernetes client tools)
 License:        Apache-2.0

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Nov 30 15:03:36 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert changes file to proper UTF-8 format: new
+  version of RPM are getting strict in interpreting files.
+
+-------------------------------------------------------------------
+Wed Nov 27 11:10:35 UTC 2019 - rbrown@suse.com
+
+- Update to version 1.16.3:
+  * kubeadm: fix skipped etcd upgrade on secondary cp nodes
+  * Add testcases covering large valid patches
+  * json unmarshal coded error at function applyJSPatch()
+  * Stop Watching when there is encoding error
+  * Remove HostPathV0 tests in preparation for removal in 1.17. This is so that upgrade tests dont fail when support for v0 drivers are removed in k8s 1.17
+  * add cache read type prefix for const
+  * update getmetadata to use unsafe read
+  * add allowunsafe read
+  * Flush data cache during unmount device for GCE-PD in Windows
+  * add a fallback for kube-scheduler when events.k8s.io is disabled
+  * modify detach timeout to be csiTimeout
+  * fix windows performance counter father information failed on Non-English environment
+  * bump metrics server version o v0.3.6
+  * Bump metrics-server version to v0.3.5
+  * rename metric for apiserver request terminations and reword corresponding documentation
+  * pluralize error metric name
+  * Fix double counting issue for request metrics on timeout.
+  * Do not bind block PV/PVCs when block feature gate is off
+  * Return an error when zone info is not found.
+  * Use --stamp flag in bazel builds
+  * Update to use go1.12.12
+  * Update Cluster Autoscaler version to 1.16.2
+  * add tombstoones handle for pdb
+  * Amend CHANGELOG-1.16.md for v1.16.2
+  * Fix proto.Merge of IntOrString type
+  * Bump to etcd 3.3.17 and bbolt v1.3.3
+  * Add/Update CHANGELOG-1.16.md for v1.16.2.
+  * Kubernetes version v1.16.3-beta.0 openapi-spec file updates
+  * release: lib: revert docker_registry to constant k8s.gcr.io
+  * Remove check causing informers to miss notifications
+  * auth/cloud-platform is a superset of devstorage.
+  * Remove e2e/common package usage in volumemode testsuite
+  * Mark startupProbe test as NodeAlphaFeature and fix podClient instanciation
+
+-------------------------------------------------------------------
 Tue Oct 22 09:30:28 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Ensure that BPPFS is mounted before starting kubelet
@@ -302,7 +346,7 @@ Tue Oct 01 13:41:59 UTC 2019 - rbrown@suse.com
   * remove slice dependency
   * run hack/update-bazel.sh
   * Update kubectl polymorphic logs helper for ephemeral containers
-  * Change the seven blanks to ` {7}` in the regex, so it will be more readable .
+  * Change the seven blanks to ` {7}` in the regex, so it will be more readable ^P.
   * apiextensions: set 'metadata.generation: 1' during read from etcd if not set
   * use log functions of core framework
   * fix test/e2e/gke_node_pools.go
