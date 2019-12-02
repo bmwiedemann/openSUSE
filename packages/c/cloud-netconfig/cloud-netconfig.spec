@@ -1,7 +1,7 @@
 #
 # spec file for package cloud-netconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,12 +33,11 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.0
+Version:        1.3
 Release:        0
 Summary:        Network configuration scripts for %{csp_string}
 License:        GPL-3.0-or-later
-Group:          System/Management
-Url:            https://github.com/SUSE-Enceladus/cloud-netconfig
+URL:            https://github.com/SUSE-Enceladus/cloud-netconfig
 Source0:        %{base_name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
