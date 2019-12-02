@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2017, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2017-2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qclib
-Version:        1.4.1
+Version:        2.0.0
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
@@ -65,18 +65,20 @@ by:
   * hypfs file system - for more information, refer to 'Device Drivers,
     Features, and Commands', chapter 'S/390 hypervisor file system'.
 
-%package -n libqc1
+%package -n libqc2
 Summary:        Query Capacity Library shared library
 Group:          System/Libraries
+Obsoletes:      libqc1
+Provides:       libqc1
 
-%description -n libqc1
+%description -n libqc2
 qclib provides a C API for extraction of system information for Linux on z
 Systems.
 
 %package devel
 Summary:        Development files for Query Capacity library
 Group:          Development/Libraries/C and C++
-Requires:       libqc1 = %{version}-%{release}
+Requires:       libqc2 = %{version}-%{release}
 
 %description devel
 qclib provides a C API for extraction of system information for Linux on z
@@ -85,7 +87,7 @@ Systems.
 %package devel-static
 Summary:        Development files for Query Capacity library
 Group:          Development/Libraries/C and C++
-Requires:       libqc1 = %{version}-%{release}
+Requires:       libqc2 = %{version}-%{release}
 Requires:       qclib-devel = %{version}-%{release}
 
 %description devel-static
@@ -93,8 +95,7 @@ qclib provides a C API for extraction of system information for Linux on z
 Systems.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p 1
 
 %build
 MYCFLAGS=$(grep ^CFLAGS Makefile | cut -f2 -d=)
@@ -109,16 +110,16 @@ make %{?_smp_mflags} test-sh
 %make_install LIBDIR=%{_lib} V=1
 make installdoc DESTDIR=%{buildroot} V=1
 
-%post -n libqc1 -p /sbin/ldconfig
+%post -n libqc2 -p /sbin/ldconfig
 
-%postun -n libqc1 -p /sbin/ldconfig
+%postun -n libqc2 -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/*
 
-%files -n libqc1
+%files -n libqc2
 %defattr(-,root,root)
 %{_libdir}/libqc.so.*
 

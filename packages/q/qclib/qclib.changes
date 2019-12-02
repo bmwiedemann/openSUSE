@@ -1,8 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 20 00:43:26 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to verson 2.0.0 (jsc#SLE-7867)
+  Changes:
+  * New attributes in layer CEC:
+       * qc_type_name
+       * qc_type_family
+       * qc_lic_identifier
+  * qc_test: Reworked output for subtle consistency improvements
+  * Replaced attribute qc_hardlimit_consumption with
+    qc_limithard_consumption. Use CONFIG_V1_COMPATIBILITY for previous
+    version.
+  * Require CONFIG_DUMP_READING in query_capacity.h to allow running from a
+    dump. Disabled by default.
+  * Disabled v1 compatibility functionality per default. To re-enable,
+    activate CONFIG_V1_COMPATIBILITY in query_capacity.h.
+
+-------------------------------------------------------------------
 Mon Apr 22 19:57:20 UTC 2019 - Mark Post <mpost@suse.com>
 
-- Upgraded to version 1.4.1 (jsc#SLE-5908)
-  Version 1.4.1
+- Upgraded to version 1.4.1 (bsc#1135781, Fate#327836, jsc#SLE-5908)
   Bug fixes:
   * qc_dump: Don't abort the dump in case qc_test fails.
   * Attributes qc_cp_weight_capping and qc_ifl_weight_capping were set even
@@ -10,6 +27,12 @@ Mon Apr 22 19:57:20 UTC 2019 - Mark Post <mpost@suse.com>
   Version 1.4.0
   Changes:
   * Added SMT support by properly differentiating between cores and CPUs.
+    I.e. switched from qc_num_cpu_* to qc_num_core_* attributes in layers
+    CEC, LPAR, ZVM_HYPERVISOR and KVM_HYPERVISOR.
+    NOTE: qc_num_cpu_* attributes remain to be valid in these cases to
+          preserve backwards compatibility for now. This will be removed in
+          one of the next releases! It is recommended to switch to the new
+          attributes _now_ and test with CONFIG_V1_COMPATIBILITY disabled!
   * Added new attributes qc_num_threads_cp and qc_num_threads_ifl to layers
     CEC, LPAR and ZVM_HYPERVISOR.
   * Deprecated attribute qc_mobility_eligible (remains valid for now) and
@@ -18,11 +41,18 @@ Mon Apr 22 19:57:20 UTC 2019 - Mark Post <mpost@suse.com>
   * Moved build customization defines (e.g. CONFIG_V1_COMPATIBILITY) to
     query_capacity.h.
   * Don't build with textual hypfs per default anymore due to unrecoverable
-    issues (see section 'Bug fixes').
+    issues (see section 'Bug fixes'). Since all Linux distributions ship
+    with debugfs (providing binary hypfs support), overriding textual hypfs,
+    for years, this change will hardly ever be noticable. Enable define
+    CONFIG_TEXTUAL_HYPFS in query_capacity.h to revert.
+    Note that textual hypfs support will be removed in a future release.
   Bug fixes:
   * Added an exception to consistency check to ignore inconsistencies between
     textual hypfs and STHYI for attributes qc_num_cp_total and
     qc_num_ifl_total in the LPAR layer.
+    Background: Textual hypfs cannot tell whether a core is configured or
+                not. It therefore reports all cores as configured, which can
+                be wrong.
   Version 1.3.1
   Bug fixes:
   * Security: Fix PATH attack vulnerability when dumping (see QC_DEBUG=2)
@@ -34,15 +64,15 @@ Mon Apr 22 19:57:20 UTC 2019 - Mark Post <mpost@suse.com>
 - Made numerous changes to the spec file based on the output from
   spec-cleaner.
 - Updated qclib-rpmlintrc file to catch all duplicate file messages
- 
+
 -------------------------------------------------------------------
-Thu Aug  9 23:14:55 UTC 2018 - mpost@suse.com
+Fri Dec  8 22:07:04 UTC 2017 - mpost@suse.com
 
 - Added qclib-sles15-fix-mismatch-case-with-STHYI.patch
   (bsc#1071687, bsc#1104304).
 
 -------------------------------------------------------------------
-Wed Aug  1 23:15:13 UTC 2018 - mpost@suse.com
+Thu Nov  2 20:03:27 UTC 2017 - mpost@suse.com
 
 - Upgraded to version 1.3.0 (Fate#325039)
   Changes:
