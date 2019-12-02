@@ -566,4 +566,14 @@
     <comment></comment>
     <requestid>727173</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>01064832c9fa0b554ebe9c4321114a3b</srcmd5>
+    <version>3.0a</version>
+    <time>1575282837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v3.0a
+  * A lot of changes since v2.9a, please see the included CHANGES
+    file.</comment>
+    <requestid>752690</requestid>
+  </revision>
 </revisionlist>

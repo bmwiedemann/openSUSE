@@ -1,7 +1,7 @@
 #
 # spec file for package tmux
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tmux
-Version:        2.9a
+Version:        3.0a
 Release:        0
 Summary:        Terminal multiplexer
 License:        ISC AND BSD-3-Clause AND BSD-2-Clause
@@ -74,7 +74,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 
 %files
 %license COPYING
-%doc CHANGES TODO
+%doc CHANGES
 %{_datadir}/bash-completion/completions/tmux.sh
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
