@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov 29 13:23:00 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.7.6
+  * Raised minimum version of Glib to 2.38 for replacements
+    of deprecated function g_type_class_add_private()
+  * New feature: Support for animations. Currently only one actor
+    (XfdashboardCollapseBox) trigger an animation signal to open
+    or close the collapsed area. All default themes of xfdashboard
+    will slide in or out the collapsed area smoothly when animation
+    is enabled (which is enabled by default).
+  * New feature: The user can turn on or off animations in the
+    settings application.
+  * Updated all GOject classes because of deprecation of function
+    g_type_class_add_private()
+  * Updated copyright years to 2019
+  * Fix that valid desktop file for the same desktop ID but found
+    at path of lower prioritory will override an invalid desktop
+    file for the same desktop ID at path of higher priority. The
+    first entry found - valid or invalid - will have the highest
+    priority. Later all invalid desktop IDs in the application
+    database are removed before populated. (GH#169)
+  * Fixed warning "assertion 'GARCON_IS_MENU_DIRECTORY (other)'
+    failed" when calling garcon_menu_directory_equal() in function
+    _xfdashboard_applications_menu_model_find_similar_menu()
+  * Fixed "implicit-fallthrough" compiler warnings in click action
+  * Reduced number of release notes in AppData (GH#183)
+  * Smaller bug fixes but mostly to silence compiler warnings
+  * Updated translations
+- Removed deprecated macros
+
+-------------------------------------------------------------------
 Sun Aug 12 17:27:08 UTC 2018 - seife+obs@b1-systems.com
 
 - update to 0.7.5

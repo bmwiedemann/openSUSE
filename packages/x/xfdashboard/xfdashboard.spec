@@ -1,7 +1,7 @@
 #
 # spec file for package xfdashboard
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define so_ver 0
 
 Name:           xfdashboard
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        GNOME shell like dashboard for Xfce
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-Url:            http://xfdashboard.froevel.de
-Source0:        http://archive.xfce.org/src/apps/xfdashboard/0.7/xfdashboard-%{version}.tar.bz2
+URL:            https://git.xfce.org/apps/xfdashboard/about/
+Source0:        https://archive.xfce.org/src/apps/%{name}/0.7/%{name}-%{version}.tar.bz2
 Source8:        xfdashboard.1
 Source9:        xfdashboard-settings.1
 
@@ -53,8 +53,6 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xinerama)
 Requires:       libcanberra-gtk-module-common
-Requires(post): update-desktop-files
-Requires(pre):  update-desktop-files
 Recommends:     %{name}-lang
 Recommends:     %{name}-themes
 
@@ -77,6 +75,7 @@ This package provides files required for development for Xfdashboard.
 
 %package themes
 Summary:        Themes for Xfdashboard
+Group:          System/GUI/XFCE
 Requires:       %{name}
 BuildArch:      noarch
 
@@ -85,6 +84,7 @@ Additional themes for use with Xfdashboard.
 
 %package -n libxfdashboard%{so_ver}
 Summary:        Xfdashboard library
+Group:          System/GUI/XFCE
 
 %description -n libxfdashboard%{so_ver}
 A library providing authenticators for Xfdashboard.
@@ -97,7 +97,7 @@ A library providing authenticators for Xfdashboard.
 %build
 export CFLAGS="%{optflags}"
 %configure
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
 make V=1 %{?_smp_mflags} DESTDIR=%{buildroot} install
@@ -108,19 +108,10 @@ gzip -c9 %{SOURCE9} | tee -a %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
 %fdupes -s %{buildroot}%{_datadir}/themes/%{name}-*
 %find_lang %{name} %{?no_lang_C}
 
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-
 %post -n libxfdashboard%{so_ver} -p /sbin/ldconfig
 %postun -n libxfdashboard%{so_ver} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING
 %{_bindir}/%{name}*
@@ -136,20 +127,16 @@ gzip -c9 %{SOURCE9} | tee -a %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
 %{_libdir}/%{name}
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/libxfdashboard.pc
 
 %files themes
-%defattr(-,root,root)
 %{_datadir}/themes/%{name}-*
 
 %files -n libxfdashboard%{so_ver}
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so.*
 
 %changelog
