@@ -178,7 +178,7 @@ bazel build \
 bazel shutdown
 
 %install
-for lib in $(find bazel-bin/opencensus -name "*.so"); do
+for lib in $(find bazel-bin/opencensus -name "*.so" | sort); do
     lib_basename=$(basename ${lib} | sed -e "s|^lib|libopencensus-cpp-|")
     install -D -m0755 ${lib} %{buildroot}%{_libdir}/${lib_basename}.%{sover}
     patchelf --set-soname ${lib_basename}.%{sover} %{buildroot}%{_libdir}/${lib_basename}.%{sover}
