@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Dec  2 08:36:49 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.0.0
+  BACKEND:
+  * PEA 0.66
+  FILE MANAGER:
+  * Added option to automatically open tar archive inside tar.*
+    compressed files
+  * Option is on by default, can be set in Options > Settings >
+    Archive manager
+  * Drag & drop can now be hot swapped between standard and
+    custom mode while using the application
+  * Improved finding duplicate files, both with crc/hash and
+    quick duplicate check: Info column shows "D" for duplicate
+    for each copy of file with same digest value, except the last
+    copy found
+  * Sorting files for Info column allows to quickly select (and
+    delete) duplicate items
+  * Sorting files for checksum/hash column allows to easily
+    compare identical files as in previous versions
+  * New function to analyze content of folders in file browser
+    (from column header menu)
+  * Info column marks empty folders with "E"
+  * Checksum/hash column shows content of folders: number of
+    directories, number of files, and total size
+  * New scaling mechanism for better support of high DPI in
+    PeaZip and Pea executables
+  * UI elements are scaled at run time at discrete steps zooming
+    up to 10x of design time size, using Lazaruz LCL scaling
+  * Graphic is accordingly scaled at run time, accepting
+    arbitrarily sized graphic sources
+  * Embedded 16 and 32 pixel icons are currently provided with
+    3x definition (48 and 96 pixel respectively) to provide high
+    quality graphic up to 300% scaling
+  * New themes for PeaZip version 7+ uses 8 or 32 bit PNG with
+    transparency, and currently provides 16 and 32 pixel icons
+    upscaled to 3x definition
+  * New Windows icons for menus and file types; new icons allows
+    to better distinguish supported file types, at large and
+    small resolutions
+  * When a single file of unsupported format is passed as
+    parameter, the application lets the user decide if to try to
+    open it as archive or to add it to new archive
+  * Various fixes
+  * Fixed System benchmark tool
+  EXTRACTION and ARCHIVING:
+  * Improved progress bar accuracy
+  * Option to delete input files after task completion is now
+    globally applied to all archiving / extraction functions
+  * Also batch version of direct archiving / extraction
+    functions now apply the deletion on completion policy
+    accordingly to the application's configuration
+  * Alternative versions of batch commands are now available in
+    order to explicitly ignore deletion on completion policy,
+    with "i" appended after function name: -add2peai,
+    -add2crypti, -add27zi, -add27zmaili, -add2separate7zi,
+    -add2sfx7zi, -add2sfx7zmaili, -add2zipi, -add2zipmaili,
+    -add2separatezipi, and -ext2herei, -ext2folderi, -ext2toi,
+    -ext2tofolderi, -ext2simplei, -ext2simplefolderi
+  * Fixed and improved -add2split batch command, can now accept
+    multiple input files and folders (if more than one file is
+    passed as input it will be consolidated in a tar archive)
+
+-------------------------------------------------------------------
 Sun Sep  1 15:30:34 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.9.2
