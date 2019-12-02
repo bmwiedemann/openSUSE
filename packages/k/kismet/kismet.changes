@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Dec  1 10:16:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Completely rewritten spec-file
+- Intruduce subpackages for the capture helpers
+- Add kismet-rpmlintrc
+- Package systemd service file
+- Remove obsolete patch:
+  * kismet-2011-03-R2-makefile.diff
+- Update to version 2019-09-R1
+  This is the new, MAJOR rewrite of Kismet! This version changes
+  almost everything, hopefully for the better, including:
+  * Web-based UI allowing for much simpler presentation of data
+    and compatibility with mobile devices
+  * Standard JSON-based data export for easy scripting against
+    Kismet instances
+  * Support for wireless protocols beyond Wi-Fi, like basic
+    Bluetooth scanning, thermometer, and weather station detection
+    with the RTL-SDR hardware, and more on the way
+  * New remote-capture code optimized for binary size and RAM,
+    allowing extremely low-end embedded devices to be used for
+    packet capture
+  * New logging format which can encapsulate complex information
+    about devices, system state, alerts, messages, and packets in a
+    single file with simple tools for extracting standard formats
+  * Pcap-NG multi-interface logs with complete original headers,
+    readable by Wireshark and other tools
+
+-------------------------------------------------------------------
 Tue Jul  5 20:16:09 UTC 2016 - mardnh@gmx.de
 
 - Kismet 2016-07-R1:

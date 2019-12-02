@@ -292,4 +292,12 @@ better packaging for distros, and various other quirks.
  * some ncurses compile bugs are resolved (forwarded request 406872 from mnhauke)</comment>
     <requestid>406877</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b22dcd110be9a76424a30f8afe7ec7e7</srcmd5>
+    <version>2019_09_R1</version>
+    <time>1575282885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752704</requestid>
+  </revision>
 </revisionlist>
