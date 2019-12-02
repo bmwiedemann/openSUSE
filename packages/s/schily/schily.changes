@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov 20 11:11:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 2019.11.11
+  * star: When using star -copy, the default is now
+    -no-secure-links. This is what users like since they are
+    copying their own data that per definition cannot be
+    untrusted external data.
+  * star: star -diff is now "more smooth" to use, when the
+    archive type is GNU TAR and the "atime" or "ctime" properties
+    are not present for a specific file. Before, Jan 1 1970 was
+    the assumed time in the archive.
+  * star: star -diff now prints a diff statistics summary.
+  * SCCS: Added a new delta type 'U' that allows to tell get(1)
+    to remove the g-file. Such SCCS history files are going to be
+    used as placeholders for removed files in the upcomming
+    project mode.
+  * SCCS: admin now has a new option -Xunlink. It can be used
+    together with -n to create special SCCS history files that
+    remove the g-file on extraction if a delta is to be extracted
+    that is of type 'U'.
+  * SCCS: get now honors delta table entries that use the new 'U'
+    delta type and removed non-writable g-files on extraction.
+    This feature only works if the history file is in SCCS V6
+    mode.
+  * SCCS: a new option -Xmail=address allows admin(1) and delta(1)
+    to add an email address to the delta meta data.
+
+-------------------------------------------------------------------
 Sat Oct 26 12:11:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2019.10.25

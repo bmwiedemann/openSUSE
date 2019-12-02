@@ -1,7 +1,7 @@
 #
 # spec file for package schily
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-# grep -r define.VERSION (sometimes also noted down in schily-%rver/AN-%rver)
-%global box_version	2019.10.25
+# grep -Pir 'define\s+VERSION|strvers'
+%global box_version	2019.11.11
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2019-10-25
+%define rver	2019-11-11
 
 Name:           schily
 Version:        %box_version
@@ -560,7 +560,6 @@ rm -Rfv \
    $b/usr/bin/pxupgrade \
    $b/usr/bin/scgcheck \
    $b/usr/bin/scgskeleton \
-   $b/usr/bin/scpio \
    $b/usr/bin/scut \
    $b/usr/bin/sdd \
    $b/usr/bin/sfind \
@@ -616,7 +615,6 @@ rm -Rfv \
    $b/usr/share/man/man1/pxupgrade.1 \
    $b/usr/share/man/man1/scgcheck.1 \
    $b/usr/share/man/man1/scgskeleton.1 \
-   $b/usr/share/man/man1/scpio.1 \
    $b/usr/share/man/man1/scut.1 \
    $b/usr/share/man/man1/sdd.1 \
    $b/usr/share/man/man1/sfind.1 \
@@ -630,11 +628,9 @@ rm -Rfv \
    $b/usr/share/man/man1/translit.1 \
    $b/usr/share/man/man1/udiff.1 \
    $b/usr/share/man/man3/getopt.3 \
-   $b/usr/share/man/man5/changeset.5 \
+   $b/usr/share/man/man3/getsubopt.3 \
    $b/usr/share/man/man5/makefiles.5 \
    $b/usr/share/man/man5/makerules.5 \
-   $b/usr/share/man/man5/sccschangeset.5 \
-   $b/usr/share/man/man5/sccsfile.5 \
    $b/usr/share/man/man5/streamarchive.5 \
    $b/usr/share/man/man8/sformat.8 \
    $b/usr/share/doc/packages/dotfiles.tar.bz2
@@ -870,10 +866,18 @@ fi
 %_mandir/man3/fpipe.3*
 %exclude %_mandir/man3/fprintf.3*
 %_mandir/man3/getallargs.3*
+%_mandir/man3/getargerror.3*
+%_mandir/man3/getarginit.3*
 %_mandir/man3/getargs.3*
 %_mandir/man3/geterrno.3*
 %_mandir/man3/getfiles.3*
+%_mandir/man3/getlallargs.3*
+%_mandir/man3/getlargs.3*
+%_mandir/man3/getlfiles.3*
 %exclude %_mandir/man3/getline.3*
+%_mandir/man3/getvallargs.3*
+%_mandir/man3/getvargs.3*
+%_mandir/man3/getvfiles.3*
 %_mandir/man3/handlecond.3*
 %_mandir/man3/movebytes.3*
 %_mandir/man3/ofindline.3*
@@ -986,6 +990,9 @@ fi
 %_mandir/man1/val.1*
 %_mandir/man1/vc.1*
 %_mandir/man1/what.1*
+%_mandir/man5/changeset.5*
+%_mandir/man5/sccschangeset.5*
+%_mandir/man5/sccsfile.5*
 
 %files -n schily-mt
 %license CDDL.Schily.txt
@@ -1021,10 +1028,12 @@ fi
 %license CDDL.Schily.txt
 %doc AN-*
 %config(noreplace) %_sysconfdir/default/star
+%_bindir/scpio
 %_bindir/star
 %_bindir/tartest
 %_bindir/ustar
 %_docdir/star/
+%_mandir/man1/scpio.1*
 %_mandir/man1/star.1*
 %_mandir/man1/ustar.1*
 %_mandir/man5/star.5*
