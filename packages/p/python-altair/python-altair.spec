@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-altair
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Declarative statistical visualization library for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://altair-viz.github.io
+URL:            https://altair-viz.github.io
 Source:         https://files.pythonhosted.org/packages/source/a/altair/altair-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module entrypoints}
@@ -47,8 +47,8 @@ Requires:       python-pandas
 Requires:       python-six
 Requires:       python-toolz
 Requires:       python-typing
-Recommends:     python-vega_datasets
 Recommends:     python-jupyter_ipython
+Recommends:     python-vega_datasets
 BuildArch:      noarch
 %python_subpackages
 
@@ -83,6 +83,7 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/altair/
+%{python_sitelib}/altair-%{version}-py*.egg-info/
 
 %changelog
