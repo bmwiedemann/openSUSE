@@ -210,4 +210,12 @@
     <user>dimstar_suse</user>
     <comment>Fix LTO build with meson 0.51</comment>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>7c1502477c8cec831e4d56b0e2ae7165</srcmd5>
+    <version>1.1</version>
+    <time>1575282447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749965</requestid>
+  </revision>
 </revisionlist>
