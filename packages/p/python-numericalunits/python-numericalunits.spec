@@ -1,7 +1,7 @@
 #
 # spec file for package python-numericalunits
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-numericalunits
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Python module for defining quantities with units
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/sbyrnes321/numericalunits
+URL:            https://github.com/sbyrnes321/numericalunits
 Source:         https://files.pythonhosted.org/packages/source/n/numericalunits/numericalunits-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/sbyrnes321/numericalunits/master/tests/tests.py
 BuildRequires:  %{python_module setuptools}
@@ -31,13 +32,12 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
 Units and dimensional analysis compatible with everything
 
-This package implements units and dimensional analysis in an unconventional 
+This package implements units and dimensional analysis in an unconventional
 way with unique advantages:
 
 * Compatible with everything
