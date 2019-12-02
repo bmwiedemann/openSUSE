@@ -38,8 +38,7 @@ You get more than 50 Qt related compiler warnings, ranging from unneeded memory
 allocations to misusage of API, including fix-its for automatic refactoring.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -48,7 +47,7 @@ export CFLAGS="$CXXFLAGS"
 
 %cmake
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
