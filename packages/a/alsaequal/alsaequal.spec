@@ -1,7 +1,7 @@
 #
 # spec file for package alsaequal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Patch0:         lib64.patch
 BuildRequires:  alsa-devel
 BuildRequires:  gcc
 BuildRequires:  ladspa-caps
+Requires:       ladspa-caps
 
 %description
 Alsaequal is a real-time adjustable equalizer plugin for ALSA
