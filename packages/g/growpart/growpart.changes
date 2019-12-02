@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:17:46 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Clean growpart.spec:
+  * Drop obsolete tags
+  * Use install instead of mkdir+cp+chmod
+  * Fix build on SLE 12 SP4
+
+-------------------------------------------------------------------
+Fri Oct 25 14:21:20 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Replaced hardcoded systemd paths with macros in spec file
+
+-------------------------------------------------------------------
+Thu Oct 24 12:40:11 UTC 2019 - Marcus Schaefer <ms@suse.com>
+
+- Reference entry for maintenance
+
+  Tracker bug for the submission set to: bsc#1154357
+
+-------------------------------------------------------------------
+Thu Oct 17 14:04:18 UTC 2019 - Marcus Schaefer <ms@suse.com>
+
+- Deleted rootgrow source and sub-package build
+
+  rootgrow is provided on github: https://github.com/SUSE-Enceladus/rootgrow
+  and builds a standalone package now 
+
+-------------------------------------------------------------------
 Wed Jun 12 15:07:49 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
