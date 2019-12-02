@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 15:45:34 UTC 2019 - jeos-internal@suse.de
+
+- Update to version 0.0+git20191127.be35ecb:
+  * Improve Rpi wireless config, jsc#SLE-10603
+  * Disable exit on error during dialog execution
+  * Clarify comment about localectl list-keymaps
+
+-------------------------------------------------------------------
 Mon Oct 21 12:24:10 UTC 2019 - jeos-internal@suse.de
 
 - Update to version 0.0+git20191021.66ccca7:

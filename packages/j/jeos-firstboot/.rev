@@ -326,4 +326,12 @@
   * Ignore udevadm and modprobe errors for use in containers</comment>
     <requestid>741494</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>23591cd6b1cfbe7f4f23a337fd0e5c7b</srcmd5>
+    <version>0.0+git20191127.be35ecb</version>
+    <time>1575282787</time>
+    <user>dimstar_suse</user>
+    <comment>Improvements on RPi wireless config dialog</comment>
+    <requestid>751396</requestid>
+  </revision>
 </revisionlist>
