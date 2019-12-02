@@ -1,7 +1,7 @@
 #
 # spec file for package libcacard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           libcacard
-Url:            http://cgit.freedesktop.org/spice/libcacard/
+URL:            http://cgit.freedesktop.org/spice/libcacard/
 Summary:        Common Access Card (CAC) emulation
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Source:         http://www.spice-space.org/download/libcacard/%{name}-%{version}.tar.xz
-Source1:        http://www.spice-space.org/download/libcacard/%{name}-%{version}.tar.xz.sign
+Source1:        http://www.spice-space.org/download/libcacard/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  glib2-devel

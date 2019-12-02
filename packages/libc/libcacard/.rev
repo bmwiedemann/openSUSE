@@ -34,4 +34,26 @@
 </comment>
     <requestid>703826</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6cf33295a616cbc3bf7945f8d0d073f5</srcmd5>
+    <version>2.7.0</version>
+    <time>1575282668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.7.0. Changes include:
+* Improve compatibility with Windows guests, particularly with
+  ActivClient Windows drivers.
+* Implement Microsoft PnP applet used by Windows for card detection
+* Fill several structures returned by Global Platform applet to
+  mimic behavior of real cards.
+* Implement API for creation of serial number used to uniquely
+  identify a emulated card.
+* More verbose debug logs
+* Fix the VERIFY semantics, which can be used for login status
+  check
+* Add clang and csbuild CI targets
+* Use ATR from official CAC card to improve card detection under
+  Windows
+</comment>
+    <requestid>751103</requestid>
+  </revision>
 </revisionlist>
