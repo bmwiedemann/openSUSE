@@ -32,6 +32,8 @@ Patch2:         reproducible.patch
 Patch3:         gri-invalid-char-to-pointer.patch
 # PATCH-FIX-UPSTREAM gri-perl-5.26.patch dimstar@opensuse.org -- Fix texinfo2HTML for usage with Perl 5.26
 Patch4:         gri-perl-5.26.patch
+# PATCH-FIX-UPSTREAM gri-texinfo-6.7-compat.patch -- Explicitly specify correct encoding for texi file, texinfo 6.+ assumes UTF-8 by default
+Patch5:         gri-texinfo-6.7-compat.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -65,6 +67,7 @@ mathematical symbols in labels.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %configure
@@ -102,7 +105,8 @@ sed -i "s/<!-- [A-Z].. [A-Z].. .. ..:..:.. .... -->//" %{buildroot}%{_datadir}/%
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog README COPYING NEWS
+%doc AUTHORS ChangeLog README NEWS
+%license COPYING
 %{_bindir}/gri
 %{_bindir}/gri_merge
 %{_bindir}/gri_unpage

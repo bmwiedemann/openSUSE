@@ -1,0 +1,11 @@
+diff --git a/doc/gri.texi b/doc/gri.texi
+index 57c5e76..fe71f56 100644
+--- a/doc/gri.texi
++++ b/doc/gri.texi
+@@ -1,4 +1,5 @@
+ \input texinfo 
++@documentencoding ISO-8859-1
+ 
+ @c
+ @comment *** Start of HTML stuff ***
+
