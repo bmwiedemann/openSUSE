@@ -21,7 +21,7 @@
 %define typelib typelib-1_0-Muffin-0_0
 %define _lto_cflags %{nil}
 Name:           muffin
-Version:        4.2.2
+Version:        4.4.1
 Release:        0
 Summary:        Cinnamon Desktop default window manager
 License:        GPL-2.0-or-later AND MIT
