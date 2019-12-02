@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 27 09:12:25 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
+
+- Reduce default badness values of various security relevant warnings
+  and increase them again in -strict subpackage. With that building
+  doesn't fail in home projects anymore if these warnings pop up
+
+-------------------------------------------------------------------
 Thu Jul 25 08:55:22 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Make lto-no-text-in-archive a fatal error.

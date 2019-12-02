@@ -40,7 +40,8 @@ Group:          System/Packages
 
 %description strict
 The package contains additional rpmlint configuration that forbids
-invalid licenses.
+invalid licenses and enforces higher badness values for warnings/errors
+that indicate that a security audit needs to take place.
 
 %prep
 cp %{SOURCE1} .

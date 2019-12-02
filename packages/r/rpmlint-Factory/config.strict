@@ -26,4 +26,11 @@
 from Config import *
 
 setBadness('invalid-license', 100000)
-
+setBadness('polkit-unauthorized-file', 10000)
+setBadness('polkit-unauthorized-privilege', 10000)
+setBadness('polkit-unauthorized-rules', 10000)
+setBadness('polkit-untracked-privilege', 10000)
+setBadness('permissions-unauthorized-file', 10000)
+setBadness('permissions-file-setuid-bit', 10000)
+setBadness('permissions-world-writable', 10000)
+setBadness('suse-dbus-unauthorized-service', 10000)
