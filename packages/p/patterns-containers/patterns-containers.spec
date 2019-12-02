@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-containers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Patterns for container technologies
 License:        MIT
 Group:          Metapackages
-Url:            http://en.opensuse.org/Patterns
+URL:            http://en.opensuse.org/Patterns
 Source0:        %name-rpmlintrc
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 
@@ -164,6 +164,7 @@ Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9050
 Provides:       pattern-visible()
 Requires:       helm
+Requires:       k9s
 Requires:       kail
 Requires:       kubectl-who-can
 Requires:       rakkess
