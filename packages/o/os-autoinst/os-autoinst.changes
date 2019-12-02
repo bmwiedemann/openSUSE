@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 30 05:03:55 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1575042468.93be69f8:
+  * ppmclibs: Fix warning "\1 better written as $1"
+  * qemu: Explicit delete named pipes from virtio console
+  * qemu: Fix missing data while reading from virtio_console
+  * Fix building snd2png with OpenCV 4
+  * Remove 'wait_idle' after being deprecated for more than 2 years
+  * Make qemu boot menu optional to save 5s in every qemu test run
+
+-------------------------------------------------------------------
 Tue Nov 26 19:17:35 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1574795840.3973b078:
