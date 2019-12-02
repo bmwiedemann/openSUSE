@@ -6,75 +6,53 @@ Subject: fix calls of timelocal to work after 2019
 
 because year 70 then starts to mean 2070
 
-https://bugzilla.opensuse.org/show_bug.cgi?id=1102840 trackerbug: build fails at some time
+https://bugzilla.opensuse.org/show_bug.cgi?id=1102840 trackerbug: build fails at
+ some time
 https://rt.perl.org/Ticket/Display.html?id=132896 perl Net::NNTP 
-https://rt.perl.org/Ticket/Display.html?id=132898 perl Net::FTP => https://rt.cpan.org/Public/Bug/Display.html?id=124534
+https://rt.perl.org/Ticket/Display.html?id=132898 perl Net::FTP => https://rt.cp
+an.org/Public/Bug/Display.html?id=124534
 https://rt.perl.org/Ticket/Display.html?id=132897 perl doc
 
-Index: perl-5.26.1/cpan/Time-Local/t/Local.t
-===================================================================
---- perl-5.26.1.orig/cpan/Time-Local/t/Local.t
-+++ perl-5.26.1/cpan/Time-Local/t/Local.t
-@@ -85,6 +85,7 @@ my $epoch_is_64
+--- ./cpan/Time-Local/t/Local.t.orig	2019-11-19 13:44:13.231729499 +0000
++++ ./cpan/Time-Local/t/Local.t	2019-11-19 13:52:27.846523342 +0000
+@@ -147,21 +147,21 @@ subtest(
+     'diff between two calls',
+     sub {
+         is(
+-            timelocal( 0, 0, 1, 1, 0, 90 ) - timelocal( 0, 0, 0, 1, 0, 90 ),
++            timelocal( 0, 0, 1, 1, 0, 1990 ) - timelocal( 0, 0, 0, 1, 0, 1990 ),
+             3600,
+             'one hour difference between two calls to timelocal'
+         );
  
- for ( @time, @neg_time ) {
-     my ( $year, $mon, $mday, $hour, $min, $sec ) = @$_;
-+    my $year_in = $year;
-     $year -= 1900;
-     $mon--;
+         is(
+-                  timelocal( 1, 2, 3, 1, 0, 100 )
+-                - timelocal( 1, 2, 3, 31, 11, 99 ),
++                  timelocal( 1, 2, 3, 1, 0, 2000 )
++                - timelocal( 1, 2, 3, 31, 11, 1999 ),
+             24 * 3600,
+             'one day difference between two calls to timelocal'
+         );
  
-@@ -96,7 +97,6 @@ SKIP: {
- 
-         # Test timelocal()
+         # Diff beween Jan 1, 1980 and Mar 1, 1980 = (31 + 29 = 60 days)
+         is(
+-            timegm( 0, 0, 0, 1, 2, 80 ) - timegm( 0, 0, 0, 1, 0, 80 ),
++            timegm( 0, 0, 0, 1, 2, 1980 ) - timegm( 0, 0, 0, 1, 0, 1980 ),
+             60 * 24 * 3600,
+             '60 day difference between two calls to timegm'
+         );
+@@ -176,7 +176,7 @@ subtest(
+         # treated like 03:00:00 rather than 01:00:00 - negative zone offsets
+         # used to do the latter.
          {
--            my $year_in = $year < 70 ? $year + 1900 : $year;
-             my $time = timelocal( $sec, $min, $hour, $mday, $mon, $year_in );
+-            my $hour = ( localtime( timelocal( 0, 0, 2, 7, 3, 102 ) ) )[2];
++            my $hour = ( localtime( timelocal( 0, 0, 2, 7, 3, 2002 ) ) )[2];
  
-             my ( $s, $m, $h, $D, $M, $Y ) = localtime($time);
-@@ -111,7 +111,6 @@ SKIP: {
- 
-         # Test timegm()
-         {
--            my $year_in = $year < 70 ? $year + 1900 : $year;
-             my $time = timegm( $sec, $min, $hour, $mday, $mon, $year_in );
- 
-             my ( $s, $m, $h, $D, $M, $Y ) = gmtime($time);
-@@ -128,7 +127,6 @@ SKIP: {
- 
- for (@bad_time) {
-     my ( $year, $mon, $mday, $hour, $min, $sec ) = @$_;
--    $year -= 1900;
-     $mon--;
- 
-     eval { timegm( $sec, $min, $hour, $mday, $mon, $year ) };
-@@ -138,19 +136,19 @@ for (@bad_time) {
- 
- {
-     is(
--        timelocal( 0, 0, 1, 1, 0, 90 ) - timelocal( 0, 0, 0, 1, 0, 90 ), 3600,
-+        timelocal( 0, 0, 1, 1, 0, 1990 ) - timelocal( 0, 0, 0, 1, 0, 1990 ), 3600,
-         'one hour difference between two calls to timelocal'
-     );
- 
-     is(
--        timelocal( 1, 2, 3, 1, 0, 100 ) - timelocal( 1, 2, 3, 31, 11, 99 ),
-+        timelocal( 1, 2, 3, 1, 0, 2000 ) - timelocal( 1, 2, 3, 31, 11, 1999 ),
-         24 * 3600,
-         'one day difference between two calls to timelocal'
-     );
- 
-     # Diff beween Jan 1, 1980 and Mar 1, 1980 = (31 + 29 = 60 days)
-     is(
--        timegm( 0, 0, 0, 1, 2, 80 ) - timegm( 0, 0, 0, 1, 0, 80 ),
-+        timegm( 0, 0, 0, 1, 2, 1980 ) - timegm( 0, 0, 0, 1, 0, 1980 ),
-         60 * 24 * 3600,
-         '60 day difference between two calls to timegm'
-     );
-Index: perl-5.26.1/cpan/libnet/lib/Net/FTP.pm
-===================================================================
---- perl-5.26.1.orig/cpan/libnet/lib/Net/FTP.pm
-+++ perl-5.26.1/cpan/libnet/lib/Net/FTP.pm
-@@ -264,7 +264,7 @@ sub mdtm {
+             # testers in US/Pacific should get 3,
+             # other testers should get 2
+--- ./cpan/libnet/lib/Net/FTP.pm.orig	2019-11-19 13:47:09.143300523 +0000
++++ ./cpan/libnet/lib/Net/FTP.pm	2019-11-19 13:47:46.179210211 +0000
+@@ -262,7 +262,7 @@ sub mdtm {
  
    $ftp->_MDTM($file)
      && $ftp->message =~ /((\d\d)(\d\d\d?))(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/
@@ -83,11 +61,9 @@ Index: perl-5.26.1/cpan/libnet/lib/Net/FTP.pm
      : undef;
  }
  
-Index: perl-5.26.1/cpan/libnet/lib/Net/NNTP.pm
-===================================================================
---- perl-5.26.1.orig/cpan/libnet/lib/Net/NNTP.pm
-+++ perl-5.26.1/cpan/libnet/lib/Net/NNTP.pm
-@@ -598,7 +598,7 @@ sub date {
+--- ./cpan/libnet/lib/Net/NNTP.pm.orig	2019-11-19 13:47:57.431182773 +0000
++++ ./cpan/libnet/lib/Net/NNTP.pm	2019-11-19 13:48:08.143156648 +0000
+@@ -596,7 +596,7 @@ sub date {
  
    $nntp->_DATE
      && $nntp->message =~ /(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/
@@ -96,10 +72,8 @@ Index: perl-5.26.1/cpan/libnet/lib/Net/NNTP.pm
      : undef;
  }
  
-Index: perl-5.26.1/pod/perlport.pod
-===================================================================
---- perl-5.26.1.orig/pod/perlport.pod
-+++ perl-5.26.1/pod/perlport.pod
+--- ./pod/perlport.pod.orig	2019-11-19 13:48:45.327065973 +0000
++++ ./pod/perlport.pod	2019-11-19 13:48:49.983054613 +0000
 @@ -670,7 +670,7 @@ When calculating specific times, such as
  it may be appropriate to calculate an offset for the epoch.
  

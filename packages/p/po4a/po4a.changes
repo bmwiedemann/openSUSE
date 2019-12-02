@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:18:01 UTC 2019 - Luiz Fernando Ranghetti <elchevive68@gmail.com>
+
+- updated to version 0.57
+
+AsciiDoc:
+
+ * Introduce option tablecells to process cells in tables.
+ * Widen accepted characters in the term part of definition list
+
+po4a tool:
+
+ * Don't use single quotes to protect command line arguments, as it fails on
+ Windows
+ 
+Translations:
+
+New translation: Arabic
+Updated: Dutch, French, Italian, Japanese, Norwegian Bokmål,
+Portuguese (Brazil) and Ukrainian
+
+-------------------------------------------------------------------
 Fri Jun  7 13:57:01 UTC 2019 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - updated to version 0.56

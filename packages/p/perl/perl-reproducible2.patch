@@ -14,22 +14,19 @@ Date:   Thu Dec 27 11:24:43 2018 +0100
     
     There could be a chance for remaining variations.
     
-    ---
+    --- 
     Better fixes welcome.
 
-Index: perl-5.28.1/dist/Storable/stacksize
-===================================================================
---- perl-5.28.1.orig/dist/Storable/stacksize
-+++ perl-5.28.1/dist/Storable/stacksize
-@@ -198,8 +198,8 @@ my $max_depth_hash = $n;
+--- ./dist/Storable/stacksize.orig	2019-11-19 13:55:21.210100584 +0000
++++ ./dist/Storable/stacksize	2019-11-19 13:56:37.537914451 +0000
+@@ -164,8 +164,8 @@ my $max_depth_hash = $n;
  # be fairly aggressive in trimming this, smoke testing showed several
  # several apparently random failures here, eg. working in one
  # configuration, but not in a very similar configuration.
 -$max_depth = int(0.6 * $max_depth);
--$max_depth_hash = int(0.6 * $max_depth);
+-$max_depth_hash = int(0.6 * $max_depth_hash);
 +$max_depth = int(0.6 * $max_depth) & ~31;
-+$max_depth_hash = int(0.6 * $max_depth) & ~31;
++$max_depth_hash = int(0.6 * $max_depth_hash) & ~31;
  
  my $stack_reserve = $^O eq "MSWin32" ? 32 : 16;
  if ($] ge "5.016" && !($^O eq "cygwin" && $ptrsize == 8)) {
-

@@ -937,4 +937,12 @@ e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parse
     <comment></comment>
     <requestid>712343</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>c6c2dd6cbe6159e704a17910eb0c73af</srcmd5>
+    <version>5.30.1</version>
+    <time>1575282315</time>
+    <user>dimstar_suse</user>
+    <comment>- update to perl-5.30.1</comment>
+    <requestid>749853</requestid>
+  </revision>
 </revisionlist>

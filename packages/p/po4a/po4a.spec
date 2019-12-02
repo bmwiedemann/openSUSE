@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           po4a
-Version:        0.56
+Version:        0.57
 Release:        0
 Summary:        Framework to translate documentation and other materials
 License:        GPL-2.0
@@ -72,9 +72,8 @@ perl Build.PL installdirs=vendor
 ./Build
 
 %install
-./Build install destdir=%{buildroot}
+./Build install destdir=%{buildroot} create_packlist=0
 %find_lang %{name} --with-man --all-name
-rm -f %{buildroot}%{perl_vendorarch}/auto/po4a/.packlist
 
 %check
 # requires texlive, which is too heavy for the package
@@ -88,7 +87,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING NEWS README* TODO
+%doc NEWS README* TODO
+%license COPYING
 %attr(755,root,root) %{_bindir}/*
 %dir %{perl_vendorlib}/Locale/
 %{perl_vendorlib}/Locale/Po4a

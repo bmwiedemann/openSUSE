@@ -1,9 +1,9 @@
---- ./ext/GDBM_File/t/fatal.t.orig	2018-09-28 14:01:52.697941391 +0000
-+++ ./ext/GDBM_File/t/fatal.t	2018-09-28 14:02:35.601833563 +0000
-@@ -29,6 +29,7 @@ is((open $fh, "<&=$fileno"), undef,
+--- ./ext/GDBM_File/t/fatal.t.orig	2019-10-24 20:18:04.000000000 +0000
++++ ./ext/GDBM_File/t/fatal.t	2019-11-19 13:40:06.696330179 +0000
+@@ -37,6 +37,7 @@ is((open $fh, "<&=$fileno"), undef,
  umask(0);
  my %h;
- isa_ok(tie(%h, 'GDBM_File', 'Op_dbmx', GDBM_WRCREAT, 0640), 'GDBM_File');
+ isa_ok(tie(%h, 'GDBM_File', 'fatal_dbmx', GDBM_WRCREAT, 0640), 'GDBM_File');
 +tied(%h)->setopt(7, 0, length(pack("i", 0)));	# turn off mmap mode
  
  isnt((open $fh, "<&=$fileno"), undef, "dup fileno $fileno")
