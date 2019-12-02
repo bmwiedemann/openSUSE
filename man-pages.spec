@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        5.03
+Version:        5.04
 Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -25,7 +25,7 @@ Group:          Documentation/Man
 Url:            http://www.kernel.org/doc/man-pages/download.html
 #Git-Clone:	git://git.kernel.org/pub/scm/docs/man-pages/man-pages
 #Git-Web:	http://git.kernel.org/cgit/docs/man-pages/man-pages.git/
-Source:         https://www.kernel.org/pub/linux/docs/man-pages/man-pages-%{version}.tar.xz
+Source:         https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/snapshot/man-pages-%{version}.tar.gz
 Patch0:         %{name}.eal3.diff
 Patch1:         %{name}-remove-ioctl_list-reference.patch
 Patch3:         %{name}_gai.conf-reference.patch
