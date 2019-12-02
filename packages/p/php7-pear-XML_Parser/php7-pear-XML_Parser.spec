@@ -1,7 +1,7 @@
 #
 # spec file for package php7-pear-XML_Parser
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define pear_name XML_Parser
 Name:           php7-pear-XML_Parser
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        XML parsing class based on PHP's bundled expat
 License:        BSD-2-Clause
 Group:          Development/Libraries/Other
-Url:            http://pear.php.net/package/XML_Parser
-Source0:        http://download.pear.php.net/package/XML_Parser-%{version}.tgz
-Source1:        LICENSE
+URL:            https://pear.php.net/package/%{pear_name}
+Source:         https://pear.php.net/get/XML_Parser-%{version}.tgz
 BuildRequires:  php7-devel
 BuildRequires:  php7-pear
-Requires:       php7
 Requires:       php7-pear
-Provides:       php-pear-%{pear_name} = %{version}
 Provides:       php-pear(%{pear_name}) = %{version}
-Obsoletes:      php5-pear-%{pear_name}
 BuildArch:      noarch
-%if 0%{?suse_version} < 1330
-BuildRequires:  php7-macros
-%endif
 
 %description
 This is an XML parser based on PHPs built-in xml extension.
@@ -53,39 +46,37 @@ you do not have to extend XML_Parser anymore in order to parse a document with
 it.
 
 %prep
-%setup -q -c
-mv package.xml %{pear_name}-%{version}
-cp %{SOURCE1} .
+%setup -q -n %{pear_name}-%{version}
+# move package.xml when needed
+[ -f ../package.xml ] &&  mv ../package.xml .
 
 %build
 
 %install
-pushd %{pear_name}-%{version}
 %{__pear} install --nodeps --offline --packagingroot %{buildroot} package.xml
 install -D -m 0644 package.xml %{buildroot}%{php_pearxmldir}/%{pear_name}.xml
-rm -rf %{buildroot}/%{php_peardir}/{doc,tmp}
-rm -rf %{buildroot}/%{php_peardir}/.{filemap,lock,registry,channels,depdb,depdblock}
-popd
 
 %{php_pear_gen_filelist}
 
 %post
 if [ "$1" = "1" ]; then
-  # install (rpm -i)
-  %{__pear} install --nodeps --soft --force --register-only %{php_pearxmldir}/%{pear_name}.xml ||:
+  # on "rpm -ivh"
+  %{__pear} install --nodeps --soft --force --register-only %{php_pearxmldir}/%{pear_name}.xml || :
 fi
 if [ "$1" = "2" ]; then
-  # update (rpm -U)
-  %{__pear} upgrade --offline --register-only %{php_pearxmldir}/%{pear_name}.xml ||:
+  # on "rpm -Uvh"
+  %{__pear} upgrade --offline --register-only %{php_pearxmldir}/%{pear_name}.xml || :
 fi
 
 %postun
-if [ "$1" -eq "0" ] ; then
-# uninstall (rpm -e)
-%{__pear} uninstall --nodeps --ignore-errors --register-only %{pear_name} >/dev/null ||:
+if [ "$1" = "0" ]; then
+  # on "rpm -e"
+  %{__pear} uninstall --nodeps --ignore-errors --register-only pear.php.net/%{pear_name} || :
 fi
 
 %files -f %{name}.files
-%doc LICENSE
+%docdir  %{pear_docdir}
+%exclude %{pear_metadir}/.??*
+%exclude %{pear_testdir}
 
 %changelog
