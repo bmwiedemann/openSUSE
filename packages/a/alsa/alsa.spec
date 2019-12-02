@@ -26,7 +26,7 @@
 %endif
 
 Name:           alsa
-Version:        1.1.9
+Version:        1.2.1.1
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -48,36 +48,13 @@ Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
 # upstream fixes
-Patch1:         0001-pcm-direct-Add-generic-hw_ptr_alignment-function-for.patch
-Patch2:         0002-pcm-dshare-Added-hw_ptr_alignment-option-in-configur.patch
-Patch3:         0003-pcm-dsnoop-Added-hw_ptr_alignment-option-in-configur.patch
-Patch4:         0004-pcm-file-add-support-for-infile-reading-in-non-inter.patch
-Patch5:         0005-pcm-file-use-snd_pcm_file_areas_read_infile-for-read.patch
-Patch6:         0006-pcm-file-add-missing-unlock-on-early-return.patch
-Patch7:         0007-ucm-Add-UCM-profile-for-CX2072X-codec-on-Baytrail-Ch.patch
-Patch8:         0008-pcm-add-mmap_begin-callback-to-snd_pcm_fast_ops_t-ap.patch
-Patch9:         0009-pcm-file-add-infile-read-support-for-mmap-mode.patch
-Patch10:        0010-aserver-fix-resource-leak-coverity.patch
-Patch11:        0011-src-conf.c-add-missing-va_end-call-coverity.patch
-Patch12:        0012-config-parse_string-fix-the-dynamic-buffer-allocatio.patch
-Patch13:        0013-control_shm-remove-duplicate-code-coverity.patch
-Patch14:        0014-control_shm-add-missing-socket-close-to-the-error-pa.patch
-Patch15:        0015-pcm-fix-memory-leak-in-_snd_pcm_parse_config_chmaps-.patch
-Patch16:        0016-pcm_file-call-pclose-correctly-for-popen-coverity.patch
-Patch17:        0017-pcm_hw-close-file-descriptor-in-the-error-path-in-sn.patch
-Patch18:        0018-rawmidi-use-snd_dlobj_cache_get2-in-rawmidi-open-cov.patch
-Patch19:        0019-rawmidi_hw-add-sanity-check-for-the-invalid-stream-a.patch
-Patch20:        0020-topology-various-coverity-fixes.patch
-Patch21:        0021-ucm-coverity-fixes.patch
-Patch22:        0022-pcm_file-coverity-fixes-including-double-locking.patch
-Patch23:        0023-topology-next-round-of-coverity-fixes.patch
-Patch24:        0024-pcm_file-another-locking-fix-coverity.patch
-Patch25:        0025-ucm-another-coverity-fix-in-uc_mgr_config_load.patch
+Patch1:         0001-alsa.m4-Fix-the-detection-of-topology-library-availa.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+Requires:       alsa-ucm-conf
 Requires:       alsa-utils
 Requires(post): %fillup_prereq
 Recommends:     alsa-oss
@@ -113,6 +90,17 @@ Provides:       alsadev = %{version}
 This package contains all necessary include files and libraries needed
 to develop applications that require ALSA.
 
+%package topology-devel
+Summary:        Header files for ALSA topology development
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
+Requires:       alsa-devel = %{version}
+Requires:       libatopology2 = %{version}
+
+%description topology-devel
+This package contains all necessary include files and libraries needed
+to develop applications that require ALSA topology.
+
 %package docs
 Summary:        Additional Package Documentation for ALSA
 License:        GPL-2.0-or-later
@@ -135,33 +123,17 @@ Provides:       alsa-lib
 This package contains the library for ALSA, Advanced Linux Sound
 Architecture.
 
+%package -n libatopology2
+Summary:        ALSA Topology Library
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description -n libatopology2
+This package contains the library for ALSA topology support.
+
 %prep
 %setup -q -n alsa-lib-%{version}
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
 %patch101 -p1
 
 %build
@@ -169,7 +141,7 @@ Architecture.
 %define _lto_cflags %{nil}
 export AUTOMAKE_JOBS="%{?_smp_mflags}"
 # build alsa-lib
-autoreconf -fi
+# autoreconf -fi
 %configure \
   --disable-static \
   --enable-symbolic-functions \
@@ -273,6 +245,9 @@ exit 0
 %post -n libasound2 -p /sbin/ldconfig
 %postun -n libasound2 -p /sbin/ldconfig
 
+%post -n libatopology2 -p /sbin/ldconfig
+%postun -n libatopology2 -p /sbin/ldconfig
+
 %files
 %defattr(-, root, root)
 %doc %{_docdir}/%{name}
@@ -294,9 +269,16 @@ exit 0
 %{_libdir}/libasound.so
 %{_includedir}/sys/*
 %{_includedir}/alsa
+%exclude %{_includedir}/alsa/topology.h
 %{_includedir}/asoundlib.h
 %{_datadir}/aclocal/*.m4
-%{_libdir}/pkgconfig/*.pc
+%{_libdir}/pkgconfig/alsa.pc
+
+%files topology-devel
+%defattr(-, root, root)
+%{_libdir}/libatopology.so
+%{_includedir}/alsa/topology.h
+%{_libdir}/pkgconfig/alsa-topology.pc
 
 %files docs
 %defattr(-, root, root)
@@ -306,5 +288,9 @@ exit 0
 %defattr(-, root, root)
 %{_libdir}/libasound.so.*
 %{_datadir}/alsa
+
+%files -n libatopology2
+%defattr(-, root, root)
+%{_libdir}/libatopology.so.*
 
 %changelog

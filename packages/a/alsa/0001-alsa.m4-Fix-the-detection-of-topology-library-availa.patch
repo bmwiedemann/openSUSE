@@ -1,0 +1,28 @@
+From be02b903b8aaa3a9b99b8de9608bce3c4eb13f63 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 27 Nov 2019 10:19:26 +0100
+Subject: [PATCH] alsa.m4: Fix the detection of topology library availability
+
+The header file alsa/topology.h is mandatory and needs to be checked,
+too.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ utils/alsa.m4 | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/utils/alsa.m4 b/utils/alsa.m4
+index 90e3ee56a981..4c457f0d4e1d 100644
+--- a/utils/alsa.m4
++++ b/utils/alsa.m4
+@@ -130,6 +130,7 @@ AC_LANG_C
+ AC_MSG_CHECKING([for libatopology (sound headers version > 1.1.9)])
+ AC_TRY_COMPILE([
+ #include <alsa/asoundlib.h>
++#include <alsa/topology.h>
+ ], [
+ /* ensure backward compatibility */
+ #if !defined(SND_LIB_VERSION)
+-- 
+2.16.4
+

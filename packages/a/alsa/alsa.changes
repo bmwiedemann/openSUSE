@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Nov 27 10:21:23 CET 2019 - tiwai@suse.de
+
+- Fix the detection of topology library in alsa.m4:
+  0001-alsa.m4-Fix-the-detection-of-topology-library-availa.patch
+
+-------------------------------------------------------------------
+Tue Nov 19 16:44:43 CET 2019 - tiwai@suse.de
+
+- Update to alsa-lib 1.2.1.1:
+  * Minor fixes spotted by coverity
+  * Fixes for UCM parser regressions
+
+-------------------------------------------------------------------
+Fri Nov 15 17:26:23 CET 2019 - tiwai@suse.de
+
+- Update to alsa-lib 1.2.1: including previous fixes
+  for the detailed changes, see the following:
+    https://www.alsa-project.org/wiki/Changes_v1.1.9_v1.2.1
+
+  The topology-related code is split into subpackages,
+  libatopology2 and alsa-topology-devel.  The topology config is
+  also moved into another package, alsa-topology-conf, which is
+  required by alsa-topology-devel package.
+
+  Also, the UCM profiles are moved into an individual package,
+  alsa-ucm-conf, too, which is now required by alsa package.
+
+- Drop obsoleted upstream patches:
+  0001-pcm-direct-Add-generic-hw_ptr_alignment-function-for.patch
+  0002-pcm-dshare-Added-hw_ptr_alignment-option-in-configur.patch
+  0003-pcm-dsnoop-Added-hw_ptr_alignment-option-in-configur.patch
+  0004-pcm-file-add-support-for-infile-reading-in-non-inter.patch
+  0005-pcm-file-use-snd_pcm_file_areas_read_infile-for-read.patch
+  0006-pcm-file-add-missing-unlock-on-early-return.patch
+  0007-ucm-Add-UCM-profile-for-CX2072X-codec-on-Baytrail-Ch.patch
+  0008-pcm-add-mmap_begin-callback-to-snd_pcm_fast_ops_t-ap.patch
+  0009-pcm-file-add-infile-read-support-for-mmap-mode.patch
+  0010-aserver-fix-resource-leak-coverity.patch
+  0011-src-conf.c-add-missing-va_end-call-coverity.patch
+  0012-config-parse_string-fix-the-dynamic-buffer-allocatio.patch
+  0013-control_shm-remove-duplicate-code-coverity.patch
+  0014-control_shm-add-missing-socket-close-to-the-error-pa.patch
+  0015-pcm-fix-memory-leak-in-_snd_pcm_parse_config_chmaps-.patch
+  0016-pcm_file-call-pclose-correctly-for-popen-coverity.patch
+  0017-pcm_hw-close-file-descriptor-in-the-error-path-in-sn.patch
+  0018-rawmidi-use-snd_dlobj_cache_get2-in-rawmidi-open-cov.patch
+  0019-rawmidi_hw-add-sanity-check-for-the-invalid-stream-a.patch
+  0020-topology-various-coverity-fixes.patch
+  0021-ucm-coverity-fixes.patch
+  0022-pcm_file-coverity-fixes-including-double-locking.patch
+  0023-topology-next-round-of-coverity-fixes.patch
+  0024-pcm_file-another-locking-fix-coverity.patch
+  0025-ucm-another-coverity-fix-in-uc_mgr_config_load.patch
+
+-------------------------------------------------------------------
 Thu Sep  5 16:41:17 CEST 2019 - tiwai@suse.de
 
 - Disable LTO completely (boo#1149612);
