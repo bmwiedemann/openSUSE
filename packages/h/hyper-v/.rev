@@ -410,4 +410,20 @@
 - PRIVATE hyper-v.compare-with-upstream.sh</comment>
     <requestid>640773</requestid>
   </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>d49f4518ce7a78bb8a5c2c77e322262b</srcmd5>
+    <version>7</version>
+    <time>1575282817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update lsvmbus interpreter from python(1) to python3(1) again
+  because only SLE12 lacked proper python3 support (bsc#1093910)
+
+- async name resolution in kvp_daemon (bsc#1100758)
+- kvp: eliminate 'may be used uninitialized' warning (89eb4d8d)
+- fix typos in toolchain (2d35c660)
+- fixed Python pep8/flake8 warnings for lsvmbus (5912e791)
+- Replace GPLv2 boilerplate/reference with SPDX (43aa3132)
+- Fix a warning of buffer overflow with gcc 8.0.1 (4fcba780)</comment>
+    <requestid>752453</requestid>
+  </revision>
 </revisionlist>

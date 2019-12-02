@@ -89,6 +89,7 @@ gcc \
 	-DCN_KVP_IDX=0x9 \
 	-DCN_KVP_VAL=0x1 \
 	-DKVP_SCRIPTS_PATH= \
+	-pthread \
 	-o %{hv_kvp_daemon}
 gcc \
 	$RPM_OPT_FLAGS \

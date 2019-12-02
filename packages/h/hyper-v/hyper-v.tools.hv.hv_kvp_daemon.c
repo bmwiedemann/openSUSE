@@ -41,6 +41,7 @@
 #include <net/if.h>
 #include <limits.h>
 #include <getopt.h>
+#include <pthread.h>
 
 /*
  * KVP protocol: The user mode component first registers with the
@@ -85,7 +86,7 @@ static char *processor_arch;
 static char *os_build;
 static char *os_version;
 static char *lic_version = "Unknown version";
-static char full_domain_name[HV_KVP_EXCHANGE_MAX_VALUE_SIZE];
+static char *full_domain_name;
 static struct utsname uts_buf;
 
 /*
@@ -700,7 +701,7 @@ static void kvp_get_ipconfig_info(char *if_name,
 
 
 	/*
-	 * Gather the DNS  state.
+	 * Gather the DNS state.
 	 * Since there is no standard way to get this information
 	 * across various distributions of interest; we just invoke
 	 * an external script that needs to be ported across distros
@@ -809,7 +810,7 @@ kvp_get_ip_info(int family, char *if_name, int op,
 	int sn_offset = 0;
 	int error = 0;
 	char *buffer;
-	struct hv_kvp_ipaddr_value *ip_buffer;
+	struct hv_kvp_ipaddr_value *ip_buffer = NULL;
 	char cidr_mask[5]; /* /xyz */
 	int weight;
 	int i;
@@ -1051,7 +1052,7 @@ static int parse_ip_val_buffer(char *in_buf, int *offset,
 	char *start;
 
 	/*
-	 * in_buf has sequence of characters that are seperated by
+	 * in_buf has sequence of characters that are separated by
 	 * the character ';'. The last sequence does not have the
 	 * terminating ";" character.
 	 */
@@ -1178,6 +1179,7 @@ static int kvp_set_ip_info(char *if_name, struct hv_kvp_ipaddr_value *new_val)
 	FILE *file;
 	char cmd[PATH_MAX];
 	char *mac_addr;
+	int str_len;
 
 	/*
 	 * Set the configuration for the specified interface with
@@ -1301,8 +1303,18 @@ static int kvp_set_ip_info(char *if_name, struct hv_kvp_ipaddr_value *new_val)
 	 * invoke the external script to do its magic.
 	 */
 
-	snprintf(cmd, sizeof(cmd), KVP_SCRIPTS_PATH "%s %s",
-		 "hv_set_ifconfig", if_file);
+	str_len = snprintf(cmd, sizeof(cmd), KVP_SCRIPTS_PATH "%s %s",
+			   "hv_set_ifconfig", if_file);
+	/*
+	 * This is a little overcautious, but it's necessary to suppress some
+	 * false warnings from gcc 8.0.1.
+	 */
+	if (str_len <= 0 || (unsigned int)str_len >= sizeof(cmd)) {
+		syslog(LOG_ERR, "Cmd '%s' (len=%d) may be too long",
+		       cmd, str_len);
+		return HV_E_FAIL;
+	}
+
 	if (system(cmd)) {
 		syslog(LOG_ERR, "Failed to execute cmd '%s'; error: %d %s",
 				cmd, errno, strerror(errno));
@@ -1317,27 +1329,76 @@ setval_error:
 	return error;
 }
 
-
-static void
-kvp_get_domain_name(char *buffer, int length)
+/*
+ * Async retrival of Fully Qualified Domain Name because getaddrinfo takes an
+ * unpredictable amount of time to finish.
+ */
+static void *kvp_getaddrinfo(void *p)
 {
-	struct addrinfo	hints, *info ;
-	int error = 0;
+	char *tmp, **str_ptr = (char **)p;
+	char hostname[HOST_NAME_MAX + 1];
+	struct addrinfo	*info, hints = {
+		.ai_family = AF_INET, /* Get only ipv4 addrinfo. */
+		.ai_socktype = SOCK_STREAM,
+		.ai_flags = AI_CANONNAME,
+	};
+	int ret;
+	int prev_ret = 0, cnt = 5;
 
-	gethostname(buffer, length);
-	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_INET; /*Get only ipv4 addrinfo. */
-	hints.ai_socktype = SOCK_STREAM;
-	hints.ai_flags = AI_CANONNAME;
+	do {
+		if (gethostname(hostname, sizeof(hostname) - 1) < 0)
+			goto out;
 
-	error = getaddrinfo(buffer, NULL, &hints, &info);
-	if (error != 0) {
-		snprintf(buffer, length, "getaddrinfo failed: 0x%x %s",
-			error, gai_strerror(error));
+		ret = getaddrinfo(hostname, NULL, &hints, &info);
+		switch (ret) {
+		case 0:
+			break;
+		case EAI_BADFLAGS:
+		case EAI_MEMORY:
+		case EAI_OVERFLOW:
+		case EAI_SOCKTYPE:
+		case EAI_SYSTEM:
+			/* Permanent failure */
+			syslog(LOG_ERR, "getaddrinfo failed: %d %s",
+				ret, gai_strerror(ret));
+			goto out;
+		default:
+			/* runtime debug */
+			if (cnt) {
+				if (prev_ret != ret) {
+					prev_ret = ret;
+					syslog(LOG_ERR, "getaddrinfo warning: %d %s", ret, gai_strerror(ret));
+					cnt--;
+				}
+			}
+			/* Temporary failure, aim for success. */
+			sleep(5);
+		}
+	} while (ret);
+
+	ret = asprintf(&tmp, "%s", info->ai_canonname);
+	freeaddrinfo(info);
+	if (ret <= 0)
+		goto out;
+
+	if (ret > HV_KVP_EXCHANGE_MAX_VALUE_SIZE)
+		tmp[HV_KVP_EXCHANGE_MAX_VALUE_SIZE - 1] = '\0';
+	*str_ptr = tmp;
+
+out:
+	pthread_exit(NULL);
+}
+
+static void kvp_obtain_domain_name(char **str_ptr)
+{
+	pthread_t t;
+
+	if (pthread_create(&t, NULL, kvp_getaddrinfo, str_ptr)) {
+		syslog(LOG_ERR, "pthread_create failed; error: %d %s",
+			errno, strerror(errno));
 		return;
 	}
-	snprintf(buffer, length, "%s", info->ai_canonname);
-	freeaddrinfo(info);
+	pthread_detach(t);
 }
 
 void print_usage(char *argv[])
@@ -1376,6 +1437,8 @@ int main(int argc, char *argv[])
 			daemonize = 0;
 			break;
 		case 'h':
+			print_usage(argv);
+			exit(0);
 		default:
 			print_usage(argv);
 			exit(EXIT_FAILURE);
@@ -1400,11 +1463,7 @@ int main(int argc, char *argv[])
 	 * Retrieve OS release information.
 	 */
 	kvp_get_os_info();
-	/*
-	 * Cache Fully Qualified Domain Name because getaddrinfo takes an
-	 * unpredictable amount of time to finish.
-	 */
-	kvp_get_domain_name(full_domain_name, sizeof(full_domain_name));
+	kvp_obtain_domain_name(&full_domain_name);
 
 	if (kvp_file_init()) {
 		syslog(LOG_ERR, "Failed to initialize the pools");
@@ -1480,7 +1539,7 @@ int main(int argc, char *argv[])
 		case KVP_OP_GET_IP_INFO:
 			kvp_ip_val = &hv_msg->body.kvp_ip_val;
 
-			error =  kvp_mac_to_ip(kvp_ip_val);
+			error = kvp_mac_to_ip(kvp_ip_val);
 
 			if (error)
 				hv_msg->error = error;
@@ -1559,7 +1618,7 @@ int main(int argc, char *argv[])
 
 		switch (hv_msg->body.kvp_enum_data.index) {
 		case FullyQualifiedDomainName:
-			strcpy(key_value, full_domain_name);
+			strcpy(key_value, full_domain_name ? : "");
 			strcpy(key_name, "FullyQualifiedDomainName");
 			break;
 		case IntegrationServicesVersion:
