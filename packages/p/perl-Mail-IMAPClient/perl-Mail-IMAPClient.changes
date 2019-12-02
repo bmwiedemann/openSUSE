@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 30 14:55:27 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert changes file to proper UTF-8 format: new
+  version of RPM are getting strict in interpreting files.
+
+-------------------------------------------------------------------
 Wed Mar 13 16:13:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 3.42
@@ -6,7 +12,7 @@ Wed Mar 13 16:13:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
   version 3.42: Sun Feb 24 00:43:29 UTC 2019
   	- rt.cpan.org#12859: has_capability() changes in 3.41 broke imap4rev1()
-  	  [Gilles Lamiral and Gábor Leszlauer]
+  	  [Gilles Lamiral and GÃ¡bor Leszlauer]
   	- updated http:// to https:// URLs for referenced resources
   	- updated copyright for 2019
 
@@ -137,7 +143,7 @@ Tue Apr 14 17:48:35 UTC 2015 - coolo@suse.com
   	  + cleanup Escaped_results()
   	  + new methods: Escaped_history() _escaped_trans_data()
   	  + removed method: _list_response_preprocess()
-  	  [Gilles Lamiral, Victor Lé]
+  	  [Gilles Lamiral, Victor LÃ©]
   	- rt.cpan.org#90315: getacl on a folder returned as literal failed
   	  + _read_line could remove extra space when literal data was received
   	  [Carl Karcher]
