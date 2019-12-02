@@ -1,7 +1,7 @@
 #
 # spec file for package tilix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,8 +87,12 @@ A tiling terminal emulator for Linux using GTK+ 3
 %package -n nautilus-extension-tilix
 Summary:        Nautilus Extension to Open Tilix in Folders
 Group:          System/GUI/GNOME
+%if 0%{?suse_version} < 1550
 Requires:       python-nautilus
-Supplements:    packageand(nautilus:%{name})
+%else
+Requires:       python3-nautilus
+%endif
+Supplements:    (nautilus and %{name})
 
 %description -n nautilus-extension-tilix
 This is a Nautilus extension that allows you to open tilix in
