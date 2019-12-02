@@ -70,7 +70,7 @@
 %define ngx_doc_dir    %{_datadir}/doc/packages/%{name}
 #
 Name:           nginx
-Version:        1.17.5
+Version:        1.17.6
 Release:        0
 %define ngx_fancyindex_version 0.4.2
 %define ngx_fancyindex_module_path ngx-fancyindex-%{ngx_fancyindex_version}
