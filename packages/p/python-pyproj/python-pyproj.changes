@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  2 06:39:16 UTC 2019 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to 2.4.2.post1
+  * Elevate +init= warning to FutureWarning (pull #486)
+  * Add UserWarning to to_proj4() (pull #486)
+  * BUG: Fix for 32-bit i686 plaforms (issue #481)
+  * Return ‘inf’ in Proj instead of 1.e30 (pull #491)
+
+-------------------------------------------------------------------
 Wed Nov  6 21:01:18 UTC 2019 - Libor Pechacek <lpechacek@suse.com>
 
 - Update to 2.4.1
