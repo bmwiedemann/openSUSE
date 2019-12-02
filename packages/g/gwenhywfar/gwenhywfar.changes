@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 27 21:59:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Redownload tarball via osc service, upstream source have changed.
+
+-------------------------------------------------------------------
+Mon Nov 11 20:38:31 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 4.99.25rc9
+  + fixed crashes on Windows
+  + minor tweaks
+
+-------------------------------------------------------------------
 Mon Oct 14 07:42:59 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 4.99.22rc6
