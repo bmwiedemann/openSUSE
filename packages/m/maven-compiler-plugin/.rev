@@ -23,4 +23,12 @@
     <comment>Update to 3.8.1</comment>
     <requestid>751522</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>66067eae33342b40a404e7d17fa2772c</srcmd5>
+    <version>3.8.1</version>
+    <time>1575282932</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on test dependencies for build</comment>
+    <requestid>752791</requestid>
+  </revision>
 </revisionlist>

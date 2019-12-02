@@ -52,7 +52,6 @@ BuildRequires:  ant
 %else
 Name:           %{base_name}
 BuildRequires:  xmvn
-BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
@@ -60,7 +59,6 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
-BuildRequires:  mvn(org.mockito:mockito-core)
 Obsoletes:      %{base_name}-bootstrap
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
@@ -89,6 +87,8 @@ cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
 %patch1 -p1
+
+%pom_remove_dep :::test
 
 %build
 %if %{with bootstrap}

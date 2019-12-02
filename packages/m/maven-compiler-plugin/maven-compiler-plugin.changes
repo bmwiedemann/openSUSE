@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 29 10:50:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove all dependencies with scope test, since we are disabling
+  tests
+
+-------------------------------------------------------------------
 Mon Nov 25 16:53:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.8.1
