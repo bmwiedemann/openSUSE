@@ -1,7 +1,7 @@
 #
 # spec file for package fprintd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define gitlabhash 9dec4b63d1f00e637070be1477ce63c0
 Name:           fprintd
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://fprint.freedesktop.org/
-Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/uploads/bdd9f91909f535368b7c21f72311704a/%{name}-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/uploads/%{gitlabhash}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Source2:        README.SUSE
 BuildRequires:  gtk-doc >= 1.3

@@ -55,4 +55,18 @@
     <comment></comment>
     <requestid>701545</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b750c9de9921aaea49e358571d101e3b</srcmd5>
+    <version>0.9.0</version>
+    <time>1575282942</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the download url
+
+- update to 0.9.0:
+  *  Fix hangs when there the verification error was &quot;retry&quot;
+  *  Update for fp_get_pollfds() changes
+  *  Fix &quot;client_username&quot; memory leak, fix memory leak when saving a file
+  *  Create the fingerprint storage directory at install time, the storage path is now hard-coded as /var/lib/fprint and created by systemd when the service is started</comment>
+    <requestid>752803</requestid>
+  </revision>
 </revisionlist>

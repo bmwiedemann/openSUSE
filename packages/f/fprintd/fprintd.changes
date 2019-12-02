@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  2 07:35:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the download url
+
+-------------------------------------------------------------------
+Fri Nov 29 13:24:35 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.9.0:
+  *  Fix hangs when there the verification error was "retry"
+  *  Update for fp_get_pollfds() changes
+  *  Fix "client_username" memory leak, fix memory leak when saving a file
+  *  Create the fingerprint storage directory at install time, the storage path is now hard-coded as /var/lib/fprint and created by systemd when the service is started
+
+-------------------------------------------------------------------
 Tue May  7 12:45:29 UTC 2019 - jsegitz@suse.com
 
 - Add README.SUSE to warn users of the potential risk in storing
