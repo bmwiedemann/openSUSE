@@ -230,4 +230,12 @@
 - Rebase remove_mock_dependency.patch</comment>
     <requestid>717079</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ad39802cc4d9c96d671fa89b075223f0</srcmd5>
+    <version>3.7.9</version>
+    <time>1575282773</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>751377</requestid>
+  </revision>
 </revisionlist>
