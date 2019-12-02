@@ -13,36 +13,20 @@ perfschema.socket_summary_by_instance_func   : bsc#937836, MDEV-8446
 
 # Failing because of "Self Signed Certificate in the Certificate Chain"
 perfschema.cnf_option                        : all
-rpl.rpl_row_img_blobs                        : all 
-rpl.rpl_row_img_eng_min                      : all
-rpl.rpl_row_img_eng_noblob                   : all
+rpl.rpl_row_img_blobs                        : all MDEV-13875
+rpl.rpl_row_img_eng_min                      : all MDEV-13875
+rpl.rpl_row_img_eng_noblob                   : all MDEV-13875
 
 #----------------------------------------------------------------
 
 # Needs to be investigated (issues trackers will be added)
-sys_vars.slave_parallel_threads_basic        : since 10.3.16 - x86_64, i386, s390x, armv7l
-rocksdb.2pc_group_commit                     : since 10.3.16 - x86_64
-rocksdb.read_only_tx                         : since 10.3.16 - x86_64
-rocksdb.shutdown                             : since 10.3.16 - x86_64
-rocksdb.index_merge_rocksdb                  : since 10.3.16 - x86_64
-rocksdb_rpl.mdev12179                        : since 10.3.16 - x86_64
-main.gis_notembedded                         : since 10.3.16 - x86_64, i386, s390x, armv7l
-unit.conc_ps_bugs                            : since 10.3.16 - x86_64, i386, s390x, armv7l
-handler.heap                                 : since 10.3.16 - s390x
-federated.federatedx_versioning              : since 10.3.16 - amrv7l
-versioning.partition                         : since 10.3.16 - amrv7l
-versioning.online                            : since 10.3.16 - amrv7l
-versioning.auto_increment                    : since 10.3.16 - amrv7l
-versioning.truncate                          : since 10.3.16 - amrv7l
-versioning.select                            : since 10.3.16 - amrv7l
-versioning.delete                            : since 10.3.16 - amrv7l
-versioning.foreign                           : since 10.3.16 - amrv7l
-versioning.insert                            : since 10.3.16 - amrv7l
-versioning.replace                           : since 10.3.16 - amrv7l
-versioning.select2                           : since 10.3.16 - amrv7l
-versioning.update                            : since 10.3.16 - amrv7l
-versioning.alter                             : since 10.3.16 - amrv7l
-versioning.commit_id                         : since 10.3.16 - amrv7l
-versioning.trx_id                            : since 10.3.16 - amrv7l
-mariabackup.system_versioning                : since 10.3.16 - amrv7l
-versioning.insert2                           : since 10.3.16 - amrv7l
+sys_vars.slave_parallel_threads_basic        : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
+rocksdb.2pc_group_commit                     : since 10.3.16 - x86_64 MDEV-14455
+rocksdb.read_only_tx                         : since 10.3.16 - x86_64 rocksdb tests are considered unstable
+rocksdb.shutdown                             : since 10.3.16 - x86_64 rocksdb tests are considered unstable
+rocksdb.index_merge_rocksdb                  : since 10.3.16 - x86_64 rocksdb tests are considered unstable
+rocksdb_rpl.mdev12179                        : since 10.3.16 - x86_64 MDEV-16632
+main.gis_notembedded                         : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
+versioning.partition                         : since 10.3.16 - armv7l
+innodb.innodb-page_compression_lzma          : since 10.3.20 - armv7l
+
