@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 21 18:54:57 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix use of deprecated one-based array index, removed in perl 5.30.
+  Add remove_deprecated_one_based_array_index.diff
+
+-------------------------------------------------------------------
 Sun Jun 18 16:34:37 UTC 2017 - bwiedemann@suse.com
 
 - Add reproducible.patch to call gzip -n to make build fully reproducible
