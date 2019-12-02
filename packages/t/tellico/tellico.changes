@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 30 15:14:58 UTC 2019 - thod_@gmx.de
+
+- Update to 3.2.3:
+  Bug Fixes:
+  * Fixed performance regression when loading data file.
+
+-------------------------------------------------------------------
 Sun Nov 10 08:40:10 UTC 2019 - wbauer@tmo.at
 
 - Update to 3.2.2:
