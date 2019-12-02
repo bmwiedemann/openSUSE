@@ -20,6 +20,15 @@
 %global prometheus_user prometheus
 %global prometheus_group %{prometheus_user}
 
+# Compatibility with systems older than Nov 2017
+# See https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros
+%if ! %{defined _fillupdir}
+%define _fillupdir /var/adm/fillup-templates
+%endif
+%if 0%{?suse_version} < 1500
+%define _sharedstatedir /var/lib
+%endif
+
 %{go_nostrip}
 
 Name:           golang-github-prometheus-prometheus
@@ -33,7 +42,6 @@ Source:         prometheus-%{version}.tar.xz
 Source1:        prometheus.service
 Source2:        prometheus.yml
 Source3:        prometheus.sysconfig
-Source4:        prometheus.firewall.xml
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
