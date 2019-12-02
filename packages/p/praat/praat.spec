@@ -1,7 +1,7 @@
 #
 # spec file for package praat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.1
+Version:        6.1.07
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -55,9 +55,7 @@ Praat is configurable and extensible through its own scripting language and has
 provisions for communicating with other programs.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 test -x "$(type -p gcc-7)" && export CC=gcc-7

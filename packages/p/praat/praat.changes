@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov 29 20:03:54 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.07
+  * Raspberry Pi edition.
+  version 6.1.06:
+  * Chromebook edition.
+  * Scripting: colour fields now take name, grey value or RGB
+    vector.
+  version 6.1.05:
+  * Repaired a bug introduced in 6.0.44 that could cause rubbish
+    LPC smoothing.
+  * Repaired a rare crash when dragging a selection on the Mac.
+  version 6.1.04:
+  * Electroglottography.
+  * Sound and other windows: Widen or shrink selection....
+  * KlattGrid: Create from vowel....
+  * Fix rectangle playing bug when selection viewer is on.
+  * Selection viewer separately visible for Sound window and
+    TextGrid window.
+  * Scripting: allow comments after parameter list.
+  * Scripting: fix CR/LF pasting from Microsoft Word.
+  version 6.1.03:
+  * Sound window: Widen or shrink selection....
+  version 6.1.02:
+  * Repaired Sound: Concatenate with overlap....
+  * Mac: Info and script windows: prevent line breaks caused by
+    tab stops.
+  version 6.1.01:
+  * Repaired TextGrid: Replace interval texts....
+
+- Refreshed praat-use_system_libs.patch
+
+-------------------------------------------------------------------
 Sat Jul 13 16:41:12 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1
