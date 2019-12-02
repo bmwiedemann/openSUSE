@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 30 14:17:55 UTC 2019 - malcolmlewis@opensuse.org
+
+- Updated to version 1.6.2.605:
+  * FIX: multiple endianness issues with exFAT
+  * Now using /proc/self/mounts instead of /etc/mtab to check
+    whether filesystem is mounted.
+- Changes from version 1.6.1:
+  * FIX: missing check if directory entries are of type file.
+  * Option -l now considers options -d, -D, -x, -X, -e and -E.
+  * Added check for dirty volumes.
+  * Added new test cases.
+- Changes from version 1.6.0:
+  * exFAT is now supported!
+  * Directory entries are now only written back if reordering
+    happened.
+  * FIX: memory leak with regular expression lists.
+  * Code rewrite to make additional platforms possible in future.
+
+-------------------------------------------------------------------
 Tue Mar  5 11:10:42 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
