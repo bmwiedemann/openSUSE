@@ -1,7 +1,7 @@
 #
 # spec file for package objectweb-asm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           objectweb-asm
-Version:        6.2.1
+Version:        7.2
 Release:        0
 Summary:        Java bytecode manipulation framework
 License:        BSD-3-Clause
@@ -32,7 +32,6 @@ Source4:        http://repo1.maven.org/maven2/org/ow2/asm/asm-commons/%{version}
 Source5:        http://repo1.maven.org/maven2/org/ow2/asm/asm-test/%{version}/asm-test-%{version}.pom
 Source6:        http://repo1.maven.org/maven2/org/ow2/asm/asm-tree/%{version}/asm-tree-%{version}.pom
 Source7:        http://repo1.maven.org/maven2/org/ow2/asm/asm-util/%{version}/asm-util-%{version}.pom
-Source8:        http://repo1.maven.org/maven2/org/ow2/asm/asm-xml/%{version}/asm-xml-%{version}.pom
 # We still want to create an "all" uberjar, so this is a custom pom to generate it
 # TODO: Fix other packages to no longer depend on "asm-all" so we can drop this
 Source9:        asm-all.pom
@@ -95,14 +94,16 @@ cp %{SOURCE4} asm-commons/pom.xml
 cp %{SOURCE5} asm-test/pom.xml
 cp %{SOURCE6} asm-tree/pom.xml
 cp %{SOURCE7} asm-util/pom.xml
-cp %{SOURCE8} asm-xml/pom.xml
 # Insert asm-all pom
 mkdir -p asm-all
 sed 's/@VERSION@/%{version}/g' %{SOURCE9} > asm-all/pom.xml
 
-for i in asm asm-analysis asm-commons asm-tree asm-util asm-xml asm-all; do
+for i in asm asm-analysis asm-commons asm-tree asm-util asm-all; do
   %pom_remove_parent ${i}
 done
+
+# We don't want to build modular jars
+find . -name module-info.java -print -delete
 
 %build
 %ant \
@@ -111,13 +112,13 @@ done
 %install
 # jars
 install -dm 0755 %{buildroot}/%{_javadir}/%{name}
-for i in asm asm-analysis asm-commons asm-tree asm-util asm-xml asm-all; do
+for i in asm asm-analysis asm-commons asm-tree asm-util asm-all; do
   install -pm 0644 ${i}/target/${i}-%{version}.jar %{buildroot}/%{_javadir}/%{name}/${i}.jar
 done
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-for i in asm asm-analysis asm-commons asm-tree asm-util asm-xml; do
+for i in asm asm-analysis asm-commons asm-tree asm-util; do
   install -pm 0644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
@@ -126,13 +127,13 @@ install -pm 0644 asm-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/asm-all.pom
 
 # javadoc
 install -dm 0755 %{buildroot}/%{_javadocdir}/%{name}
-for i in asm asm-analysis asm-commons asm-tree asm-util asm-xml; do
+for i in asm asm-analysis asm-commons asm-tree asm-util; do
   cp -pr ${i}/target/site/apidocs %{buildroot}/%{_javadocdir}/%{name}/${i}
 done
 %fdupes -s %{buildroot}/%{_javadocdir}
 
 # script
-%jpackage_script org.objectweb.asm.xml.Processor "" "" %{name}/asm:%{name}/asm-util:%{name}/asm-xml %{name}-processor true
+%jpackage_script org.objectweb.asm.xml.Processor "" "" %{name}/asm:%{name}/asm-util %{name}-processor true
 
 %files -f .mfiles
 %license LICENSE.txt

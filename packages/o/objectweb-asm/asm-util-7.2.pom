@@ -8,11 +8,11 @@
     <version>1.5</version>
   </parent>
   <groupId>org.ow2.asm</groupId>
-  <artifactId>asm-test</artifactId>
-  <version>6.2.1</version>
-  <name>asm-test</name>
-  <description>Utilities for testing ASM, a very small and fast Java bytecode manipulation framework</description>
-  <url>http://asm.ow2.org/</url>
+  <artifactId>asm-util</artifactId>
+  <version>7.2</version>
+  <name>asm-util</name>
+  <description>Utilities for ASM, a very small and fast Java bytecode manipulation framework</description>
+  <url>http://asm.ow2.io/</url>
   <inceptionYear>2000</inceptionYear>
   <organization>
     <name>OW2</name>
@@ -20,8 +20,8 @@
   </organization>
   <licenses>
     <license>
-      <name>BSD</name>
-      <url>http://asm.ow2.org/license.html</url>
+      <name>BSD-3-Clause</name>
+      <url>https://asm.ow2.io/license.html</url>
     </license>
   </licenses>
   <developers>
@@ -75,21 +75,45 @@
   </issueManagement>
   <dependencies>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.1.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>5.1.0</version>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>7.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.ow2.asm</groupId>
+      <artifactId>asm-tree</artifactId>
+      <version>7.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm-analysis</artifactId>
+      <version>7.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.janino</groupId>
+      <artifactId>janino</artifactId>
+      <version>3.0.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
       <artifactId>asm-test</artifactId>
-      <version>6.2.1</version>
+      <version>7.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.3.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>5.3.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -36,11 +36,6 @@
       <artifactId>asm-util</artifactId>
       <version>@VERSION@</version>
     </dependency>
-    <dependency>
-      <groupId>org.ow2.asm</groupId>
-      <artifactId>asm-xml</artifactId>
-      <version>@VERSION@</version>
-    </dependency>
   </dependencies>
   <build>
     <plugins>
