@@ -1,7 +1,7 @@
 #
 # spec file for package bvi
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bvi
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Editor for binary files
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
-Url:            http://bvi.sourceforge.net
+URL:            http://bvi.sourceforge.net
 Source:         http://sourceforge.net/projects/bvi/files/bvi/%{version}/bvi-%{version}.src.tar.gz
 BuildRequires:  ncurses-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The bvi is a display-oriented editor for binary files, based on the vi
@@ -41,17 +40,17 @@ about vi, maybe bvi is not the best choice for you.
 make %{?_smp_mflags}
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc CHANGES COPYING CREDITS README
+%license COPYING
+%doc CHANGES CREDITS README
 %{_bindir}/bmore
 %{_bindir}/bvedit
 %{_bindir}/bvi
 %{_bindir}/bview
 %{_datadir}/bvi
-%{_mandir}/man1/bvi.1%{ext_man}
-%{_mandir}/man1/bmore.1%{ext_man}
+%{_mandir}/man1/bvi.1%{?ext_man}
+%{_mandir}/man1/bmore.1%{?ext_man}
 
 %changelog
