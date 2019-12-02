@@ -16,4 +16,14 @@
   * Fixed handling of KeyboardInterrupt exceptions.</comment>
     <requestid>736693</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fb8de3fe1d005e10fb314f05e8fbdf33</srcmd5>
+    <version>0.4.0</version>
+    <time>1575282439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  - Changed the way event names are stored and exposed.
+  - Fixed parsing of options after a -- token. (forwarded request 751627 from mcepl)</comment>
+    <requestid>751628</requestid>
+  </revision>
 </revisionlist>

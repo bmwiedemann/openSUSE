@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 28 15:05:12 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.0:
+  - Changed the way event names are stored and exposed.
+  - Fixed parsing of options after a -- token.
+
+-------------------------------------------------------------------
 Wed Oct  9 14:10:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.2:
