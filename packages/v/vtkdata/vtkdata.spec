@@ -1,7 +1,7 @@
 #
 # spec file for package vtkdata
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           vtkdata
-Version:        8.1.2
+Version:        8.2.0
 Release:        0
-%define series  8.1
+%define series  8.2
 Summary:        Kitware VTK Library Data
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
-Url:            https://www.vtk.org
+URL:            https://www.vtk.org
 Source0:        https://www.vtk.org/files/release/%{series}/VTKData-%{version}.tar.gz
 Source1:        https://www.vtk.org/files/release/%{series}/VTKLargeData-%{version}.tar.gz
 Source10:       https://gitlab.kitware.com/vtk/vtk/raw/v%{version}/Copyright.txt
 Source99:       vtkdata-rpmlintrc
 BuildRequires:  cmake >= 3.4
 BuildRequires:  fdupes
-Requires:       cmake >= 3.4
 Provides:       vtklargedata = %{version}
 BuildArch:      noarch
 
