@@ -395,7 +395,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl_internal.h
 +++ xen-4.13.0-testing/tools/libxl/libxl_internal.h
-@@ -3509,6 +3509,10 @@ struct libxl__domain_save_state {
+@@ -3596,6 +3596,10 @@ struct libxl__domain_save_state {
      /* private */
      int rc;
      int hvm;

@@ -17,10 +17,10 @@ brctl. Replace them by commands from iproute2 package.
  .../i386-dm/qemu-ifup-Linux                                |  5 +++--
  9 files changed, 26 insertions(+), 26 deletions(-)
 
-Index: xen-4.10.0-testing/README
+Index: xen-4.13.0-testing/README
 ===================================================================
---- xen-4.10.0-testing.orig/README
-+++ xen-4.10.0-testing/README
+--- xen-4.13.0-testing.orig/README
++++ xen-4.13.0-testing/README
 @@ -57,8 +57,7 @@ provided by your OS distributor:
      * Development install of GLib v2.0 (e.g. libglib2.0-dev)
      * Development install of Pixman (e.g. libpixman-1-dev)
@@ -31,10 +31,10 @@ Index: xen-4.10.0-testing/README
      * GNU bison and GNU flex
      * GNU gettext
      * ACPI ASL compiler (iasl)
-Index: xen-4.10.0-testing/tools/hotplug/Linux/colo-proxy-setup
+Index: xen-4.13.0-testing/tools/hotplug/Linux/colo-proxy-setup
 ===================================================================
---- xen-4.10.0-testing.orig/tools/hotplug/Linux/colo-proxy-setup
-+++ xen-4.10.0-testing/tools/hotplug/Linux/colo-proxy-setup
+--- xen-4.13.0-testing.orig/tools/hotplug/Linux/colo-proxy-setup
++++ xen-4.13.0-testing/tools/hotplug/Linux/colo-proxy-setup
 @@ -76,10 +76,16 @@ function teardown_primary()
  
  function setup_secondary()
@@ -77,10 +77,10 @@ Index: xen-4.10.0-testing/tools/hotplug/Linux/colo-proxy-setup
  
      do_without_error iptables -t mangle -D PREROUTING -m physdev --physdev-in \
          $vifname -j SECCOLO --index $index
-Index: xen-4.10.0-testing/tools/hotplug/Linux/remus-netbuf-setup
+Index: xen-4.13.0-testing/tools/hotplug/Linux/remus-netbuf-setup
 ===================================================================
---- xen-4.10.0-testing.orig/tools/hotplug/Linux/remus-netbuf-setup
-+++ xen-4.10.0-testing/tools/hotplug/Linux/remus-netbuf-setup
+--- xen-4.13.0-testing.orig/tools/hotplug/Linux/remus-netbuf-setup
++++ xen-4.13.0-testing/tools/hotplug/Linux/remus-netbuf-setup
 @@ -76,6 +76,7 @@
  #specific setup code such as renaming.
  dir=$(dirname "$0")
@@ -107,10 +107,10 @@ Index: xen-4.10.0-testing/tools/hotplug/Linux/remus-netbuf-setup
          check_ifb "$ifb" || continue
          REMUS_IFB="$ifb"
          break
-Index: xen-4.10.0-testing/tools/hotplug/Linux/vif-bridge
+Index: xen-4.13.0-testing/tools/hotplug/Linux/vif-bridge
 ===================================================================
---- xen-4.10.0-testing.orig/tools/hotplug/Linux/vif-bridge
-+++ xen-4.10.0-testing/tools/hotplug/Linux/vif-bridge
+--- xen-4.13.0-testing.orig/tools/hotplug/Linux/vif-bridge
++++ xen-4.13.0-testing/tools/hotplug/Linux/vif-bridge
 @@ -40,7 +40,12 @@ bridge=$(xenstore_read_default "$XENBUS_
  
  if [ -z "$bridge" ]
@@ -141,10 +141,10 @@ Index: xen-4.10.0-testing/tools/hotplug/Linux/vif-bridge
          ;;
  
      add)
-Index: xen-4.10.0-testing/tools/hotplug/Linux/vif-nat
+Index: xen-4.13.0-testing/tools/hotplug/Linux/vif-nat
 ===================================================================
---- xen-4.10.0-testing.orig/tools/hotplug/Linux/vif-nat
-+++ xen-4.10.0-testing/tools/hotplug/Linux/vif-nat
+--- xen-4.13.0-testing.orig/tools/hotplug/Linux/vif-nat
++++ xen-4.13.0-testing/tools/hotplug/Linux/vif-nat
 @@ -174,7 +174,11 @@ case "$command" in
          ;;
      offline)
@@ -158,13 +158,13 @@ Index: xen-4.10.0-testing/tools/hotplug/Linux/vif-nat
          ;;
  esac
  
-Index: xen-4.10.0-testing/tools/hotplug/Linux/vif-route
+Index: xen-4.13.0-testing/tools/hotplug/Linux/vif-route
 ===================================================================
---- xen-4.10.0-testing.orig/tools/hotplug/Linux/vif-route
-+++ xen-4.10.0-testing/tools/hotplug/Linux/vif-route
-@@ -23,13 +23,23 @@ main_ip=$(dom0_ip)
- 
- case "${command}" in
+--- xen-4.13.0-testing.orig/tools/hotplug/Linux/vif-route
++++ xen-4.13.0-testing/tools/hotplug/Linux/vif-route
+@@ -25,7 +25,12 @@ case "${command}" in
+     add)
+         ;&
      online)
 -        ifconfig ${dev} ${main_ip} netmask 255.255.255.255 up
 +        if [ "$legacy_tools" ]; then
@@ -176,7 +176,9 @@ Index: xen-4.10.0-testing/tools/hotplug/Linux/vif-route
          echo 1 >/proc/sys/net/ipv4/conf/${dev}/proxy_arp
          ipcmd='add'
          cmdprefix=''
-         ;;
+@@ -33,7 +38,12 @@ case "${command}" in
+     remove)
+         ;&
      offline)
 -        do_without_error ifdown ${dev}
 +        if [ "$legacy_tools" ]; then
@@ -188,10 +190,10 @@ Index: xen-4.10.0-testing/tools/hotplug/Linux/vif-route
          ipcmd='del'
          cmdprefix='do_without_error'
          ;;
-Index: xen-4.10.0-testing/tools/hotplug/Linux/vif2
+Index: xen-4.13.0-testing/tools/hotplug/Linux/vif2
 ===================================================================
---- xen-4.10.0-testing.orig/tools/hotplug/Linux/vif2
-+++ xen-4.10.0-testing/tools/hotplug/Linux/vif2
+--- xen-4.13.0-testing.orig/tools/hotplug/Linux/vif2
++++ xen-4.13.0-testing/tools/hotplug/Linux/vif2
 @@ -7,13 +7,22 @@ dir=$(dirname "$0")
  bridge=$(xenstore_read_default "$XENBUS_PATH/bridge" "$bridge")
  if [ -z "$bridge" ]
@@ -217,10 +219,10 @@ Index: xen-4.10.0-testing/tools/hotplug/Linux/vif2
  fi
  
  command="$1"
-Index: xen-4.10.0-testing/tools/hotplug/Linux/xen-network-common.sh
+Index: xen-4.13.0-testing/tools/hotplug/Linux/xen-network-common.sh
 ===================================================================
---- xen-4.10.0-testing.orig/tools/hotplug/Linux/xen-network-common.sh
-+++ xen-4.10.0-testing/tools/hotplug/Linux/xen-network-common.sh
+--- xen-4.13.0-testing.orig/tools/hotplug/Linux/xen-network-common.sh
++++ xen-4.13.0-testing/tools/hotplug/Linux/xen-network-common.sh
 @@ -15,6 +15,12 @@
  #
  

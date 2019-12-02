@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:49:13 MST 2019 - carnold@suse.com
+
+- Update to Xen 4.13.0 RC3 release
+  xen-4.13.0-testing-src.tar.bz2
+- Drop python38-build.patch
+
+-------------------------------------------------------------------
 Tue Nov 12 08:09:27 MST 2019 - carnold@suse.com
 
 - Update to Xen 4.13.0 RC2 release

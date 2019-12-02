@@ -487,7 +487,7 @@ Index: xen-4.13.0-testing/xen/tools/gen-cpuid.py
      state.common_1d = featureset_to_uint32s(common_1d, 1)[0]
      state.special = featureset_to_uint32s(state.raw_special, nr_entries)
      state.pv = featureset_to_uint32s(state.raw_pv, nr_entries)
-@@ -316,11 +316,11 @@ def crunch_numbers(state):
+@@ -317,11 +317,11 @@ def crunch_numbers(state):
  
          state.deep_deps[feat] = seen[1:]
  
@@ -502,7 +502,7 @@ Index: xen-4.13.0-testing/xen/tools/gen-cpuid.py
      except AttributeError:
          _tmp = state.deep_deps.items()
  
-@@ -328,10 +328,10 @@ def crunch_numbers(state):
+@@ -329,10 +329,10 @@ def crunch_numbers(state):
          state.deep_deps[k] = featureset_to_uint32s(v, nr_entries)
  
      # Calculate the bitfield name declarations

@@ -24,7 +24,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define changeset 40113
+%define changeset 40162
 %define xen_build_dir xen-4.13.0-testing
 #
 %define with_gdbsx 0
@@ -127,7 +127,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_02
+Version:        4.13.0_03
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -207,7 +207,6 @@ Patch621:       xen.build-compare.doc_html.patch
 Patch623:       ipxe-no-error-logical-not-parentheses.patch
 Patch624:       ipxe-use-rpm-opt-flags.patch
 # Build patches
-Patch99995:     python38-build.patch
 Patch99996:     xen.stubdom.newlib.patch
 Patch99998:     tmp_build.patch
 Patch99999:     reproducible.patch
@@ -402,7 +401,6 @@ Authors:
 %patch623 -p1
 %patch624 -p1
 # Build patches
-%patch99995 -p1
 %patch99996 -p1
 %patch99998 -p1
 %patch99999 -p1

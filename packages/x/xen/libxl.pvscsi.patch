@@ -226,7 +226,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_internal.h
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl_internal.h
 +++ xen-4.13.0-testing/tools/libxl/libxl_internal.h
-@@ -3849,6 +3849,7 @@ extern const libxl__device_type libxl__v
+@@ -3936,6 +3936,7 @@ extern const libxl__device_type libxl__v
  extern const libxl__device_type libxl__disk_devtype;
  extern const libxl__device_type libxl__nic_devtype;
  extern const libxl__device_type libxl__vtpm_devtype;
