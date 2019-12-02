@@ -18,7 +18,7 @@
 
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           alsa-utils
-Version:        1.1.9
+Version:        1.2.1
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
@@ -30,13 +30,14 @@ Source2:        sound-extra.service
 Source5:        load-sound-modules.sh
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
+BuildRequires:  alsa-topology-devel
 BuildRequires:  automake
 BuildRequires:  fftw3-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       alsa
 # for alsa-info.sh
@@ -95,8 +96,8 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/alsa
 # systemd unit files
 install -c -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
 ln -s ../sound-extra.service %{buildroot}%{_unitdir}/sound.target.wants
-mkdir -p %{buildroot}%{_libexecdir}/systemd/scripts
-install -c -m 0755 %{SOURCE5} %{buildroot}%{_libexecdir}/systemd/scripts
+mkdir -p %{buildroot}%{_prefix}/lib/systemd/scripts
+install -c -m 0755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts
 
 %pre
 %service_add_pre sound-extra.service
@@ -127,7 +128,7 @@ install -c -m 0755 %{SOURCE5} %{buildroot}%{_libexecdir}/systemd/scripts
 %{_udevdir}
 %{_unitdir}/*.service
 %{_unitdir}/sound.target.wants
-%{_libexecdir}/systemd/scripts
+%{_prefix}/lib/systemd/scripts
 %{_localstatedir}/lib/alsa
 
 %files -n alsabat

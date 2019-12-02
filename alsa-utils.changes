@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:38:29 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Replace incorrect usage of %_libexecdir with %_prefix/lib
+
+-------------------------------------------------------------------
+Fri Nov 15 17:46:13 CET 2019 - tiwai@suse.de
+
+- Update to alsa-utils 1.2.1:
+  * axfer: handle -ETIMEDOUT before non-block I/O operation
+  * axfer: code refactoring for a helper function to wait for avail buffer space
+  * axfer: handle -ETIMEDOUT before handle mmap I/O operation
+  * axfer: return ETIMEDOUT when no event occurs after waiter expiration
+  * axfer: fix to return error code when a call of select(2) fails
+  * axfer: return the number of file descriptors for I/O events from select(2) waiter
+  * axfer: test: fix invalid comparison of 64 bit storage in ILP32 data type
+  * axfer: mapper: fix parameter check for demuxer
+  * axfer: remove unused variable warnings
+  * alsamixer: Remove exp10 usage
+  * alsaucm, topology: LDADD cleanups and add support for libatopology
+  * alsaucm: fix the implicit card open
+  * alsaucm, topology: LDADD cleanups and add support for libatopology
+  * alsaucm: do the implicit ucm open only when the command requires it
+  * alsaucm: call snd_config_update_free_global() to make valgrind more happy
+  * amixer: do not double LF for container type
+  * aplay: fix memory leak when setup_chmap() fail 
+
+-------------------------------------------------------------------
 Tue Jun 11 12:30:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
