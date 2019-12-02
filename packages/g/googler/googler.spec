@@ -17,7 +17,7 @@
 
 
 Name:           googler
-Version:        3.9
+Version:        4.0
 Release:        0
 Summary:        Google Search, Google Site Search, Google News from the terminal
 License:        GPL-3.0-or-later
@@ -56,7 +56,8 @@ install -Dm644 auto-completion/zsh/_googler %{buildroot}%{_datadir}/zsh/site-fun
 
 %files
 %defattr(-,root,root)
-%doc LICENSE CHANGELOG README.md
+%license LICENSE
+%doc CHANGELOG README.md
 %{_bindir}/googler
 %{_mandir}/man1/googler.*
 %{_sysconfdir}/bash_completion.d/

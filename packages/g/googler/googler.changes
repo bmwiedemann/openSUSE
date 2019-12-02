@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 02:31:48 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to version 4.0
+    * Switch to modern UA and fix parser to handle new result format
+        - fixes #306 Googler no results on v3.9 (due to google's recent layout changes)
+    * Text-wrapping
+
+-------------------------------------------------------------------
 Thu May 30 03:50:45 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 - Update to version 3.9
