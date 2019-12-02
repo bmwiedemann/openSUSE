@@ -3328,4 +3328,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>750444</requestid>
   </revision>
+  <revision rev="291" vrev="1">
+    <srcmd5>9fcbd3d2b372fc65fa198d6434ccc32f</srcmd5>
+    <version>4.21</version>
+    <time>1575282691</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.21 development release
+  - HTTP proxy configuration through DHCP.
+  - Parameter block support in D3DX9.
+  - A few more dlls converted to PE.
+  - Various bug fixes.
+- updated staging to 4.21</comment>
+    <requestid>752559</requestid>
+  </revision>
 </revisionlist>
