@@ -7,4 +7,12 @@
     <comment>remove %post and remove recommends which are already in the generated spotify rpm. Require rpm-build and createrepo otherwise the script won't function</comment>
     <requestid>723388</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3d211d77a1eb6c6c1b97ba0d2ff2ba7a</srcmd5>
+    <version>2.1.0</version>
+    <time>1575282817</time>
+    <user>dimstar_suse</user>
+    <comment>replace requires createrepo with createrepo_c</comment>
+    <requestid>752659</requestid>
+  </revision>
 </revisionlist>
