@@ -3315,4 +3315,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>741720</requestid>
   </revision>
+  <revision rev="375" vrev="1">
+    <srcmd5>76d6c1efb4f20f81439cf30245c813b5</srcmd5>
+    <version>1.20.6+0</version>
+    <time>1575282497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750543</requestid>
+  </revision>
 </revisionlist>

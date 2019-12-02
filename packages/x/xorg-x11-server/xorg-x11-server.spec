@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,9 +46,9 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.5+24
+Version:        1.20.6+0
 Release:        0
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Summary:        X

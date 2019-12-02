@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 23 13:21:01 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.20.6+0:
+  * xfree86: Test presence of isastream()
+  * present/wnmd: Relax assertion on CRTC on abort_vblank()
+  * os: Don't crash in AttendClient if the client is gone
+  * dix: Call SourceValidate before GetImage
+  * mi: Add a default no-op miSourceValidate
+  * compiler.h: Do not include sys/io.h on ARM with glibc
+  * xfree86: Call ScreenInit for protocol screens before GPU
+    screens
+  * modesetting:
+    - Implement ms_covering_randr_crtc() for ms_present_get_crtc()
+    - Fix ms_covering_crtc() segfault with non-xf86Crtc slave
+
+-------------------------------------------------------------------
 Tue Oct 22 06:54:42 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 1.20.5+24:
