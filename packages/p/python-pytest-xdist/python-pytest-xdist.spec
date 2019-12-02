@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-xdist
-Version:        1.29.0
+Version:        1.30.0
 Release:        0
 Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT
