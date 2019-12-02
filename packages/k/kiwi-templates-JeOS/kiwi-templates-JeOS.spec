@@ -1,7 +1,7 @@
 #
 # spec file for package kiwi-templates-JeOS
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ BuildArch:      noarch
 Summary:        KIWI - openSUSE Tumbleweed JeOS image templates
 License:        MIT
 Group:          System/Management
-Url:            https://www.opensuse.org/
+URL:            https://www.opensuse.org/
 Source01:       config.sh
 Source02:       JeOS.kiwi
 Source03:       editbootinstall_rpi.sh

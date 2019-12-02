@@ -93,14 +93,6 @@ else
 
         systemctl mask systemd-firstboot.service
         systemctl enable jeos-firstboot.service
-
-        # Only RPi has no HW RTC, so avoid bsc#1146374 for other platforms
-        # Do not enable chrony on RPi4 for now, as it waits for
-        # ever to get a not-yet-existing network connection.
-        if [[ "$kiwi_profiles" == *"RaspberryPi" ]]; then
-                # Make sure jeos-firstboot can rely on synced time (bsc#1129730)
-                systemctl enable chrony-wait.service
-        fi
 fi
 
 # Enable firewalld if installed

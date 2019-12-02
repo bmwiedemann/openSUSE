@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:11:12 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Don't enable chrony-wait even on RPi, it might delay booting
+  unacceptably long
+
+-------------------------------------------------------------------
+Wed Nov 20 14:36:54 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Enable one image for RPi3/4
+  * delete obsolete RPi4 target
+
+-------------------------------------------------------------------
+Wed Nov 20 12:59:31 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add systemd-logger and dosfstools
+- Drop salt-minion
+
+-------------------------------------------------------------------
 Fri Oct 25 09:16:36 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
 
 - Add support for RPi4
