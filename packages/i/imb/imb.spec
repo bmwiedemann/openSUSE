@@ -24,13 +24,10 @@
 %define ver 2019.3
 %define _ver 2019_3
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI1
-%undefine DisOMPI2
-%undefine DisOMPI3
-%else
+%if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
-%undefine DisOMPI2
+%endif
+%if !0%{?is_opensuse:1} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
@@ -50,14 +47,6 @@ ExclusiveArch:  do_not_build
 %{bcond_with hpc}
 %undefine c_f_ver
 %global mpi_flavor mpich
-%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
-%endif
-
-%if "%{flavor}" == "gnu-mvapich2-hpc"
-%{bcond_without hpc}
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_flavor mvapich2
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
 %endif
 
@@ -86,6 +75,14 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
 %{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu-mvapich2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%undefine c_f_ver
+%global mpi_flavor mvapich2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
 %endif
 
 %if "%{flavor}" == "gnu-mpich-hpc"
@@ -123,6 +120,156 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %define compiler_family gnu
 %undefine c_f_ver
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu7-mvapich2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor mvapich2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu7-mpich-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_flavor mpich
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 1
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi3-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu8-mvapich2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor mvapich2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu8-mpich-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_flavor mpich
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 1
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi3-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu9-mvapich2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor mvapich2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu9-mpich-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_flavor mpich
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-IO IMB-P2P"
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 1
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi2-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_flavor openmpi
+%define mpi_vers 2
+%define buildtarget "IMB-MPI1 IMB-EXT IMB-P2P"
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi3-hpc"
+%{bcond_without hpc}
+%define compiler_family gnu
+%define c_f_ver 9
 # macro mpi is used by macros for master package
 %global mpi_flavor openmpi
 %define mpi_vers 3
