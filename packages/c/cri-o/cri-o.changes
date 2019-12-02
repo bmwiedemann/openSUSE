@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 27 10:36:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.16.1:
+  * Add manifest list support
+  * Default to system.slice for conmon cgroup
+  * Don't set PodIPs on host network pods
+
+-------------------------------------------------------------------
+Tue Nov 26 13:13:16 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- switch to libcontainers-common requires, as the other two are
+  provided by it already (avant-garde#1056)
+
+-------------------------------------------------------------------
+Tue Nov 19 12:19:06 UTC 2019 - David Cassany <dcassany@suse.com>
+
+- Revert cgroup_manager from systemd to cgroupsfs for SLE15
+ 
+  k8s default is cgroupfs and in can be modified at runtime by the
+  `--kubelet-cgroups` flag. However this flag is deprecated and
+  avoinding it is currently preferred over introducing it. In order
+  to switch to systemd as the cgroups manager in SLE15 further analysis is
+  required to find a suitable configuration strategy. 
+
+-------------------------------------------------------------------
 Fri Nov 15 04:49:31 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Use single service macro invocation
@@ -81,6 +106,11 @@ Thu Sep  5 15:01:52 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
   additional OCI runtime in the configuration.
 - Document the format of the [crio.runtime.runtimes] table entries,
   and remove clutter from the current runc entry.
+
+-------------------------------------------------------------------
+Thu Sep  5 08:35:05 UTC 2019 - David Cassany <dcassany@suse.com>
+
+- Updating to v1.15.1 included de fix for CVE-2019-10214 (bsc#1144065)
 
 -------------------------------------------------------------------
 Thu Sep  5 07:35:05 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
@@ -408,7 +438,7 @@ Wed Jul  3 09:40:18 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 -------------------------------------------------------------------
 Fri May 24 06:51:47 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
-- Add apparmor-parser as dependency
+- Add apparmor-parser as dependency (bsc#1136403)
 
 -------------------------------------------------------------------
 Thu May 16 07:28:09 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -455,6 +485,14 @@ Fri Mar 29 18:27:18 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
   * Fix possible out of bounds access during log parsing
 - Update default configuration file: crio.network.plugin_dir is now
   a list instead of being a string
+
+-------------------------------------------------------------------
+Thu Mar 28 20:23:52 UTC 2019 - Daniel Orf <dorf@suse.com>
+
+- Update go requirements to >= go1.11.3 to fix
+  * bsc#1118897 CVE-2018-16873
+    go#29230 cmd/go: remote command execution during "go get -u"
+  * bsc#1118898 CVE-2018-16874
 
 -------------------------------------------------------------------
 Mon Mar 18 08:25:28 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
@@ -628,6 +666,12 @@ Thu Aug  2 08:52:41 UTC 2018 - vrothberg@suse.com
 - Update cri-o to v1.11.1:
   * server: Don't make additional copy of config.json
   * cri-tools: Use release-1.11 branch
+
+-------------------------------------------------------------------
+Tue Jul 10 06:52:56 UTC 2018 - David Cassany <dcassany@suse.com>
+
+- Update to v1.10.6 included:
+  * bsc#1100838 fix race between container create and cadvisor asking for info
 
 -------------------------------------------------------------------
 Tue Jul 10 05:52:56 UTC 2018 - vrothberg@suse.com

@@ -29,7 +29,7 @@
 %define name_source4 crio-wipe.service
 %define name_source5 crio-shutdown.service
 Name:           cri-o
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -54,15 +54,14 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  golang(API) >= 1.12
+BuildRequires:  sed
 Requires:       patterns-base-apparmor
 Requires:       conntrack-tools
 Requires:       cni
 Requires:       cni-plugins
 Requires:       iproute2
 Requires:       iptables
-Requires:       libcontainers-common
-Requires:       libcontainers-image
-Requires:       libcontainers-storage
+Requires:       libcontainers-common >= 0.0.1
 Requires:       runc >= 1.0.0~rc6
 Requires:       socat
 Requires:       conmon
@@ -93,6 +92,11 @@ This package provides the CRI-O container runtime configuration for kubeadm
 %setup -q
 
 %build
+# Keep cgroupfs as the default cgroup manager for SLE15 builds
+%if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
+sed -i "s|^cgroup_manager = \"systemd\"$|cgroup_manager = \"cgroupfs\"|g" %{SOURCE3}
+%endif
+
 # We can't use symlinks here because go-list gets confused by symlinks, so we
 # have to copy the source to $HOME/go and then use that as the GOPATH.
 export GOPATH=$HOME/go
