@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 30 14:54:32 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert changes file to proper UTF-8 format: new
+  version of RPM are getting strict in interpreting files.
+
+-------------------------------------------------------------------
 Fri May  8 08:40:33 UTC 2015 - coolo@suse.com
 
 - updated to 0.25
    see /usr/share/doc/packages/perl-Test-CPAN-Meta/Changes
 
   0.25    2015-05-06
-          - POD fixes (by Olivier Mengué (DOLMEN)).
+          - POD fixes (by Olivier MenguÃ© (DOLMEN)).
           - removed Test::CPAN::Meta from the recommends list, as CPAN.pm tries
             to install it first. (RT#104023 Steve Hay (SHAY)).
 
