@@ -1086,4 +1086,41 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- move s390-*xml files to main package (bsc#1147071)</comment>
     <requestid>743847</requestid>
   </revision>
+  <revision rev="120" vrev="5">
+    <srcmd5>c77240736a3ca99396c704ae9d86c3b6</srcmd5>
+    <version>3.15.0</version>
+    <time>1575282736</time>
+    <user>dimstar_suse</user>
+    <comment>- remove jit-register-unregister.diff (fails patch not applied check)
+
+- Use _multibuild for creating the client-headers subpackage. As
+  the headers are just copied over, the package has no substantial
+  build dependencies.
+
+
+- remove jit-register-unregister.diff (fails patch not applied check)
+
+- move s390-*xml files to main package (bsc#1147071)
+
+- Use _multibuild for creating the client-headers subpackage. As
+  the headers are just copied over, the package has no substantial
+  build dependencies.
+
+- Move the BSD-style licensed client headers to a subpackage.
+  Packages only requiring e.g. valgrind.h during build no longer
+  need the full valgrind and valgrind-devel packages then.
+- Clean up documentation a bit:
+  + use %build_cond, drop unused docbook_4 BuildRequires
+  + remove the Postscript Valgrind manual in favor of the PDF one.
+- Add GFDL-1.2 to the License, relevant for man pages and Valgrind
+  PDF/HTML manual.
+
+- update to 3.15.0 (fate#327402) (jira SLE-5861):
+  3.15.0 is a feature release with many improvements and the usual collection of
+  bug fixes.
+  This release supports X86/Linux, AMD64/Linux, ARM32/Linux, ARM64/Linux,
+  PPC32/Linux, PPC64BE/Linux, PPC64LE/Linux, S390X/Linux, MIPS32/Linux,
+  MIPS64/Linux, ARM/Android, ARM64/Android, MIPS32/Android, X86/Android,</comment>
+    <requestid>751340</requestid>
+  </revision>
 </revisionlist>

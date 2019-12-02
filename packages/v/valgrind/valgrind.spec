@@ -1,7 +1,7 @@
 #
 # spec file for package valgrind
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,27 @@
 %define glibc_main_version %(getconf GNU_LIBC_VERSION | cut -d' ' -f2 | cut -d. -f1)
 %define glibc_major_version %(getconf GNU_LIBC_VERSION | cut -d' ' -f2 | cut -d. -f2)
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "client-headers"
+%define psuffix  -client-headers-source
+%endif
+
 %bcond_without docs
 
-Name:           valgrind
+Name:           valgrind%{?psuffix}
 Version:        3.15.0
 Release:        0
 Summary:        Memory Management Debugger
 License:        GPL-2.0-or-later AND GFDL-1.2-only
 Group:          Development/Tools/Debuggers
-Url:            http://valgrind.org/
+URL:            http://valgrind.org/
 Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://bugs.kde.org/show_bug.cgi?id=390553
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
-Patch1:         jit-register-unregister.diff
 Patch2:         armv6-support.diff
+%if "%{flavor}" == ""
 %if %{with docs}
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
@@ -59,6 +65,8 @@ BuildRequires:  gcc8-c++-32bit
 BuildRequires:  gcc-c++-32bit
 %endif
 BuildRequires:  glibc-devel-32bit
+%endif
+%else
 %endif
 
 %description
@@ -91,7 +99,7 @@ Requires:       %{name}-client-headers = %{version}
 %description devel
 This package contains the Valgrind header files.
 
-%package client-headers
+%package -n valgrind-client-headers
 Summary:        Header files for for Valgrind
 # The client headers are permissively licensed under a BSD-style
 # license. SPDX License Request filed.
@@ -99,8 +107,9 @@ Summary:        Header files for for Valgrind
 License:        GPL-2.0-or-later AND GFDL-1.2-only
 Group:          Development/Tools/Debuggers
 Provides:       valgrind-devel:%{_includedir}/valgrind/valgrind.h
+BuildArch:      noarch
 
-%description client-headers
+%description -n valgrind-client-headers
 This package contains the BSD-style licensed Valgrind header
 files for inclusion into regular programs. The program can
 detect if it is running under Valgrind and interact with the
@@ -138,13 +147,12 @@ but it has been successfully used to optimize several KDE applications.
 %endif
 
 %prep
-%setup -q
+%setup -q -n valgrind-%{version}
 %patch0 -p1
-# needs porting to 3.11
-##%patch1
 %patch2
 
 %build
+%if "%{flavor}" == ""
 %define _lto_cflags %{nil}
 %if 0%{?suse_version} < 1320
 export CC="%{_bindir}/gcc-8"
@@ -184,8 +192,10 @@ pushd docs
     make FAQ.txt man-pages html-docs
 popd
 %endif
+%endif
 
 %install
+%if "%{flavor}" == ""
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 rm %{buildroot}/%{_libdir}/valgrind/lib*.a # drop unreproducible unused files to fix boo#1118163
 
@@ -197,7 +207,20 @@ if test -d %{buildroot}%{_datadir}/doc/valgrind; then
 fi
 mkdir -p %{buildroot}%{_docdir}/%{name}
 
+rm %{buildroot}/%{_includedir}/valgrind/{valgrind,callgrind,drd,helgrind,memcheck}.h
+
+%else
+install -m 755 -d %{buildroot}/%{_includedir}/valgrind
+install -m 644 -t %{buildroot}/%{_includedir}/valgrind \
+    include/valgrind.h \
+    callgrind/callgrind.h \
+    drd/drd.h \
+    helgrind/helgrind.h \
+    memcheck/memcheck.h
+%endif
+
 %check
+%if "%{flavor}" == ""
 # OBS doesn't have a z13
 %ifnarch s390x
 # has too many spurious failures
@@ -205,27 +228,22 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 #patent pending self test
 VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgrind  /usr/bin/perl -wc tests/vg_regtest
 %endif
+%endif
 
+%if "%{flavor}" == ""
 %files devel
+%dir %{_includedir}/valgrind
 %{_includedir}/valgrind/config.h
 %{_includedir}/valgrind/vki
 %{_includedir}/valgrind/libvex*.h
 %{_includedir}/valgrind/pub_tool*.h
 %{_libdir}/pkgconfig/valgrind.pc
 
-%files client-headers
-%dir %{_includedir}/valgrind
-%{_includedir}/valgrind/callgrind.h
-%{_includedir}/valgrind/drd.h
-%{_includedir}/valgrind/helgrind.h
-%{_includedir}/valgrind/memcheck.h
-%{_includedir}/valgrind/valgrind.h
-
-%files
+%files -n valgrind
 %license COPYING COPYING.DOCS
 %{_bindir}/*
 %doc README* NEWS AUTHORS
-%doc %{_defaultdocdir}/%{name}/
+%doc %{_defaultdocdir}/%{name}/*
 %doc %{_mandir}/*/*
 %dir %{_libdir}/valgrind
 %ifarch aarch64
@@ -345,5 +363,15 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %{_libdir}/valgrind/powerpc-altivec32l.xml
 %{_libdir}/valgrind/powerpc-altivec64l-valgrind.xml
 %{_libdir}/valgrind/powerpc-altivec64l.xml
+
+%else
+%files -n valgrind-client-headers
+%dir %{_includedir}/valgrind
+%{_includedir}/valgrind/callgrind.h
+%{_includedir}/valgrind/drd.h
+%{_includedir}/valgrind/helgrind.h
+%{_includedir}/valgrind/memcheck.h
+%{_includedir}/valgrind/valgrind.h
+%endif
 
 %changelog
