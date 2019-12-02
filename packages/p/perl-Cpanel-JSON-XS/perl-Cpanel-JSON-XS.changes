@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 30 15:10:25 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert changes file to proper UTF-8 format: new
+  version of RPM are getting strict in interpreting files.
+
+-------------------------------------------------------------------
 Wed Nov  6 10:01:34 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 4.17
@@ -390,7 +396,7 @@ Fri Nov 11 06:13:46 UTC 2016 - coolo@suse.com
             http://seriot.ch/parsing_json.html. #72
           - decode with BOM (UTF-8, UTF-16, or UTF-32). For now only UTF-8,
             the others error.
-          - fixed detection of final   as illegal non-whitespace garbage. Fixes
+          - fixed detection of final \0 as illegal non-whitespace garbage. Fixes
             spectest 'n_number_then_00'. #72
           - changed decode of unicode noncharacters between U+FFFD and U+10FFFF
             to the recommended U+FFFD REPLACEMENT CHARACTER, when not in the binary
