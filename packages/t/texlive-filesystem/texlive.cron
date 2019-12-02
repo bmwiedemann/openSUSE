@@ -7,6 +7,9 @@
 # Call texhash
 #
 
+type -f -p kpsewhich >& /dev/null || exit 0
+type -f -p mktexlsr  >& /dev/null || exit 0
+type -f -p find      >& /dev/null || exit 0
 test -r /etc/sysconfig/texlive && . /etc/sysconfig/texlive
 
 OLDIFS=$IFS; IFS=':;'
