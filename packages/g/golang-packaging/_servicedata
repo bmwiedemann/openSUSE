@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/golang-packaging</param>
+              <param name="changesrevision">7898ac7e21212888bd3a2ba014871bb4b48e5c0b</param></service></servicedata>

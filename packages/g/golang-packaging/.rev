@@ -209,4 +209,21 @@
     <comment></comment>
     <requestid>616520</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7aadf621cfff90c1ea3b73e8cdaeb42c</srcmd5>
+    <version>15.0.12</version>
+    <time>1575282422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.12:
+  * Drop ppc64-nopie.patch
+  * golang.sh: integrate ppc64-nopie.patch -buildmode=pie only on ppc64
+  * golang.sh: avoid excessive &quot;rpm --eval...&quot; calls
+  * Install Bazel files in src directory
+  * Replace rpmdev-vercmp by &quot;sort -V&quot; to remove rpmdev-vercmp dependency
+  * Remove s build flag no longer supported in go 1.10 boo#776058
+  * Packaging: improve _service tar_scm declarations add _servicedata
+
+  the spec file. (forwarded request 749020 from jfkw)</comment>
+    <requestid>749021</requestid>
+  </revision>
 </revisionlist>
