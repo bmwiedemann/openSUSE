@@ -125,4 +125,15 @@ Use SUSE- proprietary prefix until Qhull (incidentially, also the Fedora designa
     <comment>1</comment>
     <requestid>510265</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>02bacc0ca93699018a8de97855ff7469</srcmd5>
+    <version>2019.1</version>
+    <time>1575282730</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2019.1 (7.3.2):
+  * A large number of changes, please see included Changes.txt
+- General spec-file cleanups
+</comment>
+    <requestid>752593</requestid>
+  </revision>
 </revisionlist>

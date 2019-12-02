@@ -1,7 +1,7 @@
 #
 # spec file for package qhull
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sonum   7
-%define srcyear 2015
-%define srcver  7.2.0
-%define libver  7_2_0
+%define srcyear 2019
+%define srcver  7.3.2
+%define libver  7_3_2
 Name:           qhull
-Version:        2015.2
+Version:        2019.1
 Release:        0
 Summary:        Computing convex hulls, Delaunay triangulations and Voronoi diagrams
 License:        Qhull
 Group:          Development/Libraries/C and C++
-Url:            http://www.qhull.org
+URL:            http://www.qhull.org
 Source0:        http://www.qhull.org/download/qhull-%{srcyear}-src-%{srcver}.tgz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-Requires:       libqhull%{sonum}-%{libver} = %{version}
 
 %description
 Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram,
@@ -87,13 +86,18 @@ This package contains the header files for the Qhull libraries.
 %install
 %cmake_install
 rm %{buildroot}%{_libdir}/*.a
+# Fixup wrong location
+%if "%{_lib}" != "lib"
+mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
+%endif
 
 %post -n libqhull%{sonum}-%{libver} -p /sbin/ldconfig
 %postun -n libqhull%{sonum}-%{libver} -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
-%doc Announce.txt COPYING.txt README.txt REGISTER.txt
+%license COPYING.txt
+%doc src/Changes.txt
 %{_docdir}/%{name}/
 %{_bindir}/qconvex
 %{_bindir}/qdelaunay
@@ -105,7 +109,7 @@ rm %{buildroot}%{_libdir}/*.a
 
 %files -n libqhull%{sonum}-%{libver}
 %defattr(-,root,root)
-%doc COPYING.txt
+%license COPYING.txt
 %{_libdir}/libqhull.so.%{sonum}
 %{_libdir}/libqhull.so.%{srcver}
 %{_libdir}/libqhull_p.so.%{sonum}
@@ -115,12 +119,13 @@ rm %{buildroot}%{_libdir}/*.a
 
 %files devel
 %defattr(-,root,root)
-%doc COPYING.txt
+%license COPYING.txt
 %{_includedir}/libqhull/
 %{_includedir}/libqhull_r/
 %{_includedir}/libqhullcpp/
 %{_libdir}/libqhull.so
 %{_libdir}/libqhull_p.so
 %{_libdir}/libqhull_r.so
+%{_libdir}/cmake/Qhull
 
 %changelog
