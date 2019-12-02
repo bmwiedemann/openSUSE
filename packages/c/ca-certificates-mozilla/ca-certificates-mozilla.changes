@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:58:01 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- export correct p11kit trust attributes so Firefox detects built in
+  certificates (boo#1154871). Courtesy of Fedora.
+
+-------------------------------------------------------------------
 Sun Aug  4 14:17:45 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.34 state of the Mozilla NSS Certificate store (bsc#1144169)

@@ -38,8 +38,7 @@ URL:            https://www.mozilla.org
 #   accidentally included!
 Source:         http://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/certdata.txt
 Source1:        http://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/nssckbi.h
-# from Fedora. Note: currently contains extra fix to remove quotes. Pending upstream approval.
-Source10:       certdata2pem.py
+Source10:       https://src.fedoraproject.org/rpms/ca-certificates/raw/master/f/certdata2pem.py
 Source11:       %{name}.COPYING
 Source12:       compareoldnew
 BuildRequires:  ca-certificates
@@ -61,7 +60,8 @@ from MozillaFirefox
 %prep
 %setup -qcT
 
-/bin/cp %{SOURCE0} .
+mkdir certs
+ln -s %{SOURCE0} certs
 
 install -m 644 %{SOURCE11} COPYING
 ver=`sed -ne '/NSS_BUILTINS_LIBRARY_VERSION /s/.*"\(.*\)"/\1/p' < "%{SOURCE1}"`
@@ -72,44 +72,29 @@ fi
 
 %build
 export LANG=en_US.UTF-8
+cd certs
 python3 %{SOURCE10}
+cd ..
+(
+  cat <<-EOF
+	# This is a bundle of X.509 certificates of public Certificate
+	# Authorities.  It was generated from the Mozilla root CA list.
+	# These certificates and trust/distrust attributes use the file format accepted
+	# by the p11-kit-trust module.
+	#
+	# Source: nss/lib/ckfw/builtins/certdata.txt
+	# Source: nss/lib/ckfw/builtins/nssckbi.h
+	#
+	# Generated from:
+	EOF
+   awk '$2 = "NSS_BUILTINS_LIBRARY_VERSION" {print "# " $2 " " $3}';
+   echo '#';
+   ls -1 certs/*.tmp-p11-kit | sort | xargs cat
+) > ca-certificates-mozila.trust.p11-kit
 
 %install
-mkdir -p %{buildroot}/%{trustdir_static}/anchors
-set +x
-for i in *.crt; do
-	args=()
-	trust=`sed -n '/^# openssl-trust=/{s/^.*=//;p;q;}' "$i"`
-	distrust=`sed -n '/^# openssl-distrust=/{s/^.*=//;p;q;}' "$i"`
-	alias=`sed -n '/^# alias=/{s/^.*=//;p;q;}' "$i"`
-	args+=('-trustout')
-	for t in $trust; do
-		args+=("-addtrust" "$t")
-	done
-	for t in $distrust; do
-		args+=("-addreject" "$t")
-	done
-	[ -z "$alias" ] || args+=('-setalias' "$alias")
-
-	echo "$i ${args[*]}"
-	fname="%{buildroot}/%{trustdir_static}$d/${i%%:*}.pem"
-	if [ -e "$fname" ]; then
-		fname="${fname%.pem}"
-		j=1
-		while [ -e "$fname.$j.pem" ]; do
-			j=$((j+1))
-		done
-		fname="$fname.$j.pem"
-	fi
-	{
-		grep '^#' "$i"
-		openssl x509 -in "$i" "${args[@]}"
-	} > "$fname"
-done
-for i in *.p11-kit ; do
-	install -m 644 "$i" "%{buildroot}/%{trustdir_static}"
-done
-set -x
+mkdir -p %{buildroot}/%{trustdir_static}
+install -m 644 ca-certificates-mozila.trust.p11-kit "%{buildroot}/%{trustdir_static}/ca-certificates-mozila.trust.p11-kit"
 
 %post
 update-ca-certificates || true
