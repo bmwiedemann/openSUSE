@@ -1,7 +1,7 @@
 #
 # spec file for package multiverse
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,6 @@ Source0:        https://github.com/pveentjer/Multiverse/archive/multiverse-0.7.0
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.mockito:mockito-all)
 BuildArch:      noarch
 
 %description
