@@ -1,7 +1,7 @@
 #
 # spec file for package php7-pear-Net_LDAP2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,23 +22,16 @@ Name:           php7-pear-Net_LDAP2
 Version:        2.2.0
 Release:        0
 Summary:        Object oriented interface for searching and manipulating LDAP-entries
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          Development/Libraries/Other
-Url:            http://pear.php.net/package/%{pear_name}
-Source:         http://download.pear.php.net/package/%{pear_name}-%{version}.tgz
-Source1:        LICENSE
+URL:            https://pear.php.net/package/%{pear_name}
+Source:         https://pear.php.net/get/%{pear_name}-%{version}.tgz
 BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-pear
-Requires:       %{php_name}
 Requires:       %{php_name}-pear
 Requires:       php-ldap
-Provides:       php-pear-%{pear_name} = %{version}
 Provides:       php-pear(%{pear_name}) = %{version}
-Obsoletes:      php5-pear-%{pear_name}
 BuildArch:      noarch
-%if 0%{?suse_version} < 1330
-BuildRequires:  %{php_name}-macros
-%endif
 
 %description
 Net_LDAP2 is the successor of Net_LDAP which is a clone of Perls Net::LDAPobject interface to directory servers.
@@ -52,51 +45,37 @@ With Net_LDAP2 you have:
 Net_LDAP2 layers itself on top of PHP's existing ldap extensions.
 
 %prep
-%setup -q -c
-cp %{SOURCE1} .
+%setup -q -n %{pear_name}-%{version}
+# move package.xml when needed
+[ -f ../package.xml ] &&  mv ../package.xml .
 
 %build
 
 %install
-mv package*.xml %{pear_name}-%{version}
-cd %{pear_name}-%{version}
-
-%{__pear} -v \
-        -d bin_dir=%{_bindir} \
-        -d doc_dir=%{php_peardir}/doc \
-        -d data_dir=%{php_peardir}/data \
-        -d test_dir=%{php_peardir}/tests \
-        install --offline --nodeps -P %{buildroot} package.xml
-
+%{__pear} install --nodeps --offline --packagingroot %{buildroot} package.xml
 install -D -m 0644 package.xml %{buildroot}%{php_pearxmldir}/%{pear_name}.xml
-
-cd ..
-
-# We don't pack tests, remove cruft, move docs into %%_docdir
-mkdir -p doc/
-mv %{buildroot}%{php_peardir}/doc/%{pear_name}/* doc/
-rm -rf %{buildroot}%{php_peardir}/{doc,tests}
-rm -rf %{buildroot}%{php_peardir}/.{filemap,lock,registry,channels,depdb,depdblock}
 
 %{php_pear_gen_filelist}
 
 %post
-# install: $1 = 1
 if [ "$1" = "1" ]; then
-  %{__pear} install --nodeps --soft --force --register-only %{php_pearxmldir}/%{pear_name}.xml
+  # on "rpm -ivh"
+  %{__pear} install --nodeps --soft --force --register-only %{php_pearxmldir}/%{pear_name}.xml || :
 fi
-# upgrade: $1 = 1
 if [ "$1" = "2" ]; then
-  %{__pear} upgrade --offline --register-only %{php_pearxmldir}/%{pear_name}.xml
+  # on "rpm -Uvh"
+  %{__pear} upgrade --offline --register-only %{php_pearxmldir}/%{pear_name}.xml || :
 fi
 
 %postun
-# uninstall: $1 = 0
 if [ "$1" = "0" ]; then
-  %{__pear} uninstall --nodeps --ignore-errors --register-only pear.php.net/%{pear_name}
+  # on "rpm -e"
+  %{__pear} uninstall --nodeps --ignore-errors --register-only pear.php.net/%{pear_name} || :
 fi
 
 %files -f %{name}.files
-%doc LICENSE doc/*
+%docdir %{pear_docdir}
+%exclude %{pear_metadir}/.??*
+%exclude %{pear_testdir}
 
 %changelog

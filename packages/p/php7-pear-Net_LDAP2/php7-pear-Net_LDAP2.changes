@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 29 21:25:36 UTC 2019 - suse+build@de-korte.org
+
+- Use correct macro to reference metadata (boo#1158112)
+- Clean-up spec, use https for downloading
+- Remove LICENSE file
+
+-------------------------------------------------------------------
 Sun Sep 10 06:05:51 UTC 2017 - jweberhofer@weberhofer.at
 
 - Fixed Group
