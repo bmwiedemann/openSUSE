@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 29 21:51:40 UTC 2019 - Andy Li <andy@onthewings.net>
+
+- Update to 4.0.3
+  * hl: profiler API
+  * fixed EnumValue handling in constant propagation with analyzer
+    enabled
+  * fixed compiler crash upon Void items in array declarations
+  * hl: fixed sys.thread.Lock implementation for Hashlink 1.11+
+  * fixed Std.parseInt() for hexadecimals with leading whitespaces
+  * java/cs : fixed Reflect.callMethod(o, method, args) for args
+    not containing optional arguments
+  * cs : fixed Json.stringify for @:struct-annotated classes
+  * cs : fixed bitwise shifts for cs.types.Int64
+  * python : fixed invalid generation of some inlined code blocks
+  * fixed an exception from haxe.zip.Huffman on reading a zip
+  * fixed null-safety checker for field access on a call to inlined
+    function
+
+-------------------------------------------------------------------
 Tue Nov 12 04:10:09 UTC 2019 - Andy Li <andy@onthewings.net>
 
 - Update to 4.0.2
