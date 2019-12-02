@@ -70,4 +70,20 @@
 </comment>
     <requestid>652069</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>02909d55ab21f848c24eb0b2d6864bb3</srcmd5>
+    <version>1.8.2</version>
+    <time>1575282795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release 1.8.2: 
+  * clush: support UTF-8 string encoding with --diff
+  * in some cases, timers were too fast due to an issue in EngineTimer
+  * fix issue in the Slurm group bindings where job ids were used 
+    instead of user names
+  * performance update for xCAT group bindings
+- Update Source to download from GitHub directly
+- Use %license and %fdupes
+- The correct license is LGPL-2.1-or-later</comment>
+    <requestid>752640</requestid>
+  </revision>
 </revisionlist>

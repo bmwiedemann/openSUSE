@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 30 18:18:41 UTC 2019 - Stephane Thiell <sthiell@stanford.edu>
+
+- The correct license is LGPL-2.1-or-later
+
+-------------------------------------------------------------------
+Fri Nov 29 10:12:19 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to upstream release 1.8.2: 
+  * clush: support UTF-8 string encoding with --diff
+  * in some cases, timers were too fast due to an issue in EngineTimer
+  * fix issue in the Slurm group bindings where job ids were used 
+    instead of user names
+  * performance update for xCAT group bindings
+- Update Source to download from GitHub directly
+- Use %license and %fdupes
+
+-------------------------------------------------------------------
 Mon Nov 26 23:16:12 UTC 2018 - Stephane Thiell <sthiell@stanford.edu>
 
 - Update to upstream release 1.8.1:

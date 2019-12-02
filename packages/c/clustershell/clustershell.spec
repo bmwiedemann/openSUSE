@@ -1,7 +1,7 @@
 #
 # spec file for package clustershell
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2017 Stephane Thiell <sthiell@stanford.edu>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,16 +43,17 @@
 %global srcname ClusterShell
 
 Name:           clustershell
-Version:        1.8.1
+Version:        1.8.2
 Release:        0%{?dist}
 Summary:        Python framework for efficient cluster administration
-License:        LGPL-2.1-only
+License:        LGPL-2.1-or-later
 Group:          Productivity/Clustering/Computing
-Url:            http://cea-hpc.github.io/clustershell/
-Source0:        https://files.pythonhosted.org/packages/source/C/%{srcname}/%{srcname}-%{version}.tar.gz
+URL:            http://cea-hpc.github.io/clustershell/
+Source:         https://github.com/cea-hpc/clustershell/archive/v%{version}/%{srcname}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       python2-%{name} = %{version}-%{release}
 Requires:       vim
+BuildRequires:  fdupes
 BuildRequires:  vim
 Provides:       vim-clustershell = %{version}-%{release}
 Obsoletes:      vim-clustershell < 1.7.81-4
@@ -98,7 +99,7 @@ ClusterShell Python 3 module and related command line tools.
 
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
 %{__python3} setup.py build
@@ -145,6 +146,8 @@ install -p -m 0644 doc/extras/vim/ftdetect/clustershell.vim %{buildroot}/%{vimda
 install -p -m 0644 doc/extras/vim/syntax/clushconf.vim %{buildroot}/%{vimdatadir}/syntax/
 install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim %{buildroot}/%{vimdatadir}/syntax/
 
+%fdupes %{buildroot}
+
 %if 0%{?rhel}
 %clean
 rm -rf %{buildroot}
@@ -176,7 +179,8 @@ rm -rf %{buildroot}
 %if 0%{?rhel}
 %defattr(-,root,root,-)
 %endif
-%doc ChangeLog COPYING.LGPLv2.1 README.md
+%license COPYING.LGPLv2.1
+%doc ChangeLog README.md
 %doc doc/examples
 %doc doc/sphinx
 %{_mandir}/man1/clubak.1*
