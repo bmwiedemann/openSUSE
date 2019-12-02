@@ -1,7 +1,7 @@
 #
 # spec file for package eric
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Requires:       python3-qtcharts-qt5
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-xml
 Recommends:     %{name}-api = %{version}
+Recommends:     python3-Markdown
 Recommends:     python3-cx_Freeze
 Recommends:     python3-doc
 Recommends:     python3-enchant >= 1.5.3
@@ -81,6 +82,9 @@ python-eric6-api or python3-eric6-api is needed.
 %setup -q -n %{distname}-%{version}
 
 find . -name \*.py -exec sed -i -e '/^#!\/usr\/bin.*python/d' '{}' \;
+
+# fix a small glitch and remove, when fixed upstream
+sed -i 's/.__checkSpellLanguage(language)/.__checkSpellLanguage()/g' eric/eric6/QScintilla/Editor.py
 
 %build
 # nothing here

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:35:36 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add python-Markdown recommendation (for *.md files preview)
+- Fix a small glitch with sed
+
+-------------------------------------------------------------------
 Wed Nov 13 09:46:24 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix source path
