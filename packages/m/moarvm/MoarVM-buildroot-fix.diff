@@ -1,0 +1,81 @@
+commit 610e05fa0f7e59b673fa3f4a525f940ec8a1fa98
+Author: Stefan Seifert <nine@detonation.org>
+Date:   Sun Dec 1 14:46:34 2019 +0100
+
+    Give upper layers a way to veto serializing a NativeCall's lib_name
+    
+    There are cases where we actually don't want the library's path to get
+    serialized into the bytecode file, e.g. when building a module into a Staging
+    repository for packaging. Give the upper layer a way to make us aware of that
+    by having them set the "serialize_lib_name" attribute on the native callsite.
+
+diff --git a/src/6model/reprs/NativeCall.c b/src/6model/reprs/NativeCall.c
+index 208d7777c..053815411 100644
+--- a/src/6model/reprs/NativeCall.c
++++ b/src/6model/reprs/NativeCall.c
+@@ -69,7 +69,7 @@ static void serialize(MVMThreadContext *tc, MVMSTable *st, void *data, MVMSerial
+ #ifndef HAVE_LIBFFI
+     MVMNativeCallBody *body = (MVMNativeCallBody *)data;
+     MVMint16 i = 0;
+-    MVM_serialization_write_cstr(tc, writer, body->lib_name);
++    MVM_serialization_write_cstr(tc, writer, body->serialize_lib_name ? body->lib_name : NULL);
+     MVM_serialization_write_cstr(tc, writer, body->sym_name);
+     MVM_serialization_write_int(tc, writer, body->convention);
+     MVM_serialization_write_int(tc, writer, body->num_args);
+@@ -156,12 +156,42 @@ static MVMint64 get_int(MVMThreadContext *tc, MVMSTable *st, MVMObject *root, vo
+     return (body->lib_handle ? 1 + (body->jitcode ? 1 : 0) : 0);
+ }
+ 
++void bind_attribute(MVMThreadContext *tc, MVMSTable *st, MVMObject *root, void *data, MVMObject *class_handle, MVMString *name, MVMint64 hint, MVMRegister value, MVMuint16 kind) {
++    MVMNativeCallBody *body = (MVMNativeCallBody *)data;
++    char *c_name = MVM_string_utf8_encode_C_string(tc, name);
++    if (strcmp(c_name, "serialize_lib_name") != 0) {
++        char *waste[] = { c_name, NULL };
++        MVM_exception_throw_adhoc_free(
++            tc,
++            waste,
++            "P6opaque: no such attribute '%s' on type %s when trying to bind a value",
++            c_name,
++            MVM_6model_get_debug_name(tc, class_handle)
++        );
++    }
++    MVM_free(c_name);
++
++    body->serialize_lib_name = value.u8;
++
++}
++
++void initialize(MVMThreadContext *tc, MVMSTable *st, MVMObject *root, void *data) {
++    MVMNativeCallBody *body = (MVMNativeCallBody *)data;
++    body->serialize_lib_name = 1;
++}
++
+ static const MVMREPROps NativeCall_this_repr = {
+     type_object_for,
+     MVM_gc_allocate_object,
+-    NULL, /* initialize */
++    initialize,
+     copy_to,
+-    MVM_REPR_DEFAULT_ATTR_FUNCS,
++    {
++        MVM_REPR_DEFAULT_GET_ATTRIBUTE,
++        bind_attribute,
++        MVM_REPR_DEFAULT_HINT_FOR,
++        MVM_REPR_DEFAULT_IS_ATTRIBUTE_INITIALIZED,
++        MVM_REPR_DEFAULT_ATTRIBUTE_AS_ATOMIC
++    },
+     {
+         MVM_REPR_DEFAULT_SET_INT,
+         get_int,
+diff --git a/src/6model/reprs/NativeCall.h b/src/6model/reprs/NativeCall.h
+index ffcdcf779..150dc924c 100644
+--- a/src/6model/reprs/NativeCall.h
++++ b/src/6model/reprs/NativeCall.h
+@@ -16,6 +16,7 @@ struct MVMNativeCallBody {
+     MVMint16   *arg_types;
+     MVMObject **arg_info;
+     MVMJitCode *jitcode;
++    MVMuint8    serialize_lib_name;
+ };
+ 
+ struct MVMNativeCall {

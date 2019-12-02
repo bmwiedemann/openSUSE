@@ -168,4 +168,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>751856</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>e666de6b553614bdff71f7a309974514</srcmd5>
+    <version>2019.11</version>
+    <time>1575282873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752702</requestid>
+  </revision>
 </revisionlist>
