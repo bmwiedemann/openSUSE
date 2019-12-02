@@ -1,7 +1,7 @@
 #
 # spec file for package parallel-netcdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define libname libpnetcdf
 
 %if "%{flavor}" == ""
-ExclusiveArch: do_not_build
+ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi1" && 0%{?suse_version} < 1550
@@ -47,21 +47,21 @@ Release:        0
 Summary:        High-performance parallel I/O with the NetCDF scientific data format
 License:        NetCDF
 Group:          Productivity/Scientific/Other
-Url:            http://cucis.ece.northwestern.edu/projects/PnetCDF/index.html
+URL:            http://cucis.ece.northwestern.edu/projects/PnetCDF/index.html
 Source0:        http://cucis.ece.northwestern.edu/projects/PnetCDF/Release/%{pname}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE parallel-netcdf-1.6.1-destdir.patch Fix install directories
 Patch0:         parallel-netcdf-1.6.1-destdir.patch
+BuildRequires:  %{mpi_flavor}-devel
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  pkg-config
-BuildRequires:  %{mpi_flavor}-devel
-Requires:       %{mpi_flavor}
 Requires:       %{libname}%{sonum}%{?my_suffix} = %{version}
+Requires:       %{mpi_flavor}
 
 %description
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -73,7 +73,10 @@ working with NetCDF files.
 
 %package -n %{libname}%{sonum}%{my_suffix}
 Summary:        High-performance parallel I/O with the NetCDF scientific data format
+# Unversioned provides to allow e.g. netcdf to pull in pnetcdf with the
+# same flavor
 Group:          System/Libraries
+Provides:       %{libname}%{my_suffix}
 
 %description -n %{libname}%{sonum}%{my_suffix}
 NetCDF is a set of software libraries and data formats for array-oriented
@@ -125,13 +128,12 @@ scientific data.
 
 Parallel netCDF (PnetCDF) maintains file-format compatibility with NetCDF.
 
-This package contains the %{mpi_flavor} versions of the static libraries 
+This package contains the %{mpi_flavor} versions of the static libraries
 for PnetCDF.
 
 %prep
 %setup -q -n %{pname}-%{version}
 %patch0 -p1
-
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -144,7 +146,6 @@ mkdir shared
 pushd shared
 %{my_bindir}/mpif77 -shared -Wl,-soname=%{libname}.so.%{sonum} -o ../%{libname}.so.%{version}
 popd
-
 
 %install
 %make_install
@@ -192,7 +193,7 @@ EOF
 %defattr(-,root,root)
 %license COPYRIGHT
 %doc CREDITS RELEASE_NOTES
-%doc README README.LINUX README.large_files 
+%doc README README.LINUX README.large_files
 %{my_libdir}/*.so.*
 
 %files devel

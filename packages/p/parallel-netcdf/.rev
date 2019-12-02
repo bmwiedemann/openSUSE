@@ -35,4 +35,12 @@ This version fixes the license</comment>
 </comment>
     <requestid>745539</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>802ea42c5be8a164224c366aee5aba7f</srcmd5>
+    <version>1.7.0</version>
+    <time>1575282754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752611</requestid>
+  </revision>
 </revisionlist>
