@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Nov 29 18:34:49 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.8
+  Broker:
+  * Various fixes for `allow_zero_length_clientid` config, where
+    this option was not being set correctly.
+  * Fix incorrect memory tracking causing problems with
+    memory_limit option.
+  * Fix subscription topics being limited to 200 characters instead
+    of 200 hierarchy levels.
+  * Only a single CRL could be loaded at once. This has been fixed.
+  * Fix problems with reloading config when `per_listener_settings`
+    was true.
+  * Fix retained messages with an expiry interval not being expired
+    after being restored from persistence.
+  * Fix messages with an expiry interval being sent without an
+    expiry interval property just before they were expired.
+  * Fix TLS Websockets clients not receiving messages after taking
+    over a previous connection.
+  * Fix MQTT 3.1.1 clients using clean session false, or MQTT 5.0
+    clients using session-expiry-interval set to infinity never
+    expiring, even when the global `persistent_client_expiration`
+    option was set.
+  Client library:
+  * Fix publish properties not being passed to on_message_v5
+    callback for QoS 2 messages.
+  * Fix documentation issues in mosquitto.h.
+  * Document `mosquitto_connect_srv()`.
+  Clients:
+  * Fix duplicate cfg definition in rr_client.
+  * Fix `mosquitto_pub -l` hang when stdin stream ends.
+  * Fix `mosquitto_pub -l` not sending the final line of stdin if
+    it does not end with a new line.
+  * Make documentation for `mosquitto_pub -l` match reality - blank
+    lines are sent as empty messages.
+  * Free memory in `mosquitto_sub` when quiting without having made
+    a successful connection.
+- Drop patch:
+  * mosquitto-fix-pkgconf-path.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Wed Sep 25 20:42:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.7
