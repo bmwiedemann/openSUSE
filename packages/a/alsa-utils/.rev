@@ -943,4 +943,31 @@
     <comment></comment>
     <requestid>709162</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>f2f474831e6a6e6d04aac7ecde82ec50</srcmd5>
+    <version>1.2.1</version>
+    <time>1575282583</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace incorrect usage of %_libexecdir with %_prefix/lib
+
+- Update to alsa-utils 1.2.1:
+  * axfer: handle -ETIMEDOUT before non-block I/O operation
+  * axfer: code refactoring for a helper function to wait for avail buffer space
+  * axfer: handle -ETIMEDOUT before handle mmap I/O operation
+  * axfer: return ETIMEDOUT when no event occurs after waiter expiration
+  * axfer: fix to return error code when a call of select(2) fails
+  * axfer: return the number of file descriptors for I/O events from select(2) waiter
+  * axfer: test: fix invalid comparison of 64 bit storage in ILP32 data type
+  * axfer: mapper: fix parameter check for demuxer
+  * axfer: remove unused variable warnings
+  * alsamixer: Remove exp10 usage
+  * alsaucm, topology: LDADD cleanups and add support for libatopology
+  * alsaucm: fix the implicit card open
+  * alsaucm, topology: LDADD cleanups and add support for libatopology
+  * alsaucm: do the implicit ucm open only when the command requires it
+  * alsaucm: call snd_config_update_free_global() to make valgrind more happy
+  * amixer: do not double LF for container type
+  * aplay: fix memory leak when setup_chmap() fail</comment>
+    <requestid>750712</requestid>
+  </revision>
 </revisionlist>
