@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 12:50:20 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed n_0001-GL-Bump-GL-version-to-9-2.patch, which is no
+  longer needed with xorg-server 1.20.6
+
+-------------------------------------------------------------------
 Thu Nov  7 11:45:05 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - This release is needed for latest Mesa update in order to

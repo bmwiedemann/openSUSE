@@ -29,7 +29,6 @@ Url:            https://github.com/NVIDIA/libglvnd
 # Source is _service generated
 Source:         %name-%version.tar.gz
 Source1:        baselibs.conf
-Patch0:         n_0001-GL-Bump-GL-version-to-9-2.patch
 Patch1:         0001-include-install-GL-headers-when-GL-is-enabled.patch
 Patch2:         0002-Add-a-configure-option-to-disable-glesv1-or-glesv2.patch
 Patch3:         0003-egl-Sync-with-Khronos.patch
@@ -64,7 +63,6 @@ development.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1

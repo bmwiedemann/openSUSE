@@ -218,4 +218,13 @@
   jsc#SLE-8022, jsc#SLE-10182)</comment>
     <requestid>746613</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>c9f4a62d835f854fc07177f62aa59046</srcmd5>
+    <version>1.2.0</version>
+    <time>1575282510</time>
+    <user>dimstar_suse</user>
+    <comment>- removed n_0001-GL-Bump-GL-version-to-9-2.patch, which is no
+  longer needed with xorg-server 1.20.6</comment>
+    <requestid>750546</requestid>
+  </revision>
 </revisionlist>
