@@ -1,0 +1,14 @@
+diff --git a/gnulib-tests/test-canonicalize-lgpl.c b/gnulib-tests/test-canonicalize-lgpl.c
+index 4cec490..c91aa1f 100644
+--- a/gnulib-tests/test-canonicalize-lgpl.c
++++ b/gnulib-tests/test-canonicalize-lgpl.c
+@@ -71,9 +71,6 @@ main (void)
+     ASSERT (result == NULL);
+     ASSERT (errno == ENOENT);
+     errno = 0;
+-    result = canonicalize_file_name (null_ptr ());
+-    ASSERT (result == NULL);
+-    ASSERT (errno == EINVAL);
+   }
+ 
+   /* Check that a non-directory with trailing slash yields NULL.  */
