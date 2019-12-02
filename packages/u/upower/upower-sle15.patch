@@ -1,0 +1,33 @@
+diff -up upower/src/upower.service.in.sle15 upower/src/upower.service.in
+--- upower/src/upower.service.in.sle15	2019-11-21 13:17:05.087461073 +0100
++++ upower/src/upower.service.in	2019-11-21 14:08:28.107317367 +0100
+@@ -14,13 +14,13 @@ ProtectSystem=strict
+ ProtectKernelTunables=false
+ ProtectControlGroups=true
+ ReadWritePaths=@historydir@
+-StateDirectory=upower
++#StateDirectory=upower
+ ProtectHome=true
+ PrivateTmp=true
+ 
+ # Network
+ # PrivateNetwork=true would block udev's netlink socket
+-IPAddressDeny=any
++#IPAddressDeny=any
+ RestrictAddressFamilies=AF_UNIX AF_NETLINK
+ 
+ # Execute Mappings
+@@ -39,10 +39,10 @@ NoNewPrivileges=true
+ CapabilityBoundingSet=
+ 
+ # System call interfaces
+-LockPersonality=yes
++#LockPersonality=yes
+ SystemCallArchitectures=native
+-SystemCallFilter=@system-service
+-SystemCallFilter=ioprio_get
++#SystemCallFilter=@system-service
++#SystemCallFilter=ioprio_get
+ 
+ # Namespaces
+ PrivateUsers=yes
