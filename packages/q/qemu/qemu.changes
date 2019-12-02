@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Nov 27 03:10:09 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to v4.2.0-rc3: See http://wiki.qemu.org/ChangeLog/4.2
+* Patches dropped (upstream unless otherwise noted):
+  ati-add-edid-support.patch
+  ati-vga-add-rage128-edid-support.patch
+  ati-vga-fix-ati_read.patch
+  ati-vga-make-i2c-register-and-bits-confi.patch
+  ati-vga-make-less-verbose.patch
+  ati-vga-try-vga-ddc-first.patch
+  Disable-Waddress-of-packed-member-for-GC.patch
+  hdata-vpd-fix-printing-char-0x00.patch
+  target-i386-add-PSCHANGE_NO-bit-for-the-.patch
+  target-i386-Export-TAA_NO-bit-to-guests.patch
+  vbe-add-edid-support.patch
+  vga-add-ati-bios-tables.patch
+  vga-add-atiext-driver.patch
+  vga-make-memcpy_high-public.patch
+  vga-move-modelist-from-bochsvga.c-to-new.patch
+* Patches added:
+  Enable-cross-compile-prefix-for-C-compil.patch
+  ensure-headers-included-are-compatible-w.patch
+  roms-Makefile-enable-cross-compile-for-b.patch
+* Add qemu-ui-spice-app package containing ui-spice-app.so
+* Add qemu-microvm package containing bios-microvm.bin
+- Add descriptors for the 128k and 256k SeaBios firmware images
+- For the record, the following issues reported for SUSE SLE15-SP1
+  are either fixed in this current package, or are otherwise not an
+  issue: bsc#1079730 bsc#1098403 bsc#1111025 bsc#1128106 bsc#1133031
+  bsc#1134883 bsc#1135210 bsc#1135902 bsc#1136540 bsc#1136778
+  bsc#1138534 bsc#1140402 bsc#1143794 bsc#1145379 bsc#1144087
+  bsc#1145427 bsc#1145436 bsc#1145774 bsc#1146873 bsc#1149811
+  bsc#1152506 bsc#1155812 bsc#1156642 CVE-2018-12207 CVE-2019-5008
+  CVE-2019-11135 CVE-2019-12068 CVE-2019-12155 CVE-2019-13164
+  CVE-2019-14378 CVE-2019-15890, and the following feature requests
+  are satisfied by this package: fate#327410 fate#327764 fate#327796
+  jira-SLE-4883 jira-SLE-6132 jira-SLE-6237 jira-SLE-6754
+
+-------------------------------------------------------------------
+Tue Nov 19 19:13:41 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Expose pschange-mc-no "feature", indicating CPU does not have
+  the page size change machine check vulnerability (CVE-2018-12207
+  bsc#1155812)
+  target-i386-add-PSCHANGE_NO-bit-for-the-.patch
+- Expose taa-no "feature", indicating CPU does not have the
+  TSX Async Abort vulnerability. (CVE-2019-11135 bsc#1152506)
+  target-i386-Export-TAA_NO-bit-to-guests.patch
+Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
+Fri Nov 15 15:45:45 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to v4.1.1, a stable, bug-fix-only release
+* Besides incorporating the following fixes we already carried, it
+  includes about the same number of other, similar type fixes
+  which we hadn't yet incorporated.
+* Patches dropped (subsumed by stable update):
+  block-Add-bdrv_co_get_self_request.patch
+  block-create-Do-not-abort-if-a-block-dri.patch
+  block-file-posix-Let-post-EOF-fallocate-.patch
+  block-file-posix-Reduce-xfsctl-use.patch
+  block-io-refactor-padding.patch
+  blockjob-update-nodes-head-while-removin.patch
+  block-Make-wait-mark-serialising-request.patch
+  block-nfs-tear-down-aio-before-nfs_close.patch
+  coroutine-Add-qemu_co_mutex_assert_locke.patch
+  curl-Check-completion-in-curl_multi_do.patch
+  curl-Handle-success-in-multi_check_compl.patch
+  curl-Keep-pointer-to-the-CURLState-in-CU.patch
+  curl-Keep-socket-until-the-end-of-curl_s.patch
+  curl-Pass-CURLSocket-to-curl_multi_do.patch
+  curl-Report-only-ready-sockets.patch
+  hw-arm-boot.c-Set-NSACR.-CP11-CP10-for-N.patch
+  hw-core-loader-Fix-possible-crash-in-rom.patch
+  make-release-pull-in-edk2-submodules-so-.patch
+  memory-Provide-an-equality-function-for-.patch
+  mirror-Keep-mirror_top_bs-drained-after-.patch
+  pr-manager-Fix-invalid-g_free-crash-bug.patch
+  qcow2-bitmap-Fix-uint64_t-left-shift-ove.patch
+  qcow2-Fix-corruption-bug-in-qcow2_detect.patch
+  qcow2-Fix-QCOW2_COMPRESSED_SECTOR_MASK.patch
+  qcow2-Fix-the-calculation-of-the-maximum.patch
+  roms-Makefile.edk2-don-t-pull-in-submodu.patch
+  s390-PCI-fix-IOMMU-region-init.patch
+  s390x-tcg-Fix-VERIM-with-32-64-bit-eleme.patch
+  target-alpha-fix-tlb_fill-trap_arg2-valu.patch
+  target-arm-Don-t-abort-on-M-profile-exce.patch
+  target-arm-Free-TCG-temps-in-trans_VMOV_.patch
+  util-iov-introduce-qemu_iovec_init_exten.patch
+  vhost-Fix-memory-region-section-comparis.patch
+  vpc-Return-0-from-vpc_co_create-on-succe.patch
+Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-4.1
+
+-------------------------------------------------------------------
 Fri Nov  8 15:02:16 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix %arm builds

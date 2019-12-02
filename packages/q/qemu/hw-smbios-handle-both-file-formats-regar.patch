@@ -16,10 +16,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 39 insertions(+), 4 deletions(-)
 
 diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 7bcd67b098e91a0e724b77b224c1..44e62c2a627195d71ac569e9de49 100644
+index 11d476c4a2cbdabc546c02b4f076..570ffa3acfa48b3721bdc578ee57 100644
 --- a/hw/smbios/smbios.c
 +++ b/hw/smbios/smbios.c
-@@ -965,6 +965,7 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+@@ -964,6 +964,7 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
          struct smbios_structure_header *header;
          int size;
          struct smbios_table *table; /* legacy mode only */
@@ -27,7 +27,7 @@ index 7bcd67b098e91a0e724b77b224c1..44e62c2a627195d71ac569e9de49 100644
  
          qemu_opts_validate(opts, qemu_smbios_file_opts, &err);
          if (err) {
-@@ -979,11 +980,21 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+@@ -978,11 +979,21 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
          }
  
          /*
@@ -53,7 +53,7 @@ index 7bcd67b098e91a0e724b77b224c1..44e62c2a627195d71ac569e9de49 100644
          header = (struct smbios_structure_header *)(smbios_tables +
                                                      smbios_tables_len);
  
-@@ -998,6 +1009,19 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+@@ -997,6 +1008,19 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
                         header->type);
              return;
          }
@@ -73,7 +73,7 @@ index 7bcd67b098e91a0e724b77b224c1..44e62c2a627195d71ac569e9de49 100644
          set_bit(header->type, have_binfile_bitmap);
  
          if (header->type == 4) {
-@@ -1018,6 +1042,17 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+@@ -1017,6 +1041,17 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
           *       delete the one we don't need from smbios_set_defaults(),
           *       once we know which machine version has been requested.
           */

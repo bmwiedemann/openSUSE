@@ -23,7 +23,7 @@ index e527eb168e9ce7c3944094ec6701..fd376eac71f73e6366a9e17a1c51 100755
  #  Migration Stream Analyzer
  #
 diff --git a/scripts/vmstate-static-checker.py b/scripts/vmstate-static-checker.py
-index d3467288dcc5dd2f7274576262f7..2046b1feddb4c225c8f3bee080ac 100755
+index f8b7b8f77252f2c03d6d7db9dc60..754159069dfae6838edaac14856f 100755
 --- a/scripts/vmstate-static-checker.py
 +++ b/scripts/vmstate-static-checker.py
 @@ -1,4 +1,4 @@

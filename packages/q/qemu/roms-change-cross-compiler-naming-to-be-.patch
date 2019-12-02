@@ -8,7 +8,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/roms/edk2-funcs.sh b/roms/edk2-funcs.sh
-index a9fae7ee891bc4cadbe1a3cb3f54..d70bed1729cf0a3ce41ab72df78e 100644
+index 3f4485b201f1f6f8cff47a9933da..5a3a8d885c9138d3c857d8b1e6d0 100644
 --- a/roms/edk2-funcs.sh
 +++ b/roms/edk2-funcs.sh
 @@ -113,7 +113,15 @@ qemu_edk2_get_cross_prefix()

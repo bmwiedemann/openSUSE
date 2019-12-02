@@ -13,7 +13,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qemu-iotests/common.qemu b/tests/qemu-iotests/common.qemu
-index 8d2021a7eb0c7085802c6f4c0597..e19ea76fff5789e4bc5b925bdcb9 100644
+index de680cf1c7c92e50b82aa2bc0262..4f2557cc568beed038223af7660b 100644
 --- a/tests/qemu-iotests/common.qemu
 +++ b/tests/qemu-iotests/common.qemu
 @@ -76,7 +76,7 @@ _timed_wait_for()

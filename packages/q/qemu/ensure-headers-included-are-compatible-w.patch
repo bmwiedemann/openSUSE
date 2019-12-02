@@ -1,0 +1,52 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 1 Nov 2019 19:32:57 -0600
+Subject: ensure headers included are compatible with freestanding mode
+
+Certain standard headers are designated for use in freestanding mode
+while others are prohibited. To conform to these rules, use <stdint.h>
+instead of <inttypes.h> as well as switch one <string.h> reference to
+the "string.h" implemented in project.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ include/bios.h | 2 +-
+ malloc.c       | 2 +-
+ pci.c          | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/roms/qboot/include/bios.h b/roms/qboot/include/bios.h
+index f36638b977864c220bf3ed9a612f..7f8f677671d7b47e7c07f800646c 100644
+--- a/roms/qboot/include/bios.h
++++ b/roms/qboot/include/bios.h
+@@ -1,7 +1,7 @@
+ #ifndef BIOS_H_
+ #define BIOS_H_
+ 
+-#include <inttypes.h>
++#include <stdint.h>
+ #include <stddef.h>
+ #include <stdbool.h>
+ 
+diff --git a/roms/qboot/malloc.c b/roms/qboot/malloc.c
+index 8738373b774358425b2767fc7e9f..bd0ac0f23ee1e3c4a8f5e003ff1d 100644
+--- a/roms/qboot/malloc.c
++++ b/roms/qboot/malloc.c
+@@ -1,4 +1,4 @@
+-#include <inttypes.h>
++#include <stdint.h>
+ #include "string.h"
+ #include "bios.h"
+ 
+diff --git a/roms/qboot/pci.c b/roms/qboot/pci.c
+index 65c9e81793ab7aad9b5d1679e78e..63ebda6a0580463ea2b562317cec 100644
+--- a/roms/qboot/pci.c
++++ b/roms/qboot/pci.c
+@@ -1,7 +1,7 @@
+ #include "bios.h"
+ #include "ioport.h"
+ #include "pci.h"
+-#include <string.h>
++#include "string.h"
+ 
+ static uint16_t addend;
+ static uint8_t bus, bridge_head;

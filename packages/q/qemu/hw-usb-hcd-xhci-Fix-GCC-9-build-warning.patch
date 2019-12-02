@@ -28,10 +28,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index 5894a186633414970fe748dbd9f4..47ea8dd3a5f6a09e361f0f59c7b9 100644
+index 80988bb305a149f2974d329576a0..00b59bee44f4780727ca0279ced5 100644
 --- a/hw/usb/hcd-xhci.c
 +++ b/hw/usb/hcd-xhci.c
-@@ -3324,6 +3324,7 @@ static void usb_xhci_init(XHCIState *xhci)
+@@ -3330,6 +3330,7 @@ static void usb_xhci_init(XHCIState *xhci)
      usb_bus_new(&xhci->bus, sizeof(xhci->bus), &xhci_bus_ops, dev);
  
      for (i = 0; i < usbports; i++) {

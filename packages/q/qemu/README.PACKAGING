@@ -5,36 +5,32 @@ you make be acceptable to the package maintainers.
 The qemu.spec file is generated from a qemu.spec.in template, so to make changes
 to the spec file (besides the script generated patch references), you'll need to
 edit the template, not the spec file. The spec file patch references are inserted
-by scripts, which are described below.
+by a script as described below.
 
 If you are not modifying any patches or their order, but just need to update the
 spec file from a changed template, run 'bash ./update_git.sh refresh'.
 
 If the set of patches is being modified, including their order, you will want to
 first run 'bash ./update_git.sh pkg2git', which makes the current package patch
-queue available in a local git branch named frombundle (see confi.sh for the
+queue available in a local git branch named frombundle (see config.sh for the
 locations). This set of patches comes from a "bundle of git bundles", the
 bundles.tar.xz file, which is included as a package source file. You will then
-create an altered patch queue in the $GIT_BRANCH branch ( again,see config.sh),
-and use the frombundle branch as the starting point for your changes (eg perhaps
-start by doing git reset --hard frombundle, then cherry-pick upstream patches
-from there). Once you have the patch queue ready to go run 'bash ./update_git.sh
-git2pkg' which  updates the bunndles.tar.xz file, as well as the spec and patch
-files.
+create an altered patch queue in the branch which corresponds to this release
+(eg: opensuse-4.2), using the frombundle branch as the starting point for your
+changes (eg perhaps start by doing git reset --hard frombundle, then cherry-pick
+upstream patches from there). Once you have the patch queue ready to go run
+'bash ./update_git.sh git2pkg' which updates the bundles.tar.xz file, as well as
+the spec and patch files.
+
+The maintainer and automation use another workflow mode dealing with packaging
+the latest upstream qemu. See 'LATEST' references in the scripts for details.
 
 ** SPECIAL NOTE ABOUT CURRENT STATUS ***
-The current status as of 03 Oct 2019 is that for this incarnation of qemu
+The current status as of 31 Oct 2019 is that for this incarnation of qemu
 packaging, the previous workflow which relied on the patches being in a shared
 git repo on github or gitlab is no longer supported. This new bundle based
 workflos is still a work in progress.
 If it isn't working right, please contact Bruce Rogers <brogers@suse.com>.
-
-Also note that qemu now takes advantage of the MultiBuild feature of the Build
-Service. No longer do the qemu-linux-user and qemu-testsuite packages have build
-service links to the qemu package, but instead are generated straight from the
-main qemu spec file via the use of a _multibuild file which identifies those
-package variants.
-- Bruce Rogers
 *** END SPECIAL NOTE ***
 
 Additional Notes:

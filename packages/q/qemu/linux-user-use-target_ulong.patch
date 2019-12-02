@@ -16,10 +16,10 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
  2 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index aac0334627003fbf375dfd4c88d0..abd0b4569699ff87d015c951e651 100644
+index f6f5fe5fbb553c151cb57146350c..b45b68221434e29636bb34c9f0b0 100644
 --- a/linux-user/qemu.h
 +++ b/linux-user/qemu.h
-@@ -207,10 +207,10 @@ abi_long memcpy_to_target(abi_ulong dest, const void *src,
+@@ -206,10 +206,10 @@ abi_long memcpy_to_target(abi_ulong dest, const void *src,
  void target_set_brk(abi_ulong new_brk);
  abi_long do_brk(abi_ulong new_brk);
  void syscall_init(void);
@@ -35,10 +35,10 @@ index aac0334627003fbf375dfd4c88d0..abd0b4569699ff87d015c951e651 100644
  extern __thread CPUState *thread_cpu;
  void cpu_loop(CPUArchState *env);
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 3bb2c8921fc203264bbc0a37fe1d..8aa653262154326beced64bbe782 100644
+index 243ec2a1e3bde8e6b3ac48989554..61d976cca146a6deb2d74c95ec59 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -7264,10 +7264,10 @@ static int host_to_target_cpu_mask(const unsigned long *host_mask,
+@@ -7374,10 +7374,10 @@ static int host_to_target_cpu_mask(const unsigned long *host_mask,
   * of syscall results, can be performed.
   * All errnos that do_syscall() returns must be -TARGET_<errcode>.
   */
@@ -53,7 +53,7 @@ index 3bb2c8921fc203264bbc0a37fe1d..8aa653262154326beced64bbe782 100644
  {
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
-@@ -10013,7 +10013,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -10125,7 +10125,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
               */
              ret = -TARGET_EINVAL;
              if (cpu_isar_feature(aa64_sve, env_archcpu(cpu_env))
@@ -62,7 +62,7 @@ index 3bb2c8921fc203264bbc0a37fe1d..8aa653262154326beced64bbe782 100644
                  CPUARMState *env = cpu_env;
                  ARMCPU *cpu = env_archcpu(env);
                  uint32_t vq, old_vq;
-@@ -11993,10 +11993,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -12116,10 +12116,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
      return ret;
  }
  

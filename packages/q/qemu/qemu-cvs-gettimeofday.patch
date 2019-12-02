@@ -11,10 +11,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 8367cb138dfe075e06ca455009cc..17914fadfc9f3390d4b8ab8d74a6 100644
+index 171c0caef3a191c861e76493ccfc..25b0f3bba38b8629cb4bc027be96 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8446,6 +8446,9 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -8558,6 +8558,9 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
      case TARGET_NR_gettimeofday:
          {
              struct timeval tv;

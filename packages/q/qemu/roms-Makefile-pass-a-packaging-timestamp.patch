@@ -20,7 +20,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/roms/Makefile b/roms/Makefile
-index 775c963f9dd55bfa17772afb73f4..6efeb1ef7c38fb71556b762d6bf1 100644
+index 28e1e557b0763cabe6da3d07602d..091ad51c1e91a2b9709c5810e562 100644
 --- a/roms/Makefile
 +++ b/roms/Makefile
 @@ -51,6 +51,12 @@ SEABIOS_EXTRAVERSION="-prebuilt.qemu.org"
@@ -33,10 +33,10 @@ index 775c963f9dd55bfa17772afb73f4..6efeb1ef7c38fb71556b762d6bf1 100644
 +#  build.
 +PACKAGING_TIMESTAMP = $(shell date -r ../VERSION +%s)
 +
- default:
+ default help:
  	@echo "nothing is build by default"
  	@echo "available build targets:"
-@@ -99,7 +105,7 @@ build-seabios-config-%: config.%
+@@ -100,7 +106,7 @@ build-seabios-config-%: config.%
  
  .PHONY: sgabios skiboot
  sgabios:
@@ -45,7 +45,7 @@ index 775c963f9dd55bfa17772afb73f4..6efeb1ef7c38fb71556b762d6bf1 100644
  	cp sgabios/sgabios.bin ../pc-bios
  
  
-@@ -119,11 +125,13 @@ efi-rom-%: build-pxe-roms build-efi-roms edk2-basetools
+@@ -120,11 +126,13 @@ efi-rom-%: build-pxe-roms build-efi-roms edk2-basetools
  
  build-pxe-roms:
  	$(MAKE) -C ipxe/src CONFIG=qemu \
@@ -59,7 +59,7 @@ index 775c963f9dd55bfa17772afb73f4..6efeb1ef7c38fb71556b762d6bf1 100644
  		CROSS_COMPILE=$(x86_64_cross_prefix) \
  		$(patsubst %,bin-i386-efi/%.efidrv,$(pxerom_targets)) \
  		$(patsubst %,bin-x86_64-efi/%.efidrv,$(pxerom_targets))
-@@ -145,7 +153,9 @@ edk2-basetools:
+@@ -147,7 +155,9 @@ edk2-basetools:
  		EXTRA_LDFLAGS='$(EDK2_BASETOOLS_LDFLAGS)'
  
  slof:

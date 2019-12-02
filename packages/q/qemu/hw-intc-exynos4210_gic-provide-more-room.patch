@@ -41,10 +41,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-index e37d457fcf3ae8f37ae3c4047161..640f146a50af42ccd03aa18786f2 100644
+index a1b699b6babc3105bfd4ad9a8383..17317c961caa9a09c476e9ecbd3f 100644
 --- a/hw/intc/exynos4210_gic.c
 +++ b/hw/intc/exynos4210_gic.c
-@@ -288,8 +288,8 @@ static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
+@@ -290,8 +290,8 @@ static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
      const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
      const char dist_prefix[] = "exynos4210-gic-alias_dist";

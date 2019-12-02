@@ -14,10 +14,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/exec.c b/exec.c
-index 3e78de3b8f8bb1914811a7965377..d2183f58816f53f15ef64e844291 100644
+index ffdb5185353bdbacc613d4730228..0d0c0618bb70f9747c71048f5cde 100644
 --- a/exec.c
 +++ b/exec.c
-@@ -2339,11 +2339,13 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,
+@@ -2291,11 +2291,13 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,
          return NULL;
      }
  

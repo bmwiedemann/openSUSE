@@ -27,10 +27,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/migration/savevm.c b/migration/savevm.c
-index 79ed44d47576ff2942da04827eae..106e6e640e87c99b655aca3a5d96 100644
+index a71b930b91f71ed9763fcb07b525..c5cc5fed211e693723538e19850b 100644
 --- a/migration/savevm.c
 +++ b/migration/savevm.c
-@@ -2693,7 +2693,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
+@@ -2774,7 +2774,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
           * So call bdrv_inactivate_all (release locks) here to let the other
           * side of the migration take controle of the images.
           */

@@ -1,0 +1,30 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 1 Nov 2019 19:41:52 -0600
+Subject: Enable cross compile prefix for C compiler invocation
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/roms/qboot/Makefile b/roms/qboot/Makefile
+index adbf1b319e4a7bee78e2f95c5e51..cdde20fc37b13a1877668cd20e2f 100644
+--- a/roms/qboot/Makefile
++++ b/roms/qboot/Makefile
+@@ -1,3 +1,4 @@
++CROSS_COMPILE ?=
+ obj-y = code16.o entry.o main.o string.o printf.o cstart.o fw_cfg.o
+ obj-y += linuxboot.o malloc.o tables.o hwsetup.o pci.o code32seg.o
+ obj-y += mptable.o
+@@ -25,9 +26,9 @@ autodepend-flags = -MMD -MF .deps/cc-$(patsubst %/,%,$(dir $*))-$(notdir $*).d
+ 
+ .PRECIOUS: %.o
+ %.o: %.c
+-	$(CC) $(CFLAGS) $(BIOS_CFLAGS) $($@-cflags) -c -s $< -o $@
++	$(CROSS_COMPILE)$(CC) $(CFLAGS) $(BIOS_CFLAGS) $($@-cflags) -c -s $< -o $@
+ %.o: %.S
+-	$(CC) $(CFLAGS) $(BIOS_CFLAGS) -c -s $< -o $@
++	$(CROSS_COMPILE)$(CC) $(CFLAGS) $(BIOS_CFLAGS) -c -s $< -o $@
+ 
+ bios.bin.elf: $(obj-y) flat.lds
+ 	$(LD) -T flat.lds -o bios.bin.elf $(obj-y)

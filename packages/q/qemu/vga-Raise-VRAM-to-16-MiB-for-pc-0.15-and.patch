@@ -24,10 +24,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 25 insertions(+)
 
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index c2280c72effb7e2a4dd5aec1eed4..53ee84b542496cbdfebb2eebaa1c 100644
+index 1bd70d1abbc434edb8b5ca69ee5d..d760d3589607daf4997ea76854c4 100644
 --- a/hw/i386/pc_piix.c
 +++ b/hw/i386/pc_piix.c
-@@ -800,6 +800,31 @@ static void pc_i440fx_0_15_machine_options(MachineClass *m)
+@@ -804,6 +804,31 @@ static void pc_i440fx_0_15_machine_options(MachineClass *m)
  {
      static GlobalProperty compat[] = {
          PC_CPU_MODEL_IDS("0.15")

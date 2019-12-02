@@ -8,6 +8,26 @@
 #
 #   (default is git2pkg)
 
+# TODO NOTES:
+
+# after ensuring current status of local repo is clean, incl submodules, we checkout master+submodules, then also ensure they're clean, then checkout the commit or tag corresponding to latest / stable-release + submodules (but don't bother to verift that's clean) - so this is a detached HEAD for stable-release and IS master (almost certainly) for LATEST. WOW - is that what we need to be doing!?!?! At least it seems to be working for the cases I've seen!!!!
+# initbundle operates from the current checked out state of the local superproject, to get the submodule ids - CORRECT!!!!
+# the LATEST processing of cloning the local repo, clones master - but perhaps it doesn't matter? because it adds upstream as a remote and probably gets most things from there? INVESTIGATE!!!!!!!!!!!!!!!!!!!1
+# bundle2local checks out master in local repo to ensure we're off the frombundle branch (doesn't seem needed the way the script currently is). It fetches the bundle's head (FETCH_HEAD) REQUIRING that the base commit be present (which it seems to be. Then it creates the frombundle branch, with the current FETCH_HEAD (SAME AS IN BUNDLE, RIGHT?)
+# The LATEST's rebase loop checks out the frombundle branch (with force), so we are now OFF of the "correct checkout" that happened at the beginning, it DELETES the GIT_BRANCH (so in this case it DIDN'T MATTER WHAT WAS THERE WHEN SCRIPT STARTED !!!!!!! WARNING !!!!!, branches off of the frombundle branch (w/checkout), then rebases that (which came from bundle) onto the current superproject, or submodule commit id.
+# At this point, if the GIT_BRANCH rebased ok, it's ready for making a patchqueue, out of, if the rebase failed, it's time to manually fix that.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+
+# LATEST processing implies updated upstream/master IS the right thing
+# HOW do we protect against a bad bundle being created (we do have the build service's tracking of previous files - is that sufficient?
+# initbundle - what does it need? Currently we take the default branch in local superproject for the superproject and submodule commit ids, so it needs to be right! (ie which ever branch it is (DECIDE!), make it the RIGHT ONE for this release. It takes the commits from the $GIT_BUNDLE branch of each of superproject and submodule repos, which are beyond above found commits. IT CERTIANLY SEEMS REASONABLE THAT WE WOULD HAVE THE $$GIT_BRANCH BRANCH BE THE DEFAULT AND CORRECT BUT HOW DO WE GUARANTEE THATS OK? GIVEN OUR REQS HERE QEMU_VERSION CAN BE GRABBED HERE IN LOCAL SUPERPROJECT RIGHT AWAY!
+# bundle2local - what does it need? This checks out local master just to get off of frombundle (could have been $GIT_BRANCH as well) No other req's
+# bundle2spec - what does it need? THIS SHOULD HAVE LATEST SPLIT OUT!!!! We allow this alone, so see what setup it alone needs - for this one particularly, we don't want to REQUIRE local repo. FOR NOW I ASSUME THE RIGHT THING IS CHECKED OUT!
+# 
+# SEEMS WE SHOULD NOT,NOT,NOT require user to have previously updated, or set local repo a certain way, but for us to enforce it or actually do it
+# TODO: confirm local repo present, correct remotes, correct local branches, somehow validate local branch content against remote, ...
+# 
+# In both cases we DO require the $GIT_BRANCH to exist, and should confirm that the appropriate upstream basis commit is indeed part of that. In the LATEST case, we can treat master as a source for initial current upstream.
+
 set -e
 
 source ./config.sh
@@ -52,6 +72,7 @@ REQUIRED_LOCAL_REPO_MAP=(
     ~/git/qemu-sgabios
     ~/git/qemu-skiboot
     ~/git/qemu-keycodemapdb
+    ~/git/qemu-qboot
 )
 
 # Validate that all the local repos that we currently have patches in are available
@@ -462,8 +483,8 @@ rm -rf $BUNDLE_DIR
     echo "QEMU source version: $SOURCE_VERSION"
     echo "QEMU version extra: $VERSION_EXTRA"
 
-    SEABIOS_VERSION=$(tar JxfO qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz \
-        qemu-$SOURCE_VERSION/roms/seabios/.version | cut -d '-' -f 2)
+    SEABIOS_VERSION=${SEABIOS_VERSION:-$(tar JxfO qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz \
+        qemu-$SOURCE_VERSION/roms/seabios/.version | cut -d '-' -f 2)}
 
     for package in qemu; do
         while IFS= read -r line; do
@@ -507,18 +528,16 @@ rm -rf $BUNDLE_DIR
                         echo "%patch$NUM -p1"
                     fi
                 done
-            elif [ "$line" = "QEMU_VERSION" ]; then
+            elif [ "$line" = "INSERT_VERSIONING" ]; then
                 echo "%define qemuver $QEMU_VERSION$VERSION_EXTRA"
                 echo "%define srcver  $SOURCE_VERSION$VERSION_EXTRA"
-                echo "Version:        %qemuver"
+                echo "%define sbver   $SEABIOS_VERSION"
             elif [[ "$line" =~ ^Source: ]]; then
                 echo "$line"
                 if [ ${#QEMU_TARBALL_SIG[@]} -eq 1 ]; then
 # We assume the signature file corresponds - just add .sig
                     echo "$line.sig"|sed 's/^Source:  /Source99:/'
                 fi
-            elif [ "$line" = "SEABIOS_VERSION" ]; then
-                echo "Version:        $SEABIOS_VERSION"
             else
                 echo "$line"
             fi

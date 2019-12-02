@@ -1,0 +1,47 @@
+{
+    "description": "SeaBIOS",
+    "interface-types": [
+        "bios"
+    ],
+    "mapping": {
+        "device": "memory",
+        "filename": "/usr/share/qemu/bios.bin"
+    },
+    "targets": [
+        {
+            "architecture": "i386",
+            "machines": [
+                "pc-i440fx-*",
+                "pc-q35-*"
+            ]
+        },
+        {
+            "architecture": "x86_64",
+            "machines": [
+                "pc-i440fx-*",
+                "pc-q35-*"
+            ]
+        }
+    ],
+    "features": [
+        "acpi-s3",
+        "acpi-s4"
+    ],
+    "tags": [
+	"CONFIG_QEMU=y",
+	"CONFIG_ROM_SIZE=128",
+	"CONFIG_ATA_DMA=n",
+	"CONFIG_BOOTSPLASH=n",
+	"CONFIG_XEN=n",
+	"CONFIG_USB_OHCI=n",
+	"CONFIG_USB_XHCI=n",
+	"CONFIG_USB_UAS=n",
+	"CONFIG_SDCARD=n",
+	"CONFIG_TCGBIOS=n",
+	"CONFIG_MPT_SCSI=n",
+	"CONFIG_PVSCSI=n",
+	"CONFIG_NVME=n",
+	"CONFIG_USE_SMM=n",
+	"CONFIG_VGAHOOKS=n"
+    ]
+}

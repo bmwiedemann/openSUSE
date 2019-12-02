@@ -1,0 +1,22 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Sun, 3 Nov 2019 07:21:40 -0700
+Subject: roms/Makefile: enable cross compile for building microvm bios
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ roms/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/Makefile b/roms/Makefile
+index 091ad51c1e91a2b9709c5810e562..a6f084820f489bef42c6f487a6b2 100644
+--- a/roms/Makefile
++++ b/roms/Makefile
+@@ -198,7 +198,7 @@ opensbi64-sifive_u:
+ 	cp opensbi/build/platform/sifive/fu540/firmware/fw_jump.bin ../pc-bios/opensbi-riscv64-sifive_u-fw_jump.bin
+ 
+ bios-microvm:
+-	$(MAKE) -C qboot
++	$(MAKE) -C qboot CROSS_COMPILE=$(x86_64_cross_prefix) CC=gcc
+ 	cp qboot/bios.bin ../pc-bios/bios-microvm.bin
+ 
+ clean:

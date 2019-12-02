@@ -1,7 +1,7 @@
 #
 # spec file for package qemu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,13 +87,14 @@
 %define summary_string Machine emulator and virtualizer
 %endif
 
+INSERT_VERSIONING
 %define srcname qemu
 Name:           qemu%{name_suffix}
-Url:            https://www.qemu.org/
+URL:            https://www.qemu.org/
 Summary:        %{summary_string}
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-QEMU_VERSION
+Version:        %qemuver
 Release:        0
 Source:         https://wiki.qemu.org/download/%{srcname}-%{srcver}.tar.xz
 Source100:      %{srcname}.keyring
@@ -110,6 +111,8 @@ Source10:       supported.arm.txt
 Source11:       supported.ppc.txt
 Source12:       supported.x86.txt
 Source13:       supported.s390.txt
+Source14:       50-seabios-256k.json
+Source15:       60-seabios-128k.json
 Source200:      qemu-rpmlintrc
 Source300:      bundles.tar.xz
 Source301:      update_git.sh
@@ -184,35 +187,38 @@ BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel
-%if 0%{?with_glusterfs}
-BuildRequires:  glusterfs-devel
+BuildRequires:  glib2-devel >= 2.48
+%if build_x86_firmware_from_source
+BuildRequires:  glibc-devel-32bit
 %endif
-BuildRequires:  gtk3-devel
+%if 0%{?with_glusterfs}
+BuildRequires:  glusterfs-devel >= 3
+%endif
+BuildRequires:  gtk3-devel >= 3.16
 BuildRequires:  libaio-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
 %if 0%{?is_opensuse}
-BuildRequires:  libcacard-devel
+BuildRequires:  libcacard-devel >= 2.5.1
 %endif
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libepoxy-devel
-BuildRequires:  libfdt-devel
+BuildRequires:  libfdt-devel >= 1.4.2
 BuildRequires:  libgbm-devel
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libgnutls-devel
-BuildRequires:  libiscsi-devel
+BuildRequires:  libgcrypt-devel >= 1.5.0
+BuildRequires:  libgnutls-devel >= 3.1.18
+BuildRequires:  libiscsi-devel >= 1.9.0
 BuildRequires:  libjpeg-devel
 %if 0%{?is_opensuse}
-BuildRequires:  libnfs-devel
+BuildRequires:  libnfs-devel >= 1.9.3
 %endif
 %ifnarch %arm s390x
 BuildRequires:  libnuma-devel
 %endif
 BuildRequires:  libpcap-devel
-BuildRequires:  libpixman-1-0-devel
+BuildRequires:  libpixman-1-0-devel >= 0.21.8
 %ifarch x86_64
 BuildRequires:  libpmem-devel
 %endif
@@ -225,11 +231,11 @@ BuildRequires:  librbd-devel
 BuildRequires:  libSDL2-devel
 BuildRequires:  libSDL2_image-devel
 %endif
-BuildRequires:  libseccomp-devel
-BuildRequires:  libspice-server-devel
-BuildRequires:  libssh-devel
+BuildRequires:  libseccomp-devel >= 2.3.0
+BuildRequires:  libspice-server-devel >= 0.12.5
+BuildRequires:  libssh-devel >= 0.8
 BuildRequires:  libudev-devel
-BuildRequires:  libusb-1_0-devel
+BuildRequires:  libusb-1_0-devel >= 1.0.13
 BuildRequires:  libvdeplug-devel
 %if 0%{?is_opensuse}
 BuildRequires:  lzfse-devel
@@ -250,17 +256,17 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-base
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
-BuildRequires:  spice-protocol-devel
+BuildRequires:  spice-protocol-devel >= 0.12.3
 BuildRequires:  systemd
 %{?systemd_requires}
 %if %{kvm_available}
 BuildRequires:  pkgconfig(udev)
 %endif
-BuildRequires:  usbredir-devel
+BuildRequires:  usbredir-devel >= 0.6
 BuildRequires:  virglrenderer-devel >= 0.4.1
 BuildRequires:  vte-devel
 %ifarch x86_64
-BuildRequires:  xen-devel
+BuildRequires:  xen-devel >= 4.2
 %endif
 BuildRequires:  xfsprogs-devel
 %if %{build_x86_firmware_from_source}
@@ -301,7 +307,7 @@ BuildRequires:  qemu-ksm = %{qemuver}
 BuildRequires:  qemu-lang = %{qemuver}
 BuildRequires:  qemu-ppc   = %{qemuver}
 BuildRequires:  qemu-s390  = %{qemuver}
-BuildRequires:  qemu-seabios = 1.12.1
+BuildRequires:  qemu-seabios = %{sbver}
 BuildRequires:  qemu-sgabios = 8
 BuildRequires:  qemu-tools = %{qemuver}
 BuildRequires:  qemu-ui-curses = %{qemuver}
@@ -309,7 +315,8 @@ BuildRequires:  qemu-ui-gtk = %{qemuver}
 %if 0%{?is_opensuse}
 BuildRequires:  qemu-ui-sdl = %{qemuver}
 %endif
-BuildRequires:  qemu-vgabios = 1.12.1
+BuildRequires:  qemu-ui-spice-app = %{qemuver}
+BuildRequires:  qemu-vgabios = %{sbver}
 BuildRequires:  qemu-x86    = %{qemuver}
 %endif
 Requires(pre):  shadow
@@ -329,6 +336,7 @@ Recommends:     qemu-ui-gtk
 %if 0%{?is_opensuse}
 Recommends:     qemu-ui-sdl
 %endif
+Recommends:     qemu-ui-spice-app
 Recommends:     qemu-x86
 %ifarch ppc ppc64 ppc64le
 Recommends:     qemu-ppc
@@ -362,6 +370,7 @@ Suggests:       qemu-lang
 %if 0%{?is_opensuse}
 Recommends:     qemu-ksm = %{qemuver}
 %endif
+Suggests:       qemu-microvm
 Suggests:       qemu-vhost-user-gpu
 Provides:       qemu-audio-oss = %{qemuver}
 Obsoletes:      qemu-audio-oss < %{qemuver}
@@ -387,6 +396,7 @@ Version:        %{qemuver}
 Release:        0
 Requires:       %name = %{qemuver}
 Requires:       qemu-ipxe
+Requires:       qemu-microvm
 Requires:       qemu-seabios
 Requires:       qemu-sgabios
 Requires:       qemu-vgabios
@@ -616,6 +626,16 @@ Release:        0
 This package contains a module for doing SDL based UI for QEMU.
 %endif
 
+%package ui-spice-app
+Summary:        Spice UI support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description ui-spice-app
+This package contains a module for doing Spice based UI for QEMU.
+
 %package audio-alsa
 Summary:        ALSA based audio support for QEMU
 Group:          System/Emulators/PC
@@ -694,10 +714,21 @@ This package contains the QEMU guest agent. It is installed in the linux guest
 to provide information and control at the guest OS level.
 
 %ifarch %{build_rom_arch}
+%package microvm
+Summary:        x86 MicroVM BIOS for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+BuildArch:      noarch
+
+%description microvm
+MicroVM (qboot) is a miniam x86 firmware for booting Linux kernel.
+It provides the minimum resources needed to boot PVH and bzImages.
+
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-SEABIOS_VERSION
+Version:        %{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -709,7 +740,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-SEABIOS_VERSION
+Version:        %{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -791,19 +822,20 @@ PATCH_EXEC
 # This first list group isn't specific to what this instance builds
 %define ppc_default_firmware {%nil}
 %define ppc_extra_firmware {skiboot.lid slof.bin}
-%define ppc64_only_default_firmware {spapr-rtas.bin}
+%define ppc64_only_default_firmware {%nil}
 %define ppc64_only_extra_firmware {%nil}
-%define riscv64_default_firmware {opensbi-riscv64-sifive_u-fw_jump.bin opensbi-riscv64-virt-fw_jump.bin}
+%define riscv64_default_firmware {opensbi-riscv64-sifive_u-fw_jump.bin \
+opensbi-riscv64-virt-fw_jump.bin}
 %define riscv64_extra_firmware {%nil}
 %define s390x_default_firmware {s390-ccw.img s390-netboot.img}
 %define s390x_extra_firmware {%nil}
 %define x86_default_firmware {linuxboot.bin linuxboot_dma.bin multiboot.bin \
 kvmvapic.bin pvh.bin}
-%define x86_extra_firmware {bios.bin bios-256k.bin pxe-e1000.rom \
-pxe-eepro100.rom pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom pxe-virtio.rom \
-sgabios.bin vgabios-ati.bin vgabios-bochs-display.bin vgabios.bin \
-vgabios-cirrus.bin vgabios-qxl.bin vgabios-ramfb.bin vgabios-stdvga.bin \
-vgabios-virtio.bin vgabios-vmware.bin}
+%define x86_extra_firmware {bios.bin bios-256k.bin bios-microvm.bin \
+pxe-e1000.rom pxe-eepro100.rom pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom \
+pxe-virtio.rom sgabios.bin vgabios-ati.bin vgabios-bochs-display.bin \
+vgabios.bin vgabios-cirrus.bin vgabios-qxl.bin vgabios-ramfb.bin \
+vgabios-stdvga.bin vgabios-virtio.bin vgabios-vmware.bin}
 %define x86_64_only_default_firmware {%nil}
 %define x86_64_only_extra_firmware {edk2-aarch64-code.fd.bz2 \
 edk2-arm-code.fd.bz2 edk2-arm-vars.fd.bz2 edk2-i386-code.fd.bz2 \
@@ -995,6 +1027,7 @@ cd %mybuilddir
 %endif
 	--enable-opengl \
 	--enable-parallels \
+	--disable-plugins \
 	--enable-pvrdma \
 	--enable-qcow1 \
 	--enable-qed \
@@ -1032,6 +1065,7 @@ cd %mybuilddir
 	--enable-vhost-net \
 	--enable-vhost-scsi \
 	--enable-vhost-user \
+        --enable-vhost-user-fs \
 	--enable-vhost-vsock \
 	--enable-virglrenderer \
 	--enable-virtfs \
@@ -1050,6 +1084,7 @@ cd %mybuilddir
 	--disable-xen \
 %endif
 	--enable-xfsctl \
+        --enable-xkbcommon \
 # ------------------------------------------------------------------------
 %else # qemu-linux-user
 	--without-default-devices \
@@ -1072,6 +1107,7 @@ cd %mybuilddir
 	--disable-malloc-trim \
 	--enable-membarrier \
 	--disable-parallels \
+	--disable-plugins \
 	--disable-qcow1 \
 	--disable-qed \
 	--disable-replication \
@@ -1084,9 +1120,11 @@ cd %mybuilddir
 	--disable-vhost-net \
 	--disable-vhost-scsi \
 	--disable-vhost-user \
+        --disable-vhost-user-fs \
 	--disable-vhost-vsock \
 	--disable-vnc \
 	--disable-vvfat \
+        --disable-xkbcommon \
 %endif # qemu-linux-user
 
 %if "%{name}" == "qemu"
@@ -1138,6 +1176,8 @@ make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms bios \
   HOSTCC=cc \
 %endif
 
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms bios-microvm
+
 %ifnarch %ix86
 %if %{provide_edk2_firmware}
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms efi \
@@ -1166,7 +1206,9 @@ make                 -C %{_builddir}/%buildsubdir/roms sgabios \
   HOSTCC=cc
 
 %if %{force_fit_virtio_pxe_rom}
+pushd %{_builddir}/%buildsubdir
 patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
+popd
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
 
@@ -1350,6 +1392,8 @@ unlink %{buildroot}%_datadir/%name/edk2-licenses.txt || true
 unlink %{buildroot}%_datadir/%name/edk2-x86_64-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-x86_64-secure-code.fd
 %endif
+install -D -m 0644 %{SOURCE14} %{buildroot}%_datadir/%name/firmware/50-seabios-256k.json
+install -D -m 0644 %{SOURCE15} %{buildroot}%_datadir/%name/firmware/60-seabios-128k.json
 %endif
 %if 0%{?do_more_edk2_unlinks} || %{provide_edk2_firmware} == 0
 unlink %{buildroot}%_datadir/%name/edk2-licenses.txt || true
@@ -1483,7 +1527,7 @@ fi
 # ========================================================================
 %files
 %defattr(-, root, root)
-%doc Changelog README VERSION
+%doc Changelog README.rst VERSION
 %license COPYING COPYING.LIB LICENSE
 
 %if "%{name}" == "qemu"
@@ -1504,6 +1548,7 @@ fi
 %_docdir/%name/interop/vhost-user.html
 %_docdir/%name/specs/.buildinfo
 %_docdir/%name/specs/_static/*
+%_docdir/%name/specs/acpi_hw_reduced_hotplug.html
 %_docdir/%name/specs/genindex.html
 %_docdir/%name/specs/index.html
 %_docdir/%name/specs/objects.inv
@@ -1579,7 +1624,6 @@ fi
 %_datadir/%name/qemu_vga.ndrv
 %_datadir/%name/skiboot.lid
 %_datadir/%name/slof.bin
-%_datadir/%name/spapr-rtas.bin
 %_datadir/%name/u-boot.e500
 %_datadir/%name/u-boot-sam460-20100605.bin
 %if 0%{?is_opensuse} == 0
@@ -1716,6 +1760,11 @@ fi
 %_libdir/%name/ui-sdl.so
 %endif
 
+%files ui-spice-app
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/ui-spice-app.so
+
 %files audio-alsa
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -1742,6 +1791,13 @@ fi
 %dir %_datadir/%name
 %_datadir/%name/bios.bin
 %_datadir/%name/bios-256k.bin
+%_datadir/%name/firmware/50-seabios-256k.json
+%_datadir/%name/firmware/60-seabios-128k.json
+
+%files microvm
+%defattr(-, root, root)
+%dir %_datadir/%name
+%_datadir/%name/bios-microvm.bin
 
 %files vgabios
 %defattr(-, root, root)
@@ -1832,6 +1888,8 @@ fi
 
 %files guest-agent
 %defattr(-, root, root)
+%dir %_docdir/%name/interop
+%_docdir/%name/interop/qemu-ga.html
 %_mandir/man8/qemu-ga.8.gz
 %attr(0755,root,kvm) %_bindir/qemu-ga
 %{_unitdir}/qemu-ga@.service

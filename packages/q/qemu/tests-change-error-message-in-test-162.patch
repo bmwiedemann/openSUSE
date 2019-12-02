@@ -13,14 +13,14 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qemu-iotests/162.out b/tests/qemu-iotests/162.out
-index 3c5be2c5699a225cc80bbdc40bec..390cca9027e918f1a0d252753ce5 100644
+index 5a00d36d17878376380430dad705..390cca9027e918f1a0d252753ce5 100644
 --- a/tests/qemu-iotests/162.out
 +++ b/tests/qemu-iotests/162.out
 @@ -1,7 +1,7 @@
  QA output created by 162
  
  === NBD ===
--qemu-img: Could not open 'json:{"driver": "nbd", "host": 42}': Failed to connect socket: Invalid argument
+-qemu-img: Could not open 'json:{"driver": "nbd", "host": -1}': address resolution failed for -1:10809: Name or service not known
 +qemu-img: Could not open 'json:{"driver": "nbd", "host": 42}': Failed to connect socket: Network is unreachable
  image: nbd://localhost:PORT
  image: nbd+unix://?socket=42

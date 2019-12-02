@@ -7,14 +7,19 @@
 # The following specifies the upstream tag or commit upon which our patchqueue
 # gets rebased. The special value LATEST may be used to "automatically" track
 # the upstream development tree in the master branch
-GIT_UPSTREAM_COMMIT_ISH=v4.1.0
+GIT_UPSTREAM_COMMIT_ISH=LATEST
 # WARNING: If transitioning from using LATEST to not, MANUALLY re-set the
 # tarball present. If transitioning TO LATEST, make sure that
 # NEXT_RELEASE_IS_MAJOR is set correctly
 # This is used to choose the version number when LATEST processing is active
 NEXT_RELEASE_IS_MAJOR=0
 
-# The shared openSUSE specific git repo, on which $GIT_LOCAL_TREE is based
+# Unfortunately, SeaBIOS doesn't always follow an "always increasing" version
+# model, so there may be times we should overide the automated version setting.
+# We can do so by specifing the value here:
+SEABIOS_VERSION=1.12.1+
+
+# The shared git repo, on which $GIT_LOCAL_TREE is based
 GIT_TREE=git://github.com/openSUSE/qemu.git
 
 # Temporary directories used by this script
@@ -26,7 +31,7 @@ BUNDLE_DIR=/dev/shm/qemu-factory-bundle-dir
 NUMBERED_PATCHES=0
 
 PATCH_RANGE=1000
-REPO_COUNT=26
+REPO_COUNT=27
 
 # Perhaps we need to instead use the terminal local dirname as the index
 # and store the ~/git/ as a separate VARIABLE
@@ -45,6 +50,7 @@ LOCAL_REPO_MAP=(
     ~/git/qemu-slirp
     ~/git/qemu-u-boot
     ~/git/qemu-openhackware
+    ~/git/qemu-qboot
     ~/git/qemu-dtc
     ~/git/qemu-opensbi
     ~/git/qemu-edk2-openssl
@@ -74,6 +80,7 @@ PATCH_PATH_MAP=(
     "slirp/"
     "roms/u-boot/"
     "roms/openhackware/"
+    "roms/qboot/"
     "dtc/"
     "roms/opensbi/"
     "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/"

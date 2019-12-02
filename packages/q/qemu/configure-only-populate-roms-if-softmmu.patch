@@ -8,21 +8,14 @@ roms is being added to.
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- configure | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 578d208b374261803d84c22c2479..6cfe739061d2d8fef6d89147fcd5 100755
+index 09a33aecfd6ef543eeee8c5023b6..94984691ab378620ac2e0ae771ca 100755
 --- a/configure
 +++ b/configure
-@@ -6211,12 +6211,13 @@ if { test "$cpu" = "i386" || test "$cpu" = "x86_64"; } && \
-         fi
-     done
- fi
--if test "$ARCH" = "ppc64" && test "$targetos" != "Darwin" ; then
-+if test "$ARCH" = "ppc64" && test "$targetos" != "Darwin" && \
-+        test "$softmmu" = yes ; then
-   roms="$roms spapr-rtas"
+@@ -6327,7 +6327,7 @@ if { test "$cpu" = "i386" || test "$cpu" = "x86_64"; } && \
  fi
  
  # Only build s390-ccw bios if we're on s390x and the compiler has -march=z900

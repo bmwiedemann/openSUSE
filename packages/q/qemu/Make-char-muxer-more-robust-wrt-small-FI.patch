@@ -108,7 +108,7 @@ index 572cefd517c8fa9d605cbd10fc21..6e80785bd9c12b85e747fa9f924e 100644
      int mux_cnt;
      int term_got_escape;
 diff --git a/tests/test-char.c b/tests/test-char.c
-index f9440cdcfdb51f98b2f6542e6f21..d1f99632de1acb95ba8e1b4a8584 100644
+index 45e42af290d4c55c0d8ed9358ef2..8e8c983dc0adce3dea739c9d85fc 100644
 --- a/tests/test-char.c
 +++ b/tests/test-char.c
 @@ -1,3 +1,4 @@

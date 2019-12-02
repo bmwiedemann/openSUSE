@@ -16,26 +16,26 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 12 insertions(+)
 
 diff --git a/vl.c b/vl.c
-index b426b3213461210565bd1db15a0c..2b864f7dbe8b60ace40fa3258a37 100644
+index 6a65a64bfd647afcf539145f9cf9..57e68fdc4526b7156af155be933f 100644
 --- a/vl.c
 +++ b/vl.c
-@@ -30,6 +30,7 @@
- #include "qemu/cutils.h"
- #include "qemu/help_option.h"
+@@ -33,6 +33,7 @@
  #include "qemu/uuid.h"
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
 +#include <sys/resource.h>
  #include "sysemu/seccomp.h"
  #include "sysemu/tcg.h"
  
-@@ -2889,6 +2890,7 @@ int main(int argc, char **argv, char **envp)
-     bool list_data_dirs = false;
+@@ -2861,6 +2862,7 @@ int main(int argc, char **argv, char **envp)
      char *dir, **dirs;
      BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
+     QemuPluginList plugin_list = QTAILQ_HEAD_INITIALIZER(plugin_list);
 +    struct rlimit rlimit_as;
  
      os_set_line_buffering();
  
-@@ -2900,6 +2902,16 @@ int main(int argc, char **argv, char **envp)
+@@ -2872,6 +2874,16 @@ int main(int argc, char **argv, char **envp)
  
      qemu_mutex_lock_iothread();
  

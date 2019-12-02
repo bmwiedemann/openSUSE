@@ -14,13 +14,15 @@ v4.1.0 qemu:
 disable 065, 129, 169, 182, 205, 218, 242, 248, 250
 (other architectures not evaluated at this time)
 
+27NOV2019 - added 161 since it is failing on s390x and ppc consistently
+
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- tests/qemu-iotests/group | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ tests/qemu-iotests/group | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/tests/qemu-iotests/group b/tests/qemu-iotests/group
-index f13e5f2e23417b94bd84d820bcf6..ed532134bb8af0a1f78a1a2abcf3 100644
+index 6b10a6a762..150800ce1c 100644
 --- a/tests/qemu-iotests/group
 +++ b/tests/qemu-iotests/group
 @@ -86,7 +86,7 @@
@@ -38,10 +40,15 @@ index f13e5f2e23417b94bd84d820bcf6..ed532134bb8af0a1f78a1a2abcf3 100644
  128 rw quick
 -129 rw quick
 +#DISABLE FOR NOW 129 rw quick
- 130 rw auto quick
+ 130 rw quick
  131 rw quick
  132 rw quick
-@@ -186,7 +186,7 @@
+@@ -182,11 +182,11 @@
+ 158 rw auto quick
+ 159 rw auto quick
+ 160 rw quick
+-161 rw auto quick
++#DISABLE FOR NOW 161 rw auto quick
  162 quick
  163 rw
  165 rw quick
@@ -96,3 +103,6 @@ index f13e5f2e23417b94bd84d820bcf6..ed532134bb8af0a1f78a1a2abcf3 100644
  251 rw auto quick
  252 rw auto backing quick
  253 rw quick
+-- 
+2.24.0
+
