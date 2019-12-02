@@ -15,4 +15,12 @@
     <comment>Make actually work the compiler</comment>
     <requestid>737423</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4b0a6519dce5a1b57838c13acd80315a</srcmd5>
+    <version>1.8.9</version>
+    <time>1575282925</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with jdk &gt;= 9</comment>
+    <requestid>752790</requestid>
+  </revision>
 </revisionlist>

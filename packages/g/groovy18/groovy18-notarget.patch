@@ -1,0 +1,11 @@
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/vmplugin/v5/Java5.java	2019-11-29 07:24:28.272641368 +0100
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/vmplugin/v5/Java5.java	2019-11-29 07:34:42.096191072 +0100
+@@ -313,7 +313,7 @@
+             case PACKAGE:
+                 return AnnotationNode.PACKAGE_TARGET;
+             default:
+-                throw new GroovyBugError("unsupported Target " + value);
++                return 0;
+         }
+     }
+ 

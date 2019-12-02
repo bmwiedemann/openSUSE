@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  2 06:38:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * groovy18-notarget.patch
+    + Do not except on a classfile with MODULE information, just
+      ignore it
+    + Fixes build with jdk9+
+
+-------------------------------------------------------------------
 Fri Oct 11 09:02:52 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Modify the groovy18-script to correspond to library paths in

@@ -1,7 +1,7 @@
 #
 # spec file for package groovy18
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch4:         groovy-CVE-2015-3253-and-CVE-2016-6814.patch
 Patch5:         groovy18-sourcetarget.patch
 Patch6:         groovy18-iterator.patch
 Patch7:         groovy18-securitymanager.patch
+Patch8:         groovy18-notarget.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
@@ -64,7 +65,6 @@ BuildRequires:  mvn(javax.servlet:jsp-api)
 BuildRequires:  mvn(javax.servlet:servlet-api)
 BuildRequires:  mvn(org.apache.ant:ant-junit)
 BuildRequires:  mvn(org.apache.ant:ant-launcher)
-BuildConflicts: java-devel >= 9
 Requires:       %{name}-lib = %{version}-%{release}
 # Used for servlet / gsp:
 Requires:       glassfish-jsp-api
@@ -130,6 +130,7 @@ cp %{SOURCE3} .
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # build.xml is not compatible with Ant 1.10+
 sed -i "s| depends=\"-excludeLegacyAntVersion\"||" build.xml
@@ -172,7 +173,7 @@ build-jar-repository target/lib/compile glassfish-servlet-api glassfish-jsp-api/
 # Build
 # TODO: Build at least tests, maybe examples
 export CLASSPATH=$(build-classpath ant/ant-antlr)
-ant -DskipTests=on -DskipExamples=on -DskipFetch=on -DskipEmbeddable=on \
+%ant -DskipTests=on -DskipExamples=on -DskipFetch=on -DskipEmbeddable=on \
         createJars javadoc
 
 %install
