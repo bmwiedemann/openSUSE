@@ -1,7 +1,7 @@
 #
 # spec file for package rakudo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           rakudo
-Version:        2019.07
+Version:        2019.11
 Release:        2.1
 Summary:        Perl 6 implemenation that runs on MoarVM
 License:        Artistic-2.0
 Group:          Development/Languages/Other
-Url:            http://rakudo.org/
+URL:            http://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
-Patch0:         rakudo-fix-rpath.diff
-BuildRequires:  moarvm-devel >= 2019.07
-BuildRequires:  nqp >= 2019.07
+Patch0:         rakudo-buildroot-fix.diff
+BuildRequires:  fdupes
+BuildRequires:  moarvm-devel >= 2019.11
+BuildRequires:  nqp >= 2019.11
 Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2019.07
-Requires:       nqp >= 2019.07
+Requires:       moarvm >= 2019.11
+Requires:       nqp >= 2019.11
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -47,8 +48,7 @@ make
 %ifnarch armv6l armv6hl
 # See armv6 issue: https://github.com/rakudo/rakudo/issues/2513
 %check
-rm t/08-performance/99-misc.t
-make test
+RAKUDO_SKIP_TIMING_TESTS=1 make test
 %endif
 
 %install
@@ -56,6 +56,12 @@ make test
 mkdir -p "%{buildroot}/%{_datadir}/perl6/bin"
 cp tools/install-dist.p6 "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
 chmod +x "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
+rm "%{buildroot}/%{_bindir}/raku"
+rm "%{buildroot}/%{_bindir}/raku-debug"
+ln -s "rakudo %{buildroot}/%{_bindir}/raku"
+ln -s "rakudo-debug %{buildroot}/%{_bindir}/raku-debug"
+%fdupes %{buildroot}/%{_bindir}
+%fdupes %{buildroot}/%{_datadir}/perl6/runtime
 
 %files
 %defattr(-,root,root)

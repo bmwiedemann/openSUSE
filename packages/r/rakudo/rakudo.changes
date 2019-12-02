@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Dec 01 15:35:00 CET 2019 - nine@detonation.org
+
+- Backport fix for buildroot in packaged files in rakudo-buildroot-fix.diff
+  (remove in next release)
+
+-------------------------------------------------------------------
+Fri Nov 29 09:43:56 CET 2019 - nine@detonation.org
+
+- Remove rakudo-fix-rpath.diff (issue has been fixed upstream)
+- update to version 2019.11
+  * Perl 6 is now Raku! This release comes with initial changes
+    Added raku and rakudo executables
+    Added support for .rakumod extension
+  * Added support for Unicode v12.1
+  * Added GB2312 and GB18030 encodings
+  * [6.e] LEXICAL:: pseudo-package includes all symbols visible in
+      the lexical scope, including dynamic symbols from caller chain
+  * [6.e] SETTING:: pseudo-package includes all symbols from all available COREs
+  * [6.e] UNIT:: pseudo-package includes all lexicals visible at unit level
+  * [6.e] Symbol binding is now possible for all pseudo-packages
+  * [6.e] Pseudo-packages now return Failure for a missing symbol (was Nil)
+  * [6.e] Grammar now returns Failure when failing to parse
+  * EVAL no longer wraps evaluated code into own CORE context but shares the one
+      used by the calling scope. It also means that `use v6.X` statement is not
+      effective inside EVALs anymore
+  * Individual language-release COREs are now accessible via CORE::v6<rev> namespaces.
+  * Stagestats are now shown for dependent precompilation
+  * Greatly improved precompilation support in NativeCall
+  * Don't recompile dependencies if another process already did it
+  * Made the Buf.write-* methods return self
+  * Fixed Maps to keep containers
+  * Lots of bug fixes and speedups
+
+-------------------------------------------------------------------
 Thu Jul 22 18:20:00 CEST 2019 - nine@detonation.org
 
 - Fix install-perl6-dist getting installed into the wrong directory

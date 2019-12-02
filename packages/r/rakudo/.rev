@@ -469,4 +469,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment>Update to 2019.07</comment>
     <requestid>729695</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>21652694fc0dd6ffe30676e198713850</srcmd5>
+    <version>2019.11</version>
+    <time>1575282880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752703</requestid>
+  </revision>
 </revisionlist>
