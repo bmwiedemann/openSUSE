@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 09:04:53 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable strict aliasing due to its violation
+  (boo#1157271).
+
+-------------------------------------------------------------------
 Fri Apr 26 11:29:00 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library (boo#1133259).

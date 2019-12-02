@@ -297,4 +297,13 @@ No GPL-2.0 &quot;only&quot; licenses found in the package (forwarded request 131
     <comment>- Use FAT LTO objects in order to provide proper static library (boo#1133259). (forwarded request 698197 from marxin)</comment>
     <requestid>698202</requestid>
   </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>b3c37a82578840e28554a8520f0e5861</srcmd5>
+    <version>2.10</version>
+    <time>1575282375</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable strict aliasing due to its violation
+  (boo#1157271). (forwarded request 749836 from marxin)</comment>
+    <requestid>749922</requestid>
+  </revision>
 </revisionlist>
