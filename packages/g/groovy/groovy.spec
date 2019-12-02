@@ -1,7 +1,7 @@
 #
 # spec file for package groovy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -253,6 +253,10 @@ find \( -name *.jar -o -name *.class \) -delete
 %{gradle_build} -f -G distBin -- -x javadoc -x jarAllWithIndy
 
 %install
+# hack! investigate why on s390x, it ends up there
+if [ -e ~/.gradle/daemon/*/.xmvn-reactor ]; then
+  mv ~/.gradle/daemon/*/.xmvn-reactor .
+fi
 %{mvn_artifact} %{SOURCE6} target/libs/groovy-all-%{version}-indy.jar
 %mvn_install
 
