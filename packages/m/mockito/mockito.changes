@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 29 10:37:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * fix-bnd-config.patch
+    + allow using objenesis 3.x too
+
+-------------------------------------------------------------------
 Sat Mar 23 08:54:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove nonsense and bias from description.
