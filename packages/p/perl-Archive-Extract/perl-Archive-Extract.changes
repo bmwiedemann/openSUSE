@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 25 11:42:06 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-Archive-Extract/CHANGES
+
+  0.82    Fri Nov 22 19:09:35 GMT 2019
+  * Correctly compare version string for Archive::Tar (#7)
+  * Remove duplicate entry from the MANIFEST file. (#6)
+  * Treat minix the same as NetBSD
+
+-------------------------------------------------------------------
 Mon Feb 13 11:11:27 UTC 2017 - coolo@suse.com
 
 - updated to 0.80
