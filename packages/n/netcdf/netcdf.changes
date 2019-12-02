@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 29 18:23:24 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 & jsc#SLE-8609).
+
+-------------------------------------------------------------------
+Thu Nov 28 15:44:00 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Update to version 4.7.1:
+  * Remove obsolete _CRAYMPP and LOCKNUMREC macros from
+    code. Also brought documentation up to date in man page.
+  * Remove obsolete and deprecated functions nc_set_base_pe()
+    and nc_inq_base_pe() from the dispatch table. (Both functions
+    are still supported in the library, this is an internal
+    change only.)
+  * Fix: Reverted nccopy behavior so that if no -c parameters are
+    given, then any default chunking is left to the netcdf-c library
+    to decide.
+- Disable openmpi1 builds for SLE/Leap > 15.1.
+- Enable openmpi3 builds for Leap and SLE > 15.1 (jsc#SLE-7773).
+
+-------------------------------------------------------------------
 Thu Oct 24 06:32:32 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - openmpi has been renamed to openmpi1
