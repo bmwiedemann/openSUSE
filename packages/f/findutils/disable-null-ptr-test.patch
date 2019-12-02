@@ -1,0 +1,15 @@
+diff --git a/gnulib-tests/test-canonicalize.c b/gnulib-tests/test-canonicalize.c
+index 8d1ff86..0f3c5e3 100644
+--- a/gnulib-tests/test-canonicalize.c
++++ b/gnulib-tests/test-canonicalize.c
+@@ -71,10 +71,6 @@ main (void)
+     ASSERT (result2 == NULL);
+     ASSERT (errno == ENOENT);
+     errno = 0;
+-    result1 = canonicalize_file_name (null_ptr ());
+-    ASSERT (result1 == NULL);
+-    ASSERT (errno == EINVAL);
+-    errno = 0;
+     result2 = canonicalize_filename_mode (NULL, CAN_EXISTING);
+     ASSERT (result2 == NULL);
+     ASSERT (errno == EINVAL);

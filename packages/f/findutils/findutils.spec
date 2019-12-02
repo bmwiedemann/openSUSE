@@ -1,7 +1,7 @@
 #
 # spec file for package findutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           findutils
-Url:            http://www.gnu.org/software/findutils/
+URL:            http://www.gnu.org/software/findutils/
 Version:        4.7.0
 Release:        0
 Summary:        The GNU versions of find utilities (find and xargs)
@@ -44,6 +44,7 @@ Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{
 
 # adds a new option -xautofs to find to not descend into directories on autofs file systems
 Patch0:         findutils-xautofs.patch
+Patch1:         disable-null-ptr-test.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # BuildRequire dejagnu for 'runtest' to execute all tests.
@@ -74,6 +75,7 @@ useful for finding things on your system.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 %if 0%{?qemu_user_space_build}

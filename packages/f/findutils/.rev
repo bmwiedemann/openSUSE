@@ -506,4 +506,12 @@ other affected packages to make sure the copies are refreshed.
     <comment></comment>
     <requestid>727092</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>09f0a5d605885fc11a925e7f165f14d8</srcmd5>
+    <version>4.7.0</version>
+    <time>1575282387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750033</requestid>
+  </revision>
 </revisionlist>
