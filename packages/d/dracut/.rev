@@ -1568,4 +1568,13 @@ Add:  dracut_git_v034_to_head.patch</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>736070</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>2e85369492ed07abdc9824ae14fc026a</srcmd5>
+    <version>049+git115.c2d8d6fb</version>
+    <time>1575282806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049+git115.c2d8d6fb:
+  * suse: Remove incorrect usage of %_libexecdir (boo#1155785)</comment>
+    <requestid>751500</requestid>
+  </revision>
 </revisionlist>

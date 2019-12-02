@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:05:53 UTC 2019 - daniel.molkentin@suse.com
+
+- Update to version 049+git115.c2d8d6fb:
+  * suse: Remove incorrect usage of %_libexecdir (boo#1155785)
+
+-------------------------------------------------------------------
 Tue Oct 01 10:45:44 UTC 2019 - daniel.molkentin@suse.com
 
 - Update to version 049+git114.058e566c:
