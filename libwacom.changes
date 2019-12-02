@@ -1,9 +1,8 @@
 -------------------------------------------------------------------
-Thu Nov 21 08:30:23 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+Wed Nov 20 15:13:38 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-- Add libwacom-meson-0.51-lto.patch: Completely strip the
-  test_deprecated linkingn from meson.build> 174.patch would only
-  properly work with meson 0.52+.
+- Pass b_lto option to meson, otherwise the previous patch has no
+  effect (meson does not derive the b_lto value from the FLAGS).
 
 -------------------------------------------------------------------
 Wed Nov 20 10:06:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
