@@ -143,4 +143,12 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
 - Add python-coverage as build dependency as nose segfaults when missing</comment>
     <requestid>678841</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>74298671ce5495baeaf22f569327edf5</srcmd5>
+    <version>1.4.1</version>
+    <time>1575282751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751376</requestid>
+  </revision>
 </revisionlist>

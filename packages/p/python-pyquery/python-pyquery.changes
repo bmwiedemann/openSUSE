@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 24 17:21:55 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 1.4.1:
+  * This is the latest release with py2 support
+  * Remove py33, py34 support
+  * web scraping improvements: default timeout and session support
+  * Add API methods to serialize form-related elements according to
+    spec
+  * Include HTML markup when querying textarea text/value
+
+-------------------------------------------------------------------
 Mon Feb 25 09:00:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use _multibuild to run tests

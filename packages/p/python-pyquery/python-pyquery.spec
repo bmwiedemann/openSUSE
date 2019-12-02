@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyquery
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %bcond_with test
 %endif
 Name:           python-pyquery%{psuffix}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A jQuery-like library for python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://pypi.python.org/pypi/pyquery
+URL:            https://pypi.python.org/pypi/pyquery
 Source:         https://files.pythonhosted.org/packages/source/p/pyquery/pyquery-%{version}.tar.gz
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cssselect > 0.7.9}
@@ -77,7 +77,8 @@ XML and HTML manipulation.
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pyquery/
+%{python_sitelib}/pyquery-%{version}-py*.egg-info
 %endif
 
 %changelog
