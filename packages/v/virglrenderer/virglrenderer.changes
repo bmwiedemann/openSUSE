@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 26 21:42:29 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.8.0
+  Note: not switching to meson build system yet since it would
+  exclude distos with older meson (seems meson v0.49+ is required)
+  Highlights include:
+  + guest support for GL 4.3 on hosts with GLES 3.2 + certain 
+    extensions,
+  + major performance improvements, and 
+  + lots of bug fixes.
+- The shared object (SO) version changes from 0 to 1 with this
+  package update
+
+-------------------------------------------------------------------
 Wed Sep 19 11:52:37 UTC 2018 - minava@t-online.de
 
 - Update package to 0.7.0
