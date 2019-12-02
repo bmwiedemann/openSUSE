@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 13:47:08 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with older cmake package (Leap 15.0 up to 15.2), the
+  included ctest macro does not accept extra parameters.
+
+-------------------------------------------------------------------
 Thu Nov 14 17:57:37 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Fix-the-symlinks-creation.patch to fix the symlinks creation.

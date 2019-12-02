@@ -149,10 +149,15 @@ popd
 %check
 %ifarch x86_64
 pushd OpenEXR
-# tests takes LOONG, e. g. 20 min, in obs even more that
-# exceed timeout limit 25 min
 export LD_LIBRARY_PATH="$PWD/build/IlmImf:$PWD/build/IlmImfUtil:$LD_LIBRARY_PATH"
-%ctest --timeout 3000
+# tests can take longer than the default timeout of 25 minutes
+%if 0%{?suse_version} < 1550
+# HACK - older versions of the ctest macro do not allow passing additional parameters
+%global __ctest %{__ctest} --timeout 3600
+%ctest
+%else
+%ctest --timeout 3600
+%endif
 popd
 %endif
 

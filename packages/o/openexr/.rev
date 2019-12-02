@@ -310,4 +310,13 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>- Add Fix-the-symlinks-creation.patch to fix the symlinks creation. (forwarded request 748749 from cgiboudeaux)</comment>
     <requestid>748755</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>909d50b6cee095bfe8456cea4c9a5034</srcmd5>
+    <version>2.4.0</version>
+    <time>1575282544</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with older cmake package (Leap 15.0 up to 15.2), the
+  included ctest macro does not accept extra parameters. (forwarded request 750562 from StefanBruens)</comment>
+    <requestid>750686</requestid>
+  </revision>
 </revisionlist>
