@@ -1,7 +1,7 @@
 #
 # spec file for package php7-pear-MDB2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,19 +23,13 @@ Release:        0
 Summary:        Database abstraction layer
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Servers
-Url:            http://pear.php.net/package/%{pear_name}
-Source:         http://download.pear.php.net/package/%{pear_name}-%{version}.tgz
+URL:            https://pear.php.net/package/%{pear_name}
+Source:         https://pear.php.net/get/%{pear_name}-%{version}.tgz
 BuildRequires:  php7-devel
-BuildRequires:  php7-pear >= 1.9.1
-Requires:       php7
-Requires:       php7-pear >= 1.9.1
-Provides:       php-pear-%{pear_name} = %{version}
+BuildRequires:  php7-pear
+Requires:       php7-pear
 Provides:       php-pear(%{pear_name}) = %{version}
-Obsoletes:      php5-pear-%{pear_name}
 BuildArch:      noarch
-%if 0%{?suse_version} < 1330
-BuildRequires:  php7-macros
-%endif
 
 %description
 PEAR MDB2 is a merge of the PEAR DB and Metabase php database abstraction layers.
@@ -70,42 +64,37 @@ can be used to construct portable SQL statements:
 * PHPDoc API documentation
 
 %prep
-%setup -q -c
+%setup -q -n %{pear_name}-%{version}
+# move package.xml when needed
+[ -f ../package.xml ] &&  mv ../package.xml .
 
 %build
 
 %install
-mv package*.xml %{pear_name}-%{version}
-cd %{pear_name}-%{version}
-%{__pear} -v \
-	-d doc_dir=%{pear_docdir} \
-	-d bin_dir=%{_bindir} \
-	-d data_dir=%{php_peardir}/data \
-	install --offline --nodeps -R %{buildroot} package.xml
-
+%{__pear} install --nodeps --offline --packagingroot %{buildroot} package.xml
 install -D -m 0644 package.xml %{buildroot}%{php_pearxmldir}/%{pear_name}.xml
 
-%check
-# up-to date phpunit can not be run
+%{php_pear_gen_filelist}
 
 %post
 if [ "$1" = "1" ]; then
-  %{__pear} install --nodeps --soft --force --register-only %{php_pearxmldir}/%{pear_name}.xml
+  # on "rpm -ivh"
+  %{__pear} install --nodeps --soft --force --register-only %{php_pearxmldir}/%{pear_name}.xml || :
 fi
 if [ "$1" = "2" ]; then
-  %{__pear} upgrade --offline --register-only %{php_pearxmldir}/%{pear_name}.xml
+  # on "rpm -Uvh"
+  %{__pear} upgrade --offline --register-only %{php_pearxmldir}/%{pear_name}.xml || :
 fi
 
 %postun
 if [ "$1" = "0" ]; then
-  %{__pear} uninstall --nodeps --ignore-errors --register-only pear.php.net/%{pear_name}
+  # on "rpm -e"
+  %{__pear} uninstall --nodeps --ignore-errors --register-only pear.php.net/%{pear_name} || :
 fi
 
-%files
-%{pear_phpdir}/*
-%{php_pearxmldir}/*
+%files -f %{name}.files
+%docdir  %{pear_docdir}
+%exclude %{pear_metadir}/.??*
 %exclude %{pear_testdir}
-%exclude %{pear_phpdir}/.*
-%doc %{pear_docdir}
 
 %changelog
