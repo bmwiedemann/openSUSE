@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 22:15:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gst-libav-fix-mem-leak.patch: Fix memory leak.
+- Add gst-libav-fix-segfault.patch: Fix segmentation fault.
+
+-------------------------------------------------------------------
 Tue Sep 24 14:54:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:

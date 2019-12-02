@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-libav
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ Group:          Productivity/Multimedia/Other
 URL:            http://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-%{version}.tar.xz
 Source1000:     baselibs.conf
+# PATCH-FIX-UPSTREAM gst-libav-fix-mem-leak.patch -- Fix mem leak
+Patch0:         gst-libav-fix-mem-leak.patch
+# PATCH-FIX-UPSTREAM gst-libav-fix-segfault.patch -- Fix segfault
+Patch1:         gst-libav-fix-segfault.patch
 
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
@@ -81,6 +85,8 @@ This plugin contains the documentation
 %setup -q -n gst-libav-%{version}
 # Ensure we cannot use the embedded libav
 rm -rf gst-libs/ext/libav
+%patch0 -p1
+%patch1 -p1
 
 %build
 # TODO: switch to meson, but need to allow a GPL build first
