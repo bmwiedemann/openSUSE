@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 11 20:28:06 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 5.99.44
+  + fixed crashes on Windows
+  + small bug fix on synchronization of investment accounts
+  + initial work on AqFinTS
+  + add "chipTAN-QR" to the list of TAN method names (DKB uses
+    "Q1S" as TAN method ID to designate chipTAN-QR; fortunately,
+    the TAN method name "chipTAN-QR" is more expressive)
+  + enable optical TAN methods for aqanking-cli and aqhbci-tool4
+
+-------------------------------------------------------------------
 Mon Oct 14 07:44:59 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 5.99.40
