@@ -1,0 +1,31 @@
+From: Egbert Eich <eich@suse.com>
+Date: Fri Nov 29 12:40:44 2019 +0100
+Subject: Fix empty elseif() in CMakeLists.txt
+Patch-mainline: Not yet
+Git-commit: 230a4016068573af2cf33d9b5f0aec5129bdc79d
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ hypre-2.18.1/src/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+diff --git a/hypre-2.18.1/src/CMakeLists.txt b/hypre-2.18.1/src/CMakeLists.txt
+index fda1ff4..b8b2761 100644
+--- a/hypre-2.18.1/src/CMakeLists.txt
++++ b/hypre-2.18.1/src/CMakeLists.txt
+@@ -101,13 +101,13 @@ endif()
+ 
+ if (HYPRE_ENABLE_GLOBAL_PARTITION)
+   set(HYPRE_NO_GLOBAL_PARTITION OFF CACHE BOOL "" FORCE)
+-elseif()
++else()
+   set(HYPRE_NO_GLOBAL_PARTITION ON CACHE BOOL "" FORCE)
+ endif()
+ 
+ if (HYPRE_WITH_MPI)
+   set(HYPRE_SEQUENTIAL OFF CACHE BOOL "" FORCE)
+-elseif()
++else()
+   set(HYPRE_SEQUENTIAL ON CACHE BOOL "" FORCE)
+ endif()
+ 

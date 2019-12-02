@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 29 20:50:04 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc7.
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 & jsc#SLE-8609).
+
+-------------------------------------------------------------------
+Thu Nov 28 16:25:34 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Update to 2.18.2:
+  * Fixed mixedint bugs.
+  * Ported BoomerAMG setup to run on GPUs.  Only a subset of setup phase
+    features are currently available.
+  * Updated CMake to support more of the features available in configure/make.
+  * Added RecomputeResidual options to several hybrid solvers.
+  * Various bug fixes.
+- Disable openmpi1 builds for SLE/Leap > 15.1.
+- Adapt build for openmpi1 to reflect naming change on Factory.
+- Enable openmpi3 builds for Leap and SLE > 15.1 (jsc#SLE-7773).
+- hypre_CMakeLists.patch refreshed and replaced by:
+  Fix-library-version-numbering.patch
+- Fix-empty-elseif-in-CMakeLists.txt.patch:
+  Fix empty elseif() in CMake file.
+- Use full package version to identify .so version:
+  INSTALL.md states that "The hypre team currently does nothing to ensure
+  application binary interface (ABI) compatibility. As a result, all release
+  (major, minor, or patch) should be treated as incompatible."
+- Replaced -DHYPRE_SEQUENTIAL by -DHYPRE_WITH_MPI
+
+-------------------------------------------------------------------
 Mon Sep  2 13:45:12 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Documentation is only available online now. Remove the -doc package. 

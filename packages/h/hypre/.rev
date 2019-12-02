@@ -31,4 +31,33 @@
     <comment>Add Jira feature ID</comment>
     <requestid>734095</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9baccf86b53c3f1555f7b1d3eab9d71a</srcmd5>
+    <version>2.18.2</version>
+    <time>1575282588</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc7.
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8609).
+
+- Update to 2.18.2:
+  * Fixed mixedint bugs.
+  * Ported BoomerAMG setup to run on GPUs.  Only a subset of setup phase
+    features are currently available.
+  * Updated CMake to support more of the features available in configure/make.
+  * Added RecomputeResidual options to several hybrid solvers.
+  * Various bug fixes.
+- Disable openmpi1 builds for SLE/Leap &gt; 15.1.
+- Adapt build for openmpi1 to reflect naming change on Factory.
+- Enable openmpi3 builds for Leap and SLE &gt; 15.1 (jsc#SLE-7773).
+- hypre_CMakeLists.patch refreshed and replaced by:
+  Fix-library-version-numbering.patch
+- Fix-empty-elseif-in-CMakeLists.txt.patch:
+  Fix empty elseif() in CMake file.
+- Use full package version to identify .so version:
+  INSTALL.md states that &quot;The hypre team currently does nothing to ensure
+  application binary interface (ABI) compatibility. As a result, all release
+  (major, minor, or patch) should be treated as incompatible.&quot;
+- Replaced -DHYPRE_SEQUENTIAL by -DHYPRE_WITH_MPI</comment>
+    <requestid>752515</requestid>
+  </revision>
 </revisionlist>

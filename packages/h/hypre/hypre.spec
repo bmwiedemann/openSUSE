@@ -1,7 +1,7 @@
 #
 # spec file for package hypre
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,19 @@
 
 
 %global flavor @BUILD_FLAVOR@%{?nil}
-%define ver 2.17.0
-%define _ver 2_17_0
-%define somver 0
-%define sover %{somver}.2.6
+%define ver 2.18.2
+%define _ver 2_18_2
+%define somver %{_ver}
+%define sover %{ver}
 
 # Base package name
 %define pname hypre
 %define PNAME %(echo %{pname} | tr [a-z] [A-Z])
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI1
-%undefine DisOMPI2
-%undefine DisOMPI3
-%else
+%if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
-%undefine DisOMPI2
+%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
@@ -120,6 +117,129 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "gnu7-mvapich2-hpc"
+%define c_f_ver 7
+%define mpi_family mvapich2
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-mpich-hpc"
+%define c_f_ver 7
+%define mpi_family mpich
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi-hpc"
+%define c_f_ver 7
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 1
+%bcond_without hpc
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi2-hpc"
+%define c_f_ver 7
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 2
+%bcond_without hpc
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi3-hpc"
+%define c_f_ver 7
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 3
+%bcond_without hpc
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu8-mvapich2-hpc"
+%define c_f_ver 8
+%define mpi_family mvapich2
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-mpich-hpc"
+%define c_f_ver 8
+%define mpi_family mpich
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi-hpc"
+%define c_f_ver 8
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 1
+%bcond_without hpc
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi2-hpc"
+%define c_f_ver 8
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 2
+%bcond_without hpc
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi3-hpc"
+%define c_f_ver 8
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 3
+%bcond_without hpc
+%{?DisOMPI3}
+%endif
+
+%if "%{flavor}" == "gnu9-mvapich2-hpc"
+%define c_f_ver 9
+%define mpi_family mvapich2
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-mpich-hpc"
+%define c_f_ver 9
+%define mpi_family mpich
+%define compiler_family gnu
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi-hpc"
+%define c_f_ver 9
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 1
+%bcond_without hpc
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi2-hpc"
+%define c_f_ver 9
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 2
+%bcond_without hpc
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi3-hpc"
+%define c_f_ver 9
+%define compiler_family gnu
+%define mpi_family openmpi
+%define mpi_vers 3
+%bcond_without hpc
+%{?DisOMPI3}
+%endif
+
 # Don't build non-HPC on SLE
 %if !0%{?is_opensuse} && !0%{?with_hpc:1}
 ExclusiveArch:  do_not_build
@@ -128,7 +248,7 @@ ExclusiveArch:  do_not_build
 %{?mpi_family:%{bcond_without mpi}}%{!?mpi_family:%{bcond_with mpi}}
 
 # For compatibility package names
-%if "%{mpi_family}" != "openmpi" || "%{mpi_vers}" != "1"
+%if "%{mpi_family}" != "openmpi" || "%{mpi_vers}" != "1" || 0%{?suse_version} > 1500
 %define mpi_ext %{?mpi_vers}
 %endif
 
@@ -166,10 +286,11 @@ Release:        0
 Summary:        Scalable algorithms for solving linear systems of equations
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Scientific/Math
-Url:            https://www.llnl.gov/casc/hypre/
+URL:            https://www.llnl.gov/casc/hypre/
 Source:         https://github.com/hypre-space/hypre/archive/v%{version}.tar.gz#/hypre-%{version}.tar.gz
 Patch0:         hypre_Makefile_examples.patch
-Patch1:         hypre_CMakeLists.patch
+Patch1:         Fix-library-version-numbering.patch
+Patch2:         Fix-empty-elseif-in-CMakeLists.txt.patch
 
 # TODO : add babel
 #BuildRequires:  babel-devel
@@ -267,7 +388,8 @@ This package contains development documentation for Hypre.
 %prep
 %setup -q -n %{pname}-%{version}
 %patch0 -p0 
-%patch1 -p1 
+%patch1 -p2
+%patch2 -p2
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
 %{libname}
@@ -298,9 +420,9 @@ cd src/
  %endif
        -DHYPRE_SHARED=ON \
        %if %{without mpi}
-       -DHYPRE_SEQUENTIAL=ON \
+       -DHYPRE_WITH_MPI=OFF \
        %else
-       -DHYPRE_SEQUENTIAL=OFF \
+       -DHYPRE_WITH_MPI=ON \
        %endif
        -DHYPRE_USING_HYPRE_BLAS=OFF \
        -DHYPRE_USING_HYPRE_LAPACK=OFF \
