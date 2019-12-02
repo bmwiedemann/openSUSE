@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-nspr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #               2006-2019 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           mozilla-nspr
-Version:        4.22
+Version:        4.23
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
 Group:          System/Libraries
-Url:            http://www.mozilla.org/projects/nspr/
+URL:            http://www.mozilla.org/projects/nspr/
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 # bug437293

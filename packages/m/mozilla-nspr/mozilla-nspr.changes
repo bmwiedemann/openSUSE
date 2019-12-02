@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 15 23:22:52 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- update to version 4.23
+  * fixed a build failure that was introduced in 4.22
+  * correctness fix for Win64 socket polling
+  * whitespace in C files was cleaned up and no longer uses
+    tab characters for indenting
+
+-------------------------------------------------------------------
 Fri Oct 18 20:04:23 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.22

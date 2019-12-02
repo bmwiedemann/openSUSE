@@ -615,4 +615,12 @@ require it nevertheless
   * correctness and build fixes</comment>
     <requestid>742854</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>6273886bb0c441a35b6d034d12e17752</srcmd5>
+    <version>4.23</version>
+    <time>1575282488</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750434</requestid>
+  </revision>
 </revisionlist>
