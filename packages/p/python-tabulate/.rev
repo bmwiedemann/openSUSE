@@ -50,4 +50,12 @@
 - Remove merged pr_2.patch</comment>
     <requestid>736041</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5dd0d99fa1e7f43a3b16b4ff1bae1841</srcmd5>
+    <version>0.8.6</version>
+    <time>1575282944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752804</requestid>
+  </revision>
 </revisionlist>

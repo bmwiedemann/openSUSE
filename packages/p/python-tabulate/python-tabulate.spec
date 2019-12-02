@@ -1,7 +1,7 @@
 #
 # spec file for package python-tabulate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tabulate
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Pretty-printer for tabular data in Python
 License:        MIT
@@ -51,7 +51,7 @@ The main use cases of the library are:
    decimal point
 
 %prep
-%setup -n tabulate-%{version}
+%setup -q -n tabulate-%{version}
 
 %build
 %python_build
@@ -67,6 +67,8 @@ The main use cases of the library are:
 %license LICENSE
 %doc README.md
 %python3_only %{_bindir}/tabulate
-%{python_sitelib}/*
+%{python_sitelib}/tabulate.*
+%{python_sitelib}/tabulate-%{version}-py*.egg-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog
