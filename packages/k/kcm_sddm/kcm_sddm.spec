@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kcm_sddm
-Version:        5.16.5
+Version:        5.17.3
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
@@ -30,14 +30,10 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{ver
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
-Patch1:         dont-set-empty-autologin.patch
-# PATCH-FIX-OPENSUSE
-Patch2:         0002-Support-default.session-symlink.patch
-# PATCH-FIX-OPENSUSE
-Patch3:         0001-Replace-autologin-configuration-with-a-note-to-use-Y.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         remove-wayland-suffix.patch
-BuildRequires:  extra-cmake-modules >= 1.0.0
+Patch1:         0001-Support-default.session-symlink.patch
+Patch2:         0002-Replace-autologin-configuration-with-a-note-to-use-Y.patch
+Patch3:         0003-Don-t-add-a-Wayland-suffix-to-Wayland-sessions.patch
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Archive)
@@ -48,18 +44,11 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5Designer) >= 5.4.0
-BuildRequires:  cmake(Qt5Gui) >= 5.4.0
-BuildRequires:  cmake(Qt5Quick) >= 5.4.0
-BuildRequires:  cmake(Qt5QuickWidgets) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xcb-image)
-BuildRequires:  pkgconfig(xcb-shm)
-BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Widgets)
 Supplements:    packageand(sddm:plasma5-workspace)
 Recommends:     %{name}-lang
 
@@ -70,8 +59,7 @@ sddm.
 %lang_package
 
 %prep
-%setup -q -n sddm-kcm-%{version}
-%autopatch -p1
+%autosetup -p1 -n sddm-kcm-%{version}
 
 %build
   %cmake_kf5 -d build

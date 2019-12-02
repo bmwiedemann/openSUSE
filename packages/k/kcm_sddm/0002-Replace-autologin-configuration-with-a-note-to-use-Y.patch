@@ -1,0 +1,104 @@
+From f605191a7833e9791711d2272e05b52d92bcfb18 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 27 Dec 2017 18:54:36 +0100
+Subject: [PATCH 2/3] Replace autologin configuration with a note to use YaST
+ instead
+
+sddm looks at sysconfig for autologin and ignores other configuration files.
+Also change the default value for the autologin session to "default.desktop",
+which is what sddm uses as well.
+---
+ src/advancedconfig.cpp   |  4 ++--
+ src/ui/advancedconfig.ui | 21 +++++++++++++++++----
+ 2 files changed, 19 insertions(+), 6 deletions(-)
+
+diff --git a/src/advancedconfig.cpp b/src/advancedconfig.cpp
+index 3ac31dd..3bc01cd 100644
+--- a/src/advancedconfig.cpp
++++ b/src/advancedconfig.cpp
+@@ -84,7 +84,7 @@ void AdvanceConfig::load()
+     const QString currentUser = mConfig->group("Autologin").readEntry("User", "");
+     configUi->userList->setCurrentIndex(userModel->indexOf(currentUser));
+ 
+-    const QString autologinSession = mConfig->group("Autologin").readEntry("Session", "");
++    const QString autologinSession = mConfig->group("Autologin").readEntry("Session", "default.desktop");
+     configUi->sessionList->setCurrentIndex(sessionModel->indexOf(autologinSession));
+ 
+     configUi->autoLogin->setChecked(!currentUser.isEmpty());
+@@ -108,7 +108,7 @@ QVariantMap AdvanceConfig::save()
+     QVariantMap args;
+ 
+     args[QStringLiteral("kde_settings.conf/Autologin/User")] = ( configUi->autoLogin->isChecked() ) ? configUi->userList->currentText() : QString();
+-    args[QStringLiteral("kde_settings.conf/Autologin/Session")] = ( configUi->autoLogin->isChecked() ) ? configUi->sessionList->currentData() : QString();
++    args[QStringLiteral("kde_settings.conf/Autologin/Session")] = configUi->sessionList->currentData();
+ 
+     args[QStringLiteral("kde_settings.conf/Autologin/Relogin")] = configUi->reloginAfterQuit->isChecked();
+     //TODO session
+diff --git a/src/ui/advancedconfig.ui b/src/ui/advancedconfig.ui
+index 537d932..85a73f9 100644
+--- a/src/ui/advancedconfig.ui
++++ b/src/ui/advancedconfig.ui
+@@ -19,7 +19,14 @@
+      <property name="formAlignment">
+       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      </property>
+-     <item row="1" column="0">
++     <item row="0" column="1">
++      <widget class="QLabel" name="yastlabel">
++       <property name="text">
++        <string>The user for autologin needs to be configured using YaST or by&#10;setting DISPLAYMANAGER_AUTOLOGIN in /etc/sysconfig/displaymanager.</string>
++       </property>
++      </widget>
++     </item>
++     <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Automatically log in:</string>
+@@ -33,6 +40,9 @@
+          <property name="text">
+           <string>as user:</string>
+          </property>
++         <property name="visible">
++          <bool>false</bool>
++         </property>
+         </widget>
+        </item>
+        <item>
+@@ -40,12 +50,15 @@
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
++         <property name="visible">
++          <bool>false</bool>
++         </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="enabled">
+-          <bool>false</bool>
++          <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>with session:</string>
+@@ -55,7 +68,7 @@
+        <item>
+         <widget class="QComboBox" name="sessionList">
+          <property name="enabled">
+-          <bool>false</bool>
++          <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+@@ -64,7 +77,7 @@
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="reloginAfterQuit">
+        <property name="enabled">
+-        <bool>false</bool>
++        <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+-- 
+2.22.0
+

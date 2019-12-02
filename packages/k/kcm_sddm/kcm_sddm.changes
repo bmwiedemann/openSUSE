@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:01:06 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- No code changes since 5.17.2
+
+-------------------------------------------------------------------
+Tue Oct 29 20:45:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- No code changes since 5.17.1
+
+-------------------------------------------------------------------
+Tue Oct 22 16:44:43 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.1.php
+- Changes since 5.17.0:
+  * Set preview to correct device size (kde#407689)
+
+-------------------------------------------------------------------
+Thu Oct 10 14:25:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- Changes since 5.16.90:
+  * Check if sddm user exists
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:34 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * update to latest kf5 dependency
+  * Also remove the dependency on libxcb
+  * Remove unneeded dependencies on X11 and QtX11Extras
+  * It compile file without deprecated method
+  * Add a warning message about needing globally installed theme files
+  * Remove leftover mentions of "AdvanceConfig"
+  * Rename "AdvanceConfig" to "AdvancedConfig"
+  * Remove persistence from the kauth helper
+  * Minor code improvements
+  * Fix build failure
+  * Make sure "-dpi" doesn't get passed without an argument
+  * Sync scaling DPI from Plasma to SDDM
+  * Sync NumLock preference
+  * Remove cursor theme option
+  * Implement syncing of theme preferences between SDDM and Plasma
+  * Make includes more orderly
+  * [sddm-kcm] Write settings to /etc/sddm.conf.d instead of etc/sddm.conf (kde#386241)
+  * Redesign Advanced tab
+  * Fix forward declaration
+  * Clean up trailing whitespace
+  * Minor grammar fix exists -> exists
+- Patch rework:
+  * Rename 0002-Support-default.session-symlink.patch to
+    0001-Support-default.session-symlink.patch
+  * Merge 0001-Replace-autologin-configuration-with-a-note-to-use-Y.patch
+    with dont-set-empty-autologin.patch into
+    0002-Replace-autologin-configuration-with-a-note-to-use-Y.patch
+  * Rename remove-wayland-suffix.patch to 
+    0003-Don-t-add-a-Wayland-suffix-to-Wayland-sessions.patch
+
+-------------------------------------------------------------------
 Tue Sep  3 12:44:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.16.5
