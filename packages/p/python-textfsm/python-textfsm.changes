@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 26 19:25:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  * Fix parsing of value string to allow mismatched parenthesis
+    inside [] brackets.
+  * Improve readability of value parse fix.
+  * Added additional test.
+  * Soft fail when fcntl is missing, fallback to default screen size.
+
+-------------------------------------------------------------------
 Thu Aug  1 11:38:10 UTC 2019 - pgajdos@suse.com
 
 - require future for python2

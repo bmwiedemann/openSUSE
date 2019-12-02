@@ -19,13 +19,13 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-textfsm
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Python module for parsing semi-structured text into python tables
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/google/textfsm
-Source:         https://github.com/google/textfsm/archive/v%{version}.tar.gz
+Source:         https://github.com/google/textfsm/archive/v%{version}.tar.gz#/textfsm-%{version}.tar.gz
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
@@ -53,12 +53,16 @@ devices.
 
 %prep
 %setup -q -n textfsm-%{version}
+# drop shebang
+sed -i -e '/^#!\//, 1d' textfsm/*.py
 
 %build
 %python_build
 
 %install
 %python_install
+# don't install broken textfsm wrapper binary
+%python_expand rm -f %{buildroot}%{_bindir}/textfsm
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
