@@ -1,0 +1,170 @@
+git diff libtirpc-1-1-4..libtirpc-1-1-5-rc1
+
+Commits:
+e49077d clnt_vc.c: remove a false positive from a covscan
+4d2ceca svc_simple.c: resource_leak
+92d4b35 svc_generic.c: resource_leak
+3b2e537 rtime.c: resource_leak
+830e3f6 rpcb_clnt.c: resource_leak
+c0885a7 rpc_soc.c: buffer_size_warning
+6db7f04 rpc_soc.c: resource_leak
+710a713 rpc_generic.c: resource_leak
+57d1529 getnetpath.c: resource_leak
+a1fae25 getnetconfig.c: cppcheck_warning
+55d1460 clnt_vc.c: resource_leak
+757f379 clnt_bcast.c: resource_leak
+489dd50 auth_gss.c: buffer_size_warning
+25fdba9 auth_gss.c: resource_leak
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+diff --git a/src/auth_gss.c b/src/auth_gss.c
+index 5959893..7d08262 100644
+--- a/src/auth_gss.c
++++ b/src/auth_gss.c
+@@ -207,6 +207,7 @@ authgss_create(CLIENT *clnt, gss_name_t name, struct rpc_gss_sec *sec)
+ 			rpc_createerr.cf_stat = RPC_SYSTEMERROR;
+ 			rpc_createerr.cf_error.re_errno = ENOMEM;
+ 			free(auth);
++			free(gd);
+ 			return (NULL);
+ 		}
+ 	}
+@@ -592,7 +593,7 @@ _rpc_gss_refresh(AUTH *auth, rpc_gss_options_ret_t *options_ret)
+ 			if (rpc_gss_oid_to_mech(actual_mech_type, &mechanism)) {
+ 				strncpy(options_ret->actual_mechanism,
+ 					mechanism,
+-					sizeof(options_ret->actual_mechanism));
++					(sizeof(options_ret->actual_mechanism)-1));
+ 			}
+ 
+ 			gd->established = TRUE;
+diff --git a/src/clnt_bcast.c b/src/clnt_bcast.c
+index 98cf061..2ad6c89 100644
+--- a/src/clnt_bcast.c
++++ b/src/clnt_bcast.c
+@@ -330,6 +330,7 @@ rpc_broadcast_exp(prog, vers, proc, xargs, argsp, xresults, resultsp,
+ 	if (nettype == NULL)
+ 		nettype = "datagram_n";
+ 	if ((handle = __rpc_setconf(nettype)) == NULL) {
++		AUTH_DESTROY(sys_auth);
+ 		return (RPC_UNKNOWNPROTO);
+ 	}
+ 	while ((nconf = __rpc_getconf(handle)) != NULL) {
+diff --git a/src/getnetconfig.c b/src/getnetconfig.c
+index 92e7c43..d67d97d 100644
+--- a/src/getnetconfig.c
++++ b/src/getnetconfig.c
+@@ -709,6 +709,8 @@ struct netconfig	*ncp;
+     p->nc_lookups = (char **)malloc((size_t)(p->nc_nlookups+1) * sizeof(char *));
+     if (p->nc_lookups == NULL) {
+ 	free(p->nc_netid);
++	free(p);
++	free(tmp);
+ 	return(NULL);
+     }
+     for (i=0; i < p->nc_nlookups; i++) {
+diff --git a/src/getnetpath.c b/src/getnetpath.c
+index 7c19932..ea1a18c 100644
+--- a/src/getnetpath.c
++++ b/src/getnetpath.c
+@@ -88,6 +88,7 @@ setnetpath()
+     }
+     if ((np_sessionp->nc_handlep = setnetconfig()) == NULL) {
+ 	syslog (LOG_ERR, "rpc: failed to open " NETCONFIG);
++	free(np_sessionp);
+ 	return (NULL);
+     }
+     np_sessionp->valid = NP_VALID;
+diff --git a/src/rpc_generic.c b/src/rpc_generic.c
+index 589cbd5..51f36ac 100644
+--- a/src/rpc_generic.c
++++ b/src/rpc_generic.c
+@@ -319,6 +319,7 @@ __rpc_setconf(nettype)
+ 		handle->nflag = FALSE;
+ 		break;
+ 	default:
++		free(handle);
+ 		return (NULL);
+ 	}
+ 
+diff --git a/src/rpc_soc.c b/src/rpc_soc.c
+index 5a6eeb7..a85cb17 100644
+--- a/src/rpc_soc.c
++++ b/src/rpc_soc.c
+@@ -663,15 +663,17 @@ svcunix_create(sock, sendsize, recvsize, path)
+ 		    strcmp(nconf->nc_protofmly, NC_LOOPBACK) == 0)
+ 			break;
+ 	}
+-	if (nconf == NULL)
++	if (nconf == NULL) {
++		endnetconfig(localhandle);
+ 		return(xprt);
++	}
+ 
+ 	if ((sock = __rpc_nconf2fd(nconf)) < 0)
+ 		goto done;
+ 
+ 	memset(&sun, 0, sizeof sun);
+ 	sun.sun_family = AF_LOCAL;
+-	strncpy(sun.sun_path, path, sizeof(sun.sun_path));
++	strncpy(sun.sun_path, path, (sizeof(sun.sun_path)-1));
+ 	addrlen = sizeof(struct sockaddr_un);
+ 	sa = (struct sockaddr *)&sun;
+ 
+@@ -692,6 +694,8 @@ svcunix_create(sock, sendsize, recvsize, path)
+ 	}
+ 
+ 	xprt = (SVCXPRT *)svc_tli_create(sock, nconf, &taddr, sendsize, recvsize);
++	if (xprt == NULL)
++		close(sock);
+ 
+ done:
+ 	endnetconfig(localhandle);
+diff --git a/src/rpcb_clnt.c b/src/rpcb_clnt.c
+index e45736a..0c34cb7 100644
+--- a/src/rpcb_clnt.c
++++ b/src/rpcb_clnt.c
+@@ -547,6 +547,7 @@ try_nconf:
+ 		if (tmpnconf == NULL) {
+  			rpc_createerr.cf_stat = RPC_UNKNOWNPROTO;
+ 			mutex_unlock(&loopnconf_lock);
++			endnetconfig(nc_handle);
+ 			return (NULL);
+ 		}
+ 		loopnconf = getnetconfigent(tmpnconf->nc_netid);
+diff --git a/src/rtime.c b/src/rtime.c
+index b642840..29fbf0a 100644
+--- a/src/rtime.c
++++ b/src/rtime.c
+@@ -90,6 +90,7 @@ rtime(addrp, timep, timeout)
+ 
+ 	/* TCP and UDP port are the same in this case */
+ 	if ((serv = getservbyname("time", "tcp")) == NULL) {
++		do_close(s);
+ 		return(-1);
+ 	}
+ 
+diff --git a/src/svc_generic.c b/src/svc_generic.c
+index 52a56c2..20abaa2 100644
+--- a/src/svc_generic.c
++++ b/src/svc_generic.c
+@@ -113,6 +113,7 @@ svc_create(dispatch, prognum, versnum, nettype)
+ 				if (l == NULL) {
+ 					warnx("svc_create: no memory");
+ 					mutex_unlock(&xprtlist_lock);
++					__rpc_endconf(handle);
+ 					return (0);
+ 				}
+ 				l->xprt = xprt;
+diff --git a/src/svc_simple.c b/src/svc_simple.c
+index cb58002..c32fe0a 100644
+--- a/src/svc_simple.c
++++ b/src/svc_simple.c
+@@ -157,6 +157,7 @@ rpc_reg(prognum, versnum, procnum, progname, inproc, outproc, nettype)
+ 				((netid = strdup(nconf->nc_netid)) == NULL)) {
+ 				warnx(rpc_reg_err, rpc_reg_msg, __no_mem_str);
+ 				SVC_DESTROY(svcxprt);
++				free(xdrbuf);
+ 				break;
+ 			}
+ 			madenow = TRUE;

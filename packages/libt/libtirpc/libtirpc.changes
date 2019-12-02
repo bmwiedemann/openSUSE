@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:24:59 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Fix previous version:
+  - actually delete
+    0001-xdrstdio_create-buffers-do-not-output-encoded-values.patch
+  - use 0001-Makefile.am-Use-LIBADD-instead-of-LDFLAGS-to-link-ag.patch
+  - use 0002-man-rpc_secure.3t-Fix-typo-in-manpage.patch (renamed from
+    0003-man-rpc_secure.3t-Fix-typo-in-manpage.patch)
+  - use 0003-xdr-add-a-defensive-mask-in-xdr_int64_t-and-xdr_u_in.patch
+    (renamed from
+    0004-xdr-add-a-defensive-mask-in-xdr_int64_t-and-xdr_u_in.patch)
+
+-------------------------------------------------------------------
+Wed Oct 16 11:46:28 UTC 2019 - Petr Vorel <pvorel@suse.cz>
+
+- Updated to libtirpc 1.1.5 rc2 (this includes changes in 1.1.4 release)
+  - add libtirpc-1-1-5-rc1.patch and libtirpc-1-1-5-rc2.patch to reflect
+    upstream changes after 1.1.4 release
+  - remove /etc/bindresvport.blacklist as it's still supported by glibc
+    although it's not compiled with --enable-obsolete-rpc
+
+- Drop patches accepted in previous releases or not needed
+  - 000-bindresvport_blacklist.patch (accepted in 5b037cc9, libtirpc 1.1.4)
+  - 001-new-rpcbindsock-path.patch (not needed, rpcbind now uses /var/run directory)
+  - 002-revert-binddynport.patch (fixed in 2802259, libtirpc-1-0-4-rc1)
+  - 0001-Fix-regression-introduced-by-change-rpc-version-orde.patch
+    (backport of 25d38d7, libtirpc-1-0-4-rc1)
+  - 0001-xdrstdio_create-buffers-do-not-output-encoded-values.patch
+    (backport of 145272c, libtirpc-1-0-4-rc2)
+
+- Add fixes from upcomming release
+  - 0001-Makefile.am-Use-LIBADD-instead-of-LDFLAGS-to-link-ag.patch
+  - 0003-man-rpc_secure.3t-Fix-typo-in-manpage.patch
+  - 0004-xdr-add-a-defensive-mask-in-xdr_int64_t-and-xdr_u_in.patch
+
+-------------------------------------------------------------------
 Mon Mar 11 15:23:12 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix SLES 15 - yp_bind_client_create_v3: RPC: Unknown host (bsc#1126096).

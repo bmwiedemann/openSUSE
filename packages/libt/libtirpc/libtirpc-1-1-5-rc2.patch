@@ -1,0 +1,148 @@
+git diff libtirpc-1-1-5-rc1..libtirpc-1-1-5-rc2
+
+Commits:
+3a17941 Fix EOF detection on non-blocking socket
+e80e668 getrpcent.c: fix typo
+9e738df __getpublickey_real: Removed a warning
+959b200 getnetconfig.c: fix a BAD_FREE (CWE-763)
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+diff --git a/src/getnetconfig.c b/src/getnetconfig.c
+index d67d97d..cfd33c2 100644
+--- a/src/getnetconfig.c
++++ b/src/getnetconfig.c
+@@ -681,6 +681,7 @@ struct netconfig	*ncp;
+ {
+     struct netconfig	*p;
+     char	*tmp;
++    char	*t;
+     u_int	i;
+ 
+     if ((tmp=malloc(MAXNETCONFIGLINE)) == NULL)
+@@ -700,22 +701,21 @@ struct netconfig	*ncp;
+      */
+     *p = *ncp;
+     p->nc_netid = (char *)strcpy(tmp,ncp->nc_netid);
+-    tmp = strchr(tmp, 0) + 1;
+-    p->nc_protofmly = (char *)strcpy(tmp,ncp->nc_protofmly);
+-    tmp = strchr(tmp, 0) + 1;
+-    p->nc_proto = (char *)strcpy(tmp,ncp->nc_proto);
+-    tmp = strchr(tmp, 0) + 1;
+-    p->nc_device = (char *)strcpy(tmp,ncp->nc_device);
++    t = strchr(tmp, 0) + 1;
++    p->nc_protofmly = (char *)strcpy(t,ncp->nc_protofmly);
++    t = strchr(t, 0) + 1;
++    p->nc_proto = (char *)strcpy(t,ncp->nc_proto);
++    t = strchr(t, 0) + 1;
++    p->nc_device = (char *)strcpy(t,ncp->nc_device);
+     p->nc_lookups = (char **)malloc((size_t)(p->nc_nlookups+1) * sizeof(char *));
+     if (p->nc_lookups == NULL) {
+-	free(p->nc_netid);
+ 	free(p);
+ 	free(tmp);
+ 	return(NULL);
+     }
+     for (i=0; i < p->nc_nlookups; i++) {
+-    	tmp = strchr(tmp, 0) + 1;
+-    	p->nc_lookups[i] = (char *)strcpy(tmp,ncp->nc_lookups[i]);
++	t = strchr(t, 0) + 1;
++	p->nc_lookups[i] = (char *)strcpy(t,ncp->nc_lookups[i]);
+     }
+     return(p);
+ }
+diff --git a/src/getpublickey.c b/src/getpublickey.c
+index 8cf4dc2..be37a24 100644
+--- a/src/getpublickey.c
++++ b/src/getpublickey.c
+@@ -74,7 +74,7 @@ __getpublickey_real(netname, publickey)
+ 		return (0);
+ 	}
+ 	*p = '\0';
+-	(void) strncpy(publickey, lookup, HEXKEYBYTES);
++	memcpy(publickey, lookup, HEXKEYBYTES);
+ 	publickey[HEXKEYBYTES] = '\0';
+ 	return (1);
+ }
+diff --git a/src/getrpcent.c b/src/getrpcent.c
+index cba4cd8..e49dc05 100644
+--- a/src/getrpcent.c
++++ b/src/getrpcent.c
+@@ -100,7 +100,7 @@ _rpcdata()
+ 	return (d);
+ }
+ 
+-#if !HAVE_GETRPCBYNYMBER
++#if !HAVE_GETRPCBYNUMBER
+ struct rpcent *
+ getrpcbynumber(number)
+ 	int number;
+diff --git a/src/svc_vc.c b/src/svc_vc.c
+index 97a76a3..c23cd36 100644
+--- a/src/svc_vc.c
++++ b/src/svc_vc.c
+@@ -502,9 +502,14 @@ read_vc(xprtp, buf, len)
+ 	cfp = (struct cf_conn *)xprt->xp_p1;
+ 
+ 	if (cfp->nonblock) {
++		/* Since len == 0 is returned on zero length
++		 * read or EOF errno needs to be reset before
++		 * the read
++		 */
++		errno = 0;
+ 		len = read(sock, buf, (size_t)len);
+ 		if (len < 0) {
+-			if (errno == EAGAIN)
++			if (errno == EAGAIN || errno == EWOULDBLOCK)
+ 				len = 0;
+ 			else
+ 				goto fatal_err;
+diff --git a/src/xdr_rec.c b/src/xdr_rec.c
+index 7d535cf..676cc82 100644
+--- a/src/xdr_rec.c
++++ b/src/xdr_rec.c
+@@ -61,6 +61,7 @@
+ #include <rpc/svc.h>
+ #include <rpc/clnt.h>
+ #include <stddef.h>
++#include <errno.h>
+ #include "rpc_com.h"
+ static bool_t	xdrrec_getlong(XDR *, long *);
+ static bool_t	xdrrec_putlong(XDR *, const long *);
+@@ -537,7 +538,13 @@ __xdrrec_getrec(xdrs, statp, expectdata)
+ 		n = rstrm->readit(rstrm->tcp_handle, rstrm->in_hdrp,
+ 		    (int)sizeof (rstrm->in_header) - rstrm->in_hdrlen);
+ 		if (n == 0) {
+-			*statp = expectdata ? XPRT_DIED : XPRT_IDLE;
++			/* EAGAIN or EWOULDBLOCK means a zero length
++			 * read not an EOF.
++			 */
++			if (errno == EAGAIN || errno == EWOULDBLOCK)
++				*statp = XPRT_IDLE;
++			else
++				*statp = expectdata ? XPRT_DIED : XPRT_IDLE;
+ 			return FALSE;
+ 		}
+ 		if (n < 0) {
+@@ -564,6 +571,7 @@ __xdrrec_getrec(xdrs, statp, expectdata)
+ 			rstrm->in_header &= ~LAST_FRAG;
+ 			rstrm->last_frag = TRUE;
+ 		}
++		rstrm->in_haveheader = 1;
+ 	}
+ 
+ 	n =  rstrm->readit(rstrm->tcp_handle,
+@@ -576,7 +584,13 @@ __xdrrec_getrec(xdrs, statp, expectdata)
+ 	}
+ 
+ 	if (n == 0) {
+-		*statp = expectdata ? XPRT_DIED : XPRT_IDLE;
++		/* EAGAIN or EWOULDBLOCK means a zero length
++		 * read not an EOF.
++		 */
++		if (errno == EAGAIN || errno == EWOULDBLOCK)
++			*statp = XPRT_IDLE;
++		else
++			*statp = expectdata ? XPRT_DIED : XPRT_IDLE;
+ 		return FALSE;
+ 	}
+ 

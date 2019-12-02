@@ -1,0 +1,44 @@
+From d1208b5de7b52172a34e3a7262e96f99830c9770 Mon Sep 17 00:00:00 2001
+From: Stefano Garzarella <sgarzare@redhat.com>
+Date: Tue, 3 Sep 2019 10:54:11 -0400
+Subject: [PATCH 4/7] xdr: add a defensive mask in xdr_int64_t() and
+ xdr_u_int64_t()
+
+In order to be more defensive, we should mask bits of u_int64_t
+value if we want to use only the first 32bit.
+
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+[Upstream status: d1208b5de7b52172a34e3a7262e96f99830c9770]
+---
+ src/xdr.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/xdr.c b/src/xdr.c
+index b9a1558..28d1382 100644
+--- a/src/xdr.c
++++ b/src/xdr.c
+@@ -877,7 +877,8 @@ xdr_int64_t(xdrs, llp)
+ 		if (XDR_GETLONG(xdrs, (long *)&ul[1]) == FALSE)
+ 			return (FALSE);
+ 		*llp = (int64_t)
+-		    (((u_int64_t)ul[0] << 32) | ((u_int64_t)ul[1]));
++		    (((u_int64_t)ul[0] << 32) |
++		     ((u_int64_t)(ul[1]) & 0xffffffff));
+ 		return (TRUE);
+ 	case XDR_FREE:
+ 		return (TRUE);
+@@ -910,7 +911,8 @@ xdr_u_int64_t(xdrs, ullp)
+ 		if (XDR_GETLONG(xdrs, (long *)&ul[1]) == FALSE)
+ 			return (FALSE);
+ 		*ullp = (u_int64_t)
+-		    (((u_int64_t)ul[0] << 32) | ((u_int64_t)ul[1]));
++		    (((u_int64_t)ul[0] << 32) |
++		     ((u_int64_t)(ul[1]) & 0xffffffff));
+ 		return (TRUE);
+ 	case XDR_FREE:
+ 		return (TRUE);
+-- 
+2.23.0
+
