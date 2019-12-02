@@ -24,9 +24,9 @@
 %define psuffix %{nil}
 %bcond_with gui
 %endif
-%define shortversion 3.15
+%define shortversion 3.16
 Name:           cmake%{psuffix}
-Version:        3.15.5
+Version:        3.16.0
 Release:        0
 URL:            https://www.cmake.org/
 Source0:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}.tar.gz
@@ -37,11 +37,9 @@ Source4:        cmake.prov
 Source5:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt
 Source6:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt.asc
 Source7:        cmake.keyring
-Patch1:         cmake-fix-ruby-test.patch
-# PATCH-FIX-UPSTREAM form.patch -- set the correct include path for the ncurses includes
-Patch2:         form.patch
+Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
-Patch3:         feature-suse-python-interp-search-order.patch
+Patch1:         feature-suse-python-interp-search-order.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-mini-devel

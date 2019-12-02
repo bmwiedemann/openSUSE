@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 27 00:00:25 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Fix numbering of patches.
+
+-------------------------------------------------------------------
+Tue Nov 26 20:16:48 UTC 2019 - Christoph G <foss@grueninger.de>
+
+- update to CMake 3.16
+  Changelog see https://blog.kitware.com/cmake-3-16-0-available-for-download/
+- drop patch form.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Nov 13 13:48:07 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch back to libcurl-mini-devel to avoid new build cycle
