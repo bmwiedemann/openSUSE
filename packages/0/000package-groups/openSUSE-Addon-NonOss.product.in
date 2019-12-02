@@ -78,7 +78,7 @@
                name="openSUSE-Addon-NonOss-FTP" 
                flavor="ftp"
                sourcemedia="2"
-               mediastyle="suse-tumbleweed"
+               mediastyle="openSUSE"
                use_required="true" 
                use_recommended="true" 
                use_undecided="true"

@@ -676,4 +676,12 @@ remove obsolete _opt patterns</comment>
     <comment>Java bootstrap packages that should not end up on user machine</comment>
     <requestid>750991</requestid>
   </revision>
+  <revision rev="95" vrev="93">
+    <srcmd5>8d5e15706972d3167bff0900d45a07a8</srcmd5>
+    <version>unknown</version>
+    <time>1575282726</time>
+    <user>dimstar_suse</user>
+    <comment>switch to generic openSUSE mediastyle</comment>
+    <requestid>751326</requestid>
+  </revision>
 </revisionlist>
