@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:01:29 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.8
+  * Add json rendering to jinja templates for old salt versions 
+
+-------------------------------------------------------------------
 Wed Nov 13 11:59:38 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.3.7
