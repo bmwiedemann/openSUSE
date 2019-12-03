@@ -1,7 +1,7 @@
 #
 # spec file for package espeak-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define sover   1
 Name:           espeak-ng
-Version:        1.49.2
+Version:        1.50
 Release:        0
 Summary:        Software speech synthesizer (text-to-speech)
 License:        GPL-3.0-or-later AND BSD-2-Clause AND Apache-2.0 AND Unicode-DFS-2015
 Group:          Productivity/Multimedia/Other
-Url:            https://github.com/espeak-ng/espeak-ng
+URL:            https://github.com/espeak-ng/espeak-ng
 Source0:        https://github.com/espeak-ng/espeak-ng/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM espeak-ng-1.49.2-fix_no_return_nonvoid.patch aloisio@gmx.com -- addresses rpmlint complaint
-Patch0:         espeak-ng-1.49.2-fix_no_return_nonvoid.patch
 Patch1:         espeak-ng-1.49.2-fix_no_return_nonvoid-in-configure.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2.4.2
@@ -78,11 +76,11 @@ Software speech synthesizer (text-to-speech), support
 library.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 # let's have a versioned data dir
 sed -i '/^DATADIR/s/data/data-%{version}/' Makefile.am
+# remove spurious executable flag
+chmod -x espeak-ng-data/lang/tai/shn
 
 %build
 ./autogen.sh
@@ -99,10 +97,9 @@ find %{buildroot} \( -name *.a -o -name *.la -o -name libespeak-ng-test* \) -del
 pushd %{buildroot}%{_libdir}
 ln -s lib%{name}.so.%{sover} libespeak.so
 popd
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files
