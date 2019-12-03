@@ -1,7 +1,7 @@
 #
-# spec file for package jetty
+# spec file for package jetty-minimal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,6 @@ Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz
-Patch0:         jetty-annotations-asm6.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
@@ -189,8 +188,6 @@ Summary:        Javadoc for %{name}
 
 %prep
 %setup -q -n %{base_name}.project-%{base_name}-%{version}%{addver}
-
-%patch0 -p1
 
 find . -name "*.?ar" -exec rm {} \;
 find . -name "*.class" -exec rm {} \;

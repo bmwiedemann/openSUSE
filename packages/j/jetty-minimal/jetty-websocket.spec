@@ -1,7 +1,7 @@
 #
-# spec file for package jetty
+# spec file for package jetty-websocket
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,6 @@ Summary:        The websocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz
-Patch0:         jetty-annotations-asm6.patch
 BuildRequires:  fdupes
 # Multiple providers, chose the 1.0 one over 1.1, since
 # the relevant artifacts assume the API version 1.0
@@ -114,8 +113,6 @@ Summary:        Javadoc for %{name}
 %prep
 %setup -q -n %{base_name}.project-%{base_name}-%{version}%{addver}
 
-%patch0 -p1
-
 find . -name "*.?ar" -exec rm {} \;
 find . -name "*.class" -exec rm {} \;
 
@@ -180,7 +177,7 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 # TODO remove when jetty-setuid is packaged
 %pom_xpath_remove "pom:execution[pom:id[text()='copy-setuid-deps']]" jetty-home/pom.xml
 
-# We don't have gcloud-java-datastore in Fedora
+# We don't have gcloud-java-datastore
 %pom_disable_module jetty-gcloud
 %pom_disable_module test-gcloud-sessions tests/test-sessions
 %pom_remove_dep :jetty-gcloud-session-manager jetty-home
@@ -190,12 +187,12 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 %pom_disable_module test-memcached-sessions tests/test-sessions
 %pom_remove_dep :jetty-memcached-sessions jetty-home
 
-# Hazelcast in Fedora is too old to build against
+# We don't have hazelcast
 %pom_disable_module jetty-hazelcast
 %pom_disable_module test-hazelcast-sessions tests/test-sessions
 %pom_remove_dep :jetty-hazelcast jetty-home
 
-# Infinispan in Fedora is too old to build against
+# We don't have infinispan
 %pom_disable_module jetty-infinispan
 %pom_disable_module test-infinispan-sessions tests/test-sessions
 %pom_remove_dep :infinispan-embedded jetty-home
