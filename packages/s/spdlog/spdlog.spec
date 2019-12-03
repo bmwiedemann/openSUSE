@@ -1,7 +1,7 @@
 #
 # spec file for package spdlog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,27 @@
 #
 
 
+%define _sover  1
 Name:           spdlog
-Version:        1.3.1
+Version:        1.4.2
 Release:        0
-Summary:        C++ header only logging library
+Summary:        C++ logging library
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  benchmark-devel  >= 1.4.0
+BuildRequires:  benchmark-devel >= 1.4.0
 BuildRequires:  cmake
+BuildRequires:  gcc
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 8
 %else
 BuildRequires:  gcc8-c++
 %endif
-BuildRequires:  gcc
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(libsystemd)
 
 %description
 This is a packaged version of the gabime/spdlog header-only C++
@@ -43,13 +45,21 @@ logging library available at Github.
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Languages/C and C++
+Requires:       lib%{name}%{_sover} = %{version}
 Requires:       libstdc++-devel
 Requires:       pkgconfig(fmt)
-Provides:       %{name} = %{version}
 
 %description devel
 The %{name}-devel package contains C++ header files for developing
 applications that use %{name}.
+
+%package     -n lib%{name}%{_sover}
+Summary:        C++ logging library
+Group:          System/Libraries
+
+%description -n lib%{name}%{_sover}
+This is a packaged version of the gabime/spdlog C++ logging library
+available at Github.
 
 %prep
 %autosetup
@@ -60,11 +70,12 @@ sed -i -e "s,\r,," README.md LICENSE
 export CXX=g++
 test -x "$(type -p g++-8)" && export CXX=g++-8
 %cmake -G Ninja \
-	-DSPDLOG_BUILD_TESTS=ON \
+    -DSPDLOG_BUILD_TESTS=ON \
     -DSPDLOG_BUILD_BENCH=OFF \
     -DSPDLOG_FMT_EXTERNAL=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DSPDLOG_BUILD_EXAMPLES=OFF \
+    -DSPDLOG_BUILD_SHARED=ON \
 ..
 %ninja_build
 
@@ -72,17 +83,23 @@ test -x "$(type -p g++-8)" && export CXX=g++-8
 %ninja_install -C build
 
 %check
+export LD_LIBRARY_PATH="%{_builddir}/%{name}-%{version}/build"
 %ctest
 
+%post -n lib%{name}%{_sover} -p /sbin/ldconfig
+
+%postun -n lib%{name}%{_sover} -p /sbin/ldconfig
+
 %files devel
-%if 0%{?sle_version} > 120200
 %license LICENSE
-%else
-%doc LICENSE
-%endif
 %doc README.md
 %{_includedir}/%{name}
-%{_libdir}/cmake/%{name}
+%{_libdir}/lib%{name}.so
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/cmake
 %{_libdir}/pkgconfig/%{name}.pc
+
+%files -n lib%{name}%{_sover}
+%{_libdir}/lib%{name}.so.%{_sover}*
 
 %changelog

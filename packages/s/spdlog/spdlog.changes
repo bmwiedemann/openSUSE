@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Fri Nov 29 08:12:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.2
+  * Set additional CPACK variables for RPM generator (#1246).
+    Thanks @tcraigtyler.
+  * Fix compile when SPDLOG_WCHAR_FILENAMES is defined (#1249 ).
+  * Fix stdout color sink under Windows to better handle cases
+    when no console available (#1250).
+  * Fix windows compile error where std::max is overriden by a
+    macro. (#1251, #1252). Thanks @bsergean.
+  * CMakeLists.txt: Moved the installed lib to
+    CMAKE_INSTALL_LIBDIR (#1253). Thanks @DasRoteSkelett.
+  * CMakeLists.txt: Fixed pkg-config generation (cf2bf48,
+    fb70eca). Thanks @SammyEnigma.
+  version 1.4.1:
+  * Added pkgconfig file to CMake install - Thanks @orbea for
+    reporting and fixing (#1237 #1238).
+  * Fix regression in wchar support under windows. Thanks
+    @Bak-Jin-Hyeong for reporting and fixing (#1239 #1240).
+  * CMake: Do not install bundled fmt if SPDLOG_FMT_EXTERNAL is
+    defined. Thanks @orbea (#1241).
+  version 1.4.0:
+  Improvements
+  * spdlog can now be compiled as a static or shared lib (thanks
+    @DavidZemon for the help).
+  * Using the compiled lib improves greatly compile times when
+    using spdlog and is very recommended.
+      $ cd spdlog && mkdir build && cd build
+      # Build is static lib (pass -DCMAKE_BUILD_TYPE=shared for building as shared lib)
+      $ cmake .. && make -j
+  * Upgraded to the latest and greatest fmt library version
+    6.0.0. Thanks @tgpfeiffer (and to @vitaut for fmt!).
+  * Support for -fno-exceptions (disabled by default). Enabling
+    this will replace all throw() statements in spdlog with
+    std::abort(). To enable, pass -DSPDLOG_NO_EXCEPTIONS=ON to CMake
+    before building spdlog.
+  * support for building spdlog with meson. Thanks @mensinda
+  * Backtrace support - store debug/trace messages in a ring
+    buffer to display later on demand. Very useful (thanks
+    @MathijsV for the idea):
+      spdlog::enable_backtrace(32); // create ring buffer with capacity of 32  messages
+      // or my_logger->enable_backtrace(32)..
+      for(int i = 0; i < 100; i++)
+      {
+         spdlog::debug("Backtrace message {}", i); // not logged yet..
+      }
+      // e.g. if some error happened:
+      spdlog::dump_backtrace(); // log them now! show the last 32 messages
+      // or my_logger->dump_backtrace(32)..
+  * Systemd support. Thanks @WarShoe (#1027)
+  * Support for cleaning old files in daily_logger.
+  * Numerous CMake build improvements. Thanks @DavidZemon ,
+    @jktjkt , @ksergey , @mnemotic , @cneumann , @dpacbach ,
+    @FrancoisChabot , @myd7349 , @matt77hias
+  * Better support for various Unix BSDs (DragonFly, NetBSD,
+    FreeBSD, OpenBSD). Thanks @jbeich (#1234)
+  * Provide source location support for systemd sink. Thanks
+    @jbelloncastro (#1122)
+  * Added fmt::(w)string_view support. Thanks @matt77hias (#1139)
+  * Add option to force color output without TTY . Thanks @psalz
+    (#1175)
+  * Add more overloads to spdlog::log and spdlog::logger::log.
+    Thanks @sylveon (@1169)
+  * Add public API spdlog::initialize_logger for create loggers
+    manually. Thanks @tt4g (#1035)
+  * Expose should_do_colors_ in ansicolor_sink.h. Thanks Florian
+    Wörter (#1022)
+  * Add tweak support for user short level names. Thanks
+    @MFornander (#996)
+  * Add method to filesinks to return filename. Thanks
+    @markniebur (#978)
+  * rotating_sink: Add option to rotate on open. Thanks @pwm1234
+    (#958)
+  * Allow filename/line number at all levels. Add function name
+    %! support. Thanks @possiblyhuman (#956)
+  * New dups_filter sink -duplicate message removal sink. It
+    will skip a message if previous one is identical and less
+    than "max_skip_duration" old.
+  * New '%o', '%i', '%u', '%O' format flags - Display elapsed
+    time in mills/micros/nanos/seconds since previous message.
+  * Some minor pattern formatter performance improvements.
+  Fixes
+  * Fix Wundef in os-inl.h. Thanks @AMS21 (#1189)
+  * Fix use of old style cast in os-inl.h. Thanks @AMS21 (#1164)
+  * Prevent NEAR and FAR macro definitions from leaking on
+    Windows platforms. Thanks @PeterTh (#1142)
+  * Fix syslog output. Thanks @mattiasj-axis (#1140)
+  * Fix msg.time in daily_file_sink. Thanks @s-shin (#1129)
+  * Fix missing include for null_mutex in rotating_file_sink.h.
+    Thanks @casperevan (#1120)
+  * Fix warning: redundant move in return statement. Thanks
+    @MarkKoester (#1119)
+  * Fix use of incomplete type in stdout sinks. Thanks
+    @DanielChabrowski (#1118)
+  * Fix deprecation warnings in filename_to_str and improve
+    performance of wbuf_to_utf8buf. Thanks @sylveon (#1127)
+  * Update README.md. Thanks @martinkrammer (#1057)
+  * Remove extra semicolon. Thanks @Jerry-Ma (#1202)
+  * Fix unexpected log macro expansion. Thanks @db-panda (#1055)
+  * Namespace qualify stat functions. Thanks @p-po (#1045)
+  * Fix typo in Android logger. Thanks @romainthomas (#994)
+  * Remove unnecessary log function. Thanks @DanielChabrowski
+    (#988)
+  * Allow custom formatter in sink's ctor. Thanks
+    @DanielChabrowski (#986)
+  * Fix shadowed parameter. Thanks @ZGCDDoo (#984)
+  * Update log_msg.h. Thanks @scribam (#969)
+  * Fix #benchmark link error. Thanks @myd7349 (#962)
+  * Fix typo in file_helper.h. Thanks @brridder (#955)
+
+- Build as shared library and added pertinent subpackage
+
+- Add systemd as build requirement
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon May 27 06:11:03 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Added additional building options 

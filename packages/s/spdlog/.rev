@@ -90,4 +90,12 @@
     <comment>- Added additional building options (forwarded request 705726 from Dead_Mozay)</comment>
     <requestid>705730</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cf7c96a6e648451ec5a16cd9e8a41298</srcmd5>
+    <version>1.4.2</version>
+    <time>1575373216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752440</requestid>
+  </revision>
 </revisionlist>
