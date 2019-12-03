@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ ExcludeArch:    s390 s390x
 %if "%{flavor}" == "gnu-hpc"
 %global compiler_family gnu
 %undefine c_f_ver
-%undefine mpi_flavor 
+%undefine mpi_flavor
 %bcond_without hpc
 %endif
 
@@ -94,7 +94,7 @@ ExcludeArch:    s390 s390x
 %if "%{flavor}" == "gnu7-hpc"
 %global compiler_family gnu
 %define c_f_ver 7
-%undefine mpi_flavor 
+%undefine mpi_flavor
 %bcond_without hpc
 %endif
 
@@ -142,7 +142,7 @@ ExcludeArch:    s390 s390x
 %if "%{flavor}" == "gnu8-hpc"
 %global compiler_family gnu
 %define c_f_ver 8
-%undefine mpi_flavor 
+%undefine mpi_flavor
 %bcond_without hpc
 %endif
 
@@ -190,7 +190,7 @@ ExcludeArch:    s390 s390x
 %if "%{flavor}" == "gnu9-hpc"
 %global compiler_family gnu
 %define c_f_ver 9
-%undefine mpi_flavor 
+%undefine mpi_flavor
 %bcond_without hpc
 %endif
 
@@ -269,8 +269,10 @@ ExclusiveArch:  do_not_build
 %{?with_hpc:%{!?compiler_family:%global compiler_family gnu}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
-# For compatibility package names
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
+%if 0%{?suse_version} >= 1550 || "%{mpi_flavor}" != "openmpi"  || "%{mpi_ver}" != "1"
 %define mpi_ext %{?mpi_ver}
+%endif
 
 %if %{with hpc}
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?with_mpi:-m {%mpi_flavor}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
@@ -334,9 +336,9 @@ BuildRequires:  hdf5%{p_suffix}-devel
 BuildRequires:  libhdf5_hl%{p_suffix}
  %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
-  %if "%{flavor}" == "openmpi"
-BuildRequires:  libpnetcdf%{p_suffix}
 BuildRequires:  parallel-netcdf%{p_suffix}-devel
+  %if "%{flavor}" == "openmpi1"
+BuildRequires:  libpnetcdf%{p_suffix}
   %endif
  %endif
 %else
@@ -351,7 +353,7 @@ BuildRequires:  %{mpi_flavor}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macro
 Requires:       %{libname -s %{sonum}} = %{version}
 
 %description
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -366,13 +368,13 @@ Group:          Productivity/Scientific/Other
 Provides:       %{libname}-4 = %{version}
 Obsoletes:      %{libname}-4 < %{version}
 %endif
-# To avoid unresolvable errors due to multiple providers of the library
 %{!?with_hpc:Provides:       %{libname} = %{version}}
 Obsoletes:      %{libname} < %{version}
 %if %{without hpc}
+# To avoid unresolvable errors due to multiple providers of the library
 Requires:       libhdf5%{p_suffix}
 Requires:       libhdf5_hl%{p_suffix}
-%if %{flavor} == "openmpi"
+%if %{flavor} == "openmpi1"
 %{?with_mpi:Requires:       libpnetcdf%{p_suffix}}
 %endif
 %else
@@ -382,7 +384,7 @@ Requires:       libhdf5_hl%{hpc_package_name_tail} >= 1.8.8
 %endif
 
 %description -n %{libname -s %{sonum}}
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -421,7 +423,7 @@ Provides:       %{pname}-rpm-macros = %version
 Conflicts:      otherproviders(%{pname}-rpm-macros)
 
 %description devel-data
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -448,7 +450,7 @@ Requires:       hdf5%{hpc_package_name_tail}-devel >= 1.8.8
 %endif
 
 %description devel
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -468,7 +470,7 @@ Requires:       libcurl-devel >= 7.18.0
 Requires:       zlib-devel >= 1.2.5
 
 %description devel-static
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -497,8 +499,8 @@ chmod a-x RELEASE_NOTES.md
 %if %{without mpi}
 export CC=gcc CXX=g++ FC=gfortran
 %else
-export CC=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpicc 
-export FC=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpif90 
+export CC=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpicc
+export FC=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpif90
 export CXX=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpic++
 %endif
 autoreconf -fv
@@ -556,7 +558,7 @@ EOF
 
 %if %{without hpc}
  %if %{with mpi}
-# Module files 
+# Module files
 mkdir -p %{buildroot}%{_datadir}/modules/%{pname}-%{mpi_flavor}%{?mpi_ext}
 cat << EOF > %{buildroot}%{_datadir}/modules/%{pname}-%{mpi_flavor}%{?mpi_ext}/%version
 #%%Module
@@ -648,7 +650,7 @@ module load %{hdf5_module_file}
 
 %post -n %{libname -s %{sonum}} -p /sbin/ldconfig
 
-%postun -n %{libname -s %{sonum}} 
+%postun -n %{libname -s %{sonum}}
 /sbin/ldconfig
 %{?with_hpc:%hpc_module_delete_if_default}
 
