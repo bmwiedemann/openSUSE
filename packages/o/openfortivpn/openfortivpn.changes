@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 28 19:20:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.0
+  * allow to connect with empty password (and with smartcard
+    instead of username)
+  * properly handle manipulations of resolv.conf
+  * support dns-suffix feature
+  * several codacy fixes
+  * Add smartcard support with openssl-engine
+  * correctly shift masks for cidr notation on MAC
+  * one-byte fix to build with lcc compiler
+  * pass space character as %20 instead of encoding it as '+'
+
+- Update to version 1.10.0
+  * fix openssl 1.1.x compatibility issues
+  * Connect to old TLSv1.0 software - override new openssl defaults.
+  * suppress cleartext password in debug detail output / add new
+    verbosity level
+  * increase speed setting for pppd
+  * configure.ac: rt_dst: don't run tests when option is passed
+  * configure.ac: don't check file path if --with/--disable specified
+  * userinput: pass a hint to the pinentry program
+  * tunnel: make pppd default to logging to stderr
+  * tunnel: pass our stderr to the pppd slave
+
+-------------------------------------------------------------------
 Sun Mar 17 11:52:47 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.9.0
