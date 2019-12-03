@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 14:50:25 UTC 2019 - Julio González Gil <jgonzalez@suse.com>
+
+- Fix building for s390x (bsc#1158198)
+
+-------------------------------------------------------------------
 Mon Jun  3 10:20:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.28.2:

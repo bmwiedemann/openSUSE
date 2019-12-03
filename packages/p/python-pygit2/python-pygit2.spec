@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygit2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -62,7 +62,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %check
 rm -rf pygit2
-%pytest_arch
+# test_no_context_lines failing on big endian
+# https://github.com/libgit2/pygit2/issues/812
+%pytest_arch -k 'not test_no_context_lines'
 
 %files %{python_files}
 %license COPYING

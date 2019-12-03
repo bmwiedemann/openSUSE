@@ -195,4 +195,12 @@
   * Test updates #911</comment>
     <requestid>730403</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e4fcd1c6dc5d6bec36c8bebd7051c08a</srcmd5>
+    <version>0.28.2</version>
+    <time>1575373410</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building for s390x (bsc#1158198)</comment>
+    <requestid>753142</requestid>
+  </revision>
 </revisionlist>
