@@ -1,7 +1,7 @@
 #
 # spec file for package clustduct
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %bcond_with pdfdoc
 
 Name:           clustduct
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 Summary:        Framework which connects a genders database to dnsmasq
 License:        BSD-3-Clause
 Group:          System/Management
-Source0:        https://github.com/mslacken/clustduct/archive/v%{version}.tar.gz#/clustduct-%{version}.tar.gz
+Source0:        clustduct-%{version}.tar.xz
 Source1:        clustduct-rpmlintrc
-Url:            https://github.com/mslacken/clustduct   
+URL:            https://github.com/mslacken/clustduct   
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  coreutils
