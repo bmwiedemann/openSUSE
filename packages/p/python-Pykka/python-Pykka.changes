@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  2 14:30:24 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.0.2:
+  - Make :class:`~pykka.ActorRef` hashable
+  - Fix test suite run with pytest-mocker >= 1.11.2.
+
+-------------------------------------------------------------------
 Tue May 21 10:49:22 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.0.0
