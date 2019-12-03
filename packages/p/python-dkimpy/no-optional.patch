@@ -1,0 +1,26 @@
+Index: dkimpy-0.9.3/dkim/__init__.py
+===================================================================
+--- dkimpy-0.9.3.orig/dkim/__init__.py
++++ dkimpy-0.9.3/dkim/__init__.py
+@@ -38,18 +38,9 @@ import logging
+ import re
+ import time
+ 
+-# only needed for arc
+-try:
+-    from authres import AuthenticationResultsHeader
+-except ImportError:
+-    pass
+-
+-# only needed for ed25519 signing/verification
+-try:
+-    import nacl.signing
+-    import nacl.encoding
+-except ImportError:
+-    pass
++from authres import AuthenticationResultsHeader
++import nacl.signing
++import nacl.encoding
+ 
+ from dkim.canonicalization import (
+     CanonicalizationPolicy,
