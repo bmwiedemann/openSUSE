@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Dec  2 10:47:16 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Tue Oct  1 12:18:11 UTC 2019 - pgajdos@suse.com
+
+- initial version 3.8.1, needed by python-django-haystack [SLE-7686]
+
