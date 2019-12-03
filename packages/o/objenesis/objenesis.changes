@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 29 08:34:02 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.1
+- Do not force building with java-devel < 9
+- Build with source/target level 8, since it is the one that is
+  the lowest supported combination by upstream for this release
+
+-------------------------------------------------------------------
 Sat Oct  5 16:35:26 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove all reference to parent from pom files

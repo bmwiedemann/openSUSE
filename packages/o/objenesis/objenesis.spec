@@ -1,7 +1,7 @@
 #
 # spec file for package objenesis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,8 @@
 #
 
 
-%global major 2
-%global minor 6
+%global major 3
+%global minor 1
 %global micro 0
 %global fullversion %{major}.%{minor}.%{micro}
 %global specversion %{major}.%{minor}
@@ -36,10 +36,8 @@ Group:          Development/Libraries/Java
 URL:            http://objenesis.org/
 Source0:        https://github.com/easymock/%{name}/archive/%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-# uses sun.misc.Unsafe
-BuildConflicts: java-devel >= 9
 BuildArch:      noarch
 
 %description
@@ -77,7 +75,6 @@ This package contains the API documentation for %{name}.
 %pom_xpath_remove pom:addMavenDescriptor
 
 %pom_remove_plugin :maven-timestamp-plugin
-%pom_remove_plugin :maven-license-plugin
 %pom_xpath_remove "pom:dependency[pom:scope='test']" tck
 
 %pom_xpath_remove pom:build/pom:extensions
@@ -89,11 +86,12 @@ done
 
 %build
 mkdir -p main/build/classes
-javac -d main/build/classes -source 6 -target 6 -encoding utf-8 \
+javac -d main/build/classes -source 8 -target 8 -encoding utf-8 \
   $(find main/src/main/java -name *.java | xargs)
 jar cf %{name}-%{version}.jar -C main/build/classes .
 
 touch manifest.txt
+echo "Automatic-Module-Name: org.objenesis" >> manifest.txt  
 echo "Bundle-Description: A library for instantiating Java objects" >> manifest.txt
 echo "Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt" >> manifest.txt
 echo "Bundle-Name: Objenesis" >> manifest.txt
@@ -116,7 +114,7 @@ echo "Require-Capability: osgi.ee;filter:=\"(&(osgi.ee=JavaSE)(version=1.6))\"" 
 jar ufm %{name}-%{version}.jar manifest.txt
 
 mkdir -p tck/build/classes
-javac -d tck/build/classes -source 6 -target 6 -encoding utf-8 \
+javac -d tck/build/classes -source 8 -target 8 -encoding utf-8 \
   -cp %{name}-%{version}.jar \
   $(find tck/src/main/java -name *.java | xargs)
 jar cf %{name}-tck-%{version}.jar -C tck/build/classes .
@@ -124,7 +122,7 @@ jar uf %{name}-tck-%{version}.jar -C tck/src/main/resources .
 jar ufe %{name}-tck-%{version}.jar org.objenesis.tck.Main
 
 mkdir -p build/apidoc
-javadoc -d build/apidoc -source 6 -encoding utf-8 \
+javadoc -d build/apidoc -source 8 -encoding utf-8 -notimestamp \
   $(find main/src/main/java -name *.java && \
     find tck/src/main/java -name *.java | xargs)
 

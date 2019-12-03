@@ -23,4 +23,12 @@
     <comment>Remove all reference to parent from pom files</comment>
     <requestid>735442</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03bb4009ae75b1bd014f7fd6e710f4f4</srcmd5>
+    <version>3.1</version>
+    <time>1575373220</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade to 3.1 + allow building with jdk &gt;= 9</comment>
+    <requestid>752797</requestid>
+  </revision>
 </revisionlist>
