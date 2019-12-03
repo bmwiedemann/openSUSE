@@ -1,7 +1,7 @@
 #
 # spec file for package libfilezilla
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define major		0
+%define major		2
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.18.2
+Version:        0.19.1
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -47,7 +47,9 @@ needed for filezilla (an FTP client and server) to build.
 
 %package -n	%{libname}
 Summary:        C++ library for filezilla
+# Provide basename, required for the (unversioned) -lang package.
 Group:          System/Libraries
+Provides:       %{name} = %{version}
 
 %description -n	%{libname}
 libfilezilla is C++ library, offering some basic functionality to
@@ -68,6 +70,23 @@ Requires:       %{libname} = %{version}-%{release}
 
 %description -n	%{develname}
 Files needed for development with %{name}.
+
+# Need %%lang_package expanded for an extra conflict with an old library package
+%package lang 
+Summary:        Translations for package %{name} 
+# in libfilezilla 0.18.x, we wrongly shipped the languages files directly in the library package
+Group:          System/Localization 
+Conflicts:      libfilezilla0 < 0.19
+
+Requires:       %{name} = %{version} 
+
+Provides:       %{name}-lang-all = %{version} 
+BuildArch:      noarch 
+
+%description lang 
+Provides translations for the "%{name}" package.
+
+
 
 %prep
 %setup -q
@@ -95,10 +114,12 @@ rm -f %{buildroot}%{_docdir}/%{develname}/latex/refman.tex
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{libname} -f %{name}.lang
+%files -n %{libname}
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
 %{_libdir}/%{name}.so.%{major}*
+
+%files lang -f %{name}.lang
 
 %files -n %{develname}
 %dir %{_docdir}/%{develname}
