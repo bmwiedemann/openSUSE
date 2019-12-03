@@ -1,0 +1,5 @@
+addFilter("devel-file-in-non-devel-package")
+addFilter("version-control-internal-file")
+addFilter("zero-length")
+addFilter("hidden-file-or-dir")
+addFilter("script-without-shebang")
