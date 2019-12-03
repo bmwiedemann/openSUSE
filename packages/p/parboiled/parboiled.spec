@@ -49,9 +49,8 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 %if %{with scala}
-BuildRequires:  ant-scala
+BuildRequires:  ant-scala >= 2.10.7
 BuildRequires:  parboiled
-BuildConflicts: java-devel >= 9
 Requires:       mvn(org.parboiled:parboiled-core) = %{version}
 Requires:       mvn(org.scala-lang:scala-library)
 %else
