@@ -389,6 +389,8 @@ python3 setup.py build
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib}
 install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/bash-completion/completions/az.completion.sh
 %fdupes %{buildroot}%{python3_sitelib}
+rm -rf %{buildroot}%{python3_sitelib}/azure/cli/command_modules/__init__.*
+rm -rf %{buildroot}%{python3_sitelib}/azure/cli/command_modules/__pycache__
 rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__init__.*
 rm -rf %{buildroot}%{python3_sitelib}/azure/cli/__pycache__
 rm -rf %{buildroot}%{python3_sitelib}/azure/__init__.*

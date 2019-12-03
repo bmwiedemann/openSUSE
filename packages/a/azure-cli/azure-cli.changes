@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 10:38:16 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove namespace files provided by azure-cli-command-modules-nspkg
+
+-------------------------------------------------------------------
 Thu Nov 28 14:45:49 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
