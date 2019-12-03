@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -184,16 +184,13 @@ exit 0
 %post -n libshibsp%{libvers} -p /sbin/ldconfig
 %post -n libshibsp-lite%{libvers} -p /sbin/ldconfig
 %post
-# Key generation or ownership fix
-cd %{_sysconfdir}/%{realname}
-if [ -f sp-key.pem ] ; then
-	chown %{runuser}:%{runuser} sp-key.pem sp-cert.pem 2>/dev/null || :
-else
-	/bin/sh ./keygen.sh -b -u %{runuser} -g %{runuser}
-fi
 
-# Fix ownership of log files (even on new installs, if they're left from an older one).
-chown %{runuser}:%{runuser} %{_localstatedir}/log/%{realname}/* 2>/dev/null || :
+# Generate two keys on new installs.
+if [ $1 -eq 1 ] ; then
+        cd %{_sysconfdir}/shibboleth
+        /bin/sh ./keygen.sh -b -n sp-signing -u %{runuser} -g %{runuser}
+        /bin/sh ./keygen.sh -b -n sp-encrypt -u %{runuser} -g %{runuser}
+fi
 
 %service_add_post shibd.service
 

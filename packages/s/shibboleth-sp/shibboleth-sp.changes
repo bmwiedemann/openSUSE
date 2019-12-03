@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  2 10:36:30 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- remove fixing of the ownership of log files as this allows shibd
+  to escalate to root [bsc#1157471] [CVE-2019-19191]
+- generate two keys on new installs instead of just one
+
+-------------------------------------------------------------------
 Fri Apr 26 10:46:00 UTC 2019 - mvetter@suse.com
 
 - bsc#1130588: Require shadow instead of old pwdutils
