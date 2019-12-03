@@ -1,7 +1,7 @@
 #
 # spec file for package godot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define ca_bundle /var/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -102,7 +102,7 @@ Provides:       bundled(libwebm) = 1.0.2
 Provides:       bundled(minizip) = 1.2.11
 
 # Could be unbundled if packaged.
-# Version: git (c1f6e20, 2018)
+# Version: git (25241c5, 2019)
 Provides:       bundled(nanosvg)
 
 # Could be unbundled if packaged.
@@ -111,10 +111,10 @@ Provides:       bundled(squish) = 1.15
 # Can't be unbundled out-of-the-box as it uses experimental APIs available
 # only to static linking. They're not critical features though and could
 # maybe be patched away to link against a shared zstd.
-Provides:       bundled(zstd) = 1.3.8
+Provides:       bundled(zstd) = 1.4.4
 
 # Has custom changes made to library to aid in build configurations
-Provides:       bundled(libwebsockets) = 3.1.0
+Provides:       bundled(libwebsockets) = 3.0.1
 
 %description
 Godot is a game engine. It provides a set of tools and a visually
@@ -244,21 +244,8 @@ install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildr
 cp thirdparty/README.md thirdparty_README.md
 %fdupes -s %{buildroot}/%{_prefix}
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
-
 %files
-%defattr(-,root,root)
-%if 0%{?suse_version} < 1500
-%doc LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%else
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%endif
 %doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md ISSUE_TEMPLATE.md README.md
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256
@@ -273,34 +260,19 @@ cp thirdparty/README.md thirdparty_README.md
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
 %files headless
-%defattr(-,root,root)
-%if 0%{?suse_version} < 1500
-%doc LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%else
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%endif
 %doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md ISSUE_TEMPLATE.md README.md
 %dir %{_datadir}/%{name}
 %{_bindir}/%{name}-headless
 %{_datadir}/%{name}/export_presets.cfg
 
 %files runner
-%defattr(-,root,root)
-%if 0%{?suse_version} < 1500
-%doc LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%else
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%endif
 %doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md ISSUE_TEMPLATE.md README.md
 %{_bindir}/%{name}-runner
 
 %files server
-%defattr(-,root,root)
-%if 0%{?suse_version} < 1500
-%doc LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%else
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%endif
 %doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md ISSUE_TEMPLATE.md README.md
 %{_bindir}/%{name}-server
 

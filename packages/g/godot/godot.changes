@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Dec  3 05:46:01 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Updated bundled library versions within specfile
+- Cleaned up specfile
+  * Removed defattr directives
+  * Use %license directive for license files
+
+-------------------------------------------------------------------
+Sat Nov 30 19:18:39 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to 3.1.2
+
+  Fixed:
+  * Animation: Fixes for onion skinning support of Skeleton2D
+  * AnimationTree: Fixes to AnimationTree and State Machine
+  * Audio: Fix seemingly random crashes related to the audio engine misusing 
+    internal processing
+  * CPUParticles(2D): Various fixes
+  * GLES2: Many bugfixes
+  * GLES3: Many bugfixes
+  * Editor: Fix issues when moving and renaming files
+  * Export: Fix resetting editor settings when exporting from the 
+    command line 
+  * Import: Various improvements to BMP support
+  * Internationalization: Various fixes to Control localization, 
+    and fixes to support of some regional locales
+  * iOS: Fix crash on resume/exit on iOS 13
+  * macOS: Fix non-HiDPI mode on HiDPI displays on macOS Catalina
+  * macOS: Fix locale detection when running from .app bundle
+  * Object: Improve instance validation, mitigating thread-related issues
+  * Shaders: Fix support for hint_range using integers
+
+  Added:
+  * Editor: Allow to removing 2D editor limits
+  * Mobile: Add vibration support on Android and iOS
+  * TileMap: Add support for negative Y and X offsets
+  * API documentation updates.
+  * Editor translation updates.
+
+  Third Party Libraries:
+  * zstd upgraded to 1.4.4
+  * libwebsockets downgraded to 3.0.1 (3.1 caused regressions)
+
+-------------------------------------------------------------------
 Sun May 12 13:53:21 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
 
 - Fixing packaging issues for submission to Factory
