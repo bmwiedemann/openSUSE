@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/opensuse/tumbleweed</image>
-  <tags>tumbleweed</tags>
-  <name>opensuse/ceph/ceph</name>
+  <image>obsrepositories:/opensuse/leap#15.2</image>
+  <tags>leap15.2</tags>
+  <name>ceph/ceph</name>
   <prefix>org.opensuse.ceph</prefix>
   <title>Ceph container image</title>
-  <url>https://registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%</url>
-  <reference>registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%</reference>
+  <url>https://registry.opensuse.org/ceph/ceph:%PKG_VERSION%.%RELEASE%</url>
+  <reference>registry.opensuse.org/ceph/ceph:%PKG_VERSION%.%RELEASE%</reference>
   <packages_image>
     <package>
       <name>patterns-ceph-containers-ceph_base</name>

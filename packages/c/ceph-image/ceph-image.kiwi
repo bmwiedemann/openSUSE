@@ -13,7 +13,7 @@
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig tag="latest" maintainer="Sebastian Wagner &lt;swagner@suse.com&gt;" additionaltags="tumbleweed.nautilus,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" name="opensuse/ceph/ceph">
+      <containerconfig tag="latest" maintainer="Sebastian Wagner &lt;swagner@suse.com&gt;" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" name="opensuse/ceph/ceph">
         <subcommand execute="/bin/bash">
           <argument name="--login"/>
         </subcommand>
