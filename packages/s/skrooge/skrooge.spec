@@ -24,14 +24,13 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.20.0
+Version:        2.21.1
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.skrooge.org/
 Source:         https://download.kde.org/stable/skrooge/%{name}-%{version}.tar.xz
-Patch0:         Fix-build-with-Qt-5_13.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -94,7 +93,7 @@ analyze expenses.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %if %{with qtwebengine}

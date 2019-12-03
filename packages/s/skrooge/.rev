@@ -17,4 +17,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment>Fix build with Qt 5.13</comment>
     <requestid>722630</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd7f3d9f1d4d2583cac628aa741911d2</srcmd5>
+    <version>2.21.1</version>
+    <time>1575373395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753118</requestid>
+  </revision>
 </revisionlist>
