@@ -1,0 +1,16 @@
+Index: hidviz-0.1.5/libhidx/libhidx/src/Connector.cc
+===================================================================
+--- hidviz-0.1.5.orig/libhidx/libhidx/src/Connector.cc
++++ hidviz-0.1.5/libhidx/libhidx/src/Connector.cc
+@@ -84,10 +84,7 @@ namespace libhidx {
+ 
+     std::string UnixSocketConnector::getServerPath() {
+         const static std::vector<std::string> possiblePaths{
+-            getExecutablePath() + "/../libhidx/libhidx_server_daemon",
+-            getExecutablePath() + "/../libexec",
+-            "/usr/local/libexec",
+-            "/usr/libexec"
++            "__LIBEXECDIR__"
+         };
+         const static std::string executableName{"libhidx_server_daemon"};
+ 
