@@ -31,8 +31,9 @@ URL:            https://github.com/harrah/sbinary
 Source0:        https://github.com/harrah/sbinary/archive/v%{sbinary_version}.tar.gz
 Source1:        https://raw.github.com/willb/climbing-nemesis/master/climbing-nemesis.py
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  scala
+BuildRequires:  java-devel
+BuildRequires:  javapackages-local
+BuildRequires:  scala >= 2.10.7
 BuildRequires:  mvn(net.sourceforge.fmpp:fmpp)
 BuildRequires:  mvn(org.beanshell:bsh)
 BuildRequires:  mvn(org.freemarker:freemarker)
@@ -43,11 +44,7 @@ BuildArch:      noarch
 %if %{build_with_sbt}
 BuildRequires:  python
 BuildRequires:  sbt
-%else
-BuildRequires:  java-devel
 %endif
-# scalac needs java-devel <= 1.8
-BuildConflicts: java-devel >= 9
 
 %description
 
@@ -111,10 +108,18 @@ mkdir -p core/target/scala-%{scala_version}/api
 
 java -cp $(build-classpath fmpp freemarker bsh2 oro) fmpp.tools.CommandLine -S core/src -O core/target/scala-%{scala_version}/src_managed
 
-scalac core/target/scala-%{scala_version}/src_managed/*.scala -d core/target/scala-%{scala_version}/classes
+scalac \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-nobootcp \
+%endif
+	core/target/scala-%{scala_version}/src_managed/*.scala -d core/target/scala-%{scala_version}/classes
 jar -cvf core/target/scala-%{scala_version}/%{name}_%{scala_version}-%{version}.jar -C core/target/scala-%{scala_version}/classes .
 
-scaladoc core/target/scala-2.10/src_managed/*.scala -d core/target/scala-2.10/api
+scaladoc \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-nobootcp \
+%endif
+	core/target/scala-2.10/src_managed/*.scala -d core/target/scala-2.10/api
 
 cat << EOF > core/target/scala-%{scala_version}/%{name}_%{scala_version}-%{version}.pom
 <?xml version='1.0' encoding='UTF-8'?>
