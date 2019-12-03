@@ -197,4 +197,85 @@
 </comment>
     <requestid>702041</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b7b71ee0c48fa7e7fa0f605ebea7c69f</srcmd5>
+    <version>4.2.17</version>
+    <time>1575382804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.17
+  + Set default to skip_if_unavailable=false (rh#1679509)
+  + Fix package reinstalls during yum module remove (rh#1700529)
+  + Fail when &quot;-c&quot; option is given nonexistent file (rh#1512457)
+  + Reuse empty lock file instead of stopping dnf (rh#1581824)
+  + Propagate comps 'default' value correctly (rh#1674562)
+  + Better search of provides in /(s)bin/ (rh#1657993)
+  + Add detection for armv7hcnl (rh#1691430)
+  + Fix group install/upgrade when group is not available (rh#1707624)
+  + Report not matching plugins when using --enableplugin/--disableplugin
+    (rh#1673289, rh#1467304)
+  + Add support of modular FailSafe (rh#1623128)
+  + Replace logrotate with build-in log rotation for dnf.log and dnf.rpm.log
+    (rh#1702690)
+  + Enhance synchronization of rpm transaction to swdb
+  + Accept multiple specs in repoquery options (rh#1667898)
+  + Prevent switching modules in all cases (rh#1706215)
+  + [history] Don't store failed transactions as succeeded
+  + [history] Do not require root for informative commands
+  + [dnssec] Fix UnicodeWarning when using new rpm (rh#1699650)
+  + Print rpm error messages during transaction (rh#1677199)
+  + Report missing default profile as an error (rh#1669527)
+  + Apply excludes before modular excludes (rh#1709453)
+  + Improve help for command line arguments (rh#1659328)
+  + [doc] Describe a behavior when plugin is removed (rh#1700741)
+  + Add new modular API method ModuleBase.get_modules
+  + Mark features used by ansible, anaconda and subscription-manager as an API
+  + Prevent printing empty Error Summary (rh#1690414)
+  + [doc] Add user_agent and countme options
+  + Improve modularity documentation (rh#1730162, rh#1730162, rh#1730807, rh#1734081)
+  + Fix detection whether system is running on battery (used by metadata caching timer) (rh#1498680)
+  + New repoquery queryformat: %{reason}
+  + Print rpm errors during test transaction (rh#1730348) 
+  + Fix: --setopt and repo with dots
+  + Fix incorrectly marked profile and stream after failed rpm transaction check (rh#1719679)
+  + Show transaction errors inside dnf shell (rh#1743644)
+  + Don't reinstall modified packages with the same NEVRA (rh#1644241)
+  + dnf-automatic now respects versionlock excludes (rh#1746562)
+  + Fix downloading local packages into destdir (rh#1727137)
+  + Report skipped packages with identical nevra only once (rh#1643109)
+  + Restore functionality of dnf remove --duplicates (rh#1674296)
+  + Improve API documentation
+  + Document NEVRA parsing in the man page
+  + Do not wrap output when no terminal (rh#1577889)
+  + Allow to ship alternative dnf.conf (rh#1752249)
+  + Don't check if repo is expired if it doesn't have loaded metadata (rh#1745170)
+  + Remove duplicate entries from &quot;dnf search&quot; output (rh#1742926)
+  + Set default value of repo name attribute to repo id (rh#1669711)
+  + Allow searching in disabled modules using &quot;dnf module provides&quot; (rh#1629667)
+  + Group install takes obsoletes into account (rh#1761137)
+  + Improve handling of vars
+  + Do not load metadata for repolist commands (rh#1697472, rh#1713055, rh#1728894)
+  + Don't show older install-only pkgs updates in updateinfo (rh#1649383, rh#1728004)
+  + Add --ids option to the group command (rh#1706382)
+  + Add --with_cve and --with_bz options to the updateinfo command (rh#1750528)
+  + Make DNF compatible with FIPS mode (rh#1762032)
+  + Return always alphabetically sorted modular profiles
+  + Enable versionlock for check-update command (rh#1750620)
+  + Add error message when no active modules matched (rh#1696204)
+  + Log mirror failures as warning when repo load fails (rh#1713627)
+  + dnf-automatic: Change all systemd timers to a fixed time of day (rh#1754609)
+  + DNF can use config from the remote location (rh#1721091)
+  + [doc] update reference to plugin documentation (rh#1706386)
+  + [yum compatibility] Report all packages in repoinfo
+  + [doc] Add definition of active/inactive module stream
+  + repoquery: Add a switch to disable modular excludes
+  + Report more informative messages when no match for argument (rh#1709563)
+  + [doc] Add description of excludes in dnf
+  + Report more descriptive message when removed package is excluded
+  + Add module repoquery command
+  + Fix assumptions about ARMv8 and the way the rpm features work (rh#1691430)
+  + Add Requires information into module info commands
+  + Enhance inheritance of transaction reasons (rh#1672618, rh#1769788)
+- Rename dnf-yum package to yum and have it replace removed yum package on Tumbleweed</comment>
+    <requestid>752750</requestid>
+  </revision>
 </revisionlist>

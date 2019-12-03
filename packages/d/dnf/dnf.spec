@@ -17,10 +17,10 @@
 #
 
 
-%global hawkey_version 0.33.0
+%global hawkey_version 0.39.1
 %global libcomps_version 0.1.8
 %global rpm_version 4.14.0
-%global min_plugins_core 4.0.6
+%global min_plugins_core 4.0.12
 %global min_plugins_extras 4.0.4
 
 %global confdir %{_sysconfdir}/%{name}
@@ -29,12 +29,26 @@
 
 %global py3pluginpath %{python3_sitelib}/dnf-plugins
 
+# YUM v3 has been removed from openSUSE Tumbleweed as of 20191119
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%bcond_with as_yum
+%else
+%bcond_without as_yum
+%endif
+
+%if %{with as_yum}
+%global yum_subpackage_name yum
+%else
+%global yum_subpackage_name dnf-yum
+%endif
+
+
 # Tests fail (possibly due to failures in libdnf tests on SUSE)
 # Until those are resolved, these will remain disabled
 %bcond_with tests
 
 Name:           dnf
-Version:        4.2.6
+Version:        4.2.17
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -52,7 +66,7 @@ BuildRequires:  systemd-rpm-macros
 Requires:       python3-dnf = %{version}-%{release}
 Recommends:     %{name}-lang >= %{version}
 Recommends:     dnf-plugins-core
-Recommends:     dnf-yum
+Recommends:     %{yum_subpackage_name}
 Conflicts:      dnf-plugins-core < %{min_plugins_core}
 Provides:       dnf-command(autoremove)
 Provides:       dnf-command(check-update)
@@ -91,13 +105,41 @@ Recommends:     logrotate
 %description conf
 This package provides the configuration files for DNF.
 
-%package yum
+%package -n %{yum_subpackage_name}
 Summary:        As a Yum CLI compatibility layer, supplies %{_bindir}/yum redirecting to DNF
 Group:          System/Packages
 Requires:       dnf = %{version}-%{release}
-Conflicts:      yum
+%if %{with as_yum}
+Obsoletes:      yum < 4.0.0
+Obsoletes:      dnf-yum < %{version}-%{release}
+Provides:       dnf-yum = %{version}-%{release}
+# SUSE-specific split up of yum-utils features obsoleted by DNF itself...
+%global yum_replaces() \
+Obsoletes:      %{1} < 4.0.0 \
+Provides:       %{1} = %{version}-%{release}
 
-%description yum
+%yum_replaces  yum-aliases
+%yum_replaces  yum-allowdowngrade
+%yum_replaces  yum-basearchonly
+%yum_replaces  yum-downloadonly
+%yum_replaces  yum-fastestmirror
+%yum_replaces  yum-priorities
+%yum_replaces  yum-protect-packages
+%yum_replaces  yum-protectbase
+%yum_replaces  yum-refresh-updatesd
+%yum_replaces  yum-tsflags
+
+# yum-utils plugins with no replacement
+Conflicts:      yum-filter-data
+Conflicts:      yum-list-data
+Conflicts:      yum-tmprepo
+Conflicts:      yum-upgrade-helper
+Conflicts:      yum-verify
+%else
+Conflicts:      yum
+%endif
+
+%description -n %{yum_subpackage_name}
 As a Yum CLI compatibility layer, it supplies %{_bindir}/yum redirecting to DNF.
 
 %package -n python3-dnf
@@ -171,8 +213,20 @@ ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/dnf
 mv %{buildroot}%{_bindir}/dnf-automatic-3 %{buildroot}%{_bindir}/dnf-automatic
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/yum
 
+%if %{with as_yum}
+mkdir -p %{buildroot}%{_sysconfdir}/yum
+ln -sr  %{buildroot}%{confdir}/%{name}.conf %{buildroot}%{_sysconfdir}/yum/yum.conf
+ln -sr  %{buildroot}%{pluginconfpath} %{buildroot}%{_sysconfdir}/yum/pluginconf.d
+ln -sr  %{buildroot}%{confdir}/protected.d %{buildroot}%{_sysconfdir}/yum/protected.d
+ln -sr  %{buildroot}%{confdir}/repos.d %{buildroot}%{_sysconfdir}/yum/repos.d
+ln -sr  %{buildroot}%{confdir}/vars %{buildroot}%{_sysconfdir}/yum/vars
+%else
 # We don't want this just yet...
 rm -f %{buildroot}%{confdir}/protected.d/yum.conf
+%endif
+
+# This file is not used...
+rm -f %{buildroot}%{confdir}/dnf-strict.conf
 
 # We don't have ABRT/libreport in openSUSE
 rm -rf %{buildroot}%{_sysconfdir}/libreport
@@ -188,8 +242,9 @@ popd
 %license COPYING PACKAGE-LICENSING
 %doc AUTHORS README.rst
 %{_bindir}/dnf
-%{_mandir}/man8/dnf.8.*
-%{_mandir}/man8/yum2dnf.8.*
+%{_mandir}/man8/dnf.8*
+%{_mandir}/man8/yum2dnf.8*
+%{_mandir}/man7/dnf.modularity.7*
 %dir %{_var}/cache/dnf
 %{_unitdir}/dnf-makecache.service
 %{_unitdir}/dnf-makecache.timer
@@ -222,7 +277,7 @@ popd
 %{_mandir}/man5/dnf.conf.5.*
 %{_tmpfilesdir}/dnf.conf
 
-%files yum
+%files -n %{yum_subpackage_name}
 %license COPYING PACKAGE-LICENSING
 %doc AUTHORS README.rst
 %{_bindir}/yum
@@ -230,6 +285,15 @@ popd
 %{_mandir}/man8/yum-shell.8*
 %{_mandir}/man5/yum.conf.5*
 %{_mandir}/man1/yum-aliases.1*
+%if %{with as_yum}
+%dir %{_sysconfdir}/yum
+%{_sysconfdir}/yum/yum.conf
+%{_sysconfdir}/yum/pluginconf.d
+%{_sysconfdir}/yum/protected.d
+%{_sysconfdir}/yum/repos.d
+%{_sysconfdir}/yum/vars
+%config(noreplace) %{confdir}/protected.d/yum.conf
+%endif
 
 %files -n python3-dnf
 %license COPYING PACKAGE-LICENSING
@@ -273,5 +337,29 @@ popd
 %postun automatic
 %systemd_postun_with_restart %{name}-automatic.timer %{name}-automatic-notifyonly.timer %{name}-automatic-download.timer %{name}-automatic-install.timer
 
+%if %{with as_yum}
+%pretrans -n %{yum_subpackage_name} -p <lua>
+-- Backup all legacy YUM package manager configuration subdirectories if they exist
+yumconfpath = "%{_sysconfdir}/yum"
+chkst = posix.stat(yumconfpath)
+if chkst and chkst.type == "directory" then
+  yumdirs = {"%{_sysconfdir}/yum/pluginconf.d", "%{_sysconfdir}/yum/protected.d", "%{_sysconfdir}/yum/repos.d", "%{_sysconfdir}/yum/vars"}
+  for num,path in ipairs(yumdirs)
+  do
+    st = posix.stat(path)
+    if st and st.type == "directory" then
+      status = os.rename(path, path .. ".rpmmoved")
+      if not status then
+        suffix = 0
+        while not status do
+          suffix = suffix + 1
+          status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+        end
+        os.rename(path, path .. ".rpmmoved")
+      end
+    end
+  end
+end
+%endif
 
 %changelog
