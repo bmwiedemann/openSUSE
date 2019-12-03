@@ -17,7 +17,7 @@
 
 
 Name:           calligra-plan
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Project Management Application
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,7 +28,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  perl-base
 BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
 BuildRequires:  cmake(KChart)
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Archive)
