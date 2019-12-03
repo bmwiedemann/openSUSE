@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  1 15:37:41 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.11.0
+  + Define LRO_SUPPORTS_CACHEDIR only with zchunk (rh#1726141)
+  + Allow to use mirrors multiple times for a target (rh#1678588)
+  + Allow to try baseurl multiple times (rh#1678588)
+  + Remove librepo xattr when no file descriptor (rh#1690894)
+  + Fix verification of checksum from file attr (rh#1700341)
+  + Rephrase repository GPG check error message (rh#1741442)
+  + Add sleep when all mirrors were tried (rh#1741931)
+  + Raise logging level of error messages (rh#1737709)
+  + retry mirrorlist/metalink downloads
+  + Fix lr_url_substitute() and add ${variable} support
+  + Add support for one-time URL flags
+  + Fix API - LrHandleOption enum - LRO_ONETIMEFLAG (rh#1761779)
+
+-------------------------------------------------------------------
 Fri May 24 03:18:15 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 1.10.3
