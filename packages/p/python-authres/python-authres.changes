@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Dec  2 10:47:09 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 30 14:46:40 UTC 2019 - pgajdos@suse.com
+
+- test with doctest
+
+-------------------------------------------------------------------
+Wed Sep 25 08:29:22 UTC 2019 - pgajdos@suse.com
+
+- initial version 1.2.0, required by python-mailman [SLE-7686]
+
