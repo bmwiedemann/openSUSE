@@ -64,7 +64,9 @@ Prefer: kiwi-image-iso-requires
 Prefer: kiwi-image-vmx-requires
 
 # Migration to product builder
-Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
+#Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
+# use plugin-openSUSE
+Substitute: kiwi-packagemanager:instsource product-builder-plugin-openSUSE
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
