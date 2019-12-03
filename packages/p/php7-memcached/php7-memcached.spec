@@ -33,6 +33,7 @@ BuildRequires:  php7
 BuildRequires:  php7-devel
 BuildRequires:  php7-json
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 BuildRequires:  sysvinit-tools
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
