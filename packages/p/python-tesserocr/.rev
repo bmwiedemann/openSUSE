@@ -76,4 +76,12 @@
   * fix BlockPolygon python3 segfault</comment>
     <requestid>725668</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8eaf566e9c6366d9683a6e7e3482847f</srcmd5>
+    <version>2.5.0</version>
+    <time>1575382907</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>753070</requestid>
+  </revision>
 </revisionlist>

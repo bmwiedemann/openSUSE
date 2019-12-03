@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 26 00:49:44 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 2.5.0
+  * Support for RowAttributes method in LTRResultIterator
+  * SetImage: use PNG instead of JPEG fallback
+  * Replace STRING::string() by c_str()
+  * Don't use assignment operator for TessBaseAPI
+
+-------------------------------------------------------------------
 Fri Aug 23 18:14:51 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 2.4.1
