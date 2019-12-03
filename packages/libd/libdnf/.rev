@@ -158,4 +158,72 @@
 </comment>
     <requestid>702040</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>addb4c9731e737e4d6afbc5b7d2023e1</srcmd5>
+    <version>0.39.1</version>
+    <time>1575382800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.39.1
+  + Skip invalid key files in &quot;/etc/pki/rpm-gpg&quot; with warning (rh#1644040)
+  + Enable timestamp preserving for downloaded data (rh#1688537)
+  + Set default to skip_if_unavailable=false (rh#1679509)
+  + Add configuration option skip_if_unavailable (rh#1689931)
+  + Fix 'database is locked' error (rh#1631533)
+  + Replace the 'Failed to synchronize cache' message (rh#1712055)
+  + Fix 'no such table: main.trans_cmdline' error (rh#1596540)
+  + Add support of modular FailSafe (rh#1623128) (temporarily with warnings
+    instead of errors when installing modular RPMs without modular metadata)
+  + Add support of DNF main config file in context; used by PackageKit and
+    microdnf (rh#1689331)
+  + Exit gpg-agent after repokey import (rh#1650266)
+  + Don't disable nonexistent but required repositories (rh#1689331)
+  + Fix toString() to not insert [] (rh#1584442)
+  + Ignore trailing blank lines in config (rh#1722493)
+  + Fix handling large number of filenames on input (rh#1690915)
+  + Detect armv7 with crypto extension only on arm version &gt;= 8
+  + A new standardized User-Agent field consisting of the libdnf and OS version
+    (including the variant) (rh#1156007)
+  + Add basic countme support (rh#1647454)
+  + Fix crash in PackageKit (rh#1636803)
+  + Do not create @System.solv files (rh#1707995)
+  + Set LRO_CACHEDIR so zchunk works again (rh#1739867)
+  + Don't reinstall modified packages with the same NEVRA (rh#1644241)
+  + Fix bug when moving temporary repository metadata after download (rh#1700341)
+  + Improve detection of extras packages by comparing (name, arch) pair
+    instead of full NEVRA (RhBuh:1684517)
+  + Improve handling multilib packages in the history command (rh#1728637)
+  + Repo download: use full error description into the exception text (rh#1741442)
+  + Properly close hawkey.log (rh#1594016)
+  + Fix dnf updateinfo --update to not list advisories for packages updatable
+    only from non-enabled modules
+  + Apply modular filtering by package name (rh#1702729)
+  + Fully enable the modular fail safe mechanism (rh#1616167)
+  + Use more descriptive message when failed to retrieve GPG key (rh#1605117)
+  + Add removeMetadataTypeFromDownload function to the API
+  + Context part of libdnf can now read vars (urlvars) from dirs and environment
+  + Throw exception immediately if file cannot be opened
+  + Add test when there is no primary metadata in compatible format (rh#1744960)
+  + Don't abort on rpmdb checksum calculation failure
+  + Enable module dependency trees when using set_modules_enabled_by_pkgset() (rh#1762314)
+  + New method &quot;Query::filterSubject()&quot;, replaces Solution::getBestSolution()
+  + The Solution class was removed
+  + Add query argument into get_best_query and get_best_solution
+  + Add module reset function into dnf_context
+  + Add method to get all repository metadata locations
+  + Catch NoModuleException in case of not existent value was used in persistor (rh#1761773)
+  + Handle NoModuleException in dnf_context_reset_modules (rh#1767453)
+  + Report reason how package was excluded (rh#1649754)
+  + Fix Arm detection improvements (rh#1691430)
+  + Set skip_if_unavailable to true for all media repos (rh#1716067)
+  + Only the pkg knows whether it is local or remote (rh#1734350, rh#1717865)
+  + Don't use repo's packages as path to local pkgs (rh#1734350, rh#1717865)
+- Drop patch for temporarily dropping support for module advisories
+  * Patch: libdnf-0.31.0-Revert-support-for-Module-advisories.patch
+- Refresh patches
+  * Remove patch: libdnf-0.28.1-with-static-libsolvext.patch
+  * Remove patch: libdnf-0.28.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+  * Add patch: libdnf-0.39.1-with-static-libsolvext.patch
+  * Add patch: libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch</comment>
+    <requestid>752749</requestid>
+  </revision>
 </revisionlist>

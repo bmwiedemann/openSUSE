@@ -16,14 +16,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if (0%{?sle_version} && 0%{?sle_version} < 150200)
-    %global libsolv_version 0.7.3
-%else
-    %global libsolv_version 0.7.4
-%endif
-
+%global libsolv_version 0.7.7
 %global libmodulemd_version 1.6.1
-%global librepo_version 1.9.6
+%global librepo_version 1.11.0
+%global dnf_conflict 4.2.13
 %global swig_version 3.0.12
 
 # Keep tests switched off for now, it bombs out on SUSE
@@ -37,7 +33,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.33.0
+Version:        0.39.1
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -46,13 +42,9 @@ Url:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # PATCH-FIX-OPENSUSE: Fix libdnf build with static libsolvext
-Patch1000:      libdnf-0.28.1-with-static-libsolvext.patch
+Patch1000:      libdnf-0.39.1-with-static-libsolvext.patch
 # PATCH-FIX-OPENSUSE: Switch default reposdir to /etc/dnf/repos.d
-Patch1001:      libdnf-0.28.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
-
-# PATCH-FIX-SLE: Revert support for module advisories, since that requires libsolv 0.7.4
-## Drop when bsc#1133527 is fixed
-Patch2001:      libdnf-0.31.0-Revert-support-for-Module-advisories.patch
+Patch1001:      libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -75,6 +67,7 @@ BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(modulemd) >= %{libmodulemd_version}
 BuildRequires:  pkgconfig(smartcols)
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zck) >= 0.9.11
 
 # libsolv specific BRs
 BuildRequires:  pkgconfig(liblzma)
@@ -107,6 +100,7 @@ Requires:       %{libname}%{?_isa} = %{version}-%{release}
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  swig >= %{swig_version}
+Conflicts:      python3-dnf < %{dnf_conflict}
 
 %description -n python3-%{name}
 This package provides the Python 3 bindings for the libdnf library.
@@ -138,8 +132,7 @@ BuildRequires:  python3-nose
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       python3-%{name}%{?_isa} = %{version}-%{release}
 Recommends:     hawkey-man = %{version}-%{release}
-# DNF older than 4.0.0 isn't compatible with this
-Conflicts:      python3-dnf < 4.0.0
+Conflicts:      python3-dnf < %{dnf_conflict}
 # Python 2 subpackage has been dropped
 Obsoletes:      python2-hawkey < 0.24.1
 
@@ -152,11 +145,6 @@ the hawkey interface.
 
 %prep
 %autosetup -p1
-
-%if (0%{?sle_version} && 0%{?sle_version} > 150100) || 0%{?suse_version} > 1500
-# Revert this patch for SLE 15 >SP1 and SUSE Linux >15
-%patch2001 -R -p1
-%endif
 
 # Fix sphinx-build run...
 sed -e "s/sphinx-build-3/sphinx-build-%{python3_version}/" -i docs/hawkey/CMakeLists.txt
