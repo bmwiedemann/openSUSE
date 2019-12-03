@@ -18,11 +18,10 @@
 
 %define bashcompdir %(pkg-config --variable=completionsdir bash-completion 2>/dev/null)
 Name:           bazel
-Version:        0.26
+Version:        0.29
 Release:        0
 Summary:        Tool for the automation of building and testing of software
 License:        Apache-2.0
-Group:          Development/Tools/Building
 URL:            http://bazel.io/
 Source:         README
 Provides:       bazel = %{version}
