@@ -17,9 +17,9 @@
 #
 
 
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.17}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.8.0
+%global hawkey_version 0.37.0
 
 %if 0%{?is_opensuse}
 # Copr targets are available for openSUSE Leap 15.0 and newer
@@ -29,13 +29,27 @@
 %bcond_with copr_plugin
 %endif
 
+# YUM v3 has been removed from openSUSE Tumbleweed as of 20191119
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%bcond_with as_yum
+%else
+%bcond_without as_yum
+%endif
+
+%if %{with as_yum}
+%global yum_utils_subpackage_name yum-utils
+%else
+%global yum_utils_subpackage_name dnf-utils
+%endif
+
+
 # Tests are broken on SUSE for now
 %bcond_with tests
 
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.0.7
+Version:        4.0.12
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0+
@@ -127,12 +141,21 @@ the builddep, config-manager, %{?_with_copr_plugin:copr, }debug, debuginfo-insta
 download, needs-restarting, repoclosure, repograph, repomanage, and reposync commands.
 Additionally, it provides the generate_completion_cache passive plugin.
 
-%package -n dnf-utils
+%package -n %{yum_utils_subpackage_name}
 Summary:        Yum-utils CLI compatibility layer
 Group:          System/Packages
+%if %{with as_yum}
+Obsoletes:      yum-utils < 4.0.0
+Obsoletes:      dnf-utils < %{version}-%{release}
+Provides:       dnf-utils = %{version}-%{release}
+# SUSE-specific yum-utils subpackage obsoletion
+Obsoletes:      yum-changelog < 4.0.0
+Provides:       yum-changelog = %{version}-%{release}
+%else
 # dnf-utils offers the same binaries as yum-utils
 Conflicts:      yum-changelog
 Conflicts:      yum-utils
+%endif
 # Cf. https://github.com/openSUSE/zypper/pull/254
 Conflicts:      zypper < 1.14.26
 Conflicts:      zypper-needs-restarting
@@ -140,7 +163,7 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       dnf >= %{dnf_lowest_compatible}
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
 
-%description -n dnf-utils
+%description -n %{yum_utils_subpackage_name}
 As a Yum-utils CLI compatibility layer, supplies in CLI shims for
 debuginfo-install, repograph, package-cleanup, repoclosure, repomanage,
 repoquery, reposync, repotrack, builddep, config-manager, debug, and
@@ -183,6 +206,18 @@ Obsoletes:      python2-dnf-plugin-local < 4.0.3
 Local Plugin for DNF, Python 3 version. Automatically copy all downloaded
 packages to a repository on the local filesystem and generating repo metadata.
 
+%package -n python3-dnf-plugin-post-transaction-actions
+Summary:        Post transaction actions Plugin for DNF
+Group:          System/Packages
+Requires:       python3-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-post-transaction-actions =  %{version}-%{release}
+Conflicts:      python2-dnf-plugin-post-transaction-actions < %{version}-%{release}
+
+%description -n python3-dnf-plugin-post-transaction-actions
+Post transaction actions Plugin for DNF, Python 3 version. Plugin runs actions
+(shell commands) after transaction is completed. Actions are defined in action
+files.
+
 %package -n python3-dnf-plugin-show-leaves
 Summary:        Show-leaves Plugin for DNF
 Group:          System/Packages
@@ -216,6 +251,11 @@ Conflicts:      python2-dnf-plugin-versionlock < %{version}-%{release}
 Obsoletes:      python3-dnf-plugins-extras-versionlock < %{dnf_plugins_extra}
 # Python 2 variants are no longer provided
 Obsoletes:      python2-dnf-plugin-versionlock < 4.0.3
+%if %{with as_yum}
+# SUSE-specific yum-utils subpackage obsoletion
+Obsoletes:      yum-versionlock < 4.0.0
+Provides:       yum-versionlock = %{version}-%{release}
+%endif
 
 %description -n python3-dnf-plugin-versionlock
 Version lock plugin takes a set of name/versions for packages and excludes all other
@@ -271,7 +311,7 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 
 # We never shipped this plugin, and we never will, since we never used YUM...
-rm %{buildroot}%{_mandir}/man8/dnf.plugin.migrate.8*
+rm %{buildroot}%{_mandir}/man8/dnf-migrate.8*
 
 %if ! %{with copr_plugin}
 # Delete if we're not shipping COPR plugin
@@ -289,26 +329,26 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %files
 %license COPYING
 %doc AUTHORS README.rst
-%{_mandir}/man8/dnf.plugin.builddep.*
-%{_mandir}/man8/dnf.plugin.changelog.*
-%{_mandir}/man8/dnf.plugin.config_manager.*
+%{_mandir}/man8/dnf-builddep.*
+%{_mandir}/man8/dnf-changelog.*
+%{_mandir}/man8/dnf-config-manager.*
 %if %{with copr_plugin}
-%{_mandir}/man8/dnf.plugin.copr.*
+%{_mandir}/man8/dnf-copr.*
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
 %dir %{_sysconfdir}/dnf/plugins/copr.d
 %else
-%exclude %{_mandir}/man8/dnf.plugin.copr.*
+%exclude %{_mandir}/man8/dnf-copr.*
 %endif
-%{_mandir}/man8/dnf.plugin.debug.*
-%{_mandir}/man8/dnf.plugin.debuginfo-install.*
-%{_mandir}/man8/dnf.plugin.download.*
-%{_mandir}/man8/dnf.plugin.generate_completion_cache.*
-%{_mandir}/man8/dnf.plugin.needs_restarting.*
-%{_mandir}/man8/dnf.plugin.repoclosure.*
-%{_mandir}/man8/dnf.plugin.repograph.*
-%{_mandir}/man8/dnf.plugin.repomanage.*
-%{_mandir}/man8/dnf.plugin.reposync.*
-%{_mandir}/man8/dnf.plugin.repodiff.*
+%{_mandir}/man8/dnf-debug.*
+%{_mandir}/man8/dnf-debuginfo-install.*
+%{_mandir}/man8/dnf-download.*
+%{_mandir}/man8/dnf-generate_completion_cache.*
+%{_mandir}/man8/dnf-needs-restarting.*
+%{_mandir}/man8/dnf-repoclosure.*
+%{_mandir}/man8/dnf-repograph.*
+%{_mandir}/man8/dnf-repomanage.*
+%{_mandir}/man8/dnf-reposync.*
+%{_mandir}/man8/dnf-repodiff.*
 %dir %{_sysconfdir}/dnf/protected.d
 %dir %{_var}/cache/dnf
 %ghost %{_var}/cache/dnf/packages.db
@@ -339,7 +379,7 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{python3_sitelib}/dnf-plugins/repodiff.py
 %{python3_sitelib}/dnfpluginscore/
 
-%files -n dnf-utils
+%files -n %{yum_utils_subpackage_name}
 %{_libexecdir}/dnf-utils
 %{_mandir}/man1/dnf-utils.1*
 %{_bindir}/debuginfo-install
@@ -372,28 +412,34 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_bindir}/yumdownloader
 %{_mandir}/man1/yumdownloader.1*
 %{_mandir}/man1/yum-changelog.1*
-%{_mandir}/man5/yum-changelog.conf.5*
+%{_mandir}/man1/yum-utils.1*
 %{_mandir}/man5/yum-versionlock.conf.5*
 %{_mandir}/man8/yum-copr.8*
 %{_mandir}/man8/yum-versionlock.8*
 
 %files -n python3-dnf-plugin-leaves
 %{python3_sitelib}/dnf-plugins/leaves.*
-%{_mandir}/man8/dnf.plugin.leaves.*
+%{_mandir}/man8/dnf-leaves.*
 
 %files -n python3-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %{python3_sitelib}/dnf-plugins/local.*
-%{_mandir}/man8/dnf.plugin.local.*
+%{_mandir}/man8/dnf-local.*
+
+%files -n python3-dnf-plugin-post-transaction-actions
+%config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.conf
+%dir %{_sysconfdir}/dnf/plugins/post-transaction-actions.d
+%{python3_sitelib}/dnf-plugins/post-transaction-actions.*
+%{_mandir}/man8/dnf-post-transaction-actions.*
 
 %files -n python3-dnf-plugin-show-leaves
 %{python3_sitelib}/dnf-plugins/show_leaves.*
-%{_mandir}/man8/dnf.plugin.show-leaves.*
+%{_mandir}/man8/dnf-show-leaves.*
 
 %files -n python3-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python3_sitelib}/dnf-plugins/versionlock.*
-%{_mandir}/man8/dnf.plugin.versionlock.*
+%{_mandir}/man8/dnf-versionlock.*
 
 %changelog

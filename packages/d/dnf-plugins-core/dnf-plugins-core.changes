@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec  1 18:40:38 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.12
+  + [reposync] Enable timestamp preserving for downloaded data (rh#1688537)
+  + [reposync] Download packages from all streams (rh#1714788)
+  + Make yum-copr manpage available (rh#1673902)
+  + [needs-restarting] Add ``--reboothint`` option (rh#1192946) (rh#1639468)
+  + Set the cost of ``_dnf_local`` repo to 500, to make it preferred to normal repos
+  + [builddep] Report all rpm errors (rh#1663619, rh#1658292, rh#1724668)
+  + [config-manager] --setopt: Fix crash with "--save --dump"
+  + [config-manager] --setopt: Add globs support to repoid
+  + [config-manager] --setopt=key=value is applied only to the main config
+  + [config-manager] --setopt and empty list of repositories (rh#1702678)
+  + [config-manager] --setopt: Add check for existence of input repositories
+  + debuginfo-install: Update both debuginfo and debugsource for updated package (rh#1586084)
+  + copr: Support multilib repofiles (rh#1393664)
+  + copr: Fix disable if copr instance has non-default port
+  + copr: Fix repoid when using subdirectories in copr project
+  + [spec] Specify attributes for ghost file (rh# 1754463)
+  + download: add the --debugsource option (rh#1637008)
+  + Fix incorrect handling richdeps in buildep (rh#1756902)
+  + [reposync] Add --urls option (rh#1686602)
+  + [versionlock] Add --raw option (rh#1645564)
+  + [doc] move manpages for plugins to "dnf-PLUGIN" (rh#1706386)
+  + Add new plugin post-transaction-actions (rh#967264)
+  + [builddep] Add --skip-unavailable switch (rh#1628634)
+  + [versionlock] Don't apply excludes on @System (rh#1726712)
+  + [reposync] Ignore only modular excludes (rh#1750273)
+- Rename dnf-utils package to yum-utils and have it replace removed package in Tumbleweed
+
+-------------------------------------------------------------------
 Fri May 24 02:56:30 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.7
