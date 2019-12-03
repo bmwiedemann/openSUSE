@@ -1,7 +1,7 @@
 #
 # spec file for package strace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           strace
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
-Url:            http://strace.io/
+URL:            http://strace.io/
 #Freecode-URL:	http://freecode.com/projects/strace
 #Git-Clone:	git://github.com/strace/strace
 Source:         https://github.com/strace/strace/releases/download/v%{version}/%{name}-%{version}.tar.xz
@@ -60,6 +60,8 @@ and processes can be seen.  Child processes can also be tracked.
 %setup -q
 
 %build
+# LTO breaks mpers.sh
+%global _lto_cflags %{nil}
 %configure \
 %ifarch aarch64
   --disable-mpers \

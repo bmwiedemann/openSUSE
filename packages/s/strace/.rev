@@ -997,4 +997,34 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
       releases. (forwarded request 733200 from Andreas_Schwab)</comment>
     <requestid>733201</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>b1af4f0d0b6fd309a104bc999319ba96</srcmd5>
+    <version>5.4</version>
+    <time>1575373217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.4
+  * Improvements
+    * Implemented -DD and -DDD options that move strace into a separate
+      process group and session, respectively.
+    * Enhanced seccomp-bpf tracee syscall filtering support by implementing
+      new &quot;binary match&quot; BPF program generation strategy and automatically
+      choosing the strategy that generates the shortest BPF program.
+    * Implemented decoding of BPF_BTF_GET_NEXT_ID bpf syscall command.
+    * Enhanced decoding of BPF_MAP_LOOKUP_ELEM bpf syscall command.
+    * Implemented PTP_CLOCK_GETCAPS2, PTP_EXTTS_REQUEST2, PTP_PEROUT_REQUEST2,
+      PTP_ENABLE_PPS2, and PTP_SYS_OFFSET2 ioctl decoding.
+    * Updated lists of BPF_*, CAN_*, KEXEC_*, KVM_*, MADV_*, MSG_*, P_*, PR_*,
+      PTP_*, SCTP_*, and V4L2_* constants.
+    * Implemented ability to build ARM EABI mpers support using a separate
+      compiler on aarch64.
+    * Updated lists of ioctl commands from Linux 5.4.
+    * Enhanced manual page.
+  * Bug fixes
+    * Fixed -b execve when --seccomp-bpf option is specified.
+    * Fixed decoding of BPF_PROG_LOAD bpf syscall command.
+    * Fixed build on no-MMU architectures.
+    * Fixed build on antique systems that do not provide necessary definitions
+      of AUDIT_ARCH_* constants. (forwarded request 752470 from AndreasSchwab)</comment>
+    <requestid>752471</requestid>
+  </revision>
 </revisionlist>
