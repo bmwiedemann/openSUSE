@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20191130" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20191202" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,14 +35,14 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191130</productvar>
+      <productvar name="VERSION">20191202</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20191130,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20191202,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20191130/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20191202/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
-      <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
-      <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
+      <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
+      <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="REPO_LOCATION"></productoption>
       <productoption name="SOURCEMEDIUM">0</productoption>
     </productoptions>
@@ -161,6 +161,7 @@
       <repopackage name="irqbalance" arch="x86_64"/>
       <repopackage name="iscsiuio" arch="x86_64"/>
       <repopackage name="issue-generator"/>
+      <repopackage name="k9s" arch="x86_64"/>
       <repopackage name="kail" arch="x86_64"/>
       <repopackage name="kbd"/>
       <repopackage name="kbd-legacy"/>
@@ -343,7 +344,6 @@
       <repopackage name="libproxy1" arch="x86_64"/>
       <repopackage name="libpsl5" arch="x86_64"/>
       <repopackage name="libpwquality1" arch="x86_64"/>
-      <repopackage name="libpython2_7-1_0" arch="x86_64"/>
       <repopackage name="libpython3_7m1_0" arch="x86_64"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="librados2" arch="x86_64"/>
@@ -476,7 +476,6 @@
       <repopackage name="policycoreutils" arch="x86_64"/>
       <repopackage name="procps" arch="x86_64"/>
       <repopackage name="psmisc" arch="x86_64"/>
-      <repopackage name="python-base" arch="x86_64"/>
       <repopackage name="python-rpm-macros" arch="x86_64"/>
       <repopackage name="python3" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>

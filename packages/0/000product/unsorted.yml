@@ -421,6 +421,8 @@ unsorted:
   - alsa-plugins-samplerate 
   - alsa-plugins-samplerate-32bit: [x86_64] 
   - alsa-plugins-speex 
+  - alsa-topology-devel 
+  - alsa-topology-devel-32bit: [x86_64] 
   - alsabat 
   - alsaequal 
   - alttab 
@@ -2364,6 +2366,7 @@ unsorted:
   - dmd 
   - dmenu 
   - dmraid-devel 
+  - dmz-icon-theme-cursors 
   - dnf 
   - dnf-automatic 
   - dnf-conf 
@@ -3493,8 +3496,6 @@ unsorted:
   - gd-devel-32bit: [x86_64] 
   - gdal 
   - gdal-devel 
-  - gdal2 
-  - gdal2-devel 
   - gdata-sharp 
   - gdata-sharp-devel 
   - gdb-testresults 
@@ -4869,7 +4870,6 @@ unsorted:
   - groovy18-lib 
   - growpart: [i586] 
   - growpart-generator 
-  - growpart-rootgrow 
   - grpc-devel 
   - grpc-httpjson-transcoding-devel: [x86_64] 
   - grpc-httpjson-transcoding-source: [x86_64] 
@@ -5415,13 +5415,13 @@ unsorted:
   - hypre-gnu-openmpi3-hpc-devel 
   - hypre-mpich-devel 
   - hypre-mvapich2-devel 
-  - hypre-openmpi-devel 
+  - hypre-openmpi1-devel 
   - hypre-openmpi2-devel 
-  - hypre_2_17_0-gnu-mpich-hpc-devel 
-  - hypre_2_17_0-gnu-mvapich2-hpc-devel 
-  - hypre_2_17_0-gnu-openmpi1-hpc-devel 
-  - hypre_2_17_0-gnu-openmpi2-hpc-devel 
-  - hypre_2_17_0-gnu-openmpi3-hpc-devel 
+  - hypre_2_18_2-gnu-mpich-hpc-devel 
+  - hypre_2_18_2-gnu-mvapich2-hpc-devel 
+  - hypre_2_18_2-gnu-openmpi1-hpc-devel 
+  - hypre_2_18_2-gnu-openmpi2-hpc-devel 
+  - hypre_2_18_2-gnu-openmpi3-hpc-devel 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -6179,7 +6179,6 @@ unsorted:
   - k3b-devel 
   - k3s 
   - k3s-hyperkube 
-  - k9s: [x86_64] 
   - kaccounts-integration-32bit: [x86_64] 
   - kaccounts-integration-devel 
   - kaccounts-integration-devel-32bit: [x86_64] 
@@ -6473,6 +6472,7 @@ unsorted:
   - kirigami-gallery-lang 
   - kirigami-lang 
   - kirigami2-devel 
+  - kismet-devel 
   - kitemmodels-devel 
   - kitemmodels-devel-32bit: [x86_64] 
   - kitemviews-devel 
@@ -7057,21 +7057,21 @@ unsorted:
   - libHYPRE-gnu-openmpi1-hpc 
   - libHYPRE-gnu-openmpi2-hpc 
   - libHYPRE-gnu-openmpi3-hpc 
-  - libHYPRE0 
-  - libHYPRE0-32bit: [x86_64] 
-  - libHYPRE0-mpich 
-  - libHYPRE0-mpich-32bit: [x86_64] 
-  - libHYPRE0-mvapich2 
-  - libHYPRE0-mvapich2-32bit: [x86_64] 
-  - libHYPRE0-openmpi 
-  - libHYPRE0-openmpi-32bit: [x86_64] 
-  - libHYPRE0-openmpi2 
-  - libHYPRE0-openmpi2-32bit: [x86_64] 
-  - libHYPRE_2_17_0-gnu-mpich-hpc 
-  - libHYPRE_2_17_0-gnu-mvapich2-hpc 
-  - libHYPRE_2_17_0-gnu-openmpi1-hpc 
-  - libHYPRE_2_17_0-gnu-openmpi2-hpc 
-  - libHYPRE_2_17_0-gnu-openmpi3-hpc 
+  - libHYPRE2_18_2 
+  - libHYPRE2_18_2-32bit: [x86_64] 
+  - libHYPRE2_18_2-mpich 
+  - libHYPRE2_18_2-mpich-32bit: [x86_64] 
+  - libHYPRE2_18_2-mvapich2 
+  - libHYPRE2_18_2-mvapich2-32bit: [x86_64] 
+  - libHYPRE2_18_2-openmpi1 
+  - libHYPRE2_18_2-openmpi1-32bit: [x86_64] 
+  - libHYPRE2_18_2-openmpi2 
+  - libHYPRE2_18_2-openmpi2-32bit: [x86_64] 
+  - libHYPRE_2_18_2-gnu-mpich-hpc 
+  - libHYPRE_2_18_2-gnu-mvapich2-hpc 
+  - libHYPRE_2_18_2-gnu-openmpi1-hpc 
+  - libHYPRE_2_18_2-gnu-openmpi2-hpc 
+  - libHYPRE_2_18_2-gnu-openmpi3-hpc 
   - libHalf-2_4-24-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
@@ -7776,6 +7776,7 @@ unsorted:
   - libatomic1-gcc7-32bit: [x86_64] 
   - libatomic_ops-devel 
   - libatomicparsley0 
+  - libatopology2-32bit: [x86_64] 
   - libatrildocument3 
   - libatrilview3 
   - libatspi0-32bit: [x86_64] 
@@ -8455,9 +8456,10 @@ unsorted:
   - libdbi3-32bit: [x86_64] 
   - libdbus-c++-1-1 
   - libdbus-c++-1-1-32bit: [x86_64] 
+  - libdbus-c++-api-docs 
   - libdbus-c++-devel 
   - libdbus-c++-glib-1-1 
-  - libdbus-c++-glib-1-1-32bit: [x86_64] 
+  - libdbus-c++-glib-devel 
   - libdbusextended-qt5-1 
   - libdbusextended-qt5-devel 
   - libdbusmenu-glib-devel 
@@ -8951,7 +8953,6 @@ unsorted:
   - libgda-tools 
   - libgda-ui-5_0-tools 
   - libgda-xslt-5_0-4 
-  - libgdal20 
   - libgdal26 
   - libgdamm-5_0-13 
   - libgdamm-devel 
@@ -10004,7 +10005,6 @@ unsorted:
   - libmhash2 
   - libmicro 
   - libmicrohttpd-devel 
-  - libmicrohttpd12 
   - libmidori-core0 
   - libmikmod-devel 
   - libmikmod3-32bit: [x86_64] 
@@ -10207,12 +10207,12 @@ unsorted:
   - libnetcdf15-openmpi1-32bit: [x86_64] 
   - libnetcdf15-openmpi2 
   - libnetcdf15-openmpi2-32bit: [x86_64] 
-  - libnetcdf_4_7_0-gnu-hpc 
-  - libnetcdf_4_7_0-gnu-mpich-hpc 
-  - libnetcdf_4_7_0-gnu-mvapich2-hpc 
-  - libnetcdf_4_7_0-gnu-openmpi1-hpc 
-  - libnetcdf_4_7_0-gnu-openmpi2-hpc 
-  - libnetcdf_4_7_0-gnu-openmpi3-hpc 
+  - libnetcdf_4_7_1-gnu-hpc 
+  - libnetcdf_4_7_1-gnu-mpich-hpc 
+  - libnetcdf_4_7_1-gnu-mvapich2-hpc 
+  - libnetcdf_4_7_1-gnu-openmpi1-hpc 
+  - libnetcdf_4_7_1-gnu-openmpi2-hpc 
+  - libnetcdf_4_7_1-gnu-openmpi3-hpc 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -10685,6 +10685,7 @@ unsorted:
   - libpnetcdf1-mvapich2 
   - libpnetcdf1-openmpi1 
   - libpnetcdf1-openmpi2 
+  - libpnetcdf1-openmpi3 
   - libpng12-0 
   - libpng12-0-32bit: [x86_64] 
   - libpng12-compat-devel 
@@ -10785,11 +10786,11 @@ unsorted:
   - libptscotch0-mvapich2 
   - libptscotch0-openmpi1 
   - libptscotch0-openmpi2 
-  - libptscotch_6_0_7-gnu-mpich-hpc 
-  - libptscotch_6_0_7-gnu-mvapich2-hpc 
-  - libptscotch_6_0_7-gnu-openmpi1-hpc 
-  - libptscotch_6_0_7-gnu-openmpi2-hpc 
-  - libptscotch_6_0_7-gnu-openmpi3-hpc 
+  - libptscotch_6_0_9-gnu-mpich-hpc 
+  - libptscotch_6_0_9-gnu-mvapich2-hpc 
+  - libptscotch_6_0_9-gnu-openmpi1-hpc 
+  - libptscotch_6_0_9-gnu-openmpi2-hpc 
+  - libptscotch_6_0_9-gnu-openmpi3-hpc 
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
@@ -10825,7 +10826,7 @@ unsorted:
   - libqgpgme-devel 
   - libqgpgme7-32bit: [x86_64] 
   - libqhexedit4 
-  - libqhull7-7_2_0 
+  - libqhull7-7_3_2 
   - libqimageblitz5-1 
   - libqimageblitz5-devel 
   - libqjack-devel 
@@ -11244,7 +11245,6 @@ unsorted:
   - librsync-devel 
   - librsync2 
   - librtaudio6 
-  - librtlsdr0 
   - librtmidi5 
   - librttr_core0_9_6 
   - librubberband-devel 
@@ -11524,6 +11524,7 @@ unsorted:
   - libstdc++6-devel-gcc9-32bit: [x86_64] 
   - libstdc++6-gcc7 
   - libstdc++6-gcc7-32bit: [x86_64] 
+  - libstdc++6-gcc7-locale 
   - libstfl-devel 
   - libstfl0 
   - libstilview-devel 
@@ -14127,25 +14128,25 @@ unsorted:
   - netcdf-openmpi2 
   - netcdf-openmpi2-devel 
   - netcdf-openmpi2-devel-static 
-  - netcdf_4_7_0-gnu-hpc 
-  - netcdf_4_7_0-gnu-hpc-devel 
-  - netcdf_4_7_0-gnu-hpc-devel-data 
-  - netcdf_4_7_0-gnu-hpc-devel-static 
-  - netcdf_4_7_0-gnu-mpich-hpc 
-  - netcdf_4_7_0-gnu-mpich-hpc-devel 
-  - netcdf_4_7_0-gnu-mpich-hpc-devel-static 
-  - netcdf_4_7_0-gnu-mvapich2-hpc 
-  - netcdf_4_7_0-gnu-mvapich2-hpc-devel 
-  - netcdf_4_7_0-gnu-mvapich2-hpc-devel-static 
-  - netcdf_4_7_0-gnu-openmpi1-hpc 
-  - netcdf_4_7_0-gnu-openmpi1-hpc-devel 
-  - netcdf_4_7_0-gnu-openmpi1-hpc-devel-static 
-  - netcdf_4_7_0-gnu-openmpi2-hpc 
-  - netcdf_4_7_0-gnu-openmpi2-hpc-devel 
-  - netcdf_4_7_0-gnu-openmpi2-hpc-devel-static 
-  - netcdf_4_7_0-gnu-openmpi3-hpc 
-  - netcdf_4_7_0-gnu-openmpi3-hpc-devel 
-  - netcdf_4_7_0-gnu-openmpi3-hpc-devel-static 
+  - netcdf_4_7_1-gnu-hpc 
+  - netcdf_4_7_1-gnu-hpc-devel 
+  - netcdf_4_7_1-gnu-hpc-devel-data 
+  - netcdf_4_7_1-gnu-hpc-devel-static 
+  - netcdf_4_7_1-gnu-mpich-hpc 
+  - netcdf_4_7_1-gnu-mpich-hpc-devel 
+  - netcdf_4_7_1-gnu-mpich-hpc-devel-static 
+  - netcdf_4_7_1-gnu-mvapich2-hpc 
+  - netcdf_4_7_1-gnu-mvapich2-hpc-devel 
+  - netcdf_4_7_1-gnu-mvapich2-hpc-devel-static 
+  - netcdf_4_7_1-gnu-openmpi1-hpc 
+  - netcdf_4_7_1-gnu-openmpi1-hpc-devel 
+  - netcdf_4_7_1-gnu-openmpi1-hpc-devel-static 
+  - netcdf_4_7_1-gnu-openmpi2-hpc 
+  - netcdf_4_7_1-gnu-openmpi2-hpc-devel 
+  - netcdf_4_7_1-gnu-openmpi2-hpc-devel-static 
+  - netcdf_4_7_1-gnu-openmpi3-hpc 
+  - netcdf_4_7_1-gnu-openmpi3-hpc-devel 
+  - netcdf_4_7_1-gnu-openmpi3-hpc-devel-static 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -15383,6 +15384,9 @@ unsorted:
   - parallel-netcdf-openmpi2 
   - parallel-netcdf-openmpi2-devel 
   - parallel-netcdf-openmpi2-devel-static 
+  - parallel-netcdf-openmpi3 
+  - parallel-netcdf-openmpi3-devel 
+  - parallel-netcdf-openmpi3-devel-static 
   - paraview: [x86_64] 
   - paraview-devel: [x86_64] 
   - paraviewdata 
@@ -15888,6 +15892,7 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
+  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Eval-LineNumbers 
   - perl-Event 
@@ -16457,6 +16462,7 @@ unsorted:
   - perl-Test-Requires-Git 
   - perl-Test-Script 
   - perl-Test-SharedFork 
+  - perl-Test-Simple 
   - perl-Test-Spec 
   - perl-Test-Spelling 
   - perl-Test-Strict 
@@ -16592,7 +16598,6 @@ unsorted:
   - perl-experimental 
   - perl-forks 
   - perl-gdal 
-  - perl-gdal2 
   - perl-genders 
   - perl-getdata 
   - perl-homedir 
@@ -16703,6 +16708,7 @@ unsorted:
   - php7-pear-Net_Sieve 
   - php7-pear-Net_Socket 
   - php7-pear-XML_Parser 
+  - php7-pecl 
   - php7-phalcon 
   - php7-phar 
   - php7-phpunit8 
@@ -17215,21 +17221,21 @@ unsorted:
   - ptscotch-parmetis-mvapich2-devel 
   - ptscotch-parmetis-openmpi1-devel 
   - ptscotch-parmetis-openmpi2-devel 
-  - ptscotch_6_0_7-gnu-mpich-hpc 
-  - ptscotch_6_0_7-gnu-mpich-hpc-devel 
-  - ptscotch_6_0_7-gnu-mpich-hpc-devel-static 
-  - ptscotch_6_0_7-gnu-mvapich2-hpc 
-  - ptscotch_6_0_7-gnu-mvapich2-hpc-devel 
-  - ptscotch_6_0_7-gnu-mvapich2-hpc-devel-static 
-  - ptscotch_6_0_7-gnu-openmpi1-hpc 
-  - ptscotch_6_0_7-gnu-openmpi1-hpc-devel 
-  - ptscotch_6_0_7-gnu-openmpi1-hpc-devel-static 
-  - ptscotch_6_0_7-gnu-openmpi2-hpc 
-  - ptscotch_6_0_7-gnu-openmpi2-hpc-devel 
-  - ptscotch_6_0_7-gnu-openmpi2-hpc-devel-static 
-  - ptscotch_6_0_7-gnu-openmpi3-hpc 
-  - ptscotch_6_0_7-gnu-openmpi3-hpc-devel 
-  - ptscotch_6_0_7-gnu-openmpi3-hpc-devel-static 
+  - ptscotch_6_0_9-gnu-mpich-hpc 
+  - ptscotch_6_0_9-gnu-mpich-hpc-devel 
+  - ptscotch_6_0_9-gnu-mpich-hpc-devel-static 
+  - ptscotch_6_0_9-gnu-mvapich2-hpc 
+  - ptscotch_6_0_9-gnu-mvapich2-hpc-devel 
+  - ptscotch_6_0_9-gnu-mvapich2-hpc-devel-static 
+  - ptscotch_6_0_9-gnu-openmpi1-hpc 
+  - ptscotch_6_0_9-gnu-openmpi1-hpc-devel 
+  - ptscotch_6_0_9-gnu-openmpi1-hpc-devel-static 
+  - ptscotch_6_0_9-gnu-openmpi2-hpc 
+  - ptscotch_6_0_9-gnu-openmpi2-hpc-devel 
+  - ptscotch_6_0_9-gnu-openmpi2-hpc-devel-static 
+  - ptscotch_6_0_9-gnu-openmpi3-hpc 
+  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel 
+  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel-static 
   - puddletag 
   - pugixml-devel 
   - pulseaudio-equalizer 
@@ -17342,7 +17348,6 @@ unsorted:
   - python-doc 
   - python-doc-pdf 
   - python-efilter 
-  - python-espressopp 
   - python-falcon-doc 
   - python-fastcluster-doc 
   - python-faulthandler 
@@ -17629,7 +17634,6 @@ unsorted:
   - python2-FontTools 
   - python2-FormEncode 
   - python2-GDAL 
-  - python2-GDAL2 
   - python2-Genshi 
   - python2-GeoIP 
   - python2-Glances 
@@ -18336,6 +18340,7 @@ unsorted:
   - python2-docutils 
   - python2-docutils-ast-writer 
   - python2-dogpile.cache 
+  - python2-dogslow 
   - python2-dominate 
   - python2-dparse 
   - python2-dpkt 
@@ -18612,6 +18617,7 @@ unsorted:
   - python2-jaraco.packaging 
   - python2-jaraco.stream 
   - python2-jaraco.text 
+  - python2-javaproperties 
   - python2-jdatetime 
   - python2-jdcal 
   - python2-jedi 
@@ -18628,6 +18634,7 @@ unsorted:
   - python2-josepy 
   - python2-jplephem 
   - python2-jsbeautifier 
+  - python2-jsmin 
   - python2-json-rpc 
   - python2-json5 
   - python2-json_tricks 
@@ -18643,6 +18650,7 @@ unsorted:
   - python2-jsonref 
   - python2-jsonrpclib-pelix 
   - python2-jsonschema 
+  - python2-jsonxs 
   - python2-junit-xml 
   - python2-junitxml 
   - python2-junos-eznc 
@@ -18860,7 +18868,6 @@ unsorted:
   - python2-num2words 
   - python2-numba 
   - python2-numba-devel 
-  - python2-numericalunits 
   - python2-numexpr 
   - python2-numpy-devel 
   - python2-numpy-gnu-hpc 
@@ -19614,6 +19621,7 @@ unsorted:
   - python2-tagpy 
   - python2-tap.py 
   - python2-targetcli-fb 
+  - python2-tasklib 
   - python2-taskw 
   - python2-tblib 
   - python2-technicolor 
@@ -19915,7 +19923,6 @@ unsorted:
   - python3-FontTools 
   - python3-FormEncode 
   - python3-GDAL 
-  - python3-GDAL2 
   - python3-Genshi 
   - python3-GeoIP 
   - python3-GitPython 
@@ -20706,6 +20713,7 @@ unsorted:
   - python3-docutils 
   - python3-docutils-ast-writer 
   - python3-dogpile.cache 
+  - python3-dogslow 
   - python3-dominate 
   - python3-dparse 
   - python3-dpcontracts 
@@ -21033,6 +21041,7 @@ unsorted:
   - python3-jaraco.stream 
   - python3-jaraco.text 
   - python3-javapackages 
+  - python3-javaproperties 
   - python3-jdatetime 
   - python3-jdcal 
   - python3-jedihttp 
@@ -21051,6 +21060,7 @@ unsorted:
   - python3-josepy 
   - python3-jplephem 
   - python3-jsbeautifier 
+  - python3-jsmin 
   - python3-json-rpc 
   - python3-json5 
   - python3-json_tricks 
@@ -21068,6 +21078,7 @@ unsorted:
   - python3-jsonrpclib-pelix 
   - python3-jsonschema: [i586] 
   - python3-jsonslicer 
+  - python3-jsonxs 
   - python3-junit-xml 
   - python3-junitxml 
   - python3-junos-eznc 
@@ -21561,7 +21572,6 @@ unsorted:
   - python3-prompt_toolkit 
   - python3-prompt_toolkit1 
   - python3-proselint 
-  - python3-protobuf 
   - python3-pscript 
   - python3-psychtoolbox 
   - python3-psycopg2 
@@ -22177,6 +22187,7 @@ unsorted:
   - python3-talloc-devel 
   - python3-tap.py 
   - python3-targetcli-fb 
+  - python3-tasklib 
   - python3-taskw 
   - python3-tbb 
   - python3-tblib 
@@ -22853,12 +22864,9 @@ unsorted:
   - rt-tests 
   - rtags 
   - rtaudio-devel 
-  - rtl-sdr 
   - rtl-sdr-devel 
-  - rtl-sdr-udev 
   - rtl8812au 
   - rtl8812au-kmp-pae: [i586] 
-  - rtl_433 
   - rtl_433-devel 
   - rtmidi-devel 
   - rtorrent 
@@ -23699,6 +23707,7 @@ unsorted:
   - sanlock 
   - sanlock-devel 
   - saphanabootstrap-formula 
+  - sapnwbootstrap-formula 
   - sar2 
   - sar2-data 
   - sarg 

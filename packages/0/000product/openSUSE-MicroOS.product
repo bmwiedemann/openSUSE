@@ -56,7 +56,7 @@
       name="openSUSE-MicroOS-DVD"
       sourcemedia="0"
       firmware="uefi"
-      mediastyle="suse-tumbleweed"
+      mediastyle="openSUSE"
       run_hybridiso="true"
       run_media_check="true"
       use_undecided="false"
@@ -83,7 +83,7 @@
       name="openSUSE-Kubic-DVD"
       sourcemedia="0"
       firmware="uefi"
-      mediastyle="suse-tumbleweed"
+      mediastyle="openSUSE"
       run_hybridiso="true"
       run_media_check="true"
       use_undecided="false"
@@ -105,14 +105,14 @@
     
     <media type="image"
          flavor="appliance"
-         mediastyle="suse-tumbleweed"
+         mediastyle="openSUSE"
          name="openSUSE-MicroOS-appliance" >
     <!-- Create no product media, but a flavor release subpackage -->
     </media>
 
     <media type="image"
          flavor="appliance-kubic"
-         mediastyle="suse-tumbleweed"
+         mediastyle="openSUSE"
          name="openSUSE-Kubic-appliance" >
     <!-- Create no product media, but a flavor release subpackage -->
     </media>
