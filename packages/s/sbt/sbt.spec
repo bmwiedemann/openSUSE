@@ -1,7 +1,7 @@
 #
 # spec file for package sbt
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %global short_name sbt
 # build non-bootstrap packages with tests, cross-referenced sources, etc
 %global do_proper 0
-%global scala_version 2.10.6
+%global scala_version 2.10.7
 %global scala_short_version 2.10
 %global sbt_bootstrap_version 0.13.1
 %global sbt_major 0
@@ -611,7 +611,7 @@ for jar in %{_javadir}/scala/*.jar ; do
    cp --symbolic-link $jar scala/lib
 done
 
-sed -i -e 's/["]2[.]10[.][234]["]/\"%{scala_version}\"/g' $(find . -name \*.sbt -type f) $(find . -name \*.xml) $(find . -name \*.scala)
+sed -i -e 's/["]2[.]10[.][23456]["]/\"%{scala_version}\"/g' $(find . -name \*.sbt -type f) $(find . -name \*.xml) $(find . -name \*.scala)
 sed -i -e 's/["]2[.]10[.]2-RC2["]/\"%{scala_version}\"/g' $(find . -name \*.sbt -type f)
 
 # work around proguard bugs with the Scala library

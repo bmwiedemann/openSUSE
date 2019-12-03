@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 07:25:53 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build against scala 2.10.7
+
+-------------------------------------------------------------------
 Thu Nov 14 13:09:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of sbt 0.13.1 as a _multibuild package in order
