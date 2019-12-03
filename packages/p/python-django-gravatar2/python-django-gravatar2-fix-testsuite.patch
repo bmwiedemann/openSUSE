@@ -1,0 +1,12 @@
+Index: django-gravatar-1.4.2/example_project/settings.py
+===================================================================
+--- django-gravatar-1.4.2.orig/example_project/settings.py	2017-07-27 23:53:44.000000000 +0200
++++ django-gravatar-1.4.2/example_project/settings.py	2019-10-09 12:11:27.449485052 +0200
+@@ -162,6 +162,7 @@ TEMPLATES = [
+             'loaders': TEMPLATE_LOADERS,
+             'context_processors': (
+                 'django.contrib.auth.context_processors.auth',
++                'django.contrib.messages.context_processors.messages',
+             )
+         },
+     },

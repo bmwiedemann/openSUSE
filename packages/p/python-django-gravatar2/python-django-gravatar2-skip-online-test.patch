@@ -1,0 +1,20 @@
+Index: django-gravatar-1.4.2/django_gravatar/tests.py
+===================================================================
+--- django-gravatar-1.4.2.orig/django_gravatar/tests.py	2017-07-27 23:53:44.000000000 +0200
++++ django-gravatar-1.4.2/django_gravatar/tests.py	2019-10-09 13:10:55.745307755 +0200
+@@ -5,6 +5,7 @@ from django.utils.html import escape
+ from .compat import parse_qs, quote_plus, urlparse
+ from .helpers import *
+ 
++from unittest import skip
+ 
+ class TestGravatarHelperMethods(TestCase):
+ 
+@@ -59,6 +60,7 @@ class TestGravatarHelperMethods(TestCase
+         # Verify urlencoding
+         self.assertTrue(quote_plus(default_url) in url)
+ 
++    @skip("on-line test")
+     def test_has_gravatar(self):
+         """
+         Verify that the has_gravatar helper method correctly
