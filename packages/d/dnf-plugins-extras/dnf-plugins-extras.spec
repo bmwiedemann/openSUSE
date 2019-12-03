@@ -19,6 +19,14 @@
 %{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
 %global dnf_plugins_extra_obsolete 2.0.0
 
+# YUM v3 has been removed from openSUSE Tumbleweed as of 20191119
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%bcond_with as_yum
+%else
+%bcond_without as_yum
+%endif
+
+
 # openSUSE does not have pykickstart
 %bcond_with pykickstart
 
@@ -29,13 +37,16 @@
 %bcond_with tests
 
 Name:           dnf-plugins-extras
-Version:        4.0.4
+Version:        4.0.8
 Release:        0
 Summary:        Extras Plugins for DNF
 Group:          System/Packages
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+
+# Backports from upstream
+Patch0001:      0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch
 
 BuildArch:      noarch
 BuildRequires:  cmake
@@ -97,6 +108,11 @@ Provides:       %{name}-rpmconf = %{version}-%{release}
 Provides:       dnf-plugin-rpmconf = %{version}-%{release}
 Provides:       python3-%{name}-rpmconf = %{version}-%{release}
 Obsoletes:      python3-%{name}-rpmconf < %{dnf_plugins_extra_obsolete}
+%if %{with as_yum}
+# SUSE-specific yum-utils subpackage obsoletion
+Obsoletes:      yum-merge-conf < 4.0.0
+Provides:       yum-merge-conf = %{version}-%{release}
+%endif
 
 %description -n python3-dnf-plugin-rpmconf
 RpmConf Plugin for DNF, Python 3 version. Handles .rpmnew, .rpmsave every
@@ -180,6 +196,17 @@ Obsoletes:      python3-%{name}-torproxy < %{dnf_plugins_extra_obsolete}
 Tor proxy plugin forces DNF to use Tor to download packages. It makes sure that
 Tor is working and avoids leaking the hostname by using the proper SOCKS5 interface.
 
+%package -n python3-dnf-plugin-showvars
+Summary:        showvars Plugin for DNF
+Group:          System/Packages
+Requires:       python3-%{name}-common = %{version}-%{release}
+Provides:       dnf-plugin-showvars = %{version}-%{release}
+Provides:       python3-%{name}-showvars = %{version}-%{release}
+
+%description -n python3-dnf-plugin-showvars
+This plugin dumps the current value of any defined DNF variables. For example
+$releasever and $basearch.
+
 
 %prep
 %autosetup -n %{name}-%{version}%{?prerel:-%{prerel}} -p1
@@ -206,12 +233,12 @@ popd
 
 %if ! %{with pykickstart}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/kickstart.*
-rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.kickstart.*
+rm -rf %{buildroot}%{_mandir}/man8/dnf-kickstart.*
 %endif
 
 %if ! %{with tracer}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/tracer.*
-rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.tracer.*
+rm -rf %{buildroot}%{_mandir}/man8/dnf-tracer.*
 %endif
 
 %if %{with tests}
@@ -231,17 +258,17 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %if %{with pykickstart}
 %files -n python3-dnf-plugin-kickstart
 %{python3_sitelib}/dnf-plugins/kickstart.*
-%{_mandir}/man8/dnf.plugin.kickstart.*
+%{_mandir}/man8/dnf-kickstart.*
 %endif
 
 %files -n python3-dnf-plugin-rpmconf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/rpmconf.conf
 %{python3_sitelib}/dnf-plugins/rpm_conf.*
-%{_mandir}/man8/dnf.plugin.rpmconf.*
+%{_mandir}/man8/dnf-rpmconf.*
 
 %files -n python3-dnf-plugin-snapper
 %{python3_sitelib}/dnf-plugins/snapper.*
-%{_mandir}/man8/dnf.plugin.snapper.*
+%{_mandir}/man8/dnf-snapper.*
 
 %files -n python3-dnf-plugin-system-upgrade
 %{_unitdir}/dnf-system-upgrade.service
@@ -249,18 +276,22 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %dir %{_unitdir}/system-update.target.wants
 %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
-%{_mandir}/man8/dnf.plugin.system-upgrade.*
+%{_mandir}/man8/dnf-system-upgrade.*
 
 %if %{with tracer}
 %files -n python3-dnf-plugin-tracer
 %{python3_sitelib}/dnf-plugins/tracer.*
-%{_mandir}/man8/dnf.plugin.tracer.*
+%{_mandir}/man8/dnf-tracer.*
 %endif
 
 %files -n python3-dnf-plugin-torproxy
 %config(noreplace) %{_sysconfdir}/dnf/plugins/torproxy.conf
 %{python3_sitelib}/dnf-plugins/torproxy.*
-%{_mandir}/man8/dnf.plugin.torproxy.*
+%{_mandir}/man8/dnf-torproxy.*
+
+%files -n python3-dnf-plugin-showvars
+%{python3_sitelib}/dnf-plugins/showvars.*
+%{_mandir}/man8/dnf-showvars.*
 
 %changelog
 

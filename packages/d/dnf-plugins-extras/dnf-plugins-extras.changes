@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec  1 18:54:11 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to version 4.0.8
+  + [system-upgrade] Save gpgcheck and repo_gpgcheck repo options (rh#1693677)
+  + Add showvars plugin for showing what DNF vars are set for the dnf runtime
+  + [system-upgrade] Use --system-upgrade plymouth mode (rh#1681584)
+  + [system-upgrade] Fix traceback caused by setting gpgcheck options (rh#1751103, rh#1746346)
+  + Fix kickstart plugin (rh#1649093)
+  + [system-upgrade] Ensure identical transaction in download and update steps (rh#1758588)
+  + [system-upgrade] Provide distro specific url for help with system-upgrade
+  + Set clean_requirements_on_remove=False during remove (rh#1764169)
+- Set rpmconf plugin package to replace yum-merge-conf on Tumbleweed
+- Backport patch from upstream to rename man pages to dnf-FOO (rh#1706386)
+  * Patch: 0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch
+
+-------------------------------------------------------------------
 Sun Apr 14 18:19:41 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Initial packaging based on Mageia package

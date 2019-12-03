@@ -1,0 +1,170 @@
+From f3806b662d9608b61b9fe52d9d6a57012d099cf8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luk=C3=A1=C5=A1=20Hr=C3=A1zk=C3=BD?= <lhrazky@redhat.com>
+Date: Fri, 8 Nov 2019 14:43:49 +0100
+Subject: [PATCH] [doc] move manpages for plugins to "dnf-PLUGIN"
+ (RhBug:1706386)
+
+Moves the man pages for the plugins from "dnf.plugin.PLUGIN" to
+"dnf-PLUGIN" to follow the established convention for man pages of
+binaries with commands.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1706386
+---
+ dnf-plugins-extras.spec | 22 +++++++++++-----------
+ doc/CMakeLists.txt      | 14 +++++++-------
+ doc/conf.py             | 18 +++++++-----------
+ 3 files changed, 25 insertions(+), 29 deletions(-)
+
+diff --git a/dnf-plugins-extras.spec b/dnf-plugins-extras.spec
+index 53e36ff..a7727f1 100644
+--- a/dnf-plugins-extras.spec
++++ b/dnf-plugins-extras.spec
+@@ -364,14 +364,14 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
+ %if %{with python2}
+ %files -n python2-dnf-plugin-kickstart
+ %{python2_sitelib}/dnf-plugins/kickstart.*
+-%{_mandir}/man8/dnf.plugin.kickstart.*
++%{_mandir}/man8/dnf-kickstart.*
+ %endif
+ 
+ %if %{with python3}
+ %files -n python3-dnf-plugin-kickstart
+ %{python3_sitelib}/dnf-plugins/kickstart.*
+ %{python3_sitelib}/dnf-plugins/__pycache__/kickstart.*
+-%{_mandir}/man8/dnf.plugin.kickstart.*
++%{_mandir}/man8/dnf-kickstart.*
+ %endif
+ 
+ %if %{with python3}
+@@ -379,20 +379,20 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
+ %config(noreplace) %{_sysconfdir}/dnf/plugins/rpmconf.conf
+ %{python3_sitelib}/dnf-plugins/rpm_conf.*
+ %{python3_sitelib}/dnf-plugins/__pycache__/rpm_conf.*
+-%{_mandir}/man8/dnf.plugin.rpmconf.*
++%{_mandir}/man8/dnf-rpmconf.*
+ %endif
+ 
+ %if %{with python2}
+ %files -n python2-dnf-plugin-snapper
+ %{python2_sitelib}/dnf-plugins/snapper.*
+-%{_mandir}/man8/dnf.plugin.snapper.*
++%{_mandir}/man8/dnf-snapper.*
+ %endif
+ 
+ %if %{with python3}
+ %files -n python3-dnf-plugin-snapper
+ %{python3_sitelib}/dnf-plugins/snapper.*
+ %{python3_sitelib}/dnf-plugins/__pycache__/snapper.*
+-%{_mandir}/man8/dnf.plugin.snapper.*
++%{_mandir}/man8/dnf-snapper.*
+ %endif
+ 
+ %if %{with python2}
+@@ -401,7 +401,7 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
+ %{_unitdir}/dnf-system-upgrade-cleanup.service
+ %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
+ %{python2_sitelib}/dnf-plugins/system_upgrade.*
+-%{_mandir}/man8/dnf.plugin.system-upgrade.*
++%{_mandir}/man8/dnf-system-upgrade.*
+ %endif
+ 
+ %if %{with python3}
+@@ -411,20 +411,20 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
+ %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
+ %{python3_sitelib}/dnf-plugins/system_upgrade.py
+ %{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade.*
+-%{_mandir}/man8/dnf.plugin.system-upgrade.*
++%{_mandir}/man8/dnf-system-upgrade.*
+ %endif
+ 
+ %if %{with python2}
+ %files -n python2-dnf-plugin-tracer
+ %{python2_sitelib}/dnf-plugins/tracer.*
+-%{_mandir}/man8/dnf.plugin.tracer.*
++%{_mandir}/man8/dnf-tracer.*
+ %endif
+ 
+ %if %{with python3}
+ %files -n python3-dnf-plugin-tracer
+ %{python3_sitelib}/dnf-plugins/tracer.*
+ %{python3_sitelib}/dnf-plugins/__pycache__/tracer.*
+-%{_mandir}/man8/dnf.plugin.tracer.*
++%{_mandir}/man8/dnf-tracer.*
+ %endif
+ 
+ %if %{with python3}
+@@ -432,14 +432,14 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
+ %config(noreplace) %{_sysconfdir}/dnf/plugins/torproxy.conf
+ %{python3_sitelib}/dnf-plugins/torproxy.*
+ %{python3_sitelib}/dnf-plugins/__pycache__/torproxy.*
+-%{_mandir}/man8/dnf.plugin.torproxy.*
++%{_mandir}/man8/dnf-torproxy.*
+ %endif
+ 
+ %if %{with python3}
+ %files -n python3-dnf-plugin-showvars
+ %{python3_sitelib}/dnf-plugins/showvars.*
+ %{python3_sitelib}/dnf-plugins/__pycache__/showvars.*
+-%{_mandir}/man8/dnf.plugin.showvars.*
++%{_mandir}/man8/dnf-showvars.*
+ %endif
+ 
+ %changelog
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index d7efc4e..94f9bf8 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -18,14 +18,14 @@ ADD_CUSTOM_TARGET (doc-man
+ ADD_CUSTOM_TARGET (doc)
+ ADD_DEPENDENCIES (doc doc-html doc-man)
+ 
+-INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.kickstart.8
+-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.snapper.8
+-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.system-upgrade.8
+-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.tracer.8
+-    ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.showvars.8
++INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-kickstart.8
++    ${CMAKE_CURRENT_BINARY_DIR}/dnf-snapper.8
++    ${CMAKE_CURRENT_BINARY_DIR}/dnf-system-upgrade.8
++    ${CMAKE_CURRENT_BINARY_DIR}/dnf-tracer.8
++    ${CMAKE_CURRENT_BINARY_DIR}/dnf-showvars.8
+ 	DESTINATION share/man/man8)
+ if (${PYTHON_VERSION_MAJOR} STREQUAL "3")
+-    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.rpmconf.8
+-        ${CMAKE_CURRENT_BINARY_DIR}/dnf.plugin.torproxy.8
++    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/dnf-rpmconf.8
++        ${CMAKE_CURRENT_BINARY_DIR}/dnf-torproxy.8
+         DESTINATION share/man/man8)
+ endif()
+diff --git a/doc/conf.py b/doc/conf.py
+index a447ea9..f8156ae 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -240,17 +240,13 @@ AUTHORS=[u'See AUTHORS in your Extras DNF Plugins distribution']
+ # One entry per manual page. List of tuples
+ # (source start file, name, description, authors, manual section).
+ man_pages = [
+-    ('kickstart', 'dnf.plugin.kickstart',
+-     u'DNF kickstart Plugin', AUTHORS, 8),
+-    ('rpmconf', 'dnf.plugin.rpmconf',
+-     u'DNF rpmconf Plugin', AUTHORS, 8),
+-    ('snapper', 'dnf.plugin.snapper',
+-     u'DNF snapper Plugin', AUTHORS, 8),
+-    ('system-upgrade', 'dnf.plugin.system-upgrade', u'DNF system-upgrade Plugin', AUTHORS, 8),
+-    ('torproxy', 'dnf.plugin.torproxy', u'DNF torproxy Plugin', AUTHORS, 8),
+-    ('showvars', 'dnf.plugin.showvars', u'DNF showvars Plugin', AUTHORS, 8),
+-    ('tracer', 'dnf.plugin.tracer',
+-     u'DNF tracer Plugin', AUTHORS, 8),
++    ('kickstart', 'dnf-kickstart', u'DNF kickstart Plugin', AUTHORS, 8),
++    ('rpmconf', 'dnf-rpmconf', u'DNF rpmconf Plugin', AUTHORS, 8),
++    ('snapper', 'dnf-snapper', u'DNF snapper Plugin', AUTHORS, 8),
++    ('system-upgrade', 'dnf-system-upgrade', u'DNF system-upgrade Plugin', AUTHORS, 8),
++    ('torproxy', 'dnf-torproxy', u'DNF torproxy Plugin', AUTHORS, 8),
++    ('showvars', 'dnf-showvars', u'DNF showvars Plugin', AUTHORS, 8),
++    ('tracer', 'dnf-tracer', u'DNF tracer Plugin', AUTHORS, 8),
+ ]
+ 
+ # If true, show URL addresses after external links.
+-- 
+2.21.0
+

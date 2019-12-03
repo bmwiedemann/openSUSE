@@ -7,4 +7,23 @@
     <comment>Initial packaging for openSUSE</comment>
     <requestid>694078</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de12bc913b6c2ba2199cc7ceb18d4e9f</srcmd5>
+    <version>4.0.8</version>
+    <time>1575382807</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.0.8
+  + [system-upgrade] Save gpgcheck and repo_gpgcheck repo options (rh#1693677)
+  + Add showvars plugin for showing what DNF vars are set for the dnf runtime
+  + [system-upgrade] Use --system-upgrade plymouth mode (rh#1681584)
+  + [system-upgrade] Fix traceback caused by setting gpgcheck options (rh#1751103, rh#1746346)
+  + Fix kickstart plugin (rh#1649093)
+  + [system-upgrade] Ensure identical transaction in download and update steps (rh#1758588)
+  + [system-upgrade] Provide distro specific url for help with system-upgrade
+  + Set clean_requirements_on_remove=False during remove (rh#1764169)
+- Set rpmconf plugin package to replace yum-merge-conf on Tumbleweed
+- Backport patch from upstream to rename man pages to dnf-FOO (rh#1706386)
+  * Patch: 0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch</comment>
+    <requestid>752753</requestid>
+  </revision>
 </revisionlist>
