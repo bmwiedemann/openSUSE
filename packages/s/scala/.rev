@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>688265</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b59eb12b4cc5d4d09252ed3f1294f50</srcmd5>
+    <version>2.10.7</version>
+    <time>1575373227</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade 2.10.7 + bootstrap with 2.10.7: allows building with jdk11</comment>
+    <requestid>752799</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,20 @@
+--- scala-2.10.7/build.xml	2019-11-27 17:42:56.487021401 +0100
++++ scala-2.10.7/build.xml	2019-11-27 17:43:39.491264930 +0100
+@@ -757,7 +757,7 @@
+           destdir="${@{project}-classes}"
+           classpath="${@{project}-classes}"
+           includes="**/*.java"
+-          target="1.6" source="1.5"
++          target="1.6" source="1.6"
+           compiler="javac1.6"
+ 	  includeantruntime="false" >
+             <compilerarg line="${javac.args} @{args}"/>
+@@ -793,7 +793,7 @@
+         includes="**/*.java"
+         excludes="@{excludes}"
+ 	includeantruntime="false"
+-        target="1.6" source="1.5">
++        target="1.6" source="1.6">
+           <compilerarg line="${javac.args} @{args}"/>
+           <classpath refid="@{stage}.@{destproject}.build.path"/>
+       </javac>

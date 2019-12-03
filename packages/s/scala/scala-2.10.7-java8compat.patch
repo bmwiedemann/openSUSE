@@ -1,0 +1,184 @@
+--- scala-2.10.7/src/compiler/scala/tools/nsc/io/SourceReader.scala	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/io/SourceReader.scala	2019-11-28 18:22:37.444126737 +0100
+@@ -8,7 +8,7 @@
+ package io
+ 
+ import java.io.{ FileInputStream, InputStream, IOException }
+-import java.nio.{ByteBuffer, CharBuffer}
++import java.nio.{Buffer, ByteBuffer, CharBuffer}
+ import java.nio.channels.{FileChannel, ReadableByteChannel, Channels}
+ import java.nio.charset.{CharsetDecoder, CoderResult}
+ import scala.tools.nsc.reporters._
+@@ -61,13 +61,13 @@
+   /** Reads the specified byte channel. */
+   protected def read(input: ReadableByteChannel): Array[Char] = {
+     val decoder: CharsetDecoder = this.decoder.reset()
+-    val bytes: ByteBuffer       = this.bytes; bytes.clear()
+-    var chars: CharBuffer       = this.chars; chars.clear()
++    val bytes: ByteBuffer       = this.bytes; bytes.asInstanceOf[Buffer].clear()
++    var chars: CharBuffer       = this.chars; chars.asInstanceOf[Buffer].clear()
+     var endOfInput              = false
+ 
+     while (!endOfInput ) {
+       endOfInput = input.read(bytes) < 0
+-      bytes.flip()
++      bytes.asInstanceOf[Buffer].flip()
+       chars = decode(decoder, bytes, chars, endOfInput)
+     }
+     terminate(flush(decoder, chars))
+@@ -76,7 +76,7 @@
+   /** Reads the specified byte buffer. */
+   protected def read(bytes: ByteBuffer): Array[Char] = {
+     val decoder: CharsetDecoder = this.decoder.reset()
+-    val chars: CharBuffer = this.chars; chars.clear()
++    val chars: CharBuffer = this.chars; chars.asInstanceOf[Buffer].clear()
+     terminate(flush(decoder, decode(decoder, bytes, chars, true)))
+   }
+ 
+@@ -128,7 +128,7 @@
+   def flush(decoder: CharsetDecoder, chars: CharBuffer): CharBuffer = {
+     val result: CoderResult = decoder.flush(chars)
+     if (result.isUnderflow()) {
+-      chars.flip()
++      chars.asInstanceOf[Buffer].flip()
+       chars
+     } else {
+       if (result.isError()) throw new IOException(result.toString())
+@@ -142,7 +142,7 @@
+    * content but with an increased capacity.
+    */
+   private def increaseCapacity(buffer: CharBuffer): CharBuffer = {
+-    buffer.flip()
++    buffer.asInstanceOf[Buffer].flip()
+     val capacity = 2 * buffer.capacity()
+     CharBuffer.allocate(capacity).put(buffer)
+   }
+--- scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/Attribute.java	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/Attribute.java	2019-11-28 17:28:47.932834776 +0100
+@@ -11,6 +11,7 @@
+ import java.util.HashMap;
+ import java.util.LinkedHashMap;
+ import java.util.Iterator;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.ByteOrder;
+ import java.io.UnsupportedEncodingException;
+@@ -462,7 +463,7 @@
+             return null;
+         try { str = new String(value, buf.position(), length, "UTF-8" ); }
+         catch (UnsupportedEncodingException e) { throw new Error(e); }
+-        buf.position(buf.position() + length);
++        ((Buffer)buf).position(buf.position() + length);
+         return str;
+     }
+ 
+--- scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/PEFile.java	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/PEFile.java	2019-11-28 17:32:27.926199324 +0100
+@@ -17,6 +17,7 @@
+ import java.io.IOException;
+ import java.io.FileNotFoundException;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.FileChannel;
+ import java.nio.MappedByteBuffer;
+@@ -454,7 +455,7 @@
+ 
+     /** Go to the specified position in the file. */
+     public void seek(int pos) {
+-	buf.position(pos);
++	((Buffer)buf).position(pos);
+     }
+ 
+ 
+@@ -485,7 +486,7 @@
+ 
+     /** Move the forward in the file by the specified number of bytes. */
+     public void skip(int n) {
+-	buf.position(buf.position() + n);
++	((Buffer)buf).position(buf.position() + n);
+     }
+ 
+     /**
+@@ -503,11 +504,11 @@
+ 
+     /** Returns a buffer from the given offset to the end of the file. */
+     public ByteBuffer getBuffer(long offset, int size) {
+-	buf.mark();
+-	buf.position((int)offset);
++	((Buffer)buf).mark();
++	((Buffer)buf).position((int)offset);
+ 	ByteBuffer bb = buf.slice();
+-	buf.reset();
+-	bb.limit(size);
++	((Buffer)buf).reset();
++	((Buffer)bb).limit(size);
+ 	bb.order(java.nio.ByteOrder.LITTLE_ENDIAN);
+ 	return bb;
+     }
+@@ -707,11 +708,11 @@
+ 		if (i < length - 1)
+ 		    b.append(" ");
+ 	    }
+-        buf.position(savedPos);
++        ((Buffer)buf).position(savedPos);
+ 	    return b.append(")").toString();
+ 	}
+ 
+-	public Sig reset() { buf.position(pos); return this; }
++	public Sig reset() { ((Buffer)buf).position(pos); return this; }
+ 
+ 	public int pos() { return buf.position() - pos; }
+ 
+--- scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/util/PEStream.java	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/util/PEStream.java	2019-11-28 17:36:37.103730311 +0100
+@@ -11,6 +11,7 @@
+ import java.io.PrintStream;
+ import java.io.IOException;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.FileChannel;
+ 
+@@ -64,7 +65,7 @@
+     /** Move to the specified position in the stream. */
+     private  void seek(int pos) {
+ 	try {
+-	    buffer.position(pos);
++	    ((Buffer)buffer).position(pos);
+ 	} catch (IllegalArgumentException e) {
+ 	    System.err.println("\nSeek failed in file " + file
+ 			       + " for position " + pos
+@@ -76,11 +77,11 @@
+     /** Return a string from the specified position in the stream. */
+     public String getString(int pos) {
+ 	seek(pos);
+-	buffer.mark();
++	((Buffer)buffer).mark();
+ 	int i;
+ 	for (i = 0; getByte() != 0; i++);
+ 	byte[] buf = new byte[i];
+-	buffer.reset(); // go back to the marked position
++	((Buffer)buffer).reset(); // go back to the marked position
+ 	buffer.get(buf);
+ 	try {
+ 	    return new String(buf, "UTF-8");
+--- scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/util/Table.java	2017-11-01 04:52:36.000000000 +0100
++++ scala-2.10.7/src/msil/ch/epfl/lamp/compiler/msil/util/Table.java	2019-11-28 17:34:43.543040457 +0100
+@@ -9,6 +9,7 @@
+ import ch.epfl.lamp.compiler.msil.PEFile.Sig;
+ 
+ import java.io.PrintStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.MappedByteBuffer;
+ 
+@@ -327,7 +328,7 @@
+     protected final void seekRow(int row) {
+ 	assert row > 0 && row <= rows
+ 	    : "Index " + row + " is not within the table with #rows = " + rows;
+-	buffer.position((row - 1)* rowSize());
++	((Buffer)buffer).position((row - 1)* rowSize());
+     }
+ 
+     public final int currentRow() { return currentRow; }

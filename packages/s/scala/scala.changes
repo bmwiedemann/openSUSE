@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Nov 29 10:53:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not package ant tasks in bootstrap build
+- Added patch:
+  * scala-2.10.7-java8compat.patch
+    + Build binaries compatible with java 8 even when building
+      with jdk >= 9
+
+-------------------------------------------------------------------
+Thu Nov 28 14:27:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.10.7
+  * Can be built and used with java 11
+- Get sources by a source service instead of a custom script
+- Clean a bit the spec file and remove unnecessary sources
+- Added patches:
+  * scala-2.10.7-source6.patch
+    + Build not only with target level 6, but also with source
+      level 6, in order to be able to build with jdk9+
+  * scala-2.10.7-lines.patch
+    + Fix type conflict with jdk11's java.lang.String.lines
+
+-------------------------------------------------------------------
+Tue Nov 26 10:56:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build api documentation in bootstrap flavour
+- Be extra verbose for the scalac build
+  * The build is long on non-JIT architectures and OBS needs some
+    compiler output in order to know that the job is not dead; 
+    otherwise it kills it.
+- Do not build apidocs to avoid intermittent internal scaladoc
+  errors after hours of build on s390x
+- Remove obsolete scriptlets
+
+-------------------------------------------------------------------
 Mon Mar 25 13:30:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Let the non-bootstrap packages obsolete their bootstrap

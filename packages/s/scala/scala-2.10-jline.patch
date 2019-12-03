@@ -1,8 +1,6 @@
-diff --git a/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala b/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala
-index 10f9724..2970276 100644
---- a/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala
-+++ b/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala
-@@ -42,7 +42,7 @@ class JLineReader(_completion: => Completion) extends InteractiveReader {
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala	2019-11-27 16:04:03.141644641 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/JLineReader.scala	2019-11-27 16:04:24.461764259 +0100
+@@ -45,7 +45,7 @@
      def readOneKey(prompt: String) = {
        this.print(prompt)
        this.flush()
@@ -11,24 +9,20 @@ index 10f9724..2970276 100644
      }
      def eraseLine() = consoleReader.resetPromptLine("", "", 0)
      def redrawLineAndFlush(): Unit = { flush() ; drawLine() ; flush() }
-diff --git a/src/compiler/scala/tools/nsc/interpreter/session/FileBackedHistory.scala b/src/compiler/scala/tools/nsc/interpreter/session/FileBackedHistory.scala
-index dddfb1b..e598ac5 100644
---- a/src/compiler/scala/tools/nsc/interpreter/session/FileBackedHistory.scala
-+++ b/src/compiler/scala/tools/nsc/interpreter/session/FileBackedHistory.scala
-@@ -13,7 +13,7 @@ import FileBackedHistory._
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/session/FileBackedHistory.scala	2019-11-27 16:04:03.141644641 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/session/FileBackedHistory.scala	2019-11-27 16:05:14.034042924 +0100
+@@ -15,7 +15,7 @@
  /** TODO: file locking.
   */
  trait FileBackedHistory extends JLineHistory with JPersistentHistory {
 -  def maxSize: Int
 +  def maxSize: Int = 2500
-   protected lazy val historyFile: File = defaultFile
-   private var isPersistent = true
  
-diff --git a/src/compiler/scala/tools/nsc/interpreter/session/JLineHistory.scala b/src/compiler/scala/tools/nsc/interpreter/session/JLineHistory.scala
-index 18e0ee7..fc33192 100644
---- a/src/compiler/scala/tools/nsc/interpreter/session/JLineHistory.scala
-+++ b/src/compiler/scala/tools/nsc/interpreter/session/JLineHistory.scala
-@@ -13,7 +13,6 @@ package session
+   // For a history file in the standard location, always try to restrict permission,
+   // creating an empty file if none exists.
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/session/JLineHistory.scala	2019-11-27 16:04:03.141644641 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/session/JLineHistory.scala	2019-11-27 16:04:24.461764259 +0100
+@@ -13,7 +13,6 @@
  trait JLineHistory extends JHistory with History {
    def size: Int
    def isEmpty: Boolean
@@ -36,7 +30,7 @@ index 18e0ee7..fc33192 100644
    def clear(): Unit
    def get(index: Int): CharSequence
    def add(line: CharSequence): Unit
-@@ -42,7 +41,8 @@ object JLineHistory {
+@@ -42,7 +41,8 @@
          addLineToFile(item)
        }
      }
@@ -46,11 +40,9 @@ index 18e0ee7..fc33192 100644
    }
  
    def apply(): JLineHistory = try new JLineFileHistory catch { case x: Exception => new SimpleHistory() }
-diff --git a/src/compiler/scala/tools/nsc/interpreter/session/SimpleHistory.scala b/src/compiler/scala/tools/nsc/interpreter/session/SimpleHistory.scala
-index 9f4e2b9..8933849 100644
---- a/src/compiler/scala/tools/nsc/interpreter/session/SimpleHistory.scala
-+++ b/src/compiler/scala/tools/nsc/interpreter/session/SimpleHistory.scala
-@@ -10,7 +10,7 @@ package session
+--- scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/session/SimpleHistory.scala	2019-11-27 16:04:03.141644641 +0100
++++ scala-2.10.7/src/compiler/scala/tools/nsc/interpreter/session/SimpleHistory.scala	2019-11-27 16:04:24.461764259 +0100
+@@ -10,7 +10,7 @@
  import scala.collection.mutable.{ Buffer, ListBuffer }
  import scala.collection.JavaConverters._
  
@@ -59,7 +51,7 @@ index 9f4e2b9..8933849 100644
    private var _index: Int = 0
    private val buf: Buffer[String] = new ListBuffer[String]
    private def toEntries(): Seq[JEntry] = buf.zipWithIndex map { case (x, i) => Entry(i, x) }
-@@ -32,27 +32,27 @@ class SimpleHistory extends JLineHistory {
+@@ -32,27 +32,27 @@
    def maxSize: Int = 2500
    def last = if (isEmpty) fail("last") else buf.last
  
