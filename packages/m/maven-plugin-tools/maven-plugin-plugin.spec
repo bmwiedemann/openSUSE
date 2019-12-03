@@ -18,7 +18,7 @@
 
 %global base_name maven-plugin-tools
 Name:           maven-plugin-plugin
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
@@ -28,7 +28,6 @@ Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugin-tools/%{ba
 Patch0:         0001-Avoid-duplicate-MOJO-parameters.patch
 Patch1:         0002-Deal-with-nulls-from-getComment.patch
 Patch2:         0003-Port-to-plexus-utils-3.0.24.patch
-Patch10:        fix-getPluginsAsMap.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -79,13 +78,8 @@ API documentation for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch10 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
-
-# For com.sun:tools use scope "compile" instead of "system"
-%pom_remove_dep com.sun:tools maven-plugin-tools-javadoc
-%pom_add_dep com.sun:tools maven-plugin-tools-javadoc
 
 %pom_xpath_inject "pom:project/pom:properties" "
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -94,48 +88,17 @@ API documentation for %{name}.
 # Remove test dependencies because tests are skipped anyways.
 %pom_xpath_remove "pom:dependency[pom:scope='test']"
 
-# Use Maven 3.1.1 APIs
-%pom_remove_dep :maven-project maven-plugin-plugin
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-plugin
-%pom_remove_dep :maven-plugin-registry maven-plugin-plugin
-%pom_remove_dep :maven-artifact-manager maven-plugin-plugin
-
 # Why on the earth is this dependency there ???
 %pom_remove_dep :maven-surefire-common maven-plugin-plugin
 
-%pom_change_dep :maven-project :maven-core maven-plugin-tools-annotations
-%pom_change_dep :maven-plugin-descriptor :maven-compat maven-plugin-tools-annotations
-
-%pom_remove_dep :maven-plugin-descriptor maven-script/maven-plugin-tools-ant
-%pom_change_dep :maven-project :maven-core maven-script/maven-plugin-tools-ant
-
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-tools-api
-%pom_change_dep :maven-project :maven-core maven-plugin-tools-api
-
-%pom_remove_dep :maven-plugin-descriptor maven-script/maven-plugin-tools-beanshell
-
-%pom_remove_dep :maven-project maven-plugin-tools-generators
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-tools-generators
-
-%pom_change_dep :maven-project :maven-core maven-plugin-tools-java
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-tools-java
-
-%pom_change_dep :maven-plugin-descriptor :maven-plugin-api maven-script/maven-plugin-tools-model
-
-%pom_remove_dep :maven-project maven-script/maven-script-ant
-%pom_remove_dep :maven-plugin-descriptor maven-script/maven-script-ant
-
-%pom_remove_dep :maven-project
-%pom_remove_dep :maven-plugin-descriptor
-%pom_add_dep org.apache.maven:maven-compat
-%pom_add_dep org.apache.maven:maven-plugin-registry
+%pom_change_dep org.easymock:easymock:: :::test maven-plugin-tools-annotations
 
 %build
 pushd %{name}
 %{mvn_file} :%{name} %{base_name}/%{name}
 %{mvn_build} -f \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+	-- -Dmaven.compiler.release=7
 %endif
 
 popd

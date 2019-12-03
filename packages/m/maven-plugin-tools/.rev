@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>750612</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b5ffc7af42430975f40a100d3c2089b</srcmd5>
+    <version>3.6.0</version>
+    <time>1575373206</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.6.0</comment>
+    <requestid>751524</requestid>
+  </revision>
 </revisionlist>

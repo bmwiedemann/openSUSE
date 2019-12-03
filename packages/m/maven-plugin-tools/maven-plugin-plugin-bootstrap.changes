@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:25:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream 3.6.0
+  * allow building with java > 1.8 too against objectweb-asm 7.2
+- Removed patch:
+  * fix-getPluginsAsMap.patch
+    + fix is present in the updated sources
+- Modified patch:
+  * maven-plugin-plugin-bootstrap-resouces.patch
+    + regenerate from the non-bootstrap build to correspond to
+      what is generate by the maven-plugin-plugin
+
+-------------------------------------------------------------------
 Fri Mar 29 17:04:37 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of a bootstrap version of maven-plugin-plugin

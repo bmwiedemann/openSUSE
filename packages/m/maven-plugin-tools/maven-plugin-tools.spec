@@ -17,7 +17,7 @@
 
 
 Name:           maven-plugin-tools
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        Maven Plugin Tools
 License:        Apache-2.0
@@ -28,7 +28,6 @@ Source1:        %{name}-build.tar.xz
 Patch0:         0001-Avoid-duplicate-MOJO-parameters.patch
 Patch1:         0002-Deal-with-nulls-from-getComment.patch
 Patch2:         0003-Port-to-plexus-utils-3.0.24.patch
-Patch10:        fix-getPluginsAsMap.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  atinject
@@ -63,7 +62,6 @@ BuildRequires:  xbean
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
-BuildConflicts: java-devel >= 9
 BuildArch:      noarch
 
 %description
@@ -120,20 +118,6 @@ Group:          Development/Libraries/Java
 
 %description java
 Descriptor extractor for plugins written in Java.
-
-# Note that this package contains code, not documentation.
-# See comments about "javadocs" subpackage below.
-%package javadoc
-Summary:        Maven Plugin Tools Javadoc
-Group:          Development/Libraries/Java
-
-%description javadoc
-The Maven Plugin Tools Javadoc provides several Javadoc taglets to be used when
-generating Javadoc.
-
-Java API documentation for %{name} is contained in
-%{name}-javadocs package. This package does not contain it.
-
 %package model
 Summary:        Maven Plugin Metadata Model
 Group:          Development/Libraries/Java
@@ -158,12 +142,13 @@ Group:          Development/Libraries/Java
 This package provides %{summary}, which write Maven plugins with
 Beanshell scripts.
 
-# The subpackage name "javadocs" instead of "javadoc" is intentional.
-%package javadocs
+%package javadoc
 Summary:        Javadoc for %{name}
 Group:          Development/Libraries/Java
+Provides:       %{name}-javadocs = %{version}-%{release}
+Obsoletes:      %{name}-javadocs < %{version}-%{release}
 
-%description javadocs
+%description javadoc
 API documentation for %{name}.
 
 %prep
@@ -171,13 +156,8 @@ API documentation for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch10 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
-
-# For com.sun:tools use scope "compile" instead of "system"
-%pom_remove_dep com.sun:tools maven-plugin-tools-javadoc
-%pom_add_dep com.sun:tools maven-plugin-tools-javadoc
 
 %pom_xpath_inject "pom:project/pom:properties" "
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -186,39 +166,7 @@ API documentation for %{name}.
 # Remove test dependencies because tests are skipped anyways.
 %pom_xpath_remove "pom:dependency[pom:scope='test']"
 
-# Use Maven 3.1.1 APIs
-%pom_remove_dep :maven-project maven-plugin-plugin
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-plugin
-%pom_remove_dep :maven-plugin-registry maven-plugin-plugin
-%pom_remove_dep :maven-artifact-manager maven-plugin-plugin
-
-%pom_change_dep :maven-project :maven-core maven-plugin-tools-annotations
-%pom_change_dep :maven-plugin-descriptor :maven-compat maven-plugin-tools-annotations
-%pom_change_dep :easymock :easymock::test maven-plugin-tools-annotations
-
-%pom_remove_dep :maven-plugin-descriptor maven-script/maven-plugin-tools-ant
-%pom_change_dep :maven-project :maven-core maven-script/maven-plugin-tools-ant
-
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-tools-api
-%pom_change_dep :maven-project :maven-core maven-plugin-tools-api
-
-%pom_remove_dep :maven-plugin-descriptor maven-script/maven-plugin-tools-beanshell
-
-%pom_remove_dep :maven-project maven-plugin-tools-generators
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-tools-generators
-
-%pom_change_dep :maven-project :maven-core maven-plugin-tools-java
-%pom_remove_dep :maven-plugin-descriptor maven-plugin-tools-java
-
-%pom_change_dep :maven-plugin-descriptor :maven-plugin-api maven-script/maven-plugin-tools-model
-
-%pom_remove_dep :maven-project maven-script/maven-script-ant
-%pom_remove_dep :maven-plugin-descriptor maven-script/maven-script-ant
-%pom_change_dep :easymock :easymock::test maven-script/maven-script-ant
-
-%pom_remove_dep :maven-project
-%pom_remove_dep :maven-plugin-descriptor
-%pom_add_dep org.apache.maven:maven-compat
+%pom_change_dep org.easymock:easymock:: :::test maven-plugin-tools-annotations
 
 %{mvn_package} :maven-plugin-tools __noinstall
 %{mvn_package} :maven-script __noinstall
@@ -275,8 +223,7 @@ for i in \
 	maven-plugin-tools-annotations \
 	maven-plugin-tools-api \
 	maven-plugin-tools-generators \
-	maven-plugin-tools-java \
-	maven-plugin-tools-javadoc; do
+	maven-plugin-tools-java; do
   %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
   if [ -d ${i}/target/site/apidocs ]; then
     cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
@@ -314,8 +261,6 @@ done
 
 %files java -f .mfiles-maven-plugin-tools-java
 
-%files javadoc -f .mfiles-maven-plugin-tools-javadoc
-
 %files model -f .mfiles-maven-plugin-tools-model
 %license LICENSE NOTICE
 
@@ -325,7 +270,7 @@ done
 %files -n maven-script-beanshell -f .mfiles-maven-script-beanshell
 %license LICENSE NOTICE
 
-%files javadocs -f .mfiles-javadoc
+%files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE
 
 %changelog
