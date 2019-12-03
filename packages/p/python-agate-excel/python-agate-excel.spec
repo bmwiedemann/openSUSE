@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-agate-excel
 Version:        0.2.3
 Release:        0
@@ -26,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/agate-excel
 Source:         https://github.com/wireservice/agate-excel/archive/%{version}.tar.gz
 BuildRequires:  %{python_module agate >= 1.5.0}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module openpyxl >= 2.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xlrd >= 0.9.4}
@@ -54,7 +56,7 @@ sed -i -e '/^#!\//, 1d' agateexcel/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_expand nosetests-%{$python_bin_suffix} tests
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
