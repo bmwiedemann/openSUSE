@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Dec  2 10:47:17 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov  6 11:51:12 UTC 2019 - pgajdos@suse.com
+
+- replace setup.py test with unittest discover
+
+-------------------------------------------------------------------
+Wed Oct  2 12:34:52 UTC 2019 - pgajdos@suse.com
+
+- initial version 0.4, required by pyton-HyperKitty [SLE-7686]
+
