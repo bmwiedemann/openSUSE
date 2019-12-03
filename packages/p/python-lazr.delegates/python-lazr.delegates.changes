@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Dec  2 10:47:14 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Tue Oct  1 10:49:18 UTC 2019 - pgajdos@suse.com
+
+- do not install_require nose
+
+-------------------------------------------------------------------
+Wed Sep 25 06:37:33 UTC 2019 - pgajdos@suse.com
+
+- initial version 2.0.4, required by python-lazr.config [SLE-7686]
+
