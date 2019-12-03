@@ -39,6 +39,7 @@ unsorted:
   - DVDStyler-lang 
   - DevIL-devel 
   - DisplayCAL 
+  - EternalTerminal 
   - FAudio-devel 
   - FAudio-devel-32bit: [x86_64] 
   - FastCGI-devel 
@@ -477,7 +478,6 @@ unsorted:
   - ant-manual 
   - ant-phone 
   - ant-scala 
-  - ant-scala-bootstrap 
   - ant-scripts 
   - ant-swing 
   - ant-testutil 
@@ -1977,7 +1977,6 @@ unsorted:
   - crawl-data 
   - crawl-sdl 
   - crazydiskinfo 
-  - createrepo 
   - createrepo_c 
   - creduce 
   - cri-tools: [i586] 
@@ -2373,8 +2372,6 @@ unsorted:
   - dnf-lang 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
-  - dnf-utils 
-  - dnf-yum 
   - dns24-update 
   - dnscrypt-proxy 
   - dnscrypt-proxy-devel 
@@ -5324,6 +5321,7 @@ unsorted:
   - hiawatha 
   - hiawatha-letsencrypt 
   - hibiscus 
+  - hidviz 
   - highlight-gui 
   - highlight-gui-lang 
   - himeno 
@@ -8311,7 +8309,7 @@ unsorted:
   - libcompizconfig-devel 
   - libcomps-devel 
   - libcomps-doc 
-  - libcomps0_1_11 
+  - libcomps0 
   - libconfig++-devel 
   - libconfig++11 
   - libconfig++11-32bit: [x86_64] 
@@ -8801,7 +8799,8 @@ unsorted:
   - libfifechan_opengl0_1_5 
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
-  - libfilezilla0 
+  - libfilezilla-lang 
+  - libfilezilla2 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -10207,6 +10206,8 @@ unsorted:
   - libnetcdf15-openmpi1-32bit: [x86_64] 
   - libnetcdf15-openmpi2 
   - libnetcdf15-openmpi2-32bit: [x86_64] 
+  - libnetcdf15-openmpi3 
+  - libnetcdf15-openmpi3-32bit: [x86_64] 
   - libnetcdf_4_7_1-gnu-hpc 
   - libnetcdf_4_7_1-gnu-mpich-hpc 
   - libnetcdf_4_7_1-gnu-mvapich2-hpc 
@@ -10786,6 +10787,7 @@ unsorted:
   - libptscotch0-mvapich2 
   - libptscotch0-openmpi1 
   - libptscotch0-openmpi2 
+  - libptscotch0-openmpi3 
   - libptscotch_6_0_9-gnu-mpich-hpc 
   - libptscotch_6_0_9-gnu-mvapich2-hpc 
   - libptscotch_6_0_9-gnu-openmpi1-hpc 
@@ -11465,6 +11467,7 @@ unsorted:
   - libspatialindex4 
   - libspatialite-devel 
   - libspatialite7 
+  - libspdlog1 
   - libspdylay7 
   - libspectre-devel 
   - libspeechd-devel 
@@ -13144,7 +13147,6 @@ unsorted:
   - maven-plugin-tools-generators 
   - maven-plugin-tools-java 
   - maven-plugin-tools-javadoc 
-  - maven-plugin-tools-javadocs 
   - maven-plugin-tools-model 
   - maven-plugins-pom 
   - maven-profile 
@@ -13427,6 +13429,7 @@ unsorted:
   - modsecurity 
   - modsecurity-devel 
   - modulemd-validator 
+  - modulemd-validator-v1 
   - moe 
   - moinmoin-wiki 
   - mojave-gtk-theme 
@@ -14128,6 +14131,9 @@ unsorted:
   - netcdf-openmpi2 
   - netcdf-openmpi2-devel 
   - netcdf-openmpi2-devel-static 
+  - netcdf-openmpi3 
+  - netcdf-openmpi3-devel 
+  - netcdf-openmpi3-devel-static 
   - netcdf_4_7_1-gnu-hpc 
   - netcdf_4_7_1-gnu-hpc-devel 
   - netcdf_4_7_1-gnu-hpc-devel-data 
@@ -16520,6 +16526,7 @@ unsorted:
   - perl-Tie-ToObject 
   - perl-Time-Clock 
   - perl-Time-Duration-Parse 
+  - perl-Time-Local 
   - perl-Time-Mock 
   - perl-Time-Moment 
   - perl-Time-Out 
@@ -17217,10 +17224,14 @@ unsorted:
   - ptscotch-openmpi2 
   - ptscotch-openmpi2-devel 
   - ptscotch-openmpi2-devel-static 
+  - ptscotch-openmpi3 
+  - ptscotch-openmpi3-devel 
+  - ptscotch-openmpi3-devel-static 
   - ptscotch-parmetis-mpich-devel 
   - ptscotch-parmetis-mvapich2-devel 
   - ptscotch-parmetis-openmpi1-devel 
   - ptscotch-parmetis-openmpi2-devel 
+  - ptscotch-parmetis-openmpi3-devel 
   - ptscotch_6_0_9-gnu-mpich-hpc 
   - ptscotch_6_0_9-gnu-mpich-hpc-devel 
   - ptscotch_6_0_9-gnu-mpich-hpc-devel-static 
@@ -17734,7 +17745,6 @@ unsorted:
   - python2-Send2Trash 
   - python2-Shapely 
   - python2-SimpleWebSocketServer 
-  - python2-SoundFile 
   - python2-SpeechRecognition 
   - python2-Sphinx 
   - python2-Sphinx-doc-html 
@@ -17786,7 +17796,6 @@ unsorted:
   - python2-affine 
   - python2-agate 
   - python2-agate-dbf 
-  - python2-agate-excel 
   - python2-agate-lookup 
   - python2-agate-remote 
   - python2-agate-sql 
@@ -18235,7 +18244,6 @@ unsorted:
   - python2-csscompressor 
   - python2-cssselect 
   - python2-cssutils 
-  - python2-csvkit 
   - python2-ctypesgen 
   - python2-cufflinks 
   - python2-cursive 
@@ -20164,6 +20172,7 @@ unsorted:
   - python3-audioread 
   - python3-audit: [i586] 
   - python3-augeas 
+  - python3-authres 
   - python3-autobahn 
   - python3-autodoc 
   - python3-autoflake 
@@ -20652,7 +20661,9 @@ unsorted:
   - python3-django-filter 
   - python3-django-formtools 
   - python3-django-grappelli 
+  - python3-django-gravatar2 
   - python3-django-guardian 
+  - python3-django-haystack 
   - python3-django-health-check 
   - python3-django-invitations 
   - python3-django-jinja 
@@ -20668,6 +20679,7 @@ unsorted:
   - python3-django-picklefield 
   - python3-django-pipeline 
   - python3-django-pyscss 
+  - python3-django-q 
   - python3-django-redis 
   - python3-django-registration 
   - python3-django-rest-framework-client 
@@ -20676,6 +20688,7 @@ unsorted:
   - python3-django-reversion 
   - python3-django-seed 
   - python3-django-sekizai 
+  - python3-django-settings-toml 
   - python3-django-silk 
   - python3-django-storages 
   - python3-django-tagging 
@@ -20689,11 +20702,14 @@ unsorted:
   - python3-djangorestframework-simplejwt 
   - python3-djet 
   - python3-djvulibre 
+  - python3-dkimpy 
   - python3-dnf 
   - python3-dnf-plugin-leaves 
   - python3-dnf-plugin-local 
+  - python3-dnf-plugin-post-transaction-actions 
   - python3-dnf-plugin-rpmconf 
   - python3-dnf-plugin-show-leaves 
+  - python3-dnf-plugin-showvars 
   - python3-dnf-plugin-snapper 
   - python3-dnf-plugin-system-upgrade 
   - python3-dnf-plugin-torproxy 
@@ -20833,6 +20849,10 @@ unsorted:
   - python3-flit 
   - python3-flower 
   - python3-fluent 
+  - python3-flufl.bounce 
+  - python3-flufl.i18n 
+  - python3-flufl.lock 
+  - python3-flufl.testing 
   - python3-fluidity-sm 
   - python3-flup 
   - python3-forbiddenfruit 
@@ -21128,6 +21148,8 @@ unsorted:
   - python3-language-check 
   - python3-lark-parser 
   - python3-latexcodec 
+  - python3-lazr.config 
+  - python3-lazr.delegates 
   - python3-lazr.uri 
   - python3-lazy 
   - python3-lazy-object-proxy 
@@ -21577,6 +21599,7 @@ unsorted:
   - python3-psycopg2 
   - python3-ptpython 
   - python3-ptpython-ptipython 
+  - python3-publicsuffix 
   - python3-publicsuffixlist 
   - python3-pudb 
   - python3-pulsectl 
@@ -21740,6 +21763,7 @@ unsorted:
   - python3-pysndfile 
   - python3-pysnmp 
   - python3-pysofaconventions 
+  - python3-pysolr 
   - python3-pysrt 
   - python3-pyssim 
   - python3-pystache 
@@ -21981,6 +22005,7 @@ unsorted:
   - python3-rfc3987 
   - python3-rjsmin 
   - python3-rnginline 
+  - python3-robot-detection 
   - python3-rollbar 
   - python3-roman 
   - python3-rope 
@@ -23047,6 +23072,9 @@ unsorted:
   - ruby2.6-rubygem-daemon_controller-doc 
   - ruby2.6-rubygem-daemon_controller-testsuite 
   - ruby2.6-rubygem-daemons-doc 
+  - ruby2.6-rubygem-debase-doc 
+  - ruby2.6-rubygem-debase-ruby_core_source-doc 
+  - ruby2.6-rubygem-debase-testsuite 
   - ruby2.6-rubygem-debug_inspector-doc 
   - ruby2.6-rubygem-debug_inspector-testsuite 
   - ruby2.6-rubygem-debugger-linecache-doc 
@@ -23387,6 +23415,8 @@ unsorted:
   - ruby2.6-rubygem-rack-oauth2-doc 
   - ruby2.6-rubygem-rack-oauth2-testsuite 
   - ruby2.6-rubygem-rack-protection-doc 
+  - ruby2.6-rubygem-rack-proxy-doc 
+  - ruby2.6-rubygem-rack-proxy-testsuite 
   - ruby2.6-rubygem-rack-ssl-doc 
   - ruby2.6-rubygem-rack-ssl-doc-1_3 
   - ruby2.6-rubygem-rack-test-doc-0_6 
@@ -23604,6 +23634,8 @@ unsorted:
   - ruby2.6-rubygem-webmock-doc-2_3 
   - ruby2.6-rubygem-webmock-testsuite-1_2 
   - ruby2.6-rubygem-webmock-testsuite-2_3 
+  - ruby2.6-rubygem-webpacker-doc 
+  - ruby2.6-rubygem-webpacker-testsuite 
   - ruby2.6-rubygem-websocket-doc 
   - ruby2.6-rubygem-websocket-driver-doc 
   - ruby2.6-rubygem-websocket-driver-doc-0_6 
@@ -23791,7 +23823,6 @@ unsorted:
   - scala 
   - scala-apidoc 
   - scala-bootstrap 
-  - scala-bootstrap-apidoc 
   - scala-bootstrap-swing 
   - scala-swing 
   - scalapack-mvapich2-test 
@@ -24561,6 +24592,7 @@ unsorted:
   - taglib-extras-devel 
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
+  - taigo 
   - taisei 
   - taisei-data 
   - tali 
@@ -33638,26 +33670,8 @@ unsorted:
   - yubikey-manager-qt 
   - yubikey-personalization-gui 
   - yubioath-desktop 
-  - yum-aliases 
-  - yum-allowdowngrade 
-  - yum-basearchonly 
-  - yum-changelog 
-  - yum-downloadonly 
-  - yum-fastestmirror 
-  - yum-filter-data 
-  - yum-list-data 
-  - yum-merge-conf 
-  - yum-metadata-parser 
-  - yum-priorities 
-  - yum-protect-packages 
-  - yum-protectbase 
-  - yum-refresh-updatesd 
-  - yum-tmprepo 
-  - yum-tsflags 
-  - yum-upgrade-helper 
+  - yum 
   - yum-utils 
-  - yum-verify 
-  - yum-versionlock 
   - z 
   - z3 
   - z3-devel 

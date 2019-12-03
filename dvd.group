@@ -350,6 +350,7 @@
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="crda" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <!-- createrepo not found on i586,x86_64-->
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4441,6 +4442,8 @@
     <package name="ruby2.6-rubygem-cssmin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-daemon_controller" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-daemons" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-debase" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-debase-ruby_core_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-debug_inspector" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-debugger-linecache" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-deep_merge" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4653,6 +4656,7 @@
     <package name="ruby2.6-rubygem-rack-cache-1_2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rack-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rack-ssl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rack-ssl-1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4794,6 +4798,7 @@
     <package name="ruby2.6-rubygem-webfinger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-webmock-1_2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-webmock-2_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-websocket" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-websocket-driver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-websocket-driver-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5637,7 +5642,6 @@
 <group name="dvd.i586">
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
-    <!-- createrepo uninstallable: nothing provides yum-common >= 3.2.25 needed by createrepo-0.10.4-4.1.i586-->
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5659,7 +5663,6 @@
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- createrepo uninstallable: nothing provides yum-common >= 3.2.25 needed by createrepo-0.10.4-4.1.x86_64-->
     <package name="dbus-1-glib-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
