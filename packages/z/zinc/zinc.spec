@@ -1,7 +1,7 @@
 #
 # spec file for package zinc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,9 +33,8 @@ BuildRequires:  javapackages-local
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(com.martiansoftware:nailgun-server)
-BuildRequires:  mvn(org.scala-lang:scala-library)
+BuildRequires:  mvn(org.scala-lang:scala-library) >= 2.10.7
 BuildRequires:  mvn(org.scala-sbt:incremental-compiler)
-BuildConflicts: java-devel >= 9
 #!BuildRequires: sbt
 BuildArch:      noarch
 
@@ -55,7 +54,11 @@ cp %{SOURCE2} LICENSE.txt
 %pom_change_dep :incremental-compiler org.scala-sbt:
 
 %build
-scalac -cp $(build-classpath sbt nailgun) src/main/scala/com/typesafe/zinc/*
+scalac \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-nobootcp \
+%endif
+	-cp $(build-classpath sbt nailgun) src/main/scala/com/typesafe/zinc/*
 jar cf zinc.jar com
 %{mvn_artifact} pom.xml zinc.jar
 

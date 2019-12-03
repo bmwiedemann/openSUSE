@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 07:38:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Require scala >= 2.10.7 for build: fixes build with jdk11
+
+-------------------------------------------------------------------
 Thu Nov 14 13:16:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of zinc 0.3.1
