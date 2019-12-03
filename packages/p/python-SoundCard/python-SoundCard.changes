@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  2 17:11:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.3
+  * Fix attribute error when accessing stream state
+  * adds experimental support for exclusive mode on Windows
+  * adds latency hints to the documentation
+  * fix exception when monitor is default pulseaudio device
+  * fixes deprecation warning
+  * fixes missing dtype declaration
+  * fixes sample rate conversion on macOS
+  * fixes silence recording on macOS 
+  * makes mainloop a global singleton
+  * remove useless declaration and call to _pa_stream_get_buffer_attr()
+
+-------------------------------------------------------------------
 Thu Mar 28 14:09:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to source release
