@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  3 09:55:35 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Enabled non-HPC openmpi3 build.
+
+-------------------------------------------------------------------
 Fri Nov 29 20:42:05 UTC 2019 - Egbert Eich <eich@suse.com>
 
-- Add support for gcc7.
-- Add support for gcc8 and gcc9 (jsc#SLE-7766 & jsc#SLE-8609).
+- Add support for non-HPC build with gcc7.
+- Add support for non-HPC build with gcc8 and gcc9 (jsc#SLE-7766 &
+  jsc#SLE-8609).
 
 -------------------------------------------------------------------
 Thu Nov 28 16:08:36 UTC 2019 - Egbert Eich <eich@suse.com>
