@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  2 17:33:18 UTC 2019 - wbauer@tmo.at
+
+- Update to 5.4.5
+  * Add missing forward declaration (qt5.14)
+  * Fix compilation error with gcc 7.4.1, ambiguous overload
+  * Remove bad assert
+  * Remove duplicate fuzzy character "/"
+  * Fix reformat for selected code
+  * Qthelp: Unbreak support for zipped/tarred QCH files from KNS
+  * Qthelp: adapt KNewStuff config to move from collect.kde.org to
+    store.kde.org (kde#377183)
+
+-------------------------------------------------------------------
 Tue Nov  5 10:12:18 UTC 2019 - wbauer@tmo.at
 
 - Update to 5.4.4
