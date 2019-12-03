@@ -25,11 +25,11 @@ more detailed info later. Like that other args can be added easily later as well
 
 Signed-off-by: Thomas Renninger <trenn@suse.com>
 
-Index: cpupower-5.1/Makefile
+Index: cpupower-5.5/Makefile
 ===================================================================
---- cpupower-5.1.orig/Makefile	2019-05-06 02:42:58.000000000 +0200
-+++ cpupower-5.1/Makefile	2019-07-18 12:14:08.787390727 +0200
-@@ -143,7 +143,7 @@ UTIL_OBJS =  utils/helpers/amd.o utils/h
+--- cpupower-5.5.orig/Makefile	2019-11-28 02:45:48.000000000 +0100
++++ cpupower-5.5/Makefile	2019-11-28 14:27:56.753759105 +0100
+@@ -133,7 +133,7 @@ UTIL_OBJS =  utils/helpers/amd.o utils/h
  	utils/idle_monitor/mperf_monitor.o utils/idle_monitor/cpupower-monitor.o \
  	utils/cpupower.o utils/cpufreq-info.o utils/cpufreq-set.o \
  	utils/cpupower-set.o utils/cpupower-info.o utils/cpuidle-info.o \
@@ -38,7 +38,7 @@ Index: cpupower-5.1/Makefile
  
  UTIL_SRC := $(UTIL_OBJS:.o=.c)
  
-@@ -153,9 +153,9 @@ UTIL_HEADERS = utils/helpers/helpers.h u
+@@ -143,9 +143,9 @@ UTIL_HEADERS = utils/helpers/helpers.h u
  	utils/helpers/bitmask.h \
  	utils/idle_monitor/idle_monitors.h utils/idle_monitor/idle_monitors.def
  
@@ -51,7 +51,7 @@ Index: cpupower-5.1/Makefile
  LIB_OBJS :=	$(addprefix $(OUTPUT),$(LIB_OBJS))
  
  override CFLAGS +=	-pipe
-@@ -286,6 +286,7 @@ install-lib:
+@@ -276,6 +276,7 @@ install-lib:
  	$(INSTALL) -d $(DESTDIR)${includedir}
  	$(INSTALL_DATA) lib/cpufreq.h $(DESTDIR)${includedir}/cpufreq.h
  	$(INSTALL_DATA) lib/cpuidle.h $(DESTDIR)${includedir}/cpuidle.h
@@ -59,7 +59,7 @@ Index: cpupower-5.1/Makefile
  
  install-tools:
  	$(INSTALL) -d $(DESTDIR)${bindir}
-@@ -302,6 +303,7 @@ install-man:
+@@ -292,6 +293,7 @@ install-man:
  	$(INSTALL_DATA) -D man/cpupower-set.1 $(DESTDIR)${mandir}/man1/cpupower-set.1
  	$(INSTALL_DATA) -D man/cpupower-info.1 $(DESTDIR)${mandir}/man1/cpupower-info.1
  	$(INSTALL_DATA) -D man/cpupower-monitor.1 $(DESTDIR)${mandir}/man1/cpupower-monitor.1
@@ -67,7 +67,7 @@ Index: cpupower-5.1/Makefile
  
  install-gmo:
  	$(INSTALL) -d $(DESTDIR)${localedir}
-@@ -331,6 +333,7 @@ uninstall:
+@@ -321,6 +323,7 @@ uninstall:
  	- rm -f $(DESTDIR)${mandir}/man1/cpupower-set.1
  	- rm -f $(DESTDIR)${mandir}/man1/cpupower-info.1
  	- rm -f $(DESTDIR)${mandir}/man1/cpupower-monitor.1
@@ -75,10 +75,10 @@ Index: cpupower-5.1/Makefile
  	- for HLANG in $(LANGUAGES); do \
  		rm -f $(DESTDIR)${localedir}/$$HLANG/LC_MESSAGES/cpupower.mo; \
  	  done;
-Index: cpupower-5.1/lib/powercap.c
+Index: cpupower-5.5/lib/powercap.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ cpupower-5.1/lib/powercap.c	2019-07-18 12:14:08.787390727 +0200
++++ cpupower-5.5/lib/powercap.c	2019-11-28 14:27:56.753759105 +0100
 @@ -0,0 +1,290 @@
 +/*
 + *  (C) 2016       Thomas Renninger <trenn@suse.com>
@@ -370,10 +370,10 @@ Index: cpupower-5.1/lib/powercap.c
 +	}
 +	return 0;
 +}
-Index: cpupower-5.1/lib/powercap.h
+Index: cpupower-5.5/lib/powercap.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ cpupower-5.1/lib/powercap.h	2019-07-18 12:14:08.787390727 +0200
++++ cpupower-5.5/lib/powercap.h	2019-11-28 14:27:56.753759105 +0100
 @@ -0,0 +1,54 @@
 +/*
 + *  (C) 2016       Thomas Renninger <trenn@suse.com>
@@ -429,10 +429,10 @@ Index: cpupower-5.1/lib/powercap.h
 +
 +
 +#endif /* __CPUPOWER_RAPL_H__ */
-Index: cpupower-5.1/utils/builtin.h
+Index: cpupower-5.5/utils/builtin.h
 ===================================================================
---- cpupower-5.1.orig/utils/builtin.h	2019-05-06 02:42:58.000000000 +0200
-+++ cpupower-5.1/utils/builtin.h	2019-07-18 12:14:08.787390727 +0200
+--- cpupower-5.5.orig/utils/builtin.h	2019-11-28 02:45:48.000000000 +0100
++++ cpupower-5.5/utils/builtin.h	2019-11-28 14:27:56.753759105 +0100
 @@ -8,6 +8,8 @@ extern int cmd_freq_set(int argc, const
  extern int cmd_freq_info(int argc, const char **argv);
  extern int cmd_idle_set(int argc, const char **argv);
@@ -442,11 +442,11 @@ Index: cpupower-5.1/utils/builtin.h
  extern int cmd_monitor(int argc, const char **argv);
  
  #endif
-Index: cpupower-5.1/utils/cpupower.c
+Index: cpupower-5.5/utils/cpupower.c
 ===================================================================
---- cpupower-5.1.orig/utils/cpupower.c	2019-05-06 02:42:58.000000000 +0200
-+++ cpupower-5.1/utils/cpupower.c	2019-07-18 12:14:08.787390727 +0200
-@@ -53,6 +53,7 @@ static struct cmd_struct commands[] = {
+--- cpupower-5.5.orig/utils/cpupower.c	2019-11-28 02:45:48.000000000 +0100
++++ cpupower-5.5/utils/cpupower.c	2019-11-28 14:27:56.753759105 +0100
+@@ -52,6 +52,7 @@ static struct cmd_struct commands[] = {
  	{ "frequency-set",	cmd_freq_set,	1	},
  	{ "idle-info",		cmd_idle_info,	0	},
  	{ "idle-set",		cmd_idle_set,	1	},
@@ -454,10 +454,10 @@ Index: cpupower-5.1/utils/cpupower.c
  	{ "set",		cmd_set,	1	},
  	{ "info",		cmd_info,	0	},
  	{ "monitor",		cmd_monitor,	0	},
-Index: cpupower-5.1/utils/powercap-info.c
+Index: cpupower-5.5/utils/powercap-info.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ cpupower-5.1/utils/powercap-info.c	2019-07-18 12:14:08.787390727 +0200
++++ cpupower-5.5/utils/powercap-info.c	2019-11-28 14:27:56.753759105 +0100
 @@ -0,0 +1,113 @@
 +#include <unistd.h>
 +#include <stdio.h>
@@ -572,10 +572,10 @@ Index: cpupower-5.1/utils/powercap-info.c
 +	powercap_show();
 +	return 0;
 +}
-Index: cpupower-5.1/man/cpupower-powercap-info.1
+Index: cpupower-5.5/man/cpupower-powercap-info.1
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ cpupower-5.1/man/cpupower-powercap-info.1	2019-07-18 12:14:08.787390727 +0200
++++ cpupower-5.5/man/cpupower-powercap-info.1	2019-11-28 14:27:56.753759105 +0100
 @@ -0,0 +1,25 @@
 +.TH CPUPOWER\-POWERCAP\-INFO "1" "05/08/2016" "" "cpupower Manual"
 +.SH NAME

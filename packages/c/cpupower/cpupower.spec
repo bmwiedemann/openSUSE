@@ -27,7 +27,7 @@
 Name:           cpupower
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%VERSION' kernel-source)
-Version:        5.1
+Version:        5.5
 Release:        0
 Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
@@ -42,6 +42,7 @@ Source5:        Makefile.intel-speed-select
 Patch1:         cpupower_rapl.patch
 Patch2:         rapl_monitor.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
+Patch4:         libcpupower_fix_api_cpufreq_get_frequencies_breakage.patch
 
 #turbostat patches
 Patch22:        turbostat_makefile_fix_asm_header.patch
@@ -94,6 +95,7 @@ powersave module.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 cd ../turbostat-%{tsversion}
 %patch22 -p1

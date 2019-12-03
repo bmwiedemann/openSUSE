@@ -1,13 +1,19 @@
-Index: cpupower-4.15/Makefile
+Index: cpupower-5.5/Makefile
 ===================================================================
---- cpupower-4.15.orig/Makefile	2018-01-11 16:49:23.619489210 +0100
-+++ cpupower-4.15/Makefile	2018-01-11 16:50:32.263630773 +0100
-@@ -30,8 +30,6 @@ OUTDIR := $(shell cd $(OUTPUT) && pwd)
- $(if $(OUTDIR),, $(error output directory "$(OUTPUT)" does not exist))
- endif
+--- cpupower-5.5.orig/Makefile	2019-11-28 14:28:51.545762057 +0100
++++ cpupower-5.5/Makefile	2019-11-28 14:29:55.089765481 +0100
+@@ -94,14 +94,7 @@ RANLIB = $(CROSS)ranlib
+ HOSTCC = gcc
+ MKDIR = mkdir
  
+-# 64bit library detection
 -include ../../scripts/Makefile.arch
 -
- # --- CONFIGURATION BEGIN ---
+-ifeq ($(IS_64_BIT), 1)
+ libdir ?=	/usr/lib64
+-else
+-libdir ?=	/usr/lib
+-endif
  
- # Set the following to `true' to make a unstripped, unoptimized
+ # Now we set up the build system
+ #

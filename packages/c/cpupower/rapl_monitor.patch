@@ -3,11 +3,11 @@ cpupower: rapl monitor - shows the used power consumption in uj for each rapl do
 
 Signed-off-by: Thomas Renninger <trenn@suse.com>
 
-Index: cpupower-5.1/Makefile
+Index: cpupower-5.5/Makefile
 ===================================================================
---- cpupower-5.1.orig/Makefile	2019-04-08 16:06:58.426460199 +0200
-+++ cpupower-5.1/Makefile	2019-04-08 16:06:59.902460279 +0200
-@@ -141,6 +141,7 @@ UTIL_OBJS =  utils/helpers/amd.o utils/h
+--- cpupower-5.5.orig/Makefile	2019-11-28 14:44:23.261812260 +0100
++++ cpupower-5.5/Makefile	2019-11-28 14:44:28.457812540 +0100
+@@ -131,6 +131,7 @@ UTIL_OBJS =  utils/helpers/amd.o utils/h
  	utils/idle_monitor/hsw_ext_idle.o \
  	utils/idle_monitor/amd_fam14h_idle.o utils/idle_monitor/cpuidle_sysfs.o \
  	utils/idle_monitor/mperf_monitor.o utils/idle_monitor/cpupower-monitor.o \
@@ -15,11 +15,11 @@ Index: cpupower-5.1/Makefile
  	utils/cpupower.o utils/cpufreq-info.o utils/cpufreq-set.o \
  	utils/cpupower-set.o utils/cpupower-info.o utils/cpuidle-info.o \
  	utils/cpuidle-set.o utils/powercap-info.o
-Index: cpupower-5.1/utils/idle_monitor/cpupower-monitor.c
+Index: cpupower-5.5/utils/idle_monitor/cpupower-monitor.c
 ===================================================================
---- cpupower-5.1.orig/utils/idle_monitor/cpupower-monitor.c	2019-04-08 07:51:09.000000000 +0200
-+++ cpupower-5.1/utils/idle_monitor/cpupower-monitor.c	2019-04-08 16:06:59.906460279 +0200
-@@ -459,9 +459,10 @@ int cmd_monitor(int argc, char **argv)
+--- cpupower-5.5.orig/utils/idle_monitor/cpupower-monitor.c	2019-11-28 14:44:23.261812260 +0100
++++ cpupower-5.5/utils/idle_monitor/cpupower-monitor.c	2019-11-28 14:44:28.457812540 +0100
+@@ -457,9 +457,10 @@ int cmd_monitor(int argc, char **argv)
  			print_results(1, cpu);
  	}
  
@@ -33,10 +33,10 @@ Index: cpupower-5.1/utils/idle_monitor/cpupower-monitor.c
  	cpu_topology_release(cpu_top);
  	return 0;
  }
-Index: cpupower-5.1/utils/idle_monitor/idle_monitors.def
+Index: cpupower-5.5/utils/idle_monitor/idle_monitors.def
 ===================================================================
---- cpupower-5.1.orig/utils/idle_monitor/idle_monitors.def	2019-04-08 07:51:09.000000000 +0200
-+++ cpupower-5.1/utils/idle_monitor/idle_monitors.def	2019-04-08 16:06:59.906460279 +0200
+--- cpupower-5.5.orig/utils/idle_monitor/idle_monitors.def	2019-11-28 14:44:23.261812260 +0100
++++ cpupower-5.5/utils/idle_monitor/idle_monitors.def	2019-11-28 14:44:28.457812540 +0100
 @@ -4,5 +4,6 @@ DEF(intel_nhm)
  DEF(intel_snb)
  DEF(intel_hsw_ext)
@@ -44,10 +44,10 @@ Index: cpupower-5.1/utils/idle_monitor/idle_monitors.def
 +DEF(rapl)
  #endif
  DEF(cpuidle_sysfs)
-Index: cpupower-5.1/utils/idle_monitor/rapl_monitor.c
+Index: cpupower-5.5/utils/idle_monitor/rapl_monitor.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ cpupower-5.1/utils/idle_monitor/rapl_monitor.c	2019-04-08 16:06:59.906460279 +0200
++++ cpupower-5.5/utils/idle_monitor/rapl_monitor.c	2019-11-28 14:44:54.909813966 +0100
 @@ -0,0 +1,141 @@
 +/*
 + *  (C) 2016      Thomas Renninger <trenn@suse.com>
@@ -185,7 +185,7 @@ Index: cpupower-5.1/utils/idle_monitor/rapl_monitor.c
 +	.start			= rapl_start,
 +	.stop			= rapl_stop,
 +	.do_register		= rapl_register,
-+	.needs_root		= 0,
++	.flags.needs_root	= 0,
 +	.overflow_s		= 60 * 60 * 24 * 100, /* To be implemented */
 +};
 +

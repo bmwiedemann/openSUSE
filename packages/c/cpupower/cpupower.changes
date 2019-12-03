@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 28 13:56:32 UTC 2019 - trenn@suse.de
+
+- Update intel-speed-select to latest 5.5-rc1 kernel version
+  latest mainline commit:
+  commit b3abfd778bf1dbdd
+- Update cpupower to latest 5.5-rc1 kernel version
+  latest mainline commit:
+  commit 4611a4fb0cce3
+  Fixes aperf/mperf monitoring on latest AMD Rome CPUs (bsc#1152967)
+- Fix library API breakage (bsc#1154240)
+A libcpupower_fix_api_cpufreq_get_frequencies_breakage.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 15:22:48 UTC 2019 - trenn@suse.de
 
 - Update turbostat to latest version 19.08.31
