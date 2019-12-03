@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Provides:       ge_auc
 Requires:       emacs
 Requires:       texlive-latex
 Requires:       texlive-tools
+Supplements:    packageand(texlive:emacs)
 %if %suse_version > 1220
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
@@ -41,7 +42,7 @@ Summary:        AUC TeX: An Emacs Extension
 License:        GPL-2.0-or-later
 Group:          Productivity/Editors/Emacs
 Source:         http://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz
-Url:            http://www.gnu.org/software/auctex
+URL:            http://www.gnu.org/software/auctex
 # Allows to select printer instance
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch

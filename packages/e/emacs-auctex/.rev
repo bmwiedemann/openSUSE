@@ -342,4 +342,12 @@
   bug boo#1135326</comment>
     <requestid>711321</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>e6b794575dc8fb96cbfeb7ef555f06bd</srcmd5>
+    <version>12.1</version>
+    <time>1575382910</time>
+    <user>dimstar_suse</user>
+    <comment> Supplement emacs-auctex if texlive and emacs are installed (boo#1158035)</comment>
+    <requestid>753195</requestid>
+  </revision>
 </revisionlist>
