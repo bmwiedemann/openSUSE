@@ -1,7 +1,0 @@
-<package name="yum-utils" project="openSUSE:Factory">
-  <title>Utilities based around the yum package manager</title>
-  <description>yum-utils is a collection of utilities and examples for the yum package
-manager. It includes utilities by different authors that make yum
-easier and more powerful to use.</description>
-  <devel project="system:packagemanager" package="yum-utils"/>
-</package>
