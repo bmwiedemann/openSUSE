@@ -184,4 +184,16 @@
   + Fix the logic to make the merge button appear on pull-request</comment>
     <requestid>749089</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e069e81094189216c885537475ef0fff</srcmd5>
+    <version>5.8.1</version>
+    <time>1575373360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.8.1
+  + Fix the link to the container namespace in srcfpo
+  + Fix checking if the user is a committer of the repo the PR originates from
+  + Fix showing the origin of the PR when it originates from the same project
+  + Do not hard-code UTF-8 when showing a file</comment>
+    <requestid>753050</requestid>
+  </revision>
 </revisionlist>
