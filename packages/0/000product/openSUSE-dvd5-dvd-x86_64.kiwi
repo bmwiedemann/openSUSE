@@ -363,6 +363,7 @@
       <repopackage name="cracklib-dict-full"/>
       <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
+      <repopackage name="createrepo_c"/>
       <repopackage name="cron"/>
       <repopackage name="cronie"/>
       <repopackage name="cryptsetup"/>

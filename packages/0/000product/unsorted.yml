@@ -1977,7 +1977,6 @@ unsorted:
   - crawl-data 
   - crawl-sdl 
   - crazydiskinfo 
-  - createrepo_c 
   - creduce 
   - cri-tools: [i586] 
   - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
