@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Mon Dec  2 07:21:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.10.7
+ see installed CHANGELOG.md
+
+  ## [0.10.7](https://github.com/os97673/debase-ruby_core_source/compare/v0.10.6...v0.10.7)
+  
+  * ruby 2.7.0-preview2 added (contributed by [ViugiNick](https://github.com/ViugiNick))
+  * ruby location search fixed to work with preview rubies (contributed by [ViugiNick](https://github.com/ViugiNick))
+  
+  ## [0.10.6](https://github.com/os97673/debase-ruby_core_source/compare/v0.10.5...v0.10.6)
+  
+  * ruby 2.6.5 added (contributed by [niw](https://github.com/niw))
+  * improved a way the gem detects ruby location [#17](https://github.com/os97673/debase-ruby_core_source/pull/17) (contributed by [niw](https://github.com/niw))
+
+-------------------------------------------------------------------
+Fri Jul 19 09:03:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.10.5
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Jan 14 13:34:33 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.10.4
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Apr 30 22:04:20 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.10.3
+ see installed CHANGELOG.md
+
+  ## [0.10.3](https://github.com/os97673/debase-ruby_core_source/compare/v0.10.2...v0.10.3)
+  
+  * ruby 2.5.1 added (contrinuted by [niw](https://github.com/niw))
+
+-------------------------------------------------------------------
+Fri Feb  9 07:38:39 UTC 2018 - coolo@suse.com
+
+- initial package (version 0.10.2)
