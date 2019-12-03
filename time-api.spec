@@ -1,7 +1,7 @@
 #
 # spec file for package time-api
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,6 @@ Name:           time-api
 Version:        0.6.4
 Release:        0
 Summary:        JSR-310 - Date and Time API
-# GPLv2: src-openjdk/main/java/java/util/GregorianCalendar.java
-#        src-openjdk/main/java/java/util/Calendar.java
-#        src-openjdk/main/java/java/util/Date.java
-# Public Domain:  src/main/tzdata/tzdata200*.tar.gz
 License:        BSD-3-Clause AND GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            http://threeten.github.com/
@@ -34,9 +30,6 @@ Patch0:         %{name}-0.6.4-dont-compile-openjdk-classes.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildConflicts: java-devel >= 9
-# https://fedorahosted.org/fpc/ticket/365
-Provides:       bundled(openjdk8-javax-time) = %{version}-%{release}
 BuildArch:      noarch
 
 %description

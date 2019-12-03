@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>713220</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e15a991b538d11c919c8dfd78c93a3bc</srcmd5>
+    <version>0.6.4</version>
+    <time>1575373224</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with jdk &gt;= 9</comment>
+    <requestid>752798</requestid>
+  </revision>
 </revisionlist>
