@@ -12,8 +12,8 @@
     <specification>Ceph CSI driver container</specification>
   </description>
   <preferences>
-    <type image="docker" derived_from="obsrepositories:/opensuse/ceph/ceph#tumbleweed.nautilus">
-      <containerconfig tag="latest" maintainer="SUSE Storage Team &lt;bgardner@suse.com&gt;" additionaltags="tumbleweed.nautilus,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/cephcsi/cephcsi">
+    <type image="docker" derived_from="obsrepositories:/opensuse/ceph/ceph#tumbleweed">
+      <containerconfig tag="latest" maintainer="SUSE Storage Team &lt;bgardner@suse.com&gt;" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/cephcsi/cephcsi">
         <entrypoint execute="/usr/bin/cephcsi"/>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.cephcsi">
