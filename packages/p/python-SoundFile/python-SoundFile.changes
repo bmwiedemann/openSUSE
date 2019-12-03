@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:28:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.3.post1
+  * Update Python versions in .travis.yml
+  * improve _check_dtype exception
+  * add display sound file length in samples 
+
+-------------------------------------------------------------------
 Thu Nov  7 15:49:40 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
