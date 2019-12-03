@@ -15,4 +15,12 @@
     <comment>- Fix pytest call so it works on 42.3</comment>
     <requestid>632128</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>001b8cb5444d1c41809e7bd796435cee</srcmd5>
+    <version>0.8.1</version>
+    <time>1575382913</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict pytest5 as the tests are not compatible with it</comment>
+    <requestid>753226</requestid>
+  </revision>
 </revisionlist>

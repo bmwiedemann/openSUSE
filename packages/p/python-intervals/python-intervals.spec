@@ -1,7 +1,7 @@
 #
 # spec file for package python-intervals
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,10 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/kvesteri/intervals
 Source:         https://files.pythonhosted.org/packages/source/i/intervals/intervals-%{version}.tar.gz
-BuildRequires:  %{python_module flake8 >= 2.4.0}
 BuildRequires:  %{python_module infinity >= 0.1.3}
 BuildRequires:  %{python_module isort >= 4.2.2}
-BuildRequires:  %{python_module pytest >= 2.2.3}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
