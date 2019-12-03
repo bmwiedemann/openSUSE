@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  2 03:07:29 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.092
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.092 1 December 2019
+  
+        * use lzma_llocator
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/2
+          2cf13f99ef6ce862b138f83f6d3d9597d59106b9
+
+-------------------------------------------------------------------
 Mon Nov 25 11:45:56 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.091
