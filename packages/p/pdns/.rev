@@ -629,4 +629,28 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
 - pdns-4.0.3_allow_dacoverride_in_capset.patch: refreshed</comment>
     <requestid>727236</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5674b349db9fb12f95496dd16823990e</srcmd5>
+    <version>4.2.1</version>
+    <time>1575373341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.1:
+  New features
+  * Add SLAVE-RENOTIFY zone metadata support
+  * Add configurable timeout for inbound
+  * for gmysql backend, add an option to send the SSL capability flag
+  Improvements
+  * Register a few known RR types
+  * bindbackend: use metadata for also-notifies as well
+  * pdnsutil increase-serial: under SOA-EDIT=INCEPTION-EPOCH,
+    bump as if it is EPOCH
+  * API: optionally do not return dnssec info in domain list
+  Bug Fixes
+  * LUA view: do not crash on empty IP list
+  * API: Accept headers without spaces
+  * Avoid database state-related SERVFAILs after a LUA error
+  * Fix broken edit-zone and other features with the LMDB backend
+  * rfc2136, pdnsutil: somewhat improve duplicate record handling</comment>
+    <requestid>752958</requestid>
+  </revision>
 </revisionlist>

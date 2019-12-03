@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec  2 14:57:44 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to 4.2.1:
+  New features
+  * Add SLAVE-RENOTIFY zone metadata support
+  * Add configurable timeout for inbound
+  * for gmysql backend, add an option to send the SSL capability flag
+
+  Improvements
+  * Register a few known RR types
+  * bindbackend: use metadata for also-notifies as well
+  * pdnsutil increase-serial: under SOA-EDIT=INCEPTION-EPOCH,
+    bump as if it is EPOCH
+  * API: optionally do not return dnssec info in domain list
+
+  Bug Fixes
+  * LUA view: do not crash on empty IP list
+  * API: Accept headers without spaces
+  * Avoid database state-related SERVFAILs after a LUA error
+  * Fix broken edit-zone and other features with the LMDB backend
+  * rfc2136, pdnsutil: somewhat improve duplicate record handling
+
+-------------------------------------------------------------------
 Fri Aug 30 10:56:44 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.2.0:
