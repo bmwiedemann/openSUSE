@@ -16,22 +16,8 @@
 #
 
 
-# aarch64 and ppc64le don't support 32bit applications, so there's no
-# gcc-32bit package that can be installed
-%ifarch s390x x86_64
-%define have_32bit 1
-BuildRequires:  gcc-32bit
-%endif
-
-# While repos other than Factory have 32bit for s390x, Factory does not
-%if 0%{?suse_version} == 1550
-%ifarch s390x
-%define have_32bit 0
-%endif
-%endif
-
 Name:           smc-tools
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Shared Memory Communication via RDMA
 License:        EPL-1.0
@@ -85,9 +71,6 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %endif
 %{_bindir}/smcss
 %{_libdir}/libsmc-preload.so
-%if 0%{?have_32bit}
-%{_prefix}/lib/libsmc-preload.so
-%endif
 %{_mandir}/man7/af_smc.7%{?ext_man}
 %{_mandir}/man8/smc_pnet.8%{?ext_man}
 %ifarch s390 s390x
