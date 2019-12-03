@@ -350,7 +350,7 @@
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="crda" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <!-- createrepo not found on i586,x86_64-->
+    <package name="createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:createrepo_c -->
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
