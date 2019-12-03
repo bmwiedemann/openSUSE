@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  2 20:32:39 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 5.8.1
+  + Fix the link to the container namespace in srcfpo
+  + Fix checking if the user is a committer of the repo the PR originates from
+  + Fix showing the origin of the PR when it originates from the same project
+  + Do not hard-code UTF-8 when showing a file
+
+-------------------------------------------------------------------
 Sat Nov 16 22:46:39 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 5.8
