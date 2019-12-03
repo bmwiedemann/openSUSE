@@ -19,8 +19,8 @@
 
 %define major 0
 %define minor 1
-%define patch 11
-%define libname %{name}%{major}_%{minor}_%{patch}
+%define patch 14
+%define libname %{name}%{major}
 %define devname %{name}-devel
 
 Name:           libcomps
@@ -127,11 +127,12 @@ cp -a build/src/python/docs/html %{buildroot}%{_datadir}/doc/python-libcomps/
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%{_libdir}/libcomps.so.%{major}.%{minor}.%{patch}
+%{_libdir}/libcomps.so.%{major}
 %doc README.md COPYING
 
 %files -n %{devname}
 %{_libdir}/libcomps.so
+%{_libdir}/pkgconfig/libcomps.pc
 %{_includedir}/*
 
 %files doc
@@ -141,6 +142,7 @@ cp -a build/src/python/docs/html %{buildroot}%{_datadir}/doc/python-libcomps/
 %doc %{_datadir}/doc/python-libcomps
 
 %files -n python3-libcomps
-%{python3_sitearch}/libcomps
+%{python3_sitearch}/libcomps/
+%{python3_sitearch}/libcomps-*
 
 %changelog

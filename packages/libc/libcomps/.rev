@@ -54,4 +54,25 @@
 </comment>
     <requestid>690191</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7d5d033d60a032d5598ecb71d8fd2273</srcmd5>
+    <version>0.1.14</version>
+    <time>1575382917</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.1.14
+  + Fix reference to versioned libcomps.so
+
+- Upgrade to 0.1.13
+  + Fix massively broken libcomps pkgconfig file
+  + Change libcomps soversion to use only the version major
+
+- Upgrade to 0.1.12
+  + Fix order of asserts() in unit test (rh#1713220)
+  + Fix Python method descriptors for Python 3.8 (rh#1734777)
+  + Refactor pkgconfig file generation and install properly
+  + Fix segfault when converting empty dict to string (rh#1757959)
+  + Add missing python metadata to python3-libcomps
+  + Refactor building and installing Python bindings</comment>
+    <requestid>753241</requestid>
+  </revision>
 </revisionlist>

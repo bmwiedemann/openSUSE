@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:02:29 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.14
+  + Fix reference to versioned libcomps.so
+
+-------------------------------------------------------------------
+Tue Dec  3 12:42:44 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.13
+  + Fix massively broken libcomps pkgconfig file
+  + Change libcomps soversion to use only the version major
+
+-------------------------------------------------------------------
+Sun Dec  1 15:46:52 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.12
+  + Fix order of asserts() in unit test (rh#1713220)
+  + Fix Python method descriptors for Python 3.8 (rh#1734777)
+  + Refactor pkgconfig file generation and install properly
+  + Fix segfault when converting empty dict to string (rh#1757959)
+  + Add missing python metadata to python3-libcomps
+  + Refactor building and installing Python bindings
+
+-------------------------------------------------------------------
 Sun Mar 31 14:53:26 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 0.1.11
