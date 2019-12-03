@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Dec  2 23:46:03 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.2.0
+
+  ## [[4.2.0]](https://github.com/rails/webpacker/compare/v4.1.0...v4.2.0) - 2019-11-12
+
+  - Fixed installer bug [#2366](https://github.com/rails/webpacker/pull/2366)
+
+  ## [[4.1.0]](https://github.com/rails/webpacker/compare/v4.0.7...v4.1.0) - 2019-11-12
+
+  - Added favicon_pack_tag to generate favicon links [#2281](https://github.com/rails/webpacker/pull/2281)
+  - Add support for Brotli compression [#2273](https://github.com/rails/webpacker/pull/2273)
+  - Support .(sass|scss).erb [#2259](https://github.com/rails/webpacker/pull/2259)
+  - Elm: Enable production optimizations when compiling in production [#2234](https://github.com/rails/webpacker/pull/2234)
+  - fixes webpacker:clean erroring because of nested hashes [#2318](https://github.com/rails/webpacker/pull/2318)
+  - Revert of production env enforcement [#2341](https://github.com/rails/webpacker/pull/2341)
+  - Add a preload_pack_asset helper [#2124](https://github.com/rails/webpacker/pull/2124)
+  - Record the compilation digest even on webpack error [#2117](https://github.com/rails/webpacker/pull/2117)
+  - See more changes [here](https://github.com/rails/webpacker/compare/v4.0.7...v4.1.0)
+
+-------------------------------------------------------------------
+Fri Jun 28 07:35:42 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- initialize package
