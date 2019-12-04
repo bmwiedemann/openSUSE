@@ -1,0 +1,25 @@
+From ac482f00f1ad08ba692a24ef5abffe31b659c1d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Tue, 3 Dec 2019 12:50:39 +0100
+Subject: [PATCH 5/5] Rename cpp library to qrcodegencpp to avoid conflict
+
+---
+ cpp/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cpp/Makefile b/cpp/Makefile
+index d131f30..2e7ed1f 100644
+--- a/cpp/Makefile
++++ b/cpp/Makefile
+@@ -52,7 +52,7 @@ VERSION = 1.5.0
+ 
+ # ---- Targets to build ----
+ 
+-LIB = qrcodegen
++LIB = qrcodegencpp
+ ARFILE = lib$(LIB).a
+ LIBFILE = lib$(LIB).so
+ # Bump the soname number when the ABI changes and gets incompatible
+-- 
+2.24.0
+
