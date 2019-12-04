@@ -65,7 +65,7 @@
   boo#1153162: '20191009'
   boo#1153188: '20191014'
   boo#1153514: '20191202'
-  boo#1153562: '20191128'
+  boo#1153562: '20191202'
   boo#1153568: '20191202'
   boo#1154311: '20191018'
   boo#1154582: '20191202'
@@ -377,8 +377,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20191128'
-publishing: '20191128'
+published: '20191202'
+publishing: '20191202'
 testing: '20191202'
 </value>
   </attribute>
