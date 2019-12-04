@@ -66,4 +66,17 @@
   - import zuul job settings from project-config</comment>
     <requestid>692836</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b701d2dea114fe614d8d0d2540525e4</srcmd5>
+    <version>5.5.0</version>
+    <time>1575463753</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.5.0
+  - OpenDev Migration Patch
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add Python 3 Train unit tests
+  - [Gate Fix]Switch to stestr</comment>
+    <requestid>743550</requestid>
+  </revision>
 </revisionlist>
