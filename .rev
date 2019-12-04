@@ -313,4 +313,27 @@ update to version 1.10.0
   - Run manilaclient-dsvm-neutron-functional on bionic</comment>
     <requestid>692835</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e4a96c9eb3d4f8633a68bccd9c4f8295</srcmd5>
+    <version>1.29.0</version>
+    <time>1575463721</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.29.0
+  - OpenDev Migration Patch
+  - Dropping the py35 testing
+  - Add CLI commands for Share Networks with multiple Subnets
+  - base job has changed to bionic
+  - Add Python 3 Train unit tests
+  - [CI] Bump timeout for manilaclient-dsvm-neutron-functional
+  - Replace openstack.org git:// URLs with https://
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Remove docutils requirement
+  - [doc] Fix command output generation
+  - Add &quot;functional tests&quot; documentation
+  - Change the default value of description of type show
+  - Update master for stable/stein
+  - Add update share-type to SDK and CLI
+  - Add PDF documentation build</comment>
+    <requestid>736658</requestid>
+  </revision>
 </revisionlist>
