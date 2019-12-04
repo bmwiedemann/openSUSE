@@ -1,8 +1,8 @@
 #
 # spec file for package trytond
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2015-2018 Dr. Axel Braun
+# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2015 2017 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 #
 
 
-%define majorver 4.6
+%define majorver 5.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.22
+Version:        %{majorver}.15
 Release:        0
 
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
+#Patch0:       	trytond_get_login.patch
 Source1:        tryton-server.README.SUSE
 Source2:        trytond.conf.example
 Source3:        %{name}.conf
 Source4:        %{name}_log.conf
+#Source11:       %{name}.sysconfig
 Source20:       %{name}.service
-
-Patch0:         get_login_trytond-46.patch
-
+#Patch0:		%{name}_server.diff
 # List of additional build dependencies
 BuildRequires:  fdupes
 BuildRequires:  python3-Werkzeug
@@ -82,7 +82,7 @@ security.
 %setup -q 
 cp %{S:1} .
 cp %{S:2} .
-%patch0 -p1
+#%patch0 -p1
 
 %build
 python3 setup.py build
@@ -98,16 +98,9 @@ mkdir -p $RPM_BUILD_ROOT%{_unitdir}
 install -p -m 644 %{SOURCE20} $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
 
 mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/{lib,log}/%{base_name}
-
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes -s %{buildroot}
 
 %pre
-
-#Write GH Variable /etc/tryton/gnuhealthrc 
-cat > /etc/tryton/gnuhealthrc << "EOF"
-TRYTON_VERSION=%{version}
-EOF
-
 getent group tryton > /dev/null || %{_sbindir}/groupadd -r tryton || :
 getent passwd tryton > /dev/null || %{_sbindir}/useradd -r -g tryton \
        -d %{_localstatedir}/lib/tryton -s /sbin/nologin \
@@ -132,6 +125,7 @@ getent passwd tryton > /dev/null || %{_sbindir}/useradd -r -g tryton \
 %{_bindir}/%{name}
 %{_bindir}/%{name}-admin
 %{_bindir}/%{name}-cron
+%{_bindir}/%{name}-worker
 %{_unitdir}/%{name}.service
 %attr(640,root,tryton) %config(noreplace)%{_sysconfdir}/%{base_name}/%{name}.conf
 %attr(640,root,tryton) %config(noreplace)%{_sysconfdir}/%{base_name}/%{name}_log.conf
