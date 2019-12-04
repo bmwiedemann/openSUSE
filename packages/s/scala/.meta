@@ -8,4 +8,5 @@ fully interoperable with Java.
 </description>
   <devel project="Java:packages" package="scala"/>
   <url>http://www.scala-lang.org/</url>
+  <bcntsynctag>scala</bcntsynctag>
 </package>
