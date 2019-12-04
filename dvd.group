@@ -5646,7 +5646,7 @@
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.1.i586-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.2.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5858,7 +5858,7 @@
     <package name="pam_apparmor-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pam_mount-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_ssh-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.1.x86_64-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.2.x86_64-->
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="pesign" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="pesign-obs-integration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
