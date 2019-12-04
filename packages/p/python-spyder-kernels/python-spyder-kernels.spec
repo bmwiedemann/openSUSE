@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-kernels
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/spyder-ide/spyder-kernels
+URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
 Source:         https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         https://github.com/spyder-ide/spyder-kernels/commit/5496e4596dabda05d8583e2533fcdb14ebde2c9c.patch#/fix-tests-pandas.patch
@@ -33,6 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cloudpickle}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.8.2}
 BuildRequires:  %{python_module jupyter_client >= 5.2.3}
 BuildRequires:  %{python_module matplotlib}

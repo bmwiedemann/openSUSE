@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:59:51 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.18.0
+  - Update stack_id clearify for heat client functions
+  - Dropping the py35 testing
+  - Update master for stable/stein
+  - Fix missing print format
+  - Add Python 3 Train unit tests
+  - Replace openstack.org git:// URLs with https://
+  - add python 3.7 unit test job
+  - OpenDev Migration Patch
+  - Set Content-Type header explictly for SessionClient
+  - Fix unit tests
+
+-------------------------------------------------------------------
 Mon Apr  8 12:18:46 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.17.0

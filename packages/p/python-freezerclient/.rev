@@ -112,4 +112,30 @@
   - Correct search opt param in SessionList</comment>
     <requestid>692823</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63c6ac731dc82c15c08d9131d9d826af</srcmd5>
+    <version>2.2.0</version>
+    <time>1575463703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.2.0
+  - Change openstack-dev to openstack-discuss
+  - Use template for lower-constraints
+  - Bump the openstackdocstheme extension to 1.20
+  - Update master for stable/stein
+  - Dropping the py35 testing
+  - Change openstack-dev to openstack-discuss in setup.cfg
+  - Switch to the new canonical constraints URL on master
+  - add python 3.7 unit test job
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update json module to jsonutils
+  - Update sphinx dependency
+  - Add python3.7 unit test job
+  - self.endpoint repeated
+  - modify 'v1' in the comment to 'v2'
+  - Update the bugs link to storyboard
+  - Add Python 3.6 classifier to setup.cfg
+  - delete repeated self.endpoint</comment>
+    <requestid>736651</requestid>
+  </revision>
 </revisionlist>

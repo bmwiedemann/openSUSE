@@ -1,0 +1,12 @@
+diff -U 3 -drN a/OrthancPostgreSQL-3.2/Resources/CMake/PostgreSQLConfiguration.cmake b/OrthancPostgreSQL-3.2/Resources/CMake/PostgreSQLConfiguration.cmake
+--- a/OrthancPostgreSQL-3.2/Resources/CMake/PostgreSQLConfiguration.cmake	2019-03-01 12:51:37.000000000 +0100
++++ b/OrthancPostgreSQL-3.2/Resources/CMake/PostgreSQLConfiguration.cmake	2019-08-12 19:22:46.626931606 +0200
+@@ -378,7 +378,7 @@
+ 
+ else()
+   set(PostgreSQL_ADDITIONAL_VERSIONS
+-    "11" "10" "9.6" "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
++    "11.5" "11.4" "11" "10" "9.6" "9.5" "9.4" "9.3" "9.2" "9.1" "9.0")
+   if (NOT WIN32)
+     foreach (suffix ${PostgreSQL_ADDITIONAL_VERSIONS})
+       list(APPEND PostgreSQL_ADDITIONAL_SEARCH_PATHS

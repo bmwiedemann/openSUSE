@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:49:03 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.33.0
+  - Update master for stable/stein
+  - Update for opendev
+  - Update hacking version
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Fix broken link to openstacksdk
+
+-------------------------------------------------------------------
 Mon Apr  8 12:37:18 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.32.0

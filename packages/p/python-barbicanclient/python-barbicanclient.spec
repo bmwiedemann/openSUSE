@@ -17,15 +17,14 @@
 
 
 Name:           python-barbicanclient
-Version:        4.8.1
+Version:        4.9.0
 Release:        0
 Summary:        Client for the Barbican Key Management API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-barbicanclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-4.8.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-4.9.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-cliff >= 2.8.0
 BuildRequires:  python2-keystoneauth1 >= 3.4.0
 BuildRequires:  python2-mock
@@ -39,7 +38,6 @@ BuildRequires:  python2-stestr
 BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python3-cliff >= 2.8.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.i18n >= 3.15.3
@@ -71,7 +69,6 @@ Requires(postun): chkconfig
 %python_subpackages
 
 %description
-OpenStack Key Management API client - Python 2.x
 This is a client for the Barbican Key Management API. This package includes a
 Python library for accessing the API (the barbicanclient module), and a
 command-line script (barbican).
@@ -81,8 +78,8 @@ This package contains the Python 2.x module.
 %package -n python-barbicanclient-doc
 Summary:        Documentation for OpenStack Key Management API Client
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-barbicanclient-doc
 Documentation for the client library for interacting with
@@ -92,12 +89,13 @@ Openstack Key Management API
 %autosetup -p1 -n %{name}-%{version}
 %py_req_cleanup
 
-# Remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
-
 %build
 %{python_build}
-%{__python2} setup.py build_sphinx
+
+# generate html docs
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
+# Remove the sphinx-build leftovers
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{python_install}

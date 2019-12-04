@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sat Oct 12 13:30:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.0.4. No changelog available
+- Run spec-cleaner
+- Let CMake find the python executable. Fixes the factory build
+  with this version.
+- Add the optional dcmtk dependency
+- Drop non-existent option GDCM_PDF_DOCUMENTATION
+
+-------------------------------------------------------------------
+Tue Oct  1 15:34:10 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.0.2
+  libraries moved to separate packages
+
+-------------------------------------------------------------------
+Mon Aug  5 13:47:43 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.0.1
+  patches adapted / removed (memcpy.patch) 
+
+-------------------------------------------------------------------
+Thu May 16 16:53:44 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.0.0
+  clean up of old patches 
+
+-------------------------------------------------------------------
+Sat Feb  2 17:13:10 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.8.8
+  initial build on OBS based on specfile from Fedora project
+
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.8.4-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild

@@ -1,0 +1,32 @@
+README: Orthanc for openSUSE
+============================
+
+Orthanc is a RESTful DICOM server for healthcare and medical research.
+This package provides the server for Orthanc (you may want to check for plugins as well)
+
+Configuration files for Orthanc are in 
+/etc/orthanc
+Configuration files are in JSON format. Orthanc reads all files in the configuration folder to build up its internal setup.
+
+Starting/stopping Orthanc
+Orthanc comes as systemd-service. so you can start it with:
+systemctl start orthanc
+To stop it:
+systemctl stop orthanc
+To check it:
+systemctl status orthanc
+
+To enable it at system start:
+systemctl enable orthanc
+
+Once orthanc is running, you can use
+http://localhost:8042
+to connect.
+
+For any 'outside connection', the use of SSL certificates is recommended!
+
+Further documentation:
+https://book.orthanc-server.com/
+
+Have fun
+Axel Braun <DocB@openSUSE.org> Tue Aug 13 08:06:42 UTC 2019 

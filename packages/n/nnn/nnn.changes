@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Dec  4 04:22:36 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to version 2.8 
+
+     * sessions (thanks @annagrram)
+     * rclone support for remote access (mount any cloud storage!!!)
+     * toggle selection with Space or ^J
+     * ignore events during selection so the + symbol is not lost
+     * run custom (non-shell-interpreted) commands like plugins
+     * configure cd-on-quit as the default behaviour
+     * create parent dirs for new files and dirs, duplicate a file/dir anywhere
+     * copy/move as workflow (thanks @KlzXS)
+     * edit , flush selection buffer (thanks @KlzXS)
+     * support xargs with minimal options (as in BusyBox) (thanks @KlzXS)
+     * changed the key to size sort to z
+     * additional key ] to show command prompt
+     * mount archives using archivemount
+     * smoother double click handling
+     * program option -R to disable rollover at edges
+     * keybind collision checker (for custom keybind config) (thanks @annagrram)
+     * show size of file in bytes in status bar in disk usage mode
+     * pass unresolved path as second argument ($2) to plugin
+     * mechanism for plugins to control active directory
+     * all binary questions are confirmed by y or Y
+     * plugin changes
+        - some plugins renamed
+        - integrated shellcheck in CI, POSIX-compliance fixes (thanks @koalaman)
+        - getplugs - detect modifications in exiting plugin file (thanks @KlzXS)
+        - drag-file & drop-file: drag & drop files using dragon
+        - gutenread: browse, download and read from Project Gutenberg
+        - suedit - edit file with superuser permissions
+        - fzhist - fuzzy select commands from history, edit and run
+        - fzcd - change to a fuzzy-searched directory
+        - rename - batch rename directory or selection using qmv or vidir
+        - pskill - fuzzy list a process or zombies by name and kill
+        - exetoggle - toggle executable status of hovered file
+        - treeview - informative tree output with file permissions and size
+        - chksum - recursively calculate checksum for files in hovered directory
+        - fzopen renamed to fzopen
+        - imgsxiv instructions added to browse and rename images
+    * create link to current file
+    * additional key ; to execute plugin
+    * more explicit force removal message
+    * force non-detachable internal edits in $EDITOR (option -E)
+    * export current file as $nnn (instead of $NN)
+    * fix file open failure from browser when configured as default FM
+
+-------------------------------------------------------------------
 Mon Oct  7 10:08:11 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 - Update to 2.7

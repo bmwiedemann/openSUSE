@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.11.3
-%define _vers 3_11_3
+%define vers 3.12.2
+%define _vers 3_12_2
 %define so_ver 3
 %define openblas_vers 0.3.6
 
@@ -31,9 +31,10 @@ ExcludeArch:    s390 s390x
 # Only available as openmpi flavor, and not in Factory
 %bcond_with pastix
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI3
-%else
+%if 0%{?sle_version} >= 150200
+%define DisOMPI1 ExclusiveArch:  do_not_build
+%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
@@ -52,14 +53,23 @@ BuildArch:      noarch
 %endif
 
 %if "%flavor" == "openmpi"
+%{?DisOMPI1}
 %define mpi_family openmpi
 %define mpi_vers 1
 %{bcond_with hpc}
 %endif
 
 %if "%flavor" == "openmpi2"
+%{?DisOMPI2}
 %define mpi_family openmpi
 %define mpi_vers 2
+%{bcond_with hpc}
+%endif
+
+%if "%flavor" == "openmpi3"
+%{?DisOMPI3}
+%define mpi_family openmpi
+%define mpi_vers 3
 %{bcond_with hpc}
 %endif
 
@@ -77,21 +87,21 @@ BuildArch:      noarch
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%define mpi_family openmpi
-%define compiler_family gnu
-%undefine c_f_ver
-%define mpi_vers 3
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu-openmpi2-hpc"
 %{?DisOMPI2}
 %define mpi_family openmpi
 %define compiler_family gnu
 %undefine c_f_ver
 %define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu-openmpi3-hpc"
+%{?DisOMPI3}
+%define mpi_family openmpi
+%define compiler_family gnu
+%undefine c_f_ver
+%define mpi_vers 3
 %{bcond_without hpc}
 %endif
 
@@ -118,6 +128,15 @@ BuildArch:      noarch
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu7-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 7
+%define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
 %if "%flavor" == "gnu7-openmpi3-hpc"
 %{?DisOMPI3}
 %define mpi_family openmpi
@@ -138,6 +157,88 @@ BuildArch:      noarch
 %define mpi_family mpich
 %define compiler_family gnu
 %define c_f_ver 7
+%{bcond_without hpc}
+%endif
+#
+%if "%flavor" == "gnu8-openmpi-hpc"
+%{?DisOMPI1}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-openmpi3-hpc"
+%{?DisOMPI3}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-mvapich2-hpc"
+%define mpi_family mvapich2
+%define compiler_family gnu
+%define c_f_ver 8
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-mpich-hpc"
+%define mpi_family mpich
+%define compiler_family gnu
+%define c_f_ver 8
+%{bcond_without hpc}
+%endif
+#
+%if "%flavor" == "gnu9-openmpi-hpc"
+%{?DisOMPI1}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-openmpi3-hpc"
+%{?DisOMPI3}
+%define mpi_family openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-mvapich2-hpc"
+%define mpi_family mvapich2
+%define compiler_family gnu
+%define c_f_ver 9
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-mpich-hpc"
+%define mpi_family mpich
+%define compiler_family gnu
+%define c_f_ver 9
 %{bcond_without hpc}
 %endif
 
@@ -194,11 +295,8 @@ Version:        %vers
 Release:        0
 
 Source:         ftp://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-%{version}.tar.gz
-Patch0:         petsc-3.3-p2-fix-shared-libs-sonames.patch
-Patch1:         petsc-3.3-p2-no-rpath.patch
-Patch2:         petsc-3.3-p2-dont-check-for-option-mistakes.patch
-Patch3:         petsc-3.3-fix-error-detection-in-makefile.patch
-Patch4:         petsc-3.7-fix-pastix-detection.patch
+Patch0:         petsc-3.3-p2-no-rpath.patch
+Patch1:         petsc-3.7-fix-pastix-detection.patch
 URL:            https://www.mcs.anl.gov/petsc/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{!?makedoc:1}
@@ -333,11 +431,8 @@ yet supported by %{?is_opensuse:open}SUSE.
 %prep
 
 %setup -q -n petsc-%{version}
-%patch0 -p1 -b .soname
-%patch1 -p1 -b .rpath
-%patch2 -p1 -b .option-mistakes
-%patch3 -p1 -b .error-detect
-%patch4 -p1 -b .pastix-detect
+%patch0 -p1 -b .rpath
+%patch1 -p1 -b .pastix-detect
 
 %if 0%{?makedoc:1}
 %files doc
@@ -443,6 +538,7 @@ rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/.DIR
 
 pushd %{buildroot}%{p_prefix}/lib
 ln -sf libpetsc.so.%{version} libpetsc.so
+ln -sf libpetsc.so.%{version} libpetsc.so.%{so_ver}
 popd
 
 %if %{without hpc}
@@ -596,6 +692,7 @@ do
 done
 
 %fdupes %{buildroot}%{p_include}
+%fdupes %{buildroot}%{p_libdir}
 
 ##
 %post -n %{libname %_vers} -p /sbin/ldconfig

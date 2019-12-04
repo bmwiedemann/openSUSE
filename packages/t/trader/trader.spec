@@ -1,8 +1,8 @@
 #
 # spec file for package trader
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2012-18 John Zaitseff <J.Zaitseff@zap.org.au>
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2012-19 John Zaitseff <J.Zaitseff@zap.org.au>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,47 +13,47 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # ***********************************************************************
 # *                                                                     *
 # *            Star Traders: A Game of Interstellar Trading             *
-# *               Copyright (C) 1990-2017, John Zaitseff                *
+# *               Copyright (C) 1990-2019, John Zaitseff                *
 # *                                                                     *
 # ***********************************************************************
 
 # Author: John Zaitseff <J.Zaitseff@zap.org.au>
-# $Id: c8d3c05321aea26745a5ced3158245111b97ca14 $
+# $Id: cb06367b59f99e896cd916a5a858a3959f734607 $
 
 # This file is distributed under the same licence as Star Traders itself:
 # the GNU General Public License, version 3 or later.
 
-%define upstream_version   7.12
-%define normalised_version 7.12
-%define rpm_release_num    1
+%define upstream_version   7.13
+%define normalised_version 7.13
+%define rpm_release_num    3
 %define is_prerelease      0
 
 Name:           trader
 Version:        %{normalised_version}
 Release:        %{rpm_release_num}%{?dist}
 Summary:        Star Traders, a simple game of interstellar trading
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
-Url:            http://www.zap.org.au/software/trader/
+Url:            https://www.zap.org.au/projects/trader/
 
 %if 0%{?is_prerelease}
-Source0:        ftp://ftp.zap.org.au/pub/trader/unix/prerelease/trader-%{upstream_version}.tar.xz
+Source0:        https://ftp.zap.org.au/pub/trader/unix/prerelease/trader-%{upstream_version}.tar.xz
 %else
-Source0:        ftp://ftp.zap.org.au/pub/trader/unix/trader-%{upstream_version}.tar.xz
+Source0:        https://ftp.zap.org.au/pub/trader/unix/trader-%{upstream_version}.tar.xz
 %endif
 
 BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  gperf
-BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(ncurses)
 
 Requires(post):   hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
@@ -79,7 +79,8 @@ make %{?_smp_mflags}
 %suse_update_desktop_file %{name}
 
 %files
-%doc README NEWS COPYING
+%doc README NEWS
+%license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man6/trader.6%{ext_man}
 %{_datadir}/applications/%{name}.desktop

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:00:14 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Make it clear that a Session is required for v1.client.Client
+  - Remove deprecated common.http.HTTPClient class
+  - Replace openstack.org git:// URLs with https://
+  - Uncap jsonschema
+  - Fetch requirements from opendev
+  - Run jobs under python2 and python3
+  - Update .gitreview for stable/train
+  - Fix usage of --owner filter during node list
+  - Do not try to use /v1/v1 when endpoint_override is used
+  - OpenDev Migration Patch
+  - Update sphinx requirements
+  - Allocation API: support allocation backfilling
+  - Update api-ref location
+  - Switch to the new canonical constraints URL on master
+  - Remove deprecated keystone arguments
+  - Remove deprecated endpoint argument
+  - Add release note for bug #2006216
+  - Fix TypeError when using endpoint_override with SessionClient
+  - Update Python 3 test runtimes for Train
+  - Use endpoint_override in version negotiation
+  - Strip prefix when paginating
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Remove the requirement on either endpoint_override or os_ironic_api_version
+  - Move to zuulv3
+  - Add allocation update API
+  - Build pdf doc
+  - Dropping the py35 testing
+  - Update master for stable/stein
+  - Make the dependency on oslo.config explicit
+  - Remove the ironic command
+
+-------------------------------------------------------------------
 Tue Jun 11 06:18:27 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.7.2

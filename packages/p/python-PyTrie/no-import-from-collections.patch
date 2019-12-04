@@ -1,0 +1,28 @@
+From 242b04de42f4c78ef5c86df55ff41b222986d268 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Tue, 3 Dec 2019 16:09:20 +0100
+Subject: [PATCH] =?UTF-8?q?Don=E2=80=99t=20import=20from=20collections=20g?=
+ =?UTF-8?q?enerally,=20but=20directly=20from=20collections.abc.?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes #1
+---
+ pytrie.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/pytrie.py
++++ b/pytrie.py
+@@ -45,7 +45,10 @@ __all__ = ['Trie', 'StringTrie', 'Sorted
+ 
+ import sys
+ from copy import copy
+-from collections import MutableMapping
++try:
++    from collections.abc import MutableMapping
++except ImportError:
++    from collections import MutableMapping
+ 
+ import sortedcontainers
+ 

@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Fri Nov  1 14:44:33 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.20.0:
+    Allow building newer versions of ruby.
+    Fix rare race condition with multiple concurrent first-time runs.
+    Allow --hook-type to be specified multiple times.
+        example: pre-commit install --hook-type pre-commit
+            --hook-type pre-push
+    Include more version information in crash logs.
+    Hook colors are now passed through on platforms which support pty.
+    pre-commit now uses importlib.metadata directly when running
+        in python 3.8
+    Remove some extra newlines from error messages.
+    When a hook is not executable it now reports not executable
+        instead of not found.
+    Fix interleaving of stdout / stderr in hooks.
+    Fix python environment healthy() check when current working
+        directory contains modules which shadow standard library
+        names.
+    Regexes handling both backslashes and forward slashes for
+        directory separators now only need to handle forward
+        slashes.
+    Fix node_modules plugin installation on windows
+    Make default python lookup more deterministic to avoid
+        redundant installs
+    Fix installation of rust hooks with new cargo
+    Use the current running executable if it matches the
+        requested language_version
+    Print the stage when a hook is not found
+    pre-commit autoupdate now supports non-master default branches
+    Add pre-commit init-templatedir which makes it easier to
+        automatically enable pre-commit in cloned repositories.
+    pre-commit's color can be controlled using
+        PRE_COMMIT_COLOR={auto,always,never}
+    pre-commit's color can now be disabled using TERM=dumb
+    pre-commit now supports docker based hooks on windows
+    Fix shallow clone
+    Fix autoupdate version flip flop when using shallow cloning
+    Fix autoupdate when the current revision is invalid
+    Replace development instructions with tox --devenv ...
+    Produce better output on ^C
+    Warn on unknown keys at the top level and repo level
+    Fix handling of ^C in wrapper script in python 3.x
+    Fix rmtree for non-writable directories
+    Pass --color option to git diff in --show-diff-on-failure
+    Fix test when pre-commit is installed globally
+    Add support for prepare-commit-msg hook
+    Whitespace fixup
+    Fix cloning non-branch tag while in the fallback slow-clone
+        strategy.
+- Just switch of tests for now.
+
+-------------------------------------------------------------------
+Thu Apr  4 01:11:49 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.15.1

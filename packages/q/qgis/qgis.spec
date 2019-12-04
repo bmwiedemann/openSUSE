@@ -1,7 +1,7 @@
 #
 # spec file for package qgis
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %bcond_without grass
-%bcond_with    otb
 
 Name:           qgis
 Version:        3.10.0
@@ -54,9 +53,6 @@ BuildRequires:  libqscintilla_qt5-devel
 BuildRequires:  libspatialindex-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
-%if %{with otb}
-BuildRequires:  otb-devel
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  poppler-tools
 BuildRequires:  python-qscintilla-qt5-sip
@@ -204,7 +200,7 @@ export PATH=$PATH:$QTDIR/bin
 %if %{with grass}
   -DWITH_GRASS=TRUE \
   -DWITH_GRASS7=TRUE \
-  -DGRASS_PREFIX7=%{_libdir}/grass76 \
+  -DGRASS_PREFIX7=`cat %{_sysconfdir}/GRASSDIR` \
 %endif
   -DWITH_QSPATIALITE=TRUE \
   -DWITH_SERVER=TRUE \

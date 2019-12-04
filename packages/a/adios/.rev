@@ -7,4 +7,33 @@
     <comment></comment>
     <requestid>740995</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>83d933739eb0058d23b8864cd78611a6</srcmd5>
+    <version>1.13.1</version>
+    <time>1575464023</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct naming of openmpi1 packages in Leap 15.0/15.1 (still
+  called openmpi), fixes unresolvable packages.
+- Add non-HPC openmpi2 and openmpi3 flavors.
+
+- Add support for gcc7.
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8609).
+
+- Disable openmpi1 builds for SLE/Leap &gt; 15.1.
+- Enable openmpi3 builds for Leap and SLE &gt; 15.1 (jsc#SLE-7773).
+- Disable build on s390/s390x as netcdf is not available (bsc#1157965).
+- Fix openmpi1 names for non-HPC builds on Factory.
+
+- Add missing FCFLAGS export
+
+- Fix aarch64 LTO build with -ffat-lto-objects flag
+
+- Disable openmpi3 and the openmpi flavor in SLE.
+- Remake patch adios-correct-func-ret.patch to make sure the functions
+- Update Licensing.
+  file.
+- Add a separate package with the examples in two flavors one for
+  non-HPC and another one for HPC: examples and examples-hpc.</comment>
+    <requestid>753291</requestid>
+  </revision>
 </revisionlist>

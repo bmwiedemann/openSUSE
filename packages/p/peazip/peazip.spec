@@ -44,7 +44,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  lazarus
 BuildRequires:  unzip
 BuildRequires:  upx
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
 BuildRequires:  p7zip-full
 Requires:       p7zip-full
 %else

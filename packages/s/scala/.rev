@@ -15,4 +15,12 @@
     <comment>Upgrade 2.10.7 + bootstrap with 2.10.7: allows building with jdk11</comment>
     <requestid>752799</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d921b7bb13de4713375bca06565195e8</srcmd5>
+    <version>2.10.7</version>
+    <time>1575464162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753931</requestid>
+  </revision>
 </revisionlist>

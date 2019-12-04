@@ -168,4 +168,29 @@
 - remove 0001-Add-sqlalchemy-collector.patch and 0001-Don-t-fail-if-sqlalchemy-driver-fails-to-initialize.patch</comment>
     <requestid>692872</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88e5f12dc7cfcbf5a6bc799690f4022f</srcmd5>
+    <version>2.8.2</version>
+    <time>1575463668</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.8.2
+  - Add a job to run full Tempest with enabled profiler
+  - Minimum versions of databases with JSON data type support
+  - Allow OSPROFILER_TRACE_SQLALCHEMY to be overridden
+  - Don't fail if sqlalchemy driver fails to initialize
+  - Fix elasticsearch version in python requirements
+  - Automatic configuration of SQLAlchemy driver in DevStack
+  - Rename OSProfiler-enabled Tempest job
+  - Add Python 3 Train unit tests
+  - Bring env OSPROFILER_CONNECTION_STRING into effect
+  - Optimize storage schema for Redis driver
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Dropping the py35 testing
+  - Support standalone placement in the devstack
+  - Update master for stable/stein
+  - Collect traces from Tempest job
+  - change function list_traces of mongodb module
+  - OpenDev Migration Patch</comment>
+    <requestid>736623</requestid>
+  </revision>
 </revisionlist>

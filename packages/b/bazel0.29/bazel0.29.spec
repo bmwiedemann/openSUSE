@@ -20,6 +20,17 @@
 %define shortname bazel
 %define shortver 0.29
 
+#Workaround for s390x (Java 1.8 runs out of memory)
+%ifarch s390x
+%if 0%{?suse_version} > 1500
+%define openjdktouse java-12-openjdk-devel
+%else
+%define openjdktouse java-11-openjdk-devel
+%endif
+%else
+%define openjdktouse java-1_8_0-openjdk-devel
+%endif
+
 Name:           bazel%{shortver}
 Version:        0.29.1
 Release:        0
@@ -29,7 +40,8 @@ Group:          Development/Tools/Building
 URL:            http://bazel.io/
 Source0:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip
 Source1:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip.sig
-Patch0:         0001-fix-build-for-Power.patch
+Patch1:         0001-fix-build-for-Power.patch
+Patch2:         0002-fix-build-for-s390x.patch
 BuildRequires:  gcc-c++
 BuildRequires:  java-1_8_0-openjdk-devel
 BuildRequires:  pkgconfig
@@ -40,7 +52,7 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(zlib)
 Requires(post):	update-alternatives
 Requires(postun): update-alternatives
-Requires:       java-1_8_0-openjdk-devel
+Requires:       %{openjdktouse}
 Provides:       bazel = %{version}
 ExcludeArch:    %ix86
 
@@ -51,7 +63,8 @@ as mobile operating systems.
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 # Remove executable permissions
 chmod 0644 AUTHORS CHANGELOG.md CONTRIBUTORS LICENSE
 # Use Python 3
@@ -63,6 +76,9 @@ find third_party/grpc -type f -name "*.cc" -exec sed -i -e 's|gettid(|my_gettid(
 %build
 %ifarch aarch64 %arm
 export BAZEL_JAVAC_OPTS="-J-Xmx2g -J-Xms200m"
+%endif
+%ifarch s390x
+export BAZEL_JAVAC_OPTS="-J-Xmx4g -J-Xms1g"
 %endif
 CC=gcc
 CXX=g++

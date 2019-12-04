@@ -1,0 +1,15 @@
+{
+  /**
+   * Configuration of the ServeFolders plugin, that can be used to
+   * serve additional folders through the embedded Web server of
+   * Orthanc. This is especially useful to avoid problems related to
+   * the same-origin policy when developing Web applications in
+   * JavaScript on the top of the REST API of Orthanc.
+   * 
+   * The commented example would serve the documentation of the plugin
+   * SDK at the URL http://localhost:8042/doc/index.html
+   **/
+  "ServeFolders" : {
+    // "/doc" : "/usr/share/doc/orthanc/"
+  }
+}

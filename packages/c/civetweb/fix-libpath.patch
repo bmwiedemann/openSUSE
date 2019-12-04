@@ -1,0 +1,15 @@
+Index: civetweb-1.11/src/CMakeLists.txt
+===================================================================
+--- civetweb-1.11.orig/src/CMakeLists.txt
++++ civetweb-1.11/src/CMakeLists.txt
+@@ -17,8 +17,8 @@ target_include_directories(
+   ${PROJECT_SOURCE_DIR}/include)
+ install(
+   TARGETS civetweb-c-library
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib
++  ARCHIVE DESTINATION lib${LIB_SUFFIX}
++  LIBRARY DESTINATION lib${LIB_SUFFIX}
+   RUNTIME DESTINATION bin
+   COMPONENT civetweb-c-library)
+ install(FILES

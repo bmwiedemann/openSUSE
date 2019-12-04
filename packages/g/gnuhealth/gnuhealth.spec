@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2014-2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,30 +17,33 @@
 #
 
 
-%define         majorver 3.4
+%define         t_version %(rpm -q --qf '%%{VERSION}' trytond)
+%define         majorver 3.6
 Name:           gnuhealth
 
-Version:        %{majorver}.1
+Version:        %{majorver}.2
 Release:        0
 
 # List of additional build dependencies
-BuildRequires:  fdupes
+###ildRequires:  fdupes
+BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 
 # For the variables:
 BuildRequires:  trytond
-%define t_version %(rpm -q --qf '%%{VERSION}' trytond)
 
-Url:            http://health.gnu.org
-Source0:        http://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
-#Source:         %{name}-%{version}.tar.gz
+URL:            http://health.gnu.org
+##ource0:        http://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        GNUHealth.README.SUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
 Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
-Patch0:         demo.diff
+##atch0:         bug_57292.diff
+##atch1:         xmlfix.diff
+##atch2:         demo.diff
 
 BuildArch:      noarch
 
@@ -54,9 +57,8 @@ Requires:       python3-PyWebDAV3-GNUHealth
 Requires:       python3-caldav
 Requires:       python3-hl7apy
 Requires:       python3-ldap3
+Requires:       python3-passlib
 Requires:       python3-pyBarcode
-#Federation:
-Requires:       python3-pymongo
 Requires:       python3-qrcode
 Requires:       python3-simpleeval
 Requires:       python3-six
@@ -66,7 +68,6 @@ Requires:       trytond_account
 Requires:       trytond_account_invoice
 Requires:       trytond_account_invoice_stock
 Requires:       trytond_account_product
-#Requires:       trytond_calendar
 Requires:       trytond_company
 Requires:       trytond_country
 Requires:       trytond_currency
@@ -93,9 +94,21 @@ the implementations and trainings.
 This is the server component of GNU Health. 
 You would need the GNU Health Client as well, on the same or a different machine. You may use the Tryton Client either
 
+%package -n %{name}-orthanc
+Summary:        Integration module for Orthanc
+Group:          Productivity/Office/Management
+Requires:       gnuhealth
+Requires:       python3-beren
+Requires:       python3-pendulum
+
+%description -n %{name}-orthanc
+This package provides the interface to Orthanc
+
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+##atch0 -p1
+##atch1 -p1
+##atch2 -p1
 cp %{S:1} .
 cp %{S:2} .
 
@@ -128,7 +141,7 @@ install -p -m 644 %{SOURCE4} $RPM_BUILD_ROOT%{_unitdir}/%{name}-webdav@.service
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/tryton
 
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+####ython_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %pre
 #Write environment changes to /etc/bash.bashrc.local
@@ -160,6 +173,10 @@ EOF
 %postun
 %service_del_postun gnuhealth.service
 
+%files -n %{name}-orthanc
+%{python3_sitelib}/%{name}_orthanc*
+%{python3_sitelib}/trytond/modules/health_orthanc*
+
 %files 
 %defattr(744,root,root)
 %{_bindir}/gnuhealth-control
@@ -170,6 +187,8 @@ EOF
 %defattr(-,root,root)
 %doc README Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.SUSE scripts/* backend/* config/* doc/*
 %license COPYING
+%exclude %{python3_sitelib}/%{name}_orthanc*
+%exclude %{python3_sitelib}/trytond/modules/health_orthanc*
 %{python_sitelib}/*
 
 %changelog

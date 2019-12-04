@@ -68,7 +68,7 @@
   boo#1153562: '20191202'
   boo#1153568: '20191202'
   boo#1154311: '20191018'
-  boo#1154582: '20191202'
+  boo#1154582: '20191203'
   boo#1155162: '20191104'
   boo#1155408: '20191114'
   boo#1155511: '20191202'
@@ -181,7 +181,7 @@
   poo#59864: '20191202'
   poo#59867: '20191118'
   poo#60269: '20191202'
-  poo#60452: '20191202'
+  poo#60452: '20191203'
   poo#60575: '20191202'
 </value>
   </attribute>
@@ -225,7 +225,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20191203</value>
+    <value>20191204</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -376,7 +376,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20191203'
 published: '20191202'
 publishing: '20191202'
 testing: '20191203'

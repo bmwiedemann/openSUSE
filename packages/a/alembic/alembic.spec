@@ -1,7 +1,7 @@
 #
 # spec file for package alembic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define libname libAlembic1_7
 
 Name:           alembic
-Version:        1.7.11
+Version:        1.7.12
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.alembic.io
+URL:            https://www.alembic.io
 Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
@@ -62,14 +63,7 @@ you will need to install %{name}-devel.
 %setup -q
 
 %build
-# sse options only on supported archs
-%ifarch x86_64
-sseflags='-msse -msse2'
-%endif
-
 %cmake \
-    -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags}" \
-    -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags}" \
     -DALEMBIC_LIB_INSTALL_DIR=%{_libdir} \
     -DUSE_ARNOLD=OFF \
     -DUSE_BINARIES=OFF \

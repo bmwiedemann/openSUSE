@@ -16,4 +16,13 @@
 </comment>
     <requestid>695336</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e848c9397bb262763157159ac9acfc86</srcmd5>
+    <version>0.3.1</version>
+    <time>1575464020</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-import-from-collections.patch to avoid any import
+  directly from collections.</comment>
+    <requestid>753288</requestid>
+  </revision>
 </revisionlist>

@@ -18,15 +18,13 @@
 
 
 Name:           bstone
-Version:        1.1.13
+Version:        1.1.14
 Release:        0
 Summary:        A source port of Blake Stone
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://bibendovsky.github.io/bstone/
 Source:         https://github.com/bibendovsky/bstone/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-SDL2W.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -50,12 +48,11 @@ You need to start the game from within the folder with these files.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 cd src/
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 install -Dm0755 src/build/bstone %{buildroot}%{_bindir}/bstone

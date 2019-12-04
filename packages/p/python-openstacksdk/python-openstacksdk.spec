@@ -17,17 +17,15 @@
 
 
 Name:           python-openstacksdk
-Version:        0.27.0
+Version:        0.36.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/openstacksdk
-Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.27.0.tar.gz
-# https://review.openstack.org/#/c/651119/
-Patch0:         0001-add-python-3.7-unit-test-job.patch
-# https://review.openstack.org/#/c/651193/
-Patch1:         0001-baremetal-Add-support-for-mkisofs-and-xorrisofs-for-.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.36.0.tar.gz
+# https://review.opendev.org/692323
+Patch0:         0001-Increase-test-timeout-for-2-tests-in-TestImageProxy-.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-PyYAML >= 3.12
@@ -43,17 +41,19 @@ BuildRequires:  python2-ipaddress >= 1.0.17
 BuildRequires:  python2-jmespath >= 0.9.0
 BuildRequires:  python2-jsonpatch >= 1.16
 BuildRequires:  python2-jsonschema
-BuildRequires:  python2-keystoneauth1 >= 3.13.0
+BuildRequires:  python2-keystoneauth1 >= 3.16.0
 BuildRequires:  python2-mock
 BuildRequires:  python2-munch >= 2.1.0
 BuildRequires:  python2-netifaces >= 0.10.4
-BuildRequires:  python2-os-service-types >= 1.2.0
+BuildRequires:  python2-os-service-types >= 1.7.0
+BuildRequires:  python2-oslo.config
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-python-subunit
 BuildRequires:  python2-requests-mock
 BuildRequires:  python2-requestsexceptions >= 1.2.0
 BuildRequires:  python2-six >= 1.10.0
+BuildRequires:  python2-statsd
 BuildRequires:  python2-stestr
 BuildRequires:  python2-stevedore
 BuildRequires:  python2-testscenarios
@@ -70,17 +70,19 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-jmespath >= 0.9.0
 BuildRequires:  python3-jsonpatch >= 1.16
 BuildRequires:  python3-jsonschema
-BuildRequires:  python3-keystoneauth1 >= 3.13.0
+BuildRequires:  python3-keystoneauth1 >= 3.16.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-munch >= 2.1.0
 BuildRequires:  python3-netifaces >= 0.10.4
-BuildRequires:  python3-os-service-types >= 1.2.0
+BuildRequires:  python3-os-service-types >= 1.7.0
+BuildRequires:  python3-oslo.config
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-requestsexceptions >= 1.2.0
 BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-statsd
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore
 BuildRequires:  python3-testscenarios
@@ -93,10 +95,10 @@ Requires:       python-dogpile.cache >= 0.6.2
 Requires:       python-iso8601 >= 0.1.11
 Requires:       python-jmespath >= 0.9.0
 Requires:       python-jsonpatch >= 1.16
-Requires:       python-keystoneauth1 >= 3.13.0
+Requires:       python-keystoneauth1 >= 3.16.0
 Requires:       python-munch >= 2.1.0
 Requires:       python-netifaces >= 0.10.4
-Requires:       python-os-service-types >= 1.2.0
+Requires:       python-os-service-types >= 1.7.0
 Requires:       python-requestsexceptions >= 1.2.0
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
@@ -105,9 +107,18 @@ Requires:       python-futures >= 3.0.0
 Requires:       python-ipaddress >= 1.0.17
 %endif
 %if 0%{?suse_version}
+# RDO does not package prometheus_client
+BuildRequires:  python2-prometheus_client
+BuildRequires:  python3-prometheus_client
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
+Requires:       mkisofs
 %else
+Requires:       genisoimage
+%endif
+%else
+Requires:       genisoimage
 # on RDO, update-alternatives is in chkconfig
 Requires(post): chkconfig
 Requires(postun): chkconfig
@@ -124,8 +135,8 @@ documentation, examples, and tools.
 %package -n python-openstacksdk-doc
 Summary:        %{summary} - Documentation
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 Requires:       %{name} = %{version}
 
 %description -n python-openstacksdk-doc
@@ -139,14 +150,18 @@ The openstacksdk is a collection of libraries for building
 applications to work with OpenStack clouds.
 
 %prep
-%autosetup -p1 -n openstacksdk-0.27.0
+%autosetup -p1 -n openstacksdk-0.36.0
 %py_req_cleanup
 sed -i -e 's,coverage.*,,' test-requirements.txt || true
 sed -i -e "s,'sphinx.ext.intersphinx'\,,," doc/source/conf.py
+%if !0%{?suse_version}
+# RDO does not package prometheus_client
+rm openstack/tests/unit/test_stats.py
+%endif
 
 %build
 %python_build
-PBR_VERSION=0.27.0 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=0.36.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
@@ -161,6 +176,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 export OS_LOG_CAPTURE=true
+export OS_TEST_TIMEOUT=30
 %python_exec -m stestr.cli run
 
 %files %{python_files}

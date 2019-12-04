@@ -1,0 +1,16 @@
+--- gdcm-2.4.0.orig/CMake/UseCopyright.cmake	2013-10-16 10:28:54.000000000 +0200
++++ gdcm-2.4.0/CMake/UseCopyright.cmake	2013-10-20 21:11:37.532101984 +0200
+@@ -18,8 +18,10 @@
+   # need to raise an error if COPYRIGHT_MODULE_FILENAME is not set...
+   if(EXISTS ${COPYRIGHT_MODULE_FILENAME} )
+     foreach(filename ${ARGN})
+-      file(READ ${filename} content)
+-      file(APPEND ${COPYRIGHT_MODULE_FILENAME} ${content})
++      if(EXISTS ${filename} )
++        file(READ ${filename} content)
++        file(APPEND ${COPYRIGHT_MODULE_FILENAME} ${content})
++      endif()
+     endforeach()
+   endif()
+ endmacro()
+ 

@@ -168,4 +168,19 @@
   - import zuul job settings from project-config</comment>
     <requestid>692815</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4b0fbdf2ab680ad488fcfce8019e40dd</srcmd5>
+    <version>1.17.0</version>
+    <time>1575463681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.17.0
+  - add python 3.7 unit test job
+  - Add local bindep.txt
+  - Update to opendev
+  - Update master for stable/stein
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch
+  - Sync Sphinx requirement</comment>
+    <requestid>736637</requestid>
+  </revision>
 </revisionlist>

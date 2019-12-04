@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:06:19 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update sphinx from current requirements
+  - py3: use the train test template and other updates
+  - OpenDev Migration Patch
+  - Update master for stable/stein
+  - Py3: fix the OSC download job binary command
+  - Add py37 and API v2 jobs (scenario, tempest)
+
+-------------------------------------------------------------------
 Wed Jul 24 13:34:41 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.2.1

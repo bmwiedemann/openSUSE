@@ -124,4 +124,23 @@
   - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
     <requestid>710314</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>97429aefa14318494d379881d5aaa124</srcmd5>
+    <version>1.16.0</version>
+    <time>1575463722</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.16.0
+  - Fix metric list formatting with Python 3
+  - Push Docker image to Docker Hub
+  - Create Docker image and build in Zuul
+  - OpenDev Migration Patch
+  - Dropping the py35 testing
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Replace openstack.org git:// URLs with https://
+  - Change repository links usage in Dockerfile and build image
+  - Switch python3 versions of test jobs to match Train PTI
+  - Add Python 3 Train unit tests</comment>
+    <requestid>736661</requestid>
+  </revision>
 </revisionlist>

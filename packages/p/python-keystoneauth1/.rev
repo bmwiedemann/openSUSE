@@ -236,4 +236,32 @@ update to version 2.12.0
   - Update sphinx extension logging</comment>
     <requestid>692831</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a2d7332e9533168f21cba0f041f4e924</srcmd5>
+    <version>3.17.1</version>
+    <time>1575463685</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.17.1
+  - Update the min version of tox
+  - Simplify session logger object tests
+  - Limit interval between retries to 1 minute
+  - add handling for multiple error returns
+  - Allow requesting fixed retry delay instead of exponential
+  - Add remove_service to token fixtures
+  - Blacklist bandit 1.6.0 &amp; cap sphinx for 2.7
+  - Cap bandit
+  - reno: per-request global_request_id
+  - Factor Adapter conf-processing logic into a helper
+  - add a handler for unknown HTTP errors
+  - Resolves a typo in a link to use Application Credentials
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add Python 3 Train unit tests
+  - Update auth plugin name list in document
+  - Add a per-request global_request_id
+  - Update master for stable/stein
+  - Allow setting retry counts for Adapter via configuration options
+  - add support for auth_receipts and multi-method auth</comment>
+    <requestid>736641</requestid>
+  </revision>
 </revisionlist>

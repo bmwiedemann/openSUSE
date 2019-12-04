@@ -18,4 +18,12 @@ as well.</comment>
   latter is also available on Leap 15.x. (forwarded request 749685 from StefanBruens)</comment>
     <requestid>749687</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>727f55578960a961b94136c956e04a99</srcmd5>
+    <version>6.2.1</version>
+    <time>1575463814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750507</requestid>
+  </revision>
 </revisionlist>

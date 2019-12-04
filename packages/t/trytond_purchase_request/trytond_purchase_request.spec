@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_purchase_request
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2017 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,13 @@
 #
 
 
-%define majorver 4.6
+%define majorver 5.0
 
 Name:           trytond_purchase_request
-Version:        %{majorver}.1
+Version:        %{majorver}.2
 Release:        0
 
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Summary:        Tryton is an OpenSource ERP system
 License:        GPL-3.0-only

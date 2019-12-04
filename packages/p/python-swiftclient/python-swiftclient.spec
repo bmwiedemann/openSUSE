@@ -17,14 +17,15 @@
 
 
 Name:           python-swiftclient
-Version:        3.7.0
+Version:        3.8.1
 Release:        0
 Summary:        OpenStack Object Storage API Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-swiftclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-swiftclient/python-swiftclient-3.7.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-swiftclient/python-swiftclient-3.8.1.tar.gz
 BuildRequires:  openstack-macros
+BuildRequires:  python2-futures >= 3.0.0
 BuildRequires:  python2-keystoneclient
 BuildRequires:  python2-mock
 BuildRequires:  python2-pbr
@@ -60,10 +61,8 @@ swiftclient module), and a command-line script (swift).
 %package -n python-swiftclient-doc
 Summary:        %{summary} - Documentation
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-futures >= 3.0.0
-BuildRequires:  python-openstackdocstheme
-Requires:       %{name} = %{version}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-swiftclient-doc
 This is a python client for the Swift API. There's a Python API (the
@@ -72,12 +71,12 @@ swiftclient module), and a command-line script (swift).
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n python-swiftclient-3.7.0
+%autosetup -p1 -n python-swiftclient-3.8.1
 %py_req_cleanup
 
 %build
 %{python_build}
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

@@ -232,4 +232,17 @@
   - Use templates for cover and lower-constraints</comment>
     <requestid>692874</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e87cf7c8af0608f5fab98acd51cc23d9</srcmd5>
+    <version>2.10.0</version>
+    <time>1575463661</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.10.0
+  - add python 3.7 unit test job
+  - Removes temporary fix for doc generation
+  - Add py37 tox env and drop py35
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch</comment>
+    <requestid>736578</requestid>
+  </revision>
 </revisionlist>

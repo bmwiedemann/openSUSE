@@ -2,7 +2,7 @@
 #description_paragraphs: 3
 #description: |-
 #  override description from CPAN
-#summary: override summary from CPAN
+summary: Stringprep Profile for Internationalized Domain Names (RFC 3491)
 #no_testing: broken upstream
 #sources:
 #  - source1

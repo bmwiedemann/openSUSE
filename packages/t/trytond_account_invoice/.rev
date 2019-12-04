@@ -66,4 +66,12 @@
 </comment>
     <requestid>664363</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2628225a4a536296a3259d9d2bcdf0c6</srcmd5>
+    <version>5.0.4</version>
+    <time>1575463883</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 750813 from DocB)</comment>
+    <requestid>752394</requestid>
+  </revision>
 </revisionlist>

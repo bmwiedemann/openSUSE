@@ -17,13 +17,13 @@
 
 
 Name:           python-pyghmi
-Version:        1.2.16
+Version:        1.3.0
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/pyghmi
-Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.2.16.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-cryptography >= 2.1

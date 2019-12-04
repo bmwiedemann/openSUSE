@@ -195,4 +195,33 @@
   - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
     <requestid>709044</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>195fd42b45a2665d7234f5145a2ac7f2</srcmd5>
+    <version>3.10.0</version>
+    <time>1575463751</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.10.0
+  - Use openstack-python3-train-jobs for python3 test runtime
+  - Add &quot;published_global&quot; field to the task execution REST resource
+  - Update sphinx dependency
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Dropping the py35 testing
+  - Don't use default mutable parameter
+  - Update master for stable/stein
+  - Fix typo for self.list
+  - Add Python 3 Train unit tests
+  - Modify the url of upper_constraints_file
+  - Replace openstack.org git:// URLs with https://
+  - Add &quot;retry_count&quot; to execution report
+  - Update json module to jsonutils
+  - OpenDev Migration Patch
+  - Some resource managers are not using the base underscore methods
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - remove unused gate code
+  - Change tripleo job to multinode-containers job
+  - Bump openstackdocstheme to 1.30.0
+  - Add python 3.7 classifier to setup.cfg
+  - Rename the test class so it will be PyCharm friendly</comment>
+    <requestid>743548</requestid>
+  </revision>
 </revisionlist>

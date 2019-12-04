@@ -56,4 +56,35 @@
   - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
     <requestid>710316</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f63558cb828cedb081a973ce94dbca92</srcmd5>
+    <version>1.10.0</version>
+    <time>1575463729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.10.0
+  - Adds &quot;unset&quot; action to the quota command
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Wrap several show api calls with correct_return_codes
+  - Update master for stable/stein
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Add support for SOURCE_IP_PORT algorithm
+  - OpenDev Migration Patch
+  - Adds &quot;unset&quot; action to the l7rule command
+  - Remove python3.5 jobs for Train
+  - Update tox.ini for new upper constraints strategy
+  - Make sure we always requests JSON responses
+  - Add Python 3 Train unit tests
+  - Fix a bad unit test for amphora list
+  - Bump the openstackdocstheme extension to 1.20
+  - Adds &quot;unset&quot; action to the loadbalancer command
+  - Adds &quot;unset&quot; action to the member command
+  - Adds &quot;unset&quot; action to the flavor command
+  - Add support to VIP access control list
+  - Adds &quot;unset&quot; action to the l7policy command
+  - Adds &quot;unset&quot; action to the pool command
+  - Adds &quot;unset&quot; action to the listener command
+  - Cleanup requirements.txt
+  - Adds &quot;unset&quot; action to the healthmonitor command</comment>
+    <requestid>736666</requestid>
+  </revision>
 </revisionlist>

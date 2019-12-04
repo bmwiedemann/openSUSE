@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:36:32 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.0.12:
+ - Travis CI Docker tests
+ - RT 4.4 fixes
+ - Support multiline CF values in create_ticket and edit_ticket.
+ - Fix support for custom field names containing colons
+ - In search(), replace splitlines() with lines array split on \n.
+ - Add debug_mode flag for response logging
+ - Add platform independent url joining / Allow testing on Windows
+ - Add numerical_id to get_ticket result
+
+-------------------------------------------------------------------
 Tue Dec  4 12:53:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

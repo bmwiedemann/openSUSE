@@ -1,7 +1,7 @@
 #
 # spec file for package pkTriggerCord
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,55 +12,56 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sname %(echo %{name}|tr A-Z a-z)
 
 Summary:        Remote control program for Pentax DSLR cameras
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          Hardware/Camera
 Name:           pkTriggerCord
-Version:        0.84.04
+Version:        0.85.00
 Release:        0
 Source:         https://github.com/asalamon74/pktriggercord/releases/download/v%{version}/%{name}-%{version}.src.tar.gz
+Patch0:         0001-Makefile-remove-external-target.patch
+Patch1:         0001-rules-handle-permissions-by-uaccess.patch
 Url:            http://pktriggercord.melda.info/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc
 BuildRequires:  gtk2-devel
 BuildRequires:  make
-Requires(post): libcap-progs
 
 %description
 pkTriggerCord is a remote control program for Pentax DSLR cameras.
 
 %prep
-%setup -q -n %{sname}-%{version}
+%autosetup -n %{sname}-%{version} -p1
 
 %build
-make clean
-make %{?_smp_mflags} PREFIX=%{_prefix} CFLAGS="%optflags"
+make %{?_smp_mflags} PREFIX=%{_prefix} CFLAGS="%optflags -Isrc/external/js0n"
 
 %install
 %{makeinstall} PREFIX=%{_prefix}
 
-install -d %{buildroot}/%{_prefix}/lib/udev/rules.d/
-cp %{buildroot}/%{_sysconfdir}/udev/rules.d/*.rules %{buildroot}/%{_prefix}/lib/udev/rules.d/
+install -d %{buildroot}/%{_udevrulesdir}
+cp %{buildroot}/%{_sysconfdir}/udev/rules.d/*.rules %{buildroot}/%{_udevrulesdir}
 rm -rf %{buildroot}/%{_sysconfdir}/udev/
-
-%post
-setcap CAP_SYS_RAWIO+eip %{_bindir}/%{sname}-cli
-setcap CAP_SYS_RAWIO+eip %{_bindir}/%{sname}
+pushd %{buildroot}/%{_udevrulesdir}
+# move them before uaccess handling
+for F in samsung.rules pentax.rules; do
+	mv 95_$F 40-$F
+done
+popd
 
 %files
 %defattr(-,root,root)
-%doc Changelog COPYING BUGS
+%doc Changelog BUGS
+%license COPYING
 %{_bindir}/%{sname}*
 %{_datadir}/%{sname}
 %{_mandir}/*/%{sname}*
-%dir %{_prefix}/lib/udev/
-%dir %{_prefix}/lib/udev/rules.d/
-%{_prefix}/lib/udev/rules.d/*.rules
+%{_udevrulesdir}/*.rules
 
 %changelog

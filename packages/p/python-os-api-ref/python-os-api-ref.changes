@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:49:38 UTC 2019 - cloud-devel@suse.de
+
+- removed 0001-Add-support-for-Sphinx-2.0.patch
+- removed 0001-Fix-microversion-test-handle-different-HTML-renderin.patch
+- removed 0001-Add-support-for-Sphinx-v2.1.patch
+- update to version 1.6.2
+  - Add support for Sphinx 2.0
+  - Update hacking version
+  - Generate stable targets rather than random
+  - Update Testing for Train
+  - Add support for Sphinx v2.1
+  - Add Python 3 Train unit tests
+  - Remove support for py34
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Fix microversion test: handle different HTML renderings
+  - trivial: Remove unused attribute
+  - OpenDev Migration Patch
+
+-------------------------------------------------------------------
 Mon Jul  8 06:29:32 UTC 2019 - cloud-devel@suse.de
 
 - added 0001-Add-support-for-Sphinx-v2.1.patch

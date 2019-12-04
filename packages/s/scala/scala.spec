@@ -111,7 +111,7 @@ reference and API documentation for the Scala programming language.
 Summary:        The swing library for the Scala programming languages
 Group:          Development/Libraries/Java
 Requires:       java >= 1.7
-Requires:       scala = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
 %if %{without bootstrap}
 Obsoletes:      %{base_name}-bootstrap-swing
 %endif

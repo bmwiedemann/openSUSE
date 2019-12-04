@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Tue Oct 15 20:41:55 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20
+  * Fixed crash on Linux when the prince fell out of the level
+    while a guard was active.
+  * FIXED: With start_in_blind_mode enabled, moving objects were
+    not displayed until blind mode was toggled off+on.
+  * Fix upside-down screen when using PRINCE.EXE from v1.3 or v1.4.
+  * Added customization option for loose floor delay. (Used in
+    Neon Persia.)
+  * Fix detection of "allow triggering any tile" hack.
+  * Enable use_custom_options by default in the INI.
+  * Fix priorities of sword and spike sounds. (As in PoP 1.3.)
+    The "spiked" sound didn't interrupt the normal spikes sound when
+    the prince ran into spikes. With PoP 1.3 sounds, the "guard hurt"
+    sound didn't play when you hit a guard directly after parrying.
+- Add patch:
+  * 184.patch (CMake: Don't link SDL2main on Linux)
+    https://github.com/NagyD/SDLPoP/pull/184/files
+
+-------------------------------------------------------------------
+Sun Mar 31 20:33:45 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19
+  * Fix looping "sword moving" sound if the player leaves a room
+    exactly when a guard attacks.
+  * Support 8-bpp images in DAT files. For example the Pyramid mod
+    contains some of these.
+  * Improved map-making on levels with broken room links: If a room
+    is mapped to an already used place, then put it to the bottom of
+    the map.
+  * Better support for high-DPI (Retina) displays.
+  * Disable integer scaling menu item if SDL version is too old.
+  * Made the exit door fix configurable.
+  * Torches appearing in the leftmost column are now animated. (They
+    are actually in the rightmost column of the left-side room.)
+  New Features:
+  * Load custom options from DOS PRINCE.EXE files.
+  * Added a hotkey to display SDL versions. (Ctrl-C)
+  * Save screenshots and maps into a separate folder and add numbers
+    to the filenames.
+  * Added support for PC speaker sounds. Use command-line parameter
+    "stdsnd".
+  * Added support for colored torch flames.
+
+-------------------------------------------------------------------
+Sun Jun 10 18:14:51 UTC 2018 - mardnh@gmx.de
+
+- Use CMake for building
+- Package data files
+- Update to version 1.18.1
+
+-------------------------------------------------------------------
+Sat Jul 15 20:01:20 UTC 2017 - mailaender@opensuse.org
+
+- update to version 1.17
+- add .desktop file with icon
+
+-------------------------------------------------------------------
+Sat May 21 12:56:36 UTC 2016 - mailaender@opensuse.org
+
+- use source tarballs https://github.com/NagyD/SDLPoP/issues/62
+
+-------------------------------------------------------------------
+Sat Mar 26 14:51:17 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 1.16
+

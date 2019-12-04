@@ -17,19 +17,19 @@
 
 
 Name:           python-freezerclient
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Freezer
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-freezerclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-freezerclient/python-freezerclient-2.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-freezerclient/python-freezerclient-2.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-cliff >= 2.8.0
 BuildRequires:  python2-fixtures
-BuildRequires:  python2-keystoneclient
+BuildRequires:  python2-keystoneauth1 >= 3.4.0
 BuildRequires:  python2-mock
-BuildRequires:  python2-oslo.i18n
+BuildRequires:  python2-oslo.serialization >= 2.25.0
 BuildRequires:  python2-oslo.utils >= 3.33.0
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr >= 2.0.0
@@ -39,9 +39,9 @@ BuildRequires:  python2-stestr
 BuildRequires:  python2-testtools
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneclient
+BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-mock
-BuildRequires:  python3-oslo.i18n
+BuildRequires:  python3-oslo.serialization >= 2.25.0
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
@@ -50,10 +50,8 @@ BuildRequires:  python3-setuptools >= 21.0.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
 Requires:       python-cliff >= 2.8.0
-Requires:       python-keystoneclient
-Requires:       python-oslo.config
-Requires:       python-oslo.i18n
-Requires:       python-oslo.log
+Requires:       python-keystoneauth1 >= 3.4.0
+Requires:       python-oslo.serialization >= 2.25.0
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-pbr >= 2.0.0
 Requires:       python-six
@@ -75,8 +73,8 @@ Client library for Freezer built on the Freezer API. It provides a Python API
 %package -n python-freezerclient-doc
 Summary:        Documentation for OpenStack Freezer API client libary
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-freezerclient-doc
 Client library for Freezer built on the Freezer API. It provides a Python API
@@ -91,7 +89,7 @@ This package contains the documentation.
 %{python_build}
 
 # Build HTML docs and man page
-PBR_VERSION=2.1.0 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=2.2.0 %sphinx_build -b html doc/source doc/build/html
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

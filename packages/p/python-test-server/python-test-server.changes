@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Dec  4 08:45:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the download url so it actually fetches the tarball on its
+  own
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec  3 12:14:52 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activated test suite
+
+-------------------------------------------------------------------
+Mon Sep 23 10:48:48 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.0.31

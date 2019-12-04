@@ -16,9 +16,9 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 
 
-%define majorver 4.6
+%define majorver 5.0
 Name:           trytond_account
-Version:        %{majorver}.11
+Version:        %{majorver}.9
 Release:        0
 Summary:        The "account" module for the Tryton ERP system
 License:        GPL-3.0+

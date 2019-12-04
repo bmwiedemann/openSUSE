@@ -174,4 +174,16 @@
   - import zuul job settings from project-config</comment>
     <requestid>692816</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>84d0ba8cedcec6ca818b2863027f0d85</srcmd5>
+    <version>4.9.0</version>
+    <time>1575463694</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.9.0
+  - Replace openstack.org git:// URLs with https://
+  - Update json module to jsonutils
+  - OpenDev Migration Patch
+  - add python 3.7 unit test job</comment>
+    <requestid>736647</requestid>
+  </revision>
 </revisionlist>

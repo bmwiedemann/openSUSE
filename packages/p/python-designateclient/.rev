@@ -239,4 +239,25 @@
     <comment></comment>
     <requestid>723205</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1bb95fd774394a89d98a8b49d6a29a7e</srcmd5>
+    <version>3.0.0</version>
+    <time>1575463701</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.0
+  - Uncap jsonschema
+  - Cap sphinx for py2 to match global requirements
+  - Add Python 3.6 classifier to setup.cfg
+  - Dropping the py35 testing
+  - Add doc/requirements.txt to releasenotes tox environment
+  - add python 3.7 unit test job
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch
+  - Update json module to jsonutils
+  - Update hacking version
+  - Change openstack-dev to openstack-discuss
+  - Update master for stable/stein
+  - Removing v1 api support</comment>
+    <requestid>736650</requestid>
+  </revision>
 </revisionlist>

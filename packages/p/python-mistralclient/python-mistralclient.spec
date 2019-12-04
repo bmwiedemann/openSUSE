@@ -16,27 +16,34 @@
 #
 
 
+%global oldpython python
 Name:           python-mistralclient
-Version:        3.8.1
+Version:        3.10.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Mistral
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-3.10.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-PyYAML >= 3.12
-BuildRequires:  python-fixtures
-BuildRequires:  python-mock
-BuildRequires:  python-nose
-BuildRequires:  python-openstackclient
-BuildRequires:  python-oslotest
-BuildRequires:  python-osprofiler
-BuildRequires:  python-pbr >= 2.0.0
-BuildRequires:  python-requests-mock
-BuildRequires:  python-setuptools
-BuildRequires:  python-testrepository
-BuildRequires:  python-testtools
+BuildRequires:  python2-PyYAML >= 3.12
+BuildRequires:  python2-fixtures
+BuildRequires:  python2-mock
+BuildRequires:  python2-nose
+BuildRequires:  python2-openstackclient
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-osprofiler
+BuildRequires:  python2-pbr >= 2.0.0
+BuildRequires:  python2-requests-mock
+BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-fixtures
+BuildRequires:  python3-mock
+BuildRequires:  python3-nose
+BuildRequires:  python3-openstackclient
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-osprofiler
+BuildRequires:  python3-pbr >= 2.0.0
+BuildRequires:  python3-requests-mock
 Requires:       python-PyYAML >= 3.12
 Requires:       python-cliff >= 2.8.0
 Requires:       python-keystoneclient
@@ -48,53 +55,67 @@ Requires:       python-osprofiler
 Requires:       python-requests >= 2.14.2
 Requires:       python-six >= 1.10.0
 Requires:       python-stevedore >= 1.20.0
+Conflicts:      %{oldpython}-mistralclient < %version
 BuildArch:      noarch
+%if 0%{?suse_version}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%else
+# on RDO, update-alternatives is in chkconfig
+Requires(post): chkconfig
+Requires(postun): chkconfig
+%endif
+%python_subpackages
 
 %description
 Client library for Mistral built on the Mistral API. It provides a Python API
 (the mistralclient module) and a command-line tool (mistral).
 
-%package doc
+%package -n python-mistralclient-doc
 Summary:        Documentation for OpenStack Mistral API client libary
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-sphinxcontrib-apidoc
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
-%description doc
+%description -n python-mistralclient-doc
 Client library for Mistral built on the Mistral API. It provides a Python API
 (the mistralclient module) and a command-line tool (mistral).
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n python-mistralclient-3.10.0
 %py_req_cleanup
 
 %build
-%py2_build
+%{python_build}
 
-# Build HTML docs and man page
-PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
-PBR_VERSION=%{version} sphinx-build -b man doc/source doc/build/man
+# Build HTML docs
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
-%py2_install
-#man pages
-install -p -D -m 644 doc/build/man/mistral_client.1 %{buildroot}%{_mandir}/man1/mistral_client.1
+%{python_install}
+%python_clone -a %{buildroot}%{_bindir}/mistral
+
+%post
+%python_install_alternative mistral
+
+%postun
+%python_uninstall_alternative mistral
 
 %check
 find . -type f -name *.pyc -delete
-PYTHONPATH=. nosetests mistralclient/tests/unit
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_version} mistralclient/tests/unit
 
-%files
+%files %{python_files}
 %license LICENSE
-%{python2_sitelib}/mistralclient
-%{python2_sitelib}/*.egg-info
-%{_bindir}/mistral
-%{_mandir}/man1/mistral_client.1.*
+%{python_sitelib}/mistralclient
+%{python_sitelib}/*.egg-info
+%python_alternative %{_bindir}/mistral
 
-%files doc
+%files -n python-mistralclient-doc
 %license LICENSE
+%doc README.rst doc/build/html
 
 %changelog

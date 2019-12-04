@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  4 07:55:10 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- fix s390x and ppc64le build
+  * 0003-enable-s390x-builds.patch
+  * 0004-fix-alignment-for-ppc64le.patch
+
+- rename add-soversion-option.patch
+    to 0001-add-soversion-option.patch
+
+- rename 0001-crypto-Fix-aead_test-build-on-aarch64.patch
+    to 0002-crypto-Fix-aead_test-build-on-aarch64.patch
+
+-------------------------------------------------------------------
 Thu Oct 17 14:54:13 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

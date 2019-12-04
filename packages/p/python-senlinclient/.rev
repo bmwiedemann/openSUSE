@@ -160,4 +160,22 @@
   - Update python-senlinclient to use current openstacksdk</comment>
     <requestid>692878</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>de71b96c092aa8e3ee40c771eee4511b</srcmd5>
+    <version>1.11.0</version>
+    <time>1575463739</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.11.0
+  - Replace openstack.org git:// URLs with https://
+  - Update master for stable/stein
+  - Dropping the py35 testing
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - OpenDev Migration Patch
+  - Imported Translations from Zanata
+  - Fix uint test test_json_format and Solve pep8 msgfmt error
+  - Add Python 3 Train unit tests
+  - Update api-ref location
+  - Switch to the new canonical constraints URL on master</comment>
+    <requestid>736669</requestid>
+  </revision>
 </revisionlist>

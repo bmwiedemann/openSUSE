@@ -60,4 +60,15 @@
   * Drop support for python 2.7</comment>
     <requestid>732115</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e96eab7916f32d5bd02588234eb8620a</srcmd5>
+    <version>2.0.1</version>
+    <time>1575464183</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Properly check for presence of CSS file
+  * Added support for UTF-8 display
+  * Fix initial sort on column</comment>
+    <requestid>753971</requestid>
+  </revision>
 </revisionlist>

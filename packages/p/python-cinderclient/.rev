@@ -703,4 +703,41 @@
   - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
     <requestid>709041</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d7556afde3d738e647b30257537ec9af</srcmd5>
+    <version>5.0.0</version>
+    <time>1575463698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.0
+  - Migrate the functional job to Zuul v3
+  - Add bash completion for groups
+  - Add 'is_public' support in '--filters' option
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Update sphinx dependency
+  - Fix max version handling for help output
+  - Add missed 'Server ID' output in attachment-list
+  - Don't run DSVM tests for doc changes
+  - Fix: Quota update successfully executes with no params
+  - Add transfer-list --sort argument
+  - Drop 'endpoints' and 'credentials' commands
+  - Fix incorrect punctuation
+  - Remove dsvm-functional-identity-v3-only job
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Cleanup the home page
+  - Update master for stable/stein
+  - Drop py35 jobs
+  - Don't quote {posargs} in tox.ini
+  - Change openstack-dev to openstack-discuss
+  - Raise API max version for Rocky updates
+  - Fix bash_completion cache path
+  - Remove bash-completion calls from base.py
+  - Drop support for OS_TENANT_NAME and OS_TENANT_ID
+  - Drop support for --allow-multiattach
+  - Bump openstackdocstheme to 1.20.0
+  - Re-enable shell UUID completion cache
+  - Handle auth redirects
+  - More shell completion cache additions
+  - Add custom CA support for get_server_version</comment>
+    <requestid>736648</requestid>
+  </revision>
 </revisionlist>

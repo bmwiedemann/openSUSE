@@ -17,27 +17,25 @@
 
 
 Name:           python-automaton
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Friendly state machines for python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/automaton
-Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-1.16.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-1.17.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-PrettyTable >= 0.7.2
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-devel
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 Requires:       python-PrettyTable >= 0.7.2
 Requires:       python-pbr >= 2.0.0
@@ -51,21 +49,21 @@ Friendly state machines for python.
 %package -n python-automaton-doc
 Summary:        Documentation for the Automaton Library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-automaton-doc
 Documentation for the Automaton library.
 
 %prep
-%autosetup -p1 -n automaton-1.16.0
+%autosetup -p1 -n automaton-1.17.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  4 12:11:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.1:
+  * Properly check for presence of CSS file
+  * Added support for UTF-8 display
+  * Fix initial sort on column
+
+-------------------------------------------------------------------
 Fri Sep 20 09:46:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.0:

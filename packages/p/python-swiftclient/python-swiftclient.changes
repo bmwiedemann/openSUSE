@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:07:20 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.8.1
+  - Fix SLO re-upload
+  - Add Python 3 Train unit tests
+  - Clean up warnings from newer flake8
+  - Optionally display listings in raw json
+  - docs: Fix warning treated as error
+  - Enable some off-by-default checks
+  - Add missing <sync-to> value in command line docs
+  - Delete/overwrite symlinks better
+  - Drag forward prettytable in lower-constraints
+  - Authors/changelog for 3.8.0
+  - docs: Clean up formatting
+  - OpenDev Migration Patch
+  - Remove oslosphinx usage
+  - Authors/changelog for 3.8.1
+  - Make proper functions instead of assigning lambdas
+  - Support pdb in tests better
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update master for stable/stein
+  - Fix up requests so we can send non-RFC-compliant headers on py3
+  - PDF Documentation Build tox target
+  - Isolate docs requirements
+  - Bump the openstackdocstheme extension to 1.20
+
+-------------------------------------------------------------------
 Mon Apr  8 12:33:46 UTC 2019 - cloud-devel@suse.de
 
 - update to version 3.7.0

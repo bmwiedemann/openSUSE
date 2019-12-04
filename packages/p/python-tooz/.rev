@@ -161,4 +161,27 @@
 - add 0001-Remove-grpcio-from-requirements.txt.patch</comment>
     <requestid>699141</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c5d6b80ae8656e6e6a4296f59e9a917</srcmd5>
+    <version>1.66.2</version>
+    <time>1575463671</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-Remove-grpcio-from-requirements.txt.patch
+- update to version 1.66.2
+  - Remove unused requirements.
+  - Blacklist sphinx 2.1.0
+  - Remove py35, add py37 classifiers
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add Python 3 Train unit tests
+  - Update Sphinx requirement and uncap grpcio
+  - Referencing testenv deps now works
+  - add python 3.7 unit test job
+  - Update master for stable/stein
+  - Move grpcio from requirements.txt to extras
+  - Fix wrong log level during heartbeat
+  - Move test deps to test-requirements.txt
+  - Unblock tooz gate</comment>
+    <requestid>736628</requestid>
+  </revision>
 </revisionlist>

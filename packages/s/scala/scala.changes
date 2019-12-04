@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:21:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have scala-bootstrap-swing require scala*bootstrap and
+  scala-swing require scala. There is not guarantee that the
+  rebuild counters between scala and scala-bootstrap would be in
+  sync, making the Requires: scala = %{version}-%{release} for
+  scala-bootstrap unresolvable (let alone that it would not be
+  usable before scala is built)
+
+-------------------------------------------------------------------
 Fri Nov 29 10:53:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Do not package ant tasks in bootstrap build

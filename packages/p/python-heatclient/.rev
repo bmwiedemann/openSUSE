@@ -552,4 +552,22 @@
   - Use templates for cover and lower-constraints</comment>
     <requestid>692827</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7b5011d3eed5db4e15addad9d9968564</srcmd5>
+    <version>1.18.0</version>
+    <time>1575463706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.18.0
+  - Update stack_id clearify for heat client functions
+  - Dropping the py35 testing
+  - Update master for stable/stein
+  - Fix missing print format
+  - Add Python 3 Train unit tests
+  - Replace openstack.org git:// URLs with https://
+  - add python 3.7 unit test job
+  - OpenDev Migration Patch
+  - Set Content-Type header explictly for SessionClient
+  - Fix unit tests</comment>
+    <requestid>736653</requestid>
+  </revision>
 </revisionlist>

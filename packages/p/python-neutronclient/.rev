@@ -472,4 +472,29 @@
   - Add bandit to pep8 gate</comment>
     <requestid>692842</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b3a11a0b5f25b993f64010e2b2949ad7</srcmd5>
+    <version>6.14.0</version>
+    <time>1575463724</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.14.0
+  - Switch functional job to python3
+  - Add router add/remove extra routes operations
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Fix string in header
+  - OpenDev Migration Patch
+  - Dropping the py35 testing
+  - doc: Remove prompt from python binding examples
+  - Blacklist bandit 1.6.0 due to directory exclusion bug
+  - Add friendly event hints for logging
+  - Replace openstack.org git:// URLs with https://
+  - Update master for stable/stein
+  - Use secure sha256 instead of sha1
+  - Improve help text
+  - Add Python 3 Train unit tests
+  - Convert legacy functional jobs to zuulv3
+  - Run functional test correctly
+  - add python 3.7 unit test job</comment>
+    <requestid>736664</requestid>
+  </revision>
 </revisionlist>

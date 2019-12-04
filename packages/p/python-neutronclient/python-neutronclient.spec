@@ -17,13 +17,13 @@
 
 
 Name:           python-neutronclient
-Version:        6.12.0
+Version:        6.14.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Neutron
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-6.12.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-6.14.0.tar.gz
 # https://review.openstack.org/585387
 # Needed for osprofiler==2.3.0
 BuildRequires:  openstack-macros
@@ -119,8 +119,8 @@ Neutron's API.
 %{python_build}
 
 # Build HTML docs and man page
-PBR_VERSION=6.12.0 sphinx-build -b html doc/source doc/build/html
-PBR_VERSION=6.12.0 sphinx-build -b man doc/source doc/build/man
+PBR_VERSION=6.14.0 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=6.14.0 sphinx-build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

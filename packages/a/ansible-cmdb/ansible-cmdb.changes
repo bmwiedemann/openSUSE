@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Nov 24 18:26:05 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.30
+- Add patch:
+  * ansible-cmdb-dont-require-ushlex.patch
+    ushlex is only needed for the python2 version

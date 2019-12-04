@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Dec  3 07:57:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop needless service, one can call the command directly:
+  osc service localrun download_files
+- Fix the test call to really execute the tests
+- Run the spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec  2 21:01:59 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.0.0
+  tests added
+
+-------------------------------------------------------------------
+Mon Aug 26 19:17:45 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.1.0
+  initial build on OBS

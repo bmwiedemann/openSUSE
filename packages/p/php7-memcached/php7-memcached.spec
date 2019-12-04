@@ -1,7 +1,7 @@
 #
 # spec file for package php7-memcached
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define conf_dir %{_sysconfdir}/php7/conf.d
 %define ext_dir  %(%{__php_config} --extension-dir)
 Name:           php7-memcached
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        PHP MemcacheD client Extension
 License:        PHP-3.01
@@ -33,11 +33,11 @@ BuildRequires:  php7
 BuildRequires:  php7-devel
 BuildRequires:  php7-json
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  sysvinit-tools
+BuildRequires:  pkgconfig(zlib)
+Requires:       php7-json
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
-Requires:       php7-json
 
 %description
 This extension uses libmemcached library to provide API for

@@ -430,4 +430,41 @@ update to version 3.1.0
   - Detailed help message for QoS max-burst-kbps value</comment>
     <requestid>692845</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>35634e49ed9632d029b40f02a6b2d096</srcmd5>
+    <version>4.0.0</version>
+    <time>1575463735</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.0
+  - Batch up minor cleanups for release
+  - Bump min osc-lib to 1.14.0
+  - Fix RuntimeError when showing project which has extra properties
+  - Fix BFV server list handling with --name-lookup-one-by-one
+  - Fix typo: &quot;to and endpoint&quot;
+  - Fix functional.base.TestCase.openstack() to optionally omit --os-auth-type
+  - Use cliff formattable columns in image commands
+  - Add server add/remove volume description for microversion 2.20
+  - Document that server dump create requires 2.17
+  - Remove code migrated to osc-lib long ago
+  - Fix docs bug link to go to storyboard rather than launchpad
+  - Mention compute service set --up|--down requires 2.11 or greater
+  - Update master for stable/stein
+  - Compute: Add description support for server
+  - Remove deprecated volume commands and args
+  - Volume backup functional test tweak
+  - Use cliff formattable columns in network commands
+  - Deprecate openstack server migrate --host option
+  - Ignore case in security group rule --ethertype
+  - Add host and hypervisor_hostname to create servers
+  - Delete the LB object quotas set command in openstackclient
+  - Rename review.openstack.org to review.opendev.org
+  - Fix: incorrect check when no shared/private input
+  - Remove deprecated image commands
+  - Tweak network segment range fiunction tests
+  - Default to Cinder v3 API
+  - Fix &lt;id&gt; description for --block-device-mapping
+  - Add floating IP Port Forwarding commands
+  - Format aggregate command fields and de-race functional tests</comment>
+    <requestid>736667</requestid>
+  </revision>
 </revisionlist>

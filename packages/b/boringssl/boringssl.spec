@@ -25,14 +25,16 @@ Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
 URL:            https://boringssl.googlesource.com/boringssl/
 Source:         %{name}-%{version}.tar.xz
-Patch0:         add-soversion-option.patch
-Patch1:         0001-crypto-Fix-aead_test-build-on-aarch64.patch
+Patch1:         0001-add-soversion-option.patch
+Patch2:         0002-crypto-Fix-aead_test-build-on-aarch64.patch
+Patch3:         0003-enable-s390x-builds.patch
+Patch4:         0004-fix-alignment-for-ppc64le.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  go
 BuildRequires:  libunwind-devel
 BuildRequires:  ninja
-ExclusiveArch:  %{ix86} x86_64 aarch64
+ExclusiveArch:  %{ix86} x86_64 aarch64 s390x ppc64le
 
 %description
 BoringSSL is an implementation of the Secure Sockets Layer (SSL) and
@@ -57,8 +59,10 @@ derived from OpenSSL.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 %define _lto_cflags %{nil}

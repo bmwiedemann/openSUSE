@@ -23,4 +23,26 @@
     <comment></comment>
     <requestid>538195</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>88f5837e1a3d7b25e435057ab1c46d3d</srcmd5>
+    <version>5.1.0</version>
+    <time>1575463855</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.1.0
+  - Fully support Python 3
+  - Update internal frameworks
+  - Fix various bugs
+  - Add new option for grouping correlation contexts
+  - Add metadata for rules
+- Bump spec copyright to 2019
+- Remove Python2 support
+  - Python 2 will be removed step by step in all Linux distributions
+  - Rename packages from %{name}-core to python3-%{name}
+- Force deleting __pycache__ directory
+  - It contains pyc files
+- Remove patch prelude-correlator-ez_setup.patch
+  - Fixed upstream
+</comment>
+    <requestid>750891</requestid>
+  </revision>
 </revisionlist>

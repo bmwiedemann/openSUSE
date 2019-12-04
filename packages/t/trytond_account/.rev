@@ -182,4 +182,12 @@
     <comment>boo#1156476</comment>
     <requestid>747419</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>347731abb6bed9d7f82ba7cf8b280f3e</srcmd5>
+    <version>5.0.9</version>
+    <time>1575463880</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 750812 from DocB)</comment>
+    <requestid>752393</requestid>
+  </revision>
 </revisionlist>

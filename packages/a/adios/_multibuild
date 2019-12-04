@@ -1,5 +1,7 @@
 <multibuild>
   <package>openmpi</package>
+  <package>openmpi2</package>
+  <package>openmpi3</package>
   <package>gnu-openmpi-hpc</package>
   <package>gnu-openmpi2-hpc</package>
   <package>gnu-openmpi3-hpc</package>

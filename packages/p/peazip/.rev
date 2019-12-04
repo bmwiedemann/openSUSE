@@ -744,4 +744,12 @@
     <comment>update to 7.0.0</comment>
     <requestid>752833</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7a2a015061c7f2cfb286bc0374876d8f</srcmd5>
+    <version>7.0.0</version>
+    <time>1575463959</time>
+    <user>dimstar_suse</user>
+    <comment>fix 15.2 build</comment>
+    <requestid>753246</requestid>
+  </revision>
 </revisionlist>

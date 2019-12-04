@@ -1,7 +1,7 @@
 #
 # spec file for package python-semver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-semver
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/k-bx/python-semver
 # https://github.com/k-bx/python-semver/issues/136
-Source:         https://github.com/k-bx/python-semver/archive/%{version}.tar.gz
+Source:         https://github.com/k-bx/python-semver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -58,5 +59,6 @@ See also http://semver.org/
 %doc README.rst
 %{python_sitelib}/semver*
 %pycache_only %{python_sitelib}/__pycache__/semver*
+%python3_only %{_bindir}/pysemver
 
 %changelog

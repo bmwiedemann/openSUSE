@@ -86,4 +86,13 @@
   jsc#SLE-8609). (forwarded request 753146 from eeich)</comment>
     <requestid>753147</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e1ce32ed909fdffeaf5b85df5e98e1aa</srcmd5>
+    <version>6.0.9</version>
+    <time>1575464109</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc7 builds for HPC.
+- Add support for gcc8 and gcc9 for HPC (jsc#SLE-7766 &amp;</comment>
+    <requestid>753891</requestid>
+  </revision>
 </revisionlist>

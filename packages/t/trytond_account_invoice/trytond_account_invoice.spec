@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_account_invoice
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2017 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +17,14 @@
 #
 
 
-%define majorver 4.6
+%define majorver 5.0
 Name:           trytond_account_invoice
-Version:        %{majorver}.5
+Version:        %{majorver}.4
 Release:        0
 Summary:        The "account_invoice" module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools

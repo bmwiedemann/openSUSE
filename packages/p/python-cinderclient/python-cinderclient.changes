@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:57:11 UTC 2019 - cloud-devel@suse.de
+
+- update to version 5.0.0
+  - Migrate the functional job to Zuul v3
+  - Add bash completion for groups
+  - Add 'is_public' support in '--filters' option
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Update sphinx dependency
+  - Fix max version handling for help output
+  - Add missed 'Server ID' output in attachment-list
+  - Don't run DSVM tests for doc changes
+  - Fix: Quota update successfully executes with no params
+  - Add transfer-list --sort argument
+  - Drop 'endpoints' and 'credentials' commands
+  - Fix incorrect punctuation
+  - Remove dsvm-functional-identity-v3-only job
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Cleanup the home page
+  - Update master for stable/stein
+  - Drop py35 jobs
+  - Don't quote {posargs} in tox.ini
+  - Change openstack-dev to openstack-discuss
+  - Raise API max version for Rocky updates
+  - Fix bash_completion cache path
+  - Remove bash-completion calls from base.py
+  - Drop support for OS_TENANT_NAME and OS_TENANT_ID
+  - Drop support for --allow-multiattach
+  - Bump openstackdocstheme to 1.20.0
+  - Re-enable shell UUID completion cache
+  - Handle auth redirects
+  - More shell completion cache additions
+  - Add custom CA support for get_server_version
+  - Fix shell upload-to-image with no volume type
+  - Fix incorrect use of flake8:noqa
+  - Remove promote/reenable replication
+  - Remove i18n.enable_lazy() translation
+  - Flag safe usage of sha1 w/ #nosec
+  - Fix: cinder group-list not working with non-admin user
+  - OpenDev Migration Patch
+  - Enable warnings-as-error for doc builds
+  - Autonegotiate API version for shell
+  - Add Python 3 Train unit tests
+  - Drop support for --sort_key and --sort_dir
+  - Add release note for major version bump
+  - Replace openstack.org git:// URLs with https://
+  - Optional filters parameters should be passed only once
+  - Remove some old info from README
+  - Add support for backup user ID
+  - Use openstack-python3-train-jobs for python3 test runtime
+  - Fix doc build error
+  - Update api-ref location
+  - Switch to the new canonical constraints URL on master
+  - Tests: Don't write bash-completion cache files
+  - Correct discover_version response
+  - Change cache uniqifier from using md5 to sha-1
+  - Update docs to refer to PROJECT instead of TENANT
+  - Remove py35 from setup.cfg
+  - add python 3.7 unit test job
+  - Remove nonexistent job from gate
+  - Drop use of git.openstack.org
+  - Change PDF file name
+  - Raise API max version for Stein updates
+  - Add support for building pdf documentation
+  - Drop support for Cinder v1 API
+  - Add dependency on requests lib
+  - Add Python 3.6 classifier to setup.cfg
+  - Remove the hard-coded version number.
+  - Change bash completion dir permissions to 0750
+
+-------------------------------------------------------------------
 Tue Jun 11 06:16:28 UTC 2019 - cloud-devel@suse.de
 
 - update to version 4.2.0

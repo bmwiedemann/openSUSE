@@ -33,4 +33,17 @@ To run it, you have to install prelude-lml from SR 42349.</comment>
     <comment>Bump to Prelude-LML Rules 4.0.0</comment>
     <requestid>540754</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03fae95ef992764286ac2e49e04a8405</srcmd5>
+    <version>5.1.0</version>
+    <time>1575463764</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.1.0
+  - Add ModSecurity rules
+Add patch:
+  - prelude-lml-rules-fix_shebang.patch
+    - OpenSuse do not use &quot;env&quot; with &quot;perl&quot; in shebang
+</comment>
+    <requestid>744329</requestid>
+  </revision>
 </revisionlist>

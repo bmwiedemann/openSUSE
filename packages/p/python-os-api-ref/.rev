@@ -110,4 +110,26 @@
 - added 0001-Add-support-for-Sphinx-2.0.patch</comment>
     <requestid>713949</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ddcff5919d91cdda625c05ea9dc59e91</srcmd5>
+    <version>1.6.2</version>
+    <time>1575463679</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-Add-support-for-Sphinx-2.0.patch
+- removed 0001-Fix-microversion-test-handle-different-HTML-renderin.patch
+- removed 0001-Add-support-for-Sphinx-v2.1.patch
+- update to version 1.6.2
+  - Add support for Sphinx 2.0
+  - Update hacking version
+  - Generate stable targets rather than random
+  - Update Testing for Train
+  - Add support for Sphinx v2.1
+  - Add Python 3 Train unit tests
+  - Remove support for py34
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Fix microversion test: handle different HTML renderings
+  - trivial: Remove unused attribute
+  - OpenDev Migration Patch</comment>
+    <requestid>736635</requestid>
+  </revision>
 </revisionlist>

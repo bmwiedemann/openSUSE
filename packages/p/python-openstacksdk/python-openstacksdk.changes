@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Thu Oct 31 15:29:11 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add 0001-Increase-test-timeout-for-2-tests-in-TestImageProxy-.patch
+  Increases test timeouts to fix unstable tests during build
+
+-------------------------------------------------------------------
+Wed Oct  9 12:55:21 UTC 2019 - cloud-devel@suse.de
+
+- removed 0001-baremetal-Add-support-for-mkisofs-and-xorrisofs-for-.patch
+- removed 0001-add-python-3.7-unit-test-job.patch
+- update to version 0.36.0
+  - Fix image create with tags
+  - Handle oslo.config exceptions in from_conf
+  - baremetal: raise more specific ResourceFailure in wait_for_* methods
+  - Adding dns_domain parameter into create_network
+  - Support deleting all routes in update_router
+  - DRY test_connection
+  - Return None from get_server_by_id on 404
+  - Replace nodepool func jobs
+  - Add support for generating form-post signatures
+  - Update master for stable/stein
+  - Properly convert baremetal fields to server-side values
+  - Actually pass on network_data when building configdrive
+  - Add support for global_request_id
+  - baremetal.configdrive: tolerate user_data as a string
+  - Add support for vendor hooks
+  - Cap sphinx for py2 to match global requirements
+  - Allow replacing service implementation
+  - Fix some typos
+  - Fix typo for subnet.py
+  - Link to baremetal API reference from patch_node
+  - Allow limiting Connection service_types from oslo.config
+  - Add a fields meta_data to result of Senlin API
+  - Make PATCH a first class operation and support it for baremetal
+  - Switch cloud layer to use proxy for DNS
+  - Remove Accept header with empty value for HEAD and DELETE requests
+  - Bump keystoneauth1 minimum to 3.16.0
+  - Enable ansible module test for keypair to check return data
+  - Return empty lists for resources if neutron doesn't exist
+  - Update compute.server resource
+  - Remove now unused task_manager file
+  - Fix image deletion with tasks_api enabled
+  - Expand on a brief error message
+  - Add ability to provide qos_policy_id for port
+  - Update betacloud vendor entry
+  - Use Resource layer in cloud for SecurityGroups of server
+  - Add set-boot-device to baremetal
+  - Expose locked status for Server
+  - Move Orchestration methods into Proxy
+  - add python 3.7 unit test job
+  - Add strict_proxies option for Connection
+  - Update Limestone Networks vendor config
+  - Adds missing "params" attribute for creating a Mistral workflow execution
+  - Add support for all_tenants in OpenStackInventory
+  - Revert "Revert "Replace TaskManager with a keystoneauth concurrency""
+  - Add support for fields in baremetal get_* resources
+  - Pin to latest os-service-types
+  - Add floating IP port forwarding related methods
+  - Make factory for a CloudRegion from CONF objects
+  - Replace catalog-v3.json with keystoneauth fixture
+  - Add 'tag' support to compute with supported microversion
+  - Use Resource layer for network SecurityGroups
+  - baremetal-introspection: fix passing a Node to start_introspection
+  - Add access alias (aka) for the resource attributes
+  - Support Proxy-specific region_name
+  - Correct endpoint_override discovery for service with dashes in their type
+  - Move the history lesson into the docs
+  - Fix dns return values
+  - Workaround older octavia version discovery
+  - OpenDev Migration Patch
+  - Uncap jsonschema
+  - Support for the baremetal introspection service
+  - Skip attaching FloatingIP if it is already attached
+  - Increase randomness in ZONE creation
+  - force specify project_id during create Sg_rule may cause issue
+  - Add header to auto-delete image upload objects
+  - Remove and rearrange object bonged proxy tests
+  - Strip two more accept headers from object-storage
+  - Specify store when importing an image
+  - Split OpenStackCloud into reasonable pieces
+  - Fix DeprecationWarning for using logger.warn
+  - Fix bm tests: sort lists being compared
+  - Remove outdated devstack section from docs
+  - Cleanup split of openstackcloud
+  - Fix invalid assert state
+  - Rework statistics reporting
+  - Add node traits support to baremetal
+  - bug: avoid unnecessary object meta prefix
+  - from_conf: fix handling service names with dashes
+  - baremetal: Add support for mkisofs and xorrisofs for configdrive
+  - fixing timing
+  - Collect request stats
+  - Use Resource layer for compute KeyPairs
+  - Continue refactoring of the image
+  - baremetal: allow updating name and extra fields of an allocation
+  - Bail earlier on a version mismatch for a supported service
+  - Clarify error if no version can be found
+  - Deduplicate next-page URL's query params
+  - Add CloudRegion helper method for arbitrary endpoints
+  - Fix wait_for_server docstring
+  - Move pep8 requirements in to test-requirements
+  - Repair masakari FT
+  - Removing region La1 from the list of regions.
+  - Fix discovery cache sharing
+  - Add image.stage methods
+  - Minor fixups from from_conf changes
+  - Can't create a metadata named key, clear, delete
+  - Fix README example for cloud layer
+  - Use Resource layer for the compute Hypervsors and Images
+  - baremetal: implement the correct update of the maintenance_reason field
+  - Add logger to Proxy object
+  - docs: Add simplified CLI parser docs
+  - Deprecate ServerDetails class
+  - Retry large object manifest upload
+  - Initalize pool_executor so close works
+  - Collapse OpenStackSDKAdapter into Proxy
+  - Validate that connect_as connects as the project
+  - Allow deeper levels of nesting for pdf builds
+  - Skip most service_description for unknown services
+  - Rationalize endpoint_for and get_endpoint_from_catalog
+  - Add unit tests for connection.add_service
+  - Use Resource layer for next compute methods
+  - Update links
+  - Volume.Backup restore fixes
+  - Add proxy API reference to baremetal user guide
+  - Extract image download method into a mixin
+  - Use Resource layer for compute AZ and Aggregates
+  - Add Python 3 Train unit tests
+  - Do not disregard tags when updating stacks
+  - Set xenapi_use_agent to "False" instead of false
+  - Replace use of log.warn with log.warning
+  - Support skipping unknown QP
+  - Support microversion 2.61 for nova flavors
+  - Minor refactor cleanup of _make_proxy
+  - Move set_temp_url_key logic into resource objects
+  - Add release note for new disable service functionality
+  - Get rid of unused _OpenStackCloudMixin.get_region
+  - Try to fix the masakari CI job
+  - Create runtime descriptor for new service
+  - added support for binding:profile parameter in create_port/update_port
+  - Replace openstack.org git:// URLs with https://
+  - Avoid unnecessary object meta prefix in proxy
+  - Update api-ref location
+  - URL encode swift objects endpoints
+  - Update baremetal to use proxy logger
+  - Add "name" filter in "list" call when retrieving a single register
+  - Fix AttributeError bug when creating nested stacks
+  - Use auth_url as identity endpoint when not project scoped
+  - Finish updating links to point to opendev
+  - Add 'node' attribute to baremetal Allocation
+
+-------------------------------------------------------------------
 Fri Apr 12 04:33:52 UTC 2019 - cloud-devel@suse.de
 
 - added 0001-add-python-3.7-unit-test-job.patch

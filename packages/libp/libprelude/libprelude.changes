@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 25 07:00:00 UTC 2019 - thomas.andrejak@gmail.com
+
+Bump version 5.1.1
+  - Update internal dependencies (SWIG, ...)
+  - Better support for unicode
+  - Fully support Python3
+  - Better features for debugging
+  - Fix various bugs
+
+- CPP Soname bump 8 to 12
+- Add patchs:
+  - libprelude-fix_awk_error.patch
+    - Support of recents awk versions
+  - libprelude-fix_gtkdoc_1.32.patch
+    - Support of recents gtkdoc versions
+  - libprelude-fix_py38.patch
+    - Add support for Python3.8
+- Remove patch:
+  - libprelude-disable_gnulib_test_lock.patch
+    - Fixed upstream
+- Remove Python 2 support
+  - Python 2 will be removed step by step in all Linux distributions
+
+-------------------------------------------------------------------
 Fri Mar 01 07:00:00 UTC 2019 - thomas.andrejak@gmail.com
 
 Bump version 5.0.0

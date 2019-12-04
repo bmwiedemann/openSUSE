@@ -1,0 +1,56 @@
+From 7eac8beffeb935de5a2fdd65656d8cb500b0abda Mon Sep 17 00:00:00 2001
+From: Project Nayuki <me@nayuki.io>
+Date: Fri, 9 Aug 2019 23:00:13 +0000
+Subject: [PATCH] Updated C and C++ makefiles to exclude warnings and
+ sanitizers by default, instead recommending extra flags for manually doing a
+ diagnostic/debug build.
+
+---
+ c/Makefile   | 11 +++++------
+ cpp/Makefile | 11 +++++------
+ 2 files changed, 10 insertions(+), 12 deletions(-)
+
+diff --git a/c/Makefile b/c/Makefile
+index 99f926b..fd0c367 100644
+--- a/c/Makefile
++++ b/c/Makefile
+@@ -28,12 +28,11 @@
+ # - CC: The C compiler, such as gcc or clang.
+ # - CFLAGS: Any extra user-specified compiler flags (can be blank).
+ 
+-# Mandatory compiler flags
+-CFLAGS += -std=c99
+-# Diagnostics. Adding '-fsanitize=address' is helpful for most versions of Clang and newer versions of GCC.
+-CFLAGS += -Wall -fsanitize=undefined
+-# Optimization level
+-CFLAGS += -O1
++# Recommended compiler flags:
++CFLAGS += -std=c99 -O
++
++# Extra flags for diagnostics:
++# CFLAGS += -g -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -fsanitize=undefined,address
+ 
+ 
+ # ---- Controlling make ----
+diff --git a/cpp/Makefile b/cpp/Makefile
+index 858a1bf..1d32943 100644
+--- a/cpp/Makefile
++++ b/cpp/Makefile
+@@ -28,12 +28,11 @@
+ # - CXX: The C++ compiler, such as g++ or clang++.
+ # - CXXFLAGS: Any extra user-specified compiler flags (can be blank).
+ 
+-# Mandatory compiler flags
+-CXXFLAGS += -std=c++11
+-# Diagnostics. Adding '-fsanitize=address' is helpful for most versions of Clang and newer versions of GCC.
+-CXXFLAGS += -Wall -fsanitize=undefined
+-# Optimization level
+-CXXFLAGS += -O1
++# Recommended compiler flags:
++CXXFLAGS += -std=c++11 -O
++
++# Extra flags for diagnostics:
++# CXXFLAGS += -g -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -fsanitize=undefined,address
+ 
+ 
+ # ---- Controlling make ----

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 23 19:31:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.1
+  * Fix quickplay campaigns being auto saved
+  * Fix broken animated score counter in debrief if score was
+    negative
+  * Fix red doors drawn as grey doors
+  * Fix ammo count drawn under ammo gauge
+  * Fix gun pickups visible even when out of sigh
+  * Fix spall particles excessive speed when hit by fast bullets
+  * Fix enemies dropping detonator weapon in AI Insurgency II
+  * Fix NPC chatter visible even when out of sight
+  * Fix NPC chatter frequency config
+  * Fix NPC chatter visible in menu backgrounds
+  * Fix map drawn outside automap area
+  * Improve sprites with palette recoloring
+
+-------------------------------------------------------------------
+Fri Nov  1 21:24:26 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.0
+  Release highlights since 0.6.7:
+  * New GUI and Special Effects
+  * Hitscan trails and Superhot(tm) mode
+  * Full screen fixes and gun swapping
+- Drop not longer needed patch:
+  * cdogs-sdl-buildfix.patch
+
+-------------------------------------------------------------------
 Mon Jun 18 07:11:36 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.6.7

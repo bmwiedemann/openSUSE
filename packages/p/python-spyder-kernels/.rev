@@ -140,4 +140,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>723354</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>02652cd8a4935b5f7d552ee8fecc8f13</srcmd5>
+    <version>0.5.1</version>
+    <time>1575464157</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new testing dependency python*-flaky to fix tests and build.
+</comment>
+    <requestid>753923</requestid>
+  </revision>
 </revisionlist>

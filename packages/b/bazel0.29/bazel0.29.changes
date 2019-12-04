@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:31:26 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Add patch which fixes build on s390x architecture:
+  * 0002-fix-build-for-s390x.patch
+
+- s390x: build with Java 11, adapt Java stack/heap
+
+-------------------------------------------------------------------
+Mon Dec  2 11:17:18 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- add _constraints to fix build on s390x
+
+-------------------------------------------------------------------
 Wed Nov 27 09:06:58 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - revert aarch64 build workarounds, underlying problem has been fixed (bsc#1138529)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tld
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tld
-Version:        0.9.6
+Version:        0.9.8
 Release:        0
 Summary:        URL top level domain (TLD) extraction module
 License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
 Group:          Development/Languages/Python
-Url:            https://github.com/barseghyanartur/tld
+URL:            https://github.com/barseghyanartur/tld
 Source:         https://files.pythonhosted.org/packages/source/t/tld/tld-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip_internet_tests.patch
 Patch0:         skip_internet_tests.patch

@@ -1,0 +1,3183 @@
+-------------------------------------------------------------------
+Wed Sep 11 08:20:56 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 5.7
+- Film Negative tool, for easily developing raw photographs of film negatives.
+- Support for reading “rating” tags from Exif and XMP, shown in the File Browser/Filmstrip using RawTherapee’s star rating system.
+- Hundreds of bug fixes, speed optimizations and raw format support improvements
+
+-------------------------------------------------------------------
+Sat Apr 20 21:09:30 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 5.6
+- New features since 5.5
+* Pseudo-HiDPI support, for a smooth and sharp user interface regardless of screen size. 
+  Pseudo-HiDPI mode is disabled by default, enable it in Preferences > General > Appearance. 
+  Scaling in RawTherapee depends on font size, DPI and display scaling. 
+  While scaling has been tested to work well in Windows, Linux and macOS,
+  there are some macOS display modes which are incompatible with it,
+  specifically those modes suffixed by "(HiDPI)" in macOS Display settings. 
+  Some versions of macOS (10.14.*) seem to not list any modes, in which case the user must just give it a try.
+* Ability to move tools to a new Favorites tab, http://rawpedia.rawtherapee.com/Favorites_Tab
+* "Unclipped" processing profile, to make it easy to save an image while
+  preserving data across the whole tonal range, http://rawpedia.rawtherapee.com/Unclipped
+* User-adjustable tiles-per-thread settings in Preferences > Performance,
+  for users who want to find optimal values for their system. The default value of 2 tiles-per-thread performs best overall.
+* Hundreds of speed optimizations, bug fixes, and overall improvements. 
+
+-------------------------------------------------------------------
+Mon Dec 17 22:37:48 UTC 2018 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 5.5
+- New features since 5.4
+* Filter to remove striping artifacts caused by Phase Detection Auto Focus (PDAF) as seen in Sony cameras,
+  and to remove banding artifacts caused by Nikon's too-aggressive in-camera PDAF correction.
+  These are available for any camera which has a PDAF entry in camconst.json, currently:
+  Nikon Z 6, Nikon Z 7, Sony DSC-RX1RM2, Sony ILCE-6000, Sony ILCE-6300, Sony ILCE-6500, Sony ILCE-7M3,
+  Sony ILCE-7RM2, Sony ILCE-7RM3, Sony ILCE-9
+* Ability to specify custom working color spaces through the workingspaces.json file.
+* Unbounded processing - allows you to decide whether out-of-gamut colors should get clipped.
+* Improved support for Canon mRaw format variants.
+* New Shadows/Highlights tool (replaced previous one).
+* Contrast threshold mask which divides an image into areas of high and low detail,
+  allowing the effect of certain tools to be focused where it matters most and to mitigate the effect
+  on areas where it would be undesirable, for example having the Sharpening tool affect only the in-focus
+  subject without affecting the out-of-focus background. Available for:
+  Sharpening, Post-Resize Sharpening, Microcontrast, Demosaicing
+* Dual-demosaic algorithms, making use of the new contrast threshold mask, allowing one to use a combination
+  of demosaicing algorithms where one is best for details and the other best for plain areas.
+* New color toning methods:
+  Grid, allowing you to separately tone the shadows and highlights using two points on a simple color grid.
+  Regions, allowing you to tone based on any number of masks. Supports functions from the American Society of Cinematographers 
+  Color Decision List (ASC CDL).
+* Resizable main histogram with scaling modes: Linear, Log, Log-Log
+  The log scales can be adjusted by click-dragging the mouse sideways inside the histogram area.
+* Support for Blackmagic and Canon Magic Lantern lj92 encoded files.
+* Allows you to specify how many border rows/columns to discard during demosaicing - those who shoot raw video at a standard resolution
+  such as 1920x1080 will appreciate being able to preserve the dimensions.
+* New Soft Light tool which enhances contrast and saturation by emulating the effect of blending an image with a copy of itself in "soft light" blending mode in GIMP.
+* The Resize tool allows you to specify whether you want it to upscale or only downscale.
+* New icon and cursor theme.
+* ICC
+* The bundled ICC profiles have been re-generated, and now include ICC v2 and v4 variants.
+* If your screen's resolution is such that not all icons fit in a toolbar, you can now scroll the toolbar using the mouse scroll-wheel.
+* New "Flexible" tone curve type. A characteristic of the cubic spline curve (renamed from "Custom" to "Standard") 
+  is that editing one node could have a huge impact on what happens to the curve in relation to the other nodes.
+  The new "Flexible" centripetal Catmull–Rom spline curve allows you to make adjustments to any part of the curve with little impact on the other parts.
+* Allow saving both floating-point and integer type files at both 16-bit and 32-bit precision from RawTherapee GUI and CLI.
+* Improved lensfun chromatic aberration correction.
+* The raw chromatic aberration correction tool can now run in several iterations, and gained a feature to avoid introducing a color shift which could result from correcting chromatic aberration before demosaicing.
+* Certain sliders now operate on a logarithmic scale, allowing for a meaningful response over large ranges.
+* Dedicated "Reset" button in Crop tool.
+* Support for new cameras, and new input color profiles.
+* Speed enhancements and bug fixes, for a total of over 1300 commits.
+
+-------------------------------------------------------------------
+Wed Mar 21 20:45:21 UTC 2018 - marcin.bajor@gmail.com
+
+- Update to 5.4
+- New features since 5.3
+* New default processing profiles, now the default look for raw photos closely matches the out-of-camera look with regard to tones and includes lens distortion and vignetting correction.
+* New histogram matching tool, to have RawTherapee automatically adjust the image for you to match the out-of-camera look with a single click of a button.
+* New HDR Tone Mapping tool to compress the light in scenes with a high dynamic range, allowing you to show details in both shadows and highlights in a realistic way.
+* New Local Contrast tool to boost clarity using a simple interface.
+* New color toning method L*a*b* Color Correction Grid.
+* New RCD demosaicing algorithm to minimize artifacts even with artificial lighting and strong chromatic aberration.
+* New thumbnail overlay icons in the File Browser and Filmstrip to help you distinguish normal images from HDR and Pixel Shift ones.
+* Added support for showing out-of-gamut areas based on the output profile.
+* Added support for reading and writing metadata and ICC profiles to and from PNG images.
+* Added support for processing Sony Pixel Shift ARQ raw files - make sure that the ARQ extension is enabled in Preferences > File Browser > Parsed Extensions.
+* Create Sony ARQ raw files using https://github.com/agriggio/make_arq
+* Added support for saving 32-bit floating-point TIFFs clamped to [0;1].
+* Added profiled chromatic aberration correction support using Lensfun.
+* More tools now have an on/off switch.
+* The user interface is cleaner, with all power-house tools moved into a new "Advanced" tab to prevent slider-shock to newcomers.
+* The Metadata tab now lets you choose whether you want to copy metadata unchanged, edit metadata or strip metadata when saving images. Now you can also make metadata changes in batch mode.
+* The choice of whether the main histogram should display information using the working profile or the output profile is now available from the Editor tab's top toolbar.
+* The Crop tool's aspect ratio now defaults to that of the image, and RawTherapee automatically zooms-to-fit the crop once it's placed.
+* RGB input-type ICC profiles can now be used as output profiles.
+* The saved reference image for profiling (created from within the Color Management tool) now contains metadata.
+* PNG and compressed TIFF images make use of better compression.
+* Shortcut key changes: Zoom-to-fit the crop using "f", fit the whole image using "Alt+f".
+
+-------------------------------------------------------------------
+Sat Sep 30 21:02:42 UTC 2017 - marcin.bajor@gmail.com
+
+- Update to 5.3
+- New features since 5.2
+* CIECAM02 enhanced with control over the scene and viewing conditions.
+* CIECAM02-friendly "Average Surround" color theme and L* middle gray preview background color, takes into account human vision and color appearance with regard to the surrounding color.
+* Manually save the collapsed/expanded state of tools.
+* Lensfun support, for automatic (and manual) profiled lens correction.
+* ACES, DCI-P3 Theater and DCI-P3 D65 output color profiles.
+* Numerous speed optimizations and bug fixes. 
+
+-------------------------------------------------------------------
+Sun Jul 23 22:17:57 UTC 2017 - marcin.bajor@gmail.com
+
+- Update to 5.2
+- New Features since 5.1
+* GIMP plugin to open raw images in GIMP using RawTherapee - see RawPedia.
+* "Remote" mode (-R command line option) to allow opening images ("Open with" or passed as arguments) in a full-fledged instance. The -R mode allows you to open an image in an already-running instance of RawTherapee, if that instance was also started using -R. Opening an image without the -R option will open RawTherapee in "no-File-Browser" mode which lacks the File Browser and Queue tabs, and the Preferences button.
+* Added DCP profiles for accurate color for: FUJIFILM X-T20
+- Most significant improvements
+* 4x speedup of the Microcontrast tool.
+* CIECAM02 curves no longer cause a sudden jump in brightness.
+* Improved stability in METM (Multiple Editor Tabs Mode) in Windows.
+* Improvement to the MEOW (Multiple Editor Tabs in Own Window) mode.
+* LCP files lead to better results.
+* Large speedup and stability improvement when opening folders containing hundreds or thousands of images.
+* Many memory leaks fixed.
+* Pixel Shift speedups, reduction of memory requirements, and motion mask preview accuracy improved.
+* The preview of the Tone Mapping tool is now much more accurate at any zoom level. 
+
+-------------------------------------------------------------------
+Thu Jul 13 18:26:54 UTC 2017 - olaf@aepfle.de
+
+- Build with gccN, fix build failure for Leap
+
+-------------------------------------------------------------------
+Tue May 16 05:26:23 UTC 2017 - marcin.bajor@gmail.com
+
+- Update to 5.1
+- Pentax Pixel Shift support, to automatically combine sub-images from a Pentax Pixel Shift raw file into one high quality image.
+- Support for processing any sub-image from raw formats which support multiple images. Currently up to 4 sub-images supported.
+- Dynamic Profile Creator to automatically generate per-image custom processing profiles by merging existing processing profiles based on image metadata (Exif).
+- New command-line executable "rawtherapee-cli(.exe)" to reduce startup time for command-line operations.
+- HaldCLUT paths are now relative to the HaldCLUT folder as set in Preferences. This enables you to share PP3 files easier.
+- Auto White Balance now has a Temperature Bias, letting you make the automatic temperature warmer or cooler.
+- LCP correction works for raw and non-raw files.
+- LCP distortion correction support for fisheye lenses.
+- Certain tools are now hidden or disabled if the loaded image does not support them, e.g. the tools in the Raw tab are disabled when working with a non-raw file.
+- New zoom levels for the main preview in the Editor tab.
+- New Fast Export option to downscale the image before processing, to increase speed.
+- Custom crop ratio.
+- Automatic monitor profile detection also in Linux.
+- Lens information support added for Panasonic cameras.
+- Support for lossy DNG files.
+- Support for compressed Fujifilm Bayer raw files.
+- Support for compressed X-Trans raw files.
+- Support for Sigma sd Quattro DNG raw files.
+- Added DCP profiles for accurate color for:
+* FUJIFILM X100S
+* LG Mobile LG-H815 (LG G4)
+* NIKON D300
+* NIKON D300
+* NIKON D5600
+* NIKON D80
+* NIKON D810
+* OLYMPUS E-M1MarkII
+* Panasonic DMC-GX85 
+
+-------------------------------------------------------------------
+Fri Feb  3 23:03:30 UTC 2017 - marcin.bajor@gmail.com
+
+- Update to version 5.0-r1 
+- astyle'd rtgui/options.cc to help merge
+- Updated splash screen SVG + PNG.
+- Revision of CMake and related files to support meaningful git versions within our extensive use of branches and development builds. #3628
+- Fix deprecated Glib::RecMutex on Windows + remove useless GThreadEnter
+- Removed "std=c++11" from release notes.
+- Fix call to `abs()` with `unsigned int` (fixes #3339, #3652)
+- Added back the TooWaBlue theme + images for GTK+ 3.16-3.18.
+- TooWaBlue theme bumped to 2.42, closes #3651
+- Added newline into tooltip PREFERENCES_OUTDIRTEMPLATEHINT
+- Translation files updated. 
+
+-------------------------------------------------------------------
+Mon Jan 23 22:05:16 UTC 2017 - marcin.bajor@gmail.com
+
+- Update to version 5.0.0
+- Fix issue #3590
+- Generated new DCP input profiles using dcamprof 1.0.4
+- Update Czech Translation
+- External editor polished and implements ShellExecute, closes #3522
+- Added FUJIFILM X-Pro2 DCP, #3269
+- Added OLYMPUS E-M10 DCP from
+  https://discuss.pixls.us/t/last-call-for-color-target-shots-for-inclusion-in-rawtherapee-5/3080/10
+- Added PENTAX K-1 dual-illuminant DCP from Hombre
+- Added NIKON D750 and YI TECHNOLOGY M1 daylight DCPs, dual-illuminant to follow,
+  https://discuss.pixls.us/t/last-call-for-color-target-shots-for-inclusion-in-rawtherapee-5/3080/12
+- Added RICOH PENTAX K-1 dual-illuminant DCP, no issue, raw files from Hombre
+- Removed "rtdata/dcpprofiles/PENTAX K-1.dcp" as it had an incorrect filename and was replaced by a better DCamProf 1.0.4 version "RICOH PENTAX K-1.dcp"
+- Removed NIKON D750.dcp and Nikon D750.dcp, #3615
+- Added new NIKON D750.dcp, #3615
+- Segfault when selecting GIMP installation directory in Preferences (Windows), fixes #3534
+- issue 3598 and 2289 - util functions to determine file types by ending
+- Clean-ups for #3616
+- Updated French strings + bugfix in rtgui/retinex.cc (no issue)
+- Solving issue #3506 (bugfix from mmmtok)
+- Better translation of DCP's LUT in French
+- Added NIKON D600 dual-illuminant DCP,
+  https://discuss.pixls.us/t/last-call-for-color-target-shots-for-inclusion-in-rawtherapee-5/3080/38
+- Added NIKON D810 D65 WL=15700 DCP,
+  https://discuss.pixls.us/t/last-call-for-color-target-shots-for-inclusion-in-rawtherapee-5/3080/35
+- Updated FUJIFILM X-Pro2 dual-illuminant DCP, closes #3269
+- Minimum crop size 1x1, closes #3619, closes #3620
+- Added SONY SLT-A99V daylight DCP, no issue.
+- Added Canon EOS 20D daylight DCP, no issue.
+- Added Canon EOS 40D daylight DCP, no issue.
+- Added Canon EOS 50D daylight DCP, no issue.
+- Added Canon EOS 7D daylight DCP, no issue.
+- Added Canon EOS 7D Mark II daylight DCP, no issue.
+- Small bugfix in rtgui/retinex.cc, no issue
+- Themes updated including stuck-scrollbar workaround by TooWaBoo, closes #3605
+- Fix #3619 and some minor clean-ups 
+
+-------------------------------------------------------------------
+Fri Jan 13 21:30:48 UTC 2017 - marcin.bajor@gmail.com
+
+- Crash on reading floating point demosaiced DNG files, fixes #3600
+- Crash when opening JPEG file with corrupted metadata, fixes #3602
+- Limited exif user comment to 65535 chars
+- Pentax K1 file in APS-C mode has wrong raw crop, fixes #3519
+- Build on Linux broken due DCP profile filename typo, fixes #3603
+
+-------------------------------------------------------------------
+Sun Jan  8 19:42:10 UTC 2017 - marcin.bajor@gmail.com
+
+- Fixed wrong tooltip in IPTC panel, fixes #3569
+- Deutsch updated by TooWaBoo, closes #3584
+- Updated SONY ILCE-6000.dcp, closes #3220
+- Turn icon buttons into label buttons, language strings updated. #3571 (#3580)
+- Translation updates
+- macOS fix from #3589
+- IPTC strings updated to version 1.2
+- Update language strings after merge with IPTC Core 1.2 changes, #3581
+- Prevent TravisCI spamming join/part in IRC.
+- Guard `processor` in `editorpanel.cc` (#3578)
+- Deutsch translation updated by TooWaBoo, closes #3596
+- Segfault when opening a folder which contains a 13229 x 57812 jpeg, fixes #3599
+- When opening a folder with a lot of files (about 1000) progress bar in rt and tab label of filebrowser (percentage) are not updated frequently, fixes #3592
+- Crash on reading floating point demosaiced DNG files, fixes #3600
+
+-------------------------------------------------------------------
+Mon Jan  2 13:17:50 UTC 2017 - marcin.bajor@gmail.com
+
+- RawTherapee crashed after opening linear DNG from Sigma SD H Quattro camera in editor. fixes #3559
+- Swedish update by mks9000, closes #3564
+- Deutsch update by TooWaBoo, closes #3561
+- Revamped IPTC tab (issue #3554)
+- Printer profile added in Preferences for soft-proofing
+- Bugfix backported from gtk3 branch, related to OSX printer profile
+
+-------------------------------------------------------------------
+Thu Dec 29 17:42:34 UTC 2016 - marcin.bajor@gmail.com
+
+- camconst.json updates by IliasG #3298 2016-12-26 
+
+-------------------------------------------------------------------
+Tue Dec 27 19:44:03 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix crash with Canon m-raw files when raw crop in camconst.json is defined, #3533
+- CbDL before black and white no preview when changing exposure, fixes #3539
+- Remove intrusive tooltips, issue #3537 (#3538)
+- Review of thumb size defaults, closes #3535
+- Speedup Vignette and Graduated Filter
+- Experiment to prevent var-tracking warning (#3543)
+- Constify `Wavelet` (#3543)
+- Prune unnecessary `Wavelet` members (#3543)
+- Translation strings update.
+- Fix off-by-(-1) in checkRawImageThumb() (#3553)
+- JPEG IJG add missing README, #3549 (#3555)
+- Backporting patch from issue #3446
+- Fix issue #3532 + a memory leak
+
+-------------------------------------------------------------------
+Wed Dec 14 12:37:34 UTC 2016 - marcin.bajor@gmail.com
+
+- Bugfix: RT could crash while displaying Color Pickers (no issue)
+- Fully check thumb data size (#3529) 
+
+-------------------------------------------------------------------
+Wed Dec  7 07:38:38 UTC 2016 - marcin.bajor@gmail.com
+
+- Fixes #3517, build fails when using libcairo 1.15
+- Make `ImageIO` load grayscale JPGs and TIFFs (#3515)
+- Removed some debug message left in code
+
+-------------------------------------------------------------------
+Mon Nov 28 20:17:48 UTC 2016 - marcin.bajor@gmail.com
+
+- rt_splash_5 licence changed to CC-BY-SA 3.0, closes #3511
+- Tone curve histogram ignores DCP tone curve, fixes #3512 
+
+-------------------------------------------------------------------
+Sun Nov 13 20:22:40 UTC 2016 - marcin.bajor@gmail.com
+
+- camconst.json updated by iliasg, #3298
+- Formatting, spelling, grammar and structural changes to camconst.json
+- better support for Pentax K-70 and XiaoYI M1
+- Fixes Preferences > Color Management layout, #3488
+- Fixing issue #3497: "Lockable color picker interacts with info text on image area"
+- Added rtdata/rt_splash_5.svg and png
+- Fix Clang warnings and build failure on OSX 10.12
+- Enabled property of a tool shoot be first in tool group of pp3 file. Was not the case for Retinex. Fixed. No Issue
+- Pentax: ISO > 65535 was reported as 65535 in info dialog
+- Fix some Clang warnings reported by @Partha1b
+- Improve support for Pentax K-1, Olympus E-M1MarkII and Canon G7 X
+- camconst.json formatting fix
+
+-------------------------------------------------------------------
+Sun Oct 30 22:00:15 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix non SSE build failure reported by Marcin, no Issue 
+
+-------------------------------------------------------------------
+Sun Oct 30 20:55:26 UTC 2016 - marcin.bajor@gmail.com
+
+- Cppcheck: some fixes
+- Enhanced ConnectionBlocker class, now used in ToolBar class
+- `clang-tidy` cleanups
+- Czech translation update by mkyral, #3466
+- Removed 3 Noise Reduction tooltips as they were intrusive and/or incorrect, no issue - IRC
+- CbDL badly interacts with Graduated and Vignetting Filter if CbDL is set to 'before Black-and-White', fixes #3473
+- Removed printf relicts from softproofing branch
+- Segfault on EAHD, fixes #3474, kudos to Floessie
+- Fix a bug I introduced some commits ago. Fixes #3476
+- Hotfix for issue #3480.
+- Small fix to Preferences > Default Theme frame, no issue.
+- hphd demosaic : left quarter is not demosaiced correctly, fixes #3485
+
+-------------------------------------------------------------------
+Thu Oct 13 21:33:37 UTC 2016 - marcin.bajor@gmail.com
+
+- Sets Wavelet sub-tools to "off" by default, #3386
+- Deleted clean.sh
+- Removed rtengine/dirpyrLab_equalizer.cc
+- Fixed RT.ico path in WindowsInnoSetup.iss.in 
+
+-------------------------------------------------------------------
+Tue Oct 11 09:56:45 UTC 2016 - marcin.bajor@gmail.com
+
+- Removed non-ASCII characters from code files, closes #3445
+- Moved RT.ico from rtgui into rtdata/icons/
+- Use `get_parse_name()` in `rtgui/dirbrowser.cc` (#3444)
+  This will print the full path and is consistent with the gtk3 branch.
+- Fix non-ASCII characters, fixes #3445
+- Fixes for a lot of issues reported by Cppcheck
+- Lockable color picker
+- Travis Continuous Integration support, using the Ubuntu 14.04 Trusty Tahr environment.
+- Fix crash when toggling Before|After view, by Flössie, fixes #3454
+
+-------------------------------------------------------------------
+Mon Oct  3 09:01:37 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix use-after-free of `ImageArea::mainCropWindow` (#3048)
+- Use same logic to auto select darkframe in gui and engine also for darkframe hotpixels detection
+- Deutsch translation updated by TooWaBoo, closes #3442
+- Fix buffer overflow in dcraw
+- Fix incompatibility with glibmm 2.50 (#3440)
+
+-------------------------------------------------------------------
+Thu Sep 29 14:16:10 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix "FocusDistance*"-EXIF for Canon (#3422)
+- About 15% speedup for function lab2rgb16 which is used when saving 16 bit output
+- camconst.json updated by IliasG, closes #3298
+- Fix Canon EXIF
+- Use full range in `ImageDatas::convertTo<>` (#3429)
+- Added attributions in median.h
+- Fix Denoise - Median tooltip
+- Fix remaining Denoise - Median tooltips (#3360)
+- Reworked Median (NR) wording, updated RawPedia accordingly.
+- Regenerated translation files.
+- Replaced "x" with Floessie's "×".
+- Syncing translation files with gtk3 branch.
+
+-------------------------------------------------------------------
+Tue Sep 13 15:45:50 UTC 2016 - marcin.bajor@gmail.com
+
+- Speedups for B&W conversion
+- Speedups for denoise, fixes #3418
+- Added Canon EOS 5D Mark IV to camconst.json, kudos to IliasG
+- Add full support of c++11 to the Eclipse IDE
+- fixes #3425, A combination of settings in Wavelet's Edge Sharpnes too… 
+
+-------------------------------------------------------------------
+Fri Sep  9 14:45:42 UTC 2016 - marcin.bajor@gmail.com
+
+- Updated links
+  Added link to RawTherapee forum at pixls.us
+  Removed dead link to Michael's code documentation.
+- Avoid possible buffer underrun in ImProcFunctions::Mad and ImProcFunctions::MadRgb
+- Fixing a small glitch in the main cmakefile
+- Fix a crash in denoise
+
+-------------------------------------------------------------------
+Thu Sep  1 14:03:29 UTC 2016 - marcin.bajor@gmail.com
+
+- Bugfix: Options::readFromFile should not reset the options values. They are initialy set in the constructor then should only be updated by each call to this method.
+- RGB Curves Luminosity mode: ~ 40% speedup. Also changed behaviour of r and g curve
+- Enable whole area of magnification windows for moving, fixes #3378
+- Adding new units for the RGB and HSV values in the Navigator tool (below Histogram). Click on one of thes two columns to cycle to a new unit independantly, between [0-1], [0-255], [%]  (Hue stays in degree instead of percent). The current unit is saved in Options for new Editor tabs or between sessions. 
+
+-------------------------------------------------------------------
+Wed Aug 24 20:00:11 UTC 2016 - marcin.bajor@gmail.com
+
+- fixes #3395, unrelated bulk changes cause saturation setting to double its value
+- Fix some ciecam02 issues, fixes ##3380, fixes #3396, fixes #3397
+- Fixed wrong transition curve in ciecam02, fixes #3398
+- Serbian translation updated by gpopac, closes #3402
+- camconst.json updated by IliasG, closes #3298
+- Colourtoning: Speedup and improvement for Automatic Saturation Protection
+
+-------------------------------------------------------------------
+Thu Aug 11 21:28:33 UTC 2016 - marcin.bajor@gmail.com
+
+- Prevents thumbnail race condition, from Floessie in #3304 and fixes #3384
+- Adust buffers to fix potential buffer overruns
+
+-------------------------------------------------------------------
+Tue Aug  2 21:42:20 UTC 2016 - marcin.bajor@gmail.com
+
+- Create ISSUE_TEMPLATE.md
+- Fixes "CIECAM02 causes blue to become black" 
+
+-------------------------------------------------------------------
+Fri Jul 29 20:47:39 UTC 2016 - marcin.bajor@gmail.com
+
+- Simplified OS X GIMP and Photoshop calling code.
+- Simplified OS X GIMP and Photoshop calling code.
+- Nederlands updated by wim ter meer, closes #3390
+- Fixes #3389 - CbDL memleak. 
+
+-------------------------------------------------------------------
+Tue Jul 12 22:31:38 UTC 2016 - marcin.bajor@gmail.com
+
+- Add missing #ifdef __SSE2__, fixes #3382 
+
+-------------------------------------------------------------------
+Tue Jul 12 14:54:54 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix cppcheck performance hints
+- Improve processing time to read camconst.json by almost factor 2. Additionally make it future-proof by reducing O(n²) copying amount in reallocate phase to O(n)
+- Median revision
+- Fix OOB access in ImProcFunctions::MadRgb, fixes #3379
+- Made post-resize sharpening RL radius minimum size consistent with RL radius from main sharpening - 0.40. Removed redundant guiutils.h include.
+- Updated defaults for crop, sharpening and post-resize sharpening. 
+
+-------------------------------------------------------------------
+Thu Jul  7 10:09:40 UTC 2016 - marcin.bajor@gmail.com
+
+- Exif lost when saving compressed tiff from raw on windows builds, fix…
+- Fix segfault when adding files to the currently watched folder
+- Canon EOS-1D mkII raw files are rendered as flat black, fixes #3373
+- Updated help and man page, #3369 
+
+-------------------------------------------------------------------
+Tue Jul  5 12:04:49 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix a warning and a crash
+- Fix buffer overrun writing uncompressed tiff
+- Add RT version to 'Software' tag for uncompressed tiff
+- Disable wrong warning for non Windows builds
+- Remove some top level tags when saving to uncompressed tiff, also simplified generation of 'Software' tag 
+
+-------------------------------------------------------------------
+Sat Jul  2 19:53:12 UTC 2016 - marcin.bajor@gmail.com
+
+- Add milliseconds to queue params file, fixes #3363
+- Preprocess speedup
+- Updated all lens interpreters with data from exiftool-10.20
+- Updated all in /rtexif/ with info from exiftool-10.20
+
+-------------------------------------------------------------------
+Fri Jun 24 18:39:59 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix broken decode for files from Sony DSC-RX1RM2, fixes #3358 
+
+-------------------------------------------------------------------
+Sat Jun 18 19:05:51 UTC 2016 - marcin.bajor@gmail.com
+
+- Speedup for Flat-Field correction, fixes #3253, also introduces changed formatting to switch statements caused by new astyle profile
+- Fix segfault when Flatfield blur radius == 0
+- Fix some compiler warnings
+- Disabled StopWatch
+- Speedup for cr2 decode
+- Speedup for save to 8bit formats (mainly for 8bit tiff and j… 
+
+-------------------------------------------------------------------
+Sun Jun 12 19:11:40 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix dcp race and store
+- Rawtherapee forgets checked Autofill-option, fixes #3332
+- Minor changes to docs, testing something.
+- Fix compile bug, fixes #3340
+- astyle - indent switch blocks.
+- Add some omitted `std::` prefixes in `dcp.cc`
+- Dcp speedup
+
+-------------------------------------------------------------------
+Sat Jun  4 16:39:50 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix missing return value in LensGeometry::doDisableAutoFillIfActive() 
+
+-------------------------------------------------------------------
+Sat Jun  4 14:32:34 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix broken dcp tonecurve and lookup table 
+
+-------------------------------------------------------------------
+Fri Jun  3 20:09:24 UTC 2016 - marcin.bajor@gmail.com
+
+- Disable #pragma omp simd statement for clang builds, fixes #3324
+- RGB curve speedup
+- Fixed special handling of chroma=-100
+- Automatically disable Auto-Fill when enabling LCP Disortion Correction, #1791
+
+-------------------------------------------------------------------
+Wed Jun  1 21:53:49 UTC 2016 - marcin.bajor@gmail.com
+
+- Update to dcraw 9.27
+- Update for camconst.json, kudos to Ilias
+- Fix minor spelling & capitalization 
+
+-------------------------------------------------------------------
+Tue May 24 22:37:26 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix wrong crop for Samsung NX1 and NX500
+- Deutsch update
+- Fix build on Arch 32bit non SSE using gcc-6.6.1, fixes #3305, kudos to mbajor for reporting and to Floessie for providing a fix for the bug
+
+-------------------------------------------------------------------
+Mon May 23 18:26:26 UTC 2016 - marcin.bajor@gmail.com
+
+- Regenerated translation files.
+- Updated camconst.json, #3298
+- Copied poke255_uc implementation from gtk3 into master
+- Small correction to Deutsch file, thanks to hi-tower for the hint 
+
+-------------------------------------------------------------------
+Fri May 20 20:52:26 UTC 2016 - marcin.bajor@gmail.com
+
+- Use "find_program" to search for git executable
+- Fix build warnings
+
+-------------------------------------------------------------------
+Tue May 17 20:55:47 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix wrong condition in Color::transitred
+- Fix std::out_of_range exception with empty HaldCLUT basename
+
+-------------------------------------------------------------------
+Sun May 15 20:45:21 UTC 2016 - marcin.bajor@gmail.com
+
+- Histogram of working space does not show 'gray2C' for gray regions, fixes #3283, fixes #3213, kudos to mmmtok for providing the patch 
+
+-------------------------------------------------------------------
+Sat May 14 12:47:45 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix crash caused by uninitialized variables when using ciecam02 on files without exif data, fixes #3084
+- Retinexgain
+- HaldCLUT cleanups after the dust (#3154) has settled
+
+-------------------------------------------------------------------
+Fri May  6 19:00:07 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix crashes caused by aligned access to unaligned memory in CLUT code, fixes #3154, fixes #3278, fixes #3277 
+
+-------------------------------------------------------------------
+Fri May  6 11:52:48 UTC 2016 - marcin.bajor@gmail.com
+
+- HaldCLUT revision and speedup (kudos to Floessie for this great work)
+- astyle'd rtengine/clutstore.cc
+- Fix buffer overrun in rgbProc()
+- Fix buffer overrun in clutstore.cc
+- Fix buffer overrun when applying HaldCLUT (#3154)
+
+-------------------------------------------------------------------
+Sun May  1 08:51:25 UTC 2016 - marcin.bajor@gmail.com
+
+- Unstable output w/ same PP3 and RAW CA auto-correction when image height % 2 == 1
+- Updated Deutsch by TooWaBoo, #3247
+- Added DCPs: Sony ILCE-6000 #3220, Nikon D7200 #3236, Fujifilm X-T1 #3243.
+- Recreated GNU GPL v3 license file, hopefully fixes #3218
+- Fix #3259, RT fails with ASan
+- Reduce default strength of raw ca-auto-correction
+- small speedup for lut += operator
+- Updated Sony ILCE-6000.dcp, #3220
+- Add working profile Rec2020
+
+-------------------------------------------------------------------
+Thu Apr 21 19:23:04 UTC 2016 - marcin.bajor@gmail.com
+
+- Allow lcp distortion correction for lenses without focal length information (e.g. lenses without chip)
+- Allow lcp vignetting correction for lenses without focal length information (e.g. lenses without chip)
+
+-------------------------------------------------------------------
+Mon Apr 11 19:44:29 UTC 2016 - marcin.bajor@gmail.com
+
+- Extend the limit of the tint slider to 10 for IR
+- Solving issue #3249: "Fit crop to screen doesn't work as expected anymore"
+- Fix crash and freeze opening files with GMCY cfa (e.g. Canon Powershot G1)
+
+-------------------------------------------------------------------
+Fri Apr  8 18:43:59 UTC 2016 - marcin.bajor@gmail.com
+
+- correction for LUT += operator, fixes #3245 
+
+-------------------------------------------------------------------
+Thu Apr  7 21:26:07 UTC 2016 - marcin.bajor@gmail.com
+
+- xtrans speedups 
+- Speedup for getAutoExpHistogram and getAutoWBMultipliers. += operator for lookup tables (handy to sum up per thread built histograms) 
+
+-------------------------------------------------------------------
+Sun Apr  3 12:49:06 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix possible buffer overrun in raw ca correction
+- Try to fix #3132 by making sure every file chooser dialog is given an appropriate parent window.
+- Added DCP profiles for Fujifilm X-E1, X-E2, X-T1 and X-T10 with permission from user cack
+
+-------------------------------------------------------------------
+Sun Mar 20 10:23:25 UTC 2016 - marcin.bajor@gmail.com
+
+- Enhanced edit mecanism
+- Regenerated translation files.
+- Crop borders detection area has been enlarged from 6px to 9px, and the 800% limit bug has been fixed.  Fix issue #3205.
+- Use fabs instead of fabsf in LinEqSolve
+- The pipette mechanism was broken: the created point was not dragged. (no issue)
+- Increased Fast Export's max resize width and height to 10000, closes #3212
+- Speedups for raw false colour suppression
+- Don't demosaic again when changing 'False Colour Suppression Steps
+- Fix uninitialized variable in toolpanelcoord.cc
+- Fix issue #3182: "Preview image jumps around on canvas while zooming"
+- Deutsch updated by TooWaBoo, closes #3227
+- RT won't read width of toolpanel on startup
+- Fix #2388: "Partial Paste still buggy, quite impartial"
+- Speedup for xtrans demosaic
+
+-------------------------------------------------------------------
+Thu Mar 10 21:27:18 UTC 2016 - marcin.bajor@gmail.com
+
+- buildRT script updated in due to project migration to GitHub
+- Enhanced edit mecanism
+- Added Canon EOS 6D DCP
+- About 3x speed for raw false colour suppression
+- Shortened DMG image filename, closes #3162
+
+-------------------------------------------------------------------
+Sat Mar  5 08:27:10 UTC 2016 - marcin.bajor@gmail.com
+
+- Remove unused and uninitialized key 'ThumbImageOffset' from cache
+- Fix #3711 by using the method to clear a combo box which is correct in version 2 and 3 of Gtk+.
+- Reduce start time and memory usage by removing redundant lookup tables and filling remaining lookup tables in parallel. Also replaced all x^(1/3) with std::cbrt
+- Fix #3181 by store the filename which will be unset when the entry is deleted and hence cannot be bound by reference.
+- Added DCPs, closes issue #2989
+- Added new DCPs
+- Adapt Cbdl to B&W tools
+- Speedup and code review for raw ca correction
+- Fix #3191 which was due to a typo when calling atan2 during polar coordinate conversion. 
+
+-------------------------------------------------------------------
+Wed Feb 24 21:48:04 UTC 2016 - marcin.bajor@gmail.com
+
+- Updated OS X scripts and moved OS X and Windows files from rtdata/ to tools/
+- Fix clang compile issue in ipsharpen.cc without losing omp in sharpenHaloCtrl
+- Modified Preview Canvas. Now the image can be shifted off the borders and the 'on preview' geometry can be manipulated outside of the image's domain. This will prepare future enhancement or new features.
+- Added patch for libiconv 1.14 needed for OS X, see issue #3161
+- Fix typo in safe_build_subdir_list, fixes #3160
+- Fix broken windows build
+- Solving issue #3163: "Detail window centres to whole image instead of centre of preview"
+- Fixed old paths in osx scripts and quoted some variables
+- Re-formatted tools/osx/macosx_bundle.sh
+- Add a build-time option to easily enable run-time sanitizers
+- Add build option to enable gprof-based profiling instrumentation.
+- Fix broken build without OpenMP
+- Remove SafeGtk and SafeKeyFile modules
+- Add commented-out line for inclusion of gdb.exe in debug builds, issue #3060
+- Fix Sony LensID issue
+- Fix LensId Issue with Fuji DNG files
+- Clean up the Coord and PolarCoord helper class for the GUI to follow standard practice for values types. 
+
+-------------------------------------------------------------------
+Sat Feb 20 13:25:46 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix wrong initialization in xtrans demosaic 3-pass
+- Fix wrong condition which leads to uninitialized memory access for xtrans files, fixes #3156 
+
+-------------------------------------------------------------------
+Tue Feb 16 21:25:34 UTC 2016 - marcin.bajor@gmail.com
+
+- Recalculate XTrans matrix after cropping by camconst settings, fixes #3110
+- Deutsch translation update by TooWaBoo, closes #3149
+- Fix aligned access to misaligned stack, fixes #3152 
+
+-------------------------------------------------------------------
+Fri Feb 12 06:59:06 UTC 2016 - marcin.bajor@gmail.com
+
+- Try to solve issues found in iplab2rgb, ipwavelet, partialpastedialog and retinex during Coverity scan.
+- Retinex, fix wrong usage of omp
+- Retinex, removed benchmark code
+- Shadows/Highlights Sparmpask, speedup using SSE4 for native builds
+- Retinex, fix calculation of iterative gaussian blur
+- Fix crash opening X-Trans files generated using new firmware, fixes #3137 
+
+-------------------------------------------------------------------
+Sun Feb  7 20:16:05 UTC 2016 - marcin.bajor@gmail.com
+
+- Try to fix #3131 by opening the batch queue CSV file in binary mode to prevent any unwanted implicit text codec conversion on Windows.
+- Fix border und highlight reconstruction issues for Nikon D1x files
+- Remove freeArray2 helper function
+
+-------------------------------------------------------------------
+Thu Feb  4 16:31:38 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix typo in gauss.cc, fixes #3128
+- limit number of file attributes
+- Fix crash when opening a folder containing dng files with corrupted thumbs, fixes #3129 
+
+-------------------------------------------------------------------
+Sun Jan 31 22:27:28 UTC 2016 - marcin.bajor@gmail.com
+
+- Fixed display Transmission in Retinex
+- Made TP_FILMSIMULATION_SLOWPARSEDIR more clear after user feedback.
+- Amaze speedup
+- Fix #3113 by changing the destruction order in the batch queue
+- Fix #3122 by properly splitting out the MD5 part of the data file name
+- Fix some aligned access to unaligned memory
+- Improve handling of slow CLUT parsing
+- Simplify the multiple language manager for better maintainability
+- Updated interface translation files.
+- Clean up thread utilities
+- Added Keywords= to desktop file, closes #3107
+- Added <keywords> section to appdata file, closes #3107 even more than before 
+
+-------------------------------------------------------------------
+Sat Jan 23 22:08:17 UTC 2016 - marcin.bajor@gmail.com
+
+- Newretinex - new features and bug fixes 
+
+-------------------------------------------------------------------
+Wed Jan 20 07:01:09 UTC 2016 - marcin.bajor@gmail.com
+
+- Solving issue 3092: "Profile file names containing german Umlaute are not shown"
+- Cleaned gauss code and included some speedups for RL Deconvolution, Impulse Noise Reduction and Defringe
+- Fix slow parsing of CLUT directory 
+
+-------------------------------------------------------------------
+Sun Jan 17 22:06:19 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix #3104, i.e. the batch queue context menu, by binding a reference instead of the initial value of the  vector.
+- Prevent treeview background color from being changed by the system theme, pull 3102 
+
+-------------------------------------------------------------------
+Tue Jan 12 22:04:05 UTC 2016 - marcin.bajor@gmail.com
+
+- Added Phase One IQ3 backs
+- Close #3064 by fixing an uninitialized pointer in RawImageSource::MSR. 
+
+-------------------------------------------------------------------
+Sat Jan  9 15:31:51 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix a shadowed indirect header dependency in the batch queue to close #3074.
+- Interface language files updated - Retinex is work in progress, do not translate yet.
+- Fix one more usage of the deprecated std::auto_ptr that slipped through due to the order merging pull requests.
+- Issue 3054: apply color management to file browser view 
+
+-------------------------------------------------------------------
+Fri Jan  8 23:46:09 UTC 2016 - marcin.bajor@gmail.com
+
+- Changed adjusterMinDelay, issue #3068
+- Make the compiler require an error instead of a warning during build configuration to close #3070.
+- Added initial support for IQ3 MP100 and 16 bit IIQ files (RawFormat 8)
+- Add some example code using C++11 language features and fix some deprecation warnings
+- Merge use signals and slots instead of listeners 
+
+-------------------------------------------------------------------
+Thu Jan  7 22:47:05 UTC 2016 - marcin.bajor@gmail.com
+
+- Fix enforcing the cache size limit and modernize the cache manager
+- Fix #3067 by including the memory header directly into the cache manager. 
+
+-------------------------------------------------------------------
+Mon Jan  4 06:54:02 UTC 2016 - marcin.bajor@gmail.com
+
+- Retinex add tone-mapping
+- History message fixed for Wavelet's "'After' contrast curve", closes #2992  
+
+-------------------------------------------------------------------
+Sat Jan  2 19:02:36 UTC 2016 - marcin.bajor@gmail.com
+
+- Build failure on ARM and PowerPC architectures, fixes #3053
+- Add easy selection of monitor profile and rendering intent, closes #2744
+- Implement post-resize sharpening in the partial paste dialog, fixes #3051
+- "Apply white balance" off by default, closes #2953 
+
+-------------------------------------------------------------------
+Sat Jan  2 09:25:33 UTC 2016 - marcin.bajor@gmail.com
+
+- Use the LOCAL_SISO* constants to determine the language name on Windows to support systems older than Vista.
+- Fix issue #2905 by using the file chooser's selected instead of the current folder.
+- Also change the currently Windows-specific code path for selecting the output folder in the batch queue.
+- Always enable C++11 support and warn if GCC older than 4.9 is used. 
+
+-------------------------------------------------------------------
+Tue Dec 22 11:02:11 UTC 2015 - marcin.bajor@gmail.com
+
+- Updated all interface translations 
+
+-------------------------------------------------------------------
+Mon Dec 21 08:54:50 UTC 2015 - marcin.bajor@gmail.com
+
+- Expose force the old C++ ABI as a build time flag.
+- Delete COMPILE.txt
+- Update README.md
+- Delete WindowsEnvironmentSetup.html
+- Updating the path of Inkscape/64 on Windows
+- Fixes #3003 Detect pango-querymodules version from Homebrew on OS X
+- Close #2964: Fix Segmentation fault in rtengine::processImage due to crop
+- Factor out the three thumbnail browser selection modes without changing their behaviour.
+- Try to refactor the behaviour of the thumb browser selection modes adding support for shift-and-control range-selection to select several independent ranges.
+- Fix the number of files displayed in the file browser tab title being wrong after removal of a file by an external actor.
+
+-------------------------------------------------------------------
+Sat Dec 19 11:00:49 UTC 2015 - marcin.bajor@gmail.com
+
+- Close #3025 by fixing the fully defining the original selection function.
+
+-------------------------------------------------------------------
+Fri Dec 18 23:13:34 UTC 2015 - marcin.bajor@gmail.com
+
+- Segfault in Denoise Auto Multizone mode when smoothing set to max in preferences, fixes #3022
+- Extend the file browser so that it will only show the original image if several files of different formats are present.
+- Add a button to filter the original files to the file browser.
+- Add buttons to the file browser preferences to make the list of extensions user-sortable.
+- Import icons provided by Beep6581 into source tree.
+- Use the provided images for the filter-original button and the parsed extensions list and extend the filer-original tool tip.
+
+-------------------------------------------------------------------
+Sun Dec 13 18:29:20 UTC 2015 - marcin.bajor@gmail.com
+
+- Added SSE2 flags for x86 build
+
+-------------------------------------------------------------------
+Wed Dec  9 13:15:49 UTC 2015 - marcin.bajor@gmail.com
+
+- Fix Win32 Debug build
+- Prevent segfault when invalid theme in options file, fixes #2991 
+
+-------------------------------------------------------------------
+Sat Dec  5 08:28:22 UTC 2015 - marcin.bajor@gmail.com
+
+- Updated Deutsch interface translation by TooWaBoo
+- Remove two unused labels from the color toning tool that were always hidden when not in batch mode. 
+
+-------------------------------------------------------------------
+Tue Dec  1 09:24:09 UTC 2015 - marcin.bajor@gmail.com
+
+- Fix trying to dereference invalid iterator in ExifPanel::editTag.
+- Build with '-std=c++11' if libsigc++ version 2.5.1 is used as it does require it.
+
+-------------------------------------------------------------------
+Sat Nov 28 18:39:45 UTC 2015 - marcin.bajor@gmail.com
+
+- Changed Exposure tool button from Neutral to Reset, fixes #2952
+- Fixed tools/generateTranslationDiffs
+- Optimized generateTranslationDiffs, 5x faster, changed from parameter expansion to grep.
+- Updated all interface translations files.
+- Added MAIN_BUTTON_SENDTOEDITOR language string
+- Simlified use of StopWatch and included example into amaze demosaic
+- Fix leaking the axis adjusters in the coordinate adjuster.
+- Replace a dubious manual return-value-optimization by a standard named-return-value-optimization to simplify leak detection.
+- Remove apparently unused additional preview handler also fixing a memory leak.
+- Fix usage of the double-checked locking (anti-)pattern in the cache manager singleton.
+- Simplify the DCLP singleton instances found by searching for methods named 'getInstance'.
+- Simplify the EditWindow singleton using an instance wrapper.
+- Regularize the camera constant store singleton to use a function local static like most other singletons. 
+
+-------------------------------------------------------------------
+Tue Nov 24 23:13:13 UTC 2015 - marcin.bajor@gmail.com
+
+- Added Exif to list of affected metadata standards in PREFERENCES_TUNNELMETADATA
+- Fix Sony 12 bit uncompressed bug
+- Updated Czech and Nederlands interface translation files 
+
+-------------------------------------------------------------------
+Thu Nov 12 12:40:47 UTC 2015 - marcin.bajor@gmail.com
+
+- RT crashes when using wavelet on completely overexposed image, fixes #2971
+- Change type of src to 'signed char' as it contains negative numbers. Background is that 'char' is considered 'unsigned' on some architectures which causes a compliation error with C++11
+- Add explicit type conversions to satisfy C++11 requirements. (cherry picked from commit b93c730)
+- Updated dcraw.patch file
+
+-------------------------------------------------------------------
+Wed Nov 11 12:50:37 UTC 2015 - marcin.bajor@gmail.com
+
+- SSE code for vertical part of boxblur
+- Add SSEFUNCTION header to boxblur
+- generateTranslationDiffs
+- Fix bug for Nikon files with ISO > 12800
+- Fix bug for non Nikon files with ISO > 65535
+
+-------------------------------------------------------------------
+Tue Nov  3 09:41:24 UTC 2015 - marcin.bajor@gmail.com
+
+- Use iterated boxblur to approximate gaussian blur for retinex
+- Fix inconsistent preview in retinex when Colour Propagation is active
+- Fix wrong behaviour of retinex in combination with Colour propagation when zooming in 
+
+-------------------------------------------------------------------
+Sun Nov  1 21:52:17 UTC 2015 - marcin.bajor@gmail.com
+
+- Removed text so the appdata.xml file validates
+- Better chroma subsampling explanation and correct
+- Fixes Retinex Method not read from PP3 (issue 2833)
+- Fixes Retinex Hue Equalizer not reapplying effect when changing Method (issue 2833)
+- Small fix to Retinex tooltips
+
+-------------------------------------------------------------------
+Tue Oct 20 09:39:09 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed language error in Retinex Gamma label (no issue)
+
+-------------------------------------------------------------------
+Sat Oct 17 15:32:24 UTC 2015 - marcin.bajor@gmail.com
+
+- New Restinex Tool
+- Improved quality of Colour Propagation for some cases
+- Use default theme if options file sets theme to nothing, "Theme=" (fixes #2937)
+
+-------------------------------------------------------------------
+Wed Oct 14 19:36:52 UTC 2015 - marcin.bajor@gmail.com
+
+- Sometimes getimage is not called after demosaic (fixes #2932)
+- Fix for build with sigc++ >= 2.5.2
+- Fix for build with C++11 flags
+- Updated dcraw.patch file 
+
+-------------------------------------------------------------------
+Sun Oct 11 13:48:38 UTC 2015 - marcin.bajor@gmail.com
+
+- Segfault when curve black point is moved below white point (fixes #2923)
+- Speedup and reduced memory usage for Colour Propagation
+
+-------------------------------------------------------------------
+Tue Oct  6 05:18:41 UTC 2015 - marcin.bajor@gmail.com
+
+- Speeduo for Hot/Dead pixel detection
+- Reduced updates to progress bar for amaze demosaic
+- Removed Stopwatches
+- Color propagation highlight reconstruction causes crash on some files (fixes #2928) 
+
+-------------------------------------------------------------------
+Thu Oct  1 08:33:32 UTC 2015 - marcin.bajor@gmail.com
+
+- Enable DCP options regardless of DCP source. Neutral profile disables DCP curve and look table (fixes #2922)
+
+-------------------------------------------------------------------
+Sun Sep 27 21:37:38 UTC 2015 - marcin.bajor@gmail.com
+
+- Changed Noise Reduction method string
+- Updated French strings
+
+-------------------------------------------------------------------
+Sat Sep 26 21:45:35 UTC 2015 - marcin.bajor@gmail.com
+
+- Wavelet contrast and chroma interfere #2894
+- Added Canon EOS 100D/Canon EOS Rebel SL1/Canon EOS Kiss X7 daylight DCP made using DCamProf 0.9.11
+- Added Canon PowerShot G7 X dual-illuminant DCP made using DCamProf 0.9.11
+- Added Pentax K10D dual-illuminant DCP made using DCamProf 0.9.11
+- Wrong naming of snapshots in SETM, fixes #2915
+- Added better Canon PowerShot G7 X dual-illuminant DCP made using DCamProf 0.9.11
+- Added Pentax K-5 II dual-illuminant DCP made using DCamProf 0.9.11
+- Removed USM sharpening Threshold selector's background gradient and switched its place with Amount (fixes 2906)
+
+-------------------------------------------------------------------
+Tue Sep 22 10:35:52 UTC 2015 - marcin.bajor@gmail.com
+
+- Changed default delay for adjusters from 0 to 200 ms
+- Updated instructions compile on OSX
+- Wavelet contrast and chroma interfere #2894 
+
+-------------------------------------------------------------------
+Sun Sep 20 15:17:51 UTC 2015 - marcin.bajor@gmail.com
+
+- Update package conflicts 
+
+-------------------------------------------------------------------
+Wed Sep  9 19:40:58 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixes #2892 - tone curve node spinbutton range
+- Updated Deutsch translation closing (issue #2896)
+- Added TooWaBoo, thanks for translating the Deutsch file :-)
+- Fixed "HISTORY_MSG_167;Demosaicing method" string
+
+-------------------------------------------------------------------
+Tue Sep  1 19:42:35 UTC 2015 - marcin.bajor@gmail.com
+
+- crash when first two curve points are at x=0 (issue #2888)
+
+-------------------------------------------------------------------
+Sat Aug 29 20:50:11 UTC 2015 - marcin.bajor@gmail.com
+
+- Don't replace focal_len from Exif by focal_len from Makernotes if Makernotes focal_len is 0 (issue #2877)
+- Added tools/generateLensList Bash4 script to make updating lens ID from exiftool for rtexif/* easy
+- Update lens IDs from exiftool-10.00 (issue #2879)
+- Fixed octal issue
+- Updated generateLensList to handle Nikon cameras
+- Updated generateLensList to make aperture notation consistent: f/
+- Wrong handling of MakerNotes in dng files created with HDRMerge from Nikon NEF files (issue #2885)
+ 
+
+-------------------------------------------------------------------
+Fri Aug 28 10:07:38 UTC 2015 - marcin.bajor@gmail.com
+
+- Speedup for gauss when sigma >= 70 
+
+-------------------------------------------------------------------
+Wed Aug 26 20:42:19 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed a bug in perceptual curve speedup 
+
+-------------------------------------------------------------------
+Tue Aug 25 19:21:03 UTC 2015 - marcin.bajor@gmail.com
+
+- Update README.md
+- Speedup for Wavelet/Final Touchup/Final local contrast curve (issue #2874) 
+
+-------------------------------------------------------------------
+Fri Aug 21 18:29:21 UTC 2015 - marcin.bajor@gmail.com
+
+- Add some new features to the On Preview Objects mechanism
+- More meaningful processor info
+- Speedup for perceptual curve (issue #2817) 
+
+-------------------------------------------------------------------
+Tue Aug 18 15:02:49 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed "Unknown git option: -C" for git<1.8.5 (issue #2871)
+- Fixed formatting in rtengine/helpersse2.h and rtengine/opthelper.h 
+
+-------------------------------------------------------------------
+Tue Aug 18 09:04:33 UTC 2015 - marcin.bajor@gmail.com
+
+- Crash when saving to uncompressed tiff using a huge output profile
+- Fix Canon dual ISO problem
+- Fix CMake and AboutThisBuild with git (see issue #2860)
+- Adding Gcc 5 support for backard compatibility with Mingw/Gtkmm2 (windows related)
+- Code cleanup 
+
+-------------------------------------------------------------------
+Wed Aug 12 19:29:55 UTC 2015 - marcin.bajor@gmail.com
+
+- Crash in openSuSe when using Avoid Color Shift in Wavelet Tab (issue 2876)
+- Formatted all .cc and .h code in rtengine, rtexif and rtgui using astyle
+- Line endings 
+
+-------------------------------------------------------------------
+Tue Aug 11 10:00:07 UTC 2015 - marcin.bajor@gmail.com
+
+- Issue 2826: USM threshold slider lacks history entry or undo
+- Updated all interface language files for translation
+- Updated Swedish translation on behalf of Johan (issue 2875)
+- Updated camconst.json on behalf of Ilias (issue 2348)
+
+-------------------------------------------------------------------
+Sun Aug  9 19:55:42 UTC 2015 - marcin.bajor@gmail.com
+
+- Removed unused files
+- Issue 2873: Next/Previous Image buttons should not clear active filters.
+- Issue 2872: Fixed Wavelet defects reported by Coverity
+
+-------------------------------------------------------------------
+Sat Aug  8 16:11:15 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed possible issue with #pragma directive
+- Compile error in curves.cc (issue 2871) 
+
+-------------------------------------------------------------------
+Wed Aug  5 20:57:05 UTC 2015 - marcin.bajor@gmail.com
+
+- Issue 2869: further removal of unnecessary re-demosicing
+- Possibly fixes some compile errors when using gcc 5.x on windows (no issue)
+- Issue 2869: don't re-demosaic when changing ICC/DNG profile
+- Too saturated greens when using CIACAM02 
+
+-------------------------------------------------------------------
+Fri Jul 31 09:58:58 UTC 2015 - marcin.bajor@gmail.com
+
+- Issue 2863: fixed batch mode perceptual curve bug
+- Issue 2844: Wavelet improvements to Edge Sharpness and Denoise and Refine, also some language file fixes.
+- Added tooltip to Save Reference Image for Profiling's Apply white balance checkbox (no issue).
+- Issue 2855: Changed straighten and crop tool mouse cursor icons from GDK::CROSSHAIR to cHand so that they will be visible when used over both light and dark images.
+- Issue 2837: Fixed CIECAM02 clipping issues 
+
+-------------------------------------------------------------------
+Mon Jul 27 13:38:50 UTC 2015 - marcin.bajor@gmail.com
+
+- Issue 2837: added 'Perceptual' tone curve
+
+-------------------------------------------------------------------
+Sun Jul 26 18:21:59 UTC 2015 - marcin.bajor@gmail.com
+
+- Issue 2854: reverted recent highlight behavior 
+
+-------------------------------------------------------------------
+Sat Jul 25 23:20:35 UTC 2015 - marcin.bajor@gmail.com
+
+- Issue 2850: make it truly srgb (was wrong curve segment gamma before)
+- Issue 2850: updated ppversion due to slight curve behavior change
+- Issue 2850: normalized RGB-pipeline curve gammas to sRGB, make curve algorithms operate on linear image data
+- Solving issue 2846: "Wavelet - expanding a sub-tool adds a history item"  
+
+-------------------------------------------------------------------
+Thu Jul 23 11:27:58 UTC 2015 - marcin.bajor@gmail.com
+
+- Issue 2842: Fix by Ingo to prevent black square artifacts from appearing when using Post-Resize Sharpening - RL Deconvolution and a non-zero value for the Black slider.
+- Japanese interface translation updated by firefly  (issue 2848)
+- Update all language files for translation
+- Issue 2739: DCP settings in Color Management panel moved into own frame.
+
+-------------------------------------------------------------------
+Thu Jul 16 09:35:21 UTC 2015 - marcin.bajor@gmail.com
+
+- Wavelet zero-out unwated levels bug fixed, (issue 2702 #369)
+- Issue 2843: fixed newly introduced highlight clipping issue
+- Issue 2843: Hl compression function restored (restored some bad changes caused by new DCP look table code)   
+
+-------------------------------------------------------------------
+Wed Jul 15 11:20:43 UTC 2015 - marcin.bajor@gmail.com
+
+- Added Wavelet sub-tool enable/disable buttons, and some bug fixes (issue 2831)
+ 
+-------------------------------------------------------------------
+Mon Jul 13 22:46:32 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed missing code for new DCP parameters
+- Fixes a bug when compiling with gcc < 4.9.x, using OpenMP and aligned memory and -O3
+
+-------------------------------------------------------------------
+Fri Jul 10 15:17:37 UTC 2015 - marcin.bajor@gmail.com
+
+- 4.2.245 - Linux, segfault (issue 2835)
+- Issue 2134: removed obsolete raw highlight preservation setting from GUI (still left in procparams for backwards compatilibility)
+- Issue 2803: adjusted clipping behavior of raw image
+- Removed obsolete raw parameters from convertcolorspace; cleaned up dcp; support Adobe DNG profiles which expect ACR standard curve
+
+-------------------------------------------------------------------
+Thu Jul  9 11:36:38 UTC 2015 - marcin.bajor@gmail.com
+
+- Cleaned up unnecessary #include <iomanip>
+- Added tools/generateDirtyFiles Bash script to help find unnecessary header includes
+- The Wavelet sub-tools are now foldable using right-click and memorized upon restart, and the Wavelet main tool is expanded by default
+
+-------------------------------------------------------------------
+Wed Jul  8 12:28:02 UTC 2015 - marcin.bajor@gmail.com
+
+- Compilation fails on GCC-4.7.2 (issue 2832)
+- clipping fix for (issue 2739)
+- Exposure and Contrast by Detail Levels buttons made to stretch and fit (no issue)
+- Wavelet Levels improvements and cleanup (issue 2702 #359)
+
+-------------------------------------------------------------------
+Wed Jul  8 05:32:44 UTC 2015 - marcin.bajor@gmail.com
+
+- CIECAM02 speedup
+- DCP looktable and curve now applied after exposure, plus fixed some premature clipping issues
+- Wavelet levels improvements (issue 2702)
+- Added Post-Resize Sharpening tool with some code cleanups, optimizations and language file consistency improvements (issue 2825)
+
+-------------------------------------------------------------------
+Wed Jul  1 08:20:07 UTC 2015 - marcin.bajor@gmail.com
+
+- Ciecam02 artifacts (issue 2819)
+- Added astyle options file to format source code, so we can all commit consistently formatted code. Usage: astyle --options=rawtherapee.astylerc file.cc
+- Added Ctrl+s keyboard shortcut to start/stop the queue when the Queue tab is focused (issue 2822) 
+
+-------------------------------------------------------------------
+Fri Jun 26 07:39:09 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed endless loop in chromiluminancecurve (issue 2821), Fixed some ciecam02 bugs (issue 2819)
+
+-------------------------------------------------------------------
+Thu Jun 25 11:09:24 UTC 2015 - marcin.bajor@gmail.com
+
+- Don't prefetch camera icc profiles (issue 2818)
+- reduce number of file system accesses to load icon files (issue 2816)
+- Make sure output from HueSatMap is used as input for LookTable (if both exist). No visible difference in most cases, but now it's made in the right order anyway.
+- Fixed typo causing rendering errors of some gamma-encoded DCPs  
+
+-------------------------------------------------------------------
+Sat Jun 20 09:58:45 UTC 2015 - marcin.bajor@gmail.com
+
+- Don't allow focus on reset buttons when using keyboard (issue 2814)
+- Japanese interface translation updated by firefly (issue 2811)
+- block 'a' to 'z', '+' and '-' for numeric input fields (issue 2808) 
+
+-------------------------------------------------------------------
+Thu Jun 11 10:44:47 UTC 2015 - marcin.bajor@gmail.com
+
+- Avoid division by zero crash when options file contains 0 for 'Performance/nrhigh' (no issue)
+
+-------------------------------------------------------------------
+Wed Jun 10 07:13:18 UTC 2015 - marcin.bajor@gmail.com
+
+- Wavelet edge sharpness: change of default.for the 1-st level.
+- Re-generated all interface language files for Wavelet translation
+- Final Wavelet language string revision, and made hue slider and threshold selector order consistent between tools (issue 2702)
+- 2702wave3
+- Moved wavelet to its own tab
+- Added File Browser and Filmstrip toolbar button to show only non-deleted images, patch from Adam Reichold (issue 2178)
+- Explicitly set default for crop/fixratio to false (no issue) 
+
+-------------------------------------------------------------------
+Sun Jun  7 13:03:26 UTC 2015 - marcin.bajor@gmail.com
+
+- Multiple editor tabs in own window mode: Opening second tab expands complete tools tree in first tab (issue 2802)
+- Added crop orientation 'As Image' (issue 2577); fixed 'Crop Lock Ratio gets disabled when crop size larger than image size' (issue 992)
+- Disable nested parallelism when compiled with clang (issue 2731)
+- Wavelet improvements (issue 2702)
+- Fixed input profile handling for non-raw images (issue 2801)
+
+-------------------------------------------------------------------
+Mon Jun  1 15:45:59 UTC 2015 - marcin.bajor@gmail.com
+
+- fixed wrong white level scaling for sony arw files (no issue)
+- Japanese interface translation updated by firefly (issue 2799) 
+
+-------------------------------------------------------------------
+Fri May 29 08:50:12 UTC 2015 - marcin.bajor@gmail.com
+
+- Solving issue 2794: "Tone curves" ; The weighted standard could not be read from pp3 file...
+- Crash on Win64 when embedded jpeg thumb is corrupted (issue 2795)
+- Open editor for highlighted image in filmstrip and file browser with enter key (issue 2791)
+- Preferences dialog shows wrong GIMP (Wimdows) and PS (Windows and Apple) directory after restart (issue 2793)
+- P45 IIQ issues (issue 2792)    
+
+-------------------------------------------------------------------
+Tue May 26 21:06:28 UTC 2015 - marcin.bajor@gmail.com
+
+- Use sRGB for jpg files containing a non RGB profile (no issue)
+- Setting the default thumbnail size to 250px, to save quite a lot of disck space (for fresh install)
+- Save recent folders in options file (issue 2790)
+- g-key-file-error-quark occures rather often and freezes RT (issue 807)
+- Crash when loading jpg file with corrupted embedded profile, no Issue
+- 'Navigator preview is blurred for small images (issue 2785) and 'Navigator panel does not update when switching RT between full screen & windowed (issue 2424)
+- Fixed an endless loop when using camconst entry without white level (no issue)
+- reverted my last two commits because they contain an unsolved bug...
+- small correction to last patch to avoid a warning during compile, no Issue
+- g-key-file-error-quark occures rather often and freeze RT (issue 807)
+- Correction for Issue 2776, 'Dcraw.cc does not respect the Illuminant tags in DNG files' 
+
+-------------------------------------------------------------------
+Thu May 21 06:08:51 UTC 2015 - marcin.bajor@gmail.com
+
+- Solving issue 2610: "Display curve node input/output values" + add a new tone curve mode (Luminance)
+- Added x3f to list of parsed extensions (no issue)
+- Removed "Preferences > General > Show processing profile selector" (issue 2571)
+- Fix profile saving to respect the user's choice - in the cache, alongside the source image, or not at all (issue 1873) 
+
+-------------------------------------------------------------------
+Tue May 19 08:36:24 UTC 2015 - marcin.bajor@gmail.com
+- States of tools are lost when closing rt without opening an image in SETM (issue 2779)
+- image processing 1000 times slower if image in portrait orientation (issue 2783)
+- Wavelet Denoise & Refine levels not saved to PP3 correctly (issue 2784)
+- Speedup for ImProcFunctions::chromiLuminanceCurve (issue 2772)
+- High quality Noise Reduction produces tiling pattern (issue 2774)
+- Bugfix for '24 and 32 bit hdr dng images are not shown, Issue 2780', 'Dcraw.cc does not respect the Illuminant tags in DNG files, Issue 2776' and 'camconst.json support for raw files of various bit depths from the same camera model (12-bit, 14-bit) (issue 2778)
+- When opening an empty folder, file browser shows image count from previous non-empty folder (issue 606) 
+
+-------------------------------------------------------------------
+Sat May 16 21:19:51 UTC 2015 - marcin.bajor@gmail.com
+
+- Reverting my own mess; buffer overrun patch from Mar 16 was bad or has become bad, don't know why. But now it goes. Let's pretend it never happened.
+- dcraw imput sanitization errors, CVE-2015-3885, (issue 2773)
+- Updated camconst.json (issue 2348 #51)
+- Issue 2766: Luminance Detail default slider value set to 0
+- Segfault when moving control points of parametric curves (issue 590 #10)
+- Speedup when 'Preferences/Use working profile for main histogran and Navigator' is disabled (issue 2767)
+
+-------------------------------------------------------------------
+Fri May  8 10:11:02 UTC 2015 - marcin.bajor@gmail.com
+
+- Remove resize method from 'Fast Export' (issue 2768)
+- Two small fixes to generateUnusedKeys: numbering and flow
+- Issue 2765:Added CMake support for finding gtkmacintegration so CMake works with gtk-osx-application >2.0.5_2
+- RT crashes when a CMYK profile is selected as output profile (issue 2764)
+- Made svg2png.bash match both "msys" and "MSYS"
+- Fixed Nikon D750 black levels, and fixed line ending style consistency
+- Bugfix : 'msys' has to be lowercase
+- Interface translation files cleaned (issue 2756)
+- Interface translation files updated
+- Japanese interface translation updated by firefly (issue 2746)
+- Issue 2756:Clean up interface translation files
+- Issue 2755:Add color profile file type filter for Monitor Color Profile chooser
+
+-------------------------------------------------------------------
+Wed Apr 29 20:28:41 UTC 2015 - marcin.bajor@gmail.com
+
+- Bugfix: if located in a subdirectory, the default raw or image profile couldn't be found in command line mode.
+- Update to dcraw 9.25, Revision: 1.475
+- Bugfix: RT coudn't be built anymore due to fixed initialization of an array of dynamic length.
+- The svg2png.bash script didn't work on Windows through MSYS, now it should
+- .badpixels file support for foveon and monochrome sensors (issue 2729 #109)
+- Apply rotation parameters to reference image for profiling (issue 2748)
+- Issue 2743:Disable vignetting correction LCP checkbox when working on non-raw images
+
+-------------------------------------------------------------------
+Sat Apr 18 15:32:55 UTC 2015 - marcin.bajor@gmail.com
+
+- enhancements to Tone Mapping (issue 1714)
+- Fixed encoding so rtgui/toolpanelcoord.cc is no longer identified as binary (no issue)
+- New Threshold slider for Hot/Dead Pixel Filters to suppress false positives which lead to artifacts (issue 2738)
+- Basic support for some foveon cams (SD1, SD1 Merrill, DP1 Merrill, DP2 Merrill, DP3 Merrill, SD14) (issue 2729)
+- Resize algorithm cleanup (issue 994)
+- Wavelet levels - some small optimizations nopatch
+
+-------------------------------------------------------------------
+Sun Apr 12 21:51:36 UTC 2015 - marcin.bajor@gmail.com
+
+- Wavelet levels - contrast residual and levels (issue 2702)
+- Solving issue 2735: "Apply/paste partial profile broken in build 4.2.147 - applies full parameters"
+- Improved rendering of Navigator preview (issue 2733)
+- Solving issue 2732: "Command-line option to use default (non)raw PP3 does not work"
+
+-------------------------------------------------------------------
+Tue Mar 31 13:41:48 UTC 2015 - marcin.bajor@gmail.com
+
+- Wavelet levels Improvments (issue2702)
+- RawTherapee crashes in c:\users\{username} (issue 2727)
+- Fixed an unitialized variable (no issue)
+- Serialze read of tiff files (issue 2722)
+- Put two lines inside p tags in rawtherapee.appdata.xml
+
+-------------------------------------------------------------------
+Mon Mar 23 15:31:31 UTC 2015 - marcin.bajor@gmail.com
+
+- Hald CLUT files in png format are opened with wrong gamma (issue 2720)
+- Added possibility to export profiling reference image without WB to make it possible to generate DNG profiles; also apply transform and scaling on profiling reference image
+- Remember zoom % and pan offset when opening another image (issue 2435) 
+
+-------------------------------------------------------------------
+Fri Mar 20 12:11:07 UTC 2015 - marcin.bajor@gmail.com
+
+- Sortable tree in File Browser, gc (issue 2678)
+- Undid 413c3eb60f17 (issue 2678#c22)
+- Prevent segfault when locale invalid (issue 2717)
+- Don't display arrow for File Browser's item if doesn't contains subfolders (issue 1390 and issue 2678 #5)
+- DCP: added support for sRGB-gamma-encoded LUTs (issue 2718)
+
+-------------------------------------------------------------------
+Tue Mar 17 16:45:03 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed the fix to issue 2713
+- Enhance usability of the Tools' Enable/Disable button.
+- Apply crop parameters to reference image for profiling (Argyll workflow becomes much easier)
+- Spot white balance tool's square does not get drawn under the cursor (issue 2714)
+- Segfault on opening TIFFs with empty Make and Model tags (issue 2713)
+- Bring back the remembering feature of the expanded/collapsed status of the tools. See issue 2648. Additionnally, correct a GUI bug of the B&W tool: the display wasn't initialized correctly when opening a new editor.
+ 
+-------------------------------------------------------------------
+Fri Mar 13 10:29:45 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed buffer overrun bug in parallel dcb demosaic
+- Choose where the curve copypasta buttons should appear relative to the flat/diagonal curves (issue 2654)
+- Solving wrong behavior of the MyExpander's Enable button.
+- Crop guides are displayed incorrectly when image is zoomed in (issue 2666)
+- Added fit-crop-to-screen Editor button (issue 2706)
+- Added Nikon D750 DCP (issue 2700)
+- Nederlands interface translation updated by wim ter meer (issue 2707)
+- Japanese interface translation updated by firefly (issue 2703)
+- Fix to CMake process when the user does not want to use a suffix for the cache and config folders (issues 2427 and 2602)
+- Small safety improvement for buildRT
+- Fixed segfault when opening Panasonic DMC-TZ60 raws which used cropping (issue 2711)
+- First patch for issue 2648: "Improvements related to the GUI" ; now RT uses the new MyExpander class that integrates the Enabled button.
+- Reverted some Win64 gcc 4.8 related stuff as we are on gcc4.9 now (issue 2708) 
+
+-------------------------------------------------------------------
+Fri Mar  6 15:00:17 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed a bug in Noise Reduction Median type 3x3 (no issue) 
+
+-------------------------------------------------------------------
+Thu Mar  5 09:14:06 UTC 2015 - marcin.bajor@gmail.com
+
+- Automatic fall back to IGV demosaic if there's not enough memory for LMMSE demosaic (issue 2665)
+- Artifacts in ciecam02 when using ProPhoto working space (issue 2690)
+- Temporary file has wrong filename when switching to another image while 'Edit current image in external editor' is processing (issue 2699)
+
+-------------------------------------------------------------------
+Mon Mar  2 11:46:52 UTC 2015 - marcin.bajor@gmail.com
+
+- small speedup for median pass of LMMSE demosaic (issue 2665 #82)
+- Bugfix for myfile (issue 1303 #11)
+- Abort compile when -ffast-math flag is set (issue 2698) 
+
+-------------------------------------------------------------------
+Fri Feb 27 12:20:11 UTC 2015 - marcin.bajor@gmail.com
+
+- Added ability to open images for editing from the Batch Queue tab. Patch by Leanid (prizzrak), (issue 2689)
+- Removed an unused and uninitialized variable in cacheimagedata.*
+- x-trans: Improved interpolation for red/blue pixels at blue/red locations (issue 2415 #233)
+- DCP: make chromatic adaptation of color matrix (as the DNG spec mandates) (issue 2691)
+- Updated compareRT for easy patched-vs-unpatched comparison.
+- Czech interface translation updated by mkyral (issue 2688)
+
+-------------------------------------------------------------------
+Sun Feb 22 23:34:41 UTC 2015 - marcin.bajor@gmail.com
+
+- 16-bit tiff and png saving broken on big endian (issue 2675)
+- Speedup and reduced memory usage for lmmse demosaic (issue 2665)
+- Japanese interface translation updated by firefly (issue 2686)
+- Updated language files
+- My kingdom for more wavelets - various speedups, memory reductions, GUI changes and level numbering PP3 change. (issue 2594)
+- DCBEnhance default=true (issue 2680)
+- DCBEnhance now enabled per default (issue 2680)
+
+-------------------------------------------------------------------
+Wed Feb 18 00:10:50 UTC 2015 - marcin.bajor@gmail.com
+
+- Preference UI for filmstrip toolbar visibility (issue 2672)
+- Japanese interface translation updated by firefly (issue 2673)
+- Speedup and reduced memory usage for lmmse demosaic (issue 2665)
+- Demosaicing method used for the preview at <100% zoom (issue 2664) 
+
+-------------------------------------------------------------------
+Fri Feb 13 13:11:13 UTC 2015 - marcin.bajor@gmail.com
+
+- Default Luminance noise reduction (issue 2647)
+- Fixed Hasselblad CFV-50c model identification 
+
+-------------------------------------------------------------------
+Thu Feb  5 08:54:29 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed some bugs in Noise Reduction (issue 2557 #254) 
+
+-------------------------------------------------------------------
+Tue Feb  3 10:44:20 UTC 2015 - marcin.bajor@gmail.com
+
+- Wavelet levels - pp3 contrast expanders (issue 2594)
+- Peak memory usage of Wavelet Tool reduced by width*height bytes (no issue)
+- Speedup for Noise Reduction in case Luma Noise Reduction is not used (issue 2557)
+ 
+-------------------------------------------------------------------
+Thu Jan 29 16:11:09 UTC 2015 - marcin.bajor@gmail.com
+
+- Some small corrections to latest patch (issue 2594 #207)
+
+-------------------------------------------------------------------
+Thu Jan 29 10:12:20 UTC 2015 - marcin.bajor@gmail.com
+
+-  Wavelet Levels - bad cut and paste for HSV Equalizer and CBDL (no issue)
+- Wavelet Levels - My kingdom for more wavelets (issue 2594)
+- Division by zero in ciecam02 (issue 2646)
+- Reduced peak memory usage of Noise Reduction (issue 2557)
+- Improvements to Preferences tabs (issue 2642)
+
+-------------------------------------------------------------------
+Sun Jan 25 22:22:22 UTC 2015 - marcin.bajor@gmail.com
+
+- bugfix for non-SSE builds (no issue)
+
+-------------------------------------------------------------------
+Sun Jan 25 21:07:07 UTC 2015 - marcin.bajor@gmail.com
+
+- Noise Reduction improved by using untiled processing with automatic fall back to tiled processing when not enough memory is available for untiled processing (issue 2557)
+- buildRT version number bumped to 4.2
+- Updated buildRT to version 4.2, now it performs safety checks on the entered menu choice numbers and the build folders use lowercase build type names like "release"
+
+-------------------------------------------------------------------
+Sun Jan 18 14:52:11 UTC 2015 - marcin.bajor@gmail.com
+
+- Speedup und reduced memory usage for Noise Reduction (issue 2557 #132)
+- Fixed a crash using NR auto chroma mode in combination with rotation/distortion correction (no issue)
+
+-------------------------------------------------------------------
+Tue Jan 13 22:54:48 UTC 2015 - marcin.bajor@gmail.com
+
+- Segfault switching between JPEG images in SETM (issue 2636)
+- Fixed Samsung NX3000 raw crop (issue 2637) 
+
+-------------------------------------------------------------------
+Sun Jan 11 22:32:54 UTC 2015 - marcin.bajor@gmail.com
+
+- Added lens info for Sigma 70mm f/2.8 EX DG Macro and minor correction for description of Sigma 105 mm
+- Updated dependencies in COMPILE.txt to include gtk2-engines so widgets look amiable
+- Small grammatical fixes in default interface language file
+- Japanese interface translation updated by firefly (issue 2628)
+- Added Hasselblad model identification in rtexif
+- ensure consistent behaviour of hlCurve and shCurve (issue 2626)
+- Added fix for Hasselblad H5D-50c 3FR parsing
+- Added Marcin Bajor to AUTHORS.txt 
+
+-------------------------------------------------------------------
+Wed Jan  7 15:46:14 UTC 2015 - marcin.bajor@gmail.com
+
+- build failed when using -Werror=format-security (no issue)
+- Start rt maximized when it was closed in minimized (iconified) state before, (issue 2627)
+- Make sure both green autowb multipliers are the same for RGB sensors 
+
+-------------------------------------------------------------------
+Sun Jan  4 21:14:34 UTC 2015 - marcin.bajor@gmail.com
+
+- Fixed whitelevel bug in 3FR calibration data handling
+- Reduced peak memory usage of Noise Reduction, Issue 2557 #119 and #123  
+
+-------------------------------------------------------------------
+Sun Jan  4 16:48:54 UTC 2015 - marcin.bajor@gmail.com
+
+- Add Sony ILCE-3500 to camconst.json and correct a typo (issue 2620)
+- Artifacts when using highlight compression with a threshold of 0 (issue 2621 #14 and #15)
+- Solving issue 2619: "RawTherapee crashes with SIGSEGV, Segmentation fault when closed"
+
+-------------------------------------------------------------------
+Tue Dec 30 21:25:04 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixed a bug in noise reduction when build with gcc 4.7.x
+- reverted some aligned memory access, which seems not to work correctly on some systems
+
+-------------------------------------------------------------------
+Tue Dec 30 09:54:49 UTC 2014 - marcin.bajor@gmail.com
+
+- two small changes to allow debugsource packages for rpm based distros build with more strict options (no issue) 
+
+-------------------------------------------------------------------
+Mon Dec 29 22:29:29 UTC 2014 - marcin.bajor@gmail.com
+
+- Added Hasselblad 3FR calibration data parser.
+- Fixed a bug in Noise Reduction
+- Case insensitive search for maker and model of dark frame shots (issue 2472)
+- Partly solving issue 1490: "Comparator Tab / Light Table / Inspector" with the addition of an "Inspect" tab to the File Browser panel.
+- Crash when opening unsupported raw image from Sony DSC-F828, (issue 2599)
+- Speedup for Noise Reduction (issue 2557#100)
+- same order for zoom symbols in Editor and Detail Window (no issue)
+- Strange new rendering in Rt 4.2.42 when one or more channels are blown and using NR or ciecam02 (issue 2614)
+- Added code to corretly identify Hasseblad H4D-31, H4D-40 and H4D-50
+ 
+-------------------------------------------------------------------
+Sun Dec 14 20:20:00 UTC 2014 - marcin.bajor@gmail.com
+
+- Speedup and some bugfixes for Noise Reduction (issue 2557 #60)
+- camconst.json updates and some small changes to dcraw.cc (issue 2348 #49)
+- removed misplaced omp statement which led to increased processing time for HL blend mode on Windows (no issue)
+- Correction to last commit (issue 2598)
+- segfault applying LCP to Image without focal length information (issue 2598)
+- Added two lenses to sonyminoltaattribs.cc (no issue)
+- Preview does not match output when using BW with a* and b* toning with chromaticity -100 - (issue 2567)
+- Array out of bounds access when using parametric curve (no issue)
+
+-------------------------------------------------------------------
+Sun Nov 30 21:22:48 UTC 2014 - marcin.bajor@gmail.com
+
+- Array out of bounds access when using parametric curve (no issue)
+- Memory leak when using NR mode 'Auto chroma preview' (no issue)
+
+-------------------------------------------------------------------
+Sat Nov 29 17:50:47 UTC 2014 - marcin.bajor@gmail.com
+
+- Stop the queue if error saving, Issue 2257 and Segfault on indexed PNG (issue 2556)
+
+-------------------------------------------------------------------
+Thu Nov 27 21:44:15 UTC 2014 - marcin.bajor@gmail.com
+
+- Multiple Editor Tabs in separate window: crash when closing tab while (image update) processing is running (issue 2587)
+
+-------------------------------------------------------------------
+Sun Nov 23 21:45:24 UTC 2014 - marcin.bajor@gmail.com
+
+- B&W + channel mixer + color filter = maximum brightness too low, whites turn gray (issue 2583)
+- Bugfix and Enhancement for Clut, (issue 2584), Kudos to Flössie
+- Updated Japanese interface translation thanks to firefly (issue 2579)
+- Batch conversion of large format images (17000px by 11000px) will crash RT (issue 2582)
+
+-------------------------------------------------------------------
+Mon Nov 17 00:07:37 UTC 2014 - marcin.bajor@gmail.com
+
+- Some fixes for Noise Reduction (issue 2557 #50)
+
+-------------------------------------------------------------------
+Thu Nov 13 11:47:30 UTC 2014 - marcin.bajor@gmail.com
+
+- Some fixes for Noise Reduction (issue 2557 #23)
+- Chroma denoising alter colour (issue 2568)
+- Scrollbars in Partial Paste window (issue 2332)
+- Updated Japanese interface translation(issue 2562), and re-generated the other language files. 
+
+-------------------------------------------------------------------
+Thu Nov  6 21:02:43 UTC 2014 - marcin.bajor@gmail.com
+
+- .badpixels file support for X-Trans sensor (issue 2543)
+
+-------------------------------------------------------------------
+Thu Nov  6 12:55:32 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixed a crash when enabling Noise Reduction in before/after mode, no Issue
+- Compile fails on architectures other than x86_64 (issue 2558)
+
+-------------------------------------------------------------------
+Thu Nov  6 10:05:08 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixed two crashes when working with parametric curves (issue 590)
+- Noise Reduction - auto chroma (issue 2495)
+- Difference in brightness with CIECAM02 (issue 2510)
+- Stay at queue panel when queue panel was active while closing an editor panel
+- Restored old behaviour when closing Editor Panel, (no issue)
+- Fixed another race condition in raw auto ca correction, (issue 2554)
+- Changed RELEASE_NOTES.txt to development mode. 
+
+-------------------------------------------------------------------
+Mon Nov  3 21:17:16 UTC 2014 - marcin.bajor@gmail.com
+
+- Bugfix for two crashes and some window title issues (see issue 1493 for details)
+- Solving issue 2161: "Hide Filmstrip elements"
+
+-------------------------------------------------------------------
+Sun Nov  2 14:52:15 UTC 2014 - marcin.bajor@gmail.com
+
+- Changed inactive text color so that you can see the values of inactive sliders when using an automated mode, e.g. NR auto chroma
+- 851automonprofile1 
+
+-------------------------------------------------------------------
+Thu Oct 30 22:59:19 UTC 2014 - marcin.bajor@gmail.com
+
+- Uninitialized memory access in lmmse demosaic (no issue)
+- Race condition in raw auto ca correction (no issue)
+- Clang compile fix in DNG float code
+- Race condition when using Denoise Luminance curve (issue 2549)
+- Added Brighten.pp3 to brighten up non-raw images (issue 2409)
+- Fix race condition involving version.h. So far affects Debian Testing and OpenBSD using Ninja (issue 2446)
+
+-------------------------------------------------------------------
+Fri Oct 24 20:32:25 UTC 2014 - marcin.bajor@gmail.com
+
+- Added tag 4.2 for changeset c81d9026d25c
+- Updated RELEASE_NOTES.txt for 4.2
+- Updated Chinese (Simplified) interface translation (issue 2545)
+- Updated Czech interface translation (issue 2546)
+- Updated splash screen to 4.2
+- Update to defaults and re-generated some bundled profiles to make better use of modern tools
+- Camconst.json updates, (issue 2348) 
+
+-------------------------------------------------------------------
+Wed Oct 22 20:42:03 UTC 2014 - marcin.bajor@gmail.com
+
+- Added %{_datadir}/appdata/rawtherapee.appdata.xml to filelist
+
+-------------------------------------------------------------------
+Wed Oct 22 20:16:07 UTC 2014 - marcin.bajor@gmail.com
+
+- CACHE_NAME_SUFFIX might be empty for releases.
+- Added AppData file for better integration with package managers: rawtherapee.appdata.xml. (issue 2512)
+- Updated Japanese interface translation on behalf of firefly (issue 2541)
+- Added option to choose output file bit depth 8-bit/16-bit from command-line, see --help (issue 2525)
+- Removed tiling pattern caused by race conditions in Highlight Reconstruction method Color propagation (issue 2481)
+- White Balance Blue/Red Equalizer hangs RT or quirks when Method = Auto, (issue 2500)
+- Shortened strings used by the Black-and-White tool (issue 2010#c174)
+- Speedup for Tone Mapping (issue 2528)
+- Reduce peak memory usage of queue processing (issue 2527)
+- Updated Nederlands (Dutch) interface translation file on behalf of wim ter meer (issue 2540)
+
+-------------------------------------------------------------------
+Sun Oct 19 15:17:17 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixes a crash in METM when closing an Editor tab while File browser tab is active (no issue)
+
+-------------------------------------------------------------------
+Sat Oct 18 09:51:59 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixes undefined behaviour in colortemo.cc (no issue)
+- Regenerated remaining interface language files
+- Changed L a b to L* a* b* (issue 2539)
+- Updated Polish interface translation files (issue 2492)
+- Revised default interface language file (issue 2539)
+- Updated Spanish (Espanol) interface translation file (issue 2538)
+- Issue 2456, revert to embedded thumb when profile is removed
+
+-------------------------------------------------------------------
+Wed Oct 15 13:00:41 UTC 2014 - marcin.bajor@gmail.com
+
+- Let hot pixel filter work at all zoom levels so Auto Levels works correctly (issue 2535)
+
+-------------------------------------------------------------------
+Sun Oct 12 20:51:18 UTC 2014 - marcin.bajor@gmail.com
+
+- RT shows wrong focal length for Pentax K50 (issue 2533)
+
+-------------------------------------------------------------------
+Fri Oct 10 12:09:08 UTC 2014 - marcin.bajor@gmail.com
+
+- Increased precision for Shadows/Highlights (and a small speedup and reduced memory consumption for method 'Sharp mask') (issue 2523)
+- Added CanonModelID for some Canon cameras to exif database
+
+-------------------------------------------------------------------
+Wed Oct  8 09:03:28 UTC 2014 - marcin.bajor@gmail.com
+
+- Speedup for Vibrance and Contrast by Detail Levels (issue 2520)
+
+-------------------------------------------------------------------
+Thu Oct  2 16:12:03 UTC 2014 - marcin.bajor@gmail.com
+
+- Removed OPA outpout (no issue)
+- Quality control and fixes of interface language files (issues 2506 and 2518)
+- Speedup for thumbnail processing (issue 2503)
+- Handle Leaf's latest ICC profiles (Leaf Credo 50)
+
+-------------------------------------------------------------------
+Sun Sep 21 18:47:08 UTC 2014 - marcin.bajor@gmail.com
+
+- Color toning - set opacity to linear does not turns color toning off (issue 2014)
+
+-------------------------------------------------------------------
+Sat Sep 13 12:31:37 UTC 2014 - marcin.bajor@gmail.com
+
+- Updated Japanese interface translation on behalf of firefly, issue 2505, and fixed Polish GENERAL_BEFORE and GENERAL_AFTER (issue 2492)
+- Updated generateUnusedKeys to handle comments and double-check the code verbosely
+- Optimization for dark frames and hot/dead pixel detection/interpolation (issue 2486)
+- RT hangs or crashes after trying to open a corrupted file (issue 2467)
+- Color Toning fixed some bug -auto saturation - Labels - (issue 2454, issue 2014)
+- Patch from Issue 2406 revoked
+- Added Leaf Credo 50
+- Fixed Median Type tooltip by removing old TP_DIRPYRDENOISE_MET_TOOLTIP entry
+- Updated Default ISO High and Medium.pp3 to use the Luminance curve instead of the Luminance slider (issue 2463)
+- Filter enhancement: exclusion criteria (issue 2487)
+- Array out of bound access - Color Toning (issue 2485)
+
+-------------------------------------------------------------------
+Mon Sep  1 21:22:00 UTC 2014 - marcin.bajor@gmail.com
+
+- Division by zero in Raw Whitepoint Correction, reported by cppcheck, no Issue
+- Random crashes when using Luminance denoise curve (issue 2463)
+- Slight code cleanup in simpleprocess.cc (no issue).
+- Luminance Denoise Curve (issue 2463)
+- Issue 1472: fix so multi-open brings up tabs in same order as in file browser
+- Issue 2406: Order the parallel thumbnail loading so it thumbs appear gradually in order, and don't use too many threads (to avoid long stalls).
+- Issue 2480: side-stretching of fix-ratio crops now stop at image edges
+- Issue 2471: fix issue with picking out wrong maximum white for multiple white levels
+- Issue 2442 portrait/landscape crop orientation now always short side horizontal/vertical
+- Fix a warning in clutstore.h
+- Solving issue 2411: "HaldCLUT: Film emulation from G'MIC in RawTherapee"
+- Broken Dark Frame subtraction when Auto-selection of Dark Frame is enabled (issue 2472)
+- Fixed P40/P65+ decoding bug (will come in next update of dcraw)
+- Added missing colon after PREFERENCES_FLATFIELDSDIR
+- Extremely slow filebrowser on Win64, Issue 2431
+- Updated the text, removed newlines - let the window manage the wrapping.
+
+-------------------------------------------------------------------
+Sun Aug 10 19:26:58 UTC 2014 - marcin.bajor@gmail.com
+
+- Added mercurial to dependencies 
+
+-------------------------------------------------------------------
+Sun Aug 10 10:15:50 UTC 2014 - marcin.bajor@gmail.com
+
+- Updated Japanese interface translation on behalf of Firefly (issue 2459)
+- Introduced new RELEASE_NOTES.txt for development versions, to be replaced with RELEASE_NOTES_stable.txt when we tag a stable version.
+- Show filename of currently opened image in titlebar (issue 2450)
+
+-------------------------------------------------------------------
+Wed Jul 30 15:14:47 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixed - Lab 'a' and 'b' curves are not behaving as expected (issue 2462)
+- Fixed - refreshing the preview in the Median NR module - (issue 2014, issue 2423)
+- Updated Japanese and default, and re-generated all language files
+- Adding per curve default curve capabilities, used in the Color Toning tool as of now (issue 2014) 
+
+-------------------------------------------------------------------
+Sun Jul 13 13:25:59 UTC 2014 - marcin.bajor@gmail.com
+
+- Solving issue 2451: "Compilation problems on arch. other than x86_64" 
+
+-------------------------------------------------------------------
+Sat Jul 12 10:52:06 UTC 2014 - marcin.bajor@gmail.com
+
+- Small changes for FF clip control code to prepare Hombre's upcoming patch, no Issue
+- Enhanced Filters for Flat-Field and Dark-Frame filechoosers (issue 2440)
+- Support for Fuji X-Trans-Sensor, issue 2415 (thanks to Hombre for the changes to gui); Clip Control for Flat Field correction, issue 2441; Update to dcraw 9.22 1.467
+- Crash when using SETM and F3/F4, (issue 2361)
+- Denoise crashes using high zoom levels (issue 2434)
+- Issue 2417:Do not install licenses or fonts to ${BINDIR}
+- Polishing Color Toning and Median patches
+- Improving medians Denoise (issue 2423)
+- Color Toning (issue 2014)
+
+-------------------------------------------------------------------
+Fri Jun 27 20:21:38 UTC 2014 - marcin.bajor@gmail.com
+
+- Additional Median filter for Denoise  (issue 2423)
+- Enable opening two separate files with the same filename (issue 2268)
+- Rerun preprocess when changing to or from mono demosaicer
+- Win64 build crashes opening folder containing MRW files (issue 2425)
+- Added support for monochrome cameras (like Leica Monochrome) and IR-modified bayer cameras through new demosaicer "mono"
+- camconst.json: Added Phase One IQ250
+- camconst.json: Added Hasselblad H5D-50c, fixed H5D-40
+- Fix opening HDR DNG with frame and different black/white levels, (issue 2413)
+- Profile copy/paste with Ctrl/Shift-Insert (issue 2418)
+
+-------------------------------------------------------------------
+Tue Jun 17 21:22:45 UTC 2014 - marcin.bajor@gmail.com
+
+* Update to dcraw 9.21, Revision 1.463
+* Normalizing line endings to DOS in color.cc
+* Adding more possibilities to the ColorProvider class
+* Line feed normalization (DOS); added Leaf Credo 40/60/80
+* Shadows from S/H broken on small JPEG files (issue 2408)
+* Fixed bad spelling of our program name in WindowsEnvironmentSetup.html
+* when demosaic method 'none' is selected, use it for all zoom levels (issue 2247 comment 7)
+* Memory leak when applying profile to hdr raw files in filebrowser (issue 2407)
+* enhanced support for Nikon D610 (issue 2348, comment #33)
+* Black output image when using ciecam02 and tone-mapping (issue 2404)
+* Unicode font for Navigtor for windows and 3-rd party license distribution mechanism (issue 2333 comment 41)
+* Added gaaned92 to AUTHORS.txt
+* Pentax K-500 DNG Focal Length wrong (issue 2399)
+
+-------------------------------------------------------------------
+Mon May 26 20:21:38 UTC 2014 - marcin.bajor@gmail.com
+
+- Improvement for Auto Distortion correction (issue 2386)
+- Fixed Hasselblad H4D-60 format parsing (dcraw bug).
+- Hasselblad identification and color matrix fixes for 31, 50 and 60 megapixel backs
+- Segfault closing second detail window before its done rendering (issue 2395)
+- Speedup for ciecam (issue 2350)
+- Crash in 'Highlight Reconstruction Colour Propagation' (issue 2360)
+- More Hasselblad format support updates
+
+-------------------------------------------------------------------
+Wed May 21 19:07:29 UTC 2014 - marcin.bajor@gmail.com
+
+- camconst.json update 2 (issue 2348)
+- Updated Japanese interface translation on behalf of firefly (issue 2383)
+- Very bad response time on win64 builds using gcc 4.8 when queue is running (issue 2384)
+- Remember position of RT when not maximized (issue 1624 comment #5)
+- Updated Pentax K10D DCP profile (issue 2367)
+- Updated RELEASE_NOTES.txt for 4.1
+
+-------------------------------------------------------------------
+Mon May 19 07:28:11 UTC 2014 - marcin.bajor@gmail.com
+
+- Add 'none' to 'demosaic methods' in GUI (see issue 2247 comment #2 for details)
+- Changes to Detail Window and Preferences Dialog (issue 2376 comment #9 and #11)
+
+-------------------------------------------------------------------
+Thu May 15 22:01:09 UTC 2014 - marcin.bajor@gmail.com
+
+- RT goes to 100% cpu-load when starting with an image in queue on Win64/gcc 4.8.1 (issue 2370)
+- Windows builds failed to compile using tdmgcc4.8.1 or gcc < 4.8, (issue 2364)
+- New splash-screen for 4.1
+- Support DNG 1.4 files with Floating Point data, Issue 2369, thanks to Javier Celaya
+- Improvements for Detail Window (see Issue 2376 comment #4 for details)
+- Update to AUTHORS.txt for 4.1
+- Solving issue 2375: "Partial paste resets (all?) unselected tools the first time it is used"
+- Updated Czech interface translation (issue 2378)
+- Small language file fix and regeneration for 4.1
+
+-------------------------------------------------------------------
+Fri May  9 12:55:19 UTC 2014 - marcin.bajor@gmail.com
+
+- RT stuck in loop when pasting profile (issue 2363)
+- Issue 2348: camconst.json updates with many new cameras.
+- Make it clear when a button is clicked in 21-Gray-* themes
+- Using CLI some TIFFs are identified as RAW files, though they aren't (e.g. TIFFs from Enfuse) (issue 2002)
+
+-------------------------------------------------------------------
+Sun May  4 15:15:07 UTC 2014 - marcin.bajor@gmail.com
+
+- Crash in 'Highlight Reconstruction Colour Propagation' (issue 2360)
+- gcc 4.8.1 support on Winx64 (issue 2120 comment 7)
+- Set default Navigator monospace font on Linux to "Monospace" (issue 2333)
+
+-------------------------------------------------------------------
+Sat Apr 26 07:45:34 UTC 2014 - marcin.bajor@gmail.com
+
+- Replaced (unused?) rtdata/images/refresh-white.png with crash-free version (issue 2353)
+- Updated Italiano interface translation (issue 2351)
+- Solving issue 2341: "Pipette and flat curves - no line colors"
+- Fixed input of CL curve in Lab mode (issue 2327)
+- Solving issue 2301: "segfault in pipette"
+
+-------------------------------------------------------------------
+Sun Apr 20 16:32:20 UTC 2014 - marcin.bajor@gmail.com
+
+- RT crashes when undo crop action via history (issue 1969)
+- Solving issue 2342: "Information needed for the color conversion methods of the Color class"
+
+-------------------------------------------------------------------
+Fri Apr 18 11:09:20 UTC 2014 - marcin.bajor@gmail.com
+
+- Solving issue 2345 : "Crash opening Pentax Q7 DNG files"
+
+-------------------------------------------------------------------
+Thu Apr 17 11:49:57 UTC 2014 - marcin.bajor@gmail.com
+
+- Solving issue 2301: "segfault in pipette"
+
+-------------------------------------------------------------------
+Wed Apr 16 11:24:00 UTC 2014 - marcin.bajor@gmail.com
+
+- Created 92-Beige-DarkCyan.iconset as it was missing (no issue)
+- Crash opening Pentax Q7 DNG files (issue 2345)
+
+-------------------------------------------------------------------
+Tue Apr 15 11:26:24 UTC 2014 - marcin.bajor@gmail.com
+
+- Pipette in Lab Mode and improving data Navigator and histogram panel (issue 2327)
+
+-------------------------------------------------------------------
+Sun Apr 13 19:28:27 UTC 2014 - marcin.bajor@gmail.com
+
+- New small icons for detail window (issue 2306)
+- Navigator info fonts (issue 2333)
+- Fixes access to unintialized variables when using before/after view (no issue)
+- Enhanced look for detail window and zoom guides (issue 2306)
+
+-------------------------------------------------------------------
+Thu Apr 10 09:27:12 UTC 2014 - marcin.bajor@gmail.com
+
+- Buffer underrun in RGB denoise (issue 2337). Could also fix 'Crash when creating detail window (issue 2324)
+
+-------------------------------------------------------------------
+Wed Apr  9 13:32:06 UTC 2014 - marcin.bajor@gmail.com
+
+- Navigator info alignment (issue 2333)
+- Updated interface language files: Japanese by firefly (issue 2339) and Czech by Marian (issue 2335)
+
+-------------------------------------------------------------------
+Mon Apr  7 16:34:38 UTC 2014 - marcin.bajor@gmail.com
+
+- Japanese interface language update by firefly (issue 2334)
+- All interface language files updated with additional corrections
+- Update and correct automatic language selection (issue 2328)
+
+-------------------------------------------------------------------
+Sun Apr  6 19:16:33 UTC 2014 - marcin.bajor@gmail.com
+
+- Auto Levels calculates wrong lightness value, which leads to crash of RT (issue 2325)
+- Enhanced look for crop guide and straightening line (issue 2306)
+- Solving issue 2326: "Copy/Paste bug" ; The "Fill mode" button (Profile selector) is now extended to the "Load" and "Paste" buttons.
+- Setting the "Fill Mode" button state of the Profile selector to "off" by default (issue 2329)
+- After selection of (GTK-default) theme in preferences RT doesn't start anymore on Windows (issue 2330)
+
+-------------------------------------------------------------------
+Fri Apr  4 08:33:42 UTC 2014 - marcin.bajor@gmail.com
+
+- Fast Demosaic is executed twice when Custom input profile is changed  (issue 2299)
+- Added 'no wait' option (-w) for command line (Windows only) (issue 2314)
+- Solving issue 2324: "Crash when creating detail window"
+
+-------------------------------------------------------------------
+Wed Apr  2 09:17:43 UTC 2014 - marcin.bajor@gmail.com
+
+- Select Input DCP/ICC Profile window shows DNG files (issue 2320)
+- buildRT 4.1 update to only cmake when necessary
+- Optimization for Focus Mask (issue 2319)
+
+-------------------------------------------------------------------
+Tue Apr  1 14:04:23 UTC 2014 - marcin.bajor@gmail.com
+
+- Lab HH does not work when 'Avoid dolor shift' is disabled (issue 2318)
+
+-------------------------------------------------------------------
+Mon Mar 31 20:45:32 UTC 2014 - marcin.bajor@gmail.com
+
+- New batch of "uninitialized values" bugfix (no issue)
+- Crop guide order (issue 2312)
+
+-------------------------------------------------------------------
+Fri Mar 28 14:37:44 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixed uninit access bug (issue 2311)
+- #include fix for freebsd etc
+
+-------------------------------------------------------------------
+Thu Mar 27 22:19:14 UTC 2014 - marcin.bajor@gmail.com
+
+- Pure prophoto blue rendered black (issue 2141)
+
+-------------------------------------------------------------------
+Thu Mar 27 10:56:29 UTC 2014 - marcin.bajor@gmail.com
+
+- Speedup for Graduated Filter (issue 1615)
+
+-------------------------------------------------------------------
+Wed Mar 26 09:44:47 UTC 2014 - marcin.bajor@gmail.com
+
+- 2297: Improved Phase One IIQ support by fixing flatfield and tiling issues on P40+, P65+ and the IQ series. These fixes should also help the Credo series, but we can't decode those files (yet).
+- Improved "Decoding..." progress bar (issue 2311)
+- Show/Hide the top panel shortcut changed to capital "L" as it's more clear.
+- Drenched Default.gtkrc and Default.iconset in fuel and set on fire.
+
+-------------------------------------------------------------------
+Tue Mar 25 01:22:20 UTC 2014 - marcin.bajor@gmail.com
+
+- Removed zoom rectangle from navigator for zoom levels <= fit zoom level (issue 2306)
+
+-------------------------------------------------------------------
+Mon Mar 24 23:12:08 UTC 2014 - marcin.bajor@gmail.com
+
+- Solving issue 2290: "Enhanced look"
+- Fixes a case of undefined behaviour when opening a new default window (issue 2277)
+- Supressing an annoying warning, repeated numerous times (no issue)
+- Updated Nederlands interface translation on behalf of wim ter meer (issue 2310)
+- Fixed some histogram issues (issue 2279)
+
+-------------------------------------------------------------------
+Mon Mar 24 18:38:33 UTC 2014 - marcin.bajor@gmail.com
+
+- Include the standardized <memory> instead of non-standard <auto_ptr.h>
+- Fixed two possible reasons for nan values (issue 2194)
+- Fast Demosaic is executed twice when Input Profile is set to 'Camera standard', another case (issue 2299)
+
+-------------------------------------------------------------------
+Sat Mar 22 02:15:02 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixed clang warning on implicit double to int conversion
+- Clang compile error fix
+- std::setlocale() -> setlocale() (compile fix)
+- Don't include <auto_ptr.h> if compiling with Clang/libc++ (auto_ptr.h doesn't exist)
+- Fixed gcc warning which was caused by fixing clang warning (no issue)
+- Minor clang warning fixes
+- Catch a more general form of exception, as we don't make use of the more specific. Had issues with Runtime type information on OSX, not sure exactly what the problem is but this generalization of exception handling seem to make it work safely.
+- Use locale names with better linux/osx/win cross-platform compatibility (old did not work on OSX); use less specific exception objects to avoid strange throw issues on OSX builds
+- RT tries to move the preview, even if that's not possible (issue 2298)
+
+-------------------------------------------------------------------
+Wed Mar 19 23:31:38 UTC 2014 - marcin.bajor@gmail.com
+
+- Windows default viewer (queue-processed) (issue 2296)
+- Fixing some undefined behaviour part 3 (issue 2277)
+- Fixes some 'code with no effect' detected by cppcheck (no issue)
+- Access to uninitialised value when writing cache data (no issue)
+- Fixed another case of uninitialised memory (no issue)
+- RT opens console window on Windows when a filename or a name of a folder is passed as argument (issue 2300)
+- Fast Demosaic is executed twice when Input Profile is set to 'Camera standard'
+
+-------------------------------------------------------------------
+Mon Mar 17 20:54:55 UTC 2014 - marcin.bajor@gmail.com
+
+- Uninitialised values when using pop1 profile (issue 2289)
+- Buffer underrun when CBDL is activated and all levels set to 1.0 (issue 2294)
+- LUT in initMunsell() are not completely filled, wich leads to uninitialised values (issue 2295)
+- Highlight Reconstruction/Colour propagation uses uninitialised values (issue 2293)
+- Access to uninitialised memory in fast demosaic, no issue
+
+-------------------------------------------------------------------
+Sun Mar 16 19:17:59 UTC 2014 - marcin.bajor@gmail.com
+
+- Intermediate merge of the "Pipette and Preview Widgets" branch
+- Removed static declaration from some vars in vng4_demosaic (issue 2278)
+- "1:1" icon added for the EPD tool + EPD fields' renaming
+- Language entries for popup menu for Rank and Color Label (no issue)
+- French translation update
+
+-------------------------------------------------------------------
+Fri Mar 14 21:18:01 UTC 2014 - marcin.bajor@gmail.com
+
+- Clear crop with c+click (issue 392)
+- Fixing some undefined behaviour part 2 (issue 2277)
+
+-------------------------------------------------------------------
+Fri Mar 14 17:39:03 UTC 2014 - marcin.bajor@gmail.com
+
+- Optimization of VNG4 demosaic (and converting to float calculations) (issue 2278)
+- Time reduction of Noise Reduction (issue 1971)
+- Updated Chinese (Simplified) interface translation on behalf of Jiero (issue 2011)
+- Updated Espanol interface translation on behalf of mapelo/titodelama (issue 2199)
+- Floating point exception: SIGFPE, Arithmetic exception when starting RT (issue 2222)
+- Speedup for fast demosaic (issue 2037)
+
+-------------------------------------------------------------------
+Thu Mar 13 09:40:30 UTC 2014 - marcin.bajor@gmail.com
+
+- Solving issue 2263: "Settings of some tools are lost when enabling some option from File Browser"
+- Fixed - Black and White images still have some color (issue 2275)
+
+-------------------------------------------------------------------
+Tue Mar 11 15:16:41 UTC 2014 - marcin.bajor@gmail.com
+
+- Fixing some undefined behaviour (issue 2277)
+
+-------------------------------------------------------------------
+Sun Mar  9 12:30:57 UTC 2014 - marcin.bajor@gmail.com
+
+- Reformated code of vng4_demosaic() to prepare patches for issue 2278
+
+-------------------------------------------------------------------
+Thu Mar  6 20:51:05 UTC 2014 - marcin.bajor@gmail.com
+
+- Solving issue 2274: "Adding a suffix to the version string"
+- buildRT: Added -s option to define a suffix of the destination build dir, and -t to add a suffix to the version string which is shown in the window titlebar (issue 2274)
+- Small improvement to buildRT
+
+-------------------------------------------------------------------
+Tue Mar  4 08:21:29 UTC 2014 - marcin.bajor@gmail.com
+
+- Optimization for Output-Resize Method Lanczos (issue 2248)
+- CBDL skin tones targeting-protection (issue 2150)
+- Course rotation goes the wrong way when the image is already flipped, (issue 2239)
+- Correcting typo error in an OpenMP statement
+- Correction for Pentax K10D dng files; removed 'pragma comment' and added -Werror=unknown-pragmas
+- pp3 files are always written for all files in a directory, even when nothing was changed (issue 2256)
+- Thumbnail rotation does not include crop rotation, on behalf of Adam Reichold (issue 1716)
+- Added Phase One IQ260 and Hasselblad CFV-50 to camconst.json, patched dcraw to not destroy Hasselblad model name.
+- Batch rename (issue 316)
+- Updated interface translation files: Japanese, Russian, Swedish
+- Fixed forward matrix transpose bug; use DNG reference code white balance derivation for DCP renditions to better handle extreme white balances.
+- Optimization for Flat Field (issue 2262)
+- Remove WB from File Browser (issue 2229)
+- FileChooser-using tools applied unintentionally (SETM), (issue 2259)
+- Improvment for Denoise Luminance detail in Lab mode (issue 2157)
+- Solving issue 2273: "Default processing parameters command line argument causes error"
+
+-------------------------------------------------------------------
+Mon Feb 10 12:00:55 UTC 2014 - marcin.bajor@gmail.com
+
+- Added tools/generateUnusedKeys to get a list of unused interface language file keys and remove them from the translations
+- Added timing and sorting in tools/generateTranslationDiffs
+- Fixed typo in distortion.svg filename
+- Removed unused keys from all interface language files including default
+- Decoration of adjusters (issue 2190)
+- Review of Default Profile (issue 2192)
+- CIECAM produces black splotches in overexposed areas (issue 2187)
+- Rewrote tools/source_icons/README
+- Updated tools/generateUnusedKeys to ignore EXTPROGTARGET_, FILEBROWSER_POPUPRANK and FILEBROWSER_POPUPCOLORLABEL
+- Optimization of ImProcFunctions::rgbProc and ::chromiLuminanceCurve (issue 2077)
+- RT crashes instantly with Sony FE lcp profiles (issue 2196)
+- Fixes a wrong delete statement and a memory leak (issue 2202)
+- Updated Japanese interface translation (issue 2204)
+- Buffer overrun in Amaze demosaic when image width is odd (issue 2203)
+- CC and CL curves need to be reapplied at 1:1 zoom (issue 2208)
+- LC curve blotches (issue 2209)
+- Pentax lens focal length shown as 0.00 mm with K-30 (issue 2207)
+- Added Leica RWL extension to ParseExtensions
+- Remove bold from History panel (issue 2213)
+- buildRT updated. Now menu handles long branch names correctly. Formatting improved.
+- Added compareRT Bash script, to help compare images developed with pre- and post-patch RT
+- Removed Hot/Dead pixel filter from Default.pp3
+- USM's halo control behaves oddly (issue 409)
+- Changed misleading error message
+- Solving issue 2197: "Pentax K-3 support"
+- [PCVignette] and [Gradient] Strength=0.6 (issue 2162)
+- Update to dcraw 9.20 Revision: 1.461
+- Black and white channel-mixer new algorithm for orange Yellow Cyan Purple Magenta
+- Solving issue 2221: "Specifying the Settings and Cache path through environment variables"
+- Optimization of RawImage::get_colorsCoeff (issue 2227)
+- Avoids invalid reads which occured with Pentax K100D, patch provided by Hombre
+- Revised default and updated all language files (issue 2188)
+- Solving issue 2235: "JPEG subsampling parameter is missing in the command line"
+- The opened/closed state of the left and right panels of the file browser is now remembered when restarting RT
+- Enhanced lens identification with Canon cameras (issue 2228)
+- CIECAM Dancing pixels (issue 2234)
+- Vignetting Correction bug makes hard transitions for positive Amount values (issue 2241)
+- Optimization for RawImageSource::getRAWHistogram (issue 2238)
+- Optimization for Vignette Filter (Exposure tab) (issue 2243)
+
+-------------------------------------------------------------------
+Wed Jan  8 12:40:03 UTC 2014 - marcin.bajor@gmail.com
+
+- Updated Swedish interface translation file
+- Tooltip for the crop tool
+- Updated language files for issue 2164 (changed keyboard shortcuts)
+- Updated French translation
+- Updated generateTranslationDiffs to put comments at the beginning of default
+- Language fixes for "Save Reference Image for Profiling" (issue 2180)
+- generateTranslationDiffs now generates locale files
+- Updated Russian interface translation (issue 2184)
+- Updated Spanish interface translation (issue 2181)
+- Updated Japanese interface translation (issue 2185)
+- Update to all translation files for tagging 4.0.12
+- Updated RawTherapeeManual_en.pdf, RELEASE_NOTES.txt and COMPILE.txt for tagging 4.0.12
+- Removed PDF, updated COMPILE.txt and RELEASE_NOTES.txt with RawPedia stubs for 4.1
+- Updated Czech interface translation (issue 2189)
+
+-------------------------------------------------------------------
+Thu Jan  2 11:58:05 UTC 2014 - marcin.bajor@gmail.com
+
+- Fix to HISTORY_MSG_195 and 210-213
+- Solving issue 2163: "RT freezes when trying to set a color label in file browser using keyboard-shortcuts"
+- Review of bundled processing profiles (issue 1738)
+- Revision of UI for sane defaults, consistency and a professional look (issue 2162)
+- Solving issue 2109: "Save Partial Profile doesn't work"
+- Keyboard shortcut in SaveAs window (issue 2165)
+- Solving issue 2137: "Moving HLR to a better place to preserve RT's structure"
+- Interface language files, COMPILE.txt and RELEASE_NOTES.txt updated in preparation for 4.0.12 tagging
+- 'Cannot use camera white balance' error in console when using Sony files and RT compiled with gcc 4.8.x (issue 2121)
+- Some keyboard-shortcuts only work with US-keyboard-layout (issue 2164)
+- Update to German translation, but it's not complete
+
+-------------------------------------------------------------------
+Thu Dec 26 12:57:53 UTC 2013 - marcin.bajor@gmail.com
+
+- Curve H=f(H) L=f(H) in Lab mode (issue 2096)
+- Fixed chromaticity -100 same as 0 and Bwtoning (issue 2127)
+- Suppress B&W Standard for AfterCurve (issue 2127)
+- Updated Japanese interface translation
+- Fixed bug in rgb_cam verbose message
+- Fixed arw2 indentification bug
+- Fixed Auto Levels Clip malfunction (issue 2104)
+- Auto Eposure - Clean Old files and suppress Verbose (issue 2104)
+- Improvement to the raw Auto CA correction (issue 2128)
+- Set white level for ARW2 to 16300 to reduce camconst.json maintenance need
+- Better rendering of capture one ICC, support for Leaf ICCs, colorconversion cleanup, deactivation of iccgamut and matrix blending setting (issue 2123)
+- Extended camconst.json to handle raw crop (issue 2139)
+- Solving issue 2124: "Contrast by Detail Levels - 5 levels"
+- Reduce memory footprint of 5-level Contrast-by-Detail (issue 2124 comment 28)
+- GUI change of the HLRecovery tool inside Exposure (issue 2137)
+- Restored initialGain to use as-shot-wb as reference (issue 2143)
+- Adjusted initial gain so it's adapts to current white balance
+- Contrast by detail levels - fixes to UI and precision in engine
+- Fixed rawimage initial gain and scale colors so it takes black level adjustments (if any) into account
+- Improvment Denoise -- how to deal with yellow noise and others quality improvment (issue 2131)
+- Fixed crash when using Spot WB on image edges (issue 1903)
+- Fixed Artifacts when moving the L curve blackpoint (issue 2144)
+- Adding a "1:1" symbol in tool's titile that require a 1:1 preview to be seen (issue 2132)
+- Activated Auto Raw-CA-correction at zoom levels lower than 100% (issue 2152)
+- Info text - adding image dimensions (issue 2151)
+- Output of underexposed image with Denoising active are incorrect (issue 2153)
+- French language file update, + slight cleanup in default
+- Updated Nederlands interface translation, courtesy of willemtermeer (issue 2156)
+- Revision of generateTranslationDiffs (issue 2138)
+- Updated all interface translation files
+- Updated UK and PL locale interface translation files and README
+- White balance slider now non-linear (issue 2147)
+- Deutsch translations for graduated and vignetting filter + corrections to default and English(UK)
+- Correction to Czech, Francais and Nederlands language file, because default was wrong
+- Language strings update, principally Japanese
+- Fixed CL (chromaticity to Luminance) curve broken (issue 2160)
+
+-------------------------------------------------------------------
+Thu Dec 12 23:03:38 UTC 2013 - marcin.bajor@gmail.com
+
+- Histogram now shows output space (with gamma normalized to 569/256) instead of working space
+- Updated Czech language file (issue 2117)
+- Correcting a tooltip related to the CPB path field + bugfix of an unwanted double quote in the CPB command line (issue 2111)
+- Wrong bracketing information in Metadata for some Nikon cameras (issue 2110)
+- Enhanced lens info and filter possibilities for Nikon shooters when using manual lenses (issue 2113)
+- Updating all language files with the latest added string + updated Japanese file
+- RT 4.0.11.177 Segfault on start with 32-bit Linux (issue 2118)
+
+-------------------------------------------------------------------
+Sun Dec  8 16:04:32 UTC 2013 - marcin.bajor@gmail.com
+
+- Reduce peak memory consumption in some cases, no Issue
+- Handle the case with occassional bad directory entries without aborting the whole directory scan (issue 2036) 
+- Fixed handling of failed mmap() calls (issue 1629)
+- Made remove_shortcut_folder more robust by catching exceptions (issue 2040)
+- Minor documentation update to make it easier to understand. No changes to actual constants.
+- Ctrl-Q now Ctrl-B
+- Fixes for OS X and Linux; as options files are changed the missing .srf format is also added to the browser (issue 853)
+- Amaze optimization step 2, (issue 1835)
+- Don't use FileChooserButton action_select_folder on Linux and OS X due to buggy GTK (2.4.22 at time of commit). Unchanged code on Windows (works better there) (issue 1867)
+- Updated docs
+- Removed LSIsAppleDefaultForType, don't think we should promote to be system default application.
+- Broken black levels introduced in camconst.json handling now fixed (issue 2049)
+- Yet some camconst.json doc updates: added a few comments about black levels
+- Solving issue 2046: "RT crash on First run"
+- Black and white preferences (issue 2010)
+- Fixes artifacts caused by amaze, (issue 1835)
+- Black and white - reduce artifacts
+- Solving issue 2052: "Vignetting, Post-Crop Vignetting and Graduated Filter tool granularity in History" + language strings update
+- "One-way communication file between RT and the Custom Profile Builder" (issue 2047)
+- Solving issue 2058: "Opening Defringe causes RT to crash"
+- Fuji x100 blacklevels fix (issue 2049)
+- Reverted mistakingly committed debug call to gtk_init()
+- Zoom to center (issue 795)
+- Improved DCP support; Issue 2042: batch queue crash fix (issue 1987)
+- Added language support (issue 2042) 
+- Add chromaticity according to luminance (issue 2056)
+- Lab curves - update background histogram for L and C
+- Background histogram exposure
+- Better demosaicing and ca autocorrect performance with extreme white balances. This patch also adds a missing colortemp parameter that DCP color correction needs (issue 2059)
+- Cache custom wb at open (issue 2073)
+- Fixed uninit bug affecting dcp boxes
+- White balance fixes (issue 2073)
+- Now jpeg quality slider behaves sanely (issue 1774)
+- GUI cleanup for White Balance tool (see issue 2010)
+- Renamed files to "blackwhite.cc/h" + small bugfix in BlackWhite::setting changed
+- Recognizing more EXIF tags (issue 2087)
+- Fixed strange behavior sliders orange and magenta for negatives values Black White mixer (issue 2010)
+- Bugfix: the image was still B&W even when BlackWhite::enabled is false (issue 2010, comment #130)
+- Fixed GUI Free Gamma settings is not loaded (issue 2093)
+- Before/after double-click zoom now properly synched (issue 795)
+- Updating the Dutch language file (see issue 2090)
+- Solving issue 2045: "Batch queue pp3's conflicts with main pp3's"
+- Black & White tool: GUI cleanup (issue 2010) + bugfix (issue 1779)
+- Fixed Black and White Total in absolute mode (issue 2010)
+- Fixes another two bugs detected by cppcheck
+- WorkingProfile changed to ProPhoto to prevent color gamut clipping at the beginning (issue 2068)
+- Disables annoying messageboxes when working with TIFF files, (issue 2094)
+
+-------------------------------------------------------------------
+Sat Nov  9 23:01:11 UTC 2013 - marcin.bajor@gmail.com
+
+- Avoid double processing of thumb when adding pic to queue (issue 1803) 
+- IGV-demosaic, wrong rendering of top and bottom border (issue 1908)
+- Additional Zoom levels (issue 1816)
+- Fixed cropwindow gripping bug (issue 2012)
+- Solving issue 466: "DNG makerNote"
+- Fixed high ISO parsing (issue 106)
+- Fixed a too agressive celanup of patch from issue 466. Now printAll is working fine again.
+- Added graduated filter tool (issue 1615)
+- Kodak DCR support (issue 1661)
+- Fixed gradient coordinate bugs
+- Updated language strings, inluding Firefly's japanese8 patch
+- Solving issue 2027: "Compile error for change ff4d2c1c8ba4"
+- Minor addition to documentation (ie no functional change)
+- Removed redundant HSV prefix on HSV Channel so it takes less space and follows the same principle as the other tools (issue 1947)
+- Solving issue 2023: "Pseudo memory leak with Detail window + memory handling optimization"
+The Detail window buffers are now freed up when the it is closed. The CIECAM buffers are allocated only if necessary now, and if the single block allocation fails, it will try to allocate it in several blocks.
+- Nikon D1x nefs not demosaicing properly (issue 1088)
+- Added vignette filter tool (issue 2001)
+- Crop box can now be grabbed in the corners (issue 2025)
+- Shadows/Highlights - High radius causes vertical lines (issue 1921)
+- Speedup for Parametric Curves (issue 2021)
+- Solving issue 2018; "Neutral profile not neutral (highlight recovery is 70)"
+
+-------------------------------------------------------------------
+Sun Oct 27 21:17:53 UTC 2013 - marcin.bajor@gmail.com
+
+- Fix a misbehavior when opening a new Editor tab (see comment 35 from issue 853)
+- Suppressing 2 Gtk warning: #1 when the lens profile's filename is empty; #2 when opening the Preferences window
+- Updated language strings, including the Czech file (issue 1979) and Japanese file
+- Bugfix : An erroneous default profile's path was sent to the Custom Profile Builder
+- Updated Japanese translation
+- Solving issue 1990: "Patch to add medium format raw formats to default options", on behalf of torger.
+- Solving issue 1993: "Some bundled profiles appears twice in the ProfilePanel's combobox"
+- Speedup for Defringe and Badpixelscam (issue 1972)
+- The first point of the Flat curve editor was misbehaving when using the Shift modifier key
+- Content of the ProfilePanel and Theme list now sorted alphabetically on Linux too (issue 853)
+- Tonemapping optimization (issue 1895)
+- Fix for issue 1996; better handling of rotated thumbnails
+- Handle LeafData in little endian .mos files (issue 1994)
+- Optimization for ImProcFunctions::firstAnalysis in Filebrowser mode (issue 1997)
+- Solving issue 1752: "White and black point database"
+- Fixed camconst.json parse bug; added iso-dependent white levels for Canon EOS 5D Mark II (issue 2008)
+- Small correction to SparseConjugateGradient(), no Issue
+- Solving issue 2009: "RT requires code change to work properly with libpng16"
+- Optimization for ImProcFunctions::chromiLuminanceCurve (issue 2006)
+- (Aperture scaling for raw files): committed work in progress. Works, but may be further tuned after more discussion (issue 2007)
+- Fixed ratio cropped resizing now works in full with the crop in image corners (issue 354)
+- Sony ARW2 files are now 14 bit as they should be so we get full DR (truncated to 12 bit before), also fixed a buffer overrun bug for ARW2 decoding, black level constants updated to 14 bit (issue 2013)
+- camconst.json can now have several model names per entry (makes the file more compact as many cameras share constants)
+- Added Canon 5Dmk3 camconst.json entry, with data from ilias giarimis
+- Added a couple of simple Sony entries to camconst.json to show that arw2 is 14 bit now
+- Minor doc update, added quality ratings to existing entries
+- Bug fix for the CPB command line field in Preferences, which is no more automatically and internally surrounded by double quote to let the user set command line arguments.
+- Camconst stuff: now case insensitive matching; print levels and where they come from if verbose; Phase One camconst.json minor fixes and comments
+- Added more docs; minor Phase One IIQ white level adjustment
+- AHD demosaicer: removed integer rounding trick leftover as the code is floating point (issue 1880)
+- Flatfield shortcut to current dir; relative paths in .pp3 if referring to files in same dir or subdir (issue 1346)
+
+-------------------------------------------------------------------
+Sun Sep 22 15:54:31 UTC 2013 - marcin.bajor@gmail.com
+
+- Adding Fujifilm FinePix S9500 DCP profile
+- Speedup for Line Denoise (issue 1953)
+- Small issue found in Micocontrast (issue 1957)
+- The Camera make and model was not read correctly from cached data (issue 1946)
+- Solving issue 1961: "Gui freezes when using 'apply-partial'" + fix an include in order to use the TRACE_MYRWMUTEX define
+- Speedup for 3 functions in rawimagesource.cc (issue 1964)
+- Speedup for Highlight Reconstruction/Colour Propagation (issue 1965)
+- Why thumbnail-creation is so slow (issue 1967)
+- Corrects an error in Highlight Reconstruction/Colour Propagation (issue 1965)
+- Solving issue 1955: "Compatibility break with former's Lab "Saturation" slider, now named "Chromaticity" "
+- Speedup for Contrast by Detail (issue 1968)
+- Solving issue 1947: "RT frequently "forgets" ICM's working profile and crashes shortly after".
+Also seems to fix frequent crash on Win32 ( http://rawtherapee.com/forum/viewtopic.php?f=3&t=4628 )
+- Updated Japanese strings, on behalf of firefly
+(posted here: http://www.rawtherapee.com/forum/viewtopic.php?p=33619#p33619 )
+- Solving issue 1934: "Crash on adjusting vertical perspective / rotation"
+- One step towards "Profile (look) browser" (issue 853): global (bundled) and user's profiles can now be stored in subdirectories.
+"Use bundles profiles" added to the Preferences window.
+- Speedup for Impulse Noise Reduction (issue 1970)
+- SSE-version of SHMap::dirpyr_shmap (issue 1950)
+- Solving issue 1974 :CIECAM Hotbad pixel filter is called at every zoom-level
+- Fixes Immediate crash with 4.0.11.52 on WXP32, Issue 1982
+- Defringe threshold enhancement (see issue 1801 - thanks, Ingo)
+- Correcting typo error in a folder name
+- Correcting problem of Profiles in sudbirectories not being installed automatically
+
+-------------------------------------------------------------------
+Wed Aug 21 21:29:02 UTC 2013 - marcin.bajor@gmail.com
+
+- Solving issue 1684: "thumbnail.cc uses Glib::Mutex recusively" ; this changeset introduce a new MyMutex and MyMutex::MyLock class that has to be used instead of Glib ones 
+- Picture turns green after auto CA (issue 1938)
+- Solving issue 1901 & 1925: Adding Canon PowerShot S110, Pentax K-5 & K-5 II from Stefan Ittner, and Pentax K-r from Hombre
+- Solving issue 1946: "Custom Profile Builder needs more parameters". The new parameter list is:
+* Image file
+* Default processing profile
+* Cache path (for logging files)
+* ForFlagging (bool; true if the procparams are created for an image being simply flagged - inTrash, colors, rank)
+* F Number
+* Exposure
+* Focal length (remains the same)
+* ISO
+* Lens
+* Camera make (new)
+* Camera model (new) ... those 2 new parameters was "camera" before.
+- Speedup for Hot/Dead pixel filter (issue 1943)
+- Speedup for Shadows/Highlights HQ mode (issue 1950)
+
+-------------------------------------------------------------------
+Sun Aug 11 20:15:58 UTC 2013 - marcin.bajor@gmail.com
+
+- Solving  issue 1940 : "Sliders values wrap around"
+- Solving issue 1794: "Cannot save image or PP3 from Image Editor" 
+
+-------------------------------------------------------------------
+Thu Aug  1 07:10:31 UTC 2013 - marcin.bajor@gmail.com
+
+- Solving  issue 1936 : "Using the File Browser's filters freeze RT"
+- Solving  issue 1937 : "Auto-WB goes green when image is re-opened" 
+
+-------------------------------------------------------------------
+Sun Jul 28 13:23:00 UTC 2013 - marcin.bajor@gmail.com
+
+- Solving  issue 1924 : "Thumbnails size can't be increased in RT 4.0.11.16 (Linux)" 
+- Solving issue 1894: "White balance adjustements" ; Warning: it is recommended to clear the "cache\data" folder
+- Solving  issue 1935 : "Crash when UserComment's EXIF tag is non empty"
+- Solving  issue 1932 : "No EXIF field on TIFF file's thumbnails"
+
+-------------------------------------------------------------------
+Sat Jul 13 16:48:05 UTC 2013 - marcin.bajor@gmail.com
+
+- Optimization for Chromatic Abberation Correction (issue 1923)
+- Keyboard shortcuts in  File Browser - improments to Shift + Arrow keys (issue 1919)
+
+-------------------------------------------------------------------
+Mon Jul  8 19:44:16 UTC 2013 - marcin.bajor@gmail.com
+
+- Keyboard navigation in File Browser - Home and End shortcuts (issue 1919) 
+
+-------------------------------------------------------------------
+Wed Jul  3 19:09:51 UTC 2013 - marcin.bajor@gmail.com
+
+- Partially solving issue 1788: "Crashing during processing of queue". It also correct a bug of wrong image orientation (was wrong in the File Browser while good in the Editor tab).
+- Updated French strings + Lebarhon added to the Authors list as contributor (translation)
+- Solving issue 1907: "New version compiled today does not start", that was affecting Linux systems like Ubuntu 12.04
+- Batch queue improvements: keyboard shortcuts and a sequence index; on behalf of Adam Reichold (issue 1915)
+- Support for dcraw 9.19 (issue 1627)
+- Keyboard navigation in File Browser (issue 1919, on behalf of Adam Reichold). Select a thumbnail using the arrow keys, select multiple with Shift
+
+-------------------------------------------------------------------
+Sat Jun 22 19:52:02 UTC 2013 - marcin.bajor@gmail.com
+
+- Revert to 4.0.11.7 because of issue 1905
+- Reverted changes:
+* Partially solving issue 1788: "Crashing during processing of queue". It also correct a bug of wrong image orientation (was wrong in the File Browser while good in the Editor tab).
+
+-------------------------------------------------------------------
+Fri Jun 21 14:35:26 UTC 2013 - marcin.bajor@gmail.com
+
+- Optimization for IGV-Demosaic (issue 1893)
+- Partially solving issue 1788: "Crashing during processing of queue". It also correct a bug of wrong image orientation (was wrong in the File Browser while good in the Editor tab).
+
+-------------------------------------------------------------------
+Sun Jun  9 14:11:49 UTC 2013 - marcin.bajor@gmail.com
+
+- Man page: don't use hyphen as minus sign. 
+- SSE2 opt for Denoise (issue 1890)
+- Changes to SLEEF for issue 1893
+- Optimization for IGV-Demosaic (issue 1893)
+
+-------------------------------------------------------------------
+Thu May 30 10:32:59 UTC 2013 - marcin.bajor@gmail.com
+
+- Update to 4.0.11
+- Updated Swedish translation (issue 1881)
+- Updated Polish translation files
+- Some french strings have been shortened
+- The fast export panel instruction is now a tooltip (cursor over the title); it's width was a problem and took too much place, breaking the look'n feel
+- Some HSeparator removed from the Demozaicing tool
+- The demosaicing combobox has been normalized: now use the "(unchanged)" label and all tools' specific options appears when demozaicing is set to "(unchanged)"
+- (LAB/CIECAM) removed from the tools' title
+- Corrected black point for SONY NEX-5N
+- Updated RawTherapee Manual
+
+-------------------------------------------------------------------
+Sun May 19 20:10:44 UTC 2013 - marcin.bajor@gmail.com
+
+- "Defringe specific colors only" (issue 1858)
+- Profiles: adding AutoAdapscen=true and minor cleanup
+- Amaze optimization (issue 1835)
+- Solving issue 1874: "RT doesn't build anymore for WinXP (32 bits)" 
+- Windows compilation update (issue 1790)
+- Fix athlon64 optimized build (issue 1878)
+
+-------------------------------------------------------------------
+Sun May 12 15:05:32 UTC 2013 - marcin.bajor@gmail.com
+
+- Fix CIECAM - automatic calculation adaptation scene luminosity (issue 1838)
+
+-------------------------------------------------------------------
+Wed May  8 11:55:51 UTC 2013 - marcin.bajor@gmail.com
+
+- The -0.1 value of the horizontal or vertical slider of the perspective tool were flipping the image. 
+
+-------------------------------------------------------------------
+Tue May  7 18:48:40 UTC 2013 - marcin.bajor@gmail.com
+
+- Minor corrections to partial profiles to improve usability.
+- Synchronizing default values in procparams with Neutral (issue 1860)
+- Memory corruption in cfa_linedn (issue 1862)
+
+-------------------------------------------------------------------
+Mon Apr 29 09:49:55 UTC 2013 - marcin.bajor@gmail.com
+
+- Solving issue 1851: "RT crashes in Single Editor Tab Mode when trying to save with Ctrl-S" 
+- Bundled Profiles: Faded Pack. See illustration at http://www.michaelezra.com/Projects/RT/profiles/FadePack1_RawTherapee-1.jpg
+
+-------------------------------------------------------------------
+Sun Apr 28 15:32:42 UTC 2013 - marcin.bajor@gmail.com
+
+- Fix random bright pixels appear when using CIECAM02 and a wide gamut color space and automatic calculation of adaptation scene luminosity
+
+-------------------------------------------------------------------
+Sun Apr 21 22:04:04 UTC 2013 - marcin.bajor@gmail.com
+
+- Shortcuts to apply rank and color labels and a new direct popup menu for color labels, all in the File Browser (issue 1839) 
+- Fine-tuning of Skintones profiles
+- Fix to a copy-paste error in "Skintones - Pale TM bright.pp3"
+- Added EXPORT_BYPASS_RAW_LMMSE_ITERATIONS string (issue 1840)
+- Fixes Issue 1826, names of non Canon-lenses on Canon-Cams are not correctly shown
+- Italiano translation update (issue 1846)
+- Avoids crashes when opening overexposed DNG v1.1 from CHDK or normal CR2 (issue 1545)
+
+-------------------------------------------------------------------
+Sun Apr 14 14:40:37 UTC 2013 - marcin.bajor@gmail.com
+
+- Updated Swedish language file (issue 1831)
+- Workaround for issue 1794: "Cannot save image or PP3 from Image Editor"
+- New gtk-zoom-100 1:1 icon (issue 47)
+- Support for D5200, D7100 and Coolpix A (issue 1815)
+- Updated PP3 profiles
+- Language files prepared for 4.0.11
+- Updated Czech translation file (issue 1834)
+- Added button name "Processing profile fill mode" to tooltips.
+- Fixing a Mutex issue
+- Adding support of the "Profile Fill Mode" button to the "Load Profile" button (issue 1751)
+
+-------------------------------------------------------------------
+Tue Apr  9 05:16:16 UTC 2013 - marcin.bajor@gmail.com
+
+- Changed shortcut (from Alt to the right-side Alt) for auto-preview of highlight and shadow clipping indicators (Windows only) (issue 1813) 
+- Fix Tone mapping (CIECAM02) unusable - whites never white (issue 1827)
+- Progress bar should not show "Loading thumbnails..." for empty dirs. (issue 1817)
+- Solving issue 1751: "When switching processing profiles, missing values should be taken from Neutral" ; also updates the French language file
+
+-------------------------------------------------------------------
+Sun Apr  7 14:09:16 UTC 2013 - marcin.bajor@gmail.com
+
+- Image navigation for single tab editor, synchronization of editor with file browser and improvements to various other shortcuts (issue 47, comment 52) 
+
+-------------------------------------------------------------------
+Thu Apr  4 18:29:21 UTC 2013 - marcin.bajor@gmail.com
+
+- Updated Japanese translation (issue 1820)
+- LMMSE improves speed and sets a slider to improve processing see (issue 1802)
+
+-------------------------------------------------------------------
+Mon Apr  1 21:03:34 UTC 2013 - marcin.bajor@gmail.com
+
+- Solving issue 1784: "Auto distortion correction is not working" 
+
+-------------------------------------------------------------------
+Mon Apr  1 11:38:52 UTC 2013 - marcin.bajor@gmail.com
+
+- Updated Italiano translation file (issue 1797)
+- Fixes crashes, when using NR, because FFTW isn't tread save (issue 1796)
+- Solving issue 1762: "Auto Levels does not work with 8-bit images" and issue 1148: "Auto White Balance doesn't work in a File Browser tab"
+- Updated Nederlands translation file (issue 1814)
+- Revision of --help (issue 1812)
+- Solving issue 1657: "Destination save path forgotten for photos in queue when RT crashes". Also allow to set the Saving parameters or not, when sent to the queue with the "Save as" dialog box
+- New zoom levels (issue 1816)
+
+-------------------------------------------------------------------
+Tue Mar 26 08:46:21 UTC 2013 - marcin.bajor@gmail.com
+
+- CIECAM Fix curves blowing highlights (issue 1766)
+- Fix Colored pixel artifacts when using Edges (issue 1799)
+
+-------------------------------------------------------------------
+Sat Mar 23 19:12:06 UTC 2013 - marcin.bajor@gmail.com
+
+- Optimization for Vibrance - Lab adjustements - CIE Colour Appearance (issue 1789)
+- Optimization for RGB_denoise when Delta sliders are used (issue 1787)
+- Solving issue 1776: "Support for TIFF files with alpha channel (RGBA)"
+- Solving issue 1747: "HSV grid lines thicker"
+- Solving issue 1634: "Set horizontal hard stop for red point in the HSV equalizer"
+- IGV Fix artifacts in clipped regions - one constant changed (issue 1771)
+
+-------------------------------------------------------------------
+Mon Mar 18 09:01:57 UTC 2013 - marcin.bajor@gmail.com
+
+- Increase of precision of perspective parameters in UI (issue 1781), pp3 version change to 307
+- Preferences/Batch processing options: all to 'Add' and all to 'Set' (issue 1785)
+- Edges code optimization
+
+-------------------------------------------------------------------
+Sat Mar 16 19:32:56 UTC 2013 - marcin.bajor@gmail.com
+
+- Fix for saving denoise method in file browser (issue 1778) 
+- Support for Panasonic G5 (issue 1783)
+
+-------------------------------------------------------------------
+Thu Mar 14 19:00:28 UTC 2013 - marcin.bajor@gmail.com
+
+- LMMSE IGV Fix reduce artefact in highlight and borders (issue 1771 and issue 1741)
+- Optimization of damping part of RL-Sharpening (issue 1759)
+- Optimization for float-version of ciecam (issue 1761)
+- Optimizations for Lab Adjustment (issue 1758)
+- Noise Reduction changes (issue 1756)
+
+-------------------------------------------------------------------
+Wed Mar 13 06:50:08 UTC 2013 - marcin.bajor@gmail.com
+
+- Igv and LMMSE demosaicing for noisy images see (issue 1741)
+- Solving issue 1760: "ALLEnhance=false added to saved PP3 processing profiles"
+- Solving issue 1769: "Single Editor mode: unnecessary thumbnail refresh when switching from tab to tab"
+- Updated Czech language translation file (issue 1775)
+
+-------------------------------------------------------------------
+Sat Mar  9 13:13:40 UTC 2013 - marcin.bajor@gmail.com
+
+- Fixes burnt film artifacts (issue 1754)
+- Update of Deutsch translation
+- Cleaned up image files
+- Adding alert windows is Flat fFiled or Dark Frame default directories are not set in preferences in some situations. (part of issue 1713)
+- PP3 processing profiles - revision of and inclusion of new ones (issues 1737, 1738, 1748)
+- Optimization of RGB-Denoise (issue 1755)
+
+-------------------------------------------------------------------
+Tue Mar  5 09:13:31 UTC 2013 - marcin.bajor@gmail.com
+
+- Noise Colour Chanels Lab mode see (issue1 734)
+- Solving issue 1730: "Long startup time / all files on all mounts are scanned while opening". The ICC profile's directory scanning is no more recursive.
+- Updated French (and default) strings
+- Updated Swedish language file (issue 1749)
+- Workaround for pink highlight issue with some Canon cameras using "full" ISO values. Courtesy of aferrero( issue 1695)
+- Fixed handling of custom input file names
+- Solving issue 1719: "RT copies second-last row and column into the last row and column in non-raw images".
+
+-------------------------------------------------------------------
+Sat Mar  2 14:55:23 UTC 2013 - marcin.bajor@gmail.com
+
+- Small update to Deutsch language file (TP_ICM_INPUTCAMERAICC_TOOLTIP), big patch because it used different line ending styles. Courtesy of Cytrinox- No error message saving profile to write protected directory (issue 1704)
+- Ciecam and sharpening (issue 1711)
+- Small fix and revision of previewmode* images 
+
+-------------------------------------------------------------------
+Tue Feb 26 21:18:23 UTC 2013 - marcin.bajor@gmail.com
+
+- SSE-Versions of gaussHorizontal and -Vertical used in RL-Sharpening
+- Fix for crash when zooming thumbs in/out in File Browser tab (issue 1675)
+- RGB curves: option for luminosity mode (issue 1607)
+- Appearance of ab curves (issue 1729)
+- Updating French strings
+- "FtblockDN.cc RGB_denoise": this patch add a Performance tab to limit the number of core used for RGB denoising tool (issue 1680)
+
+-------------------------------------------------------------------
+Sat Feb  9 16:05:25 UTC 2013 - marcin.bajor@gmail.com
+
+- The "Grey value of the viewing's device" in Preferences were not saved
+- Adding Sound notifications for Linux (issue 469)
+- Updated Italiano translation file (issue 1700)
+- Solving issue 1690: "ver 4.09.50 unable to save processing profiles". There is now 2 new shortcut places when loading/saving a profile, and 1 new place when "saving as.." an image in the dialog box.
+- Optimization for Tonemapping (issue 1670)
+- CIECAM-UI inconsistency and brightness curve (issue 1699 and issue 1715)
+
+-------------------------------------------------------------------
+Sun Jan 27 18:57:23 UTC 2013 - marcin.bajor@gmail.com
+
+- CIECAM02-CAT02 auto-degree display value (issue 1692)
+- Solving issue 1656: "CH and HSV curves lack copy/paste functions"
+- Support for 32 bit Tiff images (issue 1575)
+
+-------------------------------------------------------------------
+Fri Jan 25 21:10:46 UTC 2013 - marcin.bajor@gmail.com
+
+- Tone-mapping and OpenMP (issue 1670)
+- Revision of default and English UK/US language files
+- Increase speed CIECAM02 (issue 1682)
+- Add auto-detection of user language on Linux (issue 1687)
+- Performance optimization for impulse_nr on multi-core-systems
+- Performance optimization of defringe (issue 1674)
+- Performance optimization for amaze on multi-core-systems (issue 1676)
+- Performance optimization for impulse_nr on multi-core-systems (issue 1671)
+
+-------------------------------------------------------------------
+Sat Jan  5 12:31:54 UTC 2013 - marcin.bajor@gmail.com
+
+- Updated Japanese translation (issue 1655)
+- Add the word 'close' to the list of phrases (issue 1659)
+- Add close button to about dialog (issue 1659)
+- Update to dcraw 9.17 (issue 1627)
+- French locale file quick fix (label was too long)
+- Reduce or eliminate some artifacts in CIECAM02 - and others bugs
+- Solving issue 1650: "Image information not displayed when dir has & in name"
+
+-------------------------------------------------------------------
+Fri Dec 21 15:28:47 UTC 2012 - marcin.bajor@gmail.com
+
+- Improvement histogram curves CIECAM see (issue 1640)
+- Extending integration to the latest version of Autopano Pro and Autopano Giga 3.0+
+- Updated Catala translation (issue 1601)
+- Tone-mapping with CIECAM02 see (issue 1643)
+- Fix for precision loss in opening 16 bit TIFF files (issue 1642)
+- Show histogram (curves) with tone-mapping in CIECAM02
+- Fix for 'avoid color shift' in Labadjustements and 'gamut control' in CIECAM
+- CIECAM fix differences between algorithm colorfullness and chroma see (issue 1649)
+
+-------------------------------------------------------------------
+Sat Dec  1 09:10:52 UTC 2012 - marcin.bajor@gmail.com
+
+- Fix for enabling bwtoning (issue 1633)
+
+-------------------------------------------------------------------
+Thu Nov 29 22:09:16 UTC 2012 - marcin.bajor@gmail.com
+
+- Adding histograms to curves in Lab and CIECAM (issue 1630)
+
+-------------------------------------------------------------------
+Sun Nov 18 01:33:58 UTC 2012 - marcin.bajor@gmail.com
+
+- Another little bug fix CIECAM
+
+-------------------------------------------------------------------
+Sat Nov 17 12:25:31 UTC 2012 - marcin.bajor@gmail.com
+
+- Adding a shortcut for saving snapshots and snapshot pane mod to be resizable (issues 1124, 1580) 
+- Three curves for CIECAM (issues 1620, 1623)
+- Fix bug in output CIECAM
+
+-------------------------------------------------------------------
+Sun Nov 11 20:45:49 UTC 2012 - marcin.bajor@gmail.com
+
+- Solving issue 1611: "Tone curve in Weighted mode is producing artifacts at overexposed areas."
+
+-------------------------------------------------------------------
+Sat Nov 10 20:58:33 UTC 2012 - marcin.bajor@gmail.com
+
+- Color Appearance Model 2002 added (issue 1572)
+- Solving issue 1618: "GUI freezes: Adjuster::sliderReleased"
+
+-------------------------------------------------------------------
+Sun Nov  4 11:04:39 UTC 2012 - marcin.bajor@gmail.com
+
+- DCP color profile for Olympus XZ-1
+- Bugfix for FTblockDN.cc, removing tile pattern from output
+- Updated Catalan translation on behalf of josepmguasch (issue 1600)
+- Solving issue "Caption text obscured / hidden"
+- Change of clipped indicators in Luminosity Preview mode to be based on the L values (issue 1608)
+
+-------------------------------------------------------------------
+Sat Oct 20 17:02:23 UTC 2012 - marcin.bajor@gmail.com
+
+- Revised the default language file following the RawTherapee Style Guide, Updated "English (US)" and "English (UK)" files accordingly, removed "English file",
+- Updated Czech language file (issue 1588)
+- Enhancement to Find by Filename filter - support for comma-separated values (issue 1594)
+- Solving issue 1573: "Tone curve type order"
+
+-------------------------------------------------------------------
+Sat Oct  6 23:20:50 UTC 2012 - marcin.bajor@gmail.com
+
+- Updated spanish translation (issue 1569) 
+- Fixed auto-exposure on image with large overexposed areas (issue 1358)
+- DCP color profile for Panasonic DMC-G5
+- Fixed crash on startup (issue 1513)
+
+-------------------------------------------------------------------
+Sat Sep 22 04:35:33 UTC 2012 - marcin.bajor@gmail.com
+
+- Solving issue 1529: "Better color handling of the Tone curve", adds a second Exposure tone curve 
+
+-------------------------------------------------------------------
+Wed Sep 19 20:26:48 UTC 2012 - marcin.bajor@gmail.com
+
+- Fixed large memleak/crash using RL Deconv. sharpening (issue 1564)
+
+-------------------------------------------------------------------
+Sun Sep 16 20:59:01 UTC 2012 - marcin.bajor@gmail.com
+
+- Improvement Lab adjustements - Red and skin protection (issue 1514) 
+
+-------------------------------------------------------------------
+Sun Sep 16 05:25:20 UTC 2012 - marcin.bajor@gmail.com
+
+- Updated English UK translation (issue 1549)
+- Swedish translation updated (issue 1553)
+- Default options optimized, and a few minor formatting fixes (issue 744)
+- Fixed clipped areas become light gray using "avoid color shifts" (issue 1552)
+- Improvement gamut-control and conversions RGB<=>Lab (issue 1551 and 1552)
+
+-------------------------------------------------------------------
+Sun Sep  9 06:35:52 UTC 2012 - marcin.bajor@gmail.com
+
+- Fix bug in Lab adjustements - Red and Skin tones protection (issue 1514)
+- Support Noise Reduction on RAW images ONLY
+
+-------------------------------------------------------------------
+Mon Sep  3 20:45:46 UTC 2012 - marcin.bajor@gmail.com
+
+- Updated russian translation (issue 1542)
+- Establishes the maximum range of rawblackpoint to 2048 instead of 50
+- Solving  issue 1529 : "Better color handling of the Tone curve"
+- Minor bug fix in the Resize tool panel
+
+-------------------------------------------------------------------
+Tue Aug 28 22:50:02 UTC 2012 - marcin.bajor@gmail.com
+
+- Fix bug in Lab adjustements - chromaticity negatives values (issue 1514) 
+
+-------------------------------------------------------------------
+Sun Aug 26 14:01:59 UTC 2012 - marcin.bajor@gmail.com
+
+- DCRAW 9.16 update
+- DCP color profile for Canon EOS 5D Mark III (issue 1467)
+- DCP color profile for Nikon D800
+- DCP color profiles for Olympus E-510 and E-520
+- Support for artistic tone curves in DCPs (issue 1527)
+- Updated Japanese translation
+- Updated Russian language file
+- French language file updated with jpeg sub-sampling strings
+- Updated the man page. (issue 1418)
+- Do not use system theme by default, and do not use single row file browser toolbar by default (issue 1451)
+- Fixed Nikon D800E image dimensions (issue 1452)
+- Fixed multiprocessor sharpening bug (issue 1454)
+- Fix for shrinking BrowserToolPanel when using vertical tabs mode. Committed on behalf of Sankey (issue 1331)
+- Solving issue 1457: "Preview sometimes doesn't update, demozaicing occure too often"
+- Solving issue 1444: "Better Vibrance tool's threshold handling"
+- Adding support for jpeg and tiff file extensions (on behalf of sankeytms) (issue 1215). For existing RT installations - add 'jpeg' in Preferences/FileBrowser tab, Parsed extensions.
+- LCP CA correction now usable on more RAW types (issue 1421)
+- Added non-bayer and compressed raw format support for Raw White point (issue 1458)
+- Raw white point correction for LUT based profiles (DCP only) (issue 1466)
+- Enhancement of all file save dialogs (issue 1314)
+- OMP speedup for icc profiles (issue 1462)
+- Added support for some non-standard Tokina LCPs (issue 1464)
+- DCP color profile for Leaf Aptus 75 (issue 1465)
+- Bugfix for [XXX.badpixels] file not working (fix)
+- Changed color sampler units (issue 1478)
+- Fixed File Operations -> Delete with output from queue does not delete the associated *.pp3 file on behalf of Lebedev (issue 1485)
+- Massive speedup on closing RT having a large image cache (issue 1494)
+- Photo saved via queue from the Editor tab looks different to the one saved from the File Browser tab, (issue 1471)
+- Patch from issue 1359: "Munsell correction - Lab adjustements". Bundled new features besid the Lab tool enhancement:
+* curve to control skin tones in vibrance tool
+* right click over SHCSelector (below the parametric curve) to reset to default values
+* colored bars around curves
+- JPG sub sampling setting (issue 1502)
+- Solving issue 451: "Preview not sharpened after enlarging to 100%"
+- Solving issue 1407: "Auto CA Correction in RAW page is not applied when re-open 4.0.9.1"
+- Solving issue 1410: "Save Current Profile does not save some values" + shortcut keys are now also usable in single editor mode (when a filename is specified in the command line)
+- Lab display range in navigator (issue 1478)
+- Right Panel filter options: bad height (fix)
+- Make checkbox labels clickable in batch mode (issue 1414)
+- Ctrl-w shortcut to close an editor tab in multi-tab mode; bugfix for multi-monitor mode (issue 732)
+- Graceful recovery from EPD tone mapping cholesky segfault. (Issue 1112)
+- Don't show status message: 'Automatic Monitor Profile Detection not supported on your OS'. (issue 1512.)
+- Small bugfix: the tooltip of the curve's button was fully initialized only after switching to another types
+- Histogram display should detect spikes (issue 1511)
+- Fixed black ring when using strenght+amount large 0 (issue 1507)
+- Lab adjustements- CC curve and LC curve see (issue 1514)
+- Bugfix: CurveEditor were possibly displayed one above the other (introduced by the previous changeset)
+- Fixed bug using non-bayer sensors/some compressed RAWs (issue 1438)
+- Solving issue 1528: "HSV equalizer channels sometimes can't be switched properly"
+- RedAndSkinTonesProtection was not stored correctly (was still using the old name SaturationLimit)
+
+-------------------------------------------------------------------
+Wed Jun 27 08:40:55 UTC 2012 - marcin.bajor@gmail.com
+
+- Improved Batch Queue stability (issue 1383)
+- Fix corrupted Exif MakeNotes. On behalf of panlop (issue 615)
+- Fixed pink tint on thumbs, espc. Canon files (issue 1437)
+- Fixed color pixels using HSV equalizer, S/H speedup and fix (issue 1436)
+- Changed neutral shcompr value from 0 to 50, (issue 1392)
+- "Reset to default" values synchronized with the "Default" profile
+- Fixed memleak when raw loading fails
+
+-------------------------------------------------------------------
+Sun Jun 24 20:36:25 UTC 2012 - marcin.bajor@gmail.com
+
+- DCRAW 9.15 update (issue 1433)
+- Fix hang when directory contains unsupported file types (issue 1389)
+- LCP error filtering (issue 1400)
+- Fixed border color changed by double clicking on area surrounding preview image not consistent (issue 1391)
+- Toolbar buttons for background color of the preview panel. (issue 1391). Shortcuts: Theme-based - 8; Black - 9; White - 0
+- LCP support for auto fill/auto crop (issue 1385)
+- English translations for US and UK (issue 1404)
+- Fixed crash when reading some TIF files (issue 1389)
+- Fixed random color dots in dark areas using some Canon DCP profiles (issue 1406)
+- Fixed shadow Compression default set to 50 (issue 1392)
+- Fixed crashes and random colored dots after code cleanup on behalf of Lebedev (issue 1332)
+- Performance improvements on some transformations (issue 1412)
+- Improved LCP error correction (issue 1408)
+- Removed "post mosaic artifact/noise reduction" since it harmed image quality (issue 848)
+- Fixed problem when cancelling SaveAs dialog (issue 1397)
+- New guide type "Frame" for aiding in cropping dark photos against a dark preview background (issue 1391)
+- Auto-fill to reduce image to fit with LCP pincussion distortions (issue 1415)
+- Fixed JJJJMMDD issue in default and English* language files. (issue 1404)
+- Fixed Shadow/Highlights not working correctly when "High Quality" was enabled (issue 1349)
+- Fix for file browser filter shortcuts and toggled state images. Courtesy of Sankey (issue 1403)
+- Speedups: luminanceCurve OMP (issue 1423)
+- Enhancement: BW toning in Lab (issue 1424)
+- DCP color profile for Olympus E-M5 thanks DaveL for the reference shot
+- HSV equalizer: wrong color lines (issue 1427)
+- Patch from issue 1267: "New Threshold curve widget", used in USM Sharpening and Vibrance
+- A small fix for a misbehaved copy/paste of code
+- Full image dimensions in navigator info (issue 1426)
+
+-------------------------------------------------------------------
+Tue Jun  5 19:55:48 UTC 2012 - marcin.bajor@gmail.com
+
+- Support for Adobe LCP lens correction profiles
+- Program plugger for Windows, to automatically find and be able to open right-clicked photos with popular photography programs.
+- Support of dual illuminant DCP profiles
+- Support for new cameras in addition to those already supported by dcraw:
+* Nikon D800
+* Canon EOS 5D Mark III
+- New camera DCP profiles:
+* Nikon D5100
+* Nikon D7000
+- In addition to these new features, as usual there were numerous bug-fixes, and speed and stability improvements.
+- Work is well underway on a number of other features, among them improved noise reduction, XMP and Lua support. In addition to that we're plugging memory leaks and working towards making RT run faster and use less memory. Stay tuned!
+
+-------------------------------------------------------------------
+Tue Apr  3 22:48:16 UTC 2012 - marcin.bajor@gmail.com
+
+- Support for loading, saving, copying and pasting partial profiles
+- Support for using clipless DCP input profiles
+- Subdirectory support for ICC and DCP profiles
+- Support for RGBLF preview modes in the Before|After view
+- Automatic support for CaptureOne and hacked Nikon ICC profiles
+- New input color profiles (DCP and/or ICC) for the following cameras:
+* Canon EOS 7D
+* Canon EOS 60D
+* Canon EOS 40D
+* Canon EOS 400D
+* Canon EOS 550D
+* Canon Powershot G12
+* Nikon D50
+* Nikon D300
+* Nikon D3000
+* Olympus E-1
+* Pentax K10D
+* Sony A900
+- In addition to these new features, as usual there were numerous bug-fixes, and speed and stability improvements. 
+
+-------------------------------------------------------------------
+Fri Feb  3 22:56:55 UTC 2012 - marcin.bajor@gmail.com
+- Update to changeset 1759:6deebb547be6
+- Changes since last build (Mercurial summary)
+* New camera color profiles: Canon 5D, G10, Nikon D3100
+* Focus Mask (beta) and shortcuts for preview modes (issue 1172)
+* Export panel with Fast Export options.
+* Updated translations: Czech, German, French, Polish
+
+* Solving issue 1196: "Strange blown highlights with control cage tone curve in 32 bit release builds"
+* Solving issue 1001: "Auto WB is saved as Custom in profile files" and 929: "Crash on image open with WB method = Auto" with a different workaround
+* gtk-paste and gtk-copy icons were missing for both Dark and Light theme. They have been added.
+* Fix a bug in the Adjuster class that were causing system Beep when reaching the limits, or at each move when the limits where below 1.0 (like for Distortion). Also fix the bug of the too small spin button (displaying not enough digits).
+* Solving issue 1206: "Caveats file handling". May also solve issue 1089: "About RT: version window disappears". This patch also cleanup the Gamma tool a little bite. The CAVEATS.txt is optional and may be deleted in future release.
+* Fix for correctly reflecting Input Profile option in the UI.
+
+* Changes to ICM panel tooltips (see issue 1220)
+* Renaming profile Tuned-1 to Highkey-1
+* Set InputProfile=(CameraICC), WorkingProfile=sRGB, OutputProfile=RT_sRGB, GammaValue=2.22 and GammaSlope=4.5 in all pp3 files.
+* Some other...
+-------------------------------------------------------------------
+Sat Dec 31 08:30:18 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1717:2c1afe0fd883
+- Changes since last build (Mercurial summary)
+* Updated Nederlands translation on behalf of Paul Matthijsse, issue 1129
+* Solving issue 1096: "Infinite loop when switching to before/after view"
+* Set all tools to SET by default in Preferences - Batch Processing, issue 1154
+* Update to DCRAW 9.12, adding new cameras
+-------------------------------------------------------------------
+Tue Dec 27 11:01:01 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1713:8478428eeb2e
+- Changes since last build (Mercurial summary)
+* Preview modes: R,B,G channels and Luminosity (issue 1167)
+* Fix for typo in comments
+* New Output Profiles (issue 1166)
+* Suppress RT_Middle_gsRGB.icc
+* Change with ICC files
+* Solving issue 1175: "Pls add the [Nikon's] file extension nrw to the "Parsed Extensions" list by default".
+-------------------------------------------------------------------
+Mon Dec 19 20:53:38 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1700:136288db1b0b 
+- Re-tagging 4.0.6
+-------------------------------------------------------------------
+Mon Dec 19 20:38:01 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1699:40958891b202
+- Moved IPTCTags description from code into language
+* Corrected snapshots panel height
+* Fix for scroll wheel in IPTC panel (not complete)
+* Crop ratios: new values, code optimization (issue 1153)
+* Bugfix for flatfield correction tool
+* Implementing RGB curves
+* Removed rtstart reference from CMakeLists.txt, see issue 1160
+* Workaround for xmp not updated
+* Patch from issue 1131: "Predefined White Balance values".
+* Open dialog file filter for processing parameters: added pp3 set.
+* Exposure comp precision in Thumb exif string
+* Major rework of headers inclusion style on behalf of lebedev.ri (issue 1079)
+* Neutral Levels & tooltips (issue 1161)
+-------------------------------------------------------------------
+Sun Dec 11 01:16:42 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1681:2bfb4b5255a7
+- Changes since last build (Mercurial summary)
+* Some fixup for line command parameters
+* Enabled embedded dcraw processing by line command
+* Fixed orientation issue in output image
+* File browser filter: Exposure Compensation (see issue 1003)
+* lock-off.png and lock-on.png icon were trimmed, the header height has been increased from 15 to 17 (issue 1116)
+* Thumbnail Exif string: append exposure compensation (see issue 1150)
+
+-------------------------------------------------------------------
+Tue Dec  6 00:16:32 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1673:c7337c4732d3
+
+-------------------------------------------------------------------
+Tue Nov 15 21:10:47 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1630:6e535758023d
+- Changes since last build (Mercurial summary)
+* Tagged 4.0.5
+* New camera color profile: Pentax K200D
+* New camera color profile: Canon EOS 550D
+* Added Save/Load IPTC to/from file
+* First xmp support
+* Updated german translation
+* Updated Serbian translation
+* Updated Czech translation
+* Updated Japanese translation on behalf of a3novy, issue 1110
+* Updated the English PDF and ODT manuals with the latest from Google Docs
+* Translations cleanup
+* Italian doc file rename (capitalization)
+* Some files cleanup
+* Compiler warning cleanup
+* Removed option to save pp3 next to output
+- Solved issues
+* 1102 - Included sRGB_IEC61966-2-1_black_scaled.icc profile while waiting for JDesmis one
+* 1094 - Depending on the Show/Hide panel status, either crossed-arrows-out.png or crossed-arrows-in.png icon is displayed
+* 1095 - In the histogram panel, each icon is changed depending on the activation status of each button. Moreover, the Value button is made insensitive when the Raw button is on
+* 1103 - I can't process my 16MPix images (RT crash because it lacks memory)
+* 1108 - Exposure's HL compression trimmed to 100 when reopening an image
+
+* Bugfix: XRTEntryMultivalue uses 2 rows
+* IPTC Paste discards readonly properties
+* Rotate compensation on flip image
+* Some fixes to cope with malformed xmp, corrected reset IPTC data
+
+-------------------------------------------------------------------
+Sun Nov  6 10:47:00 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1603:c15513786561
+- Changes since last build (Mercurial summary) 
+* curveType-*.svg files generated by Hombre have been split into several files and put in tools/source_icon/scalable (issue 1012)
+* add output gamma to partialpast and suppress crash when no output file #issue1081
+* Another bug fix for ouput gamma
+* Updated Japanese translation
+* Batch queue threading cleanup
+* Fixed horizontal flip on non-RAW images
+* Correction of typos and translation of three new items for the french translation (issue 1091)
+* Makes the crop dimension and PPI boxes (Transform > Crop) stack vertically so that the right panel can be narrower, fixing issue 1075
+
+-------------------------------------------------------------------
+Tue Nov  1 12:20:30 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1595:ec30761579ce
+- Changes since last build (Mercurial summary)
+* The closedhand icon is displayed in the preview window when moving the observed frame area. The CursorManager class has been used for this purpose. Patch optimised by Hombre (issue 1060)
+* The reset icon can be correctly displayed to its expected size. A new icon (a down arrow) has been added for the Curve editor button. Patch optimised by Hombre (issue 1027, comments 16 and 17)
+* New Vibrance tool from Jacques Desmis ; see issue 1065, and it's attached HTML document describing how to use it
+* Added RT manuals for it translation, on behalf of Eosforon (chelidon on forum)
+* Fixed up ampersands in language files, as well as grammatical errors in the Vibrance tool's slider names
+* Fix for Lab adjustments on thumnail (issue 1071) and small fix for history entry for lens geom auto fill
+* Fixed invalid queue controls in simple editor mode
+* Unused icons have been removed from the repository. Some icons have been renamed according to the guidelines described in tools/source_icons/README in order to have homogeneous names. Colour icon has been modified. Cancel button icon has been replaced by the tab closing icon (issue 1012)
+* Removed unused wavelet equalizer code
+* Actually remove files with unused code
+* Removed obsoleted resize algos Downscale Faster/Better. Applied Lanczos instead. Ported all resize algos to float instead of double. Removed corresponding strings from default language file.
+* New camera color profiles: Panasonic DMC-FZ150, DMC-FZ38/35
+
+-------------------------------------------------------------------
+Wed Oct 26 14:57:55 UTC 2011 - marcin.bajor@gmail.com
+- Update to changeset 1583:1a1fe5838576
+- Changes since last build (Mercurial summary)
+- Tagged 4.0.4
+- Tab icons have been created for both Dark and Light themes. gtk-undo icon has been modified (issue 1012)
+- Source icons (SVG format) and scripts to generate icon themes have been added to the repository (issue 1012)
+
+-------------------------------------------------------------------
+Sat Oct 22 21:50:30 UTC 2011 - marcin.bajor@gmail.com
+- Update to changeset 1579:07d814dcdbbf
+- Changes since last build (Mercurial summary)
+* Solving issue 997: Selection of crop selection tool should open crop settings
+* Adding Philippe Hupé to the author's list
+* (From issue #1027) The Adjuster's spin button is now frameless to solve (as a workaround) alignment inconsistency.
+
+-------------------------------------------------------------------
+Wed Oct 19 04:20:54 UTC 2011 - marcin.bajor@gmail.com
+- Update to changeset 1576:4d6007de1216
+- Changes since last build (Mercurial summary)
+* Solving issue 1027:  Numerical input boxes in right editing pane too narrow
+* Update of the iconset on behalf of Phil, see issue 1012: Proposal of an icon theme for RT
+* A few tooltip corrections (see issue 1012)
+
+-------------------------------------------------------------------
+Sun Oct 16 17:37:55 UTC 2011 - marcin.bajor@gmail.com
+- Update to changeset 1570:b07c3fcd24ed
+- Changes since last build (Mercurial summary)
+* New camera color profiles: Canon 1D Mark3, Canon 20D
+* New camera profile: Nikon D7000
+
+-------------------------------------------------------------------
+Tue Oct 11 05:03:06 UTC 2011 - marcin.bajor@gmail.com
+- Update to changeset 1562:4edcb9b6d153
+- Changes since last build (Mercurial summary)
+* Update to DCRAW 9.11
+* New camera color profiles: Nikon D3s, Nikon D200
+
+-------------------------------------------------------------------
+Sun Oct 09 10:11:58 UTC 2011 - marcin.bajor@gmail.com
+- Update to changeset 1560:f49a2096d5ab
+- Changes since last build (Mercurial summary)
+* Updated german translation
+* Corrected RT version number in TIFF output
+* Corrupted TIFF when converting some FUJI Raws
+
+-------------------------------------------------------------------
+Wed Oct 05 19:49:02 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1557:12f5e13a8e4c
+- Changes since last build
+* Auto remember last white balance stop size
+
+-------------------------------------------------------------------
+Tue Oct 04 19:48:51 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1556:34cae39b2994
+- Changes since last build
+* New camera color profiles: Panasonic DMC series, Olympus E-P2
+
+-------------------------------------------------------------------
+Mon Oct 03 20:53:52 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1555:ccb433ebf6e2
+- Changes since last build
+* Optimized colorimetric intent
+* Updated chinese translation
+* Fixed image should not open multiple times
+
+-------------------------------------------------------------------
+Sun Oct 02 19:56:23 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1552:61f939c8ae38
+- Changes since last build
+* Fixed black highlights when increasing Lab saturation on some occasions
+
+-------------------------------------------------------------------
+Sat Oct 01 21:33:11 UTC 2011 - marcin.bajor@gmail.com
+
+- Update to changeset 1551:8bc18b6d22e2
+- Changes since last build
+* New camera color profiles: Nikon D700, Sony A700, Canon 450D
+
+
+

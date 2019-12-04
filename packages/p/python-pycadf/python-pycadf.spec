@@ -18,13 +18,13 @@
 
 %global oldpython python
 Name:           python-pycadf
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        DMTF Cloud Audit (CADF) data model
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/pycadf
-Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-2.9.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-2.10.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-fixtures
 BuildRequires:  python2-oslo.config >= 5.2.0
@@ -73,7 +73,7 @@ Group:          Development/Languages/Python
 Configuration files for the DMTF Cloud Audit (CADF) data model.
 
 %prep
-%autosetup -n pycadf-2.9.0
+%autosetup -n pycadf-2.10.0
 sed -i 's/^warning-is-error.*/warning-is-error = 0/g' setup.cfg
 %py_req_cleanup
 

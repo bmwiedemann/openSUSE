@@ -167,6 +167,23 @@ Starting with GNU Health 3.2, GNU Health comes with its own WebDAV-Server that c
 
 You can start multiple webdav services for different databases in parallel.
 
+Installation of the Demo-DB
+===========================
+
+GNU Health provides a demo database (same as on the demo server). To install the DB
+proceed as follows:
+
+log in as user postgres and change directory to /tmp
+> su
+> su postgres
+> cd /tmp
+
+run the installation script:
+
+> install_demo_database.sh 36
+
+The script expects the major release of GNU Health (3.6 in this case)
+
 Digital Signatures
 ==================
 

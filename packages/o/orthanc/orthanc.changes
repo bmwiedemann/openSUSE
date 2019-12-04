@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Oct 17 00:02:56 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.8
+  * various bugfixes, see NEWS for details
+
+-------------------------------------------------------------------
+Tue Aug 13 08:06:42 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.7
+  * Documentation added 
+
+-------------------------------------------------------------------
+Mon Feb 25 17:30:32 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.5
+
+-------------------------------------------------------------------
+Fri Feb  8 16:17:54 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.4
+  civetweb.patch removed
+  various bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 30 15:55:39 UTC 2019 - axel.braun@gmx.de
+
+- civetweb.patch added 
+
+-------------------------------------------------------------------
+Tue Jan 29 19:35:06 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.3
+  * New configuration option: "SaveJobs" to specify whether jobs are stored in the database
+  * Don't return tags whose group is below 0x0008 in C-FIND SCP answers
+  * Fix compatibility with DICOMweb plugin (allow multipart answers over HTTP Keep-Alive)
+  * Fix issue #73 (/modalities/{modalityId}/store raises 500 errors instead of 404)
+  * Fix issue #90 (C-Find shall match missing tags to null/empty string)
+  * Fix issue #119 (/patients/.../archive returns a 500 when JobsHistorySize is 0)
+  * Fix issue #128 (Asynchronous C-MOVE: invalid number of remaining sub-operations)
+
+-------------------------------------------------------------------
+Tue Jan 22 12:36:58 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.2
+  temporary fixes for civetweb 1.11 removed
+
+-------------------------------------------------------------------
+Sat Dec 22 16:41:25 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.5.1
+  Initial OBS build
+  spec file adapted from Fedora project <s.jodogne@gmail.com>

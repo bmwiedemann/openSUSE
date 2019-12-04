@@ -1,0 +1,25 @@
+From a4b7764ce10366667e8182231ef7cc837db909b1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Verschelde?= <rverschelde@gmail.com>
+Date: Thu, 4 Oct 2018 10:26:21 +0200
+Subject: [PATCH] CMake: Don't link SDL2main on Linux
+
+---
+ src/CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ffa4d92..6bb6c40 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -114,7 +114,9 @@ else()
+ endif()
+ 
+ if(WIN32)
+-    target_link_libraries(prince mingw32 SDL2main SDL2 SDL2.dll SDL2_image)
+-else()
++    target_link_libraries(prince mingw32 SDL2main SDL2 SDL2_image)
++elif(APPLE)
+     target_link_libraries(prince SDL2main SDL2 SDL2_image m)
++else() # Linux, *BSD, etc.
++    target_link_libraries(prince SDL2 SDL2_image m)
+ endif()

@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 7f21b67..351f888 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+-CXX = clang++
+-CXXFLAGS = -Wall -c -std=c++11 -Isrc/libtextmode -I/usr/local/include
+-LDFLAGS = -L/usr/local/lib
++CXX = c++
++CXXFLAGS += -Wall -c -std=c++11 -Isrc/libtextmode -I/usr/local/include
++LDFLAGS += -L/usr/local/lib
+ 
+ OUT = ans
+ 

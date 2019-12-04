@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:03:37 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to dependencies dropping python2 support
+- Update to 0.14.0
+  + Deprecations
+    * The 0.14.x series will be the last to support Python 2
+  + Breaking changes
+    * Dropped Python 3.4 support
+  + Improvements
+    * Added Python 3.7 and 3.8 support
+    * The project is now maintained by the Jazzband team, https://jazzband.co
+    * Improved format autodetection and added autodetection for the odf format.
+    * Added search to all documentation pages
+    * Open xlsx workbooks in read-only mode
+    * Unpin requirements
+    * Only install backports.csv on Python 2
+  + Bugfixes
+    * Fixed `DataBook().load` parameter ordering (first stream, then format).
+    * Fixed a regression for xlsx exports where non-string values were forced to
+      strings
+    * Fixed xlsx format detection (which was often detected as `xls` format)
+
+-------------------------------------------------------------------
 Sat Apr  6 15:07:34 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove egg-info requires.txt entry for backports.csv as it isnt

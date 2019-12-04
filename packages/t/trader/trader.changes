@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 27 02:10:00 AEDT 2019 - J.Zaitseff@zap.org.au
+
+- Use %license for the COPYING file.
+
+-------------------------------------------------------------------
+Fri Nov 15 09:00:00 AEDT 2019 - J.Zaitseff@zap.org.au
+
+- Update the spec file to match the result of "osc build".
+
+-------------------------------------------------------------------
+Fri Nov 15 08:30:00 AEDT 2019 - J.Zaitseff@zap.org.au
+
+- New upstream release of Star Traders: version 7.13.
+  * Updated Esperanto translation
+- Changed dependency from ncurses-devel to pkgconfig(ncurses), now
+  that OpenSUSE 42.x is no longer relevant.
+
+-------------------------------------------------------------------
 Thu Jan  4 19:47:53 UTC 2018 - avindra@opensuse.org
 
 - New upstream release of Star Traders: version 7.12.
@@ -7,6 +25,7 @@ Thu Jan  4 19:47:53 UTC 2018 - avindra@opensuse.org
 
 -------------------------------------------------------------------
 Sun Jun 18 07:20:00 EST 2017 - J.Zaitseff@zap.org.au
+
 - New upstream release of Star Traders: version 7.11.
 
 -------------------------------------------------------------------

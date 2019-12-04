@@ -1,7 +1,7 @@
 #
 # spec file for package adios
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+
 %global flavor @BUILD_FLAVOR@%{nil}
+
 %define pname adios
 %define vers 1.13.1
 %define _vers %(echo %{vers} | tr . _)
@@ -24,20 +28,40 @@
 ExclusiveArch:  do_not_build
 %endif
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI3
-%else
+# No netcdf on s390.
+ExcludeArch:    s390 s390x
+
+%if 0%{?sle_version} >= 150200
+%define DisOMPI1 ExclusiveArch:  do_not_build
+%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
 # this is a non-HPC build
 %if "%{flavor}" == "openmpi"
-%global mpi_flavor %{flavor}
+%{?DisOMPI1}
+%global mpi_flavor openmpi
+%define mpi_ver 1
+%bcond_with hpc
+%endif
+
+%if "%{flavor}" == "openmpi2"
+%global mpi_flavor openmpi
+%define mpi_ver 2
+%bcond_with hpc
+%endif
+
+%if "%{flavor}" == "openmpi3"
+%{?DisOMPI3}
+%global mpi_flavor openmpi
+%define mpi_ver 3
 %bcond_with hpc
 %endif
 
 # All the HPC builds are below
 %if "%{flavor}" == "gnu-openmpi-hpc"
+%{?DisOMPI1}
 %bcond_without hpc
 %define compiler_family gnu
 %undefine c_f_ver
@@ -76,16 +100,141 @@ ExclusiveArch:  do_not_build
 %global mpi_flavor mpich
 %endif
 
+# All the HPC builds are below
+%if "%{flavor}" == "gnu7-openmpi-hpc"
+%{?DisOMPI1}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor openmpi
+%define mpi_ver 1
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor openmpi
+%define mpi_ver 2
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi3-hpc"
+%{?DisOMPI3}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor openmpi
+%define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu7-mvapich2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor mvapich2
+%endif
+
+%if "%{flavor}" == "gnu7-mpich-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor mpich
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi-hpc"
+%{?DisOMPI1}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor openmpi
+%define mpi_ver 1
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor openmpi
+%define mpi_ver 2
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi3-hpc"
+%{?DisOMPI3}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor openmpi
+%define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu8-mvapich2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor mvapich2
+%endif
+
+%if "%{flavor}" == "gnu8-mpich-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor mpich
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi-hpc"
+%{?DisOMPI1}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor openmpi
+%define mpi_ver 1
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor openmpi
+%define mpi_ver 2
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi3-hpc"
+%{?DisOMPI3}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor openmpi
+%define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu9-mvapich2-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor mvapich2
+%endif
+
+%if "%{flavor}" == "gnu9-mpich-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor mpich
+%endif
+
 %if !0%{?is_opensuse} && !0%{?with_hpc:1}
 ExclusiveArch:  do_not_build
 %endif
 
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_flavor:%global mpi_flavor openmpi}}
-%{?with_mpi:%global pkg_suffix -%{mpi_flavor}}
+
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
+%if 0%{?suse_version} >= 1550 || "%{mpi_flavor}" != "openmpi"  || "%{mpi_ver}" != "1"
+%define mpi_ext %{?mpi_ver}
+%endif
 
 %if %{with hpc}
- %{hpc_init %{?compiler_family:-c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}}} %{?with_mpi:-m %{mpi_flavor}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
+ %{hpc_init %{?compiler_family:-c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}}} %{?with_mpi:-m %{?mpi_flavor}} %{?mpi_ver:-V %{?mpi_ver}} %{?ext:-e %{ext}}}
  %{hpc_modules_init phdf5 pnetcdf}
  %global hpc_module_pname %{pname}
  %define pkg_prefix %{hpc_prefix}
@@ -101,7 +250,8 @@ ExclusiveArch:  do_not_build
 # It needs to be addressed at some point. This needs to come after hpc_init.
  %undefine _hpc_python3
 %else
- %define pkg_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}
+ %global pkg_suffix %{?mpi_flavor:-%{mpi_flavor}%{?mpi_ext}}
+ %define pkg_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
  %define pkg_bindir %{pkg_prefix}/bin/
  %define pkg_libdir %{pkg_prefix}/%{_lib}/
  %define pkg_incdir %{pkg_prefix}/include/
@@ -112,40 +262,40 @@ ExclusiveArch:  do_not_build
  %define libname(l:s:)   lib%{pname}%{!-l:%{-s:-}}%{-l*}%{-s*}%{?pkg_suffix}
 %endif
 
-Name:    %{package_name}
-Version: %{vers}
-Release: 0
-Summary: The Adaptable IO System (ADIOS)
-License: BSD-3-Clause AND LGPL-2.1-or-later AND BSD-2-Clause
-Group:   Productivity/Scientific/Other
-URL:     https://www.olcf.ornl.gov/center-projects/adios/
-Source0: https://users.nccs.gov/~pnorbert/adios-%{version}.tar.gz
-Patch0:  adios-correct-func-ret.patch
-Patch1:  fix_python_shebang.patch
+Name:           %{package_name}
+Version:        %{vers}
+Release:        0
+Summary:        The Adaptable IO System (ADIOS)
+License:        BSD-3-Clause AND LGPL-2.1-or-later AND BSD-2-Clause
+Group:          Productivity/Scientific/Other
+URL:            https://www.olcf.ornl.gov/center-projects/adios/
+Source0:        https://users.nccs.gov/~pnorbert/adios-%{version}.tar.gz
+Patch0:         adios-correct-func-ret.patch
+Patch1:         fix_python_shebang.patch
 %{?with_hpc:BuildRequires:  suse-hpc >= 0.3}
-BuildRequires: fdupes
-BuildRequires: autoconf
-BuildRequires: libbz2-devel
-BuildRequires: liblz4-devel
-BuildRequires: python
-BuildRequires: python-numpy
-BuildRequires: zlib-devel
- %if %{without hpc}
+BuildRequires:  autoconf
+BuildRequires:  fdupes
+BuildRequires:  libbz2-devel
+BuildRequires:  liblz4-devel
+BuildRequires:  python
+BuildRequires:  python-numpy
+BuildRequires:  zlib-devel
+%if %{without hpc}
+BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  %{flavor}-devel
 BuildRequires:  hdf5%{?pkg_suffix}-devel
 BuildRequires:  netcdf%{?pkg_suffix}-devel
- %else # hpc
+%else # hpc
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_flavor}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 BuildRequires:  hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
-BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
 BuildRequires:  lua-lmod
+BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
 %{hpc_requires}
 %endif  # ?hpc
-Requires: python2-xml
-Requires: python2-PyYAML
+Requires:       python2-PyYAML
+Requires:       python2-xml
 
 %description
 The Adaptable IO System (ADIOS) provides a way for scientists to
@@ -163,15 +313,18 @@ Summary:        Development files for %{name}
 Group:          Development/Libraries/Parallel
 Requires:       %{name} = %{version}
 Requires:       %{name}-devel-static = %{version}
- %if %{without hpc}
-Requires:  hdf5%{?pkg_suffix}-devel
-Requires:  netcdf%{?pkg_suffix}-devel
- %else # hpc
+%if %{without hpc}
+Requires:       hdf5%{?pkg_suffix}-devel
+Requires:       netcdf%{?pkg_suffix}-devel
+%if "%{mpi_family}%{?mpi_ext}" == "openmpi1"
+Provides:       %{pname}%-openmpi-devel
+%endif
+%else # hpc
 Requires:       hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
-Requires:       netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
 Requires:       lua-lmod
+Requires:       netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
 %hpc_requires_devel
- %endif  # ?hpc
+%endif  # ?hpc
 
 %description devel
 The Adaptable IO System (ADIOS) provides a way for scientists to
@@ -183,7 +336,6 @@ the %{flavor} version of ADIOS.
 
 %{?with_hpc:%{hpc_master_package -L devel}}
 
-
 %package devel-static
 Summary:        Static libraries for %{name}
 Group:          Development/Libraries/Parallel
@@ -193,7 +345,7 @@ The Adaptable IO System (ADIOS) provides a way for scientists to
 describe the data in their code that may need to be written, read, or
 processed outside of the running simulation.
 
-This package contains all the static libraries needed to create projects 
+This package contains all the static libraries needed to create projects
 that use the %{flavor} version of ADIOS.
 
 %{?with_hpc:%{hpc_master_package -L devel-static}}
@@ -214,7 +366,8 @@ export FC=gfortran
 export MPICC=mpicc
 export MPICXX=mpicxx
 export MPIFC=mpif90
-export CFLAGS="-fPIE %{optflags}"
+export CFLAGS="-fPIC %{optflags}"
+export FCFLAGS="-fPIC %{optflags}"
 export LDFLAGS="-pie"
 
 %if %{without hpc}

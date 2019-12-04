@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  3 15:14:36 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add patch no-import-from-collections.patch to avoid any import
+  directly from collections.
+
+-------------------------------------------------------------------
 Fri Mar 29 08:49:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop duplicated word.

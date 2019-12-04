@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:01:48 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.15.0
+  - Add nodegroup list/show commands
+  - Support upgrade API
+  - Fix coverage test
+  - Update master for stable/stein
+  - Support resize api
+  - Add Python 3 Train unit tests
+  - python3 fixes
+  - Conditional hidden arg for backward compatibility
+  - Add hidden property to cluster template
+  - OpenDev Migration Patch
+  - Display project_id for cluster show
+  - Dropping the py35 testing
+  - add python 3.7 unit test job
+  - Change openstack-dev to openstack-discuss
+  - Support health_status on client side
+  - Blacklist bandit 1.6.0 and cap Sphinx on Python2
+  - Support network, subnet and FIP when creating cluster
+
+-------------------------------------------------------------------
 Mon Apr  8 12:22:35 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.12.0

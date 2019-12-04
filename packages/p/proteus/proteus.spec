@@ -1,8 +1,8 @@
 #
 # spec file for package proteus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017-2018 Dr. Axel Braun
+# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 #
 
 
-%define majorver 4.6
+%define majorver 5.0
 Name:           proteus
-Version:        %{majorver}.9
+Version:        %{majorver}.6
 Release:        0
 Summary:        A library to access Tryton's modules like a client
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 # List of additional build dependencies
 BuildRequires:  fdupes
-BuildRequires:  python-devel
-BuildRequires:  python-lxml
-BuildRequires:  python-psycopg2
-BuildRequires:  python-pydot
-BuildRequires:  python-setuptools
-Requires:       python-cdecimal
-Requires:       python-dateutil
-Requires:       python-simplejson
+BuildRequires:  python3-devel
+BuildRequires:  python3-lxml
+BuildRequires:  python3-psycopg2
+BuildRequires:  python3-pydot
+BuildRequires:  python3-setuptools
+Requires:       python3-dateutil
+##equires:	python3-cdecimal
+##Requires:	python3-simplejson
 Requires:       trytond
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -47,16 +47,15 @@ Proteus allows you to access Tryton's modules like a client. Useful for automati
 %setup -q 
 
 %build 
-python setup.py build
+python3 setup.py build
 
 %install
-python setup.py install --prefix=%_prefix --root=%buildroot 
+python3 setup.py install --prefix=%_prefix --root=%buildroot 
 %fdupes -s %{buildroot}
 
 %files 
 %defattr(-,root,root)
-%doc README 
-%license LICENSE
+%doc README LICENSE
 %{python_sitelib}/*
 
 %changelog

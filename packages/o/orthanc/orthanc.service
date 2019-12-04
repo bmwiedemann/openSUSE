@@ -1,0 +1,13 @@
+[Unit]
+Description=Orthanc DICOM server
+Documentation=man:orthanc(1) http://www.orthanc-server.com/
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=orthanc
+Group=orthanc
+ExecStart=/usr/sbin/orthanc /etc/orthanc/
+
+[Install]
+WantedBy=multi-user.target

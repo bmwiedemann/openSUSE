@@ -17,17 +17,13 @@
 
 
 Name:           python-os-api-ref
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Sphinx Extensions to support API reference sites in OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/o/os-api-ref/os-api-ref-1.6.0.tar.gz
-# https://review.openstack.org/#/c/630146/
-Patch1:         0001-Fix-microversion-test-handle-different-HTML-renderin.patch
-Patch2:         0001-Add-support-for-Sphinx-2.0.patch
-Patch3:         0001-Add-support-for-Sphinx-v2.1.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/os-api-ref/os-api-ref-1.6.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-PyYAML >= 3.12
 BuildRequires:  python2-Sphinx
@@ -35,9 +31,9 @@ BuildRequires:  python2-beautifulsoup4
 BuildRequires:  python2-openstackdocstheme >= 1.18.1
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-python-subunit
+BuildRequires:  python2-six >= 1.10.0
 BuildRequires:  python2-sphinx-testing
 BuildRequires:  python2-stestr
-BuildRequires:  python2-testrepository
 BuildRequires:  python2-testtools
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-Sphinx
@@ -45,14 +41,15 @@ BuildRequires:  python3-beautifulsoup4
 BuildRequires:  python3-openstackdocstheme >= 1.18.1
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
+BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-sphinx-testing
 BuildRequires:  python3-stestr
-BuildRequires:  python3-testrepository
 BuildRequires:  python3-testtools
 Requires:       python-PyYAML >= 3.12
 Requires:       python-Sphinx
 Requires:       python-openstackdocstheme >= 1.18.1
 Requires:       python-pbr >= 2.0.0
+Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,7 +66,7 @@ of collapsing sections for REST methods and javascript controls to
 expand / collapse all sections.
 
 %prep
-%autosetup -p1 -n os-api-ref-1.6.0
+%autosetup -p1 -n os-api-ref-1.6.2
 %py_req_cleanup
 
 %build

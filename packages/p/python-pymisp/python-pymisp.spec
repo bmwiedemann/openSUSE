@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymisp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%{!?license: %global license %doc}
 Name:           python-pymisp
-Version:        2.4.112
+Version:        2.4.117.3
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -45,7 +44,9 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
+BuildRequires:  python2-cachetools
 BuildRequires:  python2-enum34
+BuildRequires:  python2-functools32
 # /SECTION
 # SECTION docs
 BuildRequires:  python3-CommonMark
@@ -54,7 +55,9 @@ BuildRequires:  python3-recommonmark
 BuildRequires:  python3-sphinx-autodoc-typehints
 # /SECTION
 %ifpython2
+Requires:       python2-cachetools
 Requires:       python2-enum34
+Requires:       python2-functools32
 %endif
 Requires:       python-Deprecated
 %python_subpackages

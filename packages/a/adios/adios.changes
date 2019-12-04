@@ -1,12 +1,43 @@
 -------------------------------------------------------------------
+Sat Nov 30 14:01:36 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct naming of openmpi1 packages in Leap 15.0/15.1 (still
+  called openmpi), fixes unresolvable packages.
+- Add non-HPC openmpi2 and openmpi3 flavors.
+
+-------------------------------------------------------------------
+Fri Nov 29 20:27:51 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc7.
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 & jsc#SLE-8609).
+
+-------------------------------------------------------------------
+Fri Nov 29 15:34:45 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Disable openmpi1 builds for SLE/Leap > 15.1.
+- Enable openmpi3 builds for Leap and SLE > 15.1 (jsc#SLE-7773).
+- Disable build on s390/s390x as netcdf is not available (bsc#1157965).
+- Fix openmpi1 names for non-HPC builds on Factory.
+
+-------------------------------------------------------------------
+Fri Nov 29 07:51:31 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Add missing FCFLAGS export
+
+-------------------------------------------------------------------
+Thu Nov 28 10:14:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 LTO build with -ffat-lto-objects flag
+
+-------------------------------------------------------------------
 Fri Oct 18 08:22:51 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Disable openmpi3 and the openmpi flavor in SLE. 
+- Disable openmpi3 and the openmpi flavor in SLE.
 
 -------------------------------------------------------------------
 Mon Oct  7 09:23:07 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Remake patch adios-correct-func-ret.patch to make sure the functions 
+- Remake patch adios-correct-func-ret.patch to make sure the functions
   return something instead of changing the return type from int to void.
 
 -------------------------------------------------------------------
@@ -24,7 +55,7 @@ Wed Apr 10 09:20:20 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 -------------------------------------------------------------------
 Mon Apr  8 07:43:14 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Update Licensing. 
+- Update Licensing.
 
 -------------------------------------------------------------------
 Fri Mar 29 08:28:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
@@ -46,9 +77,9 @@ Thu Mar 28 10:40:04 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 Mon Mar 25 19:37:08 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Re-add CPATH, C_INCLUDE_PATH and CPLUS_INCLUDE_PATH to the module
-file.
-- Add a separate package with the examples in two flavors one for 
-non-HPC  and another one for HPC: examples and examples-hpc. 
+  file.
+- Add a separate package with the examples in two flavors one for
+  non-HPC and another one for HPC: examples and examples-hpc.
 - Update Requires for the devel package.
 
 -------------------------------------------------------------------

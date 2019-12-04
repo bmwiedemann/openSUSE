@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-IDN-Nameprep
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           perl-Net-IDN-Nameprep
 Version:        1.102
 Release:        0
 %define cpan_name Net-IDN-Nameprep
-Summary:        Stringprep Profile for Internationalized Domain Names (S<RFC 3491>)
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Stringprep Profile for Internationalized Domain Names (RFC 3491)
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Net-IDN-Nameprep/
+URL:            http://search.cpan.org/dist/Net-IDN-Nameprep/
 Source0:        http://www.cpan.org/authors/id/C/CF/CFAERBER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch

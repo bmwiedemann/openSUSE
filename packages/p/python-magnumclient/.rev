@@ -132,4 +132,29 @@
   - Add release notes for magnum client</comment>
     <requestid>692834</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5be73667bcf56540ad0b7026b940459e</srcmd5>
+    <version>2.15.0</version>
+    <time>1575463719</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.15.0
+  - Add nodegroup list/show commands
+  - Support upgrade API
+  - Fix coverage test
+  - Update master for stable/stein
+  - Support resize api
+  - Add Python 3 Train unit tests
+  - python3 fixes
+  - Conditional hidden arg for backward compatibility
+  - Add hidden property to cluster template
+  - OpenDev Migration Patch
+  - Display project_id for cluster show
+  - Dropping the py35 testing
+  - add python 3.7 unit test job
+  - Change openstack-dev to openstack-discuss
+  - Support health_status on client side
+  - Blacklist bandit 1.6.0 and cap Sphinx on Python2
+  - Support network, subnet and FIP when creating cluster</comment>
+    <requestid>736657</requestid>
+  </revision>
 </revisionlist>

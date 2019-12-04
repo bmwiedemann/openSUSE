@@ -118,4 +118,12 @@
     <comment>boo#1156476</comment>
     <requestid>747416</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b799d1dafa14eda930a0485ff9152910</srcmd5>
+    <version>5.0.6</version>
+    <time>1575463869</time>
+    <user>dimstar_suse</user>
+    <comment>gnuhealth 3.6.x (forwarded request 750786 from DocB)</comment>
+    <requestid>752388</requestid>
+  </revision>
 </revisionlist>

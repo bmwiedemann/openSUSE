@@ -17,27 +17,33 @@
 
 
 Name:           python-manilaclient
-Version:        1.27.0
+Version:        1.29.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-manilaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-1.27.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-1.29.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-ddt
 BuildRequires:  python2-fixtures
 BuildRequires:  python2-mock
 BuildRequires:  python2-openstackclient
+BuildRequires:  python2-oslo.config >= 5.2.0
+BuildRequires:  python2-oslo.log >= 3.36.0
+BuildRequires:  python2-oslo.serialization >= 2.18.0
+BuildRequires:  python2-oslo.utils >= 3.33.0
 BuildRequires:  python2-stestr
 BuildRequires:  python2-testrepository
 BuildRequires:  python2-testtools
 BuildRequires:  python3-ddt
-BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient
+BuildRequires:  python3-oslo.config >= 5.2.0
+BuildRequires:  python3-oslo.log >= 3.36.0
+BuildRequires:  python3-oslo.serialization >= 2.18.0
+BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-testtools
@@ -70,9 +76,9 @@ Share API.
 %package -n python-manilaclient-doc
 Summary:        Documentation for OpenStack Share API Client
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-sphinxcontrib-programoutput
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-programoutput
 
 %description -n python-manilaclient-doc
 Client library and command line utility for interacting with Openstack
@@ -80,13 +86,13 @@ Share API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-manilaclient-1.27.0
+%autosetup -p1 -n python-manilaclient-1.29.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
-PBR_VERSION=1.27.0 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=1.29.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

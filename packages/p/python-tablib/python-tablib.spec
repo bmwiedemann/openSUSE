@@ -21,25 +21,31 @@
 # I get syntax errors in the brp-python-bytecompile step...
 %define _python_bytecompile_errors_terminate_build 0
 %endif
+%define         skip_python2 1
 Name:           python-tablib
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://python-tablib.org
 Source:         https://files.pythonhosted.org/packages/source/t/tablib/tablib-%{version}.tar.gz
+BuildRequires:  %{python_module MarkupPy}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module odfpy >= 1.3.5}
 BuildRequires:  %{python_module openpyxl >= 2.4.8}
 BuildRequires:  %{python_module pandas >= 0.20.3}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module xlrd >= 1.1.0}
 BuildRequires:  %{python_module xlwt >= 1.3.0}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-backports.csv
+Requires:       python-MarkupPy
 Requires:       python-PyYAML >= 3.12
 Requires:       python-odfpy >= 1.3.5
 Requires:       python-openpyxl >= 2.4.8
@@ -68,24 +74,21 @@ Output formats supported:
 %prep
 %setup -q -n tablib-%{version}
 # Remove shebang lines from non-executable scripts:
-find tablib -name "*.py" | xargs sed -i '1 { /^#!/ d }'
+find src -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %build
 %python_build
 
 %install
 %python_install
-# Remove dependency on backports.csv from egg-info, as it isnt
-# installed on Python 3, breaking pkg_resources resolver.
-sed -i '/backports.csv/d' %{buildroot}%{python3_sitelib}/tablib*egg-info/requires.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec test_tablib.py
+%pytest
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst HISTORY.rst
+%doc AUTHORS README.md HISTORY.md
 %{python_sitelib}/*
 
 %changelog

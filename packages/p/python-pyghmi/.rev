@@ -202,4 +202,41 @@
   - Add more file patterns for git to ignore</comment>
     <requestid>692875</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6367fb820fa876415678943c5bb338a1</srcmd5>
+    <version>1.3.0</version>
+    <time>1575463666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.3.0
+  - Refresh token between verify
+  - If no u-height, revert to default behavior
+  - Enable package builds without pbr
+  - Improve consistency with Lenovo tools
+  - Reduce assertion of bootable media failure
+  - Allow SMM downgrade
+  - Report pending updates on adapter
+  - Replace openstack.org git:// URLs with https://
+  - Add token refreshes to adapter update
+  - Share SDR repository info
+  - Support upcoming XCC update API
+  - Begin redfish implementation in pyghmi
+  - Report 108 as temporary error
+  - Refresh token throughout upload_media
+  - Implement redfish set_net_configuration
+  - Fallback behavior on unparseable conditionals
+  - Genericize bulk requests and fallback to Id
+  - Add M.2 Drive Firmware
+  - Fix fallbackdata
+  - Support ordered default setting
+  - Be compatible with wheezy python
+  - Hide instanced and password settings
+  - Fetch inventory information
+  - Directly reference packages in pbr-free setup
+  - Fix incorrect M.2 labelling
+  - Fix typo in the setup.py template
+  - Handle 413 directly on the upload
+  - Correct mistake with refactoring JSON calls
+  - Treat thorn as string terminating</comment>
+    <requestid>736601</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-control
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://python-control.sourceforge.net
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Patch0:         python-control-fixtestaugw.patch
 Patch1:         python-control-pr317.patch
+Patch2:         python-control-pr345.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,6 +55,7 @@ operations for analysis and design of feedback control systems.
 %setup -q -n control-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %python_build

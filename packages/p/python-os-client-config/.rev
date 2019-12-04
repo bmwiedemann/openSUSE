@@ -268,4 +268,18 @@
   - Applying the HTTPS protocal in configuration.rst</comment>
     <requestid>692849</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>300d9da2d8a01e333b363fce0ab6a757</srcmd5>
+    <version>1.33.0</version>
+    <time>1575463677</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.33.0
+  - Update master for stable/stein
+  - Update for opendev
+  - Update hacking version
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Fix broken link to openstacksdk</comment>
+    <requestid>736634</requestid>
+  </revision>
 </revisionlist>

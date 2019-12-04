@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-html
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-html
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-html
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-html/pytest-html-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}

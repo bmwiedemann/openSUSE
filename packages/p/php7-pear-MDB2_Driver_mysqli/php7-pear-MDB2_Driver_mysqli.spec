@@ -32,6 +32,7 @@ Requires:       %{php_name}-mysql
 Requires:       %{php_name}-pear
 Requires:       php-pear(MDB2) >= 2.5.0b4
 Provides:       php-pear(%{pear_name}) = %{version}
+Obsoletes:      php5-pear-%{pear_name}
 BuildArch:      noarch
 
 %description

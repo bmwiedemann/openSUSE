@@ -1,7 +1,7 @@
 #
 # spec file for package cdogs-sdl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cdogs-sdl
-Version:        0.6.7
+Version:        0.7.1
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        GPL-2.0-only AND BSD-2-Clause AND CC-BY-3.0 AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Shoot
 URL:            http://cxong.github.io/cdogs-sdl
 Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         cdogs-sdl-buildfix.patch
 BuildRequires:  cmake >= 2.8.2
 BuildRequires:  dos2unix
+BuildRequires:  enet-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
-BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(sdl2)
 
@@ -44,7 +43,6 @@ from up to 11 weapons, and try over 100 user-created campaigns. Have fun!
 
 %prep
 %setup -q
-%patch0 -p1
 
 # use system enet
 rm -rf src/cdogs/enet

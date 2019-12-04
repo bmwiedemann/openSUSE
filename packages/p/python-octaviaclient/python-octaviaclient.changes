@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:05:17 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.10.0
+  - Adds "unset" action to the quota command
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Wrap several show api calls with correct_return_codes
+  - Update master for stable/stein
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Add support for SOURCE_IP_PORT algorithm
+  - OpenDev Migration Patch
+  - Adds "unset" action to the l7rule command
+  - Remove python3.5 jobs for Train
+  - Update tox.ini for new upper constraints strategy
+  - Make sure we always requests JSON responses
+  - Add Python 3 Train unit tests
+  - Fix a bad unit test for amphora list
+  - Bump the openstackdocstheme extension to 1.20
+  - Adds "unset" action to the loadbalancer command
+  - Adds "unset" action to the member command
+  - Adds "unset" action to the flavor command
+  - Add support to VIP access control list
+  - Adds "unset" action to the l7policy command
+  - Adds "unset" action to the pool command
+  - Adds "unset" action to the listener command
+  - Cleanup requirements.txt
+  - Adds "unset" action to the healthmonitor command
+
+-------------------------------------------------------------------
 Mon Jun 17 10:05:44 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.8.1

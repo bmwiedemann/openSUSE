@@ -17,13 +17,13 @@
 
 
 Name:           python-openstackclient
-Version:        3.18.0
+Version:        4.0.0
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-openstackclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-3.18.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-4.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-cinderclient >= 3.3.0
@@ -32,10 +32,10 @@ BuildRequires:  python2-fixtures
 BuildRequires:  python2-glanceclient >= 2.8.0
 BuildRequires:  python2-keystoneclient >= 3.17.0
 BuildRequires:  python2-mock
-BuildRequires:  python2-novaclient >= 10.0.0
+BuildRequires:  python2-novaclient >= 15.0.0
 BuildRequires:  python2-openstacksdk >= 0.17.0
 BuildRequires:  python2-os-client-config
-BuildRequires:  python2-osc-lib >= 1.10.0
+BuildRequires:  python2-osc-lib >= 1.14.0
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-osprofiler
 BuildRequires:  python2-requests
@@ -51,10 +51,10 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-glanceclient >= 2.8.0
 BuildRequires:  python3-keystoneclient >= 3.17.0
 BuildRequires:  python3-mock
-BuildRequires:  python3-novaclient >= 10.0.0
+BuildRequires:  python3-novaclient >= 15.0.0
 BuildRequires:  python3-openstacksdk >= 0.17.0
 BuildRequires:  python3-os-client-config
-BuildRequires:  python3-osc-lib >= 1.10.0
+BuildRequires:  python3-osc-lib >= 1.14.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-requests
@@ -70,9 +70,9 @@ Requires:       python-glanceclient >= 2.8.0
 Requires:       python-heatclient
 Requires:       python-keystoneauth1 >= 3.6.2
 Requires:       python-keystoneclient >= 3.17.0
-Requires:       python-novaclient >= 10.0.0
+Requires:       python-novaclient >= 15.0.0
 Requires:       python-openstacksdk >= 0.17.0
-Requires:       python-osc-lib >= 1.10.0
+Requires:       python-osc-lib >= 1.14.0
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-six >= 1.10.0
@@ -120,14 +120,14 @@ actual REST API client actions.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-openstackclient-3.18.0
+%autosetup -p1 -n python-openstackclient-4.0.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
-PBR_VERSION=3.18.0 sphinx-build -b html doc/source doc/build/html
-PBR_VERSION=3.18.0 sphinx-build -b man doc/source doc/build/man
+PBR_VERSION=4.0.0 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=4.0.0 sphinx-build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

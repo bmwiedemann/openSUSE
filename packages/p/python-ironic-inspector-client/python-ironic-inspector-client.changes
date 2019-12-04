@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:00:47 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.7.0
+  - Fetch requirements from opendev
+  - Bump the openstackdocstheme extension to 1.20
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - Update sphinx requirements
+  - OSC: try fetching ironic-inspector URL from osc-lib
+  - Find misteriously missing pep8 import check
+  - Repair the deprecated uuid/uuids arguments
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Replace openstack.org git:// URLs with https://
+  - CI: clean up required projects
+  - Build pdf doc
+  - Update Python 3 test runtimes for Train
+  - Allow running a specific functional test via CLI
+  - Dropping the py35 testing
+  - Deprecates "uuid" parameters to Python calls when node is expected
+  - Switch base job to ironic-base
+
+-------------------------------------------------------------------
 Mon Apr  8 12:27:57 UTC 2019 - cloud-devel@suse.de
 
 - update to version 3.5.0

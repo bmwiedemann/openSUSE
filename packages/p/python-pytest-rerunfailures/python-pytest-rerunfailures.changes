@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 11:57:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.0:
+  * Explicitly depend on setuptools to ensure installation when
+    working in environments without it
+
+-------------------------------------------------------------------
 Thu Mar 28 13:28:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 7.0:

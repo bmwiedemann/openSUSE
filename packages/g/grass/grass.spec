@@ -18,61 +18,63 @@
 
 # Notice to maintainer : move this package to real lfhs
 
-%define	shortver 76
+%define	shortver 78
 
 Name:           grass
-Version:        7.6.1
+Version:        7.8.1
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://grass.osgeo.org/
-Source:         https://grass.osgeo.org/grass76/source/%{name}-%{version}.tar.gz
-Source1:        https://grass.osgeo.org/grass76/source/%{name}-%{version}.md5sum
+Source:         https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.tar.gz
+Source1:        https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.md5sum
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       fftw3
 Requires:       proj >= 6
-Requires:       python >= 2.6
-Requires:       python-dateutil
-Requires:       python-numpy
-Requires:       python-opengl
 Requires:       python-wxWidgets >= 2.8
-Requires:       python-xml
+Requires:       python3
+Requires:       python3-dateutil
+Requires:       python3-numpy
+Requires:       python3-opengl
+Requires:       python3-xml
 Requires:       sqlite >= 3
 Requires:       unixODBC
 Requires:       xterm
-Requires:       fftw3
 Recommends:     grass-doc
+BuildRequires:  -post-build-checks
 BuildRequires:  bison
 BuildRequires:  blas-devel
+BuildRequires:  fdupes
+BuildRequires:  fftw3-devel
 BuildRequires:  flex
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  lapack-devel
+BuildRequires:  libXmu-devel
 BuildRequires:  libbz2-devel
-BuildRequires:  libgdal-devel >= 2
+BuildRequires:  libgdal-devel >= 3
 BuildRequires:  libgeos-devel >= 3
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  man
 BuildRequires:  mysql-devel
 BuildRequires:  ncurses-devel >= 5.5
 BuildRequires:  netcdf-devel
+BuildRequires:  perl
 BuildRequires:  postgresql-devel
 BuildRequires:  proj >= 6
 BuildRequires:  proj-devel >= 6
+BuildRequires:  python3-dateutil
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy
+BuildRequires:  python3-opengl
+BuildRequires:  python3-six
+BuildRequires:  python3-xml
 BuildRequires:  sqlite-devel
-BuildRequires:  -post-build-checks
-BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
-BuildRequires:  libXmu-devel
-BuildRequires:  perl
-BuildRequires:  python-dateutil
-BuildRequires:  python-devel >= 2.6
-BuildRequires:  python-numpy
-BuildRequires:  python-opengl
-BuildRequires:  python-xml
 BuildRequires:  unixODBC-devel
 BuildRequires:  xorg-x11-Mesa-devel
 BuildRequires:  zlib-devel
@@ -157,11 +159,13 @@ export CFLAGS="-O2 -Werror=implicit-function-declaration"
 	--with-pthread \
 	--with-python \
 	--with-bzlib \
+    --with-x \
+    --with-zstd \
 	--with-sqlite \
 	--with-wxwidgets
 
-# rpmlint: wrong-script-interpreter /usr/bin/env python2
-find . -type f -exec sed -i -e 's:#!/usr/bin/env python:#!/usr/bin/python:g' {} +
+# rpmlint: wrong-script-interpreter /usr/bin/env python3
+find . -type f -exec sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g' {} +
 
 %build
 make prefix=%{grassprefix} PREFIX=%{grassprefix} %{?_smp_mflags}
@@ -198,12 +202,17 @@ cp  %{buildroot}%{grassdir}/share/applications/grass.desktop %{buildroot}/usr/sh
 mkdir -p %{buildroot}/usr/share/pixmaps
 ln -s %{grassdir}/share/icons/hicolor/192x192/apps/grass.png %{buildroot}/usr/share/pixmaps/grass.png
 
+rm -rf %{buildroot}%{_libdir}/grass%{shortver}/tools/__pycache__
+
+echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
+
 %fdupes -s %{buildroot}%{grassdir}
 
 %files devel
 %defattr(-,root,root)
 %{grassdir}/include
 %{grasslib}/*.a
+%{_sysconfdir}/GRASSDIR
 
 %files doc
 %defattr(-,root,root)
@@ -212,8 +221,8 @@ ln -s %{grassdir}/share/icons/hicolor/192x192/apps/grass.png %{buildroot}/usr/sh
 %files
 %defattr(-,root,root)
 %config %{_sysconfdir}/ld.so.conf.d/grass-%{version}.conf
-/usr/bin/%{name}
-/usr/bin/%{name}%{shortver}
+%{_bindir}/%{name}
+%{_bindir}/%{name}%{shortver}
 %{grassdir}/bin/*
 %{grassdir}/etc/*
 %{grassdir}/gui/*

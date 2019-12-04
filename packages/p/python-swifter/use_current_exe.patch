@@ -1,0 +1,28 @@
+From fa7b80afc9566376aafa7cdc8c5ea34bc104f2ee Mon Sep 17 00:00:00 2001
+From: Todd <toddrme2178@gmail.com>
+Date: Tue, 26 Nov 2019 10:36:11 -0500
+Subject: [PATCH] Use the current python executable in tests
+
+Currently it is hard-coded to use the default python executable rather than the one you are currently using to run swifter.  The default python may not have swifter installed for it.
+---
+ swifter/swifter_tests.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/swifter/swifter_tests.py b/swifter/swifter_tests.py
+index 7c8b6ef..02ad1bd 100644
+--- a/swifter/swifter_tests.py
++++ b/swifter/swifter_tests.py
+@@ -1,3 +1,4 @@
++import sys
+ import unittest
+ import subprocess
+ import time
+@@ -147,7 +148,7 @@ def test_allow_dask_on_strings(self):
+     def test_stdout_redirected(self):
+         print_messages = subprocess.check_output(
+             [
+-                "python",
++                sys.executable,
+                 "-c",
+                 "import pandas as pd; import numpy as np; import swifter; "
+                 + "df = pd.DataFrame({'x': np.random.normal(size=4)}); "

@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_stock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2014-2016 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +17,14 @@
 #
 
 
-%define majorver 4.6
+%define majorver 5.0
 Name:           trytond_stock
 Version:        %{majorver}.7
 Release:        0
 Summary:        The "stock" module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools

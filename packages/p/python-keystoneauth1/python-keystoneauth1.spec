@@ -18,7 +18,7 @@
 
 %global sname keystoneauth1
 Name:           python-keystoneauth1
-Version:        3.13.1
+Version:        3.17.1
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
@@ -38,7 +38,6 @@ BuildRequires:  python2-oslo.config
 BuildRequires:  python2-oslo.utils
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-reno
 BuildRequires:  python2-requests-kerberos
 BuildRequires:  python2-requests-mock
 BuildRequires:  python2-stestr
@@ -56,7 +55,6 @@ BuildRequires:  python3-oslo.config
 BuildRequires:  python3-oslo.utils
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-reno
 BuildRequires:  python3-requests-kerberos
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-stestr
@@ -85,7 +83,8 @@ Tools for authenticating to an OpenStack-based cloud. These tools include:
 Summary:        Documentation for OpenStack authenticating tools
 Group:          Development/Languages/Python
 BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-keystoneauth1-doc
 Documentation for OpenStack authenticating tools.
@@ -104,7 +103,7 @@ echo "intersphinx_mapping = {}" >> doc/source/conf.py
 %{python_install}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

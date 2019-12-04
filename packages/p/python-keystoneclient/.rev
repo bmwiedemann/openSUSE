@@ -609,4 +609,28 @@
   - Use templates for cover and lower-constraints</comment>
     <requestid>692832</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>01ef1f4b3f6d9367795672d2e461222d</srcmd5>
+    <version>3.21.0</version>
+    <time>1575463717</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.21.0
+  - Bump the openstackdocstheme extension to 1.20
+  - Generate pdf documentation
+  - Update master for stable/stein
+  - Add parent project filter for listing projects
+  - Blacklist bandit 1.6.0 &amp; cap sphinx for 2.7
+  - Update json module to jsonutils
+  - Add support for app cred access rules header
+  - Follow bandit B105: hardcoded_password_string
+  - Drop py35 jobs
+  - Update the min version of tox
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Make tests pass in 2020
+  - Add Python 3 Train unit tests
+  - Update the constraints url
+  - Fix unit tests broken by requests-mock</comment>
+    <requestid>736656</requestid>
+  </revision>
 </revisionlist>

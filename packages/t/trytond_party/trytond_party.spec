@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_party
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2014-2016 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +17,14 @@
 #
 
 
-%define majorver 4.6
+%define majorver 5.0
 Name:           trytond_party
 Version:        %{majorver}.2
 Release:        0
 Summary:        The "party" module for the Tryton ERP system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 # List of additional build dependencies
 BuildRequires:  fdupes

@@ -1,7 +1,7 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,13 +13,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define libname libopenvdb6_1
+
+%define libname libopenvdb6_2
 
 Name:           openvdb
-Version:        6.1.0
+Version:        6.2.1
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
@@ -28,15 +29,15 @@ URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  pkgconfig
+BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(jemalloc)
-BuildRequires:  tbb-devel
 
 %description
 OpenVDB is a C++ library comprising a hierarchical data structure and
@@ -71,16 +72,11 @@ sed -i 's/lib$/lib64/g' openvdb/CMakeLists.txt
 %endif
 
 %build
-# sse options only on supported archs
-%ifarch x86_64
-sseflags='-msse -msse2'
-%endif
-
 # -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE is needed,
 # will bail out with: stdlib.h not found otherwise
 %cmake \
-    -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC ${sseflags}" \
-    -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC ${sseflags}" \
+    -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC " \
+    -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC " \
     -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE \
     -DOPENVDB_BUILD_BINARIES=OFF \
     -DOPENVDB_BUILD_PYTHON_MODULE=OFF \

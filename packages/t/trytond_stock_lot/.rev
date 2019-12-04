@@ -40,4 +40,12 @@
 </comment>
     <requestid>664376</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d4b478e469443cf774b0c91cb376012a</srcmd5>
+    <version>5.0.1</version>
+    <time>1575463908</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 750823 from DocB)</comment>
+    <requestid>752404</requestid>
+  </revision>
 </revisionlist>

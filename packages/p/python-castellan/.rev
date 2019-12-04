@@ -166,4 +166,21 @@
   - Add code to generate private keys</comment>
     <requestid>692817</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3a15c5fc922c84aed4d1d60d67a3a51</srcmd5>
+    <version>1.3.1</version>
+    <time>1575463682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.3.1
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Replace openstack.org git:// URLs with https://
+  - OpenDev Migration Patch
+  - List requests as explicit dependency
+  - Add bindep.txt
+  - Use opendev repository
+  - Add Python 3 Train unit tests
+  - Update master for stable/stein
+  - Dropping the py35 testing</comment>
+    <requestid>736638</requestid>
+  </revision>
 </revisionlist>

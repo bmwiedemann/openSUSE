@@ -24,7 +24,7 @@
 #
 ##############################################################################
 
-VERSION="3.4.1-openSUSE"
+VERSION="3.6.2-openSUSE"
 
 TRYTON_URL="http://downloads.tryton.org"
 GNUHEALTH_URL="http://ftp.gnu.org/gnu/health"
@@ -376,7 +376,7 @@ relink_mods()
 
 #    fi
 
-    sudo systemctl restart trytond
+    sudo systemctl restart gnuhealth
 
 }
     

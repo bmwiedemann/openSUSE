@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-rerunfailures
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-rerunfailures
-Version:        7.0
+Version:        8.0
 Release:        0
 Summary:        A pytest plugin to re-run tests
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-rerunfailures
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-rerunfailures/pytest-rerunfailures-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 3.8
+Requires:       python-pytest >= 4.4
+Requires:       python-setuptools >= 40.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 3.8}
+BuildRequires:  %{python_module pytest >= 4.4}
 BuildRequires:  python-mock
 # /SECTION
 %python_subpackages
@@ -51,7 +51,8 @@ tests to eliminate intermittent failures.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+export PYTHONDONTWRITEBYTECODE=1
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:05:47 UTC 2019 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Batch up minor cleanups for release
+  - Bump min osc-lib to 1.14.0
+  - Fix RuntimeError when showing project which has extra properties
+  - Fix BFV server list handling with --name-lookup-one-by-one
+  - Fix typo: "to and endpoint"
+  - Fix functional.base.TestCase.openstack() to optionally omit --os-auth-type
+  - Use cliff formattable columns in image commands
+  - Add server add/remove volume description for microversion 2.20
+  - Document that server dump create requires 2.17
+  - Remove code migrated to osc-lib long ago
+  - Fix docs bug link to go to storyboard rather than launchpad
+  - Mention compute service set --up|--down requires 2.11 or greater
+  - Update master for stable/stein
+  - Compute: Add description support for server
+  - Remove deprecated volume commands and args
+  - Volume backup functional test tweak
+  - Use cliff formattable columns in network commands
+  - Deprecate openstack server migrate --host option
+  - Ignore case in security group rule --ethertype
+  - Add host and hypervisor_hostname to create servers
+  - Delete the LB object quotas set command in openstackclient
+  - Rename review.openstack.org to review.opendev.org
+  - Fix: incorrect check when no shared/private input
+  - Remove deprecated image commands
+  - Tweak network segment range fiunction tests
+  - Default to Cinder v3 API
+  - Fix <id> description for --block-device-mapping
+  - Add floating IP Port Forwarding commands
+  - Format aggregate command fields and de-race functional tests
+  - docs: clarify compute service --service option
+  - Fix bug in endpoint group deletion
+  - Format location columns in network commands
+  - Fix --limit option in image list sub-command
+  - Add 'openstack server resize (confirm|revert)' commands
+  - openstack port create support --extra-dhcp-option
+  - Update release table for Train and 4.0.0
+  - Update api-ref location
+  - Add openstack server create --boot-from-volume option
+  - Microversion 2.73: Support adding the reason behind a server lock
+  - Aggregate functional test tweak
+  - Bump lower constraint of python-zunclient
+  - Follow-up: fix the invalid releasenote link
+  - Change default security group protocol to 'any'
+  - Followup opendev cleanup and test jobs
+  - OpenDev Migration Patch
+  - Fix link to new opendev repo
+  - Remove token_endpoint auth type
+  - Allow "server migrate" (not live) to take "--host" option
+  - Add 'security_group' type support to network rbac commands
+  - Bump hacking version
+  - Fix: set invalid None project_id on range creation
+  - Stop leaving temp files after unit test runs
+  - Support type=image with --block-device-mapping option
+  - Remove races in floating ip functional tests
+  - Remove deprecated network options
+  - Use cliff formattable columns in volume v1 commands
+  - Fix compute service set handling for 2.53+
+  - Add changes-before attribute to server list
+  - Use cliff formattable columns in identity commands
+  - Support IPv6 addresses better
+  - Fix service discovery in functional tests
+  - Serialize more aggregate functional tests
+  - Update the constraints url
+  - Add CLI argument tests before making changes
+  - More aggregate functional race chasing
+  - Dropping the py35 testing
+  - Remove deprecated compute commands
+  - Add Python 3 Train unit tests
+  - Blacklist Bandit 1.6.0 due to directory exclusion bug
+  - Remove deprecated identity commands and args
+  - Microversion 2.77: Support Specifying AZ to unshelve
+  - Use cliff formattable columns in object storage commands
+  - Document 2.53 behavior for compute service list/delete
+  - document the --timing option
+  - Add server event command documentation for compute API 2.21
+  - Update sphinx requirement.
+  - Fix module paths for volumev3 volume backup commands
+  - Make configuration show not require auth
+  - Before writing object data to stdout, re-open it in binary mode
+  - Add doc and relnote for review 639652
+  - Clean up app initialization and config
+  - Use cliff formattable columns in volume v2 commands
+
+-------------------------------------------------------------------
 Mon Apr  8 12:07:55 UTC 2019 - cloud-devel@suse.de
 
 - update to version 3.18.0

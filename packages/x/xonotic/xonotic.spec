@@ -40,6 +40,8 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXpm
 BuildRequires:  xorg-x11-proto-devel
+BuildRequires:  xorg-x11-libXext-devel
+BuildRequires:  libXxf86vm-devel
 BuildRequires:  zlib-devel
 Requires:       logrotate
 Requires:       xonotic-data = %{version}

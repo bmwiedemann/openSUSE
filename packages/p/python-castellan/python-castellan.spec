@@ -17,13 +17,13 @@
 
 
 Name:           python-castellan
-Version:        1.2.2
+Version:        1.3.1
 Release:        0
 Summary:        Generic Key Manager interface for OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/castellan
-Source0:        https://files.pythonhosted.org/packages/source/c/castellan/castellan-1.2.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/castellan/castellan-1.3.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-barbicanclient >= 4.5.2
 BuildRequires:  python2-cryptography >= 2.1
@@ -32,7 +32,6 @@ BuildRequires:  python2-oslo.config >= 6.4.0
 BuildRequires:  python2-oslo.log >= 3.36.0
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pifpaf
-BuildRequires:  python2-python-subunit
 BuildRequires:  python2-reno
 BuildRequires:  python2-setuptools
 BuildRequires:  python2-stestr
@@ -45,7 +44,6 @@ BuildRequires:  python3-oslo.config >= 6.4.0
 BuildRequires:  python3-oslo.log >= 3.36.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pifpaf
-BuildRequires:  python3-python-subunit
 BuildRequires:  python3-reno
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
@@ -60,6 +58,7 @@ Requires:       python-oslo.context >= 2.19.2
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.log >= 3.36.0
 Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-requests >= 2.14.2
 Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
 %python_subpackages
@@ -70,21 +69,21 @@ Generic Key Manager interface for OpenStack.
 %package -n python-castellan-doc
 Summary:        Documentation for castellan
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-castellan-doc
 Castellan is a generic Key Manager interface for OpenStack.
 This package contains the documentation
 
 %prep
-%autosetup -p1 -n castellan-1.2.2
+%autosetup -p1 -n castellan-1.3.1
 %py_req_cleanup
 
 %build
 %{python_build}
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 

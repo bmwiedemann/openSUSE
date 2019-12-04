@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:53:17 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.17.1
+  - Update the min version of tox
+  - Simplify session logger object tests
+  - Limit interval between retries to 1 minute
+  - add handling for multiple error returns
+  - Allow requesting fixed retry delay instead of exponential
+  - Add remove_service to token fixtures
+  - Blacklist bandit 1.6.0 & cap sphinx for 2.7
+  - Cap bandit
+  - reno: per-request global_request_id
+  - Factor Adapter conf-processing logic into a helper
+  - add a handler for unknown HTTP errors
+  - Resolves a typo in a link to use Application Credentials
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add Python 3 Train unit tests
+  - Update auth plugin name list in document
+  - Add a per-request global_request_id
+  - Update master for stable/stein
+  - Allow setting retry counts for Adapter via configuration options
+  - add support for auth_receipts and multi-method auth
+
+-------------------------------------------------------------------
 Mon Apr  8 13:56:08 UTC 2019 - cloud-devel@suse.de
 
 - update to version 3.13.1

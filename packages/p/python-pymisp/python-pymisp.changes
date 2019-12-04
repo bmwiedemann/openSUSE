@@ -1,4 +1,226 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:09:09 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.4.117.3:
+- New
+ - Script to generate the metadata of a feed out of a directory. [Raphaël
+    Vinot]
+ - Add to_feed export to MISPEvent. [Raphaël Vinot]
+ - Validate object templates. [Raphaël Vinot]
+    fix https://github.com/MISP/misp-objects/issues/199
+ - Test cases for restricted tags. [Raphaël Vinot]
+    Fix #483
+ - Get Database Schema Diagnostic. [Raphaël Vinot]
+    Fix #492
+- Changes
+ - Bump version. [Raphaël Vinot]
+ - Bump dependencies. [Raphaël Vinot]
+ - Require stable version of lief again. [Raphaël Vinot]
+ - Few more improvements on the feed export. [Raphaël Vinot]
+ - Bump misp-objects. [Raphaël Vinot]
+ - Make the feed generator more generic. [Raphaël Vinot]
+ - Use New version of PyMISP in the feed generator. [Raphaël Vinot]
+ - Bump misp-object. [Raphaël Vinot]
+ - Allow to sort and indent the json output for objects. [Raphaël Vinot]
+ - Bump objects. [Raphaël Vinot]
+ - Bump dependencies. [Raphaël Vinot]
+ - [test] feed test updated as botvrij is now TLS by default. [Alexandre
+    Dulaunoy]
+- Fix
+ - Improve stability of feed output. [Raphaël Vinot]
+ - Do not unitialize the uuid in MISPEvent. [Raphaël Vinot]
+ - Bump url template version in test cases. [Raphaël Vinot]
+ - Python 2.7 tests. [Raphaël Vinot]
+ - Print the full json blob in debug mode. [Raphaël Vinot]
+    Related https://github.com/MISP/PyMISP/issues/462
+- Other
+ - Cch: Bump misp-objects. [Raphaël Vinot]
+- update to version 2.4.117.2:
+- Changes
+ - Bump changelog. [Raphaël Vinot]
+- Fix
+ - Avoid exception on legacy MISP. [Raphaël Vinot]
+- update to version 2.4.117.1:
+- New
+ - Add support for UserSettings. [Raphaël Vinot]
+- Changes
+ - Bump changelog. [Raphaël Vinot]
+ - Bump version. [Raphaël Vinot]
+ - Bump misp-objects. [Raphaël Vinot]
+ - Use default category from template. [Raphaël Vinot]
+    Fix #477
+ - Skip usersettings tests when emails are disabled. [Raphaël Vinot]
+- Fix
+ - [examples] typo uuid. [Jean-Louis Huynen]
+    give me a hoodie.
+ - Prevents exception when lief is not installed. [Christophe Vandeplas]
+ - Python <3.4 should work again.... [Raphaël Vinot]
+    Fix #482
+ - Remote_describe_types response was invalid. [Raphaël Vinot]
+ - Missing file in last commit. [Raphaël Vinot]
+ - Remove overwrite of remote_describe_types. [Raphaël Vinot]
+- Other
+ - Added example for checking sync servers. [wotschel]
+ - Corrected docstring. [Shortfinga]
+ - Include to_ids and replace newlines in title. [Koen Van Impe]
+ - Update aping.py. [ater49]
+    Just fixing a typo
+ - Remove unused MISPFileCache from PyMISP class. [Marc Hoersken]
+- update to version 2.4.117:
+- New
+ - Better handling of delete(d) attributes. [Raphaël Vinot]
+    * Hard delete on attribute
+    * Get the deleted attributes within an event
+- Changes
+ - Bump changelog. [Raphaël Vinot]
+ - Bump version. [Raphaël Vinot]
+ - Test if json exists in cached method. [Raphaël Vinot]
+ - Decode datetime without dateutils if possible. [Raphaël Vinot]
+ - Add support for rapidjson, refactoring and code cleanup. [Raphaël
+    Vinot]
+ - Cleanups. [Raphaël Vinot]
+ - Cleanups and improvements. [Raphaël Vinot]
+ - [types] updated to the latest version. [Christophe Vandeplas]
+    now using the gen_misp_types_categories using jq
+ - [describeTypes] updated to the latest version. [Alexandre Dulaunoy]
+ - Bump dependencies. [Raphaël Vinot]
+ - Add missing return formats in restsearch, bump objects. [Raphaël
+    Vinot]
+ - [misp-objects] updated to the latest version. [Alexandre Dulaunoy]
+ - Update search examples. [Raphaël Vinot]
+ - Update main notebook. [Raphaël Vinot]
+ - [test] remove attribute field which was not foreseen in 2.4 branch.
+    [Alexandre Dulaunoy]
+ - Fix travis tests due to sighting_timestamp. [Raphaël Vinot]
+ - Use default for warnings. [Raphaël Vinot]
+    fix: #453
+ - Dump dependencies, update tests. [Raphaël Vinot]
+ - Bump readme. [Raphaël Vinot]
+ - Update upload malware/attachment example script. [Raphaël Vinot]
+    Fix #447
+    Make data at attibute level more generic with getter/setter methods
+- Fix
+ - [Python2] Use LRU cache decorator, fix call to describe_types in
+    PyMISP. [Raphaël Vinot]
+ - Python2 SyntaxError... [Raphaël Vinot]
+ - Objects helpers were broken, do not overwrite describe_types. [Raphaël
+    Vinot]
+ - Support for legacy python versions. [Raphaël Vinot]
+    90 days and counting, folks.
+ - Cache object templates at AbstractMISP level. [Raphaël Vinot]
+    Related #468 and  #471
+ - Cache describeTypes at AbstractMISP level. [Raphaël Vinot]
+ - Big speed improvment when loading MISPEvent. [Raphaël Vinot]
+    1. `properties` is a list comprehension
+    2. Massively reduce the amount of calls to `properties`
+ - Python 2.7 support. [Raphaël Vinot]
+    I want a cookie.
+- Other
+ - Use classmethod instead of staticmethod and avoid hard-coded
+    reference. [Marc Hoersken]
+ - Cache JSON definitions in memory LFU cache provided by cachetools.
+    [Marc Hoersken]
+    - Path and modified time of JSON file are used as the cache key
+    - Global state is hidden away inside a root-class for re-use
+    - Maximum size is 150 considering the number of JSON definitions
+    During my tests the memory usage of the test suites was halved.
+ - Fix mixed whitespace in the travis helper script files. [Marc
+    Hoersken]
+ - Remove explicit clonce as the viper-test-files are now a Git
+    submodule. [Marc Hoersken]
+ - Add viper-test-files repository as Git submodule. [Marc Hoersken]
+ - Update .gitignore to exclude files produced during tests. [Marc
+    Hoersken]
+ - Code cleanup. [Koen Van Impe]
+ - Update type and code cleanup. [Koen Van Impe]
+ - List all the sightings - show_sightings.py. [Koen Van Impe]
+ - Disable to_ids based on false positive sightings reporting. [Koen Van
+    Impe]
+ - Adds support to add local tags. [Antoine Cailliau]
+    Requires https://github.com/MISP/MISP/pull/5215 to be merged first.
+ - Minor grammar errors. [Miroslav Stampar]
+ - Make client_certs out of the box friendly. [Campbell McKenzie]
+- update to version 2.4.114:
+- New
+ - [Community] Request access. [Raphaël Vinot]
+ - Initial support for communities. [Raphaël Vinot]
+ - Contact event reporter. [Raphaël Vinot]
+ - Delegate Event. [Raphaël Vinot]
+    And more test cases
+- Changes
+ - Bump Changelog. [Raphaël Vinot]
+ - Bump Changelog. [Raphaël Vinot]
+ - Temp disable tests for request_community_access. [Raphaël Vinot]
+ - Disable test for now. [Raphaël Vinot]
+ - Bump Changelog. [Raphaël Vinot]
+ - Bump Dependencies. [Raphaël Vinot]
+ - Bump version. [Raphaël Vinot]
+ - Bump misp-objects. [Raphaël Vinot]
+ - Re-enable a few test cases. [Raphaël Vinot]
+ - Make sure delegation is enabled while testing. [Raphaël Vinot]
+ - [tests] Check the type of the response. [Raphaël Vinot]
+ - New local key in Org/Orgc. [Raphaël Vinot]
+ - [tests] Do not run in fast mode by default. [Raphaël Vinot]
+ - Better handling of sightings. [Raphaël Vinot]
+ - [Travis] Add more debug. [Raphaël Vinot]
+ - Add test related to travis. [Raphaël Vinot]
+- Fix
+ - Event delegation was incorrect. [Raphaël Vinot]
+ - Automatically skip empty string in add_attribute at object level.
+    [Raphaël Vinot]
+    Fix #439
+    Re-enable test cases.
+ - [Travis] User cannot create tag, Travis was right. [Raphaël Vinot]
+ - Invalid tests in last commit. [Raphaël Vinot]
+ - [Travis] Slight changes to help debug on Travis. [Raphaël Vinot]
+- Other
+ - Bump Changelog. [Raphaël Vinot]
+- update to version 2.4.113:
+- New
+ - Helpers & testcases for syncing. [Raphaël Vinot]
+ - Preliminaty setup for testing syncing. [Raphaël Vinot]
+ - Add few tests for admin tasks. [Raphaël Vinot]
+ - Update MISP, test sync server. [Raphaël Vinot]
+ - Properly support attribute/add of multiple attributes (2.4.113+)
+    [Raphaël Vinot]
+- Changes
+ - Bump Changelog. [Raphaël Vinot]
+ - Bump version. [Raphaël Vinot]
+ - Improve test cases. [Raphaël Vinot]
+ - Update and improve live testing. [Raphaël Vinot]
+ - Add tests cases for sync, bump describeTypes. [Raphaël Vinot]
+ - Return empty list instead of None. [Pierre-Jean Grenier]
+    In all cases but one, the 3rd returned object is a (potentially empty) list.
+ - Some more code cleanup. [Raphaël Vinot]
+ - Code cleanup. [Raphaël Vinot]
+ - Enable more tests. [Raphaël Vinot]
+ - #4891 was fixed. [Raphaël Vinot]
+ - Bump describeTypes. [Raphaël Vinot]
+- Fix
+ - Fallback to propose attribute update. [Raphaël Vinot]
+ - Properly __repr__ MISPUser. [Raphaël Vinot]
+ - Move __not_jsonable *inside* the __init__ [Raphaël Vinot]
+    Turns out, if you modify a variable defined outside the __init__,
+    every instances (and inherited classes) of that class will be impacted by it.
+ - Exception when posting multiple attributes on attributes/add. [Raphaël
+    Vinot]
+    Fix #433
+    Few cleanups in code.
+- Other
+ - Include date_from & date_to in subject and report content. [Koen Van
+    Impe]
+ - Allow statistics date_from date_to. [Koen Van Impe]
+    - date_from + date_to
+    - move misp object creation after argument parser
+ - Allow to supply mail options as arguments on command line. [Koen Van
+    Impe]
+ - Fix stats_report example to use ExpandedPyMISP. [Maxime Thiebaut]
+    The stats_report example relied on deprecated functions making it crash.
+    This has been fixed by upgrading to ExpandedPyMISP. Further checks have
+    been introduced to ensure used dictionnary keys do exist as the example
+    also crashed on clean MISP instances due to empty responses.
+
+-------------------------------------------------------------------
 Sat Aug  3 07:46:24 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.4.112:

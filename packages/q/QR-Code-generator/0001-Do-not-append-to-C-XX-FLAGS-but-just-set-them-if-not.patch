@@ -1,0 +1,40 @@
+From f0823adc2f7224aad3a1060a4eede4adad5858f0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Tue, 3 Dec 2019 11:57:24 +0100
+Subject: [PATCH 1/5] Do not append to C/XX/FLAGS but just set them if not
+ defined already
+
+---
+ c/Makefile   | 2 +-
+ cpp/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/c/Makefile b/c/Makefile
+index fd0c367..b27449c 100644
+--- a/c/Makefile
++++ b/c/Makefile
+@@ -29,7 +29,7 @@
+ # - CFLAGS: Any extra user-specified compiler flags (can be blank).
+ 
+ # Recommended compiler flags:
+-CFLAGS += -std=c99 -O
++CFLAGS ?= -std=c99 -O
+ 
+ # Extra flags for diagnostics:
+ # CFLAGS += -g -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -fsanitize=undefined,address
+diff --git a/cpp/Makefile b/cpp/Makefile
+index 1d32943..62e03c5 100644
+--- a/cpp/Makefile
++++ b/cpp/Makefile
+@@ -29,7 +29,7 @@
+ # - CXXFLAGS: Any extra user-specified compiler flags (can be blank).
+ 
+ # Recommended compiler flags:
+-CXXFLAGS += -std=c++11 -O
++CXXFLAGS ?= -std=c++11 -O
+ 
+ # Extra flags for diagnostics:
+ # CXXFLAGS += -g -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -fsanitize=undefined,address
+-- 
+2.24.0
+

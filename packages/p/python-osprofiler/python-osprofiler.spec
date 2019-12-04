@@ -17,15 +17,14 @@
 
 
 Name:           python-osprofiler
-Version:        2.6.0
+Version:        2.8.2
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/osprofiler
-Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-2.6.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-2.8.2.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-PrettyTable >= 0.7.2
 BuildRequires:  python2-WebOb >= 1.7.1
 BuildRequires:  python2-ddt
@@ -45,7 +44,6 @@ BuildRequires:  python2-testtools
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-ddt
-BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
 BuildRequires:  python3-elasticsearch
 BuildRequires:  python3-mock
@@ -88,14 +86,14 @@ reasons (for example in isolating cross-project performance issues).
 %package -n python-osprofiler-doc
 Summary:        Documentation for OSProfiler
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-osprofiler-doc
 Documentation for OSProfiler.
 
 %prep
-%autosetup -p1 -n osprofiler-2.6.0
+%autosetup -p1 -n osprofiler-2.8.2
 %py_req_cleanup
 
 %build
@@ -106,7 +104,7 @@ Documentation for OSProfiler.
 %python_clone -a %{buildroot}%{_bindir}/osprofiler
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

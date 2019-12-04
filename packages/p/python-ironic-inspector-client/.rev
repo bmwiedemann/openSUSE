@@ -174,4 +174,29 @@
   - import zuul job settings from project-config</comment>
     <requestid>692828</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ac132d9b0ebb08b3df168c8a0bb68025</srcmd5>
+    <version>3.7.0</version>
+    <time>1575463712</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.7.0
+  - Fetch requirements from opendev
+  - Bump the openstackdocstheme extension to 1.20
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - Update sphinx requirements
+  - OSC: try fetching ironic-inspector URL from osc-lib
+  - Find misteriously missing pep8 import check
+  - Repair the deprecated uuid/uuids arguments
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Replace openstack.org git:// URLs with https://
+  - CI: clean up required projects
+  - Build pdf doc
+  - Update Python 3 test runtimes for Train
+  - Allow running a specific functional test via CLI
+  - Dropping the py35 testing
+  - Deprecates &quot;uuid&quot; parameters to Python calls when node is expected
+  - Switch base job to ironic-base</comment>
+    <requestid>736655</requestid>
+  </revision>
 </revisionlist>

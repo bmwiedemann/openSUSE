@@ -59,4 +59,33 @@ libprelude and libpreludedb will also be submitted</comment>
     <comment></comment>
     <requestid>698745</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39066fc244a0e601e10cc871d3478766</srcmd5>
+    <version>5.1.0</version>
+    <time>1575463759</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.1.0
+  - Update internal dependencies (SWIG, ...)
+  - Rewrite preludedb-admin in python, multiprocess compatible
+  - Improve bindings
+  - Add functions (AVG, SUM, ...)
+  - Multiprocess compatibility
+  - Add missing operators
+- Add patchs:
+  - libpreludedb-force_preludedb_admin_with_py3.patch
+    - Force using Python 3 for preludedb-admin
+  - libpreludedb-fix_gtkdoc_1.32.patch
+    - Support of recents gtkdoc versions
+  - libpreludedb-fix_py38.patch
+    - Add support for Python3.8
+  - libpreludedb-update_m4_postgresql.patch
+    - Compatibility with PostgreSQL &gt;= 10
+- Remove patch:
+  - libpreludedb-manpages.patch
+    - Fixed upstream
+- Remove Python 2 support
+  - Python 2 will be removed step by step in all Linux distributions
+</comment>
+    <requestid>744326</requestid>
+  </revision>
 </revisionlist>

@@ -17,16 +17,15 @@
 
 
 Name:           python-keystoneclient
-Version:        3.19.0
+Version:        3.21.0
 Release:        0
 Summary:        Client library for OpenStack Identity API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-keystoneclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-3.19.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-3.21.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-debtcollector >= 1.2.0
 BuildRequires:  python2-keystoneauth1 >= 3.4.0
 BuildRequires:  python2-lxml
@@ -43,7 +42,6 @@ BuildRequires:  python2-stestr
 BuildRequires:  python2-testresources
 BuildRequires:  python2-testscenarios
 BuildRequires:  python3-debtcollector >= 1.2.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-lxml
 BuildRequires:  python3-mock
@@ -76,15 +74,15 @@ Client library for interacting with Openstack Identity API.
 %package -n python-keystoneclient-doc
 Summary:        Documentation for OpenStack Identity API Client
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-keystoneclient-doc
 Documentation for the client library for interacting with Openstack
 Identity API.
 
 %prep
-%autosetup -p1 -n python-keystoneclient-3.19.0
+%autosetup -p1 -n python-keystoneclient-3.21.0
 %py_req_cleanup
 # disable intersphinx - no network access during build
 echo "intersphinx_mapping = {}" >> doc/source/conf.py
@@ -93,7 +91,7 @@ echo "intersphinx_mapping = {}" >> doc/source/conf.py
 %{python_build}
 
 # Build HTML docs and man page
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 
 %install
 %{python_install}
@@ -110,8 +108,8 @@ rm -fr html/.doctrees html/.buildinfo
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python2_sitelib}/keystoneclient
-%{python2_sitelib}/*.egg-info
+%{python_sitelib}/keystoneclient
+%{python_sitelib}/*.egg-info
 
 %files -n python-keystoneclient-doc
 %doc doc/build/html

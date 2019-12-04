@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:06:57 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.11.0
+  - Replace openstack.org git:// URLs with https://
+  - Update master for stable/stein
+  - Dropping the py35 testing
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - OpenDev Migration Patch
+  - Imported Translations from Zanata
+  - Fix uint test test_json_format and Solve pep8 msgfmt error
+  - Add Python 3 Train unit tests
+  - Update api-ref location
+  - Switch to the new canonical constraints URL on master
+
+-------------------------------------------------------------------
 Mon Apr  8 12:26:15 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.10.1

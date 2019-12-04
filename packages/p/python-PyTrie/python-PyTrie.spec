@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyTrie
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ URL:            https://github.com/gsakkis/pytrie/
 Source:         https://files.pythonhosted.org/packages/source/P/PyTrie/PyTrie-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/gsakkis/pytrie/master/LICENSE
 Patch0:         fix-sorting-py2.patch
+# PATCH-FIX-UPSTREAM no-import-from-collections.patch gh#gsakkis/pytrie#5 mcepl@suse.com
+# Don't import directly from collections.
+Patch1:         no-import-from-collections.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  fdupes
@@ -51,7 +54,7 @@ prefix, and vice versa, finding the items whose keys are prefixes of a given key
 %prep
 %setup -q -n PyTrie-%{version}
 cp %{SOURCE1} .
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build

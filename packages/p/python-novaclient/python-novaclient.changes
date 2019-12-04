@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:04:46 UTC 2019 - cloud-devel@suse.de
+
+- update to version 15.1.0
+  - Modify the url of upper_constraints_file
+  - OpenDev Migration Patch
+  - Revert "Add irrelevant files in dsvm job"
+  - Optimize limit option docs string description for novaclient
+  - Cap sphinx for py2 and drop keyring dependency
+  - doc: Clarify versioned wrapped method
+  - Replace openstack.org git:// URLs with https://
+  - Allow passing negative values for the locked search_opt in cs.servers.list
+  - Microversion 2.73: Support adding the reason behind a server lock
+  - Use SHA256 instead of MD5 in completion cache
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Microversion 2.77: Support Specifying AZ to unshelve
+  - Bump the openstackdocstheme extension to 1.20
+  - Add test for console-log and docs for bug 1746534
+  - Allow searching for hypervisors and getting back details
+  - Tiny fix of documentation
+  - docs: clarify nova migration-list --host option
+  - Drop py35 tests
+  - Microversion 2.79: Add delete_on_termination to volume-attach API
+  - Bump openstackdocstheme to 1.30.0
+  - Add host and hypervisor_hostname to create servers
+  - API microversion 2.76: Add 'power-update' external event
+  - Add irrelevant files in dsvm job again
+  - Add --migration-type and --source-compute to migration-list
+  - Update master for stable/stein
+  - Blacklist python-cinderclient 4.0.0
+  - Remove deprecated methods and properties
+  - Fix duplicate object description error
+  - Set the lower limit of api_version for volume_type
+  - Remove deprecated options
+  - Add a description of --on-shared-storage
+  - Updates for OpenDev transition
+  - Update api-ref location
+  - Microversion 2.75 - Multiple API cleanup changes
+  - Deprecate cells v1 and extension commands and APIs
+  - Add Python 3 Train unit tests
+  - [Docs] Update client docs to add reason and locked options
+  - Microversion 2.78 - show server topology
+  - Revert "Fix crashing console-log"
+  - Add a guide to add a new microversion support
+  - Add irrelevant files in dsvm job
+  - Follow up for microversion 2.75
+
+-------------------------------------------------------------------
 Mon Jun 17 10:05:20 UTC 2019 - cloud-devel@suse.de
 
 - update to version 13.0.1

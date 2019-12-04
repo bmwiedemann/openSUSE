@@ -17,13 +17,13 @@
 
 
 Name:           python-magnumclient
-Version:        2.12.0
+Version:        2.15.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Magnum
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-magnumclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-2.12.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-2.15.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-PrettyTable >= 0.7.2
 BuildRequires:  python2-cryptography >= 2.1
@@ -73,6 +73,7 @@ Requires:       python-keystoneauth1 >= 3.4.0
 Requires:       python-os-client-config >= 1.28.0
 Requires:       python-osc-lib >= 1.8.0
 Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.log >= 3.36.0
 Requires:       python-oslo.serialization >= 2.18.0
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-pbr >= 2.0.0
@@ -97,8 +98,8 @@ Client library for Magnum built on the Magnum API. It provides a Python API
 %package -n python-magnumclient-doc
 Summary:        Documentation for OpenStack Magnum API client libary
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-magnumclient-doc
 Client library for Magnum built on the Magnum API. It provides a Python API
@@ -106,15 +107,15 @@ Client library for Magnum built on the Magnum API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-magnumclient-2.12.0
+%autosetup -p1 -n python-magnumclient-2.15.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # Build HTML docs and man page
-PBR_VERSION=2.12.0 sphinx-build -b html doc/source doc/build/html
-PBR_VERSION=2.12.0 sphinx-build -b man doc/source doc/build/man
+PBR_VERSION=2.15.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.15.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

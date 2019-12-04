@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 20 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- %make_jobs is depricated replaced by %cmake_build
+
+-------------------------------------------------------------------
+Sat Nov  9 14:28:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.14
+  * Removed Alt and Ctrl to handle menu item.
+  * Fixed Text typos
+  * Fixed SDL with two digit sub-version number
+  * Apply floor bonus correctly on percentage greater than 100%
+- Remove patch:
+  * Fix-SDL2W.patch (fixed by upstream)
+
+-------------------------------------------------------------------
 Mon Sep 30 13:28:05 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Fix-SDL2W.patch to fix the SDL2 detection.

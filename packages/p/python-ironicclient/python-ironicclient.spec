@@ -17,17 +17,15 @@
 
 
 Name:           python-ironicclient
-Version:        2.7.2
+Version:        3.1.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-ironicclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-2.7.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-3.1.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-Babel
-BuildRequires:  python2-PrettyTable >= 0.7.1
 BuildRequires:  python2-PyYAML >= 3.12
 BuildRequires:  python2-appdirs >= 1.3.0
 BuildRequires:  python2-dogpile.cache >= 0.6.2
@@ -46,10 +44,8 @@ BuildRequires:  python2-requests-mock
 BuildRequires:  python2-stestr
 BuildRequires:  python2-testtools
 BuildRequires:  python3-Babel
-BuildRequires:  python3-PrettyTable >= 0.7.1
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-appdirs >= 1.3.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-dogpile.cache >= 0.6.2
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-jsonschema >= 2.6.0
@@ -65,7 +61,6 @@ BuildRequires:  python3-requests >= 2.14.2
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
-Requires:       python-PrettyTable >= 0.7.1
 Requires:       python-PyYAML >= 3.12
 Requires:       python-appdirs >= 1.3.0
 Requires:       python-dogpile.cache >= 0.6.2
@@ -80,14 +75,6 @@ Requires:       python-pbr >= 2.0.0
 Requires:       python-requests >= 2.14.2
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
 %python_subpackages
 
 %description
@@ -99,10 +86,10 @@ ironicclient module) and a command-line interface (ironic).
 %package -n python-ironicclient-doc
 Summary:        Documentation for OpenStack Ironic API Client
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-reno
-BuildRequires:  python-sphinxcontrib-apidoc
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-reno
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-ironicclient-doc
 This is a client for the OpenStack Ironic API (Bare Metal. There's a
@@ -111,28 +98,18 @@ Each implements 100% of the OpenStack Ironic API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-ironicclient-2.7.2
+%autosetup -p1 -n python-ironicclient-3.1.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
-PBR_VERSION=2.7.2 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=3.1.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{python_install}
-# bash completion
-install -p -D -m 644 tools/ironic.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/ironic.bash_completion
-%python_clone -a %{buildroot}%{_bindir}/ironic
-%python_clone -a %{buildroot}%{_sysconfdir}/bash_completion.d/ironic.bash_completion
-
-%post
-%{python_install_alternative ironic %{_sysconfdir}/bash_completion.d/ironic.bash_completion}
-
-%postun
-%python_uninstall_alternative ironic
 
 %check
 %python_exec -m stestr.cli run
@@ -142,8 +119,6 @@ install -p -D -m 644 tools/ironic.bash_completion %{buildroot}%{_sysconfdir}/bas
 %doc README.rst
 %{python_sitelib}/ironicclient
 %{python_sitelib}/*.egg-info
-%python_alternative %{_bindir}/ironic
-%python_alternative %{_sysconfdir}/bash_completion.d/ironic.bash_completion
 
 %files -n python-ironicclient-doc
 %license LICENSE

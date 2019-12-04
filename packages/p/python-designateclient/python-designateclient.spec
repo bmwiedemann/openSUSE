@@ -18,7 +18,7 @@
 
 %global sname python-designateclient
 Name:           python-designateclient
-Version:        2.11.0
+Version:        3.0.0
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
@@ -26,39 +26,47 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{sname}
 Source0:        https://files.pythonhosted.org/packages/source/p/%{sname}/%{sname}-%{version}.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-jsonschema >= 2.6.0
-BuildRequires:  python-jsonschema < 3
-BuildRequires:  python-keystoneclient
-BuildRequires:  python-mock
-BuildRequires:  python-oslotest
-BuildRequires:  python-pbr >= 2.0.0
-BuildRequires:  python-python-subunit
-BuildRequires:  python-requests-mock
-BuildRequires:  python-setuptools
-BuildRequires:  python-stestr
+BuildRequires:  python2-jsonschema >= 2.6.0
+BuildRequires:  python2-keystoneauth1 >= 3.4.0
+BuildRequires:  python2-mock
+BuildRequires:  python2-oslo.serialization >= 2.18.0
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-pbr >= 2.0.0
+BuildRequires:  python2-requests-mock
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-stestr
+BuildRequires:  python3-jsonschema >= 2.6.0
+BuildRequires:  python3-keystoneauth1 >= 3.4.0
+BuildRequires:  python3-mock
+BuildRequires:  python3-oslo.serialization >= 2.18.0
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-pbr >= 2.0.0
+BuildRequires:  python3-requests-mock
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-stestr
 Requires:       python-cliff >= 2.8.0
 Requires:       python-debtcollector >= 1.2.0
 Requires:       python-jsonschema >= 2.6.0
-Requires:       python-jsonschema < 3
 Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-keystoneclient
 Requires:       python-osc-lib >= 1.8.0
+Requires:       python-oslo.serialization >= 2.18.0
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-requests >= 2.14.2
 Requires:       python-six >= 1.10.0
 Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
+%python_subpackages
 
 %description
 OpenStack DNS as a Service - Client
 
-%package doc
+%package -n python-designateclient-doc
 Summary:        Documentation for the OpenStack DNS as a Service - Client
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
-%description doc
+%description -n python-designateclient-doc
 Documentation for the OpenStack DNS as a Service - Client.
 
 %prep
@@ -66,31 +74,27 @@ Documentation for the OpenStack DNS as a Service - Client.
 %py_req_cleanup
 
 %build
-%py2_build
+%python_build
 
-# generate html docs
-%{__python2} setup.py build_sphinx --builder=html,man
+# generate docs
+PYTHONPATH=. PBR_VERSION=3.0.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%py2_install
-# man pages
-install -p -D -m 644 doc/build/man/*designateclient.1 %{buildroot}%{_mandir}/man1/designateclient.1
+%python_install
 
 %check
-stestr run
+%python_exec -m stestr.cli run
 
-%files
+%files %{python_files}
 %license LICENSE
-%doc README.rst ChangeLog
-%{python2_sitelib}/designateclient
-%{python2_sitelib}/python_designateclient-%{version}-py2.?.egg-info
-%{_bindir}/designate
-%{_mandir}/man1/designateclient.1.*
+%doc README.rst
+%{python_sitelib}/designateclient
+%{python_sitelib}/python_designateclient-%{version}-*.egg-info
 
-%files doc
+%files -n python-designateclient-doc
 %license LICENSE
-%doc doc/build/html
+%doc doc/build/html ChangeLog
 
 %changelog

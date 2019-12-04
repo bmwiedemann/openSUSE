@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Nov  1 10:48:12 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to 0.12.1
+  * Archive no longer OpenGPG-signed by upstream
+  * We now have a manual rendered to beautiful PDF format.  Thanks to
+    Simon Howard, the project’s founder.
+  * A strong focus on vanilla compatibility has been sought for this
+    release.  Most, if not all, levels should work now.
+  * _Final Doom_ compatibility de-emphasized.  Where it creates
+    conflicts with _Doom II_ mods or texture definitions, we prefer
+    the _Doom II_ side of things.  _Final Doom_-specific maps and mods
+    may never look completely right in _Freedoom_, as a result.
+  * _FreeDM_ has seen a major overhaul, with most maps being modified,
+    with new additions and removals of the weaker levels.  It now
+    benefits from the use of Aquatex and Egyptian textures in some of
+    its levels, giving a more vibrant feel than before.
+  * New power-up (stealth, overdrive, and ultra-overdrive) sprites.
+  * Some weapon and ammo sprites have been tweaked and improved.
+  * Completed and enhanced set of _Evilution_ and _Plutonia_ textures.
+  * New skull-switches by MissLav.
+  * New SKY4 based on an astronomy photograph.
+  * Tweaked player sprites and HUD face by Ferk.
+  * New tracks in C1M2, C2M3, C2M8, MAP03, MAP12, MAP22, MAP25, MAP26,
+    MAP27, DM03, DM06, DM09, DM17, DM24, DM31, and DM32.
+  * All files in-tree have been renamed from *.mus to *.mid.  The file
+    format must always be MIDI.  This makes it easy on music composers
+    to actually work with the files.
+  * Metainfo (formerly appdata) and desktop files have been brought up
+    to the latest standard specifications and recommendations, using
+    reverse-DNS for the project identifier, and a self-evaluated
+    content rating.
+  * The launch shell-script changed the `PORT` environment variable to
+    `DOOMPORT` to avoid conflicts with the genericly-named `PORT`.  It
+    also builds a sensible default `DOOMWADPATH` environment variable
+    to assist ports that do not have a hard-coded fallback.
+  * The script no longer tries to look for `boom`, `zdoom`, nor
+    `prboom` by default, as these are ports no longer maintained.
+  * Freedoom’s build system now has a hard dependency on Python 3, in
+    anticipation of Python 2’s end-of-life.
+  * We have moved from ImageMagick to Pillow, a Python library for
+    graphics manipulation.  It provides faster build times as well as
+    API stability.
+  * GIF files have been replaced with PNG files.  True PNG file format
+    transparency is used instead of a cyan background.
+  * `ASCIIDOC` and `ASCIIDOC_MAN` variables have been added to the
+    Makefile to control the AsciiDoc implementation used to generate
+    HTML and man page files.
+  * The HTML documentation (eg, +NEWS+ and +README+ files) are
+    generated with a style based on _Freedoom_’s own website, rather
+    than the default AsciiDoc styling.
+  * Incongruities between the actual game and manual have been fixed.
+  * The `make install` targets have been consolidated to behave more
+    similarly to how the pre-built zip distributions are: a split
+    between _FreeDM_ and _Phase 1+2_, rather than installing each of
+    the tree IWADs independently (and thus getting their own
+    +/usr/share/doc+ directories, for instance).
+
+-------------------------------------------------------------------
 Mon Jan  1 21:13:20 UTC 2018 - jengelh@inai.de
 
 - Update to new upstream release 0.11.3

@@ -17,7 +17,7 @@
 
 
 Name:           python-os-service-types
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Python library for consuming OpenStack sevice-types-authority data
 License:        Apache-2.0
@@ -65,7 +65,7 @@ possible and local caching of the fetched data.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n os-service-types-1.6.0
+%autosetup -p1 -n os-service-types-1.7.0
 %py_req_cleanup
 # The TestRemote test cases must be excluded because they introduce a circular
 # dependency on python-keystoneauth1.

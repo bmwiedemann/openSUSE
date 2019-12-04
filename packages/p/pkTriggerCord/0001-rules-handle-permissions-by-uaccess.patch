@@ -1,0 +1,51 @@
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Thu, 21 Nov 2019 13:28:36 +0100
+Subject: rules: handle permissions by uaccess
+Patch-mainline: no
+References: uaccess
+
+Do not make users the owner, let uaccess modules handle who can what.
+
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ pentax.rules  | 8 ++++----
+ samsung.rules | 6 +++---
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/pentax.rules b/pentax.rules
+index 4079ad47dc..eff3f20ded 100644
+--- a/pentax.rules
++++ b/pentax.rules
+@@ -6,9 +6,9 @@ SUBSYSTEM!="scsi_generic", GOTO="pentax_rules_end"
+ 
+ LABEL="pentax_rules_start"
+ # WAIT_FOR_SYSFS="device/vendor"
+-ATTRS{vendor}=="PENTAX", ATTRS{model}=="DIGITAL_CAMERA", MODE="0666", GROUP="users"
+-ATTRS{vendor}=="PENTAX", ATTRS{model}=="DSC*", MODE="0666", GROUP="users"
+-ATTRS{vendor}=="RICOHIMG", ATTRS{model}=="DSC*", MODE="0666", GROUP="users"
+-ATTRS{vendor}=="PENTAX", ATTRS{model}=="K*", MODE="0666", GROUP="users"
++ATTRS{vendor}=="PENTAX", ATTRS{model}=="DIGITAL_CAMERA", TAG+="uaccess"
++ATTRS{vendor}=="PENTAX", ATTRS{model}=="DSC*", TAG+="uaccess"
++ATTRS{vendor}=="RICOHIMG", ATTRS{model}=="DSC*", TAG+="uaccess"
++ATTRS{vendor}=="PENTAX", ATTRS{model}=="K*", TAG+="uaccess"
+ 
+ LABEL="pentax_rules_end"
+diff --git a/samsung.rules b/samsung.rules
+index e643a627cb..0c5e7ebc67 100644
+--- a/samsung.rules
++++ b/samsung.rules
+@@ -6,8 +6,8 @@ SUBSYSTEM!="scsi_generic", GOTO="samsung_rules_end"
+ 
+ LABEL="samsung_rules_start"
+ # WAIT_FOR_SYSFS="device/vendor"
+-ATTRS{vendor}=="SAMSUNG", ATTRS{model}=="DIGITAL_CAMERA", MODE="0666", GROUP="users"
+-ATTRS{vendor}=="SAMSUNG", ATTRS{model}=="DSC*", MODE="0666", GROUP="users"
+-ATTRS{vendor}=="SAMSUNG", ATTRS{model}=="K*", MODE="0666", GROUP="users"
++ATTRS{vendor}=="SAMSUNG", ATTRS{model}=="DIGITAL_CAMERA", TAG+="uaccess"
++ATTRS{vendor}=="SAMSUNG", ATTRS{model}=="DSC*", TAG+="uaccess"
++ATTRS{vendor}=="SAMSUNG", ATTRS{model}=="K*", TAG+="uaccess"
+ 
+ LABEL="samsung_rules_end"
+-- 
+2.24.0
+

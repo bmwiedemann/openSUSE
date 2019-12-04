@@ -17,15 +17,13 @@
 
 
 Name:           freedoom-freedm
-Version:        0.11.3
+Version:        0.12.1
 Release:        0
 Summary:        Deathmatch levels for Doom
 License:        BSD-3-Clause
 Group:          Amusements/Games/3D/Shoot
 Url:            https://freedoom.github.io/
 Source:         https://github.com/freedoom/freedoom/releases/download/v%{version}/freedm-%{version}.zip
-Source2:        https://github.com/freedoom/freedoom/releases/download/v%{version}/freedm-%{version}.zip.asc
-Source9:        %{name}.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  unzip
@@ -46,7 +44,8 @@ install -D -m 0644 freedm.wad %{buildroot}%{_datadir}/doom/freedm.wad
 
 %files
 %defattr(-,root,root)
-%doc COPYING.txt CREDITS.txt README.html
+%doc CREDITS.txt freedoom-manual.pdf README.html
+%license COPYING.txt
 %{_datadir}/doom/
 
 %changelog

@@ -20,7 +20,7 @@
 %bcond_with test
 %bcond_with docs
 Name:           python-os-client-config
-Version:        1.32.0
+Version:        1.33.0
 Release:        0
 Summary:        OpenStack Client Configuration Library
 License:        Apache-2.0
@@ -46,7 +46,7 @@ BuildRequires:  python-keystoneclient
 BuildRequires:  python-mock
 BuildRequires:  python-oslotest
 BuildRequires:  python-python-subunit
-BuildRequires:  python-testrepository
+BuildRequires:  python-stestr
 BuildRequires:  python-testscenarios
 BuildRequires:  python-testtools
 %endif
@@ -92,7 +92,7 @@ rm -rf html/.{doctrees,buildinfo}
 %if %{with test}
 %check
 export PYTHONPATH="%{python2_sitearch}:%{python2_sitelib}:%{buildroot}%{python2_sitelib}"
-testr init && testr run
+python2 -m stestr.cli run
 %endif
 
 %files %{python_files}

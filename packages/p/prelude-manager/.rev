@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>538193</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>354cf08974626e1c100bd1020a8bba26</srcmd5>
+    <version>5.1.0</version>
+    <time>1575463761</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.1.0
+  - Fully support SELinux
+  - Update GNULibs
+  - Various fixes
+- Bump spec copyright to 2019
+- Update License field
+</comment>
+    <requestid>744327</requestid>
+  </revision>
 </revisionlist>

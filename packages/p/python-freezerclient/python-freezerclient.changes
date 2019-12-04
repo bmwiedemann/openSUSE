@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:58:41 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.2.0
+  - Change openstack-dev to openstack-discuss
+  - Use template for lower-constraints
+  - Bump the openstackdocstheme extension to 1.20
+  - Update master for stable/stein
+  - Dropping the py35 testing
+  - Change openstack-dev to openstack-discuss in setup.cfg
+  - Switch to the new canonical constraints URL on master
+  - add python 3.7 unit test job
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update json module to jsonutils
+  - Update sphinx dependency
+  - Add python3.7 unit test job
+  - self.endpoint repeated
+  - modify 'v1' in the comment to 'v2'
+  - Update the bugs link to storyboard
+  - Add Python 3.6 classifier to setup.cfg
+  - delete repeated self.endpoint
+
+-------------------------------------------------------------------
 Mon Apr  8 12:35:24 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.1.0

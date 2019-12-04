@@ -31,6 +31,7 @@ BuildRequires:  %{php_name}-pear
 Requires:       %{php_name}-pear
 Requires:       php-ldap
 Provides:       php-pear(%{pear_name}) = %{version}
+Obsoletes:      php5-pear-%{pear_name}
 BuildArch:      noarch
 
 %description

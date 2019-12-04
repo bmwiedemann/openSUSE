@@ -160,8 +160,22 @@ For manual creation of the database, the folowing steps are to be performed:
 
 As result you will have a bare Tryton database with the base modules installed.
 
-See: http://doc.tryton.org/4.6/trytond/doc/topics/configuration.html
+See: http://doc.tryton.org/4.2/trytond/doc/topics/configuration.html
 
+
+Installation of the Webfrontend for tryton (sao) from package
+-------------------------------------------------------------
+
+For most openSUSE Flavours tryton-sao is packed. You can install it with
+     > zypper install tryton-sao
+
+You need to edit /etc/tryton/trytond.conf. Installation of tryton-sao follows the 
+standards for nodejs-installations, so the path is within the node-modules:
+
+In the section [web], set the path:
+    root = /usr/lib/node-modules/tryton-sao
+
+Now restart trytond.
 
 Installation of the Webfrontend for tryton (sao) from source
 ------------------------------------------------------------
@@ -237,7 +251,7 @@ Now, you're finished with the system setup. Please be aware of the following thi
         
   * Only the same major version of Tryton client and Tryton server can connect.
 
- -- Axel Braun <axel.braun@gmx.de>  März 20, 2019, 19:20:02
+ -- Axel Braun <axel.braun@gmx.de>  MON Jun 11 10:27:14 UTC 2018
 
 
 This file is based on tryton-server.README.Debian

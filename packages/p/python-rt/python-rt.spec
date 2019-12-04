@@ -1,7 +1,7 @@
 #
 # spec file for package python-rt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 # Tests require internet connection
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rt
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        Python interface to Request Tracker API
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/CZ-NIC/python-rt
+URL:            https://github.com/CZ-NIC/python-rt
 Source:         https://files.pythonhosted.org/packages/source/r/rt/rt-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,7 +1,7 @@
 #
 # spec file for package python-shodan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{!?license: %global license %doc}
 Name:           python-shodan
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        Python library and command-line utility for Shodan
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/achillean/shodan-python/
+URL:            http://github.com/achillean/shodan-python/
 Source:         https://files.pythonhosted.org/packages/source/s/shodan/shodan-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -76,7 +76,6 @@ install -Dm 644 docs/_build/man/shodan-python.1 %{buildroot}%{_mandir}/man1/shod
 # SHODAN-API-KEY file required by tests
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc AUTHORS README.rst
 %%license LICENSE
 %python3_only %{_bindir}/shodan

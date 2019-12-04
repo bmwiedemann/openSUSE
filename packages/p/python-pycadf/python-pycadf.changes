@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:34:16 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.10.0
+  - add python 3.7 unit test job
+  - Removes temporary fix for doc generation
+  - Add py37 tox env and drop py35
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch
+
+-------------------------------------------------------------------
 Mon Apr  8 14:04:16 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.9.0

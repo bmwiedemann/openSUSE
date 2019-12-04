@@ -7,4 +7,20 @@
     <comment>Update</comment>
     <requestid>714507</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69a11a571faa546a13a8016d5d25d809</srcmd5>
+    <version>7.8.1</version>
+    <time>1575464062</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow autoconfig of grass directory in software using grass
+- Update to 7.8.1:
+  * The GRASS GIS 7.8.1 release provides more than 80 fixes and improvements with respect to the stable release 7.8.0.
+  * The most important change is the new Python-3 support. 
+  * In this release, PROJ 6 and GDAL 3 support has been added. 
+  * The new version is backward compatible with older GRASS 7.x releases and older GDAL 2.x and PROJ 4/5 releases.
+  * More details: https://trac.osgeo.org/grass/wiki/Release/7.8.1-News
+- Use Python 3.
+</comment>
+    <requestid>753783</requestid>
+  </revision>
 </revisionlist>

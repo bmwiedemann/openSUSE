@@ -74,4 +74,12 @@
 - remove remove-download-test.patch</comment>
     <requestid>731290</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>65826e565bf2458c1863f1e83c216f78</srcmd5>
+    <version>0.9.8</version>
+    <time>1575463973</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>753264</requestid>
+  </revision>
 </revisionlist>

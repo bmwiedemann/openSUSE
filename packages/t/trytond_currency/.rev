@@ -62,4 +62,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>726598</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c061c1d9fafa30a6d3a9fde38e91106f</srcmd5>
+    <version>5.0.3</version>
+    <time>1575463896</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 750818 from DocB)</comment>
+    <requestid>752399</requestid>
+  </revision>
 </revisionlist>

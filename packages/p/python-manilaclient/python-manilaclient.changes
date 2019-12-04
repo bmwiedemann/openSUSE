@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:02:14 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.29.0
+  - OpenDev Migration Patch
+  - Dropping the py35 testing
+  - Add CLI commands for Share Networks with multiple Subnets
+  - base job has changed to bionic
+  - Add Python 3 Train unit tests
+  - [CI] Bump timeout for manilaclient-dsvm-neutron-functional
+  - Replace openstack.org git:// URLs with https://
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Remove docutils requirement
+  - [doc] Fix command output generation
+  - Add "functional tests" documentation
+  - Change the default value of description of type show
+  - Update master for stable/stein
+  - Add update share-type to SDK and CLI
+  - Add PDF documentation build
+
+-------------------------------------------------------------------
 Mon Apr  8 12:23:37 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.27.0

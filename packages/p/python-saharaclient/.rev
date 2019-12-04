@@ -210,4 +210,19 @@
   - Update .gitreview for stable/stein</comment>
     <requestid>718263</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>678f1a7c44aef70b83af3cd9cb6349f3</srcmd5>
+    <version>2.3.0</version>
+    <time>1575463737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.3.0
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update sphinx from current requirements
+  - py3: use the train test template and other updates
+  - OpenDev Migration Patch
+  - Update master for stable/stein
+  - Py3: fix the OSC download job binary command
+  - Add py37 and API v2 jobs (scenario, tempest)</comment>
+    <requestid>736668</requestid>
+  </revision>
 </revisionlist>

@@ -32,6 +32,7 @@ Requires:       %{php_name}-pear
 Requires:       php-pear(Net_Socket) >= 1.0.7
 Suggests:       php-pear(Auth_SASL) >= 1.0.5
 Provides:       php-pear(%{pear_name}) = %{version}
+Obsoletes:      php5-pear-%{pear_name}
 BuildArch:      noarch
 
 %description

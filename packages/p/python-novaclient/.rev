@@ -592,4 +592,41 @@ update to version 5.1.0
   - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
     <requestid>710315</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8354ab7fa8b3933a91c4639336b4d14f</srcmd5>
+    <version>15.1.0</version>
+    <time>1575463726</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 15.1.0
+  - Modify the url of upper_constraints_file
+  - OpenDev Migration Patch
+  - Revert &quot;Add irrelevant files in dsvm job&quot;
+  - Optimize limit option docs string description for novaclient
+  - Cap sphinx for py2 and drop keyring dependency
+  - doc: Clarify versioned wrapped method
+  - Replace openstack.org git:// URLs with https://
+  - Allow passing negative values for the locked search_opt in cs.servers.list
+  - Microversion 2.73: Support adding the reason behind a server lock
+  - Use SHA256 instead of MD5 in completion cache
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Microversion 2.77: Support Specifying AZ to unshelve
+  - Bump the openstackdocstheme extension to 1.20
+  - Add test for console-log and docs for bug 1746534
+  - Allow searching for hypervisors and getting back details
+  - Tiny fix of documentation
+  - docs: clarify nova migration-list --host option
+  - Drop py35 tests
+  - Microversion 2.79: Add delete_on_termination to volume-attach API
+  - Bump openstackdocstheme to 1.30.0
+  - Add host and hypervisor_hostname to create servers
+  - API microversion 2.76: Add 'power-update' external event
+  - Add irrelevant files in dsvm job again
+  - Add --migration-type and --source-compute to migration-list
+  - Update master for stable/stein
+  - Blacklist python-cinderclient 4.0.0
+  - Remove deprecated methods and properties
+  - Fix duplicate object description error
+  - Set the lower limit of api_version for volume_type</comment>
+    <requestid>736665</requestid>
+  </revision>
 </revisionlist>

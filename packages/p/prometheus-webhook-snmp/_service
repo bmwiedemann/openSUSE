@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/prometheus-webhook-snmp</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="changesgenerate">disable</param>
+    <param name="extract">prometheus-webhook-snmp.spec</param>
+    <param name="revision">v1.1</param>
+    <param name="versionformat">@PARENT_TAG@.%ct.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">prometheus-webhook-snmp-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">prometheus-webhook-snmp</param>
+  </service>
+</services>

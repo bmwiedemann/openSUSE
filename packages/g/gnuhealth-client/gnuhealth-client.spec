@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2015-2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,47 +17,51 @@
 #
 
 
-%define majorver 3.4
+%define majorver 3.6
 Name:           gnuhealth-client
-Version:        %{majorver}.4
+Version:        %{majorver}.3
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
-Url:            http://health.gnu.org/
+URL:            http://health.gnu.org/
 Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-3.4.0.tar.gz
-Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-3.4.1.tar.gz
-Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-3.4.1.tar.gz
+##urce:         %{name}-%{version}.tar.gz
+##urce1:        %{name}-plugins-%{version}.tar.gz
+Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-latest.tar.gz
+Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-latest.tar.gz
+Source3:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_frl-latest.tar.gz
 Source4:        %{name}.desktop
-Patch0:         camera.diff
-BuildRequires:  fdupes
-BuildRequires:  python-Babel
-BuildRequires:  python-Sphinx
-# List of additional build dependencies
-BuildRequires:  python-devel
-BuildRequires:  python-gtk
-BuildRequires:  python-python-dateutil
-BuildRequires:  python-setuptools
-BuildRequires:  python-simplejson
+
+###uildRequires:  fdupes
+BuildRequires:  python3-Babel
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-devel
+BuildRequires:  python3-gobject
+BuildRequires:  python3-python-dateutil
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-simplejson
 BuildRequires:  update-desktop-files
-#Requires:       librsvg
-#for the plugins:
+
+Requires:       gobject-introspection
 Requires:       opencv
-Requires:       python-cdecimal
-Requires:       python-chardet
-Requires:       python-dateutil
-Requires:       python-gnupg
-Requires:       python-gtk
-Requires:       python-opencv
-Requires:       python-pytz
-Requires:       python-setuptools
-Requires:       python-simplejson
-Requires:       python-xml
-Requires:       python2-GooCalendar < 0.5
-#install Tryton or GNU Health Client
-Conflicts:      tryton
+Requires:       python3-GooCalendar >= 0.5
+Requires:       python3-cairo
+Requires:       python3-chardet
+Requires:       python3-dateutil
+Requires:       python3-gnupg
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
+Requires:       python3-gobject-cairo
+Requires:       python3-numpy
+Requires:       python3-opencv
+Requires:       python3-pytz
+Requires:       python3-setuptools
+Requires:       python3-simplejson
+Requires:       python3-xml
 BuildArch:      noarch
+
+Conflicts:      tryton
 
 %description
 The client of the GNU Health Hospital application
@@ -67,40 +71,31 @@ The client of the GNU Health Hospital application
 cp %{SOURCE4} .
 
 pwd
-cd tryton/plugins/
-#tar --strip-components 1 -xzvf %{SOURCE1}
-#tar --strip-components 1 -xzvf %{SOURCE2}
-#tar --strip-components 1 -xzvf %{SOURCE3}
-
+cd tryton/plugins
 tar  -xzvf %{SOURCE1}
 tar  -xzvf %{SOURCE2}
 tar  -xzvf %{SOURCE3}
 
-%patch0 -p1
+#workaround for tryton bug: directory name with version is not considered
+mv gnuhealth_plugin_camera* camera 
+mv gnuhealth_plugin_crypto* crypto  
+mv gnuhealth_plugin_frl* frl  
 
 %build
 :
 
 %install
-python setup.py install --prefix=%{_prefix} --root=%{buildroot}
+python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 # menu-entry
 desktop-file-install --dir %{buildroot}%{_datadir}/applications %{name}.desktop
 %suse_update_desktop_file %{name}
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp %{buildroot}%{python_sitelib}/tryton/data/pixmaps/tryton/gnuhealth-icon.png %{buildroot}%{_datadir}/pixmaps/gnuhealth.png
 
-##%fdupes %{buildroot}%{_datadir}
-##%fdupes %{buildroot}%{_prefix}/lib
+cp %{buildroot}$(ls -d /usr/lib/python3.* )/site-packages/tryton/data/pixmaps/tryton/gnuhealth-icon.png %{buildroot}%{_datadir}/pixmaps/gnuhealth.png
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
+###thon_expand %fdupes %{buildroot}%{python_sitelib}
 
 %files
 %{_bindir}/%{name}

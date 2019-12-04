@@ -1,7 +1,7 @@
 #
 # spec file for package scalapack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,16 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname scalapack
-%define vers 2.0.2
-%define _vers 2_0_2
+%define vers 2.1.0
+%define _vers 2_1_0
+%define so_ver  2
 %define openblas_vers 0.3.6
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI1
-%undefine DisOMPI2
-%undefine DisOMPI3
-%else
+%if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
-%undefine DisOMPI2
+%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
@@ -120,10 +118,12 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu7-mvapich2-hpc"
-%define mpi_flavor mvapich2
+%if "%flavor" == "gnu7-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_flavor openmpi
 %define compiler_family gnu
 %define c_f_ver 7
+%define mpi_vers 2
 %{bcond_without hpc}
 %endif
 
@@ -136,10 +136,99 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu7-mvapich2-hpc"
+%define mpi_flavor mvapich2
+%define compiler_family gnu
+%define c_f_ver 7
+%{bcond_without hpc}
+%endif
+
 %if "%flavor" == "gnu7-mpich-hpc"
 %define mpi_flavor mpich
 %define compiler_family gnu
 %define c_f_ver 7
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-openmpi-hpc"
+%{?DisOMPI1}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-openmpi3-hpc"
+%{?DisOMPI3}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-mvapich2-hpc"
+%define mpi_flavor mvapich2
+%define compiler_family gnu
+%define c_f_ver 8
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-mpich-hpc"
+%define mpi_flavor mpich
+%define compiler_family gnu
+%define c_f_ver 8
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-openmpi-hpc"
+%{?DisOMPI1}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-openmpi2-hpc"
+%{?DisOMPI2}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-openmpi3-hpc"
+%{?DisOMPI3}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-mvapich2-hpc"
+%define mpi_flavor mvapich2
+%define compiler_family gnu
+%define c_f_ver 9
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-mpich-hpc"
+%define mpi_flavor mpich
+%define compiler_family gnu
+%define c_f_ver 9
 %{bcond_without hpc}
 %endif
 
@@ -152,7 +241,10 @@ ExclusiveArch:  do_not_build
 %define mpi_ext %{?mpi_vers}
 %endif
 
-%define so_ver  2
+%if 0%{!?mpi_flavor:1}
+ %define mpi_flavor mpich
+%endif
+
 %if %{without hpc}
 %if 0%{!?package_name:1}
 %define package_name %{pname}-%{mpi_flavor}%{?mpi_ext}
@@ -180,12 +272,9 @@ Summary:        A subset of LAPACK routines redesigned for heterogenous computin
 # This is freely distributable without any restrictions.
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Parallel
-Url:            http://www.netlib.org/scalapack/
+URL:            http://www.netlib.org/scalapack/
 Source0:        http://www.netlib.org/scalapack/%{pname}-%{version}.tgz
-# PATCH-FIX-OPENSUSE scalapack-2.0.2-shared-lib.patch
-Patch0:         scalapack-2.0.2-shared-lib.patch
-# PATCH-FIX-OPENSUSE scalapack-2.0.2-shared-blacs.patch -- build shared blacs library
-Patch1:         scalapack-2.0.2-shared-blacs.patch
+BuildRequires:  cmake >= 2.8
 %if %{without hpc}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
 BuildRequires:  blas-devel
@@ -377,12 +466,8 @@ This package contains module files required by SCALAPACK and BLACS, compiled aga
 %endif
 
 %prep
-%setup -q -c 
-%patch0 -p1
-%patch1 -p1
-cd %{pname}-%{version}/
+%setup -q -n %{pname}-%{version}
 cp SLmake.inc.example SLmake.inc
-cd ..
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
 %{libname %{?_vers}}
@@ -400,46 +485,59 @@ module load openblas
 %endif
 
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
-cd %{pname}-%{version};
 %if %{without hpc}
-echo $PATH | grep -q %{mpi_flavor}%{?mpi_ext} || PATH=/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin:$PATH
-%define makeargs  CC=/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/mpicc FC=/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/mpif90 %{?_smp_flags}
+echo $PATH | grep -q %{mpi_flavor}%{?mpi_ext} || \
+    PATH=/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin:$PATH
+%define makeargs %{?_smp_flags}
+#%%cmake -DCMAKE_C_FLAGS:STRING="$RPM_OPT_FLAGS -fPIC"
+#    -DCMAKE_Fortran_FLAGS:STRING="$RPM_OPT_FLAGS -fPIC" \
+#    -DBUILD_SHARED_LIBS:BOOL=ON -DBUILD_STATIC_LIBS:BOOL=ON \
+#    -DCMAKE_INSTALL_LIBDIR:PATH=%%{installdir}/%%_lib
+#%%make_jobs -C build
 %else
 %define makeargs FCFLAGS+="$(pkg-config --cflags openblas)" LIBS="$(pkg-config --libs openblas)" %{?_smp_flags}
 %endif
-make lib CFLAGS="$RPM_OPT_FLAGS -fPIC" FCFLAGS="$RPM_OPT_FLAGS -fPIC" %makeargs
+CC=mpicc
+FC=mpif90
+MYCFLAGS="$RPM_OPT_FLAGS -fPIC"
+make lib CFLAGS="${MYCFLAGS}" CCFLAGS="${MYCFLAGS}" FCFLAGS="${MYCFLAGS}" %makeargs
 cd TESTING/EIG;
 make FCFLAGS="$RPM_OPT_FLAGS" %{makeargs}
 cd ../LIN;
 make FCFLAGS="$RPM_OPT_FLAGS" %{makeargs}
 
+cd ../..
+%if %{without hpc}
+ar crs libblacs.a BLACS/SRC/*.o BLACS/SRC/*.oo
+BLACS=blacs
+%endif
+for libname in scalapack ${BLACS}
+do
+${FC} -shared -Wl,--whole-archive lib${libname}.a  -Wl,--no-whole-archive \
+       -Wl,-soname,lib${libname}.so.%{version} -o lib${libname}.so.%{version}
+   ln -s lib${libname}.so.%{version} lib${libname}.so
+   ln -s lib${libname}.so.%{version} lib${libname}.so.%{so_ver}
+done
+
 %install
+
+#%%make_install -C build
 
 mkdir -p %{buildroot}%{installdir}/%_lib
 mkdir -p %{buildroot}%{installdir}/%{_lib}/TESTING
 
-pushd %{pname}-%{version}
 for f in *.a *.so*; do
     cp -f $f %{buildroot}%{installdir}/%_lib/$f
 done
 cp -f TESTING/x* TESTING/*.dat %{buildroot}%{installdir}/%{_lib}/TESTING
 
-popd
-pushd %{buildroot}%{installdir}/%_lib
-ln -fs libscalapack.so.%{version} libscalapack.so.%{so_ver}
-ln -fs libscalapack.so.%{version} libscalapack.so
-ln -fs libblacs.so.%{version} libblacs.so.%{so_ver}
-ln -fs libblacs.so.%{version} libblacs.so
-popd
-
 # blacs header
 %if %{with hpc} || %{with blacs_devel_headers}
 mkdir -p %{buildroot}%{p_includedir}/blacs/
-install -m 644 %{pname}-%{version}/BLACS/SRC/Bdef.h %{buildroot}%{p_includedir}/blacs/
+install -m 644 BLACS/SRC/Bdef.h %{buildroot}%{p_includedir}/blacs/
 %endif
 %if %{with hpc}
 %{?hpc_write_pkgconfig:%hpc_write_pkgconfig -l %{pname}}
-%{?hpc_write_pkgconfig:%hpc_write_pkgconfig -l blacs -n blacs}
 # HPC module file
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
@@ -487,7 +585,6 @@ EOF
 %endif
 
 # Copy docs
-cd %{pname}-%{version}
 cp -f README LICENSE ../
 
 %post -n %{libname %_vers} -p /sbin/ldconfig
@@ -515,6 +612,10 @@ cp -f README LICENSE ../
 %files -n %{libname %_vers}-devel
 %{installdir}/%_lib/libscalapack.so
 %{?with_hpc:%hpc_pkgconfig_file}
+%if %{with hpc}
+%dir %{p_includedir}
+%{p_includedir}/blacs
+%endif
 
 %files -n %{libname %_vers}-devel-static
 %{installdir}/%_lib/libscalapack.a
@@ -524,23 +625,17 @@ cp -f README LICENSE ../
 %files -n blacs-devel-headers
 %{p_includedir}/blacs/
 %endif
-%endif
 
 %files -n %{libblacsname %_vers}
 %{installdir}/%_lib/libblacs.so.*
 
 %files -n %{libblacsname %_vers}-devel
 %{installdir}/%_lib/libblacs.so
-%if %{with hpc}
-%{hpc_pkgconfig_file -n blacs}
-%dir %{p_includedir}
-%{p_includedir}/blacs
-%endif
 
 %files -n %{libblacsname %_vers}-devel-static
 %{installdir}/%_lib/libblacs.a
 
-%if %{with hpc}
+%else # hpc
 %files module
 %hpc_modules_files
 %endif

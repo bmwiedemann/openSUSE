@@ -30,4 +30,14 @@
   * Fixed #83 issue about ignored pytest_runtest_logfinish hooks</comment>
     <requestid>689361</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dfbfe6591525b729b6ab6241b269b6f9</srcmd5>
+    <version>8.0</version>
+    <time>1575464180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0:
+  * Explicitly depend on setuptools to ensure installation when
+    working in environments without it</comment>
+    <requestid>753967</requestid>
+  </revision>
 </revisionlist>
