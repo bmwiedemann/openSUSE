@@ -50,6 +50,7 @@ BuildRequires:  google-droid-fonts
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  irrlicht-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  libXxf86vm-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros

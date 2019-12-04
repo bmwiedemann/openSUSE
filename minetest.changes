@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 23:19:08 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Explicitly require libXxf86vm-devel.
+
+-------------------------------------------------------------------
 Sun Oct 13 14:03:41 UTC 2019 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to 5.1.0:
