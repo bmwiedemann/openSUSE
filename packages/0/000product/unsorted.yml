@@ -137,6 +137,8 @@ unsorted:
   - OpenIPMI 
   - OpenIPMI-devel 
   - OpenIPMI-python 
+  - OpenImageDenoise: [x86_64] 
+  - OpenImageDenoise-devel: [x86_64] 
   - OpenImageIO 
   - OpenImageIO-devel 
   - OpenLP 
@@ -168,6 +170,7 @@ unsorted:
   - QGnomePlatform-32bit: [x86_64] 
   - QMPlay2 
   - QMPlay2-devel 
+  - QR-Code-generator-devel 
   - QtAV 
   - QtAV-devel 
   - QtAV-players 
@@ -321,6 +324,15 @@ unsorted:
   - adios-gnu-openmpi3-hpc 
   - adios-gnu-openmpi3-hpc-devel 
   - adios-gnu-openmpi3-hpc-devel-static 
+  - adios-openmpi1 
+  - adios-openmpi1-devel 
+  - adios-openmpi1-devel-static 
+  - adios-openmpi2 
+  - adios-openmpi2-devel 
+  - adios-openmpi2-devel-static 
+  - adios-openmpi3 
+  - adios-openmpi3-devel 
+  - adios-openmpi3-devel-static 
   - adios_1_13_1-gnu-mpich-hpc 
   - adios_1_13_1-gnu-mpich-hpc-devel 
   - adios_1_13_1-gnu-mpich-hpc-devel-static 
@@ -450,9 +462,12 @@ unsorted:
   - anjuta-devel 
   - anki 
   - ansible 
+  - ansible-cmdb 
   - ansible-runner 
   - ansifilter 
   - ansifilter-gui 
+  - ansilove 
+  - ansilove-term 
   - ant 
   - ant-antlr 
   - ant-apache-bcel 
@@ -1676,6 +1691,8 @@ unsorted:
   - cinnamon-settings-daemon-lang 
   - cinnamon-theme-adapta 
   - cinnamon-theme-plata 
+  - civetweb 
+  - civetweb-devel 
   - cjs 
   - cjs-devel 
   - ck-devel 
@@ -2633,6 +2650,7 @@ unsorted:
   - enchant-2-backend-voikko-32bit: [x86_64] 
   - enchant-devel 
   - enchant-tools 
+  - enchive 
   - endless-sky 
   - enet-devel 
   - engauge-digitizer 
@@ -3497,6 +3515,11 @@ unsorted:
   - gdb-testresults 
   - gdbm-devel-32bit: [x86_64] 
   - gdbserver 
+  - gdcm 
+  - gdcm-applications 
+  - gdcm-devel 
+  - gdcm-examples 
+  - gdcm-libgdcm3_0 
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit: [x86_64] 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
@@ -4599,6 +4622,7 @@ unsorted:
   - gnugo 
   - gnuhealth 
   - gnuhealth-client 
+  - gnuhealth-orthanc 
   - gnuhealth-thalamus 
   - gnumeric 
   - gnumeric-devel 
@@ -7236,6 +7260,7 @@ unsorted:
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
   - libOpenIPMI0 
+  - libOpenImageDenoise0: [x86_64] 
   - libOpenImageIO1_8 
   - libOpenImageIO_Util1_8 
   - libOpenSceneGraph-devel 
@@ -7691,6 +7716,8 @@ unsorted:
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
   - libangelscript2_33_0 
+  - libansilove-devel 
+  - libansilove1 
   - libanthy0 
   - libanthy0-32bit: [x86_64] 
   - libantlr3c3 
@@ -7913,21 +7940,6 @@ unsorted:
   - libblacs2-openmpi3 
   - libblacs2-openmpi3-devel 
   - libblacs2-openmpi3-devel-static 
-  - libblacs2_2_0_2-gnu-mpich-hpc 
-  - libblacs2_2_0_2-gnu-mpich-hpc-devel 
-  - libblacs2_2_0_2-gnu-mpich-hpc-devel-static 
-  - libblacs2_2_0_2-gnu-mvapich2-hpc 
-  - libblacs2_2_0_2-gnu-mvapich2-hpc-devel 
-  - libblacs2_2_0_2-gnu-mvapich2-hpc-devel-static 
-  - libblacs2_2_0_2-gnu-openmpi1-hpc 
-  - libblacs2_2_0_2-gnu-openmpi1-hpc-devel 
-  - libblacs2_2_0_2-gnu-openmpi1-hpc-devel-static 
-  - libblacs2_2_0_2-gnu-openmpi2-hpc 
-  - libblacs2_2_0_2-gnu-openmpi2-hpc-devel 
-  - libblacs2_2_0_2-gnu-openmpi2-hpc-devel-static 
-  - libblacs2_2_0_2-gnu-openmpi3-hpc 
-  - libblacs2_2_0_2-gnu-openmpi3-hpc-devel 
-  - libblacs2_2_0_2-gnu-openmpi3-hpc-devel-static 
   - libbladeRF2 
   - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
@@ -8236,6 +8248,7 @@ unsorted:
   - libcircle2 
   - libcircllhist-devel 
   - libcircllhist0_0_1 
+  - libcivetweb1_11_0 
   - libcjose-devel 
   - libcjose0 
   - libcjs0 
@@ -10431,7 +10444,7 @@ unsorted:
   - libopensync-devel 
   - libopensync-tools 
   - libopentracing-cpp1 
-  - libopenvdb6_1 
+  - libopenvdb6_2 
   - libopenvswitch-2_12-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
@@ -10620,11 +10633,12 @@ unsorted:
   - libpetsc3 
   - libpetsc3-openmpi1 
   - libpetsc3-openmpi2 
-  - libpetsc_3_11_3-gnu-mpich-hpc 
-  - libpetsc_3_11_3-gnu-mvapich2-hpc 
-  - libpetsc_3_11_3-gnu-openmpi1-hpc 
-  - libpetsc_3_11_3-gnu-openmpi2-hpc 
-  - libpetsc_3_11_3-gnu-openmpi3-hpc 
+  - libpetsc3-openmpi3 
+  - libpetsc_3_12_2-gnu-mpich-hpc 
+  - libpetsc_3_12_2-gnu-mvapich2-hpc 
+  - libpetsc_3_12_2-gnu-openmpi1-hpc 
+  - libpetsc_3_12_2-gnu-openmpi2-hpc 
+  - libpetsc_3_12_2-gnu-openmpi3-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -10725,7 +10739,7 @@ unsorted:
   - libprelude-devel-bindings 
   - libprelude-doc 
   - libprelude28 
-  - libpreludecpp8 
+  - libpreludecpp12 
   - libpreludedb-devel 
   - libpreludedb-devel-bindings 
   - libpreludedb-doc 
@@ -10844,6 +10858,8 @@ unsorted:
   - libqore5 
   - libqpid-proton-cpp10 
   - libqpid-proton10 
+  - libqrcodegen1 
+  - libqrcodegencpp1 
   - libqrencode4-32bit: [x86_64] 
   - libqrupdate1 
   - libqsastime0 
@@ -11311,21 +11327,21 @@ unsorted:
   - libscalapack2-openmpi3-devel 
   - libscalapack2-openmpi3-devel-32bit: [x86_64] 
   - libscalapack2-openmpi3-devel-static 
-  - libscalapack2_2_0_2-gnu-mpich-hpc 
-  - libscalapack2_2_0_2-gnu-mpich-hpc-devel 
-  - libscalapack2_2_0_2-gnu-mpich-hpc-devel-static 
-  - libscalapack2_2_0_2-gnu-mvapich2-hpc 
-  - libscalapack2_2_0_2-gnu-mvapich2-hpc-devel 
-  - libscalapack2_2_0_2-gnu-mvapich2-hpc-devel-static 
-  - libscalapack2_2_0_2-gnu-openmpi1-hpc 
-  - libscalapack2_2_0_2-gnu-openmpi1-hpc-devel 
-  - libscalapack2_2_0_2-gnu-openmpi1-hpc-devel-static 
-  - libscalapack2_2_0_2-gnu-openmpi2-hpc 
-  - libscalapack2_2_0_2-gnu-openmpi2-hpc-devel 
-  - libscalapack2_2_0_2-gnu-openmpi2-hpc-devel-static 
-  - libscalapack2_2_0_2-gnu-openmpi3-hpc 
-  - libscalapack2_2_0_2-gnu-openmpi3-hpc-devel 
-  - libscalapack2_2_0_2-gnu-openmpi3-hpc-devel-static 
+  - libscalapack2_2_1_0-gnu-mpich-hpc 
+  - libscalapack2_2_1_0-gnu-mpich-hpc-devel 
+  - libscalapack2_2_1_0-gnu-mpich-hpc-devel-static 
+  - libscalapack2_2_1_0-gnu-mvapich2-hpc 
+  - libscalapack2_2_1_0-gnu-mvapich2-hpc-devel 
+  - libscalapack2_2_1_0-gnu-mvapich2-hpc-devel-static 
+  - libscalapack2_2_1_0-gnu-openmpi1-hpc 
+  - libscalapack2_2_1_0-gnu-openmpi1-hpc-devel 
+  - libscalapack2_2_1_0-gnu-openmpi1-hpc-devel-static 
+  - libscalapack2_2_1_0-gnu-openmpi2-hpc 
+  - libscalapack2_2_1_0-gnu-openmpi2-hpc-devel 
+  - libscalapack2_2_1_0-gnu-openmpi2-hpc-devel-static 
+  - libscalapack2_2_1_0-gnu-openmpi3-hpc 
+  - libscalapack2_2_1_0-gnu-openmpi3-hpc-devel 
+  - libscalapack2_2_1_0-gnu-openmpi3-hpc-devel-static 
   - libscamperfile-devel 
   - libscamperfile0 
   - libscca-devel 
@@ -11397,6 +11413,8 @@ unsorted:
   - libsigrok-data 
   - libsigrok-devel 
   - libsigrok4 
+  - libsigrok4DSL-devel 
+  - libsigrok4DSL1 
   - libsigrokcxx4 
   - libsigrokdecode-devel 
   - libsigrokdecode4 
@@ -11441,6 +11459,7 @@ unsorted:
   - libsoc2 
   - libsocketcan-devel 
   - libsocketcan2 
+  - libsocketxx1_2 
   - libsocks0 
   - libsocks0-32bit: [x86_64] 
   - libsodium-devel 
@@ -15169,6 +15188,13 @@ unsorted:
   - orkhon-fonts 
   - oro 
   - oro-javadoc 
+  - orthanc: [x86_64] 
+  - orthanc-devel: [x86_64] 
+  - orthanc-dicomweb: [x86_64] 
+  - orthanc-doc: [x86_64] 
+  - orthanc-postgresql: [x86_64] 
+  - orthanc-source: [x86_64] 
+  - orthanc-webviewer: [x86_64] 
   - ortp 
   - ortp-devel 
   - os-autoinst 
@@ -16649,16 +16675,17 @@ unsorted:
   - petsc-gnu-openmpi3-hpc-devel 
   - petsc-openmpi1-devel 
   - petsc-openmpi2-devel 
-  - petsc_3_11_3-gnu-mpich-hpc-devel 
-  - petsc_3_11_3-gnu-mpich-hpc-saws 
-  - petsc_3_11_3-gnu-mvapich2-hpc-devel 
-  - petsc_3_11_3-gnu-mvapich2-hpc-saws 
-  - petsc_3_11_3-gnu-openmpi1-hpc-devel 
-  - petsc_3_11_3-gnu-openmpi1-hpc-saws 
-  - petsc_3_11_3-gnu-openmpi2-hpc-devel 
-  - petsc_3_11_3-gnu-openmpi2-hpc-saws 
-  - petsc_3_11_3-gnu-openmpi3-hpc-devel 
-  - petsc_3_11_3-gnu-openmpi3-hpc-saws 
+  - petsc-openmpi3-devel 
+  - petsc_3_12_2-gnu-mpich-hpc-devel 
+  - petsc_3_12_2-gnu-mpich-hpc-saws 
+  - petsc_3_12_2-gnu-mvapich2-hpc-devel 
+  - petsc_3_12_2-gnu-mvapich2-hpc-saws 
+  - petsc_3_12_2-gnu-openmpi1-hpc-devel 
+  - petsc_3_12_2-gnu-openmpi1-hpc-saws 
+  - petsc_3_12_2-gnu-openmpi2-hpc-devel 
+  - petsc_3_12_2-gnu-openmpi2-hpc-saws 
+  - petsc_3_12_2-gnu-openmpi3-hpc-devel 
+  - petsc_3_12_2-gnu-openmpi3-hpc-saws 
   - pfsglview 
   - pfstools-devel 
   - pfstools-exr 
@@ -17085,7 +17112,7 @@ unsorted:
   - praat 
   - pragha-plugins-devel 
   - prboom-plus 
-  - prelude-correlator-core 
+  - prelude-correlator 
   - prelude-lml 
   - prelude-lml-devel 
   - prelude-lml-rules 
@@ -17137,6 +17164,7 @@ unsorted:
   - projectlibre 
   - prometheus-client-model-source 
   - prometheus-cpp-devel 
+  - prometheus-webhook-snmp 
   - pronsole 
   - pronterface 
   - prosody 
@@ -17348,7 +17376,6 @@ unsorted:
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
   - python-demo 
-  - python-designateclient 
   - python-designateclient-doc 
   - python-devel 
   - python-dfVFS 
@@ -17401,7 +17428,6 @@ unsorted:
   - python-imobiledevice 
   - python-ipython-doc 
   - python-ipywidgets-doc 
-  - python-ironic-inspector-client 
   - python-ironicclient-doc 
   - python-jaraco.stream-doc 
   - python-k8sclient 
@@ -17436,13 +17462,11 @@ unsorted:
   - python-manilaclient-doc 
   - python-marisa 
   - python-marshmallow-docs 
-  - python-masakariclient 
   - python-masakariclient-doc 
   - python-mathgl 
   - python-md2workflow-common 
   - python-microversion_parse 
   - python-microversion_parse-doc 
-  - python-mistralclient 
   - python-mistralclient-doc 
   - python-mongodict 
   - python-mox3-doc 
@@ -17545,7 +17569,6 @@ unsorted:
   - python-restkit 
   - python-ruamel.ordereddict 
   - python-ryu-common 
-  - python-saharaclient 
   - python-saharaclient-doc 
   - python-salt-testing 
   - python-senlinclient-doc 
@@ -17577,7 +17600,6 @@ unsorted:
   - python-weakrefmethod 
   - python-wxWidgets-3_0-devel 
   - python-xapian 
-  - python-yaql 
   - python-yui 
   - python-zinnia 
   - python-zope.deprecation-doc 
@@ -17668,6 +17690,7 @@ unsorted:
   - python2-Mako 
   - python2-MapProxy 
   - python2-Markdown 
+  - python2-MarkupPy 
   - python2-MarkupSafe 
   - python2-Markups 
   - python2-Mathics 
@@ -17733,6 +17756,7 @@ unsorted:
   - python2-Pyphen 
   - python2-Pyro4 
   - python2-QDarkStyle 
+  - python2-QR-Code-generator 
   - python2-Qt.py 
   - python2-QtAwesome 
   - python2-QtPy 
@@ -18273,6 +18297,7 @@ unsorted:
   - python2-dennis 
   - python2-deprecation 
   - python2-derpconf 
+  - python2-designateclient 
   - python2-devpi-client 
   - python2-devpi-common 
   - python2-devpi-server 
@@ -18535,6 +18560,7 @@ unsorted:
   - python2-guzzle_sphinx_theme 
   - python2-h11 
   - python2-h2 
+  - python2-h5netcdf 
   - python2-h5py 
   - python2-hankel 
   - python2-hanzidentifier 
@@ -18608,6 +18634,7 @@ unsorted:
   - python2-ipython-iptest 
   - python2-ipython_genutils 
   - python2-ipywidgets 
+  - python2-ironic-inspector-client 
   - python2-ironicclient 
   - python2-iso8601 
   - python2-isodate 
@@ -18715,8 +18742,6 @@ unsorted:
   - python2-libnacl 
   - python2-libpamtest 
   - python2-libpfm 
-  - python2-libprelude 
-  - python2-libpreludedb 
   - python2-libqcow 
   - python2-librosa 
   - python2-libsass 
@@ -18771,6 +18796,7 @@ unsorted:
   - python2-marathon 
   - python2-markdown-math 
   - python2-markdown2 
+  - python2-masakariclient 
   - python2-matplotlib-gtk3 
   - python2-matplotlib-latex 
   - python2-matplotlib-qt-shared 
@@ -18790,6 +18816,7 @@ unsorted:
   - python2-mhash 
   - python2-minio 
   - python2-miniupnpc 
+  - python2-mistralclient 
   - python2-mistune 
   - python2-moban 
   - python2-mock 
@@ -18986,6 +19013,7 @@ unsorted:
   - python2-pefile 
   - python2-pelican 
   - python2-pem 
+  - python2-pendulum 
   - python2-pep517 
   - python2-pep8-naming 
   - python2-peppercorn 
@@ -19030,6 +19058,8 @@ unsorted:
   - python2-podcastparser 
   - python2-podman 
   - python2-polib 
+  - python2-pomegranate 
+  - python2-pomegranate-devel 
   - python2-pony 
   - python2-pook 
   - python2-port-for 
@@ -19043,7 +19073,6 @@ unsorted:
   - python2-pprintpp 
   - python2-precise-runner 
   - python2-preggy 
-  - python2-prelude-correlator 
   - python2-premailer 
   - python2-pretend 
   - python2-proboscis 
@@ -19465,6 +19494,7 @@ unsorted:
   - python2-ryu 
   - python2-s3transfer 
   - python2-sadisplay 
+  - python2-saharaclient 
   - python2-salt 
   - python2-samplerate 
   - python2-sane 
@@ -19623,7 +19653,6 @@ unsorted:
   - python2-sybil 
   - python2-sympy 
   - python2-systemd 
-  - python2-tablib 
   - python2-tabulate 
   - python2-tagpy 
   - python2-tap.py 
@@ -19641,6 +19670,7 @@ unsorted:
   - python2-terminaltables 
   - python2-termstyle 
   - python2-tesserocr 
+  - python2-test-server 
   - python2-testfixtures 
   - python2-testflo 
   - python2-testinfra 
@@ -19828,6 +19858,7 @@ unsorted:
   - python2-yamllint 
   - python2-yapf 
   - python2-yappi 
+  - python2-yaql 
   - python2-yara 
   - python2-yarb 
   - python2-yarg 
@@ -19956,6 +19987,7 @@ unsorted:
   - python3-Mako 
   - python3-MapProxy 
   - python3-Markdown 
+  - python3-MarkupPy 
   - python3-Markups 
   - python3-Mathics 
   - python3-MechanicalSoup 
@@ -20023,6 +20055,7 @@ unsorted:
   - python3-Pyphen 
   - python3-Pyro4 
   - python3-QDarkStyle 
+  - python3-QR-Code-generator 
   - python3-Qt.py 
   - python3-QtAwesome 
   - python3-QtPy 
@@ -20130,6 +20163,7 @@ unsorted:
   - python3-anyjson 
   - python3-apache-libcloud 
   - python3-apipkg 
+  - python3-apiron 
   - python3-application 
   - python3-applicationinsights 
   - python3-apptools 
@@ -20171,6 +20205,7 @@ unsorted:
   - python3-audioread 
   - python3-audit: [i586] 
   - python3-augeas 
+  - python3-authheaders 
   - python3-authres 
   - python3-autobahn 
   - python3-autodoc 
@@ -20377,6 +20412,7 @@ unsorted:
   - python3-behave 
   - python3-bencode 
   - python3-beniget 
+  - python3-beren 
   - python3-betamax 
   - python3-betamax-matchers 
   - python3-bibtexparser 
@@ -20569,6 +20605,7 @@ unsorted:
   - python3-cssutils 
   - python3-csvkit 
   - python3-ctypesgen 
+  - python3-ctypeslib2 
   - python3-cufflinks 
   - python3-curio 
   - python3-cursive 
@@ -20620,6 +20657,7 @@ unsorted:
   - python3-dephell-versioning 
   - python3-deprecation 
   - python3-derpconf 
+  - python3-designateclient 
   - python3-devel 
   - python3-devpi-client 
   - python3-devpi-common 
@@ -20675,6 +20713,7 @@ unsorted:
   - python3-django-nose 
   - python3-django-oauth-toolkit 
   - python3-django-oidc-provider 
+  - python3-django-pglocks 
   - python3-django-picklefield 
   - python3-django-pipeline 
   - python3-django-pyscss 
@@ -20879,6 +20918,7 @@ unsorted:
   - python3-gcemetadata 
   - python3-gcsfs 
   - python3-gcsfs-fuse 
+  - python3-gdcm 
   - python3-gear 
   - python3-ged4py 
   - python3-geis 
@@ -20949,6 +20989,7 @@ unsorted:
   - python3-guzzle_sphinx_theme 
   - python3-gwcs 
   - python3-h11 
+  - python3-h5netcdf 
   - python3-h5py 
   - python3-hankel 
   - python3-hanzidentifier 
@@ -21042,6 +21083,7 @@ unsorted:
   - python3-ipywebrtc 
   - python3-ipywidgets 
   - python3-irc 
+  - python3-ironic-inspector-client 
   - python3-ironicclient 
   - python3-iso8601 
   - python3-isodate 
@@ -21263,6 +21305,7 @@ unsorted:
   - python3-markdown-math 
   - python3-markdown2 
   - python3-marshmallow 
+  - python3-masakariclient 
   - python3-matplotlib-latex 
   - python3-matplotlib-qt-shared 
   - python3-matplotlib-qt5 
@@ -21284,7 +21327,10 @@ unsorted:
   - python3-minidb 
   - python3-minio 
   - python3-miniupnpc 
+  - python3-missingno 
+  - python3-mistralclient 
   - python3-mistune 
+  - python3-mizani 
   - python3-mlt 
   - python3-moban 
   - python3-mock 
@@ -21298,6 +21344,7 @@ unsorted:
   - python3-mongoengine 
   - python3-monotonic 
   - python3-more-itertools: [i586] 
+  - python3-morecvutils 
   - python3-moretools 
   - python3-moto 
   - python3-moviepy 
@@ -21431,6 +21478,7 @@ unsorted:
   - python3-openstackdocstheme 
   - python3-openstacksdk 
   - python3-openwsman 
+  - python3-orange-canvas-core 
   - python3-ordered-namespace 
   - python3-ordered-set 
   - python3-orderedmultidict 
@@ -21439,6 +21487,7 @@ unsorted:
   - python3-os-service-types 
   - python3-os-testr 
   - python3-osc-lib 
+  - python3-osc-tiny 
   - python3-oscrypto 
   - python3-osdlyrics 
   - python3-oslo.cache 
@@ -21479,6 +21528,7 @@ unsorted:
   - python3-pan-python 
   - python3-pandas 
   - python3-pandas-datareader 
+  - python3-pandas-ext 
   - python3-pandocfilters 
   - python3-panflute 
   - python3-papermill 
@@ -21500,6 +21550,7 @@ unsorted:
   - python3-passlib: [i586] 
   - python3-pastel 
   - python3-pastream 
+  - python3-path 
   - python3-path.py 
   - python3-pathlib 
   - python3-pathlib2 
@@ -21517,6 +21568,7 @@ unsorted:
   - python3-pefile 
   - python3-pelican 
   - python3-pem 
+  - python3-pendulum 
   - python3-pep517 
   - python3-pep8-naming 
   - python3-peppercorn 
@@ -21563,6 +21615,8 @@ unsorted:
   - python3-podman-compose 
   - python3-polib 
   - python3-policycoreutils: [i586] 
+  - python3-pomegranate 
+  - python3-pomegranate-devel 
   - python3-pony 
   - python3-pook 
   - python3-poppler-qt5 
@@ -21576,6 +21630,7 @@ unsorted:
   - python3-poyo 
   - python3-pprintpp 
   - python3-praatio 
+  - python3-pre-commit 
   - python3-precis-i18n 
   - python3-precise-runner 
   - python3-preggy 
@@ -22034,6 +22089,7 @@ unsorted:
   - python3-s3fs 
   - python3-s3transfer 
   - python3-sadisplay 
+  - python3-saharaclient 
   - python3-samplerate 
   - python3-sane 
   - python3-sanlock 
@@ -22077,12 +22133,14 @@ unsorted:
   - python3-setuptools-git 
   - python3-setuptools_scm 
   - python3-setuptools_scm_git_archive 
+  - python3-sfs 
   - python3-sge-pygame 
   - python3-sgmllib3k 
   - python3-sh 
   - python3-shaptools 
   - python3-shellingham 
   - python3-shijian 
+  - python3-shinyutils 
   - python3-shodan 
   - python3-shortuuid 
   - python3-shouldbe 
@@ -22200,6 +22258,7 @@ unsorted:
   - python3-svgwrite 
   - python3-swapper 
   - python3-swiftclient 
+  - python3-swifter 
   - python3-sybil 
   - python3-sympy 
   - python3-systemd 
@@ -22226,6 +22285,7 @@ unsorted:
   - python3-terminaltables 
   - python3-termstyle 
   - python3-tesserocr 
+  - python3-test-server 
   - python3-testfixtures 
   - python3-testflo 
   - python3-testinfra 
@@ -22432,12 +22492,15 @@ unsorted:
   - python3-xsge_tmx 
   - python3-xvfbwrapper 
   - python3-xxhash 
+  - python3-xyzpy 
   - python3-yacron 
+  - python3-yafe 
   - python3-yamldoc 
   - python3-yamllint 
   - python3-yang 
   - python3-yapf 
   - python3-yappi 
+  - python3-yaql 
   - python3-yara 
   - python3-yarb 
   - python3-yarg 
@@ -22685,6 +22748,7 @@ unsorted:
   - ratbagd 
   - ratslap 
   - raw-thumbnailer 
+  - rawtherapee 
   - raylib-devel 
   - razercfg 
   - razor-agents 
@@ -23828,16 +23892,16 @@ unsorted:
   - scalapack-openmpi1-test 
   - scalapack-openmpi2-test 
   - scalapack-openmpi3-test 
-  - scalapack_2_0_2-gnu-mpich-hpc-module 
-  - scalapack_2_0_2-gnu-mpich-hpc-test 
-  - scalapack_2_0_2-gnu-mvapich2-hpc-module 
-  - scalapack_2_0_2-gnu-mvapich2-hpc-test 
-  - scalapack_2_0_2-gnu-openmpi1-hpc-module 
-  - scalapack_2_0_2-gnu-openmpi1-hpc-test 
-  - scalapack_2_0_2-gnu-openmpi2-hpc-module 
-  - scalapack_2_0_2-gnu-openmpi2-hpc-test 
-  - scalapack_2_0_2-gnu-openmpi3-hpc-module 
-  - scalapack_2_0_2-gnu-openmpi3-hpc-test 
+  - scalapack_2_1_0-gnu-mpich-hpc-module 
+  - scalapack_2_1_0-gnu-mpich-hpc-test 
+  - scalapack_2_1_0-gnu-mvapich2-hpc-module 
+  - scalapack_2_1_0-gnu-mvapich2-hpc-test 
+  - scalapack_2_1_0-gnu-openmpi1-hpc-module 
+  - scalapack_2_1_0-gnu-openmpi1-hpc-test 
+  - scalapack_2_1_0-gnu-openmpi2-hpc-module 
+  - scalapack_2_1_0-gnu-openmpi2-hpc-test 
+  - scalapack_2_1_0-gnu-openmpi3-hpc-module 
+  - scalapack_2_1_0-gnu-openmpi3-hpc-test 
   - scalpel 
   - scamper 
   - scanmem 
@@ -23935,6 +23999,7 @@ unsorted:
   - sdl-asylum 
   - sdl-ball 
   - sdl_bomber 
+  - sdlpop 
   - sdlscavenger 
   - sdparm 
   - seccheck 
