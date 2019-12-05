@@ -72,7 +72,8 @@ Tue Mar 20 13:12:37 CET 2018 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Jan 25 09:43:25 UTC 2018 - meissner@suse.com
 
-- Updated to 2.22 state of the Mozilla NSS Certificate store.
+- Updated to 2.22 state of the Mozilla NSS Certificate store (bsc#1071152,
+  bsc#1071390, bsc#1010996)
 - Removed CAs:
 
   * ACEDICOM Root
@@ -207,7 +208,7 @@ Wed Apr  6 11:21:32 UTC 2016 - meissner@suse.com
 -------------------------------------------------------------------
 Thu Mar 31 13:07:40 UTC 2016 - meissner@suse.com
 
-- Updated to 2.7.
+- Updated to 2.7 (bsc#973042).
 - diff-from-upstream-2.2.patch: removed as openssl 1.0.2 can do
   immediate root CAs.
 
