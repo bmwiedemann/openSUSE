@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 17:42:05 CET 2019 - tiwai@suse.de
+
+- Update to alsa-firmare 1.2.1:
+  * Change FSF address (Franklin Street)
+  * Fix up aica firmware licensing
+  * Add new firmware for Creative CA0132 HD-Audio Codec 
+
+-------------------------------------------------------------------
 Tue May 28 19:57:17 CEST 2019 - tiwai@suse.de
 
 - Install missing firmware files for CA0132 codec (bsc#1136638)

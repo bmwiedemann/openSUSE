@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-firmware
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           alsa-firmware
-%define package_version	1.0.29
 Url:            http://www.alsa-project.org/
 Summary:        Firmware Data Files for ALSA
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
 BuildRequires:  automake
 %if 0%{?suse_version} > 1220
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(udev)
 %endif
-Version:        1.0.29
+Version:        1.2.1
 Release:        0
-Source:         ftp://ftp.alsa-project.org/pub/firmware/alsa-firmware-%{package_version}.tar.bz2
+Source:         ftp://ftp.alsa-project.org/pub/firmware/alsa-firmware-%{version}.tar.bz2
 Source1:        usx2yaudio.rules
 Source2:        usx2yaudio-old.rules
-Source3:        ctefx-desktop.bin
-Source4:        ctefx-r3di.bin
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires:       alsa
@@ -47,7 +44,7 @@ Requires:       alsa
 Various firmware data files for ALSA drivers.
 
 %prep
-%setup -q -n %{name}-%{package_version}
+%setup -q
 
 %build
 # autoreconf -fi
@@ -69,8 +66,6 @@ for d in ess korg sb16 yamaha; do
   rm -rf $RPM_BUILD_ROOT/lib/firmware/$d
 done
 %endif
-install -c -m 0644 %{SOURCE3} %{buildroot}/lib/firmware/
-install -c -m 0644 %{SOURCE4} %{buildroot}/lib/firmware/
 # change identical files to symlinks for hdsploader
 pushd $RPM_BUILD_ROOT%{_datadir}/alsa/firmware/hdsploader
 for i in *.bin; do
