@@ -1,7 +1,7 @@
 #
 # spec file for package neovim-gtk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define icondir %{_datadir}/icons
 %define binname nvim-gtk
 
-
 Name:           neovim-gtk
-Version:        0.2.0+git.1570090897.3ace1d2
+Version:        0.2.0+git.1575188169.31fd179
 Release:        0
 Summary:        GTK UI for Neovim
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Text/Editors
-Url:            https://github.com/daa84/neovim-gtk
+URL:            https://github.com/daa84/neovim-gtk
 Source0:        neovim-gtk-%{version}.tar.xz
 Source1:        neovim-gtk-vendor.tar.xz
 BuildRequires:  cargo
-BuildRequires:  pango-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pango-devel
 
 %description
 GTK UI for Neovim written in Rust using gtk-rs bindings. With ligatures

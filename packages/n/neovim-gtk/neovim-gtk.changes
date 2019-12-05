@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 04 23:32:43 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1575188169.31fd179:
+  * Update text color under cursor
+  * Update README.md
+  * Update rust.yml
+  * Create rust.yml
+  * Major update of dependencies
+  * Cleanup
+  * Create FUNDING.yml
+  * Update README.md
+  * Fix background rendering (#208)
+  * Use f64 instead of i32 for width caulculation (#208)
+  * Try to fix render issues due to changes in pango_1.44 (#208)
+
+-------------------------------------------------------------------
 Sun Nov 24 23:47:42 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 0.2.0+git.1570090897.3ace1d2:
