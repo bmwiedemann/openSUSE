@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-qtest
-Version:        2.9
+Version:        2.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Inline (Unit) Tests for OCaml
