@@ -100,4 +100,17 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="16" vrev="160">
+    <srcmd5>76161b68d6f8c212a7166f8da07d0416</srcmd5>
+    <version>0.9.7</version>
+    <time>1575563703</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert changes file to proper UTF-8 format: new
+  version of RPM are getting strict in interpreting files.
+
+  Â· Quotation of filenames
+  Â· Uses /bin/bash instead of /bin/sh which might be linked to some-
+  Â· Uses `file' to guess the mime type if available (forwarded request 752596 from dimstar)</comment>
+    <requestid>754440</requestid>
+  </revision>
 </revisionlist>
