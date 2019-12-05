@@ -501,4 +501,12 @@ exceeding the ftpd process memory limit. [bsc#1119187]</comment>
     <comment></comment>
     <requestid>718866</requestid>
   </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>7b0a02293628bbcb4c24a2dd28c1d74c</srcmd5>
+    <version>1.0.47</version>
+    <time>1575563782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754436</requestid>
+  </revision>
 </revisionlist>

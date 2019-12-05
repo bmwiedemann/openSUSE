@@ -4,5 +4,6 @@ auth       required     pam_shells.so
 auth       include      common-auth
 account    include      common-account
 password   include      common-password
+session    required     pam_keyinit.so force revoke
 session    required     pam_loginuid.so
 session    include      common-session
