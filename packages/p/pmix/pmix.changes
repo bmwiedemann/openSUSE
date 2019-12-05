@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Nov 25 14:57:45 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- using now correct openSUSE:Shared library packaging policy  
+- removed pmi,pmi-2 as they are already part of slurm and mpi libs
+- moved MCA-parameters to separate package
+- implementing jsc#SLE-10791
+
+-------------------------------------------------------------------
+Fri Oct 25 08:21:37 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- initial commit of version 3.1.4 
