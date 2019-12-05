@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@
 %bcond_without test
 %define modname pyscard
 Name:           python-pyscard
-Version:        1.9.8
+Version:        1.9.9
 Release:        0
 Summary:        Python module adding smart card support
 License:        LGPL-2.0-or-later
@@ -49,8 +49,6 @@ python framework built on top of the raw PCSC API.
 %setup -q -n %{modname}-%{version}
 mv smartcard/doc .
 dos2unix LICENSE
-# PATCH-FIX-UPSTREAM  Fix Exception test on 32-bits CPU. Issue #72
-sed -i 's|available. (0x8010001D)")|available. (0x%08X)" % SCARD_E_NO_SERVICE)|' test/test_Exceptions.py
 
 %build
 export CFLAGS="%{optflags}"
