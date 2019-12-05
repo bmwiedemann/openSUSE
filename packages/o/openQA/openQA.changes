@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 04 21:05:02 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1575490596.c17db72e0:
+  * t: Add a description string for each step in 10-jobs.t
+  * Avoid initializing test db twice in schema hook
+  * t: Correct order of arguments for comment counting
+  * Avoid creating 2nd Mojo::Test in details UI test
+  * For the log context feature we require Mojolicious 8.24 or newer
+  * Take all incomplete results into account in overview statistics
+  * Support test suite setting start with plus
+
+-------------------------------------------------------------------
 Mon Dec 02 13:05:58 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1575276108.e1e4230d8:
