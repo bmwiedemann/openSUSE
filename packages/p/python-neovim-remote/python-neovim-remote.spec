@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define modname neovim-remote
 Name:           python-neovim-remote
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Neovim process control utility
 License:        MIT
