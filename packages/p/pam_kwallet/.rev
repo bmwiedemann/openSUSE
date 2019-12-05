@@ -476,4 +476,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.17.3</comment>
     <requestid>747852</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>6d190f2348f2ddd19010d411f0572d08</srcmd5>
+    <version>5.17.4</version>
+    <time>1575563670</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.4</comment>
+    <requestid>754022</requestid>
+  </revision>
 </revisionlist>
