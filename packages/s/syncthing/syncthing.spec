@@ -1,7 +1,7 @@
 #
 # spec file for package syncthing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           syncthing
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
 Group:          Productivity/Networking/File-Sharing
-Url:            https://syncthing.net/
+URL:            https://syncthing.net/
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
