@@ -19,42 +19,6 @@
 
 
 %define target @BUILD_FLAVOR@
-
-%bcond_with uboot_atf
-%bcond_with uboot_atf_pine64
-
-%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV"
-
-# A complete multibuild-flavoured package is only built in above projects.
-# In order to build a defined subset in forked projects, add the
-# following to the respective project config (without the "#|"):
-
-#|Macros:
-#|%prjconf_multibuild_selection patch
-#|:Macros
-#|BuildFlags: onlybuild:u-boot:my-flavor1 onlybuild:u-boot:my-flavor2
-#|BuildFlags: onlybuild:u-boot:my-flavor3 onlybuild:u-boot:my-flavor4
-
-# If you opt to use onlybuild: to select U-Boot flavours and also
-# have additional packages in that project, these need to be listed, too:
-
-#|BuildFlags: onlybuild:package onlybuild:otherpackage onlybuild:thirdpackage
-
-# Any packages not included in that list will neither build in that project
-# nor in subprojects!
-
-# It is still possible to enable the full multiboot set plus eventual
-# additional packages by adding the Macros: [...] :Macros section and
-# omitting the "onlybuild:"-lines.
-
-%else
-%if "%target" == "tools" || "%target" == ""
-# At least build the tools.
-%else
-BuildRequires:  %prjconf_multibuild_selection
-%endif
-%endif
-
 %define mvebu_spl 0
 %define x_loader 0
 %define rockchip_spl 0
@@ -64,16 +28,13 @@ BuildRequires:  %prjconf_multibuild_selection
 %define origen_spl 0
 %define imx6_spl 0
 %define socfpga_spl 0
-
 %define binext .bin
-
 %define is_armv6 0
 %define is_armv7 0
 %define is_armv8 0
 %define is_ppc 0
 %define is_riscv64 0
 %define tools_only 0
-
 %if "%target" == "rpi" || "%target" == "rpi2" || "%target" == "rpi3" || "%target" == "rpi4" || "%target" == "rpiarm64"
 %define is_rpi 1
 %if "%target" == "rpi"
@@ -86,7 +47,6 @@ BuildRequires:  %prjconf_multibuild_selection
 %define is_armv8 1
 %endif
 %endif
-
 %if "%target" == "firefly-rk3288" || "%target" == "tinker-rk3288"
 %define is_armv7 1
 %define rockchip_spl 1
@@ -115,7 +75,6 @@ BuildRequires:  %prjconf_multibuild_selection
 %define is_rk3399 1
 %define is_armv8 1
 %endif
-
 %if "%target" == "bananapim64" || "%target" == "nanopia64" || "%target" == "pine64plus" || "%target" == "pinebook"
 %define is_a64 1
 %define is_armv8 1
@@ -139,77 +98,88 @@ BuildRequires:  %prjconf_multibuild_selection
 %define binext .img
 %define sunxi_spl 1
 %endif
-
 %if "%target" == "clearfog" || "%target" == "turrisomnia"
 %define mvebu_spl 1
 %define is_armv7 1
 %define binext .img
 %endif
-
 %if "%target" == "mx53loco" || "%target" == "mx6qsabrelite"
 %define is_armv7 1
 %define binext .imx
 %endif
-
 %if "%target" == "mx6cuboxi" || "%target" == "udoo" || "%target" == "udooneo"
 %define imx6_spl 1
 %define is_armv7 1
 %define binext .img
 %endif
-
 %if "%target" == "omap3beagle" || "%target" == "omap4panda" || "%target" == "am335xevm" || "%target" == "pcm051rev3"
 %define x_loader 1
 %define is_armv7 1
 %define binext .img
 %endif
-
 %if "%target" == "colibrit20" || "%target" == "am57xxevm"
 %define is_armv7 1
 %endif
-
 %if "%target" == "arndale"
 %define is_armv7 1
 %define arndale_spl 1
 %endif
-
 %if  "%target" == "dragonboard410c" || "%target" == "dragonboard820c"
 %define is_armv8 1
 %endif
-
 %if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "poplar"
 %define is_armv8 1
 %endif
-
 %if "%target" == "avnetultra96rev1" || "%target" == "xilinxzynqmpgeneric" || "%target" == "xilinxzynqmpzcu102rev10"
 %define is_armv8 1
 %define binext .elf
 %endif
-
 %if "%target" == "highbank" || "%target" == "jetson-tk1" || "%target" == "merriia80optimus" || "%target" == "nanopineoair" || "%target" == "odroid" || "%target" == "odroid-xu3" || "%target" == "paz00" || "%target" == "snow" || "%target" == "socfpgade0nanosoc" || "%target" == "spring"
 %define is_armv7 1
 %endif
-
 %if "%target" == "zynqzturn"
 %define is_armv7 1
 %define binext .img
 %endif
-
 %if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifivefu540"
 %define is_riscv64 1
 %endif
-
 %if "%target" == "qemu-ppce500"
 %define is_ppc 1
 %endif
-
 # archive_version differs from version for RC version only
 %define archive_version 2019.10
-
-%if "%target" == "tools" || "%target" == ""
-Name:           u-boot
+%if "%{target}" == ""
+ExclusiveArch:  do_not_build
 %else
-Name:           u-boot-%target
+%if "%{target}" == "tools"
+%define tools_only 1
+%else
+%if %is_armv8
+ExclusiveArch:  aarch64
+%else
+%if %is_armv7
+ExclusiveArch:  armv7l armv7hl
+%else
+%if %is_armv6
+ExclusiveArch:  armv6l armv6hl
+%else
+%if %is_ppc
+ExclusiveArch:  ppc
+%else
+%if %is_riscv64
+ExclusiveArch:  riscv64
+%else
+ExclusiveArch:  do_not_build
 %endif
+%endif
+%endif
+%endif
+%endif
+%endif
+%endif
+%bcond_with uboot_atf
+%bcond_with uboot_atf_pine64
 Version:        2019.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
@@ -244,22 +214,7 @@ Patch0019:      0019-ARM-bcm283x-Move-BCM283x_BASE-to-a-.patch
 Patch0020:      0020-ARM-bcm283x-Set-rpi_bcm283x_base-at.patch
 Patch0021:      0021-ARM-bcm283x-Set-memory-map-at-run-t.patch
 Patch0022:      0022-ARM-defconfig-add-unified-config-fo.patch
-# Patches: end
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  pkgconfig(sdl)
-%if 0%{?is_rk3328} && %{with uboot_atf}
-BuildRequires:  arm-trusted-firmware-rk3328
-%endif
-%if 0%{?is_rk3399} && %{with uboot_atf}
-BuildRequires:  arm-trusted-firmware-rk3399
-
-%endif
-%if (0%{?is_a64} || 0%{?is_h5}) && %{with uboot_atf}
-BuildRequires:  arm-trusted-firmware-sun50ia64
-%endif
-%if 0%{?is_h6} && %{with uboot_atf}
-BuildRequires:  arm-trusted-firmware-sun50ih6
-%endif
+Patch0023:      0023-boo-1144161-Remove-nand-mtd-spi-dfu.patch
 BuildRequires:  bc
 BuildRequires:  bison
 # Arndale board needs DTC >= 1.4
@@ -267,14 +222,60 @@ BuildRequires:  dtc >= 1.4.0
 BuildRequires:  flex
 # u-boot-clearfog (tools/kwbimage.c) needs openssl to build
 BuildRequires:  libopenssl-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python-devel
+BuildRequires:  swig
+# Patches: end
+BuildRequires:  pkgconfig(sdl)
+Conflicts:      u-boot-loader
+Provides:       u-boot-loader
+%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV"
+# A complete multibuild-flavoured package is only built in above projects.
+# In order to build a defined subset in forked projects, add the
+# following to the respective project config (without the "#|"):
+#|Macros:
+#|%prjconf_multibuild_selection patch
+#|:Macros
+#|BuildFlags: onlybuild:u-boot:my-flavor1 onlybuild:u-boot:my-flavor2
+#|BuildFlags: onlybuild:u-boot:my-flavor3 onlybuild:u-boot:my-flavor4
+# If you opt to use onlybuild: to select U-Boot flavours and also
+# have additional packages in that project, these need to be listed, too:
+#|BuildFlags: onlybuild:package onlybuild:otherpackage onlybuild:thirdpackage
+# Any packages not included in that list will neither build in that project
+# nor in subprojects!
+# It is still possible to enable the full multiboot set plus eventual
+# additional packages by adding the Macros: [...] :Macros section and
+# omitting the "onlybuild:"-lines.
+%else
+%if "%target" == "tools" || "%target" == ""
+# At least build the tools.
+%else
+BuildRequires:  %prjconf_multibuild_selection
+%endif
+%endif
+%if "%target" == "tools" || "%target" == ""
+Name:           u-boot
+%else
+Name:           u-boot-%target
+%endif
+%if 0%{?is_rk3328} && %{with uboot_atf}
+BuildRequires:  arm-trusted-firmware-rk3328
+%endif
+%if 0%{?is_rk3399} && %{with uboot_atf}
+BuildRequires:  arm-trusted-firmware-rk3399
+%endif
+%if (0%{?is_a64} || 0%{?is_h5}) && %{with uboot_atf}
+BuildRequires:  arm-trusted-firmware-sun50ia64
+%endif
+%if 0%{?is_h6} && %{with uboot_atf}
+BuildRequires:  arm-trusted-firmware-sun50ih6
+%endif
 %if %{with uboot_atf}
 %if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399" || "${name}" == "u-boot-rock-pi-4-rk3399"
 # make_fit_atf.py
 BuildRequires:  python-pyelftools
 %endif
 %endif
-BuildRequires:  swig
 %if "%{name}" == "u-boot-qemu-ppce500"
 # Owns /usr/share/qemu directory
 BuildRequires:  qemu
@@ -291,8 +292,6 @@ BuildRequires:  zynqmp-dts
 # For mountpoint
 Requires(post): util-linux
 %endif
-Provides:       u-boot-loader
-Conflicts:      otherproviders(u-boot-loader)
 %if %x_loader == 1
 Obsoletes:      x-loader-%target
 Provides:       x-loader-%target
@@ -315,42 +314,11 @@ Obsoletes:      u-boot-rpi4 < %{version}
 Provides:       u-boot-rpi4 = %{version}
 %endif
 
-%if "%{target}" == ""
-ExclusiveArch:  do_not_build
-%else
-%if "%{target}" == "tools"
-%define tools_only 1
-%else
-%if %is_armv8
-ExclusiveArch:  aarch64
-%else
-%if %is_armv7
-ExclusiveArch:  armv7l armv7hl
-%else
-%if %is_armv6
-ExclusiveArch:  armv6l armv6hl
-%else
-%if %is_ppc
-ExclusiveArch:  ppc
-%else
-%if %is_riscv64
-ExclusiveArch:  riscv64
-%else
-ExclusiveArch:  do_not_build
-%endif
-%endif
-%endif
-%endif
-%endif
-%endif
-%endif
-
 %description
 Das U-Boot (or just "U-Boot" for short) is Open Source Firmware for Embedded PowerPC, ARM, MIPS and x86 processors.
 This package contains the firmware for the %target platform.
 
 %if %tools_only
-
 %package tools
 Summary:        Tools for the U-Boot Firmware
 Group:          System/Boot
@@ -361,7 +329,6 @@ This package contains:
 mkimage- a tool that creates kernel bootable images for U-Boot.
 
 %else
-
 %package doc
 Summary:        Documentation for the U-Boot Firmware
 Group:          Documentation/Other
@@ -381,36 +348,36 @@ This package contains documentation for U-Boot firmware.
 # needed for include/config/auto.conf
 make defconfig
 make syncconfig
-make %{?_smp_mflags} CFLAGS="$RPM_OPT_FLAGS" tools-only
+make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only
 
 %else
 export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/u-boot.changes | tail -n 1 | cut -d- -f1 )" +%s)
 %if 0%{?is_a64} || 0%{?is_h5}
-export BL31=/usr/share/arm-trusted-firmware-sun50ia64/bl31.bin
+export BL31=%{_datadir}/arm-trusted-firmware-sun50ia64/bl31.bin
 %endif
 %if 0%{?is_h6}
-export BL31=/usr/share/arm-trusted-firmware-sun50ih6/bl31.bin
+export BL31=%{_datadir}/arm-trusted-firmware-sun50ih6/bl31.bin
 %endif
 
 %if %{with uboot_atf}
 %if "%{name}" == "u-boot-rock64-rk3328"
-cp /usr/share/arm-trusted-firmware-rk3328/bl31.elf .
+cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf .
 %endif
 %if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399"
-cp /usr/share/arm-trusted-firmware-rk3399/bl31.elf .
+cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
 %endif
 %endif
 
 confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\n" && print;')
 
-make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="$RPM_OPT_FLAGS" $confname
+make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" $confname
 echo "Attempting to enable fdt apply command (.dtbo) support."
 echo "CONFIG_OF_LIBFDT_OVERLAY=y" >> .config
 %if "%target" == "rpi3"
 echo "Tweaking text base for TF-A."
 echo "CONFIG_SYS_TEXT_BASE=0x11000000" >> .config
 %endif
-make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="$RPM_OPT_FLAGS" \
+make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" \
 %if ("%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399") && %{with uboot_atf}
      all u-boot.itb
 %else
@@ -540,6 +507,7 @@ fi
 %endif
 %defattr(-,root,root)
 %license Licenses/gpl-2.0.txt
+
 %if %tools_only
 %{_bindir}/mkimage
 %{_mandir}/man1/mkimage.1.gz

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  5 14:27:58 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Run spec cleaner
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.10
+  * Patches added:
+    0023-boo-1144161-Remove-nand-mtd-spi-dfu.patch - boo#1144161
+
+-------------------------------------------------------------------
 Mon Nov 25 16:47:54 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
 
 - set boot option to arm64 in ubootconfig.txt. This allows us to
