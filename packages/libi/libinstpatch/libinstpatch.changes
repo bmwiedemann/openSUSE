@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:23:50 UTC 2019 - Joël Krähemann <jkraehemann@gmail.com>
+
+- update libinstpatch-cmake-fixes.patch to fix soname in
+  libinstpatch-1.0.pc
+
+-------------------------------------------------------------------
+Sat Oct 19 13:13:12 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 1.1.0:
+  * SOVERSION was bumped
+  * libinstpatch's license was changed from GPL-2.0 to LGPL-2.1
+  * the AutoTools build system has been replaced by CMake
+  * preliminary support for Spectralis (SLI) soundbanks was added
+  * libsndfile is now required
+  * an incorrect mutex unlock caused a deadlock when entering
+    ipatch_base_get_file() with different threads
+  * incorrect copying DLS2 objects was fixed
+  * build issues on Windows were fixed
+  * various other minor bugs were addressed
+- Update libinstpatch-cmake-fixes.patch to the current code base
+- Remove the following patches, because they were fixed upstream:
+  * 0001-Fix-improper-GValue-type-assignments-in-ipatch_dls2_.patch
+  * 0002-fix-incorrect-usage-of-g_value_set_flags.patch
+  * 0003-missing-mutex-unlock.patch
+  * 0004-more-locking-issues.patch
+
+-------------------------------------------------------------------
 Sat Dec 29 11:43:30 UTC 2018 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Add the following patches to fix incorrect GValue assignments:
