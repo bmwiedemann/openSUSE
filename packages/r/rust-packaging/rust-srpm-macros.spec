@@ -20,7 +20,7 @@
 
 
 Name:           rust-srpm-macros
-Version:        10
+Version:        11
 Release:        0
 Summary:        RPM macros for building Rust source packages
 License:        MIT

@@ -125,4 +125,12 @@
   + 0001-metadata-normalize-version-via-CargoSemVer.patch</comment>
     <requestid>744324</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e1f89540a7952557a75d16b67ff71961</srcmd5>
+    <version>11</version>
+    <time>1575563626</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v11</comment>
+    <requestid>754086</requestid>
+  </revision>
 </revisionlist>

@@ -22,21 +22,13 @@
 %bcond_without check
 
 Name:           rust-packaging
-Version:        10
+Version:        11
 Release:        0
 Summary:        RPM macros for building Rust packages on various architectures
 License:        MIT
 Group:          Development/Languages/Rust
 URL:            https://pagure.io/fedora-rust/rust2rpm
 Source0:        https://releases.pagure.org/fedora-rust/rust2rpm/rust2rpm-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE 0001-macros-Remove-Cargo.toml.orig.patch -- Remove Cargo.toml.orig
-Patch0001:      0001-macros-Remove-Cargo.toml.orig.patch
-# PATCH-FIX-UPSTREAM 0001-Ignore-Cargo.lock.patch -- https://pagure.io/fedora-rust/rust2rpm/c/b5e2db003fe02d689d9e724a1d649d2c6d2919dd?branch=master
-Patch0002:      0001-Ignore-Cargo.lock.patch
-# PATCH-FIX-UPSTREAM 0001-metadata-replace-semantic-version-with-a-custom-pars.patch -- https://pagure.io/fedora-rust/rust2rpm/c/fcbf95a78efdb310f918363e69706e1a98d93a9f
-Patch0003:      0001-metadata-replace-semantic-version-with-a-custom-pars.patch
-# PATCH-FIX-UPSTREAM 0001-metadata-normalize-version-via-CargoSemVer.patch -- https://pagure.io/fedora-rust/rust2rpm/c/23e807d8ce571da4500f66075e08bfa412177972
-Patch0004:      0001-metadata-normalize-version-via-CargoSemVer.patch
 BuildArch:      noarch
 ExclusiveArch:  %{rust_arches} noarch
 
