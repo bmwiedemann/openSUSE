@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  2 19:51:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5
+  * New keygen option: --repeats (-r), times to repeat passphrase
+    prompt
+  * More explicit passphrase prompts
+  * Improved portability
+  * Fix various issues with enchive-mode.el
+  * Minor documentation and bug fixes
+
+-------------------------------------------------------------------
 Sat Mar 23 21:15:23 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 3.4

@@ -17,7 +17,7 @@
 
 
 Name:           enchive
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Long-term archive encryption tool
 License:        Unlicense
@@ -37,6 +37,7 @@ Files are secured with ChaCha20, Curve25519, and HMAC-SHA256.
 %prep
 %setup -q
 %patch0 -p1
+
 
 %build
 export CFLAGS='%{optflags}'
