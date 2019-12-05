@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Dec  5 11:03:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github archive as the tests are not present on pypi
+  version
+
+-------------------------------------------------------------------
+Mon Nov 25 20:45:00 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Initial release. v0.3.0
+- get-short-help.patch adds get_short_help_str function and
+  supports older versions of python-click. get_short_help_str was
+  added to Click in version >= 7.0.0.
+- Use pytest instead of nose for unit tests.
