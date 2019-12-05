@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 28 15:53:58 CET 2019 - tiwai@suse.de
+
+- Drop sourceforge download URL that doesn't work any longer...
+
+-------------------------------------------------------------------
+Sat Oct 26 17:03:46 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.6
+  * fixed a possibly signed integer overflow with crafted midi
+    files.
+  * other minor clean-ups, etc.
+  version 0.2.5:
+  * allow dual-licensing as LGPL / Artistic.
+  version 0.2.4:
+  * fixes to the pkg-config file.
+  version 0.2.3:
+  * fixed a potential buffer overrun in timi_fgets() which might
+    have led to a crash during config parsing.
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Feb 21 22:30:29 UTC 2017 - olaf@aepfle.de
 
 - Update to version 0.2.2

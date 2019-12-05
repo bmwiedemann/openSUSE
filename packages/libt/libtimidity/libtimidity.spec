@@ -1,7 +1,7 @@
 #
 # spec file for package libtimidity
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 2
-
 Name:           libtimidity
-Version:        0.2.2
+Version:        0.2.6
 Release:        0
 Summary:        MIDI to WAVE converter library
-License:        LGPL-2.1+
-Group:          Development/Libraries/C and C++
-Url:            http://libtimidity.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+License:        LGPL-2.1-or-later
+URL:            http://libtimidity.sourceforge.net/
+Source0:        %{name}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 This library is based on the TiMidity decoder from SDL_sound library.
@@ -40,7 +38,6 @@ from MIDI song.
 
 %package -n libtimidity%{sover}
 Summary:        MIDI to WAVE converter library
-Group:          System/Libraries
 
 %description -n libtimidity%{sover}
 This library is based on the TiMidity decoder from SDL_sound library.
@@ -53,7 +50,6 @@ from MIDI song.
 
 %package        devel
 Summary:        MIDI to WAVE converter library - Development Files
-Group:          Development/Libraries/C and C++
 Requires:       libtimidity%{sover} = %{version}
 
 %description    devel
@@ -75,26 +71,21 @@ from MIDI song.
 	--disable-ao \
 	--disable-aotest \
 	--disable-static
-%__make %{?_smp_mflags}
+make %{?_smp_mflags}
 
 %install
-%makeinstall
-find %{buildroot}%{_libdir} -name '*.la' -delete -print
-
-%clean
-rm -rf %{buildroot}
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libtimidity%{sover} -p /sbin/ldconfig
-
 %postun -n libtimidity%{sover} -p /sbin/ldconfig
 
 %files -n libtimidity%{sover}
-%defattr(-,root,root,-)
-%doc AUTHORS CHANGES COPYING README*
+%license COPYING
+%doc AUTHORS CHANGES README*
 %{_libdir}/libtimidity*.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/timidity.h
 %{_libdir}/libtimidity*.so
 %{_libdir}/pkgconfig/libtimidity.pc
