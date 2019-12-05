@@ -1,7 +1,7 @@
 #
 # spec file for package trilinos
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,10 @@
 # - some modules require pointers of bigger size
 ExcludeArch:    i586 s390 s390x ppc armv7l
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI1
-%undefine DisOMPI2
-%undefine DisOMPI3
-%else
+%if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
-%undefine DisOMPI2
+%endif
+%if !%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
@@ -61,6 +58,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi"
+%{?DisOMPI1}
 %undefine c_f_ver
 %global mpi_family openmpi
 %define mpi_ver 1
@@ -68,6 +66,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi2"
+%{?DisOMPI2}
 %undefine c_f_ver
 %global mpi_family openmpi
 %define mpi_ver 2
@@ -75,6 +74,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi3"
+%{?DisOMPI3}
 %undefine c_f_ver
 %global mpi_family openmpi
 %define mpi_ver 3
@@ -116,6 +116,129 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "gnu-openmpi3-hpc"
 %{?DisOMPI3}
 %undefine c_f_ver
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 3
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu7-mvapich2-hpc"
+%define c_f_ver 7
+%global mpi_family mvapich2
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu7-mpich-hpc"
+%define c_f_ver 7
+%global mpi_family mpich
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 7
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 1
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 7
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 2
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 7
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 3
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu8-mvapich2-hpc"
+%define c_f_ver 8
+%global mpi_family mvapich2
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu8-mpich-hpc"
+%define c_f_ver 8
+%global mpi_family mpich
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 8
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 1
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 8
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 2
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 8
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 3
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu9-mvapich2-hpc"
+%define c_f_ver 9
+%global mpi_family mvapich2
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu9-mpich-hpc"
+%define c_f_ver 9
+%global mpi_family mpich
+%global compiler_family gnu
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 9
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 1
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 9
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 2
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 9
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 3
@@ -183,7 +306,7 @@ Release:        0
 Summary:        A collection of libraries of numerical algorithms
 License:        LGPL-2.0-only
 Group:          Productivity/Scientific/Math
-Url:            http://trilinos.sandia.gov/index.html
+URL:            http://trilinos.sandia.gov/index.html
 Source0:        https://github.com/trilinos/Trilinos/archive/trilinos-release-%{ver_exp}.tar.gz
 # PATCH-FIX-UPSTREAM trilinos-11.4.3-no-return-in-non-void.patch
 Patch0:         trilinos-11.14.3-no-return-in-non-void.patch
