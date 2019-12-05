@@ -20,7 +20,11 @@ tar:
 	cd $$tmpdir && \
 	tar -xf ../$$tar && \
 	cd $$basename && \
-	sed -i 's/base\///' public/sass/base/_fonts.scss && \
+	# exclude the phantomjs-prebuilt binary module from the webpack \
+	sed -i '/phantomjs-prebuilt/d' package.json && \
+	# nuke grunt task for copying phantomjs \
+	rm -f scripts/grunt/options/phantomjs.js && \
+	sed -i '/phantomjs/d' scripts/grunt/*.js && \
 	yarn install --pure-lockfile && \
 	grunt release && \
 	cp -pr tmp/public . && \
@@ -28,6 +32,8 @@ tar:
 	cd .. && \
 	echo "Updating $$basename/tools $$basename/public in tarball..." && \
 	tar -rf ../$$tar $$basename/tools $$basename/public && \
+	# remove go.mod and go.sum as we build exclusively using vendor deps \
+	tar -f ../$$tar --delete $$basename/go.mod $$basename/go.sum && \
 	cd .. && \
 	xz $$tar && \
 	rm -rf $$tmpdir

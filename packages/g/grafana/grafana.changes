@@ -1,4 +1,169 @@
 -------------------------------------------------------------------
+Tue Dec 03 15:09:41 UTC 2019 - witold.bedyk@suse.com
+
+- Revert the spec file and make script
+- Remove PhantomJS dependency
+
+-------------------------------------------------------------------
+Wed Oct 16 19:29:48 UTC 2019 - ecsos@opensuse.org
+
+- Update to 6.4.3
+  * Bug Fixes
+    - Alerting: All notification channels should send even if one fails to send. #19807, @jan25
+    - AzureMonitor: Fix slate interference with dropdowns. #19799, @aocenas
+    - ContextMenu: make ContextMenu positioning aware of the viewport width. #19699, @krvajal
+    - DataLinks: Fix context menu not showing in singlestat-ish visualisations. #19809, @dprokop
+    - DataLinks: Fix url field not releasing focus. #19804, @aocenas
+    - Datasource: Fixes clicking outside of some query editors required 2 clicks. #19822, @aocenas
+    - Panels: Fixes default tab for visualizations without Queries Tab. #19803, @hugohaggmark
+    - Singlestat: Fixed issue with mapping null to text. #19689, @torkelo
+    - @grafana/toolkit: Don't fail plugin creation when git user.name config is not set. #19821, @dprokop
+    - @grafana/toolkit: TSLint line number off by 1. #19782, @fredwangwang
+
+-------------------------------------------------------------------
+Wed Oct 16 15:31:57 UTC 2019 - ecsos@opensuse.org
+
+- Update to 6.4.2
+  * Bug Fixes
+    - CloudWatch: Changes incorrect dimension wmlid to wlmid . #19679, @ATTron
+    - Grafana Image Renderer: Fixes plugin page. #19664, @hugohaggmark
+    - Graph: Fixes auto decimals logic for y axis ticks that results in too many decimals for high values. #19618, @torkelo
+    - Graph: Switching to series mode should re-render graph. #19623, @torkelo
+    - Loki: Fix autocomplete on label values. #19579, @aocenas
+    - Loki: Removes live option for logs panel. #19533, @davkal
+    - Profile: Fix issue with user profile not showing more than sessions sessions in some cases. #19578, @huynhsamha
+    - Prometheus: Fixes so results in Panel always are sorted by query order. #19597, @hugohaggmark
+    - ShareQuery: Fixed issue when using -- Dashboard -- datasource (to share query result) when dashboard had rows. #19610, @torkelo
+    - Show SAML login button if SAML is enabled. #19591, @papagian
+    - SingleStat: Fixes  postfix/prefix usage. #19687, @hugohaggmark
+    - Table: Proper handling of json data with dataframes. #19596, @marefr
+    - Units: Fixed wrong id for Terabits/sec. #19611, @andreaslangnevyjel
+
+- Changes from 6.4.1
+  * Bug Fixes
+    - Provisioning: Fixed issue where empty nested keys in YAML provisioning caused a server crash, #19547
+    - ImageRendering: Fixed issue with image rendering in enterprise build (Enterprise)
+    - Reporting: Fixed issue with reporting service when STMP was disabled (Enterprise).
+
+- Changes from 6.4.0
+  * Features / Enhancements
+    - Build: Upgrade go to 1.12.10. #19499, @marefr
+    - DataLinks: Suggestions menu improvements. #19396, @dprokop
+    - Explore: Take root_url setting into account when redirecting from dashboard to explore. #19447, @ivanahuckova
+    - Explore: Update broken link to logql docs. #19510, @ivanahuckova
+    - Logs: Adds Logs Panel as a visualization. #19504, @davkal
+  * Bug Fixes
+    - CLI: Fix version selection for plugin install. #19498, @aocenas
+    - Graph: Fixes minor issue with series override color picker and custom color . #19516, @torkelo
+
+- Changes from 6.4.0 Beta 2
+  * Features / Enhancements
+    - Azure Monitor: Remove support for cross resource queries (#19115)". #19346, @sunker
+    - Docker: Upgrade packages to resolve reported vulnerabilities. #19188, @marefr
+    - Graphite: Time range expansion reduced from 1 minute to 1 second. #19246, @torkelo
+    - grafana/toolkit: Add plugin creation task. #19207, @dprokop
+  * Bug Fixes
+    - Alerting: Prevents creating alerts from unsupported queries. #19250, @hugohaggmark
+    - Alerting: Truncate PagerDuty summary when greater than 1024 characters. #18730, @nvllsvm
+    - Cloudwatch: Fix autocomplete for Gamelift dimensions. #19146, @kevinpz
+    - Dashboard: Fix export for sharing when panels use default data source. #19315, @torkelo
+    - Database: Rewrite system statistics query to perform better. #19178, @papagian
+    - Gauge/BarGauge: Fix issue with [object Object] in titles . #19217, @ryantxu
+    - MSSQL: Revert usage of new connectionstring format introduced by #18384. #19203, @marefr
+    - Multi-LDAP: Do not fail-fast on invalid credentials. #19261, @gotjosh
+    - MySQL, Postgres, MSSQL: Fix validating query with template variables in alert . #19237, @marefr
+    - MySQL, Postgres: Update raw sql when query builder updates. #19209, @marefr
+    - MySQL: Limit datasource error details returned from the backend. #19373, @marefr
+
+- Changes from 6.4.0 Beta 1
+  * Features / Enhancements
+    - API: Readonly datasources should not be created via the API. #19006, @papagian
+    - Alerting: Include configured AlertRuleTags in Webhooks notifier. #18233, @dominic-miglar
+    - Annotations: Add annotations support to Loki. #18949, @aocenas
+    - Annotations: Use a single row to represent a region. #17673, @ryantxu
+    - Auth: Allow inviting existing users when login form is disabled. #19048, @548017
+    - Azure Monitor: Add support for cross resource queries. #19115, @sunker
+    - CLI: Allow installing custom binary plugins. #17551, @aocenas
+    - Dashboard: Adds Logs Panel (alpha) as visualization option for Dashboards. #18641, @hugohaggmark
+    - Dashboard: Reuse query results between panels . #16660, @ryantxu
+    - Dashboard: Set time to to 23:59:59 when setting To time using calendar. #18595, @simPod
+    - DataLinks: Add DataLinks support to Gauge, BarGauge and SingleStat2 panel. #18605, @ryantxu
+    - DataLinks: Enable access to labels & field names. #18918, @torkelo
+    - DataLinks: Enable multiple data links per panel. #18434, @dprokop
+    - Docker: switch docker image to alpine base with phantomjs support. #18468, @DanCech
+    - Elasticsearch: allow templating queries to order by doc_count. #18870, @hackery
+    - Explore: Add throttling when doing live queries. #19085, @aocenas
+    - Explore: Adds ability to go back to dashboard, optionally with query changes. #17982, @kaydelaney
+    - Explore: Reduce default time range to last hour. #18212, @davkal
+    - Gauge/BarGauge: Support decimals for min/max. #18368, @ryantxu
+    - Graph: New series override transform constant that renders a single point as a line across the whole graph. #19102, @davkal
+    - Image rendering: Add deprecation warning when PhantomJS is used for rendering images. #18933, @papagian
+    - InfluxDB: Enable interpolation within ad-hoc filter values. #18077, @kvc-code
+    - LDAP: Allow an user to be synchronized against LDAP. #18976, @gotjosh
+    - Ldap: Add ldap debug page. #18759, @peterholmberg
+    - Loki: Remove prefetching of default label values. #18213, @davkal
+    - Metrics: Add failed alert notifications metric. #18089, @koorgoo
+    - OAuth: Support JMES path lookup when retrieving user email. #14683, @bobmshannon
+    - OAuth: return GitLab groups as a part of user info (enable team sync). #18388, @alexanderzobnin
+    - Panels: Add unit for electrical charge - ampere-hour. #18950, @anirudh-ramesh
+    - Plugin: AzureMonitor - Reapply MetricNamespace support. #17282, @raphaelquati
+    - Plugins: better warning when plugins fail to load. #18671, @ryantxu
+    - Postgres: Add support for scram sha 256 authentication. #18397, @nonamef
+    - RemoteCache: Support SSL with Redis. #18511, @kylebrandt
+    - SingleStat: The gauge option in now disabled/hidden (unless it's an old panel with it already enabled) . #18610, @ryantxu
+    - Stackdriver: Add extra alignment period options. #18909, @sunker
+    - Units: Add South African Rand (ZAR) to currencies. #18893, @jeteon
+    - Units: Adding T,P,E,Z,and Y bytes. #18706, @chiqomar
+  * Bug Fixes
+    - Alerting: Notification is sent when state changes from no_data to ok. #18920, @papagian
+    - Alerting: fix duplicate alert states when the alert fails to save to the database. #18216, @kylebrandt
+    - Alerting: fix response popover prompt when add notification channels. #18967, @lzdw
+    - CloudWatch: Fix alerting for queries with Id (using GetMetricData). #17899, @alex-berger
+    - Explore: Fix auto completion on label values for Loki. #18988, @aocenas
+    - Explore: Fixes crash using back button with a zoomed in graph. #19122, @hugohaggmark
+    - Explore: Fixes so queries in Explore are only run if Graph/Table is shown. #19000, @hugohaggmark
+    - MSSQL: Change connectionstring to URL format to fix using passwords with semicolon. #18384, @Russiancold
+    - MSSQL: Fix memory leak when debug enabled. #19049, @briangann
+    - Provisioning: Allow escaping literal '$' with '$$' in configs to avoid interpolation. #18045, @kylebrandt
+    - TimePicker: Fixes hiding time picker dropdown in FireFox. #19154, @hugohaggmark
+  * Breaking changes
+    + Annotations
+      There are some breaking changes in the annotations HTTP API for region annotations. Region annotations are now represented
+      using a single event instead of two seperate events. Check breaking changes in HTTP API below and HTTP API documentation for more details.
+    + Docker
+      Grafana is now using Alpine 3.10 as docker base image.
+    + HTTP API
+      - GET /api/alert-notifications now requires at least editor access. 
+        New /api/alert-notifications/lookup returns less information than /api/alert-notifications and can be access by any authenticated user.
+      - GET /api/alert-notifiers now requires at least editor access
+      - GET /api/org/users now requires org admin role. 
+        New /api/org/users/lookup returns less information than /api/org/users and can be access by users that are org admins,
+        admin in any folder or admin of any team.
+      - GET /api/annotations no longer returns regionId property.
+      - POST /api/annotations no longer supports isRegion property.
+      - PUT /api/annotations/:id no longer supports isRegion property.
+      - PATCH /api/annotations/:id no longer supports isRegion property.
+      - DELETE /api/annotations/region/:id has been removed.
+  * Deprecation notes
+    + PhantomJS
+      - PhantomJS, which is used for rendering images of dashboards and panels,
+        is deprecated and will be removed in a future Grafana release. 
+        A deprecation warning will from now on be logged when Grafana starts up if PhantomJS is in use.
+        Please consider migrating from PhantomJS to the Grafana Image Renderer plugin.
+
+- Changes from 6.3.6
+  * Features / Enhancements
+    - Metrics: Adds setting for turning off total stats metrics. #19142, @marefr
+  * Bug Fixes
+    - Database: Rewrite system statistics query to perform better. #19178, @papagian
+    - Explore: Fixes error when switching from prometheus to loki data sources. #18599, @kaydelaney
+
+- Rebase package spec. Use mostly from fedora, fix suse specified things and fix some errors.
+- Add missing directories provisioning/datasources and provisioning/notifiers
+  and sample.yaml as described in packaging/rpm/control from upstream.
+  Missing directories are shown in logfiles.
+  
+-------------------------------------------------------------------
 Thu Sep 05 08:07:21 UTC 2019 - simon.crute@grafana.com
 
 - Version 6.3.5

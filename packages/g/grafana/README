@@ -14,10 +14,10 @@ we have a Makefile which does the following:
   then compresses it with xz.
 - The tarball can then be used by OBS to build an RPM.
 
-In order for this to work you need to have npm >= 6, yarn and grunt
-installed.  To get set up, run:
+In order for this to work you need to have npm >= 6, < 12, yarn and
+grunt installed.  To get set up, run:
 
-  # zypper in npm
+  # zypper in npm10
   # npm install -g yarn
   # npm install -g grunt-cli
 

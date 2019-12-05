@@ -1,7 +1,7 @@
 #
 # spec file for package grafana
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,32 +25,25 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%bcond_with phantomjs
-
 Name:           grafana
-Version:        6.3.5
+Version:        6.4.3
 Release:        0
 Summary:        Dashboards and editors for Graphite, InfluxDB, OpenTSDB
 License:        Apache-2.0
 Group:          System/Monitoring
-Url:            http://grafana.org/
+URL:            http://grafana.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # Instructions on the build process
 Source2:        README
 # Makefile to automate build process
-Source3:        Makefile.no_phantomjs
-Source4:        Makefile.phantomjs
+Source3:        Makefile
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.11
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 Requires(post): %insserv_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %{with phantomjs}
-BuildRequires:  phantomjs
-Requires:       phantomjs
-%endif
 %{?systemd_requires}
 
 %description
@@ -61,11 +54,6 @@ dashboards and data with teams.
 
 %prep
 %setup -q -n grafana-%{version}
-%if %{with phantomjs}
-cp %{S:4} %_sourcedir/Makefile
-%else
-cp %{S:3} %_sourcedir/Makefile
-%endif
 
 %build
 %goprep github.com/grafana/grafana
@@ -109,17 +97,6 @@ install -Dm644 {conf/provisioning/datasources/,%{buildroot}%{_datadir}/%{name}/c
 cp -pr public %{buildroot}%{_datadir}/%{name}/
 install -d -m755 %{buildroot}%{_datadir}/%{name}/vendor
 install -d -m755 %{buildroot}%{_datadir}/%{name}/tools
-
-%if %{with phantomjs}
-# phantomjs is used for rendering PNG images of graphs.  The frontend asset
-# build process downloadsa prebuilt x86_64 binary, which ends up in
-# vendor/phantomjs/phantomjs.  This is ugly but works for x86_64.  It naturally
-# will not work for other architectures, so instead we remove the phantomjs
-# binary and install a symlink to the systemwide /usr/bin/phantomjs.
-cp -pr tools/phantomjs %{buildroot}%{_datadir}/%{name}/tools/
-rm -f %{buildroot}%{_datadir}/%{name}/tools/phantomjs/phantomjs
-ln -s %{_bindir}/phantomjs %{buildroot}%{_datadir}/%{name}/tools/phantomjs/phantomjs
-%endif
 
 # Do *not* use %%fudpes -s -- this will result in grafana failing to load
 # all the plugins (something in the plugin scanner can't cope with files
