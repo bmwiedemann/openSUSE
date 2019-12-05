@@ -1,0 +1,13 @@
+Index: Gnome-Pie-0.7.2/src/actions/action.vala
+===================================================================
+--- Gnome-Pie-0.7.2.orig/src/actions/action.vala
++++ Gnome-Pie-0.7.2/src/actions/action.vala
+@@ -69,7 +69,7 @@ public abstract class Action : GLib.Obje
+     /// C'tor, initializes all members.
+     /////////////////////////////////////////////////////////////////////
+ 
+-    public Action(string name, string icon, bool is_quickaction) {
++    protected Action(string name, string icon, bool is_quickaction) {
+         GLib.Object(name : name, icon : icon, is_quickaction : is_quickaction);
+     }
+ 

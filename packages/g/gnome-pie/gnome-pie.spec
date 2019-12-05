@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-pie
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           gnome-pie
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A circular application launcher for GNOME
-License:        GPL-3.0-or-later
+License:        MIT
 Group:          System/GUI/GNOME
 URL:            https://simmesimme.github.io/gnome-pie.html
-Source:         https://github.com/Simmesimme/Gnome-Pie/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gnome-pie-fix-build-vala042.patch -- Fix build with vala 0.42.x
-Patch0:         gnome-pie-fix-build-vala042.patch
-
+Source:         https://github.com/Simmesimme/Gnome-Pie/archive/v%{version}.tar.gz#/Gnome-Pie-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gnome-pie-fix-build-vala046.patch aloisio@gmx.com -- make constructor of abstract class protected
+Patch1:         gnome-pie-fix-build-vala046.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -55,9 +54,7 @@ presses may be simulated or files can be opened.
 
 %prep
 %setup -q -n Gnome-Pie-%{version}
-%if %{pkg_vcmp vala > 0.42}
-%patch0 -p1
-%endif
+%patch1 -p1
 
 %build
 %cmake
@@ -67,16 +64,6 @@ make %{?_smp_mflags}
 %cmake_install
 %suse_update_desktop_file %{name} -r Utilities DesktopUtility
 %fdupes %{buildroot}%{_datadir}
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING
