@@ -1,7 +1,7 @@
 #
 # spec file for package libmpdclient
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define so_name 2
 Name:           libmpdclient
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        Library for interfacing the Music Player Daemon
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.musicpd.org/libs/libmpdclient/
-Source:         http://www.musicpd.org/download/libmpdclient/2/%{name}-%{version}.tar.xz
-BuildRequires:  meson >= 0.40
+URL:            https://musicpd.org/libs/libmpdclient
+Source0:        https://musicpd.org/download/%{name}/2/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 
@@ -60,7 +60,7 @@ MPD (Music Player Daemon).
 
 %install
 %meson_install
-rm -rf %{buildroot}%{_datadir}/doc
+rm -r %{buildroot}%{_datadir}/doc
 
 %post   -n %{name}%{so_name} -p /sbin/ldconfig
 %postun -n %{name}%{so_name} -p /sbin/ldconfig
