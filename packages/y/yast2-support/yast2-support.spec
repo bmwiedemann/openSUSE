@@ -20,7 +20,7 @@ Name:           yast2-support
 Summary:        YaST2 - Support Inquiries
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Url:            https://github.com/yast/yast-support
 
