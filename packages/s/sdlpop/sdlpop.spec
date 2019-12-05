@@ -69,18 +69,6 @@ cat > %{buildroot}%{_bindir}/%{name} << EOF
 exec "%{_libexecdir}/%{name}/\${0##*/}" \$@
 EOF
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
-%if 0%{?suse_version} < 1330
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
 %doc doc/Readme.txt doc/ChangeLog.txt doc/bugs.txt
 %license doc/gpl-3.0.txt

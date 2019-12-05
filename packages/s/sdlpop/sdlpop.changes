@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 23 15:31:43 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Do not longer use rpm macros that are not longer needed on
+  recent distros:
+  * %desktop_database_post
+  * %icon_theme_cache_post
+
+-------------------------------------------------------------------
 Tue Oct 15 20:41:55 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.20
