@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  4 19:05:57 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.12.04
+   * Fix reading of titles for some M3U playlists,
+   * fix possible corrupted DXVA2 video playback,
+   * refactor HWAccelInterface class,
+   * minor fixes.
+
+-------------------------------------------------------------------
 Wed Nov 27 14:01:32 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 19.11.26
-
    * Move OpenGL mode check boxes from visualizations and OpenGL2 settings into general settings,
    * improve (again) bypassing compositor on Windows platform and OpenGL,
    * fix YouTube subtitles if default subtitles language is set,
