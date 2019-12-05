@@ -568,4 +568,13 @@
     <comment></comment>
     <requestid>751232</requestid>
   </revision>
+  <revision rev="76" vrev="19">
+    <srcmd5>bf09dbefb28cc5ea0e90fc9bae3642d1</srcmd5>
+    <version>unknown</version>
+    <time>1575563612</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build breakage by the new alsa update; now it requires
+  alsa-topology-devel</comment>
+    <requestid>750714</requestid>
+  </revision>
 </revisionlist>
