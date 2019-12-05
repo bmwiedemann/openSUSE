@@ -53,10 +53,13 @@ with any other form application.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Remove test suite
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/t/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
-%python_expand PYTHONPATH=%{$python_sitelib} py.test-%{$python_bin_suffix} -v t/
+%pytest t/
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
