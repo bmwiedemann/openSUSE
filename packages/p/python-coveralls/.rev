@@ -57,4 +57,12 @@
   * metadata changes</comment>
     <requestid>730673</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b5eb6574e37ab85f6b4ea10412db8d7b</srcmd5>
+    <version>1.8.2</version>
+    <time>1575563694</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on older releases</comment>
+    <requestid>754339</requestid>
+  </revision>
 </revisionlist>
