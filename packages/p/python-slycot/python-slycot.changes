@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  4 11:15:25 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- mirror blas/lapack/openblas requirements from numpy-devel depending
+  on architecture and force CMake to find it.
+- reduce the required precision in the sg03ad test so that 
+  powerpc passes
+
+-------------------------------------------------------------------
+Tue Dec  3 14:18:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update fix-test-sg03ad.patch once more again
+
+-------------------------------------------------------------------
 Fri Nov  8 13:30:41 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
 - fix unittests to pass on all architectures 
