@@ -17,7 +17,7 @@
 
 
 Name:           perl-Email-Sender
-Version:        1.300033
+Version:        1.300034
 Release:        0
 %define cpan_name Email-Sender
 Summary:        Library for sending email
@@ -78,7 +78,7 @@ start with Email::Sender::Manual::QuickStart.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

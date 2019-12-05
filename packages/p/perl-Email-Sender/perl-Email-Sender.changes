@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  4 03:09:18 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.300034
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  1.300034  2019-12-02 22:21:58-05:00 America/New_York
+          - add documentation for the SMTP "hosts" parameter!
+
+-------------------------------------------------------------------
 Wed Nov 27 03:02:11 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.300033
