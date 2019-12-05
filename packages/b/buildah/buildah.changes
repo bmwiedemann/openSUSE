@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  5 08:11:11 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.11.6
+  * Handle missing equal sign in --from and --chown flags
+    for COPY/ADD
+  * bud COPY does not download URL
+  * Fix .dockerignore exclude regression
+  * commit(docker): always set ContainerID and ContainerConfig
+  * Touch up commit man page image parameter
+  * Add builder identity annotations.
+
+-------------------------------------------------------------------
 Tue Nov 12 14:57:37 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.11.5
