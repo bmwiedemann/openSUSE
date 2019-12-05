@@ -21,7 +21,7 @@
 %bcond_without collada
 %ifarch x86_64
 %bcond_without embree
-%bcond_with oidn
+%bcond_without oidn
 %else
 %bcond_with embree
 %bcond_with oidn
@@ -60,9 +60,11 @@ Source4:        blender-sample
 Source8:        %{name}.appdata.xml
 Patch0:         0006-add_ppc64el-s390x_support.patch
 # only rely on patch availibility, if python_36 is requested
-%if %{with python_36}
+# this patch also fixes a memory leak
 Patch1:         make_python_3.6_compatible.patch
-%endif
+# PATCH-FIX-UPSTREAM 0001-Fix-T71680-_PyObject_LookupAttr-memory-leak.patch hpj@urpla.net
+# if the former patch isn't applied, fix underlying memory leak
+Patch2:         0001-Fix-T71680-_PyObject_LookupAttr-memory-leak.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -223,6 +225,8 @@ popd
 %patch0 -p1
 %if %{with python_36}
 %patch1 -p1
+%else
+%patch2 -p1
 %endif
 
 rm -rf extern/glew

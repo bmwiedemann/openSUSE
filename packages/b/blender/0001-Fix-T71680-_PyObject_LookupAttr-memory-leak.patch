@@ -1,0 +1,32 @@
+From 43eb34ec81fdf0479703a1c817b64a70dc93bbea Mon Sep 17 00:00:00 2001
+From: Campbell Barton <ideasman42@gmail.com>
+Date: Wed, 20 Nov 2019 17:53:22 +1100
+Subject: [PATCH] Fix T71680: _PyObject_LookupAttr memory leak
+
+---
+ source/blender/python/intern/bpy_rna.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/source/blender/python/intern/bpy_rna.c b/source/blender/python/intern/bpy_rna.c
+index 570c5012ed8..6bc7676973c 100644
+--- a/source/blender/python/intern/bpy_rna.c
++++ b/source/blender/python/intern/bpy_rna.c
+@@ -8688,6 +8688,7 @@ static PyObject *pyrna_register_class(PyObject *UNUSED(self), PyObject *py_class
+   switch (_PyObject_LookupAttr(py_class, bpy_intern_str_register, &py_cls_meth)) {
+     case 1: {
+       PyObject *ret = PyObject_CallObject(py_cls_meth, NULL);
++      Py_DECREF(py_cls_meth);
+       if (ret) {
+         Py_DECREF(ret);
+       }
+@@ -8794,6 +8795,7 @@ static PyObject *pyrna_unregister_class(PyObject *UNUSED(self), PyObject *py_cla
+   switch (_PyObject_LookupAttr(py_class, bpy_intern_str_unregister, &py_cls_meth)) {
+     case 1: {
+       PyObject *ret = PyObject_CallObject(py_cls_meth, NULL);
++      Py_DECREF(py_cls_meth);
+       if (ret) {
+         Py_DECREF(ret);
+       }
+-- 
+2.24.0
+

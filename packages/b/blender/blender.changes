@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:32:37 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add patch 0001-Fix-T71680-_PyObject_LookupAttr-memory-leak.patch
+  Stefan's Python 3.6 compatibility patch revealed a memory leak,
+  that is plugged upstream in master already. Fix either with
+  applying this patch or make_python_3.6_compatible.patch.
+
+-------------------------------------------------------------------
+Tue Nov 26 10:45:21 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Enable OIDN again
+
+-------------------------------------------------------------------
 Mon Nov 25 21:25:58 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Disable OIDN for all builds, until accepted in Factory
