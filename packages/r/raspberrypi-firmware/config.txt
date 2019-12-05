@@ -50,6 +50,9 @@ dtoverlay=dwc2
 
 [pi4]
 
+# This is temporarly needed while we solve bsc#1158406
+gpu_mem=64
+
 dtoverlay=disable-vc4
 dtoverlay=rpi4-cma
 dtoverlay=rpi4-pcie-ib-size-fix
