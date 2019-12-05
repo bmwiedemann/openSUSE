@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Dec  4 22:21:34 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 3.0.2 (bsc#1157901, bsc#1157902)
+  + Add man page
+  + Support accessing IMDS with a token (API change) to support
+    disabling unauthenticated acces of IMDS
+
+-------------------------------------------------------------------
+Wed Sep 20 13:24:31 UTC 2017 - rjschwei@suse.com
+
+- Update to version 2.0.0
+  + Port to Python 3
+
+-------------------------------------------------------------------
+Wed Aug 17 15:58:05 UTC 2016 - jgleissner@suse.com
+
+- Bump to version 1.5.4 (bsc#994138 bsc#994139)
+  + ec2metadata: do not use proxy
+
+-------------------------------------------------------------------
+Tue Mar 31 15:26:45 UTC 2015 - rjschwei@suse.com
+
+- Bump to version 1.5.3 (bnc#924626)
+  + Properly write metadata to file if no query argument is provided
+  + Properly generate XML for 'public-keys' query option
+  + Document the 'api' option in the help message
+  + Alpha sort the options displayed with the help message
+
+-------------------------------------------------------------------
+Wed Aug 13 08:29:31 UTC 2014 - rschweikert@suse.com
+
+- Bump to version 1.5.2
+  + fix the no argument use case
+
+-------------------------------------------------------------------
+Mon Jun 23 16:54:53 UTC 2014 - rschweikert@suse.com
+
+- Switch the upstream URL to the forked project, origin project
+  appears not to be maintained
+
+-------------------------------------------------------------------
+Fri May 30 19:03:58 UTC 2014 - rschweikert@suse.com
+
+- Include in SLE 12 (FATE #315990)
+
+-------------------------------------------------------------------
+Fri May 30 18:59:30 UTC 2014 - rschweikert@suse.com
+
+- Initial build
+
