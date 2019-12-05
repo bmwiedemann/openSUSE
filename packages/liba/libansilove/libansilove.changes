@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 18 19:13:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.6
+  * Use CMAKE_INSTALL_{LIB,INCLUDE}DIR instead of hardcoding
+    directories.
+  * Introduce a XBIN_PALETTE_LENGTH macro
+  * Use XBIN_HEADER_LENGTH and XBIN_PALETTE_LENGTH macros instead
+    of magic numbers
+  * Add another format validation check (palette size) in the
+    XBin loader
+- Drop patch (fixed by upstream):
+  * libansilove-libsuffix.patch
+
+-------------------------------------------------------------------
 Fri Oct 25 19:16:47 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.1.5

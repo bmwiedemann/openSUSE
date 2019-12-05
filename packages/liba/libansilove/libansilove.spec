@@ -19,7 +19,7 @@
 %global sover   1
 %global libname %{name}%{sover}
 Name:           libansilove
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        Library for converting ANSI, ASCII, and other formats to PNG
 Group:          Productivity/Graphics/Other
@@ -27,7 +27,6 @@ License:        BSD-2-Clause
 URL:            https://www.ansilove.org
 #Git-Clone:     https://github.com/ansilove/libansilove.git
 Source:         https://github.com/ansilove/libansilove/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         libansilove-libsuffix.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdlib)
@@ -67,7 +66,6 @@ applications that want to make use of libansilove.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake
