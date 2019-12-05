@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:37:03 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * Port away from deprecated API in KWindowSystem
+
+-------------------------------------------------------------------
 Tue Nov 12 11:01:09 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.3
