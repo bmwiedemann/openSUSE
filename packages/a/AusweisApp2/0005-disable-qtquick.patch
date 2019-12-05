@@ -1,0 +1,30 @@
+diff -Nru AusweisApp2-1.18.2.orig/cmake/Libraries.cmake AusweisApp2-1.18.2/cmake/Libraries.cmake
+--- AusweisApp2-1.18.2.orig/cmake/Libraries.cmake	2019-09-30 17:25:27.000000000 +0200
++++ AusweisApp2-1.18.2/cmake/Libraries.cmake	2019-10-19 21:35:45.748829330 +0200
+@@ -13,12 +13,6 @@
+ FIND_PACKAGE(Qt5LinguistTools ${MIN_QT_VERSION} REQUIRED)
+ FIND_PACKAGE(Qt5WebSockets ${MIN_QT_VERSION} REQUIRED)
+ 
+-IF(NOT ANDROID_BUILD_AAR)
+-	FIND_PACKAGE(Qt5Qml ${MIN_QT_VERSION} REQUIRED)
+-	FIND_PACKAGE(Qt5Quick ${MIN_QT_VERSION} REQUIRED)
+-	FIND_PACKAGE(Qt5QuickControls2 ${MIN_QT_VERSION} REQUIRED)
+-ENDIF()
+-
+ IF(DESKTOP)
+ 	FIND_PACKAGE(Qt5Widgets ${MIN_QT_VERSION} REQUIRED)
+ 
+diff -Nru AusweisApp2-1.18.2.orig/src/main.cpp AusweisApp2-1.18.2/src/main.cpp
+--- AusweisApp2-1.18.2.orig/src/main.cpp	2019-09-30 17:25:27.000000000 +0200
++++ AusweisApp2-1.18.2/src/main.cpp	2019-10-19 21:36:23.869309248 +0200
+@@ -97,10 +97,6 @@
+ Q_IMPORT_PLUGIN(UIPlugInAidl)
+ #endif
+ 
+-#ifndef ANDROID_BUILD_AAR
+-Q_IMPORT_PLUGIN(UIPlugInQml)
+-#endif
+-
+ Q_IMPORT_PLUGIN(UIPlugInJson)
+ Q_IMPORT_PLUGIN(UIPlugInWebSocket)
+ 

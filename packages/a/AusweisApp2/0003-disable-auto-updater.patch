@@ -1,0 +1,41 @@
+diff -Nru AusweisApp2-1.18.2.orig/src/settings/GeneralSettings.cpp AusweisApp2-1.18.2/src/settings/GeneralSettings.cpp
+--- AusweisApp2-1.18.2.orig/src/settings/GeneralSettings.cpp	2019-09-30 17:25:27.000000000 +0200
++++ AusweisApp2-1.18.2/src/settings/GeneralSettings.cpp	2019-10-19 21:52:23.071248762 +0200
+@@ -362,7 +362,7 @@
+ 		mStoreGeneral->remove(SETTINGS_NAME_AUTO());
+ 	}
+ 
+-#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
++#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS) || defined(Q_OS_LINUX)
+ 	return mStoreCommon->value(SETTINGS_NAME_AUTO(), false).toBool();
+ 
+ #else
+diff -Nru AusweisApp2-1.18.2.orig/src/ui/widget/GeneralSettingsWidget.ui AusweisApp2-1.18.2/src/ui/widget/GeneralSettingsWidget.ui
+--- AusweisApp2-1.18.2.orig/src/ui/widget/GeneralSettingsWidget.ui	2019-09-30 17:25:27.000000000 +0200
++++ AusweisApp2-1.18.2/src/ui/widget/GeneralSettingsWidget.ui	2019-10-19 21:53:36.275224781 +0200
+@@ -45,7 +45,7 @@
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="regularlyUpdateCheckBox">
+         <property name="enabled">
+-         <bool>true</bool>
++         <bool>false</bool>
+         </property>
+         <property name="accessibleName">
+          <string>check software update on program start</string>
+@@ -54,14 +54,14 @@
+          <string>check on program start</string>
+         </property>
+         <property name="checked">
+-         <bool>true</bool>
++         <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="updateCheckButton">
+         <property name="enabled">
+-         <bool>true</bool>
++         <bool>false</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">

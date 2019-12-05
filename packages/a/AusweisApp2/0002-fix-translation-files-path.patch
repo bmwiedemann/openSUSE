@@ -1,0 +1,12 @@
+diff -Nru AusweisApp2-1.16.1.orig/src/global/LanguageLoader.cpp AusweisApp2-1.16.1/src/global/LanguageLoader.cpp
+--- AusweisApp2-1.16.1.orig/src/global/LanguageLoader.cpp	2019-01-03 15:12:45.000000000 +0100
++++ AusweisApp2-1.16.1/src/global/LanguageLoader.cpp	2019-01-09 20:42:43.920248371 +0100
+@@ -23,7 +23,7 @@
+ QLocale LanguageLoader::mDefaultLanguage = QLocale::system();
+ 
+ LanguageLoader::LanguageLoader()
+-	: mPath(FileDestination::getPath(QStringLiteral("translations")))
++	: mPath(QStringLiteral("/usr/share/AusweisApp2/translations"))
+ 	, mTranslatorList()
+ 	, mComponentList(
+ 		{

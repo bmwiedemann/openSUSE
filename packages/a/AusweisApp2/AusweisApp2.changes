@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Mon Oct 28 14:41:20 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix capitalization of URL field descriptor
+- Remove unnecessary %defattr(-,root,root) from %files section
+- Remove unnecessary %post and %postun targets
+  + Drop %desktop_database_post and %icon_theme_cache_post invocations
+  + Drop %desktop_database_postun and %icon_theme_cache_postun invocations
+- Sort dependencies in BuildRequires
+- Switch cmake builder to Ninja
+  + Add ninja to BuildRequires
+  + Define __builder as ninja in %build target
+
+-------------------------------------------------------------------
+Sun Oct 20 10:27:41 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Use correct SPDX identifier in License field for EUPL-1.2
+
+-------------------------------------------------------------------
+Sun Oct 20 09:19:16 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix incorrect package name in spec file header
+- Update copyright year to 2019
+- Use https connection in Bugzilla link
+
+-------------------------------------------------------------------
+Sun Oct 20 08:57:29 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove extra LICENSE.txt from packaging source
+
+-------------------------------------------------------------------
+Sat Oct 19 21:07:19 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.18.2
+    * Small bug fixes
+    * Updates to Info.plist file
+  + Version 1.18.1
+    * Updates to Info.plist file
+  + Version 1.18.0
+    * Enable NFC functionality for iOS 13
+    * Small bug fixes
+    * Updated OpenSSL version to 1.1.1c
+    * Updated Qt version to 5.12.4
+    * A compiler with C++17 support is now required
+- Fix patch to set path to translation files
+  + 0002-fix-translation-files-path.patch
+- Refresh patches for new version
+  + 0003-disable-auto-updater.patch
+- Add patch to adjust path for config.json
+  + 0004-set-config-path.patch
+- Add patch to disable QtQuick as it's currently broken
+  + 0005-disable-qtquick.patch
+- Disable building shared libraries
+  + Pass -DBUILD_SHARED_LIBS=off to cmake
+  + Remove any references for *.so files from %install and %files sections
+  + Remove generation of ld.conf.so configuration file
+  + Remove invocations to /sbin/ldconfig from %postin and %postun sections
+- Install config.json into data directory
+- Remove libQt5QuickControls2-devel from BuildRequires
+
+-------------------------------------------------------------------
+Wed Jun  5 13:54:31 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.16.2
+    * The cancel dialog is no longer shown when switching into PIN
+      changing mode while in identification mode
+    * On Android, old log files are now purged automatically
+    * Smartphones that have been paired as card readers (SaK) are now shown as
+      available if the connection has been established automatically by the app
+    * Explanatory texts in the mobile app have been improved
+    * The mobile app no longer performs a browser redirect when turning the transport
+      PIN into a 6-digit custom PIN when in identfication mode
+    * The error dialog has gained the possibility to send an email to the AusweisApp2
+      support team; it will ask the user now to include the application log and the
+      email automatically includes information about the system configuration as well
+      as the most recent critical error messages
+    * The integrated databases for supported cardreaders as well as online
+      services supporting the electronic personal ID card have been updated
+    * The version number of AusweisApp2 is no longer part of the installation
+      path on Windows to avoid issues with anti-virus software
+    * A bug that caused AusweisApp2 to crash in identification mode while
+      running in the background has been fixed
+    * Automatic detection of smartphones as card readers has been improved
+    * Automatic detection of card readers in diagnosis mode has been improved
+    * Other small bugs have been fixed
+    * The default logger can now be disabled with "–no-loghandler"
+    * Instructions for "Installing in company networks" have been extended
+
+-------------------------------------------------------------------
+Wed Jan  9 21:04:52 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.16.1
+    * Deactivated automatic clean-up of old log files as
+      that could cause a crash in version 1.16.0
+  + Version 1.16.0
+    * Small bug fixes
+    * Added a tutorial to aid usage on Android devices
+    * Dropped support for Android 4.3 and 4.4
+    * Dropped support for OS X 10.10
+    * Added support for macOS 10.14
+    * It's now possible to transmit data from an Android smartphone
+      anomynously after successful authentication
+    * Extended the diagnostics functionality
+    * Added popup question to rate app on Android
+    * Added possibility to view logs on Android
+    * On Android, the app now clearly differentiates
+      between 5- and 6-digit PIN codes
+    * Removing the ID card while entering PIN/CAN/PUK will no longer
+      terminate the authentication or PIN changing process
+    * Added support for corporate-wide deployments of the MSI
+      package on Windows (separate documenation)
+    * Added support for a WebSocket SDK on Windows and macOS
+      (separate documentation)
+    * Concurrent access from different applications to card readers
+      which are connected through PC/SC is now possible
+    * Updated OpenSSL version to 1.1.1
+    * Updated Qt version to 5.11.2
+    * Dropped support for TLS v1.1
+    * Dropped support for the following TLS ciphers:
+      - DHE-DSS-AES256-GCM-SHA384
+      - DHE-DSS-AES256-SHA256
+      - DHE-DSS-AES128-GCM-SHA256
+      - DHE-DSS-AES128-SHA256
+      - DHE-DSS-AES256-SHA
+      - DHE-DSS-AES128-SHA
+      - ECDHE-ECDSA-AES256-SHA
+      - ECDHE-RSA-AES256-SHA
+      - DHE-RSA-AES256-SHA
+      - ECDHE-ECDSA-AES128-SHA
+      - ECDHE-RSA-AES128-SHA
+      - DHE-RSA-AES128-SHA
+- Drop patches merged upstream
+  + 0001-fix-desktop-menu-category.patch
+  + 0002-add-desktop-menu-generic-name.patch
+- Refresh and renumber patches for new version
+  + 0001-fix-resource-file-path.patch
+  + 0002-fix-translation-files-path.patch
+  + 0003-disable-auto-updater.patch
+
+-------------------------------------------------------------------
+Thu Dec 27 16:23:41 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to disable auto updater
+  + 0005-disable-auto-updater.patch
+- Rewrite Summary and %description in English
+
+-------------------------------------------------------------------
+Sat Oct 27 13:46:27 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 1.14.3
