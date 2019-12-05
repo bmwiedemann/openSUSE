@@ -19,12 +19,12 @@
 %define so_ver 0
 
 Name:           xfdashboard
-Version:        0.7.6
+Version:        0.7.7
 Release:        0
 Summary:        GNOME shell like dashboard for Xfce
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://git.xfce.org/apps/xfdashboard/about/
+URL:            https://docs.xfce.org/apps/xfdashboard/start
 Source0:        https://archive.xfce.org/src/apps/%{name}/0.7/%{name}-%{version}.tar.bz2
 Source8:        xfdashboard.1
 Source9:        xfdashboard-settings.1
@@ -41,13 +41,13 @@ Patch2:         xfdashboard-desktopfile-without-binary.diff
 BuildRequires:  clutter-devel
 BuildRequires:  fdupes
 BuildRequires:  libtool
-BuildRequires:  libxfce4util-devel >= 4.10.0
+BuildRequires:  libxfce4util-devel >= 4.12.0
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(garcon-1)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libwnck-3.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.10.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
@@ -100,7 +100,7 @@ export CFLAGS="%{optflags}"
 %make_build
 
 %install
-make V=1 %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_mandir}/man1
 gzip -c9 %{SOURCE8} | tee -a %{buildroot}%{_mandir}/man1/%{name}.1.gz
