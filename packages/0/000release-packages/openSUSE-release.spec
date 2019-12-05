@@ -55,7 +55,6 @@ Provides:       system-installation() = openSUSE
 Obsoletes:      aaa_version
 Obsoletes:      openSUSE-Promo-release <= 11.1
 Obsoletes:      openSUSE-release-live <= 11.0
-Obsoletes:      product_flavor(%{product}) < 20191204
 # bnc#826592
 Provides:       weakremover(kernel-default) < 3.11
 Provides:       weakremover(kernel-desktop) < 4.2
