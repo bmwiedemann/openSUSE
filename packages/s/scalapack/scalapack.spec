@@ -335,6 +335,7 @@ Provides:       %{name} = %{version}
 %if %{with hpc}
 Requires:       %{name}-module
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
+Provides:       %{libblacsname %_vers}
 %hpc_requires
 %endif
 
@@ -380,6 +381,7 @@ Provides:       lib%{pname}%{so_ver}-openmpi-devel
 %else
 %hpc_requires_devel
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
+Provides:       %{libblacsname %_vers}-devel
 %endif
 Obsoletes:      %{name}-devel < %{version}
 Provides:       %{name}-devel = %{version}
