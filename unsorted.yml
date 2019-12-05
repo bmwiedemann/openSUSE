@@ -19,6 +19,7 @@ unsorted:
   - AppCSXCAD 
   - AppStream-devel 
   - AppStream-doc 
+  - AusweisApp2 
   - Bear 
   - Botan 
   - Botan-doc 
@@ -434,6 +435,7 @@ unsorted:
   - alsa-plugins-samplerate 
   - alsa-plugins-samplerate-32bit: [x86_64] 
   - alsa-plugins-speex 
+  - alsa-topology-conf 
   - alsa-topology-devel 
   - alsa-topology-devel-32bit: [x86_64] 
   - alsabat 
@@ -9554,7 +9556,7 @@ unsorted:
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
   - libinsighttoolkit4 
-  - libinstpatch-1_0-0 
+  - libinstpatch-1_0-1 
   - libinstpatch-devel 
   - libiodbc-devel 
   - libiodbc3 
@@ -9966,6 +9968,7 @@ unsorted:
   - libmbedx509-0 
   - libmbedx509-0-32bit: [x86_64] 
   - libmbim-devel 
+  - libmca_common_dstore1 
   - libmcpp0 
   - libmd-devel 
   - libmd0 
@@ -10134,13 +10137,14 @@ unsorted:
   - libmumps-gnu-openmpi1-hpc: [x86_64] 
   - libmumps-gnu-openmpi2-hpc: [x86_64] 
   - libmumps-gnu-openmpi3-hpc: [x86_64] 
-  - libmumps-ptscotch5-openmpi: [x86_64] 
+  - libmumps-ptscotch5-openmpi1: [x86_64] 
   - libmumps-ptscotch5-openmpi2: [x86_64] 
   - libmumps-scotch5: [x86_64] 
   - libmumps5: [x86_64] 
   - libmumps5-mvapich2: [x86_64] 
-  - libmumps5-openmpi: [x86_64] 
+  - libmumps5-openmpi1: [x86_64] 
   - libmumps5-openmpi2: [x86_64] 
+  - libmumps5-openmpi3: [x86_64] 
   - libmumps_5_2_1-gnu-mpich-hpc: [x86_64] 
   - libmumps_5_2_1-gnu-mvapich2-hpc: [x86_64] 
   - libmumps_5_2_1-gnu-openmpi1-hpc: [x86_64] 
@@ -10696,6 +10700,7 @@ unsorted:
   - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmempool1: [x86_64] 
   - libpmi0 
+  - libpmix2 
   - libpnetcdf1-mvapich2 
   - libpnetcdf1-openmpi1 
   - libpnetcdf1-openmpi2 
@@ -11764,11 +11769,13 @@ unsorted:
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
   - libtrilinos-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi2-hpc: [x86_64] 
+  - libtrilinos-gnu-openmpi3-hpc: [x86_64] 
   - libtrilinos12: [x86_64] 
   - libtrilinos12-openmpi2: [x86_64] 
   - libtrilinos_12_14_1-gnu-mpich-hpc: [x86_64] 
   - libtrilinos_12_14_1-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
+  - libtrilinos_12_14_1-gnu-openmpi3-hpc: [x86_64] 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
   - libtsk13 
@@ -13744,21 +13751,26 @@ unsorted:
   - mumps-mvapich2-devel-static: [x86_64] 
   - mumps-mvapich2-devel-static-compat: [x86_64] 
   - mumps-mvapich2-examples: [x86_64] 
-  - mumps-openmpi-5-compat: [x86_64] 
-  - mumps-openmpi-devel: [x86_64] 
-  - mumps-openmpi-devel-static: [x86_64] 
-  - mumps-openmpi-devel-static-compat: [x86_64] 
-  - mumps-openmpi-examples: [x86_64] 
+  - mumps-openmpi1-5-compat: [x86_64] 
+  - mumps-openmpi1-devel: [x86_64] 
+  - mumps-openmpi1-devel-static: [x86_64] 
+  - mumps-openmpi1-devel-static-compat: [x86_64] 
+  - mumps-openmpi1-examples: [x86_64] 
   - mumps-openmpi2-5-compat: [x86_64] 
   - mumps-openmpi2-devel: [x86_64] 
   - mumps-openmpi2-devel-static: [x86_64] 
   - mumps-openmpi2-devel-static-compat: [x86_64] 
   - mumps-openmpi2-examples: [x86_64] 
-  - mumps-ptscotch-openmpi-5-compat: [x86_64] 
-  - mumps-ptscotch-openmpi-devel: [x86_64] 
-  - mumps-ptscotch-openmpi-devel-static: [x86_64] 
-  - mumps-ptscotch-openmpi-devel-static-compat: [x86_64] 
-  - mumps-ptscotch-openmpi-examples: [x86_64] 
+  - mumps-openmpi3-5-compat: [x86_64] 
+  - mumps-openmpi3-devel: [x86_64] 
+  - mumps-openmpi3-devel-static: [x86_64] 
+  - mumps-openmpi3-devel-static-compat: [x86_64] 
+  - mumps-openmpi3-examples: [x86_64] 
+  - mumps-ptscotch-openmpi1-5-compat: [x86_64] 
+  - mumps-ptscotch-openmpi1-devel: [x86_64] 
+  - mumps-ptscotch-openmpi1-devel-static: [x86_64] 
+  - mumps-ptscotch-openmpi1-devel-static-compat: [x86_64] 
+  - mumps-ptscotch-openmpi1-examples: [x86_64] 
   - mumps-ptscotch-openmpi2-5-compat: [x86_64] 
   - mumps-ptscotch-openmpi2-devel: [x86_64] 
   - mumps-ptscotch-openmpi2-devel-static: [x86_64] 
@@ -16961,6 +16973,10 @@ unsorted:
   - pmdk-devel-doc: [x86_64] 
   - pmdk-tools: [x86_64] 
   - pmidi 
+  - pmix 
+  - pmix-devel 
+  - pmix-headers 
+  - pmix-mca-params 
   - png++-devel 
   - pngcheck 
   - pngcrush 
@@ -18195,6 +18211,7 @@ unsorted:
   - python2-click-didyoumean 
   - python2-click-help-colors 
   - python2-click-log 
+  - python2-click-man 
   - python2-click-plugins 
   - python2-click-spinner 
   - python2-click-threading 
@@ -20530,6 +20547,7 @@ unsorted:
   - python3-click-didyoumean 
   - python3-click-help-colors 
   - python3-click-log 
+  - python3-click-man 
   - python3-click-plugins 
   - python3-click-spinner 
   - python3-click-threading 
@@ -20788,6 +20806,7 @@ unsorted:
   - python3-easywatch 
   - python3-ebcdic 
   - python3-ec2imgutils 
+  - python3-ec2metadata 
   - python3-ed25519 
   - python3-editdistance 
   - python3-editdistance-devel 
@@ -32334,6 +32353,8 @@ unsorted:
   - trilinos-gnu-mvapich2-hpc-devel: [x86_64] 
   - trilinos-gnu-openmpi2-hpc: [x86_64] 
   - trilinos-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos-gnu-openmpi3-hpc: [x86_64] 
+  - trilinos-gnu-openmpi3-hpc-devel: [x86_64] 
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
@@ -32343,6 +32364,8 @@ unsorted:
   - trilinos_12_14_1-gnu-mvapich2-hpc-devel: [x86_64] 
   - trilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
   - trilinos_12_14_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos_12_14_1-gnu-openmpi3-hpc: [x86_64] 
+  - trilinos_12_14_1-gnu-openmpi3-hpc-devel: [x86_64] 
   - trilinos_12_14_1-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
