@@ -15,4 +15,12 @@
     <comment>- Update to 2.7.4.  No changelog available</comment>
     <requestid>737583</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ef68f6b5b3db365b794eb141ec4e380</srcmd5>
+    <version>2.8.0</version>
+    <time>1575563702</time>
+    <user>dimstar_suse</user>
+    <comment>2.8.0</comment>
+    <requestid>754348</requestid>
+  </revision>
 </revisionlist>
