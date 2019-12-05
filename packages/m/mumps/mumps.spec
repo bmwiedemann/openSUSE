@@ -1,7 +1,7 @@
 #
 # spec file for package mumps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,10 @@
 ExclusiveArch:  do_not_build
 %endif
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI1
-%undefine DisOMPI2
-%undefine DisOMPI3
-%else
+%if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
-%undefine DisOMPI2
+%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
@@ -55,7 +52,7 @@ ExclusiveArch:  do_not_build
 %bcond_without scotch
 %endif
 
-%if "%{flavor}" == "openmpi"
+%if "%{flavor}" == "openmpi1"
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 1
@@ -69,15 +66,23 @@ ExclusiveArch:  do_not_build
 %bcond_with hpc
 %endif
 
+%if "%{flavor}" == "openmpi3"
+%define mpi_family  openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 3
+%bcond_with hpc
+%endif
+
 %if "%{flavor}" == "mvapich2"
 %define mpi_family  mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
 %bcond_with hpc
 %endif
 
-%if "%{flavor}" == "scotch-openmpi"
+%if "%{flavor}" == "scotch-openmpi1"
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 1
 %bcond_with hpc
 %bcond_without scotch
 %endif
@@ -103,18 +108,6 @@ ExclusiveArch:  do_not_build
 %define mumps_f77_mpilibs -lfmpich -lmpich
 %bcond_with hpc
 %bcond_without scotch
-%endif
-
-%if "%{flavor}" == "gnu-mvapich2-hpc"
-%undefine c_f_ver
-%global mpi_family mvapich2
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu-mpich-hpc"
-%undefine c_f_ver
-%global mpi_family mpich
-%bcond_without hpc
 %endif
 
 %if "%{flavor}" == "gnu-openmpi-hpc"
@@ -156,6 +149,147 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
+%if "%{flavor}" == "gnu-mpich-hpc"
+%undefine c_f_ver
+%global mpi_family mpich
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 1
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-mvapich2-hpc"
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_family mvapich2
+%define mumps_f77_mpilibs -lfmpich -lmpich
+%undefine mpi_ver 
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-mpich-hpc"
+%define c_f_ver 7
+%global mpi_family mpich
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 1
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-mvapich2-hpc"
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_family mvapich2
+%define mumps_f77_mpilibs -lfmpich -lmpich
+%undefine mpi_ver 
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-mpich-hpc"
+%define c_f_ver 8
+%global mpi_family mpich
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi-hpc"
+%{?DisOMPI1}
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 1
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi2-hpc"
+%{?DisOMPI2}
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi3-hpc"
+%{?DisOMPI3}
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-mvapich2-hpc"
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_family mvapich2
+%define mumps_f77_mpilibs -lfmpich -lmpich
+%undefine mpi_ver 
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-mpich-hpc"
+%define c_f_ver 9
+%global mpi_family mpich
+%bcond_without hpc
+%endif
+
 %ifarch i586 s390 ppc armv7l
 ExclusiveArch:  do_not_build
 %endif
@@ -166,8 +300,8 @@ ExclusiveArch:  do_not_build
 
 %{?mpi_family:%{bcond_without mpi}}%{!?mpi_family:%{bcond_with mpi}}
 
-# For compatibility package names
-%if "%{mpi_family}" != "openmpi" || "%{mpi_ver}" != "1"
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15 
+%if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi" || "%{mpi_ver}" != "1"
 %define mpi_ext %{?mpi_ver}
 %endif
 
@@ -216,7 +350,7 @@ Group:          Productivity/Scientific/Math
 Name:           %{package_name}
 Version:        %{ver}
 Release:        0
-Url:            http://mumps.enseeiht.fr/
+URL:            http://mumps.enseeiht.fr/
 Source0:        http://mumps.enseeiht.fr/MUMPS_%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source1:        Makefile.inc
 Patch1:         Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch
@@ -234,7 +368,6 @@ BuildRequires:  lapack-devel
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 BuildRequires:  fdupes
-BuildRequires:  libblacs2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel
 BuildRequires:  libgomp1
 BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{openblas_vers}
 BuildRequires:  libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel
@@ -327,6 +460,9 @@ Requires:       scalapack-%{mpi_family}%{?mpi_ext}-devel
 Requires:       mumps-scotch-devel = %{version}
 Requires:       ptscotch-%{mpi_family}%{?mpi_ext}-devel
   %endif
+  %if "%{mpi_family}%{?mpi_ext}" == "openmpi1"
+Provides:       %{pname}%{?scotch:-%{scotch}}-openmpi-devel
+  %endif
  %else # mpi
 Requires:       blas-devel
 Requires:       lapack-devel
@@ -335,7 +471,6 @@ Requires:       lapack-devel
 Recommends:     gcc-fortran
 %else # hpc
 %hpc_requires_devel
-Requires:       libblacs2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel
 Requires:       libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel
 %endif
 
@@ -445,7 +580,7 @@ module load openblas scalapack
  %define C_C mpicc
  %define F_C mpif77
  %define F_L mpif77
- %define SCALAP -lscalapack -lblacs
+ %define SCALAP -lscalapack %{!?with_hpc:-lblacs}
  %define MUMPS_LIBF77 %{!?with_hpc:-L%{my_libdir}} %{?mumps_f77_mpilibs}
  %define INCPAR %{!?with_hpc:-I%{my_incdir}}
  %define LIBPAR %{SCALAP} %{MUMPS_LIBF77}
