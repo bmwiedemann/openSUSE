@@ -1,7 +1,7 @@
 #
 # spec file for package osc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 29
+%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -27,17 +27,17 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.166.2
+%define version_unconverted 0.167.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 
 Name:           osc
-Version:        0.166.2
+Version:        0.167.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            https://github.com/openSUSE/osc
+URL:            https://github.com/openSUSE/osc
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{use_python}-devel
@@ -47,7 +47,7 @@ BuildRequires:  diffstat
 BuildRequires:  python-rpm
 Requires:       python-rpm
 %else
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 32 || 0%{?centos_version} >= 800
 BuildRequires:  %{use_python}-rpm
 Requires:       %{use_python}-rpm
 %else
@@ -69,7 +69,7 @@ Requires:       python-elementtree
 %endif
 %if 0%{?suse_version} > 1000
 Recommends:     diffstat
-Recommends:     build >= 2010.05.04
+Recommends:     build
 Recommends:     sudo
 Recommends:     powerpc32
 Recommends:     ca-certificates 
@@ -83,6 +83,9 @@ Recommends:     obs-service-download_files
 Recommends:     obs-service-format_spec_file
 Recommends:     obs-service-source_validator
 Recommends:     xdg-utils
+# for osc >= 0.167.0 the newest build version is needed. 
+# Otherwise osc chroot might not work correctly.
+Conflicts:      build < 20191205
 %endif
 %endif
 # needed for storing credentials in kwallet/gnome-keyring
@@ -108,7 +111,7 @@ BuildRequires:  python-m2crypto > 0.19
 Requires:       python-m2crypto > 0.19
 %endif
 %else
-%if 0%{?fedora_version} >= 29
+%if 0%{?fedora_version} >= 29  || 0%{?centos_version} >= 800
 BuildRequires:  python3-m2crypto
 Requires:       python3-m2crypto
 %else
