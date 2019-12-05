@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:39:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use same tarball as it is equal between python and C code
+
+-------------------------------------------------------------------
 Tue Oct  8 15:39:10 UTC 2019 - ecsos@opensuse.org
 
 - Update to 1.11.0

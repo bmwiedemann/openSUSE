@@ -1,7 +1,7 @@
 #
 # spec file for package python-flatbuffers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,40 +23,30 @@ Release:        0
 Summary:        The FlatBuffers serialization format for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/google/flatbuffers
-Source:         https://github.com/google/flatbuffers/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+URL:            https://github.com/google/flatbuffers
+Source:         https://github.com/google/flatbuffers/archive/%{version}/flatbuffers-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-numpy
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
 Python runtime library for use with the Flatbuffers serialization format.
 
 %prep
-%setup -q -n flatbuffers-%{version}
+%setup -q -n flatbuffers-%{version}/python
 
 %build
-pushd python
 %python_build
-popd
 
 %install
-pushd python
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-popd
 
 %files %{python_files}
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320 
-%license LICENSE.txt
-%else
-%doc LICENSE.txt
-%endif
+%license ../LICENSE.txt
 %{python_sitelib}/*
 
 %changelog

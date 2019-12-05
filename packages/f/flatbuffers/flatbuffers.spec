@@ -1,7 +1,7 @@
 #
 # spec file for package flatbuffers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-Name:           flatbuffers
 %define   sonum 1
+Name:           flatbuffers
 Version:        1.11.0
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            http://google.github.io/flatbuffers/
+URL:            https://google.github.io/flatbuffers/
 Source:         https://github.com/google/flatbuffers/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.11.2
 BuildRequires:  gcc-c++
@@ -68,14 +68,12 @@ chmod -x readme.md docs/source/*.md docs/footer.html docs/source/doxyfile
        -DFLATBUFFERS_BUILD_SHAREDLIB=ON \
        -DFLATBUFFERS_BUILD_FLATLIB=OFF \
        -DFLATBUFFERS_BUILD_FLATC=ON
-
-make %{?_smp_mflags} V=1
+%cmake_build
 
 %install
 %cmake_install
-pushd CMake
-mkdir -p "%{buildroot}/%{_datadir}/cmake/Modules"
-install -m0644 *FlatBuffers.cmake %{buildroot}%{_datadir}/cmake/Modules/
+mkdir -p %{buildroot}/%{_datadir}/cmake/Modules
+install -Dm0644 CMake/*FlatBuffers.cmake %{buildroot}%{_datadir}/cmake/Modules/
 
 %check
 %ctest
@@ -84,17 +82,11 @@ install -m0644 *FlatBuffers.cmake %{buildroot}%{_datadir}/cmake/Modules/
 %postun -n libflatbuffers%{sonum} -p /sbin/ldconfig
 
 %files -n libflatbuffers%{sonum}
-%defattr(-,root,root)
+%license LICENSE.txt
 %{_libdir}/libflatbuffers.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc readme.md docs/
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320 
-%license LICENSE.txt
-%else
-%doc LICENSE.txt
-%endif
 %{_bindir}/flatc
 %{_libdir}/libflatbuffers.so
 %{_includedir}/flatbuffers/
