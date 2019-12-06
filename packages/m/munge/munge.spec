@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -39,7 +39,7 @@ Release:        0
 Summary:        An authentication service for creating and validating credentials
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Security
-Url:            http://dun.github.io/munge/
+URL:            http://dun.github.io/munge/
 Source0:        https://github.com/dun/munge/archive/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        sysconfig.munge
@@ -149,7 +149,7 @@ exit 0
 %stop_on_removal munge
 %endif
 
-%define fixperm() [ -e %1 ] && /bin/chown %munge_u:%munge_g %1
+%define fixperm() [ -e %1 ] && /bin/chown -h %munge_u:%munge_g %1
 %postun
 if [ $1 -eq 1 ]
 then
@@ -171,12 +171,31 @@ then
     %{fixperm %{_localstatedir}/log/munge/munged.log}
     %{fixperm %{_localstatedir}/run/munge}
 fi
-if [ ! -e %{_sysconfdir}/munge/munge.key -a -c /dev/urandom ]; then
-  /bin/dd if=/dev/urandom bs=1 count=1024 \
-    >%{_sysconfdir}/munge/munge.key 2>/dev/null
+unset tmpfile
+tmpdir=$(mktemp -d /tmp/tmpdir-XXXXXXXXX)
+if [ -e %{_sysconfdir}/munge/munge.key ]; then 
+    # Preserve symlink so we can check for it
+    cp -pP %{_sysconfdir}/munge/munge.key ${tmpdir}
 fi
-/bin/chown %munge_u:%munge_g %{_sysconfdir}/munge/munge.key
-/bin/chmod 0400 %{_sysconfdir}/munge/munge.key
+# Make sure this is no symlinks - this may have been created by an attacker!
+if [ -e ${tmpdir}/munge.key -a ! -h ${tmpdir}/munge.key ]; then
+    if [ $(/usr/bin/stat -c %U:%G:%a ${tmpdir}/munge.key) != \
+    %munge_u:%munge_g:400 ]; then
+	tmpfile=${tmpdir}/munge.key
+    fi
+else
+    /usr/bin/rm -f ${tmpdir}/munge.key
+    if [ -c /dev/urandom ]; then
+	tmpfile=${tmpdir}/munge.key
+	/bin/dd if=/dev/urandom bs=1 count=1024 > $tmpfile 2>/dev/null
+    fi
+fi
+if [ -n "$tmpfile" ]; then
+    /bin/chmod 0400 $tmpfile
+    /bin/chown -h %munge_u:%munge_g $tmpfile
+    /bin/mv -f $tmpfile %{_sysconfdir}/munge/munge.key
+fi
+/usr/bin/rm -rf ${tmpdir}
 %if 0%{?have_systemd}
 %service_add_post munge.service
 systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
@@ -184,16 +203,10 @@ systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
 %{fillup_and_insserv -i munge}
 %endif
 
-%if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1320
-%define mylicense %license 
-%else 
-%define mylicense %doc 
-%endif
-
 %files
 %defattr(-,root,root,0755)
 %doc AUTHORS
-%mylicense COPYING
+%license COPYING
 %doc DISCLAIMER*
 %doc HISTORY
 %doc JARGON

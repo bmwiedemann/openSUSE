@@ -95,4 +95,15 @@ as well.</comment>
     <comment>- Add coreutils to the Requires(post/postun). (forwarded request 637211 from eeich)</comment>
     <requestid>637212</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>fc32d503cdf19bb6c473ceecc812a892</srcmd5>
+    <version>0.5.13</version>
+    <time>1575630546</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix possible LPE during installation (bsc#1155075,
+  CVE-2019-3691).
+- Remove special %license treatment for SLE-12 as this
+  has been fixed. (forwarded request 754490 from eeich)</comment>
+    <requestid>754491</requestid>
+  </revision>
 </revisionlist>
