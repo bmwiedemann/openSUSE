@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 30 14:50:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert wireless-tools.changes to proper UTF-8 format: new
+  version of RPM are getting strict in interpreting files.
+
+-------------------------------------------------------------------
 Mon Jan 22 11:25:21 UTC 2018 - p.seiler@linuxmail.org
 
 - improved install scripts (using install instead of mv and using $UID:
@@ -175,7 +181,7 @@ Thu Nov  6 17:56:28 CET 2008 - hschaa@suse.de
   o Add ESSID bug patches and documentation [ESSID-BUG.txt]
   o Make wireless.21.h LGPL as promised a long time ago [wireless.21.h]
   o Fix unaligned access on SPARC in the 64->32 bit workaround [iwlib.c]
-  o Mise à jour de la traduction en francais des pages manuel [fr/*]
+  o Mise Ã  jour de la traduction en francais des pages manuel [fr/*]
   o Use wireless.22.h, make it GPL [iwlib.h/wireless.22.h]
   o Show Scanning Capabilities in "iwlist event" [iwlist]
   o Fix parsing of retry/power when modifier is used [iwconfig]
@@ -1504,7 +1510,7 @@ Mon Mar 29 16:31:06 CEST 2004 - jg@suse.de
     timers when the interface goes down
   * Modified range settings for quality and level
   * Added /proc/net/ipw2100/[if_name]/internals to display some
-    internal variables to help track issues.°
+    internal variables to help track issues.Â°
 
 -------------------------------------------------------------------
 Fri Mar 26 16:57:23 CET 2004 - jg@suse.de

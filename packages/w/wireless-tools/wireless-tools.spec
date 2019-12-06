@@ -1,7 +1,7 @@
 #
 # spec file for package wireless-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           wireless-tools
 Version:        30.pre9
 Release:        0
 Summary:        Tools for a wireless LAN
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Hardware/Wifi
-Url:            http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
+URL:            http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
 Source:         http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.%{version}.tar.gz
 Source2:        suse-files.tar.gz
 Source4:        ipw2200.modprobe
