@@ -1,7 +1,7 @@
 #
 # spec file for package libmicro
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,14 +22,12 @@ Release:        0
 Summary:        LibMicro is a portable set of microbenchmarks
 License:        CDDL-1.0
 Group:          System/Benchmark
-Url:            https://java.net/projects/libmicro
+URL:            https://java.net/projects/libmicro
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         find_binary.patch
 Patch1:         removed_undefined_warning.patch
 Patch2:         fix-link.diff
 Patch3:         libmicro-implicit-fortify-decl.patch
-BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 LibMicro is a portable set of microbenchmarks that many Solaris
@@ -37,14 +35,10 @@ engineers used during Solaris 10 development to measure the
 performance of various system and library calls.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
+%autosetup
 
 %build
-make CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 rm bin-*/*.a
@@ -57,8 +51,8 @@ install -m 755 bench.sh %{buildroot}%{_bindir}
 install -m 755 multiview.sh %{buildroot}%{_bindir}
 
 %files
-%defattr(-,root,root)
-%doc README OPENSOLARIS.LICENSE
+%license OPENSOLARIS.LICENSE
+%doc README
 %{_libexecdir}/libMicro
 %{_bindir}/bench.sh
 %{_bindir}/multiview.sh

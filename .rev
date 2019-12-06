@@ -149,4 +149,12 @@ SPDX format (forwarded request 111176 from babelworx)</comment>
 - Add libmicro-implicit-fortify-decl.patch</comment>
     <requestid>406095</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>fa102c6214bb32185049e4706509ba2c</srcmd5>
+    <version>0.4.2+hg.20120726</version>
+    <time>1575630674</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>754604</requestid>
+  </revision>
 </revisionlist>
