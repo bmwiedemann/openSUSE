@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Dec  6 07:44:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fork of luajit with more active upstream
+- Version 2.1.2 building on top of 2.1.0-beta3 with following goodies:
+  * fix for CVE-2019-19391
+  * Support for ppc64 ppc64le s390 s390x
+- Still carry the patch luajit-lua-versioned.patch to mark it as
+  compatible with lua 5.1, future 2.2 release should contain
+  support for 5.2 and 5.3 release of LUA

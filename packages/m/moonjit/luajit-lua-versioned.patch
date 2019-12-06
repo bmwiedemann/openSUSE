@@ -1,0 +1,111 @@
+Index: moonjit-2.1.2/src/Makefile
+===================================================================
+--- moonjit-2.1.2.orig/src/Makefile
++++ moonjit-2.1.2/src/Makefile
+@@ -15,6 +15,7 @@ MINVER=  1
+ RELVER=  0
+ ABIVER=  5.1
+ NODOTABIVER= 51
++SUFFIX= 5_1
+ 
+ ##############################################################################
+ #############################  COMPILER OPTIONS  #############################
+@@ -520,7 +521,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
+ LUAJIT_O= luajit.o
+ LUAJIT_A= libluajit.a
+ LUAJIT_SO= libluajit.so
+-LUAJIT_T= luajit
++LUAJIT_T= luajit-$(SUFFIX)
+ 
+ ALL_T= $(LUAJIT_T) $(LUAJIT_A) $(LUAJIT_SO) $(HOST_T)
+ ALL_HDRGEN= lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h \
+Index: moonjit-2.1.2/Makefile
+===================================================================
+--- moonjit-2.1.2.orig/Makefile
++++ moonjit-2.1.2/Makefile
+@@ -19,6 +19,7 @@ RELVER=  2
+ PREREL=
+ VERSION= $(MAJVER).$(MINVER).$(RELVER)$(PREREL)
+ ABIVER=  5.1
++SUFFIX= 5_1
+ 
+ ##############################################################################
+ #
+@@ -33,19 +34,19 @@ DPREFIX= $(DESTDIR)$(PREFIX)
+ INSTALL_BIN=   $(DPREFIX)/bin
+ INSTALL_LIB=   $(DPREFIX)/$(MULTILIB)
+ INSTALL_SHARE= $(DPREFIX)/share
+-INSTALL_INC=   $(DPREFIX)/include/luajit-$(MAJVER).$(MINVER)
++INSTALL_INC=   $(DPREFIX)/include/luajit-$(SUFFIX)-$(MAJVER).$(MINVER)
+ 
+-INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(VERSION)
++INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(SUFFIX)-$(VERSION)
+ INSTALL_JITLIB= $(INSTALL_LJLIBD)/jit
+ INSTALL_LMODD= $(INSTALL_SHARE)/lua
+ INSTALL_LMOD= $(INSTALL_LMODD)/$(ABIVER)
+ INSTALL_CMODD= $(INSTALL_LIB)/lua
+ INSTALL_CMOD= $(INSTALL_CMODD)/$(ABIVER)
+-INSTALL_MAN= $(INSTALL_SHARE)/man/man1
++INSTALL_MAN= $(INSTALL_SHARE)/man/man1/
+ INSTALL_PKGCONFIG= $(INSTALL_LIB)/pkgconfig
+ 
+-INSTALL_TNAME= luajit-$(VERSION)
+-INSTALL_TSYMNAME= luajit
++INSTALL_TNAME= luajit-$(SUFFIX)-$(VERSION)
++INSTALL_TSYMNAME= luajit-$(SUFFIX)
+ INSTALL_ANAME= libluajit-$(ABIVER).a
+ INSTALL_SOSHORT1= libluajit-$(ABIVER).so
+ INSTALL_SOSHORT2= libluajit-$(ABIVER).so.$(MAJVER)
+@@ -79,7 +80,7 @@ LDCONFIG= ldconfig -n
+ SED_PC= sed -e "s|^prefix=.*|prefix=$(PREFIX)|" \
+             -e "s|^multilib=.*|multilib=$(MULTILIB)|"
+ 
+-FILE_T= luajit
++FILE_T= luajit-$(SUFFIX)
+ FILE_A= libluajit.a
+ FILE_SO= libluajit.so
+ FILE_MAN= luajit.1
+@@ -110,7 +111,7 @@ endif
+ 
+ ##############################################################################
+ 
+-LUAJIT_BIN= src/luajit
++LUAJIT_BIN= src/luajit-5_1
+ 
+ default all $(LUAJIT_BIN):
+ 	@echo "==== Building moonjit $(VERSION) ===="
+@@ -128,7 +129,7 @@ install: $(LUAJIT_BIN)
+ 	  $(LDCONFIG) $(INSTALL_LIB) && \
+ 	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
+ 	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :
+-	cd etc && $(INSTALL_F) $(FILE_MAN) $(INSTALL_MAN)
++	cd etc && $(INSTALL_F) $(FILE_MAN) $(INSTALL_MAN)/luajit-$(SUFFIX).1
+ 	cd etc && $(SED_PC) $(FILE_PC) > $(FILE_PC).tmp && \
+ 	  $(INSTALL_F) $(FILE_PC).tmp $(INSTALL_PC) && \
+ 	  $(RM) $(FILE_PC).tmp
+Index: moonjit-2.1.2/etc/luajit.pc
+===================================================================
+--- moonjit-2.1.2.orig/etc/luajit.pc
++++ moonjit-2.1.2/etc/luajit.pc
+@@ -10,7 +10,7 @@ multilib=lib
+ exec_prefix=${prefix}
+ libdir=${exec_prefix}/${multilib}
+ libname=luajit-${abiver}
+-includedir=${prefix}/include/luajit-${majver}.${minver}
++includedir=${prefix}/include/luajit-5_1-${majver}.${minver}
+ 
+ INSTALL_LMOD=${prefix}/share/lua/${abiver}
+ INSTALL_CMOD=${prefix}/${multilib}/lua/${abiver}
+Index: moonjit-2.1.2/src/luaconf.h
+===================================================================
+--- moonjit-2.1.2.orig/src/luaconf.h
++++ moonjit-2.1.2/src/luaconf.h
+@@ -37,7 +37,7 @@
+ #endif
+ #define LUA_LROOT	"/usr/local"
+ #define LUA_LUADIR	"/lua/5.1/"
+-#define LUA_LJDIR	"/luajit-2.1.2/"
++#define LUA_LJDIR	"/luajit-5_1-2.1.2/"
+ 
+ #ifdef LUA_ROOT
+ #define LUA_JROOT	LUA_ROOT

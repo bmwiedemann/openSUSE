@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  5 20:21:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20191127
+  * wg-quick: linux: suppress error when finding unused table
+  * wg-quick: linux: ensure postdown hooks execute
+  * wg-quick: linux: have remove_iptables return true
+  * wg-quick: linux: iptables-* -w is not widely supported
+  * ipc: make sure userspace communication frees wgdevice
+
+-------------------------------------------------------------------
 Wed Nov 27 19:01:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.20191127

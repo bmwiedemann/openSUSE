@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 05 16:22:57 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191205.67ccc5ae:
+  * Improve _multibuild on accept
+  * Extend tests for accept command
+  * Add test for selecting multibuild with 2 spec
+  * Remove support for ring2
+
+-------------------------------------------------------------------
+Thu Dec 05 11:16:52 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191205.24345fd4:
+  * Pass the packages to rebuild in the POST's body
+
+-------------------------------------------------------------------
+Wed Dec 04 19:19:48 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191204.660ec7a7:
+  * No longer close acceptable adi stagings
+
+-------------------------------------------------------------------
 Wed Dec 04 15:25:36 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191204.fe8bfc2c:

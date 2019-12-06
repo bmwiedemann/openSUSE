@@ -1,0 +1,24 @@
+From 44d37f6aef231e1b874f2c12e002007d686da28e Mon Sep 17 00:00:00 2001
+From: Geoffrey Spear <speargh@pitt.edu>
+Date: Mon, 7 Oct 2019 08:33:07 -0400
+Subject: [PATCH 1/2] test on 3.8-dev
+
+---
+ pymarc/marcxml.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pymarc/marcxml.py b/pymarc/marcxml.py
+index 7d87905..f351a8b 100644
+--- a/pymarc/marcxml.py
++++ b/pymarc/marcxml.py
+@@ -160,9 +160,9 @@ def translate(data):
+             control_field.text = translate(field.data)
+         else:
+             data_field = ET.SubElement(root, 'datafield')
+-            data_field.set('tag', field.tag)
+             data_field.set('ind1', field.indicators[0])
+             data_field.set('ind2', field.indicators[1])
++            data_field.set('tag', field.tag)
+             for subfield in field:
+                 data_subfield = ET.SubElement(data_field, 'subfield')
+                 data_subfield.set('code', subfield[0])

@@ -9,6 +9,9 @@ export XDG_CURRENT_DESKTOP=DOESNOTMATTER
 #Don't load the KDE platform theme, to avoid messing with accelerator mnemonics (boo#1045798)
 export KDE_SESSION_VERSION=0
 
+# boo#1155687
+systemctl stop nscd.service
+
 #The URL placeholder gets filled by live-net-installer.spec
 cat >/etc/install.inf <<EOF
 ZyppRepoURL: @URL@

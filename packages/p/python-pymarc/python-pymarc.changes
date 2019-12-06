@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  6 07:42:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building with python 3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
 Sat Aug 24 14:18:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Replace summary copy by

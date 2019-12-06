@@ -1107,4 +1107,16 @@ Fixed
     database.</comment>
     <requestid>750898</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e3371ab76db94264a73c4dd6096b2775</srcmd5>
+    <version>1.8.3</version>
+    <time>1575630663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.3
+Fixed
+  * Segmentation fault introduced in v1.8.2 when a tab gets closed
+    immediately after it has finished loading (e.g. with certain
+    login flows).</comment>
+    <requestid>754543</requestid>
+  </revision>
 </revisionlist>

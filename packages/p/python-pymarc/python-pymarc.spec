@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymarc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/edsu/pymarc
 Source:         https://files.pythonhosted.org/packages/source/p/pymarc/pymarc-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/edsu/pymarc/master/LICENSE
+Patch0:         python38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,6 +46,7 @@ saner representation.
 
 %prep
 %setup -q -n pymarc-%{version}
+%patch0 -p1
 cp %{SOURCE1} .
 
 %build

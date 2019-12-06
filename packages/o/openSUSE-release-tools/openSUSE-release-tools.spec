@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-release-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20191204.fe8bfc2c
+Version:        20191205.67ccc5ae
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
 Group:          Development/Tools/Other
-Url:            https://github.com/openSUSE/openSUSE-release-tools
+URL:            https://github.com/openSUSE/openSUSE-release-tools
 Source:         %{name}-%{version}.tar.xz
 BuildArch:      noarch
 # Requires sr#704176
