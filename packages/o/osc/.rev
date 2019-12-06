@@ -1242,4 +1242,11 @@ The actual python-keyring package is only available in the devel:languages:pytho
   python3 version on CentOS 8 and higer</comment>
     <requestid>754373</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>fe32f8ae893cd64d998eb766173a1db3</srcmd5>
+    <version>0.166.2</version>
+    <time>1575623597</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 0.166.1 - 0.167 needs a new build version checked in-sync</comment>
+  </revision>
 </revisionlist>
