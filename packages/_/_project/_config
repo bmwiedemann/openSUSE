@@ -107,6 +107,7 @@ Prefer: liblua5_3-5 liblua5_1-5 liblua5_2-5
 Prefer: lua53-devel lua51-devel lua52-devel
 Prefer: libtolua++-5_3-devel libtolua++-5_1-devel libtolua++-5_2-devel
 Prefer: -liblua5_3 -liblua5_1 -liblua5_2
+Prefer: -moonjit-devel
 
 Preinstall: liblua5_3-5
 
