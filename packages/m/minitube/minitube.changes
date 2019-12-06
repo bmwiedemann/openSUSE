@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  5 17:36:41 UTC 2019 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2:
+  * Updated translations
+  * Fixes to video playback
+  * Qt >= 5.10 is needed
+- Removed minitube.changes as source to use as reference for the
+  fake build date, because SOURCE_DATE_EPOCH is used
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Jun 16 19:58:02 UTC 2019 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.1:

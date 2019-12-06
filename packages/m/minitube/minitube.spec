@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
@@ -26,9 +26,6 @@ URL:            https://flavio.tordini.org/minitube
 Source:         %{name}-%{version}.tar.xz
 # Manpage written by Jakob Haufe <sur5r@sur5r.net> for the Debian project.
 Source1:        minitube.1
-%if 0%{?suse_version} < 1500
-Source99:       %{name}.changes
-%endif
 # PATCH-FIX-OPENSUSE minitube-no-update-check.patch sur5r@sur5r.net -- Disable update check.
 Patch0:         %{name}-no-update-check.patch
 BuildRequires:  fdupes
@@ -37,6 +34,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Script)
@@ -61,10 +59,6 @@ it strives to create a new TV-like experience.
 %setup -q
 %patch0 -p1
 
-%if 0%{?suse_version} < 1500
-SOURCE_DATE="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-export SOURCE_DATE_EPOCH="$(date -d "$SOURCE_DATE" '+%%s')"
-%endif
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/aboutview.cpp
@@ -80,16 +74,6 @@ make %{?_smp_mflags} V=1
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 %suse_update_desktop_file -r %{name} AudioVideo Video Player
 %fdupes %{buildroot}%{_datadir}/
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING
