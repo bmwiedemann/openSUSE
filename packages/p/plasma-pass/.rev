@@ -7,4 +7,12 @@
     <comment>New package: a Plasma 5 frontend for the pass password manager</comment>
     <requestid>679813</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>679f5d02b8a376dd4da633886b091aa0</srcmd5>
+    <version>1.1.0</version>
+    <time>1575641183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754661</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define lang_name plasma_applet_org.kde.plasma.pass
 %bcond_without lang
 Name:           plasma-pass
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Plasma 5 widget for the pass password manager
 License:        LGPL-2.1-or-later
