@@ -53,7 +53,7 @@ sed -i 's|__LIBEXECDIR__|%{_libexecdir}|' libhidx/libhidx/src/Connector.cc
 %install
 %cmake_install
 # create icon and desktop file
-convert hidviz/images/usb.png -resize 128x128 -background transparent \
+convert -strip hidviz/images/usb.png -resize 128x128 -background transparent \
   -compose copy -gravity center -extent 128x128 %{name}.png
 install -Dpm 0644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 %suse_update_desktop_file -c %{name} "USB HID debugger" %{name} %{name} %{name} "Development;Debugger;"
