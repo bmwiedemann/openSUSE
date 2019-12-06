@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  5 03:18:03 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 8.27
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.27  2019-12-04
+    - Added EXPERIMENTAL before_command hook.
+    - Added EXPERIMENTAL scope_guard function to Mojo::Util.
+    - Removed experimental status from context method in Mojo::Log.
+    - Changed default MIME type of content_type method in Mojolicious::Types to
+      application/octet-stream. (aitap)
+
+-------------------------------------------------------------------
 Mon Nov  4 11:22:18 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 8.26
