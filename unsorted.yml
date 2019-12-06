@@ -13542,6 +13542,8 @@ unsorted:
   - mono-zeroconf-provider-avahi 
   - monodoc-core 
   - monteverdi 
+  - moonjit 
+  - moonjit-devel 
   - mopac7 
   - moreutils 
   - moreutils-parallel 
@@ -19805,6 +19807,7 @@ unsorted:
   - python2-visitor 
   - python2-vispy 
   - python2-vistir 
+  - python2-visvis 
   - python2-vobject 
   - python2-voluptuous 
   - python2-vsts 
@@ -22433,6 +22436,7 @@ unsorted:
   - python3-visitor 
   - python3-vispy 
   - python3-vistir 
+  - python3-visvis 
   - python3-vobject 
   - python3-voila 
   - python3-voluptuous 
@@ -22539,6 +22543,7 @@ unsorted:
   - python3-zetup 
   - python3-zhon 
   - python3-zict 
+  - python3-zignal 
   - python3-zipp: [i586] 
   - python3-zipstream 
   - python3-zodbpickle 
