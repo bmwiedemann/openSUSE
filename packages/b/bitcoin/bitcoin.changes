@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:57:17 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 0.19.0.1:
+  * New RPCs
+    + `getbalances` returns an object with all balances
+    + `setwalletflag` sets and unsets wallet flags that enable or
+      disable features specific to that existing wallet
+    + `getblockfilter` fets the BIP158 filter for the specified
+       block
+  * New settings
+    + `-blockfilterindex` enables the creation of BIP158 block
+      filters for the entire blockchain
+  * Updated settings
+    + `whitebind` and `whitelist` now accept a list of permissions
+      to provide peers connecting using the indicated interfaces or
+      IP addresses
+    + Users setting custom `dbcache` values can increase their
+      setting slightly without using any more real memory
+  * Updated RPCs
+    + `sendmany` no longer has a `minconf` argument
+    + `getbalance` and `sendtoaddress`, plus the new RPCs
+      `getbalances` and `createwaller`, now accept an `acoid_reuse`
+      parameter that controls whether already used addresses should
+      be included in the operation
+    + RPCs which have an `include_watchonly` argument or
+      `includeWatching` option now default to true for watch-only
+      wallets
+    + `listunspent` now returns a `reused` bool for each output if
+      the wallet flag `avoid_reuse` is enabled
+    + `getblockstats` now uses BlockUndo data instead of the
+      transaction index, making it much faster, no longer dependent
+      on the `-txindex` configuration option, and functional for
+      all non-pruned blocks
+    + `utxoupdatepsbt` now accepts a `descriptors` parameter that
+       will fill out input and output scripts and keys when known
+    + `sendrawtransaction` and `testmempoolaccept` no longer accept
+      a allowhighfees parameter to fail mempool acceptance if the
+      transaction fee exceeds the value of the configuration option
+      `-maxtxfee`
+    + `getmempoolancestors`, `getmempooldescendants`,
+      `getmempoolentry`, and `getrawmempool` no longer return a
+      size field unless the configuration option
+      `-deprecatedrpc=size` is used
+    + `getwalletinfo` now includes a scanning field that is either
+      false (no scanning) or an object with information about the
+      duration and progress of the wallet's scanning historical
+      blocks for transactions affecting its balances
+    + `gettransaction` now accepts a third (boolean) argument
+      `verbose`
+    + `createwallet` accepts a new passphrase parameter
+    + `getchaintxstats` RPC now returns the additional key of
+      `window_final_block_height`
+    + `getmempoolentry` now provides a weight field containing the
+      transaction weight as defined in BIP141
+    + The `getnetworkinfo` and `getpeerinfo` commands now contain a
+      new field with decoded network service flags
+    + `getdescriptorinfo` now returns an additional `checksum`
+      field containing the checksum for the unmodified descriptor
+      provided by the user
+    + `joinpsbts` now shuffles the order of the inputs and outputs
+      of the resulting joined PSBT
+    + `walletcreatefundedpsbt` now signals BIP125 Replace-by-Fee if
+      the -walletrbf configuration option is set to true
+  * GUI changes
+    + The GUI wallet now provides bech32 addresses by default. The
+      user may change the address type during invoice generation
+      using a GUI toggle, or the default address type may be
+      changed with the -addresstype configuration option.
+    + In 0.18.0, a ./configure flag was introduced to allow
+      disabling BIP70 support in the GUI (support was enabled by
+      default). In 0.19.0, this flag is now disabled by default.
+  * P2P changes
+    + BIP 61 reject messages were deprecated in version 0.18. They
+      are now disabled by default, but can be enabled by setting
+      the -enablebip61 command line option.
+    + To eliminate well-known denial-of-service vectors in Bitcoin
+      Core, especially for nodes with spinning disks, the default
+      value for the -peerbloomfilters configuration option has been
+      changed to false.
+    + By default, Bitcoin Core will now make two additional 
+      outbound connections that are exclusively used for
+      block-relay.
+  * CLI changes
+    + The testnet field in bitcoin-cli -getinfo has been renamed to
+      chain and now returns the current network name as defined in
+      BIP70
+- Fix installation of desktop file
+
+-------------------------------------------------------------------
 Thu Jul 11 15:31:41 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix downloaded source

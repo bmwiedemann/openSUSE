@@ -24,7 +24,7 @@
 %define consensus 1
 %define is_base 1
 Name:           bitcoin
-Version:        0.18.0
+Version:        0.19.0.1
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
@@ -216,6 +216,10 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}d
 install -Dpm 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/%{name}d.service
 install -Dpm 0644 %{SOURCE3} %{buildroot}/%{_tmpfilesdir}/%{name}d.conf
 
+# install desktop file
+install -Dm 0644 share/pixmaps/bitcoin256.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+%suse_update_desktop_file -c %{name}-qt %{name_pretty} "%{name_pretty} Wallet" %{name}-qt %{name} Office Finance
+
 %if %{consensus} == 1
 # do not ship these
 rm -f %{buildroot}%{_libdir}/lib%{name}consensus.a
@@ -256,6 +260,8 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %license COPYING
 %doc doc/README.md doc/release-notes.md
 %{_bindir}/%{name}-qt
+%{_datadir}/applications/%{name}-qt.desktop
+%{_datadir}/pixmaps/%{name}.png
 %{_mandir}/man1/%{name}-qt.1%{?ext_man}
 
 %files utils
@@ -266,6 +272,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %{_bindir}/%{name}-wallet
 %{_mandir}/man1/bitcoin-cli.1%{?ext_man}
 %{_mandir}/man1/bitcoin-tx.1%{?ext_man}
+%{_mandir}/man1/bitcoin-wallet.1%{?ext_man}
 
 %if %{consensus} == 1
 %files -n lib%{name}consensus0
