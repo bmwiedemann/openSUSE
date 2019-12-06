@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  6 08:14:36 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Update to 0.12.17
+  SECURITY NOTES:
+   * If you are using the Azure remote state backend and you are using a SAS Token for authentication, please refer to [the Azure remote state backend security advisory](https://github.com/hashicorp/terraform/security/advisories/GHSA-4rvg-555h-r626).
+     Prior versions of the backend may have transmitted your state to the storage service using cleartext HTTP unless you specifically requested HTTPS when generating your SAS Token. This does not affect any other backends, and does not affect the Azure backend when using other authentication mechanisms.
+  NEW FEATURES:
+   * lang/funcs: Add `trim*` functions
+  ENHANCEMENTS:
+   * cli: Terraform will now consolidate many warnings with the same summary text into fewer warning items, in order to avoid excessive amounts of warnings making it hard to read other output from Terraform commands. ([#23425](https://github.com/hashicorp/terraform/issues/23425))
+   * core: The upgrade logic for moving from the Terraform 0.11 to the Terraform 0.12 state snapshot format (internally, format version 3 to version 4) will now tolerate and ignore dependencies with invalid addresses, which tend to be left behind when following the `terraform 0.11checklist` directive to rename resources whose names start with digits prior to upgrading to Terraform 0.12. This should allow upgrading the state for a configuration that in the past had digit-prefixed resource names, once those names have been fixed in the configuration and state using the instructions given by `terraform 0.11checklist` in Terraform 0.11.14. ([#23443](https://github.com/hashicorp/terraform/issues/23443))
+  BUG FIXES:
+   * command/jsonplan, command/jsonstate: fix panic with null values ([#23492](https://github.com/hashicorp/terraform/issues/23492))
+   * backend/azure: Use HTTPS to talk to the storage API, even if using a SAS token that does not require it. ([#23496](https://github.com/hashicorp/terraform/issues/23496)) 
+
+-------------------------------------------------------------------
 Wed Nov 20 12:02:18 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 
 - Increase required go version to 1.12
