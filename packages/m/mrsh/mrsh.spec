@@ -1,7 +1,7 @@
 #
 # spec file for package mrsh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Remote shell program that uses munge authentication
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
-Url:            https://github.com/chaos/mrsh
+URL:            https://github.com/chaos/mrsh
 Source0:        https://github.com/chaos/mrsh/archive/%{version}.tar.gz
 Source1:        README.SUSE
 Patch1:         services-Do-not-require-non-standard-entries-in-etc-services.patch
@@ -113,6 +113,8 @@ for i in mrsh mrlogin
 do
     sed -i 's#\(account\s\+include\s\+\)system-auth#\1common-account#' %{buildroot}/%{_sysconfdir}/pam.d/$i
     sed -i 's#\(session\s\+include\s\+\)system-auth#\1common-session#' %{buildroot}/%{_sysconfdir}/pam.d/$i
+    sed -i -e ':c;/pam_keyinit.so/bx' -e '$asession\toptional\tpam_keyinit.so\tforce revoke' \
+           -e 'N;bc;:x;N;bx'  %{buildroot}/%{_sysconfdir}/pam.d/$i
 done
 %if 0%{!?have_systemd}
 sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrlogind

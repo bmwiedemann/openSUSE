@@ -68,4 +68,12 @@
     <comment></comment>
     <requestid>678970</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>df9cce3cad646b89a5af73511f5ed433</srcmd5>
+    <version>2.12</version>
+    <time>1575630542</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pam_keyinit.so to /etc/pam.d/mrsh|mrlogind (boo#1144051).</comment>
+    <requestid>754486</requestid>
+  </revision>
 </revisionlist>
