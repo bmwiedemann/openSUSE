@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lmod
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,9 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        8.1.14
+Version:        8.2.5
 Release:        0
-Url:            https://github.com/TACC/Lmod
+URL:            https://github.com/TACC/Lmod
 %if 0%{?ohpc}
 BuildRequires:  ohpc
 %endif

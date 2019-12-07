@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 29 08:42:31 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 8.2.5:
+   * Better support for the fish shell including tab completion
+   * New function extensions(): This allows for modules like python 
+     to report that the extensions numpy and scipy are part of the 
+     modules. Users can use "module spider numpy" to find which 
+     modules provide numpy etc.
+   * Added a new command "clearLmod" which does a module purge and 
+     removes all LMOD aliases and environment variables.
+   * Remove asking for the absolute path for generating spiderT 
+     and dbT. It now only use when building the reverseMapT.
+   * Lmod now requires "rx" other access when searching for 
+     modulefiles.
+   * settarg correctly handles a power9 processor running linux.
+- Refresh patch 
+  * Messages-Remove-message-about-creating-a-consulting-ticket.patch
+
+-------------------------------------------------------------------
 Thu Aug 22 15:54:01 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 8.1.14: (jsc#SLE-8512)
