@@ -1,7 +1,7 @@
 #
 # spec file for package hwdata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hwdata
-Version:        0.329
+Version:        0.330
 Release:        0
 Summary:        Hardware identification and configuration data
 License:        GPL-2.0-or-later
