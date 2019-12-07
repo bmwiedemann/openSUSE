@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov  7 21:07:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add PR_7193_fix_blank_file_patterns.patch to populate the
+  default for FILE_PATTERNS if not set, otherwise no files are
+  processed [https://github.com/doxygen/doxygen/issues/7190]
+- Remove obsolete and no longer applying patch:
+  doxygen-dot-one-thread.patch
+
+-------------------------------------------------------------------
+Mon Sep 30 13:06:06 UTC 2019 - Franz Sirl <franz.sirl-obs@lauterbach.com>
+
+- Optional build with libclang support:
+  * add doxygen-llvm-libs.patch to link with monolithic libLLVM
+  * support "--with libclang" in specfile
+
+-------------------------------------------------------------------
+Mon Sep 30 11:13:23 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.8.16
+  - many bugs fixed
+  - many features implemented
+  - http://www.doxygen.nl/manual/changelog.html
+- modified patches
+  % doxygen-modify_footer.patch (refreshed)
+- deleted patches
+  - doxygen-empty-strings-segfault.patch (upstreamed)
+  - doxygen-latex-makeindex.patch (upstreamed)
+- added patches
+  really do not require git executable
+  + doxygen-git-not-required.patch
+
+-------------------------------------------------------------------
 Mon Jan  7 14:45:46 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
 
 - add doxygen-latex-makeindex.patch to fix build of libssh and

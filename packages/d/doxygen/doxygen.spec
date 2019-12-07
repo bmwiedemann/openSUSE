@@ -16,8 +16,11 @@
 #
 
 
+# build with "--with libclang" to enable libclang support
+%bcond_with libclang
+
 Name:           doxygen
-Version:        1.8.15
+Version:        1.8.16
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -31,18 +34,20 @@ Patch0:         %{name}-modify_footer.patch
 Patch1:         %{name}-no-lowercase-man-names.patch
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
 Patch3:         vhdlparser-no-return.patch
-# suse specific, for ppc64le ppc64, workaround for bnc#921577
-Patch4:         doxygen-dot-one-thread.patch
-# https://github.com/doxygen/doxygen/issues/6725
-Patch5:         doxygen-latex-makeindex.patch
-# https://github.com/doxygen/doxygen/issues/6749
-Patch6:         doxygen-empty-strings-segfault.patch
+# really do not require git executable
+Patch5:         doxygen-git-not-required.patch
+Patch6:         doxygen-llvm-libs.patch
+# PATCH-FIX-UPSTREAM: Populate FILE_PATTERN default if not set (issue#7190)
+Patch7:         PR_7193_fix_blank_file_patterns.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
+%if %{with libclang}
+BuildRequires:  llvm-clang-devel
+%endif
 # Do not bother building documentation with latex since it is present on the
 # web trivialy for all versions of doxygen
 Obsoletes:      doxygen-doc
@@ -57,14 +62,14 @@ as well.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%ifarch ppc64le ppc64
-%patch4 -p1
-%endif
 %patch5 -p1
-%patch6 -p1
+%if %{with libclang}
+%patch6
+%endif
+%patch7 -p1
 
 %build
 %cmake \
@@ -72,9 +77,14 @@ as well.
     -Dbuild_xmlparser=ON \
     -Dbuild_search=OFF \
     -Dbuild_wizard=OFF \
+%if %{with libclang}
+    -Duse_libclang=ON \
+%endif
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now"
+    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_STATIC_LIBS=ON
 %make_jobs
 
 %install

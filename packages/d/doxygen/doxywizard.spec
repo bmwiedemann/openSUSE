@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.8.15
+Version:        1.8.16
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -28,6 +28,8 @@ Source:         http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
 Patch3:         vhdlparser-no-return.patch
+# really do not require git executable
+Patch4:         doxygen-git-not-required.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -54,6 +56,7 @@ configuration files.
 %prep
 %setup -q -n doxygen-%{version}
 %patch3 -p1
+%patch4 -p1
 
 %build
 export CFLAGS="%{optflags} -fPIC"
@@ -62,7 +65,9 @@ export CXXFLAGS="%{optflags} -fPIC"
     -Dbuild_wizard=ON \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now"
+    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_STATIC_LIBS=ON
 %make_jobs
 
 %if 0%{?suse_version} > 1230 && 0%{?suse_version} != 1315

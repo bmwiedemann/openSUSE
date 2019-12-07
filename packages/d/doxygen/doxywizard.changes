@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 30 11:13:23 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.8.16
+  - many bugs fixed
+  - many features implemented
+  - http://www.doxygen.nl/manual/changelog.html
+- modified patches
+  % doxygen-modify_footer.patch (refreshed)
+- deleted patches
+  - doxygen-empty-strings-segfault.patch (upstreamed)
+  - doxygen-latex-makeindex.patch (upstreamed)
+- added patches
+  really do not require git executable
+  + doxygen-git-not-required.patch
+-------------------------------------------------------------------
 Fri Jan 11 08:13:11 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
 
 - remove upstreamed doxywizard-qt-5.11.patch

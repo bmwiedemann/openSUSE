@@ -1,0 +1,48 @@
+From a27369dbf3cccbe4b96bfde1aca49d96d4b396f0 Mon Sep 17 00:00:00 2001
+From: albert-github <albert.tests@gmail.com>
+Date: Tue, 13 Aug 2019 19:23:42 +0200
+Subject: [PATCH] issue #7190 1.8.16: Blank FILE_PATTERNS => no files processed
+
+This is actually a regression on #7195. Due to the fact that the init() routine has moved up, the settings for `FILE_PATTERNS` have already been done and a call to init does not operate on the `FILE_PATTERNS` variable but on the structure from which the `FILE_PATTERNS` was derived. We have should here operate on the `FILE_PATTERNS` directly as well., bu getting the default values out of the underlying structure.
+---
+ src/configimpl.h |  1 +
+ src/configimpl.l | 12 +++++++++---
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/src/configimpl.h b/src/configimpl.h
+index 1594d47a3..55e056e8b 100644
+--- a/src/configimpl.h
++++ b/src/configimpl.h
+@@ -126,6 +126,7 @@ class ConfigList : public ConfigOption
+     void setWidgetType(WidgetType w) { m_widgetType = w; }
+     WidgetType widgetType() const { return m_widgetType; }
+     QStrList *valueRef() { return &m_value; }
++    QStrList getDefault() { return m_defaultValue; }
+     void writeTemplate(FTextStream &t,bool sl,bool);
+     void compareDoxyfile(FTextStream &t);
+     void substEnvVars();
+diff --git a/src/configimpl.l b/src/configimpl.l
+index bcb5a8c34..2d91e1206 100644
+--- a/src/configimpl.l
++++ b/src/configimpl.l
+@@ -1652,11 +1652,17 @@ void Config::checkAndCorrect()
+   QStrList &filePatternList = Config_getList(FILE_PATTERNS);
+   if (filePatternList.isEmpty())
+   {
+-      ConfigOption * opt = ConfigImpl::instance()->get("FILE_PATTERNS");
+-      if (opt->kind()==ConfigOption::O_List)
++    ConfigOption * opt = ConfigImpl::instance()->get("FILE_PATTERNS");
++    if (opt->kind()==ConfigOption::O_List)
++    {
++      QStrList l = ((ConfigList*)opt)->getDefault();
++      const char *p = l.first();
++      while (p)
+       {
+-        ((ConfigList*)opt)->init();
++        filePatternList.append(p);
++        p = l.next();
+       }
++    }
+   }
+ 
+   // add default pattern if needed

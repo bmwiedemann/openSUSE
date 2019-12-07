@@ -840,4 +840,18 @@
     http://www.doxygen.nl/manual/changelog.html#log_1_8_15</comment>
     <requestid>664565</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>cbf369151b97511f445c7831f7b946a9</srcmd5>
+    <version>1.8.16</version>
+    <time>1575728191</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes build for e.g. libftdi1 (see Staging:O)
+
+- Add PR_7193_fix_blank_file_patterns.patch to populate the
+  default for FILE_PATTERNS if not set, otherwise no files are
+  processed [https://github.com/doxygen/doxygen/issues/7190]
+- Remove obsolete and no longer applying patch:
+  doxygen-dot-one-thread.patch (forwarded request 746429 from StefanBruens)</comment>
+    <requestid>746480</requestid>
+  </revision>
 </revisionlist>

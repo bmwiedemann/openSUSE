@@ -1,0 +1,13 @@
+Index: doxygen-1.8.16/cmake/git_watcher.cmake
+===================================================================
+--- doxygen-1.8.16.orig/cmake/git_watcher.cmake	2019-07-30 15:10:10.000000000 +0200
++++ doxygen-1.8.16/cmake/git_watcher.cmake	2019-09-30 10:10:55.145977348 +0200
+@@ -69,7 +69,7 @@ CHECK_OPTIONAL_VARIABLE(GIT_WORKING_DIR
+ # Check the optional git variable.
+ # If it's not set, we'll try to find it using the CMake packaging system.
+ if(NOT DEFINED GIT_EXECUTABLE)
+-    find_package(Git QUIET REQUIRED)
++    find_package(Git QUIET)
+ endif()
+ CHECK_REQUIRED_VARIABLE(GIT_EXECUTABLE)
+ 
