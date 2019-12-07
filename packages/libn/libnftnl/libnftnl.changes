@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  2 15:45:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.5
+  * flowtable: add support for handle attribute
+  * obj/ct_timeout: Avoid array overrun in timeout_parse_attr_data()
+
+-------------------------------------------------------------------
 Mon Aug 19 12:04:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.1.4
