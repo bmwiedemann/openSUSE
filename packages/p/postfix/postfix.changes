@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 27 19:55:30 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.4.8:
+  * Fix for an Exim interoperability problem when postscreen after-220
+    checks are enabled. Bug introduced in Postfix 3.4: the code
+    that detected "PIPELINING after BDAT" looked at the wrong
+    variable. The warning now says "BDAT without valid RCPT", and
+    the error is no longer treated as a command PIPELINING error,
+    thus allowing mail to be delivered. Meanwhile, Exim has been
+    fixed to stop sending BDAT commands when postscreen rejects all
+    RCPT commands.
+  * Usability bug, introduced in Postfix 3.4: the parser for
+    key/certificate chain files rejected inputs that contain an EC
+    PARAMETERS object. While this is technically correct (the
+    documentation says what types are allowed) this is surprising
+    behavior because the legacy cert/key parameters will accept
+    such inputs. For now, the parser skips object types that it
+    does not know about for usability, and logs a warning because
+    ignoring inputs is not kosher.
+  * Bug introduced in Postfix 2.8: don't gratuitously enable all
+    after-220 tests when only one such test is enabled. This made
+    selective tests impossible with 'good' clients. This will be
+    fixed in older Postfix versions at some later time.
+
+-------------------------------------------------------------------
 Tue Sep 24 07:59:04 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Backport deprecated-RES_INSECURE1.patch in order to fix
