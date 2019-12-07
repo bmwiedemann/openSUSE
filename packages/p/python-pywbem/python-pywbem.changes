@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 29 11:50:46 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Cleanup specfile
+- Install license correctly
+- Add missing dependency on python-pbr
+
+-------------------------------------------------------------------
+Wed Nov 27 05:30:02 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 0.14.6:
+  Lots of changes, additions, and deprecations, see full list at:
+  https://pywbem.readthedocs.io/en/stable_0.14/changes.html#pywbem-0-14-6
+
+-------------------------------------------------------------------
 Thu Jan 11 13:49:00 UTC 2018 - adam.majer@suse.de
 
 - Fix another lost dependency. Need ssl module which python-base

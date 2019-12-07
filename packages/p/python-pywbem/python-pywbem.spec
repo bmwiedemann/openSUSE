@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywbem
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global         pkgname pywbem
 Name:           python-pywbem
-Version:        0.11.0
+Version:        0.14.6
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
-License:        LGPL-2.1
+License:        LGPL-2.1-or-later
 Group:          System/Management
-URL:            http://pywbem.github.io/
+URL:            https://pywbem.github.io/
 Source0:        pywbem-%{version}.tar.gz
 BuildRequires:  %{python_module M2Crypto}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module xml}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-PyYAML
-Requires:       python-ply
-Requires:       python-xml
-Requires:       python-six
 Requires:       python-M2Crypto
+Requires:       python-PyYAML
+Requires:       python-pbr
+Requires:       python-ply
+Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -81,7 +83,8 @@ rm %{buildroot}%{_bindir}/*.bat
 %python_uninstall_alternative mof_compiler
 
 %files %{python_files}
-%doc README.rst pywbem/LICENSE.txt
+%doc README.rst
+%license LICENSE.txt
 %python_alternative %{_bindir}/pywbemcli
 %python_alternative %{_bindir}/wbemcli.py
 %python_alternative %{_bindir}/mof_compiler
