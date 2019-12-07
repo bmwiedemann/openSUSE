@@ -3,11 +3,11 @@
  g10/gpg.c    |    9 +++++++++
  2 files changed, 27 insertions(+)
 
-Index: gnupg-2.2.7/doc/gpg.texi
+Index: gnupg-2.2.18/doc/gpg.texi
 ===================================================================
---- gnupg-2.2.7.orig/doc/gpg.texi	2018-05-04 16:14:30.949580264 +0200
-+++ gnupg-2.2.7/doc/gpg.texi	2018-05-04 16:14:34.025609243 +0200
-@@ -2097,6 +2097,24 @@ implies, this option is for experts only
+--- gnupg-2.2.18.orig/doc/gpg.texi
++++ gnupg-2.2.18/doc/gpg.texi
+@@ -2115,6 +2115,24 @@ implies, this option is for experts only
  understand the implications of what it allows you to do, leave this
  off. @option{--no-expert} disables this option.
  
@@ -32,19 +32,19 @@ Index: gnupg-2.2.7/doc/gpg.texi
  @end table
  
  
-Index: gnupg-2.2.7/g10/gpg.c
+Index: gnupg-2.2.18/g10/gpg.c
 ===================================================================
---- gnupg-2.2.7.orig/g10/gpg.c	2018-05-04 16:14:30.949580264 +0200
-+++ gnupg-2.2.7/g10/gpg.c	2018-05-04 16:15:00.441858109 +0200
+--- gnupg-2.2.18.orig/g10/gpg.c
++++ gnupg-2.2.18/g10/gpg.c
 @@ -425,6 +425,7 @@ enum cmd_and_opt_values
-     oKeyOrigin,
      oRequestOrigin,
      oNoSymkeyCache,
+     oUseOnlyOpenPGPCard,
 +    oSetLegacyFips,
  
      oNoop
    };
-@@ -872,6 +873,7 @@ static ARGPARSE_OPTS opts[] = {
+@@ -870,6 +871,7 @@ static ARGPARSE_OPTS opts[] = {
    ARGPARSE_s_n (oAllowMultipleMessages,      "allow-multiple-messages", "@"),
    ARGPARSE_s_n (oNoAllowMultipleMessages, "no-allow-multiple-messages", "@"),
    ARGPARSE_s_n (oAllowWeakDigestAlgos, "allow-weak-digest-algos", "@"),
@@ -52,8 +52,8 @@ Index: gnupg-2.2.7/g10/gpg.c
  
    ARGPARSE_s_s (oDefaultNewKeyAlgo, "default-new-key-algo", "@"),
  
-@@ -3568,6 +3570,13 @@ main (int argc, char **argv)
-             opt.def_new_key_algo = pargs.r.ret_str;
+@@ -3600,6 +3602,13 @@ main (int argc, char **argv)
+             opt.flags.use_only_openpgp_card = 1;
              break;
  
 +	  case oSetLegacyFips:
