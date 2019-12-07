@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-branding-openSUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,12 +33,12 @@
 %define thunar_volman_version   %(rpm -q --queryformat '%%{VERSION}' thunar-volman)
 
 Name:           xfce4-branding-openSUSE
-Version:        4.14+20191008
+Version:        4.14+20191207
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
-Url:            https://github.com/openSUSE/xfce4-branding-openSUSE/tree/4.14
+URL:            https://github.com/openSUSE/xfce4-branding-openSUSE/tree/4.14
 Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE-xfce-icon-theme.tar.bz2
 BuildRequires:  %{libexo_libname}
