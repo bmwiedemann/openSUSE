@@ -24,7 +24,7 @@ function on_err {
 trap on_err ERR
 
 ROOK_REPO="github.com/ceph/ceph-csi"
-REV="v1.2.0"
+REV="v1.2.2"
 
 GOPATH=$WORK_DIR
 GOPATH_CEPHCSI="$GOPATH/src/github.com/ceph/ceph-csi"

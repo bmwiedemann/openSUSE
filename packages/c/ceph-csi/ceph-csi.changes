@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Dec  3 15:20:26 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to v1.2.2:
+  * Add kernel version detection for mounting with client
+  * Fix issue in helm chat pushing
+  * Added forcecephkernelclient as startup parameter to force enabling ceph
+  * Handle EACCESS error from 'ceph rbd task add remove'
+  * Fix vol size for cephfs and rbd
+  * Update registration directory name
+  * Reorder kernel version checking logic
+  * Increase sidecar time out value to 150s.
+  * Format ext4 with lazy_journal_init
+  * Change default csi liveness ports to ones less common
+  * Add POD_NAMESPACE to RBD provisioner deployments
+  * Add a check for nil secrets
+  * Remove rootfs from rbd provisioner pod
+  * Added E2E for rbd nodeplugin restart
+  * Deprecate containerized flag and remove nsenter
+
+- Update to v1.2.1:
+  * Change the recommended/default FS for RBD to ext4
+  * Use nodiscard option while formatting RBD devices.
+  * Use provisioner socket while probing liveness.
+  * Reject request if the operation is in progress
+  * Fix pod termination issue due to stale mount after node plugin restart.
+
+- Remove patch (merged upstream):
+  * 0001-Added-forcecephkernelclient-as-startup-parameter-to-.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 15:35:02 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Wed Oct  2 13:38:40 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Set Version when building (bsc#1152690)

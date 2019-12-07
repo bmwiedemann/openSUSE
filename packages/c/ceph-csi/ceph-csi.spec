@@ -1,7 +1,7 @@
 #
 # spec file for package ceph-csi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,15 @@
 
 
 Name:           ceph-csi
-Version:        1.2.0+git0.gc420ee6d
+Version:        1.2.2+git0.gf8c854dc
 Release:        0
 Summary:        Container Storage Interface driver for Ceph block and file
 License:        Apache-2.0
-Group:          System/Filesystems
-Url:            https://github.com/ceph/ceph-csi
+URL:            https://github.com/ceph/ceph-csi
 
 Source0:        %{name}-%{version}.tar.xz
 Source98:       README
 Source99:       update-tarball.sh
-
-# bsc#1152690 - Added forcecephkernelclient as startup parameter
-Patch1:         0001-Added-forcecephkernelclient-as-startup-parameter-to-.patch
 
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
@@ -63,8 +59,6 @@ See https://github.com/ceph/ceph-csi for more information.
 
 %prep
 %setup -q -n %{name}
-
-%patch1 -p1
 
 %build
 %goprep github.com/ceph/ceph-csi
