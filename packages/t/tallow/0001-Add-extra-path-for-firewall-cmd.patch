@@ -1,0 +1,156 @@
+From 05fcf5541fdd7f89c23cbcf85be78e0327519b74 Mon Sep 17 00:00:00 2001
+From: Thorsten Kukuk <kukuk@suse.com>
+Date: Thu, 28 Nov 2019 13:24:14 +0100
+Subject: [PATCH] Add extra path for firewall-cmd
+
+---
+ man/tallow.conf.5.md | 12 ++++++++----
+ src/tallow.c         | 28 ++++++++++++++++------------
+ tallow.conf          |  1 +
+ 3 files changed, 25 insertions(+), 16 deletions(-)
+
+diff --git a/man/tallow.conf.5.md b/man/tallow.conf.5.md
+index 549e284..79edacd 100644
+--- a/man/tallow.conf.5.md
++++ b/man/tallow.conf.5.md
+@@ -19,10 +19,14 @@ tallow will operate with built-in defaults.
+ 
+ ## OPTIONS
+ 
++`fwcmd_path`=`<string>`
++Specifies the location of the ipset(1) firewall-cmd(1) programs. By
++default, tallow will look in "/usr/bin" for them.
++
+ `ipt_path`=`<string>`
+-Specifies the location of the ipset(1) program and iptables(1), 
+-ip6tables(1), or firewall-cmd(1) programs. By default, tallow will 
+-look in "/usr/sbin" for them.
++Specifies the location of the ipset(1) program and iptables(1) or
++ip6tables(1) programs. By default, tallow will look in "/usr/sbin"
++for them.
+ 
+ `expires`=`<int>`
+ The number of seconds that IP addresses are blocked for. Note that
+@@ -58,7 +62,7 @@ default, tallow will create new firewall-cmd(1) or iptables(1) and ip6tables(1)
+ rules when needed automatically. If set to `1`, `tallow(1)` will not create any
+ new firewall DROP rules or ipset sets that are needed work. You should create
+ them manually before tallow starts up and remove them afterwards using the sets
+-of commands below. 
++of commands below.
+ 
+ Use the following commands if you're using iptables(1):
+ 
+diff --git a/src/tallow.c b/src/tallow.c
+index 3ba4158..58e0fb4 100644
+--- a/src/tallow.c
++++ b/src/tallow.c
+@@ -35,6 +35,7 @@
+ #define MAX_OFFSETS 30
+ 
+ static char ipt_path[PATH_MAX];
++static char fwcmd_path[PATH_MAX];
+ static int expires = 3600;
+ static int has_ipv6 = 0;
+ static bool nocreate = false;
+@@ -71,17 +72,17 @@ static void ext_ignore(char *fmt, ...)
+ static void reset_rules(void)
+ {
+ 	/* reset all rules in case the running fw changes */
+-	ext_ignore("%s/firewall-cmd --permanent --direct --remove-rule ipv4 filter INPUT 1 -m set --match-set tallow src -j DROP 2> /dev/null", ipt_path);
+-	ext_ignore("%s/firewall-cmd --permanent --delete-ipset=tallow 2> /dev/null", ipt_path);
++	ext_ignore("%s/firewall-cmd --permanent --direct --remove-rule ipv4 filter INPUT 1 -m set --match-set tallow src -j DROP 2> /dev/null", fwcmd_path);
++	ext_ignore("%s/firewall-cmd --permanent --delete-ipset=tallow 2> /dev/null", fwcmd_path);
+ 
+ 	/* delete iptables ref to set before the ipset! */
+ 	ext_ignore("%s/iptables -t filter -D INPUT -m set --match-set tallow src -j DROP 2> /dev/null", ipt_path);
+ 	ext_ignore("%s/ipset destroy tallow 2> /dev/null", ipt_path);
+ 
+ 	if (has_ipv6) {
+-		ext_ignore("%s/firewall-cmd --permanent --direct --remove-rule ipv6 filter INPUT 1 -m set --match-set tallow6 src -j DROP 2> /dev/null", ipt_path);
+-		ext_ignore("%s/firewall-cmd --permanent --delete-ipset=tallow6 2> /dev/null", ipt_path);
+-		
++		ext_ignore("%s/firewall-cmd --permanent --direct --remove-rule ipv6 filter INPUT 1 -m set --match-set tallow6 src -j DROP 2> /dev/null", fwcmd_path);
++		ext_ignore("%s/firewall-cmd --permanent --delete-ipset=tallow6 2> /dev/null", fwcmd_path);
++
+ 		/* delete iptables ref to set before the ipset! */
+ 		ext_ignore("%s/ip6tables -t filter -D INPUT -m set --match-set tallow6 src -j DROP 2> /dev/null", ipt_path);
+ 		ext_ignore("%s/ipset destroy tallow6 2> /dev/null", ipt_path);
+@@ -100,39 +101,39 @@ static void setup(void)
+ 
+ 	/* firewalld */
+ 	char *fwd_path;
+-	if (asprintf(&fwd_path, "%s/firewall-cmd", ipt_path) < 0) {
++	if (asprintf(&fwd_path, "%s/firewall-cmd", fwcmd_path) < 0) {
+ 		exit(EXIT_FAILURE);
+ 	}
+ 
+-	if ((access(fwd_path, X_OK) == 0) && ext("%s/firewall-cmd --state --quiet", ipt_path) == 0) {
++	if ((access(fwd_path, X_OK) == 0) && ext("%s/firewall-cmd --state --quiet", fwcmd_path) == 0) {
+ 		fprintf(stdout, "firewalld is running and will be used by tallow.\n");
+ 
+ 		reset_rules();
+ 
+ 		/* create ipv4 rule and ipset */
+-		if (ext("%s/firewall-cmd --permanent --quiet --new-ipset=tallow --type=hash:ip --family=inet --option=timeout=%d", ipt_path, expires)) {
++		if (ext("%s/firewall-cmd --permanent --quiet --new-ipset=tallow --type=hash:ip --family=inet --option=timeout=%d", fwcmd_path, expires)) {
+ 			fprintf(stderr, "Unable to create ipv4 ipset with firewall-cmd.\n");
+ 			exit(EXIT_FAILURE);
+ 		}
+-		if (ext("%s/firewall-cmd --permanent --direct --quiet --add-rule ipv4 filter INPUT 1 -m set --match-set tallow src -j DROP", ipt_path)) {
++		if (ext("%s/firewall-cmd --permanent --direct --quiet --add-rule ipv4 filter INPUT 1 -m set --match-set tallow src -j DROP", fwcmd_path)) {
+ 			fprintf(stderr, "Unable to create ipv4 firewalld rule.\n");
+ 			exit(EXIT_FAILURE);
+ 		}
+ 
+ 		/* create ipv6 rule and ipset */
+ 		if (has_ipv6) {
+-			if (ext("%s/firewall-cmd --permanent --quiet --new-ipset=tallow6 --type=hash:ip --family=inet6 --option=timeout=%d", ipt_path, expires)) {
++			if (ext("%s/firewall-cmd --permanent --quiet --new-ipset=tallow6 --type=hash:ip --family=inet6 --option=timeout=%d", fwcmd_path, expires)) {
+ 				fprintf(stderr, "Unable to create ipv6 ipset with firewall-cmd.\n");
+ 				exit(EXIT_FAILURE);
+ 			}
+-			if (ext("%s/firewall-cmd --permanent --direct --quiet --add-rule ipv6 filter INPUT 1 -m set --match-set tallow6 src -j DROP ", ipt_path)) {
++			if (ext("%s/firewall-cmd --permanent --direct --quiet --add-rule ipv6 filter INPUT 1 -m set --match-set tallow6 src -j DROP ", fwcmd_path)) {
+ 				fprintf(stderr, "Unable to create ipv6 firewalld rule.\n");
+ 				exit(EXIT_FAILURE);
+ 			}
+ 		}
+ 
+ 		/* reload firewalld for ipsets to load */
+-		if (ext("%s/firewall-cmd --reload --quiet", ipt_path, expires)) {
++		if (ext("%s/firewall-cmd --reload --quiet", fwcmd_path, expires)) {
+ 			fprintf(stderr, "Unable to reload firewalld rules.\n");
+ 			exit(EXIT_FAILURE);
+ 		}
+@@ -292,6 +293,7 @@ int main(void)
+ 	json_load_patterns();
+ 
+ 	strcpy(ipt_path, "/usr/sbin");
++	strcpy(fwcmd_path, "/usr/bin");
+ 
+ #ifdef DEBUG
+ 	fprintf(stderr, "Debug output enabled. Send SIGUSR1 to dump internal state table\n");
+@@ -331,6 +333,8 @@ int main(void)
+ 			// todo: filter leading/trailing whitespace
+ 			if (!strcmp(key, "ipt_path"))
+ 				strncpy(ipt_path, val, PATH_MAX - 1);
++			if (!strcmp(key, "fwcmd_path"))
++				strncpy(fwcmd_path, val, PATH_MAX - 1);
+ 			if (!strcmp(key, "expires"))
+ 				expires = atoi(val);
+ 			if (!strcmp(key, "whitelist"))
+diff --git a/tallow.conf b/tallow.conf
+index bf61c0a..df0ffb4 100644
+--- a/tallow.conf
++++ b/tallow.conf
+@@ -1,6 +1,7 @@
+ 
+ # tallow.conf - see `man tallow.conf` for more information
+ 
++#fwcmd_path=/usr/bin
+ #ipt_path=/usr/sbin
+ #expires=3600
+ #whitelist=127.0.0.1
+-- 
+2.16.4
+

@@ -62,4 +62,18 @@
   * add dovecot as postfix auth backend parsing</comment>
     <requestid>745515</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06f65ee1d14171a07b9fbc0a0b039fb0</srcmd5>
+    <version>19+git20191106.4b071b0</version>
+    <time>1575728250</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-Add-extra-path-for-firewall-cmd.patch: firewall-cmd can be
+  in a different path than ipset/iptables
+
+- Update to version 19+git20191106.4b071b0:
+  * Need configure in this workflow.
+  * Fix dependency.
+  * Add github workflow integration.</comment>
+    <requestid>751605</requestid>
+  </revision>
 </revisionlist>

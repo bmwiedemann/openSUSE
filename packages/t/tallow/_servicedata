@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/clearlinux/tallow.git</param>
-    <param name="changesrevision">5dfb9821e328920b871f205285e9040ea20ad63d</param>
+    <param name="changesrevision">4b071b01f65317f99077277efe6a31e52d942e29</param>
  </service>
 </servicedata>
