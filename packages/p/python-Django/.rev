@@ -649,4 +649,12 @@
 - Require full python interpreter on build and runtime</comment>
     <requestid>748860</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b32016568aaa7c5c1f893e00375211a7</srcmd5>
+    <version>2.2.8</version>
+    <time>1575727917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752876</requestid>
+  </revision>
 </revisionlist>

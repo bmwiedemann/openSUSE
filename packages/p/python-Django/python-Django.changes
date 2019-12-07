@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  2 09:45:57 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 2.2.8
+  * CVE-2019-19118: Privilege escalation in the Django admin (boo#1157705)
+  * Fixed a data loss possibility in the admin changelist view when a
+    custom formset’s prefix contains regular expression special
+    characters, e.g. '$'
+  * Fixed a regression in Django 2.2.1 that caused a crash when
+    migrating permissions for proxy models with a multiple database
+    setup if the default entry was empty
+  * Fixed a data loss possibility in the select_for_update(). When
+    using 'self' in the of argument with multi-table inheritance, a
+    parent model was locked instead of the queryset’s model
+- Add patch fix-selenium-test.patch to fix a test when selenium is
+  missing
+
+-------------------------------------------------------------------
 Fri Nov 15 10:53:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.7:
