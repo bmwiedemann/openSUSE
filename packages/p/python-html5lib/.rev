@@ -146,4 +146,12 @@
 - Replace %fdupes with plain %fdupes; hardlinks are better.</comment>
     <requestid>744731</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>78c8730eefe6af26bb3dc202e1ff956d</srcmd5>
+    <version>1.0.1</version>
+    <time>1575728097</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix comments in the spec file</comment>
+    <requestid>753271</requestid>
+  </revision>
 </revisionlist>

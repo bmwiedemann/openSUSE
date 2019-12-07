@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5lib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,13 @@ Summary:        HTML parser based on the WHAT-WG Web Applications 1
 License:        MIT
 URL:            https://github.com/html5lib/html5lib-python
 Source:         https://files.pythonhosted.org/packages/source/h/html5lib/html5lib-%{version}.tar.gz
-# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch gh#html5lib/html5lib-python#414 mcepl@suse.com
+# PATCH-FIX-UPSTREAM pytest4-mhroncok.patch gh#html5lib/html5lib-python#429 mcepl@suse.com
 # This patch makes testsuite pass with pytest4
 Patch0:         pytest4-mhroncok.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module datrie}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
-# https://github.com/html5lib/html5lib-python/issues/411
 BuildRequires:  %{python_module pytest-expect}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 18.5}

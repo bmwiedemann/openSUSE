@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:25:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix comments in the spec file
+
+-------------------------------------------------------------------
 Fri Nov  1 11:50:36 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add pytest4-mhroncok.patch by Miro Hroncok from
