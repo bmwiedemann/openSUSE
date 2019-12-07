@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 15:31:37 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Fix editbootinstall_rpi.sh with newer kiwi
+
+-------------------------------------------------------------------
 Tue Nov 26 13:11:12 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Don't enable chrony-wait even on RPi, it might delay booting
