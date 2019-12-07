@@ -59,6 +59,8 @@ Source1:        baselibs.conf
 Source2:        post_download.sh
 Source3:        prebuilt-pandoc.tgz
 Source4:        rdma-core-rpmlintrc
+Patch0:         bnxt_re-lib-Add-remaining-pci-ids-for-gen-P5-devices.patch
+Patch1:         bnxt_re-lib-Recognize-additional-5750x-device-ID-s.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -400,6 +402,8 @@ easy, object-oriented access to IB verbs.
 %setup -q -n  %{name}-%{version}%{git_ver}
 #Extract prebuilt pandoc file in the buildlib directory
 (cd buildlib && tar xf %{S:3})
+%patch0
+%patch1
 
 %build
 

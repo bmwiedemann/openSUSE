@@ -1,0 +1,32 @@
+commit 73d13d40ce6ccd62b9e2e3ea24d5cb702b2262db
+Author: Naresh Kumar PBS <nareshkumar.pbs@broadcom.com>
+Date:   Tue Nov 26 04:05:21 2019 -0500
+
+    bnxt_re/lib: Add remaining pci ids for gen P5 devices
+    
+    Making a change to add pci ids for VF and NPAR devices.
+    
+    Signed-off-by: Naresh Kumar PBS <nareshkumar.pbs@broadcom.com>
+    Signed-off-by: Devesh Sharma <devesh.sharma@broadcom.com>
+
+diff --git providers/bnxt_re/main.c providers/bnxt_re/main.c
+index b1194db78c18..e290a07bc502 100644
+--- providers/bnxt_re/main.c
++++ providers/bnxt_re/main.c
+@@ -76,9 +76,15 @@ static const struct verbs_match_ent cna_table[] = {
+ 	CNA(BROADCOM, 0x16F0),  /* BCM58730 */
+ 	CNA(BROADCOM, 0x16F1),  /* BCM57452 */
+ 	CNA(BROADCOM, 0x1750),	/* BCM57500 */
++	CNA(BROADCOM, 0x1751),	/* BCM57504 */
++	CNA(BROADCOM, 0x1752),	/* BCM57502 */
++	CNA(BROADCOM, 0x1803),	/* BCM57508 NPAR */
++	CNA(BROADCOM, 0x1804),	/* BCM57504 NPAR */
++	CNA(BROADCOM, 0x1805),	/* BCM57502 NPAR */
++	CNA(BROADCOM, 0x1807),	/* BCM5750x VF */
+ 	CNA(BROADCOM, 0xD800),  /* BCM880xx VF */
+ 	CNA(BROADCOM, 0xD802),  /* BCM58802 */
+-	CNA(BROADCOM, 0xD804),   /* BCM8804 SR */
++	CNA(BROADCOM, 0xD804),  /* BCM8804 SR */
+ 	{}
+ };
+ 
