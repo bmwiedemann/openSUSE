@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-dash
-Version:        0.21.1
+Version:        1.7.0
 Release:        0
 # For the license file
 %define tag     ff93d2c4331a576b445be87bb3b77576f18b030a
@@ -27,7 +28,6 @@ License:        MIT
 Group:          Development/Languages/Python
 Url:            https://plot.ly/dash
 Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/plotly/dash/%{tag}/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -53,7 +53,6 @@ analytical python code.
 
 %prep
 %setup -q -n dash-%{version}
-cp %{SOURCE10} .
 
 %build
 %python_build
@@ -65,6 +64,8 @@ cp %{SOURCE10} .
 %files %{python_files}
 %doc README.md
 %license LICENSE
+%python3_only %{_bindir}/dash-generate-components
+%python3_only %{_bindir}/renderer
 %{python_sitelib}/*
 
 %changelog
