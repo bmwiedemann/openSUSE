@@ -1,7 +1,7 @@
 #
 # spec file for package python-psutil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with     test
 %endif
 Name:           python-psutil
-Version:        5.6.5
+Version:        5.6.7
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
