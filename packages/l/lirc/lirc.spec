@@ -1,7 +1,7 @@
 #
 # spec file for package lirc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond_with portaudio_drv
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 %if ! %{defined _rundir}
@@ -30,15 +32,14 @@ URL:            http://www.lirc.org/
 Source0:        https://downloads.sourceforge.net/project/lirc/LIRC/%{version}/lirc-%{version}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         reproducible.patch
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  kmod-compat
 BuildRequires:  libxslt-tools
 # for hw_atilibusb driver
 BuildRequires:  pkgconfig
-BuildRequires:  python3
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(alsa)
@@ -46,7 +47,9 @@ BuildRequires:  pkgconfig(libftdi1)
 BuildRequires:  pkgconfig(libirman)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb)
+%if %{with portaudio_drv}
 BuildRequires:  pkgconfig(portaudio-2.0)
+%endif
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -319,9 +322,11 @@ usermod -a -G input lirc &> /dev/null || :
 %{_libdir}/pkgconfig/lirc-driver.pc
 %{_libdir}/pkgconfig/lirc.pc
 
+%if %{with portaudio_drv}
 %files drv-portaudio
 %{_libdir}/lirc/plugins/audio.so
 %{_datadir}/lirc/configs/audio.conf
+%endif
 
 %files drv-ftdi
 %{_libdir}/lirc/plugins/ftdi.so
