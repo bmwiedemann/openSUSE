@@ -1,0 +1,16 @@
+Index: git-2.24.0/t/t7812-grep-icase-non-ascii.sh
+===================================================================
+--- git-2.24.0.orig/t/t7812-grep-icase-non-ascii.sh
++++ git-2.24.0/t/t7812-grep-icase-non-ascii.sh
+@@ -74,11 +74,4 @@ test_expect_success GETTEXT_LOCALE,LIBPC
+ 	test_cmp expected actual
+ '
+ 
+-test_expect_success GETTEXT_LOCALE,LIBPCRE2 'PCRE v2: grep non-ASCII from invalid UTF-8 data with -i' '
+-	test_might_fail git grep -hi "Æ" invalid-0x80 >actual &&
+-	test_cmp expected actual &&
+-	test_must_fail git grep -hi "(*NO_JIT)Æ" invalid-0x80 &&
+-	test_cmp expected actual
+-'
+-
+ test_done

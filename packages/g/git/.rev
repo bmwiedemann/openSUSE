@@ -2084,4 +2084,12 @@ git 2.12.3
 </comment>
     <requestid>745173</requestid>
   </revision>
+  <revision rev="241" vrev="2">
+    <srcmd5>221e91a34cd7be4083b635d7d66c44bf</srcmd5>
+    <version>2.24.0</version>
+    <time>1575728395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752814</requestid>
+  </revision>
 </revisionlist>

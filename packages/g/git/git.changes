@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 29 14:57:55 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Guard xmlto/sgml-skel BuildRequires by docs bcond.
+- Fix building with asciidoctor and without DocBook4 stylesheets:
+  * Add 0002-Also-use-DocBook-5-stylesheet-when-generating-HTML-o.patch
+  * Refresh 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
+- Spec file cleanup, remove conditionals for obsolete/EOLed distros.
+- Drop curl (executable) BuildRequires, only required by some skipped
+  tests (skipped as these have an apache2 prerequisite).
+
+-------------------------------------------------------------------
+Fri Nov 29 10:22:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- added patch git-skip-test-s390x-aarch64-fail.patch
+  * workaround for bsc#1156651
+
+-------------------------------------------------------------------
 Mon Nov  4 10:45:32 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
 
 - 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch: Don't remove

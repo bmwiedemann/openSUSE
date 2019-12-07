@@ -1,7 +1,7 @@
 #
 # spec file for package git
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,20 @@
 
 
 %define gitexecdir %{_libexecdir}/git
-%if 0%{?suse_version} >= 1210
-%bcond_without git_gnome_keyring
-%else
-%bcond_with git_gnome_keyring
-%endif
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%bcond_without git_gnome_keyring
 %bcond_without git_libsecret
 %bcond_without docs
+%if 0%{?suse_version} >= 1500 && %{with docs}
+%bcond_without asciidoctor
+%else
+%bcond_with    asciidoctor
+%endif
+
 Name:           git
 Version:        2.24.0
 Release:        0
@@ -54,7 +57,9 @@ Patch7:         git-zsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 Patch11:        0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
-BuildRequires:  curl
+# workaround for bsc#1156651, try to build without it when updating
+Patch12:        git-skip-test-s390x-aarch64-fail.patch
+Patch13:        0002-Also-use-DocBook-5-stylesheet-when-generating-HTML-o.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
@@ -64,11 +69,9 @@ BuildRequires:  pcre2-devel
 BuildRequires:  perl-Error
 BuildRequires:  perl-MailTools
 BuildRequires:  python3-base
-BuildRequires:  sgml-skel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
 BuildRequires:  update-desktop-files
-BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 Requires:       git-core = %{version}
@@ -80,9 +83,11 @@ Recommends:     gitk
 Suggests:       git-daemon
 Suggests:       git-web
 %if %{with docs}
-%if 0%{?suse_version} > 1320
-BuildRequires:  rubygem(asciidoctor)
+BuildRequires:  sgml-skel
+BuildRequires:  xmlto
+%if %{with asciidoctor}
 BuildRequires:  docbook5-xsl-stylesheets
+BuildRequires:  rubygem(asciidoctor)
 %else
 BuildRequires:  asciidoc
 %endif
@@ -116,11 +121,7 @@ Requires:       openssh
 Requires:       perl-Error
 Requires:       rsync
 Obsoletes:      git-remote-helpers < %{version}
-%if 0%{?suse_version} >= 1230
 %{perl_requires}
-%else
-Requires:       perl-base = %{perl_version}
-%endif
 
 %description core
 Git is a fast, scalable, distributed revision control system with an
@@ -132,9 +133,7 @@ These are the core tools with minimal dependencies.
 %package doc
 Summary:        Documentation for the Git version control system
 Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1210
 BuildArch:      noarch
-%endif
 
 %description doc
 Git is a fast, scalable, distributed revision control system with an
@@ -148,13 +147,9 @@ text/html formats. (The manpages are in the main package.)
 Summary:        Git tools for importing Subversion repositories
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
+Requires:       perl-Term-ReadKey
 Requires:       subversion
 Requires:       subversion-perl
-%if 0%{?suse_version} < 1140
-Requires:       perl-TermReadKey
-%else
-Requires:       perl-Term-ReadKey
-%endif
 
 %description svn
 Tools for importing Subversion repositories to the Git version control
@@ -292,6 +287,8 @@ directory /git/ that calls the cgi script.
 %patch8 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 %build
 cat > .make <<'EOF'
@@ -305,9 +302,9 @@ make %{?_smp_mflags} CFLAGS="%{optflags}" \
        NO_INSTALL_HARDLINKS=1 \
 %if 0%{?suse_version} > 1320
        DC_SHA1_EXTERNAL=YesPlease \
-%if %{with docs}
-       USE_ASCIIDOCTOR=YesPlease \
 %endif
+%if %{with asciidoctor}
+       USE_ASCIIDOCTOR=YesPlease \
 %endif
        PYTHON_PATH=%{_bindir}/python3 \
        USE_LIBPCRE2=YesPlease \
@@ -507,9 +504,6 @@ fi
 %dir %{gitexecdir}/mergetools
 %{gitexecdir}/mergetools/guiffy
 %{_bindir}/git-new-workdir
-%if 0%{?suse_version} < 1140
-%{_localstatedir}/adm/perl-modules/%{name}
-%endif
 %attr(-,root,root) %{perl_vendorlib}/*
 %{_sysconfdir}/bash_completion.d/*.sh
 %{_datadir}/tcsh
