@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-Glymur
 Version:        0.8.18
 Release:        0
@@ -25,23 +26,19 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/quintusdias/glymur
 Source:         https://files.pythonhosted.org/packages/source/G/Glymur/Glymur-%{version}.tar.gz
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module numpy >= 1.7.1}
-BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  procps
-BuildRequires:  python-contextlib2 >= 0.4
-BuildRequires:  python-importlib_resources
-BuildRequires:  python-mock >= 0.7.2
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.7.1
-Requires:       python-setuptools
+Recommends:     python-lxml
 BuildArch:      noarch
-%ifpython2
-Requires:       python-contextlib2 >= 0.4
-Requires:       python-mock >= 0.7.2
-%endif
+# SECTION test requirements
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module numpy >= 1.7.1}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scikit-image}
+# /SECTION
 %python_subpackages
 
 %description
@@ -61,14 +58,12 @@ rm -rf %{pypi_name}.egg-info
 
 %check
 touch tests/data/__init__.py
-# python_expand makes the discovery go crazy in this package
-PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m unittest discover -v
-PYTHONPATH=%{buildroot}%{python_sitelib} python -m unittest discover -v
+%pytest
 
 %files %{python_files}
 %doc README.md CHANGES.txt
 %license LICENSE.txt
-%{python_sitelib}/*
 %python3_only %{_bindir}/jp2dump
+%{python_sitelib}/*
 
 %changelog

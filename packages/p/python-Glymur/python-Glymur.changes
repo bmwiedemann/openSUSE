@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+- Use pytest to simplify test invocation
+
+-------------------------------------------------------------------
 Fri Sep 27 08:01:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by sunpy
