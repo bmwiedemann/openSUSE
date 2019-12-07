@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  6 13:42:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the requires on the Django as it really works with > 1.11 and
+  does not support python 2 anymore
+
+-------------------------------------------------------------------
+Thu Dec  5 23:22:25 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to 3.0.5:
+  * Improved performance of `get_deleted` for large datasets.
+  * Django 3.0 compatibility.
+  * Drops Django <= 1.11 compatibility.
+  * Fixed errors in manageement commands when
+    `django.contrib.admin` is not in `INSTALLED_APPS`.
+
+-------------------------------------------------------------------
 Wed May 22 10:51:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.4:

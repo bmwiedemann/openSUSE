@@ -113,4 +113,20 @@
 - Upstreamed 0000-Remove-django.contrib.admin-dependency.patch</comment>
     <requestid>704709</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>13711b48b2db829c0dd1a514582f5e04</srcmd5>
+    <version>3.0.5</version>
+    <time>1575727627</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the requires on the Django as it really works with &gt; 1.11 and
+  does not support python 2 anymore
+
+- Update to 3.0.5:
+  * Improved performance of `get_deleted` for large datasets.
+  * Django 3.0 compatibility.
+  * Drops Django &lt;= 1.11 compatibility.
+  * Fixed errors in manageement commands when
+    `django.contrib.admin` is not in `INSTALLED_APPS`.</comment>
+    <requestid>754684</requestid>
+  </revision>
 </revisionlist>
