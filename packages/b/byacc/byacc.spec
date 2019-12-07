@@ -1,7 +1,7 @@
 #
 # spec file for package byacc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           byacc
-Version:        20190617
+Version:        20191125
 Release:        0
 Summary:        LALR(1) parser generator
 License:        SUSE-Public-Domain
 Group:          Development/Languages/C and C++
-URL:            http://invisible-island.net/byacc/byacc.html
+URL:            https://invisible-island.net/byacc/byacc.html
 Source0:        ftp://ftp.invisible-island.net/byacc/byacc-%{version}.tgz
 Source1:        ftp://ftp.invisible-island.net/byacc/byacc-%{version}.tgz.asc
 Source2:        %{name}.keyring
@@ -43,7 +43,7 @@ dependencies upon a particular compiler.
 %configure \
   --with-warnings \
 	--program-prefix=b
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
