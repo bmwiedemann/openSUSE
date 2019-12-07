@@ -17,7 +17,7 @@
 
 
 Name:           perl-Perl-Critic
-Version:        1.134
+Version:        1.136
 Release:        0
 %define cpan_name Perl-Critic
 Summary:        Critique Perl source code for best-practices
@@ -52,7 +52,7 @@ BuildRequires:  perl(PPIx::Utilities::Statement) >= 1.001
 BuildRequires:  perl(Perl::Tidy)
 BuildRequires:  perl(Pod::Spell) >= 1
 BuildRequires:  perl(Readonly) >= 2
-BuildRequires:  perl(String::Format) >= 1.13
+BuildRequires:  perl(String::Format) >= 1.18
 BuildRequires:  perl(Task::Weaken)
 BuildRequires:  perl(Term::ANSIColor) >= 2.02
 BuildRequires:  perl(Test::Builder) >= 0.92
@@ -80,7 +80,7 @@ Requires:       perl(PPIx::Utilities::Statement) >= 1.001
 Requires:       perl(Perl::Tidy)
 Requires:       perl(Pod::Spell) >= 1
 Requires:       perl(Readonly) >= 2
-Requires:       perl(String::Format) >= 1.13
+Requires:       perl(String::Format) >= 1.18
 Requires:       perl(Task::Weaken)
 Requires:       perl(Term::ANSIColor) >= 2.02
 Requires:       perl(Test::Builder) >= 0.92
@@ -116,7 +116,7 @@ from http://www.activestate.com.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL installdirs=vendor
@@ -131,7 +131,7 @@ perl Build.PL installdirs=vendor
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md examples extras README README.md tools
+%doc Changes CONTRIBUTING.md examples README README.md
 %license LICENSE
 
 %changelog
