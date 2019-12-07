@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 03 10:14:40 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 1.0+git20191203.3f7cc07:
+  * Workaround /var being RO during systemd-journal-flush (boo#1156421)
+
+-------------------------------------------------------------------
 Tue Nov 12 16:18:56 UTC 2019 - kukuk@suse.com
 
 - Update to version 1.0+git20191112.42add9e:

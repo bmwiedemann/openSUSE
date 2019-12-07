@@ -17,7 +17,7 @@
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20191112.42add9e
+Version:        1.0+git20191203.3f7cc07
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later
@@ -91,6 +91,8 @@ exit 0
 %{_prefix}/lib/systemd/system-preset/*
 %dir %{_prefix}/lib/systemd/system/systemd-udevd.service.d
 %{_prefix}/lib/systemd/system/systemd-udevd.service.d/etcmount.conf
+%dir %{_prefix}/lib/systemd/system/systemd-journal-flush.service.d
+%{_prefix}/lib/systemd/system/systemd-journal-flush.service.d/afterlocalfs.conf
 %dir %{_sysconfdir}/grub.d
 %config(noreplace) %{_sysconfdir}/grub.d/01_suse_ro_root
 

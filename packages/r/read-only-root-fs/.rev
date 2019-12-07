@@ -83,4 +83,13 @@
   * Add RequiresMountsFor=/etc override for systemd-udevd.service</comment>
     <requestid>747789</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5fc5db07df4770263dfce52568f62de0</srcmd5>
+    <version>1.0+git20191203.3f7cc07</version>
+    <time>1575727977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20191203.3f7cc07:
+  * Workaround /var being RO during systemd-journal-flush (boo#1156421)</comment>
+    <requestid>753160</requestid>
+  </revision>
 </revisionlist>
