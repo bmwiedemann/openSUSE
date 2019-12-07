@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:37:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip additional tests as they requires bigger seed than most
+  of OBS machines are providing
+
+-------------------------------------------------------------------
 Mon Jul 22 11:46:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.3:

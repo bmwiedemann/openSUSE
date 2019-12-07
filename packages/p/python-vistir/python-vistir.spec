@@ -1,7 +1,7 @@
 #
 # spec file for package python-vistir
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,9 @@ rm -r tasks
 %check
 export LANG=en_US.UTF-8
 # test_open_file requires network access
-%pytest -k 'not test_open_file'
+# test_path_to_url needs bigger seed than some of our virtuals provide
+# test_ensure_mkdir_p race condition
+%pytest -k 'not (test_open_file or test_path_to_url or test_ensure_mkdir_p)'
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
