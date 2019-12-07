@@ -162,4 +162,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>743665</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>32c8f000604fa0737f38c47acbc330ab</srcmd5>
+    <version>20191203</version>
+    <time>1575728108</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20191203
+  * add uwsgi support
+  * new
+    . mod_proxy_uwsgi-basic
+    . mod_wsgi-basic</comment>
+    <requestid>753282</requestid>
+  </revision>
 </revisionlist>

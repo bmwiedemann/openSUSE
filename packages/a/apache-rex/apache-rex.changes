@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:34:14 UTC 2019 - pgajdos@suse.com
+
+- version update to 20191203
+  * add uwsgi support
+  * new
+    . mod_proxy_uwsgi-basic
+    . mod_wsgi-basic
+
+-------------------------------------------------------------------
 Tue Oct 22 06:19:52 UTC 2019 - pgajdos@suse.com
 
 - version update to 20191022

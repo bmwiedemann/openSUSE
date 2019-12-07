@@ -1,7 +1,7 @@
 #
 # spec file for package apache-rex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,12 @@
 %define macros_file           macros.apache-rex
 
 Name:           apache-rex
-Version:        20191022
+Version:        20191203
 Release:        0
 Summary:        Script for Apache HTTPD Runnable Examples
 License:        Apache-2.0
 Group:          Documentation/Howto
-Url:            https://github.com/pgajdos/apache-rex
+URL:            https://github.com/pgajdos/apache-rex
 Source0:        %{name}.tar.bz2
 Source1:        apache-rex-rpmlintrc
 Source2:        %{macros_file}
