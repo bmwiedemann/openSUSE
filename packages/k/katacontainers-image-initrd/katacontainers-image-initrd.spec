@@ -1,7 +1,7 @@
 #
 # spec file for package katacontainers-image-initrd
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 %endif
 
 Name:           katacontainers-image-initrd
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Kata Containers image (initrd) and kernel
 License:        Apache-2.0
@@ -77,8 +77,10 @@ kata_kmodules=(9p 9pnet 9pnet_virtio)
 %if 0%{?suse_version} <= 1500 || %{kernel_flavor} != "kvmsmall"
 kata_kmodules+=( \
 virtio \
+virtio_pci \
 virtio_balloon \
 virtio_blk \
+virtio_console \
 virtio_crypto \
 virtio-gpu \
 virtio_input \

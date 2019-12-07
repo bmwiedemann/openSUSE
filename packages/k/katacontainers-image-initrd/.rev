@@ -80,4 +80,15 @@
   any code changes.</comment>
     <requestid>748725</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ee0279509c9dc745ee64d937263027a</srcmd5>
+    <version>1.9.2</version>
+    <time>1575727666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2 tarballs, this is just a version bump without
+  any code changes.
+- Add more missing virtio kernel modules to initrd to fix
+  issues with SLE15-SP1</comment>
+    <requestid>754683</requestid>
+  </revision>
 </revisionlist>
