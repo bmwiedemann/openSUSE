@@ -76,4 +76,15 @@
     - ci: Fix versions_checker.sh</comment>
     <requestid>748726</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5d2506b24b1ac7067034b6d45332e1e3</srcmd5>
+    <version>1.9.2</version>
+    <time>1575727672</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  runtime:
+    - rootless: Fix rangeUID parsing (Backport to 1.9)
+    - rootless: Fix cgroup creation logic for rootless(Backport to 1.9)</comment>
+    <requestid>754685</requestid>
+  </revision>
 </revisionlist>
