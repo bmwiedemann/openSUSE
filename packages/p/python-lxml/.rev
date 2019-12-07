@@ -684,4 +684,12 @@ See LICENSES.TXT - test.py is GPL licensed (aggregation) (forwarded request 8071
   * LP#1838521: The package metadata now lists the supported Python versions.</comment>
     <requestid>730139</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>145bad58e4c7980298622638d601a42b</srcmd5>
+    <version>4.4.1</version>
+    <time>1575728517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749144</requestid>
+  </revision>
 </revisionlist>

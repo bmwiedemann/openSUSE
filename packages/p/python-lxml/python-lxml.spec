@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-%{version}.pdf
+# PATCH-FIX-UPSTREAM lxml-libxml-2.9.10.patch dimstar@opensuse.org -- Fix build against libxml 2.9.10
+Patch0:         lxml-libxml-2.9.10.patch
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
@@ -71,6 +73,7 @@ This package contains header files needed to use lxml's C API.
 
 %prep
 %setup -q -n lxml-%{version}
+%patch0 -p1
 cp %{SOURCE1} .
 
 # remove generated files
