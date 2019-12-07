@@ -18,13 +18,13 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        1.5.4
+Version:        1.6.3
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
 Group:          System/GUI/Other
 Url:            https://ice-wm.org/
-Source0:        https://github.com/ice-wm/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/ice-wm/%{name}/releases/download/%{version}/%{name}-%{version}.tar.lz
 # PATCH-FEATURE-SUSE icewm-susemenu.patch tyang@suse.com -- Add xdg-menu for SLED icewm
 Patch1:         icewm-susemenu.patch
 # PATCH-FIX-OPENSUSE icewm-desktop-nodisplay.patch qkzhu@suse.com -- Set NoDisplay for icewm.desktop
@@ -35,6 +35,7 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  lzip
 BuildRequires:  pkgconfig
 # Needed for documentation.
 %if 0%{?suse_version} <= 1320
@@ -56,6 +57,10 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xpm)
 Requires:       alsa-utils
 Requires:       desktop-data
 Requires:       icewm-bin
@@ -294,7 +299,6 @@ fi
 %{_bindir}/icewmbg-default
 %{_bindir}/icehelp
 %{_bindir}/icesh-default
-%{_bindir}/icewmtray
 %{_bindir}/icewm-session-default
 %{_bindir}/icesound
 %{_bindir}/icewm

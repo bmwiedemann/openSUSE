@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Nov 30 21:37:16 UTC 2019 - Namor Barcode <z1trus@gmx.com>
+
+- Update to 1.6.3
+  * Much improved 32-bit icon drawing
+  * Add --trace=conf,icon option for path logging
+  * Several portability fixes for FreeBSD
+  * Update taskbar geometry on screen resize
+  * Support PNG format for theme image files
+  * Improved support for depcrecated linux.xpm
+  * Highlight current workspace on startup
+  * Fix for themable cursors
+  * Fix for cmake build
+  * Fix for rpm build
+  * Updated man pages
+  * Updated translations
+- Changes from 1.5.4
+  * Configurable X11 terminal to avoid dependency on xterm
+  * Fix support for themable cursors for gdk-pixbuf
+  * Fix Xft font corruption in 32-bit alpha mode
+  * Fix frame depth for 32-bit apps in 24-bit mode
+  * Enable tilde and $HOME expansion for icon paths
+  * Restore old behavior of ColorQuickSwitchActive for vertical switching
+  * IceSh addWorkspace, prop commands plus -Prop, -Role options
+  * IceSh fix getWorkspace for sticky windows, fix getOpacity, improve sync
+  * Expand installation prefix in default configuration files and manpages
+  * Fix typos in documentation and update Spanish translation
+  * Better icewm-session manpage
+  * Compile on GCC 9.2 without warning
+  * Improve CMake compilation
+  * IceWM splash image
+  * Silence icehelp
+  * Allow a taskbarbg.xpm or taskbarbg.png with transparency for a translucent taskbar
+  * Don't use composite on systray when using 24-bit RGB visuals for issue #374
+  * Update translations
+  * Use lzip instead of xz
+  * Add support for 32-bit RGBA visuals if Alpha is enabled.
+  * Colors can have a [100] opacity prefix, where 100 is a percentage from 1 to 100.
+  * Colors can also be specified in "rgba:" form.
+  * Alpha channels in icons are preserved and drawn if Alpha is enabled.
+  * Support showing a splash image on startup.
+  * Icesh has new commands sizeto, pid, systray, xembed, motif, symbols.
+  * Icesh supports filtering on and modifying gravity properties.
+  * New winoption "startClose" to immediately close unwanted windows.
+  * Several improvements to CMake builds.
+  * _NET_SYSTEM_TRAY_ORIENTATION and _NET_SYSTEM_TRAY_VISUAL are now supported.
+  * Nearly unlimited number of workspaces.
+  * New option TaskBarWorkspacesLimit to limit number of workspaces shown on taskbar.
+  * Workspace names can be edited on taskbar.
+  * Change default WorkspaceStatusTime to 700 milliseconds.
+  * Optimizations of resource usage on startup of icewm.
+  * Restore TaskBarFullscreenAutoShow for issue #361.
+  * Don't focus frame under mouse for ClickToFocus in issues #355 and #358.
+  * Only update if WM_NORMAL_HINTS has really changed for Xephyr in #353.
+  * Only update if WIN_HINTS has really changed.
+  * Fix icesh -last filter. Fix icesh toggleState for #354.
+  * Add another xrandr setup where second screen is primary.
+  * Remove support for EsounD.
+  * Add many new icesh features.
+  * Support opacity in icesh, icewmhint, winoptions.
+  * Set window type on all icewm windows.
+  * Set WM_CLASS on all icewm windows.
+  * Updated translations.
+  * More support for clang C++11.
+  
+-------------------------------------------------------------------
 Tue May 28 08:47:54 UTC 2019 - Simon Schricker <s.schricker@mailbox.org>
 
 - Update to 1.5.4
