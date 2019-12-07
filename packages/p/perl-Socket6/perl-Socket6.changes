@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 28 20:22:50 UTC 2019 -  <tina.mueller@suse.com>
+
+- Add manual license BSD-3-Clause to cpanspec.yml
+   Limit description to 2 paragraphs
+
+-------------------------------------------------------------------
+Mon Nov 25 13:05:23 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Socket6/ChangeLog
+
+  2018-09-30  Hajimu UMEMOTO  <ume@mahoroba.org>
+  
+  	* Socket6.pm: Bump version number to 0.29.
+  
+  	* Socket6.xs: Updates the tests for handling the correct headers
+  	on NetBSD and DragonFly BSD.
+  
+  	Submitted by:	Sevan Janiyan <venture37 [...] geeklan.co.uk>
+
+-------------------------------------------------------------------
 Sat Dec 23 07:00:12 UTC 2017 - avindra@opensuse.org
 
 - updated to 0.28
