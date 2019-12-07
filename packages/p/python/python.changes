@@ -1,12 +1,80 @@
 -------------------------------------------------------------------
-Sat Aug 17 13:11:11 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+Fri Nov 22 13:10:03 CET 2019 - Matej Cepl <mcepl@suse.com>
 
-- Remove xrpm from subpackage tk description
+- Move /etc/pythonstart script to shared-python-startup
+  package. 
+
+-------------------------------------------------------------------
+Tue Nov  5 11:41:40 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo-36576-skip_tests_for_OpenSSL-111.patch (originally from
+  bpo#36576) skipping tests failing with OpenSSL 1.1.1. Fixes
+  bsc#1149792
+
+-------------------------------------------------------------------
+Tue Nov  5 04:24:05 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add adapted-from-F00251-change-user-install-location.patch fixing
+  pip/distutils to install into /usr/local.
+
+-------------------------------------------------------------------
+Thu Oct 24 14:40:39 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.7.17:
+  - a bug fix release in the Python 2.7.x series. It is expected
+    to be the penultimate release for Python 2.7.
+- Removed patches included upstream:
+  - CVE-2018-20852-cookie-domain-check.patch
+  - CVE-2019-16935-xmlrpc-doc-server_title.patch
+  - CVE-2019-9636-netloc-no-decompose-characters.patch
+  - CVE-2019-9947-no-ctrl-char-http.patch
+  - CVE-2019-9948-avoid_local-file.patch
+  - python-2.7.14-CVE-2018-1000030-1.patch
+  - python-2.7.14-CVE-2018-1000030-2.patch
+- Renamed remove-static-libpython.diff and python-bsddb6.diff to
+  remove-static-libpython.patch and python-bsddb6.patch to unify
+  filenames.
+
+-------------------------------------------------------------------
+Tue Oct  8 19:46:52 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2019-16935-xmlrpc-doc-server_title.patch fixing
+  bsc#1153238 (aka CVE-2019-16935) fixing a reflected XSS in
+  python/Lib/DocXMLRPCServer.py
+
+-------------------------------------------------------------------
+Wed Sep 25 13:25:33 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add bpo36302-sort-module-sources.patch (boo#1041090)
+
+-------------------------------------------------------------------
+Mon Sep 16 15:57:54 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2019-16056-email-parse-addr.patch fixing the email
+  module wrongly parses email addresses [bsc#1149955,
+  CVE-2019-16056]
+
+-------------------------------------------------------------------
+Thu Jul 25 19:31:47 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- boo#1141853 (CVE-2018-20852) add
+  CVE-2018-20852-cookie-domain-check.patch fixing
+  http.cookiejar.DefaultPolicy.domain_return_ok which did not
+  correctly validate the domain: it could be tricked into sending
+  cookies to the wrong server.
 
 -------------------------------------------------------------------
 Fri Jul 19 11:19:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test_urllib2_localnet that randomly fails in OBS
+
+-------------------------------------------------------------------
+Wed Jul  3 21:02:00 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- bsc#1138459: add CVE-2019-10160-netloc-port-regression.patch
+  which fixes regression introduced by the previous patch.
+  (CVE-2019-10160)
+  Upstream gh#python/cpython#13812
 
 -------------------------------------------------------------------
 Wed May 29 08:58:16 UTC 2019 - Martin Liška <mliska@suse.cz>
@@ -15,18 +83,100 @@ Wed May 29 08:58:16 UTC 2019 - Martin Liška <mliska@suse.cz>
    for Python modules that are built in a separate package.
 
 -------------------------------------------------------------------
-Mon Oct 29 13:21:20 UTC 2018 - Vítězslav Čížek <vcizek@suse.com>
+Thu May  2 08:40:33 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
-- Enable all the tests in %check
-- Add more patches to successfully build with openssl 1.1.1
-  (bsc#1113755)
-  * openssl-111-middlebox-compat.patch
-  * openssl-111-ssl_options.patch
+- bsc#1130840 (CVE-2019-9947): add CVE-2019-9947-no-ctrl-char-http.patch
+  Address the issue by disallowing URL paths with embedded
+  whitespace or control characters through into the underlying
+  http client request. Such potentially malicious header
+  injection URLs now cause a ValueError to be raised.
+
+-------------------------------------------------------------------
+Mon Apr  8 22:40:01 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- bsc#1130847 (CVE-2019-9948) add CVE-2019-9948-avoid_local-file.patch 
+  removing unnecessary (and potentially harmful) URL scheme
+  local-file://.
+
+-------------------------------------------------------------------
+Mon Apr  8 21:13:48 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- bsc#1129346: add CVE-2019-9636-netloc-no-decompose-characters.patch
+  Characters in the netloc attribute that decompose under NFKC
+  normalization (as used by the IDNA encoding) into any of ``/``,
+  ``?``, ``#``, ``@``, or ``:`` will raise a ValueError. If the
+  URL is decomposed before parsing, or is not a Unicode string,
+  no error will be raised (CVE-2019-9636).
+  Upstream commits e37ef41 and 507bd8c.
+
+-------------------------------------------------------------------
+Thu Apr  4 22:28:24 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.7.16:
+  * bugfix-only release: complete list of changes on
+    https://github.com/python/cpython/blob/2.7/Misc/NEWS.d/2.7.16rc1.rst
+  * Removed openssl-111.patch and CVE-2018-1000802-shutil_use_subprocess_no_spawn.patch
+    which are fully included in the tarball.
+  * Updated patches to apply cleanly:
+        CVE-2019-5010-null-defer-x509-cert-DOS.patch
+        bpo36160-init-sysconfig_vars.patch
+        do-not-use-non-ascii-in-test_ssl.patch
+        openssl-111-middlebox-compat.patch
+        openssl-111-ssl_options.patch
+        python-2.5.1-sqlite.patch
+        python-2.6-gettext-plurals.patch
+        python-2.7-dirs.patch
+        python-2.7.2-fix_date_time_compiler.patch
+        python-2.7.4-canonicalize2.patch
+        python-2.7.5-multilib.patch
+        python-2.7.9-ssl_ca_path.patch
+        python-bsddb6.diff
+        remove-static-libpython.patch
+  * Update python-2.7.5-multilib.patch to pass with new platlib
+    regime.
+
+-------------------------------------------------------------------
+Fri Jan 25 16:53:50 CET 2019 - mcepl@suse.com
+
+- bsc#1109847: add CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch
+  fixing bpo-34623.
+
+-------------------------------------------------------------------
+Fri Jan 25 16:02:21 CET 2019 - mcepl@suse.com
+
+- bsc#1073748: add bpo-29347-dereferencing-undefined-pointers.patch
+  PyWeakref_NewProxy@Objects/weakrefobject.c creates new isntance
+  of PyWeakReference struct and does not intialize wr_prev and
+  wr_next of new isntance. These pointers can have garbage and
+  point to random memory locations. 
+  Python should not crash while destroying the isntance created
+  in the same interpreter function. As per my understanding, both
+  wr_prev and wr_next of PyWeakReference instance should be
+  initialized to NULL to avoid segfault. 
+
+-------------------------------------------------------------------
+Sat Jan 19 16:19:38 CET 2019 - mcepl@suse.com
+
+- bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  fixing bpo-35746.
+  An exploitable denial-of-service vulnerability exists in the
+  X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
+  A specially crafted X509 certificate can cause a NULL pointer
+  dereference, resulting in a denial of service. An attacker can
+  initiate or accept TLS connections using crafted certificates
+  to trigger this vulnerability.
+
+-------------------------------------------------------------------
+Wed Dec 19 19:29:44 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
 
 -------------------------------------------------------------------
 Fri Oct 26 10:48:44 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch openssl-111.patch to work with openssl-1.1.1
+  (bsc#1113755)
 
 -------------------------------------------------------------------
 Tue Sep 25 22:01:08 UTC 2018 - Matěj Cepl <mcepl@suse.com>
@@ -34,6 +184,32 @@ Tue Sep 25 22:01:08 UTC 2018 - Matěj Cepl <mcepl@suse.com>
 - Apply "CVE-2018-1000802-shutil_use_subprocess_no_spawn.patch" which
   converts shutil._call_external_zip to use subprocess rather than
   distutils.spawn. [bsc#1109663, CVE-2018-1000802]
+
+-------------------------------------------------------------------
+Fri Jun 29 10:24:27 UTC 2018 - mcepl@suse.com
+
+- Apply "CVE-2018-1061-DOS-via-regexp-difflib.patch" to prevent
+  low-grade poplib REDOS (CVE-2018-1060) and to prevent difflib REDOS
+  (CVE-2018-1061). Prior to this patch mail server's timestamp was
+  susceptible to catastrophic backtracking on long evil response from
+  the server. Also, it was susceptible to catastrophic backtracking,
+  which was a potential DOS vector.
+  [bsc#1088004 and bsc#1088009, CVE-2018-1061 and CVE-2018-1060]
+
+-------------------------------------------------------------------
+Thu Jun  7 17:04:40 UTC 2018 - psimons@suse.com
+
+- Apply "CVE-2017-18207.patch" to add a check to Lib/wave.py that
+  verifies that at least one channel is provided. Prior to this
+  check, attackers could cause a denial of service (divide-by-zero
+  error and application crash) via a crafted wav format audio file.
+  [bsc#1083507, CVE-2017-18207]
+
+-------------------------------------------------------------------
+Tue May 29 12:42:22 UTC 2018 - mcepl@suse.com
+
+- Apply "python-sorted_tar.patch" (bsc#1086001, boo#1081750)
+    sort tarfile output directory listing
 
 -------------------------------------------------------------------
 Mon May 21 18:41:43 UTC 2018 - michael@stroeder.com
@@ -48,6 +224,45 @@ Mon May 21 18:41:43 UTC 2018 - michael@stroeder.com
   * do-not-use-non-ascii-in-test_ssl.patch
 
 -------------------------------------------------------------------
+Fri Apr  6 10:11:22 UTC 2018 - mliska@suse.cz
+
+- Add gcc8-miscompilation-fix.patch (boo#1084650).
+
+-------------------------------------------------------------------
+Tue Mar 13 15:22:47 UTC 2018 - psimons@suse.com
+
+- Apply "python-2.7.14-CVE-2017-1000158.patch" to prevent integer
+  overflows in PyString_DecodeEscape that could have resulted in
+  heap-based buffer overflow attacks and possible arbitrary code
+  execution. [bsc#1068664, CVE-2017-1000158]
+
+-------------------------------------------------------------------
+Mon Feb  5 16:01:59 UTC 2018 - normand@linux.vnet.ibm.com
+
+- exclude test_socket & test_subprocess for PowerPC boo#1078485
+  (same ref as previous change)
+
+-------------------------------------------------------------------
+Fri Feb  2 09:21:24 UTC 2018 - normand@linux.vnet.ibm.com
+
+- Add python-skip_random_failing_tests.patch bypass boo#1078485
+  and exclude many tests for PowerPC
+
+-------------------------------------------------------------------
+Tue Jan 30 16:08:33 UTC 2018 - tchvatal@suse.com
+
+- Add patch python-fix-shebang.patch to fix bsc#1078326
+
+-------------------------------------------------------------------
+Fri Dec 22 16:49:38 UTC 2017 - jmatejek@suse.com
+
+- exclude test_regrtest for s390, where it does not segfault as it should
+  (fixes bsc#1073269)
+- fix segfault while creating weakref - bsc#1073748, bpo#29347
+  (this is actually fixed by the 2.7.14 update; mentioning this for purposes
+  of bugfix tracking)
+
+-------------------------------------------------------------------
 Mon Nov 20 16:11:48 UTC 2017 - jmatejek@suse.com
 
 - update to 2.7.14
@@ -59,6 +274,20 @@ Mon Nov 20 16:11:48 UTC 2017 - jmatejek@suse.com
 - drop upstreamed python-2.7.13-overflow_check.patch
 - drop unneeded python-2.7.12-makeopcode.patch
 - drop upstreamed 0001-2.7-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3094.patch
+- Apply "python-2.7.14-CVE-2018-1000030-1.patch" and
+  "python-2.7.14-CVE-2018-1000030-2.patch" to remedy a bug that
+  would crash the Python interpreter when multiple threads used the
+  same I/O stream concurrently. This issue is not classified as a
+  security vulnerability due to the fact that an attacker must be
+  able to run code, however in some situations -- such as function
+  as a service -- this vulnerability can potentially be used by an
+  attacker to violate a trust boundary. [bsc#1079300,
+  CVE-2018-1000030]
+
+-------------------------------------------------------------------
+Thu Nov  2 16:53:42 UTC 2017 - mpluskal@suse.com
+
+- Call python2 instead of python in macros
 
 -------------------------------------------------------------------
 Thu Sep 14 14:12:38 UTC 2017 - vcizek@suse.com
@@ -77,6 +306,36 @@ Thu Aug 17 08:58:02 CEST 2017 - kukuk@suse.de
 - Add libnsl-devel build requires for glibc obsoleting libnsl
 
 -------------------------------------------------------------------
+Mon May 15 14:03:01 UTC 2017 - jmatejek@suse.com
+
+- obsolete/provide python-argparse and provide python2-argparse,
+  because the argparse module is available from python 2.7 up
+
+-------------------------------------------------------------------
+Tue Feb 28 16:16:40 UTC 2017 - jmatejek@suse.com
+
+- SLE package update (bsc#1027282)
+- refresh python-2.7.5-multilib.patch
+- dropped upstreamed patches:
+  python-fix-short-dh.patch
+  python-2.7.7-mhlib-linkcount.patch
+  python-2.7-urllib2-localnet-ssl.patch
+  CVE-2016-0772-smtplib-starttls.patch
+  CVE-2016-5699-http-header-injection.patch
+  CVE-2016-5636-zipimporter-overflow.patch
+  python-2.7-httpoxy.patch
+- Add python-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+  (dimstar@opensuse.org)
+
+-------------------------------------------------------------------
+Fri Feb 24 17:08:25 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to allow reproducible builds of various
+  python packages like python-amqp
+  Upstream: https://github.com/python/cpython/pull/296
+
+-------------------------------------------------------------------
 Tue Jan  3 16:59:24 UTC 2017 - jmatejek@suse.com
 
 - update to 2.7.13
@@ -86,14 +345,18 @@ Tue Jan  3 16:59:24 UTC 2017 - jmatejek@suse.com
   * profile-opt build now applies PGO to modules as well
 - update python-2.7.10-overflow_check.patch
   with python-2.7.13-overflow_check.patch, incorporating upstream changes
+  (bnc#964182)
 - add "-fwrapv" to optflags explicitly because upstream code still
   relies on it in many places
 
 -------------------------------------------------------------------
-Fri Dec  2 15:35:29 UTC 2016 - jmatejek@suse.com
+Fri Dec  2 15:32:59 UTC 2016 - jmatejek@suse.com
 
 - provide python2-* symbols, for support of new packages built as
   python2-foo
+- rename macros.python to macros.python2 accordingly
+- require python-rpm-macros package, drop macro definitions from
+  macros.python2
 
 -------------------------------------------------------------------
 Thu Jun 30 09:23:05 UTC 2016 - jmatejek@suse.com
@@ -105,10 +368,56 @@ Thu Jun 30 09:23:05 UTC 2016 - jmatejek@suse.com
     CVE-2016-5636 zipimporter heap overflow (bsc#985177)
     CVE-2016-5699 httplib header injection (bsc#985348)
       (this one is actually fixed since 2.7.10)
+- removed upstreamed python-2.7.7-mhlib-linkcount.patch
+- refreshed multilib patch
+- python-2.7.12-makeopcode.patch - run newly-built python interpreter
+  to make opcodes, in order not to require pre-built python
+- update LD_LIBRARY_PATH to use $PWD instead of "." because the test
+  process escapes to its own directory
+- modify shebang-fixing scriptlet to ignore makeopcodetargets.py
 
 -------------------------------------------------------------------
-Mon Sep 14 15:03:30 UTC 2015 - jmatejek@suse.com
+Fri Jun 17 12:33:23 UTC 2016 - jmatejek@suse.com
 
+- CVE-2016-0772-smtplib-starttls.patch:
+  smtplib vulnerability opens startTLS stripping attack
+  (CVE-2016-0772, bsc#984751)
+- CVE-2016-5636-zipimporter-overflow.patch:
+  heap overflow when importing malformed zip files
+  (CVE-2016-5636, bsc#985177)
+- CVE-2016-5699-http-header-injection.patch:
+  incorrect validation of HTTP headers allow header injection
+  (CVE-2016-5699, bsc#985348)
+- python-2.7-httpoxy.patch:
+  HTTPoxy vulnerability in urllib, fixed by disregarding HTTP_PROXY
+  when REQUEST_METHOD is also set
+  (CVE-2016-1000110, bsc#989523)
+
+-------------------------------------------------------------------
+Fri Jan 29 13:03:40 UTC 2016 - rguenther@suse.com
+
+- Add python-2.7.10-overflow_check.patch to fix broken overflow checks.
+  [bnc#964182]
+
+-------------------------------------------------------------------
+Mon Sep 14 15:04:43 UTC 2015 - jmatejek@suse.com
+
+- copy strict-tls-checks subpackage from SLE to retain future compatibility
+  (not built in openSUSE)
+- do this properly to fix bnc#945401
+- update SLE check to exclude Leap which also has version 1315,
+  just to be sure
+
+-------------------------------------------------------------------
+Wed Sep  9 12:19:01 UTC 2015 - dimstar@opensuse.org
+
+- Add python-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+
+-------------------------------------------------------------------
+Thu Aug 13 13:31:15 UTC 2015 - jmatejek@suse.com
+
+- add missing ssl.pyc and ssl.pyo to package
 - implement python-strict-tls-checks subpackage
   * when present, Python will perform TLS certificate checking by default.
     it is possible to remove the package to turn off the checks
@@ -118,49 +427,110 @@ Mon Sep 14 15:03:30 UTC 2015 - jmatejek@suse.com
     to build the package for a SLE system
 
 -------------------------------------------------------------------
-Wed Sep  9 12:18:20 UTC 2015 - dimstar@opensuse.org
+Mon Jun 29 08:32:44 UTC 2015 - meissner@suse.com
 
-- Add python-ncurses-6.0-accessors.patch: Fix build with
-  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+- python-fix-short-dh.patch: Bump DH parameters to 2048 bit
+  to fix logjam security issue. bsc#935856
 
 -------------------------------------------------------------------
-Sun May 24 14:36:10 UTC 2015 - michael@stroeder.com
+Wed Jun 10 11:19:58 UTC 2015 - dmueller@suse.com
+
+- add __python2 compatibility macro (used by Fedora) (fate#318838)
+
+-------------------------------------------------------------------
+Sun May 24 14:36:37 UTC 2015 - michael@stroeder.com
 
 - update to 2.7.10
 - removed obsolete python-2.7-urllib2-localnet-ssl.patch
 
 -------------------------------------------------------------------
-Thu May 14 13:27:09 UTC 2015 - jmatejek@suse.com
+Tue May 19 11:18:12 UTC 2015 - schwab@suse.de
 
-- for SLE 12 SP1, disable SSL verification-by-default for backwards
-  compatibility (python-2.7.9-sles-disable-verification-by-default.patch)
+- Reenable test_posix on aarch64
 
 -------------------------------------------------------------------
-Wed Feb 25 16:31:37 UTC 2015 - jmatejek@suse.com
+Sun Dec 21 19:14:17 UTC 2014 - schwab@suse.de
 
-- python-2.7.9-ssl_ca_path.patch - reintroduce support for CA directory path
+- python-2.7.4-aarch64.patch: Remove obsolete patch
+- python-2.7-libffi-aarch64.patch: Fix argument passing in libffi for
+  aarch64
 
 -------------------------------------------------------------------
 Fri Dec 12 17:11:51 UTC 2014 - jmatejek@suse.com
 
 - update to 2.7.9
+  * contains full backport of ssl module from Python 3.4 (PEP466)
+  * HTTPS certificate validation enabled by default (PEP476)
+  * SSLv3 disabled by default (bnc#901715)
+  * backported ensurepip module (PEP477)
+  * fixes several missing CVEs from last release: CVE-2013-1752,
+    CVE-2013-1753
+  * dozens of minor bugfixes
+- dropped upstreamed patches: python-2.7.6-poplib.patch,
+  smtplib_maxline-2.7.patch, xmlrpc_gzip_27.patch
+- dropped patch python-2.7.3-ssl_ca_path.patch because we don't need it
+  with ssl module from Python 3
+- libffi was upgraded upstream, seems to contain our changes,
+  so dropping libffi-ppc64le.diff as well
+- python-2.7-urllib2-localnet-ssl.patch - properly remove unconditional
+  "import ssl" from test_urllib2_localnet that caused it to fail without ssl
 
 -------------------------------------------------------------------
-Sat Oct 18 20:05:00 UTC 2014 - crrodriguez@opensuse.org
+Wed Oct 22 13:30:24 UTC 2014 - dmueller@suse.com
 
-- Only pkgconfig(x11) is required for build,not xorg-x11-devel.
+- skip test_thread in qemu_linux_user mode 
 
 -------------------------------------------------------------------
-Tue Sep 30 15:27:40 UTC 2014 - jmatejek@suse.com
+Wed Oct  1 13:00:59 UTC 2014 - jmatejek@suse.com
+
+- CVE-2014-7185-buffer-wraparound.patch: potential wraparound/overflow
+  in buffer()
+  (CVE-2014-7185, bnc#898572)
+
+-------------------------------------------------------------------
+Tue Sep 30 15:06:15 UTC 2014 - jmatejek@suse.com
 
 - update to 2.7.8
   * bugfix-only release, dozens of bugs fixed
+  * fixes CVE-2014-4650 directory traversal in CGIHTTPServer
+  * fixes CVE-2014-7185 (bnc#898572) potential buffer overflow in buffer()
+- dropped upstreamed CVE-2014-4650-CGIHTTPserver-traversal.patch
+- dropped upstreamed CVE-2014-7185-buffer-wraparound.patch
 
 -------------------------------------------------------------------
-Fri Jun 20 13:46:22 UTC 2014 - jmatejek@suse.com
+Wed Jul 23 16:48:38 UTC 2014 - jmatejek@suse.com
+
+- CVE-2014-4650-CGIHTTPServer-traversal.patch: CGIHTTPServer file
+  disclosure and directory traversal through URL-encoded characters
+  (CVE-2014-4650, bnc#885882)
+- python-2.7.7-mhlib-linkcount.patch: remove link count optimizations
+  that are incorrect on btrfs (and possibly other filesystems)
+
+-------------------------------------------------------------------
+Fri Jun 20 13:11:34 UTC 2014 - jmatejek@suse.com
 
 - update to 2.7.7
   * bugfix-only release, over a hundred bugs fixed
+  * backported hmac.compare_digest from python3, first step of PEP 466
+- drop upstreamed patches:
+  * CVE-2014-1912-recvfrom_into.patch
+  * python-2.7.4-no-REUSEPORT.patch
+  * python-2.7.6-bdist-rpm.patch
+  * python-2.7.6-imaplib.patch
+  * python-2.7.6-sqlite-3.8.4-tests.patch
+- refresh patches:
+  * python-2.7.3-ssl_ca_path.patch
+  * python-2.7.4-canonicalize2.patch
+  * xmlrpc_gzip_27.patch
+- added python keyring and signature for the main tarball
+
+-------------------------------------------------------------------
+Sat Mar 15 08:05:41 UTC 2014 - schwab@suse.de
+
+- Use profile-opt only when profiling is enabled
+- python-2.7.2-disable-tests-in-test_io.patch: removed, no longer needed
+- update testsuite exclusion list:
+  * test_signal and test_posix fail due to qemu bugs
 
 -------------------------------------------------------------------
 Fri Mar 14 20:26:03 UTC 2014 - andreas.stieger@gmx.de
@@ -169,16 +539,73 @@ Fri Mar 14 20:26:03 UTC 2014 - andreas.stieger@gmx.de
   adding python-2.7.6-sqlite-3.8.4-tests.patch
 
 -------------------------------------------------------------------
-Thu Nov 21 15:54:55 UTC 2013 - jmatejek@suse.com
+Mon Feb 10 14:24:52 UTC 2014 - jmatejek@suse.com
 
-- update to 2.7.6
+- added patches for CVE-2013-1752 (bnc#856836) issues that are
+  missing in 2.7.6:
+  python-2.7.6-imaplib.patch
+  python-2.7.6-poplib.patch
+  smtplib_maxline-2.7.patch
+- CVE-2013-1753 (bnc#856835) gzip decompression bomb in xmlrpc client:
+  xmlrpc_gzip_27.patch
+- python-2.7.6-bdist-rpm.patch: fix broken "setup.py bdist_rpm" command
+  (bnc#857470, issue18045)
+- multilib patch: add "~/.local/lib64" paths to search path
+  (bnc#637176)
+- CVE-2014-1912-recvfrom_into.patch: fix potential buffer overflow
+  in socket.recvfrom_into (CVE-2014-1912, bnc#863741)
 
 -------------------------------------------------------------------
-Thu Sep 19 17:40:05 UTC 2013 - crrodriguez@opensuse.org
+Tue Dec 10 16:56:02 UTC 2013 - uweigand@de.ibm.com
 
-- build with -DOPENSSL_LOAD_CONF so python honours 
- the system's openSSL configuration if any, allowing it to
- benefit from openssl ENGINE functionality.
+- Add Obsoletes/Provides for python-ctypes.
+
+-------------------------------------------------------------------
+Sat Dec  7 02:27:51 UTC 2013 - matz@suse.de
+
+- Ignore uuid testcase in the testsuite, it relies on unreliable
+  ifconfig output.
+
+-------------------------------------------------------------------
+Tue Dec  3 20:03:08 CET 2013 - mls@suse.de
+
+- adapt python-2.7.5-multilib.patch for ppc64le
+
+-------------------------------------------------------------------
+Tue Dec  3 17:30:26 UTC 2013 - dvaleev@suse.com
+
+- adjust %files for ppc64le
+
+-------------------------------------------------------------------
+Tue Dec  3 17:05:45 UTC 2013 - matz@suse.de
+
+- Support for ppc64le in _ctypes libffi copy.
+
+- added patches:
+  * libffi-ppc64le.diff
+-------------------------------------------------------------------
+Tue Dec  3 09:44:28 UTC 2013 - adrian@suse.de
+
+- add ppc64le rules
+- avoid errors from source-validator
+
+-------------------------------------------------------------------
+Thu Nov 21 15:39:28 UTC 2013 - jmatejek@suse.com
+
+- update to 2.7.6
+  * bugfix-only release
+  * SSL-related fixes
+  * upstream fix for CVE-2013-4238
+  * upstream fixes for CVE-2013-1752
+- removed upstreamed patch CVE-2013-4238_py27.patch
+- reintroduce audioop.so as the problems with it seem to be fixed
+  (bnc#831442)
+
+-------------------------------------------------------------------
+Thu Oct 10 18:13:08 UTC 2013 - dmueller@suse.com
+
+- exclude test_mmap under qemu_linux_user - emulation fails here
+  as the tests mmap address conflicts with qemu
 
 -------------------------------------------------------------------
 Mon Aug 26 13:55:35 UTC 2013 - lnussel@suse.de
@@ -198,13 +625,29 @@ Tue Jul  9 07:55:50 UTC 2013 - jengelh@inai.de
 - Add python-bsddb6.diff to support building against libdb-6.0
 
 -------------------------------------------------------------------
-Wed Jun  5 15:19:14 UTC 2013 - schwab@suse.de
+Sat Jul  6 17:17:11 UTC 2013 - coolo@suse.com
 
+- have python-devel require python:
+  http://lists.opensuse.org/opensuse-factory/2013-06/msg00622.html
+
+-------------------------------------------------------------------
+Sun Jun 30 21:20:29 UTC 2013 - schwab@suse.de
+
+- Disable test_multiprocessing in QEmu build
+
+-------------------------------------------------------------------
+Wed Jun  5 15:17:51 UTC 2013 - schwab@suse.de
+
+- Disable test_asyncore in QEmu build
 - Reenable testsuite on arm
 
 -------------------------------------------------------------------
 Thu May 30 16:40:16 UTC 2013 - jmatejek@suse.com
 
+- python-2.7.4-aarch64.patch: add missing bits of aarch64 support
+- python-2.7.4-no-REUSEPORT.patch: disable test of
+  missing kernel functionality
+- drop unnecessary patch: python-2.7.1-distutils_test_path.patch
 - switch to xz archive
 
 -------------------------------------------------------------------
@@ -223,17 +666,36 @@ Tue May 28 08:42:49 UTC 2013 - speilicke@suse.com
     class.
   + Issue #17610: Don't rely on non-standard behavior of the C qsort() function. 12 
   See http://hg.python.org/cpython/file/ab05e7dd2788/Misc/NEWS for more
+- Drop upstreamed patches:
+  + python-2.7.3-fix-dbm-64bit-bigendian.patch
+  + python-test_structmembers.patch
+- Rebased other patches
 
 -------------------------------------------------------------------
-Thu May  9 16:14:07 UTC 2013 - jmatejek@suse.com
+Mon May 13 09:24:29 UTC 2013 - dmueller@suse.com
+
+- add aarch64 to the list of 64-bit platforms 
+
+-------------------------------------------------------------------
+Thu May  9 16:11:23 UTC 2013 - jmatejek@suse.com
 
 - update to 2.7.4
-  * bugfix-only release
+    * bugfix-only release
+- drop upstreamed patches:
+    pypirc-secure.diff
+    python-2.7.3-multiprocessing-join.patch
+    ctypes-libffi-aarch64.patch
+- drop python-2.7rc2-configure.patch as it doesn't seem necessary anymore
 
 -------------------------------------------------------------------
-Fri Apr  5 13:33:33 UTC 2013 - idonmez@suse.com
+Fri Apr  5 13:33:27 UTC 2013 - idonmez@suse.com
 
 - Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Feb 27 17:04:32 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list of lib64 platforms
 
 -------------------------------------------------------------------
 Mon Feb 25 17:24:52 UTC 2013 - jmatejek@suse.com
@@ -241,15 +703,52 @@ Mon Feb 25 17:24:52 UTC 2013 - jmatejek@suse.com
 - fix pythonstart failing on $HOME-less users (bnc#804978)
 
 -------------------------------------------------------------------
-Sun Aug 12 11:46:22 UTC 2012 - idonmez@suse.com
+Sat Feb  9 16:24:10 UTC 2013 - schwab@suse.de
 
-- python & python-base Release numbers can differ, take that into
-  account. See bnc#766778 comment 12.
+- Add ctypes-libffi-aarch64.patch: import aarch64 support for libffi in
+  _ctypes module
+
+-------------------------------------------------------------------
+Fri Feb  8 14:49:45 UTC 2013 - jmatejek@suse.com
+
+- multiprocessing: thread joining itself (bnc#747794)
+- gettext: fix cases where no bundle is found (bnc#794139)
+
+-------------------------------------------------------------------
+Thu Oct 25 11:21:06 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire on libbz2-devel
+
+-------------------------------------------------------------------
+Mon Oct 15 10:39:15 UTC 2012 - coolo@suse.com
+
+- buildrequire explicitly netcfg for the test suite
+
+-------------------------------------------------------------------
+Mon Oct  8 14:33:08 UTC 2012 - jmatejek@suse.com
+
+- remove distutils.cfg (bnc#658604)
+  * this changes default prefix for distutils to /usr
+  * see ML for details:
+http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
+
+-------------------------------------------------------------------
+Fri Aug  3 18:43:32 UTC 2012 - dimstar@opensuse.org
+
+- Add python-bundle-lang.patch: gettext: If bindtextdomain is
+  instructed to look in the default location of translations, we
+  check additionally in locale-bundle. Fixes issues like bnc#617751
+
+-------------------------------------------------------------------
+Tue Jul 31 12:36:04 UTC 2012 - jmatejek@suse.com
+
+- all subpackages require python-base=%{version}-%{release} explicitly
+  (fixes bnc#766778 bug and similar that might arise in the future)
 
 -------------------------------------------------------------------
 Tue Jun 26 11:54:22 UTC 2012 - dvaleev@suse.com
 
-- Fix failing test_dbm on ppc64
+- Fix failing test_dbm on ppc64 
 
 -------------------------------------------------------------------
 Thu May 17 17:49:31 UTC 2012 - jfunk@funktronics.ca
@@ -258,17 +757,46 @@ Thu May 17 17:49:31 UTC 2012 - jfunk@funktronics.ca
   functions [bnc#761501]
 
 -------------------------------------------------------------------
-Tue May 15 14:17:43 UTC 2012 - jmatejek@suse.com
+Sat Apr 14 08:57:46 UTC 2012 - dmueller@suse.com
 
-- enabled some tests
+- update to 2.7.3:
+  * no change
+- remove static libpython.a from build to avoid packages
+  linking it statically
 
 -------------------------------------------------------------------
-Thu Dec  8 13:30:29 UTC 2011 - jmatejek@suse.com
+Wed Mar 28 18:19:18 UTC 2012 - jmatejek@suse.com
+
+- update to 2.7.3rc2
+  * fixes several security issues:
+  * CVE-2012-0845, bnc#747125
+  * CVE-2012-1150, bnc#751718
+  * CVE-2011-4944, bnc#754447
+  * CVE-2011-3389
+- fix for insecure .pypirc (CVE-2011-4944, bnc#754447)
+
+!!important!!
+- disabled test_unicode which segfaults on 64bits.
+  this should not happen, revisit in next RC!
+!!important!!
+
+-------------------------------------------------------------------
+Thu Feb 16 12:33:44 UTC 2012 - dvaleev@suse.com
+
+- skip broken test_io test on ppc
+
+-------------------------------------------------------------------
+Mon Dec 12 13:39:57 UTC 2011 - toddrme2178@gmail.com
+
+- Exclude /usr/bin/2to3 to prevent conflicts with python3-2to3
+
+-------------------------------------------------------------------
+Thu Dec  8 13:31:01 UTC 2011 - jmatejek@suse.com
 
 - %python_version now correctly refers to %tarversion
 
 -------------------------------------------------------------------
-Thu Dec 01 09:21:32 UTC 2011 - saschpe@suse.de
+Mon Nov 28 09:21:32 UTC 2011 - saschpe@suse.de
 
 - Spec file cleanup:
   * Run spec-cleaner
@@ -276,9 +804,9 @@ Thu Dec 01 09:21:32 UTC 2011 - saschpe@suse.de
 - Fix license to Python-2.0 (also SPDX style)
 
 -------------------------------------------------------------------
-Wed Nov 30 09:52:31 UTC 2011 - coolo@suse.com
+Fri Sep 30 09:08:59 UTC 2011 - adrian@suse.de
 
-- add automake as buildrequire to avoid implicit dependency
+- fix build for arm by removing an old hack for arm, bz2.so is built now
 
 -------------------------------------------------------------------
 Fri Sep 16 16:21:44 UTC 2011 - jmatejek@suse.com
@@ -287,7 +815,7 @@ Fri Sep 16 16:21:44 UTC 2011 - jmatejek@suse.com
   (bnc#718009)
 
 -------------------------------------------------------------------
-Mon Jul 11 01:59:56 CEST 2011 - ro@suse.de
+Fri Aug 19 22:37:42 CEST 2011 - dmueller@suse.de
 
 - update to 2.7.2:
   * Bug fix only release, see
@@ -299,16 +827,41 @@ Mon Jul 11 01:59:56 CEST 2011 - ro@suse.de
 - replace kernel3 patch with the upstream solution
 
 -------------------------------------------------------------------
-Tue May 24 14:30:10 UTC 2011 - jmatejek@novell.com
+Fri Jul 22 13:03:49 UTC 2011 - idonmez@novell.com
 
-- updated to 2.7.1
-    * bugfix-only release
+- Copy Lib/plat-linux2 to Lix/plat-linux3 so that DLFCN module
+  is also available for linux3 systems  bnc#707667
 
 -------------------------------------------------------------------
-Wed May  4 14:18:08 UTC 2011 - jmatejek@novell.com
+Mon Jul 11 01:59:56 CEST 2011 - ro@suse.de
 
-- added "fix-parallel-make" patch to python main package as well,
-  because build process is the same
+- fix build on factory: setup reports linux3 not linux2 now,
+  adapt checks
+
+-------------------------------------------------------------------
+Tue May 31 17:58:30 UTC 2011 - jmatejek@novell.com
+
+- added explicit requires to libpython-%version-%release
+  to prevent bugs like bnc#697251 reappearing
+
+-------------------------------------------------------------------
+Tue May 24 14:27:05 UTC 2011 - jmatejek@novell.com
+
+- update to 2.7.1
+    * bugfix-only release, see NEWS for details
+- refreshed patches, dropped the upstreamed ones
+- dropped acrequire patch, replacing it with build-time sed
+- improved fix to bnc#673071 by defining the constants
+  only for files that require it (as is done in python3)
+
+-------------------------------------------------------------------
+Mon May  2 16:04:49 UTC 2011 - jmatejek@novell.com
+
+- fixed a security flaw where malicious sites could redirect
+  Python application from http to a local file
+  (CVE-2011-1521, bnc#682554)
+- fixed race condition in Makefile which randomly failed
+  parallel builds ( http://bugs.python.org/issue10013 )
 
 -------------------------------------------------------------------
 Thu Feb 17 17:37:09 CET 2011 - pth@suse.de
@@ -317,51 +870,105 @@ Thu Feb 17 17:37:09 CET 2011 - pth@suse.de
   to not break external code (bnc#673071).
 
 -------------------------------------------------------------------
-Tue Aug 31 02:51:56 UTC 2010 - cristian.rodriguez@opensuse.org
+Mon Jan 17 09:42:20 UTC 2011 - coolo@novell.com
 
-- Provide "fake" build enviroment information
-* build date replaced by source tarball modify date
-* compiler string replaced by "GCC"
-* This is intended to avoid republishing the packages
-  over and over again. 
+- provide pyxml to avoid touching tons of packages
 
 -------------------------------------------------------------------
-Thu Aug 26 11:42:44 UTC 2010 - jmatejek@novell.com
+Thu Nov 18 08:23:34 UTC 2010 - coolo@novell.com
 
-- update to 2.7
-  * see changes in python-base.changes
-- cleaned up the spec and patches
-
--------------------------------------------------------------------
-Fri Jul  2 13:57:02 UTC 2010 - jengelh@medozas.de
-
-- add patch from http://bugs.python.org/issue6029
-- use %_smp_mflags
+- add patch from http://psf.upfronthosting.co.za/roundup/tracker/issue9960
+  to fix build on ppc64
 
 -------------------------------------------------------------------
-Wed Apr  7 20:36:11 CEST 2010 - matejcik@suse.cz
+Fri Oct  1 13:41:30 UTC 2010 - jmatejek@novell.com
 
-- update to 2.6.5
-
--------------------------------------------------------------------
-Wed Feb  3 16:07:54 UTC 2010 - jengelh@medozas.de
-
-- exclude dl.so from SPARC64 (not built like on x86_64)
+- moved unittest to python-base (it is a testing framework, not a 
+  testsuite, so it clearly belongs into stdlib)
+- fixed smtpd.py DoS (bnc#638233, CVE probably not assigned)
 
 -------------------------------------------------------------------
-Fri Jan 29 15:44:28 CET 2010 - matejcik@suse.cz
+Tue Sep 21 10:07:43 UTC 2010 - coolo@novell.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug 26 15:13:49 UTC 2010 - suse-tux@gmx.de
+
+- fix for urllib2 (http://bugs.python.org/issue9639) 
+
+-------------------------------------------------------------------
+Thu Aug 26 13:45:19 UTC 2010 - jmatejek@novell.com
+
+- fixed distutils test
+- dropped autoconf version requirement (it builds just fine with other versions)
+
+-------------------------------------------------------------------
+Thu Aug 26 11:37:28 UTC 2010 - jmatejek@novell.com
+
+- update to version 2.7
+  * improved handling of numeric types
+  * deprecation warnings are now silent by default
+  * new argparse module for command line arguments
+  * many new features, see http://docs.python.org/dev/whatsnew/2.7.html
+    for complete list
+*** 2.7 is supposed to be the last version from the 2.x series,
+so its (upstream) maintenance period will probably be longer than usual.
+However, upstream development now focuses on 3.x series.
+
+- cleaned up spec and patches
+
+-------------------------------------------------------------------
+Fri Jul  2 13:58:38 UTC 2010 - jengelh@medozas.de
+
+- add patch from http://bugs.python.org/issue6029 
+- use %_smp_mflags 
+
+-------------------------------------------------------------------
+Mon May 17 17:07:33 CEST 2010 - matejcik@suse.cz
+
+- dropped audioop.so because of security vulnerabilities
+  (bnc#603255)
+
+-------------------------------------------------------------------
+Wed Apr  7 20:35:26 CEST 2010 - matejcik@suse.cz
+
+- update to 2.6.5 (rpm version 2.6.5)
+- patched test_distutils to work
+
+-------------------------------------------------------------------
+Thu Mar 11 18:13:05 CET 2010 - matejcik@suse.cz
+
+- update to 2.6.5rc2 (rpm version is 2.6.4.92)
+ * bugfix-only release
+- removed fwrapv patch - no longer needed
+- removed expat patches (this version also fixes expat vulnerabilities
+  from bnc#581765 )
+- removed readline spacing patch - no longer needed
+- removed https_proxy patch - no longer needed
+- removed test_distutils patch - no longer needed
+- disabled test_distutils because of spurious failure,
+   * TODO reenable at release
+
+-------------------------------------------------------------------
+Thu Feb  4 20:46:03 CET 2010 - matejcik@suse.cz
+
+- removed precompiled exe files (as noted in bnc#577032)
+
+-------------------------------------------------------------------
+Fri Jan 29 15:44:15 CET 2010 - matejcik@suse.cz
 
 - enabled ipv6 in configure (bnc#572673)
 
 -------------------------------------------------------------------
-Wed Dec 23 08:36:32 UTC 2009 - aj@suse.de
+Wed Dec 23 08:36:29 UTC 2009 - aj@suse.de
 
 - Apply patches with fuzz=0
 
 -------------------------------------------------------------------
-Wed Dec  2 18:40:21 UTC 2009 - coolo@novell.com
+Tue Dec 15 00:22:44 CET 2009 - jengelh@medozas.de
 
-- update patch again
+- add baselibs.conf as source
 
 -------------------------------------------------------------------
 Wed Nov  4 19:04:16 CET 2009 - matejcik@suse.cz
@@ -370,24 +977,40 @@ Wed Nov  4 19:04:16 CET 2009 - matejcik@suse.cz
   python bug 5833)
 
 -------------------------------------------------------------------
-Tue Nov  3 19:13:42 UTC 2009 - coolo@novell.com
+Wed Oct 28 18:03:27 UTC 2009 - crrodriguez@opensuse.org
 
-- updated patches to apply with fuzz=0
-
--------------------------------------------------------------------
-Tue Sep  8 16:11:33 CEST 2009 - max@suse.de
-
-- removed blt from BuildRequires so that it can be dropped.
+- python-devel Requires glibc-devel 
 
 -------------------------------------------------------------------
-Fri Sep  4 20:15:43 CEST 2009 - matejcik@suse.cz
+Fri Sep  4 20:16:42 CEST 2009 - matejcik@suse.cz
 
+- fixed potential DoS in python's copy of expat (bnc#534721)
 - added patch for potential SSL hangup during handshake (bnc#525295)
 
 -------------------------------------------------------------------
-Wed Jul 29 17:25:33 CEST 2009 - matejcik@suse.cz
+Sun Aug  2 17:01:16 UTC 2009 - jansimon.moeller@opensuse.org
 
-- renamed multilib patch to reflect the changes
+- fix files section for ARM, as bz2.so isn't built on ARM.
+
+-------------------------------------------------------------------
+Fri Jul 31 22:41:02 CEST 2009 - matejcik@suse.cz
+
+- added /usr/lib/python2.6{,/site-packages} to the package even if
+  it is on lib64 arch
+- added %python_sitelib and %python_sitearch for fedora compatibility
+
+-------------------------------------------------------------------
+Thu Jul 30 18:34:09 CEST 2009 - matejcik@suse.cz
+
+- fixed test in test_distutils suite that would generate a warning
+  when the log threshold was set too low by preceding tests
+
+-------------------------------------------------------------------
+Wed Jul 29 16:09:32 CEST 2009 - matejcik@suse.cz
+
+- support noarch python packages (modified multilib patch
+  to differentiate between purelib and platlib, added /usr/lib
+  to search path in all cases
 
 -------------------------------------------------------------------
 Thu Jul 16 10:11:27 CEST 2009 - coolo@novell.com
@@ -401,6 +1024,17 @@ Mon Apr 27 15:19:45 CEST 2009 - matejcik@suse.cz
   * bugfix-only release for 2.6 series
 
 -------------------------------------------------------------------
+Fri Feb  6 16:10:31 CET 2009 - matejcik@suse.cz
+
+- excluded pyconfig.h and Makefile and Setup from -devel subpackage
+  to prevent file conflicts of python-base and python-devel
+
+-------------------------------------------------------------------
+Thu Jan 15 16:00:02 CET 2009 - matejcik@suse.cz
+
+- fixed gettext.py problem with empty plurals line (bnc#462375)
+
+-------------------------------------------------------------------
 Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
 
 - obsolete old -XXbit packages (bnc#437293)
@@ -408,36 +1042,70 @@ Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
 -------------------------------------------------------------------
 Mon Dec 15 17:10:17 CET 2008 - matejcik@suse.cz
 
-- reenabled bsddb module, so that dependent packages can build
+- removed bsddb directory from python-base, reenabled in python
   ( bnc#441088 )
 
 -------------------------------------------------------------------
-Thu Oct  9 18:57:43 CEST 2008 - matejcik@suse.cz
+Mon Oct 20 15:18:30 CEST 2008 - matejcik@suse.cz
 
-- update to 2.6 (version name is 2.6.0 to prevent upgrade problems)
-- don't run the whole test suite, only run tests for
-  newly built modules
+- added libpython and python-base to baselibs.conf (bnc#432677)
+- disabled test_smtplib for ia64 so that the package actually
+  gets built (bnc#436966)
+
+-------------------------------------------------------------------
+Thu Oct  9 18:56:33 CEST 2008 - matejcik@suse.cz
+
+- update to 2.6 final (version name is 2.6.0 to make upgrade from
+  2.6rc2 possible)
+- replaced site.py hack with a .pth file to do the same thing
+  (cleaner solution that doesn't mess up documented behavior
+  and also fixes virtualenv, bnc#430761)
+- enabled profile optimized build
+- fixed %py_requires macro (bnc#346490)
 - provide %name = 2.6
 
 -------------------------------------------------------------------
-Fri Sep 19 20:10:33 CEST 2008 - matejcik@suse.cz
+Fri Sep 19 20:09:50 CEST 2008 - matejcik@suse.cz
 
-- moved testsuite to %check section
+- moved tests to %check section
 - update to 2.6rc2, removing the last remaining security patch
+- included patch for https proxy support that resolves bnc#214983
+  (in a proper way) and bnc#298378
 - included fix for socket.ssl() behavior regression, fixing
   bnc#426563
 
 -------------------------------------------------------------------
-Tue Sep 16 18:09:49 CEST 2008 - matejcik@suse.cz
+Wed Sep 17 22:09:12 CEST 2008 - matejcik@suse.cz
 
-- moved python-xml to subpackage of python-base
-- moved dbm.so to gdbm subpackage
-- moved ssl.py and sqlite3 module to this
+- included /etc/rpm/macros.python to fix the split-caused breakage
 
 -------------------------------------------------------------------
-Mon Sep 15 18:34:06 CEST 2008 - matejcik@suse.cz
+Tue Sep 16 18:12:10 CEST 2008 - matejcik@suse.cz
 
-- update to 2.6rc1 - bugfix-only pre-stable release
+- applied bug-no-proxy patch from python#3879, which should improve
+  backwards compatibility (important i.e. for bzr)
+- moved python-xml to a subpackage of this (brings no additional
+  dependencies, so it can as well stay)
+- moved Makefile and pyconfig.h to python-base, removing the need
+  to have python-devel for installation
+- improved compatibility with older distros for 11.0
+- moved ssl.py and sqlite3 module to python package - they won't work
+  without their respective binary modules anyway
+
+-------------------------------------------------------------------
+Mon Sep 15 18:34:27 CEST 2008 - matejcik@suse.cz
+
+- updated to 2.6rc1 - bugfix-only pre-stable release
+- renamed python-base-devel to python-devel as it should be
+- removed macros from libpython package name
+
+-------------------------------------------------------------------
+Fri Sep 12 14:46:00 CEST 2008 - matejcik@suse.cz
+
+- moved python-devel to a subpackage of this
+- created libpython subpackage
+- moved essential files from -devel to -base, so that distutils
+  should now be able to install without -devel package
 
 -------------------------------------------------------------------
 Fri Sep 12 14:44:55 CEST 2008 - matejcik@suse.cz

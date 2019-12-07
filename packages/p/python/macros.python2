@@ -1,10 +1,8 @@
 # legacy macros. commented but kept for the sake of possible recovery of their values
-#%py_ver			%(python -c "import sys; v=sys.version_info[:2]; print '%%d.%%d'%%v" 2>/dev/null || echo PYTHON-NOT-FOUND)
-#%py_prefix		%(python -c "import sys; print sys.prefix" 2>/dev/null || echo PYTHON-NOT-FOUND)
-#%py_libdir		%{py_prefix}/%{_lib}/python%{py_ver}
-#%py_incdir		%{py_prefix}/include/python%{py_ver}
-#%py_sitedir		%{py_libdir}/site-packages
-#%__python2              /usr/bin/python2
+%py_prefix		%(python -c "import sys; print sys.prefix" 2>/dev/null || echo PYTHON-NOT-FOUND)
+%py_libdir		%{py_prefix}/%{_lib}/python%{py_ver}
+%py_incdir		%{py_prefix}/include/python%{py_ver}
+%py_sitedir		%{py_libdir}/site-packages
 
 # these might be still in use somewhere
 %py_compile(O)	\

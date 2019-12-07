@@ -1267,4 +1267,41 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
     <comment></comment>
     <requestid>742620</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>ad8f2b29265d5da1e63616c532a54893</srcmd5>
+    <version>2.7.17</version>
+    <time>1575728090</time>
+    <user>dimstar_suse</user>
+    <comment>- Move /etc/pythonstart script to shared-python-startup
+  package. 
+
+- Add bpo-36576-skip_tests_for_OpenSSL-111.patch (originally from
+  bpo#36576) skipping tests failing with OpenSSL 1.1.1. Fixes
+  bsc#1149792
+
+- Add adapted-from-F00251-change-user-install-location.patch fixing
+  pip/distutils to install into /usr/local.
+
+  - python-2.7.14-CVE-2018-1000030-1.patch
+  - python-2.7.14-CVE-2018-1000030-2.patch
+- Renamed remove-static-libpython.diff and python-bsddb6.diff to
+  remove-static-libpython.patch and python-bsddb6.patch to unify
+  filenames.
+- Add CVE-2019-16056-email-parse-addr.patch fixing the email
+  module wrongly parses email addresses [bsc#1149955,
+  CVE-2019-16056]
+
+- bsc#1138459: add CVE-2019-10160-netloc-port-regression.patch
+  which fixes regression introduced by the previous patch.
+  (CVE-2019-10160)
+  Upstream gh#python/cpython#13812
+
+  no error will be raised (CVE-2019-9636).
+        remove-static-libpython.patch
+- bsc#1109847: add CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch
+  fixing bpo-34623.
+
+- bsc#1073748: add bpo-29347-dereferencing-undefined-pointers.patch</comment>
+    <requestid>753190</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Additional Package Documentation for Python
 License:        Python-2.0
 Group:          Development/Languages/Python
-Url:            http://www.python.org/
+URL:            http://www.python.org/
 %define         tarname Python-%{version}
 Source0:        %{tarname}.tar.xz
 # docs for current version are regenerated every day
@@ -43,12 +43,12 @@ Patch7:         python-2.6-gettext-plurals.patch
 Patch8:         python-2.6b3-curses-panel.patch
 Patch10:        sparc_longdouble.patch
 Patch13:        python-2.7.2-fix_date_time_compiler.patch
-Patch17:        remove-static-libpython.diff
+Patch17:        remove-static-libpython.patch
 # PATCH-FEATURE-OPENSUSE python-bundle-lang.patch bnc#617751 dimstar@opensuse.org -- gettext: when looking in default_localedir also check in locale-bundle.
 Patch20:        python-bundle-lang.patch
 # PATCH-FIX-UPSTREAM Fix argument passing in libffi for aarch64
 Patch22:        python-2.7-libffi-aarch64.patch
-Patch24:        python-bsddb6.diff
+Patch24:        python-bsddb6.patch
 # PATCH-FIX-UPSTREAM accept directory-based CA paths as well
 Patch33:        python-2.7.9-ssl_ca_path.patch
 # PATCH-FEATURE-SLE disable SSL verification-by-default in http clients
@@ -66,14 +66,23 @@ Patch47:        openssl-111-middlebox-compat.patch
 # PATCH-FIX-SUSE python default SSLContext doesn't contain OP_CIPHER_SERVER_PREFERENCE
 Patch48:        openssl-111-ssl_options.patch
 # PATCH-FIX-UPSTREAM CVE-2019-5010-null-defer-x509-cert-DOS.patch bnc#1122191 mcepl@suse.com
-# https://github.com/python/cpython/pull/11569
+# gh#python/cpython#11569
 # Fix segfault in ssl's cert parser
 Patch49:        CVE-2019-5010-null-defer-x509-cert-DOS.patch
 # PATCH-FIX-UPSTREAM bpo36160-init-sysconfig_vars.patch gh#python/cpython#12131 mcepl@suse.com
 # Initialize sysconfig variables in test_site.
 Patch50:        bpo36160-init-sysconfig_vars.patch
-# PATCH-FIX-UPSTREAM https://github.com/python/cpython/pull/12341
+# PATCH-FIX-UPSTREAM CVE-2017-18207.patch gh#python/cpython#4437 psimons@suse.com
+# Add check for channels of wav file in Lib/wave.py
+Patch51:        CVE-2017-18207.patch
+# PATCH-FIX-UPSTREAM gh#python/cpython#12341
 Patch55:        bpo36302-sort-module-sources.patch
+# Fix installation in /usr/local (boo#1071941), adapted from Fedora
+# https://src.fedoraproject.org/rpms/python3/blob/master/f/00251-change-user-install-location.patch
+# Set values of prefix and exec_prefix in distutils install command
+# to /usr/local if executable is /usr/bin/python* and RPM build
+# is not detected to make pip and distutils install into separate location
+Patch56:        adapted-from-F00251-change-user-install-location.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc
 Provides:       pyth_ps
@@ -131,7 +140,9 @@ Python, and Macintosh Module Reference in PDF format.
 %patch48 -p1
 %patch49 -p1
 %patch50 -p1
+%patch51 -p1
 %patch55 -p1
+%patch56 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac

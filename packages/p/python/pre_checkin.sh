@@ -9,3 +9,7 @@ for spec in python-doc.spec python.spec; do
   sed -n -e '/COMMON-PREP-END/,$p' $spec;
  } | uniq > $spec.tmp && mv $spec.tmp $spec
 done
+
+# I really don't want to keep all three *.changes files separate
+cp python-base.changes python.changes
+cp python-base.changes python-doc.changes
