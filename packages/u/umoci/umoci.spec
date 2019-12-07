@@ -1,7 +1,7 @@
 #
 # spec file for package umoci
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # nodebuginfo
 
@@ -24,12 +24,12 @@
 %define project github.com/openSUSE/umoci
 
 Name:           umoci
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        Open Container Image manipulation tool
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://umo.ci
+URL:            https://umo.ci
 Source0:        https://github.com/openSUSE/umoci/releases/download/v%{version}/umoci.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/openSUSE/umoci/releases/download/v%{version}/umoci.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        https://umo.ci/%{name}.keyring
@@ -64,7 +64,7 @@ fi
 make VERSION="$VERSION" umoci
 
 # Build the docs if we have go-md2man.
-make doc
+make local-doc
 
 %install
 # Install the binary.

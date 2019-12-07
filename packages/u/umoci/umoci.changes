@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  3 15:44:35 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to umoci v0.4.5.
+  * Use "type: bind" for generated config.json bind-mounts.
+  * Don't insert a new layer if there is no diff.
+  * Only output a warning if forbidden extended attributes are present inside
+    the tar archive.
+  * For details, see CHANGELOG.md in the package.
+
+-------------------------------------------------------------------
 Mon Mar 18 09:10:46 UTC 2019 -  <gunreben@t-online.de>
 
 - Enable build for s390x on openSUSE
