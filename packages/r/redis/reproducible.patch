@@ -22,5 +22,5 @@ Index: redis-5.0.5/src/mkreleasehdr.sh
 -BUILD_ID=`uname -n`"-"`date +%s`
 +BUILD_ID=${HOST:-`uname -n`}"-"`date -r ../00-RELEASENOTES +%s`
  if [ -n "$SOURCE_DATE_EPOCH" ]; then
-   BUILD_ID=$(date -u -d "@$SOURCE_DATE_EPOCH" +%s 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" +%s 2>/dev/null || date -u %s)
+   BUILD_ID=$(date -u -d "@$SOURCE_DATE_EPOCH" +%s 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" +%s 2>/dev/null || date -u +%s)
  fi

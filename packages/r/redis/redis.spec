@@ -1,7 +1,7 @@
 #
 # spec file for package redis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,8 @@
 %define _data_dir       %{_localstatedir}/lib/%{name}
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
-
 Name:           redis
-Version:        5.0.5
+Version:        5.0.7
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause

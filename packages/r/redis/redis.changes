@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Dec  1 15:47:06 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 5.0.7
+  * https://raw.githubusercontent.com/antirez/redis/5.0.7/00-RELEASENOTES
+  * Test: fix implementation-dependent test after code change.
+  * RED-31295 - redis: avoid race between dlopen and thread creation.
+  * Cluster: fix memory leak of cached master.
+  * Fix usage of server.stream_node_max_*.
+  * Update mkreleasehdr.sh.
+  * Remove additional space from comment.
+  * Fix stream test after addition of 0-0 ID test.
+  * AOF: fix assignment for aof_fsync_offset.
+  * Rename var to fixed_time_expire now that is more general.
+  * Expires & blocking: handle ready keys as call().
+  * XADD with ID 0-0 stores an empty key.
+  * Fix unreported overflow in autogerenared stream IDs.
+  * Expires: refactoring judgment about whether a key is expired.
+- Refresh reproducible.patch
+- Update to 5.0.6
+  * https://raw.githubusercontent.com/antirez/redis/5.0.6/00-RELEASENOTES
+  * RDB: fix MODULE_AUX loading by continuing to next opcode.
+  * Missing per-skiplist overheads in MEMORY USAGE.
+  * RM_Log: add support for logging without a context or context
+    without module.
+  * Cluster: abort loading nodes data if vars arguments are unbalanced.
+  * More strict checks and better comments in flushSlaveOutputBuffers().
+  * Improve comment in flushSlavesOutputBuffers().
+  * Replication: clarify why repl_put_online_on_ack exists at all.
+  * Networking: flushSlavesOutputBuffers bugfix.
+  * RM_ReplyWithCString was missing registration.
+  * Fix to module aux data rdb format for backwards compatibility
+    with old check-rdb.
+  * Implement module api for aux data in rdb.
+  * Redis-cli: always report server errors on read errors.
+  * Reduce the calling stack.
+  * Make EMBSTR case of #6261 more obvious.
+  * Make memory usage consistent of robj with OBJ_ENCODING_INT.
+  * HyperLogLog: fix the fix of a corruption bug.
+  * Fix HLL corruption bug.
+  * Extend REDISMODULE_CTX_FLAGS to indicate if redis is currently
+    loading from either RDB or AOF.
+  * Uses addReplyBulkCString.
+  * Adds RedisModule_ReplyWithCString.
+
+-------------------------------------------------------------------
 Thu Jun  6 20:43:34 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 5.0.5
