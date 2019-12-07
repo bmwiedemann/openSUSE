@@ -808,4 +808,12 @@
     <comment>Update to version 3.8.8.1</comment>
     <requestid>746576</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d537a8dcde6e31319b7a5f356399cd70</srcmd5>
+    <version>3.8.9.0</version>
+    <time>1575753117</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.8.9</comment>
+    <requestid>754964</requestid>
+  </revision>
 </revisionlist>
