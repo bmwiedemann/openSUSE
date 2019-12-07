@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Nov 29 09:12:45 UTC 2019 - dkondratenko@suse.com
+
+- Update to version V3.0.2+git0.eae6d6d35:
+  * V3.0.2
+  * ganesha_stats option rename
+  * cmake: LizardFS doesn't need to be a STRICT_PACKAGE
+  * Add fsal_test_access to exported symbols.
+  * doc: utf8 characters in ganesha-config.rsh
+  * V3.0.1
+  * Adding trace in FSAL_GLUSTER
+  * call set_current_entry only after checking state_lock
+  * avoid mem leak
+  * Avoid twice free.
+
+-------------------------------------------------------------------
+Thu Nov 28 17:47:05 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Changing service file to build from upstream git
+- Adding patch to correctly detect SLE during the build
+  * added sle_build_detect.patch
+- removing add-missing-CheckSymbolExists-include.patch
+  * already in sources 
+
+-------------------------------------------------------------------
+Wed Nov 13 09:30:12 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update nfs-ganesha to V3.0
+  + libntirpc
+  + Use non-blocking writes when we send RPC responses or make RPC callbacks
+  + Continued improvements of readdir cache
+  + Use of gss_iov for GSS integrity and privacy encode and decode to save
+    buffer copies.
+  + Change xdr encode of attributes to work from struct attrlist and other
+    changes to save a data copy when returning attributes for NFS v3.
+  + Implement xdr_putbuffs to save buffer copies for READ and READDIR responses
+    which also has the benefit of more completely filling the maximum READDIR
+    response size for fewer READDIR roundtrips to read a large directory.
+  + Add LizardFS FSAL
+  + Completed audit of string buffer handling (strncpy, snprintf and such) to
+    prevent overflows. Also make utf8str always NUL terminated including on
+    XDR decode.
+  + Make python scripts compatible with Python 3
+  + Python script enhancements and cleanup
+  + Enhancements to stats collection
+  + Numerous Coverity issues fixed as well as other bug fixes
+- remove CMake patch, as it is already in V3.0
+ 
+-------------------------------------------------------------------
 Tue Aug  6 21:04:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with CMake 3.15.1, https://github.com/nfs-ganesha/nfs-ganesha/issues/454

@@ -105,7 +105,7 @@ BuildRequires: distribution-release
 %define sourcename @CPACK_SOURCE_PACKAGE_FILE_NAME@
 
 Name:		nfs-ganesha
-Version: 2.8.dev.29+git.1557746732.251ace12d
+Version:	3.0.2+git0.eae6d6d35
 Release:	0
 Summary:	An NFS server running in user space
 Group:		Productivity/Networking/NFS
@@ -113,8 +113,8 @@ License:	LGPL-3.0+ and GPL-3.0+
 Url:		https://github.com/nfs-ganesha/nfs-ganesha/wiki
 
 Source:		%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM https://github.com/nfs-ganesha/nfs-ganesha/pull/455.patch
-Patch0:         add-missing-CheckSymbolExists-include.patch
+
+Patch01:	sle_build_detect.patch
 
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -130,6 +130,9 @@ BuildRequires:	flex
 BuildRequires:	pkgconfig
 BuildRequires:	krb5-devel
 BuildRequires:  liburcu-devel
+%if %{with rados_recov} || %{with rados_urls}
+BuildRequires: librados-devel >= 0.61
+%endif
 %if ( 0%{?suse_version} >= 1330 )
 BuildRequires:  libnsl-devel
 %endif
@@ -205,10 +208,10 @@ back-end modules (called File System Abstraction Layers - FSALs) for different
 file systems and name-spaces (notably the Ceph "file" and "object" back-ends -
 CephFS and RGW, respectively).
 
-%package -n libntirpc1_7
+%package -n libntirpc3_0
 Summary:        NFS-Ganesha transport-independent RPC (TI-RPC) shared library
 Group:          System/Libraries
-%description -n libntirpc1_7
+%description -n libntirpc3_0
 This package contains a new implementation of the original libtirpc, 
 transport-independent RPC (TI-RPC) library for NFS-Ganesha. It has
 the following features not found in libtirpc:
@@ -221,33 +224,33 @@ the following features not found in libtirpc:
  5. Event channels (remove static arrays of xprt handles, new EPOLL/KEVENT
     integration)
 
-%post -n libntirpc1_7 -p /sbin/ldconfig
+%post -n libntirpc3_0 -p /sbin/ldconfig
 
-%postun -n libntirpc1_7 -p /sbin/ldconfig
+%postun -n libntirpc3_0 -p /sbin/ldconfig
 
 %package -n libntirpc-devel
 Summary:        Copy of TIRPC headers from NFS-Ganesha
 Group:          Development/Libraries/C and C++
-Requires:       libntirpc1_7 = %{version}
+Requires:       libntirpc3_0 = %{version}
 Obsoletes:      nfs-ganesha-devel < %{version}
 %description -n libntirpc-devel
 This package contains the libraries and headers needed to develop programs
 using NFS-Ganesha transport-independent RPC (TI-RPC).
 
-%package -n libganesha_nfsd2_8
+%package -n libganesha_nfsd3_0
 Summary:        NFS-Ganesha NFSD shared library
 Group:          System/Libraries
-%description -n libganesha_nfsd2_8
+%description -n libganesha_nfsd3_0
 This package contains the NFSD shared library from NFS-Ganesha.
 
-%post -n libganesha_nfsd2_8 -p /sbin/ldconfig
+%post -n libganesha_nfsd3_0 -p /sbin/ldconfig
 
-%postun -n libganesha_nfsd2_8 -p /sbin/ldconfig
+%postun -n libganesha_nfsd3_0 -p /sbin/ldconfig
 
 %package -n libganesha_nfsd-devel
 Summary:        NFS-Ganesha NFSD shared library
 Group:          Development/Libraries/C and C++
-Requires:       libganesha_nfsd2_8 = %{version}
+Requires:       libganesha_nfsd3_0 = %{version}
 %description -n libganesha_nfsd-devel
 This package contains the libraries and headers needed to develop programs
 using NFS-Ganesha NFSD.
@@ -281,27 +284,30 @@ be used with NFS-Ganesha to support PROXY based filesystems
 %package utils
 Summary: The NFS-Ganesha utility scripts
 Group: Productivity/Networking/NFS
+%if ( 0%{?rhel} && 0%{?rhel} < 8 )
+Requires:       dbus-python, pygobject2, pyparsing
+BuildRequires:  python-devel
+%else
+Requires:	python3-gobject, python3-pyparsing
+BuildRequires:  python3-devel
+%endif
 %if ( 0%{?suse_version} )
 Requires:	dbus-1-python
-Requires:       python-gobject2
-Requires:       python-pyparsing
 %else
-Requires:	dbus-python
-Requires:       pygobject2
-Requires:       pyparsing
+Requires:	python3-dbus
 %endif
 %if %{with gui_utils}
 %if ( 0%{?suse_version} )
-BuildRequires:	python-qt4-devel
-Requires:	python-qt4
+BuildRequires:	python3-qt5-devel
+Requires:	python3-qt5
 %else
 BuildRequires:	PyQt4-devel
 Requires:	PyQt4
 %endif
 %endif
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 Requires:       nfs-ganesha = %{version}-%{release}
-Requires:       python
+Requires:       python3
 %description utils
 This package contains utility scripts for managing the NFS-Ganesha server
 %endif
@@ -327,7 +333,20 @@ BuildRequires: librados-devel >= 0.61
 Requires: nfs-ganesha = %{version}-%{release}
 %description rados-grace
 This package contains the ganesha-rados-grace tool for interacting with the
-database used by the rados_cluster recovery backend.
+database used by the rados_cluster recovery backend and the
+libganesha_rados_grace shared library for using RADOS storage for
+recovery state.
+%endif
+
+%if %{with rados_urls}
+%package rados-urls
+Summary: The NFS-GANESHA library for use with RADOS URLs
+Group: Applications/System
+Requires: nfs-ganesha = %{version}-%{release}
+
+%description rados-urls
+This package contains the libganesha_rados_urls library used for
+handling RADOS URL configurations.
 %endif
 
 # Option packages start here. use "rpmbuild --with gpfs" (or equivalent)
@@ -444,7 +463,7 @@ be used with NFS-Ganesha to support Gluster
 
 %prep
 %setup -q
-%patch0 -p2
+%patch01
 
 %build
 export LANGUAGE=en_US.UTF-8
@@ -494,7 +513,7 @@ mkdir -p %{buildroot}%{_libdir}/ganesha
 mkdir -p %{buildroot}%{_localstatedir}/run/ganesha
 mkdir -p %{buildroot}%{_libexecdir}/ganesha
 mkdir -p %{buildroot}%{_docdir}/ganesha
-mkdir -p %{buildroot}/usr/share/doc/ganesha/config_samples
+mkdir -p %{buildroot}%{_docdir}/ganesha/config_samples
 install -m 644 LICENSE.txt %{buildroot}%{_docdir}/ganesha/LICENSE.txt
 install -m 644 config_samples/logrotate_ganesha	%{buildroot}%{_sysconfdir}/logrotate.d/ganesha
 install -m 644 scripts/ganeshactl/org.ganesha.nfsd.conf	%{buildroot}%{_sysconfdir}/dbus-1/system.d
@@ -510,10 +529,6 @@ install -D -m 444 scripts/systemd/nfs-ganesha-config.service %{buildroot}%{_unit
 install -D -m 644 scripts/systemd/sysconfig/nfs-ganesha %{buildroot}%{_fillupdir}/sysconfig.nfs-ganesha
 %else
 install -D -m 644 scripts/systemd/sysconfig/nfs-ganesha %{buildroot}%{_sysconfdir}/sysconfig/ganesha
-%endif
-%if 0%{?_tmpfilesdir:1}
-mkdir -p %{buildroot}%{_tmpfilesdir}
-install -m 644 scripts/systemd/tmpfiles.d/ganesha.conf	%{buildroot}%{_tmpfilesdir}
 %endif
 mkdir -p %{buildroot}%{_localstatedir}/log/ganesha
 
@@ -628,15 +643,11 @@ pgrep dbus-daemon >/dev/null 2>&1 && killall -SIGHUP dbus-daemon >/dev/null 2>&1
 %{_unitdir}/nfs-ganesha.service
 %{_unitdir}/nfs-ganesha-lock.service
 %{_unitdir}/nfs-ganesha-config.service
-%if 0%{?_tmpfilesdir:1}
-%{_tmpfilesdir}/ganesha.conf
-%endif
 
 %if ! %{with system_ntirpc}
 
-%files -n libntirpc1_7
-%{_libdir}/libntirpc.so.1.7.999
-%{_libdir}/libntirpc.so.1.7
+%files -n libntirpc3_0
+%{_libdir}/libntirpc.so.3.0
 
 %files -n libntirpc-devel
 %{_includedir}/ntirpc/
@@ -645,7 +656,7 @@ pgrep dbus-daemon >/dev/null 2>&1 && killall -SIGHUP dbus-daemon >/dev/null 2>&1
 
 %endif
 
-%files -n libganesha_nfsd2_8
+%files -n libganesha_nfsd3_0
 %{_libdir}/libganesha_nfsd.so.*
 
 %files -n libganesha_nfsd-devel
@@ -753,10 +764,16 @@ pgrep dbus-daemon >/dev/null 2>&1 && killall -SIGHUP dbus-daemon >/dev/null 2>&1
 %if %{with rados_recov}
 %files rados-grace
 %{_bindir}/ganesha-rados-grace
+%{_libdir}/libganesha_rados_recov.so*
 %if %{with man_page}
 %{_mandir}/*/ganesha-rados-grace.8.gz
 %{_mandir}/*/ganesha-rados-cluster-design.8.gz
 %endif
+%endif
+
+%if %{with rados_urls}
+%files rados-urls
+%{_libdir}/libganesha_rados_urls.so*
 %endif
 
 %if %{with utils}

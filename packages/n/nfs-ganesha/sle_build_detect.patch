@@ -1,0 +1,67 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -43,7 +43,7 @@
+ # Extra version is for naming development/RC.  It is blank in master/stable branches
+ # so it can be available to end-users to name local variants/versions
+ # If used, it is always of the form "-whateveryouwant"
+-set(GANESHA_EXTRA_VERSION .2)
++set(GANESHA_EXTRA_VERSION )
+ 
+ set(GANESHA_VERSION ${GANESHA_MAJOR_VERSION}${GANESHA_MINOR_VERSION}${GANESHA_EXTRA_VERSION})
+ set(GANESHA_BASE_VERSION ${GANESHA_MAJOR_VERSION}${GANESHA_MINOR_VERSION})
+@@ -65,8 +65,13 @@
+       OUTPUT_VARIABLE SYS_RELEASE
+       ERROR_QUIET
+    )
+-# Red Hat Enterprise Linux versions before 7.0 will be detected as UNKNOWN
+ 
++  EXECUTE_PROCESS(
++      COMMAND awk -F=  "/^ID_LIKE=/ { print $2 }" /etc/os-release
++      OUTPUT_VARIABLE ID_LIKE
++   )
++# Red Hat Enterprise Linux versions before 7.0 will be detected as UNKNOWN
++  message( STATUS ${SYS_RELEASE} )
+   if( ${SYS_RELEASE} MATCHES "Red Hat" )
+      message( STATUS "Detected a Linux Red Hat machine" )
+      set(DISTRO "RED_HAT")
+@@ -90,8 +95,14 @@
+      set(DISTRO "DEBIAN")
+      set(LIBEXECDIR "/${CMAKE_INSTALL_PREFIX}/lib")
+   else( ${SYS_RELEASE} MATCHES "Red Hat" )
+-     message( STATUS "Detected an UNKNOWN Linux machine" )
+-     set(DISTRO "UNKNOWN")
++     if( ${ID_LIKE} MATCHES "suse" )
++         message( STATUS "Detected a SUSE machine" )
++         set(DISTRO "SLES")
++         set(LIBEXECDIR "/usr/lib")
++     else( ${ID_LIKE} MATCHES "suse" )
++         set(LIBEXECDIR "/usr/lib")
++         message( STATUS "Detected an UNKNOWN Linux machine" )
++     endif( ${ID_LIKE} MATCHES "suse" )
+   endif( ${SYS_RELEASE} MATCHES "Red Hat" )
+ endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+ 
+@@ -596,8 +607,12 @@
+   if (LIZARDFS_CLIENT_LIB)
+     message(STATUS "Found LizardFS client library: ${LIZARDFS_CLIENT_LIB}")
+   else(LIZARDFS_CLIENT_LIB)
+-    message(WARNING "Cannot find LizardFS client lib. Disabling lizardfs fsal")
+-    set(USE_FSAL_LIZARDFS OFF)
++    if(STRICT_PACKAGE)
++      message(FATAL_ERROR "STRICT_PACKAGE: Cannot find LizardFS client lib. Disabling lizardfs fsal")
++    else(STRICT_PACKAGE)
++      message(WARNING "Cannot find LizardFS client lib. Disabling lizardfs fsal")
++      set(USE_FSAL_LIZARDFS OFF)
++    endif(STRICT_PACKAGE)
+   endif(LIZARDFS_CLIENT_LIB)
+ endif(USE_FSAL_LIZARDFS)
+ 
+@@ -1050,8 +1065,6 @@
+ # Sample config files
+ if( ${DISTRO} MATCHES "SLES" )
+   install(DIRECTORY config_samples DESTINATION share/doc/packages/ganesha)
+-else( ${DISTRO} MATCHES "SLES" )
+-  install(DIRECTORY config_samples DESTINATION share/doc/ganesha)
+ endif( ${DISTRO} MATCHES "SLES" )
+ # pre-create PREFIX/var/run/ganesha
+ install(DIRECTORY DESTINATION ${SYSSTATEDIR}/run/ganesha)
