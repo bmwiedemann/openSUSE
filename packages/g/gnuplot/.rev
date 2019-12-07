@@ -788,4 +788,33 @@
     <comment></comment>
     <requestid>725989</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>2bb0e6a4a1c0602ddbcd9d4bc20b57d2</srcmd5>
+    <version>5.2.8</version>
+    <time>1575728162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.2.8
+  * CHANGE user-visible GPVAL_TERM_HCHAR GPVAL_TERM_VCHAR (help debug font issues)
+  * CHANGE placement of ylabel (compromise 5.2.7 and earlier versions) (Bug #2181)
+  * CHANGE make strstrt() aware of UTF8, e.g. strstrt(&quot;αβγ5&quot;, &quot;5&quot;) returns 4
+  * FIX &quot;set timestamp&quot; from &quot;save&quot; must not include a justification (Bug #2178)
+  * FIX set cntrparam levels increment &lt;base&gt;, &lt;factor&gt; for logscale z (Bug #2183)
+  * FIX character pointtypes should inherit plot coloring like normal pointtypes
+  * FIX bad autoscaling of linked y2 axis (Bug #2186)
+  * FIX prevent infinite loop from unbounded interation in a non-data plot command
+  * FIX dimensions reported by &quot;stats matrix every&quot; (Bug #2189)
+  * FIX extent of boxplot whiskers could be off by one point (Bug #2106)
+  * FIX mix unbounded iteration and functions in a single plot command (Bug #2201)
+  * FIX reverse history search with readline=builtin (Bug #2209)
+  * FIX qt: suppress off-by-one ysize (Bug #1759)
+  * FIX cairo: suppress off-by-one ysize (Bug #1759)
+  * FIX gd: apply alpha to brushstroke lines (Bug #2117)
+  * FIX tikz: fixes to accommodate lua 5.3 and newer pgf
+  * FIX wxt: ExportToFile widget disabled in persist mode (Bug #2185)
+  * FIX qt: handling of modifier keys (ctrl alt shift) for keyboard events
+  * FIX wxt: handling of modifier keys (ctrl alt shift) for keyboard events
+  * FIX fig: dashtype &quot;solid&quot; was not passed through correctly to transfig
+  * FIX gd: incorrect line spacing of multiline label (Bug #2215)</comment>
+    <requestid>753096</requestid>
+  </revision>
 </revisionlist>

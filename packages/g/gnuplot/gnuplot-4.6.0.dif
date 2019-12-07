@@ -94,7 +94,7 @@
  
 --- gnuplot-5.2.3/src/plot.c
 +++ gnuplot-5.2.3/src/plot.c	2018-05-07 07:12:26.988911605 +0000
-@@ -216,6 +216,7 @@ static int asked_privi = 0;
+@@ -217,6 +217,7 @@ static int asked_privi = 0;
  void
  drop_privilege()
  {
@@ -102,7 +102,7 @@
      if (!asked_privi) {
  	euid = geteuid();
  	egid = getegid();
-@@ -229,11 +230,13 @@ drop_privilege()
+@@ -230,11 +231,13 @@ drop_privilege()
      if (seteuid(ruid) == -1)
  	(void) fprintf(stderr, "seteuid(%d): %s\n",
  		       (int) ruid, strerror(errno));
@@ -116,7 +116,7 @@
      if (!asked_privi) {
  	euid = geteuid();
  	egid = getegid();
-@@ -247,6 +250,7 @@ take_privilege()
+@@ -248,6 +251,7 @@ take_privilege()
      if (seteuid(euid) == -1)
  	(void) fprintf(stderr, "seteuid(%d): %s\n",
  		       (int) euid, strerror(errno));
@@ -124,7 +124,7 @@
  }
  
  #endif /* LINUXVGA */
-@@ -273,8 +277,8 @@ main(int argc, char **argv)
+@@ -274,8 +278,8 @@ main(int argc, char **argv)
      int i;
  
  #ifdef LINUXVGA
@@ -134,7 +134,7 @@
  #endif
  /* make sure that we really have revoked root access, this might happen if
     gnuplot is compiled without vga support but is installed suid by mistake */
-@@ -338,6 +342,22 @@ main(int argc, char **argv)
+@@ -339,6 +343,22 @@ main(int argc, char **argv)
      rl_getc_function = getc_wrapper;
  #endif
  

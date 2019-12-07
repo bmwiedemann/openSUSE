@@ -1,7 +1,7 @@
 #
 # spec file for package gnuplot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,8 @@ BuildRequires:  tex(hyperref.sty)
 BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
 %endif
-Url:            http://www.gnuplot.info/
-Version:        5.2.7
+URL:            http://www.gnuplot.info/
+Version:        5.2.8
 Release:        0
 %if "%{flavor}" == ""
 Summary:        Function Plotting Utility and more

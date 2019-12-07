@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec  2 12:31:23 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 5.2.8
+  * CHANGE user-visible GPVAL_TERM_HCHAR GPVAL_TERM_VCHAR (help debug font issues)
+  * CHANGE placement of ylabel (compromise 5.2.7 and earlier versions) (Bug #2181)
+  * CHANGE make strstrt() aware of UTF8, e.g. strstrt("αβγ5", "5") returns 4
+  * FIX "set timestamp" from "save" must not include a justification (Bug #2178)
+  * FIX set cntrparam levels increment <base>, <factor> for logscale z (Bug #2183)
+  * FIX character pointtypes should inherit plot coloring like normal pointtypes
+  * FIX bad autoscaling of linked y2 axis (Bug #2186)
+  * FIX prevent infinite loop from unbounded interation in a non-data plot command
+  * FIX dimensions reported by "stats matrix every" (Bug #2189)
+  * FIX extent of boxplot whiskers could be off by one point (Bug #2106)
+  * FIX mix unbounded iteration and functions in a single plot command (Bug #2201)
+  * FIX reverse history search with readline=builtin (Bug #2209)
+  * FIX qt: suppress off-by-one ysize (Bug #1759)
+  * FIX cairo: suppress off-by-one ysize (Bug #1759)
+  * FIX gd: apply alpha to brushstroke lines (Bug #2117)
+  * FIX tikz: fixes to accommodate lua 5.3 and newer pgf
+  * FIX wxt: ExportToFile widget disabled in persist mode (Bug #2185)
+  * FIX qt: handling of modifier keys (ctrl alt shift) for keyboard events
+  * FIX wxt: handling of modifier keys (ctrl alt shift) for keyboard events
+  * FIX fig: dashtype "solid" was not passed through correctly to transfig
+  * FIX gd: incorrect line spacing of multiline label (Bug #2215)
+
+-------------------------------------------------------------------
 Mon Aug  5 17:02:18 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use _multibuild for documentation subpackage. The documentation requires
