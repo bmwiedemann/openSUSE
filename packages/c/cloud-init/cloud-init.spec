@@ -51,6 +51,7 @@ Patch51:        cloud-init-after-wicked.patch
 Patch52:        cloud-init-break-resolv-symlink.patch
 # FIXME (lp#1849378) expected in 19.3
 Patch53:        cloud-init-renderer-detect.patch
+Patch54:        cloud-init-proper-ipv6-setting.patch
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -198,6 +199,7 @@ Documentation and examples for cloud-init tools
 %patch51 -p1
 %patch52
 %patch53
+%patch54
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315

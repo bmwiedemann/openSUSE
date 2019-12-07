@@ -1,0 +1,10 @@
+--- cloudinit/net/sysconfig.py.orig
++++ cloudinit/net/sysconfig.py
+@@ -349,6 +349,7 @@ class Renderer(renderer.Renderer):
+                 # TODO need to set BOOTPROTO to dhcp6 on SUSE
+                 iface_cfg['IPV6INIT'] = True
+                 iface_cfg['DHCPV6C'] = True
++                iface_cfg['DHCLIENT6_MODE'] = 'managed'
+             elif subnet_type in ['dhcp4', 'dhcp']:
+                 iface_cfg['BOOTPROTO'] = 'dhcp'
+             elif subnet_type == 'static':

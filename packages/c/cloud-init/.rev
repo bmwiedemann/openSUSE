@@ -801,4 +801,12 @@
     <comment></comment>
     <requestid>746646</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>425535153a61e2ea68cbb7fb3b4f952c</srcmd5>
+    <version>19.2</version>
+    <time>1575728139</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>753049</requestid>
+  </revision>
 </revisionlist>
