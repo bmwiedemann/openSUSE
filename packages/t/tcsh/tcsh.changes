@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Dec  5 06:46:37 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh bug fix version V6.22.02 - 20191204
+  * Fix version in configure.ac
+
+-------------------------------------------------------------------
+Mon Dec  2 09:47:03 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Drop patches
+  * tcsh-6.21.0-history-file-locking.patch
+    As upstream introduced its own history file locking
+  * tcsh-6.18.03-history-merge.dif
+    To respect upstream history merge handling
+  * tcsh-6.19.00-history-file-locking-order.patch
+    Not required due dropped tcsh-6.21.0-history-file-locking.patch
+  * tcsh-6.20.00-avoid-dotlock-for-fcntl.patch
+    Not required due dropped tcsh-6.21.0-history-file-locking.patch
+  * tcsh-6.18.01-history-stderror-jmp.patch
+    Not required due dropped tcsh-6.21.0-history-file-locking.patch
+
+-------------------------------------------------------------------
+Mon Dec  2 08:26:48 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh bug fix version V6.22.01 - 20191201
+  * undo PR/88: Preserve empty arguments in :q, since it breaks
+       $ set x=""
+       $ alias test "echo "\""$x:q"\"" is working."
+       $ alias test
+       echo "
+
+-------------------------------------------------------------------
+Fri Nov 29 14:44:02 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh bug fix version V6.22.00 -  20191128
+  * PR/113: Sobomax: avoid infinite loops for -c commands when stdout is
+    not a tty.
+  * Avoid infinite loops during history loads when merging, print a better
+    error for errors during history load.
+  * PR/88: Preserve empty arguments in :q
+  * PR/94: Small apple issues (SAVESIGVEC, HOSTTYPE)
+  * PR/81: Fix range matching issue where we were comparing with the
+     range character instead of the start of range. [l-z]* would match foo
+- Drop patch tcsh-6.21.00-sighup-deadlock.patch as now superfluous
+- Port patches
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.01-history-stderror-jmp.patch
+  * tcsh-6.19.00-history-file-locking-order.patch
+  * tcsh-6.20.00-avoid-dotlock-for-fcntl.patch
+  * tcsh-6.21.0-history-file-locking.patch
+  * tcsh-6.21.00-sighup-deadlock.patch
+  * tcsh-6.21.00.dif
+
+-------------------------------------------------------------------
 Thu Oct 17 10:35:23 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Use both TERM names of urxvt: rxvt-unicode and rxvt-unicode-256-color

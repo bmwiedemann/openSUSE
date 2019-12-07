@@ -14,7 +14,7 @@
 
 --- config/linux
 +++ config/linux	2019-05-09 08:41:54.237060106 +0000
-@@ -92,6 +92,9 @@
+@@ -99,6 +99,9 @@
  #ifndef _SVID_SOURCE
  # define _SVID_SOURCE
  #endif
@@ -24,7 +24,7 @@
  #ifndef _POSIX_SOURCE
  # define _POSIX_SOURCE
  #endif
-@@ -132,4 +135,11 @@
+@@ -139,4 +142,11 @@
  # define POSIX
  #endif
  

@@ -7,7 +7,7 @@
 
 --- sh.c
 +++ sh.c	2016-11-25 08:02:39.616478025 +0000
-@@ -862,9 +862,9 @@ main(int argc, char **argv)
+@@ -863,9 +863,9 @@ main(int argc, char **argv)
      /* PATCH IDEA FROM Issei.Suzuki VERY THANKS */
  #if defined(DSPMBYTE)
  #if defined(NLS) && defined(LC_CTYPE)

@@ -1,7 +1,7 @@
 #
 # spec file for package tcsh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           tcsh
-Version:        6.21.00
+Version:        6.22.02
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause
 Group:          System/Shells
-Url:            http://www.tcsh.org/
-Source:         ftp.astron.com:/pub/tcsh/tcsh-6.21.00.tar.gz
+URL:            http://www.tcsh.org/
+Source:         ftp.astron.com:/pub/%{name}/%{name}-%{version}.tar.gz
 Source2:        bindkey.tcsh
 Source3:        complete.tcsh
 Patch0:         tcsh-6.21.00.dif
@@ -32,17 +32,6 @@ Patch2:         tcsh-6.16.00-norm-cmd.dif
 Patch4:         tcsh-6.18.03-colorls.dif
 Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
-# PATCH-FIX-UPSTREAM Do not (re)run SIGHUP handler during rewrite history
-Patch7:         tcsh-6.21.00-sighup-deadlock.patch
-# PATCH-FIX-SUSE add history file locking (bsc#901076)
-Patch9:         tcsh-6.21.0-history-file-locking.patch
-Patch10:        tcsh-6.18.03-history-merge.dif
-# PATCH-FIX-SUSE fix history file locking: first unlock then close
-Patch11:        tcsh-6.19.00-history-file-locking-order.patch
-# PATCH-FIX-SUSE Aoid dot locking as patch 9 and 11 do the job better
-Patch12:        tcsh-6.20.00-avoid-dotlock-for-fcntl.patch
-# PATCH-FIX-SUSE Restore cleaning routines in case of an error (bsc#1151630)
-Patch13:        tcsh-6.18.01-history-stderror-jmp.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -68,12 +57,6 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch4      -b .colorls
 %patch5      -b .dspmbyte
 %patch6      -b .catalogs
-%patch7 -p1  -b .sighup
-%patch9      -b .histlock
-%patch10     -b .histmerg
-%patch11     -b .histlckord
-%patch12 -p0 -b .nodtlck
-%patch13 -p0 -b .histerrjmp
 %patch0      -b .0
 
 %build

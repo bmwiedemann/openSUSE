@@ -666,4 +666,41 @@
   terminal as well (boo#1007715).</comment>
     <requestid>739108</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>29979c70d42075334c4869a11afae258</srcmd5>
+    <version>6.22.02</version>
+    <time>1575727938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tcsh bug fix version V6.22.02 - 20191204
+  * Fix version in configure.ac
+
+- Drop patches
+  * tcsh-6.21.0-history-file-locking.patch
+    As upstream introduced its own history file locking
+  * tcsh-6.18.03-history-merge.dif
+    To respect upstream history merge handling
+  * tcsh-6.19.00-history-file-locking-order.patch
+    Not required due dropped tcsh-6.21.0-history-file-locking.patch
+  * tcsh-6.20.00-avoid-dotlock-for-fcntl.patch
+    Not required due dropped tcsh-6.21.0-history-file-locking.patch
+  * tcsh-6.18.01-history-stderror-jmp.patch
+    Not required due dropped tcsh-6.21.0-history-file-locking.patch
+
+- Update to tcsh bug fix version V6.22.01 - 20191201
+  * undo PR/88: Preserve empty arguments in :q, since it breaks
+       $ set x=&quot;&quot;
+       $ alias test &quot;echo &quot;\&quot;&quot;$x:q&quot;\&quot;&quot; is working.&quot;
+       $ alias test
+       echo &quot;
+
+- Update to tcsh bug fix version V6.22.00 -  20191128
+  * PR/113: Sobomax: avoid infinite loops for -c commands when stdout is
+    not a tty.
+  * Avoid infinite loops during history loads when merging, print a better
+    error for errors during history load.
+  * PR/88: Preserve empty arguments in :q
+  * PR/94: Small apple issues (SAVESIGVEC, HOSTTYPE)
+  * PR/81: Fix range matching issue where we were comparing with the</comment>
+    <requestid>754265</requestid>
+  </revision>
 </revisionlist>
