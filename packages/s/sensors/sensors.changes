@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:30:17 UTC 2019 - Samu Voutilainen <smar@smar.fi>
+
+- Removed upstreamed patch lm_sensors-3.4.0-sensors-detect-ppc64le.patch
+- Update to version 3.6.0:
+  + configs: Added a number of new configuration files
+  + fancontrol: AVERAGE env variable can be used to set the number of previous readings to average
+  + Makefile: The MACHINE variable has been renamed to ARCH
+  + sensord: Add an option -1/--oneline to print chip and adapter on the same line
+  + sensors: Fixed a stray comma bug in the JSON output
+    * Fixed Fahrenheit conversion with raw and JSON output
+    * Scale voltage and current values in the default output format
+  + sensors-detect: Add detection of AMD Family 17h, models 30h, 70h
+    * Add detection of some AMD Family 15h models
+    * Add detection of AMD Family 16h model 30h power sensors
+    * Add detection of Hygon Family 18h thermal sensors
+    * Add detection of Nuvoton NCT6797D
+    * Add detection of Nuvoton NCT6798D
+    * Add detection of Nuvoton NCT6112D/NCT6114D/NCT6116D
+    * Fix printing CPU info on non-x86 arches
+    * Fix printing lm_sensors version
+    * Mark Fintek F75387SG/RG as supported by the f75375s driver
+
+-------------------------------------------------------------------
 Sun Mar  3 19:32:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Join %service_* lines to generate less scriptlet boilerplate.

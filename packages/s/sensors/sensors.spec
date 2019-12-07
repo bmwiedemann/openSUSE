@@ -1,7 +1,7 @@
 #
 # spec file for package sensors
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,18 @@
 #%%define   commit          1c48b191c8a2b9fc747e3db3816247c666c5c3f1
 #%%define   shortcommit     1c48b19
 %define   _name           lm-sensors
-%define   _version        3-5-0
+%define   _version        3-6-0
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           sensors
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Hardware health monitoring for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            https://github.com/lm-sensors/%{_name}
+URL:            https://github.com/lm-sensors/%{_name}
 Source0:        https://github.com/lm-sensors/%{_name}/archive/V%{_version}.tar.gz#/%{_name}-%{_version}.tar.gz
 #Source0:        https://github.com/groeck/lm-sensors/archive/%%{commit}/%%{_name}-%%{shortcommit}.tar.gz
 Source1:        sysconfig.sensord
@@ -42,9 +42,7 @@ Patch4:         lm_sensors-3.0.3-hint-at-kernel-extra-package.patch
 Patch6:         lm_sensors-3.4.0-sensord-service-extra-args.patch
 #PATCH-FEATURE-UPSTREAM add ftsteutates support
 Patch7:         lm_sensors-3.4.0-sensors-detect-add-ftsteutates-support.patch
-#PATCH-BUGFIX-UPSTREAM sensors-detect on ppc
-Patch8:         lm_sensors-3.4.0-sensors-detect-ppc64le.patch
-Patch9:         lm_sensors-3.5.0-libsensors-fix-soname.patch
+Patch8:         lm_sensors-3.5.0-libsensors-fix-soname.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  rrdtool-devel
@@ -113,7 +111,6 @@ sense to the user.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 
 %build
 RPM_OPT_FLAGS="%{optflags}"
