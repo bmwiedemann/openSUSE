@@ -1,7 +1,7 @@
 #
 # spec file for package fribidi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        An implementation of the Unicode BiDi algorithm
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/fribidi/fribidi
+URL:            https://github.com/fribidi/fribidi
 Source:         https://github.com/fribidi/fribidi/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  pkg-config
@@ -67,10 +67,10 @@ This package provides headers and manual files for FriBiDi.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
