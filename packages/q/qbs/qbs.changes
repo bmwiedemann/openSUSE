@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  7 08:56:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.14.1
+  * Qt support: Fix static builds with Qt >= 5.13.1.
+
+-------------------------------------------------------------------
 Thu Oct 10 09:20:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.14.0. Check the changes-1.14.0.md file for the complete changelog.
