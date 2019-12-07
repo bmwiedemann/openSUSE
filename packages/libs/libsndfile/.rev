@@ -463,4 +463,12 @@
   libsndfile-wav-loop-count-fix.patch</comment>
     <requestid>653853</requestid>
   </revision>
+  <revision rev="58" vrev="10">
+    <srcmd5>d44ced1f3d8309381345c42244e9cf2f</srcmd5>
+    <version>1.0.28</version>
+    <time>1575728482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753103</requestid>
+  </revision>
 </revisionlist>

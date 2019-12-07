@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile-progs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Example Programs for libsndfile
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://www.mega-nerd.com/libsndfile/
+URL:            http://www.mega-nerd.com/libsndfile/
 Source0:        http://www.mega-nerd.com/libsndfile/files/libsndfile-%{version}.tar.gz
 Source1:        http://www.mega-nerd.com/libsndfile/files/libsndfile-%{version}.tar.gz.asc
 Source2:        libsndfile.keyring

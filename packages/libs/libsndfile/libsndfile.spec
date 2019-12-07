@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://www.mega-nerd.com/libsndfile
+URL:            http://www.mega-nerd.com/libsndfile
 Source0:        http://www.mega-nerd.com/%{name}/files/%{name}-%{version}.tar.gz
 Source1:        http://www.mega-nerd.com/%{name}/files/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -44,14 +44,12 @@ Patch34:        sndfile-deinterlace-channels-check.patch
 Patch40:        libsndfile-wav-loop-count-fix.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
-BuildRequires:  alsa-devel
 BuildRequires:  flac-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkg-config
 BuildRequires:  speex-devel
-BuildRequires:  sqlite-devel
 Obsoletes:      libsnd
 Provides:       libsnd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -103,16 +101,13 @@ libsndfile library.
 
 %build
 %define warn_flags -W -Wall -Wstrict-prototypes -Wpointer-arith -Wno-unused-parameter
-%if 0%{?suse_version} < 1200
-sed -i -e'/^AM_SILENT_RULES/d' configure.ac
-%endif
 autoreconf --force --install
 CFLAGS="%{optflags} %{warn_flags}"
 export CFLAGS
 %configure \
 	--disable-silent-rules \
 	--disable-static \
-	--enable-sqlite \
+	--disable-full-suite \
 	--with-pic \
 	--enable-experimental
 make %{?_smp_mflags}

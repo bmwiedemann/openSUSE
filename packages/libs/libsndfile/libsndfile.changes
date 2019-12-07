@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  3 01:46:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove build dependencies for progs subpackage from library:
+  * alsa-devel, only needed for the examples
+  * sqlite3-devel, only needed for the regression test
+- Only build library, pass --disable-full-suite to configure
+
+-------------------------------------------------------------------
 Tue Dec  4 13:42:05 CET 2018 - tiwai@suse.de
 
 - Fix segfault in wav conversion due to the invalid loop count
