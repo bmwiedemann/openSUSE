@@ -83,4 +83,27 @@
 </comment>
     <requestid>705109</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c8dcdaee4e6d738910eb717f5ea92985</srcmd5>
+    <version>2.8.2</version>
+    <time>1575728466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.2
+  + modulemd v1 has been split out into is own tarball
+  + Add ModuleIndexMerger.resolve_ext()
+  + Fix transfer type for Module.search_streams()
+  + Correct typo in ModulemdModuleStream.arch property nickname
+  + Add gtk-doc descriptions for ModulemdModuleStream object properties
+  + Fix modulemd_yaml_parse_bool() comparisons so return value is correct
+  + Make ModulemdErrorEnum and ModulemdYamlErrorEnum into public enums
+  + Move modulemd_module_stream_v2_replace_*() method definitions
+    to correct header file and add documentation
+  + Refactor stream copy/upgrade helper macros
+  + Add Modulemd.Module.get_translation()
+  + Add ModuleIndex.update_from_defaults_directory()
+  + Modulemd.ModuleIndex.update_from_file() now supports reading files
+    compressed with gzip, bzip2 or xz
+- libmodulemd1 has been split into its own package</comment>
+    <requestid>752746</requestid>
+  </revision>
 </revisionlist>
