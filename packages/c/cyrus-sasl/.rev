@@ -500,4 +500,12 @@
   * shared_link_on_ppc.patch</comment>
     <requestid>655748</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>61c8ee82c9d15e8257ac4d2b9e75f577</srcmd5>
+    <version>2.1.27</version>
+    <time>1575728369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751846</requestid>
+  </revision>
 </revisionlist>

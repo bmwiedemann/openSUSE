@@ -30,6 +30,8 @@ Source1:        cyrus-sasl-rc.tar.bz2
 Source2:        README.Source
 Source3:        baselibs.conf
 Patch:          cyrus-sasl.dif
+# see https://github.com/cyrusimap/cyrus-sasl/issues/587
+Patch1:         cyrus-sasl-bug587.patch
 Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
@@ -164,6 +166,7 @@ then
     rm -rf %{_builddir}/%{name}-%{version}/dlcompat-*
 fi
 %patch
+%patch1 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1

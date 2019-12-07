@@ -1,0 +1,10 @@
+--- cyrus-sasl-2.1.27.orig/lib/common.c	2018-11-08 18:29:57.000000000 +0100
++++ cyrus-sasl-2.1.27/lib/common.c	2019-11-28 21:15:11.246656079 +0100
+@@ -190,7 +190,7 @@
+ 
+   if (add==NULL) add = "(null)";
+ 
+-  addlen=strlen(add); /* only compute once */
++  addlen=strlen(add)+1; /* only compute once */
+   if (_buf_alloc(out, alloclen, (*outlen)+addlen)!=SASL_OK)
+     return SASL_NOMEM;
