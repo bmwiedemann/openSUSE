@@ -119,4 +119,22 @@
     <comment></comment>
     <requestid>662071</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fefde87ac3f2127d74263a7901c1e442</srcmd5>
+    <version>0.41</version>
+    <time>1575727818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.41
+  * Updated translations
+  * added keyboard scheme option
+  * added system-wide configuration support
+  * added feature to hide shortcuts in context menus
+  * fixed issue with cutebrowser
+  * fixed global config support
+  * using separate thread for icon theme loading
+  * replaced deprecated code
+  * fixed wayland application id
+  * fixed crash on icon theme search (regression since 0.40)</comment>
+    <requestid>754871</requestid>
+  </revision>
 </revisionlist>

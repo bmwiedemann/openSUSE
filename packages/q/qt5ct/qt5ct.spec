@@ -1,7 +1,7 @@
 #
 # spec file for package qt5ct
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qt5ct
-Version:        0.37
+Version:        0.41
 Release:        0
 Summary:        Qt5 Configuration Tool
 License:        BSD-2-Clause
@@ -27,13 +27,14 @@ Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
 Source1:        qt5ct.sh
 Source2:        qt5ct.csh
 BuildRequires:  gcc-c++
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.4.0
-BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.4.0
-BuildRequires:  libqt5-linguist >= 5.4.0
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libQt5PlatformSupport-private-headers-devel
+BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4.0
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Widgets)
 %requires_eq    libQt5Gui5
 # libqt5-qtct was last used in openSUSE Leap 42.1.
 Provides:       libqt5-qtct = %{version}
