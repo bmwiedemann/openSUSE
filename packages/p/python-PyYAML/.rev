@@ -158,4 +158,17 @@
     <comment></comment>
     <requestid>720548</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1fb0464241fe415b3391c877728f2138</srcmd5>
+    <version>5.2</version>
+    <time>1575728073</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2
+ * A more flexible fix for custom tag constructors
+ * Change default loader for yaml.add_constructor
+ * Change default loader for add_implicit_resolver, add_path_resolver
+ * Move constructor for object/apply to UnsafeConstructor
+ * Fix logic for quoting special characters</comment>
+    <requestid>753178</requestid>
+  </revision>
 </revisionlist>
