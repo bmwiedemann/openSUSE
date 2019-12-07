@@ -153,6 +153,8 @@ Group:          System/Libraries
 %description -n %{libname %_ver}
 This package contains the PAPI runtime library.
 
+%{?with_hpc:%{hpc_master_package  -l -L}}
+
 %prep
 %setup -q -n %{pname}-%{version}
 %patch1 -p1
