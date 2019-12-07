@@ -278,4 +278,26 @@
     <comment></comment>
     <requestid>663476</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d772a31d672daea9bebdb48e1a72f73d</srcmd5>
+    <version>3.0.0</version>
+    <time>1575728182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0
+  + Add support for bochs video device
+  + Add API to query firmware config
+  + Improve testing coverage
+  + Validate min/max glib API versions in use
+  + Remove deprecated G_PARAM_PRIVATE
+  + Fix docs build linking problems
+  + Convert python demos to be python 3 compatible &amp; use
+    modern best practice for pyobject introspection bindings
+  + Add API to query domain capaibilities
+  + Refresh translations
+  + Simplify build process for handling translations
+  + Fix some memory leaks
+  + Add API for setting storage volume features
+  + boo#1158282</comment>
+    <requestid>753829</requestid>
+  </revision>
 </revisionlist>

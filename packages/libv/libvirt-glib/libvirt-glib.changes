@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  3 22:00:32 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 3.0.0
+  + Add support for bochs video device
+  + Add API to query firmware config
+  + Improve testing coverage
+  + Validate min/max glib API versions in use
+  + Remove deprecated G_PARAM_PRIVATE
+  + Fix docs build linking problems
+  + Convert python demos to be python 3 compatible & use
+    modern best practice for pyobject introspection bindings
+  + Add API to query domain capaibilities
+  + Refresh translations
+  + Simplify build process for handling translations
+  + Fix some memory leaks
+  + Add API for setting storage volume features
+  + boo#1158282
+
+-------------------------------------------------------------------
 Sat Jan  5 13:37:30 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 2.0.0:

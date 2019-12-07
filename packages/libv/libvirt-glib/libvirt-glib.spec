@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt-glib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libvirt-glib
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        GLib and GObject mapping of libvirt
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source0:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.gz
 Source1:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.gz.asc
 
 BuildRequires:  fdupes
-BuildRequires:  intltool >= 0.35.0
+BuildRequires:  gettext
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  vala
