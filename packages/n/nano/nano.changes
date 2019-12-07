@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 30 07:57:49 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.6:
+  * re-introduce the formatter command (M-F)
+  * ^T will try to run 'hunspell' before 'spell', because it checks
+    spelling for the locale's language and understands UTF-8
+  * Multiple errors or warnings on startup will no longer slow nano
+    down but will be indicated on the status bar with trailing dots
+
+-------------------------------------------------------------------
 Fri Oct  4 19:56:23 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - nano 4.5:
