@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+
+-------------------------------------------------------------------
 Fri Nov  2 02:34:46 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
