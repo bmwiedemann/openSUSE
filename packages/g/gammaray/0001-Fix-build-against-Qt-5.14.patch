@@ -1,0 +1,36 @@
+From 3bde546403e1fe27881bdfee4d0aa0dc4acbe2c7 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 21 Jul 2019 16:53:20 +0200
+Subject: Fix build against Qt 5.14
+
+(merged with 7cd6950e96: Fix version check logic)
+
+---
+ plugins/quickinspector/quickinspector.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/quickinspector/quickinspector.cpp b/plugins/quickinspector/quickinspector.cpp
+index 1e728b83..17770ed1 100644
+--- a/plugins/quickinspector/quickinspector.cpp
++++ b/plugins/quickinspector/quickinspector.cpp
+@@ -654,7 +654,7 @@ void QuickInspector::checkOverlaySettings()
+ class SGSoftwareRendererPrivacyViolater : public QSGAbstractSoftwareRenderer
+ {
+ public:
+-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
++#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0) && QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+     using QSGAbstractSoftwareRenderer::renderableNodes;
+ #endif
+     using QSGAbstractSoftwareRenderer::renderNodes;
+@@ -684,7 +684,7 @@ void QuickInspector::analyzePainting()
+         renderer->markDirty();
+         renderer->buildRenderList();
+         renderer->optimizeRenderList();
+-#if QT_VERSION < QT_VERSION_CHECK(5, 12, 0)
++#if QT_VERSION < QT_VERSION_CHECK(5, 12, 0) || QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+         renderer->renderNodes(&painter);
+ #else
+         auto iterator = renderer->renderableNodes().begin();
+-- 
+2.24.0
+

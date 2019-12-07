@@ -1,7 +1,7 @@
 #
 # spec file for package gammaray
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Required for the "highly experimental" object visualizer plugin, only VTK 7.1 supported
 %bcond_with     vtk
@@ -29,6 +30,8 @@ URL:            https://www.kdab.com/gammaray
 Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Fix_icons_installation.patch -- Don't try to install multiple copies in exotic subdirs
 Patch0:         Fix_icons_installation.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-against-Qt-5.14.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.1
 BuildRequires:  doxygen
