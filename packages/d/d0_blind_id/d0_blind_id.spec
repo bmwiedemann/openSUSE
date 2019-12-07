@@ -1,7 +1,7 @@
 #
 # spec file for package d0_blind_id
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,14 +22,13 @@ Release:        0
 Summary:        Blind-ID library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://git.xonotic.org/?p=xonotic/d0_blind_id.git;a=summary
+URL:            http://git.xonotic.org/?p=xonotic/d0_blind_id.git;a=summary
 Source:         https://github.com/divVerent/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 Blind-ID library for user identification using RSA blind signatures
@@ -51,11 +50,12 @@ A library for user identification using RSA blind signatures.
 %package devel
 Summary:        Development files for the Blind-ID library
 Group:          Development/Libraries/Other
-Requires:       libd0_blind_id0 = %{version}-%{release}
-Requires:       libd0_rijndael0 = %{version}-%{release}
+Requires:       libd0_blind_id0 = %{version}
+Requires:       libd0_rijndael0 = %{version}
 
 %description devel
-Development files for the Blind-ID library for user identification using RSA blind signatures
+Development files for the Blind-ID library for user identification using
+RSA blind signatures
 
 %prep
 %setup -q
@@ -67,10 +67,10 @@ autoreconf -fiv
   --enable-rijndael \
   --without-openssl \
   --without-tommath
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n libd0_blind_id0 -p /sbin/ldconfig
@@ -79,23 +79,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libd0_rijndael0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc COPYING
 %{_bindir}/blind_id
 
 %files -n libd0_blind_id0
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libd0_blind_id.so.0*
 
 %files -n libd0_rijndael0
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libd0_rijndael.so.0*
 
 %files devel
-%defattr(-,root,root)
-%doc COPYING
 %{_includedir}/%{name}
 %{_libdir}/libd0_blind_id.so
 %{_libdir}/libd0_rijndael.so
