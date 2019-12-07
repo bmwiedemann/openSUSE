@@ -1,7 +1,7 @@
 #
 # spec file for package libxslt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname %{name}1
 %define exname  libexslt0
 Name:           libxslt
-Version:        1.1.33
+Version:        1.1.34
 Release:        0
 Summary:        XSL Transformation Library
 License:        MIT AND GPL-2.0-or-later
@@ -34,14 +34,6 @@ Patch0:         %{name}-1.1.24-no-net-autobuild.patch
 Patch1:         libxslt-config-fixes.patch
 Patch2:         0009-Make-generate-id-deterministic.patch
 Patch3:         libxslt-random-seed.patch
-# PATCH-FIX-UPSTREAM bsc#1132160 CVE-2019-11068 Fix security framework bypass
-Patch4:         libxslt-CVE-2019-11068.patch
-# PATCH-FIX-UPSTREAM bsc#1140095 CVE-2019-13117 Fix uninitialized read of xsl:number token
-Patch5:         libxslt-CVE-2019-13117.patch
-# PATCH-FIX-UPSTREAM bsc#1140101 CVE-2019-13118 Fix uninitialized read with UTF-8 grouping chars
-Patch6:         libxslt-CVE-2019-13118.patch
-# PATCH-FIX-UPSTREAM bsc#1154609 CVE-2019-18197 Fix dangling pointer in xsltCopyText
-Patch7:         libxslt-CVE-2019-18197.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libtool
@@ -111,10 +103,6 @@ xtend the
 %patch1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 %build
 autoreconf -fvi
