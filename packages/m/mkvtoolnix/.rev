@@ -986,4 +986,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>747026</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>402759c69547c4d699de00d8d23a78cb</srcmd5>
+    <version>41.0.0</version>
+    <time>1575727862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754878</requestid>
+  </revision>
 </revisionlist>

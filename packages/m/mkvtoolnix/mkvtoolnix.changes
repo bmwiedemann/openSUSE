@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Dec  6 18:55:59 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 41.0.0
+  New features and enhancements:
+  * mkvmerge: Matroska reader: Vorbis tracks: stream comments
+    (aka Vorbis comments) will be converted to Matroska
+    attachments (for cover arts) and Matroska track tags (for
+    other comments). Additionally the stream comments will be
+    removed from Vorbis headers.
+  * mkvmerge: MP4 reader: added support for reading Opus audio
+    from MP4 files. Part of the implementation of #2673.
+  * mkvmerge: MP4 reader: added support for reading VP9 video
+    from MP4 files. Part of the implementation of #2673.
+  * mkvmerge: Ogg reader: Vorbis, Opus & VP8 streams: stream
+    comments (aka Vorbis comments) will be converted to Matroska
+    attachments (for cover arts) and Matroska track tags (for
+    other comments). Additionally the stream comments will be
+    removed from Vorbis headers.
+  * mkvmerge: WAV reader: added support for reading RF64 files.
+  * MKVToolNix GUI: multiplexer: the list of predefined track
+    names is now split up into three lists, one for each track
+    type (audio, video & subtitles). Part of the implementation
+    of #2654.
+  * MKVToolNix GUI: multiplexer: when trying to add thumbnails
+    for a Blu-ray the GUI will determine the thumbnail's pixel
+    size from the thumbnail files if the XML file doesn't
+    contain that information. This works for JPEG and PNG files.
+    Implements #2674.
+  * MKVToolNix GUI: general: line edits & combo boxes will now
+    have a "clear text" button appear whenever they're not
+    empty. Part of the implementation of #2654.
+  * MKVToolNix GUI: update check: the dialog showing the latest
+    news & version information states explicitly where the links
+    take the user (the MKVToolNix `NEWS.md` file and YouTube
+    respectively).
+    Bug fixes:
+  * mkvmerge: Matroska reader: mkvmerge did not copy the codec's
+    private data when reading WavPack from Matroska files. Fixes
+    #2685.
+  * mkvmerge: MPLS handling: re-added caching when using MPLS
+    playlists as input files. Fixes #2666.
+  * mkvmerge: MPEG TS reader: when reading an MPLS playlist, the
+    calculation of the minimum timestamp to use for shifting all
+    output timestamps to zero was wrong. It was wrongfully
+    considering timestamps from packets it would not copy due to
+    the MPLS's timestamp restrictions. This could lead to the
+    first timestamps in the output file being quite large, e.g.
+    more than a couple of minutes, causing sync problems when
+    multiplexing together with other files. Fixes #2670.
+  * MKVToolNix GUI: multiplexer: the automatic switch between
+    aspect ratio & display width/height wasn't reflected in the
+    configuration generated for `mkvmerge`. The user had to
+    change between the two settings manually. Fixes #2660.
+  * MKVToolNix GUI: multiplexer: the progress dialog shown when
+    scanning a Blu-ray wasn't closed properly in certain
+    situations. Fixes #2678.
+  * MKVToolNix GUI: general: the configured font was not applied
+    to a lot of controls (e.g. the file & track lists or the
+    menu entries) on application startup. Instead the user had
+    to open & close the preferences in order for the font to be
+    applied to all controls. Fixes #2671.
+
+-------------------------------------------------------------------
 Sat Nov  9 13:38:39 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 40.0.0
