@@ -1,7 +1,7 @@
 #
 # spec file for package v4l2loopback
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           v4l2loopback
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        A kernel module to create V4L2 loopback devices
 License:        GPL-2.0-or-later
