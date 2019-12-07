@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 07 05:04:05 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1575621538.1ee59881:
+  * baseclass.t: Add tests for SSH serial methods
+  * Use OpenCV 4 under Tumbleweed
+  * Reduce overly long waiting time on shutdown waiting on processes
+  * t: Enable 00-compile-check-all.t to be run with prove
+  * Add simple test for serial_screen.pm
+  * Add simple test for ssh_screen.pm
+  * ssh_screen: Fix initialize of base class
+  * t: Enable 04-check_vars_docu.t to be run with prove
+  * t: Enable 10-terminal.t to be run with prove
+
+-------------------------------------------------------------------
 Wed Dec 04 21:03:59 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1575491566.71ee5f56:
