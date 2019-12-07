@@ -63,4 +63,12 @@
     <comment>- Drop unused dependancies on pytest-cov and pytest-xdist.</comment>
     <requestid>748547</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>92dee7b1dc4bc79d160242b45f97ece6</srcmd5>
+    <version>3.1.1</version>
+    <time>1575728399</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one test that is flaky</comment>
+    <requestid>753929</requestid>
+  </revision>
 </revisionlist>

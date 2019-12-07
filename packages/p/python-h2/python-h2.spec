@@ -1,7 +1,7 @@
 #
 # spec file for package python-h2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,8 @@ your programming paradigm.
 
 %check
 # test_changing_max_frame_size - flaky in OBS
-%pytest -k 'not test_changing_max_frame_size'
+# test_range_of_acceptable_outputs -flaky in OBS
+%pytest -k 'not (test_changing_max_frame_size or test_range_of_acceptable_outputs)'
 
 %files %{python_files}
 %license LICENSE

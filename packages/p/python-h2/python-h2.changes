@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:27:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one test that is flaky
+
+-------------------------------------------------------------------
 Thu Nov 14 06:57:45 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unused dependancies on pytest-cov and pytest-xdist.
