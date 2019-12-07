@@ -1,4 +1,4 @@
-From 329f90fcde205237545cd623f55f0f6c228bf893 Mon Sep 17 00:00:00 2001
+From 3812df3a2776e745160ef406dae85aa8acdf2333 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Fri, 25 Oct 2019 15:43:16 +0200
 Subject: [PATCH] Fix a wrong rebase in test_core.py (#180)
@@ -17,15 +17,15 @@ This patch ignore this kind of issue during the grains creation.
 
 (cherry picked from commit bd0213bae00b737b24795bec3c030ebfe476e0d8)
 ---
- salt/grains/core.py            |  4 +--
- tests/unit/grains/test_core.py | 45 ----------------------------------
+ salt/grains/core.py            |  4 ++--
+ tests/unit/grains/test_core.py | 45 ------------------------------------------
  2 files changed, 2 insertions(+), 47 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index fdabe484a8..bf54c54553 100644
+index 6b1f2d2223..31ed8a77aa 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -989,7 +989,7 @@ def _virtual(osdata):
+@@ -990,7 +990,7 @@ def _virtual(osdata):
              except UnicodeDecodeError:
                  # Some firmwares provide non-valid 'product_name'
                  # files, ignore them
@@ -34,7 +34,7 @@ index fdabe484a8..bf54c54553 100644
              except IOError:
                  pass
      elif osdata['kernel'] == 'FreeBSD':
-@@ -2490,7 +2490,7 @@ def _hw_data(osdata):
+@@ -2545,7 +2545,7 @@ def _hw_data(osdata):
                  except UnicodeDecodeError:
                      # Some firmwares provide non-valid 'product_name'
                      # files, ignore them
@@ -44,10 +44,10 @@ index fdabe484a8..bf54c54553 100644
                      # PermissionError is new to Python 3, but corresponds to the EACESS and
                      # EPERM error numbers. Use those instead here for PY2 compatibility.
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index aa04a7a7ac..889fb90074 100644
+index 7153a078f4..09e197a2e4 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -1117,51 +1117,6 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1317,51 +1317,6 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
                  'uuid': ''
              })
  
@@ -100,6 +100,6 @@ index aa04a7a7ac..889fb90074 100644
      @skipIf(six.PY2, 'UnicodeDecodeError is throw in Python 3')
      @patch('os.path.exists')
 -- 
-2.23.0
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From 9e2139213bc2eeb8afbf10fdff663ebe7ed23887 Mon Sep 17 00:00:00 2001
+From eadcab9b1b03041360d27421e5e8204f2a463e61 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 3 Jul 2019 09:34:50 +0100
@@ -63,6 +63,6 @@ index d2ae06a98e..0a3053680f 100644
      @patch('os.path.getsize', MagicMock(return_value=123456))
      @patch('os.path.getctime', MagicMock(return_value=1234567890.123456))
 -- 
-2.21.0
+2.16.4
 
 

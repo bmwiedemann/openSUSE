@@ -1,4 +1,4 @@
-From 6747243babde058762428f9bdb0e3ef16402eadd Mon Sep 17 00:00:00 2001
+From 31b9186f48ac37e2b814b8db61ec1d5a5868659f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Tue, 6 Nov 2018 16:38:54 +0000
@@ -11,14 +11,14 @@ Test git ext_pillar across multiple repos using __env__
 
 Remove unicode references
 ---
- tests/integration/pillar/test_git_pillar.py | 45 +++++++++++++++++++++
+ tests/integration/pillar/test_git_pillar.py | 45 +++++++++++++++++++++++++++++
  1 file changed, 45 insertions(+)
 
 diff --git a/tests/integration/pillar/test_git_pillar.py b/tests/integration/pillar/test_git_pillar.py
-index 5d9a374f6e..4a9553d1a1 100644
+index 9ade88840b..ab3b1a89cf 100644
 --- a/tests/integration/pillar/test_git_pillar.py
 +++ b/tests/integration/pillar/test_git_pillar.py
-@@ -1361,6 +1361,51 @@ class TestPygit2SSH(GitPillarSSHTestBase):
+@@ -1388,6 +1388,51 @@ class TestPygit2SSH(GitPillarSSHTestBase):
                          'nested_dict': {'master': True}}}
          )
  
@@ -71,6 +71,6 @@ index 5d9a374f6e..4a9553d1a1 100644
      def test_root_parameter(self, grains):
          '''
 -- 
-2.17.1
+2.16.4
 
 

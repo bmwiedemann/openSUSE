@@ -1,4 +1,4 @@
-From 1b6f3f2e8b88ddfaebd5bfd1ae8258d417a9f098 Mon Sep 17 00:00:00 2001
+From 1cdaeb8613132c020364b7078448834be7bbb705 Mon Sep 17 00:00:00 2001
 From: Matei Albu <malbu@suse.de>
 Date: Fri, 15 Feb 2019 14:34:13 +0100
 Subject: [PATCH] Strip trailing "/" from repo.uri when comparing repos
@@ -23,6 +23,6 @@ index b7c1a342ef..d49a48310e 100644
  
          if repo_matches or kw_matches:
 -- 
-2.20.1
+2.16.4
 
 

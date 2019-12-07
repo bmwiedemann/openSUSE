@@ -1,4 +1,4 @@
-From f9e7ace2f7c56a7fb4df60a048131dbd6887340b Mon Sep 17 00:00:00 2001
+From 812709918226b98cccdcb388863ce68b6cf076b6 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 27 Sep 2019 11:33:47 +0200
 Subject: [PATCH] Adds the possibility to also use downloadonly in kwargs

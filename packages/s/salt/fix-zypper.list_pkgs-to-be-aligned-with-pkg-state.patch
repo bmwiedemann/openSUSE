@@ -1,4 +1,4 @@
-From 3b5803d31a93d2f619246d48691f52f6c65d52ee Mon Sep 17 00:00:00 2001
+From 3b85fa4cadc10881f2408e95700f7a6dae35ce21 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 25 Jun 2018 13:06:40 +0100
@@ -53,6 +53,6 @@ index 2034262b23..0aca1e0af8 100644
              cver = new_pkgs.get(pkgname)
              if not cver and pkgname in new_caps:
 -- 
-2.17.1
+2.16.4
 
 

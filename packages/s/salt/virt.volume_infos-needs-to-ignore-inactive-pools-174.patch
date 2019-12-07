@@ -1,4 +1,4 @@
-From df1caa8fa6551f880202649a7f4133343da5da0f Mon Sep 17 00:00:00 2001
+From 0cf303fb475fc35c84aba0c4b2d4708aca3c211d Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
 Date: Tue, 3 Sep 2019 15:17:38 +0200
 Subject: [PATCH] virt.volume_infos needs to ignore inactive pools (#174)
@@ -78,6 +78,6 @@ index b343b9bc31..e644e62452 100644
  
          with patch('salt.modules.virt._get_domain', MagicMock(return_value=mock_vms)):
 -- 
-2.20.1
+2.16.4
 
 

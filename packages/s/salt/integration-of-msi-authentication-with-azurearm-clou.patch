@@ -1,4 +1,4 @@
-From 216342f03940080176111f5e0e31b43cd909e164 Mon Sep 17 00:00:00 2001
+From 13855ebda730a0a369c9b98d397d62b9d9a67145 Mon Sep 17 00:00:00 2001
 From: ed lane <ed.lane.0@gmail.com>
 Date: Thu, 30 Aug 2018 06:07:08 -0600
 Subject: [PATCH] Integration of MSI authentication with azurearm cloud
@@ -9,7 +9,7 @@ Subject: [PATCH] Integration of MSI authentication with azurearm cloud
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/salt/cloud/clouds/azurearm.py b/salt/cloud/clouds/azurearm.py
-index e8050dca16..229412adcd 100644
+index a422feca4f..9948dedc6c 100644
 --- a/salt/cloud/clouds/azurearm.py
 +++ b/salt/cloud/clouds/azurearm.py
 @@ -58,6 +58,9 @@ The Azure ARM cloud module is used to control access to Microsoft Azure Resource
@@ -41,6 +41,6 @@ index e8050dca16..229412adcd 100644
              'client_id',
              get_configured_provider(), __opts__, search_global=False
 -- 
-2.17.1
+2.16.4
 
 

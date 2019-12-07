@@ -1,4 +1,4 @@
-From 2dcee9c2773f588cc5ca040b1d22c1e8036dcbf7 Mon Sep 17 00:00:00 2001
+From 2fe38d075efce89dd94c1088ab8c97656e589c8f Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Tue, 7 May 2019 12:24:35 +0200
 Subject: [PATCH] Fix async-batch multiple done events
@@ -133,6 +133,6 @@ index d519157d92..441f9c58b9 100644
 +        self.batch.schedule_next()
 +        self.assertEqual(len(self.batch.event.io_loop.call_later.mock_calls), 0)
 -- 
-2.21.0
+2.16.4
 
 

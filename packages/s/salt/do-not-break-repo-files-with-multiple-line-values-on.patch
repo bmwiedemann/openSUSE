@@ -1,4 +1,4 @@
-From b99e55aab52d086315d54cf44af68f40dcf79dc9 Mon Sep 17 00:00:00 2001
+From a8f289c4eb03c051d8ffc60eed28985f3b49d921 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 29 May 2019 11:03:16 +0100
@@ -6,8 +6,8 @@ Subject: [PATCH] Do not break repo files with multiple line values on
  yumpkg (bsc#1135360)
 
 ---
- salt/modules/yumpkg.py                | 16 ++++++---
- tests/integration/modules/test_pkg.py | 48 +++++++++++++++++++++++++++
+ salt/modules/yumpkg.py                | 16 +++++++++---
+ tests/integration/modules/test_pkg.py | 48 +++++++++++++++++++++++++++++++++++
  2 files changed, 60 insertions(+), 4 deletions(-)
 
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
@@ -47,10 +47,10 @@ index 5ec3835574..3a4fe47a45 100644
          content += comments + '\n'
  
 diff --git a/tests/integration/modules/test_pkg.py b/tests/integration/modules/test_pkg.py
-index 0271cea81f..a82c9662c7 100644
+index 66ac3cfb61..7204428eca 100644
 --- a/tests/integration/modules/test_pkg.py
 +++ b/tests/integration/modules/test_pkg.py
-@@ -123,6 +123,54 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+@@ -136,6 +136,54 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
              if repo is not None:
                  self.run_function('pkg.del_repo', [repo])
  
@@ -106,6 +106,6 @@ index 0271cea81f..a82c9662c7 100644
      def test_owner(self):
          '''
 -- 
-2.21.0
+2.16.4
 
 

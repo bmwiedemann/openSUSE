@@ -1,4 +1,4 @@
-From d3b2f157643845d2659a226ba72ce24ce1d2a73d Mon Sep 17 00:00:00 2001
+From 37a3628e3a3cd2d1f18e7834a151efab21b10433 Mon Sep 17 00:00:00 2001
 From: Maximilian Meister <mmeister@suse.de>
 Date: Thu, 5 Apr 2018 13:23:23 +0200
 Subject: [PATCH] fall back to PyMySQL
@@ -11,7 +11,7 @@ Signed-off-by: Maximilian Meister <mmeister@suse.de>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/mysql.py b/salt/modules/mysql.py
-index de8916f4f2..64c773f40a 100644
+index 94f4b4acce..7e8e6026b3 100644
 --- a/salt/modules/mysql.py
 +++ b/salt/modules/mysql.py
 @@ -58,7 +58,7 @@ try:
@@ -33,6 +33,6 @@ index de8916f4f2..64c773f40a 100644
          MySQLdb = None
  
 -- 
-2.17.1
+2.16.4
 
 

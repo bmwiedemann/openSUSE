@@ -1164,4 +1164,41 @@ let build start it or we will get libvirt errors.
 - Add new &quot;salt-standalone-formulas-configuration&quot; package (fate#327791)</comment>
     <requestid>746516</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>2082f3ca392709bc4db32dd8e80aea87</srcmd5>
+    <version>2019.2.2</version>
+    <time>1575728175</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent test_mod_del_repo_multiline_values to fail
+- Read repo info without using interpolation (bsc#1135656)
+- Requires vs BuildRequires
+- Limiting M2Crypto to &gt;= SLE15
+- Replacing pycrypto with M2Crypto
+- Fix for log checking in x509 test
+- Update to 2019.2.2 release
+- Added:
+  * fix-for-log-checking-in-x509-test.patch
+  * prevent-test_mod_del_repo_multiline_values-to-fail.patch
+  * read-repo-info-without-using-interpolation-bsc-11356.patch
+- Modified:
+  * async-batch-implementation.patch
+  * add-hold-unhold-functions.patch
+  * adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+  * decide-if-the-source-should-be-actually-skipped.patch
+  * allow-passing-kwargs-to-pkg.list_downloaded-bsc-1140.patch
+  * add-batch_presence_ping_timeout-and-batch_presence_p.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * run-salt-api-as-user-salt-bsc-1064520.patch
+  * fix-unit-test-for-grains-core.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * fix-async-batch-multiple-done-events.patch
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * fix-for-older-mock-module.patch
+  * do-not-break-repo-files-with-multiple-line-values-on.patch
+  * fall-back-to-pymysql.patch
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+  * loosen-azure-sdk-dependencies-in-azurearm-cloud-driv.patch
+  * add-virt.volume_infos-and-virt.volume_delete.patch</comment>
+    <requestid>753172</requestid>
+  </revision>
 </revisionlist>

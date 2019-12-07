@@ -1,4 +1,4 @@
-From 0fd1e40e7149dd1a33f9a4497fa4e31c78ddfba7 Mon Sep 17 00:00:00 2001
+From fdc0a1f4adc40d9e5b5f7164f750e4580b9cd3f4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Thu, 18 Oct 2018 13:32:59 +0200
 Subject: [PATCH] Add virt.all_capabilities
@@ -10,15 +10,15 @@ before calling virt.domain_capabilities for each of them.
 This commit embeds all this logic to get them all in a single
 virt.all_capabilities call.
 ---
- salt/modules/virt.py            | 107 +++++++++++++++++++++++---------
- tests/unit/modules/test_virt.py |  56 +++++++++++++++++
+ salt/modules/virt.py            | 107 +++++++++++++++++++++++++++++-----------
+ tests/unit/modules/test_virt.py |  56 +++++++++++++++++++++
  2 files changed, 134 insertions(+), 29 deletions(-)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index b45c5f522d..0921122a8a 100644
+index 8d63b6ff4c..195da49296 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
-@@ -4094,37 +4094,10 @@ def _parse_caps_loader(node):
+@@ -4097,37 +4097,10 @@ def _parse_caps_loader(node):
      return result
  
  
@@ -58,7 +58,7 @@ index b45c5f522d..0921122a8a 100644
      result = {
          'emulator': caps.find('path').text if caps.find('path') is not None else None,
          'domain': caps.find('domain').text if caps.find('domain') is not None else None,
-@@ -4164,6 +4137,82 @@ def domain_capabilities(emulator=None, arch=None, machine=None, domain=None, **k
+@@ -4167,6 +4140,82 @@ def domain_capabilities(emulator=None, arch=None, machine=None, domain=None, **k
      return result
  
  
@@ -142,7 +142,7 @@ index b45c5f522d..0921122a8a 100644
      '''
      Return the optimal 'custom' CPU baseline config for VM's on this minion
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 3a69adece1..bd34962a6a 100644
+index 6546a0467c..36fcf0d4c0 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
 @@ -2204,6 +2204,62 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
@@ -209,6 +209,6 @@ index 3a69adece1..bd34962a6a 100644
          '''
          Test virt._get_net_xml() with VLAN tag
 -- 
-2.20.1
+2.16.4
 
 

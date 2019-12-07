@@ -1,4 +1,4 @@
-From 4219d3d69799bc20f88eed0a02ef15c932e6782e Mon Sep 17 00:00:00 2001
+From 1a98027d94dc7491182a16eef2e6134c2d8423b6 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Thu, 6 Dec 2018 16:26:23 +0100
 Subject: [PATCH] Add hold/unhold functions
@@ -7,7 +7,7 @@ Add unhold function
 
 Add warnings
 ---
- salt/modules/zypperpkg.py | 88 ++++++++++++++++++++++++++++++++++++++-
+ salt/modules/zypperpkg.py | 88 ++++++++++++++++++++++++++++++++++++++++++++++-
  1 file changed, 87 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
@@ -139,6 +139,6 @@ index 001b852fc4..0c26e2214c 100644
      added = []
      try:
 -- 
-2.20.1
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From 2bb024d871acaf5726eeb6e89fb83785605b4c83 Mon Sep 17 00:00:00 2001
+From 4bf9567fd28470085ee501e5e17c75a932b5dde5 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 19 Oct 2018 15:44:47 +0200
 Subject: [PATCH] Add supportconfig module for remote calls and SaltSSH
@@ -198,13 +198,13 @@ Check last function by full name
  salt/cli/support/__init__.py           |   2 +-
  salt/cli/support/collector.py          |  12 +-
  salt/loader.py                         |   6 +-
- salt/modules/saltsupport.py            | 381 ++++++++++++++++++++++++
+ salt/modules/saltsupport.py            | 381 +++++++++++++++++++++++++++++++
  salt/state.py                          |  34 ++-
- salt/states/saltsupport.py             | 206 +++++++++++++
- salt/utils/args.py                     |   4 +-
+ salt/states/saltsupport.py             | 206 +++++++++++++++++
+ salt/utils/args.py                     |   6 +-
  salt/utils/decorators/__init__.py      |  24 ++
- tests/unit/modules/test_saltsupport.py | 394 +++++++++++++++++++++++++
- 9 files changed, 1044 insertions(+), 19 deletions(-)
+ tests/unit/modules/test_saltsupport.py | 394 +++++++++++++++++++++++++++++++++
+ 9 files changed, 1044 insertions(+), 21 deletions(-)
  create mode 100644 salt/modules/saltsupport.py
  create mode 100644 salt/states/saltsupport.py
  create mode 100644 tests/unit/modules/test_saltsupport.py
@@ -267,10 +267,10 @@ index a4343297b6..cbae189aea 100644
  
                              archive_path = self.collector.archive_path
 diff --git a/salt/loader.py b/salt/loader.py
-index ae024ccac9..094a816d11 100644
+index 0cff0c72bb..d494c452ed 100644
 --- a/salt/loader.py
 +++ b/salt/loader.py
-@@ -1570,8 +1570,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+@@ -1687,8 +1687,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
          ))
  
          for attr in getattr(mod, '__load__', dir(mod)):
@@ -671,10 +671,10 @@ index 0000000000..750b2655d6
 +
 +    return __virtualname__
 diff --git a/salt/state.py b/salt/state.py
-index e7288bce2e..b4b2a00601 100644
+index dfa9c6de58..c3119b6a33 100644
 --- a/salt/state.py
 +++ b/salt/state.py
-@@ -1315,8 +1315,9 @@ class State(object):
+@@ -1358,8 +1358,9 @@ class State(object):
                  names = []
                  if state.startswith('__'):
                      continue
@@ -686,7 +686,7 @@ index e7288bce2e..b4b2a00601 100644
                  if orchestration_jid is not None:
                      chunk['__orchestration_jid__'] = orchestration_jid
                  if '__sls__' in body:
-@@ -1901,8 +1902,12 @@ class State(object):
+@@ -1929,8 +1930,12 @@ class State(object):
                          ret = self.call_parallel(cdata, low)
                      else:
                          self.format_slots(cdata)
@@ -701,7 +701,7 @@ index e7288bce2e..b4b2a00601 100644
                  self.states.inject_globals = {}
              if 'check_cmd' in low and '{0[state]}.mod_run_check_cmd'.format(low) not in self.states:
                  ret.update(self._run_check_cmd(low))
-@@ -2729,10 +2734,31 @@ class State(object):
+@@ -2762,10 +2767,31 @@ class State(object):
          running.update(errors)
          return running
  
@@ -946,19 +946,21 @@ index 0000000000..f245f7f137
 +    '''
 +    return __virtualname__
 diff --git a/salt/utils/args.py b/salt/utils/args.py
-index a3d8099c7f..19de7d5d39 100644
+index 57dbf5861a..1f4d5d2e0f 100644
 --- a/salt/utils/args.py
 +++ b/salt/utils/args.py
-@@ -19,7 +19,7 @@ import salt.utils.data
+@@ -20,9 +20,7 @@ import salt.utils.data
  import salt.utils.jid
  import salt.utils.versions
  import salt.utils.yaml
+-
+-log = logging.getLogger(__name__)
 -
 +from salt.utils.odict import OrderedDict
  
  if six.PY3:
      KWARG_REGEX = re.compile(r'^([^\d\W][\w.-]*)=(?!=)(.*)$', re.UNICODE)
-@@ -409,7 +409,7 @@ def format_call(fun,
+@@ -423,7 +421,7 @@ def format_call(fun,
      ret = initial_ret is not None and initial_ret or {}
  
      ret['args'] = []
@@ -968,10 +970,10 @@ index a3d8099c7f..19de7d5d39 100644
      aspec = get_function_argspec(fun, is_class_method=is_class_method)
  
 diff --git a/salt/utils/decorators/__init__.py b/salt/utils/decorators/__init__.py
-index 81d1812833..c5da5b6d4b 100644
+index a6da91447a..7529013a8e 100644
 --- a/salt/utils/decorators/__init__.py
 +++ b/salt/utils/decorators/__init__.py
-@@ -596,3 +596,27 @@ def ensure_unicode_args(function):
+@@ -671,3 +671,27 @@ def ensure_unicode_args(function):
          else:
              return function(*args, **kwargs)
      return wrapped
@@ -1400,6 +1402,6 @@ index 0000000000..7bd652a90e
 +            assert out.messages[saltsupport.LogCollector.INFO] == ['00:00:00.000 - The real TTYs became '
 +                                                                   'pseudo TTYs and vice versa']
 -- 
-2.20.1
+2.16.4
 
 

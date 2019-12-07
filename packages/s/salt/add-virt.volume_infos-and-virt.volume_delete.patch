@@ -1,4 +1,4 @@
-From 5e202207d02d2bf4860cc5487ed19f9d835993d1 Mon Sep 17 00:00:00 2001
+From 3bb798795f89e1af5132c6a97ddb0cf414912265 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Fri, 15 Feb 2019 17:28:00 +0100
 Subject: [PATCH] Add virt.volume_infos() and virt.volume_delete()
@@ -11,15 +11,15 @@ names of the virtual machines using the volumes of file type.
 
 virt.volume_delete() allows removing a given volume.
 ---
- salt/modules/virt.py            | 126 +++++++++++++++++++++
- tests/unit/modules/test_virt.py | 195 ++++++++++++++++++++++++++++++++
+ salt/modules/virt.py            | 126 ++++++++++++++++++++++++++
+ tests/unit/modules/test_virt.py | 195 ++++++++++++++++++++++++++++++++++++++++
  2 files changed, 321 insertions(+)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index 0921122a8a..17039444c4 100644
+index 195da49296..9bb3636bd1 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
-@@ -4988,3 +4988,129 @@ def pool_list_volumes(name, **kwargs):
+@@ -4991,3 +4991,129 @@ def pool_list_volumes(name, **kwargs):
          return pool.listVolumes()
      finally:
          conn.close()
@@ -150,7 +150,7 @@ index 0921122a8a..17039444c4 100644
 +    finally:
 +        conn.close()
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index bd34962a6a..14e51e1e2a 100644
+index 36fcf0d4c0..6f9eea241a 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
 @@ -2698,3 +2698,198 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
@@ -353,6 +353,6 @@ index bd34962a6a..14e51e1e2a 100644
 +            virt.volume_delete('missing', 'test_volume')
 +        self.assertEqual(mock_delete.call_count, 2)
 -- 
-2.20.1
+2.16.4
 
 

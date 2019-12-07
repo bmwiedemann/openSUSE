@@ -1,4 +1,4 @@
-From 11c9eacc439697e9fa7b30918963e4736333ed36 Mon Sep 17 00:00:00 2001
+From 9fc2217cd12d313f87d4db0e408e5b68b23c2330 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Wed, 14 Nov 2018 17:36:23 +0100
 Subject: [PATCH] Get os_arch also without RPM package installed
@@ -17,8 +17,8 @@ Add UT for OS arch detection when no CPU arch or machine can be determined
 
 Remove unsupported testcase
 ---
- salt/utils/pkg/rpm.py        |  18 ++++--
- tests/unit/utils/test_pkg.py | 105 ++++++++++++++++++++++-------------
+ salt/utils/pkg/rpm.py        |  18 +++++---
+ tests/unit/utils/test_pkg.py | 105 ++++++++++++++++++++++++++-----------------
  2 files changed, 77 insertions(+), 46 deletions(-)
 
 diff --git a/salt/utils/pkg/rpm.py b/salt/utils/pkg/rpm.py
@@ -176,6 +176,6 @@ index c293852058..361e0bf92f 100644
 +        '''
 +        assert rpm.get_osarch() == 'unknown'
 -- 
-2.17.1
+2.16.4
 
 

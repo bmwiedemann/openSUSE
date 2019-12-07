@@ -1,4 +1,4 @@
-From 8c4066c668147b1180c56f39722d2ade78ffd41c Mon Sep 17 00:00:00 2001
+From 10c3c47a4c6ae173e2831d4256b8d8af6b33cf5a Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 13 Jun 2019 17:48:55 +0200
 Subject: [PATCH] Fix zypper pkg.list_pkgs expectation and dpkg mocking
@@ -52,6 +52,6 @@ index 5c5091a570..a7063e47c6 100644
                      'release': '1.1',
                      'arch': 'i586',
 -- 
-2.21.0
+2.16.4
 
 

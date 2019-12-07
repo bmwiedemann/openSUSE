@@ -1,4 +1,4 @@
-From 5eacdf8fef35cdd05cae1b65485b3f820c86bc68 Mon Sep 17 00:00:00 2001
+From 263c8c98a5601179a53c00523a1579883e705f1f Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 4 Dec 2018 16:39:08 +0100
 Subject: [PATCH] Decide if the source should be actually skipped
@@ -8,10 +8,10 @@ Subject: [PATCH] Decide if the source should be actually skipped
  1 file changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index dc27903230..42d606926f 100644
+index 64620647c2..4a331444c9 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -1698,6 +1698,27 @@ def list_repo_pkgs(*args, **kwargs):  # pylint: disable=unused-import
+@@ -1574,6 +1574,27 @@ def list_repo_pkgs(*args, **kwargs):  # pylint: disable=unused-import
      return ret
  
  
@@ -39,7 +39,7 @@ index dc27903230..42d606926f 100644
  def list_repos():
      '''
      Lists all repos in the sources.list (and sources.lists.d) files
-@@ -1713,7 +1734,7 @@ def list_repos():
+@@ -1589,7 +1610,7 @@ def list_repos():
      repos = {}
      sources = sourceslist.SourcesList()
      for source in sources.list:
@@ -49,6 +49,6 @@ index dc27903230..42d606926f 100644
          repo = {}
          repo['file'] = source.file
 -- 
-2.20.1
+2.16.4
 
 

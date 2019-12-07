@@ -1,4 +1,4 @@
-From 8cd87eba73df54a9ede47eda9425e6ffceff7ac0 Mon Sep 17 00:00:00 2001
+From 78f5d1bd931f5329792d0e430c75025b45c14041 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Tue, 30 Jul 2019 11:23:12 +0200
 Subject: [PATCH] Accumulated changes required for Yomi (#165)
@@ -58,14 +58,14 @@ so the cached data will be separated too.
 
 (cherry picked from commit 9c54bb3e8c93ba21fc583bdefbcadbe53cbcd7b5)
 ---
- salt/modules/chroot.py               | 36 +++++++++-------
- salt/modules/cmdmod.py               | 12 ++++--
- salt/modules/freezer.py              | 20 ++++++---
- salt/modules/zypperpkg.py            | 13 ++++--
- tests/unit/modules/test_chroot.py    | 36 +++++++++++++++-
- tests/unit/modules/test_cmdmod.py    | 50 ++++++++++++++++++++++
- tests/unit/modules/test_freezer.py   | 62 +++++++++++++++++++++++++---
- tests/unit/modules/test_zypperpkg.py | 21 ++++++++++
+ salt/modules/chroot.py               | 36 +++++++++++----------
+ salt/modules/cmdmod.py               | 12 +++++--
+ salt/modules/freezer.py              | 20 ++++++++----
+ salt/modules/zypperpkg.py            | 13 ++++++--
+ tests/unit/modules/test_chroot.py    | 36 +++++++++++++++++++--
+ tests/unit/modules/test_cmdmod.py    | 50 +++++++++++++++++++++++++++++
+ tests/unit/modules/test_freezer.py   | 62 ++++++++++++++++++++++++++++++++----
+ tests/unit/modules/test_zypperpkg.py | 21 ++++++++++++
  8 files changed, 214 insertions(+), 36 deletions(-)
 
 diff --git a/salt/modules/chroot.py b/salt/modules/chroot.py
@@ -181,10 +181,10 @@ index 6e4705b67e..17b5890d8c 100644
              raise CommandExecutionError(ret['stderr'])
  
 diff --git a/salt/modules/cmdmod.py b/salt/modules/cmdmod.py
-index d0819f2f79..b279d00a11 100644
+index 1801147f57..a7e1553ec3 100644
 --- a/salt/modules/cmdmod.py
 +++ b/salt/modules/cmdmod.py
-@@ -3064,13 +3064,19 @@ def run_chroot(root,
+@@ -3079,13 +3079,19 @@ def run_chroot(root,
  
      if isinstance(cmd, (list, tuple)):
          cmd = ' '.join([six.text_type(i) for i in cmd])
@@ -575,6 +575,6 @@ index 0a3053680f..695d982ca6 100644
 +            zypper._clean_cache()
 +            self.assertEqual(zypper.__context__, {'pkg.other_data': None})
 -- 
-2.21.0
+2.16.4
 
 

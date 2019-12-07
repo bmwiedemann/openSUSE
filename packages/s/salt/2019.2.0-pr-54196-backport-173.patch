@@ -1,4 +1,4 @@
-From 3119bc27584472b0f0d440a37ec4cff2504165f2 Mon Sep 17 00:00:00 2001
+From c9e39c7af97180414205a8ad752f86f579e75a58 Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
 Date: Tue, 3 Sep 2019 15:16:30 +0200
 Subject: [PATCH] 2019.2.0 PR 54196 backport (#173)
@@ -219,6 +219,6 @@ index 8022989937..2904fa224d 100644
                      'virt.pool_start': mocks['start']
                  }):
 -- 
-2.20.1
+2.16.4
 
 

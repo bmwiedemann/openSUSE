@@ -1,4 +1,4 @@
-From 4ce0bc544174fdb00482db4653fb4b0ef411e78b Mon Sep 17 00:00:00 2001
+From ab55daa8b642f7b7fde589f971bb078eea098059 Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
 Date: Tue, 3 Sep 2019 15:18:04 +0200
 Subject: [PATCH] Fix virt.full_info (#176)
@@ -45,7 +45,7 @@ already used like by a running VM. Using the qemu-img -U flag gets it
 running in all cases.
 ---
  salt/modules/virt.py            |  10 +-
- tests/unit/modules/test_virt.py | 242 +++++++++++++++++---------------
+ tests/unit/modules/test_virt.py | 242 +++++++++++++++++++++-------------------
  2 files changed, 132 insertions(+), 120 deletions(-)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
@@ -369,6 +369,6 @@ index e644e62452..4d20e998d8 100644
 +        self.assertEqual('5900', graphics['port'])
 +        self.assertEqual('0.0.0.0', graphics['listen'])
 -- 
-2.20.1
+2.16.4
 
 

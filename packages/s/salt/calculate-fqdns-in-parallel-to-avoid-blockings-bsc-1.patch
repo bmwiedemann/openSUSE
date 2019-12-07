@@ -1,8 +1,9 @@
-From 722b9395a6489da7626e6a388c78bf8e8812190e Mon Sep 17 00:00:00 2001
+From e27ccce1429fa604137df35d8dabbc8016c2b5c9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 12 Apr 2019 16:47:03 +0100
-Subject: [PATCH] Calculate FQDNs in parallel to avoid blockings (bsc#1129079)
+Subject: [PATCH] Calculate FQDNs in parallel to avoid blockings
+ (bsc#1129079)
 
 Fix pylint issue
 ---
@@ -10,10 +11,10 @@ Fix pylint issue
  1 file changed, 26 insertions(+), 5 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 05a9d5035d..796458939d 100644
+index 7d75d48bb5..ac66a437fd 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -20,11 +20,14 @@ import platform
+@@ -20,12 +20,15 @@ import platform
  import logging
  import locale
  import uuid
@@ -22,13 +23,14 @@ index 05a9d5035d..796458939d 100644
  from errno import EACCES, EPERM
  import datetime
  import warnings
+ import time
  
 +from multiprocessing.dummy import Pool as ThreadPool
 +
  # pylint: disable=import-error
  try:
      import dateutil.tz
-@@ -2200,13 +2203,10 @@ def fqdns():
+@@ -2255,13 +2258,10 @@ def fqdns():
      grains = {}
      fqdns = set()
  
@@ -44,9 +46,9 @@ index 05a9d5035d..796458939d 100644
          except socket.herror as err:
              if err.errno == 0:
                  # No FQDN for this IP address, so we don't need to know this all the time.
-@@ -2216,6 +2216,27 @@ def fqdns():
+@@ -2271,6 +2271,27 @@ def fqdns():
          except (socket.error, socket.gaierror, socket.timeout) as err:
-             log.error(err_message, err)
+             log.error(err_message, ip, err)
  
 +    start = time.time()
 +
@@ -73,5 +75,6 @@ index 05a9d5035d..796458939d 100644
  
  
 -- 
-2.17.1
+2.16.4
+
 

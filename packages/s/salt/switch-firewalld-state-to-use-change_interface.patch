@@ -1,4 +1,4 @@
-From ee499612e1302b908a64dde696065b0093fe3115 Mon Sep 17 00:00:00 2001
+From d21552ca35f9f90acc12e907251ed5ded3c2a5f7 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 20 May 2019 11:59:39 +0100
@@ -68,6 +68,6 @@ index 4623798658..fc5b233f98 100644
                      ret['comment'] = 'Error: {0}'.format(err)
                      return ret
 -- 
-2.17.1
+2.16.4
 
 

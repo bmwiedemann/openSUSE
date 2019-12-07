@@ -1,4 +1,4 @@
-From b0b5a78a463f7587be4f81074b182d1f4b4461be Mon Sep 17 00:00:00 2001
+From 2635b6c87a74e6c274d41a1f526166f6d347ae0a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Thu, 4 Apr 2019 16:18:58 +0200
 Subject: [PATCH] virt.volume_infos fix for single VM
@@ -7,15 +7,15 @@ _get_domain returns a domain object when only one VM has been found.
 virt.volume_infos needs to take care of it or it will fail to list the
 volumes informations if the host in such a case.
 ---
- salt/modules/virt.py            |  4 ++-
- tests/unit/modules/test_virt.py | 46 +++++++++++++++++++++++++++++++++
+ salt/modules/virt.py            |  4 +++-
+ tests/unit/modules/test_virt.py | 46 +++++++++++++++++++++++++++++++++++++++++
  2 files changed, 49 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index 17039444c4..a3f625909d 100644
+index 9bb3636bd1..d160f0905f 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
-@@ -5047,10 +5047,12 @@ def volume_infos(pool=None, volume=None, **kwargs):
+@@ -5050,10 +5050,12 @@ def volume_infos(pool=None, volume=None, **kwargs):
      conn = __get_conn(**kwargs)
      try:
          backing_stores = _get_all_volumes_paths(conn)
@@ -30,7 +30,7 @@ index 17039444c4..a3f625909d 100644
          def _volume_extract_infos(vol):
              '''
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 14e51e1e2a..bbe8d813d7 100644
+index 6f9eea241a..cc62b67918 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
 @@ -2864,6 +2864,52 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
@@ -87,6 +87,6 @@ index 14e51e1e2a..bbe8d813d7 100644
          '''
          Test virt.volume_delete
 -- 
-2.21.0
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From d937d1edb837bc084c1eaa320e8433382135e2d9 Mon Sep 17 00:00:00 2001
+From 7482f815a80c2c789bc09e2c72c522e6eb091fa3 Mon Sep 17 00:00:00 2001
 From: Maximilian Meister <mmeister@suse.de>
 Date: Thu, 3 May 2018 15:52:23 +0200
 Subject: [PATCH] enable passing a unix_socket for mysql returners
@@ -19,7 +19,7 @@ Signed-off-by: Maximilian Meister <mmeister@suse.de>
  1 file changed, 8 insertions(+), 3 deletions(-)
 
 diff --git a/salt/returners/mysql.py b/salt/returners/mysql.py
-index 85892cb06c..a286731d5c 100644
+index fbaaacfe0d..06b249e664 100644
 --- a/salt/returners/mysql.py
 +++ b/salt/returners/mysql.py
 @@ -18,6 +18,7 @@ config. These are the defaults:
@@ -69,6 +69,6 @@ index 85892cb06c..a286731d5c 100644
              try:
                  __context__['mysql_returner_conn'] = conn
 -- 
-2.13.7
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From 9d09fcb60b8babd415af76812c93d38b6cbce661 Mon Sep 17 00:00:00 2001
+From 815042712007e3bc9e5326b3a13b2880534630b9 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Sat, 28 Jul 2018 22:59:04 +0200
 Subject: [PATCH] Use Adler32 algorithm to compute string checksums
@@ -15,15 +15,15 @@ Choose CRC method, default to faster but less reliable "adler32", if crc is in u
 
 Add warning for Sodium.
 ---
- salt/config/__init__.py |  7 +++++-
- salt/grains/core.py     | 53 +++++++++++++++++++++++++++--------------
+ salt/config/__init__.py |  7 ++++++-
+ salt/grains/core.py     | 53 ++++++++++++++++++++++++++++++++-----------------
  2 files changed, 41 insertions(+), 19 deletions(-)
 
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index 6b74b90ce0..5d0c18b5d1 100644
+index b3dfc8e43d..ee90eb3120 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -1212,6 +1212,10 @@ VALID_OPTS = {
+@@ -1217,6 +1217,10 @@ VALID_OPTS = {
  
      # Thorium top file location
      'thorium_top': six.string_types,
@@ -34,7 +34,7 @@ index 6b74b90ce0..5d0c18b5d1 100644
  }
  
  # default configurations
-@@ -1520,7 +1524,8 @@ DEFAULT_MINION_OPTS = {
+@@ -1525,7 +1529,8 @@ DEFAULT_MINION_OPTS = {
      },
      'discovery': False,
      'schedule': {},
@@ -45,7 +45,7 @@ index 6b74b90ce0..5d0c18b5d1 100644
  
  DEFAULT_MASTER_OPTS = {
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 85a929a485..378d3cb786 100644
+index 82cd3fb657..cd7ee39d2f 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
 @@ -20,6 +20,7 @@ import platform
@@ -56,7 +56,7 @@ index 85a929a485..378d3cb786 100644
  from errno import EACCES, EPERM
  import datetime
  import warnings
-@@ -61,6 +62,7 @@ import salt.utils.path
+@@ -62,6 +63,7 @@ import salt.utils.path
  import salt.utils.pkg.rpm
  import salt.utils.platform
  import salt.utils.stringutils
@@ -64,7 +64,7 @@ index 85a929a485..378d3cb786 100644
  from salt.ext import six
  from salt.ext.six.moves import range
  
-@@ -2730,40 +2732,55 @@ def _hw_data(osdata):
+@@ -2785,40 +2787,55 @@ def _hw_data(osdata):
      return grains
  
  
@@ -139,6 +139,6 @@ index 85a929a485..378d3cb786 100644
  
  def get_master():
 -- 
-2.20.1
+2.16.4
 
 

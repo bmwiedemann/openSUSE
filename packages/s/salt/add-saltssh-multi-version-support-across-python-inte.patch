@@ -1,4 +1,4 @@
-From 18c46c301b98841d941e2d07901e7468de30b83a Mon Sep 17 00:00:00 2001
+From ee67c569786f5381fa0fb34c64f6796ecef5b21f Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Mon, 12 Mar 2018 12:01:39 +0100
 Subject: [PATCH] Add SaltSSH multi-version support across Python
@@ -254,7 +254,7 @@ Lintfix
 
 Set master_top_first to False by default
 ---
- doc/topics/releases/fluorine.rst | 178 +++++++++++++++++++++++++++++++
+ doc/topics/releases/fluorine.rst | 178 +++++++++++++++++++++++++++++++++++++++
  salt/client/ssh/ssh_py_shim.py   |   4 +
  salt/utils/thin.py               |   1 +
  3 files changed, 183 insertions(+)
@@ -445,10 +445,10 @@ index 0000000000..40c69e25cc
 +Salt version is also available on the Master machine, although does not need to be directly
 +installed together with the older Python interpreter.
 diff --git a/salt/client/ssh/ssh_py_shim.py b/salt/client/ssh/ssh_py_shim.py
-index be17a1a38c..595d1c40c7 100644
+index cd7549a178..95b3931a32 100644
 --- a/salt/client/ssh/ssh_py_shim.py
 +++ b/salt/client/ssh/ssh_py_shim.py
-@@ -164,6 +164,9 @@ def unpack_thin(thin_path):
+@@ -165,6 +165,9 @@ def unpack_thin(thin_path):
      old_umask = os.umask(0o077)  # pylint: disable=blacklisted-function
      tfile.extractall(path=OPTIONS.saltdir)
      tfile.close()
@@ -458,7 +458,7 @@ index be17a1a38c..595d1c40c7 100644
      os.umask(old_umask)  # pylint: disable=blacklisted-function
      try:
          os.unlink(thin_path)
-@@ -357,5 +360,6 @@ def main(argv):  # pylint: disable=W0613
+@@ -358,5 +361,6 @@ def main(argv):  # pylint: disable=W0613
      return retcode
  
  
@@ -466,7 +466,7 @@ index be17a1a38c..595d1c40c7 100644
  if __name__ == '__main__':
      sys.exit(main(sys.argv))
 diff --git a/salt/utils/thin.py b/salt/utils/thin.py
-index b60815225e..172b0938f5 100644
+index 3c8ffec8af..b6fa90abae 100644
 --- a/salt/utils/thin.py
 +++ b/salt/utils/thin.py
 @@ -9,6 +9,7 @@ from __future__ import absolute_import, print_function, unicode_literals
@@ -478,6 +478,6 @@ index b60815225e..172b0938f5 100644
  import subprocess
  import sys
 -- 
-2.17.1
+2.16.4
 
 

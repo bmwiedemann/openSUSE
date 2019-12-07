@@ -1,4 +1,4 @@
-From 53d182abfbf7ab1156496481801e5e64e7f112e6 Mon Sep 17 00:00:00 2001
+From 23d21edaf5565d99bb6316087863ecbf6a699034 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Wed, 30 Oct 2019 10:19:12 +0100
 Subject: [PATCH] Remove unnecessary yield causing BadYieldError
@@ -29,6 +29,6 @@ index 6d0dca1da5..754c257b36 100644
      def __del__(self):
          self.local = None
 -- 
-2.23.0
+2.16.4
 
 

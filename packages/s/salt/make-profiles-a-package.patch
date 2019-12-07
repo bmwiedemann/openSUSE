@@ -1,4 +1,4 @@
-From 155aa52dca9272db492990ad737256dada1c4364 Mon Sep 17 00:00:00 2001
+From 117d2af99095cce3c0ab7222d7333334b73aa971 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Mon, 8 Oct 2018 17:52:07 +0200
 Subject: [PATCH] Make profiles a package.
@@ -22,6 +22,6 @@ index 0000000000..b86aef30b8
 +Profiles for salt-support.
 +'''
 -- 
-2.19.0
+2.16.4
 
 

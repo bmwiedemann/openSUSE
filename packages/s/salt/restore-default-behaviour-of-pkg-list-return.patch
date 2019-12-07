@@ -1,4 +1,4 @@
-From 56fd68474f399a36b0a74ca9a01890649d997792 Mon Sep 17 00:00:00 2001
+From 1da400568977ffc45d4071189658855ee73b4013 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 30 Aug 2019 14:20:06 +0200
 Subject: [PATCH] Restore default behaviour of pkg list return
@@ -130,6 +130,6 @@ index f71d6aac9e..da1953b2a5 100644
  
  def list_locks(root=None):
 -- 
-2.20.1
+2.16.4
 
 

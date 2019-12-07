@@ -1,4 +1,4 @@
-From 189a19b6e8d28cc49e5ad5f2a683e1dfdce66a86 Mon Sep 17 00:00:00 2001
+From ee69f252a71b950377987d7fad3515082e09abff Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 28 Jun 2019 15:17:56 +0100
@@ -10,10 +10,10 @@ Move MockTimedProc implementation to tests.support.mock
 
 Add unit test for ansible caller
 ---
- salt/modules/ansiblegate.py            | 14 +++++++--
- tests/support/mock.py                  | 31 +++++++++++++++++++
- tests/unit/modules/test_ansiblegate.py | 41 ++++++++++++++++++++++++++
- tests/unit/modules/test_cmdmod.py      | 34 +--------------------
+ salt/modules/ansiblegate.py            | 14 +++++++++---
+ tests/support/mock.py                  | 31 +++++++++++++++++++++++++
+ tests/unit/modules/test_ansiblegate.py | 41 ++++++++++++++++++++++++++++++++++
+ tests/unit/modules/test_cmdmod.py      | 34 +---------------------------
  4 files changed, 84 insertions(+), 36 deletions(-)
 
 diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
@@ -214,6 +214,6 @@ index 8da672dd22..a20afaca0f 100644
  class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
      '''
 -- 
-2.21.0
+2.16.4
 
 

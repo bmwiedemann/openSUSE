@@ -1,27 +1,29 @@
-From 8fc3419db49497ca33f99d7bbc3a251d7b07ff09 Mon Sep 17 00:00:00 2001
+From 160103e536cfb5c956d64ed13b9c633153fb7a2e Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 5 Oct 2018 12:02:08 +0200
 Subject: [PATCH] Bugfix: any unicode string of length 16 will raise
  TypeError instead of ValueError
 
 ---
- salt/_compat.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ salt/_compat.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/salt/_compat.py b/salt/_compat.py
-index 8628833dcf..98931c6cce 100644
+index 61842b4bf3..42153f2395 100644
 --- a/salt/_compat.py
 +++ b/salt/_compat.py
-@@ -191,7 +191,7 @@ class IPv6AddressScoped(ipaddress.IPv6Address):
+@@ -190,8 +190,8 @@ class IPv6AddressScoped(ipaddress.IPv6Address):
+         packed = False
          if isinstance(data, bytes) and len(data) == 16 and b':' not in data:
              try:
-                 packed = bool(int(str(bytearray(data)).encode('hex'), 16))
+-                packed = bool(int(binascii.hexlify(data), 16))
 -            except ValueError:
++                packed = bool(int(str(bytearray(data)).encode('hex'), 16))
 +            except (ValueError, TypeError):
                  pass
  
          return packed
 -- 
-2.20.1
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From 46a60d81604eaf6f9fc3712e02d1066e959c96e3 Mon Sep 17 00:00:00 2001
+From bfaac404ffa334157f4408b312b12a59b059df69 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Tue, 22 Oct 2019 11:02:33 +0200
 Subject: [PATCH] Accumulated changes from Yomi (#167)
@@ -17,17 +17,17 @@ This patch ignore this kind of issue during the grains creation.
 
 (cherry picked from commit b865491b74679140f7a71c5ba50d482db47b600f)
 ---
- salt/grains/core.py                  |  4 +++
- salt/modules/zypperpkg.py            | 30 +++++++++++++------
- tests/unit/grains/test_core.py       | 45 ++++++++++++++++++++++++++++
- tests/unit/modules/test_zypperpkg.py | 26 ++++++++++++++++
+ salt/grains/core.py                  |  4 ++++
+ salt/modules/zypperpkg.py            | 30 ++++++++++++++++--------
+ tests/unit/grains/test_core.py       | 45 ++++++++++++++++++++++++++++++++++++
+ tests/unit/modules/test_zypperpkg.py | 26 +++++++++++++++++++++
  4 files changed, 96 insertions(+), 9 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index fa188a6ff7..fdabe484a8 100644
+index e1d08b76cf..6b1f2d2223 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -986,6 +986,10 @@ def _virtual(osdata):
+@@ -987,6 +987,10 @@ def _virtual(osdata):
                          grains['virtual'] = 'gce'
                      elif 'BHYVE' in output:
                          grains['virtual'] = 'bhyve'
@@ -88,10 +88,10 @@ index da1953b2a5..a87041aa70 100644
                          'install_date_time_t': None,
                      }]
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index 889fb90074..aa04a7a7ac 100644
+index 09e197a2e4..7153a078f4 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -1117,6 +1117,51 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1317,6 +1317,51 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
                  'uuid': ''
              })
  
@@ -181,6 +181,6 @@ index 695d982ca6..7617113401 100644
          '''
          Test package removal
 -- 
-2.23.0
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From 3be2bb0043f15af468f1db33b1aa1cc6f2e5797d Mon Sep 17 00:00:00 2001
+From f81e6022b51b10406e52401fc75d7ef1ae93c55d Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Wed, 9 Jan 2019 16:08:19 +0100
 Subject: [PATCH] Fix issue #2068 test
@@ -13,7 +13,7 @@ Minor update: more correct is-dict check.
  1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/salt/state.py b/salt/state.py
-index 91985c8edc..01ec1faf8b 100644
+index c3119b6a33..6af1b89037 100644
 --- a/salt/state.py
 +++ b/salt/state.py
 @@ -25,6 +25,7 @@ import traceback
@@ -47,6 +47,6 @@ index 91985c8edc..01ec1faf8b 100644
      def call_high(self, high, orchestration_jid=None):
          '''
 -- 
-2.20.1
+2.16.4
 
 

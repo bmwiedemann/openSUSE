@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Thu Nov 28 15:27:27 UTC 2019 - Mihai Dincă <mihai.dinca@suse.com>
+
+- Prevent test_mod_del_repo_multiline_values to fail
+- Read repo info without using interpolation (bsc#1135656)
+- Requires vs BuildRequires
+- Limiting M2Crypto to >= SLE15
+- Replacing pycrypto with M2Crypto
+- Fix for log checking in x509 test
+- Update to 2019.2.2 release
+
+- Added:
+  * fix-for-log-checking-in-x509-test.patch
+  * prevent-test_mod_del_repo_multiline_values-to-fail.patch
+  * read-repo-info-without-using-interpolation-bsc-11356.patch
+
+- Modified:
+  * async-batch-implementation.patch
+  * add-hold-unhold-functions.patch
+  * adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+  * decide-if-the-source-should-be-actually-skipped.patch
+  * allow-passing-kwargs-to-pkg.list_downloaded-bsc-1140.patch
+  * add-batch_presence_ping_timeout-and-batch_presence_p.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * run-salt-api-as-user-salt-bsc-1064520.patch
+  * fix-unit-test-for-grains-core.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * fix-async-batch-multiple-done-events.patch
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * fix-for-older-mock-module.patch
+  * do-not-break-repo-files-with-multiple-line-values-on.patch
+  * fall-back-to-pymysql.patch
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+  * loosen-azure-sdk-dependencies-in-azurearm-cloud-driv.patch
+  * add-virt.volume_infos-and-virt.volume_delete.patch
+  * fix-issue-2068-test.patch
+  * switch-firewalld-state-to-use-change_interface.patch
+  * make-aptpkg.list_repos-compatible-on-enabled-disable.patch
+  * fix-ipv6-scope-bsc-1108557.patch
+  * 2019.2.0-pr-54196-backport-173.patch
+  * do-not-make-ansiblegate-to-crash-on-python3-minions.patch
+  * x509-fixes-111.patch
+  * prevent-ansiblegate-unit-tests-to-fail-on-ubuntu.patch
+  * fix-zypper.list_pkgs-to-be-aligned-with-pkg-state.patch
+  * add-cpe_name-for-osversion-grain-parsing-u-49946.patch
+  * fix-failing-unit-tests-for-batch-async.patch
+  * temporary-fix-extend-the-whitelist-of-allowed-comman.patch
+  * improve-batch_async-to-release-consumed-memory-bsc-1.patch
+  * batch.py-avoid-exception-when-minion-does-not-respon.patch
+  * preserve-already-defined-destructive_tests-and-expen.patch
+  * virt.volume_infos-fix-for-single-vm.patch
+  * move-server_id-deprecation-warning-to-reduce-log-spa.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * don-t-call-zypper-with-more-than-one-no-refresh.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * get-os_arch-also-without-rpm-package-installed.patch
+  * add-saltssh-multi-version-support-across-python-inte.patch
+  * accumulated-changes-required-for-yomi-165.patch
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+  * remove-arch-from-name-when-pkg.list_pkgs-is-called-w.patch
+  * use-current-ioloop-for-the-localclient-instance-of-b.patch
+  * remove-virt.pool_delete-fast-parameter-178.patch
+  * add-multi-file-support-and-globbing-to-the-filetree-.patch
+  * use-threadpool-from-multiprocessing.pool-to-avoid-le.patch
+  * prevent-systemd-run-description-issue-when-running-a.patch
+  * integration-of-msi-authentication-with-azurearm-clou.patch
+  * virt.volume_infos-needs-to-ignore-inactive-pools-174.patch
+  * virt-1.volume_infos-fix-for-single-vm.patch
+  * add-supportconfig-module-for-remote-calls-and-saltss.patch
+  * avoid-excessive-syslogging-by-watchdog-cronjob-58.patch
+  * strip-trailing-from-repo.uri-when-comparing-repos-in.patch
+  * preserving-signature-in-module.run-state-u-50049.patch
+  * fix-zypper-pkg.list_pkgs-expectation-and-dpkg-mockin.patch
+  * fix-aptpkg-systemd-call-bsc-1143301.patch
+  * calculate-fqdns-in-parallel-to-avoid-blockings-bsc-1.patch
+  * remove-unnecessary-yield-causing-badyielderror-bsc-1.patch
+  * debian-info_installed-compatibility-50453.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * accumulated-changes-from-yomi-167.patch
+  * add-virt.all_capabilities.patch
+  * fix-memory-leak-produced-by-batch-async-find_jobs-me.patch
+  * do-not-report-patches-as-installed-when-not-all-the-.patch
+  * support-config-non-root-permission-issues-fixes-u-50.patch
+  * add-all_versions-parameter-to-include-all-installed-.patch
+  * fixes-cve-2018-15750-cve-2018-15751.patch
+  * fix-bsc-1065792.patch
+  * enable-passing-a-unix_socket-for-mysql-returners-bsc.patch
+  * avoid-traceback-when-http.query-request-cannot-be-pe.patch
+  * restore-default-behaviour-of-pkg-list-return.patch
+  * take-checksums-arg-into-account-for-postgres.datadir.patch
+  * early-feature-support-config.patch
+  * provide-the-missing-features-required-for-yomi-yet-o.patch
+  * implement-network.fqdns-module-function-bsc-1134860-.patch
+  * fix-virt.full_info-176.patch
+  * checking-for-jid-before-returning-data.patch
+  * virt.volume_infos-silence-libvirt-error-message-175.patch
+  * do-not-crash-when-there-are-ipv6-established-connect.patch
+  * fix-for-suse-expanded-support-detection.patch
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+  * add-ppc64le-as-a-valid-rpm-package-architecture.patch
+  * make-profiles-a-package.patch
+  * bugfix-any-unicode-string-of-length-16-will-raise-ty.patch
+  * fix-git_pillar-merging-across-multiple-__env__-repos.patch
+  * return-the-expected-powerpc-os-arch-bsc-1117995.patch
+  * fix-async-batch-race-conditions.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+
+- Removed:
+  * fix-syndic-start-issue.patch
+  * prevent-already-reading-continuous-exception-message.patch
+  * virt.pool_running-fix-pool-start.patch
+  * azurefs-gracefully-handle-attributeerror.patch
+  * virt-handle-whitespaces-in-vm-names.patch
+  * mount-fix-extra-t-parameter.patch
+  * try-except-undefineflags-as-this-operation-is-not-su.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 11:23:05 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Remove virt.pool_delete fast parameter (U#54474)

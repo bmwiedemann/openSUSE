@@ -1,4 +1,4 @@
-From 3d4be53c265dffdbfaf1d7d4764c361a640fd5ff Mon Sep 17 00:00:00 2001
+From ab1bc69e1454fc78ac9ba8725e61e034d882b5aa Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
 Date: Wed, 20 Jan 2016 11:01:06 +0100
 Subject: [PATCH] Run salt master as dedicated salt user
@@ -10,7 +10,7 @@ Subject: [PATCH] Run salt master as dedicated salt user
  2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/conf/master b/conf/master
-index 149fe8812f..d492aef6df 100644
+index 546db5cb28..573e4213ba 100644
 --- a/conf/master
 +++ b/conf/master
 @@ -25,7 +25,8 @@
@@ -42,6 +42,6 @@ index 3cd002308e..0d99d1b801 100644
  	missingok
  	rotate 7
 -- 
-2.13.7
+2.16.4
 
 

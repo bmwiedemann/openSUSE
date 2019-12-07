@@ -1,4 +1,4 @@
-From 5dc6f2a59a8a774d13dcfd36b25ea735df18f10f Mon Sep 17 00:00:00 2001
+From 83fa749ca09eb8eb5eb29aaa30f8565106ee3c65 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 29 Jan 2019 11:11:38 +0100
 Subject: [PATCH] Include aliases in the fqdns grains
@@ -15,17 +15,17 @@ Add UT for fqdns aliases
 
 Leverage cached interfaces, if any.
 ---
- salt/grains/core.py              | 12 +++++-------
+ salt/grains/core.py              | 14 ++++++--------
  salt/utils/network.py            | 12 ++++++++++++
  tests/unit/grains/test_core.py   | 28 +++++++++++++++++++++++++---
  tests/unit/utils/test_network.py | 19 +++++++++++++++++++
- 4 files changed, 61 insertions(+), 10 deletions(-)
+ 4 files changed, 62 insertions(+), 11 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index b0c1acceeb..05a9d5035d 100644
+index f59eeb5780..7d75d48bb5 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -2200,14 +2200,13 @@ def fqdns():
+@@ -2255,14 +2255,13 @@ def fqdns():
      grains = {}
      fqdns = set()
  
@@ -33,9 +33,10 @@ index b0c1acceeb..05a9d5035d 100644
 -                                            interface_data=_INTERFACES)
 -    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False,
 -                                                  interface_data=_INTERFACES))
+-    err_message = 'An exception occurred resolving address \'%s\': %s'
 +    addresses = salt.utils.network.ip_addrs(include_loopback=False, interface_data=_get_interfaces())
 +    addresses.extend(salt.utils.network.ip_addrs6(include_loopback=False, interface_data=_get_interfaces()))
-     err_message = 'Exception during resolving address: %s'
++    err_message = 'Exception during resolving address: %s'
      for ip in addresses:
          try:
 -            fqdns.add(socket.getfqdn(socket.gethostbyaddr(ip)[0]))
@@ -44,9 +45,9 @@ index b0c1acceeb..05a9d5035d 100644
          except socket.herror as err:
              if err.errno == 0:
                  # No FQDN for this IP address, so we don't need to know this all the time.
-@@ -2217,8 +2216,7 @@ def fqdns():
+@@ -2272,8 +2271,7 @@ def fqdns():
          except (socket.error, socket.gaierror, socket.timeout) as err:
-             log.error(err_message, err)
+             log.error(err_message, ip, err)
  
 -    grains['fqdns'] = sorted(list(fqdns))
 -    return grains
@@ -55,10 +56,10 @@ index b0c1acceeb..05a9d5035d 100644
  
  def ip_fqdn():
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index 83269cdcf6..c72d2aec41 100644
+index d6fc6a98c6..a183c9776a 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -2016,3 +2016,15 @@ def parse_host_port(host_port):
+@@ -2007,3 +2007,15 @@ def parse_host_port(host_port):
              raise ValueError('bad hostname: "{}"'.format(host))
  
      return host, port
@@ -75,10 +76,10 @@ index 83269cdcf6..c72d2aec41 100644
 +    compliant = re.compile(r"(?!-)[A-Z\d\-\_]{1,63}(?<!-)$", re.IGNORECASE)
 +    return "." in hostname and len(hostname) < 0xff and all(compliant.match(x) for x in hostname.rstrip(".").split("."))
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index d5a1b1a36b..117e02c39f 100644
+index c85225e959..e43be4939c 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -863,10 +863,32 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -994,10 +994,32 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
          ret = {'fqdns': ['bluesniff.foo.bar', 'foo.bar.baz', 'rinzler.evil-corp.com']}
          with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
              fqdns = core.fqdns()
@@ -115,13 +116,13 @@ index d5a1b1a36b..117e02c39f 100644
          '''
          test virtual grain with cmd virt-what
 diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
-index 3d20c880bd..ca627777a7 100644
+index af5cbbab2b..f4c849d124 100644
 --- a/tests/unit/utils/test_network.py
 +++ b/tests/unit/utils/test_network.py
-@@ -637,3 +637,22 @@ class NetworkTestCase(TestCase):
-             # An exception is raised if unicode is passed to socket.getfqdn
-             minion_id = network.generate_minion_id()
-         assert minion_id != '', minion_id
+@@ -680,3 +680,22 @@ class NetworkTestCase(TestCase):
+         with patch('subprocess.check_output', return_value=NETLINK_SS):
+             remotes = network._netlink_tool_remote_on('4505', 'remote')
+             self.assertEqual(remotes, set(['127.0.0.1', '::ffff:1.2.3.4']))
 +
 +    def test_is_fqdn(self):
 +        """
@@ -142,6 +143,6 @@ index 3d20c880bd..ca627777a7 100644
 +        for fqdn in ["hostname", "/some/path", "$variable.here", "verylonghostname.{}".format("domain" * 45)]:
 +            assert not network.is_fqdn(fqdn)
 -- 
-2.20.1
+2.16.4
 
 

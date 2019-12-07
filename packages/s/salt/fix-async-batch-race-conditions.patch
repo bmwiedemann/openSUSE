@@ -1,12 +1,12 @@
-From 33c5e10c2912f584243d29c764c2c6cca86edf4a Mon Sep 17 00:00:00 2001
+From 2c1311f544950fe417fb8609aa3a30da32656637 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 11 Apr 2019 15:57:59 +0200
 Subject: [PATCH] Fix async batch race conditions
 
 Close batching when there is no next batch
 ---
- salt/cli/batch_async.py            | 80 +++++++++++++++---------------
- tests/unit/cli/test_batch_async.py | 35 ++++++-------
+ salt/cli/batch_async.py            | 80 +++++++++++++++++++-------------------
+ tests/unit/cli/test_batch_async.py | 35 +++++++----------
  2 files changed, 54 insertions(+), 61 deletions(-)
 
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
@@ -248,6 +248,6 @@ index f65b6a06c3..d519157d92 100644
  
      @tornado.testing.gen_test
 -- 
-2.20.1
+2.16.4
 
 

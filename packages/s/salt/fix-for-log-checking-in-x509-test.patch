@@ -1,0 +1,31 @@
+From f114484307a2b8a3cf72bef28febe44e73b498ed Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Thu, 28 Nov 2019 15:23:36 +0100
+Subject: [PATCH] Fix for log checking in x509 test
+
+We are logging in debug and not in trace mode here.
+---
+ tests/unit/modules/test_x509.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/unit/modules/test_x509.py b/tests/unit/modules/test_x509.py
+index 7030f96484..143abe82bf 100644
+--- a/tests/unit/modules/test_x509.py
++++ b/tests/unit/modules/test_x509.py
+@@ -71,9 +71,9 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
+ 
+         subj = FakeSubject()
+         x509._parse_subject(subj)
+-        assert x509.log.trace.call_args[0][0] == "Missing attribute '%s'. Error: %s"
+-        assert x509.log.trace.call_args[0][1] == list(subj.nid.keys())[0]
+-        assert isinstance(x509.log.trace.call_args[0][2], TypeError)
++        assert x509.log.debug.call_args[0][0] == "Missing attribute '%s'. Error: %s"
++        assert x509.log.debug.call_args[0][1] == list(subj.nid.keys())[0]
++        assert isinstance(x509.log.debug.call_args[0][2], TypeError)
+ 
+     @skipIf(not HAS_M2CRYPTO, 'Skipping, M2Crypto is unavailble')
+     def test_get_pem_entry(self):
+-- 
+2.16.4
+
+

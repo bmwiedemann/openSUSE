@@ -1,4 +1,4 @@
-From 7c72c080c6b47cccecdf058cfe1be8f465d568a6 Mon Sep 17 00:00:00 2001
+From 0e4ac6001d552e649f8ab9d6c04b18bd531e4240 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 10 Jul 2018 12:06:33 +0200
 Subject: [PATCH] early feature: support-config
@@ -291,24 +291,24 @@ Remove development stub. Ughh...
 
 Removed blacklist of pkg_resources
 ---
- salt/cli/support/__init__.py              |  65 +++
- salt/cli/support/collector.py             | 495 ++++++++++++++++++++++
- salt/cli/support/console.py               | 165 ++++++++
- salt/cli/support/intfunc.py               |  42 ++
+ salt/cli/support/__init__.py              |  65 ++++
+ salt/cli/support/collector.py             | 495 ++++++++++++++++++++++++++++++
+ salt/cli/support/console.py               | 165 ++++++++++
+ salt/cli/support/intfunc.py               |  42 +++
  salt/cli/support/localrunner.py           |  34 ++
- salt/cli/support/profiles/default.yml     |  71 ++++
+ salt/cli/support/profiles/default.yml     |  71 +++++
  salt/cli/support/profiles/jobs-active.yml |   3 +
  salt/cli/support/profiles/jobs-last.yml   |   3 +
  salt/cli/support/profiles/jobs-trace.yml  |   7 +
  salt/cli/support/profiles/network.yml     |  27 ++
  salt/cli/support/profiles/postgres.yml    |  11 +
  salt/cli/support/profiles/salt.yml        |   9 +
- salt/cli/support/profiles/users.yml       |  22 +
+ salt/cli/support/profiles/users.yml       |  22 ++
  salt/scripts.py                           |  14 +
- salt/utils/parsers.py                     |  65 +++
+ salt/utils/parsers.py                     |  65 ++++
  scripts/salt-support                      |  11 +
  setup.py                                  |   2 +
- tests/unit/cli/test_support.py            | 477 +++++++++++++++++++++
+ tests/unit/cli/test_support.py            | 477 ++++++++++++++++++++++++++++
  18 files changed, 1523 insertions(+)
  create mode 100644 salt/cli/support/__init__.py
  create mode 100644 salt/cli/support/collector.py
@@ -1359,10 +1359,10 @@ index 0000000000..391acdb606
 +      info: List of all available groups
 +      output: table
 diff --git a/salt/scripts.py b/salt/scripts.py
-index e677368a0f..7a1b4bb133 100644
+index 71120366e0..c789df4e39 100644
 --- a/salt/scripts.py
 +++ b/salt/scripts.py
-@@ -508,3 +508,17 @@ def salt_extend(extension, name, description, salt_dir, merge):
+@@ -539,3 +539,17 @@ def salt_extend(extension, name, description, salt_dir, merge):
                            description=description,
                            salt_dir=salt_dir,
                            merge=merge)
@@ -1381,7 +1381,7 @@ index e677368a0f..7a1b4bb133 100644
 +    _install_signal_handlers(client)
 +    client.run()
 diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
-index 9a7f27ac11..56a8961c3a 100644
+index 1e652a845e..aa13310d5a 100644
 --- a/salt/utils/parsers.py
 +++ b/salt/utils/parsers.py
 @@ -20,6 +20,7 @@ import getpass
@@ -1400,7 +1400,7 @@ index 9a7f27ac11..56a8961c3a 100644
  import salt.utils.platform
  import salt.utils.process
  import salt.utils.stringutils
-@@ -1863,6 +1865,69 @@ class SyndicOptionParser(six.with_metaclass(OptionParserMeta,
+@@ -1902,6 +1904,69 @@ class SyndicOptionParser(six.with_metaclass(OptionParserMeta,
              self.get_config_file_path('minion'))
  
  
@@ -1488,18 +1488,18 @@ index 0000000000..48ce141c67
 +if __name__ == '__main__':
 +    salt_support()
 diff --git a/setup.py b/setup.py
-index 0841c93553..8d0dcaa4b8 100755
+index 3e930df8db..25e06a42f6 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -1015,6 +1015,7 @@ class SaltDistribution(distutils.dist.Distribution):
-                         'scripts/salt-key',
+@@ -1051,6 +1051,7 @@ class SaltDistribution(distutils.dist.Distribution):
                          'scripts/salt-master',
                          'scripts/salt-minion',
+                         'scripts/salt-proxy',
 +                        'scripts/salt-support',
                          'scripts/salt-ssh',
                          'scripts/salt-syndic',
                          'scripts/salt-unity',
-@@ -1052,6 +1053,7 @@ class SaltDistribution(distutils.dist.Distribution):
+@@ -1086,6 +1087,7 @@ class SaltDistribution(distutils.dist.Distribution):
                          'salt-key = salt.scripts:salt_key',
                          'salt-master = salt.scripts:salt_master',
                          'salt-minion = salt.scripts:salt_minion',
@@ -1991,6 +1991,6 @@ index 0000000000..85ea957d79
 +        assert jobs_trace['jobs-details'][0]['run:jobs.list_job']['info'] == 'Details on JID 0000'
 +        assert jobs_trace['jobs-details'][0]['run:jobs.list_job']['args'] == [0]
 -- 
-2.17.1
+2.16.4
 
 

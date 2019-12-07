@@ -1,4 +1,4 @@
-From 8378bb24a5a53973e8dba7658b8b3465d967329f Mon Sep 17 00:00:00 2001
+From 927cef6dfa547bf2410740a8c8b41a97492510f0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 4 Oct 2019 15:00:50 +0100
@@ -6,7 +6,7 @@ Subject: [PATCH] Fix failing unit tests for batch async
 
 ---
  salt/cli/batch_async.py            |  2 +-
- tests/unit/cli/test_batch_async.py | 57 +++++++++++++++++-------------
+ tests/unit/cli/test_batch_async.py | 57 ++++++++++++++++++++++----------------
  2 files changed, 34 insertions(+), 25 deletions(-)
 
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
@@ -180,6 +180,6 @@ index 441f9c58b9..12dfe543bc 100644
 -        self.assertEqual(len(self.batch.event.io_loop.call_later.mock_calls), 0)
 +        self.assertEqual(len(self.batch.event.io_loop.spawn_callback.mock_calls), 0)
 -- 
-2.22.0
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From fa621d17371ea6c8eff75460755c0040fcbf13de Mon Sep 17 00:00:00 2001
+From fa7ae6740e32adfc437923511b92aa2009b995f2 Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
 Date: Tue, 3 Sep 2019 15:17:46 +0200
 Subject: [PATCH] virt.volume_infos: silence libvirt error message (#175)
@@ -32,6 +32,6 @@ index 0353e6a1f5..96c17bd60b 100644
      except libvirt.libvirtError as err:
          return False
 -- 
-2.20.1
+2.16.4
 
 

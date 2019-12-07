@@ -1,4 +1,4 @@
-From afdfd35222223d81c304854b5ae7af60f3820ed3 Mon Sep 17 00:00:00 2001
+From f7ae2b3ebe7d78ca60ada7fd2bb30f3cdbd75427 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 20 Nov 2018 16:06:31 +0100
 Subject: [PATCH] Debian info_installed compatibility (#50453)
@@ -49,10 +49,10 @@ Adjust architecture getter according to the lowpkg info
 
 Fix wrong Git merge: missing function signature
 ---
- salt/modules/aptpkg.py                 |  20 +++-
- salt/modules/dpkg_lowpkg.py            |  93 +++++++++++++--
- tests/unit/modules/test_aptpkg.py      | 151 ++++++++++++++++---------
- tests/unit/modules/test_dpkg_lowpkg.py |  69 +++++++++++
+ salt/modules/aptpkg.py                 |  20 ++++-
+ salt/modules/dpkg_lowpkg.py            |  93 +++++++++++++++++---
+ tests/unit/modules/test_aptpkg.py      | 151 +++++++++++++++++++++------------
+ tests/unit/modules/test_dpkg_lowpkg.py |  69 +++++++++++++++
  4 files changed, 267 insertions(+), 66 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
@@ -588,6 +588,6 @@ index bdcb7eec89..d16ce3cc1a 100644
 +        assert ret['emacs']['license'] == 'BSD v3'
 +        assert ret['emacs']['version'] == '46.1'
 -- 
-2.20.1
+2.16.4
 
 

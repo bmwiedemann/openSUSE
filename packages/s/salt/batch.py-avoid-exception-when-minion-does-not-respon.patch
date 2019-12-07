@@ -1,6 +1,7 @@
-From 50377852ca989ffa141fcf32d5ca57d120b455b8 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Jos=C3=A9=20Guilherme=20Vanz?= <jvanz@jvanz.com>
-Date: Tue, 21 May 2019 16:13:18 -0300
+From b7e1ff5b0d023fef1f86fa970323dc01bfaabd41 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 5 Jun 2019 15:15:04 +0100
 Subject: [PATCH] batch.py: avoid exception when minion does not respond
  (bsc#1135507)
 MIME-Version: 1.0
@@ -21,11 +22,11 @@ Signed-off-by: José Guilherme Vanz <jguilhermevanz@suse.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/salt/cli/batch.py b/salt/cli/batch.py
-index ce239215cb..1623fc5be8 100644
+index 67f03c8a45..10fc81a5f4 100644
 --- a/salt/cli/batch.py
 +++ b/salt/cli/batch.py
-@@ -315,6 +315,11 @@ class Batch(object):
-                     if self.opts.get('failhard') and data['ret']['retcode'] > 0:
+@@ -318,6 +318,11 @@ class Batch(object):
+                     if self.opts.get('failhard') and data['retcode'] > 0:
                          failhard = True
  
 +                # avoid an exception if the minion does not respond.
@@ -37,6 +38,6 @@ index ce239215cb..1623fc5be8 100644
                      ret[minion] = data
                      yield data
 -- 
-2.21.0
+2.16.4
 
 

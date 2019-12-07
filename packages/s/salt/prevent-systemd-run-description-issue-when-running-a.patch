@@ -1,4 +1,4 @@
-From 44a91c2ce6df78d93ce0ef659dedb0e41b1c2e04 Mon Sep 17 00:00:00 2001
+From 03bf4718a82fe73e54c907bfcf9a315eee07feee Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 30 Sep 2019 12:06:08 +0100
@@ -37,6 +37,6 @@ index 06f3a9f6aa..85360da181 100644
  
      def test_call_apt_with_kwargs(self):
 -- 
-2.22.0
+2.16.4
 
 

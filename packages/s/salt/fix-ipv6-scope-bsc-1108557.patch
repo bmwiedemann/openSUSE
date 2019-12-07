@@ -1,4 +1,4 @@
-From b6d47a2ca7f1bed902dfc6574e6fe91d3034aa29 Mon Sep 17 00:00:00 2001
+From 682964fe1cb3fc859eb72da524beaeb2a85ff610 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 28 Sep 2018 15:22:33 +0200
 Subject: [PATCH] Fix IPv6 scope (bsc#1108557)
@@ -69,11 +69,11 @@ Lintfix: W0611
 
 Reverse skipping tests: if no ipaddress
 ---
- salt/_compat.py | 74 +++++++++++++++++++++++++++++++++++++++++++++++++
+ salt/_compat.py | 74 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 74 insertions(+)
 
 diff --git a/salt/_compat.py b/salt/_compat.py
-index c10b82c0c2..8628833dcf 100644
+index ed6f4a38ea..61842b4bf3 100644
 --- a/salt/_compat.py
 +++ b/salt/_compat.py
 @@ -229,7 +229,81 @@ class IPv6InterfaceScoped(ipaddress.IPv6Interface, IPv6AddressScoped):
@@ -159,6 +159,6 @@ index c10b82c0c2..8628833dcf 100644
 +    ipaddress.ip_address = ip_address
 +    ipaddress.ip_interface = ip_interface
 -- 
-2.20.1
+2.16.4
 
 

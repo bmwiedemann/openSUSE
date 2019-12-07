@@ -1,4 +1,4 @@
-From 318b4e0cd2efb02f26392bfe2d354a3ff5d21cbc Mon Sep 17 00:00:00 2001
+From ae46bb899f3c7d70af62081b2ae0473f07a2a7b9 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Mon, 15 Oct 2018 17:26:16 +0200
 Subject: [PATCH] Preserving signature in "module.run" state (U#50049)
@@ -18,10 +18,10 @@ Replace standalone function with lambda-proxy for signatures only
  2 files changed, 32 insertions(+), 2 deletions(-)
 
 diff --git a/salt/states/module.py b/salt/states/module.py
-index 2190ffa3d2..90b1d0a5f5 100644
+index 9968529ffd..a6096ba35b 100644
 --- a/salt/states/module.py
 +++ b/salt/states/module.py
-@@ -323,7 +323,7 @@ def _call_function(name, returner=None, **kwargs):
+@@ -324,7 +324,7 @@ def _call_function(name, returner=None, **kwargs):
  
      # func_args is initialized to a list of positional arguments that the function to be run accepts
      func_args = argspec.args[:len(argspec.args or []) - len(argspec.defaults or [])]
@@ -30,7 +30,7 @@ index 2190ffa3d2..90b1d0a5f5 100644
      for funcset in reversed(kwargs.get('func_args') or []):
          if not isinstance(funcset, dict):
              # We are just receiving a list of args to the function to be run, so just append
-@@ -334,13 +334,16 @@ def _call_function(name, returner=None, **kwargs):
+@@ -335,13 +335,16 @@ def _call_function(name, returner=None, **kwargs):
                  # We are going to pass in a keyword argument. The trick here is to make certain
                  # that if we find that in the *args* list that we pass it there and not as a kwarg
                  if kwarg_key in func_args:
@@ -49,7 +49,7 @@ index 2190ffa3d2..90b1d0a5f5 100644
      _passed_prm = len(arg_type)
      missing = []
 diff --git a/tests/unit/states/test_module.py b/tests/unit/states/test_module.py
-index bf4ddcc5b4..25082d4bb4 100644
+index b505e85b90..2aff53eeaf 100644
 --- a/tests/unit/states/test_module.py
 +++ b/tests/unit/states/test_module.py
 @@ -324,3 +324,30 @@ class ModuleStateTest(TestCase, LoaderModuleMockMixin):
@@ -84,6 +84,6 @@ index bf4ddcc5b4..25082d4bb4 100644
 +            assert module._call_function('testfunc', func_args=[1, 2, 3]) == (1, 2, 3, (), {})
 +            assert module._call_function('testfunc', func_args=[3, 1, 2]) == (3, 1, 2, (), {})
 -- 
-2.19.0
+2.16.4
 
 

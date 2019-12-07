@@ -1,4 +1,4 @@
-From 84e9371399b50618765038bcec2e313a006eadf9 Mon Sep 17 00:00:00 2001
+From 32691d82e32dbc70adec03bee214b971c82a73cd Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 8 Jul 2019 14:46:10 +0100
@@ -27,6 +27,6 @@ index 70b47f8bc2..2a24d6f147 100644
 +                    proc.assert_any_call(['echo', '{"ANSIBLE_MODULE_ARGS": {"_raw_params": "arg_1", "kwarg1": "foobar"}}'], stdout=-1, timeout=1200)
                  assert ret == {"completed": True, "timeout": 1200}
 -- 
-2.21.0
+2.16.4
 
 

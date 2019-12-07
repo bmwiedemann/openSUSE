@@ -1,4 +1,4 @@
-From 51ccc41dd16564dea5b465d122218ca8047f9f3e Mon Sep 17 00:00:00 2001
+From 560910fbf8a500c501032846d6250a1a633137c4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 19 Nov 2018 11:46:26 +0000
@@ -37,13 +37,13 @@ Remove unnecessary lambda
 
 Return None instead empty string for arch and release in pkg.list_pkgs
 ---
- salt/modules/aptpkg.py                  |  38 ++++++++
- salt/modules/pkg_resource.py            |  20 +++-
- salt/modules/yumpkg.py                  |  32 ++++++-
- salt/modules/zypperpkg.py               |  29 +++++-
- tests/unit/modules/test_pkg_resource.py | 116 ++++++++++++++++++++++++
- tests/unit/modules/test_yumpkg.py       |  85 ++++++++++++++++-
- tests/unit/modules/test_zypperpkg.py    |  79 +++++++++++++++-
+ salt/modules/aptpkg.py                  |  38 +++++++++++
+ salt/modules/pkg_resource.py            |  20 ++++--
+ salt/modules/yumpkg.py                  |  32 ++++++++-
+ salt/modules/zypperpkg.py               |  29 +++++++-
+ tests/unit/modules/test_pkg_resource.py | 116 ++++++++++++++++++++++++++++++++
+ tests/unit/modules/test_yumpkg.py       |  85 ++++++++++++++++++++++-
+ tests/unit/modules/test_zypperpkg.py    |  79 +++++++++++++++++++++-
  7 files changed, 383 insertions(+), 16 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
@@ -739,6 +739,6 @@ index 3259e1810d..f586c23fd0 100644
          '''
          Test advisory patches listing.
 -- 
-2.20.1
+2.16.4
 
 

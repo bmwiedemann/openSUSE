@@ -1,4 +1,4 @@
-From 671bb9d48e120c806ca1f6f176b0ada43b1e7594 Mon Sep 17 00:00:00 2001
+From ddc5439536e8d7a0b2fca1fcb9db0b18ed961d54 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 12 Oct 2018 16:20:40 +0200
 Subject: [PATCH] Add multi-file support and globbing to the filetree
@@ -12,8 +12,8 @@ Collect system logs and boot logs
 
 Support globbing in filetree
 ---
- salt/cli/support/intfunc.py           | 49 ++++++++++++++++-----------
- salt/cli/support/profiles/default.yml |  7 ++++
+ salt/cli/support/intfunc.py           | 49 +++++++++++++++++++++--------------
+ salt/cli/support/profiles/default.yml |  7 +++++
  2 files changed, 37 insertions(+), 19 deletions(-)
 
 diff --git a/salt/cli/support/intfunc.py b/salt/cli/support/intfunc.py
@@ -111,6 +111,6 @@ index 01d9a26193..3defb5eef3 100644
 +        - /var/log/messages
  
 -- 
-2.19.0
+2.16.4
 
 

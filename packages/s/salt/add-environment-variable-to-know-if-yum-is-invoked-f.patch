@@ -1,4 +1,4 @@
-From d9d459f62d53acddd67313d9d66e1fe8caf4fd45 Mon Sep 17 00:00:00 2001
+From 960c7f29239a23c3d46c31692d2e881735f4d2a7 Mon Sep 17 00:00:00 2001
 From: Marcelo Chiaradia <mchiaradia@suse.com>
 Date: Thu, 7 Jun 2018 10:29:41 +0200
 Subject: [PATCH] Add environment variable to know if yum is invoked from
@@ -73,6 +73,6 @@ index c250b94f0e..a56a2e8366 100644
      for line in salt.utils.itertools.split(ret, os.linesep):
          inst, advisory_id, sev, pkg = re.match(r'([i|\s]) ([^\s]+) +([^\s]+) +([^\s]+)',
 -- 
-2.17.1
+2.16.4
 
 

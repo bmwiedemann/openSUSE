@@ -1,4 +1,4 @@
-From dab9967f8e4a67e5b7ddd4e6718414d2e9b25e42 Mon Sep 17 00:00:00 2001
+From 10df6dcff22785962dc372064c899b942f3c1ff9 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Fri, 14 Jun 2019 15:13:12 +0200
 Subject: [PATCH] Move server_id deprecation warning to reduce log
@@ -10,10 +10,10 @@ Subject: [PATCH] Move server_id deprecation warning to reduce log
  2 files changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index ce64620a24..e54212edfb 100644
+index ab37a4dd44..30eba0ce99 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -2812,10 +2812,6 @@ def get_server_id():
+@@ -2867,10 +2867,6 @@ def get_server_id():
          if bool(use_crc):
              id_hash = getattr(zlib, use_crc, zlib.adler32)(__opts__.get('id', '').encode()) & 0xffffffff
          else:
@@ -25,10 +25,10 @@ index ce64620a24..e54212edfb 100644
          server_id = {'server_id': id_hash}
  
 diff --git a/salt/minion.py b/salt/minion.py
-index 058b7ef6b8..97f74bf47e 100644
+index c5f637eaa6..2c0a18604e 100644
 --- a/salt/minion.py
 +++ b/salt/minion.py
-@@ -103,6 +103,7 @@ from salt.utils.odict import OrderedDict
+@@ -102,6 +102,7 @@ from salt.utils.odict import OrderedDict
  from salt.utils.process import (default_signals,
                                  SignalHandlingMultiprocessingProcess,
                                  ProcessManager)
@@ -36,7 +36,7 @@ index 058b7ef6b8..97f74bf47e 100644
  from salt.exceptions import (
      CommandExecutionError,
      CommandNotFoundError,
-@@ -992,6 +993,14 @@ class MinionManager(MinionBase):
+@@ -993,6 +994,14 @@ class MinionManager(MinionBase):
          if (self.opts['master_type'] in ('failover', 'distributed')) or not isinstance(self.opts['master'], list):
              masters = [masters]
  
@@ -48,10 +48,10 @@ index 058b7ef6b8..97f74bf47e 100644
 +                 'prefer (default "Adler32"). The server_id will be computed with'
 +                 'Adler32 by default.')
 +
+         beacons_leader = True
          for master in masters:
              s_opts = copy.deepcopy(self.opts)
-             s_opts['master'] = master
 -- 
-2.22.0
+2.16.4
 
 

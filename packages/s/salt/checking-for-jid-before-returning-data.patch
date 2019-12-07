@@ -1,4 +1,4 @@
-From 8ced9cdeb53e7dc20a1665ba2e373fbdc5d30c5d Mon Sep 17 00:00:00 2001
+From d1e016a5deb8f79adc8473b02171b5661cb93ea8 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Tue, 9 Apr 2019 16:32:46 +0200
 Subject: [PATCH] Checking for jid before returning data
@@ -30,6 +30,6 @@ index 8b37422cbf..aff354a021 100644
                  # Ignore other erroneous messages
                  continue
 -- 
-2.22.0
+2.16.4
 
 

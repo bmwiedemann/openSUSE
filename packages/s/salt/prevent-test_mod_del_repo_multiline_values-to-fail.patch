@@ -1,0 +1,57 @@
+From 13eaa8b2bb57eb1774b43e2437c5e1fd0de9cb93 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 27 Nov 2019 15:41:57 +0000
+Subject: [PATCH] Prevent test_mod_del_repo_multiline_values to fail
+
+---
+ tests/integration/modules/test_pkg.py | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/tests/integration/modules/test_pkg.py b/tests/integration/modules/test_pkg.py
+index 7204428eca..9a2cbc7bfc 100644
+--- a/tests/integration/modules/test_pkg.py
++++ b/tests/integration/modules/test_pkg.py
+@@ -145,6 +145,7 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+         try:
+             if os_grain in ['CentOS', 'RedHat', 'SUSE']:
+                 my_baseurl = 'http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/'
++                expected_get_repo_baseurl_zypp = 'http://my.fake.repo/foo/bar/%0A%20http://my.fake.repo.alt/foo/bar/'
+                 expected_get_repo_baseurl = 'http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/'
+                 major_release = int(
+                     self.run_function(
+@@ -169,17 +170,24 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+                     enabled=enabled,
+                     failovermethod=failovermethod,
+                 )
+-                # return data from pkg.mod_repo contains the file modified at
+-                # the top level, so use next(iter(ret)) to get that key
+                 self.assertNotEqual(ret, {})
+-                repo_info = ret[next(iter(ret))]
++                repo_info = {repo: ret}
+                 self.assertIn(repo, repo_info)
+-                self.assertEqual(repo_info[repo]['baseurl'], my_baseurl)
++                if os_grain == 'SUSE':
++                    self.assertEqual(repo_info[repo]['baseurl'], expected_get_repo_baseurl_zypp)
++                else:
++                    self.assertEqual(repo_info[repo]['baseurl'], my_baseurl)
+                 ret = self.run_function('pkg.get_repo', [repo])
+-                self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
++                if os_grain == 'SUSE':
++                    self.assertEqual(repo_info[repo]['baseurl'], expected_get_repo_baseurl_zypp)
++                else:
++                    self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
+                 self.run_function('pkg.mod_repo', [repo])
+                 ret = self.run_function('pkg.get_repo', [repo])
+-                self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
++                if os_grain == 'SUSE':
++                    self.assertEqual(repo_info[repo]['baseurl'], expected_get_repo_baseurl_zypp)
++                else:
++                    self.assertEqual(ret['baseurl'], expected_get_repo_baseurl)
+         finally:
+             if repo is not None:
+                 self.run_function('pkg.del_repo', [repo])
+-- 
+2.23.0
+
+

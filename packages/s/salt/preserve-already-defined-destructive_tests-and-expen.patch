@@ -1,4 +1,4 @@
-From 5a1e0b7b8eab900e03fa800cc7a0a2b59bf2ff55 Mon Sep 17 00:00:00 2001
+From a83a3a01e3bb16ec7bf4463dea1b4770c4b2955c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 3 Jun 2019 11:38:36 +0100
@@ -10,10 +10,10 @@ Subject: [PATCH] Preserve already defined DESTRUCTIVE_TESTS and
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/tests/support/parser/__init__.py b/tests/support/parser/__init__.py
-index ed262d46c0..f269457670 100644
+index a188f8945f..2802b20c62 100644
 --- a/tests/support/parser/__init__.py
 +++ b/tests/support/parser/__init__.py
-@@ -574,12 +574,12 @@ class SaltTestingParser(optparse.OptionParser):
+@@ -598,12 +598,12 @@ class SaltTestingParser(optparse.OptionParser):
  
          self.validate_options()
  
@@ -29,6 +29,6 @@ index ed262d46c0..f269457670 100644
              # expensive tests should be executed or not.
              os.environ['EXPENSIVE_TESTS'] = str(self.options.run_expensive)
 -- 
-2.17.1
+2.16.4
 
 

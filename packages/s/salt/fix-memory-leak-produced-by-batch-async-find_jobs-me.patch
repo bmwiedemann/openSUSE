@@ -1,4 +1,4 @@
-From 8941de5a64b6330c6a814059e6e337f7ad3aa6cd Mon Sep 17 00:00:00 2001
+From d6432f9ebaba32f75a476a6d4a2989d54d149731 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Mon, 16 Sep 2019 11:27:30 +0200
 Subject: [PATCH] Fix memory leak produced by batch async find_jobs
@@ -16,7 +16,7 @@ Multiple fixes:
 
 Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
 ---
- salt/cli/batch_async.py | 60 +++++++++++++++++++++++++++--------------
+ salt/cli/batch_async.py | 60 ++++++++++++++++++++++++++++++++-----------------
  salt/client/__init__.py |  1 +
  salt/master.py          |  1 -
  3 files changed, 41 insertions(+), 21 deletions(-)
@@ -165,10 +165,10 @@ index aff354a021..0bb6d2b111 100644
  
          # if kwargs are passed, pack them.
 diff --git a/salt/master.py b/salt/master.py
-index f08c126280..0e4bba0505 100644
+index ee968410f7..224725a1ba 100644
 --- a/salt/master.py
 +++ b/salt/master.py
-@@ -2043,7 +2043,6 @@ class ClearFuncs(object):
+@@ -2044,7 +2044,6 @@ class ClearFuncs(object):
      def publish_batch(self, clear_load, minions, missing):
          batch_load = {}
          batch_load.update(clear_load)
@@ -177,6 +177,6 @@ index f08c126280..0e4bba0505 100644
              self.local.opts,
              functools.partial(self._prep_jid, clear_load, {}),
 -- 
-2.23.0
+2.16.4
 
 

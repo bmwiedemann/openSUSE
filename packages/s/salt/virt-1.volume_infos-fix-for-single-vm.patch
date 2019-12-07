@@ -1,12 +1,12 @@
-From 9fcf9a768d0f11e04e145612cc5b2c05cfbf5378 Mon Sep 17 00:00:00 2001
+From 4e32b8efa3ef393f2d19d5f06a16668a514044c1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Thu, 4 Apr 2019 16:18:58 +0200
 Subject: [PATCH] virt.volume_infos fix for single VM
 
 virt.volume_infos: don't raise an error if there is no VM
 ---
- salt/modules/virt.py            |  8 ++++--
- tests/unit/modules/test_virt.py | 46 +++++++++++++++++++++++++++++++++
+ salt/modules/virt.py            |  8 +++++--
+ tests/unit/modules/test_virt.py | 46 +++++++++++++++++++++++++++++++++++++++++
  2 files changed, 52 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
@@ -86,6 +86,6 @@ index cc62b67918..b343b9bc31 100644
          '''
          Test virt.volume_delete
 -- 
-2.21.0
+2.16.4
 
 

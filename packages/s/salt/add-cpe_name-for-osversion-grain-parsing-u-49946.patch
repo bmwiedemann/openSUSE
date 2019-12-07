@@ -1,4 +1,4 @@
-From c2c002a2b8f106388fda3c1abaf518f2d47ce1cf Mon Sep 17 00:00:00 2001
+From 2c4676963dfb4646ae0d2ad8aedba0aa83d266e9 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 9 Oct 2018 14:08:50 +0200
 Subject: [PATCH] Add CPE_NAME for osversion* grain parsing (U#49946)
@@ -29,10 +29,10 @@ Fix proper part name in the string-bound CPE
  1 file changed, 28 insertions(+)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 29e8371c2b..d688b6c757 100644
+index cd7ee39d2f..f59eeb5780 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -1571,6 +1571,34 @@ def _parse_cpe_name(cpe):
+@@ -1623,6 +1623,34 @@ def _parse_cpe_name(cpe):
      return ret
  
  
@@ -68,6 +68,6 @@ index 29e8371c2b..d688b6c757 100644
      '''
      Return grains pertaining to the operating system
 -- 
-2.17.1
+2.16.4
 
 

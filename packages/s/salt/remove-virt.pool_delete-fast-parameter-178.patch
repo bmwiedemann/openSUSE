@@ -1,4 +1,4 @@
-From 6dfe6e1370f330c0d300bf0effd7e6cf8a28c734 Mon Sep 17 00:00:00 2001
+From 8d150403ceedd9bf7939bfa9ec1d6790e8ed4609 Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
 Date: Wed, 30 Oct 2019 12:18:51 +0100
 Subject: [PATCH] Remove virt.pool_delete fast parameter (#178)
@@ -71,6 +71,6 @@ index 4d20e998d8..b95f51807f 100644
 +        # and thus throwing exceptions.
 +        mock_pool.delete.assert_called_once_with(self.mock_libvirt.VIR_STORAGE_POOL_DELETE_NORMAL)
 -- 
-2.23.0
+2.16.4
 
 

@@ -1,4 +1,4 @@
-From 2cbc403b422a699cd948ed6218fce28fa901f5fa Mon Sep 17 00:00:00 2001
+From 2140fc26fb347388ac60f91c4badf76a73a8a728 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 13 Dec 2018 12:17:35 +0100
 Subject: [PATCH] Return the expected powerpc os arch (bsc#1117995)
@@ -26,6 +26,6 @@ index bb8c3fb589..828b0cecda 100644
  
  def check_32(arch, osarch=None):
 -- 
-2.20.1
+2.16.4
 
 

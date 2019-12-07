@@ -1,4 +1,4 @@
-From f667d6f0534498e2aaa6e46242727bafc13241fd Mon Sep 17 00:00:00 2001
+From db65ebf356238c151af7798ed34684847ed4a5c0 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Wed, 31 Jul 2019 15:29:03 +0200
 Subject: [PATCH] Fix aptpkg systemd call (bsc#1143301)
@@ -35,6 +35,6 @@ index 580b840197..06f3a9f6aa 100644
  
      def test_call_apt_with_kwargs(self):
 -- 
-2.22.0
+2.16.4
 
 

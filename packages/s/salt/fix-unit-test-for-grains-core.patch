@@ -1,4 +1,4 @@
-From 7ffa39cd80393f2a3ed5cd75793b134b9d939cf9 Mon Sep 17 00:00:00 2001
+From 91a864f7613927e47b9271bf0f947cf96a3bbfbf Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Thu, 11 Oct 2018 16:20:40 +0200
 Subject: [PATCH] Fix unit test for grains core
@@ -8,10 +8,10 @@ Subject: [PATCH] Fix unit test for grains core
  1 file changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index 2ab32ef41b..4923ee00b0 100644
+index 8c45ee194a..c85225e959 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -62,11 +62,10 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -68,11 +68,10 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
      def test_parse_etc_os_release(self, path_isfile_mock):
          path_isfile_mock.side_effect = lambda x: x == "/usr/lib/os-release"
          with salt.utils.files.fopen(os.path.join(OS_RELEASE_DIR, "ubuntu-17.10")) as os_release_file:
@@ -27,7 +27,7 @@ index 2ab32ef41b..4923ee00b0 100644
          self.assertEqual(os_release, {
              "NAME": "Ubuntu",
              "VERSION": "17.10 (Artful Aardvark)",
-@@ -128,7 +127,7 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -134,7 +133,7 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
  
      def test_missing_os_release(self):
          with patch('salt.utils.files.fopen', mock_open(read_data={})):
@@ -35,8 +35,8 @@ index 2ab32ef41b..4923ee00b0 100644
 +            os_release = core._parse_os_release(['/etc/os-release', '/usr/lib/os-release'])
          self.assertEqual(os_release, {})
  
-     @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+     @skipIf(not salt.utils.platform.is_windows(), 'System is not Windows')
 -- 
-2.19.0
+2.16.4
 
 

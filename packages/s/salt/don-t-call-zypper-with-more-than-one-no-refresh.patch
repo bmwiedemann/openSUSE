@@ -1,4 +1,4 @@
-From 5e0fe08c6afd75a7d65d6ccd6cf6b4b197fb1064 Mon Sep 17 00:00:00 2001
+From a2e40158ad3b92a20ec9c12f7cd75edb4a01c2fc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Tue, 29 Jan 2019 09:44:03 +0100
 Subject: [PATCH] Don't call zypper with more than one --no-refresh
@@ -37,6 +37,6 @@ index f586c23fd0..5c5091a570 100644
              self.assertEqual(sniffer.calls[0]['args'][0], ['zypper', '--non-interactive', '--no-refresh', 'foo'])
              self.assertEqual(sniffer.calls[1]['args'][0], ['zypper', '--non-interactive', '--no-refresh', 'bar'])
 -- 
-2.20.1
+2.16.4
 
 

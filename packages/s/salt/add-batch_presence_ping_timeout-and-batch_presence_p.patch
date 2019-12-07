@@ -1,4 +1,4 @@
-From 902a3527415807448be0aa28a651374a189d102c Mon Sep 17 00:00:00 2001
+From 669a03b26870a7109c3f4b327dd2b5a4ec4fa1ba Mon Sep 17 00:00:00 2001
 From: Marcelo Chiaradia <mchiaradia@suse.com>
 Date: Thu, 4 Apr 2019 13:57:38 +0200
 Subject: [PATCH] Add 'batch_presence_ping_timeout' and
@@ -9,7 +9,7 @@ Subject: [PATCH] Add 'batch_presence_ping_timeout' and
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/salt/cli/batch.py b/salt/cli/batch.py
-index 4bd07f584a..ce239215cb 100644
+index 36e66da1af..67f03c8a45 100644
 --- a/salt/cli/batch.py
 +++ b/salt/cli/batch.py
 @@ -83,6 +83,9 @@ def batch_get_opts(
@@ -41,6 +41,6 @@ index 4bd07f584a..ce239215cb 100644
  
          # Broadcast to targets
 -- 
-2.20.1
+2.16.4
 
 
