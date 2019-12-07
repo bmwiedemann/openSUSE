@@ -27,7 +27,7 @@ BuildRequires:  cmake >= 2.4.6
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  libxml2-devel
-BuildRequires:  libzypp-devel >= 17.15.0
+BuildRequires:  libzypp-devel >= 17.16.1
 BuildRequires:  readline-devel >= 5.1
 Requires:       procps
 %if 0%{?suse_version}
@@ -50,7 +50,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.32
+Version:        1.14.33
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
@@ -60,6 +60,7 @@ Obsoletes:      y2pmsh
 
 Provides:       zypper(auto-agree-with-product-licenses)
 Provides:       zypper(oldpackage)
+Provides:       zypper(purge-kernels)
 Provides:       zypper(updatestack-only)
 
 %description
@@ -79,23 +80,15 @@ Authors:
     Josef Reidinger <jreidinger@suse.cz>
 
 %package log
-%if 0%{?suse_version} && 0%{?suse_version} < 1140
-Requires:       python >= 2.6
-Requires:       python-argparse
-%else
-Requires:       python >= 2.7
-%endif
-Requires:       xz
+Requires:       /bin/bash
+Requires:       /usr/bin/awk
+Requires:       /usr/bin/grep
 BuildArch:      noarch
 Summary:        CLI for accessing the zypper logfile
 Group:          System/Packages
 
 %description -n zypper-log
 CLI for accessing the zypper logfile
-
-Authors:
---------
-    Dominik Heidler <dheidler@suse.de>
 
 %package aptitude
 Summary:        aptitude compatibility with zypper
