@@ -26,4 +26,12 @@
   * Fixed tables string representation.</comment>
     <requestid>736034</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3bb634be1ea35640f5ce62a885033a96</srcmd5>
+    <version>0.5.8</version>
+    <time>1575728365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751845</requestid>
+  </revision>
 </revisionlist>
