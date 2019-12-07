@@ -1,7 +1,7 @@
 #
 # spec file for package MotionBox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Patch1:         MotionBox-1.5.0-paths.patch
 Patch2:         Sky-1.5.0-soname.patch
 # PATCH-FEATURE-OPENSUSE Sky-1.5.0-use_system_glext.patch
 Patch3:         Sky-1.5.0-use_system_glext.patch
+# PATCH-FIX-UPSTREAM Sky-1.5.0-libtorrent_1_2.patch aloisio@gmx.com -- do not use -std=c++-11 when building sktorrent module
+Patch4:         Sky-1.5.0-libtorrent_1_2.patch
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_random-devel
@@ -63,6 +65,7 @@ It streams Torrents, Youtube, Dailymotion, Vimeo and SoundCloud.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 mv Sky-%{version} Sky
 
 %build
