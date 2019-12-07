@@ -1,7 +1,7 @@
 #
 # spec file for package linux-glibc-devel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           linux-glibc-devel
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only
@@ -35,7 +35,7 @@ PreReq:         coreutils
 Provides:       kernel-headers
 Provides:       linux-kernel-headers = %{version}
 Obsoletes:      linux-kernel-headers < %{version}
-%global kernel_arch %target_cpu
+%global kernel_arch %_target_cpu
 %ifarch x86_64 %ix86
 %global kernel_arch x86
 %endif

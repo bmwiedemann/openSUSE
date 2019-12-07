@@ -572,4 +572,12 @@
 - Make it arch dependent due to difference in installed headers</comment>
     <requestid>731758</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9b42fb31be65b07f72ad227ebfa3e426</srcmd5>
+    <version>5.4</version>
+    <time>1575727904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.4 (forwarded request 752478 from Andreas_Schwab)</comment>
+    <requestid>752479</requestid>
+  </revision>
 </revisionlist>
