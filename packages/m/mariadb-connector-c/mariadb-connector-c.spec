@@ -19,13 +19,13 @@
 %define sover 3
 %define libname libmariadb
 # equivalent mariadb version
-%define mariadb_version 10.3.17
+%define mariadb_version 10.3.20
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later

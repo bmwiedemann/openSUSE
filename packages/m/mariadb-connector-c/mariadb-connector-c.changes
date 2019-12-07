@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 28 16:06:53 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- New upstream version 3.1.5 [bsc#1156669]
+  * MDEV-20469: Plugin dialog could not be loaded (wrong path)
+  * ODBC-440: Fixed typo in sha256_password cmake configuration
+  * CONC-418: For unknown/not handled schannel error codes
+    FormatMessage function will be used instead of returning
+    "Unknown error" message.
+  
+-------------------------------------------------------------------
 Tue Sep 24 10:59:32 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - New upstream version 3.1.4
