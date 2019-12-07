@@ -1,4 +1,231 @@
 -------------------------------------------------------------------
+Sat Nov 23 23:59:44 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.46.1:
+  * This patch ensures that a KeyboardInterrupt received during
+    example generation is not treated as a mystery test failure but
+    instead propagates to the top level, not recording the interrupted
+    generation in the conjecture data tree. Thanks to Anne Archibald
+    for identifying and fixing the problem.
+
+- changes from version 4.46.0:
+  * This release changes the behaviour of floats() when excluding
+    signed zeros - floats(max_value=0.0, exclude_max=True) can no
+    longer generate -0.0 nor the much rarer floats(min_value=-0.0,
+    exclude_min=True) generate +0.0.
+  * The correct interaction between signed zeros and exclusive
+    endpoints was unclear; we now enforce the invariant that floats()
+    will never generate a value equal to an excluded endpoint (issue
+    #2201).
+  * If you prefer the old behaviour, you can pass
+    floats(max_value=-0.0) or floats(min_value=0.0) which is exactly
+    equivalent and has not changed. If you had two endpoints equal to
+    zero, we recommend clarifying your tests by using just() or
+    sampled_from() instead of floats().
+
+- changes from version 4.45.1:
+  * This patch improves the error message when invalid arguments are
+    passed to rule() or invariant() (issue #2149).
+    Thanks to Benjamin Palmer for this bugfix!
+
+- changes from version 4.45.0:
+  * This release supports typing.Final and typing.TypedDict in
+    from_type().
+
+- changes from version 4.44.5:
+  * This patch disables our pytest plugin when running on versions of
+    pytest before 4.3, the oldest our plugin supports. Note that at
+    time of writing the Pytest developers only support 4.6 and later!
+  * Hypothesis tests using @given() work on any test runner, but our
+    integrations to e.g. avoid example database collisions when
+    combined with @pytest.mark.parametrize eventually drop support for
+    obsolete versions.
+
+- changes from version 4.44.4:
+  * This patch adds some internal comments and clarifications to the
+    Hypothesis implementation. There is no user-visible change.
+
+- changes from version 4.44.3:
+  * This patch avoids importing test runners such as :pypi`pytest`,
+    :pypi`unittest2`, or :pypi`nose` solely to access their special
+    “skip test” exception types - if the module is not in sys.modules,
+    the exception can’t be raised anyway.
+  * This fixes a problem where importing an otherwise unused module
+    could cause spurious errors due to import-time side effects (and
+    possibly -Werror).
+
+- changes from version 4.44.2:
+  * This release fixes @given to only complain about missing
+    keyword-only arguments if the associated test function is actually
+    called.
+  * This matches the behaviour of other InvalidArgument errors
+    produced by @given.
+
+- changes from version 4.44.1:
+  * This patch allows Hypothesis to run in environments that do not
+    specify a __file__, such as a zipapp (issue #2196).
+
+- changes from version 4.44.0:
+  * This release adds a gufunc argument to
+    mutually_broadcastable_shapes() (issue #2174), which allows us to
+    generate shapes which are valid for functions like numpy.matmul
+    that require shapes which are not simply broadcastable.
+  * Thanks to everyone who has contributed to this feature over the
+    last year, and a particular shout-out to Zac Hatfield-Dodds and
+    Ryan Soklaski for mutually_broadcastable_shapes() and to Ryan
+    Turner for the downstream hypothesis-gufunc project.
+
+- changes from version 4.43.9:
+  * This patch fixes issue #2108, where the first test using data() to
+    draw from characters() or text() would be flaky due to unreliable
+    test timings.
+  * Time taken by lazy instantiation of strategies is now counted
+    towards drawing from the strategy, rather than towards the
+    deadline for the test function.
+
+- changes from version 4.43.8:
+  * This release ensures that the strategies passed to @given are
+    properly validated when applied to a test method inside a test
+    class.
+  * This should result in clearer error messages when some of those
+    strategies are invalid.
+
+- changes from version 4.43.7:
+  * This release changes how Hypothesis manages its search space in
+    cases where it generates redundant data. This should cause it to
+    generate significantly fewer duplicated examples (especially with
+    short integer ranges), and may cause it to produce more useful
+    examples in some cases (especially ones where there is a
+    significant amount of filtering).
+
+- changes from version 4.43.6 :
+  * This patch refactors width handling in floats(); you may notice
+    small performance improvements but the main purpose is to enable
+    work on issue #1704 (improving shrinking of bounded floats).
+
+- changes from version 4.43.5 :
+  * This patch removes an unused internal flag. There is no
+    user-visible change.
+
+- changes from version 4.43.4:
+  * This patch corrects the exception type and error message you get
+    if you attempt to use data() to draw from something which is not a
+    strategy. This never worked, but the error is more helpful now.
+
+- changes from version 4.43.3:
+  * We’ve adopted flake8-bugbear to check for a few more style issues,
+    and this patch implements the minor internal cleanups it
+    suggested. There is no user-visible change.
+
+- changes from version 4.43.2:
+  * This patch fixes the formatting of some documentation, but there
+    is no change to any executed code.
+
+- changes from version 4.43.1 :
+  * Python 3.8’s new typing.Literal type - see PEP 586 for details -
+    is now supported in from_type().
+
+- changes from version 4.43.0:
+  * This release adds the strategy mutually_broadcastable_shapes(),
+    which generates multiple array shapes that are mutually
+    broadcast-compatible with an optional user-specified base-shape.
+  * This is a generalisation of broadcastable_shapes(). It relies
+    heavily on non-public internals for performance when generating
+    and shrinking examples. We intend to support generating shapes
+    matching a ufunc signature in a future version (issue #2174).
+  * Thanks to Ryan Soklaski, Zac Hatfield-Dodds, and @rdturnermtl who
+    contributed to this new feature.
+
+- changes from version 4.42.10:
+  * This release fixes from_type() when used with bounded or
+    constrained typing.TypeVar objects (issue #2094).
+  * Previously, distinct typevars with the same constraints would be
+    treated as all single typevar, and in cases where a typevar bound
+    was resolved to a union of subclasses this could result in mixed
+    types being generated for that typevar.
+
+- changes from version 4.42.9:
+  * This patch ensures that the default value broadcastable_shapes()
+    chooses for max_dims is always valid (at most 32), even if you
+    pass min_dims=32.
+
+- changes from version 4.42.8:
+  * This patch ensures that we only add profile information to the
+    pytest header if running either pytest or Hypothesis in verbose
+    mode, matching the builtin cache plugin (issue #2155).
+
+- changes from version 4.42.7:
+  * This patch makes stateful step printing expand the result of a
+    step into multiple variables when you return multiple() (issue
+    #2139). Thanks to Joseph Weston for reporting and fixing this bug!
+
+- changes from version 4.42.6:
+  * This release fixes a bug (issue #2166) where a Unicode character
+    info cache file was generated but never used on subsequent test
+    runs, causing tests to run more slowly than they should have.
+  * Thanks to Robert Knight for this bugfix!
+
+- changes from version 4.42.5:
+  * This patch corrects some internal documentation. There is no
+    user-visible change.
+
+- changes from version 4.42.4:
+  * This release fixes a bug (issue #2160) where decorators applied
+    after @settings and before @given were ignored.
+  * Thanks to Tom Milligan for this bugfix!
+
+- changes from version 4.42.3:
+  * This release updates Hypothesis’s formatting to the new version of
+    black, and has absolutely no user visible effect.
+
+- changes from version 4.42.2:
+  * This release fixes a bug in recursive() which would have meant
+    that in practice max_leaves was treated as if it was lower than it
+    actually is - specifically it would be capped at the largest power
+    of two smaller than it. It is now handled correctly.
+
+- changes from version 4.42.1:
+  * Python 3.8’s new typing.SupportsIndex type - see PEP 357 for
+    details - is now supported in from_type().
+  * Thanks to Grigorios Giannakopoulos for the patch!
+
+- changes from version 4.42.0:
+  * This release significantly simplifies Hypothesis’s internal logic
+    for data generation, by removing a number of heuristics of
+    questionable or unproven value.
+  * The results of this change will vary significantly from test to
+    test. Most test suites will see significantly faster data
+    generation and lower memory usage. The “quality” of the generated
+    data may go up or down depending on your particular test suites.
+  * If you see any significant regressions in Hypothesis’s ability to
+    find bugs in your code as a result of this release, please file an
+    issue to let us know.
+  * Users of the new targeted property-based testing functionality are
+    reasonably likely to see improvements in data generation, as this
+    release changes the search algorithm for targeted property based
+    testing to one that is more likely to be productive than the
+    existing approach.
+
+- changes from version 4.41.3:
+  * This patch is to ensure that our internals remain comprehensible
+    to mypy 0.740 - there is no user-visible change.
+
+- changes from version 4.41.2:
+  * This patch changes some internal hashes to SHA384, to better
+    support users subject to FIPS-140. There is no user-visible API
+    change.
+  * Thanks to Paul Kehrer for this contribution!
+
+- changes from version 4.41.1:
+  * This release makes --hypothesis-show-statistics much more useful
+    for tests using a RuleBasedStateMachine, by simplifying the reprs
+    so that events are aggregated correctly.
+
+- changes from version 4.41.0:
+  * This release upgrades the fixed_dictionaries() strategy to support
+    optional keys (issue #1913).
+
+-------------------------------------------------------------------
 Wed Oct 16 13:13:59 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.40.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypothesis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %bcond_without python2
 Name:           python-hypothesis%{psuffix}
-Version:        4.40.2
+Version:        4.46.1
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
