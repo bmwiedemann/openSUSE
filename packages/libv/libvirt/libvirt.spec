@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,13 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
+# Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
+
+# libvirt does not support building in srcdir
+%define _vpath_builddir %{_target_platform}
 
 # The hypervisor drivers that run in libvirtd
 %define with_qemu          0%{!?_without_qemu:1}
@@ -105,6 +108,11 @@
     %define with_firewalld 1
 %endif
 
+# The 'libvirt' zone must be used with firewalld >= 0.7.0
+%if 0%{?suse_version} >= 1550
+    %define with_firewalld_zone 1
+%endif
+
 # Enable libssh support in newer code bases
 %if 0%{?suse_version} >= 1500
     %define with_libssh    1
@@ -182,8 +190,8 @@
 %endif
 
 Name:           libvirt
-Url:            http://libvirt.org/
-Version:        5.9.0
+URL:            http://libvirt.org/
+Version:        5.10.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -243,9 +251,6 @@ BuildRequires:  libxslt
 BuildRequires:  perl
 BuildRequires:  python3
 BuildRequires:  readline-devel
-# perl XPath is needed since we have a patch touching files that cause
-# hvsupport.html to be regenerated
-BuildRequires:  perl(XML::XPath)
 # rpcgen is needed since we have a patch touching remote_protocol.x
 BuildRequires:  rpcgen
 # For pool-build probing for existing pools
@@ -338,7 +343,7 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         2552752f-libxl-fix-lock-manager-lock-ordering.patch
+Patch0:         0a65cba4-news-fix.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1026,9 +1031,13 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %endif
 
 autoreconf -f -i
+%define _configure ../configure
+mkdir %{_vpath_builddir}
+cd %{_vpath_builddir}
 export CFLAGS="%{optflags}"
 export PYTHON=%{_bindir}/python3
 %configure --disable-static \
+	   --enable-dependency-tracking \
 	   --with-runstatedir=%{_rundir} \
            %{?arg_qemu} \
            %{?arg_openvz} \
@@ -1093,11 +1102,11 @@ export PYTHON=%{_bindir}/python3
            ac_cv_path_PARTED=/usr/sbin/parted \
            ac_cv_path_QEMU_BRIDGE_HELPER=/usr/lib/qemu-bridge-helper
 %make_build HTML_DIR=%{_docdir}/%{name}
-gzip -9 ChangeLog
 
 %install
+cd %{_vpath_builddir}
 %make_install SYSTEMD_UNIT_DIR=%{_unitdir} HTML_DIR=%{_docdir}/%{name}
-cp examples/sh/virt-lxc-convert %{buildroot}/%{_bindir}
+cp ../examples/sh/virt-lxc-convert %{buildroot}/%{_bindir}
 rm -f %{buildroot}/%{_libdir}/*.la
 %if %{with_wireshark}
 rm -f %{buildroot}/%{wireshark_plugindir}/libvirt.la
@@ -1235,11 +1244,10 @@ do
   rm -f $i
   printf 'int main(void) { return 0; }' > $i.c
 done
-%make_build
-
+cd ../%{_vpath_builddir}
 if ! %make_build check VIR_TEST_DEBUG=1
 then
-  cat test-suite.log || true
+  cat tests/test-suite.log || true
   exit 1
 fi
 
@@ -1604,6 +1612,7 @@ fi
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_network.so
 %if %{with_firewalld_zone}
+%dir %{_prefix}/lib/firewalld/zones/
 %{_prefix}/lib/firewalld/zones/libvirt.xml
 %endif
 
@@ -1831,8 +1840,8 @@ fi
 %{_unitdir}/libvirt-guests.service
 %{_sbindir}/rclibvirt-guests
 
-%files libs -f %{name}.lang
-%doc AUTHORS ChangeLog.gz NEWS README README.md COPYING COPYING.LESSER 
+%files libs -f %{_vpath_builddir}/%{name}.lang
+%doc AUTHORS NEWS README README.md COPYING COPYING.LESSER 
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt.conf
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt-admin.conf
 %{_libdir}/libvirt.so.*

@@ -3408,4 +3408,24 @@ py2 vs py3 crap. I just want to use python!
     <comment></comment>
     <requestid>748739</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>e736216586ba7dce2b5fcd15c412a14d</srcmd5>
+    <version>5.10.0</version>
+    <time>1575728179</time>
+    <user>dimstar_suse</user>
+    <comment>Supersedes req#753076
+
+- Update to libvirt 5.10.0
+  - bsc#1157149
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    2552752f-libxl-fix-lock-manager-lock-ordering.patch
+  - Added patches:
+    0a65cba4-news-fix.patch
+
+- spec: Enable 'libvirt' firewalld zone for firewalld &gt;= 0.7.0
+  boo#1157766</comment>
+    <requestid>753763</requestid>
+  </revision>
 </revisionlist>

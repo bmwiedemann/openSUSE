@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  2 23:24:23 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 5.10.0
+  - bsc#1157149
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    2552752f-libxl-fix-lock-manager-lock-ordering.patch
+  - Added patches:
+    0a65cba4-news-fix.patch
+
+-------------------------------------------------------------------
+Wed Nov 27 20:26:03 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- spec: Enable 'libvirt' firewalld zone for firewalld >= 0.7.0
+  boo#1157766
+
+-------------------------------------------------------------------
 Thu Nov 14 17:31:35 UTC 2019 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Fix lock manager lock ordering
