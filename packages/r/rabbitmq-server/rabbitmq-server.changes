@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec  6 13:14:21 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
+
+- Update to RabbitMQ version 3.7.23
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.23
+- RabbitMQ 3.7.23 is a maintenance release that focuses on bug fixes.
+- RabbitMQ 3.7.x series is supported through March 2020.
+- Per the new Erlang version support policy in effect starting with January 2019,
+  this release no longer supports Erlang/OTP 20.3.
+
+-------------------------------------------------------------------
 Wed Nov 27 09:19:48 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Update to RabbitMQ version 3.7.22
 - Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.22
-- RabbitMQ 3.7.21 is a maintenance release that focuses on bug fixes.
+- RabbitMQ 3.7.22 is a maintenance release that focuses on bug fixes.
 - RabbitMQ 3.7.x series is supported through March 2020.
 - Per the new Erlang version support policy in effect starting with January 2019,
   this release no longer supports Erlang/OTP 20.3.
