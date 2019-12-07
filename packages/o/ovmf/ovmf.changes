@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Dec  3 02:35:19 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable201911
+  + SecurityPkg: Fix TPM2 ACPI measurement
+  + MdeModulePkg: Enable variable runtime cache by default
+  + OvmfPkg: Disable variable runtime cache
+  + MdeModulePkg/Variable: Add RT GetVariable() cache support
+  + CryptoPkg: Upgrade OpenSSL to 1.1.1d
+  + MdePkg-UefiSpec.h: Add UEFI 2.8 new memory attributes
+  + MdePkg/UefiFileHandleLib: Fix potential NULL dereference
+  + NetworkPkg/HttpDxe: Set the HostName for the verification
+    (CVE-2019-14553)
+  + NetworkPkg/TlsDxe: Add the support of host validation to TlsDxe
+    driver (CVE-2019-14553)
+  + CryptoPkg/TlsLib: TlsSetVerifyHost: parse IP address literals
+    as such (CVE-2019-14553)
+  + CryptoPkg/TlsLib: Add the new API "TlsSetVerifyHost"
+    (CVE-2019-14553)
+  + MdePkg/Include/Protocol/Tls.h: Add the data type of
+    EfiTlsVerifyHost (CVE-2019-14553)
+  + MdeModulePkg/BdsDxe: Fix PlatformRecovery issue
+  + NetworkPkg/SnpDxe: Add PCD to remove ExitBootServices event
+    from SNP driver
+  + MdeModulePkg: Update to support SmBios 3.3.0
+  + UefiCpuPkg/MpInitLib: honor the platform's boot CPU count in AP
+    detection
+  + SecurityPkg/Tcg2: Add Support Laml, Lasa for TPM2 ACPI
+  + OvmfPkg/PlatformDxe: fix EFI_HII_HANDLE parameters of internal
+    functions
+  + OvmfPkg/VirtioNetDxe: fix SignalEvent() call
+  + OvmfPkg/XenBusDxe: fix UninstallMultipleProtocolInterfaces()
+    call
+  + NetworkPkg/Ip4Dxe: fix NetLibDestroyServiceChild() call
+  + MdeModulePkg/ScsiDiskDxe: Support Storage Security Command
+    Protocol
+  + MdePkg: Implement SCSI commands for Security Protocol In/Out
+  + MdeModulePkg/TerminalDxe: Enhance the arrow keys support
+  + MdeModulePkg/UefiBootManager: Unload image on
+    EFI_SECURITY_VIOLATION
+  + MdeModulePkg/DxeCapsuleLibFmp: Unload image on
+    EFI_SECURITY_VIOLATION
+  + MdeModulePkg: Extend the support keyboard type of Terminal
+    console
+  + UefiCpuPkg/CpuExceptionHandlerLib: Fix split lock
+  + UefiCpuPkg: Fix potential spinLock issue in SmmStartupThisAp
+  + UefiCpuPkg/PiSmmCpu: Enable 5L paging only when phy addr line
+    > 48
+  + OvmfPkg/EnrollDefaultKeys: clean up Base64Decode() retval
+    handling
+  + ArmVirtPkg/PlatformBootManagerLib: unload image on
+    EFI_SECURITY_VIOLATION
+  + ShellPkg/ShellPkg.dsc AARCH64: enable stack protector
+  + ArmVirtPkg/ArmVirtPrePiUniCoreRelocatable: revert to PIE
+    linking
+  + BaseTools/GenFw AARCH64: fix up GOT based relative relocations
+  + ShellPkg/Pci.c: Update supported link speed to PCI5.0
+  + PcAtChipsetPkg: add PcdRealTimeClockUpdateTimeout
+  + UefiCpuPkg: Add PcdCpuSmmRestrictedMemoryAccess
+  + ShellPkg/CommandLib: avoid NULL derefence and memory leak
+  + MdePkg/DxeHstiLib: Added checks to improve error handling
+  + BaseTools: Support more file types in build cache
+  + UefiCpuPkg/SecCore: get AllSecPpiList after SecPlatformMain
+- Update openssl to 1.1.1d
+  + Add openssl-fix-syntax-error.patch to fix a syntax error
+- Drop ovmf-bsc1153072-fix-invalid-https-cert.patch
+  + Already upstreamed
+
+-------------------------------------------------------------------
 Fri Nov  8 04:09:48 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Use the same x86 4MB firmware names as the ones in the previous

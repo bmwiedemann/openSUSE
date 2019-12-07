@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,15 @@
 %define secureboot_archs x86_64 aarch64
 
 %undefine _build_create_debug
-%global openssl_version 1.1.1b
+%global openssl_version 1.1.1d
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Url:            http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2
+URL:            http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-Version:        201908
+Version:        201911
 Release:        0
 Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
@@ -49,7 +49,7 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
-Patch6:         %{name}-bsc1153072-fix-invalid-https-cert.patch
+Patch6:         openssl-fix-syntax-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
 BuildRequires:  fdupes
@@ -172,11 +172,11 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
 tar -xf %{SOURCE1} --strip 1
+%patch6 -p1
 popd
 
 # add berkeley-softfloat-3
