@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-LibXSLT
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,18 +21,20 @@ Version:        1.96
 Release:        0
 %define cpan_name XML-LibXSLT
 Summary:        Interface to the GNOME libxslt library
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/XML-LibXSLT/
-Source:         http://www.cpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(XML::LibXML) >= 1.70
 Requires:       perl(XML::LibXML) >= 1.70
 %{perl_requires}
-# MANUAL
+# MANUAL BEGIN
 BuildRequires:  libxslt-devel
+Patch0:         perl-XML-LibXSLT-lib-versions.patch
+# MANUAL END
 
 %description
 This module is an interface to the GNOME project's libxslt. This is an
@@ -41,13 +43,16 @@ tests showing this to be more than twice as fast as Sablotron.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+# MANUAL BEGIN
+%patch0 -p1
+# MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -56,6 +61,7 @@ tests showing this to be more than twice as fast as Sablotron.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes example LICENSE README
+%doc Changes example README
+%license LICENSE
 
 %changelog
