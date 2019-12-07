@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ BuildRequires:  %{python_module itsdangerous >= 0.24}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+%if %{?suse_version} < 1500
+BuildRequires:  python
+%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10
 Requires:       python-Werkzeug >= 0.15

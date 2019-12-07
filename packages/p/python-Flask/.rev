@@ -273,4 +273,12 @@
     <comment>- Add python38-exception-test.patch to fix test failures under Python 3.8</comment>
     <requestid>746453</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a377141f1170e5e4b17d0e5702ffcf4f</srcmd5>
+    <version>1.1.1</version>
+    <time>1575727933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752962</requestid>
+  </revision>
 </revisionlist>
