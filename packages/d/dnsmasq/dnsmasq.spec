@@ -1,7 +1,7 @@
 #
 # spec file for package dnsmasq
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Group:          Productivity/Networking/DNS/Servers
 Version:        2.80
 Release:        0
 Provides:       dns_daemon
-Url:            http://www.thekelleys.org.uk/dnsmasq/
+URL:            http://www.thekelleys.org.uk/dnsmasq/
 Source0:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz
 Source1:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -56,7 +56,6 @@ Requires(pre):  group(nogroup)
 Requires(pre):  user(tftp)
 %else
 Requires(pre):  /usr/sbin/useradd
-%else
 %endif
 
 %description

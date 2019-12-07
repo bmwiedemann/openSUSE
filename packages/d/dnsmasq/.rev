@@ -693,4 +693,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
 - bsc#1152539: include config files from /etc/dnsmasq.d/*.conf .</comment>
     <requestid>748378</requestid>
   </revision>
+  <revision rev="76" vrev="9">
+    <srcmd5>e10505c75122788cbeec669f7e024cbe</srcmd5>
+    <version>2.80</version>
+    <time>1575727908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752812</requestid>
+  </revision>
 </revisionlist>
