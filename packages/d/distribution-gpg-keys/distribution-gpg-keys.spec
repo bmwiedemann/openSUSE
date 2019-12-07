@@ -20,7 +20,7 @@
 %global origrel 1
 
 Name:		distribution-gpg-keys
-Version:	1.29
+Version:	1.35
 Release:	0
 Summary:	GPG keys of various Linux distributions
 Group:		System/Packages
