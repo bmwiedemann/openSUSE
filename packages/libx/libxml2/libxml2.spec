@@ -1,7 +1,7 @@
 #
 # spec file for package libxml2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define bname libxml2
 %define lname libxml2-2
 Name:           %{bname}%{pysuffix}
-Version:        2.9.9
+Version:        2.9.10
 Release:        0
 Summary:        A Library to Manipulate XML Files
 License:        MIT
@@ -47,6 +47,8 @@ Patch1:         libxml2-python3-unicode-errors.patch
 Patch2:         libxml2-python3-string-null-check.patch
 # PATCH-FIX-SUSE bsc#1135123 Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH to avoid nodeset limit
 Patch3:         libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+# PATCH-FIX-UPSTREAM bsc#1157450 This commit breaks perl-XML-LibXSLT
+Patch4:         libxml2-xmlFreeNodeList-recursive.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -172,6 +174,7 @@ either at parse time or later once the document has been modified.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1 -R
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

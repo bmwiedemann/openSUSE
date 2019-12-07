@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Thu Nov 28 15:32:58 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Since libxml2-2.9.10 perl-XML-LibXSLT fails to build: [bsc#1157450]
+  * Revert upstream commit to make xmlFreeNodeList non-recursive
+    https://github.com/GNOME/libxml2/commit/0762c9b69ba01628f72eada1c64ff3d361fb5716
+- Add patch libxml2-xmlFreeNodeList-recursive.patch
+
+-------------------------------------------------------------------
+Fri Nov 15 17:59:54 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 2.9.10:
+  * Portability:
+    + Fix exponent digits when running tests under old MSVC
+    + Work around buggy ceil() function on AIX
+    + Don't call printf with NULL string in runtest.c
+    + Switched from unsigned long to ptrdiff_t in parser.c
+    + timsort.h: support older GCCs
+    + Make configure.ac work with older pkg-config
+  * Bug Fixes:
+    + Fix for conditional sections at end of document
+    + Make sure that Python tests exit with error code
+    + Audit memory error handling in xpath.c
+    + Fix error code in xmlTextWriterStartDocument
+    + Fix integer overflow when counting written bytes
+    + Fix uninitialized memory access in HTML parser
+    + Fix memory leak in xmlSchemaValAtomicType
+    + Disallow conditional sections in internal subset
+    + Fix use-after-free in xmlTextReaderFreeNodeList
+    + Fix Regextests
+    + Fix empty branch in regex
+    + Fix integer overflow in entity recursion check
+    + Don't read external entities or XIncludes from stdin
+    + Fix Schema determinism check of ##other namespaces
+    + Fix potential null deref in xmlSchemaIDCFillNodeTables
+    + Fix potential memory leak in xmlBufBackToBuffer
+    + Fix error message when processing XIncludes with fallbacks
+    + Fix memory leak in xmlRegEpxFromParse
+    + 14:00 is a valid timezone for xs:dateTime
+    + Fix memory leak in xmlParseBalancedChunkMemoryRecover
+    + Fix potential null deref in xmlRelaxNGParsePatterns
+    + Misleading error message with xs:{min|max}Inclusive
+    + Fix memory leak in xmlXIncludeLoadTxt
+    + Partial fix for comparison of xs:durations
+    + Fix null deref in xmlreader buffer
+    + Fix unability to RelaxNG-validate grammar with choice-based name class
+    + Fix unability to validate ambiguously constructed interleave for RelaxNG
+    + Fix possible null dereference in xmlXPathIdFunction
+    + fix memory leak in xmlAllocOutputBuffer
+    + Fix unsigned int overflow
+    + dict.h: gcc 2.95 doesn't allow multiple storage classes
+    + Fix another code path in xmlParseQName
+    + Make sure that xmlParseQName returns NULL in error case
+    + Fix build without reader but with pattern
+    + Fix memory leak in xmlAllocOutputBufferInternal error path
+    + Fix unsigned integer overflow
+    + Fix return value of xmlOutputBufferWrite
+    + Fix parser termination from "Double hyphen within comment" error
+    + Fix call stack overflow in xmlFreePattern
+    + Fix null deref in previous commit
+    + Fix memory leaks in xmlXPathParseNameComplex error paths
+    + Check for integer overflow in xmlXPtrEvalChildSeq
+    + Fix xmllint dump of XPath namespace nodes
+    + Fix float casts in xmlXPathSubstringFunction
+    + Fix null deref in xmlregexp error path
+    + Fix null pointer dereference in xmlTextReaderReadOuterXml
+    + Fix memory leaks in xmlParseStartTag2 error paths
+    + Fix memory leak in xmlSAX2StartElement
+    + Fix commit "Memory leak in xmlFreeID (xmlreader.c)"
+    + Fix NULL pointer deref in xmlTextReaderValidateEntity
+    + Memory leak in xmlFreeTextReader
+    + Memory leak in xmlFreeID (xmlreader.c)
+  * Improvements:
+    + Propagate memory errors in valuePush
+    + Propagate memory errors in xmlXPathCompExprAdd
+    + Make xmlFreeDocElementContent non-recursive
+    + Avoid ignored attribute warnings under GCC
+    + Make xmlDumpElementContent non-recursive
+    + Make apibuild.py ignore ATTRIBUTE_NO_SANITIZE
+    + Mark xmlExp* symbols as removed
+    + Make xmlParseConditionalSections non-recursive
+    + Adjust expected error in Python tests
+    + Make xmlTextReaderFreeNodeList non-recursive
+    + Make xmlFreeNodeList non-recursive
+    + Make xmlParseContent and xmlParseElement non-recursive
+    + Remove executable bit from non-executable files
+    + Fix expected output of test/schemas/any4
+    + Optimize build instructions in README
+    + xml2-config.in: Output CFLAGS and LIBS on the same line
+    + xml2-config: Add a --dynamic switch to print only shared libraries
+    + Annotate functions with __attribute__((no_sanitize))
+    + Fix warnings when compiling without reader or push parser
+    + Remove unused member `doc` in xmlSaveCtxt
+    + Limit recursion depth in xmlXPathCompOpEvalPredicate
+    + Remove -Wno-array-bounds
+    + Remove unreachable code in xmlXPathCountFunction
+    + Improve XPath predicate and filter evaluation
+    + Limit recursion depth in xmlXPathOptimizeExpression
+    + Disable hash randomization when fuzzing
+    + Optional recursion limit when parsing XPath expressions
+    + Optional recursion limit when evaluating XPath expressions
+    + Use break statements in xmlXPathCompOpEval
+    + Optional XPath operation limit
+    + Fix compilation with --with-minimum
+    + Check XPath stack after calling functions
+    + Remove debug printf in xmlreader.c
+    + Always define LIBXML_THREAD_ENABLED when enabled
+    + Fix unused function warning in testapi.c
+    + Remove unneeded function pointer casts
+    + Fix -Wcast-function-type warnings (GCC 8)
+    + Fix -Wformat-truncation warnings (GCC 8)
+  * Cleanups:
+    + Rebuild docs
+    + Disable xmlExp regex code
+    + Remove redundant code in xmlRelaxNGValidateState
+    + Remove redundant code in xmlXPathCompRelationalExpr
+- Rebase patch fix-perl.diff
+
+-------------------------------------------------------------------
 Mon Sep  9 08:24:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not depend on setuptools to keep the depgraph small and

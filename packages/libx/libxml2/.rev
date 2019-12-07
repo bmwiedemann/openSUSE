@@ -825,4 +825,12 @@
 - add python3.6-verify_fd.patch that fixes libxml2 on python 3.6</comment>
     <requestid>729358</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>898eef717f7bd941c0d94b1a254d9d1f</srcmd5>
+    <version>2.9.10</version>
+    <time>1575728540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751668</requestid>
+  </revision>
 </revisionlist>

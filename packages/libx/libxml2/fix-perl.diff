@@ -11,9 +11,9 @@ Date:   Thu Jan 26 19:11:02 2012 +0800
 
 Index: SAX2.c
 ===================================================================
---- SAX2.c.orig	2012-09-11 08:01:01.000000000 +0200
-+++ SAX2.c	2012-12-15 16:32:27.353560391 +0100
-@@ -2188,7 +2188,6 @@
+--- SAX2.c.orig
++++ SAX2.c
+@@ -2222,7 +2222,6 @@ xmlSAX2StartElementNs(void *ctx,
      xmlNodePtr parent;
      xmlNsPtr last = NULL, ns;
      const xmlChar *uri, *pref;
@@ -21,7 +21,7 @@ Index: SAX2.c
      int i, j;
  
      if (ctx == NULL) return;
-@@ -2208,20 +2207,6 @@
+@@ -2242,20 +2241,6 @@ xmlSAX2StartElementNs(void *ctx,
      }
  
      /*
@@ -42,7 +42,7 @@ Index: SAX2.c
       * allocate the node
       */
      if (ctxt->freeElems != NULL) {
-@@ -2234,10 +2219,7 @@
+@@ -2269,10 +2254,7 @@ xmlSAX2StartElementNs(void *ctx,
  	if (ctxt->dictNames)
  	    ret->name = localname;
  	else {
@@ -54,7 +54,7 @@ Index: SAX2.c
  	    if (ret->name == NULL) {
  	        xmlSAX2ErrMemory(ctxt, "xmlSAX2StartElementNs");
  		return;
-@@ -2249,11 +2231,8 @@
+@@ -2284,11 +2266,8 @@ xmlSAX2StartElementNs(void *ctx,
  	if (ctxt->dictNames)
  	    ret = xmlNewDocNodeEatName(ctxt->myDoc, NULL,
  	                               (xmlChar *) localname, NULL);
@@ -67,12 +67,12 @@ Index: SAX2.c
  	if (ret == NULL) {
  	    xmlSAX2ErrMemory(ctxt, "xmlSAX2StartElementNs");
  	    return;
-@@ -2360,31 +2339,6 @@
+@@ -2399,31 +2378,6 @@ xmlSAX2StartElementNs(void *ctx,
       */
      if (nb_attributes > 0) {
          for (j = 0,i = 0;i < nb_attributes;i++,j+=5) {
 -	    /*
--	     * Handle the rare case of an undefined atribute prefix
+-	     * Handle the rare case of an undefined attribute prefix
 -	     */
 -	    if ((attributes[j+1] != NULL) && (attributes[j+2] == NULL)) {
 -		if (ctxt->dictNames) {
@@ -99,7 +99,6 @@ Index: SAX2.c
  	    xmlSAX2AttributeNs(ctxt, attributes[j], attributes[j+1],
  			       attributes[j+3], attributes[j+4]);
  	}
-
 Index: result/namespaces/err_7.xml
 ===================================================================
 --- result/namespaces/err_7.xml.orig
