@@ -1,7 +1,7 @@
 #
 # spec file for package perl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Perl
-Url:            https://www.perl.org/
+URL:            https://www.perl.org/
 Source:         https://www.cpan.org/src/5.0/perl-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        macros.perl
@@ -49,6 +49,8 @@ Patch15:        perl-gdbm-test-no-mmap.diff
 Patch17:        perl-fix2020.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
+# PATCH-FIX-UPSTREAM https://github.com/Perl/perl5/commit/6bd6308fcea3541e505651bf8e8127a4a03d22cd Fix detection of GCC 10 compiler and later
+Patch19:        perl-Adapt-Configure-to-GCC-version-10.patch
 BuildRequires:  db-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
@@ -183,6 +185,7 @@ cp -p %{SOURCE3} .
 %patch15
 %patch17
 %patch18
+%patch19 -p1
 
 %build
 %define _lto_cflags %{nil}

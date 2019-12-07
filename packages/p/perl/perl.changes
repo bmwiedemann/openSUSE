@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  3 09:13:07 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add perl-Adapt-Configure-to-GCC-version-10.patch in order
+  to fix boo#1158254.
+
+-------------------------------------------------------------------
 Tue Nov 19 14:25:46 CET 2019 - mls@suse.de
 
 - update to perl-5.30.1
