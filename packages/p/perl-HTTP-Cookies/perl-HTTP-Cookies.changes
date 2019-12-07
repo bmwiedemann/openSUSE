@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  3 03:16:55 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.08
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.08      2019-12-02 15:58:32Z
+      - allow different "ignore_discard" value at save() time (GH#2) (Alex Peters)
+
+-------------------------------------------------------------------
 Tue Nov 19 08:32:40 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.07
