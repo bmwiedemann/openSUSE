@@ -134,4 +134,12 @@
 - add sphinx-use-imgmath-extension.patch</comment>
     <requestid>703087</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88d75edb91950acc16de2ff910345818</srcmd5>
+    <version>0.6.6</version>
+    <time>1575727767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754829</requestid>
+  </revision>
 </revisionlist>

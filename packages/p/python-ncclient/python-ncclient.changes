@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Dec  4 21:46:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.6:
+  * Read ssh timeout from config file if not specified in method
+    call
+  * Tox support
+  * Huge XML tree parser support
+  * Adding optional bind address to connect
+- Update to version 0.6.5
+  * Pin selectors2 to Python versions <= 3.4
+  * Fix config examples to actually use the nc namespace
+  * fix: correctly set port for paramiko when using ssh_config file
+  * test: add test to check ProxyCommand uses correct port
+  * Update commits for py3
+  * Enhance Alcatel-Lucent -support
+  * Juniper RPC: allow specifying format in CompareConfiguration
+  * Parsing of NETCONF 1.1 frames no longer decodes each chunk of
+    bytes...
+  * Fix filter in create_subscription
+  * Validate 'with-defaults' mode based on supported modes
+    advertised in capability URI
+- Remove patch:
+  * sphinx-use-imgmath-extension.patch (fixed by upstream)
+- Use tarball from github
+- Run testsuite
+- Drop not needed dependencies
+- Minor fixes to make the rpm post-build-checks happy
+
+-------------------------------------------------------------------
 Wed Apr 10 06:59:10 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to v0.6.4:

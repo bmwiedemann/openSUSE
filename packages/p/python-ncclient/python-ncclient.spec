@@ -17,17 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-ncclient
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            http://ncclient.org
-Source:         https://files.pythonhosted.org/packages/source/n/ncclient/ncclient-%{version}.tar.gz
-Patch0:         sphinx-use-imgmath-extension.patch
-BuildRequires:  %{python_module devel}
+Source:         https://github.com/ncclient/ncclient/archive/v%{version}.tar.gz#/ncclient-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,12 +36,13 @@ Requires:       python-selectors2 >= 2.0.1
 Requires:       python-setuptools > 0.6
 Requires:       python-six
 BuildArch:      noarch
-%if %{with test}
 BuildRequires:  %{python_module lxml >= 3.3.0}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module paramiko >= 1.15.0}
-BuildRequires:  %{python_module setuptools > 0.6}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module selectors2}
 BuildRequires:  %{python_module six}
-%endif
 %python_subpackages
 
 %description
@@ -64,7 +62,9 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n ncclient-%{version}
-%patch0
+find examples/ -name "*.py" -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/python|g' {} \;
+# drop shebang
+find ncclient/operations/third_party/ -name "*.py" -exec sed -i '/^#!\//, 1d' {} \;
 
 %build
 %python_build
@@ -73,6 +73,9 @@ cd docs && make %{?_smp_mflags} html && rm build/html/.buildinfo
 %install
 %python_install
 %fdupes %{buildroot}
+
+%check
+%pytest
 
 %files %{python_files}
 %license LICENSE
