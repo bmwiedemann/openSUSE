@@ -1,0 +1,33 @@
+Also reported as PR25210.  There's a problem when using the two
+linker options '--fix-cortex-a53-835769 --fix-cortex-a53-843419'
+together.  This is the default in our distro, but not upstream so
+it went unnoticed.
+
+Leads to an error while linking any code that sports one of the
+sequences that triggers the errata fixup (gcc being one of those),
+namely:
+ld: can not size stub section: invalid operation
+ld: warning: cannot find entry symbol _start; defaulting to 0000000000400078
+ld: linker stubs: file class ELFCLASSNONE incompatible with ELFCLASS64
+ld: final link failed: file in wrong format
+
+--- bfd/elfnn-aarch64.c.mm	2019-09-09 13:19:43.000000000 +0000
++++ bfd/elfnn-aarch64.c	2019-11-20 11:44:00.000000000 +0000
+@@ -4312,7 +4312,8 @@ elfNN_aarch64_size_stubs (bfd *output_bf
+ 
+       for (input_bfd = info->input_bfds;
+ 	   input_bfd != NULL; input_bfd = input_bfd->link.next)
+-	if (!_bfd_aarch64_erratum_835769_scan (input_bfd, info,
++	if (input_bfd != stub_bfd
++	    && !_bfd_aarch64_erratum_835769_scan (input_bfd, info,
+ 					       &num_erratum_835769_fixes))
+ 	  return FALSE;
+ 
+@@ -4327,6 +4328,7 @@ elfNN_aarch64_size_stubs (bfd *output_bf
+       for (input_bfd = info->input_bfds;
+ 	   input_bfd != NULL;
+ 	   input_bfd = input_bfd->link.next)
++	if (input_bfd != stub_bfd)
+ 	{
+ 	  asection *section;
+ 

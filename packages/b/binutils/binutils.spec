@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -95,6 +95,8 @@ Patch22:        binutils-bfd_h.patch
 Patch34:        aarch64-common-pagesize.patch
 Patch36:        binutils-pr22868.diff
 Patch37:        binutils-revert-plt32-in-branches.diff
+Patch38:        binutils-fix-invalid-op-errata.diff
+Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
@@ -167,6 +169,8 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %if %{suse_version} < 1550
 %patch37 -p1
 %endif
+%patch38
+%patch100
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch90

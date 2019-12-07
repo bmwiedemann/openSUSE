@@ -1799,4 +1799,16 @@ Fake entry for SLE12 package variant only:</comment>
     option to objcopy to allow the changing of section alignments.</comment>
     <requestid>748099</requestid>
   </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>3d3f5b68d20e5620e9bdc696fe1af82f</srcmd5>
+    <version>2.33.1</version>
+    <time>1575727894</time>
+    <user>dimstar_suse</user>
+    <comment>(In comparison to sr#751060 this merely adds a reference to
+bsc#1157755)
+
+- Add binutils-fix-invalid-op-errata.diff to fix various
+  build fails on aarch64 (PR25210, bsc#1157755).</comment>
+    <requestid>751311</requestid>
+  </revision>
 </revisionlist>

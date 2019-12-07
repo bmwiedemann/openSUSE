@@ -1,0 +1,204 @@
+This is for userspace live patching, adding some space into
+shared libs or executable (in the .ulp section) when one of the 
+input files contains a section named .ulp.track.
+
+Index: bfd/elflink.c
+===================================================================
+--- bfd/elflink.c.orig	2019-09-09 15:19:43.000000000 +0200
++++ bfd/elflink.c	2019-11-18 21:43:18.000000000 +0100
+@@ -7070,6 +7070,13 @@ bfd_elf_size_dynamic_sections (bfd *outp
+ 	  s = bfd_get_linker_section (dynobj, ".gnu.version");
+ 	  s->flags |= SEC_EXCLUDE;
+ 	}
++
++      if (bed->elf_backend_is_ulp_enabled != NULL
++	  && bed->elf_backend_setup_ulp != NULL
++	  && (*bed->elf_backend_is_ulp_enabled) (info->input_bfds))
++        {
++          (*bed->elf_backend_setup_ulp)(info);
++        }
+     }
+   return TRUE;
+ }
+Index: bfd/elfxx-x86.c
+===================================================================
+--- bfd/elfxx-x86.c.orig	2019-09-09 15:19:43.000000000 +0200
++++ bfd/elfxx-x86.c	2019-11-18 20:50:24.000000000 +0100
+@@ -31,6 +31,8 @@
+ #define ELF64_DYNAMIC_INTERPRETER "/lib/ld64.so.1"
+ #define ELFX32_DYNAMIC_INTERPRETER "/lib/ldx32.so.1"
+ 
++#define ULP_ENTRY_LEN 16
++
+ bfd_boolean
+ _bfd_x86_elf_mkobject (bfd *abfd)
+ {
+@@ -952,6 +954,64 @@ _bfd_x86_elf_link_check_relocs (bfd *abf
+   return _bfd_elf_link_check_relocs (abfd, info);
+ }
+ 
++/* Check if input bfds are ulp-enabled by containing .ulp.track section */
++
++bfd_boolean
++_bfd_x86_elf_is_ulp_enabled (struct bfd *input_bfd)
++{
++  while (input_bfd != NULL)
++  for (; input_bfd != NULL; input_bfd = input_bfd->link.next)
++    {
++      if (input_bfd->section_count == 0) continue;
++      if (bfd_get_section_by_name (input_bfd, ".ulp.track")) return TRUE;
++    }
++  return FALSE;
++}
++
++/* To be used by elf_link_hash_traverse when computing the ulp length */
++
++static bfd_boolean
++bfd_x86_elf_link_compute_ulp (struct elf_link_hash_entry *h, void *data)
++{
++  unsigned long *ulp_length = (unsigned long *) data;
++
++  if (h->dynindx != -1 && h->type == STT_FUNC && !h->def_dynamic)
++    {
++      ++(*ulp_length);
++    }
++  return TRUE;
++}
++
++/* Fill the user-space live patching section */
++
++bfd_boolean
++_bfd_x86_elf_setup_ulp (struct bfd_link_info *info)
++{
++  struct elf_x86_link_hash_table *htab;
++  asection *ulp;
++  unsigned int ulp_length = 0;
++
++  htab = elf_x86_hash_table (info, X86_64_ELF_DATA);
++
++  elf_link_hash_traverse (elf_hash_table (info),
++                          bfd_x86_elf_link_compute_ulp,
++                          &ulp_length);
++
++  ulp = htab->ulp;
++
++  ulp->size = ulp_length * ULP_ENTRY_LEN;
++
++  ulp->contents = (bfd_byte *) bfd_malloc (ulp->size);
++  if (ulp->contents == NULL)
++    return FALSE;
++
++  if (!ulp->contents)
++    return FALSE;
++
++  memset(ulp->contents, 0x00, ulp->size);
++  return TRUE;
++}
++
+ /* Set the sizes of the dynamic sections.  */
+ 
+ bfd_boolean
+@@ -2935,7 +2995,26 @@ error_alignment:
+ 
+ 	      htab->plt_second = sec;
+ 	    }
+-	}
++
++         /* create sections to support user-space live patching */
++         if (_bfd_x86_elf_is_ulp_enabled(info->input_bfds))
++           {
++             flagword flags = (bed->dynamic_sec_flags
++                               | SEC_ALLOC
++                               | SEC_CODE
++                               | SEC_LOAD
++                               | SEC_READONLY);
++
++              sec = bfd_make_section_anyway_with_flags (dynobj, ".ulp", flags);
++              if (sec == NULL)
++                info->callbacks->einfo (_("%F%P: failed to create ULP section\n"));
++
++              if (!bfd_set_section_alignment (dynobj, sec,  plt_alignment))
++                goto error_alignment;
++
++              htab->ulp = sec;
++           }
++      }
+ 
+       if (!info->no_ld_generated_unwind_info)
+ 	{
+Index: bfd/elfxx-x86.h
+===================================================================
+--- bfd/elfxx-x86.h.orig	2019-09-09 15:19:43.000000000 +0200
++++ bfd/elfxx-x86.h	2019-11-18 20:48:33.000000000 +0100
+@@ -447,6 +447,7 @@ struct elf_x86_link_hash_table
+   asection *plt_second_eh_frame;
+   asection *plt_got;
+   asection *plt_got_eh_frame;
++  asection *ulp;
+ 
+   /* Parameters describing PLT generation, lazy or non-lazy.  */
+   struct elf_x86_plt_layout plt;
+@@ -708,6 +709,12 @@ extern void _bfd_x86_elf_link_fixup_ifun
+   (struct bfd_link_info *, struct elf_x86_link_hash_table *,
+    struct elf_link_hash_entry *, Elf_Internal_Sym *sym);
+ 
++extern bfd_boolean _bfd_x86_elf_is_ulp_enabled
++  (struct bfd *);
++
++extern bfd_boolean _bfd_x86_elf_setup_ulp
++  (struct bfd_link_info *);
++
+ #define bfd_elf64_mkobject \
+   _bfd_x86_elf_mkobject
+ #define bfd_elf32_mkobject \
+@@ -745,3 +752,7 @@ extern void _bfd_x86_elf_link_fixup_ifun
+   _bfd_x86_elf_merge_gnu_properties
+ #define elf_backend_fixup_gnu_properties \
+   _bfd_x86_elf_link_fixup_gnu_properties
++#define elf_backend_is_ulp_enabled \
++  _bfd_x86_elf_is_ulp_enabled
++#define elf_backend_setup_ulp \
++  _bfd_x86_elf_setup_ulp
+Index: bfd/elf-bfd.h
+===================================================================
+--- bfd/elf-bfd.h.orig	2019-09-09 15:19:43.000000000 +0200
++++ bfd/elf-bfd.h	2019-11-18 20:48:33.000000000 +0100
+@@ -1423,6 +1423,10 @@ struct elf_backend_data
+     (const bfd *ibfd, bfd *obfd, const Elf_Internal_Shdr *isection,
+      Elf_Internal_Shdr *osection);
+ 
++  bfd_boolean (*elf_backend_is_ulp_enabled) (bfd *abfd);
++
++  bfd_boolean (*elf_backend_setup_ulp) (struct bfd_link_info *);
++
+   /* Used to handle bad SHF_LINK_ORDER input.  */
+   void (*link_order_error_handler) (const char *, ...);
+ 
+Index: bfd/elfxx-target.h
+===================================================================
+--- bfd/elfxx-target.h.orig	2019-09-09 15:19:43.000000000 +0200
++++ bfd/elfxx-target.h	2019-11-18 20:48:33.000000000 +0100
+@@ -754,6 +754,14 @@
+ #define elf_backend_copy_special_section_fields NULL
+ #endif
+ 
++#ifndef elf_backend_is_ulp_enabled
++#define elf_backend_is_ulp_enabled NULL
++#endif
++
++#ifndef elf_backend_setup_ulp
++#define elf_backend_setup_ulp NULL
++#endif
++
+ #ifndef elf_backend_compact_eh_encoding
+ #define elf_backend_compact_eh_encoding NULL
+ #endif
+@@ -867,6 +875,8 @@ static struct elf_backend_data elfNN_bed
+   elf_backend_maybe_function_sym,
+   elf_backend_get_reloc_section,
+   elf_backend_copy_special_section_fields,
++  elf_backend_is_ulp_enabled,
++  elf_backend_setup_ulp,
+   elf_backend_link_order_error_handler,
+   elf_backend_relplt_name,
+   ELF_MACHINE_ALT1,
