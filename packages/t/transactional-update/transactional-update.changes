@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  8 10:27:10 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20
+  - Add the option `--continue` to extend an existing snapshot. This can be
+    used to perform multiple operations before rebooting into the new state.
+    [gh#openSUSE/transactional-update#16]
+  - Make sure the dracut service to print warnings on /etc overlay conflicts
+    also runs in the pre-made images.
+  - Add "none" reboot method
+  - Remove conflicting overlay artifacts in case an existing overlay directory
+    will be reused
+
+-------------------------------------------------------------------
 Wed Sep 25 15:13:35 UTC 2019 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.17
