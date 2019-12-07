@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Nov 27 11:05:14 UTC 2019 - pgajdos@suse.com
+
+- version update to 7.0.9.6
+  * Increase the maximum number of bezier coordinates (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1784).
+  * Santize "'" from SHOW and WIN delegates under Linux, '"\' for Windows
+    (thanks to Enzo Puig).
+  * Correct for TGA orientation (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&t=34757).
+  * The result for -compose Copy -extent on a  MYK image is CMYK (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&t=37118).
+  * Fix potential buffer overflow when reading a fax image (alert from
+    Justin).
+  * Support dng:use-camera-wb option.
+- added patches
+  https://github.com/ImageMagick/ImageMagick/issues/1792
+  + ImageMagick-targa.patch
+
+-------------------------------------------------------------------
+Wed Nov 20 08:08:39 UTC 2019 - pgajdos@suse.com
+
+- version update to 7.0.9.5
+  * Ensure Ascii85 compression is thread safe.
+  * Santize ';' from SHOW and WIN delegates.
+  * Add exception parameter to CMS transform methods.
+  * Output exception there is an attempt to perform an operation not allowed by
+    the security policy
+  * JPEG and JPG are aliases in coder security policy.
+  * Fixed numerous issues  posted to GitHub
+
+-------------------------------------------------------------------
 Wed Oct 30 09:51:39 UTC 2019 - pgajdos@suse.com
 
 - version update to 7.0.9.1

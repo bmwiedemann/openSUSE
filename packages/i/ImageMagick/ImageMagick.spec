@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.0.9
-%define mfr_revision   1
+%define mfr_revision   6
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        7
@@ -49,6 +49,8 @@ Patch2:         ImageMagick-library-installable-in-parallel.patch
 #%%ifarch s390x s390 ppc64 ppc
 Patch3:         ImageMagick-s390-disable-tests.patch
 #%%endif
+# https://github.com/ImageMagick/ImageMagick/issues/1792
+Patch4:         ImageMagick-targa.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -333,6 +335,7 @@ preserved.
 %ifarch s390x s390 ppc ppc64
 %patch3 -p1
 %endif
+%patch4 -p1
 
 %build
 # bsc#1088463
