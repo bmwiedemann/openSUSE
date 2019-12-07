@@ -204,4 +204,16 @@
     <comment></comment>
     <requestid>747340</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3d83b01decc14d00f294bb73e804e212</srcmd5>
+    <version>4.39.0</version>
+    <time>1575728393</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use RPM internal/reserved name %suffix (change to
+  pkg_suffix).
+
+Fix build with RPM 4.15
+See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N/python-tqdm/standard/x86_64 (forwarded request 752569 from dimstar)</comment>
+    <requestid>752762</requestid>
+  </revision>
 </revisionlist>

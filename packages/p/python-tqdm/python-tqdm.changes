@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Nov 30 12:23:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't use RPM internal/reserved name %suffix (change to
+  pkg_suffix).
+
+-------------------------------------------------------------------
+Sun Nov 24 00:13:41 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.39.0:
+  * add pandas builtin operations check (#843 <- #697)
+  * avoid unnecessary dedent (#837)
+  * remove unneeded bar logic
+  * misc code tidy
+  * update documentation
+    + document default argument overriding (#370)
+    + add missing isatty() (#713)
+    + update badges
+    + add code of conduct
+  * update framework
+    + clean CI stages
+    + update CI default py3.6 => py3.7
+    + automate snap releases (#686 <- #685)
+
+-------------------------------------------------------------------
 Sat Nov  9 14:36:01 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.38.0:
