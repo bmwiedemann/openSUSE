@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec 07 05:05:02 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1575653753.ea7f72d9a:
+  * Fix height of embedded logfile
+  * Use the correct new port in cache service monitoring tests
+  * Provide investigation hints for failed jobs on request
+  * templates: Use unicode character for three dots
+  * Include the cache service when generating ports dynamically with OPENQA_BASE_PORT
+  * docs: Replace all references of "TRAVIS" with a generic term or CircleCI
+  * Refactor loop in test overview controller
+  * Improve performance when loading test suite names for overview
+  * Change TEST value to JOB_TEMPLATE_NAME
+  * docs: Move whole .circle CI README into docs/ to include in generated and published content
+  * docs: Focus on openQA-devel for easier test setup
+  * docs: Fix reference to "docker/travis_test"
+  * .circleci: Use common repo aliases
+  * spec: Specify missing "chromedriver" in -devel
+  * Allow monitoring of Minion jobs on every worker
+  * travis_test: Add missing dictionary for os-autoinst
+
+-------------------------------------------------------------------
 Wed Dec 04 21:05:02 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1575490596.c17db72e0:
