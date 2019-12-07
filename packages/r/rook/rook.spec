@@ -1,7 +1,7 @@
 #
 # spec file for package rook
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           rook
-Version:        1.1.6+git0.g91d6f635
+Version:        1.1.7+git0.g50c6ca1f
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
 Group:          System/Filesystems
-Url:            https://rook.io/
+URL:            https://rook.io/
 
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}-vendor.tar.xz
@@ -143,15 +143,21 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service
-%global rook_container_version 1.1.6.0  # this is updated by update-tarball.sh
+%global rook_container_version 1.1.7.0  # this is updated by update-tarball.sh
 %if 0%{?is_opensuse}
 %global rook_image     registry.opensuse.org/opensuse/rook/ceph:%{rook_container_version}.%{release}
 %global ceph_image     registry.opensuse.org/opensuse/ceph/ceph:%CEPH_VERSION%
 %global ceph_csi_image registry.opensuse.org/opensuse/cephcsi/cephcsi:%CSI_VERSION%.%CSI_OFFSET%
 %else # is SES
+%if 0%{?sle_version} >= 150200
+%global rook_image     registry.suse.com/ses/7/rook/ceph:%{rook_container_version}.%{release}
+%global ceph_image     registry.suse.com/ses/7/ceph/ceph:%CEPH_VERSION%
+%global ceph_csi_image registry.suse.com/ses/7/cephcsi/cephcsi:%CSI_VERSION%.%CSI_OFFSET%
+%else
 %global rook_image     registry.suse.com/ses/6/rook/ceph:%{rook_container_version}.%{release}
 %global ceph_image     registry.suse.com/ses/6/ceph/ceph:%CEPH_VERSION%
 %global ceph_csi_image registry.suse.com/ses/6/cephcsi/cephcsi:%CSI_VERSION%.%CSI_OFFSET%
+%endif
 %endif
 
 %build

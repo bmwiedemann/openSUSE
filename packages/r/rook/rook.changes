@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:20:09 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update rook to v1.1.7:
+  * Skip osd prepare job creation if osd daemon exists for the pvc (#4277)
+  * Stop osd process more quickly during pod shutdown to reduce IO unresponsiveness (#4328)
+  * Add osd anti-affinity to the example of OSDs on PVCs (#4326)
+  * Properly set app name on the cmdreporter (#4323)
+  * Ensure disruption draining state is set and checked correctly (#4319)
+  * Update LVM filter for OSDs on PVCs (#4312)
+  * Fix topology logic for disruption drains (#4221)
+  * Skip restorecon during ceph-volume configuration (#4260)
+  * Added a note around snapshot CRD cleanup (#4302)
+  * Storage utilization alert threshold and timing updated (#4286)
+  * Silence disruption errors if necessary and add missing errors (#4288)
+  * Create csi keys and secrets for external cluster (#4276)
+  * Add retry to ObjectUser creation (#4149)
+
+-------------------------------------------------------------------
 Wed Nov  6 09:11:01 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Update rook to v1.1.6:
