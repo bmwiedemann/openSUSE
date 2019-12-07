@@ -18,7 +18,7 @@
 %define _buildshell /bin/bash
 
 Name:           sssd
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0+ and LGPL-3.0+
