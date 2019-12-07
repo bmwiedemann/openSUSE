@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 18 17:54:39 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 2.0201
+  2.0201  2019-05-25
+    - Set MIN_PERL_VERSION to 5.8.1.
+    - Alien::Libxml2 Makefile.PL cleanups.
+    - Update the README for grammar and info.
+    - Link to XML-LibXML "by Example"
+        - https://github.com/shlomif/perl-XML-LibXML/pull/36
+        - Thanks to @Grinnz . 
+  2.0200  2019-03-23
+    - Convert to use Alien::Libxml2 .
+        - https://github.com/shlomif/perl-XML-LibXML/pull/30
+        - Thanks to @genio and @plicease .
+
+-------------------------------------------------------------------
 Mon Feb 11 06:37:14 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.0134

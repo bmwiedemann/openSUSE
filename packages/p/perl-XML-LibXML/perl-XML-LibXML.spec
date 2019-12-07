@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-LibXML
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,29 @@
 #
 
 
-Name:           perl-XML-LibXML
-Version:        2.0134
-Release:        0
 %define cpan_name XML-LibXML
+Name:           perl-XML-LibXML
+Version:        2.0201
+Release:        0
 Summary:        Perl Binding for libxml2
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Alien::Libxml2)
 BuildRequires:  perl(XML::NamespaceSupport) >= 1.07
 BuildRequires:  perl(XML::SAX) >= 0.11
 BuildRequires:  perl(XML::SAX::Base)
+BuildRequires:  perl(XML::SAX::DocumentLocator)
 BuildRequires:  perl(XML::SAX::Exception)
 BuildRequires:  perl(parent)
 Requires:       perl(XML::NamespaceSupport) >= 1.07
 Requires:       perl(XML::SAX) >= 0.11
 Requires:       perl(XML::SAX::Base)
+Requires:       perl(XML::SAX::DocumentLocator)
 Requires:       perl(XML::SAX::Exception)
 Requires:       perl(parent)
 %{perl_requires}
