@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+
+-------------------------------------------------------------------
 Sat Nov 16 17:52:20 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.3.0:
