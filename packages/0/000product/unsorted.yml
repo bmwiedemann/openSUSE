@@ -1299,8 +1299,6 @@ unsorted:
   - bowtie2: [x86_64] 
   - bpftool 
   - bpm-tools 
-  - bpython 
-  - bpython-doc 
   - branding-upstream 
   - brasero-devel 
   - brevity 
@@ -1571,15 +1569,17 @@ unsorted:
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
   - ceph-csi: [x86_64] 
-  - ceph-dashboard-e2e: [x86_64] 
+  - ceph-daemon: [x86_64] 
   - ceph-fuse: [x86_64] 
   - ceph-grafana-dashboards: [x86_64] 
+  - ceph-immutable-object-cache: [x86_64] 
   - ceph-iscsi: [x86_64] 
   - ceph-mds: [x86_64] 
   - ceph-mgr: [x86_64] 
   - ceph-mgr-dashboard: [x86_64] 
   - ceph-mgr-diskprediction-cloud: [x86_64] 
   - ceph-mgr-diskprediction-local: [x86_64] 
+  - ceph-mgr-k8sevents: [x86_64] 
   - ceph-mgr-rook: [x86_64] 
   - ceph-mgr-ssh: [x86_64] 
   - ceph-mon: [x86_64] 
@@ -4480,8 +4480,6 @@ unsorted:
   - gnome-books-lang 
   - gnome-boxes 
   - gnome-boxes-lang 
-  - gnome-break-timer 
-  - gnome-break-timer-lang 
   - gnome-calculator-devel 
   - gnome-calendar 
   - gnome-calendar-lang 
@@ -8926,7 +8924,7 @@ unsorted:
   - libgaminggearfx0 
   - libgaminggearwidget0 
   - libganesha_nfsd-devel: [x86_64] 
-  - libganesha_nfsd2_8: [x86_64] 
+  - libganesha_nfsd3_0: [x86_64] 
   - libganglia0 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -10316,7 +10314,7 @@ unsorted:
   - libnsssharedhelper0-32bit: [x86_64] 
   - libntfs-3g-devel 
   - libntirpc-devel: [x86_64] 
-  - libntirpc1_7: [x86_64] 
+  - libntirpc3_0: [x86_64] 
   - libntk1 
   - libntl42 
   - libntlm-devel 
@@ -10444,9 +10442,6 @@ unsorted:
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
   - libopenssl_cbs_lib0: [x86_64] 
-  - libopensync 
-  - libopensync-devel 
-  - libopensync-tools 
   - libopentracing-cpp1 
   - libopenvdb6_2 
   - libopenvswitch-2_12-0 
@@ -10577,6 +10572,7 @@ unsorted:
   - libpaper1 
   - libpapi 
   - libpapi-32bit: [x86_64] 
+  - libpapi-hpc 
   - libpapi_5_7_0-hpc 
   - libpari-gmp-tls6 
   - libparlatype-devel 
@@ -12304,6 +12300,9 @@ unsorted:
   - libxklavier-devel 
   - libxklavier-doc 
   - libxklavier16-32bit: [x86_64] 
+  - libxls-devel 
+  - libxls-tools 
+  - libxlsreader1 
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-2_6-2-32bit: [x86_64] 
@@ -12467,8 +12466,6 @@ unsorted:
   - libzzip-0-13 
   - libzzip-0-13-32bit: [x86_64] 
   - lifelines 
-  - liferea 
-  - liferea-lang 
   - light-locker 
   - light-locker-lang 
   - lightdm-gobject-devel 
@@ -12541,7 +12538,6 @@ unsorted:
   - lirc-devel 
   - lirc-disable-kernel-rc 
   - lirc-drv-ftdi 
-  - lirc-drv-portaudio 
   - lirc-tools-gui 
   - listres 
   - litetran 
@@ -14235,6 +14231,7 @@ unsorted:
   - nfs-ganesha-nullfs: [x86_64] 
   - nfs-ganesha-proxy: [x86_64] 
   - nfs-ganesha-rados-grace: [x86_64] 
+  - nfs-ganesha-rados-urls: [x86_64] 
   - nfs-ganesha-rgw: [x86_64] 
   - nfs-ganesha-vfs: [x86_64] 
   - nfs-ganesha-xfs: [x86_64] 
@@ -17347,7 +17344,6 @@ unsorted:
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
   - python-Sphinx-doc-html 
-  - python-Sphinx-doc-man 
   - python-Twisted-doc 
   - python-WTForms-doc 
   - python-WebError 
@@ -17508,7 +17504,6 @@ unsorted:
   - python-openstack-doc-tools 
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
-  - python-opensync 
   - python-optcomplete 
   - python-os-testr-doc 
   - python-osc-lib-doc 
@@ -17608,13 +17603,9 @@ unsorted:
   - python-translationstring-doc 
   - python-tre 
   - python-trollius 
-  - python-troveclient 
-  - python-troveclient-doc 
   - python-txsocksx 
   - python-vips 
   - python-volatility 
-  - python-watcherclient 
-  - python-watcherclient-doc 
   - python-weakrefmethod 
   - python-wxWidgets-3_0-devel 
   - python-xapian 
@@ -17688,7 +17679,6 @@ unsorted:
   - python2-GeoIP 
   - python2-Glances 
   - python2-Gloo 
-  - python2-Glymur 
   - python2-GooCalendar 
   - python2-GridDataFormats 
   - python2-HeapDict 
@@ -17850,7 +17840,6 @@ unsorted:
   - python2-altair 
   - python2-altgraph 
   - python2-amqp 
-  - python2-amqplib 
   - python2-amqpstorm 
   - python2-ana 
   - python2-aniso8601 
@@ -18198,7 +18187,6 @@ unsorted:
   - python2-chai 
   - python2-chainmap 
   - python2-chardet 
-  - python2-chart-studio 
   - python2-check-manifest 
   - python2-cheroot 
   - python2-chest 
@@ -18287,7 +18275,6 @@ unsorted:
   - python2-cssselect 
   - python2-cssutils 
   - python2-ctypesgen 
-  - python2-cufflinks 
   - python2-cursive 
   - python2-curtsies 
   - python2-cymruwhois 
@@ -18296,7 +18283,6 @@ unsorted:
   - python2-d2to1 
   - python2-daemonize 
   - python2-daiquiri 
-  - python2-dash 
   - python2-datadiff 
   - python2-dateparser 
   - python2-datrie 
@@ -18367,7 +18353,6 @@ unsorted:
   - python2-django-registration 
   - python2-django-rest-framework-client 
   - python2-django-rest-framework-social-oauth2 
-  - python2-django-reversion 
   - python2-django-seed 
   - python2-django-sekizai 
   - python2-django-silk 
@@ -18620,7 +18605,6 @@ unsorted:
   - python2-identify 
   - python2-ifaddr 
   - python2-ijson 
-  - python2-imagecodecs 
   - python2-imageio 
   - python2-imagesize 
   - python2-img2pdf 
@@ -18762,7 +18746,6 @@ unsorted:
   - python2-libpamtest 
   - python2-libpfm 
   - python2-libqcow 
-  - python2-librosa 
   - python2-libsass 
   - python2-libscca 
   - python2-libsigscan 
@@ -19016,7 +18999,6 @@ unsorted:
   - python2-passivetotal 
   - python2-passlib 
   - python2-pastel 
-  - python2-pastream 
   - python2-path.py 
   - python2-pathlib 
   - python2-pathlib2 
@@ -19065,8 +19047,6 @@ unsorted:
   - python2-plaster 
   - python2-plaster-pastedeploy 
   - python2-plette 
-  - python2-plotly 
-  - python2-plotly-jupyter 
   - python2-pluggy 
   - python2-plumbum 
   - python2-ply 
@@ -19086,7 +19066,6 @@ unsorted:
   - python2-portend 
   - python2-portpicker 
   - python2-positional 
-  - python2-posix_ipc 
   - python2-power 
   - python2-poyo 
   - python2-pprintpp 
@@ -19238,7 +19217,6 @@ unsorted:
   - python2-pyperf 
   - python2-pypiserver 
   - python2-pypng 
-  - python2-pyprel 
   - python2-pyprimes 
   - python2-pypsexec 
   - python2-pypuppetdb 
@@ -19564,7 +19542,6 @@ unsorted:
   - python2-sh 
   - python2-shaptools 
   - python2-shellingham 
-  - python2-shijian 
   - python2-shodan 
   - python2-shortuuid 
   - python2-shouldbe 
@@ -19704,7 +19681,6 @@ unsorted:
   - python2-textile 
   - python2-texttable 
   - python2-textwrap3 
-  - python2-thLib 
   - python2-thrift 
   - python2-thriftpy2 
   - python2-tinydb 
@@ -19876,6 +19852,7 @@ unsorted:
   - python2-xxhash 
   - python2-yamldoc 
   - python2-yamllint 
+  - python2-yamlordereddictloader 
   - python2-yapf 
   - python2-yappi 
   - python2-yaql 
@@ -20082,7 +20059,6 @@ unsorted:
   - python3-RegexOrder 
   - python3-Routes 
   - python3-SPARQLWrapper 
-  - python3-SQLAlchemy 
   - python3-SQLAlchemy-Utils 
   - python3-Scrapy 
   - python3-SecretStorage 
@@ -20093,7 +20069,6 @@ unsorted:
   - python3-SoundCard 
   - python3-SoundFile 
   - python3-SpeechRecognition 
-  - python3-Sphinx 
   - python3-Sphinx-latex 
   - python3-TagStats 
   - python3-Tempita 
@@ -20114,7 +20089,6 @@ unsorted:
   - python3-WebOb 
   - python3-WebTest 
   - python3-Werkzeug 
-  - python3-Whoosh 
   - python3-XStatic 
   - python3-XStatic-Angular-Schema-Form 
   - python3-XStatic-jQuery 
@@ -20163,14 +20137,12 @@ unsorted:
   - python3-aiosmtpd 
   - python3-aiosmtplib 
   - python3-akismet 
-  - python3-alabaster 
   - python3-alembic 
   - python3-alsa 
   - python3-altair 
   - python3-altair-widgets 
   - python3-altgraph 
   - python3-amqp 
-  - python3-amqplib 
   - python3-amqpstorm 
   - python3-ana 
   - python3-aniso8601 
@@ -20785,7 +20757,6 @@ unsorted:
   - python3-dockerpty 
   - python3-docopt 
   - python3-docrepr 
-  - python3-docutils 
   - python3-docutils-ast-writer 
   - python3-dogpile.cache 
   - python3-dogslow 
@@ -20801,7 +20772,6 @@ unsorted:
   - python3-duckduckgo2 
   - python3-dukpy 
   - python3-dukpy-kovidgoyal 
-  - python3-dulwich 
   - python3-dynaconf 
   - python3-easydev 
   - python3-easygui 
@@ -20860,7 +20830,6 @@ unsorted:
   - python3-fastTSNE 
   - python3-fastcluster 
   - python3-fasteners 
-  - python3-fastimport 
   - python3-fastjet 
   - python3-fastnumbers 
   - python3-fastparquet 
@@ -20952,7 +20921,6 @@ unsorted:
   - python3-geolinks 
   - python3-geopy 
   - python3-getmac 
-  - python3-geventhttpclient 
   - python3-gexiv2 
   - python3-ggplot 
   - python3-girder-client 
@@ -20988,7 +20956,6 @@ unsorted:
   - python3-google-resumable-media 
   - python3-googleapis-common-protos 
   - python3-googlemaps 
-  - python3-gpg 
   - python3-gpgme 
   - python3-gphoto2 
   - python3-gpiod 
@@ -21060,7 +21027,6 @@ unsorted:
   - python3-imagecodecs 
   - python3-imageio 
   - python3-imageio-ffmpeg 
-  - python3-imagesize 
   - python3-imbox 
   - python3-img-proof 
   - python3-img-proof-tests 
@@ -21580,7 +21546,6 @@ unsorted:
   - python3-pathtools 
   - python3-patsy 
   - python3-pbkdf2 
-  - python3-pbr 
   - python3-pcp 
   - python3-pdd 
   - python3-pdfkit 
@@ -21647,7 +21612,6 @@ unsorted:
   - python3-portend 
   - python3-portpicker 
   - python3-positional 
-  - python3-posix_ipc 
   - python3-power 
   - python3-poyo 
   - python3-pprintpp 
@@ -22044,7 +22008,6 @@ unsorted:
   - python3-remoto 
   - python3-rencode 
   - python3-renderspec 
-  - python3-reno 
   - python3-reportlab 
   - python3-repoze.lru 
   - python3-repoze.sphinx.autointerface 
@@ -22083,7 +22046,6 @@ unsorted:
   - python3-rnginline 
   - python3-robot-detection 
   - python3-rollbar 
-  - python3-roman 
   - python3-rope 
   - python3-rply 
   - python3-rpmconf 
@@ -22188,7 +22150,6 @@ unsorted:
   - python3-smmap 
   - python3-smmap2 
   - python3-sniffio 
-  - python3-snowballstemmer 
   - python3-snuggs 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
@@ -22213,32 +22174,24 @@ unsorted:
   - python3-sphinx-removed-in 
   - python3-sphinx-testing 
   - python3-sphinx-version-warning 
-  - python3-sphinx_rtd_theme 
   - python3-sphinxcontrib-actdiag 
   - python3-sphinxcontrib-apidoc 
-  - python3-sphinxcontrib-applehelp 
   - python3-sphinxcontrib-asyncio 
   - python3-sphinxcontrib-autoprogram 
   - python3-sphinxcontrib-autoprogram-doc 
   - python3-sphinxcontrib-blockdiag 
-  - python3-sphinxcontrib-devhelp 
   - python3-sphinxcontrib-documentedlist 
   - python3-sphinxcontrib-github-alt 
-  - python3-sphinxcontrib-htmlhelp 
   - python3-sphinxcontrib-httpdomain 
   - python3-sphinxcontrib-issuetracker 
-  - python3-sphinxcontrib-jsmath 
   - python3-sphinxcontrib-newsfeed 
   - python3-sphinxcontrib-nwdiag 
   - python3-sphinxcontrib-pecanwsme 
   - python3-sphinxcontrib-plantuml 
   - python3-sphinxcontrib-programoutput 
-  - python3-sphinxcontrib-qthelp 
   - python3-sphinxcontrib-seqdiag 
-  - python3-sphinxcontrib-serializinghtml 
   - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
-  - python3-sphinxcontrib-websupport 
   - python3-spidev 
   - python3-splinter 
   - python3-spotipy 
@@ -22520,6 +22473,7 @@ unsorted:
   - python3-yafe 
   - python3-yamldoc 
   - python3-yamllint 
+  - python3-yamlordereddictloader 
   - python3-yang 
   - python3-yapf 
   - python3-yappi 
@@ -33200,7 +33154,6 @@ unsorted:
   - wlc-devel 
   - wlroots-devel 
   - wm-icons 
-  - wmakerconf 
   - wmgui 
   - wminput 
   - wmpomme 
