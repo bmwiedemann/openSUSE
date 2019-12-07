@@ -287,4 +287,15 @@
 - Use more of modern macros for building</comment>
     <requestid>741496</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b6b5103fcf1b24a3aa98459a2f41cc97</srcmd5>
+    <version>1.0.18</version>
+    <time>1575727639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.18:
+  * build/CI/packaging changes only
+
+- Update to version 1.0.17</comment>
+    <requestid>754662</requestid>
+  </revision>
 </revisionlist>
