@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  4 19:59:11 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.3.4:
+  Fixes:
+  * Palette names were scrambled and nearly impossible to read
+    (Windows 7)
+  * Scale of palette was incorrect for high and low DPI displays
+  * Courtesy accidentals disappeared after an octave change using
+    Ctrl(Cmd)+Up/Down
+  * Crash reports could not be sent
+- Updated correct-revision.patch
+
+-------------------------------------------------------------------
 Tue Nov 26 11:04:26 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.3.3:

@@ -189,4 +189,21 @@
 </comment>
     <requestid>751057</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>65406adb9c5bc5c4e98f0d1293ee58ae</srcmd5>
+    <version>3.3.4</version>
+    <time>1575727657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.4:
+  Fixes:
+  * Palette names were scrambled and nearly impossible to read
+    (Windows 7)
+  * Scale of palette was incorrect for high and low DPI displays
+  * Courtesy accidentals disappeared after an octave change using
+    Ctrl(Cmd)+Up/Down
+  * Crash reports could not be sent
+- Updated correct-revision.patch
+</comment>
+    <requestid>754669</requestid>
+  </revision>
 </revisionlist>
