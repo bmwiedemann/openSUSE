@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">https://github.com/openSUSE/openSUSE-release-tools.git</param>
-    <param name="changesrevision">345321f98d1653df4059ddcb9d5e762ab8d3f99c</param>
+    <param name="changesrevision">a7a7921c9461a0a0f6e7e50585ad70b3d8f0568e</param>
   </service>
 </servicedata>
