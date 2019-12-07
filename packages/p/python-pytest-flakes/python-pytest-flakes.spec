@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-flakes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Pytest plugin to check source code with pyflakes
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/fschulze/pytest-flakes
+URL:            https://github.com/fschulze/pytest-flakes
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-flakes/pytest-flakes-%{version}.tar.gz
 Patch0:         remove-bad-test.patch
 Patch1:         replace-pytest-pep8-with-pytest-codestyle.patch
@@ -48,6 +48,7 @@ py.test plugin for efficiently checking python source with pyflakes.
 %setup -q -n pytest-flakes-%{version}
 %patch0 -p1
 %patch1 -p1
+rm tox.ini
 
 %build
 %python_build
@@ -57,7 +58,7 @@ py.test plugin for efficiently checking python source with pyflakes.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc README.rst

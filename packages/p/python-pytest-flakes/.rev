@@ -18,4 +18,12 @@
     <comment>- Fix the pytest call</comment>
     <requestid>674968</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b3e80d6c1b8b803b0f177ccb048cb19c</srcmd5>
+    <version>4.0.0</version>
+    <time>1575727689</time>
+    <user>dimstar_suse</user>
+    <comment>- use pytest macro</comment>
+    <requestid>754689</requestid>
+  </revision>
 </revisionlist>
