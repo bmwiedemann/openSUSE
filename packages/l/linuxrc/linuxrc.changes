@@ -1,4 +1,34 @@
 --------------------------------------------------------------------
+Thu Dec 5 10:19:42 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#204
+- Append RPM_OPT_FLAGS to CFLAGS.
+- Append EXTRA_CFLAGS to CFLAGS.
+- 7.0.5
+
+--------------------------------------------------------------------
+Thu Dec 5 10:05:01 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#205
+- Fix building with -fno-common.
+- 7.0.4
+
+--------------------------------------------------------------------
+Thu Nov 28 15:33:47 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#200
+- fix 'label' URL scheme parsing
+- 7.0.3
+
+--------------------------------------------------------------------
+Thu Nov 28 14:15:05 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#199
+- fix URL parsing (bsc#1156967)
+- re-parse URLs after udevd has been started (bsc#1156967)
+- 7.0.2
+
+--------------------------------------------------------------------
 Tue Nov 19 15:15:43 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#198
