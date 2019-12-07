@@ -1101,4 +1101,17 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * fix squid permissions (bsc#1093414, CVE-2019-3688)</comment>
     <requestid>749269</requestid>
   </revision>
+  <revision rev="129" vrev="9">
+    <srcmd5>816e40547acec091bf126fe6e683bb60</srcmd5>
+    <version>unknown</version>
+    <time>1575727941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191205:
+  * fix privilege escalation through untrusted symlinks (bsc#1150734,
+    CVE-2019-3690)
+
+- Update to version 20191122:
+  * faxq-helper: correct &quot;secure&quot; permission for trusted group (bsc#1157498)</comment>
+    <requestid>754442</requestid>
+  </revision>
 </revisionlist>
