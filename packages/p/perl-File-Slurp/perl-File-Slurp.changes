@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 28 03:02:05 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 9999.29
+   see /usr/share/doc/packages/perl-File-Slurp/Changes
+
+  9999.29     2019-11-27
+      - Correct some documentation errors where copy-paste had us saying
+        File::Spec rather than File::Slurp. (RT 131097 - Thanks, Mike)
+      - Reduce the size of the tests in t/handle.t to be nicer to CPAN
+        Testers.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:30:49 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 9999.28
