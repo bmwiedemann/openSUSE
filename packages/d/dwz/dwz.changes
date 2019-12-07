@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 28 12:56:34 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Fix assertion failure 'refd != NULL' in write_die [swo#24169].
+  * dwz-fix-refd-NULL-assertion-in-write_die.patch
+
+-------------------------------------------------------------------
+Wed Nov 27 18:50:07 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Fix assertion failure 'off == cu_size' in recompute_abbrevs
+  [swo#24764].
+  * dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
+
+-------------------------------------------------------------------
 Tue Nov  5 09:55:50 UTC 2019 - Tom de Vries <tdevries@suse.com>
 
 - Fix die_no_multifile propagation [swo#25109].

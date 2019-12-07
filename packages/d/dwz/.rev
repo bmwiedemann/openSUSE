@@ -76,4 +76,17 @@
     <comment></comment>
     <requestid>745484</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>4e58982333c0d55d85cfd79ff4245053</srcmd5>
+    <version>0.13</version>
+    <time>1575727901</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix assertion failure 'refd != NULL' in write_die [swo#24169].
+  * dwz-fix-refd-NULL-assertion-in-write_die.patch
+- Fix assertion failure 'off == cu_size' in recompute_abbrevs
+  [swo#24764].
+  * dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
+</comment>
+    <requestid>751829</requestid>
+  </revision>
 </revisionlist>

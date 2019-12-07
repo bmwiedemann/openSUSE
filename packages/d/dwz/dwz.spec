@@ -75,6 +75,8 @@ NoSource:       0
 
 Patch1:         dwz-update-version-copyright-message.patch
 Patch2:         dwz-fix-die-no-multifile-propagation.patch
+Patch3:         dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
+Patch4:         dwz-fix-refd-NULL-assertion-in-write_die.patch
 
 %if %{build_main}
 %description
@@ -105,6 +107,8 @@ This package contains the testsuite results from DWZ.
 %setup -q -n dwz
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
