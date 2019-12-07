@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  3 12:57:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove Obsoletes: pkgconfig(*): Only package names can be
+  obsoleted. Until RPM 4.15, those lines were simply ineffective
+  and being ignored, but with RPM 4.15 they result in an error.
+
+-------------------------------------------------------------------
 Wed Sep 11 14:15:24 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Update to 1.1.1d release

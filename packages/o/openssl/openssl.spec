@@ -52,13 +52,9 @@ Requires:       pkgconfig
 Obsoletes:      openssl-devel < %{version}
 Provides:       openssl-devel = %{version}
 Provides:       pkgconfig(libssl) = %{version}
-Obsoletes:      pkgconfig(libssl) < %{version}
 Provides:       pkgconfig(libopenssl) = %{version}
-Obsoletes:      pkgconfig(libopenssl) < %{version}
 Provides:       pkgconfig(libcrypto) = %{version}
-Obsoletes:      pkgconfig(libcrypto) < %{version}
 Provides:       pkgconfig(openssl) = %{version}
-Obsoletes:      pkgconfig(openssl) < %{version}
 
 %description -n libopenssl-devel
 This package contains all necessary include files and libraries needed
