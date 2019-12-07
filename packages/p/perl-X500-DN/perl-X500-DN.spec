@@ -1,7 +1,7 @@
 #
 # spec file for package perl-X500-DN
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,17 +21,17 @@ BuildRequires:  perl-Parse-RecDescent
 BuildRequires:  perl-macros
 Requires:       perl-Parse-RecDescent
 Summary:        Provides an interface for RFC 2253 style DN strings
-License:        Artistic-1.0 or GPL-2.0+
+License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Development/Libraries/Perl
 Version:        0.29
 Release:        0
-Url:            http://search.cpan.org/dist/X500-DN/
-Source:         http://www.cpan.org/authors/id/R/RJ/RJOOP/X500-DN-%{version}.tar.gz
+URL:            http://search.cpan.org/dist/X500-DN/
+Source0:        http://www.cpan.org/authors/id/R/RJ/RJOOP/X500-DN-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         version-string-fix.diff
 Patch1:         version-string-fix2.diff
-%{perl_requires}
-Patch:          version-string-fix.diff
 Patch2:         X500-DN-dont_set_skip_to_undef.patch
+%{perl_requires}
 
 %description
 X500::DN Provides a pure perl parser and formatter for RFC 2253 style
@@ -45,7 +45,7 @@ Authors:
 
 %prep
 %setup -n X500-DN-%{version}
-%patch
+%patch0
 %patch1
 %patch2 -p1
 # ---------------------------------------------------------------------------
