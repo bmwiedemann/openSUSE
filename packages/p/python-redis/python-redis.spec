@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redis
-Version:        3.3.8
+Version:        3.3.11
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
@@ -58,6 +58,7 @@ killall redis-server
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst
-%{python_sitelib}/*
+%{python_sitelib}/redis/
+%{python_sitelib}/redis-%{version}-py*.egg-info
 
 %changelog
