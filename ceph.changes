@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:10:02 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-7456-ge089cead79: 
+  + rebase on tip of upstream master, SHA1 e4b3036422df70e3c911240e3bba6a8bd3e9c792
+
+-------------------------------------------------------------------
+Fri Nov 18 13:18:17 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-7219-g353896020b:
+  + rebase on tip of upstream master, SHA1 7ffb5d9e79207da81af933f4e95655e16558c739
+
+-------------------------------------------------------------------
+Fri Nov 15 13:33:41 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.4-386-g73475e3ee1:
+  + os/bluestore: consolidate extents from the same device only (bsc#1156282)
+
+-------------------------------------------------------------------
+Fri Oct 18 14:19:23 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.4-378-gac1bcd6547:
+  + qa/suse: move dashboard-e2e to tier3 and add debugging code to 
+    src/script/dashboard_e2e_tests.sh
+
+-------------------------------------------------------------------
 Wed Oct  2 14:23:24 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 14.2.4-373-gc3e67ed133:

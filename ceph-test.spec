@@ -21,6 +21,8 @@
 # bcond syntax!
 #################################################################################
 %bcond_with make_check
+%bcond_without ceph_test_package
+%bcond_with minimal_debugging_information
 %ifarch s390 s390x
 %bcond_with tcmalloc
 %else
@@ -28,17 +30,19 @@
 %endif
 %if 0%{?fedora} || 0%{?rhel}
 %bcond_without selinux
-%bcond_without ceph_test_package
+%if 0%{?rhel} >= 8
+%bcond_with cephfs_java
+%else
 %bcond_without cephfs_java
+%endif
+%bcond_without amqp_endpoint
 %bcond_without lttng
 %bcond_without libradosstriper
 %bcond_without ocf
-%bcond_without amqp_endpoint
 %global _remote_tarball_prefix https://download.ceph.com/tarballs/
 %endif
 %if 0%{?suse_version}
 %bcond_with selinux
-%bcond_without ceph_test_package
 %bcond_with cephfs_java
 %bcond_with amqp_endpoint
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -76,7 +80,9 @@
 %if 0%{without python2}
 %global _defined_if_python2_absent 1
 %endif
-
+%if 0%{?fedora} || 0%{?suse_version}
+%global weak_deps 1
+%endif
 %if %{with selinux}
 # get selinux policy version
 %{!?_selinux_policy_version: %global _selinux_policy_version 0.0.0}
@@ -85,6 +91,7 @@
 %{!?_udevrulesdir: %global _udevrulesdir /lib/udev/rules.d}
 %{!?tmpfiles_create: %global tmpfiles_create systemd-tmpfiles --create}
 %{!?python3_pkgversion: %global python3_pkgversion 3}
+%{!?python3_version_nodots: %global python3_version_nodots 3}
 %{!?python3_version: %global python3_version 3}
 # define _python_buildid macro which will expand to the empty string when
 # building with python2
@@ -100,7 +107,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 14.2.4.373+gc3e67ed133
+Version: 15.0.0.7456+ge089cead79
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -111,12 +118,12 @@ Epoch: 2
 %global _epoch_prefix %{?epoch:%{epoch}:}
 
 Summary: Ceph benchmarks and test tools
-License: LGPL-2.1 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-3-Clause and MIT
+License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-3-Clause and MIT
 %if 0%{?suse_version}
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-14.2.4-373-gc3e67ed133.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-15.0.0-7456-ge089cead79.tar.bz2
 %if 0%{?suse_version}
 Source96: checkin.sh
 Source97: README-checkin.txt
@@ -156,7 +163,7 @@ BuildRequires:	fuse-devel
 %if 0%{?rhel} == 7
 # devtoolset offers newer make and valgrind-devel, but the old ones are good
 # enough.
-BuildRequires:	devtoolset-7-gcc-c++ >= 7.3.1-5.13
+BuildRequires:	devtoolset-8-gcc-c++ >= 8.3.1-3.1
 %else
 BuildRequires:	gcc-c++
 %endif
@@ -173,14 +180,16 @@ BuildRequires:	leveldb-devel > 1.2
 BuildRequires:	libaio-devel
 BuildRequires:	libblkid-devel >= 2.17
 BuildRequires:	libcurl-devel
+BuildRequires:	libcap-ng-devel
 BuildRequires:	libudev-devel
+BuildRequires:	libnl3-devel
 BuildRequires:	liboath-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	libuuid-devel
 BuildRequires:	make
 BuildRequires:	ncurses-devel
 BuildRequires:	parted
+BuildRequires:	patch
 BuildRequires:	perl
 BuildRequires:	pkgconfig
 BuildRequires:  procps
@@ -201,14 +210,17 @@ BuildRequires:  librabbitmq-devel
 %endif
 %if 0%{with make_check}
 BuildRequires:  jq
+BuildRequires:	libuuid-devel
 BuildRequires:	python%{_python_buildid}-bcrypt
-BuildRequires:	python%{_python_buildid}-coverage
 BuildRequires:	python%{_python_buildid}-nose
-BuildRequires:	python%{_python_buildid}-pecan
 BuildRequires:	python%{_python_buildid}-requests
 BuildRequires:	python%{_python_buildid}-six
-BuildRequires:	python%{_python_buildid}-tox
 BuildRequires:	python%{_python_buildid}-virtualenv
+%if 0%{?rhel} < 8
+BuildRequires:	python%{_python_buildid}-coverage
+BuildRequires:	python%{_python_buildid}-pecan
+BuildRequires:	python%{_python_buildid}-tox
+%endif
 %if 0%{?rhel} == 7
 BuildRequires:  pyOpenSSL%{_python_buildid}
 %else
@@ -235,6 +247,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:	systemd-rpm-macros
 %{?systemd_requires}
 PreReq:		%fillup_prereq
+BuildRequires:	fdupes
 BuildRequires:	net-tools
 BuildRequires:	libbz2-devel
 BuildRequires:	mozilla-nss-devel
@@ -271,27 +284,40 @@ BuildRequires:	python2-Cython
 %endif
 BuildRequires:	python%{python3_pkgversion}-devel
 BuildRequires:	python%{python3_pkgversion}-setuptools
+%if 0%{?rhel} == 7
+BuildRequires:	python%{python3_version_nodots}-Cython
+%else
 BuildRequires:	python%{python3_pkgversion}-Cython
+%endif
 BuildRequires:	python%{_python_buildid}-prettytable
 BuildRequires:	python%{_python_buildid}-sphinx
 BuildRequires:	lz4-devel >= 1.7
 %endif
 # distro-conditional make check dependencies
 %if 0%{with make_check}
-%if 0%{?fedora} || 0%{?rhel}
+%if 0%{?fedora} || 0%{?rhel} == 7
+BuildRequires:	libtool-ltdl-devel
 BuildRequires:	python%{_python_buildid}-cherrypy
 BuildRequires:	python%{_python_buildid}-jwt
 BuildRequires:	python%{_python_buildid}-routes
 BuildRequires:	python%{_python_buildid}-werkzeug
-BuildRequires:  xmlsec1
+BuildRequires:	xmlsec1
+BuildRequires:	xmlsec1-devel
+BuildRequires:	xmlsec1-nss
+BuildRequires:	xmlsec1-openssl
+BuildRequires:	xmlsec1-openssl-devel
 %endif
 %if 0%{?suse_version}
+BuildRequires:	libxmlsec1-1
+BuildRequires:	libxmlsec1-nss1
+BuildRequires:	libxmlsec1-openssl1
 BuildRequires:	python%{_python_buildid}-CherryPy
 BuildRequires:	python%{_python_buildid}-PyJWT
 BuildRequires:	python%{_python_buildid}-Routes
 BuildRequires:	python%{_python_buildid}-Werkzeug
 BuildRequires:	python%{_python_buildid}-numpy-devel
-BuildRequires:  xmlsec1-devel
+BuildRequires:	xmlsec1-devel
+BuildRequires:	xmlsec1-openssl-devel
 %endif
 %endif
 # lttng and babeltrace for rbd-replay-prep
@@ -326,6 +352,9 @@ BuildRequires:  libcryptopp-devel
 BuildRequires:  libnuma-devel
 %endif
 %endif
+%if 0%{?rhel} >= 8
+BuildRequires:  /usr/bin/pathfix.py
+%endif
 
 %description
 This package contains Ceph benchmarks and test tools.
@@ -341,7 +370,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{with tcmalloc}
 %endif
 %endif
-%if 0%{?suse_version}
+%if 0%{?weak_deps}
 %endif
 %if 0%{?suse_version}
 %endif
@@ -363,6 +392,8 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?suse_version}
 %endif
+%if 0%{?weak_deps}
+%endif
 %if 0%{?rhel} == 7
 %endif
 %if 0%{?suse_version}
@@ -380,6 +411,14 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %endif
 %if 0%{?rhel} == 7
+%endif
+%if 0%{?suse_version}
+%endif
+%if 0%{?suse_version}
+%endif
+%if 0%{?suse_version}
+%endif
+%if 0%{?fedora} || 0%{?rhel}
 %endif
 %if 0%{?suse_version}
 %endif
@@ -407,6 +446,10 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?suse_version}
 %endif
+%if 0%{with seastar}
+%if 0%{?suse_version}
+%endif
+%endif
 %if 0%{?suse_version}
 %endif
 %if 0%{?rhel} || 0%{?fedora}
@@ -470,6 +513,12 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %if 0%{without python2}
+%endif
+%if 0%{with python2}
+%if 0%{?suse_version}
+%endif
+%endif
+%if 0%{?suse_version}
 %endif
 %if 0%{with python2}
 %if 0%{?suse_version}
@@ -504,11 +553,9 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %if 0%{?suse_version}
-%if 0%{?suse_version}
-%endif
 %endif
 %prep
-%autosetup -p1 -n ceph-14.2.4-373-gc3e67ed133
+%autosetup -p1 -n ceph-15.0.0-7456-ge089cead79
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -516,7 +563,7 @@ This package contains Ceph benchmarks and test tools.
 %define _lto_cflags %{nil}
 
 %if 0%{?rhel} == 7
-. /opt/rh/devtoolset-7/enable
+. /opt/rh/devtoolset-8/enable
 %endif
 
 %if 0%{with cephfs_java}
@@ -529,6 +576,9 @@ done
 %if 0%{?suse_version}
 # the following setting fixed an OOM condition we once encountered in the OBS
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS --param ggc-min-expand=20 --param ggc-min-heapsize=32768"
+%endif
+%if %{with minimal_debugging_information}
+RPM_OPT_FLAGS="$(echo $RPM_OPT_FLAGS | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g')"
 %endif
 
 export CPPFLAGS="$java_inc"
@@ -550,7 +600,7 @@ free -h
 echo "System limits:"
 ulimit -a
 if test -n "$CEPH_SMP_NCPUS" -a "$CEPH_SMP_NCPUS" -gt 1 ; then
-    mem_per_process=1800
+    mem_per_process=2500
     max_mem=$(LANG=C free -m | sed -n "s|^Mem: *\([0-9]*\).*$|\1|p")
     max_jobs="$(($max_mem / $mem_per_process))"
     test "$CEPH_SMP_NCPUS" -gt "$max_jobs" && CEPH_SMP_NCPUS="$max_jobs" && echo "Warning: Reducing build parallelism to -j$max_jobs because of memory limits"
@@ -580,6 +630,7 @@ ${CMAKE} .. \
     -DWITH_MANPAGE=ON \
     -DWITH_PYTHON3=%{python3_version} \
     -DWITH_MGR_DASHBOARD_FRONTEND=OFF \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 %if %{with python2}
     -DWITH_PYTHON2=ON \
 %else
@@ -659,6 +710,8 @@ chmod 0644 %{buildroot}%{_docdir}/ceph/sample.ceph.conf
 install -m 0644 -D COPYING %{buildroot}%{_docdir}/ceph/COPYING
 install -m 0644 -D etc/sysctl/90-ceph-osd.conf %{buildroot}%{_sysctldir}/90-ceph-osd.conf
 
+install -m 0755 src/ceph-daemon/ceph-daemon %{buildroot}%{_sbindir}/ceph-daemon
+
 # firewall templates and /sbin/mount.ceph symlink
 %if 0%{?suse_version}
 mkdir -p %{buildroot}/sbin
@@ -670,6 +723,11 @@ install -m 0644 -D udev/50-rbd.rules %{buildroot}%{_udevrulesdir}/50-rbd.rules
 
 # sudoers.d
 install -m 0600 -D sudoers.d/ceph-osd-smartctl %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
+
+%if 0%{?rhel} >= 8
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_bindir}/*
+pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_sbindir}/*
+%endif
 
 #set up placeholder directories
 mkdir -p %{buildroot}%{_sysconfdir}/ceph
@@ -690,22 +748,15 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-mgr
 mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-rbd
 mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-rbd-mirror
 
-# dashboard E2E tests
-install -m 0755 -d %{buildroot}/%{_datadir}/ceph/dashboard-e2e
-install -m 0755 src/script/dashboard_e2e_tests.sh %{buildroot}/%{_datadir}/ceph/dashboard-e2e/dashboard_e2e_tests.sh
-install -m 0644 src/pybind/mgr/dashboard/frontend/angular.json %{buildroot}/%{_datadir}/ceph/dashboard-e2e/angular.json
-install -m 0644 src/pybind/mgr/dashboard/frontend/protractor.conf.js %{buildroot}/%{_datadir}/ceph/dashboard-e2e/protractor.conf.js
-install -m 0644 src/pybind/mgr/dashboard/frontend/package.json %{buildroot}/%{_datadir}/ceph/dashboard-e2e/package.json
-install -m 0644 src/pybind/mgr/dashboard/frontend/package-lock.json %{buildroot}/%{_datadir}/ceph/dashboard-e2e/package-lock.json
-install -m 0755 src/pybind/mgr/dashboard/frontend/tsconfig.json %{buildroot}/%{_datadir}/ceph/dashboard-e2e/tsconfig.json
-cp -a src/pybind/mgr/dashboard/frontend/e2e/ %{buildroot}/%{_datadir}/ceph/dashboard-e2e
-
 %if 0%{?suse_version}
 # create __pycache__ directories and their contents
 %py3_compile %{buildroot}%{python3_sitelib}
 # prometheus alerts
 install -m 644 -D monitoring/prometheus/alerts/ceph_default_alerts.yml %{buildroot}/etc/prometheus/SUSE/default_rules/ceph_default_alerts.yml
+# hardlink duplicate files under /usr to save space
+%fdupes %{buildroot}%{_prefix}
 %endif
+
 %if 0%{?rhel} == 8
 %py_byte_compile %{__python3} %{buildroot}%{python3_sitelib}
 %endif
@@ -736,12 +787,8 @@ rm -rf %{buildroot}%{_fillupdir}/sysconfig.*
 rm -rf %{buildroot}%{_unitdir}/ceph.target
 rm -rf %{buildroot}%{python_sitelib}/ceph_volume/*
 rm -rf %{buildroot}%{python_sitelib}/ceph_volume-*
-rm -rf %{buildroot}%{python_sitelib}/ceph_lvm*
-rm -rf %{buildroot}%{python_sitelib}/ceph_volume_lvm*
 rm -rf %{buildroot}%{python3_sitelib}/ceph_volume/*
 rm -rf %{buildroot}%{python3_sitelib}/ceph_volume-*
-rm -rf %{buildroot}%{python3_sitelib}/ceph_lvm*
-rm -rf %{buildroot}%{python3_sitelib}/ceph_volume_lvm*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-deploy.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-create-keys.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-run.8*
@@ -749,6 +796,7 @@ rm -rf %{buildroot}%{_mandir}/man8/crushtool.8*
 rm -rf %{buildroot}%{_mandir}/man8/osdmaptool.8*
 rm -rf %{buildroot}%{_mandir}/man8/monmaptool.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-kvstore-tool.8*
+rm -rf %{buildroot}%{_sbindir}/ceph-daemon
 rm -rf %{buildroot}%doc
 rm -rf %{buildroot}%{_docdir}/ceph/sample.ceph.conf
 rm -rf %{buildroot}%license
@@ -799,6 +847,7 @@ rm -rf %{buildroot}%{_mandir}/man8/ceph-mds.8*
 rm -rf %{buildroot}%{_unitdir}/ceph-mds@.service
 rm -rf %{buildroot}%{_unitdir}/ceph-mds.target
 rm -rf %{buildroot}%{_bindir}/ceph-mgr
+rm -rf %{buildroot}%{_datadir}/ceph/mgr/alerts
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/ansible
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/balancer
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/crash
@@ -831,6 +880,7 @@ rm -rf %{buildroot}%{_datadir}/ceph/mgr/dashboard
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/diskprediction_local
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/diskprediction_cloud
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/rook
+rm -rf %{buildroot}%{_datadir}/ceph/mgr/k8sevents
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/ssh
 rm -rf %{buildroot}%{_bindir}/ceph-mon
 rm -rf %{buildroot}%{_bindir}/ceph-monstore-tool
@@ -848,6 +898,10 @@ rm -rf %{buildroot}%{_bindir}/rbd-mirror
 rm -rf %{buildroot}%{_mandir}/man8/rbd-mirror.8*
 rm -rf %{buildroot}%{_unitdir}/ceph-rbd-mirror@.service
 rm -rf %{buildroot}%{_unitdir}/ceph-rbd-mirror.target
+rm -rf %{buildroot}%{_bindir}/ceph-immutable-object-cache
+rm -rf %{buildroot}%{_mandir}/man8/ceph-immutable-object-cache.8*
+rm -rf %{buildroot}%{_unitdir}/ceph-immutable-object-cache@.service
+rm -rf %{buildroot}%{_unitdir}/ceph-immutable-object-cache.target
 rm -rf %{buildroot}%{_bindir}/rbd-nbd
 rm -rf %{buildroot}%{_mandir}/man8/rbd-nbd.8*
 rm -rf %{buildroot}%{_bindir}/radosgw
@@ -875,6 +929,7 @@ rm -rf %{buildroot}%{_unitdir}/ceph-osd.target
 rm -rf %{buildroot}%{_unitdir}/ceph-volume@.service
 rm -rf %{buildroot}%{_sysctldir}/90-ceph-osd.conf
 rm -rf %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
+rm -rf %{buildroot}%{_bindir}/crimson-osd
 rm -rf %{buildroot}%{_prefix}/lib/ocf/resource.d/ceph/rbd
 rm -rf %{buildroot}%{_libdir}/librados.so.*
 rm -rf %{buildroot}%{_libdir}/ceph/libceph-common.so.*
@@ -910,13 +965,15 @@ rm -rf %{buildroot}%{_libdir}/librbd.so
 rm -rf %{buildroot}%{_libdir}/librbd_tp.so
 rm -rf %{buildroot}%{_libdir}/librgw.so.*
 rm -rf %{buildroot}%{_libdir}/librgw_admin_user.so.*
-rm -rf %{buildroot}%{_libdir}/librgw_op_tp.so*
-rm -rf %{buildroot}%{_libdir}/librgw_rados_tp.so*
+rm -rf %{buildroot}%{_libdir}/librgw_op_tp.so.*
+rm -rf %{buildroot}%{_libdir}/librgw_rados_tp.so.*
 rm -rf %{buildroot}%{_includedir}/rados/librgw.h
 rm -rf %{buildroot}%{_includedir}/rados/librgw_admin_user.h
 rm -rf %{buildroot}%{_includedir}/rados/rgw_file.h
 rm -rf %{buildroot}%{_libdir}/librgw.so
 rm -rf %{buildroot}%{_libdir}/librgw_admin_user.so
+rm -rf %{buildroot}%{_libdir}/librgw_op_tp.so
+rm -rf %{buildroot}%{_libdir}/librgw_rados_tp.so
 rm -rf %{buildroot}%{python_sitearch}/rgw.so
 rm -rf %{buildroot}%{python_sitearch}/rgw-*.egg-info
 rm -rf %{buildroot}%{python3_sitearch}/rgw.cpython*.so
@@ -942,6 +999,10 @@ rm -rf %{buildroot}%{python3_sitelib}/ceph_argparse.py
 rm -rf %{buildroot}%{python3_sitelib}/__pycache__/ceph_argparse.cpython*.py*
 rm -rf %{buildroot}%{python3_sitelib}/ceph_daemon.py
 rm -rf %{buildroot}%{python3_sitelib}/__pycache__/ceph_daemon.cpython*.py*
+rm -rf %{buildroot}%{python_sitelib}/ceph
+rm -rf %{buildroot}%{python_sitelib}/ceph-*.egg-info
+rm -rf %{buildroot}%{python3_sitelib}/ceph
+rm -rf %{buildroot}%{python3_sitelib}/ceph-*.egg-info
 rm -rf %{buildroot}%{python3_sitelib}/cephfs_shell-*.egg-info
 rm -rf %{buildroot}%{_bindir}/cephfs-shell
 rm -rf %{buildroot}%{_libdir}/libcephfs_jni.so.*
@@ -958,7 +1019,6 @@ rm -rf %{buildroot}monitoring/grafana/dashboards/README
 rm -rf %{buildroot}%doc
 rm -rf %{buildroot}monitoring/grafana/README.md
 rm -rf %{buildroot}/etc/prometheus/SUSE/default_rules/ceph_default_alerts.yml
-rm -rf %{buildroot}%{_datadir}/ceph/dashboard-e2e
 
 dirs=`find %{buildroot} -type d -empty`
 while [[ -n $dirs ]]; do
@@ -1068,6 +1128,18 @@ rm -rf %{buildroot}
 %endif
 %if 0%{?fedora} || 0%{?rhel}
 %endif
+%if 0%{?suse_version}
+%endif
+%if 0%{?fedora} || 0%{?rhel}
+%endif
+%if 0%{?suse_version}
+%endif
+%if 0%{?fedora} || 0%{?rhel}
+%endif
+%if 0%{?suse_version}
+%endif
+%if 0%{?fedora} || 0%{?rhel}
+%endif
 %if 0%{?sysctl_apply}
 %endif
 %if 0%{?suse_version}
@@ -1077,6 +1149,8 @@ rm -rf %{buildroot}
 %if 0%{?suse_version}
 %endif
 %if 0%{?fedora} || 0%{?rhel}
+%endif
+%if 0%{with seastar}
 %endif
 %if %{with ocf}
 %endif
@@ -1093,6 +1167,10 @@ rm -rf %{buildroot}
 %if %{with lttng}
 %endif
 %if %{with lttng}
+%endif
+%if %{with lttng}
+%endif
+%if 0%{with python2}
 %endif
 %if 0%{with python2}
 %endif
@@ -1127,7 +1205,7 @@ rm -rf %{buildroot}
 %{_bindir}/ceph_test_*
 %{_bindir}/ceph-coverage
 %{_bindir}/ceph-debugpack
-%{_bindir}/cephdeduptool
+%{_bindir}/ceph-dedup-tool
 %{_mandir}/man8/ceph-debugpack.8*
 %dir %{_libdir}/ceph
 %{_libdir}/ceph/ceph-monstore-update-crush.sh

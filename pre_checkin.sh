@@ -284,6 +284,7 @@ rm_files=`generate_rm_exclude_files "$files" "%{buildroot}"`
 summ=`get_package_summary $SPEC_FILE $PACKAGE`
 desc=`get_package_description $SPEC_FILE $PACKAGE`
 reqs=`get_package_requires $SPEC_FILE $PACKAGE`
+sed -i -e 's/%bcond_without ceph_test_package/%bcond_with ceph_test_package/' $SPEC_FILE
 transform_spec_file $SPEC_FILE $PACKAGE "$rm_files" "$summ" "$desc" "$reqs" > $PACKAGE.spec
 insert_line_before "${PACKAGE}.spec" "Source99: ceph-rpmlintrc" "_insert_obs_source_lines_here"
 insert_line_before "${PACKAGE}.spec" "Source98: README-ceph-test.txt" "^Source99:"
