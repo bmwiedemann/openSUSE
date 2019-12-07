@@ -1,8 +1,8 @@
-Index: vim-8.1.1005/src/testdir/test_search.vim
+Index: vim-8.1.2383/src/testdir/test_search.vim
 ===================================================================
---- vim-8.1.1005.orig/src/testdir/test_search.vim
-+++ vim-8.1.1005/src/testdir/test_search.vim
-@@ -922,7 +922,7 @@ func Test_incsearch_substitute_dump()
+--- vim-8.1.2383.orig/src/testdir/test_search.vim
++++ vim-8.1.2383/src/testdir/test_search.vim
+@@ -929,7 +929,7 @@ func Test_incsearch_substitute_dump()
  
    " Deleting last slash should remove the match.
    call term_sendkeys(buf, "\<BS>")
@@ -11,7 +11,7 @@ Index: vim-8.1.1005/src/testdir/test_search.vim
    call term_sendkeys(buf, "\<Esc>")
  
    " Reverse range is accepted
-@@ -973,7 +973,7 @@ func Test_incsearch_substitute_dump()
+@@ -980,7 +980,7 @@ func Test_incsearch_substitute_dump()
    call term_sendkeys(buf, ":%s/.")
    call VerifyScreenDump(buf, 'Test_incsearch_substitute_11', {})
    call term_sendkeys(buf, "\<BS>")
@@ -19,4 +19,4 @@ Index: vim-8.1.1005/src/testdir/test_search.vim
 +  "call VerifyScreenDump(buf, 'Test_incsearch_substitute_12', {})
    call term_sendkeys(buf, "\<Esc>")
    call VerifyScreenDump(buf, 'Test_incsearch_substitute_13', {})
- 
+   call term_sendkeys(buf, ":%bwipe!\<CR>")

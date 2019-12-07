@@ -1,7 +1,7 @@
 #
 # spec file for package vim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.1
-%define patchlevel 2233
+%define patchlevel 2383
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim81
 %define site_runtimepath %{_datadir}/vim/site

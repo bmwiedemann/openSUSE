@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:38:54 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.1.2383, fixes the following problems
+ + refreshed patches: vim-7.3-help_tags.patch
+                      vim-7.3-name_vimrc.patch
+                      vim-8.1.0297-dump3.patch
+  * Cannot get the Vim command line arguments.
+  * get_short_pathname() fails depending on encoding.
+  * "C" with 'virtualedit' set does not include multi-byte char.
+  * Ml_get error if pattern matches beyond last line.
+  * Mode() result after usign "r" depends on whether CURSOR_SHAPE is
+  defined. (Christian Brabandt)
+  * Error in docs tags goes unnoticed.
+  * Popup window width changes when scrolling.
+  * Match highlight does not combine with 'wincolor'.
+  * Creating docs tags uses user preferences. (Tony Mechelynck)
+  * 'wrapscan' is not used for "gn".
+  * Third character of 'listchars' tab shows in wrong place when 'breakindent'
+  is set.
+  * Some tests are still in old style.
+  * "make vimtags" does not work in runtime/doc.
+  * CTRL-W dot does not work in a terminal when modifyOtherKeys is enabled.
+  * "make vimtags" does not print any message.
+  * CTRL-U and CTRL-D don't work in popup window.
+  * ":term command" may not work without a shell.
+  * Compiler warning for int size.
+  * Using "which" to check for an executable is not reliable.
+  * May get hit-enter prompt after entering a number. (Malcolm Rowe)
+  * Running tests may leave XfakeHOME behind.
+  * With modifyOtherKeys set 'noesckeys' doesn't work. (James McCoy)
+  * Unpack assignment in function not recognized.
+  * 'noesckeys' test fails in GUI.
+  * There are two test files for :let.
+  * When popup with "botleft" does not fit it flips incorrectly.
+  * Position unknown for a mouse click in a popup window.
+  * Compiler warning for uninitialized variable. (Tony Mechelynck)
+  * Spell file flag zero is not recognized.
+  * Tags file with very long line stops using binary search.
+  * "gf" is not tested in Visual mode.
+  * Build error if FEAT_TAG_BINS is not defined. (John Marriott)
+  * Test may hang at more prompt.
+  * Wrong default when "pos" is changed with popup_atcursor().
+  * Newlines in 'balloonexpr' result only work in the GUI.
+  * Using "seesion" looks like a mistake.
+  * Terminal window is not updated when info popup changes.
+  * Using "cd" with "exe" may fail.
+  * Computation of highlight attributes is too complicated.
+  * Crash when passing partial to substitute().
+  * 'showbreak' cannot be set for one window.
+  * Crash when passing many arguments through a partial. (Andy Massimino)
+  * Missed on use of p_sbr.
+  * Compiler warning for unused variable. (Tony Mechelynck)
+  * Padding in structures wastes memory.
+  * Using border highlight in popup window leaks memory.
+  * Using EndOfBuffer highlight in popup does not look good.
+  * Not using all space when popup with "topleft" flips to above.
+  * After :diffsplit closing the window does not disable diff.
+  * Autocommand test fails.
+  * Memory leak when executing command in a terminal.
+  * v:mouse_winid not set on click in popup window.
+  * Join adds trailing space when second line is empty. (Brennan Vincent)
+  * Cursor position wrong when characters are concealed and asearch causes
+  a scroll.
+  * If buffer of popup is in another window cursorline sign shows.
+  * Text properties are not combined with syntax by default.
+  * The ex_vimgrep() function is too long.
+  * Missing part of 8.1.2296.
+  * ConPTY in MS-Windows 1909 is still wrong.
+  * Redraw breaks going through list of popup windows.
+  * :lockmarks does not work for '[ and '].
+  * Cursor in wrong position after horizontal scroll.
+  * Cannot get the mouse position when getting a mouse click.
+  * No warning for wrong entry in translations.
+  * Double and triple clicks are not tested.
+  * Positioning popup doesn't work for buffer-local textprop.
+  * Deleting text before zero-width textprop removes it.
+  * Compiler warning for argument type.
+  * No proper test for directory changes in quickfix.
+  * Warning for missing function prototype.
+  * "line:" field in tags file not used.
+  * Debugging where a delay comes from is not easy.
+  * vi' sometimes does not select anything.
+  * Not always using the right window when jumping to an error.
+  * FORTIFY_SOURCE can also be present in CPPFLAGS.
+  * No test for spell affix file with flag on suffix.
+  * Compiler warning for int size.
+  * Insufficient test coverage for quickfix.
+  * Cannot select all text with the mouse. (John Marriott)
+  * Quickfix test fails in very big terminal.
+  * Width of scrollbar in popup menu not taken into account.
+  * Crash when using balloon with empty line.
+  * Cannot parse a date/time string.
+  * Cannot build with Hangul input.
+  * A few hangul input pieces remain.
+  * Mouse multiple click test is a bit flaky.
+  * vi' does not always work when 'selection' is exclusive.
+  * The option.c file is still very big.
+  * Missing file in refactoring.
+  * With modifyOtherKeys CTRL-^ doesn't work.
+  * Possible NULL pointer dereference in popup_locate(). (Coverity)
+  * Error message for function arguments may use NULL pointer. (Coverity)
+  * When an expr mapping moves the cursor it is not restored.
+  * Double-click time sometimes miscomputed.
+  * Using Visual mark sith :s gives E20 if not set.
+  * Insufficient testing for quickfix.
+  * Quickfix test fails under valgrind and asan.
+  * Not so easy to interrupt a script programatically.
+  * Random number generator in Vim script is slow.
+  * Using time() for srand() is not very random.
+  * .cjs files are not recognized as Javascript.
+  * CTRL-R CTRL-R doesn't work with modifyOtherKeys.
+  * :const cannot be followed by "| endif".
+  * :lockvar and :unlockvar cannot be followed by "| endif".
+  * Other text for CTRL-V in Insert mode with modifyOtherKeys.
+  * 'wincolor' not used for > for not fitting double width char. Also:
+  popup drawn on right half of double width character looks            wrong.
+  * rand() does not use the best algorithm.
+  * No test with wrong argument for rand().
+  * Cannot build without FEAT_FLOAT. (John Marriott)
+  * Quickfix test coverage can still be improved.
+  * Cannot place signs in a popup window. (Maxim Kim)
+  * ml_get error when accessing Visual area in 'statusline'.
+  * Missing tests for recent popupwin changes.
+  * Using old C style comments.
+  * Registers are not sufficiently tested.
+  * Using old C style comments.
+  * Cannot build with quickfix and without text properties.
+  * Build problems on VMS.
+  * FEAT_TEXT_PROP is a confusing name.
+  * Cannot build with +popupwin but without +quickfix. (John Marriott)
+  * Unused parts of libvterm are included.
+  * No suffucient testing for registers.
+  * Preprocessor indents are incorrect.
+  * GUI: when losing focus a pending operator is executed.
+  * Using old C style comments.
+  * Not all register related code is covered by tests.
+
+-------------------------------------------------------------------
 Tue Oct 29 12:32:18 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.1.2233, fixes the following problems

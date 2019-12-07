@@ -4145,4 +4145,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Syntax attributes not combined with Visual highlighting. (Arseny Nasokin)</comment>
     <requestid>743826</requestid>
   </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>29372f26bef429e5c0aa7bbeccdc36e6</srcmd5>
+    <version>8.1.2383</version>
+    <time>1575728100</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.1.2383, fixes the following problems
+ + refreshed patches: vim-7.3-help_tags.patch
+                      vim-7.3-name_vimrc.patch
+                      vim-8.1.0297-dump3.patch
+  * Cannot get the Vim command line arguments.
+  * get_short_pathname() fails depending on encoding.
+  * &quot;C&quot; with 'virtualedit' set does not include multi-byte char.
+  * Ml_get error if pattern matches beyond last line.
+  * Mode() result after usign &quot;r&quot; depends on whether CURSOR_SHAPE is
+  defined. (Christian Brabandt)
+  * Error in docs tags goes unnoticed.
+  * Popup window width changes when scrolling.
+  * Match highlight does not combine with 'wincolor'.
+  * Creating docs tags uses user preferences. (Tony Mechelynck)
+  * 'wrapscan' is not used for &quot;gn&quot;.
+  * Third character of 'listchars' tab shows in wrong place when 'breakindent'
+  is set.
+  * Some tests are still in old style.
+  * &quot;make vimtags&quot; does not work in runtime/doc.
+  * CTRL-W dot does not work in a terminal when modifyOtherKeys is enabled.
+  * &quot;make vimtags&quot; does not print any message.
+  * CTRL-U and CTRL-D don't work in popup window.
+  * &quot;:term command&quot; may not work without a shell.
+  * Compiler warning for int size.
+  * Using &quot;which&quot; to check for an executable is not reliable.
+  * May get hit-enter prompt after entering a number. (Malcolm Rowe)
+  * Running tests may leave XfakeHOME behind.
+  * With modifyOtherKeys set 'noesckeys' doesn't work. (James McCoy)
+  * Unpack assignment in function not recognized.
+  * 'noesckeys' test fails in GUI.</comment>
+    <requestid>753275</requestid>
+  </revision>
 </revisionlist>
