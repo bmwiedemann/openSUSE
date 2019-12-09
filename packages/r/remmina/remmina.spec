@@ -1,7 +1,7 @@
 #
 # spec file for package remmina
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,17 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            http://www.remmina.org/
+URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
+# Patch to stay compatible with libfreerdp-2.0.0-rc4
+Patch0:         remmina-1.3.7-libfreerdp-2.0.0-rc4.patch
 BuildRequires:  cmake
+BuildRequires:  cups-devel
 BuildRequires:  ed
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -49,7 +52,6 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(spice-client-gtk-3.0)
-#BuildRequires:  pkgconfig(telepathy-glib)
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(winpr2)
@@ -175,14 +177,6 @@ Requires:       remmina = %{version}
 This package provides the a plugin for Remmina which allows to login and
 to browse a page.
 
-#%%package plugin-telepathy
-#Summary:        Telepathy Protocol Plugin for Remmina
-#Group:          Productivity/Networking/Other
-#Requires:       remmina = %%{version}
-
-#%%description plugin-telepathy
-#This package provides the Telepathy plugin for Remmina.
-
 %package plugin-secret
 Summary:        Gnome Keyring Pasword Manager Plugin for Remmina
 Group:          Productivity/Networking/Other
@@ -197,6 +191,8 @@ This package provides a Remmina plugin for the GNOME keyring password manager.
 
 %prep
 %setup -q -n Remmina-v%{version}
+sed -e 's|%{_bindir}/env bash|%{_bindir}/sh|' -i data/desktop/remmina-file-wrapper.in
+%patch0 -p1
 
 %build
 export LDFLAGS="-pie"
@@ -283,12 +279,6 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %postun plugin-www
 %icon_theme_cache_postun
 
-#%%post plugin-telepathy
-#%%icon_theme_cache_post
-#
-#%%postun plugin-telepathy
-#%%icon_theme_cache_postun
-
 # end: only for suse < 1500
 %endif
 
@@ -296,7 +286,7 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %license LICENSE LICENSE.OpenSSL
 %doc AUTHORS CHANGELOG.md README.md
 %{_bindir}/%{name}
-%{_bindir}/%{name}-file-wrapper.sh
+%{_bindir}/%{name}-file-wrapper
 %{_datadir}/applications/%{name}-file.desktop
 %{_datadir}/applications/org.remmina.Remmina.desktop
 %{_datadir}/icons/hicolor/*/actions/*
@@ -310,6 +300,7 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins/
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-file-wrapper.1%{?ext_man}
 
 %files kiosk
 %dir %{_datadir}/gnome-session
@@ -373,13 +364,6 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %files plugin-www
 %{_libdir}/remmina/plugins/remmina-plugin-www.so
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-www-symbolic.svg
-
-#%%files plugin-telepathy
-#%%dir %%{_datadir}/telepathy
-#%%dir %%{_datadir}/telepathy/clients
-#%%{_libdir}/remmina/plugins/remmina-plugin-telepathy.so
-#%%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Remmina.service
-#%%{_datadir}/telepathy/clients/Remmina.client
 
 %files plugin-secret
 %{_libdir}/remmina/plugins/remmina-plugin-secret.so
