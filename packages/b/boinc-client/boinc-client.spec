@@ -1,7 +1,7 @@
 #
 # spec file for package boinc-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2016 by Aaron Puchert <aaronpuchert@alice-dsl.net>
 # Copyright (c) 2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -35,10 +35,10 @@
 
 Name:           boinc-client
 %define rel_name        %{name}_release
-%define minor_version   7.14
-Version:        %{minor_version}.2
+%define minor_version   7.16
+Version:        %{minor_version}.3
 Release:        0
-Summary:        The BOINC client
+Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
 Group:          Productivity/Clustering/Computing
 URL:            https://boinc.berkeley.edu/
@@ -108,19 +108,20 @@ BuildRequires:  wxWidgets-3_0-devel >= 3.0.2
 %lang_package
 
 %description
-The Berkeley Open Infrastructure for Network Computing (BOINC) is an open-
-source software platform which supports distributed computing, primarily in
-the form of "volunteer" computing and "desktop Grid" computing.  It is well
-suited for problems which are often described as "trivially parallel".  BOINC
-is the underlying software used by projects such as SETI@home, Einstein@Home,
-ClimatePrediciton.net, the World Community Grid, and many other distributed
-computing projects.
+The Berkeley Open Infrastructure for Network Computing (BOINC) is a
+software platform which supports distributed computing, primarily in
+the form of "volunteer" computing and "desktop grid" computing. It is
+well suited for problems which are often described as "trivially
+parallel". BOINC is the underlying software used by projects such as
+SETI@home, Einstein@Home, ClimatePrediciton.net, the World Community
+Grid, and many other distributed computing projects.
 
-This package installs the BOINC client software, which will allow your
-computer to participate in one or more BOINC projects, using your spare
-computer time to search for cures for diseases, model protein folding, study
-global warming, discover sources of gravitational waves, and many other types
-of scientific and mathematical research.
+This package installs the BOINC client software, which will allow
+your computer to participate in one or more BOINC projects, using
+your spare computer time to search for cures for diseases, model
+protein folding, study global warming, discover sources of
+gravitational waves, and many other types of scientific and
+mathematical research.
 
 %package -n boinc-manager
 Summary:        GUI to control and monitor boinc-client
@@ -140,11 +141,8 @@ Summary:        Berkeley Open Infrastructure For Network Computing library
 Group:          System/Libraries
 
 %description -n libboinc%{sonum}
-The BOINC Manager is a graphical monitor and control utility for the BOINC
-core client. It gives a detailed overview of the state of the client it is
-monitoring. The BOINC Manager has two modes of operation, the "Simple View" in
-which it only displays the most important information and the "Advanced View"
-in which all information and all control elements are available.
+The Berkeley Open Infrastructure for Network Computing (BOINC) is a
+software platform which supports distributed computing.
 
 %package -n libboinc-devel
 Summary:        Development files for libboinc
@@ -317,11 +315,11 @@ find %{buildroot}/%{_datadir}/locale/ -name "BOINC-Manager.mo" -exec rm -f \{\} 
 %fdupes -s %{buildroot}
 
 %pre
-# add group
-%{_sbindir}/groupadd -r boinc 2>/dev/null || :
+getent group boinc >/dev/null || %{_sbindir}/groupadd -r boinc
 # add user
+getent passwd boinc >/dev/null || \
 %{_sbindir}/useradd -c "BOINC Client" -d "%{_localstatedir}/lib/boinc" \
-  -g boinc -r -s /sbin/nologin boinc 2>/dev/null || :
+  -g boinc -r -s /sbin/nologin boinc
 # fix replacing old sysconfig file (r21)
 if [ -f %{_sysconfdir}/sysconfig/%{name} ]; then
   if ! grep -q "BOINC_BOINC_USR" %{_sysconfdir}/sysconfig/boinc-client; then

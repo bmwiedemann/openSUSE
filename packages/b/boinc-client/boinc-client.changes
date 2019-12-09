@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Dec  1 19:01:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.16.3
+  * If output file is missing on startup, flag task as error.
+  * Let project specify directories in logical file names.
+  * Fix security vulnerability involving logical file names.
+  * Make "reread config files" work for ncpus.
+  * Support fetch of files over GUI RPC; allow projects to supply
+    their own web-based GUI.
+  * Support GUI RPCs as HTTP Post requests.
+  * Enable "Other options" in simple view if no client connected.
+  * Clear "vm_extensions_disabled" flag on startup.
+  * Fix work fetch bug when max_concurrent used.
+  * Unsuspend jobs before telling them to quit.
+  * Sanity check job runtime limits.
+  * Fix overflow in OpenCL GPU FLOPS calculation.
+- Do not ignore errors from groupadd/useradd
+
+-------------------------------------------------------------------
 Tue Sep 10 09:24:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Build boinc-client using -ffat-lto-objects

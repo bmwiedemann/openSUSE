@@ -349,4 +349,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>- Build boinc-client using -ffat-lto-objects</comment>
     <requestid>729771</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>aadeca1606e5a56a5ffb41429fe746ec</srcmd5>
+    <version>7.16.3</version>
+    <time>1575923696</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.16.3 (forwarded request 752755 from jengelh)</comment>
+    <requestid>755065</requestid>
+  </revision>
 </revisionlist>

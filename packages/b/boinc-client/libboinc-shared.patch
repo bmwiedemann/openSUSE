@@ -1,8 +1,21 @@
 Build shared libraries for client and static libraries for science apps.
 
-diff --git a/api/Makefile.am b/api/Makefile.am
---- a/api/Makefile.am
-+++ b/api/Makefile.am
+---
+ api/Makefile.am       |    6 +++---
+ apps/Makefile.am      |    6 +++---
+ client/Makefile.am    |    1 -
+ clientgui/Makefile.am |    1 -
+ clientscr/Makefile.am |    1 -
+ lib/Makefile.am       |    4 ++--
+ sched/Makefile.am     |    1 -
+ tools/Makefile.am     |    1 -
+ vda/Makefile.am       |    1 -
+ 9 files changed, 8 insertions(+), 14 deletions(-)
+
+Index: boinc-client_release-7.16-7.16.3/api/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/api/Makefile.am
++++ boinc-client_release-7.16-7.16.3/api/Makefile.am
 @@ -43,18 +43,18 @@ endif
  
  lib_LTLIBRARIES = libboinc_api.la
@@ -25,10 +38,11 @@ diff --git a/api/Makefile.am b/api/Makefile.am
  
  if INSTALL_HEADERS
  ## install only headers that are meant for exporting the API !!
-diff --git a/apps/Makefile.am b/apps/Makefile.am
---- a/apps/Makefile.am
-+++ b/apps/Makefile.am
-@@ -8,15 +8,15 @@ example_PROGRAMS = upper_case concat 1sec
+Index: boinc-client_release-7.16-7.16.3/apps/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/apps/Makefile.am
++++ boinc-client_release-7.16-7.16.3/apps/Makefile.am
+@@ -8,15 +8,15 @@ example_PROGRAMS = upper_case concat 1se
  
  upper_case_SOURCES = upper_case.cpp
  upper_case_CXXFLAGS = $(PTHREAD_CFLAGS)
@@ -47,9 +61,10 @@ diff --git a/apps/Makefile.am b/apps/Makefile.am
 -1sec_LDFLAGS = -static-libtool-libs $(PTHREAD_CFLAGS)
 +1sec_LDFLAGS = $(PTHREAD_CFLAGS)
  1sec_LDADD = $(APPLIBS)
-diff --git a/client/Makefile.am b/client/Makefile.am
---- a/client/Makefile.am
-+++ b/client/Makefile.am
+Index: boinc-client_release-7.16-7.16.3/client/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/client/Makefile.am
++++ boinc-client_release-7.16-7.16.3/client/Makefile.am
 @@ -4,7 +4,6 @@
  include $(top_srcdir)/Makefile.incl
  
@@ -58,9 +73,10 @@ diff --git a/client/Makefile.am b/client/Makefile.am
  ## for an entirely statically linked library, you may want to try
  ## -all-static instead.  There's a good chance it won't work properly,
  ## so we'll use the safer "-static-libtool-libs" by default.
-diff --git a/clientgui/Makefile.am b/clientgui/Makefile.am
---- a/clientgui/Makefile.am
-+++ b/clientgui/Makefile.am
+Index: boinc-client_release-7.16-7.16.3/clientgui/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/clientgui/Makefile.am
++++ boinc-client_release-7.16-7.16.3/clientgui/Makefile.am
 @@ -7,7 +7,6 @@
  include $(top_srcdir)/Makefile.incl
  
@@ -69,9 +85,10 @@ diff --git a/clientgui/Makefile.am b/clientgui/Makefile.am
  ## for an entirely statically linked library, you may want to try
  ## -all-static instead.  There's a good chance it won't work properly,
  ## so we'll use the safer "-static-libtool-libs" by default.
-diff --git a/clientscr/Makefile.am b/clientscr/Makefile.am
---- a/clientscr/Makefile.am
-+++ b/clientscr/Makefile.am
+Index: boinc-client_release-7.16-7.16.3/clientscr/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/clientscr/Makefile.am
++++ boinc-client_release-7.16-7.16.3/clientscr/Makefile.am
 @@ -5,7 +5,6 @@ include $(top_srcdir)/Makefile.incl
  
  AM_LDFLAGS += -lpthread
@@ -80,19 +97,20 @@ diff --git a/clientscr/Makefile.am b/clientscr/Makefile.am
  ## for an entirely statically linked library, you may want to try
  ## -all-static instead.  There's a good chance it won't work properly,
  ## so we'll use the safer "-static-libtool-libs" by default.
-diff --git a/lib/Makefile.am b/lib/Makefile.am
---- a/lib/Makefile.am
-+++ b/lib/Makefile.am
-@@ -182,7 +182,7 @@ lib_LTLIBRARIES = libboinc.la
+Index: boinc-client_release-7.16-7.16.3/lib/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/lib/Makefile.am
++++ boinc-client_release-7.16-7.16.3/lib/Makefile.am
+@@ -184,7 +184,7 @@ lib_LTLIBRARIES = libboinc.la
  libboinc_la_SOURCES = $(generic_sources) $(mac_sources) $(win_sources)
  libboinc_la_CFLAGS = $(AM_CFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS)
  libboinc_la_CXXFLAGS = $(AM_CXXFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS)
 -libboinc_la_LDFLAGS = -static -version-number $(LIBBOINC_VERSION)
 +libboinc_la_LDFLAGS = -version-number $(LIBBOINC_VERSION)
- libboinc_la_LIBADD =
- 
- if ENABLE_BOINCCRYPT
-@@ -190,7 +190,7 @@ lib_LTLIBRARIES += libboinc_crypt.la
+ if OS_FREEBSD
+ libboinc_la_LDFLAGS += -lexecinfo
+ endif
+@@ -195,7 +195,7 @@ lib_LTLIBRARIES += libboinc_crypt.la
  libboinc_crypt_la_SOURCES = crypt.cpp
  libboinc_crypt_la_CFLAGS = $(AM_CFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS) $(SSL_CFLAGS)
  libboinc_crypt_la_CXXFLAGS = $(AM_CXXFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS) $(SSL_CXXFLAGS)
@@ -101,9 +119,10 @@ diff --git a/lib/Makefile.am b/lib/Makefile.am
  libboinc_crypt_la_LIBADD =
  endif
  
-diff --git a/sched/Makefile.am b/sched/Makefile.am
---- a/sched/Makefile.am
-+++ b/sched/Makefile.am
+Index: boinc-client_release-7.16-7.16.3/sched/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/sched/Makefile.am
++++ boinc-client_release-7.16-7.16.3/sched/Makefile.am
 @@ -4,7 +4,6 @@
  include $(top_srcdir)/Makefile.incl
  
@@ -112,10 +131,11 @@ diff --git a/sched/Makefile.am b/sched/Makefile.am
  
  if ENABLE_LIBRARIES
  
-diff --git a/tools/Makefile.am b/tools/Makefile.am
---- a/tools/Makefile.am
-+++ b/tools/Makefile.am
-@@ -43,7 +43,6 @@ dist_tools_DATA = \
+Index: boinc-client_release-7.16-7.16.3/tools/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/tools/Makefile.am
++++ boinc-client_release-7.16-7.16.3/tools/Makefile.am
+@@ -41,7 +41,6 @@ dist_tools_DATA = \
      project.xml
  
  AM_CXXFLAGS += $(MYSQL_CFLAGS)
@@ -123,10 +143,11 @@ diff --git a/tools/Makefile.am b/tools/Makefile.am
  
  cancel_jobs_SOURCES = cancel_jobs.cpp
  cancel_jobs_LDADD = $(SERVERLIBS)
-diff --git a/vda/Makefile.am b/vda/Makefile.am
---- a/vda/Makefile.am
-+++ b/vda/Makefile.am
-@@ -4,7 +4,6 @@ vdadir=$(prefix)/lib/boinc-server-maker/vda
+Index: boinc-client_release-7.16-7.16.3/vda/Makefile.am
+===================================================================
+--- boinc-client_release-7.16-7.16.3.orig/vda/Makefile.am
++++ boinc-client_release-7.16-7.16.3/vda/Makefile.am
+@@ -4,7 +4,6 @@ vdadir=$(prefix)/lib/boinc-server-maker/
  vda_PROGRAMS = vda vdad ssim
  
  AM_CXXFLAGS += $(MYSQL_CFLAGS)
