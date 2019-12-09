@@ -1,7 +1,7 @@
 #
 # spec file for package scrypt
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           scrypt
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Password-based encryption utility using the scrypt key derivation function
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Security
-Url:            http://www.tarsnap.com/scrypt.html
+URL:            https://www.tarsnap.com/scrypt.html
 Source0:        http://www.tarsnap.com/scrypt/scrypt-%{version}.tgz
 BuildRequires:  openssl-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The scrypt key derivation function was originally developed for use in the
@@ -38,18 +37,18 @@ bcrypt.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make test
+make %{?_smp_mflags} test
 
 %files
-%defattr(-,root,root)
-%doc COPYRIGHT FORMAT
+%license COPYRIGHT
+%doc FORMAT
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
