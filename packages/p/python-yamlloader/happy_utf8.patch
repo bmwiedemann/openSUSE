@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -13,7 +13,7 @@ with io.open(os.path.join(here, 'require
+ 
+ def long_description():
+     """Load README.rst."""
+-    with open('README.rst', 'r') as f:
++    with io.open('README.rst', 'r', encoding="utf-8") as f:
+         return f.read()
+ 
+ 
