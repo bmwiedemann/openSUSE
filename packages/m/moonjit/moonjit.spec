@@ -34,7 +34,9 @@ BuildRequires:  pkgconfig
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 Conflicts:      luajit
+Provides:       lua51-luajit
 Provides:       luajit = %{version}
+Obsoletes:      lua51-luajit
 
 %description
 A Just-In-Time Compiler for Lua language
