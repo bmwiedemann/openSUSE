@@ -359,4 +359,19 @@
     <comment></comment>
     <requestid>715693</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5976983524cf5b90e31ccb4d7e3c544c</srcmd5>
+    <version>4.2.1</version>
+    <time>1575923756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.1:
+  * Add deviceName field to protobuf messages
+  * Purge map of failed auths periodically by keeping
+    last changed timestamp.
+  * Prime NS records of root-servers.net parent (.net)
+  * Issue with “zz” abbreviation for IPv6 RPZ triggers
+  * Basic validation of $GENERATE parameters
+  * Fix inverse handler registration logic for SNMP</comment>
+    <requestid>755197</requestid>
+  </revision>
 </revisionlist>

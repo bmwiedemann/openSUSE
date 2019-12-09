@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:50:25 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.2.1:
+  * Add deviceName field to protobuf messages
+  * Purge map of failed auths periodically by keeping
+    last changed timestamp.
+  * Prime NS records of root-servers.net parent (.net)
+  * Issue with “zz” abbreviation for IPv6 RPZ triggers
+  * Basic validation of $GENERATE parameters
+  * Fix inverse handler registration logic for SNMP
+
+-------------------------------------------------------------------
 Mon Jul 15 14:29:51 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.2.0:
