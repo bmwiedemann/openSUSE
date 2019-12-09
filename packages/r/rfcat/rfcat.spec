@@ -30,24 +30,22 @@ Patch0:         avoid-pyside.patch
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  python-future >= 0.17.1
 BuildRequires:  python-numpy
 BuildRequires:  python-qt5
 BuildRequires:  python-setuptools
-BuildRequires:  python-usb
+BuildRequires:  python2-future >= 0.17.1
+BuildRequires:  python2-usb
 # for rfcat_bootloader
 BuildRequires:  python-pyserial
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(udev)
 Requires:       %{name}-udev
 # Unfortunately this isnt automatically detected.
-Requires:       libusb-1_0-0
-Requires:       python-future >= 0.17.1
 Requires:       python-numpy
 Requires:       python-qt5
-Requires:       python-usb
+Requires:       python2-future >= 0.17.1
+Requires:       python2-usb
 # for rfcat_bootloader
 Requires:       python-pyserial
 BuildArch:      noarch

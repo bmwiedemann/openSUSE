@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 17:28:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix naming of python dependencies to avoid unresolvable packages.
+- Drop python-devel BuildRequires, rfcat is a noarch package.
+
+-------------------------------------------------------------------
 Sat Apr 13 12:11:48 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Add avoid-pyside.patch, replacing dependency on python3-pyside2
