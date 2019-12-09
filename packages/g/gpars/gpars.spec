@@ -1,7 +1,7 @@
 #
 # spec file for package gpars
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  mvn(org.codehaus.jsr166-mirror:extra166y)
 BuildRequires:  mvn(org.jboss.netty:netty:3)
 BuildRequires:  mvn(org.multiverse:multiverse-core)
 Obsoletes:      %{name}-bootstrap
-BuildConflicts: java-devel >= 9
 #!BuildRequires: gradle-bootstrap groovy-bootstrap
 BuildArch:      noarch
 
