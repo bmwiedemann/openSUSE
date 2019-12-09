@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,21 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 51
+%define so_version 4_2_0
 Name:           wt
-Version:        4.0.5
+Version:        4.2.0
 Release:        0
 #
 #
 Summary:        Web Toolkit
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://www.webtoolkit.eu/wt/
+URL:            https://www.webtoolkit.eu/wt/
 Source0:        https://github.com/kdeforche/wt/archive/%{version}.tar.gz
-
 BuildRequires:  FastCGI-devel
 BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel
 BuildRequires:  apache-rpm-macros
-%if 0%{?suse_version} > 1315
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%else
-# wt will build with boost-devel < 1.36.0 but it won't work
-BuildRequires:  boost-devel >= 1.36.0
-%endif
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -58,6 +47,7 @@ BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  zlib-devel
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       FastCGI
@@ -65,7 +55,14 @@ Requires:       openssl
 Recommends:     %{name}-dbo = %{version}
 Suggests:       %{name}-dbo-mysql = %{version}
 Suggests:       %{name}-dbo-postgres = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version} > 1315
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
+%else
+BuildRequires:  boost-devel >= 1.50.0
+%endif
 
 %description
 Wt is a C++ library and application server for developing and
@@ -133,7 +130,6 @@ code.
 %cmake \
     -DENABLE_FIREBIRD=OFF \
     -DENABLE_QT4=OFF \
-    -DWT_CPP_11_MODE=-std=c++0x \
     -DUSE_SYSTEM_IBPP=ON \
     -DSHARED_LIBS=ON \
     -DMULTI_THREADED=ON \
@@ -147,10 +143,7 @@ code.
     -DBUILD_EXAMPLES=ON \
     -DENABLE_GM=ON \
     -DWT_WRASTERIMAGE_IMPLEMENTATION=GraphicsMagick \
-    -DENABLE_HARU=ON \
     -DENABLE_POSTGRES=ON \
-    -DENABLE_SQLITE=ON \
-    -DENABLE_MYSQL=ON \
     -DWT_WITH_SSL=ON \
     -DHTTP_WITH_ZLIB=ON
 make V=1 %{?_smp_mflags}
@@ -172,50 +165,38 @@ rm %{buildroot}/%{_datadir}/wt/resources/themes/*/*/generate.sh
 %fdupes %{buildroot}/%{_datadir}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
-
 %post -n libwtdbo%{so_version} -p /sbin/ldconfig
-
 %postun -n libwtdbo%{so_version} -p /sbin/ldconfig
-
 %post -n libwtdbomysql%{so_version} -p /sbin/ldconfig
-
 %postun -n libwtdbomysql%{so_version} -p /sbin/ldconfig
-
 %post -n libwtdbopostgres%{so_version} -p /sbin/ldconfig
-
 %postun -n libwtdbopostgres%{so_version} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
+%license LICENSE
+%doc Changelog ReleaseNotes.html
+%dir %{WTSRVDIR}
+%attr(-,%{apache_user},%{apache_group}) %{WTRUNDIR}
+%dir %{_sysconfdir}/wt
+%config(noreplace) %{_sysconfdir}/wt/wt_config.xml
+%{_datadir}/wt
 %{_libdir}/libwt.so.*
 %{_libdir}/libwtfcgi.so.*
 %{_libdir}/libwthttp.so.*
 %{_libdir}/libwttest.so.*
-%license LICENSE
-%doc Changelog ReleaseNotes.html
-%dir %{WTSRVDIR}
-%dir %{_sysconfdir}/wt
-%{_datadir}/wt
-%config(noreplace) %{_sysconfdir}/wt/wt_config.xml
-%attr(-,%{apache_user},%{apache_group}) %{WTRUNDIR}
 
 %files -n libwtdbo%{so_version}
-%defattr(-,root,root)
 %{_libdir}/libwtdbo.so.*
 %{_libdir}/libwtdbosqlite3.so.*
 
 %files -n libwtdbomysql%{so_version}
-%defattr(-,root,root)
 %{_libdir}/libwtdbomysql.so.*
 
 %files -n libwtdbopostgres%{so_version}
-%defattr(-,root,root)
 %{_libdir}/libwtdbopostgres.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/Wt
 %{_libdir}/*.so
 %{_libdir}/cmake/wt
