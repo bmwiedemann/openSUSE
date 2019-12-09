@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Dec  7 17:47:28 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 3.1.4:
+  * Remove the tuple/unpacking check from C416 to prevent false
+    positives where the type of the iterable is changed from some
+    iterable to a tuple.
+
+- changes from version 3.1.3:
+  * Ensure the fix for false positives in C416 rule for asynchronous
+    comprehensions runs on Python 3.6 too.
+
+- changes from version 3.1.2:
+  * Fix false positives in C416 rule for list comprehensions returning
+    tuples.
+
+- changes from version 3.1.1:
+  * Fix false positives in C416 rule for asynchronous comprehensions.
+
+- changes from version 3.1.0:
+  * Update Python support to 3.5-3.8.
+  * Fix false positives for C404 for list comprehensions not directly
+    creating tuples.
+  * Add C413 rule that checks for unnecessary use of list() or
+    reversed() around sorted().
+  * Add C414 rule that checks for unnecessary use of the following:
+    + list(), reversed(), sorted(), or tuple() within set or sorted()
+    + list() or tuple() within list() or tuple()
+    + set() within set
+  * Add C415 rule that checks for unnecessary reversal of an iterable
+    via subscript within reversed(), set(), or sorted().
+  * Add C416 rule that checks for unnecessary list or set
+    comprehensions that can be rewritten using list() or set().
+
+- changes from version 3.0.1:
+  * Fix version display on flake8 --version (removing dependency on
+    cached-property). Thanks to Jon Dufresne.
+
+- changes from version 3.0.0:
+  * Update Flake8 support to 3.0+ only. 3.0.0 was released in 2016 and
+    the plugin hasn't been tested with it since.
+
+- changes from version 2.3.0:
+  * Converted setuptools metadata to configuration file. This meant
+    removing the __version__ attribute from the package. If you want
+    to inspect the installed version, use
+    importlib.metadata.version("flake8-comprehensions") (docs /
+    backport).
+  * Add dependencies on cached-property and importlib-metadata.
+  * Fix false negatives in C407 for cases when enumerate and sum() are
+    passed more than one argument.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:29:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.0:

@@ -17,4 +17,12 @@
   * C412 rule that complains about using list comprehension with in.</comment>
     <requestid>730532</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cd53b34ff5145c55a22cb030c06ec44</srcmd5>
+    <version>3.1.4</version>
+    <time>1575923742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755167</requestid>
+  </revision>
 </revisionlist>
