@@ -1,7 +1,7 @@
 #
 # spec file for package smplayer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        19.10.0
+Version:        19.10.2
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
