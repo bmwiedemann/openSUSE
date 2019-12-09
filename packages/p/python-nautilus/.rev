@@ -206,4 +206,12 @@
   interpreters directly (boo#1157305). (forwarded request 750078 from dimstar)</comment>
     <requestid>750960</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d4caed6e82f478c486dd7d98736106ee</srcmd5>
+    <version>1.2.3</version>
+    <time>1575923672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754988</requestid>
+  </revision>
 </revisionlist>

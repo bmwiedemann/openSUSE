@@ -70,7 +70,7 @@ This package contains files required to build wrappers for python-nautilus.
 %package -n %{name}-common-devel
 Summary:        Shared development files for python-nautilus
 Group:          Development/Libraries/Python
-Requires:       %{name}-devel = %{version}
+Requires:       python3-nautilus-devel = %{version}
 Provides:       %{python_module nautilus-common-devel = %{version}}
 
 %description -n %{name}-common-devel
