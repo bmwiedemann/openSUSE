@@ -538,4 +538,12 @@
     <comment>- Update to release 3.6</comment>
     <requestid>750107</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>6f804e8ad51e512072502a6dcb7bb2a7</srcmd5>
+    <version>3.7</version>
+    <time>1575923684</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755054</requestid>
+  </revision>
 </revisionlist>
