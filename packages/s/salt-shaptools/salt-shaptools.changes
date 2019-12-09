@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  3 06:41:36 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.2.5
+  DRBD: support to get status via json format by default.
+
+-------------------------------------------------------------------
+Thu Nov 21 09:05:07 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.2.4, fix error parsing drbd status when congested.
+
+-------------------------------------------------------------------
 Mon Nov  5 08:48:50 UTC 2019 - nick wang <nwang@suse.com>
 
 - Create package version 0.2.3 with drbd files renamed.
