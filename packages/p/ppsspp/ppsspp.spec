@@ -1,7 +1,7 @@
 #
 # spec file for package ppsspp
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,42 +12,42 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:               ppsspp
-Version:            1.8.0~git20190909
-Release:            0
-Summary:            PlayStation Portable Emulator
-License:            GPL-2.0+
-Group:              System/Emulators/Other
-Url:                http://www.ppsspp.org
-Source:             %{name}-%{version}.tar.xz
+Name:           ppsspp
+Version:        1.9.3~git20191201
+Release:        0
+Summary:        PlayStation Portable Emulator
+License:        GPL-2.0-or-later
+Group:          System/Emulators/Other
+URL:            http://www.ppsspp.org
+Source:         %{name}-%{version}.tar.xz
 
-BuildRequires:      gcc-c++
-BuildRequires:      cmake >= 3.6
-BuildRequires:      fdupes
+BuildRequires:  cmake >= 3.6
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 
-BuildRequires:      unzip
+BuildRequires:  unzip
 
-BuildRequires:      pkgconfig(gl)
-BuildRequires:      pkgconfig(vulkan)
-BuildRequires:      pkgconfig(glew)
-BuildRequires:      pkgconfig(sdl2)
-BuildRequires:      pkgconfig(libpng)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vulkan)
 
-BuildRequires:      pkgconfig(zlib)
-BuildRequires:      pkgconfig(libzip)
-BuildRequires:      snappy-devel 
+BuildRequires:  snappy-devel
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(zlib)
 
-BuildRequires:      glslang-devel
-BuildRequires:      wayland-devel
-BuildRequires:      Mesa-devel
+BuildRequires:  Mesa-devel
+BuildRequires:  glslang-devel
+BuildRequires:  wayland-devel
 
 #Qt deps:
-BuildRequires:      pkgconfig(Qt5Core)
-BuildRequires:      pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5OpenGL)
 
 #ffmpeg deps: (Restore once https://github.com/hrydgard/ppsspp/issues/9026 is closed)
 #BuildRequires:      pkgconfig(libavcodec)
@@ -60,19 +60,19 @@ BuildRequires:      pkgconfig(Qt5OpenGL)
 #BuildRequires:      pkgconfig(libswresample)
 
 #Desktop icon deps
-BuildRequires:      update-desktop-files
+BuildRequires:  update-desktop-files
 Requires(post):     hicolor-icon-theme
 Requires(postun):   hicolor-icon-theme
 
-Requires:           %{name}-common
+Requires:       %{name}-common
 
 %description
 PPSSPP is a PSP emulator written in C++, and translates PSP CPU instructions directly into optimized x86, x64 and ARM machine code, using JIT recompilers (dynarecs).
 
 %package headless
-Summary:	PPSSPP headless
-Group:		System/Emulators/Other
-Requires:   %{name}-common
+Summary:        PPSSPP headless
+Group:          System/Emulators/Other
+Requires:       %{name}-common
 
 %description headless
 PPSSPP headless build
@@ -157,7 +157,6 @@ cmake  .. \
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_libexecdir}/%{name}
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
-
 
 #setup wrapper(s)
 

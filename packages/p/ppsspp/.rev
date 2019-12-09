@@ -7,4 +7,12 @@
     <comment>Submit PPSSPP to Factory</comment>
     <requestid>732250</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50215fc28fe4e882406a3cc08d9454fe</srcmd5>
+    <version>1.9.3~git20191201</version>
+    <time>1575923704</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755070</requestid>
+  </revision>
 </revisionlist>

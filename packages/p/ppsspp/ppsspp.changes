@@ -1,4 +1,270 @@
 -------------------------------------------------------------------
+Sun Dec 01 15:52:03 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191201:
+  * vulkan: The GPU profiler could end up writing massive amounts of text, fix some bugs around that.
+  * vulkan: ApplyRenderPassMerge; Add copy / blit destinations to touched buffers.
+  * Vulkan: Enable renderpass merging for all games (was introduced in 1.9 for GoW games). A number of other games can also benefit.
+
+-------------------------------------------------------------------
+Sat Nov 30 12:22:54 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191126:
+  * Update lang submodule
+
+-------------------------------------------------------------------
+Wed Nov 20 19:04:11 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191118:
+  * Do not assert in Discord::Shutdown
+
+-------------------------------------------------------------------
+Wed Nov 13 19:11:04 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191110:
+  * Update CMakeLists.txt
+
+-------------------------------------------------------------------
+Sat Nov 09 17:06:02 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191108:
+  * Make style more consistent
+
+-------------------------------------------------------------------
+Thu Nov 07 19:29:19 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191105:
+  * libretro buildfix
+  * Update libretro.cpp
+  * Remove the I/O on Thread option - treat it as always on.
+  * Yet another gradle update
+
+-------------------------------------------------------------------
+Sun Nov 03 15:11:17 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191103:
+  * Fix vcrs disassembly
+
+-------------------------------------------------------------------
+Thu Oct 31 14:25:59 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191030:
+  * Oops
+  * Isolate most of the softgpu specialization code to RasterizerRectangle.
+  * Fix a backwards check
+  * Remove unused textureswizzle support (we use shaders instead).  Universally support presenting 5551 format directly.
+  * Hack around most of the problems with the save/load dialog. Software stretch gets enabled in non-wide mode, so wallpapers work at a cost of speed.
+  * Scissor fix
+  * Even more speed.
+  * More speed
+  * Buildfix
+  * Further specialization.
+  * More specialization work.
+  * DarkStalkers: Fix display on OpenGL ES.
+  * DarkStalkers: Fix display in the D3D backends. Still broken in OpenGL.
+  * Darkstalkers: Gross hack to avoid the game's own stretch, and present the raw buffer instead for a sharper image.
+  * More darkstalkers work
+  * Detect sprite drawing (1:1 texture mapping), run a simpler function without the triangle state tracking.
+  * SoftGPU: Detect through-mode rectangles from triangle strips
+  * Software renderer: Use hardware color conversion on Vulkan in 5551 16-bit mode
+  * Start slowly migrating from macros
+  * Add a compat.ini flag for software rendering, use it to force on in Darkstalkers
+
+-------------------------------------------------------------------
+Sat Oct 26 12:30:13 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191025:
+  * Buildfix
+  * Also rename the config setting to make sure it starts out off.
+  * Cardboard VR: Add an on-screen VR OFF button. Enable Cardboard on iOS.
+  * Revert "Remove Google Cardboard support. Fixes #11668"
+  * Update lang submodule, adding Croatian, thanks to HilmBrala
+  * Text drawing fixes
+  * Correct the wrong GL DataFormat enums
+  * GL: remove another unused format
+  * Reduce GL texture format support to the ES minimum. We have to handle these anyway so let's only have one path.
+  * OpenGL dataformat cleanup - pass Draw::DataFormat to the GLRenderManager.
+
+-------------------------------------------------------------------
+Wed Oct 23 18:25:46 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191022:
+  * Fix the build - there's a Vec3 name collision, fixed it using a namespace.
+  * Vulkan+SoftwareRenderer: Fix screen rotation on Android.
+
+-------------------------------------------------------------------
+Mon Oct 21 19:55:05 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191020:
+  * Io: Consistently use error codes with OpenFile().
+  * Io: Return error code for write attempt to UMD.
+  * Io: Change async thread priority if running.
+  * Io: Destroy async threads on reset.
+
+-------------------------------------------------------------------
+Sun Oct 20 17:02:02 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191020:
+  * Vulkan: Add checks so we don't try to write NULL objects to a descriptor set.
+  * Change Bloom Hack aggressive detection to include GOW games bloom.
+
+-------------------------------------------------------------------
+Sat Oct 19 14:24:43 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191017:
+  * Use old jit enablement method if clean method fails
+
+-------------------------------------------------------------------
+Wed Oct 16 18:16:47 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191015:
+  * Fix fork logic
+  * Replace horrible hack with less horrible hack
+  * Fix name collision on iOS build
+  * Move the viewport clamping back to rendermanager to avoid a struct copy in the common case.
+  * Fix misplaced break
+  * Vulkan: Move viewport/scissor rotation to the QueueRunner instead of RenderManager. Add some checks.
+  * Vulkan blend factor: Bugfix and minor optimization
+  * Update last commit to use IsValidRange instead of IsValidAddress.
+  * Code analysis: Skip invalid code sections. May help #12414.
+  * UI: Better way of showing game/savedata images. Fixes #12408
+  * WASAPI: Discovered by chance that pwstrDeviceId can be null. Treating it as a new device.
+
+-------------------------------------------------------------------
+Wed Oct 09 20:56:30 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.3~git20191008:
+  * SDL: Switch audio device when plugged in.
+  * SDL: Add UI to reset audio device at runtime.
+  * SDL: Use a configurable output device.
+  * SDL: Use SDL2 audio API for output.
+  * cmake: Ignore if madbundle.sh fails.
+  * cmake: Remove old qmake options.
+  * [iOS] Resolve SDK 13 Generation
+  * Move window to center
+  * MainScreen: Prevent grid game buttons from becoming too wide if the png has the wrong dimensions.
+  * Vulkan: Always write gl_PointSize, fixes #12364. Remove unnecessary predeclaration of gl_Position.
+  * Android: Setup UI callback earlier if possible.
+  * UI: Allow pinning remote ISO paths.
+  * UI: Handle remote browsing asynchronously.
+  * UI: Cleanup browse button check.
+  * UI: Allow remote paths to be pinned.
+  * http: Use relative paths for remote isos.
+  * http: Don't treat http:// as a relative path.
+  * 1.9.3 commit
+  * Android: Finally fix our display sizing problems for good, hopefully.
+  * Android: Preparation for future cutout (notch) support
+  * Increase max aspect to 2.4. Fixes #12349
+  * Logging improvements
+  * Android: Setup UI callback before settings change.
+  * Fixes
+  * Make use of OnSystemUiVisibilityChangeListener to check whether navbar is hidden. Affects DPI calculations.
+  * Vulkan: Compile compute shaders only if enabled.
+  * Vulkan: Add a setting for hardware scaling.
+  * Vulkan: Initial 16-bit texture shader decode.
+  * Vulkan: Add 4xbrz texture shader.
+  * Make the barrier a bit more focused. Up some limits.
+  * Need a barrier on Mali. Strange that validation didn't warn...
+  * In the computeUpload path, use a shader intrinsic to unpack the color.
+  * Fix build error on 64-bit android
+  * Vulkan: Check coherent bit.
+  * Also experiment with a "copy shader" that just does raw data manipulation into GPU local memory, then copies to image from there.
+  * Use a plain compute shader for RGBA8888 texture uploads, as a proof of concept.
+  * Vulkan: Add simple manager for compute shaders that upload data to images.
+  * SaveState: Handle compression thread better.
+  * UI: Join downloads on destruct.
+  * UI: Cleanup install threads from UI thread.
+  * Io: Join loading/manager threads more explicitly.
+  * http: Ensure webserver shutdown on exit.
+  * Core: Avoid detach for game loading thread.
+  * http: Avoid detaching threads, join instead.
+  * Reporting: Use a single message posting thread.
+  * Switch: Configure base paths.
+  * Switch: Cleanup some includes.
+  * Switch: Disable IPv6.
+  * Switch: Add basic defines for checks/reporting.
+  * Vulkan GPU profiler: Measure the CPU time spent on the render thread recording command buffers.
+  * Io: Correct result on async file not found.
+  * Io: Wait async thread on IO completion.
+  * Io: Cleanup some logging.
+  * Io: Check callbacks in sceIoWaitAsyncCB().
+  * Io: Handle open async in a thread.
+  * Io: Use async for read/write/seek/ioctl.
+  * Io: Prepare HLE thread handling for async.
+  * Psmf: Cleanup finishThread save state handling.
+  * Io: Cleanup some error handling.
+  * Io: Store sceIoChangeAsyncPriority value.
+  * Psmf: Use kernel memory for helper thread stack.
+
+-------------------------------------------------------------------
+Sat Oct 05 10:54:10 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.2~git20191003:
+  * Improve the touchscreen test screen with some numbers.
+
+-------------------------------------------------------------------
+Thu Oct 03 12:07:35 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.2~git20191003:
+  * Upgrade gradle version again
+  * SDL: ensure swap interval is set correctly for SDL2 kmsdrm driver
+  * Touchscreen: Apply weihouya's fix, add a touchscreen test screen. See #12381.
+  * Don't assert if Discord not shut down properly. Possible workaround for #12140.
+
+-------------------------------------------------------------------
+Sun Sep 29 17:32:27 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.9.2~git20190929:
+  * UI: Stop caching the draw context in coreParam.
+  * UI: Minor assert fix.
+  * GPU: Generate normals for curves with lighting.
+  * Core: Fix memory range guard check.
+  * Workaround for a crash found in #12358 on older devices
+  * Fix nasty race condition with menu background audio. Fixes #12365
+  * Add a comment. See issue #12365
+  * Assorted cleanup
+  * Blind attempt at fixing an OpenSL ES crash
+  * Add memory range checks to a few little-used sysclib functions. Might help #12359.
+  * Fix crash in Zip UI. Make another crash happen earlier.
+  * Fix crash in zip handling
+  * Symbolic commit for 1.9.2. Making another submission attempt to Google play so have to increment the version.
+  * Debugger: reset step counter on game stop.
+  * Listed additional UMD serials for GTA titles
+  * Symbolic commit for 1.9.1.
+  * Symbolic 1.9.0 commit
+  * Android: Fix crashes on Android versions < 11 due to mCameraHelper being null
+  * Silence a few warnings.
+  * Update lang submodule
+  * Vulkan: Update API headers.
+  * Refer to AkiraJkr's new issue
+  * Add patch note about MGS:PW as suggested by AkiraJkr
+  * Additional README updates
+  * More readme updates
+  * README.md: Lunamoo's additions
+  * More README.md updates
+  * Update README.md a bit more
+  * Update README.md for 1.9.0
+
+-------------------------------------------------------------------
+Mon Sep 23 20:49:35 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.8.0~git20190923:
+  * Update default adhoc server to one that works
+  * Another fix for AnalogTestScreen rendering (it broke again somehow?)
+  * Case fix for previous commit
+  * Hacky workaround for #12339 (Amazon FireStick 4k issue)
+  * Android audio: Turns out the initial queue operation queued up too little data anyway (sizeof on dynamic buffer.. sigh).
+  * Remove some legacy
+  * Android OpenSL: Fix bug where we should have enqueued two buffers on startup.
+  * Vulkan: Fix shutdown crash accidentally caused by #12324
+  * Fix issue preventing video to work correctly in Digimon. Fixes #12186
+  * Remove some logging, add a comment.
+  * We had an old fallback to the EGL GL loop in the Vulkan init. Remove it.
+  * Don't let a delayed config load mess with the GPU backend option. Fixes #12284.
+  * Vulkan: Just some extra logging.
+  * Vulkan: Clear caches when deleting shaders.
+
+-------------------------------------------------------------------
 Mon Sep 09 19:47:45 UTC 2019 - pousaduarte@gmail.com
 
 - Update to version 1.8.0~git20190909:
