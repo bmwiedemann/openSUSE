@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 23 11:32:01 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ack 3.2.0:
+  * Add "-t X" as a short alias for --type=X
+  * Add "-T X" as a short alias for --type=noX
+  * The feature of using the name of the type as an option is
+    deprecated will be removed in a future release
+  * Remove support for Parrot (--parrot)
+
+-------------------------------------------------------------------
 Thu Sep 26 09:33:14 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.1.1:
