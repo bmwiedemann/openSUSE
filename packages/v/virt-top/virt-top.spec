@@ -28,12 +28,15 @@ Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
 BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(calendar)
+BuildRequires:  ocamlfind(csv)
 BuildRequires:  ocamlfind(curses)
 BuildRequires:  ocamlfind(extlib)
 BuildRequires:  ocamlfind(gettext)
 BuildRequires:  ocamlfind(gettext-stub)
 BuildRequires:  ocamlfind(libvirt)
 BuildRequires:  ocamlfind(str)
+BuildRequires:  ocamlfind(xml-light)
 
 %description
 virt-top is a 'top(1)'-like utility for showing stats of virtualized
