@@ -63,6 +63,8 @@ Fri Jul 26 07:44:39 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
   * Improved handling of malformed WAVE and BMP files, fixing
     potential security exploits (boo#1142031 CVE-2019-13626)
   * Removed the Mir video driver in favor of Wayland
+  * Security fixes: CVE-2019-7635 (boo#1124827), CVE-2019-7636
+    (boo#1124826), CVE-2019-7638 (boo#1124824).
 
 - Refreshed sdl2-symvers.patch
 
