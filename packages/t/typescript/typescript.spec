@@ -17,13 +17,13 @@
 
 
 Name:           typescript
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        A language for application scale JavaScript development
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 URL:            http://typescriptlang.org/
-Source0:        http://registry.npmjs.org/%{name}/-/%{name}-%{version}.tgz
+Source0:        https://github.com/microsoft/TypeScript/releases/download/v%{version}/%{name}-%{version}.tgz
 BuildRequires:  fdupes
 BuildRequires:  nodejs-packaging
 BuildArch:      noarch
