@@ -1,7 +1,7 @@
 #
 # spec file for package nasc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
 URL:            http://parnold-x.github.io/nasc/
 Source:         https://github.com/parnold-x/nasc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nasc-fix_gcc9_build.patch
+Patch0:         nasc-fix_gcc9_build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -50,7 +52,7 @@ Then you can plug those answers in to future equations and if that
 answer changes, so does the equations it is used in.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \
@@ -62,8 +64,8 @@ make %{?_smp_mflags}
 %install
 %cmake_install %{?_smp_mflags}
 
-%post
 %if 0%{?suse_version} < 1500
+%post
 %glib2_gsettings_schema_post
 %icon_theme_cache_post
 %desktop_database_post
