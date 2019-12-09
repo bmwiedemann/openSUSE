@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Dec  7 19:08:29 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.9.0:
+  * Array
+    + Fix da.std to work with NumPy arrays (:pr:`5681`) James Bourbeau
+  * Core
+    + Register sizeof functions for Numba and RMM (:pr:`5668`) John A
+      Kirkham
+    + Update meeting time (:pr:`5682`) Tom Augspurger
+  * DataFrame
+    + Modify dd.DataFrame.drop to use shallow copy (:pr:`5675`)
+      Richard J Zamora
+    + Fix bug in _get_md_row_groups (:pr:`5673`) Richard J Zamora
+    + Close sqlalchemy engine after querying DB (:pr:`5629`) Krishan
+      Bhasin
+    + Allow dd.map_partitions to not enforce meta (:pr:`5660`) Matthew
+      Rocklin
+    + Generalize concat_unindexed_dataframes to support cudf-backend
+      (:pr:`5659`) Richard J Zamora
+    + Add dataframe resample methods (:pr:`5636`) Ben Zaitlen
+    + Compute length of dataframe as length of first column
+      (:pr:`5635`) Matthew Rocklin
+  * Documentation
+    + Doc fixup (:pr:`5665`) James Bourbeau
+    + Update doc build instructions (:pr:`5640`) James Bourbeau
+    + Fix ADL link (:pr:`5639`) Ray Bell
+    + Add documentation build (:pr:`5617`) James Bourbeau
+
+-------------------------------------------------------------------
 Sun Nov 24 17:35:04 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.8.1:
