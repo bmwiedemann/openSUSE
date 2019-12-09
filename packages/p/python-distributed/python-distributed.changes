@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Dec  7 19:09:30 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed dask-submit, dask-remote
+
+- update to version 2.9.0:
+  * Add dask-spec CLI tool (GH#3090) Matthew Rocklin
+  * Connectionpool: don’t hand out closed connections (GH#3301) byjott
+  * Retry operations on network issues (GH#3294) byjott
+  * Skip Security.temporary() tests if cryptography not installed
+    (GH#3302) James Bourbeau
+  * Support multiple listeners in the scheduler (GH#3288) Matthew
+    Rocklin
+  * Updates RMM comment to the correct release (GH#3299) John Kirkham
+  * Add title to performance_report (GH#3298) Matthew Rocklin
+  * Forgot to fix slow test (GH#3297) Benjamin Zaitlen
+  * Update SSHCluster docstring parameters (GH#3296) James Bourbeau
+  * worker.close() awaits batched_stream.close() (GH#3291) Mads
+    R. B. Kristensen
+  * Fix asynchronous listener in UCX (GH#3292) Benjamin Zaitlen
+  * Avoid repeatedly adding deps to already in memory stack (GH#3293)
+    James Bourbeau
+  * xfail ucx empty object typed dataframe (GH#3279) Benjamin Zaitlen
+  * Fix distributed.wait documentation (GH#3289) Tom Rochette
+  * Move Python 3 syntax tests into main tests (GH#3281) Matthew
+    Rocklin
+  * xfail test_workspace_concurrency for Python 3.6 (GH#3283) Matthew
+    Rocklin
+  * Add performance_report context manager for static report
+    generation (GH#3282) Matthew Rocklin
+  * Update function serialization caches with custom LRU class
+    (GH#3260) James Bourbeau
+  * Make Listener.start asynchronous (GH#3278) Matthew Rocklin
+  * Remove dask-submit and dask-remote (GH#3280) Matthew Rocklin
+  * Worker profile server (GH#3274) Matthew Rocklin
+  * Improve bandwidth workers plot (GH#3273) Matthew Rocklin
+  * Make profile coroutines consistent between Scheduler and Worker
+    (GH#3277) Matthew Rocklin
+  * Enable saving profile information from server threads (GH#3271)
+    Matthew Rocklin
+  * Remove memory use plot (GH#3269) Matthew Rocklin
+  * Add offload size to configuration (GH#3270) Matthew Rocklin
+  * Fix layout scaling on profile plots (GH#3268) Jacob Tomlinson
+  * Set x_range in CPU plot based on the number of threads (GH#3266)
+    Matthew Rocklin
+  * Use base-2 values for byte-valued axes in dashboard (GH#3267)
+    Matthew Rocklin
+  * Robust gather in case of connection failures (GH#3246) fjetter
+  * Use DeviceBuffer from newer RMM releases (GH#3261) John Kirkham
+  * Fix dev requirements for pytest (GH#3264) Elliott Sales de Andrade
+  * Add validate options to configuration (GH#3258) Matthew Rocklin
+
+-------------------------------------------------------------------
 Sun Nov 24 17:36:02 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.8.1:

@@ -21,7 +21,7 @@
 # Test requires network connection
 %bcond_with     test
 Name:           python-distributed
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -98,8 +98,6 @@ clusters.
 %doc README.rst
 %license LICENSE.txt
 %{_bindir}/dask-ssh
-%{_bindir}/dask-submit
-%{_bindir}/dask-remote
 %{_bindir}/dask-scheduler
 %{_bindir}/dask-worker
 %{python_sitelib}/distributed*
