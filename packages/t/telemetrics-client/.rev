@@ -91,4 +91,12 @@
   * pstore_probe.c: add ramoops file support in pstore probe for cl telemetry</comment>
     <requestid>736433</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>61c4c9cc2d431b4afc606a38d70dd620</srcmd5>
+    <version>2.2.3+git20191008.4119bde</version>
+    <time>1575923814</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755271</requestid>
+  </revision>
 </revisionlist>

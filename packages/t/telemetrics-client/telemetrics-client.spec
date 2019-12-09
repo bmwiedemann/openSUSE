@@ -1,7 +1,7 @@
 #
 # spec file for package telemetrics-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Summary:        Telemetrics solution
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/clearlinux/telemetrics-client
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        telemetrics-users.conf
-Patch:          telemetrics.conf.patch
+Patch0:         telemetrics.conf.patch
 Patch1:         telemctl-enable-disable.diff
 Patch2:         install-paths.diff
 BuildRequires:  autoconf
@@ -56,7 +56,7 @@ This package contains the include files and libraries of the telemetrics-client 
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p0
 %patch1 -p1
 %patch2 -p1
 
