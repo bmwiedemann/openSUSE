@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Dec 04 20:38:34 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.5.3+54:
+  * Right align doesn't work well with tables
+  * Update package info
+  * Update Indonesian translation (#182)
+  * Fix glyph clipping in WebKit (#179)
+  * Set WebKit default font size
+  * Flatpak: prevent X11 access in Wayland
+  * Remove unnecessary global variables for TTS, footnotes, images
+  * Initial change to WebKitUserContentManager for messaging
+  * Add copy to selection options (#172)
+  * Set vendored code for Linguist
+  * Updated Dutch (Netherlands) translation (#169)
+  * Add link to wiki in README.md
+  * Update French translation (#163)
+  * Fix unable to add bookmark when section not found
+  * Fix stuff not escaped for Pango markup
+  * Move constant out of the loop
+  * Show author in headerbar
+  * Fallback when unable to get section
+  * Show chapter name in bookmarks list
+  * Update Brazilian Portuguese translation (#160)
+  * Fix wrong Wiktionary link when looking up again due to capitalization
+  * Fix Wikipedia lookup broken after previous commit
+  * Make internal links work in footnote popover
+  * Make TTS available for selection
+  * Fix wrong popover position in continous scrolling mode
+  * Make navbar buttons flat
+  * Temporary fix for invisible popovers due to wrong position values
+  * Fix internal link broken when popup footnote is disabled
+  * Add continuous scrolling option
+  * Support getting current chapter for TOC items with anchors
+  * Update translations
+  * Improve HTML to Pango markup conversion
+  * Don't push to history if the location doesn't change
+  * Fix empty state padding
+  * Suppress promise rejection warnings
+  * Change "chapter" to "section"
+  * Add option to go to CFI
+  * Extract code for getting popover position to a function
+  * Move util functions forward and main functions to the end
+  * Add some comments
+  * Move wheel and keyboard event code to more sensible location
+  * Make it possible to select across pages
+  * Fix pt_BR.po
+  * Update Brazilian Portuguese translation (#153)
+  * Lint assets
+  * Lint main.js
+  * Cleanup HTML and txt export code
+  * Fix ampersand troubles
+  * Use markup for Wikipedia extract
+  * Fix soft hyphens confusing Festival
+  * Add translation info to AppData
+  * Update French translation (#151)
+  * Update Dutch translation (#150)
+  * Update README.md
+
+-------------------------------------------------------------------
 Thu Nov 28 11:29:53 UTC 2019 - bjorn.lie@gmail.com
 
 - Update _service file to point to explicit tag upstream, not
