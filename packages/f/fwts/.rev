@@ -504,4 +504,13 @@
   * README: Add package dependency notes for ARM64</comment>
     <requestid>734745</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9e9ba4281275294b6f30ff1263db9805</srcmd5>
+    <version>19.12.00</version>
+    <time>1575923804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.12.00:
+  * Plenty of changes</comment>
+    <requestid>755228</requestid>
+  </revision>
 </revisionlist>

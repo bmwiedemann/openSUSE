@@ -1,7 +1,7 @@
 #
 # spec file for package fwts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        19.09.00
+Version:        19.12.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
@@ -54,8 +54,7 @@ will give some form of advice on how to fix issues or workaround firmware
 issues.
 
 %prep
-%setup -q -c %{name}-%{version}
-%patch1 -p1
+%autosetup -c %{name}-%{version} -p1
 
 %build
 find . -name Makefile.am -exec sed -i "s|-Werror||g"  {} +
