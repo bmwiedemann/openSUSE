@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fido2
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
 Summary:        Python-based FIDO 2.0 library
 License:        BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MPL-2.0

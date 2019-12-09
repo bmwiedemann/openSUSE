@@ -1,7 +1,46 @@
 -------------------------------------------------------------------
+Sun Dec  8 23:05:47 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Version 0.8.1 (released 2019-11-25)
+  * Bugfix: WindowsClient.make_credential error when resident key requirement is unspecified.
+
+- Version 0.8.0 (released 2019-11-25)
+  * New fido2.webauthn classes modeled after the W3C WebAuthn spec introduced.
+  * CTAP2 send_cbor/make_credential/get_assertion and U2fClient request/authenticate timeout arguments replaced with event used to cancel a request.
+  * Fido2Client:
+    - make_credential/get_assertion now take WebAuthn options objects.
+    - timeout is now provided in ms in WebAuthn options objects. Event based cancelation also available by passing an Event.
+  * Fido2Server:
+    - ATTESTATION, USER_VERIFICATION, and AUTHENTICATOR_ATTACHMENT enums have been replaced with fido2.webauthn classes.
+    - RelyingParty has been replaced with PublicKeyCredentialRpEntity, and name is no longer optional.
+    - Options returned by register_begin/authenticate_begin now omit unspecified values if they are optional, instead of filling in default values.
+    - Fido2Server.allowed_algorithms now contains a list of PublicKeyCredentialParameters instead of algorithm identifiers.
+    - Fido2Server.timeout is now in ms and of type int.
+  * Support native WebAuthn API on Windows through WindowsClient.
+
+- Version 0.7.3 (released 2019-10-24)
+  j Bugfix: Workaround for size of int on Python 2 on Windows.
+
+- Version 0.7.2 (released 2019-10-24)
+  * Support for the TPM attestation format.
+  * Allow passing custom challenges to register/authenticate in Fido2Server.
+  * Bugfix: CTAP2 CANCEL command response handling fixed.
+  * Bugfix: Fido2Client fix handling of empty allow_list.
+  * Bugfix: Fix typo in CTAP2.get_assertions() causing it to fail.
+
+- Version 0.7.1 (released 2019-09-20)
+  * Support for FreeBSD.
+  * Enforce canonical CBOR on Authenticator responses by default.
+  * PCSC: Support extended APDUs.
+  * Server: Verify that UP flag is set.
+  * U2FFido2Server: Implement AppID exclusion extension.
+  * U2FFido2Server: Allow custom U2F facet verification.
+  * Bugfix: U2FFido2Server.authenticate_complete now returns the result.
+
+-------------------------------------------------------------------
 Mon Jun 17 15:26:45 UTC 2019 - Karol Babioch <kbabioch@suse.de>
 
-* Version 0.7.0 (released 2019-06-17)
+- Version 0.7.0 (released 2019-06-17)
   * Add support for NFC devices using PCSC.
   * Add support for the hmac-secret Authenticator extension.
   * Honor max credential ID length and number of credentials to Authenticator.
