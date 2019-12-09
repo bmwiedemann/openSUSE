@@ -17,7 +17,7 @@
 
 
 Name:           keepassxc
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -104,7 +104,11 @@ are encrypted using AES and Twofish.
   -DKEEPASSXC_BUILD_TYPE="Release" \
   -DWITH_XC_UPDATECHECK=OFF        \
   -DWITH_XC_ALL=ON -DWITH_XC_KEESHARE_SECURE=ON
+%if 0%{?suse_version}
+%cmake_build
+%else
 make %{?_smp_mflags}
+%endif
 
 %install
 %if 0%{?suse_version}
