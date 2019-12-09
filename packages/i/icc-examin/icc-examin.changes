@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec  8 08:52:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fix factory build
+
+-------------------------------------------------------------------
 Fri Jul 21 15:25:06 UTC 2017 - tchvatal@suse.com
 
 - Fix building with gcc7 icc-examin-gcc7.patch

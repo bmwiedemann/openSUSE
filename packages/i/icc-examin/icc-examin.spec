@@ -1,7 +1,7 @@
 #
 # spec file for package icc-examin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           icc-examin
 Version:        0.56
 Release:        0
 Summary:        ICC profile viewer and colour visualisation
-License:        (GPL-2.0+ AND SUSE-FLTK) AND BSD-2-Clause
+License:        (GPL-2.0-or-later AND SUSE-FLTK) AND BSD-2-Clause
 Group:          Productivity/Graphics/Other
-Url:            http://www.oyranos.org/icc-examin
+URL:            http://www.oyranos.org/icc-examin
 Source:         %{name}_%{version}.orig.tar.bz2
 Patch0:         icc-examin-gcc7.patch
 BuildRequires:  cmake
@@ -39,6 +39,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
+BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(ftgl)
@@ -55,6 +56,7 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
 Requires:       oyranos
 Requires:       oyranos-monitor
@@ -81,7 +83,8 @@ visualisations (vrml), video card gamma tables (Xorg/XFree86/osX).
 %patch0 -p1
 
 %build
-%cmake
+%cmake \
+   -DOpenGL_GL_PREFERENCE=GLVND
 make %{?_smp_mflags}
 
 %install
@@ -90,16 +93,19 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.ttf" -delete -print
 %suse_update_desktop_file -n  iccexamin # some openSUSE magic
 
+%if 0%{?suse_version} <1500
 %post
 %mime_database_post
 
 %postun
 %mime_database_postun
+%endif
 
 %files lang -f %{name}.lang
 
 %files
-%doc AUTHORS COPYING ChangeLog.md README.md
+%license COPYING
+%doc AUTHORS ChangeLog.md README.md
 %{_bindir}/iccexamin
 %{_datadir}/applications/iccexamin.desktop
 %{_datadir}/pixmaps/iccexamin.svg
