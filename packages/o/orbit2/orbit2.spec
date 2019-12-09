@@ -67,9 +67,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 Provides:       ORBit2-doc
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description doc
 ORBit is a CORBA (Common Object Request Broker Architecture) ORB
@@ -82,6 +80,9 @@ use the CORBA technology ORBit implementation.
 %setup -q -n %{_name}-%{version}
 
 %build
+%if 0%{?suse_version} < 1550
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 %configure \
 	--disable-static
 echo "#undef G_DISABLE_DEPRECATED" >> config.h
@@ -91,7 +92,9 @@ make -j1
 
 %install
 %make_install
+%if 0%{?suse_version} >= 1550
 find %{buildroot} -type f -name "*.a" -delete -print
+%endif
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
@@ -111,6 +114,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/typelib-dump
 %{_includedir}/orbit-2.0/
 %{_libdir}/*.so
+%if 0%{?suse_version} < 1550
+%{_libdir}/libname-server-2.a
+%endif
 %{_libdir}/pkgconfig/ORBit-*.pc
 %{_datadir}/aclocal/ORBit2.m4
 %{_datadir}/idl/orbit-2.0/

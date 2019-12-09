@@ -264,4 +264,12 @@
     <comment></comment>
     <requestid>729415</requestid>
   </revision>
+  <revision rev="40" vrev="22">
+    <srcmd5>a99826b1152c05a2bfc59c6916d115ea</srcmd5>
+    <version>2.14.19</version>
+    <time>1575923665</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 754539 from iznogood)</comment>
+    <requestid>754975</requestid>
+  </revision>
 </revisionlist>

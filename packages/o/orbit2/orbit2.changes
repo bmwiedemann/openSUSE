@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  5 20:19:05 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Re-add libname-server2.a to -devel package on SLE/Leap. It is
+  needed to build libbonobo, which SLE still needs to ship.
+- Pass -ffat-lto-objects to CFLAGS on SLE/Leap; needed for static
+  library.
+- Minor spec clean-up.
+
+-------------------------------------------------------------------
 Sat Sep  7 07:30:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Delete static build from devel package.
