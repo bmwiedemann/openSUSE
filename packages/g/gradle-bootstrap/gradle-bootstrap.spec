@@ -18,7 +18,7 @@
 
 %global short_name gradle
 %global gradle_version 4.4.1
-%global groovy_version 2.4.8
+%global groovy_version 2.4.16
 %global gpars_version 1.2.1
 Name:           %{short_name}-bootstrap
 Version:        %{gradle_version}
