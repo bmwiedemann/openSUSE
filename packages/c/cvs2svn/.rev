@@ -140,4 +140,12 @@
     <comment>- fix SLE 12 build - remove gpg-offline</comment>
     <requestid>290707</requestid>
   </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>13bace9a7e07765d42e0b56fdadabf14</srcmd5>
+    <version>2.4.0</version>
+    <time>1575923824</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up spec file and modernise it</comment>
+    <requestid>755265</requestid>
+  </revision>
 </revisionlist>
