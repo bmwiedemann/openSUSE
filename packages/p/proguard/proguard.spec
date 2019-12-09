@@ -1,7 +1,7 @@
 #
 # spec file for package proguard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           proguard
-Version:        5.3.3
+Version:        6.2.0
 Release:        0
 Summary:        Java class file shrinker, optimizer, obfuscator and preverifier
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Java
 URL:            https://www.guardsquare.com/en/proguard
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}%{version}.tar.gz
-Source1:        %{name}.desktop
-Source2:        README.dist
-BuildRequires:  ant
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  java-devel >= 1.6
-BuildRequires:  javapackages-tools
-Requires:       java >= 1.6
+BuildRequires:  java-devel >= 8
+BuildRequires:  maven-local
+BuildRequires:  mvn(com.google.code.gson:gson)
+BuildRequires:  mvn(org.apache.ant:ant)
 Requires:       javapackages-tools
+Obsoletes:      %{name}-manual
+
 BuildArch:      noarch
 
 %description
@@ -42,91 +41,61 @@ renames the remaining classes, fields, and methods using short meaningless
 names. Finally, it preverifies the processed code for Java 6 or for Java
 Micro Edition.
 
-%package manual
-Summary:        Manual for %{name}
-Group:          Documentation/HTML
-Requires:       javapackages-tools
-
-%description manual
-The manual for %{name}.
-
 %package gui
 Summary:        GUI for %{name}
 Group:          Development/Libraries/Java
-# we convert the favicon.ico to png files of different sizes, so we require
-# ImageMagick
-BuildRequires:  ImageMagick
-BuildRequires:  desktop-file-utils
-Requires:       %{name} = %{version}-%{release}
 Requires:       javapackages-tools
 
 %description gui
 A GUI for %{name}.
 
+%package -n ant-%{name}
+Summary:        Ant task for %{name}
+Group:          Development/Libraries/Java
+
+%description -n ant-%{name}
+Ant task for %{name}
+
+
 %prep
 %setup -q -n %{name}%{version}
 
-# remove all jar and class files, the snippet from Packaging:Java does
-# not work
-find -name '*.jar' -exec rm -f '{}' \;
-find -name '*.class' -exec rm -f '{}' \;
+find -name '*.jar' -print -delete
+find -name '*.class' -print -delete
 
-# remove the Class-Path from MANIFESTs
-sed -i '/class-path/I d' src/%{name}/gui/MANIFEST.MF
-sed -i '/class-path/I d' src/%{name}/retrace/MANIFEST.MF
+%pom_disable_module ../gradle buildscripts
+%pom_xpath_remove -r pom:addClasspath buildscripts
+%pom_remove_plugin -r :maven-source-plugin buildscripts
+%pom_remove_plugin -r :maven-javadoc-plugin buildscripts
 
-# this will create three png files from the favicon that contains multiple size
-# icons: 0: 48x48, 1: 32x32, 2: 16x16
-convert docs/favicon.ico %{name}.png
-cp -p %{name}-0.png %{name}48.png
-cp -p %{name}-1.png %{name}32.png
-cp -p %{name}-2.png %{name}16.png
-
-# add README.dist
-cp -p %{SOURCE2} .
+%mvn_package :*anttask anttask
+%mvn_package :*gui gui
+%mvn_file :%{name}-base %{name}/%{name}-base %{name}/%{name}
 
 %build
-cd buildscripts/
-# build ProGuard, ProGuardGUI, retrace and anttask
-ant -Dant.build.javac.target=1.6 -Dant.build.javac.source=1.6 -Dant.jar=%{_javadir}/ant.jar basic anttask
+%mvn_build -f -j -- -f buildscripts/pom.xml -Dsource=8
 
 %install
-mkdir -p %{buildroot}%{_javadir}/%{name}/
-cp -p lib/%{name}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
-cp -p lib/%{name}gui.jar %{buildroot}%{_javadir}/%{name}/%{name}gui.jar
-cp -p lib/retrace.jar %{buildroot}%{_javadir}/%{name}/retrace.jar
+%mvn_install
 
 mkdir -p %{buildroot}%{_bindir}
-%jpackage_script proguard.ProGuard "" "" proguard proguard true
-%jpackage_script proguard.gui.ProGuardGUI "" "" proguard proguard-gui true
-%jpackage_script proguard.retrace.ReTrace "" "" proguard proguard-retrace true
+%jpackage_script proguard.ProGuard "" "" %{name} %{name} true
+%jpackage_script proguard.gui.ProGuardGUI "" "" %{name} %{name}-gui true
+%jpackage_script proguard.retrace.ReTrace "" "" %{name} %{name}-retrace true
 
-#install the desktop file for proguard-gui
-desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE1}
+mkdir -p %{buildroot}%{_sysconfdir}/ant.d
+echo "proguard" > %{buildroot}%{_sysconfdir}/ant.d/%{name}
 
-#copy icons
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
-cp -p %{name}48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
-cp -p %{name}32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps
-cp -p %{name}16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/%{name}.png
+%files -f .mfiles
+%{_bindir}/%{name}
+%{_bindir}/%{name}-retrace
+%doc README.md
+%license LICENSE.md LICENSE_exception.md
 
-%files
-%dir %{_javadir}/%{name}
-%{_javadir}/%{name}/proguard.jar
-%{_javadir}/%{name}/retrace.jar
-%{_bindir}/proguard
-%{_bindir}/proguard-retrace
-%doc README examples/ README.dist
+%files -n ant-%{name} -f .mfiles-anttask
+%config(noreplace) %{_sysconfdir}/ant.d/%{name}
 
-%files manual
-%doc docs/*
-
-%files gui
+%files gui -f .mfiles-gui
 %{_bindir}/%{name}-gui
-%{_javadir}/%{name}/proguardgui.jar
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/*/*/apps/*
 
 %changelog
