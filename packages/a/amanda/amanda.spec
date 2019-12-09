@@ -1,7 +1,7 @@
 #
 # spec file for package amanda
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,7 @@ Version:        3.5.1
 Release:        0
 Summary:        Network Disk Archiver
 License:        GPL-3.0-or-later
-Group:          Productivity/Archiving/Backup
-Url:            http://www.amanda.org/
+URL:            http://www.amanda.org/
 Source:         http://downloads.sourceforge.net/amanda/amanda-%{version}.tar.gz
 #amanda-SUSE.tar.bz2 contains init scripts, config examples
 Source1:        amanda-SUSE.tar.bz2
@@ -35,10 +34,14 @@ Patch4:         amanda-3.3.2-returnvalues.patch
 Patch5:         amanda-timestamp.patch
 Patch6:         amanda-3.5-no_return_in_nonvoid_fnc.patch
 Patch7:         amanda-libnsl.patch
+BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  bison
 BuildRequires:  cups-client
 BuildRequires:  dump
+BuildRequires:  flex
 BuildRequires:  gawk
+BuildRequires:  gcc
 BuildRequires:  glib2-devel
 BuildRequires:  gnuplot
 BuildRequires:  krb5-devel
@@ -47,6 +50,7 @@ BuildRequires:  libxslt
 BuildRequires:  mailx
 BuildRequires:  mtx
 BuildRequires:  openssh
+BuildRequires:  openssl-devel
 BuildRequires:  perl-base
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
@@ -54,15 +58,19 @@ BuildRequires:  procps
 BuildRequires:  readline-devel
 BuildRequires:  samba-client
 BuildRequires:  sendmail
+BuildRequires:  perl(ExtUtils::Embed)
+BuildRequires:  perl(Test::Simple)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(smbclient)
 Requires:       %{_bindir}/smbclient
 Requires:       dump
+Requires:       grep
 Requires:       perl = %{perl_version}
+Requires:       tar
 Requires(post): permissions
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 
 %description
 AMANDA, the Advanced Maryland Automatic Network Disk Archiver, is a backup
@@ -82,6 +90,7 @@ rm -r patches
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+
 %build
 ./autogen
 
@@ -144,13 +153,14 @@ find %{buildroot} \( -name "*.a" -o -name "*.la" \) -delete
 
 # create a list of binaries to be checked externally
 cat << EOF > %{buildroot}%{_libexecdir}/amanda/suidlist
-%{_sbindir}/amcheck
+%{_libexecdir}/amanda/ambind
+%{_libexecdir}/amanda/application/ambsdtar
+%{_libexecdir}/amanda/application/amgtar
+%{_libexecdir}/amanda/application/amstar
 %{_libexecdir}/amanda/calcsize
-%{_libexecdir}/amanda/rundump
-%{_libexecdir}/amanda/planner
-%{_libexecdir}/amanda/runtar
-%{_libexecdir}/amanda/dumper
 %{_libexecdir}/amanda/killpgrp
+%{_libexecdir}/amanda/rundump
+%{_libexecdir}/amanda/runtar
 EOF
 
 # create a symlink for amoldrecover manpage
@@ -174,7 +184,7 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 
 %post
 %if 0%{?set_permissions:1}
-%set_permissions %{_sbindir}/amcheck %{_libexecdir}/amanda/calcsize %{_libexecdir}/amanda/rundump %{_libexecdir}/amanda/planner %{_libexecdir}/amanda/runtar %{_libexecdir}/amanda/dumper %{_libexecdir}/amanda/killpgrp
+%set_permissions %{_libexecdir}/amanda/ambind %{_libexecdir}/amanda/application/ambsdtar %{_libexecdir}/amanda/application/amgtar %{_libexecdir}/amanda/application/amstar %{_libexecdir}/amanda/calcsize %{_libexecdir}/amanda/killpgrp %{_libexecdir}/amanda/rundump %{_libexecdir}/amanda/runtar
 %else
 %run_permissions
 %endif
@@ -205,8 +215,8 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 # bnc#412636 file permissions of .amandahosts should be 600
 %config %attr(600,amanda,%{amanda_group}) %{_localstatedir}/lib/amanda/.amandahosts
 %config %attr(644,amanda,%{amanda_group}) %{_sysconfdir}/amanda/example/amanda.conf
-# amanda-security.conf must be installed at %{_sysconfdir} and only root must be able to write it
-# an example file should be installed at %{_sysconfdir}/amanda/ 
+# amanda-security.conf must be installed at %%{_sysconfdir} and only root must be able to write it
+# an example file should be installed at %%{_sysconfdir}/amanda/
 %config(noreplace) %attr(644, root, root) %{_sysconfdir}/amanda-security.conf
 %{_sysconfdir}/amanda/amanda-security.conf
 %config %attr(644,amanda,%{amanda_group}) %{_sysconfdir}/amanda/example/disklist
@@ -270,7 +280,7 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %{_sbindir}/amlabel
 %{_sbindir}/amoverview
 %{_sbindir}/amplot
-%verify(not mode) %attr(0750,root,%{amanda_group}) %{_sbindir}/amcheck
+%{_sbindir}/amcheck
 %attr(0750,amanda,%{amanda_group}) %{_sbindir}/amrecover
 %{_sbindir}/amreport
 %{_sbindir}/amrestore
@@ -303,7 +313,6 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %{_libexecdir}/amanda/amplot.g
 %{_libexecdir}/amanda/amplot.gp
 %defattr(755,amanda,%{amanda_group})
-%{_libexecdir}/amanda/ambind
 %{_libexecdir}/amanda/amandad
 %{_libexecdir}/amanda/amdumpd
 %{_libexecdir}/amanda/amidxtaped
@@ -330,14 +339,27 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %{_libexecdir}/amanda/teecount
 %{_libexecdir}/amanda/restore
 %{_libexecdir}/amanda/senddiscover
+%{_libexecdir}/amanda/dumper
+%{_libexecdir}/amanda/planner
+%attr(0755 root root) %dir %{_libexecdir}/amanda/application/
+%{_libexecdir}/amanda/application/amlog-script
+%{_libexecdir}/amanda/application/ampgsql
+%{_libexecdir}/amanda/application/amrandom
+%{_libexecdir}/amanda/application/amraw
+%{_libexecdir}/amanda/application/amsamba
+%{_libexecdir}/amanda/application/amsuntar
+%{_libexecdir}/amanda/application/amzfs-sendrecv
+%{_libexecdir}/amanda/application/amzfs-snapshot
+%{_libexecdir}/amanda/application/script-email
+%{_libexecdir}/amanda/application/script-fail
+%verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/ambind
+%verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/application/ambsdtar
+%verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/application/amgtar
+%verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/application/amstar
 %verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/calcsize
-%verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/dumper
 %verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/killpgrp
-%verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/planner
 %verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/rundump
 %verify(not mode) %attr(0750,root,%{amanda_group})%{_libexecdir}/amanda/runtar
-%dir %{_libexecdir}/amanda/application/
-%{_libexecdir}/amanda/application/*
 # include shared libs
 %dir %{_libdir}/amanda/
 %{_libdir}/amanda/lib*
