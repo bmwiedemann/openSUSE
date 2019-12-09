@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 09 13:04:05 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1575895968.5daf6345:
+  * t/23-baseclass.t: Fix read from serial test
+  * check_ssh_serial: Fix reading from channel
+  * spec: Exclude flaky 07-commands from tests
+  * Allow relative "productdir" and "needledir" relative to "casedir"
+  * Delete never fully working check for "needle dir within current dir"
+  * t: Use Test::Strict like in openQA for an easier and broader 'compile' check
+
+-------------------------------------------------------------------
 Sat Dec 07 05:04:05 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1575621538.1ee59881:

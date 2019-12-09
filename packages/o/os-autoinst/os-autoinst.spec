@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1575621538.1ee59881
+Version:        4.6.1575895968.5daf6345
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ Source0:        %{name}-%{version}.tar.xz
 %else
 %define spellcheck_requires perl(Pod::Spell) aspell-spell
 %endif
-%define test_requires %build_requires %requires perl(Perl::Tidy) perl(Test::Compile) perl(Test::Exception) perl(Test::Output) perl(Test::Fatal) perl(Test::Warnings) perl(Pod::Coverage) perl(Test::Pod) perl(Test::MockModule) perl(Test::MockObject) perl(Devel::Cover) perl(Test::Mock::Time) qemu-tools %spellcheck_requires
+%define test_requires %build_requires %requires perl(Perl::Tidy) perl(Test::Strict) perl(Test::Exception) perl(Test::Output) perl(Test::Fatal) perl(Test::Warnings) perl(Pod::Coverage) perl(Test::Pod) perl(Test::MockModule) perl(Test::MockObject) perl(Devel::Cover) perl(Test::Mock::Time) qemu-tools %spellcheck_requires
 %define devel_requires %test_requires %requires_not_needed_in_tests
 BuildRequires:  %test_requires
 Requires:       %requires
@@ -90,7 +90,8 @@ sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{v
 # don't require qemu within OBS
 # and exclude known flaky tests in OBS check
 # https://progress.opensuse.org/issues/52652
-for i in 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
+# 07-commands: https://progress.opensuse.org/issues/60755
+for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
     rm t/$i.t
     sed -i "s/ \?$i\.t//g" t/Makefile.am
 done
