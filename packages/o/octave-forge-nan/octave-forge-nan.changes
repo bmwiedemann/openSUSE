@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  9 15:40:02 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.4.5:
+  * fishers_exact_test: added <NEW> 
+  * bug fixes for:
+    + #57263: [octave forge] (nan) fails to build on a system
+      without libblas (Octave built with OpenBLAS)
+    + #57232: [octave forge] (nan) Spelling error in message of
+      function str2array
+    + #50248: [octave forge] (nan) Spelling error in the help
+      string of the train function
+    + #57228 "[octave forge] (nan) fails to build with undefined
+      references in Octave 5 when LDFLAGS is set"
+  * gscatter: fix use of argument "doleg"
+  * address "warning: no return statement in function returning non-void"
+- Drop fix_missing_return.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Nov 27 12:26:28 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.4.3:

@@ -18,14 +18,13 @@
 
 %define octpkg  nan
 Name:           octave-forge-%{octpkg}
-Version:        3.4.3
+Version:        3.4.5
 Release:        0
 Summary:        A statistics and machine learning toolbox
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-Patch0:         fix_missing_return.patch
 BuildRequires:  libsvm-devel
 BuildRequires:  octave-devel >= 3.8.0
 Requires:       octave-cli >= 3.8.0
@@ -36,10 +35,6 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-pushd %{octpkg}-%{version}
-%patch0 -p1
-popd
-sed -i 's/-lblas/-l%{octave_blas}/g' %{octpkg}-%{version}/src/Makefile.in
 %octave_pkg_src
 
 %build
