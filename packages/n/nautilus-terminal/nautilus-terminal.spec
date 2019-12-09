@@ -29,7 +29,7 @@ Source:         %{name}_%{version}_src.tar.gz
 Patch0:         nautilus-terminal-vte2.91.patch
 # For directory ownership:
 BuildRequires:  gobject-introspection
-BuildRequires:  python-nautilus
+BuildRequires:  python-nautilus-common-devel
 BuildRequires:  vte-devel
 Requires:       nautilus
 Recommends:     python-xdg
@@ -68,6 +68,8 @@ s:%{_prefix}/lib:%{_libdir}:
 %files
 %doc %{_docdir}/%{name}/
 %{_datadir}/nautilus-python/extensions/nautilus_terminal.py
+%dir %{_datadir}/nautilus-python
+%dir %{_datadir}/nautilus-python/extensions
 %{_datadir}/nautilus-terminal/
 
 %if %{have_lang}
