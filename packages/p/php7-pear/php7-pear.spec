@@ -32,15 +32,17 @@ Source0:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pe
 Source1:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pear-nozlib.sig#/install-pear-nozlib.phar.sig
 Source2:        %{name}.keyring
 Source3:        %{name}.rpmlintrc
+# PATCH-FIX-UPSTREAM https://bugs.php.net/78890
+Patch0:         pear-cacheid-array-check.patch
 BuildRequires:  php7
-BuildRequires:  php7-phar
 Requires:       php7
+Recommends:     php7-openssl
+Provides:       php-pear = %{version}
 Provides:       php-pear(Archive_Tar) = %pear_module_version Archive_Tar
 Provides:       php-pear(Console_Getopt) = %pear_module_version Console_Getopt
 Provides:       php-pear(PEAR) = %pear_module_version PEAR
 Provides:       php-pear(Structures_Graph) = %pear_module_version Structures_Graph
 Provides:       php-pear(XML_Util) = %pear_module_version XML_Util
-Provides:       php-pear = %{version}
 Obsoletes:      php-pear < %{version}
 BuildArch:      noarch
 
@@ -53,11 +55,12 @@ See https://pear.php.net/manual for more details.
 
 %package -n php7-pecl
 Summary:        PHP Extension Community Library
+Group:          Development/Libraries/PHP
 Requires:       autoconf
 Requires:       automake
 Requires:       gcc-c++
 Requires:       libtool
-Requires:       php-pear = %{version}
+Requires:       php7-pear = %{version}
 Provides:       php-pecl = %{version}
 Obsoletes:      php-pecl < %{version}
 Conflicts:      php7-devel < 7.4
@@ -77,11 +80,13 @@ See https://pecl.php.net for more details.
 # Empty build section, nothing to build
 
 %install
+export PHP_PEAR_INSTALL_DIR=%{peardir}
+export PHP_PEAR_METADATA_DIR=%{metadir}
 export PHP_PEAR_SIG_BIN=%{_bindir}/gpg
 export PHP_PEAR_SYSCONF_DIR=%{_sysconfdir}/php7/cli
 export INSTALL_ROOT=%{buildroot}
 
-install -d %{buildroot}%{_localstatedir}/cache/pear
+install -d %{buildroot}%{_localstatedir}/{cache,lib}/pear
 
 php -d date.timezone=UTC -d memory_limit=64M -d short_open_tag=0 -d safe_mode=0 \
 	-d 'error_reporting=E_ALL&~E_DEPRECATED' -d detect_unicode=0 %{SOURCE0} \
@@ -93,7 +98,9 @@ php -d date.timezone=UTC -d memory_limit=64M -d short_open_tag=0 -d safe_mode=0 
 	--metadata %{metadir} \
 	--www      %{peardir}/htdocs
 
-rm -rf %{buildroot}/{.depdb,.depdblock}
+pushd %{buildroot}%{peardir}
+patch -p1 < %{PATCH0}
+popd
 
 %pre
 if [ -d %{peardir}/.registry -a ! -d %{metadir}/.registry ]; then
@@ -105,22 +112,22 @@ fi
 mdir=$(%{_bindir}/pear config-get metadata_dir system)
 if [ "${mdir}" != "%{metadir}" -a -d %{metadir}/.registry ]; then
     %{_bindir}/pear config-set metadata_dir %{metadir} system
-    %{_bindir}/pear config-set metadata_dir %{metadir}
     rm -rf %{peardir}/{.channels,.registry}
 fi
 
 %files
 %{_bindir}/pear
 %config(noreplace) %{_sysconfdir}/php7/cli/pear.conf
-%dir %{peardir}
-%{peardir}/*
-%dir %{metadir}
-%ghost %{metadir}/{.depdblock,.lock}
-%{metadir}/.??*
 %dir %{_localstatedir}/cache/pear
+%dir %{_localstatedir}/lib/pear
+%dir %{peardir}
+%docdir %{peardir}/doc
+%{peardir}/*
+%{metadir}/.??*
 %exclude %{_bindir}/peardev
+%exclude %{peardir}/doc/PEAR/INSTALL
 %exclude %{peardir}/test
-        
+
 %files -n php7-pecl
 %{_bindir}/pecl
 
