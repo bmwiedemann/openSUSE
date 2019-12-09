@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %define         X_display         ":98"
 Name:           python-spyder-memory-profiler
 Version:        0.1.2
@@ -26,7 +27,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-memory-profiler
 Source:         https://files.pythonhosted.org/packages/source/s/spyder_memory_profiler/spyder_memory_profiler-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,8 +36,6 @@ BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  python-mock
-BuildRequires:  spyder >= 3
-BuildRequires:  spyder-lang >= 3
 BuildRequires:  spyder3 >= 3
 BuildRequires:  spyder3-lang >= 3
 BuildRequires:  xauth
@@ -46,21 +44,6 @@ BuildRequires:  xorg-x11-server
 %python_subpackages
 
 %description
-Spyder, the Scientific Python Development Environment, is an
-IDE for researchers, engineers and data analysts.
-
-This is a plugin for the Spyder IDE that integrates the Python memory profiler.
-It allows seeing the memory usage for every line.
-
-%package     -n spyder-memory-profiler
-Summary:        Memory profiler plugin for the Spyder IDE
-Group:          Development/Languages/Python
-Requires:       python-memory_profiler
-Requires:       spyder >= 3
-Provides:       python-spyder-memory-profiler = %{version}
-Provides:       python2-spyder-memory-profiler = %{version}
-
-%description -n spyder-memory-profiler
 Spyder, the Scientific Python Development Environment, is an
 IDE for researchers, engineers and data analysts.
 
@@ -101,11 +84,6 @@ Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 10
 %pytest spyder_memory_profiler
-
-%files -n spyder-memory-profiler
-%doc CHANGELOG.md README.rst
-%license LICENSE.txt
-%{python2_sitelib}/*
 
 %files -n spyder3-memory-profiler
 %doc CHANGELOG.md README.rst
