@@ -1,7 +1,7 @@
 #
 # spec file for package libnma
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define sover 0
 %define base_ver 1.8
@@ -46,6 +47,8 @@ Shared library for NetworkManager-applet.
 Summary:        Shared library for NetworkManager-applet
 # Make lang package installable.
 Provides:       %{name}
+# nma-data provides the org.gnome.nm-applet gsettings schema
+Requires:       nma-data
 
 %description -n %{name}%{sover}
 Shared library for NetworkManager-applet.
