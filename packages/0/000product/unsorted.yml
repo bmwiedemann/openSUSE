@@ -494,6 +494,7 @@ unsorted:
   - ant-junit5 
   - ant-manual 
   - ant-phone 
+  - ant-proguard 
   - ant-scala 
   - ant-scripts 
   - ant-swing 
@@ -12138,9 +12139,9 @@ unsorted:
   - libwsman3 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwtdbo51 
-  - libwtdbomysql51 
-  - libwtdbopostgres51 
+  - libwtdbo4_2_0 
+  - libwtdbomysql4_2_0 
+  - libwtdbopostgres4_2_0 
   - libwv2-4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
@@ -12909,9 +12910,8 @@ unsorted:
   - makewhat 
   - mako 
   - malaga-suomi 
-  - mame 
+  - mame: [x86_64] 
   - mame-data 
-  - mame-mess 
   - mame-tools 
   - manaplus 
   - manaplus-lang 
@@ -17170,7 +17170,6 @@ unsorted:
   - progress 
   - proguard 
   - proguard-gui 
-  - proguard-manual 
   - proj 
   - proj-devel 
   - projectM 
@@ -18814,7 +18813,6 @@ unsorted:
   - python2-meld3 
   - python2-memory_profiler 
   - python2-metaextract 
-  - python2-metakernel 
   - python2-mhash 
   - python2-minio 
   - python2-miniupnpc 
@@ -19852,6 +19850,7 @@ unsorted:
   - python2-xxhash 
   - python2-yamldoc 
   - python2-yamllint 
+  - python2-yamlloader 
   - python2-yamlordereddictloader 
   - python2-yapf 
   - python2-yappi 
@@ -19978,6 +19977,7 @@ unsorted:
   - python3-Kivy 
   - python3-Kivy-devel 
   - python3-LEPL 
+  - python3-LTTL 
   - python3-Lektor 
   - python3-Levenshtein 
   - python3-Logbook 
@@ -20109,6 +20109,7 @@ unsorted:
   - python3-acefile 
   - python3-acitoolkit 
   - python3-acme 
+  - python3-acoular 
   - python3-actdiag 
   - python3-adal 
   - python3-adapt-parser 
@@ -20667,6 +20668,7 @@ unsorted:
   - python3-discogs-client 
   - python3-diskcache 
   - python3-distlib 
+  - python3-distob 
   - python3-distorm3 
   - python3-distributed 
   - python3-distro: [i586] 
@@ -21147,6 +21149,7 @@ unsorted:
   - python3-jupyter_kernel_test 
   - python3-jupyter_latex_envs 
   - python3-jupyter_nbextensions_configurator 
+  - python3-jupyterlab 
   - python3-jupyterlab-pygments 
   - python3-jupytext 
   - python3-jwcrypto 
@@ -21172,6 +21175,7 @@ unsorted:
   - python3-kopano 
   - python3-kubernetes 
   - python3-l20n 
+  - python3-labels 
   - python3-lancet-ioam 
   - python3-langtable 
   - python3-language-check 
@@ -21400,6 +21404,7 @@ unsorted:
   - python3-nltk 
   - python3-node-semver 
   - python3-nodeenv 
+  - python3-nornir 
   - python3-nose 
   - python3-nose-cov 
   - python3-nose-cover3 
@@ -22473,6 +22478,7 @@ unsorted:
   - python3-yafe 
   - python3-yamldoc 
   - python3-yamllint 
+  - python3-yamlloader 
   - python3-yamlordereddictloader 
   - python3-yang 
   - python3-yapf 
@@ -22813,6 +22819,8 @@ unsorted:
   - rfb 
   - rfbplaymacro 
   - rfbproxy 
+  - rfcat 
+  - rfcat-udev 
   - rfcdiff 
   - rhash 
   - rhash-devel 
@@ -24324,7 +24332,6 @@ unsorted:
   - splinter-devel 
   - spotify-easyrpm 
   - spread-sheet-widget-devel 
-  - spyder-memory-profiler 
   - spyder-notebook 
   - spyder-terminal 
   - spyder-unittest 
