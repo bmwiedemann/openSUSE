@@ -1,7 +1,7 @@
 #
 # spec file for package tea
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           tea
-Version:        48.0.0
+Version:        50.0.3
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
-Url:            http://semiletov.org/tea
-Source:         http://semiletov.org/%{name}/dloads/%{name}-%{version}.tar.bz2
+URL:            http://semiletov.org/tea
+Source:         https://github.com/psemiletov/tea-qt/archive/%{version}.tar.gz#/%{name}-qt-%{version}.tar.gz
 Source1:        org.semiletov.tea.desktop
 Source2:        org.semiletov.tea.appdata.xml
 BuildRequires:  cmake
@@ -32,7 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -48,7 +47,7 @@ Midnight-Commander-style file manager, integrates spell checking
 (aspell/hunspell), and syntax highlighting for a number of languages.
 
 %prep
-%setup -q
+%setup -q -n tea-qt-%{version}
 
 cp -a %{SOURCE1} org.semiletov.tea.desktop
 cp -a %{SOURCE2} org.semiletov.tea.appdata.xml
@@ -56,7 +55,7 @@ sed -i '/DESTINATION share\/applications/d' CMakeLists.txt
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -64,16 +63,6 @@ sed -i '/DESTINATION share\/applications/d' CMakeLists.txt
 install -Dpm 0644 org.semiletov.tea.desktop %{buildroot}%{_datadir}/applications/org.semiletov.tea.desktop
 install -Dpm 0644 icons/%{name}-icon-v3-01.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 install -Dpm 0644 org.semiletov.tea.appdata.xml %{buildroot}%{_datadir}/metainfo/org.semiletov.tea.appdata.xml
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

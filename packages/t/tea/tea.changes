@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  7 17:33:43 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 50.0.3 (changes since 48.0.0):
+  * Drop the QtNetwork requirement.
+  * A new, alternative Docked interface.
+  * Add a Tune::Interface::UI Language list, which comes instead of
+    the removed "Override locale" option.
+  * Some parts of TEA now work faster due to iterator-based cycles
+    optimisation.
+- Drop openSUSE Leap 42.3 support.
+
+-------------------------------------------------------------------
 Tue Sep 24 09:15:32 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 48.0.0:
