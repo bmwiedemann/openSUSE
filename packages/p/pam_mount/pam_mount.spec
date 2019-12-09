@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,6 +34,7 @@ Source5:        baselibs.conf
 Source6:        %{name}.keyring
 Patch1:         pam_mount-0.47-enable-logout-kill.dif
 Patch2:         pam_mount-2.16-fix-luks2-mount.patch
+Patch3:         bsc1153630-prevent-systemd-from-calling-pam_mount.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  libtool
@@ -101,6 +102,7 @@ and transparent use of the OS's crypto layer.
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 %configure --disable-static --with-slibdir="/%_lib" \

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 25 08:24:18 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Systemd-user must be prevented from invoking pam_mount.so in the
+  "session" management group eg by invoking pam_succeed_if.so to
+  skip the pam_mount entry when systemd-user is calling
+  pam_{open,close}_session.
+  [bsc#1153630,
+   bsc1153630-prevent-systemd-from-calling-pam_mount.patch]
+
+-------------------------------------------------------------------
 Sat Nov 17 09:18:54 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Add pam_mount-2.16-fix-luks2-mount.patch:
