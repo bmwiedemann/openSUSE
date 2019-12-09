@@ -1,7 +1,7 @@
 #
 # spec file for package mame
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,38 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if %{__isa_bits} == 64
+%define is_64bit 1
+%endif
+
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
+%endif
+
+%if "%{flavor}" == "mame" || "%{flavor}" == ""
+%define pkgsuffix %{nil}
+%else
+%define pkgsuffix -%{flavor}
+%endif
+
 %define fver    211
 
 # Build mame-mess by default, and use system libraries
-%bcond_without  mess
 %bcond_without  systemlibs
 
-Name:           mame
+Name:           mame%{?pkgsuffix}
 Version:        0.%fver
 Release:        0
+%if "%{flavor}" != "mess"
 Summary:        Multiple Arcade Machine Emulator
+%else
+Summary:        Multi Emulator Super System
+%endif
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          System/Emulators/Other
-Url:            http://mamedev.org/
+URL:            http://mamedev.org/
 Source0:        https://github.com/mamedev/mame/archive/mame0%{fver}.tar.gz
 Source1:        https://github.com/mamedev/mame/releases/download/mame0%{fver}/whatsnew_0%{fver}.txt
 Source2:        mame.png
@@ -37,14 +56,16 @@ Source100:      mame-rpmlintrc
 Source101:      mame.ini.in
 Source102:      mame.appdata.xml
 Source104:      mame-mess.appdata.xml
-# PATCH-FIX-UPSTREAM stefan.bruens@rwth-aachen.de gh#mamedev/mame#4771 -- Add a messing dependency on generated file
+# PATCH-FIX-UPSTREAM stefan.bruens@rwth-aachen.de gh#mamedev/mame#4771 -- Add a missing dependency on generated file
 Patch0:         add_tms57002_hxx_dependecy.patch
 Patch1:         fix_mkdir_order.patch
+# PATCH-FIX-OPENSUSE -- use thin archives for static libraries
+Patch2:         use_thin_archives.patch
 BuildRequires:  binutils-gold
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  python-xml
+BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -60,70 +81,75 @@ Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 BuildRequires:  gcc-c++
 %if %{with systemlibs}
+BuildRequires:  asio-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg8-devel
 BuildRequires:  portmidi-devel
 BuildRequires:  utf8proc-devel
+BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 %endif
-Suggests:       %{name}-tools = %{version}
+Requires:       mame-data = %{version}-%{release}
+Suggests:       mame-tools = %{version}
+
+%if "%{flavor}" == "mame"
 # sdlmame was last used at version 0.142
+Provides:       sdlmame = %{version}
 Obsoletes:      sdlmame < %{version}
 # ume was last used at version 0.159
-Obsoletes:      mame-arcade < %{version}
+Provides:       ume = %{version}
 Obsoletes:      ume < %{version}
-Requires:       %{name}-data = %{version}-%{release}
-# s390x does not have currently a worker strong enough to satisfy the build constraints
-ExcludeArch:    s390x
+%endif
 
+%if "%{flavor}" == "mess"
+# sdlmess was last used at version 0.142
+Provides:       sdlmess = %{version}
+Obsoletes:      sdlmess < %{version}
+# mess was last used at version 0.159
+Provides:       mess = %{version}
+Obsoletes:      mess < %{version}
+%endif
+
+%if "%{flavor}" != "mess"
 %description
 MAME is an emulator designed to recreate the hardware of arcade game
 systems in software on modern personal computers. The source code to
 MAME serves as this hardware documentation. The fact that the
 software is usable serves primarily to validate the accuracy of the
 documentation.
+%else
 
-%package tools
-Summary:        MAME Tools
-Group:          System/Emulators/Other
-Requires:       %{name}-data = %{version}-%{release}
-# mess-tools was last used at version 0.159
-Provides:       mess-tools = %{version}
-Obsoletes:      mess-tools < %{version}
-
-%description tools
-Tools for use with MAME/MESS roms and images.
-
-%package mess
-Summary:        Multi Emulator Super System
-Group:          System/Emulators/Other
-Requires:       %{name}-data = %{version}-%{release}
-# mess was last used at version 0.159
-Provides:       mess = %{version}
-Obsoletes:      mess < %{version}
-# sdlmess was last used at version 0.142
-Provides:       sdlmess = %{version}
-Obsoletes:      sdlmess < %{version}
-
-%description mess
+%description
 This is the MESS only build of MAME; it has been compiled without Arcade built in.
 
 MESS is an emulator for many game consoles and computer systems, based on
 the MAME core and now a part of MAME. MESS emulates portable and console
 gaming systems, computer platforms, and calculators.
+%endif
 
-%package data
+%package -n mame-tools
+Summary:        MAME Tools
+Group:          System/Emulators/Other
+# mess-tools was last used at version 0.159
+Provides:       mess-tools = %{version}
+Obsoletes:      mess-tools < %{version}
+
+%description -n mame-tools
+Tools for use with MAME/MESS roms and images.
+
+%package -n mame-data
 Summary:        Data files required by all builds of MAME
 Group:          System/Emulators/Other
 BuildArch:      noarch
 
-%description data
-This package contains all data files needed by the MAME binaries;
+%description -n mame-data
+This package contains all data files needed by the MAME binaries:
  * shaders
  * artwork
  * rom hashes
@@ -133,6 +159,7 @@ This package contains all data files needed by the MAME binaries;
 %setup -q -n mame-mame0%fver
 %patch0 -p0
 %patch1 -p0
+%patch2 -p0
 
 cp %{SOURCE1} whatsnew-%{version}.txt
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
@@ -143,7 +170,7 @@ sed -e "s,@DATADIR@,%{_datadir},g"\
     -e "s,@SYSCONFDIR@,%{_sysconfdir},g" %{SOURCE101} > mame.ini
 
 # limit 32bit archs to debug level 1, the linker exhausts the address space otherwise
-%ifarch %ix86 %arm
+%if ! 0%{?is_64bit}
 %define myoptflags %(echo %{optflags} | sed -E 's@(-g\\\b)|(-g[0-9])@-g1@g')
 %else
 %define myoptflags %{optflags}
@@ -155,12 +182,9 @@ sed -i "s@\. -s@\. %{myoptflags}@" 3rdparty/genie/build/gmake.linux/genie.make
 
 %build
 %limit_build -m 1800
-echo $_threads
 
-export _lto_cflags="-flto=$_threads"
-%define  _lto_cflags $_lto_cflags
 # Memory mapped files occupy the limited 32bit address space
-%ifarch %ix86 %arm
+%if ! 0%{?is_64bit}
 export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold -Wl,--no-keep-files-mapped -Wl,--no-map-whole-files -Wl,--no-mmap-output-file %{?_lto_cflags}"
 %else
 export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold %{?_lto_cflags}"
@@ -172,17 +196,22 @@ COMMON_FLAGS="\
     NOWERROR=1 \
     VERBOSE=1 \
     OPTIMIZE=3 \
+    PYTHON=python3 \
+    PYTHON_EXECUTABLE=python3 \
     %if %{with systemlibs}
+    USE_SYSTEM_LIB_ASIO=1 \
     USE_SYSTEM_LIB_EXPAT=1 \
     USE_SYSTEM_LIB_ZLIB=1 \
     USE_SYSTEM_LIB_JPEG=1 \
     USE_SYSTEM_LIB_FLAC=1 \
     USE_SYSTEM_LIB_LUA=1 \
-    USE_SYSTEM_LIB_UV=1 \
     USE_SYSTEM_LIB_SQLITE3=1 \
     USE_SYSTEM_LIB_PORTMIDI=1 \
     USE_SYSTEM_LIB_PORTAUDIO=1 \
     USE_SYSTEM_LIB_UTF8PROC=1 \
+    USE_SYSTEM_LIB_GLM=1 \
+    USE_SYSTEM_LIB_RAPIDJSON=1 \
+    USE_SYSTEM_LIB_PUGIXML=1 \
     %endif
     "
 # Bootstrap genie, scripts file has been patched
@@ -190,64 +219,80 @@ make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS genie
 (cd 3rdparty/genie/; bin/linux/genie embed)
 make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS genie
 
-make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=arcade TOOLS=1
-# Remove static libraries after linking, to save some disk space
-find build/ -ipath '*mame_arcade/lib*a' -delete
-
-%if %{with mess}
-make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=mess
-# Remove static libraries after linking, to save some disk space
-find build/ -ipath '*mame_mess/lib*a' -delete
+# Build the emulator itself
+%if "%{flavor}" == "mame"
+make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=arcade TOOLS=0
+%endif
+%if "%{flavor}" == "mess"
+make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=mess TOOLS=0
+%endif
+%if "%{flavor}" == "tools-data"
+# Tiny still builds too much, but is the smallest target available for just building the tools
+make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=tiny TOOLS=1
 %endif
 
 %install
-# Rename binaries
-%define emu_bin_dir  %{buildroot}%{_bindir}
-%define emu_data_dir %{buildroot}%{_datadir}/mame
-# Install binaries
-%ifarch x86_64
-install -Dpm 0755 mamearcade64 %{emu_bin_dir}/mame
-%if %{with mess}
-install -pm 0755 mess64 %{emu_bin_dir}/mame-mess
+%if "%{flavor}" == "mame"
+# Install emulator binaries and manpages
+install -Dpm 0755 mamearcade%{?is_64bit:64} %{buildroot}%{_bindir}/mame
+install -Dpm 0644 docs/man/mame.6 %{buildroot}%{_mandir}/man6/mame.6
+install -Dpm 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/mame.png
+
+# Install config file
+mkdir -p %{buildroot}%{_sysconfdir}/skel/.mame
+install -Dpm 0644 mame.ini %{buildroot}%{_sysconfdir}/skel/.mame/mame.ini
+
+%suse_update_desktop_file -c mame 'MAME' 'Multiple Arcade Machine Emulator' mame mame Game Emulator
+install -Dpm 0644 %{SOURCE102}  %{buildroot}%{_datadir}/metainfo/mame.appdata.xml
 %endif
-%else
-install -Dpm 0755 mamearcade %{emu_bin_dir}/mame
-%if %{with mess}
-install -pm 0755 mess %{emu_bin_dir}/mame-mess
+
+%if "%{flavor}" == "mess"
+# Install emulator binaries and manpages
+install -Dpm 0755 mess%{?is_64bit:64} %{buildroot}%{_bindir}/mame-mess
+install -Dpm 0644 docs/man/mess.6 %{buildroot}%{_mandir}/man6/mame-mess.6
+install -Dpm 0644 %{SOURCE3}  %{buildroot}%{_datadir}/pixmaps/mame-mess.png
+
+# Install config file
+mkdir -p %{buildroot}%{_sysconfdir}/skel/.mess
+install -Dpm 0644 mame.ini   %{buildroot}%{_sysconfdir}/skel/.mess/mess.ini
+sed -i -- 's/.mame;/.mess;/g'   %{buildroot}%{_sysconfdir}/skel/.mess/mess.ini
+
+%suse_update_desktop_file -c mame-mess 'MESS' 'Multi Emulator Super System' mame-mess mame-mess Game Emulator
+install -Dpm 0644 %{SOURCE104}  %{buildroot}%{_datadir}/metainfo/mame-mess.appdata.xml
 %endif
-%endif
-# Tool binaries
+
+# Tool binaries and manpages
+%if "%{flavor}" == "tools-data"
+install -dm 0755 %{buildroot}%{_bindir}
 install -pm 0755 castool chdman floptool imgtool jedutil ldresample \
-                 ldverify romcmp unidasm %{emu_bin_dir}/
+                 ldverify romcmp unidasm %{buildroot}%{_bindir}/
 for mame_tool in nltool nlwav pngcmp regrep split src2html srcclean
 do
-  install -pm 0755 $mame_tool %{emu_bin_dir}/mame-$mame_tool
+  install -pm 0755 $mame_tool %{buildroot}%{_bindir}/mame-${mame_tool}
 done
 
-# Install manpages
-install -dm 0755 %{buildroot}%{_mandir}/{man1,man6}
+install -dm 0755 %{buildroot}%{_mandir}/man1
 pushd docs/man/
 install -pm 0644 castool.1 chdman.1 floptool.1 imgtool.1 jedutil.1 \
                  ldresample.1 ldverify.1 romcmp.1 %{buildroot}%{_mandir}/man1/
-install -pm 0644 mame.6 mess.6 %{buildroot}%{_mandir}/man6/
 popd
 
 # Install data required by mame
+%define emu_data_dir %{buildroot}%{_datadir}/mame
 for dir in artwork chds bgfx cheats crosshair ctrlr fonts hash \
            keymaps language plugins roms samples opengl_shaders
 do
-  install -dm 0755 %{emu_data_dir}/$dir
+  install -dm 0755 %{emu_data_dir}/${dir}
 done
 install -dm 0755 %{emu_data_dir}/bgfx/shaders
 install -dm 0755 %{buildroot}%{_datadir}/pixmaps
 
 install -pm 0644 hash/*      %{emu_data_dir}/hash/
 install -pm 0644 uismall.bdf %{emu_data_dir}/uismall.bdf
-install -pm 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/mame.png
 install -pm 0644 keymaps/{LICENSE,README.md}    %{emu_data_dir}/keymaps/
 install -pm 0644 keymaps/*LINUX.map             %{emu_data_dir}/keymaps/
 cp -ar language %{emu_data_dir}/
-find %{emu_data_dir}/language/ -name "*.po" | xargs rm -rf
+find %{emu_data_dir}/language/ -name "*.po" -delete
 cp -ar artwork              %{emu_data_dir}/
 cp -ar plugins              %{emu_data_dir}/
 cp -ar samples              %{emu_data_dir}/
@@ -257,54 +302,30 @@ cp -ar bgfx/layouts         %{emu_data_dir}/bgfx/
 cp -ar bgfx/shaders/glsl    %{emu_data_dir}/bgfx/shaders/
 install -pm 0644 src/osd/modules/opengl/shader/*.{fsh,vsh} %{emu_data_dir}/opengl_shaders/
 
-# Install config file
-mkdir -p %{buildroot}%{_sysconfdir}/skel/.%{name}
-install -Dpm 0644 mame.ini %{buildroot}%{_sysconfdir}/skel/.%{name}/mame.ini
-
-%suse_update_desktop_file -c mame 'MAME' 'Multiple Arcade Machine Emulator' mame mame Game Emulator
-install -Dpm 0644 %{SOURCE102}  %{buildroot}%{_datadir}/appdata/mame.appdata.xml
-
-%if %{with mess}
-mkdir -p %{buildroot}%{_sysconfdir}/skel/.mess
-install -Dpm 0644 mame.ini   %{buildroot}%{_sysconfdir}/skel/.mess/mess.ini
-sed -i -- 's/.mame;/.mess;/g'   %{buildroot}%{_sysconfdir}/skel/.mess/mess.ini
-mv %{buildroot}%{_mandir}/man6/mess.6 %{buildroot}%{_mandir}/man6/mame-mess.6
-install -Dpm 0644 %{SOURCE3}  %{buildroot}%{_datadir}/pixmaps/mame-mess.png
-%suse_update_desktop_file -c mame-mess 'MESS' 'Multi Emulator Super System' mame-mess mame-mess Game Emulator
-install -Dpm 0644 %{SOURCE104}  %{buildroot}%{_datadir}/appdata/mame-mess.appdata.xml
+%fdupes -s %{buildroot}/%{_datadir}/mame/bgfx
 %endif
 
-%fdupes -s %{buildroot}/%{_datadir}/mame/bgfx
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
+%if "%{flavor}" == "mame" || "%{flavor}" == "mess"
 %files
 %doc README.md whatsnew-%{version}.txt
 %license docs/LICENSE LICENSE.md
-%{_bindir}/mame
-%{_datadir}/pixmaps/mame.png
-%{_datadir}/applications/mame.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/mame.appdata.xml
-%{_mandir}/man6/mame.6%{ext_man}
-%if %{without mess}
-%{_mandir}/man6/mess.6%{ext_man}
+%{_bindir}/mame*
+%{_datadir}/pixmaps/mame*.png
+%{_datadir}/applications/mame*.desktop
+%dir %{_sysconfdir}/skel/.*
+%config(noreplace) %{_sysconfdir}/skel/.*/*.ini
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/mame*.appdata.xml
+%{_mandir}/man6/mame*.6%{ext_man}
 %endif
 
-%files data
+%if "%{flavor}" == "tools-data"
+%files -n mame-data
 %doc README.md
 %license docs/LICENSE LICENSE.md
 %{_datadir}/mame/
-%dir %{_sysconfdir}/skel/.mame
-%dir %{_sysconfdir}/skel/.mess
-%config(noreplace) %{_sysconfdir}/skel/.mame/mame.ini
-%config(noreplace) %{_sysconfdir}/skel/.mess/mess.ini
 
-%files tools
+%files -n mame-tools
 %license docs/LICENSE LICENSE.md
 %{_bindir}/castool
 %{_bindir}/chdman
@@ -330,17 +351,6 @@ install -Dpm 0644 %{SOURCE104}  %{buildroot}%{_datadir}/appdata/mame-mess.appdat
 %{_mandir}/man1/ldresample.1%{ext_man}
 %{_mandir}/man1/ldverify.1%{ext_man}
 %{_mandir}/man1/romcmp.1%{ext_man}
-
-%files mess
-%if %{with mess}
-%doc README.md whatsnew-%{version}.txt
-%license docs/LICENSE LICENSE.md
-%{_bindir}/mame-mess
-%{_datadir}/pixmaps/mame-mess.png
-%{_datadir}/applications/mame-mess.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/mame-mess.appdata.xml
-%{_mandir}/man6/mame-mess.6%{ext_man}
 %endif
 
 %changelog

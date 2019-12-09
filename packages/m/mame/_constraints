@@ -8,16 +8,18 @@
       <size unit="G">8</size>
     </disk>
   </hardware>
-    
+
   <overwrite>
     <conditions>
       <arch>aarch64</arch>
       <arch>x86_64</arch>
       <arch>ppc64le</arch>
+      <package>mame:mame</package>
+      <package>mame:mess</package>
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">30</size>
+        <size unit="G">33</size>
       </disk>
       <memory>
         <size unit="M">13500</size>

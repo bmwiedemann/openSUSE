@@ -1,0 +1,23 @@
+--- 3rdparty/genie/src/tools/gcc.lua_orig	2019-10-31 01:14:26.826612937 +0100
++++ 3rdparty/genie/src/tools/gcc.lua	2019-10-31 02:06:13.625516286 +0100
+@@ -277,7 +277,7 @@
+ 				if premake.gcc.llvm then
+ 					table.insert(result, 'rcs')
+ 				else
+-					table.insert(result, '-rcs')
++					table.insert(result, '-rcTs')
+ 				end
+ 			else
+ 				if premake.gcc.llvm then
+@@ -288,9 +288,9 @@
+ 					end
+ 				else
+ 					if (not ndx) then
+-						table.insert(result, '-qc')
++						table.insert(result, '-qTc')
+ 					else
+-						table.insert(result, '-cs')
++						table.insert(result, '-cTs')
+ 					end
+ 				end
+ 			end

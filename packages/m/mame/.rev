@@ -146,4 +146,29 @@
 </comment>
     <requestid>743908</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>5ff3f3dc203cc03b0a287e3a5f818e6b</srcmd5>
+    <version>0.211</version>
+    <time>1575923718</time>
+    <user>dimstar_suse</user>
+    <comment>- Split mame, mame-mess and tools build using _multibuild.
+  This allows to reduce the disk constraints to 33 GByte,
+  31 GByte and 8 GByte respectively.
+- Use python3 instead of python2 for building
+- Spec file cleanup:
+  * Drop obsolete %desktop_database_post/postun scriptlets
+  * Generalize arch specific conditional build statements
+- Update BuildRequires for current version:
+  - drop libuv, replaced by asio
+  - add pugixml, RapidJSON, glm
+- Remove lto flags mangling again, linker memory usage does not
+  grow linearly with number of partitions. It also significantly
+  hurts build time, occasionaly causing timeouts during linking.
+- Reduce disk usage for temporary static libraries, add
+  use_thin_archives.patch
+- Set disk constraints to value reported by OBS statistics. With
+  thin archives 47GB are required (regular archives: 59GB).
+</comment>
+    <requestid>755098</requestid>
+  </revision>
 </revisionlist>
