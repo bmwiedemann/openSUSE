@@ -1,5 +1,96 @@
---- gradle-4.4.1/subprojects/core/src/main/java/org/gradle/process/internal/worker/child/WorkerProcessClassPathProvider.java	2017-12-20 09:05:14.000000000 +0100
-+++ gradle-4.4.1/subprojects/core/src/main/java/org/gradle/process/internal/worker/child/WorkerProcessClassPathProvider.java	2019-11-25 12:06:16.258595142 +0100
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/tasks/compile/ApiMemberSelector.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/tasks/compile/ApiMemberSelector.java
+@@ -48,7 +48,7 @@
+     private boolean thisClassIsPrivateInnerClass;
+ 
+     public ApiMemberSelector(String className, ClassVisitor apiMemberAdapter, boolean apiIncludesPackagePrivateMembers) {
+-        super(ASM6);
++        super(ASM7);
+         this.className = className;
+         this.apiMemberAdapter = apiMemberAdapter;
+         this.apiIncludesPackagePrivateMembers = apiIncludesPackagePrivateMembers;
+@@ -166,7 +166,7 @@
+         if (isCandidateApiMember(access, apiIncludesPackagePrivateMembers) || ("<init>".equals(name) && isInnerClass)) {
+             final MethodMember methodMember = new MethodMember(access, name, desc, signature, exceptions);
+             methods.add(methodMember);
+-            return new MethodVisitor(ASM6) {
++            return new MethodVisitor(ASM7) {
+                 @Override
+                 public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+                     AnnotationMember ann = new AnnotationMember(desc, visible);
+@@ -191,7 +191,7 @@
+             Object keepValue = (access & ACC_STATIC) == ACC_STATIC && ((access & ACC_FINAL) == ACC_FINAL) ? value : null;
+             final FieldMember fieldMember = new FieldMember(access, name, signature, desc, keepValue);
+             fields.add(fieldMember);
+-            return new FieldVisitor(ASM6) {
++            return new FieldVisitor(ASM7) {
+                 @Override
+                 public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+                     AnnotationMember ann = new AnnotationMember(desc, visible);
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/tasks/compile/MethodStubbingApiMemberAdapter.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/tasks/compile/MethodStubbingApiMemberAdapter.java
+@@ -37,7 +37,7 @@
+     private String internalClassName;
+ 
+     public MethodStubbingApiMemberAdapter(ClassWriter cv) {
+-        super(ASM6, cv);
++        super(ASM7, cv);
+     }
+ 
+     @Override
+--- a/subprojects/core/src/main/java/org/gradle/api/internal/tasks/compile/SortingAnnotationVisitor.java
++++ b/subprojects/core/src/main/java/org/gradle/api/internal/tasks/compile/SortingAnnotationVisitor.java
+@@ -21,7 +21,7 @@
+ 
+ import java.util.List;
+ 
+-import static org.objectweb.asm.Opcodes.ASM6;
++import static org.objectweb.asm.Opcodes.ASM7;
+ 
+ public class SortingAnnotationVisitor extends AnnotationVisitor {
+ 
+@@ -33,7 +33,7 @@
+     private String arrayValueName;
+ 
+     public SortingAnnotationVisitor(AnnotationMember parentAnnotation, AnnotationVisitor av) {
+-        super(ASM6, av);
++        super(ASM7, av);
+         this.annotation = parentAnnotation;
+     }
+ 
+--- a/subprojects/core/src/main/java/org/gradle/groovy/scripts/internal/FileCacheBackedScriptClassCompiler.java
++++ b/subprojects/core/src/main/java/org/gradle/groovy/scripts/internal/FileCacheBackedScriptClassCompiler.java
+@@ -215,7 +215,7 @@
+         private final String contentHash;
+ 
+         public BuildScriptRemapper(ClassVisitor cv, ScriptSource source, String originalClassName, String contentHash) {
+-            super(ASM6, cv);
++            super(ASM7, cv);
+             this.scriptSource = source;
+             this.originalClassName = originalClassName;
+             this.contentHash = contentHash;
+@@ -338,7 +338,7 @@
+         class MethodRenamer extends MethodVisitor {
+ 
+             public MethodRenamer(final MethodVisitor mv) {
+-                super(ASM6, mv);
++                super(ASM7, mv);
+             }
+ 
+             public void visitTypeInsn(int i, String name) {
+--- a/subprojects/core/src/main/java/org/gradle/initialization/MixInLegacyTypesClassLoader.java
++++ b/subprojects/core/src/main/java/org/gradle/initialization/MixInLegacyTypesClassLoader.java
+@@ -122,7 +122,7 @@
+         private Set<String> booleanIsGetters = new HashSet<String>();
+ 
+         TransformingAdapter(ClassVisitor cv) {
+-            super(Opcodes.ASM6, cv);
++            super(Opcodes.ASM7, cv);
+         }
+ 
+         @Override
+--- a/subprojects/core/src/main/java/org/gradle/process/internal/worker/child/WorkerProcessClassPathProvider.java
++++ b/subprojects/core/src/main/java/org/gradle/process/internal/worker/child/WorkerProcessClassPathProvider.java
 @@ -44,8 +44,8 @@
  import org.objectweb.asm.ClassVisitor;
  import org.objectweb.asm.ClassWriter;
@@ -19,3 +110,191 @@
              classReader.accept(remappingVisitor, ClassReader.EXPAND_FRAMES);
              byte[] remappedClass = classWriter.toByteArray();
              String remappedClassName = remapper.map(internalName).concat(".class");
+--- a/subprojects/dependency-management/src/main/java/org/gradle/api/internal/runtimeshaded/RuntimeShadedJarCreator.java
++++ b/subprojects/dependency-management/src/main/java/org/gradle/api/internal/runtimeshaded/RuntimeShadedJarCreator.java
+@@ -412,7 +412,7 @@
+ 
+         @Override
+         public MethodVisitor visitMethod(int access, final String name, final String desc, String signature, String[] exceptions) {
+-            return new MethodVisitor(Opcodes.ASM6, super.visitMethod(access, name, desc, signature, exceptions)) {
++            return new MethodVisitor(Opcodes.ASM7, super.visitMethod(access, name, desc, signature, exceptions)) {
+                 @Override
+                 public void visitLdcInsn(Object cst) {
+                     if (cst instanceof String) {
+--- a/subprojects/internal-testing/src/main/groovy/org/gradle/test/fixtures/file/ClassFile.groovy
++++ b/subprojects/internal-testing/src/main/groovy/org/gradle/test/fixtures/file/ClassFile.groovy
+@@ -34,7 +34,7 @@
+     }
+ 
+     ClassFile(InputStream inputStream) {
+-        def methodVisitor = new MethodVisitor(Opcodes.ASM6) {
++        def methodVisitor = new MethodVisitor(Opcodes.ASM7) {
+             @Override
+             void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index) {
+                 hasLocalVars = true
+@@ -45,7 +45,7 @@
+                 hasLineNumbers = true
+             }
+         }
+-        def visitor = new ClassVisitor(Opcodes.ASM6) {
++        def visitor = new ClassVisitor(Opcodes.ASM7) {
+             @Override
+             void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+                 classFileVersion = version
+--- a/subprojects/language-groovy/src/main/java/org/gradle/api/internal/tasks/compile/GroovyCompileTransformingClassLoader.java
++++ b/subprojects/language-groovy/src/main/java/org/gradle/api/internal/tasks/compile/GroovyCompileTransformingClassLoader.java
+@@ -65,7 +65,7 @@
+         private boolean found;
+ 
+         private AnnotationDetector() {
+-            super(Opcodes.ASM6);
++            super(Opcodes.ASM7);
+         }
+ 
+         @Override
+@@ -79,7 +79,7 @@
+ 
+     private static class TransformingAdapter extends ClassVisitor {
+         public TransformingAdapter(ClassWriter classWriter) {
+-            super(Opcodes.ASM6, classWriter);
++            super(Opcodes.ASM7, classWriter);
+         }
+ 
+         @Override
+@@ -94,13 +94,13 @@
+             private final List<String> names = new ArrayList<String>();
+ 
+             public AnnotationTransformingVisitor(AnnotationVisitor annotationVisitor) {
+-                super(Opcodes.ASM6, annotationVisitor);
++                super(Opcodes.ASM7, annotationVisitor);
+             }
+ 
+             @Override
+             public AnnotationVisitor visitArray(String name) {
+                 if (name.equals("classes")) {
+-                    return new AnnotationVisitor(Opcodes.ASM6){
++                    return new AnnotationVisitor(Opcodes.ASM7){
+                         @Override
+                         public void visit(String name, Object value) {
+                             Type type = (Type) value;
+@@ -108,7 +108,7 @@
+                         }
+                     };
+                 } else if (name.equals("value")) {
+-                    return new AnnotationVisitor(Opcodes.ASM6) {
++                    return new AnnotationVisitor(Opcodes.ASM7) {
+                         @Override
+                         public void visit(String name, Object value) {
+                             String type = (String) value;
+--- a/subprojects/language-java/src/main/java/org/gradle/api/internal/tasks/compile/incremental/asm/ClassDependenciesVisitor.java
++++ b/subprojects/language-java/src/main/java/org/gradle/api/internal/tasks/compile/incremental/asm/ClassDependenciesVisitor.java
+@@ -35,7 +35,7 @@
+ 
+ public class ClassDependenciesVisitor extends ClassVisitor {
+ 
+-    private final static int API = Opcodes.ASM6;
++    private final static int API = Opcodes.ASM7;
+     private static final MethodVisitor EMPTY_VISITOR = new MethodVisitor(API, null) {
+     };
+ 
+--- a/subprojects/launcher/src/main/java/org/gradle/tooling/internal/provider/serialization/ClientSidePayloadClassLoaderFactory.java
++++ b/subprojects/launcher/src/main/java/org/gradle/tooling/internal/provider/serialization/ClientSidePayloadClassLoaderFactory.java
+@@ -97,14 +97,14 @@
+             private boolean found;
+ 
+             private AnnotationDetector() {
+-                super(Opcodes.ASM6);
++                super(Opcodes.ASM7);
+             }
+ 
+             public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+                 if (desc.equals(ANNOTATION_DESCRIPTOR)) {
+                     found = true;
+                 }
+-                return new AnnotationVisitor(Opcodes.ASM6) {
++                return new AnnotationVisitor(Opcodes.ASM7) {
+ 
+                     @Override
+                     public void visit(String name, Object value) {
+@@ -120,7 +120,7 @@
+             private final String mixInInterface;
+ 
+             public TransformingAdapter(ClassWriter classWriter, String mixInInterface) {
+-                super(Opcodes.ASM6, classWriter);
++                super(Opcodes.ASM7, classWriter);
+                 this.mixInInterface = mixInInterface;
+             }
+ 
+--- a/subprojects/platform-jvm/src/test/groovy/org/gradle/jvm/tasks/api/internal/ApiClassExtractorTest.groovy
++++ b/subprojects/platform-jvm/src/test/groovy/org/gradle/jvm/tasks/api/internal/ApiClassExtractorTest.groovy
+@@ -286,7 +286,7 @@
+         when:
+         def cr = new ClassReader(api.extractApiClassFrom(api.classes.A))
+         def stubVersion = 0
+-        cr.accept(new ClassVisitor(Opcodes.ASM6) {
++        cr.accept(new ClassVisitor(Opcodes.ASM7) {
+             @Override
+             void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+                 stubVersion = version
+@@ -455,7 +455,7 @@
+         when:
+         def apiClassBytes = api.extractApiClassFrom(api.classes['com.acme.A'])
+         def cr = new ClassReader(apiClassBytes)
+-        cr.accept(new ClassVisitor(Opcodes.ASM6) {
++        cr.accept(new ClassVisitor(Opcodes.ASM7) {
+             @Override
+             void visitSource(String source, String debug) {
+                 super.visitSource(source, debug)
+@@ -469,7 +469,7 @@
+ 
+             @Override
+             MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+-                new MethodVisitor(Opcodes.ASM6) {
++                new MethodVisitor(Opcodes.ASM7) {
+                     @Override
+                     void visitLineNumber(int line, Label start) {
+                         throw new AssertionError("Should not produce any line number information but " +
+--- a/subprojects/plugin-development/src/main/java/org/gradle/plugin/devel/tasks/ValidateTaskProperties.java
++++ b/subprojects/plugin-development/src/main/java/org/gradle/plugin/devel/tasks/ValidateTaskProperties.java
+@@ -353,7 +353,7 @@
+         private final Collection<String> classNames;
+ 
+         public TaskNameCollectorVisitor(Collection<String> classNames) {
+-            super(Opcodes.ASM6);
++            super(Opcodes.ASM7);
+             this.classNames = classNames;
+         }
+ 
+--- a/subprojects/testing-jvm/src/main/java/org/gradle/api/internal/tasks/testing/detection/TestClassVisitor.java
++++ b/subprojects/testing-jvm/src/main/java/org/gradle/api/internal/tasks/testing/detection/TestClassVisitor.java
+@@ -27,7 +27,7 @@
+     protected final TestFrameworkDetector detector;
+ 
+     protected TestClassVisitor(TestFrameworkDetector detector) {
+-        super(Opcodes.ASM6);
++        super(Opcodes.ASM7);
+         if (detector == null) {
+             throw new IllegalArgumentException("detector == null!");
+         }
+--- a/subprojects/testing-jvm/src/main/java/org/gradle/api/internal/tasks/testing/junit/JUnitTestMethodDetecter.java
++++ b/subprojects/testing-jvm/src/main/java/org/gradle/api/internal/tasks/testing/junit/JUnitTestMethodDetecter.java
+@@ -24,7 +24,7 @@
+     private final JUnitTestClassDetecter testClassDetecter;
+ 
+     JUnitTestMethodDetecter(JUnitTestClassDetecter testClassDetecter) {
+-        super(Opcodes.ASM6);
++        super(Opcodes.ASM7);
+         this.testClassDetecter = testClassDetecter;
+     }
+ 
+--- a/subprojects/testing-jvm/src/main/java/org/gradle/api/internal/tasks/testing/testng/TestNGTestMethodDetecter.java
++++ b/subprojects/testing-jvm/src/main/java/org/gradle/api/internal/tasks/testing/testng/TestNGTestMethodDetecter.java
+@@ -27,7 +27,7 @@
+     private final Set<String> testMethodAnnotations = new HashSet<String>();
+ 
+     public TestNGTestMethodDetecter(TestNGTestClassDetecter testClassDetecter) {
+-        super(Opcodes.ASM6);
++        super(Opcodes.ASM7);
+         this.testClassDetecter = testClassDetecter;
+         testMethodAnnotations.add("Lorg/testng/annotations/Test;");
+         testMethodAnnotations.add("Lorg/testng/annotations/BeforeSuite;");

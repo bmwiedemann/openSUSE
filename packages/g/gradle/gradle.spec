@@ -56,6 +56,11 @@ Patch100:       gradle-CVE-2019-16370.patch
 
 Patch200:       gradle-4.4.1-asm7.patch
 
+Patch300:       java11-compatibility.patch
+Patch301:       java8-compatibility.patch
+Patch302:       remove-timestamps.patch
+Patch303:       cast-estimated-runtime-to-long.patch
+
 BuildRequires:  gradle-local
 BuildRequires:  xmvn-subst
 
@@ -202,7 +207,6 @@ BuildRequires:  mvn(xml-apis:xml-apis)
 #!BuildRequires: groovy-lib sbt gpars
 # But we want to avoid cycle with oneself
 #!BuildRequires: gradle-bootstrap
-BuildConflicts: java-devel >= 9
 
 Obsoletes:      %{name}-bootstrap
 
@@ -356,11 +360,11 @@ rm -r subprojects/ide-native
 
 %build
 export LANG=en_US.UTF8
+export JAVA_OPTS="-Xmx2g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
 # Disables parallel build and daemon mode
 rm gradle.properties
 gradle-local --offline --no-daemon install xmvnInstall \
-    -Pgradle_installPath=$PWD/inst \
-    -PfinalRelease -Dbuild.number="%{?fedora:Fedora }%{?rhel:Red Hat }%{version}-%{release}"
+    -Pgradle_installPath=$PWD/inst -PfinalRelease
 
 # manpage build
 mkdir man

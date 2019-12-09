@@ -78,4 +78,12 @@
     <comment>Fix build with objectweb-asm &gt;=  7</comment>
     <requestid>751519</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>d8640823e4722a6dc5d6573c933f9dcd</srcmd5>
+    <version>4.4.1</version>
+    <time>1575923782</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with Java 11</comment>
+    <requestid>755237</requestid>
+  </revision>
 </revisionlist>

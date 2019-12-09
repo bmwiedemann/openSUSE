@@ -1,0 +1,18 @@
+--- a/gradle/versioning.gradle
++++ b/gradle/versioning.gradle
+@@ -115,13 +115,12 @@
+ }
+ 
+ task configureBuildReceipt {
+-    dependsOn determineCommitId
+     doLast {
+         createBuildReceipt.versionNumber = rootProject.version
+         createBuildReceipt.baseVersion = rootProject.baseVersion
+         createBuildReceipt.snapshot = rootProject.isSnapshot
+-        createBuildReceipt.buildTimestamp = rootProject.buildTimestamp
+-        createBuildReceipt.commitId = determineCommitId.commitId
++        createBuildReceipt.buildTimestamp = '20121221000000+0000'
++        createBuildReceipt.commitId = 'none'
+     }
+ }
+ 

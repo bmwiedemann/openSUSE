@@ -1,6 +1,6 @@
 [ {
-  "version" : "6.0.1-20191128003021+0000",
-  "buildTime" : "20191128003021+0000",
+  "version" : "6.0.1-20191209004608+0000",
+  "buildTime" : "20191209004608+0000",
   "current" : false,
   "snapshot" : true,
   "nightly" : false,
@@ -9,12 +9,12 @@
   "rcFor" : "",
   "milestoneFor" : "",
   "broken" : false,
-  "downloadUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.0.1-20191128003021+0000-bin.zip",
-  "checksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.0.1-20191128003021+0000-bin.zip.sha256",
-  "wrapperChecksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.0.1-20191128003021+0000-wrapper.jar.sha256"
+  "downloadUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.0.1-20191209004608+0000-bin.zip",
+  "checksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.0.1-20191209004608+0000-bin.zip.sha256",
+  "wrapperChecksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.0.1-20191209004608+0000-wrapper.jar.sha256"
 }, {
-  "version" : "6.1-20191127232441+0000",
-  "buildTime" : "20191127232441+0000",
+  "version" : "6.1-20191208230017+0000",
+  "buildTime" : "20191208230017+0000",
   "current" : false,
   "snapshot" : true,
   "nightly" : true,
@@ -23,9 +23,37 @@
   "rcFor" : "",
   "milestoneFor" : "",
   "broken" : false,
-  "downloadUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.1-20191127232441+0000-bin.zip",
-  "checksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.1-20191127232441+0000-bin.zip.sha256",
-  "wrapperChecksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.1-20191127232441+0000-wrapper.jar.sha256"
+  "downloadUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.1-20191208230017+0000-bin.zip",
+  "checksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.1-20191208230017+0000-bin.zip.sha256",
+  "wrapperChecksumUrl" : "https://services.gradle.org/distributions-snapshots/gradle-6.1-20191208230017+0000-wrapper.jar.sha256"
+}, {
+  "version" : "6.1-milestone-3",
+  "buildTime" : "20191203141333+0000",
+  "current" : false,
+  "snapshot" : false,
+  "nightly" : false,
+  "releaseNightly" : false,
+  "activeRc" : false,
+  "rcFor" : "",
+  "milestoneFor" : "6.1",
+  "broken" : false,
+  "downloadUrl" : "https://services.gradle.org/distributions/gradle-6.1-milestone-3-bin.zip",
+  "checksumUrl" : "https://services.gradle.org/distributions/gradle-6.1-milestone-3-bin.zip.sha256",
+  "wrapperChecksumUrl" : "https://services.gradle.org/distributions/gradle-6.1-milestone-3-wrapper.jar.sha256"
+}, {
+  "version" : "6.1-milestone-2",
+  "buildTime" : "20191128101755+0000",
+  "current" : false,
+  "snapshot" : false,
+  "nightly" : false,
+  "releaseNightly" : false,
+  "activeRc" : false,
+  "rcFor" : "",
+  "milestoneFor" : "6.1",
+  "broken" : false,
+  "downloadUrl" : "https://services.gradle.org/distributions/gradle-6.1-milestone-2-bin.zip",
+  "checksumUrl" : "https://services.gradle.org/distributions/gradle-6.1-milestone-2-bin.zip.sha256",
+  "wrapperChecksumUrl" : "https://services.gradle.org/distributions/gradle-6.1-milestone-2-wrapper.jar.sha256"
 }, {
   "version" : "6.1-milestone-1",
   "buildTime" : "20191120132405+0000",

@@ -1,0 +1,431 @@
+--- a/subprojects/base-services/src/main/java/org/gradle/internal/classloader/ClassLoaderUtils.java
++++ b/subprojects/base-services/src/main/java/org/gradle/internal/classloader/ClassLoaderUtils.java
+@@ -15,51 +15,41 @@
+  */
+ package org.gradle.internal.classloader;
+ 
++import org.gradle.api.JavaVersion;
+ import org.gradle.internal.Cast;
+ import org.gradle.internal.UncheckedException;
+ import org.gradle.internal.concurrent.CompositeStoppable;
+ import org.gradle.internal.reflect.JavaMethod;
+-import org.gradle.internal.reflect.JavaReflectionUtil;
+-import sun.misc.Unsafe;
+ 
+ import javax.annotation.Nullable;
+ import java.io.IOException;
+-import java.lang.reflect.Field;
+-import java.net.MalformedURLException;
++import java.lang.invoke.MethodHandle;
++import java.lang.invoke.MethodHandles;
++import java.lang.invoke.MethodType;
+ import java.net.URL;
+ import java.net.URLConnection;
+ 
+-public abstract class ClassLoaderUtils {
+-
+-    private static final Unsafe UNSAFE;
+-
+-    static {
+-        try {
+-            Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+-            theUnsafe.setAccessible(true);
+-            UNSAFE = (Unsafe) theUnsafe.get(null);
+-        } catch (NoSuchFieldException e) {
+-            throw new RuntimeException(e);
+-        } catch (IllegalAccessException e) {
+-            throw new RuntimeException(e);
+-        }
+-    }
++import static org.gradle.internal.reflect.JavaReflectionUtil.method;
++import static org.gradle.internal.reflect.JavaReflectionUtil.staticMethod;
+ 
++public abstract class ClassLoaderUtils {
++    private static final ClassDefiner CLASS_DEFINER;
+     private static final JavaMethod<ClassLoader, Package[]> GET_PACKAGES_METHOD;
+     private static final JavaMethod<ClassLoader, Package> GET_PACKAGE_METHOD;
+ 
+     static {
++        CLASS_DEFINER = JavaVersion.current().isJava9Compatible() ? new LookupClassDefiner() : new ReflectionClassDefiner();
+         GET_PACKAGES_METHOD = getMethodWithFallback(Package[].class, new Class[0], "getDefinedPackages", "getPackages");
+-        GET_PACKAGE_METHOD = getMethodWithFallback(Package.class, new Class[] {String.class}, "getDefinedPackage", "getPackage");
++        GET_PACKAGE_METHOD = getMethodWithFallback(Package.class, new Class[]{String.class}, "getDefinedPackage", "getPackage");
+     }
+ 
+     private static <T> JavaMethod<ClassLoader, T> getMethodWithFallback(Class<T> clazz, Class<?>[] params, String firstChoice, String fallback) {
+         JavaMethod<ClassLoader, T> method;
+         try {
+-            method = JavaReflectionUtil.method(ClassLoader.class, clazz, firstChoice, params);
++            method = method(ClassLoader.class, clazz, firstChoice, params);
+         } catch (Throwable e) {
+             // We must not be on Java 9 where the getDefinedPackages() method exists. Fall back to getPackages()
+-            method = JavaReflectionUtil.method(ClassLoader.class, clazz, fallback, params);
++            method = method(ClassLoader.class, clazz, fallback, params);
+         }
+         return method;
+     }
+@@ -85,8 +75,6 @@ public static void disableUrlConnectionCaching() {
+             URL url = new URL("jar:file://valid_jar_url_syntax.jar!/");
+             URLConnection urlConnection = url.openConnection();
+             urlConnection.setDefaultUseCaches(false);
+-        } catch (MalformedURLException e) {
+-            throw UncheckedException.throwAsUncheckedException(e);
+         } catch (IOException e) {
+             throw UncheckedException.throwAsUncheckedException(e);
+         }
+@@ -101,6 +89,63 @@ public static void disableUrlConnectionCaching() {
+     }
+ 
+     public static <T> Class<T> define(ClassLoader targetClassLoader, String className, byte[] clazzBytes) {
+-        return Cast.uncheckedCast(UNSAFE.defineClass(className, clazzBytes, 0, clazzBytes.length, targetClassLoader, null));
++        return CLASS_DEFINER.defineClass(targetClassLoader, className, clazzBytes);
++    }
++
++    private interface ClassDefiner {
++        <T> Class<T> defineClass(ClassLoader classLoader, String className, byte[] classBytes);
++    }
++
++    private static class ReflectionClassDefiner implements ClassDefiner {
++        private final JavaMethod<ClassLoader, Class> defineClassMethod;
++
++        private ReflectionClassDefiner() {
++            defineClassMethod = method(ClassLoader.class, Class.class, "defineClass", String.class, byte[].class, int.class, int.class);
++        }
++
++        @Override
++        public <T> Class<T> defineClass(ClassLoader classLoader, String className, byte[] classBytes) {
++            return Cast.uncheckedCast(defineClassMethod.invoke(classLoader, className, classBytes, 0, classBytes.length));
++        }
++    }
++
++    private static class LookupClassDefiner implements ClassDefiner {
++        private final Class methodHandlesLookupClass;
++        private final JavaMethod methodHandlesLookup;
++        private final JavaMethod methodHandlesPrivateLookupIn;
++        private final JavaMethod lookupFindVirtual;
++        private final MethodType defineClassMethodType;
++
++        private LookupClassDefiner() {
++            try {
++                methodHandlesLookupClass = Class.forName("java.lang.invoke.MethodHandles$Lookup");
++            } catch (ClassNotFoundException e) {
++                throw new RuntimeException(e);
++            }
++            methodHandlesLookup = staticMethod(MethodHandles.class, methodHandlesLookupClass, "lookup");
++            methodHandlesPrivateLookupIn = staticMethod(MethodHandles.class, methodHandlesLookupClass, "privateLookupIn", Class.class, methodHandlesLookupClass);
++            lookupFindVirtual = method(methodHandlesLookupClass, MethodHandle.class, "findVirtual", Class.class, String.class, MethodType.class);
++            defineClassMethodType = MethodType.methodType(Class.class, new Class[]{String.class, byte[].class, int.class, int.class});
++        }
++
++        /*
++            This method is equivalent to the following code but use reflection to compile on Java 7:
++
++            MethodHandles.Lookup baseLookup = MethodHandles.lookup();
++            MethodHandles.Lookup lookup = MethodHandles.privateLookupIn(ClassLoader.class, baseLookup);
++            MethodHandle defineClassMethodHandle = lookup.findVirtual(ClassLoader.class, "defineClass", defineClassMethodType);
++            handle.bindTo(classLoader).invokeWithArguments(className, classBytes, 0, classBytes.length));
++         */
++        @Override
++        public <T> Class<T> defineClass(ClassLoader classLoader, String className, byte[] classBytes) {
++            Object baseLookup = methodHandlesLookup.invoke(null);
++            Object lookup = methodHandlesPrivateLookupIn.invoke(null, ClassLoader.class, baseLookup);
++            MethodHandle defineClassMethodHandle = (MethodHandle) lookupFindVirtual.invoke(lookup, ClassLoader.class, "defineClass", defineClassMethodType);
++            try {
++                return Cast.uncheckedCast(defineClassMethodHandle.bindTo(classLoader).invokeWithArguments(className, classBytes, 0, classBytes.length));
++            } catch (Throwable throwable) {
++                throw new RuntimeException(throwable);
++            }
++        }
+     }
+ }
+--- a/subprojects/core/src/main/java/org/gradle/process/internal/worker/child/WorkerProcessClassPathProvider.java
++++ b/subprojects/core/src/main/java/org/gradle/process/internal/worker/child/WorkerProcessClassPathProvider.java
+@@ -18,6 +18,7 @@
+ 
+ import org.gradle.api.Action;
+ import org.gradle.api.GradleException;
++import org.gradle.api.JavaVersion;
+ import org.gradle.api.internal.ClassPathProvider;
+ import org.gradle.api.specs.Spec;
+ import org.gradle.cache.CacheRepository;
+@@ -57,7 +58,9 @@
+ import java.io.InputStream;
+ import java.net.URL;
+ import java.util.Arrays;
++import java.util.HashSet;
+ import java.util.List;
++import java.util.Set;
+ import java.util.zip.ZipEntry;
+ import java.util.zip.ZipOutputStream;
+ 
+@@ -116,32 +119,9 @@ public void execute(PersistentCache cache) {
+             try {
+                 File jarFile = jarFile(cache);
+                 LOGGER.debug("Generating worker process classes to {}.", jarFile);
+-
+-                // TODO - calculate this list of classes dynamically
+-                List<Class<?>> classes = Arrays.asList(
+-                        GradleWorkerMain.class,
+-                        BootstrapSecurityManager.class,
+-                        EncodedStream.EncodedInput.class,
+-                        ClassLoaderUtils.class,
+-                        FilteringClassLoader.class,
+-                        FilteringClassLoader.Spec.class,
+-                        ClassLoaderHierarchy.class,
+-                        ClassLoaderVisitor.class,
+-                        ClassLoaderSpec.class,
+-                        SystemClassLoaderSpec.class,
+-                        JavaReflectionUtil.class,
+-                        JavaMethod.class,
+-                        GradleException.class,
+-                        NoSuchPropertyException.class,
+-                        NoSuchMethodException.class,
+-                        UncheckedException.class,
+-                        PropertyAccessor.class,
+-                        PropertyMutator.class,
+-                        Factory.class,
+-                        Spec.class);
+                 ZipOutputStream outputStream = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(jarFile)));
+                 try {
+-                    for (Class<?> classToMap : classes) {
++                    for (Class<?> classToMap : getClassesForWorkerJar()) {
+                         remapClass(classToMap, outputStream);
+                     }
+                 } finally {
+@@ -152,6 +132,37 @@ public void execute(PersistentCache cache) {
+             }
+         }
+ 
++        private Set<Class<?>> getClassesForWorkerJar() {
++            // TODO - calculate this list of classes dynamically
++            List<Class<?>> classes = Arrays.asList(
++                GradleWorkerMain.class,
++                BootstrapSecurityManager.class,
++                EncodedStream.EncodedInput.class,
++                ClassLoaderUtils.class,
++                FilteringClassLoader.class,
++                ClassLoaderHierarchy.class,
++                ClassLoaderVisitor.class,
++                ClassLoaderSpec.class,
++                SystemClassLoaderSpec.class,
++                JavaReflectionUtil.class,
++                JavaMethod.class,
++                GradleException.class,
++                NoSuchPropertyException.class,
++                NoSuchMethodException.class,
++                UncheckedException.class,
++                PropertyAccessor.class,
++                PropertyMutator.class,
++                Factory.class,
++                Spec.class,
++                JavaVersion.class);
++            Set<Class<?>> result = new HashSet<Class<?>>(classes);
++            for (Class<?> klass : classes) {
++                result.addAll(Arrays.asList(klass.getDeclaredClasses()));
++            }
++
++            return result;
++        }
++
+         private void remapClass(Class<?> classToMap, ZipOutputStream jar) throws IOException {
+             String internalName = Type.getInternalName(classToMap);
+             String resourceName = internalName.concat(".class");
+--- a/subprojects/base-services/src/main/java/org/gradle/api/JavaVersion.java
++++ b/subprojects/base-services/src/main/java/org/gradle/api/JavaVersion.java
+@@ -17,25 +17,26 @@
+ 
+ import com.google.common.annotations.VisibleForTesting;
+ 
+-import java.util.regex.Matcher;
+-import java.util.regex.Pattern;
++import java.util.ArrayList;
++import java.util.List;
+ 
+ /**
+  * An enumeration of Java versions.
++ * Before 9: http://www.oracle.com/technetwork/java/javase/versioning-naming-139433.html
++ * 9+: http://openjdk.java.net/jeps/223
+  */
+ public enum JavaVersion {
+-    VERSION_1_1(false), VERSION_1_2(false), VERSION_1_3(false), VERSION_1_4(false),
+-    // starting from here versions are 1_ but their official name is "Java 6", "Java 7", ...
+-    VERSION_1_5(true), VERSION_1_6(true), VERSION_1_7(true), VERSION_1_8(true), VERSION_1_9(true), VERSION_1_10(true);
++    VERSION_1_1, VERSION_1_2, VERSION_1_3, VERSION_1_4,
++    VERSION_1_5, VERSION_1_6, VERSION_1_7, VERSION_1_8,
++    VERSION_1_9, VERSION_1_10, VERSION_11, VERSION_HIGHER;
++    // Since Java 9, version should be X instead of 1.X
++    // However, to keep backward compatibility, we change from 11
++    private static final int FIRST_MAJOR_VERSION_ORDINAL = 10;
+     private static JavaVersion currentJavaVersion;
+-    private final boolean hasMajorVersion;
+     private final String versionName;
+-    private final String majorVersion;
+ 
+-    JavaVersion(boolean hasMajorVersion) {
+-        this.hasMajorVersion = hasMajorVersion;
+-        this.versionName = name().substring("VERSION_".length()).replace('_', '.');
+-        this.majorVersion = name().substring(10);
++    JavaVersion() {
++        this.versionName = ordinal() >= FIRST_MAJOR_VERSION_ORDINAL ? getMajorVersion() : "1." + getMajorVersion();
+     }
+ 
+     /**
+@@ -54,22 +55,18 @@
+         }
+ 
+         String name = value.toString();
+-        Matcher matcher = Pattern.compile("(\\d{1,2})(\\D.+)?").matcher(name);
+-        if (matcher.matches()) {
+-            int index = Integer.parseInt(matcher.group(1)) - 1;
+-            if (index > 0 && index < values().length && values()[index].hasMajorVersion) {
+-                return values()[index];
+-            }
+-        }
+ 
+-        matcher = Pattern.compile("1\\.(\\d{1,2})(\\D.+)?").matcher(name);
+-        if (matcher.matches()) {
+-            int versionIdx = Integer.parseInt(matcher.group(1)) - 1;
+-            if (versionIdx >= 0 && versionIdx < values().length) {
+-                return values()[versionIdx];
+-            }
++        int firstNonVersionCharIndex = findFirstNonVersionCharIndex(name);
++
++        String[] versionStrings = name.substring(0, firstNonVersionCharIndex).split("\\.");
++        List<Integer> versions = convertToNumber(name, versionStrings);
++
++        if (isLegacyVersion(versions)) {
++            assertTrue(name, versions.get(1) > 0);
++            return getVersionForMajor(versions.get(1));
++        } else {
++            return getVersionForMajor(versions.get(0));
+         }
+-        throw new IllegalArgumentException(String.format("Could not determine java version from '%s'.", name));
+     }
+ 
+     /**
+@@ -90,11 +87,7 @@
+     }
+ 
+     public static JavaVersion forClassVersion(int classVersion) {
+-        int index = classVersion - 45; //class file versions: 1.1 == 45, 1.2 == 46...
+-        if (index >= 0 && index < values().length) {
+-            return values()[index];
+-        }
+-        throw new IllegalArgumentException(String.format("Could not determine java version from '%d'.", classVersion));
++        return getVersionForMajor(classVersion - 44); //class file versions: 1.1 == 45, 1.2 == 46...
+     }
+ 
+     public static JavaVersion forClass(byte[] classData) {
+@@ -116,18 +109,22 @@
+         return this == VERSION_1_7;
+     }
+ 
+-    private boolean isJava8() {
++    public boolean isJava8() {
+         return this == VERSION_1_8;
+     }
+ 
+-    private boolean isJava9() {
++    public boolean isJava9() {
+         return this == VERSION_1_9;
+     }
+ 
+-    private boolean isJava10() {
++    public boolean isJava10() {
+         return this == VERSION_1_10;
+     }
+ 
++    public boolean isJava11() {
++        return this == VERSION_11;
++    }
++
+     public boolean isJava5Compatible() {
+         return this.compareTo(VERSION_1_5) >= 0;
+     }
+@@ -148,21 +145,69 @@
+         return this.compareTo(VERSION_1_9) >= 0;
+     }
+ 
+-    @Incubating
+     public boolean isJava10Compatible() {
+         return this.compareTo(VERSION_1_10) >= 0;
+     }
+ 
+-    @Override
+-    public String toString() {
+-        return getName();
++    public boolean isJava11Compatible() {
++        return this.compareTo(VERSION_11) >= 0;
+     }
+ 
+-    private String getName() {
++    @Override
++    public String toString() {
+         return versionName;
+     }
+ 
+     public String getMajorVersion() {
+-        return majorVersion;
++        return String.valueOf(ordinal() + 1);
++    }
++
++    private static JavaVersion getVersionForMajor(int major) {
++        return major >= values().length ? JavaVersion.VERSION_HIGHER : values()[major - 1];
++    }
++
++    private static void assertTrue(String value, boolean condition) {
++        if (!condition) {
++            throw new IllegalArgumentException("Could not determine java version from '" + value + "'.");
++        }
++    }
++
++    private static boolean isLegacyVersion(List<Integer> versions) {
++        return 1 == versions.get(0) && versions.size() > 1;
++    }
++
++    private static List<Integer> convertToNumber(String value, String[] versionStrs) {
++        List<Integer> result = new ArrayList<Integer>();
++        for (String s : versionStrs) {
++            assertTrue(value, !isNumberStartingWithZero(s));
++            try {
++                result.add(Integer.parseInt(s));
++            } catch (NumberFormatException e) {
++                assertTrue(value, false);
++            }
++        }
++        assertTrue(value, !result.isEmpty() && result.get(0) > 0);
++        return result;
++    }
++
++    private static boolean isNumberStartingWithZero(String number) {
++        return number.length() > 1 && number.startsWith("0");
++    }
++
++    private static int findFirstNonVersionCharIndex(String s) {
++        assertTrue(s, s.length() != 0);
++
++        for (int i = 0; i < s.length(); ++i) {
++            if (!isDigitOrPeriod(s.charAt(i))) {
++                assertTrue(s, i != 0);
++                return i;
++            }
++        }
++
++        return s.length();
++    }
++
++    private static boolean isDigitOrPeriod(char c) {
++        return (c >= '0' && c <= '9') || c == '.';
+     }
+ }
+--- a/subprojects/jvm-services/src/main/java/org/gradle/internal/jvm/inspection/DefaultJvmVersionDetector.java
++++ b/subprojects/jvm-services/src/main/java/org/gradle/internal/jvm/inspection/DefaultJvmVersionDetector.java
+@@ -62,7 +62,7 @@ public class DefaultJvmVersionDetector i
+         try {
+             String versionStr = reader.readLine();
+             while (versionStr != null) {
+-                Matcher matcher = Pattern.compile("(?:java|openjdk) version \"(.+?)\"").matcher(versionStr);
++                Matcher matcher = Pattern.compile("(?:java|openjdk) version \"(.+?)\"( \\d{4}-\\d{2}-\\d{2}( LTS)?)?").matcher(versionStr);
+                 if (matcher.matches()) {
+                     return JavaVersion.toVersion(matcher.group(1));
+                 }

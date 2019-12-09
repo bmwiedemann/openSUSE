@@ -1,0 +1,83 @@
+--- a/subprojects/messaging/src/main/java/org/gradle/internal/remote/internal/inet/SocketConnection.java
++++ b/subprojects/messaging/src/main/java/org/gradle/internal/remote/internal/inet/SocketConnection.java
+@@ -32,6 +32,7 @@
+ 
+ import java.io.*;
+ import java.net.InetSocketAddress;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.ClosedSelectorException;
+ import java.nio.channels.SelectionKey;
+@@ -155,7 +156,7 @@
+             selector = Selector.open();
+             socket.register(selector, SelectionKey.OP_READ);
+             buffer = ByteBuffer.allocateDirect(4096);
+-            buffer.limit(0);
++            ((Buffer) buffer).limit(0);
+         }
+ 
+         @Override
+@@ -183,19 +184,19 @@
+                     return -1;
+                 }
+ 
+-                buffer.clear();
++                ((Buffer) buffer).clear();
+                 int nread;
+                 try {
+                     nread = socket.read(buffer);
+                 } catch (IOException e) {
+                     if (isEndOfStream(e)) {
+-                        buffer.position(0);
+-                        buffer.limit(0);
++                        ((Buffer) buffer).position(0);
++                        ((Buffer) buffer).limit(0);
+                         return -1;
+                     }
+                     throw e;
+                 }
+-                buffer.flip();
++                ((Buffer) buffer).flip();
+ 
+                 if (nread < 0) {
+                     return -1;
+@@ -256,7 +257,7 @@
+         }
+ 
+         private void writeBufferToChannel() throws IOException {
+-            buffer.flip();
++            ((Buffer) buffer).flip();
+             int count = writeWithNonBlockingRetry();
+             if (count == 0) {
+                 // buffer was still full after non-blocking retries, now block
+--- a/subprojects/base-services/src/main/java/org/gradle/internal/io/StreamByteBuffer.java
++++ b/subprojects/base-services/src/main/java/org/gradle/internal/io/StreamByteBuffer.java
+@@ -191,7 +191,7 @@
+                 // copy one by one until the underflow has been resolved
+                 buf = ByteBuffer.allocate(buf.remaining() + 1).put(buf);
+                 buf.put(nextBuf.get());
+-                buf.flip();
++                ((java.nio.Buffer) buf).flip();
+             } else {
+                 if (hasRemaining(nextBuf)) {
+                     buf = nextBuf;
+@@ -234,7 +234,7 @@
+                 throw UncheckedException.throwAsUncheckedException(e);
+             }
+         }
+-        charbuffer.flip();
++        ((java.nio.Buffer) charbuffer).flip();
+         return charbuffer;
+     }
+ 
+--- a/subprojects/base-services/src/main/java/org/gradle/internal/hash/Hashing.java
++++ b/subprojects/base-services/src/main/java/org/gradle/internal/hash/Hashing.java
+@@ -158,7 +158,7 @@ public class Hashing {
+         private void update(int length) {
+             checkNotDone();
+             digest.update(buffer.array(), 0, length);
+-            buffer.clear();
++            ((java.nio.Buffer) buffer).clear();
+         }
+ 
+         @Override
