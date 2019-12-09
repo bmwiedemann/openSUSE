@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 08 01:22:05 UTC 2019 - obs-packaging@displaycal.net
+
+- Update to 3.8.9.1:
+  * [Moderate] Fix SpyderX calibration issue when using 32-bit
+    ArgyllCMS executables.
+
+-------------------------------------------------------------------
 Sat Dec 07 16:28:37 UTC 2019 - obs-packaging@displaycal.net
 
 - Update to 3.8.9:
