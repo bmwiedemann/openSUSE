@@ -1,0 +1,11 @@
+--- a/subprojects/groovy-console/src/main/groovy/groovy/ui/text/StructuredSyntaxResources.java
++++ b/subprojects/groovy-console/src/main/groovy/groovy/ui/text/StructuredSyntaxResources.java
+@@ -41,7 +41,7 @@
+             // a security exception
+             SecurityManager mgr = System.getSecurityManager();
+             if (mgr != null) {
+-                mgr.checkSystemClipboardAccess();
++                mgr.checkPermission(new AWTPermission("accessClipboard"));
+             }
+             systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+         }

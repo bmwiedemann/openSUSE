@@ -1,0 +1,25 @@
+--- a/build.gradle
++++ b/build.gradle
+@@ -23,22 +23,6 @@
+     }
+ }
+ 
+-if (JavaVersion.current().java7Compatible) {
+-    apply plugin: 'com.gradle.build-scan'
+-    apply plugin: 'me.champeau.buildscan-recipes'
+-
+-    buildScan {
+-        licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+-        licenseAgree = 'yes'
+-        publishAlways()
+-    }
+-    buildScanRecipes {
+-        recipe 'git-commit', baseUrl: 'https://github.com/apache/groovy/tree'
+-        recipe 'teamcity', baseUrl: 'https://ci.groovy-lang.org', guest: 'true'
+-        recipes 'git-status', 'teamcity', 'travis-ci'
+-    }
+-}
+-
+ ext.modules = {
+     subprojects.findAll{ !['performance', 'tests-vm8'].contains(it.name) }
+ }

@@ -17,7 +17,7 @@
 
 
 Name:           groovy
-Version:        2.4.8
+Version:        2.4.16
 Release:        0
 Summary:        Dynamic language for the Java Platform
 License:        Apache-2.0 AND BSD-3-Clause AND EPL-1.0 AND SUSE-Public-Domain AND CC-BY-2.5
@@ -37,6 +37,9 @@ Patch4:         0005-Update-to-QDox-2.0.patch
 Patch5:         0006-Disable-artifactory-publish.patch
 Patch6:         0007-Fix-missing-extension-definitions.patch
 Patch7:         groovy-overview.patch
+Patch8:         groovy-buildscan.patch
+Patch9:         groovy-java11.patch
+Patch10:        groovy-source-levels.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
@@ -90,7 +93,6 @@ Requires:       %{name}-testng = %{version}-%{release}
 Requires:       %{name}-xml = %{version}-%{release}
 # optional in pom.xml, but present in upstream binary tarball
 Requires:       xpp3-minimal
-BuildConflicts: java-devel >= 9
 #!BuildRequires: eclipse-platform gradle-bootstrap groovy-bootstrap gpars
 BuildArch:      noarch
 
@@ -243,6 +245,9 @@ find \( -name *.jar -o -name *.class \) -delete
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %{mvn_package} ':groovy::indy:'
 %{mvn_package} ':groovy-{*}' @1

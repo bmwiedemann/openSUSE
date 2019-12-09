@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  9 12:21:54 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.4.16
+- Modified patches:
+  * 0002-Gradle-local-mode.patch
+  * 0003-Bintray.patch
+    + Rediff to changed context
+- Added patches:
+  * groovy-buildscan.patch
+    + Disable build-scan plugin during the build
+  * groovy-java11.patch
+    + Fixes compatibility with Java 11
+  * groovy-source-levels.patch
+    + Set the language level to 7 in order to allow building
+      with Java 11
+- Build with Java 11
+
+-------------------------------------------------------------------
 Mon Dec  2 06:35:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - For some reason, the .xmvn-reactor ends up on s390x in the

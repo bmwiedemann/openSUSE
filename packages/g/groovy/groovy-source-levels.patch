@@ -1,0 +1,13 @@
+--- groovy-2.4.16/build.gradle	2019-12-09 11:04:16.703039296 +0100
++++ groovy-2.4.16/build.gradle	2019-12-09 11:06:08.723653849 +0100
+@@ -41,8 +41,8 @@
+     apply plugin: 'java'
+ 
+     buildDir = 'target'
+-    sourceCompatibility = 1.6
+-    targetCompatibility = 1.6
++    sourceCompatibility = 1.7
++    targetCompatibility = 1.7
+ 
+     group = 'org.codehaus.groovy'
+     version = groovyVersion
