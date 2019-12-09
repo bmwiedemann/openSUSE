@@ -29,24 +29,22 @@ BuildRequires:  automake
 Requires:       udev
 
 %description
-This package contains some simple command line tools to help using Linux spidev devices.
+This package contains some simple command line tools to help using Linux
+spidev devices.
 
 %prep
 %setup -q
 
-
 %build
 autoreconf -fim
 %configure
-make %{?_smp_mflags}
-
+%make_build CFLAGS="%{optflags}"
 
 %install
 %make_install
 
-
 %files
 %{_bindir}/*
-%{_mandir}/man1/*.1.gz
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
