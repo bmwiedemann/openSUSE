@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec  4 11:44:41 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.6.8
+  * If no system mime types file can be found, fall back to ``/dev/null``
+    so that Apache can still at least start up.
+  * Fix compilation failures when using Python 3.8.
+  * The Apache request ID is accessible in request events as ``request_id``.
+  * The per request data dictionary accessible using ``mod_wsgi.request_data()``
+    is now also accessible in events as ``request_data``.
+  * When the queue timeout was triggered for requests sent to daemon mode
+    processes, the error response wasn't being flushed out correctly resulting
+    in the connection still being held up to the time of the socket timeout.
+
+-------------------------------------------------------------------
+Tue Dec  3 14:09:45 UTC 2019 - pgajdos@suse.com
+
+- test with %apache_rex_check
+
+-------------------------------------------------------------------
 Fri Apr  6 20:17:05 UTC 2018 - dmueller@suse.com
 
 - update to 4.6.4:

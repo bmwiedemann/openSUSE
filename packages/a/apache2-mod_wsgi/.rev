@@ -317,4 +317,36 @@
   * see http://modwsgi.readthedocs.io/en/develop/release-notes/version-4.5.19.html</comment>
     <requestid>687923</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ef2372d96f922ff3171775bdd88cbb5b</srcmd5>
+    <version>4.6.8</version>
+    <time>1575923662</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 4.6.8
+  * If no system mime types file can be found, fall back to ``/dev/null``
+    so that Apache can still at least start up.
+  * Fix compilation failures when using Python 3.8.
+  * The Apache request ID is accessible in request events as ``request_id``.
+  * The per request data dictionary accessible using ``mod_wsgi.request_data()``
+    is now also accessible in events as ``request_data``.
+  * When the queue timeout was triggered for requests sent to daemon mode
+    processes, the error response wasn't being flushed out correctly resulting
+    in the connection still being held up to the time of the socket timeout.
+
+- test with %apache_rex_check
+
+- version update to 4.6.8
+  * If no system mime types file can be found, fall back to ``/dev/null``
+    so that Apache can still at least start up.
+  * Fix compilation failures when using Python 3.8.
+  * The Apache request ID is accessible in request events as ``request_id``.
+  * The per request data dictionary accessible using ``mod_wsgi.request_data()``
+    is now also accessible in events as ``request_data``.
+  * When the queue timeout was triggered for requests sent to daemon mode
+    processes, the error response wasn't being flushed out correctly resulting
+    in the connection still being held up to the time of the socket timeout.
+
+- test with %apache_rex_check (forwarded request 753968 from pgajdos)</comment>
+    <requestid>754581</requestid>
+  </revision>
 </revisionlist>

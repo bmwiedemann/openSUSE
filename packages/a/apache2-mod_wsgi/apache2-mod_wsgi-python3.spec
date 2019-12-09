@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_wsgi-python3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,16 @@ BuildRequires:  httpd
 BuildRequires:  httpd-devel
 %endif
 Name:           apache2-mod_wsgi-python3
-Version:        4.6.5
+Version:        4.6.8
 Release:        0
 Summary:        A WSGI interface for Python3 web applications in Apache
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            https://github.com/GrahamDumpleton/mod_wsgi
+URL:            https://github.com/GrahamDumpleton/mod_wsgi
 Source:         https://github.com/GrahamDumpleton/mod_wsgi/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 ## Work around for inconsistent Apache source tree in SLE 12, see bnc#915479
 Patch0:         wsgi_fixVersionCheck.patch
+BuildRequires:  apache-rex
 BuildRequires:  python3-devel
 Conflicts:      apache2-mod_wsgi
 Provides:       %{modname} = %{version}-%{release}
@@ -73,13 +74,8 @@ make %{?_smp_mflags}
 %install
 make install DESTDIR=%{buildroot} LIBEXECDIR=%{apache_libexecdir}
 
-%if 0%{?suse_version} >= 1330
-# don't exist for <= Leap 42.1
 %check
-set +x
-%apache_test_module_load -m wsgi
-set -x
-%endif
+%apache_rex_check -m ./src/server/.libs mod_wsgi-basic
 
 %post
 %if 0%{?suse_version}
