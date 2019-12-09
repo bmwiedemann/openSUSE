@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Dec  8 03:17:54 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.08  2019-12-07  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.07_03  2019-12-06  <schubiger@cpan.org>
+  
+   - New supported formats: <count> seconds/minutes before/after
+     yesterday/today/tomorrow. [github #6 - Felix Ostmann]
+  
+  1.07_02  2019-11-19  <schubiger@cpan.org>
+  
+   - New supported format: <count> hours before/after today.
+     [github #6 - Felix Ostmann]
+  
+  1.07_01  2019-10-27  <schubiger@cpan.org>
+  
+   - New supported formats: <count> <unit> before/after
+     noon/midnight. [github #6 - Felix Ostmann]
+
+-------------------------------------------------------------------
 Mon Apr  1 05:09:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.07

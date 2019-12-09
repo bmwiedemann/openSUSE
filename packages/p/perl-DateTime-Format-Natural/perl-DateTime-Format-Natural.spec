@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime-Format-Natural
-Version:        1.07
+Version:        1.08
 Release:        0
 %define cpan_name DateTime-Format-Natural
 Summary:        Parse informal natural language date/time strings
@@ -55,7 +55,7 @@ ordinary strings.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL installdirs=vendor
@@ -70,6 +70,6 @@ perl Build.PL installdirs=vendor
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README scripts
+%doc Changes README
 
 %changelog
