@@ -74,4 +74,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>717828</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>58cc13b312668e3ba86d7f11d30e9bfc</srcmd5>
+    <version>1.0.7</version>
+    <time>1575923845</time>
+    <user>dimstar_suse</user>
+    <comment>Fix pam_wrapper with Linux-PAM master
+
+</comment>
+    <requestid>755277</requestid>
+  </revision>
 </revisionlist>

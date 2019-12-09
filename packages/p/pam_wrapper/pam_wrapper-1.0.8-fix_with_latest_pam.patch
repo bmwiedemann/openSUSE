@@ -1,0 +1,126 @@
+From 491615f2aeda7a57c7389a151d9d9e06f231822c Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@samba.org>
+Date: Fri, 15 Nov 2019 09:45:22 +0100
+Subject: [PATCH 1/2] pwrap: Use a define in pso_copy()
+
+Signed-off-by: Andreas Schneider <asn@samba.org>
+---
+ src/pam_wrapper.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/pam_wrapper.c b/src/pam_wrapper.c
+index d7802fb..8997e36 100644
+--- a/src/pam_wrapper.c
++++ b/src/pam_wrapper.c
+@@ -779,12 +779,13 @@ static void pwrap_clean_stale_dirs(const char *dir)
+ 
+ static int pso_copy(const char *src, const char *dst, const char *pdir, mode_t mode)
+ {
++#define PSO_COPY_READ_SIZE 9
+ 	int srcfd = -1;
+ 	int dstfd = -1;
+ 	int rc = -1;
+ 	ssize_t bread, bwritten;
+ 	struct stat sb;
+-	char buf[10];
++	char buf[PSO_COPY_READ_SIZE + 1];
+ 	int cmp;
+ 	size_t to_read;
+ 	bool found_slash;
+@@ -831,10 +832,10 @@ static int pso_copy(const char *src, const char *dst, const char *pdir, mode_t m
+ 		to_read = 1;
+ 		if (!found_slash && buf[0] == '/') {
+ 			found_slash = true;
+-			to_read = 9;
++			to_read = PSO_COPY_READ_SIZE;
+ 		}
+ 
+-		if (found_slash && bread == 9) {
++		if (found_slash && bread == PSO_COPY_READ_SIZE) {
+ 			cmp = memcmp(buf, "etc/pam.d", 9);
+ 			if (cmp == 0) {
+ 				memcpy(buf, pdir + 1, 9);
+@@ -869,6 +870,7 @@ out:
+ 	}
+ 
+ 	return rc;
++#undef PSO_COPY_READ_SIZE
+ }
+ 
+ static void pwrap_init(void)
+-- 
+2.24.0
+
+
+From e4db7c3b2341181d4e8c11b4b05f0d43631b2c90 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@samba.org>
+Date: Fri, 15 Nov 2019 09:58:27 +0100
+Subject: [PATCH 2/2] pwrap: Fix pso_copy to work with libpam.so.0.84.2
+
+Signed-off-by: Andreas Schneider <asn@samba.org>
+---
+ src/pam_wrapper.c | 31 +++++++++++++++++++++++++++----
+ 1 file changed, 27 insertions(+), 4 deletions(-)
+
+diff --git a/src/pam_wrapper.c b/src/pam_wrapper.c
+index 8997e36..043c00e 100644
+--- a/src/pam_wrapper.c
++++ b/src/pam_wrapper.c
+@@ -779,13 +779,14 @@ static void pwrap_clean_stale_dirs(const char *dir)
+ 
+ static int pso_copy(const char *src, const char *dst, const char *pdir, mode_t mode)
+ {
+-#define PSO_COPY_READ_SIZE 9
++#define PSO_COPY_READ_SIZE 16
+ 	int srcfd = -1;
+ 	int dstfd = -1;
+ 	int rc = -1;
+ 	ssize_t bread, bwritten;
+ 	struct stat sb;
+ 	char buf[PSO_COPY_READ_SIZE + 1];
++	size_t pso_copy_read_size = PSO_COPY_READ_SIZE;
+ 	int cmp;
+ 	size_t to_read;
+ 	bool found_slash;
+@@ -832,13 +833,35 @@ static int pso_copy(const char *src, const char *dst, const char *pdir, mode_t m
+ 		to_read = 1;
+ 		if (!found_slash && buf[0] == '/') {
+ 			found_slash = true;
+-			to_read = PSO_COPY_READ_SIZE;
++			to_read = pso_copy_read_size;
+ 		}
+ 
+ 		if (found_slash && bread == PSO_COPY_READ_SIZE) {
+-			cmp = memcmp(buf, "etc/pam.d", 9);
++			cmp = memcmp(buf, "usr/etc/pam.d/%s", 16);
+ 			if (cmp == 0) {
+-				memcpy(buf, pdir + 1, 9);
++				char tmp[16] = {0};
++
++				snprintf(tmp, sizeof(tmp), "%s/%%s", pdir + 1);
++
++				memcpy(buf, tmp, 12);
++				memset(&buf[12], '\0', 4);
++
++				/*
++				 * If we found this string, we need to reduce
++				 * the read size to not miss, the next one.
++				 */
++				pso_copy_read_size = 13;
++			} else {
++				cmp = memcmp(buf, "usr/etc/pam.d", 13);
++				if (cmp == 0) {
++					memcpy(buf, pdir + 1, 9);
++					memset(&buf[9], '\0', 4);
++				} else {
++					cmp = memcmp(buf, "etc/pam.d", 9);
++					if (cmp == 0) {
++						memcpy(buf, pdir + 1, 9);
++					}
++				}
+ 			}
+ 			found_slash = false;
+ 		}
+-- 
+2.24.0
+

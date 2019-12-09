@@ -1,7 +1,7 @@
 #
 # spec file for package pam_wrapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,12 @@ Release:        0
 Summary:        A tool to test PAM applications and PAM modules
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://cwrap.org/
+URL:            http://cwrap.org/
 
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+
+Patch0:         pam_wrapper-1.0.8-fix_with_latest_pam.patch
 
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -112,7 +114,7 @@ library, which simplifies testing of modules. This subpackage includes
 the header files for libpamtest
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # CMAKE_SKIP_RPATH:BOOL=OFF is required to run the tests!
