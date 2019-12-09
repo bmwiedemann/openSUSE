@@ -18,7 +18,7 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
@@ -88,6 +88,7 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %license LICENSE
 %doc README.adoc
 %{_libdir}/%{name}.so.*
+%{_libdir}/libsk-libfido2.so
 
 %files -n %{name}-devel
 %{_includedir}/*.h
