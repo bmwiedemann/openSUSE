@@ -50,7 +50,7 @@ some other writing system. (See the example in the synopsis.)
 NOTE:
 
 To make sure your perldoc/Pod viewing setup for viewing this page is
-working: The six-letter word "résumé" should look like "resume" with an "/"
+working: The six-letter word "rÃ©sumÃ©" should look like "resume" with an "/"
 accent on each "e".
 
 For further tests, and help if that doesn't work, see below, A POD ENCODING

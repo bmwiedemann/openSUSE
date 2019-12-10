@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:02:32 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert description into proper UTF-8: RPM 4.15 fails with
+  non-UTF/non-ASCII texts.
+
+-------------------------------------------------------------------
 Sun Nov 27 07:19:18 UTC 2016 - coolo@suse.com
 
 - updated to 1.30
