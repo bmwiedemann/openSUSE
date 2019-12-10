@@ -1,7 +1,7 @@
 #
 # spec file for package wlc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A Wayland Compositor Library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/Cloudef/wlc
+URL:            https://github.com/Cloudef/wlc
 Source0:        https://github.com/Cloudef/wlc/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://github.com/Cloudef/wlc/releases/download/v%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(xcb-xkb)
 BuildRequires:  pkgconfig(xcb-xtest)
 BuildRequires:  pkgconfig(xcb-xv)
 BuildRequires:  pkgconfig(xcb-xvmc)
+BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(zlib)
 
@@ -117,7 +118,8 @@ make %{?_smp_mflags}
 %postun -n libwlc0 -p /sbin/ldconfig
 
 %files -n libwlc0
-%doc LICENSE README.rst
+%license LICENSE
+%doc README.rst
 %{_libdir}/libwlc.so.*
 
 %files devel

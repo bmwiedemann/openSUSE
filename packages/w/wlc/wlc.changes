@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec  7 16:06:58 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Explicitly require xfixes at build time.
+
+-------------------------------------------------------------------
 Thu Nov  9 18:27:14 UTC 2017 - aavindraa@gmail.com
 
 - bump to 0.0.11
