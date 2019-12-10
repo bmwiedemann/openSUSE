@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Linux-Inotify2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 Name:           perl-Linux-Inotify2
-Version:        2.1
+Version:        2.2
 Release:        0
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Linux-Inotify2
 Summary:        Scalable directory/file change notification
 License:        GPL-1.0-or-later OR Artistic-1.0
@@ -51,7 +52,7 @@ see this LWN article: https://lwn.net/Articles/605128/.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
