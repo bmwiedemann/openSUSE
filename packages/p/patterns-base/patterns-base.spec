@@ -620,7 +620,6 @@ Group:          Metapackages
 Provides:       pattern() = transactional_base
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
-Obsoletes:      pattern() = readonly_root_tools
 Requires:       pattern() = base
 
 Requires:       man

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  4 11:39:09 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop Obsoletes: pattern() = readonly_root_tools: RPM only honors
+  obsoletes against package names, so this obsoletes is in fact
+  useless. WithRPM 4.15, there is a syntax check which even
+  disallows Obsoletes against non-valid names.
+
+-------------------------------------------------------------------
 Wed Oct 23 08:29:20 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Remove tcpdump from enhanced_base
