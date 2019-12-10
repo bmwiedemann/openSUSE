@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 10 15:34:04 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.2.1:
+  * Fix snprintf return value checking (#821[1])
+  * Remove some warnings (#819[2])
+  * Fix fbuffer result checking (#812[3])
+  * Fix temporary object handling (#807[4])
+  * Improve cmake support (#804[5])
+  * Fix invalid int main parameter (#800[6])
+  * Improve supporting platform (#797[7], #817[8])
+  * Fix ZLIB error handling (#795[9])
+  * Remove unused variable (#793[10])
+  * Improve integer overflow checking (#792[11])
+
+-------------------------------------------------------------------
 Tue May 28 06:37:05 UTC 2019 - mvetter@suse.com
 
 - Update to 3.2.0:
