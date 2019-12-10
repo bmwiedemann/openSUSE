@@ -1,0 +1,29 @@
+From e53971d6892f47e761c5781ba04eb326230cc10b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Josef=20Kemetm=C3=BCller?= <josef.kemetmueller@gmail.com>
+Date: Tue, 19 Nov 2019 22:32:28 +0100
+Subject: [PATCH] Fix "<ufunc 'clip'> not supported error
+
+This adds support for the clip ufunc introduced in Numpy 1.17.
+Fixes: python-quantities#158
+---
+ quantities/dimensionality.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/quantities/dimensionality.py b/quantities/dimensionality.py
+index b2ab0e5..691857b 100644
+--- a/quantities/dimensionality.py
++++ b/quantities/dimensionality.py
+@@ -329,6 +329,13 @@ def _d_copy(q1, out=None):
+ p_dict[np.fix] = _d_copy
+ p_dict[np.ceil] = _d_copy
+ 
++def _d_clip(a1, a2, a3, q):
++    return q.dimensionality
++try:
++    p_dict[np.core.umath.clip] = _d_clip
++except AttributeError:
++    pass # For compatibility with Numpy < 1.17 when clip wasn't a ufunc yet
++
+ def _d_sqrt(q1, out=None):
+     return q1._dimensionality**0.5
+ p_dict[np.sqrt] = _d_sqrt
