@@ -1,7 +1,7 @@
 #
 # spec file for package memkind
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           memkind
 Summary:        User Extensible Heap Manager
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.6.0
+Version:        1.9.0
 Release:        0
 Url:            http://memkind.github.io/memkind
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -95,25 +95,14 @@ Header files for building applications with libmemkind.
 
 %build
 
-# It is required that we configure and build the jemalloc subdirectory
-# before we configure and start building the top level memkind directory.
-# To ensure the memkind build step is able to discover the output
-# of the jemalloc build we must create an 'obj' directory, and build
-# from within that directory.
-cd %{_builddir}/%{buildsubdir}/jemalloc/
-echo %{version} > %{_builddir}/%{buildsubdir}/jemalloc/VERSION
-test -f configure || %{__autoconf}
-mkdir %{_builddir}/%{buildsubdir}/jemalloc/obj
-ln -s %{_builddir}/%{buildsubdir}/jemalloc/configure %{_builddir}/%{buildsubdir}/jemalloc/obj/
-cd %{_builddir}/%{buildsubdir}/jemalloc/obj
-../configure --enable-autogen --with-jemalloc-prefix=jemk_ --enable-memkind --enable-cc-silence --prefix=%{_prefix} --includedir=%{_includedir} --libdir=%{_libdir} --bindir=%{_bindir} --docdir=%{_docdir} --mandir=%{_mandir}
-%{__make} %{?_smp_mflags} 
+export JE_PREFIX=jemk_
+./build_jemalloc.sh
 
 # Build memkind lib and tools
 cd %{_builddir}/%{buildsubdir}
 echo %{version} > %{_builddir}/%{buildsubdir}/VERSION
 test -f configure || ./autogen.sh
-./configure CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" --prefix=%{_prefix} --libdir=%{_libdir} --includedir=%{_includedir} --sbindir=%{_sbindir} --enable-cxx11 --mandir=%{_mandir} --docdir=%{_docdir}/%{namespace} --disable-static
+./configure CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" --prefix=%{_prefix} --libdir=%{_libdir} --includedir=%{_includedir} --sbindir=%{_sbindir} --mandir=%{_mandir} --docdir=%{_docdir}/%{namespace} --disable-static
 %{__make} %{?_smp_mflags}
 
 %install
@@ -122,6 +111,7 @@ cd %{_builddir}/%{buildsubdir}
 rm -f %{buildroot}/libautohbw.*
 rm -f %{buildroot}/%{_libdir}/lib%{namespace}.la
 rm -f %{buildroot}/%{_libdir}/lib{numakind,autohbw}.*
+rm -f %{buildroot}/%{_mandir}/man7/autohbw.*
 
 %post -n libmemkind0 -p /sbin/ldconfig
 
@@ -134,6 +124,7 @@ rm -f %{buildroot}/%{_libdir}/lib{numakind,autohbw}.*
 %doc %{_docdir}/%{namespace}/VERSION
 %dir %{_docdir}/%{namespace}
 %{_bindir}/%{namespace}-hbw-nodes
+%{_mandir}/man1/memkind-hbw-nodes.1.*
 
 %files -n libmemkind0
 %{_libdir}/lib%{namespace}.so.*
@@ -147,7 +138,9 @@ rm -f %{buildroot}/%{_libdir}/lib{numakind,autohbw}.*
 %{_includedir}/hbwmalloc.h
 %{_includedir}/hbw_allocator.h
 %{_includedir}/memkind_deprecated.h
+%{_includedir}/pmem_allocator.h
 %{_libdir}/lib%{namespace}.so
+%{_libdir}/pkgconfig/memkind.pc
 %{_includedir}/%{namespace}.h
 %{_includedir}/%{internal_include}/%{namespace}*.h
 %{_includedir}/%{internal_include}/heap_manager.h
@@ -156,5 +149,6 @@ rm -f %{buildroot}/%{_libdir}/lib{numakind,autohbw}.*
 %{_mandir}/man3/hbwmalloc.3.*
 %{_mandir}/man3/hbwallocator.3.*
 %{_mandir}/man3/%{namespace}*.3.*
+%{_mandir}/man3/pmemallocator.3.*
 
 %changelog

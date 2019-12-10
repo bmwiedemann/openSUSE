@@ -1,10 +1,13 @@
-Index: memkind-1.6.0/Makefile.am
+We build with --disable-static, but the Makefile isn't completely
+prepared for that, this removes the remaining hard-coded reference to
+the static lib.
+Index: memkind-1.9.0/Makefile.am
 ===================================================================
---- memkind-1.6.0.orig/Makefile.am	2017-06-14 16:25:26.000000000 +0200
-+++ memkind-1.6.0/Makefile.am	2017-11-17 15:34:48.000000000 +0100
-@@ -336,7 +336,6 @@ rpm: dist
- 	$(MAKE) version="$(VERSION)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" \
- 		-f memkind.spec.mk $@
+--- memkind-1.9.0.orig/Makefile.am	2019-04-08 11:09:06.000000000 +0200
++++ memkind-1.9.0/Makefile.am	2019-12-10 15:26:50.000000000 +0100
+@@ -421,7 +421,6 @@ memkind-$(VERSION).spec:
+ rpm: dist
+ 	$(MAKE) version="$(VERSION)" -f memkind.spec.mk $@
  
 -all: static_lib
  

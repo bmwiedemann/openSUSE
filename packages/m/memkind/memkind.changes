@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:47:21 UTC 2019 - matz@suse.com
+
+- Update memkind to version 1.9.0 (jsc#SLE-8598, jsc#SLE-10102)
+  with these changes since 1.8.0:
+  * Provided a second function to create PMEM kind
+    memkind_create_pmem_with_config()
+  * Provided the memkind_detect_kind() function to recognize
+    a kind from memory allocation
+  * Provided memkind_config_set_memory_usage_policy() function
+    that modifies the default memory usage policy behavior
+  * Provided the ability to pass a NULL kind to
+    memkind_malloc_usable_size() and memkind_realloc()
+  * Unified the memkind_realloc() behavior for all kinds
+  * Added the support for the pool_msize() function to TBB
+  * Extended build arch to ppc64, ppc64le, s390x
+  * Removed disable-stats from used jemalloc
+  * Fixed compilation under the Clang and rpm build configuration
+  * Provided support for Dockerfile
+- Also includes these changes since 1.7.0:
+  * Fixed error with realloc/free method with passing
+    thread-specific cache flag
+  * Fixed error with memkind_create_pmem(), if other PMEM kind
+    was destroyed before
+  * Fixed error with zeroing large allocations in PMEM kind
+  * Added support to create kind without maximum size limit of
+    PMEM kind (max_size=0)
+  * Extended memkind API with memkind_malloc_usable_size()
+  * Removed EXPERIMENTAL from most methods in memkind API
+  * Added MEMKIND_ERROR_ARENAS_CREATE code
+  * Added C++ allocator for PMEM kind
+  * Extended PMEM examples
+  * Fixed integration with Travis CI
+  * Extended Travis CI configuration with Astyle and Coverage
+  * Added PMEM kind tests
+- Also includes these changes since 1.6.0:
+  * Updated internally used jemalloc to upstream version 5.0.
+  * Fixed error that has been occuring while memkind was
+    dynamically loaded.
+  * Fixed MEMKIND_HBW_NODES behavior for single NUMA node system.
+  * Removed licenses other than BSD 3-clause from COPYING.
+  * Changed build instructions.
+  * Added configurable jemalloc prefix in build scripts.
+  * Upgraded gtest to version 1.8.0.
+  * Added memory footprint tests.
+  * Added locality test for MEMKIND_PREFERRED.
+  * Applied test parametrization in BATests.
+  * Fixed problems with pytest testing in Travis.
+  * Added huge page configuration in several tests.
+  * Removed several symbols that are no longer exposed in
+    public API from man pages.
+  * Fixed HBW_POLICY_BIND_ALL documentation.
+- Rebase memkind-fix-build.diff .
+
+-------------------------------------------------------------------
 Fri Nov 17 14:07:01 UTC 2017 - matz@suse.com
 
 - Update memkind to version 1.6.0 (fate #321932):

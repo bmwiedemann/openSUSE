@@ -33,4 +33,41 @@
 - Adjust patch memkind-fix-build.diff</comment>
     <requestid>542702</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>59ec53f8856854e55ea9546b3f0a922c</srcmd5>
+    <version>1.9.0</version>
+    <time>1576014359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update memkind to version 1.9.0 (jsc#SLE-8598, jsc#SLE-10102)
+  with these changes since 1.8.0:
+  * Provided a second function to create PMEM kind
+    memkind_create_pmem_with_config()
+  * Provided the memkind_detect_kind() function to recognize
+    a kind from memory allocation
+  * Provided memkind_config_set_memory_usage_policy() function
+    that modifies the default memory usage policy behavior
+  * Provided the ability to pass a NULL kind to
+    memkind_malloc_usable_size() and memkind_realloc()
+  * Unified the memkind_realloc() behavior for all kinds
+  * Added the support for the pool_msize() function to TBB
+  * Extended build arch to ppc64, ppc64le, s390x
+  * Removed disable-stats from used jemalloc
+  * Fixed compilation under the Clang and rpm build configuration
+  * Provided support for Dockerfile
+- Also includes these changes since 1.7.0:
+  * Fixed error with realloc/free method with passing
+    thread-specific cache flag
+  * Fixed error with memkind_create_pmem(), if other PMEM kind
+    was destroyed before
+  * Fixed error with zeroing large allocations in PMEM kind
+  * Added support to create kind without maximum size limit of
+    PMEM kind (max_size=0)
+  * Extended memkind API with memkind_malloc_usable_size()
+  * Removed EXPERIMENTAL from most methods in memkind API
+  * Added MEMKIND_ERROR_ARENAS_CREATE code
+  * Added C++ allocator for PMEM kind
+  * Extended PMEM examples
+  * Fixed integration with Travis CI</comment>
+    <requestid>755604</requestid>
+  </revision>
 </revisionlist>
