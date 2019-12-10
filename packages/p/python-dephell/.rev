@@ -34,4 +34,28 @@
   * pip 19.3.1 support</comment>
     <requestid>745368</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b74c1b62e06e7ae9e7349d5a304d9b57</srcmd5>
+    <version>0.7.9</version>
+    <time>1576014053</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove fix_dephell_setuptools_deps.patch
+- Bump dependency versions otherwise dephell fails with
+  an exception in pkg_resources.
+
+- Update to 0.7.9:
+  - A lot of small commands:
+    - dephell self uncache (#312).
+    - dephell self upgrade (#311).
+    - dephell generate contributing (#255).
+    - dephell inspect project (#296).
+    - dephell project validate (#310).
+    - Smart setup.py parsing. Meet dephell_setuptools (#308).
+    - Stable setup.py generation (#292).
+    - Cleaner sdist (#297).
+    - a little bit more
+- Add fix_dephell_setuptools_deps.patch to resolve incorrect
+  required dependencies in setup.py gh#dephell/dephell#316</comment>
+    <requestid>755643</requestid>
+  </revision>
 </revisionlist>

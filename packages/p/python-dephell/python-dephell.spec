@@ -1,7 +1,7 @@
 #
 # spec file for package python-dephell
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        Dependency resolution for Python
 License:        MIT
@@ -40,8 +40,9 @@ Requires:       python-dephell-archive >= 0.1.5
 Requires:       python-dephell-discover >= 0.2.6
 Requires:       python-dephell-licenses >= 0.1.6
 Requires:       python-dephell-links >= 0.1.4
-Requires:       python-dephell-markers >= 1.0.0
+Requires:       python-dephell-markers >= 1.0.2
 Requires:       python-dephell-pythons >= 0.1.11
+Requires:       python-dephell-setuptools >= 0.2.1
 Requires:       python-dephell-shells >= 0.1.3
 Requires:       python-dephell-specifier >= 0.1.7
 Requires:       python-dephell-venvs >= 0.1.16
@@ -50,7 +51,6 @@ Requires:       python-docker
 Requires:       python-dockerpty
 Requires:       python-fissix
 Requires:       python-flatdict
-Requires:       python-html5lib
 Requires:       python-m2r
 Requires:       python-packaging
 Requires:       python-pip >= 18.0
@@ -80,8 +80,9 @@ BuildRequires:  %{python_module dephell-archive >= 0.1.5}
 BuildRequires:  %{python_module dephell-discover >= 0.2.6}
 BuildRequires:  %{python_module dephell-licenses >= 0.1.6}
 BuildRequires:  %{python_module dephell-links >= 0.1.4}
-BuildRequires:  %{python_module dephell-markers >= 1.0.0}
+BuildRequires:  %{python_module dephell-markers >= 1.0.2}
 BuildRequires:  %{python_module dephell-pythons >= 0.1.11}
+BuildRequires:  %{python_module dephell-setuptools >= 0.2.1}
 BuildRequires:  %{python_module dephell-shells >= 0.1.3}
 BuildRequires:  %{python_module dephell-specifier >= 0.1.7}
 BuildRequires:  %{python_module dephell-venvs >= 0.1.16}
@@ -114,6 +115,7 @@ test, build graph, show outdated, audit. Manage venvs, build package, bump versi
 
 %prep
 %setup -q -n dephell-%{version}
+
 find tests -type d -name __pycache__ | xargs rm -rf
 # Network and missing dependencies
 rm \
