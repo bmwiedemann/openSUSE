@@ -1,7 +1,7 @@
 #
 # spec file for package bamf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,20 @@
 %define _binver 3
 %define _version 0.5
 Name:           bamf
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Window matching library
 License:        GPL-3.0-only AND LGPL-3.0-only
-Group:          Development/Libraries/C and C++
-Url:            https://launchpad.net/bamf
+URL:            https://launchpad.net/bamf
 Source:         https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.gz
 Source2:        https://launchpad.net/bamf/%{_version}/%{version}/+download/bamf-%{version}.tar.gz.asc
 Source3:        %{name}.keyring
+# PATCH-FIX-OPENSUSE bamf-fix-gtester2xunit.patch -- Make gtester2xunit requirements easier to meet.
+Patch0:         bamf-fix-gtester2xunit.patch
 BuildRequires:  gnome-common
-BuildRequires:  libxslt-python
 BuildRequires:  pkgconfig
-BuildRequires:  python2-libxml2
+BuildRequires:  python3
+BuildRequires:  python3-lxml
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -48,7 +49,6 @@ bamf matches application windows to desktop files.
 
 %package daemon
 Summary:        Window matching daemon
-Group:          System/Daemons
 Requires:       %{lname} = %{version}
 
 %description daemon
@@ -60,7 +60,6 @@ through GDesktopAppInfo
 
 %package doc
 Summary:        Documentation for libbamf and libbamf3
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
@@ -68,7 +67,6 @@ This package contains the documentation for the bamf library.
 
 %package -n %{lname}
 Summary:        Window matching library
-Group:          System/Libraries
 
 %description -n %{lname}
 bamf matches application windows to desktop files.
@@ -77,7 +75,6 @@ This package contains libraries to be used by applications.
 
 %package -n typelib-1_0-Bamf-%{_binver}_0
 Summary:        Introspection bindings for the BAMF window matching library
-Group:          System/Libraries
 
 %description -n typelib-1_0-Bamf-%{_binver}_0
 This package contains introspection data for the Bamf library.
@@ -86,7 +83,6 @@ This package provides the GObject Introspection bindings for Bamf.
 
 %package devel
 Summary:        Development files for the BAMF window matching library
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       typelib-1_0-Bamf-%{_binver}_0
 
@@ -96,7 +92,8 @@ bamf matches application windows to desktop files.
 This package contains files that are needed to build applications.
 
 %prep
-%setup -q
+%autosetup -p1
+
 sed -i '/^CFLAGS=/s/-Werror //' configure.ac
 
 %build
@@ -104,53 +101,35 @@ NOCONFIGURE=1 gnome-autogen.sh
 %configure \
   --disable-static \
   --enable-gtk-doc
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
-%if 0%{?suse_version} <= 1320 && 0%{?sle_version} < 120200
-rm -r %{buildroot}%{_libexecdir}/systemd/user/bamfdaemon.service
-%endif
 rm -r %{buildroot}%{_datadir}/upstart/
 
 find %{buildroot} -type f -name "*.la" -delete -print
-
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
-%post
-%systemd_user_post bamf.service
-
-%preun
-%systemd_user_preun bamf.service
-
-%postun
-%systemd_user_postun bamf.service
-%endif
 
 %post -n %{lname} -p /sbin/ldconfig
 
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files daemon
-%defattr(-,root,root)
-%doc COPYING COPYING.LGPL TODO
+%license COPYING COPYING.LGPL
+%doc ChangeLog TODO
 %{_libexecdir}/bamf/
 %{_datadir}/dbus-1/services/org.ayatana.bamf.service
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
 %{_userunitdir}/bamfdaemon.service
-%endif
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc COPYING COPYING.LGPL TODO
+%license COPYING COPYING.LGPL
+%doc ChangeLog TODO
 %{_libdir}/libbamf%{_binver}.so.*
 
 %files -n typelib-1_0-Bamf-%{_binver}_0
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libbamf%{_binver}/
 %{_libdir}/libbamf%{_binver}.so
 %{_datadir}/vala/
@@ -158,7 +137,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libbamf%{_binver}.pc
 
 %files doc
-%defattr(-,root,root)
 %doc %{_datadir}/gtk-doc/
 
 %changelog

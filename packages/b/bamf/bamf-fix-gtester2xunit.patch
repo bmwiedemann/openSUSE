@@ -1,0 +1,47 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -113,11 +113,11 @@ GTK_DOC_CHECK(1.0)
+ # gtester2xunit checks    #
+ ###########################
+ 
+-AC_PATH_PROG([PYTHON],[python])
++AC_PATH_PROG([PYTHON], [python3])
+ AC_MSG_CHECKING(for gtester2xunit dependencies)
+-if !($PYTHON -c "import libxslt, libxml2" 2> /dev/null); then
++if !($PYTHON -c "import lxml" 2> /dev/null); then
+   AC_MSG_RESULT([no])
+-  AC_MSG_ERROR([You need to install python-libxslt1 and python-libxml2]);
++  AC_MSG_ERROR([You need to install python3-lxml]);
+ fi
+ AC_MSG_RESULT([yes])
+ 
+--- a/tests/gtester2xunit.py
++++ b/tests/gtester2xunit.py
+@@ -1,18 +1,17 @@
+-#! /usr/bin/python
+-from argparse import ArgumentParser
+-import libxslt
+-import libxml2
+-import sys
++#!/usr/bin/python3
+ import os
++import sys
++from argparse import ArgumentParser
++from lxml import etree
+ 
+ XSL_TRANSFORM='/usr/share/gtester2xunit/gtester.xsl'
+ 
+ def transform_file(input_filename, output_filename, xsl_file):
+-    gtester = libxml2.parseFile(xsl_file)
+-    style = libxslt.parseStylesheetDoc(gtester)
+-    doc = libxml2.parseFile(input_filename)
+-    result = style.applyStylesheet(doc, None)
+-    result.saveFormatFile(filename=output_filename, format=True)
++    gtester = etree.parse(xsl_file)
++    style = etree.XSLT(gtester)
++    doc = etree.parse(input_filename)
++    result = style(doc)
++    result.write(output_filename, pretty_print=True)
+ 
+ 
+ def get_output_filename(input_filename):
