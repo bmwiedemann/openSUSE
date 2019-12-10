@@ -1,0 +1,45 @@
+diff --git a/mailman_hyperkitty/tests/test_archiver.py b/mailman_hyperkitty/tests/test_archiver.py
+index 3d8896b6bb80eb3fe0b3aaa78c1eb3ac67076c5d..8430e3e3c0a943021707a2a34b4c700eb0a9a053 100644
+--- a/mailman_hyperkitty/tests/test_archiver.py
++++ b/mailman_hyperkitty/tests/test_archiver.py
+@@ -102,10 +102,10 @@ class ArchiverTestCase(TestCase):
+         self.requests_patcher = patch("mailman_hyperkitty.requests")
+         self.requests = self.requests_patcher.start()
+         self.fake_response = None
+-        self.requests.get.side_effect = \
+-            lambda url, *a, **kw: self.fake_response
+-        self.requests.post.side_effect = \
+-            lambda url, *a, **kw: self.fake_response
++        self.requests.get.side_effect = (
++            lambda url, *a, **kw: self.fake_response)
++        self.requests.post.side_effect = (
++            lambda url, *a, **kw: self.fake_response)
+ 
+     def tearDown(self):
+         self.requests_patcher.stop()
+@@ -345,19 +345,14 @@ class ArchiverTestCase(TestCase):
+             self.archiver._switchboard.queue_directory)), 1)
+         self.assertEqual(len(self.archiver._switchboard.files), 1)
+ 
+-    def test_archive_message_unserializable(self):
++    def test_archive_message_unserializable_raises_no_errors(self):
++        self.fake_response = FakeResponse(200, {"url": "dummy"})
+         msg = self._get_msg()
+         msg["content-type"] = 'text/plain; charset="UTF-8"'
+         msg.set_payload(b"this contains encoded unicode \xc3\xa9 \xc3\xa0")
+-        # If you try to serialize this message to text, it will cause a:
+-        # KeyError: 'content-transfer-encoding'
++        # If you try to serialize this message to text, Mailman should be able
++        # to prevent KeyError by ignoring the bad-characters.
+         with patch("mailman_hyperkitty.logger") as logger:
+             self.archiver.archive_message(self.mlist, msg)
+-        # Check error log
+-        self.assertEqual(logger.error.call_count, 1)
+-        self.assertTrue(isinstance(
+-            logger.error.call_args_list[0][0][2], KeyError))
+-        # Check that the message is not stored in the spool.
+-        self.assertEqual(len(os.listdir(
+-            self.archiver._switchboard.queue_directory)), 0)
+-        self.assertEqual(len(self.archiver._switchboard.files), 0)
++        # Check no errors in the log.
++        self.assertEqual(logger.error.call_count, 0)
