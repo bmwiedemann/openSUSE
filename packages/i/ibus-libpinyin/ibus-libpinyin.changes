@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  6 08:42:37 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-libpinyin.spec: Remove dependence to pyxdg, because 
+  it has been removed since 1.6.92 (bnc#1158513). 
+
+-------------------------------------------------------------------
 Fri May 31 03:02:42 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.11.1

@@ -40,7 +40,6 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(libpinyin) >= 2.2.1
-Requires:       python3-xdg
 Provides:       locale(ibus:zh_CN;zh_SG)
 %{ibus_requires}
 %if 0%{?suse_version} <= 1320

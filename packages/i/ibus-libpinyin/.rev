@@ -222,4 +222,12 @@
     <comment>Add a bug ID (forwarded request 728226 from hillwood)</comment>
     <requestid>728228</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>9786a97fc2915cf4c36b32d441154b71</srcmd5>
+    <version>1.11.1</version>
+    <time>1576014141</time>
+    <user>dimstar_suse</user>
+    <comment>Update ibus-libpinyin.spec: Remove dependence to pyxdg, because it has been removed since 1.6.92 (bnc#1158513). (forwarded request 754617 from qzhao)</comment>
+    <requestid>755418</requestid>
+  </revision>
 </revisionlist>
