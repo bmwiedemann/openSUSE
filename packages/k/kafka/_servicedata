@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/apache/kafka</param>
+              <param name="changesrevision">809be928f1ae004e11d65c307ea322bef126c834</param></service></servicedata>

@@ -1,0 +1,16 @@
+[Unit]
+Description=Apache Kafka Server
+After=syslog.target network.target kafka-zookeeper.service
+
+[Service]
+Type=simple
+User=kafka
+Group=kafka
+WorkingDirectory=/run/kafka
+Environment='LOG_DIR=/var/log/kafka'
+PrivateTmp=yes
+LimitNOFILE=131072
+ExecStart=/usr/bin/kafka-server-start.sh /etc/kafka/server.properties
+
+[Install]
+WantedBy=multi-user.target

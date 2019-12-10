@@ -1,0 +1,5 @@
+#!/bin/sh
+# /usr/bin wrapper for running kafka binaries that reside in __KAFKABIN__.
+
+name=$(basename $0)
+exec __KAFKABIN__/$name $@

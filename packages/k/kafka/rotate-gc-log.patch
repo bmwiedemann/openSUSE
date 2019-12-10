@@ -1,0 +1,13 @@
+Index: bin/kafka-run-class.sh
+===================================================================
+--- bin/kafka-run-class.sh.orig
++++ bin/kafka-run-class.sh
+@@ -289,6 +289,8 @@ if [ "x$GC_LOG_ENABLED" = "xtrue" ]; the
+   else
+     KAFKA_GC_LOG_OPTS="-Xloggc:$LOG_DIR/$GC_LOG_FILE_NAME -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M"
+   fi
++  # and log rotation
++  KAFKA_GC_LOG_OPTS="$KAFKA_GC_LOG_OPTS -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=10M "
+ fi
+ 
+ # Remove a possible colon prefix from the classpath (happens at lines like `CLASSPATH="$CLASSPATH:$file"` when CLASSPATH is blank)

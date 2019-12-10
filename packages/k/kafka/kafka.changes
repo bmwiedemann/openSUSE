@@ -1,0 +1,1185 @@
+-------------------------------------------------------------------
+Fri Nov  8 13:04:46 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Fetch sources from Github, since the tarball is not available
+  on eu-apache.org anymore.
+
+-------------------------------------------------------------------
+Tue Nov  5 02:14:03 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add source package - envoy-proxy needs it for Kafka protobuf
+  files.
+
+-------------------------------------------------------------------
+Tue Jan  8 14:44:34 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Mark log4j.properties config file with "noreplace". Otherwise,
+  adjustments to the config file will be overwritten during a package
+  update.
+
+-------------------------------------------------------------------
+Tue Jan  8 10:44:35 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.1.0:
+  - Overloaded StreamsBuilder Build Method to Accept java.util.Properties
+  - Add Codec for ZStandard Compression
+  - Add UUID Serde
+  - Introduce delivery.timeout.ms producer config (KIP-91)
+  - Avoid redundant requests to zookeeper when reassign topic partition
+  - DNS alias support for secured connections
+  - Lookup indices may cause unnecessary page fault
+  - Streams does not warn about missing input topics, but hangs
+  - Move check for super user in SimpleAclProvider before ACL evaluation
+  - Support casting values with bytes schema to string
+  - Make max.connections.per.ip.overrides a dynamic config
+  - Speed up event processing on the controller
+  - Reduce Kafka Streams Footprint
+  - Kafka clients should try to use multiple DNS resolved IP addresses if the first one fails
+  - Zombie replicas must be fenced
+  - ConsumerGroupCommand should use new AdminClient
+  - Kafka Connect - Plugins class should have a constructor that can take in parent ClassLoader
+  - Consolidate ExtendedSerializer/Serializer and ExtendedDeserializer/Deserializer
+  - Reduce NPath exceptions in Connect
+  - Add mechanism to delay response to failed client authentication
+  - Make Streams Window retention time strict
+  - Export Admin Client metrics through Stream Threads
+  - Remove caching wrapper stores if cache-size is configured to zero bytes
+  - Document read-write lock usage of caching enabled stores
+  - Mute logger for reflections.org at the warn level in system tests
+  - Reduction the contention between metadata update and metadata read operation
+  - Session Window store should set topic policy `compact,cleanup`
+  - Allow AclCommand to use AdminClient API
+  - Reduce number of rebalance for large consumer groups after a topic is created
+  - Update release script to generate announcement email text
+  - Allow kafka-reassign-partitions.sh and kafka-log-dirs.sh to take admin client property file
+  - replica should be in-sync if its LEO equals leader's LEO
+  - KTable Reduce should check for invalid conditions
+  - Add support for Custom SASL extensions in OAuth authentication
+  - Enhance KafkaStreams start method javadoc
+  - Make rate & total metrics documentation consistent
+  - Add system test for log compaction
+  - MM should handle timeouts in commitSync
+  - Improve LogCleaner behavior on error
+  - KIP-328: Add Window Grace Period (and deprecate Window Retention)
+  - Initial Kafka support for Java 11
+  - Fix MetricsTest test flakiness
+  - KStream.merge is not documented
+  - Migrate Streams API to Duration instead of longMs times
+  - replaceSegments() should not call asyncDeleteSegment() for segments which have been removed from segments list
+  - Streams should be more fencing-sensitive during task suspension under EOS
+  - StopReplicaRequest should attempt to remove future replica for the partition only if future replica exists
+  - Let KStream.print() to flush on each printed line
+  - Improve error message when trying to produce message without key for compacted topic
+  - Allow OffsetsForLeaderEpoch requests with topic describe ACL (KIP-320)
+  - Add fencing to replication protocol (KIP-320)
+  - KIP-365: Materialized, Serialized, Joined, Consumed and Produced with implicit Serde
+  - FunctionConversions in Streams-Scala should be private
+  - Naming Join and Grouping Repartition Topics
+  - Do not fail broker on out of range offsets in replica fetcher
+  - Enable dynamic key/truststore update with same filename/password
+  - Improve Transformer interface JavaDoc
+  - Store leader epoch in offset commit metadata
+  - Allow LogCleanerManager.resumeCleaning() to be used concurrently
+  - Use lazy allocation for SslTransportLayer buffers
+  - Serde Inheritance in Streams DSL
+  - print the actual cluster bootstrap address on authentication failures
+  - Improve Streams close timeout semantics
+  - ConnectStandaloneFileTest system tests do not pass
+  - Replace AdminUtils.createOrUpdateTopicPartitionAssignmentPathInZK with TestUtils.createTopic in unit tests
+  - Acls for PrincipalType User are case sensitive
+  - Stream timestamp computation needs some further thoughts
+  - Committed offsets should not be deleted if a consumer is still active (KIP-211)
+  - ConcurrentModificationException when iterating over Kafka Metrics
+  - Fix findbugs warning about OffsetStorageWriter#currentFlushId
+  - Infinite loop if all input topics are unknown at startup
+  - KafkaMetricsConfig properties and description notably missing from documentation
+  - KafkaProducer.send() blocks and generates TimeoutException if topic name has illegal char
+  - Inconsistency in consumer group related ACLs
+  - kafka-acls command should be able to list per principal
+  - No response when deleting topics and delete.topic.enable=false
+  - Give client MetricsReporter auto-generated client.id
+  - IllegalArgumentException in RocksDB when RocksDBException being generated
+  - OOM as the result of creation of 5k topics
+  - KafkaLog4jAppender deadlocks when logging from producer network thread
+  - Kafka Streams hangs when not able to access internal topics
+  - Documentation about "exactly_once" doesn't mention "transaction.state.log.min.isr"
+  - Fetcher.getTopicMetadata() should return all partitions for each requested topic
+  - Follower should not send OffsetForLeaderEpoch for undefined leader epochs
+  - Extend `TopologyDescription.Sink` to return `TopicNameExtractor`
+  - Connect Rest Extension Plugin issue with Class Loader
+  - Kafka Connect API module depends on Jersey
+  - Connect isolation whitelist does not include new primitive converters (KIP-305)
+  - kafka-consumer-groups.sh NullPointerException describing round robin or sticky assignors
+  - Connect isolation whitelist does not include SimpleHeaderConverter
+  - Connect's new numeric converters should be in a different package
+  - ConnectSchema#equals() broken for array-typed default values
+  - ConfigTransformer doesn't handle null values
+  - Kafka Streams may drop rocksb window segments before they expire
+  - WindowStoreBuilder incorrectly initializes CachingWindowStore
+  - VerifiableProducer does not work properly with --message-create-time argument
+  - Use bulkloading for RocksDBSegmentedBytesStore during init
+  - Intermittent test failure with GSSAPI authentication failure
+  - Lagging high watermark can lead to committed data loss after ISR expansion
+  - KafkaLog4jAppender - Appender exceptions are propagated to caller
+  - kafka-consumer-group doesn't describe existing group
+  - Kafka Streams doesn't properly balance partition assignment
+  - Duplicates when searching kafka stream state store with caching
+  - Follower should truncate after every leader epoch change
+  - In testHWCheckpointWithFailuresSingleLogSegment, wait until server1 has joined the ISR before shutting down server2
+  - State-store can desynchronise with changelog
+  - Remove heartbeat delayed operation for those removed consumers at the end of each rebalance
+  - Exception while running kafka-acls.sh from 1.0 env on target Kafka env with 1.1.1
+  - Kafka Connect ConfigProvider not invoked before validation
+  - -total metrics in Streams are incorrect
+  - Externalized secrets are revealed in task configuration
+  - A link to Apache BookKeeper project is broken
+  - Kafka-Streams-Scala DSL transform shares transformer instance
+  - Timing issue in SimpleAclAuthorizer with concurrent create/update
+  - Request and response total metrics record bytes instead of request count
+  - ConcurrentModificationException in FetchSessionHandler in heartbeat thread
+  - Producer getting fenced may cause Streams to shut down
+  - Loading offsets and group metadata hangs with large group metadata records
+  - Set open ACL permissions for old consumer znode path
+  - Transient failure in SslSelectorTest.testCloseConnectionInClosingState
+  - KTable to KTable join invocation does not resolve in Scala DSL
+  - Sender should reset next batch expiry time between poll loops
+  - Use of filter method in KTable.scala may result in StackOverflowError
+  - Fix race condition between log cleaner thread and log retention thread when topic cleanup policy is updated
+  - NPE due to lack of SASLExtensions in SASL/OAUTHBEARER
+  - Protocol changes for KIP-320
+  - Wrong error code returned for OffsetsForLeaderEpoch from non-replica
+  - Connect logs 'this' for anonymous inner classes
+  - Fix IdlePercent and NetworkProcessorAvgIdlePercent metric calculation
+  - topic level segment.bytes and segment.ms not taking effect immediately
+  - Retry when possible in AdminClient.listConsumerGroups
+  - send.buffer.bytes should be allowed to set -1 in KafkaStreams
+  - Streams Scala wrapper should not cache serdes
+  - An equal sign in a property value causes the broker to fail
+  - Compacted topic segments that precede the log start offset are not cleaned up
+  - Offset commit failure after upgrading brokers past KIP-211/KAFKA-4682
+  - Validate topic configs prior to topic creation
+  - OffsetsForLeaderEpoch may incorrectly respond with undefined epoch causing truncation to HW
+  - DeadLetterQueueReporter throws NPE if transform throws NPE
+  - Enable idle expiry of connections which are never selected
+  - Concurrency bug in updating RequestsPerSec metric
+  - Connect Values converter uses incorrect date format string
+  - Kafka brokers cannot provide OAuth without a token
+  - Fail to shutdown ReplicaManager during broker cleaned shutdown
+  - NoSuchElementException is raised because controlBatch is empty
+  - SchemaProjector is not properly handling Date-based logical types
+  - LeaderAndIsrRequest should be sent to the shutting down broker
+  - Streams should allow headers to be passed to Serializer
+  - Fix test SuppressionDurabilityIntegrationTest.shouldRecoverBufferAfterShutdown()
+  - Flaky test `DyanamicBrokerReconfigurationTest.testTrustStoreAlter`
+  - KafkaAdminClient#describeAcls should handle invalid filters gracefully
+  - common.requests.CreatePartitionsRequest uses clients.admin.NewPartitions
+  - double deallocation of producer batch upon expiration of inflight requests and error response
+  - Flaky test: SslTransportLayerTest.testListenerConfigOverride
+  - Flaky test SaslAuthenticatorFailureDelayTest.testInvalidPasswordSaslPlain
+  - Transactional Ids Left in Pending State by TransactionStateManager During Transactional Id Expiration Are Unusable
+  - [kafka-streams-scala_2.11] Foreach results in StackOverflowError
+  - KafkaConsumer doesn't report records-lag if isolation.level is read_committed
+  - StatefulProcessorNode tries to connect state store to processor before it is added
+  - PushHttpMetricsReporter should not convert metric value to double
+  - Console Consumer - system test fails
+  - System Test Failure - security_test.SecurityTest.test_client_ssl_endpoint_validation_failure
+  - Replace findBugs with spotBugs for Java 9+ support
+  - Enable topic unclean leader election to be enabled without controller change
+  - Rename errors.allowed.max property in Connect to errors.tolerance
+  - Allow replication factor to be set via a configuration property for the Connect DLQ topic
+  - Add headers with error context in messages written to the Connect DeadLetterQueue topic
+  - Support to exclude the internal topics in kafka-topics.sh command
+  - Update 2.0 documentation to reflect changed quota behaviors by KIP-219
+  - DeadLetterQueue throws a NullPointerException
+  - consider fencing zookeeper updates with controller epoch zkVersion
+  - batch LeaderAndIsr requests during auto preferred leader election
+  - Fix rat and checkstyle plugins configuration for Java 11 support
+  - Upgrade Jacoco for Java 11 support
+  - Fix SSL tests when running with Java 11
+  - Fix SASL Kerberos tests with Java 11
+  - Upgrade Jetty for preliminary Java 11 and TLS 1.3 support
+  - Kafka Connect - Plugins class should have a constructor that can take in parent ClassLoader
+  - Update release script to generate announcement email text
+  - Enhance KafkaStreams start method javadoc
+  - replaceSegments() should not call asyncDeleteSegment() for segments which have been removed from segments list
+  - Streams should be more fencing-sensitive during task suspension under EOS
+  - Do not fail broker on out of range offsets in replica fetcher
+  - Use lazy allocation for SslTransportLayer buffers
+  - ConcurrentModificationException when iterating over Kafka Metrics
+  - Cast transformation fails if record schema contains timestamp field
+  - Fetcher.getTopicMetadata() should return all partitions for each requested topic
+  - kafka-consumer-groups.sh NullPointerException describing round robin or sticky assignors
+  - Intermittent test failure with GSSAPI authentication failure
+  - Lagging high watermark can lead to committed data loss after ISR expansion
+  - Kafka Streams doesn't properly balance partition assignment
+  - Duplicates when searching kafka stream state store with caching
+  - Follower should truncate after every leader epoch change
+  - In testHWCheckpointWithFailuresSingleLogSegment, wait until server1 has joined the ISR before shutting down server2
+  - State-store can desynchronise with changelog
+  - Remove heartbeat delayed operation for those removed consumers at the end of each rebalance
+  - Exception while running kafka-acls.sh from 1.0 env on target Kafka env with 1.1.1
+  - Kafka Connect ConfigProvider not invoked before validation
+  - Externalized secrets are revealed in task configuration
+  - Kafka-Streams-Scala DSL transform shares transformer instance
+  - Timing issue in SimpleAclAuthorizer with concurrent create/update
+  - Request and response total metrics record bytes instead of request count
+  - ConcurrentModificationException in FetchSessionHandler in heartbeat thread
+  - Producer getting fenced may cause Streams to shut down
+  - Set open ACL permissions for old consumer znode path
+  - Producer should handle COORDINATOR_LOADING error in TxnOffsetCommit
+  - Concurrent DeleteRecords can lead to fatal OutOfSequence error in producer
+  - KTable to KTable join invocation does not resolve in Scala DSL
+  - Use of filter method in KTable.scala may result in StackOverflowError
+  - Connect logs 'this' for anonymous inner classes
+  - Fix IdlePercent and NetworkProcessorAvgIdlePercent metric calculation
+  - Retry when possible in AdminClient.listConsumerGroups
+  - Log cleaner crashes when empty batches are retained with idempotent or transactional producers
+  - Streams Scala wrapper should not cache serdes
+  - OffsetsForLeaderEpoch may incorrectly respond with undefined epoch causing truncation to HW
+  - DeadLetterQueueReporter throws NPE if transform throws NPE
+  - Enable idle expiry of connections which are never selected
+  - Concurrency bug in updating RequestsPerSec metric
+  - Connect Values converter uses incorrect date format string
+  - Fail to shutdown ReplicaManager during broker cleaned shutdown
+  - NoSuchElementException is raised because controlBatch is empty
+  - SchemaProjector is not properly handling Date-based logical types
+  - Transactional Ids Left in Pending State by TransactionStateManager During Transactional Id Expiration Are Unusable
+  - KafkaConsumer doesn't report records-lag if isolation.level is read_committed
+  - DeadLetterQueue throws a NullPointerException
+  - batch LeaderAndIsr requests during auto preferred leader election
+  - Configurable Quota Management (KIP-257)
+  - Add support for Prefixed ACLs
+  - Externalize Secrets for Kafka Connect Configurations
+  - KIP-295 Add Streams Config for Optional Optimization
+  - Avoid long or infinite blocking in the consumer
+  - Offer a --version flag to print the kafka version
+  - Update tools relying on old producer to use new producer.
+  - KIP-237: More Controller Health Metrics
+  - JmxTool should exit out if a provided query matches no values
+  - Adjust default values of log.retention.hours and offsets.retention.minutes
+  - Consumer should not block in poll on coordinator discovery
+  - KIP-86: Configurable SASL callback handlers
+  - Partition re-assignment tool should check types before persisting state in ZooKeeper
+  - Allow dynamic routing of output records
+  - Add a sensor to KafkaStreams to track records that have been dropped due to having a null key
+  - Console Consumer should only poll for up to max messages
+  - Replace uses of old consumer with the new consumer
+  - ReplayLogProducer not using the new Kafka consumer
+  - ConsoleProducer uses deprecated BaseProducer
+  - max.connections.per.ip minimum value to be zero to allow IP address blocking
+  - Support aggregatedJavadoc in Java 9
+  - Remove Deprecated AdminClient from Streams Resetter Tool
+  - Kafka metrics templates used in document generation should maintain order of tags
+  - Consider moving validation in KafkaConsumer ahead of call to acquireAndEnsureOpen()
+  - Improve the quota throttle communication.
+  - Users forget `--execute` in the offset reset tool
+  - KIP-222: Add "describe consumer groups" and "list consumer groups" to KafkaAdminClient
+  - Postpone normal processing of tasks within a thread until restoration of all tasks have completed
+  - report a metric of the lag between the consumer offset and the start offset of the log
+  - Improve Streams metrics for skipped records
+  - QueryableStateIntegrationTest#queryOnRebalance should accept raw text
+  - Allow timestamp manipulation in Processor API
+  - Add MockProcessorContext to public test-utils
+  - Improving performance of the function ControllerChannelManager.addUpdateMetadataRequestForBrokers
+  - TimeWindows causes unordered calls to windowed aggregation functions
+  - Add API version as a tag for the RequestsPerSec metric
+  - Add toString() method to kafka connect Field class
+  - Update controller to handle changes to unclean.leader.election.enable
+  - Set default retention ms for Streams repartition topics to Long.MAX_VALUE
+  - Enhance ByteStore exceptions with more context information
+  - Add ENDPOINT_NOT_FOUND_ON_LEADER error code for missing listener
+  - Use single-point queries than range queries for windowed aggregation operators
+  - KIP-255: OAuth Authentication via SASL/OAUTHBEARER
+  - Add TimeoutException to KafkaConsumer#position()
+  - Re-write simple benchmark in system tests with JMXTool
+  - Add scripts for DumpLogSegments
+  - RocksDBSegmentedBytesStoreTest does not cover time window serdes
+  - Speed up the processing of TopicDeletionStopReplicaResponseReceived events on the controller
+  - Improve efficiency of KafkaAdminClient.describeTopics()
+  - Add StreamsConfig prefix for different consumers
+  - Improve error message if state store is not found
+  - Implement a Scala wrapper library for Kafka Streams
+  - Segment and Stamped implement Comparable, but don't override equals.
+  - Remove EOS producer config max.in.flight.request.per.connection=1
+  - Connect deserialization log message should distinguish key from value
+  - The Trogdor coordinator should track task statuses
+  - KIP-277 - Fine Grained ACL for CreateTopics API
+  - org.apache.kafka.clients.admin.Config has broken equals and hashCode method.
+  - Simplify state store recovery
+  - Kafka Connect handling of bad data
+  - Add listener name to AuthenticationContext
+  - responses not logged properly in controller
+  - Broker should load credentials from ZK before requests are allowed
+  - Connect Rest Extension Plugin
+  - Add unit test for ReplicaAlterLogDirsThread
+  - Improve logging when topics aren't known and assignments skipped
+  - Remove deprecated APIs from KIP-120 and KIP-182 in Streams
+  - Add transformValues() method to KTable
+  - KIP-244: Add Record Header support to Kafka Streams Processor API
+  - add producer metrics exporting in KafkaStreams.java
+  - Document that Processor objects can be reused
+  - Add primitive numeric converters to Connect
+  - Update KafkaZkClient debug log
+  - Add documentation for accessing Headers on Kafka Streams Processor API
+  - Use Java AdminClient in DeleteRecordsCommand
+  - Add getter to AbstractStream class to make internalTopologyBuilder accessible outside of package
+  - Add max.block.ms to consumer for default timeout behavior
+  - Kafka run class doesn't exclude test-sources jar
+  - KafkaConsumer.position should wait for assignment metadata
+  - Mute logger for reflections.org at the warn level in system tests
+  - Decrease consumer request timeout to 30s
+  - Make Streams Runtime Error User Friendly in Case of Serialisation exception
+  - AdminClient should handle FindCoordinatorResponse errors
+  - Review the NetworkClient log level used
+  - Kafka consumer can hang when position() is called on a non-existing partition.
+  - Invalid characters in config properties not being validated?
+  - Default ssl.endpoint.identification.algorithm should be https
+  - Consumer.poll() stuck in loop if wrong credentials are supplied
+  - kafka unable to reconnect to zookeeper behind an ELB
+  - Extract WindowedSerde to public APIs
+  - KafkaConsumer.position may hang forever when deleting a topic
+  - invalid client sasl.jaas.config triggers NullPointerException
+  - TopologyTestDriver must handle streams created with patterns
+  - Deprecate and remove internal converter configs
+  - Remove deprecated new-consumer option for tools
+  - Unsafe use of expired sensors
+  - StreamThread.shutdown() need to interrupt the stream threads to break the loop
+  - Check Connector.config() and Transformation.config() returns a valid ConfigDef
+  - Adding checks on "version" field for tools using it
+  - Removed unused parameter ProcessorContext
+  - Windows: Consumers not polling when isolation.level=read_committed
+  - ERROR "SubscriptionInfo - unable to decode subscription data: version=2" when upgrading from 0.10.0.0 to 0.10.2.1
+  - Issues with protocol version when applying a rolling upgrade to 1.0.0
+  - Improve sink connector topic regex validation
+  - Log cleaner thread may die on legacy segment containing messages whose offsets are too large
+  - Broken symlink interrupts scanning the plugin path
+  - KafkaConsumer ran into Unknown error fetching data for topic-partition caused by integer overflow in FileLogInputStream
+  - Fix AdminClient error handling when metadata changes
+  - libs directory has duplicate javassist jars
+  - Fast leader fail over can lead to log divergence between leader and follower
+  - NullPointerException on KStream-GlobalKTable leftJoin when KeyValueMapper returns null
+  - Deprecate KafkaStreams constructor taking StreamsConfig parameter
+  - Update ZooKeeper to 3.4.12, Gradle and other minor updates
+  - Prevent misconfiguration of advertised listeners
+  - Inconsistent exception type from KafkaConsumer.position
+  - Remove deprecated metrics in 2.0
+  - KafkaProducer with transactionId endless waits when bootstrap server is down
+  - Connect: Plugin scan is very slow
+  - New Connect header support doesn't define `converter.type` property correctly
+  - Use actual first offset of messages when rolling log segment for magic v2
+  - Consumer.poll may not trigger rebalance in time when there is a task migration
+  - â€œentity_typeâ€ not exactly in description of kafka-configs.sh
+  - SourceTask#stop() not called after exception raised in poll()
+  - Connect standalone SASL file source and sink test fails without explanation
+  - ConsumerGroupCommand hangs if even one of the partition is unavailable
+  - if set topic config segment.ms=0 Kafka broker won't be able to start
+  - The controller should be able to handle a partially deleted topic
+  - Use non-zero status code when kafka-configs.sh fails
+  - Fix RoundTripWorkload and make k/v generation configurable
+  - ConfigCommand failing to alter configs
+  - JBOD configured broker should not die if log directory is invalid
+  - Checking hasNext from SegementIterator could throw InvalidStateStoreException
+  - broker failed to handle request due to OOM
+  - Streams integration tests hang during shutdown
+  - GlobalStateManagerImpl should not write offsets of in-memory stores in checkpoint file
+  - ConsumerPerformance resets offsets on every startup
+  - Kafka Connect Header Null Pointer Exception
+  - KTable should use user source topics if possible and not create changelog topic
+  - waitOnState waits for the wrong state instead of the target one
+  - Is Kafka imapcted by critical vulnerqbilty CVE-2018-7489
+  - Down-conversion fails for records with headers
+  - Transient test failure: SslTransportLayerTest.testNetworkThreadTimeRecorded
+  - TopologyTestDriver error when dealing with stores from GlobalKTable
+  - ConsumerPerformance fails to consume all messages on topics with large number of partitions
+  - kafka-streams Invalid transition attempted from state READY to state ABORTING_TRANSACTION
+  - Scheduler cannot be cancelled from Punctuator
+  - TopologyTestDriver fails when topoloy under test uses EXACTLY_ONCE
+  - Unclean leader election metric no longer working
+  - Intermittent test failure in CustomQuotaCallbackTest
+  - AbstractProcessor created in SimpleBenchmark should call super#init
+  - DescribeConfigs does not return error for non-existent topic
+  - GlobalKTable GlobalStateStore never finishes restoring when consuming aborted messages
+  - Surprising UNKNOWN_TOPIC error for produce/fetch requests to non-replicas
+  - connections-created metric does not behave as expected
+  - DEFAULT_PRODUCTION_EXCEPTION_HANDLER_CLASS_CONFIG is private
+  - Avoid range scans when forwarding values in window store aggregations
+  - Consumer should retry when encountering unknown topic or partition error
+  - log cleaner should handle the case when the size of a message set is larger than the max message size
+  - Race condition between StreamThread and GlobalStreamThread stopping
+  - ResponseMetadata calculates latency incorrectly (and therefore ZooKeeperRequestLatencyMs is incorrect)
+  - Kafka fails to start with Java 10 due to faulty Java version detection
+  - LeaderEpochFileCache.endOffsetFor() should check for UNDEFINED_EPOCH explicitly
+  - NPE when reinitializeStateStores with eos enabled
+  - Concurrency conflicts in SampledStat
+  - KStreams Scala API: incorrect Javadocs and misleading parameter name
+  - Remove completedFetch upon a failed parse if it contains no records.
+  - NPE when querying global state store not in READY state
+  - Controller deadlock following session expiration
+  - Improve error message when connecting processor with a global store
+  - Mirrormaker waits to shut down forever on produce failure with abort.on.send.failure=true
+  - Kafka Streams does not commit transactions if data is produced via wall-clock punctuation
+  - Trogdor documentation points to wrong location for trogdor.sh
+  - Broker uses significant amount of memory during down-conversion
+  - ZkData - Consumers offsets Zookeeper path is not correct
+  - Scala API Wrapper for Streams uses default serializer for table aggregate
+  - In-sync replica delayed during fetch if replica throttle is exceeded
+  - alterReplicaLogDirs() should grab partition lock when accessing log of the future replica
+  - TopologyTestDriver does not allow pre-populating state stores that have change logging
+  - setting invalid timestamp causes Kafka broker restart to fail
+  - AdminClient.deleteRecords() may cause replicas unable to fetch from beginning
+  - Missing Connector Config (errors.deadletterqueue.topic.name) kills Connect Clusters
+  - Connect Rest Extension Plugin issue with Class Loader
+  - Fix defective documentations for KStream/KTable methods
+  - Performance issue upgrading to kafka 1.0.1 or 1.1
+  - Source KTable checkpoint is not correct
+  - Kafka Streams RocksDB bulk loading config may not be honored with customized RocksDBConfigSetter
+  - super.users doesn't work with custom principals
+  - ReplicaVerificationTool should not use the deprecated SimpleConsumer
+  - Kafka Connect API module depends on Jersey
+  - The TimeUnit is neglected by KakfaConsumer#close(long, TimeUnit)
+  - DelegatingClassLoader creates plugin instance even if its not Versioned
+  - Connect isolation whitelist does not include new primitive converters (KIP-305)
+  - Connect isolation whitelist does not include SimpleHeaderConverter
+  - NPE when creating connector
+  - Kafka Streams Processor API allows you to add sinks and processors without parent
+  - Connect's new numeric converters should be in a different package
+  - ConnectSchema#equals() broken for array-typed default values
+  - "Unexpected resource type GROUP" when describing broker configs using latest admin client
+  - ConnectRestApiTest fails assertion
+  - ConfigTransformer doesn't handle null values
+  - Broker startup could be inefficient when using old message format
+  - Concurrent createTopics calls may throw NodeExistsException
+  - ReplicaFetcher thread may die because of inconsistent log start offset in fetch response
+  - StreamThread does not check for state again after pollRequests()
+  - PushHttpMetricsReporter may deadlock when processing metrics changes
+  - Broker shutdown during SSL handshake may be handled as handshake failure
+  - SASL/OAUTHBEARER client response is missing %x01 separators
+  - getMatchingAcls throws StringIndexOutOfBoundsException for empty resource name
+  - ZooKeeper client times out with localhost due to random choice of ipv4/ipv6
+  - Error deserializing assignment after rebalance
+  - Remove old Scala consumer and all related code, tests, and tools
+  - Drop support for Java 7
+  - Don't throw TopologyBuilderException during runtime
+  - Remove deprecated punctuate method
+  - Upgrade jetty library version
+  - Update documentation for SASL/PLAIN and SCRAM to use callbacks
+  - Allow dynamic broker configs to be configured in ZooKeeper before starting broker
+  - Enable dynamic reconfiguration of SSL truststores
+  - Log cleaner fails with transaction markers that are deleted during clean
+  - Incorrect check for keystore/truststore dynamic update
+  - Add authorization tests for custom principal types
+  - AdminClient does not refresh metadata on broker failure
+  - Request handler deadlocks attempting to acquire group metadata lock
+  - Remove old Scala producer and all related code, tests, and tools
+  - Rename errors.allowed.max property in Connect to errors.tolerance
+  - Allow replication factor to be set via a configuration property for the Connect DLQ topic
+  - Add headers with error context in messages written to the Connect DeadLetterQueue topic
+  - Additional authorization test cases
+  - Rewrite KStreamPeekTest at processor level avoiding driver usage
+  - Add unit tests for handling of authentication failures in clients
+  - discardChannel should be released in MockSelector#completeSend
+  - Blocking call such as position(), partitionsFor(), committed() and listTopics() should have a timeout
+  - FAILING TEST: kafka.api.ProducerBounceTest > testBrokerFailure
+  - Add the Message/Record set protocol to the protocol docs
+  - Update GetOffsetShell tool to not rely on old producer.
+  - Improve test coverage of StreamsThread
+  - Improve test coverage of Stores
+  - Add Delegation Token Operations to KafkaAdminClient
+  - Remove duplicate Java Resource class.
+  - Remove duplicate Scala ResourceNameType class
+  - Use JSON for /kafka-acl-extended-changes path
+  - Rename ResourceNameType.ANY to MATCH
+  - Investigate if its possible to drop the ResourceNameType field from Java Resource class.
+  - Add configuration to disable message down-conversion
+  - Postpone normal processing of tasks within a thread until restoration of all tasks have completed
+  - responses not logged properly in controller
+  - Broker should load credentials from ZK before requests are allowed
+  - Update KafkaZkClient debug log
+  - Windows: Consumers not polling when isolation.level=read_committed
+  - ERROR "SubscriptionInfo - unable to decode subscription data: version=2" when upgrading from 0.10.0.0 to 0.10.2.1
+  - SourceTask#stop() not called after exception raised in poll()
+  - Sink connectors that explicitly 'resume' topic partitions can resume a paused task
+  - GlobalStateManagerImpl should not write offsets of in-memory stores in checkpoint file
+  - Kafka Connect Header Null Pointer Exception
+  - Down-conversion fails for records with headers
+  - TopologyTestDriver error when dealing with stores from GlobalKTable
+  - kafka-streams Invalid transition attempted from state READY to state ABORTING_TRANSACTION
+  - Scheduler cannot be cancelled from Punctuator
+  - TopologyTestDriver fails when topoloy under test uses EXACTLY_ONCE
+  - Unclean leader election metric no longer working
+  - Intermittent test failure in CustomQuotaCallbackTest
+  - GlobalKTable GlobalStateStore never finishes restoring when consuming aborted messages
+  - connections-created metric does not behave as expected
+  - DEFAULT_PRODUCTION_EXCEPTION_HANDLER_CLASS_CONFIG is private
+  - ResponseMetadata calculates latency incorrectly (and therefore ZooKeeperRequestLatencyMs is incorrect)
+  - Kafka fails to start with Java 10 due to faulty Java version detection
+  - LeaderEpochFileCache.endOffsetFor() should check for UNDEFINED_EPOCH explicitly
+  - NPE when reinitializeStateStores with eos enabled
+  - Concurrency conflicts in SampledStat
+  - NPE when querying global state store not in READY state
+  - Controller deadlock following session expiration
+  - Processors created after acceptor started which can cause in a brief refusal to accept connections
+  - Kafka Streams does not commit transactions if data is produced via wall-clock punctuation
+  - Memory leak in org.apache.kafka.streams.processor.internals.StreamThread$StreamsMetricsThreadImpl
+  - In-sync replica delayed during fetch if replica throttle is exceeded
+  - AdminClient.deleteRecords() may cause replicas unable to fetch from beginning
+  - java.lang.ArithmeticException: / by zero
+  - Performance issue upgrading to kafka 1.0.1 or 1.1
+  - Source KTable checkpoint is not correct
+  - Connect isolation whitelist does not include SimpleHeaderConverter
+  - ConnectSchema#equals() broken for array-typed default values
+  - Concurrent createTopics calls may throw NodeExistsException
+  - ReplicaFetcher thread may die because of inconsistent log start offset in fetch response
+  - PushHttpMetricsReporter may deadlock when processing metrics changes
+  - Log cleaner fails with transaction markers that are deleted during clean
+  - Incorrect check for keystore/truststore dynamic update
+  - Request handler deadlocks attempting to acquire group metadata lock
+  - Add Second Check for End Offset During Restore
+  - Delay initiating the txn on producers until initializeTopology with EOS turned on
+  - Broker should load credentials from ZK before requests are allowed
+  - JsonConverter generates "Mismatching schema" DataException
+  - ERROR "SubscriptionInfo - unable to decode subscription data: version=2" when upgrading from 0.10.0.0 to 0.10.2.1
+  - RocksDB segments not removed when store is closed causes re-initialization to fail
+  - Streams quickstart pom.xml is missing versions for a bunch of plugins
+  - SourceTask#stop() not called after exception raised in poll()
+  - LogCleanerManager.doneDeleting() should check the partition state before deleting the in progress partition
+  - Sink connectors that explicitly 'resume' topic partitions can resume a paused task
+  - GlobalStateManagerImpl should not write offsets of in-memory stores in checkpoint file
+  - Down-conversion fails for records with headers
+  - kafka-streams Invalid transition attempted from state READY to state ABORTING_TRANSACTION
+  - Scheduler cannot be cancelled from Punctuator
+  - GlobalKTable GlobalStateStore never finishes restoring when consuming aborted messages
+  - LeaderEpochFileCache.endOffsetFor() should check for UNDEFINED_EPOCH explicitly
+  - Kafka Streams does not commit transactions if data is produced via wall-clock punctuation
+  - Memory leak in org.apache.kafka.streams.processor.internals.StreamThread$StreamsMetricsThreadImpl
+  - In-sync replica delayed during fetch if replica throttle is exceeded
+  - AdminClient.deleteRecords() may cause replicas unable to fetch from beginning
+  - Performance issue upgrading to kafka 1.0.1 or 1.1
+  - Source KTable checkpoint is not correct
+  - ConnectSchema#equals() broken for array-typed default values
+  - ReplicaFetcher thread may die because of inconsistent log start offset in fetch response
+  - Log cleaner fails with transaction markers that are deleted during clean
+  - Request handler deadlocks attempting to acquire group metadata lock
+  - Fix broken links in Dockerfile
+  - Have State Stores Restore Before Initializing Toplogy
+  - Delay initiating the txn on producers until initializeTopology with EOS turned on
+  - Mute logger for reflections.org at the warn level in system tests
+  - KafkaProducer is not joining its IO thread properly
+  - Kafka connect: error with special characters in connector name
+  - ERROR "SubscriptionInfo - unable to decode subscription data: version=2" when upgrading from 0.10.0.0 to 0.10.2.1
+  - ClassCastException in BigQuery connector
+  - Make loadClass thread-safe for class loaders of Connect plugins
+  - Broken symlink interrupts scanning the plugin path
+  - mBeanName should be removed before returning from JmxReporter#removeAttribute()
+  - RocksDB segments not removed when store is closed causes re-initialization to fail
+  - Enforce layout of dependencies within a Connect plugin to be deterministic
+  - Broker leaks memory and file descriptors after sudden client disconnects
+  - Streams quickstart pom.xml is missing versions for a bunch of plugins
+  - SourceTask#stop() not called after exception raised in poll()
+  - LogCleanerManager.doneDeleting() should check the partition state before deleting the in progress partition
+  - Sink connectors that explicitly 'resume' topic partitions can resume a paused task
+  - GlobalStateManagerImpl should not write offsets of in-memory stores in checkpoint file
+  - kafka-streams Invalid transition attempted from state READY to state ABORTING_TRANSACTION
+  - GlobalKTable GlobalStateStore never finishes restoring when consuming aborted messages
+  - LeaderEpochFileCache.endOffsetFor() should check for UNDEFINED_EPOCH explicitly
+  - Kafka Streams does not commit transactions if data is produced via wall-clock punctuation
+  - Memory leak in org.apache.kafka.streams.processor.internals.StreamThread$StreamsMetricsThreadImpl
+  - Source KTable checkpoint is not correct
+  - ConnectSchema#equals() broken for array-typed default values
+  - Request handler deadlocks attempting to acquire group metadata lock
+  - Transient failure in kafka.api.SaslScramSslEndToEndAuthorizationTest.testTwoConsumersWithDifferentSaslCredentials
+  - Flaky ResetIntegrationTest
+  - Ineffective check of negative value in CompositeReadOnlyKeyValueStore#approximateNumEntries()
+  - Deadlock due to locking of DelayedProduce and group
+  - Streams State Restoration never completes when logging is disabled
+  - Replication Fetcher thread for a partition with no data fails to start
+  - KafkaFuture timeout fails to fire if a narrow race condition is hit
+  - Integer overflow in log cleaner cleanable ratio computation
+  - Kafka Request Handler deadlocks and brings down the cluster.
+  - Scanning plugin.path needs to support relative symlinks
+  - Major performance issue due to excessive logging during leader election
+  - Silent Data Loss in Kafka011 Transactional Producer
+  - Transaction markers are sometimes discarded if txns complete concurrently
+  - High memory usage on controller during partition reassignment
+  - RecordQueue.clear() does not clear MinTimestampTracker's maintained list
+  - GlobalKTable never finishes restoring when consuming transactional messages
+  - Additional failure testing for streams with bouncing brokers
+  - add max_number _of_retries to exponential backoff strategy
+  - Fix taskClass() method name in Connector and flush() signature in SinkTask
+  - Streams should not suspend tasks twice
+  - NullPointerException in client on MetadataRequest
+  - KafkaProducer.flush hangs when NetworkClient.handleCompletedReceives throws exception
+  - Calling KafkaProducer.close() from multiple threads may cause spurious error
+  - Kafka Streams keeps restoring state after shutdown is initiated during startup
+  - streams task gets stuck after re-balance due to LockException
+  - Clients get inconsistent connection states when SASL/SSL connection is marked CONECTED and DISCONNECTED at the same time
+  - LogCleaner stopped due to org.apache.kafka.common.errors.CorruptRecordException
+  - StreamsKafkaClient should not use StreamsConfig.POLL_MS_CONFIG
+  - Refactor kafkatest docker support
+  - bin/kafka-consumer-groups.sh failing to query offsets
+  - Documentation for altering topics
+  - KafkaConsumer: High memory allocation rate when idle
+  - The LastStableOffsetLag metric should be removed when partition is deleted
+  - KafkaConsumer.commitSync throws IllegalStateException: Attempt to retrieve exception from future which hasn't failed
+  - With transformations that mutate the topic-partition committing offsets should to refer to the original topic-partition
+  - Incorrect log size for topics larger than 2 GB
+  - Processor got uncaught exception: NullPointerException
+  - Group loading regression causing stale metadata/offsets cache
+  - Streams should not abort transaction when closing zombie task
+  - System test failure due to timeout starting Jmx tool
+  - KafkaApis.handleWriteTxnMarkerRequest can return UNSUPPORTED_FOR_MESSAGE_FORMAT error on partition emigration
+  - One or more consumers in a consumer-group stop consuming after rebalancing
+  - ducktape kafka service: do not assume Service contains num_nodes
+  - Consumer poll loop over the same record after a CorruptRecordException
+  - Replica fetcher thread crashes due to OffsetOutOfRangeException
+  - Using _DUCKTAPE_OPTIONS has no effect on executing tests
+  - Transient test failure: ResetConsumerGroupOffsetTest.testResetOffsetsToZonedDateTime
+  - Fix AdminClient request timeout handling bug resulting in continual BrokerNotAvailableExceptions
+  - Fix error handling, efficiency issue in AdminClient#describeConfigs
+  - producer missed header information when splitting batches
+  - Auto topic creation causes failure with older clusters
+  - [streams] 'null' values in state stores
+  - Connect WorkerSinkTask out of order offset commit can lead to inconsistent state
+  - KafkaAdminClient thread should be daemon
+  - Partition.makeLeader() should convert HW to OffsetMetadata before becoming the leader
+  - Broker crashes on startup when trying to parse empty snapshot files
+  - Delete topic and re-create topic immediate will delete the new topic's timeindex
+  - org.apache.kafka.streams.state.internals.Segments#segments method returns incorrect results when segments were added out of order
+  - StoreChangeLogReader needs to restore partitions that were added post initialization
+  - KafkaStreams state transitions not correct
+  - Support passing ZK chroot in system tests
+  - Update protocol documentation to mention message format v2
+  - Distinguish abortable failures in transactional producer
+  - Deletion of tombstones during cleaning should consider idempotent message retention
+  - ListOffset should take LSO into account when searching by timestamp
+  - Add the archetype project along with "write applications" web docs.
+  - KIP-146: Support per-connector/per-task classloaders in Connect
+  - Add Record Headers
+  - Add purgeDataBefore() API in AdminClient
+  - Add KStream.peek(ForeachAction)
+  - Add a tool to Reset Consumer Group Offsets
+  - Add internal leave.group.on.close config to consumer
+  - Add Exactly-Once Semantics to Streams
+  - Implement Transactional Coordinator
+  - Range Scan for Windowed State Stores
+  - Extend wire protocol to allow CRC32C
+  - Cluster collection returning methods should never return null
+  - Add Prompt to kafka-console-producer
+  - Allow users greater access to register custom streams metrics
+  - Exponential backoff for broker reconnect attempts (KIP-144)
+  - Add JMH module for Benchmarks
+  - Split the ProducerBatch and resend when received RecordTooLargeException
+  - Allow per stream/table timestamp extractor
+  - support throttling on request rate
+  - Replication Quota Tests: Ensure ZK updated before tests start
+  - REST configuration not visible in connector properties config files
+  - TopicCommand --describe shows topics marked for deletion as under-replicated and unavailable (KIP-137)
+  - RocksDB checkpoint files lost on kill -9
+  - Treat null-key records the same way for joins and aggreations
+  - Per listener security setting overrides (KIP-103)
+  - Kafka does not offer kafka-configs.bat on Windows box
+  - Parametrize streams benchmarks to run at scale
+  - Error message from Struct.validate() should include the name of the offending field.
+  - Add application.id to StreamThread name
+  - Improve Streams Reset Tool console output
+  - Add Float serializer, deserializer, serde
+  - Exploit #peek to implement #print() and other methods
+  - The Kafka build should run findbugs
+  - Inner classes which don't need a reference to the outer class should be static
+  - Fix findbugs warnings in kafka-tools
+  - throw NoOffsetForPartitionException once for all assigned partitions from poll
+  - Stream round-robin scheduler is inneficient
+  - Fix several FindBugs warnings in Clients and Connect
+  - SCRAM secret's should be better protected with Zookeeper ACLs
+  - set internal.leave.group.on.close to false in KafkaStreams
+  - Add listener tag to socket-server-metrics.connection-... metrics (KIP-136)
+  - Followups from KIP-101
+  - We shouldn't pass the underlying exception to RetriableCommitFailedException when an async offset commit fails.
+  - Optionally print out metrics after running the perf tests
+  - ReassignPartitionsCommand should protect against empty replica list assignment
+  - Censor SCRAM config change logging
+  - DumpLogSegments should not open index files with `rw`
+  - Add support for reading PID snapshot files to DumpLogSegments
+  - Improve internal Task APIs
+  - Trunk compatibility tests should test against 0.10.2
+  - Improve message for Kafka failed startup with non-Kafka data in data.dirs
+  - Controlled shutdown timeout message improvement
+  - reassign-partitions to check if broker of ID exists in cluster
+  - Add option "dry run" to Streams application reset tool
+  - AdminClient: add controller and clusterId methods to DescribeClusterResults
+  - KIP-153: Include only client traffic in BytesOutPerSec metric
+  - Application Reset Tool does not need to seek for internal topics
+  - New Short serializer, deserializer, serde
+  - Change Default unclean.leader.election.enabled from True to False
+  - Sticky Assignor should not cache the calculated assignment (KIP-54 follow-up)
+  - Support ExtendedDeserializer in Kafka Streams
+  - Remove Broker ACL resource type
+  - Request log should log throttle time
+- Generate javadoc for AdminClient and show configs in documentation
+  - Annoying braces showed on log.error using streams
+   Implement generation/term per leader to reconcile messages correctly
+  - Hold the produce request with ack > 1 in purgatory until replicas' HW has larger than the produce offset (KIP-101)
+  - Delete consumer offsets from kafka once the topic is deleted
+  - Clean up Controller Object on forced Resignation
+  - ConsumerGroupCommand throws GroupCoordinatorNotAvailableException when describing a non-existent group before the offset topic is created
+  - SASL unit tests dont work with IBM JDK
+  - Follower Broker cannot start if offsets are already out of range
+  - Remove deprecated producer configs.
+  - Kafka default -Xloggc settings should include GC log rotation flags
+  - Streams is creating two ProducerRecords for each send via RecordCollector
+  - Broker faills to start after ungraceful shutdown due to non-monotonically incrementing offsets in logs
+  - Log should check the return value of dir.mkdirs()
+  - KIP-115: __consumer_offsets wrong number of replicas at startup
+  - Issue with processing order of consumer properties in console consumer
+  - Exit Strategy: using exceptions instead of inline invocation of exit/halt
+  - Documentation still refers to AsyncProducer and SyncProducer
+  - KIP-151: Connect REST API should expose whether each connector is a source or sink
+  - KTable doesn't work with ProcessorTopologyTestDriver in Kafka 0.10.1.0
+  - rat license check not running in Jenkins
+  - When using ProcessorTopologyTestDriver, the combination of map and .groupByKey does not produce any result
+  - Set more conservative default values on RocksDB for memory usage
+  - Significant startup delays in KStreams app
+  - Kafka should not require SSL trust store password
+  - When the destination brokers are down or misconfigured in config, Streams should fail fast
+  - Connect Producer and Consumer ignore ssl parameters configured for worker
+  - Annotate integration tests and provide gradle build targets to run subsets of tests
+  - Controller send thread can't stop when broker change listener event trigger for dead brokers
+  - the argument of shell in doc wrong and command parsed error
+  - Kafka Streams allows you to provide strings with illegal characters for internal topic names
+  - gradle-generated core eclipse project has incorrect source folder structure
+  - Refresh consumer metadata more frequently for unknown subscribed topics
+  - KIP-154: Connect should create internal topics
+  - Fix Streams window retention policy
+  - KIP-100 api changes break Java 8 lambda expressions in some cases
+  - Python VerifiableConsumer service has thread-safety bug for event_handlers
+  - Avoid unnecessary task movement across threads during rebalance
+  - OffsetValidationTest fails validation with "Current position greater than the total number of consumed records"
+  - StreamsKafkaClient drops security configs
+  - Fix Transient failure in BrokerApiVersionsCommandTest.checkBrokerApiVersionCommandOutput
+  - Implement remaining KIP-66 SMTs
+  - Fix logic for re-checking if internal topic is ready
+  - connect jars are missing LICENSE/NOTICE files
+  - Timed out waiting for consumption in OffsetValidationTest.test_broker_failure
+  - Clean up of state directories can possibly remove stores that are about to be used by another thread
+  - KafkaConsumer#commitSync should clone its input
+  - Fix deadlock issue during MM shutdown
+  - Remove generic type of class ClientState
+  - Memory leak in RecordAccumulator.append
+  - Streams_bounce test failing occassionally
+  - fix join-time-max and sync-time-max MeasurableStat type
+  - Streams Simple Benchmark MB/sec calculation is not correct for Join operations
+  - SimpleBenchmark test fails for streams
+  - Improve NetworkClient trace logging of request details
+  - Connect WorkerSinkTask is missing checks for NO_TIMESTAMP
+  - org.apache.kafka.clients.producer.KafkaProducerTest#testConstructorFailureCloseResource and Similar Tests are Failing on some Systems (127.0.53.53 Collision Warning)
+  - Implement graceful handling for improperly formed compressed message sets
+  - Kafka client Heartbeat thread use all the cpu.
+  - Failure in kafka/tests/kafkatest/tests/core/security_rolling_upgrade_test.py
+  - KIP-128: Blackbox or pass through converter or ByteArrayConverter for connect
+  - Broker level configuration 'log.segment.bytes' not used when 'segment.bytes' not configured per topic.
+  - ProcessorTopologyTestDriver does not forward extracted timestamps to internal topics
+  - Kafka cannot recover after a disk full
+  - Kafka Streams - unable to add state stores when using wildcard topics on the source
+  - Fix some findbugs warnings in Kafka Java client
+  - Streams State transition ASCII diagrams need fixing and polishing
+  - KafkaConsumer: ConsumerConfig gets logged twice.
+  - docker/run_tests.sh should set up /opt/kafka-dev to be the source directory
+  - SchemaBuilder should be more lax about checking that fields are unset if they are being set to the same value
+  - ReplicaFetchThread may fail to create due to existing metric
+  - ZookeeperLeaderElector not respecting zookeeper.set.acl
+  - Fix some findbugs warnings in Kafka Streams
+  - ProcessorTopologyTestDriver does not work when using .through()
+  - Config validation in Connector plugins need to compare against both canonical and simple class names
+  - NetworkClient should only consider a connection to be fail after attempt to connect
+  - Stream thread getting into deadlock state while trying to get rocksdb lock in retryWithBackoff
+  - SessionStore.fetch(key) is a performance bottleneck
+  - Struct SchemaBuilder should not allow duplicate fields.
+  - Querying window store may return unwanted keys
+  - Kafka Secure Migrator tool doesn't secure all the nodes
+  - Kafka console consumer property is ignored
+  - Kafka Connect does not log connector configuration errors
+  - processstreamwithcachedstatestore and other streams benchmarks fail occasionally
+  - kafka.request.logger TRACE regression
+  - Fix findbugs "default character set in use" warnings
+  - Fix findbugs "format string should use %n rather than \n" in tools
+  - Fix findbugs warnings in kafka-core
+  - Make ProduceRequest thread-safe
+  - Utils#delete should correctly handle I/O errors and symlinks
+  - Remove unused code for reading Shell command stdout and add unit test
+  - Add streams tests with brokers failing
+  - Document that stores must not be closed when Processors are closed
+  - Fix findbugs warnings in Kafka-Connect-API
+  - Add a configurable delay to the initial consumer group rebalance
+  - KStreamsTestDriver fails with NPE when KStream.to() sinks are used
+  - Transformation Key/Value type references should be to class name(), not canonicalName()
+  - Batch resetting offsets in Streams' StoreChangelogReader
+  - Kafka Connect: Offset committing times out before expected
+  - Fix an "unread field" findbugs warning in streams examples
+  - Suppress findbugs warnings about machine-generated code in jmh-benchmarks
+  - remove controller concurrent access to non-threadsafe NetworkClient, Selector, and SSLEngine
+  - Delete the kafka to prefix the name of the keystore and truststore file will be more suitable
+  - kafka-connect: fix findbugs issues in connect/runtime
+  - testReprocessingFromScratch unit test failure
+  - Fix findbugs warnings in kafka-clients
+  - Fix remaining findbugs warnings in Kafka Streams
+  - StreamThread should catch InvalidTopicException
+  - JoinIntegrationTest fails occasionally
+  - Fail the build when findbugs fails
+  - SSL Channel not ready but tcp is established and the server is hung will not sending metadata
+  - running multiple kafka streams instances causes one or more instance to get into file contention
+  - Increase number of Streams producer retries from the default of 0
+  - InFlightRequests#isEmpty() always returns false
+  - Add FindCoordinatorRequest RPC stub and update InitPidRequest for KIP-98
+  - NullPointerException while using GlobalKTable in KafkaStreams
+  - Chroot check should be done for each ZkUtils instance
+  - Avoid DNS reverse lookup in security-critical TLS code path
+  - Kafka Streams skipped-records-rate sensor producing nonzero values even when FailOnInvalidTimestamp is used as extractor
+  - Kafka Streams stuck rebalancing after exception thrown in rebalance listener
+  - Defer exception to the next pollOnce() if consumer's fetch position has already increased
+  - PartitionRecords.fetchRecords(...) should defer exception to the next call if iterator has already moved across any valid record
+  - two versions of jackson-annotations-xxx.jar in distribution tgz
+  - Update topic expiry time in Metadata every time the topic metadata is requested
+  - some spelling error in code comment
+  - Kafka Streams SessionStore.findSessions javadoc broken
+  - ThreadCacheTest.cacheOverheadsSmallValues fails intermittently
+  - Replica Deletion Regression from KIP-101
+  - ProducerPerformanceService failing due to parsing error
+  - Remove KafkaController's incrementControllerEpoch method parameter
+  - Transient test failure SocketServerTest.testMetricCollectionAfterShutdown
+  - Controller Health Metrics (KIP-143)
+  - Flaky ResetIntegrationTest
+  - Windows platform does not offer kafka-broker-api-versions.bat
+  - MinTimestampTracker uses confusing variable names
+  - LZ4 decompression is 4-5x slower than Snappy on small batches / messages
+  - SetSchemaMetadata does not replace the schemas in structs correctly
+  - streams task gets stuck after re-balance due to LockException
+  - KafkaConsumer.close should be idempotent
+  - KafkaAdminClientIntegration test should wait until metadata is propagated to all brokers
+  - CachingSessionStore doesn't fetchPrevious correctly.
+  - SASL tests failing with Could not find a 'KafkaServer' or 'sasl_plaintext.KafkaServer' entry in the JAAS configuration
+  - RocksDb might stall in environments with 1 core only
+  - RocksDbStore#openIterators should be synchronized, since it is accessed from multiple threads
+  - Percentilles are calculated incorrectly
+  - CachingSessionStore doesn't use the default keySerde.
+  - RocksDBSessionStore doesn't use default aggSerde.
+  - KafkaConsumer should not skip a corrupted record after throwing an exception.
+  - IllegalStateException in ensureOpenForRecordAppend
+  - Small JavaDoc fix for AdminClient#describeTopics
+  - Cached Session/Window store may return error on iterator.peekNextKey()
+  - NullPointerException (NPE) in SourceNodeRecordDeserializer.deserialize
+  - Reflections logs excessive warnings when scanning classpaths
+  - Recommended values for Connect transformations contain the wrong class name
+  - Kafka broker fails to start if a topic containing dot in its name is marked for delete but hasn't been deleted during previous uptime
+  - Regression in on-disk log size when using Snappy compression with 0.8.2 log message format
+  - GlobalKTable does not checkpoint offsets after restoring state
+  - Tests which delete singleton metrics break subsequent metrics tests
+  - handleFetchRequest should do down conversion after throttling
+  - kakfa-clients consume 100% CPU with manual partition assignment when network connection is lost
+  - Move ACLs, Config, NodeVersions classes into org.apache.kafka.common
+  - Follow-up improvements for consumer offset reset tool (KIP-122)
+  - kafka-console-consumer: `--value-deserializer` is not working but `--property value.deserializer` does
+  - One StopReplicaRequest will caused two Responses
+  - Do not apply exponential backoff if users have overridden reconnect.backoff.ms
+  - PlainSaslServerFactory should allow a null Map in getMechanismNames
+  - FetchRequest doesn't implement toString
+  - Missing logging information in ReplicaFetcher
+  - Stores not queryable after one thread died
+  - Log cleaning can increase message size and cause cleaner to crash with buffer overflow
+  - MemoryRecords.filterTo can return corrupt data if output buffer is not large enough
+  - AdminClient: add close with timeout, fix some timeout bugs
+  - Connection Lose during Kafka Kerberos Renewal process
+  - Replica list in the metadata cache on the broker may have different order from zookeeper
+  - rocksdb.config.setter must be a class instance, not a class name
+  - ListGroup requires Describe on Cluster, but the command-line AclCommand tool does not allow this to be set
+  - There is a Misspell in ResetIntegrationTest
+  - Change message.timestamp.difference.max.ms back to Long.MaxValue
+  - Some socket connections not closed after restart of Kafka Streams
+  - KafkaConsumer occasionally hits IllegalStateException
+  - Modify Unstable annotations in Streams API
+  - baseTimestamp should always have a create timestamp
+  - MirrorMaker not preserving headers
+  - Down-converted uncompressed batches should respect fetch offset
+  - Add EOS integration tests for Streams API
+  - Add EOS system tests for Streams API
+  - Kafka Streams skipped-records-rate sensor produces nonzero values when the timestamps are valid
+  - ConsoleConsumer prints out object addresses rather than what is expected
+  - AdminClient gets "server returned information about unknown correlation ID" when communicating with older brokers
+  - Transactions: Concurrent transactional consumer loses messages when there are broker bounces
+  - Transient test failure: KafkaConsumerTest.testChangingRegexSubscription
+  - Log recovery can fail if topic names contain one of the index suffixes
+  - Transactional Producer allows batches to expire and commits transactions regardless
+  - KafkaAdminClient#timeoutCallsInFlight does not work as expected
+  - Distributed Herder Deadlocks on Shutdown
+  - Add more AdminClient checks to ClientCompatibilityTest
+  - Log cleaner fails due to large offset in segment file
+  - Console consumer offset commit regression
+  - TransactionCoordinator doesn't complete transition to PrepareCommit state
+  - TransactionCoordinator doesn't complete transition to CompleteCommit
+  - ZkUtils.getAllPartitions() may fail if a topic is marked for deletion
+  - Multiple produce request failures causes invalid state transition in TransactionManager
+  - Transient test failure: SaslPlainSslEndToEndAuthorizationTest.testNoProduceWithDescribeAcl
+  - Streams producer `client.id` are not unique for EOS
+  - TimestampConverter's "type" config conflicts with the basic Transformation "type" config
+  - Flaky test TransactionsTest.testReadCommittedConsumerShouldNotSeeUndecidedData
+  - Scripts to startup Connect in system tests have too short a timeout
+  - Update java docs for consumer and producer to be up to date for EOS
+  - Producer fails with NPE if compressed V0 or V1 record is larger than batch size
+  - MemoryRecordsBuilder.hasRoomfor doesn't take into account the headers while computing available space
+  - Controller incorrectly logs rack information when new brokers are added
+  - Connector validate REST endpoint returning duplicate entries in "groups"
+  - Connector config validation REST API endpoint not including fields for transformations
+  - TransactionalProducer sleeps unnecessarily long during back to back transactions
+  - org.apache.kafka logging should go to server.log
+  - The ProducerPerformance tool should support transactions
+  - Connect validation API stops returning recommendations for some fields after the right sequence of requests
+  - Remove deprecated APIs for 0.11.0.0
+  - Drop support for Scala 2.10 (KIP-119)
+  - Remove unstable markers from Connect APIs
+  - KTable materialization and improved semantics
+  - Transient failure in ZooKeeperSecurityUpgradeTest.test_zk_security_upgrade with security_protocol = SASL_PLAINTEXT, SSL
+  - Test with two SASL_SSL listeners with different JAAS contexts
+  - Implement KIP-98 transactional methods in the MockProducer
+  - Add cases for concurrent transactional reads and writes in system tests
+  - SyncProducerTest.testReachableServer has become flaky
+  - KIP-54: Add rebalance with a minimal number of reassignments to server-defined strategy list
+  - ProducerSendTest.testCloseWithZeroTimeoutFromCallerThread Transient Failure
+  - Transient Failure in kafka.api.PlaintextProducerSendTest.testFlush
+  - Mark the old Scala consumer and related classes as deprecated
+  - Create Java Admin Client
+  - Implement KIP-140 RPCs and APIs for creating, altering, and listing ACLs
+  - Describe/Alter Configs protocol, server and client (KIP-133)
+  - Transient test failure: kafka.api.SslProducerSendTest.testSendNonCompressedMessageWithCreateTime
+  - Unstable test KStreamRepartitionJoinTest.shouldCorrectlyRepartitionOnJoinOperations
+  - Transient test failure: ConsumerBounceTest.testConsumptionWithBrokerFailures
+  - Transient failure in QueryableStateIntegrationTest.queryOnRebalance
+  - Address 2.12 eta-expansion warnings
+  - Update release process so that Scala 2.12 artifacts are published
+  - Run tests on travis-ci using docker
+  - Transient failure in org.apache.kafka.clients.consumer.KafkaConsumerTest.testWakeupWithFetchDataAvailable
+  - QueryableStateIntegrationTest.shouldNotMakeStoreAvailableUntilAllStoresAvailable is occasionally failing on jenkins
+  - Improve test coverage of ProcessorStateManager
+  - Improve test coverage of StreamsPartitionAssignor
+  - Improve test coverage of ProcessorTopology
+  - Improve test coverage AbstractProcessorContext
+  - Improve test coverage of GlobalStreamThread
+  - Improve test coverage StreamTask
+  - Improve test coverage GlobalStateManagerImpl
+  - Improve test coverage KStreamBuilder
+  - Improve test coverage MemoryLRUCache
+  - Improve test coverage of CompositeReadOnlyWindowStore
+  - Improve test coverage KafkaStreams
+  - Improve test coverage TopologyBuilder
+  - Transient test failure: ConsumerCoordinatorTest.testHeartbeatThreadClose
+  - Message format changes for idempotent/transactional producer
+  - Implement idempotent producer
+  - Implement transactional clients
+  - Transient test failure: org.apache.kafka.streams.integration.JoinIntegrationTest.shouldCountClicksPerRegion (again)
+  - Consider disabling record level CRC checks for message format V2
+  - Failure in kafka.admin.DescribeConsumerGroupTest.testDescribeExistingGroupWithNoMembersWithNewConsumer
+  - Implementation and unit tests for request handler thread utilization quota
+  - Add network handler thread utilization to request quota calculation
+  - Add documentation for request quotas
+  - Transient failure of AdminClientTest.testDeleteRecordsWithException
+  - Add producer per task support
+  - Add request/response classes for transactions (KIP-98)
+  - KeyValueStore.put may throw exception unrelated to the current put attempt
+  - Exactly-once upgrade notes
+  - Update Message Delivery Semantics section to take into account KIP-98
+  - convert kafka controller to a single-threaded event queue model
+  - Additional validation in validateMessagesAndAssignOffsets
+  - Reconsider default retries for idempotent producer
+  - add controller integration tests
+  - Load only batch header when rebuilding producer ID map
+  - Refactor AdminUtils to use zkUtils methods instad of zkUtils.zkClient
+  - remove preferred replica election state from ControllerContext
+  - Implement transaction index for KIP-98
+  - shouldInnerLeftJoin unit test fails
+  - TransactionCoordinator - Check inter broker protocol and message format and raise errors if incompatible
+  - TransactionCoordinator - Add ACL check for each request
+  - Change InterBrokerSendThread to use a Queue per broker
+  - WriteTxnMarkers and complete commit/abort on partition immigration
+  - Abort long running transactions
+  - Move coordinatorEpoch from WriteTxnMarkerRequest to TxnMarkerEntry
+  - KafkaProducer's TransactionManager needs a review on synchronization
+  - Refactor TransactionCoordinator in-memory structure and error handling logic
+  - KIP-98 : broker side handling for the TxnOffsetCommitRequest
+  - Add a reference to AdminClient to docs/api.html
+  - TC should not accept empty string transactional id
+  - Transient failure: ControllerIntegrationTest.testPreferredReplicaLeaderElection
+  - Log connection termination during authentication
+  - Transient failure: ControllerIntegrationTest.testControllerMoveIncrementsControllerEpoch
+  - Transient failure: RequestQuotaTest.testResponseThrottleTime
+  - Avoid expensive initialization of producer state when upgrading
+  - Add Integration tests for transactional producer
+  - Autogenerate Consumer Fetcher metrics
+  - LogCleaner should be transaction-aware
+  - Handle topic deletion for ongoing transactions
+  - SaslScramSslEndToEndAuthorizationTest.testNoConsumeWithoutDescribeAclViaSubscribe
+  - TransactinoCoordinator does not bump epoch when aborting open transactions
+  - Consumer GroupCoordinator should continue to materialize committed offsets in offset order even for transactional offset commits
+  - Remove retention time from TxnOffsetCommit RPC
+  - Transaction index recovery does not snapshot properly
+  - Producer should drop queued sends when transaction is aborted
+  - Fix flaky test LogCleanerTest.testCommitMarkerRemoval
+  - move all partition and replica state transition rules into their states
+  - TransactionalId authorization should imply ProducerId authorization
+  - Producer should not send AbortTxn unless transaction has actually begun
+  - TransactionsBounceTest occasionally sees INVALID_TXN_STATE errors
+  - TransactionBounceTest occasionally fails due to partition errors
+  - KafkaConsumer.committed() should get latest committed offsets from the server
+  - Review and improve AdminClient Javadoc for the first release (KIP-117)
+  - Review and potentially tweak AdminClient API for the initial release (KIP-117)
+  - TransactionCoordinator must expire transactionalIds
+  - Protect concurrent access to the cached transaction status
+  - System tests for KIP-98 / transactions
+  - Transactions integration test: Use factory methods to keep track of open producers and consumers and close them all on tearDown
+  - Update clients and server code to make sure that epoch and sequence numbers wrap around
+  - AdminClient should not trigger auto creation of topics
+  - Fix authorization checks in AdminClient
+  - TC should handle UNSUPPORTED_FOR_MESSAGE_FORMAT in WriteTxnMarker response
+  - reset ControllerContext during resignation
+  - Update KIP-98 to reflect changes during implementation.
+  - Update produce/fetch throttle time metrics for any request throttle
+  - Resolve AddPartitions response error code inconsistency
+  - Transactions system test with hard broker bounces fails sporadically
+  - Add additional test cases for batch splitting to ensure idempotent/transactional metadata is preserved
+  - Broker clean bounce test puts the broker into a 'CONCURRENT_TRANSACTIONS' state permanently
+  - Broker returns messages beyond "latest stable offset" to transactional consumer in read_committed mode
+  - StackOverFlow error in transaction coordinator
+  - Producer attempts to send transactional messages before adding partitions to transaction
+  - Fix regression in compressed message iteration affecting magic v0 and v1
+  - Transactions: Concurrent transactional consumer reads aborted messages
+  - Last Stable Offset not returned in Fetch request
+  - Transactional producer cannot find coordinator when trying to abort transaction after error
+  - Transactional producer aborts batches incorrectly in abortable error state
+  - Producer IllegalStateException: Batch has already been completed
+  - Produce state lost if no snapshot retained
+  - TransactionalMessageCopier should be force killed on test shutdown
+  - UnsupportedOperationException in WriteTxnMarkers handler
+  - Consumer should use last offset from batch to set next fetch offset
+  - read current brokers from zookeeper upon processing broker change
+- Drop /usr/bin/kafka-consumer-offset-checker.sh . No longer provided by upstream
+- Drop /usr/bin/kafka-replay-log-producer.sh . No longer provided by upstream
+- Drop /usr/bin/kafka-simple-consumer-shell.sh . No longer provided by upstream
+- Use %license macro
+- Use /run instead of /var/run
+
+-------------------------------------------------------------------
+Tue Aug  7 13:05:11 UTC 2018 - johannes.grassler@suse.com
+
+- Remove commented Requires and BuildRequires
+- Add pointer to documentation on kafka-kit rebuild
+- Refresh lock-down-jmxremote.patch and  rotate-gc-log.patch
+- Add noreplace directive for /etc/kafka/server.properties
+- Update to version 0.10.2.2 (bsc#1102920, CVE-2018-1288)
+
+  * Improvements:
+
+    * [KAFKA-4965] - set internal.leave.group.on.close to false in
+                     KafkaStreams
+    * [KAFKA-5118] - Improve message for Kafka failed startup with
+                     non-Kafka data in data.dirs
+    * [KAFKA-5242] - add max_number _of_retries to exponential
+                     backoff strategy
+    * [KAFKA-7009] - Mute logger for reflections.org at the warn
+                     level in system tests
+
+  * Bugs:
+
+    * [KAFKA-4827] - Kafka connect: error with special characters
+                     in connector name
+    * [KAFKA-5150] - LZ4 decompression is 4-5x slower than Snappy
+                     on small batches / messages
+    * [KAFKA-5167] - streams task gets stuck after re-balance due
+                     to LockException
+    * [KAFKA-5205] - CachingSessionStore doesn't use the default
+                     keySerde.
+    * [KAFKA-5206] - RocksDBSessionStore doesn't use default
+                     aggSerde.
+    * [KAFKA-5230] - Recommended values for Connect
+                     transformations contain the wrong class name
+    * [KAFKA-5232] - Kafka broker fails to start if a topic
+                     containing dot in its name is marked for
+                     delete but hasn't been deleted during
+                     previous uptime
+    * [KAFKA-5241] - GlobalKTable does not checkpoint offsets
+                     after restoring state
+    * [KAFKA-5316] - Log cleaning can increase message size and
+                     cause cleaner to crash with buffer overflow
+    * [KAFKA-5345] - Some socket connections not closed after
+                     restart of Kafka Streams
+    * [KAFKA-5395] - Distributed Herder Deadlocks on Shutdown
+    * [KAFKA-5413] - Log cleaner fails due to large offset in
+                     segment file
+    * [KAFKA-5464] - StreamsKafkaClient should not use
+                     StreamsConfig.POLL_MS_CONFIG
+    * [KAFKA-5484] - Refactor kafkatest docker support
+    * [KAFKA-5623] - ducktape kafka service: do not assume Service
+                     contains num_nodes
+    * [KAFKA-5643] - Using _DUCKTAPE_OPTIONS has no effect on
+                     executing tests
+    * [KAFKA-5731] - Connect WorkerSinkTask out of order offset
+                     commit can lead to inconsistent state
+    * [KAFKA-6054] - ERROR "SubscriptionInfo - unable to decode
+                     subscription data: version=2" when upgrading
+                     from 0.10.0.0 to 0.10.2.1
+    * [KAFKA-6360] - RocksDB segments not removed when store is
+                     closed causes re-initialization to fail
+    * [KAFKA-6371] - FetchMetadata creates unneeded Strings on
+                     instantiation
+    * [KAFKA-6566] - SourceTask#stop() not called after exception
+                     raised in poll()
+    * [KAFKA-6661] - Sink connectors that explicitly 'resume'
+                     topic partitions can resume a paused task
+    * [KAFKA-6711] - GlobalStateManagerImpl should not write
+                     offsets of in-memory stores in checkpoint
+                     file
+    * [KAFKA-7021] - Source KTable checkpoint is not correct
+    * [KAFKA-7058] - ConnectSchema#equals() broken for array-typed
+                     default values
+
+-------------------------------------------------------------------
+Thu Jun 28 15:11:15 UTC 2018 - johannes.grassler@suse.com
+
+- Reduce package ownership of tmpfiles.d to bare minium (SLE12 SP2) 
+
+-------------------------------------------------------------------
+Wed Jun 27 15:28:27 UTC 2018 - johannes.grassler@suse.com
+
+- Fix SLE and older Leap breakage caused by previous fix 
+
+-------------------------------------------------------------------
+Wed Jun 27 11:56:46 UTC 2018 - johannes.grassler@suse.com
+
+- Fix various spec errors affecting Leap 15 and Tumbleweed 
+
+-------------------------------------------------------------------
+Mon Jun 18 23:36:10 UTC 2018 - jodavis@suse.com
+
+- Set log rotation options (bsc#1094448)
+- Disable jmxremote debugging (bsc#1095603)
+
+-------------------------------------------------------------------
+Wed Mar 28 06:40:16 UTC 2018 - tbechtold@suse.com
+
+- Increase open file limits (bsc#1086909)
+
+-------------------------------------------------------------------
+Tue Apr 25 14:22:12 UTC 2017 - sjamgade@suse.com
+
+- Added Environment variables to the service files. (bsc#1048688, FATE#323204)
+
+-------------------------------------------------------------------
+Fri Feb 10 10:22:32 UTC 2017 - johannes.grassler@suse.com
+
+- Limited architecture to amd64
+- Cleaned up %files section
+- Downgraded to upstream version 0.9.0.1 
+- Switched from upstream binary tarball to Tetra based build 
+  from source
+
+-------------------------------------------------------------------
+Thu Jan  5 11:10:12 UTC 2017 - johannes.grassler@suse.com
+
+- Initial package.
+
