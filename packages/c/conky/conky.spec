@@ -1,7 +1,7 @@
 #
 # spec file for package conky
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_with    audacious
 %bcond_with    cmus
 %bcond_with    libXNVCtrl
-%if 0%{?is_opensuse}
+%if 0%{?is_opensuse} && 0%{?suse_version} <= 1500
 %bcond_without xmms2
 %else
 %bcond_with    xmms2
