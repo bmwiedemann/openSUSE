@@ -165,4 +165,12 @@
 - Use grub2-x86_64-xen instead of just grub2-xen</comment>
     <requestid>748700</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>402f161d2247627590039d84b1d5e2b9</srcmd5>
+    <version>16.0.0</version>
+    <time>1576014361</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755634</requestid>
+  </revision>
 </revisionlist>

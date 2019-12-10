@@ -1,10 +1,9 @@
 #!/bin/bash
-
-set -x
+set -euxo pipefail
 
 diskname=$1
 devname="$2"
-loopname="${devname%*p2}"
+loopname="${devname%*p?}"
 loopdev=/dev/${loopname#/dev/mapper/*}
 
 #==========================================
