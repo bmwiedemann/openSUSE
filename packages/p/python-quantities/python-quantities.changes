@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Wed Dec  4 14:30:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version
+- Add no_ufunc_clip.patch
+  Fixes: https://github.com/python-quantities/python-quantities/issues/158
+  From: https://github.com/python-quantities/python-quantities/pull/165
