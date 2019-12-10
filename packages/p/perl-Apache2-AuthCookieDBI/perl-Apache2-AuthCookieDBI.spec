@@ -17,7 +17,7 @@
 
 
 Name:           perl-Apache2-AuthCookieDBI
-Version:        2.18
+Version:        2.19
 Release:        0
 %define cpan_name Apache2-AuthCookieDBI
 Summary:        An AuthCookie module backed by a DBI database
@@ -47,6 +47,7 @@ Requires:       perl(Apache2::ServerUtil)
 Requires:       perl(Crypt::CBC) >= 2.13
 Requires:       perl(DBI) >= 1.4
 Requires:       perl(Date::Calc)
+Requires:       perl(Digest::SHA) >= 5.47
 Requires:       perl(mod_perl2) >= 1.999022
 Recommends:     perl(Digest::SHA) >= 5.47
 %{perl_requires}
@@ -101,19 +102,20 @@ browser and the login form is shown again.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-./Build test
+make test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+%perl_make_install
+%perl_process_packlist
 %perl_gen_filelist
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes generic_reg_auth_scheme.txt README schema.sql techspec.txt
+%doc Changes generic_reg_auth_scheme.txt README README-docker schema.sql techspec.txt
 %license LICENSE
 
 %changelog

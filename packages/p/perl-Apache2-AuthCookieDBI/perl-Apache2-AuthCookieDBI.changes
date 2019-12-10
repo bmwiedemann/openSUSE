@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  9 03:07:13 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.19
+   see /usr/share/doc/packages/perl-Apache2-AuthCookieDBI/Changes
+
+  2.19 - Sun Dec  8 15:06:12 PST 2019
+       - Added support for group authorizations on Apache 2.4.x. This addresses
+         https://github.com/matisse/Apache-AuthCookieDBI/issues/2 and
+         https://rt.cpan.org/Public/Bug/Display.html?id=106663.
+       - Refactored group authorization code.
+       - Eliminated duplicate calls of _dbi_config_vars() to improve efficiency.
+       - Added docker directory that contains Dockerfiles for Apache 2.2 and 2.4
+         Changes by Ed Sabol https://github.com/esabol
+
+-------------------------------------------------------------------
 Sun Aug 18 05:02:50 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.18
