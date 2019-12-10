@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 17:32:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid version-less dependencies that can cause problems with
+  some tools
+
+-------------------------------------------------------------------
 Fri Nov 22 04:52:39 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build the package with ant in order to prevent build cycles

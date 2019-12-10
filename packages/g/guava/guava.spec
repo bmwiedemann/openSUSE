@@ -99,8 +99,10 @@ for mod in guava guava-testlib; do
   %pom_remove_parent ${mod}
   %pom_xpath_inject pom:project '
     <groupId>com.google.guava</groupId>
-    <version>25.0-jre</version>' ${mod}
+    <version>%{version}</version>' ${mod}
 done
+
+%pom_change_dep -r -f ::::: :::::
 
 %build
 mkdir -p lib
