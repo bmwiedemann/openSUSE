@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Nov 19 08:33:52 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-HTTP-Entity-Parser/Changes
+
+  0.22 2019-11-16T14:21:39Z
+  
+      - Do not stringify nested hash references in JSON #11
+
+-------------------------------------------------------------------
+Wed Apr  3 07:48:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- initial package 0.21
+ * created by cpanspec 1.78.09
