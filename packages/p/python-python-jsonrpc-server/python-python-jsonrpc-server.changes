@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Dec  8 07:54:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Remove unnecessary build dependencies
+- Update to v0.3.2
+
+-------------------------------------------------------------------
+Wed Jul 10 05:55:04 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Rename to python-python-jsonrpc-server to
+  follow openSUSE Python naming conventions
+
+-------------------------------------------------------------------
+Sat Jan 26 21:43:37 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Initial package for version 0.1.2
