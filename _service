@@ -1,0 +1,19 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git@github.com:scalamacros/paradise.git</param>
+		<param name="revision">de1babb2d5e2a03898bd765c7898b3ce28b1fb6a</param>
+		<param name="versionformat">2.1.0</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git@github.com:scalamacros/paradise.git</param>
+		<param name="revision">8b6c2063754c4c962a96f291cffef912640501ea</param>
+		<param name="versionformat">2.0.0~M5</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>
