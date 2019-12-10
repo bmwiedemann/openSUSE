@@ -47,4 +47,41 @@
     <comment></comment>
     <requestid>632266</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3fa4f49a1eb65114d19f677ee488d4e3</srcmd5>
+    <version>1~20191210.603cfb975</version>
+    <time>1576014295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1~20191210.603cfb975:
+  * glsl-es-3.10: add precision statement to a shader missing it
+  * ext_dsa: add vao functions tests
+  * arb_vertex_attrib_64bit: fix error message in explicit location check
+  * Require a GLSL version in fs-shift-left-of-shift-left
+  * arb_separate_shader_objects: add linker test for glsl version 1.40
+  * ci: update wayland/ci-templates ref
+  * glsl-1.50: new GS test for emitted triangle strip orientation
+  * arb_blend_func_extended: Make issue-1917 test reproduce issue on BSW
+  * arb_program_interface_query: add gl_PerVertex redeclaration
+  * ext_disjoint_timer_query: use/test glGetInteger64vEXT call
+  * ext_texture_format_bgra8888: changes for effective internal format
+  * tbo: include tbo re-init test to opengl.py
+  * arb_blend_func_extended: Add test checking corruption on BSW/BDW
+  * gitlab-ci: use ccache to speed up builds
+  * gitlab-ci: set interruptible to auto-cancel CI pipelines
+  * glsl-es-3.10: port arb_shader_atomic_counters tests to glsl-es-3.10
+  * arb_shader_atomic_counters: fix buffers needed check
+  * arb_gl_spirv: add some simple ubo/ssbo tests
+  * arb_gl_spirv: add GL_ACTIVE_UNIFORMS checks
+  * tbo: test a re-initialization
+  * arb_shading_language_include: delete shader includes on teardown
+  * Add new tests for ROL/ROR instruction verification
+  * generated_tests: more python fixes
+  * tox: hold pytest-mock to version 1.11.2, since 1.12 seems to be broken
+  * python: fix collections.abc warning
+  * python: fix string tests
+  * glsl-es-3.10: add some image load/store tests with predication.
+  * piglit-util: expand piglit_integer_texture
+  * arb_shading_language_include: fix crash in process isolation</comment>
+    <requestid>755563</requestid>
+  </revision>
 </revisionlist>

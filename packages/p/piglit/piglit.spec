@@ -1,7 +1,7 @@
 #
 # spec file for package piglit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@
 %bcond_without opengles
 %endif
 Name:           piglit
-Version:        1~20180604.cde860ab3
+Version:        1~20191210.603cfb975
 Release:        0
 Summary:        OpenGL driver testing framework
 License:        MIT
@@ -113,7 +113,7 @@ be generated, including the ability to compare different test runs.
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
   -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON \
   -Wno-dev
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

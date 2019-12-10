@@ -1,4 +1,671 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:08:06 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20191210.603cfb975:
+  * glsl-es-3.10: add precision statement to a shader missing it
+  * ext_dsa: add vao functions tests
+  * arb_vertex_attrib_64bit: fix error message in explicit location check
+  * Require a GLSL version in fs-shift-left-of-shift-left
+  * arb_separate_shader_objects: add linker test for glsl version 1.40
+  * ci: update wayland/ci-templates ref
+  * glsl-1.50: new GS test for emitted triangle strip orientation
+  * arb_blend_func_extended: Make issue-1917 test reproduce issue on BSW
+  * arb_program_interface_query: add gl_PerVertex redeclaration
+  * ext_disjoint_timer_query: use/test glGetInteger64vEXT call
+  * ext_texture_format_bgra8888: changes for effective internal format
+  * tbo: include tbo re-init test to opengl.py
+  * arb_blend_func_extended: Add test checking corruption on BSW/BDW
+  * gitlab-ci: use ccache to speed up builds
+  * gitlab-ci: set interruptible to auto-cancel CI pipelines
+  * glsl-es-3.10: port arb_shader_atomic_counters tests to glsl-es-3.10
+  * arb_shader_atomic_counters: fix buffers needed check
+  * arb_gl_spirv: add some simple ubo/ssbo tests
+  * arb_gl_spirv: add GL_ACTIVE_UNIFORMS checks
+  * tbo: test a re-initialization
+  * arb_shading_language_include: delete shader includes on teardown
+  * Add new tests for ROL/ROR instruction verification
+  * generated_tests: more python fixes
+  * tox: hold pytest-mock to version 1.11.2, since 1.12 seems to be broken
+  * python: fix collections.abc warning
+  * python: fix string tests
+  * glsl-es-3.10: add some image load/store tests with predication.
+  * piglit-util: expand piglit_integer_texture
+  * arb_shading_language_include: fix crash in process isolation
+  * cl/create-context-from-type: fix typo in output error text
+  * gitlab-ci: avoid pulling all the git history each time
+  * gitlab-ci: limit ninja to 4 threads to avoid stealing resources from other jobs
+  * ext_occlusion_query_boolean: remove invalid enum check
+  * ext_disjoint_timer_query: add GL_QUERY_COUNTER_BITS_EXT tests
+  * arb_separate_shader_objects: remove broken test
+  * glsl-1.30: Add tests involving isnan() combined with other comparisons
+  * arb_sparse_buffer: tests EXT_direct_state_access interactions
+  * arb_texture_buffer_range: modify test to also use glTextureBufferRangeEXT
+  * ARB_instanced_arrays: Add test for VertexArrayVertexAttribDivisorEXT
+  * arb_gpu_shader_fp64: add test for EXT_direct_state_access interactions
+  * arb_clear_buffer_object: extends test to use Named functions
+  * shader_runner: don't use deleted query objects
+  * shader_runner: support query object failures in subtests
+  * shader_runner: fix garbled non-unicode output making piglit-run choke on it
+  * cmake: use DT_RUNPATH instead of DT_RPATH for executables
+  * arb_gl_spirv: add xfb tests for lines and triangles
+  * arb_gl_spirv: add xfb tests
+  * shader_runner: add xfb query object support
+  * shader_runner: add xfb testing support
+  * shader_runner: add support for glGetProgram queries
+  * Add a test of a select of a negation of an int cast from a float
+  * glx: fix pointer type
+  * egl: one more s/EGL_NO_CONFIG_MESA/EGL_NO_CONFIG_KHR/
+  * s/EGL_NO_CONFIG_MESA/EGL_NO_CONFIG_KHR/
+  * cmake: drop egl dependency version
+  * Use source code location for Mako's module_directory
+  * arb_gpu_shader_int64: add display list test
+  * egl: simple test for EGL_EXT_image_flush_external
+  * cl/get-device-info: fix variable type for CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE
+  * travis: drop overly complicated regular build as it's covered directly by gitlab now
+  * add pre-merge gitlab ci :)
+  * tox,cmake,travis: Add support and testing for Python 3.8
+  * Fix pbo-getteximage to check for GL_ARB_texture_cube_map_array
+  * tests: add test for PBO texture downloads
+  * arb_bindless_texture: test an unnamed explicitly bound ubo that contains a sampler
+  * arb_bindless_texture: test a basic unnamed ubo that contains a sampler
+  * glx-egl-switch-context: Do not compile if EGL unavailable
+  * glx,egl: Reproduce crash while switching contexts
+  * glsl: Verify that open-code bitfieldReverse is not improperly optimized
+  * ext_demote_to_helper_invocation: Add extension to [require]
+  * ext_demote_to_helper_invocation: avoid requiring GL 4.5
+  * arb_texture_view: add test verifying internal _Layer variable is cleared on texture units
+  * util-cl: be verbose if platform exposes no devices
+  * ext_demote_to_helper_invocation: Add execution tests
+  * ext_demote_to_helper_invocation: Add compiler tests
+  * glsl-1.20: test incompatible matrices multiplication
+  * vulkan: add geometry shader double interpolator test
+  * tests: add tests for ARB_texture_storage + EXT_dsa
+  * ext_direct_state_access: add test for glNamedCopyBufferSubDataEXT
+  * ext_direct_state_access: add glGenerateTextureMipmapEXT/glGenerateMultiTexMipmapEXT test
+  * ext_direct_state_access: add tests for EXT_texture_integer interactions
+  * GL_OES_EGL_image: be more verbose, correct typos
+  * glsl-es-3.10: regression checking for load_shared support on the nir scheduler
+  * GL_OES_EGL_image: include EGL_GL_TEXTURE_LEVEL_KHR usage in test
+  * glsl-1.10: add infinite loop tests
+  * vulkan: add geometry shader vertex overflow test
+  * glx-mesa-query-renderer: Fix build error
+  * glx-fbconfig-compliance: Drop accumulation buffer requirement
+  * glx-query-renderer-coverage: Start adding value sanity tests
+  * glx: Test for both strings for EXT_create_context_es{,2}_profile
+  * glx-destroycontext-3: Test calling DestroyContext redundantly
+  * tests/fp-long-alu: Memory leak in fp-long-alu test
+  * tests/texturing: Free miplevel info
+  * tests/arb_sample_shading: Multiple memory leaks
+  * shader_runner: sscanf returns incorrect value on 32-bit build
+  * glx-fbconfig-sanity: memory leak
+  * Apply path correction to correct argument
+  * generators: Add the default precision for floats in GLSL ES shaders
+  * glsl-es-1.00: Test that function return value has precision
+  * glsl-es-1.00: Test that mismatched function return precision fails
+  * arb_shading_language_include: test interaction with preprocessor defines
+  * arb_shading_language_include: compile test features when disabled
+  * arb_shading_language_include: add api functionality tests
+  * arb_shading_language_include: add api error tests
+  * arb_shading_language_include: compile test #line
+  * arb_shading_language_include: add compile tests for relative path
+  * glslparsertest: add support for setting a relative include path
+  * arb_shading_language_include: add explicit path compile tests
+  * glslparsertest: add support for adding dummy shader includes
+  * arb_shading_language_include: test relative paths
+  * shader_runner: add support for glCompileShaderIncludeARB()
+  * arb_shading_language_include: add some basic execution tests
+  * shader_runner: add basic GL_ARB_shading_language_include support
+  * teximage-errors: add TexSubImage variants
+  * tox,README,cmake: Remove testing of end-of-life Python 3.4
+  * egl: add new test for GL_OES_EGL_image
+  * glx/ext_no_config_context: Verify bad attributes are rejected
+  * glx/ext_no_config_context: Validate glXQueryContext correctness
+  * glx: Fix fbconfig matching in glx-make-glxdrawable-current
+  * egl: add additional test for EGL_ANDROID_blob_cache
+  * arb_enhanced_layouts: revert testing SPIR-V shaders on arb_enhanced_layouts tests
+  * travis: Drop python3.4
+  * travis: Schedule cmake build job first
+  * glsl-1.10: Add tests for do {} while (false) loops
+  * test/logicop: expand tests to also cover MSAA render target
+  * gl-1.1: Fix test for vertex counts.
+  * Add glsl parser tests for EXT_texture_shadow_lod
+  * glsl-1.30: Add a test for bad optimizations of (a << b) << c
+  * tests: cleanup potential errors at the end of EXT_dsa test
+  * tests: fix EXT_dsa framebuffer test
+  * EXT_shader_image_load_store: atomics should be done on single-component images
+  * EXT_shader_image_load_store: skip atomics for not-1x32 types
+  * shader_runner: allow enabling GL_DEPTH_CLAMP
+  * tests: fix test build requiring gles3
+  * arb_tessellation_shader: fix broken compat gl_ClipVertex test
+  * tests: add EXT_shader_image_load_store tests
+  * tests: Reproducer for 110796
+  * tests: enable intel_external_sampler_only for iris
+  * framework: Also skip logging info utils on EACCES.
+  * shader_runner: replace NamedBufferSubdata
+  * shader_runner: Add command line option to ignore uniform if it isn't found in shader Reviewed-by: Eric Anholt <eric@anholt.net>
+  * cl: Add tests for some cases that were broken with function calls
+  * arb_get_program_binary: test restore of SSO program
+  * arb_tessellation_shader: add some new gl_ClipVertex tests for compat
+  * vulkan/vkrunner: Use the new alternative names for setting uniforms
+  * framework/cl: Don't override timeout setting from cmdline
+  * tests/ext_frame_buffer_multisample: Release memory allocated by Test
+  * Add tests for EXT_dsa NamedProgram functions
+  * intel_shader_atomic_float_minmax: Explicitly request std430 layout
+  * ssbo/shared: fix min/max tests to specify std430
+  * framework/test: Add default 1min timeout to all OpenCL tests
+  * shader_runner: some extra skip reasong logging
+  * glsl-es-1.00: Only unroll a do-while-false loop once
+  * tests/fbo: init texture content
+  * tests/arb_direct_state_access: Memory leak
+  * util: Optionally validate SPIR-V after assembling
+  * util: Assemble SPIR-V with the correct target environment
+  * tests: Free memory returned by glXChooseFBConfig
+  * test/textureGather: memory leak
+  * tests/texelFetch: Memory leak
+  * arb_copy_buffer: NULL check for glMapBuffer outcome
+  * util/piglit-util-gl: Memory leaks in a number of tests
+  * tests/fp-indirections2: Memory isn't freed
+  * tests/arb_copy_image: Memory leak
+  * arb_texture_buffer_range: Fix buffer alignment in ranges-2 test
+  * tests/vertex-program-two-side: Memory leak
+  * draw-prim-rate: Fix Clang build error.
+  * Add a test that measures primitive rate
+  * opengl.py: fix incorrect ext_transform_instanced extension name
+  * rendermode-feedback: fix a crash
+  * test: fix resource leaking for depthstencil-render-miplevels
+  * test: fix core dump for depthstencil-render-miplevels
+  * ext_dsa: fix invalid empty shader in test
+  * ext_direct_state_access: test glTextureImage* with GL_PROXY_TEXTURE_* targets
+  * ext_direct_state_access: verify possible failures when using GL_COMPILE
+  * util/dma_buf: allow custom rendernode
+  * tests/overlapping-locations-input-attribs: Memory leak
+  * tests/line-aa-width: Memory leak
+  * fbo-generatemipmap-formats: Modify NPOT tex_width
+  * glx-multithread-buffer: Add a new test reproducing a radeonsi bug
+  * piglit_drm_dma_buf: fix NV12, YUV420, and YVU420 import tests for radeonsi
+  * Revert "cmake: make gbm a required build dependency"
+  * shader_runner: don't abort on atomic counter subtest failure
+  * cmake: make gbm a required build dependency
+  * util/dma_buf: drmGetVersion requires free
+  * glsl-1.20: Test various invalid type conversions in uniform initalizers
+  * glsl-1.20: Test mix(±1, b, c)
+  * Add new test for idiv by const optimizations
+  * shader_runner: add 'probe ssbo int'
+  * ext_direct_state_access: add tests CompressedMultiTexImage* functions
+  * ext_direct_state_access: add test for Framebuffer functions
+  * ext_direct_state_access: add test for glNamedFramebufferRenderbufferEXT
+  * ext_direct_state_access: add tests for ProgramUniformXXXEXT functions
+  * ext_direct_state_access: glGet*IndexedvEXT
+  * ext_direct_state_access: add test for glEnableClientStateiEXT / glDisableClientStateiEXT
+  * ext_direct_state_access: add test for glCompressedTexture*Image2DEXT
+  * ext_direct_state_access: add test for named buffer functions
+  * ext_direct_state_access: add test for multitexture functions
+  * ext_direct_state_access: add tests for glTexture*EXT functions
+  * ext_direct_state_access: add test for matrices functions
+  * egl-query-surface: really print the width in the error message
+  * egl: ask the X11 WM to keep windows the size we expect
+  * Fix drawarrays-vertex-count GL_LINES test
+  * Avoid undefined behavior in glsl-routing test
+  * s3tc-errors: Fix GCC unused-function warning.
+  * arb_blend_func_extended: fix gles3 version glClearDepth usage
+  * arb_blend_func_extended: Test dual src blending without second color output
+  * texelFetch: Print what miplevel failed.
+  * fbo: Silence compiler warnings about const mismatches
+  * Fix piglit_loge usage
+  * Add format warning attribute for piglit logs functions
+  * arb_texture_multisample: Tests working texelFetch() with DSA style
+  * Remove dead es3conform.py test suite
+  * README.md: add links to the table of contents
+  * README.md: fix the table of contents
+  * README.md: fix the formatting for the main sections
+  * s3tc-errors: Fix GCC unused-variable warning.
+  * egl: Fix tests for EGL_EXT_device_base extension list use.
+  * ext_shader_image_load_formatted: add a test for the extension
+  * amd_compressed_atc_texture: add miptree test
+  * arb_separate_shader_objects: add gl_PerVertex tests
+  * fbo-blit-check-limits: New test
+  * intel/ppgtt: memory alignment test.
+  * vec4: add a new test for issue 109759 and 110201
+  * packed_depth_stencil: warning for a non-zero 24-bit unused field
+  * nv_compute_shader_derivatives: Test textures with implicit LOD
+  * nv_compute_shader_derivatives: Test use of derivatives
+  * nv_compute_shader_derivatives: Test linker failures
+  * nv_compute_shader_derivatives: Test compiler failures
+  * nv_compute_shader_derivatives: Test new functions available in CS
+  * glsl-1.20: test 'invariant' propagation influence on globals matching
+  * glsl-1.20: test that 'invariant' qualifier does not propagate on uniforms
+  * ext_image_dma_buf_import: test for exporting imported buffer
+  * ext_gpu_shader4: test glBindFragDataLocationEXT and 'varying out'
+  * arb_separate_shader_objects: split linker tests
+  * ext_gpu_shader4: add compiler tests for everything
+  * Test that GL_PRIMITIVES_SUBMITTED queries don't include extra prims.
+  * EGL_EXT_image_dma_buf_import: add UYVY format suppor
+  * EGL_EXT_image_dma_buf_import: add YUYV format support
+  * egl: Add tests for EGL_EXT_device_base.
+  * Add a new test for a structure uniform splitting bug with samplers
+  * shader_runner: get proper access bitfield when calling MapBufferRange
+  * shader_runner: fix error checking on MapBuffer gles workaround
+  * fbo-scissor-blit: memory leak
+  * gl-1.1: Add a new test for large vertex counts.
+  * arb_sample_shading: Test interaction of apha-to-coverage, sample mask and MRT
+  * bitmap-heart-dance: Disable shader program before fixed functions
+  * egl: add test for EGL_MESA_query_driver
+  * ext_semaphore: add check for glGetIntegerv(GL_NUM_DEVICE_UUIDS_EXT)
+  * KHR_parallel_shader_compiler: new test (v2)
+  * fbo-formats: Reuse piglit_merge_result().
+  * arm_shader_image_load_store: Fix strict-aliasing warnings.
+  * util: Introduce fui() and uif() helpers for bit-casting floats/uints.
+  * fp-unpack-01: Reuse the shared piglit_half_from_float().
+  * arb_program_interface_query: use out resource to make it active
+  * arb_separate_shader_objects: remove misleading comments
+  * arb_program_interface_query: redefine built-ins with SSOs
+  * glx_arb_create_context: Fix build against older GL headers.
+  * arb_enhanced_layouts: corrected multiple comments
+  * glsl-1.10: test for crash in loop analysis
+  * arb_enhanced_layouts: add xfb_offset overlap test
+  * arb_enhanced_layouts: add another xfb_stride overflow test
+  * arb_enhanced_layouts: add component aliasing tests
+  * arb_enhanced_layouts: correct component usage with dvec{3,4} tests
+  * arb_enhanced_layouts: add aliasing tests with mixed type widths
+  * arb_enhanced_layouts: correct interpolation qualifiers
+  * arb_enhanced_layouts: GL_ARB_gpu_shader_fp64 requires GLSL 1.50
+  * arb_enhanced_layouts: corrected multiple comments
+  * arb_separate_shader_objects: add unused location qualified input test
+  * arb_separate_shader_objects: add location overlapping tests
+  * arb_separate_shader_objects: add rendez-vous-by mismatch tests
+  * arb_program_interface_query: correct rendez-vous by name matching
+  * arb_program_interface_query: correct tests table indentation
+  * tests: Check that count of vertex atomic counters enough for test
+  * update URLs after gitlab migration
+  * appveyor: Update instructions for personal repositories.
+  * appveyor: Fix build with CMake 3.13.3.
+  * EGL_EXT_image_dma_buf_import: fix p010, p012 input
+  * Add a test for writing to an indirect component of a swizzled vec4 TCS output
+  * Add a test for writing to an indirect component of a vec4 TCS output
+  * glx: add test for GLX_ARB_create_context_no_error
+  * egl: Add test for EGL_KHR_create_context_no_error
+  * Make glsl-fface-invariant accept either compile or link errors
+  * glsl-fs-discard-mrt: New test for bug 75207
+  * fs-texture-select: Fix undefined read of gl_TexCoord[0].
+  * getteximage-targets: Fix printing of failing coordinates.
+  * arb_indirect_parameters: Test working with conditional rendering
+  * glsl-1.10: test unrolling another loop with variable iteration limits
+  * arb_gpu_shader_int64: Test extracting individual bytes from 64-bit values
+  * shaders: Verify that -int(some_bool) & value is handled correctly
+  * viewport-clamp: to test the viewport clamping
+  * editorconfig: Add max_line_length property
+  * arb_shading_language_420pack: test invalid function return type
+  * ARB_shader_storage_buffer_object: check ssbo array optimizations
+  * arb_enhanced_layouts: use consistent test names
+  * arb_enhanced_layouts: Fix error in subtest result reporting
+  * arb_enhanced_layouts: don't call glLinkProgram twice
+  * EGL_EXT_image_dma_buf_import: add support for XYUV format
+  * glsl-1.10: fix some function call tests
+  * ext_color_buffer_float: check fp32 blend enforcement
+  * primitive-restart: extend the test to catch regressions of bug-109451
+  * tests/shaders/bug-109601: drop ARB_shader_storage_buffer_object requirement
+  * shaders: Reproduce a bug in the i965/anv backend compiler
+  * EGL_EXT_image_dma_buf_import: test alpha channel for AYUV format
+  * EGL_EXT_image_dma_buf_import: add P12, P16 format support
+  * EGL_EXT_image_dma_buf_import: add P10 format support
+  * map_buffer_range_test: use NULL instead of zero for ClearBuffer
+  * map_buffer_range_test: add tests to reproduce u_threaded & radeonsi bugs
+  * AMD_texture_texture4: new test
+  * Add new API tests for BPTC and RGTC GLES extensions (v2)
+  * opengl.py: add run_concurrent=False where needed
+  * tex-miplevel-selection: force compatibility when using 430 shader
+  * arb_enhanced_layouts: explicit-offset: add more corner cases
+  * summary/html: drop trailing slash in <br>
+  * summary/html: drop trailing slash in <img>
+  * summary/html: specify lang="en" in html tag
+  * summary/html: drop type from css-links
+  * summary/html: use html5 instead of xhtml
+  * arb_gpu_shader5: add more variants of the struct interpolateAt tests
+  * summary/html: escape html
+  * summary/html: ensure xml-line is the very first line
+  * summary/html: open pre-tag instead of closing it
+  * summary/html: close the right html-tag
+  * util: fix off-by-one when loading source
+  * util: simplify string duplication logic
+  * fix macro redefinition with libdrm>=2.4.95
+  * fbo-3d: test both POT and NPOT depths
+  * s3tc: fix error checking when NPOT is not available
+  * miptree: test ability to use upside down miptree
+  * Test that ES frag shader with invariant outputs compiles
+  * arb_tessellation_shader: Test unmatched TCS output usage
+  * website: Convert Makefile to build-html.sh shell script
+  * README.md: Customize for the piglit project
+  * index.rst: Change content to match current piglit website
+  * sphinx: Change theme from alabaster to flask
+  * conf.py: Customize for the Piglit project
+  * .gitlab-ci.yml: Build the website when the docs directory changes
+  * docs: Import gitlab sphinx example under docs directory
+  * glsl-1.10: test unrolling of loop where max iteration count guessed
+  * glsl-1.10: test unrolling loops with variable iteration limits
+  * Fix 'piglit resume'
+  * Probe pixel colors in bitmap-heart-dance test
+  * tests/ext_polygon_offset_clamp-draw: use subtest framework
+  * tests/ext_semaphore-api-errors: Fix typo "usigned" -> "unsigned"
+  * tests/ext_semaphore-api-errors: Use subtest mechanism
+  * tests/ext_semaphore_fd-api-errors: Enumerate subtests
+  * tests/ext_transform_feedback-max-varyings: use subtest framework
+  * tests/ext_transform_feedback-max-varyings: remove duplicate configs
+  * tests/ext_transform_feedback-max-varyings: fix result reporting
+  * tests/ext_transform_feedback-max-varyings: Always report subtests
+  * tests/ext_window_rectangles-dlist: enumerate subtests
+  * tests/gl-1.0-beginend-coverage: enumerate subtests
+  * tests/gl-1.0/beginend-coverage: Run nondlist tests
+  * tests: use subtest frameowrk in gl-1.0-dlist-beginend
+  * tests: use subtest framework for gl-1.0-rendermode-feedback
+  * tests: Use a helper function in gl-1.0-rendermode-feedback
+  * tests: Fix indent in gl-1.0/vertex-program-two-side
+  * tests: Use piglit_run_selected_subtest in gl-3.0-render-integer
+  * mesa_pack_invert/readpixels: enumerate subtests
+  * nv_image_formats/copy-image-formats: Convert to use subtests
+  * test/logicop: Use piglit_subtest mechanism
+  * arb_texture_view: fix security format warnings
+  * arb_gl_spirv: simple test, use correct reference colors
+  * ext_image_dma_buf_import/unsupported_format has no reason to be intel-only
+  * make sure 'unsupported format' test always uses an unsupported format
+  * tests: only run rounding tests if FE_UPWARD is present
+  * EGL_EXT_image_dma_buf_import: drop alpha-one to sample yuv tests
+  * travis: reflect new best-practice travis-ci configuration
+  * cl: Wait for kernel execution instead of flushing the queue in cl_piglit_execute kernel
+  * cl: Add execution event parameter to piglit_cl_enqueue_kernel
+  * program_interface_query: don't expect a valid location for TCS output
+  * drawoverhead: print results in the CSV format
+  * ext_window_rectangles/render: make the test more thorough
+  * primitive-restart-draw-mode: draw front and back faces in different colors
+  * tests/image_load_store/atomic: use piglit subtest framework
+  * texturing: run gles2 variants as well
+  * s3tc-errors: port to gles20
+  * s3tc-errors: port to gles31
+  * s3tc-texsubimage: port to gles2
+  * s3tc-teximage: port to gles2
+  * texturing: use piglit_draw_rect_tex instead of glBegin/glEnd
+  * texturing: make sure s3tc tests require GL 1.1
+  * arb_texture_view: Test interaction with ARB_shader_image_load_store
+  * EGL_EXT_image_dma_buf_import: set RGBA visual for yuv sampling tests
+  * EGL_EXT_image_dma_buf_import: fix error check with unknown drm format
+  * vulkan: Prefix group names for VkRunner tests with “vulkan”
+  * EGL_EXT_image_dma_buf_import: add AYUV format support
+  * remove ext_image_dma_buf_import-intel_external_sampler_with_dma_only
+  * khr_debug: fix invalid enum usage on gles3
+  * framework: Add support for serializing VkRunner tests
+  * framework/test: Use relative paths in the filename for VkRunnerTest
+  * framework/test: Set the filename property on VkRunnerTest
+  * Cmake: Install vk_shader_test files
+  * python: add explicit utf-8 encoding
+  * framework: fix python2
+  * vulkan: test cases for large local arrays
+  * vulkan: Add some tests for glsl450 builtin functions using doubles
+  * framework: Add a vulkan tests profile
+  * glsl/frexp: fix the incorrect expected values
+  * idtech: Fix format-security warning.
+  * egl_ext_device_drm: Fix format warning.
+  * gles-3.0: test for vertex attribute aliasing
+  * egl_ext_device_drm: don't fail the test if open("/dev/dri/cardX") errors
+  * piglit: remove unneeded wayland-egl dependency
+  * tests: enable test case egl-context-priority on all egl platforms
+  * glsl-1.30: update linker test for inter stage in/out vars usage
+  * fbo: add a few quirk-tests for format-emulation
+  * piglit/vbo: memory leak
+  * glsl-1.50: Verify that gl_ClipDistance cannot be redeclared to change qualifier or type
+  * glsl-1.30: Verify that gl_ClipDistance cannot be redeclared to change qualifier or type
+  * glsl-1.10: Verify that gl_TexCoord cannot be redeclared to change qualifier or type
+  * glsl-1.50: Add missing out qualifier on gl_ClipDistance redeclaration
+  * Build fix for previous commit
+  * arb_tessellation_shader/tes-gs-max-output: new test for TES/GS amplification
+  * glsl-1.50/gs-max-output: new test for geometry shader amplification
+  * arb_shader_image_load_store: Test format incompatible texture buffer
+  * idTech: fix extensions string list
+  * glsl-1.10: add tests for an array index on a swizzled vec lvalue
+  * glsl-1.10: test some arithmetic on non-existing struct member
+  * Add tests for GL_EXTENSION_STRING vs. old idTech2 / idTech3 games
+  * sanity: Add some generated tests
+  * sanity: Support generated shader tests
+  * sanity: Fix test names
+  * khr_texture_compression_astc: Add void-extent-dl-bug
+  * tests: Split out ASTC formats into a header
+  * glsl-1.50: Add test for geometry shader with unused outputs
+  * glsl-sdl-sincos-accuracy: Add a new test for a vc4 bug with SDL2.
+  * sanity: Don't add generated_tests since they are built later
+  * Revert "sanity: Add various shader_runner tests"
+  * sanity: Add various shader_runner tests
+  * sanity: Turn shader_test list into a tuple
+  * framework/wflinfo: delete deprecated interface
+  * serializer: serialize new fast-skip attributes
+  * framework/test: Convert tests to new fast-skip interface
+  * unittests/wflinfo: Update tests for new API
+  * wflinfo: Reimplement wflinfo separating the various API's
+  * framework/shader_test: GL_NUM_PROGRAM_BINARY_FORMATS >= 1 is not an extension
+  * framework/test: Fix whitespace
+  * glsl-1.10: add a 'initialization-incompatible-type-propagation' test
+  * glsl-1.10: Verify result of sign(a)*sign(b)
+  * glsl-1.20/fs-deref-literal-array-of-structs-with-multiple-members-large-array: Fix it
+  * fbo-drawbuffers-maxtargets: fix a warning
+  * shaders: Reproduce a bug in the i965 backend optimizer
+  * tests: Added a new GTF-GL test profile for the Khronos CTS runner
+  * tests: Added a new GTF-GLES test profile for the Khronos CTS runner
+  * cl: Add test for call stack realignment
+  * Add tests for GL_AMD_depth_clamp_separate
+  * shader_runner: Take spirv_replaces_glsl into account for current_config
+  * egl_khr_create_context: Proper invalid attributes for EGL 1.5
+  * arb_vertex_array_object: Add test for deleting object zero
+  * glsl-1.10: Put an if-statement in a macro in the false path of an ifdef
+  * cl: Add tests for calls with special inputs
+  * cl: Add test for respecting byval alignment in call setup
+  * arb_fragment_shader_interlock: Additional compile tests
+  * arb_fragment_shader_interlock: Simple compiler tests
+  * glsl-1.10: add some preprocessor stringification tests
+  * arb_tessellation_shader: add GL_EXT_shader_integer_mix on [require]
+  * glsl-1.30: add linker test for inter stage in/out vars usage
+  * Cmake: Install shader_source files
+  * util: stop overallocating shader memory
+  * util: avoid leaking memory when caller doesn't ask for it
+  * egl: fix uninitialised counter
+  * egl: fix uninitialised counter
+  * util: fix memory leak
+  * arb_gpu_shader5: fix memory leak
+  * egl_ext_device_enumeration: check the populate call to eglQueryDevices
+  * egl Add new test of EGL_EXT_platform_device
+  * egl_mesa_platform_surfaceless: plug some memory leaks
+  * egl: Add basic EGL_EXT_device_drm test
+  * egl_ext_device_query: plug memory leaks
+  * egl_ext_device_query: return PIGLIT_WARN when eglGetDisplay fails
+  * egl_ext_device_query: drop unused major/minor from eglInitialize
+  * egl: Add basic EGL_MESA_device_software test
+  * egl_ext_device_query: check for eglQueryDeviceStringEXT EGL_BAD_DEVICE_EXT
+  * arb_gl_spirv: adding basic va64 test
+  * util/vbo: Accept integer attribute names
+  * arb_enhanced_layouts: Test doubles
+  * arb_enhanced_layouts: Test XFB layout qualifiers via SPIR-V
+  * arb_gpu_shader5: Add support for testing spirv with XFB streams
+  * util: Add utilities to handle shader_test files
+  * util: Add a utility to assemble SPIR-V sources
+  * arb_gl_spirv: add test that mixes atomic counters with a normal uniform
+  * arb_gl_spirv: add tests for atomic counter operations in CS
+  * arb_gl_spirv: add tests for atomic counter operations in FS
+  * shader_runner: add command 'probe atomic counter buffer'
+  * arb_gl_spirv: Add a fiddly test for uniform index calculation
+  * arb_gl_spirv: Add a test for an array of structs uniform
+  * arb_gl_spirv: Add a test for a uniform struct with struct members
+  * arb_gl_spirv: Add a test for a struct uniform
+  * arb_gl_spirv: Add a test for non-sequential explicit uniform locations
+  * arb_gl_spirv: Add 4 tests for uniform initializers
+  * arb_gl_spirv: add two linking tests for uniform multisample images
+  * arb_gl_spirv: Add a test for nonconst array of sampler structs
+  * arb_gl_spirv: Add a test for a sampler within a struct
+  * arb_gl_spirv: Add tests for sampler2D uniform binding initialisers
+  * arb_gl_spirv: uniform sampler2D
+  * arb_gl_spirv: add execution test for multi-dimensional (aoa) uniform
+  * arb_gl_spirv: add a small test with an array of uniforms
+  * arb_gl_spirv: add basic test with two uniforms
+  * arb_gl_spirv: add basic uniform test without names
+  * arb_gl_spirv: basic uniform test with names still present
+  * arb_gl_spirv: Add a test using specializations
+  * arb_gl_spirv: add really simple execution test
+  * shader_runner: debug prints if running on SPIR-V mode.
+  * shader_runner/spirv: Add support for SPIR-V specializations
+  * shader_runner/spirv: add vertex shader passthrough support on SPIR-V
+  * framework: add --glsl option
+  * shader_runner/spirv: support loading SPIR-V shaders
+  * util: Add a utility to stream data through an external process
+  * intel_shader_atomic_float_minmax: Validate NaN behavior of atomicMin and atomicMax
+  * intel_shader_atomic_float_minmax: Add test for atomicCompSwap involving NaN
+  * intel_shader_atomic_float_minmax: Add tests for atomicCompSwap with -0
+  * intel_shader_atomic_float_minmax: Add tests for atomicCompSwap(float, float, float)
+  * intel_shader_atomic_float_minmax: Add tests for atomic{Min,Max}(float, float)
+  * intel_shader_atomic_float_minmax: Add tests for atomicExchange(float, float)
+  * intel_shader_atomic_float_minmax: Simple negative compile tests
+  * arb_tessellation_shader: Add test for indirect addressing of TES patch inputs
+  * Cmake: Remove Python 3.3 from the list of versions to search for
+  * ext_render_snorm-render: test for GL_EXT_render_snorm
+  * glsl-1.10: add a 'invalid-array-as-function-param' glslparsertest
+  * cl: Add test for CSR VGPRs caused by SGPR spilling
+  * cl: Add bigger versions of calls with struct tests
+  * cl: Fix types to be unsigned
+  * glsl-1.10: add a 'post-increment-in-array-size' glslparsertest
+  * CMake: Add Python 3.7 to list of supported python version
+  * dispatch: add missing break
+  * framework/test/shader_test.py: Remove redundant workaround for python 3.3 mock
+  * tox: Add python 3.7 to build matrix
+  * README.md: Note that python 2.7 or >=3.4 is supported
+  * dispatch: fallback to eglGetProcAddress for core functions
+  * dispatch: use do_dlsym() helper on all posix platforms
+  * dispatch: move variables/defines where they're used
+  * dispatch: kill off RTLD_LOCAL
+  * arb_direct_state_access: remove unneeded piglit_dispatch_default_init()
+  * util/gl: don't call piglit_dispatch_default_init in piglit_use_*_program
+  * egl: add eglCopyBuffers test
+  * egl-util: introduce egl_util_create_native_pixmap helper
+  * egl-util: use piglit_egl_get_display over eglGetDisplay
+  * egl: split out a piglit_egl_get_display helper
+  * egl: Call eglBindAPI after eglInitialize
+  * Update gl.xml from opengl registry and fix gl.py
+  * Add a test for GL_AMD_framebuffer_multisample_advanced
+  * ext_texture_norm16-render: read SNORM formats if EXT_render_snorm
+  * arb_provoking_vertex: Test flat shading with clipped geometry
+  * ext_texture_norm16-render: add more API coverage
+  * Test glMultiDrawElementsIndirect with non-VBO attribs
+  * Test glMultiDrawArraysIndirect with non-VBO attribs
+  * summary/html: generalize info output
+  * JSON: move info utilities out of root
+  * polygon-mode: also test polygon culling
+  * Prevent loop unrolling in a shader test
+  * framework: deepcopy TestProfile's filters when copying it
+  * tox: remove pytest-warnings and set pytest-timeout to 1.2.1
+  * tox: Remove testing of end-of-life Python 3.3
+  * generated_tests: Make API a subdir in gen_shader_framebuffer_fetch_tests
+  * framework: Make error about mixed GLES and GL more imformative
+  * EXT_shader_framebuffer_fetch: Add test cases specific to desktop GL.
+  * EXT_shader_framebuffer_fetch: Add tests for framebuffer fetch outputs with invalid layout qualifier.
+  * EXT_shader_framebuffer_fetch: Port existing tests to non-coherent extension.
+  * EXT_shader_framebuffer_fetch: Pass output type and precision to decl_frag_data macro.
+  * EXT_shader_framebuffer_fetch: Parameterize more tests on the GL API version.
+  * shader_runner: Add fbfetch barrier command.
+  * Update XML for latest version of GL_EXT_shader_framebuffer_fetch.
+  * tests/sanity: declare encoding of file for python 2
+  * tests: intel_conservative_rasterization: fix invalid draws
+  * tests/opengl.py: Replace tabs with spaces
+  * tests/opengl: Add nv_image_formats-gles3
+  * tests/opengl: Add intel_conservative_rasterization-invalid_gles3
+  * tests/opengl: Add glx-swap-copy
+  * tests/opengl: Add gl-3.3-vertex-attrib-p-type-size-match
+  * tests/opengl: Add gl-3.3-vertex-attrib-p-types
+  * tests/opengl: Add arb_texture_view tests for gles3
+  * tests/sanity: Rework sanity to be more useful
+  * arb_vertex_attrib_64bit: test display list interaction
+  * arb_gpu_shader_fp64: Test the sign() function with abs() and negation of its argument
+  * glsl-1.10: Test the sign() function with abs() and negation of its argument
+  * glsl-1.10: test bug with lessThan() when the input expression has mixed sizes
+  * arb_compute_shader: test dispatch functions with display lists
+  * framework: add a --timeout parameter
+  * ext_texture_norm16-render: support EXT_render_snorm interactions
+  * tests/opengl.py: add couple missing arb_get_program_binary tests
+  * arb_gpu_shader5: Add a test for instanced GS inputs.
+  * compatibility: test vertex color clamping in geom and tess shaders
+  * arb_draw_indirect: test when 0 bound to DRAW_INDIRECT_BUFFER in compat
+  * general: better test display lists in attribute test
+  * nv_fog_distance: Test interactions with GL_FOG_COORDINATE
+  * nv_fog_distance: Simple rendering test
+  * nv_fog_distance: Simple touch test for the enums
+  * gl-1.0-blend: Whitespace and formatting fixes
+  * gl-1.0-blend: Trivial code simplification
+  * gl-1.0-blend: Enable EXT_blend_subtract tests on implementations that lack EXT_blend_minmax
+  * gl-1.0-blend: Fix problems with blend extension detection
+  * tests: Add cmake for oes_texture_compression_astc with Desktop GL
+  * tests/opengl.py: remove ext_transform-get-buffer-size
+  * tests/opengl.py: fix ext_shader_samples_indentical tests
+  * tests/opengl.py: Fix name of gl-4.3 test
+  * tests/opengl.py: re-remove layout-std140 test
+  * tests/opengl.py: Fix misnamed test binaries
+  * ARB_get_program_binary: Test that XFB varying info works on program reload
+  * deqp: Add Mesa version overrides for khr_gl* testlist generation.
+  * arb_tessellation_shader: test GL_PATCHES with immediate mode
+  * arb_tessellation_shader: test tes interaction with fixed function fragment shader
+  * glsl-1.50: test gs interaction with fixed function fragment shader
+  * arb_gpu_shader_fp64: test display list support
+  * arb_shader_subroutine: add simple display list test
+  * arb_viewport_array: test display list support
+  * add GL_ARB_sample_locations
+  * gl-1.5-get-array-attribs: exercise glGetIntegerv, etc. with vertex arrays
+  * nv_shader_atomic_float: Add tests for atomicExchange(float, float)
+  * nv_shader_atomic_float: Add tests for atomicAdd(float, float)
+  * nv_shader_atomic_float: Simple negative compile tests
+  * nv_shader_atomic_float: Compile tests for all imageAtomic variants
+  * arb_compute_shader: Add test for atomicCompSwap(int, int, int)
+  * arb_compute_shader: Add tests for atomic{Min,Max}({u,}int, {u,}int)
+  * arb_compute_shader: Add test for atomicExchange(int, int)
+  * arb_compute_shader: Add test for atomicAdd(int, int)
+  * glsl-4.50: Add test for atomicCompSwap(int, int, int)
+  * arb_shader_storage_buffer: Add test for atomicCompSwap(int, int, int)
+  * arb_shader_storage_buffer: Add tests for atomic{Min,Max}({u,}int, {u,}int)
+  * arb_shader_storage_buffer: Add test for atomicExchange(int, int)
+  * arb_shader_storage_buffer: Add test for atomicAdd(int, int)
+  * shader_runner: Allow initializing integer fields of an SSBO
+  * getteximage-simple: Stress an i965 blitter path
+  * getteximage-simple: Allow configurable texture parameters
+  * getteximage-simple: Switch to parameter passing
+  * getteximage-simple: Fix the coordinate printf
+  * glsl-4.50: remove duplicate semicolon test
+  * glsl-4.60: backdate semicolon test to run from glsl 1.10
+  * glsl-1.50: fix glsl-1.50-geometry-primitive-types
+  * cmake: Use Policy CMP0072 as OLD by default.
+  * gl-1.0: Bitmap test that draws zelda hearts.
+  * ARB_get_program_binary: Test that restoring active program takes effect
+  * ARB_get_program_binary: Test that uniforms are reset on program reload (API)
+  * ARB_get_program_binary: Add some common functions
+  * ARB_get_program_binary: Test that uniforms are reset on program reload
+  * shader_runner: Add 'program binary save restore' command
+  * shader_runner: Support SHADER_RUNNER_GET_PROGRAM_BINARY env var
+  * util: Add piglit_env_var_as_boolean
+  * shader_runner: Add -get-program-binary parameter
+  * shader_runner: Support testing GL_NUM_PROGRAM_BINARY_FORMATS
+  * glsl-1.10: fix broken indentation in test
+  * glsl-1.10: test loop unrolling when induction variable is inside if branch
+  * textureGather: Use piglit_probe_rect_rgba_varying
+  * util/gl: Add a helper for probing a rect of varying data
+  * util/gl: Use probe_rect instead of hand-rolling
+  * util/gl: Add more probe helplers
+  * util: Refactor probe_rect_ubyte to allow varying data
+  * CMake: fix readme install after readme->readme.md
+  * glx-oml-sync-control-timing: Perform initial swap / wait before loop
+  * glx-oml-sync-control-timing: Refactor helper functions for swap / wait
+  * glx-oml-sync-control-timing: Fix error message if glXWaitForMscOML fails
+  * README: Rework documentation for test classes
+  * README: Rework lists of test scripts
+  * README: Rework the list of test statuses
+  * README: Rework environment variables docs
+  * README: Remove some unneeded indentation
+  * README: Use proper markdown code quoting
+  * README: Use proper markdown for the different heading levels
+  * README: Move README.md so it gets parsed by GitLab
+  * tests/egl: add query test for egl_ext_image_dma_buf_import_modifiers
+  * Use _exit() instead of exit() in child processes
+  * util: Silence GCC unused-function warning.
+
+-------------------------------------------------------------------
 Thu Aug 30 08:27:10 UTC 2018 - msrb@suse.com
 
 - Update suse_qa.py and opensuse_qa.py to work with current piglit.
