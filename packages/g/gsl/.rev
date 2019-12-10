@@ -403,4 +403,14 @@
 - update to gsl 2.6: (jsc#SLE-8538)</comment>
     <requestid>750996</requestid>
   </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>aab13aaab0b2df7ffeb3c982c0008cc7</srcmd5>
+    <version>2.6</version>
+    <time>1576014113</time>
+    <user>dimstar_suse</user>
+    <comment>fix Jira entry as per new SLE policy
+
+- update to gsl 2.6: (jsc#SLE-8495)</comment>
+    <requestid>755641</requestid>
+  </revision>
 </revisionlist>
