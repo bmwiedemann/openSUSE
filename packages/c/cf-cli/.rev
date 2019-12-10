@@ -346,4 +346,18 @@
 </comment>
     <requestid>751507</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>332bbb9e2cdf27585b796380affd91e9</srcmd5>
+    <version>6.48.0</version>
+    <time>1576014225</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.48.0
+  ### Enhancements
+  - Improve Behavior of --random-route Flag. Increased the size of the namespace used for generating random route names from eight thousand to over five million. This reduces the odds of a name conflict.
+  ### Bug Fixes
+  - Fixes a bug where `cf delete app -r` did not delete routes if you had more than 50 routes associated with the app. [Story](https://www.pivotaltracker.com/story/show/165714515)
+  - Fixes a bug where `cf create-buildpack` would return a misleading error when the buildpack name had invalid characters. [Story](https://www.pivotaltracker.com/story/show/168183422)
+</comment>
+    <requestid>755509</requestid>
+  </revision>
 </revisionlist>
