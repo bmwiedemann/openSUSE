@@ -1,7 +1,7 @@
 #
 # spec file for package trytond
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2015 2017 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define majorver 5.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.15
+Version:        %{majorver}.16
 Release:        0
 
 Summary:        An Enterprise Resource Planning (ERP) system
