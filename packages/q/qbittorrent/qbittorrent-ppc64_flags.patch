@@ -1,0 +1,16 @@
+Index: qbittorrent-4.2.0/cmake/Modules/MacroQbtCompilerSettings.cmake
+===================================================================
+--- qbittorrent-4.2.0.orig/cmake/Modules/MacroQbtCompilerSettings.cmake
++++ qbittorrent-4.2.0/cmake/Modules/MacroQbtCompilerSettings.cmake
+@@ -94,6 +94,11 @@ macro(qbt_set_compiler_options)
+         set(QBT_ADDITONAL_FLAGS "-wd4290 -wd4275 -wd4251 /W4" CACHE STRING "Additional qBittorent compile flags")
+     endif ()
+ 
++    if(CMAKE_SYSTEM_PROCESSOR MATCHES "^ppc64.*")
++        string (REPLACE "-march=native" "-mcpu=native -mtune=native" QBT_ADDITONAL_FLAGS ${QBT_ADDITONAL_FLAGS})
++        string (REPLACE "-march=native" "-mcpu=native -mtune=native" QBT_ADDITONAL_CXX_FLAGS ${QBT_ADDITONAL_CXX_FLAGS})
++    endif()
++
+     string(APPEND CMAKE_C_FLAGS " ${QBT_ADDITONAL_FLAGS}")
+     string(APPEND CMAKE_CXX_FLAGS " ${QBT_ADDITONAL_FLAGS}")
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package qbittorrent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.1.9
+Version:        4.2.0
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -27,6 +27,8 @@ URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM qbittorrent-ppc64_flags.patch aloisio@gmx.com -- ppc64 doesn't like the "-march=native" flag
+Patch0:         qbittorrent-ppc64_flags.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -40,7 +42,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.1.4
+BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.1.13
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 # For geolocalisation.
@@ -68,7 +70,7 @@ uses libtorrent-rasterbar. This subpackage contains a command-line
 version.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 for ui in nox gui; do

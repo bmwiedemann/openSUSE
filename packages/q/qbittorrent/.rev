@@ -986,4 +986,12 @@
     <comment></comment>
     <requestid>743430</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>227b3deb05b90370a34dc31cac485208</srcmd5>
+    <version>4.2.0</version>
+    <time>1576014063</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.2.0 (with ppc support this time)</comment>
+    <requestid>754864</requestid>
+  </revision>
 </revisionlist>
