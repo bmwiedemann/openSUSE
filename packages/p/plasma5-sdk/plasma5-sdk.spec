@@ -29,6 +29,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{v
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Cuttlefish-Make-AppStream-file-valid.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
@@ -83,7 +85,7 @@ test Plasma data engines without writing a Plasma applet.
 %lang_package
 
 %prep
-%setup -q -n plasma-sdk-%{version}
+%autosetup -p1 -n plasma-sdk-%{version}
 
 %build
   %cmake_kf5 -d build
