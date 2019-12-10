@@ -1,7 +1,7 @@
 #
 # spec file for package carla
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,49 +17,47 @@
 
 
 %define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
-
 Name:           carla
 Version:        2.0.0+git20190321.20cc5244
 Release:        0
 Summary:        An audio plugin host
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-ExclusiveArch:  x86_64
-Url:            http://kxstudio.linuxaudio.org/Applications:Carla
+URL:            https://kxstudio.linuxaudio.org/Applications:Carla
 Source:         Carla-%{version}.tar.xz
-Patch1:         carla-systemlibs.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+Patch0:         carla-systemlibs.patch
+# PATCH-FIX-UPSTREAM -- Fix build with GCC9
+Patch1:         0001-Place-Qt-stuff-outside-of-custom-namespace.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  pkg-config
+# for extra native plugins
+BuildRequires:  non-ntk-fluid
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-rdflib
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(sndfile)
-BuildRequires:  pkgconfig(vorbisenc)
-# for extra native plugins
-BuildRequires:  non-ntk-fluid
 BuildRequires:  pkgconfig(fftw3f)
+BuildRequires:  pkgconfig(flac)
+# for extra samplers support
+BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(liblo)
-BuildRequires:  pkgconfig(libprojectM)
-BuildRequires:  pkgconfig(mxml)
-BuildRequires:  pkgconfig(zlib)
 # for plugin GUIs
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(liblo)
+BuildRequires:  pkgconfig(libprojectM)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(mxml)
+BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(x11)
-# for extra samplers support
-BuildRequires:  pkgconfig(fluidsynth)
-
+BuildRequires:  pkgconfig(zlib)
 Requires:       python3-base
 Requires:       python3-qt5
+ExclusiveArch:  x86_64
 
 %description
 Carla is an audio plugin host, with support for many audio drivers
@@ -71,7 +69,7 @@ It futher supports bridging Window plugins using Wine.
 %package devel
 Summary:        Header files to access Carla's API
 Group:          Development/Libraries/C and C++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description devel
 This package contains header files needed when writing software using
@@ -86,8 +84,7 @@ This package contanis Carla VST plugins, including CarlaPatchbayFX,
 CarlaPatchbay, CarlaRackFX, and CarlaRack.
 
 %prep
-%setup -q -n Carla-%{version}
-%patch1 -p1
+%autosetup -p1 -n Carla-%{version}
 
 %build
 export CXXFLAGS="%{optflags}"
@@ -98,7 +95,7 @@ make features
 
 # bulding with high -j numbers often results in build failures, thus we're disabling _smp_flags for now 
 make \
-%ifnarch %ix86 x86_64
+%ifnarch %{ix86} x86_64
 	BASE_OPTS= \
 %endif
 	--trace
@@ -120,8 +117,8 @@ done
 %endif
 
 %files
-%defattr(-,root,root)
-%doc INSTALL.md README.md doc
+%license doc/GPL.txt doc/LGPL.txt
+%doc INSTALL.md README.md doc/Carla-TestCases
 %{_bindir}/*
 %dir %{_libdir}/carla
 %{_libdir}/carla/*
@@ -135,13 +132,11 @@ done
 %{_datadir}/mime/packages/carla.xml
 
 %files vst
-%defattr(-,root,root)
 %dir %{_libdir}/vst
 %dir %{_libdir}/vst/carla.vst
 %{_libdir}/vst/carla.vst/*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/carla
 %{_includedir}/carla/*
 %{_libdir}/pkgconfig/*
