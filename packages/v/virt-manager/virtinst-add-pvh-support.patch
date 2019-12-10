@@ -5,7 +5,7 @@ Index: virt-manager-2.2.1/virtManager/createvm.py
 ===================================================================
 --- virt-manager-2.2.1.orig/virtManager/createvm.py
 +++ virt-manager-2.2.1/virtManager/createvm.py
-@@ -796,6 +796,9 @@ class vmmCreateVM(vmmGObjectUI):
+@@ -792,6 +792,9 @@ class vmmCreateVM(vmmGObjectUI):
          for guest in guests:
              if not guest.domains:
                  continue

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  2 14:03:00 MST 2019 - carnold@suse.com
+
+- bsc#1157144 - [s390][virt-manager] There was the black screen
+  from guest graphical console during guest installation
+  virtinst-s390x-disable-graphics.patch
+- bsc#1158227 - virt-manager: Fix duplicate entries in the
+  operating system URL drop down menu
+  virtman-show-suse-install-repos.patch
+- Upstream bug fix (bsc#1027942)
+  29f9f5f2-virt-xml-fix-defined_xml_is_unchanged.patch
+- Drop virtman-default-to-xen-pv.patch
+- Refreshed
+  virtinst-add-pvh-support.patch
+  virtinst-modify-gui-defaults.patch
+  virt-manager.changes
+  virt-manager.spec
+  virtman-allow-creating-i686-vm.patch
+  virtman-python2-to-python3-conversion.patch
+
+-------------------------------------------------------------------
 Wed Nov 27 14:53:06 MST 2019 - carnold@suse.com
 
 - bsc#1156964 - import a exist disk for creating PV guest failed

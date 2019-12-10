@@ -1,7 +1,7 @@
-Index: virt-manager-2.2.0/virt-manager
+Index: virt-manager-2.2.1/virt-manager
 ===================================================================
---- virt-manager-2.2.0.orig/virt-manager
-+++ virt-manager-2.2.0/virt-manager
+--- virt-manager-2.2.1.orig/virt-manager
++++ virt-manager-2.2.1/virt-manager
 @@ -66,7 +66,7 @@ def _import_gtk(leftovers):
              print("gtk3 3.22.0 or later is required.")
              sys.exit(1)
@@ -11,10 +11,10 @@ Index: virt-manager-2.2.0/virt-manager
              # This will error if Gtk wasn't correctly initialized
              Gtk.Window()
          else:
-Index: virt-manager-2.2.0/virtManager/details/console.py
+Index: virt-manager-2.2.1/virtManager/details/console.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/details/console.py
-+++ virt-manager-2.2.0/virtManager/details/console.py
+--- virt-manager-2.2.1.orig/virtManager/details/console.py
++++ virt-manager-2.2.1/virtManager/details/console.py
 @@ -21,7 +21,7 @@ from ..vmwindow import DETAILS_PAGE_CONS
  (_CONSOLE_PAGE_UNAVAILABLE,
   _CONSOLE_PAGE_AUTHENTICATE,
@@ -24,10 +24,10 @@ Index: virt-manager-2.2.0/virtManager/details/console.py
  
  
  class _TimedRevealer(vmmGObject):
-Index: virt-manager-2.2.0/virtManager/connection.py
+Index: virt-manager-2.2.1/virtManager/connection.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/connection.py
-+++ virt-manager-2.2.0/virtManager/connection.py
+--- virt-manager-2.2.1.orig/virtManager/connection.py
++++ virt-manager-2.2.1/virtManager/connection.py
 @@ -159,7 +159,7 @@ class vmmConnection(vmmGObject):
  
      (_STATE_DISCONNECTED,
@@ -37,10 +37,10 @@ Index: virt-manager-2.2.0/virtManager/connection.py
  
      def __init__(self, uri):
          self._uri = uri
-Index: virt-manager-2.2.0/virtManager/addhardware.py
+Index: virt-manager-2.2.1/virtManager/addhardware.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/addhardware.py
-+++ virt-manager-2.2.0/virtManager/addhardware.py
+--- virt-manager-2.2.1.orig/virtManager/addhardware.py
++++ virt-manager-2.2.1/virtManager/addhardware.py
 @@ -44,7 +44,7 @@ from .xmleditor import vmmXMLEditor
   PAGE_TPM,
   PAGE_RNG,
@@ -50,10 +50,10 @@ Index: virt-manager-2.2.0/virtManager/addhardware.py
  
  
  def _build_combo(combo, values, default_value=None, sort=True):
-Index: virt-manager-2.2.0/virtManager/details/snapshots.py
+Index: virt-manager-2.2.1/virtManager/details/snapshots.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/details/snapshots.py
-+++ virt-manager-2.2.0/virtManager/details/snapshots.py
+--- virt-manager-2.2.1.orig/virtManager/details/snapshots.py
++++ virt-manager-2.2.1/virtManager/details/snapshots.py
 @@ -55,7 +55,7 @@ def _make_screenshot_pixbuf(mime, sdata)
  
  
@@ -63,10 +63,10 @@ Index: virt-manager-2.2.0/virtManager/details/snapshots.py
          if val == m and not reverse:
              return e
          if val == e and reverse:
-Index: virt-manager-2.2.0/virtManager/engine.py
+Index: virt-manager-2.2.1/virtManager/engine.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/engine.py
-+++ virt-manager-2.2.0/virtManager/engine.py
+--- virt-manager-2.2.1.orig/virtManager/engine.py
++++ virt-manager-2.2.1/virtManager/engine.py
 @@ -22,7 +22,7 @@ from .lib.inspection import vmmInspectio
  from .systray import vmmSystray
  
@@ -76,10 +76,10 @@ Index: virt-manager-2.2.0/virtManager/engine.py
  
  
  def _show_startup_error(fn):
-Index: virt-manager-2.2.0/virtManager/device/mediacombo.py
+Index: virt-manager-2.2.1/virtManager/device/mediacombo.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/device/mediacombo.py
-+++ virt-manager-2.2.0/virtManager/device/mediacombo.py
+--- virt-manager-2.2.1.orig/virtManager/device/mediacombo.py
++++ virt-manager-2.2.1/virtManager/device/mediacombo.py
 @@ -22,7 +22,7 @@ class vmmMediaCombo(vmmGObjectUI):
      (MEDIA_FIELD_PATH,
      MEDIA_FIELD_LABEL,
@@ -89,10 +89,10 @@ Index: virt-manager-2.2.0/virtManager/device/mediacombo.py
  
      def __init__(self, conn, builder, topwin):
          vmmGObjectUI.__init__(self, None, None, builder=builder, topwin=topwin)
-Index: virt-manager-2.2.0/virtManager/manager.py
+Index: virt-manager-2.2.1/virtManager/manager.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/manager.py
-+++ virt-manager-2.2.0/virtManager/manager.py
+--- virt-manager-2.2.1.orig/virtManager/manager.py
++++ virt-manager-2.2.1/virtManager/manager.py
 @@ -33,7 +33,7 @@ ROW_IS_CONN_CONNECTED,
  ROW_IS_VM,
  ROW_IS_VM_RUNNING,
@@ -111,10 +111,10 @@ Index: virt-manager-2.2.0/virtManager/manager.py
  
  
  def _style_get_prop(widget, propname):
-Index: virt-manager-2.2.0/virtManager/device/addstorage.py
+Index: virt-manager-2.2.1/virtManager/device/addstorage.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/device/addstorage.py
-+++ virt-manager-2.2.0/virtManager/device/addstorage.py
+--- virt-manager-2.2.1.orig/virtManager/device/addstorage.py
++++ virt-manager-2.2.1/virtManager/device/addstorage.py
 @@ -108,7 +108,7 @@ class vmmAddStorage(vmmGObjectUI):
          errmsg = _("Errors were encountered changing permissions for the "
                     "following directories:")
@@ -124,10 +124,10 @@ Index: virt-manager-2.2.0/virtManager/device/addstorage.py
              if p not in broken_paths:
                  continue
              details += "%s : %s\n" % (p, error)
-Index: virt-manager-2.2.0/virtManager/details/details.py
+Index: virt-manager-2.2.1/virtManager/details/details.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/details/details.py
-+++ virt-manager-2.2.0/virtManager/details/details.py
+--- virt-manager-2.2.1.orig/virtManager/details/details.py
++++ virt-manager-2.2.1/virtManager/details/details.py
 @@ -104,7 +104,7 @@ from ..xmleditor import vmmXMLEditor
  
   EDIT_FS,
@@ -164,10 +164,10 @@ Index: virt-manager-2.2.0/virtManager/details/details.py
  
  
  def _calculate_disk_bus_index(disklist):
-Index: virt-manager-2.2.0/virtManager/createvm.py
+Index: virt-manager-2.2.1/virtManager/createvm.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/createvm.py
-+++ virt-manager-2.2.0/virtManager/createvm.py
+--- virt-manager-2.2.1.orig/virtManager/createvm.py
++++ virt-manager-2.2.1/virtManager/createvm.py
 @@ -40,7 +40,7 @@ DEFAULT_MEM = 1024
   PAGE_INSTALL,
   PAGE_MEM,
@@ -193,7 +193,7 @@ Index: virt-manager-2.2.0/virtManager/createvm.py
  
  
  #####################
-@@ -2127,7 +2127,7 @@ class vmmCreateVM(vmmGObjectUI):
+@@ -2123,7 +2123,7 @@ class vmmCreateVM(vmmGObjectUI):
                  'insecure': self._get_config_oscontainer_isecure,
                  'root_password': self._get_config_oscontainer_root_password,
              }
@@ -202,10 +202,10 @@ Index: virt-manager-2.2.0/virtManager/createvm.py
                  bootstrap_args[key] = getter()
  
          parentobj = self._customize_window or self
-Index: virt-manager-2.2.0/virtManager/preferences.py
+Index: virt-manager-2.2.1/virtManager/preferences.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/preferences.py
-+++ virt-manager-2.2.0/virtManager/preferences.py
+--- virt-manager-2.2.1.orig/virtManager/preferences.py
++++ virt-manager-2.2.1/virtManager/preferences.py
 @@ -129,7 +129,7 @@ class vmmPreferences(vmmGObjectUI):
          }
          model.append([-1, _("System default (%s)") %
@@ -215,10 +215,10 @@ Index: virt-manager-2.2.0/virtManager/preferences.py
              model.append([key, val])
          combo.set_model(model)
          uiutil.init_combo_text_column(combo, 1)
-Index: virt-manager-2.2.0/virtManager/migrate.py
+Index: virt-manager-2.2.1/virtManager/migrate.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/migrate.py
-+++ virt-manager-2.2.0/virtManager/migrate.py
+--- virt-manager-2.2.1.orig/virtManager/migrate.py
++++ virt-manager-2.2.1/virtManager/migrate.py
 @@ -23,7 +23,7 @@ from .object.domain import vmmDomain
  NUM_COLS = 3
  (COL_LABEL,
@@ -228,10 +228,10 @@ Index: virt-manager-2.2.0/virtManager/migrate.py
  
  
  class vmmMigrateDialog(vmmGObjectUI):
-Index: virt-manager-2.2.0/virtManager/hoststorage.py
+Index: virt-manager-2.2.1/virtManager/hoststorage.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/hoststorage.py
-+++ virt-manager-2.2.0/virtManager/hoststorage.py
+--- virt-manager-2.2.1.orig/virtManager/hoststorage.py
++++ virt-manager-2.2.1/virtManager/hoststorage.py
 @@ -32,13 +32,13 @@ VOL_NUM_COLUMNS = 7
   VOL_COLUMN_SIZESTR,
   VOL_COLUMN_FORMAT,

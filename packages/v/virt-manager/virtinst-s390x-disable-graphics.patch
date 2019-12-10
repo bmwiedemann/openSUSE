@@ -34,12 +34,3 @@ Index: virt-manager-2.2.1/virtinst/guest.py
              return
          if self.devices.video:
              return
-@@ -931,7 +934,7 @@ class Guest(XMLBuilder):
-             return
-         if self.os.is_container() and not self.conn.is_vz():
-             return
--        if self.os.arch not in ["x86_64", "i686", "ppc64", "ppc64le"]:
-+        if self.os.arch not in ["x86_64", "i686", "ppc64", "ppc64le", "s390x"]:
-             return
-         self.add_device(DeviceGraphics(self.conn))
- 

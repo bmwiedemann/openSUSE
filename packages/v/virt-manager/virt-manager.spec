@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -46,6 +46,7 @@ Patch11:        8f4c53ea-video-Prefer-bochs-when-its-supported..patch
 Patch12:        ae19d6d6-fix-resizing-of-spice-clients-with-guest-resizing-enabled.patch
 Patch13:        51d84c54-connection-Avoid-repeated-default-pool-creation-attempts.patch
 Patch14:        d934d6f2-domcaps-Fix-check-for-uncached-security-features.patch
+Patch15:        29f9f5f2-virt-xml-fix-defined_xml_is_unchanged.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -57,7 +58,6 @@ Patch76:        virtinst-change-location-for-grub_xen.patch
 Patch77:        virtman-fix-env-script-interpreter.patch
 Patch78:        virtinst-set-qemu-emulator.patch
 # Features or Enhancements
-Patch102:       virtman-default-to-xen-pv.patch
 Patch103:       virtman-load-stored-uris.patch
 Patch120:       virtinst-default-xen-to-qcow2-format.patch
 Patch121:       virtinst-detect-oes-distros.patch
@@ -192,6 +192,7 @@ machine).
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1
@@ -203,7 +204,6 @@ machine).
 %patch77 -p1
 %patch78 -p1
 # Enhancements
-%patch102 -p1
 %patch103 -p1
 %patch120 -p1
 %patch121 -p1
