@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  6 08:27:40 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.19:
+  * allow _multibuild to handle multiple specs
+  * The --buildflavor option was missing from the help output
+  * 70-baselibs: do not run subshells
+  * allow -MACRO ending for changes file on multibuild setups
+  * skip source files checks for product definition directories
+  * Add missing dependency to the debian/control file
+
+-------------------------------------------------------------------
 Mon Jun 25 14:52:27 UTC 2018 - ro@suse.de
 
 - Update to version 0.18:

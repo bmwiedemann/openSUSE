@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-source_validator
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Summary:        An OBS source service: running all the osc source-validator chec
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 Url:            https://github.com/openSUSE/obs-service-source_validator
-Version:        0.18
+Version:        0.19
 Release:        0
 # use osc service dr to update
 Source:         %{name}-%{version}.tar.bz2
@@ -57,6 +57,7 @@ used via project wide defined services.
 :
 
 %install
+mkdir -p %{buildroot}%{_datadir}/licenses
 %makeinstall
 
 %check
@@ -65,6 +66,9 @@ make test
 %files
 %defattr(-,root,root)
 %license COPYING
+%if 0%{?suse_version} <= 1320
+%dir %{_datadir}/licenses
+%endif
 %dir /usr/lib/obs
 /usr/lib/obs/service
 

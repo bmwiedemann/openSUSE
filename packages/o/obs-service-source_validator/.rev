@@ -437,4 +437,18 @@ last submission had wrong tar ball for unknown reason</comment>
   * /usr/include/X11 is still a valid path.</comment>
     <requestid>618982</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>dd6656b423574dff7c717c58c29be4ae</srcmd5>
+    <version>0.19</version>
+    <time>1576014112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.19:
+  * allow _multibuild to handle multiple specs
+  * The --buildflavor option was missing from the help output
+  * 70-baselibs: do not run subshells
+  * allow -MACRO ending for changes file on multibuild setups
+  * skip source files checks for product definition directories
+  * Add missing dependency to the debian/control file</comment>
+    <requestid>754613</requestid>
+  </revision>
 </revisionlist>
