@@ -1,0 +1,51 @@
+This package provides build dependencies for building Kafka using using Tetra
+(ruby2.2-rubygem-tetra). Using Tetra is neccessary due Kafka's Gradle based
+build process downloading dependencies at build time. Tetra will keep track of
+these downloaded dependencies during a so-called "dry-run" build on the
+maintainer's machine and generate a tarball (kafka-kit.tar.xz) containing all
+of them. This tarball is then used to allow the same build to run in an offline
+manner for the kafka package in OBS (where there is no Internet connectivity on
+purpose in order to allow for reproducible builds). To generate kafka-kit.tar.xz
+for a new version of Kafka, proceed as follows (you will need to have Tetra
+installed for this):
+
+1) Download an updated Kafka tarball. We'll assume the new version is 2.1.0
+   throughout the rest of this file, which is the version the package was at at
+   the time of this writing. Please substitute 2.1.0 by the actual version number
+   wherever it occurs.
+
+2) Initialize a tetra build directory for your new tarball and cd to its source
+   directory:
+
+     # OBS checkouts may have colons in their directory names which messes with some
+     # Java build tools, so use a neutral location:
+     cp kafka-2.1.0-src.tar.gz /tmp; cd /tmp
+     tetra init kafka kafka-2.1.0-src.tgz
+
+     # We need gradle to build, so download and unpack it.
+     # Note: newer Kafka versions may need newer gradle versions.
+     cd /tmp/kafka/kit/
+     wget https://services.gradle.org/distributions/gradle-5.1-bin.zip
+     unzip gradle-5.1-bin.zip; rm gradle-5.1-bin.zip
+
+3) Perform a dry-run build with Tetra:
+
+     cd /tmp/kafka/src/kafka-2.1.0-src
+     tetra dry-run
+     ../../kit/gradle-5.1/bin/gradle --gradle-user-home /tmp/gradle --project-cache-dir /tmp/gradle-project releaseTarGz -x signArchives
+     cp -r /tmp/gradle* ../../kit/
+     exit
+
+4) Generate the new kit tarball:
+
+     tetra generate-all
+
+You will now find an updated kit tarball in
+/tmp/kafka/packages/kafka-kit/kafka-kit.tar.xz
+
+Substitute this tarball for the existing one in the kit package and bump its
+version.
+
+Note: these instructions applied for Kafka-2.1.0 and may not be sufficient
+for more recent Kafka versions. If they turn out to yield a broken kit
+tarball and you end up fixing it, please update this file. Thank you!
