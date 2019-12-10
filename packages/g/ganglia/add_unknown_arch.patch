@@ -1,6 +1,17 @@
---- ./libmetrics/linux/metrics.c.orig	2018-03-29 17:05:23.884576752 +0200
-+++ ./libmetrics/linux/metrics.c	2018-03-29 17:07:28.228537714 +0200
-@@ -593,39 +593,30 @@
+From f3a3f6d3ca8ad42c723626722dad61384f72611a Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Mon, 2 Dec 2019 19:28:06 +0100
+Subject: [PATCH 3/3] add unknown arch
+
+---
+ libmetrics/linux/metrics.c | 35 +++++++++++++----------------------
+ 1 file changed, 13 insertions(+), 22 deletions(-)
+
+diff --git a/libmetrics/linux/metrics.c b/libmetrics/linux/metrics.c
+index 60114f1..77d06e3 100644
+--- a/libmetrics/linux/metrics.c
++++ b/libmetrics/linux/metrics.c
+@@ -593,39 +593,30 @@ machine_type_func ( void )
  
  #ifdef __i386__
     snprintf(val.str, MAX_G_STRING_SIZE, "x86");
@@ -53,3 +64,6 @@
  #endif
  
     return val;
+-- 
+2.16.4
+

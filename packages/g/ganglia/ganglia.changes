@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  2 18:34:40 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- removed check for btrfs for /var/lib/ganglia
+  * removed btrfs-subvol-test.sh
+  * gmetad-service-btrfs-check.patch
+- gmond package now requires system-user-daemon as the daemon runs
+  as user daemon (bsc#1138340)
+- Reformated some patches in order to use autopatch
+  * gmetad-service-btrfs-check.patch reformated to git like format
+  * detect_aarch.patch reformated to git like format
+  * add_unknown_arch reformated to git like format
+- changed standard configuration of gmond to mitigate bsc#1138347
+
+-------------------------------------------------------------------
 Sat Sep 22 14:20:13 UTC 2018 - eich@suse.com
 
 - Add coreutils to Requires(post)

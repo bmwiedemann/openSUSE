@@ -1,7 +1,7 @@
 #
 # spec file for package ganglia
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,13 +25,11 @@ Name:           ganglia
 Version:        3.7.2
 Release:        0
 %define lib_version 0
-Url:            http://ganglia.info/
+URL:            http://ganglia.info/
 # The Release macro value is set in configure.in, please update it there.
 Source0:        http://downloads.sourceforge.net/ganglia/%{name}-%{version}.tar.gz
-Source1:        btrfs-subvol-test.sh
 # PATCH-FIX-OPENSUSE ganglia-3.7.1-no-private-apr.patch
 Patch1:         ganglia-3.7.2-no-private-apr.patch
-Patch2:         gmetad-service-btrfs-check.patch
 Patch3:         detect_aarch.patch
 Patch4:         add_unknown_arch.patch
 Patch5:         ganglia-0001-avoid-segfault-when-fd-leaked-and-reached-fd-number-.patch
@@ -70,12 +68,11 @@ BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
 BuildRequires:  rrdtool-devel
+BuildRequires:  system-user-daemon
 BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+Requires:       system-user-daemon
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-%define gmond_conf %{_builddir}/%{?buildsubdir}/gmond/gmond.conf
-%define generate_gmond_conf %(test -e %gmond_conf && echo 0 || echo 1)
 
 %description
 Ganglia is a scalable distributed monitoring system for high-performance
@@ -118,6 +115,7 @@ Provides:       ganglia-monitor-core = %{version}
 Provides:       ganglia-monitor-core-gmond = %{version}
 %{?systemd_requires}
 Requires(post): coreutils
+Requires:       system-user-daemon
 
 %description gmond
 Ganglia is a scalable, real-time monitoring and execution environment
@@ -141,16 +139,6 @@ well-defined XML format.
 This gmond modules support package provides the capability of loading
 gmetric/python modules via DSO at daemon start time instead of via gmetric.
 
-
-%package gmetad-skip-bcheck
-Summary:        Skips check for btrs root fs before gmond starts
-Group:          System/Monitoring
-Requires:       ganglia-gmetad
-
-%description gmetad-skip-bcheck
-Skips test for btrfs-root before gmond service start by touching a config file. 
-No needed if no btrfs-root is used or statedir is on seperare mount.
-Avoids potential data loss on rollback
 
 %package devel
 Summary:        Ganglia static libraries and header files
@@ -177,36 +165,7 @@ gmetad packages
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2
-%patch3
-%patch4
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-
+%autopatch -p1
 %build
 export LIBS="-ltirpc"
 %configure --with-gmetad \
@@ -233,6 +192,8 @@ install -d -m 0755 %{buildroot}%{_libdir}/ganglia/python_modules
 
 # We just output the default gmond.conf from gmond using the '-t' flag
 LD_LIBRARY_PATH=lib/.libs  gmond/gmond -t > %{buildroot}%{_sysconfdir}/%{name}/gmond.conf
+# now change the hostname option
+sed -i 's@#bind_hostname@bind_hostname@' %{buildroot}%{_sysconfdir}/%{name}/gmond.conf
 
 cp -f gmond/modules/conf.d/* %{buildroot}%{_sysconfdir}/%{name}/conf.d
 
@@ -267,12 +228,6 @@ rm  %{buildroot}%{_libdir}/*.la
 #rc file needed by systemd
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcgmond
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcgmetad
-# copy check for btrs-root-fs
-cp -f %SOURCE1 %{buildroot}%{_libdir}/ganglia/
-cat > %{buildroot}%{_sysconfdir}/ganglia/no_btrfs_check <<EOF
-This file belongs to the package %name-gmond-skip-bcheck 
-skips the test for a btrfs root
-EOF
 
 %pre  gmetad
 %service_add_pre gmetad.service
@@ -356,7 +311,6 @@ fi
 %{_mandir}/man1/gmetad*1*
 %{_unitdir}/gmetad.service
 %{_sbindir}/rcgmetad
-%attr(0755,-,-) %{_libdir}/ganglia/btrfs-subvol-test.sh
 %config(noreplace) %{_sysconfdir}/%{name}/gmetad.conf
 
 %files gmond
@@ -394,9 +348,6 @@ fi
 %{_libdir}/ganglia/modpython.so*
 %config(noreplace) %{_sysconfdir}/%{name}/conf.d/modpython.conf
 %config(noreplace) %{_sysconfdir}/%{name}/conf.d/*.pyconf*
-
-%files gmetad-skip-bcheck
-%config %{_sysconfdir}/ganglia/no_btrfs_check
 
 %files devel
 %defattr(-,root,root,-)

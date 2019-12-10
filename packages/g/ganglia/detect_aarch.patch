@@ -1,6 +1,17 @@
---- ./libmetrics/linux/metrics.c.orig	2018-03-29 14:51:41.974310218 +0200
-+++ ./libmetrics/linux/metrics.c	2018-03-29 15:08:05.861449768 +0200
-@@ -618,6 +618,9 @@
+From 9cead265c9565120f74e466349e11f7159160e2c Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Mon, 2 Dec 2019 19:27:23 +0100
+Subject: [PATCH 2/3] detect aarch
+
+---
+ libmetrics/linux/metrics.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libmetrics/linux/metrics.c b/libmetrics/linux/metrics.c
+index 62e7314..60114f1 100644
+--- a/libmetrics/linux/metrics.c
++++ b/libmetrics/linux/metrics.c
+@@ -618,6 +618,9 @@ machine_type_func ( void )
  #ifdef __arm__
     snprintf(val.str, MAX_G_STRING_SIZE, "arm");
  #endif
@@ -10,3 +21,6 @@
  #ifdef __hppa__
     snprintf(val.str, MAX_G_STRING_SIZE, "hppa");
  #endif
+-- 
+2.16.4
+
