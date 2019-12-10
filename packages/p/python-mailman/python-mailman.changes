@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Dec 10 16:56:29 UTC 2019 - pgajdos@suse.com
+
+- disable src/mailman/commands/tests/test_cli_create.py
+  https://gitlab.com/mailman/mailman/issues/654
+
+-------------------------------------------------------------------
+Mon Dec  2 10:47:14 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec  2 09:19:40 UTC 2019 - pgajdos@suse.com
+
+- requires setuptools
+
+-------------------------------------------------------------------
+Wed Nov 20 16:06:34 UTC 2019 - pgajdos@suse.com
+
+- /usr/sbin instead of /sbin in mailman.cfg
+
+-------------------------------------------------------------------
+Tue Nov  5 19:05:56 UTC 2019 - pgajdos@suse.com
+
+- run the testsuite
+
+-------------------------------------------------------------------
+Tue Sep 24 13:44:55 UTC 2019 - pgajdos@suse.com
+
+- initial version 3.3.0 [SLE-7686]
+
