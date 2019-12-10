@@ -1,7 +1,7 @@
 #
 # spec file for package kakoune
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           kakoune
-Version:        2019.07.01
+Version:        2019.12.10
 Release:        0
 Summary:        A code editor heavily inspired by Vim
 License:        Unlicense
 Group:          Productivity/Text/Editors
-URL:            http://kakoune.org/
+URL:            https://kakoune.org/
 Source:         https://github.com/mawww/kakoune/releases/download/v%{version}/kakoune-%{version}.tar.bz2
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
-BuildRequires:  libxslt-tools
-BuildRequires:  ncurses-devel >= 6.0
-# C++14 capable compiler is required
-%if 0%{?suse_version} > 1320
 BuildRequires:  gcc-c++ >= 5.0
 BuildRequires:  libboost_regex-devel >= 1.50
-%else
-BuildRequires:  boost-devel >= 1.50
-BuildRequires:  gcc5-c++
-%endif
+BuildRequires:  libxslt-tools
+BuildRequires:  ncurses-devel >= 6.0
 
 %description
 Kakoune is a code editor heavily inspired by Vim.
@@ -45,9 +39,6 @@ It's faster as in less keystrokes, supports multiple selections and uses orthogo
 %setup -q -n %{name}-%{version}/src
 
 %build
-%if 0%{?suse_version} < 1320
-export CXX=g++-5
-%endif
 make %{?_smp_mflags} CXXFLAGS="%{optflags} -std=gnu++17"
 
 %install

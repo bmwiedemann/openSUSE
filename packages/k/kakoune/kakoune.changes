@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:22:08 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2019.12.10:
+  * Arrow keys and <home>, <end> are not normal mode commands
+    anymore but default key mappings.
+  * ModeChange hook parameter now takes push: or pop: prefix,
+    InsertBegin, InsertEnd, NormalBegin and NormalEnd were
+    removed.
+  * -verbatim switch in evaluate-commands for perfect command
+    forwarding to another context.
+  * WrapMarker face used by wrap -marker highlighter info supports
+    markup with the -markup switch
+  * rename-buffer gained -file and -scratch switches to support
+    converting buffer types.
+
+-------------------------------------------------------------------
 Tue Jul  2 06:56:50 UTC 2019 - mvetter@suse.com
 
 - Update to 2018.07.01:
