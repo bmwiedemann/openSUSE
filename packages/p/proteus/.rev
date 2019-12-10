@@ -126,4 +126,12 @@
     <comment>gnuhealth 3.6.x (forwarded request 750786 from DocB)</comment>
     <requestid>752388</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>51135e12f382d1f340470c6cc1e892c9</srcmd5>
+    <version>5.0.7</version>
+    <time>1576014189</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755504</requestid>
+  </revision>
 </revisionlist>
