@@ -1,8 +1,35 @@
 -------------------------------------------------------------------
-Tue Nov 12 08:36:40 UTC 2019 - XLiang@suse.com
+Mon Dec 09 07:55:37 UTC 2019 - XLiang@suse.com
 
-- Update to version 4.1.0+git.1573547462.281747a7:
-  * Dev: unittest: make unittest results more verbose
+- Update to version 4.1.0+git.1575875711.41d65be4:
+  * Dev: ui_cluster: replace --qdevice as --qnetd-hostname
+  * Dev: corosync: add log and debug messages on each certificate steps
+  * Dev: Improvements on naming and class constants
+  * Dev: behave: functional test for qdevice setup and options
+  * Dev: behave: improve functional test for bootstrap process
+  * Dev: ui_cluster: change qdevice related option's help message
+  * Dev: utils: add is_unicast function to check transport type
+  * Dev: corosync: use custom exception IPAlreadyConfiguredError for add_node_ucast
+  * Dev: unittests: test corosync.Qdevice class
+  * Dev: bootstrap: support qdevice heuristics
+  * Dev: bootstrap: start qdevice/qnetd service when not overwrite configuration
+  * Dev: ui_corosync: improve corosync status sub-command
+  * Low: utils: refactor parallax_copy, parallax_call and parallax_slurp
+  * Dev: bootstrap: remove qnetd
+  * Dev: bootstrap: when removing qdevice, remove qdevice database
+  * Dev: bootstrap: qdevice certification process when cluster join
+  * Dev: ui_cluster: change option info for qdevice/qnetd
+  * Dev: bootstrap: qdevice certification process when cluster init
+  * Dev: bootstrap: interface for removing qdevice
+  * Dev: corosync: check tie-breaker is a valid nodeid
+  * Dev: bootstrap: combine Qdevice.valid2 into Qdevice.valid_attr
+  * Dev: bootstrap: improve init_qdevice function
+  * Dev: bootstrap: make update_expected_votes as outer function for reuse
+  * Dev: bootstrap: write qdevice config section when configuring qdevice in stage
+  * Dev: bootstrap: adjust corosync configuration for qdevice
+  * Dev: bootstrap: make qdevice process as a bootstrap stage
+  * Dev: bootstrap: manage qnetd node
+  * Dev: bootstrap: valid qdevice parameters
 
 -------------------------------------------------------------------
 Wed Nov 06 06:17:48 UTC 2019 - XLiang@suse.com

@@ -1913,4 +1913,12 @@ and fixes bnc#880052</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>749464</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>e3e17d20dfa78d11b3d3d7c0092f647c</srcmd5>
+    <version>4.1.0+git.1575875711.41d65be4</version>
+    <time>1576014136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755415</requestid>
+  </revision>
 </revisionlist>

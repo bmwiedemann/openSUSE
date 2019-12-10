@@ -1,4 +1,8 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">git://github.com/ClusterLabs/crmsh.git</param>
-          <param name="changesrevision">4d3730a6afebbb908817c3eab49d8adddaff4857</param></service></servicedata>
+          <param name="changesrevision">b8bb14dbbc9d6a0b1e79d696e64246bec0a98357</param></service><service name="tar_scm">
+                <param name="url">https://github.com/liangxin1300/crmsh.git</param>
+              <param name="changesrevision">d8dc51b4cb34964aa72e918999ebc7f03b48f3c9</param></service><service name="tar_scm">
+                <param name="url">https://github.com/ClusterLabs/crmsh.git</param>
+              <param name="changesrevision">000f2a79d35ac8d8642f7c93cf75b6d002f3c6e9</param></service></servicedata>
