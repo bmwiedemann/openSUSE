@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec  9 19:32:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.13
+  * stress-dev: add TIOCMGET, TIOCGICOUNT and TIOCGSERIAL ioctls
+  * stress-close: add more open types, don't chown files if root,
+    remove AF_APPLETALK
+  * stress-close: enable some more socket domains
+  * test: add test-setproctitle.c, forgot to add this earlier
+  * Where possible set the process title (argv[0])
+  * Change cache size information from info to debug level output
+  * stress-ng: add missing space between switch statement and (
+  * Add SIGILL to signals that need to be handled, it was missing
+  * stress-rdrand: fix typo in \n at end of info message
+  * stress-sock: fix build issues on systems without HAVE_RECVMMSG
+  * stress-sock: get the incoming CPU of the socket
+  * stress-sock: get MTU size and set TOS to IPTOS_THROUGHPUT
+  * kernel-coverage.sh: add random sock-opts flag
+  * stress-sock: also exercice recvmmsg and recvmsg
+  * stress-sock: remove debug
+  * stress-sock: add a random send option for --sock-opt
+  * core-mwc: fix mwc8() being reset when using mwc1()
+  * stress-schedpolicy: silently ignore EBUSY returns
+
+-------------------------------------------------------------------
 Wed Nov 27 20:10:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.12
