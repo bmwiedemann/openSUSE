@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  4 12:54:20 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to version 3.7.4  
+- added patches for a global user config under /etc/ganglia/conf.d/ 
+  and added download_js.sh which can download the external java 
+  script libararies.
+  * new file: 0001-added-of-download_js.patch which adds download_js.sh
+  * new file: 0002-looking-for-systemwide-user-config.patch which 
+    makes ganglia-web to serach for config in /etc/ganglia/conf.d/
+
+-------------------------------------------------------------------
 Mon Apr 16 21:24:26 UTC 2018 - eich@suse.com
 
 - Fix comment in config file to cover both php5 and php7

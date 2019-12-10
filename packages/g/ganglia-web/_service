@@ -1,0 +1,18 @@
+<services>
+  <!-- mode is disabled, so that it is not executed at every commit -->
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/ganglia/ganglia-web.git</param>
+     <!-- this is %version -->
+    <param name="version">3.7.4</param>
+    <!-- which git commit to use, if no tag is available -->
+    <param name="revision">3.7.4</param>
+    <param name="scm">git</param>
+  </service>
+<!-- the prior part will check out an git, archive, but we want a tar ball -->
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

@@ -1,7 +1,7 @@
 #
 # spec file for package ganglia-web
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define web_prefixdir /srv/www/htdocs/ganglia-web
 
 Name:           ganglia-web
-Version:        3.7.2
+Version:        3.7.4
 Release:        0
 Summary:        Ganglia web frontend
 License:        BSD-3-Clause
 Group:          System/Monitoring
-Url:            http://ganglia.info/
-Source0:        https://downloads.sourceforge.net/project/ganglia/ganglia-web/3.7.2/ganglia-web-3.7.2.tar.gz
+URL:            http://ganglia.info/
+Source0:        ganglia-web-%{version}.tar.xz
 Source1:        ganglia-httpd24.conf.d
 Source2:        README.SUSE
+Patch1:         0001-added-of-download_js.patch
+Patch2:         0002-looking-for-systemwide-user-config.patch
 BuildRequires:  apache2
 BuildRequires:  fdupes
 BuildRequires:  rsync
@@ -49,6 +51,7 @@ written in the PHP5/7 language and uses the Dwoo templating engine.
 
 %prep
 %setup -q
+%autopatch -p1
 %build
 cp %SOURCE2 .
 
@@ -61,18 +64,23 @@ cp %SOURCE2 .
 
 make install
 install -d %{buildroot}/etc/apache2/conf.d
-install %SOURCE1 %{buildroot}/etc/apache2/conf.d/%{name}.conf
+install -m 644 %SOURCE1 %{buildroot}/etc/apache2/conf.d/%{name}.conf
+mkdir -pv %{buildroot}%{_docdir}/%{name}/
+cp -v download_js.sh %{buildroot}%{_docdir}/%{name}/download_js.sh
+# fix suprious buildroot in config
+%{__sed} -i 's@%{buildroot}@@' %{buildroot}/%{web_prefixdir}/conf_default.php
 
 %fdupes %{buildroot}%{web_prefixdir}
 %fdupes %{buildroot}%{_localstatedir}/lib/ganglia-web
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING TODO README README.SUSE
+%doc AUTHORS TODO README README.SUSE
+%{_docdir}/%{name}/download_js.sh
+%license COPYING 
 %dir %{web_prefixdir}/
 %dir %{web_prefixdir}/dwoo
 %{web_prefixdir}/*
-%config(noreplace) %{web_prefixdir}/conf_default.php
 %config(noreplace) /etc/apache2/conf.d/%{name}.conf
 %dir %{_localstatedir}/lib/ganglia-web
 %{_localstatedir}/lib/ganglia-web/conf
