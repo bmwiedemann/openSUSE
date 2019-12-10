@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell-markers
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Dephell library to use environment markers (PEP-496)
 License:        MIT
@@ -47,6 +47,8 @@ Dephell library to use environment markers (PEP-496).
 
 %prep
 %setup -q -n dephell_markers-%{version}
+# https://github.com/dephell/dephell_markers/issues/6
+sed -i '/package_dir/d' setup.py
 
 %build
 %python_build
