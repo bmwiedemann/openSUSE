@@ -1,0 +1,41 @@
+--- a/serialization/src/main/scala/sbt/serialization/json/JSONPickleFormat.scala
++++ b/serialization/src/main/scala/sbt/serialization/json/JSONPickleFormat.scala
+@@ -17,7 +17,7 @@ import org.json4s.JsonAST._
+ import scala.util.parsing.json.JSONFormat.quoteString
+ import scala.collection.mutable.{ StringBuilder, Stack }
+ import scala.util.{ Success, Failure }
+-import jawn.support.json4s.{ Parser => JawnParser }
++import org.typelevel.jawn.support.json4s.{ Parser => JawnParser }
+ 
+ package json {
+ 
+--- a/serialization/src/main/scala/sbt/serialization/json/JsonMethods.scala
++++ b/serialization/src/main/scala/sbt/serialization/json/JsonMethods.scala
+@@ -86,22 +86,22 @@ private[serialization] object JsonMethods extends BaseJsonMethods[JValue] {
+     parseTry(in, useBigDecimalForDouble).toOption
+   def parseTry(in: JsonInput, useBigDecimalForDouble: Boolean): Try[JValue] = {
+     val result: Try[JValue] = in match {
+-      case StringInput(string) => jawn.support.json4s.Parser.parseFromString(string)
++      case StringInput(string) => org.typelevel.jawn.support.json4s.Parser.parseFromString(string)
+       // TODO - We should support the reader case too.
+       case ReaderInput(reader) => util.Try(???)
+       case StreamInput(stream) =>
+         val in = java.nio.channels.Channels.newChannel(stream)
+-        try jawn.support.json4s.Parser.parseFromChannel(in)
++        try org.typelevel.jawn.support.json4s.Parser.parseFromChannel(in)
+         finally in.close()
+       case FileInput(file: File) =>
+         val in = (new java.io.FileInputStream(file)).getChannel
+-        try jawn.support.json4s.Parser.parseFromChannel(in)
++        try org.typelevel.jawn.support.json4s.Parser.parseFromChannel(in)
+         finally in.close()
+     }
+     result recover {
+-      case e @ jawn.ParseException(msg, _, line, col) =>
++      case e @ org.typelevel.jawn.ParseException(msg, _, line, col) =>
+         throw PicklingException(s"Parse error line $line column $col '$msg' in $in", Some(e))
+-      case e @ jawn.IncompleteParseException(msg) =>
++      case e @ org.typelevel.jawn.IncompleteParseException(msg) =>
+         throw PicklingException(s"Incomplete json '$msg' in $in", Some(e))
+     }
+   }

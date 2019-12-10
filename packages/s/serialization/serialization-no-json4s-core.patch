@@ -1,0 +1,172 @@
+--- a/serialization/src/main/scala/sbt/serialization/SerializedValue.scala
++++ b/serialization/src/main/scala/sbt/serialization/SerializedValue.scala
+@@ -1,7 +1,6 @@
+ package sbt.serialization
+ 
+ import java.io.File
+-import org.json4s.{ JString, JValue }
+ import org.json4s.JsonAST._
+ import scala.pickling.PicklingException
+ import scala.util.control.NonFatal
+--- a/serialization/src/main/scala/sbt/serialization/json/JSONPickleFormat.scala
++++ b/serialization/src/main/scala/sbt/serialization/json/JSONPickleFormat.scala
+@@ -13,7 +13,7 @@ import scala.pickling.{
+ }
+ import scala.pickling.internal.lookupUnpicklee
+ // FIXME this isn't threadsafe right? we need to get rid of its use.
+-import org.json4s._
++import org.json4s.JsonAST._
+ import scala.util.parsing.json.JSONFormat.quoteString
+ import scala.collection.mutable.{ StringBuilder, Stack }
+ import scala.util.{ Success, Failure }
+@@ -25,6 +25,11 @@ package json {
+ 
+   private[serialization] object `package` {
+     implicit val pickleFormat: JSONPickleFormat = new JSONPickleFormat
++    def findByName(obj: JObject, name: String): JValue =
++      (obj.obj find { case (n, v) => n == name }) match {
++        case Some((n, v)) => v
++        case _            => JNothing
++      }
+   }
+ 
+   private[serialization] sealed abstract class JSONPickle extends Pickle {
+@@ -36,7 +41,7 @@ package json {
+ 
+     private[serialization] def readTypeTag: Option[String] = parsedValue match {
+       case obj: JObject =>
+-        (obj \ JSONPickleFormat.TYPE_TAG_FIELD) match {
++        findByName(obj, JSONPickleFormat.TYPE_TAG_FIELD) match {
+           case JString(s) => Some(s)
+           case _          => None
+         }
+@@ -405,7 +410,7 @@ package json {
+           state.current.asInstanceOf[JObject].values.keys.toList.sorted.map(k => JString(k))
+         RawJsValue(JArray(keys), state)
+         // TODO - what do we do if we're at a JNothing here...
+-      } else RawJsValue(state.current.asInstanceOf[JObject] \ name, state)
++      } else RawJsValue(findByName(state.current.asInstanceOf[JObject], name), state)
+       val nested = new VerifyingJSONPickleReader(format, nextState)
+       if (this.areHintsPinned) {
+         nested.pinHints()
+@@ -468,7 +473,7 @@ package json {
+       FastTypeTag.Null.key -> (datum => null),
+       FastTypeTag.Ref.key -> (datum => lookupUnpicklee(datum match {
+         case obj: JObject =>
+-          (obj \ REF_ID_FIELD) match {
++          findByName(obj, REF_ID_FIELD) match {
+             case JDouble(num) => num.toInt
+             case x            => unexpectedValue(x, FastTypeTag.Ref)
+           }
+@@ -593,7 +598,7 @@ package json {
+      * this will use the type hint provided if we're deserializing a known subclass (not an abstract/trait)
+      */
+     private def readTypeTagKey(obj: JObject, hints: Hints): String = {
+-      (obj \ TYPE_TAG_FIELD) match {
++      findByName(obj, TYPE_TAG_FIELD) match {
+         case JString(s) => s
+         case found      => hints.tag.key
+       }
+@@ -604,7 +609,7 @@ package json {
+         case JNull    => FastTypeTag.Null.key
+         case JNothing => FastTypeTag.Nothing.key
+         case obj: JObject =>
+-          (obj \ REF_ID_FIELD) match {
++          findByName(obj, REF_ID_FIELD) match {
+             case JDouble(num) => FastTypeTag.Ref.key
+             // Not a reference type.
+             case _ =>
+--- a/serialization/src/main/scala/sbt/serialization/json/JsonMethods.scala
++++ b/serialization/src/main/scala/sbt/serialization/json/JsonMethods.scala
+@@ -1,29 +1,29 @@
+ package sbt.serialization.json
+ 
+-import org.json4s.{
+-  JsonInput,
+-  StringInput,
+-  StreamInput,
+-  ReaderInput,
+-  FileInput,
+-  JValue,
+-  JField,
+-  JNothing,
+-  JBool,
+-  JString,
+-  JInt,
+-  JDecimal,
+-  JArray,
+-  JObject,
+-  JNull,
+-  JDouble
+-}
++import org.json4s.JsonAST._
+ import java.io.File
+ import scala.pickling.PicklingException
+ import scala.util.Try
++import java.nio.charset.Charset
++import java.io.{ Reader => JReader, File, InputStream }
++
++private[serialization] sealed abstract class JsonInput extends Product with Serializable
++private[serialization] case class StringInput(string: String) extends JsonInput
++private[serialization] case class ReaderInput(reader: JReader) extends JsonInput
++private[serialization] case class StreamInput(stream: InputStream) extends JsonInput
++private[serialization] case class FileInput(file: File) extends JsonInput
++
++private[serialization] trait BaseJsonMethods[T] {
++  def parse(in: JsonInput, useBigDecimalForDouble: Boolean = false): JValue
++  def parseOpt(in: JsonInput, useBigDecimalForDouble: Boolean = false): Option[JValue]
++
++  def render(value: JValue) /*(implicit formats: Formats = DefaultFormats)*/ : T
++  def compact(d: T): String
++  def pretty(d: T): String
++}
+ 
+ /** An implementation of JsonMethods for json4s that uses Jawn and our own toStrings. */
+-private[serialization] object JsonMethods extends org.json4s.JsonMethods[JValue] {
++private[serialization] object JsonMethods extends BaseJsonMethods[JValue] {
+   // Redner doesn't do anything, as we aren't translating to an intermediate format before rendering.
+   override def render(value: JValue): JValue = value
+   // TODO - Write this.
+@@ -130,3 +130,42 @@ private[serialization] object JsonMethods extends org.json4s.JsonMethods[JValue]
+   def jvalueHashCode(jvalue: JValue): Int =
+     jvalueSorted(jvalue).hashCode
+ }
++
++private[serialization] object ParserUtil {
++  private val AsciiEncoder = Charset.forName("US-ASCII").newEncoder();
++
++  private[this] sealed abstract class StringAppender[T] {
++    def append(s: String): T
++    def subj: T
++  }
++  private[this] class StringWriterAppender(val subj: java.io.Writer) extends StringAppender[java.io.Writer] {
++    def append(s: String): java.io.Writer = subj.append(s)
++  }
++  private[this] class StringBuilderAppender(val subj: StringBuilder) extends StringAppender[StringBuilder] {
++    def append(s: String): StringBuilder = subj.append(s)
++  }
++
++  def quote(s: String): String = quote(s, new StringBuilderAppender(new StringBuilder)).toString
++  private[serialization] def quote(s: String, writer: java.io.Writer): java.io.Writer = quote(s, new StringWriterAppender(writer))
++  private[this] def quote[T](s: String, appender: StringAppender[T]): T = { // hot path
++    var i = 0
++    val l = s.length
++    while (i < l) {
++      (s(i): @annotation.switch) match {
++        case '"'  => appender.append("\\\"")
++        case '\\' => appender.append("\\\\")
++        case '\b' => appender.append("\\b")
++        case '\f' => appender.append("\\f")
++        case '\n' => appender.append("\\n")
++        case '\r' => appender.append("\\r")
++        case '\t' => appender.append("\\t")
++        case c =>
++          if (!AsciiEncoder.canEncode(c))
++            appender.append("\\u%04x".format(c: Int))
++          else appender.append(c.toString)
++      }
++      i += 1
++    }
++    appender.subj
++  }
++}

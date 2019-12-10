@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Dec  3 18:26:51 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of sbt serialization 0.1.2 for scala 2.10.x
+- Added patches:
+  * serialization-no-json4s-core.patch
+    + Upstream patch to remove dependency on json4s-core
+  * serialization-jawn-json4s.patch
+    + Port from org.spire-math's old jawn to org.typelevel's newer
+      version
