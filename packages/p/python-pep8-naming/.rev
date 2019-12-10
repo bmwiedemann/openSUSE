@@ -46,4 +46,12 @@
   * Support Python 2's tuple syntax in except clauses.</comment>
     <requestid>680059</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9be2af0a752ad1a8ed47c6f73a1c260e</srcmd5>
+    <version>0.9.1</version>
+    <time>1576014147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755166</requestid>
+  </revision>
 </revisionlist>

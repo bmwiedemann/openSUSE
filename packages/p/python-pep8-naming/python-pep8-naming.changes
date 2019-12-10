@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  7 17:42:36 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.9.1:
+  * Fix line number offsets when reporting errors involving functions
+    with decorators in Python 3.8 and later.
+
+- changes from version 0.9.0:
+  * Drop support for Python 3.3 and 3.4.
+  * Support positional-only arguments in Python 3.8.
+  * Recognize abc.ABCMeta as a metaclass base type.
+  * ignore-names now also applies to the N803 check.
+  * Handle assigning exceptions to object attributes in Python 2.
+
+-------------------------------------------------------------------
 Thu Feb 28 09:13:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.8.2:
