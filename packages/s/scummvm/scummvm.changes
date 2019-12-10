@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 15:01:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Undefine _lto_cflags before building scummvm. The lto flags are
+  incompatible with -gsplit-dwarf which scummvm relies on.
+
+-------------------------------------------------------------------
 Sat Oct 12 12:38:37 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.1.0

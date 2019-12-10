@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,9 @@ These engines are in a worse state, but allow to play extra games.
 sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configure
 
 %build
+# scummvm relies on -gsplit-dwarf which is incompatible with -flto
+%define _lto_cflags %{nil}
+
 # No rpm configure because scummvm's configure isn't a real configure and thus
 # doesn't understand some of the options %%configure passes.
 CXXFLAGS="%{optflags}" ; export CXXFLAGS ; \
