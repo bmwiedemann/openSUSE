@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            http://java.net/projects/dtd-parser
 Source0:        https://github.com/javaee/jaxb-dtd-parser/archive/%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildArch:      noarch
@@ -44,13 +45,9 @@ This package contains javadoc for %{name}.
 
 %build
 pushd dtd-parser
-rm -f src/module-info.java
 
 %{mvn_file} :dtd-parser %{name}
-%{mvn_build} -f \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=7
-%endif
+%{mvn_build} -f -- -Dsource=7
 
 popd
 
