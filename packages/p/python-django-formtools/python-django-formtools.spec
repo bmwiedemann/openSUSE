@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-formtools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-pysqlite
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.8
 BuildArch:      noarch
@@ -54,7 +53,7 @@ Currently for form previews and multi-step forms.
 %check
 export DJANGO_SETTINGS_MODULE=tests.settings
 export PYTHONPATH=`pwd`
-%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test tests --pythonpath=`pwd` 
+%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test -v 2 tests --pythonpath=`pwd` 
 
 %files %{python_files}
 %license LICENSE
