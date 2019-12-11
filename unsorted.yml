@@ -3400,7 +3400,6 @@ unsorted:
   - gammu-smsd 
   - ganglia-devel 
   - ganglia-gmetad 
-  - ganglia-gmetad-skip-bcheck 
   - ganglia-gmond 
   - ganglia-gmond-modules-python 
   - ganglia-web 
@@ -4659,6 +4658,9 @@ unsorted:
   - go1.12 
   - go1.12-doc 
   - go1.12-race: [x86_64] 
+  - go1.13 
+  - go1.13-doc 
+  - go1.13-race: [x86_64] 
   - go1.4 
   - go1.4-doc 
   - go1.4-race: [x86_64] 
@@ -5871,6 +5873,10 @@ unsorted:
   - javassist-javadoc 
   - javassist-manual 
   - javazic 
+  - jawn-ast 
+  - jawn-json4s 
+  - jawn-parser 
+  - jawn-util 
   - jaxen 
   - jaxen-bootstrap 
   - jaxodraw 
@@ -6071,6 +6077,13 @@ unsorted:
   - json-lib 
   - json-lib-javadoc 
   - json-table 
+  - json4s-ast 
+  - json4s-core 
+  - json4s-ext 
+  - json4s-jackson 
+  - json4s-native 
+  - json4s-scalap 
+  - json4s-xml 
   - jsoncpp-devel 
   - jsonp 
   - jsonp-javadoc 
@@ -6219,6 +6232,7 @@ unsorted:
   - kadu-sound-ultr 
   - kaffeine 
   - kaffeine-lang 
+  - kafka-kit: [x86_64] 
   - kajaani-kombat 
   - kajaani-kombat-server 
   - kajongg 
@@ -9448,7 +9462,6 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa1 
-  - libhiredis0_13 
   - libhivex0: [i586] 
   - libhmac-devel 
   - libhmac-tools 
@@ -9995,7 +10008,6 @@ unsorted:
   - libmemcache0 
   - libmemcached 
   - libmemcached-devel 
-  - libmemcached11 
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
   - libmemphis-0_2-0 
@@ -12892,6 +12904,7 @@ unsorted:
   - maildir-utils 
   - mailgraph 
   - mailimporter-devel 
+  - mailman 
   - mailnag 
   - mailnag-lang 
   - mailprocessing 
@@ -13295,7 +13308,6 @@ unsorted:
   - melody 
   - melody-lang 
   - melt 
-  - memcached 
   - memcached-devel 
   - memkind: [x86_64] 
   - memkind-devel: [x86_64] 
@@ -15416,6 +15428,7 @@ unsorted:
   - papirus-icon-theme 
   - paps 
   - par2cmdline 
+  - paradise 
   - parallel-netcdf-devel-data 
   - parallel-netcdf-mvapich2 
   - parallel-netcdf-mvapich2-devel 
@@ -15429,6 +15442,12 @@ unsorted:
   - parallel-netcdf-openmpi3 
   - parallel-netcdf-openmpi3-devel 
   - parallel-netcdf-openmpi3-devel-static 
+  - paranamer 
+  - paranamer-ant 
+  - paranamer-generator 
+  - paranamer-javadoc 
+  - paranamer-maven-plugin 
+  - paranamer-parent 
   - paraview: [x86_64] 
   - paraview-devel: [x86_64] 
   - paraviewdata 
@@ -16033,9 +16052,11 @@ unsorted:
   - perl-HTML-TableExtract 
   - perl-HTML-Tidy 
   - perl-HTML-TokeParser-Simple 
+  - perl-HTTP-Entity-Parser 
   - perl-HTTP-Headers-ActionPack 
   - perl-HTTP-Headers-Fast 
   - perl-HTTP-Lite 
+  - perl-HTTP-MultiPartParser 
   - perl-HTTP-Parser-XS 
   - perl-HTTP-Request-AsCGI 
   - perl-HTTP-Server-Simple 
@@ -17398,7 +17419,6 @@ unsorted:
   - python-doc 
   - python-doc-pdf 
   - python-efilter 
-  - python-falcon-doc 
   - python-fastcluster-doc 
   - python-faulthandler 
   - python-fedmsg-base 
@@ -18139,6 +18159,7 @@ unsorted:
   - python2-bz2file 
   - python2-cPyparsing 
   - python2-cached-property 
+  - python2-cachelib 
   - python2-cachetools 
   - python2-cachey 
   - python2-cachy 
@@ -18316,6 +18337,7 @@ unsorted:
   - python2-discid 
   - python2-discogs-client 
   - python2-diskcache 
+  - python2-dist 
   - python2-distlib 
   - python2-distorm3 
   - python2-distributed 
@@ -18365,6 +18387,7 @@ unsorted:
   - python2-django_coverage_plugin 
   - python2-djvulibre 
   - python2-dns-lexicon 
+  - python2-dnspython 
   - python2-docformatter 
   - python2-docker 
   - python2-docker-compose 
@@ -18391,6 +18414,7 @@ unsorted:
   - python2-easypysmb 
   - python2-easywatch 
   - python2-ebcdic 
+  - python2-ecdsa 
   - python2-ed25519 
   - python2-ed25519ll 
   - python2-editdistance 
@@ -19133,6 +19157,7 @@ unsorted:
   - python2-pychm 
   - python2-pycodestyle 
   - python2-pycountry 
+  - python2-pycryptodome 
   - python2-pycryptodomex 
   - python2-pycsw 
   - python2-pyct 
@@ -19190,6 +19215,7 @@ unsorted:
   - python2-pylibmc 
   - python2-pylint 
   - python2-pylons-sphinx-themes 
+  - python2-pylru 
   - python2-pylzma 
   - python2-pymacaroons 
   - python2-pymacaroons-pynacl 
@@ -19227,6 +19253,7 @@ unsorted:
   - python2-pyramid-mako 
   - python2-pyreadstat 
   - python2-pyroma 
+  - python2-pyroomacoustics 
   - python2-pyroute2 
   - python2-pyrrd 
   - python2-pyrsistent 
@@ -19340,7 +19367,9 @@ unsorted:
   - python2-python-jenkins 
   - python2-python-jose 
   - python2-python-json-logger 
+  - python2-python-jsonrpc-server 
   - python2-python-jsonschema-objects 
+  - python2-python-language-server 
   - python2-python-louvain 
   - python2-python-lzo 
   - python2-python-magic 
@@ -19403,6 +19432,7 @@ unsorted:
   - python2-qtcharts-qt5 
   - python2-qtdatavis3d-qt5 
   - python2-qtwebengine-qt5 
+  - python2-quantities 
   - python2-queuelib 
   - python2-quicktions 
   - python2-radon 
@@ -19659,6 +19689,7 @@ unsorted:
   - python2-template-remover 
   - python2-tempora 
   - python2-tenacity 
+  - python2-tensorpac 
   - python2-termcolor 
   - python2-terminado 
   - python2-terminaltables 
@@ -19904,7 +19935,6 @@ unsorted:
   - python3-BTrees-devel 
   - python3-BTrees-doc 
   - python3-Babel-doc 
-  - python3-Beaker 
   - python3-BitVector 
   - python3-Bottleneck 
   - python3-Brotli 
@@ -19965,6 +19995,7 @@ unsorted:
   - python3-Gloo 
   - python3-Glymur 
   - python3-GooCalendar 
+  - python3-GooseMPL 
   - python3-GridDataFormats 
   - python3-HTTPolice 
   - python3-HeapDict 
@@ -19972,8 +20003,10 @@ unsorted:
   - python3-Js2Py 
   - python3-JsonWeb 
   - python3-Kajiki 
+  - python3-Keras 
   - python3-Keras-Applications 
   - python3-Keras-Preprocessing 
+  - python3-Keras-examples 
   - python3-Kivy 
   - python3-Kivy-devel 
   - python3-LEPL 
@@ -19981,7 +20014,6 @@ unsorted:
   - python3-Lektor 
   - python3-Levenshtein 
   - python3-Logbook 
-  - python3-Mako 
   - python3-MapProxy 
   - python3-Markdown 
   - python3-MarkupPy 
@@ -20135,10 +20167,8 @@ unsorted:
   - python3-aiohttp-theme 
   - python3-aioresponses 
   - python3-aiorpcX 
-  - python3-aiosmtpd 
   - python3-aiosmtplib 
   - python3-akismet 
-  - python3-alembic 
   - python3-alsa 
   - python3-altair 
   - python3-altair-widgets 
@@ -20189,17 +20219,15 @@ unsorted:
   - python3-atlassian-python-api 
   - python3-atom 
   - python3-atomicwrites 
-  - python3-atpublic 
   - python3-attr 
   - python3-aubio 
+  - python3-audio-degrader 
   - python3-audiogrep 
   - python3-audiolazy 
   - python3-audiomate 
   - python3-audioread 
   - python3-audit: [i586] 
   - python3-augeas 
-  - python3-authheaders 
-  - python3-authres 
   - python3-autobahn 
   - python3-autodoc 
   - python3-autoflake 
@@ -20430,6 +20458,7 @@ unsorted:
   - python3-bloscpack 
   - python3-bobo 
   - python3-bobodoctestumentation 
+  - python3-bokcolmaps 
   - python3-bokeh 
   - python3-boltons 
   - python3-boolean.py 
@@ -20458,6 +20487,7 @@ unsorted:
   - python3-cPyparsing 
   - python3-caca 
   - python3-cached-property 
+  - python3-cachelib 
   - python3-cachetools 
   - python3-cachey 
   - python3-cachy 
@@ -20478,6 +20508,7 @@ unsorted:
   - python3-castellan 
   - python3-casttube 
   - python3-catkin-pkg 
+  - python3-cauldron-notebook 
   - python3-cbor 
   - python3-cbor2 
   - python3-ccm 
@@ -20508,6 +20539,7 @@ unsorted:
   - python3-chainmap 
   - python3-charset-normalizer 
   - python3-chart-studio 
+  - python3-chartify 
   - python3-check-manifest 
   - python3-cheroot 
   - python3-chest 
@@ -20517,7 +20549,6 @@ unsorted:
   - python3-clang 
   - python3-cleo 
   - python3-cli-helpers 
-  - python3-click 
   - python3-click-aliases 
   - python3-click-completion 
   - python3-click-didyoumean 
@@ -20645,6 +20676,7 @@ unsorted:
   - python3-dephell-links 
   - python3-dephell-markers 
   - python3-dephell-pythons 
+  - python3-dephell-setuptools 
   - python3-dephell-shells 
   - python3-dephell-specifier 
   - python3-dephell-venvs 
@@ -20667,6 +20699,7 @@ unsorted:
   - python3-discid 
   - python3-discogs-client 
   - python3-diskcache 
+  - python3-dist 
   - python3-distlib 
   - python3-distob 
   - python3-distorm3 
@@ -20702,6 +20735,7 @@ unsorted:
   - python3-django-js-asset 
   - python3-django-json-widget 
   - python3-django-jsonfield 
+  - python3-django-mailman3 
   - python3-django-minio-storage 
   - python3-django-model-utils 
   - python3-django-nine 
@@ -20735,7 +20769,6 @@ unsorted:
   - python3-djangorestframework-simplejwt 
   - python3-djet 
   - python3-djvulibre 
-  - python3-dkimpy 
   - python3-dnf 
   - python3-dnf-plugin-leaves 
   - python3-dnf-plugin-local 
@@ -20771,6 +20804,8 @@ unsorted:
   - python3-drf-nested-routers 
   - python3-drms 
   - python3-dropbox 
+  - python3-dtaidistance 
+  - python3-dtaidistance-devel 
   - python3-duckduckgo2 
   - python3-dukpy 
   - python3-dukpy-kovidgoyal 
@@ -20826,7 +20861,6 @@ unsorted:
   - python3-factory_boy 
   - python3-fake-useragent 
   - python3-fakeredis 
-  - python3-falcon 
   - python3-fanficfare 
   - python3-fann2 
   - python3-fastTSNE 
@@ -20880,9 +20914,6 @@ unsorted:
   - python3-flit 
   - python3-flower 
   - python3-fluent 
-  - python3-flufl.bounce 
-  - python3-flufl.i18n 
-  - python3-flufl.lock 
   - python3-flufl.testing 
   - python3-fluidity-sm 
   - python3-flup 
@@ -20976,7 +21007,6 @@ unsorted:
   - python3-gspread 
   - python3-gsw 
   - python3-guessit 
-  - python3-gunicorn 
   - python3-guzzle_sphinx_theme 
   - python3-gwcs 
   - python3-h11 
@@ -20994,7 +21024,6 @@ unsorted:
   - python3-hetzner 
   - python3-hetznercloud 
   - python3-hexdump 
-  - python3-hiredis 
   - python3-hkdf 
   - python3-hl7apy 
   - python3-holidays 
@@ -21181,8 +21210,6 @@ unsorted:
   - python3-language-check 
   - python3-lark-parser 
   - python3-latexcodec 
-  - python3-lazr.config 
-  - python3-lazr.delegates 
   - python3-lazr.uri 
   - python3-lazy 
   - python3-lazy-object-proxy 
@@ -21287,6 +21314,9 @@ unsorted:
   - python3-magic-wormhole-mailbox-server 
   - python3-magic-wormhole-transit-relay 
   - python3-magnumclient 
+  - python3-mailman-hyperkitty 
+  - python3-mailman3-fedmsg-plugin 
+  - python3-mailmanclient 
   - python3-managesieve 
   - python3-mando 
   - python3-manilaclient 
@@ -21421,6 +21451,7 @@ unsorted:
   - python3-notmuch 
   - python3-novaclient 
   - python3-nox 
+  - python3-npTDMS 
   - python3-nss 
   - python3-ntfy 
   - python3-ntlm-auth 
@@ -21540,7 +21571,6 @@ unsorted:
   - python3-pass_python_keyring 
   - python3-passa 
   - python3-passivetotal 
-  - python3-passlib: [i586] 
   - python3-pastel 
   - python3-pastream 
   - python3-path 
@@ -21574,6 +21604,7 @@ unsorted:
   - python3-photutils 
   - python3-phply 
   - python3-phue 
+  - python3-physt 
   - python3-pick 
   - python3-pickleshare 
   - python3-piexif 
@@ -21617,6 +21648,7 @@ unsorted:
   - python3-portend 
   - python3-portpicker 
   - python3-positional 
+  - python3-postorius 
   - python3-power 
   - python3-poyo 
   - python3-pprintpp 
@@ -21644,7 +21676,6 @@ unsorted:
   - python3-psycopg2 
   - python3-ptpython 
   - python3-ptpython-ptipython 
-  - python3-publicsuffix 
   - python3-publicsuffixlist 
   - python3-pudb 
   - python3-pulsectl 
@@ -21742,9 +21773,10 @@ unsorted:
   - python3-pylama 
   - python3-pylast 
   - python3-pylev 
-  - python3-pylibmc 
+  - python3-pylineclip 
   - python3-pylint 
   - python3-pylons-sphinx-themes 
+  - python3-pylru 
   - python3-pylzma 
   - python3-pymacaroons 
   - python3-pymacaroons-pynacl 
@@ -21758,7 +21790,6 @@ unsorted:
   - python3-pymisp 
   - python3-pymod2pkg 
   - python3-pymol 
-  - python3-pymongo 
   - python3-pymssql 
   - python3-pynamodb 
   - python3-pynetbox 
@@ -21792,6 +21823,7 @@ unsorted:
   - python3-pyramid-mako 
   - python3-pyreadstat 
   - python3-pyroma 
+  - python3-pyroomacoustics 
   - python3-pyroute2 
   - python3-pyrsistent: [i586] 
   - python3-pysaml2 
@@ -21911,7 +21943,6 @@ unsorted:
   - python3-python-dbusmock 
   - python3-python-docs-theme 
   - python3-python-dotenv 
-  - python3-python-editor 
   - python3-python-fileinspector 
   - python3-python-gammu 
   - python3-python-gflags 
@@ -21920,12 +21951,12 @@ unsorted:
   - python3-python-jenkins 
   - python3-python-jose 
   - python3-python-json-logger 
+  - python3-python-jsonrpc-server 
   - python3-python-jsonschema-objects 
+  - python3-python-language-server 
   - python3-python-louvain 
   - python3-python-lzo 
   - python3-python-magic 
-  - python3-python-memcached 
-  - python3-python-mimeparse 
   - python3-python-mpd2 
   - python3-python-mpv 
   - python3-python-nmap 
@@ -21976,6 +22007,7 @@ unsorted:
   - python3-pyxattr 
   - python3-pyxb 
   - python3-pyzmq-devel 
+  - python3-pyzo 
   - python3-q 
   - python3-qet_tb_generator 
   - python3-qgrid 
@@ -21987,6 +22019,7 @@ unsorted:
   - python3-qtconsole 
   - python3-qtdatavis3d-qt5 
   - python3-qtwebengine-qt5 
+  - python3-quantities 
   - python3-queuelib 
   - python3-quicktions 
   - python3-radon 
@@ -22005,7 +22038,6 @@ unsorted:
   - python3-rebulk 
   - python3-recommonmark 
   - python3-redbaron 
-  - python3-redis 
   - python3-rednose 
   - python3-regex 
   - python3-relatorio 
@@ -22158,6 +22190,7 @@ unsorted:
   - python3-snuggs 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
+  - python3-socketIO-client-nexus 
   - python3-socketpool 
   - python3-softlayer 
   - python3-sortedcollections 
@@ -22260,6 +22293,7 @@ unsorted:
   - python3-template-remover 
   - python3-tempora 
   - python3-tenacity 
+  - python3-tensorpac 
   - python3-termcolor 
   - python3-terminado 
   - python3-terminaltables 
@@ -22508,24 +22542,17 @@ unsorted:
   - python3-zipstream 
   - python3-zodbpickle 
   - python3-zope.cachedescriptors 
-  - python3-zope.component 
-  - python3-zope.configuration 
   - python3-zope.copy 
-  - python3-zope.deferredimport 
-  - python3-zope.deprecation 
   - python3-zope.exceptions 
-  - python3-zope.hookable 
-  - python3-zope.i18nmessageid 
   - python3-zope.location 
-  - python3-zope.proxy 
   - python3-zope.proxy-devel 
-  - python3-zope.schema 
   - python3-zope.security 
   - python3-zope.testbrowser 
   - python3-zope.testing 
   - python3-zope.testrunner 
   - python3-zstandard 
   - python3-zstd 
+  - pyzo 
   - pyzy-devel 
   - q4wine 
   - q4wine-lang 
@@ -22663,6 +22690,7 @@ unsorted:
   - quantum-espresso: [x86_64] 
   - quantum-espresso-doc: [x86_64] 
   - quantum-espresso-openmpi: [x86_64] 
+  - quasiquotes 
   - quassel-base 
   - quassel-client 
   - quassel-client-qt5 
@@ -22775,7 +22803,6 @@ unsorted:
   - recordmydesktop 
   - redeclipse 
   - redeclipse-data 
-  - redis 
   - redland 
   - redland-storage-postgresql 
   - rednotebook 
@@ -22918,6 +22945,8 @@ unsorted:
   - rst2html5 
   - rstart 
   - rsvg-convert 
+  - rsvndump 
+  - rsvndump-lang 
   - rsyslog-diag-tools 
   - rsyslog-doc 
   - rsyslog-module-dbi 
@@ -23850,6 +23879,9 @@ unsorted:
   - sblim-wbemcli 
   - sbt 
   - sbt-bootstrap 
+  - sbt-launcher 
+  - sbt-launcher-interface 
+  - sbt-launcher-javadoc 
   - sc 
   - sc-controller 
   - sca-appliance-agent 
@@ -23873,6 +23905,7 @@ unsorted:
   - scala-apidoc 
   - scala-bootstrap 
   - scala-bootstrap-swing 
+  - scala-pickling 
   - scala-swing 
   - scalapack-mvapich2-test 
   - scalapack-openmpi1-test 
@@ -24003,6 +24036,7 @@ unsorted:
   - serd-devel 
   - serdi 
   - serialdv-devel 
+  - serialization 
   - sersniff 
   - servletapi4 
   - servletapi4-javadoc 
@@ -24728,6 +24762,8 @@ unsorted:
   - tellico-lang 
   - telnet-server 
   - template-glib-devel 
+  - template-resolver 
+  - template-resolver-javadoc 
   - tennebon-dynamic-wallpaper 
   - tensorflow: [x86_64] 
   - tensorflow-avx2-gnu-hpc: [x86_64] 
