@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  3 19:34:20 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- gnutls 3.6.11.1:
+  * libgnutls: Corrected issue with TLS 1.2 session ticket
+    handling as client during resumption
+  * libgnutls: gnutls_base64_decode2() succeeds decoding the empty
+    string to the empty string. This is a behavioral change of the
+    API but it conforms to the RFC4648 expectations
+  * libgnutls: Fixed AES-CFB8 implementation, when input is shorter
+    than the block size. Fix backported from nettle.
+  * certtool: CRL distribution points will be set in CA
+    certificates even when non self-signed
+  * gnutls-cli/serv: added raw public-key handling capabilities
+    (RFC7250). Key material can be set via the --rawpkkeyfile and
+    --rawpkfile flags.
+
+-------------------------------------------------------------------
 Thu Oct 10 17:48:44 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - gnutls 3.6.10:

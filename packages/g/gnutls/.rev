@@ -1356,4 +1356,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>737234</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>3378787412bb7ca3c2e561e1213f9603</srcmd5>
+    <version>3.6.11.1</version>
+    <time>1576061979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753893</requestid>
+  </revision>
 </revisionlist>
