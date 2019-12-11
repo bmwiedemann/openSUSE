@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mock
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-mock
-Version:        1.11.2
+Version:        1.12.1
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-mock
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest-mock-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
