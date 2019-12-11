@@ -118,4 +118,12 @@
   - added a memory allocation check</comment>
     <requestid>745204</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dc6da6eaf1bd4060e64efb55cf23bdd7</srcmd5>
+    <version>0.20.1</version>
+    <time>1576062002</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>754061</requestid>
+  </revision>
 </revisionlist>

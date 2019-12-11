@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 27 13:59:47 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Fix %posttrans script returning an error code
+
+-------------------------------------------------------------------
 Mon Nov  4 15:32:45 CET 2019 - kukuk@suse.de
 
 - Update to version 0.20.1
