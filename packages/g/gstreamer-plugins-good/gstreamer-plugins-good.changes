@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:48:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + vp9dec: Fix broken 4:4:4 8bits decoding
+  + rtpsession: add locking for clear-pt-map
+  + rtpL16depay: don't crash if data is not modulo channels*width
+  + wavparse:
+    - Fix push mode ignoring audio with a size smaller than segment
+      buffer
+    - Fix push mode ignoring last audio payload chunk
+  + aacparse: fix wrong offset of the channel number in adts header
+  + jpegdec:
+    - Fix incorrect logic in EOI tag detection
+    - Don't overwrite the last valid line
+  + videocrop: Also update the coordinate when in-place
+  + vpx: Error out if enabled and no features found
+  + v4l2videodec: ensure pool exists before orphaning it
+  + v4l2videoenc: fix type conversion errors
+  + v4l2bufferpool: Queue number of allocated buffers to capture
+  + v4l2object:
+    - Fix mpegversion number typo
+    - Work around bad TRY_FMT colorimetry implementations
+
+-------------------------------------------------------------------
 Tue Sep 24 12:56:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:
