@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-session
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -115,9 +115,7 @@ translation-update-upstream po gnome-session-3.0
 %meson \
   -D docbook=false \
   -D systemd=true \
-%if !0%{is_opensuse}
-  -D systemd_journal=false \
-%endif
+  -D systemd_journal=true \
   %{nil}
 %meson_build
 
@@ -213,8 +211,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_userunitdir}/gnome-session-restart-dbus.service
 %{_userunitdir}/gnome-session-shutdown.target
 %{_userunitdir}/gnome-session-signal-init.service
-%{_userunitdir}/gnome-session-stable.target
-%{_userunitdir}/gnome-session-stable.timer
 %{_userunitdir}/gnome-session-wayland.target
 %{_userunitdir}/gnome-session-wayland@.target
 %{_userunitdir}/gnome-session-x11.target

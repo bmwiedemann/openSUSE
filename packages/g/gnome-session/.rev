@@ -1355,4 +1355,12 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
     <comment>Scripted push from {project}</comment>
     <requestid>736558</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>b362a64b3c61415323331cc0cefb98e4</srcmd5>
+    <version>3.34.2</version>
+    <time>1576062320</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 754132 from iznogood)</comment>
+    <requestid>754972</requestid>
+  </revision>
 </revisionlist>
