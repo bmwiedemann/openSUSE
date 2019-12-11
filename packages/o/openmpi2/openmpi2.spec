@@ -142,6 +142,7 @@ Source5:        mpivars.csh
 Patch0:         fix-rdma-component-selection.patch
 Patch1:         reproducible.patch
 Patch2:         add-gen-p5-chip-pci-id-to-ini-file.patch
+Patch3:         openmpi_disable_opal_fifo_test_issue5470.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -404,6 +405,7 @@ EOF
 %endif
 %patch1 -p1
 %patch2
+%patch3 -p1
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
        -e 's/^date=.*$/date="OpenMPI %{version} Distribution for SUSE"/' VERSION

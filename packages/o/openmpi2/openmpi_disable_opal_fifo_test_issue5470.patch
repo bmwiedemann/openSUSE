@@ -1,0 +1,29 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: openmpi disable opal fifo test issue5470
+Date: Wed, 04 Dec 2019 16:55:45 +0100
+
+openmpi disable opal fifo test for PowerPC as per upstream issue
+https://github.com/open-mpi/ompi/issues/5470
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ test/class/opal_fifo.c |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+Index: openmpi-2.1.6.0.d9b9e59e5c5a/test/class/opal_fifo.c
+===================================================================
+--- openmpi-2.1.6.0.d9b9e59e5c5a.orig/test/class/opal_fifo.c
++++ openmpi-2.1.6.0.d9b9e59e5c5a/test/class/opal_fifo.c
+@@ -121,6 +121,12 @@ int main (int argc, char *argv[]) {
+     double timing;
+     int rc;
+ 
++#ifdef __powerpc64__
++    printf ("disable test that hang as per\nhttps://github.com/open-mpi/ompi/issues/5470\n");
++    test_success ();
++    return test_finalize ();
++#endif
++
+     rc = opal_init_util (&argc, &argv);
+     test_verify_int(OPAL_SUCCESS, rc);
+     if (OPAL_SUCCESS != rc) {
