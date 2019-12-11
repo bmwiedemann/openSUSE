@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # icecream 0
 
@@ -30,7 +30,7 @@ Summary:        rpmlint regression tests
 License:        SUSE-Public-Domain
 Group:          Development/Tools/Building
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://www.opensuse.org/
+URL:            http://www.opensuse.org/
 Source:         rpmlint-tests-%version.tar.xz
 Patch0:         rpmlint-tests-sle15.patch
 

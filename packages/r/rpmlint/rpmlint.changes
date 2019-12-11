@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:46:11 UTC 2019 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * new common whitelisting code for CheckPolkitPrivs and CheckCronJobs
+
+-------------------------------------------------------------------
+Thu Nov 28 11:58:21 UTC 2019 - Malte Kraus <malte.kraus@suse.com>
+
+- whitelist sssd infopipe (bsc#1157663)
+- whitelist sysprof3 D-Bus services (bsc#1151418)
+
+-------------------------------------------------------------------
 Tue Oct 15 07:12:22 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - filter install-info warnings. Handled by file triggers now (boo#1152169)

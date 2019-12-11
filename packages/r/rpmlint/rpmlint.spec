@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Url:            https://github.com/rpm-software-management/rpmlint
+URL:            https://github.com/rpm-software-management/rpmlint
 Source0:        https://github.com/rpm-software-management/rpmlint/archive/rpmlint-%{version}.tar.gz
 Source1:        rpmlint-checks-master.tar.xz
 Source2:        config

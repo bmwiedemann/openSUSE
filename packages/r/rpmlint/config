@@ -697,6 +697,9 @@ setOption("DBUSServices.WhiteList", (
     # sysprof (bsc#996111)
     "org.gnome.Sysprof2.service",
     "org.gnome.Sysprof2.conf",
+    # sysprof (bsc#1151418)
+    "org.gnome.Sysprof3.service",
+    "org.gnome.Sysprof3.conf",
     # flatpak (bsc#984817)
     "org.freedesktop.Flatpak.SystemHelper.service",
     "org.freedesktop.Flatpak.SystemHelper.conf",
@@ -776,6 +779,9 @@ setOption("DBUSServices.WhiteList", (
     # systemd-portabled (boo#1145639)
     "org.freedesktop.portable1.service",
     "org.freedesktop.portable1.conf",
+    # sssd (bsc#1157663, bsc#1106600)
+    "org.freedesktop.sssd.infopipe.service",
+    "org.freedesktop.sssd.infopipe.conf",
 ))
 
 setOption("PAMModules.WhiteList", (

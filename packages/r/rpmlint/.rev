@@ -2872,4 +2872,16 @@ bugzilla.opensuse.org/show_bug.cgi?id=939831 (forwarded request 330560 from aboe
     <comment></comment>
     <requestid>739697</requestid>
   </revision>
+  <revision rev="325" vrev="14">
+    <srcmd5>06891e8796bf699477d2309791ed0e57</srcmd5>
+    <version>1.11</version>
+    <time>1576062262</time>
+    <user>dimstar_suse</user>
+    <comment>!!! please handle together with sr#755595, otherwise rpmlint-mini will break  !!!
+- Update to version master:
+  * new common whitelisting code for CheckPolkitPrivs and CheckCronJobs
+- whitelist sssd infopipe (bsc#1157663)
+- whitelist sysprof3 D-Bus services (bsc#1151418)</comment>
+    <requestid>755596</requestid>
+  </revision>
 </revisionlist>
