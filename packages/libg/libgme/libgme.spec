@@ -1,7 +1,7 @@
 #
 # spec file for package libgme
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,11 +21,12 @@ Name:           libgme
 Version:        0.6.2
 Release:        0
 Summary:        Collection of video game music file emulators
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            https://bitbucket.org/mpyne/game-music-emu/wiki/Home
+URL:            https://bitbucket.org/mpyne/game-music-emu/wiki/Home
 Source0:        https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch0:         fix-gcc10-compiler-detection.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -72,6 +73,7 @@ which use libgme.
 
 %prep
 %setup -q -n game-music-emu-%{version}
+%patch0 -p1
 sed -i 's/\r$//' changes.txt design.txt gme.txt license.txt readme.txt
 
 %build
