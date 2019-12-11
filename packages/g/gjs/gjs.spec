@@ -16,10 +16,6 @@
 #
 
 
-# TODO: systemtap/dtrace is currently (1.53.91) failing, when
-# https://gitlab.gnome.org/GNOME/gjs/issues/196 gets fixed and released,
-# remove all conditional macros and enable systemtap.
-%bcond_with     systemtap
 Name:           gjs
 Version:        1.58.3
 Release:        0
@@ -93,9 +89,12 @@ Mozilla SpiderMonkey JavaScript engine.
 %autosetup -p1
 
 %build
+#doesn't play well with systemtap
+%global _lto_cflags %{nil}
+
 %configure \
     --disable-static \
-    --%{?with_systemtap:enable}%{!?with_systemtap:disable}-systemtap
+    --enable-systemtap
 make %{?_smp_mflags}
 
 %install
@@ -126,8 +125,6 @@ rm %{buildroot}/usr/share/glib-2.0/schemas/org.gnome.GjsTest.gschema.xml
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/%{name}-1.0/
-%if %{with systemtap}
 %{_datadir}/systemtap/tapset/*.stp
-%endif
 
 %changelog
