@@ -29,4 +29,15 @@
 - Fix typo, BOLL -&gt; BOOL</comment>
     <requestid>745131</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>80ef97e61e8a9498a9ca57197c50354d</srcmd5>
+    <version>9.0.0</version>
+    <time>1576062166</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gwp-asan-lto.patch: Make sure there are no LLVM IR files in static libraries that we package.
+- Add libcxx-tests-linux-distribution.patch (boo#1158293): Remove call to platform.linux_distribution: we don't expect failures.
+- Make documentation packages noarch.
+- Add llvm-add-missing-include.patch in order to fix boo#1158367.</comment>
+    <requestid>754550</requestid>
+  </revision>
 </revisionlist>
