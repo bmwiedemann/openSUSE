@@ -1,7 +1,7 @@
 #
 # spec file for package virtualbox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ Release:        0
 Summary:        VirtualBox is an Emulator
 License:        GPL-2.0-or-later
 Group:          System/Emulators/PC
-Url:            http://www.virtualbox.org/
+URL:            http://www.virtualbox.org/
 #
 # so you don't need to repack virtualbox by hand, just add new release of VirtualBox-x.x.x.tar.bz2 and line below with
 # script virtualbox-patch-source.sh will do the job :)
@@ -154,6 +154,7 @@ Patch132:       fixes_for_qt5.13.patch
 Patch133:       fixes_for_5.4.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
+BuildRequires:  %{python_module devel}
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  SDL-devel
 BuildRequires:  acpica
@@ -460,6 +461,7 @@ echo "sle_version " %{?sle_version}", is_opensuse " %{?is_opensuse}", suse_versi
 
 # make VB UI background colors look sane again
 %patch999 -p1
+echo "sle_version $(0%{?sle_version})" 
 
 #copy user manual
 cp %{SOURCE1} UserManual.pdf

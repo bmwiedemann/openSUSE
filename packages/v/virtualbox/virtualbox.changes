@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  4 16:33:09 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update file "switch_to_python3.4+.patch" to handle Python 3.8. (bsc#1158288) 
+
+-------------------------------------------------------------------
 Tue Nov  5 14:44:08 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
 - Try to fix unresolvable kernel version in Leap 15.2.
