@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.18.31
+Version:        9.19.7
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi
@@ -141,7 +141,6 @@ Requires:       dosfstools
 Requires:       e2fsprogs
 Requires:       xorriso
 Requires:       grub2
-Requires:       kiwi-man-pages
 Requires:       kiwi-tools
 Requires:       lvm2
 Requires:       mtools
@@ -159,6 +158,9 @@ Requires:       u-boot-tools
 %endif
 %ifarch s390 s390x
 Requires:       s390-tools
+%endif
+%if ! (0%{?rhel} && 0%{?rhel} < 8)
+Recommends:     kiwi-man-pages
 %endif
 
 %description -n python%{python3_pkgversion}-kiwi
@@ -405,19 +407,19 @@ fi
 %endif
 
 %files -n python%{python3_pkgversion}-kiwi
+%dir %{_defaultdocdir}/python-kiwi
 %{_bindir}/kiwi
 %{_bindir}/kiwi-ng
 %{_bindir}/kiwicompat
 %{_bindir}/kiwi-ng-3*
 %{_bindir}/kiwicompat-3*
 %{python3_sitelib}/kiwi*
-
-%files -n kiwi-man-pages
-%dir %{_defaultdocdir}/python-kiwi
-%{_defaultdocdir}/python-kiwi/kiwi.pdf
+%config %_sysconfdir/bash_completion.d/kiwi-ng.sh
 %{_defaultdocdir}/python-kiwi/LICENSE
 %{_defaultdocdir}/python-kiwi/README
-%config %_sysconfdir/bash_completion.d/kiwi-ng.sh
+
+%files -n kiwi-man-pages
+%{_defaultdocdir}/python-kiwi/kiwi.pdf
 %config %_sysconfdir/kiwi.yml
 %doc %{_mandir}/man8/*
 

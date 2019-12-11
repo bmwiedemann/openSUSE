@@ -1,4 +1,422 @@
 -------------------------------------------------------------------
+Tue Dec 10 09:27:41 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.6 → 9.19.7
+
+-------------------------------------------------------------------
+Sun Dec 08 18:57:19 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed swap setup if btrfs is used
+
+  In case of a volume manager the simplified variant of the
+  device name is used in the fstab file to reference the
+  swap device. However this is only correct for the lvm
+  volume management but not for btrfs. In case of btrfs
+  the swap space is not a subvolume but a real partition
+  and thus the simplified device spec in fstab puts in the
+  loop mapped device which is wrong. This patch fixes it
+
+-------------------------------------------------------------------
+Fri Dec 06 17:13:16 CET 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Exclude 'Recommends: kiwi-man-pages' for EL7 and older in the spec
+
+-------------------------------------------------------------------
+Fri Dec 06 16:34:04 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed xz options syntax in default kiwi.yml
+
+  xz options are passed as a string and splitted in code
+  but not handled as yml list
+
+-------------------------------------------------------------------
+Fri Dec 06 16:28:32 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed scope of kiwi-man-pages sub package
+
+  The kiwi-man-pages package provided data that belongs to
+  the main package, e.g the completion as well as the
+  license information. In addition kiwi-man-pages should
+  not be a requirement.
+
+-------------------------------------------------------------------
+Fri Dec 06 16:16:33 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed result map for OEM pxe install
+
+  The result map for OEM images with installpxe enabled
+  contained a wrong file name. Thus the result bundler
+  was not able to fetch the tarball
+
+-------------------------------------------------------------------
+Thu Dec 05 09:26:31 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Open image files in UTF-8
+
+  Post image build metadata like the packages file which are
+  created from data produced by the package manager can contain
+  multibyte characters and should be written into files opened
+  with the UTF-8 encoding. The same applies to the image imported
+  XML description. This Fixes #1290
+
+-------------------------------------------------------------------
+Wed Dec 04 17:36:55 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.5 → 9.19.6
+
+-------------------------------------------------------------------
+Wed Dec 04 16:21:49 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixup package list for GCE integration test
+
+  Package growpart-rootgrow does no longer exist. Will be
+  replaced by a partgrow implementation
+
+-------------------------------------------------------------------
+Wed Dec 04 10:44:49 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed root setup when building in OBS
+
+  When building in an OBS worker no udevd is running which prevents
+  grub2-mkconfig from finding the by-* device nodes and it puts the
+  local loop device in which is wrong. Therefore the patching code
+  used for overlay disk configurations also applies when building
+  in an OBS worker environment. This Fixes #1287
+
+-------------------------------------------------------------------
+Mon Dec 02 12:26:03 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.4 → 9.19.5
+
+-------------------------------------------------------------------
+Fri Nov 29 11:56:08 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed setup of default grub config
+
+  In /etc/default/grub GRUB_CMDLINE_LINUX_DEFAULT also contained
+  the root= information. If grub2-mkconfig runs with that information
+  it places the root device information twice because grub2-mkconfig
+  resolves this information itself. This commit prevents the root=
+  information to be placed in the default grub config and
+  Fixes bsc#1156908
+
+-------------------------------------------------------------------
+Wed Nov 27 15:50:40 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Lookup distribution specific grub font dir
+
+  In addition to the generic grub font directory also lookup
+  distribution specific font paths in the system and copy the
+  grub unicode font into it. This Fixes #1253
+
+-------------------------------------------------------------------
+Wed Nov 27 09:29:13 CET 2019 - David Cassany <dcassany@suse.com>
+
+- Do not rsync /dev on debootstrap
+
+  This commit does not rsync /dev on debootstrap and instead it uses
+  the bind mount for /dev the same way it is done for other non apt
+  based bootstrap processes.
+
+-------------------------------------------------------------------
+Wed Nov 27 08:12:06 CET 2019 - David Cassany <dcassany@suse.com>
+
+- Add new root option in Path.which method
+
+  This commit adds to Path utility a couple of methods to manipulate
+  paths. One to rebase given paths to a new root and another one to
+  trim the given root path. In addition a new option in Path.which
+  is added to allow searches into chroot evironments.
+
+  Fixes #1276
+
+-------------------------------------------------------------------
+Tue Nov 26 17:17:21 CET 2019 - David Cassany <dcassany@suse.com>
+
+- Do not rsync kernel filesystems on debootstrap
+
+  This commit ensures that /proc and /sys are not rsynched when
+  debootstrapping an apt based image.
+
+  Fixes #1270
+
+-------------------------------------------------------------------
+Tue Nov 26 11:40:18 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.3 → 9.19.4
+
+-------------------------------------------------------------------
+Tue Nov 26 11:37:46 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed condition to create swap partition
+
+  The previous condition created the partition if swap is
+  requested and no volume management is used. But this is
+  wrong because if any other than the LVM volume management
+  is used we want the swap space as partition. Only in case
+  of LVM the swap space is a LVM volume.
+
+-------------------------------------------------------------------
+Tue Nov 26 10:09:11 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.2 → 9.19.3
+
+-------------------------------------------------------------------
+Tue Nov 26 09:08:28 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed access to device map for fstab setup
+
+  Swap is an optional element in the device map.
+  Thus access to an element of that dictionary
+  should not fail
+
+-------------------------------------------------------------------
+Mon Nov 25 22:04:44 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.1 → 9.19.2
+
+-------------------------------------------------------------------
+Mon Nov 25 17:35:46 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed VolumeManager device map handling
+
+  The former implementation builds a new device map which is
+  a subset of the low level device map. However due to the
+  additional swap partition the maps provided by the VolumeManager
+  classes are now incomplete. Instead this commit changes the
+  VolumeManager interface to receive the current low level
+  device_map and merged device changes on top of it when
+  needed.
+
+-------------------------------------------------------------------
+Mon Nov 25 15:53:14 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.0 → 9.19.1
+
+-------------------------------------------------------------------
+Mon Nov 25 15:51:19 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed runtime checks on volume label setup
+
+  Fixed the checks for check_volume_setup_defines_reserved_labels
+  and check_volume_label_used_with_lvm. Both checks needs to
+  skip on the kiwi internally created volume named LVSwap
+
+-------------------------------------------------------------------
+Mon Nov 25 15:23:29 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Delete superfluous .osc metadata from build tests
+
+  Not sure how and why the .osc buildservice metadata
+  was added to the git but it's for sure not needed
+
+-------------------------------------------------------------------
+Mon Nov 25 15:19:01 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.35 → 9.19.0
+
+-------------------------------------------------------------------
+Mon Nov 25 10:10:55 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Added check_volume_setup_defines_reserved_labels
+
+  Check to prevent using reserved filesystem labels in LVM
+  volume definitions
+
+-------------------------------------------------------------------
+Thu Nov 21 18:12:42 CET 2019 - David Cassany <dcassany@suse.com>
+
+- Include grub.cfg inside the efi partition
+
+  This commit ensures the grub.cfg file is included within the vfat efi
+  partition.
+
+  This fixes #1271 and bsc#1157354
+
+-------------------------------------------------------------------
+Wed Nov 20 19:41:23 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed extending LVM volumes
+
+  For extending the LVM volumes a resize prefix is set for each
+  volume. If no extra prefix is needed it can happen that the
+  former prefix setting is used which is wrong. The resize
+  prefix must be reset for each new volume iteration
+
+-------------------------------------------------------------------
+Wed Nov 20 12:37:19 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.34 → 9.18.35
+
+-------------------------------------------------------------------
+Tue Nov 19 17:09:46 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Prevent swap partition to be the last one
+
+  In an OEM deployment that requested the creation of a swap
+  partition via <oem-swap> that swap partition was created
+  at first boot and was always the last partition on the disk.
+  This was required because it could not be placed before
+  any other partition without destroying those partition
+  contents. This process leaves the system in an inflexible
+  condition if the storage device can change its geometry
+  dynamicly as it's the case for SAN systems. The typical
+  deployment target for OEM images are SAN storage clusters
+  and it's cumbersome to resize the root partition if swap
+  is last.
+
+  This commit Fixes #1231 and changes the handling of swap if
+  requested via <oem-swap> as follows:
+
+  1. The swap space is created as part of the image build process
+  and no longer on first boot of the image via dracut code.
+  This increases the size of the non compressed .raw disk image
+  by the configured swap space size or the default. The
+  compressed versions are not affected since zero initialized
+  swap space compresses to almost no space. Deployment of
+  the image however also deploys the swap partition which
+  increases deployment time. For big swap configurations
+  it's advisable to switch off image verification via
+  oem-skip-verify. For very big swap configurations it's
+  also recommended to prevent kiwi from adding them as part
+  of the image and let them be created on first boot via
+  a systemd service that e.g places a swap file, or creates
+  a swap volume when possible such that the fexibility to
+  resize the rootfs is still available.
+
+  2. The setup of the swap space is now explicit. It's no longer
+  calculated by twice times RAM size because on newer machines
+  this could lead to huge numbers. Either the kiwi encoded
+  default swap size applies or the user configured value.
+
+  3. LVM based oem disks creates the swap space as logical volume.
+  The volume is created as part of the image build process
+  and no longer on first boot. The swap volume at build time
+  of the image is of a minimal size and gets resized on first
+  boot.
+
+  4. The move of the swap creation into the builder code also
+  handles swap per configured device persistency schema like
+  any other devices. This means by default swap is mounted
+  via by-uuid name and thus also Fixes #1259
+
+-------------------------------------------------------------------
+Tue Nov 19 17:06:05 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed subsequent reboot of oem disk
+
+  On a second reboot of an oem disk we check with gdisk's
+  verification command if the disk needs to be resized.
+  That command however mounts the disk in the background
+  and therefore it's urgently required to mask the systemd
+  rootfs service before. Otherwise systemd thinks this is
+  evil and drops into a rescue shell
+
+-------------------------------------------------------------------
+Tue Nov 19 09:32:38 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Reference commit for SUSE maintenance
+
+  This commit adds a reference to Issue #1261 and the
+  report in bugzilla bsc#1157104
+
+-------------------------------------------------------------------
+Tue Nov 19 09:02:14 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.33 → 9.18.34
+
+-------------------------------------------------------------------
+Fri Nov 15 14:47:41 CET 2019 - David Cassany <dcassany@suse.com>
+
+- Improve alias documentation in XML schema
+
+  This commit aligns the documentation of the default repository alias
+  with the current implementation.
+
+  Fixes #1247
+
+-------------------------------------------------------------------
+Fri Nov 15 09:03:19 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.32 → 9.18.33
+
+-------------------------------------------------------------------
+Thu Nov 14 16:51:00 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed zipl bootloader config template
+
+  The targetgeometry value is not allowed for SCSI and FBA
+  mode. So far we handled only SCSI and failed on FBA mode.
+  This commit fixes it
+
+-------------------------------------------------------------------
+Thu Nov 14 15:19:40 CET 2019 - David Cassany <dcassany@suse.com>
+
+- Allow use of relative paths for `dir:<path>` URIs
+
+  This commit allows the use of relative paths for local URIs using the
+  the following format:
+
+  dir:<path>
+
+  This is helpful to set in config.xml local URIs for repositories.
+
+  Fixes #1261
+
+-------------------------------------------------------------------
+Thu Nov 14 12:45:42 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Adapt test-image-oem integration test for s390
+
+  The test was originally designed to test for DASD 4k block
+  storage. However the kpartx utility in the Leap15, TW code
+  stream has issues mapping partitions if the loop device
+  was setup using 4k sector size. So far we can't create
+  images with 4k blocksize due to that issue. Thus the
+  integration test is now adapted for an emulated DASD device
+  in FBA mode which is not using 4k blocksize. Once the
+  problem with kpartx is solved on s390 we will create another
+  integration test to test 4k image builds
+
+-------------------------------------------------------------------
+Thu Nov 14 12:24:16 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.18.31 → 9.18.32
+
+-------------------------------------------------------------------
+Thu Nov 14 09:45:00 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Update s390 integration tests
+
+  Added vmx build test to run in kvm on s390. Updated the
+  existing oem build test to deploy on DASD. The concept
+  of the network setup invented by kiwi for s390 does no
+  longer apply and was also not used on the s390 distribution
+
+-------------------------------------------------------------------
+Thu Nov 14 09:20:55 CET 2019 - Marcus Schäfer <ms@suse.de>
+
+- Fixed zipl bootloader setup for s390 images
+
+  The preparation to call zipl and the call itself were wrong.
+  For whatever reason the kernel image the initrd are moved
+  to another location prior to calling zipl. That move broke
+  the system because no kernel/initrd existed at the expected
+  place anymore. In addition the zipl call itself was issued
+  from a the wrong directory. Also no config file was written
+  as an after effect of the refactoring in Issue #1194. This
+  Fixes #1173 and bsc#1156694
+
+-------------------------------------------------------------------
+Wed Nov 13 12:18:08 CET 2019 - Dan Čermák <dcermak@suse.com>
+
+- Document possible values for the name attribute of package
+
+  This fixes #1260
+
+  Co-Authored-By: Thomas Schraitle <tom_schr@web.de>
+
+-------------------------------------------------------------------
 Thu Nov 07 16:00:01 CET 2019 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.18.30 → 9.18.31
