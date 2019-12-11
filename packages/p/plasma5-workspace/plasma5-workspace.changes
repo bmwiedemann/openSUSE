@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:37:02 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * [sddm-theme] Fix initial focus after SDDM QQC2 Port
+  * [XembedSNIProxy] Send all container windows to background on KWin restart (kde#357443)
+  * [XembedSNIProxy] If available, always use 32-bit color. (kde#356937)
+  * Port to non-deprecated KWindowSystem::setMainWindow overload
+  * Fix broken multimedia control on lockscreen (kde#414487)
+  * NET::StaysOnTop -> NET::KeepAbove (since 5.0)
+
+-------------------------------------------------------------------
 Tue Nov 12 11:01:09 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.3
