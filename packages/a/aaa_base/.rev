@@ -3680,4 +3680,12 @@
   * handle /usr/etc/login.defs for wsl</comment>
     <requestid>749969</requestid>
   </revision>
+  <revision rev="459" vrev="1">
+    <srcmd5>4805e2129d8546a559da08ccf9338a60</srcmd5>
+    <version>84.87+git20191206.1cb88e3</version>
+    <time>1576061930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754611</requestid>
+  </revision>
 </revisionlist>
