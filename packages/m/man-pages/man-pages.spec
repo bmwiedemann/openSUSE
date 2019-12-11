@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Documentation/Man
-Url:            http://www.kernel.org/doc/man-pages/download.html
+URL:            https://www.kernel.org/doc/man-pages/download.html
 #Git-Clone:	git://git.kernel.org/pub/scm/docs/man-pages/man-pages
 #Git-Web:	http://git.kernel.org/cgit/docs/man-pages/man-pages.git/
 Source:         https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/snapshot/man-pages-%{version}.tar.gz
@@ -33,9 +33,11 @@ Patch5:         %{name}-tty_ioctl.patch
 # [bsc#1154701]
 Patch6:         man-pages-tcp_fack.patch
 BuildRequires:  fdupes
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+BuildRequires:  update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Supplements:    man
+BuildArch:      noarch
 
 %description
 A large collection of man pages (documentation) from the Linux
@@ -90,11 +92,31 @@ echo ""
 if [ "$RETVAL" -ne 0 ] ; then
   exit "$RETVAL"
 fi
+
+# Prepare alternatives
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+from=$(readlink -f %{buildroot}%{_mandir}/man7/man.7*)
+to=$(echo $from|sed -e 's!\.7$!!')-mp.7
+mv -v "$from" "$to"
+ln -s -f %{_sysconfdir}/alternatives/man.7 "$from"
+
+# Remove duplicates
 %fdupes -s %{buildroot}/%{_prefix}
+
+%post
+update-alternatives --install \
+   %{_mandir}/man7/man.7%{?ext_man} man.7%{?ext_man} \
+   %{_mandir}/man7/man-mp.7%{?ext_man} 500
+
+%preun
+if [ $1 -eq 0 ] ; then
+   update-alternatives --remove man.7%{?ext_man} %{_mandir}/man7/man-mp.7%{?ext_man}
+fi
 
 %files
 %defattr(644,root,root,755)
-%doc %{_mandir}/man*/*.gz
+%{_mandir}/man*/*.gz
+%ghost %{_sysconfdir}/alternatives/man.7%{?ext_man}
 %doc README Changes Changes.old
 %doc man-pages-*.Announce
 %doc man-pages-*.lsm

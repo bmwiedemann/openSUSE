@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  4 22:09:23 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Set up %{_mandir}/man7/man.7%{?ext_man} as an alternative for
+  the man-page specific document. The other package providing
+  this man page is mandoc, which is meant as an alternative
+  lightweight faster replacement for man-pages package. It does
+  not have that many dependencies, it is written in C, see
+  http://mandoc.bsd.lv/ for more.
+
+-------------------------------------------------------------------
 Wed Nov 20 08:13:59 UTC 2019 - pgajdos@suse.com
 
 - version update to 5.04
