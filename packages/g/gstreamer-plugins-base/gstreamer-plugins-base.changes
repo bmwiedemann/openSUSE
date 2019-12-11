@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:38:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + xvimagepool: Update size, stride, and offset with allocated
+    XvImage
+  + video-converter: Fix RGB-XYZ-RGB conversion
+  + audiorate: Update next_offset on rate change
+  + audioringbuffer: Reset reorder flag before check
+  + audio-buffer: Don't fail to map buffers with zero samples
+  + videorate: Fix max-duplication-time handling
+  + gl/gbm: ensure we call the resize callback before attempting to
+    draw
+  + video-converter: Various fixes for interlaced scaling
+  + gstrtspconnection: messages_bytes not decreased
+  + check: Don't use real audio devices for tests
+  + riff: add CineForm mapping
+  + glfilters: Don't use static variables for storing per-element
+    state
+  + glupload: Add VideoMetas and GLSyncMeta to the raw uploaded
+    buffers
+  + streamsynchronizer: avoid pad release race during logging.
+
+-------------------------------------------------------------------
 Tue Sep 24 12:34:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:
