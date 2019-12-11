@@ -208,10 +208,6 @@ cp %{SOURCE7} %{SOURCE8} %{buildroot}%{src_install_dir}
 %doc README.SUSE
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
-# SLE 12 SP2 the package needs to own this directory
-%if 0%{?sle_version} == 120200 && !0%{?is_opensuse} 
-%dir %_tmpfilesdir
-%endif
 %_tmpfilesdir/%name.conf
 %{_libdir}/%{name}
 %{_bindir}/kafka-broker-api-versions.sh
@@ -260,11 +256,7 @@ cp %{SOURCE7} %{SOURCE8} %{buildroot}%{src_install_dir}
 %defattr(-,root,root)
 %license LICENSE
 %doc NOTICE
-# Leap 15.0+ and Tumbleweed need this directory declared explicitly. In Leap
-# >= 42.3 and SLE, the docdir macro implies this declaration already.
-%if 0%{?is_opensuse} && ( 0%{?sle_version} > 120300 || 0%{?suse_version} > 1500 )
 %{_docdir}/%{name}/site-docs
-%endif
 %docdir %{_docdir}/%{name}/site-docs
 
 %files source

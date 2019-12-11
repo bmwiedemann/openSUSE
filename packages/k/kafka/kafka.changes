@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 21:54:44 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove condition for SLE 12, as it is not supported anymore.
+- Own the side-docs directory unconditionally - SLE 15 also needs
+  that declaration.
+
+-------------------------------------------------------------------
 Fri Nov  8 13:04:46 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Fetch sources from Github, since the tarball is not available
