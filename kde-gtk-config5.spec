@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.17.3
+Version:        5.17.4
 Release:        0
 Summary:        KCM Module to Configure GTK2 and GTK3 Applications Appearance Under KDE
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
