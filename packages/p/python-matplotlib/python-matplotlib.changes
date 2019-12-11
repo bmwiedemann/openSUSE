@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  6 18:48:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.1.2
+  * fix regresion of incorrect limits for y-axis in imshow
+  * fix integer indexed pandas series
+  * fix ScalarFormatter formatting of masked values
+  * webagg and nbagg no longer incorrectly fallback to agg when $DISPLAY is not set
+  * several fixes for Qt5 backend
+  * other bugfixes and documentation fixes
+
+-------------------------------------------------------------------
 Mon Oct 14 07:54:34 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Disable Qt4 on Leap 15.2+

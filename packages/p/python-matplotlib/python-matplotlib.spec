@@ -29,7 +29,7 @@
 # The tests also pull in dependencies of all backends done in pure python
 %bcond_with tests
 Name:           python-matplotlib
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -37,7 +37,6 @@ Group:          Development/Libraries/Python
 URL:            http://matplotlib.org
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-%{version}.tar.gz
 Source1:        matplotlib-setup.cfg
-# Needed for all versions of python
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module kiwisolver}
@@ -47,21 +46,22 @@ BuildRequires:  %{python_module pyparsing > 2.1.6}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10}
-# WebAgg dependencies
-BuildRequires:  %{python_module tornado}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-# Python 2 only
-BuildRequires:  python-functools32
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-subprocess32
-# tk dependencies via tcl
+%if 0%{?is_opensuse}
+BuildRequires:  qhull-devel >= 2003.1
+%endif
+# SECTION WebAgg dependencies
+BuildRequires:  %{python_module tornado}
+# /SECTION
+# SECTION tk dependencies via tcl
 BuildRequires:  tcl
 BuildRequires:  pkgconfig(freetype2) >= 2.3
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(tcl)
-# End of backend dependencies
+# /SECTION
 Requires:       python-Cycler >= 0.10
 Requires:       python-kiwisolver >= 1.0.1
 Requires:       python-numpy >= 1.7.1
@@ -75,33 +75,36 @@ Recommends:     poppler-tools
 Recommends:     python-Pillow
 Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
-# needed for testing
 %if %{with tests}
-# cairo dependencies
-BuildRequires:  %{python_module cairo}
-# GTK3 dependencies
-BuildRequires:  %{python_module gobject}
+# SECTION testing dependencies
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
-# Qt5 dependencies
+# /SECTION
+# SECTION cairo dependencies
+BuildRequires:  %{python_module cairo}
+# SECTION GTK3 dependencies
+BuildRequires:  %{python_module gobject}
+# /SECTION
+# SECTION Qt5 dependencies
 BuildRequires:  %{python_module qt5}
-# tk dependencies
+BuildRequires:  xorg-x11-Xvfb
+BuildRequires:  pkgconfig(gtk+-3.0)
+# /SECTION
+# SECTION tk dependencies
 BuildRequires:  %{python_module tk}
-# Wx dependencies
+# /SECTION
+# SECTION Wx dependencies
 BuildRequires:  %{python_module wxPython >= 4}
-# latex dependencies
+# /SECTION
+# SECTION latex dependencies
 BuildRequires:  ghostscript
 BuildRequires:  inkscape
 BuildRequires:  poppler-tools
 BuildRequires:  texlive-dvipng
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-tex
-# X server needed for Qt4/Qt5 tests
-BuildRequires:  xorg-x11-Xvfb
-BuildRequires:  pkgconfig(gtk+-3.0)
 %if 0%{?is_opensuse}
-BuildRequires:  qhull-devel >= 2003.1
 BuildRequires:  texlive-sfmath
 BuildRequires:  tex(8a.enc)
 BuildRequires:  tex(helvet.sty)
@@ -111,10 +114,12 @@ BuildRequires:  tex(psfrag.sty)
 BuildRequires:  tex(type1cm.sty)
 BuildRequires:  tex(ucs.sty)
 %endif
+# /SECTION
+# SECTION Qt4 dependencies
 %if %{with qt4}
-# Qt4 dependencies
 BuildRequires:  %{python_module qt4}
 %endif
+# /SECTION
 %endif
 %if 0%{?suse_version} >= 1500
 Recommends:     (python-matplotlib-tk if tk)
