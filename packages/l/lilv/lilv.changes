@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  4 06:54:30 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 0.24.6 fixes boo#1158296
+- Upstream changes:
+  *Add more strict error detection when storing plugin state
+   properties
+  *Add option to override LV2_PATH in applications
+  *Don't print errors when saving state if correct links already
+   exist
+  *Fix GCC8 warnings
+  *Fix creating directories across drives on Windows
+  *Fix issues with loading state with saved files from the model
+  *Fix memory errors and Python 3.4+ compatibility in Python bindings
+  *Fix unit tests on Windows
+  *Make Python bindings more Pythonic
+
+-------------------------------------------------------------------
 Fri Sep 14 10:41:45 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Version update to 0.24.4:

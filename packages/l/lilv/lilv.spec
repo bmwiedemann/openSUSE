@@ -1,7 +1,7 @@
 #
 # spec file for package lilv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 0
 %define sordversion %(pkg-config --modversion sord-0)
 Name:           lilv
-Version:        0.24.4
+Version:        0.24.6
 Release:        0
 Summary:        C library to make use of LV2 plugins
 License:        ISC
@@ -36,7 +36,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(lv2) >= 1.8.0
-BuildRequires:  pkgconfig(serd-0) >= 0.14.0
+BuildRequires:  pkgconfig(serd-0) >= 0.30.0
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(sord-0) >= 0.13
 BuildRequires:  pkgconfig(sratom-0) >= 0.4.0
@@ -87,7 +87,6 @@ python3 ./waf configure \
   --docdir=%{_defaultdocdir} \
   --configdir=%{_sysconfdir} \
   --test \
-  --bindings \
   --docs
 # waf only understands -j, so do not use smp_mflags
 python3 ./waf build -v %{?_smp_mflags}
@@ -108,6 +107,7 @@ fi
 %attr(0755,-,-) %{_bindir}/lv2info
 %attr(0755,-,-) %{_bindir}/lv2ls
 %attr(0755,-,-) %{_bindir}/lv2apply
+%doc AUTHORS NEWS README.md
 %{_mandir}/man1/lv2info.1%{?ext_man}
 %{_mandir}/man1/lv2ls.1%{?ext_man}
 %{_mandir}/man1/lv2apply.1%{?ext_man}
@@ -115,7 +115,6 @@ fi
 
 %files -n liblilv-0-%{sover}
 %license COPYING
-%doc AUTHORS NEWS README
 %{_libdir}/liblilv-0.so.%{sover}*
 
 %files -n liblilv-0-devel
