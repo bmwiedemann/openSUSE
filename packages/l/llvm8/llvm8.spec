@@ -1,7 +1,7 @@
 #
 # spec file for package llvm8
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,7 @@ Release:        0
 Summary:        Low Level Virtual Machine
 License:        NCSA
 Group:          Development/Languages/Other
-Url:            https://www.llvm.org/
+URL:            https://www.llvm.org/
 # NOTE: please see README.packaging in the llvm package for details on how to update this package
 Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_relver}/llvm-%{_relver}.src.tar.xz
 Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_relver}/cfe-%{_relver}.src.tar.xz
@@ -101,6 +101,7 @@ Patch22:        llvm-better-detect-64bit-atomics-support.patch
 Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 Patch26:        clang-fix-powerpc-triplet.patch
 Patch27:        run-test-single-threaded.patch
+Patch28:        llvm-add-missing-include.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -179,7 +180,7 @@ new native programs that use the LLVM infrastructure.
 %package -n clang%{_sonum}
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
-Url:            https://clang.llvm.org/
+URL:            https://clang.llvm.org/
 # Avoid multiple provider errors
 Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
@@ -202,7 +203,7 @@ This package contains the clang (C language) frontend for LLVM.
 %package -n clang%{_sonum}-checker
 Summary:        Static code analyzer for CLANG
 Group:          Development/Languages/C and C++
-Url:            https://clang-analyzer.llvm.org/
+URL:            https://clang-analyzer.llvm.org/
 # Avoid multiple provider errors
 Requires:       libclang%{_sonum}
 # Due to a packaging error in clang3_8 we have to conflict.
@@ -306,7 +307,7 @@ This package contains the OpenMP MPI plugin for LLVM.
 %package -n libc++%{_socxx}
 Summary:        C++ standard library implementation
 Group:          System/Libraries
-Url:            https://libcxx.llvm.org/
+URL:            https://libcxx.llvm.org/
 Requires:       libc++abi%{_socxx} = %{_relver}
 
 %description -n libc++%{_socxx}
@@ -329,7 +330,7 @@ standard library, targeting C++11. (development files)
 %package -n libc++abi%{_socxx}
 Summary:        C++ standard library ABI
 Group:          System/Libraries
-Url:            https://libcxxabi.llvm.org/
+URL:            https://libcxxabi.llvm.org/
 
 %description -n libc++abi%{_socxx}
 This package contains the ABI for libc++, a new implementation
@@ -386,7 +387,7 @@ frontend for LLVM.
 %package -n lld%{_sonum}
 Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
-Url:            https://lld.llvm.org/
+URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
@@ -410,7 +411,7 @@ Set of tools for visualising the LLVM optimization records generated with -fsave
 %package -n lldb%{_sonum}
 Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
-Url:            https://lldb.llvm.org/
+URL:            https://lldb.llvm.org/
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -478,7 +479,7 @@ pretty printers for the C++ standard library.
 %package polly
 Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
 Group:          Development/Languages/Other
-Url:            https://polly.llvm.org/
+URL:            https://polly.llvm.org/
 Conflicts:      llvm-polly-provider < %{version}
 Provides:       llvm-polly-provider = %{version}
 
@@ -516,6 +517,7 @@ This package contains the development files for Polly.
 %patch22 -p1
 %patch24 -p1
 %patch27 -p2
+%patch28 -p2
 
 pushd cfe-%{_relver}.src
 %patch1 -p1
