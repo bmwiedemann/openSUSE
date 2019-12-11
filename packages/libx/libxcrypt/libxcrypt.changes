@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  7 14:19:35 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.10
+  * Fix alignment problem for GOST 34.11 (Streebog) in gost-yestcrypt.
+  * The crypt_* functions will now all fail and set errno to ERANGE if
+    their 'phrase' argument is longer than CRYPT_MAX_PASSPHRASE_SIZE
+    characters (this is currently 512)
+  * The NT hashing method no longer truncates passphrases at 128
+    characters; Windows does not do this.
+- format-overflow.patch: remove
+
+-------------------------------------------------------------------
 Thu Jun 20 11:49:28 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO due to symbol versioning (boo#1138833).

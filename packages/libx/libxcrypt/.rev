@@ -23,4 +23,19 @@
     <comment>- Disable LTO due to symbol versioning (boo#1138833). (forwarded request 711689 from marxin)</comment>
     <requestid>711714</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c418ba242e70b73c58326a4a19aff908</srcmd5>
+    <version>4.4.10</version>
+    <time>1576061943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.10
+  * Fix alignment problem for GOST 34.11 (Streebog) in gost-yestcrypt.
+  * The crypt_* functions will now all fail and set errno to ERANGE if
+    their 'phrase' argument is longer than CRYPT_MAX_PASSPHRASE_SIZE
+    characters (this is currently 512)
+  * The NT hashing method no longer truncates passphrases at 128
+    characters; Windows does not do this.
+- format-overflow.patch: remove (forwarded request 754950 from Andreas_Schwab)</comment>
+    <requestid>754951</requestid>
+  </revision>
 </revisionlist>
