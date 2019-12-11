@@ -434,4 +434,12 @@
   * x86: optimizations for AMD Zen2 processors</comment>
     <requestid>725347</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1b5717d857df29b0b6a006dfa1cc2ed8</srcmd5>
+    <version>2.9.2</version>
+    <time>1576062546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754324</requestid>
+  </revision>
 </revisionlist>
