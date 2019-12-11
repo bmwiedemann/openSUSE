@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM spdlog-fmt_610.patch
+Patch0:         spdlog-fmt_610.patch
 BuildRequires:  benchmark-devel >= 1.4.0
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -62,7 +64,7 @@ This is a packaged version of the gabime/spdlog C++ logging library
 available at Github.
 
 %prep
-%autosetup
+%autosetup -p1
 find . -name '.gitignore' -exec rm {} \;
 sed -i -e "s,\r,," README.md LICENSE
 

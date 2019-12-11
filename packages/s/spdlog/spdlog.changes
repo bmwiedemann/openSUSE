@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  4 20:45:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added spdlog-fmt_610.patch to fix build with fmt 6.1.0
+
+-------------------------------------------------------------------
 Fri Nov 29 08:12:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.2
