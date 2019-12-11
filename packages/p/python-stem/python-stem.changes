@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 08:17:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Require full python for sqlite module
+
+-------------------------------------------------------------------
 Wed Oct  2 13:26:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix building with python 3.8:

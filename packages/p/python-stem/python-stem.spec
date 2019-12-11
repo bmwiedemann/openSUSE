@@ -1,7 +1,7 @@
 #
 # spec file for package python-stem
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ URL:            https://stem.torproject.org/
 Source:         https://files.pythonhosted.org/packages/source/s/stem/stem-%{version}.tar.gz
 Patch0:         python38.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
+Requires:       python
 BuildArch:      noarch
 %python_subpackages
 
