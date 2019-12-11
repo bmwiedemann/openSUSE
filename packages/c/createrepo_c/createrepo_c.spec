@@ -1,7 +1,7 @@
 #
 # spec file for package createrepo_c
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,25 +17,34 @@
 #
 
 
-# Enable Python and tests selectively
 %if 0%{?is_opensuse} || 0%{?suse_version} >= 1330
+# Enable Python bindings on openSUSE
 %bcond_without python3
 %bcond_without tests
 %else
-%bcond_with tests
 %bcond_with python3
+%bcond_with tests
 %endif
 
-%if ( 0%{?sle_version} || 0%{?suse_version} )
-# Disabled DeltaRPM support for SUSE
-%bcond_with drpm
-%else
+%if (0%{?is_opensuse} && 0%{?sle_version} >= 150200) || 0%{?suse_version} >= 1550
 # Enable enhanced DeltaRPM support
 %bcond_without drpm
+%else
+%bcond_with drpm
 %endif
 
 %if (0%{?is_opensuse} && 0%{?sle_version} >= 150100) || 0%{?suse_version} >= 1550
 %bcond_without zchunk
+%bcond_without libmodulemd
+%else
+%bcond_with zchunk
+%bcond_with libmodulemd
+%endif
+
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%bcond_with as_createrepo
+%else
+%bcond_without as_createrepo
 %endif
 
 %{!?make_build: %global make_build %{__make} %{?_smp_mflags}}
@@ -45,18 +54,13 @@
 %define devname lib%{name}-devel
 
 Name:           createrepo_c
-Version:        0.12.0
+Version:        0.15.4
 Release:        0
-Summary:        Creates a common metadata repository
+Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-
-# Backports from upstream
-Patch0001:      0001-zck_end_chunk-returns-number-of-bytes-written-or-1-f.patch
-Patch0002:      0002-Add-missing-sentinal.patch
-Patch0003:      0003-Fix-misc-test.patch
 
 %if %{with python3}
 BuildRequires:  python3-devel
@@ -83,21 +87,32 @@ BuildRequires:  zlib-devel
 BuildRequires:  zchunk
 BuildRequires:  zchunk-devel >= 0.9.11
 %endif
+%if %{with libmodulemd}
+BuildRequires:  libmodulemd-devel >= 2.3.0
+%endif
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 %if %{with tests}
+BuildRequires:  python3
 BuildRequires:  python3-nose
 %endif
 %if 0%{?suse_version} >= 1330
 BuildRequires:  bash-completion-devel
 %endif
 %if %{with drpm}
-BuildRequires:  drpm-devel
+BuildRequires:  drpm-devel >= 0.4.0
 %endif
 
 Requires:       %{libname} = %{version}-%{release}
 
+%if %{with as_createrepo}
+# Fully replaces createrepo
+Requires(pre):  update-alternatives
+Obsoletes:      createrepo < 0.11.0
+Provides:       createrepo = %{version}-%{release}
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 
 Provides:       createrepo-implementation
 
@@ -112,10 +127,7 @@ rpm packages and maintaining it.
 
 %package -n %{libname}
 Summary:        Library for repodata manipulation
-# The function to create DeltaRPMs calls /usr/bin/makedeltarpm,
-# which is part of the 'deltarpm' package
 Group:          System/Libraries
-Requires:       deltarpm
 
 %description -n %{libname}
 Libraries for applications using the createrepo_c library
@@ -152,6 +164,7 @@ sed -i -e '/HTML_TIMESTAMP/d' doc/Doxyfile.in.in
 %define __builddir build
 %cmake \
     %{!?with_zchunk:-DWITH_ZCHUNK=OFF} \
+    %{!?with_libmodulemd:-DWITH_LIBMODULEMD=OFF} \
     %{!?with_drpm:-DENABLE_DRPM=OFF} \
     %{!?with_python3:-DENABLE_PYTHON=OFF} \
     -DPYTHON_DESIRED:str=3
@@ -169,6 +182,12 @@ sed -i -e '/HTML_TIMESTAMP/d' doc/Doxyfile.in.in
 %define __builddir build
 %cmake_install
 
+%if %{with as_createrepo}
+for i in createrepo mergerepo modifyrepo sqliterepo;do
+  ln -s %{_bindir}/$i\_c %{buildroot}%{_bindir}/$i
+  echo ".so man8/$i\_c.8" > %{buildroot}%{_mandir}/man8/$i\.8
+done
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for i in createrepo mergerepo modifyrepo sqliterepo;do
   ln -s %{_bindir}/$i\_c %{buildroot}%{_sysconfdir}/alternatives/$i
@@ -176,10 +195,17 @@ for i in createrepo mergerepo modifyrepo sqliterepo;do
   ln -s %{_mandir}/man8/$i\_c.8.gz %{buildroot}%{_sysconfdir}/alternatives/$i\.8.gz
   ln -s %{_sysconfdir}/alternatives/$i\.8.gz %{buildroot}%{_mandir}/man8/$i\.8.gz
 done
+%endif
 
 %fdupes %{buildroot}%{_prefix}
 %fdupes build/doc/html
 
+%if %{with as_createrepo}
+%pre
+if [ -e %{_sysconfdir}/alternatives/createrepo ]; then
+  update-alternatives --remove createrepo %{_bindir}/createrepo_c
+fi
+%else
 %post
 update-alternatives --install \
   %{_bindir}/createrepo createrepo %{_bindir}/createrepo_c  20 \
@@ -195,6 +221,7 @@ update-alternatives --install \
 if [ ! -f %{_bindir}/createrepo_c ]; then
   update-alternatives --remove createrepo %{_bindir}/createrepo_c
 fi
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -219,6 +246,7 @@ fi
 %{_bindir}/mergerepo
 %{_bindir}/modifyrepo
 %{_bindir}/sqliterepo
+%if ! %{with as_createrepo}
 %ghost %_sysconfdir/alternatives/createrepo
 %ghost %_sysconfdir/alternatives/mergerepo
 %ghost %_sysconfdir/alternatives/modifyrepo
@@ -227,6 +255,7 @@ fi
 %ghost %_sysconfdir/alternatives/mergerepo.8.gz
 %ghost %_sysconfdir/alternatives/modifyrepo.8.gz
 %ghost %_sysconfdir/alternatives/sqliterepo.8.gz
+%endif
 
 %files -n %{libname}
 %license COPYING
@@ -244,6 +273,7 @@ fi
 %files -n python3-%{name}
 %license COPYING
 %{python3_sitearch}/createrepo_c/
+%{python3_sitearch}/*egg-info
 %endif
 
 %changelog

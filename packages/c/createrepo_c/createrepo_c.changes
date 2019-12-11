@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Fri Dec  6 11:47:37 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.15.4
+  + Add reboot_suggested field to UpdateRecord (rh#1772466)
+  + Skip directory matching --exclude right away
+  + Add restart_suggested to updatecollectionpackage
+
+-------------------------------------------------------------------
+Fri Nov 29 12:42:37 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.15.3
+  + Export all changelog entries in compatibility mode
+  + Libmagic to follow symlinks (rh#1776399)
+  + Add shortcut to detect *.yaml files as not compressed
+- Ensure createrepo_c fully replaces createrepo on Tumbleweed
+- Remove old and now unused dependency on deltarpm as drpm is used now
+
+-------------------------------------------------------------------
+Mon Nov 25 13:39:11 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.15.2
+  + Fix file mode for cache (rh#1686812)
+  + Honor umask on cache files (rh#1686812)
+- Enable DeltaRPM support for openSUSE targets on Leap 15.2+ and TW
+
+-------------------------------------------------------------------
+Mon Nov 18 05:57:08 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add BuildRequires on python3, it won't be pulled in side effect of
+  requiring python3-nose
+
+-------------------------------------------------------------------
+Tue Sep 17 12:00:42 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- fix build by adding missing tarball and updating filelist
+
+-------------------------------------------------------------------
+Tue Sep 17 11:43:49 UTC 2019 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.15.1:
+  *  Release 0.15.1
+  * Fix null pointer crash in cr_dumper_thread() if it fails to get checksum
+  * Fix search in string with missing terminating zero (rh#1750673)
+  * Depend on DRPM minimum version 0.4.0
+  * Release 0.15.0
+  * Revise drpm dependency check and bump the minimum version to 0.3.0
+  * Release 0.14.4
+  * Update documentation and regenerate man pages to sync up
+  * Use drpm_make from drpm instead of deltarpm (rh#1687843)
+  * Fix some DEBUG build warnings
+  * Switch off html timestamps on documentation (rh#1731050)
+  * Update documentation for mergerepo_c merge methods (rh#1722803)
+  * Update documentation for --retain-old-md and --compatibility
+  * Fix --read-pkgs-list to only list actually read packages
+  * Release 0.14.3
+  * Add missing python metadata to python2/3-createrepo_c (rh#1695677)
+  * detect plain tar file as non compressed
+
+-------------------------------------------------------------------
+Sat Jun 29 13:06:18 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.14.2
+  + Fix issue with createrepo_c hanging at the end (rh#1714666)
+  + Don't include packages with forbidden control chars in repodata (boo#1110914)
+  + Correct pkg count in headers if there were invalid pkgs (rh#1596211)
+  + Prevent exiting with 0 if errors occur while finalizing repodata
+
+-------------------------------------------------------------------
+Wed May 15 23:17:38 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.14.0
+  + Fix crash when dumping updateinfo and module is omitted (rh#1707981) 
+  + Add --pkgorigins mode
+
+-------------------------------------------------------------------
+Sat May  4 22:17:16 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.13.1
+  + Fix tests to work properly when modulemd support is not enabled
+- Enable modulemd support on openSUSE Leap 15.1+ and Tumbleweed
+
+-------------------------------------------------------------------
+Sat May  4 01:39:34 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.13.0
+  + Add support for handling modulemd
+  + Add support for Koji simple merge mode
+  + Add support for zchunked modulemd
+  + Fixed --keep-all-metadata to keep all additional metadata
+- Disable tests if modulemd support is not enabled to prevent wrong failures
+- Drop patches included in this release
+  + 0001-Find-correct-nosetests-version-even-when-which-comma.patch
+  + 0002-fix-linking-when-Wl-no-undefined-is-set.patch
+
+-------------------------------------------------------------------
+Mon Mar 18 17:16:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Mar 01 09:37:11 UTC 2019 - Frank Schreiner <FSchreiner@suse.com>
+- Added upstream patches
+  * 0001-Find-correct-nosetests-version-even-when-which-comma.patch
+  * 0002-fix-linking-when-Wl-no-undefined-is-set.patch
+- Drop included patches
+  * 0001-zck_end_chunk-returns-number-of-bytes-written-or-1-f.patch
+  * 0002-Add-missing-sentinal.patch
+  * 0003-Fix-misc-test.patch
+- Disable drpm support
+- Update to version 0.12.1:
+  * Release 0.12.1
+  * For make test, xz and zchunk (not just *-devel) are required.
+  * Make cmake variable PYTHON_EXECUTABLE global
+  * Add zchunk support already to Fedora 29
+  * [spec] Fix spec to work for epel 7
+  * Add CMake support for python interpreter path
+  * Add space after if statement
+  * Fix misc test
+  * Add missing sentinal
+  * Add zchunk support to mergerepo_c for extra files
+
+-------------------------------------------------------------------
 Mon Feb  4 12:09:27 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Backport fixes from upstream
@@ -31,6 +153,7 @@ Wed Aug  1 12:06:35 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
 - Use license macro for license file
 - Drop trailing whitespace
 - Fix comment about drpm support
+- [boo#1125044] fix for huge rpm packages
 
 -------------------------------------------------------------------
 Thu Apr  5 15:50:28 UTC 2018 - Adrian Schröter <adrian@suse.de>
