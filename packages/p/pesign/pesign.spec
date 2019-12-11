@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Signing tool for PE-COFF binaries
 License:        GPL-3.0-or-later
 Group:          Productivity/Security
-Url:            https://github.com/rhinstaller/pesign
+URL:            https://github.com/rhinstaller/pesign
 Source:         https://github.com/rhinstaller/pesign/releases/download/%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FIX-SUSE pesign-suse-build.patch glin@suse.com -- Adjust Makefile for the build service
 Patch1:         pesign-suse-build.patch
@@ -36,6 +36,8 @@ Patch4:         pesign-fix-authvar-write-loop.patch
 Patch5:         pesign-efikeygen-Fix-the-build-with-nss-3.44.patch
 # PATCH-FIX-SUSE pesign-boo1143063-remove-var-tracking.patch -- boo#1143063 Remove var-tracking from default CFLAGS
 Patch6:         pesign-boo1143063-remove-var-tracking.patch
+# PATCH-FIX-UPSTREAM pesign-boo1158197-fix-pesigncheck-gcc10.patch glin@suse.com -- boo#1158197 Fix the gcc10 errors
+Patch7:         pesign-boo1158197-fix-pesigncheck-gcc10.patch
 BuildRequires:  efivar-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  mozilla-nss-devel
@@ -58,6 +60,7 @@ with the PE and Authenticode specifications.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"

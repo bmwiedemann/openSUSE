@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 02:38:05 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add pesign-boo1158197-fix-pesigncheck-gcc10.patch to remove the
+  superfluous type settings in pesigcheck to fix the gcc10 errors
+  (boo#1158197)
+
+-------------------------------------------------------------------
 Wed Jul 31 03:26:37 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add pesign-boo1143063-remove-var-tracking.patch to remove
