@@ -24,11 +24,13 @@ License:        GPL-2.0-or-later
 Group:          System/Packages
 Url:            http://rpmlint.zarb.org/
 Source:         desktop-file-utils-0.24.tar.xz
+Source2:        rpmlint-security-whitelistings-master.tar.xz
 Source100:      rpmlint-deps.txt
 Source101:      rpmlint.wrapper
 Source102:      rpmlint-mini.config
 Source103:      polkit-default-privs.config
 Source104:      appdata_checker.config
+Source105:      whitelists.config
 Source1000:     rpmlint-mini.rpmlintrc
 # need to fetch the file from there
 BuildRequires:  checkbashisms
@@ -50,6 +52,7 @@ source packages can be checked.
 %prep
 %setup -q -n desktop-file-utils-0.24
 [ -r COPYING ]
+tar xf %{S:2}
 
 %build
 %configure
@@ -72,7 +75,7 @@ cp -a %{_libdir}/libedit.so.0* %{buildroot}/opt/testing/%{_lib}
 cp -a %{_datadir}/rpmlint/*.py %{buildroot}/opt/testing/share/rpmlint
 # install config files
 install -d -m 755 %{buildroot}/opt/testing/share/rpmlint/mini
-for i in %{_sysconfdir}/rpmlint/{pie,licenses}.config "%{SOURCE103}" "%{SOURCE104}"; do
+for i in %{_sysconfdir}/rpmlint/{pie,licenses}.config "%{SOURCE103}" "%{SOURCE104}" "%{SOURCE105}"; do
   cp $i %{buildroot}/opt/testing/share/rpmlint/mini
 done
 install -m 644 -D %{_datadir}/rpmlint/config %{buildroot}/opt/testing/share/rpmlint/config
@@ -81,6 +84,7 @@ install -m 644 "%{SOURCE102}" %{buildroot}/opt/testing/share/rpmlint
 install -m 755 -d %{buildroot}/opt/testing/share/rpmlint/data
 install -m 644 %{_sysconfdir}/polkit-default-privs.standard %{buildroot}/opt/testing/share/rpmlint/data
 install -m 644 %{_sysconfdir}/polkit-rules-whitelist.json %{buildroot}/opt/testing/share/rpmlint/data
+install -m 644 rpmlint-security-whitelistings-master/*.json %{buildroot}/opt/testing/share/rpmlint/data
 #
 pushd %{_libdir}/python%{py3_ver}/
 for f in $(<%{SOURCE100}); do
@@ -96,7 +100,10 @@ PYTHONOPTIMIZE=1 python3 -O -m compileall -b *.py
 rm *.py
 popd
 pushd %{buildroot}/opt/testing/%{_lib}/python%{py3_ver}/
-PYTHONOPTIMIZE=1 find -name \*.py -exec python3 -O -m compileall -b {} \; -delete
+for f in `find -name \*.py | sort` ; do
+  PYTHONOPTIMIZE=1 python3 -O -m compileall -b $f
+  rm $f
+done
 popd
 find %{buildroot}/opt/testing/ -name __pycache__  -print -exec rm -Rf {} +
 rm -rf %{buildroot}/{usr,etc}
