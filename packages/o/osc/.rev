@@ -1249,4 +1249,37 @@ The actual python-keyring package is only available in the devel:languages:pytho
     <user>dimstar_suse</user>
     <comment>Revert to 0.166.1 - 0.167 needs a new build version checked in-sync</comment>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>055f63e8a8236c052cddb21208e93f81</srcmd5>
+    <version>0.167.1</version>
+    <time>1576062713</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.167.1
+  - fix cpio fetch error handling
+  - support local build using RedHat rpm-md modules
+  - fix local build outside of the working copy of a package.
+    (fixes boo#1136584)
+  - Use the distro module for linux platform detection for
+    python3.8 compatibility
+
+- 0.167.0
+  * Added --lastsucceeded option for logfile display (requires OBS 2.11)
+  * osc shell/chroot/wipe is now handled via build script (working for chroot and KVM only atm)
+  * osc build/shell features:
+    - --vm-type=qemu support for cross architecture builds
+    - additional debug packages are read from build config now
+      (extra-pkgs definition is therefore by default empty now)
+    - --vm-disk-size=  switch supported (has only an effect on clean builds)
+    - repository, architecture and vm_type from last build is automatically
+      reused if not specified otherwise.
+    - support building for kiwi products using obsrepositories:/
+    - support local building using RedHat rpm-md modules
+  * fix decoding for osc aggregatepac
+- added Conflicts: build &lt; 20191205. The new osc shell/chroot features might
+  not work with older build scripts
+- removed version dpendency for Recommends: build. Does not work anyway.
+- added 0%{?centos_version} &gt;= 800 to some %if statemets to enable build of 
+  python3 version on CentOS 8 and higer</comment>
+    <requestid>755560</requestid>
+  </revision>
 </revisionlist>
