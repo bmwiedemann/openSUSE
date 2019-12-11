@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,12 @@ Version:        4.18
 Release:        0
 Summary:        Human friendly input/output for text interfaces using Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/xolox/python-humanfriendly
 Source:         https://files.pythonhosted.org/packages/source/h/humanfriendly/humanfriendly-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -44,6 +44,7 @@ BuildRequires:  %{python_module capturer >= 2.1}
 BuildRequires:  %{python_module coloredlogs >= 2}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.4.0}
+BuildRequires:  %{pythons}
 BuildRequires:  python2-monotonic
 %endif
 %ifpython2
