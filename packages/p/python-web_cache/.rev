@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>693220</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4cd7fdf0194a864f2d2baf71701de578</srcmd5>
+    <version>1.1.0</version>
+    <time>1576062861</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in full python for sqlite module</comment>
+    <requestid>755742</requestid>
+  </revision>
 </revisionlist>
