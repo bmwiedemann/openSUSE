@@ -1912,4 +1912,12 @@
   - requires NSPR 4.23</comment>
     <requestid>750687</requestid>
   </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>72543b7610c9e065c3443b3babec1ec4</srcmd5>
+    <version>3.47.1</version>
+    <time>1576062068</time>
+    <user>dimstar_suse</user>
+    <comment>changelog addition</comment>
+    <requestid>754368</requestid>
+  </revision>
 </revisionlist>

@@ -3,6 +3,7 @@ Sun Nov 24 07:33:57 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.47.1
   * CVE-2019-11745 - EncryptUpdate should use maxout, not block size
+    (boo#1158527)
   * Fix a crash that could be caused by client certificates during startup
     (bmo#1590495)
   * Fix compile-time warnings from uninitialized variables in a perl script
