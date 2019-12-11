@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  5 10:06:43 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build and respect %optflags.
+
+-------------------------------------------------------------------
 Wed Mar 20 15:22:48 UTC 2019 - jsegitz@suse.com
 
 - Update to version 2.9

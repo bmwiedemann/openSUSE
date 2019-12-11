@@ -15,4 +15,12 @@
     <comment>please stage checkpolicy libselinux libsemanage libsepol mcstrans policycoreutils restorecond together</comment>
     <requestid>687222</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>61568070c2925090c6a4178a94bed2ed</srcmd5>
+    <version>2.9</version>
+    <time>1576062127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754449</requestid>
+  </revision>
 </revisionlist>
