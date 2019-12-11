@@ -6232,7 +6232,11 @@ unsorted:
   - kadu-sound-ultr 
   - kaffeine 
   - kaffeine-lang 
+  - kafka: [x86_64] 
+  - kafka-doc: [x86_64] 
   - kafka-kit: [x86_64] 
+  - kafka-source: [x86_64] 
+  - kafka-zookeeper: [x86_64] 
   - kajaani-kombat 
   - kajaani-kombat-server 
   - kajongg 
@@ -8564,7 +8568,6 @@ unsorted:
   - libdrm_nouveau2-32bit: [x86_64] 
   - libdrm_radeon1-32bit: [x86_64] 
   - libdrpm-devel 
-  - libdrpm0 
   - libdrumstick-alsa1 
   - libdrumstick-devel 
   - libdrumstick-doc 
@@ -8861,8 +8864,8 @@ unsorted:
   - libfm-qt6 
   - libfmapi-devel 
   - libfmapi1 
-  - libfmt5 
-  - libfmt5-32bit: [x86_64] 
+  - libfmt6 
+  - libfmt6-32bit: [x86_64] 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy25 
@@ -10073,7 +10076,6 @@ unsorted:
   - libmodulemd-devel 
   - libmodulemd1 
   - libmodulemd1-devel 
-  - libmodulemd2 
   - libmolsketch-qt5-1 
   - libmongoose-doc 
   - libmongoose2 
@@ -10311,7 +10313,6 @@ unsorted:
   - libnm-util2 
   - libnm-util2-32bit: [x86_64] 
   - libnma-devel 
-  - libnma-lang 
   - libnormaliz3 
   - libnoson1 
   - libnotify-devel 
@@ -12749,8 +12750,6 @@ unsorted:
   - lua51-luaevent 
   - lua51-luaexpat 
   - lua51-luafilesystem 
-  - lua51-luajit 
-  - lua51-luajit-devel 
   - lua51-luaposix 
   - lua51-luarocks 
   - lua51-luasec 
@@ -18740,6 +18739,7 @@ unsorted:
   - python2-kubernetes 
   - python2-l20n 
   - python2-lancet-ioam 
+  - python2-langdetect 
   - python2-lark-parser 
   - python2-latexcodec 
   - python2-lazr.uri 
@@ -19999,6 +19999,7 @@ unsorted:
   - python3-GridDataFormats 
   - python3-HTTPolice 
   - python3-HeapDict 
+  - python3-HyperKitty 
   - python3-IMDbPY 
   - python3-Js2Py 
   - python3-JsonWeb 
@@ -21206,6 +21207,7 @@ unsorted:
   - python3-l20n 
   - python3-labels 
   - python3-lancet-ioam 
+  - python3-langdetect 
   - python3-langtable 
   - python3-language-check 
   - python3-lark-parser 
@@ -21315,6 +21317,7 @@ unsorted:
   - python3-magic-wormhole-transit-relay 
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
+  - python3-mailman-web 
   - python3-mailman3-fedmsg-plugin 
   - python3-mailmanclient 
   - python3-managesieve 
@@ -23404,8 +23407,6 @@ unsorted:
   - ruby2.6-rubygem-mustermann-grape-testsuite 
   - ruby2.6-rubygem-mustermann-testsuite 
   - ruby2.6-rubygem-mysql2-doc 
-  - ruby2.6-rubygem-mysql2-doc-0.4 
-  - ruby2.6-rubygem-mysql2-testsuite-0.4 
   - ruby2.6-rubygem-net-ldap-doc 
   - ruby2.6-rubygem-net-ldap-testsuite 
   - ruby2.6-rubygem-net-scp-doc 
@@ -24715,8 +24716,6 @@ unsorted:
   - tclap-doc 
   - tclcurl 
   - tcllib 
-  - tclplug 
-  - tclplug-32bit: [x86_64] 
   - tcludp 
   - tclx 
   - tcmu-runner 
@@ -32379,7 +32378,6 @@ unsorted:
   - trustedgrub2-i386-pc 
   - truth 
   - truth-javadoc 
-  - tryton 
   - trytond 
   - trytond_account 
   - trytond_account_invoice 
@@ -33164,6 +33162,7 @@ unsorted:
   - when-command 
   - when-command-lang 
   - whfc 
+  - whipper 
   - whohas 
   - widelands 
   - widelands-data 

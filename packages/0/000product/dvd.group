@@ -1975,6 +1975,7 @@
     <package name="libdrm_intel1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdrm_nouveau2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdrm_radeon1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdrpm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdv4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdvbpsi10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdvdnav4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2442,6 +2443,7 @@
     <package name="libmnl0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmodman1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmodplug1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libmodulemd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmozjs-60" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmp3lame0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2494,6 +2496,7 @@
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libnma-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4658,7 +4661,6 @@
     <package name="ruby2.6-rubygem-mustermann" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-mustermann-grape" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-mysql2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-mysql2-0.4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-net-ldap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-net-scp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-net-scp-1_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
