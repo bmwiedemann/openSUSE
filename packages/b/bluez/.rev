@@ -1281,4 +1281,16 @@ the sysconfig file is no longer present.</comment>
     <comment></comment>
     <requestid>724748</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>68f6d66864949f9eaab1605825de6436</srcmd5>
+    <version>5.52</version>
+    <time>1576061924</time>
+    <user>dimstar_suse</user>
+    <comment>Update to bluez 5.52
+
+This is an update fixing security issues in hcidump.
+
+If we cannot get this in, we need to push an security update for the current bluez package in factory somehow (ship the leap 15.1 package for factory or something like that).</comment>
+    <requestid>754387</requestid>
+  </revision>
 </revisionlist>

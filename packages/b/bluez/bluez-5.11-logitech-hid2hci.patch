@@ -1,3 +1,5 @@
+# fix some logitech HID devices, bnc#681049, bnc#850478 --seife+obs@b1-systems.com
+
 Apparently some Logitech devices need different rules.
 https://bugzilla.novell.com/show_bug.cgi?id=681049
 https://bugzilla.novell.com/show_bug.cgi?id=850478

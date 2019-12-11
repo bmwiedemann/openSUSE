@@ -1,8 +1,8 @@
 #
 # spec file for package bluez
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2010-2017 B1 Systems GmbH, Vohburg, Germany
+# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2010-2019 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,25 @@
 #
 
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+%bcond_without mesh
+%else
+%bcond_with    mesh
+%endif
+
+# maintained at https://github.com/seifes-opensuse-packages/bluez.git
+# contributions via pull requests are welcome!
+#
 Name:           bluez
-Version:        5.50
+Version:        5.52
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
-Url:            http://www.bluez.org
+URL:            http://www.bluez.org
 Source:         http://www.kernel.org/pub/linux/bluetooth/bluez-%{version}.tar.xz
+# unused in the package, but allows to use "extract *.*" in source service
+Source42:       README.md
 Source5:        baselibs.conf
 Source7:        bluetooth.modprobe
 # fix some logitech HID devices, bnc#681049, bnc#850478 --seife+obs@b1-systems.com
@@ -33,21 +44,9 @@ Patch2:         bluez-sdp-unix-path.patch
 # PATCH-FIX-UPSTREAM: find the cups dir in libexec not in libdir
 Patch3:         bluez-cups-libexec.patch
 # workaround for broken tests (reported upstream but not yet fixed)
-Patch4:         bluez-5.45-disable-broken-tests.diff
-# PATCH-FIX-UPSTREAM: obexd not compiled with -fpie -- seife+obs@b1-systems.com
-Patch5:         0001-obexd-use-AM_LDFLAGS-for-linking.patch
-# disable tests for bypass boo#1078285
-Patch6:         disable_some_obex_tests.patch
-# PATCH-FIX-UPSTREAM: improve profile availability on some audio devices
-Patch7:         0001-policy-Add-logic-to-connect-a-Sink.patch
-# PATCH-FIX-UPSTREAM a2dp fixes for newer codecs
-Patch8:         bluez-5.50-a2dp-backports.patch
-# PATCH-FIX-UPSTREAM tools: Fix build after y2038 changes in glibc
-Patch9:         0001-tools-Fix-build-after-y2038-changes-in-glibc.patch
+Patch4:         bluez-disable-broken-tests.diff
 # Move 43xx firmware path for RPi3 bluetooth support bsc#1140688
 Patch10:        RPi-Move-the-43xx-firmware-into-lib-firmware.patch
-# PATCH-FIX-UPSTREAM fix build with gcc 9, picked from upstream and rebased (boo#1121404, bko#202213)
-Patch11:        bluez-5.50-gcc9.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
@@ -67,8 +66,13 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.6
 BuildRequires:  pkgconfig(ell) >= 0.3
 %endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
+# libgio-2_0-0 has a runtime dependency on shared-mime-info, which is not
+# required for building here, but causes a build loop
+#!BuildIgnore:  shared-mime-info
+%if %{with mesh}
 # json-c is needed for --enable-mesh
 BuildRequires:  pkgconfig(json-c)
+%endif
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libudev)
@@ -160,15 +164,7 @@ desktop specific applets like blueman or GNOME or KDE applets).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%ifarch ppc ppc64 ppc64le
-%patch6 -p1
-%endif
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 %patch10 -p1
-%patch11 -p1
 %patch101 -p1
 %patch102 -p1
 mkdir dbus-apis
@@ -191,7 +187,7 @@ autoreconf -fi
 	--enable-library	\
 	--enable-tools		\
 	--enable-cups		\
-%if 0%{?suse_version} >= 1550
+%if %{with mesh}
 	--enable-mesh		\
 %endif
 	--enable-midi		\
@@ -238,7 +234,25 @@ cd %{buildroot}%{_libdir}/bluez/test
 chmod 0644 *.py *.xml *.dtd
 
 # fix python shebang
-sed -i -e '1s/env p/p/' %{buildroot}%{_libdir}/bluez/test/example-gatt-{client,server}
+sed -i -e '1s/env p/p/' %{buildroot}%{_libdir}/bluez/test/{example-gatt-{client,server},test-mesh}
+
+%if %{with mesh}
+# boo#1151518
+mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
+mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/bluetooth-mesh.conf %{buildroot}%{_defaultdocdir}/%{name}
+mv %{buildroot}%{_datadir}/dbus-1/system-services/org.bluez.mesh.service %{buildroot}%{_defaultdocdir}/%{name}
+cat > %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE << EOF
+The bluetooth-mesh dbus system config has been disabled due to security
+concerns. See https://bugzilla.opensuse.org/show_bug.cgi?id=1151518 for
+details.
+
+If you want to use this feature anyway, copy
+bluetooth-mesh.conf to %{_sysconfdir}/dbus-1/systemd.d/ and
+org.bluez.mesh.service to %{_datadir}/dbus-1/system-services/,
+then reboot.
+EOF
+touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
+%endif
 
 %check
 %if ! 0%{?qemu_user_space_build}
@@ -248,22 +262,22 @@ make check V=0
 %endif
 
 %pre
-%service_add_pre bluetooth.service
+%service_add_pre bluetooth.service bluetooth-mesh.service
 
 %post
 %{?udev_rules_update:%udev_rules_update}
 # todo: check if this is still obeyed / needed with systemd
 %{fillup_only -n bluetooth}
 # We need the bluez systemd service enabled at any time. It won't start up
-# on it's own, as it is triggered by udev in the end (bnc#796671)
+# on its own, as it is triggered by udev in the end (bnc#796671)
 /bin/systemctl enable bluetooth.service 2>&1 || :
 /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 
 %preun
-%service_del_preun bluetooth.service
+%service_del_preun bluetooth.service bluetooth-mesh.service
 
 %postun
-%service_del_postun bluetooth.service
+%service_del_postun bluetooth.service bluetooth-mesh.service
 
 %post -n libbluetooth3 -p /sbin/ldconfig
 %postun -n libbluetooth3 -p /sbin/ldconfig
@@ -271,6 +285,9 @@ make check V=0
 %files
 %defattr(-, root, root)
 %doc AUTHORS ChangeLog README dbus-apis src/main.conf
+%if %{with mesh}
+%doc %{_defaultdocdir}/%{name}/*
+%endif
 %license COPYING
 %{_bindir}/bluemoon
 %{_bindir}/btattach
@@ -289,15 +306,18 @@ make check V=0
 %{_libdir}/bluetooth/plugins/sixaxis.so
 %dir %{_libexecdir}/bluetooth
 %{_libexecdir}/bluetooth/bluetoothd
+%if %{with mesh}
+%{_libexecdir}/bluetooth/bluetooth-meshd
+%endif
 %{_libexecdir}/bluetooth/obexd
 %{_bindir}/bluetoothctl
 %{_bindir}/btmon
-%if 0%{?suse_version} >= 1550
+%if %{with mesh}
 %{_bindir}/meshctl
 %endif
 %{_bindir}/hcidump
 %{_bindir}/bccmd
-%{_libexecdir}/udev/
+%{_prefix}/lib/udev/
 %{_mandir}/man1/btattach.1%{ext_man}
 %{_mandir}/man1/hcidump.1%{ext_man}
 %{_mandir}/man1/hciattach.1%{ext_man}
@@ -312,12 +332,20 @@ make check V=0
 %{_mandir}/man1/rfcomm.1%{ext_man}
 %{_mandir}/man1/rctest.1%{ext_man}
 %config %{_sysconfdir}/dbus-1/system.d/bluetooth.conf
+# not packaged, boo#1151518
+###%%config %%{_sysconfdir}/dbus-1/system.d/bluetooth-mesh.conf
 %dir %{_localstatedir}/lib/bluetooth
 %dir %{_sysconfdir}/modprobe.d
 %config(noreplace) %{_sysconfdir}/modprobe.d/50-bluetooth.conf
 %{_unitdir}/bluetooth.service
+%if %{with mesh}
+%{_unitdir}/bluetooth-mesh.service
+%endif
 %{_datadir}/dbus-1/system-services/org.bluez.service
 %{_datadir}/dbus-1/services/org.bluez.obex.service
+# not packaged, boo#1151518
+###%%{_datadir}/dbus-1/system-services/org.bluez.mesh.service
+%{_datadir}/zsh/site-functions/_bluetoothctl
 
 %files devel
 %defattr(-, root, root)

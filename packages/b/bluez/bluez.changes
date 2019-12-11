@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Nov 21 16:51:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- BuildIgnore shared-mime-info, pulled in by libgio-2_0-0, not
+  required for building, but causes a build loop.
+- Add bcond for mesh, also enable mesh on Leap 15.2/SLE15SP2.
+- Properly conditionalize all files which are only built with enabled
+  mesh functionality, fixes build on Leap 15.1 and earlier.
+
+-------------------------------------------------------------------
+Thu Nov  7 11:14:13 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- fix udev directory from %_libexecdir to %_prefix/lib
+
+-------------------------------------------------------------------
+Mon Nov  4 21:22:20 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5.52:
+  * Fix issue with AVDTP session disconnect timeout handling.
+  * Mark media endpoint APIs as stable interfaces.
+- remove obsolete 0001-mesh-Fix-segmentation-fault-on-Join-call.patch
+- disable one more segfaulting patch
+
+-------------------------------------------------------------------
+Mon Oct  7 14:56:28 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add 0001-mesh-Fix-segmentation-fault-on-Join-call.patch
+  (boo#1152672)
+
+-------------------------------------------------------------------
+Sun Oct  6 13:24:51 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add _service to use github.com/seifes-obs-packages/bluez.git
+  as source for the package
+
+-------------------------------------------------------------------
+Fri Oct  4 10:50:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Combine multiple %service_* to reduce generated boilerplate.
+
+-------------------------------------------------------------------
+Wed Oct  2 08:33:56 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- disable mesh service due to security concerns, see boo#1151518
+- add README-mesh.SUSE to explain the issue
+- remove no longer necessary temporary-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Sep 20 19:32:43 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5.51:
+  * Fix issue with first agent not being registered as default.
+  * Fix issue with loading devices without Service Changed CCC.
+  * Fix issue with GATT client and extended property reading.
+  * Fix issue with handling GATT client invalid read behavior.
+  * Fix issue with handling GATT disconnect handler removal.
+  * Fix issue with missing GATT/GAP service records for SDP.
+  * Fix issue with checking SDP continuation state length.
+  * Fix issue with HID device removal on HoG disconnect.
+  * Fix issue with AVDTP and session destroy handling.
+  * Fix issue with AVCTP and output MTU accounting.
+  * Fix issue with AVRCP and creating media items.
+  * Add support for GATT database caching feature.
+  * Add experimental support for Bluetooth Mesh Profile.
+- removed obsoleted patches:
+  * 0001-obexd-use-AM_LDFLAGS-for-linking.patch
+  * 0001-policy-Add-logic-to-connect-a-Sink.patch
+  * 0001-tools-Fix-build-after-y2038-changes-in-glibc.patch
+  * bluez-5.50-a2dp-backports.patch
+  * bluez-5.50-gcc9.patch
+  * disable_some_obex_tests.patch
+  * bluez-5.45-disable-broken-tests.diff
+- add bluez-disable-broken-tests.diff
+- add temporary rpmlintrc until security team approves
+
+-------------------------------------------------------------------
 Sun Aug 18 18:11:08 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Fix build with GCC 9 (boo#1121404, bko#202213):
