@@ -355,4 +355,23 @@
     <comment></comment>
     <requestid>731161</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d3aee03017aede76198a39a918f1e6d8</srcmd5>
+    <version>19.10.0</version>
+    <time>1576062564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.10.0:
+  * twisted.trial.successResultOf, twisted.trial.failureResultOf, and twisted.trial.assertNoResult accept coroutines as well as Deferreds. (#9006)
+  * Fixed circular import in twisted.trial.reporter, introduced in Twisted 16.0.0. (#8267)
+  * The POP3 server implemented by twisted.mail.pop3 now accepts passwords that contain spaces. (#9100)
+  * Incoming HTTP/2 connections will now not time out if they persist for longer than one minute. (#9653)
+  * twisted.conch.ssh.keys now correctly writes the &quot;iqmp&quot; parameter in serialized RSA private keys as q^-1 mod p rather than p^-1 mod q. (#9681)
+  * twisted.web.server.Request will now use twisted.web.server.Site.getContentFile, if it exists, to get a file into which to write request content. If getContentFile is not provided by the site, it will fall back to the previous behavior of using io.BytesIO for small requests and tempfile.TemporaryFile for large ones. (#9655)
+  * twisted.web.client.FileBodyProducer will now stop producing when the Deferred returned by FileBodyProducer.startProducing is cancelled. (#9547)
+  * The HTTP/2 server implementation now enforces TCP flow control on control frame messages and times out clients that send invalid data without reading responses. This closes CVE-2019-9512 (Ping Flood), CVE-2019-9514 (Reset Flood), and CVE-2019-9515 (Settings Flood). Thanks to Jonathan Looney and Piotr Sikora. (#9694)
+- Add python-38-xml-namespace.patch to fix dictionary mutation under Python 3.8
+- Add python-38-hmac-digestmod.patch to add digestmod parameter where required
+- Add python-38-no-cgi-parseqs.patch to no longer import parse_qs from cgi</comment>
+    <requestid>753855</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Twisted
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define oldpython python
 %define modname Twisted
 Name:           python-Twisted
-Version:        19.7.0
+Version:        19.10.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -30,6 +30,9 @@ Source:         https://files.pythonhosted.org/packages/source/T/Twisted/%{modna
 Patch1:         skip_MultiCast.patch
 Patch2:         no-pygtkcompat.patch
 Patch3:         test-mktime-invalid-tm_isdst.patch
+Patch4:         python-38-xml-namespace.patch
+Patch5:         python-38-hmac-digestmod.patch
+Patch6:         python-38-no-cgi-parseqs.patch
 BuildRequires:  %{python_module Automat >= 0.3.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
