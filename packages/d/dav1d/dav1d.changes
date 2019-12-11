@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  4 19:03:37 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.2
+  * ARM32 optimizations for loopfilter, ipred_dc|h|v
+  * Add section-5 raw OBU demuxer
+  * Improve the speed by reducing the L2 cache collisions
+  * Fix minor issues
+
+-------------------------------------------------------------------
 Sat Oct 26 05:39:14 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.5.1
