@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-bad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,24 +29,17 @@
 %define use_meson 0
 
 Name:           gstreamer-plugins-bad
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Url:            https://gstreamer.freedesktop.org/
+URL:            https://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-plugins-bad/%{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM -- do not force C++98 for OpenEXR
-Patch0:         0001-Require-OpenEXR-2.3.0-at-least-and-do-not-force-C-98.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
-%if !%{use_meson}
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
-%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -62,11 +55,7 @@ BuildRequires:  orc >= 0.4.11
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-%if %{suse_version} >= 1550
-BuildRequires:  pkgconfig(OpenEXR) >= 2.3.0
-%else
-BuildRequires:  pkgconfig(OpenEXR) <= 2.3.0
-%endif
+BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
@@ -464,10 +453,7 @@ processing capabilities can be added simply by installing new plug-ins.
 %lang_package
 
 %prep
-%setup -n %{_name}-%{version}
-%if %{suse_version} >= 1550
-%patch0 -p1
-%endif
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -519,7 +505,6 @@ export PYTHON=%{_bindir}/python3
 	%{nil}
 %{meson_build}
 %else
-autoreconf -vfi
 %configure \
 %if ! 0%{?BUILD_ORIG}
 	--with-package-name='openSUSE GStreamer-plugins-bad package' \
