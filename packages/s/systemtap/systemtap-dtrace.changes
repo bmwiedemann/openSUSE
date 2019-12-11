@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 17:32:23 UTC 2019 - Tony Jones <tonyj@suse.com>
+
+- Upgrade to version 4.2. See systemtap.spec for changelog
+
+-------------------------------------------------------------------
 Fri Sep 27 15:07:24 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Moved the dtrace binary into a separate package to resolve build

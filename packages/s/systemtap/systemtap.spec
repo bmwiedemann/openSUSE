@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
-Patch2:         systemtap-support-wimplicit-fallthrough-vsprintf.patch
-Patch3:         systemtap-support-wimplicit-fallthrough-gen_map.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -97,8 +95,6 @@ This package contains the support tools for static probes.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 autoreconf -fi

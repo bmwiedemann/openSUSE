@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-docs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           systemtap-docs
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
