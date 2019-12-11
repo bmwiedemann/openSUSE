@@ -1,7 +1,7 @@
 #
 # spec file for package tcl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           tcl
-Url:            http://www.tcl.tk
-Version:        8.6.9
+URL:            http://www.tcl.tk
+Version:        8.6.10
 Release:        0
 %define         rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
-%define itclver 4.1.2
+%define itclver 4.2.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        The Tcl Programming Language
 License:        TCL
@@ -41,7 +41,6 @@ Source0:        ftp://ftp.tcl.tk/pub/tcl/tcl8_6/%{name}%{version}%{rrc}-src.tar.
 Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
-Patch0:         tcl-expand-regression.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -81,7 +80,6 @@ the Tcl language itself.
 
 %prep
 %setup -q -n %name%version
-%patch0
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -163,7 +161,7 @@ exit 0
 
 %files
 %defattr(-,root,root,755)
-%doc README changes license.terms ChangeLog*
+%doc README.md changes license.terms ChangeLog*
 %docdir %_mandir/mann
 %doc %_mandir/man1/*
 %doc %_mandir/mann/*

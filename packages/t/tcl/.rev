@@ -567,4 +567,34 @@ sqlite3 patch I will submit in a moment.</comment>
     <comment></comment>
     <requestid>717532</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>e381cde6eccb80888462b300277f3811</srcmd5>
+    <version>8.6.10</version>
+    <time>1576061984</time>
+    <user>dimstar_suse</user>
+    <comment>- New version: 8.6.10:
+  * (bug)[7a9dc5] [file normalize ~/~foo] segfault
+  * (bug)[3cf3a9] variable 'timezone' deprecated in vc2017
+  * (bug)[cc1e91] [list [list {*}[set a &quot; &quot;]]] regression
+    obsoletes tcl-expand-regression.patch.
+  * (bug)[e3f481] tests var-1.2[01]
+  * (new) Update to Unicode 12.0
+  * (new)[TIP 527] New command [timerate]
+  * (bug)[39fed4] [package require] memory validity
+  * (new) New command tcl::unsupported::corotype
+  * (bug) memlink when namespace deletion kills linked var
+  * (new) README file converted to README.md in Markdown
+  * (bug)[8b9854] [info level 0] regression with ensembles
+  * (bug)[6bdadf] crash multi-arg write-traced [lappend]
+  * (bug)[f8a33c] crash Tcl_Exit before init
+  * (bug)[fa6bf3] Bytecode fails epoch recovery at numLevel=0
+  * (bug)[fec0c1] C stack overflow compiling bytecode
+  * tzdata updated to Olson's tzdata2019c
+  * (bug)[16768d] Fix [info hostname] on NetBSD
+  * (new) libtommath updated to release 1.2.0
+  * (bug)[bcd100] bad fs cache when system encoding changes
+  * (bug)[135804] segfault in [next] after destroy
+  * (bug)[13657a] application/json us text, not binary</comment>
+    <requestid>753909</requestid>
+  </revision>
 </revisionlist>
