@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.interface
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global modname zope.interface
 %define oldpython python
 Name:           python-zope.interface
-Version:        4.6.0
+Version:        4.7.1
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1

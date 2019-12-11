@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  9 05:21:39 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- update to 4.7.1:
+  * Use Python 3 syntax in the documentation. See issue 119.
+  * Drop support for Python 3.4.
+  * Fix queryTaggedValue, getTaggedValue, getTaggedValueTags subclass
+    inheritance. See PR 144.
+  * Add support for Python 3.8.
+
+-------------------------------------------------------------------
 Fri Apr  5 10:24:37 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.6.0

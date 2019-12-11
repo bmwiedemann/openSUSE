@@ -182,4 +182,17 @@
     <comment></comment>
     <requestid>691792</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a9d8b9911567d94a3e999b4dd8852374</srcmd5>
+    <version>4.7.1</version>
+    <time>1576062628</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.1:
+  * Use Python 3 syntax in the documentation. See issue 119.
+  * Drop support for Python 3.4.
+  * Fix queryTaggedValue, getTaggedValue, getTaggedValueTags subclass
+    inheritance. See PR 144.
+  * Add support for Python 3.8.</comment>
+    <requestid>755107</requestid>
+  </revision>
 </revisionlist>
