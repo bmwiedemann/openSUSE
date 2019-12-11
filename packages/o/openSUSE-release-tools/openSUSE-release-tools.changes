@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Dec 10 12:41:41 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191210.9a8ba5b5:
+  * More flake8 cleanups
+  * Sanitize read rebuild yaml
+  * Avoid crash when --store is not specified on save
+
+-------------------------------------------------------------------
+Tue Dec 10 10:49:57 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191210.10a6a78a:
+  * stagingapi: StagingAPI doen't initial api itself
+
+-------------------------------------------------------------------
+Tue Dec 10 09:57:51 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191210.1a22a59c:
+  * Do not return after adi project is accepted
+
+-------------------------------------------------------------------
+Tue Dec 10 08:47:31 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191210.4d7223f5:
+  * Fix E203
+  * Fix Flake E241
+  * Avoid crash when store project isn't set
+  * Fix installcheck for arm architectures
+
+-------------------------------------------------------------------
 Tue Dec 10 01:44:00 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191210.05e7447a:
