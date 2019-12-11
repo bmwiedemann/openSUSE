@@ -1698,4 +1698,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>751218</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>e77346ef5027b37684116f47972ad17a</srcmd5>
+    <version>5.04</version>
+    <time>1576062208</time>
+    <user>dimstar_suse</user>
+    <comment>- Set up %{_mandir}/man7/man.7%{?ext_man} as an alternative for
+  the man-page specific document. The other package providing
+  this man page is mandoc, which is meant as an alternative
+  lightweight faster replacement for man-pages package. It does
+  not have that many dependencies, it is written in C, see
+  http://mandoc.bsd.lv/ for more. (forwarded request 754656 from mcepl)</comment>
+    <requestid>754699</requestid>
+  </revision>
 </revisionlist>
