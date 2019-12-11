@@ -949,4 +949,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>749316</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>b77201f842f292badec20337fc9d986f</srcmd5>
+    <version>19.03.5_ce</version>
+    <time>1576062176</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug reference (bsc#1158590).</comment>
+    <requestid>754552</requestid>
+  </revision>
 </revisionlist>
