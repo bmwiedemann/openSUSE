@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-cov
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,8 +61,10 @@ through pytest-cov or through coverage's config file.
 # test_dist_missing_data - needs internet access
 # test_*_collocated gh#pytest-dev/pytest-cov#358
 # test_central_subprocess_change_cwd_with_pythonpath - needs pytest cov in venv which is not doable in OBS build
+# test_multiprocessing* - deadlocks under Python 3.8
+# test_dist_combine_racecondition - text ordering under Python 3.8
 echo "import site;site.addsitedir(\"$(pwd)/src\")" > tests/sitecustomize.py
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:$PWD/tests py.test-%{$python_bin_suffix} -v -k 'not (test_dist_missing_data or test_central_subprocess_change_cwd_with_pythonpath or test_dist_not_collocated or test_dist_subprocess_not_collocated)'
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:$PWD/tests py.test-%{$python_bin_suffix} -v -k 'not (test_dist_missing_data or test_central_subprocess_change_cwd_with_pythonpath or test_dist_not_collocated or test_dist_subprocess_not_collocated or test_multiprocessing or test_dist_combine_racecondition)'
 
 %files %{python_files}
 %license LICENSE

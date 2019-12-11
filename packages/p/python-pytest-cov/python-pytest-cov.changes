@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  5 04:06:23 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip 6 test cases that are causing problems with Python 3.8 
+
+-------------------------------------------------------------------
 Wed Nov  6 13:25:11 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Switch off another test cases to make test suite pass.
