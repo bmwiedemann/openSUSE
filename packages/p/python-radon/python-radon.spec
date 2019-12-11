@@ -1,7 +1,7 @@
 #
 # spec file for package python-radon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,8 @@ rm -r */lib/radon/tests
 
 %check
 export LANG=en_US.UTF-8
-%pytest --strict
+# Exclusions because of gh#rubik/radon#183
+%pytest --strict -k 'not (test_visitor or test_mi_visit)'
 
 %post
 %python_install_alternative radon

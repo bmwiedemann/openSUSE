@@ -57,4 +57,12 @@
     <comment></comment>
     <requestid>734364</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a93cfb707c373b4d09967af73b485429</srcmd5>
+    <version>4.0.0</version>
+    <time>1576062594</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude some tests cases because of gh#rubik/radon#183</comment>
+    <requestid>754479</requestid>
+  </revision>
 </revisionlist>
