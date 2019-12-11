@@ -284,4 +284,12 @@
   + Updated translations. (forwarded request 738455 from iznogood)</comment>
     <requestid>738535</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>05993657d0e256a06e1839f476f90ecb</srcmd5>
+    <version>3.34.0</version>
+    <time>1576062287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754121</requestid>
+  </revision>
 </revisionlist>

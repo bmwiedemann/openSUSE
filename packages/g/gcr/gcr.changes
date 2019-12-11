@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 28 09:57:41 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix usage of libexecdir instead of prefix/lib where applicable.
+
+-------------------------------------------------------------------
 Mon Oct 14 16:40:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.0:

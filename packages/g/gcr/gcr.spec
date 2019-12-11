@@ -1,7 +1,7 @@
 #
 # spec file for package gcr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -222,7 +222,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
 
 %files ssh-askpass
-%{_prefix}/lib/gcr-ssh-askpass
+%{_libexecdir}/gcr-ssh-askpass
 
 %files -n libgcr-3-1
 %license COPYING
