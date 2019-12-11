@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>741075</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>955339d2ed803eca63fcbb8f306328aa</srcmd5>
+    <version>3.11.2</version>
+    <time>1576062838</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in the full python for sqlite</comment>
+    <requestid>755739</requestid>
+  </revision>
 </revisionlist>

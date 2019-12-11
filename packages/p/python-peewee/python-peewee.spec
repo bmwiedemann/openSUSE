@@ -1,7 +1,7 @@
 #
 # spec file for package python-peewee
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,13 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module mysql-connector-python}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(sqlite3)
+Requires:       python
 %python_subpackages
 
 %description
