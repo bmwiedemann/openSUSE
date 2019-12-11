@@ -129,7 +129,6 @@ export SUID_LDFLAGS="-z now -pie"
 	--enable-introspection \
 	--enable-examples \
 	--enable-libsystemd-login \
-	--libexecdir=%{_libexecdir}/polkit-1 \
 	%{nil}
 %make_build
 
@@ -199,8 +198,8 @@ exit 0
 %{_bindir}/pkcheck
 %verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
 %{_bindir}/pkttyagent
-%dir %{_libexecdir}/polkit-1
-%{_libexecdir}/polkit-1/polkitd
+%dir %{_prefix}/lib/polkit-1
+%{_prefix}/lib/polkit-1/polkitd
 %verify(not mode) %attr(4755,root,root) %{_prefix}/lib/polkit-1/polkit-agent-helper-1
 # $HOME for polkit user
 %dir %{_localstatedir}/lib/polkit
