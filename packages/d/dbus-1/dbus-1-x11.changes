@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Dec  3 01:16:18 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Verify signatures
+  * dbus-1.keyring - Key for Simon McVittie (smcv) from the Debian
+  developer keyring.
+- Drop dbus_at_console.ck not needed
+- Clean up sources
+  * Source2 dbus-1.desktop now Source4
+  * baselib.conf now source 3
+- Update to 1.12.16
+  * CVE-2019-12749: Do not attempt to carry out DBUS_COOKIE_SHA1
+    authentication for identities that differ from the user running the
+    DBusServer. Previously, a local attacker could manipulate symbolic
+    links in their own home directory to bypass authentication and connect
+    to a DBusServer with elevated privileges. The standard system and
+    session dbus-daemons in their default configuration were immune to this
+    attack because they did not allow DBUS_COOKIE_SHA1, but third-party
+    users of DBusServer such as Upstart could be vulnerable.
+    Thanks to Joe Vennix of Apple Information Security.
+    (bsc#1137832, dbus#269, Simon McVittie)
+- From 1.12.14
+  * Raise soft fd limit to match hard limit, even if unprivileged.
+    This makes session buses with many clients, or with clients that make
+    heavy use of fd-passing, less likely to suffer from fd exhaustion.
+    (dbus!103, Simon McVittie)
+  * If a privileged dbus-daemon has a hard fd limit greater than 64K, don't
+    reduce it to 64K, ensuring that we can put back the original fd limits
+    when carrying out traditional (non-systemd) activation. This fixes a
+    regression with systemd >= 240 in which system services inherited
+    dbus-daemon's hard and soft limit of 64K fds, instead of the intended
+    soft limit of 1K and hard limit of 512K or 1M.
+    (dbus!103, Debian#928877; Simon McVittie)
+  * Fix build failures caused by an AX_CODE_COVERAGE API change in newer
+    autoconf-archive versions (dbus#249, dbus!88; Simon McVittie)
+  * Fix build failures with newer autoconf-archive versions that include
+    AX_-prefixed shell variable names (dbus#249, dbus!86; Simon McVittie)
+  * Parse section/group names in .service files according to the syntax
+    from the Desktop Entry Specification, rejecting control characters
+    and non-ASCII in section/group names (dbus#208, David King)
+  * Fix various -Wlogical-op issues that cause build failure with newer
+    gcc versions (dbus#225, dbus!109; David King)
+  * Don't assume we can set permissions on a directory, for the benefit of
+    MSYS and Cygwin builds (dbus#216, dbus!110; Simon McVittie)
+  * Don't overwrite PKG_CONFIG_PATH and related environment variables when
+    the pkg-config-based version of DBus1Config is used in a CMake project
+    (dbus#267, dbus!96; Clemens Lang)
+- Drop now upstream Patches
+  * dbus-no-ax-check.patch
+  * dbus-new-autoconf-archive.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 20:09:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix two inconsistencies with _libexecdir, sysusers.d and
@@ -10,10 +61,10 @@ Wed Nov 20 20:09:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 -------------------------------------------------------------------
 Wed May 29 13:25:43 UTC 2019 - Simon Lees <sflees@suse.de>
 
-- Replace DISABLE_RESTART_ON_UPDATE with 
+- Replace DISABLE_RESTART_ON_UPDATE with
   %service_del_postun_without_restart
 - Remove version specific code to block all updates on restart as
-  hopefully no tumbleweed versions still have code causing those 
+  hopefully no tumbleweed versions still have code causing those
   issues (was only present for a few snapshots)
 
 -------------------------------------------------------------------
@@ -94,32 +145,32 @@ Tue Nov 20 23:37:09 UTC 2018 - eich@suse.com
 Wed Aug 22 10:40:43 UTC 2018 - sflees@suse.de
 - Update to 1.12.10
   * Changelog for 1.12.10
-    • Prevent reading up to 3 bytes beyond the end of a truncated message.
+    * Prevent reading up to 3 bytes beyond the end of a truncated message.
       This could in principle be an information leak or denial of service
       on the system bus, but is not believed to be exploitable to crash
       the system bus or leak interesting information in practice.
       (fd.o #107332, Simon McVittie)
-    • Fix build with gcc 8 -Werror=cast-function-type
+    * Fix build with gcc 8 -Werror=cast-function-type
       (fd.o #107349, Simon McVittie)
-    • Fix warning from gcc 8 about suspicious use of strncpy() when
+    * Fix warning from gcc 8 about suspicious use of strncpy() when
       populating struct sockaddr_un (fd.o #107350, Simon McVittie)
-    • Fix a minor memory leak when a DBusServer listens on a new address
+    * Fix a minor memory leak when a DBusServer listens on a new address
       (fd.o #107194, Simon McVittie)
-    • Fix an invalid NULL argument to rmdir() if a nonce-tcp DBusServer
+    * Fix an invalid NULL argument to rmdir() if a nonce-tcp DBusServer
       runs out of memory (fd.o #107194, Simon McVittie)
-    • Don't use misleading errno-derived error names if getaddrinfo() or
+    * Don't use misleading errno-derived error names if getaddrinfo() or
       getnameinfo() fails with a code other than EAI_SYSTEM
       (fd.o #106395, Simon McVittie)
-    • Skip tests that require working TCP if we are in a container environment
+    * Skip tests that require working TCP if we are in a container environment
       where 127.0.0.1 cannot be resolved (fd.o #106812, Simon McVittie)
   * Changelog for 1.12.8
-    • The Devhelp documentation index is now in version 2 format
+    * The Devhelp documentation index is now in version 2 format
       (fd.o #106186, Simon McVittie)
-    • Give the dbus-daemon man page some scarier warnings about
+    * Give the dbus-daemon man page some scarier warnings about
       <allow_anonymous/> and non-local TCP, which are insecure and should
       not be used, particularly for the standard system and session buses
       (fd.o #106004, Simon McVittie)
-    • Fix installation of Ducktype documentation with newer yelp-build
+    * Fix installation of Ducktype documentation with newer yelp-build
       versions (fd.o #106171, Simon McVittie)
 
 -------------------------------------------------------------------
@@ -127,29 +178,29 @@ Fri Mar 23 10:40:43 UTC 2018 - sflees@suse.de
 
 - Update to 1.12.6
   * Changelog for 1.12.6
-      • Increase system dbus-daemon's RLIMIT_NOFILE rlimit before it drops
+      * Increase system dbus-daemon's RLIMIT_NOFILE rlimit before it drops
         privileges, because it won't have permission afterwards. This fixes a
         regression in dbus 1.10.18 and 1.11.0 which made the standard system bus
         more susceptible to deliberate or accidental denial of service.
         (fdo#105165, David King)
   * Changelog for 1.12.4
-      • When iterating the DBusConnection while blocking on a pending call,
+      * When iterating the DBusConnection while blocking on a pending call,
         don't wait for I/O if that pending call already has a result; and make
         sure that whether it has a result is propagated in a thread-safe way.
         This prevents certain multi-threaded calling patterns from blocking
         until their timeout even when they should have succeeded sooner.
         (fdo#102839; Manish Narang, Michael Searle)
-      • Report the correct error if OOM is reached while trying to listen
+      * Report the correct error if OOM is reached while trying to listen
         on a TCP socket (fdo#89104, Simon McVittie)
-      • Fix assertion failures in recovery from OOM while setting up a
+      * Fix assertion failures in recovery from OOM while setting up a
         DBusServer (fdo#89104, Simon McVittie)
-      • Add a missing space to a warning message (fdo#103729, Thomas Zajic)
-      • Expand ${bindir} correctly when pkg-config is asked for dbus_daemondir
+      * Add a missing space to a warning message (fdo#103729, Thomas Zajic)
+      * Expand ${bindir} correctly when pkg-config is asked for dbus_daemondir
         (fdo#104265, Benedikt Heine)
-      • On Linux systems with systemd < 237, if ${localstatedir}/dbus doesn't
+      * On Linux systems with systemd < 237, if ${localstatedir}/dbus doesn't
         exist, create it before trying to create ${localstatedir}/dbus/machine-id
         (fdo#104577, Chris Lesiak)
-      • Fix escaping in dbus-api-design document (fdo#104925, Philip Withnall)
+      * Fix escaping in dbus-api-design document (fdo#104925, Philip Withnall)
 
 -------------------------------------------------------------------
 Thu Mar  8 15:24:54 UTC 2018 - dimstar@opensuse.org
@@ -182,36 +233,36 @@ Thu Nov 16 02:21:08 UTC 2017 - sflees@suse.de
 
 - Update to 1.12.2
 Deprecations:
-• Eavesdropping is officially deprecated in favour of BecomeMonitor.
+* Eavesdropping is officially deprecated in favour of BecomeMonitor.
   See the release notes for spec version 0.31 (in dbus 1.11.14).
-• [Unix] Flag files in /var/run/console/${username} are deprecated.
+* [Unix] Flag files in /var/run/console/${username} are deprecated.
   See the release notes for 1.11.18.
 New APIs:
-• <allow> and <deny> rules in dbus-daemon configuration can now
+* <allow> and <deny> rules in dbus-daemon configuration can now
   include send_broadcast="true", send_broadcast="false",
   max_unix_fds="N", min_unix_fds="N" (for some integer N).
   See the release notes for 1.11.18.
-• dbus_try_get_local_machine_id() is like
+* dbus_try_get_local_machine_id() is like
   dbus_get_local_machine_id(), but returns a DBusError.
-• New APIs around DBusMessageIter to simplify cleanup.
+* New APIs around DBusMessageIter to simplify cleanup.
   See the release notes for 1.11.16.
-• The message bus daemon now implements the standard Introspectable,
+* The message bus daemon now implements the standard Introspectable,
   Peer and Properties interfaces. See the release notes for
   dbus 1.11.14 and spec version 0.31.
-• DTDs for introspection XML and bus configuration are installed.
-• [Unix] A new unix:dir=… address family resembles unix:tmpdir=… but
+* DTDs for introspection XML and bus configuration are installed.
+* [Unix] A new unix:dir=… address family resembles unix:tmpdir=… but
   never uses Linux abstract sockets, which is advantageous for
   containers. On non-Linux it is equivalent to unix:tmpdir=….
   See the release notes for dbus 1.11.14 and spec version 0.31.
-• [Unix] New option "dbus-launch --exit-with-x11".
-• [Unix] Session managers can create transient .service files in
+* [Unix] New option "dbus-launch --exit-with-x11".
+* [Unix] Session managers can create transient .service files in
   $XDG_RUNTIME_DIR/dbus-1/services. See the release notes for 1.11.12.
-• [Unix] A sysusers.d snippet can create the messagebus user on-demand.
+* [Unix] A sysusers.d snippet can create the messagebus user on-demand.
 Miscellaneous behaviour changes:
-• [Unix] The session bus now logs to syslog if it was started by
+* [Unix] The session bus now logs to syslog if it was started by
   dbus-launch.
-• [Unix] Internal warnings are logged to syslog if configured.
-• [Unix] Exceeding an anti-DoS limit is logged to syslog if configured,
+* [Unix] Internal warnings are logged to syslog if configured.
+* [Unix] Exceeding an anti-DoS limit is logged to syslog if configured,
   or to stderr.
 - Enabled "make check test suite"
 - Patches removed, fixed upstream

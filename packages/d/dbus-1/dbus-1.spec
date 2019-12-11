@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,30 +21,25 @@
 %define _libname libdbus-1-3
 # Temporary code to disable service restart on update sflees@suse.de boo#1020301
 %global _backup %{_sysconfdir}/sysconfig/services.rpmbak.%{name}-%{version}-%{release}
-%if 0%{?suse_version} <= 1320
-%define _userunitdir %{_prefix}/lib/systemd/user
-%endif
+
 %bcond_without selinux
 Name:           dbus-1
-Version:        1.12.12
+Version:        1.12.16
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        GPL-2.0-or-later OR AFL-2.1
 Group:          System/Daemons
 URL:            http://dbus.freedesktop.org/
 Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
-Source2:        dbus-1.desktop
-Source3:        dbus_at_console.ck
-Source4:        baselibs.conf
+Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc
+Source2:        dbus-1.keyring
+Source3:        baselibs.conf
+Source4:        dbus-1.desktop
 Patch0:         feature-suse-log-deny.patch
 # PATCH-FIX-OPENSUSE coolo@suse.de -- force a feature configure won't accept without x11 in buildrequires
 Patch1:         feature-suse-do-autolaunch.patch
 # Patch-Feature-opensuse sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         dbus-no-ax-check.patch
-# PATCH-FIX-UPSTREAM tchvatal@suse.com -- work with new autoconf-archive
-Patch4:         dbus-new-autoconf-archive.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf-archive
 BuildRequires:  doxygen
@@ -162,7 +157,7 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service  %{buildroot}/%{_sbindir}/rcdbus
 install -d %{buildroot}/run/dbus
 mkdir -p %{buildroot}/%{_datadir}/susehelp/meta/Development/Libraries/
-install -m 0644 %{SOURCE2} \
+install -m 0644 %{SOURCE4} \
     %{buildroot}/%{_datadir}/susehelp/meta/Development/Libraries/dbus-1.desktop
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
 mkdir -p %{buildroot}/lib/dbus-1/system-services
@@ -173,8 +168,6 @@ for i in %{_sysconfdir}/dbus-1/session.d %{_sysconfdir}/dbus-1/system.d \
   mkdir -p %{buildroot}$i
 done
 
-install -d %{buildroot}%{_sysconfdir}/ConsoleKit/run-session.d
-install -m 755 %{SOURCE3} %{buildroot}%{_sysconfdir}/ConsoleKit/run-session.d
 mkdir -p %{buildroot}%{_localstatedir}/lib/dbus
 
 # don't ship executables in doc
@@ -255,7 +248,6 @@ fi
 %config(noreplace) %{_sysconfdir}/dbus-1/system.conf
 %{_datadir}/dbus-1/session.conf
 %{_datadir}/dbus-1/system.conf
-%{_sysconfdir}/ConsoleKit
 %{_bindir}/dbus-cleanup-sockets
 %{_bindir}/dbus-daemon
 %{_bindir}/dbus-monitor

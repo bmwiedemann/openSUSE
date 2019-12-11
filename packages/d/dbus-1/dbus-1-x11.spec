@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-x11
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,25 +23,22 @@
 %endif
 %bcond_without selinux
 Name:           dbus-1-x11
-Version:        1.12.12
+Version:        1.12.16
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        GPL-2.0-or-later OR AFL-2.1
 Group:          System/Daemons
 URL:            http://dbus.freedesktop.org/
 Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
-Source2:        dbus-1.desktop
-Source3:        dbus_at_console.ck
-Source4:        baselibs.conf
+Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc
+Source2:        dbus-1.keyring
+Source3:        baselibs.conf
+Source4:        dbus-1.desktop
 Patch0:         feature-suse-log-deny.patch
 # PATCH-FIX-OPENSUSE coolo@suse.de -- force a feature configure won't accept without x11 in buildrequires
 Patch1:         feature-suse-do-autolaunch.patch
 # Patch-Feature-opensuse sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         dbus-no-ax-check.patch
-# PATCH-FIX-UPSTREAM tchvatal@suse.com -- work with new autoconf-archive
-Patch4:         dbus-new-autoconf-archive.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libexpat-devel
