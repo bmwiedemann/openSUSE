@@ -17,4 +17,12 @@
     <comment></comment>
     <requestid>697840</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2351f8bd81b668206b5eaf4ebe5e6c88</srcmd5>
+    <version>1.0.4</version>
+    <time>1576062868</time>
+    <user>dimstar_suse</user>
+    <comment>- Require full python for sqlite module</comment>
+    <requestid>755744</requestid>
+  </revision>
 </revisionlist>
