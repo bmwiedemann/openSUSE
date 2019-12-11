@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Dec 11 07:13:25 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.3
+  * fix clipboard synchronization with HTML5 client
+  * fix window repaints with GTK3
+  * fix GDK scaling causing window painting issues (force off)
+  * fix slow repaint with OpenGL and combined updates (ie:
+    scrolling)
+  * fix missing video screen updates with 32-bit browsers:
+    disable video
+  * fix for X11 applications requesting invalid clipboard targets
+  * fix "xpra top" errors when the terminal window is too small
+  * fix blank xpra dialog windows when closed then shown again
+    (ie: server commands)
+  * fix compilation on non-i386 32-bit platforms
+  * fix platform query errors causing command failures
+  * fix Python2 builds: ignore GTK2 deprecation warnings
+  * fix X11 property synchronization with Python2 builds
+  * fix XSetClassHint call with Python 3
+  * fix window move + resize shortcut
+  * fix ssh proxy options not preserved when loading session
+    files
+  * fix error and missing refresh after changing quality or
+    speed settings
+  * fix NVENC error when pynvml is not installed
+  * fix NVENC temporary failure retry code path
+  * fix DPI value from the command line with desktop-scaling
+  * fix typo in man page
+  * fix errors with some odd Python3 builds
+    (subprocess.getoutput)
+  * fix cursor packets missing encoding attribute
+  * fix notification error handling the speaker forwarding error
+    message
+  * fix incorrect and unhelpful message on connection error
+  * make it possible to disable colourspace synchronization
+  * show mdns status in xpra info
+  * support CUDA 10.2
+
+-------------------------------------------------------------------
 Wed Nov 20 19:48:11 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0.2
