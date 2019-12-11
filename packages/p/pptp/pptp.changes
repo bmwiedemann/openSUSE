@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec  4 17:19:58 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Update to versioin 1.10.0
+  * remove inststr in favour of prctrl PR_SET_NAME,
+  * vector tests; include in make, fix code rot, fix return status,
+  * pqueue; include missing sys/types.h,
+  * pptpsetup; prevent world-readable peers file, use
+    three-argument append, allow password trailing spaces, split
+    prints to chap-secrets, allow passwords with quotes, use
+    absolute path to pptp
+  * remove uid from ip route get output; iproute2-4.10 and later
+    may emit uid, (bsc#1131960).
+- Changes in 1.9.0
+  * close a memory leak in pqueue,
+  * avoid clobbering heap (RHBZ #1183627),
+  * fix use after free in call close request handler,
+  * add --missing-window option (Debian #680455, Ubuntu #681617),
+  * randomise call-id (Debian #721963),
+  * replace gethostbyname(3) with getaddrinfo(3),
+  * don't set build flags; use defaults,
+  * fix for (null) in "pptp: GRE-to-PPP gateway on (null)".
+
+-------------------------------------------------------------------
 Tue Jun 13 22:04:21 CEST 2017 - kukuk@suse.de
 
 - Add /etc/ppp directory

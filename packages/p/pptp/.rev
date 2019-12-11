@@ -126,4 +126,30 @@
     <comment>1</comment>
     <requestid>503472</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>942bc6cb45513f6b797aa1720b4d5289</srcmd5>
+    <version>1.10.0</version>
+    <time>1576062033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to versioin 1.10.0
+  * remove inststr in favour of prctrl PR_SET_NAME,
+  * vector tests; include in make, fix code rot, fix return status,
+  * pqueue; include missing sys/types.h,
+  * pptpsetup; prevent world-readable peers file, use
+    three-argument append, allow password trailing spaces, split
+    prints to chap-secrets, allow passwords with quotes, use
+    absolute path to pptp
+  * remove uid from ip route get output; iproute2-4.10 and later
+    may emit uid, (bsc#1131960).
+- Changes in 1.9.0
+  * close a memory leak in pqueue,
+  * avoid clobbering heap (RHBZ #1183627),
+  * fix use after free in call close request handler,
+  * add --missing-window option (Debian #680455, Ubuntu #681617),
+  * randomise call-id (Debian #721963),
+  * replace gethostbyname(3) with getaddrinfo(3),
+  * don't set build flags; use defaults,
+  * fix for (null) in &quot;pptp: GRE-to-PPP gateway on (null)&quot;.</comment>
+    <requestid>754108</requestid>
+  </revision>
 </revisionlist>

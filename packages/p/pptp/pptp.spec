@@ -1,7 +1,7 @@
 #
 # spec file for package pptp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pptp
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        Point-to-Point Tunneling Protocol (PPTP) Client
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://pptpclient.sourceforge.net/
+URL:            http://pptpclient.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/pptpclient/pptp/pptp-%{version}/%{name}-%{version}.tar.gz
 Source1:        pptp-command
 Source2:        options.pptp
@@ -58,7 +58,8 @@ find Reference		-name CVS | xargs rm -rf
 
 %files
 %defattr(0644,root,root,0755)
-%doc AUTHORS COPYING NEWS README TODO USING Documentation
+%doc AUTHORS NEWS README TODO USING Documentation
+%license COPYING
 %attr(0755,root,root) %{_sbindir}/pptp
 %attr(0755,root,root) %{_sbindir}/pptpsetup
 %attr(0444,root,root) %{_mandir}/man8/pptp.8.gz
