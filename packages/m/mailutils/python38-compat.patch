@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1233,7 +1233,7 @@ if test "$status_python" = yes; then
+            status_python=no
+       esac
+       
+-      PYTHON_LIBS=`$PYTHON_CONFIG --libs`
++      PYTHON_LIBS=`$PYTHON_CONFIG --libs --embed` || PYTHON_LIBS=`$PYTHON_CONFIG --libs`
+       PYTHON_INCLUDES=`$PYTHON_CONFIG --includes`
+     else
+       status_python=no     

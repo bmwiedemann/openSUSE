@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
+%define somajor 5
 # See bug boo#1095783
 # Currently disabled suid/sgid program dotlock and maidag
 %bcond_with     set_user_identity
 %bcond_with     guile_22
-
-%define somajor 5
-
 Name:           mailutils
 Version:        3.8
 Release:        0
@@ -36,6 +34,9 @@ Source2:        %{name}-rpmlintrc
 Patch0:         lisp-load-silent.patch
 Patch2:         silent-rpmlint-with_initgroups.patch
 Patch3:         mailutils-3.5-guile-2.0.patch
+# PATCH-FIX-UPSTREAM python38-compat.patch http://savannah.gnu.org/bugs/index.php?57318 mcepl@suse.com
+# Remove incompatibility with Python 3.8+
+Patch4:         python38-compat.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -43,38 +44,41 @@ BuildRequires:  cpio
 BuildRequires:  cyrus-sasl-gssapi
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  libtool
-%if 0
-# Seems not compatible with original radius (missing debug.h)
-BuildRequires:  freeradius-server-devel
-%endif
 BuildRequires:  gcc-c++
 BuildRequires:  guile-devel
 BuildRequires:  help2man
 BuildRequires:  libmysqld-devel
+BuildRequires:  libtool
 BuildRequires:  m4
 BuildRequires:  makeinfo
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
+# Does not compile due API changes
+BuildRequires:  readline-devel
+BuildRequires:  tcpd-devel
+BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(kyotocabinet)
 BuildRequires:  pkgconfig(libgsasl)
-# Does not compile due API changes
-BuildRequires:  readline-devel
-BuildRequires:  tcpd-devel
-BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(python3)
 Requires:       guile = %(rpm -q --queryformat '%%{VERSION}' guile-devel)
+Requires(post): %{install_info_prereq}
 Requires(post): update-alternatives
+Requires(preun): %{install_info_prereq}
 Requires(preun): update-alternatives
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+%if 0
+# Seems not compatible with original radius (missing debug.h)
+BuildRequires:  freeradius-server-devel
+%endif
 %if %{with set_user_identity}
 Requires(post): permissions
 Requires(verify): permissions
 %endif
+# Hard requirement as mimeview uses /usr/share/cups/mime/mime.types
+Requires:       cups
 
 %description
 Mailutils is a set of utilities and daemons for processing e-mail.
@@ -153,8 +157,8 @@ The 'pop3d' daemon implements the Post Office Protocol Version 3 server.
 %package devel
 Summary:        Development files for GNU Mailutils
 Group:          Development/Libraries/C and C++
-Requires:       libmailutils%{somajor} == %{version}
-Requires:       mailutils == %{version}
+Requires:       libmailutils%{somajor} = %{version}
+Requires:       mailutils = %{version}
 
 %description devel
 This package includes libraries and header files for building tools to
@@ -174,6 +178,7 @@ implementations: UNIX mailbox, Maildir, MH, POP3, IMAP4, even SMTP.
 %setup -q
 %patch0
 %patch2
+%patch4 -p1
 set -- %(rpm -q --queryformat '%%{VERSION}' guile-devel | sed -r 's@\.@ @g')
 (cat > guile.list)<<-EOF
 	%dir %{_datadir}/guile/site/$1.$2/
@@ -188,9 +193,9 @@ else
  echo Using guile $1.$2.$3
  mv libmu_scm libmu_scm-guile-2.2
  mv include/mailutils/guile.h include/mailutils/guile-2.2.h
- tar xfJ %{S:1}
- autoreconf -fiv
+ tar xfJ %{SOURCE1}
 fi
+autoreconf -fiv
 #
 # Avoid build require for emacs as emacs does
 # build require one the sub packages herein!
@@ -205,7 +210,7 @@ mkdir bin
 	        case "$arg" in
 	        *.elc)
 	            > "$arg"
-	            ;;    
+	            ;;
 	        *)
 	        esac
 	    done
@@ -255,7 +260,8 @@ export PATH CC CXX CFLAGS CXXFLAGS
     --with-lispdir=%{_datadir}/emacs/site-lisp \
     --with-log-facility=LOG_MAIL    \
     --with-kyotocabinet		\
-    CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
+    CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" \
+    DEFAULT_CUPS_CONFDIR=%{_datarootdir}/cups/mime
 
 make %{?_smp_mflags}
 
@@ -329,7 +335,7 @@ ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternati
 
 %fdupes -s %{buildroot}%{_libexecdir}/python*/site-packages/mailutils/
 
-%find_lang %name
+%find_lang %{name}
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/mailutils.info.gz
@@ -359,12 +365,11 @@ fi
 %verify_permissions %{_sbindir}/maidag
 %endif
 
-%files  -f %name.lang -f guile.list
-%defattr(-,root,root)
+%files -f %{name}.lang -f guile.list
 %license COPYING COPYING.LESSER
 %doc ChangeLog README NEWS AUTHORS THANKS
-%doc %{_infodir}/mailutils.info*.gz
-%doc %{_mandir}/man1/*.1%{?ext_man}
+%{_infodir}/mailutils.info*.gz
+%{_mandir}/man1/*.1%{?ext_man}
 %if %{with set_user_identity}
 %config %{_sysconfdir}/permissions.d/mailutils*
 %endif
@@ -401,8 +406,8 @@ fi
 %{_libdir}/mailutils/*.so
 %dir %{_libdir}/python*/site-packages/mailutils/
 %{_libdir}/python*/site-packages/mailutils/c_api.so
+
 %files mh
-%defattr(-,root,root)
 %dir %{_bindir}/mu-mh/
 %{_bindir}/mu-mh/*
 %{_datadir}/emacs/site-lisp/mailutils-mh.el
@@ -412,29 +417,24 @@ fi
 
 %if %{with set_user_identity}
 %files delivery
-%defattr(-,root,root)
 %{_sbindir}/lmtpd
 %attr(04755,root,root) %verify(not mode) %{_sbindir}/mda
 %{_bindir}/putmail
 %endif
 
 %files notify
-%defattr(-,root,root)
 %{_sbindir}/comsatd
-%doc %{_mandir}/man8/comsatd.8%{?ext_man}
+%{_mandir}/man8/comsatd.8%{?ext_man}
 
 %files imap4d
-%defattr(-,root,root)
 %{_sbindir}/imap4d
-%doc %{_mandir}/man8/imap4d.8%{?ext_man}
+%{_mandir}/man8/imap4d.8%{?ext_man}
 
 %files pop3d
-%defattr(-,root,root)
 %{_sbindir}/pop3d
-%doc %{_mandir}/man8/pop3d.8%{?ext_man}
+%{_mandir}/man8/pop3d.8%{?ext_man}
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %dir %{_includedir}/mailutils/
 %{_includedir}/mailutils/*.h
@@ -443,7 +443,6 @@ fi
 %{_datadir}/aclocal/mailutils.m4
 
 %files -n libmailutils%{somajor}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %changelog

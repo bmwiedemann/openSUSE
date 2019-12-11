@@ -111,4 +111,16 @@
     ** New message type specification &quot;:s&quot;</comment>
     <requestid>747751</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>27511b21b77276defc35c230c5181d78</srcmd5>
+    <version>3.8</version>
+    <time>1576062084</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct location of mime.types used by cups (boo#1158532)
+
+- Add python38-compat.patch making it possible to build the
+  package with Python 3.8.
+  http://savannah.gnu.org/bugs/index.php?57318</comment>
+    <requestid>754378</requestid>
+  </revision>
 </revisionlist>

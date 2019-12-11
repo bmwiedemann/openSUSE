@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  5 13:05:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Correct location of mime.types used by cups (boo#1158532)
+
+-------------------------------------------------------------------
+Wed Nov 27 20:36:16 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add python38-compat.patch making it possible to build the
+  package with Python 3.8.
+  http://savannah.gnu.org/bugs/index.php?57318
+
+-------------------------------------------------------------------
 Tue Nov 12 08:34:36 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to mailutils 3.8
