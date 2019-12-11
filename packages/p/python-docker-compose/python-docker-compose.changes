@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 11 08:37:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.25.0:
+  * Various minor fixes
+- Remove no longer needed patch fix-requirements.patch
+
+-------------------------------------------------------------------
 Fri Aug  9 15:42:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.24.1

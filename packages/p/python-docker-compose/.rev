@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>722024</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c618c8b3e300288a28353cf7c97d7b2c</srcmd5>
+    <version>1.25.0</version>
+    <time>1576062888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.25.0:
+  * Various minor fixes
+- Remove no longer needed patch fix-requirements.patch</comment>
+    <requestid>755751</requestid>
+  </revision>
 </revisionlist>
