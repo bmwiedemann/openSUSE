@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Dec  5 10:29:18 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.3.0:
+  * Message display toolbar action WebExtension API
+  * Navigation buttons are now available in content tabs, for example
+    those opened via an add-on search
+  * other bugfixes
+  MFSA 2019-38
+  * CVE-2019-17008 (bmo#1546331)
+    Use-after-free in worker destruction
+  * CVE-2019-13722 (bmo#1580156)
+    Stack corruption due to incorrect number of arguments in WebRTC code
+  * CVE-2019-17010 (bmo#1581084)
+    Use-after-free when performing device orientation checks
+  * CVE-2019-17005 (bmo#1584170)
+    Buffer overflow in plain text serializer
+  * CVE-2019-17011 (bmo#1591334)
+    Use-after-free when retrieving a document in antitracking
+  * CVE-2019-17012 (bmo#1449736, bmo#1533957, bmo#1560667, bmo#1567209,
+    bmo#1580288, bmo#1585760, bmo#1592502)
+    Memory safety bugs fixed in Firefox 71 and Firefox ESR 68.3
+  * Various updates to improve performance and stability
+- updated create-tar.sh to cover buildid and origin repo information
+- changed locale building procedure
+  * removed obsolete compare-locales.tar.xz and
+    thunderbird-broken-locales-build.patch
+- add mozilla-bmo849632.patch to fix color issues on big endian
+
+-------------------------------------------------------------------
 Sat Nov  9 20:13:17 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 68.2.2:

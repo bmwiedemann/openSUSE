@@ -14,7 +14,7 @@ VERSION_SUFFIX="esr"
 RELEASE_TAG="" # Needs only to be set if no tar-ball can be downloaded
 PREV_VERSION="60.6.3" # Prev. version only needed for locales (leave empty to force l10n-generation)
 PREV_VERSION_SUFFIX="esr"
-#SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
+#SKIP_LOCALES="" # Uncomment to skip l10n-generation
 EOF
 
 exit 1
@@ -25,7 +25,8 @@ if [ $# -ne 1 ]; then
 fi
 
 # Sourcing the given tar_stamps-file to have the variables available
-source "$1" || print_usage_and_exit
+TAR_STAMP="$1"
+source "$TAR_STAMP" || print_usage_and_exit
 
 # Internal variables
 BRANCH="releases/mozilla-$CHANNEL"
@@ -37,11 +38,18 @@ fi
 
 SOURCE_TARBALL="$PRODUCT-$VERSION$VERSION_SUFFIX.source.tar.xz"
 FTP_URL="https://ftp.mozilla.org/pub/$PRODUCT/releases/$VERSION$VERSION_SUFFIX/source"
+FTP_CANDIDATES_BASE_URL="https://ftp.mozilla.org/pub/$PRODUCT/candidates"
 # Make first letter of PRODCUT upper case
 PRODUCT_CAP="${PRODUCT^}"
 LOCALES_URL="https://product-details.mozilla.org/1.0/l10n/$PRODUCT_CAP"
+PRODUCT_URL="https://product-details.mozilla.org/1.0/$PRODUCT.json"
 # Exit script on CTRL+C
 trap "exit" INT
+
+function get_ftp_candidates_url() {
+  VERSION_WITH_SUFFIX="$1"
+  echo "$FTP_CANDIDATES_BASE_URL/$VERSION_WITH_SUFFIX-candidates"
+}
 
 function check_tarball_source () {
   TARBALL=$1
@@ -73,25 +81,63 @@ function check_for_binary() {
   fi
 }
 
-function locales_get() {
-  TMP_VERSION="$1"
-  URL_TO_CHECK="${LOCALES_URL}-${TMP_VERSION}"
+function get_source_stamp() {
+  BUILD_ID="$1"
+  FTP_CANDIDATES_BASE_URL=$(get_ftp_candidates_url $VERSION$VERSION_SUFFIX)
+  FTP_CANDIDATES_JSON_SUFFIX="${BUILD_ID}/linux-x86_64/en-US/$PRODUCT-$VERSION$VERSION_SUFFIX.json"
+  BUILD_JSON=$(curl --silent --fail "$FTP_CANDIDATES_BASE_URL/$FTP_CANDIDATES_JSON_SUFFIX") || return 1;
+  REV=$(echo "$BUILD_JSON" | jq .moz_source_stamp)
+  SOURCE_REPO=$(echo "$BUILD_JSON" | jq .moz_source_repo)
+  TIMESTAMP=$(echo "$BUILD_JSON" | jq .buildid)
+  echo "Extending $TAR_STAMP with:"
+  echo "RELEASE_REPO=${SOURCE_REPO}"
+  echo "RELEASE_TAG=${REV}"
+  echo "RELEASE_TIMESTAMP=${TIMESTAMP}"
+  # We "remove and add" instead of "replace" in case the entries are not there yet
+  # Removing the old RELEASE_-tags
+  sed -i "/RELEASE_\(TAG\|REPO\|TIMESTAMP\)=.*/d" "$TAR_STAMP"
+  # Appending the new 
+  echo "RELEASE_REPO=$SOURCE_REPO" >> "$TAR_STAMP"
+  echo "RELEASE_TAG=$REV" >> "$TAR_STAMP"
+  echo "RELEASE_TIMESTAMP=$TIMESTAMP" >> "$TAR_STAMP"
+}
 
+function get_build_number() {
   LAST_FOUND=""
-  # Unfortunately, locales-files are not associated to releases, but to builds.
-  # And since we don't know which build was the final build, we go from 9 downwards
-  # try to find the latest one that exists (assuming there are no more than 9 builds).
-  # Error only if not even the first one exists
-  for BUILD_ID in $(seq 9 -1 0); do
-    FINAL_URL="${URL_TO_CHECK}-build${BUILD_ID}.json"
-    if wget --quiet --spider "$FINAL_URL"; then
-      LAST_FOUND="$FINAL_URL"
-      break
-    fi
-  done
+  VERSION_WITH_SUFFIX="$1"
+
+  BUILD_ID=$(curl --silent "$PRODUCT_URL" | jq -e '.["releases"] | .["'$PRODUCT-$VERSION_WITH_SUFFIX'"] | .["build_number"]')
+
+  # Slow fall-back
+  if [ $? -ne 0 ]; then
+      echo "Build number not found in product URL, falling back to slow FTP-parsing." 1>&2
+      FTP_CANDIDATES_BASE_URL=$(get_ftp_candidates_url $VERSION_WITH_SUFFIX)
+      # Unfortunately, locales-files are not associated to releases, but to builds.
+      # And since we don't know which build was the final build, we grep them all from
+      # the candidates-page, sort them and take the last one which should be the oldest
+      # Error only if not even the first one exists
+      LAST_FOUND=$(curl --silent --fail "$FTP_CANDIDATES_BASE_URL/" | grep -o "build[0-9]*/" | sort | uniq | tail -n 1 | cut -d "/" -f 1)
+  else
+      LAST_FOUND="build$BUILD_ID"
+  fi
 
   if [ "$LAST_FOUND" != "" ]; then
     echo "$LAST_FOUND"
+    return 0
+  else
+    echo "Error: Could not find build-number for Firefox $VERSION_WITH_SUFFIX !"  1>&2
+    return 1
+  fi
+}
+
+
+function locales_get() {
+  TMP_VERSION="$1"
+  BUILD_ID="$2"
+  URL_TO_CHECK="${LOCALES_URL}-${TMP_VERSION}"
+  FINAL_URL="${URL_TO_CHECK}-${BUILD_ID}.json"
+  if wget --quiet --spider "$FINAL_URL"; then
+    echo "$FINAL_URL"
     return 0
   else
     echo "Error: Could not find locales-file (json) for Firefox $TMP_VERSION !"  1>&2
@@ -107,9 +153,11 @@ function locales_parse() {
 }
 
 function locales_unchanged() {
+  BUILD_ID="$1"
+  PREV_BUILD_ID=$(get_build_number "$PREV_VERSION$PREV_VERSION_SUFFIX")
   # If no json-file for one of the versions can be found, we say "they changed"
-  prev_url=$(locales_get "$PREV_VERSION$PREV_VERSION_SUFFIX") || return 1
-  curr_url=$(locales_get "$VERSION$VERSION_SUFFIX")      || return 1
+  prev_url=$(locales_get "$PREV_VERSION$PREV_VERSION_SUFFIX" "$PREV_BUILD_ID") || return 1
+  curr_url=$(locales_get "$VERSION$VERSION_SUFFIX" "$BUILD_ID")           || return 1
 
   prev_content=$(locales_parse "$prev_url") || exit 1
   curr_content=$(locales_parse "$curr_url") || exit 1
@@ -129,11 +177,14 @@ if (($? != 127)); then
   compression='-Ipixz'
 fi
 
+# Get ID 
+BUILD_ID=$(get_build_number "$VERSION$VERSION_SUFFIX")
+
 if [ -z ${SKIP_LOCALES+x} ]; then
   # TODO: Thunderbird has usually "default" as locale entry. 
   # There we probably need to double-check Firefox-locals
   # For now, just download every time for Thunderbird
-  if [ "$PRODUCT" = "firefox" ] && [ "$PREV_VERSION" != "" ] && locales_unchanged; then
+  if [ "$PRODUCT" = "firefox" ] && [ "$PREV_VERSION" != "" ] && locales_unchanged "$BUILD_ID"; then
     printf "%-40s: Did not change. Skipping.\n" "locales"
     LOCALES_CHANGED=0
   else
@@ -167,6 +218,7 @@ if [ -e $SOURCE_TARBALL ]; then
     echo "extract locale changesets"
     tar -xf $SOURCE_TARBALL $LOCALE_FILE
   fi
+  get_source_stamp "$BUILD_ID"
 else
   # We are working on a version that is not yet published on the mozilla mirror
   # so we have to actually check out the repo
@@ -208,10 +260,9 @@ else
   hg update --check $FF_RELEASE_TAG
   [ "$FF_RELEASE_TAG" == "default" ] || hg update -r $FF_RELEASE_TAG
   # get repo and source stamp
-  echo -n "REV=" > ../source-stamp.txt
-  hg -R . parent --template="{node|short}\n" >> ../source-stamp.txt
-  echo -n "REPO=" >> ../source-stamp.txt
-  hg showconfig paths.default 2>/dev/null | head -n1 | sed -e "s/^ssh:/http:/" >> ../source-stamp.txt
+  REV=$(hg -R . parent --template="{node|short}\n")
+  SOURCE_REPO=$(hg showconfig paths.default 2>/dev/null | head -n1 | sed -e "s/^ssh:/http:/")
+  TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
   if [ "$PRODUCT" = "thunderbird" ]; then
     pushd comm || exit 1
@@ -220,6 +271,19 @@ else
     rm -rf thunderbird-${VERSION}/{,comm/}other-licenses/7zstub
   fi
   popd || exit 1
+
+  echo "Extending $TAR_STAMP with:"
+  echo "RELEASE_REPO=${SOURCE_REPO}"
+  echo "RELEASE_TAG=${REV}"
+  echo "RELEASE_TIMESTAMP=${TIMESTAMP}"
+
+  # We "remove and add" instead of "replace" in case the entries are not there yet
+  # Removing the old RELEASE_-tags
+  sed -i "/RELEASE_\(TAG\|REPO\|TIMESTAMP\)=.*/d" "$TAR_STAMP"
+  # Appending the new 
+  echo "RELEASE_REPO=$SOURCE_REPO" >> "$TAR_STAMP"
+  echo "RELEASE_TAG=$REV" >> "$TAR_STAMP"
+  echo "RELEASE_TIMESTAMP=$TIMESTAMP" >> "$TAR_STAMP"
 
   echo "creating archive..."
   tar $compression -cf $PRODUCT-$VERSION$VERSION_SUFFIX.source.tar.xz --exclude=.hgtags --exclude=.hgignore --exclude=.hg --exclude=CVS $PRODUCT-$VERSION
@@ -267,15 +331,3 @@ elif [ -f "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" ]; then
   echo "Moving l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz to l10n-$VERSION$VERSION_SUFFIX.tar.xz"
   mv "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" "l10n-$VERSION$VERSION_SUFFIX.tar.xz"
 fi
-
-# compare-locales
-echo "creating compare-locales"
-if [ -d compare-locales/.hg ]; then
-  pushd compare-locales || exit 1
-  hg pull
-  popd || exit 1
-else
-  hg clone http://hg.mozilla.org/build/compare-locales
-fi
-tar $compression -cf compare-locales.tar.xz --exclude=.hgtags --exclude=.hgignore --exclude=.hg compare-locales
-

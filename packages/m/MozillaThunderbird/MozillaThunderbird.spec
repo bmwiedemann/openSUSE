@@ -1,7 +1,7 @@
 #
 # spec file for package MozillaThunderbird
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #               2006-2019 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,11 +26,10 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.2.2
-%define orig_version    68.2.2
+%define mainver         %major.3.0
+%define orig_version    68.3.0
 %define orig_suffix     %{nil}
 %define update_channel  release
-%define releasedate     20191105113228
 %define source_prefix   thunderbird-%{mainver}
 
 # always build with GCC as SUSE Security Team requires that
@@ -135,7 +134,7 @@ Provides:       mozilla-kde4-version = %{kde_helper_version}
 Summary:        An integrated email, news feeds, chat, and newsgroups client
 License:        MPL-2.0
 Group:          Productivity/Networking/Email/Clients
-Url:            https://www.thunderbird.net/
+URL:            https://www.thunderbird.net/
 %if !%{with only_print_mozconfig}
 Source:         http://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz
 Source1:        thunderbird.desktop
@@ -145,8 +144,7 @@ Source4:        tar_stamps
 Source6:        suse-default-prefs.js
 Source7:        l10n-%{version}.tar.xz
 Source9:        thunderbird.appdata.xml
-Source10:       compare-locales.tar.xz
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/master/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/35ade35/create-tar.sh
 Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}/KEY#/mozilla.keyring
 # Gecko/Toolkit
@@ -165,6 +163,7 @@ Patch12:        mozilla-reduce-rust-debuginfo.patch
 Patch13:        mozilla-ppc-altivec_static_inline.patch
 Patch14:        mozilla-bmo1005535.patch
 Patch15:        mozilla-bmo1568145.patch
+Patch16:        mozilla-bmo849632.patch
 Patch17:        mozilla-bmo1504834-part1.patch
 Patch18:        mozilla-bmo1504834-part2.patch
 Patch19:        mozilla-bmo1504834-part3.patch
@@ -173,7 +172,6 @@ Patch21:        mozilla-bmo1554971.patch
 Patch22:        mozilla-nestegg-big-endian.patch
 Patch24:        mozilla-fix-top-level-asm.patch
 Patch25:        mozilla-bmo1504834-part4.patch
-Patch100:       thunderbird-broken-locales-build.patch
 %endif # only_print_mozconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         coreutils fileutils textutils /bin/sh
@@ -231,6 +229,7 @@ symbols meant for upload to Mozilla's crash collector database.
 %if !%{with only_print_mozconfig}
 %prep
 %if %localize
+
 # If generated incorrectly, the tarball will be ~270B in
 # size, so 1MB seems like good enough limit to check.
 MINSIZE=1048576
@@ -238,7 +237,7 @@ if (( $(stat -Lc%s "%{SOURCE7}") < MINSIZE)); then
     echo "Translations tarball %{SOURCE7} not generated properly."
     exit 1
 fi
-%setup -q -n %{source_prefix} -b 7 -b 10
+%setup -q -n %{source_prefix} -b 7
 %else
 %setup -q -n %{source_prefix}
 %endif
@@ -261,6 +260,7 @@ fi
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
@@ -269,8 +269,6 @@ fi
 %patch22 -p1
 %patch24 -p1
 %patch25 -p1
-# Thunderbird
-%patch100 -p1
 %endif # only_print_mozconfig
 
 %build
@@ -291,8 +289,10 @@ fi
 %endif
 %endif # only_print_mozconfig
 
+source %{SOURCE4}
+
 export SUSE_ASNEEDED=0
-export MOZ_BUILD_DATE=%{releasedate}
+export MOZ_BUILD_DATE=$RELEASE_TIMESTAMP
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
@@ -394,9 +394,6 @@ ac_add_options --with-arch=armv6
 ac_add_options --with-arch=armv7-a
 %endif
 %endif
-%ifarch aarch64 %arm s390x
-ac_add_options --disable-webrtc
-%endif
 # mitigation/workaround for bmo#1512162
 %ifarch s390x
 ac_add_options --enable-optimize="-O1"
@@ -424,14 +421,7 @@ ls -l config/external/icu/data
 rm -f config/external/icu/data/icudt*l.dat
 %endif
 ./mach build
-%endif # only_print_mozconfig
 
-%install
-cd $RPM_BUILD_DIR/obj
-make -C comm/mail/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
-# copy tree into RPM_BUILD_ROOT
-mkdir -p %{buildroot}%{progdir}
-cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
 # build additional locales
 %if %localize
 mkdir -p %{buildroot}%{progdir}/extensions/
@@ -439,14 +429,8 @@ truncate -s 0 %{_tmppath}/translations.{common,other}
 sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/mail/locales/shipped-locales \
     | xargs -n 1 -I {} /bin/sh -c '
         locale=$1
-        pushd $RPM_BUILD_DIR/compare-locales
-        PYTHONPATH=lib \
-            scripts/compare-locales -m ../l10n-merged/$locale \
-          ../%{source_prefix}/comm/mail/locales/l10n.ini ../l10n $locale
-        popd
-        LOCALE_MERGEDIR=$RPM_BUILD_DIR/l10n-merged/$locale \
-            make -C comm/mail/locales langpack-$locale
-        cp -rL dist/xpi-stage/locale-$locale \
+        ./mach build langpack-$locale
+        cp -rL ../obj/dist/xpi-stage/locale-$locale \
            %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org
         # remove prefs and profile defaults from langpack
         rm -rf %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org/defaults
@@ -459,6 +443,17 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
         echo %{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org \
           >> %{_tmppath}/translations.$_l10ntarget
 ' -- {}
+%endif
+%endif # only_print_mozconfig
+
+%install
+cd $RPM_BUILD_DIR/obj
+make -C comm/mail/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
+# copy tree into RPM_BUILD_ROOT
+mkdir -p %{buildroot}%{progdir}
+cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
+
+%if %localize
 # repack the lightning xpi with all available locales (boo#939153) (lp#545778)
 _extid="{e2fda1a4-762b-4020-b5ad-a41df1933103}"
 rm -rf _lightning

@@ -1,9 +1,11 @@
 PRODUCT="thunderbird"
 CHANNEL="esr68"
-VERSION="68.2.2"
+VERSION="68.3.0"
 VERSION_SUFFIX=""
-RELEASE_TAG="4297fc81fadcf15a10dc8f3835af3996ae991aa0"
 PREV_VERSION="68.2.1"
 PREV_VERSION_SUFFIX=""
 #SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
 
+RELEASE_REPO="https://hg.mozilla.org/releases/comm-esr68"
+RELEASE_TAG="228eab07a730c48763e1cd0ccff9491f66e4580e"
+RELEASE_TIMESTAMP="20191129091924"
