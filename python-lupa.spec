@@ -1,7 +1,7 @@
 #
 # spec file for package python-lupa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,9 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  lua-devel
-BuildRequires:  lua51-luajit-devel
+BuildRequires:  luajit-devel
 BuildRequires:  python-rpm-macros
-Recommends:     lua51-luajit
+Recommends:     luajit
 Suggests:       lua
 %python_subpackages
 
