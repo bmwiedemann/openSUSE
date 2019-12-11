@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 29 18:30:43 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 2.2.9
+  * Other changes:
+    - examples: Drop executable bits from elements.c
+      #349  Windows: Change the name of the Windows DLLs from expat*.dll
+            to libexpat*.dll once more (regression from 2.2.8, first
+            fixed in 1.95.3, issue #61 on SourceForge today,
+            was issue #432456 back then); needs a fix due
+            case-insensitive file systems on Windows and the fact that
+            Perl's XML::Parser::Expat compiles into Expat.dll.
+      #347  Windows: Only define _CRT_RAND_S if not defined
+            Version info bumped from 7:10:6 to 7:11:6
+
+-------------------------------------------------------------------
 Mon Sep 16 08:21:52 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Version update to 2.2.8

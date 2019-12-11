@@ -1,7 +1,7 @@
 #
 # spec file for package expat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global unversion 2_2_8
+%global unversion 2_2_9
 Name:           expat
-Version:        2.2.8
+Version:        2.2.9
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
