@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 11 08:26:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not pull in hardcoded dependencies:
+  * no-hardcoded-dep.patch
+
+-------------------------------------------------------------------
 Thu Nov  7 01:54:08 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.44.1:

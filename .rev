@@ -137,4 +137,13 @@
 - Add mock and parameterized to BuildRequires, the test suite requires them.</comment>
     <requestid>746113</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9dd9c78d9003a312c8c3cb08468d72f6</srcmd5>
+    <version>1.44.1</version>
+    <time>1576062872</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not pull in hardcoded dependencies:
+  * no-hardcoded-dep.patch</comment>
+    <requestid>755746</requestid>
+  </revision>
 </revisionlist>
