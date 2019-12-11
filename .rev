@@ -178,4 +178,12 @@
     <comment></comment>
     <requestid>635745</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6b42bc3fcd34f6b89b7fbc16a807a91b</srcmd5>
+    <version>0.24.6</version>
+    <time>1576062550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.24.6 fixes boo#1158296</comment>
+    <requestid>755051</requestid>
+  </revision>
 </revisionlist>
