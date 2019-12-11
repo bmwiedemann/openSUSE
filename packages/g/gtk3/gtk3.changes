@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 27 19:06:58 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.24.13+0:
+  + Fix a11y test output
+  + HighContrast: Add missing color to entry
+  + themes: remove various @extend with compound selectors
+  + Avoid Broadwayd - GtkEntry popup takes 35s after application
+    startup.
+  + Hide Objective-C from outside GdkQuartz.
+
+-------------------------------------------------------------------
 Tue Nov 19 11:00:51 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Add Obsoletes/Provides to baselibs.conf to ensure

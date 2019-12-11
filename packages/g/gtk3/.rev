@@ -1332,4 +1332,12 @@ Still we will be working in upstream with more easily &quot;merge-able&quot; imp
     bgo#791802, boo#1136605, boo#1134062. (forwarded request 751052 from mgorse)</comment>
     <requestid>751357</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>f6090a9b948969e9b104ba5f5bbbba97</srcmd5>
+    <version>3.24.13+0</version>
+    <time>1576062289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754122</requestid>
+  </revision>
 </revisionlist>
