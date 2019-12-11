@@ -51,4 +51,13 @@
     <comment>1</comment>
     <requestid>454444</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>ee624039496e680590df3897c748b71a</srcmd5>
+    <version>4.0.0</version>
+    <time>1576062061</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fix-build-with-GCC10.patch (boo#1158369)
+- Run spec-cleaner</comment>
+    <requestid>754299</requestid>
+  </revision>
 </revisionlist>

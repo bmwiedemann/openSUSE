@@ -1,7 +1,7 @@
 #
 # spec file for package xsd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,25 +20,26 @@ Name:           xsd
 Version:        4.0.0
 Release:        0
 Summary:        W3C XML schema to C++ data binding compiler
+# http://www.codesynthesis.com/products/xsd/license.xhtml
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Development/Languages/C and C++
-# http://www.codesynthesis.com/products/xsd/license.xhtml
-Url:            http://www.codesynthesis.com/products/xsd/
+URL:            https://www.codesynthesis.com/products/xsd/
 Source0:        http://www.codesynthesis.com/download/xsd/4.0/%{name}-%{version}+dep.tar.bz2
 Source99:       xsd-rpmlintrc
 # Rename xsd to xsdcxx
 Patch0:         xsdcxx-rename.patch
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-GCC10.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libxerces-c-devel > 2.8.0
 BuildRequires:  m4
 Requires:       libxerces-c-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version} > 1325
+BuildRequires:  libboost_headers-devel
+%else
+BuildRequires:  boost-devel
+%endif
 
 %description
 CodeSynthesis XSD is an open-source, cross-platform W3C XML Schema to
@@ -58,8 +59,7 @@ Requires:       xsd
 This package contains API documentation for xsd.
 
 %prep
-%setup -q -n %{name}-%{version}+dep
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}+dep
 
 %build
 make verbose=1 CXXFLAGS="%{optflags}" %{?_smp_mflags}
@@ -78,14 +78,13 @@ rm -rf %{buildroot}%{_datadir}/doc/libxsd
 %fdupes -s %{buildroot}%{_datadir}/doc
 
 %files
-%defattr(-,root,root,-)
-%doc README xsd/NEWS xsd/LICENSE xsd/GPLv2 xsd/FLOSSE
+%license xsd/LICENSE
+%doc README xsd/NEWS xsd/GPLv2 xsd/FLOSSE
 %{_bindir}/xsdcxx
 %{_includedir}/xsd/
-%{_mandir}/man1/xsdcxx.1*
+%{_mandir}/man1/xsdcxx.1%{?ext_man}
 
 %files doc
-%defattr(-,root,root,-)
 %doc %{_datadir}/doc/xsdcxx
 
 %changelog
