@@ -1,7 +1,7 @@
 #
 # spec file for package golang
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ Release:        0
 Summary:        Docker Networking
 License:        Apache-2.0
 Group:          Development/Languages/Golang
-Url:            http://github.com/docker/libnetwork
+URL:            http://github.com/docker/libnetwork
 Source0:        %{repo}-git.%{git_short}.tar.xz
 Source1:        %{realname}-rpmlintrc
 BuildRequires:  fdupes
