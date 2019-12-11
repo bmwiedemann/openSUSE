@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Productivity/Networking/LDAP/Servers
-Url:            https://pagure.io/389-ds-base
+URL:            https://pagure.io/389-ds-base
 Source:         389-ds-base-%{version}.tar.bz2
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
@@ -275,7 +275,7 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   --with-systemdgroupname=%{groupname} \
   --with-systemdsystemunitdir="%{_unitdir}" \
   --with-systemdsystemconfdir="%{_sysconfdir}/systemd/system" \
-  --with-tmpfiles-d="%{_tmpfilesdir}" \
+  --with-tmpfiles-d="%{_sysconfdir}/tmpfiles.d" \
   --with-systemdgroupname=dirsrv.target \
 
 export XCFLAGS="$CFLAGS"
