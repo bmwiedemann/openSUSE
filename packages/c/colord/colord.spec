@@ -1,7 +1,7 @@
 #
 # spec file for package colord
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source2:        %{name}.keyring
 # Apparmor profile
 Source3:        usr.lib.colord
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM add-spyderx.patch -- Add SpyderX Support
+Patch1:         add-spyderx.patch
 
 BuildRequires:  argyllcms
 BuildRequires:  docbook5-xsl-stylesheets
@@ -142,6 +144,7 @@ there are no users logged in.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 # Set ~2 GiB limit so that colprof is forced to work in chunks when
@@ -239,6 +242,8 @@ exit 0
 %{_libdir}/colord-plugins/libcolord_sensor_camera.so
 %{_libdir}/colord-plugins/libcolord_sensor_scanner.so
 %{_sbindir}/rc%{name}
+%{_userunitdir}/colord-session.service
+%{_tmpfilesdir}/colord.conf
 
 %files color-profiles
 %{_datadir}/color/
@@ -268,8 +273,6 @@ exit 0
 %{_datadir}/vala/vapi/colord.deps
 %{_datadir}/vala/vapi/colord.vapi
 %{_datadir}/gtk-doc/html/colord/
-%{_userunitdir}/colord-session.service
-%{_tmpfilesdir}/colord.conf
 
 %files lang -f %{name}.lang
 

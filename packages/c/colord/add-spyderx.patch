@@ -1,0 +1,37 @@
+diff --git a/lib/colord/cd-enum.c b/lib/colord/cd-enum.c
+index b1ced1c..00b6e16 100644
+--- a/lib/colord/cd-enum.c
++++ b/lib/colord/cd-enum.c
+@@ -71,6 +71,7 @@ static const CdEnumMatch enum_sensor_kind[] = {
+ 	{CD_SENSOR_KIND_SPYDER3,			"spyder3"},
+ 	{CD_SENSOR_KIND_SPYDER4,			"spyder4"},
+ 	{CD_SENSOR_KIND_SPYDER5,			"spyder5"},
++	{CD_SENSOR_KIND_SPYDERX,                        "spyderX"},
+ 	{CD_SENSOR_KIND_SPYDER,				"spyder"},
+ 	{CD_SENSOR_KIND_SPARK,				"spark"},
+ 	{0, NULL}
+diff --git a/lib/colord/cd-enum.h b/lib/colord/cd-enum.h
+index f311d26..c9d015b 100644
+--- a/lib/colord/cd-enum.h
++++ b/lib/colord/cd-enum.h
+@@ -193,6 +193,7 @@ typedef enum {
+ 	CD_SENSOR_KIND_COLORHUG2,		/* Since: 1.2.2 */
+ 	CD_SENSOR_KIND_SPYDER5,			/* Since: 1.2.11 */
+ 	CD_SENSOR_KIND_SPARK,			/* Since: 1.2.11 */
++	CD_SENSOR_KIND_SPYDERX,                 /* Since: 1.4.5 */
+ 	/*< private >*/
+ 	CD_SENSOR_KIND_LAST
+ } CdSensorKind;
+diff --git a/src/sensors/argyll/cd-sensor-argyll.c b/src/sensors/argyll/cd-sensor-argyll.c
+index ef8456d..21b354b 100644
+--- a/src/sensors/argyll/cd-sensor-argyll.c
++++ b/src/sensors/argyll/cd-sensor-argyll.c
+@@ -334,6 +334,8 @@ cd_sensor_to_argyll_name (CdSensor *sensor)
+ 		return "Datacolor Spyder4";
+ 	case CD_SENSOR_KIND_SPYDER5:
+ 		return "Datacolor Spyder5";
++        case CD_SENSOR_KIND_SPYDERX:
++                return "Datacolor SpyderX";
+ 	case CD_SENSOR_KIND_HUEY:
+ 		return "GretagMacbeth Huey";
+ 	case CD_SENSOR_KIND_COLORHUG:

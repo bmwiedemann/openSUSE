@@ -653,4 +653,14 @@ Note this warning (not new), should we care?
     <comment></comment>
     <requestid>742522</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>12b3568552beba26b341b7a9374ed808</srcmd5>
+    <version>1.4.4</version>
+    <time>1576062286</time>
+    <user>dimstar_suse</user>
+    <comment>- Add add-spyderx.patch for datacolor SpyderX supprot (will be in version 1.4.5)
+- Move colord-session.service and tmpfiles config from libcolord-devel to colord package 
+</comment>
+    <requestid>754062</requestid>
+  </revision>
 </revisionlist>

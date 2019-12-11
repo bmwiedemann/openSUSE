@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:15:30 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Add add-spyderx.patch for datacolor SpyderX supprot (will be in version 1.4.5)
+- Move colord-session.service and tmpfiles config from libcolord-devel to colord package 
+
+-------------------------------------------------------------------
 Wed Oct 23 19:30:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.4:
