@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  5 02:12:43 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Enable the patches for both Leap and SLE (bsc#1158243):
+  + gnome-settings-daemon-notify-idle-resumed.patch
+  + gnome-settings-daemon-bnc873545-hide-warnings.patch
+  + gnome-settings-daemon-sle-configure-timeout-blank.patch
+  + gnome-settings-daemon-more-power-button-actions.patch
+
+-------------------------------------------------------------------
+Fri Nov 29 12:52:13 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 3.34.1+3:
+  * media-keys: Add guard to map_keybinding()
+  * media-keys: Fix crash on key bindings migration
+  * media-keys: Use X11 display for clipboard
+- Fix build on s390x (ie without wacom support)
+
+-------------------------------------------------------------------
 Thu Nov 21 14:38:45 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Update gnome-settings-daemon-notify-idle-resumed.patch with

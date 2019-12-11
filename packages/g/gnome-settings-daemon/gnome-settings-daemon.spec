@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        3.34.1+0
+Version:        3.34.1+3
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -42,16 +42,16 @@ Patch1:         gnome-settings-daemon-initial-keyboard.patch
 Patch2:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-bgo793253.patch bgo#793253 dimstar@opensuse.org -- Fix no-return-in-nonvoid-function
 Patch3:         gnome-settings-daemon-bgo793253.patch
+# PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
+Patch4:         gnome-settings-daemon-notify-idle-resumed.patch
+# PATCH-FIX-OPENSUSE gnome-settings-daemon-bnc873545-hide-warnings.patch bnc#873545 fezhang@suse.com -- hide the warnings when g-s-d cannot find colord running, which is expected on SLES
+Patch5:         gnome-settings-daemon-bnc873545-hide-warnings.patch
+# PATCH-FIX-OPENSUSE gnome-settings-daemon-sle-configure-timeout-blank.patch bnc#869685 bgo#710904 cxiong@suse.com -- monitor off timeout is too short, extends it to 5 min
+Patch6:         gnome-settings-daemon-sle-configure-timeout-blank.patch
+# PATCH-FIX-OPENSUSE gnome-settings-daemon-more-power-button-actions.patch bsc#996342 fezhang@suse.com -- Bring back the "shutdown" and "interactive" power button actions.
+Patch7:         gnome-settings-daemon-more-power-button-actions.patch
 
 ## SLE-only patches start at 1000
-# PATCH-FEATURE-SLE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
-Patch1000:      gnome-settings-daemon-notify-idle-resumed.patch
-# PATCH-FIX-SLE gnome-settings-daemon-bnc873545-hide-warnings.patch bnc#873545 fezhang@suse.com -- hide the warnings when g-s-d cannot find colord running, which is expected on SLES
-Patch1001:      gnome-settings-daemon-bnc873545-hide-warnings.patch
-# PATCH-FIX-SLE gnome-settings-daemon-sle-configure-timeout-blank.patch bnc#869685 bgo#710904 cxiong@suse.com -- monitor off timeout is too short, extends it to 5 min
-Patch1002:      gnome-settings-daemon-sle-configure-timeout-blank.patch
-# PATCH-FIX-SLE gnome-settings-daemon-more-power-button-actions.patch bsc#996342 fezhang@suse.com -- Bring back the "shutdown" and "interactive" power button actions.
-Patch1003:      gnome-settings-daemon-more-power-button-actions.patch
 
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -152,13 +152,12 @@ gnome-patch-translation-prepare po %{name}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-
-# SLE-only patches start at 1000
-%if !0%{?is_opensuse}
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
+# Enable the patches by now for both Leap 15 and SLE 15, meanwhile we should justify the patches upstream.
+%if 0%{?sle_version} >= 150000
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 %endif
 
 %build
@@ -276,13 +275,13 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom-oled-helper
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+%{_userunitdir}/gsd-wacom.service
+%{_userunitdir}/gsd-wacom.target
 %endif
 %{_udevrulesdir}/61-gnome-settings-daemon-rfkill.rules
 %{_userunitdir}/gnome-session-initialized.target.wants/
 %dir %{_userunitdir}/gnome-session-x11-services.target.wants/
 %{_userunitdir}/gnome-session-x11-services.target.wants/gsd-xsettings.target
-%{_userunitdir}/gsd-wacom.service
-%{_userunitdir}/gsd-wacom.target
 
 %files devel
 %doc AUTHORS ChangeLog
