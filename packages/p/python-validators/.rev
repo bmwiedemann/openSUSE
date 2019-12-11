@@ -59,4 +59,14 @@
   * Added new validators ipv4_cidr, ipv6_cidr</comment>
     <requestid>729736</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>21200e454f66a0a33017135571d7cfae</srcmd5>
+    <version>0.14.1</version>
+    <time>1576062622</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Updated domain validator regex to not allow numeric only TLDs
+  * Allow for idna encoded domains</comment>
+    <requestid>754542</requestid>
+  </revision>
 </revisionlist>

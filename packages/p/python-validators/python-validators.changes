@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 23:15:30 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to 0.14.1:
+  * Updated domain validator regex to not allow numeric only TLDs
+  * Allow for idna encoded domains
+
+-------------------------------------------------------------------
 Tue Sep 10 09:25:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.14.0:
