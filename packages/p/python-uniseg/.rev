@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>625604</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5e25a62d37603782b6662af78d49528a</srcmd5>
+    <version>0.7.1</version>
+    <time>1576062853</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in the full python for sqlite module</comment>
+    <requestid>755741</requestid>
+  </revision>
 </revisionlist>
