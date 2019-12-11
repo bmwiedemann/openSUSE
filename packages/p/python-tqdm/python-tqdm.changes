@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  7 17:40:20 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.40.1:
+  * test for floats for total
+
+- changes from version 4.40.0:
+  * officially support float for n and total (#802)
+    + notebook: use FloatProgress <= IntProgress (#471, #456)
+    + allow imprecision (n <= total + epsilon) (#849)
+  * fix unicode bar format arguments (#803 -> #851)
+  * add contrib submodule (#815)
+  * add wrapattr, utils.CallbackIOWrapper, contrib.DummyTqdmFile (#84
+    -> #844)
+  * update tests
+  * update documentation
+  * tidy automatic snap deployments
+  * minor doc update (#854)
+
+-------------------------------------------------------------------
 Sat Nov 30 12:23:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Don't use RPM internal/reserved name %suffix (change to
