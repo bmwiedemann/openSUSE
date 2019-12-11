@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>718269</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc3f9bd080e757fbaf5c4e9947ad36f0</srcmd5>
+    <version>0.18.1</version>
+    <time>1576062900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.1:
+  * Various minor fixes and support for new python
+- Depend on full python interpreter for sqlite module</comment>
+    <requestid>755754</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-injector
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,20 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-injector
-Version:        0.17.0
+Version:        0.18.1
 Release:        0
 Summary:        Python dependency injection framework, inspired by Guice
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/alecthomas/injector
 Source:         https://github.com/alecthomas/injector/archive/%{version}.tar.gz
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
+Requires:       python-typing_extensions >= 3.7.4
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,6 +53,7 @@ API. Providing a Pythonic API trumps faithfulness.
 
 %prep
 %setup -q -n injector-%{version}
+rm pytest.ini
 
 %build
 %python_build
