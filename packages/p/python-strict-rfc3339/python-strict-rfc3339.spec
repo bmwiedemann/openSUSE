@@ -1,7 +1,7 @@
 #
 # spec file for package python-strict-rfc3339
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,14 @@ Release:        0
 Summary:        RFC 3339 functions
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-Url:            http://www.danielrichman.co.uk/libraries/strict-rfc3339.html
-Source:         https://files.pythonhosted.org/packages/source/s/strict-rfc3339/strict-rfc3339-%{version}.tar.gz
+URL:            https://github.com/danielrichman/strict-rfc3339/
+Source:         https://github.com/danielrichman/strict-rfc3339/archive/version-%{version}.tar.gz#/strict-rfc3339-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  timezone
+Requires:       timezone
 BuildArch:      noarch
 
 %python_subpackages
@@ -41,7 +44,7 @@ RFC 3339 functions.
  - Be very strict and follow RFC3339.
 
 %prep
-%setup -q -n strict-rfc3339-%{version}
+%setup -q -n strict-rfc3339-version-%{version}
 
 %build
 %python_build
@@ -50,7 +53,10 @@ RFC 3339 functions.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# there are no tests anywhere
+%check
+export LANG=en_US.UTF-8
+# two 32bit failures https://github.com/danielrichman/strict-rfc3339/issues/10
+%pytest -k 'not test_leap_year and not test_y2038'
 
 %files %{python_files}
 %doc README.md

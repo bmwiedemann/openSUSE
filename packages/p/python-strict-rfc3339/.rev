@@ -15,4 +15,16 @@
     <comment>- Trim bias from descriptions.</comment>
     <requestid>690288</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7526b9cd9b9c09076b667d8ca289b5cb</srcmd5>
+    <version>0.7</version>
+    <time>1576062687</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix source url
+
+- Add missing runtime dependency on timezone
+- Replace dead link with GitHub URL
+- Activate test suite</comment>
+    <requestid>755178</requestid>
+  </revision>
 </revisionlist>
