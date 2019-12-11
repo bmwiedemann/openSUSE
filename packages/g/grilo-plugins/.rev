@@ -371,4 +371,14 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736575</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>d4dbbc80149c2e8ffb531e6407ede02f</srcmd5>
+    <version>0.3.10</version>
+    <time>1576062326</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tracker-fix-crash-if-chromaprint-plugin-not-installed.patch:
+  avoid crash if the chromaprint is disabled on build time
+  (bsc#1158231 glgo#GNOME/grilo-plugins#61). (forwarded request 754663 from mgorse)</comment>
+    <requestid>754976</requestid>
+  </revision>
 </revisionlist>

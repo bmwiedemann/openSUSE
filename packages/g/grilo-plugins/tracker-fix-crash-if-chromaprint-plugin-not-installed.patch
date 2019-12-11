@@ -1,0 +1,35 @@
+From 46d7c0edfbf97ca15c08e5cd1c6d563363843e82 Mon Sep 17 00:00:00 2001
+From: Sam Thursfield <sam@afuera.me.uk>
+Date: Sun, 29 Sep 2019 16:42:29 +0200
+Subject: [PATCH] tracker: Fix crash if chromaprint plugin isn't installed
+
+This is a regression from 7fa5126eace8d9931643f.
+
+See: https://gitlab.gnome.org/GNOME/grilo-plugins/issues/61
+---
+ src/tracker/grl-tracker-utils.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/tracker/grl-tracker-utils.c b/src/tracker/grl-tracker-utils.c
+index 86f0f0c8..406f4efc 100644
+--- a/src/tracker/grl-tracker-utils.c
++++ b/src/tracker/grl-tracker-utils.c
+@@ -325,11 +325,13 @@ grl_tracker_setup_key_mappings (void)
+ 		      "(SELECT tracker:referenceIdentifier(?rg) AS ?rg_id { ?urn nmm:musicAlbum ?album . ?album tracker:hasExternalReference ?rg . ?rg tracker:referenceSource \"https://musicbrainz.org/doc/Release_Group\" })",
+ 		      "audio");
+ 
+-  insert_key_mapping_with_setter (grl_metadata_key_chromaprint,
+-                                  NULL,
+-                                  "(select nfo:hashValue(?h) { ?urn nfo:hasHash ?h . ?h nfo:hashAlgorithm \"chromaprint\" })",
+-                                  "audio",
+-                                  set_string_metadata_keys);
++  if (grl_metadata_key_chromaprint != 0) {
++    insert_key_mapping_with_setter (grl_metadata_key_chromaprint,
++                                    NULL,
++                                    "(select nfo:hashValue(?h) { ?urn nfo:hasHash ?h . ?h nfo:hashAlgorithm \"chromaprint\" })",
++                                    "audio",
++                                    set_string_metadata_keys);
++  };
+ 
+   insert_key_mapping (GRL_METADATA_KEY_FRAMERATE,
+                       "nfo:frameRate",

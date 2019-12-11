@@ -25,6 +25,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM  tracker-fix-crash-if-chromaprint-plugin-not-installed.patch bsc#1158231 glgo#GNOME/grilo-plugins#61 yfjiang@suse.com -- avoid crash if the chromaprint plugin is disabled in build time.
+Patch0:         tracker-fix-crash-if-chromaprint-plugin-not-installed.patch
 
 BuildRequires:  docbook_4
 BuildRequires:  fdupes

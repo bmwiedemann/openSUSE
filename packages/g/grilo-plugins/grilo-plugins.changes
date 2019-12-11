@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  6 04:39:29 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Add tracker-fix-crash-if-chromaprint-plugin-not-installed.patch:
+  avoid crash if the chromaprint is disabled on build time
+  (bsc#1158231 glgo#GNOME/grilo-plugins#61).
+
+-------------------------------------------------------------------
 Sat Sep 14 08:14:05 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.3.10:
