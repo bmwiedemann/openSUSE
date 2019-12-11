@@ -1,7 +1,7 @@
 #
 # spec file for package go1.11
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,7 @@ Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-Url:            http://golang.org
+URL:            http://golang.org
 Source:         http://golang.org/dl/go%{version}.src.tar.gz
 Source1:        go-rpmlintrc
 Source4:        README.SUSE
@@ -101,7 +101,7 @@ Patch5:         tools-packaging.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
-Patch10:        gcc8-go.patch
+Patch10:        gcc9-go.patch
 Patch101:       gcc9-rsp-clobber.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
@@ -117,7 +117,7 @@ BuildRequires:  gcc6-go
 # SLE15 or Leap 15.x
 BuildRequires:  gcc7-go
 %else
-BuildRequires:  gcc8-go
+BuildRequires:  gcc9-go
 %endif
 %endif
 %else
@@ -167,7 +167,7 @@ Go examples and documentation.
 %package race
 Summary:        Go runtime race detector
 Group:          Development/Languages/Other
-Url:            https://compiler-rt.llvm.org/
+URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
 Supplements:    %{name} = %{version}
 ExclusiveArch:  %{tsan_arch}

@@ -1282,4 +1282,12 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
 - Own the gdbinit.d directory, avoid the build dependency on gdb. (forwarded request 741607 from StefanBruens)</comment>
     <requestid>741610</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>a3557c42a9bbbbf649b614ac903a7242</srcmd5>
+    <version>1.11.13</version>
+    <time>1576061958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753318</requestid>
+  </revision>
 </revisionlist>
