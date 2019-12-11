@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 08:05:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Depend on full python stack for sqlite
+
+-------------------------------------------------------------------
 Wed Apr 10 18:49:46 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.6.0

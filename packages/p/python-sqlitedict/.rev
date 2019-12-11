@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>693000</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f91698320ad19b08afff7650d557d61d</srcmd5>
+    <version>1.6.0</version>
+    <time>1576062835</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on full python stack for sqlite</comment>
+    <requestid>755738</requestid>
+  </revision>
 </revisionlist>
