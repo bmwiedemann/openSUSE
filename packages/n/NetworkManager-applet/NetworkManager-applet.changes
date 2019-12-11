@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 05 13:29:06 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.8.25+20:
+  + appdata:
+    - add release tag
+    - add OARS rating
+  + applet: scale icons for HiDPI displays
+  + libnma: drop it
+  + gitlab: drag in new enough libnma
+  + Updated translations.
+- Switch to git checkout via source service.
+- Drop no longer built sub packages:
+  + libnma0
+  + typelib-1_0-NMA-1_0
+  + libnma-devel
+- Switch to meson build system, add BuildRequires:
+  + pkgconfig(libnma)
+  + pkgconfig(gio-2.0)
+  + pkgconfig(gmodule-export-2.0)
+- Drop no longer needed BuildRequires:
+  + gtk-doc
+  + intltool
+  + pkgconfig(gobject-introspection-1.0)
+  + pkgconfig(gck-1)
+  + pkgconfig(gcr-3)
+- Cleanup spec and rebase patches.
+
+-------------------------------------------------------------------
 Wed Oct  9 16:30:56 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Update translation-update-upstream and find_lang invocations.
