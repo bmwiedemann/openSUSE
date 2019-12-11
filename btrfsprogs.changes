@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  4 00:00:00 CET 2019 - dsterba@suse.cz
+
+- Update to 5.4
+  * support new hash algorithms (kernel 5.5):
+    * mkfs.btrfs and btrfs-convert with --csum, crc32c, xxhash, sha256, blake2
+  * mkfs: support new raid1c3 and raid1c4 block group profiles (kernel 5.5)
+  * check:
+    * --repair delays start with a warning, can be skipped using --force
+    * enhanced detetion of inode types from partial data, more options for
+      repair
+  * receive: fix quiet option
+  * image: speed up chunk loading
+  * fi usage:
+    * sort devices by id
+    * print ratio of used/total per block group type
+  * rescue zero-log: reset the log pointers directly, avoid reading some other
+    potentially damaged structures
+  * new make target install-static to install only static binaries/libraries
+  * other
+    * docs updates
+    * new tests
+    * cleanups and refactoring
+
+-------------------------------------------------------------------
 Tue Nov 12 00:00:00 CET 2019 - dsterba@suse.cz
 
 - Update to 5.3.1:
