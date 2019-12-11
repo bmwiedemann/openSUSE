@@ -1,7 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Vector Editors
-Url:            http://www.inkscape.org/
+URL:            https://inkscape.org/
 #Source:        https://media.inkscape.org/dl/resources/file/%%{name}-%%{version}.tar.bz2
 Source:         %{name}-%{version}.tar.bz2
 
@@ -47,6 +47,8 @@ Patch6:         f5e0ea893f34_extensions_python3_compatibility.patch
 Patch7:         mr_582_extensions_python3_compatibility.patch
 # PATCH-FIX-UPSTREAM inkscape-fix-for-poppler-0.82.patch -- Fix build poppler 0.82
 Patch8:         inkscape-fix-for-poppler-0.82.patch
+# PATCH-FIX-UPSTREAM inkscape-fix-for-poppler-0.83.patch -- Fix build poppler 0.83
+Patch9:         inkscape-fix-for-poppler-0.83.patch
 
 BuildRequires:  gtkspell-devel
 %if 0%{?suse_version} > 1325
