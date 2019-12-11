@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:37:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * [applets/Weather] Activate Apply button when clicking on a table item (kde#414442)
+  * [applets/Weather] Improve station chooser window's default size and margins
+  * [applets/Weather] Fix "no weather station found" message overflowing layout (kde#414441)
+  * [Weather] Make compact representation temperature text match size of clock text
+  * Fix POTD config ComboBox display issue in Lock Screen KCM
+
+-------------------------------------------------------------------
 Tue Nov 12 11:01:08 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.3

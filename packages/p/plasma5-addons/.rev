@@ -720,4 +720,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.17.3</comment>
     <requestid>747856</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>ec97489dced09df1f5fa52411825fd35</srcmd5>
+    <version>5.17.4</version>
+    <time>1576062448</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.4</comment>
+    <requestid>754023</requestid>
+  </revision>
 </revisionlist>
