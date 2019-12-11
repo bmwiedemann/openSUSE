@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec  3 12:28:37 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
+
+- Update to new upstream release 5.4
+  * devlink: increase number of supported options (32 -> 64)
+  * devlink: add trap set and show commands
+  * devlink: add trap group set and show commands
+  * devlink: add reset_dev_on_drv_probe param
+  * devlink: support unknown value for fw_load_policy
+  * devlink: support flash status monitoring
+  * devlink: add reload failed indication
+  * ip: netns: support dump of nsid conversion table
+  * ip: nexthop: support filtering by protocol for flush and list
+  * rdma: driver QP type string
+  * tc: introduce ct action
+  * tc: support 64-bit rate and peakrate
+  * tc: etf: support skip_sock_check
+  * tc: flower: add matching on conntrack info
+  * tc: taprio: support setting flags
+  * tc: taprio: support setting txtime_delay
+  * documentation improvements
+  * json output improvements
+  * drop outdated example scripts and README files
+- drop (patched script dropped)
+  examples-fix-bashisms-in-example-script.patch
+- ss-fix-end-of-line-printing-in-misc-ss.c.patch:
+  fix missing end of line at the end of ss output
+
+-------------------------------------------------------------------
 Wed Sep 25 07:07:32 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
 
 - Update to new upstream release 5.3

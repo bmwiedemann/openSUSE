@@ -17,9 +17,9 @@
 
 
 Name:           iproute2
-Version:        5.3
+Version:        5.4
 Release:        0
-%define rversion 5.3.0
+%define rversion 5.4.0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
@@ -36,7 +36,7 @@ Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
 Patch3:         add-explicit-typecast-to-avoid-gcc-warning.patch
 Patch4:         xfrm-support-displaying-transformations-used-for-Mob.patch
 Patch6:         split-link-and-compile-steps-for-binaries.patch
-Patch7:         examples-fix-bashisms-in-example-script.patch
+Patch7:         ss-fix-end-of-line-printing-in-misc-ss.c.patch
 Patch101:       Revert-tc-ematch-fix-deprecated-yacc-warning.patch
 Patch102:       Revert-emp-fix-warning-on-deprecated-bison-directive.patch
 Patch201:       bpf-data-section-support-poc.patch
@@ -112,8 +112,7 @@ b="%buildroot"
 install -d "$b"/{etc/,sbin/,usr/{bin,sbin,share/man/man{3,8}}}
 install -d "$b"/{/usr/include,%_libdir,/usr/share}
 %make_install \
-  MODDESTDIR="$b/%_libdir/tc" \
-  DOCDIR="%_docdir/%name"
+  MODDESTDIR="$b/%_libdir/tc"
 
 # We have m_xt
 rm -f "$b/%_libdir/tc/m_ipt.so"
@@ -130,7 +129,8 @@ for BIN in lnstat nstat routef routel ss; do
 	ln -sf "%_sbindir/$BIN" "$b/%_bindir/$BIN"
 done
 rm "$b/%_sbindir/ifcfg"
-cp -an README* "$b/%_docdir/%name/"
+mkdir -p "$b/%_docdir/%name"
+cp -an README* examples/bpf "$b/%_docdir/%name/"
 %fdupes %buildroot/%_prefix
 
 %files

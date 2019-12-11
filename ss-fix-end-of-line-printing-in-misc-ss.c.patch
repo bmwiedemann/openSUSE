@@ -1,0 +1,42 @@
+From: Brian Vazquez <brianvv@google.com>
+Subject: ss: fix end-of-line printing in misc/ss.c
+Patch-mainline: Submitted - 20191126 - http://lkml.kernel.org/r/20191127052118.163594-1-brianvv@google.com
+References: none
+
+Before commit 5883c6eba517, function field_is_last() was incorrectly
+reporting which column was the last because it was missing COL_PROC
+and by purely coincidence it was correctly printing the end-of-line and
+moving to the first column since the very last field was empty, and
+end-of-line was added for the last non-empty token since it was seen as
+the last field.
+
+This commits correcrly prints the end-of-line for the last entrien in
+the ss command.
+
+Tested:
+diff <(./ss.old -nltp) <(misc/ss -nltp)
+38c38
+< LISTEN    0   128     [::1]:35417   [::]:*   users:(("foo",pid=65254,fd=116))
+\ No newline at end of file
+
+Cc: Hritik Vijay <hritikxx8@gmail.com>
+Fixes: 5883c6eba517 ("ss: show header for --processes/-p")
+Signed-off-by: Brian Vazquez <brianvv@google.com>
+---
+ misc/ss.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- a/misc/ss.c
++++ b/misc/ss.c
+@@ -1289,6 +1289,11 @@ static void render(void)
+ 
+ 		token = buf_token_next(token);
+ 	}
++	/* Deal with final end-of-line when the last non-empty field printed
++	 * is not the last field.
++	 */
++	if (line_started)
++		printf("\n");
+ 
+ 	buf_free_all();
+ 	current_field = columns;
