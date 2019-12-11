@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 29 13:11:47 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Refresh SLE patch gdm-s390-not-require-g-s-d_wacom.patch.
+
+-------------------------------------------------------------------
+Thu Nov 28 08:17:48 UTC 2019 - QK ZHU <qkzhu@suse.com>
+
+- Add --enable-systemd-journal for both SLE and Tumbleweed
+  (jsc#SLE-10383).
+
+-------------------------------------------------------------------
 Tue Nov 19 08:52:53 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
 
 - Drop gdm-disable-wayland-for-proprietary-nvidia-machines.patch:

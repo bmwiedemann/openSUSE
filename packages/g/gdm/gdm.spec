@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -240,11 +240,7 @@ autoreconf -fiv
         --enable-gdm-xsession \
         --with-plymouth \
         --enable-wayland-support \
-%if 0%{?is_opensuse}
         --enable-systemd-journal \
-%else
-        --disable-systemd-journal \
-%endif
 %if %{enable_split_authentication}
         --enable-split-authentication \
 %else

@@ -1663,4 +1663,12 @@
     <comment>Complement a missing of legacy Changelog entry that was in SLE. (forwarded request 751169 from yfjiang)</comment>
     <requestid>751360</requestid>
   </revision>
+  <revision rev="222" vrev="5">
+    <srcmd5>f8bdc0c8b807b1ee9905e6e641c647ac</srcmd5>
+    <version>3.34.1</version>
+    <time>1576062316</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 754131 from iznogood)</comment>
+    <requestid>754971</requestid>
+  </revision>
 </revisionlist>
