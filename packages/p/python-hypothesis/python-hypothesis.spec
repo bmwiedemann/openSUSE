@@ -28,7 +28,7 @@
 %endif
 %bcond_without python2
 Name:           python-hypothesis%{psuffix}
-Version:        4.46.1
+Version:        4.50.8
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0

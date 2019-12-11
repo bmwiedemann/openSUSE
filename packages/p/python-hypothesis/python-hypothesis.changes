@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Sat Dec  7 17:43:19 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.50.8:
+  * This patch makes certain uses of Bundles more efficient in
+    stateful testing (issue #2078).
+
+- changes from version 4.50.7:
+  * This release refactors some of Hypothesis’s internal interfaces
+    for representing data generation. It should have no user visible
+    effect.
+
+- changes from version 4.50.6:
+  * This patch removes some old debugging helpers in our Numpy extra
+    which have not been needed since issue #1963 and issue #2245.
+
+- changes from version 4.50.5:
+  * This patch fixes issue #2229, where Numpy arrays of unsized
+    strings would only ever have strings of size one due to an
+    interaction between our generation logic and Numpy’s allocation
+    strategy.
+
+- changes from version 4.50.4:
+  * This patch fixes a rare internal error in strategies for a list of
+    unique items sampled from a short non-unique sequence (issue
+    #2247). The bug was discovered via hypothesis-jsonschema.
+
+- changes from version 4.50.3:
+  * This release improves the error message when @settings tries to
+    inherit settings from a parent argument that isn’t a settings
+    instance.
+
+- changes from version 4.50.2:
+  * This release improves Hypothesis’s “Falsifying example” output, by
+    breaking output across multiple lines where necessary, and by
+    removing irrelevant information from the stateful testing output.
+
+- changes from version 4.50.1:
+  * This patch adds flake8-comprehensions to our linter suite. There
+    is no user-visible change - expect perhaps via some strange
+    microbenchmarks - but certain parts of the code now have a clear
+    and more consistent style.
+
+- changes from version 4.50.0:
+  * This release fixes some cases where we might previously have
+    failed to run the validation logic for some strategies. As a
+    result tests which would previously have been silently testing
+    significantly less than they should may now start to raise
+    InvalidArgument now that these errors are caught.
+
+- changes from version 4.49.0:
+  * This release significantly improves the data distribution in rule
+    based stateful testing <stateful_testing>, by using a technique
+    called Swarm Testing (Groce, Alex, et al. “Swarm testing.”
+    Proceedings of the 2012 International Symposium on Software
+    Testing and Analysis. ACM, 2012.) to select which rules are run in
+    any given test case. This should allow it to find many issues that
+    it would previously have missed.
+  * This change is likely to be especially beneficial for stateful
+    tests with large numbers of rules.
+
+- changes from version 4.48.1:
+  * This release adds some heuristics to test case generation that try
+    to ensure that test cases generated early on will be relatively
+    small.
+  * This fixes a bug introduced in Hypothesis 4.42.0 which would cause
+    occasional too_slow failures on some tests.
+
+- changes from version 4.48.0:
+  * This release revokes the deprecation of find, as we’ve now rebuilt
+    it on top of @given, which means it has minimal maintenance burden
+    and we’re happy to support it.
+
+- changes from version 4.47.5:
+  * This release rebuilds find() on top of @given in order to have
+    more code in common. It should have minimal user visible effect.
+
+- changes from version 4.47.4:
+  * This patch removes an internal compatibility shim that we no
+    longer need.
+
+- changes from version 4.47.3:
+  * This patch fixes several typos in our docstrings and comments,
+    with no change in behaviour. Thanks to Dmitry Dygalo for
+    identifying and fixing them!
+
+- changes from version 4.47.2:
+  * This release fixes an internal issue where Hypothesis would
+    sometimes generate test cases that were above its intended maximum
+    size. This would only have happened rarely and probably would not
+    have caused major problems when it did.
+  * Users of the new targeted property-based testing might see minor
+    impact (possibly slightly faster tests and slightly worse target
+    scores), but only in the unlikely event that they were hitting
+    this problem. Other users should not see any effect at all.
+
+- changes from version 4.47.1:
+  * This release removes some unused code from the core engine. There
+    is no user-visible change.
+
+- changes from version 4.47.0:
+  * This release commonizes some code between running explicit
+    examples and normal test execution. The main user visible impact
+    of this is that deadlines are now enforced when running explicit
+    examples.
+
+-------------------------------------------------------------------
 Sat Nov 23 23:59:44 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.46.1:
