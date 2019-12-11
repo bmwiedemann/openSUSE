@@ -1,7 +1,7 @@
 #
 # spec file for package bcm43xx-firmware
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,9 @@ Source4309:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom
 #brcmfmac4356-pcie.txt is taken from ChromeOS repo
 # https://chromium.googlesource.com/chromiumos/third_party/linux-firmware/+/f151f016b4fe656399f199e28cabf8d658bcb52b/brcm/brcmfmac4356-pcie.txt
 Source4356:     brcmfmac4356-pcie.txt
+# brcmfmac43455-sdio.raspberrypi,4-model-b.txt is the same brcmfmac43455-sdio.raspberrypi,3-model-b-plus.txt
+# except for boardflags3 value - https://wiki.gentoo.org/wiki/User:NeddySeagoon/Raspberry_Pi4_64_Bit_Install#WiFi
+Source4357:     brcmfmac43455-sdio.raspberrypi,4-model-b.txt
 #BCM43455
 Source4559:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM4345C0.hcd
 # Owns /lib/firmware/brcm and potentially conflicts
@@ -83,6 +86,7 @@ install -c -m 0644 %{SOURCE391} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE3621} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE3622} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE4356} %{buildroot}/lib/firmware/brcm/
+install -c -m 0644 %{SOURCE4357} %{buildroot}/lib/firmware/brcm/
 # Used by bluez (hciattach)
 install -c -m 0644 %{SOURCE4309} %{buildroot}/lib/firmware/
 install -c -m 0644 %{SOURCE4559} %{buildroot}/lib/firmware/

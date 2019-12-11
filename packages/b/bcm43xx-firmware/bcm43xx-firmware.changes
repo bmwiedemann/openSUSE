@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 27 15:37:52 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update boardflags3 value for brcmfmac43455-sdio.raspberrypi,4-model-b.txt
+  to fix WiFi connection on RPi4
+
+-------------------------------------------------------------------
+Wed Oct  2 14:38:40 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Add brcmfmac43455-sdio.raspberrypi,4-model-b.txt
+
+-------------------------------------------------------------------
 Thu Jan 24 17:22:16 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
 
 - Remove files that are now present in kernel-firmware (fate#326215).
