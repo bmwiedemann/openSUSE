@@ -17,7 +17,7 @@
 
 
 Name:           perl-Archive-Extract
-Version:        0.82
+Version:        0.86
 Release:        0
 %define cpan_name Archive-Extract
 Summary:        Generic archive extracting mechanism

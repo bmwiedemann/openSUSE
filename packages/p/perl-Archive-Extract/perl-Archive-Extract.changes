@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec  6 03:08:28 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.86
+   see /usr/share/doc/packages/perl-Archive-Extract/CHANGES
+
+  0.86    Thu Dec  5 20:53:07 GMT 2019
+  * Fix RT#131072 which was due to tar.exe and CRLF line endings
+
+-------------------------------------------------------------------
+Thu Dec  5 03:07:19 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.84
+   see /usr/share/doc/packages/perl-Archive-Extract/CHANGES
+
+  0.84    Wed Dec  4 21:20:04 GMT 2019
+  * Fix RT#119084 - won't compile on MSWin32 with taint
+
+-------------------------------------------------------------------
 Mon Nov 25 11:42:06 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.82
