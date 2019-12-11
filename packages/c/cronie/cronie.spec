@@ -1,7 +1,7 @@
 #
 # spec file for package cronie
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Cron Daemon
 License:        BSD-3-Clause AND GPL-2.0-only AND MIT
 Group:          System/Daemons
-Url:            https://github.com/cronie-crond/%{name}
+URL:            https://github.com/cronie-crond/%{name}
 Source0:        https://github.com/cronie-crond/%{name}/archive/%{name}-%{version}.tar.gz
 Source2:        run-crons
 Source3:        sample.root
@@ -198,18 +198,18 @@ exit 0
 [ -e %{_localstatedir}/spool/anacron/cron.monthly ] || touch %{_localstatedir}/spool/anacron/cron.monthly
 
 %verifyscript -n cron
-%verify_permissions -e /etc/cron.d
-%verify_permissions -e /etc/cron.daily
-%verify_permissions -e /etc/cron.hourly
-%verify_permissions -e /etc/cron.monthly
-%verify_permissions -e /etc/cron.weekly
+%verify_permissions -e /etc/cron.d/
+%verify_permissions -e /etc/cron.daily/
+%verify_permissions -e /etc/cron.hourly/
+%verify_permissions -e /etc/cron.monthly/
+%verify_permissions -e /etc/cron.weekly/
 
 %post -n cron
-%set_permissions /etc/cron.d
-%set_permissions /etc/cron.daily
-%set_permissions /etc/cron.hourly
-%set_permissions /etc/cron.monthly
-%set_permissions /etc/cron.weekly
+%set_permissions /etc/cron.d/
+%set_permissions /etc/cron.daily/
+%set_permissions /etc/cron.hourly/
+%set_permissions /etc/cron.monthly/
+%set_permissions /etc/cron.weekly/
 
 %files
 %defattr(-,root,root)
