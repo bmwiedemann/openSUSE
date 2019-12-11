@@ -1,7 +1,7 @@
 #
 # spec file for package python-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qt5
-Version:        5.13.1
+Version:        5.13.2
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-Source:         https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5_gpl-%{version}.tar.gz
+Source:         https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt5.
 Patch1:         disable-rpaths.diff
 # PATCH-FIX-UPSTREAM
 Patch2:         update-timeline.patch
-# PATCH-FIX-UPSTREAM - add-qkeysequenceedit-to-uic.patch
-Patch3:         add-qkeysequenceedit-to-uic.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.19}
 BuildRequires:  dbus-1-devel
@@ -95,8 +93,7 @@ BuildRequires:  pkgconfig(Qt5NetworkAuth)
 %python_subpackages
 
 %description
-PyQt is a set of Python bindings for Trolltech's Qt application
-framework. The qt4 and qt5 bindings can be co-installed.
+PyQt is a set of Python bindings for the Qt framework.
 
 %package devel
 Summary:        PyQt - devel part of python bindings for Qt 5
@@ -152,8 +149,7 @@ Requires:       dbus-1-python3-devel
 %endif
 
 %description devel
-PyQt is a set of Python bindings for Trolltech's Qt application
-framework. The qt4 and qt5 bindings can be co-installed.
+PyQt is a set of Python bindings for the Qt framework.
 
 This package contains all the developer tools you need to create your
 own PyQt applications.
@@ -165,8 +161,7 @@ Provides:       %{python_module PyQt5-utils = %{version}}
 Provides:       %{python_module qt5-utils = %{version}}
 
 %description -n %{name}-utils
-PyQt is a set of Python bindings for Trolltech's Qt application
-framework. The qt4 and qt5 bindings can be co-installed.
+PyQt is a set of Python bindings for the Qt framework.
 
 This package contains common files shared between python2 and python3
 versions of PyQt5.
@@ -178,13 +173,12 @@ Provides:       %{python_module PyQt5-doc = %{version}}
 Provides:       %{python_module qt5-doc = %{version}}
 
 %description -n %{name}-doc
-PyQt is a set of Python bindings for Trolltech's Qt application
-framework. The qt4 and qt5 bindings can be co-installed.
+PyQt is a set of Python bindings for the Qt framework.
 
 This package contains documentation and examples for PyQt5.
 
 %prep
-%autosetup -p1 -n PyQt5_gpl-%{version}
+%autosetup -p1 -n PyQt5-%{version}
 
 # Fix wrong-script-interpreter
 find examples -name "*.py" -exec sed -i "s|^#!%{_bindir}/env python$|#!%__python3|" {} \;

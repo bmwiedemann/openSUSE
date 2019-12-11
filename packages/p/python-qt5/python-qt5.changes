@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec  6 20:17:33 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.13.2
+  * pyuic now handles QKeySequenceEdit
+  * The new on-exit scheme now ignores running QThreads
+  * Added the missing pos() and two setPos() overloads to QCursor
+  * A QVariant for a pointer to an instance of unknown type will now be
+    converted to a voidptr object
+- Update the package description
+- Drop add-qkeysequenceedit-to-uic.patch. Merged upstream
+- Update update-timeline.patch
+
+-------------------------------------------------------------------
 Thu Sep 26 09:42:49 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints file for ppc64/ppc64le to avoid build failure

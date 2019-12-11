@@ -402,4 +402,20 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>733487</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f2eed53a2cdf9cf9014b083a2176fb28</srcmd5>
+    <version>5.13.2</version>
+    <time>1576062482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.13.2
+  * pyuic now handles QKeySequenceEdit
+  * The new on-exit scheme now ignores running QThreads
+  * Added the missing pos() and two setPos() overloads to QCursor
+  * A QVariant for a pointer to an instance of unknown type will now be
+    converted to a voidptr object
+- Update the package description
+- Drop add-qkeysequenceedit-to-uic.patch. Merged upstream
+- Update update-timeline.patch</comment>
+    <requestid>754872</requestid>
+  </revision>
 </revisionlist>
