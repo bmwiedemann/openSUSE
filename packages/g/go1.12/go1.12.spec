@@ -1,7 +1,7 @@
 #
 # spec file for package go1.12
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,12 +118,12 @@
 %endif
 
 Name:           go1.12
-Version:        1.12.12
+Version:        1.12.14
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-Url:            http://golang.org
+URL:            http://golang.org
 Source:         http://golang.org/dl/go%{version}.src.tar.gz
 Source1:        go-rpmlintrc
 Source4:        README.SUSE
@@ -151,7 +151,6 @@ BuildRequires:  gcc%{gcc_go_version}-go
 BuildRequires:  %{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(systemd)
 Recommends:     %{name}-doc = %{version}
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
@@ -198,7 +197,7 @@ Go examples and documentation.
 %package race
 Summary:        Go runtime race detector
 Group:          Development/Languages/Other
-Url:            https://compiler-rt.llvm.org/
+URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
 Supplements:    %{name} = %{version}
 ExclusiveArch:  %{tsan_arch}

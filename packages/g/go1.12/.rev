@@ -1231,4 +1231,13 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
   collect2: fatal error: cannot find 'ld'- (forwarded request 743948 from jfkw)</comment>
     <requestid>743949</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>54f60a5b6ce1cfb6e0b3f9a4bb4015b5</srcmd5>
+    <version>1.12.14</version>
+    <time>1576062226</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.12.14 (released 2019/12/04) includes a fix to the runtime.
+- Remove unneeded systemd BuildRequires. (forwarded request 754859 from jfkw)</comment>
+    <requestid>754860</requestid>
+  </revision>
 </revisionlist>
