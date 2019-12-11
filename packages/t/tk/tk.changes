@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:54:10 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Version 8.6.10:
+  * (bug)[0a9c91] crash in text-11a.22
+  * (bug)[9705d1] crash activating "Alt" theme
+  * (bug)[e3b954] cursor offset at full screen display
+  * (bug)[18a4ba] cross-platform [winfo containing]
+  * (build) 'None', 'ControlMask' symbol conflicts
+  * (bug)[509caf] [treeview tag configure] regression
+  * (bug)[3003895] [scale] res rounds and -from
+  * (new)[TIP 533] [$mb post x y idx]
+  * (bug)[1529659] embed toplevel blocks outer menu
+  * (bug)[8814bd] crash in [NSMenu size]
+  * (bug)[1951ab] Prevent transient window cycles (crashed on Aqua)
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[4da219] Incomplete read of multi-image GIF
+  * (new)[TIP 535] Precision of ::scale widget tick mark values
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[da3914] [$treeview identify element] failure
+  * (bug)[897ffe] Prevent cross-manager loops of geom management
+  * (bug)[368fa4] Prevent toggle of hidden treeview indicators
+  * (bug)[928652] Apply TIP 533 for ttk::menubutton
+  * (bug)[1001070] X-platform rework of label options -highlight*
+  * (bug)[6286fd] checkbutton handling of -selectcolor
+  * (bug) Ttk scrolling bugs, see tests treeview-9.1, entry-3.[3-6]
+  * (new)[TIP 541] [combobox current] support "end" index
+  * (bug)[2a6c62] <<TreeviewSelect>> trigger on item delete
+  * (bug)[75b8fb] Crash with some [event generate]d <ButtonRelease>
+  * (bug)[5ddeca] Stop app switching exposing withdrawn windows as zombies
+  * (new) Refactor all MouseWheel bindings
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[c8ccd1] up array key in [text] takes to index 1.0
+  * (new)[TIP 532] Tk event loop rewrite to prevent ring overflow
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[2834776] Stop disabled spinbox from generating
+    <<Increment>> & <<Decrement>>
+  * (bug)[a01b6f7] Workaround XWayland bug reporting screen width
+  * (bug)[b82bd4] Fix [style configure -compound]
+  * (bug)[69b48f] failing test textTag-18.1
+  * (bug)[c4abd2] panic in stackorder command
+  * (bug)[53d280] [wm iconphoto] crash on empty image
+  * [90d555] workaround NSFontManager bad selections
+  * (new) Partial Emoji support in text displays
+- tk-8.5.12-fix-xft.patch is not needed anymore.
+ 
+-------------------------------------------------------------------
 Tue Jul 23 06:58:55 UTC 2019 - Reinhard Max <max@suse.com>
 
 - Use FAT LTO objects in order to provide proper static

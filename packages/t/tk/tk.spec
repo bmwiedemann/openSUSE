@@ -1,7 +1,7 @@
 #
 # spec file for package tk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,10 @@ BuildRequires:  libXft-devel
 BuildRequires:  libXt-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcl-devel
-Url:            http://www.tcl.tk
-Version:        8.6.9
+URL:            http://www.tcl.tk
+Version:        8.6.10
 Release:        0
-%define         rrc .1
+%define         rrc %nil
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Graphical User Interface Toolkit for Tcl
 License:        TCL
@@ -50,7 +50,6 @@ Source1:        tk-rpmlintrc
 Source2:        baselibs.conf
 Source3:        http://tkcon.cvs.sourceforge.net/tkcon/tkcon/tkcon.tcl
 Patch0:         %name.patch
-Patch1:         tk-8.5.12-fix-xft.patch
 
 %description
 Tk is a graphical user interface toolkit that takes developing desktop
@@ -97,7 +96,6 @@ Authors:
 %prep
 %setup -q -n %name%version
 %patch0
-%patch1 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -133,7 +131,7 @@ exit 0
 
 %files
 %defattr(-,root,root)
-%doc README changes license.terms ChangeLog*
+%doc README.md changes license.terms ChangeLog*
 %docdir %_mandir/mann
 %doc %_mandir/man1/*
 %doc %_mandir/mann/*
