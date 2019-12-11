@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  5 14:04:59 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Add pam_keyinit.so to PAM config file.
+  [vsftpd.pam, bsc#1144062]
+
+-------------------------------------------------------------------
 Tue Jun 18 15:37:38 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Apply "vsftpd-avoid-bogus-ssl-write.patch" to fix a segmentation

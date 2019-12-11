@@ -802,4 +802,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
   shortcut the build queues by allowing usage of systemd-mini</comment>
     <requestid>710591</requestid>
   </revision>
+  <revision rev="71" vrev="20">
+    <srcmd5>a34d477d8c88c796decc532bfc30ea7b</srcmd5>
+    <version>3.0.3</version>
+    <time>1576062104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754435</requestid>
+  </revision>
 </revisionlist>
