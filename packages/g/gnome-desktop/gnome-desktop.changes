@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  3 21:36:12 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Add helper to create transient systemd scopes.
+  + Updated translations.
+- Add pkgconfig(libsystemd) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Tue Oct  8 08:19:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:
