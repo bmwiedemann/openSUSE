@@ -1,0 +1,35 @@
+From fafb03fa6d764f3cedf80e222a1e5998b80ef79c Mon Sep 17 00:00:00 2001
+From: Victor Zverovich <victor.zverovich@gmail.com>
+Date: Sat, 30 Nov 2019 06:35:52 -0800
+Subject: [PATCH] Fix handling of fallback_uintptr
+
+---
+ include/fmt/format.h | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+Index: fmt-6.0.0/include/fmt/format.h
+===================================================================
+--- fmt-6.0.0.orig/include/fmt/format.h
++++ fmt-6.0.0/include/fmt/format.h
+@@ -281,6 +281,12 @@ template <typename Container>
+ inline typename Container::value_type* get_data(Container& c) {
+   return c.data();
+ }
++template <typename T> constexpr int digits() {
++  return std::numeric_limits<T>::digits;
++}
++template <> constexpr int digits<fallback_uintptr>() {
++  return sizeof(void*) * std::numeric_limits<unsigned char>::digits;
++}
+ 
+ #ifdef _SECURE_SCL
+ // Make a checked iterator to avoid MSVC warnings.
+@@ -900,7 +906,7 @@ Char* format_uint(Char* buffer, internal
+ template <unsigned BASE_BITS, typename Char, typename It, typename UInt>
+ inline It format_uint(It out, UInt value, int num_digits, bool upper = false) {
+   // Buffer should be large enough to hold all digits (digits / BASE_BITS + 1).
+-  char buffer[std::numeric_limits<UInt>::digits / BASE_BITS + 1];
++  char buffer[digits<UInt>() / BASE_BITS + 1];
+   format_uint<BASE_BITS>(buffer, value, num_digits, upper);
+   return internal::copy_str<Char>(buffer, buffer + num_digits, out);
+ }
