@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.135.g0b715187a8
+%define suse_version +suse.225.gdbb1d4734d
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}

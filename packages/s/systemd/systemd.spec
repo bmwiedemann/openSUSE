@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.135.g0b715187a8
+%define suse_version +suse.225.gdbb1d4734d
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec  3 16:56:31 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Import commit dbb1d4734daffa62e0eddecfa4f784c84a9d8e76
+
+  1439d72a72 udevd: don't use monitor after manager_exit()
+  99288dd778 Revert "udevd: fix crash when workers time out after exit is signal caught"
+  152577d6d0 udevd: fix crash when workers time out after exit is signal caught
+  f854991504 udevd: wait for workers to finish when exiting (bsc#1106383)
+
+  Changes from the v243-stable (84 commits):
+
+  e51d9bf9e5 man: add entry about SpeedMeter=
+  aa1fc791c7 udev: silence warning about PROGRAM+= or IMPORT+= rules
+  b9a619bb67 udevadm: ignore EROFS and return earlier
+  1ec5b9f80c basic: add vmware hypervisor detection from device-tree
+  7fa7080248 umount: be happy if /proc/swaps doesn't exist
+  [...]
+  47d0e23d26 udev: fix memleak caused by wrong cleanup function
+  a6fb0542c5 parse_hwdb: fix compatibility with pyparsing 2.4.*
+  cb1d892f17 parse_hwdb: process files in order
+
+-------------------------------------------------------------------
 Tue Nov 12 14:15:03 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Import commit 0b715187a87907e18edf98eab9d0a50fced4a424
