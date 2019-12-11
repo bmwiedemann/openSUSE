@@ -1,0 +1,18 @@
+Index: PyGithub-1.44.1/setup.py
+===================================================================
+--- PyGithub-1.44.1.orig/setup.py
++++ PyGithub-1.44.1/setup.py
+@@ -52,11 +52,11 @@ version = "1.44.1"
+ tests_require = [
+     "cryptography",
+     "httpretty>=0.9.6",
+-    "parameterized==0.7.0",
++    "parameterized>=0.7.0",
+ ]
+ 
+ if sys.version_info < (3, 3):
+-    tests_require.append("mock==3.0.5")
++    tests_require.append("mock>=3.0.5")
+ 
+ 
+ if __name__ == "__main__":

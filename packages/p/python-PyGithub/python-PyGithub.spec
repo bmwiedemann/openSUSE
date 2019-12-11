@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyGithub
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,12 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/PyGithub/PyGithub
 Source:         https://github.com/PyGithub/PyGithub/archive/v%{version}.tar.gz
+Patch0:         no-hardcoded-dep.patch
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module httpretty >= 0.9.6}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module parameterized == 0.7.0}
+BuildRequires:  %{python_module mock >= 3.0.5}
+BuildRequires:  %{python_module parameterized >= 0.7.0}
 BuildRequires:  %{python_module requests >= 2.14.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -58,7 +59,7 @@ etc.) can be managed with this.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python setup.py test
+%python_exec setup.py test
 
 %files %{python_files}
 %license COPYING COPYING.LESSER
