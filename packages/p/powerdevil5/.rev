@@ -738,4 +738,12 @@
     <comment>Plasma 5.17.3</comment>
     <requestid>747870</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>c1d8d2fa3bddcfa1614562e549740a8d</srcmd5>
+    <version>5.17.4</version>
+    <time>1576062464</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.4</comment>
+    <requestid>754033</requestid>
+  </revision>
 </revisionlist>
