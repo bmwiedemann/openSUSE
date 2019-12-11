@@ -48,4 +48,15 @@
     <comment>- remove pytest test, enable other test frameworks</comment>
     <requestid>745383</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79e9db51175019cd706d84b76283d86f</srcmd5>
+    <version>0.7.1</version>
+    <time>1576062582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  - calling `setUp` and `tearDown` in parameterized classesq
+- Add skip_Documentation_tests.patch to skip over test cases,
+  failing with Python 3.8. gh#wolever/parameterized#84</comment>
+    <requestid>754448</requestid>
+  </revision>
 </revisionlist>

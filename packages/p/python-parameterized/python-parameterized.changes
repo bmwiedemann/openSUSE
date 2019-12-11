@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  5 15:52:40 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.7.1:
+  - calling `setUp` and `tearDown` in parameterized classesq
+- Add skip_Documentation_tests.patch to skip over test cases,
+  failing with Python 3.8. gh#wolever/parameterized#84
+
+-------------------------------------------------------------------
 Tue Nov  5 09:31:02 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - remove pytest test, enable other test frameworks 
