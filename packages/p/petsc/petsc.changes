@@ -10,7 +10,7 @@ Tue Dec  3 08:31:20 UTC 2019 - Egbert Eich <eich@suse.com>
 - Remove petsc-3.3-fix-error-detection-in-makefile.patch
   not needed.
 - Add non-HPC build with openmpi3
-- Add HPC builds for gcc8 & gcc 9 (jsc#SLE-7766 & jsc#SLE-8609).
+- Add HPC builds for gcc8 & gcc 9 (jsc#SLE-7766 & jsc#SLE-8604).
 - Disable openmpi1 builds for SLE/Leap > 15.1.
 - Enable openmpi3 builds for Leap and SLE > 15.1 (jsc#SLE-7773).
 

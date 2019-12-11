@@ -389,7 +389,7 @@ Requires:       ptscotch-%{mpi_family}%{?mpi_ext}-devel
 Requires:       ptscotch-parmetis-%{mpi_family}%{?mpi_ext}-devel
 Requires:       scalapack-%{mpi_family}%{?mpi_ext}-devel
   %if "%{mpi_family}%{?mpi_ext}" == "openmpi1"
-Provides:       %{pname}%-openmpi-devel
+Provides:       %{pname}-openmpi-devel
   %endif
  %endif
 %else # with hpc
