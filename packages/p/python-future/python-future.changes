@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec  5 15:02:01 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.18.2:
+  - Fix min/max functions with generators, and 'None' default (PR #514)
+  - Use BaseException in raise_() (PR #515)
+  - Fix builtins.round() for Decimals (Issue #501)
+  - Fix raise_from() to prevent failures with immutable classes (PR #518)
+  - Make FixInput idempotent (Issue #427)
+  - Fix type in newround (PR #521)
+  - Support mimetype guessing in urllib2 for Py3.8+ (Issue #508)
+  - fix for raise_() when passed an exception that's not an
+    Exception (e.g. BaseException subclasses)
+- Rebase future-correct-mimetype.patch to revert incorrect fix in
+  gh#PythonCharmers/python-future#508
+
+-------------------------------------------------------------------
 Mon Oct 14 07:17:21 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.18.0.

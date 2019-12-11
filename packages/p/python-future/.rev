@@ -86,4 +86,23 @@
   the MIME type now.</comment>
     <requestid>738188</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8d0261a2470c53e8b9ec1dc6fd74a735</srcmd5>
+    <version>0.18.2</version>
+    <time>1576062573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.2:
+  - Fix min/max functions with generators, and 'None' default (PR #514)
+  - Use BaseException in raise_() (PR #515)
+  - Fix builtins.round() for Decimals (Issue #501)
+  - Fix raise_from() to prevent failures with immutable classes (PR #518)
+  - Make FixInput idempotent (Issue #427)
+  - Fix type in newround (PR #521)
+  - Support mimetype guessing in urllib2 for Py3.8+ (Issue #508)
+  - fix for raise_() when passed an exception that's not an
+    Exception (e.g. BaseException subclasses)
+- Rebase future-correct-mimetype.patch to revert incorrect fix in
+  gh#PythonCharmers/python-future#508</comment>
+    <requestid>754444</requestid>
+  </revision>
 </revisionlist>

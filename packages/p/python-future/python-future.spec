@@ -1,7 +1,7 @@
 #
 # spec file for package python-future
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-future
-Version:        0.18.0
+Version:        0.18.2
 Release:        0
 Summary:        Single-source support for Python 3 and 2
-License:        MIT AND Python-2.0
 # See https://github.com/PythonCharmers/python-future/issues/242 for PSF licensing
-Url:            https://python-future.org
+License:        MIT AND Python-2.0
+URL:            https://python-future.org
 Source0:        https://files.pythonhosted.org/packages/source/f/future/future-%{version}.tar.gz
 Source100:      python-future-rpmlintrc
 # PATCH-FIX-UPSTREAM python38-pow.patch gh#PythonCharmers/python-future#474 mcepl@suse.com
 Patch0:         python38-pow.patch
-# UPSTREAM ISSUE https://github.com/PythonCharmers/python-future/issues/508
+# UPSTREAM ISSUE gh#PythonCharmers/python-future#508
 Patch1:         future-correct-mimetype.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
