@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:37:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * Destroy dmabuf implementation on EGL backend going down (kde#413637)
+  * [kcmkwin/kwindecoration] Better presentation of tabs
+  * fix compilation with no-deprecated build of kwindowsystem
+  * Fix the order of arguments passed to changeMaximize method (kde#413424,kde#412888,kde#413554)
+  * [libkwineffects] Restore GL_DRAW_FRAMEBUFFER binding in GLTexture::clear
+
+-------------------------------------------------------------------
 Tue Nov 12 11:01:07 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.3
