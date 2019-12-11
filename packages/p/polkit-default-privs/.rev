@@ -1577,4 +1577,18 @@ for 12.3</comment>
   * fix ModemManager1.Time whitelisting (bsc#1156961)</comment>
     <requestid>751586</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>6175d7d6632bad8d7548fe469afdc251</srcmd5>
+    <version>13.2+20191210.15c9882</version>
+    <time>1576062258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20191210.15c9882:
+  * polkit-rules-whitelist: adjust whitelist format to new rpmlint-checks logic
+
+!!!
+    This sr# need a companion sr# of rpmlint-checks to work, otherwise
+    rpmlint-mini checks will break
+!!!</comment>
+    <requestid>755595</requestid>
+  </revision>
 </revisionlist>
