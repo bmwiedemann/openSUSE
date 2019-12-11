@@ -20,7 +20,7 @@
 %define qt5_version 5.12.0
 %bcond_without lang
 Name:           plasma5-pa
-Version:        5.17.3
+Version:        5.17.4
 Release:        0
 Summary:        The Plasma5 Volume Manager
 License:        GPL-2.0-or-later
