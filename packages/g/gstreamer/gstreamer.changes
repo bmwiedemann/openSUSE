@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:20:33 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + Interlaced video scaling fixes
+  + CineForm video support in AVI
+  + audioresample: avoid glitches due to rounding errors after
+    changing rate
+  + Command line tool output printing improvements on Windows
+  + various performance improvements, memory leak fixes and
+    security fixes
+  + VP9 decoding fixes
+  + wasapi: bug fixes and stability improvements
+  + tsdemux: improved handling of certain discontinuities
+  + vaapi h265 decoder: wait for I-frame before trying to decode
+  + tee: Make sure to actually deactivate pads that are released
+  + bin: Drop need-context messages without source instead of
+    crashing
+  + gst: Don't pass miniobjects to GST_DEBUG_OBJECT() and similar
+    macros
+  + tracers: Don't leak temporary GstStructure
+
+-------------------------------------------------------------------
 Tue Sep 24 07:29:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %define gst_branch 1.0
 Name:           gstreamer
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -88,8 +88,8 @@ installing new plug-ins.
 
 %package -n libgstreamer-1_0-0
 Summary:        Streaming-Media Framework Runtime
-Group:          System/Libraries
 # We want to have core modules installed:
+Group:          System/Libraries
 Requires:       %{name}
 
 %description -n libgstreamer-1_0-0
@@ -129,8 +129,8 @@ installing new plug-ins.
 
 %package utils
 Summary:        Streaming-Media Framework Runtime
-Group:          Productivity/Multimedia/Other
 # Generic name, never used in SuSE:
+Group:          Productivity/Multimedia/Other
 Provides:       gstreamer:%{_bindir}/gst-launch-%{gst_branch} = %{version}
 # Symbol for unversioned wrappers:
 Provides:       gstreamer-utils_versioned = %{version}
