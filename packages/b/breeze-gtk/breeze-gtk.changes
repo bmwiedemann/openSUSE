@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:36:58 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * [GTK3] Fix invalid colour name in treeview (kde#414391)
+
+-------------------------------------------------------------------
 Sat Nov 16 17:25:57 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to enable checkbox recoloring again, fixed in librsvg:
