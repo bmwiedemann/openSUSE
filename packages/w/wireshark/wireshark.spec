@@ -1,7 +1,7 @@
 #
 # spec file for package wireshark
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -62,7 +62,6 @@ BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libssh) >= 0.6.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       hicolor-icon-theme
 Requires(pre):  permissions
 Requires(pre):  shadow
 Recommends:     wireshark-ui = %{version}
@@ -150,6 +149,7 @@ from a live network or from a capture file on disk.
 Summary:        A Network Traffic Analyser - Qt UI
 Group:          Productivity/Networking/Diagnostic
 Requires:       %{name} = %{version}
+Requires:       hicolor-icon-theme
 Provides:       %{name}-ui = %{version}
 # gtk is the deprecated ui so ensure its uninstall
 Provides:       %{name}-ui-gtk = %{version}
@@ -256,10 +256,6 @@ exit 0
 %verify(not mode caps) %attr(0750,root,wireshark) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/dumpcap
 %{_libdir}/wireshark/
 %{_datadir}/wireshark/
-%{_datadir}/icons/hicolor/*/apps/wireshark.png
-%{_datadir}/icons/hicolor/*/mimetypes/application-wireshark-doc.png
-%{_datadir}/icons/hicolor/scalable/apps/wireshark.svg
-%{_datadir}/mime/packages/wireshark.xml
 
 %files -n %{libutil}
 %{_libdir}/libwsutil*.so.*
@@ -286,6 +282,10 @@ exit 0
 %{_datadir}/appdata/wireshark.appdata.xml
 %{_datadir}/applications/wireshark.desktop
 %{_datadir}/pixmaps/wireshark.png
+%{_datadir}/icons/hicolor/*/apps/wireshark.png
+%{_datadir}/icons/hicolor/*/mimetypes/application-wireshark-doc.png
+%{_datadir}/icons/hicolor/scalable/apps/wireshark.svg
+%{_datadir}/mime/packages/wireshark.xml
 
 %post ui-qt
 %desktop_database_post
