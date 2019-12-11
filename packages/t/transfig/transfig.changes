@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  5 08:49:13 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch CVE-2019-19555.patch
+  * Even if we are not affected add fix for CVE-2019-19555 
+
+-------------------------------------------------------------------
 Tue Oct 29 11:07:12 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to fig2dev version 3.2.7 (Patchlevel 7b (Oct 2019)

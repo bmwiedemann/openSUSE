@@ -1,7 +1,7 @@
 #
 # spec file for package transfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  tex(xmpmulti.sty)
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig(xpm)
 #  www.xfig.org is dead
-Url:            http://mcj.sourceforge.net/
+URL:            http://mcj.sourceforge.net/
 Provides:       fig2dev
 Provides:       transfig.3.2.3d
 Requires:       ghostscript-fonts-std
@@ -53,6 +53,7 @@ License:        MIT
 Group:          Productivity/Graphics/Convertors
 Source:         fig2dev-%{version}.tar.xz
 Patch0:         transfig-3.2.6.dif
+Patch1:         CVE-2019-19555.patch
 Patch2:         transfig.3.2.5-binderman.dif
 Patch3:         transfig.3.2.5d-mediaboxrealnb.dif
 Patch4:         transfig-fix-afl.patch
@@ -96,6 +97,7 @@ Authors:
 %setup -q -n fig2dev-%{version}
 find -type f | xargs -r chmod a-x,go-w
 %patch0 -p0 -b .0
+%patch1 -p0 -b .sec
 %patch2 -p0 -b .bm
 %patch3 -p0 -b .mbox
 %patch4 -p1 -b .afl

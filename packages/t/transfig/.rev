@@ -434,4 +434,13 @@
   o Properly initalize line storage when reading fig files version 1.3.</comment>
     <requestid>743820</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c6512dffc6cc2759a97f0db580db8649</srcmd5>
+    <version>3.2.7b</version>
+    <time>1576062066</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch CVE-2019-19555.patch
+  * Even if we are not affected add fix for CVE-2019-19555</comment>
+    <requestid>754322</requestid>
+  </revision>
 </revisionlist>
