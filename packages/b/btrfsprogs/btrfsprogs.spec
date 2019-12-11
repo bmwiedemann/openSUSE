@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsprogs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %{_libexecdir}/dracut/modules.d
 
 Name:           btrfsprogs
-Version:        5.3.1
+Version:        5.4
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
