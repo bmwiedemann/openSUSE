@@ -618,4 +618,12 @@ fixed baselibs.conf compared to previous version</comment>
 - Enable openmpi3 builds for Leap and SLE &gt; 15.1 (jsc#SLE-7773).</comment>
     <requestid>752488</requestid>
   </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>82212855cd7eb19223df3d9db30e1ba4</srcmd5>
+    <version>1.10.5</version>
+    <time>1576062806</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
+    <requestid>755687</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hdf5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -326,7 +326,7 @@ Release:        0
 Summary:        Command-line programs for the HDF5 scientific data format
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
-Url:            https://www.hdfgroup.org/HDF5/
+URL:            https://www.hdfgroup.org/HDF5/
 Source0:        https://www.hdfgroup.org/ftp/HDF5/releases/%{pname}-%{short_ver}/%{pname}-%{src_ver}/src/%{pname}-%{src_ver}.tar.bz2
 Source100:      _multibuild
 Source1000:     update_so_version.sh
