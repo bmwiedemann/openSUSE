@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Dec  5 15:33:20 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.2.4.5:
+  * New homepage https://github.com/vapier/ncompress
+  * Switch to intmax_t for nlink_t fields when printing
+  * Make builds more reproducible by dropping datestamps
+  * Fix integer overflow in maxmaxcode computation by Jakub Wilk
+  * Don't leak file descriptor in error cases by Pavel Raiskup
+  * Drop 8.3 filename checks for old DOS/Windows
+  * Change signal ifdef logic to the signal names
+  * Fix -Werror=parentheses errors with newer compilers
+  * Define LSTAT=1 in modern builds by default
+  * Change pathnames to be dynamic to avoid hardcoded 1k limit
+  * Add a standard -h (help) option
+  * Change version output to go to stdout
+  * Start a testsuite!
+  * Add support for -- to halt option parsing
+  * Add a uncompress(1) link to compress(1)
+- Drop all upstreamed patches:
+  * ncompress-2GB.patch
+  * ncompress-4.2.4.4-drop-datestamp.patch
+  * ncompress-4.2.4.4-filenamelen.patch
+  * ncompress-4.2.4.4-lfs2.patch
+  * ncompress-4.2.4-endians.patch
+  * ncompress-4.2.4-make.patch
+
+-------------------------------------------------------------------
 Thu Dec  6 13:08:14 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Really use optflags
