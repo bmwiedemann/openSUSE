@@ -12,7 +12,63 @@ Index: gnome-shell-extensions-3.34.1/extensions/window-list/extension.js
  
  function _minimizeOrActivateWindow(window) {
      let focusWindow = global.display.focus_window;
-@@ -1141,19 +1144,45 @@ class Extension {
+@@ -691,11 +694,13 @@ const WindowList = GObject.registerClass
+         let box = new St.BoxLayout({ x_expand: true, y_expand: true });
+         this.add_actor(box);
+ 
+-        let toggle = new WindowPickerToggle();
+-        box.add_actor(toggle);
++        if (!isSLEClassicMode()) {
++            let toggle = new WindowPickerToggle();
++            box.add_actor(toggle);
+ 
+-        toggle.connect('notify::checked',
+-            this._updateWindowListVisibility.bind(this));
++            toggle.connect('notify::checked',
++                this._updateWindowListVisibility.bind(this));
++        }
+ 
+         let layout = new Clutter.BoxLayout({ homogeneous: true });
+         this._windowList = new St.Widget({
+@@ -837,7 +842,8 @@ const WindowList = GObject.registerClass
+         let workspacesOnMonitor = this._monitor === Main.layoutManager.primaryMonitor ||
+                                   !this._mutterSettings.get_boolean('workspaces-only-on-primary');
+ 
+-        this._workspaceIndicator.visible = hasWorkspaces && workspacesOnMonitor;
++        if (this._workspaceIndicator != null)
++            this._workspaceIndicator.visible = hasWorkspaces && workspacesOnMonitor;
+     }
+ 
+     _updateWindowListVisibility() {
+@@ -873,6 +879,9 @@ const WindowList = GObject.registerClass
+     }
+ 
+     _getMaxWindowListWidth() {
++        if (this._workspaceIndicator == null)
++            return this.width;
++
+         let indicatorsBox = this._workspaceIndicator.get_parent();
+         return this.width - indicatorsBox.get_preferred_width(-1)[1];
+     }
+@@ -1082,7 +1091,8 @@ const WindowList = GObject.registerClass
+         this._mutterSettings.disconnect(this._workspacesOnlyOnPrimaryChangedId);
+         this._mutterSettings.disconnect(this._dynamicWorkspacesChangedId);
+ 
+-        this._workspaceIndicator.destroy();
++        if (this._workspaceIndicator != null)
++            this._workspaceIndicator.destroy();
+ 
+         Main.ctrlAltTabManager.removeGroup(this);
+ 
+@@ -1122,6 +1132,7 @@ class Extension {
+     constructor() {
+         this._windowLists = null;
+         this._hideOverviewOrig = Main.overview.hide;
++        this._isSLEClassic = isSLEClassicMode();
+     }
+ 
+     enable() {
+@@ -1141,19 +1152,47 @@ class Extension {
              this._hideOverviewOrig.call(Main.overview);
          };
  
@@ -45,11 +101,13 @@ Index: gnome-shell-extensions-3.34.1/extensions/window-list/extension.js
 -            if (showOnAllMonitors || monitor === Main.layoutManager.primaryMonitor)
 +        if (isSLEClassicMode()){
 +            let list = new WindowList(false, Main.layoutManager.primaryMonitor);
++            list._workspaceIndicator.destroy();
++            list._workspaceIndicator = null;
 +            Main.layoutManager.removeChrome(list);
 +
 +            let [box] = list.get_children();
 +            box.remove_child(list._windowList);
-+            Main.panel._centerBox.add(list._windowList, {expand: true, x_align: St.Align.START});
++            Main.panel._centerBox.add_child(list._windowList);
 +
 +            this._windowLists.push(list);
 +        } else {
@@ -62,19 +120,23 @@ Index: gnome-shell-extensions-3.34.1/extensions/window-list/extension.js
      }
  
      disable() {
-@@ -1167,6 +1196,7 @@ class Extension {
+@@ -1167,6 +1206,11 @@ class Extension {
          this._monitorsChangedId = 0;
  
          this._windowLists.forEach(windowList => {
-+            Main.panel._centerBox.remove_child(windowList._windowList);
++            if (this._isSLEClassic) {
++                Main.panel._centerBox.remove_child(windowList._windowList);
++                let [box] = windowList.get_children();
++                box.add_child(windowList._windowList);
++            }
              windowList.hide();
              windowList.destroy();
          });
-@@ -1175,6 +1205,11 @@ class Extension {
+@@ -1175,6 +1219,11 @@ class Extension {
          Main.windowPicker.destroy();
          delete Main.windowPicker;
  
-+        if (isSLEClassicMode()) {
++        if (this._isSLEClassic) {
 +            Main.overview.disconnect(this.overviewShowingId);
 +            Main.overview.disconnect(this.overviewHidingId);
 +        }

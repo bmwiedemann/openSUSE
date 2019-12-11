@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extensions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,6 @@ Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.34/%
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
 Source3:        SLE-theme.tar.gz
-Source4:        sle-classic-xorg.desktop
 Source5:        sle-classic.json
 Source6:        sle-classic@suse.com.tar.gz
 Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
@@ -148,7 +147,6 @@ install -d %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
 cp sle-classic@suse.com/*  %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
 install -m0644 %{SOURCE7} %{buildroot}/%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
 %if !0%{?is_opensuse}
-install -m0644 %{SOURCE4} %{buildroot}/%{_datadir}/xsessions/sle-classic-xorg.desktop
 tar -xzvf %{SOURCE3}
 install -d %{buildroot}%{_datadir}/gnome-shell/theme
 cp SLE-theme/theme/*  %{buildroot}%{_datadir}/gnome-shell/theme
@@ -214,7 +212,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/gnome-shell/theme/sle-background.png
 %{_datadir}/xsessions/default.desktop
-%{_datadir}/xsessions/sle-classic-xorg.desktop
 %{_datadir}/wayland-sessions/default.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop

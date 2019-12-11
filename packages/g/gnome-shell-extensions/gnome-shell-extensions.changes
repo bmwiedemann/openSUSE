@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 10 00:58:50 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
+
+- Update gse-sle-classic-ext.patch: Adapt version 3.34.1
+  (bsc#1158496).
+- Remove file sle-classic-xorg.desktop: now sle-classic only works
+  on X, we don't need this file anymore.
+
+-------------------------------------------------------------------
+Mon Dec  2 09:17:46 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Rebase patch gnome-classic-s390-not-require-g-s-d_wacom.patch.
+
+-------------------------------------------------------------------
 Thu Oct 17 07:44:40 UTC 2019 - Xiaoguang Wang <xwang@suse.com>
 
 - Update gse-sle-classic-ext.patch: Change panel background color
