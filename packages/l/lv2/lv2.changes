@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:36:46 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Build Leap with python2
+
+-------------------------------------------------------------------
+Wed Dec  4 08:05:16 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 1.16.0
+- Rebase lv2pkgconfig.patch, lv2core.pc is no longer built.
+- Remove incorporated reproducible.patch.
+- Use python3
+- Upstream changes:
+  *Aggressively deprecate uri-map and event extensions.
+  *Add lv2_validate utility.
+  *eg-midigate: Respond to "all notes off" MIDI message.
+  *eg-sampler: Add waveform display to UI.
+  *Add core/attributes.h utility header.
+  *Upgrade build system and fix building with Python 3.7.
+  *Install headers to simpler paths.
+  *Simplify use of lv2specgen.
+  *atom: Add lv2_atom_object_get_typed() for easy type-safe access.
+   to object properties.
+  *core: Add lv2:MIDIPlugin class.
+  *core: Rework port restrictions so that presets can be validated.
+  *midi: Fix incorrect range of midi:chunk.
+  *options: Relax range of opts:requiredOption and
+   opts:supportedOption
+  *patch: Add patch:context property.
+  *patch: Add patch:accept property.
+  *state: Add state:StateChanged for notification events.
+  *time: Clarify time:beat origin.
+  *units: Fix outdated port description in documentation.
+  *units: Remove overly restrictive domain from units:unit.
+
+-------------------------------------------------------------------
 Mon Jul  9 19:36:47 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to make lv2 package build reproducible (boo#1047218)

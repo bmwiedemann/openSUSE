@@ -163,4 +163,16 @@
     <comment></comment>
     <requestid>621796</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>197b79dc4bca9d5931d032dbb66e2ee4</srcmd5>
+    <version>1.16.0</version>
+    <time>1576062549</time>
+    <user>dimstar_suse</user>
+    <comment>- Build Leap with python2
+- Update to release 1.16.0
+- Rebase lv2pkgconfig.patch, lv2core.pc is no longer built.
+- Remove incorporated reproducible.patch.
+- Use python3</comment>
+    <requestid>755049</requestid>
+  </revision>
 </revisionlist>

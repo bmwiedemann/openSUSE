@@ -1,7 +1,7 @@
 #
 # spec file for package lv2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-# Documentation doesn't build for less than Tumbleweed
-%if 0%{suse_version} > 1320
 %define asciidocs 1
+# build Leap:15 with python2 it fails with 3
+%if 0%{?suse_version} > 1500
+%define _waf python3 waf
 %else
-%define asciidocs 0
+%define _waf python2 waf
 %endif
 
 Name:           lv2
-Version:        1.14.0
+Version:        1.16.0
 Release:        0
 Summary:        Plugin standard for audio systems
 License:        ISC
@@ -34,10 +35,12 @@ Source0:        http://lv2plug.in/spec/lv2-%{version}.tar.bz2
 Source1:        lv2-rpmlintrc
 # Patch-Fix-Upstream  lv2pkgconfig.patch davejplater@gmail.com -- Add "/" to end of -I directory because otherwise pkg-config outputs nothing.
 Patch0:         lv2pkgconfig.patch
-# Patch-Fix-Upstream reproducible.patch bmwiedemann
-Patch1:         reproducible.patch
 BuildRequires:  pkg-config
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-rdflib
+%else
 BuildRequires:  python-rdflib
+%endif
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
 BuildRequires:  pkgconfig(sndfile) >= 1.0.0
 %if %{asciidocs} == 1
@@ -45,7 +48,11 @@ BuildRequires:  pkgconfig(sndfile) >= 1.0.0
 BuildRequires:  asciidoc
 BuildRequires:  doxygen
 BuildRequires:  graphviz
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-Pygments
+%else
 BuildRequires:  python-Pygments
+%endif
 %endif
 
 %description
@@ -169,13 +176,16 @@ This package contains the LV2 API documentation.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
+%autopatch -p1
 
 %build
+%if 0%{?suse_version} > 1500
+for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+%endif
+
 export CFLAGS='%{optflags}'
 export CXXFLAGS='%{optflags}'
-./waf configure -v \
+%_waf configure -v \
   --prefix=%{_prefix} \
   --lv2dir=%{_libdir}/%{name} \
   --libdir=%{_libdir} \
@@ -185,17 +195,20 @@ export CXXFLAGS='%{optflags}'
 %endif
   --debug
 
-./waf %{?_smp_mflags} -vvv build
+%_waf %{?_smp_mflags} -vvv build
 
 %install
-./waf install --lv2dir=%{_libdir}/%{name} --destdir=%{buildroot}
+%_waf install --lv2dir=%{_libdir}/%{name} --destdir=%{buildroot}
 %if %{asciidocs} == 1
 mv -t . %{buildroot}%{_defaultdocdir}/lv2/lv2plug.in
 %endif
+chmod 0755 %{buildroot}%{_bindir}/lv2_validate
 
 %files
 %defattr(0644,root,root,0755)
-%doc COPYING NEWS README.md
+%doc NEWS README.md
+%license COPYING
+%{_bindir}/lv2_validate
 %{_libdir}/lv2/
 %exclude %{_libdir}/lv2/eg-amp.lv2/
 %exclude %{_libdir}/lv2/eg-metro.lv2/
@@ -210,7 +223,6 @@ mv -t . %{buildroot}%{_defaultdocdir}/lv2/lv2plug.in
 %{_includedir}/lv2.h
 %{_includedir}/lv2/
 %{_libdir}/pkgconfig/lv2.pc
-%{_libdir}/pkgconfig/lv2core.pc
 
 %files examples
 %defattr(0644,root,root,0755)
