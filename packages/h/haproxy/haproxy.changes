@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Dec 05 15:37:44 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.10+git14.7caf150a:
+  * BUG/MINOR: mux-h1: Fix conditions to know whether or not we may receive data
+  * BUG/MINOR: mux-h1: Don't rely on CO_FL_SOCK_RD_SH to set H1C_F_CS_SHUTDOWN
+  * BUG/MEDIUM: mux-h1: Never reuse H1 connection if a shutw is pending
+  * BUG/MINOR: ssl: certificate choice can be unexpected with openssl >= 1.1.1
+  * BUG/MEDIUM: listener/thread: fix a race when pausing a listener
+  * BUG/MINOR: stream-int: avoid calling rcv_buf() when splicing is still possible
+  * BUG/MEDIUM: stream-int: don't subscribed for recv when we're trying to flush data
+  * DOC: move the "group" keyword at the right place
+  * DOC: clarify matching strings on binary fetches
+  * DOC: Clarify behavior of server maxconn in HTTP mode
+
+-------------------------------------------------------------------
+Fri Nov 29 13:44:19 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.10+git4.6d9a455d:
+  * BUG/MINOR: http-htx: Don't make http_find_header() fail if the value is empty
+
+-------------------------------------------------------------------
+Thu Nov 28 15:45:58 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.10+git3.200c6215:
+  * BUG/MINOR: contrib/prometheus-exporter: decode parameter and value only
+
+-------------------------------------------------------------------
+Wed Nov 27 11:52:45 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.10+git2.3a00e5fc:
+  * BUG/MINOR: contrib/prometheus-exporter: Use HTX errors and not legacy ones
+  * BUG/MINOR: stream: init variables when the list is empty
+
+-------------------------------------------------------------------
+Mon Nov 25 20:11:36 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.0.10+git0.ac198b92:
+  * [RELEASE] Released version 2.0.10
+  * SCRIPTS: git-show-backports: add "-s" to proposed cherry-pick commands
+  * SCRIPTS: create-release: show the correct origin name in suggested commands
+  * BUG/MAJOR: mux-h2: don't try to decode a response HEADERS frame in idle state
+  * BUG/MAJOR: h2: make header field name filtering stronger
+  * BUG/MAJOR: h2: reject header values containing invalid chars
+  * MINOR: ist: add ist_find_ctl()
+  * BUG/MINOR: ssl: fix curve setup with LibreSSL
+  * BUG/MINOR: cli: fix out of bounds in -S parser
+  * DOC: Add documentation about the use-service action
+  * DOC: Add missing stats fields in the management manual
+  * BUG/MINOR: mux-h1: Adjust header case when chunked encoding is add to a message
+  * BUG/MINOR: mux-h1: Fix a UAF in cfg_h1_headers_case_adjust_postparser()
+  * MEDIUM: mux-h1: Add the support of headers adjustment for bogus HTTP/1 apps
+  * REGTEST: vtest can now enable mcli with its own flag
+  * MINOR: stats: Report max times in addition of the averages for sessions
+  * BUG/MINOR: stream-int: Fix si_cs_recv() return value
+  * MINOR: contrib/prometheus-exporter: Add a param to ignore servers in maintenance
+  * MINOR: contrib/prometheus-exporter: filter exported metrics by scope
+  * MINOR: contrib/prometheus-exporter: report the number of idle conns per server
+  * BUG/MINOR: contrib/prometheus-exporter: Rename some metrics
+  * MINOR: contrib/prometheus-exporter: Report metrics about max times for sessions
+  * MINOR: counters: Add fields to store the max observed for {q,c,d,t}_time
+  * MINOR: stream: Remove the lock on the proxy to update time stats
+  * MINOR: freq_ctr: Make the sliding window sums thread-safe
+  * BUG/MINOR: http-ana: Properly catch aborts during the payload forwarding
+  * BUG/MINOR: mux-h1: Fix tunnel mode detection on the response path
+  * BUILD: debug: Avoid warnings in dev mode with -02 because of some BUG_ON tests
+  * BUG/MEDIUM: stream-int: Don't loose events on the CS when an EOS is reported
+  * BUILD/MINOR: ssl: fix compiler warning about useless statement
+  * BUG/MINOR: peers: "peer alive" flag not reset when deconnecting.
+  * BUG/MEDIUM: mworker: don't fill the -sf argument with -1 during the reexec
+
+-------------------------------------------------------------------
 Tue Nov 19 14:16:54 UTC 2019 - mrueckert@suse.de
 
 - Update to version 2.0.9+git6.26b7b800:
