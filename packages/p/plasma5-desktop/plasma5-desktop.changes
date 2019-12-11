@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:37:01 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * Port away from deprecated KWindowSystem API
+  * Port the pager applet away from QtWidgets
+  * [Folder view] Use selected text color for selected items in full representation (kde#414287)
+  * [Notifications KCM] Fix keyboard navigation in apps list (kde#409024)
+  * [Workspace KCM] Set implicit width to improve default layout
+
+-------------------------------------------------------------------
 Tue Nov 12 11:01:08 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.3
