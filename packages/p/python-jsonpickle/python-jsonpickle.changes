@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  5 18:13:07 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Exclude tests failing with python 3.8 (test_thing_with_fd,
+  test_list_with_fd, and test_dict_with_fd). gh#jsonpickle/jsonpickle#281
+
+-------------------------------------------------------------------
 Mon Jun 17 11:54:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.2:

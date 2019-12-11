@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpickle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  python
+BuildRequires:  python3
 # /SECTION
 # SECTION python 2 test requirements
 BuildRequires:  python-enum34
@@ -65,7 +67,8 @@ Additionally, it can reconstitute the object back into Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Exclusions because of gh#jsonpickle/jsonpickle#281
+%pytest -k 'not (test_thing_with_fd or test_list_with_fd or test_dict_with_fd)'
 
 %files %{python_files}
 %doc README.rst docs/source/changelog.rst

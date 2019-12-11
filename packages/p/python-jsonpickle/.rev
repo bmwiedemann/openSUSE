@@ -46,4 +46,13 @@
 - Remove merged patch sqlalchemy13.patch</comment>
     <requestid>710340</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>046c561adf12d5b6ecae29da33f7e873</srcmd5>
+    <version>1.2</version>
+    <time>1576062605</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude tests failing with python 3.8 (test_thing_with_fd,
+  test_list_with_fd, and test_dict_with_fd). gh#jsonpickle/jsonpickle#281</comment>
+    <requestid>754492</requestid>
+  </revision>
 </revisionlist>
