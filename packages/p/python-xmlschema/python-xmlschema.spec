@@ -46,14 +46,17 @@ rm xmlschema/tests/check_memory.py
 rm xmlschema/tests/test_memory.py
 
 %build
+export LANG="en_US.UTF8"
 %python_build
 
 %install
+export LANG="en_US.UTF8"
 %python_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/xmlschema/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG="en_US.UTF8"
 %pytest
 
 %files %{python_files}
