@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfakefs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,16 @@ Version:        3.6.1
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jmcgeheeiv/pyfakefs
 Source:         https://github.com/jmcgeheeiv/pyfakefs/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pathlib2 >= 2.3.2}
 BuildRequires:  %{python_module pytest >= 2.8.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-scandir >= 1.8
+Requires:       python
 Requires:       python-pathlib2 >= 2.3.2
 BuildArch:      noarch
 %ifpython2

@@ -80,4 +80,12 @@
   * add next to FakeFileWrapper (see #485)</comment>
     <requestid>735927</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1776897dd7827d400ad5e4d248b92179</srcmd5>
+    <version>3.6.1</version>
+    <time>1576062895</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in the full python</comment>
+    <requestid>755753</requestid>
+  </revision>
 </revisionlist>
