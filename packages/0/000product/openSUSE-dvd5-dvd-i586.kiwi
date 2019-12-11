@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191208" schemaversion="4.1">
+<image name="OBS__openSUSE___20191210" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191208</productvar>
+      <productvar name="VERSION">20191210</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191208,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191210,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191208/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191210/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -1991,6 +1991,7 @@
       <repopackage name="libharfbuzz-icu0"/>
       <repopackage name="libharfbuzz0"/>
       <repopackage name="libhavege1"/>
+      <repopackage name="libhiredis0_13"/>
       <repopackage name="libhogweed5"/>
       <repopackage name="libhttp_parser2_7_1"/>
       <repopackage name="libhunspell-1_7-0"/>
@@ -2325,6 +2326,7 @@
       <repopackage name="libmbim-glib4"/>
       <repopackage name="libmediaart-2_0-0"/>
       <repopackage name="libmediacheck5"/>
+      <repopackage name="libmemcached11"/>
       <repopackage name="libmenu-cache3"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmetis5"/>
@@ -3185,7 +3187,6 @@
       <repopackage name="mailcommon-lang"/>
       <repopackage name="mailimporter"/>
       <repopackage name="mailimporter-lang"/>
-      <repopackage name="mailman"/>
       <repopackage name="mailutils"/>
       <repopackage name="mailx"/>
       <repopackage name="make"/>
@@ -3214,6 +3215,7 @@
       <repopackage name="media-player-info"/>
       <repopackage name="meld"/>
       <repopackage name="meld-lang"/>
+      <repopackage name="memcached"/>
       <repopackage name="memtest86+"/>
       <repopackage name="menu-cache"/>
       <repopackage name="menulibre"/>
@@ -4117,6 +4119,7 @@
       <repopackage name="python-base"/>
       <repopackage name="python-curses"/>
       <repopackage name="python-enum34"/>
+      <repopackage name="python-falcon-doc"/>
       <repopackage name="python-functools32"/>
       <repopackage name="python-gnome-dvb-daemon"/>
       <repopackage name="python-gobject2"/>
@@ -4141,8 +4144,6 @@
       <repopackage name="python2-cryptography"/>
       <repopackage name="python2-Cycler"/>
       <repopackage name="python2-dbus-python"/>
-      <repopackage name="python2-dnspython"/>
-      <repopackage name="python2-ecdsa"/>
       <repopackage name="python2-entrypoints"/>
       <repopackage name="python2-gobject"/>
       <repopackage name="python2-idna"/>
@@ -4157,7 +4158,6 @@
       <repopackage name="python2-pyasn1"/>
       <repopackage name="python2-pycairo"/>
       <repopackage name="python2-pycparser"/>
-      <repopackage name="python2-pycryptodome"/>
       <repopackage name="python2-pycups"/>
       <repopackage name="python2-pyOpenSSL"/>
       <repopackage name="python2-pyparsing"/>
@@ -4169,22 +4169,29 @@
       <repopackage name="python2-six"/>
       <repopackage name="python2-subprocess32"/>
       <repopackage name="python3"/>
+      <repopackage name="python3-aiosmtpd"/>
       <repopackage name="python3-alabaster"/>
+      <repopackage name="python3-alembic"/>
       <repopackage name="python3-apparmor"/>
       <repopackage name="python3-appdirs"/>
       <repopackage name="python3-asn1crypto"/>
+      <repopackage name="python3-atpublic"/>
       <repopackage name="python3-atspi"/>
       <repopackage name="python3-attrs"/>
+      <repopackage name="python3-authheaders"/>
+      <repopackage name="python3-authres"/>
       <repopackage name="python3-Automat"/>
       <repopackage name="python3-Babel"/>
       <repopackage name="python3-base"/>
       <repopackage name="python3-bcrypt"/>
+      <repopackage name="python3-Beaker"/>
       <repopackage name="python3-bind"/>
       <repopackage name="python3-brlapi"/>
       <repopackage name="python3-brotlipy"/>
       <repopackage name="python3-certifi"/>
       <repopackage name="python3-cffi"/>
       <repopackage name="python3-chardet"/>
+      <repopackage name="python3-click"/>
       <repopackage name="python3-cmdln"/>
       <repopackage name="python3-configobj"/>
       <repopackage name="python3-constantly"/>
@@ -4197,12 +4204,17 @@
       <repopackage name="python3-dbm"/>
       <repopackage name="python3-dbus-python"/>
       <repopackage name="python3-decorator"/>
+      <repopackage name="python3-dkimpy"/>
       <repopackage name="python3-dnspython"/>
       <repopackage name="python3-docutils"/>
       <repopackage name="python3-dulwich"/>
       <repopackage name="python3-ecdsa"/>
+      <repopackage name="python3-falcon"/>
       <repopackage name="python3-fastimport"/>
       <repopackage name="python3-firewall"/>
+      <repopackage name="python3-flufl.bounce"/>
+      <repopackage name="python3-flufl.i18n"/>
+      <repopackage name="python3-flufl.lock"/>
       <repopackage name="python3-gedit"/>
       <repopackage name="python3-gevent"/>
       <repopackage name="python3-geventhttpclient"/>
@@ -4213,7 +4225,9 @@
       <repopackage name="python3-greenlet"/>
       <repopackage name="python3-gssapi"/>
       <repopackage name="python3-gst"/>
+      <repopackage name="python3-gunicorn"/>
       <repopackage name="python3-h2"/>
+      <repopackage name="python3-hiredis"/>
       <repopackage name="python3-hpack"/>
       <repopackage name="python3-hyperframe"/>
       <repopackage name="python3-hyperlink"/>
@@ -4224,6 +4238,8 @@
       <repopackage name="python3-jedi"/>
       <repopackage name="python3-Jinja2"/>
       <repopackage name="python3-kiwisolver"/>
+      <repopackage name="python3-lazr.config"/>
+      <repopackage name="python3-lazr.delegates"/>
       <repopackage name="python3-ldb"/>
       <repopackage name="python3-libvirt-python"/>
       <repopackage name="python3-libxml2"/>
@@ -4231,6 +4247,8 @@
       <repopackage name="python3-louis"/>
       <repopackage name="python3-lxml"/>
       <repopackage name="python3-M2Crypto"/>
+      <repopackage name="python3-mailman"/>
+      <repopackage name="python3-Mako"/>
       <repopackage name="python3-MarkupSafe"/>
       <repopackage name="python3-matplotlib"/>
       <repopackage name="python3-matplotlib-cairo"/>
@@ -4244,6 +4262,7 @@
       <repopackage name="python3-packaging"/>
       <repopackage name="python3-paramiko"/>
       <repopackage name="python3-parso"/>
+      <repopackage name="python3-passlib"/>
       <repopackage name="python3-pbr"/>
       <repopackage name="python3-pexpect"/>
       <repopackage name="python3-Pillow"/>
@@ -4253,6 +4272,7 @@
       <repopackage name="python3-protobuf"/>
       <repopackage name="python3-psutil"/>
       <repopackage name="python3-ptyprocess"/>
+      <repopackage name="python3-publicsuffix"/>
       <repopackage name="python3-py"/>
       <repopackage name="python3-pyasn1"/>
       <repopackage name="python3-pyasn1-modules"/>
@@ -4265,6 +4285,8 @@
       <repopackage name="python3-pygit2"/>
       <repopackage name="python3-Pygments"/>
       <repopackage name="python3-PyHamcrest"/>
+      <repopackage name="python3-pylibmc"/>
+      <repopackage name="python3-pymongo"/>
       <repopackage name="python3-PyNaCl"/>
       <repopackage name="python3-pyOpenSSL"/>
       <repopackage name="python3-pyparsing"/>
@@ -4272,6 +4294,9 @@
       <repopackage name="python3-pysmbc"/>
       <repopackage name="python3-PySocks"/>
       <repopackage name="python3-python-dateutil"/>
+      <repopackage name="python3-python-editor"/>
+      <repopackage name="python3-python-memcached"/>
+      <repopackage name="python3-python-mimeparse"/>
       <repopackage name="python3-pytz"/>
       <repopackage name="python3-pyudev"/>
       <repopackage name="python3-pywbem"/>
@@ -4279,6 +4304,7 @@
       <repopackage name="python3-PyYAML"/>
       <repopackage name="python3-pyzmq"/>
       <repopackage name="python3-qt5"/>
+      <repopackage name="python3-redis"/>
       <repopackage name="python3-reno"/>
       <repopackage name="python3-requests"/>
       <repopackage name="python3-roman"/>
@@ -4318,8 +4344,16 @@
       <repopackage name="python3-urllib3"/>
       <repopackage name="python3-urwid"/>
       <repopackage name="python3-Whoosh"/>
+      <repopackage name="python3-zope.component"/>
+      <repopackage name="python3-zope.configuration"/>
+      <repopackage name="python3-zope.deferredimport"/>
+      <repopackage name="python3-zope.deprecation"/>
       <repopackage name="python3-zope.event"/>
+      <repopackage name="python3-zope.hookable"/>
+      <repopackage name="python3-zope.i18nmessageid"/>
       <repopackage name="python3-zope.interface"/>
+      <repopackage name="python3-zope.proxy"/>
+      <repopackage name="python3-zope.schema"/>
       <repopackage name="python3-zypp-plugin"/>
       <repopackage name="pyzy-db-android"/>
       <repopackage name="pyzy-db-open-phrase"/>
@@ -4368,6 +4402,7 @@
       <repopackage name="readline-devel"/>
       <repopackage name="readline-doc"/>
       <repopackage name="rebootmgr"/>
+      <repopackage name="redis"/>
       <repopackage name="reiserfs"/>
       <repopackage name="relaxngDatatype"/>
       <repopackage name="release-notes-openSUSE"/>
