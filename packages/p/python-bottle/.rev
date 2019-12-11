@@ -148,4 +148,12 @@
   * fix #1148: redirect() and non-ascii characters</comment>
     <requestid>745370</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b51f339cec772716aad235266430a011</srcmd5>
+    <version>0.12.18</version>
+    <time>1576062647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755141</requestid>
+  </revision>
 </revisionlist>

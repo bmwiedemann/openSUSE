@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  8 16:56:51 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.12.18:
+  * Bugfix release to improve Python 3.8+ support
+- add the missing LICENSE file
+- update the documentation pdf
+- remove the executable bit from egg-info files
+
+-------------------------------------------------------------------
 Sun Jul 28 16:13:23 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.12.17:

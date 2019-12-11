@@ -1,7 +1,7 @@
 #
 # spec file for package python-bottle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bottle
-Version:        0.12.17
+Version:        0.12.18
 Release:        0
 Summary:        WSGI framework for small web applications
 License:        MIT
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://bottlepy.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bottle/bottle-%{version}.tar.gz
 Source1:        http://bottlepy.org/docs/0.12/bottle-docs.pdf
+Source2:        https://raw.githubusercontent.com/bottlepy/bottle/release-0.12/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -55,7 +56,10 @@ This subpackage contains the PDF documentation for %{name}.
 
 %prep
 %setup -q -n bottle-%{version}
-cp %{SOURCE1} .
+cp %{SOURCE1} %{SOURCE2} .
+
+# remove executable bit, those are not scripts
+chmod -x bottle.egg-info/*
 
 %build
 %python_build
