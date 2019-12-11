@@ -1,7 +1,7 @@
 #
 # spec file for package fmt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,24 @@
 #
 
 
-%define sover   5
+%define sover   6
 Name:           fmt
-Version:        5.3.0
+Version:        6.0.0
 Release:        0
 Summary:        A formatting library for C++
-License:        BSD-2-Clause
+License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://fmtlib.net/
 Source0:        https://github.com/fmtlib/fmt/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         0001-install-pkg-config-file-into-libdir.patch
+# PATCH-FIX-UPSTREAM fmt-bigendian_1.patch
+Patch0:         fmt-bigendian_1.patch
+# PATCH-FIX-UPSTREAM fmt-bigendian_2.patch
+Patch1:         fmt-bigendian_2.patch
+# PATCH-FIX-UPSTREAM fmt-bigendian_3.patch
+Patch2:         fmt-bigendian_3.patch
+# PATCH-FIX-UPSTREAM fmt-bigendian_4.patch
+Patch3:         fmt-bigendian_4.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

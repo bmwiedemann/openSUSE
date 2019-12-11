@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  1 08:54:54 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added fmt-bigendian_1.patch, fmt-bigendian_2.patch,
+  fmt-bigendian_3.patch and fmt-bigendian_4.patch to fix tests
+  on big endian targets
+
+-------------------------------------------------------------------
+Fri Nov 29 08:46:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.0.0
+  (too many changes to list, see ChangeLog.rst)
+- Dropped 0001-install-pkg-config-file-into-libdir.patch (no
+  longer necessary)
+- Switched to MIT license
+- Increased SOVERSION to 6
+
+-------------------------------------------------------------------
 Mon Mar 25 16:21:01 UTC 2019 - olaf@aepfle.de
 
 - Install fmt.pc into libdir with
