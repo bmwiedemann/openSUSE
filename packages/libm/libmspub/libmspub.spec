@@ -1,7 +1,7 @@
 #
 # spec file for package libmspub
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,9 @@ Release:        0
 Summary:        Microsoft Publisher file format parser library
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
-Url:            https://wiki.documentfoundation.org/DLP/Libraries/libmspub
+URL:            https://wiki.documentfoundation.org/DLP/Libraries/libmspub
 Source:         http://dev-www.libreoffice.org/src/libmspub/libmspub-%{version}.tar.xz
+Patch0:         fix-missing-include.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -79,6 +80,7 @@ Command line tools to work with publications in Microsoft Publisher file-format.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
