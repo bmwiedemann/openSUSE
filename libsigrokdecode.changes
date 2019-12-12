@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 11 22:24:06 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 0.5.3
+  * New supported protocol decoders:
+    - lin: Local Interconnect Network (LIN) protocol
+    - x2444m: Xicor X2444M/P nonvolatile static RAM protocol
+    - ds2408: 1-Wire 8-channel addressable switch
+    - cc1101: Low-power sub-1GHz RF transceiver chip
+    - enc28j60: Microchip ENC28J60 10Base-T Ethernet controller protocol
+    - pca9571: NXP PCA9571 8-bit I²C output expander
+    - seven_segment: 7-segment display protocol
+    - amulet_ascii: Amulet Technologies LCD controller ASCII protocol
+    - tdm_audio: TDM multi-channel audio protocol
+    - signature: Annotate signature of logic patterns
+    - nes_gamepad: NES gamepad button states
+    - flexray: Automotive network communications protocol
+    - ir_rc6: RC-6 infrared remote control protocol
+    - ieee488: IEEE-488 General Purpose Interface Bus (GPIB/HPIB or IEC)
+    - hdcp: HDCP protocol over HDMI
+  * Several other improvements, see included NEWS file
+  * The library API and ABI is compatible with version 0.5.2
+
+-------------------------------------------------------------------
 Wed Sep 12 21:19:08 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 0.5.2

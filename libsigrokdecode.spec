@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrokdecode
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libsigrokdecode
 %define libname %{name}4
-%define baseversion 0.5.2
-Version:        0.5.2
+%define baseversion 0.5.3
+Version:        0.5.3
 Release:        0
 Summary:        Protocol Decoders for sigrok
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            http://sigrok.org
-Source0:        http://sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
+URL:            https://sigrok.org/
+Source0:        https://sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
 Patch0:         libsigrokdecode-versioned-decoders.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
