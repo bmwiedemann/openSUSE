@@ -36,4 +36,12 @@
   non-HPC and another one for HPC: examples and examples-hpc.</comment>
     <requestid>753291</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b6dd380c8096b6b78ef86c1b127ac8fb</srcmd5>
+    <version>1.13.1</version>
+    <time>1576189118</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
+    <requestid>755688</requestid>
+  </revision>
 </revisionlist>
