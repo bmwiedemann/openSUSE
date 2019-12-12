@@ -4,6 +4,9 @@ Ignore: firewall-macros:firewalld
 # Help python-subinit to win until python-python-subunit is gone
 Prefer: python2-subunit python3-subunit
 
+# Prepare for the drop of python3-path.py
+Prefer: -python3-path.py python2-path.py
+
 %define gcc_version 9
 
 # testing new cycle algorithm
