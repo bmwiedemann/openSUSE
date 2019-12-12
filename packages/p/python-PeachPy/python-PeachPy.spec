@@ -1,7 +1,7 @@
 #
 # spec file for package python-PeachPy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PeachPy
 Version:        0.2.0
@@ -24,15 +23,16 @@ Release:        0
 Summary:        Portable Efficient Assembly Codegen in Higher-level Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/Maratyszcza/PeachPy
+URL:            https://github.com/Maratyszcza/PeachPy
 Source0:        PeachPy-%{version}.tar.xz
 Patch1:         automated-convertion-form-2to3.patch
 BuildRequires:  %{python_module opcodes}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module rednose}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
+ExclusiveArch:  x86_64
 
 %python_subpackages
 
