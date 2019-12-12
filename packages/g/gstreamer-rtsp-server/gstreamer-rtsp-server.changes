@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:21:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + rtsp-media: Use lock in gst_rtsp_media_is_receive_only
+  + rtsp-client:
+    - RTP Info when completed_sender
+    - Fix location uri-format by getting uri directly from context
+      instead
+
+-------------------------------------------------------------------
 Tue Sep 24 15:01:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:
