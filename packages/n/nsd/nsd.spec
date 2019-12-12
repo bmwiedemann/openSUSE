@@ -23,7 +23,7 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 #
 Summary:        An authoritative-only domain name server
@@ -34,6 +34,14 @@ Url:            http://open.nlnetlabs.nl/nsd/
 Source:         http://open.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz
 Source1:        nsd.service
 Source2:        tmpfiles-nsd.conf
+# Generated with from https://nlnetlabs.nl/people/
+#
+# curl -Ss https://nlnetlabs.nl/people/ | \
+#   grep 'PGP Key ID' | \
+#   sed 's,.*PGP Key ID: \([A-Z0-9 ]\+\).*,\1,' | \
+#   perl -e 'while($_=<>){chop; s, ,,g;print; print(" ");}' | \
+#   xargs gpg --export-options export-minimal --export > nsd.keyring
+# 
 Source4:        nsd.keyring
 Source5:        https://www.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz.asc
 Source10:       nsd-rpmlintrc

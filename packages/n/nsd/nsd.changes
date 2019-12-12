@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:50:13 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update keyring as per https://nlnetlabs.nl/people/
+
+-------------------------------------------------------------------
+Tue Dec 10 19:39:57 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- New upstream release 4.2.4
+
+FEATURES:
+- Fix #48: Add make distclean that removes config.h made by configure.
+  And add maintainer-clean that removes bison and flex output.
+
+BUG FIXES:
+- Detect fixed time memcmp for openssl 0.9.8 compatibility.
+- Detect EC_KEY_new_by_curve_name for openssl 0.9.8.
+- include limits.h for UINT_MAX.
+- If no recvmmsg, dont use msg_flags member, but errno for error,
+  where our fallback function left it, msg_flags also does not exist
+  on some systems.
+- Remove unused variable warning for portability.
+- Fix #52: do not log transient network full errors unless higher
+  verbosity is set.
+- Fix regressions in configparser.y where global variables were not
+  set for minimal-responses, round-robin and log-time-ascii.
+
+-------------------------------------------------------------------
 Wed Nov 20 13:33:09 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - New upstream release 4.2.3:
