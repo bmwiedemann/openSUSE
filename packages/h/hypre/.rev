@@ -60,4 +60,12 @@
 - Replaced -DHYPRE_SEQUENTIAL by -DHYPRE_WITH_MPI</comment>
     <requestid>752515</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5396213015f7ec2d406b5c6e4fa49770</srcmd5>
+    <version>2.18.2</version>
+    <time>1576189114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
+    <requestid>755685</requestid>
+  </revision>
 </revisionlist>
