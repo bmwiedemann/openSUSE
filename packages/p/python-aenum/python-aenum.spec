@@ -1,7 +1,7 @@
 #
 # spec file for package python-aenum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aenum
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        Advanced Enumerations, NamedTuples, and NamedConstants
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://bitbucket.org/stoneleaf/aenum
+URL:            https://bitbucket.org/stoneleaf/aenum
 Source:         https://files.pythonhosted.org/packages/source/a/aenum/aenum-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
