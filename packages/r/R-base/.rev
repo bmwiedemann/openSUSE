@@ -1397,4 +1397,41 @@ CHANGES IN R 3.4.2:
     <comment>Use %license (forwarded request 727202 from jayvdb)</comment>
     <requestid>727204</requestid>
   </revision>
+  <revision rev="70" vrev="27">
+    <srcmd5>04980cf6e3c804b046bba54437d281ec</srcmd5>
+    <version>unknown</version>
+    <time>1576189206</time>
+    <user>dimstar_suse</user>
+    <comment>-  CHANGES IN R 3.6.2:
+  NEW FEATURES:
+    * runmed(x, *) gains a new option na.action determining _how_ to
+      handle NaN or NA in x.
+    * dotchart() gains new options ann, xaxt, frame.plot and log.
+  INSTALLATION on a UNIX-ALIKE:
+    * Detection of the C stack direction has been moved from run-time
+      to configure: this is safer with LTO builds and allows the
+      detection to be overridden - see file config.site.
+    * Source-code changes enable installation on platforms using gcc
+      -fno-common (the expected default for gcc 10.x).
+  C-LEVEL FACILITIES:
+    * installTrChar (which is nowadays is wrapped by installChar) is
+      defined in Rinternals.h.  (Neither are part of the API.)
+  PACKAGE INSTALLATION:
+    * Header Rconfig.h contains the value of FC_LEN_T deduced at
+      installation which is used by the prototypes in headers
+      R_ext/BLAS.h and R_ext/Lapack.h but to avoid extensive breakage
+      this is only exposed when USE_FC_LEN_T is defined.
+      If a package's C/C++ calls to BLAS/LAPACK allow for the 'hidden'
+      arguments used by most Fortran compilers to pass the lengths of
+      Fortran character arguments, define USE_FC_LEN_T and include
+      Rconfig.h (possibly _via_ R.h) before including R_ext/BLAS.h or
+      R_ext/Lapack.h.
+    * A package with Fortran source code and perhaps C (but not C++)
+      sources can request for its shared object/DLL to be linked by the
+      Fortran compiler by including a line USE_FC_TO_LINK= in
+      src/Makevars[.win] and using $(SHLIB_OPENMP_FFLAGS) as part of
+      PKG_LIBS.
+      The known reason for doing so is a package which uses Fortran</comment>
+    <requestid>756062</requestid>
+  </revision>
 </revisionlist>

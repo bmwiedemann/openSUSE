@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        3.6.1
+Version:        3.6.2
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -34,11 +34,10 @@ Source10:       macros.R
 # PATCH-FIX-UPSTREAM Fix tre when wchar_t is unsigned int
 #Patch0:         tre.patch
 
-Url:            http://www.r-project.org/
+URL:            http://www.r-project.org/
 
 Summary:        R - statistics package (S-Plus like)
 License:        GPL-2.0-only OR GPL-3.0-only
-Group:          Productivity/Scientific/Math
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bzip2
 BuildRequires:  cairo-devel
@@ -164,7 +163,6 @@ mkdir -p %{buildroot}%{_datadir}/R/library
 
 %package -n R-base-devel
 Summary:        Metapackage, requires R-core-devel, R-core-libs, R-Matrix-devel
-Group:          Development/Libraries/Other
 Version:        %{Rversion}
 Release:        %release
 Requires:       R-Matrix-devel
@@ -180,7 +178,6 @@ the monolithic R-base-devel
 # R-core
 %package -n R-core
 Summary:        The core components of R
-Group:          Development/Libraries/Other
 Version:        %{Rversion}
 Release:        %release
 
@@ -338,7 +335,6 @@ This package provides the core of R, i.e. all that is in base.
 # R-core-devel
 %package -n R-core-devel
 Summary:        Libraries and include files for developing with R-base
-Group:          Development/Libraries/Other
 Provides:       R-devel = %{version}
 Provides:       R-devel-macros = %{version}
 Requires:       R-base
@@ -402,7 +398,6 @@ libraries to allow you to devel with R-base.
 #R-core-libs
 %package -n     R-core-libs
 Summary:        R language libraries
-Group:          System/Libraries
 
 %description -n R-core-libs
 This package contains the files from R/lib to make their usage
@@ -422,7 +417,6 @@ possible without installing a complete R. (I.e. VTK uses this)
 
 %package -n R-core-doc
 Summary:        Package provides all documentation of R base. PDFs, man pages, info pages
-Group:          Documentation/Other
 
 %description -n R-core-doc
 This packages provides all documentation of R base. PDFs, man pages, info pages
@@ -469,7 +463,6 @@ This packages provides all documentation of R base. PDFs, man pages, info pages
 
 %package -n R-core-packages
 Summary:        Metapackage, requires all core Packages
-Group:          Development/Libraries/Other
 Version:        %{Rversion}
 Release:        %release
 Requires:       R-compiler
@@ -495,7 +488,6 @@ Metapackage, Requires: all core Packages
 
 %package -n R-compiler
 Summary:        Package providing R-core packages R-compiler
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-compiler
@@ -527,7 +519,6 @@ This package provides R-compiler, one of the R-core packages.
 
 %package -n R-datasets
 Summary:        Package providing R-core datasets in R-datasets
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-datasets
@@ -548,7 +539,6 @@ This package provides R-datasets, one of R-core packages.
 
 %package -n R-grDevices
 Summary:        Package providing R-core graphics devices in R-grDevices
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-grDevices
@@ -602,7 +592,6 @@ This package provides R-grDevices, one of R-core packages.
 
 %package -n R-graphics
 Summary:        Package providing R-core graphics in R-graphics
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-graphics
@@ -653,7 +642,6 @@ This package provides R-graphics, one of R-core packages.
 
 %package -n R-grid
 Summary:        Package providing R-grid graphics in R-grid
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-grid
@@ -699,7 +687,6 @@ This package provides R-grid, one of R-core packages.
 
 %package -n R-methods
 Summary:        Package providing R-methods
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-methods
@@ -741,7 +728,6 @@ This package provides R-methods, one of R-core packages.
 
 %package -n R-parallel
 Summary:        Package providing R-parallel
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-parallel
@@ -804,7 +790,6 @@ This package provides R-parallel, one of R-core packages.
 
 %package -n R-splines
 Summary:        Package providing R-splines
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-splines
@@ -848,7 +833,6 @@ This package provides R-splines, one of R-core packages.
 
 %package -n R-stats
 Summary:        Package providing R-stats
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-stats
@@ -898,7 +882,6 @@ This package provides R-stats, one of R-core packages.
 # stats4
 %package -n R-stats4
 Summary:        Package providing R-stats4
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-stats4
@@ -933,7 +916,6 @@ This package provides R-stats4, one of R-core packages.
 
 %package -n R-tcltk
 Summary:        Package providing R-tcltk
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-tcltk
@@ -979,7 +961,6 @@ This package provides R-tcltk, one of R-core packages.
 # tools
 %package -n R-tools
 Summary:        Package providing R-tools
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-tools
@@ -1026,7 +1007,6 @@ This package provides R-tools, one of R-core packages.
 
 %package -n R-utils
 Summary:        Package providing R-utils
-Group:          Development/Libraries/Other
 Requires:       R-base = %{version}
 
 %description -n R-utils
@@ -1070,7 +1050,6 @@ This package provides R-utils, one of R-core packages.
 
 %package -n R-recommended-packages
 Summary:        Metapackage, requires all recommended Packages
-Group:          Development/Libraries/Other
 Version:        %{Rversion}
 Release:        %release
 Requires:       R-KernSmooth
@@ -1097,8 +1076,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Group:          Development/Libraries/Other
-Version:        1.3.22
+Version:        1.3.23
 Release:        %release
 Requires:       R-base
 
@@ -1129,7 +1107,6 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Group:          Development/Libraries/Other
 Version:        7.3.15
 Release:        %release
 Requires:       R-base
@@ -1161,7 +1138,6 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Group:          Development/Libraries/Other
 Version:        2.1.0
 Release:        %release
 Requires:       R-base
@@ -1194,7 +1170,6 @@ This packages provides R-cluster, one of the recommended packages.
 
 %package -n R-codetools
 Summary:        Package provides recommended R-codetools
-Group:          Development/Libraries/Other
 Version:        0.2.16
 Release:        %release
 Requires:       R-base
@@ -1216,8 +1191,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Group:          Development/Libraries/Other
-Version:        0.8.71
+Version:        0.8.72
 Release:        %release
 Requires:       R-base
 
@@ -1246,8 +1220,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Group:          Development/Libraries/Other
-Version:        2.23.15
+Version:        2.23.16
 Release:        %release
 Requires:       R-base
 
@@ -1275,7 +1248,6 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Group:          Development/Libraries/Other
 Version:        0.20.38
 Release:        %release
 Requires:       R-base
@@ -1308,7 +1280,6 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Group:          Development/Libraries/Other
 Version:        7.3.51
 Release:        %release
 Requires:       R-base
@@ -1341,8 +1312,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Group:          Development/Libraries/Other
-Version:        1.2.17
+Version:        1.2.18
 Release:        %release
 Requires:       R-base
 
@@ -1380,8 +1350,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-Matrix-devel
 Summary:        Package provides header files for recommended R-Matrix
-Group:          Development/Libraries/Other
-Version:        1.2.17
+Version:        1.2.18
 Release:        %release
 Requires:       R-Matrix
 Requires:       R-base
@@ -1399,8 +1368,7 @@ Package provides header files for recommended R-Matrix
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Group:          Development/Libraries/Other
-Version:        1.8.28
+Version:        1.8.31
 Release:        %release
 Requires:       R-base
 
@@ -1430,8 +1398,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Group:          Development/Libraries/Other
-Version:        3.1.140
+Version:        3.1.142
 Release:        %release
 Requires:       R-base
 
@@ -1464,7 +1431,6 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Group:          Development/Libraries/Other
 Version:        7.3.12
 Release:        %release
 Requires:       R-base
@@ -1495,7 +1461,6 @@ This packages provides R-nnet, one of the recommended packages.
 
 %package -n R-rpart
 Summary:        Package provides recommended R-rpart
-Group:          Development/Libraries/Other
 Version:        4.1.15
 Release:        %release
 Requires:       R-base
@@ -1528,7 +1493,6 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Group:          Development/Libraries/Other
 Version:        7.3.11
 Release:        %release
 Requires:       R-base
@@ -1561,8 +1525,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Group:          Development/Libraries/Other
-Version:        2.44.1
+Version:        3.1.8
 Release:        %release
 Requires:       R-base
 
