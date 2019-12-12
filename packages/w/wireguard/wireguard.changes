@@ -1,7 +1,30 @@
 -------------------------------------------------------------------
+Thu Dec 12 11:57:09 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20191212
+  * socket: convert to ipv6_dst_lookup_flow for 5.5
+  * wg-quick: linux: add support for nft and prefer it
+  * wg-quick: linux: support older nft(8)
+  * global: fix up spelling
+  * main: remove unused include <linux/version.h>
+
+-------------------------------------------------------------------
+Wed Dec 11 20:52:31 UTC 2019 - chris@computersalat.de
+
+- Update to 0.0.20191206
+  * chacha20poly1305: double check the sgmiter logic with test
+  * wg-quick: linux: ignore save warnings for iptables-nft
+  * wg-quick: linux: suppress more warnings on weird kernels
+  * wg-quick: linux: some iptables don't like empty lines
+  * crypto: use new assembler macros for 5.5
+  * chacha20poly1305: port to sgmitter for 5.5
+  * netlink: prepare for removal of genl_family_attrbuf in 5.5
+- fix changelog for 0.0.20191205
+
+-------------------------------------------------------------------
 Thu Dec  5 20:21:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 0.0.20191127
+- Update to version 0.0.20191205
   * wg-quick: linux: suppress error when finding unused table
   * wg-quick: linux: ensure postdown hooks execute
   * wg-quick: linux: have remove_iptables return true
