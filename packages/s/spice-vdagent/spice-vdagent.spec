@@ -1,7 +1,7 @@
 #
 # spec file for package spice-vdagent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,11 +23,12 @@ Release:        0
 Summary:        Agent for Spice guests
 License:        GPL-3.0-or-later
 Group:          System/Daemons
-Url:            http://spice-space.org/
+URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source1:        http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Patch0:         spice-vdagent-var_run.patch
+Patch1:         vdagentd-Fix-session-lookup-for-new-GNOME-versions.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  glib2-devel
@@ -61,6 +62,7 @@ Features:
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure \
