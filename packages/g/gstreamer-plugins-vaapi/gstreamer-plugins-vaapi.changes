@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:05:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + meson build: halt configuration if no renderer API
+  + libs: decoder: h265: skip all pictures prior the first I-frame
+  + libs: window: x11: Avoid usage of deprecated API
+
+-------------------------------------------------------------------
 Tue Sep 24 14:49:26 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:
