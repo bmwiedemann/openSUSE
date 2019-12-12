@@ -47,10 +47,13 @@ Requires:       python-dephell-shells >= 0.1.3
 Requires:       python-dephell-specifier >= 0.1.7
 Requires:       python-dephell-venvs >= 0.1.16
 Requires:       python-dephell-versioning
+# Yeah, html5lib is required by dephell, and no, autodiscovery won’t find it.
+# rpmlint is stupid
 Requires:       python-docker
 Requires:       python-dockerpty
 Requires:       python-fissix
 Requires:       python-flatdict
+Requires:       python-html5lib
 Requires:       python-m2r
 Requires:       python-packaging
 Requires:       python-pip >= 18.0
