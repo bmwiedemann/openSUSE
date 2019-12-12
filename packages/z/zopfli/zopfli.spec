@@ -17,22 +17,23 @@
 
 
 %define pngname zopflipng
-%define libversion 1.0.1
-%define pnglibversion 1.0.0
+%define libversion 1.0.3
+%define pnglibversion 1.0.3
 %define libname lib%{name}1
 %define libpngname lib%{name}png1
+%define releasedateepoch 1574898960
 Name:           zopfli
-Version:        1.0.1+git.20170707
+Version:        1.0.3
 Release:        0
 Summary:        GZip compatible compression utlity
 License:        Apache-2.0
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/google/zopfli
-Source:         %{name}-%{version}.tar.xz
-Source1:        Makefile
+Source:         https://github.com/google/zopfli/archive/zopfli-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  make
+BuildRequires:  cmake >= 2.8.11
 
 %description
 Example program for libzopfli to create gzip compatible files. Files can be
@@ -66,31 +67,21 @@ Use the ZopfliInitOptions function to place the default values in the
 ZopfliOptions first.
 
 %prep
-%setup -q
-cp %{SOURCE1} Makefile
+%autosetup -n %{name}-%{name}-%{version}
 
 %build
-make CFLAGS="%{optflags}" %{?_smp_mflags} libzopfli libzopflipng zopfli zopflipng
+%cmake
+%cmake_build
 # help2man since 1.47.1 respects SOURCE_DATE_EPOCH
-export SOURCE_DATE_EPOCH=`echo %{version} | sed -e 's/.*git\.//' | date -f/dev/stdin +%%s`
+export SOURCE_DATE_EPOCH=%{releasedateepoch}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RPM_BUILD_DIR/%{name}-%{name}-%{version}/build
 help2man --help-option="-h" --version-string=%{version} --no-info --no-discard-stderr ./%{name} > %{name}.1
 help2man --help-option="-h" --version-string=%{version} --no-info --no-discard-stderr ./%{pngname} > %{pngname}.1
 
 %install
-install -D -pm 0755 %{name} %{buildroot}%{_bindir}/%{name}
-install -D -pm 0755 %{pngname} %{buildroot}%{_bindir}/%{pngname}
-install -D -pm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
-install -D -pm 0644 %{pngname}.1 %{buildroot}%{_mandir}/man1/%{pngname}.1
-install -d -pm 0755 %{buildroot}%{_libdir}
-install -pm 0755 libzopfli.so.%{libversion} %{buildroot}%{_libdir}/
-install -pm 0755 libzopflipng.so.%{pnglibversion} %{buildroot}%{_libdir}/
-install -d -pm 0755 %{buildroot}%{_includedir}/zopfli/
-install -pm 0644 src/zopfli/*.h %{buildroot}%{_includedir}/zopfli/
-install -pm 0644 src/zopflipng/*.h %{buildroot}%{_includedir}/zopfli/
-ln -s libzopfli.so.%{libversion} %{buildroot}%{_libdir}/libzopfli.so
-ln -s libzopfli.so.%{libversion} %{buildroot}%{_libdir}/libzopfli.so.1
-ln -s libzopflipng.so.%{pnglibversion} %{buildroot}%{_libdir}/libzopflipng.so
-ln -s libzopflipng.so.%{pnglibversion} %{buildroot}%{_libdir}/libzopflipng.so.1
+%cmake_install
+install -D -pm 0644 build/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+install -D -pm 0644 build/%{pngname}.1 %{buildroot}%{_mandir}/man1/%{pngname}.1
 
 %post -n %{libname} -p /sbin/ldconfig
 %post -n %{libpngname} -p /sbin/ldconfig
@@ -98,7 +89,8 @@ ln -s libzopflipng.so.%{pnglibversion} %{buildroot}%{_libdir}/libzopflipng.so.1
 %postun -n %{libpngname} -p /sbin/ldconfig
 
 %files
-%doc README COPYING README.zopflipng
+%doc README README.zopflipng
+%license COPYING
 %{_bindir}/%{name}
 %{_bindir}/zopflipng
 %{_mandir}/man1/%{name}.1%{ext_man}
@@ -112,6 +104,8 @@ ln -s libzopflipng.so.%{pnglibversion} %{buildroot}%{_libdir}/libzopflipng.so.1
 
 %files -n libzopfli-devel
 %{_libdir}/libzopfli*.so
-%{_includedir}/zopfli/
+%{_includedir}/zopfli.h
+%{_includedir}/zopflipng_lib.h
+%{_libdir}/cmake/Zopfli
 
 %changelog
