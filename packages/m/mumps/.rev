@@ -128,4 +128,12 @@
   fixes unresolvable packages.</comment>
     <requestid>754345</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>387507fb1c144873e1c68e51001024ca</srcmd5>
+    <version>5.2.1</version>
+    <time>1576189108</time>
+    <user>dimstar_suse</user>
+    <comment>  jsc#SLE-8604).</comment>
+    <requestid>755681</requestid>
+  </revision>
 </revisionlist>
