@@ -17,7 +17,7 @@
 
 
 Name:           perl-Glib-Object-Introspection
-Version:        0.047
+Version:        0.048
 Release:        0
 #Upstream:  This library is free software; you can redistribute it and/or modify it under the terms of the Lesser General Public License (LGPL). For more information, see http://www.fsf.org/licenses/lgpl.txt
 %define cpan_name Glib-Object-Introspection
