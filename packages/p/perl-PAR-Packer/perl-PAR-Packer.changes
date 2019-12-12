@@ -216,7 +216,7 @@ Sun Oct  8 07:23:09 UTC 2017 - coolo@suse.com
       C:\Users\jon\AppData\Local\Temp\parlzcPb.exe: Perl lib version (5.24.1) doesn't match executable 'perl.exe' version (5.24.0) at C:/Perl64/lib/Config.pm line 62.
       Compilation failed in require at C:/Perl64/lib/Errno.pm line 10.
       ...
-      C:\Perl64\sitein/pp: Failed to extract a parl from 'PAR::StrippedPARL::Static' to file 'C:\Users\jon\AppData\Local\Temp\parl3swwQJc.exe' at C:/Perl64/site/lib/PAR/Packer.pm line 1184, <DATA> line 1.
+      C:\Perl64\site in/pp: Failed to extract a parl from 'PAR::StrippedPARL::Static' to file 'C:\Users\jon\AppData\Local\Temp\parl3swwQJc.exe' at C:/Perl64/site/lib/PAR/Packer.pm line 1184, <DATA> line 1.
   
     Now, pp will fail and with a more useful message.
   

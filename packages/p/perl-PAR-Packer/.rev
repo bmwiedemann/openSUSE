@@ -154,4 +154,11 @@
     <comment></comment>
     <requestid>727047</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d01a2ff63a6d0b810f450cae52b970ee</srcmd5>
+    <version>1.049</version>
+    <time>1576138062</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency fix by Factory maintainer - Recover with new createrepo_c</comment>
+  </revision>
 </revisionlist>
