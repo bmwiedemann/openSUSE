@@ -6,11 +6,11 @@ mkdir -p data2/voices-ogg
 cd data2/voices-ogg
 
 # Pick contents files for voices
-curl -q https://gcompris.net/data2/voices-ogg/Contents -o Contents
+curl -q https://cdn.kde.org/gcompris/data2/voices-ogg/Contents -o Contents
 
 for voice in $(awk '{print $2}' < Contents | grep ".rcc");
 do 
-	wget https://gcompris.net/data2/voices-ogg/$voice
+	wget https://cdn.kde.org/gcompris/data2/voices-ogg/$voice
 done
 
 md5sum -c Contents
