@@ -1,7 +1,7 @@
 #
 # spec file for package python-gst
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name gst-python
 Name:           python-gst
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
