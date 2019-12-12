@@ -19,7 +19,7 @@
 %define distname eric6
 
 Name:           eric
-Version:        19.11
+Version:        19.12
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later
@@ -82,9 +82,6 @@ python-eric6-api or python3-eric6-api is needed.
 %setup -q -n %{distname}-%{version}
 
 find . -name \*.py -exec sed -i -e '/^#!\/usr\/bin.*python/d' '{}' \;
-
-# fix a small glitch and remove, when fixed upstream
-sed -i 's/.__checkSpellLanguage(language)/.__checkSpellLanguage()/g' eric/eric6/QScintilla/Editor.py
 
 %build
 # nothing here
