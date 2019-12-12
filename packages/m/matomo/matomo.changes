@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Thu Dec 12 07:42:22 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update: 3.13.0
+  * matomo-org/matomo
+    #15030 Adds links to online guides in reports help [by @sgiehl, @diosmosis]
+    #4519 Segment by Product Category, Product name, Product SKU, Product prices [by @diosmosis]
+    #15049 More efficient heart beat timer [by @tsteur]
+    #10439 After updating the 2019_01 archive blob tables are gaining size [by @diosmosis]
+    #15086 Auto Archiving falls back to DEFAULT_DATE_LAST even if last archiving ran until completion [by @katebutler, @diosmosis]
+    #10765 Write a User guide for Custom alerts [by @mattab]
+    #14835 Page Overlay – JavaScript Error – TypeError: location.match(…) is null [by @diosmosis]
+    #15101 Matomo 3.12.0 missing Action in Proxy module
+    #15044 Slight performance improvement when rendering data table visualisations [by @tsteur, @diosmosis]
+    #15000 _pk_testcookies set while using “disableCookies” [by @tsteur]
+    #15070 Matomo 3.12 doesn’t work with open_basedir restrictions [by @tsteur]
+    #15078 Integrity check issue in Matomo 3.12.0
+    #15093 Fix reports by dimensions layout [by @sgiehl, @diosmosis]
+    #15102 Fix Insight visualization layout [by @sgiehl, @tsteur]
+    #15151 E-Mail reports date range error [by @diosmosis]
+    #14945 In Comparison mode, numbers are not formatted (thousands separator) [by @katebutler]
+    #14821 Make Matomo compatible with PHP 7.4 [by @diosmosis]
+    #10373 Excluding IPs doesn’t work on php7
+    #14623 Update message creates empty space in admin and pushes widgets down
+    #14714 JS Tracker: setUserId and addEcommerceItem sku should work when User ID is a number [by @tsteur]
+    #15080 Comparison feature displays segment definition instead of segment name when segmenting action based custom dimensions [by @diosmosis]
+    #15103 Ensure insight reports uses the correct compare period number for periods other than day [by @sgiehl, @tsteur]
+    #15140 [automatic translation update] Updated 173 strings in 10 languages (es-ar, de, el, nl, pl, pt-br, pt, sq, zh-cn, zh-tw) [by @sgiehl]
+    #15195 [automatic translation update] Updated 160 strings in 6 languages (fr, it, ja, lt, pt-br, tr) [by @sgiehl]
+    #12816 Rename “Clicked URL” dimension to “Clicked Outlink” [by @katebutler]
+    #14360 UserID no longer overwrites VisitorId [by @MichaelHeerklotz, @diosmosis]
+    #14827 German title HTML entity encoded [by @sgiehl]
+    #15026 Use thousands separator in single metric view [by @katebutler, @tsteur]
+    #15032 Some overlay improvements [by @tsteur, @diosmosis]
+    #15037 Prevent warning array to string conversion in console renderer [by @tsteur, @diosmosis]
+    #15055 Updates device detector to 3.12.1 [by @sgiehl, @diosmosis]
+    #15057 Prevent notice in tracker code generator [by @tsteur, @diosmosis]
+    #15066 Avoid ‘Trying to add two strings in DataTable\Row::sumRowArray’ warning in SEO API [by @sgiehl, @diosmosis]
+    #15079 Revert umlaut icons [by @Findus23, @tsteur]
+    #15087 3.12.0 (3.12.0-b4 and up) is broken on NixOS
+    #15088 Rename “Clicked URL” dimension to “Clicked Outlink” [by @katebutler, @diosmosis]
+    #15090 Made a few minor grammar changes to the README.md [by @ALucatero03, @tsteur]
+    #15095 Fix zend session hides actual error when there are two or more errors… [by @tsteur]
+    #15098 Invert change comparison when displaying percents in the UI … [by @diosmosis]
+    #15110 Fixes a couple segment handling regressions in the UI [by @diosmosis]
+    #15113 Document that Matomo won’t work with a MySQL load balancer such as ProxySQL unless… [by @mattab]
+    #15114 Better detection of a succesfull start of a session [by @tsteur, @diosmosis]
+    #15116 Show the link to upload a new plugin when enable_plugin_upload=1 [by @mattab, @diosmosis]
+    #15129 Don’t freeze lefthand column of datatable on small screens [by @katebutler, @tsteur]
+    #15147 Adds new event to define if lower metric values are better [by @sgiehl, @tsteur]
+    #15152 Fix manual plugin upload process when Marketplace plugin is disabled [by @diosmosis, @tsteur]
+    #15165 Update FAQ “How do I measure and get reports for my page sections / categories / mini-sites / languages?” to reflect how segment now work [by @tsteur]
+    #15166 Fix socket configuration not applied in MySQLi [by @tsteur, @diosmosis]
+    #15178 API reference doc: fix some of the example links [by @mattab, @diosmosis]
+    #15183 Update spyc to 0.6.X [by @tsteur]
+    #15187 Fix broken dashboard when a new version available and when multi_server_environment = 1 [by @mattab, @diosmosis]
+    #15189 Support CliMulti on OS X and print note about whether CliMulti is used in archive output [by @diosmosis]
+
+  * matomo-org/device-detector
+    #5797 Did not catch “The Knowledge AI”
+    #6070 Add 7 new crawlers and 3 feed readers [by @Kdecherf, @sgiehl]
+    #6078 add new rules and tests for Nokia/Microsoft devices [by @mimmi20, @sgiehl]
+    #6081 Detect devices for brands: Samsung, Vivo, iHunt, Huawei, Ritmix, Ross&Moor [by @sanchezzzhak, @sgiehl]
+    #6083 Fail to Detect Meitu Device
+    #6084 Added detect devices Meitu [by @sanchezzzhak, @sgiehl]
+    #6085 Adds detection for Yandex Browser Lite and improves version detection for Yandex Browser [by @liviuconcioiu, @sgiehl]
+    #6086 Adds detection for Shopify Partner bot [by @liviuconcioiu, @sgiehl]
+    #6087 Added RestSharp library [by @wallin, @sgiehl]
+    #6088 Improves detection for Vonino devices [by @liviuconcioiu, @sgiehl]
+    #6092 Fix detection for AIS [by @liviuconcioiu, @sgiehl]
+    #6093 Adds detection for Servo browser engine [by @liviuconcioiu, @sgiehl]
+    #6096 Not Detecting OnePlus 7 Pro
+
+  * matomo-org/component-network
+    #4 Function getIPRangeBounds doesn’t always work on php7 [by @tsteur]
+    #10 Validate CIDR range is 0..32 (IPv4) or 0..128 (IPv6); ref RFC-4632 [by @robocoder, @tsteur]
+    #12 Test enhancement [by @peter279k, @tsteur]
+    #13 Improving tests for IP class [by @peter279k, @tsteur]
+
+  * matomo-org/tracker-proxy
+    #57 Test enhancement [by @peter279k, @tsteur]
+
+  * matomo-org/tag-manager
+    #176 Adjustments for using TM and classic Tracking Code at the same time [by @MichaelHeerklotz, @tsteur]
+    #184 Do not regenerate containers after core archiving [by @tsteur]
+    #197 Use matomo.js and matomo.php as default if preferred [by @tsteur]
+    #198 Convert empty date to null [by @tsteur]
+    #199 fix: Tag::updateContainerTag setting a wrong startDate and endDate value [by @lockland, @tsteur]
+    #202 Fix first trigger callback when tracker js is already loaded [by @MichaelHeerklotz, @tsteur]
+
+  * matomo-org/matomo-log-analytics
+    #251 Clarified usage of –token-auth=<SECRET> [by @cedwardsmedia, @tsteur]
+
+  * matomo-org/matomo-php-tracker
+    #44 Unlink userId and visitorId logic [by @MichaelHeerklotz, @diosmosis]
+    #48 Fix wrong tracking url generated if tracker API endpoint already contains query search [by @tsteur, @diosmosis]
+    #50 Regression: Wrong header is enabled only for GET. [by @diosmosis]
+
+  * matomo-org/referrer-spam-blacklist
+    #1143 Add 033nachtvandeliteratuur.nl [by @ericguirbal, @spmedia]
+    #1145 Add 350+ spammer in bulk [by @Zodiac1978, @spmedia]
+    #1146 Block billyblog.online [by @jonhenshaw, @spmedia]
+    #1147 Update spammers.txt [by @spmedia]
+    #1148 Add tammyblog.online [by @ericguirbal, @spmedia]
+    #1149 Block monicablog.xyz [by @jonhenshaw, @spmedia]
+
+  * matomo-org/component-ini
+    #11 Test enhancement [by @peter279k, @tsteur]
+    #12 Problem about IniReader::getFileContent method implementation
+
+-------------------------------------------------------------------
 Thu Oct 31 09:47:25 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - js folder needs to be RW for the tag manager plugin

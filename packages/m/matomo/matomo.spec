@@ -1,7 +1,7 @@
 #
 # spec file for package matomo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,12 @@
 %endif
 
 Name:           matomo
-Version:        3.12.0
+Version:        3.13.0
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://matomo.org/
+URL:            http://matomo.org/
 Source0:        http://builds.matomo.org/%{name}-%{version}.tar.gz
 Source2:        %{name}.conf
 Source3:        %{name}.logrotate
