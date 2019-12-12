@@ -17,13 +17,14 @@
 
 
 Name:           spectre-meltdown-checker
-Version:        0.42
+Version:        0.43
 Release:        0
 Summary:        Spectre & Meltdown Vulnerability Checker
 License:        GPL-3.0-only
 Group:          Productivity/Security
 Url:            https://github.com/speed47/spectre-meltdown-checker
 Source:         https://github.com/speed47/spectre-meltdown-checker/archive/v%version.tar.gz
+Source1:        https://www.gnu.org/licenses/gpl-3.0-standalone.html
 ExclusiveArch:  %ix86 x86_64
 
 %description
@@ -44,6 +45,8 @@ number.
 
 %build
 
+cp %SOURCE1 .
+
 %install
 mkdir -p %buildroot/usr/bin
 install -m 0755 spectre-meltdown-checker.sh %buildroot/usr/bin/
@@ -52,7 +55,7 @@ install -m 0755 spectre-meltdown-checker.sh %buildroot/usr/bin/
 exec bash -n spectre-meltdown-checker.sh
 
 %files
-%license LICENSE
+%license gpl-3.0-standalone.html
 %doc README.md
 %{_bindir}/*
 

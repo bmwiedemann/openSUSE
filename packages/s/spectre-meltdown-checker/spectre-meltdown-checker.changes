@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec 11 07:37:50 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- version 0.43
+  - feat: implement TAA detection (CVE-2019-11135 bsc#1139073)
+  - feat: implement MCEPSC / iTLB Multihit detection (CVE-2018-12207 bsc#1117665)
+  - feat: taa: add TSX_CTRL MSR detection in hardware info
+  - feat: fwdb: use both Intel GitHub repo and MCEdb to build our firmware version database
+  - feat: use --live with --kernel/--config/--map to override file detection in live mode
+  - enh: rework the vuln logic of MDS with --paranoid (fixes #307)
+  - enh: explain that Enhanced IBRS is better for performance than classic IBRS
+  - enh: kernel: autodetect customized arch kernels from cmdline
+  - enh: kernel decompression: better tolerance against missing tools
+  - enh: mock: implement reading from /proc/cmdline
+  - fix: variant3a: Silvermont CPUs are not vulnerable to variant 3a
+  - fix: lockdown: detect Red Hat locked down kernels (impacts MSR writes)
+  - fix: lockdown: detect locked down mode in vanilla 5.4+ kernels
+  - fix: sgx: on locked down kernels, fallback to CPUID bit for detection
+  - fix: fwdb: builtin version takes precedence if the local cached version is older
+  - fix: pteinv: don't check kernel image if not available
+  - fix: silence useless error from grep (fixes #322)
+  - fix: msr: fix msr module detection under Ubuntu 19.10 (fixes #316)
+  - fix: mocking value for read_msr
+  - chore: rename mcedb cmdline parameters to fwdb, and change db version scheme
+  - chore: fwdb: update to v130.20191104+i20191027
+  - chore: add GitHub check workflow
+- upstream tarball no longer includes license, use the gpl 3 standalone html for it
+
+-------------------------------------------------------------------
 Wed Jun 26 06:54:42 UTC 2019 - Pavol Cupka <palica@liguros.net>
 
 - version 0.42
