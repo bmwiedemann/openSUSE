@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 23:55:40 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Support older SLE systems which don't have "usermod -w -v".
+
+-------------------------------------------------------------------
 Thu Oct  3 01:53:53 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 3.18. The full upstream changelog is available from:

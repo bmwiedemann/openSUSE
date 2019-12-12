@@ -1,7 +1,7 @@
 #
 # spec file for package lxd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -326,9 +326,11 @@ touch /etc/subuid /etc/subgid ||:
 # This default setting of 500 million is enough for ~8000 isolated containers,
 # which should be enough for most users.
 grep -q '^root:' /etc/subuid || \
-	usermod -v 400000000-900000000 root ||:
+	usermod -v 400000000-900000000 root &>/dev/null || \
+	echo "root:400000000:500000001" >>/etc/subuid ||:
 grep -q '^root:' /etc/subgid || \
-	usermod -w 400000000-900000000 root ||:
+	usermod -w 400000000-900000000 root &>/dev/null || \
+	echo "root:400000000:500000001" >>/etc/subgid ||:
 
 %service_add_pre %{name}.service
 
