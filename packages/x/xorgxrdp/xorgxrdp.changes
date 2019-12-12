@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 11 09:08:25 UTC 2019 - Felix Zhang <fzhang.foss@gmail.com>
+
+- Update to version 0.2.12
+  + Glamor support for hardware acceleration #151
+  + Fix some memory leak #152
+  + Fix issue on screen resizing #153 neutrinolabs/xrdp#914
+
+-------------------------------------------------------------------
 Sat Oct 12 10:43:24 UTC 2019 - Felix Zhang <fezhang@suse.com>
 
 - Update to version 0.2.11 (jsc#SLE-9612)
