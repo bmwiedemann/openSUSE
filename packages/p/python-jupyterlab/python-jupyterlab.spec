@@ -92,7 +92,8 @@ etc.).
 # not needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --no-deps --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 
 %{jupyter_move_config}
 %python_expand sed -i -e 's|^#!/usr/bin/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/node-version-check.js
