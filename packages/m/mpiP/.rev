@@ -92,4 +92,12 @@
 - Enable openmpi3 builds for Leap and SLE &gt; 15.1 (jsc#SLE-7773).</comment>
     <requestid>752513</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>22a8e86fd443c710ce14a913479ded66</srcmd5>
+    <version>3.4.1</version>
+    <time>1576189111</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
+    <requestid>755682</requestid>
+  </revision>
 </revisionlist>
