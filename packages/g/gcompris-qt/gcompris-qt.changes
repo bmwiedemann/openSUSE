@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Dec 10 07:29:54 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Upgrade to version 0.97
+  This new version contains 2 new activities:
+  + A programming maze: to learn the basics of programming with a 
+    few instructions
+  + Baby tangram: to learn the basics of tangram 
+  New features:
+  + new sub-categories to organize activities
+  + new background music feature and audio tracks
+  + new volume settings for audio effects
+  + new speed setting in several activities (gletters, algebra,
+    readingh, note_names)
+  + new feature in chess activities to display captured pieces
+  + new option to go to next level manually in drawletters and drawnumbers
+  + new voices for en_US
+  + new images for colors activity
+  + new images for advanced_colors activity
+  + new images for target activity
+  + improve settings layout
+  + improve share activity layout
+  + improve categorisation activity layout
+  + resource files are now stored in KDE server (https://cdn.kde.org/)
+  + add a tutorial to even/odd numbers
+  + add intro to piano_composition
+  + add malayalam dataset to gletters
+  + add breton dataset to wordsgame
+  + fix voices not playing in geography
+  + fix sounds not playing in mining
+  + fix portrait mode in binary_bulb
+  + fix high cpu load in menu
+  + fix hint image size in photo_hunter
+  + fix layout in color_mix
+ and lots of other small fixes...
+- Packaging spec-clean minimal (copyright, deps order) 
+- Update url to https scheme
+
+-------------------------------------------------------------------
 Mon Sep  9 01:27:22 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Set valid categories in desktop file

@@ -1,7 +1,7 @@
 #
 # spec file for package gcompris-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,14 @@
 
 
 Name:           gcompris-qt
-Version:        0.96
+Version:        0.97
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
-URL:            http://gcompris.net
-Source0:        http://gcompris.net/download/qt/src/%{name}-%{version}.tar.xz
-Source1:        http://gcompris.net/download/qt/src/%{name}-%{version}.tar.xz.sig
+URL:            https://gcompris.net
+Source0:        https://gcompris.net/download/qt/src/%{name}-%{version}.tar.xz
+Source1:        https://gcompris.net/download/qt/src/%{name}-%{version}.tar.xz.sig
 Source2:        https://share.kde.org/index.php/s/YjKzYs1bgDsOo5V/download#/%{name}.keyring
 Source3:        gcompris-qt-rpmlintrc
 BuildRequires:  extra-cmake-modules
@@ -35,8 +35,8 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qml-box2d
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.6.0
-BuildRequires:  pkgconfig(openssl)
 # We don't want the Administrative documentation
 # BuildRequires:  kdoctools-devel
 BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5Xml) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.6.0
-BuildRequires: update-desktop-files
+BuildRequires:  pkgconfig(openssl)
 # Runtime requirements, it doesn't start without them (boo#1011125)
 Requires:       %{name}-activities = %{version}
 Requires:       libQt5Multimedia5 >= 5.6.0
