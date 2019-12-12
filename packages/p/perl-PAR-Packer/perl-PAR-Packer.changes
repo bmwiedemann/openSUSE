@@ -64,7 +64,7 @@ Tue Apr 30 05:23:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
     also have a *standard* Strawberry installation installed in C:\strawberry.
     Under certain conditions, parl created by the portable installation
     may have have a built-in @INC of [ C:\strawberry\perl\lib, C:\strawberry\perl\site\lib, 
-    C:\strawberry\perlendor\lib ], i.e. pointing to the *standard* installation.
+    C:\strawberry\perl\vendor\lib ], i.e. pointing to the *standard* installation.
     This will cause it to load modules from the *standard* installation. If the versions
     of the two installations are different, this may cause weird failures.
   
