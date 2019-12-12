@@ -18,7 +18,7 @@
 
 %define gst_branch 1.0
 Name:           gstreamer-plugins-libav
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
 License:        GPL-2.0-or-later
@@ -26,10 +26,6 @@ Group:          Productivity/Multimedia/Other
 URL:            http://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-%{version}.tar.xz
 Source1000:     baselibs.conf
-# PATCH-FIX-UPSTREAM gst-libav-fix-mem-leak.patch -- Fix mem leak
-Patch0:         gst-libav-fix-mem-leak.patch
-# PATCH-FIX-UPSTREAM gst-libav-fix-segfault.patch -- Fix segfault
-Patch1:         gst-libav-fix-segfault.patch
 
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
@@ -85,8 +81,6 @@ This plugin contains the documentation
 %setup -q -n gst-libav-%{version}
 # Ensure we cannot use the embedded libav
 rm -rf gst-libs/ext/libav
-%patch0 -p1
-%patch1 -p1
 
 %build
 # TODO: switch to meson, but need to allow a GPL build first

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:00:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + avvidenc: Fix error propagation
+  + avdemux: Fix segmentation fault if long_name is NULL
+  + avviddec:
+    - Fix huge leak caused by circular reference
+    - Enforce allocate new AVFrame per input frame
+  + avdec_mpeg2video (and probably more): Fix huge memory leak.
+- Drop patches fixed upstream:
+  + gst-libav-fix-mem-leak.patch
+  + gst-libav-fix-segfault.patch
+
+-------------------------------------------------------------------
 Thu Nov 28 22:15:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gst-libav-fix-mem-leak.patch: Fix memory leak.
