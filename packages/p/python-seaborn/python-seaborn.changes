@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+- Re-enable Disable TestHeatmap.test_heatmap_axes and 
+  TestDendrogram.test_dendrogram_rotate since matplotlib has been
+  updated.
+
+-------------------------------------------------------------------
 Mon Nov  4 16:25:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable TestHeatmap.test_heatmap_axes and 

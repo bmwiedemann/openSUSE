@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-seaborn
 Version:        0.9.0
 Release:        0
@@ -102,7 +103,7 @@ Some of the features that seaborn offers are:
 # This should be fixed in the next matplotlib release.
 # See: https://github.com/mwaskom/seaborn/issues/1773
 export PYTHONPATH="%{buildroot}%{python3_sitelib}"
-pytest-%{python3_bin_suffix} seaborn -k "not test_cbar_ticks and not test_dendrogram_rotate and not test_heatmap_axes"
+pytest-%{python3_bin_suffix} seaborn -k "not test_cbar_ticks"
 
 %files %{python_files}
 %license LICENSE
