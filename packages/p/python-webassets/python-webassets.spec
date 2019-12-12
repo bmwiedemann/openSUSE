@@ -1,7 +1,7 @@
 #
 # spec file for package python-webassets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        Media asset management for Python, with glue code for various we
 # six.py=MIT
 License:        BSD-2-Clause AND Apache-2.0 AND LGPL-2.1-only AND BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/miracle2k/webassets/
+URL:            https://github.com/miracle2k/webassets/
 Source:         https://files.pythonhosted.org/packages/source/w/webassets/webassets-%{version}.tar.gz
 Patch0:         tests.patch
 BuildRequires:  %{python_module mock}
@@ -60,7 +60,8 @@ sed -i -e 's:e.message:e.args[0]:g' tests/test_filters.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{pytest}
+export LANG="en_US.UTF8"
+%pytest
 
 %files %{python_files}
 %license LICENSE

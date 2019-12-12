@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 20:55:03 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Adding locale variables, as some tests would fail due to unicode errors.
+
+-------------------------------------------------------------------
 Fri Mar  8 15:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to make tests pass:

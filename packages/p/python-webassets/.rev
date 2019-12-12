@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>682893</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44b9ebb19f9011ad0903e2d327e42221</srcmd5>
+    <version>0.12.1</version>
+    <time>1576189057</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding locale variables, as some tests would fail due to unicode errors.</comment>
+    <requestid>755459</requestid>
+  </revision>
 </revisionlist>
