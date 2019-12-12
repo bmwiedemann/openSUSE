@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 12 13:47:14 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.5
+  * Improve dynamic background animated transitions (kde#414174)
+  * Fix endless growing/shrinking for items size by introducing an
+    AutomaticItemSizer class that is tracking the algorithm
+    predictions and results in order to identify the issue/case
+    (kde#414180)
+  * Improve paddings and margins for applets that are touching the
+    screen edge and at the same time follow Fitt's Law
+  * Remove workarounds for margins and paddings for plasma systray
+    (kde#414104)
+  * Don't crash when changing layouts by unloading Latte::View(s)
+    first and their Plasma::Containment(s) afterwards (kde#412864)
+  * Don't drag/maximize windows from different virtual desktops
+    than the current one (kde#414089)
+  * Fixes for dynamic background: force transparency codepath
+    (kde#414071)
+  * Ignore plasma panels for Latte heuristics. Any plasma window
+    touching the screen edge and having thickness <=96px is
+    considered a plasma panel.
+  * Update application data after 1500ms after their first fetching
+    to catch up with some applications that are changing them with
+    delay such as libreoffice (kde#413671)
+  * Remove some deprecated code for qt>=5.14
+  * Drop ksysguard dependency with kde frameworks >=5.62
+
+-------------------------------------------------------------------
 Mon Oct 28 08:22:43 UTC 2019 - wbauer@tmo.at
 
 - Update to 0.9.4
