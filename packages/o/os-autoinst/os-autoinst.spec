@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1575895968.5daf6345
+Version:        4.6.1576050328.08c055a7
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -31,15 +31,22 @@ Source0:        %{name}-%{version}.tar.xz
 %define opencv_require pkgconfig(opencv4)
 %endif
 %define build_requires autoconf automake gcc-c++ libtool pkg-config perl(Module::CPANfile) pkgconfig(fftw3) pkgconfig(libpng) pkgconfig(sndfile) pkgconfig(theoraenc) make %opencv_require
-%define requires perl(B::Deparse) perl(Mojolicious) >= 7.92, perl(Mojo::IOLoop::ReadWriteProcess) >= 0.23, perl(Carp::Always) perl(Data::Dump) perl(Data::Dumper) perl(Crypt::DES) perl(JSON) perl(autodie) perl(Class::Accessor::Fast) perl(Exception::Class) perl(File::Touch) perl(File::Which) perl(IPC::Run::Debug) perl(Net::DBus) perl(Net::SNMP) perl(Net::IP) perl(IPC::System::Simple) perl(Net::SSH2) perl(XML::LibXML) perl(XML::SemanticDiff) perl(JSON::XS) perl(List::MoreUtils) perl(Mojo::IOLoop::ReadWriteProcess) perl(Socket::MsgHdr) perl(Cpanel::JSON::XS) perl(IO::Scalar) perl(Try::Tiny) perl-base
+%define requires perl(B::Deparse) perl(Mojolicious) >= 7.92, perl(Mojo::IOLoop::ReadWriteProcess) >= 0.23, perl(Carp::Always) perl(Data::Dump) perl(Data::Dumper) perl(Crypt::DES) perl(JSON) perl(autodie) perl(Class::Accessor::Fast) perl(Exception::Class) perl(File::Touch) perl(File::Which) perl(IO::Socket::INET) perl(IPC::Run::Debug) perl(Net::DBus) perl(Net::SNMP) perl(Net::IP) perl(IPC::System::Simple) perl(Net::SSH2) perl(XML::LibXML) perl(XML::SemanticDiff) perl(JSON::XS) perl(List::MoreUtils) perl(Mojo::IOLoop::ReadWriteProcess) perl(Socket::MsgHdr) perl(Cpanel::JSON::XS) perl(IO::Scalar) perl(Try::Tiny) perl-base
 %define requires_not_needed_in_tests git-core
 # all requirements needed by the tests, do not require on this in the package
 # itself or any sub-packages
 # SLE is missing spell check requirements
 %if !0%{?is_opensuse}
-%define spellcheck_requires %{nil}
+%bcond_with spellcheck
 %else
-%define spellcheck_requires perl(Pod::Spell) aspell-spell
+%bcond_without spellcheck
+%endif
+%if %{with spellcheck}
+%define spellcheck_requires perl(Pod::Spell) aspell-spell aspell-en
+%define make_check_args %{nil}
+%else
+%define spellcheck_requires %{nil}
+%define make_check_args CHECK_DOC=0
 %endif
 %define test_requires %build_requires %requires perl(Perl::Tidy) perl(Test::Strict) perl(Test::Exception) perl(Test::Output) perl(Test::Fatal) perl(Test::Warnings) perl(Pod::Coverage) perl(Test::Pod) perl(Test::MockModule) perl(Test::MockObject) perl(Devel::Cover) perl(Test::Mock::Time) qemu-tools %spellcheck_requires
 %define devel_requires %test_requires %requires_not_needed_in_tests
@@ -93,7 +100,7 @@ sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{v
 # 07-commands: https://progress.opensuse.org/issues/60755
 for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
     rm t/$i.t
-    sed -i "s/ \?$i\.t//g" t/Makefile.am
+    sed -i "s/ \?$i\.t//g" Makefile.am
 done
 
 %build
@@ -129,7 +136,7 @@ rm tools/lib/perlcritic/Perl/Critic/Policy/*.pm
 
 # should work offline
 for p in $(cpanfile-dump); do rpm -q --whatprovides "perl($p)"; done
-make check VERBOSE=1
+make check test VERBOSE=1 %{make_check_args}
 
 %pre openvswitch
 %service_add_pre os-autoinst-openvswitch.service

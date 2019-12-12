@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 11 21:04:17 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1576050328.08c055a7:
+  * Add powerVM over HMC backend
+  * Remove "use Devel::Cover" from 07-commands.t
+  * t/22-svirt.t: add open_serial_console_via_ssh test
+  * Makefile: Check for spellcheck requirements
+  * sshXtermVt: check for SSH port available instead of a simple ping to check host availability
+  * svirt: open_serial_console_via_ssh - doc and cleanup
+  * Add new test/cover targets and run tests with prove
+  * Fix warning on failed load_snapshot command
+  * backend_vars: Add infos for generalhw ssh/noVNC and flash cmd
+  * generalhw: allow to use real serial with ssh/noVNC mode
+  * sshXtermVt: wait that SUT is alive on network before starting ssh in xterm Use SSH_XTERM_WAIT_SUT_ALIVE_TIMEOUT to adjust wait time, default 120 s
+  * generalhw: Add flash command support and handle optionnal args for cmd
+  * generalhw: Enable SSH access when VNC is not selected
+  * generalhw: truncate serial file on start
+
+-------------------------------------------------------------------
 Mon Dec 09 13:04:05 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1575895968.5daf6345:

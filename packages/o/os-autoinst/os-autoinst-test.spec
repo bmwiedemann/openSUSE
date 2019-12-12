@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst
 Name:           %{short_name}%{?name_ext}
-Version:        4.6.1575895968.5daf6345
+Version:        4.6.1576050328.08c055a7
 Release:        0
 Summary:        test package for os-autoinst
 #BuildRequires:  %{short_name} == %{version}
