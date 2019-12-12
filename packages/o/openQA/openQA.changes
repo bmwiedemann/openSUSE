@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 11 21:05:14 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1576080365.3895c9109:
+  * Fix regex and error message for prio
+  * Parser::Format::IPA: Shorten test names
+  * Avoid downloads from GitHub within 14-grutasks.t
+  * Improve asset download
+  * Use human readable size values in cache service logs
+  * Clarify overlap between states CANCELLED and DONE
+  * Improve consistency when dealing with job states/results
+  * openqa-clone-custom-git-refspec: Add support for comma-separated job list
+  * openqa-clone-custom-git-refspec: Fix github token authentication by removing quotes
+
+-------------------------------------------------------------------
 Mon Dec 09 13:05:01 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1575799153.4244d44fd:
