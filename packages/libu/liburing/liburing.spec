@@ -23,9 +23,11 @@ Version:        0.2
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.gz
 Requires:       kernel-default >= 5.1
+Patch0:         barrier.h-add-generic-smp_mb-implementation.patch
 
 %description
 Provides native async IO for the Linux kernel, in a fast and efficient
@@ -41,6 +43,7 @@ manner, for both buffered and O_DIRECT.
 
 %package devel
 Summary:        Development files for Linux-native io_uring I/O access library
+Group:          Development/Libraries/C and C++
 Requires:       %{name}%{so_ver} = %{version}
 Requires:       pkgconfig
 
@@ -49,7 +52,8 @@ This package provides header files to include and libraries to link with
 for the Linux-native io_uring.
 
 %prep
-%autosetup
+%setup -n %name-%version
+%patch0 -p1
 
 %build
 ./configure --prefix=%{_prefix} --libdir=/%{_libdir} --mandir=%{_mandir} --includedir=%{_includedir}

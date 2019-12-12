@@ -1,0 +1,28 @@
+From ba97eaf8f9ef2030d581be10df9d875dbfadc91d Mon Sep 17 00:00:00 2001
+From: Jeff Moyer <jmoyer@redhat.com>
+Date: Tue, 5 Nov 2019 10:33:19 -0500
+Subject: barrier.h: add generic smp_mb implementation
+References: bsc#1159055
+Patch-mainline: Queued
+
+This missing define causes build failures on s390:
+
+  src/include/liburing.h:298: undefined reference to `io_uring_smp_mb'
+
+Signed-off-by: Jeff Moyer <jmoyer@redhat.com>
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+Acked-by: Johannes Thumshirn <jthumshirn@suse.de>
+---
+ src/include/liburing/barrier.h |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/include/liburing/barrier.h
++++ b/src/include/liburing/barrier.h
+@@ -76,6 +76,7 @@ do {						\
+  * Add arch appropriate definitions. Be safe and use full barriers for
+  * archs we don't have support for.
+  */
++#define io_uring_smp_mb()	__sync_synchronize()
+ #define io_uring_smp_rmb()	__sync_synchronize()
+ #define io_uring_smp_wmb()	__sync_synchronize()
+ #endif /* defined(__x86_64__) || defined(__i386__) */

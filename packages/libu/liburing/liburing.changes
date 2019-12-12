@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 09:20:32 UTC 2019 - Johannes Thumshirn <jthumshirn@suse.com>
+
+- Fix builds on ppc64le and s390x (bsc#1159055)
+  + barrier.h-add-generic-smp_mb-implementation.patch
+
+-------------------------------------------------------------------
 Wed Nov 27 08:18:20 UTC 2019 - Johannes Thumshirn <jthumshirn@suse.com>
 
 - Initial packaging for openSUSE (jsc#SLE-7494)
