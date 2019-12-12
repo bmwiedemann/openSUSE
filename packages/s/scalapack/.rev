@@ -170,4 +170,12 @@
   libscalapack contains the BLACS ABI.</comment>
     <requestid>754343</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a32a87e92199fefb8239f361a367e4f3</srcmd5>
+    <version>2.1.0</version>
+    <time>1576189083</time>
+    <user>dimstar_suse</user>
+    <comment>  jsc#SLE-8604).</comment>
+    <requestid>755673</requestid>
+  </revision>
 </revisionlist>

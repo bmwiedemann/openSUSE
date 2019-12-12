@@ -17,7 +17,7 @@ Sat Nov 30 18:59:26 UTC 2019 - Egbert Eich <eich@suse.com>
 - Disable openmpi1 builds for SLE/Leap > 15.1.
 - Enable openmpi3 builds for Leap and SLE > 15.1 (jsc#SLE-7773).
 - Add support for gcc8 and gcc9 builds for HPC (jsc#SLE-7766,
-  jsc#SLE-8609).
+  jsc#SLE-8604).
 - For HPC no longer provide BLACS as a separate library.
 - Remove: 
   * scalapack-2.0.2-shared-blacs.patch
