@@ -137,4 +137,41 @@
   + [#1340] Allow Clear Linux detection in python2 and python3</comment>
     <requestid>685775</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6c10a6c061873ec6e2235bc3920a2e8f</srcmd5>
+    <version>2.2.45</version>
+    <time>1576189147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.45 (jsc#ECO-80)
+  + Remove paa_cve_2019-0804.patch, included upstream
+  + Add support for Gen2 VM resource disks
+  + Use alternate systemd detection
+  + Fix /proc/net/route requirement that causes errors on FreeBSD
+  + Add cloud-init auto-detect to prevent multiple provisioning mechanisms
+    from relying on configuration for coordination
+  + Disable cgroups when daemon is setup incorrectly
+  + Remove upgrade extension loop for the same goal state
+  + Add container id for extension telemetry events
+  + Be more exact when detecting IMDS service health
+  + Changing add_event to start sending missing fields
+- From 2.2.44
+  + Remove outdated extension ZIP packages
+  + Improved error handling when starting extensions using systemd
+  + Reduce provisioning time of some custom images
+  + Improve the handling of extension download errors
+  + New API for extension authors to handle errors during extension update
+  + Fix handling of errors in calls to openssl
+  + Improve logic to determine current distro
+  + Reduce verbosity of several logging statements
+- From 2.2.42
+  + Poll for artifact blob, addresses goal state procesing issue
+- From 2.2.41
+  + Rewriting the mechanism to start the extension using systemd-run for
+    systems using systemd for managing
+  + Refactoring of resource monitoring framework using cgroup for both
+    systemd and non-systemd approaches [#1530, #1534]
+  + Telemetry pipeline for resource monitoring data
+- From 2.2.40</comment>
+    <requestid>755926</requestid>
+  </revision>
 </revisionlist>

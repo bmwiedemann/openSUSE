@@ -20,14 +20,13 @@ Name:           python-azure-agent
 Summary:        Microsoft Azure Linux Agent
 License:        Apache-2.0
 Group:          System/Daemons
-Version:        2.2.36
+Version:        2.2.45
 Release:        0
-Url:            https://github.com/Azure/WALinuxAgent
+URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
 Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
 Patch9:         paa_sudo_sle15_nopwd.patch
-Patch10:        paa_cve_2019-0804.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
@@ -123,7 +122,6 @@ Unit tests for python-azure-agent.
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 %patch9
 %endif
-%patch10 -p1
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
