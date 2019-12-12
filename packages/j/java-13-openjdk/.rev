@@ -15,4 +15,11 @@
     <comment>October 2019 CPU</comment>
     <requestid>742826</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bf582f204e68dbab5ab17d6f577ba763</srcmd5>
+    <version>13.0.1.0</version>
+    <time>1576139067</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency fix by Factory maintainer - Recover with new createrepo_c</comment>
+  </revision>
 </revisionlist>

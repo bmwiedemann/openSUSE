@@ -995,7 +995,7 @@ Fri Jun 14 08:30:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
       JDK-8148994
     + S8158048: Fix failure message from jtreg gtest wrapper
     + S8171279: Support X25519 and X448 in TLS
-    + S8181869: getAnnotatedParameterTypes%G​%@() specification
+    + S8181869: getAnnotatedParameterTypes %G %@() specification
       should be clarified
     + S8196096: javax/swing/JPopupMenu/6580930/bug6580930.java fails
     + S8197927: Allow the system property `java.vendor.version` to
