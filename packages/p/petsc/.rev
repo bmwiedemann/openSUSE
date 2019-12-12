@@ -221,4 +221,12 @@
     <comment>- Add HPC builds for gcc8 &amp; gcc 9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
     <requestid>755676</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f8354f9f5b3f231b44054e5d61ffbe07</srcmd5>
+    <version>3.12.2</version>
+    <time>1576189117</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded dependency from HPC devel package.</comment>
+    <requestid>755903</requestid>
+  </revision>
 </revisionlist>

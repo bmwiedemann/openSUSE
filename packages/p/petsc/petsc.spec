@@ -374,14 +374,13 @@ differential equations.
 %package %{?n_pre}devel
 Summary:        Devel files for petsc
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       %{libname %_vers} = %{version}
 %if %{without hpc}
 Requires:       Modules
 Requires:       suitesparse-devel
  %if %{without mpi}
 Requires:       metis-devel
  %else
-Requires:       %{libname %_vers} = %{version}
 Requires:       blacs-%{mpi_family}%{?mpi_ext}-devel
 Requires:       hdf5-%{mpi_family}%{?mpi_ext}-devel
 Requires:       hypre-%{mpi_family}%{?mpi_ext}-devel
