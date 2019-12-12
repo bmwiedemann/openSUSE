@@ -95,4 +95,12 @@
 - Add support for gcc8 and gcc9 for HPC (jsc#SLE-7766 &amp;</comment>
     <requestid>753891</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>4a606a64005e82a2fc147e81bb374cdb</srcmd5>
+    <version>6.0.9</version>
+    <time>1576189105</time>
+    <user>dimstar_suse</user>
+    <comment>  jsc#SLE-8604).</comment>
+    <requestid>755675</requestid>
+  </revision>
 </revisionlist>
