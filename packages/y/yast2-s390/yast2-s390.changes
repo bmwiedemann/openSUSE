@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 11 14:29:18 CET 2019 - schubi@suse.de
+
+- Activating dumpconf: Ask the user to deactivate active kdump
+  because they are conflicting each other (jsc#SLE-7749).
+- 4.2.3
+
+-------------------------------------------------------------------
 Fri Jul 19 11:57:09 CEST 2019 - aschnell@suse.com
 
 - handle setting diag mode on active DASDs (part of bsc#1134927)
