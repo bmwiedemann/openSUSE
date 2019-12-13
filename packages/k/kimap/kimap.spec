@@ -1,7 +1,7 @@
 #
 # spec file for package kimap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,30 @@
 #
 
 
-%define kf5_version 5.19.0
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kimap
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE PIM Libraries: IMAP library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules >= 5.19.0
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kio-devel >= %{kf5_version}
-BuildRequires:  kmime-devel >= %{kf5_version}
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(Qt5Test)
 
 %description
 KIMAP provides libraries to interface and communicate with
@@ -61,9 +59,9 @@ IMAP mail servers.
 Summary:        KDE PIM Libraries: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       cyrus-sasl-devel
-Requires:       kcoreaddons-devel >= %{kf5_version}
-Requires:       kmime-devel >= %{_kapp_version}
 Requires:       libKF5IMAP5 = %{version}
+Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
+Requires:       cmake(KF5Mime)
 
 %description devel
 This package contains development headers to add IMAP support to PIM
