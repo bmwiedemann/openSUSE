@@ -108,4 +108,12 @@
 - Cleanup BuildRequires (forwarded request 559079 from mimi_vx)</comment>
     <requestid>559080</requestid>
   </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>62b738334c517d07928a2bca67530c7a</srcmd5>
+    <version>0.9.1</version>
+    <time>1576235112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756763</requestid>
+  </revision>
 </revisionlist>

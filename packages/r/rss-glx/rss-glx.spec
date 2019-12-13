@@ -1,7 +1,7 @@
 #
 # spec file for package rss-glx
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           rss-glx
 Version:        0.9.1
 Release:        0
 Summary:        Really Slick Screensavers Port to GLX
-License:        GPL-2.0 AND GPL-3.0
+License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Amusements/Toys/Screensavers
-Url:            http://rss-glx.sourceforge.net/
+URL:            http://rss-glx.sourceforge.net/
 Source:         http://prdownloads.sourceforge.net/rss-glx/rss-glx_%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE
 Patch0:         rss-glx-optflags.patch
@@ -35,7 +35,6 @@ Patch0:         rss-glx-optflags.patch
 Patch1:         rss-glx-ImageMagick7.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  gcc-c++
-BuildRequires:  kde4-filesystem
 # directory ownership
 BuildRequires:  libX11-devel
 BuildRequires:  libXt-devel
