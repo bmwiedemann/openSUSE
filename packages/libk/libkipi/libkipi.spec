@@ -18,33 +18,32 @@
 
 %define _so 32_0_0
 %define libname libKF5Kipi
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkipi
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE Image Plugin Interface
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 #PATCH-FIX-OPENSUSE dont-install-pics.diff - Don't install icons since those are included in libkipi11 in SLE12
 Patch0:         dont-install-pics.diff
 BuildRequires:  extra-cmake-modules >= 1.1.0
-BuildRequires:  kconfig-devel >= 5.1.0
-BuildRequires:  ki18n-devel >= 5.1.0
-BuildRequires:  kservice-devel >= 5.1.0
-BuildRequires:  kxmlgui-devel >= 5.1.0
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       %{libname}%{_so} = %{version}
 
 %description
@@ -78,13 +77,13 @@ This package contains data files needed by the KDE image plug-in library.
 Summary:        KDE Image Plugin Interface
 Group:          Development/Libraries/KDE
 Requires:       %{libname}%{_so} = %{version}
-Requires:       kconfig-devel >= 5.1.0
-Requires:       ki18n-devel >= 5.1.0
-Requires:       kservice-devel >= 5.1.0
-Requires:       kxmlgui-devel >= 5.1.0
-Requires:       pkgconfig(Qt5Core) >= 5.2.0
-Requires:       pkgconfig(Qt5Gui) >= 5.2.0
-Requires:       pkgconfig(Qt5Widgets) >= 5.2.0
+Requires:       cmake(KF5Config)
+Requires:       cmake(KF5I18n)
+Requires:       cmake(KF5Service)
+Requires:       cmake(KF5XmlGui)
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5Gui)
+Requires:       cmake(Qt5Widgets)
 Obsoletes:      libkipi-kf5-devel < %{version}
 Provides:       libkipi-kf5-devel = %{version}
 
