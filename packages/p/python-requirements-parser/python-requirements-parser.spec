@@ -24,7 +24,7 @@ Summary:        Pip requirement file parser
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 Url:            https://github.com/davidfischer/requirements-parser
-Source:         https://files.pythonhosted.org/packages/source/r/requirements-parser/requirements-parser-%{version}.tar.gz
+Source:         https://github.com/davidfischer/requirements-parser/archive/v%{version}.tar.gz#/requirements-parser-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -49,10 +49,10 @@ A Pip requirement file parser.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_exec -m nose
 
 %files %{python_files}
-%doc AUTHORS.rst README.rst
+%doc AUTHORS.rst README.rst docs/*.rst
 %license LICENSE.rst
 %{python_sitelib}/*
 
