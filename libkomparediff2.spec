@@ -17,35 +17,34 @@
 
 
 %define soname 5
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkomparediff2
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        A library to compare files and strings
 License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcodecs-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) > 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) > 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) > 5.2.0
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
 
