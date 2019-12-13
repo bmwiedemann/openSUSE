@@ -16,44 +16,43 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kgpg
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Patch1:         kgpg-autostart.diff
-BuildRequires:  akonadi-contact-devel
+BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  extra-cmake-modules
-BuildRequires:  karchive-devel
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwidgetsaddons-devel
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  libgpgme-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       gpg2
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
