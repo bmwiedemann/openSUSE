@@ -16,43 +16,44 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-integration
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcmutils-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdeclarative-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  libaccounts-glib-devel
-BuildRequires:  libaccounts-qt5-devel
 BuildRequires:  libsignon-qt5-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(AccountsQt5)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Qt5Core) >= 5.2.0
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+# QML uses Ubuntu.OnlineAccounts
+Requires:       accounts-qml-module
 Recommends:     %{name}-lang
 Recommends:     kaccounts-providers
 
@@ -74,11 +75,11 @@ Facebook, Owncloud, IMAP, Jabber and others.
 %package devel
 Summary:        KDE Accounts Providers - Development Files
 Group:          Development/Libraries/KDE
-Requires:       kcoreaddons-devel
-Requires:       libaccounts-qt5-devel
 Requires:       libkaccounts1 = %{version}
 Requires:       libsignon-qt5-devel
-Requires:       pkgconfig(Qt5Core) >= 5.2.0
+Requires:       cmake(AccountsQt5)
+Requires:       cmake(KF5CoreAddons)
+Requires:       cmake(Qt5Core) >= 5.2.0
 Requires:       pkgconfig(libaccounts-glib)
 
 %description devel
@@ -108,6 +109,9 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 
 %files
 %license COPYING*
+%dir %{_kf5_sharedir}/kpackage
+%dir %{_kf5_sharedir}/kpackage/kcms
+%{_kf5_sharedir}/kpackage/kcms/kcm_kaccounts/
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_servicesdir}/
