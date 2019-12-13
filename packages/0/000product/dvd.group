@@ -4921,7 +4921,7 @@
     <package name="shadow" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="shared-mime-info" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="shared-mime-info-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="shared-python-startup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="shared-python-startup" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="sharutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sharutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="shotwell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

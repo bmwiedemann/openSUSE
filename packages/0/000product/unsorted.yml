@@ -6164,6 +6164,7 @@ unsorted:
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-server 
+  - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab_github 
   - jupyter-jupyterlab_templates 
   - jupyter-jupytext 
@@ -12435,7 +12436,7 @@ unsorted:
   - libzbarqt-devel 
   - libzbarqt0 
   - libzbarqt0-32bit: [x86_64] 
-  - libzbc-5_8_2 
+  - libzbc-5_8_3 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
@@ -19547,7 +19548,6 @@ unsorted:
   - python2-scrypt 
   - python2-scspell3k 
   - python2-sdnotify 
-  - python2-seaborn 
   - python2-selection 
   - python2-selectors2 
   - python2-selectors34 
@@ -20978,6 +20978,7 @@ unsorted:
   - python3-gobject2-devel 
   - python3-gogs_client 
   - python3-gom 
+  - python3-goobook 
   - python3-google-api-core 
   - python3-google-api-python-client 
   - python3-google-auth 
@@ -21181,6 +21182,7 @@ unsorted:
   - python3-jupyter_nbextensions_configurator 
   - python3-jupyterlab 
   - python3-jupyterlab-pygments 
+  - python3-jupyterlab-templates 
   - python3-jupytext 
   - python3-jwcrypto 
   - python3-k5test 
@@ -21506,6 +21508,7 @@ unsorted:
   - python3-openstacksdk 
   - python3-openwsman 
   - python3-orange-canvas-core 
+  - python3-orange-widget-base 
   - python3-ordered-namespace 
   - python3-ordered-set 
   - python3-orderedmultidict 
