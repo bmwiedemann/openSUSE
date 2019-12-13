@@ -1,7 +1,7 @@
 #
 # spec file for package kpimtextedit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,42 +16,41 @@
 #
 
 
-%define kf5_version 5.44.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpimtextedit
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.0.0
-BuildRequires:  grantlee5-devel
-BuildRequires:  kcodecs-devel >= %{kf5_version}
-BuildRequires:  kconfigwidgets-devel >= %{kf5_version}
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
-BuildRequires:  kdesignerplugin-devel >= %{kf5_version}
-BuildRequires:  kemoticons-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kiconthemes-devel >= %{kf5_version}
-BuildRequires:  kio-devel >= %{kf5_version}
-BuildRequires:  ktextwidgets-devel >= %{kf5_version}
-BuildRequires:  kwidgetsaddons-devel >= %{kf5_version}
-BuildRequires:  kxmlgui-devel >= %{kf5_version}
-BuildRequires:  pkgconfig
-BuildRequires:  sonnet-devel >= %{kf5_version}
-BuildRequires:  syntax-highlighting-devel >= %{kf5_version}
-BuildRequires:  pkgconfig(Qt5Designer) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5TextToSpeech)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.8.0
+BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DesignerPlugin)
+BuildRequires:  cmake(KF5Emoticons)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5SyntaxHighlighting)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Designer)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5TextToSpeech)
+BuildRequires:  cmake(Qt5Widgets)
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
@@ -75,9 +74,9 @@ This package provides text editing functionality for KDE PIM applications
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Group:          Development/Libraries/KDE
-Requires:       ktextwidgets-devel >= %{kf5_version}
 Requires:       libKF5PimTextEdit5 = %{version}
-Requires:       syntax-highlighting-devel >= %{kf5_version}
+Requires:       cmake(KF5SyntaxHighlighting)
+Requires:       cmake(KF5TextWidgets)
 
 %description devel
 This package contains necessary include files and libraries needed

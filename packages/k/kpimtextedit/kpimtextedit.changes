@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:51 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:11 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Only build and install designer plugin if it's enabled
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:43 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:15 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -25,7 +51,7 @@ Thu Sep  5 14:00:54 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Include KDE* cmake macros before any others 
+  * Include KDE* cmake macros before any others
   * Stop texttospeech when we close it. Add parent to button too
 
 -------------------------------------------------------------------
