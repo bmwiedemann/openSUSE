@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:14 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:35 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:06 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * Don't add a non-existent icon search path
+  * fix typo 'Pint' -> 'Print'
+  * Fix minor typos
+  * Add missing CMakeLists.txt
+  * Use the new offline documentation
+  * Adding new .docbook for KAddressBook, draft version (kde#409998)
+  * Fix hidpi support
+  * Use QLatin1String in join/startswith/endsWith/contains + QString::replace operates on the same object, no need to reassign
+  * QString::replace operates on the same object, no need to reassign
+  * Add info about kde release version too.
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:39 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3

@@ -1,7 +1,7 @@
 #
 # spec file for package kaddressbook
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,55 +16,63 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaddressbook
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
-Summary:        Address Manager
+Summary:        Address book application to manage contacts 
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-search-devel
-BuildRequires:  akonadi-server-devel >= %{_kapp_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
-BuildRequires:  grantleetheme-devel
-BuildRequires:  kcmutils-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kontactinterface-devel
-BuildRequires:  kpimtextedit-devel
-BuildRequires:  libkdepim-devel >= %{_kapp_version}
 BuildRequires:  pkgconfig
-BuildRequires:  prison-qt5-devel
 BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiSearch)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GrantleeTheme)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KdepimDBusInterfaces)
+BuildRequires:  cmake(KF5KontactInterface)
+BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Libkleo)
 BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KF5Prison)
+BuildRequires:  cmake(Qt5DBus) >= 5.2.0
+BuildRequires:  cmake(Qt5Gui) >= 5.2.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.2.0
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 Requires:       kdepim-runtime
 Recommends:     %{name}-lang
+Recommends:     %{name}-doc
 Provides:       kaddressbook5 = %{version}
 Obsoletes:      kaddressbook5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
-The KDE Address Book
+KAddressbook is an application by KDE to manage contacts.
+
+%package doc
+Summary:        Documentation for kaddressbook
+Group:          Documentation/HTML
+
+%description doc
+This package includes the user guide for KAddressbook in HTML format.
 
 %lang_package
 
@@ -79,10 +87,15 @@ The KDE Address Book
 %kf5_makeinstall -C build
 %if %{with lang}
   %find_lang %{name} --with-man --all-name
+  %{kf5_find_htmldocs}
 %endif
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
+%files doc
+%license COPYING COPYING.LIB COPYING.DOC
+%doc %lang(en) %{_kf5_htmldir}/en/kaddressbook/
 
 %files
 %license COPYING COPYING.LIB COPYING.DOC
