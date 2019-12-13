@@ -17,40 +17,39 @@
 
 
 %define SOMAJOR 19
-%define kf5_version 5.26.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ark
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE lower-libarchive-minimum-version.patch
 Patch0:         lower-libarchive-minimum-version.patch
-BuildRequires:  extra-cmake-modules >= 1.7.0
-BuildRequires:  karchive-devel >= %{kf5_version}
-BuildRequires:  kconfig-devel >= 5.2.0
-BuildRequires:  kdelibs4support-devel >= 5.2.0
+BuildRequires:  extra-cmake-modules
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  kf5-filesystem
-BuildRequires:  kpty-devel >= 5.2.0
+BuildRequires:  cmake(KF5Pty)
 BuildRequires:  libarchive-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
 Requires:       shared-mime-info
 # Recommend the most used compression programs (bnc#872010)
