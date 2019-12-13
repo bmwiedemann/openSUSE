@@ -1,7 +1,7 @@
 #
 # spec file for package roundcubemail
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,18 @@
 #
 
 
+%define apache_serverroot %(%{_sbindir}/apxs2 -q DATADIR)
+%define apache_sysconfdir %(%{_sbindir}/apxs2 -q SYSCONFDIR)
+%define roundcubepath %{apache_serverroot}/%{name}
+%define roundcubeconfigpath %{_sysconfdir}/%{name}
+%define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
 Name:           roundcubemail
 Version:        1.4.1
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
 Group:          Productivity/Networking/Email/Clients
-
-Url:            https://www.roundcube.net/
+URL:            https://www.roundcube.net/
 Source0:        https://github.com/roundcube/roundcubemail/releases/download/%{version}/%{name}-%{version}-complete.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}-httpd.conf
@@ -34,18 +38,11 @@ Source7:        https://github.com/roundcube/roundcubemail/releases/download/%{v
 Source8:        robots.txt
 # PATCH-FIX-OPENSUSE roundcubemail-1.1-beta-config_dir.patch -- use the general config directory /etc
 Patch0:         %{name}-1.1-beta-config_dir.patch
-
-BuildArch:      noarch
 BuildRequires:  apache2-devel
-%if 0%{suse_version} >= 1100
-BuildRequires:  fdupes
-%endif
 BuildRequires:  pcre-devel
 BuildRequires:  php
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 Requires:       http_daemon
-Requires:       mod_php_any >= 5.3
+Requires:       mod_php_any >= 5.4
 Requires:       php-dom
 Requires:       php-exif
 Requires:       php-gettext
@@ -53,37 +50,31 @@ Requires:       php-iconv
 Requires:       php-json
 Requires:       php-mbstring
 Requires:       php-openssl
-Requires:       php-session
-Requires:       php-sockets
-Requires:       php_any_db
-
 ## Requires: for upstream dep package
 Requires:       php-pear-Auth_SASL >= 1.0.6
 Requires:       php-pear-MDB2_Driver_mysqli
-Requires:       php-pear-Mail_Mime >= 1.9.0
+Requires:       php-pear-Mail_Mime >= 1.10.0
 Requires:       php-pear-Net_IDNA2 >= 0.1.1
 Requires:       php-pear-Net_LDAP2
-Requires:       php-pear-Net_SMTP
-Requires:       php-pear-Net_Sieve >= 1.3.2
-Requires:       php-pear-Net_Socket
-
+Requires:       php-pear-Net_SMTP >= 1.8.1
+Requires:       php-pear-Net_Sieve >= 1.4.3
+Requires:       php-pear-Net_Socket >= 1.0.12
+Requires:       php-session
+Requires:       php-sockets
+Requires:       php_any_db
 Recommends:     logrotate
-Recommends:     php-mysql
-Recommends:     php-intl
 Recommends:     php-fileinfo
+Recommends:     php-intl
+Recommends:     php-mysql
+Recommends:     php-pear-Crypt_GPG >= 1.6.3
 Recommends:     php-zip
-Recommends:     php-pear-Crypt_GPG >= 1.2.0
-
 Suggests:       apache2
-
-Provides:       roundcube_framework = %{version}
 Conflicts:      roundcube-framework
-
-%define apache_serverroot %(/usr/sbin/apxs2 -q DATADIR)
-%define apache_sysconfdir %(/usr/sbin/apxs2 -q SYSCONFDIR)
-%define roundcubepath %{apache_serverroot}/%{name}
-%define roundcubeconfigpath %{_sysconfdir}/%{name}
-%define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
+Provides:       roundcube_framework = %{version}
+BuildArch:      noarch
+%if 0%{?suse_version} >= 1100
+BuildRequires:  fdupes
+%endif
 
 %description
 Roundcube Webmail is a browser-based multilingual IMAP client with an
@@ -102,6 +93,9 @@ cp %{SOURCE4} .
 find . -name ".gitignore" -delete
 # no need to check .htaccess each time, the apache config takes care of the restrictions
 find . -name ".htaccess" -delete
+# remove travis files
+find vendor/ -name ".travis.yml" -delete
+
 # remove obscure sub-directory
 #rm -rf roundcubemail-git composer.json.rej
 # remove mssql scripts (not needed on openSUSE)
@@ -111,7 +105,11 @@ rm -rf \
 # remove shebang from chpass-wrapper
 sed -i '1d' plugins/password/helpers/chpass-wrapper.py
 # remove INSTALL doc
-rm INSTALL  
+rm INSTALL
+
+# fix interpreter for shell scripts
+sed -e 's|%{_bindir}/env php|%{_bindir}/php|' -i bin/*.sh
+
 
 %build
 
@@ -159,9 +157,11 @@ sed -e "s#__ROUNDCUBEPATH__#%{roundcubepath}#g" %{SOURCE2} > %{buildroot}%{apach
 
 # install docs
 install -d -m 0755 %{buildroot}/%{_defaultdocdir}/%{name}
-for i in CHANGELOG UPGRADING LICENSE README.md README.openSUSE SQL; do
+for i in CHANGELOG UPGRADING README.md README.openSUSE SQL; do
     mv -v %{buildroot}%{roundcubepath}/$i %{buildroot}%{_defaultdocdir}/%{name}/
 done
+# move license back into sources
+mv %{buildroot}%{roundcubepath}/LICENSE .
 
 # create a link for SQL
 ln -s %{_defaultdocdir}/%{name}/SQL %{buildroot}/%{roundcubepath}/SQL
@@ -171,7 +171,7 @@ mkdir %{buildroot}%{roundcubepath}/migrated
 mkdir %{buildroot}%{roundcubepath}/migration
 
 # fdupes
-%if 0%{suse_version} >= 1100
+%if 0%{?suse_version} >= 1100
 %fdupes %{buildroot}%{roundcubepath}
 %endif
 
@@ -210,7 +210,7 @@ makedesstr() {
 sed -i "s/rcmail-\!24ByteDESkey\*Str/`makedesstr`/" %{roundcubeconfigpath}/defaults.inc.php || : &> /dev/null
 
 # enable apache required apache modules
-if [ -x /usr/sbin/a2enmod ]; then
+if [ -x %{_sbindir}/a2enmod ]; then
   a2enmod -q alias || a2enmod alias
   a2enmod -q rewrite || a2enmod rewrite
   a2enmod -q version || a2enmod version
@@ -219,7 +219,7 @@ fi
 # restore backed up logs, temp and config
 if [ -h %{roundcubepath}/logs ] && [ -d %{roundcubepath}/migration/logs ]; then
         mkdir -p %{roundcubepath}/migrated
-        cp %{roundcubepath}/migration/logs/* %{roundcubepath}/logs/. 
+        cp %{roundcubepath}/migration/logs/* %{roundcubepath}/logs/.
         mv %{roundcubepath}/migration/logs %{roundcubepath}/migrated/.
 fi
 if [ -h %{roundcubepath}/temp ] && [ -d %{roundcubepath}/migration/temp ]; then
@@ -260,10 +260,8 @@ exit 0
 
 %files
 %defattr(0644, root, root,0755)
-%doc CHANGELOG LICENSE
-%if 0%{?suse_version} >= 1500
 %license LICENSE
-%endif
+%doc CHANGELOG
 %doc README.md
 %doc README.openSUSE
 %doc UPGRADING
