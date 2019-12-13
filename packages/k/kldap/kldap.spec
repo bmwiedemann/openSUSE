@@ -1,7 +1,7 @@
 #
 # spec file for package kldap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,33 @@
 #
 
 
-%define kf5_version 5.19.0
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kldap
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE PIM Libraries
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules >= 5.19.0
-BuildRequires:  kcompletion-devel >= %{kf5_version}
-BuildRequires:  kdoctools-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kio-devel
-BuildRequires:  kmbox-devel
-BuildRequires:  kwidgetsaddons-devel >= %{kf5_version}
 BuildRequires:  openldap2-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Mbox)
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
+BuildRequires:  cmake(Qt5Test)
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
@@ -64,9 +62,9 @@ This package provides LDAP support for KDE PIM applications
 Summary:        KDE PIM Libraries: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       cyrus-sasl-devel
-Requires:       kcoreaddons-devel >= %{kf5_version}
 Requires:       libKF5Ldap5 = %{version}
 Requires:       openldap2-devel
+Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
 
 %description devel
 This package contains necessary include files and libraries needed
