@@ -1,7 +1,7 @@
 #
 # spec file for package libkcddb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,42 +16,39 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcddb
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcodecs-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  libmusicbrainz5-devel
-BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Network) > 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) > 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) > 5.2.0
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      libkcddb5 < %{version}
 Provides:       libkcddb5 = %{version}
 Obsoletes:      libkcddb16 < %{version}
 Provides:       libkcddb16 < %{version}
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 
 %description
 The KDE Compact Disc DataBase library provides an API for
