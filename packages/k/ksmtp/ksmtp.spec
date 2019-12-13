@@ -1,7 +1,7 @@
 #
 # spec file for package ksmtp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,26 @@
 
 %bcond_without lang
 Name:           ksmtp
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules >= 1.0.0
-BuildRequires:  kcoreaddons-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Network) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.7.0
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
 Recommends:     %{name}-lang
 
 %description
@@ -57,11 +56,11 @@ package contains the KSMTP library itself.
 %package devel
 Summary:        Development files for KSMTP
 Group:          Development/Libraries/KDE
-Requires:       kcoreaddons-devel
-Requires:       ki18n-devel
-Requires:       kio-devel
-Requires:       kmime-devel
 Requires:       libKPimSMTP5 = %{version}
+Requires:       cmake(KF5CoreAddons)
+Requires:       cmake(KF5I18n)
+Requires:       cmake(KF5KIO)
+Requires:       cmake(KF5Mime)
 
 %description devel
 This package contains all necessary include files and libraries needed
