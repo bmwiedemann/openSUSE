@@ -297,6 +297,7 @@ unsorted:
   - acars-examples 
   - acarsdec 
   - accerciser-plugin-IPython 
+  - accounts-qml-module-doc 
   - accountsservice-devel 
   - acct 
   - ack 
@@ -6709,6 +6710,7 @@ unsorted:
   - ktextwidgets-devel 
   - ktextwidgets-devel-32bit: [x86_64] 
   - ktnef-devel 
+  - ktnef-lang: [x86_64] 
   - ktoblzcheck 
   - ktoblzcheck-devel 
   - ktorrent 
@@ -8722,7 +8724,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_23-0 
+  - libevtlog-3_25-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -11708,7 +11710,7 @@ unsorted:
   - libteredo5 
   - libtermkey-devel 
   - libtermkey1 
-  - libtesseract3 
+  - libtesseract4 
   - libtestshade1_10 
   - libtevent-devel 
   - libtevent-util-devel 
@@ -16747,6 +16749,16 @@ unsorted:
   - php-composer 
   - php-cs-fixer 
   - php-mapi 
+  - php-pear-Auth_SASL 
+  - php-pear-MDB2 
+  - php-pear-MDB2_Driver_mysqli 
+  - php-pear-Mail_Mime 
+  - php-pear-Net_IDNA2 
+  - php-pear-Net_LDAP2 
+  - php-pear-Net_SMTP 
+  - php-pear-Net_Sieve 
+  - php-pear-Net_Socket 
+  - php-pear-XML_Parser 
   - php7-APCu 
   - php7-embed 
   - php7-enchant 
