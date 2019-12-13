@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:42 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:02 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * Use QLatin1String overload for QString::operator ==/!=
+  * Add dummy API docs, so these classes show up on api.kde.org
+  * Add framework type for api.kde.org
+  * Fix API docs generation
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:06 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
