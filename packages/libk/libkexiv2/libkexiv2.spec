@@ -18,20 +18,20 @@
 
 %define _so     15_0_0
 %define lname   libKF5KExiv2
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkexiv2
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-SUSE fix-reduce-required-exiv2-to-0.23.diff -- Reduce required exiv2 version from 0.24 to 0.23 for SLE12
@@ -39,8 +39,8 @@ Patch0:         fix-reduce-required-exiv2-to-0.23.diff
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
 Requires:       %{name}-%{_so} = %{version}
 %if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
 BuildRequires:  pkgconfig(exiv2) >= 0.24
