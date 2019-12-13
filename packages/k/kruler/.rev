@@ -867,4 +867,12 @@
     <comment>- Add 0001-Make-it-compiles-without-deprecated-method.patch to fix build with Qt 5.14.</comment>
     <requestid>748599</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>8425507a829203b91844ef4e7682e9ad</srcmd5>
+    <version>19.12.0</version>
+    <time>1576234988</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.0</comment>
+    <requestid>756281</requestid>
+  </revision>
 </revisionlist>
