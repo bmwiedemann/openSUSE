@@ -1,7 +1,7 @@
 #
 # spec file for package khelpcenter5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,27 @@
 
 
 %define rname khelpcenter
-%define kf5_version 5.40.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           khelpcenter5
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.3.0
-BuildRequires:  grantlee5-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxapian-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Config)
@@ -64,7 +64,7 @@ Application to show KDE Applications' documentation.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{rname}-%{version}
+%setup -q -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=share/locale/kf5
