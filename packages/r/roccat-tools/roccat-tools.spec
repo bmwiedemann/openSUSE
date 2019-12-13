@@ -1,7 +1,7 @@
 #
 # spec file for package roccat-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           roccat-tools
-Version:        5.7.0
+Version:        5.9.0
 Release:        0
 Summary:        Common files shared by all Roccat tools
-License:        GPL-2.0+ AND CC-BY-3.0
+License:        GPL-2.0-or-later AND CC-BY-3.0
 Group:          Hardware/Other
-Url:            http://roccat.sourceforge.net
+URL:            http://roccat.sourceforge.net
 Source:         http://downloads.sourceforge.net/roccat/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake >= 2.6.4
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-recent-pango-releases.patch
+BuildRequires:  cmake >= 2.8
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
@@ -244,6 +246,8 @@ of a Roccat Skeltr mechanical keybard.
 
 %prep
 %setup -q -n roccat-tools-%{version}
+%patch0 -p1
+
 perl -p -i -e 's|\r\n|\n|g' skeltr/roccatskeltrconfig/roccatskeltrconfig.desktop
 
 %build
@@ -513,7 +517,8 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{?udev_rules_update:%udev_rules_update}
 
 %files -f roccat-tools.lang
-%doc README COPYING Changelog
+%license COPYING
+%doc README Changelog
 %{_sysconfdir}/xdg/autostart/roccateventhandler.desktop
 %{_bindir}/roccateventhandler
 %dir %{_datadir}/roccat/
@@ -533,7 +538,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatarvo.so.*
 %{_libdir}/roccat/libarvoeventhandler.so
 %{_udevrulesdir}/90-roccat-arvo.rules
-%{_mandir}/*/man1/roccatarvocontrol.1*
+%{_mandir}/*/man1/roccatarvocontrol.1%{?ext_man}
 %{_datadir}/applications/roccatarvoconfig.desktop
 
 %files -n roccat-isku
@@ -543,7 +548,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatiskuwidget.so.*
 %{_libdir}/roccat/libiskueventhandler.so
 %{_udevrulesdir}/90-roccat-isku.rules
-%{_mandir}/*/man1/roccatiskucontrol.1*
+%{_mandir}/*/man1/roccatiskucontrol.1%{?ext_man}
 %{_datadir}/applications/roccatiskuconfig.desktop
 
 %files -n roccat-iskufx
@@ -553,7 +558,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/gaminggear_plugins/libiskufxgfxplugin.so
 %{_libdir}/roccat/libiskufxeventhandler.so
 %{_udevrulesdir}/90-roccat-iskufx.rules
-%{_mandir}/*/man1/roccatiskufxcontrol.1*
+%{_mandir}/*/man1/roccatiskufxcontrol.1%{?ext_man}
 %{_datadir}/applications/roccatiskufxconfig.desktop
 
 %files -n roccat-kone
@@ -562,7 +567,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatkone.so.*
 %{_libdir}/roccat/libkoneeventhandler.so
 %{_udevrulesdir}/90-roccat-kone.rules
-%{_mandir}/*/man1/roccatkonecontrol.1*
+%{_mandir}/*/man1/roccatkonecontrol.1%{?ext_man}
 %{_datadir}/applications/roccatkoneconfig.desktop
 
 %files -n roccat-koneplus
@@ -573,7 +578,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/gaminggear_plugins/libkoneplusgfxplugin.so
 %{_libdir}/roccat/libkonepluseventhandler.so
 %{_udevrulesdir}/90-roccat-koneplus.rules
-%{_mandir}/*/man1/roccatkonepluscontrol.1*
+%{_mandir}/*/man1/roccatkonepluscontrol.1%{?ext_man}
 %{_datadir}/applications/roccatkoneplusconfig.desktop
 
 %files -n roccat-konepure
@@ -597,9 +602,9 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_udevrulesdir}/90-roccat-konepuremilitary.rules
 %{_udevrulesdir}/90-roccat-konepureoptical.rules
 %{_udevrulesdir}/90-roccat-konepure.rules
-%{_mandir}/*/man1/roccatkonepurecontrol.1*
-%{_mandir}/*/man1/roccatkonepuremilitarycontrol.1*
-%{_mandir}/*/man1/roccatkonepureopticalcontrol.1*
+%{_mandir}/*/man1/roccatkonepurecontrol.1%{?ext_man}
+%{_mandir}/*/man1/roccatkonepuremilitarycontrol.1%{?ext_man}
+%{_mandir}/*/man1/roccatkonepureopticalcontrol.1%{?ext_man}
 %{_datadir}/applications/roccatkonepureconfig.desktop
 %{_datadir}/applications/roccatkonepuremilitaryconfig.desktop
 %{_datadir}/applications/roccatkonepureopticalconfig.desktop
@@ -618,8 +623,8 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/roccat/libkonextdopticaleventhandler.so
 %{_udevrulesdir}/90-roccat-konextdoptical.rules
 %{_udevrulesdir}/90-roccat-konextd.rules
-%{_mandir}/*/man1/roccatkonextdcontrol.1*
-%{_mandir}/*/man1/roccatkonextdopticalcontrol.1*
+%{_mandir}/*/man1/roccatkonextdcontrol.1%{?ext_man}
+%{_mandir}/*/man1/roccatkonextdopticalcontrol.1%{?ext_man}
 %{_datadir}/applications/roccatkonextdconfig.desktop
 %{_datadir}/applications/roccatkonextdopticalconfig.desktop
 
@@ -629,7 +634,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatkovaplus.so.*
 %{_libdir}/roccat/libkovapluseventhandler.so
 %{_udevrulesdir}/90-roccat-kovaplus.rules
-%{_mandir}/*/man1/roccatkovapluscontrol.1*
+%{_mandir}/*/man1/roccatkovapluscontrol.1%{?ext_man}
 %{_datadir}/applications/roccatkovaplusconfig.desktop
 
 %files -n roccat-kova2016
@@ -639,7 +644,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/roccat/libkova2016eventhandler.so
 %{_libdir}/gaminggear_plugins/libkova2016gfxplugin.so
 %{_datadir}/applications/roccatkova2016config.desktop
-%{_mandir}/*/man1/roccatkova2016*
+%{_mandir}/*/man1/roccatkova2016control.1%{?ext_man}
 
 %files -n roccat-lua
 %{_bindir}/roccatluaconfig
@@ -647,7 +652,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatlua.so.*
 %{_libdir}/roccat/libluaeventhandler.so
 %{_udevrulesdir}/90-roccat-lua.rules
-%{_mandir}/*/man1/roccatluacontrol.1*
+%{_mandir}/*/man1/roccatluacontrol.1%{?ext_man}
 %{_datadir}/applications/roccatluaconfig.desktop
 
 %files -n roccat-pyra
@@ -656,7 +661,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatpyra.so.*
 %{_libdir}/roccat/libpyraeventhandler.so
 %{_udevrulesdir}/90-roccat-pyra.rules
-%{_mandir}/*/man1/roccatpyracontrol.1*
+%{_mandir}/*/man1/roccatpyracontrol.1%{?ext_man}
 %{_datadir}/applications/roccatpyraconfig.desktop
 
 %files -n roccat-ryos
@@ -677,9 +682,9 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_udevrulesdir}/90-roccat-ryosmk.rules
 %{_udevrulesdir}/90-roccat-ryostkl.rules
 %{_udevrulesdir}/90-roccat-ryosmkfx.rules
-%{_mandir}/*/man1/roccatryosmkcontrol.1*
-%{_mandir}/*/man1/roccatryostklcontrol.1*
-%{_mandir}/*/man1/roccatryosmkfxcontrol.1*
+%{_mandir}/*/man1/roccatryosmkcontrol.1%{?ext_man}
+%{_mandir}/*/man1/roccatryostklcontrol.1%{?ext_man}
+%{_mandir}/*/man1/roccatryosmkfxcontrol.1%{?ext_man}
 %{_datadir}/applications/roccatryosmkconfig.desktop
 %{_datadir}/applications/roccatryostklconfig.desktop
 %{_datadir}/applications/roccatryosmkfxconfig.desktop
@@ -691,7 +696,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatsavu.so.*
 %{_libdir}/roccat/libsavueventhandler.so
 %{_udevrulesdir}/90-roccat-savu.rules
-%{_mandir}/*/man1/roccatsavucontrol.1*
+%{_mandir}/*/man1/roccatsavucontrol.1%{?ext_man}
 %{_datadir}/applications/roccatsavuconfig.desktop
 
 %files -n roccat-sova
@@ -700,7 +705,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatsova.so.*
 %{_libdir}/roccat/libsovaeventhandler.so
 %{_udevrulesdir}/90-roccat-sova.rules
-%{_mandir}/*/man1/roccatsovacontrol.1*
+%{_mandir}/*/man1/roccatsovacontrol.1%{?ext_man}
 %{_datadir}/applications/roccatsovaconfig.desktop
 
 %files -n roccat-tyon
@@ -710,7 +715,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/gaminggear_plugins/libtyongfxplugin.so
 %{_libdir}/roccat/libtyoneventhandler.so
 %{_udevrulesdir}/90-roccat-tyon.rules
-%{_mandir}/*/man1/roccattyoncontrol.1*
+%{_mandir}/*/man1/roccattyoncontrol.1%{?ext_man}
 %{_datadir}/applications/roccattyonconfig.desktop
 
 %files -n roccat-nyth
@@ -720,7 +725,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/gaminggear_plugins/libnythgfxplugin.so
 %{_libdir}/roccat/libnytheventhandler.so
 %{_udevrulesdir}/90-roccat-nyth.rules
-%{_mandir}/*/man1/roccatnythcontrol.1*
+%{_mandir}/*/man1/roccatnythcontrol.1%{?ext_man}
 %{_datadir}/applications/roccatnythconfig.desktop
 
 %files -n roccat-kiro
@@ -730,7 +735,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/gaminggear_plugins/libkirogfxplugin.so
 %{_libdir}/roccat/libkiroeventhandler.so
 %{_udevrulesdir}/90-roccat-kiro.rules
-%{_mandir}/*/man1/roccatkirocontrol.1*
+%{_mandir}/*/man1/roccatkirocontrol.1%{?ext_man}
 %{_datadir}/applications/roccatkiroconfig.desktop
 
 %files -n roccat-suora
@@ -739,7 +744,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/libroccatsuora.so.*
 %{_libdir}/roccat/libsuoraeventhandler.so
 %{_udevrulesdir}/90-roccat-suora.rules
-%{_mandir}/*/man1/roccatsuoracontrol.1*
+%{_mandir}/*/man1/roccatsuoracontrol.1%{?ext_man}
 %{_datadir}/applications/roccatsuoraconfig.desktop
 
 %files -n roccat-skeltr
@@ -749,7 +754,7 @@ echo 'You need to add yourself to the roccat group and relogin to let the userla
 %{_libdir}/roccat/libskeltreventhandler.so
 %{_libdir}/gaminggear_plugins/libskeltrgfxplugin.so
 %{_udevrulesdir}/90-roccat-skeltr.rules
-%{_mandir}/*/man1/roccatskeltrcontrol.1*
+%{_mandir}/*/man1/roccatskeltrcontrol.1%{?ext_man}
 %{_datadir}/applications/roccatskeltrconfig.desktop
 
 %changelog

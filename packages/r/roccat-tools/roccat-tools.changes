@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:43:41 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.9.0
+  * Improved: Switch to default profile now works if no window is active
+  * Fixed: Sova macro write
+  * Fixed: Sova rkp import
+  * Improved: Lua (the language) finder now handles version and release numbers
+  * Improved: Specfile
+  * Improved: RyosMKFX better gamma correction
+  * Added: RyosMKFX notification settings
+  * Fixed: RyosMKFX false modified profiles leading to unnecessary writes
+  * Fixed: Sova & Skeltr add new profile lost settings
+  * Fixed: Sova open application opened driver instead
+  * Fixed: Double audio notification on profile change when configuration GUI is running
+
+-------------------------------------------------------------------
+Sat Dec  7 22:20:29 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Fix-build-with-recent-pango-releases.patch to fix build
+  with recent pango versions.
+
+-------------------------------------------------------------------
 Mon Aug 21 13:09:59 UTC 2017 - tchvatal@suse.com
 
 - Version bump to 5.7.0
