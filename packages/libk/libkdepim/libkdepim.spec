@@ -1,7 +1,7 @@
 #
 # spec file for package libkdepim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,38 +18,37 @@
 
 %bcond_without lang
 Name:           libkdepim
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-contact-devel
-BuildRequires:  akonadi-search-devel
-BuildRequires:  akonadi-server-devel
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcmutils-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kcontacts-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kldap-devel
-BuildRequires:  kmime-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiContact)
+BuildRequires:  cmake(KF5AkonadiSearch)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5Ldap)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 %if 0%{?suse_version} > 1325
@@ -109,10 +108,10 @@ The libkdepim library for Akonadi related functions
 Summary:        Development package for libkdepim
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Requires:       akonadi-contacts-devel
-Requires:       akonadi-server-devel
 Requires:       libKF5Libkdepim5 = %{version}
 Requires:       libKF5LibkdepimAkonadi5 = %{version}
+Requires:       cmake(KF5Akonadi)
+Requires:       cmake(KF5AkonadiContact)
 
 %description devel
 The development package for the libkdepim libraries
