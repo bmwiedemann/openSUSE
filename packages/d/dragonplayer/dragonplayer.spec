@@ -16,41 +16,41 @@
 #
 
 %define rname dragon
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dragonplayer
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kjobwidgets-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  solid-devel
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(KF5Solid)
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 Obsoletes:      %{name}5 < %{version}
