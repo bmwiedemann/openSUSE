@@ -1,7 +1,7 @@
 #
 # spec file for package kmousetool
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,42 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmousetool
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Automatic Mouse Click
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-build-with-Qt-5_14.diff
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  oxygen-icon-theme-large
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  pkgconfig
 BuildRequires:  sbl
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core) >= 5.3.0
-BuildRequires:  cmake(Qt5Gui) >= 5.3.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.3.0
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 Provides:       kmousetool5 = %{version}
 Obsoletes:      kmousetool5 < %{version}
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 
 %description
 Clicks the mouse for you, reducing hand strain.
@@ -66,7 +61,7 @@ Clicks the mouse for you, reducing hand strain.
 %endif
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
   %cmake_kf5 -d build
