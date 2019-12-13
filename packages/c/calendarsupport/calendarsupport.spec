@@ -1,7 +1,7 @@
 #
 # spec file for package calendarsupport
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,39 @@
 
 
 %define lname libKF5CalendarSupport5
-%define kf5_version 5.58.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           calendarsupport
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-calendar-devel
-BuildRequires:  akonadi-mime-devel >= %{_kapp_version}
-BuildRequires:  akonadi-server-devel
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcalutils-devel
-BuildRequires:  kcodecs-devel
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kguiaddons-devel
-BuildRequires:  kholidays-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kidentitymanagement-devel
-BuildRequires:  kio-devel
-BuildRequires:  kmime-devel
-BuildRequires:  pimcommon-devel
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5Holidays)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(Qt5PrintSupport) >= 5.10.0
 BuildRequires:  cmake(Qt5Test) >= 5.10.0
 BuildRequires:  cmake(Qt5UiTools) >= 5.10.0
@@ -80,9 +80,9 @@ Summary:        Development package for the KDEPIM Calendarsupport library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
-Requires:       akonadi-calendar-devel >= %{_kapp_version}
-Requires:       kidentitymanagement-devel >= %{_kapp_version}
-Requires:       kmime-devel >= %{_kapp_version}
+Requires:       cmake(KF5AkonadiCalendar)
+Requires:       cmake(KF5IdentityManagement)
+Requires:       cmake(KF5Mime)
 Requires:       cmake(Qt5PrintSupport) >= 5.10.0
 
 %description devel
