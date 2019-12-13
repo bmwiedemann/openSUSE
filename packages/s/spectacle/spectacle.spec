@@ -1,7 +1,7 @@
 #
 # spec file for package spectacle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,57 +16,56 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Use-qdbus-qt5-instead-of-qdbus.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  kdoctools-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kwayland-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkipi-devel
-BuildRequires:  libkscreen2-devel
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
-BuildRequires:  pkgconfig
-BuildRequires:  purpose-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xcb-util-cursor-devel
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-image-devel
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GlobalAccel)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kipi)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Purpose)
+BuildRequires:  cmake(KF5Screen)
+BuildRequires:  cmake(KF5Wayland)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 Obsoletes:      kscreengenie < %{version}
 Provides:       kscreengenie = %{version}
 # Upstream changed name twice (kscreengenie - kapture - spectacle)
