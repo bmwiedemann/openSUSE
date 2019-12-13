@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,57 +16,56 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
-BuildRequires:  baloo5-devel
-BuildRequires:  baloo5-widgets-devel
 BuildRequires:  extra-cmake-modules >= 1.6.0
-BuildRequires:  kactivities5-devel >= 5.7.0
-BuildRequires:  kbookmarks-devel >= 5.7.0
-BuildRequires:  kcmutils-devel >= 5.7.0
-BuildRequires:  kcompletion-devel >= 5.7.0
-BuildRequires:  kconfig-devel >= 5.7.0
-BuildRequires:  kcoreaddons-devel >= 5.7.0
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel >= 5.7.0
-BuildRequires:  kdoctools-devel >= 5.7.0
-BuildRequires:  kfilemetadata5-devel
-BuildRequires:  ki18n-devel >= 5.7.0
-BuildRequires:  kiconthemes-devel >= 5.7.0
-BuildRequires:  kinit-devel >= 5.7.0
-BuildRequires:  kio-devel >= 5.7.0
-BuildRequires:  knewstuff-devel >= 5.7.0
-BuildRequires:  knotifications-devel >= 5.7.0
-BuildRequires:  kparts-devel >= 5.7.0
-BuildRequires:  ktexteditor-devel >= 5.7.0
-BuildRequires:  kwindowsystem-devel >= 5.7.0
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pkgconfig
-BuildRequires:  solid-devel >= 5.7.0
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Core) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(KF5Activities) >= 5.7.0
+BuildRequires:  cmake(KF5Baloo)
+BuildRequires:  cmake(KF5BalooWidgets)
+BuildRequires:  cmake(KF5Bookmarks) >= 5.7.0
+BuildRequires:  cmake(KF5Completion) >= 5.7.0
+BuildRequires:  cmake(KF5Config) >= 5.7.0
+BuildRequires:  cmake(KF5CoreAddons) >= 5.7.0
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons) >= 5.7.0
+BuildRequires:  cmake(KF5DocTools) >= 5.7.0
+BuildRequires:  cmake(KF5FileMetaData)
+BuildRequires:  cmake(KF5I18n) >= 5.7.0
+BuildRequires:  cmake(KF5IconThemes) >= 5.7.0
+BuildRequires:  cmake(KF5Init) >= 5.7.0
+BuildRequires:  cmake(KF5KCMUtils) >= 5.7.0
+BuildRequires:  cmake(KF5KIO) >= 5.7.0
+BuildRequires:  cmake(KF5NewStuff) >= 5.7.0
+BuildRequires:  cmake(KF5Notifications) >= 5.7.0
+BuildRequires:  cmake(KF5Parts) >= 5.7.0
+BuildRequires:  cmake(KF5Solid) >= 5.7.0
+BuildRequires:  cmake(KF5TextEditor) >= 5.7.0
+BuildRequires:  cmake(KF5WindowSystem) >= 5.7.0
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
+BuildRequires:  cmake(Qt5Core) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.4.0
+BuildRequires:  cmake(Qt5Gui) >= 5.4.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 Requires:       baloo5-kioslaves
 Requires:       dolphin-part = %{version}-%{release}
 Recommends:     kio-extras5

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:08 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Fix build with Qt 5.14 RC (kde#414492)
+  * Correct invalid homepage URL (kde#414901)
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:29 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * fix(search): Fix baloo searchString parsing (kde#412952)
+  * Force dbus introspection on the Dolphin_1 object (kde#414402)
+  * Fix accessibility regression on the Dolphin Control button
+  * Fix dolphin homepage in the appstream metadata
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:01 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes since 19.08.3, only listing bugfixes:
+  * [Status Bar] Remove file status Timer, add text update delay (kde#399267)
+  * When the selection is deselected, restart the keyboard search from the beginning (kde#411538)
+  * Expose full set of script execution options in settings window (kde#371837)
+  * Fix wrong window titles (kde#389135)
+  * Add "Add to Places" action to file menu (kde#390757)
+  * [dolphin] Add an action to toggle the searchbar (kde#344617)
+  * Make non-empty textual columns come first in sorting (kde#410538)
+  * Middle-elide file/folder labels so the extension is always visible (kde#404955)
+  * Correct "New Window" tooltip (kde#411215)
+  * Fix an issue with focus lost after closing terminal panel (kde#407979)
+  * Fix name grouping feature for cyrillic names (kde#406867)
+  * Fix an issue with a new tab focus (kde#407604)
+- Refreshed patches:
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -29,10 +75,10 @@ Thu Sep  5 14:00:00 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Fixing bugs in new folders in tabs feature 
-  * Making sure that DBus objects are all created before the service 
-  * Fix places text when the URL has a trailing slash 
-  * Reset progress bar text when directory loading starts 
+  * Fixing bugs in new folders in tabs feature
+  * Making sure that DBus objects are all created before the service
+  * Fix places text when the URL has a trailing slash
+  * Reset progress bar text when directory loading starts
   * Fixing bug where split view opens with no URLs (kde#411193)
 
 -------------------------------------------------------------------

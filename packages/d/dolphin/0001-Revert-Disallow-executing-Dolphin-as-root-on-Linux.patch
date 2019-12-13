@@ -10,10 +10,10 @@ desktop. So this patch is absolutely pointless for us.
  src/main.cpp | 13 -------------
  1 file changed, 13 deletions(-)
 
-Index: dolphin-19.03.60git.20190530T224008~27e3907a3/src/main.cpp
+Index: dolphin-19.03.60git.20191013T183353~0caab3c0a/src/main.cpp
 ===================================================================
---- dolphin-19.03.60git.20190530T224008~27e3907a3.orig/src/main.cpp	2019-05-30 22:40:08.000000000 +0200
-+++ dolphin-19.03.60git.20190530T224008~27e3907a3/src/main.cpp	2019-06-01 10:46:52.679607714 +0200
+--- dolphin-19.03.60git.20191013T183353~0caab3c0a.orig/src/main.cpp	2019-10-13 18:33:53.000000000 +0200
++++ dolphin-19.03.60git.20191013T183353~0caab3c0a/src/main.cpp	2019-10-14 07:14:20.922172281 +0200
 @@ -39,25 +39,8 @@
  #include <QDBusAbstractInterface>
  #include <QDBusConnectionInterface>
@@ -38,5 +38,5 @@ Index: dolphin-19.03.60git.20190530T224008~27e3907a3/src/main.cpp
 -    }
 -#endif
  
-     QApplication app(argc, argv);
-     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+     /**
+      * enable high dpi support
