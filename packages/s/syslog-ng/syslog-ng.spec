@@ -30,7 +30,7 @@ Name:           syslog-ng
 %endif
 %define         syslog_ng_sockets_cfg	%{syslog_ng_rundir}/additional-log-sockets.conf
 
-Version:        3.23.1
+Version:        3.25.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -131,7 +131,7 @@ Requires(pre):  user(news)
 Requires(pre):  group(news)
 %endif
 
-Requires:       libevtlog-3_23-0
+Requires:       libevtlog-3_25-0
 
 Obsoletes:      syslog-ng-json
 
@@ -155,11 +155,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_23-0
+%package -n libevtlog-3_25-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_23-0
+%description -n libevtlog-3_25-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -460,9 +460,9 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_23-0 -p /sbin/ldconfig
+%post -n libevtlog-3_25-0 -p /sbin/ldconfig
 
-%postun -n libevtlog-3_23-0 -p /sbin/ldconfig
+%postun -n libevtlog-3_25-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -564,7 +564,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/liblinux-kmsg-format.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libpseudofile.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libcef.so
-%attr(755,root,root) %{_libdir}/syslog-ng/libdate.so
+%attr(755,root,root) %{_libdir}/syslog-ng/libtimestamp.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libdisk-buffer.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libtfgetent.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libmap-value-pairs.so
@@ -614,7 +614,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/checkpoint/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_23-0
+%files -n libevtlog-3_25-0
 %{_libdir}/libevtlog-*.so.*
 
 %if %{with curl}
