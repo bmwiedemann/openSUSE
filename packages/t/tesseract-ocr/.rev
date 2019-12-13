@@ -65,4 +65,23 @@
     <comment></comment>
     <requestid>578379</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93ab6126c201b14d495545ee8f020f12</srcmd5>
+    <version>4.1.0</version>
+    <time>1576235110</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging Cleanups
+- Update dependencies and enable openCL
+
+- Update to 4.1.0
+  * Added a new output option formatted in the ALTO standard
+  * SIMD optimization
+  * Bugfixes
+- Update to 4.0.0
+  * New OCR engine based on LSTMs
+  * Removed Cube OCR engine
+  * Updated build system
+  * Cleanups and fixes</comment>
+    <requestid>756765</requestid>
+  </revision>
 </revisionlist>
