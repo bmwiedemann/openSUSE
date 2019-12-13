@@ -17,52 +17,51 @@
 
 
 %define _appstreamkpackage 0%(cat %{_kf5_cmakedir}/KF5Package/KF5PackageMacros.cmake | grep -q 'appstream-metainfo' && echo 1)
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kate
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Defuse-root-block.patch
-BuildRequires:  kactivities5-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemmodels-devel
-BuildRequires:  kjobwidgets-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwallet-framework-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
+BuildRequires:  cmake(KF5Activities)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  libgit2-devel
-BuildRequires:  pkgconfig
-BuildRequires:  plasma-framework-devel
-BuildRequires:  threadweaver-devel
-BuildRequires:  pkgconfig(Qt5Core) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Script) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5ThreadWeaver)
+BuildRequires:  cmake(Qt5Core) >= 5.10.0
+BuildRequires:  cmake(Qt5DBus) >= 5.10.0
+BuildRequires:  cmake(Qt5Script) >= 5.10.0
+BuildRequires:  cmake(Qt5Sql) >= 5.10.0
+BuildRequires:  cmake(Qt5Test) >= 5.10.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
 Requires:       %{name}-plugins = %{version}
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
