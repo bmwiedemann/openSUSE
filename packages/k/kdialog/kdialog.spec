@@ -1,7 +1,7 @@
 #
 # spec file for package kdialog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdialog
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE version of xdialog
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kdelibs4support-devel >= 5.7.0
 BuildRequires:  kf5-filesystem
-BuildRequires:  kio-devel >= 5.7.0
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.2.0
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(Qt5DBus) >= 5.2.0
 Recommends:     %{name}-lang
 
 %description
