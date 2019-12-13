@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-mime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,36 @@
 
 
 %define sonum   5
-%define kf5_version 5.23.0
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-mime
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-server-devel >= %{_kapp_version}
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kconfig-devel >= %{kf5_version}
-BuildRequires:  kdbusaddons-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kio-devel >= %{kf5_version}
-BuildRequires:  kitemmodels-devel >= %{kf5_version}
-BuildRequires:  kmime-devel
-BuildRequires:  kxmlgui-devel >= %{kf5_version}
 BuildRequires:  libxslt-devel
-BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
+BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 Recommends:     %{name}-lang
 
 %description
@@ -73,8 +71,8 @@ This package provides plugins required by PIM applications read and write parsed
 %package devel
 Summary:        MIME email parser for KDE PIM - development files
 Group:          Development/Libraries/KDE
-Requires:       akonadi-server-devel
 Requires:       libKF5AkonadiMime5 = %{version}
+Requires:       cmake(KF5Akonadi)
 
 %description devel
 This package contains development headers needed to use MIME message parsing
