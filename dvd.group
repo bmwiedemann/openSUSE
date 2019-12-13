@@ -77,22 +77,22 @@
     <package name="adwaita-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="adwaita-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="agrep" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-calendar-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-calendar-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-calendar-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="akonadi-calendar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-calendar-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-calendar-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-contact" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-contact-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="akonadi-import-wizard" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-import-wizard-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="akonadi-import-wizard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-import-wizard-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-mime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-mime-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-notes-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="akonadi-plugin-calendar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-plugin-contacts" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-plugin-kalarmcal" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-plugin-mime" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-search" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="akonadi-search-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="akonadi-plugin-calendar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-plugin-contacts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-plugin-kalarmcal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-plugin-mime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-search" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-search-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-server-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-server-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -292,8 +292,8 @@
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ca-certificates-mozilla" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cabextract" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="calendarsupport" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="calendarsupport-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="calendarsupport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="calendarsupport-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="canberra-gtk-play" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cantarell-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="capi4hylafax" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
@@ -493,8 +493,8 @@
     <package name="espeak-ng" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="etags" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="ethtool" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="eventviews" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="eventviews-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="eventviews" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="eventviews-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="evince" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evince-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evince-plugin-comicsdocument" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1035,8 +1035,8 @@
     <package name="ifplugd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iftop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="iio-sensor-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="incidenceeditor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="incidenceeditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="incidenceeditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="incidenceeditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="indent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1119,12 +1119,13 @@
     <package name="kactivities5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kactivitymanagerd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kactivitymanagerd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kaddressbook" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kaddressbook-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kaddressbook" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kaddressbook-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kaddressbook-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kakasi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kakasi-dict" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kalarmcal" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kalarmcal-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kalarmcal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kalarmcal-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kalgebra" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kalgebra-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kalzium" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1172,8 +1173,8 @@
     <package name="kcoreaddons-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcron" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kcron-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kdav" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kdav-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kdav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kdav-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdbg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kdbg-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kdbusaddons-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1199,12 +1200,12 @@
     <package name="kdelibs4support-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdenetwork-filesharing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdenetwork-filesharing-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kdepim-addons" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kdepim-addons-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kdepim-addons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kdepim-addons-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdepim-apps-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdepim-apps-libs-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kdepim-runtime" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kdepim-runtime-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kdepim-runtime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kdepim-runtime-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdevelop5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kdevelop5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kdevplatform" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -1314,7 +1315,7 @@
     <package name="kismet-logtools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kiten" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kiten-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kitinerary" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kitinerary" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kjumpingcube" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kjumpingcube-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1328,11 +1329,11 @@
     <package name="kmag-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmahjongg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmahjongg-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kmail" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kmail-account-wizard" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kmail-account-wizard-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kmail-application-icons" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kmail-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-account-wizard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-account-wizard-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-application-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kmail-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmailtransport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmailtransport-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmenuedit5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1375,8 +1376,8 @@
     <package name="konversation-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kopete" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kopete-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="korganizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="korganizer-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="korganizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="korganizer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpackage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpackage-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpartx" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1386,7 +1387,7 @@
     <package name="kpeople5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpimtextedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpimtextedit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kpkpass" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kpkpass" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -1431,7 +1432,8 @@
     <package name="ktexteditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktimer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ktimer-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ktnef" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ktnef" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ktnef-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktouch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="ktouch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="ktuberling" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1484,7 +1486,7 @@
     <package name="libKF5Activities5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ActivitiesStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiAgentBase5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5AkonadiCalendar5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5AkonadiCalendar5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiContact5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiMime5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1493,7 +1495,7 @@
     <package name="libKF5AkonadiSearch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiXml5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5AlarmCalendar5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5AlarmCalendar5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Archive5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Attica5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Auth5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1507,7 +1509,7 @@
     <package name="libKF5Bookmarks5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CalendarCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CalendarEvents5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5CalendarSupport5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5CalendarSupport5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CalendarUtils5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Cddb5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Codecs5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1532,7 +1534,7 @@
     <package name="libKF5Declarative5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5DocTools5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Emoticons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5EventViews5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5EventViews5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccelPrivate5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1548,7 +1550,7 @@
     <package name="libKF5IconThemes5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5IdentityManagement5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5IdleTime5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5IncidenceEditor5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5IncidenceEditor5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ItemModels5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ItemViews5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ItemViews5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1571,9 +1573,9 @@
     <package name="libKF5Libkdepim5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5LibkdepimAkonadi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Libkleo5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5MailCommon5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKF5MailImporter5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKF5MailImporterAkonadi5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5MailCommon5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5MailImporter5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5MailImporterAkonadi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5MailTransport5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5MailTransportAkonadi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Mbox5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1618,7 +1620,7 @@
     <package name="libKF5TextWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5TextWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ThreadWeaver5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5Tnef5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKF5Tnef5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Torrent6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libKF5UnitConversion5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5UnitConversion5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1629,16 +1631,16 @@
     <package name="libKF5WindowSystem5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5XmlGui5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5XmlGui5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKGantt2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKPimGAPICalendar5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKPimGAPIContacts5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKGantt2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPimGAPICalendar5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPimGAPIContacts5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimGAPICore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKPimGAPITasks5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKPimImportWizard5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKPimItinerary5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKPimItinerary5-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKPimKDAV5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libKPimPkPass5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libKPimGAPITasks5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPimImportWizard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPimItinerary5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPimItinerary5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPimKDAV5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPimPkPass5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimSMTP5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKScreenLocker5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKasten4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -1661,7 +1663,7 @@
     <package name="libQt5Location5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5Multimedia5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5Network5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libQt5NetworkAuth5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libQt5NetworkAuth5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5Nfc5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5Nfc5-imports" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libQt5OpenGL5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1753,7 +1755,7 @@
     <package name="libXvnc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libXxf86dga1" supportstatus="unsupported"/> <!-- reason: dvd:spacenavd -->
     <package name="libXxf86vm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libZXingCore1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libZXingCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="liba2ps1" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
     <package name="liba52-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2346,7 +2348,7 @@
     <package name="libkeybinder0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libkf5kdegames6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkgantt-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libkgantt-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkgapi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkioarchive5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkipi-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2355,15 +2357,15 @@
     <package name="libkmahjongg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkmahjongg-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libkolabxml1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libkolabxml1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkpathsea6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libksane-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksba8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libkscreen2-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libksieve" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libksieve-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libksieve" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libksieve-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2580,7 +2582,7 @@
     <package name="libpeas-loader-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpfs2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpgm-5_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libphonenumber8" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libphonenumber8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libphonon4qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpinyin-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpinyin13" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2616,7 +2618,7 @@
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libprotobuf20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libprotobuf20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1-config-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3059,7 +3061,7 @@
     <package name="libxcb-xvmc0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libxcb1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libxerces-c-3_2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libxerces-c-3_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxfce4panel-1_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4panel-2_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4ui-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
@@ -3176,10 +3178,10 @@
     <package name="m17n-db" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="m17n-db-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="m4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="mailcommon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="mailcommon-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="mailimporter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="mailimporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="mailcommon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="mailcommon-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="mailimporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="mailimporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mailutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mailx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="make" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
@@ -3200,8 +3202,8 @@
     <package name="mate-calc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mate-calc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mbimcli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="mbox-importer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="mbox-importer-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="mbox-importer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="mbox-importer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mdadm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3934,10 +3936,10 @@
     <package name="pidgin-plugin-skypeweb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pidgin-plugin-telegram" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pigz" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="pim-data-exporter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="pim-data-exporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="pim-sieve-editor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="pim-sieve-editor-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="pim-data-exporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pim-data-exporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pim-sieve-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pim-sieve-editor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pimcommon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pimcommon-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pinentry" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4921,7 +4923,7 @@
     <package name="shadow" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="shared-mime-info" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="shared-mime-info-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="shared-python-startup" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
+    <package name="shared-python-startup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="sharutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sharutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="shotwell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -5704,8 +5706,6 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="kaddressbook-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ktnef-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
