@@ -26,6 +26,7 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://pypi.python.org/pypi/docker-compose
 Source0:        https://files.pythonhosted.org/packages/source/d/docker-compose/docker-compose-%{version}.tar.gz
+Patch0:         no-restrict-upper.patch
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module cached-property >= 1.2.0}
 BuildRequires:  %{python_module docker >= 3.7.0}
@@ -89,6 +90,7 @@ Previously known as Fig.
 
 %prep
 %setup -q -n docker-compose-%{version}
+%patch0 -p1
 
 %build
 %python_build
