@@ -1,7 +1,7 @@
 #
 # spec file for package korganizer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,24 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           korganizer
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Patch1:         korgac-autostart-default.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
@@ -68,11 +66,12 @@ BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Service)
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.2.0
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 Requires:       akonadi-calendar-tools
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
