@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:41 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Update Appstream for new release
+  * Don't use nullptr as flag
+  * Fix invalid fcc warning when we restore mail
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:01 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Show invalid fcc folder widget
+  * When we use "send again" make sure to assign FCC to current folder.
+  * honour notification inhibition by delaying reminders
+  * Add missing Q_REQUIRED_RESULT
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes since 19.08.3, only listing bugfixes:
+  * Fix improve notification message (kde#411992)
+  * Fix Bug 412904 - Provide option to hide menu bar in message view windows (kde#412904)
+- Remove obsolete version requirements
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:06 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -29,7 +64,7 @@ Thu Sep  5 14:00:42 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Fix Bug 409662 - Missing "Save Attachments..." from Multiple Emails (kde#409662) 
+  * Fix Bug 409662 - Missing "Save Attachments..." from Multiple Emails (kde#409662)
   * Fix using correct parent widget.
 
 -------------------------------------------------------------------
