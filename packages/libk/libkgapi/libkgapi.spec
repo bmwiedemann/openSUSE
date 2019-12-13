@@ -1,7 +1,7 @@
 #
 # spec file for package libkgapi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,26 +20,26 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgapi
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules >= 5.55.0
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcontacts5-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwindowsystem-devel
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Core) >= 5.10.0
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network) >= 5.10.0
@@ -132,8 +132,6 @@ and sending mail through Google servers.
 %package devel
 Summary:        Build environment for libkgapi
 Group:          Development/Libraries/KDE
-Requires:       kcalcore-devel
-Requires:       kcontacts5-devel
 Requires:       libKPimGAPIBlogger5 = %{version}
 Requires:       libKPimGAPICalendar5 = %{version}
 Requires:       libKPimGAPIContacts5 = %{version}
@@ -142,6 +140,8 @@ Requires:       libKPimGAPIDrive5 = %{version}
 Requires:       libKPimGAPILatitude5 = %{version}
 Requires:       libKPimGAPIMaps5 = %{version}
 Requires:       libKPimGAPITasks5 = %{version}
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5Contacts)
 Obsoletes:      libkgapi5-devel < %{version}
 Provides:       libkgapi5-devel = %{version}
 
@@ -157,7 +157,7 @@ to develop KDE PIM applications.
 %build
 # workaround, kio-gdrive crashes when loading libKPimGAPIDrive5 if built with LTO (boo#1148217)
 %define _lto_cflags %{nil}
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
   %make_jobs
 
 %install
