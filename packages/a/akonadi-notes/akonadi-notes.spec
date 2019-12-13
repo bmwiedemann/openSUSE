@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-notes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,29 @@
 #
 
 
-%define sonum   5
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-notes
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-server-devel >= %{_kapp_version}
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kmime-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5Xml) >= 5.6.0
 
 %description
 Akonadi Notes is a library that bridges the type-agnostic API of
@@ -63,8 +61,8 @@ objects.
 %package devel
 Summary:        Build environment for akonadi-notes
 Group:          Development/Libraries/KDE
-Requires:       kmime-devel
 Requires:       libKF5AkonadiNotes5 = %{version}
+Requires:       cmake(KF5Mime)
 
 %description devel
 This package contains the development files needed to use the akonadi-notes
