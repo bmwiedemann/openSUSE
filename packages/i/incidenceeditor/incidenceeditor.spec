@@ -1,7 +1,7 @@
 #
 # spec file for package incidenceeditor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,43 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           incidenceeditor
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-calendar-devel
-BuildRequires:  akonadi-mime-devel >= %{_kapp_version}
-BuildRequires:  akonadi-server-devel
-BuildRequires:  calendarsupport-devel
-BuildRequires:  eventviews-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcalutils-devel
-BuildRequires:  kcodecs-devel
 BuildRequires:  kdepim-apps-libs-devel
-BuildRequires:  kdiagram-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kidentitymanagement-devel
-BuildRequires:  kldap-devel
-BuildRequires:  kmailtransport-devel
-BuildRequires:  kmime-devel
-BuildRequires:  libkdepim-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(KChart)
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CalendarSupport)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5EventViews)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5Ldap)
+BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
@@ -95,14 +94,14 @@ The IncidenceEditor library for kdepim
 Summary:        Development package for incidenceeditor
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Requires:       calendarsupport-devel
-Requires:       eventviews-devel
-Requires:       kcalcore-devel
-Requires:       kcalutils-devel
-Requires:       kdiagram-devel
-Requires:       kmailtransport-devel
-Requires:       kmime-devel
 Requires:       libKF5IncidenceEditor5 = %{version}
+Requires:       cmake(KChart)
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5CalendarSupport)
+Requires:       cmake(KF5CalendarUtils)
+Requires:       cmake(KF5EventViews)
+Requires:       cmake(KF5MailTransport)
+Requires:       cmake(KF5Mime)
 
 %description devel
 The development package for the incidenceeditor libraries
