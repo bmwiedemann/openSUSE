@@ -18,35 +18,34 @@
 
 %define _so 5
 %define lname libKF5Sane
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksane
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE scanning library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
+BuildRequires:  cmake(KF5Config)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  sane-backends-devel
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 
 %description
 The KDE scanner library provides an API and widgets for using
@@ -56,11 +55,11 @@ scanners and other imaging devices supported by SANE.
 Summary:        Development files for the KDE scanning library
 Group:          Development/Libraries/KDE
 Requires:       %{lname}%{_so} = %{version}
-Requires:       kwallet-devel
-Requires:       kwidgetsaddons-devel
+Requires:       cmake(KF5Wallet)
+Requires:       cmake(KF5WidgetsAddons)
 Requires:       pkgconfig
 Requires:       sane-backends-devel
-Requires:       pkgconfig(Qt5Widgets) >= 5.2.0
+Requires:       cmake(Qt5Widgets)
 Obsoletes:      libksane-kf5-devel < %{version}
 Provides:       libksane-kf5-devel = %{version}
 
