@@ -1,7 +1,7 @@
 #
 # spec file for package eventviews
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,37 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           eventviews
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-calendar-devel >= %{_kapp_version}
-BuildRequires:  akonadi-server-devel
-BuildRequires:  calendarsupport-devel
 BuildRequires:  extra-cmake-modules >= 5.19.0
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcalutils-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kdiagram-devel
-BuildRequires:  kholidays-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kmime-devel
-BuildRequires:  libkdepim-devel >= %{_kapp_version}
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(KChart)
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CalendarSupport)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Holidays)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(Qt5UiTools) >= 5.4.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 %if 0%{?suse_version} > 1325
@@ -68,7 +67,7 @@ calendar events in agenda, list, month view or timeline fashion.
 %endif
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake_kf5 -d build
@@ -98,12 +97,12 @@ calendar events in agenda, list, month view or timeline fashion.
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       akonadi-calendar-devel
-Requires:       akonadi-server-devel
-Requires:       calendarsupport-devel
-Requires:       kcalcore-devel
-Requires:       kcalutils-devel
 Requires:       libKF5EventViews5 = %{version}
+Requires:       cmake(KF5Akonadi)
+Requires:       cmake(KF5AkonadiCalendar)
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5CalendarSupport)
+Requires:       cmake(KF5CalendarUtils)
 
 %description devel
 The development package for the eventviews libraries
