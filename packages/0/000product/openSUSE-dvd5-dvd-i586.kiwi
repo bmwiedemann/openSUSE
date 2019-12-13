@@ -1128,7 +1128,7 @@
       <repopackage name="kactivitymanagerd"/>
       <repopackage name="kactivitymanagerd-lang"/>
       <repopackage name="kaddressbook"/>
-      <repopackage name="kaddressbook-doc" arch="i586,i686"/>
+      <repopackage name="kaddressbook-doc"/>
       <repopackage name="kaddressbook-lang"/>
       <repopackage name="kakasi"/>
       <repopackage name="kakasi-dict"/>
@@ -1443,7 +1443,7 @@
       <repopackage name="ktimer"/>
       <repopackage name="ktimer-lang"/>
       <repopackage name="ktnef"/>
-      <repopackage name="ktnef-lang" arch="i586,i686"/>
+      <repopackage name="ktnef-lang"/>
       <repopackage name="ktouch"/>
       <repopackage name="ktouch-lang"/>
       <repopackage name="ktuberling"/>
