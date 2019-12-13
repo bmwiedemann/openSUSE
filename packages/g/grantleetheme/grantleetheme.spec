@@ -1,7 +1,7 @@
 #
 # spec file for package grantleetheme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,32 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           grantleetheme
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
 Group:          System/Libraries
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.19.0
-BuildRequires:  grantlee5-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Network) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(Qt5Network) >= 5.4.0
+BuildRequires:  cmake(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
