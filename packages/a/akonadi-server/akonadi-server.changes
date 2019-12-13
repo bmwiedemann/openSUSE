@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:00 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:22 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Only build and install designer plugin if it's enabled
+  * akonadi: improve debug message in state() method
+  * Testrunner: wait until all jobs are done before aborting setup
+  * akonadi_control: announce new Resource once both services are registered
+  * Make itemmovetest more robust.
+  * Fix build with Qt 5.14
+  * Avoid KIO starting klauncher, as that can hang the CI
+
+-------------------------------------------------------------------
+Sun Nov 24 13:28:53 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:26 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -24,7 +56,7 @@ Thu Sep  5 13:59:50 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Fix Bug 403208 - Short name of favorite folder results in improperly shown number of unread messages (kde#403208) 
+  * Fix Bug 403208 - Short name of favorite folder results in improperly shown number of unread messages (kde#403208)
   * Include KDE* cmake macros before any others
 
 -------------------------------------------------------------------

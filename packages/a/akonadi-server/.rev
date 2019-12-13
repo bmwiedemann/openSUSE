@@ -525,4 +525,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Applications 19.08.3</comment>
     <requestid>746795</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e261c3e80ad5276ef346637b0b7dd251</srcmd5>
+    <version>19.12.0</version>
+    <time>1576234904</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.0</comment>
+    <requestid>756143</requestid>
+  </revision>
 </revisionlist>

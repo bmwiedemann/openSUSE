@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 %define rname   akonadi
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://akonadi-project.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
@@ -38,15 +38,17 @@ BuildRequires:  cmake >= 3.0.0
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
+BuildRequires:  libboost_graph-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libxml2
 BuildRequires:  libxslt
 BuildRequires:  libxslt-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  mariadb
-BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  sqlite3-devel
+BuildRequires:  cmake(KAccounts)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
@@ -59,15 +61,15 @@ BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Requires:       libqt5-sql-mysql
 Requires:       mysql
 Requires(post): shared-mime-info
@@ -78,21 +80,10 @@ Provides:       akonadi5 = %{version}
 # Needed for users of unstable repositories
 Obsoletes:      akonadi < %{version}
 Obsoletes:      akonadi-runtime < %{version}
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_graph-devel
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
-%endif
 Recommends:     %{name}-lang
+# FIXME: Check if it's worth it
+Recommends:     kaccounts-integration
+Recommends:     kaccounts-providers
 
 %description
 This package contains the data files of Akonadi, the KDE PIM storage
@@ -151,26 +142,22 @@ Akonadi server's SQlite plugin.
 Summary:        Akonadi Framework: Build Environment
 Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
-Requires:       kcompletion-devel
-Requires:       kdelibs4support-devel
-Requires:       kitemmodels-devel
-Requires:       kjobwidgets-devel
-Requires:       kservice-devel
-Requires:       kxmlgui-devel
 Requires:       libKF5AkonadiAgentBase5 = %{version}
 Requires:       libKF5AkonadiCore5 = %{version}
 Requires:       libKF5AkonadiWidgets5 = %{version}
-Requires:       solid-devel
-Requires:       pkgconfig(Qt5Network)
+Requires:       libboost_headers-devel
+Requires:       cmake(KF5Completion)
+Requires:       cmake(KF5ItemModels)
+Requires:       cmake(KF5JobWidgets)
+Requires:       cmake(KF5KDELibs4Support)
+Requires:       cmake(KF5Service)
+Requires:       cmake(KF5Solid)
+Requires:       cmake(KF5XmlGui)
+Requires:       cmake(Qt5Network)
 Conflicts:      libakonadiprotocolinternals-devel
 Obsoletes:      akonadi-devel < %{version}
 Obsoletes:      libKF5AkonadiPrivate-devel < %{version}
 Provides:       libKF5AkonadiPrivate-devel = %{version}
-%if 0%{?suse_version} > 1325
-Requires:       libboost_headers-devel
-%else
-Requires:       boost-devel
-%endif
 
 %description devel
 This package contains development files of Akonadi, the KDE PIM storage
@@ -182,17 +169,7 @@ service.
 %setup -q -n %{rname}-%{version}
 
 %build
-  %if 0%{?suse_version} < 1330
-    # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-    %if 0%{?sle_version} < 120300
-      export CC=gcc-6
-      export CXX=g++-6
-    %else
-      export CC=gcc-7
-      export CXX=g++-7
-    %endif
-  %endif
-  %cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir}
+  %cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir} -DINSTALL_APPARMOR=FALSE
   %make_jobs
 
 %install
