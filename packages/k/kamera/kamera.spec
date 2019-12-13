@@ -16,33 +16,32 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kamera
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Digital camera support for KDE applications
 License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kxmlgui-devel
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  libgphoto2-devel
 BuildRequires:  oxygen-icon-theme-large
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  cmake(Qt5Core)
 
 %description
 This package allows any KDE application to access and manipulate pictures on a digital camera.
@@ -83,6 +82,7 @@ This package contains a KIO slave to access digital cameras.
 %dir %{_kf5_sharedir}/solid/
 %dir %{_kf5_sharedir}/solid/actions/
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol/kamera/
+%{_kf5_appstreamdir}/org.kde.kamera.metainfo.xml
 %{_kf5_plugindir}/kcm_kamera.so
 %{_kf5_plugindir}/kio_kamera.so
 %{_kf5_servicesdir}/camera.protocol
