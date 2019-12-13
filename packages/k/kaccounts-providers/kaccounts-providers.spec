@@ -1,7 +1,7 @@
 #
 # spec file for package kaccounts-providers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,31 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-providers
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  intltool
-BuildRequires:  kaccounts-integration-devel
-BuildRequires:  kdeclarative-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kpackage-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  cmake(KAccounts)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Package)
+BuildRequires:  cmake(Qt5Qml)
 Requires:       signon-plugin-oauth2
 Recommends:     %{name}-lang
 
