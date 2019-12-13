@@ -1,7 +1,7 @@
 #
 # spec file for package kcalutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,33 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalutils
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  grantlee5-devel
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcodecs-devel >= %{kf5_version}
-BuildRequires:  kconfig-devel >= %{kf5_version}
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
-BuildRequires:  kdelibs4support-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kidentitymanagement-devel >= %{_kapp_version}
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
@@ -64,10 +63,10 @@ applications access and use calendar data via the KCalCore library.
 %package devel
 Summary:        Development files for kcalutils
 Group:          Development/Libraries/KDE
-Requires:       kcalcore-devel
-Requires:       kcoreaddons-devel >= %{kf5_version}
-Requires:       kdelibs4support-devel >= %{kf5_version}
 Requires:       libKF5CalendarUtils5
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
+Requires:       cmake(KF5KDELibs4Support) >= %{kf5_version}
 Obsoletes:      kcalutils5-devel < %{version}
 Provides:       kcalutils5-devel = %{version}
 

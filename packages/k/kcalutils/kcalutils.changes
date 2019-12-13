@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:22 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Fix kcalutils-testincidenceformatter color
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:43 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:14 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.2:
+  * Make it compiles without deprecated methods
+  * Use new framework KF5CalendarCore
+  * Use QLatin1String in join/startswith/endsWith/contains + QString::replace
+    operates on the same object, no need to reassign
+  * Show class on api.kde.org
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:47 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
