@@ -1,7 +1,7 @@
 #
 # spec file for package knotes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knotes
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext-devel
-BuildRequires:  grantlee5-devel
 BuildRequires:  libxslt-devel
-BuildRequires:  pkgconfig
 BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiNotes)
 BuildRequires:  cmake(KF5AkonadiSearch)
@@ -70,14 +69,14 @@ BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.2.0
+BuildRequires:  cmake(Qt5DBus) >= 5.2.0
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Network) >= 5.2.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.2.0
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.2.0
+BuildRequires:  cmake(Qt5Xml) >= 5.2.0
 Recommends:     %{name}-lang
 Obsoletes:      knotes5 < %{version}
 Provides:       knotes5 = %{version}
