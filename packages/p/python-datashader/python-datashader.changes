@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 13 00:23:38 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.9.0:
+  * New features:
+    + Support for CUDA GPU dataframes (cudf and dask_cudf) (#794,
+      #793, #821, #841, #842)
+    + Documented new quadmesh support (renaming user guide section
+      5_Rasters to 5_Grids to reflect the more-general grid support)
+      (#805)
+  * Bugfixes and compatibility:
+    + Avoid double-counting line segments that fit entirely into a
+      single rendered pixel (#839)
+    + Improved geospatial toolbox, including 75X speedups to viewshed
+      algorithm (#811, #824, #844)
+
+-------------------------------------------------------------------
 Thu Oct 24 17:10:37 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix build dependencies.
