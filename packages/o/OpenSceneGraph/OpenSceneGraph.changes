@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 13 08:38:57 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints for ARM
+
+-------------------------------------------------------------------
 Tue Dec 10 11:07:08 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1158895: Remove dependency on jasper (due to planned removal)

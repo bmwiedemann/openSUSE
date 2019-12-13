@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSceneGraph
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@
 %else
 %bcond_with gdal
 %endif
-
 Name:           OpenSceneGraph
 Version:        3.6.3
 Release:        0
@@ -35,7 +34,7 @@ Summary:        3D graphics toolkit
 # Ticket opened to clear license situation: https://github.com/openscenegraph/OpenSceneGraph/issues/552
 License:        LGPL-2.1-only WITH WxWindows-exception-3.1
 Group:          Productivity/Graphics/Other
-Url:            http://openscenegraph.org/projects/osg
+URL:            http://openscenegraph.org/projects/osg
 Source0:        https://github.com/openscenegraph/%{name}/archive/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 # https://github.com/openscenegraph/OpenSceneGraph/issues/779
