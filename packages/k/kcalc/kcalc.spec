@@ -16,38 +16,37 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalc
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  gmp-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kinit-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kxmlgui-devel
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Init)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  mpfr-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
