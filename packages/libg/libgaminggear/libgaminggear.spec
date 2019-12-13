@@ -1,7 +1,7 @@
 #
 # spec file for package libgaminggear
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,11 +24,13 @@ Name:           libgaminggear
 Version:        0.15.1
 Release:        0
 Summary:        Library for gaming input devices
-License:        GPL-2.0 and CC-BY-3.0
+License:        GPL-2.0-only AND CC-BY-3.0
 Group:          Development/Libraries/C and C++
-Url:            https://sourceforge.net/projects/libgaminggear/
+URL:            https://sourceforge.net/projects/libgaminggear/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake >= 2.6.4
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-recent-pango-versions.patch
+BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -37,7 +39,6 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A shared library initiated by the Roccat Linux driver project.
@@ -85,6 +86,7 @@ This package holds libgaminggearwidget.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake -DINSTALL_PKGCONFIGDIR=%{_libdir}/pkgconfig
@@ -103,35 +105,33 @@ make %{?_smp_mflags}
 %postun -n %{libgaminggearwidget} -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc README COPYING Changelog
+%license COPYING
+%doc README Changelog
 %{_bindir}/gaminggearfxcontrol
 %{_bindir}/gaminggearfxinfo
 %{_datadir}/libgaminggear/
 
 %files -n %{libgaminggear}
-%defattr(-, root, root)
-%doc README COPYING Changelog
+%license COPYING
+%doc README Changelog
 %{_libdir}/libgaminggear.so.*
 
 %files -n %{libgaminggearfx}
-%defattr(-, root, root)
-%doc README COPYING Changelog
+%license COPYING
+%doc README Changelog
 %{_libdir}/libgaminggearfx.so.*
 
 %files -n %{libgaminggearwidget}
-%defattr(-, root, root)
-%doc README COPYING Changelog
+%license COPYING
+%doc README Changelog
 %{_libdir}/libgaminggearwidget.so.*
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/gaminggear-0/
 %{_libdir}/libgaminggear*.so
 %{_libdir}/pkgconfig/gaminggear-%{majorversion}.pc
 %{_datadir}/cmake/Modules/FindGAMINGGEAR%{majorversion}.cmake
 
 %files lang -f %{name}.lang
-%defattr(-, root, root)
 
 %changelog
