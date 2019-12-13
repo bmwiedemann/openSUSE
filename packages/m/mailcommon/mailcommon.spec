@@ -1,7 +1,7 @@
 #
 # spec file for package mailcommon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,56 +16,54 @@
 #
 
 
-%define kf5_version 5.58.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailcommon
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-mime-devel
-BuildRequires:  akonadi-server-devel
 BuildRequires:  extra-cmake-modules
-BuildRequires:  karchive-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdesignerplugin-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemmodels-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kmailtransport-devel >= %{_kapp_version}
-BuildRequires:  kmime-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkdepim-devel
-BuildRequires:  mailimporter-devel >= %{_kapp_version}
-BuildRequires:  messagelib-devel >= %{_kapp_version}
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pimcommon-devel
-BuildRequires:  pkgconfig
-BuildRequires:  syntax-highlighting-devel
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10.0
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KF5MailImporter)
+BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5MessageCore)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KF5SyntaxHighlighting)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5UiTools) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 Recommends:     %{name}-lang
@@ -109,13 +107,13 @@ to build email-handling applications.
 Summary:        Development package for mailcommon
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Requires:       akonadi-mime-devel
-Requires:       akonadi-server-devel
-Requires:       kcompletion-devel
 Requires:       libKF5MailCommon5 = %{version}
-Requires:       libkdepim-devel
-Requires:       messagelib-devel
-Requires:       pimcommon-devel
+Requires:       cmake(KF5Akonadi)
+Requires:       cmake(KF5AkonadiMime)
+Requires:       cmake(KF5Completion)
+Requires:       cmake(KF5Libkdepim)
+Requires:       cmake(KF5MessageCore)
+Requires:       cmake(KF5PimCommon)
 
 %description devel
 This package contains the development headers for the mailcommon library.
