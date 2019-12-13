@@ -819,4 +819,12 @@
     <comment>- Add 0001-Make-it-compiles-against-qt5.14.patch to fix build with Qt 5.14.</comment>
     <requestid>748592</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>d041a17f5bb198de449aec2ac72a1994</srcmd5>
+    <version>19.12.0</version>
+    <time>1576234940</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.0</comment>
+    <requestid>756196</requestid>
+  </revision>
 </revisionlist>

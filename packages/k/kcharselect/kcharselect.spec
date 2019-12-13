@@ -16,36 +16,33 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcharselect
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE Character Selector
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Make-it-compiles-against-qt5.14.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kbookmarks-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Bookmarks)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Crash)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Core) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
@@ -60,7 +57,7 @@ KCharSelect is the KDE character selector tool.
 %endif
 
 %prep
-%autosetup -p1 -n kcharselect-%{version}
+%setup -q -n kcharselect-%{version}
 
 %build
   %cmake_kf5 -d build
