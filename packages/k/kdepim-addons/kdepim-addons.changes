@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:27 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:48 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Link with Qt5::Xml where QDomDocument is used
+  * Disable mReadAuthResultHeader for the moment
+  * Add missing Q_REQUIRED_RESULT
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:19 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes since 19.08.3, only listing bugfixes:
+  * Fix Bug 387598 - Send As ICalendar Address Selection has problems (kde#387598)
+  * Use external itinerary extraction process (kde#409001)
+  * Fix Bug 410432 - Add Reminders to New Events (kde#410432)
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:52 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -36,10 +67,10 @@ Fri Aug  9 08:30:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.0.php
 - Changes since 19.07.90:
-  * Allow to wrap attachment text (as diff) 
-  * Fix autotests 
-  * Fix a crash 
-  * Add missing includes 
+  * Allow to wrap attachment text (as diff)
+  * Fix autotests
+  * Fix a crash
+  * Add missing includes
   * Adapt to KCalendarCore namespace change
 
 -------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-addons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,70 +16,69 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Addons for KDEPIM applications
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Enable-the-expert-plugin-by-default.patch
-BuildRequires:  akonadi-calendar-devel
-BuildRequires:  akonadi-import-wizard-devel
-BuildRequires:  akonadi-notes-devel
-BuildRequires:  akonadi-server-devel
-BuildRequires:  calendarsupport-devel
-BuildRequires:  eventviews-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  grantleetheme-devel
-BuildRequires:  incidenceeditor-devel
-BuildRequires:  kcalutils-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdeclarative-devel
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kholidays-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kitinerary-devel
-BuildRequires:  kmailtransport-devel
-BuildRequires:  kontactinterface-devel
-BuildRequires:  kpkpass-devel
-BuildRequires:  ktnef-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libgravatar-devel
-BuildRequires:  libkdepim-devel
-BuildRequires:  libkgapi-devel
-BuildRequires:  libkleo-devel
-BuildRequires:  mailcommon-devel
-BuildRequires:  mailimporter-devel
-BuildRequires:  messagelib-devel
-BuildRequires:  pimcommon-devel
-BuildRequires:  pkgconfig
-BuildRequires:  prison-qt5-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KF5AkonadiNotes)
+BuildRequires:  cmake(KF5CalendarSupport)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5EventViews)
+BuildRequires:  cmake(KF5GrantleeTheme)
+BuildRequires:  cmake(KF5Gravatar)
+BuildRequires:  cmake(KF5Holidays)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IncidenceEditor)
+BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5LibKSieve)
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.6.0
+BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KF5Libkleo)
+BuildRequires:  cmake(KF5MailCommon)
+BuildRequires:  cmake(KF5MailImporter)
+BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5MessageCore)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KF5Prison)
+BuildRequires:  cmake(KF5Tnef)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPimGAPI)
+BuildRequires:  cmake(KPimImportWizard)
+BuildRequires:  cmake(KPimItinerary)
+BuildRequires:  cmake(KPimPkPass)
+BuildRequires:  cmake(Qt5Concurrent) >= 5.6.0
+BuildRequires:  cmake(Qt5DBus) >= 5.6.0
+BuildRequires:  cmake(Qt5OpenGL) >= 5.6.0
+BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5UiTools) >= 5.6.0
+BuildRequires:  cmake(Qt5WebEngine) >= 5.6.0
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.6.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.6.0
+BuildRequires:  cmake(Qt5XmlPatterns) >= 5.6.0
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
 Recommends:     %{name}-lang
@@ -120,9 +119,10 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_debugdir}/kdepim-addons.renamecategories
 %{_kf5_configdir}/kmail.antispamrc
 %{_kf5_configdir}/kmail.antivirusrc
+%dir %{_kf5_plugindir}
+%dir %{_kf5_plugindir}/akonadi
 %dir %{_kf5_libdir}/contacteditor
 %dir %{_kf5_libdir}/contacteditor/editorpageplugins
-%dir %{_kf5_plugindir}
 %dir %{_kf5_plugindir}/messageviewer
 %dir %{_kf5_plugindir}/messageviewer/bodypartformatter
 %dir %{_kf5_plugindir}/messageviewer/grantlee
@@ -134,6 +134,7 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_bindir}/kmail_sav.sh
 %{_kf5_libdir}/contacteditor/editorpageplugins/cryptopageplugin.so
 %{_kf5_libdir}/libadblocklibprivate.so.*
+%{_kf5_libdir}/libdkimverifyconfigure.so.*
 %{_kf5_libdir}/libkaddressbookimportexportlibprivate.so.*
 %{_kf5_libdir}/libkaddressbookmergelibprivate.so.*
 %{_kf5_libdir}/libshorturlpluginprivate.so.*
@@ -143,8 +144,10 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_libdir}/libgrammarcommon.so.5.*
 %{_kf5_libdir}/libkmaillanguagetool.so.5
 %{_kf5_libdir}/libkmaillanguagetool.so.5.*
+%{_kf5_libdir}/libkmailquicktextpluginprivate.so.5
+%{_kf5_libdir}/libkmailquicktextpluginprivate.so.5.*
+%{_kf5_plugindir}/akonadi/emailaddressselectionldapdialogplugin.so
 %{_kf5_plugindir}/importwizard/
-%{_kf5_plugindir}/contacteditor/
 %{_kf5_plugindir}/kaddressbook/
 %{_kf5_plugindir}/kmail/
 %{_kf5_plugindir}/korg_datenums.so
@@ -161,10 +164,8 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/messageviewer/grantlee/5.0/kitinerary_grantlee_extension.so
 %{_kf5_qmldir}/org/kde/plasma/PimCalendars/
 %{_kf5_servicesdir}/korganizer/
-%{_kf5_sharedir}/contacteditor/
 %{_kf5_sharedir}/kconf_update/webengineurlinterceptoradblock.upd
 %{_kf5_sharedir}/kconf_update/languagetool_kmail.upd
-%{_kf5_sharedir}/kmail2/
 %dir %{_kf5_sharedir}/qtcreator
 %dir %{_kf5_sharedir}/qtcreator/templates/
 %dir %{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/
