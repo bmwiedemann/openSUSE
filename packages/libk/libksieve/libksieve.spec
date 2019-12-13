@@ -1,7 +1,7 @@
 #
 # spec file for package libksieve
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,46 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksieve
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
-BuildRequires:  karchive-devel
-BuildRequires:  kdoctools-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kidentitymanagement-devel >= %{_kapp_version}
-BuildRequires:  kio-devel
-BuildRequires:  kmailtransport-devel >= %{_kapp_version}
-BuildRequires:  kmime-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  kpimtextedit-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  libkdepim-devel
-BuildRequires:  pimcommon-devel >= %{_kapp_version}
-BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebEngine)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 %if 0%{?suse_version} > 1325
