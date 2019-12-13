@@ -16,69 +16,68 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           okular
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  chmlib-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
-BuildRequires:  kactivities5-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kbookmarks-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Activities)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Bookmarks)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  khtml-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kjs-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kpty-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwindowsystem-devel
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5JS)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Pty)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  libdjvulibre-devel
 BuildRequires:  libepub-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libkexiv2-devel
+BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  libmarkdown-devel
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libqca-qt5-devel
 BuildRequires:  libspectre-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libzip-devel
-BuildRequires:  mobipocket-devel
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pkgconfig
-BuildRequires:  purpose-devel
-BuildRequires:  threadweaver-devel
+BuildRequires:  cmake(QMobipocket)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(KF5Purpose)
+BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(Qt5Core) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5TextToSpeech) >= 5.8.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.8.0
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5TextToSpeech)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Suggests:       %{name}-spectre
 Obsoletes:      okular5 < %{version}
@@ -105,9 +104,9 @@ Requires:       %{name} = %{version}
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5CoreAddons)
 Requires:       cmake(KF5XmlGui)
-Requires:       cmake(Qt5Core) >= 5.6.0
-Requires:       cmake(Qt5PrintSupport) >= 5.6.0
-Requires:       cmake(Qt5Widgets) >= 5.6.0
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5PrintSupport)
+Requires:       cmake(Qt5Widgets)
 Obsoletes:      okular5-devel < %{version}
 Provides:       okular5-devel = %{version}
 
