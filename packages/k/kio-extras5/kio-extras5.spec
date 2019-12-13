@@ -17,59 +17,57 @@
 
 
 %define rname kio-extras
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-extras5
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-make-the-libssh-finder-ensure-the-new-ssh-target-is-.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  flac-devel
 BuildRequires:  gperf
-BuildRequires:  kactivities5-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdnssd-framework-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Activities)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5DNSSD)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  khtml-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kpty-devel
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Pty)
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmtp-devel
 BuildRequires:  libssh-devel
 BuildRequires:  libtag-devel
 BuildRequires:  openslp-devel
-BuildRequires:  phonon4qt5-devel
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  pkgconfig
-BuildRequires:  solid-devel
-BuildRequires:  syntax-highlighting-devel
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.4.0
+BuildRequires:  cmake(Qt5Network) >= 5.4.0
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Svg) >= 5.4.0
+BuildRequires:  cmake(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(smbclient)
@@ -108,8 +106,6 @@ This is the development package for libkioarchive
 
 %prep
 %setup -q -n %{rname}-%{version}
-%autopatch -p1
-
 sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 
 %build
