@@ -1,7 +1,7 @@
 #
 # spec file for package baloo5-widgets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,30 @@
 
 
 %define rname baloo-widgets
-%define kf5_version 5.57.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5-widgets
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source99:       baloo5-widgets-rpmlintrc
-BuildRequires:  baloo5-devel
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kfilemetadata5-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kservice-devel
+BuildRequires:  cmake(KF5Baloo)
+BuildRequires:  cmake(KF5FileMetaData)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(Qt5Core) >= 5.8.0
 BuildRequires:  cmake(Qt5Test) >= 5.8.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.8.0
@@ -56,7 +56,7 @@ Baloo is a framework for searching and managing metada
 Summary:        Development package for baloo5-widgets
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
-Requires:       kio-devel
+Requires:       cmake(KF5KIO)
 Requires:       cmake(Qt5Widgets) >= 5.8.0
 Provides:       baloo-widgets5-devel
 Obsoletes:      baloo-widgets5-devel
