@@ -1,7 +1,7 @@
 #
 # spec file for package kdav
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %bcond_without  lang
 Name:           kdav
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        DAV protocol implementation
 License:        GPL-2.0-only
 Group:          Productivity/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -80,17 +80,17 @@ This package contains development files needed to use kdav in other applications
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_kf5_debugdir}/kdav.categories
 
 %files -n libKPimKDAV5
 %license COPYING
-%doc README
+%doc README.md
 %{_kf5_libdir}/libKPimKDAV.so.*
 
 %files devel
 %license COPYING
-%doc README
+%doc README.md
 %{_includedir}/KPim/
 %{_kf5_libdir}/cmake/KPimKDAV/
 %{_kf5_libdir}/libKPimKDAV.so
