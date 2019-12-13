@@ -1,7 +1,7 @@
 #
 # spec file for package kontact
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,39 +20,39 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontact
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-server-devel
 BuildRequires:  extra-cmake-modules
-BuildRequires:  grantleetheme-devel
-BuildRequires:  kcmutils-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
 BuildRequires:  kdepim-apps-libs-devel
-BuildRequires:  kdoctools-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kontactinterface-devel
-BuildRequires:  kpimtextedit-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  libkdepim-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GrantleeTheme)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KontactInterface)
+BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5WebEngine)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     kmail
+Recommends:     %{name}-lang
 Suggests:       akregator
 Suggests:       kaddressbook
 Suggests:       knotes
@@ -61,9 +61,6 @@ Provides:       kontact5 = %{version}
 Obsoletes:      kontact5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Recommends:     %{name}-lang
-%endif
 
 %description
 Kontact combines the individual applications KMail, KAddressBook and
