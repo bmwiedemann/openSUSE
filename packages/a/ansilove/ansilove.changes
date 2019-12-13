@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 10 18:50:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.6
+  * Remove extraneous sauceReadFileName() call, read from existing
+    SAUCE record
+  * Use strdup() when assigning fileName and fext fallback values
+  * Call memset() to set all record struct fields to zero
+  * Free SAUCE record and comments once and for all when exiting
+    the program
+
+-------------------------------------------------------------------
 Tue Nov 19 18:16:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.5
