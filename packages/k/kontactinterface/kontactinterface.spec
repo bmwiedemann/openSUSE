@@ -1,7 +1,7 @@
 #
 # spec file for package kontactinterface
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,30 @@
 #
 
 
-%define kf5_version 5.19.0
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontactinterface
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.19.0
-BuildRequires:  kcoreaddons-devel >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{kf5_version}
-BuildRequires:  kiconthemes-devel >= %{kf5_version}
-BuildRequires:  kparts-devel >= %{kf5_version}
-BuildRequires:  kwindowsystem-devel >= %{kf5_version}
-BuildRequires:  kxmlgui-devel >= %{kf5_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
+BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
 
 %description
 This package contains additional libraries for KDE PIM applications.
@@ -57,8 +56,8 @@ This package provides the interface to contacts for KDE PIM applications
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Group:          Development/Libraries/KDE
-Requires:       kparts-devel >= %{kf5_version}
 Requires:       libKF5KontactInterface5 = %{version}
+Requires:       cmake(KF5Parts) >= %{kf5_version}
 
 %description devel
 This package contains necessary include files and libraries needed
