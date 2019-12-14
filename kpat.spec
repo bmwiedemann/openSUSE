@@ -16,53 +16,50 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpat
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Card
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         FcSolveSolver-cleanup-ressources.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freecell-solver-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkdegames-devel
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       kdegames-carddecks-default
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
@@ -83,7 +80,6 @@ more. The game has nice graphics and many different carddecks.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build
