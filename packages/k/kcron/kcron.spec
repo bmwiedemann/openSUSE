@@ -16,32 +16,31 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcron
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
@@ -76,6 +75,7 @@ KCron allows you to change your cron jobs setup.
 %license COPYING
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol5/
+%{_kf5_appstreamdir}/org.kde.kcron.metainfo.xml
 %{_kf5_plugindir}/kcm_cron.so
 %{_kf5_servicesdir}/kcm_cron.desktop
 %{_kf5_debugdir}/kcron.categories
