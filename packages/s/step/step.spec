@@ -16,44 +16,43 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           step
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        An interactive physics simulator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gsl-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  khtml-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  kplotting-devel
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Plotting)
 BuildRequires:  libeigen3-devel
 %if %{with lang}
 BuildRequires:  libqt5-linguist-devel
 %endif
 BuildRequires:  libqalculate-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
@@ -106,8 +105,8 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_bindir}/step
 %{_kf5_configkcfgdir}/step.kcfg
 %{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/step/stepui.rc
 %{_kf5_sharedir}/mime/packages/org.kde.step.xml
+%{_kf5_kxmlguidir}/step/stepui.rc
 
 %if %{with lang}
 %files lang -f %{name}.lang
