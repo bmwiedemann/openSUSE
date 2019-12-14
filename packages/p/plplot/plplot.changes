@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 13 10:57:12 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- plplotqt-devel no longer Requires libqt4-devel, instead the
+  appropriate Qt5 headers.
+
+-------------------------------------------------------------------
+Thu Dec 12 13:18:30 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable libcsironn on openSUSE >= 1550 to prevent build
+  failures.
+- Fix shapelib dependency: BuildRequires: pkgconfig(shapelib)
+  instead of BuildRequires: shapelib; install additional shapelib
+  files as part of plplot-common.
+
+-------------------------------------------------------------------
 Thu Sep 26 12:21:47 UTC 2019 - olaf@aepfle.de
 
 - Add ExclusiveArch, based on build_ada in gcc.spec 

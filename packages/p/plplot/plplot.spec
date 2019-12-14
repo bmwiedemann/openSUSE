@@ -71,7 +71,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5-devel
 BuildRequires:  qhull-devel
-BuildRequires:  shapelib
 BuildRequires:  swig
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
@@ -82,6 +81,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
+BuildRequires:  pkgconfig(shapelib)
 # Required for enabling tk driverand in the %%check section, currently disabled
 BuildRequires:  hdf5-devel
 %if %{?octave_enabled}
@@ -152,6 +152,9 @@ PLplot interfaces.
 %{_libdir}/plplot%{version}/drivers/null.so
 %{_libdir}/plplot%{version}/drivers/mem.driver_info
 %{_libdir}/plplot%{version}/drivers/mem.so
+%{_datadir}/plplot%{version}/*.shp
+%{_datadir}/plplot%{version}/*.shx
+%{_datadir}/plplot%{version}/ss/
 %{_datadir}/plplot%{version}/*.fnt
 %{_datadir}/plplot%{version}/*.pal
 %dir %{_datadir}/plplot%{version}/examples
@@ -201,7 +204,6 @@ in C.
 %{_includedir}/plplot/
 %exclude %{_includedir}/plplot/plstream.h
 %{_libdir}/libcsirocsa.so
-%{_libdir}/libcsironn.so
 %{_libdir}/libplplot.so
 %{_libdir}/libqsastime.so
 %{_libdir}/pkgconfig/plplot.pc
@@ -210,8 +212,11 @@ in C.
 %{_libdir}/cmake/plplot/export_cairo-release.cmake
 %{_libdir}/cmake/plplot/export_csirocsa.cmake
 %{_libdir}/cmake/plplot/export_csirocsa-release.cmake
+%if 0%{?suse_version} < 1550
+%{_libdir}/libcsironn.so
 %{_libdir}/cmake/plplot/export_csironn.cmake
 %{_libdir}/cmake/plplot/export_csironn-release.cmake
+%endif
 %{_libdir}/cmake/plplot/export_mem.cmake
 %{_libdir}/cmake/plplot/export_mem-release.cmake
 %{_libdir}/cmake/plplot/export_ntk.cmake
@@ -541,8 +546,12 @@ Summary:        PLplot functions for scientific plotting with qt
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
 Requires:       %{qt_shlib} = %{version}
-Requires:       libqt4-devel
 Requires:       pkgconfig
+Requires:       pkgconfig(Qt5Core)
+Requires:       pkgconfig(Qt5Gui)
+Requires:       pkgconfig(Qt5PrintSupport)
+Requires:       pkgconfig(Qt5Svg)
+Requires:       pkgconfig(Qt5Widgets)
 Provides:       %{name}-qt-devel = %{version}
 Obsoletes:      %{name}-qt-devel < 5.12.0
 Requires:       %{name}-common = %{version}
@@ -776,6 +785,7 @@ This package provides the shared lib for PLplot's csirocsa.
 %{_libdir}/libcsirocsa.so.*
 ##########################################################################
 
+%if 0%{?suse_version} < 1550
 %package -n %{csironn_shlib}
 ##########################################################################
 Summary:        PLplot csironn component
@@ -795,6 +805,7 @@ This package provides the shared lib for PLplot's csironn.
 %files -n %{csironn_shlib}
 %{_libdir}/libcsironn.so.*
 ##########################################################################
+%endif
 
 %package -n %{qsastime_shlib}
 ##########################################################################
