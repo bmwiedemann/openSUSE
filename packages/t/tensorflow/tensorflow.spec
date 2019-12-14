@@ -21,121 +21,106 @@
 %define vers 1.13.2
 %define _vers 1_13_2
 %define python_ver_hack python3.[0-9]
-
 %global flavor @BUILD_FLAVOR@%{nil}
-
 # Build tensorflow, not Tensorflow-lite
 %define is_lite 0
-
 %if "%{flavor}" == "standard"
 %bcond_with cuda
 %bcond_with mpi
 %bcond_with opencl
 %endif
-
 %if "%{flavor}" == "lite"
 %define is_lite 1
+%define package_suffix -lite
 %bcond_with cuda
 %bcond_with mpi
 %bcond_with opencl
-%define package_suffix -lite
 %endif
-
 %if "%{flavor}" == "hpc"
+%define compiler_family gnu
 %bcond_with cuda
 %bcond_with mpi
 %bcond_with opencl
 %bcond_with avx2
 %bcond_without hpc
-%define compiler_family gnu
 %endif
-
 %if "%{flavor}" == "avx2"
+%define package_suffix -avx2
 %bcond_with cuda
 %bcond_with mpi
 %bcond_with opencl
 %bcond_without avx2
-%define package_suffix -avx2
 %endif
-
 %if "%{flavor}" == "hpc-avx2"
+%define compiler_family gnu
+%define ext avx2
 %bcond_with cuda
 %bcond_with mpi
 %bcond_with opencl
 %bcond_without hpc
 %bcond_without avx2
-%define compiler_family gnu
-%define ext avx2
 %endif
-
 %if "%{flavor}" == "hpc-avx2-openmpi3"
 %define mpi_flavor openmpi
 %define mpi_vers 3
+%define compiler_family gnu
+%define ext avx2
 %bcond_with cuda
 %bcond_without mpi
 %bcond_with opencl
 %bcond_without hpc
 %bcond_without avx2
-%define compiler_family gnu
-%define ext avx2
 %endif
-
 %if "%{flavor}" == "hpc-avx2-openmpi2"
 %define mpi_flavor openmpi
 %define mpi_vers 2
+%define compiler_family gnu
+%define ext avx2
 %bcond_with cuda
 %bcond_without mpi
 %bcond_with opencl
 %bcond_without hpc
 %bcond_without avx2
-%define compiler_family gnu
-%define ext avx2
 %endif
-
 %if "%{flavor}" == "hpc-avx2-mvapich2"
 %define mpi_flavor mvapich2
+%define compiler_family gnu
+%define ext avx2
 %bcond_with cuda
 %bcond_without mpi
 %bcond_with opencl
 %bcond_without hpc
 %bcond_without avx2
-%define compiler_family gnu
-%define ext avx2
 %endif
-
 %if "%{flavor}" == "hpc-openmpi2"
 %define mpi_flavor openmpi
 %define mpi_vers 2
+%define compiler_family gnu
 %bcond_with cuda
 %bcond_without mpi
 %bcond_with opencl
 %bcond_without hpc
 %bcond_with avx2
-%define compiler_family gnu
 %endif
-
 %if "%{flavor}" == "hpc-mvapich2"
 %define mpi_flavor mvapich2
+%define compiler_family gnu
 %bcond_with cuda
 %bcond_without mpi
 %bcond_with opencl
 %bcond_without hpc
 %bcond_with avx2
-%define compiler_family gnu
 %endif
-
 %if "%{flavor}" == "cuda-9.0"
 %bcond_without cuda
 %bcond_with mpi
 %bcond_with opencl
 %endif
-
 %if "%{flavor}" == "opencl"
 %bcond_without opencl
 %bcond_with cuda
 %bcond_with mpi
 %endif
-
 %if %{with hpc}
 %{!?compiler_family:%global compiler_family gnu}
 %{hpc_init -c %compiler_family %{?with_mpi:-m %mpi_flavor} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
@@ -151,13 +136,16 @@
 %else
 %define package_name   %pname%{?package_suffix}
 %define package_python_sitearch %{python3_sitearch}
-%define package_python_sitelib %{python3_sitelib} 
+%define package_python_sitelib %{python3_sitelib}
 %define package_prefix %_prefix
 %define package_bindir %_bindir
 %define package_libdir %_libdir
 %define libname(l:s:)   lib%{pname}%{!-l:%{-s:-}}%{-l*}%{-s*}%{?package_suffix}
 %endif
-
+%if %{with avx2}
+%define copts --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2
+ExclusiveArch:  x86_64
+%endif
 Name:           %{package_name}
 Version:        %vers
 Release:        0
@@ -169,7 +157,7 @@ Source0:        https://github.com/tensorflow/tensorflow/archive/v%{version}.tar
 Source1:        tensorflow-rpmlintrc
 # IMPORTANT
 # although some of the following libraries are available in factory they could
-# not be used as 
+# not be used as
 #   * explicit versions are needed which differ from the factory ones
 #   * bazel and the obs version have different symbols due to hidden compiler flags
 # License10: Apache-2.0
@@ -246,51 +234,16 @@ Patch3:         tensorflow-make_aws_sdk_work_on_aarch64.patch
 Patch4:         tensorflow-fix_lite.patch
 Patch5:         remove-keras.patch
 Patch6:         grpc-namespace-corrections.patch
-
-Requires:       python3
-Requires:       python3-Keras-Applications
-Requires:       python3-Keras-Preprocessing
-Requires:       python3-abseil
-Requires:       python3-astor
-Requires:       python3-gast
-Requires:       python3-protobuf
-Requires:       python3-termcolor
-%if %{with hpc}
-Requires:       python3-numpy-%{compiler_family}%{?c_f_ver}-hpc
-%else
-Requires:       python3-numpy
-%endif
-Requires:       python3-pip
-%if %{with hpc}
-Provides:       python3-tensorflow-%{compiler_family}%{?c_f_ver}-hpc
-%else
-Provides:       python3-tensorflow
-%endif
-BuildRequires:  bazel == 0.19.2
+BuildRequires:  bazel = 0.19.2
 BuildRequires:  curl
-%if %{with cuda}
-Requires:       cuda-9.0
-BuildRequires:  cuda-9.0
-%endif
-%if %{with opencl}
-Requires:       Mesa-libOpenCL
-BuildRequires:  opencl-cpp-headers
-BuildRequires:  opencl-headers
-%endif
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
-%if %{is_lite}
-BuildRequires:  flatbuffers-devel
-%endif
 BuildRequires:  fftw3-devel
 BuildRequires:  giflib-devel
 BuildRequires:  grpc-devel
 BuildRequires:  jemalloc-devel
-BuildRequires:  libjpeg-turbo
-%if 0%{?suse_version} < 1550
-BuildRequires:  libjpeg62-turbo
-%endif
 BuildRequires:  libjpeg-devel
+BuildRequires:  libjpeg-turbo
 BuildRequires:  libjpeg62-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  libpng16-devel
@@ -321,26 +274,54 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  swig
 BuildRequires:  unzip
 BuildRequires:  zlib-devel
+Requires:       python3
+Requires:       python3-Keras-Applications
+Requires:       python3-Keras-Preprocessing
+Requires:       python3-abseil
+Requires:       python3-astor
+Requires:       python3-gast
+Requires:       python3-pip
+Requires:       python3-protobuf
+Requires:       python3-termcolor
 %if %{with hpc}
-%hpc_requires
+Requires:       python3-numpy-%{compiler_family}%{?c_f_ver}-hpc
+%else
+Requires:       python3-numpy
+%endif
+%if %{with hpc}
+Provides:       python3-tensorflow-%{compiler_family}%{?c_f_ver}-hpc
+%else
+Provides:       python3-tensorflow
+%endif
+%if %{with cuda}
+BuildRequires:  cuda-9.0
+Requires:       cuda-9.0
+%endif
+%if %{with opencl}
+BuildRequires:  opencl-cpp-headers
+BuildRequires:  opencl-headers
+Requires:       Mesa-libOpenCL
+%endif
+%if %{is_lite}
+BuildRequires:  flatbuffers-devel
+%endif
+%if 0%{?suse_version} < 1550
+BuildRequires:  libjpeg62-turbo
+%endif
+%if %{with hpc}
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
+%hpc_requires
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 %endif
 %endif
-
 # just use rpmlint
 # there are some serious compiler warnings, regarding no-return-in-nonvoid-function
 #!BuildRequires:  -post-build-checks
-
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
-%endif
-%if %{with avx2}
-ExclusiveArch:  x86_64
-%define copts --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2
 %endif
 
 %description
@@ -388,7 +369,7 @@ This package provides examples from the website.
 # macro for removing nested directories
 %define sanitize_dir() _uglydir=$(ls -d *); shopt -s dotglob;mv $_uglydir/* .; rmdir $_uglydir
 # macro for copying the files to the bazel cache dir
-%define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/; cp %1 %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/file ; 
+%define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/; cp %1 %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/file ;
 
 # make clean for rebuild
 mkdir -p %{bazeldir}
@@ -445,7 +426,7 @@ echo $MPI_DIR
 %if %{is_lite}
 mkdir tensorflow/lite/tools/make/downloads/
 pushd tensorflow/lite/tools/make/downloads/
-#  eigen, gemmlowp and abseil_cpp 
+#  eigen, gemmlowp and abseil_cpp
 cp %{SOURCE26} %{SOURCE17} %{SOURCE19} .
 mkdir tmp
 tar xzf eigen.tar.gz -C tmp && mv tmp/* eigen
@@ -469,13 +450,13 @@ popd
 
 %build
 %if !%{is_lite}
-%limit_build -m 6000
+%limit_build -m 6100
 %endif
 
 %if %{is_lite}
 make %{?_smp_mflags} -f tensorflow/lite/tools/make/Makefile \
     $(pwd)/tensorflow/lite/tools/make/gen/linux_$(uname -m)/lib/libtensorflow-lite.a \
-    $(pwd)/tensorflow/lite/tools/make/gen/linux_$(uname -m)/bin/minimal 
+    $(pwd)/tensorflow/lite/tools/make/gen/linux_$(uname -m)/bin/minimal
 # Build of benchmark-lib.a is broken
 %else
 
@@ -490,19 +471,19 @@ export MPI_HOME=${MPI_HOME:-$MPI_DIR}
 
 export TEST_TMPDIR=%{bazeldir}
 export PYTHON_LIB_PATH=%{python3_sitearch}
-export PYTHON_BIN_PATH=/usr/bin/python3
+export PYTHON_BIN_PATH=%{_bindir}/python3
 export CC_OPT_FLAGS=-O2
-export TF_NEED_JEMALLOC=0 
-export TF_NEED_GCP=0 
+export TF_NEED_JEMALLOC=0
+export TF_NEED_GCP=0
 export TF_NEED_HDFS=1
 export TF_NEED_S3=1
-export TF_ENABLE_XLA=0 
-export TF_NEED_VERBS=0 
-export TF_NEED_OPENCL=0 
+export TF_ENABLE_XLA=0
+export TF_NEED_VERBS=0
+export TF_NEED_OPENCL=0
 export TF_NEED_ROCM=0
 export TF_SYSTEM_LIBS="com_google_protobuf,com_google_protobuf_cc,protobuf_archive,nasm,com_googlesource_code_re2,nasm,jpeg,png_archive,org_sqlite,gif_archive,six_archive,astor_archive,termcolor_archive,pcre,swig,curl,lmdb,zlib_archive,snappy,cython,grpc"
 %if %{with cuda}
-export TF_NEED_CUDA=1 
+export TF_NEED_CUDA=1
 %else
 export TF_NEED_CUDA=0
 %endif
@@ -560,10 +541,10 @@ install -D tensorflow/lite/schema/schema.fbs %{buildroot}%{_includedir}/tensorfl
 %else
 
 pip install %{_topdir}/%{name}-%{version}/*whl --root=%{buildroot}%{?hpc_prefix} \
-	--no-warn-script-location --no-index --no-deps 
+	--no-warn-script-location --no-index --no-deps
 # remove spurious executeable bits
 # for hpc build remove usr prefix dir
-%if %{with hpc} 
+%if %{with hpc}
 cd %{buildroot}%{?hpc_prefix}
 mv usr/* .
 rmdir usr
@@ -576,7 +557,7 @@ install -D bazel-bin/tensorflow/libtensorflow.so %{buildroot}%{package_libdir}/l
 install -D bazel-bin/tensorflow/libtensorflow_cc.so %{buildroot}%{package_libdir}/libtensorflow_cc.so
 install -D bazel-bin/tensorflow/libtensorflow_framework.so %{buildroot}%{package_libdir}/libtensorflow_framework.so
 # remove external libs
-%fdupes -s %{buildroot}%{?hpc_prefix}  
+%fdupes -s %{buildroot}%{?hpc_prefix}
 find %{buildroot} -name \*.h -type f -exec chmod 644 {} +
 find %{buildroot} -name LICENSE\* -type f -exec chmod 644 {} +
 %if %{with hpc}
@@ -638,6 +619,7 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %if %{is_lite}
 %files
 %{package_bindir}/*
+
 %files -n %{package_name}-devel
 %{package_libdir}/libtensorflow-lite.a
 %dir %{_includedir}/tensorflow/lite/schema/
@@ -653,9 +635,11 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %if %{with hpc}
 %hpc_modules_files
 %endif
+
 %files -n %{package_name}-devel
 %{package_python_sitelib}/tensorflow/include
 %{package_libdir}/libtensorflow*.so
+
 %files -n %{package_name}-doc
 %{package_python_sitelib}/tensorflow/examples
 
