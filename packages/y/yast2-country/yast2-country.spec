@@ -17,7 +17,7 @@
 
 
 Name:           yast2-country
-Version:        4.2.6
+Version:        4.2.10
 Release:        0
 Summary:        YaST2 - Country Settings (Language, Keyboard, and Timezone)
 License:        GPL-2.0-only
@@ -105,6 +105,7 @@ mkdir -p %{buildroot}%{_datadir}/polkit-1/actions
 %{yast_clientdir}/*.rb
 %dir %{yast_libdir}/y2country
 %{yast_libdir}/y2country/widgets
+%{yast_libdir}/y2keyboard
 %{yast_ydatadir}/*.ycp
 %{yast_ydatadir}/*.json
 %{yast_yncludedir}
@@ -117,6 +118,7 @@ mkdir -p %{buildroot}%{_datadir}/polkit-1/actions
 %files data
 %dir %{yast_ydatadir}/languages
 %{yast_ydatadir}/languages/*.ycp
+%{yast_ydatadir}/keyboards.rb
 %{yast_moduledir}/Language.rb
 %dir %{yast_libdir}/y2country
 %{yast_libdir}/y2country/language_dbus.rb
