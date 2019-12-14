@@ -16,59 +16,54 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kget
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gpgme-devel
-BuildRequires:  kcmutils-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwidgetsaddons-devel
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  libktorrent-devel
 BuildRequires:  libqca-qt5-devel
-BuildRequires:  libqgpgme-devel
-BuildRequires:  pkgconfig
-BuildRequires:  solid-devel
+BuildRequires:  cmake(QGpgme)
+BuildRequires:  cmake(KF5Solid)
 BuildRequires:  sqlite-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(LibKWorkspace)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      kget5 < %{version}
 Provides:       kget5 = %{version}
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
