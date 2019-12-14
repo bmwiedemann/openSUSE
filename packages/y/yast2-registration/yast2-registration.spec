@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.2.16
+Version:        4.2.23
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -34,8 +34,8 @@ BuildRequires:  yast2-slp >= 3.1.9
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:suse-connect) >= 0.3.11
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.2.5
-# Y2Packager::MediumType
-BuildRequires:  yast2-packager >= 4.2.27
+# Y2Packager::MediumType.type=
+BuildRequires:  yast2-packager >= 4.2.37
 BuildRequires:  yast2-update >= 3.1.36
 
 # Y2Packager::ProductControlProduct
