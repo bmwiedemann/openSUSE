@@ -16,42 +16,41 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           killbots
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Robots-like game by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkdegames-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
