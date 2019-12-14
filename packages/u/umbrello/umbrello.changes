@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:39:19 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Fix api issue in class ToolBarState in case UMLScene is constructed without a view
+  * Add save/load unit test for class PreConditionWidget
+  * Fix 'Sequence diagram - on reload file - app crash when conditions are added' (kde#414759)
+  * Apply quick fix to prevent crashing on loading extented testcase for reproducing behaviour
+  * Handle "show property dialog" content menu entry for combined fragment and precondition widgets
+  * Fix 'Missing property dialog entries in context menu for combined fragment and precondition widgets' (kde#414778)
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:39 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Too many changes since 19.11.80, only listing bugfixes:
+  * Fix 'Crash on pasting a sequence diagram elements' (kde#414615)
+  * Fix 'No namespace creation when importing stack traces' (kde#414599)
+  * Fix 'Incorrect applying of an auto layout for spline line type' (kde#414568)
+  * Fix 'No control points are created for association lines in "spline"
+    layout default mode' (kde#414520)
+  * Fix 'Associations are sometime not addable in class diagram' (kde#409631)
+  * Fix of string includes in c++ code generator (kde#413569)
+
+-------------------------------------------------------------------
+Sun Nov 24 15:54:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes since 19.08.3, listing only bugfixes:
+  * Fix 'Classifier unit case not enabled' (kde#414044)
+  * Fix 'auto-generated getters and setters to atributes are private in generated java classes' (kde#331655)
+  * Add customizable class variable prefix for c++ code generation (kde#57583)
+  * Add additional c++ code generation policies to fix unexpected code generation (kde#413991)
+  * Fix 'Added points to an association do not display them by default' (kde#413910)
+  * Fix 'For relationships, partially unsupported properties are displayed in the properties dialog on the style page' (kde#413908)
+  * Fix 'Changes to the fill color of the head of a composition are not displayed' (kde#413907)
+  * Implement 'Open file assigned to an artifact' (kde#410937)
+  * Add support for adding connected "required interfaces" (kde#403794)
+  * Add subsystem support to toolbar and context menu for component diagrams (kde#410543)
+  * Fix 'Incorrect icon in toolbar for adding interfaces to component diagram' (kde#410519)
+  * Add missing context menu entries for activity diagrams (kde#410479)
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:43 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -30,9 +80,9 @@ Thu Sep  5 14:01:29 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Fix build with cmake < 3.7 
-  * Fixed grammer and punctuation 
-  * Fixup 
+  * Fix build with cmake < 3.7
+  * Fixed grammer and punctuation
+  * Fixup
   * Fix 'Umbrello could not open imported source files' (kde#410904)
 
 -------------------------------------------------------------------
@@ -43,14 +93,14 @@ Fri Aug  9 08:32:37 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.0.php
 - Changes since 19.07.90:
-  * Activate newly added association rules for UML2 "required interface" (kde#115269) 
-  * Add UML2 support for "required interface" associations 
-  * Fix 'Properties dialog box for components does not display links' (kde#410513) 
-  * Component symbol made more unique by enlarging the inner rectangle 
-  * Fix icon for UML2 components 
-  * cmake: make umbrello version number generating more robust 
-  * Indention fix 
-  * Fixup of icons for adding states 
+  * Activate newly added association rules for UML2 "required interface" (kde#115269)
+  * Add UML2 support for "required interface" associations
+  * Fix 'Properties dialog box for components does not display links' (kde#410513)
+  * Component symbol made more unique by enlarging the inner rectangle
+  * Fix icon for UML2 components
+  * cmake: make umbrello version number generating more robust
+  * Indention fix
+  * Fixup of icons for adding states
   * New icon for activities added to toolbar and context menu (kde#410508)
 
 -------------------------------------------------------------------
