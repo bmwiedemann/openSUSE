@@ -17,7 +17,7 @@
 
 
 Name:           calligra-plan
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Project Management Application
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
