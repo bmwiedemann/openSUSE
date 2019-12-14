@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:39:15 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Link with Qt5::Xml explicitly, so we don't rely on KConfigGui bringing it
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 15:54:29 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * Move the project homepage away from projects.kde.org
+  * Make it compile without kf5 deprecated method
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:39 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
