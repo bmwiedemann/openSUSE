@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec  6 13:50:38 CET 2019 - schubi@suse.de
+
+- Added needed requriments to vendor.rb (bsc#1158436).
+- 4.2.13
+
+-------------------------------------------------------------------
+Thu Dec  5 08:40:08 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not offer add-ons on the Full medium when the system is
+  registered (jsc#SLE-7101)
+- 4.2.12
+
+-------------------------------------------------------------------
+Tue Dec  3 09:40:00 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed crash when cloning the system (bsc#1158247)
+- 4.2.11
+
+-------------------------------------------------------------------
+Thu Nov 21 13:36:10 UTC 2019 - schubi@suse.de
+
+- Using Y2Packager::Resolvable.any? and Y2Packager::Resolvable.find
+  in order to decrease the required memory (bsc#1132650,
+  bsc#1140037).
+- 4.2.10  
+
+-------------------------------------------------------------------
+Thu Nov 21 12:36:10 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Handle correctly the user input when going back (bsc#1156528)
+- 4.2.9
+
+-------------------------------------------------------------------
 Fri Oct 11 08:30:27 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Display the human readable product names in the summary dialog
