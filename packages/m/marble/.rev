@@ -969,4 +969,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE Applications 19.08.3</comment>
     <requestid>746981</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>1d3aa8e91119fdbb45825e770db37f8b</srcmd5>
+    <version>19.12.0</version>
+    <time>1576322139</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.0</comment>
+    <requestid>756331</requestid>
+  </revision>
 </revisionlist>

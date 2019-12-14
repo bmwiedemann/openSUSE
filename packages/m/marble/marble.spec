@@ -18,59 +18,58 @@
 
 %define _so -28
 %define _so_astro 1
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           marble
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
 License:        LGPL-2.1-or-later
 Group:          Amusements/Teaching/Other
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gpsd-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  kparts-devel
-BuildRequires:  krunner-devel
-BuildRequires:  kservice-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwindowsystem-devel
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Runner)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  libqt5-qtlocation-devel
 BuildRequires:  libshp-devel
 BuildRequires:  perl
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pkgconfig
-BuildRequires:  plasma-framework-devel
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5SerialPort)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Designer)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5SerialPort)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Requires:       %{name}-data = %{version}
 Requires:       libastro%{_so_astro} = %{version}
 Requires:       libmarblewidget-qt5%{_so} = %{version}
@@ -80,7 +79,7 @@ Obsoletes:      marble5 < %{version}
 Provides:       marble5 < %{version}
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 # Only include WebEngine on platforms where it is available
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
 Recommends:     %{name}-lang
 
@@ -124,12 +123,12 @@ Summary:        Generic map viewer: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       libastro%{_so_astro} = %{version}
 Requires:       libmarblewidget-qt5%{_so} = %{version}
-Requires:       pkgconfig(Qt5Widgets)
-Requires:       pkgconfig(Qt5Xml)
+Requires:       cmake(Qt5Widgets)
+Requires:       cmake(Qt5Xml)
 Obsoletes:      marble5-devel < %{version}
 Provides:       marble5-devel = %{version}
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-Requires:       pkgconfig(Qt5WebEngineWidgets)
+Requires:       cmake(Qt5WebEngineWidgets)
 %endif
 
 %description devel
