@@ -16,52 +16,51 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           rocs
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Mathematics
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Patch1:         fix_build_leap.diff
 BuildRequires:  extra-cmake-modules >= 1.7.0
 BuildRequires:  fdupes
-BuildRequires:  grantlee5-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5ScriptTools)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5ScriptTools)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebKit)
+BuildRequires:  cmake(Qt5WebKitWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if 0%{?suse_version} > 1325
