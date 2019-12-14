@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 14 05:05:10 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1576249179.0149ff62a:
+  * Add actual error info to cache service availability error
+  * openqa-clone-custom-git-refspec: Fix PR URLs specified with trailing '/'
+  * Add test for openqa-clone-custom-git-refspec
+  * t: Use more concise code in t/42-screenshots.t
+  * Use more conventional variable name '$sth' for raw db calls
+  * Remove "Jump to video" icon from "needle view" when video is unavailable
+  * Prevent massive database errors on screenshot insertion
+  * Use shorter name in CI nightly job
+  * Let nightly job call script/tidy when needed
+  * Update tidy to 20191203
+  * Return error when creating a job with invalid slash value
+  * Dependency cron 191212000550
+  * Missing assets should not result in a connection timeout
+
+-------------------------------------------------------------------
 Wed Dec 11 21:05:14 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1576080365.3895c9109:
