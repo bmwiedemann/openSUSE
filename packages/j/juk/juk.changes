@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:12 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:33 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:05 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * taglib: Remove deprecated code.
+  * Port to QElapsedTimer
+  * Port some deprecated method
+  * Port setMargins -> setContentsMargins
+  * install notifier file in correct directory
+  * Consistency in About window: Use same URL as appdata file and unify some wording
+  * Limit to one instance
+  * HiDPI support for slider
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:38 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
