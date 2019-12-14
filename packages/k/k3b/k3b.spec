@@ -1,7 +1,7 @@
 #
 # spec file for package k3b
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,15 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application for KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -40,7 +40,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  libdvdread-devel
-BuildRequires:  libkcddb-devel
 BuildRequires:  libmpcdec-devel
 BuildRequires:  libmusicbrainz-devel
 BuildRequires:  libsamplerate-devel
@@ -49,6 +48,7 @@ BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive) >= 5.21.0
+BuildRequires:  cmake(KF5Cddb)
 BuildRequires:  cmake(KF5Config) >= 5.21.0
 BuildRequires:  cmake(KF5CoreAddons) >= 5.21.0
 BuildRequires:  cmake(KF5DocTools) >= 5.21.0
@@ -165,7 +165,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %files
 %license COPYING*
 %doc ChangeLog FAQ.txt PERMISSIONS.txt README.txt
-%config %{_kf5_configdir}/k3btheme.knsrc
+%{_kf5_knsrcfilesdir}/k3btheme.knsrc
 %dir %{_kf5_servicesdir}/ServiceMenus
 %dir %{_kf5_sharedir}/konqsidebartng
 %dir %{_kf5_sharedir}/konqsidebartng/virtual_folders
