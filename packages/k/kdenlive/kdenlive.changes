@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:26 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Too many changes since 19.11.90, only listing bugfixes:
+  * Fix video thumbnails from previous project showing up. Various crash fixes on exit or project close. BUG: 414813 (kde#414813)
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:47 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Too many changes since 19.11.80, only listing bugfixes:
+  * Fix disabled effect stack state. (kde#408242)
+  * Apply track effects on main playlist and not on tractor. (kde#414367)
+  * Fix zoom slider not updating after zoom-fit (kde#413469)
+  * We actually need Qt5.11, and so KF5.45 should be here too (kde#414165)
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:19 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes since 19.08.3, only listing bugfixes:
+  * Fix keyboard handling in monitor fullscreen mode,
+    thanks to Martin K. (kde#413644)
+  * Fix compositions disappear after reopening project with locked
+    track (kde#412369)
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:51 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
