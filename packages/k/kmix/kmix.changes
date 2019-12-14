@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:43 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:03 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Link to Qt5::Xml explicitly, don't rely on kconfiggui to do it for us
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:36 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * Port deprecated enum
+  * Port deprecated methods
+  * Port setMargins
+  * Get rid of dependency on KIconThemes
+  * Fix shrinking of group boxes' titles
+  * Time to increase version
+  * Fix the 0613aa4 commit.
+  * Add support for High DPI
+  * Make dependency on Plasma optional
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:08 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
