@@ -2261,4 +2261,14 @@ for more fun options (forwarded request 147495 from coolo)</comment>
 - Regenerate it also in the %post of glibc-local-base-&amp;lt;targettype&amp;gt; (forwarded request 732758 from Andreas_Schwab)</comment>
     <requestid>732759</requestid>
   </revision>
+  <revision rev="233" vrev="2">
+    <srcmd5>ecc008c208f12db6cf8ae86aa7070be9</srcmd5>
+    <version>2.30</version>
+    <time>1576321311</time>
+    <user>dimstar_suse</user>
+    <comment>- prefer-map-32bit-exec.patch: rtld: Check __libc_enable_secure before
+  honoring LD_PREFER_MAP_32BIT_EXEC (CVE-2019-19126, bsc#1157292, BZ
+  #25204) (forwarded request 755338 from Andreas_Schwab)</comment>
+    <requestid>755339</requestid>
+  </revision>
 </revisionlist>

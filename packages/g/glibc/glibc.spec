@@ -1,7 +1,7 @@
 #
 # spec file for package glibc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -157,7 +157,7 @@ Release:        0
 %define git_id %(echo %version | sed 's/.*\.g//')
 %define libversion %(echo %version | sed 's/\.[^.]*\.g.*//')
 %endif
-Url:            http://www.gnu.org/software/libc/libc.html
+URL:            http://www.gnu.org/software/libc/libc.html
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if !%{build_snapshot}
 Source:         http://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz
@@ -248,8 +248,6 @@ Patch104:       glibc-c-utf8-locale.patch
 # PATCH-FIX-OPENSUSE -- Disable gettext for C.UTF-8 locale
 Patch105:       glibc-disable-gettext-for-c-utf8.patch
 
-### Broken patches in glibc that we revert for now:
-
 ### Network related patches
 # PATCH-FIX-OPENSUSE Warn about usage of mdns in resolv.conv
 Patch304:       glibc-resolv-mdnshint.diff
@@ -263,6 +261,8 @@ Patch306:       glibc-fix-double-loopback.diff
 Patch1000:      malloc-info-whitespace.patch
 # PATCH-FIX-UPSTREAM Fix RISC-V vfork build with Linux 5.3 kernel headers
 Patch1001:      riscv-vfork.patch
+# PATCH-FIX-UPSTREAM rtld: Check __libc_enable_secure before honoring LD_PREFER_MAP_32BIT_EXEC (CVE-2019-19126, BZ #25204)
+Patch1002:      prefer-map-32bit-exec.patch
 
 ### 
 # Patches awaiting upstream approval
@@ -271,6 +271,10 @@ Patch1001:      riscv-vfork.patch
 Patch2000:      fix-locking-in-_IO_cleanup.patch
 # PATCH-FIX-UPSTREAM Avoid concurrency problem in ldconfig (BZ #23973)
 Patch2001:      ldconfig-concurrency.patch
+# PATCH-FIX-UPSTREAM ldconfig: handle .dynstr located in separate segment (BZ #25087)
+Patch2002:      ldconfig-dynstr.patch
+# PATCH-FIX-UPSTREAM Fix buffer overrun in EUC-KR conversion module (BZ #24973)
+Patch2003:      euc-kr-overrun.patch
 
 # Non-glibc patches
 # PATCH-FIX-OPENSUSE Remove debianisms from manpages
@@ -470,9 +474,12 @@ makedb: A program to create a database for nss
 
 %patch1000 -p1
 %patch1001 -p1
+%patch1002 -p1
 
 %patch2000 -p1
 %patch2001 -p1
+%patch2002 -p1
+%patch2003 -p1
 
 %patch3000
 
