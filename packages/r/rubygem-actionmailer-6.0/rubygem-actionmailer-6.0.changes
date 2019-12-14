@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 13 23:58:13 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.2
+
+  *   Fix ActionMailer assertions don't work for parameterized mail with legacy delivery job.
+
+      *bogdanvlviv*
+
+-------------------------------------------------------------------
 Tue Nov 12 13:27:34 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.1
