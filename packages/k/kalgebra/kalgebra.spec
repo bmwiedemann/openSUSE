@@ -16,43 +16,43 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalgebra
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  analitza-devel
+BuildRequires:  cmake(Analitza5)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kwidgetsaddons-devel
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(glu)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
