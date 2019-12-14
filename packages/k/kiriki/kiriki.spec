@@ -16,52 +16,51 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kiriki
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Yahtzee-like Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  karchive-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdnssd-framework-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemmodels-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kservice-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkdegames-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5DNSSD)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      kiriki5 < %{version}
 Provides:       kiriki5 = %{version}
 %if %{with lang}
