@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:09 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Update Appstream for new release
+  * fix new issue introduced by !39 merge request
+  * as requested during review, put back extra parameter in TracksListener::trackByFileNameInList
+  * many clazy level 2 fixes
+  * correct clazy level 1 warnings from Elisa source code
+  * should fix the infinite loop when config changed
+  * Make it compile against last qt5.14
+  * properly get the path in the kcm module and use it cleanly in indexers
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:30 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * bring back a working ContextView (kde#412334)
+  * call KQuickAddons::QtQuickSettings::init() after QApplication is built
+  * add beta release 19.11.80 to appdata file
+  * ki18n_install is a noop when the directory does not exist
+  * use QtQuickSettings to get common default qml setting
+  * put back the cleaning of DataModel when database is cleared (kde#413100)
+  * always set new source when track is set
+  * always add a slash to the directory path
+  * fix one forgotten file modification time and cleanup
+
+-------------------------------------------------------------------
+Mon Nov 25 06:25:31 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * Now part of KDE release service
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sun Jun 30 20:33:02 UTC 2019 - wbauer@tmo.at
 
 - Update to 0.4.2

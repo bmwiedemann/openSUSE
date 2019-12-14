@@ -1,7 +1,7 @@
 #
 # spec file for package elisa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,17 @@
 %define kf5_version 5.48.0
 %bcond_without lang
 Name:           elisa
-Version:        0.4.2
+Version:        19.12.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://community.kde.org/Elisa
-Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source0:        %{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        %{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cmake
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
@@ -100,6 +102,7 @@ built and played.
 %doc %lang(en) %{_kf5_htmldir}/en/elisa/
 %{_kf5_bindir}/elisa
 %{_kf5_applicationsdir}/org.kde.elisa.desktop
+%{_kf5_debugdir}/elisa.categories
 %{_kf5_libdir}/elisa/
 %dir %{_kf5_plugindir}/kcms
 %{_kf5_plugindir}/kcms/kcm_elisa_local_file.so
