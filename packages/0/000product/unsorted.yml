@@ -8169,7 +8169,7 @@ unsorted:
   - libcangjie-devel 
   - libcangjie-tools 
   - libcangjie2 
-  - libcantorlibs23 
+  - libcantorlibs24 
   - libcap-devel 
   - libcap-ng-devel 
   - libcap-ng-utils 
@@ -8399,7 +8399,6 @@ unsorted:
   - libcrystalhd3 
   - libcrystalhd3-32bit: [x86_64] 
   - libcsirocsa0 
-  - libcsironn0 
   - libcsnd6-6_0 
   - libcsound64-6_0 
   - libcsparse3 
@@ -15219,6 +15218,7 @@ unsorted:
   - orthanc-postgresql: [x86_64] 
   - orthanc-source: [x86_64] 
   - orthanc-webviewer: [x86_64] 
+  - orthanc-wsi: [x86_64] 
   - ortp 
   - ortp-devel 
   - os-autoinst 
@@ -18321,6 +18321,7 @@ unsorted:
   - python2-dbfread 
   - python2-dbus-python-devel 
   - python2-ddt 
+  - python2-deap 
   - python2-debian 
   - python2-debtcollector 
   - python2-decorator 
@@ -19771,6 +19772,7 @@ unsorted:
   - python2-txWS 
   - python2-txZMQ 
   - python2-txaio 
+  - python2-txt2tags 
   - python2-txtorcon 
   - python2-typing 
   - python2-typing_extensions 
@@ -20672,6 +20674,7 @@ unsorted:
   - python3-dbus-python-devel 
   - python3-ddg3 
   - python3-ddt 
+  - python3-deap 
   - python3-debian 
   - python3-debtcollector 
   - python3-deepdiff 
@@ -22222,6 +22225,7 @@ unsorted:
   - python3-speaklater 
   - python3-spec 
   - python3-spec_tools 
+  - python3-sphinx-argparse 
   - python3-sphinx-autodoc-typehints 
   - python3-sphinx-bootstrap-theme 
   - python3-sphinx-feature-classification 
@@ -22393,6 +22397,7 @@ unsorted:
   - python3-txWS 
   - python3-txZMQ 
   - python3-txaio 
+  - python3-txt2tags 
   - python3-txtorcon 
   - python3-tzlocal 
   - python3-u-msgpack-python 
@@ -22610,6 +22615,7 @@ unsorted:
   - qjackctl-lang 
   - qlipper 
   - qlipper-lang 
+  - qloud 
   - qm 
   - qmelt 
   - qml-box2d 
@@ -32467,7 +32473,6 @@ unsorted:
   - twm 
   - twolame 
   - txt2man 
-  - txt2tags 
   - tycho 
   - tycho-bootstrap 
   - tycho-extras 
