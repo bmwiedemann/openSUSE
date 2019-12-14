@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:39:04 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:57 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * Use URLs with transport encryption
+  * It compiles fine without deprecated method
+  * Close KWordQuiz documents before closing the app
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:29 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -25,7 +54,7 @@ Thu Sep  5 14:01:10 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Remove unused private field 'm_column' 
+  * Remove unused private field 'm_column'
   * Do not crash on exit
 
 -------------------------------------------------------------------
