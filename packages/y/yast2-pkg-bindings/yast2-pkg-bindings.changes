@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:52:08 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Include the "deps" resolvable property even when it is empty
+  (bsc#1159120).
+- 4.2.4
+
+-------------------------------------------------------------------
+Tue Dec  3 09:18:14 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed Pkg.Resolvables() to return the license text when requested
+  (bsc#1158247)
+- 4.2.3
+
+-------------------------------------------------------------------
 Wed Nov 13 15:03:30 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed Pkg.Resolvables() to properly filter by status
