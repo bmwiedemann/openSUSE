@@ -1,7 +1,7 @@
 #
 # spec file for package kimagemapeditor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kimagemapeditor
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        HTML Image Map Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/HTML/Editors
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -44,11 +44,11 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 
@@ -81,7 +81,6 @@ A tool to edit image maps of HTML files
 %{_kf5_applicationsdir}/org.kde.kimagemapeditor.desktop
 %{_kf5_htmldir}/en/kimagemapeditor/
 %{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/kimagemapeditor/
 %{_kf5_servicesdir}/kimagemapeditorpart.desktop
 %{_kf5_sharedir}/kimagemapeditor/
 %{_kf5_appstreamdir}/org.kde.kimagemapeditor.appdata.xml
