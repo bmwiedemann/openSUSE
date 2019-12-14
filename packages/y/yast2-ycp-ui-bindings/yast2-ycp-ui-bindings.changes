@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 09:45:27 CET 2019 - aschnell@suse.com
+
+- require correct libyui so version 11 (bsc#1132247)
+- 4.2.6
+
+-------------------------------------------------------------------
 Tue Nov 12 09:27:46 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
 
 - require correct libyui version (bsc#1153103)
