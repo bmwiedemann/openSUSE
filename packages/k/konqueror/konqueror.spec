@@ -1,7 +1,7 @@
 #
 # spec file for package konqueror
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konqueror
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -29,32 +29,31 @@ Summary:        KDE File Manager and Browser
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kactivities5-devel >= 5.7.0
-BuildRequires:  karchive-devel >= 5.7.0
-BuildRequires:  kcmutils-devel >= 5.7.0
-BuildRequires:  kcrash-devel >= 5.7.0
-BuildRequires:  kded-devel >= 5.7.0
-BuildRequires:  kdelibs4support-devel >= 5.7.0
-BuildRequires:  kdesu-devel >= 5.7.0
-BuildRequires:  kdoctools-devel >= 5.7.0
 BuildRequires:  kf5-filesystem
-BuildRequires:  khtml-devel >= 5.7.0
-BuildRequires:  kparts-devel >= 5.7.0
-BuildRequires:  kwallet-devel
 BuildRequires:  libtidy-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Script) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.2.0
+BuildRequires:  cmake(KDED)
+BuildRequires:  cmake(KF5Activities)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Su)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5WebEngine)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 Recommends:     %{name}-lang
 Recommends:     dolphin-part
 Recommends:     kwebkitpart
@@ -220,39 +219,22 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/fsview/
 %{_kf5_iconsdir}/hicolor/*/apps/fsview.png
 %{_kf5_servicesdir}/fsview_part.desktop
-%{_kf5_plugindir}/webarchiverplugin.so
-%{_kf5_plugindir}/webarchivethumbnail.so
-%{_kf5_plugindir}/validatorsplugin.so
 %{_kf5_plugindir}/akregatorkonqfeedicon.so
 %{_kf5_plugindir}/babelfishplugin.so
-%{_kf5_plugindir}/domtreeviewerplugin.so
 %{_kf5_plugindir}/khtmlsettingsplugin.so
-%{_kf5_plugindir}/minitoolsplugin.so
 %{_kf5_plugindir}/dirfilterplugin.so
 %{_kf5_plugindir}/konq_shellcmdplugin.so
 %{_kf5_plugindir}/autorefresh.so
 %{_kf5_plugindir}/kimgallery.so
-%{_kf5_plugindir}/rellinksplugin.so
 %{_kf5_plugindir}/searchbarplugin.so
 %{_kf5_iconsdir}/*/*/actions/imagegallery.png
-%{_kf5_iconsdir}/*/*/actions/webarchiver.png
-%{_kf5_iconsdir}/*/*/actions/cssvalidator.png
-%{_kf5_iconsdir}/*/*/actions/htmlvalidator.*
-%{_kf5_iconsdir}/*/*/actions/validators.*
 %{_kf5_iconsdir}/*/*/actions/babelfish.*
 %{_kf5_sharedir}/akregator/
-%{_kf5_sharedir}/domtreeviewer/
-%{_kf5_sharedir}/khtml/kpartplugins/plugin_webarchiver.*
-%{_kf5_sharedir}/khtml/kpartplugins/plugin_validators.*
 %{_kf5_sharedir}/khtml/kpartplugins/akregator_konqfeedicon.*
 %{_kf5_sharedir}/khtml/kpartplugins/plugin_babelfish.*
 %{_kf5_sharedir}/khtml/kpartplugins/plugin_translator.*
 %{_kf5_sharedir}/khtml/kpartplugins/autorefresh.*
-%{_kf5_sharedir}/khtml/kpartplugins/plugin_rellinks.*
 %{_kf5_sharedir}/khtml/kpartplugins/khtmlsettingsplugin.*
-%{_kf5_sharedir}/khtml/kpartplugins/minitoolsplugin.*
-%{_kf5_sharedir}/khtml/kpartplugins/plugin_domtreeviewer.*
-%{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_validators.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/akregator_konqfeedicon.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_babelfish.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_translator.*
@@ -266,11 +248,7 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/webenginepart/kpartplugins/khtmlsettingsplugin.rc
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_babelfish.rc
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_translator.desktop
-%{_kf5_sharedir}/webenginepart/kpartplugins/plugin_validators.desktop
-%{_kf5_sharedir}/webenginepart/kpartplugins/plugin_validators.rc
-%{_kf5_servicesdir}/webarchivethumbnail.desktop
 %{_kf5_servicesdir}/akregator_konqplugin.desktop
-%{_kf5_configkcfgdir}/validators.kcfg
 %{_kf5_debugdir}/akregatorplugin.categories
 %config %{_kf5_configdir}/translaterc
 %dir %{_kf5_sharedir}/dolphinpart
