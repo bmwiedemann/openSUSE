@@ -83,4 +83,12 @@
   * org_golang_x_tools-extras.patch (forwarded request 750161 from mrostecki)</comment>
     <requestid>750170</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>15a8c477e91cbad05dd62d9362c0e391</srcmd5>
+    <version>1.12+git20190313.aa829657</version>
+    <time>1576322371</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove reduntant usage of bazel-gazelle. (forwarded request 756831 from mrostecki)</comment>
+    <requestid>756865</requestid>
+  </revision>
 </revisionlist>

@@ -38,7 +38,6 @@ Patch0:         https://raw.githubusercontent.com/bazelbuild/rules_go/0.18.5/thi
 Patch1:         https://raw.githubusercontent.com/bazelbuild/rules_go/0.18.5/third_party/org_golang_x_tools-extras.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-BuildRequires:  bazel-gazelle
 BuildRequires:  fdupes
 BuildRequires:  find
 BuildRequires:  golang-packaging
@@ -77,7 +76,6 @@ Go team but outside of the main source tree.
 %prep
 %autosetup -n %{repo}-%{version} -p1
 cp %{SOURCE3} .
-gazelle -go_prefix %{import_path}
 
 rm -rf cover
 rm -rf cmd/cover
