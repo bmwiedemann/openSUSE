@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           yakuake
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Terminal for KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://kde.org/applications/system/org.kde.yakuake
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  fdupes
