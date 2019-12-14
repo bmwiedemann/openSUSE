@@ -1,7 +1,7 @@
 #
 # spec file for package kalzium
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,52 +16,51 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalzium
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  avogadrolibs-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gettext-devel
 BuildRequires:  glew-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  khtml-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kplotting-devel
-BuildRequires:  kunitconversion-devel
-BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  libopenbabel-devel
 BuildRequires:  oxygen5-icon-theme-large
-BuildRequires:  pkgconfig
 BuildRequires:  python-devel
-BuildRequires:  solid-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(AvogadroLibs)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Plotting)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5UnitConversion)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 # currently in DOESNOTBUILD (2008-07-03)
 %ifnarch ppc ppc64 s390 s390x
