@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpegthumbs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,28 @@
 
 %bcond_without lang
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           ffmpegthumbs
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(Qt5Gui) >= 5.2.0
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
@@ -70,10 +70,11 @@ FFmpeg-based thumbnail creator for video files.
 
 %files
 %license COPYING
-%{_kf5_servicesdir}/
-%{_kf5_plugindir}/
 %dir %{_kf5_configkcfgdir}
+%{_kf5_appstreamdir}/org.kde.ffmpegthumbs.metainfo.xml
 %{_kf5_configkcfgdir}/ffmpegthumbnailersettings5.kcfg
+%{_kf5_plugindir}/
+%{_kf5_servicesdir}/
 
 %if %{with lang}
 %files lang -f %{name}.lang
