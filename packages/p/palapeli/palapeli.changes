@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:39:14 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 15:54:28 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * Make it compile without kf5 deprecated method
+  * Make it so that "Quit" is in "Game" not in "File"
+  * Port some deprecated methods
+  * Add DesktopEntry entry
+  * Include QMap header explicitly
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:38 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
