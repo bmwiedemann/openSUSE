@@ -1,4 +1,79 @@
 --------------------------------------------------------------------
+Tue Dec 10 13:40:43 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (German) (bsc#1149754)
+- 4.5.63
+
+--------------------------------------------------------------------
+Mon Dec 9 11:07:27 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#43
+- prepare gfxboot for syslinux 6.x (jsc#SLE-2969)
+- adjust gfxtest script to work with syslinux 6.x
+- 4.5.62
+
+--------------------------------------------------------------------
+Sat Dec 7 14:31:30 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Chinese (China)) (bsc#1149754)
+- 4.5.61
+
+--------------------------------------------------------------------
+Fri Dec 6 07:36:49 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Danish) (bsc#1149754)
+- 4.5.60
+
+--------------------------------------------------------------------
+Fri Dec 6 06:22:03 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
+Thu Dec 5 19:20:54 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.5.59
+
+--------------------------------------------------------------------
+Thu Dec 5 19:20:53 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+
+--------------------------------------------------------------------
+Thu Dec 5 17:25:10 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (German) (bsc#1149754)
+
+--------------------------------------------------------------------
+Thu Dec 5 10:38:51 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.5.58
+
+--------------------------------------------------------------------
+Thu Dec 5 10:20:41 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Thu Dec 5 09:58:17 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#42
+- rebuild font file to support latest language additions
+- make more boot menu texts translatable
+- 4.5.57
+
+--------------------------------------------------------------------
+Wed Dec 4 11:43:42 UTC 2019 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#21
+- Add Kazakh translation.
+- Add Kazakh language definition.
+- Add Kazakh to the list of languages.
+- 4.5.56
+
+--------------------------------------------------------------------
 Tue Nov 5 12:40:11 UTC 2019 - medwin@opensuse.org
 
 - Translated using Weblate (Indonesian) (bsc#1149754)
