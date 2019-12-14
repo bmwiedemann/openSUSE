@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 28 14:35:11 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix failing Samba.GetServiceStatus old testsuite forcing and
+  import of 'Directory' (bsc#1155923)
+- 4.2.2
+
+-------------------------------------------------------------------
 Mon Nov 11 14:56:40 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix failing old testsuite (bsc#1155923)
