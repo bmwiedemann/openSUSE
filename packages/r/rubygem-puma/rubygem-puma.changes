@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 14 00:29:15 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.3.1
+
+  * Fix: a poorly-behaved client could use keepalive requests
+    to monopolize Puma's reactor and create a denial of service
+    attack (CVE-2019-16770)
+
+-------------------------------------------------------------------
 Tue Nov 12 14:54:48 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.3.0
