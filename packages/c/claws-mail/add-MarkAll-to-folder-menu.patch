@@ -1,0 +1,49 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: Add a Folder menu entry with Mark all read/unread
+
+Add a Folder top menu entry so that Mark all read/unread can be done
+without opening a context menu with a right mouse click.
+---
+ src/mainwindow.c |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- claws.orig/src/mainwindow.c	2019-11-21 11:28:51.799520572 +0100
++++ claws/src/mainwindow.c	2019-11-21 12:00:03.250340886 +0100
+@@ -523,6 +523,7 @@ static GtkActionEntry mainwin_entries[]
+ 	{"Edit",                        NULL, N_("_Edit"), NULL, NULL, NULL },
+ 	{"View",                        NULL, N_("_View"), NULL, NULL, NULL },
+ 	{"Message",                     NULL, N_("_Message"), NULL, NULL, NULL },
++	{"Folder",                      NULL, N_("Folder"), NULL, NULL, NULL },
+ 	{"Tools",                       NULL, N_("_Tools"), NULL, NULL, NULL },
+ 	{"Configuration",               NULL, N_("_Configuration"), NULL, NULL, NULL },
+ 	{"Help",                        NULL, N_("_Help"), NULL, NULL, NULL },
+@@ -735,6 +736,10 @@ static GtkActionEntry mainwin_entries[]
+ 
+ 	{"Message/CheckSignature",                   NULL, N_("Check signature"), "C", NULL, G_CALLBACK(check_signature_cb) },
+ 
++/* Folder menu */
++	{"Folder/MarkAllRead",                       NULL, N_("Mark all read"), NULL, NULL, G_CALLBACK(mark_all_read_cb) },
++	{"Folder/MarkAllUnread",                     NULL, N_("Mark all unread"), NULL, NULL, G_CALLBACK(mark_all_unread_cb) },
++
+ /* Tools menu */
+ 
+ 	{"Tools/AddressBook",                        NULL, N_("_Address book"), "<control><shift>A", NULL, G_CALLBACK(addressbook_open_cb) }, 
+@@ -1511,6 +1516,7 @@ MainWindow *main_window_create()
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu", "Edit", "Edit", GTK_UI_MANAGER_MENU)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu", "View", "View", GTK_UI_MANAGER_MENU)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu", "Message", "Message", GTK_UI_MANAGER_MENU)
++	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu", "Folder", "Folder", GTK_UI_MANAGER_MENU)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu", "Tools", "Tools", GTK_UI_MANAGER_MENU)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu", "Configuration", "Configuration", GTK_UI_MANAGER_MENU)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu", "Help", "Help", GTK_UI_MANAGER_MENU)
+@@ -1798,6 +1804,10 @@ MainWindow *main_window_create()
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message", "Separator6", "Message/---", GTK_UI_MANAGER_SEPARATOR)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message", "CheckSignature", "Message/CheckSignature", GTK_UI_MANAGER_MENUITEM)
+ 
++/* Folder menu */
++	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Folder", "MarkAllRead", "Folder/MarkAllRead", GTK_UI_MANAGER_MENUITEM)
++	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Folder", "MarkAllUnread", "Folder/MarkAllUnread", GTK_UI_MANAGER_MENUITEM)
++
+ /* Tools menu */
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Tools", "AddressBook", "Tools/AddressBook", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Tools", "AddSenderToAB", "Tools/AddSenderToAB", GTK_UI_MANAGER_MENUITEM)

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 23 07:41:51 UTC 2019 - Jean Delvare <jdelvare@suse.com>
+
+- Add a test on build-time libetpan version to require the proper
+  version at run-time (boo#1157594)
+
+-------------------------------------------------------------------
+Fri Nov 22 09:13:54 UTC 2019 - Jean Delvare <jdelvare@suse.com>
+
+- Move "Mark all read/unread" menu entries where they belong.
+  remove-MarkAll-from-message-menu.patch (claws#4278)
+  add-MarkAll-to-folder-menu.patch (claws#4278)
+
+-------------------------------------------------------------------
 Thu Oct 24 09:30:11 UTC 2019 - Libor Pechacek <lpechacek@suse.com>
 
 - Make litehtml plugin build on Tumbleweed.

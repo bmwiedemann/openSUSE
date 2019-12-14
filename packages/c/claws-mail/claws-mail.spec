@@ -42,6 +42,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 Source:         http://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
 Patch:          libcanberra-gtk3.patch
+Patch1:         remove-MarkAll-from-message-menu.patch
+Patch2:         add-MarkAll-to-folder-menu.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -100,6 +102,11 @@ BuildRequires:  pkgconfig(gumbo)
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pinentry-gtk2
+# libetpan 1.9.2 introduced function mailstream_ssl_set_server_name, which
+# will be used by claws-mail if available
+%if %{pkg_vcmp libetpan-devel >= 1.9.2}
+Requires:       libetpan >= 1.9.2
+%endif
 %{?libperl_requires}
 Recommends:     %{name}-lang
 Provides:       sylpheed-claws = %{version}
@@ -150,6 +157,8 @@ This package contains header files for building plugins.
 %if ! 0%{?favor_gtk2}
 %patch -p1
 %endif
+%patch1 -p1
+%patch2 -p1
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python/' tools/*.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/*.sh
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh

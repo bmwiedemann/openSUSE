@@ -1,0 +1,90 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: Remove "Mark all read/unread" from the message context menu
+
+"Mark all read/unread" is a folder-related action, it does not belong
+to the message context menu. Having it there can easily cause
+confusion and trick the users into doing something they really don't
+want to do.
+
+This fixes bug #4278:
+https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4278
+---
+ src/mainwindow.c  |   10 ++--------
+ src/summaryview.c |   13 ++++---------
+ 2 files changed, 6 insertions(+), 17 deletions(-)
+
+--- claws-mail-3.17.4.orig/src/mainwindow.c	2019-01-21 11:19:41.000000000 +0100
++++ claws-mail-3.17.4/src/mainwindow.c	2019-11-22 15:30:47.538966063 +0100
+@@ -713,9 +713,6 @@ static GtkActionEntry mainwin_entries[]
+ 	{"Message/Mark/MarkRead",                    NULL, N_("Mark as rea_d"), NULL, NULL, G_CALLBACK(mark_as_read_cb) },
+ 	{"Message/Mark/MarkUnread",                  NULL, N_("Mark as unr_ead"), "<shift>exclam", NULL, G_CALLBACK(mark_as_unread_cb) },
+ 	/* separation */
+-	{"Message/Mark/MarkAllRead",                 NULL, N_("Mark all read"), NULL, NULL, G_CALLBACK(mark_all_read_cb) },
+-	{"Message/Mark/MarkAllUnread",               NULL, N_("Mark all unread"), NULL, NULL, G_CALLBACK(mark_all_unread_cb) },
+-	/* separation */
+ 	{"Message/Mark/IgnoreThread",                NULL, N_("Ignore thread"), NULL, NULL, G_CALLBACK(ignore_thread_cb) },
+ 	{"Message/Mark/UnignoreThread",              NULL, N_("Unignore thread"), NULL, NULL, G_CALLBACK(unignore_thread_cb) },
+ 	{"Message/Mark/WatchThread",                 NULL, N_("Watch thread"), NULL, NULL, G_CALLBACK(watch_thread_cb) },
+@@ -1783,17 +1780,14 @@ MainWindow *main_window_create()
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "MarkRead", "Message/Mark/MarkRead", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "MarkUnread", "Message/Mark/MarkUnread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Separator2", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "MarkAllRead", "Message/Mark/MarkAllRead", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "MarkAllUnread", "Message/Mark/MarkAllUnread", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Separator3", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "IgnoreThread", "Message/Mark/IgnoreThread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "UnignoreThread", "Message/Mark/UnignoreThread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "WatchThread", "Message/Mark/WatchThread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "UnwatchThread", "Message/Mark/UnwatchThread", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Separator4", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
++	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Separator3", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "MarkSpam", "Message/Mark/MarkSpam", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "MarkHam", "Message/Mark/MarkHam", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Separator5", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
++	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Separator4", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Lock", "Message/Mark/Lock", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message/Mark", "Unlock", "Message/Mark/Unlock", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menu/Message", "ColorLabel", "Message/ColorLabel", GTK_UI_MANAGER_MENUITEM)
+--- claws-mail-3.17.4.orig/src/summaryview.c	2019-06-06 14:36:36.000000000 +0200
++++ claws-mail-3.17.4/src/summaryview.c	2019-11-22 15:31:00.969166496 +0100
+@@ -761,17 +761,14 @@ SummaryView *summary_create(MainWindow *
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "MarkRead", "Message/Mark/MarkRead", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "MarkUnread", "Message/Mark/MarkUnread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Separator2", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "MarkAllRead", "Message/Mark/MarkAllRead", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "MarkAllUnread", "Message/Mark/MarkAllUnread", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Separator3", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "IgnoreThread", "Message/Mark/IgnoreThread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "UnignoreThread", "Message/Mark/UnignoreThread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "WatchThread", "Message/Mark/WatchThread", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "UnwatchThread", "Message/Mark/UnwatchThread", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Separator4", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
++	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Separator3", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "MarkSpam", "Message/Mark/MarkSpam", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "MarkHam", "Message/Mark/MarkHam", GTK_UI_MANAGER_MENUITEM)
+-	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Separator5", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
++	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Separator4", "Message/Mark/---", GTK_UI_MANAGER_SEPARATOR)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Lock", "Message/Mark/Lock", GTK_UI_MANAGER_MENUITEM)
+ 	MENUITEM_ADDUI_MANAGER(mainwin->ui_manager, "/Menus/SummaryViewPopup/Mark", "Unlock", "Message/Mark/Unlock", GTK_UI_MANAGER_MENUITEM)
+ 
+@@ -1827,9 +1824,9 @@ void summary_set_menu_sensitive(SummaryV
+ 	gint i;
+ 
+ #ifndef GENERIC_UMPC
+-#define N_ENTRIES 39
++#define N_ENTRIES 37
+ #else
+-#define N_ENTRIES 28
++#define N_ENTRIES 26
+ #endif
+ 	static struct {
+ 		const gchar *entry;
+@@ -1868,8 +1865,6 @@ do { \
+ 	FILL_TABLE("Menus/SummaryViewPopup/Mark/Unmark", M_TARGET_EXIST);
+ 	FILL_TABLE("Menus/SummaryViewPopup/Mark/MarkRead", M_TARGET_EXIST);
+ 	FILL_TABLE("Menus/SummaryViewPopup/Mark/MarkUnread", M_TARGET_EXIST);
+-	FILL_TABLE("Menus/SummaryViewPopup/Mark/MarkAllRead", M_TARGET_EXIST);
+-	FILL_TABLE("Menus/SummaryViewPopup/Mark/MarkAllUnread", M_TARGET_EXIST);
+ 	FILL_TABLE("Menus/SummaryViewPopup/Mark/IgnoreThread", M_TARGET_EXIST);
+ 	FILL_TABLE("Menus/SummaryViewPopup/Mark/UnignoreThread", M_TARGET_EXIST);
+ 	FILL_TABLE("Menus/SummaryViewPopup/Mark/WatchThread", M_TARGET_EXIST);
