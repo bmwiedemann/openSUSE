@@ -1,7 +1,7 @@
 #
 # spec file for package singularity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,25 +23,20 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.4.2
+Version:        3.5.1
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://www.sylabs.io/singularity/
-Source0:        https://github.com/sylabs/singularity/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/sylabs/singularity/releases/download/v%{version}/singularity-%{version}.tar.gz
 Source1:        README.SUSE
 Source5:        %{name}-rpmlintrc
 Patch0:         build-position-independent-binaries.patch
 
-BuildRequires:  gcc
-# Remove after brokenness has been fixed
-%if 0%{?suse_version} > 1500
-BuildRequires:  go >= 1.11
-%else
-BuildRequires:  go1.11
-%endif
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  git
+BuildRequires:  go1.13
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel
@@ -63,7 +58,6 @@ containers that can be used across host environments.
 
 %prep
 %setup -q -n gopath/%{singgopath} -c
-mv %{name}-%{version} %{name}
 %patch0 -p 4
 cp %{S:1} .
 
@@ -162,6 +156,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/singularity/seccomp-profiles
 %config(noreplace) %{_sysconfdir}/singularity/singularity.conf
 %config(noreplace) %{_sysconfdir}/singularity/remote.yaml
+%config(noreplace) %{_sysconfdir}/singularity/rocmliblist.conf
 %{_datadir}/bash-completion/completions/singularity
 %dir %{_localstatedir}/lib/singularity
 %dir %{_localstatedir}/lib/singularity/mnt
