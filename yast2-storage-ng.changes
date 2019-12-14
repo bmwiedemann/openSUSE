@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:19:00 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Show device name when activating a LUKS device (related to
+  bsc#1125774).
+- 4.2.62
+
+-------------------------------------------------------------------
+Tue Dec 10 15:32:05 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Generate encryption names according to the mount point of the
+  encryption device (bsc#1125774).
+- 4.2.61
+
+-------------------------------------------------------------------
+Wed Dec  4 12:17:37 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Improve detection of Windows systems (related to bsc#1135341).
+- 4.2.60
+
+-------------------------------------------------------------------
+Wed Nov 27 13:53:57 UTC 2019 - Christopher Hofmann <cwh@suse.com>
+
+- Set passno to 2 for the ESP (bsc#1135523)
+- 4.2.59
+
+-------------------------------------------------------------------
+Mon Nov 25 12:21:07 UTC 2019 - José Iván López González <jlopez@suse.com>
+
+- Detect root mount point probed as inactive (e.g., as result of a
+  snapshot rollback without rebooting the system).
+- Related to bsc#1124581.
+- 4.2.58
+
+-------------------------------------------------------------------
 Thu Nov 21 16:10:22 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fixed a wrong check that was preventing the installation of some
