@@ -16,58 +16,57 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdegames
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Patch1:         libkdegames-bnc793185.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  karchive-devel
-BuildRequires:  kbookmarks-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  kdnssd-framework-devel
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Bookmarks)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kjobwidgets-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
+BuildRequires:  cmake(KF5GlobalAccel)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  libsndfile-devel
 BuildRequires:  openal-soft-devel
-BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
 Recommends:     %{name}-lang
@@ -111,19 +110,19 @@ This package contains the KDE games library.
 Summary:        Library for KDE Games: Build Environment
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Requires:       kcompletion-devel
-Requires:       kconfig-devel
-Requires:       kconfigwidgets-devel
-Requires:       ki18n-devel
-Requires:       kwidgetsaddons-devel
+Requires:       cmake(KF5Completion)
+Requires:       cmake(KF5Config)
+Requires:       cmake(KF5ConfigWidgets)
+Requires:       cmake(KF5I18n)
+Requires:       cmake(KF5WidgetsAddons)
 Requires:       libkf5kdegames6 = %{version}
 Requires:       libsndfile-devel
 Requires:       openal-soft-devel
-Requires:       pkgconfig(Qt5Network)
-Requires:       pkgconfig(Qt5Qml)
-Requires:       pkgconfig(Qt5QuickWidgets)
-Requires:       pkgconfig(Qt5Widgets)
-Requires:       pkgconfig(Qt5Xml)
+Requires:       cmake(Qt5Network)
+Requires:       cmake(Qt5Qml)
+Requires:       cmake(Qt5QuickWidgets)
+Requires:       cmake(Qt5Widgets)
+Requires:       cmake(Qt5Xml)
 Obsoletes:      %{name}-kf5-devel < %{version}
 Provides:       %{name}-kf5-devel = %{version}
 
