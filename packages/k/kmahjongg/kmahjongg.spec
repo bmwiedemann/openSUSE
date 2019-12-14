@@ -16,39 +16,38 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmahjongg
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Mahjongg game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkdegames-devel
-BuildRequires:  libkmahjongg-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(KF5KMahjongglib)
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Svg)
 Obsoletes:      kmahjongg5 < %{version}
 Provides:       kmahjongg5 = %{version}
 %if %{with lang}
