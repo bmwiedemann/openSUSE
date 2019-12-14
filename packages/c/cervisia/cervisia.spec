@@ -16,38 +16,37 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cervisia
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdesu-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kinit-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Su)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5Init)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  subversion-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Widgets)
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
