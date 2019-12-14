@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 22 17:08:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libtasn1 4.15.0:
+  * The generated tree no longer contains ASN.1 built-in types
+    even if they are explicitly defined in the description.
+    Previously a warning was printed when these types were seen,
+    now they are ignored.
+  * Several fixes in ASN.1 definition parser, preventing several
+    crashes and leaks in the tools due to improper ASN.1.
+  * Switched to semantic versioning
+
+-------------------------------------------------------------------
 Wed Jul 31 20:15:25 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libtasn1 4.14:

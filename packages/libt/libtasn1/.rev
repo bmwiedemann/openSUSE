@@ -399,4 +399,12 @@ Tools are GPL-3.0 (forwarded request 126633 from babelworx)</comment>
   upstream fix for boo#1105435 CVE-2018-1000654</comment>
     <requestid>720159</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c50c492544e6da4ec6e62e47be73c74b</srcmd5>
+    <version>4.15.0</version>
+    <time>1576321332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750374</requestid>
+  </revision>
 </revisionlist>

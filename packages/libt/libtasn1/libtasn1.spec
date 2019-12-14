@@ -18,7 +18,7 @@
 
 %define somajor 6
 Name:           libtasn1
-Version:        4.14
+Version:        4.15.0
 Release:        0
 Summary:        ASN.1 parsing library
 License:        LGPL-2.1-or-later AND GPL-3.0-only
@@ -69,6 +69,8 @@ make %{?_smp_mflags} V=1
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+# see 49d6e3f0a4b5fd4da31228d23ae9efabef20c1ca
+rm %{buildroot}/%{_bindir}/corpus2array
 
 %check
 make %{?_smp_mflags} check
