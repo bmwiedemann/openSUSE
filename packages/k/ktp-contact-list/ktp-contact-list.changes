@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:39:00 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:19 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:53 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- No code change since 19.08.3
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3
@@ -185,7 +210,7 @@ Fri May 25 11:55:29 UTC 2018 - wbauer@tmo.at
   * https://www.kde.org/announcements/announce-applications-18.04.1.php
 - Changes since 17.08.3:
   * Fix build with Qt 5.11 (missing QIcon)
-  * Remove obsolete reviewboardrc file 
+  * Remove obsolete reviewboardrc file
   * Fix minor typo
   * Independent account presence support (kde#181748)
 
