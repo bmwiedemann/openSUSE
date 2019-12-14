@@ -1,7 +1,7 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,10 +49,10 @@ BuildRequires:  libvterm-devel >= 0.1
 BuildRequires:  lua-macros
 BuildRequires:  lua51-LPeg
 BuildRequires:  lua51-bit32
-BuildRequires:  lua51-luajit-devel
 BuildRequires:  lua51-luarocks
 BuildRequires:  lua51-luv-devel
 BuildRequires:  lua51-mpack
+BuildRequires:  luajit-devel
 BuildRequires:  make
 BuildRequires:  msgpack-devel
 BuildRequires:  pkgconfig
@@ -68,12 +68,6 @@ Requires:       python3-neovim
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Recommends:     xsel
-# gh#neovim/neovim#7879
-%ifarch aarch64 ppc64
-BuildRequires:  lua51-devel
-%else
-BuildRequires:  lua51-luajit-devel
-%endif
 %if 0%{?suse_version} < 1330
 BuildRequires:  hicolor-icon-theme
 Requires(post): gtk3-tools

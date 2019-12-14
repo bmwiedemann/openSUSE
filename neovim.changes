@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 13 11:42:39 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Unconditionally use luajit-devle instead of sometimes
+  luajit-devel and sometimes lua51-luajit-devel.
+
+-------------------------------------------------------------------
 Sun Nov 10 20:54:57 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.4.3.
