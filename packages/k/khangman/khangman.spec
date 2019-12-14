@@ -16,44 +16,43 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           khangman
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Hangman Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkeduvocdocument-devel
-BuildRequires:  phonon4qt5-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(LibKEduVocDocument)
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Svg)
 Requires:       kdeedu-data
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
