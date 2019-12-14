@@ -1222,4 +1222,12 @@ Version:	3.1.0</comment>
     <comment>submit new version 4.2.5</comment>
     <requestid>725303</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>e5879ac45e4b5f0b72c1f101f8a8f49d</srcmd5>
+    <version>4.2.8</version>
+    <time>1576321370</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.8</comment>
+    <requestid>754671</requestid>
+  </revision>
 </revisionlist>
