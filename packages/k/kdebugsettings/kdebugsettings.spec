@@ -1,7 +1,7 @@
 #
 # spec file for package kdebugsettings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,37 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdebugsettings
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      kdebugsettings5 < %{version}
 Provides:       kdebugsettings5 = %{version}
 Recommends:     %{name}-lang
@@ -77,11 +76,14 @@ from verbose to completely silent.
 
 %files
 %license COPYING*
+%{_kf5_appstreamdir}/org.kde.kdebugsettings.appdata.xml
 %{_kf5_debugdir}/kde.categories
 %{_kf5_debugdir}/kde.renamecategories
 %{_kf5_applicationsdir}/org.kde.kdebugsettings.desktop
 %{_kf5_bindir}/kdebugsettings
 %{_kf5_debugdir}/kdebugsettings.categories
+%{_kf5_libdir}/libkdebugsettings.so.%{version}
+%{_kf5_libdir}/libkdebugsettings.so.5
 
 %if %{with lang}
 %files lang -f %{name}.lang
