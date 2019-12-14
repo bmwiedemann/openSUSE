@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 14 00:04:05 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.2
+
+  *   Allow Sidekiq access to the underlying job class.
+
+      By having access to the Active Job class, Sidekiq can get access to any `sidekiq_options` which
+      have been set on that Active Job type and serialize those options into Redis.
+
+      https://github.com/mperham/sidekiq/blob/master/Changes.md#60
+
+      *Mike Perham*
+
+-------------------------------------------------------------------
 Tue Nov 12 13:31:24 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.1
