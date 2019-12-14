@@ -16,35 +16,34 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kapptemplate
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          Development/Tools/IDE
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  karchive-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdoctools-devel
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  cmake(Qt5Test)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 Obsoletes:      kapptemplate5 < %{version}
