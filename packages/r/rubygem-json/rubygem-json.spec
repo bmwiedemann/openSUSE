@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 %define mod_name json
 %define mod_full_name %{mod_name}-%{version}
@@ -50,7 +50,7 @@ This is a JSON implementation as a Ruby extension in C.
 
 %install
 %gem_install \
-  --doc-files="CHANGES.md README.md" \
+  --doc-files="CHANGES.md LICENSE README.md" \
   -f
 %gem_cleanup
 
