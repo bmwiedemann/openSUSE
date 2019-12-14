@@ -1,4 +1,127 @@
 --------------------------------------------------------------------
+Thu Dec 12 10:49:41 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#689
+- use ranks in graphviz output to ease readability (bsc#1149154)
+- reduce test devicegraph to required information
+- 4.2.40
+
+--------------------------------------------------------------------
+Thu Dec 12 09:23:13 UTC 2019 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#688
+- Add new callbacks for LUKS activation
+- Bump version
+- Add specialized Luks callbacks
+- 4.2.39
+
+--------------------------------------------------------------------
+Tue Dec 10 14:08:51 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#687
+- use correct size for btrfs resize command during shrink (bsc#1157762)
+- 4.2.38
+
+--------------------------------------------------------------------
+Thu Dec 5 16:52:50 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#686
+- extended some testcases to also check executed commands
+- merged testsuite/actions into testsuite/dependencies
+- added tests for shrinking btrfs
+- extended tests
+- extended and added testcases
+- 4.2.37
+
+--------------------------------------------------------------------
+Thu Dec 5 06:35:12 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#685
+- added testcases for growing btrfs
+- check that all command and file mockups are used
+- added testcases for growing and shrinking ext4
+- added testcases for resizing filesystems
+- 4.2.36
+
+--------------------------------------------------------------------
+Tue Dec 3 12:30:22 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#684
+- list all devices in subvolume actions (bsc#1152523)
+- consistent list of block devices in compound actions
+- removed unneeded use of c_str
+- updated explanations for translators
+- show all block devices for action texts of btrfs subvolumes
+- 4.2.35
+
+--------------------------------------------------------------------
+Mon Dec 2 13:02:27 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.34
+
+--------------------------------------------------------------------
+Mon Dec 2 13:02:26 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#683
+- extended unit test (bsc#1135341)
+- updated documentation (bsc#1149148)
+- added internal check
+- fixed typo
+- 4.2.33
+
+--------------------------------------------------------------------
+Fri Nov 29 14:12:26 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#682
+- merge gh#openSUSE/libstorage-ng#681
+- Translated using Weblate (Danish) (bsc#1149754)
+- Translated using Weblate (Estonian) (bsc#1149754)
+- fixed handling of btrfs subvolumes with special (regex control)
+  characters in the path (bsc#1135341)
+- 4.2.32
+
+--------------------------------------------------------------------
+Thu Nov 28 17:02:11 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#680
+- fixed escaping of graphviz escString (bsc#1157916)
+- 4.2.31
+
+--------------------------------------------------------------------
+Wed Nov 27 10:26:36 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Estonian) (bsc#1149754)
+- 4.2.30
+
+--------------------------------------------------------------------
+Tue Nov 26 13:36:34 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#679
+- use estimation from resize2fs for min size of ext4 (bsc#1149148)
+- use 64bit feature forr max size of ext4
+- separated parser for ntfsresize output
+- added example programs
+- added unit tests
+- extended exception logging
+- cleanup
+- consistent naming of example programs
+- changed path of resize2fs to /usr/sbin
+- improved calculation of resize information
+- 4.2.29
+
+--------------------------------------------------------------------
+Tue Nov 26 10:56:10 UTC 2019 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#678
+- Only join entries when path matches
+- Select the most reasonable mount point
+- Add unit tests
+- Update version
+- Bind mount workaround
+- 4.2.28
+
+--------------------------------------------------------------------
 Wed Nov 13 13:20:32 UTC 2019 - ancor@suse.de
 
 - merge gh#openSUSE/libstorage-ng#677
