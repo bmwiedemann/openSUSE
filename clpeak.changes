@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri Dec 13 13:11:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git.20191206:
+  * enqueueWriteBuffer: Initialize host buffer to obtain accurate measurement
+  * Move jetson result to pocl folder
+  * [snap] use new cmake file for versions
+  * Add AMD Ryzen 7 3700X
+  * Bump rc
+  * [travis] remove explicit branch
+  * [src] auto format cpp files
+  * Bump version to rc1
+  * [android] cosmetic changes
+  * [travis] add deploy section
+  * [travis] use cmake to invoke cpack
+  * [travis] explicitly specify configuration to cpack
+  * Update travis file
+  * [cmake] fix a string in set
+  * Add cpack
+  * Add suffix to version
+  * remove int kernel restriction for apple
+  * [cmake] fix extra libs for static version
+  * [travis] add arm64
+  * skip exit code for no platform error
+  * [travis] call ctest
+  * [cmake] add a test run
+  * Create Jeston Nano (Tegra X1)
+  * Undo disabling of int kernels for intel
+  * Reduce register usage in kernels
+  * [android] update cmake to include version
+  * Create Intel_UHD_Graphics_620.log
+  * Update README.md
+  * Print half-precision with a capital letter
+  * Add results for Radeon RX 570
+  * Add version info
+  * [travis] use generator instead of platform type for windows
+  * Revert "[cmake] pass CMAKE_GENERATOR_PLATFORM to external project build"
+  * Revert "[cmake] fix error in prev commit"
+  * [cmake] fix error in prev commit
+  * [cmake] pass CMAKE_GENERATOR_PLATFORM to external project build
+  * [travis] try other method of forcing win64
+  * [travis] force x64 on windows
+  * Update readme
+  * [travis] trim os list
+  * [travis] add more os in matrix
+  * [travis] specify xenial
+  * [yml] Rename to yml
+  * [travis] add initial yaml file
+  * [cmake] install LICENSE file
+  * Delete STATUS file
+  * [cmake] fix typo in prev commit
+  * [cmake] windows specific changes
+  * [cmake] Build ICD if not present
+  * [results] remove bin symbols
+  * Add results for GeForce RTX 2080 Ti
+  * Add snapcraft file
+  * [cmake] add an install target
+  * Remove exception for snapdragon platform
+  * trim fn: check before call
+  * [android] upgrade to latest sdk
+  * Place max transfer bw size in common
+  * Place max global bw size in common
+  * Add a seperate multiplier for DP
+  * some more warn fixes
+  * [cmake] throw warning on conversion loss
+  * Use higher size datatypes for memory size
+  * Add an unused macro
+  * Disable depcration warn on windows
+  * Flush the queue after every run iteration
+  * Disable integer kernel in intel only on windows
+  * Revert "Allow int tests on intel"
+  * fix global bw test to use right multiplier
+  * Allow int tests on intel
+  * Global size now is multiple of local size
+  * Trim strings returned by cl APIs
+  * fix warnings
+  * set OPENCL target version
+  * Stop using cl.hpp from deps
+  * Add a gitignore
+  * [cmake] OPENCL_ROOT is not required
+  * Use ulong for alloc vars
+  * Reduce load on integer kernel
+  * Use FindOpenCL rather than custom OpenCL finders
+  * Added result for RTX2080
+
+-------------------------------------------------------------------
 Thu Mar 22 14:13:21 UTC 2018 - guillaume.gardet@opensuse.org
 
 - Update to 1.0+git.20170625 to fix build on AArch64:

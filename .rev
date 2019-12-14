@@ -40,4 +40,41 @@
     <comment></comment>
     <requestid>590365</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aac5212f5487440d5277fe43e49780c7</srcmd5>
+    <version>1.0+git.20191206</version>
+    <time>1576322288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git.20191206:
+  * enqueueWriteBuffer: Initialize host buffer to obtain accurate measurement
+  * Move jetson result to pocl folder
+  * [snap] use new cmake file for versions
+  * Add AMD Ryzen 7 3700X
+  * Bump rc
+  * [travis] remove explicit branch
+  * [src] auto format cpp files
+  * Bump version to rc1
+  * [android] cosmetic changes
+  * [travis] add deploy section
+  * [travis] use cmake to invoke cpack
+  * [travis] explicitly specify configuration to cpack
+  * Update travis file
+  * [cmake] fix a string in set
+  * Add cpack
+  * Add suffix to version
+  * remove int kernel restriction for apple
+  * [cmake] fix extra libs for static version
+  * [travis] add arm64
+  * skip exit code for no platform error
+  * [travis] call ctest
+  * [cmake] add a test run
+  * Create Jeston Nano (Tegra X1)
+  * Undo disabling of int kernels for intel
+  * Reduce register usage in kernels
+  * [android] update cmake to include version
+  * Create Intel_UHD_Graphics_620.log
+  * Update README.md
+  * Print half-precision with a capital letter</comment>
+    <requestid>756813</requestid>
+  </revision>
 </revisionlist>

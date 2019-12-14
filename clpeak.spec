@@ -1,7 +1,7 @@
 #
 # spec file for package clpeak
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,20 +13,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           clpeak
-Version:        1.0+git.20170625
+Version:        1.0+git.20191206
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        SUSE-Public-Domain
 Group:          System/Benchmark
-Url:            https://github.com/krrishnarraj/clpeak
+URL:            https://github.com/krrishnarraj/clpeak
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  opencl-cpp-headers
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenCL)
@@ -37,21 +38,23 @@ A tool which profiles OpenCL devices to find their peak capacities like
 bandwidth & compute.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-# Disable optimisation for current cpu
-sed -i "s|-march=native||g" CMakeLists.txt
-%cmake
-%make_jobs
+%cmake \
+  -Wno-dev
+%cmake_build
 
 %install
-install -D -p -m 0755 build/%{name} \
-  %{buildroot}%{_bindir}/%{name}
+%cmake_install
+rm -rf %{buildroot}%{_datadir}/%{name}
+
+%check
+%ctest
 
 %files
-%defattr (-,root,root)
-%doc README.md LICENSE STATUS results
+%license LICENSE
+%doc README.md results
 %{_bindir}/%{name}
 
 %changelog
