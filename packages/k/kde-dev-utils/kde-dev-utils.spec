@@ -16,24 +16,23 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-dev-utils
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -41,9 +40,9 @@ BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Designer)
+BuildRequires:  cmake(Qt5UiTools)
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
@@ -99,6 +98,8 @@ Displays Qt Designer UI files
 %{_kf5_plugindir}/quithumbnail.so
 %{_kf5_servicesdir}/designerthumbnail.desktop
 %{_kf5_servicesdir}/kuiviewer_part.desktop
+%{_kf5_appstreamdir}/org.kde.kuiviewer.metainfo.xml
+%{_kf5_appstreamdir}/org.kde.kuiviewerpart.metainfo.xml
 
 %package -n kpartloader
 Summary:        Development tool to test KParts
