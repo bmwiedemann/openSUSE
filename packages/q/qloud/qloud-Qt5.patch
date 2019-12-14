@@ -1,0 +1,3605 @@
+Index: qloud-1.2/src/CapThread.cpp
+===================================================================
+--- qloud-1.2.orig/src/CapThread.cpp
++++ qloud-1.2/src/CapThread.cpp
+@@ -40,7 +40,7 @@ void CapThread::run() {
+     }
+     emit workIsDone(); // for ticker and IR-management
+ 
+-    QString msg("Recording is done. Maximub response level is ");
++	QString msg("Recording is done. Maximum response level is ");
+     msg += QVariant(QLUtl::toDb(this->capture->getMaxResponse())).toString();
+     emit showStatus(msg);
+ }
+Index: qloud-1.2/src/CapThread.h
+===================================================================
+--- qloud-1.2.orig/src/CapThread.h
++++ qloud-1.2/src/CapThread.h
+@@ -25,11 +25,15 @@
+ #include "TickPoster.h"
+ 
+ class CapThread: public QThread {
+-
+     Q_OBJECT
+ 
+ public:
+-    CapThread(QObject* parent, Capture* aCapture, TickPoster* aPoster, int playDb);
++	CapThread(
++		QObject* parent,
++		Capture* aCapture,
++		TickPoster* aPoster,
++		int playDb
++	);
+ 
+ signals:
+     void workIsDone();
+Index: qloud-1.2/src/Capture.cpp
+===================================================================
+--- qloud-1.2.orig/src/Capture.cpp
++++ qloud-1.2/src/Capture.cpp
+@@ -24,7 +24,7 @@
+ #include "WavIn.h"
+ #include "WavOut.h"
+ 
+-Capture::Capture(QString aDirPath) throw (QLE) {
++Capture::Capture(QString aDirPath) {
+     this->dirPath = aDirPath;
+     this->jack = 0;
+     this->playBuf = 0;
+@@ -42,7 +42,7 @@ Capture::~Capture() {
+ }
+ 
+ 
+-void Capture::openJack() throw (QLE) {
++void Capture::openJack() {
+     if(this->jack)
+         throw QLE("JACK client is already opened!");
+     this->freeBuffers();
+@@ -51,12 +51,12 @@ void Capture::openJack() throw (QLE) {
+ }
+ 
+ 
+-void Capture::initBuffers() throw (QLE) {
++void Capture::initBuffers() {
+     this->freeBuffers();
+     WavIn* excitWav = new WavIn(this->dirPath + "/" + Excitation::excitationFileName());
+     this->wavInfo = excitWav->getWavInfo();
+     if(this->wavInfo->rate != this->jack->getRate())
+-        throw QLE("excitation and JACK sample rates are not equal!");
++		throw QLE("Excitation and JACK sample rates are not equal!");
+ 
+     try {
+         this->playBuf = excitWav->readFloat();
+@@ -71,11 +71,11 @@ void Capture::initBuffers() throw (QLE)
+ }
+ 
+ 
+-void Capture::doJob(int playDbLevel) throw (QLE) {
++void Capture::doJob(int playDbLevel) {
+     if( ! this->jackIsConnected())
+         throw QLE("JACK ports are not connected!");
+     if( ! this->jack->isIdle())
+-        throw QLE("JACK client isn\'t IDLE now!");
++		throw QLE("JACK client isn’t IDLE now!");
+     
+     this->maxResponse = 0.0;
+     
+Index: qloud-1.2/src/Capture.h
+===================================================================
+--- qloud-1.2.orig/src/Capture.h
++++ qloud-1.2/src/Capture.h
+@@ -27,17 +27,17 @@
+ 
+ class Capture {
+ public:
+-    Capture(QString aDirPath) throw (QLE);
++	Capture(QString aDirPath);
+     ~Capture();
+     static QString responseFileName() {
+         return QString("response.wav");
+     }
+-    void openJack() throw (QLE);
++	void openJack();
+     int getJackRate();
+     void closeJack();
+     bool jackIsConnected();
+-    void initBuffers() throw (QLE);
+-    void doJob(int playDbLevel) throw (QLE);
++	void initBuffers();
++	void doJob(int playDbLevel);
+     float getMaxResponse();
+     QString getWorkDir() {
+         return this->dirPath;
+Index: qloud-1.2/src/Excitation.cpp
+===================================================================
+--- qloud-1.2.orig/src/Excitation.cpp
++++ qloud-1.2/src/Excitation.cpp
+@@ -28,9 +28,8 @@
+ static const double START_SMOOTH = 0.05;
+ static const double FINISH_SMOOTH = 0.005;
+ 
+-void Excitation::generate(const QString& dirPath, const ExcitCfg& cfg) throw (QLE) {
+-
+-    // prepare buffer with Farina's excitation -------------------------------------
++void Excitation::generate(const QString& dirPath, const ExcitCfg& cfg) {
++	// prepare buffer with Farina’s excitation
+     double L = double(cfg.length) / log(double(cfg.fMax)/cfg.fMin);
+     double K = 2.0 * M_PI * cfg.fMin * L;
+     int length = cfg.length * cfg.rate;
+Index: qloud-1.2/src/Excitation.h
+===================================================================
+--- qloud-1.2.orig/src/Excitation.h
++++ qloud-1.2/src/Excitation.h
+@@ -26,7 +26,7 @@
+ 
+ class Excitation {
+ public:
+-    static void generate(const QString& dirPath, const ExcitCfg& cfg) throw (QLE);
++	static void generate(const QString& dirPath, const ExcitCfg& cfg);
+     static QString excitationFileName() {
+         return QString("excitation.wav");
+     }
+Index: qloud-1.2/src/ExcitCfg.cpp
+===================================================================
+--- qloud-1.2.orig/src/ExcitCfg.cpp
++++ qloud-1.2/src/ExcitCfg.cpp
+@@ -29,23 +29,22 @@ ExcitCfg::ExcitCfg() {
+     this->fMax = 10000;
+ }
+ 
+-
+ QString ExcitCfg::toString() {
+     QString s;
+     s += QVariant(this->length).toString();
+-    s += " sec, ";
++	s += " s, ";
+     s += QVariant(this->rate).toString();
+     s += "Hz/";
+     s += QVariant(this->depth).toString();
+     s += "bit, ";
+     s += QVariant(this->fMin).toString();
+-    s += "-";
++	s += "–";
+     s += QVariant(this->fMax).toString();
+     s += " Hz";
+     return s;
+ }
+ 
+-void ExcitCfg::check() const throw (QLE) {
++void ExcitCfg::check() const {
+     if(this->length < 1)
+         throw QLE("Excitation length is too short!");
+     if(this->length > 50)
+@@ -58,9 +57,9 @@ void ExcitCfg::check() const throw (QLE)
+             (this->rate != 176400) && (this->rate != 192000)) 
+         throw QLE("Excitation rate is invalid!");
+     if(this->fMin <  1)
+-        throw QLE("Excitation min frequency is too small!");
++		throw QLE("Excitation min. frequency is too small!");
+     if(this->fMax >  (this->rate / 2))
+-        throw QLE("Excitation max frequency is too high!");
++		throw QLE("Excitation max. frequency is too high!");
+     if(this->fMin * 2 > this->fMax)
+-        throw QLE("Excitation min frequency must be at least twice less than max one!");
++		throw QLE("Excitation min. frequency must be at least twice less than max one!");
+ }
+Index: qloud-1.2/src/ExcitCfg.h
+===================================================================
+--- qloud-1.2.orig/src/ExcitCfg.h
++++ qloud-1.2/src/ExcitCfg.h
+@@ -31,7 +31,7 @@ public:
+     int fMin;
+     int fMax;
+     
+-    void check() const throw (QLE);
++	void check() const;
+     QString toString();
+ };
+ 
+Index: qloud-1.2/src/ExcitForm.cpp
+===================================================================
+--- qloud-1.2.orig/src/ExcitForm.cpp
++++ qloud-1.2/src/ExcitForm.cpp
+@@ -16,17 +16,20 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include "Excitation.h"
+ #include "ExcitForm.h"
+ #include "ExcitThread.h"
+ #include "QLUtl.h"
+ #include "QLWin.h"
+ 
+-ExcitForm::ExcitForm(QWidget* aFeedback, QString aWorkDir, QWidget* parent) throw (QLE) : QWidget(parent) {
++ExcitForm::ExcitForm(
++	QWidget* aFeedback,
++	QString aWorkDir,
++	QWidget* parent
++) : QWidget(parent) {
+     this->feedback = aFeedback;
+ 
+-    ///////////////////// LAYOUNT //////////////////////////////////////////////
++	// Layout
+     QVBoxLayout* mainLayout = new QVBoxLayout();
+ 
+     QGroupBox* exGroup = new QGroupBox("Parameters for excitation signal");
+@@ -35,7 +38,7 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     // Excitation top
+     QHBoxLayout* exTop = new QHBoxLayout();
+ 
+-    exTop->addWidget(new QLabel("Length, seconds:"));
++	exTop->addWidget(new QLabel("Length [s]"));
+     this->lengthCombo = new QComboBox();
+     this->lengthCombo->setEditable(false);
+     this->lengthCombo->addItem("3");
+@@ -47,12 +50,16 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     this->lengthCombo->addItem("40");
+     this->lengthCombo->setCurrentIndex(2);
+     exTop->addWidget(this->lengthCombo);
+-    connect(this->lengthCombo, SIGNAL(currentIndexChanged(const QString&)),
+-            this, SLOT(lengthChanged(const QString&)));
++	connect(
++		this->lengthCombo,
++		SIGNAL(currentIndexChanged(const QString&)),
++		this,
++		SLOT(lengthChanged(const QString&))
++	);
+ 
+     exTop->addStretch(1);
+     exTop->addSpacing(QLWin::SMALL_SPACE);
+-    exTop->addWidget(new QLabel("Sample rate:"));
++	exTop->addWidget(new QLabel("Sample rate [Hz]"));
+     this->rateCombo = new QComboBox();
+     this->rateCombo->setEditable(false);
+     this->rateCombo->addItem("32000");
+@@ -66,12 +73,16 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     this->rateCombo->addItem("192000");
+     this->rateCombo->setCurrentIndex(2);
+     exTop->addWidget(this->rateCombo);
+-    connect(this->rateCombo, SIGNAL(currentIndexChanged(const QString&)),
+-            this, SLOT(rateChanged(const QString&)));
++	connect(
++		this->rateCombo,
++		SIGNAL(currentIndexChanged(const QString&)),
++		this,
++		SLOT(rateChanged(const QString&))
++	);
+ 
+     exTop->addStretch(1);
+     exTop->addSpacing(QLWin::SMALL_SPACE);
+-    exTop->addWidget(new QLabel("Bit depth:"));
++	exTop->addWidget(new QLabel("Bit depth"));
+     this->depthCombo = new QComboBox();
+     this->depthCombo->setEditable(false);
+     this->depthCombo->addItem("16");
+@@ -79,8 +90,12 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     this->depthCombo->addItem("32");
+     this->depthCombo->setCurrentIndex(2);
+     exTop->addWidget(this->depthCombo);
+-    connect(this->depthCombo, SIGNAL(currentIndexChanged(const QString&)),
+-            this, SLOT(depthChanged(const QString&)));
++	connect(
++		this->depthCombo,
++		SIGNAL(currentIndexChanged(const QString&)),
++		this,
++		SLOT(depthChanged(const QString&))
++	);
+ 
+     exTop->addSpacing(QLWin::BIG_SPACE);
+     QWidget* excitLabel = new QLabel("<b>Excitation</b>");
+@@ -92,7 +107,7 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     // Excitation bottom
+     QHBoxLayout* exBottom = new QHBoxLayout();
+ 
+-    exBottom->addWidget(new QLabel("Min Freq, Hz"));
++	exBottom->addWidget(new QLabel("Min. freq. [Hz]"));
+     this->fMinCnt = new QwtCounter();
+     this->fMinCnt->setRange(1, 100000);
+     this->fMinCnt->setSingleStep(1);
+@@ -113,7 +128,7 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     exBottom->addStretch(1);
+     exBottom->addSpacing(QLWin::SMALL_SPACE);
+ 
+-    exBottom->addWidget(new QLabel("Max Freq, Hz"));
++	exBottom->addWidget(new QLabel("Max. freq. [Hz]"));
+     this->fMaxCnt = new QwtCounter();
+     this->fMaxCnt->setRange(1, 100000);
+     this->fMaxCnt->setSingleStep(1);
+@@ -122,10 +137,17 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     this->fMaxCnt->setIncSteps(QwtCounter::Button2, 1000);
+     this->fMaxCnt->setValue(10000);
+     tmp = new QLabel("W1000000W");
+-    this->fMaxCnt->setFixedWidth(this->fMaxCnt->sizeHint().width() + tmp->sizeHint().width());
++	this->fMaxCnt->setFixedWidth(
++		this->fMaxCnt->sizeHint().width() + tmp->sizeHint().width()
++	);
+     delete tmp;
+     exBottom->addWidget(this->fMaxCnt, 5);
+-    connect(this->fMaxCnt, SIGNAL(valueChanged(double)), this, SLOT(fMaxChanged(double)));
++	connect(
++		this->fMaxCnt,
++		SIGNAL(valueChanged(double)),
++		this,
++		SLOT(fMaxChanged(double))
++	);
+ 
+     exBottom->addSpacing(QLWin::BIG_SPACE);
+     QPushButton* genBtn = new QPushButton("Generate");
+@@ -135,13 +157,12 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+ 
+     exLayout->addLayout(exBottom);
+ 
+-    //
+     exGroup->setLayout(exLayout);
+     mainLayout->addWidget(exGroup);
+     this->setLayout(mainLayout);
+     this->layout()->setMargin(0);
+ 
+-    ////////////////////////// SIGNALS ////////////////////////////////////////
++	// Signals
+     connect(this, SIGNAL(setStatus(const QString&)),
+             this->feedback, SLOT(showStatus(const QString&)));
+     connect(this, SIGNAL(setStatus(const QString&, int)),
+@@ -152,12 +173,9 @@ ExcitForm::ExcitForm(QWidget* aFeedback,
+     connect(this, SIGNAL(excitInfoChanged(const QString&)),
+             this->feedback, SLOT(changeExcitInfo(const QString&)));
+ 
+-    ///////////////
+     this->setWorkDir(aWorkDir);
+-
+ }
+ 
+-
+ ExcitForm::~ExcitForm() {
+     delete this->qlCfg;
+ }
+@@ -207,13 +225,11 @@ void ExcitForm::forceRate(int newRate) {
+         this->showCritical("Failed accepting JACK rate!");
+ }
+ 
+-
+ void ExcitForm::generated() {
+     emit excitInfoChanged(this->getInfoString());
+ }
+ 
+-//////////////////////////////////// privates //////////////////////////////////
+-
++// private
+ void ExcitForm::lengthChanged(const QString& in) {
+     this->newCfg.length = QVariant(in).toInt();
+ }
+@@ -238,13 +254,17 @@ void ExcitForm::fMaxChanged(double in) {
+     this->newCfg.fMax = int(in + 0.5);
+ }
+ 
+-
+ void ExcitForm::generate() {
+     try {
+         this->newCfg.check();
+         this->lastCfg = this->newCfg;
+         this->qlCfg->setExcit(this->lastCfg);
+-        ExcitThread* eThread = new ExcitThread(this, this->workDir, this->lastCfg, this);
++		ExcitThread* eThread = new ExcitThread(
++			this,
++			this->workDir,
++			this->lastCfg,
++			this
++		);
+         eThread->start(QThread::LowestPriority);
+         emit excitInfoChanged(this->getInfoString());
+     } catch(QLE e) {
+@@ -252,7 +272,7 @@ void ExcitForm::generate() {
+     }
+ }
+ 
+-QString ExcitForm::getInfoString() throw (QLE) {
++QString ExcitForm::getInfoString() {
+     QFile e(this->workDir + "/" + Excitation::excitationFileName());
+     bool exists = e.exists();
+     QLUtl::checkFileError(e);
+Index: qloud-1.2/src/ExcitForm.h
+===================================================================
+--- qloud-1.2.orig/src/ExcitForm.h
++++ qloud-1.2/src/ExcitForm.h
+@@ -16,23 +16,20 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef EXCITFORM_H
+ #define EXCITFORM_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <qwt_counter.h>
+ #include "ExcitCfg.h"
+ #include "QLE.h"
+ #include "QLCfg.h"
+ 
+-
+ class ExcitForm : public QWidget {
+-
+     Q_OBJECT
+ 
+ public:
+-    ExcitForm(QWidget* feedback, QString workDir, QWidget* parent = 0) throw (QLE);
++	ExcitForm(QWidget* feedback, QString workDir, QWidget* parent = 0);
+     ~ExcitForm();
+ 
+ signals:
+@@ -73,7 +70,7 @@ private:
+     QwtCounter* fMinCnt;
+     QwtCounter* fMaxCnt;
+ 
+-    QString getInfoString() throw (QLE);
++	QString getInfoString();
+     void mapCfgToControls();
+ };
+ 
+Index: qloud-1.2/src/ExcitThread.cpp
+===================================================================
+--- qloud-1.2.orig/src/ExcitThread.cpp
++++ qloud-1.2/src/ExcitThread.cpp
+@@ -21,18 +21,38 @@
+ #include "Excitation.h"
+ 
+ 
+-ExcitThread::ExcitThread(QObject* parent, const QString& aWrkDir, const ExcitCfg& aCfg, QWidget* aFeedback) : QThread(parent) {
++ExcitThread::ExcitThread(
++	QObject* parent,
++	const QString& aWrkDir,
++	const ExcitCfg& aCfg,
++	QWidget* aFeedback
++) : QThread(parent) {
+     this->wrkDir = aWrkDir;
+     this->cfg = aCfg;
+     this->feedback = aFeedback;
+-    connect(this, SIGNAL(showStatus(const QString&)), this->feedback, SLOT(showStatus(const QString&)));
+-    connect(this, SIGNAL(showStatus(const QString&, int)), this->feedback, SLOT(showStatus(const QString&, int)));
+-    connect(this, SIGNAL(showCritical(const QString&)), this->feedback, SLOT(showCritical(const QString&)));
++	connect(
++		this,
++		SIGNAL(showStatus(const QString&)),
++		this->feedback,
++		SLOT(showStatus(const QString&))
++	);
++	connect(
++		this,
++		SIGNAL(showStatus(const QString&, int)),
++		this->feedback,
++		SLOT(showStatus(const QString&, int))
++	);
++	connect(
++		this,
++		SIGNAL(showCritical(const QString&)),
++		this->feedback,
++		SLOT(showCritical(const QString&))
++	);
+     connect(this, SIGNAL(generated()), this->feedback, SLOT(generated()));
+ }
+ 
+ void ExcitThread::run() {
+-    emit showStatus("Generating excitation...");
++	emit showStatus("Generating excitation …");
+     try {
+         Excitation::generate( this->wrkDir, this->cfg);
+         emit generated();
+Index: qloud-1.2/src/ExcitThread.h
+===================================================================
+--- qloud-1.2.orig/src/ExcitThread.h
++++ qloud-1.2/src/ExcitThread.h
+@@ -16,32 +16,33 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef EXCITTHREAD_H
+ #define EXCITTHREAD_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include "ExcitCfg.h"
+ 
+ class ExcitThread : public QThread {
+-
+     Q_OBJECT
+ 
+ public:
+-    ExcitThread(QObject* parent, const QString& wrkDir, const ExcitCfg& aCfg, QWidget* aFeedback);
++	ExcitThread(
++		QObject* parent,
++		const QString& wrkDir,
++		const ExcitCfg& aCfg,
++		QWidget* aFeedback
++	);
+ 
+ signals:
+-    
+     void showStatus(const QString&);
+     void showStatus(const QString&, int);
+     void showCritical(const QString&);
+     void generated();
+ 
+ protected:
+-    
+     void run();
+-private:
+     
++private:
+     ExcitCfg cfg;
+     QString wrkDir;
+     QWidget* feedback;
+Index: qloud-1.2/src/FileFft.cpp
+===================================================================
+--- qloud-1.2.orig/src/FileFft.cpp
++++ qloud-1.2/src/FileFft.cpp
+@@ -16,25 +16,25 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include <cmath>
+ #include "QLUtl.h"
+ #include "WavIn.h"
+ #include "FileFft.h"
+ 
+-
+-FileFft::FileFft(const QString& path, const IRInfo& anIi) throw (QLE) {
++FileFft::FileFft(const QString& path, const IRInfo& anIi) {
+     this->ii = anIi;
+ 
+     this->fftResult = 0;
+     this->freqs = 0;
+ 
+-    //this->readFile(path);
+     this->doFFT(path);
+-    this->freqs = QLUtl::logFreqs(FileFft::POINTS_AMOUNT, this->ii.fMin, this->ii.fMax);
++	this->freqs = QLUtl::logFreqs(
++		FileFft::POINTS_AMOUNT,
++		this->ii.fMin,
++		this->ii.fMax
++	);
+ }
+ 
+-
+ FileFft::~FileFft() {
+     if(this->fftResult)
+         fftw_free(this->fftResult);
+@@ -42,34 +42,6 @@ FileFft::~FileFft() {
+         delete this->freqs;
+ }
+ 
+-/*
+-double* FileFft::getAmps(double smoothFactor) {
+-    double* linAmps = new double[this->fftResultLength];
+-    for(int i=0; i < this->fftResultLength; i++) {
+-        double tmp = this->fftResult[i][0] * this->fftResult[i][0];
+-        tmp += this->fftResult[i][1] * this->fftResult[i][1];
+-        linAmps[i] = sqrt(tmp);
+-    }
+-
+-    //double* smoothed = QLUtl::smooth(linAmps, smoothFactor, this->fftResultLength);
+-    double* smoothed = QLUtl::fastSmooth(linAmps, smoothFactor, this->fftResultLength);
+-    delete linAmps;
+-
+-    QLUtl::toDbInPlace(smoothed, this->fftResultLength, true);
+-
+-    double* logAmps = QLUtl::spaceAmpsToFreqs(FileFft::POINTS_AMOUNT, this->freqs,
+-                                              this->fftResultLength, smoothed);
+-    delete smoothed;
+-
+-    // amplitudes must be scaled to max recorded level. Do it on place.
+-    for(int i=0; i < FileFft::POINTS_AMOUNT; i++)
+-        logAmps[i] += this->ii.maxLevel;
+-
+-    return logAmps;
+-}
+-*/
+-
+-
+ double* FileFft::getAmps(double smoothFactor) {
+     double* linAmps = new double[this->fftResultLength];
+     for(int i=0; i < this->fftResultLength; i++) {
+@@ -114,41 +86,6 @@ double* FileFft::getPhase(double smoothF
+     return logPhase;
+ }
+ 
+-/*
+-double* FileFft::getPhase(double smoothFactor) {
+-
+-    double* re =  new double[this->fftResultLength];
+-    double* im =  new double[this->fftResultLength];
+-    for(int i=0; i < this->fftResultLength; i++) {
+-        re[i] = fftResult[i][0];
+-        im[i] = fftResult[i][1];
+-    }
+-
+-    double *smoothRe = QLUtl::fastSmooth(re, smoothFactor, this->fftResultLength);
+-    delete re;
+-    double *smoothIm = QLUtl::fastSmooth(im, smoothFactor, this->fftResultLength);
+-    delete im;
+-
+-    double* linPhase = new double[this->fftResultLength];
+-    double factor = 180.0 / M_PI;
+-    for(int i=0; i < this->fftResultLength; i++) {
+-        double tmp = atan2(smoothRe[i], smoothIm[i]);
+-        linPhase[i] = tmp * factor;
+-    }
+-    delete smoothRe;
+-    delete smoothIm;
+-
+-    double* smoothed = QLUtl::fastSmooth(linPhase, smoothFactor, this->fftResultLength);
+-    delete linPhase;
+-
+-    double* logPhase = QLUtl::spaceAmpsToFreqs(FileFft::POINTS_AMOUNT, this->freqs, this->fftResultLength, smoothed);
+-    delete smoothed;
+-
+-    return logPhase;
+-}
+-*/
+-
+-
+ double* FileFft::getFreqs() {
+     double* tmp = new double[FileFft::POINTS_AMOUNT];
+     for(int i=0; i < FileFft::POINTS_AMOUNT; i++)
+@@ -156,9 +93,8 @@ double* FileFft::getFreqs() {
+     return tmp;
+ }
+ 
+-///////////////////////// privates /////////////////////////////////////////////
+-
+-void FileFft::doFFT(QString path) throw (QLE) {
++// private
++void FileFft::doFFT(QString path) {
+     WavIn* wav = new WavIn(path);
+     WavInfo* wavInfo = wav->getWavInfo();
+     this->fftResultLength = wavInfo->rate / 2;
+Index: qloud-1.2/src/FileFft.h
+===================================================================
+--- qloud-1.2.orig/src/FileFft.h
++++ qloud-1.2/src/FileFft.h
+@@ -27,11 +27,10 @@
+ #include "IRInfo.h"
+ 
+ class FileFft {
+-
+ public:
+     static const int POINTS_AMOUNT = 1024 * 4;
+ 
+-    FileFft(const QString& path, const IRInfo& ii) throw (QLE);
++	FileFft(const QString& path, const IRInfo& ii);
+     ~FileFft();
+ 
+     double* getAmps(double smooth);
+@@ -44,7 +43,7 @@ private:
+     fftw_complex* fftResult;
+     double* freqs;
+ 
+-    void doFFT(QString path) throw (QLE);
++	void doFFT(QString path);
+ };
+ 
+ #endif
+Index: qloud-1.2/src/GenThread.cpp
+===================================================================
+--- qloud-1.2.orig/src/GenThread.cpp
++++ qloud-1.2/src/GenThread.cpp
+@@ -16,27 +16,50 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include "GenThread.h"
+ #include "QLCfg.h"
+ #include "IR.h"
+ #include "IRInfo.h"
+ 
+-
+-GenThread::GenThread(QObject* parent, const QString& aWrkDir, const QString& aDescription, double aMaxLevel, QWidget* aFeedback) : QThread(parent) {
++GenThread::GenThread(
++	QObject* parent,
++	const QString& aWrkDir,
++	const QString& aDescription,
++	double aMaxLevel,
++	QWidget* aFeedback
++) : QThread(parent) {
+     this->workDir = aWrkDir;
+     this->description = aDescription;
+     this->maxLevel = aMaxLevel;
+     this->feedback = aFeedback;
+-    connect(this, SIGNAL(showStatus(const QString&)), this->feedback, SLOT(showStatus(const QString&)));
+-    connect(this, SIGNAL(showStatus(const QString&, int)), this->feedback, SLOT(showStatus(const QString&, int)));
+-    connect(this, SIGNAL(showCritical(const QString&)), this->feedback, SLOT(showCritical(const QString&)));
+-    connect(this, SIGNAL(generated()), this->feedback, SLOT(irCalculated()));
++	connect(
++		this,
++		SIGNAL(showStatus(const QString&)),
++		this->feedback,
++		SLOT(showStatus(const QString&))
++	);
++	connect(
++		this,
++		SIGNAL(showStatus(const QString&, int)),
++		this->feedback,
++		SLOT(showStatus(const QString&, int))
++	);
++	connect(
++		this,
++		SIGNAL(showCritical(const QString&)),
++		this->feedback,
++		SLOT(showCritical(const QString&))
++	);
++	connect(
++		this,
++		SIGNAL(generated()),
++		this->feedback,
++		SLOT(irCalculated())
++	);
+ }
+ 
+-
+ void GenThread::run() {
+-    emit showStatus("Calculating IR file...");
++	emit showStatus("Calculating IR file …");
+     try {
+         QLCfg* qlCfg = new QLCfg(this->workDir);
+         QString prefix  = qlCfg->nextIrKey();
+@@ -54,7 +77,7 @@ void GenThread::run() {
+         
+         delete qlCfg;
+     } catch(QLE e) {
+-        QString msg = "IR-file calculation failed. The error is:\n\n";
++		QString msg = "IR-file calculation failed:\n\n";
+         msg += e.msg;
+         emit showCritical(msg);
+         return;
+Index: qloud-1.2/src/GenThread.h
+===================================================================
+--- qloud-1.2.orig/src/GenThread.h
++++ qloud-1.2/src/GenThread.h
+@@ -16,11 +16,10 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef GENTHREAD_H
+ #define GENTHREAD_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include "IRInfo.h"
+ 
+ class GenThread : public QThread {
+@@ -28,7 +27,13 @@ class GenThread : public QThread {
+     Q_OBJECT
+ 
+ public:
+-    GenThread(QObject* parent, const QString& wrkDir, const QString& aDescription, double maxLevel, QWidget* aFeedback);
++	GenThread(
++		QObject* parent,
++		const QString& wrkDir,
++		const QString& aDescription,
++		double maxLevel,
++		QWidget* aFeedback
++	);
+ 
+ signals:
+     void showStatus(const QString&);
+@@ -42,7 +47,7 @@ protected:
+ private:
+     QString workDir;
+     QString description;
+-    double maxLevel; // in db
++	double maxLevel; // in dB
+     QWidget* feedback;
+ };
+ 
+Index: qloud-1.2/src/HarmData.cpp
+===================================================================
+--- qloud-1.2.orig/src/HarmData.cpp
++++ qloud-1.2/src/HarmData.cpp
+@@ -33,8 +33,7 @@ HarmData::~HarmData() {
+         delete this->values;
+ }
+ 
+-
+-double HarmData::getValue(double freq)  throw (QLE) {
++double HarmData::getValue(double freq) {
+     if( (freq < this->freqs[0]) || (freq > this->freqs[this->length -1]))
+         throw QLE("frequency is out of range");
+ 
+Index: qloud-1.2/src/HarmData.h
+===================================================================
+--- qloud-1.2.orig/src/HarmData.h
++++ qloud-1.2/src/HarmData.h
+@@ -31,7 +31,7 @@ public:
+     double* freqs;
+     double* values;
+     
+-    double getValue(double freq) throw (QLE);
++	double getValue(double freq);
+ };
+ 
+ #endif
+Index: qloud-1.2/src/Harmonics.cpp
+===================================================================
+--- qloud-1.2.orig/src/Harmonics.cpp
++++ qloud-1.2/src/Harmonics.cpp
+@@ -26,8 +26,7 @@
+ #include "IR.h"
+ #include "QLUtl.h"
+ 
+-
+-Harmonics::Harmonics(QString aDirPath, IRInfo anInfo) throw (QLE) {
++Harmonics::Harmonics(QString aDirPath, IRInfo anInfo) {
+     this->dirPath = aDirPath;
+     this->info = anInfo;
+     this->irSamples =0;
+@@ -46,9 +45,11 @@ Harmonics::~Harmonics() {
+         delete this->wavInfo;
+ }
+ 
+-void Harmonics::init() throw (QLE) {
+-    // read ir.wav file --------------------------------------------------------
+-    WavIn* irWav = new WavIn(this->dirPath + "/" + this->info.key + IR::irFileName());
++void Harmonics::init() {
++	// read ir.wav file
++	WavIn* irWav = new WavIn(
++		this->dirPath + "/" + this->info.key + IR::irFileName()
++	);
+     try {
+         this->irSamples = irWav->readDouble();
+     } catch(QLE e) {
+@@ -60,7 +61,7 @@ void Harmonics::init() throw (QLE) {
+     this->wavInfo = irWav->getWavInfo();
+     delete irWav;
+ 
+-    // find peak ---------------------------------------------------------------
++	// find peak
+     double max = 0.0;
+     double tmp = 0.0;
+     for(unsigned i=0; i < this->wavInfo->length; i++) {
+@@ -70,19 +71,25 @@ void Harmonics::init() throw (QLE) {
+             this->maxIdx = i;
+         }
+     }
+-    if((this->maxIdx < (this->wavInfo->length * 0.3)) || (this->maxIdx > (this->wavInfo->length * 0.7))) {
++	if(
++		(this->maxIdx < (this->wavInfo->length * 0.3)) ||
++		(this->maxIdx > (this->wavInfo->length * 0.7))
++	) {
+         delete this->irSamples;
+         throw QLE("peak position is very strange!");
+     }
+ }
+ 
+ 
+-HarmData* Harmonics::getHarm(int num) throw (QLE) {
+-
+-    int leftShift = int( (this->getHarmIdx(num) - this->getHarmIdx(num+1)) * 0.2 + 0.5);
++HarmData* Harmonics::getHarm(int num) {
++	int leftShift = int(
++		(this->getHarmIdx(num) - this->getHarmIdx(num+1)) * 0.2 + 0.5
++	);
+     if(leftShift > this->info.rate)
+         leftShift = this->info.rate; // 1 second
+-    int rightShift = int( (this->getHarmIdx(num-1) - this->getHarmIdx(num)) * 0.8 + 0.5);
++    int rightShift = int(
++	(this->getHarmIdx(num-1) - this->getHarmIdx(num)) * 0.8 + 0.5
++    );
+ 
+     if( ! this->tone)
+         this->tone = this->doHarmonicFFT(1, leftShift, rightShift);
+@@ -110,77 +117,9 @@ int Harmonics::getHarmIdx(int num) {
+     return this->maxIdx - int(dt*this->info.rate + 0.5);
+ }
+ 
+-
+-/*
+-HarmData* Harmonics::doHarmonicFFT(int num, int leftShift, int rightShift) throw (QLE) {
+-    
+-    double maxFreq = this->info.fMax; // inverse filter is rounded with this freq
+-    double minFreq = this->info.fMin * num;
+-    if(maxFreq < minFreq)
+-        return 0; // skip this harmonic
+-    
+-    // get samples
+-    int peak = this->getHarmIdx(num);
+-    int left = peak - leftShift;
+-    if(left < 0)
+-        return 0; // skip this harmonic at all
+-    
+-    int right = peak + rightShift;
+-    if(right > (int)this->wavInfo->length - 1)
+-        right = int(this->wavInfo->length - 1);
+-    
+-    int length = right - left + 1;
+-    double* samples = new double[length];
+-    for(int i=0; i < length; i++)
+-        samples[i] = this->irSamples[left + i];
+-
+-    // apply windows at edges
+-    Weights* w = new Weights("hanning", leftShift * 2 + 1);
+-    for(int i=0; i <= leftShift; i++)
+-        samples[i] *= w->getPoint(i);
+-    delete w;
+-
+-    w = new Weights("hanning", rightShift * 2 + 1);
+-    for(int i=0; i <= rightShift; i++)
+-        samples[i + leftShift] *= w->getPoint(rightShift + i);
+-    delete w;
+-
+-    // main harmonics-related work is here
+-
+-    fftw_complex* fft = QLUtl::doFFT(samples, length, this->wavInfo->rate);
+-    delete samples;
+-
+-    int fftResultLength = this->wavInfo->rate / 2;
+-    double* linAmps = new double[fftResultLength];
+-    for(int i=0; i < fftResultLength; i++)
+-        linAmps[i] = sqrt( fft[i][0] * fft[i][0] + fft[i][1] * fft[i][1] );
+-    fftw_free(fft);
+-
+-    double* smoothed = QLUtl::fastSmooth(linAmps, 1.0/12.0, fftResultLength);
+-    delete linAmps;
+-
+-    QLUtl::toDbInPlace(smoothed, fftResultLength, false);
+-
+-    double* freqs = QLUtl::logFreqs(Harmonics::POINTS_AMOUNT, minFreq, maxFreq);
+-    double* logAmps = QLUtl::spaceAmpsToFreqs(Harmonics::POINTS_AMOUNT, freqs, fftResultLength, smoothed);
+-    delete smoothed;
+-
+-    if(num != 1)
+-        for(int i=0; i < Harmonics::POINTS_AMOUNT; i++)
+-            freqs[i] /=num;
+-
+-    HarmData* data = new HarmData();
+-    data->length = Harmonics::POINTS_AMOUNT;
+-    data->freqs = freqs;
+-    data->values = logAmps;
+-    return data;
+-}
+-*/
+-
+-
+-HarmData* Harmonics::doHarmonicFFT(int num, int leftShift, int rightShift) throw (QLE) {
+-    
+-    double maxFreq = this->info.fMax; // inverse filter is rounded with this freq
++HarmData* Harmonics::doHarmonicFFT(int num, int leftShift, int rightShift) {
++	// inverse filter is rounded with this freq
++	double maxFreq = this->info.fMax;
+     double minFreq = this->info.fMin * num;
+     if(maxFreq < minFreq)
+         return 0; // skip this harmonic
+@@ -233,7 +172,12 @@ HarmData* Harmonics::doHarmonicFFT(int n
+         for(int i=0; i < Harmonics::POINTS_AMOUNT; i++)
+             freqs[i] /=num;
+ 
+-    double* smoothed = QLUtl::smoothForLog(logAmps, freqs, 1.0/12.0, Harmonics::POINTS_AMOUNT);
++    double* smoothed = QLUtl::smoothForLog(
++	logAmps,
++	freqs,
++	1.0/12.0,
++	Harmonics::POINTS_AMOUNT
++    );
+     delete logAmps;
+     
+     HarmData* data = new HarmData();
+Index: qloud-1.2/src/Harmonics.h
+===================================================================
+--- qloud-1.2.orig/src/Harmonics.h
++++ qloud-1.2/src/Harmonics.h
+@@ -25,15 +25,14 @@
+ #include "IRInfo.h"
+ #include "WavInfo.h"
+ 
+-
+ class Harmonics {
+ public:
+     static const int POINTS_AMOUNT = 4096;
+ 
+-    Harmonics(QString aDirPath, IRInfo anInfo) throw (QLE);
++	Harmonics(QString aDirPath, IRInfo anInfo);
+     ~Harmonics();
+ 
+-    HarmData* getHarm(int num) throw (QLE);
++	HarmData* getHarm(int num);
+ 
+ private:
+     QString dirPath;
+@@ -43,10 +42,10 @@ private:
+     WavInfo* wavInfo;
+     HarmData* tone;
+ 
+-    void init() throw (QLE);
+-    double getMaxFreq(int num) throw (QLE);
++	void init();
++	double getMaxFreq(int num);
+     int getHarmIdx(int num);
+-    HarmData* doHarmonicFFT(int num, int leftShift, int rightShift) throw (QLE);
++	HarmData* doHarmonicFFT(int num, int leftShift, int rightShift);
+ };
+ 
+ #endif
+Index: qloud-1.2/src/HarmPlot.cpp
+===================================================================
+--- qloud-1.2.orig/src/HarmPlot.cpp
++++ qloud-1.2/src/HarmPlot.cpp
+@@ -31,12 +31,19 @@ static const QColor MAJ_PEN_COLOR(175, 1
+ static const QColor MIN_PEN_COLOR(175, 175, 152);
+ static const QColor CURVE_COLOR(0,0,172);
+ static const QColor HARM_COLORS[] = {
+-                                        QColor(0,172, 0), QColor(192,0,0), QColor(172,255,172), QColor(255,152,152)
++	QColor(0, 172, 0),
++	QColor(192, 0, 0),
++	QColor(172, 255, 172),
++	QColor(255, 152, 152)
+                                     };
+ 
+ static const int MAX_HARM = 5;
+ 
+-HarmPlot::HarmPlot(const QString& aDir, IRInfo anIi, QWidget *parent) throw (QLE) : QwtPlot(parent) {
++HarmPlot::HarmPlot(
++	const QString& aDir,
++	IRInfo anIi,
++	QWidget *parent
++) : QwtPlot(parent) {
+     this->setAttribute(Qt::WA_DeleteOnClose);
+ 
+     this->dir = aDir;
+@@ -83,7 +90,7 @@ HarmPlot::~HarmPlot() {
+ }
+ 
+ 
+-void HarmPlot::addCurves() throw (QLE) {
++void HarmPlot::addCurves() {
+     Harmonics* harmonics = new Harmonics(this->dir, this->ii);
+     for(int i=0; i <= MAX_HARM - 2; i++) {
+         this->data[i] = harmonics->getHarm(i+2); // begin from second harmonic
+@@ -96,7 +103,11 @@ void HarmPlot::addCurves() throw (QLE) {
+         curve->setPen(QPen(HARM_COLORS[i]));
+         curve->setYAxis(QwtPlot::yLeft);
+         curve->attach(this);
+-        curve->setSamples(this->data[i]->freqs, this->data[i]->values, this->data[i]->length);
++		curve->setSamples(
++			this->data[i]->freqs,
++			this->data[i]->values,
++			this->data[i]->length
++		);
+     }
+     delete harmonics;
+ }
+Index: qloud-1.2/src/HarmPlot.h
+===================================================================
+--- qloud-1.2.orig/src/HarmPlot.h
++++ qloud-1.2/src/HarmPlot.h
+@@ -16,23 +16,20 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef HARMPLOT_H
+ #define HARMPLOT_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <qwt_plot.h>
+ #include "QLE.h"
+ #include "IRInfo.h"
+ #include "HarmData.h"
+ 
+-
+ class HarmPlot: public QwtPlot {
+-
+     Q_OBJECT
+ 
+ public:
+-    HarmPlot(const QString& dir, IRInfo ii, QWidget *parent = 0) throw (QLE);
++	HarmPlot(const QString& dir, IRInfo ii, QWidget *parent = 0);
+     ~HarmPlot();
+ 
+ private:
+@@ -40,7 +37,7 @@ private:
+     IRInfo ii;
+ 
+     HarmData** data;
+-    void addCurves() throw (QLE);
++	void addCurves();
+ };
+ 
+ #endif
+Index: qloud-1.2/src/IR.cpp
+===================================================================
+--- qloud-1.2.orig/src/IR.cpp
++++ qloud-1.2/src/IR.cpp
+@@ -38,12 +38,14 @@ IR::IR(QString aDirPath, QString aPrefix
+ }
+ 
+ 
+-double IR::getMaxTrimLength() throw (QLE) {
++double IR::getMaxTrimLength() {
+     if(this->maxTrimLength > 0.0)
+         return this->maxTrimLength;
+ 
+-    // read ir.wav file --------------------------------------------------------
+-    WavIn* irWav = new WavIn(this->dirPath + "/" + this->prefix + IR::irFileName());
++    // read ir.wav file
++    WavIn* irWav = new WavIn(
++	this->dirPath + "/" + this->prefix + IR::irFileName()
++    );
+     double* irSamples =0;
+     try {
+         irSamples = irWav->readDouble();
+@@ -56,7 +58,7 @@ double IR::getMaxTrimLength() throw (QLE
+     WavInfo* wavInfo = irWav->getWavInfo();
+     delete irWav;
+ 
+-    // find peak ---------------------------------------------------------------
++	// find peak
+     double max = 0.0;
+     double tmp = 0.0;
+     for(unsigned i=0; i < wavInfo->length; i++) {
+@@ -66,23 +68,29 @@ double IR::getMaxTrimLength() throw (QLE
+             this->maxIdx = i;
+         }
+     }
+-    if((this->maxIdx < (wavInfo->length * 0.3)) || (this->maxIdx > (wavInfo->length * 0.7))) {
++	if(
++		(this->maxIdx < (wavInfo->length * 0.3)) ||
++		(this->maxIdx > (wavInfo->length * 0.7))
++	) {
+         delete irSamples;
+-        throw QLE("peak position is very strange!");
++		throw QLE("Peak position is very strange!");
+     }
+     delete irSamples;
+ 
+-    // get max window width ----------------------------------------------------
++	// get max window width
+     this->maxTrimLength = double(wavInfo->length - maxIdx - 2)/wavInfo->rate;
+     delete wavInfo;
+     return this->maxTrimLength;
+ }
+ 
+-
+-void IR::generate() throw (QLE) {
+-    // read input files --------------------------------------------------------
+-    WavIn* filterWav = new WavIn(this->dirPath + "/" + Excitation::filterFileName());
+-    WavIn* respWav = new WavIn(this->dirPath + "/" + Capture::responseFileName());
++void IR::generate() {
++	// read input files
++	WavIn* filterWav = new WavIn(
++		this->dirPath + "/" + Excitation::filterFileName()
++	);
++	WavIn* respWav = new WavIn(
++		this->dirPath + "/" + Capture::responseFileName()
++	);
+ 
+     double* realFilter = 0;
+     double* realResp = 0;
+@@ -105,18 +113,26 @@ void IR::generate() throw (QLE) {
+         delete respWav;
+         delete realFilter;
+         delete realResp;
+-        throw QLE(Excitation::filterFileName() + " and " + Capture::responseFileName() + " have different lengths!");
++		throw QLE(
++			Excitation::filterFileName() +
++			" and " +
++			Capture::responseFileName() +
++			" have different lengths!"
++		);
+     }
+ 
+-    WavInfo* wavInfo = filterWav->getWavInfo(); // saved to use while IR writing
++	// saved to use while IR writing
++	WavInfo* wavInfo = filterWav->getWavInfo();
+     delete filterWav;
+     delete respWav;
+ 
+-    // convert input samples to complex ----------------------------------------
++	// convert input samples to complex
+     unsigned fftLength = wavInfo->length * 2;
+ 
+-    fftw_complex* filterBuf = (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * fftLength);
+-    fftw_complex* respBuf = (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * fftLength);
++	fftw_complex* filterBuf =
++		(fftw_complex*) fftw_malloc(sizeof(fftw_complex) * fftLength);
++	fftw_complex* respBuf =
++		(fftw_complex*) fftw_malloc(sizeof(fftw_complex) * fftLength);
+     for(unsigned i = 0; i < wavInfo->length; i++) {
+         filterBuf[i][0] = realFilter[i];
+         filterBuf[i][1] = 0.0;
+@@ -133,7 +149,7 @@ void IR::generate() throw (QLE) {
+     delete realFilter;
+     delete realResp;
+ 
+-    // do forward FFT transform ------------------------------------------------
++	// do forward FFT transform
+     fftw_complex* filterFft = (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * fftLength);
+     fftw_plan plan = fftw_plan_dft_1d(fftLength, filterBuf, filterFft, FFTW_FORWARD, FFTW_ESTIMATE);
+     fftw_execute(plan);
+@@ -195,7 +211,7 @@ void IR::generate() throw (QLE) {
+ }
+ 
+ 
+-void IR::trim(double secs) throw (QLE) {
++void IR::trim(double secs) {
+     if(secs < 0.0001)
+         throw QLE("window width too small");
+ 
+@@ -251,7 +267,7 @@ void IR::trim(double secs) throw (QLE) {
+     int rightShift = int(secs * ii.rate + 0.5);
+     int right = maxIdx + rightShift;
+     if(right > int(wavInfo->length))
+-        throw QLE("window too wide");
++		throw QLE("Window too wide");
+     w = new Weights("hanning", rightShift * 2 + 1);
+     for(int i=0; i <= rightShift; i++)
+         irSamples[maxIdx + i] *= w->getPoint(i + rightShift);
+Index: qloud-1.2/src/IR.h
+===================================================================
+--- qloud-1.2.orig/src/IR.h
++++ qloud-1.2/src/IR.h
+@@ -40,9 +40,9 @@ public:
+         return QString("irPower.wav");
+     }
+ 
+-    void generate() throw (QLE);
+-    void trim(double secs) throw (QLE);
+-    double getMaxTrimLength() throw (QLE);
++	void generate();
++	void trim(double secs);
++	double getMaxTrimLength();
+ 
+ private:
+     QString dirPath;
+Index: qloud-1.2/src/IRInfo.cpp
+===================================================================
+--- qloud-1.2.orig/src/IRInfo.cpp
++++ qloud-1.2/src/IRInfo.cpp
+@@ -40,13 +40,13 @@ QString IRInfo::maxLevelAsString() const
+ QString IRInfo::format() const {
+     QString s;
+     s += QVariant(this->length).toString();
+-    s += " sec, ";
++	s += " s, ";
+     s += QVariant(this->rate).toString();;
+     s += "Hz/";
+     s += QVariant(this->depth).toString();
+     s += "bit, ";
+     s += QVariant(this->fMin).toString();
+-    s += "-";
++	s += "–";
+     s += QVariant(this->fMax).toString();
+     s += " Hz";
+     return s;
+Index: qloud-1.2/src/IRInfo.h
+===================================================================
+--- qloud-1.2.orig/src/IRInfo.h
++++ qloud-1.2/src/IRInfo.h
+@@ -33,7 +33,7 @@ public:
+     int depth;
+     int fMin;
+     int fMax;
+-    double maxLevel; // in db, <= 0.0
++	double maxLevel; // in dB, <= 0.0
+ 
+     QString format() const;
+     QString maxLevelAsString() const;
+Index: qloud-1.2/src/IRPlot.cpp
+===================================================================
+--- qloud-1.2.orig/src/IRPlot.cpp
++++ qloud-1.2/src/IRPlot.cpp
+@@ -28,15 +28,17 @@
+ #include "WavInfo.h"
+ #include "IRPlot.h"
+ 
+-
+ static const QColor BG_COLOR(245, 245, 232);
+ static const QColor MAJ_PEN_COLOR(175, 175, 152);
+ static const QColor MIN_PEN_COLOR(175, 175, 152);
+ static const QColor AMP_CURVE_COLOR(0,0,172);
+ static const QColor AMP_MARKER_COLOR(Qt::black);
+ 
+-
+-IRPlot::IRPlot(const QString& aDir, IRInfo anIi, QWidget *parent) throw (QLE) : QwtPlot(parent) {
++IRPlot::IRPlot(
++	const QString& aDir,
++	IRInfo anIi,
++	QWidget *parent
++) : QwtPlot(parent) {
+     this->dir = aDir;
+     this->ii = anIi;
+ 
+@@ -79,8 +81,7 @@ IRPlot::~IRPlot() {
+         delete this->amps;
+ }
+ 
+-
+-unsigned IRPlot::calculate() throw (QLE) {
++unsigned IRPlot::calculate() {
+     this->setAutoReplot(false);
+ 
+     WavIn* irWav = new WavIn(this->dir + "/" + this->ii.key + IR::irFileName());
+Index: qloud-1.2/src/IRPlot.h
+===================================================================
+--- qloud-1.2.orig/src/IRPlot.h
++++ qloud-1.2/src/IRPlot.h
+@@ -28,13 +28,11 @@
+ class QwtPlotCurve;
+ class QwtPlotMarker;
+ 
+-
+ class IRPlot: public QwtPlot {
+-
+     Q_OBJECT
+ 
+ public:
+-    IRPlot(const QString& dir, IRInfo ii, QWidget *parent = 0) throw (QLE);
++	IRPlot(const QString& dir, IRInfo ii, QWidget *parent = 0);
+     ~IRPlot();
+ 
+ private:
+@@ -44,7 +42,7 @@ private:
+     double* time;
+     double* amps;
+ 
+-    unsigned calculate() throw (QLE);
++	unsigned calculate();
+ };
+ 
+ #endif
+Index: qloud-1.2/src/IRPPlot.cpp
+===================================================================
+--- qloud-1.2.orig/src/IRPPlot.cpp
++++ qloud-1.2/src/IRPPlot.cpp
+@@ -36,7 +36,11 @@ static const QColor AMP_CURVE_COLOR(0,0,
+ static const QColor AMP_MARKER_COLOR(Qt::black);
+ 
+ 
+-IRPPlot::IRPPlot(const QString& aDir, IRInfo anIi, QWidget *parent) throw (QLE) : QwtPlot(parent) {
++IRPPlot::IRPPlot(
++	const QString& aDir,
++	IRInfo anIi,
++	QWidget *parent
++) : QwtPlot(parent) {
+     this->dir = aDir;
+     this->ii = anIi;
+ 
+@@ -79,8 +83,7 @@ IRPPlot::~IRPPlot() {
+         delete this->amps;
+ }
+ 
+-
+-unsigned IRPPlot::calculate() throw (QLE) {
++unsigned IRPPlot::calculate() {
+     this->setAutoReplot(false);
+ 
+     WavIn* irWav = new WavIn(this->dir + "/" + this->ii.key + IR::irFileName());
+Index: qloud-1.2/src/IRPPlot.h
+===================================================================
+--- qloud-1.2.orig/src/IRPPlot.h
++++ qloud-1.2/src/IRPPlot.h
+@@ -28,13 +28,11 @@
+ class QwtPlotCurve;
+ class QwtPlotMarker;
+ 
+-
+ class IRPPlot: public QwtPlot {
+-
+     Q_OBJECT
+ 
+ public:
+-    IRPPlot(const QString& dir, IRInfo ii, QWidget *parent = 0) throw (QLE);
++	IRPPlot(const QString& dir, IRInfo ii, QWidget *parent = 0);
+     ~IRPPlot();
+ 
+ private:
+@@ -44,7 +42,7 @@ private:
+     double* time;
+     double* amps;
+ 
+-    unsigned calculate() throw (QLE);
++	unsigned calculate();
+ };
+ 
+ #endif
+Index: qloud-1.2/src/IrsForm.cpp
+===================================================================
+--- qloud-1.2.orig/src/IrsForm.cpp
++++ qloud-1.2/src/IrsForm.cpp
+@@ -25,8 +25,11 @@
+ #include "IrsView.h"
+ 
+ 
+-IrsForm::IrsForm(QWidget* aFeedback, QString aWorkDir, QWidget* parent) throw (QLE) : QWidget(parent) {
+-
++IrsForm::IrsForm(
++	QWidget* aFeedback,
++	QString aWorkDir,
++	QWidget* parent
++) : QWidget(parent) {
+     this->feedback = aFeedback;
+     this->workDir = aWorkDir;
+ 
+@@ -34,16 +37,34 @@ IrsForm::IrsForm(QWidget* aFeedback, QSt
+     QGroupBox* group = new QGroupBox("Measurements set");
+     QHBoxLayout* hLay = new QHBoxLayout();
+ 
+-    //////////////
+     this->model = new IrsModel(this->workDir, &this->plots);
+-    connect(this, SIGNAL(workDirChanged(const QString&)), this->model, SLOT(updateWorkDir(const QString&)));
+-    connect(this->model, SIGNAL(showCritical(const QString&)), this->feedback, SLOT(showCritical(const QString&)));
+-    connect(this->model, SIGNAL(showStatus(const QString&, int)), this->feedback, SLOT(showStatus(const QString&, int)));
++	connect(
++		this,
++		SIGNAL(workDirChanged(const QString&)),
++		this->model,
++		SLOT(updateWorkDir(const QString&))
++	);
++	connect(
++		this->model,
++		SIGNAL(showCritical(const QString&)),
++		this->feedback,
++		SLOT(showCritical(const QString&))
++	);
++	connect(
++		this->model,
++		SIGNAL(showStatus(const QString&, int)),
++		this->feedback,
++		SLOT(showStatus(const QString&, int))
++	);
+ 
+     this->view = new IrsView(this->model);
+-    connect(this->view, SIGNAL(showCritical(const QString&)), this->feedback, SLOT(showCritical(const QString&)));
++	connect(
++		this->view,
++		SIGNAL(showCritical(const QString&)),
++		this->feedback,
++		SLOT(showCritical(const QString&))
++	);
+ 
+-    //////////
+     hLay->addWidget(this->view, 1);
+     hLay->addSpacing(QLWin::BIG_SPACE);
+ 
+@@ -65,26 +86,26 @@ IrsForm::IrsForm(QWidget* aFeedback, QSt
+     this->setLayout(mainLayout);
+     this->layout()->setMargin(0);
+ 
+-    ////////////////////////////////////////////////
+-
+     connect(this->btnPlot, SIGNAL(clicked()), this, SLOT(newPlot()));
+ }
+ 
+-
+ IrsForm::~IrsForm() {}
+ 
+-
+ void IrsForm::newPlot() {
+     QModelIndex index = this->view->currentIndex();
+     if( ( ! index.isValid()) || (this->model->rowCount() < 1) ) {
+-        emit setStatus("Valid selection is not found", 2000);
++		emit setStatus("Valid selection not found", 2000);
+         return;
+     }
+     QString irKey = this->model->data(index, Qt::UserRole).toString();
+ 
+     try {
+         QLCfg cfg(this->workDir);
+-        PlotWindow* w = new PlotWindow(this->workDir, cfg.getIr(irKey), &this->plots);
++		PlotWindow* w = new PlotWindow(
++			this->workDir,
++			cfg.getIr(irKey),
++			&this->plots
++		);
+         w->show();
+     } catch(QLE e) {
+         emit showCritical(e.msg);
+Index: qloud-1.2/src/IrsForm.h
+===================================================================
+--- qloud-1.2.orig/src/IrsForm.h
++++ qloud-1.2/src/IrsForm.h
+@@ -20,17 +20,16 @@
+ #ifndef IRSFORM_H
+ #define IRSFORM_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include "QLE.h"
+ #include "IrsModel.h"
+ #include "PlotWindow.h"
+ 
+ class IrsForm : public QWidget {
+-
+     Q_OBJECT
+ 
+ public:
+-    IrsForm(QWidget* feedback, QString workDir, QWidget* parent = 0) throw (QLE);
++	IrsForm(QWidget* feedback, QString workDir, QWidget* parent = 0);
+     ~IrsForm();
+ 
+ signals:
+Index: qloud-1.2/src/IrsModel.cpp
+===================================================================
+--- qloud-1.2.orig/src/IrsModel.cpp
++++ qloud-1.2/src/IrsModel.cpp
+@@ -16,15 +16,17 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include "QLCfg.h"
+ #include "QLE.h"
+ #include "QLUtl.h"
+ #include "IrsModel.h"
+ #include "IR.h"
+ 
+-
+-IrsModel::IrsModel(const QString& aWorkDir, QMap<PlotWindow*,QString>* aPlots, QObject* parent) throw (QLE) : QAbstractTableModel(parent) {
++IrsModel::IrsModel(
++	const QString& aWorkDir,
++	QMap<PlotWindow*, QString>* aPlots,
++	QObject* parent
++) : QAbstractTableModel(parent) {
+     this->workDir = aWorkDir;
+     this->plots = aPlots;
+ 
+@@ -78,8 +80,11 @@ QVariant IrsModel::data(const QModelInde
+     return QVariant();
+ }
+ 
+-
+-QVariant IrsModel::headerData(int section, Qt::Orientation orientation, int role) const {
++QVariant IrsModel::headerData(
++	int section,
++	Qt::Orientation orientation,
++	int role
++) const {
+     if(role != Qt::DisplayRole)
+         return QAbstractTableModel::headerData(section, orientation, role);
+     if(orientation != Qt::Horizontal)
+@@ -89,15 +94,18 @@ QVariant IrsModel::headerData(int sectio
+         case 0:
+             return "Description";
+         case 1:
+-            return "Used Excitation";
++			return "Used excitation";
+         case 2:
+-            return "Max Level, db";
++			return "Max. level [dB]";
+     }
+     return QVariant();
+ }
+ 
+-
+-bool IrsModel::setData(const QModelIndex& index, const QVariant& value, int role) {
++bool IrsModel::setData(
++	const QModelIndex& index,
++	const QVariant& value,
++	int role
++) {
+     Q_UNUSED(role);
+ 
+     if( ! index.isValid())
+@@ -131,8 +139,9 @@ Qt::ItemFlags IrsModel::flags(const QMod
+ bool IrsModel::removeRows(int row, int count, const QModelIndex& parent) {
+     Q_UNUSED(parent)
+ 
++	// only single row selection is allowed
+     if(count != 1)
+-        return false; // only single row selection is allowed
++		return false;
+ 
+     // be sure there aren't opened plots with this measure
+     IRInfo ii = this->list.at(row);
+@@ -177,18 +186,8 @@ bool IrsModel::removeRows(int row, int c
+         return false;
+     }
+     
+-    // emit layoutChanged();
+-    reset();
+-    
+-    /*
+-    if(this->list.size() > 0) {
+-        int newSelected = row;
+-        if(newSelectedRow > this->list.size())
+-            newSelected--;
+-        if(newSelected < 0)
+-            newSelected = 0;
+-    }
+-    */
++	beginResetModel();
++	endResetModel();
+ 
+     QString status = "\"";
+     status += ii.info;
+@@ -207,8 +206,8 @@ void IrsModel::irListChanged() {
+         return;
+     } 
+ 
+-    //emit layoutChanged();
+-    reset();
++	beginResetModel();
++	endResetModel();
+ }
+ 
+ 
+Index: qloud-1.2/src/IrsModel.h
+===================================================================
+--- qloud-1.2.orig/src/IrsModel.h
++++ qloud-1.2/src/IrsModel.h
+@@ -16,30 +16,49 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef IRSMODEL_H
+ #define IRSMODEL_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include "QLE.h"
+ #include "IRInfo.h"
+ #include "PlotWindow.h"
+ 
+ class IrsModel : public QAbstractTableModel {
+-
+     Q_OBJECT
+ 
+ public:
+-    IrsModel(const QString& aWorkDir, QMap<PlotWindow*,QString>* plots, QObject* parent = 0) throw (QLE);
++	IrsModel(
++		const QString& aWorkDir,
++		QMap<PlotWindow*,QString>* plots,
++		QObject* parent = 0
++	);
+     ~IrsModel();
+ 
+     int rowCount(const QModelIndex& parent = QModelIndex()) const;
+     int columnCount(const QModelIndex& parent = QModelIndex()) const;
++
+     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+-    bool setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole);
+-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
++
++	bool setData(
++		const QModelIndex& index,
++		const QVariant& value,
++		int role = Qt::EditRole
++	);
++
++	QVariant headerData(
++		int section,
++		Qt::Orientation orientation,
++		int role = Qt::DisplayRole
++	) const;
++
+     Qt::ItemFlags flags(const QModelIndex& index) const;
+-    bool removeRows(int row, int count, const QModelIndex& parent=QModelIndex());
++
++	bool removeRows(
++		int row,
++		int count,
++		const QModelIndex& parent=QModelIndex()
++	);
+ 
+ public slots:
+     void irListChanged();
+Index: qloud-1.2/src/IrsView.cpp
+===================================================================
+--- qloud-1.2.orig/src/IrsView.cpp
++++ qloud-1.2/src/IrsView.cpp
+@@ -16,15 +16,16 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include "IrsView.h"
+ #include "LineEditDelegate.h"
+ #include "QLUtl.h"
+ #include "QLE.h"
+ #include "QLCfg.h"
+ 
+-
+-IrsView::IrsView(QAbstractTableModel* model, QWidget* parent) : QTableView(parent) {
++IrsView::IrsView(
++	QAbstractTableModel* model,
++	QWidget* parent
++) : QTableView(parent) {
+     this->setModel(model);
+     this->setAlternatingRowColors(true);
+     this->setSelectionMode(QAbstractItemView::SingleSelection);
+@@ -35,12 +36,12 @@ IrsView::IrsView(QAbstractTableModel* mo
+ 
+     this->setContextMenuPolicy(Qt::DefaultContextMenu);
+ 
+-    QLabel* tmp = new QLabel("W88 sec, 192000Hz/32bit, 99999-99999 Hz");
++	QLabel* tmp = new QLabel("W88 s, 192000 Hz/32 bit, 99999–99999 Hz");
+     int columnWidth = tmp->sizeHint().width();
+     delete tmp;
+     this->setColumnWidth(0, columnWidth);
+     this->setColumnWidth(1, columnWidth);
+-    tmp = new QLabel("WW Max Level, db");
++	tmp = new QLabel("WW Max. level [dB]");
+     columnWidth = tmp->sizeHint().width();
+     delete tmp;
+     this->setColumnWidth(2, columnWidth);
+@@ -48,11 +49,8 @@ IrsView::IrsView(QAbstractTableModel* mo
+     this->menu = new QMenu();
+     QAction* delAction = this->menu->addAction("Delete measurement");
+     connect(delAction, SIGNAL(triggered()), this, SLOT(deleteMeasure()));
+-    
+-    // QHeaderView::sectionSizeFromContents()
+ }
+ 
+-
+ void IrsView::contextMenuEvent(QContextMenuEvent* event) {
+     QTableView::contextMenuEvent(event);
+     this->menu->popup(event->globalPos());
+@@ -67,15 +65,18 @@ void IrsView::deleteMeasure() {
+     QModelIndex infoIndex = this->model()->index(index.row(), 0);
+     QString info = this->model()->data(infoIndex, Qt::DisplayRole).toString();
+     
+-    QString msg = "The mesurement description is:\n\n";
++	QString msg = "Measurement description:\n\n";
+     msg += info;
+     msg += "\n\nAre you sure you want to delete this measurement?";
+-    int doDelete = QMessageBox::question(this, "Measurement permanent deleting", msg,
+-                                         QMessageBox::Yes, QMessageBox::Cancel);
++	int doDelete = QMessageBox::question(
++		this,
++		"Delete measurement permanently",
++		msg,
++		QMessageBox::Yes,
++		QMessageBox::Cancel
++	);
+     if(doDelete != QMessageBox::Yes)
+         return;
+-    this->model()->removeRow(index.row()); // ignore return value
++    // ignore return value
++    this->model()->removeRow(index.row());
+ }
+-
+-
+-
+Index: qloud-1.2/src/IrsView.h
+===================================================================
+--- qloud-1.2.orig/src/IrsView.h
++++ qloud-1.2/src/IrsView.h
+@@ -16,14 +16,12 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef IRSVIEW_H
+ #define IRSVIEW_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ class IrsView : public QTableView {
+-
+     Q_OBJECT
+ 
+ public:
+Index: qloud-1.2/src/JackWrap.cpp
+===================================================================
+--- qloud-1.2.orig/src/JackWrap.cpp
++++ qloud-1.2/src/JackWrap.cpp
+@@ -20,16 +20,13 @@
+ #include <cmath>
+ #include "JackWrap.h"
+ 
+-
+ // class-friend
+ int processJackWrap(jack_nframes_t nframes, void *arg) {
+     JackWrap* wrap = (JackWrap*)arg;
+     return wrap->processJack(nframes);
+ }
+ 
+-
+-JackWrap::JackWrap() throw (QLE) {
+-
++JackWrap::JackWrap() {
+     this->client = 0;
+     this->fsmState = IDLE;
+     this->currentPosition = 0;
+@@ -37,23 +34,31 @@ JackWrap::JackWrap() throw (QLE) {
+ 
+     this->client = jack_client_open("qloud", JackNoStartServer, &this->status, 0);
+     if ( ! this->client )
+-        throw QLE("failed to open JACK client");
++		throw QLE("Failed to open JACK client");
+ 
+     jack_set_process_callback(this->client, processJackWrap, this);
+ 
+-    this->inPort = jack_port_register(client, "in", JACK_DEFAULT_AUDIO_TYPE,  JackPortIsInput, 0);
+-    this->outPort = jack_port_register(client, "out", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
++	this->inPort = jack_port_register(
++		client, "in",
++		JACK_DEFAULT_AUDIO_TYPE,
++		JackPortIsInput,
++		0
++	);
++	this->outPort = jack_port_register(
++		client,
++		"out",
++		JACK_DEFAULT_AUDIO_TYPE,
++		JackPortIsOutput,
++		0
++	);
+ 
+     if(( ! this->inPort) || ( ! this->outPort))
+-        throw QLE("failed registering JACK ports!");
++		throw QLE("Failed registering JACK ports!");
+ 
+     if(jack_activate(this->client))
+-        throw QLE("cannot activate JACK client!");
+-
+-    //jack_connect(this->client, jack_port_name(this->outPort), jack_port_name(this->inPort)); // TODO : for debug only
++		throw QLE("Cannot activate JACK client!");
+ }
+ 
+-
+ JackWrap::~JackWrap() {
+     this->closeClient();
+ }
+@@ -63,15 +68,15 @@ bool JackWrap::isIdle() {
+     return (this->fsmState == IDLE);
+ }
+ 
+-
+ bool JackWrap::isConnected() {
+-    return (jack_port_connected(this->inPort) && jack_port_connected(this->outPort));
++	return (
++		jack_port_connected(this->inPort) && jack_port_connected(this->outPort)
++	);
+ }
+ 
+-
+-void JackWrap::start(JackInfo info) throw (QLE) {
++void JackWrap::start(JackInfo info) {
+     if( ! this->isConnected() )
+-        throw QLE("connect JACK ports before capturing!");
++		throw QLE("Connect JACK ports before capturing!");
+     this->playBuf = info.playBuf;
+     this->capBuf = info.capBuf;
+     this->playDb = pow(10.0, info.playDb/20.0);
+@@ -94,17 +99,14 @@ void JackWrap::closeClient() {
+     }
+ }
+ 
+-
+ int JackWrap::getRate() {
+     if(this->client)
+         return int(jack_get_sample_rate(this->client));
+     return -1;
+ }
+ 
+-//////////////////////////////// privates ////////////////////////////////////////
+-
++// private
+ int JackWrap::processJack(jack_nframes_t nframes) {
+-
+     jack_default_audio_sample_t *in, *out;
+     if(this->fsmState == IDLE) {
+         out = (jack_default_audio_sample_t*)jack_port_get_buffer(this->outPort, nframes);
+Index: qloud-1.2/src/JackWrap.h
+===================================================================
+--- qloud-1.2.orig/src/JackWrap.h
++++ qloud-1.2/src/JackWrap.h
+@@ -31,11 +31,11 @@ enum FSMState {
+ 
+ class JackWrap {
+ public:
+-	JackWrap() throw (QLE);
++	JackWrap();
+     ~JackWrap();
+ 	bool isIdle();
+ 	bool isConnected();
+-	void start(JackInfo info) throw (QLE);
++	void start(JackInfo info);
+ 	float getMaxResponse();
+     void closeClient();
+     int getRate();
+Index: qloud-1.2/src/LineEditDelegate.cpp
+===================================================================
+--- qloud-1.2.orig/src/LineEditDelegate.cpp
++++ qloud-1.2/src/LineEditDelegate.cpp
+@@ -16,13 +16,15 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include "LineEditDelegate.h"
+ 
+ LineEditDelegate::LineEditDelegate(QObject* parent) : QItemDelegate(parent) {}
+ 
+-
+-QWidget* LineEditDelegate::createEditor(QWidget *aParent, const QStyleOptionViewItem& option, const QModelIndex& index) const {
++QWidget* LineEditDelegate::createEditor(
++	QWidget *aParent,
++	const QStyleOptionViewItem& option,
++	const QModelIndex& index
++) const {
+     Q_UNUSED(option)
+     Q_UNUSED(index)
+ 
+@@ -32,21 +34,29 @@ QWidget* LineEditDelegate::createEditor(
+     return edit;
+ }
+ 
+-
+-void LineEditDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
++void LineEditDelegate::setEditorData(
++	QWidget* editor,
++	const QModelIndex& index
++) const {
+     QString value = index.model()->data(index, Qt::DisplayRole).toString();
+     QLineEdit *edit = static_cast<QLineEdit*>(editor);
+     edit->setText(value);
+ }
+ 
+-
+-void LineEditDelegate::setModelData(QWidget* editor, QAbstractItemModel* model, const QModelIndex& index) const {
++void LineEditDelegate::setModelData(
++	QWidget* editor,
++	QAbstractItemModel* model,
++	const QModelIndex& index
++) const {
+     QLineEdit *edit = static_cast<QLineEdit*>(editor);
+     model->setData(index, edit->text());
+ }
+ 
+-
+-void LineEditDelegate::updateEditorGeometry(QWidget* editor, const QStyleOptionViewItem& option, const QModelIndex& index) const {
++void LineEditDelegate::updateEditorGeometry(
++	QWidget* editor,
++	const QStyleOptionViewItem& option,
++	const QModelIndex& index
++) const {
+     Q_UNUSED(index)
+     editor->setGeometry(option.rect);
+ }
+Index: qloud-1.2/src/LineEditDelegate.h
+===================================================================
+--- qloud-1.2.orig/src/LineEditDelegate.h
++++ qloud-1.2/src/LineEditDelegate.h
+@@ -16,27 +16,39 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef LINEEDITDELEGATE_H
+ #define LINEEDITDELEGATE_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ class LineEditDelegate : public QItemDelegate {
+-
+     Q_OBJECT
+ 
+ public:
+     LineEditDelegate(QObject* parent=0);
+ 
+-    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
+-                          const QModelIndex &index) const;
+-    void setEditorData(QWidget *editor, const QModelIndex &index) const;
+-    void setModelData(QWidget *editor, QAbstractItemModel *model,
+-                      const QModelIndex &index) const;
+-    void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option,
+-                              const QModelIndex &index) const;
+-
++	QWidget *createEditor(
++		QWidget *parent,
++		const QStyleOptionViewItem &option,
++		const QModelIndex &index
++	) const;
++
++	void setEditorData(
++		QWidget *editor,
++		const QModelIndex &index
++	) const;
++
++	void setModelData(
++		QWidget *editor,
++		QAbstractItemModel *model,
++		const QModelIndex &index
++	) const;
++
++	void updateEditorGeometry(
++		QWidget *editor,
++		const QStyleOptionViewItem &option,
++		const QModelIndex &index
++	) const;
+ };
+ 
+ #endif
+Index: qloud-1.2/src/Plotter.cpp
+===================================================================
+--- qloud-1.2.orig/src/Plotter.cpp
++++ qloud-1.2/src/Plotter.cpp
+@@ -30,15 +30,17 @@
+ #include "QLUtl.h"
+ #include "QLCfg.h"
+ 
+-
+ static const QColor BG_COLOR(245, 245, 232);
+ static const QColor MAJ_PEN_COLOR(175, 175, 152);
+ static const QColor MIN_PEN_COLOR(175, 175, 152);
+ static const QColor AMP_CURVE_COLOR(0,0,172);
+ static const QColor PHASE_CURVE_COLOR(0, 150, 0);
+ 
+-
+-Plotter::Plotter(const QString& aDir, IRInfo anIi, QWidget *parent) throw (QLE) : QwtPlot(parent)  {
++Plotter::Plotter(
++	const QString& aDir,
++	IRInfo anIi,
++	QWidget *parent
++) : QwtPlot(parent) {
+     this->setAttribute(Qt::WA_DeleteOnClose);
+ 
+     this->dir = aDir;
+@@ -91,7 +93,7 @@ Plotter::Plotter(const QString& aDir, IR
+     panner->setEnabled(true);
+ 
+     this->smoothFactor = Plotter::DEFAULT_SMOOTH; // 1/6 octave
+-    this->winLength = 0.5; // 500mS for right window
++	this->winLength = 0.5; // 500 ms for right window
+     this->recalculate();
+     this->setAutoReplot(true);
+ }
+@@ -109,16 +111,16 @@ Plotter::~Plotter() {
+         delete this->phaseCurve; // may be detached
+ }
+ 
+-double Plotter::getMaxTrimLength() throw (QLE) {
++double Plotter::getMaxTrimLength() {
+     return this->ir->getMaxTrimLength();
+ }
+ 
+-void Plotter::setSmooth(double aSmoothFactor) throw (QLE) {
++void Plotter::setSmooth(double aSmoothFactor) {
+     this->smoothFactor = aSmoothFactor;
+     this->recalculate();
+ }
+ 
+-void Plotter::setWinLength(double msecs) throw (QLE) {
++void Plotter::setWinLength(double msecs) {
+     this->winLength = msecs / 1000.0;
+     this->recalculate();
+ }
+@@ -134,14 +136,15 @@ void Plotter::enablePhase(int state) {
+     this->replot();
+ }
+ 
+-///////////////////////////////// privates /////////////////////////////////
+-
+-void Plotter::recalculate() throw (QLE) {
++// private
++void Plotter::recalculate() {
+     this->setAutoReplot(false);
+ 
+     this->ir->trim(this->winLength);
+ 
+-    FileFft* ff = new FileFft(this->dir + "/" + this->ii.key + IR::trimmedIrFileName(), this->ii);
++	FileFft* ff = new FileFft(
++		this->dir + "/" + this->ii.key + IR::trimmedIrFileName(), this->ii
++	);
+ 
+     if(this->freqs)
+         delete this->freqs;
+@@ -159,9 +162,17 @@ void Plotter::recalculate() throw (QLE)
+ 
+     delete ff;
+ 
+-    this->ampCurve->setSamples(this->freqs, this->amps, FileFft::POINTS_AMOUNT);
++	this->ampCurve->setSamples(
++		this->freqs,
++		this->amps,
++		FileFft::POINTS_AMOUNT
++	);
+     if(QLCfg::USE_PAHSE)
+-        this->phaseCurve->setSamples(this->freqs, this->phase, FileFft::POINTS_AMOUNT);
++		this->phaseCurve->setSamples(
++			this->freqs,
++			this->phase,
++			FileFft::POINTS_AMOUNT
++		);
+ 
+     this->setAutoReplot(true);
+     this->replot();
+Index: qloud-1.2/src/Plotter.h
+===================================================================
+--- qloud-1.2.orig/src/Plotter.h
++++ qloud-1.2/src/Plotter.h
+@@ -20,7 +20,7 @@
+ #ifndef PLOTTER_H
+ #define PLOTTER_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <qwt_plot.h>
+ #include "QLE.h"
+ #include "IR.h"
+@@ -35,16 +35,15 @@ class Plotter: public QwtPlot {
+     Q_OBJECT
+ 
+ public:
+-    
+     static constexpr double DEFAULT_SMOOTH = 6.0; // 1/6 octave
+     
+-    Plotter(const QString& dir, IRInfo ii, QWidget *parent = 0) throw (QLE);
++	Plotter(const QString& dir, IRInfo ii, QWidget *parent = 0);
+     ~Plotter();
+-    double getMaxTrimLength() throw (QLE); // secs
++	double getMaxTrimLength(); // secs
+ 
+ public slots:
+-    void setSmooth(double smoothFactor) throw (QLE);
+-    void setWinLength(double secs) throw (QLE);
++	void setSmooth(double smoothFactor);
++	void setWinLength(double secs);
+     void enablePhase(int);
+ 
+ private:
+@@ -62,7 +61,7 @@ private:
+     QwtPlotCurve *ampCurve;
+     QwtPlotCurve *phaseCurve;
+ 
+-    void recalculate() throw (QLE);
++	void recalculate();
+ };
+ 
+ #endif
+Index: qloud-1.2/src/PlotWindow.cpp
+===================================================================
+--- qloud-1.2.orig/src/PlotWindow.cpp
++++ qloud-1.2/src/PlotWindow.cpp
+@@ -16,8 +16,7 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ #include <qwt_counter.h>
+ #include <qwt_plot_zoomer.h>
+@@ -33,9 +32,12 @@
+ #include "HarmPlot.h"
+ #include "RoundedZoomer.h"
+ 
+-
+-PlotWindow::PlotWindow(const QString& dir, const IRInfo& ii, QMap<PlotWindow*,QString>* aPlots, QWidget *parent) throw (QLE): QWidget(parent) {
+-
++PlotWindow::PlotWindow(
++	const QString& dir,
++	const IRInfo& ii,
++	QMap<PlotWindow*, QString>* aPlots,
++	QWidget *parent
++) : QWidget(parent) {
+     this->plots = aPlots;
+     this->plots->insert(this, dir + "@" + ii.key);
+ 
+@@ -43,7 +45,7 @@ PlotWindow::PlotWindow(const QString& di
+     QString tit(ii.info + " (" + ii.format());
+     tit += ", ";
+     tit += ii.maxLevelAsString();
+-    tit += " db)";
++	tit += " dB)";
+     this->setWindowTitle(tit);
+     this->setContextMenuPolicy(Qt::NoContextMenu);
+ 
+@@ -52,34 +54,44 @@ PlotWindow::PlotWindow(const QString& di
+     mainLayout->setMargin(2);
+     QTabWidget* tab = new QTabWidget();
+     tab->setTabPosition(QTabWidget::North);
+-    tab->addTab(this->getSplTab(dir, ii), "SPL (db/Hz)");
+-    tab->addTab(this->getIRTab(dir, ii), "IR (amp/msec)");
+-    tab->addTab(this->getIRPTab(dir, ii), "IR power (db/msec)");
+-    tab->addTab(this->getStepTab(dir, ii), "Step Response (amp/msec)");
+-    tab->addTab(this->getHarmTab(dir, ii), "Harmonics (db/Hz)");
++	tab->addTab(this->getSplTab(dir, ii), "SPL [dB/Hz]");
++	tab->addTab(this->getIRTab(dir, ii), "IR [amp/ms]");
++	tab->addTab(this->getIRPTab(dir, ii), "IR power [dB/ms]");
++	tab->addTab(this->getStepTab(dir, ii), "Step response [amp/ms]");
++	tab->addTab(this->getHarmTab(dir, ii), "Harmonics [dB/Hz]");
+     mainLayout->addWidget(tab);
+     this->setLayout(mainLayout);
+ }
+ 
+-
+ PlotWindow::~PlotWindow() {
+     this->plots->remove(this);
+ }
+ 
+-
+-QWidget* PlotWindow::getSplTab(const QString& dir, const IRInfo& ii) throw (QLE) {
++QWidget* PlotWindow::getSplTab(
++	const QString& dir,
++	const IRInfo& ii
++) {
+     Plotter* plotter = new Plotter(dir, ii);
+-    // plotter->setMargin(1);
+     this->zoomizePlotter(plotter, 1, 3);
+     if(QLCfg::USE_PAHSE) {
+         // as we have additional curve/scale (phase), add a zoomer
+-        RoundedZoomer* zoomer2 = new RoundedZoomer(QwtPlot::xTop, QwtPlot::yRight, plotter->canvas());
++		RoundedZoomer* zoomer2 = new RoundedZoomer(
++			QwtPlot::xTop,
++			QwtPlot::yRight,
++			plotter->canvas()
++		);
+         zoomer2->setRound(1, 3);
+-        //zoomer2->setSelectionFlags(QwtPicker::DragSelection | QwtPicker::CornerToCorner);
+         zoomer2->setTrackerMode(QwtPicker::AlwaysOff);
+         zoomer2->setRubberBand(QwtPicker::NoRubberBand);
+-        zoomer2->setMousePattern(QwtEventPattern::MouseSelect2, Qt::RightButton, Qt::ControlModifier);
+-        zoomer2->setMousePattern(QwtEventPattern::MouseSelect3, Qt::RightButton);
++		zoomer2->setMousePattern(
++			QwtEventPattern::MouseSelect2,
++			Qt::RightButton,
++			Qt::ControlModifier
++		);
++		zoomer2->setMousePattern(
++			QwtEventPattern::MouseSelect3,
++			Qt::RightButton
++		);
+         zoomer2->setEnabled(true);
+         zoomer2->zoom(0);
+     }
+@@ -87,25 +99,24 @@ QWidget* PlotWindow::getSplTab(const QSt
+     QWidget* splWidget = new QWidget();
+     QVBoxLayout* splLayout = new QVBoxLayout();
+ 
+-
+     // buttons and counters
+     QHBoxLayout* topLayout = new QHBoxLayout();
+     topLayout->addSpacing(15);
+ 
+     QLabel* hlp = new QLabel("<b>?</b>");
+     QString tip = "Mouse using:\n";
+-    tip += "Left button grag - zoom in\n";
+-    tip += "Right button click - go back in zoom history\n";
+-    tip += "Shift + Middle button click - go forward in zoom history\n";
+-    tip += "Ctrl + right button click - go to zoom history start\n";
+-    tip += "Middle button drag - move window";
++	tip += "Left button drag – zoom in\n";
++	tip += "Right button click – go back in zoom history\n";
++	tip += "Shift + middle button click – go forward in zoom history\n";
++	tip += "Ctrl + right button click – go to zoom history start\n";
++	tip += "Middle button drag – move window";
+     hlp->setToolTip(tip);
+     topLayout->addWidget(hlp);
+ 
+     topLayout->addStretch(1);
+ 
+     topLayout->addSpacing(15);
+-    topLayout->addWidget(new QLabel("Octave Smoothing, 1/X"));
++	topLayout->addWidget(new QLabel("Octave smoothing, 1/x"));
+     QwtCounter* cntSmooth = new QwtCounter();
+     cntSmooth->setRange(0.25, 256.0);
+     cntSmooth->setSingleStep(0.25);
+@@ -114,15 +125,23 @@ QWidget* PlotWindow::getSplTab(const QSt
+     cntSmooth->setIncSteps(QwtCounter::Button2, 12);
+     cntSmooth->setValue(Plotter::DEFAULT_SMOOTH); // 1/6 octave
+     QWidget* tmp = new QLabel("W9999.99W");
+-    cntSmooth->setFixedWidth(cntSmooth->sizeHint().width() + tmp->sizeHint().width());
++	cntSmooth->setFixedWidth(
++		cntSmooth->sizeHint().width() + tmp->sizeHint().width()
++	);
+     delete tmp;
+     topLayout->addWidget(cntSmooth, 0);
+-    connect(cntSmooth, SIGNAL(valueChanged(double)), plotter, SLOT(setSmooth(double)));
++	connect(
++		cntSmooth,
++		SIGNAL(valueChanged(double)),
++		plotter,
++		SLOT(setSmooth(double))
++	);
+ 
+     topLayout->addSpacing(15);
+-    topLayout->addWidget(new QLabel("Window, msec"));
++	topLayout->addWidget(new QLabel("Window [ms]"));
+     QwtCounter* cntWindow = new QwtCounter();
+-    double maxMilliSecs = plotter->getMaxTrimLength() * 1000.0; // sec to msec, right window width
++	// s to ms, right window width
++	double maxMilliSecs = plotter->getMaxTrimLength() * 1000.0;
+     cntWindow->setRange(1.0, maxMilliSecs);
+     cntWindow->setSingleStep(1);
+     cntWindow->setNumButtons(2);
+@@ -130,17 +149,29 @@ QWidget* PlotWindow::getSplTab(const QSt
+     cntWindow->setIncSteps(QwtCounter::Button2, 100);
+     cntWindow->setValue(500);
+     tmp = new QLabel("W25999.0W");
+-    cntWindow->setFixedWidth(cntWindow->sizeHint().width() + tmp->sizeHint().width());
++	cntWindow->setFixedWidth(
++		cntWindow->sizeHint().width() + tmp->sizeHint().width()
++	);
+     delete tmp;
+     topLayout->addWidget(cntWindow);
+-    connect(cntWindow, SIGNAL(valueChanged(double)), plotter, SLOT(setWinLength(double)));
++	connect(
++		cntWindow,
++		SIGNAL(valueChanged(double)),
++		plotter,
++		SLOT(setWinLength(double))
++	);
+ 
+     if(QLCfg::USE_PAHSE) {
+         topLayout->addSpacing(15);
+         QCheckBox* phaseCheck = new QCheckBox("Phase");
+         phaseCheck->setChecked(false);
+         topLayout->addWidget(phaseCheck, 0);
+-        connect(phaseCheck, SIGNAL(stateChanged(int)), plotter, SLOT(enablePhase(int)));
++		connect(
++			phaseCheck,
++			SIGNAL(stateChanged(int)),
++			plotter,
++			SLOT(enablePhase(int))
++		);
+     }
+ 
+     topLayout->addSpacing(15);
+@@ -155,48 +186,62 @@ QWidget* PlotWindow::getSplTab(const QSt
+     return splWidget;
+ }
+ 
+-
+-QWidget* PlotWindow::getIRTab(const QString& dir, const IRInfo& ii) throw (QLE) {
++QWidget* PlotWindow::getIRTab(
++	const QString& dir,
++	const IRInfo& ii
++) {
+     QwtPlot* irPlot = new IRPlot(dir, ii);
+-    // irPlot->setMargin(1);
+     this->zoomizePlotter(irPlot, 2, 3);
+     return irPlot;
+ }
+ 
+-
+-QWidget* PlotWindow::getIRPTab(const QString& dir, const IRInfo& ii) throw (QLE) {
++QWidget* PlotWindow::getIRPTab(
++	const QString& dir,
++	const IRInfo& ii
++) {
+     QwtPlot* irpPlot = new IRPPlot(dir, ii);
+-    // irpPlot->setMargin(1);
+     this->zoomizePlotter(irpPlot, 2, 3);
+     return irpPlot;
+ }
+ 
+-
+-QWidget* PlotWindow::getStepTab(const QString& dir, const IRInfo& ii) throw (QLE) {
++QWidget* PlotWindow::getStepTab(
++	const QString& dir,
++	const IRInfo& ii
++) {
+     QwtPlot* stepPlot = new StepPlot(dir, ii);
+-    // stepPlot->setMargin(1);
+     this->zoomizePlotter(stepPlot, 2, 3);
+     return stepPlot;
+ }
+ 
+-
+-QWidget* PlotWindow::getHarmTab(const QString& dir, const IRInfo& ii) throw (QLE) {
++QWidget* PlotWindow::getHarmTab(
++	const QString& dir,
++	const IRInfo& ii
++) {
+     QwtPlot* harmPlot = new HarmPlot(dir, ii);
+-    // harmPlot->setMargin(1);
+     this->zoomizePlotter(harmPlot, 1, 3);
+     return harmPlot;
+ }
+ 
+-
+-void PlotWindow::zoomizePlotter(QwtPlot* plotter, int roundX, int roundY) throw (QLE) {
+-    RoundedZoomer* zoomer1 = new RoundedZoomer( QwtPlot::xBottom, QwtPlot::yLeft, plotter->canvas());
++void PlotWindow::zoomizePlotter(
++	QwtPlot* plotter,
++	int roundX,
++	int roundY
++) {
++	RoundedZoomer* zoomer1 = new RoundedZoomer(
++		QwtPlot::xBottom,
++		QwtPlot::yLeft,
++		plotter->canvas()
++	);
+     zoomer1->setRound(roundX, roundY);
+-    //zoomer1->setSelectionFlags(QwtPicker::DragSelection | QwtPicker::CornerToCorner);
+     zoomer1->setRubberBand(QwtPicker::RectRubberBand);
+     zoomer1->setRubberBandPen(QColor(192,0,0));
+     zoomer1->setTrackerMode(QwtPicker::AlwaysOn);
+     zoomer1->setTrackerPen(QColor(0, 0, 0));
+-    zoomer1->setMousePattern(QwtEventPattern::MouseSelect2, Qt::RightButton, Qt::ControlModifier);
++	zoomer1->setMousePattern(
++		QwtEventPattern::MouseSelect2,
++		Qt::RightButton,
++		Qt::ControlModifier
++	);
+     zoomer1->setMousePattern(QwtEventPattern::MouseSelect3, Qt::RightButton);
+     zoomer1->setEnabled(true);
+     zoomer1->zoom(0);
+Index: qloud-1.2/src/PlotWindow.h
+===================================================================
+--- qloud-1.2.orig/src/PlotWindow.h
++++ qloud-1.2/src/PlotWindow.h
+@@ -20,32 +20,44 @@
+ #ifndef PLOTWINDOW_H
+ #define PLOTWINDOW_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <qwt_plot.h>
+ #include <qwt_counter.h>
+ #include "QLE.h"
+ #include "IRInfo.h"
+ #include "Plotter.h"
+ 
+-
+-
+ class PlotWindow : public QWidget {
+-
+     Q_OBJECT
+ 
+ public:
+-    PlotWindow(const QString& dir, const IRInfo& ii, QMap<PlotWindow*,QString>* plots, QWidget *parent = 0) throw (QLE) ;
++	PlotWindow(
++		const QString& dir,
++		const IRInfo& ii,
++		QMap<PlotWindow*, QString>* plots,
++		QWidget *parent = 0
++	);
+     ~PlotWindow();
+     
+ private:
+     QMap<PlotWindow*,QString>* plots;
+     
+-    QWidget* getSplTab(const QString& dir, const IRInfo& ii) throw (QLE); // SPL plotting
+-    QWidget* getIRTab(const QString& dir, const IRInfo& ii) throw (QLE); // IR itself plotting
+-    QWidget* getIRPTab(const QString& dir, const IRInfo& ii) throw (QLE); // IR power plotting
+-    QWidget* getStepTab(const QString& dir, const IRInfo& ii) throw (QLE); // Step Response plotting
+-    QWidget* getHarmTab(const QString& dir, const IRInfo& ii) throw (QLE); // Harmonics plotting
+-    void zoomizePlotter(QwtPlot* plotter, int roundX, int roundY) throw (QLE);
++	// SPL plotting
++	QWidget* getSplTab(const QString& dir, const IRInfo& ii);
++	// IR itself plotting
++	QWidget* getIRTab(const QString& dir, const IRInfo& ii);
++	// IR power plotting
++	QWidget* getIRPTab(const QString& dir, const IRInfo& ii);
++	// Step Response plotting
++	QWidget* getStepTab(const QString& dir, const IRInfo& ii);
++	// Harmonics plotting
++	QWidget* getHarmTab(const QString& dir, const IRInfo& ii);
++
++	void zoomizePlotter(
++		QwtPlot* plotter,
++		int roundX,
++		int roundY
++	);
+ };
+ 
+ #endif
+Index: qloud-1.2/src/QLCfg.cpp
+===================================================================
+--- qloud-1.2.orig/src/QLCfg.cpp
++++ qloud-1.2/src/QLCfg.cpp
+@@ -26,11 +26,9 @@ QLCfg::QLCfg(QString aPath) {
+     this->path = aPath;
+ }
+ 
+-
+ QLCfg::~QLCfg() {}
+ 
+-
+-void QLCfg::appendIr(IRInfo info) throw (QLE) {
++void QLCfg::appendIr(IRInfo info) {
+     this->initFile();
+     QDomDocument doc = this->read();
+ 
+@@ -61,8 +59,7 @@ void QLCfg::appendIr(IRInfo info) throw
+     this->write(doc);
+ }
+ 
+-
+-void QLCfg::removeIr(QString key) throw (QLE) {
++void QLCfg::removeIr(QString key) {
+     QDomDocument doc = this->read();
+ 
+     QDomNodeList list = doc.elementsByTagName("names");
+@@ -86,10 +83,9 @@ void QLCfg::removeIr(QString key) throw
+     this->write(doc);
+ }
+ 
+-
+ // it is unsufficient to remove/append: we want to preserve items oder
+ // Moreover, only 'info' attribute may be replaced!
+-void QLCfg::replaceIr(IRInfo info) throw (QLE) {
++void QLCfg::replaceIr(IRInfo info) {
+     QDomDocument doc = this->read();
+ 
+     QDomNodeList list = doc.elementsByTagName("names");
+@@ -113,8 +109,7 @@ void QLCfg::replaceIr(IRInfo info) throw
+     this->write(doc);
+ }
+ 
+-
+-QString QLCfg::nextIrKey() throw (QLE) {
++QString QLCfg::nextIrKey() {
+     this->initFile();
+     QDomDocument doc = this->read();
+     QDomNodeList list = doc.elementsByTagName("nextKey");
+@@ -131,8 +126,7 @@ QString QLCfg::nextIrKey() throw (QLE) {
+     return this->irKeyToString(key);
+ }
+ 
+-
+-QList<IRInfo> QLCfg::getIrs() throw (QLE) {
++QList<IRInfo> QLCfg::getIrs() {
+     if( ! this->fileExists()) {
+         QList<IRInfo> emptyList;
+         return emptyList;
+@@ -164,8 +158,7 @@ QList<IRInfo> QLCfg::getIrs() throw (QLE
+     return infos;
+ }
+ 
+-
+-void QLCfg::setExcit(const ExcitCfg& cfg) throw (QLE) {
++void QLCfg::setExcit(const ExcitCfg& cfg) {
+     cfg.check();
+     this->initFile();
+     QDomDocument doc = this->read();
+@@ -183,8 +176,7 @@ void QLCfg::setExcit(const ExcitCfg& cfg
+     this->write(doc);
+ }
+ 
+-
+-ExcitCfg QLCfg::getExcit() throw (QLE) {
++ExcitCfg QLCfg::getExcit() {
+     if( ! this->fileExists()) {
+         ExcitCfg eCfg;
+         return eCfg;
+@@ -207,40 +199,37 @@ ExcitCfg QLCfg::getExcit() throw (QLE) {
+     return cfg;
+ }
+ 
+-
+-IRInfo QLCfg::getIr(const QString& key) throw (QLE) {
++IRInfo QLCfg::getIr(const QString& key) {
+     QList<IRInfo> list = this->getIrs();
+     foreach(IRInfo ii, list)
+     if(ii.key == key)
+         return ii;
+-    throw QLE("IRInfo not found for key " + key);
++    throw QLE("IR info not found for key " + key);
+ }
+ 
+-
+-/////////////////////// privates ///////////////////////////////////////////
+-
++// private
+ QString QLCfg::fileName() {
+     return this->path + "/qloud.xml";
+ }
+ 
+-
+-bool QLCfg::fileExists() throw (QLE) {
++bool QLCfg::fileExists() {
+     QFile file(this->fileName());
+     bool exists = file.exists();
+     QLUtl::checkFileError(file);
+     return exists;
+ }
+ 
+-
+-void QLCfg::initFile() throw (QLE) {
++void QLCfg::initFile() {
+     if(this->fileExists())
+         return;
+ 
+     QDomDocument doc;
+ 
+     // header and root
+-    QDomNode header = doc.createProcessingInstruction("xml",
+-                      "version=\"1.0\" encoding=\"ISO-8859-1\"");
++	QDomNode header = doc.createProcessingInstruction(
++		"xml",
++		"version=\"1.0\" encoding=\"UTF-8\""
++	);
+     doc.appendChild(header);
+ 
+     QDomElement root = doc.createElement("qloud");
+@@ -280,7 +269,7 @@ void QLCfg::initFile() throw (QLE) {
+ }
+ 
+ 
+-QDomDocument QLCfg::read() throw (QLE) {
++QDomDocument QLCfg::read() {
+     this->initFile();
+     QFile file(this->fileName());
+     file.open(QIODevice::ReadOnly);
+@@ -301,8 +290,7 @@ QDomDocument QLCfg::read() throw (QLE) {
+     return doc;
+ }
+ 
+-
+-void QLCfg::write(const QDomDocument& doc) throw (QLE) {
++void QLCfg::write(const QDomDocument& doc) {
+     QFile file(this->fileName());
+     file.open(QIODevice::WriteOnly);
+     QLUtl::checkFileError(file);
+@@ -312,8 +300,7 @@ void QLCfg::write(const QDomDocument& do
+     QLUtl::checkFileError(file);
+ }
+ 
+-
+-QString QLCfg::irKeyToString(int key) throw (QLE) {
++QString QLCfg::irKeyToString(int key) {
+     QVariant v(key);
+     QString s(v.toString());
+     if(key < 10)
+@@ -324,5 +311,5 @@ QString QLCfg::irKeyToString(int key) th
+         return "0" + s;
+     if(key < 10000)
+         return s;
+-    throw QLE("Too many measuremnts. Are you crazy?");
++    throw QLE("Too many measurements. Are you crazy?");
+ }
+Index: qloud-1.2/src/QLCfg.h
+===================================================================
+--- qloud-1.2.orig/src/QLCfg.h
++++ qloud-1.2/src/QLCfg.h
+@@ -30,33 +30,31 @@
+ class QLCfg {
+ 
+ public:
+-    
+     static const bool USE_PAHSE = true;
+     static const int INDENT = 4;
+ 
+     QLCfg(QString aPath);
+     ~QLCfg();
+ 
+-    void appendIr(IRInfo info) throw (QLE);
+-    void removeIr(QString key) throw (QLE);
+-    void replaceIr(IRInfo info) throw (QLE);
+-    QString nextIrKey() throw (QLE);
+-    IRInfo getIr(const QString& key) throw (QLE);
+-    QList<IRInfo> getIrs() throw (QLE);
++	void appendIr(IRInfo info);
++	void removeIr(QString key);
++	void replaceIr(IRInfo info);
++	QString nextIrKey();
++	IRInfo getIr(const QString& key);
++	QList<IRInfo> getIrs();
+     
+-    void setExcit(const ExcitCfg&) throw (QLE);
+-    ExcitCfg getExcit() throw (QLE);
++	void setExcit(const ExcitCfg&);
++	ExcitCfg getExcit();
+ 
+ private:
+-
+     QString path;
+ 
+     QString fileName();
+-    void initFile() throw (QLE);
+-    QDomDocument read() throw (QLE);
+-    void write(const QDomDocument&) throw (QLE);
+-    QString irKeyToString(int key) throw (QLE);
+-    bool fileExists() throw (QLE);
++	void initFile();
++	QDomDocument read();
++	void write(const QDomDocument&);
++	QString irKeyToString(int key);
++	bool fileExists();
+ };
+ 
+ #endif
+Index: qloud-1.2/src/QLUtl.cpp
+===================================================================
+--- qloud-1.2.orig/src/QLUtl.cpp
++++ qloud-1.2/src/QLUtl.cpp
+@@ -24,10 +24,10 @@
+ double QLUtl::toDb(double d) {
+     if(fabs(d) < 1.0e-10)
+         return -200.0;
+-    return 20.0 * log10(fabs(d));
++    double r = 20.0 * log10(fabs(d));
++    return round(r * 10) / 10;
+ }
+ 
+-
+ void QLUtl::d(std::string in) {
+     if(QL_DEBUG)
+         std::cout << in << std::endl;
+@@ -57,14 +57,12 @@ void QLUtl::d(char* in) {
+         std::cout << in << std::endl;
+ }
+ 
+-
+ void QLUtl::d() {
+     if(QL_DEBUG)
+         std::cout << "*************************************" << std::endl;
+ }
+ 
+-
+-void QLUtl::checkFileError(const QFile& file) throw (QLE) {
++void QLUtl::checkFileError(const QFile& file) {
+     QFile::FileError e = file.error();
+     if(e == QFile::NoError)
+         return;
+@@ -97,14 +95,14 @@ void QLUtl::checkFileError(const QFile&
+         case QFile::PermissionsError:
+             throw QLE(f + "The file could not be accessed!");
+         case QFile::CopyError:
+-            throw QLE(f + "The file could not be copied1");
++			throw QLE(f + "The file could not be copied!");
+         default:
+             return;
+     }
+ }
+ 
+ void QLUtl::showCritical(QWidget* parent, const QString& msg) {
+-    QMessageBox::critical(parent, "CRITICAL!", msg);
++	QMessageBox::critical(parent, "Error", msg);
+ }
+ 
+ 
+@@ -206,7 +204,12 @@ double* QLUtl::smooth(double* in, double
+ }
+ 
+ 
+-double* QLUtl::smoothForLog(double* in, double* freqs, double smoothFactor, int length) {
++double* QLUtl::smoothForLog(
++	double* in,
++	double* freqs,
++	double smoothFactor,
++	int length
++) {
+     double* smoothed = new double[length];
+     double freqFactor = pow(2.0, smoothFactor / 2.0);
+     double stepRatio = freqs[1] / freqs[0];
+@@ -247,7 +250,7 @@ double* QLUtl::smoothForLog(double* in,
+ }
+ 
+ 
+-double* QLUtl::logFreqs(int pointsAmount, double fMin, double fMax) throw (QLE) {
++double* QLUtl::logFreqs(int pointsAmount, double fMin, double fMax) {
+     double* freqs = new double[pointsAmount];
+     double ratio = log(double(fMax) / fMin);
+     ratio /= pointsAmount;
+@@ -257,7 +260,12 @@ double* QLUtl::logFreqs(int pointsAmount
+ }
+ 
+ 
+-double* QLUtl::spaceAmpsToFreqs(int pointsAmount, double* freqs, int ampsAmount, double* amps) throw (QLE) {
++double* QLUtl::spaceAmpsToFreqs(
++	int pointsAmount,
++	double* freqs,
++	int ampsAmount,
++	double* amps
++) {
+     double* out = new double[pointsAmount];
+     for(int i=0; i < pointsAmount; i++) {
+         double freq = freqs[i];
+@@ -272,7 +280,11 @@ double* QLUtl::spaceAmpsToFreqs(int poin
+ }
+ 
+ 
+-fftw_complex* QLUtl::doFFT(double* inBuf, int inLength, int rate) throw (QLE) {
++fftw_complex* QLUtl::doFFT(
++	double* inBuf,
++	int inLength,
++	int rate
++) {
+     // zero padding to get whole number of seconds
+     int fftLength = inLength;
+     if(fftLength % rate)
+@@ -289,14 +301,17 @@ fftw_complex* QLUtl::doFFT(double* inBuf
+     int fftResultLength = rate / 2;
+ 
+     // here we shell accumulate one-second-length transformations
+-    fftw_complex* fftResult = (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * fftResultLength);
++	fftw_complex* fftResult
++		= (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * fftResultLength);
+     for(int i=0; i < fftResultLength; i++) {
+         fftResult[i][0] = 0.0;
+         fftResult[i][1] = 0.0;
+     }
+ 
+-    fftw_complex* in = (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * rate);
+-    fftw_complex* out = (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * rate);
++	fftw_complex* in
++		= (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * rate);
++	fftw_complex* out
++		= (fftw_complex*)fftw_malloc(sizeof(fftw_complex) * rate);
+ 
+     for(int i=0; i < secs; i++) {
+         // take this second from inBuf...
+@@ -305,7 +320,13 @@ fftw_complex* QLUtl::doFFT(double* inBuf
+             in[j][1] = 0.0;
+         }
+         // ...transform it...
+-        fftw_plan plan = fftw_plan_dft_1d(rate, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
++		fftw_plan plan = fftw_plan_dft_1d(
++			rate,
++			in,
++			out,
++			FFTW_FORWARD,
++			FFTW_ESTIMATE
++		);
+         fftw_execute(plan);
+         fftw_destroy_plan(plan);
+         // ... and sum with other seconds
+Index: qloud-1.2/src/QLUtl.h
+===================================================================
+--- qloud-1.2.orig/src/QLUtl.h
++++ qloud-1.2/src/QLUtl.h
+@@ -16,11 +16,10 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef QLUTL_H
+ #define QLUTL_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <fftw3.h>
+ #include "QLUtl.h"
+ #include "QLE.h"
+@@ -41,7 +40,7 @@ public:
+     static void d(char*);
+     static void d();
+ 
+-    static void checkFileError(const QFile&) throw (QLE);
++	static void checkFileError(const QFile&);
+ 
+     static void showCritical(QWidget* parent, const QString&);
+     static void showInfo(QWidget* parent, const QString&);
+@@ -49,12 +48,22 @@ public:
+     
+     static double* smooth(double* in, double smoothFactor, int length);
+     static double* fastSmooth(double* in, double smoothFactor, int length);
+-    static double* smoothForLog(double* in, double* freqs, double smoothFactor, int length);
++	static double* smoothForLog(
++		double* in,
++		double* freqs,
++		double smoothFactor,
++		int length
++	);
+ 
+     static void toDbInPlace(double* in, int length, bool normToZero);
+-    static double* logFreqs(int pointsAmount, double fMin, double fMax) throw (QLE);
+-    static double* spaceAmpsToFreqs(int pointsAmount, double* freqs, int ampsAmount, double* amps) throw (QLE);
+-    static fftw_complex* doFFT(double* inBuf, int inLength, int rate) throw (QLE);
++	static double* logFreqs(int pointsAmount, double fMin, double fMax);
++	static double* spaceAmpsToFreqs(
++		int pointsAmount,
++		double* freqs,
++		int ampsAmount,
++		double* amps
++	);
++	static fftw_complex* doFFT(double* inBuf, int inLength, int rate);
+ };
+ 
+ #endif
+Index: qloud-1.2/src/QLWin.cpp
+===================================================================
+--- qloud-1.2.orig/src/QLWin.cpp
++++ qloud-1.2/src/QLWin.cpp
+@@ -16,8 +16,7 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+-#include <QtGui>
++#include <QtWidgets>
+ #include "QLWin.h"
+ #include "QLE.h"
+ #include "QLUtl.h"
+@@ -42,22 +41,26 @@ QLWin::QLWin(QWidget* parent) : QMainWin
+     this->capture = 0;
+     this->jackConnected = false;
+ 
+-    // create WorkDir group ----------------------------------------------------
+-
++	// create WorkDir group
+     QGroupBox* wrkGroup = new QGroupBox("All project files are here");
+     QHBoxLayout* wrkLayout = new QHBoxLayout();
+ 
+-    wrkLayout->addWidget(new QLabel("Select working directory:"));
++	wrkLayout->addWidget(new QLabel("Select working directory"));
+ 
+     QLineEdit* dirEdit = new QLineEdit();
+     dirEdit->setText(QDir::homePath());
+     dirEdit->setReadOnly(true);
+     wrkLayout->addWidget(dirEdit, 1);
+-    connect(this, SIGNAL(workDirChanged(const QString&)), dirEdit, SLOT(setText(const QString&)));
++	connect(
++		this,
++		SIGNAL(workDirChanged(const QString&)),
++		dirEdit,
++		SLOT(setText(const QString&))
++	);
+ 
+-    QPushButton* dirBtn = new QPushButton("...");
++	QPushButton* dirBtn = new QPushButton("…");
+     dirBtn->setMaximumHeight(dirEdit->sizeHint().height() + 1);
+-    dirBtn->setFixedWidth(QLabel("W...W").sizeHint().width());
++	dirBtn->setFixedWidth(QLabel("W…W").sizeHint().width());
+     wrkLayout->addWidget(dirBtn);
+     connect(dirBtn, SIGNAL(clicked()), this, SLOT(dirDialog()));
+ 
+@@ -73,7 +76,7 @@ QLWin::QLWin(QWidget* parent) : QMainWin
+ 
+     int excitLayoutIndex = mainLayout->indexOf(wrkGroup) + 1;
+ 
+-    // create Capture group ----------------------------------------------------
++	// create Capture group
+     QGroupBox* capGroup = new QGroupBox("Capturing audiosystem response");
+     QVBoxLayout* capLayout = new QVBoxLayout();
+ 
+@@ -89,7 +92,6 @@ QLWin::QLWin(QWidget* parent) : QMainWin
+     capTop->addSpacing(QLWin::SMALL_SPACE);
+     QPushButton* jackBtn = new QPushButton("Connect");
+     jackBtn->setFixedWidth(QPushButton("Disconnect").sizeHint().width());
+-    // capTop->addWidget(jackBtn, 2);
+ 
+     capTop->addSpacing(QLWin::BIG_SPACE);
+     tmp = new QLabel("<b>Capture</b>");
+@@ -103,7 +105,7 @@ QLWin::QLWin(QWidget* parent) : QMainWin
+ 
+     capBottom->addStretch(6);
+ 
+-    capBottom->addWidget(new QLabel("Playback level, db:"));
++	capBottom->addWidget(new QLabel("Playback level [dB]"));
+     this->playDb = new QwtCounter();
+     this->playDb->setRange(-100, 0);
+     this->playDb->setSingleStep(1);
+@@ -112,11 +114,13 @@ QLWin::QLWin(QWidget* parent) : QMainWin
+     this->playDb->setIncSteps(QwtCounter::Button2, 10);
+     this->playDb->setValue(-6);
+     tmp = new QLabel("W-100W");
+-    this->playDb->setFixedWidth(this->playDb->sizeHint().width() + tmp->sizeHint().width());
++	this->playDb->setFixedWidth(
++		this->playDb->sizeHint().width() + tmp->sizeHint().width()
++	);
+     capBottom->addWidget(this->playDb);
+     capBottom->addStretch(6);
+ 
+-    capBottom->addWidget(new QLabel("Delay before capture, seconds:"));
++	capBottom->addWidget(new QLabel("Delay before capture [s]"));
+ 
+     this->delayCombo = new QComboBox();
+     this->delayCombo->setEditable(false);
+@@ -137,31 +141,50 @@ QLWin::QLWin(QWidget* parent) : QMainWin
+ 
+     capLayout->addLayout(capBottom);
+ 
+-    //
+     capGroup->setLayout(capLayout);
+     mainLayout->addWidget(capGroup, 0);
+ 
+-    // create IR group ---------------------------------------------------------
++	// Create IR group
+     this->createIrList();
+     mainLayout->addWidget(this->irs, 1);
+ 
+-    //--------------------- LAYOUT FINISHING -----------------------------------
++	// Layout finishing
+     QWidget* centralWidget = new QWidget();
+     centralWidget->setLayout(mainLayout);
+     this->setCentralWidget(centralWidget);
+ 
+-    //////////////////////////// CONNECT ///////////////////////////////////////
+-
+-    connect(this, SIGNAL(setStatus(const QString&)), this->statusBar(), SLOT(showMessage(const QString&)));
+-    connect(this, SIGNAL(setStatus(const QString&, int)), this->statusBar(), SLOT(showMessage(const QString&, int)));
+-    connect(this, SIGNAL(clearStatus()), this->statusBar(), SLOT(clearMessage()));
++	// Connect
+ 
+-    connect(this, SIGNAL(workDirChanged(const QString&)), this, SLOT(updateWorkDir(const QString&)));
++	connect(
++		this,
++		SIGNAL(setStatus(const QString&)),
++		this->statusBar(),
++		SLOT(showMessage(const QString&))
++	);
++	connect(
++		this,
++		SIGNAL(setStatus(const QString&, int)),
++		this->statusBar(),
++		SLOT(showMessage(const QString&, int))
++	);
++	connect(
++		this,
++		SIGNAL(clearStatus()),
++		this->statusBar(),
++		SLOT(clearMessage())
++	);
++
++	connect(
++		this,
++		SIGNAL(workDirChanged(const QString&)),
++		this,
++		SLOT(updateWorkDir(const QString&))
++	);
+ 
+-    //////////////////////////// RESTORE ///////////////////////////////////////
++	// Restore
+     this->restoreMyState();
+ 
+-    // wrkDir is restored, it is safe to add widgets which depends on it
++	// workDir is restored, it is safe to add widgets which depends on it
+     this->excit = new ExcitForm(this, this->workDir);
+     mainLayout->insertWidget( excitLayoutIndex, this->excit, 0);
+ 
+@@ -174,9 +197,8 @@ QLWin::~QLWin() {
+     //this->saveMyState(); - this is done in closeEvent()
+ }
+ 
+-
+ QSize QLWin::rightSize() {
+-    QWidget* tmp = new QPushButton("Impulse Resssponse");
++	QWidget* tmp = new QPushButton("Impulse response");
+     QSize size = tmp->sizeHint();
+     delete tmp;
+     return size;
+@@ -225,17 +247,14 @@ void QLWin::changeExcitInfo(const QStrin
+     }
+ }
+ 
+-
+-///////////////////////////////// protected ////////////////////////////////////
+-
++// protected
+ void QLWin::closeEvent(QCloseEvent * event) {
+     this->saveMyState();
+     QMainWindow::closeEvent(event);
+     QApplication::exit();
+ }
+ 
+-////////////////////////////////// privates ////////////////////////////////////
+-
++// private
+ void QLWin::dirDialog() {
+     QDir upDir(this->workDir);
+     upDir.cdUp();
+@@ -243,7 +262,8 @@ void QLWin::dirDialog() {
+                     this,
+                     "Choose project directory",
+                     upDir.path(),
+-                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
++		QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
++	);
+     if(s.length())
+         emit workDirChanged(s);
+ }
+@@ -270,24 +290,38 @@ void QLWin::restoreMyState() {
+ 
+     QDir dir(this->workDir);
+     if( ! dir.exists() ) {
+-        this->showCritical("Directory " + this->workDir + " doesn\'t exist!");
++		this->showCritical("Directory " + this->workDir + " doesn’t exist!");
+         this->workDir = QDir::homePath();
+     }
+ 
+     emit workDirChanged(this->workDir);
+ }
+ 
+-
+ void QLWin::createIrList() {
+     this->irs = new IrsForm(this, this->workDir);
+-    connect(this, SIGNAL(workDirChanged(const QString&)), this->irs, SLOT(updateWorkDir(const QString&)));
++	connect(
++		this,
++		SIGNAL(workDirChanged(const QString&)),
++		this->irs,
++		SLOT(updateWorkDir(const QString&))
++	);
+     connect(this, SIGNAL(irAdded()), this->irs, SLOT(updateIrList()));
+-    connect(this->irs, SIGNAL(showCritical(const QString&)), SLOT(showCritical(const QString&)));
+-    connect(this->irs, SIGNAL(setStatus(const QString&)), SLOT(showStatus(const QString&)));
+-    connect(this->irs, SIGNAL(setStatus(const QString&, int)), SLOT(showStatus(const QString&, int)));
++	connect(
++		this->irs,
++		SIGNAL(showCritical(const QString&)),
++		SLOT(showCritical(const QString&))
++	);
++	connect(this->irs,
++		SIGNAL(setStatus(const QString&)),
++		SLOT(showStatus(const QString&))
++	);
++	connect(
++		this->irs,
++		SIGNAL(setStatus(const QString&, int)),
++		SLOT(showStatus(const QString&, int))
++	);
+ }
+ 
+-
+ void QLWin::updateWorkDir(const QString& newDir) {
+     this->workDir = newDir;
+     emit setStatus("Working dir is: " + this->workDir, 2000);
+@@ -330,16 +364,15 @@ void QLWin::startCapture() {
+     }
+ 
+     if( ! this->capture->jackIsConnected()) {
+-        emit showCritical("Connect JACK ports in a way you want before capturing!");
++		emit showCritical("Connect JACK ports before capturing!");
+         return;
+     }
+ 
+-    //this->capture->i
+-
+     int delay = QVariant(this->delayCombo->currentText()).toInt();
+     if(this->ticker)
+         delete this->ticker;
+-    this->ticker = new TickPoster(-delay, 300); // TODO: replace '300' with something
++    // TODO: replace '300' with something
++    this->ticker = new TickPoster(-delay, 300);
+     this->ticker->move(this->pos() + QPoint(10, 10));
+     this->ticker->show();
+ 
+@@ -348,7 +381,12 @@ void QLWin::startCapture() {
+ }
+ 
+ void QLWin::startJacking() {
+-    CapThread* cap = new CapThread(this, this->capture, this->ticker, this->playDb->value());
++	CapThread* cap = new CapThread(
++		this,
++		this->capture,
++		this->ticker,
++		this->playDb->value()
++	);
+     connect(cap, SIGNAL(workIsDone()), this->ticker, SLOT(stopTick()));
+     connect(cap, SIGNAL(workIsDone()), this, SLOT(captureFinished()));
+     cap->start();
+@@ -363,23 +401,34 @@ void QLWin::captureFinished() {
+     double maxLevel = QLUtl::toDb(this->capture->getMaxResponse());
+     bool ok;
+     QString msg = "Maximum capture level: ";
+-    msg += QVariant(maxLevel).toString();
+-    msg += "\nGive meaningful description for the measurement";
+-    msg += "\n(hitting \"Cancel\" will ignore this measurement)";
++	msg += QVariant(maxLevel).toString() + " dB";
++	msg += "\nGive a meaningful description for the measurement";
++	msg += "\n(“Cancel” will ignore this measurement)";
+     QString tmp = "Measurement description";
+-    QString description = QInputDialog::getText(this, tmp,msg, QLineEdit::Normal,
+-                          stdDescription, &ok);
++	QString description = QInputDialog::getText(
++		this,
++		tmp,
++		msg,
++		QLineEdit::Normal,
++		stdDescription,
++		&ok
++	);
+     if( ! ok)
+         return;
+     // save this measurement
+     if( ! description.length())
+         description = stdDescription;
+-    GenThread* gen = new GenThread(this, this->workDir, description, maxLevel, this);
++    GenThread* gen = new GenThread(
++	this,
++	this->workDir,
++	description,
++	maxLevel,
++	this
++    );
+     gen->start();
+ }
+ 
+-
+ void QLWin::irCalculated() {
+-    emit irAdded(); // TODO - if nothing more, connect directly
++	// TODO - if nothing more, connect directly
++	emit irAdded();
+ }
+-
+Index: qloud-1.2/src/QLWin.h
+===================================================================
+--- qloud-1.2.orig/src/QLWin.h
++++ qloud-1.2/src/QLWin.h
+@@ -16,11 +16,10 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #ifndef QLWIN_H
+ #define QLWIN_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <qwt_counter.h>
+ #include "ExcitForm.h"
+ #include "Capture.h"
+Index: qloud-1.2/src/RoundedZoomer.h
+===================================================================
+--- qloud-1.2.orig/src/RoundedZoomer.h
++++ qloud-1.2/src/RoundedZoomer.h
+@@ -19,7 +19,7 @@
+ #ifndef ROUNDEDZOOMER_H
+ #define ROUNDEDZOOMER_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ #include <qwt_plot_zoomer.h>
+ #include <qwt_plot_canvas.h>
+ 
+Index: qloud-1.2/src/src.pro
+===================================================================
+--- qloud-1.2.orig/src/src.pro
++++ qloud-1.2/src/src.pro
+@@ -73,22 +73,18 @@ HEADERS += CapThread.h \
+  Weights.h 
+ 
+ QT += xml \
+- gui 
++ widgets
+ 
+ TEMPLATE = app 
+-TARGET = ../bin/qloud 
++TARGET = ../bin/qloud
++target.path = /usr/bin
++INSTALLS += target
+ OBJECTS_DIR = ../obj 
+ MOC_DIR = ../moc 
+-DESTDIR = .
+ 
+-CONFIG -= debug
++CONFIG += debug
+ 
+-INCLUDEPATH += /usr/include/qwt \
+-/usr/include \
+-/usr/include/qt4
+-LIBS += -lsndfile \
+--lfftw3 \
+--ljack \
+--lqwt
++CONFIG += link_pkgconfig
++PKGCONFIG += sndfile fftw3 jack Qt5Qwt6
+ 
+ QMAKE_CXXFLAGS += -std=c++11
+Index: qloud-1.2/src/StepPlot.cpp
+===================================================================
+--- qloud-1.2.orig/src/StepPlot.cpp
++++ qloud-1.2/src/StepPlot.cpp
+@@ -36,7 +36,11 @@ static const QColor AMP_CURVE_COLOR(0,0,
+ static const QColor AMP_MARKER_COLOR(Qt::black);
+ 
+ 
+-StepPlot::StepPlot(const QString& aDir, IRInfo anIi, QWidget *parent) throw (QLE) : QwtPlot(parent) {
++StepPlot::StepPlot(
++	const QString& aDir,
++	IRInfo anIi,
++	QWidget *parent
++) : QwtPlot(parent) {
+     this->dir = aDir;
+     this->ii = anIi;
+ 
+@@ -80,7 +84,7 @@ StepPlot::~StepPlot() {
+ }
+ 
+ 
+-unsigned StepPlot::calculate() throw (QLE) {
++unsigned StepPlot::calculate() {
+     this->setAutoReplot(false);
+ 
+     WavIn* irWav = new WavIn(this->dir + "/" + this->ii.key + IR::irFileName());
+Index: qloud-1.2/src/StepPlot.h
+===================================================================
+--- qloud-1.2.orig/src/StepPlot.h
++++ qloud-1.2/src/StepPlot.h
+@@ -28,13 +28,11 @@
+ class QwtPlotCurve;
+ class QwtPlotMarker;
+ 
+-
+ class StepPlot: public QwtPlot {
+-
+     Q_OBJECT
+ 
+ public:
+-    StepPlot(const QString& dir, IRInfo ii, QWidget *parent = 0) throw (QLE);
++	StepPlot(const QString& dir, IRInfo ii, QWidget *parent = 0);
+     ~StepPlot();
+ 
+ private:
+@@ -44,7 +42,7 @@ private:
+     double* time;
+     double* amps;
+ 
+-    unsigned calculate() throw (QLE);
++	unsigned calculate();
+ };
+ 
+ #endif
+Index: qloud-1.2/src/TickPoster.cpp
+===================================================================
+--- qloud-1.2.orig/src/TickPoster.cpp
++++ qloud-1.2/src/TickPoster.cpp
+@@ -46,7 +46,6 @@ TickPoster::TickPoster(int aMin, int aMa
+ 
+     QPushButton* closeBtn = new QPushButton("Stop");
+     closeBtn->setFont(defaultFont);
+-    //vbl->addWidget(closeBtn); // TODO add 'stop' for capture?
+     connect(closeBtn, SIGNAL(clicked()), this, SLOT(stopTick()));
+ 
+     this->setLayout(vbl);
+Index: qloud-1.2/src/TickPoster.h
+===================================================================
+--- qloud-1.2.orig/src/TickPoster.h
++++ qloud-1.2/src/TickPoster.h
+@@ -20,7 +20,7 @@
+ #ifndef TICKPOSTER_H
+ #define TICKPOSTER_H
+ 
+-#include <QtGui>
++#include <QtWidgets>
+ 
+ class TickPoster : public QWidget {
+ 
+Index: qloud-1.2/src/WavIn.cpp
+===================================================================
+--- qloud-1.2.orig/src/WavIn.cpp
++++ qloud-1.2/src/WavIn.cpp
+@@ -16,12 +16,10 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include <sndfile.h>
+ #include "WavIn.h"
+ 
+-
+-WavIn::WavIn(QString aPath) throw (QLE) {
++WavIn::WavIn(QString aPath) {
+     this->path = aPath;
+     this->buf = 0;
+ 	this->sfFile = 0;
+@@ -29,7 +27,7 @@ WavIn::WavIn(QString aPath) throw (QLE)
+ 	SF_INFO sfInfo;
+ 	this->sfFile = sf_open(this->path.toStdString().c_str(), SFM_READ, &sfInfo);
+ 	if( ! this->sfFile )
+-		throw QLE("failed to open " + this->path + "!");
++		throw QLE("Failed to open " + this->path + "!");
+ 
+ 	this->length = sfInfo.frames;
+ 	this->format = sfInfo.format;
+@@ -55,22 +53,22 @@ int WavIn::getChannels() {
+     return this->channels;
+ }
+ 
+-int WavIn::getBitDepth() throw (QLE) {
++int WavIn::getBitDepth() {
+     if(this->format & SF_FORMAT_PCM_16)
+         return 16;
+     else if(this->format & SF_FORMAT_PCM_24)
+         return 24;
+     else if(this->format & SF_FORMAT_PCM_32)
+         return 32;
+-    throw QLE("undetermined bit depth");
++    throw QLE("Undetermined bit depth");
+ }
+ 
+-float* WavIn::readFloat() throw (QLE) {
++float* WavIn::readFloat() {
+     this->read( sizeof(float));
+     return (float*)this->buf;
+ }
+ 
+-double* WavIn::readDouble() throw (QLE) {
++double* WavIn::readDouble() {
+     this->read( sizeof(double));
+     return (double*)this->buf;
+ }
+@@ -84,9 +82,8 @@ WavInfo*  WavIn::getWavInfo() {
+     return info;
+ }
+ 
+-//////////////////////////////////// privates //////////////////////////////////
+-
+-void WavIn::read(int size) throw (QLE) {
++// private
++void WavIn::read(int size) {
+     sf_count_t wasRead = 0;
+     if(size == sizeof(float)) {
+         this->buf = new char[this->length * sizeof(float)];
+@@ -99,6 +96,6 @@ void WavIn::read(int size) throw (QLE) {
+ 	if(wasRead != this->length) {
+ 		sf_close(this->sfFile); // for case destructor isn't called in catch{}
+ 		this->sfFile = 0;
+-		throw QLE("failed reading " + this->path + "!");
++		throw QLE("Failed reading " + this->path + "!");
+ 	}
+ }
+Index: qloud-1.2/src/WavInfo.cpp
+===================================================================
+--- qloud-1.2.orig/src/WavInfo.cpp
++++ qloud-1.2/src/WavInfo.cpp
+@@ -27,17 +27,17 @@ WavInfo::WavInfo() {}
+ WavInfo::~WavInfo() {}
+ 
+ void WavInfo::show() {
+-    QLUtl::d(QString("length: ") + this->length);
+-    QLUtl::d(QString("rate: ") + this->rate);
+-    QLUtl::d(QString("bitDepth: ") + this->bitDepth);
++    QLUtl::d(QString("Length: ") + this->length);
++    QLUtl::d(QString("Rate: ") + this->rate);
++    QLUtl::d(QString("Bit depth: ") + this->bitDepth);
+ }
+ 
+-int WavInfo::getFormat() throw (QLE) {
++int WavInfo::getFormat() {
+     if(this->bitDepth == 16)
+ 		return SF_FORMAT_WAV | SF_FORMAT_PCM_16;
+     else if(this->bitDepth == 24)
+ 		return SF_FORMAT_WAV | SF_FORMAT_PCM_24;
+     else if(this->bitDepth == 32)
+ 		return SF_FORMAT_WAV | SF_FORMAT_PCM_32;
+-    throw QLE("unsupported format");
++    throw QLE("Unsupported format");
+ }
+Index: qloud-1.2/src/WavInfo.h
+===================================================================
+--- qloud-1.2.orig/src/WavInfo.h
++++ qloud-1.2/src/WavInfo.h
+@@ -32,7 +32,7 @@ public:
+     int bitDepth;
+     int channels;
+ 
+-    int getFormat() throw (QLE);
++	int getFormat();
+     void show();
+ };
+ 
+Index: qloud-1.2/src/WavIn.h
+===================================================================
+--- qloud-1.2.orig/src/WavIn.h
++++ qloud-1.2/src/WavIn.h
+@@ -27,16 +27,16 @@
+ 
+ class WavIn {
+ public:
+-	WavIn(QString aPath) throw (QLE);
++	WavIn(QString aPath);
+ 	~WavIn();
+ 
+-    float* readFloat() throw (QLE);
+-    double* readDouble() throw (QLE);
++	float* readFloat();
++	double* readDouble();
+ 
+     int getLength();
+     int getRate();
+     int getChannels();
+-    int getBitDepth() throw (QLE);
++	int getBitDepth();
+     WavInfo* getWavInfo();
+ 
+ private:
+@@ -50,7 +50,7 @@ private:
+ 	
+ 	SNDFILE* sfFile;
+ 
+-    void read(int size) throw (QLE);
++	void read(int size);
+ };
+ 
+ #endif
+Index: qloud-1.2/src/WavOut.cpp
+===================================================================
+--- qloud-1.2.orig/src/WavOut.cpp
++++ qloud-1.2/src/WavOut.cpp
+@@ -26,23 +26,26 @@ WavOut::WavOut(QString aPath) {
+ 
+ WavOut::~WavOut() {}
+ 
+-void WavOut::writeFloat(WavInfo info, float* buf) throw (QLE) {
++void WavOut::writeFloat(WavInfo info, float* buf) {
+     this->write(info, sizeof(float), (char*)buf);
+ }
+ 
+-void WavOut::writeDouble(WavInfo info, double* buf) throw (QLE) {
++void WavOut::writeDouble(WavInfo info, double* buf) {
+     this->write(info, sizeof(double), (char*)buf);
+ }
+ 
+-//////////////////// privates //////////////////////////////////////////////////
+-
+-void WavOut::write(WavInfo wavInfo, int size, char* buf) throw (QLE) {
++// private
++void WavOut::write(WavInfo wavInfo, int size, char* buf) {
+     SF_INFO sfInfo;
+     sfInfo.channels = wavInfo.channels;
+     sfInfo.format = wavInfo.getFormat();
+     sfInfo.samplerate = wavInfo.rate;
+ 
+-    SNDFILE *sfFile = sf_open(this->path.toStdString().c_str(), SFM_WRITE, &sfInfo);
++	SNDFILE *sfFile = sf_open(
++		this->path.toStdString().c_str(),
++		SFM_WRITE,
++		&sfInfo
++	);
+     if( ! sfFile )
+         throw QLE("failed to open " + this->path + " for writing!");
+ 
+Index: qloud-1.2/src/WavOut.h
+===================================================================
+--- qloud-1.2.orig/src/WavOut.h
++++ qloud-1.2/src/WavOut.h
+@@ -25,17 +25,14 @@
+ #include <QLE.h>
+ 
+ class WavOut {
+-
+ public:
+-
+     WavOut(QString aPath);
+     ~WavOut();
+-    void writeFloat(WavInfo info, float* buf) throw (QLE);
+-    void writeDouble(WavInfo info, double* buf) throw (QLE);
++	void writeFloat(WavInfo info, float* buf);
++	void writeDouble(WavInfo info, double* buf);
+ 
+ private:
+-
+-    void write(WavInfo info, int size, char* buf) throw (QLE);
++	void write(WavInfo info, int size, char* buf);
+     QString path;
+ };
+ 
+Index: qloud-1.2/src/Weights.cpp
+===================================================================
+--- qloud-1.2.orig/src/Weights.cpp
++++ qloud-1.2/src/Weights.cpp
+@@ -16,12 +16,11 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-
+ #include <cstring>
+ #include <cmath>
+ #include "Weights.h"
+ 
+-Weights::Weights(char const* name, int pointsAmount) throw (QLE) {
++Weights::Weights(char const* name, int pointsAmount) {
+     this->points = 0;
+ 
+     if( pointsAmount < 2 )
+@@ -52,7 +51,7 @@ Weights::~Weights() {
+         delete this->points;
+ }
+ 
+-double Weights::getPoint(int pointNum) const throw (QLE) {
++double Weights::getPoint(int pointNum) const {
+     if(pointNum < 0 || pointNum > this->length - 1)
+         throw QLE("out of index");
+     return this->points[pointNum];
+Index: qloud-1.2/src/Weights.h
+===================================================================
+--- qloud-1.2.orig/src/Weights.h
++++ qloud-1.2/src/Weights.h
+@@ -24,9 +24,10 @@
+ 
+ class Weights {
+ public:
+-	Weights(char const* name, int pointsAmount) throw (QLE);
++	Weights(char const* name, int pointsAmount);
+ 	~Weights();
+-	double getPoint(int pointNum) const throw (QLE);
++	double getPoint(int pointNum) const;
++
+ private:
+ 	int length;
+ 	double* points;
