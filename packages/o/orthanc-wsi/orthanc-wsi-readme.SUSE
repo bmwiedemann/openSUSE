@@ -1,0 +1,29 @@
+README: Orthanc for openSUSE
+============================
+
+Orthanc is a RESTful DICOM server for healthcare and medical research.
+
+This package provides the Whole Slide Imaging (WSI) plugin for Orthanc.
+
+Once Orthanc is installed, you must add a section in the Orthanc configuration file that specifies the details of the WSI plugin. 
+
+You may use /usr/share/doc/packages/orthanc/wsi.json as template and copy it to /etc/orthanc.
+You need to restart the Orthanc-Server to enable the configuration.
+
+Note: If you have multiple plugins installed, make sure you have the line 
+
+"Plugins" : [
+    "/usr/share/orthanc/plugins/"
+  ],
+
+only ONCE in all .json files!
+
+For the command line tools, run
+
+OrthancWSIDicomizer --help
+OrthancWSIDicomToTiff --help
+  
+Check out http://book.orthanc-server.com/plugins/wsi.html for additional information!
+
+Have fun
+Axel Braun <DocB@openSUSE.org> Tue Dec 09 17:59:14 UTC 2019 

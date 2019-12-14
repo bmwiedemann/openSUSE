@@ -1,0 +1,10 @@
+{
+  /**
+   * Configuration of the WSI plugin
+   * Axel Braun <docb@openSUSE.org>
+   **/
+  "Plugins" : [
+    "/usr/share/orthanc/plugins/"
+  ],
+  
+}
