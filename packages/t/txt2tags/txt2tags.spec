@@ -2,7 +2,7 @@
 # spec file for package txt2tags
 #
 # Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2013 Christoph Junghans <junghans@votca.org>
+# Copyright (c) 2013,2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,28 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           txt2tags
-Version:        2.6
+Version:        3.3
 Release:        0
 Summary:        Converts text files to HTML, XHTML, sgml, LaTeX, man and others
 License:        GPL-2.0
 Group:          Productivity/Text/Convertors
 Url:            http://txt2tags.sourceforge.net
-Source:         %{name}-%{version}.tar.bz2
+Source:         https://github.com/jendrikseipp/txt2tags/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/txt2tags/txt2tags/commit/49b0808
 Patch0:         reproducible.patch
-Requires:       python
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-BuildRequires:  fdupes
-BuildRequires:  gettext-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Obsoletes:      txt2tags < %{version}
+Provides:       txt2tags = %{version}
+Requires:       %{python_module setuptools}
+
+Requires(post):    update-alternatives
+Requires(postun):  update-alternatives
+
+%python_subpackages
 
 %description
 Txt2tags is a generic text converter. From a simple text file with minimal
@@ -46,49 +52,29 @@ no external commands or libraries are needed.
 %patch0 -p1
 
 %build
-# compile the translated messages for all languages
-%define LANGS $(cd po; ls *.po | cut -d. -f1)
-for lang in %{LANGS}; do
-        msgfmt -o po/$lang.mo po/$lang.po
-done
+%python_build
 
 %install
-#chmod 744 extras/*
+%python_install
+%python_clone -a %{buildroot}%{_bindir}/txt2tags
+sed -i '1s/env python/python3/' %{buildroot}%{python3_sitelib}/txt2tags.py
+chmod +x %{buildroot}%{python3_sitelib}/txt2tags.py
+%ifpython2
+sed -i '1s/env python/python2/' %{buildroot}%{python2_sitelib}/txt2tags.py
+chmod +x %{buildroot}%{python2_sitelib}/txt2tags.py
+%endif
 
-# executables
-install -d %{buildroot}%{_bindir}
-install -m 0755 %{name} %{buildroot}%{_bindir}
+%post
+%python_install_alternative txt2tags
 
-# man pages
-install -d %{buildroot}/%{_mandir}/man1
-install -m 0644 doc/manpage.man %{buildroot}/%{_mandir}/man1/txt2tags.1
-rm doc/manpage.man
+%postun
+%python_uninstall_alternative txt2tags
 
-cd doc
-for lang in $(ls -p1 | grep / | cut -d/ -f1); do
-  if [ ! -z $(ls $lang | grep .man) ]; then
-    install -d %{buildroot}/%{_mandir}/$lang/man1
-    install -m 0644 $lang/$(ls $lang | grep .man) %{buildroot}/%{_mandir}/$lang/man1/txt2tags.1
-    rm $lang/$(ls $lang | grep .man)
-  fi
-done
-cd ..
-
-# translations
-for lang in %{LANGS}; do
-        install -d \
-                %{buildroot}%{_datadir}/locale/$lang/LC_MESSAGES
-        install -m 0644 po/$lang.mo \
-                %{buildroot}%{_datadir}/locale/$lang/LC_MESSAGES/txt2tags.mo
-done
-
-%files
-%defattr(-,root,root,0755)
-%doc ChangeLog README COPYING
-%doc doc/ extras/ samples/
-%{_bindir}/%{name}
-%{_mandir}/man1/txt2tags.1*
-#%{_mandir}/*/man1/txt2tags.1*
-%{_datadir}/locale/*/LC_MESSAGES/txt2tags.mo
+%files %python_files
+%doc CHANGELOG.md README.md
+%license COPYING
+%python_alternative %{_bindir}/txt2tags
+%{python_sitelib}/txt2tags*
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog
