@@ -16,41 +16,40 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kig
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  karchive-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kemoticons-devel
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5Emoticons)
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kitemmodels-devel
-BuildRequires:  kparts-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.2.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.2.0
+BuildRequires:  cmake(Qt5Svg) >= 5.2.0
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5XmlPatterns) >= 5.2.0
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if 0%{?suse_version} > 1325
