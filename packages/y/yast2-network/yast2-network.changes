@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:51:38 UTC 2019 - Michal Filka <mfilka@suse.com>
+
+- bnc#1158122
+  - fixed internal error when incorrectly querying for hostname in
+    AY's second stage
+- 4.2.35 
+
+-------------------------------------------------------------------
+Tue Nov 26 15:16:04 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Drop support for obsolete network device types (jsc#SLE-7753)
+- 4.2.34
+
+-------------------------------------------------------------------
+Mon Nov 25 15:02:38 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix wireless mode and auth_mode initialization (bsc#1157394)
+- 4.2.33
+
+-------------------------------------------------------------------
+Mon Nov 25 09:36:43 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Added a special type for the "Unknown" interfaces omitting them
+  from the interfaces list (bsc#1156285)
+- 4.2.32
+
+-------------------------------------------------------------------
+Mon Nov 25 08:34:55 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Ignores invalid udev rules parts (bsc#1157361)
+- 4.2.31
+
+-------------------------------------------------------------------
+Thu Nov 21 10:57:33 UTC 2019 - Knut Alejandro Anderssen González <knut.anderssen@suse.com>
+
+- Firsboot dhcp: Ensure the network configuration has been read
+  before trying to configure it by dhcp (bsc#1157429)
+- 4.2.30
+
+-------------------------------------------------------------------
+Thu Nov 21 07:13:28 UTC 2019 - Michal Filka <mfilka@suse.com>
+
+- bnc#1153198, fate#319639
+  - implemented proper hostname setup in installation for the new
+    backend
+- 4.2.29
+
+-------------------------------------------------------------------
 Tue Nov 19 12:05:21 UTC 2019 - David Diaz <dgonzalez@suse.com>
 
 - Do not crash when wrapping text (bsc#1157161)
