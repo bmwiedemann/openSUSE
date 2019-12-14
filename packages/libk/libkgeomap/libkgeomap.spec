@@ -1,7 +1,7 @@
 #
 # spec file for package libkgeomap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,35 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgeomap
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Wrapper around different world-map components
 License:        LGPL-2.1-only AND GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kconfig-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  libkexiv2-devel
-BuildRequires:  marble-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KExiv2)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(Marble)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebKitWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Requires:       libKF5KGeoMap10_0_0 = %{version}
 Obsoletes:      libkgeomap-kf5 < %{version}
 Provides:       libkgeomap-kf5 = %{version}
@@ -77,16 +76,16 @@ This library is used by kipi-plugins, digiKam and other kipi host programs
 %package devel
 Summary:        Wrapper around different world-map components
 Group:          Development/Libraries/KDE
-Requires:       kconfig-devel
-Requires:       ki18n-devel
 Requires:       libKF5KGeoMap10_0_0 = %{version}
-Requires:       marble-devel
-Requires:       pkgconfig(Qt5Concurrent)
-Requires:       pkgconfig(Qt5Core)
-Requires:       pkgconfig(Qt5Gui)
-Requires:       pkgconfig(Qt5WebKitWidgets)
-Requires:       pkgconfig(Qt5Widgets)
-Requires:       pkgconfig(Qt5Xml)
+Requires:       cmake(KF5Config)
+Requires:       cmake(KF5I18n)
+Requires:       cmake(Marble)
+Requires:       cmake(Qt5Concurrent)
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5Gui)
+Requires:       cmake(Qt5WebKitWidgets)
+Requires:       cmake(Qt5Widgets)
+Requires:       cmake(Qt5Xml)
 Obsoletes:      libkgeomap-kf5-devel < %{version}
 Provides:       libkgeomap-kf5-devel = %{version}
 
