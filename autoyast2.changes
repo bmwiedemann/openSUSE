@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 13 14:26:11 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow to run autoupgrade on registered system with almost empty
+  profile (jsc#SLE-7101)
+- 4.2.24
+
+-------------------------------------------------------------------
+Fri Dec  6 13:14:34 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Improve message when registration missing for autoupgrade with
+  online medium (jsc#SLE-7101)
+- 4.2.23
+
+-------------------------------------------------------------------
+Mon Nov 18 16:42:31 CET 2019 - schubi@suse.de
+
+- Using Y2Packager::Resolvable.any? and Y2Packager::Resolvable.find
+  in order to decrease the required memory (bsc#1132650, bsc#1140037).
+- 4.2.22
+
+-------------------------------------------------------------------
 Thu Nov 14 07:43:39 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not override all storage proposal settings when importing
