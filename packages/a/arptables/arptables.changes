@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:01:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.0.5
+  * fix potential buffer overflows
+  * add revision field for arptables userspace
+  * add MARK target
+
+-------------------------------------------------------------------
 Fri Aug 24 10:20:05 UTC 2018 - jengelh@inai.de
 
 - Move arptables to arptables-legacy and use update-alternatives to

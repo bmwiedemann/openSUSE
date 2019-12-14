@@ -1,7 +1,7 @@
 #
 # spec file for package arptables
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           arptables
+Version:        0.0.5
+Release:        0
 Summary:        User Space Tool to Set Up and Maintain ARP Filtering Tables
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Version:        0.0.4
-Release:        0
-%define oversion	v0.0.4
-Url:            http://ebtables.sourceforge.net/
+URL:            http://ebtables.sourceforge.net/
 
 #Git-Clone:	git://git.netfilter.org/arptables
-Source:         http://downloads.sf.net/ebtables/arptables-v0.0.4.tar.gz
-Source1:        COPYING
+Source:         http://ftp.netfilter.org/pub/arptables/arptables-%version.tar.gz
+Source2:        http://ftp.netfilter.org/pub/arptables/arptables-%version.tar.gz.sig
+Source3:        %name.keyring
 BuildRequires:  coreutils
 BuildRequires:  perl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -41,11 +41,10 @@ arptables is similar to the iptables userspace tool, but less
 complicated.
 
 %prep
-%setup -qn %name-%oversion
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} all PREFIX="%_prefix" COPT_FLAGS="%optflags -W -Wall"
-cp %{S:1} .
 
 %install
 %make_install PREFIX="%_prefix" MANDIR="%_mandir"
@@ -53,7 +52,6 @@ cp %{S:1} .
 rm -Rf "%buildroot/etc/rc.d"
 
 b="%buildroot"
-mv "$b/%_sbindir/arptables" "$b/%_sbindir/arptables-legacy"
 mv "$b/%_sbindir/arptables-restore" "$b/%_sbindir/arptables-legacy-restore"
 mv "$b/%_sbindir/arptables-save" "$b/%_sbindir/arptables-legacy-save"
 for i in arptables arptables-restore arptables-save; do
