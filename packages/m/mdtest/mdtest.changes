@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 13 11:38:31 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file and use macros for mpi implementaion selection
+
+-------------------------------------------------------------------
 Sat Oct 21 07:06:38 UTC 2017 - mpluskal@suse.com
 
 - Update mpi dependencies
