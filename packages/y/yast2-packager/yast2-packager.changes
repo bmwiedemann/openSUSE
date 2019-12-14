@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Dec 11 17:11:04 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Speed up product renames calculation (bsc#1157926).
+- 4.2.39
+
+-------------------------------------------------------------------
+Tue Dec 10 11:58:43 CET 2019 - schubi@suse.de
+
+- AY Export: Exporting product_dir into the configuration file.
+  (bsc#1158450)
+- 4.2.38
+
+-------------------------------------------------------------------
+Thu Dec  5 16:48:56 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow to override medium type to allow to upgrade registered
+  system with Full medium (jsc#SLE-7101)
+- 4.2.37
+
+-------------------------------------------------------------------
+Thu Nov 28 12:43:33 CET 2019 - schubi@suse.de
+
+- Moved resolvable class to yast2 package (bsc1140037).
+- 4.2.36
+
+-------------------------------------------------------------------
+Wed Nov 27 11:12:43 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix a typo in the "Extension and Module Selection" screen
+  (bsc#1157789).
+- 4.2.35
+
+-------------------------------------------------------------------
+Tue Nov 26 14:21:34 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Show beta warning only once (bsc#1156629).
+- 4.2.34
+
+-------------------------------------------------------------------
+Fri Nov  8 19:28:57 UTC 2019 - schubi@suse.de
+
+- Using Y2Packager::Resolvable.any? and Y2Packager::Resolvable.find
+  in order to decrease the required memory (bsc#1132650,
+  bsc#1140037).
+- 4.2.33
+
+-------------------------------------------------------------------  
 Fri Nov  8 18:58:23 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Preselect the installed add-ons when upgrading from the Full
