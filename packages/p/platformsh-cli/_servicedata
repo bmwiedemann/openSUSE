@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/platformsh/platformsh-cli.git</param>
-    <param name="changesrevision">8eeeec8d0d62d07f5017169b8c8f1dbdeab1ba64</param>
+    <param name="changesrevision">511eed7adf8d1423d0982d36df2e6f2d99e86376</param>
   </service>
 </servicedata>

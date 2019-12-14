@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 13 21:22:59 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.50.1:
+  * Release v3.50.1
+  * Fix ServiceNotFoundException in "get" command
+  * Release v3.50.0
+  * Revert "Remove drush-aliases SSH calls to find the absolute app root (#869)" (#876)
+  * Update dependencies
+  * Update API client to standardize project git URLs
+  * Unused variable [skip changelog]
+  * Some scp command tweaks/cleanup
+  * Comments/cleanup
+  * Provide project choice without behavior of detecting the current project
+  * Do not require Git to find a git root
+  * Suggest set-remote in get command with an existing repository
+  * Refactor project:get (get) command
+  * Added support for scp (#839)
+  * Add api:curl command to use the API directly
+  * Add --no-set-remote option
+  * Do not URL-encode the repository in Bitbucket API requests (#874)
+  * Added Docker setup (#841)
+  * Switch passthru to index in dev build
+  * Fix small bug in normalizeSha()
+  * Update dependencies
+  * Provide interactive choice in variable:get command
+  * Add "Enabled" (is_enabled) column in variable:list (var) command
+  * Refresh environments in welcome command
+  * Handle an existing mapped project
+  * Add --set-remote option to project:create (create) command
+  * Make machine_name available as a column in environment:list (env) command
+
+-------------------------------------------------------------------
 Fri Nov 08 23:07:57 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.49.3:
