@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:38:07 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- Changes since 19.11.90:
+  * Add compatibility with Sage based on Python3 (kde#411645)
+  * Update Appstream for new release
+  * Fix ux problem
+  * Fix minor typo
+  * Restore the cursor in the worksheet when scrolling with the mouse
+    wheel since we might be using the pointer cursor set after an
+    URL was hovered.
+  * Use preview package only instead of standalone for the preview
+    of rendered LaTeX images. standalone LaTeX package that is being
+    used now doesn't work on openSuse and maybe on some other distributions.
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:28 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Correctly restore the embedded images for mathematical formulas after
+    Escape was pressed in MarkdownEntry.
+  * Leave the markdown cell in the edit mode if the the user hits the
+    cancel/escape button.
+  * Show the pointer hand cursor when hovering over a URL in a markdown entry.
+  * Fix build with Discount (markdown support) after 4723d4c3e5ea5a16ffcceb88bd9b5576190c28f2
+  * [Sage] Fix bug with unsuitable space removing in sage output (kde#413483)
+  * Fix build with Ninja on FreeBSD.
+  * Fix problems with building cantor without LANG environment variable (kde#410802)
+  * In case the specified backend executable is not an executable, show
+    the path of the file in the warning and not the name of the backend.
+  * Don't crash when deleting a worksheet while still waiting for the input from the backend.
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:00 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  7 23:12:33 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3

@@ -16,53 +16,54 @@
 #
 
 
-%global libMAJOR 23
-%define kf5_version 5.26.0
+%global libMAJOR 24
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cantor
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Mathematics
 URL:            https://edu.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  R-base
 BuildRequires:  R-base-devel
-BuildRequires:  analitza-devel
+BuildRequires:  cmake(Analitza5)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  help2man
-BuildRequires:  karchive-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdelibs4support-devel
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  kf5-filesystem
-BuildRequires:  knewstuff-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kpty-devel
-BuildRequires:  ktexteditor-devel
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Pty)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libspectre-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
 BuildRequires:  python3-devel
-BuildRequires:  syntax-highlighting-devel
+BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libqalculate)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt5XmlPatterns)
 Recommends:     %{name}-lang
 Recommends:     maxima
 Recommends:     octave
@@ -169,7 +170,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %dir %{_kf5_plugindir}/cantor/backends
 %{_kf5_plugindir}/cantor/backends/cantor_kalgebrabackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_maximabackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_nullbackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_octavebackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_python2backend.so
 %{_kf5_plugindir}/cantor/backends/cantor_python3backend.so
