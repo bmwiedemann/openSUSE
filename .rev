@@ -60,4 +60,12 @@ kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by 
     <comment>KDE Applications 19.08.3</comment>
     <requestid>746884</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>21cb79ef9d7384df31fa7f8732f29aaa</srcmd5>
+    <version>19.12.0</version>
+    <time>1576321883</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.0</comment>
+    <requestid>756235</requestid>
+  </revision>
 </revisionlist>
