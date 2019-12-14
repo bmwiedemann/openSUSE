@@ -17,10 +17,10 @@
 
 
 %define parent libyui-ncurses-pkg
-%define so_version 10
+%define so_version 11
 
 Name:           %{parent}-doc
-Version:        2.49.1
+Version:        2.50.2
 Release:        0
 Source:         %{parent}-%{version}.tar.bz2
 
@@ -31,7 +31,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gnome
-BuildRequires:  libyui-devel >= 3.0.4
+BuildRequires:  libyui-devel >= 3.9.0
 BuildRequires:  texlive-latex
 
 Url:            http://github.com/libyui/
