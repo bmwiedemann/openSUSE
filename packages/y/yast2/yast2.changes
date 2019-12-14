@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Wed Dec  4 14:26:35 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Add backward compatible hash accessors to Resolvable which solve
+  several crashes (related to bsc#1132650 and bsc#1140037)
+- 4.2.47
+
+-------------------------------------------------------------------
+Mon Dec  2 16:27:25 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use 70-yast.conf instead of 30-yast.conf to write YaST settings
+  under /etc/sysctl.d (related to jsc#SLE-9077).
+- 4.2.46
+
+-------------------------------------------------------------------
+Fri Nov 29 13:42:50 CET 2019 - schubi@suse.de
+
+- Do not crash while reading the product info (related to
+  bsc#1132650 and bsc#1140037).
+- 4.2.45
+
+-------------------------------------------------------------------
+Thu Nov 28 17:16:51 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when no base product is found (related to
+  bsc#1132650 and bsc#1140037).
+- 4.2.44
+
+-------------------------------------------------------------------
+Thu Nov 28 11:21:31 UTC 2019 - schubi@suse.de
+
+- Using Y2Packager::Resolvable.any? and Y2Packager::Resolvable.find
+  in order to decrease the required memory (bsc#1132650,
+  bsc#1140037).
+- 4.2.43
+
+-------------------------------------------------------------------
+Thu Nov 28 10:21:31 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Network: drop support for obsolete network device types
+  (jsc#SLE-7753)
+- 4.2.42
+
+-------------------------------------------------------------------
+Wed Nov 27 10:24:28 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use /etc/login.defs.d/70-yast.defs to write login.defs
+  values that are overridden by YaST (related to bsc#1155735).
+- 4.2.41
+
+-------------------------------------------------------------------
+Tue Nov 26 12:02:18 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- add is_wsl function to detect wsl (boo#1154962)
+- 4.2.40
+
+-------------------------------------------------------------------
+Mon Nov 25 11:07:11 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- bsc#1155735, bsc#1157541:
+  - Read /usr/etc/login.defs.
+  - Write login.defs configuration to /etc/login.defs.d/.
+- 4.2.39
+
+-------------------------------------------------------------------
+Fri Nov 22 09:19:32 UTC 2019 - Michal Filka <mfilka@suse.com>
+
+- bnc#1157532
+  - do not modify /etc/sysctl.conf in inst-sys as it is on r/o
+    filesystem
+- 4.2.38
+
+-------------------------------------------------------------------
+Thu Nov 21 21:28:58 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Linuxrc: Ensure the new opened SCR instace is closed when reading
+  the /etc/install.inf file (bsc#1122493, bsc#1157476)
+- 4.2.37
+
+-------------------------------------------------------------------
+Thu Nov 21 14:04:28 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Ensure /etc/install.inf is not read from the target system but
+  from the local one. (bsc#1122493, bsc#1157476)
+- 4.2.36
+
+-------------------------------------------------------------------
+Wed Nov 20 08:32:01 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Do not try to find licenses in the installation medium when they
+  have been already downloaded from SCC (bsc#1153326).
+- 4.2.35
+
+-------------------------------------------------------------------
 Fri Nov 15 09:30:20 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix crash in upgrade caused by wrong parameter to snapper
