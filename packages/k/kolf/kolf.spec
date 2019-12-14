@@ -16,40 +16,39 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kolf
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Miniature golf game
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libkdegames-devel
-BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
@@ -74,7 +73,6 @@ Kolf is a miniature golf game by KDE.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-  rm -rf %{buildroot}/%{_kf5_libdir}/libkolfprivate.so
   %suse_update_desktop_file -r org.kde.kolf          Game SportsGame
 
 %post -p /sbin/ldconfig
@@ -89,7 +87,6 @@ Kolf is a miniature golf game by KDE.
 %{_kf5_bindir}/kolf
 %{_kf5_iconsdir}/hicolor/*/*/kolf.*
 %{_kf5_kxmlguidir}/kolf/
-%{_kf5_libdir}/libkolfprivate.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
