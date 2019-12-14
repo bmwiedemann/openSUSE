@@ -16,30 +16,29 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           poxml
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Tools for translating DocBook XML files with Gettext
 License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  antlr
 BuildRequires:  antlr-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Xml)
 
 %description
 This is a collection of tools that facilitate translating DocBook XML
