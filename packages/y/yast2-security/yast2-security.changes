@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 12 12:01:35 CET 2019 - schubi@suse.de
+
+- Added to rnc file: sys_gid_max, sys_gid_min, sys_uid_max,
+  sys_uid_min, hibernate_system, kernel.sysrq, mandatory_services,
+  net.ipv4.ip_forward, net.ipv4.tcp_syncookies,
+  net.ipv6.conf.all.forwarding (bsc#1158301).
+- 4.2.8
+
+-------------------------------------------------------------------
+Mon Nov 25 11:27:11 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- bsc#1155735, bsc#1157541:
+  - Read /usr/etc/login.defs.
+  - Write login.defs configuration to /etc/login.defs.d/.
+- 4.2.7
+
+-------------------------------------------------------------------
+Fri Nov 22 12:21:59 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Change default encryption method from DES to SHA512 (bsc#1157541,
+  CVE-2019-3700).
+- 4.2.6
+
+-------------------------------------------------------------------
 Fri Oct 18 13:06:46 CEST 2019 - schubi@suse.de
 
 - Added extra_services to security.rnc file (bsc#1153623).
