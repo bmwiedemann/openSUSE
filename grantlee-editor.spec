@@ -1,7 +1,7 @@
 #
 # spec file for package grantlee-editor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,40 +21,39 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           grantlee-editor
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  akonadi-mime-devel >= %{_kapp_version}
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  grantleetheme-devel
+BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GrantleeTheme)
+BuildRequires:  cmake(KF5IMAP)
+BuildRequires:  cmake(KF5KaddressbookGrantlee)
+BuildRequires:  cmake(KF5MessageCore)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KF5SyntaxHighlighting)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5WebEngine) >= 5.10.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
 #Only required for the icon
 BuildRequires:  kaddressbook
-BuildRequires:  karchive-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kimap-devel
 BuildRequires:  kmail-application-icons
-BuildRequires:  knewstuff-devel
-BuildRequires:  kpimtextedit-devel >= %{_kapp_version}
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libkleo
-BuildRequires:  messagelib-devel >= %{_kapp_version}
-BuildRequires:  pimcommon-devel
-BuildRequires:  pkgconfig
-BuildRequires:  syntax-highlighting-devel
-BuildRequires:  cmake(KF5KaddressbookGrantlee)
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10.0
 Requires:       kaddressbook
 Requires:       kmail-application-icons
 Recommends:     %{name}-lang
