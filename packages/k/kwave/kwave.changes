@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:39:04 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.0
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:23 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- No code change since 19.11.80
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:57 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * fixed some warnings about unnecessary temporary containers
+    (pointed out by clang)
+  * use QVector<unsigned int> instead of QList<unsigned int> for track lists.
+    This makes clang happy and is a more efficient container anyway.
+  * removed class Kwave::MemoryManager, use Kwave::SampleArray directly
+    as backend for Kwave::Stripe (which reduces complexity a lot)
+  * changed SAMPLE_INDEX_MAX to maximum value of a 32bit int (2.147.483.647),
+    minor cleanup in memory manager
+  * (minor EBN fix)
+  * fixed compiler warning about deprecated implicit assignment operator
+    (gcc-9.1)
+
+-------------------------------------------------------------------
 Thu Nov  7 23:13:28 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.3

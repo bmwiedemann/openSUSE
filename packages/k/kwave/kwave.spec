@@ -1,7 +1,7 @@
 #
 # spec file for package kwave
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwave
-Version:        19.08.3
+Version:        19.12.0
 Release:        0
 Summary:        Sound Editor designed for KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/applications/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  alsa-devel
@@ -38,20 +38,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
 BuildRequires:  flac-devel
 BuildRequires:  id3lib-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  libogg-devel
 BuildRequires:  libopus-devel
 BuildRequires:  libpulse-devel
@@ -65,11 +51,25 @@ BuildRequires:  rsvg-convert
 BuildRequires:  rsvg-view
 %endif
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(mad)
 Recommends:     %{name}-lang
 Recommends:     lame
