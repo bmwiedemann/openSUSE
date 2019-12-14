@@ -17,7 +17,7 @@
 
 
 Name:           yast2-update
-Version:        4.2.10
+Version:        4.2.12
 Release:        0
 Summary:        YaST2 - Update
 License:        GPL-2.0-only
@@ -47,8 +47,8 @@ Requires:       yast2-storage-ng >= 4.2.42
 # Y2Packager::ProductUpgrade.remove_obsolete_upgrades
 Requires:       yast2 >= 4.2.1
 Requires:       yast2-installation
-# handle bind mount at /mnt/dev
-Requires:       yast2-packager >= 4.0.61
+# product_update_summary, product_update_warning
+Requires:       yast2-packager >= 4.2.33
 # Pkg.TargetInitializeOptions()
 Requires:       yast2-pkg-bindings >= 3.1.14
 Requires:       yast2-ruby-bindings >= 1.0.0
