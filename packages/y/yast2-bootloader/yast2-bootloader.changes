@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 26 12:22:50 UTC 2019 - David Diaz <dgonzalez@suse.com>
+
+- Abort the execution when the module run without enough
+  permissions (related to bsc#1137688).
+- 4.2.13
+
+-------------------------------------------------------------------
+Wed Nov 20 16:07:58 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Improved detection of the root filesystem in non-standard
+  btrfs configurations (bsc#1151748, bsc#1124581).
+- If there is no file system mounted in "/" or "/boot", report the
+  error and quit instead of crashing.
+- 4.2.12
+
+-------------------------------------------------------------------
 Mon Sep 30 13:26:46 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Add to autoyast ability to set secure boot flag for UEFI
