@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Nov 23 07:41:42 UTC 2019 - Samu Voutilainen <smar@smar.fi>
+
+- Updated signing key to a new version used to sign the package 
+
+-------------------------------------------------------------------
+Sat Nov 23 07:38:00 UTC 2019 - Samu Voutilainen <smar@smar.fi>
+
+- Updated systemd files from upstream
+
+-------------------------------------------------------------------
+Sat Nov 23 07:31:28 UTC 2019 - Samu Voutilainen <smar@smar.fi>
+
+- Version bump to 2.4.0
+  Changes in version 2.4.0
+    * Linux: removed optional dependency on libcap-ng.
+    * Deprecated '\e' escape sequence in configuration files.
+    * Fixed incorrect username in log message when spoofing fails.
+    * Implemented XDG Base Directory specification
+        * ~/.config/oidentd.conf takes precedence over ~/.oidentd.conf
+    * Rewrote all manual pages, now licensed under GFDL v1.3+.
+    * Prevent overflow when too many replies are specified in the
+    system-wide configuration file.
+    * Rewrote INSTALL and README files.
+    * Improved PRNG interface.
+    * Changed project description.
+    * Deprecated support for MASQFILE and IPCONNTRACK on Linux.
+        * Users of recent kernels are unaffected by this change.
+    * Minor bugfixes, cleanups, and improvements.
+    * Deprecated support for Darwin.
+    * Deprecated support for FreeBSD 1-3.
+    * Deprecated support for FreeBSD 4.
+    * Deprecated support for NetBSD 1-4.
+    * Deprecated support for OpenBSD 2.0-2.3.
+    * Deprecated support for OpenBSD 2.4-2.8.
+    * Deprecated support for OpenBSD 2.9.
+    * Deprecated support for Solaris 2.4.
+    * Deprecated support for Solaris 2.5.
+    * Deprecated support for Solaris 2.6-2.7.
+    * Deprecated support for Solaris 2.8.
+  Changes in version 2.3.2
+    * Option `--forward` now implies `--masquerade`.
+    * Added a warning when the connection limit is exceeded.
+    * Added systemd services and a socket file.
+    * Added compile-time configuration to `--version` output.
+    * Linux: fixed incorrect buffer lengths when compiled with `--disable-ipv6`.
+    * Deprecated libudb (user database library) support.
+    * Linux: fixed incorrect byte order in libnetfilter_conntrack queries.
+    * Linux: fixed a null dereference with libnetfilter_conntrack on kernels
+    without a connection tracking file.
+    * Build as a position-independent executable and with stack protection.
+    * Fixed an invalid comment style in the default oidentd_masq.conf file.
+  Changes in version 2.3.1
+    * Fixed build with libnetfilter_conntrack on Linux.
+  Changes in version 2.3.0
+    * Added a forwarding capability.
+    * Added Linux IPv6 masquerading support.
+    * Added build information to `--version` output.
+    * Always use libnetfilter_conntrack when available.
+    * Fixed signed/unsigned bit shifting on Linux.
+    * Minor bugfixes.
+
+-------------------------------------------------------------------
 Tue May 29 11:40:22 UTC 2018 - astieger@suse.com
 
 - fix source URLs and some spec cleanup
@@ -20,15 +82,15 @@ Tue May 29 09:39:55 UTC 2018 - smar@smar.fi
 -------------------------------------------------------------------
 Thu Nov 23 13:46:36 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
 Sat Jan  9 14:47:57 UTC 2016 - p.drouand@gmail.com
 
-- Rename oidentd@.service to oidentd.service and hardcode variables; 
+- Rename oidentd@.service to oidentd.service and hardcode variables;
   (boo#953608)
-- Add back support for sysconfig in the service file 
+- Add back support for sysconfig in the service file
 
 -------------------------------------------------------------------
 Sun Nov  8 20:10:47 UTC 2015 - lmuelle@suse.com

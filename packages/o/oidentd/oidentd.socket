@@ -1,9 +1,12 @@
 [Unit]
-Description=Ident (RFC 1413) socket
+Conflicts=oidentd.service
+Description=RFC 1413 compliant ident socket
+Documentation=man:oidentd(8) man:oidentd.conf(5) man:oidentd_masq.conf(5)
 
 [Socket]
+Accept=true
 ListenStream=113
-Accept=yes
+PrivateDevices=true
 
 [Install]
 WantedBy=sockets.target

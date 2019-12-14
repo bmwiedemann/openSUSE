@@ -148,4 +148,12 @@
     <comment>oidentd 2.2.3</comment>
     <requestid>612847</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8282ff8243e0d9e455a76883cb0d2703</srcmd5>
+    <version>2.4.0</version>
+    <time>1576322391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756876</requestid>
+  </revision>
 </revisionlist>
