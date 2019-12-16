@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 12:57:33 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Set source and target levels to 1.6 in order to make them trickle
+  down to all its children
+
+-------------------------------------------------------------------
 Mon Apr 15 15:25:46 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Split the parent pom from package geronimo-spec to a separate

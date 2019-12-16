@@ -1,7 +1,7 @@
 #
 # spec file for package geronimo-specs-pom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,11 @@ cp -p %{SOURCE1} LICENSE
 %pom_remove_parent
 # not really useful for rpm build
 %pom_remove_plugin :maven-idea-plugin
+
+%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.6
+%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.6
+
+%pom_xpath_set "pom:reporting/pom:plugins/pom:plugin[pom:artifactId='maven-pmd-plugin']/pom:configuration/pom:targetJdk" 1.6
 
 %build
 
