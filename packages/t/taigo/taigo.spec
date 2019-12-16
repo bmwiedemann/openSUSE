@@ -1,7 +1,7 @@
 #
 # spec file for package taigo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 Name:           taigo
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        A virtual pet for your desktop
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Amusements/Games/Other
 URL:            https://github.com/Appadeia/taigo
 Source0:        %{name}-%{version}.tar.gz
+BuildRequires:  meson
+BuildRequires:  update-desktop-files
+BuildRequires:  vala
+BuildRequires:  pkgconfig(clutter-1.0)
+BuildRequires:  pkgconfig(clutter-gtk-1.0)
+BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(clutter-gtk-1.0)
-BuildRequires:  pkgconfig(clutter-1.0)
-BuildRequires:  meson
-BuildRequires:  vala
-BuildRequires:  update-desktop-files
 
 %define __rdns_name com.github.appadeia.Taigo
 

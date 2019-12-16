@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="revision">0.2</param>	  
+    <param name="revision">0.3</param>	  
     <param name="scm">git</param>
     <param name="url">https://github.com/Appadeia/taigo.git</param>
     <param name="filename">taigo</param>
