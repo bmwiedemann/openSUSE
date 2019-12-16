@@ -1,7 +1,7 @@
 #
 # spec file for package php7
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,40 +24,28 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %define debug_build       0
 %define asan_build        0
-%global apiver            20180731
-%global zendver           20180731
-%global pearver           1.10.9
+%global apiver            20190902
+%global zendver           20190902
 %define pkg_name          php7
 %define extension_dir     %{_libdir}/%{pkg_name}/extensions
-%define peardir           %{_datadir}/%{pkg_name}/PEAR
 %define php_sysconf       %{_sysconfdir}/%{pkg_name}
 %define build_firebird 0%{?is_opensuse}
-%define build_sodium 0
-%if %{?suse_version} > 1320
 %define build_sodium 1
-%endif
-%define system_gd 0
-# for openSUSE 42.3 is newer gd linked in devel:languages:php,
-# see bsc#1074025
-%if 0%{?is_opensuse} || %{?suse_version} >= 1500
-%define system_gd 1
-%endif
 %define build_argon2 0
 %if %{?suse_version} >= 1500
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.3.11
+Version:        7.4.0
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
 Group:          Development/Languages/Other
 URL:            https://secure.php.net
 Source0:        https://secure.php.net/distributions/php-%{version}.tar.xz
-Source1:        php-suse-addons.tar.bz2
+Source1:        mod_%{pkg_name}.conf
 Source5:        README.macros
 Source6:        macros.php
 Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
@@ -71,7 +59,7 @@ Patch3:         php-ini.patch
 Patch4:         php-no-build-date.patch
 Patch5:         php-pts.patch
 Patch6:         php-openssl.patch
-Patch7:         php-systzdata-v18.patch
+Patch7:         php-systzdata-v19.patch
 Patch8:         php-systemd-unit.patch
 Patch10:        php-embed.patch
 ## Bugfix patches
@@ -87,6 +75,10 @@ Patch14:        php-odbc-cmp-int-cast.patch
 Patch15:        php-fix_net-snmp_disable_MD5.patch
 # should be upstreamed, will do later
 Patch17:        php-date-regenerate-lexers.patch
+# PATCH-FIX-UPSTREAM https://bugs.php.net/bug.php?id=78823
+Patch18:        php-fix-mysqlnd-compression-library.patch
+# PATCH-FIX-UPSTREAM https://bugs.php.net/bug.php?id=78889
+Patch19:        php-fpm-service-fails-to-start.patch
 BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
@@ -99,6 +91,7 @@ BuildRequires:  db-devel
 BuildRequires:  freetds-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
+BuildRequires:  gd-devel
 BuildRequires:  gmp-devel
 BuildRequires:  gpg2
 BuildRequires:  krb5-devel
@@ -113,6 +106,7 @@ BuildRequires:  libtidy-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt-devel
+BuildRequires:  libzip-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
@@ -128,9 +122,12 @@ BuildRequires:  unixODBC-devel
 BuildRequires:  update-alternatives
 BuildRequires:  xz
 BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(oniguruma)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(zlib)
 Requires:       timezone
+Requires(pre):  group(www)
+Requires(pre):  user(wwwrun)
 Recommends:     php-ctype
 Recommends:     php-dom
 Recommends:     php-iconv
@@ -146,7 +143,6 @@ Suggests:       php7-gd
 Suggests:       php7-gettext
 Suggests:       php7-mbstring
 Suggests:       php7-mysql
-Suggests:       php7-pear
 %if %{without test}
 ## Provides
 Provides:       php = %{version}
@@ -173,31 +169,14 @@ Obsoletes:      php7-mcrypt
 %endif
 %if %{build_firebird}
 # firebird-devel was merged into libfbclient2-devel for firebird 3
-%if 0%{?suse_version} <= 1320
 BuildRequires:  firebird-devel
 BuildRequires:  libfbclient2-devel
-%else
-BuildRequires:  libfbclient-devel
-%endif
-%endif
-%if %{system_gd}
-BuildRequires:  gd-devel
-%else
-BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(xft)
 %endif
 %if %{build_sodium}
 BuildRequires:  libsodium-devel
 %endif
 %if %{build_argon2}
 BuildRequires:  pkgconfig(libargon2)
-%endif
-%if 0%{?suse_version} >= 1315
-BuildRequires:  libzip-devel
-%endif
-%if 0%{?suse_version} > 1320
-Requires(pre):  group(www)
-Requires(pre):  user(wwwrun)
 %endif
 
 %description
@@ -218,15 +197,11 @@ Summary:        PHP7 development files for C/C++ extensions
 # this is required by the installed  development headers
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
-# this is needed for "pecl" functionality
-Requires:       autoconf
-Requires:       automake
 Requires:       glibc-devel
-Requires:       libtool
 Requires:       libxml2-devel
 Requires:       pcre2-devel
 Requires:       php7-pear
-Provides:       pecl = %{version}
+Requires:       php7-pecl
 Provides:       php-devel = %{version}
 Obsoletes:      php5-devel
 
@@ -237,34 +212,13 @@ programming language.
 
 This package contains the C headers to build PHP extensions.
 
-%package pear
-Summary:        PHP Extension and Application Repository
-Group:          Development/Libraries/PHP
-Requires:       %{name}-zlib = %{version}
-Provides:       php-pear = %{pearver}
-Provides:       php-pear(PEAR) = %{pearver}
-%if 0%{?suse_version} <= 1330
-Provides:       php7-pear-Archive_Tar
-%else
-Obsoletes:      php7-pear-Archive_Tar
-%endif
-Obsoletes:      php5-pear
-BuildArch:      noarch
-
-%description pear
-PEAR is a code repository for PHP extensions and PHP library code
-similar to TeX's CTAN and Perl's CPAN. This package provides an access
-to the repository.
-
-See https://pear.php.net/manual for more details.
-
 %package -n apache2-mod_php7
 Summary:        PHP7 module for the Apache 2.x webserver
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{apache_mmn}
 Requires:       %{name} = %{version}
 Requires:       apache2-prefork
-PreReq:         apache2
+Requires(pre):  apache2
 Provides:       mod_php_any = %{version}
 Provides:       php-date = %{version}
 Provides:       php-filter = %{version}
@@ -309,9 +263,6 @@ works, have a look at the Introductory tutorial. Once you get beyond
 that have a look at the example archive sites and some of the other
 resources available in the links section.
 
-Please refer to %{_docdir}/php7/README.FastCGI for
-information on how to use this module.
-
 %package fpm
 Summary:        FastCGI Process Manager PHP7 Module
 Group:          Development/Libraries/PHP
@@ -328,7 +279,7 @@ Provides:       php-simplexml = %{version}
 Provides:       php-spl = %{version}
 Provides:       php-xml = %{version}
 Obsoletes:      php5-fpm
-%{systemd_requires}
+%systemd_requires
 
 %description fpm
 PHP is a server-side, cross-platform HTML embedded scripting language.
@@ -336,9 +287,6 @@ If you are completely new to PHP and want to get some idea of how it
 works, have a look at the Introductory tutorial. Once you get beyond
 that have a look at the example archive sites and some of the other
 resources available in the links section.
-
-Please refer to %{_docdir}/php7/README.FastCGI for
-information on how to use this module.
 
 %package embed
 Summary:        Embedded SAPI Library
@@ -451,7 +399,7 @@ and every definition of "just working."
 Summary:        EXIF metadata extensions for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-mbstring = %{version}
+Requires:       php-mbstring = %{version}
 Provides:       php-exif = %{version}
 Obsoletes:      php5-exif
 
@@ -477,7 +425,7 @@ libmagic to heuristically determine this.
 Summary:        FTP protocol support for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-openssl = %{version}
+Requires:       php-openssl = %{version}
 Provides:       php-ftp = %{version}
 Obsoletes:      php5-ftp
 
@@ -561,7 +509,7 @@ data-interchange format.
 Summary:        LDAP protocol support for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-openssl = %{version}
+Requires:       php-openssl = %{version}
 Provides:       php-ldap = %{version}
 Obsoletes:      php5-ldap
 
@@ -586,8 +534,10 @@ single-byte encodings for convenience.
 Summary:        MySQL database client for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-pdo = %{version}
+Requires:       php-pdo = %{version}
 Provides:       php-mysql = %{version}
+Provides:       php-mysqli = %{version}
+Provides:       php-pdo_mysql = %{version}
 Provides:       php_any_db = %{version}
 Obsoletes:      php5-mysql
 
@@ -599,7 +549,7 @@ PHP functions for access to MySQL database servers.
 Summary:        Firebird database client for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-pdo = %{version}
+Requires:       php-pdo = %{version}
 Provides:       php-firebird = %{version}
 Provides:       php_any_db = %{version}
 Obsoletes:      php5-firebird
@@ -612,7 +562,7 @@ PHP functions for access to firebird database servers.
 Summary:        ODBC extension for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-pdo = %{version}
+Requires:       php-pdo = %{version}
 Provides:       php-odbc = %{version}
 Provides:       php-pdo_odbc = %{version}
 Obsoletes:      php5-odbc
@@ -698,7 +648,8 @@ it does not rewrite SQL or emulate missing features.
 Summary:        PostgreSQL database client for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-pdo = %{version}
+Requires:       php-pdo = %{version}
+Provides:       php-pdo_pgsql = %{version}
 Provides:       php-pgsql = %{version}
 Provides:       php_any_db = %{version}
 Obsoletes:      php5-pgsql
@@ -797,7 +748,8 @@ signatures, password hashing and more.
 Summary:        SQLite database client for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-pdo = %{version}
+Requires:       php-pdo = %{version}
+Provides:       php-pdo_sqlite = %{version}
 Provides:       php-sqlite = %{version}
 Obsoletes:      php5-sqlite
 
@@ -872,19 +824,6 @@ embedded in the Zend Engine. Using these functions you may write your
 own PHP source analyzing or modification tools without having to deal
 with the language specification at the lexical level.
 
-%package wddx
-Summary:        WDDX support for PHP
-Group:          Development/Libraries/PHP
-Requires:       %{name} = %{version}
-Provides:       php-wddx = %{version}
-Obsoletes:      php5-wddx
-
-%description wddx
-PHP functions for working with WDDX - Web Distributed Data Exchange,
-a programming language-, platform- and transport-neutral data
-interchange mechanism designed to pass data between different
-environments and different computers.
-
 %package xmlrpc
 Summary:        XML RPC support for PHP
 Group:          Development/Libraries/PHP
@@ -899,7 +838,7 @@ This module adds XMLRPC-EPI support.
 Summary:        PHP7 Extension Module
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-dom = %{version}
+Requires:       php-dom = %{version}
 Provides:       php-xsl = %{version}
 Obsoletes:      php5-xsl
 
@@ -912,7 +851,7 @@ library
 Summary:        Streaming XML reader extension for PHP
 Group:          Development/Libraries/PHP
 Requires:       %{name} = %{version}
-Requires:       %{name}-dom = %{version}
+Requires:       php-dom = %{version}
 Provides:       php-xmlreader = %{version}
 Obsoletes:      php5-xmlreader
 
@@ -959,7 +898,7 @@ files, too, but not with sockets).
 
 %prep
 echo %{apache_mmn}
-%setup -q -n php-%{version} -a 1
+%setup -q -n php-%{version}
 cp %{SOURCE5} .
 
 %patch0
@@ -975,6 +914,8 @@ cp %{SOURCE5} .
 %patch14 -p1
 %patch15
 %patch17 -p1
+%patch18
+%patch19 -p1
 
 # Safety check for API version change.
 vapi=`sed -n '/#define PHP_API_VERSION/{s/.* //;p}' main/php.h`
@@ -987,12 +928,6 @@ vzend=`sed -n '/#define ZEND_MODULE_API_NO/{s/^[^0-9]*//;p;}' Zend/zend_modules.
 if test "x${vzend}" != "x%{zendver}"; then
     : Error: Upstream Zend ABI version is now ${vzend}, expecting %{zendver}.
     : Update the zendver macro and rebuild.
-    exit 1
-fi
-vpear=`sed -n 's/.*=>.*PEAR-\(.*\)\.tar.*/\1/p' pear/install-pear-nozlib.phar`
-if test "x${vpear}" != "x%{pearver}"; then
-    : Error: Upstream PEAR version is now ${vpear}, expecting %{pearver}.
-    : Update the pearver macro and rebuild.
     exit 1
 fi
 
@@ -1039,10 +974,7 @@ export CXXFLAGS
 export LDFLAGS="-pie"
 export NO_INTERACTION=true
 # where to install extensions
-EXTENSION_DIR=%{extension_dir}
-export EXTENSION_DIR
-export PHP_MYSQLND_ENABLED=yes
-export PHP_MYSQLND_COMPRESSION_SUPPORT=yes
+export EXTENSION_DIR=%{extension_dir}
 # Fix build-cli for %arm and aarch64
 export LIBS=-ltinfo
 
@@ -1060,9 +992,9 @@ Build()
         --sysconfdir=%{php_sysconf}/$sapi \
         --with-config-file-path=%{php_sysconf}/$sapi \
         --with-config-file-scan-dir=%{php_sysconf}/conf.d \
-        --enable-libxml \
+        --with-libxml \
         --enable-session \
-        --with-pcre-regex=%{_usr} \
+        --with-external-pcre \
         --enable-xml \
         --enable-simplexml \
         --enable-filter \
@@ -1071,19 +1003,17 @@ Build()
         --disable-rpath \
         --disable-static \
         --enable-shared \
+        --enable-mysqlnd \
         --with-pic \
         --with-gnu-ld \
         --enable-re2c-cgoto \
         --with-system-tzdata=%{_datadir}/zoneinfo \
-        --enable-hash \
         --with-mhash \
-        --enable-phpdbg=no \
+        --disable-phpdbg \
 %if %{build_sodium}
         --with-sodium=shared \
 %endif
-%if 0%{?suse_version} >= 1320
-        --with-libzip \
-%endif
+        --with-zip=shared \
 %if %{build_argon2}
         --with-password-argon2=%{_usr} \
 %endif
@@ -1108,7 +1038,7 @@ Build()
            -e 's/\(^EXTRA_LIBS =.*\)/\1 -lasan/' \
            Makefile
 %endif
-    make %{?_smp_mflags} PHP_PEAR_PHP_BIN=%{_bindir}/php}
+    make %{?_smp_mflags}
     popd
 }
 
@@ -1121,9 +1051,6 @@ Build apache2 \
 
 # fast-cgi sapi
 Build fastcgi \
-    --enable-force-cgi-redirect \
-    --disable-discard-path \
-    --enable-fastcgi \
     --bindir=%{_bindir} \
     --disable-cli \
     --disable-all
@@ -1131,6 +1058,8 @@ Build fastcgi \
 Build fpm \
     --with-fpm-systemd \
     --enable-fpm \
+    --with-fpm-user=wwwrun \
+    --with-fpm-group=www \
     --bindir=%{_bindir} \
     --disable-cli \
     --disable-all \
@@ -1143,7 +1072,6 @@ Build embed \
 
 Build cli \
     --enable-cli \
-    --with-pear=%{peardir} \
     --enable-bcmath=shared \
     --enable-calendar=shared \
     --enable-ctype=shared \
@@ -1161,40 +1089,30 @@ Build cli \
     --enable-sysvsem=shared \
     --enable-sysvshm=shared \
     --enable-tokenizer=shared \
-    --enable-wddx=shared \
     --enable-fileinfo=shared \
     --with-zlib=shared \
     --with-bz2=shared \
     --with-curl=shared \
-%if %{system_gd}
-    --with-gd=shared,%{_usr} \
-%else
-    --with-gd=shared \
-%endif
-    --enable-gd-native-ttf \
-    --with-xpm-dir=%{_usr} \
-    --with-freetype-dir=%{_usr} \
-    --with-png-dir=%{_usr} \
-    --with-jpeg-dir=%{_usr} \
-    --with-zlib-dir=%{_usr} \
+    --enable-gd=shared \
+    --with-external-gd \
+    --with-xpm \
+    --with-freetype \
+    --with-jpeg \
     --with-gettext=shared \
     --with-gmp=shared \
     --with-iconv=shared \
     --with-kerberos \
     --enable-json=shared \
     --with-ldap=shared \
-    --with-ldap-sasl=%{_usr} \
-    --with-libedit=shared,%{_usr} \
-%if %{build_firebird}
-    --with-interbase=shared \
-%endif
-    --with-mysql-sock=%{_localstatedir}/run/mysql/mysql.sock \
+    --with-ldap-sasl \
+    --with-libedit=shared \
+    --with-mysql-sock=%{_rundir}/mysql/mysql.sock \
     --with-mysqli=shared,mysqlnd \
     --with-unixODBC=shared,%{_usr} \
     --with-openssl=shared \
     --with-pgsql=shared,%{_usr} \
     --enable-phar=shared \
-    --with-enchant=shared,%{_usr} \
+    --with-enchant=shared \
     --with-snmp=shared \
     --with-xmlrpc=shared \
     --enable-xmlreader=shared \
@@ -1207,16 +1125,16 @@ Build cli \
     --without-gdbm \
     --with-cdb \
     --enable-pdo=shared \
-    --with-pdo_sqlite=shared,%{_usr} \
-    --with-sqlite3=shared,%{_usr} \
+    --with-pdo-sqlite=shared \
+    --with-sqlite3=shared \
     --with-pdo-mysql=shared,mysqlnd \
 %if %{build_firebird}
     --with-pdo-firebird=shared \
 %endif
     --with-pdo-pgsql=shared,%{_usr} \
     --with-pdo-odbc=shared,unixODBC,%{_usr} \
-    --enable-zip=shared \
-    --enable-intl=shared,%{_usr} \
+    --with-zip=shared \
+    --enable-intl=shared \
     --disable-cgi
 
 %check
@@ -1230,7 +1148,7 @@ pushd build-cli
 export NO_INTERACTION=1 REPORT_EXIT_STATUS=1 LANG=POSIX LC_ALL=POSIX
 unset TZ
 # We save results for further investigation for QA
-make test | tee testresults.txt || true
+make -j1 test | tee testresults.txt || true
 set +x
 for f in `find .. -name "*.diff" -type f -print`; do
     echo "TEST FAILURE: $f --"
@@ -1251,12 +1169,10 @@ if [ -z "$(ldd sapi/cli/php | grep libcrypt.so)" ]; then
 fi
 
 # check if we link against system libgd
-%if %{system_gd}
 if [ -z "$(ldd modules/gd.so | grep libgd.so)" ]; then
     echo 'php-gd does not link against system libgd.'
     exit 1
 fi
-%endif
 popd
 
 # Apache HTTPD runnable examples tests
@@ -1264,14 +1180,12 @@ popd
 
 %install
 %if !%{with test}
-export PHP_PEAR_METADATA_DIR=%{peardir}
-export PHP_PEAR_CACHE_DIR=%{_localstatedir}/cache/pear
 
 # install function
 Install()
 {
     pushd build-$1
-    make install INSTALL_ROOT=%{buildroot} PHP_PEAR_PHP_BIN=%{_bindir}/php
+    make install INSTALL_ROOT=%{buildroot}
     popd
 }
 
@@ -1294,7 +1208,6 @@ sed "s=@extdir@=%{extension_dir}=" php.ini-production | sed -r 's/^(html_errors|
 sed "s=@extdir@=%{extension_dir}=" php.ini-production > %{buildroot}/%{php_sysconf}/fastcgi/php.ini
 
 # prepare configuration files for each extension
-extern_modules=""
 for f in %{buildroot}%{extension_dir}/*; do
     if test ${f##*.} = a; then
         rm $f
@@ -1304,7 +1217,6 @@ for f in %{buildroot}%{extension_dir}/*; do
         f=${f%.so}
     fi
     ext=${f##*/}
-    extern_modules="$extern_modules $ext"
     echo "; comment out next line to disable $ext extension in php" > %{buildroot}/%{php_sysconf}/conf.d/$ext.ini
     zend_=''
     if [ $ext == "opcache" ]; then
@@ -1313,22 +1225,11 @@ for f in %{buildroot}%{extension_dir}/*; do
     fi
     echo "${zend_}extension=$ext.so" >> %{buildroot}/%{php_sysconf}/conf.d/$ext.ini
 done
-# list of builtin modules
-builtin_modules=`./build-cli/sapi/cli/php -m | grep -E -v '^(\[.*)?$' | sort | tr '\n' ' '`
-# update readme
-sed "s=@EXTERN_MODULES@=$extern_modules=;s=@BUILTIN_MODULES@=$builtin_modules=" php-suse-addons/README.SUSE > README.SUSE
 # apache configuration
 mkdir -p %{buildroot}%{apache_sysconfdir}/conf.d
-install -m 644 php-suse-addons/sysconfig.apache2 %{buildroot}/%{apache_sysconfdir}/conf.d/%{pkg_name}.conf
+install -m 644 %{SOURCE1} %{buildroot}/%{apache_sysconfdir}/conf.d/%{pkg_name}.conf
 # directory for sessions
 install -d %{buildroot}%{_localstatedir}/lib/%{pkg_name}
-# documentation
-mv sapi/cli/README README.CLI
-mv sapi/cgi/README.FastCGI README.FastCGI
-rm -rf %{buildroot}/{.channels,.depdb*,.filemap,.lock,usr/bin/peardev}
-install -dm 0755 %{buildroot}/%{peardir}/test
-# for pear cache and XML files
-install -dm 0755 %{buildroot}%{_localstatedir}/{cache,lib}/pear
 # provide compat symlink
 mkdir -p %{buildroot}/srv/www/cgi-bin
 ln -s %{_bindir}/php-cgi %{buildroot}/srv/www/cgi-bin/php
@@ -1380,7 +1281,6 @@ fi
 
 %post embed -p /sbin/ldconfig
 %postun embed -p /sbin/ldconfig
-
 %postun -n apache2-mod_php7
 # request restart apache instanaces (which loaded php7) after apache2-mod_php7 package update
 if [ $1 -eq 1 ]; then
@@ -1390,14 +1290,13 @@ fi
 %posttrans -n apache2-mod_php7
 # restart apache instances which have this module after zypper or rpm transaction, if not
 # have restarted already in other posttrans
-%apache_restart_if_needed
+%{apache_restart_if_needed}
 %endif
 
 %if !%{with test}
 %files
 %license LICENSE
-%doc README* CODING_STANDARDS CREDITS EXTENSIONS NEWS UPGRADING
-%doc php-suse-addons/test.php5
+%doc README.md CODING_STANDARDS.md EXTENSIONS NEWS UPGRADING CONTRIBUTING.md README.REDIST.BINS UPGRADING.INTERNALS
 %{_mandir}/man1/*
 %dir %{php_sysconf}
 %dir %{php_sysconf}/conf.d
@@ -1415,16 +1314,8 @@ fi
 %{_includedir}/%{pkg_name}
 %{_bindir}/phpize
 %{_bindir}/php-config
-%{_bindir}/pecl
 %{_datadir}/%{pkg_name}/build
 %config %{_sysconfdir}/rpm/macros.php
-
-%files pear
-%{_bindir}/pear
-%config(noreplace) %{php_sysconf}/cli/pear.conf
-%{peardir}
-%dir %{_localstatedir}/cache/pear
-%dir %{_localstatedir}/lib/pear
 
 %files fastcgi
 %{_bindir}/php-cgi
@@ -1438,7 +1329,7 @@ fi
 %config %{php_sysconf}/fpm/php-fpm.conf.default
 %dir %{php_sysconf}/fpm/php-fpm.d
 %config %{php_sysconf}/fpm/php-fpm.d/www.conf.default
-%{_mandir}/man8/php-fpm.8.gz
+%{_mandir}/man8/php-fpm.8%{?ext_man}
 %{_sbindir}/rcphp-fpm
 %dir %{_datadir}/%{pkg_name}/fpm
 %{_datadir}/%{pkg_name}/fpm/status.html
@@ -1537,8 +1428,6 @@ fi
 
 %if %{build_firebird}
 %files firebird
-%{extension_dir}/interbase.so
-%config(noreplace) %{php_sysconf}/conf.d/interbase.ini
 %{extension_dir}/pdo_firebird.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_firebird.ini
 %endif
@@ -1632,10 +1521,6 @@ fi
 %files tokenizer
 %{extension_dir}/tokenizer.so
 %config(noreplace) %{php_sysconf}/conf.d/tokenizer.ini
-
-%files wddx
-%{extension_dir}/wddx.so
-%config(noreplace) %{php_sysconf}/conf.d/wddx.ini
 
 %files xmlrpc
 %{extension_dir}/xmlrpc.so

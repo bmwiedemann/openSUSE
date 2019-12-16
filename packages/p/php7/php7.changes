@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:24:53 UTC 2019 - pgajdos@suse.com
+
+- php7-devel requires glibc-devel, libxml2-devel, pcre2-devel
+  again
+
+-------------------------------------------------------------------
+Thu Dec  5 09:27:35 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- relax systemd restrictions for FPM as they were too strict in
+  some applications
+- change leftover Requires php7-<extension> to php-<extension>
+- remove external libraries from -devel subpackage
+- added patches
+  + php-fpm-service-fails-to-start.patch
+
+-------------------------------------------------------------------
+Thu Nov 28 10:16:27 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 7.4.0:
+  * Typed Properties
+  * Arrow Functions
+  * Limited Return Type Covariance and Argument Type Contravariance
+  * Unpacking Inside Arrays
+  * Numeric Literal Separator
+  * Weak References
+  * Allow Exceptions from __toString()
+  * Opcache Preloading
+  * The interbase and wddx extensions are removed and now
+    available through PECL
+  * PEAR is now packaged separately in php7-pear source package
+    (https://externals.io/message/103977)
+  * See https://www.php.net/ChangeLog-7.php#7.4.0 for a complete
+    list of changes
+- deleted patches
+  - php-suse-addons.tar.bz
+  - php-systzdata-v18.patch
+- added patches
+  + php-fix-mysqlnd-compression-library.patch
+  + php-systzdata-v19.patch
+  + mod_php7.conf
+- modified files/patches
+  % php-no-build-date.patch
+  % php-systemd-unit.patch
+  % php7.keyring (use keys of the PHP-7.4 release managers)
+  % php7.rpmlintrc
+  
+-------------------------------------------------------------------
 Tue Nov 12 13:09:18 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not add the generic provides to the php7-test package.

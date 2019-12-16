@@ -5,6 +5,7 @@ Add support for use of the system timezone database, rather
 than embedding a copy.  Discussed upstream but was not desired.
 
 History:
+r19: fix minor compilation issue
 r18: adapt for autotool change in 7.3.3RC1
 r17: adapt for timelib 2018.01 (in 7.3.2RC1)
 r16: adapt for timelib 2017.06 (in 7.2.3RC1)
@@ -265,7 +266,7 @@ diff -up php-7.3.3RC1/ext/date/lib/parse_tz.c.systzdata php-7.3.3RC1/ext/date/li
 +        hash = tz_hash(name);
 +        i = malloc(sizeof *i);
 +        memcpy(i->code, code, 2);
-+        strncpy(i->name, name, sizeof i->name);
++        strncpy(i->name, name, sizeof(i->name) - 1);
 +        i->comment = strdup(comment);
 +        i->longitude = longitude;
 +        i->latitude = latitude;

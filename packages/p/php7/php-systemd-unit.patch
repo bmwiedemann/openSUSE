@@ -1,8 +1,8 @@
-Index: php-7.1.1/sapi/fpm/php-fpm.service.in
+Index: php-7.4.0RC6/sapi/fpm/php-fpm.service.in
 ===================================================================
---- php-7.1.1.orig/sapi/fpm/php-fpm.service.in	2017-02-13 16:20:23.157202901 +0100
-+++ php-7.1.1/sapi/fpm/php-fpm.service.in	2017-02-13 16:22:31.527501287 +0100
-@@ -5,13 +5,15 @@
+--- php-7.4.0RC6.orig/sapi/fpm/php-fpm.service.in	2019-11-19 11:33:35.195960137 +0100
++++ php-7.4.0RC6/sapi/fpm/php-fpm.service.in	2019-11-19 11:35:45.588688471 +0100
+@@ -5,10 +5,10 @@
  [Unit]
  Description=The PHP FastCGI Process Manager
  After=network.target
@@ -13,9 +13,4 @@ Index: php-7.1.1/sapi/fpm/php-fpm.service.in
 -PIDFile=@EXPANDED_LOCALSTATEDIR@/run/php-fpm.pid
  ExecStart=@EXPANDED_SBINDIR@/php-fpm --nodaemonize --fpm-config @EXPANDED_SYSCONFDIR@/php-fpm.conf
  ExecReload=/bin/kill -USR2 $MAINPID
-+ExecStop=/bin/kill -QUIT $MAINPID
- PrivateTmp=true
-+KillMode=mixed
  
- [Install]
- WantedBy=multi-user.target
