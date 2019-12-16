@@ -63,4 +63,18 @@
     <comment>Update and sec patch</comment>
     <requestid>727274</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>372798af7154b4b051f98c47d094f691</srcmd5>
+    <version>1.3.4</version>
+    <time>1576513577</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(zlib) BuildRequires: this is only needed on
+  win32/mingw (and even there it rather seems like working around a
+  bug in some other package, as there is no explicit call to zlib
+  functions).
+
+  * Added CVE-2019-15784.patch
+- Update to version 1.3.4:</comment>
+    <requestid>756849</requestid>
+  </revision>
 </revisionlist>
