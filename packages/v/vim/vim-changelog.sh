@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 directory=http://ftp.vim.org/pub/vim/patches
-version=8.1
+version=8.2
 
 echo "Updated to version $version.$(echo $2 | sed 's/^*//'), fixes the following problems"
 for i in {$1..$2}; do

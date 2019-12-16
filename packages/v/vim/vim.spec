@@ -16,10 +16,10 @@
 #
 
 
-%define pkg_version 8.1
-%define patchlevel 2383
+%define pkg_version 8.2
+%define patchlevel 0000
 %define patchlevel_compact %{patchlevel}
-%define VIM_SUBDIR vim81
+%define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
 %define make make VIMRCLOC=%{_sysconfdir} VIMRUNTIMEDIR=%{_datadir}/vim/current MAKE="make -e" %{?_smp_mflags}
 %bcond_without python2
@@ -90,7 +90,7 @@ Requires:       vim-data-common = %{version}-%{release}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     vim-data = %{version}-%{release}
-Conflicts:      vim-base < 8.1
+Conflicts:      vim-base < 8.2
 Provides:       vi
 Provides:       vim-base = %{version}-%{release}
 Provides:       vim-enhanced = %{version}-%{release}
@@ -138,7 +138,7 @@ Requires:       gvim_client
 Requires:       vim-data = %{version}-%{release}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Conflicts:      gvim < 8.1
+Conflicts:      gvim < 8.2
 Provides:       gvim-base = %{version}-%{release}
 Provides:       gvim-enhanced = %{version}-%{release}
 Obsoletes:      gvim-base < %{version}-%{release}
@@ -356,8 +356,8 @@ mkdir -p %{buildroot}%{_localstatedir}/run/vi.recover
 %fdupes -s %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/tutor
 %fdupes -s %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/ftplugin
 
-sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/vim81/tools/*.pl
-sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/vim81/doc/vim2html.pl
+sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/tools/*.pl
+sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/doc/vim2html.pl
 
 %check
 # vim does quite an extensive test relying on a full fledged terminal

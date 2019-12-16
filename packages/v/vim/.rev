@@ -4182,4 +4182,26 @@ always built-in because vim has direct perl dependencies anyway.
   * 'noesckeys' test fails in GUI.</comment>
     <requestid>753275</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>e6f5ede993606f9d4d37b001440b2096</srcmd5>
+    <version>8.2.0000</version>
+    <time>1576505938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.2.0000
+ * make depend&quot; does not work correctly for libvterm.
+ * Crash when calling popup_close() in win_execute()
+ * With a long file name the hit-enter prompt appears.
+ * bufnr('$') is wrong after recycling popup buffer.
+ * loading menus sets v:errmsg.
+ * popup menu flickers if an info popup is used.
+ * Crash when evaluating expression with error.
+ * Function argument copied unnecessarily.
+ * syntax menu and build instructions outdated.
+ * matchadd_conceal test fails under valgrind.
+ * :cexpr does not handle | in expression.
+ * Use // comments where appropriate.
+ * 'wincolor' is not used for 'listchars'.
+ * Opening cmdline window with feedkeys() does not work.</comment>
+    <requestid>756787</requestid>
+  </revision>
 </revisionlist>
