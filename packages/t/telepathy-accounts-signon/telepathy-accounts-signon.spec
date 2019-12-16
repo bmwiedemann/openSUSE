@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-accounts-signon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           telepathy-accounts-signon
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        A mission control plugin for Telepathy
 License:        LGPL-2.1-or-later

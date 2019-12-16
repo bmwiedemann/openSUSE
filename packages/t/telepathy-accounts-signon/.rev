@@ -18,4 +18,12 @@
 - Fix the license tag. telepathy-accounts-signon is LGPL-2.1-or-later</comment>
     <requestid>738848</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>846b662ecbe7ff8b9d989feebdb00054</srcmd5>
+    <version>2.1</version>
+    <time>1576513596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756988</requestid>
+  </revision>
 </revisionlist>
