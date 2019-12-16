@@ -683,4 +683,12 @@
 - Rebase python38.patch</comment>
     <requestid>736029</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>cabff1e2200d0b1fc85b032f90156279</srcmd5>
+    <version>4.6.7</version>
+    <time>1576513584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756868</requestid>
+  </revision>
 </revisionlist>

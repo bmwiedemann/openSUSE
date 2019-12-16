@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kombu
-Version:        4.6.5
+Version:        4.6.7
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
 URL:            https://github.com/celery/kombu
 Source:         https://files.pythonhosted.org/packages/source/k/kombu/kombu-%{version}.tar.gz
-Patch0:         python38.patch
 BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module Pyro4}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module amqp >= 2.5.1}
+BuildRequires:  %{python_module amqp >= 2.5.2}
 BuildRequires:  %{python_module boto3 >= 1.4.4}
 BuildRequires:  %{python_module case >= 1.5.2}
 BuildRequires:  %{python_module fakeredis}
@@ -38,12 +37,12 @@ BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pycurl >= 7.43.0.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module redis >= 3.2.0}
+BuildRequires:  %{python_module redis >= 3.3.11}
 BuildRequires:  %{python_module setuptools >= 20.6.7}
 BuildRequires:  %{python_module zstandard}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-amqp >= 2.5.1
+Requires:       python-amqp >= 2.5.2
 Requires:       python-importlib-metadata >= 0.18
 Requires:       python-setuptools
 Recommends:     python-PyYAML >= 3.10
@@ -66,7 +65,6 @@ provide proven and tested solutions to common messaging problems.
 
 %prep
 %setup -q -n kombu-%{version}
-%patch0 -p1
 # pinned dependencies are bad
 sed -i -e 's:==:>=:g' requirements/*.txt requirements/extras/*.txt
 
@@ -82,7 +80,7 @@ sed -i -e 's:==:>=:g' requirements/*.txt requirements/extras/*.txt
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS Changelog FAQ README.rst THANKS TODO
+%doc AUTHORS FAQ README.rst THANKS TODO
 %{python_sitelib}/kombu
 %{python_sitelib}/kombu-%{version}-py%{py_ver}.egg-info
 
