@@ -56,4 +56,45 @@
 </comment>
     <requestid>693340</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e5f921beb2e553aee203e80a86e02d7</srcmd5>
+    <version>2.2.0</version>
+    <time>1576505992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0
+  * Stream all audio files using the transfer by range
+  * Allow to stream M4A and M4B files
+  * Bug fixing
+  * Manage failure of renewable subscription
+  * Cache the response of AVTransport::GetPositionInfo
+  * New API to handle the global system.
+  * Pooling of event subscriptions.
+  * Pooling of available zone players.
+  * Allow to bypass the SSDP discovery by passing the url of a
+    SONOS device
+  * Fix missing search categories for the services without
+    presentation map
+  * Fix a bug in service registration (PocketCasts and problaly few
+    others)
+  * Support actions to control loudness
+  * Workaround Spotify BUG using locale en_GB
+  * Support for output fixed
+  * Improvements
+  * Improves the extractor of cover art from ogg files
+  * Minor fixes
+  * Allow to stream media file OGG/Vorbis
+  * Fix language range to be compliant with RFC-4647 (Issue with
+    Spotify services)
+  * Improvements
+  * Fix the build with MSVC 2017
+  * Refactor inet socket
+  * Use multicast UDP packet as fallback when discovering
+  * Fix to work around multicast filtering when discovering devices
+    (i.e Google WIFI and probably many others)
+  * Fix MSVC build
+  * Minor improvements
+- Add %license and %doc to spec file
+</comment>
+    <requestid>757209</requestid>
+  </revision>
 </revisionlist>
