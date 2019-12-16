@@ -824,4 +824,12 @@
     <comment>Fixed SpyderX calibration issue when using 32-bit ArgyllCMS executables</comment>
     <requestid>755003</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>431e667b99e180b73dc4206dd15b3acb</srcmd5>
+    <version>3.8.9.3</version>
+    <time>1576505958</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.8.9.3</comment>
+    <requestid>757086</requestid>
+  </revision>
 </revisionlist>
