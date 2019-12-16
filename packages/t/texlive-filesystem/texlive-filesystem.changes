@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 13 14:12:29 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Simply use rm(1) for the cron job of texlive as all files below
+  /var/cache/texmf/ belong to texlive and only root can write and
+  remove those files (bsc#1158910). All other users do create their
+  own files below ~/.cache/texmf/
+
+-------------------------------------------------------------------
 Mon Nov 18 12:59:58 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Make cron script even more failsafe

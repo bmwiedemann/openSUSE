@@ -358,4 +358,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>750744</requestid>
   </revision>
+  <revision rev="37" vrev="40">
+    <srcmd5>dfeb737a650b7cae5421f13394be8c86</srcmd5>
+    <version>unknown</version>
+    <time>1576505947</time>
+    <user>dimstar_suse</user>
+    <comment>- Simply use rm(1) for the cron job of texlive as all files below
+  /var/cache/texmf/ belong to texlive and only root can write and
+  remove those files (bsc#1158910). All other users do create their
+  own files below ~/.cache/texmf/</comment>
+    <requestid>756829</requestid>
+  </revision>
 </revisionlist>
