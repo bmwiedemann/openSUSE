@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://virtualenvwrapper.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-%{version}.tar.gz
+Patch0:         virtualenvwrapper-4.8.4-python_version.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -60,6 +61,7 @@ conflicts in their dependencies.
 %prep
 %setup -q -n virtualenvwrapper-%{version}
 sed -i -e '1i#!/bin/sh' virtualenvwrapper.sh
+%patch0 -p1
 
 %build
 %python_build

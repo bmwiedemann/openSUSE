@@ -184,4 +184,12 @@
   upstream</comment>
     <requestid>705276</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>81e3215f03263a3d3a0cc4f33d68f7dc</srcmd5>
+    <version>4.8.4</version>
+    <time>1576506035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757257</requestid>
+  </revision>
 </revisionlist>

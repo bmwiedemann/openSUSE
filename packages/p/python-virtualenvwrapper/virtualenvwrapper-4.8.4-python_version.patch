@@ -1,0 +1,13 @@
+Index: virtualenvwrapper-4.8.4/virtualenvwrapper.sh
+===================================================================
+--- virtualenvwrapper-4.8.4.orig/virtualenvwrapper.sh
++++ virtualenvwrapper-4.8.4/virtualenvwrapper.sh
+@@ -47,7 +47,7 @@
+ # Locate the global Python where virtualenvwrapper is installed.
+ if [ "${VIRTUALENVWRAPPER_PYTHON:-}" = "" ]
+ then
+-    VIRTUALENVWRAPPER_PYTHON="$(command \which python)"
++    VIRTUALENVWRAPPER_PYTHON="$(command \which python3)"
+ fi
+ 
+ # Set the name of the virtualenv app to use.
