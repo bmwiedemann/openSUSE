@@ -44,8 +44,8 @@ BuildRequires:  mvn(log4j:log4j:1.2.14)
 BuildRequires:  mvn(net.sf.ezmorph:ezmorph)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache:apache:pom:)
-BuildRequires:  mvn(org.codehaus.groovy:groovy18-all:1.8)
-BuildRequires:  mvn(org.codehaus.groovy:groovy18:1.8)
+BuildRequires:  mvn(org.codehaus.groovy:groovy-all:1.8)
+BuildRequires:  mvn(org.codehaus.groovy:groovy:1.8)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.slf4j:slf4j-nop)
 BuildRequires:  mvn(oro:oro)
@@ -80,8 +80,6 @@ tar xf %{SOURCE100}
 #          src/main/jdk15/net/sf/json/util/EnumMorpher.java
 %patch0 -p1
 
-%pom_xpath_set "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'org.codehaus.groovy']/pom:artifactId" groovy
-
 %pom_remove_plugin :maven-compiler-plugin
 %pom_remove_plugin :gmaven-plugin
 
@@ -100,7 +98,7 @@ rm -r src/main/jdk15/net/sf/json/JSON*.java
 # should be removed from distribution
 %pom_remove_dep :commons-httpclient
 
-%pom_change_dep org.codehaus.groovy:groovy org.codehaus.groovy:groovy18:1.8
+%pom_change_dep org.codehaus.groovy:: org.codehaus.groovy::1.8
 
 # Remove the -SNAPSHOT postfix
 %pom_xpath_set pom:project/pom:version "2.4-jenkins-3" jenkins-%{name}-%{version}/pom.xml
@@ -108,7 +106,7 @@ rm -r src/main/jdk15/net/sf/json/JSON*.java
 pushd jenkins-%{name}-%{version}
 %patch100 -p1
 
-%pom_change_dep org.codehaus.groovy:groovy-all org.codehaus.groovy:groovy18-all:1.8
+%pom_change_dep org.codehaus.groovy:groovy-all org.codehaus.groovy:groovy-all:1.8
 
 %{mvn_file} org.kohsuke.stapler:json-lib jenkins-%{name}
 %{mvn_package} org.kohsuke.stapler:json-lib jenkins-json-lib
