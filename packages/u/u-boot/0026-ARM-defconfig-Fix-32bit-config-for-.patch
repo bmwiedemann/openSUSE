@@ -1,0 +1,30 @@
+From 25da6429ff2aeb00119b2ba43cc59149d7e07b5a Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Thu, 5 Dec 2019 18:53:15 +0100
+Subject: [PATCH] ARM: defconfig: Fix 32bit config for RPi4
+
+The rpi_4_32b_defconfig states that only one DRAM bank is present. This
+leads to a wrong configuration of the available DRAM. Fix this by
+setting the DRAM bank config accordingly.
+
+Fixes: 193279d784 ("RPI: Add defconfigs for rpi4 (32/64)")
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+(cherry picked from commit e5167465a1740f0cac05be44f3e2a4e334eb527a)
+---
+ configs/rpi_4_32b_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configs/rpi_4_32b_defconfig b/configs/rpi_4_32b_defconfig
+index dc696906fd..ec7330a98d 100644
+--- a/configs/rpi_4_32b_defconfig
++++ b/configs/rpi_4_32b_defconfig
+@@ -3,7 +3,7 @@ CONFIG_ARCH_BCM283X=y
+ CONFIG_SYS_TEXT_BASE=0x00008000
+ CONFIG_TARGET_RPI_4_32B=y
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+-CONFIG_NR_DRAM_BANKS=1
++CONFIG_NR_DRAM_BANKS=2
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+ # CONFIG_ARCH_FIXUP_FDT_MEMORY is not set

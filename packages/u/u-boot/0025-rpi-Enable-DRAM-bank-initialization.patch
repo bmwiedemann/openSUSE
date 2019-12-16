@@ -1,0 +1,39 @@
+From 8dcbd1a138d5accd339ec990750070bef537cd45 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Thu, 5 Dec 2019 18:53:14 +0100
+Subject: [PATCH] rpi: Enable DRAM bank initialization on arm64
+
+Up to now we only update the DRAM banks when we are define
+CONFIG_BCM2711. But our one binary approach uses a config that supports
+BCM2837 and BCM2711. As a result we only see one gibibyte of RAM on
+Raspberry Pi 4, even if it has more RAM.
+Fix this by calling dram_init_banksize.
+
+Fixes: 5694090670 ("ARM: defconfig: add unified config for RPi3 and RPi4")
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+(cherry picked from commit a63f81c242090682ea4907fa6475d8057208cb05)
+---
+ board/raspberrypi/rpi/rpi.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
+index 76f1c55b65..17d463e16f 100644
+--- a/board/raspberrypi/rpi/rpi.c
++++ b/board/raspberrypi/rpi/rpi.c
+@@ -271,7 +271,6 @@ int dram_init(void)
+ }
+ 
+ #ifdef CONFIG_OF_BOARD
+-#ifdef CONFIG_BCM2711
+ int dram_init_banksize(void)
+ {
+ 	int ret;
+@@ -283,7 +282,6 @@ int dram_init_banksize(void)
+ 	return fdtdec_setup_mem_size_base();
+ }
+ #endif
+-#endif
+ 
+ static void set_fdtfile(void)
+ {

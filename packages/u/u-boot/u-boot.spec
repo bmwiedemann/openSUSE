@@ -215,6 +215,10 @@ Patch0020:      0020-ARM-bcm283x-Set-rpi_bcm283x_base-at.patch
 Patch0021:      0021-ARM-bcm283x-Set-memory-map-at-run-t.patch
 Patch0022:      0022-ARM-defconfig-add-unified-config-fo.patch
 Patch0023:      0023-boo-1144161-Remove-nand-mtd-spi-dfu.patch
+Patch0024:      0024-rpi-fix-dram-bank-initialization.patch
+Patch0025:      0025-rpi-Enable-DRAM-bank-initialization.patch
+Patch0026:      0026-ARM-defconfig-Fix-32bit-config-for-.patch
+# Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
 # Arndale board needs DTC >= 1.4
@@ -225,7 +229,6 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
 BuildRequires:  swig
-# Patches: end
 BuildRequires:  pkgconfig(sdl)
 Conflicts:      u-boot-loader
 Provides:       u-boot-loader

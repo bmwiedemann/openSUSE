@@ -1,0 +1,43 @@
+From 6903bb74d467121c2d2c99b4272fe4363e8f2f64 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Thu, 5 Dec 2019 18:53:13 +0100
+Subject: [PATCH] rpi: fix dram bank initialization
+
+To update the dram bank information from device-tree we use
+fdtdec_decode_ram_size() which expectes the the size-cells and
+address-cells to be defined in the memory node. For normal system RAM
+these values are defined in the root node. When the values differ from
+the default values defined in the spec, we can end up with wrong RAM
+bank information.
+
+Switch to the "standard" way to update the RAM bank information to
+avoid this.
+
+Fixes: 9de5b89e4c ("rpi4: enable dram bank initialization")
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+(cherry picked from commit e19cfcc07ac5da8b3a04e21875ec542d994865d4)
+---
+ board/raspberrypi/rpi/rpi.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
+index 3d4afaf653..76f1c55b65 100644
+--- a/board/raspberrypi/rpi/rpi.c
++++ b/board/raspberrypi/rpi/rpi.c
+@@ -274,8 +274,13 @@ int dram_init(void)
+ #ifdef CONFIG_BCM2711
+ int dram_init_banksize(void)
+ {
+-	return fdtdec_decode_ram_size(gd->fdt_blob, NULL, 0, NULL,
+-				     (phys_size_t *)&gd->ram_size, gd->bd);
++	int ret;
++
++	ret = fdtdec_setup_memory_banksize();
++	if (ret)
++		return ret;
++
++	return fdtdec_setup_mem_size_base();
+ }
+ #endif
+ #endif
