@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 12 08:23:08 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- gcc10.patch: fix build with gcc10 (bsc#1158192)
+
+-------------------------------------------------------------------
 Sat Dec  7 14:19:35 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - Update to version 4.4.10

@@ -38,4 +38,12 @@
 - format-overflow.patch: remove (forwarded request 754950 from Andreas_Schwab)</comment>
     <requestid>754951</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>20da809a3e48e090e209ed8b95d67ec1</srcmd5>
+    <version>4.4.10</version>
+    <time>1576513571</time>
+    <user>dimstar_suse</user>
+    <comment>- gcc10.patch: fix build with gcc10 (bsc#1158192) (forwarded request 756004 from Andreas_Schwab)</comment>
+    <requestid>756005</requestid>
+  </revision>
 </revisionlist>

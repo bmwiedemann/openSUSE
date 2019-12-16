@@ -25,6 +25,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/besser82/%{name}
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         gcc10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
