@@ -49,6 +49,9 @@ Group:          System/Benchmark
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    packageand(stress-ng:bash)
+%if 0%{?sle_version} < 150000
+BuildRequires:  bash-completion
+%endif
 BuildArch:      noarch
 
 %description bash-completion
