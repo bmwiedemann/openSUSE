@@ -1,7 +1,7 @@
 #
 # spec file for package arpack-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,82 @@
 #
 
 
-%define libname libarpack2
-%define plibname libparpack2
-%define major 	3
-%define minor 	0
-%define ompi_ver openmpi2
+%global flavor @BUILD_FLAVOR@%{nil}
 
-%if 0%{?sles_version}
-%define _mpi %ompi_ver mvapich2
-%else
-%define _mpi %ompi_ver
+%define so_ver 2
+
+%if 0%{?sle_version} >= 150200
+%define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
-Name:           arpack-ng
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
+%define DisOMPI3 ExclusiveArch:  do_not_build
+%endif
+
+%if "%flavor" == ""
+ExclusiveArch:  do_not_build
+%endif
+
+%if "%flavor" == "serial"
+%{bcond_with hpc}
+%endif
+
+%if "%flavor" == "openmpi1"
+%{?DisOMPI1}
+%define mpi_family openmpi
+%define mpi_ver 1
+%{bcond_with hpc}
+%endif
+
+%if "%flavor" == "openmpi2"
+%{?DisOMPI2}
+%define mpi_family openmpi
+%define mpi_ver 2
+%{bcond_with hpc}
+%endif
+
+%if "%flavor" == "openmpi3"
+%{?DisOMPI3}
+%define mpi_family openmpi
+%define mpi_ver 3
+%{bcond_with hpc}
+%endif
+
+# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
+%if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi"  || "%{mpi_ver}" != "1"
+%define mpi_ext %{?mpi_ver}
+%endif
+
+%if 0%{?mpi_family:1}
+%{bcond_without mpi}
+%define pkgname   parpack-%{mpi_family}%{?mpi_ext}
+%define libname() libparpack%{so_ver}-%{mpi_family}%{?mpi_ext}
+%global my_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
+%global my_libdir %{my_prefix}/%{_lib}
+%else
+%{bcond_with mpi}
+%define pkgname   arpack-ng
+%define libname() libarpack%{so_ver}
+%global my_prefix %{_prefix}
+%global my_libdir %{_libdir}
+%endif
+
+Name:           %{pkgname}
 Version:        3.5.0
 Release:        0
 Summary:        Fortran77 subroutines for solving large scale eigenvalue problems
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            https://github.com/opencollab/arpack-ng
+URL:            https://github.com/opencollab/arpack-ng
 Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz
-Source1:        baselibs.conf
-BuildRequires:  %{ompi_ver}-devel
+%if %{with mpi}
+BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
+%endif
 BuildRequires:  autoconf
 BuildRequires:  blas-devel
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-Obsoletes:      arpack < %{version}
-Provides:       arpack = %{version}
-%if 0%{?sles_version}
-BuildRequires:  mvapich2-devel
-%endif
 
 %description
 ARPACK is a collection of Fortran77 subroutines designed to solve
@@ -59,13 +103,19 @@ with Arpack.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Other
+%if %{with mpi}
+Requires:       %{mpi_family}%{?mpi_ext}-devel
+%else
+Obsoletes:      arpack-devel < %{version}
+Provides:       arpack-devel = %{version}
+%endif
 Requires:       %{libname} = %{version}-%{release}
 Requires:       blas-devel
 Requires:       gcc-fortran
 Requires:       lapack-devel
-Requires:       pkgconfig
-Obsoletes:      arpack-devel < %{version}
-Provides:       arpack-devel = %{version}
+%if "%{name}" == "parpack-openmpi1"
+Provides:       parpack-openmpi-devel = %{version}
+%endif
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -74,221 +124,72 @@ developing applications that use %{name}.
 %package     -n %{libname}
 Summary:        Files needed for developing arpack based applications
 Group:          System/Libraries
-Provides:       %{libname}_%{major}_%{minor} = %{version}
-Obsoletes:      %{libname}_%{major}_%{minor} < %{version}
+%if %{with mpi}
+Requires:       %{mpi_family}%{?mpi_ext}-libs
+%endif
 
 %description -n %{libname}
 ARPACK is a collection of Fortran77 subroutines designed to solve
 large scale eigenvalue problems. This package contains the so
 library links used for building arpack based applications.
 
-%package     -n parpack-openmpi
-Summary:        Development files for %{name}
-Group:          Development/Libraries/Other
-Requires:       %{plibname}-openmpi = %{version}
-
-%description -n parpack-openmpi
-ARPACK is a collection of Fortran77 subroutines designed to solve
-large scale eigenvalue problems.
-
-Arpack-ng is the successor of the legacy Arpack. It is fully compatible
-with Arpack.
-
-%package     -n parpack-openmpi-devel
-Summary:        Development files for %{name}
-Group:          Development/Libraries/Parallel
-Requires:       %{plibname}-openmpi = %{version}
-Requires:       blas-devel
-Requires:       lapack-devel
-Requires:       openmpi-devel
-
-%description     -n parpack-openmpi-devel
-The %{name}-openmpi-devel package contains libraries and header files for
-developing applications that use %{name}.
-
-%package     -n %{plibname}-openmpi
-Summary:        Files needed for developing arpack based applications
-Group:          System/Libraries
-Provides:       %{plibname}_%{major}_%{minor} = %{version}
-Obsoletes:      %{plibname}_%{major}_%{minor} < %{version}
-Requires:       %{ompi_ver}-libs
-
-%description -n %{plibname}-openmpi
-ARPACK is a collection of Fortran77 subroutines designed to solve
-large scale eigenvalue problems. This package contains the so
-library links used for building arpack based applications.
-
-%if 0%{?sles_version}
-%package     -n parpack-mvapich2
-Summary:        Development files for %{name}
-Group:          Development/Libraries/Parallel
-Requires:       %{plibname}-mvapich2 = %{version}
-Requires:       mvapich2
-
-%description     -n parpack-mvapich2
-ARPACK is a collection of Fortran77 subroutines designed to solve
-large scale eigenvalue problems.
-
-Arpack-ng is the successor of the legacy Arpack. It is fully compatible
-with Arpack.
-
-%package     -n parpack-mvapich2-devel
-Summary:        Development files for %{name}
-Group:          Development/Libraries/Parallel
-Requires:       %{plibname}-mvapich2 = %{version}
-Requires:       blas-devel
-Requires:       lapack-devel
-Requires:       mvapich2-devel
-
-%description -n parpack-mvapich2-devel
-The %{name}-mvapich2-devel package contains libraries and header files for
-developing applications that use %{name}.
-
-%package     -n %{plibname}-mvapich2
-Summary:        Files needed for developing arpack based applications
-Group:          System/Libraries
-Provides:       %{plibname}_%{major}_%{minor} = %{version}
-Obsoletes:      %{plibname}_%{major}_%{minor} < %{version}
-
-%description -n %{plibname}-mvapich2
-ARPACK is a collection of Fortran77 subroutines designed to solve
-large scale eigenvalue problems. This package contains the so
-library links used for building arpack based applications.
-%endif
-
 %prep
-%setup -q
-set -- *
+%setup -q -n arpack-ng-%{version}
 
-cp -r EXAMPLES examples
-
-for i in %{_mpi}
-do
-    mkdir arpack-ng-$i
-    cp -ap "$@" arpack-ng-$i
-done
+# create baselibs.conf based on flavor
+cat >  %{_sourcedir}/baselibs.conf <<EOF
+%{libname}
+%{name}-devel
+    requires -%{name}-<targettype>
+    requires "%{libname}-<targettype> = <version>"
+EOF
 
 %build
+
+%if %{with mpi}
+export F77=%{my_prefix}/bin/mpif77
+export MPIF77=%{my_prefix}/bin/mpif77
+export LD_LIBRARY_PATH=%{my_prefix}/%{_lib}
+%endif
+
+%global orig_prefix %{_prefix}
+%define _prefix %{my_prefix}
 sh bootstrap
-%configure --disable-static
-
+%configure --disable-static \
+	   %{?with_mpi: --enable-mpi} \
+	   %{nil}
+%define _prefix %{orig_prefix}
 make %{?_smp_mflags}
-
-for i in %{_mpi}
-do
-    pushd arpack-ng-$i
-
-    export F77=%{_libdir}/mpi/gcc/$i/bin/mpif77
-    export MPIF77=%{_libdir}/mpi/gcc/$i/bin/mpif77
-    export LD_LIBRARY_PATH=%{_libdir}/mpi/gcc/$i/%{_lib}
-    %define _prefix /usr/%{_lib}/mpi/gcc/\$i
-
-    sh bootstrap
-    %configure --disable-static \
-               --enable-mpi
-    make %{?_smp_mflags}
-
-    # `make check` is necessary to build the test programs for PARPACK.
-    # TODO: Verify if we really want to include those tests in the package.
-    make check
-
-    popd
-done
-
-# Set prefix to default value
-%define _prefix /usr
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-for i in %{_mpi}
-do
-    pushd arpack-ng-$i
+# Remove sequential version files
+%if %{with mpi}
+rm -Rf %{buildroot}%{my_libdir}/pkgconfig
+rm %{buildroot}%{my_libdir}/libarpack.so*
+%endif
 
-    make %{?_smp_mflags} DESTDIR=%{buildroot} install
-    rm -rf %{buildroot}%{_libdir}/mpi/gcc/$i/%{_lib}/libarpack.*
-
-    # Install the test programs.
-    mkdir -p %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-
-    pushd PARPACK/EXAMPLES/MPI
-
-    libtool --mode=install install -Dm755 pcndrv1 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-    libtool --mode=install install -Dm755 pdndrv1 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-    libtool --mode=install install -Dm755 pdndrv3 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-    libtool --mode=install install -Dm755 pdsdrv1 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-    libtool --mode=install install -Dm755 psndrv1 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-    libtool --mode=install install -Dm755 psndrv3 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-    libtool --mode=install install -Dm755 pssdrv1 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-    libtool --mode=install install -Dm755 pzndrv1 %{buildroot}%{_libdir}/mpi/gcc/$i/bin/
-
-    popd
-
-    popd
-done
+ln -s EXAMPLES examples
 
 %check
 make %{?_smp_mflags} check
 
-for i in %{_mpi}
-do
-    pushd arpack-ng-$i
-    make check
-    popd
-done
-
 %post   -n %{libname}           -p /sbin/ldconfig
 %postun -n %{libname}           -p /sbin/ldconfig
-%post   -n %{plibname}-openmpi  -p /sbin/ldconfig
-%postun -n %{plibname}-openmpi  -p /sbin/ldconfig
-
-%if 0%{?sles_version}
-%post   -n %{plibname}-mvapich2 -p /sbin/ldconfig
-%postun -n %{plibname}-mvapich2 -p /sbin/ldconfig
-%endif
 
 %files -n %{libname}
-%defattr(-,root,root,-)
-%doc CHANGES COPYING README TODO
-%{_libdir}/*.so.*
+%license COPYING
+%doc CHANGES README TODO
+%{my_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %doc examples
-%{_libdir}/*.so
+%{my_libdir}/*.so
+%if %{without mpi}
+%dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/*.pc
-
-%files -n parpack-openmpi
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/%{ompi_ver}/bin/p??drv?
-
-%files -n %{plibname}-openmpi
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/lib*arpack.so.*
-
-%files -n parpack-openmpi-devel
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/libparpack.so
-%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/libparpack.la
-%dir %{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/pkgconfig
-%{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/pkgconfig/*.pc
-
-%if 0%{?sles_version}
-%files -n parpack-mvapich2
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/mvapich2/bin/p??drv?
-
-%files -n %{plibname}-mvapich2
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/libparpack.so.*
-
-%files -n parpack-mvapich2-devel
-%defattr(-,root,root,-)
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/libparpack.so
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/libparpack.la
-%dir %{_libdir}/mpi/gcc/%{ompi_ver}/%{_lib}/pkgconfig
-%{_libdir}/mpi/gcc/mvapich2/%{_lib}/pkgconfig/*.pc
 %endif
 
 %changelog
