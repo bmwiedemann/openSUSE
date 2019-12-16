@@ -1,7 +1,7 @@
 #
 # spec file for package bcc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,19 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.0.5
+%define libbpf_version 0.0.6
 
 Name:           bcc
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
 Group:          Development/Tools/Other
-Url:            https://github.com/iovisor/bcc
+URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz
 Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz
 Patch1:         support-clang9.patch
+Patch2:         bcc-fix-test_map_in_map.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -49,14 +50,11 @@ BuildRequires:  llvm-devel >= 3.7.0
 %if 0%{?suse_version} > 1320
 BuildRequires:  clang-devel
 BuildRequires:  llvm-gold
-%if %{with_lua}
-BuildRequires:  lua51-luajit-devel
-%endif
 %else
 BuildRequires:  libstdc++-devel
+%endif
 %if %{with_lua}
 BuildRequires:  luajit-devel
-%endif
 %endif
 BuildRequires:  pkg-config
 BuildRequires:  python-devel
@@ -152,6 +150,7 @@ Documentation on how to write programs with the BPF Compiler Collection.
 %if %{pkg_vcmp llvm-devel >= 9.0}
 %patch1 -p1
 %endif
+%patch2 -p1
 
 pushd src/cc/libbpf
 tar xf %{SOURCE1} --strip 1

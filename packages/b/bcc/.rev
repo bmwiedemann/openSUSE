@@ -255,4 +255,14 @@
     <comment></comment>
     <requestid>749410</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>403bf69966f6ff44265a7c142cb0531c</srcmd5>
+    <version>0.12.0</version>
+    <time>1576506014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0
+- Replace lua51-luajit-devel with luajit-devel to reflect the recent change in Factory (bsc#1159191)
+- Add bcc-fix-test_map_in_map.patch to fix the build error in the test case</comment>
+    <requestid>757219</requestid>
+  </revision>
 </revisionlist>
