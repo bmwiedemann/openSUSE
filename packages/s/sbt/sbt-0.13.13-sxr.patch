@@ -1,0 +1,19 @@
+--- sbt-0.13.13/project/Sxr.scala	2019-12-04 22:39:28.170180739 +0100
++++ sbt-0.13.13/project/Sxr.scala	2019-12-04 22:41:30.062899850 +0100
+@@ -10,15 +10,10 @@
+   lazy val settings: Seq[Setting[_]] = inTask(sxr)(inSxrSettings) ++ baseSettings
+ 
+   def baseSettings = Seq(
+-    libraryDependencies += "org.scala-sbt.sxr" % "sxr_2.10" % "0.3.0" % sxrConf.name
+   )
+   def inSxrSettings = Seq(
+     managedClasspath := update.value.matching(configurationFilter(sxrConf.name)).classpath,
+-    scalacOptions += "-P:sxr:base-directory:" + sourceDirectories.value.absString,
+-    scalacOptions += "-Xplugin:" + managedClasspath.value.files.filter(_.getName.contains("sxr")).absString,
+-    scalacOptions += "-Ystop-after:sxr",
+-    target := target.in(taskGlobal).value / "browse",
+-    sxr in taskGlobal <<= sxrTask
++    scalacOptions += "-P:sxr:base-directory:" + sourceDirectories.value.absString
+   )
+   def taskGlobal = ThisScope.copy(task = Global)
+   def sxrTask = (sources, target, scalacOptions, classpathOptions, scalaInstance, fullClasspath, streams) map { (srcs, out, opts, cpOpts, si, cp, s) =>

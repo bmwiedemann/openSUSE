@@ -1,0 +1,66 @@
+--- sbt-0.13.17/compile/inc/src/main/scala/sbt/inc/APIDiff.scala	2018-01-31 20:33:31.000000000 +0100
++++ sbt-0.13.17/compile/inc/src/main/scala/sbt/inc/APIDiff.scala	2019-12-05 11:34:31.158200189 +0100
+@@ -47,8 +47,8 @@
+     assert((diffMethod != null) && (generateUnifiedDiffMethod != null), "APIDiff isn't properly initialized.")
+     import scala.collection.JavaConverters._
+     def asJavaList[T](it: Iterator[T]): java.util.List[T] = it.toSeq.asJava
+-    val f1Lines = asJavaList(f1.lines)
+-    val f2Lines = asJavaList(f2.lines)
++    val f1Lines = asJavaList(f1.linesIterator)
++    val f2Lines = asJavaList(f2.linesIterator)
+     //val diff = DiffUtils.diff(f1Lines, f2Lines)
+     val diff /*: Patch*/ = diffMethod.invoke(null, f1Lines, f2Lines)
+     val unifiedPatch: JList[String] = generateUnifiedDiffMethod.invoke(null, fileName, fileName, f1Lines, diff,
+--- sbt-0.13.17/main/settings/src/main/scala/sbt/InputTask.scala	2018-01-31 20:33:31.000000000 +0100
++++ sbt-0.13.17/main/settings/src/main/scala/sbt/InputTask.scala	2019-12-05 11:34:31.158200189 +0100
+@@ -18,7 +18,7 @@
+     Parser.parse(in, parser(s)) match {
+       case Right(v) => Parser.success(v)
+       case Left(msg) =>
+-        val indented = msg.lines.map("   " + _).mkString("\n")
++        val indented = msg.linesIterator.map("   " + _).mkString("\n")
+         Parser.failure(s"Invalid programmatic input:\n$indented")
+     }
+   )
+@@ -36,7 +36,7 @@
+           Parser.parse(in, it.parser(s)) match {
+             case Right(t) => Def.value(t)
+             case Left(msg) =>
+-              val indented = msg.lines.map("   " + _).mkString("\n")
++              val indented = msg.linesIterator.map("   " + _).mkString("\n")
+               sys.error(s"Invalid programmatic input:\n$indented")
+           }
+         )
+--- sbt-0.13.17/main/src/main/scala/sbt/Defaults.scala	2018-01-31 20:33:31.000000000 +0100
++++ sbt-0.13.17/main/src/main/scala/sbt/Defaults.scala	2019-12-05 11:34:31.162200213 +0100
+@@ -1592,7 +1592,7 @@
+               val r = work(in)
+               log.warn("Update task has failed to cache the report due to null.")
+               log.warn("Report the following output to sbt:")
+-              r.toString.lines foreach { log.warn(_) }
++              r.toString.linesIterator foreach { log.warn(_) }
+               log.trace(e)
+               r
+             case e: OutOfMemoryError =>
+--- sbt-0.13.17/main/src/main/scala/sbt/internals/parser/SbtParser.scala	2018-01-31 20:33:31.000000000 +0100
++++ sbt-0.13.17/main/src/main/scala/sbt/internals/parser/SbtParser.scala	2019-12-05 11:34:31.162200213 +0100
+@@ -215,7 +215,7 @@
+       case Some(index) =>
+         val text = content.substring(positionEnd, index + 1)
+         val textWithoutBracket = text.substring(0, text.length - 1)
+-        util.Try(SbtParser(FAKE_FILE, textWithoutBracket.lines.toSeq)) match {
++        util.Try(SbtParser(FAKE_FILE, textWithoutBracket.linesIterator.toSeq)) match {
+           case util.Success(_) =>
+             text
+           case util.Failure(th) =>
+--- sbt-0.13.17/main/src/main/scala/sbt/internals/parser/SbtRefactorings.scala	2018-01-31 20:33:31.000000000 +0100
++++ sbt-0.13.17/main/src/main/scala/sbt/internals/parser/SbtRefactorings.scala	2019-12-05 11:34:31.162200213 +0100
+@@ -28,7 +28,7 @@
+     val sortedRecordedCommands = recordedCommands.sortBy(_._1)(REVERSE_ORDERING_INT)
+ 
+     val newContent = replaceFromBottomToTop(lines.mkString(END_OF_LINE), sortedRecordedCommands)
+-    (file, newContent.lines.toList)
++    (file, newContent.linesIterator.toList)
+   }
+ 
+   private def replaceFromBottomToTop(modifiedContent: String, sortedRecordedCommands: Seq[(Int, String, String)]) = {

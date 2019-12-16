@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:47:41 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 0.13.18 which can be built and used with
+  java 11
+  * Speeds-up drastically build time on platforms where java 8
+    is not accelerated
+  * Bootstrap build with the same version os sbt
+- Remove patches:
+  * sbt-0.13.1-RC3-release-scala.patch
+  * sbt-0.13.1-ivy-2.3.0.patch
+  * sbt-0.13.1-ivy-2.4.0.patch
+  * sbt-0.13.1-ivy-docs.patch
+  * sbt-0.13.1-sbt-scala.patch
+    + not needed with this version
+- Modified patch:
+  * sbt-0.13.1-sxr.patch -> sbt-0.13.13-sxr.patch
+    + rediff to the changed context
+- Added patches:
+  * sbt-0.13.17-lines.patch
+    + Avoid name clash with functions in Java 11
+  * sbt-0.13.18-build-sbt.patch
+    + Disable build targets that are useless for build of rpm
+
+-------------------------------------------------------------------
 Mon Dec  2 07:25:53 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build against scala 2.10.7

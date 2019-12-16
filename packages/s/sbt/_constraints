@@ -1,10 +1,23 @@
 <constraints>
   <hardware>
     <physicalmemory>
-      <size unit="M">4096</size>
+      <size unit="M">3072</size>
     </physicalmemory>
     <disk>
-      <size unit="G">2</size>
+      <size unit="G">6</size>
     </disk>
   </hardware>
+
+  <overwrite>
+    <conditions>
+      <arch>armv7l</arch>
+      <arch>armv6l</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="M">512</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+
 </constraints> 

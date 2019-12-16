@@ -1,0 +1,113 @@
+--- sbt-0.13.18/build.sbt	2018-11-28 11:34:11.000000000 +0100
++++ sbt-0.13.18/build.sbt	2019-12-08 23:37:59.263373754 +0100
+@@ -7,11 +7,7 @@
+ // but can be shared across the multi projects.
+ def buildLevelSettings: Seq[Setting[_]] = inThisBuild(Seq(
+   organization := "org.scala-sbt",
+-  version := "0.13.18-SNAPSHOT",
+-  bintrayOrganization := Some(if (publishStatus.value == "releases") "typesafe" else "sbt"),
+-  bintrayRepository := s"ivy-${publishStatus.value}",
+-  bintrayPackage := "sbt",
+-  bintrayReleaseOnPublish := false
++  version := "0.13.18"
+ ))
+ 
+ def commonSettings: Seq[Setting[_]] = Seq(
+@@ -26,26 +22,7 @@
+   testOptions += Tests.Argument(TestFrameworks.ScalaCheck, "-w", "1"),
+   javacOptions in compile ++= Seq("-target", "6", "-source", "6", "-Xlint", "-Xlint:-serial"),
+   incOptions := incOptions.value.withNameHashing(true),
+-  crossScalaVersions := Seq(scala210),
+-  bintrayPackage := (bintrayPackage in ThisBuild).value,
+-  bintrayRepository := (bintrayRepository in ThisBuild).value,
+-  test in assembly := {},
+-  assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = true),
+-  assemblyMergeStrategy in assembly := {
+-    case PathList(ps @ _*) if ps.last == "javax.inject.Named"      => MergeStrategy.first
+-    case PathList(ps @ _*) if ps.last endsWith ".class"            => MergeStrategy.first
+-    case PathList(ps @ _*) if ps.last endsWith "module.properties" => MergeStrategy.first
+-    case PathList(ps @ _*) if ps.last == "MANIFEST.MF"             => MergeStrategy.rename
+-    case "LICENSE"                                                 => MergeStrategy.first
+-    case "NOTICE"                                                  => MergeStrategy.first
+-    // excluded from fat jar because otherwise we may pick it up when determining the `actualVersion`
+-    // of other scala instances.
+-    case "compiler.properties"                                     => MergeStrategy.discard
+-
+-    case x =>
+-      val oldStrategy = (assemblyMergeStrategy in assembly).value
+-      oldStrategy(x)
+-  }
++  crossScalaVersions := Seq(scala210)
+ )
+ 
+ def minimalSettings: Seq[Setting[_]] =
+@@ -53,10 +30,10 @@
+   publishPomSettings
+ 
+ def baseSettings: Seq[Setting[_]] =
+-  minimalSettings ++ Seq(projectComponent) ++ baseScalacOptions ++ Licensed.settings ++ Formatting.settings
++  minimalSettings ++ Seq(projectComponent) ++ baseScalacOptions ++ Licensed.settings
+ 
+ def testedBaseSettings: Seq[Setting[_]] =
+-  baseSettings ++ testDependencies
++  baseSettings
+ 
+ 
+ val altLocalRepoName = "alternative-local"
+@@ -99,8 +76,7 @@
+   (project in file("launch")).
+   settings(
+     minimalSettings,
+-    inConfig(Compile)(Transform.configSettings),
+-    Release.launcherSettings(sbtLaunchJar)
++    inConfig(Compile)(Transform.configSettings)
+   ).
+   enablePlugins(SbtLauncherPlugin).
+   settings(
+@@ -109,8 +85,8 @@
+     description := "sbt application launcher",
+     publishArtifact in packageSrc := false,
+     autoScalaLibrary := false,
+-    publish := Release.deployLauncher.value,
+-    publishLauncher := Release.deployLauncher.value,
++    publish := {},
++    publishLauncher := {},
+     packageBin in Compile := sbtLaunchJar.value
+   )
+ 
+@@ -525,13 +501,13 @@
+   compileInterfaceProj, compileIncrementalProj, compilePersistProj, compilerProj,
+   compilerIntegrationProj, compilerIvyProj,
+   scriptedBaseProj, scriptedSbtProj, scriptedPluginProj,
+-  actionsProj, commandProj, mainSettingsProj, mainProj, sbtProj, bundledLauncherProj, mavenResolverPluginProj)
++  actionsProj, commandProj, mainSettingsProj, mainProj, sbtProj, mavenResolverPluginProj)
+ 
+ def projectsWithMyProvided = allProjects.map(p => p.copy(configurations = (p.configurations.filter(_ != Provided)) :+ myProvided))
+ lazy val nonRoots = projectsWithMyProvided.map(p => LocalProject(p.id))
+ 
+ def rootSettings = fullDocSettings ++
+-  Util.publishPomSettings ++ otherRootSettings ++ Formatting.sbtFilesSettings ++
++  Util.publishPomSettings ++ otherRootSettings ++ 
+   Transform.conscriptSettings(bundledLauncherProj)
+ def otherRootSettings = Seq(
+   Scripted.scriptedPrescripted := { addSbtAlternateResolver _ },
+@@ -541,8 +517,8 @@
+   Scripted.scriptedSource := (sourceDirectory in sbtProj).value / "sbt-test",
+   publishAll := {
+     val _ = (publishLocal).all(ScopeFilter(inAnyProject)).value
+-  },
+-  aggregate in bintrayRelease := false
++  }
++  //aggregate in bintrayRelease := false
+ ) ++ inConfig(Scripted.MavenResolverPluginTest)(Seq(
+   Scripted.scriptedLaunchOpts := List("-XX:MaxPermSize=256M", "-Xmx1G", "-Dsbt.repository.secure=false"),
+   Scripted.scripted <<= scriptedTask,
+@@ -589,7 +565,7 @@
+   inAnyProject -- inProjects(sbtRoot, sbtProj, scriptedBaseProj, scriptedSbtProj, scriptedPluginProj, mavenResolverPluginProj),
+   inConfigurations(Compile)
+ )
+-def fullDocSettings = Util.baseScalacOptions ++ Docs.settings ++ Sxr.settings ++ Seq(
++def fullDocSettings = Util.baseScalacOptions ++ Sxr.settings ++ Seq(
+   scalacOptions += "-Ymacro-no-expand", // for both sxr and doc
+   sources in sxr := {
+     val allSources = (sources ?? Nil).all(docProjects).value
