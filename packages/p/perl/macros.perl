@@ -83,7 +83,7 @@ for dir in `find ${base_dir} -type d | sort`; do\
   if [ "$dir" = "${base_dir}" ]; then\
     continue\
   else\
-    el=`echo $dir | %{__awk} -F"${base_dir}" '{print $2}'`\
+    el=${dir#$base_dir}\
     all_dir=(${all_dir[@]} $el)\
   fi\
 done\
