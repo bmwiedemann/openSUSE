@@ -1,7 +1,7 @@
 #
 # spec file for package libkcapi
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           libkcapi
 Version:        0.13.0
 Release:        0
 Summary:        Linux Kernel Crypto API User Space Interface Library
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Security
-Url:            http://www.chronox.de/libkcapi.html
+URL:            http://www.chronox.de/libkcapi.html
 #Source:		https://github.com/smuellerDD/libkcapi/archive/v0.13.0.zip
 Source:         libkcapi-0.13.0.tar.bz2
 Patch0:         libkcapi-use-external-fipshmac.patch
@@ -82,7 +82,8 @@ libkcapi user space tools to access certain hash algorithms.
 
 %build
 cd lib
-make %{?_smp_mflags}
+export CFLAGS="%optflags"
+%make_build
 make man
 cd ../apps
 make %{?_smp_mflags}
