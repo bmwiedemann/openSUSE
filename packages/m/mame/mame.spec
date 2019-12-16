@@ -191,6 +191,8 @@ export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold %{?_lto_cflags}"
 %endif
 
 export CFLAGS=$(pkg-config --cflags lua)
+# Make sure Python3 uses a UTF8 as default encoding even on Leap 15.x
+export LANG=C.UTF-8
 
 COMMON_FLAGS="\
     NOWERROR=1 \

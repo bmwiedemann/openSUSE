@@ -15,14 +15,30 @@
       <arch>x86_64</arch>
       <arch>ppc64le</arch>
       <package>mame:mame</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">34</size>
+      </disk>
+      <memory>
+        <size unit="M">14500</size>
+      </memory>
+    </hardware>
+  </overwrite>
+
+<overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>x86_64</arch>
+      <arch>ppc64le</arch>
       <package>mame:mess</package>
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">33</size>
+        <size unit="G">32</size>
       </disk>
       <memory>
-        <size unit="M">13500</size>
+        <size unit="M">12500</size>
       </memory>
     </hardware>
   </overwrite>
