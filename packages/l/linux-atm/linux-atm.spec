@@ -1,7 +1,7 @@
 #
 # spec file for package linux-atm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
+%global sover   1
 Name:           linux-atm
 Version:        2.5.2
 Release:        0
-%global sover   1
 Summary:        Tools for ATM
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
-
-Url:            http://linux-atm.sourceforge.net/
+URL:            http://linux-atm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM linux-atm-2.5.2_fdleak.patch
 Patch0:         linux-atm-2.5.2_fdleak.patch
@@ -36,24 +35,19 @@ Patch2:         linux-atm-2.5.2-fix-header-conflict.patch
 Patch3:         linux-atm-2.5.2-remove-headers-crude-hack.patch
 # PATCH-FIX-UPSTREAM fix-build-after-y2038-changes-in-glibc.patch -- fix build after y2038 changes in glibc
 Patch4:         fix-build-after-y2038-changes-in-glibc.patch
-
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glibc-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Tools to support ATM (Asynchronous Transfer Mode) networking.
 
-
 %package -n libatm%{sover}
-
 Summary:        Libraries for ATM
 Group:          System/Libraries
 
 %description -n libatm%{sover}
 Libraries for ATM (Asynchronous Transfer Mode) networking.
-
 
 %package devel
 Summary:        Development for ATM
@@ -64,40 +58,34 @@ Requires:       libatm%{sover} = %{version}
 Libraries and header files for ATM (Asynchronous Transfer Mode)
 networking.
 
-
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure --disable-static
-%{__make} %{?_smp_mflags}
+%make_build
 
 %install
-%{__make} install DESTDIR=%{buildroot}
-%{__rm} -rf %{buildroot}%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libatm%{sover} -p /sbin/ldconfig
-
 %postun -n libatm%{sover} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
+%doc README AUTHORS ChangeLog NEWS THANKS BUGS
 %config(noreplace) %{_sysconfdir}/atmsigd.conf
 %config(noreplace) %{_sysconfdir}/hosts.atm
 %{_bindir}/*
 %{_sbindir}/*
 /lib/firmware/*
-%doc README AUTHORS ChangeLog NEWS THANKS BUGS
-%license COPYING COPYING.GPL COPYING.LGPL
-%doc %{_mandir}/man*/*.gz
+%{_mandir}/man*/*.gz
 
 %files -n libatm%{sover}
-%defattr(-,root,root)
+%license COPYING COPYING.GPL COPYING.LGPL
 %{_libdir}/libatm.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/atm*.h
 %{_libdir}/libatm.so
 
