@@ -756,4 +756,14 @@ undo bootstrap workaround</comment>
     <comment></comment>
     <requestid>755450</requestid>
   </revision>
+  <revision rev="95" vrev="12">
+    <srcmd5>d0c46d27c4ad7fb85e04c4ff45121b88</srcmd5>
+    <version>1.10</version>
+    <time>1576505946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version master:
+  * add _servicedata which I forgot previously when adding the new
+    rpmlnit-security-whitelistings.</comment>
+    <requestid>756805</requestid>
+  </revision>
 </revisionlist>
