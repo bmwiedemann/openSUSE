@@ -153,10 +153,10 @@ for s in src/main/groovy/transform/NotYetImplemented.java\
   iconv -f UTF-8 -t ASCII//TRANSLIT -o ${s}.tmp ${s} && mv ${s}.tmp ${s}
 done
 
-%{mvn_package} : %{name}-lib
-%{mvn_file} : groovy %{name}
+%{mvn_package} : lib
+%{mvn_file} : groovy
 
-%{mvn_alias} : :groovy-all :%{name}-all :%{name}
+%{mvn_alias} : :groovy-all
 %{mvn_compat_version} : "1.8" "1.8.9"
 
 %build
@@ -201,7 +201,7 @@ install -p -m644 %{SOURCE2} \
 %doc README.md
 %license LICENSE.txt LICENSE-2.0.txt NOTICE.txt
 
-%files lib -f .mfiles-%{name}-lib
+%files lib -f .mfiles-lib
 %license LICENSE.txt LICENSE-2.0.txt NOTICE.txt
 
 %files javadoc

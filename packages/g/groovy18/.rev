@@ -23,4 +23,12 @@
     <comment>Allow building with jdk &gt;= 9</comment>
     <requestid>752790</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>964aad2ca4043d548b9489b36ee0c2e3</srcmd5>
+    <version>1.8.9</version>
+    <time>1576506049</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid too many compatibility symlinks</comment>
+    <requestid>757282</requestid>
+  </revision>
 </revisionlist>

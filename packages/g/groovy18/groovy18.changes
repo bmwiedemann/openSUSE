@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:21:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid too many compatibility symlinks, since this is already
+  build in compatibility mode
+
+-------------------------------------------------------------------
 Mon Dec  2 06:38:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
