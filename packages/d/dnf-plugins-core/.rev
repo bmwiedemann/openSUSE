@@ -146,4 +146,12 @@
 - Rename dnf-utils package to yum-utils and have it replace removed package in Tumbleweed</comment>
     <requestid>752752</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>22300091a11b5d14c9ed23b6c2dc380a</srcmd5>
+    <version>4.0.12</version>
+    <time>1576505974</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing bug reference for 4.0.7 update changelog entry</comment>
+    <requestid>757118</requestid>
+  </revision>
 </revisionlist>
