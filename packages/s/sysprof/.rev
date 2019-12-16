@@ -139,4 +139,12 @@
     <comment></comment>
     <requestid>720596</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>640e98e0aeb34fddfd817c8f5f002f43</srcmd5>
+    <version>3.34.1</version>
+    <time>1576505943</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>754914</requestid>
+  </revision>
 </revisionlist>

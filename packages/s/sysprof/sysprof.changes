@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:19:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Process search fixes.
+
+-------------------------------------------------------------------
+Tue Sep 10 06:14:12 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + Help fixes.
+  + Build and test fixes.
+  + Updated translations.
+- Require meson >= 0.50.0.
+
+-------------------------------------------------------------------
+Thu Sep  5 20:13:37 NZST 2019 - luke@ljones.dev
+
+- Update to version 3.33.92:
+  + Check for GLib 2.61.3 or newer for features used when removing
+    deprecated API usage from GLib.
+  + Require meson 0.50
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 15 09:33:26 CEST 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.33.90:
+  + Tweak CSS styling a bit.
+  + Hide RAPL rows if no counters were discovered.
+  + Fix --no-battery in sysprof-cli.
+  + Improve parsing of /proc/mounts and /proc/pid/mountinfo.
+  + Improve support for using libsysprof from Flatpak.
+  + Symbol directories are removed from public ABI and consumers
+    should now add directories to SysprofElfSymbolResolver
+    directly.
+- Changes from version 3.33.4:
+  + Build system fixes and improved backports.
+  + New network, disk, battery, and energy sources.
+  + Additional options for sysprof-cli including "syprof-cli
+    --command" support.
+  + i18n is now properly initialized at startup.
+  + Improved styling.
+  + A new "duplex" graph type for read/write type visuals.
+- Changes from version 3.33.3:
+  + This release of Sysprof contains the largest amount of work
+    since we revived the project a few years ago. We have revamped
+    and minimized the ABI of libsysprof-ui considerably. As port of
+    the ABI update, symbols have been changed from Sp to Sysprof to
+    reduce chances of collisions.
+  + With these changes comes a soname bump and upgrade of the D-Bus
+    API provided by the package. Some work has been taken to
+    implement older versions of the sysprofd API so that older
+    clients may continue to work.
+  + Various build system improvements.
+  + A new libsysprof-capture-3.a capture library has been provided
+    to allow application developers to capture data and merge into
+    the profiler stream.
+  + The recording and viewing API has been redesigned and improved.
+  + Sysprof has been backported to support GTK 3.22 and GLib 2.50.
+  + Support for passing file-descriptors has been added to allow
+    profiling integration with GNOME Shell, GJS, and GTK profilers.
+  + New API to allow integration with external tooling that spawns
+    applications is provided so that environment and arguments may
+    be modified.
+  + A new re-record feature has been added.
+  + The capture format can now store log messages, metadata, and
+    file content.
+  + A new org.gnome.Sysprof3 daemon has been added, which is
+    written using GDBus instead of libsystemd. This may improve
+    portability to some distributions.
+  + The portability of Sysprof to non-Linux systems has been
+    improved, however many recording features are still not
+    available on non-Linux platforms.
+  + A new org.gnome.Sysprof3.Profiler XML D-Bus interface is
+    provided for tooling that wants to export Sysprof content via
+    D-Bus.
+  + Various new capture sources have been provided.
+  + sysprofd also implements a compat org.gnome.Sysprof2 D-Bus
+    end-point for older clients.
+  + Updated translations.
+- Add pkgconfig(glib-2.0) and pkgconfig(libdazzle-1.0)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
 Fri Aug  2 08:23:32 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
