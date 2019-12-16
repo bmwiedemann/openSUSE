@@ -758,13 +758,8 @@ rm eclipse.platform.swt/tests/org.eclipse.swt.tests.gtk/ManualTests/org/eclipse/
 
 %build
 #This is the lowest value where the build succeeds. 512m is not enough.
-export MAVEN_OPTS="-Xmx1024m -XX:CompileCommand=exclude,org/eclipse/tycho/core/osgitools/EquinoxResolver,newState ${MAVEN_OPTS}"
-# Ensure we get the jit on arm
-%ifarch %{arm}
-export JAVA_HOME=$(ls -d %{_jvmdir}/java-1.8.0-openjdk-aarch32*)
-%else
+export MAVEN_OPTS="-Xmx2g -XX:CompileCommand=exclude,org/eclipse/tycho/core/osgitools/EquinoxResolver,newState ${MAVEN_OPTS}"
 export JAVA_HOME=%{_jvmdir}/java
-%endif
 
 # Pre-build agent jar needed for AdvancedSourceLookupSupport
 sed -i -e '/createSourcesJar/d' eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/pom.xml
