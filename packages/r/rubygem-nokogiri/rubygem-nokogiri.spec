@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.10.5
+Version:        1.10.7
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
@@ -44,6 +44,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
+Url:            https://nokogiri.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-nokogiri-rpmlintrc
 Source2:        gem2rpm.yml
