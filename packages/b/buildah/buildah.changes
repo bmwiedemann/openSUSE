@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 16 08:54:54 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.12.0
+  * Allow ADD to use http src
+  * imgtype: reset storage opts if driver overridden
+  * Start using containers/common
+  * overlay.bats typo: fuse-overlays should be fuse-overlayfs
+  * chroot: Unmount with MNT_DETACH instead of UnmountMountpoints()
+  * bind: don't complain about missing mountpoints
+  * imgtype: check earlier for expected manifest type
+  * Add history names support
+
+-------------------------------------------------------------------
 Thu Dec  5 08:11:11 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.11.6
