@@ -65,7 +65,7 @@
   boo#1153162: '20191009'
   boo#1153188: '20191014'
   boo#1153514: '20191213'
-  boo#1153562: '20191213'
+  boo#1153562: '20191214'
   boo#1153568: '20191204'
   boo#1154311: '20191018'
   boo#1154582: '20191214'
@@ -84,12 +84,15 @@
   boo#1158326: '20191214'
   boo#1159149: '20191214'
   boo#1159169: '20191212'
+  boo#1159269: '20191214'
   bsc#1114673: '20191202'
   bsc#1120957: '20190508'
   bsc#1126782: '20191016'
   bsc#1131301: '20190424'
   bsc#1133369: '20190424'
   bsc#1151148: '20190917'
+  bsc#1158994: '20191214'
+  bsc#1159185: '20191214'
   gh#os-autoinst/openQA#2159: '20190705'
   gh#os-autoinst/os-autoinst-distri-opensuse#7166: '20190430'
   gh#os-autoinst/os-autoinst-distri-opensuse#7278: '20190423'
@@ -214,7 +217,7 @@ repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bi
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
 
-installcheck-ignore-duplicated-binaries = glade-catalog-gtksourceview python3-clang libc++-devel libc++1 libc++abi-devel libc++abi1 tftpboot-installation-openSUSE-MicroOS-x86_64
+installcheck-ignore-duplicated-binaries = glade-catalog-gtksourceview python3-clang libc++-devel libc++1 libc++abi-devel libc++abi1 tftpboot-installation-openSUSE-MicroOS-x86_64 php7-pear
 
 # for scan_baselibs.py
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
@@ -379,7 +382,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20191214'
+    <value>failed: ''
 published: '20191213'
 publishing: '20191213'
 testing: '20191214'
