@@ -28,6 +28,8 @@
 # zchunk is only available in Leap 15.1 and newer
 %if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
 %bcond_without zchunk
+%else
+%bcond_with zchunk
 %endif
 
 %define major 0
@@ -35,7 +37,7 @@
 %define devname %{name}-devel
 
 Name:           librepo
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Repodata downloading library
 License:        LGPL-2.0-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 14 22:17:03 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.1.1
+  + Create a directory for gpg sockets in /run/user/ (rh#1769831, rh#1771012)
+- Fix bcond declaration for zchunk so defaults are always declared
+
+-------------------------------------------------------------------
 Sun Dec  1 15:37:41 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 1.11.0

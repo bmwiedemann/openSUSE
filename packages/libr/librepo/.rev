@@ -123,4 +123,14 @@
   + Fix API - LrHandleOption enum - LRO_ONETIMEFLAG (rh#1761779)</comment>
     <requestid>752743</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>038cb25ee684842417427d84af26509b</srcmd5>
+    <version>1.11.1</version>
+    <time>1576505963</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.1.1
+  + Create a directory for gpg sockets in /run/user/ (rh#1769831, rh#1771012)
+- Fix bcond declaration for zchunk so defaults are always declared</comment>
+    <requestid>757110</requestid>
+  </revision>
 </revisionlist>
