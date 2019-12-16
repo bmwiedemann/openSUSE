@@ -7,4 +7,13 @@
     <comment>Re-adding arandr, which was earlier removed from factory due to its usage of an older GTK</comment>
     <requestid>738112</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1ba2775aced9be5916dd10bafe8c8b16</srcmd5>
+    <version>0.1.10</version>
+    <time>1576505987</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on Factory by changing icon name to generic &quot;video-display&quot;.
+This allows to remove desktop-data and hicolor-icon-theme buildrequires.</comment>
+    <requestid>757199</requestid>
+  </revision>
 </revisionlist>

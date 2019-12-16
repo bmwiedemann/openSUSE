@@ -1,9 +1,9 @@
 #
 # spec file for package arandr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
-# Copyright (c) 2013 B1 Systems GmbH, Vohburg, Germany <seife+obs@b1-systems.com>
+# Copyright (c) 2013,2019 B1 Systems GmbH, Vohburg, Germany <seife+obs@b1-systems.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,10 @@ License:        GPL-3.0-only
 URL:            https://christian.amsuess.com/tools/arandr/
 Source:         http://christian.amsuess.com/tools/arandr/files/%{name}-%{version}.tar.gz
 Patch1:         arandr-fix_desktop_icon.patch
-BuildRequires:  desktop-data
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  make
 BuildRequires:  python3-devel
-BuildRequires:  python3-gobject
 BuildRequires:  python3-docutils
+BuildRequires:  python3-gobject
 BuildRequires:  update-desktop-files
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1220
