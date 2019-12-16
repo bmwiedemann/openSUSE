@@ -1,7 +1,7 @@
 #
 # spec file for package php7-phpunit8
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           php7-phpunit8
-Version:        8.0.6
+Version:        8.5.0
 Release:        0
 Summary:        Testing framework for PHP
 License:        BSD-2-Clause
@@ -29,23 +29,22 @@ Source2:        %{name}.keyring
 Source3:        https://raw.githubusercontent.com/sebastianbergmann/phpunit/%{version}/LICENSE
 Source4:        https://raw.githubusercontent.com/sebastianbergmann/phpunit/%{version}/README.md
 Source5:        macros.phpunit
-BuildRequires:  php7 < 7.5.0
-BuildRequires:  php7 >= 7.2.0
-Requires:       php7 < 7.5.0
-Requires:       php7 >= 7.2.0
-Requires:       php7-dom
-Requires:       php7-phar
+Source6:        %{name}.rpmlintrc
+BuildRequires:  php7 > 7.2.0
+Requires:       php-dom
+Requires:       php-phar
+Requires:       php7 > 7.2.0
 Obsoletes:      php7-phpunit6
 Obsoletes:      php7-phpunit7_0
+Provides:       php-phpunit = %{version}
+Obsoletes:      php-phpunit < %{version}
 BuildArch:      noarch
 
 %description
 PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks.
 
 %prep
-%setup -q -c -T
 cp %{SOURCE3} %{SOURCE4} .
-cp %{SOURCE0} phpunit
 
 %build
 # empty section
@@ -53,7 +52,7 @@ cp %{SOURCE0} phpunit
 %install
 # Install compiled phar file
 install -d -m 0750 %{buildroot}%{_bindir}
-install -m 0755 phpunit %{buildroot}%{_bindir}/phpunit
+install -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/phpunit
 # Install macros specific for this version of PHPUnit to be used by other applications
 install -d -m 0750 %{buildroot}%{_libexecdir}/rpm/macros.d
 install -m 0644 %{SOURCE5} %{buildroot}%{_libexecdir}/rpm/macros.d/macros.phpunit

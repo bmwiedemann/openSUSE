@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 15 11:30:33 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update package to release 8.5.0
+  * https://github.com/sebastianbergmann/phpunit/blob/8.5/ChangeLog-8.5.md
+- Update package to release 8.4.3
+  * https://github.com/sebastianbergmann/phpunit/blob/8.4.3/ChangeLog-8.4.md
+- Update package to release 8.3.5
+  * https://github.com/sebastianbergmann/phpunit/blob/8.3.5/ChangeLog-8.3.md
+- Update package to release 8.2.5
+  * https://github.com/sebastianbergmann/phpunit/blob/8.2.5/ChangeLog-8.2.md
+- Update package to release 8.1.6
+  * https://github.com/sebastianbergmann/phpunit/blob/8.1.6/ChangeLog-8.1.md
+
+-------------------------------------------------------------------
 Fri Mar 29 11:44:33 UTC 2019 - suse+build@de-korte.org
 
 - Update package to release 8.0.6

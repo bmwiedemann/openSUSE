@@ -1,0 +1,5 @@
+# Silence expected warning
+addFilter("obsolete-not-provided")
+# This can't be fixed without breaking the internal checksums
+# in the .phar file
+addFilter("env-script-interpreter")
