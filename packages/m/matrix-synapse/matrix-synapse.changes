@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 13 13:23:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.7.0.
+
+  * Implement per-room message retention policies.
+  * Add etag and count fields to key backup endpoints to help clients guess if
+    there are new keys.
+  * Configure privacy-preserving settings by default for the room directory.
+  * Add ephemeral messages support by partially implementing MSC2228.
+  * Add support for MSC 2367, which allows specifying a reason on all
+    membership events.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Thu Nov 28 17:41:02 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Drop matrix-synapse-ldap from enabled conditional requirements, because the
