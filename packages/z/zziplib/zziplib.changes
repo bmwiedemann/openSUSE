@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 13 12:28:30 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Make an unconditional error message conditional by checking
+  the return value of a function call.
+  Also removed an unwanted debug output.
+  [bsc#154002, bsc1154002-prevent-unnecessary-perror.patch,
+  CVE-2018-7725.patch]
+
+-------------------------------------------------------------------
 Thu Oct 17 09:30:20 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
 
 - Fixed another instance where division by 0 may occur.

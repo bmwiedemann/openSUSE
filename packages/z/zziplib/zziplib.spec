@@ -34,6 +34,7 @@ Patch4:         CVE-2018-7725.patch
 Patch5:         CVE-2018-16548.patch
 Patch6:         CVE-2018-17828.patch
 Patch7:         bsc1129403-prevent-division-by-zero.patch
+Patch8:         bsc1154002-prevent-unnecessary-perror.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -75,6 +76,7 @@ ZZipLib.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 # do not bother with html docs saving us python2 dependency
 sed -i -e 's:docs ::g' Makefile.am
 
