@@ -3909,6 +3909,7 @@
     <package name="php7-openssl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="php7-pdo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_web -->
     <package name="php7-pear" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-pecl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="php7-pgsql" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="php7-shmop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="php7-snmp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3918,7 +3919,6 @@
     <package name="php7-sysvshm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="php7-tidy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="php7-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_web -->
-    <package name="php7-wddx" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="php7-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_web -->
     <package name="php7-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_web -->
     <package name="php7-xsl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

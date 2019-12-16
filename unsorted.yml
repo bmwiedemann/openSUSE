@@ -10315,7 +10315,7 @@ unsorted:
   - libnm-util2-32bit: [x86_64] 
   - libnma-devel 
   - libnormaliz3 
-  - libnoson1 
+  - libnoson2 
   - libnotify-devel 
   - libnotify-devel-32bit: [x86_64] 
   - libnotify4-32bit: [x86_64] 
@@ -10592,8 +10592,12 @@ unsorted:
   - libpari-gmp-tls6 
   - libparlatype-devel 
   - libparlatype2 
-  - libparpack2-openmpi 
-  - libparpack2-openmpi-32bit: [x86_64] 
+  - libparpack2-openmpi1 
+  - libparpack2-openmpi1-32bit: [x86_64] 
+  - libparpack2-openmpi2 
+  - libparpack2-openmpi2-32bit: [x86_64] 
+  - libparpack2-openmpi3 
+  - libparpack2-openmpi3-32bit: [x86_64] 
   - libparserutils-devel 
   - libparserutils-doc 
   - libparserutils0 
@@ -15467,9 +15471,12 @@ unsorted:
   - parlatype 
   - parlatype-lang 
   - parole-devel 
-  - parpack-openmpi 
-  - parpack-openmpi-devel 
-  - parpack-openmpi-devel-32bit: [x86_64] 
+  - parpack-openmpi1-devel 
+  - parpack-openmpi1-devel-32bit: [x86_64] 
+  - parpack-openmpi2-devel 
+  - parpack-openmpi2-devel-32bit: [x86_64] 
+  - parpack-openmpi3-devel 
+  - parpack-openmpi3-devel-32bit: [x86_64] 
   - partclone 
   - partclone-lang 
   - parted-devel 
@@ -16784,7 +16791,6 @@ unsorted:
   - php7-pear-Net_Sieve 
   - php7-pear-Net_Socket 
   - php7-pear-XML_Parser 
-  - php7-pecl 
   - php7-phalcon 
   - php7-phar 
   - php7-phpunit8 
@@ -17335,6 +17341,7 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
+  - purge-kernels-service 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
@@ -18614,7 +18621,6 @@ unsorted:
   - python2-hl7apy 
   - python2-holidays 
   - python2-hpack 
-  - python2-html2text 
   - python2-html5-parser 
   - python2-html5lib 
   - python2-htmlmin 
@@ -32264,8 +32270,6 @@ unsorted:
   - toluapp-5.1 
   - toluapp-5.3 
   - tomatoes 
-  - tomboy 
-  - tomboy-lang 
   - tomcat 
   - tomcat-admin-webapps 
   - tomcat-docs-webapp 
