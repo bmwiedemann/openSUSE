@@ -24,4 +24,14 @@
   * Fix several icon issues</comment>
     <requestid>729352</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>246f8600f671cbc24213a964d6d0adf4</srcmd5>
+    <version>20191212</version>
+    <time>1576506076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20191212:
+  * Fix several gnome 3.34 issues
+  * Add firefox theme</comment>
+    <requestid>757321</requestid>
+  </revision>
 </revisionlist>
