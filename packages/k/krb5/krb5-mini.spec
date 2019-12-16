@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-mini
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define krb5docdir  %{_defaultdocdir}/krb5
 
 Name:           krb5-mini
-Version:        1.17
+Version:        1.17.1
 Release:        0
 Summary:        MIT Kerberos5 implementation and libraries with minimal dependencies
 License:        MIT
