@@ -1,7 +1,7 @@
 #
 # spec file for package robinhood
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Release:        0
 Summary:        Policy engine and reporting tool for large filesystems
 License:        CECILL-C
 Group:          System/Monitoring
-Url:            https://github.com/cea-hpc/robinhood
+URL:            https://github.com/cea-hpc/robinhood
 Source0:        https://github.com/cea-hpc/robinhood/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
 Patch1:         web-gui.patch
 Patch2:         rbh-config.patch
@@ -44,6 +44,7 @@ BuildRequires:  libmysqlclient-devel
 BuildRequires:  libtool
 BuildRequires:  mailx
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  zlib-devel
 Requires:       which
 Recommends:     mysql-server
 Recommends:     mysql-server-devel
