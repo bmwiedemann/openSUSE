@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 10:13:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt to changes in groovy18 package
+
+-------------------------------------------------------------------
 Fri Jul 12 08:52:04 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jackson 1.9.13

@@ -1,7 +1,7 @@
 #
 # spec file for package jackson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,7 +93,7 @@ ln -s $(build-classpath jsr-311) lib/jaxrs/jsr-311.jar
 ln -s $(build-classpath asm3/asm) lib/ext/asm/asm.jar
 ln -s $(build-classpath asm3/asm) lib/repackaged/jackson-asm.jar
 ln -s $(build-classpath cglib/cglib) lib/ext/cglib/cglib-nodep.jar
-ln -s $(build-classpath groovy18-1.8) lib/ext/groovy/groovy.jar
+ln -s $(build-classpath groovy-1.8) lib/ext/groovy/groovy.jar
 ln -s $(build-classpath junit) lib/junit/junit.jar
 
 sed -i "s,59 Temple Place,51 Franklin Street,;s,Suite 330,Fifth Floor,;s,02111-1307,02110-1301," \

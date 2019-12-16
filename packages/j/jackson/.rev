@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>726400</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b43e65841d693abc5bb65bd0f86537d</srcmd5>
+    <version>1.9.13</version>
+    <time>1576506066</time>
+    <user>dimstar_suse</user>
+    <comment>adapt to groovy18</comment>
+    <requestid>757298</requestid>
+  </revision>
 </revisionlist>
