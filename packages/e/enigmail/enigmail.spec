@@ -18,7 +18,7 @@
 
 
 Name:           enigmail
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        OpenPGP addon for Mozilla Thunderbird
 License:        MPL-2.0
@@ -30,7 +30,7 @@ Source1:        https://www.enigmail.net/download/source/%{name}-%{version}.tar.
 Source2:        enigmail.keyring
 BuildRequires:  fdupes
 BuildRequires:  perl >= 5
-BuildRequires:  python >= 2.7
+BuildRequires:  python3
 BuildRequires:  unzip
 BuildRequires:  zip
 Requires:       gpg2 >= 2.0.7

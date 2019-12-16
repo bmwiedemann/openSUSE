@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 15 11:42:00 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.4:
+  * Fixes for UI glitches
+  * Option to "Attach public key to messages" was not restored properly
+
+-------------------------------------------------------------------
 Sun Nov  3 09:10:05 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enigmail 2.1.3:
