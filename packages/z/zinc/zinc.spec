@@ -17,7 +17,7 @@
 
 
 Name:           zinc
-Version:        0.3.1
+Version:        0.3.15
 Release:        0
 Summary:        Incremental scala compiler
 License:        Apache-2.0
