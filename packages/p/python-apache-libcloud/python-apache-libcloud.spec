@@ -1,7 +1,7 @@
 #
 # spec file for package python-apache-libcloud
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-backports.ssl_match_hostname
@@ -42,6 +43,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python2
 Requires:       python-lxml
 Requires:       python-requests
+Requires:       python-typing
 Suggests:       python-libvirt-python
 Suggests:       python-lockfile
 Suggests:       python-paramiko
