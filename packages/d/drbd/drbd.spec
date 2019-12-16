@@ -27,7 +27,6 @@ Version:        9.0.20~1+git.7dce3c8b
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
-Group:          Productivity/Clustering/HA
 URL:            https://drbd.linbit.com/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        preamble
@@ -36,7 +35,8 @@ Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
 Patch2:         rely-on-sb-handlers.patch
-Patch3:         suse-coccinelle.patch
+Patch3:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
+Patch4:         suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle
 BuildRequires:  kernel-source
@@ -60,7 +60,6 @@ raid 1. It is a building block for setting up clusters.
 
 %package KMP
 Summary:        Kernel driver
-Group:          Productivity/Clustering/HA
 URL:            http://drbd.linbit.com/
 
 %description KMP
@@ -73,6 +72,7 @@ installed kernel.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 mkdir source
 cp -a drbd/. source/. || :

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 16 06:29:42 UTC 2019 - nick wang <nwang@suse.com>
+
+- bsc#1158446, fix metadata limit due to 64k page size of ppc64le.
+  add patch drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 17:48:47 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Fri Oct 11 02:32:09 UTC 2019 - nick wang <nwang@suse.com>
 
 - Update to drbd-9.0.20-1
