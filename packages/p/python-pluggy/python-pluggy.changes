@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 13 14:45:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- importlib-metadata is only a runtime requirement (in accordance
+  with setup.py), remove it from BuildRequires.
+
+-------------------------------------------------------------------
 Fri Sep 13 13:20:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.13.0:

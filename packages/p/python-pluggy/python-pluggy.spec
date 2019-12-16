@@ -33,7 +33,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pluggy
 Source:         https://files.pythonhosted.org/packages/source/p/pluggy/pluggy-%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata >= 0.12}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

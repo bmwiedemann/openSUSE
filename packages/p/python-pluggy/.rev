@@ -119,4 +119,12 @@
   * support python 3.8</comment>
     <requestid>730734</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f44b4ee0b31fcd2731010d50a3a335a1</srcmd5>
+    <version>0.13.0</version>
+    <time>1576513579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756850</requestid>
+  </revision>
 </revisionlist>
