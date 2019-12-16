@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Dec 14 21:11:02 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to stable release 0.90
+
+ * Reworked follow up and copy document
+   set the correct header- and footer-texts according to the doc type
+   Added a checkbox if items should be copied or not
+ * New feature: partial invoices that are substracted in the final 
+   invoice
+ * Use an XML based migration system for document types
+ * Added the first unit tests to Kraft
+ * Made the document templates not containing any language specific 
+   strings any more. There is only one doc now for all languages, 
+   set by localized strings as template variables.
+ * Removed KeepTogether flag for tables to avoid that a long list 
+   of items only starts on the next page. Might have impact on 
+   some docs.
+ * Fixed formatting of the amount number in the XML output
+ * More Less-KDE: Removed more mandatory dependencies on KDE.
+ * Added 'About Kraft' information to Krafts system view.
+ * Added document type 'Offer without price tags', which does not 
+   print price tags on the PDF (issue #58).
+ * Internationalization: Added dutch translation
+
+- Removed the patches fix_install_appdata.patch,
+  fix_nullptr_warning.patch fix_sql_qt12.patch as those went into
+  upstream code.
+
+-------------------------------------------------------------------
+Sat Dec  7 20:13:18 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to v0.90 RC 3
+- Removed patch rcfixes.patch, went into the release 
+
+-------------------------------------------------------------------
+Sun Dec  1 13:26:17 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
+
+Update to Kraft v0.90 RC 2: 
+
+- Add patch rcfixes.patch that fixes a few glitches in the RC.
+- Remove patch fix_install_appdata.patch, gone upstream
+- Remove patch fix_sql_qt12.patch, gone upstream
+- Remove patch fix_nullptr_warning.patch, gone upstream
+ 
+
+-------------------------------------------------------------------
 Wed Dec 26 21:18:55 UTC 2018 - Klaas Freitag <opensuse@freisturz.de>
 
 - Add patch fix_nullptr_warning.patch: Reduce noise when compiling

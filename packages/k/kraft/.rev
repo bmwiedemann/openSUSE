@@ -124,4 +124,12 @@
 - Add patch fix_sql_qt12.patch: Make Kraft build with Qt 5.12 again</comment>
     <requestid>661516</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>29fa457336ddb2b42b6b5797a350ce56</srcmd5>
+    <version>0.90</version>
+    <time>1576505961</time>
+    <user>dimstar_suse</user>
+    <comment>A new stable version of Kraft arrived!</comment>
+    <requestid>757097</requestid>
+  </revision>
 </revisionlist>

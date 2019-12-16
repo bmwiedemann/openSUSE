@@ -1,7 +1,7 @@
 #
 # spec file for package kraft
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2007-2011 Klaas Freitag <freitag@kde.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,16 @@
 
 
 Name:           kraft
-Url:            http://volle-kraft-voraus.de
+URL:            http://volle-kraft-voraus.de
 
-Version:        0.82
+Version:        0.90
 Release:        0
 Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Other
 
-%bcond_without akonadi
+%bcond_with akonadi
+
 %bcond_with qpdfview
 
 Source0:        kraft-%{version}.tar.xz
@@ -34,36 +35,32 @@ Source0:        kraft-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM use_qpdfview.path Open PDFs in qpdfview in appimages
 Patch0:         use_qpdfview.patch
 %endif
-# PATCH-FIX-UPSTREAM fix_install_appdata.patch Install appdata in correct place
-Patch1:         fix_install_appdata.patch
-# PATCH-FIX-UPSTREAM fix build with Qt 5.12. Can be applied regardless of Qt version, but needed for Qt 5.12
-Patch2:         fix_sql_qt12.patch
-# PATCH-FIX-UPSTREAM Do not show the compiler warnings for wrong nullptr initialization, too much noise
-Patch3:         fix_nullptr_warning.patch
 
+# Continue to use python2 for now.
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-%if 0%{?suse_version}
-# requires need to be python2-PyPDF2 for later distros
-Requires:       python-PyPDF2
-Requires:       python-libxml2
-Requires:       python-reportlab
+Requires:       python2-PyPDF2
+Requires:       python2-reportlab
+Requires:       python2-six
+Requires:       python2-xml
 
 %if %{with akonadi}
 BuildRequires:  akonadi-contact-devel
 %endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  kcodecs-devel
+BuildRequires:  kconfig-devel
 BuildRequires:  kcontacts-devel
 BuildRequires:  ki18n-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libctemplate-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
-%endif
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(sqlite3)
 
 %description
 Kraft is KDE software to help to create and manage office documents such as
@@ -79,9 +76,6 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 
@@ -115,7 +109,8 @@ chmod 755 %{buildroot}%{_datadir}/kraft/tools/erml2pdf.py
 %{_datadir}/kraft/
 %{_datadir}/kxmlgui5/kraft/kraftui.rc
 %{_datadir}/kxmlgui5/kraft/katalogview.rc
-%{_datadir}/locale/*/LC_MESSAGES/kraft.mo
+%lang(de) %{_datadir}/locale/de/LC_MESSAGES/kraft.mo
+%lang(nl) %{_datadir}/locale/nl/LC_MESSAGES/kraft.mo
 
 %dir %{_datadir}/config.kcfg
 %dir %{_datadir}/kxmlgui5/kraft
