@@ -1,0 +1,74 @@
+From 919076fa77a216c7ad592eb7420d78169d8631b7 Mon Sep 17 00:00:00 2001
+From: Stefano Crocco <stefano.crocco@alice.it>
+Date: Sun, 3 Nov 2019 19:15:24 +0100
+Subject: Restore ability to close tab by clicking on close button
+
+Summary:
+After making KTabBar and KTabWidget part of Konqueror, clicking on the close
+button of a tab didn't make the tab close any longer. This fixes it
+
+Test Plan:
+Open several tabs in Konqueror, then click on their close button and
+check that they close. Check that when only one tab remains, the tab bar is
+hidden
+
+Reviewers: dfaure
+
+Reviewed By: dfaure
+
+Differential Revision: https://phabricator.kde.org/D25662
+---
+ src/konqtabs.cpp | 8 ++++----
+ src/konqtabs.h   | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/konqtabs.cpp b/src/konqtabs.cpp
+index 9858bd6..53a5440 100644
+--- a/src/konqtabs.cpp
++++ b/src/konqtabs.cpp
+@@ -83,7 +83,7 @@ KonqFrameTabs::KonqFrameTabs(QWidget *parent, KonqFrameContainerBase *parentCont
+     if (KonqSettings::tabPosition() == QLatin1String("Bottom")) {
+         setTabPosition(QTabWidget::South);
+     }
+-    connect(this, SIGNAL(closeRequest(QWidget*)), SLOT(slotCloseRequest(QWidget*)));
++    connect(this, &KonqFrameTabs::tabCloseRequested, this, &KonqFrameTabs::slotCloseRequest);
+     connect(this, SIGNAL(removeTabPopup()),
+             m_pViewManager->mainWindow(), SLOT(slotRemoveTabPopup()));
+ 
+@@ -352,9 +352,9 @@ void KonqFrameTabs::refreshSubPopupMenuTab()
+                                       m_pViewManager->mainWindow()->action("removeothertabs")->shortcut());
+ }
+ 
+-void KonqFrameTabs::slotCloseRequest(QWidget *w)
++void KonqFrameTabs::slotCloseRequest(int idx)
+ {
+-    m_pViewManager->mainWindow()->setWorkingTab(indexOf(w));
++    m_pViewManager->mainWindow()->setWorkingTab(idx);
+     emit removeTabPopup();
+ }
+ 
+@@ -614,7 +614,7 @@ bool KonqFrameTabs::eventFilter(QObject *watched, QEvent *event)
+             if (e->button() == Qt::MidButton) {
+                 if (event->type() == QEvent::MouseButtonRelease) {
+                     const int index = bar->tabAt(e->pos());
+-                    slotCloseRequest(widget(index));
++                    slotCloseRequest(index);
+                 }
+                 e->accept();
+                 return true;
+diff --git a/src/konqtabs.h b/src/konqtabs.h
+index 3ce3548..01091ea 100644
+--- a/src/konqtabs.h
++++ b/src/konqtabs.h
+@@ -138,7 +138,7 @@ private:
+ private Q_SLOTS:
+     void slotContextMenu(const QPoint &);
+     void slotContextMenu(QWidget *, const QPoint &);
+-    void slotCloseRequest(QWidget *);
++    void slotCloseRequest(int);
+     void slotMovedTab(int, int);
+     void slotMouseMiddleClick();
+     void slotMouseMiddleClick(QWidget *);
+-- 
+cgit v1.1
+

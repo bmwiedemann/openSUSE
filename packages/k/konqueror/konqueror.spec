@@ -34,6 +34,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         Restore-ability-to-close-tab-by-clicking-on-close-button.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libtidy-devel
@@ -121,6 +123,7 @@ Development package for the konqueror libraries.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %if 0%{?suse_version} < 1330
