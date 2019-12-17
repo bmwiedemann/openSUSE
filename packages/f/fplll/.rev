@@ -31,4 +31,12 @@
     <comment>- Update to release 5.3.0</comment>
     <requestid>750567</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9348f2536204a4678d91b006e377987f</srcmd5>
+    <version>5.3.1</version>
+    <time>1576585782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.1</comment>
+    <requestid>757378</requestid>
+  </revision>
 </revisionlist>
