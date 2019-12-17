@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">bazel-toolchains</param>
-    <param name="versionformat">%cd</param>
-    <param name="revision">37419a124bdb9af2fec5b99a973d359b6b899b61</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">1.1.0</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

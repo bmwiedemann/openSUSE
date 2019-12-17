@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-toolchains
-Version:        20190102
+Version:        1.1.0
 Release:        0
 Summary:        Set of Bazel toolchain configurations
 License:        Apache-2.0
@@ -52,15 +52,7 @@ This package contains source code of bazel-toolchains.
 
 %install
 mkdir -p %{buildroot}%{src_install_dir}
-tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
-# Fix env-script-interpreter error.
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!/usr/bin/env python|#!/usr/bin/python|' "{}" +
-# Yes, almost all BUILD and some .bzl files for clang and java have executable bits...
-find %{buildroot}%{src_install_dir} \( -name "BUILD" -o -name "CROSSTOOL" -o -name "*.bzl" \) \( -path "*clang*" -o -path "*java*" \) -exec chmod -x "{}" +
-# And one Pythos script with sheband does not have executable bit...
-chmod +x %{buildroot}%{src_install_dir}/container/build.py
-# Remove hidden files and directories
-find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rf "{}" +
+cp -r * %{buildroot}%{src_install_dir}
 
 %fdupes %{buildroot}%{src_install_dir}
 
@@ -70,4 +62,3 @@ find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rf "{}" +
 %{src_install_dir}
 
 %changelog
-
