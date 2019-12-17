@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,12 +16,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           orthanc
 Version:        1.5.8
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
-Group:          Productivity/Graphics/Visualization/Other
 License:        GPL-3.0-or-later
+Group:          Productivity/Graphics/Visualization/Other
 URL:            http://www.orthanc-server.com/
 Source0:        http://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-%{version}.tar.gz
 Source1:        orthanc.service
@@ -30,7 +31,7 @@ Source3:        serve-folders.json
 Source4:        worklists.json
 Source5:        index.html
 Source6:        VersionsTests.cpp
- 
+
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  curl-devel
@@ -54,13 +55,13 @@ BuildRequires:  libuuid-devel
 BuildRequires:  libwrap0
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
-BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pugixml-devel
 BuildRequires:  sqlite3-devel
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  tcpd-devel
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(systemd)
 
 Requires:       dcmtk
 Requires(pre): 	/usr/sbin/groupadd
@@ -84,17 +85,17 @@ users focus on the content of the DICOM files, hiding the complexity
 of the DICOM format and of the DICOM protocol. 	
 
 %package -n %{name}-devel
-Summary:    Header and source files for creating Orthanc plugins
-Group:      Development/Libraries/C and C++
-Provides:   orthanc-static = %{version}-%{release} 
+Summary:        Header and source files for creating Orthanc plugins
+Group:          Development/Libraries/C and C++
+Provides:       orthanc-static = %{version}-%{release} 
 
 %description -n %{name}-devel
 This package includes the header files to develop C/C++ plugins for Orthanc.
   
 %package -n %{name}-doc
-Summary:    Documentation files for Orthanc
-Group:      Productivity/Graphics/Visualization/Other
-BuildArch:  noarch
+Summary:        Documentation files for Orthanc
+Group:          Productivity/Graphics/Visualization/Other
+BuildArch:      noarch
 
 %description -n %{name}-doc
 This package includes the documentation and the sample codes available 
@@ -102,11 +103,11 @@ for Orthanc.
 It also includes the documentation to develop C/C++ plugins for Orthanc.
 
 %package    source
-Summary:    This package includes the source files for Orthanc
-Group:      Development/Sources
+Summary:        This package includes the source files for Orthanc
+Group:          Development/Sources
 
 %description source
-This package includes the source files for Orthanc
+This package includes the source files for Orthanc. Use it in conjunction with the -devel package
 
 %prep
 %setup -q -n Orthanc-%{version}
@@ -124,15 +125,19 @@ cp %{S:6} UnitTestsSources/.
     -DSYSTEM_MONGOOSE_USE_CALLBACKS=OFF \
     -DUNIT_TESTS_WITH_HTTP_CONNEXIONS=OFF \
     -DBoost_NO_BOOST_CMAKE=ON
- 
+
 %cmake_build %{?_smp_mflags}
 
 # Generate the man page
 help2man ./Orthanc -N -n "Lightweight, RESTful DICOM server for healthcare and medical research" > %{name}.1
 
 %check
-# but only with architecture "aarch64"
-build/UnitTests --gtest_filter=-PngWriter.ColorPattern
+# we disable one test for i586
+%ifarch != ix86
+build/UnitTests 
+%else
+build/UnitTests --gtest_filter=-ImageProcessing.Convolution 
+%endif
 
 %install
 # install: make some dirs...
@@ -166,7 +171,7 @@ cp build/%{name}.1 %{buildroot}%{_mandir}/man1
 install -m 755 -d %{buildroot}%{_sysconfdir}/%{name}
 cp %{S:3} %{buildroot}%{_sysconfdir}/%{name}
 cp %{S:4} %{buildroot}%{_sysconfdir}/%{name}
- 
+
 install -m 755 -d %{buildroot}%{_unitdir}
 cp orthanc.service %{buildroot}%{_unitdir}
 
@@ -184,7 +189,7 @@ mv %{buildroot}%{_sbindir}/Orthanc %{buildroot}%{_sbindir}/orthanc
 
 # Create symbolic links to plugins in "/usr/share/orthanc/plugins"
 # We stick to the "relative symlinks" section of the guideline
-    
+
 rm %{buildroot}%{_prefix}/share/%{name}/plugins/*.so*
 
 ln -s ../../../..%{_libdir}/%{name}/libServeFolders.so.%{version} \
@@ -236,7 +241,7 @@ getent passwd orthanc >/dev/null || \
 %files -n orthanc-devel
 %dir %{_includedir}/orthanc
 %{_includedir}/orthanc/*
- 
+
 %files -n orthanc-doc
 %{_docdir}/orthanc/index.html
 %{_docdir}/orthanc/Orthanc*

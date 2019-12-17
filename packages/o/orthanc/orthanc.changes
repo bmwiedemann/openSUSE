@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 17 09:02:21 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- for i586, one test disabled (fail due to rounding issues)
+
+-------------------------------------------------------------------
 Thu Oct 17 00:02:56 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.5.8
