@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 17 03:11:23 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 10.01
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.01  2019-12-16
+    - Fixed an unlock concurrency issue in Minion::Backend::Pg.
+
+-------------------------------------------------------------------
 Tue Nov 19 08:36:52 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 10.0
