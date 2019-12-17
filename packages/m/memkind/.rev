@@ -70,4 +70,15 @@
   * Fixed integration with Travis CI</comment>
     <requestid>755604</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a121ddfffccf35fe1688d6a266cd4298</srcmd5>
+    <version>1.9.0</version>
+    <time>1576598080</time>
+    <user>dimstar_suse</user>
+    <comment>Just a submission for some policy: mentioning the Jira Epic issue
+numbers.
+- Update memkind to version 1.9.0 (jsc#SLE-8598 aka jsc#SLE-8515,
+  jsc#SLE-10102 aka jsc#SLE-7950)</comment>
+    <requestid>757563</requestid>
+  </revision>
 </revisionlist>
