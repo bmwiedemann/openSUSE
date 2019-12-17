@@ -1,13 +1,13 @@
-Index: mpv/player/main.c
-===================================================================
---- mpv.orig/player/main.c
-+++ mpv/player/main.c
-@@ -384,7 +384,7 @@ int mp_initialize(struct MPContext *mpct
-     if (handle_help_options(mpctx))
-         return 1; // help
+diff --git a/common/av_log.c b/common/av_log.c
+index 8b0cb09efa..72968aa543 100644
+--- a/common/av_log.c
++++ b/common/av_log.c
+@@ -218,7 +218,7 @@ bool print_libav_versions(struct mp_log *log, int v)
  
--    if (!print_libav_versions(mp_null_log, 0)) {
-+    if (0 && !print_libav_versions(mp_null_log, 0)) {
-         print_libav_versions(mpctx->log, MSGL_FATAL);
-         MP_FATAL(mpctx, "\nmpv was compiled against an incompatible version of "
-                  "FFmpeg/Libav than the shared\nlibrary it is linked against. "
+     mp_msg(log, v, "%s version: %s\n", LIB_PREFIX, av_version_info());
+ 
+-    return !mismatch;
++    return true;
+ }
+ 
+ #undef V
