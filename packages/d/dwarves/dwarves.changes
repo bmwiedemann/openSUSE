@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 16 15:50:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16
+  * btf_loader: Add support for BTF_KIND_FUNC
+
+-------------------------------------------------------------------
 Thu Jun 27 11:22:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.15

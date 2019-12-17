@@ -1,7 +1,7 @@
 #
 # spec file for package dwarves
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           dwarves
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
-Url:            http://acmel.wordpress.com/
+URL:            http://acmel.wordpress.com/
 #Git-Clone:	git://git.kernel.org/pub/scm/devel/pahole/pahole
 #Git-Web:	http://git.kernel.org/cgit/devel/pahole/pahole.git
-Source:         https://git.kernel.org/pub/scm/devel/pahole/pahole.git/snapshot/pahole-%version.tar.gz
-Source2:        libbpf-0.0.3+git30.tar.xz
+Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
+Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.142
@@ -80,8 +80,7 @@ This package contains the development files for libdwarves, a library
 for processing DWARF, a debugging data format for ELF files.
 
 %prep
-%setup -qn pahole-%version -a2
-mv libbpf-0*/* lib/bpf/
+%setup -cq
 
 %build
 %cmake
@@ -94,17 +93,14 @@ make %{?_smp_mflags}
 %postun -n libdwarves1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc README NEWS
 %_bindir/*
 %_mandir/man*/*
 
 %files -n libdwarves1
-%defattr(-,root,root)
 %_libdir/*.so.1*
 
 %files -n libdwarves-devel
-%defattr(-,root,root)
 %_libdir/*.so
 %_includedir/*
 %_datadir/%name
