@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           f2fs-tools
-Version:        1.12
+Version:        1.13.0
 Release:        0
 Summary:        Utilities for the Flash-friendly Filesystem (F2FS)
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Filesystems
-Url:            https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git
+URL:            https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git
 Source:         %name-%version.tar.xz
 Patch1:         f2fs-tools-1.4.0-bigendian.patch
 BuildRequires:  autoconf
@@ -40,19 +40,19 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Utilities needed to create and maintain so-called Flash-Friendly (F2)
 filesystems.
 
-%package -n libf2fs6
+%package -n libf2fs7
 Summary:        Library to manipulate F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs6
+%description -n libf2fs7
 This package contains a shared library used for manipulation of F2
 filesystems.
 
-%package -n libf2fs_format5
+%package -n libf2fs_format6
 Summary:        Library to create F2 filesystems
 Group:          System/Libraries
 
-%description -n libf2fs_format5
+%description -n libf2fs_format6
 This package contains a shared library to format F2 filesystems.
 
 %package compat
@@ -67,8 +67,8 @@ needed for programs that assume these locations.
 %package devel
 Summary:        Development files for f2fs
 Group:          Development/Languages/C and C++
-Requires:       libf2fs6 = %version
-Requires:       libf2fs_format5 = %version
+Requires:       libf2fs7 = %version
+Requires:       libf2fs_format6 = %version
 
 %description devel
 This package contains development files for %name.
@@ -93,31 +93,26 @@ ln -sf "%_sbindir"/{defrag.f2fs,dump.f2fs,f2fstat,fibmap.f2fs,fsck.f2fs,mkfs.f2f
 cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 	"%buildroot/%_includedir/"
 
-%post   -n libf2fs6 -p /sbin/ldconfig
-%postun -n libf2fs6 -p /sbin/ldconfig
-%post   -n libf2fs_format5 -p /sbin/ldconfig
-%postun -n libf2fs_format5 -p /sbin/ldconfig
+%post   -n libf2fs7 -p /sbin/ldconfig
+%postun -n libf2fs7 -p /sbin/ldconfig
+%post   -n libf2fs_format6 -p /sbin/ldconfig
+%postun -n libf2fs_format6 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %_sbindir/*
 %_mandir/man8/*
 
-%files -n libf2fs6
-%defattr(-,root,root)
+%files -n libf2fs7
 %_libdir/libf2fs.so.*
 
-%files -n libf2fs_format5
-%defattr(-,root,root)
+%files -n libf2fs_format6
 %_libdir/libf2fs_format.so.*
 
 %files compat
-%defattr(-,root,root)
 /sbin/*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/*.h
 %_libdir/libf2fs*.so
 
