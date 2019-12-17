@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 17 09:34:53 UTC 2019 - Torsten Ohlenforst <torsten.ohlenforst@pretzel-solutions.com>
+
+- Added missing dependency to package python3-pyaml.
+
+-------------------------------------------------------------------
 Thu Sep 19 21:13:13 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use correct QWT dependency, qwt6-devel refers to the Qt4 version on

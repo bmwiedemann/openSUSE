@@ -86,6 +86,7 @@ BuildRequires:  typelib(PangoCairo) = 1.0
 BuildRequires:  typelib(cairo) = 1.0
 Requires:       python3-numpy
 Requires:       python3-qt5
+Requires:       python3-pyaml >= 3.11
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
