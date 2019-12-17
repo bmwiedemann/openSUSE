@@ -19,7 +19,7 @@
 %define soversion 2
 
 Name:           pulseaudio-qt
-Version:        1.1.0
+Version:        1.2
 Release:        0
 Summary:        Qt bindings for PulseAudio
 License:        LGPL-2.1-or-later
@@ -78,8 +78,9 @@ PulseAudio.
 
 %files -n libKF5PulseAudioQt%{soversion}
 %license COPYING.LIB
+%doc README.md
 %{_kf5_libdir}/libKF5PulseAudioQt.so.%{soversion}
-%{_kf5_libdir}/libKF5PulseAudioQt.so.%{version}
+%{_kf5_libdir}/libKF5PulseAudioQt.so.%{version}.0
 
 %files devel
 %dir %{_includedir}/KF5/
