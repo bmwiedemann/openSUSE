@@ -1,8 +1,8 @@
-Index: libvirt-5.10.0/tools/Makefile.am
+Index: libvirt-4.0.0/tools/Makefile.am
 ===================================================================
---- libvirt-5.10.0.orig/tools/Makefile.am
-+++ libvirt-5.10.0/tools/Makefile.am
-@@ -60,6 +60,7 @@ PODFILES = \
+--- libvirt-4.0.0.orig/tools/Makefile.am
++++ libvirt-4.0.0/tools/Makefile.am
+@@ -52,6 +52,7 @@ PODFILES = \
  	virt-sanlock-cleanup.pod \
  	virt-xml-validate.pod \
  	virsh.pod \
@@ -10,7 +10,7 @@ Index: libvirt-5.10.0/tools/Makefile.am
  	$(NULL)
  
  MANINFILES = \
-@@ -94,7 +95,7 @@ MAINTAINERCLEANFILES =
+@@ -86,7 +87,7 @@ MAINTAINERCLEANFILES =
  confdir = $(sysconfdir)/libvirt
  conf_DATA =
  
@@ -19,7 +19,7 @@ Index: libvirt-5.10.0/tools/Makefile.am
  bin_PROGRAMS = virsh virt-admin
  libexec_SCRIPTS = libvirt-guests.sh
  man1_MANS = \
-@@ -121,6 +122,8 @@ bin_PROGRAMS += virt-host-validate
+@@ -112,6 +113,8 @@ bin_PROGRAMS += virt-host-validate
  man1_MANS += virt-host-validate.1
  endif WITH_HOST_VALIDATE
  
@@ -28,11 +28,11 @@ Index: libvirt-5.10.0/tools/Makefile.am
  virt-xml-validate: virt-xml-validate.in Makefile
  	$(AM_V_GEN)sed -e 's|[@]schemadir@|$(pkgdatadir)/schemas|g' \
  		       -e 's|[@]VERSION@|$(VERSION)|g' \
-Index: libvirt-5.10.0/tools/virt-create-rootfs
+Index: libvirt-4.0.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
-+++ libvirt-5.10.0/tools/virt-create-rootfs
-@@ -0,0 +1,214 @@
++++ libvirt-4.0.0/tools/virt-create-rootfs
+@@ -0,0 +1,231 @@
 +#!/bin/sh
 +set -e
 +
@@ -57,7 +57,6 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs
 +    -a, --arch          target architecture
 +    -u, --url           URL of the registration server
 +    -c, --regcode       registration code for the product
-+    -p, --root-pass     the root password to set in the root FS
 +    --dry-run           don't actually run it
 +EOF
 +}
@@ -67,7 +66,6 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs
 +DISTRO=
 +URL=
 +REG_CODE=
-+ROOT_PASS=
 +DRY_RUN=
 +
 +while test $# -gt 0
@@ -140,14 +138,6 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs
 +        shift
 +        ;;
 +
-+    -p | --root-pass)
-+        if test $# -lt 2; then
-+            fail "$1 needs a value"
-+        fi
-+        ROOT_PASS=$2
-+        shift
-+        ;;
-+
 +    --dry-run)
 +        DRY_RUN="yes"
 +        ;;
@@ -177,15 +167,32 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs
 +function install_sle
 +{
 +    PRODUCT="$1"
-+    VERSION="$2"
++    TARGET_VERSION="$2"
 +
-+    case "$VERSION" in
++    case "$TARGET_VERSION" in
 +        12.0)
 +            # Transform into zypper internal version scheme
-+            VERSION="12"
++            TARGET_VERSION="12"
++            ;;
++        15.0)
++            TARGET_VERSION="15"
++            ;;
++        12.*|15.*)
 +            ;;
 +        *)
-+            fail "Unhandled SLE version: $VERSION"
++            fail "Unhandled SLE version: $TARGET_VERSION"
++            ;;
++    esac
++
++    # Depending on the distro we run, we may have some preliminary things to do
++    . /etc/os-release
++    case "$VERSION_ID" in
++        15*)
++            # on SLE 15 we need to symlink the two path to the RPM DB or the GPG
++            # key won't be found.
++            mkdir -p "$ROOT/usr/lib/sysimage/rpm"
++            mkdir -p "$ROOT/var/lib"
++            ln -s ../../usr/lib/sysimage/rpm "$ROOT/var/lib"
 +            ;;
 +    esac
 +
@@ -209,13 +216,30 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs
 +    if test -n "$URL"; then
 +        CONNECT_ARGS="$CONNECT_ARGS --url $URL"
 +    fi
-+    $RUN SUSEConnect -p "$PRODUCT/$VERSION/$ARCH" --root "$ROOT" $CONNECT_ARGS
++
++    PATTERN=Minimal
++    case "$TARGET_VERSION" in
++        12*)
++            $RUN SUSEConnect -p "$PRODUCT/$TARGET_VERSION/$ARCH" --root "$ROOT" $CONNECT_ARGS
++            ;;
++        15*)
++            # Due to SLE 15 modules we need to add the product first, let it fail,
++            # add the basesystem
++            set +e
++            $RUN SUSEConnect -p "$PRODUCT/$TARGET_VERSION/$ARCH" --root "$ROOT" $CONNECT_ARGS
++            set -e
++            $RUN SUSEConnect -p "sle-module-basesystem/$TARGET_VERSION/$ARCH" --root "$ROOT" $CONNECT_ARGS
++            PATTERN=base
++            ;;
++    esac
 +
 +    # Then we install what we need
-+    call_zypper in -t pattern Minimal
++    call_zypper -n in --auto-agree-with-licenses -t pattern $PATTERN
 +
-+    # Create the baseproduct symlink
-+    ln -s $PRODUCT.prod "$ROOT/etc/products.d/baseproduct"
++    # Create the baseproduct symlink if missing
++    if ! test -e "$ROOT/etc/products.d/baseproduct"; then
++        ln -s $PRODUCT.prod "$ROOT/etc/products.d/baseproduct"
++    fi
 +}
 +
 +case "$DISTRO" in
@@ -227,16 +251,9 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs
 +        ;;
 +
 +    openSUSE-*)
-+        VERSION=${DISTRO:9}
-+        case "$VERSION" in
-+            13.1)
-+                REPO="http://download.opensuse.org/distribution/13.1/repo/oss/"
-+                UPDATE_REPO="http://download.opensuse.org/update/13.1/"
-+                ;;
-+            *)
-+                fail "Unhandled openSUSE version: $VERSION"
-+                ;;
-+        esac
++        TARGET_VERSION=${DISTRO:9}
++        REPO="http://download.opensuse.org/distribution/$TARGET_VERSION/repo/oss/"
++        UPDATE_REPO="http://download.opensuse.org/update/$TARGET_VERSION/"
 +        call_zypper ar "$REPO" "openSUSE"
 +        call_zypper ar "$UPDATE_REPO" "openSUSE udpate"
 +        call_zypper in --no-recommends -t pattern base
@@ -247,11 +264,11 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs
 +    echo "pts/0" >> "$ROOT/etc/securetty"
 +    chroot "$ROOT" /usr/bin/passwd
 +fi
-Index: libvirt-5.10.0/tools/virt-create-rootfs.pod
+Index: libvirt-4.0.0/tools/virt-create-rootfs.pod
 ===================================================================
 --- /dev/null
-+++ libvirt-5.10.0/tools/virt-create-rootfs.pod
-@@ -0,0 +1,77 @@
++++ libvirt-4.0.0/tools/virt-create-rootfs.pod
+@@ -0,0 +1,73 @@
 +=head1 NAME
 +
 +virt-create-rootfs - tool to create a root file system for distro containers.
@@ -302,10 +319,6 @@ Index: libvirt-5.10.0/tools/virt-create-rootfs.pod
 +
 +For SLE distributions, set the registration server to use.
 +Default: http://scc.suse.com.
-+
-+=item B<-p, --root-pass>
-+
-+If defined, set the root password for the new root file system.
 +
 +=item B<--dry-run>
 +
