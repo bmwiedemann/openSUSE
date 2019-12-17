@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 09:12:01 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20191217.e62caa7a:
+  * findfileconflicts: Ignore kernel installed certificates in /etc/uefi/certs
+
+-------------------------------------------------------------------
 Tue Dec 10 12:41:41 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20191210.9a8ba5b5:
