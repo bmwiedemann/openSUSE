@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>756800</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>90d57998139a9a97206e80397dbc222e</srcmd5>
+    <version>2.10.7</version>
+    <time>1576585792</time>
+    <user>dimstar_suse</user>
+    <comment>Stop overriding default patch fuzz in spec file</comment>
+    <requestid>757444</requestid>
+  </revision>
 </revisionlist>

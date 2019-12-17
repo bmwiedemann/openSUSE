@@ -137,9 +137,6 @@ object-oriented and functional programming. This package enables support for
 the Scala ant tasks.
 
 %prep
-
-%global _default_patch_fuzz 2
-
 %setup -q -n %{base_name}-%{version}
 %patch1 -p1 -b .tool
 %patch2 -p1 -b .sysjline
