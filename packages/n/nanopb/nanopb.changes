@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec 17 13:41:21 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 0.3.9.4:
+  * Publishing nanopb-0.3.9.4
+  * Update changelog
+  * Add test for PB_ENCODE_ARRAYS_UNPACKED
+  * Fix "unused variable" warning when using PB_ENCODE_ARRAYS_UNPACKED
+  * Fix undefined behavior with bool fields (#434)
+  * Make fuzztest detect invalid bool values (#434)
+  * .gitignore: don't ignore generator-bin files (#419)
+  * Don't call stream callback with count=0 (#421)
+  * network_server example: Detect count=0 in read_callback() (#421)
+  * Add scons package to travis rules, for build automation
+  * Introduce new compile time flag: PB_ENCODE_ARRAYS_UNPACKED
+  * Add migration note about enum min/max
+  * Use min/max enum value for min/max
+  * Publishing nanopb-0.3.9.3
+  * Fix generator error with mangle_names option (#380)
+  * Add testcase for #380
+  * Fix incorrect PB_STATIC_ASSERT for bytes inside oneof (#363)
+  * Add testcase for #363
+  * Generator: Allow comma separated options in plugin mode (#343)
+  * Fix encoding of fixed size arrays inside proto3 submessages (#376)
+  * Add regression test for issue #376
+
+-------------------------------------------------------------------
 Mon Jan  7 15:47:22 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
 
 - Enable PB_FIELD_16BIT setting to add support for tag numbers >

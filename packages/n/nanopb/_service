@@ -6,7 +6,7 @@
     <param name="filename">nanopb</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">nanopb(.*)</param>
-    <param name="revision">refs/tags/nanopb-0.3.9.2</param>
+    <param name="revision">refs/tags/nanopb-0.3.9.4</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

@@ -20,7 +20,7 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           nanopb
-Version:        0.3.9.2
+Version:        0.3.9.4
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
