@@ -2373,4 +2373,20 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Fixed numerous issues  posted to GitHub</comment>
     <requestid>752343</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>68c87569bd7b5e14d9053da463fa451e</srcmd5>
+    <version>7.0.9.8</version>
+    <time>1576585751</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.8
+  * -type bilevel behavior restored, it creates a black and white image.
+  * Support Pocketmod image format, e.g.
+    convert -density 300 pages?.pdf pocketmod:organize.pdf
+  * Fixed numerous issues  posted to GitHub (reference
+    https://github.com/ImageMagick/ImageMagick/issues).
+  * Update documentation.
+- deleted patches
+  - ImageMagick-targa.patch (upstreamed)</comment>
+    <requestid>756007</requestid>
+  </revision>
 </revisionlist>
