@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,11 +26,10 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-gazelle
-Version:        0.16.0
+Version:        0.19.0
 Release:        0
 Summary:        Generator of Bazel build files for Go projects
 License:        Apache-2.0
-Group:          Development/Tools/Building
 Url:            https://github.com/bazelbuild/bazel-gazelle
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  golang-packaging
@@ -48,7 +47,6 @@ custom rule sets.
 
 %package source
 Summary:        Source code of bazel-gazelle
-Group:          Development/Sources
 BuildArch:      noarch
 
 %description source
@@ -85,4 +83,3 @@ tar -xJf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-

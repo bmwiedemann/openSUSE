@@ -8,4 +8,41 @@
 </comment>
     <requestid>667469</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>345c44441807dcab27c4176f3101c4fd</srcmd5>
+    <version>0.19.0</version>
+    <time>1576598086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.19.0:
+  * Update to rules_go v0.20.0 (#660)
+  * Export IsStandard (#659)
+  * Update language/go/std_package_list.go (#658)
+  * go_repository should correctly identify build files and respect build_file_name (#655)
+  * Update known proto dependency resolution tables (#653)
+  * repo: repository directive (#651)
+  * Allow passing additional visibility to internal packages (#649)
+  * language/go: simpler submodule visibility (#648)
+  * repo, language/go: refactor Go-specific functionality out of repo (#647)
+  * Update boilerplate for rules_go v0.19.4 [skip ci] (#645)
+  * Revert &quot;language/go, go_repository: submodule visibility (#637)&quot; (#641)
+  * Excluding consumed generated files from go_library (#643)
+  * Making resolveGo public (#642)
+  * language/go, go_repository: submodule visibility (#637)
+  * rule: add BzlExprValue interface and make PlatformStrings use it (#636)
+  * Update boilerplate for rules_go 0.19.4 [skip ci] (#633)
+  * go_repository: add go_repository_config for caching relevant repo config (#615)
+  * Update boilerplate for gazelle 0.18.2 [skip ci] (#628)
+  * autogazelle: use default syntax for expanding $1 (#627)
+  * gazelle_binary: set package name to 'main' in GoLibrary (#625)
+  * Add iOS platform and OS aliases (#612)
+  * Fix update-repos -build_tags documentation [ci skip] (#624)
+  * repo: add version/commit select for update-repos (#595)
+  * Update rules_go boilerplate to 0.19.3 [skip ci] (#621)
+  * Update rules_go boilerplate [skip ci] (#620)
+  * Rewrite README intro to be less Go-specific [skip ci] (#618)
+  * Add issue template [skip ci] (#617)
+  * Upgrade github.com/bazelbuild/buildtools to latest (#608)
+  * go_repository takes Gazelle directives (#603) (forwarded request 757533 from mrostecki)</comment>
+    <requestid>757534</requestid>
+  </revision>
 </revisionlist>

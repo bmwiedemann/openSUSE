@@ -5,7 +5,8 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">bazel-gazelle</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">refs/tags/0.16.0</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v0.19.0</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
