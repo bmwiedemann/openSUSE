@@ -1,4 +1,678 @@
 -------------------------------------------------------------------
+Mon Dec 16 12:10:39 CET 2019 - tiwai@suse.de
+
+- rpm/kernel-subpackage-spec: Fix empty Recommends tag (bsc#1143959)
+- commit 3fd22e2
+
+-------------------------------------------------------------------
+Mon Dec 16 10:30:06 CET 2019 - bp@suse.de
+
+- crypto: ccp - Release all allocated memory if sha type is
+  invalid (bsc#1156259 CVE-2019-18808).
+- commit c8b14a1
+
+-------------------------------------------------------------------
+Fri Dec 13 12:10:13 CET 2019 - jslaby@suse.cz
+
+- EDAC/ghes: Do not warn when incrementing refcount on 0
+  (git-fixes).
+- commit e16f7d4
+
+-------------------------------------------------------------------
+Fri Dec 13 11:56:09 CET 2019 - jslaby@suse.cz
+
+- Linux 5.4.3 (bnc#1012628).
+- rsi: release skb if rsi_prepare_beacon fails (bnc#1012628).
+- arm64: tegra: Fix 'active-low' warning for Jetson TX1 regulator
+  (bnc#1012628).
+- arm64: tegra: Fix 'active-low' warning for Jetson Xavier
+  regulator (bnc#1012628).
+- perf scripts python: exported-sql-viewer.py: Fix use of TRUE
+  with SQLite (bnc#1012628).
+- sparc64: implement ioremap_uc (bnc#1012628).
+- lp: fix sparc64 LPSETTIMEOUT ioctl (bnc#1012628).
+- time: Zero the upper 32-bits in __kernel_timespec on 32-bit
+  (bnc#1012628).
+- mailbox: tegra: Fix superfluous IRQ error message (bnc#1012628).
+- staging/octeon: Use stubs for MIPS && !CAVIUM_OCTEON_SOC
+  (bnc#1012628).
+- usb: gadget: u_serial: add missing port entry locking
+  (bnc#1012628).
+- serial: 8250-mtk: Use platform_get_irq_optional() for optional
+  irq (bnc#1012628).
+- tty: serial: fsl_lpuart: use the sg count from dma_map_sg
+  (bnc#1012628).
+- tty: serial: msm_serial: Fix flow control (bnc#1012628).
+- serial: pl011: Fix DMA ->flush_buffer() (bnc#1012628).
+- serial: serial_core: Perform NULL checks for break_ctl ops
+  (bnc#1012628).
+- serial: stm32: fix clearing interrupt error flags (bnc#1012628).
+- serial: 8250_dw: Avoid double error messaging when IRQ absent
+  (bnc#1012628).
+- serial: ifx6x60: add missed pm_runtime_disable (bnc#1012628).
+- mwifiex: Re-work support for SDIO HW reset (bnc#1012628).
+- io_uring: fix dead-hung for non-iter fixed rw (bnc#1012628).
+- io_uring: transform send/recvmsg() -ERESTARTSYS to -EINTR
+  (bnc#1012628).
+- fuse: fix leak of fuse_io_priv (bnc#1012628).
+- fuse: verify nlink (bnc#1012628).
+- fuse: verify write return (bnc#1012628).
+- fuse: verify attributes (bnc#1012628).
+- io_uring: fix missing kmap() declaration on powerpc
+  (bnc#1012628).
+- io_uring: ensure req->submit is copied when req is deferred
+  (bnc#1012628).
+- SUNRPC: Avoid RPC delays when exiting suspend (bnc#1012628).
+- ALSA: hda/realtek - Enable internal speaker of ASUS UX431FLC
+  (bnc#1012628).
+- ALSA: hda/realtek - Enable the headset-mic on a Xiaomi's laptop
+  (bnc#1012628).
+- ALSA: hda/realtek - Dell headphone has noise on unmute for
+  ALC236 (bnc#1012628).
+- ALSA: hda/realtek - Fix inverted bass GPIO pin on Acer 8951G
+  (bnc#1012628).
+- ALSA: pcm: oss: Avoid potential buffer overflows (bnc#1012628).
+- ALSA: hda - Add mute led support for HP ProBook 645 G4
+  (bnc#1012628).
+- ALSA: hda: Modify stream stripe mask only when needed
+  (bnc#1012628).
+- soc: mediatek: cmdq: fixup wrong input order of write api
+  (bnc#1012628).
+- Input: synaptics - switch another X1 Carbon 6 to RMI/SMbus
+  (bnc#1012628).
+- Input: synaptics-rmi4 - re-enable IRQs in f34v7_do_reflash
+  (bnc#1012628).
+- Input: synaptics-rmi4 - don't increment rmiaddr for SMBus
+  transfers (bnc#1012628).
+- Input: goodix - add upside-down quirk for Teclast X89 tablet
+  (bnc#1012628).
+- coresight: etm4x: Fix input validation for sysfs (bnc#1012628).
+- Input: Fix memory leak in psxpad_spi_probe (bnc#1012628).
+- media: rc: mark input device as pointing stick (bnc#1012628).
+- x86/mm/32: Sync only to VMALLOC_END in vmalloc_sync_all()
+  (bnc#1012628).
+- x86/PCI: Avoid AMD FCH XHCI USB PME# from D0 defect
+  (bnc#1012628).
+- CIFS: Fix NULL-pointer dereference in smb2_push_mandatory_locks
+  (bnc#1012628).
+- CIFS: Fix SMB2 oplock break processing (bnc#1012628).
+- tty: vt: keyboard: reject invalid keycodes (bnc#1012628).
+- can: slcan: Fix use-after-free Read in slcan_open (bnc#1012628).
+- nfsd: Ensure CLONE persists data and metadata changes to the
+  target file (bnc#1012628).
+- nfsd: restore NFSv3 ACL support (bnc#1012628).
+- kernfs: fix ino wrap-around detection (bnc#1012628).
+- jbd2: Fix possible overflow in jbd2_log_space_left()
+  (bnc#1012628).
+- drm/msm: fix memleak on release (bnc#1012628).
+- drm: damage_helper: Fix race checking plane->state->fb
+  (bnc#1012628).
+- drm/i810: Prevent underflow in ioctl (bnc#1012628).
+- arm64: Validate tagged addresses in access_ok() called from
+  kernel threads (bnc#1012628).
+- arm64: dts: exynos: Revert "Remove unneeded address space
+  mapping for soc node" (bnc#1012628).
+- KVM: PPC: Book3S HV: XIVE: Free previous EQ page when setting
+  up a new one (bnc#1012628).
+- KVM: PPC: Book3S HV: XIVE: Fix potential page leak on error path
+  (bnc#1012628).
+- KVM: PPC: Book3S HV: XIVE: Set kvm->arch.xive when VPs are
+  allocated (bnc#1012628).
+- KVM: nVMX: Always write vmcs02.GUEST_CR3 during nested VM-Enter
+  (bnc#1012628).
+- KVM: arm/arm64: vgic: Don't rely on the wrong pending table
+  (bnc#1012628).
+- KVM: x86: do not modify masked bits of shared MSRs
+  (bnc#1012628).
+- KVM: x86: Grab KVM's srcu lock when setting nested state
+  (bnc#1012628).
+- crypto: crypto4xx - fix double-free in crypto4xx_destroy_sdr
+  (bnc#1012628).
+- crypto: atmel-aes - Fix IV handling when req->nbytes < ivsize
+  (bnc#1012628).
+- crypto: af_alg - cast ki_complete ternary op to int
+  (bnc#1012628).
+- crypto: geode-aes - switch to skcipher for cbc(aes) fallback
+  (bnc#1012628).
+- crypto: ccp - fix uninitialized list head (bnc#1012628).
+- crypto: ecdh - fix big endian bug in ECC library (bnc#1012628).
+- crypto: user - fix memory leak in crypto_report (bnc#1012628).
+- crypto: user - fix memory leak in crypto_reportstat
+  (bnc#1012628).
+- spi: spi-fsl-qspi: Clear TDH bits in FLSHCR register
+  (bnc#1012628).
+- spi: stm32-qspi: Fix kernel oops when unbinding driver
+  (bnc#1012628).
+- spi: atmel: Fix CS high support (bnc#1012628).
+- spi: Fix SPI_CS_HIGH setting when using native and GPIO CS
+  (bnc#1012628).
+- spi: Fix NULL pointer when setting SPI_CS_HIGH for GPIO CS
+  (bnc#1012628).
+- can: ucan: fix non-atomic allocation in completion handler
+  (bnc#1012628).
+- RDMA/qib: Validate ->show()/store() callbacks before calling
+  them (bnc#1012628).
+- rfkill: allocate static minor (bnc#1012628).
+- bdev: Factor out bdev revalidation into a common helper
+  (bnc#1012628).
+- bdev: Refresh bdev size for disks without partitioning
+  (bnc#1012628).
+- iomap: Fix pipe page leakage during splicing (bnc#1012628).
+- thermal: Fix deadlock in thermal thermal_zone_device_check
+  (bnc#1012628).
+- vcs: prevent write access to vcsu devices (bnc#1012628).
+- Revert "serial/8250: Add support for NI-Serial PXI/PXIe+485
+  devices" (bnc#1012628).
+- binder: Fix race between mmap() and binder_alloc_print_pages()
+  (bnc#1012628).
+- binder: Prevent repeated use of ->mmap() via NULL mapping
+  (bnc#1012628).
+- binder: Handle start==NULL in binder_update_page_range()
+  (bnc#1012628).
+- ALSA: hda - Fix pending unsol events at shutdown (bnc#1012628).
+- cpufreq: imx-cpufreq-dt: Correct i.MX8MN's default speed grade
+  value (bnc#1012628).
+- md/raid0: Fix an error message in raid0_make_request()
+  (bnc#1012628).
+- drm/mcde: Fix an error handling path in 'mcde_probe()'
+  (bnc#1012628).
+- watchdog: aspeed: Fix clock behaviour for ast2600 (bnc#1012628).
+- EDAC/ghes: Fix locking and memory barrier issues (bnc#1012628).
+- perf script: Fix invalid LBR/binary mismatch error
+  (bnc#1012628).
+- kselftest: Fix NULL INSTALL_PATH for TARGETS runlist
+  (bnc#1012628).
+- commit 9f4d3b5
+
+-------------------------------------------------------------------
+Wed Dec 11 17:24:32 CET 2019 - jroedel@suse.de
+
+- KVM: x86: Remove a spurious export of a static function
+  (CVE-2019-19338 bsc#1158954).
+- KVM: x86: fix presentation of TSX feature in ARCH_CAPABILITIES
+  (CVE-2019-19338 bsc#1158954).
+- commit e830a48
+
+-------------------------------------------------------------------
+Wed Dec 11 11:51:37 CET 2019 - jroedel@suse.de
+
+- KVM: x86: fix out-of-bounds write in KVM_GET_EMULATED_CPUID
+  (CVE-2019-19332) (CVE-2019-19332 bsc#1158827).
+- commit bdbc1dc
+
+-------------------------------------------------------------------
+Thu Dec  5 16:48:24 CET 2019 - nsaenzjulienne@suse.de
+
+- supported.conf: Support Broadcom's Genet Ethernet driver (bsc#158563)
+- commit 5e42d26
+
+-------------------------------------------------------------------
+Thu Dec  5 08:09:38 CET 2019 - jslaby@suse.cz
+
+- Linux 5.4.2 (bnc#1012628).
+- platform/x86: hp-wmi: Fix ACPI errors caused by passing 0 as
+  input size (bnc#1012628).
+- platform/x86: hp-wmi: Fix ACPI errors caused by too small buffer
+  (bnc#1012628).
+- HID: core: check whether Usage Page item is after Usage ID items
+  (bnc#1012628).
+- crypto: talitos - Fix build error by selecting LIB_DES
+  (bnc#1012628).
+- Revert "jffs2: Fix possible null-pointer dereferences in
+  jffs2_add_frag_to_fragtree()" (bnc#1012628).
+- ext4: add more paranoia checking in ext4_expand_extra_isize
+  handling (bnc#1012628).
+- r8169: fix resume on cable plug-in (bnc#1012628).
+- r8169: fix jumbo configuration for RTL8168evl (bnc#1012628).
+- selftests: pmtu: use -oneline for ip route list cache
+  (bnc#1012628).
+- tipc: fix link name length check (bnc#1012628).
+- selftests: bpf: correct perror strings (bnc#1012628).
+- selftests: bpf: test_sockmap: handle file creation failures
+  gracefully (bnc#1012628).
+- net/tls: use sg_next() to walk sg entries (bnc#1012628).
+- net/tls: remove the dead inplace_crypto code (bnc#1012628).
+- selftests/tls: add a test for fragmented messages (bnc#1012628).
+- net: skmsg: fix TLS 1.3 crash with full sk_msg (bnc#1012628).
+- net/tls: free the record on encryption error (bnc#1012628).
+- net/tls: take into account that bpf_exec_tx_verdict() may free
+  the record (bnc#1012628).
+- openvswitch: remove another BUG_ON() (bnc#1012628).
+- openvswitch: drop unneeded BUG_ON() in ovs_flow_cmd_build_info()
+  (bnc#1012628).
+- sctp: cache netns in sctp_ep_common (bnc#1012628).
+- slip: Fix use-after-free Read in slip_open (bnc#1012628).
+- sctp: Fix memory leak in sctp_sf_do_5_2_4_dupcook (bnc#1012628).
+- openvswitch: fix flow command message size (bnc#1012628).
+- net: sched: fix `tc -s class show` no bstats on class with
+  nolock subqueues (bnc#1012628).
+- net: psample: fix skb_over_panic (bnc#1012628).
+- net: macb: add missed tasklet_kill (bnc#1012628).
+- net: dsa: sja1105: fix sja1105_parse_rgmii_delays()
+  (bnc#1012628).
+- mdio_bus: don't use managed reset-controller (bnc#1012628).
+- macvlan: schedule bc_work even if error (bnc#1012628).
+- gve: Fix the queue page list allocated pages count
+  (bnc#1012628).
+- x86/fpu: Don't cache access to fpu_fpregs_owner_ctx
+  (bnc#1012628).
+- thunderbolt: Power cycle the router if NVM authentication fails
+  (bnc#1012628).
+- mei: me: add comet point V device id (bnc#1012628).
+- mei: bus: prefix device names on bus with the bus name
+  (bnc#1012628).
+- USB: serial: ftdi_sio: add device IDs for U-Blox C099-F9P
+  (bnc#1012628).
+- staging: rtl8723bs: Add 024c:0525 to the list of SDIO device-ids
+  (bnc#1012628).
+- staging: rtl8723bs: Drop ACPI device ids (bnc#1012628).
+- staging: rtl8192e: fix potential use after free (bnc#1012628).
+- staging: wilc1000: fix illegal memory access in
+  wilc_parse_join_bss_param() (bnc#1012628).
+- usb: dwc2: use a longer core rest timeout in dwc2_core_reset()
+  (bnc#1012628).
+- driver core: platform: use the correct callback type for
+  bus_find_device (bnc#1012628).
+- crypto: inside-secure - Fix stability issue with Macchiatobin
+  (bnc#1012628).
+- net: disallow ancillary data for __sys_{send,recv}msg_file()
+  (bnc#1012628).
+- net: separate out the msghdr copy from ___sys_{send,recv}msg()
+  (bnc#1012628).
+- io_uring: async workers should inherit the user creds
+  (bnc#1012628).
+- commit 9df353f
+
+-------------------------------------------------------------------
+Wed Dec  4 17:07:42 CET 2019 - nsaenzjulienne@suse.de
+
+- supported.conf: support gpio-regulator used by Raspberry Pi 4
+  (bsc#1158451)
+- commit d0225c2
+
+-------------------------------------------------------------------
+Tue Dec  3 16:32:56 CET 2019 - mbrugger@suse.com
+
+- arm64: Update config files.
+  Bump CONFIG_NODES_SHIFT from 2 to 6
+- commit 476eb27
+
+-------------------------------------------------------------------
+Tue Dec  3 14:29:18 CET 2019 - tiwai@suse.de
+
+- rpm/kernel-subpackage-spec: Exclude kernel-firmware recommends (bsc#1143959)
+  For reducing the dependency on kernel-firmware in sub packages
+- commit d950271
+
+-------------------------------------------------------------------
+Fri Nov 29 12:45:38 CET 2019 - msuchanek@suse.de
+
+- Update config files.
+  ppc64 is lats architecture without PRINTK_TIME. Align with the rest.
+- commit f46c056
+
+-------------------------------------------------------------------
+Fri Nov 29 12:41:15 CET 2019 - jslaby@suse.cz
+
+- blacklist.conf: add one invalid commit
+- commit 4c2d405
+
+-------------------------------------------------------------------
+Fri Nov 29 12:26:11 CET 2019 - jslaby@suse.cz
+
+- Linux 5.4.1 (bnc#1012628).
+- Bluetooth: Fix invalid-free in bcsp_close() (bnc#1012628).
+- ath9k_hw: fix uninitialized variable data (bnc#1012628).
+- ath10k: Fix HOST capability QMI incompatibility (bnc#1012628).
+- ath10k: restore QCA9880-AR1A (v1) detection (bnc#1012628).
+- Revert "Bluetooth: hci_ll: set operational frequency earlier"
+  (bnc#1012628).
+- Revert "dm crypt: use WQ_HIGHPRI for the IO and crypt
+  workqueues" (bnc#1012628).
+- md/raid10: prevent access of uninitialized resync_pages offset
+  (bnc#1012628).
+- x86/insn: Fix awk regexp warnings (bnc#1012628).
+- x86/speculation: Fix incorrect MDS/TAA mitigation status
+  (bnc#1012628).
+- x86/speculation: Fix redundant MDS mitigation message
+  (bnc#1012628).
+- nbd: prevent memory leak (bnc#1012628).
+- x86/stackframe/32: Repair 32-bit Xen PV (bnc#1012628).
+- x86/xen/32: Make xen_iret_crit_fixup() independent of frame
+  layout (bnc#1012628).
+- x86/xen/32: Simplify ring check in xen_iret_crit_fixup()
+  (bnc#1012628).
+- x86/doublefault/32: Fix stack canaries in the double fault
+  handler (bnc#1012628).
+- x86/pti/32: Size initial_page_table correctly (bnc#1012628).
+- x86/cpu_entry_area: Add guard page for entry stack on 32bit
+  (bnc#1012628).
+- x86/entry/32: Fix IRET exception (bnc#1012628).
+- x86/entry/32: Use %ss segment where required (bnc#1012628).
+- x86/entry/32: Move FIXUP_FRAME after pushing %fs in SAVE_ALL
+  (bnc#1012628).
+- x86/entry/32: Unwind the ESPFIX stack earlier on exception entry
+  (bnc#1012628).
+- x86/entry/32: Fix NMI vs ESPFIX (bnc#1012628).
+- selftests/x86/mov_ss_trap: Fix the SYSENTER test (bnc#1012628).
+- selftests/x86/sigreturn/32: Invalidate DS and ES when abusing
+  the kernel (bnc#1012628).
+- x86/pti/32: Calculate the various PTI cpu_entry_area sizes
+  correctly, make the CPU_ENTRY_AREA_PAGES assert precise
+  (bnc#1012628).
+- x86/entry/32: Fix FIXUP_ESPFIX_STACK with user CR3
+  (bnc#1012628).
+- futex: Prevent robust futex exit race (bnc#1012628).
+- ALSA: usb-audio: Fix NULL dereference at parsing BADD
+  (bnc#1012628).
+- ALSA: usb-audio: Fix Scarlett 6i6 Gen 2 port data (bnc#1012628).
+- media: vivid: Set vid_cap_streaming and vid_out_streaming to
+  true (bnc#1012628).
+- media: vivid: Fix wrong locking that causes race conditions
+  on streaming stop (bnc#1012628).
+- media: usbvision: Fix invalid accesses after device disconnect
+  (bnc#1012628).
+- media: usbvision: Fix races among open, close, and disconnect
+  (bnc#1012628).
+- cpufreq: Add NULL checks to show() and store() methods of
+  cpufreq (bnc#1012628).
+- futex: Move futex exit handling into futex code (bnc#1012628).
+- futex: Replace PF_EXITPIDONE with a state (bnc#1012628).
+- exit/exec: Seperate mm_release() (bnc#1012628).
+- futex: Split futex_mm_release() for exit/exec (bnc#1012628).
+- futex: Set task::futex_state to DEAD right after handling
+  futex exit (bnc#1012628).
+- futex: Mark the begin of futex exit explicitly (bnc#1012628).
+- futex: Sanitize exit state handling (bnc#1012628).
+- futex: Provide state handling for exec() as well (bnc#1012628).
+- futex: Add mutex around futex exit (bnc#1012628).
+- futex: Provide distinct return value when owner is exiting
+  (bnc#1012628).
+- futex: Prevent exit livelock (bnc#1012628).
+- media: uvcvideo: Fix error path in control parsing failure
+  (bnc#1012628).
+- media: b2c2-flexcop-usb: add sanity checking (bnc#1012628).
+- media: cxusb: detect cxusb_ctrl_msg error in query
+  (bnc#1012628).
+- media: imon: invalid dereference in imon_touch_event
+  (bnc#1012628).
+- media: mceusb: fix out of bounds read in MCE receiver buffer
+  (bnc#1012628).
+- ALSA: hda - Disable audio component for legacy Nvidia HDMI
+  codecs (bnc#1012628).
+- USBIP: add config dependency for SGL_ALLOC (bnc#1012628).
+- usbip: tools: fix fd leakage in the function of
+  read_attr_usbip_status (bnc#1012628).
+- usbip: Fix uninitialized symbol 'nents' in
+  stub_recv_cmd_submit() (bnc#1012628).
+- usb-serial: cp201x: support Mark-10 digital force gauge
+  (bnc#1012628).
+- USB: chaoskey: fix error case of a timeout (bnc#1012628).
+- appledisplay: fix error handling in the scheduled work
+  (bnc#1012628).
+- USB: serial: mos7840: add USB ID to support Moxa UPort 2210
+  (bnc#1012628).
+- USB: serial: mos7720: fix remote wakeup (bnc#1012628).
+- USB: serial: mos7840: fix remote wakeup (bnc#1012628).
+- USB: serial: option: add support for DW5821e with eSIM support
+  (bnc#1012628).
+- USB: serial: option: add support for Foxconn T77W968 LTE modules
+  (bnc#1012628).
+- staging: comedi: usbduxfast: usbduxfast_ai_cmdtest rounding
+  error (bnc#1012628).
+- powerpc/book3s64: Fix link stack flush on context switch
+  (bnc#1012628).
+- KVM: PPC: Book3S HV: Flush link stack on guest exit to host
+  kernel (bnc#1012628).
+- commit 694287b
+
+-------------------------------------------------------------------
+Fri Nov 29 11:06:11 CET 2019 - ptesarik@suse.cz
+
+- Update config files (bsc#1158055 LTC#182629).
+- commit 632b250
+
+-------------------------------------------------------------------
+Thu Nov 28 15:35:38 CET 2019 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- update mainline reference:
+  patches.suse/net-bcmgenet-Add-BCM2711-support.patch
+  patches.suse/net-bcmgenet-Add-RGMII_RXID-support.patch
+  patches.suse/net-bcmgenet-Add-a-shutdown-callback.patch
+  patches.suse/net-bcmgenet-Avoid-touching-non-existent-interrupt.patch
+  patches.suse/net-bcmgenet-Fix-error-handling-on-IRQ-retrieval.patch
+  patches.suse/net-bcmgenet-Generate-a-random-MAC-if-none-is-valid.patch
+  patches.suse/net-bcmgenet-Refactor-register-access-in-bcmgenet_mi.patch
+- commit fd0f02f
+
+-------------------------------------------------------------------
+Wed Nov 27 18:30:22 CET 2019 - nsaenzjulienne@suse.de
+
+- PCI: brcmstb: add MSI capability (jsc#SLE-7772).
+- PCI: brcmstb: add Broadcom STB PCIe host controller driver
+  (jsc#SLE-7772).
+- supported.conf: Add pcie-brcmstb
+- Update config files: build pcie-brcmstb as module
+- linux/log2.h: Add roundup/rounddown_pow_two64() family of
+  functions (jsc#SLE-7772).
+- dma-mapping: treat dev->bus_dma_mask as a DMA limit
+  (jsc#SLE-7772).
+- dma-direct: exclude dma_direct_map_resource from the min_low_pfn
+  check (jsc#SLE-7772).
+- dma-direct: avoid a forward declaration for phys_to_dma
+  (jsc#SLE-7772).
+- dma-direct: unify the dma_capable definitions (jsc#SLE-7772).
+- x86/PCI: sta2x11: use default DMA address translation
+  (jsc#SLE-7772).
+- dma-direct: check for overflows on 32 bit DMA addresses
+  (jsc#SLE-7772).
+- of: Make of_dma_get_range() work on bus nodes (jsc#SLE-7772).
+- of/address: Fix of_pci_range_parser_one translation of DMA
+  addresses (jsc#SLE-7772).
+- of/address: Translate 'dma-ranges' for parent nodes missing
+  'dma-ranges' (jsc#SLE-7772).
+- of: Factor out #{addr,size}-cells parsing (jsc#SLE-7772).
+- of: address: Follow DMA parent for "dma-coherent"
+  (jsc#SLE-7772).
+- of/address: Introduce of_get_next_dma_parent() helper
+  (jsc#SLE-7772).
+- PCI: rcar: Use inbound resources for setup (jsc#SLE-7772).
+- PCI: iproc: Use inbound resources for setup (jsc#SLE-7772).
+- PCI: xgene: Use inbound resources for setup (jsc#SLE-7772).
+- PCI: v3-semi: Use inbound resources for setup (jsc#SLE-7772).
+- PCI: ftpci100: Use inbound resources for setup (jsc#SLE-7772).
+- PCI: of: Add inbound resource parsing to helpers (jsc#SLE-7772).
+- PCI: versatile: Enable COMPILE_TEST (jsc#SLE-7772).
+- PCI: versatile: Remove usage of PHYS_OFFSET (jsc#SLE-7772).
+- PCI: versatile: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: xilinx-nwl: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: xilinx: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: xgene: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: v3-semi: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: rockchip: Drop storing driver private outbound resource
+  data (jsc#SLE-7772).
+- PCI: rockchip: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: mobiveil: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: mediatek: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: iproc: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: faraday: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: dwc: Use pci_parse_request_of_pci_ranges() (jsc#SLE-7772).
+- PCI: altera: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: aardvark: Use pci_parse_request_of_pci_ranges()
+  (jsc#SLE-7772).
+- PCI: Export pci_parse_request_of_pci_ranges() (jsc#SLE-7772).
+- resource: Add a resource_list_first_type helper (jsc#SLE-7772).
+- commit 1c7ba00
+
+-------------------------------------------------------------------
+Tue Nov 26 10:19:06 CET 2019 - mbrugger@suse.com
+
+- net: bcmgenet: Add RGMII_RXID support (jsc#SLE-7772).
+- net: bcmgenet: Refactor register access in bcmgenet_mii_config (jsc#SLE-7772).
+- net: bcmgenet: Fix error handling on IRQ retrieval (jsc#SLE-7772).
+- net: bcmgenet: Avoid touching non-existent interrupt (jsc#SLE-7772).
+- net: bcmgenet: Add BCM2711 support (jsc#SLE-7772).
+- net: bcmgenet: Add a shutdown callback (jsc#SLE-7772).
+- net: bcmgenet: Generate a random MAC if none is valid (jsc#SLE-7772).
+- commit 9d632e7
+
+-------------------------------------------------------------------
+Mon Nov 25 10:07:09 CET 2019 - jslaby@suse.cz
+
+- Refresh patches.suse/net-ath10k-Fix-a-NULL-ptr-deref-bug.patch.
+  Update upstream status.
+- commit b33144f
+
+-------------------------------------------------------------------
+Mon Nov 25 10:06:24 CET 2019 - jslaby@suse.cz
+
+- drm/amdgpu: Add DC feature mask to disable fractional pwm
+  (bsc#1154010).
+- ata: make qc_prep return ata_completion_errors (bnc#1110252).
+- ata: define AC_ERR_OK (bnc#1110252).
+- ata: sata_mv, avoid trigerrable BUG_ON (bnc#1110252).
+- libertas: fix a potential NULL pointer dereference
+  (CVE-2019-16232,bsc#1150465).
+- commit 42674e2
+
+-------------------------------------------------------------------
+Mon Nov 25 09:39:22 CET 2019 - jslaby@suse.cz
+
+- mm: refresh ZONE_DMA and ZONE_DMA32 comments in 'enum zone_type'
+  (jsc#SLE-7772).
+  Port all non-upstream patches from stable to master.
+- arm64: use both ZONE_DMA and ZONE_DMA32 (jsc#SLE-7772).
+- Update config files.
+  Config options taken from commit 4f2941cd44a2.
+- arm64: rename variables used to calculate ZONE_DMA32's size
+  (jsc#SLE-7772).
+- arm64: mm: use arm64_dma_phys_limit instead of calling
+  max_zone_dma_phys() (jsc#SLE-7772).
+- arm64: dts: broadcom: Add reference to RPi 4 B (jsc#SLE-7772).
+- ARM: dts: Add minimal Raspberry Pi 4 support (jsc#SLE-7772).
+- ARM: bcm: Add support for BCM2711 SoC (jsc#SLE-7772).
+- dt-bindings: arm: bcm2835: Add Raspberry Pi 4 to DT schema
+  (jsc#SLE-7772).
+- dt-bindings: arm: Convert BCM2835 board/soc bindings to
+  json-schema (jsc#SLE-7772).
+- ARM: dts: bcm283x: Move BCM2835/6/7 specific to
+  bcm2835-common.dtsi (jsc#SLE-7772).
+- ARM: dts: bcm283x: Remove brcm, bcm2835-pl011 compatible
+  (jsc#SLE-7772).
+- ARM: dts: bcm283x: Remove simple-bus from fixed clocks
+  (jsc#SLE-7772).
+- bluetooth: hci_bcm: Fix RTS handling during startup
+  (jsc#SLE-7772).
+- commit 19bad9e
+
+-------------------------------------------------------------------
+Mon Nov 25 09:30:17 CET 2019 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/V4-01-10-bluetooth-hci_bcm-Fix-RTS-handling-during-startup.patch.
+- Refresh
+  patches.suse/V4-02-10-ARM-dts-bcm283x-Remove-simple-bus-from-fixed-clocks.patch.
+- Refresh
+  patches.suse/V4-03-10-ARM-dts-bcm283x-Remove-brcm-bcm2835-pl011-compatible.patch.
+- Refresh
+  patches.suse/V4-04-10-ARM-dts-bcm283x-Move-BCM2835-6-7-specific-to-bcm2835-common.dtsi.patch.
+- Refresh
+  patches.suse/V4-05-10-dt-bindings-arm-Convert-BCM2835-board-soc-bindings-to-json-schema.patch.
+- Refresh
+  patches.suse/V4-06-10-dt-bindings-arm-bcm2835-Add-Raspberry-Pi-4-to-DT-schema.patch.
+- Refresh
+  patches.suse/V4-07-10-ARM-bcm-Add-support-for-BCM2711-SoC.patch.
+- Refresh
+  patches.suse/V4-08-10-ARM-dts-Add-minimal-Raspberry-Pi-4-support.patch.
+- Refresh
+  patches.suse/V4-09-10-arm64-dts-broadcom-Add-reference-to-RPi-4-B.patch.
+- Refresh
+  patches.suse/v6-1-4-arm64-mm-use-arm64_dma_phys_limit-instead-of-calling-max_zone_dma_phys.patch.
+- Refresh
+  patches.suse/v6-2-4-arm64-rename-variables-used-to-calculate-ZONE_DMA32-s-size.patch.
+- Refresh
+  patches.suse/v6-3-4-arm64-use-both-ZONE_DMA-and-ZONE_DMA32.patch.
+- Refresh
+  patches.suse/v6-4-4-mm-refresh-ZONE_DMA-and-ZONE_DMA32-comments-in-enum-zone_type.patch.
+- Refresh
+  patches.suse/drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch.
+- Refresh patches.suse/net-ath10k-Fix-a-NULL-ptr-deref-bug.patch.
+  Update upsream status.
+- commit 60a2268
+
+-------------------------------------------------------------------
+Mon Nov 25 08:10:04 CET 2019 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/0001-ARM-bcm283x-Reduce-register-ranges-for-UART-SPI-and-.patch.
+- Refresh
+  patches.suse/0001-ARM-dts-bcm283x-Define-MMC-interfaces-at-board-level.patch.
+- Refresh
+  patches.suse/0001-ARM-dts-bcm283x-Define-memory-at-board-level.patch.
+- Refresh
+  patches.suse/0001-ARM-dts-bcm283x-Enable-HDMI-at-board-level.patch.
+- Refresh
+  patches.suse/0001-clk-bcm2835-Add-BCM2711_CLOCK_EMMC2-support.patch.
+- Refresh
+  patches.suse/0001-clk-bcm2835-Introduce-SoC-specific-clock-registratio.patch.
+- Refresh
+  patches.suse/0001-clk-bcm2835-Mark-PLLD_PER-as-CRITICAL.patch.
+- Refresh
+  patches.suse/0001-dt-bindings-bcm2835-cprman-Add-bcm2711-support.patch.
+- Refresh
+  patches.suse/0001-dt-bindings-i2c-bcm2835-Add-brcm-bcm2711-compatible.patch.
+- Refresh
+  patches.suse/0001-dt-bindings-mmc-sdhci-iproc-Add-brcm-bcm2711-emmc2.patch.
+- Refresh
+  patches.suse/0001-i2c-bcm2835-Add-full-name-of-devicetree-node-to-adap.patch.
+- Refresh
+  patches.suse/0001-i2c-bcm2835-Avoid-clk-stretch-quirk-for-BCM2711.patch.
+- Refresh
+  patches.suse/0001-mmc-bcm2835-Take-SWIOTLB-memory-size-limitation-into.patch.
+- Refresh
+  patches.suse/0001-mmc-sdhci-iproc-Add-support-for-emmc2-of-the-BCM2711.patch.
+- Refresh
+  patches.suse/0001-pinctrl-bcm2835-Add-brcm-bcm2711-compatible.patch.
+- Refresh
+  patches.suse/0001-pinctrl-bcm2835-Add-support-for-BCM2711-pull-up-func.patch.
+- Refresh
+  patches.suse/V4-10-10-MAINTAINERS-Add-BCM2711-to-BCM2835-ARCH.patch.
+- Refresh
+  patches.suse/v2-mmc-sdhci-iproc-fix-spurious-interrupts-on-Multiblock-reads-with-bcm2711.patch.
+  Update upstream status.
+- commit 29acd1d
+
+-------------------------------------------------------------------
+Mon Nov 25 05:10:33 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.4 final
+- refresh configs (only update headers)
+- commit 4c9cd0f
+
+-------------------------------------------------------------------
+Sun Nov 24 21:41:27 CET 2019 - mkubecek@suse.cz
+
+- config: disable SECURITY_DMESG_RESTRICT (bsc#1157066)
+  Enabling this option which restricts access to dmesg was not intentional
+  and happened accidentally as part of a commit aiming to enable features
+  which were enabled in SLE. We might restrict dmesg in the future if there
+  is a consensus but for now the proper action is to revert this accidental
+  change which only affected some architectures anyway.
+- commit 5c1d459
+
+-------------------------------------------------------------------
 Thu Nov 21 08:21:20 CET 2019 - jslaby@suse.cz
 
 - Linux 5.3.12 (bnc#1151927).
@@ -86,10 +760,28 @@ Thu Nov 21 08:21:20 CET 2019 - jslaby@suse.cz
 - commit a6f6081
 
 -------------------------------------------------------------------
+Mon Nov 18 05:12:22 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.4-rc8
+- refresh
+  patches.suse/vfs-add-super_operations-get_inode_dev
+- update configs
+  - add X86_INTEL_TSX_MODE_OFF=y
+  - drop VBOXSF_FS (driver dropped for now)
+- commit 97aef18
+
+-------------------------------------------------------------------
 Thu Nov 14 10:52:44 CET 2019 - guillaume.gardet@arm.com
 
 - arm64: Enable CONFIG_IR_GPIO_CIR (boo#1156748)
 - commit f47e51f
+
+-------------------------------------------------------------------
+Thu Nov 14 09:46:24 CET 2019 - mbrugger@suse.com
+
+- arm64: Update config files.
+  Enable HW_RANDOM_OMAP used by machiattobin (bsc#1156466).
+- commit 1402755
 
 -------------------------------------------------------------------
 Tue Nov 12 19:53:23 CET 2019 - jslaby@suse.cz
@@ -481,6 +1173,15 @@ Mon Nov 11 11:25:37 CET 2019 - jslaby@suse.cz
   patches.suse/stacktrace-don-t-skip-first-entry-on-noncurrent-task.patch.
   Update upstream status.
 - commit baac78a
+
+-------------------------------------------------------------------
+Mon Nov 11 05:31:25 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.4-rc7
+- eliminated 1 patch
+- new config option
+  - VBOXSF_FS=m (x86 only)
+- commit c59faac
 
 -------------------------------------------------------------------
 Sun Nov 10 18:24:05 CET 2019 - jslaby@suse.cz
@@ -995,6 +1696,18 @@ Thu Nov  7 08:06:36 CET 2019 - jslaby@suse.cz
 - commit b0d4923
 
 -------------------------------------------------------------------
+Wed Nov  6 12:09:42 CET 2019 - tiwai@suse.de
+
+- rpm/kernel-source.spec.in: Fix dependency of kernel-devel (bsc#1154043)
+- commit ceb9273
+
+-------------------------------------------------------------------
+Wed Nov  6 11:56:45 CET 2019 - afaerber@suse.com
+
+- config: armv7hl: Update to 5.4-rc6
+- commit be38a7b
+
+-------------------------------------------------------------------
 Wed Nov  6 11:07:07 CET 2019 - jslaby@suse.cz
 
 - rpm/kernel-binary.spec.in: add COMPRESS_VMLINUX (bnc#1155921)
@@ -1003,10 +1716,29 @@ Wed Nov  6 11:07:07 CET 2019 - jslaby@suse.cz
 - commit c8b2d9f
 
 -------------------------------------------------------------------
+Wed Nov  6 09:45:34 CET 2019 - mkubecek@suse.cz
+
+- config: refresh armv6hl/vanilla
+- commit 152052e
+
+-------------------------------------------------------------------
+Tue Nov  5 16:35:34 CET 2019 - afaerber@suse.com
+
+- config: armv6hl: Update to 5.4-rc6
+- commit e45bb5a
+
+-------------------------------------------------------------------
 Tue Nov  5 14:55:44 CET 2019 - tiwai@suse.de
 
 - ALSA: hda/ca0132 - Fix possible workqueue stall (bsc#1155836).
 - commit 98ead79
+
+-------------------------------------------------------------------
+Tue Nov  5 09:07:56 CET 2019 - jslaby@suse.cz
+
+- stacktrace: Don't skip first entry on noncurrent tasks
+  (bnc#1154866).
+- commit 897b65b
 
 -------------------------------------------------------------------
 Tue Nov  5 09:02:35 CET 2019 - jslaby@suse.cz
@@ -1032,12 +1764,44 @@ Mon Nov  4 10:45:31 CET 2019 - jslaby@suse.cz
 - commit 8bf663b
 
 -------------------------------------------------------------------
+Mon Nov  4 05:13:36 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.4-rc6
+- eliminated 1 patch
+- refresh configs
+- commit 816e8ae
+
+-------------------------------------------------------------------
+Thu Oct 31 18:53:53 CET 2019 - afaerber@suse.de
+
+- config: arm64: Re-enable default flavor, too
+- commit c8cf7fe
+
+-------------------------------------------------------------------
+Wed Oct 30 08:18:53 CET 2019 - mkubecek@suse.cz
+
+- config: refresh also arm64/vanilla
+- commit a48c425
+
+-------------------------------------------------------------------
 Wed Oct 30 08:12:05 CET 2019 - jslaby@suse.cz
 
 - Refresh
   patches.suse/stacktrace-don-t-skip-first-entry-on-noncurrent-task.patch.
   v3 of the patch
 - commit ea4c828
+
+-------------------------------------------------------------------
+Wed Oct 30 06:49:32 CET 2019 - mkubecek@suse.cz
+
+- config: refresh
+- commit cb090f9
+
+-------------------------------------------------------------------
+Tue Oct 29 23:27:58 CET 2019 - afaerber@suse.de
+
+- config: arm64: Update to 5.4-rc5
+- commit 22182c8
 
 -------------------------------------------------------------------
 Tue Oct 29 10:02:07 CET 2019 - jslaby@suse.cz
@@ -1386,11 +2150,27 @@ Mon Oct 28 11:19:05 CET 2019 - tiwai@suse.de
 - commit 6ffba6e
 
 -------------------------------------------------------------------
+Sun Oct 27 19:12:02 CET 2019 - mkubecek@suse.cz
+
+- Update to 4.5-rc5
+- New config option:
+  - SND_SOC_SOF_HDA_ALWAYS_ENABLE_DMI_L1=n (x86 only)
+- commit 13dfd5f
+
+-------------------------------------------------------------------
 Fri Oct 25 08:50:31 CEST 2019 - jslaby@suse.cz
 
 - stacktrace: don't skip first entry on noncurrent tasks
   (bnc#1154866).
 - commit 387f2bb
+
+-------------------------------------------------------------------
+Wed Oct 23 07:03:59 CEST 2019 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  Move two submitted wireless patches to "on the way to mainline" section.
+  No effect on expanded tree.
+- commit 21fb44d
 
 -------------------------------------------------------------------
 Tue Oct 22 11:25:46 CEST 2019 - msuchanek@suse.de
@@ -1413,6 +2193,13 @@ Tue Oct 22 09:21:56 CEST 2019 - acho@suse.com
 - cfg80211: wext: avoid copying malformed SSIDs (bsc#1153158
   CVE-2019-17133).
 - commit e229e3d
+
+-------------------------------------------------------------------
+Tue Oct 22 08:44:08 CEST 2019 - acho@suse.com
+
+- rtlwifi: Fix potential overflow on P2P code (bsc#1154372
+  CVE-2019-17666).
+- commit 6257f3c
 
 -------------------------------------------------------------------
 Mon Oct 21 18:11:29 CEST 2019 - tiwai@suse.de
@@ -1438,6 +2225,13 @@ Mon Oct 21 15:21:10 CEST 2019 - msuchanek@suse.de
   It is not strictly necessary to uncompress it so maybe the ghost file
   can be 0 size in this case.
 - commit 4bf73c8
+
+-------------------------------------------------------------------
+Mon Oct 21 06:54:15 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.4-rc4
+- Eliminated 1 patch
+- commit bdcace5
 
 -------------------------------------------------------------------
 Fri Oct 18 18:59:45 CEST 2019 - jslaby@suse.cz
@@ -1622,6 +2416,26 @@ Thu Oct 17 20:59:54 CEST 2019 - jslaby@suse.cz
 - commit 3eea5a9
 
 -------------------------------------------------------------------
+Thu Oct 17 11:59:28 CEST 2019 - acho@suse.com
+
+- cfg80211: wext: avoid copying malformed SSIDs (bsc#1153158
+  CVE-2019-17133).
+- commit fd3ccf8
+
+-------------------------------------------------------------------
+Wed Oct 16 15:28:54 CEST 2019 - mkubecek@suse.cz
+
+- Update patches.suse/supported-flag references (add bsc#974406).
+- commit df31cdf
+
+-------------------------------------------------------------------
+Wed Oct 16 11:54:09 CEST 2019 - lpechacek@suse.com
+
+- Squash module-Inform-user-when-loading-externally-supported.patch from
+  SLE into supported-flag (bsc#974406).
+- commit 3fd4e95
+
+-------------------------------------------------------------------
 Tue Oct 15 14:54:58 CEST 2019 - jslaby@suse.cz
 
 - Update
@@ -1643,6 +2457,20 @@ Tue Oct 15 14:18:53 CEST 2019 - jslaby@suse.cz
 - Update config files.
   Just refresh (RTC_DRV_BD70528 dismissed).
 - commit 418ca4c
+
+-------------------------------------------------------------------
+Tue Oct 15 14:16:20 CEST 2019 - jslaby@suse.cz
+
+- Update config files.
+  Disable CONFIG_RT_GROUP_SCHED again (bnc#950955 bnc#1153228).
+- commit 53769fe
+
+-------------------------------------------------------------------
+Mon Oct 14 06:51:20 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.4-rc3
+- Refresh configs
+- commit 2309d7d
 
 -------------------------------------------------------------------
 Sun Oct 13 09:18:38 CEST 2019 - jslaby@suse.cz
@@ -2238,6 +3066,32 @@ Mon Oct  7 11:43:37 CEST 2019 - mbrugger@suse.com
 - commit be4f5e9
 
 -------------------------------------------------------------------
+Mon Oct  7 00:39:29 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.4-rc2
+- Eliminated 2 patches
+- Refresh config/i386/default
+- commit 5b664b4
+
+-------------------------------------------------------------------
+Mon Oct  7 00:24:53 CEST 2019 - mkubecek@suse.cz
+
+- Delete
+  patches.suse/module-swap-the-order-of-symbol.namespace.patch.
+  This is not the patch fixing bogus modpost warnings when building
+  out-of-tree modules. The patch supposed to fix them, when applied on its
+  own, makes modpost segfault. So let's better live with the warnings until
+  this is sorted in upstream.
+- commit 5bf1873
+
+-------------------------------------------------------------------
+Sun Oct  6 18:09:06 CEST 2019 - mkubecek@suse.cz
+
+- module: swap the order of symbol.namespace.
+  Fixes bogus modpost warnings when building out-of-tree modules.
+- commit c3db450
+
+-------------------------------------------------------------------
 Sun Oct  6 08:32:50 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.3.4 (bnc#1151927).
@@ -2821,6 +3675,8 @@ Fri Oct  4 09:27:16 CEST 2019 - vbabka@suse.cz
 - config: enable DEBUG_PAGEALLOC (jsc#PM-1168, bsc#1144653)
   Build with page allocation debugging (boot with debug_pagealloc=on to enable).
   [js] run oldconfig
+- config: enable DEBUG_PAGEALLOC (jsc#PM-1168, bsc#1144653)
+  Build with page allocation debugging (boot with debug_pagealloc=on to enable).
 - commit f6f1081
 
 -------------------------------------------------------------------
@@ -2829,6 +3685,150 @@ Wed Oct  2 07:55:00 CEST 2019 - jslaby@suse.cz
 - iwlwifi: fw: don't send GEO_TX_POWER_LIMIT command to FW
   version 36 (bnc#1152036).
 - commit c2cf223
+
+-------------------------------------------------------------------
+Wed Oct  2 07:03:52 CEST 2019 - mkubecek@suse.cz
+
+- s390: mark __cpacf_query() as __always_inline.
+  Fix s390x/zfcpdump build.
+- commit 6fce476
+
+-------------------------------------------------------------------
+Tue Oct  1 20:39:21 CEST 2019 - mkubecek@suse.cz
+
+- config: refresh vanilla configs
+  Configs for vanilla flavor also need a refresh.
+- commit f67b42c
+
+-------------------------------------------------------------------
+Tue Oct  1 12:56:33 CEST 2019 - mkubecek@suse.cz
+
+- config: enable X86_5LEVEL (jsc#SLE-9308)
+  Enable 5-level page tables (x86_64 architecture only).
+- commit 4e52759
+
+-------------------------------------------------------------------
+Tue Oct  1 12:49:03 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.4-rc1
+- Eliminated 23 patches (22 stable, 1 other)
+- ARM configs need update
+- Refresh
+  patches.rpmify/scripts-mkmakefile-honor-second-argument.patch
+  patches.suse/Revert-netfilter-conntrack-remove-helper-hook-again.patch
+  patches.suse/btrfs-fs-super.c-add-new-super-block-devices-super_block_d.patch
+  patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  patches.suse/supported-flag
+  patches.suse/supported-flag-external
+  patches.suse/vfs-add-super_operations-get_inode_dev
+- fix 32-bit builds:
+  patches.rpmify/mlx5-avoid-64-bit-division-in-dr_icm_pool_mr_create.patch
+- New config options:
+  - General setup
+    - UCLAMP_TASK_GROUP=n
+    - MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS=n
+  - Power management and ACPI options
+    - CPU_IDLE_GOV_HALTPOLL=y
+    - HALTPOLL_CPUIDLE=m
+  - Block layer
+    - BLK_CGROUP_IOCOST=y
+    - DM_CLONE=m
+    - DM_VERITY_VERIFY_ROOTHASH_SIG=n
+  - Memory Management
+    - READ_ONLY_THP_FOR_FS=y
+  - Networking
+    - NET_TC_SKB_EXT=y
+    - CAN_J1939=m
+    - CAN_KVASER_PCIEFD=m
+    - CAN_M_CAN_PLATFORM=m
+    - CAN_M_CAN_TCAN4X5X=m
+    - CAN_F81601=m
+    - NET_DSA_MICROCHIP_KSZ9477_I2C=m
+    - NET_DSA_MICROCHIP_KSZ8795=m
+    - NET_DSA_MICROCHIP_KSZ8795_SPI=m
+    - NET_DSA_SJA1105_TAS=y
+    - MLX5_SW_STEERING=y
+    - NET_VENDOR_PENSANDO=y
+    - IONIC=m
+    - ADIN_PHY=m
+    - ATH9K_PCI_NO_EEPROM=m
+  - Power management
+    - SENSORS_AS370=m
+    - SENSORS_INSPUR_IPSPS=m
+    - REGULATOR_SY8824X=m
+  - Graphics
+    - DRM_AMD_DC_DCN2_1=y
+    - DRM_GM12U320=m
+  - Sound
+    - SND_HDA_INTEL_DETECT_DMIC=y
+    - SND_SOC_INTEL_CML_LP_DA7219_MAX98357A_MACH=m
+    - SND_SOC_SOF_TIGERLAKE_SUPPORT=y
+    - SND_SOC_SOF_ELKHARTLAKE_SUPPORT=y
+    - SND_SOC_UDA1334=n
+    - SND_SOC_SOF_OF=m
+  - USB
+    - USB_CONN_GPIO=m
+    - USB_CDNS3=m
+    - USB_CDNS3_HOST=y
+    - USB_CDNS3_PCI_WRAP=m
+  - Platform support
+    - CROS_EC=m
+    - CROS_EC_CHARDEV=m
+    - CROS_EC_LIGHTBAR=m
+    - CROS_EC_DEBUGFS=m
+    - CROS_EC_SYSFS=m
+    - CROS_EC_VBC=m
+  - Industrial I/O
+    - ADIS16460=n
+    - NOA1305=n
+    - MAX5432=n
+  - Misc drivers
+    - EFI_RCI2_TABLE=n
+    - MTD_NAND_MXIC=m
+    - JOYSTICK_FSIA6B=m
+    - REMOTEPROC=n
+    - SERIAL_FSL_LINFLEXUART=m
+    - MFD_CROS_EC_DEV=m
+    - W1_MASTER_SGI=m
+    - W1_SLAVE_DS250X=m
+    - VIDEO_OV5675=m
+    - HID_CREATIVE_SB0540=m
+    - DMABUF_SELFTESTS=n
+    - MOXTET=n
+  - File systems
+    - FS_VERITY=y
+    - FS_VERITY_DEBUG=n
+    - FS_VERITY_BUILTIN_SIGNATURES=n
+    - VIRTIO_FS=m
+    - EXFAT_FS=m
+    - EXFAT_DONT_MOUNT_VFAT=y
+    - EXFAT_DISCARD=y
+    - EXFAT_DELAYED_SYNC=n
+    - EXFAT_KERNEL_DEBUG=n
+    - EXFAT_DEBUG_MSG=n
+    - EXFAT_DEFAULT_CODEPAGE=437
+    - EXFAT_DEFAULT_IOCHARSET="utf8"
+  - Security
+    - SECURITY_LOCKDOWN_LSM=y
+    - SECURITY_LOCKDOWN_LSM_EARLY=y
+    - LOCK_DOWN_KERNEL_FORCE_NONE=y
+    - IMA_DEFAULT_HASH_SHA512=n
+    - IMA_APPRAISE_MODSIG=y
+    - RANDOM_TRUST_BOOTLOADER=y
+    - KEXEC_SIG=y
+    - KEXEC_SIG_FORCE=n
+    - KEXEC_BZIMAGE_VERIFY_SIG=y
+  - Cryptographic API
+    - CRYPTO_ESSIV=m
+    - CRYPTO_DEV_CCP_DEBUGFS=n
+    - CRYPTO_DEV_SAFEXCEL=m
+  - PowerPC
+    - PPC_SVM=y
+    - OPAL_CORE=n
+  - S/390
+    - CRYPTO_SHA3_256_S390=m
+    - CRYPTO_SHA3_512_S390=m
+- commit 0599162
 
 -------------------------------------------------------------------
 Tue Oct  1 10:19:14 CEST 2019 - jslaby@suse.cz

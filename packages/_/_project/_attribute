@@ -217,7 +217,7 @@ repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bi
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
 
-installcheck-ignore-duplicated-binaries = glade-catalog-gtksourceview python3-clang libc++-devel libc++1 libc++abi-devel libc++abi1 tftpboot-installation-openSUSE-MicroOS-x86_64
+installcheck-ignore-duplicated-binaries = 
 
 # for scan_baselibs.py
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
@@ -231,7 +231,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20191216</value>
+    <value>20191217</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -382,7 +382,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20191216'
 published: '20191214'
 publishing: '20191214'
 testing: '20191216'

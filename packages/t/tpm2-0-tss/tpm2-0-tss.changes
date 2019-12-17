@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 11 11:01:44 UTC 2019 - matthias.gerstner@suse.com
+
+- update to upstream version 2.3.0:
+  - changes in version 2.3.0:
+    - tss2-tctildr: A new library that helps with tcti initialization
+      Recommend to use this in place of custom tcti loading code now !
+    - tss2-rc: A new library that provides textual representations for return
+      codes
+    - Option to disable NIST-deprecated crypto (--disable-weak-crypto)
+    - Support Esys_TR_FromTPMPublic on sessions (for use in Esys_FlushContext)
+    - map-files with correct symbol lists for tss2-sys and tss2-esys
+      This may lead to unresolved symbols in linked applications
+    - Support to call Tss2_Sys_Execute repeatedly on certain errors
+    - Reduced RAM consumption in Esys due to Tss2_Sys_Execute change
+    - Automated session attribution clearing for esys (decrypt and encrypt)
+      per cmd
+    - Removed libtss2-mu from "Requires" field of libtss2-esys.pc
+      Needs to be added explicitely now
+    - All fixes from 2.2.1, 2.2.2 and 2.2.3
+    - Fixed SPDX License Identifiers
+    - Fixed Null-pointer problems in tcti-tbs
+    - Fixed Default locality for tcti-mssim set to LOC_0
+    - Fixed coverity and valgrind leaks detected in test programs (not library
+      code)
+
+-------------------------------------------------------------------
 Fri Aug 23 12:06:22 UTC 2019 - matthias.gerstner@suse.com
 
 - update to upstream version 2.2.3:

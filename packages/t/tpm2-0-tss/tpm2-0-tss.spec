@@ -17,7 +17,7 @@
 
 
 Name:           tpm2-0-tss
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -46,9 +46,11 @@ Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libtss2-esys0 = %{version}
 Requires:       libtss2-mu0 = %{version}
+Requires:       libtss2-rc0 = %{version}
 Requires:       libtss2-sys0 = %{version}
 Requires:       libtss2-tcti-device0 = %{version}
 Requires:       libtss2-tcti-mssim0 = %{version}
+Requires:       libtss2-tctildr0 = %{version}
 Requires:       tpm2-0-tss = %{version}
 
 %description devel
@@ -88,6 +90,21 @@ Marshaling/Unmarshaling (MU) as described in the TCG TSS 2.0
 Marshaling/Unmarshaling API Specification. This API provides a set of
 marshaling and unmarshaling functions for all data types defined by the TPM
 library specification.
+
+%package -n libtss2-rc0
+Summary:        TPM2 error code translation library
+Group:          System/Libraries
+
+%description -n libtss2-rc0
+This library can translate TPM error codes into human readable strings.
+
+%package -n libtss2-tctildr0
+Summary:        TCTI interface loading library
+Group:          System/Libraries
+
+%description -n libtss2-tctildr0
+This is a helper library that simplifies loading other tcti libraries. It is
+recommended over custom tcti loading code in applications.
 
 %package -n libtss2-tcti-device0
 Summary:        TCTI interface library for using a native TPM device node
@@ -150,12 +167,16 @@ mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{ud
 %postun -n libtss2-esys0 -p /sbin/ldconfig
 %post -n libtss2-sys0 -p /sbin/ldconfig
 %postun -n libtss2-sys0 -p /sbin/ldconfig
+%post -n libtss2-tctildr0 -p /sbin/ldconfig
+%postun -n libtss2-tctildr0 -p /sbin/ldconfig
 %post -n libtss2-tcti-device0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-device0 -p /sbin/ldconfig
 %post -n libtss2-tcti-mssim0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-mssim0 -p /sbin/ldconfig
 %post -n libtss2-mu0 -p /sbin/ldconfig
 %postun -n libtss2-mu0 -p /sbin/ldconfig
+%post -n libtss2-rc0 -p /sbin/ldconfig
+%postun -n libtss2-rc0 -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
@@ -181,6 +202,14 @@ mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{ud
 %files -n libtss2-mu0
 %defattr(-,root,root)
 %{_libdir}/libtss2-mu.so.*
+
+%files -n libtss2-rc0
+%defattr(-,root,root)
+%{_libdir}/libtss2-rc.so.*
+
+%files -n libtss2-tctildr0
+%defattr(-,root,root)
+%{_libdir}/libtss2-tctildr.so.*
 
 %files -n libtss2-tcti-device0
 %defattr(-,root,root)

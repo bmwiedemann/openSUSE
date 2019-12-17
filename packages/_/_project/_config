@@ -392,6 +392,9 @@ Prefer: go
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python2-tornado python3-tornado -python3-tornado4
 
+# Fix for "Have choice for txt2tags: python2-txt2tags python3-txt2tags"; obviously, we prefer py3
+Prefer: python3-txt2tags
+
 # There is python[23]-prompt_toolkit and also python[23]-prompt_toolkit1 for compat. Use the unversioned one by default
 Prefer: python3-prompt_toolkit python2-prompt_toolkit
 
@@ -426,13 +429,14 @@ Prefer: vtk-java vtk-tcl python3-vtk
 Prefer: wine-32bit wine-devel-32bit wine-devel
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-Prefer: ruby2.6-rubygem-tilt
-Prefer: ruby2.6-rubygem-mail
 Prefer: ruby2.6-rubygem-addressable
-Prefer: ruby2.6-rubygem-thor
-Prefer: ruby2.6-rubygem-webmock-2_3
-Prefer: ruby2.6-rubygem-i18n
 Prefer: ruby2.6-rubygem-fast_gettext
+Prefer: ruby2.6-rubygem-i18n
+Prefer: ruby2.6-rubygem-mail
+Prefer: ruby2.6-rubygem-sprockets
+Prefer: ruby2.6-rubygem-thor
+Prefer: ruby2.6-rubygem-tilt
+Prefer: ruby2.6-rubygem-webmock-2_3
 
 # python-msgpack-python was renamed to python-msgpack with 0.5 as a single-spec package (provides/obsoletes in place)
 Prefer: python2-msgpack python3-msgpack
