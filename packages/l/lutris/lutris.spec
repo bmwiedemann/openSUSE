@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
-Group:          Amusements/Games/Other
-URL:            http://lutris.net
+URL:            https://lutris.net
 Source0:        http://lutris.net/releases/lutris_%{version}.tar.xz
 Source1:        lutris.rpmlintrc
 BuildRequires:  fdupes
@@ -41,11 +40,11 @@ Requires:       cabextract
 Requires:       fluid-soundfont-gm
 Requires:       python3-Pillow
 Requires:       python3-PyYAML
+# controller support
+Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-requests
-# controller support
-Requires:       python3-evdev
 Recommends:     winetricks
 BuildArch:      noarch
 
@@ -89,6 +88,6 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %{python3_sitelib}/%{name}-*.egg-info
 %{python3_sitelib}/%{name}/
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog
