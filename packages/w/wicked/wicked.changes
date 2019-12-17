@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 11 11:23:05 UTC 2019 - mt@suse.com
+
+- version 0.6.61
+- dracut: add initial cmdline parsing as a config source
+- address: don't check hwaddr length if parsing as ARPHRD_VOID
+- utils: added find and insert var array utils, cleanup
+- client: add show-policy command calling policy generation
+- client: initial support to generate a basic policy directly
+- client: cleanup convert and show-config commands
+
+-------------------------------------------------------------------
 Fri Oct  4 11:41:32 UTC 2019 - mt@suse.com
 
 - version 0.6.60
@@ -41,7 +52,7 @@ Wed Aug 14 17:23:36 UTC 2019 - rtorreromarijnissen@suse.com
 - bridge: honour ifcfg LLADDR and set link address (bsc#1042123,boo#1142670)
 - rfkill: fix switch statement to check enum variable not a constant (bsc#1140117)
 - man: ifcfg-ovs-bridge(5): recommend STARTMODE=nfsroot
-- dhcp4: nullify defer timer pointer when timeout (openSUSE/wicked#798)
+- dhcp4: nullify defer timer pointer when timeout (openSUSE/wicked#798,bsc#1142214)
 - dhcp4: fix to request routing options when custom options are used (bsc#1132326)
 - testing: add ifbind.sh helper script allowing to test hotplugging
 

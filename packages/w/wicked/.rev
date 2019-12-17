@@ -1480,4 +1480,20 @@
   shipping the internal helper library inside of the wicked package.</comment>
     <requestid>734983</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>f31b38b90665aa3c9843c42f6eaabc56</srcmd5>
+    <version>0.6.61</version>
+    <time>1576585746</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.61
+- dracut: add initial cmdline parsing as a config source
+- address: don't check hwaddr length if parsing as ARPHRD_VOID
+- utils: added find and insert var array utils, cleanup
+- client: add show-policy command calling policy generation
+- client: initial support to generate a basic policy directly
+- client: cleanup convert and show-config commands
+
+- dhcp4: nullify defer timer pointer when timeout (openSUSE/wicked#798,bsc#1142214)</comment>
+    <requestid>755884</requestid>
+  </revision>
 </revisionlist>

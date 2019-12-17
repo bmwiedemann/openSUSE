@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.60
+Version:        0.6.61
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Management
 Url:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
@@ -39,7 +39,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  make
-Provides:       libwicked-0_6_60 = %{version}
+Provides:       libwicked-0_6_61 = %{version}
 Obsoletes:      libwicked-0-6 <= %{version}
 
 %if 0%{?suse_version} >= 1500
@@ -155,7 +155,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_60 = %{version}
+Requires:       libwicked-0_6_61 = %{version}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
