@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 14 11:18:05 UTC 2019 - maiku.fabian@gmail.com
+
+- Update to 2.7.4
+- Updated Portuguese (Brazil) translations from Weblate (100.0% translated)
+- Updated Turkish translations from Weblate (100.0% translated)
+- Remove weird spelling “preëdit” from messageid
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/62)
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
 Mon Nov 25 07:25:46 UTC 2019 - maiku.fabian@gmail.com
 
 - Update to 2.7.3
