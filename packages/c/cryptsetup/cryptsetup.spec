@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -66,7 +66,7 @@ time via the config file %{_sysconfdir}/crypttab.
 %package -n libcryptsetup%{so_ver}
 Summary:        Library for setting up dm-crypt Based Encrypted Block Devices
 Group:          System/Libraries
-Suggests:       libcryptsetup%{so_ver}-hmac
+Suggests:       libcryptsetup%{so_ver}-hmac = %{version}-%{release}
 
 %description -n libcryptsetup%{so_ver}
 cryptsetup is used to conveniently set up dm-crypt based device-mapper
@@ -78,6 +78,7 @@ time via the config file %{_sysconfdir}/crypttab.
 %package -n libcryptsetup%{so_ver}-hmac
 Summary:        Checksums for libcryptsetup%{so_ver}
 Group:          System/Base
+Requires:       libcryptsetup%{so_ver} = %{version}-%{release}
 
 %description -n libcryptsetup%{so_ver}-hmac
 This package contains HMAC checksums for integrity checking of libcryptsetup4,
