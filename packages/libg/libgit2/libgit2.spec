@@ -19,7 +19,7 @@
 
 %define sover 28
 Name:           libgit2
-Version:        0.28.2
+Version:        0.28.4
 Release:        0
 Summary:        C git library
 License:        GPL-2.0 WITH GCC-exception-2.0

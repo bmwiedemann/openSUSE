@@ -386,4 +386,12 @@ Update required for libgit2-glib, a new lib depending on libgit2 and used by ged
     <comment></comment>
     <requestid>718451</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fb403267ca26662eccf676429c035b0e</srcmd5>
+    <version>0.28.4</version>
+    <time>1576585753</time>
+    <user>dimstar_suse</user>
+    <comment>libgit2 0.28.4 (forwarded request 755891 from AndreasStieger)</comment>
+    <requestid>756053</requestid>
+  </revision>
 </revisionlist>
