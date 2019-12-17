@@ -6167,7 +6167,6 @@ unsorted:
   - jupyter-jupyterlab-server 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab_github 
-  - jupyter-jupyterlab_templates 
   - jupyter-jupytext 
   - jupyter-jupytext-jupyterlab 
   - jupyter-lineup-widget 
@@ -8757,7 +8756,7 @@ unsorted:
   - libexttextcat-devel 
   - libexttextcat-tools 
   - libf2c0 
-  - libf2fs_format5 
+  - libf2fs_format6 
   - libf95getdata7 
   - libfabric 
   - libfabric-devel 
@@ -11800,10 +11799,14 @@ unsorted:
   - libtspi1-32bit: [x86_64] 
   - libtss2-esys0-32bit: [x86_64] 
   - libtss2-mu0-32bit: [x86_64] 
+  - libtss2-rc0 
   - libtss2-sys0-32bit: [x86_64] 
+  - libtss2-tcti-device0 
   - libtss2-tcti-device0-32bit: [x86_64] 
+  - libtss2-tcti-mssim0 
   - libtss2-tcti-mssim0-32bit: [x86_64] 
   - libtss2-tcti-tabrmd0 
+  - libtss2-tctildr0 
   - libttf2 
   - libttf2-32bit: [x86_64] 
   - libttsmimic0 
@@ -12724,6 +12727,8 @@ unsorted:
   - lswm 
   - lsyncd 
   - ltrace-32bit: [x86_64] 
+  - lttng-modules 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-ust-devel 
   - lttng-ust-doc 
@@ -15215,14 +15220,14 @@ unsorted:
   - orkhon-fonts 
   - oro 
   - oro-javadoc 
-  - orthanc: [x86_64] 
-  - orthanc-devel: [x86_64] 
-  - orthanc-dicomweb: [x86_64] 
-  - orthanc-doc: [x86_64] 
-  - orthanc-postgresql: [x86_64] 
-  - orthanc-source: [x86_64] 
-  - orthanc-webviewer: [x86_64] 
-  - orthanc-wsi: [x86_64] 
+  - orthanc 
+  - orthanc-devel 
+  - orthanc-dicomweb 
+  - orthanc-doc 
+  - orthanc-postgresql 
+  - orthanc-source 
+  - orthanc-webviewer 
+  - orthanc-wsi 
   - ortp 
   - ortp-devel 
   - os-autoinst 
@@ -16781,16 +16786,6 @@ unsorted:
   - php7-memcached 
   - php7-opcache 
   - php7-pcntl 
-  - php7-pear-Auth_SASL 
-  - php7-pear-MDB2 
-  - php7-pear-MDB2_Driver_mysqli 
-  - php7-pear-Mail_Mime 
-  - php7-pear-Net_IDNA2 
-  - php7-pear-Net_LDAP2 
-  - php7-pear-Net_SMTP 
-  - php7-pear-Net_Sieve 
-  - php7-pear-Net_Socket 
-  - php7-pear-XML_Parser 
   - php7-phalcon 
   - php7-phar 
   - php7-phpunit8 
@@ -21600,7 +21595,6 @@ unsorted:
   - python3-pastel 
   - python3-pastream 
   - python3-path 
-  - python3-path.py 
   - python3-pathlib 
   - python3-pathlib2 
   - python3-pathspec 
