@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 15 09:47:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.12
+  * Remove no-op free_proc_comm call on an unknown comm field
+  * Return no info rather than NULL if proc_info_get returns NULL
+  * Re-work unknown cmdline information
+
+-------------------------------------------------------------------
 Tue Aug 27 09:40:34 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.02.11
