@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 17 19:41:38 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.06
+  * Format Total: field using the size of the pid fields to fix
+    alignment
+  * Add sanity check on tmp before dereferencing it
+  * Fix potential memory leak when re-assigning new cmdline
+
+-------------------------------------------------------------------
+Tue Aug 27 09:44:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.05
+  * No functional changes
+
+-------------------------------------------------------------------
+Sun Jul  7 18:38:34 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.04
+  * Manual: fix typo: comsumers -> consumers
+  * Update copyright year
+
+-------------------------------------------------------------------
 Sat Jan 12 12:38:02 UTC 2019 - mardnh@gmx.de
 
 - Update to version 0.02.03
