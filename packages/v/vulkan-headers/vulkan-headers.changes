@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 12 19:21:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.130
+  * The new VK_EXT_tooling_info extension can be used to let the
+    Vulkan application/game/engine query what development tools
+    are running right now.
+
+-------------------------------------------------------------------
 Thu Nov  7 07:16:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.127
