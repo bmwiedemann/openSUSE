@@ -288,4 +288,43 @@ s etc.
   * Install m4 files</comment>
     <requestid>726072</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b8fc5dad53bd924c085ef32234093d8</srcmd5>
+    <version>4.1</version>
+    <time>1576676687</time>
+    <user>dimstar_suse</user>
+    <comment>! please handle this together with sr#755853 for tpm2-0-tss !
+
+- add fix_bad_bufsize.patch: fixes findings from compile time fread() checks
+  that indicate bad buffer size specification.
+- add fix_bogus_warning.patch: fixes `maybe-unitialized` warnings that are
+  bogus, since the variables in questions will be initialized in any case
+  later on.
+
+- update to major version 4.1:
+  - changes in version 4.1:
+    * tpm2_certifycreation: New tool enabling command TPM2_CertifyCreation.
+    
+    * tpm2_checkquote:
+       - Fix YAML output bug.
+       - -g option for specifying hash algorithm is optional and defaults to
+         sha256.
+    
+    * tpm2_changeeps: A new tool for changing the Endorsement hierarchy
+      primary seed.
+    
+    * tpm2_changepps: A new tool for changing the Platform hierarchy primary seed.
+    
+    * tpm2_clockrateadjust: Add a new tool for modifying the period on the TPM.
+    
+    * tpm2_create: Add tool options for specifying output data for use in
+      certification
+      - --creation-data to save the creation data
+      - --creation-ticket or -t to save the creation ticket
+      - --creation-hash or -d to save the creation hash
+      - --template-data for saving the template data of the key
+      - --outside-info or -q for specifying unique data to include in creation data.
+      - --pcr-list or -l  Add option to specify pcr list to add to creation data.</comment>
+    <requestid>755855</requestid>
+  </revision>
 </revisionlist>

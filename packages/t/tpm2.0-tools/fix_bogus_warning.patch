@@ -1,0 +1,26 @@
+Index: tpm2-tools-4.1/lib/tpm2_hash.c
+===================================================================
+--- tpm2-tools-4.1.orig/lib/tpm2_hash.c
++++ tpm2-tools-4.1/lib/tpm2_hash.c
+@@ -14,7 +14,7 @@ static tool_rc tpm2_hash_common(ESYS_CON
+         UINT16 inbuffer_len, TPM2B_DIGEST **result,
+         TPMT_TK_HASHCHECK **validation) {
+     bool use_left, done;
+-    unsigned long left;
++    unsigned long left = 0;
+     size_t bytes_read;
+     TPM2B_AUTH null_auth = TPM2B_EMPTY_INIT;
+     TPMI_DH_OBJECT sequence_handle;
+Index: tpm2-tools-4.1/lib/tpm2_attr_util.c
+===================================================================
+--- tpm2-tools-4.1.orig/lib/tpm2_attr_util.c
++++ tpm2-tools-4.1/lib/tpm2_attr_util.c
+@@ -202,7 +202,7 @@ static bool lookup_nt_friendly_name(cons
+ 
+ static bool nt(TPMA_NV *nv, char *arg) {
+ 
+-    uint16_t value;
++    uint16_t value = 0;
+     bool result = tpm2_util_string_to_uint16(arg, &value);
+     if (!result) {
+         result = lookup_nt_friendly_name(arg, &value);

@@ -17,13 +17,15 @@
 
 
 Name:           tpm2.0-tools
-Version:        3.1.4
+Version:        4.1
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
 Group:          Productivity/Security
 Url:            https://github.com/tpm2-software/tpm2-tools/releases
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
+Patch0:         fix_bogus_warning.patch
+Patch1:         fix_bad_bufsize.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -61,6 +63,8 @@ associated interfaces.
 
 %prep
 %setup -q -n tpm2-tools-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %configure --disable-static
@@ -78,5 +82,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc README.md LICENSE CHANGELOG.md
 /usr/bin/tpm2_*
 %{_mandir}/man1/tpm2_*
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/*
 
 %changelog
