@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec 11 16:13:32 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to image 5.0.0
+  - Clean up various imports primarily so that imports of packages that aren't in the standard library are all in one section.
+  - Update to major version v5
+  - return resp error message
+  - copy.Image(): select the CopySystemImage image using the source context
+  - Add manifest list support
+  - docker: handle http 429 status codes
+  - allow for .dockercfg files to reside in non-home directories
+  - Use the correct module path in (make test-skopeo)
+- Update to libpod 1.6.3
+  - Handling of the libpod.conf configuration file has seen major changes. Most significantly, rootless users will no longer automatically receive a complete configuration file when they first use Podman, and will instead only receive differences from the global configuration.
+  - Initial support for the CNI DNS plugin, which allows containers to resolve the IPs of other containers via DNS name, has been added
+  - Podman now supports anonymous named volumes, created by specifying only a destination to the -v flag to the podman create and podman run commands
+  - Named volumes now support uid and gid options in --opt o=... to set UID and GID of the created volume
+- Update to storage 1.15.3 
+  - overlay: allow storing images with more than 127 layers
+  - Lazy initialize the layer store
+  - tarlogger: drop state mutex
+
+-------------------------------------------------------------------
 Wed Oct  2 08:29:50 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to image 4.0.0

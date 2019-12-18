@@ -16,16 +16,16 @@
 #
 
 # libpodver - version from containers/libpod
-%define libpodver 1.6.0
+%define libpodver 1.6.3
 
 # storagever - version from containers/storage
-%define storagever 1.13.4
+%define storagever 1.15.3
 
 # imagever - version from containers/image
-%define imagever 4.0.0
+%define imagever 5.0.0
 
 Name:           libcontainers-common
-Version:        20190923
+Version:        20191211
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0 and GPL-3.0+
