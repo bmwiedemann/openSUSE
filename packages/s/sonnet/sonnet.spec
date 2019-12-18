@@ -1,7 +1,7 @@
 #
 # spec file for package sonnet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.64
+%define _tar_path 5.65
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           sonnet
-Version:        5.64.0
+Version:        5.65.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
@@ -131,7 +131,6 @@ HSpell, Enchant, ASpell and HUNSPELL. Development files.
 %{_kf5_debugdir}/sonnet.categories
 %dir %{_kf5_plugindir}/kf5
 %{_kf5_plugindir}/kf5/sonnet/
-%{_kf5_datadir}/sonnet/
 
 %files -n libKF5SonnetCore%{sonum}
 %license COPYING*
