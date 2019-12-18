@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>721729</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9687588a2807171680dc86817198462d</srcmd5>
+    <version>1.1.2</version>
+    <time>1576676722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2:
+  * Fix nginx example / sandbox (#114)
+  * Generate int64 values instead of uint64 (#116)
+  * version bump for 1.1.1 and version check scripts enforced by CI (#113)
+  * Build / install updates  (#112)
+  * Changed how tests are built for faster compilation (#109)
+  * Replace ':' in span tag keys with '.' (#107) (forwarded request 757564 from mrostecki)</comment>
+    <requestid>757566</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define libname libdd_opentracing%{soversion}
 
 Name:           dd-opentracing-cpp
-Version:        1.0.1
+Version:        1.1.2
 Release:        0
 Summary:        Datadog Opentracing C++ client
 License:        Apache-2.0
