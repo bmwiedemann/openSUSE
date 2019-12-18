@@ -1,7 +1,7 @@
 #
 # spec file for package python-m2r
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,17 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/miyakogi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/m/m2r/%{modname}-%{version}.tar.gz
+Patch0:         open-encoding.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module mistune}
 BuildRequires:  %{python_module setuptools}
 %if %{with test}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  python2-mock
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,6 +54,8 @@ M2R converts a markdown file including reST markups to a valid reST format.
 
 %prep
 %setup -q -n %{modname}-%{version}
+%autopatch -p1
+
 sed -i '/^#!.*/d' m2r.py
 
 %build
@@ -58,8 +64,9 @@ sed -i '/^#!.*/d' m2r.py
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/m2r
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests/
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}/
+rm -rf %{buildroot}%{$python_sitelib}/tests/
+}
 
 %post
 %python_install_alternative m2r

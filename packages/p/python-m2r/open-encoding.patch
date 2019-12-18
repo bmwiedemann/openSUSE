@@ -1,0 +1,81 @@
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -4,6 +4,7 @@
+ from __future__ import print_function, unicode_literals
+ 
+ import sys
++import io
+ import os
+ from os import path
+ from copy import copy
+@@ -37,12 +38,12 @@ class TestConvert(TestCase):
+         options.disable_inline_math = False
+         self._orig_argv = copy(sys.argv)
+         if path.exists(test_rst):
+-            with open(test_rst) as f:
++            with io.open(test_rst, encoding="utf8") as f:
+                 self._orig_rst = f.read()
+ 
+     def tearDown(self):
+         sys.argv = self._orig_argv
+-        with open(test_rst, 'w') as f:
++        with io.open(test_rst, 'w', encoding="utf8") as f:
+             f.write(self._orig_rst)
+ 
+     def test_no_file(self):
+@@ -62,14 +63,14 @@ class TestConvert(TestCase):
+ 
+     def test_parse_file(self):
+         output = parse_from_file(test_md)
+-        with open(test_rst) as f:
++        with io.open(test_rst, encoding="utf8") as f:
+             expected = f.read()
+         self.assertEqual(output.strip(), expected.strip())
+ 
+     def test_dryrun(self):
+         sys.argv = [sys.argv[0], '--dry-run', test_md]
+         target_file = path.join(curdir, 'test.rst')
+-        with open(target_file) as f:
++        with io.open(target_file, encoding="utf8") as f:
+             rst = f.read()
+         os.remove(target_file)
+         self.assertFalse(path.exists(target_file))
+@@ -89,24 +90,24 @@ class TestConvert(TestCase):
+     def test_overwrite_file(self):
+         sys.argv = [sys.argv[0], test_md]
+         target_file = path.join(curdir, 'test.rst')
+-        with open(target_file, 'w') as f:
++        with io.open(target_file, 'w', encoding="utf8") as f:
+             f.write('test')
+-        with open(target_file) as f:
++        with io.open(target_file, encoding="utf8") as f:
+             first_line = f.readline()
+         self.assertIn('test', first_line)
+         with patch(_builtin + '.input', return_value='y'):
+             main()
+         self.assertTrue(path.exists(target_file))
+-        with open(target_file) as f:
++        with io.open(target_file, encoding="utf8") as f:
+             first_line = f.readline()
+         self.assertNotIn('test', first_line)
+ 
+     def test_overwrite_option(self):
+         sys.argv = [sys.argv[0], '--overwrite', test_md]
+         target_file = path.join(curdir, 'test.rst')
+-        with open(target_file, 'w') as f:
++        with io.open(target_file, 'w', encoding="utf8") as f:
+             f.write('test')
+-        with open(target_file) as f:
++        with io.open(target_file, encoding="utf8") as f:
+             first_line = f.readline()
+         self.assertIn('test', first_line)
+         with patch(_builtin + '.input', return_value='y') as m_input:
+@@ -115,7 +116,7 @@ class TestConvert(TestCase):
+         self.assertTrue(path.exists(target_file))
+         self.assertFalse(m_input.called)
+         self.assertFalse(m_print.called)
+-        with open(target_file) as f:
++        with io.open(target_file, encoding="utf8") as f:
+             first_line = f.readline()
+         self.assertNotIn('test', first_line)
+ 
