@@ -1,0 +1,25 @@
+From c6be204af030f23905ec7a69ab02c88a80f4a4f5 Mon Sep 17 00:00:00 2001
+From: Xiaoguang Wang <xwang@suse.com>
+Date: Wed, 11 Dec 2019 15:30:33 +0800
+Subject: [PATCH] user-accounts: Use absolute path of command usermod
+
+On distro openSUSE Tumbleweed and SUSE Linux Enterprise the path
+of command usermod is not in environment variable PATH, we need to
+use absolute path to find command.
+---
+ panels/user-accounts/user-utils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: gnome-control-center-3.34.2/panels/user-accounts/user-utils.c
+===================================================================
+--- gnome-control-center-3.34.2.orig/panels/user-accounts/user-utils.c
++++ gnome-control-center-3.34.2/panels/user-accounts/user-utils.c
+@@ -486,7 +486,7 @@ is_valid_username_async (const gchar *us
+          * future, so it would be nice to have some official way for this
+          * instead of relying on the current "--login" implementation.
+          */
+-        argv[0] = "usermod";
++        argv[0] = "/usr/sbin/usermod";
+         argv[1] = "--login";
+         argv[2] = data->username;
+         argv[3] = "--";
