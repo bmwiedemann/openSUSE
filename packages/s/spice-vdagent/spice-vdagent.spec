@@ -27,8 +27,7 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source1:        http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
-Patch0:         spice-vdagent-var_run.patch
-Patch1:         vdagentd-Fix-session-lookup-for-new-GNOME-versions.patch
+Patch0:         vdagentd-Fix-session-lookup-for-new-GNOME-versions.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  glib2-devel
@@ -62,7 +61,6 @@ Features:
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %configure \
@@ -72,8 +70,6 @@ make %{?_smp_mflags} V=2
 
 %install
 make install DESTDIR=%{buildroot} V=2
-# remove rsyslogd config
-rm -rf %{buildroot}%{_sysconfdir}/rsyslog.d
 # create rc symlink
 ln -s  service %{buildroot}%{_sbindir}/rcspice-vdagentd
 

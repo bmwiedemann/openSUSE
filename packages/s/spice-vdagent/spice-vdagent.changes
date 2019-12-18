@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 17 16:51:54 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Since the 0.19.0 update, this patch is no longer needed:
+  spice-vdagent-var_run.patch
+- For sometime now we've not had any rsyslog config files, so clean
+  up where the spec file would remove the rsyslog.d dir and content
+
+-------------------------------------------------------------------
 Wed Dec 11 17:33:36 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Add upstream fix for spice-vdagent running on recent GNOME (eg.
