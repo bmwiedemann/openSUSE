@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:21:08 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Avoid inconsistencies in library package names causing unresolvable
+  dependencies, replace all soversion occurences with a macro.
+
+-------------------------------------------------------------------
 Wed Sep 11 07:54:48 UTC 2019 - Cliff Zhao <qzhao@suse.com>
 
 - Add patch plymouth-avoid-umount-hanging-shutdown.patch:

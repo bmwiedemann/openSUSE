@@ -20,6 +20,7 @@
 # it is not used in the production environment.
 %bcond_with x11_renderer
 
+%global soversion 5
 %define plymouthdaemon_execdir %{_sbindir}
 %define plymouthclient_execdir %{_bindir}
 %define plymouth_libdir %{_libdir}
@@ -61,7 +62,6 @@ BuildRequires:  gcc
 BuildRequires:  git
 BuildRequires:  kernel-headers
 BuildRequires:  libtool
-BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  module-init-tools
 BuildRequires:  pkgconfig
@@ -101,36 +101,36 @@ place of the text messages that normally get shown.  Text
 messages are instead redirected to a log file for viewing
 after boot.
 
-%package -n libply-boot-client5
+%package -n libply-boot-client%{soversion}
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
 
-%description -n libply-boot-client5
+%description -n libply-boot-client%{soversion}
 This package contains the libply-boot-client library used by Plymouth.
 
-%package -n libply-splash-core5
+%package -n libply-splash-core%{soversion}
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
 
-%description -n libply-splash-core5
+%description -n libply-splash-core%{soversion}
 This package contains the libply-splash-core library
 used by graphical Plymouth splashes.
 
-%package -n libply-splash-graphics5
+%package -n libply-splash-graphics%{soversion}
 Summary:        Plymouth graphics libraries
 Group:          Development/Libraries/C and C++
 BuildRequires:  libpng-devel
 
-%description -n libply-splash-graphics5
+%description -n libply-splash-graphics%{soversion}
 This package contains the libply-splash-graphics library
 used by graphical Plymouth splashes.
 
-%package -n libply5
+%package -n libply%{soversion}
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
-Requires:       libply-boot-client5 = %{version}
+Requires:       libply-boot-client%{soversion} = %{version}
 
-%description -n libply5
+%description -n libply%{soversion}
 This package contains the libply library used by Plymouth.
 
 %package devel
@@ -140,10 +140,10 @@ Requires:       %{name} = %{version}
 %if %{with x11_renderer}
 Requires:       %{name}-x11-renderer = %{version}
 %endif
-Requires:       libply-boot-client5 = %{version}
-Requires:       libply-splash-core5 = %{version}
-Requires:       libply-splash-graphics5 = %{version}
-Requires:       libply5 = %{version}
+Requires:       libply-boot-client%{soversion} = %{version}
+Requires:       libply-splash-core%{soversion} = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply%{soversion} = %{version}
 Requires:       pkgconfig
 
 %description devel
@@ -185,7 +185,7 @@ the system.
 %package plugin-label
 Summary:        Plymouth label plugin
 Group:          System/Base
-Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
 
 %description plugin-label
 This package contains the label control plugin for
@@ -196,7 +196,7 @@ graphical boot splashes using pango and cairo.
 Summary:        Plymouth FreeType label plugin
 Group:          System/Base
 Requires:       fontconfig
-Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
 
 %description plugin-label-ft
 This package contains the label control plugin for
@@ -206,9 +206,9 @@ graphical boot splashes using FreeTyoe
 %package plugin-fade-throbber
 Summary:        Plymouth "Fade-Throbber" plugin
 Group:          System/Base
-Requires:       libply-splash-core5 = %{version}
-Requires:       libply-splash-graphics5 = %{version}
-Requires:       libply5 = %{version}
+Requires:       libply-splash-core%{soversion} = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply%{soversion} = %{version}
 
 %description plugin-fade-throbber
 This package contains the "Fade-In" boot splash plugin for
@@ -219,9 +219,9 @@ while other images pulsate around during system boot up.
 Summary:        Plymouth "Throbgress" plugin
 Group:          System/Base
 Requires:       %{name}-plugin-label = %{version}
-Requires:       libply-splash-core5 = %{version}
-Requires:       libply-splash-graphics5 = %{version}
-Requires:       libply5 = %{version}
+Requires:       libply-splash-core%{soversion} = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply%{soversion} = %{version}
 
 %description plugin-throbgress
 This package contains the "throbgress" boot splash plugin for
@@ -233,9 +233,9 @@ the screen.
 Summary:        Plymouth "space-flares" plugin
 Group:          System/Base
 Requires:       %{name}-plugin-label = %{version}
-Requires:       libply-splash-core5 = %{version}
-Requires:       libply-splash-graphics5 = %{version}
-Requires:       libply5 = %{version}
+Requires:       libply-splash-core%{soversion} = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply%{soversion} = %{version}
 
 %description plugin-space-flares
 This package contains the "space-flares" boot splash plugin for
@@ -244,9 +244,9 @@ Plymouth. It features a corner image with animated flares.
 %package plugin-two-step
 Summary:        Plymouth "two-step" plugin
 Group:          System/Base
-Requires:       libply-splash-core5 = %{version}
-Requires:       libply-splash-graphics5 = %{version}
-Requires:       libply5 = %{version}
+Requires:       libply-splash-core%{soversion} = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply%{soversion} = %{version}
 Requires:       plymouth-plugin-label = %{version}
 
 %description plugin-two-step
@@ -258,9 +258,9 @@ short, fast one-shot animation.
 %package plugin-script
 Summary:        Plymouth "script" plugin
 Group:          System/Base
-Requires:       libply-splash-core5 = %{version}
-Requires:       libply-splash-graphics5 = %{version}
-Requires:       libply5 = %{version}
+Requires:       libply-splash-core%{soversion} = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply%{soversion} = %{version}
 
 %description plugin-script
 This package contains the "script" boot splash plugin for
@@ -271,9 +271,9 @@ boot splash themes.
 %package plugin-tribar
 Summary:        Plymouth "script" plugin
 Group:          System/Base
-Requires:       libply-splash-core5 = %{version}
-Requires:       libply-splash-graphics5 = %{version}
-Requires:       libply5 = %{version}
+Requires:       libply-splash-core%{soversion} = %{version}
+Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply%{soversion} = %{version}
 
 %description plugin-tribar
 This package contains the "tribar" boot splash plugin for
@@ -443,14 +443,14 @@ fi
 %posttrans
 %{?regenerate_initrd_posttrans}
 
-%post -n libply-boot-client5 -p /sbin/ldconfig
-%postun -n libply-boot-client5 -p /sbin/ldconfig
-%post -n libply-splash-core5 -p /sbin/ldconfig
-%postun -n libply-splash-core5 -p /sbin/ldconfig
-%post -n libply-splash-graphics5 -p /sbin/ldconfig
-%postun -n libply-splash-graphics5 -p /sbin/ldconfig
-%post -n libply5 -p /sbin/ldconfig
-%postun -n libply5 -p /sbin/ldconfig
+%post -n libply-boot-client%{soversion} -p /sbin/ldconfig
+%postun -n libply-boot-client%{soversion} -p /sbin/ldconfig
+%post -n libply-splash-core%{soversion} -p /sbin/ldconfig
+%postun -n libply-splash-core%{soversion} -p /sbin/ldconfig
+%post -n libply-splash-graphics%{soversion} -p /sbin/ldconfig
+%postun -n libply-splash-graphics%{soversion} -p /sbin/ldconfig
+%post -n libply%{soversion} -p /sbin/ldconfig
+%postun -n libply%{soversion} -p /sbin/ldconfig
 %post theme-spinfinity
 if [ $1 -eq 1 ]; then
   set -x
@@ -518,7 +518,6 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files
-%defattr(-, root, root)
 %license COPYING
 %doc AUTHORS NEWS README
 %dir %{_datadir}/plymouth
@@ -551,12 +550,10 @@ fi
 /usr/share/locale/
 
 %files dracut
-%defattr(-, root, root)
 %{_libexecdir}/plymouth/plymouth-populate-initrd
 %{_libexecdir}/plymouth/plymouth-generate-initrd
 
 %files devel
-%defattr(-, root, root)
 %{plymouth_libdir}/libply.so
 %{plymouth_libdir}/libply-splash-core.so
 %{_libdir}/libply-boot-client.so
@@ -566,24 +563,19 @@ fi
 %{_libdir}/pkgconfig/ply-boot-client.pc
 %{_includedir}/plymouth-1
 
-%files -n libply-boot-client5
-%defattr(-, root, root)
-%{_libdir}/libply-boot-client.so.5*
+%files -n libply-boot-client%{soversion}
+%{_libdir}/libply-boot-client.so.%{soversion}*
 
-%files -n libply-splash-core5
-%defattr(-, root, root)
-%{plymouth_libdir}/libply-splash-core.so.5*
+%files -n libply-splash-core%{soversion}
+%{plymouth_libdir}/libply-splash-core.so.%{soversion}*
 
-%files -n libply-splash-graphics5
-%defattr(-, root, root)
-%{_libdir}/libply-splash-graphics.so.5*
+%files -n libply-splash-graphics%{soversion}
+%{_libdir}/libply-splash-graphics.so.%{soversion}*
 
-%files -n libply5
-%defattr(-, root, root)
-%{plymouth_libdir}/libply.so.5*
+%files -n libply%{soversion}
+%{plymouth_libdir}/libply.so.%{soversion}*
 
 %files scripts
-%defattr(-, root, root)
 %dir %{_libexecdir}/plymouth
 %{_sbindir}/plymouth-set-default-theme
 %{_libexecdir}/plymouth/plymouth-update-initrd
@@ -594,19 +586,15 @@ fi
 %endif
 
 %files plugin-label
-%defattr(-, root, root)
 %{_libdir}/plymouth/label.so
 
 %files plugin-label-ft
-%defattr(-, root, root)
 %{_libdir}/plymouth/label-ft.so
 
 %files plugin-fade-throbber
-%defattr(-, root, root)
 %{_libdir}/plymouth/fade-throbber.so
 
 %files theme-fade-in
-%defattr(-, root, root)
 %dir %{_datadir}/plymouth/themes/fade-in
 %{_datadir}/plymouth/themes/fade-in/bullet.png
 %{_datadir}/plymouth/themes/fade-in/entry.png
@@ -615,11 +603,9 @@ fi
 %{_datadir}/plymouth/themes/fade-in/fade-in.plymouth
 
 %files plugin-throbgress
-%defattr(-, root, root)
 %{_libdir}/plymouth/throbgress.so
 
 %files theme-spinfinity
-%defattr(-, root, root)
 %dir %{_datadir}/plymouth/themes/spinfinity
 %{_datadir}/plymouth/themes/spinfinity/box.png
 %{_datadir}/plymouth/themes/spinfinity/bullet.png
@@ -629,46 +615,37 @@ fi
 %{_datadir}/plymouth/themes/spinfinity/spinfinity.plymouth
 
 %files plugin-space-flares
-%defattr(-, root, root)
 %{_libdir}/plymouth/space-flares.so
 
 %files theme-spinner
-%defattr(-, root, root)
 %dir %{_datadir}/plymouth/themes/spinner
 %{_datadir}/plymouth/themes/spinner/*.*
 
 %files theme-solar
-%defattr(-, root, root)
 %dir %{_datadir}/plymouth/themes/solar
 %{_datadir}/plymouth/themes/solar/*.png
 %{_datadir}/plymouth/themes/solar/solar.plymouth
 
 %files theme-tribar
-%defattr(-, root, root)
 %dir %{_datadir}/plymouth/themes/tribar
 %{_datadir}/plymouth/themes/tribar/*.*
 
 %files plugin-two-step
-%defattr(-, root, root)
 %{_libdir}/plymouth/two-step.so
 
 %files plugin-tribar
-%defattr(-, root, root)
 %{_libdir}/plymouth/tribar.so
 
 %files plugin-script
-%defattr(-, root, root)
 %{_libdir}/plymouth/script.so
 
 %files theme-script
-%defattr(-, root, root)
 %dir %{_datadir}/plymouth/themes/script/
 %{_datadir}/plymouth/themes/script/*.png
 %{_datadir}/plymouth/themes/script/script.script
 %{_datadir}/plymouth/themes/script/script.plymouth
 
 %files theme-bgrt
-%defattr(-, root, root)
 %dir %{_datadir}/plymouth/themes/bgrt
 %{_datadir}/plymouth/themes/bgrt/*.*
 
