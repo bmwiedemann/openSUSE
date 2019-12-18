@@ -1,7 +1,7 @@
 #
 # spec file for package python-numba
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,12 +50,12 @@ BuildRequires:  tbb-devel
 Requires:       python-llvmlite >= 0.29
 Requires:       python-numpy >= 1.10
 Requires:       python-scipy >= 0.16
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 Recommends:     python-Jinja2
 Recommends:     python-Pygments
 Recommends:     python-cffi
 Recommends:     python-tbb
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 %ifpython2
 Requires:       python2-enum34
 Requires:       python2-funcsigs
