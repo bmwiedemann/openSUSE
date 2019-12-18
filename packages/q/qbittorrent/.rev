@@ -994,4 +994,12 @@
     <comment>Update to 4.2.0 (with ppc support this time)</comment>
     <requestid>754864</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>c72cc6df2cd1b110c871e5a097b86dfc</srcmd5>
+    <version>4.2.1</version>
+    <time>1576676726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757675</requestid>
+  </revision>
 </revisionlist>
