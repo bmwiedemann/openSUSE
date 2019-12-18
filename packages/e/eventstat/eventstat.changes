@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 17 19:37:05 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- update to version 0.04.08
+  * Add UNLIKELY hinting on memory allocation failure checks
+  * check for failed allocation of comm field
+  * Add null check on failed allocation of comm field
+  * Add null check on return of ctime
+  * Don't strdup basename return but strdup base string
+  * Fix inverted null check logic on comm field
+  * Add null check on localtime return
+  * check that basename returns a non-null string
+  * fix out of memory allocation failure check
+  * eventstat: fix '\n' check on string (null ptr dereference)
+  * eventstat: use comm field for task name rather than task info
+    field
+
+-------------------------------------------------------------------
+Tue Aug 27 09:41:42 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.04.07
+  * No functional changes
+
+-------------------------------------------------------------------
+Fri Jul 12 18:28:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.04.06
+  * Reduce scope of variable ticks
+  * Remove unused assignments
+  * Update copyright year
+
+-------------------------------------------------------------------
 Sat Jan 12 12:28:24 UTC 2019 - mardnh@gmx.de
 
 - Update to version 0.04.05
