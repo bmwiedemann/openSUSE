@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Conditionally set SH_ScrollBar_LeftClickAbsolutePosition based on kdeglobals setting
+  * Set application name and version on the knshandler tool
+  * Port away from deprecated signal KNSCore::Engine::signalError
+
+-------------------------------------------------------------------
 Sun Nov  3 15:46:46 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
