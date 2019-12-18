@@ -111,4 +111,12 @@
     <comment>- Update to release 1.1.127</comment>
     <requestid>746192</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b37a95d7076b31430d54be93f0537eb</srcmd5>
+    <version>1.1.130</version>
+    <time>1576676620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.130</comment>
+    <requestid>756643</requestid>
+  </revision>
 </revisionlist>

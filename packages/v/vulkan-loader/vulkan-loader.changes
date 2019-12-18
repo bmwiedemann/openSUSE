@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 19:30:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.130
+  * Support for vkGetPhysicalDeviceToolPropertiesEXT and other
+    new extensions (cf. vulkan-docs).
+
+-------------------------------------------------------------------
 Thu Nov  7 07:50:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.127
