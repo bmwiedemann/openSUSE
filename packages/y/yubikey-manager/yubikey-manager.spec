@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,15 @@ Source0:        https://developers.yubico.com/yubikey-manager/Releases/%{name}-%
 Source1:        https://developers.yubico.com/yubikey-manager/Releases/%{name}-%{version}.tar.gz.sig
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  python3-click
+BuildRequires:  python3-cryptography
+BuildRequires:  python3-fido2
 BuildRequires:  python3-pip
+BuildRequires:  python3-pyOpenSSL
+BuildRequires:  python3-pyscard
 BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3-six
+BuildRequires:  python3-usb
 BuildRequires:  pkgconfig(ykpers-1)
 Requires:       libykpers-1-1
 Requires:       python3-click
@@ -50,15 +56,18 @@ configuring several aspects of a YubiKey, including enabling or disabling
 connection transports an programming various types of credentials.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_install
 %fdupes %{buildroot}
-install -Dm0644 man/ykman.1 %{buildroot}/usr/share/man/man1/ykman.1
+install -Dpm0644 man/ykman.1 %{buildroot}%{_mandir}/man1/ykman.1
+
+%check
+python3 setup.py test
 
 %files
 %license COPYING*
