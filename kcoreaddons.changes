@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Remove unused variable
+  * Deprecate KAboutData::fromPluginMetaData, now there is KAboutPluginDialog
+  * Add a descriptive warning when inotify_add_watch returned ENOSPC
+  * Add test for bug "bug-414360" it's not a ktexttohtml bug
+
+-------------------------------------------------------------------
 Sun Nov  3 15:46:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
