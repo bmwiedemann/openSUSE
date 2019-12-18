@@ -42,6 +42,8 @@ Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-build-with-gcc48.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         ColorScheme-fix-stack-use-after-scope.patch
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Completion)
@@ -114,6 +116,7 @@ Provides translations for the "%{name}" package.
 %if 0%{?suse_version} < 1500
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
   %cmake_kf5 -d build
