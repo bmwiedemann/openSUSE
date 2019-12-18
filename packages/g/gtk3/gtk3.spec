@@ -17,11 +17,24 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == ""
+%global pname gtk3
+%bcond_with    doc
+%endif
+
+%if "%{flavor}" == "doc"
+%global pname gtk3-doc
+%bcond_without doc
+%endif
+
 # When updating the binary version, do not forget to also update baselibs.conf
 %define         gtk_binary_version 3.0.0
 %define _name   gtk
 %bcond_without  broadway
-Name:           gtk3
+%bcond_with     doc
+Name:           %{pname}
 Version:        3.24.13+0
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
@@ -42,7 +55,10 @@ BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools-mini >= 0.19.7
+# Autotools requires gtk-doc even with --disable-gtk-doc, try again with meson
+%if %{with doc} || 1
 BuildRequires:  gtk-doc
+%endif
 BuildRequires:  hicolor-icon-theme
 # libtool is needed since we are using a git checkout
 BuildRequires:  libtool
@@ -353,6 +369,17 @@ This package enhances gettext with an International Tag Set for GTK+ 3
 
 %lang_package
 
+%package -n gtk3-devel-doc
+Summary:        API documentation for the GTK+ toolkit library v3
+Group:          Documentation/HTML
+
+%description -n gtk3-devel-doc
+GTK+ is a multi-platform toolkit for creating graphical user interfaces.
+Offering a complete set of widgets, GTK+ is suitable for projects
+ranging from small one-off projects to complete application suites.
+
+This package contains the API documentation for GTK+ 3.x.
+
 %prep
 %setup -q -n %{_name}-%{version}
 translation-update-upstream
@@ -375,7 +402,8 @@ cp -a %{SOURCE1} .
 NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
-        --enable-gtk-doc \
+        %{?with_doc: \
+        --enable-gtk-doc} \
         --enable-man \
         --enable-x11-backend \
         --enable-introspection \
@@ -385,9 +413,18 @@ NOCONFIGURE=1 ./autogen.sh
         --enable-explicit-deps=yes \
         --enable-colord \
         %{nil}
+
+%if "%{flavor}" == ""
 make %{?_smp_mflags} V=1
+%else
+make %{?_smp_mflags} V=1 -C gdk
+make %{?_smp_mflags} V=1 -C gtk
+make %{?_smp_mflags} V=1 -C tests
+make %{?_smp_mflags} V=1 -C docs
+%endif
 
 %install
+%if "%{flavor}" == ""
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # Do not install the exampleapp glib schema, as the app itself is noinst
@@ -415,6 +452,12 @@ ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{ext_man} %{buildro
 # Install rpm macros
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
+
+%else
+%make_install -C docs
+rm -Rf %{buildroot}%{_mandir}/man1/
+%endif
+
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
 
@@ -545,6 +588,7 @@ if [ ! -f %{_bindir}/gtk-update-icon-cache-3.0 ]; then
   update-alternatives --remove gtk-update-icon-cache %{_bindir}/gtk-update-icon-cache-3.0
 fi
 
+%if "%{flavor}" == ""
 %files -n libgtk-3-0
 %license COPYING
 %if "%{_lib}" == "lib64"
@@ -644,10 +688,6 @@ fi
 %config(noreplace) %{_sysconfdir}/gtk-3.0/settings.ini
 
 %files devel
-%doc HACKING README.commits
-%doc %{_datadir}/gtk-doc/html/gail-libgail-util3/
-%doc %{_datadir}/gtk-doc/html/gdk3/
-%doc %{_datadir}/gtk-doc/html/gtk3/
 %{_bindir}/gtk3-demo
 %{_bindir}/gtk3-demo-application
 %{_bindir}/gtk3-widget-factory
@@ -690,5 +730,14 @@ fi
 %{_datadir}/gettext/its/gtkbuilder.loc
 
 %files lang -f gtk30.lang -f gtk30-properties.lang
+%endif
+
+%if %{with doc}
+%files -n gtk3-devel-doc
+%doc HACKING README.commits
+%doc %{_datadir}/gtk-doc/html/gail-libgail-util3/
+%doc %{_datadir}/gtk-doc/html/gdk3/
+%doc %{_datadir}/gtk-doc/html/gtk3/
+%endif
 
 %changelog

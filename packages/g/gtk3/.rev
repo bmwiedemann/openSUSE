@@ -1340,4 +1340,17 @@ Still we will be working in upstream with more easily &quot;merge-able&quot; imp
     <comment></comment>
     <requestid>754122</requestid>
   </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>15b5e5be67613474d96cc3f141bfa6b5</srcmd5>
+    <version>3.24.13+0</version>
+    <time>1576676659</time>
+    <user>dimstar_suse</user>
+    <comment>libgtk3 takes ~15 minutes to build, the API docs about 3 hours.
+
+Putting the API-docs into a separate package removes 23MByte from a gtk3-devel install.
+
+- Split API doc generation from main package using _multibuild,
+  libgtk3 itself only takes a fraction of the time to build. (forwarded request 756128 from StefanBruens)</comment>
+    <requestid>756771</requestid>
+  </revision>
 </revisionlist>

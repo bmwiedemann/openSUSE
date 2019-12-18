@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 11 20:03:40 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split API doc generation from main package using _multibuild,
+  libgtk3 itself only takes a fraction of the time to build.
+
+-------------------------------------------------------------------
 Wed Nov 27 19:06:58 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.24.13+0:
