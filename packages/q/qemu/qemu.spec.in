@@ -20,7 +20,7 @@
 
 %define _buildshell /bin/bash
 
-%define build_in_tree 1
+%define build_in_tree 0
 %define build_x86_firmware_from_source 0
 %define build_skiboot_from_source 0
 %define build_slof_from_source 0

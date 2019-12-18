@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Dec 12 19:05:29 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to v4.2.0: See http://wiki.qemu.org/ChangeLog/4.2
+  Take note that ongoing feature deprecation is tracked at both
+  http://wiki.qemu-project.org/Features/LegacyRemoval and in
+  Appendix B of the qemu-doc.* files installed with the qemu package
+  Some noteworthy changes:
+* x86: Denverton, Snowridge, and Dhyana CPU models added
+* x86: Latest version of all CPU models how have TSX (HLE and RTM)
+  disabled by default
+* x86: Support for AVX512 BFloat16 extensions
+* x86: VMX features exposed more accurately and controllably
+* s390: TCG now implements IEP (Instruction Execution Protection)
+* PowerPC: POWER8 and POWER9 non-virtualized machines separated out
+* PowerPC: RTAS now comes from SLOF instead of QEMU itself
+* PowerPC: Unplug of multifunction PCI devices now unplugs the
+  whole slot, as in x86
+* ARM: Support for >256 CPUs with KVM is fixed
+* ARM: Memory hotplug now supported , when using UEFI, ACPI, for
+  virt machine type
+* ARM: SVE support possuble now for KVM guests
+* ARM: ACPI generic event device can now deliver powerdown event
+* The backend device can be specified for a guest audio device
+* virtio v1.1 packed virtqueues supported
+* Socket based character device backends now support TCP keep-alive
+* Use encryption library cipher mode facilities, allowing improved
+  performance for eg. AES-XTS encrption
+* Misc block device improvements, esp. with nbd
+- See the following few release-candidate changelog entries for
+  additional changes related to this release
+- Switched package build to be out-of-tree
+
+-------------------------------------------------------------------
+Tue Dec 10 18:10:45 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to v4.2.0-rc5: See http://wiki.qemu.org/ChangeLog/4.2
+
+-------------------------------------------------------------------
+Wed Dec  4 23:07:30 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to v4.2.0-rc4: See http://wiki.qemu.org/ChangeLog/4.2
+* Update the support documents used for SUSE SLE releases to cover
+  this qemu release
+
+-------------------------------------------------------------------
 Wed Nov 27 03:10:09 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Update to v4.2.0-rc3: See http://wiki.qemu.org/ChangeLog/4.2

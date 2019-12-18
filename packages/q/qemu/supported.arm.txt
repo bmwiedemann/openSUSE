@@ -1,22 +1,21 @@
 [qemu-arm package document]
-[Note: post SLES 15 SP1 changes are not fully incorporated into this document]
 
-POST SLES 15 SP1 QEMU/KVM RELATED SUPPORT STATEMENTS
+SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
 
-  The QEMU based packages included with SLES 15 SP1 provide a large variety of
+  The QEMU based packages included with SLES 15 SP2 provide a large variety of
   features, from the very latest customer requests to features of questionable
   quality or value. The linux kernel includes components which contribute KVM
   virtualization features as well. This document was created to assist the user
   in deciding which features can be relied upon to build enterprise class
   virtualization solutions. KVM based virtualization for x86 (Intel 64/AMD64),
-  for IBM System z (s390x), for Power8 Systems (ppc64le) and for the ARM64
-  architecture (AArch64) are offered at the L3 (full support) level. The bulk
-  of this document deals with L3 supported features and is primarily ARM64
-  centric. This document should be considered a companion to the standard
-  virtualization documentation delivered with the product.
+  for IBM System z (s390x), and for the ARM64 architecture (AArch64) are offered
+  at the L3 (full support) level. The bulk of this document deals with L3
+  supported features and is primarily ARM64 centric. This document should be
+  considered a companion to the standard virtualization documentation delivered
+  with the product.
 
   KVM is implemented in linux kernel modules which enable the linux kernel to
   function as an integral part of the KVM hypervisor. The hypervisor-guest
@@ -57,7 +56,7 @@ Major QEMU/KVM Supported Features
   Since a KVM guest runs in the context of a normal linux process, some types
   of execution controls are managed with linux tools.
 
-- QEMU is compatible with EDK II based UEFI firmware available with SLES 15 SP1,
+- QEMU is compatible with EDK II based UEFI firmware available with SLES 15 SP2,
   which allow boot options common to physical systems, along with other features
   tailored to virtualization. Various VGABIOS ROMs, from the SEABIOS project,
   are also available.
@@ -73,7 +72,7 @@ Major QEMU/KVM Supported Features
 
 - Guest execution state may be "moved" in both time (save/restore) and space
   (static and live migration). These migrations or save/restore operations can
-  take place either from certain prior SLES versioned hosts to a SLES 15 SP1
+  take place either from certain prior SLES versioned hosts to a SLES 15 SP2
   host or between hosts of the same version. Certain other restrictions also
   apply.
 
@@ -113,7 +112,7 @@ Major QEMU/KVM Supported Features
 
 - Portions of the host file system may be shared with a guest by using virtFS.
 
-- A guest "agent" is available for SLES 15 SP1 KVM guests via the
+- A guest "agent" is available for SLES 15 SP2 KVM guests via the
   qemu-guest-agent package. This allows some introspection and control of the
   guest OS environment from the host.
 
@@ -164,8 +163,8 @@ Deprecated, Superseded, Modified and Dropped Features
   considered deprecated. In the future those names will be standardized to
   acpitable, boot, and smp respectively.
 
-- These previously supported command line options are now considered deprecated:
-  <none>
+- This previously supported command line options is now considered deprecated:
+  -device scsi-disk (use scsi-hd or scsi-cd)
 
 - These previously supported command line options are no longer supported:
   <previously mentioned items have been moved to another category>
@@ -194,7 +193,7 @@ Deprecated, Superseded, Modified and Dropped Features
 - The previously supported blkdev-add QMP command has been flagged as lacking
   and could possibly change syntax in the future.
 
-- These previously unsupported command line options are now deprecated:
+- This previously unsupported command line option is now deprecated:
   -bt
 
 - These previously unsupported command line options are no longer recognized:
@@ -205,13 +204,21 @@ Deprecated, Superseded, Modified and Dropped Features
   -tdf
   -xen-create
 
-- This previously supported QMP command is now deprecated:
+- These previously supported QMP commands are now deprecated:
+  change (use blockdev-change-medium or change-vnc-password instead)
   cpu-add
+  migrate-set-cache-size (use migrate-set-parameters instead)
+  migrate_set_downtime (use migrate-set-parameters instead)
+  migrate_set_speed (use migrate-set-parameters instead)
   query-cpus (use query-cpus-fast instead)
   query-events
+  query-migrate-cache-size (use query-migrate-parameters instead)
 
-- This previously supported monitor command is now deprecated:
+- These previously supported monitor commands are now deprecated:
+  change
   cpu-add
+  migrate_set_downtime
+  migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
   pci_add (use device_add instead)
@@ -230,8 +237,15 @@ Deprecated, Superseded, Modified and Dropped Features
   host_net_add
   host_net_remove
 
-- This previously unsupported QMP command is now supported under a new name:
+- These previously unsupported QMP commands are now supported under a new name:
+  x-block-dirty-bitmap-disable (use block-dirty-bitmap-disable instead)
+  x-block-dirty-bitmap-enable (use block-dirty-bitmap-enable instead)
+  x-block-dirty-bitmap-merge (use block-dirty-bitmap-merge instead)
+  x-block-latency-histogram-set (use block-latency-histogram-set instead)
   x-blockdev-create (use blockdev-create instead)
+
+- This previously unsupported QMP commands is no longer recognized:
+  x-nbd-server-add-bitmap
 
 - Due to upstream's decision to no longer fully support the qed storage format
   going forward (since it really provides no benefit over qcow2 and is now no
@@ -257,8 +271,8 @@ QEMU Command-Line and Monitor Syntax and Support
   better functionality and usability going forward. In some cases existing
   problems or even bugs in older interfaces cannot be fixed due to functional
   expectations, but are resolved in the newer interface or option.
-  This advice includes moving to the most recent machine type (eg virt-3.1
-  instead of virt-2.11) if possible.
+  This advice includes moving to the most recent machine type (eg virt-4.2
+  instead of virt-3.1) if possible.
 
 - The following command line options are supported:
   -accel ...
@@ -299,7 +313,9 @@ QEMU Command-Line and Monitor Syntax and Support
           virtio-net-pci-transitional|virtio-rng-pci-non-transitional|
           virtio-rng-pci-transitional|virtio-scsi-pci-non-transitional|
           virtio-scsi-pci-transitional|virtio-serial-pci-non-transitional|
-          virtio-serial-pci-transitional]
+          virtio-serial-pci-transitional|vhost-user-fs-pci|vhost-user-gpu|
+          vhost-user-pci-pci|vhost-user-input|vhost-user-input-pci|
+          vhost-user-vga|virtio-mmio]
           (the following are aliases of these supported devices: ahci|
           virtio-blk|virtio-net|virtio-serial|virtio-balloon| virtio-9p|
           virtio-input-host|virtio-keyboard|virtio-mouse|virtio-tablet|
@@ -325,8 +341,8 @@ QEMU Command-Line and Monitor Syntax and Support
   -kernel ...
   -loadvm ...
   -m ...
-  -M [help|?|none|virt|virt-2.6|virt-2.11|virtio-3.1]
-  -machine [help|?|none|virt|virt-2.6|virt-2.11|virt-3.1]
+  -M [help|?|none|virt|virt-2.6|virt-2.11|virtio-3.1|virt-4.2]
+  -machine [help|?|none|virt|virt-2.6|virt-2.11|virt-3.1|virt-4.2]
   -mem-path ...
   -mem-prealloc
   -mon ...
@@ -348,6 +364,7 @@ QEMU Command-Line and Monitor Syntax and Support
   -only-migratable
   -parallel ...
   -pidfile ...
+  -plugin ...
   -qmp ...
   -qmp-pretty ...
   -readconfig ...
@@ -357,6 +374,7 @@ QEMU Command-Line and Monitor Syntax and Support
   -s
   -S
   -sandbox ...
+  -seed ...
   -serial ...
   -show-cursor
   -smbios ...
@@ -377,6 +395,7 @@ QEMU Command-Line and Monitor Syntax and Support
 
 - The following monitor commands are supported:
   ?
+  announce_self ...
   balloon ...
   block_resize ...
   boot_set ...
@@ -402,6 +421,7 @@ QEMU Command-Line and Monitor Syntax and Support
   gdbserver ...
   gpa2hpa ...
   gpa2hva ...
+  gva2gpa ...
   help
   i ...
   info ...
@@ -456,6 +476,7 @@ QEMU Command-Line and Monitor Syntax and Support
 - The following QMP commands are supported:
   add_client
   add-fd
+  announce-self
   balloon
   blockdev-add
   blockdev-backup
@@ -472,7 +493,11 @@ QEMU Command-Line and Monitor Syntax and Support
   block-commit
   block-dirty-bitmap-add
   block-dirty-bitmap-clear
+  block-dirty-bitmap-disable
+  block-dirty-bitmap-enable
+  block-dirty-bitmap-merge
   block-dirty-bitmap-remove
+  block-latency-histogram-set
   block_passwd
   block_resize
   block_set_io_throttle
@@ -541,6 +566,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-cpu-model-expansion
   query-cpus
   query-cpus-fast
+  query-current-machine
   query-display-options
   query-dump
   query-dump-guest-memory-capability
@@ -679,7 +705,7 @@ QEMU Command-Line and Monitor Syntax and Support
           xlnxzynqmp|xlnxzynq-xadc|armsse-cpuid|armsse-mhu|cpu-cluster|
           luminary-watchdog|microbit.i2c|nrf51_soc.gpio|nrf51_soc.nvm|
           nrf51_soc.rng|nrf51_soc.timer|platform-ehci-usb|sse-200|vmware-svga|
-          vmxnet3|ati-vga|cirrus-vga]
+          vmxnet3|ati-vga|cirrus-vga|vhost-user-fs-device|tulip|ati-vga]
           (the following are aliases of these unsupported devices: lsi|
           piix3-usb-uhci)
           (note that some of these device names represent supported devices and
@@ -695,24 +721,25 @@ QEMU Command-Line and Monitor Syntax and Support
   -hda/-hdb/-hdc/-hdd ...
   -icount ...
   -L ...
-  -M [akita|ast2500-evb|borzoi|canon-a1100|cheetah|collie|connex|cubieboard|
-     highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|lm3s811evb|mainstone|
-     mcimx6ul-evk|mcimx7d-sabre|microbit|midway|mps2-an385|mps2-an505|
-     mps2-an511|musicpal|n800|n810|netduino2|nuri|palmetto-bmc|raspi2|raspi3|
-     realview-eb|realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|
-     romulus-bmc|sabrelite|smdkc210|spitz|sx1|sx1-v1|terrier|tosa|verdex|
-     versatileab|versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|
-     virt-2.12|virt-3.0|witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|
-     xlnx-zcu102|z2]
-  -machine [akita|ast2500-evb|borzoi|canon-a1100|cheetah|collie|connex|
-           cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|
+  -M [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|connex|
+     cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|lm3s811evb|
+     mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|mps2-an385|mps2-an505|
+     mps2-an511|mps2-an521|musca-a|musca-b1|musicpal|n800|n810|netduino2|nuri|
+     palmetto-bmc|raspi2|raspi3|realview-eb|realview-eb-mpcore|realview-pb-a8|
+     realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|smdkc210|spitz|swift-bmc|
+     sx1|sx1-v1|terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|
+     vexpress-a9|virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|
+     witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+  -machine [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
+           connex|cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|
            lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|
-           mps2-an385|mps2-an505|mps2-an511|musicpal|n800|n810|netduino2|nuri|
-           palmetto-bmc|raspi2|raspi3|realview-eb|realview-eb-mpcore|
-           realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|smdkc210|spitz|
-           sx1|sx1-v1|terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|
-           vexpress-a9|virt-2.7|virt-2.8|virt-2.12|virt-3.0|witherspoon-bmc|
-           xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+           mps2-an385|mps2-an521|mps2-an505|mps2-an511|musca-a|musca-b1|
+           musicpal|n800|n810|netduino2|nuri|palmetto-bmc|raspi2|raspi3|
+           realview-eb|realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|
+           romulus-bmc|sabrelite|sbsa-ref|smdkc210|spitz|swift-bmc|sx1|sx1-v1|
+           terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|
+           virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|
+           witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
   -mtdblock file
   -net [dump|socket|vde] ...
   -netdev [dump|hubport|l2tpv3|socket|vde] ...
@@ -799,16 +826,14 @@ QEMU Command-Line and Monitor Syntax and Support
   query-colo-status
   query-sev
   query-sev-launch-measure
-  x-block-dirty-bitmap-disable
-  x-block-dirty-bitmap-enable
-  x-block-dirty-bitmap-merge
   x-blockdev-change
   x-blockdev-insert-medium
   x-blockdev-remove-medium
+  x-blockdev-reopen
   x-colo-lost-heartbeat
   x-debug-block-dirty-bitmap-sha256
+  x-debug-query-block-graph
   x-exit-preconfig
-  x-nbd-server-add-bitmap
   xen-colo-do-checkpoint
   xen-load-devices-state
   xen-save-devices-state

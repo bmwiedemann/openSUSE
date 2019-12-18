@@ -1594,4 +1594,12 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>751314</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>3f4393db6cb03530c8115a6674bcda6f</srcmd5>
+    <version>4.2.0</version>
+    <time>1576676627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756647</requestid>
+  </revision>
 </revisionlist>

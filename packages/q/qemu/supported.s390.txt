@@ -1,22 +1,21 @@
 [qemu-s390 package document]
-[Note: post SLES 15 SP1 changes are not fully incorporated into this document]
 
-POST SLES 15 SP1 QEMU/KVM RELATED SUPPORT STATEMENTS
+SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
 
-  The QEMU based packages included with SLES 15 SP1 provide a large variety of
+  The QEMU based packages included with SLES 15 SP2 provide a large variety of
   features, from the very latest customer requests to features of questionable
   quality or value. The linux kernel includes components which contribute KVM
   virtualization features as well. This document was created to assist the user
   in deciding which features can be relied upon to build enterprise class
   virtualization solutions. KVM based virtualization for x86 (Intel 64/AMD64),
-  for IBM System z (s390x), for Power8 Systems (ppc64le) and for the ARM64
-  architecture (AArch64) are offered at the L3 (full support) level. The bulk
-  of this document deals with L3 supported features and is primarily s390x
-  centric. This document should be considered a companion to the standard
-  virtualization documentation delivered with the product.
+  for IBM System z (s390x), and for the ARM64 architecture (AArch64) are offered
+  at the L3 (full support) level. The bulk of this document deals with L3
+  supported features and is primarily s390x centric. This document should be
+  considered a companion to the standard virtualization documentation delivered
+  with the product.
 
   KVM is implemented in linux kernel modules which enable the linux kernel to
   function as an integral part of the KVM hypervisor. The hypervisor-guest
@@ -74,7 +73,7 @@ Major QEMU/KVM Supported Features
 
 - Guest execution state may be "moved" in both time (save/restore) and space
   (static and live migration). These migrations or save/restore operations can
-  take place either from certain prior SLES versioned hosts to a SLES 15 SP1
+  take place either from certain prior SLES versioned hosts to a SLES 15 SP2
   host or between hosts of the same version. Certain other restrictions also
   apply.
 
@@ -114,7 +113,7 @@ Major QEMU/KVM Supported Features
 
 - Portions of the host file system may be shared with a guest by using virtFS.
 
-- A guest "agent" is available for SLES 15 SP1 KVM guests via the
+- A guest "agent" is available for SLES 15 SP2 KVM guests via the
   qemu-guest-agent package. This allows some introspection and control of the
   guest OS environment from the host.
 
@@ -194,6 +193,8 @@ Deprecated, Superseded, Modified and Dropped Features
 
 - These previously unsupported command line options are now deprecated:
   -bt
+  -device ide-drive (use ide-hd or ide-cd)
+  -device scsi-disk (use scsi-hd or scsi-cd)
 
 - These previously unsupported command line options are no longer recognized:
   -device mmio_interface
@@ -202,13 +203,21 @@ Deprecated, Superseded, Modified and Dropped Features
   -tdf
   -xen-create
 
-- This previously supported QMP command is now deprecated:
+- These previously supported QMP commands are now deprecated:
+  change (use blockdev-change-medium or change-vnc-password instead)
   cpu-add
+  migrate-set-cache-size (use migrate-set-parameters instead)
+  migrate_set_downtime (use migrate-set-parameters instead)
+  migrate_set_speed (use migrate-set-parameters instead)
   query-cpus (use query-cpus-fast instead)
   query-events
+  query-migrate-cache-size (use query-migrate-parameters instead)
 
-- This previously supported monitor command is now deprecated:
+- These previously supported monitor commands are now deprecated:
+  change
   cpu-add
+  migrate_set_downtime
+  migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
   pci_add (use device_add instead)
@@ -227,8 +236,15 @@ Deprecated, Superseded, Modified and Dropped Features
   usb_add
   usb_del
 
-- This previously unsupported QMP command is now supported under a new name:
+- These previously unsupported QMP commands are now supported under a new name:
+  x-block-dirty-bitmap-disable (use block-dirty-bitmap-disable instead)
+  x-block-dirty-bitmap-enable (use block-dirty-bitmap-enable instead)
+  x-block-dirty-bitmap-merge (use block-dirty-bitmap-merge instead)
+  x-block-latency-histogram-set (use block-latency-histogram-set instead)
   x-blockdev-create (use blockdev-create instead)
+
+- This previously unsupported QMP commands is no longer recognized:
+  x-nbd-server-add-bitmap
 
 - Due to upstream's decision to no longer fully support the qed storage format
   going forward (since it really provides no benefit over qcow2 and is now no
@@ -255,7 +271,7 @@ QEMU Command-Line and Monitor Syntax and Support
   problems or even bugs in older interfaces cannot be fixed due to functional
   expectations, but are resolved in the newer interface or option.
   This advice includes moving to the most recent machine type (eg
-  s390-ccw-virtio-3.1 instead of s390-ccw-virtio-2.11) if possible.
+  s390-ccw-virtio-4.2 instead of s390-ccw-virtio-3.1) if possible.
 
 - The following command line options are supported:
   -accel ...
@@ -294,7 +310,9 @@ QEMU Command-Line and Monitor Syntax and Support
           virtio-net-pci-transitional|virtio-rng-pci-non-transitional|
           virtio-rng-pci-transitional|virtio-scsi-pci-non-transitional|
           virtio-scsi-pci-transitional|virtio-serial-pci-non-transitional|
-          virtio-serial-pci-transitional]
+          virtio-serial-pci-transitional|vhost-user-fs-pci|vhost-user-gpu|
+          vhost-user-pci-pci|vhost-user-input|vhost-user-input-pci|
+          vhost-user-vga]
           (the following are aliases of these supported devices: virtio-blk|
           virtio-input-host|virtio-keyboard|virtio-mouse|virtio-tablet|
           virtio-gpu|virtio-9p|virtio-net|virtio-serial|virtio-balloon|
@@ -321,9 +339,9 @@ QEMU Command-Line and Monitor Syntax and Support
   -loadvm ...
   -m ...
   -M [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
-     s390-ccw-virtio-2.11|s390-ccw-virtio-3.1]
+     s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2]
   -machine [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
-           s390-ccw-virtio-2.11|s390-ccw-virtio-3.1]
+           s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2]
   -mem-path ...
   -mem-prealloc
   -mon ...
@@ -344,6 +362,7 @@ QEMU Command-Line and Monitor Syntax and Support
   -only-migratable
   -parallel ...
   -pidfile ...
+  -plugin ...
   -qmp ...
   -qmp-pretty ...
   -readconfig ...
@@ -353,6 +372,7 @@ QEMU Command-Line and Monitor Syntax and Support
   -s
   -S
   -sandbox ...
+  -seed ...
   -serial ...
   -show-cursor
   -smp ...
@@ -368,6 +388,7 @@ QEMU Command-Line and Monitor Syntax and Support
 
 - The following monitor commands are supported:
   ?
+  announce_self ...
   balloon ...
   block_resize ...
   boot_set ...
@@ -393,6 +414,7 @@ QEMU Command-Line and Monitor Syntax and Support
   gdbserver ...
   gpa2hpa ...
   gpa2hva ...
+  gva2gpa ...
   help
   i ...
   info ...
@@ -447,6 +469,7 @@ QEMU Command-Line and Monitor Syntax and Support
 - The following QMP commands are supported:
   add_client
   add-fd
+  announce-self
   balloon
   blockdev-add
   blockdev-backup
@@ -463,7 +486,11 @@ QEMU Command-Line and Monitor Syntax and Support
   block-commit
   block-dirty-bitmap-add
   block-dirty-bitmap-clear
+  block-dirty-bitmap-disable
+  block-dirty-bitmap-enable
+  block-dirty-bitmap-merge
   block-dirty-bitmap-remove
+  block-latency-histogram-set
   block_passwd
   block_resize
   block_set_io_throttle
@@ -532,6 +559,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-cpu-model-expansion
   query-cpus
   query-cpus-fast
+  query-current-machine
   query-display-options
   query-dump
   query-dump-guest-memory-capability
@@ -637,7 +665,8 @@ QEMU Command-Line and Monitor Syntax and Support
           z9EC-base-s390x-cpu|z9EC-s390x-cpu|z14ZR1-base-s390x-cpu|
           z14ZR1-s390x-cpu|zBC12-base-s390x-cpu|zBC12-s390x-cpu|
           zEC12.2-base-s390x-cpu|zEC12.2-s390x-cpu|zEC12-base-s390x-cpu|
-          zEC12-s390x-cpu|cpu-cluster|z14.2-base-s390x-cpu|z14.2-s390x-cpu]
+          zEC12-s390x-cpu|cpu-cluster|z14.2-base-s390x-cpu|z14.2-s390x-cpu|
+          vhost-user-fs-device]
           (the following are aliases of these unsupported devices: lsi|
           ahci|e1000-82540em|vfio-ccw)
           (note that some of these device names represent supported devices and
@@ -655,10 +684,10 @@ QEMU Command-Line and Monitor Syntax and Support
   -L ...
   -M [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
      s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
-     s390-ccw-virtio-3.0]
+     s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1]
   -machine [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
            s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
-           s390-ccw-virtio-3.0]
+           s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1]
   -mtdblock file
   -net [dump|socket|vde] ...
   -netdev [dump|hubport|l2tpv3|socket|vde] ...
@@ -755,16 +784,14 @@ QEMU Command-Line and Monitor Syntax and Support
   query-tpm
   query-tpm-models
   query-tpm-types
-  x-block-dirty-bitmap-disable
-  x-block-dirty-bitmap-enable
-  x-block-dirty-bitmap-merge
   x-blockdev-change
   x-blockdev-insert-medium
   x-blockdev-remove-medium
+  x-blockdev-reopen
   x-colo-lost-heartbeat
   x-debug-block-dirty-bitmap-sha256
+  x-debug-query-block-graph
   x-exit-preconfig
-  x-nbd-server-add-bitmap
   xen-colo-do-checkpoint
   xen-load-devices-state
   xen-save-devices-state

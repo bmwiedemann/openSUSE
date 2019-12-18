@@ -20,7 +20,7 @@
 
 %define _buildshell /bin/bash
 
-%define build_in_tree 1
+%define build_in_tree 0
 %define build_x86_firmware_from_source 0
 %define build_skiboot_from_source 0
 %define build_slof_from_source 0
@@ -87,8 +87,8 @@
 %define summary_string Machine emulator and virtualizer
 %endif
 
-%define qemuver 4.1.93
-%define srcver  4.2.0-rc3
+%define qemuver 4.2.0
+%define srcver  4.2.0
 %define sbver   1.12.1+
 %define srcname qemu
 Name:           qemu%{name_suffix}
