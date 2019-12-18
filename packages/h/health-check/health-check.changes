@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 17 19:35:34 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.04
+  * syscall: handle a null return from localtime
+  * set *inode to zero to clear up a static analysis false warning
+  * ignore return from proc_pids_add_proc
+  * net: pass size of link string in net_get_inode_by_path
+
+-------------------------------------------------------------------
+Tue Aug 27 09:47:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.03
+  * No functional changes
+
+-------------------------------------------------------------------
 Fri Jun 14 22:04:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.03.01

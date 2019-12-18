@@ -18,7 +18,7 @@
 
 
 Name:           health-check
-Version:        0.03.01
+Version:        0.03.04
 Release:        0
 Summary:        Process monitoring tool
 License:        GPL-2.0-or-later
