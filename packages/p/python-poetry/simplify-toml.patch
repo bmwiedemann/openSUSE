@@ -1,0 +1,14 @@
+--- pyproject.toml.orig	2019-12-18 01:37:25.877070152 +0700
++++ pyproject.toml	2019-12-18 01:38:10.817574843 +0700
+@@ -49,10 +49,7 @@
+ virtualenv = { version = "^16.0", python = "~2.7" }
+ # functools32 is needed for Python 2.7
+ functools32 = { version = "^3.2.3", python = "~2.7" }
+-keyring = [
+-    { version = "^18.0", python = "~2.7 || ~3.4" },
+-    { version = "^19.0", python = "^3.5" }
+-]
++keyring = { version = "^18.0" }
+ # Use subprocess32 for Python 2.7 and 3.4
+ subprocess32 = { version = "^3.5", python = "~2.7 || ~3.4" }
+ importlib-metadata = {version = "^0.23", python = "<3.8"}
