@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * autotests: Find perl executable on all platforms
+  * Add some test to ensure local time handling in recurrences.
+  * Fallback to system time zone on calendar creation with an invalid one.
+  * Memory Calendar: avoid code duplication
+  * Use QDate as key in mIncidencesForDate in MemoryCalendar
+  * Handle incidences in different time zones in MemoryCalendar.
+
+-------------------------------------------------------------------
 Sun Nov  3 15:46:50 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
