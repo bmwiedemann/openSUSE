@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-control-center
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,10 @@ Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM gnome-control-center-can-not-find-usermod.patch bsc#1158341 glgo#GNOME/gnome-control-center!653 xwang@suse.com -- user-accounts: can't find command usermod
+Patch1:         gnome-control-center-can-not-find-usermod.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-Initialize-GError-to-NULL-before-use.patch xwang@suse.com -- user-accounts: Initialize GError* to NULL before use
+Patch2:         gnome-control-center-Initialize-GError-to-NULL-before-use.patch
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
@@ -190,6 +194,8 @@ GNOME control center.
 %setup -q
 translation-update-upstream po gnome-control-center-2.0
 
+%patch1 -p1
+%patch2 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1

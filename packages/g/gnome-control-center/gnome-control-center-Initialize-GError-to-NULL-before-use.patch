@@ -1,0 +1,27 @@
+From 54caab7b0762b553e1e6663f416474fce77e4c51 Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Thu, 29 Aug 2019 11:58:02 +0800
+Subject: [PATCH] user-accounts: Initialize GError* to NULL before use
+
+Otherwise, it causes warnings to be shown on the terminal when it is
+used and quickly leads to a crash.
+---
+ panels/user-accounts/user-utils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/panels/user-accounts/user-utils.c b/panels/user-accounts/user-utils.c
+index dfd3a2949..72401e40b 100644
+--- a/panels/user-accounts/user-utils.c
++++ b/panels/user-accounts/user-utils.c
+@@ -458,7 +458,7 @@ is_valid_username_async (const gchar *username,
+         isValidUsernameData *data;
+         gchar *argv[6];
+         GPid pid;
+-        GError *error;
++        GError *error = NULL;
+ 
+         task = g_task_new (NULL, cancellable, callback, callback_data);
+         g_task_set_source_tag (task, is_valid_username_async);
+-- 
+2.16.4
+
