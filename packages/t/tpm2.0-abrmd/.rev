@@ -223,4 +223,36 @@ etc.
     creation by registering bus name after instantiation of the proxy object.</comment>
     <requestid>726060</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>12b40edf49da63646bfa818856029b74</srcmd5>
+    <version>2.3.0</version>
+    <time>1576676686</time>
+    <user>dimstar_suse</user>
+    <comment>! please handle this together with sr#755853 for tpm2-0-tss !
+
+- update to version 2.3.0:
+  - changes in version 2.3.0:
+    - Add '--enable-debug' flag to configure script to simplify debug builds.
+      This relies on the AX_CHECK_ENABLE_DEBUG autoconf archive macro.
+    - Replaced custom dynamic TCTI loading code with libtss2-tctildr from
+      upstream tpm2-tss repo. (requires tpm2-0-tss version 2.3.0)
+    - Explicitly set '-O2' optimization when using FORTIFY_SOURCE as required.
+  - changes in version 2.2.0:
+    - New configuration option `--disable-defaultflags/ added. This is
+      for use for packaging for targets that do not support the default
+      compilation / linking flags.
+    - Use private dependencies properly in pkg-config metadata for TCTI.
+    - Refactor daemon main module to enable better handling of error
+      conditions and enable more thorough unit testing.
+    - Updated dependencies to ensure compatibility with pkg-config fixes
+      in tpm2-tss.
+    - Fixed bug causing TCTI to block when used by libtss2-sys built with
+      partial reads enabled.
+    - Removed unnecessary libs / flags for pthreads in the TCTI pkg-config.
+    - Output from configure script now accurately describes the state of the
+      flags that govern the integration tests.
+- drop fix_dlopen.patch: no longer necessary since abrmd not uses the tctildr
+  shared library. This one hopefully now does the right thing.</comment>
+    <requestid>755854</requestid>
+  </revision>
 </revisionlist>

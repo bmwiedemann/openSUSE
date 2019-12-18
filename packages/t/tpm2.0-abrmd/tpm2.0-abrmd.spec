@@ -17,7 +17,7 @@
 
 
 Name:           tpm2.0-abrmd
-Version:        2.1.1
+Version:        2.3.0
 Release:        0
 Summary:        Intel's TCG Software Stack Access Broker & Resource Manager for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -39,7 +39,6 @@ Recommends:     libtss2-tcti-device0
 Recommends:     libtss2-tcti-tabrmd0
 Requires:       tpm2-0-tss
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Patch0:         fix_dlopen.patch
 # the auto activation is not whitelisted for <= SLE12-SP3
 %if 0%{?sle_version} > 120300 || 0%{?is_opensuse}
 %define install_dbus_files 1
@@ -74,7 +73,6 @@ use with the SAPI library (libtss2-sys) like any other TCTI.
 
 %prep
 %setup -q -n tpm2-abrmd-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%optflags -fPIE"
