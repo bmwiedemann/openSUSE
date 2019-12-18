@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin-sipe
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,46 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pidgin-sipe
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Pidgin protocol plugin to connect to MS Skype for Business
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://sipe.sourceforge.io/
+URL:            https://sipe.sourceforge.io/
 Source:         http://downloads.sf.net/sipe/%{name}-%{version}.tar.xz
-%if 0%{?suse_version} >= 1500
 BuildRequires:  AppStream
-%endif
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
-%if 0%{?suse_version} >= 1500
+BuildRequires:  pkgconfig(farstream-0.2)
 BuildRequires:  pkgconfig(freerdp-shadow2)
-%endif
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmime-3.0)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(nice) >= 0.1.13
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(purple) >= 2.0.12
-BuildRequires:  pkgconfig(telepathy-glib) >= 0.18.0
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(gmime-3.0)
-%else
-BuildRequires:  pkgconfig(gmime-2.6)
-%endif
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120200
-BuildRequires:  pkgconfig(farstream-0.2)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
+BuildRequires:  pkgconfig(telepathy-glib) >= 0.24.0
 Recommends:     freerdp
 Recommends:     remmina
-%endif
 
 %description
 A third-party plugin for the Pidgin multi-protocol instant
@@ -73,7 +63,7 @@ Summary:        Pidgin protocol plugin to connect to MS Skype for Business
 Group:          Productivity/Networking/Instant Messenger
 Requires:       libpurple-plugin-sipe = %{version}
 %requires_ge    pidgin
-Supplements:    packageand(libpurple-plugin-sipe:pidgin)
+Supplements:    (libpurple-plugin-sipe and pidgin)
 # pidgin-sipe was last used in openSUSE Leap 42.2.
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
@@ -143,19 +133,11 @@ translation-update-upstream
 %configure \
   --disable-quality-check \
   --with-krb5             \
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120200
   --with-vv               \
-%else
-  --without-vv            \
-%endif
-%if 0%{?suse_version} >= 1500
-  --with-appstream               \
-%else
-  --without-appstream            \
-%endif
+  --with-appstream        \
   --enable-purple         \
   --enable-telepathy
-make %{?_smp_mflags} V=1
+%make_build check
 
 %install
 %make_install
@@ -163,23 +145,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
 %check
-make %{?_smp_mflags} V=1 check
+%make_build check
 
 %files -n pidgin-plugin-sipe
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %doc AUTHORS ChangeLog README TODO
 %dir %{_datadir}/pixmaps/pidgin/
 %dir %{_datadir}/pixmaps/pidgin/protocols/
 %dir %{_datadir}/pixmaps/pidgin/protocols/*/
 %{_datadir}/pixmaps/pidgin/protocols/*/sipe.*
-%if 0%{?suse_version} >= 1500
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/pidgin-sipe.metainfo.xml
-%endif
 
 %files -n libpurple-plugin-sipe
 %{_libdir}/purple-2/libsipe.so

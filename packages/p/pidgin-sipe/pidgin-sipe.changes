@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 10 17:39:29 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.25.0:
+  * Provide idle start time for a buddy.
+  * RTF support (incoming)
+    + the code only extracts plain text from incoming RTF.
+  * Fix build with glib-2.0 >= 2.62.0.
+  * Inconsistent parsing of From:/To: headers.
+  * Raise BR telepathy-glib >= 0.24.0.
+  * Switch from GPLv2+ to SPDX identifier GPL-2.0-or-later.
+- Drop openSUSE Leap 42.x support.
+
+-------------------------------------------------------------------
 Fri Nov 23 16:21:51 UTC 2018 - fcrozat@suse.com
 
 - Update to 1.24.0 (Application Sharing II):
