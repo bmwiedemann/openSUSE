@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 12 14:30:34 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update podman to v1.6.4
+  - Remove winsz FIFO on container restart to allow use with Conmon 2.03 and higher
+  - Ensure volumes reacquire locks on system restart, preventing deadlocks when starting containers
+  - Suppress spurious log messages when running rootless Podman
+  - Update vendored containers/storage to v1.13.6
+  - Fix a deadlock related to writing events
+  - Do not use the journald event logger when it is not available
+- Remove obsolete patch container-start-fix.patch
+
+-------------------------------------------------------------------
 Thu Oct 31 13:05:29 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Add container-start-fix.patch to correct output of container-start to show container_name, not _id. 
