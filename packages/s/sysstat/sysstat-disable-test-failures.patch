@@ -1,13 +1,13 @@
-Index: sysstat-12.0.6/Makefile.in
+Index: sysstat-12.2.0/Makefile.in
 ===================================================================
---- sysstat-12.0.6.orig/Makefile.in
-+++ sysstat-12.0.6/Makefile.in
-@@ -584,7 +584,7 @@ TESTLIST:=$(shell ls $(TESTDIR) | egrep
+--- sysstat-12.2.0.orig/Makefile.in
++++ sysstat-12.2.0/Makefile.in
+@@ -638,7 +638,7 @@ testcomp: tests/ini/inisar
  
  unit:
  	@echo $(X) 2>&1
 -	@cat $(TESTDIR)/$(X) | $(TESTRUN)
 +	@cat $(TESTDIR)/$(X) | $(TESTRUN) || { echo "Skip build failure in s390x and ppc64" ; }
  
- test: all
- 	@$(foreach x, $(TESTLIST), $(MAKE) X=$x unit || exit;)
+ # Use "do_test" script to make the following target
+ simtest: all testcomp

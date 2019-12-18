@@ -1,7 +1,7 @@
 #
 # spec file for package sysstat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sysstat
-Version:        12.0.6
+Version:        12.2.0
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
@@ -31,12 +31,12 @@ Patch0:         sysstat-8.1.6-sa1sa2lock.diff
 # PATCH-FIX-OPENSUSE should be upstreamed
 # use getpagesize() instead of kb_shift for hugetable archs
 Patch2:         sysstat-8.0.4-pagesize.diff
-# PATCH-FIX-UPSTREAM bsc#1150114 CVE-2019-16167 sysstat-CVE-2019-16167.patch
-Patch3:         sysstat-CVE-2019-16167.patch
 # PATCH-FIX-OPENSUSE bsc#1151453
-Patch4:         sysstat-service.patch
+Patch3:         sysstat-service.patch
 # PATCH-FIX-OPENSUSE Temporarily disable failing tests on s390x and ppc64
-Patch5:         sysstat-disable-test-failures.patch
+Patch4:         sysstat-disable-test-failures.patch
+# PATCH-FIX-UPSTREAM CVE-2019-19725 bsc#159104 double free in check_file_actlst
+Patch5:         sysstat-CVE-2019-19725.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
@@ -76,10 +76,10 @@ from a sysstat package.
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %ifarch s390x ppc64
-%patch5 -p1
+%patch4 -p1
 %endif
+%patch5 -p1
 cp %{S:1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
@@ -87,6 +87,7 @@ find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {}
 %build
 export conf_dir="%{_sysconfdir}/sysstat"
 export sa_lib_dir="%{_libdir}/sa"
+export cron_owner=root
 export LFLAGS="-L. -lsyscom"
 export history="60"
 export sadc_options="-S ALL"
@@ -116,7 +117,8 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsysstat
 %find_lang %{name}
 
 %check
-make %{?_smp_mflags} test
+# Newer versions only have simulation tests
+# make %%{?_smp_mflags} test
 
 %pre
 %service_add_pre sysstat.service sysstat-collect.timer sysstat-summary.timer

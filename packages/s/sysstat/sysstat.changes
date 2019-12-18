@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:20:43 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1159104, CVE-2019-19725]
+  * Double free in check_file_actlst in sa_common.c
+- Add sysstat-CVE-2019-19725.patch
+- Rebase sysstat-disable-test-failures.patch
+
+-------------------------------------------------------------------
+Thu Nov 14 10:48:14 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 12.2.0
+  * sar/sadc: Save timezone value in binary data files (saDD).
+  * sadf: Display timezone value in output from sadf -H.
+  * sar/sadf: Make sure we will always be able to read file headers
+    structures from older versions.
+  * sadf: Enhance raw format output (now also display records header contents).
+  * sadf: Update DTD and XSD documents. Fix their contents so that XML
+    output from 12.0.x sadf versions validates.
+  * sar/sadf: Change 'flags' variable type from "unsigned int" to "uint64_t".
+  * simtest: Make all tests independent from timezone value.
+  * simtest: Add more non regression tests.
+  * sadf: Small fix in manual page.
+  * NLS updated.
+  * FAQ updated.
+- Remove patch fixed upstream:
+  * sysstat-CVE-2019-16167.patch
+
+-------------------------------------------------------------------
+Thu Nov 14 09:04:41 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version udate to 12.1.7
+  * sar/sadc: Add stable identifier support for disks statistics.
+  * sar/sadf: Add extra flexibility in binary data file in case of
+    a future format change.
+  * sadf: sadf -H output updated.
+  * iostat: Fix several bugs (CID ##349502, #349503, #349500 and #349501).
+  * sar: Manual page updated.
+  * sadf: Fix memory corruption bug due to integer overflow in
+    remap_struct() function (try #2).
+  * configure: Add new configuration variables: conf_file and sar_dir.
+  * simtest: sar: Add new non regression tests.
+  * simtest: iostat: Make tests independent from timezone value.
+  * NLS updated.
+
+- Version update to 12.1.6
+  * iostat: Major code refactoring. Devices structures are now
+    dynamically allocated, better handle the case when devices are
+    removed then inserted again in the system, better command line
+    parsing, better handle devices with a slash in their name.
+  * sar/sadf: Allow to select individual CPU and/or interrupts when option -A is used.
+  * sar: Better handle the case when Fibre Channel hosts are added to the system.
+  * sar: Fix sar -s/-e output on datafiles spanning two consecutive days.
+  * sadf: Fix memory corruption bug due to integer overflow in remap_struct() function.
+  * Update sysstat simulation test environment (new tests added, etc.)
+  * sar manual page updated.
+  * Various cosmetic fixes (comments updated in code, etc.)
+  * NLS updated.
+
+-------------------------------------------------------------------
 Tue Nov  5 11:11:55 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Temporarily disable failing tests on s390x and ppc64 architectures
