@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:43 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Too many changes since 5.64.0, only listing bugfixes:
+  * Fix i18n syntax to avoid runtime errors (kde#414498)
+  * Correctly set i18n arguments in one pass (kde#414060)
+  * Add OBS to screenrecorders (kde#412320)
+  * Give some more pretty feedback in NewStuff::Page while the Engine is loading (kde#413439)
+  * Add an overlay component for item activity feedback (kde#413441)
+  * Only show DownloadItemsSheet if there's more than one download item (kde#413437)
+  * Use the pointing hand cursor for the single-clickable delegates (kde#413435)
+  * Fix the header layouts for EntryDetails and Page components (kde#413433)
+
+-------------------------------------------------------------------
 Sun Nov  3 15:47:09 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
