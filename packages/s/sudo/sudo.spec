@@ -1,7 +1,7 @@
 #
 # spec file for package sudo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%else
+%define use_usretc 1
+%endif
 
 Name:           sudo
 Version:        1.8.28p1
@@ -109,9 +115,9 @@ make -B %{?_smp_mflags}
 
 %install
 %make_install install_uid=`id -u` install_gid=`id -g`
-install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/sudo
-install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/sudo-i
+install -d -m 755 %{buildroot}%{_distconfdir}/pam.d
+install -m 644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/sudo
+install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/sudo-i
 rm -f %{buildroot}%{_bindir}/sudoedit
 ln -sf %{_bindir}/sudo %{buildroot}%{_bindir}/sudoedit
 install -d -m 755 %{buildroot}%{_sysconfdir}/openldap/schema
@@ -132,6 +138,21 @@ install -m 755 %{SOURCE7} %{buildroot}%{_localstatedir}/lib/tests/sudo
 install -d %{buildroot}%{_docdir}/%{name}-test
 install -m 644 %{buildroot}%{_docdir}/%{name}/LICENSE %{buildroot}%{_docdir}/%{name}-test/LICENSE
 rm -fv %{buildroot}%{_docdir}/%{name}/LICENSE
+
+%if %{defined use_usretc}
+%pre
+# move outdated pam.d/*.rpmsave files away
+for i in sudo sudo-i ; do
+    test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc.
+for i in  sudo sudo-i ; do
+  test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
+done
+
+%endif
 
 %post
 chmod 0440 %{_sysconfdir}/sudoers
@@ -160,8 +181,13 @@ chmod 0440 %{_sysconfdir}/sudoers
 
 %config(noreplace) %attr(0440,root,root) %{_sysconfdir}/sudoers
 %dir %{_sysconfdir}/sudoers.d
+%if %{defined use_usretc}
+%{_distconfdir}/pam.d/sudo
+%{_distconfdir}/pam.d/sudo-i
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/sudo
 %config(noreplace) %{_sysconfdir}/pam.d/sudo-i
+%endif
 %attr(4755,root,root) %{_bindir}/sudo
 %dir %{_sysconfdir}/openldap
 %dir %{_sysconfdir}/openldap/schema
