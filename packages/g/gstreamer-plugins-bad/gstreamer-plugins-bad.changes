@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 12 10:22:56 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a BuildRequires for pkgconfig(pangocairo) since it's needed
+  by the ttmlsubs and closedcaption extensions. This is not currently
+  a problem in openSUSE because the dependency is pulled in by other
+  packages which are not installed in SLE.
+
+-------------------------------------------------------------------
 Wed Dec  4 12:31:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-bad
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,6 +97,7 @@ BuildRequires:  pkgconfig(mjpegtools)
 BuildRequires:  pkgconfig(neon)
 BuildRequires:  pkgconfig(openssl) >= 0.9.5
 BuildRequires:  pkgconfig(opus) >= 0.9.4
+BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(schroedinger-1.0) >= 1.0.10
 BuildRequires:  pkgconfig(sndfile) >= 1.0.16
