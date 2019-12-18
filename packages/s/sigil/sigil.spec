@@ -19,7 +19,7 @@
 %define sigil_doc_version 2019.09.03
 
 Name:           sigil
-Version:        0.9.18
+Version:        1.0.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Dec 18 09:56:13 UTC 2019 - ecsos@opensuse.org
+
+- Update to 1.1.0
+  * Bug Fixes:
+    - All bugs reported in alpha release have been fixed. 
+      Special thanks to Vroni, BeckEBook, Doitsu, Odamizu, 
+      Un_Pogaz, snarkophilus, and many others who ran tests and
+      reported bugs.
+    - Fix for crash on macOS opening Preferences following New 
+      MainWindow
+    - Workaround Qt bug in restoreState after maximize with Find
+      and Replace open
+    - Fix logic to identify and store window geometry when normal
+      (not maximized)
+    - Fix handling of plugin dialog being closed or 
+      aborted / cancelled
+    - Prevent Preview timer related crashes on closing MainWindow
+      on macOS
+    - Update and harden media types recognition
+    - Use non-native QFileDialogs on macOS to workaround Qt bugs
+    - Fix crash of fast Tab closing on all platforms
+    - Prevent whitespace inside code tags from being changed when
+      prettifying
+    - replace case change "text icon" with actual sizable icon
+  * New Features:
+    - Add Load/Save capability for the Custom Empty Epub Layout
+      Designer
+    - Large speedups in Reports using QtConcurrent
+    - Speedups in Spellcheck Dialog sorting
+    - Add File Name to Preview Window title
+    - Add Regular Expression File Renamer to BookBrowser context
+      menu
+    - Mend on Open or Save only touch/repair non-wellformed files
+    - Re-enable Drag and Drop of Tabs
+    - Add menus/icons for "New ePub2" and "New ePub3" to ease
+      creation of empty epubs (icons courtesy of BeckyEbook)
+    - Extend ePub2 Guide Semantics to include many of the "other.*"
+      codes common to ePub3 as well
+
+- Changes from 0.9.991 (pre1.0 Alpha Release)
+  * Bug Fixes:
+    - handle javascript location.href style in Preview 
+    - use CaseInsensitive sort in Plugins menu (Thank you BeckDTP)
+    - use Locale aware sort routines for AddMetadata, and MetaData
+      Names (Thankyou Doitsu)
+    - recognize x-font-otf style media types
+    - recognize vnd.adobe.page-template+xml media type
+    - recognize webp images media type
+    - improve updating of smil xml files when moved
+    - preserve whitespace inside the code element when prettifying
+    - try again to prevent timer events during MainWindow close 
+      that causes random crashes on exit on macOS
+    - fix svg cover images to use 100vh and 100vx in Preview
+  * New Features:
+    - completely reworked most of Sigil's internals to now load all
+      Epubs in their "as-is" state and fully allow editing and 
+      plugins to work
+    - added Tools menu item to standardize an epub to Sigil norm.
+    - added Tools menu item to allow user to design a custom empty
+      epub and make it default
+    - added font tooltips that describe each font by mousing over
+      in BookBrowser (with improvements by BeckyDTP)
+
+-------------------------------------------------------------------
 Wed Sep  4 10:31:11 UTC 2019 - ecsos@opensuse.org
 
 - Update to 0.9.18
