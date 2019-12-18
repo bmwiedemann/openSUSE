@@ -77,10 +77,12 @@ Source10:       docker-daemon.json
 # branch in http://github.com/suse/docker.mirror.
 Patch200:       secrets-0001-daemon-allow-directory-creation-in-run-secrets.patch
 Patch201:       secrets-0002-SUSE-implement-SUSE-container-secrets.patch
+# SUSE-ISSUE: Revert of https://github.com/docker/docker/pull/37907.
+Patch300:       packaging-0001-revert-Remove-docker-prefix-for-containerd-and-runc-.patch
 # SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/37353. bsc#1099277
 Patch401:       bsc1073877-0001-apparmor-clobber-docker-default-profile-on-start.patch
-# SUSE-ISSUE: Revert of https://github.com/docker/docker/pull/37907.
-Patch402:       packaging-0001-revert-Remove-docker-prefix-for-containerd-and-runc-.patch
+# SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/39121. bsc#1122469
+Patch402:       bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
 # SUSE-FEATURE: Add support to mirror inofficial/private registries
 #               (https://github.com/docker/docker/pull/34319)
 Patch500:       private-registry-0001-Add-private-registry-mirror-support.patch
@@ -255,9 +257,11 @@ docker container runtime configuration for kubeadm
 %patch200 -p1
 %patch201 -p1
 %endif
+# revert upstream
+%patch300 -p1
 # bsc#1099277
 %patch401 -p1
-# revert upstream
+# bsc#1122469
 %patch402 -p1
 %if "%flavour" == "kubic"
 # PATCH-SUSE: Mirror patch.
@@ -419,12 +423,21 @@ getent group docker >/dev/null || groupadd -r docker
 # used for --userns-remap=default.
 getent passwd dockremap >/dev/null || \
 	useradd -Ur -p '!' -s /bin/false -c 'docker --userns-remap=default' dockremap
+
+# /etc/sub[ug]id should exist already (it's part of shadow-utils), but older
+# distros don't have it. Docker just parses it and doesn't need any special
+# shadow-utils helpers.
+touch /etc/subuid /etc/subgid ||:
+
 # "useradd -r" doesn't add sub[ug]ids so we manually add some. Hopefully there
 # aren't any conflicts here, because usermod doesn't provide the same "get
 # unusued range" feature that dockremap does.
-touch /etc/sub{uid,gid}
-grep -q '^dockremap:' /etc/sub{uid,gid} || \
-	usermod -v 100000000-200000000 -w 100000000-200000000 dockremap
+grep -q '^dockremap:' /etc/subuid || \
+	usermod -v 100000000-200000000 dockremap &>/dev/null || \
+	echo "dockremap:100000000:100000001" >>/etc/subuid ||:
+grep -q '^dockremap:' /etc/subgid || \
+	usermod -w 100000000-200000000 dockremap &>/dev/null || \
+	echo "dockremap:100000000:100000001" >>/etc/subgid ||:
 
 %service_add_pre %{realname}.service
 

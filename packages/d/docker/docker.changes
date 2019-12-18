@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 12 13:27:21 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Add backport of https://github.com/docker/docker/pull/39121. bsc#1122469
+  + bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
+
+-------------------------------------------------------------------
+Wed Dec 11 23:55:40 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Support older SLE systems which don't have "usermod -w -v".
+
+-------------------------------------------------------------------
 Mon Nov 18 04:46:31 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 19.03.5-ce. See upstream changelog in the packaged
@@ -64,7 +75,8 @@ Wed Jul 17 23:15:33 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Move bash-completion to correct location.
 - Update to Docker 18.09.8-ce. See upstream changelog in the packaged
-  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1142160 CVE-2019-13509
+  /usr/share/doc/packages/docker/CHANGELOG.md.
+  * Includes fixes for CVE-2019-13509 bsc#1142160.
 
 -------------------------------------------------------------------
 Fri Jun 28 01:21:19 UTC 2019 - Aleksa Sarai <asarai@suse.com>
@@ -146,6 +158,8 @@ Tue Feb  5 11:24:02 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 18.09.1-ce. See upstream changelog in the packaged
   /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1124308
+  * Includes fix for CVE-2018-10892 bsc#1100331.
+  * Includes fix for CVE-2018-20699 bsc#1121768.
 - Remove upstreamed patches.
   - bsc1073877-0001-apparmor-allow-receiving-of-signals-from-docker-kill.patch
 
