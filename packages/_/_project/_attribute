@@ -85,6 +85,7 @@
   boo#1159149: '20191216'
   boo#1159169: '20191212'
   boo#1159269: '20191216'
+  boo#1159444: '20191216'
   bsc#1114673: '20191202'
   bsc#1120957: '20190508'
   bsc#1126782: '20191016'
@@ -382,9 +383,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20191216'
+    <value>failed: ''
 published: '20191214'
-publishing: '20191214'
+publishing: '20191216'
 testing: '20191216'
 </value>
   </attribute>
