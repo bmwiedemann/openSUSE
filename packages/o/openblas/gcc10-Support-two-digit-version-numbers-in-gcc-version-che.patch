@@ -1,0 +1,26 @@
+From b28db31429d9b3b6a57a182d79e63aafdd2843f1 Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Fri, 6 Dec 2019 21:23:56 +0100
+Subject: [PATCH] Support two-digit version numbers in gcc version check
+
+fixes #2336 (non-recognition of gcc 10) with patch provided by JeffreyALaw.
+---
+ f_check | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/f_check b/f_check
+index 993ad9a3..79b24e2d 100644
+--- a/f_check
++++ b/f_check
+@@ -71,7 +71,7 @@ if ($compiler eq "") {
+ 
+ 	if ($data =~ /GNU/) {
+ 
+-	    $data =~ /(\d)\.(\d).(\d)/;
++	    $data =~ /(\d+)\.(\d+).(\d+)/;
+ 	    $major = $1;
+ 	    $minor = $2;
+ 
+-- 
+2.24.0
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:03:24 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc10-Support-two-digit-version-numbers-in-gcc-version-che.patch
+  in order to fix boo#1158727.
+
+-------------------------------------------------------------------
 Mon Aug 12 06:22:47 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.3.7 (jsc#SLE-8492)

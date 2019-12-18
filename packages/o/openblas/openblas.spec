@@ -1,7 +1,7 @@
 #
 # spec file for package openblas
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,7 +121,7 @@ Release:        0
 Summary:        An optimized BLAS library based on GotoBLAS2
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Url:            http://www.openblas.net
+URL:            http://www.openblas.net
 Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/OpenBLAS-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
@@ -129,6 +129,7 @@ Source2:        README.HPC.SUSE
 Patch1:         openblas-noexecstack.patch
 # PATCH port
 Patch3:         openblas-s390.patch
+Patch4:         gcc10-Support-two-digit-version-numbers-in-gcc-version-che.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -234,6 +235,7 @@ This package contains headers for OpenBLAS.
 %setup -q -n OpenBLAS-%{version}
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
 %ifarch s390
 sed -i -e "s@m32@m31@" Makefile.system
 %endif
