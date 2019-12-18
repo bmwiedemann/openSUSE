@@ -335,4 +335,12 @@
     <comment></comment>
     <requestid>715400</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>665f9cf1c3e73f5197bd5a3f095042e7</srcmd5>
+    <version>2.0.11</version>
+    <time>1576676595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0.11</comment>
+    <requestid>756069</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ebtables
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,27 +22,18 @@
 %endif
 
 Name:           ebtables
-Version:        2.0.10.4
+Version:        2.0.11
 Release:        0
 Summary:        Ethernet Bridge Tables
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://ebtables.sf.net/
+URL:            http://ebtables.sf.net/
 #Git-Clone:	git://git.netfilter.org/ebtables
-Source:         ebtables-v2.0.10-4.tar.xz
-Source1:        ebtables.service
-Source2:        ebtables.systemd
-Patch0:         ebtables-v2.0.8-makefile.diff
-Patch1:         ebtables-v2.0.8-initscript.diff
-# PATCH-FIX-UPSTREAM bnc#934680 kstreitova@suse.com -- audit patch for CC certification
-Patch2:         ebtables-v2.0.10-4-audit.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-fix-compilation-warning.patch
-# PATCH-FIX-SUSE-ONLY
-Patch4:         include-linux-if.patch
-# PATCH-FIX-UPSTREAM boo#1126094
-Patch5:         0001-Use-flock-for-concurrent-option.patch
-Patch6:         0002-Fix-locking-if-LOCKDIR-does-not-exist.patch
+Source0:        http://ftp.netfilter.org/pub/ebtables/ebtables-%version.tar.gz
+Source1:        http://ftp.netfilter.org/pub/ebtables/ebtables-%version.tar.gz.sig
+Source2:        ebtables.keyring
+Source3:        ebtables.service
+Source4:        ebtables.systemd
 BuildRequires:  linux-glibc-devel >= 2.6.20
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
@@ -61,14 +52,17 @@ and some basic filtering on higher network layers. The ebtables tool
 can be used together with the other Linux filtering tools, like
 iptables. There are no incompatibility issues.
 
+%package -n libebtc0
+Summary:        Library for the ebtables low-level ruleset generation and parsing
+Group:          System/Libraries
+
+%description -n libebtc0
+libebtc ("ebtables cache") is used to retrieve from the kernel, parse,
+construct, and load rulesets into the kernel.
+
 %prep
-%setup -q -n %{name}-v2.0.10-4
-%patch -P 0 -P 1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1
+
 # delete all kernel headers, but keep ebt_ip6.h and ebt_nflog.h
 mv include/linux/netfilter_bridge/ebt_ip6.{h,h.save}
 mv include/linux/netfilter_bridge/ebt_nflog.{h,h.save}
@@ -82,48 +76,33 @@ mv include/linux/netfilter_bridge/ebt_ulog.{h.save,h}
 %build
 # The way ebtables is built requires ASNEEDED=0 forever [bnc#567267]
 export SUSE_ASNEEDED=0
-make \
-    CFLAGS="%{optflags}" \
-    CXXFLAGS="%{optflags}" \
-    LIBDIR="%{_libdir}/%{name}" \
-    MANDIR="%{_mandir}" \
-    BINDIR="%{_sbindir}" \
-    ETCDIR="%{_sysconfdir}" \
-    INITDIR="%{_sysconfdir}/init.d" \
-    SYSCONFIGDIR="%{_sysconfdir}"
+%configure
+make %{?_smp_mflags}
 
 %install
 # The way ebtables is built requires ASNEEDED=0 forever [bnc#567267]
 export SUSE_ASNEEDED=0
 mkdir -p "%{buildroot}/%{_sysconfdir}/init.d"
-make \
-    DESTDIR=%{buildroot} \
-    LIBDIR="%{_libdir}/%{name}" \
-    MANDIR="%{_mandir}" \
-    BINDIR="%{_sbindir}" \
-    ETCDIR="%{_sysconfdir}" \
-    INITDIR="%{_sysconfdir}/init.d" \
-    SYSCONFIGDIR="%{_sysconfdir}" \
-    install
+%make_install
 mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_unitdir}
-install -p %{SOURCE1} %{buildroot}%{_unitdir}/
+install -p %_sourcedir/ebtables.service %{buildroot}%{_unitdir}/
 chmod -x %{buildroot}%{_unitdir}/*.service
 mkdir -p %{buildroot}%{_libexecdir}
-install -m0755 %{SOURCE2} %{buildroot}%{_libexecdir}/ebtables
+install -m0755 %_sourcedir/ebtables.systemd %{buildroot}%{_libexecdir}/ebtables
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 touch %{buildroot}%{_fillupdir}/sysconfig.%{name}.filter
 touch %{buildroot}%{_fillupdir}/sysconfig.%{name}.nat
 touch %{buildroot}%{_fillupdir}/sysconfig.%{name}.broute
-rm -rf %{buildroot}%{_initrddir}
+rm -rfv %{buildroot}%{_initrddir}
 # not used
 rm -f "%{buildroot}/%{_sysconfdir}/ebtables-config"
-mv "%{buildroot}/%{_sbindir}/ebtables" "%{buildroot}/%{_sbindir}/ebtables-legacy"
-mv "%{buildroot}/%{_sbindir}/ebtables-restore" "%{buildroot}/%{_sbindir}/ebtables-legacy-restore"
-mv "%{buildroot}/%{_sbindir}/ebtables-save" "%{buildroot}/%{_sbindir}/ebtables-legacy-save"
 for i in ebtables ebtables-restore ebtables-save; do
 	ln -fsv "/etc/alternatives/$i" "%{buildroot}/%{_sbindir}/$i"
 done
+echo ".so ebtables-legacy.8" >"%buildroot/%_mandir/man8/ebtables.8"
+# no headers to make use of it
+rm -f "%buildroot/%_libdir/libebtc.la" "%buildroot/%_libdir/libebtc.so"
 
 %pre
 %service_add_pre %{name}.service
@@ -145,10 +124,13 @@ if test "$1" = 0; then
 fi
 %service_del_postun %{name}.service
 
+%post   -n libebtc0 -p /sbin/ldconfig
+%postun -n libebtc0 -p /sbin/ldconfig
+
 %files
 %defattr(-,root,root)
 %doc COPYING ChangeLog
-%{_mandir}/man8/ebtables.8*
+%{_mandir}/man8/ebtables*.8*
 %{_libexecdir}/%{name}
 %{_unitdir}/%{name}.service
 %ghost %{_sysconfdir}/alternatives/ebtables
@@ -159,9 +141,10 @@ fi
 %ghost %{_fillupdir}/sysconfig.%{name}.broute
 # is provided by the netcfg package
 %exclude %{_sysconfdir}/ethertypes
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/*.so
 %{_sbindir}/ebtables*
 %{_sbindir}/rcebtables
+
+%files -n libebtc0
+%_libdir/libebtc.so.0*
 
 %changelog

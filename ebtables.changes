@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:12:00 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- add ebtables.keyring as a Source
+
+-------------------------------------------------------------------
+Mon Dec  2 19:26:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.11
+  * Add --noflush command line support for ebtables-restore
+  * Do not print IPv6 mask if it is all ones
+  * Allow RETURN target rules in user defined chains
+  * ebt_ip: add support for matching ICMP type and code
+  * ebt_ip: add support for matching IGMP type
+  * extensions: Add string filter to ebtables
+  * Print IPv6 prefixes in CIDR notation
+  * extensions: Add AUDIT target
+  * Fix incorrect IPv6 prefix formatting
+- Drop ebtables-v2.0.8-makefile.diff (no longer needed)
+- Drop ebtables-v2.0.8-initscript.diff, include-linux-if.patch
+  (not applicable)
+- Drop ebtables-v2.0.10-4-audit.patch,
+  0001-fix-compilation-warning.patch,
+  0001-Use-flock-for-concurrent-option.patch,
+  0002-Fix-locking-if-LOCKDIR-does-not-exist.patch (merged)
+
+-------------------------------------------------------------------
 Wed Jul 10 11:30:50 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - fix path (/sbin -> /usr/sbin) in ebtables.systemd [bsc#1140898]
