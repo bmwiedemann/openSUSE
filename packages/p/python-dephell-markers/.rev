@@ -32,4 +32,13 @@
     <comment></comment>
     <requestid>755174</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b1babb3e579d93207e9648919c0326bc</srcmd5>
+    <version>1.0.3</version>
+    <time>1576676806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.3:
+  - Fix new attrs compat</comment>
+    <requestid>757712</requestid>
+  </revision>
 </revisionlist>
