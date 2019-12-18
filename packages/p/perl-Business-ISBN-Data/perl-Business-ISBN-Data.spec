@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Business-ISBN-Data
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Business-ISBN-Data
-Version:        20140910.003
+Version:        20191107
 Release:        0
 %define cpan_name Business-ISBN-Data
-Summary:        Data Pack for Business::Isbn
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Data pack for Business::ISBN
+License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Business-ISBN-Data/
-Source0:        http://www.cpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -62,11 +62,11 @@ part is historical). If you want to see where the data are from, check
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -75,6 +75,7 @@ part is historical). If you want to see where the data are from, check
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes examples LICENSE
+%doc Changes examples
+%license LICENSE
 
 %changelog

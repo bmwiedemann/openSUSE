@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 12 03:09:11 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 20191107
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20191107 2019-12-11T20:04:42Z
+  	* Peter Williams fixed the 978/979 distinction (GitHub #5)
+
+-------------------------------------------------------------------
 Thu Dec 17 09:40:25 UTC 2015 - coolo@suse.com
 
 - updated to 20140910.003
