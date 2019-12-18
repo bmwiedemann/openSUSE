@@ -1,7 +1,7 @@
 #
 # spec file for package kded
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.64
+%define _tar_path 5.65
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kded
-Version:        5.64.0
+Version:        5.65.0
 Release:        0
 Summary:        Central daemon of KDE workspaces
 License:        LGPL-2.1-or-later
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Init) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Core) >= 5.11.0
@@ -100,7 +99,6 @@ Development files.
 %files
 %license COPYING*
 %doc README*
-%{_kf5_libdir}/libkdeinit5_kded5.so
 %{_kf5_bindir}/kded5
 %{_kf5_sharedir}/dbus-1/services/org.kde.kded5.service
 %dir %{_kf5_servicetypesdir}
