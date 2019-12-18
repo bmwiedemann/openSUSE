@@ -86,4 +86,12 @@
     <comment>Allow building with Java 11</comment>
     <requestid>755237</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>d6c833385001b0a2e838474d620d582f</srcmd5>
+    <version>4.4.1</version>
+    <time>1576676704</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid sources that change every week</comment>
+    <requestid>757516</requestid>
+  </revision>
 </revisionlist>

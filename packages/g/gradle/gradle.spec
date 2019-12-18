@@ -26,7 +26,7 @@ License:        Apache-2.0
 URL:            http://www.gradle.org/
 
 Source0:        http://services.gradle.org/distributions/gradle-%{version}-src.zip
-Source1:        http://services.gradle.org/versions/all#/all-released-versions.json
+#Source1:        http://services.gradle.org/versions/all#/all-released-versions.json
 Source2:        gradle-font-metadata.xml
 Source3:        gradle-jquery-metadata.xml
 Source4:        gradle-launcher.sh.in
@@ -331,8 +331,8 @@ rm -rf gradle/wrapper/
 >subprojects/diagnostics/src/main/resources/org/gradle/api/tasks/diagnostics/htmldependencyreport/jquery.jstree.js
 
 # This file is normally downloaded from Internet during package build
-mkdir -p build
-cp %{SOURCE1} build/all-released-versions.json
+# mkdir -p build
+# cp %{SOURCE1} build/all-released-versions.json
 
 # quality checks for which we don't have deps
 rm -r buildSrc/src/main/groovy/org/gradle/binarycompatibility
