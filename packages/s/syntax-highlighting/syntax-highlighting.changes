@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:19:00 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Updates from CMake 3.16 final release
+  * reStructuredText: Fix inline literals highlighting preceding characters
+  * rst: Add support for standalone hyperlinks
+  * JavaScript: move keywords from TypeScript and other improvements
+  * JavaScript/TypeScript React: rename syntax definitions
+  * LaTeX: fix backslash delimiter in some keywords (kde#413493)
+
+-------------------------------------------------------------------
 Sun Nov  3 15:47:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
