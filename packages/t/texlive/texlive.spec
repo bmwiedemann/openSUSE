@@ -277,6 +277,8 @@ Patch58:        source-poppler0.79.0.patch
 Patch59:        0001-Updated-tests-after-U-C-upgrade-changed-sortinit-hashes.patch
 # PATCH-FIX-UPSTREAM Bug bsc#1155411 - (CVE-2019-18604) VUL-1: CVE-2019-18604: texlive: improper use of sprintf
 Patch60:        source-fix-axohelp.patch
+# PATCH-FIX-TEXLIVE
+Patch61:        source-poppler0.83.0.patch
 Prefix:         %{_bindir}
 Provides:       pdfjam = %{version}
 Obsoletes:      pdfjam < %{version}
@@ -3677,6 +3679,9 @@ popd
 %endif
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.73.0}}%{!?pkg_vcmp:0}
 %patch58 -p1 -b .poppler75
+%endif
+%if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.83.0}}%{!?pkg_vcmp:0}
+%patch61 -p1 -b .poppler79
 %endif
 pver=$(pkg-config --modversion poppler)
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.79.0}}%{!?pkg_vcmp:0}

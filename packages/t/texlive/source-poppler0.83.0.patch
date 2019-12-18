@@ -1,0 +1,54 @@
+From: Mike Gorse <mgorse@suse.com>
+Date: Wed 11 Dec 2019 03:33:09 PM CST
+Subject: [PATCH] poppler 0.83
+
+---
+diff -urp texlive-20190407-source.orig/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc texlive-20190407-source/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc
+--- texlive-20190407-source.orig/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc	2019-12-11 14:46:41.821436082 -0600
++++ texlive-20190407-source/texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc	2019-12-11 15:28:27.578835392 -0600
+@@ -723,7 +723,7 @@ read_pdf_info(char *image_name, char *pa
+ #endif
+     // initialize
+     if (!isInit) {
+-        globalParams = new GlobalParams();
++        globalParams = std::make_unique<GlobalParams>();
+         globalParams->setErrQuiet(false);
+         isInit = true;
+     }
+@@ -1107,7 +1107,5 @@ void epdf_check_mem()
+             n = p->next;
+             delete_document(p);
+         }
+-        // see above for globalParams
+-        delete globalParams;
+     }
+ }
+diff -urp texlive-20190407-source.orig/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc texlive-20190407-source/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc
+--- texlive-20190407-source.orig/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc	2019-12-11 14:46:41.821436082 -0600
++++ texlive-20190407-source/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc	2019-12-11 16:51:21.765434275 -0600
+@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
+         exit(1);
+     }
+     fileName = new GString(argv[1]);
+-    globalParams = new GlobalParams();
++    globalParams = std::make_unique<GlobalParams>();
+     doc = new PDFDoc(fileName);
+     if (!doc->isOk()) {
+         fprintf(stderr, "Invalid PDF file\n");
+@@ -100,8 +100,8 @@ int main(int argc, char *argv[])
+     srcStream = Object(objNull);
+     if (objnum == 0) {
+         srcStream = catalogDict.dictLookup("SourceObject");
+-        static char const_SourceFile[] = "SourceFile";
+-        if (!srcStream.isStream(const_SourceFile)) {
++        static const char *const_SourceFile = "SourceFile";
++        if (!srcStream.isDict(const_SourceFile)) {
+             fprintf(stderr, "No SourceObject found\n");
+             exit(1);
+         }
+@@ -202,5 +202,4 @@ int main(int argc, char *argv[])
+         fprintf(stderr, "Cross-reference table extracted to %s\n", outname);
+     fclose(outfile);
+     delete doc;
+-    delete globalParams;
+ }
