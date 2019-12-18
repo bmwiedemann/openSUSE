@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-spec
-Version:        1.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Plugin to display pytest execution output like a specification
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pchomik/pytest-spec
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-spec/pytest-spec-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/pchomik/pytest-spec/master/LICENSE.txt
-Patch0:         pytest4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +42,6 @@ pytest plugin to display test execution output like a specification.
 
 %prep
 %setup -q -n pytest-spec-%{version}
-%patch0 -p1
 cp %{SOURCE1} .
 
 %build
