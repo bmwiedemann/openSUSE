@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 17 17:06:49 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Revert previous change, numba doesn't support LLVM 9 yet.
+
+-------------------------------------------------------------------
 Thu Oct 31 15:18:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Add support-clang9.patch and apply it for llvm >= 9

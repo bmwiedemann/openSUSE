@@ -1,7 +1,7 @@
 #
 # spec file for package python-llvmlite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,10 @@
 %ifarch ppc64 ppc64le
 %define         llvm_major 7
 %else
-%define         llvm_major 9
+%define         llvm_major 8
+%endif
+%if 0%{?suse_version} <= 1500
+%define         llvm_major 7
 %endif
 Name:           python-llvmlite
 Version:        0.30.0
