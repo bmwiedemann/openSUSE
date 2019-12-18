@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:52 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * [KSqueezedTextLabel] Add icon for "Copy entire text" action
+  * Remove unused signal we can use directly "signal(const QUrl&)
+  * Unify KPageDialog margin handling into KPageDialog itself (kde#413181)
+
+-------------------------------------------------------------------
 Sun Nov  3 15:47:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
