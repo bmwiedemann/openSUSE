@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define version_unconverted 2019.5~git157
-%define lname libSPIRV-Tools-suse14
+%define version_unconverted 2019.5
+%define lname libSPIRV-Tools-suse15
 
 Name:           spirv-tools
-Version:        2019.5~git157
+Version:        2019.5
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -91,7 +91,7 @@ make %{?_smp_mflags}
 %_libdir/libSPIRV-Tools-shared.so.*
 
 %files devel
-%_prefix/lib/cmake/
+%_libdir/cmake/
 %_libdir/libSPIRV-Tools.so
 %_libdir/libSPIRV-Tools-link.so
 %_libdir/libSPIRV-Tools-opt.so

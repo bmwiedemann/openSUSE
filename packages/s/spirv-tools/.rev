@@ -127,4 +127,12 @@
     <comment>- Update to snapshot 2019.5~git157</comment>
     <requestid>746189</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4d936abeeba51ff89b722c62e9612b29</srcmd5>
+    <version>2019.5</version>
+    <time>1576676615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2019.5</comment>
+    <requestid>756640</requestid>
+  </revision>
 </revisionlist>
