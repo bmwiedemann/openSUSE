@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 18 12:02:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.7.1.
+
+  This update fixes several major security issues. Users are very strongly
+  recommended to update as soon as possible.
+
+  * Fix a bug which could cause room events to be incorrectly authorized using
+    events from a different room.
+  * Fix a bug causing responses to the /context client endpoint to not use the
+    pruned version of the event.
+  * Fix a cause of state resets in room versions 2 onwards.
+  * Fix a bug which could cause the federation server to incorrectly return
+    errors when handling certain obscure event graphs.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Fri Dec 13 13:23:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 1.7.0.
