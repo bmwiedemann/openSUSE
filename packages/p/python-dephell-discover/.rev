@@ -24,4 +24,14 @@
   * ship tests</comment>
     <requestid>730650</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0d7ecafc6ba7bbf320e1d0cdbd28e9f</srcmd5>
+    <version>0.2.10</version>
+    <time>1576676803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.10:
+  - Fix default package_dir format
+  - Python 3.8 support</comment>
+    <requestid>757711</requestid>
+  </revision>
 </revisionlist>

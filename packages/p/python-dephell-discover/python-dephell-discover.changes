@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:23:44 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.2.10:
+  - Fix default package_dir format
+  - Python 3.8 support
+
+-------------------------------------------------------------------
 Fri Sep 13 09:18:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.2.8:
