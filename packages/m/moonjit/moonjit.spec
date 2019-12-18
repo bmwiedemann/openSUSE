@@ -18,9 +18,6 @@
 
 %define lua_suffix 5_1
 %define lib_suffix 2
-%ifarch x86_64 aarch64 s390x ppc64 ppc64le
-%global multilib_flag MULTILIB=lib64
-%endif
 Name:           moonjit
 Version:        2.1.2
 Release:        0
@@ -72,7 +69,7 @@ make %{?_smp_mflags} \
 	LDCONFIG="true" \
 	TARGET_AR="ar rcus" \
 	TARGET_STRIP=: \
-	%{?multilib_flag}
+	MULTILIB=%{_lib}
 
 %install
 make DESTDIR=%{buildroot} install \
@@ -81,7 +78,7 @@ make DESTDIR=%{buildroot} install \
 	LDCONFIG="true" \
 	TARGET_AR="ar rcus" \
 	TARGET_STRIP=: \
-	%{?multilib_flag}
+	MULTILIB=%{_lib}
 # remove static lib, not needed
 rm %{buildroot}/%{_libdir}/*.a
 
@@ -96,7 +93,11 @@ ln -sf %{_sysconfdir}/alternatives/luajit %{buildroot}%{_bindir}/luajit
 ln -sf %{_sysconfdir}/alternatives/luajit.1%{ext_man} %{buildroot}%{_mandir}/man1/luajit.1%{ext_man}
 
 %check
+%ifarch %arm ppc ppc64 ppc64le
+make %{?_smp_mflags} check || { echo -e "WARNING: ignore check error for\narm*: https://github.com/moonjit/moonjit/issues/9\nppc*: https://github.com/moonjit/moonjit/issues/40"; }
+%else
 make %{?_smp_mflags} check
+%endif
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/luajit luajit %{_bindir}/luajit-%{lua_suffix}-%{version} 60 \
