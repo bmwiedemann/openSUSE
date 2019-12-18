@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define somajor 7
+%define somajor 8
 %define libname libprocps%{somajor}
 %bcond_with     bin2usr
 %bcond_with     pidof
 Name:           procps
-Version:        3.3.15
+Version:        3.3.16
 Release:        0
 Summary:        The ps utilities for /proc
-#Alternate:     https://gitlab.com/procps-ng/procps/repository/archive.tar.bz2?ref=v3.3.15
+#Alternate:     https://gitlab.com/procps-ng/procps/repository/archive.tar.bz2?ref=v%{version}
 #Also:          http://gitorious.org/procps/
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Monitoring
-Url:            http://sf.net/projects/procps-ng/
-Source:         http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-3.3.15.tar.xz
+URL:            http://sf.net/projects/procps-ng/
+Source:         http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
 Source1:        procps-rpmlintrc
 Patch0:         procps-ng-3.3.9-watch.patch
 Patch1:         procps-v3.3.3-ia64.diff
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
-Patch5:         procps-ng-3.3.8-top.1.diff
 Patch7:         procps-ng-3.3.8-readeof.patch
 Patch8:         procps-ng-3.3.10-slab.patch
 Patch10:        procps-ng-3.3.8-accuracy.dif
@@ -57,8 +56,8 @@ Patch31:        procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
 Patch32:        procps-ng-3.3.10-errno.patch
 # PATCH-FEATURE-SUSE -- Let upstream pmap behave simialr to old suse pmap
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
-# PATCH-TYPO-SUSE
-Patch34:        procps-ng-3.3.15-typo.patch
+# PATCH-FEATURE-SUSE -- "ps -C" does not allow anymore an argument longer than 15 characters
+Patch34:        procps-ng-3.3.16-comm_len.patch
 
 BuildRequires:  automake
 BuildRequires:  dejagnu
@@ -128,7 +127,6 @@ the process information pseudo-file system.
 %patch0
 %patch1
 %patch3 -b .trcate
-%patch5
 %patch7 -b .rof
 %patch8 -b .cache
 %patch10 -b .acc

@@ -16,7 +16,7 @@
  if BUILD_SKILL
 --- configure.ac
 +++ configure.ac	2018-04-04 12:29:23.364676155 +0000
-@@ -163,8 +163,16 @@ else
+@@ -169,8 +169,16 @@ else
    else
      WATCH_NCURSES_LIBS="$NCURSES_LIBS"
    fi

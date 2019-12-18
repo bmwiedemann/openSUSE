@@ -1,6 +1,6 @@
 --- vmstat.c
 +++ vmstat.c	2015-01-27 14:57:19.467491788 +0000
-@@ -292,7 +292,7 @@ static void new_format(void)
+@@ -295,7 +295,7 @@ static void new_format(void)
  	unsigned int intr[2], ctxt[2];
  	unsigned int sleep_half;
  	unsigned long kb_per_page = sysconf(_SC_PAGESIZE) / 1024ul;
@@ -9,7 +9,7 @@
  	struct tm *tm_ptr;
  	time_t the_time;
  	char timebuf[32];
-@@ -375,12 +375,12 @@ static void new_format(void)
+@@ -386,12 +386,12 @@ static void new_format(void)
  
  		/* idle can run backwards for a moment -- kernel "feature" */
  		if (debt) {

@@ -4,7 +4,7 @@
 
 --- proc/readproc.c
 +++ proc/readproc.c	2018-06-05 08:54:06.408030693 +0000
-@@ -669,7 +669,7 @@ static int file2str(const char *director
+@@ -675,7 +675,7 @@ static int file2str(const char *director
      else ub->buf = xcalloc((ub->siz = buffGRW));
      len = snprintf(path, sizeof path, "%s/%s", directory, what);
      if (len <= 0 || (size_t)len >= sizeof path) return -1;
@@ -13,7 +13,7 @@
      while (0 < (num = read(fd, ub->buf + tot_read, ub->siz - tot_read))) {
          tot_read += num;
          if (tot_read < ub->siz) break;
-@@ -689,25 +689,25 @@ static int file2str(const char *director
+@@ -695,25 +695,25 @@ static int file2str(const char *director
  static char** file2strvec(const char* directory, const char* what) {
      char buf[2048];	/* read buf bytes at a time */
      char *p, *rbuf = 0, *endbuf, **q, **ret, *strp;
@@ -46,7 +46,7 @@
  	    end_of_file = 1; /* integer overflow: null-terminate and break */
  	    n = 0; /* but tot > 0 */
  	}
-@@ -735,7 +735,7 @@ static char** file2strvec(const char* di
+@@ -741,7 +741,7 @@ static char** file2strvec(const char* di
      c = sizeof(char*);				/* one extra for NULL term */
      for (p = rbuf; p < endbuf; p++) {
  	if (!*p || *p == '\n') {
@@ -55,7 +55,7 @@
  	    c += sizeof(char*);
  	}
  	if (*p == '\n')
-@@ -747,7 +747,7 @@ static char** file2strvec(const char* di
+@@ -753,7 +753,7 @@ static char** file2strvec(const char* di
      q = ret = (char**) (endbuf+align);		/* ==> free(*ret) to dealloc */
      for (strp = p = rbuf; p < endbuf; p++) {
  	if (!*p) {				/* NUL char implies that */

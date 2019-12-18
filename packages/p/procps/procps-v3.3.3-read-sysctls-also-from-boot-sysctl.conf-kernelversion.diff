@@ -24,7 +24,7 @@
  #include <unistd.h>
  
  #include "c.h"
-@@ -613,6 +614,7 @@ static int sortpairs(const void *A, cons
+@@ -621,6 +622,7 @@ static int sortpairs(const void *A, cons
  static int PreloadSystem(void)
  {
  	unsigned di, i;
@@ -32,7 +32,7 @@
  	const char *dirs[] = {
  		"/run/sysctl.d",
  		"/etc/sysctl.d",
-@@ -677,6 +679,16 @@ static int PreloadSystem(void)
+@@ -685,6 +687,16 @@ static int PreloadSystem(void)
  	}
  	qsort(cfgs, ncfgs, sizeof(struct cfg *), sortpairs);
  

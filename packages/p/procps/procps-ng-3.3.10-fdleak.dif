@@ -12,7 +12,7 @@
  #include <termios.h>
  #include <unistd.h>
  #include <time.h>
-@@ -686,13 +687,12 @@ static void slabheader(void)
+@@ -708,13 +709,12 @@ static void slabheader(void)
  
  static void slabformat(void)
  {
@@ -28,7 +28,7 @@
  		xwarnx(_("your kernel does not support slabinfo or your permissions are insufficient"));
  		return;
  	}
-@@ -724,7 +724,6 @@ static void slabformat(void)
+@@ -746,7 +746,6 @@ static void slabformat(void)
  		}
  		free(slabs);
  	}

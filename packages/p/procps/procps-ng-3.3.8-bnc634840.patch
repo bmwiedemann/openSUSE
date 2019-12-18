@@ -12,7 +12,7 @@ Index: procps-3.2.8/top.c
 
 --- top/top.c
 +++ top/top.c	2018-04-04 11:33:59.278280201 +0000
-@@ -3600,7 +3600,13 @@ static void before (char *me) {
+@@ -3663,7 +3663,13 @@ static void before (char *me) {
     sa.sa_flags = 0;
     for (i = SIGRTMAX; i; i--) {
        switch (i) {

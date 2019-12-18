@@ -6,7 +6,7 @@
  4 files changed, 21 insertions(+), 2 deletions(-)
 
 --- free.1
-+++ free.1	2018-04-04 11:13:44.744590770 +0000
++++ free.1	2019-12-11 06:20:16.659772479 +0000
 @@ -100,6 +100,12 @@ Switch to the wide mode. The wide mode p
  than 80 characters. In this mode \fBbuffers\fR and \fBcache\fR
  are reported in two separate columns.
@@ -21,7 +21,7 @@
  Display the result
  .I count
 --- free.c
-+++ free.c	2018-04-04 11:13:44.748590695 +0000
++++ free.c	2019-12-11 06:20:16.659772479 +0000
 @@ -90,6 +90,7 @@ static void __attribute__ ((__noreturn__
  	fputs(_(" -t, --total         show total for RAM + swap\n"), out);
  	fputs(_(" -s N, --seconds N   repeat printing every N seconds\n"), out);
@@ -58,7 +58,7 @@
  			usage(stdout);
  		case 'V':
 --- proc/sysinfo.c
-+++ proc/sysinfo.c	2018-04-04 11:13:44.748590695 +0000
++++ proc/sysinfo.c	2019-12-11 06:20:16.659772479 +0000
 @@ -3,6 +3,7 @@
   * Copyright (C) 1992-1998 by Michael K. Johnson, johnsonm@redhat.com
   * Copyright 1998-2003 Albert Cahalan
@@ -85,7 +85,7 @@
  
    /* if kb_main_available is greater than kb_main_total or our calculation of
 --- vmstat.c
-+++ vmstat.c	2018-04-04 11:13:44.748590695 +0000
++++ vmstat.c	2019-12-11 06:22:44.716984764 +0000
 @@ -103,6 +103,7 @@ static void __attribute__ ((__noreturn__
  	fputs(_(" -p, --partition <dev>  partition specific statistics\n"), out);
  	fputs(_(" -S, --unit <char>      define display unit\n"), out);
@@ -94,16 +94,16 @@
  	fputs(_(" -t, --timestamp        show timestamp\n"), out);
  	fputs(USAGE_SEPARATOR, out);
  	fputs(USAGE_HELP, out);
-@@ -877,7 +878,7 @@ int main(int argc, char *argv[])
+@@ -899,7 +900,7 @@ int main(int argc, char *argv[])
  	atexit(close_stdout);
  
  	while ((c =
 -		getopt_long(argc, argv, "afmnsdDp:S:wthV", longopts,
 +		getopt_long(argc, argv, "aCfmnsdDp:S:wthV", longopts,
- 			    NULL)) != EOF)
+ 			    NULL)) != -1)
  		switch (c) {
  		case 'V':
-@@ -946,6 +947,9 @@ int main(int argc, char *argv[])
+@@ -968,6 +969,9 @@ int main(int argc, char *argv[])
  		case 't':
  			t_option = 1;
  			break;

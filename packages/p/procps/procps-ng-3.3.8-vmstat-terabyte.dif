@@ -4,7 +4,7 @@
 
 --- vmstat.c
 +++ vmstat.c	2016-07-11 13:18:04.993371059 +0000
-@@ -270,8 +270,8 @@ static void new_header(void)
+@@ -273,8 +273,8 @@ static void new_header(void)
  
  static unsigned long unitConvert(unsigned long size)
  {

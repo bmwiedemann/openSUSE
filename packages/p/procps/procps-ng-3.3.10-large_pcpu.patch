@@ -4,7 +4,7 @@
 
 --- top/top.c
 +++ top/top.c	2018-04-04 12:09:16.087193018 +0000
-@@ -2478,7 +2478,11 @@ static void zap_fieldstab (void) {
+@@ -2379,7 +2379,11 @@ static void zap_fieldstab (void) {
     Cpu_pmax = 99.9;
     if (Rc.mode_irixps && smp_num_cpus > 1 && !Thread_mode) {
        Cpu_pmax = 100.0 * smp_num_cpus;
