@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec 16 15:57:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.6.2
+  * Command-line long-options.
+  * Distinguishes among K&R C, C89, C95, C99, C11, C18, C++98,
+    C++03, C++11, C++14, C++17, and C++20.
+  * Support for C89 const, restrict, and volatile declarations.
+  * Support for the standard C95 type wchar_t.
+  * Support for the standard C99 types _Bool, _Complex,
+    _Imaginary, int8_t, int16_t, ptrdiff_t, size_t, etc.
+  * Support for C99 static, type-qualified, and variable length
+    array function arguments.
+  * Support for the standard C11 atomic types atomic_bool,
+    atomic_char, etc.
+  * Support for the standard C11 and C++11 types char16_t,
+    char32_t, and thread_local.
+  * Support for inline function and variable declarations.
+  * Support for typedef declarations.
+  * Support for variadic function arguments.
+  * Support for C and C++ alternative tokens (and, and_eq, etc.).
+  * Support for C++ mutable data members, namespaces and scoped
+    names, new-style casts, throw, overloaded operators, and
+    friend, virtual and pure virtual member function
+    declarations, and user-defined conversion operators.
+  * Support for C++11 constexpr, enum class, final, noexcept,
+    override, rvalue references, user-defined literals, using (as
+    a typedef synonym), the function trailing return-type syntax,
+    and ref-qualified member function declarations.
+  * Support for C++ [[carries_dependency]], [[deprecated]],
+    [[maybe_unused]], [[nodiscard]], and [[noreturn]] attribute
+    specifiers.
+  * Better warning and error messages complete with location
+    information and color.
+- Drop cdecl-2.5-deb11.diff
+
+-------------------------------------------------------------------
 Thu Jun 11 09:08:54 UTC 2015 - schwab@suse.de
 
 - keyword-identifier.patch: rename identifier conflicting with keyword

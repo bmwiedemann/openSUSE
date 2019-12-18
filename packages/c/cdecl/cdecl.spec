@@ -1,7 +1,7 @@
 #
 # spec file for package cdecl
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
 Name:           cdecl
-Version:        2.5
-Release:        1
-Group:          Development/Languages/C and C++
+Version:        6.6.2
+Release:        0
 Summary:        C/C++ function declaration translator
-Url:            ftp://ftp.oss.cc.gatech.edu/pub/linux/devel/lang/c/cdecl-2.5.tar.gz
-License:        SUSE-Public-Domain
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+URL:            https://github.com/paul-j-lucas/cdecl/
 
-Source:         %name-%version.tar.xz
-Patch1:         %name-2.5-deb11.diff
-Patch2:         keyword-identifier.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  bison flex readline-devel xz
+Source:         https://github.com/paul-j-lucas/cdecl/releases/download/cdecl-6.6.2/cdecl-6.6.2.tar.gz
+BuildRequires:  bison
+BuildRequires:  flex
+BuildRequires:  ncurses-devel
+BuildRequires:  readline-devel
 
 %description
 Turn English phrases to C or C++ declarations Cdecl is a program
@@ -41,21 +40,17 @@ version it has command line editing and history with the GNU readline
 library.
 
 %prep
-%setup
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
-make CFLAGS="%optflags -DUSE_READLINE -DOLD_READLINE" %{?_smp_mflags};
+%configure
 
 %install
-b="%buildroot";
-install -dm0755 "$b/%_bindir";
-install -dm0755 "$b/%_mandir/man1";
-make install BINDIR="$b/%_bindir" MANDIR="$b/%_mandir/man1";
+%make_install
 
 %files
-%defattr(-,root,root)
 %_bindir/*
 %_mandir/*/*
+%license COPYING
 
 %changelog
