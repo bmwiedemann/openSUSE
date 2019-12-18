@@ -1,7 +1,7 @@
 #
 # spec file for package aws-efs-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,29 @@
 
 
 Name:           aws-efs-utils
-Version:        1.7
+Version:        1.17
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
 Group:          System/Management
-Url:            https://github.com/aws/efs-utils
+URL:            https://github.com/aws/efs-utils
 Source0:        https://github.com/aws/efs-utils/archive/v%{version}.tar.gz
-Patch:          efs-switchparser.patch
+BuildRequires:  python3-attrs >= 17.4.0
+BuildRequires:  python3-coverage >= 4.5
+BuildRequires:  python3-flake8 >= 3.7.9
+BuildRequires:  python3-mccabe >= 0.6.1
+BuildRequires:  python3-mock >= 2.0.0
+BuildRequires:  python3-pbr >= 3.1.1
+BuildRequires:  python3-pluggy >= 0.13.0
+BuildRequires:  python3-py >= 1.8.0
+BuildRequires:  python3-pycodestyle >= 2.5.0
+BuildRequires:  python3-pyflakes >= 2.1.1
+BuildRequires:  python3-pytest >= 4.6.7
+BuildRequires:  python3-pytest-cov >= 2.8.1
+BuildRequires:  python3-pytest-html >= 1.19.0
+BuildRequires:  python3-pytest-metadata >= 1.7.0
+BuildRequires:  python3-pytest-mock >= 1.11.2
+BuildRequires:  python3-six >= 1.11.0
 BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
 Requires:       nfs-utils
@@ -38,10 +53,12 @@ This package provides utilities for using the EFS file systems.
 %prep
 %setup -n efs-utils-%{version}
 find . -name "*.py" -exec sed -i 's/env python/python3/' {} +
-%patch  -p1
 
 %build
 # No build required
+
+%check
+make test
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/amazon/efs

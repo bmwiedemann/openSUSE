@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Dec 17 20:14:25 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.17
+  + Added support for Python 3
+- Enable testsuite which now passes on Python 3
+- Update BuildRequires from requirements.txt
+
+-------------------------------------------------------------------
+Thu Dec  5 11:42:38 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.16
+  + Support Python 3 for tests
+- from version 1.15
+  + Properly support Python3
+- from version 1.14
+  + Tolerate EFS state directory existing during mount
+- from version 1.13
+  + Change watchdog configuration so it stops after all file systems are unmounted
+- from version 1.12
+  + Update stunnel idle timeout
+    * The default stunnel idle timeout is many hours. By setting it to a value based
+      on the NFS lease length we can recover from network partitions sooner.
+- from version 1.11
+  + Add support for RHEL8
+    * Fixes Python shebangs to work on systems without a default "python" version.
+    * Fixes watchdog process not being properly started on systemd systems.
+- from version 1.10
+  + Update to default configuration that disables OCSP
+    * To use OCSP, the client accessing EFS must be able to reach the Amazon Certificate
+      Authority (CA). To maximize file system availability in the event that the CA is
+      not reachable from your VPC, the EFS mount helper no longer enables OCSP by default.
+- Don't enable testsuite as it is currently failing
+  + https://github.com/aws/efs-utils/issues/24
+- Drop patches merged upstream
+  + efs-switchparser.patch
+- Update BuildRequires from requirements.txt
+
+-------------------------------------------------------------------
 Tue Apr  9 22:29:17 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7
