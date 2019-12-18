@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Dec 14 10:32:50 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- remove old (compiled) rules in /var/lib/spamassassin directory
+  after package upgrade and remove entirely upon package removal
+- add BuildRequires for perl(Archive::Zip) and perl(IO::String)
+
+-------------------------------------------------------------------
+Thu Dec 12 11:55:55 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- update spamassassin to 3.4.3
+  * There is one new plugin (disabled by default)
+    OLEVBMacro - Detects both OLE macros and VB code inside Office
+      documents
+  * Two CVE security bug fixes are included in this release
+    CVE-2019-12420 for Multipart Denial of Service Vulnerability
+    CVE-2018-11805 for nefarious CF files can be configured to
+      run system commands without any output or errors
+  * Safer and faster scanning of large emails using
+      body_part_scan_size and rawbody_part_scan_size settings.
+  * New tflag "nosubject" for 'body' rules, to stop matching the
+      Subject header which is part of the body text.
+  * Security updates include deprecation of the unsafe sa-update
+    '--allowplugins' option, which now prints a warning that
+    '--reallyallowplugins' is required to use it.
+    
+-------------------------------------------------------------------
+Tue Dec 10 09:17:05 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Increase maximum size for spampd to 7168
+
+-------------------------------------------------------------------
 Sat Nov  9 12:42:47 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - Change architecture of perl modules to 'noarch'

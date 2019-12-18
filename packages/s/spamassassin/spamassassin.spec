@@ -1,7 +1,7 @@
 #
 # spec file for package spamassassin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@
 
 %define ix_version 2.05
 %define spd_version 2.53
-%define sa_version 3.4.2
+%define sa_version 3.4.3
 %define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
-%define rules_revision 1840640
+%define rules_revision 1871124
 
 %define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}
@@ -36,7 +36,7 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Email/Utilities
 Version:        %{sa_version}
 Release:        0
-Url:            https://spamassassin.apache.org/
+URL:            https://spamassassin.apache.org/
 Source:         https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2
 Source1:        https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz
 Source2:        https://mailfud.org/iXhash2/%{IXHASH}.tar.gz
@@ -107,12 +107,14 @@ BuildRequires:  perl(Sys::Hostname)
 BuildRequires:  perl(Time::HiRes)
 BuildRequires:  perl(Time::Local)
 # optional, but want them for build (test)
+BuildRequires:  perl(Archive::Zip)
 BuildRequires:  perl(BSD::Resource)
 BuildRequires:  perl(DBI)
 BuildRequires:  perl(Encode::Detect)
 BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(IO::Socket::INET6)
 BuildRequires:  perl(IO::Socket::SSL)
+BuildRequires:  perl(IO::String)
 BuildRequires:  perl(IP::Country)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Mail::SPF)
@@ -255,6 +257,15 @@ install -D -m 644 %{S:19} %{buildroot}/%{_unitdir}
 %service_add_post spamd.service spampd.service sa-update.timer
 %{fillup_only -n spamd}
 %{fillup_only -n spampd}
+if [ $1 -gt 1 ]; then
+	# Package upgrade
+	for dir in $(ls -d %{_sharedstatedir}/%{name}/{,compiled/*/}[0-9\.]* 2>/dev/null); do
+		if [ "${dir##*/}" != "%{sa_float}" ]; then
+			rm -rf ${dir}
+		fi
+	done
+	find %{_sharedstatedir}/%{name} -type d -empty -delete 2>/dev/null || :
+fi
 
 %pre
 %service_add_pre spamd.service spampd.service sa-update.timer
@@ -264,6 +275,10 @@ install -D -m 644 %{S:19} %{buildroot}/%{_unitdir}
 
 %postun
 %service_del_postun spamd.service spampd.service sa-update.timer
+if [ $1 -eq 0 ]; then
+	# Package removal
+	rm -rf %{_sharedstatedir}/%{name}
+fi
 
 %files
 %defattr(-,root,root)
@@ -277,6 +292,7 @@ install -D -m 644 %{S:19} %{buildroot}/%{_unitdir}
 %{_unitdir}/spampd.service
 %{_unitdir}/sa-update.service
 %{_unitdir}/sa-update.timer
+%ghost %{_sharedstatedir}/%{name}
 
 %files -n perl-Mail-SpamAssassin -f %{name}.files
 %defattr(-,root,root)
