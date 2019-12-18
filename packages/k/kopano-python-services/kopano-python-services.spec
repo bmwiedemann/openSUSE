@@ -1,6 +1,7 @@
 #
 # spec file for package kopano-python-services
 #
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Kopano B.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,29 +13,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://jira.kopano.io/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Kopano OBS: And if you add new %%package(s), update core:*:dist too
-%define version_unconverted 8.7.83
+%define version_unconverted 9.0.2
 
 Name:           kopano-python-services
-Version:        8.7.83
+Version:        9.0.2
 Release:        0
 Summary:        Python services for Kopano Groupware Core
 License:        AGPL-3.0-only
 Group:          Productivity/Networking/Email/Servers
 URL:            https://kopano.io/
 Source:         kopanocore-%version.tar.xz
-Source3:        kopano-rpmlintrc
+Source3:        %name-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-setuptools >= 3.6
-BuildRequires:  pkgconfig
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
@@ -367,12 +368,10 @@ chown kopano:kopano /var/lib/kopano/spamd 2>/dev/null || :
 
 %files -n kopano-python-utils
 %defattr(-,root,root)
-%_bindir/kopano-set-oof
 %_sbindir/kopano-archiver-*
 %_sbindir/kopano-cachestat
 %_sbindir/kopano-cli
 %_sbindir/kopano-fix-ipm-subtree
-%_sbindir/kopano-localize-folders
 %_sbindir/kopano-mailbox-permissions
 %_sbindir/kopano-recreate-systemfolders
 %_sbindir/kopano-search-upgrade-findroots.py
@@ -380,7 +379,6 @@ chown kopano:kopano /var/lib/kopano/spamd 2>/dev/null || :
 %_mandir/man*/kopano-cachestat.*
 %_mandir/man*/kopano-cli.*
 %_mandir/man*/kopano-mailbox-permissions.*
-%_mandir/man*/kopano-set-oof.*
 %_docdir/kopano-gateway/
 %dir %_docdir/kopano/
 %_docdir/kopano/update-resource-recipients

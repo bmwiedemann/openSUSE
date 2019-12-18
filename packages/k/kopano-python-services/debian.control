@@ -28,8 +28,9 @@ Standards-Version: 3.7.3
 Package: kopano-backup
 Architecture: any
 Depends: ${shlibs:Depends}, ${python3:Depends},
- python3-bsddb3, python3-kopano, kopano-common
+ python3-bsddb3, python3-kopano (= ${binary:Version}), kopano-common-uv (= ${source:Upstream-Version})
 Breaks: kopano-server (<< 8.6.80.621)
+Provides: kopano-backup-uv (= ${source:Upstream-Version})
 Description: Utility to back up and restore Kopano stores
  kopano-backup is a MAPI-level backup/restore tool. It can sync
  complete users/stores to disk using ICS to incrementally sync the
@@ -37,7 +38,12 @@ Description: Utility to back up and restore Kopano stores
 
 Package: kopano-dagent-pytils
 Architecture: any
-Breaks: kopano-dagent (<< 8.7.80.943)
+Depends: ${shlibs:Depends}, ${python3:Depends}, python3-bsddb3,
+ python3-kopano (= ${binary:Version}),
+ python3-kopano-utils (= ${binary:Version})
+Breaks: kopano-dagent (<< 8.7.80.943), kopano-spooler (<<8.7.80.943)
+Enhances: kopano-dagent (>= 8.7.80.943)
+Provides: kopano-dagent-pytils-uv (= ${source:Upstream-Version})
 Description: Additional message handlers for kopano-dagent
  Dagent can execute external scripts for certain message types.
  Included here is a handler that will process meeting request and
@@ -45,7 +51,8 @@ Description: Additional message handlers for kopano-dagent
 
 Package: kopano-migration-pst
 Architecture: any
-Depends: ${shlibs:Depends}, ${python3:Depends}, python3-kopano, kopano-common
+Depends: ${shlibs:Depends}, ${python3:Depends}, python3-kopano (= ${binary:Version}),
+ kopano-common-uv (= ${source:Upstream-Version})
 Breaks: kopano-server (<< 8.6.80.621)
 Description: Utility to import PST files
  kopano-migration-pst is a utility to import PST files into Kopano. As PST
@@ -54,7 +61,8 @@ Description: Utility to import PST files
 
 Package: kopano-presence
 Architecture: any
-Depends: ${shlibs:Depends}, kopano-common, python3-kopano-presence (= ${binary:Version})
+Depends: ${shlibs:Depends}, kopano-common-uv (= ${source:Upstream-Version}),
+ python3-kopano-presence (= ${binary:Version})
 Breaks: kopano-server (<< 8.6.80.621)
 Description: kopano presence daemon
  A daemon for collecting and exporting user presence information
@@ -67,19 +75,22 @@ Description: kopano presence daemon
 
 Package: kopano-python-utils
 Architecture: any
-Depends: ${shlibs:Depends}, ${python3:Depends}, kopano-client,
- python3-bsddb3, python3-kopano
+Depends: ${shlibs:Depends}, ${python3:Depends},
+ kopano-client-uv (= ${source:Upstream-Version}),
+ python3-bsddb3, python3-kopano (= ${binary:Version})
+Provides: kopano-python-utils-uv (= ${source:Upstream-Version})
 Description: Additional Python-based command-line utils for Kopano Core
  Command-line clients to manipulate mailboxes (stores) in various ways.
-Replaces: kopano-server (<< 8.7.81.165)
-Breaks: kopano-server (<< 8.7.81.165)
+Replaces: kopano-server (<< 8.7.81.165), kopano-archiver (<< 8.7.81.165)
+Breaks: kopano-server (<< 8.7.81.165), kopano-archiver (<< 8.7.81.165)
 
 Package: kopano-search
 Architecture: any
-Depends: ${shlibs:Depends}, python3-kopano-search (= ${binary:Version}) | python-kopano-search (= ${binary:Version}),
+Depends: ${shlibs:Depends}, python3-kopano-search (= ${binary:Version}),
  lsb-base, coreutils (>= 5.93), bash (>= 3.0), gawk, w3m,
  xsltproc, poppler-utils, unzip, file, catdoc, xapian-tools
 Breaks: kopano-server (<< 8.6.80.621)
+Provides: kopano-search-uv (= ${source:Upstream-Version})
 Description: Indexed search engine for Kopano Core
  kopano-search creates indexes for messages and attachments per user.
  When this service is running, search queries on the server will use
@@ -89,7 +100,7 @@ Description: Indexed search engine for Kopano Core
 Package: kopano-spamd
 Architecture: any
 Depends: ${shlibs:Depends}, ${python3:Depends},
- python3-bsddb3, python3-kopano
+ python3-bsddb3, python3-kopano (= ${binary:Version})
 Description: ICS-driven spam learning daemon for Kopano/SpamAssassin
  A program which can teach SpamAssassin about spam based upon
  the mails a user has moved to his Kopano junk folder.
@@ -97,7 +108,8 @@ Description: ICS-driven spam learning daemon for Kopano/SpamAssassin
 Package: python3-kopano
 Architecture: all
 Section: python
-Depends: ${shlibs:Depends}, python3-mapi, python3-dateutil, python3-tz, python3-tzlocal, python3-daemon
+Depends: ${shlibs:Depends}, python3-mapi-uv (= ${source:Upstream-Version}),
+ python3-dateutil, python3-tz, python3-tzlocal, python3-daemon
 Recommends: python3-pil
 Description: High-level Python 3 bindings for Kopano
  Object-Oriented Python 3 bindings for Kopano. Uses python3-mapi to
@@ -110,7 +122,7 @@ Section: python
 Depends: ${shlibs:Depends},
  python3-kopano (= ${binary:Version}),
  python3-bsddb3,
- python3-mapi
+ python3-mapi-uv (= ${source:Upstream-Version})
 Replaces: kopano-dagent (<< 8.6.81.496)
 Breaks: kopano-dagent (<< 8.6.81.496)
 Description: Kopano utils modules for Python 3
