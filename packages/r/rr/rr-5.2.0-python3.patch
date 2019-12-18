@@ -1,0 +1,715 @@
+From 7872e55a5af3b136bc219852d4167686f96f9a65 Mon Sep 17 00:00:00 2001
+From: Gabriel Ganne <gabriel.ganne@mindmaze.ch>
+Date: Thu, 6 Sep 2018 14:37:19 +0200
+Subject: [PATCH] python3 support
+
+test: pylint3 -rn -E $(find . -name "*.py")
+
+Should make the code compatible with both python2 and python3.
+Add CMake rule to prefer python 3 over python2
+
+mostly regexes:
+sed -i 's/\<xrange\>/range/g' $(find . -name "*.py")
+sed -i 's/\<iteritems\>/items/g' $(find . -name "*.py")
+sed -i 's/\<iterkeys\>/keys/g' $(find . -name "*.py")
+
+manually transformed print -> print() and import it from the future
+---
+ CMakeLists.txt                          |  4 +---
+ src/assembly_templates.py               |  4 ++--
+ src/chaos-test/harness.py               | 24 +++++++++++++-----------
+ src/syscalls.py                         |  2 +-
+ src/test/break_block.py                 |  2 +-
+ src/test/break_clock.py                 |  2 +-
+ src/test/break_clone.py                 |  2 +-
+ src/test/break_mmap_private.py          |  2 +-
+ src/test/check_syscall_perf_interval.py | 10 ++++++----
+ src/test/clone_interruption_finder.py   |  4 +++-
+ src/test/fxregs.py                      | 10 +++++-----
+ src/test/get_thread_list.py             |  2 +-
+ src/test/mprotect_step.py               |  2 +-
+ src/test/reverse_step_threads_break.py  |  2 +-
+ src/test/signal_numbers.py              |  4 ++--
+ src/test/step_thread.py                 |  2 +-
+ src/test/util.py                        | 18 ++++++++++--------
+ 17 files changed, 51 insertions(+), 45 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5551d57e8..f94b846d6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -222,10 +222,8 @@ if(NOT SECCOMP)
+ endif()
+ 
+ # Check for Python >=2.7 but not Python 3.
++find_package(PythonInterp 3.0 QUIET)
+ find_package(PythonInterp 2.7 REQUIRED)
+-if(PYTHON_VERSION_MAJOR GREATER 2)
+-  message(FATAL_ERROR "Python 3 is not supported, please use Python 2.7.")
+-endif()
+ 
+ execute_process(COMMAND "${PYTHON_EXECUTABLE}" "-c" "# nothing"
+                 RESULT_VARIABLE python_status)
+diff --git a/src/assembly_templates.py b/src/assembly_templates.py
+index 9756b110c..44a1d4b88 100644
+--- a/src/assembly_templates.py
++++ b/src/assembly_templates.py
+@@ -238,14 +238,14 @@ def generate_size_member(byte_array):
+ 
+ def generate(f):
+     # Raw bytes.
+-    for name, template in templates.iteritems():
++    for name, template in templates.items():
+         bytes = template.bytes()
+         f.write('static const uint8_t %s[] = { %s };\n'
+                 % (byte_array_name(name), ', '.join(['0x%x' % b for b in bytes])))
+     f.write('\n')
+ 
+     # Objects representing assembly templates.
+-    for name, template in templates.iteritems():
++    for name, template in templates.items():
+         byte_array = byte_array_name(name)
+         f.write("""class %(class_name)s {
+ public:
+diff --git a/src/chaos-test/harness.py b/src/chaos-test/harness.py
+index 21a5cf033..a14d7f4f7 100755
+--- a/src/chaos-test/harness.py
++++ b/src/chaos-test/harness.py
+@@ -1,5 +1,7 @@
+ #!/usr/bin/env python2
+ 
++from __future__ import print_function
++
+ import sys
+ import multiprocessing
+ import tempfile
+@@ -29,7 +31,7 @@ def run(rr_params):
+                 stdout=out, stderr=out)
+             ret = p.wait()
+         if ret != 0 and ret != GOOD_FAIL:
+-            print "Test %s failed unexpectedly; leaving behind trace in %s"%(name, d)
++            print("Test %s failed unexpectedly; leaving behind trace in %s"%(name, d))
+         out_array = []
+         with open(d + "/out", 'r') as out:
+             for line in out:
+@@ -47,7 +49,7 @@ def safe_exit(code):
+     pool.join()
+     sys.exit(code)
+ 
+-print "Running %d iterations of %s/bin/%s %s without chaos mode"%(sanity_runs, objdir, name, ' '.join(params))
++print("Running %d iterations of %s/bin/%s %s without chaos mode"%(sanity_runs, objdir, name, ' '.join(params)))
+ sanity_failed = 0
+ for r in pool.imap_unordered(run, itertools.repeat([], sanity_runs)):
+     if r[0] == 0:
+@@ -57,11 +59,11 @@ def safe_exit(code):
+         break
+     sanity_failed = sanity_failed + 1
+ if sanity_failed == sanity_runs:
+-    print "PROBLEM: %d runs of %s all failed; not a good chaos mode test"%(sanity_failed, name)
++    print("PROBLEM: %d runs of %s all failed; not a good chaos mode test"%(sanity_failed, name))
+     safe_exit(2)
+-print "Without chaos mode, %d runs of %s failed out of %d"%(sanity_failed, name, sanity_runs)
++print("Without chaos mode, %d runs of %s failed out of %d"%(sanity_failed, name, sanity_runs))
+ 
+-print "Running %d iterations of %s/bin/%s %s in chaos mode"%(runs, objdir, name, ' '.join(params))
++print("Running %d iterations of %s/bin/%s %s in chaos mode"%(runs, objdir, name, ' '.join(params)))
+ failed = 0
+ for r in pool.imap_unordered(run, itertools.repeat(["--chaos"], runs)):
+     if r[0] == 0:
+@@ -70,18 +72,18 @@ def safe_exit(code):
+         safe_exit(r[0])
+         break
+     if failed == 0:
+-        print "First test failure detected, output:"
++        print("First test failure detected, output:")
+         for line in r[1]:
+-            print line,
++            print(line,)
+     failed = failed + 1
+ if failed == 0:
+-    print "PROBLEM: With chaos mode, test %s did not fail in %d runs"%(name, runs)
++    print("PROBLEM: With chaos mode, test %s did not fail in %d runs"%(name, runs))
+     safe_exit(1)
+ 
+-print "With chaos mode, %d runs of %s failed out of %d"%(failed, name, runs)
++print("With chaos mode, %d runs of %s failed out of %d"%(failed, name, runs))
+ if float(failed)/runs < 3*float(sanity_failed)/sanity_runs:
+-    print "PROBLEM: Chaos mode didn't really help!"
++    print("PROBLEM: Chaos mode didn't really help!")
+     safe_exit(3)
+ 
+ safe_exit(0)
+-print
++print()
+diff --git a/src/syscalls.py b/src/syscalls.py
+index a0d3fb5f1..11372169c 100644
+--- a/src/syscalls.py
++++ b/src/syscalls.py
+@@ -1703,7 +1703,7 @@ def __init__(self, **kwargs):
+ epoll_wait_old = UnsupportedSyscall(x64=215)
+ 
+ def _syscalls():
+-    for name, obj in globals().iteritems():
++    for name, obj in globals().items():
+         if isinstance(obj, BaseSyscall):
+             yield name, obj
+ 
+diff --git a/src/test/break_block.py b/src/test/break_block.py
+index 7feaceb1f..d0f7b2c9b 100644
+--- a/src/test/break_block.py
++++ b/src/test/break_block.py
+@@ -3,7 +3,7 @@
+ send_gdb('b breakpoint')
+ expect_gdb('Breakpoint 1')
+ 
+-for i in xrange(2):
++for i in range(2):
+     send_gdb('c')
+     expect_gdb('Breakpoint 1, breakpoint')
+ 
+diff --git a/src/test/break_clock.py b/src/test/break_clock.py
+index 38c40ee34..52369c4c0 100644
+--- a/src/test/break_clock.py
++++ b/src/test/break_clock.py
+@@ -3,7 +3,7 @@
+ send_gdb('b breakpoint')
+ expect_gdb('Breakpoint 1')
+ 
+-for i in xrange(3):
++for i in range(3):
+     send_gdb('c')
+     expect_gdb('Breakpoint 1, breakpoint')
+ 
+diff --git a/src/test/break_clone.py b/src/test/break_clone.py
+index 38c40ee34..52369c4c0 100644
+--- a/src/test/break_clone.py
++++ b/src/test/break_clone.py
+@@ -3,7 +3,7 @@
+ send_gdb('b breakpoint')
+ expect_gdb('Breakpoint 1')
+ 
+-for i in xrange(3):
++for i in range(3):
+     send_gdb('c')
+     expect_gdb('Breakpoint 1, breakpoint')
+ 
+diff --git a/src/test/break_mmap_private.py b/src/test/break_mmap_private.py
+index 38c40ee34..52369c4c0 100644
+--- a/src/test/break_mmap_private.py
++++ b/src/test/break_mmap_private.py
+@@ -3,7 +3,7 @@
+ send_gdb('b breakpoint')
+ expect_gdb('Breakpoint 1')
+ 
+-for i in xrange(3):
++for i in range(3):
+     send_gdb('c')
+     expect_gdb('Breakpoint 1, breakpoint')
+ 
+diff --git a/src/test/check_syscall_perf_interval.py b/src/test/check_syscall_perf_interval.py
+index 7f187e8b8..e091c507b 100644
+--- a/src/test/check_syscall_perf_interval.py
++++ b/src/test/check_syscall_perf_interval.py
+@@ -1,10 +1,12 @@
++from __future__ import print_function
++
+ import sys
+ import re
+ 
+ if len(sys.argv) < 4:
+-    print '''Usage: %s <syscall-name> <perf-counter-name> <expected-perf-events-between-syscalls>
++    print('''Usage: %s <syscall-name> <perf-counter-name> <expected-perf-events-between-syscalls>
+ Exits with status 0 if exactly the expected number of perf events occur between
+-every pair of consecutive system calls of the given type.''' % sys.argv[0]
++every pair of consecutive system calls of the given type.''' % sys.argv[0])
+     sys.exit(2)
+ 
+ syscall = sys.argv[1]
+@@ -27,8 +29,8 @@
+             if m:
+                 v = int(m.group(1))
+                 if last_perfctr_value >= 0 and v - last_perfctr_value != expected_count:
+-                    print "Mismatch: saw %d %ss between %ss (from %d to %d), expected %d" % \
+-                      (v - last_perfctr_value, counter, syscall, last_perfctr_value, v, expected_count)
++                    print("Mismatch: saw %d %ss between %ss (from %d to %d), expected %d" % \
++                      (v - last_perfctr_value, counter, syscall, last_perfctr_value, v, expected_count))
+                     sys.exit(1)
+                 last_perfctr_value = v
+         else:
+diff --git a/src/test/clone_interruption_finder.py b/src/test/clone_interruption_finder.py
+index 9c7e57010..29bceb3b8 100644
+--- a/src/test/clone_interruption_finder.py
++++ b/src/test/clone_interruption_finder.py
+@@ -1,3 +1,5 @@
++from __future__ import print_function
++
+ import sys
+ import re
+ 
+@@ -14,4 +16,4 @@
+         if m:
+             futex_time = m.group(1)
+ 
+-print futex_time
++print(futex_time)
+diff --git a/src/test/fxregs.py b/src/test/fxregs.py
+index 2fabf72e5..915bb9280 100644
+--- a/src/test/fxregs.py
++++ b/src/test/fxregs.py
+@@ -9,11 +9,11 @@
+ 
+ # See fxregs.c for the list of constants that are loaded into the
+ # $st*, $xmm* and $ymm* registers.
+-for i in xrange(8):
++for i in range(8):
+     send_gdb('p $st%d'%(i))
+     expect_gdb(' = %d'%(i + 1))
+ 
+-for i in xrange(8):
++for i in range(8):
+     send_gdb('p $xmm%d.v4_float[0]'%(i))
+     expect_gdb(' = %d'%(i + 10))
+ 
+@@ -21,7 +21,7 @@
+ have_64 = 0 == expect_list([re.compile('i386:x86-64\)'), re.compile('i386\)')])
+ 
+ if have_64:
+-    for i in xrange(8,16):
++    for i in range(8,16):
+         send_gdb('p $xmm%d.v4_float[0]'%(i))
+         expect_gdb(' = %d'%(i + 10))
+ 
+@@ -29,13 +29,13 @@
+ have_AVX = 0 == expect_list([re.compile(' = 1'), re.compile(' = 0')])
+ 
+ if have_AVX:
+-    for i in xrange(8):
++    for i in range(8):
+         send_gdb('p $ymm%d.v8_float[0]'%(i))
+         expect_gdb(' = %d'%(i + 10))
+         send_gdb('p $ymm%d.v8_float[4]'%(i))
+         expect_gdb(' = %d'%((i + 1)%8 + 10))
+     if have_64:
+-        for i in xrange(8,16):
++        for i in range(8,16):
+             send_gdb('p $ymm%d.v8_float[0]'%(i))
+             expect_gdb(' = %d'%(i + 10))
+             send_gdb('p $ymm%d.v8_float[4]'%(i))
+diff --git a/src/test/get_thread_list.py b/src/test/get_thread_list.py
+index 6cb736d69..3da9f3a1f 100644
+--- a/src/test/get_thread_list.py
++++ b/src/test/get_thread_list.py
+@@ -26,7 +26,7 @@
+                     '0x0*70000002 in \?\?'],
+ }
+ 
+-for i in xrange(NUM_THREADS + 1, 1, -1):
++for i in range(NUM_THREADS + 1, 1, -1):
+     # The threads are at the kernel syscall entry, or either the
+     # traced/untraced entry reached through the rr monkeypatched one.
+     # Rarely, non-main threads have been observed to be reordered (i.e. gdb
+diff --git a/src/test/mprotect_step.py b/src/test/mprotect_step.py
+index 79350a752..0ab39929f 100644
+--- a/src/test/mprotect_step.py
++++ b/src/test/mprotect_step.py
+@@ -12,7 +12,7 @@
+ 
+ # step through mprotect() until we reach the system call that
+ # gets performed during replay
+-for i in xrange(0,200):
++for i in range(0,200):
+     send_gdb('stepi')
+     expect_gdb('(rr)')
+ 
+diff --git a/src/test/reverse_step_threads_break.py b/src/test/reverse_step_threads_break.py
+index 1b2c1fb2b..077a55a50 100644
+--- a/src/test/reverse_step_threads_break.py
++++ b/src/test/reverse_step_threads_break.py
+@@ -9,7 +9,7 @@
+ expect_gdb('Breakpoint 2')
+ 
+ send_gdb('set scheduler-locking off')
+-for i in xrange(50):
++for i in range(50):
+   send_gdb('reverse-step')
+ 
+ expect_gdb('Breakpoint 2')
+diff --git a/src/test/signal_numbers.py b/src/test/signal_numbers.py
+index 512a30b4f..3f00b85de 100644
+--- a/src/test/signal_numbers.py
++++ b/src/test/signal_numbers.py
+@@ -34,10 +34,10 @@
+   '#SIGPWR',
+   'SIGSYS']
+ 
+-for sig in xrange(32,65):
++for sig in range(32,65):
+     gdb_signals.append('SIG%d'%sig)
+ 
+-for sig in xrange(1,65):
++for sig in range(1,65):
+     gdb_sig = gdb_signals[sig]
+     if not gdb_sig.startswith('#'):
+         send_gdb('handle %s stop'%gdb_sig)
+diff --git a/src/test/step_thread.py b/src/test/step_thread.py
+index 88559f15e..ad5bf717d 100644
+--- a/src/test/step_thread.py
++++ b/src/test/step_thread.py
+@@ -48,7 +48,7 @@
+     hit_bps[bp] = 1
+     expect_gdb(r'\(rr\)')
+ 
+-for bp in hit_bps.iterkeys():
++for bp in hit_bps.keys():
+     assert hit_bps[bp]
+ 
+ arch = get_exe_arch()
+diff --git a/src/test/util.py b/src/test/util.py
+index 7d3eeeeeb..f88187590 100644
+--- a/src/test/util.py
++++ b/src/test/util.py
+@@ -1,3 +1,5 @@
++from __future__ import print_function
++
+ import pexpect, re, signal, sys, time
+ 
+ __all__ = [ 'expect_gdb', 'send_gdb','expect_rr', 'expect_list',
+@@ -15,16 +17,16 @@ def expect_rr(what):
+     expect(gdb_rr, what)
+ 
+ def failed(why, e=None):
+-    print 'FAILED:', why
++    print('FAILED:', why)
+     if e:
+-        print 'exception:', e
++        print('exception:', e)
+     clean_up()
+     sys.exit(1)
+ 
+ def interrupt_gdb():
+     try:
+         gdb_rr.kill(signal.SIGINT)
+-    except Exception, e:
++    except Exception as e:
+         failed('interrupting gdb', e)
+     expect_gdb('stopped.')
+ 
+@@ -74,9 +76,9 @@ def clean_up():
+             time.sleep(0.1)
+             gdb_rr.close(force=1)
+             gdb_rr = None
+-        except Exception, e:
++        except Exception as e:
+             if iterations < 5:
+-                print "close() failed with '%s', retrying..."%e
++                print("close() failed with '%s', retrying..."%e)
+                 iterations = iterations + 1
+             else:
+                 gdb_rr = None
+@@ -84,7 +86,7 @@ def clean_up():
+ def expect(prog, what):
+     try:
+         prog.expect(what)
+-    except Exception, e:
++    except Exception as e:
+         failed('expecting "%s"'% (what), e)
+ 
+ def get_exe_arch():
+@@ -102,7 +104,7 @@ def get_rr_cmd():
+ def send(prog, what):
+     try:
+         prog.send(what)
+-    except Exception, e:
++    except Exception as e:
+         failed('sending "%s"'% (what), e)
+ 
+ def set_up():
+@@ -111,7 +113,7 @@ def set_up():
+         gdb_rr = pexpect.spawn(*get_rr_cmd(), timeout=TIMEOUT_SEC, logfile=open('gdb_rr.log', 'w'))
+         gdb_rr.delaybeforesend = 0
+         expect_gdb(r'\(rr\)')
+-    except Exception, e:
++    except Exception as e:
+         failed('initializing rr and gdb', e)
+ 
+ set_up()
+From ac6f232c06e403c05eaa23dbf851046dd29fe7a0 Mon Sep 17 00:00:00 2001
+From: Robert O'Callahan <robert@ocallahan.org>
+Date: Tue, 30 Apr 2019 15:31:42 +1200
+Subject: [PATCH] Only use Python3 in cmake
+
+---
+ CMakeLists.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f27d31f7d..e2ed4d7c3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -237,9 +237,7 @@ if(NOT SECCOMP)
+   message(FATAL_ERROR "Couldn't find linux/seccomp.h. You may need to upgrade your kernel.")
+ endif()
+ 
+-# Check for Python >=2.7 but not Python 3.
+-find_package(PythonInterp 3.0 QUIET)
+-find_package(PythonInterp 2.7 REQUIRED)
++find_package(PythonInterp 3.0 REQUIRED)
+ 
+ execute_process(COMMAND "${PYTHON_EXECUTABLE}" "-c" "# nothing"
+                 RESULT_VARIABLE python_status)
+From 26d54fc2157571de678c321b66768848d6a400a3 Mon Sep 17 00:00:00 2001
+From: Robert O'Callahan <robert@ocallahan.org>
+Date: Tue, 30 Apr 2019 15:16:23 +1200
+Subject: [PATCH] Use Python3 to run tests
+
+---
+ src/test/util.py | 6 ++----
+ src/test/util.sh | 2 +-
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/test/util.py b/src/test/util.py
+index f88187590..3d1c44bde 100644
+--- a/src/test/util.py
++++ b/src/test/util.py
+@@ -1,5 +1,3 @@
+-from __future__ import print_function
+-
+ import pexpect, re, signal, sys, time
+ 
+ __all__ = [ 'expect_gdb', 'send_gdb','expect_rr', 'expect_list',
+@@ -110,9 +108,9 @@ def send(prog, what):
+ def set_up():
+     global gdb_rr
+     try:
+-        gdb_rr = pexpect.spawn(*get_rr_cmd(), timeout=TIMEOUT_SEC, logfile=open('gdb_rr.log', 'w'))
++        gdb_rr = pexpect.spawn(*get_rr_cmd(), timeout=TIMEOUT_SEC, encoding='utf-8', logfile=open('gdb_rr.log', 'w'))
+         gdb_rr.delaybeforesend = 0
+-        expect_gdb(r'\(rr\)')
++        expect_gdb('\(rr\)')
+     except Exception as e:
+         failed('initializing rr and gdb', e)
+ 
+diff --git a/src/test/util.sh b/src/test/util.sh
+index 4ee384915..5a807c8ca 100644
+--- a/src/test/util.sh
++++ b/src/test/util.sh
+@@ -242,7 +242,7 @@ function do_ps { psflags=$1
+ # Load the "expect" script to drive replay of the recording of |exe|.
+ function debug { expectscript=$1; replayargs=$2
+     _RR_TRACE_DIR="$workdir" test-monitor $TIMEOUT debug.err \
+-        python2 $TESTDIR/$expectscript.py \
++        python3 $TESTDIR/$expectscript.py \
+         rr $GLOBAL_OPTIONS replay -o-n -x $TESTDIR/test_setup.gdb $replayargs
+     if [[ $? == 0 ]]; then
+         passed
+From d5b61dbaf23fc9c1793f1954ab672ddd2f30624e Mon Sep 17 00:00:00 2001
+From: Robert O'Callahan <robert@ocallahan.org>
+Date: Tue, 30 Apr 2019 14:55:57 +1200
+Subject: [PATCH] Update scripts to Python3
+
+---
+ src/assembly_templates.py | 10 +++++-----
+ src/chaos-test/harness.py |  6 ++----
+ src/generate_rr_page.py   |  6 +++---
+ src/generate_syscalls.py  | 16 +++++++++++-----
+ 4 files changed, 21 insertions(+), 17 deletions(-)
+
+diff --git a/src/assembly_templates.py b/src/assembly_templates.py
+index 44a1d4b88..528e76da4 100644
+--- a/src/assembly_templates.py
++++ b/src/assembly_templates.py
+@@ -1,4 +1,4 @@
+-import StringIO
++from io import StringIO
+ import sys
+ 
+ class RawBytes(object):
+@@ -178,7 +178,7 @@ def byte_array_name(name):
+     return '%s_bytes' % name
+ 
+ def generate_match_method(byte_array, template):
+-    s = StringIO.StringIO()
++    s = StringIO()
+     fields = template.fields()
+     field_types = [f.c_type() for f in fields]
+     field_names = [f.name for f in fields]
+@@ -201,7 +201,7 @@ def generate_match_method(byte_array, template):
+     return s.getvalue()
+ 
+ def generate_substitute_method(byte_array, template):
+-    s = StringIO.StringIO()
++    s = StringIO()
+     fields = template.fields()
+     field_types = [f.c_type() for f in fields]
+     field_names = [f.name for f in fields]
+@@ -223,7 +223,7 @@ def generate_substitute_method(byte_array, template):
+     return s.getvalue()
+ 
+ def generate_field_end_methods(byte_array, template):
+-    s = StringIO.StringIO()
++    s = StringIO()
+     offset = 0
+     for chunk in template.chunks:
+         offset += len(chunk)
+@@ -232,7 +232,7 @@ def generate_field_end_methods(byte_array, template):
+     return s.getvalue()
+ 
+ def generate_size_member(byte_array):
+-    s = StringIO.StringIO()
++    s = StringIO()
+     s.write('  static const size_t size = sizeof(%s);' % byte_array)
+     return s.getvalue()
+ 
+diff --git a/src/chaos-test/harness.py b/src/chaos-test/harness.py
+index a14d7f4f7..aea3f322c 100755
+--- a/src/chaos-test/harness.py
++++ b/src/chaos-test/harness.py
+@@ -1,6 +1,4 @@
+-#!/usr/bin/env python2
+-
+-from __future__ import print_function
++#!/usr/bin/env python3
+ 
+ import sys
+ import multiprocessing
+@@ -42,7 +40,7 @@ def run(rr_params):
+ 
+ # Use only half the cores. Otherwise tests will induce starvation
+ # themselves; we want to measure starvation induced by rr.
+-pool = multiprocessing.Pool(max(1, multiprocessing.cpu_count()/2))
++pool = multiprocessing.Pool(max(1, round(multiprocessing.cpu_count()/2)))
+ 
+ def safe_exit(code):
+     pool.terminate()
+diff --git a/src/generate_rr_page.py b/src/generate_rr_page.py
+index ea24b979f..b30838e95 100755
+--- a/src/generate_rr_page.py
++++ b/src/generate_rr_page.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ 
+ import io
+ import os
+@@ -74,7 +74,7 @@ def main(argv):
+     base = os.path.basename(filename)
+ 
+     if os.access(filename, os.F_OK):
+-        with open(filename, 'r') as f:
++        with open(filename, 'rb') as f:
+             before = f.read()
+     else:
+         before = ""
+@@ -85,7 +85,7 @@ def main(argv):
+     stream.close()
+ 
+     if before != after:
+-        with open(filename, 'w') as f:
++        with open(filename, 'wb') as f:
+             f.write(after)
+ 
+ if __name__ == '__main__':
+diff --git a/src/generate_syscalls.py b/src/generate_syscalls.py
+index c2692f298..f6e8f907c 100755
+--- a/src/generate_syscalls.py
++++ b/src/generate_syscalls.py
+@@ -1,16 +1,22 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ 
+ import assembly_templates
+-import StringIO
++from io import StringIO
+ import os
+ import string
+ import sys
+ import syscalls
+ 
++def arch_syscall_number(arch, syscall):
++    s = getattr(syscall[1], arch)
++    if s == None:
++        s = -1
++    return s
++
+ def write_syscall_enum(f, arch):
+     f.write("enum Syscalls {\n")
+     undefined_syscall = -1
+-    for name, obj in sorted(syscalls.all(), key=lambda x: getattr(x[1], arch)):
++    for name, obj in sorted(syscalls.all(), key=lambda x: arch_syscall_number(arch, x)):
+         syscall_number = getattr(obj, arch)
+         if syscall_number is not None:
+             enum_number = syscall_number
+@@ -25,7 +31,7 @@ def write_syscall_enum(f, arch):
+ def write_syscall_enum_for_tests(f, arch):
+     f.write("enum Syscalls {\n")
+     undefined_syscall = -1
+-    for name, obj in sorted(syscalls.all(), key=lambda x: getattr(x[1], arch)):
++    for name, obj in sorted(syscalls.all(), key=lambda x: arch_syscall_number(arch, x)):
+         syscall_number = getattr(obj, arch)
+         if syscall_number is not None:
+             enum_number = syscall_number
+@@ -154,7 +160,7 @@ def main(argv):
+     else:
+         before = ""
+ 
+-    stream = StringIO.StringIO()
++    stream = StringIO()
+     generators_for[base](stream)
+     after = stream.getvalue()
+     stream.close()
+From 4452c7f4f5be41e6df155682b42b4336a67ddf5c Mon Sep 17 00:00:00 2001
+From: z <z@z.me>
+Date: Sun, 8 Dec 2019 15:09:35 +0800
+Subject: [PATCH] remove dependency to python2
+
+---
+ src/test/check_syscall_perf_interval.py | 2 --
+ src/test/clone_interruption.run         | 2 +-
+ src/test/clone_interruption_finder.py   | 2 --
+ src/test/cpuid.run                      | 2 +-
+ 4 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/src/test/check_syscall_perf_interval.py b/src/test/check_syscall_perf_interval.py
+index e091c507b..8357f0382 100644
+--- a/src/test/check_syscall_perf_interval.py
++++ b/src/test/check_syscall_perf_interval.py
+@@ -1,5 +1,3 @@
+-from __future__ import print_function
+-
+ import sys
+ import re
+ 
+diff --git a/src/test/clone_interruption.run b/src/test/clone_interruption.run
+index 22aa4399c..f775e1e88 100644
+--- a/src/test/clone_interruption.run
++++ b/src/test/clone_interruption.run
+@@ -4,5 +4,5 @@ RECORD_ARGS="-c100"
+ record $TESTNAME
+ # Don't use pipes here since we need 'debug' to run in the same bash process
+ declare -i stop_at_event=`rr --suppress-environment-warnings dump $workdir/latest-trace | \
+-    python2 $TESTDIR/clone_interruption_finder.py`
++    python $TESTDIR/clone_interruption_finder.py`
+ debug clone_interruption "-g $stop_at_event"
+diff --git a/src/test/clone_interruption_finder.py b/src/test/clone_interruption_finder.py
+index 29bceb3b8..d0bfcde84 100644
+--- a/src/test/clone_interruption_finder.py
++++ b/src/test/clone_interruption_finder.py
+@@ -1,5 +1,3 @@
+-from __future__ import print_function
+-
+ import sys
+ import re
+ 
+diff --git a/src/test/cpuid.run b/src/test/cpuid.run
+index 438e98909..0201375fd 100644
+--- a/src/test/cpuid.run
++++ b/src/test/cpuid.run
+@@ -14,7 +14,7 @@ if [[ $@ == -n ]]; then
+ 	    ;;
+     esac
+     rr --suppress-environment-warnings dump $workdir/latest-trace | \
+-        python2 $TESTDIR/check_syscall_perf_interval.py $syscall rbc 2
++        python $TESTDIR/check_syscall_perf_interval.py $syscall rbc 2
+     if [[ $? != 0 ]]; then
+         failed "expected 2 rbcs between each geteuid32 syscall"
+     fi

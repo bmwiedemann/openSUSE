@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Tue Dec 17 16:03:16 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Add rr-5.2.0-python3.patch
+  We remove Python2 soon.
+  Backport Python3 changes planned for next release only.
+  See https://github.com/mozilla/rr/issues/2390
+
+-------------------------------------------------------------------
+Tue Dec 17 10:37:38 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Add patches to fix build:
+  * rr-5.2.0-cpp14.patch
+    See https://github.com/mozilla/rr/issues/2391
+  * rr-5.2.0-remove-ucontext.patch
+    See https://github.com/mozilla/rr/issues/2269
+
+-------------------------------------------------------------------
+Wed Oct  9 11:50:14 UTC 2019 - mvetter@suse.com
+
+- Update to 5.2.0:
+  * Improvements to chaos mode.
+  * Improvements to trace portability:
+    https://robert.ocallahan.org/2018/04/cpuid-features-xsave-and-rr-trace.html
+  * Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Dec 14 08:48:12 UTC 2017 - mvetter@suse.com
+
+- Update to 5.1.0:
+  * gdb info proc map supported
+  * Maintenance update to handle issues arising from Ubuntu 17.10 and Fedora 27
+  * Various bugs fixed
+- Remove rr-shared.patch: contained in upstream
+
+-------------------------------------------------------------------
+Mon Nov 27 08:09:33 UTC 2017 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+- Use more cmake macros:
+  * rr-shared.patch
+  * Disable building of tests as it breaks with our optflags
+- Fix dependency on /usr/bin/bash
+- Build also 32-bit support
+- Limit to building on supported platforms
+
+-------------------------------------------------------------------
+Wed Oct 25 12:57:19 UTC 2017 - mvetter@suse.com
+
+- Update to 5.0.0:
+  Introduction of Cap'n Proto to stabilize the recording format.
+  Recordings created in this rr release should be replayable in any
+  future rr release.
+  New rr pack command makes recordings self-contained.
+  Recordings can be made on one machine and replayed on a different
+  machine by trapping CPUID instructions when supported on the replay
+  machine.
+  Brotli compression for smaller traces and lower recording overhead.
+  rr replay command line argument -- can be followed by any
+  number of arguments to be passed to the debugger.
+  rr now chooses replay as the default subcommand if
+  the first argument is a directory.
+  Performance improvements.
+  Syscall support expanded.
+  Many bugs fixed.
+- Remove: assert_typos.patch and major-minor-macro.patch
+
+-------------------------------------------------------------------
+Thu Apr 13 17:51:39 UTC 2017 - mvetter@suse.com
+
+- Use regular make_install macro. No build directory here.
+
+-------------------------------------------------------------------
+Fri Mar 17 20:16:38 UTC 2017 - mvetter@suse.com
+
+- Add assert_typos.patch:
+  Fixes some typos in the tests.
+
+-------------------------------------------------------------------
+Fri Mar 17 18:16:18 UTC 2017 - mvetter@suse.com
+
+- Add major-minor-macro.patch:
+  With new glibc version we need to include sys/sysmacros.h
+  explicitly.
+
+-------------------------------------------------------------------
+Tue Mar  7 15:43:22 UTC 2017 - mvetter@suse.com
+
+- Initial version of 4.5.0 for openSUSE
