@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Don't use nullptr as flag. Make it compile against qt5.15
+  * Make sure to execute test with english lang
+  * Document Notifiers setting
+  * Only create a session config when actually restoring a session
+  * kwriteconfig: add delete option
+  * Add KPropertySkeletonItem
+  * Prepare KConfigSkeletonItem to allow inheriting its private class
+
+-------------------------------------------------------------------
 Sun Nov  3 15:46:52 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
