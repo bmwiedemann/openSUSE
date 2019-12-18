@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * [KColorScheme] Make order of decoration colors match DecorationRole enum
+  * [KColorScheme] Fix mistake in NShadeRoles comment
+  * [KColorScheme/KStatefulBrush] Switch hardcoded numbers for enum items
+  * [KColorScheme] Add items to ColorSet and Role enums for the total number of items
+  * Remove unused include
+  * KConfigWidgets: port away from KF5 deprecated API
+  * Register KKeySequenceWidget to KConfigDialogManager
+  * Adjust KCModule to also channel information about defaults
+
+-------------------------------------------------------------------
 Sun Nov  3 15:46:52 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
