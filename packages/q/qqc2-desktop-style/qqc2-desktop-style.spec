@@ -1,7 +1,7 @@
 #
 # spec file for package qqc2-desktop-style
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.64
+%define _tar_path 5.65
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.64.0
+Version:        5.65.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -91,6 +91,8 @@ Usually not needed as it is only a runtime dependency.
 %{_kf5_qmldir}/org/kde/qqc2desktopstyle/
 
 %files devel
+%{_kf5_libdir}/cmake/KF5QQC2DesktopStyle/
+# Legacy alias with typo...
 %{_kf5_libdir}/cmake/KF5QQC2DeskopStyle/
 
 %changelog
