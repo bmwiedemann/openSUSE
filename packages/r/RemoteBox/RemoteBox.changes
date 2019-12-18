@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Dec 18 10:09:25 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.7 version
+  - RemoteBox now requires VirtualBox 6.1.x
+  - VirtualBox now requires hardware virtualization and no longer 
+    supports software virtualization. Removed associated options
+    from RemoteBox.
+  - Removed option of setting the video side-channel quality for an
+    RDP connection. This option is largely unsupported by RDP 
+    clients and not particularly useful.
+  - Added support for the Virtio-SCSI controller
+  - Added support for the AMD PCNet-ISA/NE2100 network card
+  - Added support for nested hardware virtualization (VT-x/AMD-V)
+    for supported processors
+  - Added toolbar buttons in the VMM to create new hard disk 
+    images, new floppy disk images (from 360K to 2.88MB) and move 
+    media to new locations
+  - Newly created floppy disk images can be optionally 
+    pre-formatted with FAT12
+  - Added a menu option when attached storage for creating a new
+    floppy disk image and automatically attaching it
+  - Added option to specify MAC address policy when importing an
+    appliance
+  - Added options to specify MAC address policy and include ISO
+    files when exporting an appliance
+  - Added options to Keep disk UUIDs, specify MAC policy and keep
+    disk names when cloning a guest
+  - Added OS icon for Windows 2019 64bit
+  - Rewrote the copy and disk conversion code, should be cleaner
+    and faster
+  - Creating a new guest, now uses the ApplyDefaults API call which
+    was broken in previous versions of VirtualBox. This allows 
+    a lot of code cleanups and faster guest creation
+  - Fixed incorrect URL on About window
+  - Various code cleanups
+
+-------------------------------------------------------------------
+Thu Oct 17 12:38:15 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sat Mar 16 15:26:34 UTC 2019 - chri@gallochri.com
 
 - Update to 2.6 version

@@ -163,4 +163,12 @@ reports this as a valid minimum, the guest won't start.
 </comment>
     <requestid>685769</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>302090b0ffe679e7ee0c5ea814395124</srcmd5>
+    <version>2.7</version>
+    <time>1576676841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757739</requestid>
+  </revision>
 </revisionlist>

@@ -23,11 +23,10 @@
 # to remotebox so filter it
 %global __provides_exclude ^perl\\(vboxService\\)
 Name:           RemoteBox
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        A VirtualBox client with remote management
 License:        GPL-2.0-or-later
-Group:          System/Emulators/PC
 URL:            http://knobgoblin.org.uk
 Source0:        http://knobgoblin.org.uk/downloads/%{name}-%{version}.tar.bz2
 Patch0:         RemoteBox-2.6_fix-env-script-interpreter.patch
