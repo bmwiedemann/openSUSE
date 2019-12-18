@@ -5044,6 +5044,7 @@ unsorted:
   - gtk3-branding-upstream 
   - gtk3-devel 
   - gtk3-devel-32bit: [x86_64] 
+  - gtk3-devel-doc 
   - gtk3-immodule-amharic-32bit: [x86_64] 
   - gtk3-immodule-broadway 
   - gtk3-immodule-inuktitut-32bit: [x86_64] 
@@ -7517,8 +7518,8 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSM-devel-32bit: [x86_64] 
   - libSM6-32bit: [x86_64] 
-  - libSPIRV-Tools-suse14 
-  - libSPIRV-Tools-suse14-32bit: [x86_64] 
+  - libSPIRV-Tools-suse15 
+  - libSPIRV-Tools-suse15-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -18509,6 +18510,7 @@ unsorted:
   - python2-flex 
   - python2-flexmock 
   - python2-flickrapi 
+  - python2-flit-core 
   - python2-flower 
   - python2-fluent 
   - python2-fluidity-sm 
@@ -20928,6 +20930,7 @@ unsorted:
   - python3-flexx 
   - python3-flickrapi 
   - python3-flit 
+  - python3-flit-core 
   - python3-flower 
   - python3-fluent 
   - python3-flufl.testing 
@@ -21656,6 +21659,7 @@ unsorted:
   - python3-podcastparser 
   - python3-podman 
   - python3-podman-compose 
+  - python3-poetry 
   - python3-polib 
   - python3-policycoreutils: [i586] 
   - python3-pomegranate 
@@ -22953,6 +22957,7 @@ unsorted:
   - rpmlint-mini 
   - rpmorphan 
   - rpmrebuild 
+  - rr 
   - rrdtool 
   - rrdtool-cached 
   - rrdtool-devel 
@@ -33106,8 +33111,6 @@ unsorted:
   - waffle-devel 
   - wallpapers-openSUSE-extra 
   - wallstreet 
-  - wammu 
-  - wammu-lang 
   - wang-fonts 
   - warewulf-cluster: [x86_64] 
   - warewulf-common 

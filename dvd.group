@@ -1989,6 +1989,7 @@
     <package name="libebml4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libebook-1_2-20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libebook-contacts-1_2-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libebtc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libecal-2_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libecpg6" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-devel -->
@@ -2614,7 +2615,7 @@
     <package name="libpowerman0" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libprocps7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
