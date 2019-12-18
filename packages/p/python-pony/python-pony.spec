@@ -1,7 +1,7 @@
 #
 # spec file for package python-pony
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://ponyorm.com
 Source:         https://files.pythonhosted.org/packages/source/p/pony/pony-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python
 BuildArch:      noarch
-%if 0%{?suse_version} < 1500
-BuildRequires:  python2
-%endif
 %python_subpackages
 
 %description
