@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:18:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * [KCMultiDialog] Remove most special margins handling; it's done in KPageDialog now
+  * KPluginSelector: use new KAboutPluginDialog
+  * Add guard for missing kirigami
+  * Disable the restore defaults button if the KCModule says so
+  * Have KCModuleProxy take care of the defaulted state
+  * Make KCModuleQml conform to the defaulted() signal
+
+-------------------------------------------------------------------
 Sun Nov  3 15:46:50 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.64.0
