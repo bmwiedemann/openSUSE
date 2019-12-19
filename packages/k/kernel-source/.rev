@@ -4908,4 +4908,11 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.4.3 &amp; fixed -base</comment>
     <requestid>757388</requestid>
   </revision>
+  <revision rev="518" vrev="2">
+    <srcmd5>a2b9056379034e2d231c110d810fbc6b</srcmd5>
+    <version>5.3.12</version>
+    <time>1576763186</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 5.3 - https://bugzilla.opensuse.org/show_bug.cgi?id=1159531</comment>
+  </revision>
 </revisionlist>
