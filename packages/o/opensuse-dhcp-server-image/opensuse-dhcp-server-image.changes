@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 09:22:33 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Change the owner of files inside the tarball to root:root
+
+-------------------------------------------------------------------
 Tue Oct 29 09:13:41 CET 2019 - kukuk@suse.de
 
 - Create default dhcpd.conf/dhcpd6.conf files if they don't exist

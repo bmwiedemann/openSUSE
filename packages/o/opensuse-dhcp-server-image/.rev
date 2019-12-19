@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>743808</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4d642d700e311cf21afdecc55bab0c78</srcmd5>
+    <version>1.0.0</version>
+    <time>1576763731</time>
+    <user>dimstar_suse</user>
+    <comment>- Change the owner of files inside the tarball to root:root
+</comment>
+    <requestid>758115</requestid>
+  </revision>
 </revisionlist>
