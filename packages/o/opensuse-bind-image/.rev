@@ -7,4 +7,13 @@
     <comment>For r.o.o/opensuse</comment>
     <requestid>742254</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bce481d6d41ca8a22903ca59ebf5948d</srcmd5>
+    <version>1.0.0</version>
+    <time>1576752793</time>
+    <user>dimstar_suse</user>
+    <comment>- Change the owner of files inside the tarball to root:root
+</comment>
+    <requestid>758114</requestid>
+  </revision>
 </revisionlist>
