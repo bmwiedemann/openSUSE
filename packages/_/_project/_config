@@ -61,7 +61,7 @@ Substitute: kiwi-setup:image python3-kiwi createrepo_c
 Substitute: kiwi-image:tbz   python3-kiwi
 Substitute: kiwi-image:docker python3-kiwi kiwi-image-docker-requires openSUSE-release openSUSE-release-ftp
 
-Substitute: obs:cli_debug_packages gdb vim strace rzsz
+Substitute: obs:cli_debug_packages gdb vim strace 
 
 Prefer: kiwi-filesystem-requires
 Prefer: kiwi-image-docker-requires
