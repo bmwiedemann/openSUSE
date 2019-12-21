@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:36:35 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Thu Nov 23 13:47:23 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

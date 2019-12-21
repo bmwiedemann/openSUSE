@@ -1,7 +1,7 @@
 #
 # spec file for package cntlm
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2007 Scorpio IT, Deidesheim, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,9 +26,9 @@ Name:           cntlm
 Version:        0.92.3
 Release:        0
 Summary:        Fast NTLM authentication proxy with tunneling
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
-Url:            http://cntlm.sourceforge.net/
+URL:            http://cntlm.sourceforge.net/
 Source0:        http://sourceforge.net/projects/cntlm/files/cntlm/cntlm%%20%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.init
 Source2:        %{name}.sysconfig
@@ -47,7 +47,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
 %else
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires(pre):  %fillup_prereq
 %{?systemd_requires}
 %endif
@@ -131,7 +131,8 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || :
 
 %files
 %defattr(-,root,root,-)
-%doc COPYRIGHT LICENSE README VERSION
+%license COPYRIGHT LICENSE
+%doc README VERSION
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %if 0%{?suse_version} < 1230
 %config(noreplace) %{_initddir}/%{name}
