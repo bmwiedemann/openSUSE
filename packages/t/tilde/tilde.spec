@@ -1,7 +1,7 @@
 #
 # spec file for package tilde
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tilde
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        A text editor for the terminal
 License:        GPL-3.0-only
@@ -25,17 +25,19 @@ Group:          Development/Libraries/C and C++
 URL:            https://os.ghalkes.nl/t3/libt3widget.html
 
 #Freecode-URL:	http://freecode.com/projects/tilde
-#Git-Clone:	git://github.com/gphalkes/tilde
+#Git-Clone:	https://github.com/gphalkes/tilde
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
+Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
+Source3:        %name.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  gettext-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libunistring-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libt3config) >= 0.2.6
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libt3config) >= 1.0.0
 BuildRequires:  pkgconfig(libt3highlight) >= 0.4.0
-BuildRequires:  pkgconfig(libt3widget) >= 1.0.0
+BuildRequires:  pkgconfig(libt3widget) >= 1.2.0
 BuildRequires:  pkgconfig(libtranscript) >= 0.2.0
 
 %description
