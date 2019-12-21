@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 19 22:17:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.15.2
+  * Fix off-by-one bug in checking captures in pmatch.
+  * hfst-pmatch2fst now implements eg @include"filename.txt" as a
+    preprocessing stage.
+  * hfst-pmatch2fst now implements Explode() and Implode() in
+    full generality.
+  * hfst-pmatch now allows printing weights (in location mode,
+    with --locate).
+  * Add tool hfst-eliminate-flags.
+  * Allow both escaped and unescaped zeros in multicharacters in
+    all lexc lexicon entries.
+
+-------------------------------------------------------------------
 Thu Aug 22 18:51:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 3.15.0

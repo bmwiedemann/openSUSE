@@ -1,7 +1,7 @@
 #
 # spec file for package hfst
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hfst
-Version:        3.15.0
+Version:        3.15.2
 Release:        0
 Summary:        Helsinki Finite-State Transducer Technology
 License:        GPL-3.0-or-later AND GPL-3.0-only AND GPL-2.0-or-later AND GPL-2.0-only AND GPL-3.0-only AND Apache-2.0
@@ -71,12 +71,12 @@ Group:          System/Libraries
 OpenFst is a library for constructing, combining, optimizing, and
 searching weighted finite-state transducers (FSTs).
 
-%package -n libhfst52
+%package -n libhfst53
 Summary:        Helsinki Finite-State Transducer Technology Libraries
 License:        GPL-3.0-only
 Group:          System/Libraries
 
-%description -n libhfst52
+%description -n libhfst53
 The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analyzers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
@@ -97,7 +97,7 @@ technology.
 Summary:        Development files for the Helsinki Finite-State Transducer
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Requires:       libhfst52 = %version
+Requires:       libhfst53 = %version
 
 %description devel
 The Helsinki Finite-State Transducer software is intended for the
@@ -127,8 +127,8 @@ rm -f "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %postun -n libfoma-hfst0 -p /sbin/ldconfig
 %post   -n libfst-hfst0 -p /sbin/ldconfig
 %postun -n libfst-hfst0 -p /sbin/ldconfig
-%post   -n libhfst52 -p /sbin/ldconfig
-%postun -n libhfst52 -p /sbin/ldconfig
+%post   -n libhfst53 -p /sbin/ldconfig
+%postun -n libhfst53 -p /sbin/ldconfig
 %post   -n libsfst-hfst0 -p /sbin/ldconfig
 %postun -n libsfst-hfst0 -p /sbin/ldconfig
 
@@ -145,8 +145,8 @@ rm -f "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %_libdir/libfst-hfst.so.0*
 %doc back-ends/openfst/COPYING
 
-%files -n libhfst52
-%_libdir/libhfst.so.52*
+%files -n libhfst53
+%_libdir/libhfst.so.53*
 
 %files -n libsfst-hfst0
 %_libdir/libsfst-hfst.so.0*
