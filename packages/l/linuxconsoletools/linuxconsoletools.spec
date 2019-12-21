@@ -1,7 +1,7 @@
 #
 # spec file for package linuxconsoletools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,15 @@ Release:        0
 Summary:        A set of utilities for joysticks
 License:        GPL-2.0-or-later
 Group:          Hardware/Joystick
-Url:            http://sourceforge.net/projects/linuxconsole/
+URL:            http://sourceforge.net/projects/linuxconsole/
 Source0:        http://sourceforge.net/projects/linuxconsole/files/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Port-ffmvforce-to-SDL2-some-bugfixes.patch
 BuildRequires:  libSDL2-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-devel
 BuildRequires:  udev
+BuildRequires:  pkgconfig(libsystemd)
 # moved in 13.2
 Provides:       input-utils = 2007.06.22
 Obsoletes:      input-utils < 2007.06.22
