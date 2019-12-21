@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 21 00:57:27 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Use packaged service file not the one in the repo (the one in the repo is
+  completely broken for openSUSE).
+
+-------------------------------------------------------------------
+Fri Dec 20 18:09:31 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.7.2.
+
+  * Fix a regression introduced in Synapse 1.7.1 which caused errors when
+    attempting to backfill rooms over federation.
+  * Fix a bug introduced in Synapse 1.7.0 which caused an error on startup when
+    upgrading from versions before 1.3.0.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Wed Dec 18 12:02:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 1.7.1.

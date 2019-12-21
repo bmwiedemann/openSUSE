@@ -44,7 +44,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -172,7 +172,7 @@ mkdir -p %{buildroot}%{_rundir}/%{pkgname}
 # system configuration.
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{pkgname}
-install -D -m 0644 contrib/systemd/%{pkgname}.service %{buildroot}%{_unitdir}/%{pkgname}.service
+install -D -m 0644 %{S:50} %{buildroot}%{_unitdir}/%{pkgname}.service
 
 # User directory.
 install -d -m 0755 %{buildroot}%{_rundir}/%{pkgname}
