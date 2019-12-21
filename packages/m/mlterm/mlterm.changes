@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Dec 19 10:15:25 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.8.9
+  * Support zmodem. (See doc/en/README.tarnsfer)
+  * Add "send_file" and "zmodem_start" to OSC 5379.
+  * Add receive_directory / --recvdir option.
+  * Support xdg-shell-v6 (unstable) on wayland.
+  * Support copy&paste via X11 primary selection on wayland.
+  * Hide the mouse cursor in inputting keys by default on xlib and win32.
+  * ~/.mlterm/font accepts UTF-8 on windows.
+  * Change the default value of "font_size_range" option from 1-100 to 1-10000.
+  * Clear a window and scroll out all lines on resizing only if
+    the value of --sr / "scroll_on_resizing" option is true.
+  * Set _NET_WM_PID property.
+  * Revive -N/"app_name" option which sets WM_CLASS property.
+    (WM_CLASS was disabled at 3.8.6)
+  * Add a percent or number argument without '+' and '-' to "vresize_screen" and
+    "hresize_screen" of OSC 5379.
+  * Add "RESET" (which resets the parser of mlterm) as a shortcut key.
+  * Add vte 0.58 API symbols to libvte compatible library.
+  * Merge patches:
+    https://bitbucket.org/arakiken/mlterm/pull-requests/5/fix-for-wscons-framebuffer/diff
+    https://sourceforge.net/p/mlterm/patches/24/
+  * Bug fixes:
+    Fix memory leaks of libptymosh.so
+    Fix https://sourceforge.net/p/mlterm/mailman/message/36633222/ (Enbugged at 3.8.8)
+    Fix segfault of mlterm for java by race condition.
+    Fix unexpected invalidation of --mdi=false option. (Enbugged at 3.8.8)
+    Fix uninitialized memory access of mlimgloader.exe for win32.
+    Fix broken images of some sixel graphics. (Enbugged at 3.8.5)
+  * Support Haiku OS. (Experimental)
+    (Execute ./configure with --with-gui=beos option.) (See doc/en/README.beos)
+  * Support "[font family]:style=..." format in aafont or font-fb config file.
+  * Support mosh. (Experimental) (See doc/en/README.mosh)
+    (Don't distribute libptymosh in binary format.)
+  * Clear a window and scroll out all lines if the size of a window decreases
+    and some characters in it disappear.
+  * Support "%s" (replaced by selected strings) in "exesel:..." in ~/.mlterm/key.
+  * Add local_echo_wait / --lew option.
+  * Remove libind_tamil.so because it is very buggy.
+  * Change the default shortcut key of INSERT_SELECTION from Shift+Insert to
+    Command+v on MacOSX and iOS.
+  * Skip \r in configuration files.
+  * Start scp by Shift+Drag&Drop on not only xlib and win32 but also wayland, sdl2
+    and cocoa. (Command+Drag&Drop on cocoa.)
+  * Change the default value of "font_size_range" option from 6-30 to 1-100.
+  * Add vte 0.56.0 API symbols to libvte compatible library.
+  * Bug fixes:
+    Fix https://sourceforge.net/p/mlterm/mailman/message/36472061/
+    Fix https://sourceforge.net/p/mlterm/mailman/message/36513313/
+    Fix https://sourceforge.net/p/mlterm/bugs/79/
+    Fix segfault in processing illegal sixel sequence.
+    Fix invalidation of DECDWL on cairo. (Enbugged at 3.8.6)
+    Fix handling ISCII fonts on cairo and xft. (Improve showing bengali characters.)
+    Fix screen corruption (http://twitter.com/Cj_bc_sd/status/1088111309223161857)
+    on MacOSX 10.14. (Thanks to @Cj_bc_sd)
+    Fix segfault in showing an input method window. (Thanks to @isaki68k)
+- modified patches
+  % etc.patch (refreshed)
+  % mlterm-cast.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Dec 28 18:38:52 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
 
 - updated to 3.8.7

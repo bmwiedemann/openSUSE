@@ -609,4 +609,41 @@
   % etc.patch</comment>
     <requestid>661858</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e89c319709e70725540f6190909ca5d3</srcmd5>
+    <version>3.8.9</version>
+    <time>1576927821</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.8.9
+  * Support zmodem. (See doc/en/README.tarnsfer)
+  * Add &quot;send_file&quot; and &quot;zmodem_start&quot; to OSC 5379.
+  * Add receive_directory / --recvdir option.
+  * Support xdg-shell-v6 (unstable) on wayland.
+  * Support copy&amp;paste via X11 primary selection on wayland.
+  * Hide the mouse cursor in inputting keys by default on xlib and win32.
+  * ~/.mlterm/font accepts UTF-8 on windows.
+  * Change the default value of &quot;font_size_range&quot; option from 1-100 to 1-10000.
+  * Clear a window and scroll out all lines on resizing only if
+    the value of --sr / &quot;scroll_on_resizing&quot; option is true.
+  * Set _NET_WM_PID property.
+  * Revive -N/&quot;app_name&quot; option which sets WM_CLASS property.
+    (WM_CLASS was disabled at 3.8.6)
+  * Add a percent or number argument without '+' and '-' to &quot;vresize_screen&quot; and
+    &quot;hresize_screen&quot; of OSC 5379.
+  * Add &quot;RESET&quot; (which resets the parser of mlterm) as a shortcut key.
+  * Add vte 0.58 API symbols to libvte compatible library.
+  * Merge patches:
+    https://bitbucket.org/arakiken/mlterm/pull-requests/5/fix-for-wscons-framebuffer/diff
+    https://sourceforge.net/p/mlterm/patches/24/
+  * Bug fixes:
+    Fix memory leaks of libptymosh.so
+    Fix https://sourceforge.net/p/mlterm/mailman/message/36633222/ (Enbugged at 3.8.8)
+    Fix segfault of mlterm for java by race condition.
+    Fix unexpected invalidation of --mdi=false option. (Enbugged at 3.8.8)
+    Fix uninitialized memory access of mlimgloader.exe for win32.
+    Fix broken images of some sixel graphics. (Enbugged at 3.8.5)
+  * Support Haiku OS. (Experimental)
+    (Execute ./configure with --with-gui=beos option.) (See doc/en/README.beos)</comment>
+    <requestid>758149</requestid>
+  </revision>
 </revisionlist>

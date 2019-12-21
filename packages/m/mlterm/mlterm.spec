@@ -1,7 +1,7 @@
 #
 # spec file for package mlterm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           mlterm
-Version:        3.8.7
+Version:        3.8.9
 Release:        0
 Summary:        Multilingual Terminal Emulator for X
 License:        BSD-3-Clause
 Group:          System/X11/Terminals
-Url:            http://mlterm.sourceforge.net/
+URL:            http://mlterm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/mlterm/01release/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source10:       %{name}.desktop
 Patch0:         etc.patch
@@ -141,6 +141,7 @@ A plugin to use the m17n input methods directly from mlterm.
 rm -rf doc/{en,ja}/*win32
 
 %build
+export INSTALL_OPT='-m 755'
 %configure \
   --disable-static \
   --libexecdir=%{_libdir}/mlterm \
@@ -219,12 +220,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/mlterm/libind_malayalam.so
 %{_libdir}/mlterm/libind_oriya.so
 %{_libdir}/mlterm/libind_punjabi.so
-%{_libdir}/mlterm/libind_tamil.so
 %{_libdir}/mlterm/libind_telugu.so
 %{_libdir}/mlterm/libotl.so
 %{_libdir}/mlterm/libpixmap_engine.so
 %{_libdir}/mlterm/libptyssh.so
 %{_libdir}/mlterm/libtype_cairo.so
+%{_libdir}/mlterm/libzmodem.so
 %{_libdir}/mlterm/mlterm/mlimgloader
 %{_libdir}/mlterm/mlterm/mlconfig
 %{_libdir}/mlterm/mlterm/mlmenu
