@@ -22,12 +22,12 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           abseil-cpp
-Version:        20190605
+Version:        20190808
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
 Url:            https://abseil.io/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  bazel-rules-cc-source
 BuildRequires:  bazel-workspaces
@@ -120,6 +120,8 @@ tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{_libdir}/libabsl_config.so.0
 %{_libdir}/libabsl_debugging_internal.so.0
 %{_libdir}/libabsl_demangle_internal.so.0
+%{_libdir}/libabsl_distribution_test_util.so.0
+%{_libdir}/libabsl_distributions.so.0
 %{_libdir}/libabsl_dynamic_annotations.so.0
 %{_libdir}/libabsl_examine_stack.so.0
 %{_libdir}/libabsl_exception_safety_testing.so.0
@@ -135,15 +137,25 @@ tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{_libdir}/libabsl_leak_check.so.0
 %{_libdir}/libabsl_leak_check_api_disabled_for_testing.so.0
 %{_libdir}/libabsl_leak_check_api_enabled_for_testing.so.0
+%{_libdir}/libabsl_log_severity.so.0
 %{_libdir}/libabsl_malloc_internal.so.0
 %{_libdir}/libabsl_marshalling.so.0
 %{_libdir}/libabsl_mutex_benchmark_common.so.0
+%{_libdir}/libabsl_nanobenchmark.so.0
 %{_libdir}/libabsl_parse.so.0
 %{_libdir}/libabsl_per_thread_sem_test_common.so.0
+%{_libdir}/libabsl_pool_urbg.so.0
 %{_libdir}/libabsl_pow10_helper.so.0
+%{_libdir}/libabsl_randen.so.0
+%{_libdir}/libabsl_randen_hwaes.so.0
+%{_libdir}/libabsl_randen_hwaes_impl.so.0
+%{_libdir}/libabsl_randen_slow.so.0
 %{_libdir}/libabsl_raw_hash_set.so.0
 %{_libdir}/libabsl_registry.so.0
 %{_libdir}/libabsl_scoped_set_env.so.0
+%{_libdir}/libabsl_seed_gen_exception.so.0
+%{_libdir}/libabsl_seed_material.so.0
+%{_libdir}/libabsl_seed_sequences.so.0
 %{_libdir}/libabsl_spinlock_benchmark_common.so.0
 %{_libdir}/libabsl_spinlock_test_common.so.0
 %{_libdir}/libabsl_spinlock_wait.so.0
@@ -159,6 +171,7 @@ tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{_libdir}/libabsl_time.so.0
 %{_libdir}/libabsl_time_zone.so.0
 %{_libdir}/libabsl_usage.so.0
+%{_libdir}/libabsl_usage_internal.so.0
 
 %files devel
 %{_includedir}/absl
@@ -171,6 +184,8 @@ tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{_libdir}/libabsl_config.so
 %{_libdir}/libabsl_debugging_internal.so
 %{_libdir}/libabsl_demangle_internal.so
+%{_libdir}/libabsl_distribution_test_util.so
+%{_libdir}/libabsl_distributions.so
 %{_libdir}/libabsl_dynamic_annotations.so
 %{_libdir}/libabsl_examine_stack.so
 %{_libdir}/libabsl_exception_safety_testing.so
@@ -186,15 +201,25 @@ tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{_libdir}/libabsl_leak_check.so
 %{_libdir}/libabsl_leak_check_api_disabled_for_testing.so
 %{_libdir}/libabsl_leak_check_api_enabled_for_testing.so
+%{_libdir}/libabsl_log_severity.so
 %{_libdir}/libabsl_malloc_internal.so
 %{_libdir}/libabsl_marshalling.so
+%{_libdir}/libabsl_nanobenchmark.so
 %{_libdir}/libabsl_mutex_benchmark_common.so
 %{_libdir}/libabsl_parse.so
 %{_libdir}/libabsl_per_thread_sem_test_common.so
+%{_libdir}/libabsl_pool_urbg.so
 %{_libdir}/libabsl_pow10_helper.so
+%{_libdir}/libabsl_randen.so
+%{_libdir}/libabsl_randen_hwaes.so
+%{_libdir}/libabsl_randen_hwaes_impl.so
+%{_libdir}/libabsl_randen_slow.so
 %{_libdir}/libabsl_raw_hash_set.so
 %{_libdir}/libabsl_registry.so
 %{_libdir}/libabsl_scoped_set_env.so
+%{_libdir}/libabsl_seed_gen_exception.so
+%{_libdir}/libabsl_seed_material.so
+%{_libdir}/libabsl_seed_sequences.so
 %{_libdir}/libabsl_spinlock_benchmark_common.so
 %{_libdir}/libabsl_spinlock_test_common.so
 %{_libdir}/libabsl_spinlock_wait.so
@@ -210,6 +235,7 @@ tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %{_libdir}/libabsl_time.so
 %{_libdir}/libabsl_time_zone.so
 %{_libdir}/libabsl_usage.so
+%{_libdir}/libabsl_usage_internal.so
 
 %files source
 %{src_install_dir}
