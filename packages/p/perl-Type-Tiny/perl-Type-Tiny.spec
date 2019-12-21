@@ -17,7 +17,7 @@
 
 
 Name:           perl-Type-Tiny
-Version:        1.006000
+Version:        1.008000
 Release:        0
 %define cpan_name Type-Tiny
 Summary:        Tiny, yet Moo(se)-compatible type constraint
@@ -31,7 +31,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Exporter::Tiny) >= 1.000000
-BuildRequires:  perl(Test::More) >= 0.96
 Requires:       perl(Exporter::Tiny) >= 1.000000
 Recommends:     perl(Devel::LexAlias) >= 0.05
 Recommends:     perl(Devel::StackTrace)
@@ -43,14 +42,11 @@ Recommends:     perl(Type::Tiny::XS) >= 0.016
 %{perl_requires}
 
 %description
-Type::Tiny is a tiny class for creating Moose-like type constraint objects
+This documents the internals of the Type::Tiny class. Type::Tiny::Manual is
+a better starting place if you're new.
+
+Type::Tiny is a small class for creating Moose-like type constraint objects
 which are compatible with Moo, Moose and Mouse.
-
-Maybe now we won't need to have separate MooseX, MouseX and MooX versions
-of everything? We can but hope...
-
-This documents the internals of Type::Tiny. Type::Tiny::Manual is a better
-starting place if you're new.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
@@ -69,7 +65,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes COPYRIGHT CREDITS doap.ttl examples NEWS README TODO
+%doc Changes CONTRIBUTING COPYRIGHT CREDITS doap.ttl examples NEWS README
 %license LICENSE
 
 %changelog
