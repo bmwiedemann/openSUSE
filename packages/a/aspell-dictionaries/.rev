@@ -344,4 +344,19 @@
 Why exists a seperate package aspell-de? (forwarded request 613040 from ecsos)</comment>
     <requestid>613421</requestid>
   </revision>
+  <revision rev="48" vrev="51">
+    <srcmd5>e6b6daf0a0d2d153294a8a14b5e4e20e</srcmd5>
+    <version>unknown</version>
+    <time>1576927879</time>
+    <user>dimstar_suse</user>
+    <comment>- removing Novell residues
+- update:
+  . da    1.6.36
+  . pt_PT 20190329
+- deleted patches
+  - aspell-dictionaries-Novellwords_extra_dict.patch (abandoned)
+- deleted sources
+  - Nwordlist.tgz (abandoned)</comment>
+    <requestid>758328</requestid>
+  </revision>
 </revisionlist>
