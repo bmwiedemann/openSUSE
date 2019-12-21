@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">bazel-rules-proto</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">b0cc14be5da05168b01db282fe93bdf17aa2b9f4</param>
+    <param name="revision">97d8af4dc474595af3900dd85cb3a29ad28cc313</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

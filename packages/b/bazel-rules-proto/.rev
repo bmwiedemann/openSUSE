@@ -16,4 +16,15 @@
     <comment></comment>
     <requestid>742606</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd064c9523a8906c623f6a7eff71adf0</srcmd5>
+    <version>20190801</version>
+    <time>1576928022</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 20190801
+  * Add CODEOWNERS for rules_proto
+  * [docs] Add reference to automatic buildifier fix
+  * Fix issues to get CI to green</comment>
+    <requestid>758516</requestid>
+  </revision>
 </revisionlist>

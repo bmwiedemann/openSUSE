@@ -19,7 +19,7 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-rules-proto
-Version:        20190719
+Version:        20190801
 Release:        0
 Summary:        Bazel build rules for Protocol Buffers
 License:        Apache-2.0
