@@ -87,4 +87,12 @@
     - rootless: Fix cgroup creation logic for rootless(Backport to 1.9)</comment>
     <requestid>754685</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cadcbba8bfe86d24856e0ef4dcd7db86</srcmd5>
+    <version>1.9.3</version>
+    <time>1576928032</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>758536</requestid>
+  </revision>
 </revisionlist>

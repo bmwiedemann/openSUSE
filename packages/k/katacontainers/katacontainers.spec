@@ -42,7 +42,7 @@
 %endif
 
 Name:           katacontainers
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Kata Containers OCI container runtime
 License:        Apache-2.0
