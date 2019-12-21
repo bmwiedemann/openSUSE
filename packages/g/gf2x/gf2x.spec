@@ -1,7 +1,7 @@
 #
 # spec file for package gf2x
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           gf2x
-%define lname	libgf2x-1_2
-Version:        1.2
+%define lname	libgf2x3
+Version:        1.3.0
 Release:        0
 Summary:        Library for multiplication over the GF(2) field
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gforge.inria.fr/projects/gf2x/
 
-# Caution: the filename does not matter - the ID (36934) determines which source you get.
-Source:         https://gforge.inria.fr/frs/download.php/36934/%name-%version.tar.gz
-Patch1:         0001-build-fix-version-info-for-libgf2x-after-ABI-break.patch
+# Caution: the filename does not matter - the ID (38243) determines which source you get.
+Source:         https://gforge.inria.fr/frs/download.php/file/38243/gf2x-1.3.0.tar.gz
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  pkg-config
 
 %description
 gf2x is a library for multiplication of polynomials over the
@@ -65,7 +65,8 @@ autoreconf -fi
 %ifarch %ix86
 	--disable-sse2 \
 %endif
-	--disable-pclmul
+	--disable-pclmul \
+	--enable-fft-interface
 make %{?_smp_mflags}
 
 %check
@@ -79,11 +80,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libgf2x-1.2.so
+%_libdir/libgf2x.so.*
+%_libdir/libgf2x-fft.so.*
 %license COPYING
 
 %files devel
 %_includedir/gf2x*
 %_libdir/libgf2x.so
+%_libdir/libgf2x-fft.so
+%_libdir/pkgconfig/*.pc
 
 %changelog
