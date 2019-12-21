@@ -173,4 +173,14 @@
     <comment>1</comment>
     <requestid>314948</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>3e9e0dc6cf444e31058791e627169392</srcmd5>
+    <version>0.3.4</version>
+    <time>1576928429</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop xmlto dependency as it would introduce build cycle
+
+- Modernise spec file</comment>
+    <requestid>757360</requestid>
+  </revision>
 </revisionlist>
