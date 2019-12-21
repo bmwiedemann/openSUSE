@@ -2,7 +2,7 @@
 # spec file for package haguichi
 #
 # Copyright (c) 2018 Alexei Podvalsky <avvissu@yandex.by>
-# Copyright (c) 2013-2018 Stephen Brandt <stephen@stephenbrandt.com>
+# Copyright (c) 2013-2019 Stephen Brandt <stephen@stephenbrandt.com>
 # Copyright (c) 2010-2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 
 %define rdnn    com.github.ztefn.%{name}
 Name:           haguichi
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Hamachi Network Manager
 License:        GPL-3.0-or-later
@@ -58,19 +58,8 @@ restore the Hamachi configuration directory.
 %install
 %meson_install
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{rdnn}.desktop
-%suse_update_desktop_file %{buildroot}%{_sysconfdir}/xdg/autostart/%{rdnn}.autostart.desktop
 %fdupes %{buildroot}/%{_datadir}
 %find_lang %{name}
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license LICENSE
@@ -81,7 +70,6 @@ restore the Hamachi configuration directory.
 %{_datadir}/applications/%{rdnn}.desktop
 %{_datadir}/glib-2.0/schemas/%{rdnn}.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*%{name}*
-%{_sysconfdir}/xdg/autostart/%{rdnn}.autostart.desktop
 
 %files lang -f %{name}.lang
 

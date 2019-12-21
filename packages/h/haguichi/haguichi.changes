@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec 18 21:19:54 UTC 2019 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.4.2
+  * Implemented FileChooserNative for GTK+ version 3.20 and later.
+  * Updated hicolor icons to follow the new GNOME style.
+  * Added Yaru icons in new non-squircle style (big thanks to ubuntujaggers).
+  * Nodes are now drawn using a custom cell renderer with specific style context instead of separate icon resources.
+  * Changed symbol to indicate network ownership from outlined to filled star.
+  * Added support for tilix.
+  * Added stylesheet for Mint themes.
+  * Added stylesheet for Yaru themes.
+  * Added support for Flatpak.
+  * Removed autostart desktop file.
+  * Updated Russian translation.
+  * Other minor improvements and optimizations.
+
+-------------------------------------------------------------------
+Sun Jun 30 15:01:17 UTC 2019 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- Drop post(un) handling for openSUSE < 15 because EOL
+
+-------------------------------------------------------------------
 Wed Nov  7 20:47:36 UTC 2018 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.4.1
