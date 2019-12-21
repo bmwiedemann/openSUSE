@@ -1,7 +1,7 @@
 #
 # spec file for package luabind
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -77,7 +77,12 @@ free
 echo "System limits:"
 ulimit -a
 if test -n "$limit_jobs" -a "$limit_jobs" -gt 1 ; then
+%ifarch ppc64le
+    # tuned arbitrarily to avoid oom
+    mem_per_process=1500
+%else
     mem_per_process=350
+%endif
     max_mem=`LANG=C free -t -m | sed -n "s|^Mem: *\([0-9]*\).*$|\1|p"`
     max_jobs="$(($max_mem / $mem_per_process))"
     test "$limit_jobs" -gt "$max_jobs" && limit_jobs="$max_jobs" echo "Warning: Reducing number of jobs to $max_jobs because of memory limits"
