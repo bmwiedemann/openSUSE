@@ -1,7 +1,7 @@
 #
 # spec file for package mfoc
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,46 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mfoc
-Summary:        Mifare Classic Offline Cracker: key recovery tool for MC cards
-License:        GPL-2.0+
-Group:          Hardware/Other
-Version:        0.10.6
+Version:        0.10.7+git38
 Release:        0
-Url:            http://code.google.com/p/nfc-tools/
+Summary:        Mifare Classic Offline Cracker: key recovery tool for MC cards
+License:        GPL-2.0-or-later
+Group:          Hardware/Other
+URL:            https://github.com/nfc-tools/mfoc
 
-#Git-Clone:	http://code.google.com/p/mfoc/
 Source:         %name-%version.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  pkgconfig
+BuildRequires:  automake
+BuildRequires:  pkg-config
 BuildRequires:  xz
-%if 0%{?suse_version} >= 1140 || 0%{?fedora_version}
 BuildRequires:  pkgconfig(libnfc) >= 1.7
-%else
-BuildRequires:  libnfc-devel >= 1.7
-%endif
 
 %description
 MFOC is a tool to recover keys from Mifare Classic cards.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fi
 %configure
-make %{?_smp_mflags};
+make %{?_smp_mflags}
 
 %install
-b="%buildroot";
-make install DESTDIR="$b";
-rm -f "$b/%_libdir"/*.la;
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
 %files
-%defattr(-,root,root)
 %_bindir/mfoc
 %_mandir/man1/mfoc.1*
 

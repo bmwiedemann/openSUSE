@@ -53,4 +53,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aaca68d7781e353fa04f9a8d76704e95</srcmd5>
+    <version>0.10.7+git38</version>
+    <time>1576927951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0.10.7+git38 (ba072f16f)</comment>
+    <requestid>758362</requestid>
+  </revision>
 </revisionlist>
