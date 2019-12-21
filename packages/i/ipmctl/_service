@@ -13,9 +13,10 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/intel/ipmctl.git</param>
     <param name="filename">ipmctl</param>
-    <param name="versionprefix">01.00.00.3394</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
-    <param name="revision">master_1_0</param>
+    <param name="versionprefix">01.00.00.3474</param>
+    <!--param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param-->
+    <param name="versionformat">+git@TAG_OFFSET@.%h</param>
+    <param name="revision">b6cb581ec69a4452dc8429602a947bc0c625c323</param>
     <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
   </service>

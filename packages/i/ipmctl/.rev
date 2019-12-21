@@ -59,4 +59,12 @@ build-infrastructure (at least for now).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>706518</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c6285287076c370aaa63c06b2627d2e7</srcmd5>
+    <version>01.00.00.3474</version>
+    <time>1576927848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758211</requestid>
+  </revision>
 </revisionlist>
