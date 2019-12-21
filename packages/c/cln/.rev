@@ -169,4 +169,14 @@
 - Drop riscv.patch. Fixed upstream.</comment>
     <requestid>749823</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c56fe8948e275295783621ec425f6c03</srcmd5>
+    <version>1.3.6</version>
+    <time>1576927813</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.3.6
+  * fix build errors
+- run tests</comment>
+    <requestid>758105</requestid>
+  </revision>
 </revisionlist>

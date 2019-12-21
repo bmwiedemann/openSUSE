@@ -17,7 +17,7 @@
 
 
 Name:           cln
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Class Library for Numbers (C++)
 License:        GPL-2.0-or-later
@@ -104,6 +104,9 @@ mkdir -p %{buildroot}%{_docdir}/cln
 make DESTDIR=%{buildroot} MANDIR=%{_mandir} htmldir=%{_docdir}/cln install
 install -m 755 pi %{buildroot}%{_bindir}
 rm -f %{buildroot}%{_libdir}/libcln.la
+
+%check
+make %{?_smp_mflags} check
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
