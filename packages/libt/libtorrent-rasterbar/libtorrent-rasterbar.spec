@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent-rasterbar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 %define _name   libtorrent
-%define sover   9
-%define _version 1_1_13
+%define sover   10
+%define _version 1_2_2
 %bcond_without  python2
 %bcond_without  python3
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        1.1.13
+Version:        1.2.2
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://libtorrent.org/
+URL:            https://libtorrent.org/
 Source:         https://github.com/arvidn/%{_name}/releases/download/%{_name}-%{_version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -83,6 +83,7 @@ with a working example client.
 %endif
 Summary:        Python Bindings for libtorrent-rasterbar
 Group:          Development/Libraries/Python
+
 %if 0%{?suse_version} >= 1500
 # python-libtorrent-rasterbar was last used in openSUSE Leap 42.2.
 Provides:       python-%{name} = %{version}-%{release}
@@ -206,7 +207,6 @@ make check %{?_smp_mflags} V=1 -C build-python3
 %endif
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
-
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %if %{with examples}
