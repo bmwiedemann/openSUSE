@@ -43,6 +43,7 @@ performance of various system and library calls.
 %install
 rm bin-*/*.a
 rm bin-*/*.h
+rm bin-*/*.o
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_libexecdir}/libMicro/bin
 cp bin/* %{buildroot}%{_libexecdir}/libMicro/bin
