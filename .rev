@@ -95,4 +95,12 @@
     <comment>Miscellaneous changes in requires + maven-related fixes</comment>
     <requestid>672368</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3e427221f6b4ea819d696409ab887a0f</srcmd5>
+    <version>1.3.19</version>
+    <time>1576927856</time>
+    <user>dimstar_suse</user>
+    <comment>Invalid download url</comment>
+    <requestid>758261</requestid>
+  </revision>
 </revisionlist>
