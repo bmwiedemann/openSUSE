@@ -1,0 +1,44 @@
+From fc763d07d7f6c81aa4eec58daddcb89ce8894a15 Mon Sep 17 00:00:00 2001
+From: "P. L. Lim" <2090236+pllim@users.noreply.github.com>
+Date: Fri, 25 Oct 2019 09:29:47 -0400
+Subject: [PATCH 1/2] TST: See why test_modify_in_conftest failed
+
+---
+ tests/test_display.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_display.py b/tests/test_display.py
+index 351f988..d9636f5 100644
+--- a/tests/test_display.py
++++ b/tests/test_display.py
+@@ -186,6 +186,7 @@ def pytest_configure(config):
+     """)
+     testdir.inline_run()
+     out, err = capsys.readouterr()
++    assert err == ''
+     lines = extract_package_version_lines(out)
+     assert len(lines) == 6
+     assert lines[0].startswith('Numpy: ')
+
+From 0311f70dff87370a1f0e78546dc01fa354ecadd0 Mon Sep 17 00:00:00 2001
+From: "P. L. Lim" <2090236+pllim@users.noreply.github.com>
+Date: Fri, 25 Oct 2019 09:42:16 -0400
+Subject: [PATCH 2/2] Fix bad import
+
+---
+ tests/test_display.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_display.py b/tests/test_display.py
+index d9636f5..0525a35 100644
+--- a/tests/test_display.py
++++ b/tests/test_display.py
+@@ -176,7 +176,7 @@ def pytest_configure(config):
+ 
+ def test_modify_in_conftest(testdir, capsys):
+     testdir.makeconftest("""
+-    from pytest_astropy.display import PYTEST_HEADER_MODULES, TESTED_VERSIONS
++    from pytest_astropy_header.display import PYTEST_HEADER_MODULES, TESTED_VERSIONS
+ 
+     def pytest_configure(config):
+         config.option.astropy_header = True

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Dec 11 18:49:53 UTC 2019 - code@bnavigator.de
+
+- pytest-astropy-header-pr2.patch: fix import error due to
+  reversed dependency (upstream PR#2 fixing issue#6) 
+
+-------------------------------------------------------------------
+Wed Dec 11 11:49:40 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- initial specfile, version 0.1 
