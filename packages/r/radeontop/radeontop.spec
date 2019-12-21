@@ -1,7 +1,7 @@
 #
 # spec file for package radeontop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,19 +27,18 @@ Source0:        https://github.com/clbr/%{name}/archive/v%{version}.tar.gz#/%{na
 Source1:        radeontop-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm) >= 2.4.63
+BuildRequires:  pkgconfig(libdrm_amdgpu) >= 2.4.79
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(pciaccess)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-dri2)
-Recommends:     %{name}-lang = %{version}
 
 %description
-A tool to view Radeon GPU utilization, both for the total activity
-percent and individual blocks.
-Supported cards are R600 and up, even Southern Islands should work fine. Works with
-both the open drivers and AMD Catalyst.
-The total GPU utilization is also valid for OpenCL loads; the other blocks are
-only useful in GL loads.
+A tool to view Radeon GPU utilization, both for the total activity percent
+and individual blocks. Supported cards are R600 and up, even Southern
+Islands should work fine. Works with both the open drivers and AMD
+Catalyst. The total GPU utilization is also valid for OpenCL loads; the
+other blocks are only useful in GL loads.
 
 %lang_package
 
@@ -48,7 +47,7 @@ only useful in GL loads.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags} debug=1 nostrip=1 amdgpu=1
+%make_build debug=1 nostrip=1 amdgpu=1
 
 %install
 %make_install LIBDIR=%{_lib}

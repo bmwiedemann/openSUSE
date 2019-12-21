@@ -75,4 +75,12 @@
     <comment></comment>
     <requestid>726346</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e64061e6c8b575630e66af1b33f08377</srcmd5>
+    <version>1.2</version>
+    <time>1576927985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies</comment>
+    <requestid>758484</requestid>
+  </revision>
 </revisionlist>
