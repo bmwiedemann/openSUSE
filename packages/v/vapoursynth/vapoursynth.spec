@@ -1,7 +1,7 @@
 #
 # spec file for package vapoursynth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vapoursynth
-Version:        47
+Version:        48
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only AND OFL-1.1
@@ -182,7 +182,7 @@ Plugin with subtitles support for VapourSynth.
 autoreconf -fiv
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

@@ -1,12 +1,13 @@
-diff -urEbw vapoursynth-R47/Makefile.am vapoursynth-R47.new/Makefile.am
---- vapoursynth-R47/Makefile.am	2019-08-02 19:47:15.000000000 +0200
-+++ vapoursynth-R47.new/Makefile.am	2019-08-05 09:18:37.690018923 +0200
-@@ -71,7 +71,7 @@
+Index: vapoursynth-R48/Makefile.am
+===================================================================
+--- vapoursynth-R48.orig/Makefile.am
++++ vapoursynth-R48/Makefile.am
+@@ -89,7 +89,7 @@ pkginclude_HEADERS = include/VapourSynth
  
  pkgconfig_DATA += pc/vapoursynth.pc
  
 -libvapoursynth_la_LDFLAGS = -no-undefined -avoid-version
 +libvapoursynth_la_LDFLAGS = -no-undefined -release $(PACKAGE_VERSION)
  libvapoursynth_la_CPPFLAGS = $(ZIMG_CFLAGS) -DVS_PATH_PLUGINDIR='"$(PLUGINDIR)"'
- libvapoursynth_la_LIBADD = $(ZIMG_LIBS) $(DLOPENLIB) libexprfilter.la
+ libvapoursynth_la_LIBADD = $(ZIMG_LIBS) $(DLOPENLIB) libexprfilter.la libvapoursynth_avx2.la
  
