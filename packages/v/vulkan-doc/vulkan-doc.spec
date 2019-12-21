@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-doc
-Version:        1.1.127
+Version:        1.1.130
 Release:        0
 Summary:        Formal documentation of the Vulkan API
 License:        CC-BY-SA-4.0 AND Apache-2.0

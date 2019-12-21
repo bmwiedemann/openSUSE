@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 12 19:04:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+- Update to release 1.1.130
+  * Mark VkPipelineExecutableInternalRepresentationKHR as
+    `returnedonly`.
+  * Add VK_NV_glsl_shader deprecation note.
+  * New extension VK_EXT_tooling_info.
+- Update to release 1.1.129
+  * Rename "pixel shaders" to "fragment shaders".
+  * New extension VK_KHR_buffer_device_address.
+- Update to release 1.1.128
+  * Change VK_PIPELINE_CREATE_DISPATCH_BASE to an alias of new
+    token VK_PIPELINE_CREATE_DISPATCH_BASE_BIT.
+  * New extension VK_KHR_performance_query.
+
+-------------------------------------------------------------------
 Thu Nov  7 07:14:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.127
