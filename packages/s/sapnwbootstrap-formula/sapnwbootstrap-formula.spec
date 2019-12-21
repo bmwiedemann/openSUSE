@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           sapnwbootstrap-formula
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        SAP Netweaver platform deployment formula
 License:        Apache-2.0
