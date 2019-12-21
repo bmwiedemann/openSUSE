@@ -203,4 +203,13 @@
     <comment></comment>
     <requestid>735296</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>92791fa5c8ed64a864aba88047d1cb14</srcmd5>
+    <version>0.9.0</version>
+    <time>1576928066</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0
+  * Added logging facililities into :class:`.CacheRegion`</comment>
+    <requestid>758615</requestid>
+  </revision>
 </revisionlist>
