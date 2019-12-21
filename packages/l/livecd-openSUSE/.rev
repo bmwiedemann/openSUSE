@@ -700,4 +700,12 @@
     <comment>- Comment Leap-release change out again, as reverted in 000package-groups</comment>
     <requestid>747301</requestid>
   </revision>
+  <revision rev="83" vrev="83">
+    <srcmd5>9116d869f073dfbda7ccc6f7bd824f47</srcmd5>
+    <version>unknown</version>
+    <time>1576927857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758258</requestid>
+  </revision>
 </revisionlist>

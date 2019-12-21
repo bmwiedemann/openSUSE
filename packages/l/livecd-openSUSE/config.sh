@@ -43,7 +43,7 @@ for i in sshd cron wicked purge-kernels; do
 	systemctl -f disable $i
 done
 
-echo '# multipath needs to be excluded from dracut as it breaks os-proper' > /etc/dracut.conf.d/no-multipath.conf
+echo '# multipath needs to be excluded from dracut as it breaks os-prober' > /etc/dracut.conf.d/no-multipath.conf
 echo 'omit_dracutmodules+=" multipath "' >> /etc/dracut.conf.d/no-multipath.conf
 
 cd /
@@ -158,3 +158,21 @@ rm -rf /var/cache/zypp/* /var/lib/zypp/AnonymousUniqueId /var/lib/systemd/random
 
 # Remove netronome firmware (part of kernel-firmware): this sums up to 125MB
 rm -rf /lib/firmware/netronome/
+
+
+cat >/etc/systemd/system/fixupbootloader.service <<EOF
+# boo#1155545 - LOADER_TYPE has to be nil for the upgrade to work properly.
+# Kiwi does not allow changing the file directly, so do it in this ugly way.
+[Unit]
+Description=Remove LOADER_TYPE from /etc/sysconfig/bootloader
+Before=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/gawk -i inplace '!/^LOADER_TYPE=/' /etc/sysconfig/bootloader
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl -f enable fixupbootloader.service

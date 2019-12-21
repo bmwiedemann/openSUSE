@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:14:46 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add hack to remove LOADER_TYPE to fix upgrading (boo#1155545)
+
+-------------------------------------------------------------------
 Mon Nov 11 09:01:22 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Comment Leap-release change out again, as reverted in 000package-groups
