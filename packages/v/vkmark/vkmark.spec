@@ -35,6 +35,9 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
 ExcludeArch:    %{arm} %{ix86}
+%ifarch %{x86_64}
+BuildRequires:  Mesa-libVulkan-devel
+%endif
 
 %description
 An extensible Vulkan benchmarking suite with targeted, configurable scenes.

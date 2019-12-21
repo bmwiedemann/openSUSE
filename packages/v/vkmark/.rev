@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>750739</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f70a7f7bf93a25def51e0a85c31d65fb</srcmd5>
+    <version>2017.08+git.20191115</version>
+    <time>1576927864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies (add Mesa-libVulkan-devel)</comment>
+    <requestid>758253</requestid>
+  </revision>
 </revisionlist>
