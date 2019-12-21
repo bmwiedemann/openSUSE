@@ -1,7 +1,7 @@
 #
 # spec file for package aspell-dictionaries
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,9 +24,9 @@ Name:           aspell-dictionaries
 Version:        0.50.6
 Release:        0
 Summary:        The Source Package for Official Aspell Dictionaries
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Url:            http://aspell.net/
+URL:            http://aspell.net/
 #
 #  PLEASE keep aspell-lang-ver.tar.bz2 pattern in SourceN: fields!
 #
@@ -37,13 +37,13 @@ Url:            http://aspell.net/
 #    about new version of a dictionary, I will update it.
 #    pgajdos@suse.com
 #
-Source0:        aspell-da-1.6.20.tar.bz2
+Source0:        aspell-da-1.6.36.tar.bz2
 Source1:        aspell-ast-0.01.tar.bz2
 Source2:        aspell-el-0.08-0.tar.bz2
 Source3:        aspell-es-1.11-2.tar.bz2
 Source4:        aspell-fo-0.2.16-1.tar.bz2
 Source5:        aspell-fr-0.50-3.tar.bz2
-Source6:        aspell-pt_PT-20121123-0.tar.bz2
+Source6:        aspell-pt_PT-20190329.tar.bz2
 Source7:        aspell-sk-2.01-2.tar.bz2
 Source8:        aspell-sv-0.51-0.tar.bz2
 Source9:        aspell-cy-0.50-3.tar.bz2
@@ -128,13 +128,9 @@ Source87:       aspell-ky-0.01-0.tar.bz2
 Source88:       aspell-kn-0.01-1.tar.bz2
 Source89:       aspell-hus-0.03-1.tar.bz2
 Source90:       aspell-de-20030222-1.tar.bz2
-# Extra word list with Novell jargon
-Source115:      Nwordlist.tgz
 Source999:      aspell-dictionaries-rpmlintrc
-# PATCH-FIX-OPENSUSE aspell-dansk.patch -- Patch needed for new dansk dictionary, apply before Novellwords patch
+# PATCH-FIX-OPENSUSE aspell-dansk.patch -- Patch needed for new dansk dictionary
 Patch0:         aspell-dansk.patch
-# PATCH-FIX-OPENSUSE aspell-dictionaries-Novellwords_extra_dict.patch -- Patch for adding extra dictionary with Novell jargon; bug #371
-Patch1:         aspell-dictionaries-Novellwords_extra_dict.patch
 BuildRequires:  aspell
 BuildRequires:  fdupes
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -147,7 +143,7 @@ are distributable under the GPL license.
 Version:        0.50.0
 Release:        0
 Summary:        Afrikaans Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:af)
@@ -159,7 +155,7 @@ An Afrikaans dictionary for the aspell spell checker.
 Version:        0.50.0
 Release:        0
 Summary:        Galician-portuguese (galego-portugués) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:gl)
@@ -183,7 +179,7 @@ An Amharic (አማርኛ) dictionary for the aspell spell checker.
 Version:        1.2.0
 Release:        0
 Summary:        Arabic (العربية) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:ar)
@@ -195,7 +191,7 @@ An Arabic (العربية) dictionary for the aspell spell checker.
 Version:        0.02
 Release:        0
 Summary:        Azerbaijani (تورکجه) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:az)
@@ -207,7 +203,7 @@ An Azerbaijani (تورکجه) dictionary for the aspell spell checker.
 Version:        0.01
 Release:        0
 Summary:        Belarusian (беларуская мова) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:be)
@@ -219,7 +215,7 @@ A Belarusian (беларуская мова) dictionary for the aspell spell che
 Version:        4.1
 Release:        0
 Summary:        Bulgarian (български) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:bg)
@@ -231,7 +227,7 @@ A Bulgarian (български) dictionary for the aspell spell checker.
 Version:        0.01.1
 Release:        0
 Summary:        Bengali (বাংলা) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:bn)
@@ -243,7 +239,7 @@ A Bengali (বাংলা) dictionary for the aspell spell checker.
 Version:        0.50.2
 Release:        0
 Summary:        Breton (brezhoneg) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:br)
@@ -255,7 +251,7 @@ A Breton (brezhoneg) dictionary for the aspell spell checker.
 Version:        0.60.1.20090722
 Release:        0
 Summary:        Catalan (català) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:ca)
@@ -267,7 +263,7 @@ A Catalan (català) dictionary for the aspell spell checker.
 Version:        0.60.0.20040614
 Release:        0
 Summary:        Czech (čeština) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:cs)
@@ -279,7 +275,7 @@ A Czech (český) dictionary for the aspell spell checker.
 Version:        0.02.0
 Release:        0
 Summary:        Kashubian (kaszëbsczi) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:csb)
@@ -291,7 +287,7 @@ A Kashubian (kaszëbsczi) dictionary for the aspell spell checker.
 Version:        0.50.3
 Release:        0
 Summary:        Welsh (Cymraeg) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:cy)
@@ -302,9 +298,9 @@ A Welsh (Cymraeg) dictionary for the aspell spell checker.
 %package -n aspell-da
 Version:        1.6.20
 Release:        0
-Url:            http://da.speling.org/
+URL:            http://da.speling.org/
 Summary:        Danish (dansk) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:da)
@@ -316,7 +312,7 @@ A Danish (dansk) dictionary for the aspell spell checker.
 Version:        0.60.20030222
 Release:        0
 Summary:        German (deutsch) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:de)
@@ -328,7 +324,7 @@ A German (deutsch) dictionary for the aspell spell checker.
 Version:        0.01
 Release:        0
 Summary:        Asturian (asturianu) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:ast)
@@ -341,9 +337,9 @@ An Asturian (asturianu) dictionary for the aspell spell checker.
 Version:        0.50.3+0.08
 Release:        0
 Summary:        Greek (ελληνικά) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Url:            http://elspell.math.upatras.gr/?section=aspell
+URL:            http://elspell.math.upatras.gr/?section=aspell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:el)
 
@@ -354,7 +350,7 @@ A Greek (ελληνικά) dictionary for the aspell spell checker.
 Version:        2.1.20000225
 Release:        0
 Summary:        Esperanto Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:eo)
@@ -366,7 +362,7 @@ An Esperanto dictionary for the aspell spell checker.
 Version:        1.11.2
 Release:        0
 Summary:        Spanish (español) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:es)
@@ -378,7 +374,7 @@ A Spanish (español) dictionary for the aspell spell checker.
 Version:        0.1.21
 Release:        0
 Summary:        Estonian (eesti) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:et)
@@ -390,7 +386,7 @@ An Estonian (eesti) dictionary for the aspell spell checker.
 Version:        0.11.0
 Release:        0
 Summary:        Persian (فارسی) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:fa)
@@ -402,7 +398,7 @@ A Persian (فارسی) dictionary for the aspell spell checker.
 Version:        0.7
 Release:        0
 Summary:        Finnish (suomi) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:fi)
@@ -414,7 +410,7 @@ A Finnish (suomi) dictionary for the aspell spell checker.
 Version:        0.12
 Release:        0
 Summary:        Frisian (Frysk) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:fy)
@@ -426,7 +422,7 @@ A Frisian (Frysk) dictionary for the aspell spell checker.
 Version:        0.2.16
 Release:        0
 Summary:        Faroese (føroyskt) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:fo)
@@ -438,7 +434,7 @@ A Faroese (føroyskt) dictionary for the aspell spell checker.
 Version:        0.50.3
 Release:        0
 Summary:        French (français) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:fr)
@@ -450,7 +446,7 @@ A French (français) dictionary for the aspell spell checker.
 Version:        4.5.0
 Release:        0
 Summary:        Irish (Gaeilge) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:ga)
@@ -462,7 +458,7 @@ An Irish (Gaeilge) dictionary for the aspell spell checker.
 Version:        0.7.1.1.1
 Release:        0
 Summary:        Scottish (Gàidhlig) Gaelic Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:gd)
@@ -474,7 +470,7 @@ A Scottish (Gàidhlig) Gaelic dictionary for the aspell spell checker.
 Version:        0.50a
 Release:        0
 Summary:        Galician Gaelic (galego) Dictionary for Aspell
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:gl)
@@ -486,7 +482,7 @@ A Galician Gaelic (galego) dictionary for the aspell spell checker.
 Version:        0.02.0
 Release:        0
 Summary:        Ancient Greek (Ἑλληνική) Dictionary for Aspell
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:grc)
@@ -498,7 +494,7 @@ An Ancient Greek (Ἑλληνική) dictionary for the aspell spell checker.
 Version:        0.03
 Release:        0
 Summary:        Gujarati (ગુજરાતી) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:gu)
@@ -510,7 +506,7 @@ A Gujarati (ગુજરાતી) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Manx Gaelic (Gaelg) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:gv)
@@ -522,7 +518,7 @@ A Manx Gaelic (Gaelg) dictionary for the aspell spell checker.
 Version:        1.0.0
 Release:        0
 Summary:        Hebrew (עברית) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:he)
@@ -534,7 +530,7 @@ A Hebrew (עברית) dictionary for the aspell spell checker.
 Version:        0.02
 Release:        0
 Summary:        Hindi (हिंदी) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:hi)
@@ -548,7 +544,7 @@ A Hindi (हिंदी) dictionary for the aspell spell checker.
 Version:        0.11
 Release:        0
 Summary:        Hiligaynon Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:hil)
@@ -560,7 +556,7 @@ A Hiligaynon dictionary for the aspell spell checker.
 Version:        0.51.0
 Release:        0
 Summary:        Croatian (hrvatski) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:hr)
@@ -572,7 +568,7 @@ A Croatian (hrvatski) dictionary for the aspell spell checker.
 Version:        0.02.0
 Release:        0
 Summary:        Upper Sorbian (hornjoserbsce) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:hsb)
@@ -584,7 +580,7 @@ An Upper Sorbian (hornjoserbsce) dictionary for the aspell spell checker.
 Version:        0.99.4.2
 Release:        0
 Summary:        Hungarian (magyar) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:hu)
@@ -596,7 +592,7 @@ A Hungarian (magyar) dictionary for the aspell spell checker.
 Version:        0.03.1
 Release:        0
 Summary:        Huastec (wastek) dictionary for Aspell
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:hus)
@@ -608,7 +604,7 @@ A Huastec (wastek) dictionary for Aspell.
 Version:        0.10.0
 Release:        0
 Summary:        Armenian (Հայերեն) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:hy)
@@ -620,7 +616,7 @@ An Armenian (Հայերեն) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Interlingua Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:ia)
@@ -632,7 +628,7 @@ An Interlingua dictionary for the aspell spell checker.
 Version:        1.2
 Release:        0
 Summary:        Indonesian (Bahasa Indonesia) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:id)
@@ -644,7 +640,7 @@ An Indonesian (Bahasa Indonesia) dictionary for the aspell spell checker.
 Version:        0.51.10
 Release:        0
 Summary:        Icelandic (Íslenska) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:is)
@@ -656,7 +652,7 @@ An Icelandic (Íslenska) dictionary for the aspell spell checker.
 Version:        2.2_20050523
 Release:        0
 Summary:        Italian (italiano) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:it)
@@ -668,7 +664,7 @@ An Italian (italiano) dictionary for the aspell spell checker.
 Version:        0.01.1
 Release:        0
 Summary:        Kannada (ಕನ್ನಡ) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:kn)
@@ -680,7 +676,7 @@ A Kannada (ಕನ್ನಡ) dictionary for the aspell spell checker.
 Version:        0.20.1
 Release:        0
 Summary:        Kurdi (Kurdî, كوردی‎) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:ku)
@@ -692,7 +688,7 @@ A Kurdi (Kurdî, كوردی‎) dictionary for the aspell spell checker.
 Version:        0.01.0
 Release:        0
 Summary:        Kirghiz (Кыргызча) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:ky)
@@ -704,7 +700,7 @@ A Kirghiz (Кыргызча) dictionary for the aspell spell checker.
 Version:        20020503
 Release:        0
 Summary:        Latin (latine) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:la)
@@ -728,7 +724,7 @@ A Lithuanian ((lietuvių) dictionary for the aspell spell checker.
 Version:        1.2.1
 Release:        0
 Summary:        Latvian (latviešu) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:lv)
@@ -740,7 +736,7 @@ A Latvian (latviešu) dictionary for the aspell spell checker.
 Version:        20040807
 Release:        0
 Summary:        Malagasy Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:mg)
@@ -752,7 +748,7 @@ A Malagasy dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Maori (Māori) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:mi)
@@ -764,7 +760,7 @@ A Maori (Māori) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Macedonian (македонски) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:mk)
@@ -776,7 +772,7 @@ A Macedonian (македонски) dictionary for the aspell spell checker.
 Version:        0.03
 Release:        0
 Summary:        Malayalam (മലയാളം) Dictionary for Aspell
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:ml)
@@ -788,7 +784,7 @@ A Malayalam (മലയാളം) dictionary for the aspell spell checker.
 Version:        0.06.2
 Release:        0
 Summary:        Mongolian (Монгол) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:mn)
@@ -800,7 +796,7 @@ A Mongolian (Монгол) dictionary for the aspell spell checker.
 Version:        0.10
 Release:        0
 Summary:        Marathi (मराठी) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:mr)
@@ -814,7 +810,7 @@ A Marathi (मराठी) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Malay (bahasa Melayu, بهاس ملايو‎) Dictionary for Aspell
-License:        GFDL-1.2
+License:        GFDL-1.2-only
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:ms)
@@ -826,7 +822,7 @@ A Malay (bahasa Melayu, بهاس ملايو‎) dictionary for the aspell spell 
 Version:        0.50
 Release:        0
 Summary:        Maltese (Malti) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:mt)
@@ -838,7 +834,7 @@ A Maltese (Malti) dictionary for the aspell spell checker.
 Version:        0.50.10
 Release:        0
 Summary:        Norwegian Bokmaal (Norsk bokmål) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       aspell-no
@@ -852,7 +848,7 @@ A Norwegian Bokmaal (Norsk bokmål) dictionary for the aspell spell checker.
 Version:        0.01
 Release:        0
 Summary:        Low Saxon (Plattdüütsch) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:nds)
@@ -864,9 +860,9 @@ A Low Saxon (Plattdüütsch) dictionary for the aspell spell checker.
 Version:        1.00.7
 Release:        0
 Summary:        Dutch (Nederlands) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Url:            http://www.opentaal.org
+URL:            http://www.opentaal.org
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:nl)
 
@@ -877,7 +873,7 @@ A Dutch (Nederlands) dictionary for the aspell spell checker.
 Version:        0.50.11
 Release:        0
 Summary:        Norwegian Nynorsk (Norsk nynorsk) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:nn)
@@ -889,7 +885,7 @@ A Norwegian Nynorsk (Norsk nynorsk) dictionary for the aspell spell checker.
 Version:        0.01
 Release:        0
 Summary:        Chichewa Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:ny)
@@ -901,7 +897,7 @@ A Chichewa dictionary for the aspell spell checker.
 Version:        0.03
 Release:        0
 Summary:        Oriya (ଓଡ଼ିଆ) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:or)
@@ -913,7 +909,7 @@ An Oriya (ଓଡ଼ିଆ) dictionary for the aspell spell checker.
 Version:        0.01
 Release:        0
 Summary:        Punjabi (ਪੰਜਾਬੀ, پنجابی‎) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:pa)
@@ -925,9 +921,9 @@ A Punjabi (ਪੰਜਾਬੀ, پنجابی‎) dictionary for the aspell spell 
 Version:        0.60.2015.04.28
 Release:        0
 Summary:        Polish (polszczyzna) Dictionary for Aspell
-License:        GPL-2.0 and LGPL-2.1 and MPL-1.1 and CC-BY-SA-1.0
+License:        GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1 AND CC-BY-SA-1.0
 Group:          Productivity/Text/Spell
-Url:            http://www.sjp.pl/slownik/en/
+URL:            http://www.sjp.pl/slownik/en/
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:pl)
 
@@ -938,7 +934,7 @@ A Polish (polszczyzna) dictionary for the aspell spell checker.
 Version:        0.60.20090702
 Release:        0
 Summary:        Brazilian Portuguese (Português brasileira) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:pt_BR)
@@ -947,12 +943,12 @@ Provides:       locale(aspell:pt_BR)
 A Brazilian Portuguese (Português brasileira) dictionary for the aspell spell checker.
 
 %package -n aspell-pt_PT
-Version:        0.60.20121123
+Version:        20190329
 Release:        0
 Summary:        Portuguese (Português) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Url:            http://natura.di.uminho.pt/download/sources/Dictionaries/aspell6/
+URL:            http://natura.di.uminho.pt/download/sources/Dictionaries/aspell6/
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:pt)
 
@@ -963,7 +959,7 @@ A Portuguese (Português) dictionary for the aspell spell checker.
 Version:        0.02
 Release:        0
 Summary:        Quechua (Runasimi (qheshwa)) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:qu)
@@ -975,7 +971,7 @@ A Quechua (Runasimi (qheshwa)) dictionary for the aspell spell checker.
 Version:        3.3.2
 Release:        0
 Summary:        Romanian (română) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:ro)
@@ -987,7 +983,7 @@ A Romanian (română) dictionary for the aspell spell checker.
 Version:        0.99.f7.1
 Release:        0
 Summary:        Russian (русский) Dictionary for Aspell
-License:        GPL-2.0+ and LGPL-2.1+ and SUSE-Permissive-Modify-By-Patch
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Permissive-Modify-By-Patch
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:ru)
@@ -999,7 +995,7 @@ A Russian  (русский) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Kinyarwanda (Ikinyarwanda) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:rw)
@@ -1011,7 +1007,7 @@ A Kinyarwanda (Ikinyarwanda) dictionary for the aspell spell checker.
 Version:        1.0
 Release:        0
 Summary:        Sardinian (Sardu) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:sc)
@@ -1023,7 +1019,7 @@ A Sardinian (Sardu) dictionary for the aspell spell checker.
 Version:        2.01
 Release:        0
 Summary:        Slovak (slovenský) Dictionary for Aspell
-License:        GPL-2.0 or LGPL-2.1 or MPL-1.1
+License:        GPL-2.0-only OR LGPL-2.1-only OR MPL-1.1
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:sk)
@@ -1035,7 +1031,7 @@ A Slovak (slovenský) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Slovenian (slovenski) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:sl)
@@ -1047,7 +1043,7 @@ A Slovenian (slovenski) dictionary for the aspell spell checker.
 Version:        0.02
 Release:        0
 Summary:        Serbian (српски) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:sr)
@@ -1059,7 +1055,7 @@ A Serbian (српски) dictionary for the aspell spell checker.
 Version:        0.51.0
 Release:        0
 Summary:        Swedish (Svenska) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:sv)
@@ -1074,7 +1070,7 @@ A Swedish (Svenska) dictionary for the aspell spell checker.
 Version:        1.0
 Release:        0
 Summary:        Swahili (Kiswahili) Dictionary for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:sw)
@@ -1086,7 +1082,7 @@ A Swahili (Kiswahili) dictionary for the aspell spell checker.
 Version:        20040424
 Release:        0
 Summary:        Tamil (தமிழ்) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:ta)
@@ -1098,7 +1094,7 @@ A Tamil (தமிழ்) dictionary for the aspell spell checker.
 Version:        0.01.2
 Release:        0
 Summary:        Telugu (తెలుగు) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:te)
@@ -1110,7 +1106,7 @@ A Telugu (తెలుగు) dictionary for the aspell spell checker.
 Version:        0.1.1
 Release:        0
 Summary:        Tetum (Tetun) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:tet)
@@ -1122,7 +1118,7 @@ A Tetum (Tetun) dictionary for the aspell spell checker.
 Version:        0.01
 Release:        0
 Summary:        Turkmen (Türkmençe) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:tk)
@@ -1134,7 +1130,7 @@ A Turkmen (Türkmençe) dictionary for the aspell spell checker.
 Version:        0.02
 Release:        0
 Summary:        Tagalog Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:tl)
@@ -1146,7 +1142,7 @@ A Tagalog dictionary for the aspell spell checker.
 Version:        1.0.1
 Release:        0
 Summary:        Setswana Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:tn)
@@ -1158,7 +1154,7 @@ A Setswana dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Turkish (Türkçe) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:tr)
@@ -1170,7 +1166,7 @@ A Turkish (Türkçe) dictionary for the aspell spell checker.
 Version:        1.4.0
 Release:        0
 Summary:        Ukrainian (українська) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:uk)
@@ -1182,7 +1178,7 @@ An Ukrainian (українська) dictionary for the aspell spell checker.
 Version:        0.6.0
 Release:        0
 Summary:        Uzbek (Ўзбекча) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:uz)
@@ -1194,7 +1190,7 @@ An Uzbek (Ўзбекча) dictionary for the aspell spell checker.
 Version:        0.01.1
 Release:        0
 Summary:        Vietnamese (Tiếng Việt) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:vi)
@@ -1206,7 +1202,7 @@ A Vietnamese (Tiếng Việt) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Walloon (walon) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:wa)
@@ -1218,7 +1214,7 @@ A Walloon (walon) Dictionarydictionary for the aspell spell checker.
 Version:        0.01.1
 Release:        0
 Summary:        Yiddish (ייִדיש) Dictionary for Aspell
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.60
 Provides:       locale(aspell:yi)
@@ -1230,7 +1226,7 @@ A Yiddish (ייִדיש) dictionary for the aspell spell checker.
 Version:        0.50
 Release:        0
 Summary:        Zulu (isiZulu) Dictionary Package for Aspell
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Requires:       aspell >= 0.50
 Provides:       locale(aspell:zu)
@@ -1239,23 +1235,12 @@ Provides:       locale(aspell:zu)
 A Zulu (isiZulu) dictionary for the aspell spell checker.
 
 %prep
-%setup -q -c -n aspell-dictionaries -a0 -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a8 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a25 -a26 -a27 -a28 -a29 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a39 -a40 -a41 -a42 -a43 -a44 -a45 -a46 -a47 -a48 -a49 -a50 -a51 -a52 -a54 -a55 -a56 -a57 -a58 -a59 -a60 -a61 -a62 -a63 -a64 -a65 -a66 -a67 -a68 -a69 -a70 -a71 -a72 -a73 -a74 -a75 -a76 -a77 -a78 -a79 -a80 -a81 -a82 -a83 -a84 -a85 -a86 -a87 -a88 -a89 -a90 -a115
+%setup -q -c -n aspell-dictionaries -a0 -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a8 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a25 -a26 -a27 -a28 -a29 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a39 -a40 -a41 -a42 -a43 -a44 -a45 -a46 -a47 -a48 -a49 -a50 -a51 -a52 -a54 -a55 -a56 -a57 -a58 -a59 -a60 -a61 -a62 -a63 -a64 -a65 -a66 -a67 -a68 -a69 -a70 -a71 -a72 -a73 -a74 -a75 -a76 -a77 -a78 -a79 -a80 -a81 -a82 -a83 -a84 -a85 -a86 -a87 -a88 -a89 -a90
 #
 find -name "*~" -type f | xargs -r rm -v
 #
 mv aspell-cs-20040614-1/doc/README.orig aspell-cs-20040614-1/doc/README.cs
-# new Danish tarball uses naming 'dansk' but should be 'da', this must
-# be fixed
-#export DAVERSION=`ls -d aspell-da-* |cut -d - -f3`
-cd aspell-da-*
-mv dansk_phonet.dat da_phonet.dat
-sed s/dansk/da/g dansk.dat > da.dat
-rm dansk.dat
-mkdir doc
-mv contributors doc/
-cd ..
-%patch0
-%patch1
+#%patch0
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' aspell-ia-*/doc/README_ia.txt
 sed -i 's/\r$//' aspell-it-*/doc/README.txt
@@ -1267,22 +1252,15 @@ sed -i 's/\r$//' aspell-pt_BR-*/doc/LEIAME_ooo.txt
 sed -i 's/\r$//' aspell-sc-*/doc/gpl_it.txt
 
 %build
+cd aspell-da-*
+./configure
+cd ..
 for lang in %{dict_langs} ; do
   (
     cd aspell*-$lang-*
     ./configure
     make
   ) || true
-done
-# creating extra dictionaries with Novell jargon
-# no need to add this for ja, CN_*. The spell checking is unusable for these languages
-/usr/bin/word-list-compress c < Nwordlist > Nwordlist.cwl
-for lang in de es fr it pt_BR hu cs pl ru fi da nb sv nl sk ; do
-	(
-	cp Nwordlist.cwl aspell-$lang-*/
-	cd aspell-$lang-*
-	/usr/bin/word-list-compress d < Nwordlist.cwl | aspell --lang="$lang" create master ./"$lang"Novellwords
-	) || true
 done
 
 %install
@@ -1389,12 +1367,10 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-da -f files-da
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-da
-%{aspell_dict_dir}/daNovellwords
 
 %files -n aspell-de -f files-de
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-de
-%{aspell_dict_dir}/deNovellwords
 
 %files -n aspell-el -f files-el
 %defattr(-,root,root)
@@ -1407,7 +1383,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-es -f files-es
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-es
-%{aspell_dict_dir}/esNovellwords
 
 %files -n aspell-fo -f files-fo
 %defattr(-,root,root)
@@ -1416,7 +1391,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-fr -f files-fr
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-fr
-%{aspell_dict_dir}/frNovellwords
 
 %files -n aspell-fy -f files-fy
 %defattr(-,root,root)
@@ -1437,7 +1411,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-it -f files-it
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-it
-%{aspell_dict_dir}/itNovellwords
 
 %files -n aspell-mt -f files-mt
 %defattr(-,root,root)
@@ -1446,7 +1419,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-nb -f files-nb
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-nb
-%{aspell_dict_dir}/nbNovellwords
 
 %files -n aspell-nn -f files-nn
 %defattr(-,root,root)
@@ -1455,7 +1427,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-pl -f files-pl
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-pl
-%{aspell_dict_dir}/plNovellwords
 
 %files -n aspell-pt_PT -f files-pt_PT
 %defattr(-,root,root)
@@ -1464,7 +1435,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-pt_BR -f files-pt_BR
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-pt_BR
-%{aspell_dict_dir}/pt_BRNovellwords
 
 %files -n aspell-ro -f files-ro
 %defattr(-,root,root)
@@ -1473,12 +1443,10 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-ru -f files-ru
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-ru
-%{aspell_dict_dir}/ruNovellwords
 
 %files -n aspell-sk -f files-sk
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sk
-%{aspell_dict_dir}/skNovellwords
 
 %files -n aspell-sr -f files-sr
 %defattr(-,root,root)
@@ -1487,7 +1455,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-sv -f files-sv
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-sv
-%{aspell_dict_dir}/svNovellwords
 
 %files -n aspell-uk -f files-uk
 %defattr(-,root,root)
@@ -1524,7 +1491,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-fi -f files-fi
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-fi
-%{aspell_dict_dir}/fiNovellwords
 
 %files -n aspell-gd -f files-gd
 %defattr(-,root,root)
@@ -1557,7 +1523,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %files -n aspell-hu -f files-hu
 %defattr(-,root,root)
 %doc %{_defaultdocdir}/aspell-hu
-%{aspell_dict_dir}/huNovellwords
 
 %files -n aspell-hus -f files-hus
 %defattr(-,root,root)
@@ -1703,7 +1668,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %defattr(-,root,root)
 %dir %{_defaultdocdir}/aspell-nl
 %doc %{_defaultdocdir}/aspell-nl/*
-%{aspell_dict_dir}/nlNovellwords
 
 %files -n aspell-gu -f files-gu
 %defattr(-,root,root)
@@ -1724,7 +1688,6 @@ rm -f %{buildroot}%{_defaultdocdir}/aspell-br/doc/INSTALL
 %defattr(-,root,root)
 %dir %{_defaultdocdir}/aspell-cs
 %doc %{_defaultdocdir}/aspell-cs/*
-%{aspell_dict_dir}/csNovellwords
 
 %files -n aspell-te -f files-te
 %defattr(-,root,root)
