@@ -91,4 +91,12 @@
   issues with SLE15-SP1</comment>
     <requestid>754683</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81d8588bfa0b3d54684232a4f8af4b62</srcmd5>
+    <version>1.9.3</version>
+    <time>1576928038</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>758537</requestid>
+  </revision>
 </revisionlist>
