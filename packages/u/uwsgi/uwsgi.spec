@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Application Container Server for Networked/Clustered Web Applications
 License:        Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            https://uwsgi-docs.readthedocs.io/en/latest/
+URL:            https://uwsgi-docs.readthedocs.io/en/latest/
 Source:         https://projects.unbit.it/downloads/uwsgi-%{version}.tar.gz
 Source1:        opensuse.ini.in
 Source2:        uwsgi.service
@@ -102,8 +102,8 @@ BuildRequires:  python3-devel
 BuildRequires:  ruby19-devel
 %endif
 BuildRequires:  sqlite3-devel
-BuildRequires:  systemd-devel
 BuildRequires:  tcpd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %ifarch %{ix86} x86_64 %{arm} aarch64
 %if 0%{?suse_version} < 1310
 BuildRequires:  v8-devel
