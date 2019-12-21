@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 08:34:16 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Add ibus-chewing-drop-cmake-fedora.patch: Backport previous cmake 
+  module to get rid of dependence of cmake-fedora-modules, and 
+  switch to depends on cmake upstream 2.6.2. 
+
+-------------------------------------------------------------------
 Fri Nov  8 02:59:48 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.6.1

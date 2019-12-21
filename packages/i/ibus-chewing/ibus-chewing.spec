@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-chewing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/definite/ibus-chewing
 Source0:        https://github.com/definite/ibus-chewing/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ibus-chewing-drop-cmake-fedora.patch qzhao@suse.com Backport previous cmake module to get rid of dependence of cmake-fedora-modules, switch to the cmake upstream 2.6.2.
+Patch0:         ibus-chewing-drop-cmake-fedora.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  cmake
-BuildRequires:  cmake-fedora-modules
+BuildRequires:  cmake >= 2.6.2
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  gob2
@@ -44,6 +45,7 @@ libchewing.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 %cmake -DLIBEXEC_DIR=%{_libdir}/ibus
