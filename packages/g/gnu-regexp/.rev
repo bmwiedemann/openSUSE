@@ -131,4 +131,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>620799</requestid>
   </revision>
+  <revision rev="20" vrev="293">
+    <srcmd5>4d9cabe287623da2b6f3a2fd1b40404a</srcmd5>
+    <version>1.1.4</version>
+    <time>1576927763</time>
+    <user>dimstar_suse</user>
+    <comment>Fix licensing</comment>
+    <requestid>757754</requestid>
+  </revision>
 </revisionlist>

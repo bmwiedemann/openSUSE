@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-regexp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           gnu-regexp
 Version:        1.1.4
 Release:        0
 Summary:        Java NFA regular expression engine
-License:        LGPL-2.1-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            http://www.cacas.org/java/gnu/regexp/
-Source0:        ftp://ftp.tralfamadore.com/pub/java/gnu.regexp-%{version}.tar.gz
+URL:            http://www.cacas.org/java/gnu/regexp/
+Source0:        http://ftp.frugalware.org/pub/other/sources/gnu.regexp/gnu.regexp-%{version}.tar.gz
 Source1:        %{name}.build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
