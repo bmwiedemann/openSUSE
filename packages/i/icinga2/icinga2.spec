@@ -1,7 +1,7 @@
 #
 # spec file for package icinga2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,7 @@ Group:          System/Monitoring
 Name:           icinga2
 Version:        2.11.2
 Release:        %{revision}%{?dist}
-Url:            https://www.icinga.com/
+URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
 
 Source1:        icinga2-rpmlintrc
@@ -175,7 +175,7 @@ BuildRequires:  boost-devel >= 1.48
 %endif
 
 %if 0%{?use_systemd}
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       systemd
 %endif
 
