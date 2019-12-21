@@ -61,4 +61,15 @@
   * Implement custom LZMA dictionary size support, fixes #154</comment>
     <requestid>742131</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46dc26f990e370b1085c8505fcc8012b</srcmd5>
+    <version>20191103</version>
+    <time>1576928000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191103:
+  * Fix C++03 compatibility
+  * Backport rebuild logic
+  * Support applying patches from terminal, closes #186</comment>
+    <requestid>758501</requestid>
+  </revision>
 </revisionlist>
