@@ -1,7 +1,7 @@
 #
 # spec file for package gzdoom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gzdoom
-Version:        4.2.1
+Version:        4.2.4
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
 Group:          Amusements/Games/3D/Shoot
-Url:            http://zdoom.org/
+URL:            http://zdoom.org/
 
 #Git-Clone:     https://github.com/coelckers/gzdoom
 Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
@@ -30,6 +30,8 @@ Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
 Patch3:         gzdoom-vulkan.patch
 Patch4:         gzdoom-asmjit.patch
+Patch5:         gzdoom-system-gme.patch
+Patch6:         gzdoom-dl.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
@@ -54,7 +56,7 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(clzma) >= 17.01
 %else
-Provides:       bundled(lzma-sdk) = 17.01
+Provides:       bundled(lzma-sdk) = 19.00
 %endif
 %if 0%{?suse_version} == 1315
 BuildRequires:  gcc6-c++
@@ -93,7 +95,7 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 %patch -P 3 -p1
 rm -Rfv glslang src/rendering/vulkan/thirdparty/vulkan
 %endif
-%patch -P 4 -p1
+%patch -P 4 -P 5 -P 6 -p1
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
 	tools/updaterevision/updaterevision.c
