@@ -54,4 +54,12 @@
     <comment>- Update to new upstream release 0.3.2</comment>
     <requestid>663387</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5e48499606c883811cd7a88f74ad4b35</srcmd5>
+    <version>0.4.0</version>
+    <time>1576927938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update eto release 0.4.0</comment>
+    <requestid>758357</requestid>
+  </revision>
 </revisionlist>

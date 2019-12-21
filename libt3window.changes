@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 23:54:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update eto release 0.4.0
+  * This release allows explicitly unsetting the binary
+    attributes when combining attributes using
+    t3_term_combine_attrs.
+
+-------------------------------------------------------------------
 Mon Jan  7 13:35:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.3.2
