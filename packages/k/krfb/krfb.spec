@@ -47,7 +47,7 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  telepathy-qt5-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xcb-util-image-devel
