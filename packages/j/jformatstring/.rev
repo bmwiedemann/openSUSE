@@ -121,4 +121,12 @@
     <comment>Upgrade to a newer snapshot</comment>
     <requestid>660084</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fb0f96225a95597aa589df4d381d99e7</srcmd5>
+    <version>0.10~20131207</version>
+    <time>1576927967</time>
+    <user>dimstar_suse</user>
+    <comment>Calm down source validator</comment>
+    <requestid>758467</requestid>
+  </revision>
 </revisionlist>
