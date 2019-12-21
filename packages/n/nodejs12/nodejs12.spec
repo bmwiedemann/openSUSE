@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.13.1
+Version:        12.14.0
 Release:        0
 
 %define node_version_number 12
@@ -184,11 +184,16 @@ BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
+
+%if %node_version_number > 12
+BuildRequires:  python3
+%else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
 %else
 BuildRequires:  python
 %endif
+%endif  # python3
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
 BuildRequires:  group(nobody)
@@ -277,13 +282,14 @@ Requires:       %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.12.1
+Provides:       npm(npm) = 6.13.4
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
 Recommends:     python2
+Recommends:     python3
 %else
 Recommends:     python
 %endif

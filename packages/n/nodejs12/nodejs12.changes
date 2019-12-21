@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:56:54 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS release 12.14.0:
+  * deps: update npm to 6.13.4 fixing an arbitrary path overwrite
+    and access via "bin" field (bsc#1159352, CVE-2019-16777,
+    CVE-2019-16776, CVE-2019-16775)
+
+- refreshed: fix_ci_tests.patch versioned.patch
+
+-------------------------------------------------------------------
 Tue Nov 19 12:00:42 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS release 12.13.1:
