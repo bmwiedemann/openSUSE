@@ -28,7 +28,7 @@
 %{!?make_build:%{expand: %%global make_build %%{__make} %%{?_smp_mflags}}}
 
 Name:           erlang
-Version:        22.1.8
+Version:        22.2
 Release:        0
 # not set up to be built with position independend executable support
 #!BuildIgnore:	gcc-PIE
@@ -92,7 +92,7 @@ BuildRequires:  wxWidgets-wxcontainer-devel >= 2.8
 %endif
 
 %if 0%{?suse_version} >=1230
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 %define have_systemd 1
 %endif

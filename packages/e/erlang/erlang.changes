@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 19 16:04:42 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Thu Dec 12 07:55:22 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
+
+- Changes for 22.2
+  * http://erlang.org/download/OTP-22.2.README
+  * Highlights:
+  * erts: The Kernel application's User's Guide now contains a 
+    Logger Cookbook with common usage patterns.
+  * erts: Numerous improvements in the new socket and net modules
+  * Standard libraries: common_test: ct_property_test logging is improved
+  * Standard libraries: ssl: Correct handling of unordered chains so that it 
+    works as expected
+  * Tools: Emacs erlang-mode function that lets the user open the documentation 
+    for an Erlang/OTP function in an Emacs buffer has been improved. 
+    Users will be asked if they want the man pages downloaded if they are not present 
+    in the system.
+
+-------------------------------------------------------------------
 Wed Nov 27 09:00:15 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Changes for 22.1.8
