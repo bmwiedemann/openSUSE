@@ -1,7 +1,7 @@
 #
 # spec file for package libcap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libcap
 Summary:        Library for Capabilities (linux-privs) Support
-License:        BSD-3-Clause and GPL-2.0
+License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Version:        2.25
 Release:        0
@@ -26,7 +26,6 @@ Source:         https://www.kernel.org/pub/linux/libs/security/linux-privs/libca
 Source2:        baselibs.conf
 Url:            https://sites.google.com/site/fullycapable/
 BuildRequires:  fdupes
-BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 
 %description
@@ -75,13 +74,6 @@ Group:          System/Filesystems
 This package contains utility programs handling capabilities via
 libcap.
 
-%package -n pam_cap
-Summary:        PAM Module for Capabilities Support
-Group:          System/Libraries
-
-%description -n pam_cap
-A PAM module for per-session capabilities manipulation.
-
 %prep
 %setup -q
 %build
@@ -99,10 +91,6 @@ make install RAISE_SETFCAP=no \
 find %{buildroot} -type f -name '*.la' -print -delete
 # do not provide static libs
 rm %{buildroot}%{_libdir}/libcap.a
-
-mkdir -p %{buildroot}/%{_lib}/security
-mv %{buildroot}%{_libdir}/security/pam_cap.so %{buildroot}/%{_lib}/security/pam_cap.so
-install -D pam_cap/capability.conf %{buildroot}%{_sysconfdir}/security/capability.conf
 
 %fdupes -s $RPM_BUILD_ROOT
 
@@ -129,10 +117,5 @@ install -D pam_cap/capability.conf %{buildroot}%{_sysconfdir}/security/capabilit
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_mandir}/man3/*
-
-%files -n pam_cap
-%defattr(-,root,root)
-%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/security/capability.conf
-/%{_lib}/security/pam_cap.so
 
 %changelog
