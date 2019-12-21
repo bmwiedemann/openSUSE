@@ -83,9 +83,6 @@
 %ifnarch %{jit_arches}
 %global _with_zero 1
 %endif
-%ifarch %{arm6}
-%global _with_zero 1
-%endif
 %if %{debug}
 %global debugbuild slowdebug
 %else
@@ -1192,7 +1189,11 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/bin
 %dir %{_jvmdir}/%{sdkdir}/lib
 %dir %{_jvmdir}/%{sdkdir}/lib/jfr
+%ifarch %{arm6}
+%dir %{_jvmdir}/%{sdkdir}/lib/client
+%else
 %dir %{_jvmdir}/%{sdkdir}/lib/server
+%endif
 %dir %{_jvmdir}/%{sdkdir}/lib/desktop
 %dir %{_jvmdir}/%{sdkdir}/lib/security
 
