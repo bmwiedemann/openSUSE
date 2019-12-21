@@ -3,6 +3,7 @@ usr/bin/kopano-ibrule
 usr/bin/kopano-oof
 usr/bin/kopano-passwd
 usr/bin/kopano-stats
+usr/bin/kopano-vcfimport
 usr/lib/*/kopano/eidprint
 usr/lib/*/kopano/mapitime
 usr/sbin/kopano-admin
@@ -14,6 +15,7 @@ usr/share/man/man1/kopano-ibrule.1
 usr/share/man/man1/kopano-oof.1
 usr/share/man/man1/kopano-passwd.1
 usr/share/man/man1/kopano-stats.1
+usr/share/man/man1/kopano-vcfimport.1
 usr/share/man/man8/kopano-admin.8
 usr/share/man/man8/kopano-dbadm.8
 usr/share/man/man8/kopano-srvadm.8

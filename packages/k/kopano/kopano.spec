@@ -1,7 +1,7 @@
 #
 # spec file for package kopano
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Kopano B.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 8.7.85
+%define version_unconverted 9.0.2
 
 Name:           kopano
-Version:        8.7.85
+Version:        9.0.2
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
@@ -29,7 +29,7 @@ URL:            https://kopano.io/
 Source:         kopanocore-%version.tar.xz
 Source3:        %name-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  gcc-c++ >= 5
+BuildRequires:  gcc-c++ >= 6
 BuildRequires:  gettext-devel
 BuildRequires:  gperftools-devel
 BuildRequires:  gsoap-devel >= 2.8.73
@@ -178,12 +178,13 @@ Kopano Groupware Core:
 Summary:        E-Mail Delivery Agent for the Kopano platform
 Group:          Productivity/Networking/Email/Servers
 Requires(pre):  kopano-common = %version
-Requires:       kopano-dagent-pytils >= 8.7.80.997
+Requires:       kopano-dagent-pytils >= 9.0.2
 Requires:       kopano-lang = %version
 %if 0%{?suse_version} || 0%{?fedora_version}
 # kcpyplug is dlopened / RedHat7 has no Recommends
 Recommends:     libkcpyplug0 = %version
 %endif
+Conflicts:      kopano-dagent-pytils < 9.0.2
 
 %description dagent
 Delivers incoming e-mail from your SMTP server to stores in the
@@ -310,12 +311,13 @@ server to use for storage.
 Summary:        E-mail Spooler for Kopano Core
 Group:          Productivity/Networking/Email/Servers
 Requires(pre):  kopano-common = %version
-Requires:       kopano-dagent-pytils >= 8.7.80.997
+Requires:       kopano-dagent-pytils >= 9.0.2
 Requires:       kopano-lang = %version
 %if 0%{?suse_version} || 0%{?fedora_version}
 # kcpyplug is dlopened
 Recommends:     libkcpyplug0 = %version
 %endif
+Conflicts:      kopano-dagent-pytils < 9.0.2
 
 %description spooler
 The outgoing e-mail spooler. This service makes sure that e-mails
@@ -833,6 +835,7 @@ fi
 %_bindir/kopano-oof
 %_bindir/kopano-passwd
 %_bindir/kopano-stats
+%_bindir/kopano-vcfimport
 %_sbindir/kopano-admin
 %_sbindir/kopano-dbadm
 %_sbindir/kopano-srvadm
@@ -847,6 +850,7 @@ fi
 %_mandir/man*/kopano-srvadm.*
 %_mandir/man*/kopano-stats.*
 %_mandir/man*/kopano-storeadm.*
+%_mandir/man*/kopano-vcfimport.*
 %dir %_libexecdir/kopano/
 %_libexecdir/kopano/eidprint
 %_libexecdir/kopano/mapitime
@@ -883,6 +887,7 @@ fi
 %files dagent
 %defattr(-,root,root)
 %_sbindir/kopano-dagent
+%_sbindir/kopano-autorespond
 %_prefix/lib/systemd/system/kopano-dagent.service
 %if "%_repository" == "RHEL_7_PHP_56" || "%_repository" == "RHEL_7_PHP_70" || "%_repository" == "RHEL_7_PHP_71"
 %_prefix/lib/systemd/system/kopano-dagent.service.d/

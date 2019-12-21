@@ -1,7 +1,7 @@
 Format: 1.0
 Source: kopano
 Architecture: any all
-Version: 8.7.85-0
+Version: 9.0.2-0
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Kopano Development <development@kopano.io>
 Homepage: https://kopano.com

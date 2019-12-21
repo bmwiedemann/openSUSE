@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 16 16:18:21 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0.2
+  * Enhancements:
+  * storeadm: print entity types in orphan list [KC-718]
+  * client: improve dreaded "gsoap connect: ()" reporting
+  * server: fix dreaded "SSL_accept: (null)" reporting
+  * ECtools: add kopano-vcfimport
+  * Fixes:
+  * client: resolve rogue file descriptor closing [KC-1397,
+    KC-1462, KC-1518, KC-1584, KS-42330, KS-43193, KS-43409,
+    KS-43618, KS-43677, KS-43693, KS-43907, KS-43925, KS-43936]
+  * dagent: resolve crash when appointment has empty
+    organizer [KC-1637]
+  * spooler: regard redirected messages as having
+    recipients [KC-1638]
+
+-------------------------------------------------------------------
 Fri Nov  8 15:32:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop chown calls from scriptlets [boo#1154309]
