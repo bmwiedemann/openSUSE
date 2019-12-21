@@ -1,7 +1,7 @@
 #
 # spec file for package rdesktop
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         https://github.com/rdesktop/rdesktop/releases/download/v%{versio
 Patch0:         rdesktop-fix_pkgconfig_check.patch
 # PATCH-FIX-OPENSUSE rdesktop-Fix-keymap-script.patch
 Patch3:         rdesktop-Fix-keymap-script.patch
+# PATCH-FIX-UPSTREAM rdesktop-fix_segfault_in_rdssl_rkey_get_exp_mod.patch
+Patch4:         rdesktop-fix_segfault_in_rdssl_rkey_get_exp_mod.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -56,6 +58,7 @@ to Windows Server 2012 R2.
 %setup -q
 %patch0
 %patch3 -p1
+%patch4 -p1
 
 ## rpmlint
 # incorrect-fsf-address /usr/share/rdesktop/keymaps/convert-map
@@ -66,7 +69,6 @@ autoreconf -fiv
 CFLAGS="%{optflags} -fno-strict-aliasing" \
 %configure \
   --enable-smartcard \
-  --with-openssl=%{_prefix} \
   --with-ipv6
 make %{?_smp_mflags}
 
