@@ -1,7 +1,7 @@
 #
 # spec file for package libt3config
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,22 @@
 
 Name:           libt3config
 %define lname	libt3config0
-Version:        0.2.11
+Version:        1.0.0
 Release:        0
 Summary:        The Tilde Toolkit's library for reading and writing configuration files
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://os.ghalkes.nl/t3/libt3config.html
+URL:            https://os.ghalkes.nl/t3/libt3config.html
 
-#Git-Clone:	git://github.com/gphalkes/t3config
-Source:         http://os.ghalkes.nl/dist/%name-%version.tar.bz2
+#Git-Clone:	https://github.com/gphalkes/t3config
+Source:         https://os.ghalkes.nl/dist/libt3config-%version.tar.bz2
+Source2:        https://os.ghalkes.nl/dist/libt3config-%version.tar.bz2.sig
+Source3:        %name.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkg-config
 
 %description
 The libt3config library provides functions for reading and writing
@@ -77,12 +78,10 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -p /sbin/ldconfig -n %lname
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libt3config.so.0*
-%doc COPYING
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/t3/
 %_libdir/libt3config.so
 %_libdir/pkgconfig/libt3config.pc
