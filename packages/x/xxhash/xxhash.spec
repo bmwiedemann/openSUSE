@@ -17,7 +17,7 @@
 
 
 Name:           xxhash
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Non-cryptographic hash algorithm
 License:        GPL-2.0-only AND BSD-2-Clause
@@ -62,6 +62,9 @@ make %{?_smp_mflags} prefix=%{_prefix} libdir=%{_libdir}
 %make_install prefix=%{_prefix} libdir=%{_libdir}
 rm -rf %{buildroot}%{_libdir}/libxxhash.a
 
+%check
+make test
+
 %post -n libxxhash0 -p /sbin/ldconfig
 %postun -n libxxhash0 -p /sbin/ldconfig
 
@@ -71,8 +74,10 @@ rm -rf %{buildroot}%{_libdir}/libxxhash.a
 %{_bindir}/xxhsum
 %{_bindir}/xxh32sum
 %{_bindir}/xxh64sum
+%{_bindir}/xxh128sum
 %{_mandir}/man1/xxh32sum.*
 %{_mandir}/man1/xxh64sum.*
+%{_mandir}/man1/xxh128sum.*
 %{_mandir}/man1/xxhsum.*
 
 %files -n libxxhash0

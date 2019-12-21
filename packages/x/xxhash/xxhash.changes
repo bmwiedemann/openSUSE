@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 18 23:57:43 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable test suite run in %check
+
+-------------------------------------------------------------------
+Tue Dec 17 13:17:59 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 0.7.2
+  * Fixed collision ratio of XXH128 for some specific input lengths
+  * Improved VSX and NEON variants
+  * Improved performance of scalar code path (XXH_VECTOR=0),
+  * xxhsum: can generate 128-bit hash with command -H2 (note: for
+    experimental purposes only! XXH128 is not yet frozen)
+  * xxhsum: option -q removes status notifications
+
+-------------------------------------------------------------------
 Thu Sep 26 10:06:43 UTC 2019 - simmphonie@opensuse.org
 
 - update to version 0.7.1
