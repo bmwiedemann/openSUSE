@@ -69,4 +69,12 @@
     <comment>- Update to new upstream release 0.4.8</comment>
     <requestid>725407</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0f9e184fabd9ee7028d42443fcf44ca8</srcmd5>
+    <version>0.5.0</version>
+    <time>1576927929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.5.0</comment>
+    <requestid>758354</requestid>
+  </revision>
 </revisionlist>

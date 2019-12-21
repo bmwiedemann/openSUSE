@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 19 23:49:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.5.0
+  * This release adds highlighting scopes, which provides the
+    ability to use different rendering for included languages.
+    For example, it allows using different rendering for keywords
+    in CSS than for keywords in the HTML it is embedded in.
+
+-------------------------------------------------------------------
 Thu Aug 22 19:43:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.4.8

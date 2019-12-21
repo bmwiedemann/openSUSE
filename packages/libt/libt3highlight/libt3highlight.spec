@@ -1,7 +1,7 @@
 #
 # spec file for package libt3highlight
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 Name:           libt3highlight
 %define lname	libt3highlight2
-Version:        0.4.8
+Version:        0.5.0
 Release:        0
 Summary:        The Tilde Toolkit's syntax highlighting library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://os.ghalkes.nl/t3/libt3highlight.html
 
-#Git-Clone:	git://github.com/gphalkes/t3highlight
+#Git-Clone:	https://github.com/gphalkes/t3highlight
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
+Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
+Source3:        %name.keyring
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libt3config) >= 0.2.5
 
