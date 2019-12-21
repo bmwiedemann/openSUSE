@@ -1,7 +1,7 @@
 #
 # spec file for package libtranscript
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Release:        0
 Summary:        A character set conversion library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://os.ghalkes.nl/libtranscript.html
+URL:            https://os.ghalkes.nl/libtranscript.html
 
 #Git-Clone:	git://github.com/gphalkes/transcript
-Source:         http://os.ghalkes.nl/dist/%name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
+Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
+Source3:        %name.keyring
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
@@ -74,13 +75,11 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -p /sbin/ldconfig -n %lname
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libtranscript.so.1*
-%doc COPYING
 %_libdir/transcript1/
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/transcript/
 %_libdir/libtranscript.so
 %_libdir/pkgconfig/libtranscript.pc
