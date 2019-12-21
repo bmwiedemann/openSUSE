@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 08:55:14 UTC 2019 - David Kang <dkang@suse.com>
+
+- updated to version 2.0.8
+  * CVE-2019-16782: Possible information leak / session hijack vulnerability
+
+-------------------------------------------------------------------
 Sat Apr  6 17:52:23 UTC 2019 - manuel <mschnitzer@suse.com>
 
 - updated to version 2.0.7
@@ -71,7 +77,7 @@ Fri Jun 19 04:32:19 UTC 2015 - coolo@suse.com
  see installed HISTORY.md
 
   Fri Jun 19 07:14:50 2015  Matthew Draper <matthew@trebex.net>
-  
+
   	* Work around a Rails incompatibility in our private API
 
 -------------------------------------------------------------------
@@ -81,7 +87,7 @@ Wed Jun 17 04:37:32 UTC 2015 - coolo@suse.com
  see installed HISTORY.md
 
   Fri Jun 12 11:37:41 2015  Aaron Patterson <tenderlove@ruby-lang.org>
-  
+
   	* Prevent extremely deep parameters from being parsed. CVE-2015-3225
 
 -------------------------------------------------------------------
@@ -195,7 +201,7 @@ Tue Jan  8 20:26:44 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Tue Jul 31 13:13:42 UTC 2012 - jreidinger@suse.com
 
-- use new gem2rpm to provide new provisions 
+- use new gem2rpm to provide new provisions
 
 -------------------------------------------------------------------
 Mon Apr  2 12:41:39 UTC 2012 - saschpe@suse.de
