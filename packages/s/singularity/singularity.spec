@@ -23,7 +23,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://www.sylabs.io/singularity/
@@ -31,7 +31,7 @@ Source0:        https://github.com/sylabs/singularity/releases/download/v%{versi
 Source1:        README.SUSE
 Source5:        %{name}-rpmlintrc
 Patch0:         build-position-independent-binaries.patch
-
+Patch1:         useful_error_message.patch
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -59,6 +59,7 @@ containers that can be used across host environments.
 %prep
 %setup -q -n gopath/%{singgopath} -c
 %patch0 -p 4
+%patch1 -p 4
 cp %{S:1} .
 
 %build

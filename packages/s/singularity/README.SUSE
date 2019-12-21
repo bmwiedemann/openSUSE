@@ -1,8 +1,13 @@
 openSUSE/SUSE specific Settings
 ===============================
 
-Different from the upstream default, the SUID root binaries
-are executible only by users belonging to the group 'singularity'.
+openSUSE and SUSE have a small difference with upstream default. 
+This means the SUID root binaries distributed by singularty are
+executable only by users belonging to the group 'singularity'.
+
+Otherwise, users will get an error message like this one:
+
+FATAL:   while executing /usr/lib/singularity/bin/starter-suid: permission denied
 
 To add a user to the group singularity, execute (as root):
 

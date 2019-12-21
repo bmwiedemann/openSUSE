@@ -1,0 +1,15 @@
+Subject: Add an useful error message when the user doesn't belong to the singularity group
+Date: 2019.12.19
+
+diff -Nrua src/github.com/sylabs/singularity/internal/pkg/util/starter/starter.go src/github.com/sylabs/singularity/internal/pkg/util/starter/starter.go
+--- a/src/github.com/sylabs/singularity/internal/pkg/util/starter/starter.go	2019-12-03 23:07:06.000000000 +0100
++++ b/src/github.com/sylabs/singularity/internal/pkg/util/starter/starter.go	2019-12-18 00:48:35.670565337 +0100
+@@ -90,7 +90,7 @@
+ 		return fmt.Errorf("while initializing starter command: %s", err)
+ 	}
+ 	err := unix.Exec(c.path, []string{name}, c.env)
+-	return fmt.Errorf("while executing %s: %s", c.path, err)
++	return fmt.Errorf("while executing %s: %s\nPlease read /usr/share/doc/packages/singularity/README.SUSE to get help\n", c.path, err)
+ }
+ 
+ // Run executes the starter binary and returns once starter

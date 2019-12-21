@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:12:49 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.5.2. Main change is a fix for a security issue related 
+  to incorrect file permissions (CVE-2019-19724) on user configuration 
+  and cache directories. (boo#1159550)
+  For other minor bug fixes please read CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Dec 19 08:21:59 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update wording in SUSE.README
+- New patch, to get a more clear error message when user doesn't 
+  belong to the singularity group
+  * useful_error_message.patch
+
+-------------------------------------------------------------------
 Fri Dec 13 09:46:13 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 3.5.1. Many changes since 3.4.2, for the full changelog
