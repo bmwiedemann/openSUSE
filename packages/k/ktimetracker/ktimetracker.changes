@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Dec 20 10:53:15 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Initial package
+  * First standalone release of ktimetracker, was part of kdepim up
+    to 4.14
+  * Ported to Qt5 and KDE Frameworks 5
+
