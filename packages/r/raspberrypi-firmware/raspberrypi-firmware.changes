@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:53:30 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0c01dbefba (2019-12-11):
+  * firmware: platform: Allow fixed voltage with avs_disable=1
+  * firmware: EMMC: Use PLLD for EMMC for 250MHz host-clock
+    See: #1289
+  * firmware: platform: Round down effective frequencies when they exceed max
+    See: #1290
+  * firmware: arm_loader: Pass video mode via kernel command for composite
+    See: #1285
+  * firmware: Fix lens shading table generation buglet
+    See: https://www.raspberrypi.org/forums/viewtopic.php?f=43&t=190586&start=75#p1534672
+  * firmware: hdmi: Use RB2 timing for 2560x1440@60 if pixel clock is 241.5 MHz
+  * firmware: arm_dt: Look for ethernet0 before ethernet
+  * firmware: arm_dt: Set PCIe dma-ranges from memory size
+  * firmware: hdmi: HDMI SM clock must not run slower than audio MAI clock …
+    See: #1295
+  * firmware: arm_loader: Pass video mode via kernel command for composite (master)
+    See: #1285
+  * firmware: power: Use Pi4 PMIC values on Pi3+
+  * firmware: Fix filtered handling of array variables
+    See: #1296
+  * firmware: Update libfdt to v1.5.1+
+    See: raspberrypi/userland#582
+  * firmware: dtoverlay: Extend DT parameter syntax
+  * firmware: memorymap: Include FW revision in start.elf
+
+-------------------------------------------------------------------
 Wed Dec  4 17:30:48 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add custom gpu_mem config for RPi4 (bsc#1158406)

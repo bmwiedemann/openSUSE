@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-config
-Version:        2019.11.19
+Version:        2019.12.11
 Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
 License:        MIT
@@ -27,11 +27,10 @@ Source:         config.txt
 BuildRequires:  raspberrypi-firmware
 Requires:       raspberrypi-firmware = %{version}
 Conflicts:      kernel < 4.12.14
-Conflicts:      otherproviders(raspberrypi-firmware-config)
+Conflicts:      raspberrypi-firmware-config
 Provides:       raspberrypi-firmware-branding-openSUSE = %{version}
 Obsoletes:      raspberrypi-firmware-branding-openSUSE < %{version}
 Provides:       raspberrypi-firmware-config = %{version}
-BuildArch:      noarch
 Provides:       raspberrypi-firmware-config-rpi = %{version}
 Obsoletes:      raspberrypi-firmware-config-rpi < %{version}
 Provides:       raspberrypi-firmware-config-rpi0w = %{version}
@@ -40,6 +39,7 @@ Provides:       raspberrypi-firmware-config-rpi2 = %{version}
 Obsoletes:      raspberrypi-firmware-config-rpi2 < %{version}
 Provides:       raspberrypi-firmware-config-rpi3 = %{version}
 Obsoletes:      raspberrypi-firmware-config-rpi3 < %{version}
+BuildArch:      noarch
 
 %description
 This package configures the Raspberry Pi boot process.

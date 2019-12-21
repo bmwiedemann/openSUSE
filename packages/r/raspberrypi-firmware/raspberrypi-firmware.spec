@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware
-Version:        2019.11.19
+Version:        2019.12.11
 Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware
@@ -26,12 +26,11 @@ URL:            https://github.com/raspberrypi/firmware/
 Source0:        raspberrypi-firmware-%{version}.tar.bz2
 Source1:        get-from-git.sh
 Source99:       %{name}-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
 Requires(post): util-linux
-Requires(preun):util-linux
-Recommends:     raspberrypi-firmware-dt
+Requires(preun): util-linux
 Recommends:     raspberrypi-firmware-config
+Recommends:     raspberrypi-firmware-dt
+BuildArch:      noarch
 
 %description
 Binary bootloader and firmware files for Raspberry Pi
@@ -41,7 +40,7 @@ Summary:        Extra bootloaders for Raspberry Pi
 Group:          System/Boot
 Requires:       raspberrypi-firmware = %{version}-%{release}
 Requires(post): util-linux
-Requires(preun):util-linux
+Requires(preun): util-linux
 
 %description extra
 This package provides the console, experimental and debug
@@ -52,7 +51,7 @@ Summary:        Extra bootloaders for Raspberry Pi
 Group:          System/Boot
 Requires:       raspberrypi-firmware = %{version}-%{release}
 Requires(post): util-linux
-Requires(preun):util-linux
+Requires(preun): util-linux
 
 %description extra-pi4
 This package provides the console, experimental and debug
@@ -121,7 +120,7 @@ fi
 /boot/vc/fixup.dat
 /boot/vc/fixup4.dat
 /boot/vc/bootcode.bin
-%doc /boot/vc/LICENCE.broadcom
+%license /boot/vc/LICENCE.broadcom
 
 %files extra
 %defattr(-,root,root)
