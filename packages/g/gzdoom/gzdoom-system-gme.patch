@@ -1,0 +1,67 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2019-12-18 23:10:30.098185171 +0100
+
+Use GME system libraries instead of bundled code.
+
+---
+ CMakeLists.txt                  |   13 ++++---------
+ libraries/zmusic/CMakeLists.txt |    2 +-
+ 2 files changed, 5 insertions(+), 10 deletions(-)
+
+Index: gzdoom-g4.2.4/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.2.4.orig/CMakeLists.txt
++++ gzdoom-g4.2.4/CMakeLists.txt
+@@ -195,12 +195,7 @@ endif()
+ #endif()
+ 
+ # GME
+-#find_path( GME_INCLUDE_DIR gme/gme.h )
+-#find_library( GME_LIBRARIES gme )
+-#mark_as_advanced( GME_INCLUDE_DIR GME_LIBRARIES )
+-#FIND_PACKAGE_HANDLE_STANDARD_ARGS( GME
+-#	REQUIRED_VARS GME_LIBRARIES GME_INCLUDE_DIR
+-#)
++pkg_check_modules(GME libgme)
+ 
+ if( MSVC )
+ 	# Eliminate unreferenced functions and data
+@@ -323,7 +318,7 @@ set( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_
+ option(FORCE_INTERNAL_ZLIB "Use internal zlib")
+ option(FORCE_INTERNAL_JPEG "Use internal jpeg")
+ option(FORCE_INTERNAL_BZIP2 "Use internal bzip2")
+-option(FORCE_INTERNAL_GME "Use internal gme" ON)
++option(FORCE_INTERNAL_GME "Use internal gme" OFF)
+ mark_as_advanced( FORCE_INTERNAL_GME )
+ option(FORCE_INTERNAL_ASMJIT "Use internal asmjit" ON)
+ mark_as_advanced( FORCE_INTERNAL_ASMJIT )
+@@ -392,14 +387,14 @@ else()
+ endif()
+ 
+ if( GME_FOUND AND NOT FORCE_INTERNAL_GME )
+-	message( STATUS "Using system gme library, includes found at ${GME_INCLUDE_DIR}" )
++	message( STATUS "Using system gme library, includes found at ${GME_INCLUDEDIR}" )
+ else()
+ 	message( STATUS "Using internal gme library" )
+ 	# Use MAME as it's balanced emulator: well-accurate, but doesn't eats lot of CPU
+ 	# Nuked OPN2 is very accurate emulator, but it eats too much CPU for the workflow
+ 	set( GME_YM2612_EMU "MAME" )
+ 	add_subdirectory( libraries/game-music-emu )
+-	set( GME_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/game-music-emu" )
++	set( GME_INCLUDEDIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/game-music-emu" )
+ 	set( GME_LIBRARIES gme )
+ endif()
+ 
+Index: gzdoom-g4.2.4/libraries/zmusic/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.2.4.orig/libraries/zmusic/CMakeLists.txt
++++ gzdoom-g4.2.4/libraries/zmusic/CMakeLists.txt
+@@ -41,7 +41,7 @@ else()
+ endif()
+ 
+ 
+-include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../libraries/dumb/include" "${ZLIB_INCLUDE_DIR}" "${ADL_INCLUDE_DIR}" "${OPN_INCLUDE_DIR}" "${TIMIDITYPP_INCLUDE_DIR}" "${TIMIDITY_INCLUDE_DIR}" "${WILDMIDI_INCLUDE_DIR}" "${OPLSYNTH_INCLUDE_DIR}" "${GME_INCLUDE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}" )
++include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../libraries/dumb/include" "${ZLIB_INCLUDE_DIR}" "${ADL_INCLUDE_DIR}" "${OPN_INCLUDE_DIR}" "${TIMIDITYPP_INCLUDE_DIR}" "${TIMIDITY_INCLUDE_DIR}" "${WILDMIDI_INCLUDE_DIR}" "${OPLSYNTH_INCLUDE_DIR}" "${GME_INCLUDEDIR}" "${CMAKE_CURRENT_SOURCE_DIR}" )
+ 
+ if (WIN32)
+ set( PLAT_SOURCES

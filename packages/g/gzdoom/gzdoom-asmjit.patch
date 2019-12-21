@@ -2,15 +2,15 @@
  libraries/asmjit/CMakeLists.txt |    1 +
  1 file changed, 1 insertion(+)
 
-Index: gzdoom-g4.2.1/libraries/asmjit/CMakeLists.txt
+Index: gzdoom-g4.2.4/libraries/asmjit/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.2.1.orig/libraries/asmjit/CMakeLists.txt
-+++ gzdoom-g4.2.1/libraries/asmjit/CMakeLists.txt
-@@ -140,6 +140,7 @@ endforeach()
+--- gzdoom-g4.2.4.orig/libraries/asmjit/CMakeLists.txt
++++ gzdoom-g4.2.4/libraries/asmjit/CMakeLists.txt
+@@ -100,6 +100,7 @@ set(ASMJIT_SRCS
+ add_library(${ASMJITNAME} STATIC ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
  
- add_library(${ASMJITNAME} STATIC ${ASMJIT_SRCS})
  set_target_properties(${ASMJITNAME} PROPERTIES OUTPUT_NAME asmjit)
 +target_link_libraries(${ASMJITNAME} rt)
  
- if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
- 	install(TARGETS ${ASMJITNAME}
+ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
+     install(TARGETS ${ASMJITNAME}
