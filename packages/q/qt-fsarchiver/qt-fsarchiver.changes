@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Thu Dec 19 16:31:26 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 0.8.5-12 version:
+  - International language is recognized at startup.
+  - Updated qt-fsarchiver_lt.ts now is upstream.
+  - Removed archinfo.patch as now it is upstream.
+
+-------------------------------------------------------------------
+Mon Dec 16 16:30:24 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- All "Requires:" turned into "Recommends:", i.e. for btrfsprogs, 
+  gdisk, jfsutils, nfs-kernel-server, nmap, samba, sshfs, xfsprogs.
+- Removed "/sbin/ldconfig" from %post and %postun.
+
+-------------------------------------------------------------------
+Mon Dec 16 13:45:22 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- add qt-fsarchiver_lt.ts with updated Lithuanian translation.
+
+-------------------------------------------------------------------
+Sun Nov  3 13:43:22 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- add archinfo.patch to fix build in openSUSE Leap 15.x.
+
+-------------------------------------------------------------------
+Fri Nov  1 13:58:25 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to qt-fsarchiver and qt-fsarchiver-terminal to 0.8.5-11.
+
+-------------------------------------------------------------------
+Tue Jun 25 10:26:13 UTC 2019 - opensuse.lietuviu.kalba@gmail.com>
+
+- qt-fsarchiver 0.8.5-10.
+- Initial RPM package for openSUSE.
+
