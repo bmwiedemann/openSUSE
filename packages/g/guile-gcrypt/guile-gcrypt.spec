@@ -1,7 +1,7 @@
 #
 # spec file for package guile-gcrypt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           guile-gcrypt
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Cryptography library for Guile using Libgcrypt
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Other
-Url:            https://notabug.org/cwebber/guile-gcrypt
+URL:            https://notabug.org/cwebber/guile-gcrypt
 Source0:        https://notabug.org/cwebber/%{name}/archive/v%{version}.tar.gz
+Source1:        guile-gcrypt-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  guile-devel >= 2.0.10

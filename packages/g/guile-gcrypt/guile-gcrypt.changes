@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:09:11 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Add guile-gcrypt-rpmlintrc as source to the spec file 
+
+-------------------------------------------------------------------
+Tue Dec 17 09:17:45 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 0.2.1:
+  * libgcrypt is now always properly initialized (https://bugs.gnu.org/37616)
+  * (gcrypt base64) no longer imports (rnrs) 
+- Add guile-gcrypt-rpmlintrc to silence false positives
+
+-------------------------------------------------------------------
 Mon Sep 16 08:03:47 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.com>
 
 - Update to version 0.2.0:
