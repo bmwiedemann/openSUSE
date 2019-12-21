@@ -97,4 +97,13 @@
     <comment></comment>
     <requestid>726743</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3446fa9d6da5b23fc67316dd0cf0518a</srcmd5>
+    <version>6.0.0</version>
+    <time>1576928072</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0
+  * Python 3.8 enablement</comment>
+    <requestid>758620</requestid>
+  </revision>
 </revisionlist>
