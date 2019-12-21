@@ -15,4 +15,12 @@
     <comment>- Update to new upstream release 14.29.26</comment>
     <requestid>643500</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee350bcdc39c905ad7d13556dc632eb4</srcmd5>
+    <version>14.30.1</version>
+    <time>1576927957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 14.30.1</comment>
+    <requestid>758342</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package jmol
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           jmol
-Version:        14.29.26
+Version:        14.30.1
 Release:        0
 Summary:        3D Viewer for chemical structures
 License:        LGPL-2.1-only
 Group:          Productivity/Scientific/Chemistry
-Url:            http://jmol.sf.net/
+URL:            http://jmol.sf.net/
 
 #Source:         http://downloads.sf.net/jmol/Jmol-%version-binary.tar.gz
 Source:         jmol-%version.tar.xz

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 19 22:25:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.30.1
+  * new feature: (undocumented) set picking dragMolecule
+  * new feature: set picking dragModel
+
+-------------------------------------------------------------------
 Sat Oct 20 11:57:45 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 14.29.26
