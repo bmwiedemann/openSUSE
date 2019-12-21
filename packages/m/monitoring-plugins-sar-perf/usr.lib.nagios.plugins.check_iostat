@@ -5,9 +5,11 @@
    #include <abstractions/perl>
    /usr/bin/iostat rix,
    /{usr/,}bin/bash rix,
+   /{usr/,}bin/stat rix,
    /usr/bin/which rix,
    /sys/devices/system/cpu/ r,
    /proc/meminfo r,
+   @{PROC}/[0-9]*/mounts r,
    /proc/diskstats r,
    /proc/uptime r,
    /etc/sysstat/sysstat.ioconf r,

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 11 18:10:48 CET 2019 - ro@suse.de
+
+- check_iostat: sanitize dev name to properly match iostat output 
+
+-------------------------------------------------------------------
+Thu Dec  5 16:34:19 CET 2019 - ro@suse.de
+
+- check_iostat: exit with OK if running on tmpfs
+- check_iostat: fix apparmor profile to allow stat call 
+
+-------------------------------------------------------------------
+Thu Dec  5 14:40:38 CET 2019 - ro@suse.de
+
+- check_iostat: allow to just specify a directory 
+
+-------------------------------------------------------------------
 Sun Apr 14 16:06:32 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
 
 - update AppArmor profile for usrMerge (bash) (boo#1132350)

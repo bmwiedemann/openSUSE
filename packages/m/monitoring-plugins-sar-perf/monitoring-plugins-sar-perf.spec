@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-sar-perf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ License:        BSD-2-Clause
 Group:          System/Monitoring
 Version:        0.1
 Release:        0
-Url:            https://github.com/nickanderson/check-sar-perf 
+URL:            https://github.com/nickanderson/check-sar-perf 
 Source0:        nickanderson-check-sar-perf-4878d0c.tar.gz 
 Source1:        check_iostat
 Source2:        usr.lib.nagios.plugins.check_iostat

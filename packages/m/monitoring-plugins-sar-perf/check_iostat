@@ -71,14 +71,36 @@ my ($crit_tps,$crit_read,$crit_written) = split(',',$critical);
 my ($warn_tps,$warn_read,$warn_written) = split(',',$warning);
 
 # Checking parameters:
+if (-d "$disk") {
+    # directory specified ...
+    my $mp = `stat --format '\%m' $disk`;
+    chomp($mp);
+    my $fstype = `stat --file-system --format '\%T' $mp`;
+    chomp($fstype);
+    if ($fstype eq "tmpfs") {
+        print "OK - $disk (mountpoint $mp is tmpfs)\n";
+        exit 0;
+    }
+    open(MOUNTS,"/proc/mounts");
+    while(<MOUNTS>) {
+        chomp($_);
+        my @line = split('\s+',$_);
+        $disk = $line[0] if $mp eq $line[1]; 
+    }
+    close(MOUNTS);
+}
+
+$disk =~ s/^\/dev\/mapper\///;
+$disk =~ s/^\/dev\///;
+
 if (! -b "/dev/$disk") {
     if (-b "/dev/mapper/$disk") {
         my @f = stat("/dev/mapper/$disk");
-	$f[6] %= 256;
-	$disk = "dm-$f[6]";
+        $f[6] %= 256;
+        $disk = "dm-$f[6]";
     } else {
-	warn "ERROR: Device incorrectly specified\n";
-	HELP_MESSAGE();
+        warn "ERROR: Device incorrectly specified\n";
+        HELP_MESSAGE();
     }
 }
 
