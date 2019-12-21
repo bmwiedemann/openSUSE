@@ -1,7 +1,7 @@
 #
 # spec file for package jcifs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Release:        0
 Summary:        Common Internet File System Client in 100% Java
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            http://jcifs.samba.org/
+URL:            http://jcifs.samba.org/
 Source0:        http://jcifs.samba.org/src/%{name}-%{version}.tgz
-Source1:        http://maven.ibiblio.org/maven2/jcifs/jcifs/1.3.17/jcifs-1.3.17.pom
+Source1:        https://repo1.maven.org/maven2/jcifs/jcifs/1.3.17/jcifs-1.3.17.pom
 Patch0:         jcifs-1.3.19-build.patch
 BuildRequires:  ant
 BuildRequires:  fdupes

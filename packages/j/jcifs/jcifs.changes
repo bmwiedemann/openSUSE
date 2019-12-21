@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:40:45 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix en incorrect URL of the pom file
+
+-------------------------------------------------------------------
 Thu Feb  7 07:52:15 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against glassfish-servlet-api
