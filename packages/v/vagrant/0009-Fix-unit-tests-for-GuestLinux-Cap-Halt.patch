@@ -1,7 +1,7 @@
 From e1eaa4583e58d802f0c2339c959b5becb6a2c49f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Thu, 14 Mar 2019 00:25:05 +0100
-Subject: [PATCH 09/15] Fix unit tests for GuestLinux::Cap::Halt
+Subject: [PATCH 09/16] Fix unit tests for GuestLinux::Cap::Halt
 
 This test fails since we patch `shutdown -h now` to be `shutdown -h now &`
 instead.

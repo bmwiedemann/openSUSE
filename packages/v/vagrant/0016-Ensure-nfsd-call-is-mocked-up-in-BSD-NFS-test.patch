@@ -1,0 +1,26 @@
+From fc3450130149046e30c618508bf9019a7272b783 Mon Sep 17 00:00:00 2001
+From: Brian Cain <bcain@hashicorp.com>
+Date: Fri, 25 Oct 2019 09:02:30 -0700
+Subject: [PATCH 16/16] Ensure nfsd call is mocked up in BSD NFS test
+
+---
+ test/unit/plugins/hosts/bsd/cap/nfs_test.rb | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/unit/plugins/hosts/bsd/cap/nfs_test.rb b/test/unit/plugins/hosts/bsd/cap/nfs_test.rb
+index 51c125484..d3745c6e6 100644
+--- a/test/unit/plugins/hosts/bsd/cap/nfs_test.rb
++++ b/test/unit/plugins/hosts/bsd/cap/nfs_test.rb
+@@ -21,6 +21,9 @@ describe VagrantPlugins::HostBSD::Cap::NFS do
+       allow(described_class).to receive(:system)
+       allow(File).to receive(:writable?).with("/etc/exports")
+       allow(ui).to receive(:info)
++
++      allow(Vagrant::Util::Subprocess).to receive(:execute).with("nfsd", "checkexports").
++        and_return(Vagrant::Util::Subprocess::Result.new(0, "", ""))
+     end
+ 
+     it "should execute successfully when no folders are defined" do
+-- 
+2.24.0
+

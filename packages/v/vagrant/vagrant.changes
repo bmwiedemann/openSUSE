@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 19 11:22:33 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add fix for failing unit test
+
+  Added patch from upstream (https://github.com/hashicorp/vagrant/pull/11155):
+  - 0016-Ensure-nfsd-call-is-mocked-up-in-BSD-NFS-test.patch
+
+  Rebased patches:
+
+  - 0001-bin-vagrant-silence-warning-about-installer.patch
+  - 0002-Use-a-private-temporary-dir.patch
+  - 0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+  - 0004-plugins-don-t-abuse-require_relative.patch.patch
+  - 0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  - 0006-do-not-depend-on-wdm.patch
+  - 0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  - 0008-Don-t-abuse-relative-paths-in-plugins.patch
+  - 0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+  - 0010-Skip-failing-tests.patch
+  - 0011-Bump-rspec-its-dependency.patch
+  - 0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+  - 0013-Catch-NetworkNoInterfaces-error-in-docker-prepare_ne.patch
+  - 0015-ARM-only-Disable-Subprocess-unit-test.patch
+
+-------------------------------------------------------------------
 Wed Nov 13 10:18:47 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Add rubyzip to as Requires: and bump its version to 1.3

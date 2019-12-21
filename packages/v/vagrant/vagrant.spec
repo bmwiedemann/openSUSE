@@ -68,6 +68,8 @@ Patch13:        0013-Catch-NetworkNoInterfaces-error-in-docker-prepare_ne.patch
 # FIXME: upstream fix, drop at next release after v2.2.6
 Patch14:        0014-Bump-rubyzip-version-to-fix-CVE-2019-16892.patch
 Patch15:        0015-ARM-only-Disable-Subprocess-unit-test.patch
+# FIXME: upstream fix, drop at the next release after v2.2.6
+Patch16:        0016-Ensure-nfsd-call-is-mocked-up-in-BSD-NFS-test.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -298,6 +300,7 @@ Optional dependency offering bash completion for vagrant
 %ifarch %{arm} aarch64
 %patch15 -p 1
 %endif
+%patch16 -p 1
 
 cp %{SOURCE98} .
 
