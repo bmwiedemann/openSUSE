@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 19 20:58:45 UTC 2019 - svasudevan@suse.com
+
+- Update to version 0.2.1+git.20190826:
+  * Remove grpc_java dependency and java_proto rules. (#214)
+  * Add C++ targets, especially for gRPC services. (#212)
+  * Upgrade bazel and dependencies to latest. (#211)
+  * Bring back bazel cache to make CI faster. (#210)
+  * Travis: don't require sudo for bazel installation. (#209)
+
+-------------------------------------------------------------------
 Wed Sep 25 10:58:44 UTC 2019 - mrostecki@opensuse.org
 
 - Update to version 0.2.1:

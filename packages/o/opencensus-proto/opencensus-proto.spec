@@ -26,7 +26,7 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           opencensus-proto
-Version:        0.2.1
+Version:        0.2.1+git.20190826
 Release:        0
 Summary:        Protocol buffers for OpenCensus
 License:        Apache-2.0

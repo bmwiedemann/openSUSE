@@ -4,9 +4,9 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">opencensus-proto</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.2.1</param>
+    <param name="revision">5cec5ea58c3efa81fa808f2bd38ce182da9ee731</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">
