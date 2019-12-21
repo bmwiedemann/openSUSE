@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 20 04:19:39 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.2.1
+
+  * Fix possible information leak / session hijacking vulnerability.
+
+  The ActionDispatch::Session::MemcacheStore is still vulnerable given it requires the
+  gem dalli to be updated as well.
+
+  (CVE-2019-16782)
+
+-------------------------------------------------------------------
 Sat Dec 14 00:00:03 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.2
