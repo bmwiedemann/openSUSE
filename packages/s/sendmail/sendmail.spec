@@ -1,7 +1,7 @@
 #
 # spec file for package sendmail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,9 +49,9 @@ BuildRequires:  vacation
 %if 0%{?suse_version} > 1140
 BuildRequires:  libnsl-devel
 BuildRequires:  pkg-config
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %endif
-Url:            http://www.sendmail.org/
+URL:            http://www.sendmail.org/
 %define         SUBDIRS libsmutil libsmdb sendmail mail.local mailstats makemap praliases rmail smrsh libmilter libsm editmap
 Provides:       sendcf
 Provides:       sendmail-tls

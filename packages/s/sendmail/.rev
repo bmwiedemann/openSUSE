@@ -819,4 +819,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>741483</requestid>
   </revision>
+  <revision rev="92" vrev="20">
+    <srcmd5>bb20d752e5f7ac74672830f56485c11b</srcmd5>
+    <version>8.15.2</version>
+    <time>1576928011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758500</requestid>
+  </revision>
 </revisionlist>
