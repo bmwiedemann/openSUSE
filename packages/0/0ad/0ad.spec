@@ -1,7 +1,7 @@
 #
 # spec file for package 0ad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Release:        0
 Summary:        A real-time strategy game of ancient warfare
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later AND CC-BY-SA-3.0 AND MIT AND ISC AND MPL-2.0 AND BSD-3-Clause
 Group:          Amusements/Games/Strategy/Real Time
-Url:            https://play0ad.com/
+URL:            https://play0ad.com/
 #Source:         http://sourceforge.net/projects/zero-ad/files/releases/%{name}-%{version}-alpha-unix-build.tar.xz
 # SF is repeatedly not up to date. Let's use their site
 Source:         https://releases.wildfiregames.com/%{name}-%{version}-alpha-unix-build.tar.xz
@@ -75,6 +75,9 @@ flexible game engine.
 %setup -q -n %{name}-%{version}-alpha
 
 %build
+%ifarch %ix86
+%define _lto_cflags %{nil}
+%endif
 export CFLAGS="%{optflags}"
 # bundled Collada uses CCFLAGS
 export CCFLAGS="%{optflags}"

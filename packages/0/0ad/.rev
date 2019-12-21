@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>704652</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>71598fa7e3e8422515047fd71e2dee72</srcmd5>
+    <version>0.0.23b</version>
+    <time>1576927974</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO on i586.</comment>
+    <requestid>758479</requestid>
+  </revision>
 </revisionlist>
