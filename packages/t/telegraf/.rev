@@ -26,4 +26,14 @@
   of openSUSE package descriptions. (forwarded request 729707 from jengelh)</comment>
     <requestid>732254</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ebff7477fe5dc89eddca6c7a20ec0f1</srcmd5>
+    <version>1.12.6</version>
+    <time>1576927835</time>
+    <user>dimstar_suse</user>
+    <comment>Add changelog entry add 0001-Generic-SQL-output-plugin-for-Telegraf.patch
+drop feature_passive_amqp_exchange.patch contemporaneous to OBS change
+devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
+    <requestid>758640</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Dec 18 21:56:52 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to release 1.12.6
+  Refs boo#1159288 SLES customer request for updated version
+  * v1.12.6 [2019-11-19]
+    * telegraf#6666: Fix many plugin errors are logged at debug logging level
+    * telegraf#6652: Use nanosecond precision in docker_log input
+    * telegraf#6642: Fix interface option with method = native in ping input
+    * telegraf#6680: Fix panic in mongodb input if shard connection pool stats are unreadable (telegraf#6680)
+  * v1.12.5 [2019-11-12]
+    * telegraf#6576: Fix incorrect results in ping input plugin
+    * telegraf#6610: Add missing character replacement to sql_instance tag
+    * telegraf#6337: Change no metric error message to debug level in cloudwatch input
+    * telegraf#6602: Add missing ServerProperties query to sqlserver input docs
+    * telegraf#6643: Fix mongodb connections_total_created field loading
+    * telegraf#6627: Fix metric creation when node is offline in jenkins input
+    * telegraf#6649: Fix docker uptime_ns calculation when container has been restarted
+    * telegraf#6647: Fix mysql field type conflict in conversion of gtid_mode to an integer
+    * telegraf#5529: Fix mysql field type conflict with ssl_verify_depth and ssl_ctx_verify_depth
+  * v1.12.4 [2019-10-23]
+    * telegraf#6521: Fix metric generation with ping input native method
+    * telegraf#6541: Exclude alias tag if unset from plugin internal stats
+    * telegraf#6564: Fix socket_mode option in powerdns_recursor input
+  * v1.12.3 [2019-10-07]
+    * telegraf#6445: Use batch serialization format in exec output
+    * telegraf#6464: Use case insensitive serial numer match in smart input
+    * telegraf#6469: Add auth header only when env var is set
+    * telegraf#6468: Fix running multiple mysql and sqlserver plugin instances
+    * telegraf#6471: Fix database routing on retry with exclude_database_tag
+    * telegraf#6488: Fix logging panic in exec input with nagios data format
+  * v1.12.2 [2019-09-24]
+    * telegraf#6386: Fix detection of layout timestamps in csv and json parser
+    * telegraf#6394: Fix parsing of BATTDATE in apcupsd input
+    * telegraf#6398: Keep boolean values listed in json_string_fields
+    * telegraf#6393: Disable Go plugin support in official builds
+    * telegraf#6391: Fix path handling issues in cisco_telemetry_gnmi
+  * v1.12.1 [2019-09-10]
+    * telegraf#6344: fix depends on glibc_2.14 symbol version
+    * telegraf#6329: fix filecount for paths with trailing slash
+    * telegraf#6331: convert check state to an integer in icinga2 input
+    * telegraf#6354: fix could not mark message delivered error in kafka_consumer
+    * telegraf#6362: skip collection stats when disabled in mongodb input
+    * telegraf#6366: fix error reading closed response body on redirect in http_response
+    * telegraf#6373: fix apcupsd documentation to reflect plugin
+    * telegraf#6375: display retry log message only when retry after is received
+
+-------------------------------------------------------------------
 Tue Sep 10 07:46:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim future goals from description, it is not in the scope
@@ -136,6 +183,17 @@ Thu Nov 15 08:01:18 UTC 2018 - <nsinger@suse.com>
 - Enable PIE for build
 
 - Include systemd service file from upstream
+
+- Drop feature_passive_amqp_exchange.patch
+  * Changelog entry tracking dropped patch retroactively added
+    by Jeff Kowalczyk <jkowalczyk@suse.com> contemporaneous to
+    OBS change devel:languages:go/telegraf r7
+
+- Add 0001-Generic-SQL-output-plugin-for-Telegraf.patch
+  * Plugin inserts metric values to databases: mssql, mysql, postgres
+  * Changelog entry tracking carried patch retroactively added
+    by Jeff Kowalczyk <jkowalczyk@suse.com> contemporaneous to
+    OBS change devel:languages:go/telegraf r7
 
 -------------------------------------------------------------------
 Thu Nov  1 07:54:17 UTC 2018 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>

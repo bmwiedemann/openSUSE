@@ -1,7 +1,7 @@
 #
 # spec file for package telegraf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           telegraf
-Version:        1.12.0
+Version:        1.12.6
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
 Group:          System/Monitoring
-Url:            https://github.com/influxdata/telegraf
+URL:            https://github.com/influxdata/telegraf
 Source:         %{name}-%{version}.tar.gz
 # run dep ensure --vendor-only (in a container)
 Source1:        %{name}-deps.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  git-core
-BuildRequires:  go >= 1.7
+BuildRequires:  go >= 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 %{?systemd_ordering}
