@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:21:03 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.0+git.20190904:
+  * Fix Android build
+  * Set swap interval to 0 for WGL when possible.
+  * Fix win32-gl build.
+  * GLState*: Reverse arguments in GLAD loader functions
+  * glad: Update glad and add WGL_EXT_swap_control
+  * GLStateWGL: Update gotNativeConfig argument type
+  * Shadow: change depth sampling to first component
+
+-------------------------------------------------------------------
 Wed Jul 24 14:47:02 UTC 2019 - guillaume.gardet@opensuse.org
 
 - Update to version 0.0+git.20190708:

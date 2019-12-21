@@ -1,7 +1,7 @@
 #
 # spec file for package glmark2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2015-2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           glmark2
-Version:        0.0+git.20190708
+Version:        0.0+git.20190904
 Release:        0
 Summary:        OpenGL 2.0 and ES 2.0 benchmark
 License:        GPL-3.0-only
@@ -27,6 +27,7 @@ URL:            https://github.com/glmark2/glmark2
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++ >= 5.0
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python2-base
@@ -44,12 +45,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
 %endif
-# C++14 capable compiler is required
-%if 0%{?suse_version} > 1320
-BuildRequires:  gcc-c++ >= 5.0
-%else
-BuildRequires:  gcc7-c++
-%endif
 
 %description
 A benchmark for OpenGL (ES) 2.0 that uses only the OpenGL ES 2.0 compatible
@@ -60,9 +55,6 @@ arrays, VBOs, texturing and shaders.
 %setup -q
 
 %build
-%if 0%{?suse_version} < 1320
-export CXX=g++-7
-%endif
 export CXXFLAGS="%{optflags}"
 python2 waf configure \
   %if 0%{?is_opensuse}

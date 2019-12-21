@@ -125,4 +125,19 @@
     <comment></comment>
     <requestid>718308</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a01258aebb0d961fa3cdfa5246cea41d</srcmd5>
+    <version>0.0+git.20190904</version>
+    <time>1576927862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20190904:
+  * Fix Android build
+  * Set swap interval to 0 for WGL when possible.
+  * Fix win32-gl build.
+  * GLState*: Reverse arguments in GLAD loader functions
+  * glad: Update glad and add WGL_EXT_swap_control
+  * GLStateWGL: Update gotNativeConfig argument type
+  * Shadow: change depth sampling to first component</comment>
+    <requestid>758241</requestid>
+  </revision>
 </revisionlist>
