@@ -203,4 +203,12 @@ We're in the process of easing the installation process across different Linux d
     <comment>Update to Haxe 4.0.3. See haxe.changes for detail.</comment>
     <requestid>752526</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>257d2bed214e13901ede0a9e54a4b77d</srcmd5>
+    <version>4.0.5</version>
+    <time>1576927840</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Haxe 4.0.5.</comment>
+    <requestid>758208</requestid>
+  </revision>
 </revisionlist>
