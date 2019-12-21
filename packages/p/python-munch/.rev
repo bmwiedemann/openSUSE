@@ -36,4 +36,15 @@
 - Remove superfluous devel dependency for noarch package</comment>
     <requestid>655469</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d268057d764ecf47b1a77ac79304aa9</srcmd5>
+    <version>2.5.0</version>
+    <time>1576928076</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Support fromJSON classmethod for all Munch subclasses
+  * Fix DefaultMunch/DefaultFactoryMunch return value for get method (fixes #53)
+  * Support fromYAML classmethod for all Munch subclasses (fixes #34)</comment>
+    <requestid>758636</requestid>
+  </revision>
 </revisionlist>

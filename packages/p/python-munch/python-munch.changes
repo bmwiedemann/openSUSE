@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 20 19:20:53 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Support fromJSON classmethod for all Munch subclasses
+  * Fix DefaultMunch/DefaultFactoryMunch return value for get method (fixes #53)
+  * Support fromYAML classmethod for all Munch subclasses (fixes #34)
+
+-------------------------------------------------------------------
 Thu Dec  6 05:40:17 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
 
 update to version 2.3.2:
