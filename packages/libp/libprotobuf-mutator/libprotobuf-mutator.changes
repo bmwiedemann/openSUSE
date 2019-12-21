@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 19 10:15:02 UTC 2019 - Madhu Mohan Nelemane <mmnelemane@suse.com>
+
+- Update to version 20190610
+  * Renames SANITIZER_INTERFACE_WEAK_DEF to LIB_PROTO_MUTATOR_WEAK_DEF
+  * Introduced SANITIZER_INTERFACE_WEAK_DEF
+  * Builds tests with MSVC
+  * Updates CMakeLists.txt to build for MSVC
+  * Add a line break.
+  * Add proto dependencies to prerequisites.
+  * Fix compile error/warning in src/field_instance.h (was comparison with
+    unsigned < 0, which is always false)
+  * Remove workaround for stack overflow
+  * Update protocolbuffers
+  * Add check to avoid stack overflow parsing nested messages
+  * replace std::mt19937 with a much faster std::minstd_rand
+  * Speedup unit tests 
+  * Fix index check
+  * Switch from TEST_CASE_P to TEST_SUITE_P
+  * Fix clang build (#110) 
+  * Never copy unknown enum values
+  * Check that all tests strings parsed
+  * Add FieldInstance::DebugString
+  * Move EnforceUtf8 check into CanCopyAndDifferentField
+  * ename IsEqualValueField to CanCopyAndDifferentField
+  * Add links to known bug reports and fuzzers which use this library
+  * added missing newlines to two CMakeLists.txt files
+
+-------------------------------------------------------------------
 Wed Dec 12 12:35:32 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
 
 - Update to version 20181127:

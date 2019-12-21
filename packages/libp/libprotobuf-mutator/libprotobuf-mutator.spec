@@ -1,7 +1,7 @@
 #
 # spec file for package libprotobuf-mutator
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libprotobuf-mutator
-Version:        20181127
+Version:        20190610
 Release:        0
 Summary:        A library to randomly mutate protobuffers
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 Url:            https://github.com/google/libprotobuf-mutator
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel
@@ -76,4 +76,3 @@ protobuffers.
 %{_libdir}/pkgconfig/libprotobuf-mutator.pc
 
 %changelog
-
