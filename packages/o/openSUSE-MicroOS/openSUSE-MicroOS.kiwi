@@ -85,6 +85,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="vmx"
             filesystem="btrfs"
@@ -121,6 +122,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="vmx"
             filesystem="btrfs"
@@ -158,6 +160,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="vmx"
             filesystem="btrfs"
@@ -194,6 +197,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="vmx"
             filesystem="btrfs"
@@ -232,6 +236,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="vmx"
             filesystem="btrfs"
@@ -268,6 +273,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             initrd_system="dracut"
@@ -303,6 +309,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             initrd_system="dracut"
@@ -339,6 +346,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             initrd_system="dracut"
@@ -375,6 +383,7 @@
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="vmx"
             filesystem="btrfs"

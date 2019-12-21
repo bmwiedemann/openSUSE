@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 17 16:12:39 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Set the locale to en_US explicitly (.UTF-8 is added by kiwi)
+
+-------------------------------------------------------------------
 Tue Dec  3 15:49:46 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Make editbootinstall_{rpi,pine64}.sh more robust
