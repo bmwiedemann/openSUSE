@@ -1,7 +1,7 @@
 #
 # spec file for package erlang-sd_notify
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,11 +24,10 @@ Release:        0
 %define app_ver {%version}
 Summary:        Erlang interface to systemd notify subsystem
 License:        MIT
-Group:          Development/Libraries/Other
 Url:            https://github.com/systemd/erlang-sd_notify
 Source0:        erlang-%{app_name}-%{version}.tar.bz2
 BuildRequires:  erlang-rebar
-BuildRequires:  systemd-devel >= 219
+BuildRequires:  pkgconfig(libsystemd) >= 219
 Requires:       erlang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
