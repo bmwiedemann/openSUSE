@@ -34,6 +34,7 @@ Patch4:         readv-proto.patch
 # PATCH-FIX-UPSTREAM python3.8-compat.patch mcepl@suse.com
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch5:         python3.8-compat.patch
+Patch6:         swig4_moduleimport.patch
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  pcre-devel
 BuildRequires:  python-rpm-macros
