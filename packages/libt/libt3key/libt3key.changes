@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 23:50:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.10
+  * This release shuffles a few keys around in the xterm keymap,
+    to make it work on more terminals that claim to be xterm, and
+    adds a link for rxvt-unicode-256color.
+
+-------------------------------------------------------------------
 Mon Jan  7 13:23:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.2.9
