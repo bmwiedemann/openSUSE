@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:31:18 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.7
+  * Add automatic cloud detection method to the salt module 
+
+-------------------------------------------------------------------
 Wed Dec 11 10:16:53 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.2.6
