@@ -16,4 +16,15 @@
   * Just updates in metadata</comment>
     <requestid>676367</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e2bd7f46a7cbe1f9b9f969c2472ac0be</srcmd5>
+    <version>0.7.0</version>
+    <time>1576927742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0
+  * requires new pytest-astropy-header (Request 755857)
+  * Python 3 only
+</comment>
+    <requestid>758030</requestid>
+  </revision>
 </revisionlist>

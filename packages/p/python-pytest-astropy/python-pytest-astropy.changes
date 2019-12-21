@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 21:29:00 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.7.0
+  * requires new pytest-astropy-header (Request 755857)
+  * Python 3 only
+
+-------------------------------------------------------------------
 Fri Feb 15 09:55:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.0:
