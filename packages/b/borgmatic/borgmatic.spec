@@ -1,7 +1,7 @@
 #
 # spec file for package borgmatic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ BuildRequires:  python3-ruamel.yaml
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  python3-toml
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       borgbackup
 Requires:       python3-colorama
 Requires:       python3-pykwalify

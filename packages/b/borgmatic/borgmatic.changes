@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:55:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Tue Sep  3 09:07:52 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix regexes in spec file now that upstream changed the default borgmatic
