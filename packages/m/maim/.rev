@@ -23,4 +23,12 @@
     <comment>- use correct cmake macros (forwarded request 647298 from mimi_vx)</comment>
     <requestid>647299</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2565d3c707127203a2c64b766094d670</srcmd5>
+    <version>5.5.3</version>
+    <time>1576928079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758654</requestid>
+  </revision>
 </revisionlist>

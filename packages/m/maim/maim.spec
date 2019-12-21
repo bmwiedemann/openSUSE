@@ -1,7 +1,7 @@
 #
 # spec file for package maim
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           maim
-Version:        5.5.2
+Version:        5.5.3
 Release:        0
 Summary:        Flexible screenshotting utility
 License:        GPL-3.0-or-later
