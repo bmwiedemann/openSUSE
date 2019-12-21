@@ -18,7 +18,7 @@
 
 
 Name:           wireguard
-Version:        0.0.20191212
+Version:        0.0.20191219
 Release:        0
 Summary:        Fast, modern, secure kernel VPN tunnel
 License:        GPL-2.0-only
