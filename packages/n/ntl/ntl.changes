@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  4 14:28:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.1
+  * Fixed bug in new NTL_EXEC_DIVIDE that could manifest itself
+    when NTL_THREAD_BOOST=off. Existing code that does not
+    explicitly use this feature should not be affected by this
+    bug.
+  * Fixed some namespace visibility issues in the TLS hack macros.
+
+-------------------------------------------------------------------
 Sun Sep 29 14:43:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.4.0

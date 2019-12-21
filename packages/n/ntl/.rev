@@ -206,4 +206,12 @@
     <comment>- Update to release 11.4.0</comment>
     <requestid>733944</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d0eb87ca51b8ed662c81ea8245fe68ca</srcmd5>
+    <version>11.4.1</version>
+    <time>1576927961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4.1</comment>
+    <requestid>758363</requestid>
+  </revision>
 </revisionlist>
