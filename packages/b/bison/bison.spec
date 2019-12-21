@@ -1,7 +1,7 @@
 #
 # spec file for package bison
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,21 @@
 
 
 Name:           bison
-Version:        3.4.2
+Version:        3.5
 Release:        0
 Summary:        The GNU Parser Generator
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-URL:            http://www.gnu.org/software/bison/bison.html
+URL:            https://www.gnu.org/software/bison/bison.html
 Source0:        ftp://ftp.gnu.org/gnu/bison/bison-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/gnu/bison/bison-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-BuildRequires:  autoconf
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  xz
 Requires:       m4
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Recommends:     %{name}-lang
 
 %description
 Bison is a parser generator similar to yacc(1).
@@ -42,7 +39,7 @@ Bison is a parser generator similar to yacc(1).
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

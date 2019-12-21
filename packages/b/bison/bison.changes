@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 17 03:01:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop unnecessary autoconf BuildRequires. 
+
+-------------------------------------------------------------------
+Mon Dec 16 15:40:38 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.5:
+  * Plenty of changes - see provided NEWS for detailed list
+
+-------------------------------------------------------------------
 Sun Sep 22 15:25:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.4.2:
