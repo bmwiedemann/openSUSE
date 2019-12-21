@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 12 20:22:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.130
+  * vulkaninfo: return properly on xcb onnection errors
+  * vulkaninfo: check that extensions aren't disabled
+  * vkcube: Fix Cube Squishing on Resize
+  * vkcube: Replace MoltenVK surfaces with Metal
+  * vulkaninfo: Add VK_EXT_metal_surface info
+
+-------------------------------------------------------------------
 Thu Nov  7 08:02:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.127

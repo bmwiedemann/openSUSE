@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           vulkan-tools
-Version:        1.1.127
+Version:        1.1.130
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-Tools
 
-#Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/v%version.tar.gz
-Source:         Vulkan-Tools-%version.tar.xz
+Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/v%version.tar.gz
+#Source:         Vulkan-Tools-%version.tar.xz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 7.13.3496
