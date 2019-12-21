@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 19 23:52:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * This release provides several new features and bug fixes,
+    among which:
+  * Pressing ctrl+backspace will delete the previous word,
+  * Extra navigation keys (+/- and arrows) for expander widgets.
+  * Checkboxes can now have a third, indeterminate, state.
+  * Frame resizing correctly redraws the frame.
+  * This release changes the selection of binary attributes to
+    make the distinction between explicitly unset and fallback
+    from base attribute
+
+-------------------------------------------------------------------
 Thu Aug 22 19:45:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.0.6

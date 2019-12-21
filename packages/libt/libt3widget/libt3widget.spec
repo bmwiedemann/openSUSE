@@ -1,7 +1,7 @@
 #
 # spec file for package libt3widget
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,27 @@
 
 Name:           libt3widget
 %define lname	libt3widget2
-Version:        1.0.6
+Version:        1.2.0
 Release:        0
 Summary:        The Tilde terminal dialog toolkit
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://os.ghalkes.nl/t3/libt3widget.html
+URL:            https://os.ghalkes.nl/t3/libt3widget.html
 
-#Git-Clone:	git://github.com/gphalkes/t3widget
+#Git-Clone:	https://github.com/gphalkes/t3widget
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
+Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
+Source3:        %name.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  gpm-devel
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libt3key) >= 0.2.0
-BuildRequires:  pkgconfig(libt3window) >= 0.3.1
+BuildRequires:  pkgconfig(libt3window) >= 0.4.0
 BuildRequires:  pkgconfig(libtranscript) >= 0.2.2
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
