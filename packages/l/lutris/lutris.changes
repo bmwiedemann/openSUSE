@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 18 10:24:42 UTC 2019 - ecsos@opensuse.org
+
+- Add some missing dependencies:
+  curl, p7zip, psmisc, xrandr
+
+-------------------------------------------------------------------
 Thu Nov 28 11:07:00 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.4:

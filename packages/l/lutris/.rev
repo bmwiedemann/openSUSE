@@ -338,4 +338,12 @@
   * Fixed installation issues for wine installers that don't have a &quot;files&quot; section.</comment>
     <requestid>757532</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>68cb641fa8c5b9c3f06adc2cc9ca73bf</srcmd5>
+    <version>0.5.4</version>
+    <time>1576927794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757912</requestid>
+  </revision>
 </revisionlist>

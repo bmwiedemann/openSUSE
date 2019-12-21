@@ -23,7 +23,7 @@ Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
 URL:            https://lutris.net
-Source0:        http://lutris.net/releases/lutris_%{version}.tar.xz
+Source0:        https://lutris.net/releases/lutris_%{version}.tar.xz
 Source1:        lutris.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
@@ -45,6 +45,11 @@ Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-requests
+#
+Requires:       curl
+Requires:       p7zip
+Requires:       psmisc
+Requires:       xrandr
 Recommends:     winetricks
 BuildArch:      noarch
 
