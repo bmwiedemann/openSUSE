@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:58:27 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.98.3
+  + no source changes
+- adjust spec file to use the OBS service generated files
+
+-------------------------------------------------------------------
+Mon Nov 25 09:32:04 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.98
+  + openSUSE 15.0 is running out of service end of November 2019
+  + add Tumbleweed 2020 into the game
+  + adjust copyright notice in script
+- use new Github repo URL in spec file
+
+-------------------------------------------------------------------
+Tue Nov 19 18:16:23 CET 2019 - ro@suse.de
+
+- update supported_releases:
+  - add openSUSE Leap 15.2
+  - drop openSUSE Leap 42.3
+  - add SLE 12-SP5, SLE 15-SP2
+  - drop SLE 12-SP3 
+
+-------------------------------------------------------------------
 Sun Apr 14 16:10:57 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
 
 - update AppArmor profile:

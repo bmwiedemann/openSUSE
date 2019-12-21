@@ -1,0 +1,16 @@
+<services>
+   <service name="tar_scm" mode="disabled">
+     <param name="revision">v1.98.4</param>
+     <param name="version">1.98.4</param>
+     <param name="scm">git</param>
+     <param name="url">https://github.com/lrupp/monitoring-plugins-zypper.git</param>
+     <param name="filename">monitoring-plugins-zypper</param>
+     <param name="extract">monitoring-plugins-zypper.spec</param>
+     <param name="extract">monitoring-plugins-zypper.changes</param>
+   </service>
+   <service name="recompress" mode="disabled">
+     <param name="file">*.tar</param>
+     <param name="compression">xz</param>
+   </service>
+   <service name="set_version" mode="disabled"/>
+</services>

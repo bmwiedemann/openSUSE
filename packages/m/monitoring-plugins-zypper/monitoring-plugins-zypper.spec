@@ -26,32 +26,27 @@ Name:           monitoring-plugins-zypper
 Summary:        Check for software updates via zypper
 License:        BSD-3-Clause
 Group:          System/Monitoring
-Version:        1.96
+Version:        1.98.4
 Release:        0
-Url:            http://en.opensuse.org/Monitoring-plugins-zypper
-Source0:        check_zypper.pl
-Source1:        usr.lib.nagios.plugins.check_zypper 
-Source2:        apparmor-abstractions-zypp
-Source3:        apparmor-abstractions-ssl
-Source4:        apparmor-abstractions-rpm
+URL:            https://github.com/lrupp/monitoring-plugins-zypper
+Source0:        %{name}-%{version}.tar.xz
 Requires:       gawk
 Requires:       grep
 Requires:       rpm
 %if 0%{?suse_version} > 1310
 BuildRequires:  sudo
 Requires:       sudo
-Source5:        sudo-profile-check_zypper
 %endif
-%if 0%{?suse_version} > 1010
 # nagios can execute the script with embedded perl
 Recommends:     perl 
+%if 0%{?suse_version}
 Recommends:     apparmor-parser
 BuildRequires:  apparmor-parser
+%endif
 %if 0%{?suse_version} > 1320
 Requires:       apparmor-abstractions
 %else
 Requires:       apparmor-profiles
-%endif
 %endif
 Requires:       zypper
 BuildArch:      noarch
@@ -84,16 +79,16 @@ the "-v" option.
 
 
 %prep
+%setup -q
 
 %build
 
 %install
-install -D -m755 %{SOURCE0} %buildroot/%{nagios_plugindir}/check_zypper
-%if 0%{?suse_version} > 01100
-install -D -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/usr.lib.nagios.plugins.check_zypper
-install -D -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/rpm
-install -D -m644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/ssl
-install -D -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/zypp
+install -D -m755 check_zypper.pl                     %buildroot/%{nagios_plugindir}/check_zypper
+install -D -m644 usr.lib.nagios.plugins.check_zypper %{buildroot}%{_sysconfdir}/apparmor.d/usr.lib.nagios.plugins.check_zypper
+install -D -m644 apparmor-abstractions-rpm           %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/rpm
+install -D -m644 apparmor-abstractions-ssl           %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/ssl
+install -D -m644 apparmor-abstractions-zypp          %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/zypp
 mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d/local
 for file in usr.lib.nagios.plugins.check_zypper.zypp_refresh usr.lib.nagios.plugins.check_zypper ; do
 cat > %{buildroot}%{_sysconfdir}/apparmor.d/local/$file << EOF
@@ -101,11 +96,8 @@ cat > %{buildroot}%{_sysconfdir}/apparmor.d/local/$file << EOF
 # See /etc/apparmor.d/local/README for details.
 EOF
 done
-%else
-install -D -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor/profiles/extras/usr.lib.nagios.plugins.check_zypper
-%endif
 %if 0%{?suse_version} > 1310
-install -Dm400 %{SOURCE5} %{buildroot}%{_sysconfdir}/sudoers.d/check_zypper
+install -Dm400 sudo-profile-check_zypper             %{buildroot}%{_sysconfdir}/sudoers.d/check_zypper
 %endif
 
 %check
@@ -141,7 +133,6 @@ fi
 # avoid build dependecy of nagios - own the dirs
 %dir %{nagios_libdir}
 %dir %{nagios_plugindir}
-%if 0%{?suse_version} > 01100
 %dir %{_sysconfdir}/apparmor.d
 %dir %{_sysconfdir}/apparmor.d/abstractions
 %config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/rpm
@@ -151,12 +142,6 @@ fi
 %config %{_sysconfdir}/apparmor.d/usr.lib.nagios.plugins.check_zypper
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.lib.nagios.plugins.check_zypper
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.lib.nagios.plugins.check_zypper.zypp_refresh
-%else
-%dir %{_sysconfdir}/apparmor
-%dir %{_sysconfdir}/apparmor/profiles
-%dir %{_sysconfdir}/apparmor/profiles/extras
-%config(noreplace) %{_sysconfdir}/apparmor/profiles/extras/usr.lib.nagios.plugins.check_zypper
-%endif
 %{nagios_plugindir}/check_zypper
 %if 0%{?suse_version} > 1310
 %config(noreplace) %{_sysconfdir}/sudoers.d/check_zypper
