@@ -1,7 +1,7 @@
 #
 # spec file for package ledmon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,25 @@
 
 
 Name:           ledmon
-Version:        0.92
+Version:        0.93
 Release:        0
 Summary:        Enclosure LED Utilities
 License:        GPL-2.0-only
 Group:          Hardware/Other
-Url:            https://github.com/intel/ledmon/
-Source0:        https://github.com/intel/ledmon/archive/v%{version}.tar.gz
+URL:            https://github.com/intel/ledmon/
+Source0:        https://github.com/intel/ledmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM ledmon-amd_sgpio.patch
+Patch0:         ledmon-amd_sgpio.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  libsgutils-devel
-BuildRequires:  libudev-devel
+BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(systemd)
 Provides:       sgpio:/sbin/ledmon
 Provides:       sgpio:/{%{_bindir}}/ledctl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{?systemd_requires}
 
 %description
 The ledctl application and ledmon daemon are part of Intel(R) LED
@@ -36,21 +43,39 @@ ControlUtilities. They help to enable LED management for software RAID
 solutions.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make -j1 CXFLAGS="%{optflags} -lsgutils2 -std=c99"
+%define _lto_cflags %{nil}
+autoreconf -fiv
+%configure \
+  --enable-systemd=yes
+%make_build
 
 %install
 %make_install
+rm %{buildroot}%{_datarootdir}/doc/ledmon/README
+
+%pre
+%service_add_pre %{name}.service
+
+%post
+%service_add_post %{name}.service
+
+%preun
+%service_del_preun %{name}.service
+
+%postun
+%service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root)
-%doc README COPYING
+%license COPYING
+%doc README
 %{_sbindir}/ledmon
 %{_sbindir}/ledctl
-%{_mandir}/man5/ledmon.conf.5%{ext_man}
-%{_mandir}/man8/ledctl.8%{ext_man}
-%{_mandir}/man8/ledmon.8%{ext_man}
+%{_unitdir}/ledmon.service
+%{_mandir}/man5/ledmon.conf.5.5%{?ext_man}
+%{_mandir}/man8/ledctl.8.8%{?ext_man}
+%{_mandir}/man8/ledmon.8.8%{?ext_man}
 
 %changelog
