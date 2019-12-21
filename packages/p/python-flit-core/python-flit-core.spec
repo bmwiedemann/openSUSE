@@ -42,8 +42,6 @@ Flit is a simple way to put Python packages and modules on PyPI.
 %prep
 %setup -q -n flit_core-%{version}
 dephell convert --from-format pyproject --from-path pyproject.toml --to setup.py
-# gh#dephell/dephell_markers#6
-sed -i '/package_dir/d' setup.py
 
 %build
 %python_build
