@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 16 15:08:23 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- config: add 'cephadm' to StandardGroups and StandardUsers 
+
+-------------------------------------------------------------------
+Mon Dec 16 13:26:26 UTC 2019 - matthias.gerstner@suse.com
+
+- whitelist pam_cgfs PAM module (bsc#1150519)
+
+-------------------------------------------------------------------
+Mon Dec 16 13:23:41 UTC 2019 - matthias.gerstner@suse.com
+
+- whitelist pam_pwquality PAM module (bsc#1150520)
+
+-------------------------------------------------------------------
+Mon Dec 16 12:50:57 UTC 2019 - matthias.gerstner@suse.com
+
+- whitelist pam_cifscreds PAM module (bsc#1150527)
+
+-------------------------------------------------------------------
 Tue Dec 10 14:46:11 UTC 2019 - matthias.gerstner@suse.com
 
 - Update to version master:

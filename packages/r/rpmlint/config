@@ -93,6 +93,7 @@ setOption('StandardGroups', (
     'casaauth',
     'cdrom',
     'ceph',
+    'cephadm',
     'chef',
     'chrony',
     'citadel',
@@ -294,6 +295,7 @@ setOption('StandardUsers', (
     'casaauth',
     'ceilometer',
     'ceph',
+    'cephadm',
     'chef',
     'chrony',
     'cinder',
@@ -915,7 +917,13 @@ setOption("PAMModules.WhiteList", (
     # pam_p11 (bsc#1123916)
     "pam_p11.so",
     # pam_envoy (bsc#1150525)
-    "pam_envoy.so"
+    "pam_envoy.so",
+    # pam_cifscreds (bsc#1150527)
+    "pam_cifscreds.so",
+    # libpwquality (bsc#1150520)
+    "pam_pwquality.so",
+    # lxc (bsc#1150519)
+    "pam_cgfs.so",
 ))
 
 # Output filters

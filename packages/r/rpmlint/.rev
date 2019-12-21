@@ -2884,4 +2884,12 @@ bugzilla.opensuse.org/show_bug.cgi?id=939831 (forwarded request 330560 from aboe
 - whitelist sysprof3 D-Bus services (bsc#1151418)</comment>
     <requestid>755596</requestid>
   </revision>
+  <revision rev="326" vrev="15">
+    <srcmd5>f24f55512c90909cb05f110fecbcd333</srcmd5>
+    <version>1.11</version>
+    <time>1576928429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757377</requestid>
+  </revision>
 </revisionlist>
