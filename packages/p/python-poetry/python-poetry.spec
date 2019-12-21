@@ -78,8 +78,6 @@ Python dependency management and packaging made easy.
 %setup -q -n poetry-%{version}
 %patch0
 dephell deps convert --traceback --level=DEBUG --from pyproject.toml --to setup.py
-# https://github.com/dephell/dephell_markers/issues/6
-sed -i '/package_dir/d' setup.py
 
 %build
 %python_build
