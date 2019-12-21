@@ -26,7 +26,7 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           envoy-protoc-gen-validate
-Version:        20190522
+Version:        20190904
 Release:        0
 Summary:        Envoy's fork of protoc plugin to generate message validators
 License:        Apache-2.0
@@ -86,4 +86,3 @@ cp -R * %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-
