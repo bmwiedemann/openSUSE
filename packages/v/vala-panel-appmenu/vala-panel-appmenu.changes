@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 04:52:21 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- fix tumbleweed build with pango 1.44
+
+-------------------------------------------------------------------
 Sat Oct 19 09:35:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the appmenu-qt requirement. appmenu-qt is unmaintained and

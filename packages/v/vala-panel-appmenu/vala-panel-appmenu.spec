@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.44
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbamf3) >= 0.5.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.2
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.4.0
@@ -206,6 +207,8 @@ This is Global Menu plugin for using with Vala Panel.
 %setup -q
 
 %build
+export CFLAGS="$CFLAGS -I/usr/include/harfbuzz"
+export CXXFLAGS="$CXXFLAGS -I/usr/include/harfbuzz"
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
   -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
