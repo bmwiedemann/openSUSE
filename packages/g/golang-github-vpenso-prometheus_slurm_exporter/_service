@@ -1,0 +1,5 @@
+<services>
+  <service name="go_modules" mode="disabled">
+  <param name="archive">prometheus-slurm-exporter-0.8.tar.gz</param>
+  </service>
+</services>

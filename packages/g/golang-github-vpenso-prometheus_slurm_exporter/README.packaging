@@ -1,0 +1,14 @@
+
+The tarball prometheus-slurm-exporter-0.8.tar.gz has been created using 
+the script update-tarball.sh 
+This script is required to make a tarball with go.mod included
+because it's required by obs-service-go_modules.
+
+
+Updating to newer versions
+--------------------------
+
+For newer releases, you'll need to update the value of the REV variable
+to point to newer upstream versions.
+
+Last update: 2019/12/11
