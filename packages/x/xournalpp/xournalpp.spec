@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xournalpp
-Version:        1.0.12
+Version:        1.0.16
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 Url:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM xournalpp-fix-desktop-categories.patch badshah400@gmail.com -- Fix desktop categories with additional keywords to prevent "No sufficient Category definition" error from brp-desktop.
+Patch0:         xournalpp-fix-desktop-categories.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -49,6 +51,7 @@ It supports pen input, e.g. Wacom tablets.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake
@@ -69,9 +72,11 @@ rm %{buildroot}%{_datadir}/%{name}/ui/*/hicolor/update-icon-cache.sh
 %doc AUTHORS README.md
 %{_bindir}/xournal-thumbnailer
 %{_bindir}/xournalpp
-%{_datadir}/applications/xournalpp.desktop
+%{_datadir}/applications/*.xournalpp.desktop
 %{_datadir}/icons/hicolor/scalable/mimetypes/*.svg
 %{_datadir}/mime/packages/*.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/*.appdata.xml
 %dir %{_datadir}/mimelnk
 %dir %{_datadir}/mimelnk/application
 %{_datadir}/mimelnk/application/*.desktop
