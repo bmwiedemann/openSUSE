@@ -75,4 +75,12 @@
     <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
     <requestid>633085</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>10b77317c4efacfa2f6724ba923c00c1</srcmd5>
+    <version>1.8.0</version>
+    <time>1576927887</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to stable/train template</comment>
+    <requestid>758445</requestid>
+  </revision>
 </revisionlist>

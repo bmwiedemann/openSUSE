@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstack-doc-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,7 +31,6 @@ BuildRequires:  python-Babel
 BuildRequires:  python-PyYAML >= 3.12
 BuildRequires:  python-Sphinx
 BuildRequires:  python-demjson >= 2.2.2
-BuildRequires:  python-devel
 BuildRequires:  python-lxml >= 3.4.1
 BuildRequires:  python-mock
 BuildRequires:  python-openstackdocstheme
