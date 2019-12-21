@@ -232,7 +232,7 @@ BuildRequires:  swig
 BuildRequires:  pkgconfig(sdl)
 Conflicts:      u-boot-loader
 Provides:       u-boot-loader
-%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV"
+%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV" || "%_project" == "openSUSE:Leap:15.2" || "%_project" == "openSUSE:Leap:15.2:ARM" || "%_project" == "openSUSE:Leap:15.2:PowerPC"
 # A complete multibuild-flavoured package is only built in above projects.
 # In order to build a defined subset in forked projects, add the
 # following to the respective project config (without the "#|"):
