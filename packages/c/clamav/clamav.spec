@@ -60,7 +60,7 @@ BuildRequires:  pwdutils
 BuildRequires:  python-devel
 BuildRequires:  sed
 BuildRequires:  sendmail-devel
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires(pre):  %_bindir/awk
