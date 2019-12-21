@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-getopt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnu-getopt
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        Java getopt Implementation
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            http://www.urbanophile.com/arenn/hacking/download.html
-Source0:        ftp://ftp.urbanophile.com/pub/arenn/software/sources/java-getopt-%{version}.tar.bz2
+URL:            http://www.urbanophile.com/arenn/hacking/download.html
+Source0:        http://www.urbanophile.com/arenn/hacking/getopt/java-getopt-%{version}.tar.gz
 Patch0:         %{name}-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
