@@ -173,4 +173,12 @@
     <comment>- Add CVE-2019-15757.patch [boo#1148728]</comment>
     <requestid>727965</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>57637920853f2823c827e996ff3cb783</srcmd5>
+    <version>3.2.3</version>
+    <time>1576927948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.3</comment>
+    <requestid>758347</requestid>
+  </revision>
 </revisionlist>

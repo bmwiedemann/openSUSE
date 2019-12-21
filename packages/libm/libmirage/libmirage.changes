@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 19 22:37:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.3
+  * CSO filter: replaced a g_assert() with error return
+  * CSO filter: validate part size
+  * NRG parser: validate nrg_data_length
+  * ISO writer: ignore raw and subchannel modes for non-CD media
+  * TOC image writer: return error when trying to open non-CD
+    image for writing
+- Drop 0001-libMirage-CSO-filter-validate-part-size.patch,
+  0002-libMirage-CSO-filter-replaced-a-g_assert-with-error-.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Tue Sep  3 09:53:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add CVE-2019-15757.patch [boo#1148728]
