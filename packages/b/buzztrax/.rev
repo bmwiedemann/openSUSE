@@ -133,4 +133,13 @@ Fix gcc8 build failure with -Wno-error=restrict.
     <comment></comment>
     <requestid>751045</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ea61acd954132a4edca04d0a0f0b287</srcmd5>
+    <version>0.10.2+git20191209</version>
+    <time>1576927831</time>
+    <user>dimstar_suse</user>
+    <comment>Update to git snapshot 0.10.2+git20191209
+Add patch from debian 0001-Fix-build-with-fluidsynth-2.x.patch</comment>
+    <requestid>758178</requestid>
+  </revision>
 </revisionlist>

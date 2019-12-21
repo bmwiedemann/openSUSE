@@ -16,7 +16,7 @@
 #
 
 
-%define rev e08d73311d45b8bd73cbbd1fe95bc95b5ad52d2f
+%define rev 1f57d1b6ff55dd3d574f92039bb06a768d613d67
 %define relver 0.11.0
 
 %define gir gobject-introspection-1.0
@@ -31,7 +31,7 @@
 %define glib_version 2.32.0
 %define gst_version 1.2.0
 Name:           buzztrax
-Version:        0.10.2+git20191028
+Version:        0.10.2+git20191209
 Release:        0
 Summary:        A music studio inspired by Buzz
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ Source0:        https://github.com/Buzztrax/buzztrax/archive//%{rev}.tar.gz#/%{n
 #http://files.buzztrax.org/releases/%%{name}-%%{version}.tar.gz
 Source1:        autogen.sh
 Source2:        COPYING-DOCS
+Patch0:         0001-Fix-build-with-fluidsynth-2.x.patch
 BuildRequires:  automake >= 1.13
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -57,10 +58,7 @@ BuildRequires:  pkgconfig(%{gir})
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(clutter-gtk-1.0)
-#Doesn't build with fluidsynth 2 yet
-%if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(fluidsynth)
-%endif
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
@@ -207,7 +205,10 @@ This package contains buzztrax plugins
 
 %prep
 %setup -q -n %{name}-%{rev}
-%autopatch -p1
+# Patch causes fluidsynth1 build failure.
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 # Rpmlint complains that COPYING-DOCS is outdated
 cp -v %{SOURCE2} .
 cp -v %{SOURCE1} .
