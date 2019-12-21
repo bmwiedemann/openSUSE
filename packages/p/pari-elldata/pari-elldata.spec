@@ -1,7 +1,7 @@
 #
 # spec file for package pari-elldata
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pari-elldata
-Version:        20161017
+Version:        20190912
 Release:        0
 Summary:        Elliptic Curve Data for the PARI CAS
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://pari.math.u-bordeaux.fr/
+URL:            http://pari.math.u-bordeaux.fr/
 
 Source:         http://pari.math.u-bordeaux.fr/pub/pari/packages/elldata.tgz
 Source2:        http://pari.math.u-bordeaux.fr/pub/pari/packages/elldata.tgz.asc
 Source3:        LICENSE
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  xz
+Source4:        %name.keyring
 BuildArch:      noarch
 Conflicts:      libpari-gmp < 2.2.11
 
@@ -48,8 +47,7 @@ mkdir -p "$c"
 mv elldata "$c/"
 
 %files
-%defattr(-,root,root)
 %_datadir/pari
-%doc LICENSE
+%license LICENSE
 
 %changelog

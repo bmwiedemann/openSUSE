@@ -92,4 +92,12 @@
     <comment>- Strip /data/ subdirectory [boo#1106378]</comment>
     <requestid>632203</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a6167e042000ad28b5b4115c1e71b77b</srcmd5>
+    <version>20190912</version>
+    <time>1576927992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20190912</comment>
+    <requestid>758491</requestid>
+  </revision>
 </revisionlist>
