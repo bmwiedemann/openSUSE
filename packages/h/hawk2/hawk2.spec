@@ -1,7 +1,7 @@
 #
 # spec file for package hawk2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,9 +47,9 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.1.0+git.1572008730.896e9784
+Version:        2.1.0+git.1576507574.01859128
 Release:        0
-Url:            http://www.clusterlabs.org/wiki/Hawk
+URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
 Source100:      hawk-rpmlintrc
 Patch:          hawk2-nodev.patch
@@ -109,7 +109,9 @@ Requires:       %{rubygem gettext_i18n_rails >= 1.8}
 BuildRequires:  %{rubygem gettext_i18n_rails_js >= 1.3}
 Requires:       %{rubygem gettext_i18n_rails_js >= 1.3}
 BuildRequires:  %{rubygem sprockets >= 3.7}
+BUILDConflicts: %{rubygem sprockets >= 4}
 Requires:       %{rubygem sprockets >= 3.7}
+Conflicts:      %{rubygem sprockets >= 4}
 BuildRequires:  %{rubygem kramdown >= 1.14}
 Requires:       %{rubygem kramdown >= 1.14}
 

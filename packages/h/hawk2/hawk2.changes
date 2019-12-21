@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 17 12:20:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Limit to sprockets 3.x.
+
+-------------------------------------------------------------------
+Tue Dec 17 09:12:50 UTC 2019 - abelarbi@suse.de
+
+- Update to version 2.1.0+git.1576507574.01859128:
+  * Fix cib.xml parsing for acl_version (bsc#1158681)
+
+-------------------------------------------------------------------
 Mon Oct 28 12:27:00 UTC 2019 - abelarbi@suse.de
 
 - Update to version 2.1.0+git.1572008730.896e9784:
