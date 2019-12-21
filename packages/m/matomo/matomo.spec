@@ -1,7 +1,7 @@
 #
 # spec file for package matomo
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,9 +58,6 @@ BuildRequires:  cron
 BuildRequires:  fdupes
 BuildRequires:  logrotate
 BuildRequires:  mariadb
-#BuildRequires:  php-json
-#BuildRequires:  php-mbstring
-#BuildRequires:  php-pdo
 BuildRequires:  systemd
 BuildRequires:  unzip
 Requires:       apache2
@@ -68,12 +65,21 @@ Requires:       cron
 Requires:       logrotate
 Requires:       mariadb
 Requires:       mod_php_any >= 5.5.9
+Requires:       php-ctype
 Requires:       php-curl
+Requires:       php-dom
 Requires:       php-gd
+Requires:       php-iconv
 Requires:       php-json
 Requires:       php-mbstring
 Requires:       php-mysql
+#Requires:       php-openssl
 Requires:       php-pdo
+#Requires:       php-sqlite
+Requires:       php-tokenizer
+Requires:       php-xmlreader
+Requires:       php-xmlwriter
+Requires:       php-zlib
 %{?systemd_requires}
 Recommends:     php-geoip
 Recommends:     apache2-mod_geoip
@@ -86,10 +92,10 @@ insights into a website's visitors and marketing campaigns, so the
 strategy and online experience of visitors may be optimized.
 
 %prep
-%setup -q -n matomo
+%setup -q -n %{name}
 install -m644 %{SOURCE4} README.SUSE
 # remove unwanted files
-find . -type f "(" -name .htaccess -o -name .travis.sh ")" -delete
+find . -type f "(" -name .htaccess -o -name .travis.sh -o -name .gitkeep ")" -delete
 #find . -name ".git*" -exec rm -Rf "{}" "+"
 find . -type f "(" -name "*.c" -o -name "*.h" -o -name "*.js.orig" ")" -delete
 # env-script-interpreter
@@ -133,7 +139,11 @@ mv "misc/How to install Matomo.html" %{buildroot}/%{_defaultdocdir}/%{name}
 mv *md %{buildroot}/%{_defaultdocdir}/%{name}
 cp -dR * %{buildroot}/%{ap_serverroot}/%{name}
 # install matomo.conf to apache conf.d
-install -D -m0640 %{SOURCE2} %{buildroot}/%{ap_sysconfdir}/conf.d/%{name}.conf
+mkdir -p %{buildroot}/%{ap_sysconfdir}/conf.d
+sed -e 's|__matomo_web__|%{ap_serverroot}/%{name}|g' \
+	-e 's|__matomo_conf__|%{_sysconfdir}/%{name}|g' \
+	-e 's|__matomo_log__|/var/log/%{name}|g' \
+	%{SOURCE2} > %{buildroot}/%{ap_sysconfdir}/conf.d/%{name}.conf
 # install logrotate
 install -D -m0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 # move config to etc/matomo and make symlink
@@ -162,9 +172,9 @@ install -D -m0644 %{SOURCE13} %{buildroot}/%{_sysconfdir}/my.cnf.d/%{name}.my.cn
 # BSC#1154324
 # # # chown -R %{ap_usr}:%{ap_grp} %{ap_serverroot}/%{name}
 %service_add_post matomo-archive.timer matomo-archive.service apache2.service
-# Update matomo if this is an upgrade $1 == 2
-echo "matomo: Update matomo:core..."
 if [ $1 -gt 1 ]; then
+  # Update matomo if this is an upgrade $1 == 2
+  echo "matomo: Update matomo:core..."
   su wwwrun -s /bin/sh -c "%{_bindir}/php %{ap_serverroot}/%{name}/console config:set 'Tracker.record_statistics="0"'" || :
   su wwwrun -s /bin/sh -c "%{_bindir}/php %{ap_serverroot}/%{name}/console config:set 'General.maintenance_mode="1"'" || :
   su wwwrun -s /bin/sh -c "%{_bindir}/php %{ap_serverroot}/%{name}/console core:update --yes" || :
@@ -208,15 +218,16 @@ fi
 %attr(0644,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/js/piwik.min.js
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/console
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/cron/archive.sh
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/log-analytics/import_logs.py
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/log-analytics/import_logs.py
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/composer/clean-xhprof.sh
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/composer/build-xhprof.sh
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/package.sh
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/lessify
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/plessc
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/szymach/c-pchart/coverage.sh
-%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/plugins/TestRunner/scripts/on_instance_launch.sh
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/package.sh
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/lessify
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/plessc
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/szymach/c-pchart/coverage.sh
+#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php
 %{ap_serverroot}/%{name}/*
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 12 11:22:26 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- moved the update message in post to the right position
+- disable some (unused) php functions
+- use open basedir
+- add newly required php modules:
+  php-ctype, php-dom, php-iconv, php-tokenizer, php-xmlreader,
+  php-xmlwriter, php-zlibm 
+- define locations of web-, log- and config directories dynamically 
+- allow to enable compression
+- enhanced README.SUSE
+
+-------------------------------------------------------------------
 Thu Dec 12 07:42:22 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update: 3.13.0

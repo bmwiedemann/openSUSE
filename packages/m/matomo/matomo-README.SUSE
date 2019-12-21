@@ -13,9 +13,18 @@ In /etc/apache2/conf.d/matomo.conf you must insert your domain.
   Apache22: Allow from .mydomain.de
   Apache24: Require host mydomain.de
 
+Enable needed modules:
+~# for module in php7 headers setenvif ; do
+~#	/usr/sbin/a2enmod $module
+~# done
+
+If you also want to enable compression, just enable the following modules as well:
+~# /usr/sbin/a2enmod deflate
+~# /usr/sbin/a2enmod filter
+
 And then restart or reload apache
   
-  systemctl restart apache2
+~# /usr/bin/systemctl restart apache2
 
 c) installer
 Go to http://www.mydomain.de/matomo/
@@ -47,4 +56,6 @@ f) auto archiving
 For autoarchiving you have two options.
 With cron or with systemd.timer.
 For cron you must uncomment the line in /etc/cron.d/matomo-archive
-For systemd.timer you must start and enable matomo-archive.timer
+For systemd.timer you must start and enable matomo-archive.timer:
+~# /usr/bin/systemctl enable --now matomo-archive.timer
+
