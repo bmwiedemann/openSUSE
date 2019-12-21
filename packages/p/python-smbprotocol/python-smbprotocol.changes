@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 11 20:00:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.1
+  * Fix issue when reading a large file that exceeds 65KB and
+    raises STATUS_END_OF_FILE.
+  * Fix issue where listdir, scandir, walk would only enumerate a
+    subset of entries in a directories with lots of sub files/
+    folders
+
+-------------------------------------------------------------------
 Sat Nov 30 10:49:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.0
