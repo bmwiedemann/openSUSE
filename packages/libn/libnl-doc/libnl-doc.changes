@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 23:07:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.0
+  * Update for libnl's new APIs in 3.5.0
+
+-------------------------------------------------------------------
 Sun May  8 17:40:11 UTC 2016 - jengelh@inai.de
 
 - Update to new upstream release 3.2.27
