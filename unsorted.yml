@@ -4351,6 +4351,7 @@ unsorted:
   - git-credential-libsecret 
   - git-crypt 
   - git-doc 
+  - git-filter-repo 
   - git-merge-changelog 
   - git-p4 
   - git-remote-gcrypt 
@@ -4703,6 +4704,7 @@ unsorted:
   - golang-github-prometheus-promu 
   - golang-github-rogpeppe-godef 
   - golang-github-shurcool-sanitized_anchor_name 
+  - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-github-wrouesnel-postgres_exporter 
   - golang-gopkgin-check 
   - golang-org-x-net-context 
@@ -6657,6 +6659,8 @@ unsorted:
   - kproperty-lang 
   - kpty-devel 
   - kpty-devel-32bit: [x86_64] 
+  - kquickcharts 
+  - kquickcharts-devel 
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
@@ -6709,6 +6713,8 @@ unsorted:
   - ktexteditor-devel-32bit: [x86_64] 
   - ktextwidgets-devel 
   - ktextwidgets-devel-32bit: [x86_64] 
+  - ktimetracker 
+  - ktimetracker-lang 
   - ktnef-devel 
   - ktoblzcheck 
   - ktoblzcheck-devel 
@@ -9020,7 +9026,7 @@ unsorted:
   - libgetdata8 
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
-  - libgf2x-1_2 
+  - libgf2x3 
   - libgfchangelog0 
   - libgfdb0 
   - libgflags2 
@@ -9458,7 +9464,7 @@ unsorted:
   - libhdhomerun2 
   - libheimdal 
   - libheimdal-devel 
-  - libhfst52 
+  - libhfst53 
   - libhfstospell10 
   - libhfstospell10-32bit: [x86_64] 
   - libhidapi-devel 
@@ -11767,7 +11773,7 @@ unsorted:
   - libtorrent-devel 
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
-  - libtorrent-rasterbar9 
+  - libtorrent-rasterbar10 
   - libtorrent21 
   - libtotem_pg5 
   - libtotem_pg5-32bit: [x86_64] 
@@ -11958,7 +11964,7 @@ unsorted:
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
-  - libvapoursynth-47 
+  - libvapoursynth-48 
   - libvapoursynth-script0 
   - libvarnishapi2 
   - libvbr2 
@@ -12728,8 +12734,6 @@ unsorted:
   - lswm 
   - lsyncd 
   - ltrace-32bit: [x86_64] 
-  - lttng-modules 
-  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-ust-devel 
   - lttng-ust-doc 
@@ -15369,8 +15373,6 @@ unsorted:
   - pam-devel-32bit: [x86_64] 
   - pam-python 
   - pam-test 
-  - pam_cap 
-  - pam_cap-32bit: [x86_64] 
   - pam_ccreds 
   - pam_ccreds-32bit: [x86_64] 
   - pam_cgfs 
@@ -16783,6 +16785,7 @@ unsorted:
   - php7-imagick 
   - php7-intl 
   - php7-libphutil 
+  - php7-lzf 
   - php7-maxminddb 
   - php7-memcached 
   - php7-opcache 
@@ -19293,7 +19296,6 @@ unsorted:
   - python2-pyte 
   - python2-pytesseract 
   - python2-pytest-arraydiff 
-  - python2-pytest-astropy 
   - python2-pytest-attrib 
   - python2-pytest-bdd 
   - python2-pytest-benchmark 
@@ -21876,6 +21878,7 @@ unsorted:
   - python3-pytest-aiohttp 
   - python3-pytest-arraydiff 
   - python3-pytest-astropy 
+  - python3-pytest-astropy-header 
   - python3-pytest-asyncio 
   - python3-pytest-attrib 
   - python3-pytest-bdd 
@@ -22695,6 +22698,8 @@ unsorted:
   - qsynergy 
   - qsynth 
   - qsynth-lang 
+  - qt-fsarchiver 
+  - qt-fsarchiver-lang 
   - qt5ct 
   - qtcurve-gtk2 
   - qtcurve-gtk2-32bit: [x86_64] 
