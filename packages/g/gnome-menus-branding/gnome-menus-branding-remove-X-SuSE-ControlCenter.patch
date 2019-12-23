@@ -1,0 +1,18 @@
+--- gnome-applications.menu.old	2018-12-04 04:07:53.000000000 +0100
++++ gnome-applications.menu	2019-01-03 21:01:26.583746846 +0100
+@@ -234,6 +234,7 @@
+         <Not><Category>Settings</Category></Not>
+         <Not><Category>X-GNOME-Utilities</Category></Not>
+       </And>
++      <Filename>YaST.desktop</Filename>
+     </Include>
+ 
+     <Exclude>
+@@ -298,6 +299,7 @@
+       <And>
+         <Not><Category>Core</Category></Not>
+         <Not><Category>Screensaver</Category></Not>
++        <Not><Category>X-SuSE-YaST</Category></Not>
+ 
+       </And>
+     </Include>
