@@ -814,4 +814,16 @@
   + php-fix-mysqlnd-compression-library.patch</comment>
     <requestid>755570</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>a17e6c8e680c1deeca547a0cf1326383</srcmd5>
+    <version>7.4.1</version>
+    <time>1577137148</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.1: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.1
+- deleted patches
+  - php-fix-mysqlnd-compression-library.patch
+  - php-fpm-service-fails-to-start.patch (forwarded request 757875 from adkorte)</comment>
+    <requestid>757892</requestid>
+  </revision>
 </revisionlist>

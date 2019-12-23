@@ -38,7 +38,7 @@
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.4.0
+Version:        7.4.1
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
@@ -75,10 +75,6 @@ Patch14:        php-odbc-cmp-int-cast.patch
 Patch15:        php-fix_net-snmp_disable_MD5.patch
 # should be upstreamed, will do later
 Patch17:        php-date-regenerate-lexers.patch
-# PATCH-FIX-UPSTREAM https://bugs.php.net/bug.php?id=78823
-Patch18:        php-fix-mysqlnd-compression-library.patch
-# PATCH-FIX-UPSTREAM https://bugs.php.net/bug.php?id=78889
-Patch19:        php-fpm-service-fails-to-start.patch
 BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
@@ -914,8 +910,6 @@ cp %{SOURCE5} .
 %patch14 -p1
 %patch15
 %patch17 -p1
-%patch18
-%patch19 -p1
 
 # Safety check for API version change.
 vapi=`sed -n '/#define PHP_API_VERSION/{s/.* //;p}' main/php.h`
