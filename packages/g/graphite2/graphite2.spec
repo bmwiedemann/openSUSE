@@ -32,6 +32,8 @@ BuildRequires:  cmake
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
+# libglib-2_0-0 pulls in shared-mime-info for mime detection in gvfs
+#!BuildIgnore:  shared-mime-info
 BuildRequires:  glib2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
