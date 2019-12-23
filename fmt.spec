@@ -18,7 +18,7 @@
 
 %define sover   6
 Name:           fmt
-Version:        6.0.0
+Version:        6.1.2
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
@@ -26,14 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://fmtlib.net/
 Source0:        https://github.com/fmtlib/fmt/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM fmt-bigendian_1.patch
-Patch0:         fmt-bigendian_1.patch
-# PATCH-FIX-UPSTREAM fmt-bigendian_2.patch
-Patch1:         fmt-bigendian_2.patch
-# PATCH-FIX-UPSTREAM fmt-bigendian_3.patch
-Patch2:         fmt-bigendian_3.patch
-# PATCH-FIX-UPSTREAM fmt-bigendian_4.patch
-Patch3:         fmt-bigendian_4.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
