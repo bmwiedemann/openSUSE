@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-Libxml2
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Alien-Libxml2
-Version:        0.11
+Version:        0.12
 Release:        0
 %define cpan_name Alien-Libxml2
 Summary:        Install the C libxml2 library on your system
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::Base) >= 0.73
@@ -52,7 +53,7 @@ has not been actively maintained for a while.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
