@@ -1,7 +1,7 @@
 #
 # spec file for package libssh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%define suffix -test
+%define pkg_suffix -test
 %ifarch s390 s390x ppc64le
   %define slow_test_system "ON"
 %else
@@ -26,11 +26,11 @@
 %endif
 %bcond_without test
 %else
-%define suffix %{nil}
+%define pkg_suffix %{nil}
 %bcond_with test
 %endif
-Name:           libssh%{suffix}
-Version:        0.9.2
+Name:           libssh%{pkg_suffix}
+Version:        0.9.3
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later

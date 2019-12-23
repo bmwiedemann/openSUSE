@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec 10 19:08:47 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.3
+  * Fixed CVE-2019-14889 - SCP: Unsanitized location leads to command execution
+  * SSH-01-003 Client: Missing NULL check leads to crash in erroneous state
+  * SSH-01-006 General: Various unchecked Null-derefs cause DOS
+  * SSH-01-007 PKI Gcrypt: Potential UAF/double free with RSA pubkeys
+  * SSH-01-010 SSH: Deprecated hash function in fingerprinting
+  * SSH-01-013 Conf-Parsing: Recursive wildcards in hostnames lead to DOS
+  * SSH-01-014 Conf-Parsing: Integer underflow leads to OOB array access
+  * SSH-01-001 State Machine: Initial machine states should be set explicitly
+  * SSH-01-002 Kex: Differently bound macros used to iterate same array
+  * SSH-01-005 Code-Quality: Integer sign confusion during assignments
+  * SSH-01-008 SCP: Protocol Injection via unescaped File Names
+  * SSH-01-009 SSH: Update documentation which RFCs are implemented
+  * SSH-01-012 PKI: Information leak via uninitialized stack buffer
+
+-------------------------------------------------------------------
+Mon Dec  9 09:25:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename suffix define to pkg_suffix: rpm 4.15 has suffix reserved
+  for internal use.
+
+-------------------------------------------------------------------
 Thu Nov  7 15:47:45 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.9.2
