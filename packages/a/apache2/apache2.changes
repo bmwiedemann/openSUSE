@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 16:36:08 UTC 2019 - pgajdos@suse.com
+
+- add openssl call to DEFAULT_SUSE comment [bsc#1159480]
+- modified sources
+  % apache2-ssl-global.conf
+
+-------------------------------------------------------------------
 Fri Nov  8 08:58:25 UTC 2019 - pgajdos@suse.com
 
 - use %license [bsc#1156171]
