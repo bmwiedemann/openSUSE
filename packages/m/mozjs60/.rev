@@ -72,4 +72,40 @@
     <comment></comment>
     <requestid>735361</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>172cff38a5fb0618a249dd37c35ef93b</srcmd5>
+    <version>60.9.0</version>
+    <time>1577137023</time>
+    <user>dimstar_suse</user>
+    <comment>- SLE 15 SP2 will ship with ICU 65, apply patches accordingly
+  (jsc#SLE-11118).
+
+- Remove Update-to-ICU-64-Part-3-Update-tests.patch, SLE is back to
+  ICU 60.x.
+
+- Add Don-t-run-non262-extensions-clone-errors.js-on-s390x.patch,
+  based on Debian patch, to enable back tests on s390x (and ppc64).
+- Add tests-Expect-a-test-to-fail-on-big-endian.patch, based on
+  Debian patch, accept a test failure on big-endian like s390x.
+- Ensure build for x86 is with SSE2 (SSE for floating point math),*
+  required by upstream (requires switching package to i686).
+- enable back tests on s390x and i586
+- Remove build workaround on ppc64le.
+- Reorder/change build flags to follow Debian and Fedora.
+- Enable back tests on all platforms (except JIT on s390).
+- Ensure we don't build bundled security libs.
+- Don't ship a icu bundle for big-endian, recreate it instead, with 
+  patches icu_sources_data-Write-command-output-to-our-stderr.patch
+  and icu_sources_data.py-Decouple-from-Mozilla-build-system.patch.
+- Update patch enddianness.patch with more fixes from 
+  bmo#1590907 to fix strings usage on s390x (bsc#1158355).
+- Add Skip-some-i18n-tests-because-we-are-now-using-system-ICU.patch
+  Update-to-ICU-61-Part-3-Update-tests.patch,
+  Update-to-ICU-64-Part-3-Update-tests.patch,
+  Update-to-ICU-65-Part-3-Update-tests.patch to allow building
+  with system icu
+- Add flag to switch between system icu and embedded icu and
+  enable system icu.</comment>
+    <requestid>758572</requestid>
+  </revision>
 </revisionlist>
