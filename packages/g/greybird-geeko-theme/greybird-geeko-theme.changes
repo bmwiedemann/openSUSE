@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 21 15:34:25 UTC 2019 - maurizio.galli@gmail.com
+
+- Update to version 3.22.10.1+git48.35f7cb8:
+  * Make use of symlinks
+  * Add single-user installation instructions
+  * Added xfwm4 dark accessibility theme
+  * Update to upstream master
+
+-------------------------------------------------------------------
 Wed Jul 17 15:34:46 UTC 2019 - Carson Black <uhhadd@gmail.com>
 
 - Update to version 3.22.10.1+git39.ffde076:

@@ -1,7 +1,7 @@
 #
 # spec file for package greybird-geeko-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define name_light Greybird-Geeko-Light
 %define name_dark Greybird-Geeko-Dark
+%define _name Greybird-Geeko
 
 Name:           greybird-geeko-theme
-Version:        3.22.10.1+git39.ffde076
+Version:        3.22.10.1+git48.35f7cb8
 Release:        0
-Url:            https://github.com/shimmerproject/Greybird-Geeko
+URL:            https://github.com/shimmerproject/Greybird-Geeko
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
 License:        GPL-2.0-or-later OR CC-BY-SA-3.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
-Source:         %{name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -82,7 +83,7 @@ neutral grey-ish look.
 This package provides the GTK+ 3 support of Greybird.
 
 %prep
-%autosetup
+%setup -q -n %{_name}-%{version}
 
 %build
 %meson

@@ -31,4 +31,12 @@
     <comment>Edit changelog to be more descriptive</comment>
     <requestid>716107</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>14d07ba933a033f050d06771db31e208</srcmd5>
+    <version>3.22.10.1+git48.35f7cb8</version>
+    <time>1577137428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758770</requestid>
+  </revision>
 </revisionlist>
