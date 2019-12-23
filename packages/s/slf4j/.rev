@@ -171,4 +171,12 @@
     <comment>Remove references to parent form pom files + avoid version-less dependencies</comment>
     <requestid>735438</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>5d9aae5ab05bd8e1ca655c2a8946701e</srcmd5>
+    <version>1.7.25</version>
+    <time>1577137136</time>
+    <user>dimstar_suse</user>
+    <comment>The previous tarball does not exist any more</comment>
+    <requestid>758086</requestid>
+  </revision>
 </revisionlist>

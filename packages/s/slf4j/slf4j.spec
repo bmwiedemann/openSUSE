@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Summary:        Simple Logging Facade for Java
 License:        MIT AND Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://www.slf4j.org/
-Source0:        http://www.slf4j.org/dist/%{name}-%{version}.tar.gz
+Source0:        https://github.com/qos-ch/%{name}/archive/v_%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        build.xml.tar.bz2
 Patch1:         build-remove-slf4j_api-binder.patch
@@ -133,7 +133,7 @@ Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 JUL to SLF4J bridge.
 
 %prep
-%setup -q -a2
+%setup -q -n %{name}-v_%{version} -a2
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -161,7 +161,7 @@ done
 # # during build time, it is necessary to mark the imported package as an
 # # optional one.
 # # Reported upstream: http://bugzilla.slf4j.org/show_bug.cgi?id=283
-sed -i "/Import-Package/s/.$/;resolution:=optional&/" slf4j-api/src/main/resources/META-INF/MANIFEST.MF
+sed -i "/Import-Package/s/$/;resolution:=optional/" slf4j-api/src/main/resources/META-INF/MANIFEST.MF
 
 %pom_change_dep -r -f ::::: :::::
 
