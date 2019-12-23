@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:48:45 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Fri Jul 12 06:36:45 UTC 2019 - mvetter@suse.com
 
 - Update to 1.5:
