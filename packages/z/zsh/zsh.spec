@@ -1,7 +1,7 @@
 #
 # spec file for package zsh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+# Only for -test builds
+%define _version 5.7.1-test-2
+
 %if 0%{?rhel_version} || 0%{?centos_version} || 0%{?fedora_version}
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 %global __requires_exclude ^/bin/zsh$
@@ -25,14 +28,14 @@ BuildRequires:  texi2html
 BuildRequires:  texinfo
 %endif
 Name:           zsh
-Version:        5.7.1
+Version:        5.8~pre2
 Release:        0%{?dist}
 Summary:        Shell with comprehensive completion
 License:        MIT
 Group:          System/Shells
-Url:            http://www.zsh.org
-Source0:        https://downloads.sourceforge.net/project/zsh/zsh/%{version}/zsh-%{version}.tar.xz
-Source1:        https://downloads.sourceforge.net/project/zsh/zsh/%{version}/zsh-%{version}.tar.xz.asc
+URL:            http://www.zsh.org
+Source0:        https://downloads.sourceforge.net/project/zsh/zsh-test/%{_version}/zsh-%{_version}.tar.xz
+Source1:        https://downloads.sourceforge.net/project/zsh/zsh-test/%{_version}/zsh-%{_version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        zshrc
 Source4:        zshenv
@@ -91,7 +94,7 @@ mechanism, and more.
 This package contains the Zsh manual in HTML format.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{_version}
 %if 0%{?suse_version}
 %patch1 -p1
 %endif
