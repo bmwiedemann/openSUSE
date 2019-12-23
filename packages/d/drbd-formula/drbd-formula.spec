@@ -19,14 +19,14 @@
 # See also https://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           drbd-formula
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        DRBD deployment salt formula
 License:        Apache-2.0
 URL:            https://github.com/SUSE/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Requires:       drbd-utils
-Requires:       salt-shaptools
+Requires:       salt-shaptools >= 0.2.9
 Requires:       salt-formulas-configuration
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

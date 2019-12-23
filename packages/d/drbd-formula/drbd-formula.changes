@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 23 07:58:27 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.3.10
+  * With the fix of salt-shaptools 0.2.9, doesn't need to
+  estimate a long time for write I/O completion.
+
+-------------------------------------------------------------------
 Wed Dec 18 10:39:28 UTC 2019 - nick wang <nwang@suse.com>
 
 - Version 0.3.9
