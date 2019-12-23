@@ -1,7 +1,7 @@
 #
 # spec file for package nftables
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -27,12 +27,15 @@ URL:            https://netfilter.org/projects/nftables/
 #Git-Clone:	git://git.netfilter.org/nftables
 Source:         http://ftp.netfilter.org/pub/nftables/nftables-%version.tar.bz2
 Source2:        http://ftp.netfilter.org/pub/nftables/nftables-%version.tar.bz2.sig
+Source3:        %name.keyring
 BuildRequires:  asciidoc
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gmp-devel
 BuildRequires:  pkg-config >= 0.21
+BuildRequires:  python3-base
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
 BuildRequires:  pkgconfig(libnftnl) >= 1.1.4
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
@@ -67,6 +70,13 @@ library.
 
 This package contains the header files for the library.
 
+%package -n python3-nftables
+Summary:        Python interface for nftables
+Group:          Development/Languages/Python
+
+%description -n python3-nftables
+A Python module for nftables.
+
 %prep
 %setup -q
 
@@ -78,7 +88,8 @@ mkdir obj
 pushd obj/
 %define _configure ../configure
 %configure --disable-silent-rules --disable-static --docdir="%_docdir/%name" \
-	--includedir="%_includedir/%name" --disable-python
+	--includedir="%_includedir/%name" --with-json \
+	--enable-python --with-python-bin="$(which python3)"
 make %{?_smp_mflags}
 popd
 
@@ -93,7 +104,6 @@ mv "$b/%_sysconfdir/nftables"/* "$b/%_docdir/%name/examples/"
 %postun -n libnftables1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %_sbindir/nft
 %_mandir/man5/*.5*
@@ -108,5 +118,8 @@ mv "$b/%_sysconfdir/nftables"/* "$b/%_docdir/%name/examples/"
 %_libdir/libnftables.so
 %_libdir/pkgconfig/*.pc
 %_mandir/man3/*.3*
+
+%files -n python3-nftables
+%python3_sitelib/nftables*
 
 %changelog

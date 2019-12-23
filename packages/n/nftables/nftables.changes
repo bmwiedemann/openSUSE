@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:39:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add json, python [boo#1158723]
+
+-------------------------------------------------------------------
+Tue Dec  3 09:09:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9.3
+  * meta: Introduce new conditions "time", "day" and "hour".
+  * src: add ability to set/get secmarks to/from connection.
+  * flowtable: add support for named flowtable listing.
+  * flowtable: add support for delete command by handle.
+  * json: add support for element deletion.
+  * Add `-T` as the short option for `--numeric-time`.
+  * meta: add ibrpvid and ibrvproto support
+
+-------------------------------------------------------------------
 Mon Aug 19 12:37:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.9.2
