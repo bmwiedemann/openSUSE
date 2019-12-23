@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 10 16:04:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1158809, CVE-2019-1551]
+  * Overflow bug in the x64_64 Montgomery squaring procedure used
+    in exponentiation with 512-bit moduli
+- Add openssl-1_1-CVE-2019-1551.patch
+
+-------------------------------------------------------------------
 Mon Oct 14 18:36:37 UTC 2019 - Jason Sikes <jsikes@suse.com>
 
 - Merged upstream changes to allow NULL salt values in EVP_PBE_scrypt().

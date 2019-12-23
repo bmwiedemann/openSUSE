@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,9 @@ Patch11:        0004-s390x-assembly-pack-fix-formal-interface-bug-in-chac.patch
 Patch12:        0005-s390x-assembly-pack-import-chacha-from-cryptogams-re.patch
 Patch13:        0006-s390x-assembly-pack-import-poly-from-cryptogams-repo.patch
 Patch14:        openssl-jsc-SLE-8789-backport_KDF.patch
+# OpenSSL Security Advisory [6 December 2019] bsc#1158809 CVE-2019-1551
+# PATCH-FIX-UPSTREAM Integer overflow in RSAZ modular exponentiation on x86_64
+Patch15:        openssl-1_1-CVE-2019-1551.patch
 BuildRequires:  pkgconfig
 Conflicts:      ssl
 Provides:       ssl
@@ -201,7 +204,7 @@ set -x
 # Do not install demo scripts executable under /usr/share/doc
 find demos -type f -perm /111 -exec chmod 644 {} \;
 
-# Place showciphers.c for %doc macro
+# Place showciphers.c for %%doc macro
 cp %{SOURCE5} .
 
 %post -n libopenssl1_1 -p /sbin/ldconfig
