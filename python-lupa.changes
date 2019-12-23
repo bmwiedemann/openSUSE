@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 10 20:52:28 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Use pkgconf instead of directly defining required development
+  packages.
+
+-------------------------------------------------------------------
 Tue Dec 10 10:34:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix dependency on the luajit to pull any implementation
