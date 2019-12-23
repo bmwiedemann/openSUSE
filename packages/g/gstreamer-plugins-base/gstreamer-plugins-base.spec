@@ -93,7 +93,7 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(graphene-1.0)
 %endif
-%if 0%{?is_opensuse}
+%if 0%{?suse_version} >= 1500 || 0%{?is_opensuse}
 BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig(wayland-egl) >= 1.0
 %endif
