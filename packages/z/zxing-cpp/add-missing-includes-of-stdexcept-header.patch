@@ -1,0 +1,98 @@
+diff --git a/core/src/datamatrix/DMBitMatrixParser.cpp b/core/src/datamatrix/DMBitMatrixParser.cpp
+index 4b8e94a..f4402d6 100644
+--- a/core/src/datamatrix/DMBitMatrixParser.cpp
++++ b/core/src/datamatrix/DMBitMatrixParser.cpp
+@@ -22,6 +22,8 @@
+ #include "DecodeStatus.h"
+ #include "ByteArray.h"
+ 
++#include <stdexcept>
++
+ namespace ZXing {
+ namespace DataMatrix {
+ 
+diff --git a/core/src/oned/ODCode128Writer.cpp b/core/src/oned/ODCode128Writer.cpp
+index fc3cac3..eb7bb2c 100644
+--- a/core/src/oned/ODCode128Writer.cpp
++++ b/core/src/oned/ODCode128Writer.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include <list>
+ #include <numeric>
++#include <stdexcept>
+ 
+ namespace ZXing {
+ namespace OneD {
+diff --git a/core/src/oned/ODCode39Writer.cpp b/core/src/oned/ODCode39Writer.cpp
+index 30b5aba..e8472db 100644
+--- a/core/src/oned/ODCode39Writer.cpp
++++ b/core/src/oned/ODCode39Writer.cpp
+@@ -20,6 +20,7 @@
+ #include "ZXContainerAlgorithms.h"
+ 
+ #include <array>
++#include <stdexcept>
+ 
+ namespace ZXing {
+ namespace OneD {
+diff --git a/core/src/oned/ODCode93Writer.cpp b/core/src/oned/ODCode93Writer.cpp
+index 8ad8ca5..90970a5 100644
+--- a/core/src/oned/ODCode93Writer.cpp
++++ b/core/src/oned/ODCode93Writer.cpp
+@@ -21,6 +21,7 @@
+ #include "ZXTestSupport.h"
+ 
+ #include <array>
++#include <stdexcept>
+ 
+ namespace ZXing {
+ namespace OneD {
+diff --git a/core/src/oned/ODITFWriter.cpp b/core/src/oned/ODITFWriter.cpp
+index c33fba8..62c3f15 100644
+--- a/core/src/oned/ODITFWriter.cpp
++++ b/core/src/oned/ODITFWriter.cpp
+@@ -18,6 +18,7 @@
+ #include "oned/ODWriterHelper.h"
+ 
+ #include <array>
++#include <stdexcept>
+ 
+ namespace ZXing {
+ namespace OneD {
+diff --git a/core/src/pdf417/PDFCodewordDecoder.cpp b/core/src/pdf417/PDFCodewordDecoder.cpp
+index 1a15247..c96c60b 100644
+--- a/core/src/pdf417/PDFCodewordDecoder.cpp
++++ b/core/src/pdf417/PDFCodewordDecoder.cpp
+@@ -20,6 +20,7 @@
+ #include <vector>
+ #include <numeric>
+ #include <limits>
++#include <stdexcept>
+ 
+ namespace ZXing {
+ namespace Pdf417 {
+diff --git a/core/src/pdf417/PDFEncoder.cpp b/core/src/pdf417/PDFEncoder.cpp
+index 2d32147..1942fcd 100644
+--- a/core/src/pdf417/PDFEncoder.cpp
++++ b/core/src/pdf417/PDFEncoder.cpp
+@@ -21,6 +21,7 @@
+ #include <array>
+ #include <cmath>
+ #include <vector>
++#include <stdexcept>
+ 
+ namespace ZXing {
+ namespace Pdf417 {
+diff --git a/core/src/qrcode/QRWriter.cpp b/core/src/qrcode/QRWriter.cpp
+index c48e4b0..a480acc 100644
+--- a/core/src/qrcode/QRWriter.cpp
++++ b/core/src/qrcode/QRWriter.cpp
+@@ -22,6 +22,8 @@
+ #include "BitMatrix.h"
+ #include "CharacterSet.h"
+ 
++#include <stdexcept>
++
+ namespace ZXing {
+ namespace QRCode {
+ 

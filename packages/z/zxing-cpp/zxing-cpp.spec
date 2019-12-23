@@ -1,7 +1,7 @@
 #
 # spec file for package zxing-cpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        https://github.com/nu-book/zxing-cpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-library-installation-and-versioning.patch
+Patch2:         add-missing-includes-of-stdexcept-header.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
