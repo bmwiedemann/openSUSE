@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _ver 1_3_2
+%define _ver 1_4_1
 %define shortname scipy
 %define pname python-%{shortname}
 
@@ -91,7 +91,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define         skip_python2 1
 Name:           %{package_name}
-Version:        1.3.2
+Version:        1.4.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -103,6 +103,8 @@ Source100:      python-scipy-rpmlintrc
 Patch0:         no_implicit_decl.patch
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel >= 3.5}
+BuildRequires:  %{python_module pybind11 >= 2.2.4}
+BuildRequires:  %{python_module python-pybind11-devel >= 2.2.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -122,6 +124,7 @@ BuildRequires:  lapack-devel
 BuildRequires:  %{python_module numpy-devel >= 1.5.1}
 BuildRequires:  lapacke-devel
 Requires:       python-numpy >= 1.5.1
+Requires:       python-pybind11 >= 2.2.4
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel >= 1.3
 BuildRequires:  %{python_module numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}

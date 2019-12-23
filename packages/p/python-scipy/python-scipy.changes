@@ -1,4 +1,263 @@
 -------------------------------------------------------------------
+Fri Dec 20 01:27:36 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.4.1
+  * SciPy 1.4.1 is a bug-fix release with no new features compared
+    to 1.4.0. Importantly, it aims to fix a problem where an older
+    version of pybind11 may cause a segmentation fault when
+    imported alongside incompatible libraries.
+
+-------------------------------------------------------------------
+Tue Dec 17 20:48:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.4.0
+  + Highlights of this release
+    * a new submodule, `scipy.fft`, now supersedes `scipy.fftpack`; this
+      means support for ``long double`` transforms, faster multi-dimensional
+      transforms, improved algorithm time complexity, release of the global
+      intepreter lock, and control over threading behavior
+    * support for ``pydata/sparse`` arrays in `scipy.sparse.linalg`
+    * substantial improvement to the documentation and functionality of
+      several `scipy.special` functions, and some new additions
+    * the generalized inverse Gaussian distribution has been added to
+      `scipy.stats`
+    * an implementation of the Edmonds-Karp algorithm in
+      `scipy.sparse.csgraph.maximum_flow`
+    * `scipy.spatial.SphericalVoronoi` now supports n-dimensional input, 
+      has linear memory complexity, improved performance, and
+      supports single-hemisphere generators
+  + New features
+    > Infrastructure
+      * Documentation can now be built with ``runtests.py --doc``
+      * A ``Dockerfile`` is now available in the ``scipy/scipy-dev`` repository to
+        acilitate getting started with SciPy development.
+    > `scipy.constants` improvements
+      * `scipy.constants` has been updated with the CODATA 2018 constants.
+    > `scipy.fft` added
+      * `scipy.fft` is a new submodule that supersedes the `scipy.fftpack` submodule. 
+        or the most part, this is a drop-in replacement for ``numpy.fft`` and 
+        scipy.fftpack` alike. With some important differences, `scipy.fft`:
+      * uses NumPy's conventions for real transforms (``rfft``). This means the 
+        eturn value is a complex array, half the size of the full ``fft`` output.
+        his is different from the output of ``fftpack`` which returned a real array 
+        epresenting complex components packed together.
+      * the inverse real to real transforms (``idct`` and ``idst``) are normalized 
+        or ``norm=None`` in thesame way as ``ifft``. This means the identity 
+        `idct(dct(x)) == x`` is now ``True`` for all norm modes.
+      * does not include the convolutions or pseudo-differential operators
+        rom ``fftpack``.
+      * This submodule is based on the ``pypocketfft`` library, developed by the 
+        uthor of ``pocketfft`` which was recently adopted by NumPy as well.
+        `pypocketfft`` offers a number of advantages over fortran ``FFTPACK``:
+      * support for long double (``np.longfloat``) precision transforms.
+      * faster multi-dimensional transforms using vectorisation
+      * Bluestein’s algorithm removes the worst-case ``O(n^2)`` complexity of
+        `FFTPACK``
+      * the global interpreter lock (``GIL``) is released during transforms
+      * optional multithreading of multi-dimensional transforms via the ``workers``
+        rgument
+      * Note that `scipy.fftpack` has not been deprecated and will continue to be 
+        aintained but is now considered legacy. New code is recommended to use 
+        scipy.fft` instead, where possible.
+    > `scipy.fftpack` improvements
+      * `scipy.fftpack` now uses pypocketfft to perform its FFTs, offering the same
+        peed and accuracy benefits listed for scipy.fft above but without the
+        mproved API.
+    > `scipy.integrate` improvements
+      * The function `scipy.integrate.solve_ivp` now has an ``args`` argument.
+        his allows the user-defined functions passed to the function to have
+        dditional parameters without having to create wrapper functions or
+        ambda expressions for them.
+      * `scipy.integrate.solve_ivp` can now return a ``y_events`` attribute 
+        epresenting the solution of the ODE at event times
+      * New ``OdeSolver`` is implemented --- ``DOP853``. This is a high-order explicit
+        unge-Kutta method originally implemented in Fortran. Now we provide a pure 
+        ython implementation usable through ``solve_ivp`` with all its features.
+      * `scipy.integrate.quad` provides better user feedback when break points are 
+        pecified with a weighted integrand.
+      * `scipy.integrate.quad_vec` is now available for general purpose integration
+        f vector-valued functions
+    > `scipy.interpolate` improvements
+      * `scipy.interpolate.pade` now handles complex input data gracefully
+      * `scipy.interpolate.Rbf` can now interpolate multi-dimensional functions
+    > `scipy.io` improvements
+      * `scipy.io.wavfile.read` can now read data from a `WAV` file that has a
+        alformed header, similar to other modern `WAV` file parsers
+      * `scipy.io.FortranFile` now has an expanded set of available ``Exception``
+        lasses for handling poorly-formatted files
+    > `scipy.linalg` improvements
+      * The function ``scipy.linalg.subspace_angles(A, B)`` now gives correct
+        esults for complex-valued matrices. Before this, the function only returned
+        orrect values for real-valued matrices.
+      * New boolean keyword argument ``check_finite`` for `scipy.linalg.norm`; whether 
+        o check that the input matrix contains only finite numbers. Disabling may 
+        ive a performance gain, but may result in problems (crashes, non-termination)
+        f the inputs do contain infinities or NaNs.
+      * `scipy.linalg.solve_triangular` has improved performance for a C-ordered
+        riangular matrix
+      * ``LAPACK`` wrappers have been added for ``?geequ``, ``?geequb``, ``?syequb``,
+        nd ``?heequb``
+      * Some performance improvements may be observed due to an internal optimization
+        n operations involving LAPACK routines via ``_compute_lwork``. This is
+        articularly true for operations on small arrays.
+      * Block ``QR`` wrappers are now available in `scipy.linalg.lapack`
+    > `scipy.optimize` improvements
+      * It is now possible to use linear and non-linear constraints with 
+        scipy.optimize.differential_evolution`.
+      * `scipy.optimize.linear_sum_assignment` has been re-written in C++ to improve 
+        erformance, and now allows input costs to be infinite.
+      * A ``ScalarFunction.fun_and_grad`` method was added for convenient simultaneous
+        etrieval of a function and gradient evaluation
+      * `scipy.optimize.minimize` ``BFGS`` method has improved performance by avoiding
+        uplicate evaluations in some cases
+      * Better user feedback is provided when an objective function returns an array
+        nstead of a scalar.
+    > `scipy.signal` improvements
+      * Added a new function to calculate convolution using the overlap-add method,
+        amed `scipy.signal.oaconvolve`. Like `scipy.signal.fftconvolve`, this
+        unction supports specifying dimensions along which to do the convolution.
+      * `scipy.signal.cwt` now supports complex wavelets.
+      * The implementation of ``choose_conv_method`` has been updated to reflect the 
+        ew FFT implementation. In addition, the performance has been significantly 
+        mproved (with rather drastic improvements in edge cases).
+      * The function ``upfirdn`` now has a ``mode`` keyword argument that can be used
+        o select the signal extension mode used at the signal boundaries. These modes
+        re also available for use in ``resample_poly`` via a newly added ``padtype``
+        rgument.
+      * `scipy.signal.sosfilt` now benefits from Cython code for improved performance
+      * `scipy.signal.resample` should be more efficient by leveraging ``rfft`` when
+        ossible
+    > `scipy.sparse` improvements
+      * It is now possible to use the LOBPCG method in `scipy.sparse.linalg.svds`.
+      * `scipy.sparse.linalg.LinearOperator` now supports the operation ``rmatmat`` 
+        or adjoint matrix-matrix multiplication, in addition to ``rmatvec``.
+      * Multiple stability updates enable float32 support in the LOBPCG eigenvalue 
+        olver for symmetric and Hermitian eigenvalues problems in 
+        `scipy.sparse.linalg.lobpcg``.
+      * A solver for the maximum flow problem has been added as
+        scipy.sparse.csgraph.maximum_flow`.
+      * `scipy.sparse.csgraph.maximum_bipartite_matching` now allows non-square inputs,
+        o longer requires a perfect matching to exist, and has improved performance.
+      * `scipy.sparse.lil_matrix` conversions now perform better in some scenarios
+      * Basic support is available for ``pydata/sparse`` arrays in
+        scipy.sparse.linalg`
+      * `scipy.sparse.linalg.spsolve_triangular` now supports the ``unit_diagonal``
+        rgument to improve call signature similarity with its dense counterpart,
+        scipy.linalg.solve_triangular`
+      * ``assertAlmostEqual`` may now be used with sparse matrices, which have added
+        upport for ``__round__``
+    > `scipy.spatial` improvements
+      * The bundled Qhull library was upgraded to version 2019.1, fixing several
+        ssues. Scipy-specific patches are no longer applied to it.
+      * `scipy.spatial.SphericalVoronoi` now has linear memory complexity, improved
+        erformance, and supports single-hemisphere generators. Support has also been
+        dded for handling generators that lie on a great circle arc (geodesic input)
+        nd for generators in n-dimensions.
+      * `scipy.spatial.transform.Rotation` now includes functions for calculation of a
+        ean rotation, generation of the 3D rotation groups, and reduction of rotations
+        ith rotational symmetries.
+      * `scipy.spatial.transform.Slerp` is now callable with a scalar argument
+      * `scipy.spatial.voronoi_plot_2d` now supports furthest site Voronoi diagrams
+      * `scipy.spatial.Delaunay` and `scipy.spatial.Voronoi` now have attributes
+        or tracking whether they are furthest site diagrams
+    > `scipy.special` improvements
+      * The Voigt profile has been added as `scipy.special.voigt_profile`.
+      * A real dispatch has been added for the Wright Omega function
+        `scipy.special.wrightomega`).
+      * The analytic continuation of the Riemann zeta function has been added. (The 
+        iemann zeta function is the one-argument variant of `scipy.special.zeta`.)
+      * The complete elliptic integral of the first kind (`scipy.special.ellipk`) is 
+        ow available in `scipy.special.cython_special`.
+      * The accuracy of `scipy.special.hyp1f1` for real arguments has been improved.
+      * The documentation of many functions has been improved.
+    > `scipy.stats` improvements
+      * `scipy.stats.multiscale_graphcorr` added as an independence test that
+        perates on high dimensional and nonlinear data sets. It has higher statistical
+        ower than other `scipy.stats` tests while being the only one that operates on
+        ultivariate data.
+      * The generalized inverse Gaussian distribution (`scipy.stats.geninvgauss`) has 
+        een added.
+      * It is now possible to efficiently reuse `scipy.stats.binned_statistic_dd` 
+        ith new values by providing the result of a previous call to the function.
+      * `scipy.stats.hmean` now handles input with zeros more gracefully.
+      * The beta-binomial distribution is now available in `scipy.stats.betabinom`.
+      * `scipy.stats.zscore`, `scipy.stats.circmean`, `scipy.stats.circstd`, and
+        scipy.stats.circvar` now support the ``nan_policy`` argument for enhanced
+        andling of ``NaN`` values
+      * `scipy.stats.entropy` now accepts an ``axis`` argument
+      * `scipy.stats.gaussian_kde.resample` now accepts a ``seed`` argument to empower
+        eproducibility
+      * `scipy.stats.kendalltau` performance has improved, especially for large inputs,
+        ue to improved cache usage
+      * `scipy.stats.truncnorm` distribution has been rewritten to support much wider
+        ails
+  + Deprecated features
+    > `scipy` deprecations
+      * Support for NumPy functions exposed via the root SciPy namespace is deprecated
+        nd will be removed in 2.0.0. For example, if you use ``scipy.rand`` or
+        `scipy.diag``, you should change your code to directly use
+        `numpy.random.default_rng`` or ``numpy.diag``, respectively.
+        hey remain available in the currently continuing Scipy 1.x release series.
+      * The exception to this rule is using ``scipy.fft`` as a function --
+        mod:`scipy.fft` is now meant to be used only as a module, so the ability to
+        all ``scipy.fft(...)`` will be removed in SciPy 1.5.0.
+      * In `scipy.spatial.Rotation` methods ``from_dcm``, ``as_dcm`` were renamed to 
+        `from_matrix``, ``as_matrix`` respectively. The old names will be removed in 
+        ciPy 1.6.0.
+      * Method ``Rotation.match_vectors`` was deprecated in favor of 
+        `Rotation.align_vectors``, which provides a more logical and 
+        eneral API to the same functionality. The old method 
+        ill be removed in SciPy 1.6.0.
+  + Backwards incompatible changes
+    > `scipy.special` changes
+      * The deprecated functions ``hyp2f0``, ``hyp1f2``, and ``hyp3f0`` have been
+        emoved.
+      * The deprecated function ``bessel_diff_formula`` has been removed.
+      * The function ``i0`` is no longer registered with ``numpy.dual``, so that 
+        `numpy.dual.i0`` will unconditionally refer to the NumPy version regardless 
+        f whether `scipy.special` is imported.
+      * The function ``expn`` has been changed to return ``nan`` outside of its 
+        omain of definition (``x, n < 0``) instead of ``inf``.
+    > `scipy.sparse` changes
+      * Sparse matrix reshape now raises an error if shape is not two-dimensional, 
+        rather than guessing what was meant. The behavior is now the same as before 
+        ciPy 1.1.0.
+      * ``CSR`` and ``CSC`` sparse matrix classes should now return empty matrices
+        f the same type when indexed out of bounds. Previously, for some versions
+        f SciPy, this would raise an ``IndexError``. The change is largely motivated
+        y greater consistency with ``ndarray`` and ``numpy.matrix`` semantics.
+    > `scipy.signal` changes
+      * `scipy.signal.resample` behavior for length-1 signal inputs has been
+        ixed to output a constant (DC) value rather than an impulse, consistent with
+        he assumption of signal periodicity in the FFT method.
+      * `scipy.signal.cwt` now performs complex conjugation and time-reversal of
+        avelet data, which is a backwards-incompatible bugfix for
+        ime-asymmetric wavelets.
+    > `scipy.stats` changes
+      * `scipy.stats.loguniform` added with better documentation as (an alias for
+        `scipy.stats.reciprocal``). ``loguniform`` generates random variables
+        hat are equally likely in the log space; e.g., ``1``, ``10`` and ``100``
+        re all equally likely if ``loguniform(10 ** 0, 10 ** 2).rvs()`` is used.
+  + Other changes
+    * The ``LSODA`` method of `scipy.integrate.solve_ivp` now correctly detects stiff
+        roblems.
+    * `scipy.spatial.cKDTree` now accepts and correctly handles empty input data
+    * `scipy.stats.binned_statistic_dd` now calculates the standard deviation 
+        tatistic in a numerically stable way.
+    * `scipy.stats.binned_statistic_dd` now throws an error if the input data 
+        ontains either ``np.nan`` or ``np.inf``. Similarly, in `scipy.stats` now all 
+        ontinuous distributions' ``.fit()`` methods throw an error if the input data
+        ontain any instance of either ``np.nan`` or ``np.inf``.
+- Rebase no_implicit_decl.patch
+
+-------------------------------------------------------------------
+Tue Dec 10 14:24:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.3.3
+  * Fix deadlock on osx for python 3.8
+  * MAINT: TST: Skip tests with multiprocessing that use "spawn" start method
+
+-------------------------------------------------------------------
 Tue Nov 19 20:08:41 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.3.2

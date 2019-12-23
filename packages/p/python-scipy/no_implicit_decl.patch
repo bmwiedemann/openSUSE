@@ -18,7 +18,7 @@ And fix the following error:
 
 --- a/scipy/sparse/linalg/dsolve/SuperLU/SRC/dmach.c
 +++ b/scipy/sparse/linalg/dsolve/SuperLU/SRC/dmach.c
-@@ -1,6 +1,7 @@
+@@ -11,6 +11,7 @@
  #include <float.h>
  #include <math.h>
  #include <stdio.h>
@@ -29,7 +29,7 @@ And fix the following error:
 
 --- a/scipy/sparse/linalg/dsolve/SuperLU/SRC/smach.c
 +++ b/scipy/sparse/linalg/dsolve/SuperLU/SRC/smach.c
-@@ -1,6 +1,7 @@
+@@ -11,6 +11,7 @@
  #include <float.h>
  #include <math.h>
  #include <stdio.h>
@@ -40,13 +40,14 @@ And fix the following error:
 
 --- a/scipy/spatial/qhull_misc.h
 +++ b/scipy/spatial/qhull_misc.h
-@@ -2,6 +2,9 @@
-  * Handle different Fortran conventions.
+@@ -1,6 +1,10 @@
+ /*
+  * Handle different Fortran conventions and qh_new_qhull_scipy entry point.
   */
- 
++
 +#include <stdio.h>
 +#include <lapacke.h>
 +
- #if defined(NO_APPEND_FORTRAN)
- #if defined(UPPERCASE_FORTRAN)
- #define F_FUNC(f,F) F
+ #ifndef QHULL_MISC_H_
+ #define QHULL_MISC_H_
+ 

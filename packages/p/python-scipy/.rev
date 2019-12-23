@@ -977,4 +977,12 @@ bsc#1130564: Apply update from the openSUSE package
     <comment>Update to 1.3.2</comment>
     <requestid>749751</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>039e21586e951b5a87a6cb0e38d7be0a</srcmd5>
+    <version>1.4.1</version>
+    <time>1577137018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758366</requestid>
+  </revision>
 </revisionlist>
