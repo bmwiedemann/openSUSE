@@ -3341,4 +3341,24 @@
 - updated staging to 4.21</comment>
     <requestid>752559</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>1f8b75ad9cad05ad9203a45904bee171</srcmd5>
+    <version>5.0~rc2</version>
+    <time>1577137387</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.0-rc2 release candidate
+  - Bug fixes only, we are in code freeze.
+- updated staging to 5.0-rc2
+
+- updated to 5.0-rc1 release candidate
+  - Gecko update, with support for running from a global location.
+  - Unicode data updated to Unicode version 12.1.
+  - Initial version of the MSADO (ActiveX Data Objects) library.
+  - Update installation support in the WUSA (Windows Update Standalone) tool.
+  - More progress on the kernel32/kernelbase restructuring.
+  - Support for signing with ECDSA keys.
+  - Various bug fixes.
+- updated staging to 5.0-rc1</comment>
+    <requestid>758732</requestid>
+  </revision>
 </revisionlist>

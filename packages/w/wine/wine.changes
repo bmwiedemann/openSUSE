@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec 21 15:20:52 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 5.0-rc2 release candidate
+  - Bug fixes only, we are in code freeze.
+- updated staging to 5.0-rc2
+
+-------------------------------------------------------------------
+Mon Dec 16 06:54:49 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 5.0-rc1 release candidate
+  - Gecko update, with support for running from a global location.
+  - Unicode data updated to Unicode version 12.1.
+  - Initial version of the MSADO (ActiveX Data Objects) library.
+  - Update installation support in the WUSA (Windows Update Standalone) tool.
+  - More progress on the kernel32/kernelbase restructuring.
+  - Support for signing with ECDSA keys.
+  - Various bug fixes.
+- updated staging to 5.0-rc1
+
+-------------------------------------------------------------------
 Sat Nov 30 06:54:48 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.21 development release
