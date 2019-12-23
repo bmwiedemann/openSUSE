@@ -1,7 +1,7 @@
 #
 # spec file for package python-arrow
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,32 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
-Name:           python-arrow
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%endif
+Name:           python-arrow%{?psuffix}
 Version:        0.15.4
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
 URL:            https://github.com/crsmithdev/arrow
 Source:         https://files.pythonhosted.org/packages/source/a/arrow/arrow-%{version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module setuptools}
+%if %{with test}
+BuildRequires:  %{python_module arrow == %{version}}
 BuildRequires:  %{python_module chai}
 BuildRequires:  %{python_module dateparser}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module simplejson}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+%endif
 Requires:       python-python-dateutil
 BuildArch:      noarch
 %if %{with python2}
@@ -63,12 +73,17 @@ rm -rf arrow.egg-info
 %python_build
 
 %install
+%if %{without test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%endif
 
+%if %{without test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
@@ -76,5 +91,6 @@ rm -rf arrow.egg-info
 %{python_sitelib}/arrow/*
 %dir %{python_sitelib}/arrow-%{version}-py*.egg-info
 %{python_sitelib}/arrow-%{version}-py*.egg-info
+%endif
 
 %changelog

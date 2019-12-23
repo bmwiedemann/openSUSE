@@ -96,4 +96,14 @@
     <comment></comment>
     <requestid>747337</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1412d12c930b46ef59252d70620c2fd3</srcmd5>
+    <version>0.15.4</version>
+    <time>1577137223</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _multibuild for tests to reduce the build dependencies
+  and simplify bootstrap for e.g. rpmlint.
+</comment>
+    <requestid>757264</requestid>
+  </revision>
 </revisionlist>
