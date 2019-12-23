@@ -127,6 +127,7 @@ BuildRequires:  pkgconfig(systemd)
 
 #bsc#1055679 - freeradius-server does not provide winbind/AD auth
 BuildRequires:  libwbclient-devel
+BuildRequires:  samba-core-devel
 
 %description
 Remote Authentication Dial-In User Service (RADIUS) is a networking

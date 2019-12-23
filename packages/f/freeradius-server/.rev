@@ -749,4 +749,13 @@
 - install license as %license instead of documentation</comment>
     <requestid>707189</requestid>
   </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>d9fb9a09138aeacf663f4274baf025e5</srcmd5>
+    <version>3.0.19</version>
+    <time>1577137668</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequire on samba-core-devel required for windbind
+  support in rlm_mschap.</comment>
+    <requestid>759001</requestid>
+  </revision>
 </revisionlist>
