@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Dec 21 07:32:55 UTC 2019 - coolo@suse.com
+
+- Update to version 4.6.1576913552.acf2b6db3:
+  * job investigation: Ensure consistent output with sorted hash keys
+  * job investigation: Provide test+needles git log diff and files stat diff
+  * job investigation: Skip "merge" commits with no helpful information in git log diff
+  * Increase the inactivity timeout of the cache service client to be more consistent with other timeouts, such as the SQLite busy timeout
+  * More concurrent download tests
+  * Worker settings should be handled by the cache service application instead of a model
+  * $a and $b are special variables in Perl, do not use them arbitrarily
+  * Add description to job template editor
+  * Use log level 'info' for message about groupless asset
+  * Remove registered assets regardless of the type
+  * Add description column to JobTemplates
+  * Log asset downloads and rsync requests the same
+  * Test concurrent rsync requests as well
+  * Fix a race condition in 25-cache-service.t where a worker was kept alive too long
+  * Connect parallel cache service downloads
+  * Dependency cron 191218
+  * docs: Update use description of travis_test container
+  * Delete obsolete travis.enc file
+  * Fix serveral issues with OBS rsync plugin UI
+  * job investigation: Give explanation on no test changes
+  * Add details to ObsRsync Project List UI
+  * Provide git log diff from tests in investigation
+  * Ignore selected entries from vars.json files for investigation
+  * t: Use more mojo Mojo::File instead of catfile/copy
+  * Improve test for re-scheduling and marking jobs as incomplete
+  * Improve scalability of job incompletion code
+  * Fix substitution for job_templates schedule list
+  * Refactor JobTemplates code
+  * Improve video player
+  * t: Save execution time in 18-tests-details by disabling wait timeout when expecting 0 needles
+  * t: Add helper methods for selenium tests to disable/enable timeout to save time
+  * Subside stale job detection
+  * Trigger tasks for limiting assets and results/logs hourly
+
+-------------------------------------------------------------------
 Mon Dec 16 13:05:11 UTC 2019 - coolo@suse.com
 
 - Update to version 4.6.1576340016.48aaffc06:

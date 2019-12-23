@@ -17,7 +17,7 @@
 
 
 # can't use linebreaks here!
-%define openqa_services openqa-webui.service openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer
+%define openqa_services openqa-webui.service openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-and-result-cleanup.service openqa-enqueue-asset-and-result-cleanup.timer
 %define openqa_worker_services openqa-worker.target openqa-slirpvde.service openqa-vde_switch.service openqa-worker-cacheservice.service openqa-worker-cacheservice-minion.service
 %if %{undefined tmpfiles_create}
 %define tmpfiles_create() \
@@ -65,7 +65,7 @@
 %define devel_requires %build_requires %test_requires rsync chromedriver curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1576340016.48aaffc06
+Version:        4.6.1576913552.acf2b6db3
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -396,6 +396,8 @@ fi
 %{_unitdir}/openqa-websockets.service
 %{_unitdir}/openqa-enqueue-audit-event-cleanup.service
 %{_unitdir}/openqa-enqueue-audit-event-cleanup.timer
+%{_unitdir}/openqa-enqueue-asset-and-result-cleanup.service
+%{_unitdir}/openqa-enqueue-asset-and-result-cleanup.timer
 # web libs
 %dir %{_datadir}/openqa
 %{_datadir}/openqa/templates
