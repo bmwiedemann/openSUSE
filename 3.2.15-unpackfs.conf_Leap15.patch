@@ -4,7 +4,7 @@ and openSUSE Leap 15 based appliances.
 diff --git a/src/modules/unpackfs/unpackfs.conf b/src/modules/unpackfs/unpackfs.conf
 --- a/src/modules/unpackfs/unpackfs.conf
 +++ b/src/modules/unpackfs/unpackfs.conf
-@@ -79,11 +79,14 @@
+@@ -79,11 +79,15 @@
  # for its destination name, as in the example below.
  
  unpack:
@@ -21,6 +21,7 @@ diff --git a/src/modules/unpackfs/unpackfs.conf b/src/modules/unpackfs/unpackfs.
 +    -   source: "/run/rootfsbase"
 +        sourcefs: "ext4"
 +        destination: "/"
++        exclude: [ "/etc/dracut.conf.d/02-livecd.conf" ]
 +   # -   source: src/qml/calamares/slideshow
 +   #     sourcefs: file
 +   #     destination: "/tmp/slideshow/"
