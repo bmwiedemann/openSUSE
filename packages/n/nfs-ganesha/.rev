@@ -47,4 +47,24 @@
     <comment></comment>
     <requestid>752370</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00b792d8fa855286c7b7ddbc53b400cd</srcmd5>
+    <version>3.1+git0.4de09d665</version>
+    <time>1577137003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1+git0.4de09d665:
+  * V3.1
+  * Pullup ntirpc to 3.1
+- Update to version 3.0.3+git0.0c2a4da66:
+  * V3.0.3
+  * NFS uio setup calloc size incorrect
+  * cmake: Add support for Open Build Server
+    + remove sle_build_detect.patch as changes upstreamed
+  * RADOS - Log a message when requested backend isn't available
+  * Handle RPCSEC_GSS negotiation or wrong cred messages
+  * Protocol: add config option to force utf8 string scan
+  * Clean up UTF-8 checking in preparation for config option
+</comment>
+    <requestid>758112</requestid>
+  </revision>
 </revisionlist>

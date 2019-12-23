@@ -1,5 +1,7 @@
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# spec file for package nfs-ganesha
+#
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -9,8 +11,11 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+
+
 #
 %define __arch_install_post /usr/lib/rpm/check-rpaths /usr/lib/rpm/check-buildroot
 
@@ -21,7 +26,7 @@
 %endif
 
 %if 0%{?suse_version}
-BuildRequires: distribution-release
+BuildRequires:  distribution-release
 %global with_nfsidmap 1
 %endif
 
@@ -104,17 +109,15 @@ BuildRequires: distribution-release
 
 %define sourcename @CPACK_SOURCE_PACKAGE_FILE_NAME@
 
-Name:		nfs-ganesha
-Version:	3.0.2+git0.eae6d6d35
-Release:	0
-Summary:	An NFS server running in user space
-Group:		Productivity/Networking/NFS
-License:	LGPL-3.0+ and GPL-3.0+
-Url:		https://github.com/nfs-ganesha/nfs-ganesha/wiki
+Name:           nfs-ganesha
+Version:        3.1+git0.4de09d665
+Release:        0
+Summary:        An NFS server running in user space
+License:        LGPL-3.0-or-later AND GPL-3.0-or-later
+Group:          Productivity/Networking/NFS
+URL:            https://github.com/nfs-ganesha/nfs-ganesha/wiki
 
-Source:		%{name}-%{version}.tar.bz2
-
-Patch01:	sle_build_detect.patch
+Source:         %{name}-%{version}.tar.bz2
 
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -124,68 +127,69 @@ ExclusiveArch:  x86_64 aarch64
 %endif
 %endif
 
-BuildRequires:	cmake
-BuildRequires:	bison flex
-BuildRequires:	flex
-BuildRequires:	pkgconfig
-BuildRequires:	krb5-devel
+BuildRequires:  bison
+BuildRequires:  cmake
+BuildRequires:  flex
+BuildRequires:  flex
+BuildRequires:  krb5-devel
 BuildRequires:  liburcu-devel
+BuildRequires:  pkgconfig
 %if %{with rados_recov} || %{with rados_urls}
-BuildRequires: librados-devel >= 0.61
+BuildRequires:  librados-devel >= 0.61
 %endif
 %if ( 0%{?suse_version} >= 1330 )
 BuildRequires:  libnsl-devel
 %endif
 %if ( 0%{?suse_version} )
-BuildRequires:	dbus-1-devel
-Requires:	dbus-1
+BuildRequires:  dbus-1-devel
+Requires:       dbus-1
 %else
-BuildRequires:	dbus-devel
-Requires:	dbus
+BuildRequires:  dbus-devel
+Requires:       dbus
 %endif
 
-BuildRequires:	libcap-devel
-BuildRequires:	libblkid-devel
-BuildRequires:	libuuid-devel
+BuildRequires:  libblkid-devel
+BuildRequires:  libcap-devel
+BuildRequires:  libuuid-devel
 %if %{with mspac_support}
-BuildRequires:	libwbclient-devel
+BuildRequires:  libwbclient-devel
 %endif
-BuildRequires:	gcc-c++
+BuildRequires:  gcc-c++
 %if %{with system_ntirpc}
-BuildRequires: libntirpc-devel >= 1.3.1
+BuildRequires:  libntirpc-devel >= 1.3.1
 %endif
 %if %{with sanitize_address}
-BuildRequires:	libasan
+BuildRequires:  libasan
 %endif
-Requires:	nfs-utils
+Requires:       nfs-utils
 
 %if ( 0%{?with_rpcbind} )
 %if ( 0%{?fedora} ) || ( 0%{?rhel} && 0%{?rhel} >= 6 ) || ( 0%{?suse_version} )
-Requires:	rpcbind
+Requires:       rpcbind
 %else
-Requires:	portmap
+Requires:       portmap
 %endif
 %endif
 
 %if %{with_nfsidmap}
 %if ( 0%{?suse_version} )
-BuildRequires:	nfsidmap-devel
+BuildRequires:  nfsidmap-devel
 %else
-BuildRequires:	libnfsidmap-devel
+BuildRequires:  libnfsidmap-devel
 %endif
 %else
-BuildRequires: nfs-utils-lib-devel
+BuildRequires:  nfs-utils-lib-devel
 %endif
 
 %if %{with rdma}
-BuildRequires:	libmooshika-devel >= 0.6-0
+BuildRequires:  libmooshika-devel >= 0.6-0
 %endif
 %if %{with jemalloc}
-BuildRequires:	jemalloc-devel
+BuildRequires:  jemalloc-devel
 %endif
 %if 0%{?suse_version}
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:	systemd-rpm-macros
 %{?systemd_ordering}
 PreReq:         %fillup_prereq
 Requires(post): procps
@@ -193,11 +197,11 @@ Requires(post): procps
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
-BuildRequires: systemd
+BuildRequires:  systemd
 %endif
 
 %if %{with man_page}
-BuildRequires: python3-Sphinx
+BuildRequires:  python3-Sphinx
 %endif
 
 # Use CMake variables
@@ -208,10 +212,12 @@ back-end modules (called File System Abstraction Layers - FSALs) for different
 file systems and name-spaces (notably the Ceph "file" and "object" back-ends -
 CephFS and RGW, respectively).
 
-%package -n libntirpc3_0
+%package -n libntirpc3_1
 Summary:        NFS-Ganesha transport-independent RPC (TI-RPC) shared library
 Group:          System/Libraries
-%description -n libntirpc3_0
+Obsoletes:      libntirpc3_0
+
+%description -n libntirpc3_1
 This package contains a new implementation of the original libtirpc, 
 transport-independent RPC (TI-RPC) library for NFS-Ganesha. It has
 the following features not found in libtirpc:
@@ -224,103 +230,115 @@ the following features not found in libtirpc:
  5. Event channels (remove static arrays of xprt handles, new EPOLL/KEVENT
     integration)
 
-%post -n libntirpc3_0 -p /sbin/ldconfig
+%post -n libntirpc3_1 -p /sbin/ldconfig
 
-%postun -n libntirpc3_0 -p /sbin/ldconfig
+%postun -n libntirpc3_1 -p /sbin/ldconfig
 
 %package -n libntirpc-devel
 Summary:        Copy of TIRPC headers from NFS-Ganesha
 Group:          Development/Libraries/C and C++
-Requires:       libntirpc3_0 = %{version}
+Requires:       libntirpc3_1 = %{version}
 Obsoletes:      nfs-ganesha-devel < %{version}
+
 %description -n libntirpc-devel
 This package contains the libraries and headers needed to develop programs
 using NFS-Ganesha transport-independent RPC (TI-RPC).
 
-%package -n libganesha_nfsd3_0
+%package -n libganesha_nfsd3_1
 Summary:        NFS-Ganesha NFSD shared library
 Group:          System/Libraries
-%description -n libganesha_nfsd3_0
+Obsoletes:      libnfsganesha_nfsd3_0
+
+%description -n libganesha_nfsd3_1
 This package contains the NFSD shared library from NFS-Ganesha.
 
-%post -n libganesha_nfsd3_0 -p /sbin/ldconfig
+%post -n libganesha_nfsd3_1 -p /sbin/ldconfig
 
-%postun -n libganesha_nfsd3_0 -p /sbin/ldconfig
+%postun -n libganesha_nfsd3_1 -p /sbin/ldconfig
 
 %package -n libganesha_nfsd-devel
 Summary:        NFS-Ganesha NFSD shared library
 Group:          Development/Libraries/C and C++
-Requires:       libganesha_nfsd3_0 = %{version}
+Requires:       libganesha_nfsd3_1 = %{version}
+
 %description -n libganesha_nfsd-devel
 This package contains the libraries and headers needed to develop programs
 using NFS-Ganesha NFSD.
 
 %package mount-9P
-Summary: a 9p mount helper
-Group: System/Filesystems
+Summary:        a 9p mount helper
+Group:          System/Filesystems
+
 %description mount-9P
 This package contains the mount.9P script that clients can use
 to simplify mounting to NFS-Ganesha. This is a 9p mount helper.
 
 %package vfs
-Summary: VFS backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-BuildRequires: libattr-devel
-Requires: nfs-ganesha = %{version}-%release
+Summary:        VFS backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+BuildRequires:  libattr-devel
+Requires:       nfs-ganesha = %{version}-%release
+
 %description vfs
 This package contains a FSAL shared object to
 be used with NFS-Ganesha to support VFS based filesystems
 
 %package proxy
-Summary: PROXY-based filesystem backend for NFS-GANESHA
-Group: Productivity/Networking/NFS
-BuildRequires: libattr-devel
-Requires: nfs-ganesha = %{version}-%{release}
+Summary:        PROXY-based filesystem backend for NFS-GANESHA
+Group:          Productivity/Networking/NFS
+BuildRequires:  libattr-devel
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description proxy
 This package contains a FSAL shared object to
 be used with NFS-Ganesha to support PROXY based filesystems
 
 %if %{with utils}
 %package utils
-Summary: The NFS-Ganesha utility scripts
-Group: Productivity/Networking/NFS
+Summary:        The NFS-Ganesha utility scripts
+Group:          Productivity/Networking/NFS
 %if ( 0%{?rhel} && 0%{?rhel} < 8 )
-Requires:       dbus-python, pygobject2, pyparsing
+Requires:       dbus-python
+Requires:       pygobject2
+Requires:       pyparsing
 BuildRequires:  python-devel
 %else
-Requires:	python3-gobject, python3-pyparsing
+Requires:       python3-gobject
+Requires:       python3-pyparsing
 BuildRequires:  python3-devel
 %endif
 %if ( 0%{?suse_version} )
-Requires:	dbus-1-python
+Requires:       dbus-1-python
 %else
-Requires:	python3-dbus
+Requires:       python3-dbus
 %endif
 %if %{with gui_utils}
 %if ( 0%{?suse_version} )
-BuildRequires:	python3-qt5-devel
-Requires:	python3-qt5
+BuildRequires:  python3-qt5-devel
+Requires:       python3-qt5
 %else
-BuildRequires:	PyQt4-devel
-Requires:	PyQt4
+BuildRequires:  PyQt4-devel
+Requires:       PyQt4
 %endif
 %endif
 BuildRequires:  python3-devel
 Requires:       nfs-ganesha = %{version}-%{release}
 Requires:       python3
+
 %description utils
 This package contains utility scripts for managing the NFS-Ganesha server
 %endif
 
 %if %{with lttng}
 %package lttng
-Summary: The NFS-Ganesha library for use with LTTng
-Group: Productivity/Networking/NFS
-BuildRequires: lttng-ust-devel >= 2.3
-BuildRequires: lttng-tools-devel >= 2.3
-Requires:      nfs-ganesha = %{version}-%{release}
-Requires:      lttng-tools >= 2.3
-Requires:      lttng-ust >= 2.3
+Summary:        The NFS-Ganesha library for use with LTTng
+Group:          Productivity/Networking/NFS
+BuildRequires:  lttng-tools-devel >= 2.3
+BuildRequires:  lttng-ust-devel >= 2.3
+Requires:       lttng-tools >= 2.3
+Requires:       lttng-ust >= 2.3
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description lttng
 This package contains the libganesha_trace.so library. When preloaded
 to the ganesha.nfsd server, it makes it possible to trace using LTTng.
@@ -328,9 +346,11 @@ to the ganesha.nfsd server, it makes it possible to trace using LTTng.
 
 %if %{with rados_recov}
 %package rados-grace
-Summary: The NFS-Ganesha command for managing the RADOS grace database
-BuildRequires: librados-devel >= 0.61
-Requires: nfs-ganesha = %{version}-%{release}
+Summary:        The NFS-Ganesha command for managing the RADOS grace database
+Group:          Productivity/Networking/NFS
+BuildRequires:  librados-devel >= 0.61
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description rados-grace
 This package contains the ganesha-rados-grace tool for interacting with the
 database used by the rados_cluster recovery backend and the
@@ -340,9 +360,9 @@ recovery state.
 
 %if %{with rados_urls}
 %package rados-urls
-Summary: The NFS-GANESHA library for use with RADOS URLs
-Group: Applications/System
-Requires: nfs-ganesha = %{version}-%{release}
+Summary:        The NFS-GANESHA library for use with RADOS URLs
+Group:          Applications/System
+Requires:       nfs-ganesha = %{version}-%{release}
 
 %description rados-urls
 This package contains the libganesha_rados_urls library used for
@@ -355,9 +375,10 @@ handling RADOS URL configurations.
 # NULL
 %if %{with nullfs}
 %package nullfs
-Summary: "null" filesystem backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires: nfs-ganesha = %{version}-%{release}
+Summary:        "null" filesystem backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description nullfs
 This package contains a Stackable FSAL shared object to
 be used with NFS-Ganesha. This is mostly a template for future (more sophisticated) stackable FSALs
@@ -366,9 +387,10 @@ be used with NFS-Ganesha. This is mostly a template for future (more sophisticat
 # MEM
 %if %{with mem}
 %package mem
-Summary: Memory-backed testing filesystem backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires: nfs-ganesha = %{version}-%{release}
+Summary:        Memory-backed testing filesystem backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description mem
 This package contains a FSAL shared object to be used with NFS-Ganesha.  This
 is used for speed and latency testing.
@@ -377,9 +399,10 @@ is used for speed and latency testing.
 # GPFS
 %if %{with gpfs}
 %package gpfs
-Summary: GPFS backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires: nfs-ganesha = %{version}-%{release}
+Summary:        GPFS backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description gpfs
 This package contains a FSAL shared object to
 be used with NFS-Ganesha to support GPFS backend
@@ -388,11 +411,12 @@ be used with NFS-Ganesha to support GPFS backend
 # CEPH
 %if %{with ceph}
 %package ceph
-Summary: CephFS backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires:	nfs-ganesha = %{version}-%{release}
+Summary:        CephFS backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
 Requires:       ceph-common
-BuildRequires:	libcephfs-devel >= 10.2.0
+Requires:       nfs-ganesha = %{version}-%{release}
+BuildRequires:  libcephfs-devel >= 10.2.0
+
 %description ceph
 This package contains the Ceph "file" (CephFS) File System Abstraction Layer
 (FSAL).
@@ -401,11 +425,12 @@ This package contains the Ceph "file" (CephFS) File System Abstraction Layer
 # RGW
 %if %{with rgw}
 %package rgw
-Summary: Ceph RADOS Gateway backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires:	nfs-ganesha = %{version}-%{release}
+Summary:        Ceph RADOS Gateway backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
 Requires:       ceph-common
-BuildRequires:	librgw-devel >= 10.2.0
+Requires:       nfs-ganesha = %{version}-%{release}
+BuildRequires:  librgw-devel >= 10.2.0
+
 %description rgw
 This package contains the Ceph "object" (RGW) File System Abstraction Layer
 (FSAL).
@@ -414,10 +439,12 @@ This package contains the Ceph "object" (RGW) File System Abstraction Layer
 # XFS
 %if %{with xfs}
 %package xfs
-Summary: XFS backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires:	nfs-ganesha = %{version}-%{release}
-BuildRequires:	libattr-devel xfsprogs-devel
+Summary:        XFS backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+Requires:       nfs-ganesha = %{version}-%{release}
+BuildRequires:  libattr-devel
+BuildRequires:  xfsprogs-devel
+
 %description xfs
 This package contains the XFS File System Abstraction Layer (FSAL)
 for use with NFS-Ganesha, providing correct XFS support.
@@ -426,12 +453,13 @@ for use with NFS-Ganesha, providing correct XFS support.
 #LUSTRE
 %if %{with lustre}
 %package lustre
-Summary: Lustre backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-BuildRequires: libattr-devel
-BuildRequires: lustre-client
-Requires: nfs-ganesha = %{version}-%{release}
-Requires: lustre-client
+Summary:        Lustre backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+BuildRequires:  libattr-devel
+BuildRequires:  lustre-client
+Requires:       lustre-client
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description lustre
 This package contains a FSAL shared object to
 be used with NFS-Ganesha to support LUSTRE based filesystems
@@ -440,9 +468,10 @@ be used with NFS-Ganesha to support LUSTRE based filesystems
 # PANFS
 %if %{with panfs}
 %package panfs
-Summary: PANFS backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires:	nfs-ganesha = %{version}-%{release}
+Summary:        PANFS backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+Requires:       nfs-ganesha = %{version}-%{release}
+
 %description panfs
 This package contains a FSAL shared object to
 be used with NFS-Ganesha to support PANFS
@@ -451,11 +480,13 @@ be used with NFS-Ganesha to support PANFS
 # GLUSTER
 %if %{with gluster}
 %package gluster
-Summary: Gluster filesystem backend for NFS-Ganesha
-Group: Productivity/Networking/NFS
-Requires:	nfs-ganesha = %{version}-%{release}
-BuildRequires:        glusterfs-api-devel >= 3.8
-BuildRequires:        libacl-devel libattr-devel
+Summary:        Gluster filesystem backend for NFS-Ganesha
+Group:          Productivity/Networking/NFS
+Requires:       nfs-ganesha = %{version}-%{release}
+BuildRequires:  glusterfs-api-devel >= 3.8
+BuildRequires:  libacl-devel
+BuildRequires:  libattr-devel
+
 %description gluster
 This package contains a FSAL shared object to
 be used with NFS-Ganesha to support Gluster
@@ -463,7 +494,6 @@ be used with NFS-Ganesha to support Gluster
 
 %prep
 %setup -q
-%patch01
 
 %build
 export LANGUAGE=en_US.UTF-8
@@ -646,8 +676,8 @@ pgrep dbus-daemon >/dev/null 2>&1 && killall -SIGHUP dbus-daemon >/dev/null 2>&1
 
 %if ! %{with system_ntirpc}
 
-%files -n libntirpc3_0
-%{_libdir}/libntirpc.so.3.0
+%files -n libntirpc3_1
+%{_libdir}/libntirpc.so.3.1
 
 %files -n libntirpc-devel
 %{_includedir}/ntirpc/
@@ -656,7 +686,7 @@ pgrep dbus-daemon >/dev/null 2>&1 && killall -SIGHUP dbus-daemon >/dev/null 2>&1
 
 %endif
 
-%files -n libganesha_nfsd3_0
+%files -n libganesha_nfsd3_1
 %{_libdir}/libganesha_nfsd.so.*
 
 %files -n libganesha_nfsd-devel

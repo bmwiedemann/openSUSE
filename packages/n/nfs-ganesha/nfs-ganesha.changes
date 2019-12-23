@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec 19 09:24:55 UTC 2019 - dkondratenko@suse.com
+
+- Update to version 3.1+git0.4de09d665:
+  * V3.1
+  * Pullup ntirpc to 3.1
+
+-------------------------------------------------------------------
+Mon Dec 09 09:55:09 UTC 2019 - dkondratenko@suse.com
+
+- Update to version 3.0.3+git0.0c2a4da66:
+  * V3.0.3
+  * NFS uio setup calloc size incorrect
+  * cmake: Add support for Open Build Server
+    + remove sle_build_detect.patch as changes upstreamed
+  * RADOS - Log a message when requested backend isn't available
+  * Handle RPCSEC_GSS negotiation or wrong cred messages
+  * Protocol: add config option to force utf8 string scan
+  * Clean up UTF-8 checking in preparation for config option
+
+-------------------------------------------------------------------
 Fri Nov 29 09:12:45 UTC 2019 - dkondratenko@suse.com
 
 - Update to version V3.0.2+git0.eae6d6d35:
