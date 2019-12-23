@@ -1,7 +1,7 @@
 #
 # spec file for package groff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,6 +83,10 @@ Obsoletes:      jgroff < %{version}
 # X fonts were moved back
 Provides:       groff-devx = %{version}-%{release}
 Obsoletes:      groff-devx <= 1.21
+# alternatives
+BuildRequires:  update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %else
 Recommends:     groff-full
 %endif
@@ -183,6 +187,15 @@ rm -f %{buildroot}%{_mandir}/man1/preconv.1*
 rm -f %{buildroot}%{_mandir}/man1/soelim.1*
 rm -f %{buildroot}%{_mandir}/man1/tbl.1*
 rm -f %{buildroot}%{_mandir}/man1/troff.1*
+
+# Prepare alternatives
+find %{buildroot}%{_mandir}
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+mv -v %{buildroot}%{_mandir}/man7/roff.7* \
+    %{buildroot}%{_mandir}/man7/roff-gf.7%{?ext_man}
+ln -s -f %{_sysconfdir}/alternatives/roff.7%{?ext_man} \
+    %{buildroot}%{_mandir}/man7/roff.7%{?ext_man}
+# full_build
 %else
 # fix permission for devps/generate/afmname
 # used by ghostscript-fonts-grops
@@ -228,6 +241,8 @@ ln -s -f tbl %{buildroot}%{_bindir}/gtbl
 # install profiles to disable the use of ANSI colour sequences by default:
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/profile.d
 install -m 644 %{SOURCE3} %{SOURCE4} %{buildroot}/%{_sysconfdir}/profile.d/
+
+# full_build
 %endif
 
 %fdupes -s %{buildroot}
@@ -235,9 +250,15 @@ install -m 644 %{SOURCE3} %{SOURCE4} %{buildroot}/%{_sysconfdir}/profile.d/
 %if %{with full_build}
 %post -n groff-full
 %install_info --info-dir=%{_infodir} %{_infodir}/groff.info.gz
+update-alternatives --install \
+   %{_mandir}/man7/roff.7%{?ext_man} roff.7%{?ext_man} \
+       %{_mandir}/man7/roff-gf.7%{?ext_man} 500
 
 %preun -n groff-full
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/groff.info.gz
+if [ $1 -eq 0 ] ; then
+   update-alternatives --remove man.7%{?ext_man} %{_mandir}/man7/man-gf.7%{?ext_man}
+fi
 %endif
 
 %if !%{with full_build}
@@ -299,6 +320,7 @@ install -m 644 %{SOURCE3} %{SOURCE4} %{buildroot}/%{_sysconfdir}/profile.d/
 %{_mandir}/man5/*
 %{_mandir}/man7/*
 %exclude %{_mandir}/man1/gxditview.1*
+%ghost %{_sysconfdir}/alternatives/roff.7%{?ext_man}
 %{_bindir}/*
 %exclude %{_bindir}/gxditview
 %dir %{_datadir}/groff
