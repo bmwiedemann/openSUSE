@@ -1,0 +1,177 @@
+From a4b5157715a58c49a22d46ca7962df0708916199 Mon Sep 17 00:00:00 2001
+From: Andreas Maier <andreas.r.maier@gmx.de>
+Date: Mon, 9 Dec 2019 04:57:28 +0100
+Subject: [PATCH] Replaced yamlordereddictloader package with yamlloader
+
+Details:
+
+* The yamlordereddictloader package is deprecated and points to yamlloader
+  as a replacement. Yamlloader was first released in 2018 as 0.5.0 and
+  is now at 0.5.5, supporting Python 2.7, and 3.4 and higher.
+
+  This change replaces the yamlordereddictloader package with yamlloader
+  with a minimum version of 0.5.5, but only for Python 2.7 and higher.
+  For Python 2.6, we are still using yamlordereddictloader.
+
+* The invalidresponseerror.yaml testcase contains illegal Unicode sequences
+  (in order to test pywbem behavior against them), which gets rejected by the
+  yaml parser that is used when using the CLoader of yamlloader. Using the
+  Loader class uses a different yamnl parser that tolerates them.
+  Therefore, the functiontest/conftest.py class uses
+  yamlloader.ordereddict.Loader. The server_definitionfile.py file uses
+  yamlloader.ordereddict.CSafeLoader which seems to be the best default
+  choice.
+
+*
+Signed-off-by: Andreas Maier <andreas.r.maier@gmx.de>
+---
+ dev-requirements.txt                           |  3 ++-
+ docs/changes.rst                               |  6 ++++++
+ minimum-constraints.txt                        |  3 ++-
+ .../utils/server_definition_file.py            | 18 +++++++++++++-----
+ tests/functiontest/conftest.py                 | 14 ++++++++++++--
+ 5 files changed, 35 insertions(+), 9 deletions(-)
+
+--- a/dev-requirements.txt
++++ b/dev-requirements.txt
+@@ -38,7 +38,8 @@ lxml>=4.4.1; python_version >= '3.8'
+ requests>=2.19.1; python_version == '2.6'
+ requests>=2.20.1; python_version > '2.6'
+ decorator>=4.0.11
+-yamlordereddictloader>=0.4.0
++yamlordereddictloader>=0.4.0; python_version == '2.6'
++yamlloader>=0.5.5; python_version > '2.6'
+ funcsigs>=1.0.2
+ 
+ # Indirect dependencies that are needed due to version pinning
+--- a/docs/changes.rst
++++ b/docs/changes.rst
+@@ -149,6 +149,10 @@ Released: 2019-12-01
+   native Python types int, long, float. These types cannot occur in this
+   function, so no tests could be written that test that code.
+ 
++* For Python 2.7 and higher, replaced the yamlordereddictloader
++  package with yamlloader, as it was deprecated. For Python 2.6,
++  still using yamlordereddictloader. (See issue #2008)
++
+ 
+ pywbem 0.14.6
+ -------------
+--- a/minimum-constraints.txt
++++ b/minimum-constraints.txt
+@@ -85,7 +85,8 @@ lxml==4.4.1; python_version >= '3.8'
+ requests==2.19.1; python_version == '2.6'
+ requests==2.20.1; python_version > '2.6'
+ decorator==4.0.11
+-yamlordereddictloader==0.4.0
++yamlordereddictloader==0.4.0; python_version == '2.6'
++yamlloader==0.5.5; python_version > '2.6'
+ funcsigs==1.0.2
+ FormEncode==1.3.1
+ 
+--- a/tests/end2endtest/utils/server_definition_file.py
++++ b/tests/end2endtest/utils/server_definition_file.py
+@@ -5,6 +5,7 @@ end2end tests.
+ 
+ from __future__ import absolute_import
+ 
++import sys
+ import os
+ try:
+     from collections import OrderedDict
+@@ -12,7 +13,13 @@ except ImportError:
+     from ordereddict import OrderedDict
+ import errno
+ import yaml
+-import yamlordereddictloader
++
++if sys.version_info[0:2] > (2, 6):
++    import yamlloader  # noqa: E402
++    yaml_loader = yamlloader.ordereddict.CSafeLoader
++else:
++    import yamlordereddictloader  # noqa: E402
++    yaml_loader = yamlordereddictloader.Loader
+ 
+ SDF_DIR = os.path.join('tests', 'server_definitions')
+ 
+@@ -44,7 +51,7 @@ class ServerDefinitionFile(object):
+         try:
+             with open(self._filepath) as fp:
+                 try:
+-                    data = yaml.load(fp, Loader=yamlordereddictloader.Loader)
++                    data = yaml.load(fp, Loader=yaml_loader)
+                 except (yaml.parser.ParserError,
+                         yaml.scanner.ScannerError) as exc:
+                     raise ServerDefinitionFileError(
+@@ -65,7 +72,8 @@ class ServerDefinitionFile(object):
+                 raise ServerDefinitionFileError(
+                     "The WBEM server definition file {0!r} is empty".
+                     format(self._filepath))
+-            if not isinstance(data, OrderedDict):
++            if not isinstance(data, (dict, OrderedDict)):
++                # Starting with py38, this is a standard dict
+                 raise ServerDefinitionFileError(
+                     "The WBEM server definition file {0!r} must contain a "
+                     "dictionary at the top level, but contains {1}".
+@@ -77,7 +85,7 @@ class ServerDefinitionFile(object):
+                     "'servers' item, but items: {1}".
+                     format(self._filepath, data.keys()))
+             servers = data.get('servers')
+-            if not isinstance(servers, OrderedDict):
++            if not isinstance(servers, (dict, OrderedDict)):
+                 raise ServerDefinitionFileError(
+                     "'servers' in WBEM server definition file {0!r} "
+                     "must be a dictionary, but is a {1}".
+@@ -85,7 +93,7 @@ class ServerDefinitionFile(object):
+             self._servers.update(servers)
+ 
+             server_groups = data.get('server_groups', OrderedDict())
+-            if not isinstance(server_groups, OrderedDict):
++            if not isinstance(server_groups, (dict, OrderedDict)):
+                 raise ServerDefinitionFileError(
+                     "'server_groups' in WBEM server definition file {0!r} "
+                     "must be a dictionary, but is a {1}".
+--- a/tests/functiontest/conftest.py
++++ b/tests/functiontest/conftest.py
+@@ -126,6 +126,7 @@ Syntax elements:
+ 
+ from __future__ import absolute_import, print_function
+ 
++import sys
+ import doctest
+ import socket
+ import re
+@@ -137,7 +138,6 @@ try:
+ except ImportError:
+     from ordereddict import OrderedDict
+ import yaml
+-import yamlordereddictloader
+ import pytest
+ import httpretty
+ from httpretty.core import HTTPrettyRequestEmpty, fakesock
+@@ -150,6 +150,13 @@ pywbem = import_installed('pywbem')  # n
+ from pywbem._utils import _ensure_unicode
+ from pywbem._nocasedict import NocaseDict
+ 
++if sys.version_info[0:2] > (2, 6):
++    import yamlloader  # noqa: E402
++    yaml_loader = yamlloader.ordereddict.Loader
++else:
++    import yamlordereddictloader  # noqa: E402
++    yaml_loader = yamlordereddictloader.Loader
++
+ 
+ class ExcThread(threading.Thread):
+     """
+@@ -231,7 +238,10 @@ class YamlFile(pytest.File):
+     def collect(self):
+         with self.fspath.open(encoding='utf-8') as fp:
+             filepath = self.fspath.relto(self.parent.fspath)
+-            testcases = yaml.load(fp, Loader=yamlordereddictloader.Loader)
++            # We need to be able to load illegal Unicode sequences for testing,
++            # so we use the non-C loader. This causes the yaml parser to
++            # tolerate these sequences. The C loader rejects them.
++            testcases = yaml.load(fp, Loader=yaml_loader)
+             for i, testcase in enumerate(testcases):
+                 try:
+                     tc_name = testcase['name']

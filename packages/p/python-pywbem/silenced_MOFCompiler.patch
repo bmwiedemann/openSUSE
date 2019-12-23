@@ -1,0 +1,144 @@
+From 3e81df0040a3679b3488e39ce9e92dec297e71c9 Mon Sep 17 00:00:00 2001
+From: Andreas Maier <andreas.r.maier@gmx.de>
+Date: Sat, 7 Dec 2019 11:38:35 +0100
+Subject: [PATCH] Silenced MOFCompiler for verbose=False; Fixed moftab version
+ check
+
+Details:
+
+* Silenced the MOFCompiler class for verbose=False. So far, it still printed
+  messages for generating the YACC parser table, causing one test to fail,
+  and others to issue useless prints. (Issue #2004)
+
+* Test: Fixed an error in testing the PLY table version in testcases that caused
+  the LEX/YACC parser table files to be written to the pywbem installation
+  when using TEST_INSTALLED. (Related to issue #2004)
+
+Signed-off-by: Andreas Maier <andreas.r.maier@gmx.de>
+---
+ docs/changes.rst                           |  8 ++++++++
+ pywbem/mof_compiler.py                     |  8 +++++---
+ tests/unittest/pywbem/test_mof_compiler.py |  8 ++++----
+ tests/utils.py                             | 21 ++++++++++-----------
+ 4 files changed, 27 insertions(+), 18 deletions(-)
+
+--- a/docs/changes.rst
++++ b/docs/changes.rst
+@@ -78,6 +78,14 @@ Released: 2019-12-01
+ * Fixed several install issues with the lxml, flake8, pywin32, pip, setuptools,
+   and wheel packages on Python 3.8 on Windows. (See issues #1975, #1980).
+ 
++* Silenced the MOFCompiler class for verbose=False. So far, it still printed
++  messages for generating the YACC parser table, causing one test to fail,
++  and others to issue useless prints. (Issue #2004)
++
++* Test: Fixed an error in testing the PLY table version in testcases that caused
++  the LEX/YACC parser table files to be written to the pywbem installation
++  when using TEST_INSTALLED. (Related to issue #2004)
++
+ **Enhancements:**
+ 
+ * Removed the use of the 'pbr' package because it caused too many undesirable
+--- a/pywbem/mof_compiler.py
++++ b/pywbem/mof_compiler.py
+@@ -2639,9 +2639,10 @@ def _yacc(verbose=False, out_dir=None):
+                      tabmodule=_tabmodule,
+                      outputdir=out_dir,
+                      write_tables=write_tables,
+-                     debug=True,
++                     debug=verbose,
+                      debuglog=yacc.NullLogger(),
+-                     errorlog=yacc.PlyLogger(sys.stdout))
++                     errorlog=yacc.PlyLogger(sys.stdout) if verbose
++                     else yacc.NullLogger())
+ 
+ 
+ def _lex(verbose=False, out_dir=None):
+@@ -2675,4 +2676,5 @@ def _lex(verbose=False, out_dir=None):
+                    outputdir=out_dir,
+                    debug=False,
+                    # debuglog = lex.PlyLogger(sys.stdout),
+-                   errorlog=lex.PlyLogger(sys.stdout))
++                   errorlog=yacc.PlyLogger(sys.stdout) if verbose
++                   else yacc.NullLogger())
+--- a/tests/unittest/pywbem/test_mof_compiler.py
++++ b/tests/unittest/pywbem/test_mof_compiler.py
+@@ -77,7 +77,7 @@ class MOFTest(unittest.TestCase):
+         self.mofcomp = MOFCompiler(
+             MOFWBEMConnection(),
+             search_paths=[TEST_DMTF_CIMSCHEMA_MOF_DIR],
+-            verbose=True,
++            verbose=False,
+             log_func=moflog)
+ 
+         self.partial_schema_file = None
+@@ -621,7 +621,7 @@ class TestSchemaSearch(MOFTest):
+         mofcomp = MOFCompiler(
+             MOFWBEMConnection(),
+             search_paths=TEST_DMTF_CIMSCHEMA_MOF_DIR,
+-            verbose=True,
++            verbose=False,
+             log_func=moflog)
+         mofcomp.compile_file(os.path.join(TEST_DMTF_CIMSCHEMA_MOF_DIR,
+                                           'System',
+@@ -646,7 +646,7 @@ class TestSchemaSearch(MOFTest):
+         open(moflog_file, 'w')
+         mofcomp = MOFCompiler(
+             MOFWBEMConnection(),
+-            verbose=True,
++            verbose=False,
+             log_func=moflog)
+         try:
+             mofcomp.compile_file(os.path.join(TEST_DMTF_CIMSCHEMA_MOF_DIR,
+@@ -2585,7 +2585,7 @@ class Test_CreateInstanceWithDups(unitte
+         self.mofcomp = MOFCompiler(
+             MOFWBEMConnectionInstDups(),
+             search_paths=[TEST_DMTF_CIMSCHEMA_MOF_DIR],
+-            verbose=True,
++            verbose=False,
+             log_func=moflog)
+ 
+         self.partial_schema_file = None
+--- a/tests/utils.py
++++ b/tests/utils.py
+@@ -8,7 +8,7 @@ import sys
+ import os
+ from packaging import version
+ import pytest
+-import ply
++from ply import yacc, lex
+ 
+ 
+ def skip_if_moftab_regenerated():
+@@ -60,22 +60,22 @@ def skip_if_moftab_regenerated():
+     pywbem_not_tolerant = version.parse(pywbem.__version__) <= \
+         version.parse('0.14.4')  # This causes 0.14.5.devN to be tolerant
+     mofparsetab_mismatch = version.parse(mofparsetab._tabversion) != \
+-        version.parse(ply.__version__)
++        version.parse(yacc.__tabversion__)
+     moflextab_mismatch = version.parse(moflextab._tabversion) != \
+-        version.parse(ply.__version__)
++        version.parse(lex.__tabversion__)
+ 
+     if test_installed and pywbem_not_tolerant and \
+             (mofparsetab_mismatch or moflextab_mismatch):
+         pytest.skip("Cannot run this MOF testcase against an installed "
+                     "pywbem (version {0}, installed at {1}) because that "
+-                    "pywbem version does not tolerate version mismatches "
+-                    "between the current ply version and the ply version that "
+-                    "was used to create the pywbem mof*tab files: "
+-                    "current ply: {2}, ply in mofparsetab.py: {3}, "
+-                    "ply in moflextab.py: {4}".
++                    "pywbem version does not tolerate table version mismatches "
++                    "between the current ply package and the generated pywbem "
++                    "mof*tab files: yacc table version: current ply: {2}, "
++                    "mofparsetab.py: {3}, lex table version: current ply: {4}, "
++                    "moflextab.py: {5}".
+                     format(pywbem.__version__, pywbem.__file__,
+-                           ply.__version__,
+-                           mofparsetab._tabversion, moflextab._tabversion))
++                           yacc.__tabversion__, mofparsetab._tabversion,
++                           lex.__tabversion__, moflextab._tabversion))
+ 
+ 
+ def import_installed(module_name):

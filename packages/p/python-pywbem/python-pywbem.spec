@@ -15,29 +15,48 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global         pkgname pywbem
+%define skip_python2 1
+%global         modname pywbem
 Name:           python-pywbem
-Version:        0.14.6
+Version:        0.15.0
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
-Source0:        pywbem-%{version}.tar.gz
+Source0:        https://github.com/pywbem/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM unittest2-just-say-no.patch gh#pywbem/pywbem#2003 mcepl@suse.com
+# Don't use unittest2, ever
+Patch0:         unittest2-just-say-no.patch
+# PATCH-FIX-UPSTREAM silenced_MOFCompiler.patch gh#pywbem/pywbem#2004 mcepl@suse.com
+# fix some failing tests
+Patch1:         silenced_MOFCompiler.patch
+# PATCH-FIX-UPSTREAM replace-yamlordereddictloader-w-yamlloader.patch gh#pywbem/pywbem#2022 mcepl@suse.com
+# we can kick off deprecated yamlordereddictloader module from Factory again
+Patch2:         replace-yamlordereddictloader-w-yamlloader.patch
+BuildRequires:  %{python_module FormEncode}
 BuildRequires:  %{python_module M2Crypto}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module httpretty}
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module testfixtures}
+BuildRequires:  %{python_module yamlloader}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# For xmllint
+BuildRequires:  libxml2-tools
 Requires:       python
 Requires:       python-M2Crypto
 Requires:       python-PyYAML
@@ -57,7 +76,8 @@ PyWBEM is a Python module for making CIM operation calls using the WBEM
 protocol to query and update managed objects.
 
 %prep
-%setup -q -n %{pkgname}-%{version}
+%setup -q -n %{modname}-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -71,6 +91,16 @@ rm %{buildroot}%{_bindir}/*.bat
 %python_clone -a %{buildroot}%{_bindir}/pywbemcli
 %python_clone -a %{buildroot}%{_bindir}/wbemcli.py
 %python_clone -a %{buildroot}%{_bindir}/mof_compiler
+
+%check
+# gh#pywbem/pywbem#2004 for -k
+%{python_expand PYTHONPATH=$PYTHONPATH:%{buildroot}%{$python_sitelib} \
+py.test-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -v \
+    --cov pywbem --cov pywbem_mock  --cov-config coveragerc \
+    -W default -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning \
+    -k 'not test_wbemcli' \
+    tests/unittest tests/functiontest -s
+}
 
 %post
 %python_install_alternative pywbemcli

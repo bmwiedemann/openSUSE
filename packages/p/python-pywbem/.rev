@@ -74,4 +74,28 @@
     <comment></comment>
     <requestid>752345</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a7622dd8c91e271db636e25c5ed78b1</srcmd5>
+    <version>0.15.0</version>
+    <time>1577136896</time>
+    <user>dimstar_suse</user>
+    <comment>- Add replace-yamlordereddictloader-w-yamlloader.patch which can
+  allow us to kick off deprecated yamlordereddictloader module
+  from Factory again. gh#pywbem/pywbem#2022
+
+- Add silenced_MOFCompiler.patch so we can unexclude some more
+  tests.
+
+- Update to 0.15.0:
+  - This release deprecates the wbemcli command. Pywbem 1.0.0
+    will remove the wbemcli command. The recommended replacement
+    is the pywbemcli command from the pywbemtools package on
+    Pypi: https://pypi.org/project/pywbemtools/
+  - Further changes are presented on
+    https://pywbem.readthedocs.io/en/stable_0.15/changes.html#pywbem-0-15-0
+  - Depends on the acceptance of bdo#754686
+  - Many many tests need to be switched off (gh#pywbem/pywbem#2004)
+- fix unit tests (unittest2-just-say-no.patch)</comment>
+    <requestid>755472</requestid>
+  </revision>
 </revisionlist>
