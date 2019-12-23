@@ -261,6 +261,17 @@ Patch90:       read-repo-info-without-using-interpolation-bsc-11356.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/53293
 Patch91:       prevent-test_mod_del_repo_multiline_values-to-fail.patch
 Patch92:       fix-for-log-checking-in-x509-test.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/190
+Patch93:       fixing-streamclosed-issue.patch
+Patch94:       fix-batch_async-obsolete-test.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/191
+Patch95:       let-salt-ssh-use-platform-python-binary-in-rhel8-191.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/192
+Patch96:       align-virt-full-info-fixes-with-upstream-192.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/55351
+Patch97:       fix-virt.get_hypervisor-188.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/193
+Patch98:       xfs-do-not-fails-if-type-is-not-present.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -869,15 +880,21 @@ cp %{S:5} ./.travis.yml
 %patch90 -p1
 %patch91 -p1
 %patch92 -p1
+%patch93 -p1
+%patch94 -p1
+%patch95 -p1
+%patch96 -p1
+%patch97 -p1
+%patch98 -p1
 
 %build
 %if 0%{?build_py2}
-%{__python} setup.py --with-salt-version=%{version} --salt-transport=both build
+python setup.py --with-salt-version=%{version} --salt-transport=both build
 cp ./build/lib/salt/_version.py ./salt
 mv build _build.python2
 %endif
 %if 0%{?build_py3}
-%{__python3} setup.py --with-salt-version=%{version} --salt-transport=both build
+python3 setup.py --with-salt-version=%{version} --salt-transport=both build
 cp ./build/lib/salt/_version.py ./salt
 mv build _build.python3
 %endif
@@ -898,12 +915,12 @@ cd doc && make html && rm _build/html/.buildinfo && rm _build/html/_images/proxy
 %install
 %if 0%{?build_py2}
 mv _build.python2 build
-%{__python} setup.py --salt-transport=both install --prefix=%{_prefix} --root=%{buildroot}
+python setup.py --salt-transport=both install --prefix=%{_prefix} --root=%{buildroot}
 mv build _build.python2
 %endif
 %if 0%{?build_py3}
 mv _build.python3 build
-%{__python3} setup.py --salt-transport=both install --prefix=%{_prefix} --root=%{buildroot}
+python3 setup.py --salt-transport=both install --prefix=%{_prefix} --root=%{buildroot}
 mv build _build.python3
 %endif
 
@@ -1069,9 +1086,9 @@ install -Dpm 0640 conf/suse/standalone-formulas-configuration.conf %{buildroot}%
 %check
 %if %{with test}
 %if 0%{?default_py3}
-%{__python3} setup.py test --runtests-opts=-u
+python3 setup.py test --runtests-opts=-u
 %else
-%{__python} setup.py test --runtests-opts=-u
+python setup.py test --runtests-opts=-u
 %endif
 %endif
 

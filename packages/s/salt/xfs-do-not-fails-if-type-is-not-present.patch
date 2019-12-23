@@ -1,0 +1,92 @@
+From 4a922d62a899cacf15a80882b2d1aff7ab66097c Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@gmail.com>
+Date: Tue, 11 Jun 2019 17:21:05 +0200
+Subject: [PATCH] xfs: do not fails if type is not present
+
+The command `blkid -o export` not always provides a 'TYPE' output
+for all the devices. One example is non-formatted partitions, like for
+example the BIOS partition.
+
+This patch do not force the presence of this field in the blkid
+output.
+
+(cherry picked from commit 88df6963470007aa4fe2adb09f000311f48226a8)
+---
+ salt/modules/xfs.py            |  2 +-
+ tests/unit/modules/test_xfs.py | 50 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+), 1 deletion(-)
+ create mode 100644 tests/unit/modules/test_xfs.py
+
+diff --git a/salt/modules/xfs.py b/salt/modules/xfs.py
+index 6546603ed6..e133ec83e1 100644
+--- a/salt/modules/xfs.py
++++ b/salt/modules/xfs.py
+@@ -329,7 +329,7 @@ def _blkid_output(out):
+         for items in flt(dev_meta.strip().split("\n")):
+             key, val = items.split("=", 1)
+             dev[key.lower()] = val
+-        if dev.pop("type") == "xfs":
++        if dev.pop("type", None) == "xfs":
+             dev['label'] = dev.get('label')
+             data[dev.pop("devname")] = dev
+ 
+diff --git a/tests/unit/modules/test_xfs.py b/tests/unit/modules/test_xfs.py
+new file mode 100644
+index 0000000000..4b423d69d1
+--- /dev/null
++++ b/tests/unit/modules/test_xfs.py
+@@ -0,0 +1,50 @@
++# -*- coding: utf-8 -*-
++
++# Import Python libs
++from __future__ import absolute_import, print_function, unicode_literals
++import textwrap
++
++# Import Salt Testing Libs
++from tests.support.mixins import LoaderModuleMockMixin
++from tests.support.unit import skipIf, TestCase
++from tests.support.mock import (
++    NO_MOCK,
++    NO_MOCK_REASON,
++    MagicMock,
++    patch)
++
++# Import Salt Libs
++import salt.modules.xfs as xfs
++
++
++@skipIf(NO_MOCK, NO_MOCK_REASON)
++@patch('salt.modules.xfs._get_mounts', MagicMock(return_value={}))
++class XFSTestCase(TestCase, LoaderModuleMockMixin):
++    '''
++    Test cases for salt.modules.xfs
++    '''
++    def setup_loader_modules(self):
++        return {xfs: {}}
++
++    def test__blkid_output(self):
++        '''
++        Test xfs._blkid_output when there is data
++        '''
++        blkid_export = textwrap.dedent('''
++            DEVNAME=/dev/sda1
++            UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
++            TYPE=xfs
++            PARTUUID=YYYYYYYY-YY
++
++            DEVNAME=/dev/sdb1
++            PARTUUID=ZZZZZZZZ-ZZZZ-ZZZZ-ZZZZ-ZZZZZZZZZZZZ
++            ''')
++        # We expect to find only data from /dev/sda1, nothig from
++        # /dev/sdb1
++        self.assertEqual(xfs._blkid_output(blkid_export), {
++            '/dev/sda1': {
++                'label': None,
++                'partuuid': 'YYYYYYYY-YY',
++                'uuid': 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
++            }
++        })
+-- 
+2.23.0
+
+

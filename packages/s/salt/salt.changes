@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Dec 12 10:21:15 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add missing bugzilla references:
+  Properly handle colons in inline dicts with yamlloader (bsc#1095651)
+  Fix corrupt public key with m2crypto python3 (bsc#1099323)
+  Add missing dateutils import (bsc#1099945)
+  Fix UnicodeDecodeError using is_binary check (bsc#1100225)
+  Prevent payload crash on decoding binary data (bsc#1100697)
+  Fix file.blockreplace to avoid throwing IndexError (bsc#1101812)
+  Add API log rotation on SUSE package (bsc#1102218)
+  Fix wrong recurse behavior on for linux_acl.present (bsc#1106164)
+  Handle anycast IPv6 addresses on network.routes (bsc#1114474)
+  Crontab module fix: file attributes option missing (bsc#1114824)
+  Add metadata to accepted keyword arguments (bsc#1122680)
+  Bugfix: properly refresh pillars (bsc#1125015)
+
+-------------------------------------------------------------------
+Wed Dec 11 14:27:24 UTC 2019 - Mihai Dincă <mihai.dinca@suse.com>
+
+- xfs: do not fail if type is not present (bsc#1153611)
+
+- Added:
+  * xfs-do-not-fails-if-type-is-not-present.patch
+
+-------------------------------------------------------------------
+Tue Dec 10 12:56:45 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Don't use __python indirection macros on spec file
+  %__python is no longer defined in RPM 4.15 (python2 is going EOL in Jan 2020);
+  additionally, python/python3 are just binaries in the path.
+
+-------------------------------------------------------------------
+Tue Dec 10 09:35:15 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix errors when running virt.get_hypervisor function
+
+- Added:
+  * fix-virt.get_hypervisor-188.patch
+
+-------------------------------------------------------------------
+Mon Dec  9 16:37:04 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Align virt.full_info fixes with upstream Salt
+- Let salt-ssh use platform-python on RHEL8 (bsc#1158441)
+
+- Added:
+  * align-virt-full-info-fixes-with-upstream-192.patch
+  * let-salt-ssh-use-platform-python-binary-in-rhel8-191.patch
+
+-------------------------------------------------------------------
+Tue Dec  3 12:22:55 UTC 2019 - Mihai Dincă <mihai.dinca@suse.com>
+
+- Fix StreamClosedError issue (bsc#1157479)
+
+- Added:
+  * fix-batch_async-obsolete-test.patch
+  * fixing-streamclosed-issue.patch
+
+-------------------------------------------------------------------
 Thu Nov 28 15:27:27 UTC 2019 - Mihai Dincă <mihai.dinca@suse.com>
 
 - Prevent test_mod_del_repo_multiline_values to fail

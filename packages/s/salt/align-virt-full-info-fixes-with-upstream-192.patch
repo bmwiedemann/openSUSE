@@ -1,0 +1,116 @@
+From d569054ebc63718e62fe5799685b0623910f7e1f Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Mon, 9 Dec 2019 17:27:41 +0100
+Subject: [PATCH] Align virt full info fixes with upstream (#192)
+
+* Porting PR #52574 to 2019.2.1
+
+* Partly revert 4ce0bc544174fdb00482db4653fb4b0ef411e78b to match upstream's fix
+---
+ salt/modules/virt.py            | 12 +++++++-----
+ tests/unit/modules/test_virt.py | 23 ++++++++++++++++++++++-
+ 2 files changed, 29 insertions(+), 6 deletions(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 3abc140a00..5e26964449 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -331,7 +331,7 @@ def _get_uuid(dom):
+ 
+         salt '*' virt.get_uuid <domain>
+     '''
+-    return ElementTree.fromstring(dom.XMLDesc(0)).find('uuid').text
++    return ElementTree.fromstring(get_xml(dom)).find('uuid').text
+ 
+ 
+ def _get_on_poweroff(dom):
+@@ -344,7 +344,7 @@ def _get_on_poweroff(dom):
+ 
+         salt '*' virt.get_on_restart <domain>
+     '''
+-    node = ElementTree.fromstring(dom.XMLDesc(0)).find('on_poweroff')
++    node = ElementTree.fromstring(get_xml(dom)).find('on_poweroff')
+     return node.text if node is not None else ''
+ 
+ 
+@@ -358,7 +358,7 @@ def _get_on_reboot(dom):
+ 
+         salt '*' virt.get_on_reboot <domain>
+     '''
+-    node = ElementTree.fromstring(dom.XMLDesc(0)).find('on_reboot')
++    node = ElementTree.fromstring(get_xml(dom)).find('on_reboot')
+     return node.text if node is not None else ''
+ 
+ 
+@@ -372,7 +372,7 @@ def _get_on_crash(dom):
+ 
+         salt '*' virt.get_on_crash <domain>
+     '''
+-    node = ElementTree.fromstring(dom.XMLDesc(0)).find('on_crash')
++    node = ElementTree.fromstring(get_xml(dom)).find('on_crash')
+     return node.text if node is not None else ''
+ 
+ 
+@@ -2435,7 +2435,9 @@ def get_xml(vm_, **kwargs):
+         salt '*' virt.get_xml <domain>
+     '''
+     conn = __get_conn(**kwargs)
+-    xml_desc = _get_domain(conn, vm_).XMLDesc(0)
++    xml_desc = vm_.XMLDesc(0) if isinstance(
++        vm_, libvirt.virDomain
++    ) else _get_domain(conn, vm_).XMLDesc(0)
+     conn.close()
+     return xml_desc
+ 
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index b95f51807f..d8efafc063 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -38,6 +38,10 @@ class LibvirtMock(MagicMock):  # pylint: disable=too-many-ancestors
+     '''
+     Libvirt library mock
+     '''
++    class virDomain(MagicMock):
++        '''
++        virDomain mock
++        '''
+ 
+     class libvirtError(Exception):
+         '''
+@@ -76,7 +80,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         Define VM to use in tests
+         '''
+         self.mock_conn.listDefinedDomains.return_value = [name]  # pylint: disable=no-member
+-        mock_domain = MagicMock()
++        mock_domain = self.mock_libvirt.virDomain()
+         self.mock_conn.lookupByName.return_value = mock_domain  # pylint: disable=no-member
+         mock_domain.XMLDesc.return_value = xml  # pylint: disable=no-member
+ 
+@@ -1396,6 +1400,23 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+                     re.match('^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$',
+                              interface_attrs['mac'], re.I))
+ 
++    def test_get_xml(self):
++        '''
++        Test virt.get_xml()
++        '''
++        xml = '''<domain type='kvm' id='7'>
++              <name>test-vm</name>
++              <devices>
++                <graphics type='vnc' port='5900' autoport='yes' listen='0.0.0.0'>
++                  <listen type='address' address='0.0.0.0'/>
++                </graphics>
++              </devices>
++            </domain>
++        '''
++        domain = self.set_mock_vm("test-vm", xml)
++        self.assertEqual(xml, virt.get_xml('test-vm'))
++        self.assertEqual(xml, virt.get_xml(domain))
++
+     def test_parse_qemu_img_info(self):
+         '''
+         Make sure that qemu-img info output is properly parsed
+-- 
+2.23.0
+
+

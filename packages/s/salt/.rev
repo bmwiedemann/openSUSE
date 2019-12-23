@@ -1201,4 +1201,41 @@ let build start it or we will get libvirt errors.
   * add-virt.volume_infos-and-virt.volume_delete.patch</comment>
     <requestid>753172</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>863734d26740a8ddba159139a9cc8075</srcmd5>
+    <version>2019.2.2</version>
+    <time>1577136983</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing bugzilla references:
+  Properly handle colons in inline dicts with yamlloader (bsc#1095651)
+  Fix corrupt public key with m2crypto python3 (bsc#1099323)
+  Add missing dateutils import (bsc#1099945)
+  Fix UnicodeDecodeError using is_binary check (bsc#1100225)
+  Prevent payload crash on decoding binary data (bsc#1100697)
+  Fix file.blockreplace to avoid throwing IndexError (bsc#1101812)
+  Add API log rotation on SUSE package (bsc#1102218)
+  Fix wrong recurse behavior on for linux_acl.present (bsc#1106164)
+  Handle anycast IPv6 addresses on network.routes (bsc#1114474)
+  Crontab module fix: file attributes option missing (bsc#1114824)
+  Add metadata to accepted keyword arguments (bsc#1122680)
+  Bugfix: properly refresh pillars (bsc#1125015)
+
+- xfs: do not fail if type is not present (bsc#1153611)
+- Added:
+  * xfs-do-not-fails-if-type-is-not-present.patch
+
+- Don't use __python indirection macros on spec file
+  %__python is no longer defined in RPM 4.15 (python2 is going EOL in Jan 2020);
+  additionally, python/python3 are just binaries in the path.
+
+- Fix errors when running virt.get_hypervisor function
+- Added:
+  * fix-virt.get_hypervisor-188.patch
+
+- Align virt.full_info fixes with upstream Salt
+- Let salt-ssh use platform-python on RHEL8 (bsc#1158441)
+- Added:
+  * align-virt-full-info-fixes-with-upstream-192.patch</comment>
+    <requestid>756034</requestid>
+  </revision>
 </revisionlist>

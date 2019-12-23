@@ -1,0 +1,33 @@
+From 11d5623a4b9b8ac40f29adb79f203ab8bbfdd8fc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mihai=20Dinc=C4=83?= <dincamihai@users.noreply.github.com>
+Date: Tue, 26 Nov 2019 18:26:31 +0100
+Subject: [PATCH] Fixing StreamClosed issue
+
+---
+ salt/cli/batch_async.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
+index 754c257b36..c4545e3ebc 100644
+--- a/salt/cli/batch_async.py
++++ b/salt/cli/batch_async.py
+@@ -221,7 +221,6 @@ class BatchAsync(object):
+                 "metadata": self.metadata
+             }
+             self.event.fire_event(data, "salt/batch/{0}/done".format(self.batch_jid))
+-            self.event.remove_event_handler(self.__event_handler)
+             for (pattern, label) in self.patterns:
+                 if label in ["ping_return", "batch_run"]:
+                     self.event.unsubscribe(pattern, match_type='glob')
+@@ -265,6 +264,7 @@ class BatchAsync(object):
+ 
+     def __del__(self):
+         self.local = None
++        self.event.remove_event_handler(self.__event_handler)
+         self.event = None
+         self.ioloop = None
+         gc.collect()
+-- 
+2.23.0
+
+

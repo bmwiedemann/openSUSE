@@ -1,0 +1,54 @@
+From 4e315730c1cf91c8c3efb1aad3c6370953c78459 Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Tue, 10 Dec 2019 10:27:26 +0100
+Subject: [PATCH] Fix virt.get_hypervisor() (#188)
+
+virt.get_hypervisor resulted in:
+
+  AttributeError: module 'salt.loader.dev-srv.tf.local.int.module.virt' has no attribute '_is_{}_hyper'
+
+This was due to missplaced parenthese.
+---
+ salt/modules/virt.py            |  2 +-
+ tests/unit/modules/test_virt.py | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 5e26964449..dedcf8cb6f 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -3309,7 +3309,7 @@ def get_hypervisor():
+     # To add a new 'foo' hypervisor, add the _is_foo_hyper function,
+     # add 'foo' to the list below and add it to the docstring with a .. versionadded::
+     hypervisors = ['kvm', 'xen']
+-    result = [hyper for hyper in hypervisors if getattr(sys.modules[__name__], '_is_{}_hyper').format(hyper)()]
++    result = [hyper for hyper in hypervisors if getattr(sys.modules[__name__], '_is_{}_hyper'.format(hyper))()]
+     return result[0] if result else None
+ 
+ 
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index d8efafc063..6f594a8ff3 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -3044,3 +3044,17 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         # Shouldn't be called with another parameter so far since those are not implemented
+         # and thus throwing exceptions.
+         mock_pool.delete.assert_called_once_with(self.mock_libvirt.VIR_STORAGE_POOL_DELETE_NORMAL)
++
++    @patch('salt.modules.virt._is_kvm_hyper', return_value=True)
++    @patch('salt.modules.virt._is_xen_hyper', return_value=False)
++    def test_get_hypervisor(self, isxen_mock, iskvm_mock):
++        '''
++        test the virt.get_hypervisor() function
++        '''
++        self.assertEqual('kvm', virt.get_hypervisor())
++
++        iskvm_mock.return_value = False
++        self.assertIsNone(virt.get_hypervisor())
++
++        isxen_mock.return_value = True
++        self.assertEqual('xen', virt.get_hypervisor())
+-- 
+2.23.0
+
+
