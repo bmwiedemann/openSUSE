@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ktimetracker
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Personal Time Tracker
 License:        GPL-2.0-or-later
@@ -59,12 +59,6 @@ KTimeTracker tracks time spent on various tasks.
 
 %install
 %kf5_makeinstall -C build
-# install application icon (kde#415387)
-for i in 16 22 32 48 64 128
-do
-  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps
-  cp icons/app/${i}-apps-ktimetracker.png %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps/ktimetracker.png
-done
 %suse_update_desktop_file -r org.kde.ktimetracker Qt KDE Utility X-KDE-Utilities-PIM TimeUtility
 
 %if %{with lang}
