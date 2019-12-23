@@ -1,7 +1,7 @@
 #
 # spec file for package thunderbolt-user-space
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,16 +22,9 @@ Release:        0
 Summary:        Thunderbolt Device Approval support
 License:        BSD-3-Clause
 Group:          System/Management
-Url:            https://github.com/01org/thunderbolt-software-user-space/archive/v%{version}.tar.gz
-Source:         v0.9.3.tar.gz
+URL:            https://github.com/intel/thunderbolt-software-user-space
+Source:         https://github.com/01org/thunderbolt-software-user-space/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-flags-add-boost_system-library.patch
-%if 0%{?suse_version} > 1315
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel >= 1.33.1
-%endif
 BuildRequires:  cmake >= 2.4.6
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libdbus-c++-devel
@@ -40,6 +33,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  txt2tags
 BuildRequires:  pkgconfig(udev)
 Requires:       procps
+%if 0%{?suse_version} > 1315
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_system-devel
+%else
+BuildRequires:  boost-devel >= 1.33.1
+%endif
 
 %description
 Thunderbolt is a hardware interface developed by Intel/Apple that
@@ -56,26 +56,30 @@ These user-space components implement device approval support:
 
 %build
 %cmake \
-	-DBUILD_TESTING:BOOL=OFF \
-	 -DBUILD_SHARED_LIBS:BOOL=ON \
-	 -DEVENT_DISABLE_TESTS=ON \
-../
-make %{?_smp_mflags}
+  -DBUILD_TESTING:BOOL=OFF \
+  -DEVENT_DISABLE_TESTS=ON
+%cmake_build
 
 %install
-%cmake_install 
+%cmake_install
+rm -rf %{buildroot}%{_datadir}/doc/thunderbolt-user-space
+
+%post
+%udev_rules_update
+
+%postun
+%udev_rules_update
 
 %files
-%dir %{_datadir}/doc/thunderbolt-user-space
-
+%license COPYING
+%doc README.md docs
 %{_bindir}/tbtadm
 %{_udevrulesdir}/60-tbtacl.rules
 %{_udevrulesdir}/60-tbtxdomain.rules
 %{_prefix}/lib/udev/tbtacl
 %{_prefix}/lib/udev/tbtacl-write
 %{_prefix}/lib/udev/tbtxdomain
-%{_datadir}/doc/thunderbolt-user-space/copyright
-%{_mandir}/man1/tbtadm.1%{ext_man}
+%{_mandir}/man1/tbtadm.1%{?ext_man}
 %{_datadir}/bash-completion/completions/tbtadm
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 14:40:02 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file
+- Correct usage of url and source url
+- Mark documentation and license as such
+
+-------------------------------------------------------------------
 Thu Mar 15 17:10:03 CET 2018 - ndas@suse.de
 
 - fate reference: this package needed for thunderbolt support in 
