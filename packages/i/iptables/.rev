@@ -585,4 +585,12 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment></comment>
     <requestid>734142</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b3bc25069d8ebc62955457e30bf2647d</srcmd5>
+    <version>1.8.4</version>
+    <time>1577136876</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755370</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  2 20:01:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.4
+  * Fix for wrong counter format in `ebtables-nft-save -c` output.
+  * Print typical iptables-save comments in arptables- and
+    ebtables-save, too.
+  * xt_owner: add --suppl-groups option
+  * Remove support for /etc/xtables.conf
+  * Restore support for "-4" and "-6" options in rule lines.
+
+-------------------------------------------------------------------
 Mon Sep 30 13:21:38 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - Add Conflicts with iptables-nft = 1.6.2 as during the update to

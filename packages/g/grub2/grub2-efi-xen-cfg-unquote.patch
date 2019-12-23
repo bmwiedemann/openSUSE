@@ -44,7 +44,7 @@ Index: grub-2.02~rc1/util/grub.d/20_linux_xen.in
 +      print sep[0]
 +      for (i in words) {
 +        w = words[i]
-+        if (w ~ /^\$?\"/) {
++        if (w ~ /^\$?"/) {
 +          # Double-quoted string
 +          patsplit(w, segs, var"|"dqesc, ssep)
 +          print ssep[0]
@@ -87,6 +87,6 @@ Index: grub-2.02~rc1/util/grub.d/20_linux_xen.in
 -	kernel=${basename} root=${linux_root_device_thisversion} ${args}
 +	options=${xen_args_unq}
 +	kernel=${basename} root=${linux_root_device_thisversion} ${args_unq}
- 	ramdisk=${initrd}
+ 	ramdisk=${initrd_real}
  	EOF
      message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"

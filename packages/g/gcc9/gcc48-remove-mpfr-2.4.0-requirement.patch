@@ -1,8 +1,8 @@
 Index: configure.ac
 ===================================================================
---- configure.ac	(revision 216911)
-+++ configure.ac	(working copy)
-@@ -1454,7 +1454,7 @@ if test -d ${srcdir}/gcc && test "x$have
+--- configure.ac.orig	2019-10-07 18:32:31.000000000 +0200
++++ configure.ac	2019-10-07 18:34:36.000000000 +0200
+@@ -1542,7 +1542,7 @@ if test -d ${srcdir}/gcc && test "x$have
      AC_MSG_CHECKING([for the correct version of mpfr.h])
      AC_TRY_COMPILE([#include <gmp.h>
      #include <mpfr.h>],[
@@ -13,9 +13,9 @@ Index: configure.ac
      ], [AC_TRY_COMPILE([#include <gmp.h>
 Index: configure
 ===================================================================
---- configure	(revision 216911)
-+++ configure	(working copy)
-@@ -5524,7 +5524,7 @@ int
+--- configure.orig	2019-10-07 18:32:31.000000000 +0200
++++ configure	2019-10-07 18:34:36.000000000 +0200
+@@ -5692,7 +5692,7 @@ int
  main ()
  {
  
@@ -26,116 +26,9 @@ Index: configure
  
 Index: gcc/fortran/simplify.c
 ===================================================================
---- gcc/fortran/simplify.c	(revision 216911)
-+++ gcc/fortran/simplify.c	(working copy)
-@@ -4278,10 +4278,7 @@ gfc_simplify_mod (gfc_expr *a, gfc_expr
- 	    return &gfc_bad_expr;
- 	  }
- 
--	gfc_set_model_kind (kind);
--	mpfr_fmod (result->value.real, a->value.real, p->value.real,
--		   GFC_RND_MODE);
--	break;
-+	return NULL;
- 
-       default:
- 	gfc_internal_error ("gfc_simplify_mod(): Bad arguments");
-@@ -4327,19 +4324,7 @@ gfc_simplify_modulo (gfc_expr *a, gfc_ex
- 	    return &gfc_bad_expr;
- 	  }
- 
--	gfc_set_model_kind (kind);
--	mpfr_fmod (result->value.real, a->value.real, p->value.real,
--		   GFC_RND_MODE);
--	if (mpfr_cmp_ui (result->value.real, 0) != 0)
--	  {
--	    if (mpfr_signbit (a->value.real) != mpfr_signbit (p->value.real))
--	      mpfr_add (result->value.real, result->value.real, p->value.real,
--			GFC_RND_MODE);
--	  }
--	else
--	  mpfr_copysign (result->value.real, result->value.real,
--			 p->value.real, GFC_RND_MODE);
--	break;
-+	return NULL;
- 
-       default:
- 	gfc_internal_error ("gfc_simplify_modulo(): Bad arguments");
-Index: gcc/ubsan.c
-===================================================================
---- gcc/ubsan.c.orig	2015-06-01 14:52:11.717105684 +0200
-+++ gcc/ubsan.c	2015-06-01 14:52:26.945253071 +0200
-@@ -1564,40 +1564,6 @@
- 	  min = build_real (expr_type, minval2);
- 	}
-     }
--  else if (REAL_MODE_FORMAT (mode)->b == 10)
--    {
--      /* For _Decimal128 up to 34 decimal digits, - sign,
--	 dot, e, exponent.  */
--      char buf[64];
--      mpfr_t m;
--      int p = REAL_MODE_FORMAT (mode)->p;
--      REAL_VALUE_TYPE maxval, minval;
--
--      /* Use mpfr_snprintf rounding to compute the smallest
--	 representable decimal number greater or equal than
--	 1 << (prec - !uns_p).  */
--      mpfr_init2 (m, prec + 2);
--      mpfr_set_ui_2exp (m, 1, prec - !uns_p, GMP_RNDN);
--      mpfr_snprintf (buf, sizeof buf, "%.*RUe", p - 1, m);
--      decimal_real_from_string (&maxval, buf);
--      max = build_real (expr_type, maxval);
--
--      /* For unsigned, assume -1.0 is always representable.  */
--      if (uns_p)
--	min = build_minus_one_cst (expr_type);
--      else
--	{
--	  /* Use mpfr_snprintf rounding to compute the largest
--	     representable decimal number less or equal than
--	     (-1 << (prec - 1)) - 1.  */
--	  mpfr_set_si_2exp (m, -1, prec - 1, GMP_RNDN);
--	  mpfr_sub_ui (m, m, 1, GMP_RNDN);
--	  mpfr_snprintf (buf, sizeof buf, "%.*RDe", p - 1, m);
--	  decimal_real_from_string (&minval, buf);
--	  min = build_real (expr_type, minval);
--	}
--      mpfr_clear (m);
--    }
-   else
-     return NULL_TREE;
- 
-Index: gcc/gimple-ssa-sprintf.c
-===================================================================
---- gcc/gimple-ssa-sprintf.c	(revision 257728)
-+++ gcc/gimple-ssa-sprintf.c	(working copy)
-@@ -1637,18 +1637,7 @@ get_mpfr_format_length (mpfr_ptr x, cons
- 	p = 1024;
-     }
- 
--  len = mpfr_snprintf (NULL, 0, fmtstr, (int)p, x);
--
--  /* Handle the unlikely (impossible?) error by returning more than
--     the maximum dictated by the function's return type.  */
--  if (len < 0)
--    return target_dir_max () + 1;
--
--  /* Adjust the return value by the difference.  */
--  if (p < prec)
--    len += prec - p;
--
--  return len;
-+  return target_dir_max () + 1;
- }
- 
- /* Return the number of bytes to format using the format specifier
-
-Index: gcc/fortran/simplify.c
-===================================================================
---- gcc/fortran/simplify.c	(revision 257983)
-+++ gcc/fortran/simplify.c	(working copy)
-@@ -1745,51 +1745,6 @@ simplify_trig_call (gfc_expr *icall)
+--- gcc/fortran/simplify.c.orig	2019-09-03 09:48:46.000000000 +0200
++++ gcc/fortran/simplify.c	2019-10-07 18:36:00.000000000 +0200
+@@ -1791,51 +1791,6 @@ simplify_trig_call (gfc_expr *icall)
      }
  }
  
@@ -187,7 +80,7 @@ Index: gcc/fortran/simplify.c
  
  /* Convert argument to radians before calling a trig function.  */
  
-@@ -1803,12 +1758,7 @@ gfc_simplify_trigd (gfc_expr *icall)
+@@ -1849,12 +1804,7 @@ gfc_simplify_trigd (gfc_expr *icall)
    if (arg->ts.type != BT_REAL)
      gfc_internal_error ("in gfc_simplify_trigd(): Bad type");
  
@@ -201,7 +94,7 @@ Index: gcc/fortran/simplify.c
  }
  
  /* Convert result of an inverse trig function to degrees.  */
-@@ -1816,21 +1766,9 @@ gfc_simplify_trigd (gfc_expr *icall)
+@@ -1862,21 +1812,9 @@ gfc_simplify_trigd (gfc_expr *icall)
  gfc_expr *
  gfc_simplify_atrigd (gfc_expr *icall)
  {
@@ -223,7 +116,7 @@ Index: gcc/fortran/simplify.c
    /* Let gfc_resolve_atrigd take care of the non-constant case.  */
    return NULL;
  }
-@@ -1840,21 +1778,9 @@ gfc_simplify_atrigd (gfc_expr *icall)
+@@ -1886,21 +1824,9 @@ gfc_simplify_atrigd (gfc_expr *icall)
  gfc_expr *
  gfc_simplify_atan2d (gfc_expr *y, gfc_expr *x)
  {
@@ -245,3 +138,103 @@ Index: gcc/fortran/simplify.c
    /* Let gfc_resolve_atan2d take care of the non-constant case.  */
    return NULL;
  }
+@@ -5878,9 +5804,7 @@ gfc_simplify_mod (gfc_expr *a, gfc_expr
+     mpz_tdiv_r (result->value.integer, a->value.integer, p->value.integer);
+   else
+     {
+-      gfc_set_model_kind (kind);
+-      mpfr_fmod (result->value.real, a->value.real, p->value.real,
+-		 GFC_RND_MODE);
++      return NULL;
+     }
+ 
+   return range_check (result, "MOD");
+@@ -5930,18 +5854,7 @@ gfc_simplify_modulo (gfc_expr *a, gfc_ex
+ 	mpz_fdiv_r (result->value.integer, a->value.integer, p->value.integer);
+   else
+     {
+-      gfc_set_model_kind (kind);
+-      mpfr_fmod (result->value.real, a->value.real, p->value.real,
+-                 GFC_RND_MODE);
+-      if (mpfr_cmp_ui (result->value.real, 0) != 0)
+-        {
+-          if (mpfr_signbit (a->value.real) != mpfr_signbit (p->value.real))
+-            mpfr_add (result->value.real, result->value.real, p->value.real,
+-                      GFC_RND_MODE);
+-	    }
+-	  else
+-        mpfr_copysign (result->value.real, result->value.real,
+-                       p->value.real, GFC_RND_MODE);
++      return NULL;
+     }
+ 
+   return range_check (result, "MODULO");
+Index: gcc/ubsan.c
+===================================================================
+--- gcc/ubsan.c.orig	2019-01-31 14:22:44.000000000 +0100
++++ gcc/ubsan.c	2019-10-07 18:34:36.000000000 +0200
+@@ -1847,40 +1847,6 @@ ubsan_instrument_float_cast (location_t
+ 	  min = build_real (expr_type, minval2);
+ 	}
+     }
+-  else if (REAL_MODE_FORMAT (mode)->b == 10)
+-    {
+-      /* For _Decimal128 up to 34 decimal digits, - sign,
+-	 dot, e, exponent.  */
+-      char buf[64];
+-      mpfr_t m;
+-      int p = REAL_MODE_FORMAT (mode)->p;
+-      REAL_VALUE_TYPE maxval, minval;
+-
+-      /* Use mpfr_snprintf rounding to compute the smallest
+-	 representable decimal number greater or equal than
+-	 1 << (prec - !uns_p).  */
+-      mpfr_init2 (m, prec + 2);
+-      mpfr_set_ui_2exp (m, 1, prec - !uns_p, GMP_RNDN);
+-      mpfr_snprintf (buf, sizeof buf, "%.*RUe", p - 1, m);
+-      decimal_real_from_string (&maxval, buf);
+-      max = build_real (expr_type, maxval);
+-
+-      /* For unsigned, assume -1.0 is always representable.  */
+-      if (uns_p)
+-	min = build_minus_one_cst (expr_type);
+-      else
+-	{
+-	  /* Use mpfr_snprintf rounding to compute the largest
+-	     representable decimal number less or equal than
+-	     (-1 << (prec - 1)) - 1.  */
+-	  mpfr_set_si_2exp (m, -1, prec - 1, GMP_RNDN);
+-	  mpfr_sub_ui (m, m, 1, GMP_RNDN);
+-	  mpfr_snprintf (buf, sizeof buf, "%.*RDe", p - 1, m);
+-	  decimal_real_from_string (&minval, buf);
+-	  min = build_real (expr_type, minval);
+-	}
+-      mpfr_clear (m);
+-    }
+   else
+     return NULL_TREE;
+ 
+Index: gcc/gimple-ssa-sprintf.c
+===================================================================
+--- gcc/gimple-ssa-sprintf.c.orig	2019-10-07 18:32:31.000000000 +0200
++++ gcc/gimple-ssa-sprintf.c	2019-10-07 18:34:36.000000000 +0200
+@@ -1580,18 +1580,7 @@ get_mpfr_format_length (mpfr_ptr x, cons
+ 	p = 1024;
+     }
+ 
+-  len = mpfr_snprintf (NULL, 0, fmtstr, (int)p, x);
+-
+-  /* Handle the unlikely (impossible?) error by returning more than
+-     the maximum dictated by the function's return type.  */
+-  if (len < 0)
+-    return target_dir_max () + 1;
+-
+-  /* Adjust the return value by the difference.  */
+-  if (p < prec)
+-    len += prec - p;
+-
+-  return len;
++  return target_dir_max () + 1;
+ }
+ 
+ /* Return the number of bytes to format using the format specifier

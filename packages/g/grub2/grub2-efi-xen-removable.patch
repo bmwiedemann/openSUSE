@@ -57,7 +57,7 @@ $cmdpath to work.
    awk '
 @@ -234,10 +208,15 @@ linux_entry ()
  	kernel=${basename} root=${linux_root_device_thisversion} ${args_unq}
- 	ramdisk=${initrd}
+ 	ramdisk=${initrd_real}
  	EOF
 +    if [ -z "${prepare_efi_cache}" ]; then
 +      grub_device_efi="`${grub_probe} --target=device /boot/efi`"
@@ -71,7 +71,7 @@ $cmdpath to work.
 +	 	chainloader  ${rel_efi_dir}/${xen_basename} ${xen_basename} ${SUSE_CMDLINE_XENEFI} $section
  	}
  	EOF
-     for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd}; do
+     for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd_real}; do
 @@ -318,6 +297,7 @@ else
      done
  fi

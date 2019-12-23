@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 14:39:07 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- There doesn't seem to be any reason to depend on
+  python-pysqlite anymore.
+
+-------------------------------------------------------------------
 Wed Apr 24 10:24:51 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.3.3

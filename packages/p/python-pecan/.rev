@@ -226,4 +226,13 @@
     <comment></comment>
     <requestid>697445</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>dbccf6fa800b5e37dd876d0fffef1976</srcmd5>
+    <version>1.3.3</version>
+    <time>1577136860</time>
+    <user>dimstar_suse</user>
+    <comment>- There doesn't seem to be any reason to depend on
+  python-pysqlite anymore.</comment>
+    <requestid>755260</requestid>
+  </revision>
 </revisionlist>

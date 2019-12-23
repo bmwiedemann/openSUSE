@@ -31,7 +31,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 # nospeccleaner
@@ -264,7 +264,7 @@ BuildRequires:  gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        9.2.1+r275327
+Version:        9.2.1+r279103
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -304,6 +304,9 @@ Requires:       libvtv%{libvtv_sover} >= %{version}-%{release}
 Suggests:       gcc9-info gcc9-locale
 %endif
 
+%if %{suse_version} < 1310
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
 Source2:        gcc9-rpmlintrc
@@ -323,7 +326,6 @@ Patch18:        gcc9-value-prof.patch
 Patch19:        gcc9-add-flto=auto.patch
 Patch20:        gcc9-pr91307.patch
 Patch21:        gcc9-autodetect-g-at-lto-link.patch
-Patch22:        gcc9-pr91772.patch
 Patch23:        gcc9-pr91763.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
@@ -456,7 +458,6 @@ ln -s newlib-3.1.0/newlib .
 %patch19 -p1
 %patch20
 %patch21
-%patch22
 %patch23
 %patch51
 %patch60

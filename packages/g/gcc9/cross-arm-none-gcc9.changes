@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec  9 10:46:24 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-9-branch head (r279103).
+  * Includes gcc9-pr91772.patch
+
+-------------------------------------------------------------------
+Mon Oct  7 16:37:37 UTC 2019 - matz@suse.com
+
+- Refresh gcc48-remove-mpfr-2.4.0-requirement.patch to apply
+  again.
+- Use new license and header also in gcc.spec.in to reduce churn
+  with format_spec_file.
+- Use BuildRoot tag again for old distros (SLE-11).
+
+-------------------------------------------------------------------
+Fri Oct  4 08:45:43 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Make cross-arm-gcc a gcc_icecream cross.  Remove the disabling
+  of debuginfo stripping.  [bsc#1152590]
+
+-------------------------------------------------------------------
 Wed Sep 18 08:15:19 UTC 2019 - Richard Biener <rguenther@suse.com>
 
 - Add gcc9-pr91772.patch and gcc9-pr91763.patch to fix fallout

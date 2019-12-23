@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 27 17:09:42 UTC 2019 - olaf@aepfle.de
+
+- Correct awk pattern in 20_linux_xen (bsc#900418, bsc#1157912)
+- Correct linux and initrd handling in 20_linux_xen (bsc#1157912)
+  M grub2-efi-xen-cfg-unquote.patch
+  M grub2-efi-xen-chainload.patch
+  M grub2-efi-xen-cmdline.patch
+  M grub2-efi-xen-removable.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 06:26:33 UTC 2019 - Michael Chang <mchang@suse.com>
 
 - Disable btrfs zstd support for i386-pc to workaround core.img too large to be

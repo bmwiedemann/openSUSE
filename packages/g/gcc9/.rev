@@ -152,4 +152,22 @@ release expected in about a week.
 - Drop defattr and BuildRoot.</comment>
     <requestid>731720</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a6eaf6ee8607d3e4f7d2ca37a4ce167f</srcmd5>
+    <version>9.2.1+r279103</version>
+    <time>1577136850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-9-branch head (r279103).
+  * Includes gcc9-pr91772.patch
+
+- Refresh gcc48-remove-mpfr-2.4.0-requirement.patch to apply
+  again.
+- Use new license and header also in gcc.spec.in to reduce churn
+  with format_spec_file.
+- Use BuildRoot tag again for old distros (SLE-11).
+
+- Make cross-arm-gcc a gcc_icecream cross.  Remove the disabling
+  of debuginfo stripping.  [bsc#1152590]</comment>
+    <requestid>755258</requestid>
+  </revision>
 </revisionlist>

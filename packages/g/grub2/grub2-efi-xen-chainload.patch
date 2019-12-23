@@ -119,7 +119,7 @@ V3:
 +	[$section]
 +	options=${xen_args}
 +	kernel=${basename} root=${linux_root_device_thisversion} ${args}
-+	ramdisk=${initrd}
++	ramdisk=${initrd_real}
 +	EOF
 +    message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"
 +    sed "s/^/$submenu_indentation/" <<-EOF
@@ -127,7 +127,7 @@ V3:
 +	 	chainloader  \$cmdpath/${xen_basename} ${xen_basename} $section
 +	}
 +	EOF
-+    for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd}; do
++    for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd_real}; do
 +      cp --preserve=timestamps $f $efi_dir
 +      echo $(basename $f) >> $efi_dir/grub.xen-files
 +    done

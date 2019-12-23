@@ -24,4 +24,4 @@ Index: grub-2.02~beta2/util/grub.d/20_linux_xen.in
 +	 	chainloader  \$cmdpath/${xen_basename} ${xen_basename} ${SUSE_CMDLINE_XENEFI} $section
  	}
  	EOF
-     for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd}; do
+     for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd_real}; do

@@ -17,19 +17,22 @@
 
 
 Name:           osinfo-db-tools
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        Tools for managing the osinfo database
 License:        LGPL-2.1+ and GPL-2.0+
 Group:          System/Management
 Url:            https://releases.pagure.org/libosinfo/
-Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.gz
+Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
+BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
 BuildRequires:  json-glib-devel
+BuildRequires:  libarchive-devel
+BuildRequires:  libsoup-devel
 BuildRequires:  libxml2-devel >= 2.6.0
 BuildRequires:  libxslt-devel >= 1.0.0
-BuildRequires:  libarchive-devel
-BuildRequires:  perl
+BuildRequires:  meson
+#BuildRequires:  perl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -40,16 +43,16 @@ information about operating systems for use with virtualization
 %setup -q
 
 %build
-%configure --prefix=/usr
-make %{?_smp_mflags} V=1
+%meson
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot}
+%meson_install
 
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS README
 %{_bindir}/osinfo-db-export
 %{_bindir}/osinfo-db-import
 %{_bindir}/osinfo-db-path

@@ -1,7 +1,7 @@
 #
 # spec file for package iptables
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iptables
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        GPL-2.0-only AND Artistic-2.0
@@ -33,7 +33,6 @@ Patch5:         iptables-batch-lock.patch
 Patch6:         iptables-1.8.2-dont_read_garbage.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#git#BuildRequires:  autoconf, automake >= 1.10
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.33
@@ -43,7 +42,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0
 BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.4
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
-BuildRequires:  pkgconfig(libnftnl) >= 1.1.3
+BuildRequires:  pkgconfig(libnftnl) >= 1.1.5
 Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
 Requires(post): update-alternatives

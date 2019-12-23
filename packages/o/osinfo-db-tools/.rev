@@ -47,4 +47,12 @@
     <comment>Update to version 1.5.0</comment>
     <requestid>702052</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9dcad252698a4de6f0b183fb9e489f7</srcmd5>
+    <version>1.7.0</version>
+    <time>1577136869</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755357</requestid>
+  </revision>
 </revisionlist>

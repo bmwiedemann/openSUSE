@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  2 10:27:26 MST 2019 - carnold@suse.com
+
+- Update to version 1.7.0
+  Changes in this release include:
+  * Switch to meson build system
+
+-------------------------------------------------------------------
+Wed Nov 13 13:21:51 MST 2019 - carnold@suse.com
+
+- Update to version 1.6.0
+  Changes in this release include:
+  * Refresh translations from zanata
+  * spec,mingw: Add mingw*-libsoup as dependency
+  * Commit 3917e5f4ae0e5 introduced libsoup dependency but forgot
+    to add it to the mingw spec files.
+
+-------------------------------------------------------------------
 Thu May  9 09:50:10 MDT 2019 - carnold@suse.com
 
 - Update to version 1.5.0

@@ -1,8 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("gnump3d.noarch: .*wrong-script-end-of-line-encoding")
-addFilter("gnump3d.*strange-permission")
-addFilter("gnump3d.noarch: .*script-without-shebang")
-addFilter("gnump3d.noarch: .*non-standard-uid")
-addFilter("gnump3d.noarch: .*duplicated-file-gpl-v2")

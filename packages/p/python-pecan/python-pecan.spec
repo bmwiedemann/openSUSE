@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
-BuildRequires:  python-pysqlite
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-singledispatch
+# Because of sqlite3 module
+BuildRequires:  python
+BuildRequires:  python3
 Requires:       python-Mako >= 0.4.0
 Requires:       python-WebOb >= 1.2
 Requires:       python-WebTest >= 1.3.1

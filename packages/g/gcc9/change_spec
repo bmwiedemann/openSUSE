@@ -94,7 +94,7 @@ add_newlib_cross() {
 # For now keep the old way of doing things
 if test "$do_crosses" = 1 ; then
 add_cross cross-aarch64-gcc$base_ver aarch64 aarch64-suse-linux %define gcc_icecream 1
-add_cross cross-arm-gcc$base_ver arm arm-suse-linux-gnueabi %define gcc_icecream 0
+add_cross cross-arm-gcc$base_ver arm arm-suse-linux-gnueabi %define gcc_icecream 1
 add_cross cross-avr-gcc$base_ver-bootstrap avr avr "%define gcc_libc_bootstrap 1"
 add_cross cross-avr-gcc$base_ver avr avr
 add_cross cross-i386-gcc$base_ver i386 i586-suse-linux %define gcc_icecream 1
