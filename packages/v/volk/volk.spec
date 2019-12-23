@@ -12,23 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global sonum 2
-%global soname 2_0
+%global soname 2_1
 
 Name:           volk
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://libvolk.org/
-Source:         https://github.com/gnuradio/volk/releases/download/v%{version}/volk-v%{version}.tar.xz
+Source:         https://github.com/gnuradio/volk/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  orc
@@ -43,6 +44,7 @@ of GNU Radio, but can also be used standalone.
 %package devel
 Summary:        Development files for VOLK
 # Formerly part of gnuradio 3.7.x.y
+Group:          Development/Libraries/C and C++
 Requires:       libvolk%{soname} = %{version}
 Conflicts:      gnuradio-devel < 3.8.0.0
 Provides:       gnuradio-devel:%{_libdir}/pkgconfig/volk.pc
@@ -61,13 +63,14 @@ This package provides the VOLK shared library.
 
 %package -n volk_modtool
 Summary:        VOLK modtool
+Group:          Development/Libraries/C and C++
 
 %description -n volk_modtool
 This package provides volk_modtool, used for creating new
 VOLK kernels.
 
 %prep
-%setup -q -n volk-v%{version}
+%setup -q
 
 %build
 %cmake
@@ -105,4 +108,3 @@ sed -i -e '1 { \@.*/bin/env.*python.*@ d }' %{buildroot}%{python3_sitearch}/volk
 %{python3_sitearch}/volk_modtool
 
 %changelog
-
