@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 15 18:50:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- update to 0.9.69:
+  * If application suspends a connection before we could send
+    100 CONTINUE, give application another shot at queuing a reply
+    before the upload begins.
+
+-------------------------------------------------------------------
 Tue Nov  5 08:20:42 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.68:
