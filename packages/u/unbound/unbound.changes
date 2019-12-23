@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:33:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Thu Dec 12 21:01:07 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.9.6
+  This release contains a number of security related fixes found in
+  a security audit
+
+Features:
+- The unbound.conf includes are sorted ascending, for include
+  statements with a '*' from glob.
+- drop-tld.diff in contrib/ : adds option drop-tld: yesno that drops 2 label
+  queries, to stop random floods.  Apply with
+  patch -p1 < contrib/drop-tld.diff and compile.
+  From Saksham Manchanda (Secure64).  Please note that we think this
+  will drop DNSKEY and DS lookups for tlds and hence break DNSSEC
+  lookups for downstream clients.
+- Add new configure option `--enable-fully-static` to enable full static
+  build if requested; in relation to #91.
+- Add make distclean that removes everything configure produced,
+  and make maintainer-clean that removes bison and flex output.
+- unbound-fuzzers.tar.bz2 in contrib/ : three programs for fuzzing, that
+  are 1:1 replacements for unbound-fuzzme.c that gets created after applying
+  the contrib/unbound-fuzzme.patch.  They are contributed by
+  Eric Sesterhenn from X41 D-Sec.
+
+Bug Fixes:
+- Fix that pkg-config is setup before --enable-systemd needs it.
+- Fix contrib/fastrpz.patch asprintf return value checks.
+- ipset module #28: log that an address is added, when verbosity high.
+- ipset: refactor long routine into three smaller ones.
+- updated Makefile dependencies.
+- squelch DNS over TLS errors 'ssl handshake failed crypto error'
+  on low verbosity, they show on verbosity 3 (query details), because
+  there is a high volume and the operator cannot do anything for the
+  remote failure.  Specifically filters the high volume errors.
+- Fix #71: fix openssl error squelch commit compilation error.
+- Fix #72: configure --with-syslog-facility=LOCAL0-7 with default
+  LOG_DAEMON (as before) can set the syslog facility that the server
+  uses to log messages.
+- Use explicit bzero for wiping clear buffer of hash in cachedb,
+  reported by Eric Sesterhenn from X41 D-Sec.
+- Fix #78: Memory leak in outside_network.c.
+- Merge pull request #76 from Maryse47: Improvements and fixes for
+  systemd unbound.service.
+- oss-fuzz badge on README.md.
+- Fix fix for #78 to also free service callback struct.
+- Fix for oss-fuzz build warning.
+- Fix wrong response ttl for prepended short CNAME ttls, this would
+  create a wrong zero_ttl response count with serve-expired enabled.
+- Merge #80 from stasic: Improve wording in man page.
+- Merge #82 from hardfalcon: Downgrade CAP_NET_ADMIN to CAP_NET_RAW
+  in unbound.service.
+- Merge #81 from Maryse47: Consistently use /dev/urandom instead
+  of /dev/random in scripts and docs.
+- Merge #83 from Maryse47: contrib/unbound.service.in: do not fork
+  into the background.
+- Merge #85 for #84 from sam-lunt: Add kill capability to systemd
+  service file to fix that systemctl reload fails.
+- Merge #87 from hardfalcon: Fix contrib/unbound.service.in,
+  Drop CAP_KILL, use + prefix for ExecReload= instead.
+- Merge #90 from vcunat: fix build with nettle-3.5.
+- Fix for CVE-2019-16866.  That fix is also in 1.9.4.
+- Merge #86 from psquarejho: Added -b source address option to
+  smallapp/unbound-anchor.c, from Lukas Wunner.
+- Add doxygen comments to unbound-anchor source address code, in #86.
+- Merge #97: manpage: Add missing word on unbound.conf,
+  from Erethon.
+- Fix #99: Memory leak in ub_ctx (event_base will never be freed).
+- Fix #109: check number of arguments for stdin-pipes in
+  unbound-control and fail if too many arguments.
+- Merge #102 from jrtc27: Add getentropy emulation for FreeBSD.
+- iana portlist updated.
+- contrib/fastrpz.patch updated to apply for current code.
+- fixes for splint cleanliness, long vs int in SSL set_mode.
+- In unbound-host use separate variable for get_option to please
+  code checkers.
+- update to bison output of 3.4.1 in code repository.
+- Provide a prototype for compat malloc to remove compile warning.
+- Portable grep usage for reuseport configure test.
+- Check return type of HMAC_Init_ex for openssl 0.9.8.
+- gitignore .source tempfile used for compatible make.
+- Fix for CVE-2019-18934, shell execution in ipsecmod.
+  This fix is also in 1.9.5.
+- Fix authzone printout buffer length check.
+- Fixes to please lint checks.
+- Fix Integer Overflow in Regional Allocator,
+  reported by X41 D-Sec.
+- Fix Unchecked NULL Pointer in dns64_inform_super()
+  and ipsecmod_new(), reported by X41 D-Sec.
+- Fix Out-of-bounds Read in rr_comment_dnskey(),
+  reported by X41 D-Sec.
+- Fix Integer Overflows in Size Calculations,
+  reported by X41 D-Sec.
+- Fix Integer Overflow to Buffer Overflow in
+  sldns_str2wire_dname_buf_origin(), reported by X41 D-Sec.
+- Fix Out of Bounds Read in sldns_str2wire_dname(),
+  reported by X41 D-Sec.
+- Fix Out of Bounds Write in sldns_bget_token_par(),
+  reported by X41 D-Sec.
+- Fix Out of Bounds Read in rrinternal_get_owner(),
+  reported by X41 D-Sec.
+- Fix Race Condition in autr_tp_create(),
+  reported by X41 D-Sec.
+- Fix Shared Memory World Writeable,
+  reported by X41 D-Sec.
+- Adjust unbound-control to make stats_shm a read only operation.
+- Fix Weak Entropy Used For Nettle,
+  reported by X41 D-Sec.
+- Fix Randomness Error not Handled Properly,
+  reported by X41 D-Sec.
+- Fix Out-of-Bounds Read in dname_valid(),
+  reported by X41 D-Sec.
+- Fix Config Injection in create_unbound_ad_servers.sh,
+  reported by X41 D-Sec.
+- Fix Local Memory Leak in cachedb_init(),
+  reported by X41 D-Sec.
+- Fix Integer Underflow in Regional Allocator,
+  reported by X41 D-Sec.
+- Upgrade compat/getentropy_linux.c to version 1.46 from OpenBSD.
+- Synchronize compat/getentropy_win.c with version 1.5 from
+  OpenBSD, no changes but makes the file, comments, identical.
+- Upgrade compat/getentropy_solaris.c to version 1.13 from OpenBSD.
+- Upgrade compat/getentropy_osx.c to version 1.12 from OpenBSD.
+- Changes to compat/getentropy files for,
+  no link to openssl if using nettle, and hence config.h for
+  HAVE_NETTLE variable.
+  compat definition of MAP_ANON, for older systems.
+  ifdef stdint.h inclusion for older systems.
+  ifdef sha2.h inclusion for older systems.
+- Fixed Compat Code Diverging from Upstream, reported by X41 D-Sec.
+- Fix compile with --enable-alloc-checks, reported by X41 D-Sec.
+- Fix Terminating Quotes not Written, reported by X41 D-Sec.
+- Fix Useless memset() in validator, reported by X41 D-Sec.
+- Fix Unrequired Checks, reported by X41 D-Sec.
+- Fix Enum Name not Used, reported by X41 D-Sec.
+- Fix NULL Pointer Dereference via Control Port,
+  reported by X41 D-Sec.
+- Fix Bad Randomness in Seed, reported by X41 D-Sec.
+- Fix python examples/calc.py for eval, reported by X41 D-Sec.
+- Fix comments for doxygen in dns64.
+- Fix dname loop maximum, reported by Eric Sesterhenn from X41 D-Sec.
+- Fix compiler warnings.
+- Merge pull request #122 from he32: In tcp_callback_writer(),
+  don't disable time-out when changing to read.
+- Merge pull request #124 from rmetrich: Changed log lock
+  from 'quick' to 'basic' because this is an I/O lock.
+- Fix text around serial arithmatic used for RRSIG times to refer
+  to correct RFC number.
+- Fix Assert Causing DoS in synth_cname(),
+  reported by X41 D-Sec.
+- Fix similar code in auth_zone synth cname to add the extra checks.
+- Fix Assert Causing DoS in dname_pkt_copy(),
+  reported by X41 D-Sec.
+- Fix OOB Read in sldns_wire2str_dname_scan(),
+  reported by X41 D-Sec.
+- Fix Out of Bounds Write in sldns_str2wire_str_buf(),
+  reported by X41 D-Sec.
+- Fix Out of Bounds Write in sldns_b64_pton(),
+  fixed by check in sldns_str2wire_int16_data_buf(),
+  reported by X41 D-Sec.
+- Fix Insufficient Handling of Compressed Names in dname_pkt_copy(),
+  reported by X41 D-Sec.
+- Fix Out of Bound Write Compressed Names in rdata_copy(),
+  reported by X41 D-Sec.
+- Fix Hang in sldns_wire2str_pkt_scan(),
+  reported by X41 D-Sec.
+  This further lowers the max to 256.
+- Fix snprintf() supports the n-specifier,
+  reported by X41 D-Sec.
+- Fix Bad Indentation, in dnscrypt.c,
+  reported by X41 D-Sec.
+- Fix Client NONCE Generation used for Server NONCE,
+  reported by X41 D-Sec.
+- Fix compile error in dnscrypt.
+- Fix _vfixed not Used, removed from sbuffer code,
+  reported by X41 D-Sec.
+- Fix Hardcoded Constant, reported by X41 D-Sec.
+- make depend
+- Fix lock type for memory purify log lock deletion.
+- Fix testbound for alloccheck runs, memory purify and lock checks.
+- update contrib/fastrpz.patch to apply more cleanly.
+- Fix Make Test Fails when Configured With --enable-alloc-nonregional,
+  reported by X41 D-Sec.
+- Fix ipsecmod compile
+- Fix Makefile.in for ipset module compile, from Adi Prasaja.
+
+-------------------------------------------------------------------
 Tue Nov 19 20:16:14 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.9.5

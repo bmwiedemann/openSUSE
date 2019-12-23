@@ -36,7 +36,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 #
 #
@@ -67,7 +67,7 @@ Requires:       ldns >= %{ldns_version}
 # until we figured something else out for the unbound-anchor part in the systemd unit file
 Requires:       sudo
 %if %{with systemd}
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 #
