@@ -1,7 +1,7 @@
 #
 # spec file for package geronimo-specs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -684,6 +684,11 @@ for i in */pom.xml; do
   %pom_xpath_inject "pom:project" "<groupId>org.apache.geronimo.specs</groupId>" ${i}
 done
 %pom_add_dep logkit:logkit:1.2.2 geronimo-spec-corba-2.3
+%pom_xpath_set pom:project/pom:version 1.0 geronimo-spec-commonj
+%pom_xpath_set pom:project/pom:version 1.0 geronimo-spec-corba
+%pom_xpath_set pom:project/pom:version 1.1 geronimo-spec-corba-2.3
+%pom_xpath_set pom:project/pom:version 1.1 geronimo-spec-corba-3.0
+%pom_xpath_set pom:project/pom:version 1.1.1 geronimo-spec-j2ee
 
 %build
 ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
