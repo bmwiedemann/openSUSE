@@ -64,7 +64,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 # bash completion
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
-install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/tmux.sh
+install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/tmux
 
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 echo "d /run/tmux 1777 root root -" > %{buildroot}%{_tmpfilesdir}/tmux.conf
@@ -75,7 +75,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 %files
 %license COPYING
 %doc CHANGES
-%{_datadir}/bash-completion/completions/tmux.sh
+%{_datadir}/bash-completion/completions/tmux
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_tmpfilesdir}/%{name}.conf
