@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 23 13:02:46 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191222.b00b515:
+  * Disable auth_server if no auth is wanted
+  * Abort if unknown options are given
+  * Only run after network is online
+
+-------------------------------------------------------------------
 Sat Nov 02 14:39:30 UTC 2019 - kukuk@suse.com
 
 - Update to version 0.0+git20191102.b2b9ebf:

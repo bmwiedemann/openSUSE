@@ -29,4 +29,15 @@
   * Fix syntax errors in if statements</comment>
     <requestid>744896</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ffbc6937876717aee69d7c2244501539</srcmd5>
+    <version>0.0+git20191222.b00b515</version>
+    <time>1577137607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191222.b00b515:
+  * Disable auth_server if no auth is wanted
+  * Abort if unknown options are given
+  * Only run after network is online</comment>
+    <requestid>758990</requestid>
+  </revision>
 </revisionlist>
