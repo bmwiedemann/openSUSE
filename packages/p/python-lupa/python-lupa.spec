@@ -28,9 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/l/lupa/lupa-%{ver
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  lua-devel
-BuildRequires:  luajit-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(luajit)
 Recommends:     luajit
 Suggests:       lua
 %python_subpackages
