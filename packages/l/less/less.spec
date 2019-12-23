@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,9 +72,9 @@ make %{?_smp_mflags}
 %make_install
 #
 # lesskey
-install -m 755 -d %{buildroot}/%{_sysconfdir}
-install -m 644 lesskey.src %{buildroot}/%{_sysconfdir}/lesskey
-%{buildroot}%{_bindir}/lesskey -o %{buildroot}%{_sysconfdir}/lesskey.bin %{buildroot}%{_sysconfdir}/lesskey
+install -m 755 -d %{buildroot}/%{_distconfdir}
+install -m 644 lesskey.src %{buildroot}/%{_distconfdir}/lesskey
+%{buildroot}%{_bindir}/lesskey -o %{buildroot}%{_distconfdir}/lesskey.bin %{buildroot}%{_distconfdir}/lesskey
 #
 # preprocessor
 install -m 755 lessopen.sh lessclose.sh %{buildroot}/%{_bindir}
@@ -84,7 +84,7 @@ chmod -x LICENSE COPYING NEWS README.SUSE
 %license LICENSE COPYING
 %doc NEWS README.SUSE
 %{_mandir}/*/*
-%config %{_sysconfdir}/*
+%{_distconfdir}/*
 %{_bindir}/*
 
 %changelog
