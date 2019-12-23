@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 18 08:10:07 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to 0.4.3
+  * api: raise an error if the socket path is too long
+  * libslirp: update to v4.1.0: Including the fix for libslirp
+    sends RST to app in response to arriving FIN when containerized
+    socket is shutdown() with SHUT_WR
+  * Fix create_sandbox error
+
+-------------------------------------------------------------------
 Mon Oct 21 07:30:05 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to 0.4.2
