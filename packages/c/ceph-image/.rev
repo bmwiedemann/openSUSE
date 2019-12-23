@@ -61,4 +61,12 @@
     <comment></comment>
     <requestid>752873</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>70849e215379151d5827ce94c10051d7</srcmd5>
+    <version>1.0.0</version>
+    <time>1577137348</time>
+    <user>dimstar_suse</user>
+    <comment>- Refer to bugs.opensuse.org instead of individual team members (forwarded request 756112 from KGronlund)</comment>
+    <requestid>756836</requestid>
+  </revision>
 </revisionlist>

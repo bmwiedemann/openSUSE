@@ -7,13 +7,13 @@
 -->
 <image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="ceph-image">
   <description type="system">
-    <author>Denis Kondratenko</author>
-    <contact>denis.kondratenko@suse.com</contact>
+    <author>SUSE LLC</author>
+    <contact>https://bugs.opensuse.org</contact>
     <specification>Ceph base container image</specification>
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig tag="latest" maintainer="Sebastian Wagner &lt;swagner@suse.com&gt;" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" name="opensuse/ceph/ceph">
+      <containerconfig tag="latest" maintainer="SUSE LLC (https://bugs.opensuse.org)" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" name="opensuse/ceph/ceph">
         <subcommand execute="/bin/bash">
           <argument name="--login"/>
         </subcommand>
@@ -32,7 +32,7 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Install ceph binaries</history>
+        <history author="SUSE LLC">Install ceph binaries</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>
