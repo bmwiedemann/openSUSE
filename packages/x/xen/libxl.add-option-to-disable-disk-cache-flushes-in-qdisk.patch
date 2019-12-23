@@ -48,7 +48,7 @@ Index: xen-4.13.0-testing/tools/libxl/libxl.h
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxl.h
 +++ xen-4.13.0-testing/tools/libxl/libxl.h
-@@ -430,6 +430,21 @@
+@@ -439,6 +439,21 @@
  #define LIBXL_HAVE_CREATEINFO_PASSTHROUGH 1
  
  /*

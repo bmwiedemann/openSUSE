@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec 18 10:16:52 MST 2019 - carnold@suse.com
+
+- bsc#1159320 - Xen logrotate file needs updated
+  logrotate.conf
+
+-------------------------------------------------------------------
+Wed Dec 18 08:21:17 MST 2019 - carnold@suse.com
+
+- Update to Xen 4.13.0 FCS release
+  xen-4.13.0-testing-src.tar.bz2
+  * Core Scheduling (contributed by SUSE)
+  * Branch hardening to mitigate against Spectre v1 (contributed by Citrix)
+  * Late uCode loading (contributed by Intel)
+  * Improved live-patching build tools (contributed by AWS)
+  * OP-TEE support (contributed by EPAM)
+  * Renesas R-CAR IPMMU-VMSA driver (contributed by EPAM)
+  * Dom0-less passthrough and ImageBuilder (contributed by XILINX)
+  * Support for new Hardware
+
+-------------------------------------------------------------------
+Tue Dec  3 08:57:29 MST 2019 - carnold@suse.com
+
+- Update to Xen 4.13.0 RC4 release
+  xen-4.13.0-testing-src.tar.bz2
+- Rebase libxl.pvscsi.patch
+
+-------------------------------------------------------------------
 Mon Nov 25 10:49:13 MST 2019 - carnold@suse.com
 
 - Update to Xen 4.13.0 RC3 release

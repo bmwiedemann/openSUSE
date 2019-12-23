@@ -19,12 +19,12 @@ Index: xen-4.13.0-testing/tools/configure
  fi;;
  esac
  if test -z "$PYTHON"; then :
--  PYTHON="python"
-+  PYTHON="python3"
- fi
- if echo "$PYTHON" | grep -q "^/"; then :
- 
-@@ -6981,15 +6981,15 @@ if test x"${PYTHONPATH}" = x"no"
+-  for ac_prog in python python3 python2
++  for ac_prog in python3 python python2
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+ set dummy $ac_prog; ac_word=$2
+@@ -7065,15 +7065,15 @@ if test x"${PYTHONPATH}" = x"no"
  then
      as_fn_error $? "Unable to find $PYTHON, please install $PYTHON" "$LINENO" 5
  fi
@@ -368,13 +368,14 @@ Index: xen-4.13.0-testing/tools/configure.ac
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/configure.ac
 +++ xen-4.13.0-testing/tools/configure.ac
-@@ -337,13 +337,13 @@ case "$host_os" in
+@@ -337,14 +337,14 @@ case "$host_os" in
    freebsd*) ;;
    *) AX_PATH_PROG_OR_FAIL([BASH], [bash]);;
  esac
--AS_IF([test -z "$PYTHON"], [PYTHON="python"])
-+AS_IF([test -z "$PYTHON"], [PYTHON="python3"])
- AS_IF([echo "$PYTHON" | grep -q "^/"], [], [PYTHON=`type -p "$PYTHON"`])
+-AS_IF([test -z "$PYTHON"], [AC_CHECK_PROGS([PYTHON], [python python3 python2], err)])
++AS_IF([test -z "$PYTHON"], [AC_CHECK_PROGS([PYTHON], [python3 python python2], err)])
+ AS_IF([test "$PYTHON" = "err"], [AC_MSG_ERROR([No python interpreter found])])
+ AS_IF([echo "$PYTHON" | grep -q "^/"], [], [AC_PATH_PROG([PYTHON], [$PYTHON])])
  PYTHONPATH=$PYTHON
  PYTHON=`basename $PYTHONPATH`
  
@@ -535,16 +536,6 @@ Index: xen-4.13.0-testing/xen/tools/compat-build-header.py
  
  import re,sys
  
-Index: xen-4.13.0-testing/xen/xsm/flask/gen-policy.py
-===================================================================
---- xen-4.13.0-testing.orig/xen/xsm/flask/gen-policy.py
-+++ xen-4.13.0-testing/xen/xsm/flask/gen-policy.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- import sys
- 
- policy_size = 0
 Index: xen-4.13.0-testing/xen/tools/fig-to-oct.py
 ===================================================================
 --- xen-4.13.0-testing.orig/xen/tools/fig-to-oct.py
