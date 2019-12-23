@@ -1,7 +1,7 @@
 #
 # spec file for package qsynth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -26,19 +26,16 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://qsynth.sourceforge.net/qsynth-index.html
 Source:         https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/qsynth-%{version}.tar.gz
 Patch1:         qsynth-fix_desktop_file.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(fluidsynth) >= 0.80.0
 Recommends:     %{name}-lang
 
@@ -53,19 +50,12 @@ toolkit using Qt Designer.
 %patch1 -p1
 
 %build
-export QT_HASH_SEED=0
-autoreconf -fiv
-%configure \
-    --enable-system-tray \
-    --enable-gradient
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-export QT_HASH_SEED=0
-%make_install
-
+%cmake_install
 %suse_update_desktop_file -r "%{name}" AudioVideo Midi
-
 %find_lang %{name} --with-qt
 
 %files
@@ -78,7 +68,7 @@ export QT_HASH_SEED=0
 %{_datadir}/qsynth
 %exclude %{_datadir}/qsynth/translations
 %{_mandir}/man1/qsynth.1%{ext_man}
-%{_mandir}/man1/qsynth.fr.1%{ext_man}
+%{_mandir}/fr/man1/qsynth.1%{ext_man}
 
 %files lang -f %{name}.lang
 %{_datadir}/qsynth/translations
