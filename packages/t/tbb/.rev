@@ -275,4 +275,16 @@
 </comment>
     <requestid>738866</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a5c9b968c73a294d60e009704b970c0</srcmd5>
+    <version>2020.0</version>
+    <time>1577137158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020.0 
+  * Extended task_arena interface to simplify development of
+    NUMA-aware applications.
+  * Added warning notifications when the deprecated functionality is
+    used.</comment>
+    <requestid>757901</requestid>
+  </revision>
 </revisionlist>

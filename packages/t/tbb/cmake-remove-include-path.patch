@@ -1,21 +1,24 @@
-Index: tbb-2019_U9/cmake/templates/TBBConfig.cmake.in
+Index: tbb-2020.0/cmake/templates/TBBConfig.cmake.in
 ===================================================================
---- tbb-2019_U9.orig/cmake/templates/TBBConfig.cmake.in
-+++ tbb-2019_U9/cmake/templates/TBBConfig.cmake.in
-@@ -53,8 +53,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
-     if (EXISTS "${_tbb_release_lib}" OR EXISTS "${_tbb_debug_lib}")
+--- tbb-2020.0.orig/cmake/templates/TBBConfig.cmake.in
++++ tbb-2020.0/cmake/templates/TBBConfig.cmake.in
+@@ -57,11 +57,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
          if (NOT TARGET TBB::${_tbb_component})
              add_library(TBB::${_tbb_component} SHARED IMPORTED)
--            set_target_properties(TBB::${_tbb_component} PROPERTIES
--                                  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/@TBB_INC_REL_PATH@")
  
+-            get_filename_component(_tbb_include_dir "${CMAKE_CURRENT_LIST_DIR}/@TBB_INC_REL_PATH@" ABSOLUTE)
+-            set_target_properties(TBB::${_tbb_component} PROPERTIES
+-                                  INTERFACE_INCLUDE_DIRECTORIES "${_tbb_include_dir}")
+-            unset(_tbb_include_dir)
+-
              if (EXISTS "${_tbb_release_lib}")
                  set_target_properties(TBB::${_tbb_component} PROPERTIES
-Index: tbb-2019_U9/cmake/templates/TBBConfigInternal.cmake.in
+                                       IMPORTED_LOCATION_RELEASE "${_tbb_release_lib}"@TBB_IMPLIB_RELEASE@)
+Index: tbb-2020.0/cmake/templates/TBBConfigInternal.cmake.in
 ===================================================================
---- tbb-2019_U9.orig/cmake/templates/TBBConfigInternal.cmake.in
-+++ tbb-2019_U9/cmake/templates/TBBConfigInternal.cmake.in
-@@ -54,8 +54,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
+--- tbb-2020.0.orig/cmake/templates/TBBConfigInternal.cmake.in
++++ tbb-2020.0/cmake/templates/TBBConfigInternal.cmake.in
+@@ -57,8 +57,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
      if (EXISTS "${_tbb_release_lib}" OR EXISTS "${_tbb_debug_lib}")
          if (NOT TARGET TBB::${_tbb_component})
              add_library(TBB::${_tbb_component} SHARED IMPORTED)

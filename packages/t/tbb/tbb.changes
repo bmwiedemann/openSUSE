@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 18 16:28:51 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2020.0 
+  * Extended task_arena interface to simplify development of
+    NUMA-aware applications.
+  * Added warning notifications when the deprecated functionality is
+    used.
+
+-------------------------------------------------------------------
 Thu Oct 10 12:45:32 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2019_u9
