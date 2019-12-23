@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,6 @@ BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gnome-patch-translation
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
-BuildRequires:  libjasper-devel
 BuildRequires:  libtiff-devel
 # Needed for patches touching the build system / bootstrapping
 BuildRequires:  libtool

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 17 10:00:32 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Add Obsoletes/Provides to baselibs.conf to ensure
+  gtk2-immodule-tigrigna-32bit can be upgraded from old version.
+
+-------------------------------------------------------------------
+Tue Dec 10 11:07:08 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1158897: Remove dependency on jasper (due to planned removal)
+  Removes JPEG2000 support.
+
+-------------------------------------------------------------------
 Tue Nov 19 12:17:29 UTC 2019 - dimstar@opensuse.org
 
 - Update to version 2.24.32+67:

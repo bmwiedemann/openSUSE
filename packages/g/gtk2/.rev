@@ -1260,4 +1260,13 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment>Scripted push from {project} (forwarded request 751008 from dimstar)</comment>
     <requestid>751354</requestid>
   </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>757cfa123ebcaef6ae5cb6c92827968b</srcmd5>
+    <version>2.24.32+67</version>
+    <time>1577136988</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes/Provides to baselibs.conf to ensure
+  gtk2-immodule-tigrigna-32bit can be upgraded from old version. (forwarded request 757485 from fcrozat)</comment>
+    <requestid>757536</requestid>
+  </revision>
 </revisionlist>
