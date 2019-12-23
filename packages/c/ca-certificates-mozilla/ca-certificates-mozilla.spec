@@ -16,6 +16,23 @@
 #
 
 
+# ensure p11-kit has the required features on SLE for
+# https://bugzilla.suse.com/show_bug.cgi?id=1154871
+%if 0%{?suse_version} == 1500
+%if 0%{?is_opensuse} 
+# Leap 15.1
+%define p11_kit_min 0.23.2-lp151.4.3.1
+%else
+# 15GA
+%define p11_kit_min 0.23.2-4.5.2
+%endif
+%else
+%if 0%{?suse_version} == 1315 && 0%{?sle_version} > 120300
+# 12SP3
+%define p11_kit_min 0.20.7-3.3.1
+%endif
+%endif
+#
 %define certdir %{trustdir_static}
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
@@ -52,6 +69,9 @@ Requires(postun): ca-certificates
 # replaces this package from SLE11 times
 Obsoletes:      openssl-certs
 BuildArch:      noarch
+%if %{defined p11_kit_min}
+Conflicts:      p11-kit-tools < %p11_kit_min
+%endif
 
 %description
 This package contains some CA root certificates for OpenSSL extracted

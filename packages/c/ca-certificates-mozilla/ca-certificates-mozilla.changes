@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 18 10:53:59 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- make sure p11-kit with patches is installed on SLE (boo#1154871)
+
+-------------------------------------------------------------------
 Tue Nov 12 09:58:01 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - export correct p11kit trust attributes so Firefox detects built in
