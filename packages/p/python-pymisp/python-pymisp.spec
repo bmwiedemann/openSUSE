@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymisp
-Version:        2.4.117.3
+Version:        2.4.119
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
