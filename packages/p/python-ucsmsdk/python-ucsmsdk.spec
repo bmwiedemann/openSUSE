@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ucsmsdk
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        Python SDK for Cisco UCS Manager
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            https://github.com/CiscoUcs/ucsmsdk
-Source:         https://github.com/CiscoUcs/ucsmsdk/archive/v%{version}.tar.gz
+Source:         https://github.com/CiscoUcs/ucsmsdk/archive/%{version}.tar.gz#/ucsmsdk-%{version}.tar.gz
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pyparsing}

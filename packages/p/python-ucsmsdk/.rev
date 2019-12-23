@@ -29,4 +29,12 @@
   * Support for UCSM release 4.0(2a)</comment>
     <requestid>690290</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a13010ceea28f763c35cc2fd719850cf</srcmd5>
+    <version>0.9.9</version>
+    <time>1577137611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758982</requestid>
+  </revision>
 </revisionlist>
