@@ -20,7 +20,7 @@
 %define _soname libqmi-glib5
 
 Name:           libqmi
-Version:        1.24.0
+Version:        1.24.2
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
@@ -86,6 +86,9 @@ sed -i "s|env python|python3|g" build-aux/qmi-codegen/*
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+make %{?_smp_mflags} check
 
 %post -n %{_soname} -p /sbin/ldconfig
 %postun -n %{_soname} -p /sbin/ldconfig

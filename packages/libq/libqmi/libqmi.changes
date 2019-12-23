@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 15 10:18:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.2:
+  + libqmi-glib:
+    - message: fixed message creation on big endian systems.
+    - message: added missing services in
+      get_version_introduced_full().
+    - message: updated printable_full() to allow a NULL
+      line_prefix.
+    - device: updated response reception logic to make sure we
+      check the message id before attempting to parse the
+      contents, and if the message id doesn't match we return an
+      early QMI_CORE_ERROR_UNEXPECTED_MESSAGE error.
+  + pkgconfig:
+    - Added libmbim dependency in Libs.Private, if built with
+      QMI-over-MBIM support.
+  + qmi-proxy:
+    - Updated to always use the realpath of the QMI device file,
+      so that users using different symlinks to the same device
+      file don't get transaction ids mixed up.
+  + Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
 Fri Nov  8 11:49:40 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.0:
