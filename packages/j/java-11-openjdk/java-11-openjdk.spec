@@ -1,7 +1,7 @@
 #
-# spec file for package java
+# spec file for package java-11-openjdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,9 +81,6 @@
 %ifnarch %{jit_arches}
 %global _with_zero 1
 %endif
-%ifarch %{arm6}
-%global _with_zero 1
-%endif
 %if %{debug}
 %global debugbuild slowdebug
 %else
@@ -115,12 +112,12 @@
 %endif
 %global with_pulseaudio 1
 %bcond_with zero
+%bcond_with aot
 %if ! %{with zero}
 %ifarch x86_64 %{aarch64}
 %global _with_aot 1
 %endif
 %endif
-%bcond_with aot
 %if ! %{with zero}
 %global with_systemtap 1
 %else
@@ -1195,7 +1192,11 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/lib
 %dir %{_jvmdir}/%{sdkdir}/lib/jfr
 %dir %{_jvmdir}/%{sdkdir}/lib/jli
+%ifarch %{arm6}
+%dir %{_jvmdir}/%{sdkdir}/lib/client
+%else
 %dir %{_jvmdir}/%{sdkdir}/lib/server
+%endif
 %dir %{_jvmdir}/%{sdkdir}/lib/desktop
 %dir %{_jvmdir}/%{sdkdir}/lib/security
 
