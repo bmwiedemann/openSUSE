@@ -108,4 +108,12 @@
     <comment>- update to version 0.16.2 (bsc#1157707):</comment>
     <requestid>750915</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1d17a2ee200cd6b558a3584cad8716b0</srcmd5>
+    <version>0.16.2</version>
+    <time>1577136971</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755837</requestid>
+  </revision>
 </revisionlist>

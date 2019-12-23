@@ -58,6 +58,7 @@ BuildRequires:  %{python_module matplotlib >= 1.3.1}
 BuildRequires:  %{python_module networkx >= 1.8}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest-localserver}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -88,9 +89,7 @@ It is available free of charge and free of restriction.
 %check
 export PYTHONDONTWRITEBYTECODE=1 # do not write unreproducible test_random_walker.cpython-37-PYTEST.pyc files (boo#1062303)
 mv skimage skimage_temp
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-py.test-%{$python_bin_suffix} -v %{buildroot}%{$python_sitearch}/skimage
-}
+%pytest_arch -v %{buildroot}%{$python_sitearch}/skimage -n auto
 mv skimage_temp skimage
 
 %files %{python_files}
