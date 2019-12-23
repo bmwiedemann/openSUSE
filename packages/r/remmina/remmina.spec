@@ -18,15 +18,13 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
-# Patch to stay compatible with libfreerdp-2.0.0-rc4
-Patch0:         remmina-1.3.7-libfreerdp-2.0.0-rc4.patch
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  ed
@@ -192,7 +190,6 @@ This package provides a Remmina plugin for the GNOME keyring password manager.
 %prep
 %setup -q -n Remmina-v%{version}
 sed -e 's|%{_bindir}/env bash|%{_bindir}/sh|' -i data/desktop/remmina-file-wrapper.in
-%patch0 -p1
 
 %build
 export LDFLAGS="-pie"
@@ -217,8 +214,8 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %suse_update_desktop_file org.remmina.Remmina Network RemoteAccess GTK
 
 %fdupes %{buildroot}%{_datadir}/remmina
-
 %fdupes %{buildroot}%{_datadir}/icons/hicolor/*/actions
+%fdupes %{buildroot}%{_datadir}/icons/hicolor/scalable/panel
 
 %find_lang %{name}
 
@@ -291,8 +288,12 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_datadir}/applications/org.remmina.Remmina.desktop
 %{_datadir}/icons/hicolor/*/actions/*
 %{_datadir}/icons/hicolor/*/apps/*
+%dir %{_datadir}/icons/hicolor/apps
+%{_datadir}/icons/hicolor/apps/org.remmina.Remmina-symbolic.svg
+%{_datadir}/icons/hicolor/apps/remmina-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-sftp-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-ssh-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/panel
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.remmina.Remmina.appdata.xml
 %{_datadir}/mime/packages/%{name}-mime.xml

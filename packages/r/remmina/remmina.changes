@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 20 13:53:44 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to new upstream release 1.3.8
+  * Avoid clearing username/domain when saving RDP password
+  * Make Remmina news dialog modal to the main window
+  * Change switch notebook page idle func order.
+  * Fixing bad seat grabbing behaviour (grab all keys not working)
+  * Adding cmake option to use latest FreeRDP symbols when compiling.
+  * Adding default application symbolic icons
+  * Several translation fixes
+- Removed obsolete remmina-1.3.7-libfreerdp-2.0.0-rc4.patch
+
+
+-------------------------------------------------------------------
 Fri Dec  6 15:35:06 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added remmina-1.3.7-libfreerdp-2.0.0-rc4.patch to be compatibile with
