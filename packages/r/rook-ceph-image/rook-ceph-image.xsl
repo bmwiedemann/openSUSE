@@ -11,8 +11,8 @@
 <image schemaversion="6.9" name="rook-ceph-image" xmlns:suse_label_helper="com.suse.label_helper">
 
   <description type="system">
-    <author>Denis Kondratenko</author>
-    <contact>denis.kondratenko@suse.com</contact>
+    <author>SUSE LLC</author>
+    <contact>https://bugs.opensuse.org</contact>
     <specification>Rook container for Ceph</specification>
   </description>
 
@@ -23,7 +23,7 @@
       </xsl:attribute>
       <containerconfig
         tag="latest"
-        maintainer="SUSE Storage Team &lt;jfajerski@suse.com&gt;">
+        maintainer="SUSE LLC (https://bugs.opensuse.org)">
         <xsl:attribute name="additionaltags"><xsl:value-of select="param/tags" />,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</xsl:attribute>
         <xsl:attribute name="name">
           <xsl:value-of select="param/name" />
@@ -81,7 +81,7 @@
 
         </labels>
 
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Install rook and configuration</history>
+        <history author="SUSE LLC">Install rook and configuration</history>
      </containerconfig>
     </type>
     <version>1.0.0</version>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/opensuse/ceph/ceph#leap15.1</image>
-  <tags>leap15.1</tags>
+  <image>obsrepositories:/ceph/ceph#leap15.2.octopus</image>
+  <tags>leap15.2.octopus</tags>
   <name>rook/ceph</name>
   <prefix>org.opensuse.rook-ceph</prefix>
   <title>Rook container for Ceph</title>
