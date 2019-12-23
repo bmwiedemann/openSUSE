@@ -526,4 +526,12 @@ a newer version not fitting</comment>
     <comment> (forwarded request 751279 from dimstar)</comment>
     <requestid>751363</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>6d5b2a74d55476108d4cb5ca03217b38</srcmd5>
+    <version>2.62.2</version>
+    <time>1577136930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755669</requestid>
+  </revision>
 </revisionlist>
