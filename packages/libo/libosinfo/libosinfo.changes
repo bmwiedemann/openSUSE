@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:04:03 MST 2019 - carnold@suse.com
+
+- Update to version 1.7.1
+  Changes in this release include:
+  * Fix usage of versioned symbols
+  * MinGW spec file fixes and improvements
+  * Fix pci.ids and usb.ids installation
+
+-------------------------------------------------------------------
+Mon Dec  2 10:25:06 MST 2019 - carnold@suse.com
+
+- Update to version 1.7.0
+  Changes in this release include:
+  * Add API to expose a device driver "priority"
+  * Improve media detection when using "volume-size" to distinguish medias
+  * General improvements on OsinfoList APIs to avoid unsafe access
+  * Minor POD fixes
+  * Switch to meson build system
+  * Add API to expose "firmware" support on OsinfoOS
+  * Drop "env" type support from osinfo-detect
+  * Print the architecture of the detected tree / media on osinfo-detect
+  * Add API to create an OsinfoTree from a treeinfo file
+
+-------------------------------------------------------------------
 Fri Jul 26 14:13:05 MDT 2019 - carnold@suse.com
 
 - Update to version 1.6.0

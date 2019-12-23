@@ -20,15 +20,17 @@
 %define with_lang 1
 
 Name:           libosinfo
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        Operating system and hypervisor information management library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Url:            https://releases.pagure.org/libosinfo/
-Source0:        https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.gz
+Source0:        https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
 Source1:        ids.tar.bz2
+BuildRequires:  gtk-doc
 BuildRequires:  libcurl-devel
+BuildRequires:  meson
 BuildRequires:  vala
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -88,12 +90,14 @@ as well as Vala bindings for the libosinfo library.
 %setup -q -a 1
 
 %build
-%configure \
-    --disable-static --enable-vala=yes
-make %{?_smp_mflags}
+%meson \
+    -Denable-gtk-doc=true \
+    -Denable-tests=true \
+    -Denable-introspection=enabled \
+    -Denable-vala=enabled
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %if %{with_lang}
 %find_lang %{name} %{?no_lang_C}
@@ -109,7 +113,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/osinfo-detect
 %{_bindir}/osinfo-install-script
 %{_bindir}/osinfo-query
-%{_datadir}/%{name}/
 %{_mandir}/man1/osinfo-detect.1%{?ext_man}
 %{_mandir}/man1/osinfo-install-script.1%{?ext_man}
 %{_mandir}/man1/osinfo-query.1%{?ext_man}
@@ -129,8 +132,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 %{_libdir}/libosinfo-1.0.so
 %{_datadir}/gir-1.0/Libosinfo-1.0.gir
-%dir %{_datadir}/vala/
-%dir %{_datadir}/vala/vapi/
+
+%dir %{_datadir}/vala
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/libosinfo-1.0.deps
 %{_datadir}/vala/vapi/libosinfo-1.0.vapi
 
 %if %{with_lang}
