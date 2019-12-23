@@ -1,7 +1,7 @@
 #
 # spec file for package waybar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source:         %{url}/archive/%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  libudev-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -34,6 +33,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(spdlog)
 BuildRequires:  pkgconfig(wayland-client)
