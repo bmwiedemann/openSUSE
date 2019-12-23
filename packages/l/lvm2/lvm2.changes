@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Dec 10 08:26:00 UTC 2019 - heming.zhao@suse.com
+
+- backport patches for lvm2 to avoid software abnormal work (bsc#1158861)
+  + bug-1158861_01-config-remove-filter-typo.patch
+  + bug-1158861_02-config-Fix-default-option-which-makes-no-sense.patch
+  + bug-1158861_03-vgchange-don-t-fail-monitor-command-if-vg-is-exporte.patch
+  + bug-1158861_04-fix-duplicate-pv-size-check.patch
+  + bug-1158861_05-hints-fix-copy-of-filter.patch
+  + bug-1158861_06-fix-segfault-for-invalid-characters-in-vg-name.patch
+  + bug-1158861_07-vgck-let-updatemetadata-repair-mismatched-metadata.patch
+  + bug-1158861_08-hints-fix-mem-leaking-buffers.patch
+  + bug-1158861_09-pvcreate-pvremove-fix-reacquiring-global-lock-after.patch
+
+-------------------------------------------------------------------
+Tue Dec 10 08:11:00 UTC 2019 - heming.zhao@suse.com
+
+- backport upstream patches for passing lvm2 testsuite (bsc#1158628)
+  + bug-1158628_01-tests-replaces-grep-q-usage.patch
+  + bug-1158628_02-tests-fix-ra-checking.patch
+  + bug-1158628_03-tests-simplify-some-var-settings.patch
+  + bug-1158628-04-pvmove-correcting-read_ahead-setting.patch
+  + bug-1158628_05-activation-add-synchronization-point.patch
+  + bug-1158628_06-pvmove-add-missing-synchronization.patch
+  + bug-1158628_07-activation-extend-handling-of-pending_delete.patch
+  + bug-1158628_08-lv_manip-add-synchronizations.patch
+  + bug-1158628_09-lvconvert-improve-validation-thin-and-cache-pool-con.patch
+  + bug-1158628_10-thin-activate-layer-pool-aas-read-only-LV.patch
+  + bug-1158628_11-tests-mdadm-stop-in-test-cleanup.patch
+  + bug-1158628_12-test-increase-size-of-raid10-LV-allowing-tests-to-su.patch
+  + bug-1158628_13-lvconvert-fix-return-value-when-zeroing-fails.patch
+  + bug-1158628_14-tests-add-extra-settle.patch
+  + bug-1158628_15-test-Fix-handling-leftovers-from-previous-tests.patch
+  - bug-1043040_test-fix-read-ahead-issues-in-test-scripts.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 08:42:00 UTC 2019 - heming.zhao@suse.com
 
 - Fix udev rules issue (bsc#1154655)

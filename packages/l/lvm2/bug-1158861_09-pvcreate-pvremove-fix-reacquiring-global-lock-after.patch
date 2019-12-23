@@ -1,0 +1,111 @@
+From 2037476008ea42e79388a407355c7f285656a5d9 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Tue, 26 Nov 2019 14:34:43 -0600
+Subject: [PATCH] pvcreate,pvremove: fix reacquiring global lock after prompt
+
+When pvcreate/pvremove prompt the user, they first release
+the global lock, then acquire it again after the prompt,
+to avoid blocking other commands while waiting for a user
+response.  This release/reacquire changes the locking
+order with respect to the hints flock (and potentially other
+locks).  So, to avoid deadlock, use a nonblocking request
+when reacquiring the global lock.
+---
+ lib/locking/locking.c | 14 +++++++++++---
+ lib/locking/locking.h |  1 +
+ lib/misc/lvm-flock.c  |  2 +-
+ tools/toollib.c       |  5 +++--
+ 4 files changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/lib/locking/locking.c b/lib/locking/locking.c
+index 3058a8ba01..65ff8c2211 100644
+--- a/lib/locking/locking.c
++++ b/lib/locking/locking.c
+@@ -338,7 +338,7 @@ int sync_local_dev_names(struct cmd_context* cmd)
+  * an explicitly acquired ex global lock to sh in process_each.
+  */
+ 
+-static int _lockf_global(struct cmd_context *cmd, const char *mode, int convert)
++static int _lockf_global(struct cmd_context *cmd, const char *mode, int convert, int nonblock)
+ {
+ 	uint32_t flags = 0;
+ 	int ret;
+@@ -346,6 +346,9 @@ static int _lockf_global(struct cmd_context *cmd, const char *mode, int convert)
+ 	if (convert)
+ 		flags |= LCK_CONVERT;
+ 
++	if (nonblock)
++		flags |= LCK_NONBLOCK;
++
+ 	if (!strcmp(mode, "ex")) {
+ 		flags |= LCK_WRITE;
+ 
+@@ -379,7 +382,7 @@ static int _lockf_global(struct cmd_context *cmd, const char *mode, int convert)
+ 
+ int lockf_global(struct cmd_context *cmd, const char *mode)
+ {
+-	return _lockf_global(cmd, mode, 0);
++	return _lockf_global(cmd, mode, 0, 0);
+ }
+ 
+ int lockf_global_convert(struct cmd_context *cmd, const char *mode)
+@@ -388,7 +391,12 @@ int lockf_global_convert(struct cmd_context *cmd, const char *mode)
+ 	if (cmd->lockf_global_ex && !strcmp(mode, "ex"))
+ 		return 1;
+ 
+-	return _lockf_global(cmd, mode, 1);
++	return _lockf_global(cmd, mode, 1, 0);
++}
++
++int lockf_global_nonblock(struct cmd_context *cmd, const char *mode)
++{
++	return _lockf_global(cmd, mode, 0, 1);
+ }
+ 
+ int lock_global(struct cmd_context *cmd, const char *mode)
+diff --git a/lib/locking/locking.h b/lib/locking/locking.h
+index 746667a9bf..3e8ae6f0c2 100644
+--- a/lib/locking/locking.h
++++ b/lib/locking/locking.h
+@@ -75,6 +75,7 @@ int activate_lvs(struct cmd_context *cmd, struct dm_list *lvs, unsigned exclusiv
+ 
+ int lockf_global(struct cmd_context *cmd, const char *mode);
+ int lockf_global_convert(struct cmd_context *cmd, const char *mode);
++int lockf_global_nonblock(struct cmd_context *cmd, const char *mode);
+ int lock_global(struct cmd_context *cmd, const char *mode);
+ int lock_global_convert(struct cmd_context *cmd, const char *mode);
+ 
+diff --git a/lib/misc/lvm-flock.c b/lib/misc/lvm-flock.c
+index d65601d940..d48ff22e19 100644
+--- a/lib/misc/lvm-flock.c
++++ b/lib/misc/lvm-flock.c
+@@ -164,7 +164,7 @@ static int _do_write_priority_flock(const char *file, int *fd, int operation, ui
+ 	strcpy(file_aux, file);
+ 	strcat(file_aux, AUX_LOCK_SUFFIX);
+ 
+-	if ((r = _do_flock(file_aux, &fd_aux, LOCK_EX, 0))) {
++	if ((r = _do_flock(file_aux, &fd_aux, LOCK_EX, nonblock))) {
+ 		if (operation == LOCK_EX) {
+ 			r = _do_flock(file, fd, operation, nonblock);
+ 			_undo_flock(file_aux, fd_aux);
+diff --git a/tools/toollib.c b/tools/toollib.c
+index ee2419b8c4..a5304bf63f 100644
+--- a/tools/toollib.c
++++ b/tools/toollib.c
+@@ -5577,10 +5577,11 @@ int pvcreate_each_device(struct cmd_context *cmd,
+ 	 * Reacquire the lock that was released above before waiting, then
+ 	 * check again that the devices can still be used.  If the second loop
+ 	 * finds them changed, or can't find them any more, then they aren't
+-	 * used.
++	 * used.  Use a non-blocking request when reacquiring to avoid
++	 * potential deadlock since this is not the normal locking sequence.
+ 	 */
+ 
+-	if (!lockf_global(cmd, "ex")) {
++	if (!lockf_global_nonblock(cmd, "ex")) {
+ 		log_error("Failed to reacquire global lock after prompt.");
+ 		goto_out;
+ 	}
+-- 
+2.24.0
+

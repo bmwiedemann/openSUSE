@@ -1,0 +1,37 @@
+From 66f69e766e576692ea32328c1921acbacb69ed14 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Sat, 14 Sep 2019 01:08:14 +0200
+Subject: [PATCH] thin: activate layer pool aas read-only LV
+
+When lvm2 is activating layered pool LV (to basically keep pool opened,
+the other function used to be 'locking' be in sync with DM table)
+use this LV in read-only mode - this prevents 'write' access into
+data volume content of thin-pool.
+
+Note: since EMPTY/unused thin-pool is created as 'public LV' for generic
+use by any user who i.e. wish to maintain thin-pool and thins himself.
+At this moment, thin-pool appears as writable LV.  As soon as the 1st.
+thinLV is created, layer volume will appear is 'read-only' LV from this moment.
+---
+ lib/activate/dev_manager.c | 5 +++++
+ 1 files changed, 5 insertions(+)
+
+diff --git a/lib/activate/dev_manager.c b/lib/activate/dev_manager.c
+index c780deaa02..32fdcb94f7 100644
+--- a/lib/activate/dev_manager.c
++++ b/lib/activate/dev_manager.c
+@@ -85,6 +85,11 @@ int read_only_lv(const struct logical_volume *lv, const struct lv_activate_opts
+ 	if (lv_is_raid_image(lv) || lv_is_raid_metadata(lv))
+ 		return 0; /* Keep RAID SubLvs writable */
+ 
++	if (!layer) {
++		if (lv_is_thin_pool(lv))
++			return 1;
++	}
++
+ 	return (laopts->read_only || !(lv->status & LVM_WRITE));
+ }
+ 
+-- 
+2.24.0
+

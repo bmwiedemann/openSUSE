@@ -1,0 +1,28 @@
+From 0bdd6d6240251996694a8581432f726e5442c4a2 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Tue, 20 Aug 2019 12:23:08 +0200
+Subject: [PATCH] pvmove: add missing synchronization
+
+Between 'resume' and 'remove' we need to wait for udev to synchronize,
+otherwise udev may 'skip' resume event processing if the udev node
+is already gone.
+---
+ tools/pvmove_poll.c | 2 ++
+ 1 files changed, 1 insertions(+)
+
+diff --git a/tools/pvmove_poll.c b/tools/pvmove_poll.c
+index e50747cf46..d379596f2f 100644
+--- a/tools/pvmove_poll.c
++++ b/tools/pvmove_poll.c
+@@ -97,6 +97,8 @@ int pvmove_finish(struct cmd_context *cmd, struct volume_group *vg,
+ 	if (!lv_update_and_reload(lv_mirr))
+ 		return_0;
+ 
++	sync_local_dev_names(cmd);
++
+ 	/* Deactivate mirror LV */
+ 	if (!deactivate_lv(cmd, lv_mirr)) {
+ 		log_error("ABORTING: Unable to deactivate temporary logical "
+-- 
+2.24.0
+

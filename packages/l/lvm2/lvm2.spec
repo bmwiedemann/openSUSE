@@ -62,17 +62,40 @@ Patch0004:      bug-1152378-md-component-detection-for-differing-PV-and-device-s
 Patch0005:      bug-1152378-pvscan-fix-PV-online-when-device-has-a-different-siz.patch
 Patch0006:      jcs-SLE5498_pvscan-allow-use-of-noudevsync-option.patch
 Patch0007:      bug-1154655_udev-remove-unsupported-OPTIONS-event_timeout-rule.patch
+Patch0008:      bug-1158628_01-tests-replaces-grep-q-usage.patch
+Patch0009:      bug-1158628_02-tests-fix-ra-checking.patch
+Patch0010:      bug-1158628_03-tests-simplify-some-var-settings.patch
+Patch0011:      bug-1158628-04-pvmove-correcting-read_ahead-setting.patch
+Patch0012:      bug-1158628_05-activation-add-synchronization-point.patch
+Patch0013:      bug-1158628_06-pvmove-add-missing-synchronization.patch
+Patch0014:      bug-1158628_07-activation-extend-handling-of-pending_delete.patch
+Patch0015:      bug-1158628_08-lv_manip-add-synchronizations.patch
+Patch0016:      bug-1158628_09-lvconvert-improve-validation-thin-and-cache-pool-con.patch
+Patch0017:      bug-1158628_10-thin-activate-layer-pool-aas-read-only-LV.patch
+Patch0018:      bug-1158628_11-tests-mdadm-stop-in-test-cleanup.patch
+Patch0019:      bug-1158628_12-test-increase-size-of-raid10-LV-allowing-tests-to-su.patch
+Patch0020:      bug-1158628_13-lvconvert-fix-return-value-when-zeroing-fails.patch
+Patch0021:      bug-1158628_14-tests-add-extra-settle.patch
+Patch0022:      bug-1158628_15-test-Fix-handling-leftovers-from-previous-tests.patch
+Patch0023:      bug-1158861_01-config-remove-filter-typo.patch
+Patch0024:      bug-1158861_02-config-Fix-default-option-which-makes-no-sense.patch
+Patch0025:      bug-1158861_03-vgchange-don-t-fail-monitor-command-if-vg-is-exporte.patch
+Patch0026:      bug-1158861_04-fix-duplicate-pv-size-check.patch
+Patch0027:      bug-1158861_05-hints-fix-copy-of-filter.patch
+Patch0028:      bug-1158861_06-fix-segfault-for-invalid-characters-in-vg-name.patch
+Patch0029:      bug-1158861_07-vgck-let-updatemetadata-repair-mismatched-metadata.patch
+Patch0030:      bug-1158861_08-hints-fix-mem-leaking-buffers.patch
+Patch0031:      bug-1158861_09-pvcreate-pvremove-fix-reacquiring-global-lock-after.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
 Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
 Patch1003:      fate-31841_fsadm-add-support-for-btrfs.patch
 Patch1004:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
-#SUSE patches 2000+ for device mapper, udev rules
+# SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
-# 3000+ for test code
-Patch3001:      bug-1043040_test-fix-read-ahead-issues-in-test-scripts.patch
-# patches specif for lvm2.spec
+# SUSE patches 3000+ for test code
+# SUSE patches 4000+ for lvm2.spec
 Patch4001:      bug-1037309_Makefile-skip-compliling-daemons-lvmlockd-directory.patch
 # To detect modprobe during build
 BuildRequires:  kmod-compat
@@ -123,13 +146,36 @@ Volume Manager.
 %patch0005 -p1
 %patch0006 -p1
 %patch0007 -p1
+%patch0008 -p1
+%patch0009 -p1
+%patch0010 -p1
+%patch0011 -p1
+%patch0012 -p1
+%patch0013 -p1
+%patch0014 -p1
+%patch0015 -p1
+%patch0016 -p1
+%patch0017 -p1
+%patch0018 -p1
+%patch0019 -p1
+%patch0020 -p1
+%patch0021 -p1
+%patch0022 -p1
+%patch0023 -p1
+%patch0024 -p1
+%patch0025 -p1
+%patch0026 -p1
+%patch0027 -p1
+%patch0028 -p1
+%patch0029 -p1
+%patch0030 -p1
+%patch0031 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
 %patch2001 -p1
 
-%patch3001 -p1
 %if !%{with lockd}
 %patch4001 -p1
 %endif

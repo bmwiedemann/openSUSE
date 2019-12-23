@@ -1,0 +1,30 @@
+From 7cfbf3a394c2663fbeed17705320b83e69781720 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Thu, 29 Aug 2019 11:35:46 -0500
+Subject: [PATCH] fix segfault for invalid characters in vg name
+
+Fixes a regression from commit ba7ff96faff0
+"improve reading and repairing vg metadata"
+
+where the error path for a vg name with invalid
+charaters was missing an error flag, which led
+to the caller not recognizing an error occured.
+Previously, an error flag was hidden in the old
+_vg_make_handle function.
+---
+ lib/metadata/metadata.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff -Nupr a/lib/metadata/metadata.c b/lib/metadata/metadata.c
+--- a/lib/metadata/metadata.c	2019-12-09 15:26:11.751210108 +0800
++++ b/lib/metadata/metadata.c	2019-12-09 15:26:58.103346514 +0800
+@@ -4829,7 +4829,8 @@ struct volume_group *vg_read(struct cmd_
+ 
+ 	if (!validate_name(vg_name)) {
+ 		log_error("Volume group name \"%s\" has invalid characters.", vg_name);
+-		return NULL;
++		failure |= FAILED_NOTFOUND;
++		goto_bad;
+ 	}
+ 
+ 	if (!lock_vol(cmd, vg_name, writing ? LCK_VG_WRITE : LCK_VG_READ, NULL)) {

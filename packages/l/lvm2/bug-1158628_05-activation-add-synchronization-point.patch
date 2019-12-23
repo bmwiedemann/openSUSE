@@ -1,0 +1,61 @@
+From 30a98e4d6710a543692d40d11428ae4baea11b7b Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Fri, 16 Aug 2019 23:49:59 +0200
+Subject: [PATCH] activation: add synchronization point
+
+Resuming of 'error' table entry followed with it's dirrect removal
+is now troublesame with latest udev as it may skip processing of
+udev rules for already 'dropped' device nodes.
+
+As we cannot 'synchronize' with udev while we know we have devices
+in suspended state - rework 'cleanup' so it collects nodes
+for removal into pending_delete list and process the list with
+synchronization once we are without any suspended nodes.
+---
+ lib/activate/dev_manager.c | 20 ++++++++++++--------
+ 1 files changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/lib/activate/dev_manager.c b/lib/activate/dev_manager.c
+index b218225bb2..3168e88031 100644
+--- a/lib/activate/dev_manager.c
++++ b/lib/activate/dev_manager.c
+@@ -3579,13 +3579,6 @@ static int _clean_tree(struct dev_manager *dm, struct dm_tree_node *root, const
+ 	const char *name, *uuid;
+ 	struct dm_str_list *dl;
+ 
+-	/* Deactivate any tracked pending delete nodes */
+-	dm_list_iterate_items(dl, &dm->pending_delete) {
+-		log_debug_activation("Deleting tracked UUID %s.", dl->str);
+-		if (!dm_tree_deactivate_children(root, dl->str, strlen(dl->str)))
+-			return_0;
+-	}
+-
+ 	while ((child = dm_tree_next_child(&handle, root, 0))) {
+ 		if (!(name = dm_tree_node_get_name(child)))
+ 			continue;
+@@ -3606,10 +3599,21 @@ static int _clean_tree(struct dev_manager *dm, struct dm_tree_node *root, const
+ 		if (non_toplevel_tree_dlid && !strcmp(non_toplevel_tree_dlid, uuid))
+ 			continue;
+ 
+-		if (!dm_tree_deactivate_children(root, uuid, strlen(uuid)))
++		if (!str_list_add(dm->mem, &dm->pending_delete, uuid))
+ 			return_0;
+ 	}
+ 
++	/* Deactivate any tracked pending delete nodes */
++	if (!dm_list_empty(&dm->pending_delete) && !dm_get_suspended_counter()) {
++		fs_unlock();
++		dm_tree_set_cookie(root, fs_get_cookie());
++		dm_list_iterate_items(dl, &dm->pending_delete) {
++			log_debug_activation("Deleting tracked UUID %s.", dl->str);
++			if (!dm_tree_deactivate_children(root, dl->str, strlen(dl->str)))
++				return_0;
++		}
++	}
++
+ 	return 1;
+ }
+ 
+-- 
+2.24.0
+

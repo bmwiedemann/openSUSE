@@ -1,0 +1,27 @@
+From 1e669ab315c32aba3f47c37771f26ab7c8e151dd Mon Sep 17 00:00:00 2001
+From: Marian Csontos <mcsontos@redhat.com>
+Date: Wed, 20 Nov 2019 15:23:48 +0100
+Subject: [PATCH] test: Fix handling leftovers from previous tests
+
+teardown fails current PREFIX is prefix of previously failed test with
+leftovers in dmtable.
+---
+ test/lib/aux.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 6822d7e3e4..566e9b52e1 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -520,7 +520,7 @@ teardown() {
+ 
+ 	if test ! -f SKIP_THIS_TEST ; then
+ 		# Evaluate left devices only for non-skipped tests
+-		TEST_LEAKED_DEVICES=$(dmsetup table | grep "$PREFIX" | grep -v "${PREFIX}pv") || true
++		TEST_LEAKED_DEVICES=$(dmsetup table | grep "$PREFIX" | grep -Ev "${PREFIX}(pv|[0-9])") || true
+ 	fi
+ 
+ 	kill_tagged_processes
+-- 
+2.24.0
+

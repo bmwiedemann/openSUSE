@@ -1,0 +1,26 @@
+From 76a9a86fd359681a598a6509eb90940c3a10f1f3 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Mon, 14 Oct 2019 11:54:49 +0200
+Subject: [PATCH] lvconvert: fix return value when zeroing fails
+
+Use correct error return code for fail path.
+---
+ tools/lvconvert.c | 2 +-
+ 1 files changed, 1 insertions(+), 1 deletion(-)
+
+diff --git a/tools/lvconvert.c b/tools/lvconvert.c
+index 60ab956614..caef5d5a54 100644
+--- a/tools/lvconvert.c
++++ b/tools/lvconvert.c
+@@ -5565,7 +5565,7 @@ static int _lvconvert_writecache_attach_single(struct cmd_context *cmd,
+ 
+ 	if (!_writecache_zero(cmd, lv_fast)) {
+ 		log_error("LV %s could not be zeroed.", display_lvname(lv_fast));
+-		return 0;
++		return ECMD_FAILED;
+ 	}
+ 
+ 	/*
+-- 
+2.24.0
+

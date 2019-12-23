@@ -1,0 +1,29 @@
+From b138a87f43bcfdd3f523556d54f0a482ecf8c40b Mon Sep 17 00:00:00 2001
+From: Heinz Mauelshagen <heinzm@redhat.com>
+Date: Wed, 2 Oct 2019 14:59:17 +0200
+Subject: [PATCH] test: increase size of raid10 LV allowing tests to succeed on
+ fast storage
+
+Also add health char check.
+---
+ test/shell/lvchange-rebuild-raid.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/shell/lvchange-rebuild-raid.sh b/test/shell/lvchange-rebuild-raid.sh
+index 22acb925da..d2bb723435 100644
+--- a/test/shell/lvchange-rebuild-raid.sh
++++ b/test/shell/lvchange-rebuild-raid.sh
+@@ -43,8 +43,8 @@ done
+ ##############################################
+ # Create an 8-way striped raid10 with 4 mirror
+ # groups and rebuild selected PVs.
+-lvcreate --type raid10 -m 1 -i 4 -l 2 -n $lv1 $vg
+-_sync
++lvcreate --type raid10 -m 1 -i 4 -l 64 -n $lv1 $vg
++_sync "AAAAAAAA"
+ 
+ # Rebuild 1st and 2nd device would rebuild a
+ # whole mirror group and needs to be rejected.
+-- 
+2.24.0
+
