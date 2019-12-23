@@ -17,7 +17,7 @@
 
 
 Name:           perl-HTTP-Date
-Version:        6.03
+Version:        6.05
 Release:        0
 %define cpan_name HTTP-Date
 Summary:        HTTP::Date - date conversion routines
@@ -30,7 +30,9 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Time::Local) >= 1.28
 BuildRequires:  perl(Time::Zone)
+Requires:       perl(Time::Local) >= 1.28
 Requires:       perl(Time::Zone)
 %{perl_requires}
 
@@ -148,7 +150,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTORS README README.md
+%doc Changes CONTRIBUTORS README.md
 %license LICENSE
 
 %changelog
