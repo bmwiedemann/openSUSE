@@ -18,21 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-error-for-skips
-Version:        1.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Pytest plugin to treat skipped tests a test failure
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/janschulz/pytest-error-for-skips
-Source:         https://github.com/jankatins/pytest-error-for-skips/archive/v%{version}.tar.gz
+URL:            https://github.com/jankatins/pytest-error-for-skips
+Source:         https://github.com/jankatins/pytest-error-for-skips/archive/%{version}.tar.gz#/pytest-error-for-skips-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.9.2
+Requires:       python-pytest >= 4.6
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 2.9.2}
+BuildRequires:  %{python_module pytest >= 4.6}
 # /SECTION
 %python_subpackages
 
@@ -45,7 +44,6 @@ missing dependencies.
 
 %prep
 %setup -q -n pytest-error-for-skips-%{version}
-dos2unix README.rst
 
 %build
 %python_build
@@ -55,11 +53,10 @@ dos2unix README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# The tests are broken and upstream is dead since 2016
-#%%python_expand PYTHONPATH=%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/*
 

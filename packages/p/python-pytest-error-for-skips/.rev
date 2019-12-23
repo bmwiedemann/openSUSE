@@ -16,4 +16,12 @@ Pytest plugin to treat skipped tests a test failure</comment>
     <comment>- Switch to github tarball to get tests and avoid zip archive</comment>
     <requestid>674962</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8362610fe51c4ef1ea20ea7a13fb3401</srcmd5>
+    <version>2.0.2</version>
+    <time>1577137432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758779</requestid>
+  </revision>
 </revisionlist>
