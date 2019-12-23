@@ -115,6 +115,7 @@ Requires:       libkdevplatform%{libkdev_major} = %{version}
 Recommends:     kdevplatform-lang
 Conflicts:      kdevplatform4
 Conflicts:      libkdevplatform4-devel
+%requires_eq    grantlee5
 
 %description -n kdevplatform
 This package contains the common plugins for integrated developments
