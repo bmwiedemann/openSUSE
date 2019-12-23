@@ -1,7 +1,7 @@
 #
 # spec file for package ulogd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Userspace logging for Netfilter
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            http://netfilter.org/projects/ulogd/
+URL:            http://netfilter.org/projects/ulogd/
 
 #Git-Clone:	git://git.netfilter.org/ulogd2
 #DL-URL:	http://netfilter.org/projects/ulogd/files/
@@ -40,6 +40,8 @@ BuildRequires:  libtool
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  sqlite3-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
 BuildRequires:  pkgconfig(libnetfilter_acct) >= 1.0.1
 BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.2
@@ -47,7 +49,6 @@ BuildRequires:  pkgconfig(libnetfilter_log) >= 1.0.0
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.1
 BuildRequires:  pkgconfig(libpq)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  systemd-rpm-macros
 Requires(pre):	/usr/sbin/useradd
 %{?systemd_ordering}
 

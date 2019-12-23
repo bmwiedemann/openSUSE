@@ -115,4 +115,13 @@
 - Add 0001-build-adjust-configure-for-postgresql-10-11.patch</comment>
     <requestid>687310</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>574953ff6c2482c87b5b3aae1cbccfc1</srcmd5>
+    <version>2.0.7</version>
+    <time>1577137196</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on zlib-devel that was previously
+  implicitly pulled in.</comment>
+    <requestid>757090</requestid>
+  </revision>
 </revisionlist>

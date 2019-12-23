@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 14 01:46:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing BuildRequires on zlib-devel that was previously
+  implicitly pulled in.
+
+-------------------------------------------------------------------
 Thu Mar 21 11:32:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-adjust-configure-for-postgresql-10-11.patch
