@@ -152,6 +152,8 @@ Patch132:       fixes_for_qt5.13.patch
 #endif
 # Fixes for API changes in kernel 5.4
 Patch133:       fixes_for_5.4.patch
+# Fixes for API changes in kernel 5.5
+Patch134:       fixes_for_5.5.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 BuildRequires:  %{python_module devel}
@@ -458,6 +460,7 @@ echo "sle_version " %{?sle_version}", is_opensuse " %{?is_opensuse}", suse_versi
 %patch132 -p1
 %endif
 %patch133 -p1
+%patch134 -p1
 
 # make VB UI background colors look sane again
 %patch999 -p1
@@ -546,11 +549,7 @@ install -D -m 644 "COPYING" "%{buildroot}%{_datadir}/licenses/LICENSE.vnc"
 echo "build kernel modules"
 #%if 0%{?suse_version} < 1550
 for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp,pci} \
-           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
-#%else
-#for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp,pci} \
-#	out/linux.*/release/bin/additions/src/vbox{guest,sf}; do
-#%endif
+           out/linux.*/release/bin/additions/src/vbox{guest,sf}; do
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -559,6 +558,10 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp,pci} \
 	# delete old build dir for sure
 	rm -rf modules_build_dir/${module_name}_${flavor}
 
+       if [ "$module_name" = "vboxdrv" -o \
+            "$module_name" = "vboxguest" ] ; then
+	    SYMBOLS=""
+	fi
 	# create build directory for specific flavor
         mkdir -p modules_build_dir/$flavor
 
@@ -571,16 +574,18 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp,pci} \
 	     "$module_name" = "vboxpci" ] ; then
 	    cp $PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers	\
 		  $PWD/modules_build_dir/$flavor/$module_name
+	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
 	fi
-	# copy vboxguest (for guest) module symbols which are used by vboxsf and vboxvideo km's:
-	if [ "$module_name" = "vboxsf" -o \
-	    "$module_name" = "vboxvideo" ] ; then
-	    cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
+	# copy vboxguest (for guest) module symbols which are used by vboxsf km:
+       if [ "$module_name" = "vboxsf" -o \
+            "$module_name" = "vboxvideo" ] ; then
+           cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
 	          $PWD/modules_build_dir/$flavor/$module_name
+	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
 	fi
 	# build the module for the specific flavor
 	make -j2 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
-		M=$PWD/modules_build_dir/$flavor/$module_name V=1
+		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
     done
 done
 

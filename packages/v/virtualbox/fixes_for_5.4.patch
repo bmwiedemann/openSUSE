@@ -6,7 +6,7 @@ Index: VirtualBox-6.0.14/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
  #define VBOXNETFLT_OS_SPECFIC 1
  #include "../VBoxNetFltInternal.h"
  
-+# if CONFIG_SUSE_VERSION == 15 && CONFIG_SUSE_PATCHLEVEL == 2
++# if defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 15 && CONFIG_SUSE_PATCHLEVEL == 2
 +#  define OPENSUSE_152
 +# endif
 +

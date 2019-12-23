@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 18 19:47:16 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build for kernel 5.5. Added file "fixes_for_5.5.patch".
+
+-------------------------------------------------------------------
 Wed Dec  4 16:33:09 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update file "switch_to_python3.4+.patch" to handle Python 3.8. (bsc#1158288) 

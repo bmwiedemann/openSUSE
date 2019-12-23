@@ -1,0 +1,56 @@
+Index: VirtualBox-6.0.14/src/VBox/HostDrivers/linux/Makefile
+===================================================================
+--- VirtualBox-6.0.14.orig/src/VBox/HostDrivers/linux/Makefile
++++ VirtualBox-6.0.14/src/VBox/HostDrivers/linux/Makefile
+@@ -45,6 +45,8 @@ else # ! KERNELRELEASE
+ 
+ KBUILD_VERBOSE ?=
+ KERN_VER ?= $(shell uname -r)
++PWD ?= $(shell pwd)
++
+ .PHONY: all install clean check unload load vboxdrv vboxnetflt vboxnetadp \
+     vboxpci
+ 
+@@ -64,6 +66,7 @@ vboxnetflt: vboxdrv
+ 	    if [ -f vboxdrv/Module.symvers ]; then \
+ 	        cp vboxdrv/Module.symvers vboxnetflt; \
+ 	    fi; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetflt/Module.symvers; \
+ 	    echo "=== Building 'vboxnetflt' module ==="; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetflt || exit 1; \
+ 	    cp vboxnetflt/vboxnetflt.ko .; \
+@@ -75,8 +78,9 @@ vboxnetadp: vboxdrv
+ 	    if [ -f vboxdrv/Module.symvers ]; then \
+ 	        cp vboxdrv/Module.symvers vboxnetadp; \
+ 	    fi; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetadp/Module.symvers; \
+ 	    echo "=== Building 'vboxnetadp' module ==="; \
+-	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetadp || exit 1; \
++            $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetadp || exit 1; \
+ 	    cp vboxnetadp/vboxnetadp.ko .; \
+ 	    echo; \
+ 	fi
+@@ -86,6 +90,7 @@ vboxpci: vboxdrv
+ 	    if [ -f vboxdrv/Module.symvers ]; then \
+ 	        cp vboxdrv/Module.symvers vboxpci; \
+ 	    fi; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxpci/Module.symvers; \
+ 	    echo "=== Building 'vboxpci' module ==="; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxpci || exit 1; \
+ 	    cp vboxpci/vboxpci.ko .; \
+@@ -95,12 +100,15 @@ vboxpci: vboxdrv
+ install:
+ 	@$(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxdrv install
+ 	@if [ -d vboxnetflt ]; then \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetflt/Module.symvers; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetflt install; \
+ 	fi
+ 	@if [ -d vboxnetadp ]; then \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetadp/Module.symvers; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetadp install; \
+ 	fi
+ 	@if [ -d vboxpci ]; then \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxpci/Module.symvers; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxpci install; \
+ 	fi
+ 
