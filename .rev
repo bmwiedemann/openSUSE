@@ -186,4 +186,13 @@
     <comment>- Update to release 0.24.6 fixes boo#1158296</comment>
     <requestid>755051</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c9d8897c3806b234267b205ce1a8fa8a</srcmd5>
+    <version>0.24.6</version>
+    <time>1577136977</time>
+    <user>dimstar_suse</user>
+    <comment>- Add specific version requirement for libserd see boo#1158728
+</comment>
+    <requestid>755840</requestid>
+  </revision>
 </revisionlist>
