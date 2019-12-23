@@ -1,9 +1,9 @@
-Index: chromium-76.0.3800.0/ui/gfx/linux/client_native_pixmap_dmabuf.cc
+Index: chromium-79.0.3941.4/ui/gfx/linux/client_native_pixmap_dmabuf.cc
 ===================================================================
---- chromium-76.0.3800.0.orig/ui/gfx/linux/client_native_pixmap_dmabuf.cc
-+++ chromium-76.0.3800.0/ui/gfx/linux/client_native_pixmap_dmabuf.cc
-@@ -24,9 +24,6 @@
- #include "build/build_config.h"
+--- chromium-79.0.3941.4.orig/ui/gfx/linux/client_native_pixmap_dmabuf.cc
++++ chromium-79.0.3941.4/ui/gfx/linux/client_native_pixmap_dmabuf.cc
+@@ -25,9 +25,6 @@
+ #include "ui/gfx/buffer_format_util.h"
  #include "ui/gfx/switches.h"
  
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
@@ -12,7 +12,7 @@ Index: chromium-76.0.3800.0/ui/gfx/linux/client_native_pixmap_dmabuf.cc
  #include <linux/types.h>
  
  struct dma_buf_sync {
-@@ -41,7 +38,6 @@ struct dma_buf_sync {
+@@ -42,7 +39,6 @@ struct dma_buf_sync {
  
  #define DMA_BUF_BASE 'b'
  #define DMA_BUF_IOCTL_SYNC _IOW(DMA_BUF_BASE, 0, struct dma_buf_sync)

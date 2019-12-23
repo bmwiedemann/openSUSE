@@ -1,7 +1,7 @@
 #
 # spec file for package chromium
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        78.0.3904.108
+Version:        79.0.3945.88
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -84,17 +84,14 @@ Patch8:         chromium-system-icu.patch
 Patch9:         chromium-system-libusb.patch
 Patch10:        gcc-enable-lto.patch
 Patch11:        chromium-unbundle-zlib.patch
-Patch12:        chromium-78-noexcept.patch
-Patch13:        chromium-78-gcc-enum-range.patch
-Patch14:        chromium-78-gcc-noexcept.patch
-Patch15:        chromium-78-gcc-std-vector.patch
-Patch16:        chromium-78-icon.patch
-Patch17:        chromium-78-include.patch
-Patch18:        chromium-78-pm-crash.patch
-Patch19:        chromium-78-protobuf-export.patch
-Patch20:        chromium-77-clang.patch
-Patch21:        chromium-old-glibc-noexcept.patch
-Patch22:        chromium-79-icu-65.patch
+Patch12:        chromium-old-glibc-noexcept.patch
+Patch13:        chromium-79-gcc-alignas.patch
+Patch14:        chromium-79-gcc-ambiguous-nodestructor.patch
+Patch15:        chromium-79-gcc-name-clash.patch
+Patch16:        chromium-79-gcc-permissive.patch
+Patch17:        chromium-79-icu-65.patch
+Patch18:        chromium-79-include.patch
+Patch19:        chromium-79-system-hb.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -454,6 +451,7 @@ keeplibs=(
     third_party/swiftshader
     third_party/swiftshader/third_party/llvm-7.0
     third_party/swiftshader/third_party/llvm-subzero
+    third_party/swiftshader/third_party/marl
     third_party/swiftshader/third_party/subzero
     third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
     third_party/tcmalloc
@@ -528,12 +526,13 @@ rm -rf third_party/libusb/src/libusb/libusb.h
 cp -a %{_includedir}/libusb-1.0/libusb.h third_party/libusb/src/libusb/libusb.h
 
 %build
+# GN sets lto on its own and we need just ldflag options, not cflags
+%define _lto_cflags %{nil}
 %if %{with clang}
 export CC=clang
 export CXX=clang++
 %else
 # REDUCE DEBUG as it gets TOO large
-%define _lto_cflags %{nil}
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
 export CXXFLAGS="${ARCH_FLAGS} -fpermissive -Wno-return-type"
 # extra flags to reduce warnings that aren't very useful
@@ -563,6 +562,7 @@ export PATH="$HOME/bin/:$PATH"
 %endif
 # do not eat all memory
 %limit_build -m 2600
+
 %if %{with lto}
 export LDFLAGS="-flto=%{jobs} --param lto-max-streaming-parallelism=1"
 %endif
@@ -674,6 +674,9 @@ myconf_gn+=" is_clang=false"
 %endif
 %if %{with lto}
 myconf_gn+=" gcc_lto=true"
+%endif
+%if %{with system_icu}
+myconf_gn+=" icu_use_data_file=false"
 %endif
 
 # The proprietary codecs just force the chromium to say they can use it and

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Dec 19 21:58:01 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 79.0.3945.88:
+  * CVE-2019-13767: Use after free in media picker (boo#1159498)
+
+-------------------------------------------------------------------
+Wed Dec 11 09:34:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 79.0.3945.79:
+  * CVE-2019-13725: Use after free in Bluetooth
+  * CVE-2019-13726: Heap buffer overflow in password manager
+  * CVE-2019-13727: Insufficient policy enforcement in WebSockets
+  * CVE-2019-13728: Out of bounds write in V8
+  * CVE-2019-13729: Use after free in WebSockets
+  * CVE-2019-13730: Type Confusion in V8
+  * CVE-2019-13732: Use after free in WebAudio
+  * CVE-2019-13734: Out of bounds write in SQLite
+  * CVE-2019-13735: Out of bounds write in V8
+  * CVE-2019-13764: Type Confusion in V8
+  * CVE-2019-13736: Integer overflow in PDFium
+  * CVE-2019-13737: Insufficient policy enforcement in autocomplete
+  * CVE-2019-13738: Insufficient policy enforcement in navigation
+  * CVE-2019-13739: Incorrect security UI in Omnibox
+  * CVE-2019-13740: Incorrect security UI in sharing
+  * CVE-2019-13741: Insufficient validation of untrusted input in Blink
+  * CVE-2019-13742: Incorrect security UI in Omnibox
+  * CVE-2019-13743: Incorrect security UI in external protocol handling
+  * CVE-2019-13744: Insufficient policy enforcement in cookies
+  * CVE-2019-13745: Insufficient policy enforcement in audio
+  * CVE-2019-13746: Insufficient policy enforcement in Omnibox
+  * CVE-2019-13747: Uninitialized Use in rendering
+  * CVE-2019-13748: Insufficient policy enforcement in developer tools
+  * CVE-2019-13749: Incorrect security UI in Omnibox
+  * CVE-2019-13750: Insufficient data validation in SQLite
+  * CVE-2019-13751: Uninitialized Use in SQLite
+  * CVE-2019-13752: Out of bounds read in SQLite
+  * CVE-2019-13753: Out of bounds read in SQLite
+  * CVE-2019-13754: Insufficient policy enforcement in extensions
+  * CVE-2019-13755: Insufficient policy enforcement in extensions
+  * CVE-2019-13756: Incorrect security UI in printing
+  * CVE-2019-13757: Incorrect security UI in Omnibox
+  * CVE-2019-13758: Insufficient policy enforcement in navigation
+  * CVE-2019-13759: Incorrect security UI in interstitials
+  * CVE-2019-13761: Incorrect security UI in Omnibox
+  * CVE-2019-13762: Insufficient policy enforcement in downloads
+  * CVE-2019-13763: Insufficient policy enforcement in payments
+- Remove merged patches:
+  * chromium-77-clang.patch
+  * chromium-78-gcc-enum-range.patch
+  * chromium-78-gcc-noexcept.patch
+  * chromium-78-gcc-std-vector.patch
+  * chromium-78-icon.patch
+  * chromium-78-include.patch
+  * chromium-78-noexcept.patch
+  * chromium-78-pm-crash.patch
+  * chromium-78-protobuf-export.patch
+- Add new patches:
+  * chromium-79-gcc-alignas.patch
+  * chromium-79-gcc-ambiguous-nodestructor.patch
+  * chromium-79-gcc-name-clash.patch
+  * chromium-79-gcc-permissive.patch
+  * chromium-79-include.patch
+  * chromium-79-system-hb.patch
+- Rebase patches:
+  * chromium-dma-buf.patch
+  * chromium-old-glibc-noexcept.patch
+  * chromium-vaapi-fix.patch
+  * fix_building_widevinecdm_with_chromium.patch
+  * old-libva.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 10:51:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 78.0.3904.108 bsc#1157269:

@@ -1,8 +1,8 @@
-Index: chromium-76.0.3809.12/media/gpu/vaapi/vaapi_wrapper.cc
+Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
 ===================================================================
---- chromium-76.0.3809.12.orig/media/gpu/vaapi/vaapi_wrapper.cc
-+++ chromium-76.0.3809.12/media/gpu/vaapi/vaapi_wrapper.cc
-@@ -63,6 +63,10 @@
+--- chromium-79.0.3945.36.orig/media/gpu/vaapi/vaapi_wrapper.cc
++++ chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
+@@ -65,6 +65,10 @@
  #include "ui/ozone/public/surface_factory_ozone.h"
  #endif
  
@@ -13,7 +13,7 @@ Index: chromium-76.0.3809.12/media/gpu/vaapi/vaapi_wrapper.cc
  using media_gpu_vaapi::kModuleVa;
  using media_gpu_vaapi::kModuleVa_drm;
  #if defined(USE_X11)
-@@ -351,10 +355,6 @@ bool VADisplayState::Initialize() {
+@@ -367,10 +371,6 @@ bool VADisplayState::Initialize() {
  }
  
  bool VADisplayState::InitializeOnce() {
@@ -24,10 +24,30 @@ Index: chromium-76.0.3809.12/media/gpu/vaapi/vaapi_wrapper.cc
    switch (gl::GetGLImplementation()) {
      case gl::kGLImplementationEGLGLES2:
        va_display_ = vaGetDisplayDRM(drm_fd_.get());
-Index: chromium-76.0.3809.12/media/gpu/vaapi/vaapi_jpeg_decoder.cc
+@@ -1502,7 +1502,7 @@ VaapiWrapper::ExportVASurfaceAsNativePix
+     LOG(ERROR) << "Cannot export an invalid surface";
+     return nullptr;
+   }
+-
++#if VA_MAJOR_VERSION >= 2 || (VA_MAJOR_VERSION == 1 && VA_MINOR_VERSION >= 2)
+   VADRMPRIMESurfaceDescriptor descriptor;
+   {
+     base::AutoLock auto_lock(*va_lock_);
+@@ -1595,6 +1595,10 @@ VaapiWrapper::ExportVASurfaceAsNativePix
+   exported_pixmap->pixmap = base::MakeRefCounted<gfx::NativePixmapDmaBuf>(
+       scoped_va_surface.size(), buffer_format, std::move(handle));
+   return exported_pixmap;
++#else
++  LOG(ERROR) << "Exporting a surface with FOURCC has been disabled on old libva";
++  return nullptr;
++#endif
+ }
+ 
+ bool VaapiWrapper::SyncSurface(VASurfaceID va_surface_id) {
+Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_jpeg_decoder.cc
 ===================================================================
---- chromium-76.0.3809.12.orig/media/gpu/vaapi/vaapi_jpeg_decoder.cc
-+++ chromium-76.0.3809.12/media/gpu/vaapi/vaapi_jpeg_decoder.cc
+--- chromium-79.0.3945.36.orig/media/gpu/vaapi/vaapi_jpeg_decoder.cc
++++ chromium-79.0.3945.36/media/gpu/vaapi/vaapi_jpeg_decoder.cc
 @@ -20,6 +20,10 @@
  #include "media/parsers/jpeg_parser.h"
  #include "ui/gfx/geometry/size.h"
@@ -39,13 +59,13 @@ Index: chromium-76.0.3809.12/media/gpu/vaapi/vaapi_jpeg_decoder.cc
  namespace media {
  
  namespace {
-Index: chromium-76.0.3809.12/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
+Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
 ===================================================================
---- chromium-76.0.3809.12.orig/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
-+++ chromium-76.0.3809.12/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
+--- chromium-79.0.3945.36.orig/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
++++ chromium-79.0.3945.36/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
 @@ -44,6 +44,10 @@
- #include "ui/gfx/linux/native_pixmap_dmabuf.h"
- #include "ui/gfx/native_pixmap.h"
+ #include "ui/gfx/geometry/size.h"
+ #include "ui/gfx/gpu_memory_buffer.h"
  
 +#ifndef VA_FOURCC_I420
 +#define VA_FOURCC_I420 0x30323449
@@ -54,27 +74,21 @@ Index: chromium-76.0.3809.12/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
  namespace media {
  
  namespace {
-diff --git a/media/gpu/vaapi/vaapi_wrapper.cc b/media/gpu/vaapi/vaapi_wrapper.cc
-index 82f2b3c154f6..5edaa92e7380 100644
---- a/media/gpu/vaapi/vaapi_wrapper.cc
-+++ b/media/gpu/vaapi/vaapi_wrapper.cc
-@@ -1456,7 +1456,7 @@ VaapiWrapper::ExportVASurfaceAsNativePixmapDmaBuf(
-     LOG(ERROR) << "Cannot export an invalid surface";
-     return nullptr;
-   }
--
-+#if VA_MAJOR_VERSION >= 2 || (VA_MAJOR_VERSION == 1 && VA_MINOR_VERSION >= 2)
-   VADRMPRIMESurfaceDescriptor descriptor;
-   {
-     base::AutoLock auto_lock(*va_lock_);
-@@ -1549,6 +1549,10 @@ VaapiWrapper::ExportVASurfaceAsNativePixmapDmaBuf(
-   exported_pixmap->pixmap = base::MakeRefCounted<gfx::NativePixmapDmaBuf>(
-       scoped_va_surface.size(), buffer_format, std::move(handle));
-   return exported_pixmap;
-+#else
-+  LOG(ERROR) << "Exporting a surface with FOURCC has been disabled on old libva";
-+  return nullptr;
-+#endif
- }
+Index: chromium-79.0.3945.36/media/gpu/chromeos/fourcc.cc
+===================================================================
+--- chromium-79.0.3945.36.orig/media/gpu/chromeos/fourcc.cc
++++ chromium-79.0.3945.36/media/gpu/chromeos/fourcc.cc
+@@ -15,6 +15,13 @@
+ #include <va/va.h>
+ #endif  // BUILDFLAG(USE_VAAPI)
  
- bool VaapiWrapper::SyncSurface(VASurfaceID va_surface_id) {
++#ifndef VA_FOURCC_I420
++#define VA_FOURCC_I420 0x30323449
++#endif
++#ifndef VA_FOURCC_NV21
++#define VA_FOURCC_NV21 0x3132564E
++#endif
++
+ namespace media {
+ 
+ Fourcc::Fourcc() : value_(Fourcc::INVALID) {}
