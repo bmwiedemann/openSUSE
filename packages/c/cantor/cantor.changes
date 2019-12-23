@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 23 07:37:50 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add necessary Requires to devel package
+
+-------------------------------------------------------------------
 Tue Dec 10 06:38:07 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.0
   * New feature release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.0
+  * https://www.kde.org/announcements/releases/19.12
 - Changes since 19.11.90:
   * Add compatibility with Sage based on Python3 (kde#411645)
   * Update Appstream for new release

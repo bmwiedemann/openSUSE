@@ -79,6 +79,17 @@ those backends and is not targeted to kids but to scientists.
 Summary:        Worksheet GUI for mathematical software
 Group:          Development/Libraries/KDE
 Requires:       libcantorlibs%{libMAJOR} = %{version}
+Requires:       libpoppler-qt5-devel
+Requires:       libspectre-devel
+Requires:       cmake(KF5Archive)
+Requires:       cmake(KF5Completion)
+Requires:       cmake(KF5Config)
+Requires:       cmake(KF5I18n)
+Requires:       cmake(KF5IconThemes)
+Requires:       cmake(KF5KIO)
+Requires:       cmake(KF5XmlGui)
+Requires:       cmake(Qt5Svg)
+Requires:       cmake(Qt5Xml)
 
 %description devel
 A frontend to several existing mathematical software such as R, Sage
