@@ -1,7 +1,7 @@
 #
 # spec file for package zchunk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %global devname libzck-devel
 
 Name:           zchunk
-Version:        1.1.0
+Version:        1.1.4
 Release:        0
 Summary:        Compressed file format that allows easy deltas
 License:        BSD-2-Clause AND MIT
@@ -34,9 +34,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openssl)
-Provides:       bundled(buzhash-urlblock) = 0.1
 # ABI is unstable between components and ensures that patching doesn't break things
 Requires:       %{libname} = %{version}-%{release}
+Provides:       bundled(buzhash-urlblock) = 0.1
 
 %description
 zchunk is a compressed file format that splits the file into independent

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 18 08:51:57 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.4:
+  * Simplify regex for detecting part header info
+  * Fix coverity warnings 
+  * Open files with permissions 0666 and let umask(2) do its job.
+  * Multipart boundary field can be quoted.
+
+-------------------------------------------------------------------
 Sun Mar 31 15:01:07 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 1.1.0
