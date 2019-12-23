@@ -1,4 +1,161 @@
 -------------------------------------------------------------------
+Wed Dec 11 16:57:03 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.2
+  * Fixed ABI compatibility with libfmt.so.6.0.0 (#1471).
+  * Fixed handling types convertible to std::string_view (#1451).
+    Thanks @denizevrenci (Deniz Evrenci).
+  * Made CUDA test an opt-in enabled via the FMT_CUDA_TEST CMake
+    option.
+  * Fixed sign conversion warnings (#1440). Thanks @0x8000-0000
+    (Florin Iucha).
+
+-------------------------------------------------------------------
+Thu Dec  5 15:43:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.1
+  * Added a missing decimal point in exponent notation with
+    trailing zeros.
+  * Removed deprecated format_arg_store::TYPES.
+
+-------------------------------------------------------------------
+Wed Dec  4 11:34:50 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.0
+  * {fmt} now formats IEEE 754 ``float`` and ``double`` using
+    the shortest decimal representation with correct rounding by
+    default:
+    .. code:: c++
+
+       #include <cmath>
+       #include <fmt/core.h>
+
+       int main() {
+         fmt::print("{}", M_PI);
+       }
+
+    prints ``3.141592653589793``.
+  * Made the fast binary to decimal floating-point formatter the
+    default, simplified it and improved performance. {fmt} is now
+    15 times faster than libc++'s ``std::ostringstream``, 11
+    times faster than ``printf`` and 10% faster than
+    double-conversion on `dtoa-benchmark
+    (https://github.com/fmtlib/dtoa-benchmark)
+
+    ==================  =========  =======
+    Function            Time (ns)  Speedup
+    ==================  =========  =======
+    ostringstream        1,346.30    1.00x
+    ostrstream           1,195.74    1.13x
+    sprintf                995.08    1.35x
+    doubleconv              99.10   13.59x
+    fmt                     88.34   15.24x
+    ==================  =========  =======
+  * {fmt} no longer converts ``float`` arguments to ``double``.
+    In particular this improves the default (shortest)
+    representation of floats and makes
+    ``fmt::format`` consistent with ``std::format`` specs
+    (#1336, #1353, #1360, #1361)
+    .. code:: c++
+
+       fmt::print("{}", 0.1f);
+
+    prints ``0.1`` instead of ``0.10000000149011612``.
+  * Made floating-point formatting output consistent with
+    ``printf``/iostreams (#1376, #1417)
+  * Added support for 128-bit integers (#1287)
+    .. code:: c++
+
+       fmt::print("{}", std::numeric_limits<__int128_t>::max());
+
+    prints ``170141183460469231731687303715884105727``.
+  * The overload of ``print`` that takes ``text_style`` is now
+    atomic, i.e. the output from different threads doesn't
+    interleave (#1351)
+  * Made compile time in the header-only mode ~20% faster by
+    reducing the number of template instantiations. ``wchar_t``
+    overload of ``vprint`` was moved from
+    ``fmt/core.h`` to ``fmt/format.h``.
+  * Added an overload of ``fmt::join`` that works with tuples
+    (#1322, #1330)
+    .. code:: c++
+
+       #include <tuple>
+       #include <fmt/ranges.h>
+
+       int main() {
+         std::tuple<char, int, float> t{'a', 1, 2.0f};
+         fmt::print("{}", t);
+       }
+
+    prints ``('a', 1, 2.0)``.
+  * Changed formatting of octal zero with prefix from "0o0" to
+    "0":
+    .. code:: c++
+
+       fmt::print("{:#o}", 0);
+
+    prints ``0``.
+  * The locale is now passed to ostream insertion (``<<``)
+    operators (#1406)
+    .. code:: c++
+
+       #include <fmt/locale.h>
+       #include <fmt/ostream.h>
+
+       struct S {
+         double value;
+       };
+
+       std::ostream& operator<<(std::ostream& os, S s) {
+         return os << s.value;
+       }
+
+       int main() {
+         auto s = fmt::format(std::locale("fr_FR.UTF-8"), "{}", S{0.42});
+         // s == "0,42"
+       }
+  * Locale-specific number formatting now uses grouping (#1393,
+    #1394)
+  * Fixed handling of types with deleted implicit rvalue
+    conversion to ``const char**`` (#1421)
+    .. code:: c++
+
+       struct mystring {
+         operator const char*() const&;
+         operator const char*() &;
+         operator const char*() const&& = delete;
+         operator const char*() && = delete;
+       };
+       mystring str;
+       fmt::print("{}", str); // now compiles
+  * Enums are now mapped to correct underlying types instead of
+    ``int`` (#1286)
+  * Enum classes are no longer implicitly converted to ``int``
+    (#1424)
+  * Added ``basic_format_parse_context`` for consistency with
+    C++20 ``std::format`` and deprecated ``basic_parse_context``.
+  * Fixed handling of UTF-8 in precision (#1389, #1390)
+  * Added a CUDA test (#1285, #1317)
+  * Improved documentation (#1276, #1291, #1296, #1315, #1332,
+    #1337, #1395, #1418)
+  * Various code improvements (#1358, #1407)
+  * Fixed compile-time format string checks for user-defined
+    types (#1292)
+  * Worked around a false positive in
+    ``unsigned-integer-overflow`` sanitizer (#1377)
+  * Fixed various warnings and compilation issues (#1273, #1278,
+    #1280, #1281, #1288, #1290, #1301, #1305, #1306, #1309,
+    #1312, #1313, #1316, #1319, #1320, #1326, #1328, #1344,
+    #1345, #1347, #1349, #1354, #1362, #1366, #1364, #1370,
+    #1371, #1385, #1388, #1397, #1414, #1416, #1422, #1427,
+    #1431, #1433)
+
+- Dropped fmt-bigendian_1.patch, fmt-bigendian_2.patch,
+  fmt-bigendian_3.patch and fmt-bigendian_4.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
 Sun Dec  1 08:54:54 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added fmt-bigendian_1.patch, fmt-bigendian_2.patch,
