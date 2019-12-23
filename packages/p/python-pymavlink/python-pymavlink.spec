@@ -1,6 +1,7 @@
 #
 # spec file for package python-pymavlink
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,22 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymavlink
-Version:        2.4.0
+Version:        2.4.2
 Release:        0
-License:        LGPL-3.0
 Summary:        Python MAVLink code
-Url:            https://github.com/ArduPilot/pymavlink/
+License:        LGPL-3.0-only
 Group:          Development/Languages/Python
+Url:            https://github.com/ArduPilot/pymavlink/
 Source:         https://files.pythonhosted.org/packages/source/p/pymavlink/pymavlink-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
 # /SECTION
