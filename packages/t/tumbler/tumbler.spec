@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define libname libtumbler-1-0
 
 Name:           tumbler
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 Summary:        Thumbnail Management for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://docs.xfce.org/xfce/thunar/tumbler
-Source:         https://archive.xfce.org/src/apps/%{name}/0.2/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/%{name}/0.2/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26.0

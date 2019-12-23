@@ -341,4 +341,12 @@
     <comment>Xfce 4.14 upgrade</comment>
     <requestid>724062</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>babfcc8cceaf68a61daf6e7147dfee39</srcmd5>
+    <version>0.2.8</version>
+    <time>1577137512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758827</requestid>
+  </revision>
 </revisionlist>

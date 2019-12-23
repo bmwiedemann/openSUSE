@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 21 21:56:56 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Updated to version 0.2.8
+  * Fix thumbnail orientation (bxo#15011)
+  * prepend $XDG_DATA_HOME/thumbnailers/ to thumbnailers directory
+    (bxo#15858)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:52:24 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
