@@ -1,7 +1,7 @@
 #
 # spec file for package grantlee5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,33 @@
 #
 
 
+%bcond_without tests
+
+%{?!cmake_build:%global cmake_build() make %{?_smp_mflags} VERBOSE=1}
+%{?!cmake_install:%global cmake_install() DESTDIR=%{buildroot} make install}
+
 Name:           grantlee5
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Qt string template library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            http://grantlee.org/
-Source:         http://downloads.grantlee.org/grantlee-%{version}.tar.gz
+Source:         http://www.grantlee.org/downloads/grantlee-%{version}.tar.gz
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM includes.diff -- since upstream doesn't provide a way to install to custom directory, we cheat!
+# PATCH-FIX-OPENSUSE includes.diff -- since upstream doesn't provide a way to install to custom directory, we cheat!
 Patch0:         includes.diff
-# PATCH-FIX-UPSTREAM fix-build-with-Qt-5.13.patch
-Patch1:         fix-build-with-Qt-5.13.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Remove-vestigial-ansi-flag.patch
-BuildRequires:  cmake >= 3.1
-BuildRequires:  doxygen
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.3
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.3
-BuildRequires:  pkgconfig(Qt5Script) >= 5.3
+# PATCH-FIX-OPENSUSE grantlee-5.2.0-fix-ctest-ld-library-path.patch -- set ld library path for tests
+Patch1:         grantlee-5.2.0-fix-ctest-ld-library-path.patch
+# PATCH-FIX-OPENSUSE grantlee-5.2.0-fix-ctest-ld-library-path.patch -- disable tests for now that throwing an exception for some reason
+Patch2:         grantlee-5.2.0-disable-textdocument-tests.patch
+BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake(Qt5Core) >= 5.3
+BuildRequires:  cmake(Qt5Gui) >= 5.3
+BuildRequires:  cmake(Qt5Qml) >= 5.3
+%if %{with tests}
+BuildRequires:  cmake(Qt5Test) >= 5.3
+%endif
 
 %description
 Grantlee is a string template engine based on the Django template system and
@@ -46,9 +52,9 @@ written in Qt.
 Summary:        Include Files and Libraries Mandatory for Development with Grantlee
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       cmake >= 2.8.12
-Requires:       pkgconfig(Qt5Core)
-Requires:       pkgconfig(Qt5Gui)
+Requires:       cmake >= 3.5
+Requires:       cmake(Qt5Core) >= 5.3
+Requires:       cmake(Qt5Gui) >= 5.3
 
 %description devel
 This package contains include files and libraries needed for development with
@@ -59,15 +65,17 @@ grantlee.
 
 %build
 %cmake \
-  -DCMAKE_BUILD_TYPE=None \
-  -DBUILD_TESTS=OFF
+  %{!?with_tests:-DBUILD_TESTS:BOOL=OFF}
 
-# Still not available on all leap flavors
-# %%cmake_build
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
+
+%if %{with tests}
+%check
+%ctest
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

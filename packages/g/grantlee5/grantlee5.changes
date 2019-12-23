@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:46:39 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Enable and run tests
+  * add grantlee-5.2.0-fix-ctest-ld-library-path.patch to set correct
+    ld library path as we skip rpath
+  * add grantlee-5.2.0-disable-textdocument-tests.patch to disable
+    some tests
+
+-------------------------------------------------------------------
+Wed Dec 18 23:48:44 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 5.2.0
+  * Increase CMake requirement to version 3.5
+  * Port scriptable extensions to QJSEngine provided by QtQml
+  * Support reading properties from Q_GADGETS
+  * Remove TestCocoon integration
+  * Clean up documentation to clarify introspection requirements
+  * Fix mixing of {% include %} and {% extends %} tags
+  * Fix various bugs discovered by fuzzing
+  * Remove use of TR1 library features from unit tests
+  * Remove obsolete build options
+  * Document that loading templates from Qt Resources is possible
+- Remove obsolete patches now included upstream
+  * fix-build-with-Qt-5.13.patch
+  * 0001-Remove-vestigial-ansi-flag.patch
+  * 0002-Fix-mix-of-inclusion-and-extension.patch
+- Rebase pachtes
+  * includes.diff
+
+-------------------------------------------------------------------
+Mon Dec  9 17:29:52 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Add patch to fix segfault when mixing include and extend
+  * 0002-Fix-mix-of-inclusion-and-extension.patch
+
+-------------------------------------------------------------------
 Wed Jul 31 14:55:56 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix build with newer CMake:
