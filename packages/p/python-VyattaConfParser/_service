@@ -2,11 +2,11 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/hedin/vyatta-conf-parser.git</param>
     <param name="scm">git</param>
-    <param name="revision">084ba32</param>
+    <param name="revision">9a09e8375ecf75c054f1231fa989222e440313bf</param>
     <param name="package-meta">no</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">VyattaConfParser</param>
-    <param name="versionformat">0.5.3</param>
+    <param name="versionformat">0.5.5</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
