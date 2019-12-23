@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 17 03:07:25 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.94
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.94      2019-12-16 12:17:26 -0700
+    - Prefer tar.exe on Windows if it is bsdtar (gh#150)
+    - Prefer tar.exe on Windows for unzip if it is bsdtar (gh#151, gh#152)
+
+-------------------------------------------------------------------
+Tue Dec 10 03:07:16 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.93
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.93      2019-12-09 02:22:44 -0700
+    - curl plugin not used unless required -J option is supported.
+      (gh#147, gh#148)
+
+-------------------------------------------------------------------
 Tue Nov 19 10:07:39 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update spec file
