@@ -136,4 +136,14 @@
   native systemd services</comment>
     <requestid>652242</requestid>
   </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>5db1d291f6b30c0a7c2b7a2eb960f91e</srcmd5>
+    <version>1.4.1</version>
+    <time>1577137644</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the &quot;installation&quot; section.
+- Changed &quot;PreExecStart&quot; to &quot;ExecStartPre&quot;. 
+- Added/changed the type to forking</comment>
+    <requestid>758987</requestid>
+  </revision>
 </revisionlist>
