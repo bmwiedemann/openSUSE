@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  7 15:20:41 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.2.19:
+  * gpg: Fix double free when decrypting for hidden recipients
+  * gpg: Use auto-key-locate for encryption even for mail addressed
+    given with angle brackets
+  * gpgsm: Add special case for certain expired intermediate
+    certificates
+
+-------------------------------------------------------------------
 Wed Nov 27 15:42:22 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 2.2.18 [bsc#1157900, CVE-2019-14855]

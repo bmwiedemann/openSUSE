@@ -1145,4 +1145,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment></comment>
     <requestid>751577</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>5802a9c9b277d36608688cf7b472cf28</srcmd5>
+    <version>2.2.19</version>
+    <time>1577136837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755139</requestid>
+  </revision>
 </revisionlist>
