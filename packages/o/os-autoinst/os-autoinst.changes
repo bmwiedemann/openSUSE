@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 20 13:22:39 UTC 2019 - okurz@suse.com
+
+- Update to version 4.6.1576848145.65c8fecf:
+  * Fix the warning message in t/17-basetest.t
+  * Avoid qw() warning message in t/18-qemu.t
+  * Add .gitignore files for make test output
+  * Use getter/setter for needles dir as safer approach rather than package variable
+
+-------------------------------------------------------------------
 Mon Dec 16 13:04:14 UTC 2019 - okurz@suse.com
 
 - Update to version 4.6.1576491023.ca931ae6:
