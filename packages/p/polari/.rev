@@ -288,4 +288,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736600</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bf5d44ad781a76c743e1d678fb32e2c3</srcmd5>
+    <version>3.34.1</version>
+    <time>1577137257</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 756797 from iznogood)</comment>
+    <requestid>757336</requestid>
+  </revision>
 </revisionlist>

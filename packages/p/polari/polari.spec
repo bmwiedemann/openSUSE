@@ -1,7 +1,7 @@
 #
 # spec file for package polari
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           polari
-Version:        3.34.0
+Version:        3.34.1
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,13 +27,13 @@ URL:            https://wiki.gnome.org/Apps/Polari
 Source0:        https://download.gnome.org/sources/polari/3.34/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
 
-BuildRequires:  gjs >= 1.45.0
+BuildRequires:  gjs >= 1.57.3
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  mozjs60
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
-BuildRequires:  pkgconfig(gjs-1.0)
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.57.3
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.21.6
 BuildRequires:  pkgconfig(pango)

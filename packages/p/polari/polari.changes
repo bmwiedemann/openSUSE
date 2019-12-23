@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 13 06:24:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Fix NickServ authentication without username.
+  + Catch newly added gjs exception that prevents startup.
+  + Fix grouping of status messages.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 10 13:51:20 CST 2019 - qkzhu@suse.com
 
 - Update to version 3.34.0:
