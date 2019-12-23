@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/ses/6/ceph/ceph#sle15.1.nautilus</image>
-  <tags>sle15.1.nautilus</tags>
-  <name>ses/6/cephcsi/cephcsi</name>
+  <image>obsrepositories:/ses/7/ceph/ceph#sle15.2.octopus</image>
+  <tags>sle15.2.octopus</tags>
+  <name>ses/7/cephcsi/cephcsi</name>
   <prefix>com.suse.ses</prefix>
-  <title>SUSE Enterprise Storage 6.0</title>
-  <url>https://registry.suse.com/ses/6/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</url>
-  <reference>registry.suse.com/ses/6/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</reference>
+  <title>SUSE Enterprise Storage 7.0</title>
+  <url>https://registry.suse.com/ses/7/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</url>
+  <reference>registry.suse.com/ses/7/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</reference>
   <labels>
 	<label>
 	<name>com.suse.ses.version</name>
-		<value>6.0</value>
+		<value>7.0</value>
 	</label>
 	<label>
 		<name>com.suse.ses.url</name>

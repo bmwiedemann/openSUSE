@@ -7,13 +7,13 @@
 -->
 <image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="ceph-csi-image">
   <description type="system">
-    <author>Denis Kondratenko</author>
-    <contact>denis.kondratenko@suse.com</contact>
+    <author>SUSE LLC</author>
+    <contact>https://bugs.opensuse.org</contact>
     <specification>Ceph CSI driver container</specification>
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/ceph/ceph#tumbleweed">
-      <containerconfig tag="latest" maintainer="SUSE Storage Team &lt;bgardner@suse.com&gt;" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/cephcsi/cephcsi">
+      <containerconfig tag="latest" maintainer="SUSE LLC (https://bugs.opensuse.org)" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/cephcsi/cephcsi">
         <entrypoint execute="/usr/bin/cephcsi"/>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.cephcsi">
@@ -27,7 +27,7 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/cephcsi:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Denis Kondratenko &lt;denis.kondratenko@suse.com&gt;">Install ceph-csi binaries and configuration</history>
+        <history author="SUSE LLC">Install ceph-csi binaries and configuration</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>

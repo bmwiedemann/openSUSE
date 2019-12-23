@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/opensuse/ceph/ceph#leap15.2</image>
-  <tags>leap15.2</tags>
+  <image>obsrepositories:/ceph/ceph#leap15.2.octopus</image>
+  <tags>leap15.2.octopus</tags>
   <name>cephcsi/cephcsi</name>
   <prefix>org.opensuse.cephcsi</prefix>
   <title>Ceph CSI driver container</title>
