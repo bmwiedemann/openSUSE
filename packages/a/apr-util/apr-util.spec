@@ -1,7 +1,7 @@
 #
 # spec file for package apr-util
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Apache Portable Runtime (APR) Utility Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            http://apr.apache.org/
+URL:            http://apr.apache.org/
 Source:         http://www.apache.org/dist/apr/apr-util-%{version}.tar.bz2
 Patch1:         apr-util-1.4.1-testmemcache-initialize-values-array.patch
 Patch2:         apr-util-visibility.patch
@@ -113,7 +113,7 @@ DBD driver for SQLite 3 database.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4
+%patch4 -p1
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> docs/doxygen.conf

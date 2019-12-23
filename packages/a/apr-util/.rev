@@ -65,4 +65,14 @@
     <comment></comment>
     <requestid>683686</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>71870b2bd66e9c8f0cd386272130daf9</srcmd5>
+    <version>1.6.1</version>
+    <time>1577137303</time>
+    <user>dimstar_suse</user>
+    <comment>- fix linking with libpq
+- modified patches
+  % apr-util-postgresql.patch</comment>
+    <requestid>757731</requestid>
+  </revision>
 </revisionlist>
