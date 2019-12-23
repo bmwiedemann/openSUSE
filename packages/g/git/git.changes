@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 11 06:37:34 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.24.1:
+  * CVE-2019-1348: The --export-marks option of fast-import is
+    exposed also via the in-stream command feature export-marks=...
+    and it allows overwriting arbitrary paths (boo#1158785)
+  * CVE-2019-1349: on Windows, when submodules are cloned
+    recursively, under certain circumstances Git could be fooled
+    into using the same Git directory twice (boo#1158787)
+  * CVE-2019-1350: Incorrect quoting of command-line arguments
+    allowed remote code execution during a recursive clone in
+    conjunction with SSH URLs (boo#1158788)
+  * CVE-2019-1351: on Windows mistakes drive letters outside of
+    the US-English alphabet as relative paths (boo#1158789)
+  * CVE-2019-1352: on Windows was unaware of NTFS Alternate Data
+    Streams (boo#1158790)
+  * CVE-2019-1353: when run in the Windows Subsystem for Linux
+    while accessing a working directory on a regular Windows
+    drive, none of the NTFS protections were active (boo#1158791)
+  * CVE-2019-1354: on Windows refuses to write tracked files with
+    filenames that contain backslashes (boo#1158792)
+  * CVE-2019-1387: Recursive clones vulnerability that is caused
+    by too-lax validation of submodule names, allowing very
+    targeted attacks via remote code execution in recursive
+    clones (boo#1158793)
+  * CVE-2019-19604: a recursive clone followed by a submodule
+    update could execute code contained within the repository
+    without the user explicitly having asked for that (boo#1158795)
+
+-------------------------------------------------------------------
 Fri Nov 29 14:57:55 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Guard xmlto/sgml-skel BuildRequires by docs bcond.

@@ -32,7 +32,7 @@
 %endif
 
 Name:           git
-Version:        2.24.0
+Version:        2.24.1
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
