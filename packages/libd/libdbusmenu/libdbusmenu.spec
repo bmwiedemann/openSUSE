@@ -1,7 +1,7 @@
 #
 # spec file for package libdbusmenu
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,27 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %global sname libappindicator
-%if "%{flavor}" == ""
-ExclusiveArch:  do-not-build
-%endif
-
 %define sname libdbusmenu
 %define soname_glib 4
 %define soname_gtk2 4
 %define soname_gtk3 4
 %define soname_jsonloader 4
-
 %if "%{flavor}" == "gtk2"
 %global gtkver 2
 %global soname_gtk %{soname_gtk2}
 %global libname_gtk  libdbusmenu-gtk%{soname_gtk}
 %global psuffix      -gtk%{gtkver}
 # dumper is GTK2 only
+%ifarch %arm
+# Valgrind is broken on armv6/7 atm
+%bcond_with testtools
+%else
 %bcond_without testtools
+%endif
+%global package_glib 1
 # Docs are the same for GTK2/3, dito for glib
 %bcond_without docs
-%global package_glib 1
 %endif
-
 %if "%{flavor}" == "gtk3"
 %global gtksuffix 3
 %global gtkver 3
@@ -49,9 +48,7 @@ ExclusiveArch:  do-not-build
 %bcond_with    testtools
 %bcond_with    docs
 %endif
-
 %global libname_glib libdbusmenu-glib%{soname_glib}
-
 Name:           libdbusmenu%{?psuffix}
 Version:        16.04.0
 Release:        0
@@ -68,10 +65,6 @@ Patch1:         0002-genericmenuitem-Make-accelerator-text-appear-again.patch
 Patch2:         0003-Fix-HAVE_VALGRIND-AM_CONDITIONAL.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if %{with docs}
-BuildRequires:  gtk-doc
-BuildRequires:  pkgconfig(gnome-doc-utils)
-%endif
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -80,6 +73,13 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if "%{flavor}" == ""
+ExclusiveArch:  do-not-build
+%endif
+%if %{with docs}
+BuildRequires:  gtk-doc
+BuildRequires:  pkgconfig(gnome-doc-utils)
+%endif
 %if "%flavor" == "gtk2"
 BuildRequires:  pkgconfig(gtk+-2.0)
 %else
@@ -236,9 +236,11 @@ rm -Rf %{buildroot}%{_libexecdir}/dbusmenu-{bench,dumper,testapp}
 # Remove glib version (only package once)
 %if 0%{?package_glib}
 # Put examples in correct documentation directory.
+%if %{with testtools}
 mkdir -p %{buildroot}%{_docdir}/%{sname}-glib-devel/examples/
 mv %{buildroot}%{_datadir}/doc/%{sname}/examples/glib-server-nomenu.c \
   %{buildroot}%{_docdir}/%{sname}-glib-devel/examples/
+%endif
 
 %else
 rm -Rf %{buildroot}%{_includedir}/libdbusmenu-glib-0.4/
@@ -303,8 +305,10 @@ rm -Rf %{buildroot}%{_datadir}/gtk-doc
 %{_datadir}/gir-1.0/Dbusmenu-0.4.gir
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/Dbusmenu-0.4.vapi
+%if %{with testtools}
 %doc %dir %{_docdir}/%{sname}-glib-devel/examples/
 %doc %{_docdir}/%{sname}-glib-devel/examples/glib-server-nomenu.c
+%endif
 
 %files -n libdbusmenu-glib-doc
 %license COPYING*

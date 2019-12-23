@@ -72,4 +72,12 @@ Fix license </comment>
     <comment>Update </comment>
     <requestid>750043</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>6c9049cefd8c2aa73b8064559c8df57f</srcmd5>
+    <version>16.04.0</version>
+    <time>1577136967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755748</requestid>
+  </revision>
 </revisionlist>
