@@ -1,7 +1,7 @@
 #
 # spec file for package catfish
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with git
 %define series 1.4
 Name:           catfish
-Version:        1.4.10
+Version:        1.4.11
 Release:        0
 Summary:        Versatile File Searching Tool
 License:        GPL-2.0-or-later
@@ -98,6 +98,9 @@ done
 %fdupes %{buildroot}%{python3_sitelib}
 
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
+
+# remove bad backup file while waiting for upstream
+rm %{buildroot}%{_datadir}/%{name}/ui/CatfishPreferences.ui~
 
 %find_lang %{name}
 

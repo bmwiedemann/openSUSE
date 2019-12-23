@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 21 15:54:37 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.4.11
+  - Radio indicators are now displayed on the layout options
+  - Fix crashes when GdkDisplay or GdkScreen calls return None 
+    (lp#1822914)
+  - Fix configuration of preferred window layout (bxo#16085)
+  - Fix finding files in the target directory (bxo#15985, bxo#16233)
+  - Fix symbolic link looping (bxo#16272)
+  - Fix home (~) expansion for the start path
+  - Fix asv-summary-has-dot-suffix
+    (https://appstream.debian.org/sid/main/issues/catfish.html)
+  - Translation Updates
+
+-------------------------------------------------------------------
 Wed Oct 23 17:31:43 CEST 2019 - ro@suse.de
 
 - fix build-requires for factory/tumbleweed
