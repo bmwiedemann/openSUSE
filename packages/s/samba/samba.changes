@@ -1,3 +1,16 @@
+-------------------------------------------------------------------
+Tue Dec 10 09:57:23 UTC 2019 - Noel Power <nopower@suse.com>
+
+- Update to samba 4.11.3
+  + CVE-2019-14861: DNSServer RPC server crash, an authenticated user
+    can crash the DCE/RPC DNS management server by creating records
+    with matching the zone name; (bso#14138); (bsc#1158108).
+  + CVE-2019-14870: DelegationNotAllowed not being enforced, the
+    DelegationNotAllowed Kerberos feature restriction was not being
+    applied when processing protocol transition requests (S4U2Self),
+    in the AD DC KDC; (bso#14187); (bsc#1158109).
+
+-------------------------------------------------------------------
 Tue Oct 29 17:22:30 UTC 2019 - Jim McDonough <jmcdonough@suse.com>
 
 - Update to samba 4.11.2
