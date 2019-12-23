@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Dec 23 02:47:30 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 1.29.0
+  The key highlights of this release are the change of pl_gpu API
+  semantics to use explicit erroring instead of implicit undefined
+  behavior, and several important bug fixes related to swapchain
+  resizing (in particular, handling of suboptimal swapchains);
+  as well as other minor utility changes, bug fixes and performance
+  improvements.
+
+  The new pl_gpu API allows clients to duplicate less code related
+  to checking parameters and capabilities, as long as they're fine
+  with the resulting error messages they might receive. In
+  particular, libplacebo no longer aborts on invalid parameters -
+  which helped during initial development, but is now suffocating
+  clients more than it's helping.
+
+Additions:
+  * add a new field pl_fmt.internal_size, which can differ from
+    texel_size for emulated formats
+  * add 16f / 64f texture formats with host-emulated 32f
+    representation
+  * expose a pl_vulkan_choose_device helper function
+  * add a mechanism for allowing the user to explicitly resize
+    suboptimal swapchains rather than having libplacebo take care
+    of it
+
+Changes:
+  * make pl_gpu log and error gracefully on illegal parameters
+    rather than doing undefined behavior (i.e. aborting)
+  * creating a host_mapped buffer now requires
+    PL_GPU_CAP_MAPPED_BUFFERS
+  * drop priv fields from public structs
+
+Fixes and performance improvements:
+  * make libplacebo slightly less log spammy in general
+  * skip the creation/use of semaphores for single-queue usage
+  * fix several bugs related to swapchain recreation and image
+    acquisition
+  * fix creation of non-renderable but storable vulkan textures
+  * fix several bugs related to emulated texture downloads
+  * fix pl_fmt capabilities for some emulated formats
+  * fix stride/alignment of std430 vectors/matrices
+  * use push constants more aggressively, whenever possible
+  * slightly improve accurate of BT.2100 matrices
+  * fix overzealous rotation of vulkan queues
+  * fix dangling validation layer suppression in rare cases
+  * fix possible swapchain deadlock on VK_SUBOPTIMAL_KHR
+  * handle VK_SUBOPTIMAL_KHR more gracefully / efficiently
+
+-------------------------------------------------------------------
 Mon Oct 21 23:34:37 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.21.0
