@@ -26,7 +26,7 @@ Url:            http://github.com/Bumblebee-Project/bbswitch
 Source0:        https://github.com/Bumblebee-Project/bbswitch/archive/v%{version}.tar.gz
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  libelf-devel
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       bbswitch-kmp
 # DKMSing this module has no point for us so obsolete the package
 # Remove this after 13.2 release
