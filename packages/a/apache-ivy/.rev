@@ -152,4 +152,12 @@
     <comment>Build the bouncycastle signer plugin</comment>
     <requestid>732999</requestid>
   </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>3480589a5a72eed3615906e5a346d02e</srcmd5>
+    <version>2.4.0</version>
+    <time>1577136949</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with new rpm</comment>
+    <requestid>755691</requestid>
+  </revision>
 </revisionlist>

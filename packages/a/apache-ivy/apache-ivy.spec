@@ -1,7 +1,7 @@
 #
 # spec file for package apache-ivy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,7 +112,7 @@ export CLASSPATH=${CLASSPATH}:$(build-classpath jsch.agentproxy.core jsch.agentp
 %endif
 
 # Build
-ant -Dtarget.ivy.version=%{version} /localivy /offline jar javadoc
+ant -Dtarget.ivy.version=%{version} -Dbundle.version=%{version} /localivy /offline jar javadoc
 
 %install
 # Code
