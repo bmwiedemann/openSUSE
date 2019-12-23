@@ -1,7 +1,7 @@
 #
 # spec file for package swayidle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Source0:        https://github.com/swaywm/swayidle/archive/%{version}.tar.gz
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(xkbcommon)
