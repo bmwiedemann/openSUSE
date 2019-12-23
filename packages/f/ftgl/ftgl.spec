@@ -1,7 +1,7 @@
 #
 # spec file for package ftgl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libftgl2
 %bcond_without ftgl_html
 Name:           ftgl
-Version:        2.1.3~rc5
+Version:        2.4.0
 Release:        0
 Summary:        Library for Using Arbitrary Fonts in OpenGL Applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://ftgl.wiki.sourceforge.net/
-Source0:        http://sourceforge.net/projects/ftgl/files/FTGL%%20Source/2.1.3%%7Erc5/%{name}-2.1.3-rc5.tar.bz2
+# was http://ftgl.wiki.sourceforge.net
+URL:            https://github.com/frankheckenbach/ftgl
+Source0:        https://github.com/frankheckenbach/ftgl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         %{name}-autoreconf.patch
 Patch1:         ftgl-pkgconfig.patch
 Patch2:         ftgl-fix-no-add-needed.patch
 # PATCH-FIX-OPENSUSE: install FTVectoriser.h, required by tulip-5.0; kkaempf@suse.de
@@ -39,7 +39,11 @@ BuildRequires:  texlive-epstopdf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  freeglut-devel
+%if 0%{?suse_version} >= 1500
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc7-c++
+%endif
 BuildRequires:  ghostscript
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -90,12 +94,15 @@ This package provides demo application showing usage of the library.
 
 %prep
 %setup -q
-%patch0
 %patch1
 %patch2
 %patch3 -p1
 
 %build
+export CC=gcc
+export CXX=g++
+test -x "$(type -p gcc-7)" && export CC=gcc-7
+test -x "$(type -p g++-7)" && export CXX=g++-7
 autoreconf -fvi
 %configure \
 	--disable-static

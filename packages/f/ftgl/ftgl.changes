@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Oct 26 17:51:03 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.4.0
+  * New setting LegacyOpenGLState(), see README-LegacyOpenGLState
+  * Fix/silence compiler warnings
+  version 2.3.1:
+  * Updates to debian/ build files
+  version 2.3.0:
+  * Fix a memory leak
+  * FTContour: avoid NaN for angles close to 180 degrees
+    (see Debian bug #589601, 5.)
+  * FTBufferGlyph: fix garbage with bitmap fonts
+    (text is still clipped, that seems to be another problem)
+  * FTTextureGlyphImpl: fix garbage with bitmap fonts
+    (see Debian bug #589601, 4.)
+  * FTPixmapGlyph: fix garbage with bitmap fonts
+    (see Debian bug #589601, 2.)
+  * FTOutlineGlyphImpl, FTPolygonGlyphImpl: avoid uninizitalized
+    vectoriser in case of error (see Debian bug #589601, 1.)
+  * Various other bugfixes collected through the years
+  version 2.2.0:
+  * Stable API. Public headers are now frozen.
+  * Fixed several memory corruption and crash bugs - Sam Hocevar
+  * Fixed several memory leaks - Sam Hocevar
+  * Kerning and glyph performance enhancements - Sean Morrison
+  * The library now also exports a pure C interface - Éric Beets
+  * Inset/outset contour support for fonts - Éric Beets
+  * Fix the FTLayout rendering - Éric Beets
+  * Added new FTLayout and FTSimpleLayout support for layout
+    managers - Sam Hocevar
+  * Fixed the paths in the XCode project - Henry Maddocks
+  * Changed the behaviour of some objects so that if there is an
+    error their state isn't changed - Henry Maddocks
+  * New, fast FTBufferFont texture fonts - Sam Hocevar
+  * UTF-8 support - Daniel Remenak
+
+- Switch to maintained fork
+
+- Dropped ftgl-autoreconf.patch (merged upstream)
+
+- Refreshed install-FTVectoriser.h.patch
+
+-------------------------------------------------------------------
 Fri Mar  8 16:41:52 UTC 2019 - olaf@aepfle.de
 
 - Add conditional for html docs, SLE_12 has no epstopdf
