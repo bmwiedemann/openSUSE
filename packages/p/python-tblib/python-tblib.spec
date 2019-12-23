@@ -1,7 +1,7 @@
 #
-# spec file for package python-tblib
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,34 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-tblib
-Version:        1.4.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without  test
+%bcond_without  test_twisted
+%define psuffix -test
+%else
+%bcond_without  test
+%bcond_with     test_twisted
+%endif
+Name:           python-tblib%{?psuffix}
+Version:        1.6.0
 Release:        0
 Summary:        Traceback serialization library
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/ionelmc/python-tblib
+URL:            https://github.com/ionelmc/python-tblib
 Source:         https://files.pythonhosted.org/packages/source/t/tblib/tblib-%{version}.tar.gz
-BuildRequires:  %{python_module Twisted}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with test_twisted}
+BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module tblib == %{version}}
+%endif
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
+%endif
 Requires:       python-six
 BuildArch:      noarch
 
@@ -62,15 +76,21 @@ the pickle support.
 %python_build
 
 %install
+%if "%{flavor}" != "test"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if "%{flavor}" != "test"
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/*
+%endif
 
 %changelog
