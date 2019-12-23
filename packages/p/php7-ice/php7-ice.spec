@@ -22,7 +22,7 @@
 %define _name   ice
 
 Name:           %{_php}-%{_name}
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        PHP framework delivered as C extension
 License:        BSD-3-Clause
@@ -43,8 +43,8 @@ BuildRequires:  gcc
 BuildRequires:  re2c
 
 %description
-ICE is a PHP framework delivered as C extension. You don't need 
-learn or use the C language, since the functionality is exposed as 
+ICE is a PHP framework delivered as C extension. You don't need
+learn or use the C language, since the functionality is exposed as
 PHP classes.
 
 %prep
