@@ -28,12 +28,13 @@ Source2:        supervisord.conf
 Source3:        supervisord.service
 Source4:        supervisord-tmpfiles.conf
 BuildRequires:  fdupes
-BuildRequires:  python-meld3
-BuildRequires:  python-mock >= 0.5.0
-BuildRequires:  python-rpm-macros
-BuildRequires:  python-setuptools
-Requires:       python-meld3 >= 0.6.5
-Suggests:       python-cElementTree >= 1.0.2
+BuildRequires:  python2-meld3
+BuildRequires:  python2-mock >= 0.5.0
+BuildRequires:  python2-rpm-macros
+BuildRequires:  python2-setuptools
+Requires:       python2-meld3 >= 0.6.5
+Requires:       python2-setuptools
+Suggests:       python2-cElementTree >= 1.0.2
 BuildArch:      noarch
 %{?systemd_requires}
 
