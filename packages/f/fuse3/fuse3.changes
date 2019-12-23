@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 14 12:47:41 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.9.0
+  * Added support for FUSE_EXPLICIT_INVAL_DATA to enable onl
+    invalidate cached pages on explicit request.
+
+-------------------------------------------------------------------
 Sun Nov  3 10:01:00 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.8.0
