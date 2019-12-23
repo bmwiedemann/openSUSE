@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DBus
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Net-DBus
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
-#Upstream: Artistic-1.0 or GPL-1.0+
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 %define cpan_name Net-DBus
 Summary:        Perl extension for the DBus message system
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Net-DBus/
-Source0:        http://www.cpan.org/authors/id/D/DA/DANBERR/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DANBERR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::CPAN::Changes)
 BuildRequires:  perl(Test::Pod)
 BuildRequires:  perl(Test::Pod::Coverage)
 BuildRequires:  perl(XML::Twig)
-Requires:       perl(Test::CPAN::Changes)
-Requires:       perl(Test::Pod)
-Requires:       perl(Test::Pod::Coverage)
 Requires:       perl(XML::Twig)
 %{perl_requires}
 # MANUAL BEGIN
@@ -51,21 +47,20 @@ DBus, but should work with later versions too, providing the API changes
 have not been too drastic.
 
 Users of this package are either typically, service providers in which case
-the the Net::DBus::Service manpage and the Net::DBus::Object manpage
-modules are of most relevance, or are client consumers, in which case the
-Net::DBus::RemoteService manpage and the Net::DBus::RemoteObject manpage
-are of most relevance.
+the Net::DBus::Service and Net::DBus::Object modules are of most relevance,
+or are client consumers, in which case Net::DBus::RemoteService and
+Net::DBus::RemoteObject are of most relevance.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -74,6 +69,7 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc AUTHORS Changes examples LICENSE README
+%doc AUTHORS Changes examples README
+%license LICENSE
 
 %changelog

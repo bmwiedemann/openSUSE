@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 17 03:12:46 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.2.0
+   see /usr/share/doc/packages/perl-Net-DBus/Changes
+
+  1.2.0 2019-12-16
+  
+   - Avoid memory leak with timeouts in reactor
+   - Disable XML entity expansion in introspection XML docs
+   - Don't include GIT repo in dist
+   - Remove obsolete XML::Grove dep from spec
+   - Fix GIT repo location
+   - Fix misc typos in POD
+   - Make reactor robust to time going backwards
+   - Add GIT repo & bug tracker to Makefile.PL
+   - Fix basepath when enumerating subnodes
+   - Fix child paths in introspection XML to be relative
+   - Support passing UNIX file descriptors
+   - Fix encoding of properties via GetAll method
+   - Add return & param names for standard interface introspection
+   - Use org.freedesktop.DBus.Error.UnknownMethod error code
+   - Fix reactor add_exception method
+   - Enable exporting objects on the root node
+   - Fix introspection decode with zero parameters
+   - Validate parameters for standard methods
+   - Validate object interface against declared method
+   - Don't include MYMETA.* files in dist
+   - Fix passing nomainloop parameter to constructor
+   - Fix variant type in mock iterator
+
+-------------------------------------------------------------------
 Tue Apr 14 15:44:48 UTC 2015 - coolo@suse.com
 
 - updated to 1.1.0
