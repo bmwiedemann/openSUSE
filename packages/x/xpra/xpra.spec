@@ -19,7 +19,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        GPL-2.0-or-later AND BSD-3-Clause AND LGPL-3.0-or-later AND MIT
@@ -43,16 +43,14 @@ BuildRequires:  python3-gobject-devel
 BuildRequires:  systemd
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libavcodec) >= 57
-BuildRequires:  pkgconfig(libavformat) >= 57
-BuildRequires:  pkgconfig(libswscale) >= 4
+BuildRequires:  pkgconfig(libavcodec) >= 58
+BuildRequires:  pkgconfig(libavformat) >= 58
+BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp) >= 0.4
 BuildRequires:  pkgconfig(py3cairo)
 BuildRequires:  pkgconfig(pygtk-2.0)
-%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
-%endif
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
@@ -130,18 +128,8 @@ sed -i 's|^#!.*|#!%__python3|' scripts/auth_dialog scripts/xdg-open
 %build
 python3 setup.py build \
     --verbose \
-%if 0%{?suse_version} > 1500
     --with-enc_ffmpeg \
     --with-vpx \
-%endif
-%if 0%{?suse_version} == 1500
-    --with-vpx \
-    --without-enc_ffmpeg \
-%endif
-%if 0%{?suse_version} < 1500
-    --without-vpx \
-    --without-enc_ffmpeg \
-%endif
     --with-dec_avcodec2 \
     --with-csc_swscale \
     --with-webp \
