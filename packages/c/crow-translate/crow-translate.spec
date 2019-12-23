@@ -1,6 +1,7 @@
 #
 # spec file for package crow-translate
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           crow-translate
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        A Qt GUI for Google, Yandex and Bing translators
 # QOnlineTranslator is licensed under GPL-3.0
@@ -51,6 +52,7 @@ text using Google, Yandex and Bing written with Qt5.
 
 %install
 %qmake5_install
+mv %{buildroot}/%{_datadir}/applications/io.crow_translate.CrowTranslate.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file -i %{name} Office Dictionary Network
 
 %files
