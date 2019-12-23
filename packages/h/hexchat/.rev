@@ -263,4 +263,20 @@
 </comment>
     <requestid>632627</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dc4a1f8f74f008a93fcbde1d9bfb0315</srcmd5>
+    <version>2.14.3</version>
+    <time>1577137519</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.14.3
+  * fix various incorrect parsing of IRC messages relating to trailing
+    parameters
+  * fix SASL negotiation combined with multi-line cap
+  * fix input box theming with Yaru theme
+  * python: Work around Python 3.7 regression causing crash on unload
+  * sysinfo: Add support for /etc/os-release
+  * sysinfo: Ignore irrelevant mounts when calculating storage size
+</comment>
+    <requestid>758837</requestid>
+  </revision>
 </revisionlist>
