@@ -71,6 +71,7 @@ Source15:       mariadb.service
 Source16:       mariadb.target
 Source17:       mysql-systemd-helper
 Source18:       mariadb@.service
+Source19:       macros.mariadb-test
 Source50:       suse_skipped_tests.list
 Patch1:         mariadb-10.2.4-logrotate.patch
 Patch3:         mariadb-10.1.1-mysqld_multi-features.patch
@@ -213,6 +214,13 @@ Obsoletes:      libmysqld-devel < %{version}-%{release}
 %description -n libmariadbd-devel
 This package contains the development header files and libraries
 for developing applications that embed the MariaDB.
+
+%package rpm-macros
+Summary:        MariaDB RPM macros
+Requires:       %{name}
+
+%description rpm-macros
+Provides macros usable in rpm spec files.
 
 %package client
 Summary:        Client for MariaDB
@@ -651,6 +659,11 @@ rm -rf '%{buildroot}'%{_datadir}/mysql/{solaris,SELinux}
 # Create the directory specified in 'secure-file-priv' option
 mkdir -p '%{buildroot}'%{_localstatedir}/lib/mysql-files
 
+# install rpm macros file
+mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
+install -m 644 %{SOURCE19} %{buildroot}%{_rpmconfigdir}/macros.d
+
+
 %check
 cd build
 
@@ -814,6 +827,10 @@ exit 0
 %dir %{_datadir}/mysql/systemd
 %{_datadir}/mysql/systemd/mariadb.service
 %{_datadir}/mysql/systemd/mariadb@.service
+
+%files rpm-macros
+%dir %{_rpmconfigdir}/macros.d
+%{_rpmconfigdir}/macros.d/macros.mariadb-test
 
 %files -n libmariadbd%{soname}
 %{_libdir}/libmariadbd.so.*

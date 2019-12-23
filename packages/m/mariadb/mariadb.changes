@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 10:41:56 UTC 2019 - pgajdos@suse.com
+
+- added rpm test macros: %mysql_testserver_start,
+  %mysql_testserver_cconf, %mysql_testserver_stop
+  First two consuments are python-sortinghat and python-mysqlclient.
+
+-------------------------------------------------------------------
 Tue Nov 19 17:16:49 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - update the list of the skipped tests 

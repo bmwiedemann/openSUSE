@@ -1,0 +1,99 @@
+%__mysql_test_run_dir  /tmp/mysql
+%__mysql_test_user     abuild
+%__mysql_test_pass     abuildpw
+%__mysql_test_cconf    abuild-myclient.cnf
+%__mysql_test_port     63306
+
+#
+# macro: mysql_testserver_start -- start a test mysqld instance
+#
+#        usage: %mysql_test_start -u <user> -p <password> -t <port>
+#
+
+%mysql_testserver_start(u:p:t:) \
+TEST_RUN_DIR=%{__mysql_test_run_dir} \
+TEST_USER="%{-u:%{-u*}}" \
+if [ -z "$TEST_USER" ]; then \
+  TEST_USER='%{__mysql_test_user}' \
+fi \
+TEST_PASS="%{-p:%{-p*}}" \
+if [ -z "$TEST_PASS" ]; then \
+  TEST_PASS='%{__mysql_test_pass}' \
+fi \
+TEST_PORT="%{-t:%{-t*}}" \
+if [ -z "$TEST_PORT" ]; then \
+  TEST_PORT='%{__mysql_test_port}' \
+fi \
+\
+[ -d $TEST_RUN_DIR ] && rm -r $TEST_RUN_DIR \
+mkdir -p $TEST_RUN_DIR/datadir{,-private} \
+\
+cat << EOF > $TEST_RUN_DIR/my.cnf \
+[client] \
+socket = $TEST_RUN_DIR/mysql.sock \
+port   = $TEST_PORT \
+[mysqld] \
+user             = $TEST_USER \
+log-error        = $TEST_RUN_DIR/mysqld.log \
+secure_file_priv = $TEST_RUN_DIR/datadir-private \
+datadir          = $TEST_RUN_DIR/datadir \
+server-id        = 1 \
+socket           = $TEST_RUN_DIR/mysql.sock \
+port             = $TEST_PORT \
+sql_mode         = '' \
+EOF\
+\
+echo '>>> Initializing databases' \
+mysql_install_db --defaults-file=$TEST_RUN_DIR/my.cnf \
+\
+echo '>>> Invoking mysqld' \
+/usr/sbin/mysqld --defaults-file=$TEST_RUN_DIR/my.cnf& \
+sleep 2 \
+\
+echo '>>> Creating authentication database' \
+mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user root password 'roots_secret' \
+mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' create testhat \
+mysql --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' -e "CREATE USER '$TEST_USER'@'localhost' IDENTIFIED BY '$TEST_PASS'" \
+mysql --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' -e "GRANT ALL PRIVILEGES ON * . * TO '$TEST_USER'@'localhost'" \
+mysql --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' -e "FLUSH PRIVILEGES" \
+%nil
+
+#
+# macro mysql_testserver_cconf -- generate client access conf
+#
+
+%mysql_testserver_cconf(n:t:) \
+TEST_RUN_DIR=%{__mysql_test_run_dir} \
+TEST_CCONF="%{-n:%{-n*}}" \
+if [ -z "$TEST_CCONF" ]; then \
+  TEST_CCONF='%{__mysql_test_cconf}' \
+fi \
+TEST_PORT="%{-t:%{-t*}}" \
+if [ -z "$TEST_PORT" ]; then \
+  TEST_PORT='%{__mysql_test_port}' \
+fi \
+cat << EOF > $TEST_CCONF \
+[client] \
+user     = abuild \
+password = abuildpw \
+database = test \
+socket   = $TEST_RUN_DIR/mysql.sock \
+port     = $TEST_PORT \
+EOF\
+%nil
+
+#
+# macro: mysql_testserver_stop -- start a test mysqld instance
+#
+#        usage: %mysql_test_stop
+#
+
+%mysql_testserver_stop() \
+TEST_RUN_DIR=%{__mysql_test_run_dir} \
+echo '>>> Shutting the mysql server down' \
+cat << EOF > $TEST_RUN_DIR/shutdown.sql \
+SHUTDOWN; \
+EOF\
+mysql       --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' < $TEST_RUN_DIR/shutdown.sql \
+%nil
+
