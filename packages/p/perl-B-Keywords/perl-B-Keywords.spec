@@ -17,7 +17,7 @@
 
 
 Name:           perl-B-Keywords
-Version:        1.20
+Version:        1.21
 Release:        0
 #Upstream:  2017-2019 Reini Urban, All rights reserved. This program is free software; you can redistribute it and/or modify it under the terms of either: a) the GNU General Public License as published by the Free Software Foundation; version 2, or b) the "Artistic License" which comes with Perl.
 %define cpan_name B-Keywords

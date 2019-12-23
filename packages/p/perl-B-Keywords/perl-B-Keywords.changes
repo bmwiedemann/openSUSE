@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 18 03:07:09 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.21 2019-12-17 17:38:00 rurban
+    - isa was added with 5.31.7
+    - improved t/z_kwalitee.t
+
+-------------------------------------------------------------------
 Sat Feb 16 06:02:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.20
