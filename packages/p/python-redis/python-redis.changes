@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 13 19:00:52 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Fix tests with redis pre 5.0.0:
+  * 0001-fix-tests-with-redis-pre-5.0.0.patch
+
+-------------------------------------------------------------------
 Sun Nov 24 17:25:24 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:
