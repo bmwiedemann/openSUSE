@@ -17,13 +17,14 @@
 
 
 Name:           cdogs-sdl
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        GPL-2.0-only AND BSD-2-Clause AND CC-BY-3.0 AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Shoot
 URL:            http://cxong.github.io/cdogs-sdl
 Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         cdogs-sdl-fix-desktop-and-appdata.patch
 BuildRequires:  cmake >= 2.8.2
 BuildRequires:  dos2unix
 BuildRequires:  enet-devel
@@ -43,6 +44,7 @@ from up to 11 weapons, and try over 100 user-created campaigns. Have fun!
 
 %prep
 %setup -q
+%patch0 -p1
 
 # use system enet
 rm -rf src/cdogs/enet
@@ -58,14 +60,6 @@ make %{?_smp_mflags}
 
 %install
 %cmake_install
-
-install -Dm0644 build/linux/cdogs-icon.16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/cdogs-sdl.png
-install -Dm0644 build/linux/cdogs-icon.22.png %{buildroot}%{_datadir}/icons/hicolor/22x22/apps/cdogs-sdl.png
-install -Dm0644 build/linux/cdogs-icon.32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/cdogs-sdl.png
-install -Dm0644 build/linux/cdogs-icon.48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/cdogs-sdl.png
-
-install -Dm0644 build/linux/cdogs-sdl.appdata.xml %{buildroot}%{_datadir}/appdata/cdogs-sdl.appdata.xml
-
 %fdupes %{buildroot}%{_datadir}
 
 %if 0%{?suse_version} < 1330

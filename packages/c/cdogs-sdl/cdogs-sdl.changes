@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:50:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.2
+  Fix editor
+  * Remove broken second window option
+  * Fix editor
+  * Fix mission end scores infinite incrementing
+  * Fix bullet hole rendering on doors
+  * Add fullscreen switching via Alt+Enter shortcut
+- Add patch:
+  * cdogs-sdl-fix-desktop-and-appdata.patch
+
+-------------------------------------------------------------------
 Sat Nov 23 19:31:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.1
