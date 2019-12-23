@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 18 09:31:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.7.6:
+  * The opt-in “file_macro sloppiness” mode has been removed so that the input file path now is always included in the direct mode hash. This fixes a bug that could result in false cache hits in an edge case when “file_macro sloppiness” is enabled and several identical source files include a relative header file with the same name but in different directories.
+  * Statistics files are no longer lost when the filesystem of the cache is full.
+  * Bail out on too hard Clang option -MJarg (in addition to the previous bailout of -MJ arg).
+  * Properly handle color diagnostics in the depend mode as well.
+
+-------------------------------------------------------------------
 Tue Nov  5 08:14:20 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.7.5:
