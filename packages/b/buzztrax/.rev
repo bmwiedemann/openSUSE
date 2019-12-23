@@ -142,4 +142,12 @@ Fix gcc8 build failure with -Wno-error=restrict.
 Add patch from debian 0001-Fix-build-with-fluidsynth-2.x.patch</comment>
     <requestid>758178</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ceba89dd03f4819b338e1bb6f36195a5</srcmd5>
+    <version>0.10.2+git20191209</version>
+    <time>1577137632</time>
+    <user>dimstar_suse</user>
+    <comment>Removed conditional for 0001-Fix-build-with-fluidsynth-2.x.patch  buzztrax now builds with fluidsynth one and two with the patch.</comment>
+    <requestid>758991</requestid>
+  </revision>
 </revisionlist>

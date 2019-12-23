@@ -205,10 +205,8 @@ This package contains buzztrax plugins
 
 %prep
 %setup -q -n %{name}-%{rev}
-# Patch causes fluidsynth1 build failure.
-%if 0%{?suse_version} > 1500
-%patch0 -p1
-%endif
+
+%autopatch -p1
 # Rpmlint complains that COPYING-DOCS is outdated
 cp -v %{SOURCE2} .
 cp -v %{SOURCE1} .

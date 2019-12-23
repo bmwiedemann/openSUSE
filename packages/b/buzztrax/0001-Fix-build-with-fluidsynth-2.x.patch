@@ -1,14 +1,14 @@
-From 3ac7cbf1a712c3f4db7a34a6d3b46dc9a43172d3 Mon Sep 17 00:00:00 2001
+From 38b421440c55d5d8ba74be99c37cf117cad01541 Mon Sep 17 00:00:00 2001
 From: Peter Michael Green <plugwash@debian.org>
 Date: Thu, 19 Dec 2019 01:38:18 +0000
 Subject: [PATCH] Fix build with fluidsynth 2.x
 
 ---
- src/gst/fluidsynth/fluidsynth.c | 44 +++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 42 insertions(+), 2 deletions(-)
+ src/gst/fluidsynth/fluidsynth.c | 42 ++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 41 insertions(+), 1 deletion(-)
 
 diff --git a/src/gst/fluidsynth/fluidsynth.c b/src/gst/fluidsynth/fluidsynth.c
-index 0d954f8e..ec598dc4 100644
+index 0d954f8e..4a091146 100644
 --- a/src/gst/fluidsynth/fluidsynth.c
 +++ b/src/gst/fluidsynth/fluidsynth.c
 @@ -132,25 +132,41 @@ G_DEFINE_TYPE (GstBtFluidSynth, gstbt_fluid_synth, GSTBT_TYPE_AUDIO_SYNTH);
@@ -100,9 +100,8 @@ index 0d954f8e..ec598dc4 100644
            G_PARAM_READWRITE);
        break;
      case FLUID_STR_TYPE:
--      defstr = fluid_settings_getstr_default (bag->settings, name);
 +#if FLUIDSYNTH_VERSION_MAJOR < 2
-+      fluid_settings_getstr_default (bag->settings, name);
+       defstr = fluid_settings_getstr_default (bag->settings, name);
 +#else
 +      if (fluid_settings_getstr_default (bag->settings, name,&defstr) != FLUID_OK) defstr = 0;
 +#endif
