@@ -1,7 +1,7 @@
 #
 # spec file for package opencv3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,13 @@
 %bcond_without openblas
 
 Name:           opencv3
-Version:        3.4.7
+Version:        3.4.8
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
 License:        BSD-3-Clause AND GPL-2.0-only AND Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            http://opencv.org/
+URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 # This is the FACE module from the opencv_contrib package. Packaged separately to prevent too much unstable modules
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
@@ -49,8 +49,6 @@ Patch0:         opencv-gles.patch
 Patch1:         opencv-build-compare.patch
 # PATCH-FIX-OPENSUSE 0001-Do-not-include-glx.h-when-using-GLES.patch -- Fix build error on 32bit ARM, due to incompatible pointer types, https://github.com/opencv/opencv/issues/9171
 Patch2:         0001-Do-not-include-glx.h-when-using-GLES.patch
-# PATCH-FIX-UPSTREAM CVE-2019-15939.patch boo#1149742 mgorse@suse.com -- add input check in HOG detector.
-Patch3:         CVE-2019-15939.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
@@ -77,12 +75,8 @@ Conflicts:      opencv
 BuildRequires:  openblas-devel
 %endif
 %if %{with python2}
-BuildRequires:  pkgconfig(python)
-%if 0%{?suse_version} > 1325
 BuildRequires:  python2-numpy-devel
-%else
-BuildRequires:  python-numpy-devel
-%endif
+BuildRequires:  pkgconfig(python)
 %endif
 %if %{with python3}
 BuildRequires:  python3-numpy-devel
@@ -94,11 +88,6 @@ BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-%else
-BuildRequires:  pkgconfig(QtCore)
-BuildRequires:  pkgconfig(QtGui)
-BuildRequires:  pkgconfig(QtOpenGL)
-BuildRequires:  pkgconfig(QtTest)
 %endif
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
@@ -230,9 +219,11 @@ rm -f doc/packaging.txt
       -DCPU_DISPATCH=FP16 \
 %endif
 %if 0%{?suse_version} >= 1500
-      -DPYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3 \
+      -DPYTHON_DEFAULT_EXECUTABLE=%{_bindir}/python3 \
 %endif
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
+      -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
+      -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
 
 make %{?_smp_mflags} VERBOSE=1
 

@@ -2,8 +2,7 @@
 <constraints>
   <hardware>
     <disk>
-    <!-- build uses 20GB in maintenance projects currently 201502 -->
-	<size unit="G">8</size>
+      <size unit="G">10</size>
     </disk>
   </hardware>
   <overwrite>
