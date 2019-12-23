@@ -1,7 +1,7 @@
 #
 # spec file for package AusweisApp2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           AusweisApp2
 Version:        1.18.2
@@ -41,10 +42,10 @@ BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qttools-devel
 BuildRequires:  libqt5-qtwebsockets-devel
-BuildRequires:  libudev-devel
 BuildRequires:  ninja
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libudev)
 Requires:       hicolor-icon-theme
 
 %description

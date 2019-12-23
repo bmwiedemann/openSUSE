@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 16:10:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Mon Oct 28 14:41:20 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Fix capitalization of URL field descriptor
