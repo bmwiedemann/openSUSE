@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:48:52 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- remove more cruft from the source (like .tavis or .gitignore)
+- php documentor is not needed on a productive system -> remove
+- also fix /usr/bin/env calls for two vendor scripts
+- skins now have some configurable files in their directories: 
+  move those files over to /etc/roundcubemail/skins/
+- move other text files (incl. vendor ones) out of the root 
+  directory (and handle the LICENSE file a bit different)
+- enable mod_filter and add AddOutputFilterByType for common media
+  types like html, javascript or xml
+- enable php7 on newer openSUSE versions
+- enable deflate, expires, filter, headers and setenvif on a new 
+  installation - do not enable any module in case of an update
+- recommend php-imagick for additional features
+
+-------------------------------------------------------------------
 Fri Dec  6 14:39:12 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated dependencies

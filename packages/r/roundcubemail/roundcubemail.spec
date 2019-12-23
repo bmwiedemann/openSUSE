@@ -65,6 +65,7 @@ Requires:       php_any_db
 Recommends:     logrotate
 Recommends:     php-fileinfo
 Recommends:     php-intl
+Recommends:     php-imagick
 Recommends:     php-mysql
 Recommends:     php-pear-Crypt_GPG >= 1.6.3
 Recommends:     php-zip
@@ -88,9 +89,19 @@ The user interface is skinnable using XHTML and CSS 2.
 %setup -q
 %patch0 -p1
 cp %{SOURCE4} .
-
-# remove cruft from source archive
-find . -name ".gitignore" -delete
+# remove cruft from source archive:
+# .arcconfig       => file for phabricator.uri
+# .gitignore       => git config file
+# .php_cs.dist     => PhpCsFixer
+# .scrutinizer.yml => PHP mess detector
+# .travis.yml      => Travis CI descriptions
+for file in .arcconfig .gitignore .php_cs.dist .scrutinizer.yml .travis.yml ; do
+	find . -name "$file" -delete
+done
+# remove php documentor script
+rm vendor/pear/net_smtp/phpdoc.sh
+# remove 0-byte files
+find . -size 0 -delete
 # no need to check .htaccess each time, the apache config takes care of the restrictions
 find . -name ".htaccess" -delete
 # remove travis files
@@ -106,10 +117,9 @@ rm -rf \
 sed -i '1d' plugins/password/helpers/chpass-wrapper.py
 # remove INSTALL doc
 rm INSTALL
-
 # fix interpreter for shell scripts
-sed -e 's|%{_bindir}/env php|%{_bindir}/php|' -i bin/*.sh
-
+sed -e 's|%{_bindir}/env php|%{_bindir}/php|' -i bin/*.sh 
+sed -e 's|%{_bindir}/env php|%{_bindir}/php|' -i vendor/pear/crypt_gpg/scripts/crypt-gpg-pinentry vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh
 
 %build
 
@@ -151,17 +161,38 @@ for PLUGIN in acl managesieve password; do
     fi
 done
 
+# skins have some configurable files in their directories
+mkdir -p %{buildroot}%{roundcubeconfigpath}/skins/elastic/styles
+for file in _styles.less _variables.less ; do
+        mv %{buildroot}%{roundcubepath}/skins/elastic/styles/$file %{buildroot}%{roundcubeconfigpath}/skins/elastic/styles/
+        ln -s %{roundcubeconfigpath}/skins/elastic/styles/$file %{buildroot}%{roundcubepath}/skins/elastic/styles/
+done
+
 # install httpd.conf file and adapt the configuration
 install -d -m 0755 %{buildroot}/%{apache_sysconfdir}/conf.d
 sed -e "s#__ROUNDCUBEPATH__#%{roundcubepath}#g" %{SOURCE2} > %{buildroot}%{apache_sysconfdir}/conf.d/roundcubemail.conf
 
 # install docs
 install -d -m 0755 %{buildroot}/%{_defaultdocdir}/%{name}
-for i in CHANGELOG UPGRADING README.md README.openSUSE SQL; do
+%if 0%{?suse_version} >= 1500
+TXT="CHANGELOG UPGRADING README.md README.openSUSE SQL"
+rm %{buildroot}%{roundcubepath}/LICENSE
+%else
+TXT="CHANGELOG UPGRADING README.md README.openSUSE SQL LICENSE"
+%endif
+for i in $TXT; do
     mv -v %{buildroot}%{roundcubepath}/$i %{buildroot}%{_defaultdocdir}/%{name}/
 done
-# move license back into sources
-mv %{buildroot}%{roundcubepath}/LICENSE .
+
+# move Readme files to docdir
+for file in LICENSE README README.rst *.md ; do
+	for i in $(find %{buildroot}%{roundcubepath}/vendor -type f -name "$file"); do
+		BASEDIR=$(echo "$i" | sed -e "s|%{buildroot}%{roundcubepath}/vendor||g")
+		BASEDIR=$(dirname "$BASEDIR")
+		mkdir -p "%{buildroot}%{_defaultdocdir}/%{name}/$BASEDIR"
+		mv "$i" "%{buildroot}%{_defaultdocdir}/%{name}/$BASEDIR"
+	done
+done
 
 # create a link for SQL
 ln -s %{_defaultdocdir}/%{name}/SQL %{buildroot}/%{roundcubepath}/SQL
@@ -173,6 +204,7 @@ mkdir %{buildroot}%{roundcubepath}/migration
 # fdupes
 %if 0%{?suse_version} >= 1100
 %fdupes %{buildroot}%{roundcubepath}
+%fdupes %{buildroot}%{_defaultdocdir}/%{name}
 %endif
 
 %pre
@@ -209,11 +241,19 @@ makedesstr() {
 
 sed -i "s/rcmail-\!24ByteDESkey\*Str/`makedesstr`/" %{roundcubeconfigpath}/defaults.inc.php || : &> /dev/null
 
-# enable apache required apache modules
-if [ -x %{_sbindir}/a2enmod ]; then
-  a2enmod -q alias || a2enmod alias
-  a2enmod -q rewrite || a2enmod rewrite
-  a2enmod -q version || a2enmod version
+# Update ?
+if [ ${1:-0} -eq 1 ]; then
+  if [ -x %{_sbindir}/a2enmod ]; then
+  # enable apache required apache modules
+  %if 0%{?suse_version} > 01500
+    if ! grep -q php %{_sysconfdir}/sysconfig/apache2 1>&2 2>/dev/null; then
+      %{_sbindir}/a2enmod -q php7    || %{_sbindir}/a2enmod php7
+    fi
+  %endif
+    for module in alias deflate expires filter headers rewrite setenvif version ; do
+      %{_sbindir}/a2enmod -q $module || %{_sbindir}/a2enmod $module
+    done
+  fi
 fi
 
 # restore backed up logs, temp and config
@@ -260,14 +300,22 @@ exit 0
 
 %files
 %defattr(0644, root, root,0755)
-%license LICENSE
 %doc CHANGELOG
+%if 0%{?suse_version} >= 1500
+%license LICENSE
+%else 
+%doc LICENSE
+%endif
 %doc README.md
 %doc README.openSUSE
 %doc UPGRADING
 %doc SQL/
+%doc %{_defaultdocdir}/%{name}/*
 %dir %{roundcubepath}
 %dir %{roundcubeconfigpath}
+%dir %{roundcubeconfigpath}/skins
+%dir %{roundcubeconfigpath}/skins/elastic
+%dir %{roundcubeconfigpath}/skins/elastic/styles/
 %ghost %config(noreplace) %{roundcubeconfigpath}/config.inc.php
 %config(noreplace) %{roundcubeconfigpath}/acl.inc.php
 %config(noreplace) %{roundcubeconfigpath}/managesieve.inc.php
@@ -277,6 +325,8 @@ exit 0
 %config %{roundcubeconfigpath}/mimetypes.php
 %config(noreplace) %{apache_sysconfdir}/conf.d/roundcubemail.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_styles.less 
+%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_variables.less
 %{roundcubepath}/composer.json-dist
 %{roundcubepath}/composer.json
 %{roundcubepath}/composer.lock
@@ -285,6 +335,9 @@ exit 0
 %{roundcubepath}/robots.txt
 %dir %{roundcubepath}/bin
 %attr(0755,root,root) %{roundcubepath}/bin/*.sh
+%attr(0755,root,root) %{roundcubepath}/vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh
+%attr(0755,root,root) %{roundcubepath}/plugins/password/helpers/change_ldap_pass.pl 
+%attr(0755,root,root) %{roundcubepath}/vendor/pear/crypt_gpg/scripts/crypt-gpg-pinentry
 %{roundcubepath}/installer/
 %{roundcubepath}/logs
 %ghost %{roundcubepath}/migrated/
