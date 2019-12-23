@@ -19,14 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-astropy-header
-Version:        0.1
+Version:        0.1.2
 Release:        0
 Summary:        Pytest plugin to add diagnostic information to the header of the test output
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/pytest-astropy-header
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-astropy-header/pytest-astropy-header-%{version}.tar.gz
-Patch0:         pytest-astropy-header-pr2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest >= 2.8}
@@ -34,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 2.8
 # SECTION test requirements
-BuildRequires:  %{python_module astropy >= 2.0}
+BuildRequires:  %{python_module astropy >= 3.0}
 BuildRequires:  %{python_module codecov}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module numpy-devel}
@@ -50,7 +49,6 @@ Astropy project, but is optimized for use with astropy-related projects.
 
 %prep
 %setup -q -n pytest-astropy-header-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
