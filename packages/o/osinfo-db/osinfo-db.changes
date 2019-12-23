@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  2 10:29:38 MST 2019 - carnold@suse.com
+
+- Update database to version 20191125
+  osinfo-db-20191125.tar.xz
+- Update sle12sp5 definition
+  add-sle12sp5-support.patch
+
+-------------------------------------------------------------------
 Wed Nov 13 13:16:07 MST 2019 - carnold@suse.com
 
 - Update database to version 20191108

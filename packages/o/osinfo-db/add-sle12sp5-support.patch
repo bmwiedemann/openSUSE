@@ -22,7 +22,7 @@ Index: osinfo-db-20181116/os/suse.com/sles-12.5.xml
 +    <upgrades id="http://suse.com/sles/12.4"/>
 +    <derives-from id="http://suse.com/sles/12.4"/>
 +
-+    <release-date>2019-06-13</release-date>
++    <release-date>2019-12-06</release-date>
 +
 +    <devices>
 +      <device id="http://pcisig.com/pci/1af4/1041"/>
@@ -110,7 +110,7 @@ Index: osinfo-db-20181116/os/suse.com/sled-12.5.xml
 +    <upgrades id="http://suse.com/sled/12.4"/>
 +    <derives-from id="http://suse.com/sled/12.4"/>
 +
-+    <release-date>2019-06-13</release-date>
++    <release-date>2019-12-06</release-date>
 +
 +    <devices>
 +      <device id="http://pcisig.com/pci/1af4/1041"/>
