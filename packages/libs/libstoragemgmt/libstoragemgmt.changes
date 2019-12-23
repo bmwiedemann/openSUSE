@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 11:44:34 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.2:
+  * Compile fixes for Alpine Linux (#403, #402, #401)
+  * Don't orphan lsmd process when displaying help (#399)
+
+-------------------------------------------------------------------
 Mon May 27 08:52:10 UTC 2019 - mvetter@suse.com
 
 - Update to 1.8.1:

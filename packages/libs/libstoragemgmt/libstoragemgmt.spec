@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@
 %define python3 0
 %endif
 Name:           libstoragemgmt
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Storage array management library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
