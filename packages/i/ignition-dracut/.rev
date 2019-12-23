@@ -83,4 +83,19 @@ Required to implement boo#1138725.</comment>
 </comment>
     <requestid>747795</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37f38ce19ba438b14ce8202dbd068c57</srcmd5>
+    <version>0.0+git20191211.c4790bc</version>
+    <time>1577137663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191211.c4790bc:
+  * dracut: add some bins for s390x zVM instalation
+  * README.md: add details about the branches here
+  * units: add ConditionPathExists=/etc/initrd-release everywhere
+  * Add ConditionPathExists=/etc/initrd-release to targets
+  * 30ignition: add setfiles
+- Make package arch dependent to make the ARM fix actually apply
+</comment>
+    <requestid>759000</requestid>
+  </revision>
 </revisionlist>

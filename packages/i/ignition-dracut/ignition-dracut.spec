@@ -1,7 +1,7 @@
 #
 # spec file for package ignition-dracut
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 
 
 Name:           ignition-dracut
-Version:        0.0+git20191107.d9e8a63
+Version:        0.0+git20191211.c4790bc
 Release:        0
 Summary:        Dracut scripts for ignition
 License:        BSD-2-Clause
 Group:          System/Management
-BuildArch:      noarch
 URL:            https://github.com/dustymabe/ignition-dracut
 Source:         %{name}-%{version}.tar.xz
 Source1:        ignition-mount-initrd-fstab.service
@@ -62,9 +61,9 @@ mkdir dracut/30ignition-microos
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
 cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} dracut/30ignition-microos/
 %ifarch aarch64 %{arm}
-cp %{SOURCE21} dracut/30ignition-microos/
+cp %{SOURCE21} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 %else
-cp %{SOURCE20} dracut/30ignition-microos/
+cp %{SOURCE20} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 %endif
 cp %{SOURCE5} grub/
 cp %{SOURCE6} systemd/

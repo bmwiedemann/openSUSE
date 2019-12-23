@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 23 13:53:43 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 0.0+git20191211.c4790bc:
+  * dracut: add some bins for s390x zVM instalation
+  * README.md: add details about the branches here
+  * units: add ConditionPathExists=/etc/initrd-release everywhere
+  * Add ConditionPathExists=/etc/initrd-release to targets
+  * 30ignition: add setfiles
+- Make package arch dependent to make the ARM fix actually apply
+
+-------------------------------------------------------------------
 Mon Nov 11 16:25:37 UTC 2019 - kukuk@suse.de
 
 - Update to version 0.0+git20191107.d9e8a63:
