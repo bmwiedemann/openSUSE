@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudpickle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-futures
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy >= 1.8.2}
@@ -37,11 +32,16 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  fdupes
+BuildRequires:  python-futures
+BuildRequires:  python-rpm-macros
 Requires:       python-curses
 Requires:       python-numpy >= 1.8.2
 Requires:       python-scipy
 Requires:       python-tornado
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -68,7 +68,8 @@ functions and classes defined interactively in the __main__ module.
 
 %check
 export PYTHONPATH='.:tests'
-%pytest -s
+# Because of gh#cloudpipe/cloudpickle#316
+%pytest -s -k 'not (test_dynamic_module or test_load_dynamic_module_in_grandchild_process)'
 
 %files %{python_files}
 %doc README.md
