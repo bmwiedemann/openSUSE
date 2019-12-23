@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Dec 11 17:07:41 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.1.1+git0.4ae521379:
+  * [RELEASE] Released version 2.1.1
+  * BUILD/MINOR: unix sockets: silence an absurd gcc warning about strncpy()
+  * BUG/MINOR: listener: fix off-by-one in state name check
+  * BUG/MINOR: server: make "agent-addr" work on default-server line
+  * BUG/MINOR: listener: do not immediately resume on transient error
+  * BUG/MINOR: mworker: properly pass SIGTTOU/SIGTTIN to workers
+  * BUG/MINOR: log: fix minor resource leaks on logformat error path
+  * DOC: remove references to the outdated architecture.txt
+  * DOC: proxies: HAProxy only supports 3 connection modes
+  * BUG/MINOR: tasks: only requeue a task if it was already in the queue
+  * DOC: listeners: add a few missing transitions
+
+-------------------------------------------------------------------
+Tue Dec 10 19:29:31 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.1.0+git33.8e4a62508:
+  * BUG/MEDIUM: proto_udp/threads: recv() and send() must not be exclusive.
+  * BUG/MAJOR: dns: add minimalist error processing on the Rx path
+  * BUG/MEDIUM: kqueue: Make sure we report read events even when no data.
+  * DOC: document the listener state transitions
+  * BUG/MEDIUM: listener/threads: fix a remaining race in the listener's accept()
+  * BUG/MINOR: listener: also clear the error flag on a paused listener
+  * BUG/MINOR: listener/threads: always use atomic ops to clear the FD events
+  * BUG/MINOR: proxy: make soft_stop() also close FDs in LI_PAUSED state
+  * BUG/MEDIUM: mux-fcgi: Handle cases where the HTX EOM block cannot be inserted
+  * BUG/MINOR: mux-h1: Be sure to set CS_FL_WANT_ROOM when EOM can't be added
+
+-------------------------------------------------------------------
+Fri Dec 06 15:30:10 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.1.0+git23.e77b108cd:
+  * BUG/MEDIUM: checks: Make sure we set the task affinity just before connecting.
+  * BUG/MEDIUM: tasks: Make sure we switch wait queues in task_set_affinity().
+
+-------------------------------------------------------------------
+Thu Dec 05 15:46:01 UTC 2019 - mrueckert@suse.de
+
+- Update to version 2.1.0+git21.67ff2112b:
+  * BUG/MINOR: mux-h1: Fix conditions to know whether or not we may receive data
+  * BUG/MINOR: mux-h1: Don't rely on CO_FL_SOCK_RD_SH to set H1C_F_CS_SHUTDOWN
+  * BUG/MEDIUM: mux-h1: Never reuse H1 connection if a shutw is pending
+  * BUG/MINOR: ssl: certificate choice can be unexpected with openssl >= 1.1.1
+  * BUG/MEDIUM: listener/thread: fix a race when pausing a listener
+  * BUG/MINOR: ssl/cli: don't overwrite the filters variable
+  * BUG/MINOR: stream-int: avoid calling rcv_buf() when splicing is still possible
+  * BUG/MEDIUM: stream-int: don't subscribed for recv when we're trying to flush data
+  * DOC: move the "group" keyword at the right place
+  * DOC: Fix ordered list in summary
+
+-------------------------------------------------------------------
+Thu Dec  5 15:46:00 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to the 2.1 branch
+  https://www.haproxy.com/blog/haproxy-2-1/
+  https://www.mail-archive.com/haproxy@formilux.org/msg35491.html
+
+-------------------------------------------------------------------
 Thu Dec 05 15:37:44 UTC 2019 - mrueckert@suse.de
 
 - Update to version 2.0.10+git14.7caf150a:
