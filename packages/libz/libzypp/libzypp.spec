@@ -17,7 +17,7 @@
 
 
 Name:           libzypp
-Version:        17.17.0
+Version:        17.20.0
 Release:        0
 Url:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
@@ -71,7 +71,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkg-config
 %endif
 
-BuildRequires:  libsolv-devel >= 0.7.8
+BuildRequires:  libsolv-devel >= 0.7.10
 %if 0%{?suse_version} >= 1100
 BuildRequires:  libsolv-tools
 %requires_eq    libsolv-tools
