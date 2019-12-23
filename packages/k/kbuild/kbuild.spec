@@ -1,7 +1,7 @@
 #
 # spec file for package kbuild
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,14 @@
 #
 
 
-Url:            http://svn.netlabs.org/kbuild
-
+%define _svnrev 3110
 Name:           kbuild
-BuildRequires:  automake
-BuildRequires:  bison
-BuildRequires:  flex
-BuildRequires:  libacl-devel
-BuildRequires:  makeinfo
-BuildRequires:  readline-devel
+Version:        0.1.9998svn%{_svnrev}
+Release:        0
 Summary:        Framework for writing simple makefiles for complex tasks
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-%define _svnrev 3110
-Version:        0.1.9998svn%{_svnrev}
-Release:        0
+URL:            https://svn.netlabs.org/kbuild
 Source0:        %{name}-%{version}.tar.bz2
 Patch0:         kbuild-man.diff
 # PATCH-FIX-UPSTREAM speilicke@suse.com: Import local implementation if KMK
@@ -46,11 +39,16 @@ Patch11:        kbuild-gcc7.patch
 Patch12:        use-alloca.patch
 Patch13:        glob-lstat.patch
 Patch14:        glob-interface.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  automake
+BuildRequires:  bison
+BuildRequires:  flex
+BuildRequires:  libacl-devel
+BuildRequires:  makeinfo
+BuildRequires:  readline-devel
 
 %description
 The goals of the kBuild framework:
-   
+
  - Similar behavior across all supported platforms
  - Flexibility, don't create unnecessary restrictions preventing ad-hoc
    solutions
@@ -78,33 +76,29 @@ The goals of the kBuild framework:
 %patch14 -p1
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS"
-%__cat > SvnInfo.kmk << EOF
+export CFLAGS="%{optflags}"
+cat > SvnInfo.kmk << EOF
 KBUILD_SVN_REV := %{_svnrev}
 KBUILD_SVN_URL := http://svn.netlabs.org/repos/kbuild/trunk
 EOF
 kBuild/env.sh --full make -f bootstrap.gmk SRCDIR=`pwd`
 kBuild/env.sh kmk rebuild PATH_INS=`pwd`
-pod2man -c 'kBuild for SUSE Linux' -r kBuild-%version kmk.pod > kmk.1
+pod2man -c 'kBuild for SUSE Linux' -r kBuild-%{version} kmk.pod > kmk.1
 
 %install
-kBuild/env.sh kmk NIX_INSTALL_DIR=/usr BUILD_TYPE=release PATH_INS=%{buildroot} LDFLAGS=-Wl,--as-needed install
-%__install -m 644 -D kmk.1 %buildroot/%_mandir/man1/kmk.1
+kBuild/env.sh kmk NIX_INSTALL_DIR=%{_prefix} BUILD_TYPE=release PATH_INS=%{buildroot} LDFLAGS=-Wl,--as-needed install
+install -m 644 -D kmk.1 %{buildroot}/%{_mandir}/man1/kmk.1
 #remove execute flag, if occurs
-%__chmod a-x %{buildroot}/%{_datadir}/kBuild/*/*kmk
-%__rm -r %{buildroot}%{_datadir}/doc/kBuild-0.1.9998
-
-%clean
-%__rm -rf $RPM_BUILD_ROOT
+chmod a-x %{buildroot}/%{_datadir}/kBuild/*/*kmk
+rm -r %{buildroot}%{_datadir}/doc/kBuild-0.1.9998
 
 %files
-%defattr(-, root, root)
 %license COPYING
+%license kBuild/doc/COPYING-FDL-1.3
 %doc ChangeLog
-%doc kBuild/doc/COPYING-FDL-1.3
 %doc kBuild/doc/QuickReference-kmk.*
-%{_mandir}/man1/kmk.1.gz
 %{_bindir}/*
+%{_mandir}/man1/kmk.1%{?ext_man}
 %{_datadir}/kBuild
 
 %changelog
