@@ -88,4 +88,29 @@ Ignition is a minimal alternative to cloud-init, supposed to replace it for cert
 - turn off SELinux by default</comment>
     <requestid>749861</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>91353e870393d947c8d3bd6596d1cb5e</srcmd5>
+    <version>2.1.1</version>
+    <time>1577137660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1:
+  * stages/files: don't relabel /home and /root symlinks
+  * tests/filesystems: fix error handling
+  * blackbox tests: don't swallow errors
+  * log: use os.ProcessState.ExitCode instead of unix
+  * travis: bump min go to 1.12
+  * news: add notes for 2.1.1
+  * readme: fix links, add validation container docs
+  * Dockerfile: add dockerfile for ignition-validate
+  * news: add news for v2.1.0
+  * README.md: add details about dracut and branches here
+  * doc/operator-notes: simplify SELinux section
+  * mount: also relabel mount points
+  * util: factor out FindFirstMissingDirForFile function
+  * files: perform relabeling from initrd
+  * doc/examples: Make example file path valid
+  * Rework fetch/resource to automatically append required headers
+</comment>
+    <requestid>758999</requestid>
+  </revision>
 </revisionlist>

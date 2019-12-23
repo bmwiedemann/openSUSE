@@ -1,7 +1,7 @@
 #
 # spec file for package ignition
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.0.1+git20191112.a924dd7
+Version:        2.1.1
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
