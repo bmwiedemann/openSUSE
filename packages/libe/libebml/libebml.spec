@@ -18,7 +18,7 @@
 
 %define soname 4
 Name:           libebml
-Version:        1.3.9
+Version:        1.3.10
 Release:        0
 Summary:        Library to parse EBML (Extensible Binary Markup Language) files
 License:        LGPL-2.1-or-later
