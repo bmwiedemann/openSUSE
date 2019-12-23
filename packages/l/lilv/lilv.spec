@@ -18,6 +18,7 @@
 
 %define sover 0
 %define sordversion %(pkg-config --modversion sord-0)
+%define serdversion %(pkg-config --modversion serd-0)
 Name:           lilv
 Version:        0.24.6
 Release:        0
@@ -49,8 +50,10 @@ Lilv is a C library to make use of LV2 plugins in applications.
 
 %package        -n liblilv-0-%{sover}
 Summary:        C library to make use of LV2 plugins
-# NOTE: This is the only way to ensure that the correct version of sord is installed.
+# NOTE: This is the only way to ensure that the correct version of sord and serd is installed.
+# See boo#1158728
 Group:          System/Libraries
+Requires:       libserd-0-0 = %{serdversion}
 Requires:       libsord-0-0 = %{sordversion}
 
 %description    -n liblilv-0-%{sover}
