@@ -1577,4 +1577,13 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * suse: Remove incorrect usage of %_libexecdir (boo#1155785)</comment>
     <requestid>751500</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>c49c52880ee5c7a8215c731ca40aba8f</srcmd5>
+    <version>049+git116.e9995c78</version>
+    <time>1577136895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049+git116.e9995c78:
+  * dracut.spec: add convertfs module correctly (boo#1158777)</comment>
+    <requestid>755471</requestid>
+  </revision>
 </revisionlist>
