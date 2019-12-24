@@ -1,7 +1,7 @@
 #
 # spec file for package libyami-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,7 @@
 
 
 Name:           libyami-utils
-Version:        1.3.1
-### FIXME ### On next version bump, please remove export CXXFLAGS="-Wno-error" -- WIP progress upstream to fix gcc9 buildfail
+Version:        1.3.2
 Release:        0
 Summary:        Collection of tools for development and testing of Libyami
 License:        Apache-2.0
@@ -39,7 +38,7 @@ BuildRequires:  pkgconfig(libdrm_intel)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libva-drm)
 BuildRequires:  pkgconfig(libva-x11)
-BuildRequires:  pkgconfig(libyami) >= 0.5.5
+BuildRequires:  pkgconfig(libyami) >= 0.6.1
 # Intel graphics hardware only available on these platforms
 ExclusiveArch:  x86_64
 
@@ -69,7 +68,6 @@ Intel Baytrail, Braswell, Apollo Lake
 %setup -q
 
 %build
-export CXXFLAGS="-Wno-error"
 autoreconf -fiv
 %configure \
         --disable-static \
