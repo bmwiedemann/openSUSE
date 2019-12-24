@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Dec 18 03:09:06 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 7.42
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.42    Tue 17 Dec 22:02:25 GMT 2019
+  
+      No changes since v7.41_01
+  
+  7.41_01 Mon 16 Dec 21:36:24 GMT 2019
+  
+      Test fixes:
+      - README.pod warnings are suppressed during testing
+        so no need to skip when PERL_CORE is defined
+  
+      Doc fixes:
+      - Update referenced modules for new distributions
+      - Updated SEE ALSO section accordingly
+
+-------------------------------------------------------------------
+Tue Dec 17 03:09:38 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 7.40
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.40    Mon 16 Dec 19:33:13 GMT 2019
+  
+      No changes since v7.39_05
+  
+  7.39_05 Thu 21 Nov 11:45:13 GMT 2019
+  
+      Bug fixes:
+      - Always assume that libraries are shared on AIX
+  
+  7.39_04 Mon 18 Nov 14:54:46 GMT 2019
+  
+      Test Fixes:
+      - Skip "merged /usr" tests on Cygwin
+  
+      QA Fixes:
+      - Added cygwin testing with Github actions
+      - Added macos testing with Github actions
+  
+  7.39_03 Sun 17 Nov 19:53:04 GMT 2019
+  
+      Doc fixes:
+      - Fix typo in link to MakeMaker
+      - Link to referenced modules from MM_Cygwin maybe_command
+  
+  7.39_02 Thu  7 Nov 09:33:29 GMT 2019
+  
+      Cygwin fixes:
+      - Removed MM_Cygwin all_target() override
+  
+      Doc fixes:
+      - Add crosslinks to various referenced documentation
+  
+  7.39_01 Mon 16 Sep 07:19:37 BST 2019
+  
+      Test fixes:
+      - README.pod warnings suppressed during testing
+      - Don't parallise dynamic/static tests
+
+-------------------------------------------------------------------
 Thu Sep 12 07:55:51 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 7.38

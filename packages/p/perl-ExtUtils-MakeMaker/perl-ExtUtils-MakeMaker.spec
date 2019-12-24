@@ -17,7 +17,7 @@
 
 
 Name:           perl-ExtUtils-MakeMaker
-Version:        7.38
+Version:        7.42
 Release:        0
 %define cpan_name ExtUtils-MakeMaker
 Summary:        Create a module Makefile
@@ -61,6 +61,8 @@ All inputs to WriteMakefile are Unicode characters, not just octets. EUMM
 seeks to handle all of these correctly. It is currently still not possible
 to portably use Unicode characters in module names, because this requires
 Perl to handle Unicode filenames, which is not yet the case on Windows.
+
+See L<ExtUtils::MakeMaker::FAQ> for details of the design and usage.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
