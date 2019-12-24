@@ -1347,6 +1347,7 @@ unsorted:
   - blueproximity-lang 
   - bluez-auto-enable-devices 
   - bluez-cups 
+  - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit: [x86_64] 
   - bluez-firmware: [i586] 
@@ -4952,7 +4953,6 @@ unsorted:
   - gnome-weather-lang: [i586] 
   - gnomekbd-tools: [i586] 
   - gnonograms 
-  - gnonograms-devel 
   - gnonograms-lang 
   - gnote 
   - gnote-lang 
@@ -5186,9 +5186,6 @@ unsorted:
   - gr-fcdproplus 
   - gr-fcdproplus-devel-doc 
   - gr-iqbal-devel-doc 
-  - gr-osmosdr 
-  - gr-osmosdr-devel 
-  - gr-osmosdr-devel-doc 
   - grabpng 
   - gradio 
   - gradio-lang 
@@ -7361,6 +7358,7 @@ unsorted:
   - kured 
   - kured-k8s-yaml: [i586] 
   - kurso-de-esperanto 
+  - kustomize: [x86_64] 
   - kvirc 
   - kwallet-devel 
   - kwallet-devel-32bit: [x86_64] 
@@ -9944,14 +9942,12 @@ unsorted:
   - libgnomesu-devel 
   - libgnomesu-lang: [i586] 
   - libgnomesu0: [i586] 
-  - libgnonograms-core0 
   - libgnuastro9 
   - libgnuradio-3_8_0 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance0_37_2git 
-  - libgnuradio-osmosdr-0_1_5git0_0_0 
   - libgnutls-dane-devel 
   - libgnutls-dane0: [i586] 
   - libgnutls-devel 
@@ -10028,7 +10024,7 @@ unsorted:
   - libgrooveplayer4 
   - libgrpc++1 
   - libgrpc-httpjson-transcoding0: [x86_64] 
-  - libgrpc7 
+  - libgrpc8 
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
@@ -18796,7 +18792,6 @@ unsorted:
   - python-gobject-common-devel 
   - python-gobject2-devel 
   - python-gr-fcdproplus 
-  - python-gr-osmosdr 
   - python-gtk-devel 
   - python-gtk-doc 
   - python-gtksourceview 
@@ -19904,7 +19899,6 @@ unsorted:
   - python2-gobject-Gdk 
   - python2-gobject-cairo 
   - python2-gobject-devel 
-  - python2-gogs_client 
   - python2-goocanvas 
   - python2-goocanvas-devel 
   - python2-google-api-core 
@@ -20957,7 +20951,6 @@ unsorted:
   - python2-softlayer 
   - python2-sortedcollections 
   - python2-sortedcontainers 
-  - python2-sortinghat 
   - python2-soundcloud 
   - python2-sounddevice 
   - python2-soupsieve 
@@ -22337,7 +22330,6 @@ unsorted:
   - python3-gobject-devel 
   - python3-gobject2 
   - python3-gobject2-devel 
-  - python3-gogs_client 
   - python3-gom 
   - python3-goobook 
   - python3-google-api-core 
@@ -23177,6 +23169,7 @@ unsorted:
   - python3-pyperclip 
   - python3-pyperf 
   - python3-pypet 
+  - python3-pypipegraph 
   - python3-pypiserver 
   - python3-pypng 
   - python3-pyppeteer 
