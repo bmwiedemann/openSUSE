@@ -29,6 +29,7 @@
 %define ap_usr nobody
 %define ap_grp nogroup
 %endif
+%{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
 Version:        3.13.0
@@ -45,6 +46,7 @@ Source10:       %{name}-archive.cron
 Source11:       %{name}-archive.service
 Source12:       %{name}-archive.timer
 Source13:       %{name}.my.cnf
+Source14:       %{name}-tmpfile.conf
 Source99:       %{name}.rpmlintrc
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
@@ -61,9 +63,7 @@ BuildRequires:  mariadb
 BuildRequires:  systemd
 BuildRequires:  unzip
 Requires:       apache2
-Requires:       cron
 Requires:       logrotate
-Requires:       mariadb
 Requires:       mod_php_any >= 5.5.9
 Requires:       php-ctype
 Requires:       php-curl
@@ -73,17 +73,19 @@ Requires:       php-iconv
 Requires:       php-json
 Requires:       php-mbstring
 Requires:       php-mysql
-#Requires:       php-openssl
 Requires:       php-pdo
 #Requires:       php-sqlite
 Requires:       php-tokenizer
 Requires:       php-xmlreader
 Requires:       php-xmlwriter
 Requires:       php-zlib
+Requires(pre):  php
 %{?systemd_requires}
 Recommends:     php-geoip
+Recommends:     php-openssl
 Recommends:     apache2-mod_geoip
-
+Recommends:     mariadb
+Recommends:     cron
 Conflicts:      piwik
 
 %description
@@ -157,6 +159,7 @@ install -d -m 0755 %{buildroot}/var/log/%{name}
 install -D -m 0644 %{SOURCE10} %{buildroot}/%{_sysconfdir}/cron.d/%{name}-archive
 install -D -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/%{name}-archive.service
 install -D -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}-archive.timer
+install -D -m 0644 %{SOURCE14} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 sed -i -e 's|@ap_serverroot@|%{ap_serverroot}|g' %{buildroot}%{_sysconfdir}/cron.d/%{name}-archive
 sed -i -e 's|@ap_serverroot@|%{ap_serverroot}|g' %{buildroot}%{_unitdir}/%{name}-archive.service
 # install changes for mariadb
@@ -172,6 +175,7 @@ install -D -m0644 %{SOURCE13} %{buildroot}/%{_sysconfdir}/my.cnf.d/%{name}.my.cn
 # BSC#1154324
 # # # chown -R %{ap_usr}:%{ap_grp} %{ap_serverroot}/%{name}
 %service_add_post matomo-archive.timer matomo-archive.service apache2.service
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 if [ $1 -gt 1 ]; then
   # Update matomo if this is an upgrade $1 == 2
   echo "matomo: Update matomo:core..."
@@ -191,7 +195,6 @@ fi
 
 %files
 %defattr(-,root,root,-)
-#%%doc README.SUSE CHANGELOG.md CONTRIBUTING.md LEGALNOTICE README.md SECURITY.md
 %dir %{_defaultdocdir}/%{name}
 %{_defaultdocdir}/%{name}/*
 %config(noreplace) %{ap_sysconfdir}/conf.d/%{name}.conf
@@ -200,10 +203,12 @@ fi
 %config(noreplace) %{_sysconfdir}/my.cnf.d/%{name}.my.cnf
 %{_unitdir}/%{name}-archive.service
 %{_unitdir}/%{name}-archive.timer
+%{_tmpfilesdir}/%{name}.conf
 %dir %attr(0750,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}
 %dir %attr(0750,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/environment
 %attr(0640,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/*.php
 %attr(0640,%{ap_usr},%{ap_grp}) %{_sysconfdir}/%{name}/environment/*.php
+%ghost %attr(0750,%{ap_usr},%{ap_grp}) /run/%{name}_sessions
 %defattr(644,root,root,755)
 %dir %{ap_serverroot}/%{name}
 %dir %attr(0750,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/js
@@ -218,16 +223,17 @@ fi
 %attr(0644,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/js/piwik.min.js
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/console
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/cron/archive.sh
-#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/log-analytics/import_logs.py
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/log-analytics/import_logs.py
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/composer/clean-xhprof.sh
 %attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/misc/composer/build-xhprof.sh
 #%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/plugins/TestRunner/scripts/on_instance_launch.sh
-#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/package.sh
-#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/lessify
-#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/plessc
-#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
-#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/szymach/c-pchart/coverage.sh
-#%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/package.sh
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/lessify
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/leafo/lessphp/plessc
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/szymach/c-pchart/coverage.sh
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php
+%attr(0770,%{ap_usr},%{ap_grp}) %{ap_serverroot}/%{name}/vendor/twig/twig/drupal_test.sh
 %{ap_serverroot}/%{name}/*
 
 %changelog
