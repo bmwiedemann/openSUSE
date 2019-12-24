@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,11 +34,11 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(atkmm-1.6) >= 2.24.1
+BuildRequires:  pkgconfig(atkmm-1.6) >= 2.24.2
 BuildRequires:  pkgconfig(cairomm-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(epoxy) >= 1.2
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.35.5
-BuildRequires:  pkgconfig(giomm-2.4) >= 2.49.1
+BuildRequires:  pkgconfig(giomm-2.4) >= 2.54.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(pangomm-1.4) >= 2.38.2
 
