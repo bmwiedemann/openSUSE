@@ -409,4 +409,12 @@
     <comment></comment>
     <requestid>758034</requestid>
   </revision>
+  <revision rev="48" vrev="12">
+    <srcmd5>7db9e004df3ca1767661b859a7169790</srcmd5>
+    <version>20190612</version>
+    <time>1577175732</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable purge-kernels-service dependency for now: dracut has not
+  yet been updated to no longer ship the service file.</comment>
+  </revision>
 </revisionlist>
