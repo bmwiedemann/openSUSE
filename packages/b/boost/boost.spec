@@ -1323,7 +1323,7 @@ EOF
 %if %{with python3}
 cp user-config.jam user-config-py3.jam
 # sed -i -e 's#//boost_python#//boost_python3#' ./user-config-py3.jam
-%{?!py3_abiflags: %define py3_abiflags m}
+%define py3_abiflags %(python3-config --abiflags)
 %{?!python3_version: %define python3_version %{py3_ver} }
 
 cat << EOF >> user-config-py3.jam
