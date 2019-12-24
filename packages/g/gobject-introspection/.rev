@@ -716,4 +716,13 @@
     <comment></comment>
     <requestid>738475</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>786e7266549da19d8e1590b4c34c9875</srcmd5>
+    <version>1.62.0</version>
+    <time>1577194124</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop python3-Sphix BuildRequires, only used for rebuilding the
+  website contents. (forwarded request 756873 from StefanBruens)</comment>
+    <requestid>757338</requestid>
+  </revision>
 </revisionlist>

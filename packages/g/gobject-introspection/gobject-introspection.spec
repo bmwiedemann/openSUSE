@@ -1,7 +1,7 @@
 #
 # spec file for package gobject-introspection
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  meson >= 0.49.2
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Mako
 BuildRequires:  python3-Markdown
-BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(cairo)
