@@ -15,11 +15,8 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define soname libgnonograms-core
-%define sover 0
-
 Name:           gnonograms
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Program for creating and solving gnonogram puzzles
 License:        GPL-3.0-or-later
@@ -42,31 +39,10 @@ Recommends:     %{name}-lang
 %description
 An implementation of the Japanese logic puzzle "Nonograms".
 
-%package -n     %{soname}%{sover}
-Summary:        The core library for %{name}
-Group:          System/Libraries
-
-%description -n %{soname}%{sover}
-An implementation of the Japanese logic puzzle "Nonograms".
-
-This package contains the shared library.
-
-%package        devel
-Summary:        Development Files for %{name}
-Group:          Development/Libraries/Other
-Requires:       %{soname}%{sover} = %{version}
-
-%description    devel
-An implementation of the Japanese logic puzzle "Nonograms".
-
-This package contains the development files for %{name}.
-
 %lang_package
 
 %prep
 %setup -q
-
-sed -i 's/\bmetainfo\b/appdata/' $(grep -rwl 'metainfo')
 
 %build
 %meson
@@ -81,27 +57,15 @@ find %{buildroot} -name com.github.jeremypw.gnonograms-extra.mo -exec rm {} +
 %find_lang com.github.jeremypw.gnonograms %{name}.lang
 %fdupes %{buildroot}/%{_datadir}
 
-%post -n %{soname}%{sover} -p /sbin/ldconfig
-%postun -n %{soname}%{sover} -p /sbin/ldconfig
-
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/com.github.jeremypw.gnonograms
-%{_datadir}/appdata/com.github.jeremypw.gnonograms.appdata.xml
+%{_datadir}/metainfo/com.github.jeremypw.gnonograms.appdata.xml
 %{_datadir}/applications/com.github.jeremypw.gnonograms.desktop
 %{_datadir}/icons/hicolor/*/*/*.??g
 %{_datadir}/glib-2.0/schemas/com.github.jeremypw.gnonograms.gschema.xml
 %{_datadir}/mime/packages/com.github.jeremypw.gnonograms.mimeinfo.xml
-
-%files -n %{soname}%{sover}
-%{_libdir}/%{soname}.so.*
-
-%files devel
-%{_includedir}/gnonograms-core.h
-%{_libdir}/%{soname}.so
-%{_libdir}/pkgconfig/gnonograms-core.pc
-%{_datadir}/vala/vapi/gnonograms-core.*
 
 %files lang -f %{name}.lang
 
