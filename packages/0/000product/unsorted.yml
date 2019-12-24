@@ -18673,7 +18673,7 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
-  - purge-kernels-service: [i586] 
+  - purge-kernels-service 
   - purpose: [i586] 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
