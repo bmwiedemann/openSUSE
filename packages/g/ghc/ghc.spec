@@ -95,6 +95,8 @@ Patch2:         D5212.patch
 Patch3:         Disable-unboxed-arrays.patch
 # PATCH-FIX-UPSTREAM allow-riscv-and-riscv64-CPU.patch slyfox@gentoo.org -- aclocal.m4: allow riscv and riscv64 CPU
 Patch4:         allow-riscv-and-riscv64-CPU.patch
+# PATCH-FIX-UPSTREAM fix-build-using-unregisterized-v8.4.patch
+Patch5:         fix-build-using-unregisterized-v8.4.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
 # PATCH-FIX-OPENSUSE ghc-8.0.2-Cabal-dynlibdir.patch -- Fix shared library directory location.
@@ -210,6 +212,7 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 %patch3 -p1
 %endif
 %patch4 -p1
+%patch5 -p1
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
@@ -275,7 +278,7 @@ make %{?_smp_mflags}
 make -j 2
 %endif
 %else
-make -j 2
+make
 %endif
 
 %install

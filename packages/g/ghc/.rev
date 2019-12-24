@@ -739,4 +739,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment></comment>
     <requestid>734101</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>d764dc021b945631413bdec665248fd2</srcmd5>
+    <version>8.6.5</version>
+    <time>1577194196</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit... </comment>
+    <requestid>759112</requestid>
+  </revision>
 </revisionlist>
