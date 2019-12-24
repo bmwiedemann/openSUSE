@@ -37,12 +37,8 @@ Source:         https://files.pythonhosted.org/packages/source/r/requests/reques
 Patch0:         requests-no-hardcoded-version.patch
 Patch1:         pr_5251-pytest5.patch
 Patch2:         merged_pr_5049.patch
-BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3 >= 1.21.1}
-BuildRequires:  ca-certificates
 BuildRequires:  fdupes
-BuildRequires:  python
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
 Requires:       python
