@@ -1304,4 +1304,12 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
 - bsc#1073748: add bpo-29347-dereferencing-undefined-pointers.patch</comment>
     <requestid>753190</requestid>
   </revision>
+  <revision rev="145" vrev="3">
+    <srcmd5>3e610c306d823a24cb2cae4a235ee5d3</srcmd5>
+    <version>2.7.17</version>
+    <time>1577194168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758106</requestid>
+  </revision>
 </revisionlist>

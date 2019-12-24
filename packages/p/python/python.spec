@@ -29,6 +29,8 @@ Source0:        http://www.python.org/ftp/python/%{version}/%{tarname}.tar.xz
 Source1:        README.SUSE
 Source8:        sle_tls_checks_policy.py
 #Source11:       testfiles.tar.bz2
+Source50:       idle.appdata.xml
+Source51:       idle.desktop
 # issues with copyrighted Unicode testing files
 
 # !!!!!!!!!!!!!!
@@ -100,6 +102,11 @@ BuildRequires:  sqlite-devel
 BuildRequires:  tk-devel
 BuildRequires:  xz
 BuildRequires:  pkgconfig(x11)
+# for %%{_datadir}/application and %%{_datadir}/mime/packages
+BuildRequires:  filesystem
+BuildRequires:  update-desktop-files
+# for %%{_datadir}/icons/hicolor directories
+BuildRequires:  hicolor-icon-theme
 %define         python_version    %(echo %{tarversion} | head -c 3)
 %define         idle_name         idle
 Requires:       python-base = %{version}
@@ -108,6 +115,9 @@ Recommends:     python-strict-tls-check
 %endif
 Provides:       %{name} = %{python_version}
 Provides:       python2 = %{version}
+# To make older versions of this package to conflict with
+# shared-python-startup I need a symbol to conflict with
+Provides:       python2_split_startup
 Obsoletes:      python-elementtree
 Obsoletes:      python-nothreads
 Obsoletes:      python-sqlite
@@ -429,6 +439,15 @@ install -d -m755 %{buildroot}%{_sysconfdir}/%{idle_name}
     done
 )
 
+# Install .desktop, mime and appdata files from upstream tarball
+%if 0%{?suse_version} >= 1500
+install -Dm0644 %{SOURCE50} %{buildroot}/%{_datadir}/mime/packages/idle.appdata.xml
+%endif
+install -D -m 0644 Lib/idlelib/Icons/idle_16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/idle.png
+install -D -m 0644 Lib/idlelib/Icons/idle_32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/idle.png
+install -D -m 0644 Lib/idlelib/Icons/idle_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/idle.png
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE51}
+
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
@@ -444,6 +463,11 @@ install -d -m755 %{buildroot}%{_sysconfdir}/%{idle_name}
 %doc Lib/idlelib/ChangeLog
 %{_libdir}/python%{python_version}/idlelib
 %attr(755, root, root) %{_bindir}/%{idle_name}
+%if 0%{?suse_version} >= 1500
+%{_datadir}/mime/packages/idle.appdata.xml
+%endif
+%{_datadir}/applications/idle.desktop
+%{_datadir}/icons/hicolor/*/apps/idle.png
 
 %files demo
 %defattr(644, root, root, 755)
