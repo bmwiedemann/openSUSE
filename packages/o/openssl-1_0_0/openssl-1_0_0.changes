@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec 20 21:39:42 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.0.2u [bsc#1158809, CVE-2019-1551]
+  * Fixed an overflow bug in the x64_64 Montgomery squaring procedure
+    used in exponentiation with 512-bit moduli. No EC algorithms are
+    affected. Analysis suggests that attacks against 2-prime RSA1024,
+    3-prime RSA1536, and DSA1024 as a result of this defect would be very
+    difficult to perform and are not believed likely. Attacks against DH512
+    are considered just feasible. However, for an attack the target would
+    have to re-use the DH512 private key, which is not recommended anyway.
+    Also applications directly using the low level API BN_mod_exp may be
+    affected if they use BN_FLG_CONSTTIME.
+- Drop patch openssl-1_1-CVE-2019-1551.patch
+
+-------------------------------------------------------------------
+Tue Dec 10 16:04:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1158809, CVE-2019-1551]
+  * Overflow bug in the x64_64 Montgomery squaring procedure used
+    in exponentiation with 512-bit moduli
+- Add openssl-1_1-CVE-2019-1551.patch
+
+-------------------------------------------------------------------
 Thu Oct  3 10:17:24 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Update to 1.0.2t

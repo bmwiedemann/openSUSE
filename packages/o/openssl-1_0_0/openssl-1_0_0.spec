@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_0_0
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %define num_version 1.0.0
 %define _rname  openssl
 Name:           openssl-1_0_0
-Version:        1.0.2t
+Version:        1.0.2u
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
 Group:          Productivity/Networking/Security
-Url:            https://www.openssl.org/
+URL:            https://www.openssl.org/
 Source:         https://www.%{_rname}.org/source/%{_rname}-%{version}.tar.gz
 # to get mtime of file:
 Source1:        %{name}.changes
