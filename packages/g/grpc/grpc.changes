@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 16 23:36:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25
+  * Change RR to consider a subchannel in TF if it has failed
+    since it was READY.
+  * Do not create streams after a GOAWAY has been received.
+  * Prevent HTTP2 parser from queueing a lot of induced frames.
+- Drop gettid.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 15:37:45 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Define BoringSSL as a Bazel dependency in WORKSPACE instead of

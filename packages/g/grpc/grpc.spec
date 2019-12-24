@@ -1,7 +1,7 @@
 #
 # spec file for package grpc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,20 @@
 #
 
 
-%define lver 7
+%define lver 8
 %define lverp 1
 %define src_install_dir /usr/src/%name
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           grpc
-Version:        1.23.1
+Version:        1.25.0
 Release:        0
-%define rver	1.23.1
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://grpc.io/
-Source0:        https://github.com/grpc/grpc/archive/v%rver.tar.gz
-Source1:        %{name}-rpmlintrc
-Patch1:         gettid.patch
-Patch2:         0001-bazel-Replace-boringssl-with-openssl.patch
+Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
+Source2:        %name-rpmlintrc
+Patch1:         0001-bazel-Replace-boringssl-with-openssl.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -114,8 +112,8 @@ Requires:       python = %python3_version
 This subpackage contains the python3 bindings.
 
 %prep
-%autosetup -n grpc-%rver -p1
-sed -i -e "s|%%LIBDIR%%|%{_libdir}|" bazel/grpc_deps.bzl
+%autosetup -p1
+sed -i -e "s|%%LIBDIR%%|%_libdir|" bazel/grpc_deps.bzl
 
 %build
 %define _lto_cflags %nil
