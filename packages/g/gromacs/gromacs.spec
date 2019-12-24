@@ -1,7 +1,7 @@
 #
 # spec file for package gromacs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2015-2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,15 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Build with OpenMPI
 %if 0%{?sle_version} == 0
 %define mpiver  openmpi2
-Obsoletes: gromacs-openmpi < %{version}
+Obsoletes:      gromacs-openmpi < %{version}
 %else
 %if 0%{?sle_version} <= 120300
 %define mpiver  openmpi
 %else
-Obsoletes: gromacs-openmpi < %{version}
+Obsoletes:      gromacs-openmpi < %{version}
   %if 0%{?sle_version} <= 150000
   %define mpiver  openmpi2
   %else
@@ -34,14 +35,14 @@ Obsoletes: gromacs-openmpi < %{version}
 %endif
 
 Name:           gromacs
-Version:        2019.4
+Version:        2019.5
 Release:        0
 %define uversion %{version}
 %define sover   4
 Summary:        Molecular Dynamics Package
-License:        GPL-2.0-or-later and Apache-2.0
+License:        GPL-2.0-or-later AND Apache-2.0
 Group:          Productivity/Scientific/Chemistry
-Url:            http://www.gromacs.org
+URL:            http://www.gromacs.org
 Source0:        ftp://ftp.gromacs.org/pub/gromacs/gromacs-%{uversion}.tar.gz
 Source1:        ftp://ftp.gromacs.org/pub/manual/manual-%{uversion}.pdf
 Source2:        http://gerrit.gromacs.org/download/regressiontests-%{uversion}.tar.gz
@@ -142,6 +143,11 @@ tar -xzf %{S:2}
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
+
+# save some memory
+%ifarch ppc64le
+%global _smp_mflags -j1
+%endif
 
 %ifarch %x86 x86_64
 #increse to SSE4.1, AVX_128_FMA, AVX_256 when possible

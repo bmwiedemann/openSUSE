@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 23 18:17:04 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- version bump to 2019.5 details here:
+  http://manual.gromacs.org/documentation/2019.5/release-notes/2019/2019.5.html
+  Hightlights:
+  - Fix use of uninitialized data on PME only ranks
+  - Fix out of range memory access with free-energy calculations
+  - Fix error with intermolecular interactions and domain decomposition
+  - Fix issues with AWH with pull-geometry ‘direction’ to be periodic
+  - Remove assertion failure with AWH when not using the initial stage
+  - Fix dihedral angle calculation near 180 degree boundary
+  - Remove problematic output of gmx angle tool
+  - Check that libhwloc headers and runtime match
+  - Fix .gro file formatting with large boxes
+  - Fix duplicate PDB CONECT record output
+
+-------------------------------------------------------------------
 Fri Nov 15 14:57:22 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - version bump to 2019.4 details here:
