@@ -1,0 +1,41 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Mon, 2 Sep 2019 10:01:47 +0200
+Subject: Make sure that kdump mount points are cleaned up
+References: bsc#1102252, bsc#1125011
+Upstream: merged
+Git-commit 83e48556428339668e6f23e1dccc0196a52d1b68
+
+If the system continues to boot, kdump mount points must be
+unmounted before switching to the system root. Otherwise, some
+filesystems may remain mounted under the now-unavailable initrd
+root, keeping the underlying devices busy during system shutdown.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/module-setup.sh |   14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -246,7 +246,19 @@ install() {
+ 		gsub(/@KDUMP_MOUNTPOINTS@/, mountpoints)
+ 		print
+ 	    }' "$moddir/kdump-save.service.in" > \
+-	    "$initdir/$systemdsystemunitdir"/kdump-save.service
++	        "$initdir/$systemdsystemunitdir"/kdump-save.service
++
++        local _d _mp
++        _d="$initdir/$systemdsystemunitdir"/initrd-switch-root.target.d
++        mkdir -p "$_d"
++        (
++            echo "[Unit]"
++            for _mp in "${kdump_mnt[@]}" ; do
++                echo -n "Conflicts="
++                systemd-escape -p --suffix=mount "$_mp"
++            done
++        ) > "$_d"/kdump.conf
++
+ 	ln_r "$systemdsystemunitdir"/kdump-save.service \
+ 	    "$systemdsystemunitdir"/initrd.target.wants/kdump-save.service
+     else

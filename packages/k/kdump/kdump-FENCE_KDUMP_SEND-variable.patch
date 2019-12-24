@@ -1,0 +1,52 @@
+From: Nick Wang <nwang@suse.com>
+Date: Fri, 30 Nov 2018 10:03:17 +0800
+Subject: Use var for path of fence_kdump_send and remove the unnecessary PRESCRIPT check
+References: bsc#1108919
+Upstream: merged
+Git-commit: f69533d0d8e974b8c27a2c9a651fb9e98c16194b
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/module-setup.sh       |    5 ++---
+ init/setup-kdump.functions |    8 ++++----
+ 2 files changed, 6 insertions(+), 7 deletions(-)
+
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -25,9 +25,8 @@ kdump_check_net() {
+     elif [ "${KDUMP_NETCONFIG%:force}" != "$KDUMP_NETCONFIG" ]; then
+         # always set up network
+         kdump_neednet=y
+-    elif [ -f "/usr/lib/fence_kdump_send" ] &&
+-         ( [[ $KDUMP_PRESCRIPT =~ "fence_kdump_send" ]] || \
+-         [[ $KDUMP_POSTSCRIPT =~ "fence_kdump_send" ]] ) ; then
++    elif [ -f "$FENCE_KDUMP_SEND" ] &&
++         [[ $KDUMP_POSTSCRIPT =~ "$FENCE_KDUMP_SEND" ]] ; then
+         # setup network when fence_kdump_send included and configured
+         kdump_neednet=y
+     else
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -10,6 +10,7 @@
+ #
+ 
+ KDUMP_CONFIG=/etc/sysconfig/kdump
++FENCE_KDUMP_SEND=/usr/lib/fence_kdump_send
+ 
+ #
+ # Global variables
+@@ -918,10 +919,9 @@ function kdump_modify_config()						   #
+     fi
+ 
+     # copy fence_kdump_send if exists
+-    if [ -f "/usr/lib/fence_kdump_send" ] &&
+-       ( [[ $KDUMP_PRESCRIPT =~ "fence_kdump_send" ]] ||
+-       [[ $KDUMP_POSTSCRIPT =~ "fence_kdump_send" ]] ) ; then
+-        KDUMP_REQUIRED_PROGRAMS="$KDUMP_REQUIRED_PROGRAMS /usr/lib/fence_kdump_send"
++    if [ -f "$FENCE_KDUMP_SEND" ] &&
++       [[ $KDUMP_POSTSCRIPT =~ "$FENCE_KDUMP_SEND" ]] ; then
++        KDUMP_REQUIRED_PROGRAMS="$KDUMP_REQUIRED_PROGRAMS $FENCE_KDUMP_SEND"
+     fi
+ 
+     # make sure NSS works somehow

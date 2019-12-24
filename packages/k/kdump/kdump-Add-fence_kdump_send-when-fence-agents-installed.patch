@@ -1,0 +1,44 @@
+From: Nick Wang <nwang@suse.com>
+Date: Wed, 28 Nov 2018 18:07:56 +0800
+Subject: Add fence_kdump_send when fence-agents installed.
+References: bsc#1108919
+Upstream: merged
+Git-commit: 93822c5ee738e186a3a70f6d7a6e59bdea4b46b1
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/module-setup.sh       |    5 +++++
+ init/setup-kdump.functions |    7 +++++++
+ 2 files changed, 12 insertions(+)
+
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -25,6 +25,11 @@ kdump_check_net() {
+     elif [ "${KDUMP_NETCONFIG%:force}" != "$KDUMP_NETCONFIG" ]; then
+         # always set up network
+         kdump_neednet=y
++    elif [ -f "/usr/lib/fence_kdump_send" ] &&
++         ( [[ $KDUMP_PRESCRIPT =~ "fence_kdump_send" ]] || \
++         [[ $KDUMP_POSTSCRIPT =~ "fence_kdump_send" ]] ) ; then
++        # setup network when fence_kdump_send included and configured
++        kdump_neednet=y
+     else
+         kdump_neednet=
+         for protocol in "${kdump_Protocol[@]}" ; do
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -917,6 +917,13 @@ function kdump_modify_config()						   #
+ 	KDUMP_REQUIRED_PROGRAMS="$KDUMP_REQUIRED_PROGRAMS ssh"
+     fi
+ 
++    # copy fence_kdump_send if exists
++    if [ -f "/usr/lib/fence_kdump_send" ] &&
++       ( [[ $KDUMP_PRESCRIPT =~ "fence_kdump_send" ]] ||
++       [[ $KDUMP_POSTSCRIPT =~ "fence_kdump_send" ]] ) ; then
++        KDUMP_REQUIRED_PROGRAMS="$KDUMP_REQUIRED_PROGRAMS /usr/lib/fence_kdump_send"
++    fi
++
+     # make sure NSS works somehow
+     cp /etc/hosts "${dest}/etc"
+     { cat <<-EOF

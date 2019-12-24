@@ -1,0 +1,145 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue, 17 Dec 2019 10:49:19 +0100
+Subject: calibrate: Update values
+References: bsc#1130529
+Upstream: merged
+Git-commit: 898b9e7fb7f80bd19268678b4abaf74792a3c229
+
+Kernel base image has grown by approx. 20%.
+Unpacked initramfs has grown by approx. 50%.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ kdumptool/calibrate.cc |   56 ++++++++++++++++++++++++-------------------------
+ 1 file changed, 28 insertions(+), 28 deletions(-)
+
+--- a/kdumptool/calibrate.cc
++++ b/kdumptool/calibrate.cc
+@@ -58,10 +58,10 @@
+ //
+ 
+ #if defined(__x86_64__)
+-# define DEF_RESERVE_KB		MB(128)
+-# define KERNEL_KB		MB(32)
++# define DEF_RESERVE_KB		MB(192)
++# define KERNEL_KB		MB(38)
+ # define KERNEL_INIT_KB		MB(5)
+-# define INIT_KB		MB(34)
++# define INIT_KB		MB(51)
+ # define INIT_NET_KB		MB(3)
+ # define SIZE_STRUCT_PAGE	64
+ # define KDUMP_PHYS_LOAD	0
+@@ -69,10 +69,10 @@
+ # define PERCPU_KB		108
+ 
+ #elif defined(__i386__)
+-# define DEF_RESERVE_KB		MB(128)
+-# define KERNEL_KB		MB(28)
++# define DEF_RESERVE_KB		MB(192)
++# define KERNEL_KB		MB(34)
+ # define KERNEL_INIT_KB		MB(4)
+-# define INIT_KB		MB(29)
++# define INIT_KB		MB(44)
+ # define INIT_NET_KB		MB(2)
+ # define SIZE_STRUCT_PAGE	36
+ # define KDUMP_PHYS_LOAD	0
+@@ -80,10 +80,10 @@
+ # define PERCPU_KB		56
+ 
+ #elif defined(__powerpc64__)
+-# define DEF_RESERVE_KB		MB(256)
+-# define KERNEL_KB		MB(32)
++# define DEF_RESERVE_KB		MB(384)
++# define KERNEL_KB		MB(38)
+ # define KERNEL_INIT_KB		MB(5)
+-# define INIT_KB		MB(58)
++# define INIT_KB		MB(87)
+ # define INIT_NET_KB		MB(4)
+ # define SIZE_STRUCT_PAGE	64
+ # define KDUMP_PHYS_LOAD	MB(128)
+@@ -91,10 +91,10 @@
+ # define PERCPU_KB		172	// FIXME: is it non-linear?
+ 
+ #elif defined(__powerpc__)
+-# define DEF_RESERVE_KB		MB(128)
+-# define KERNEL_KB		MB(24)
++# define DEF_RESERVE_KB		MB(192)
++# define KERNEL_KB		MB(29)
+ # define KERNEL_INIT_KB		MB(5)
+-# define INIT_KB		MB(34)
++# define INIT_KB		MB(51)
+ # define INIT_NET_KB		MB(2)
+ # define SIZE_STRUCT_PAGE	36
+ # define KDUMP_PHYS_LOAD	MB(128)
+@@ -102,10 +102,10 @@
+ # define PERCPU_KB		0	// TODO !!!
+ 
+ #elif defined(__s390x__)
+-# define DEF_RESERVE_KB		MB(128)
+-# define KERNEL_KB		MB(26)
++# define DEF_RESERVE_KB		MB(192)
++# define KERNEL_KB		MB(31)
+ # define KERNEL_INIT_KB		512
+-# define INIT_KB		MB(34)
++# define INIT_KB		MB(51)
+ # define INIT_NET_KB		MB(2)
+ # define SIZE_STRUCT_PAGE	64
+ # define KDUMP_PHYS_LOAD	0
+@@ -115,10 +115,10 @@
+ # define align_memmap		s390x_align_memmap
+ 
+ #elif defined(__s390__)
+-# define DEF_RESERVE_KB		MB(128)
+-# define KERNEL_KB		MB(24)
++# define DEF_RESERVE_KB		MB(192)
++# define KERNEL_KB		MB(29)
+ # define KERNEL_INIT_KB		512
+-# define INIT_KB		MB(29)
++# define INIT_KB		MB(44)
+ # define INIT_NET_KB		MB(2)
+ # define SIZE_STRUCT_PAGE	36
+ # define KDUMP_PHYS_LOAD	0
+@@ -128,10 +128,10 @@
+ # define align_memmap		s390_align_memmap
+ 
+ #elif defined(__ia64__)
+-# define DEF_RESERVE_KB		MB(512)
+-# define KERNEL_KB		MB(64)
++# define DEF_RESERVE_KB		MB(768)
++# define KERNEL_KB		MB(77)
+ # define KERNEL_INIT_KB		MB(3)
+-# define INIT_KB		MB(44)
++# define INIT_KB		MB(66)
+ # define INIT_NET_KB		MB(4)
+ # define SIZE_STRUCT_PAGE	64
+ # define KDUMP_PHYS_LOAD	0
+@@ -139,21 +139,21 @@
+ # define PERCPU_KB		0	// TODO !!!
+ 
+ #elif defined(__aarch64__)
+-# define DEF_RESERVE_KB		MB(128)
+-# define KERNEL_KB		MB(26)
++# define DEF_RESERVE_KB		MB(192)
++# define KERNEL_KB		MB(31)
+ # define KERNEL_INIT_KB		MB(1)
+-# define INIT_KB		MB(29)
+-# define INIT_NET_KB		MB(2)
++# define INIT_KB		MB(51)
++# define INIT_NET_KB		MB(3)
+ # define SIZE_STRUCT_PAGE	64
+ # define KDUMP_PHYS_LOAD	0
+ # define CAN_REDUCE_CPUS	1
+ # define PERCPU_KB		0	// TODO !!!
+ 
+ #elif defined(__arm__)
+-# define DEF_RESERVE_KB		MB(128)
+-# define KERNEL_KB		MB(24)
++# define DEF_RESERVE_KB		MB(192)
++# define KERNEL_KB		MB(29)
+ # define KERNEL_INIT_KB		MB(1)
+-# define INIT_KB		MB(29)
++# define INIT_KB		MB(44)
+ # define INIT_NET_KB		MB(2)
+ # define SIZE_STRUCT_PAGE	36
+ # define KDUMP_PHYS_LOAD	0

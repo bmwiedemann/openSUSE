@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Dec 17 10:00:30 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-calibrate-Update-values.patch: calibrate: Update values
+  (bsc#1130529).
+
+-------------------------------------------------------------------
+Tue Dec 17 09:59:08 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-prefer-by-path-and-device-mapper.patch: Prefer by-path and
+  device-mapper aliases over kernel device names (bsc#1101149,
+  LTC#168532).
+
+-------------------------------------------------------------------
+Fri Dec 13 15:11:32 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-powerpc-no-reload-on-CPU-removal.patch: powerpc: Do not
+  reload on CPU hot removal (bsc#1133407, LTC#176111).
+
+-------------------------------------------------------------------
+Fri Dec 13 14:04:26 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-Add-force-option-to-KDUMP_NETCONFIG.patch: Add ":force"
+  option to KDUMP_NETCONFIG (bsc#1108919).
+- kdump-Add-fence_kdump_send-when-fence-agents-installed.patch: Add
+  fence_kdump_send when fence-agents installed (bsc#1108919).
+- kdump-FENCE_KDUMP_SEND-variable.patch: Use var for path of
+  fence_kdump_send and remove the unnecessary PRESCRIPT check
+  (bsc#1108919).
+- kdump-Document-fence_kdump_send.patch: Document kdump behaviour
+  for fence_kdump_send (bsc#1108919).
+
+-------------------------------------------------------------------
+Mon Dec  9 09:57:37 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-nss-modules.patch: Improve the handling of NSS
+  (bsc#1021846).
+
+-------------------------------------------------------------------
+Mon Dec  9 09:54:01 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-skip-mounts-if-no-proc-vmcore.patch: Skip kdump-related
+  mounts if there is no /proc/vmcore (bsc#1102252, bsc#1125011).
+- kdump-clean-up-kdump-mount-points.patch: Make sure that kdump
+  mount points are cleaned up (bsc#1102252, bsc#1125011).
+
+-------------------------------------------------------------------
+Fri Dec  6 16:50:06 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-Clean-up-the-use-of-current-vs-boot-network-iface.patch:
+  Clean up the use of current vs. boot network interface names
+  (bsc#1094444, bsc#1116463, bsc#1141064).
+- kdump-Use-a-custom-namespace-for-physical-NICs.patch: Use a
+  custom namespace for physical NICs (bsc#1094444, bsc#1116463,
+  bsc#1141064).
+
+-------------------------------------------------------------------
+Fri Dec  6 10:49:48 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-preserve-white-space.patch: Preserve white space when
+  removing kernel command line options (bsc#1117652).
+
+-------------------------------------------------------------------
 Tue Nov 12 08:11:26 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - add kdump-savedump-search-also-for-vmlinux.xz.patch (bnc#1155921)

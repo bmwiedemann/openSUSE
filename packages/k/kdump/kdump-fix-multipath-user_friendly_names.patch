@@ -1,7 +1,7 @@
 From: Petr Tesarik <ptesarik@suse.com>
 Date: Thu, 25 Oct 2018 10:02:43 +0200
 Subject: Fix multipath configuration with user_friendly_names and/or aliases
-References: bsc#1111207, LTC#171953, bsc#1125218, LTC#175465
+References: bsc#1111207, LTC#171953, bsc#1125218, LTC#175465, bsc#1153601
 Upstream: merged
 Git-commit: 4b4dacfddd456a51c04a878e31d4544223ea9701
 

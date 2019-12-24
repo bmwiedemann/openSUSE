@@ -1,0 +1,86 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Mon, 16 Dec 2019 13:33:19 +0100
+Subject: Prefer by-path and device-mapper aliases over kernel names
+References: bsc#1101149, LTC#168532
+Upsream: merged
+Git-commit: f153c9ac3f1baf8d1cf66c901b41f7bff19ff528
+
+Mounting by kernel names (e.g. /dev/sda) is generally broken, since
+these names are allocated dynamically by the kernel and may change
+after a panic kexec. This issue can be usually avoided by using a
+more stable tag in /etc/fstab (e.g. UUID=xyz).
+
+However, there are supported ways to mount a filesystem with no
+corresponding line in /etc/fstab, and kdump uses /proc/mounts as
+fallback. This file shows the block device using the name that was
+given as argument to the mount syscall. This name is usually
+translated to the kernel name by libblkid(3). As a result, it does
+not reflect the original intention, e.g.:
+
+    ezekiel:~ # mount UUID=9A4D-9B2B /mnt/data/
+    ezekiel:~ # grep /mnt/data /proc/mounts
+    /dev/sda /mnt/data vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro 0 0
+    ezekiel:~ # grep /mnt/data /proc/self/mountinfo
+    187 94 8:0 / /mnt/data rw,relatime shared:56 - vfat /dev/sda rw,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro
+
+As the original intention cannot be recovered, it is probably
+better to prefer the by-path alias. The semantic of this alias is
+closest to the traditional UNIX use of raw block device names: it's
+always the drive attached to a known physical connector, regardless
+of which medium is inserted.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/module-setup.sh       |    3 ++-
+ init/setup-kdump.functions |   27 +++++++++++++++++++++++++++
+ 2 files changed, 29 insertions(+), 1 deletion(-)
+
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -90,7 +90,8 @@ kdump_add_mnt() {
+     mkdir -p "$initdir/etc"
+     local _passno=2
+     [ "${kdump_fstype[_idx]}" = nfs ] && _passno=0
+-    echo "${kdump_dev[_idx]} ${kdump_mnt[_idx]} ${kdump_fstype[_idx]} ${kdump_opts[_idx]} 0 $_passno" >> "$initdir/etc/fstab"
++    _dev=$(kdump_mount_dev "${kdump_dev[_idx]}")
++    echo "$_dev ${kdump_mnt[_idx]} ${kdump_fstype[_idx]} ${kdump_opts[_idx]} 0 $_passno" >> "$initdir/etc/fstab"
+ }
+ 
+ check() {
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -716,6 +716,33 @@ function kdump_get_targets()						   # {
+ }									   # }}}
+ 
+ #
++# Get a block device specification that is suitable for use as the
++# first column in /etc/fstab.
++# Since device node names may change after kexec, more stable symlink
++# are preferred (by-path alias or device mapper name).
++# Parameters:
++#   1) _dev: block device specification
++# Output:
++#   block device specification to be used in /etc/fstab
++function kdump_mount_dev()						   # {{{
++{
++    local _dev="$1"
++
++    if [ ! -L "$_dev" -a -b "$_dev" ] ; then
++	local _symlink
++	for _symlink in $(udevadm info --root --query=symlink "$_dev")
++	do
++	    case "$_symlink" in
++		*/by-path/*|*/mapper/*)
++		    _dev="$_symlink"
++		    break
++	    esac
++	done
++    fi
++    echo "$_dev"
++}									   # }}}
++
++#
+ # Read and normalize /etc/fstab and /proc/mounts (if exists).
+ # The following transformations are done:
+ #   - initial TABs and SPACEs are removed

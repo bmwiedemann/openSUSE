@@ -1,0 +1,30 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Fri, 30 Nov 2018 09:29:10 +0100
+Subject: Document kdump behaviour for fence_kdump_send
+References: bsc#1108919
+Upstream: merged
+Git-commit: dcbe901dbec7d0b5e70014564da5a34f673e2248
+
+Add an explanation paragraph to the manual page.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ doc/man/kdump.5.txt.in |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+--- a/doc/man/kdump.5.txt.in
++++ b/doc/man/kdump.5.txt.in
+@@ -483,7 +483,11 @@ KDUMP_POSTSCRIPT
+ ~~~~~~~~~~~~~~~~
+ 
+ Program that is executed after taking the dump and before the system is
+-rebooted. You have to include that program in KDUMP_POSTSCRIPT.
++rebooted. You have to include that program in KDUMP_REQUIRED_PROGRAMS.
++
++As a special case, if KDUMP_POSTSCRIPT contains +/usr/lib/fence_kdump_send+,
++this script is automatically added to the initrd, and network is configured by
++default.
+ 
+ Default: ""
+ 

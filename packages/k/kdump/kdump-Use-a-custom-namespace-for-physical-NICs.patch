@@ -1,0 +1,43 @@
+From c5a6c610e1b3b4ce34a8769b7772a682fb826bda Mon Sep 17 00:00:00 2001
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Thu, 29 Nov 2018 12:54:57 +0100
+Subject: Use a custom namespace for physical NICs
+References: bsc#1094444, bsc#1116463, bsc#1141064
+Upstream: merged
+Git-commit: c5a6c610e1b3b4ce34a8769b7772a682fb826bda
+
+To prevent rename conflicts, use kdumpX as the interface name
+instead of the current name.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/setup-kdump.functions |   10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -11,6 +11,13 @@
+ 
+ KDUMP_CONFIG=/etc/sysconfig/kdump
+ 
++#
++# Global variables
++#
++
++# Next network interface number
++kdump_ifnum=0
++
+ # Extract the device name from a route
+ #
+ # Input:
+@@ -448,7 +455,8 @@ function kdump_ifname_config()						   #
+ 
+     if [ -z "$_ifkind" ]
+     then
+-	kdump_iface="$_iface"
++	kdump_iface="kdump$kdump_ifnum"
++	kdump_ifnum=$(( $kdump_ifnum + 1 ))
+ 	kdump_ifmap="$kdump_ifmap $_iface:$kdump_iface"
+ 
+ 	local _drv=$( readlink "/sys/class/net/$_iface/device/driver" )

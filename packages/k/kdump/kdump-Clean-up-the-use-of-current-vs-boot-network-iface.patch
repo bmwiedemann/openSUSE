@@ -1,0 +1,152 @@
+From e32374a88bb3b1dc0c5f493d6c1966558d996c4f Mon Sep 17 00:00:00 2001
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue, 27 Nov 2018 14:52:06 +0100
+Subject: Clean up the use of current vs. boot network interface names
+References: bsc#1094444, bsc#1116463, bsc#1141064
+Upstream: merged
+Git-commit: e32374a88bb3b1dc0c5f493d6c1966558d996c4f
+
+Strictly differentiate between the interface name as seen during
+dracut execution and at boot time (in initrd environment).
+
+Most importantly, it is necessary to store both names for generating
+qeth udev rules.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/setup-kdump.functions |   51 +++++++++++++++++++++++----------------------
+ 1 file changed, 27 insertions(+), 24 deletions(-)
+
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -426,9 +426,9 @@ function kdump_hwaddr()							   # {{{
+     local _type=$(<"/sys/class/net/$_iface/addr_assign_type")
+     if [ "$_type" -eq 0 ]
+     then
+-	cat "/sys/class/net/$kdump_iface/address"
++	cat "/sys/class/net/$_iface/address"
+     else
+-	ethtool -P "$kdump_iface" | sed 's/^[^:]*: *//'
++	ethtool -P "$_iface" | sed 's/^[^:]*: *//'
+     fi
+ }									   # }}}
+ 
+@@ -440,42 +440,43 @@ function kdump_hwaddr()							   # {{{
+ #   kdump_netif  corresponding ifname= initrd parameter added
+ #   kdump_iface  device name in initrd
+ #   kdump_kmods  additional kernel modules updated
+-#   kdump_hwif   hardware interfaces updated
++#   kdump_ifmap  hardware network interface map updated
+ function kdump_ifname_config()						   # {{{
+ {
+-    kdump_iface="$1"
+-    local ifkind=$(kdump_ifkind "$kdump_iface")
++    local _iface="$1"
++    local _ifkind=$(kdump_ifkind "$_iface")
+ 
+-    if [ -z "$ifkind" ]
++    if [ -z "$_ifkind" ]
+     then
+-	kdump_hwif="$kdump_hwif $kdump_iface"
+-	local _drv=$( readlink "/sys/class/net/$kdump_iface/device/driver" )
++	kdump_iface="$_iface"
++	kdump_ifmap="$kdump_ifmap $_iface:$kdump_iface"
+ 
++	local _drv=$( readlink "/sys/class/net/$_iface/device/driver" )
+ 	case "$_drv" in
+ 	    */qeth)
+ 		;;
+ 	    *)
+-		local hwaddr=$(kdump_hwaddr "$kdump_iface")
++		local hwaddr=$(kdump_hwaddr "$_iface")
+ 		[ -n "$hwaddr" ] && kdump_netif="$kdump_netif ifname=$kdump_iface:$hwaddr"
+ 		;;
+ 	esac
+ 
+-	local mod="/sys/class/net/$kdump_iface/device/driver/module"
++	local mod="/sys/class/net/$_iface/device/driver/module"
+ 	if [ -L "$mod" ]
+ 	then
+ 	    mod=$(readlink "$mod")
+ 	    kdump_kmods="$kdump_kmods ${mod##*/}"
+ 	fi
+     else
+-	case "$ifkind" in
++	case "$_ifkind" in
+ 	    bridge)
+-		kdump_bridge_config "$kdump_iface"
++		kdump_bridge_config "$_iface"
+ 		;;
+ 	    bond)
+-		kdump_bond_config "$kdump_iface"
++		kdump_bond_config "$_iface"
+ 		;;
+ 	    vlan)
+-		kdump_vlan_config "$kdump_iface"
++		kdump_vlan_config "$_iface"
+ 		;;
+ 	    *)
+ 		return 1
+@@ -1070,13 +1071,13 @@ function kdump_filter_sysctl()						   #
+ # Set up a QETH network interface
+ # Parameters:
+ #   1) _root:   initrd temporary root
+-#   2) _iface:  interface name
+-# Input variables:
+-#   kdump_hwif   hardware network interfaces
++#   2) _iface:  current interface name
++#   3) _bootif: interface name in initrd
+ function kdump_setup_qeth()						   # {{{
+ {
+     local _root="$1"
+     local _iface="$2"
++    local _bootif="$3"
+     local _dev=$( readlink "/sys/class/net/$_iface/device" )
+     _dev="${_dev##*/}"
+     local _cdev0=$( readlink "/sys/class/net/$_iface/device/cdev0" )
+@@ -1113,8 +1114,8 @@ ACTION=="add", SUBSYSTEM=="ccwgroup", KE
+ ACTION=="add", SUBSYSTEM=="ccwgroup", KERNEL=="$_dev", ATTR{online}="1"
+ EOF
+ 
+-    cat >"${_root}/etc/udev/rules.d/70-persistent-net-${_iface}.rules" <<EOF
+-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="qeth"$_dev_id_match, KERNELS=="$_dev", ATTR{type}=="$_type", NAME="$_iface"
++    cat >"${_root}/etc/udev/rules.d/70-persistent-net-${_bootif}.rules" <<EOF
++SUBSYSTEM=="net", ACTION=="add", DRIVERS=="qeth"$_dev_id_match, KERNELS=="$_dev", ATTR{type}=="$_type", NAME="$_bootif"
+ EOF
+ }									   # }}}
+ 
+@@ -1123,18 +1124,20 @@ EOF
+ # Parameters:
+ #   1) _root:   initrd temporary root
+ # Input variables:
+-#   kdump_hwif   hardware network interfaces
++#   kdump_ifmap  hardware network interface map
+ function kdump_setup_hwif()						   # {{{
+ {
+     local _root="$1"
+-    local _iface _drv
++    local _spec _iface _bootif _drv
+ 
+-    for _iface in $kdump_hwif
++    for _spec in $kdump_ifmap
+     do
++	_iface="${_spec%:*}"
++	_bootif="${_spec##*:}"
+ 	_drv=$( readlink "/sys/class/net/$_iface/device/driver" )
+ 	case "$_drv" in
+ 	    */qeth)
+-		kdump_setup_qeth "$_root" "$_iface"
++		kdump_setup_qeth "$_root" "$_iface" "$_bootif"
+ 		;;
+ 	esac
+     done
+@@ -1149,7 +1152,7 @@ function kdump_setup_hwif()						   # {{
+ # Input variables:
+ #   KDUMP_*      see kdump_get_config
+ #   kdump_mnt[]  mountpoints in kdump environment
+-#   kdump_hwif   hardware network interfaces
++#   kdump_ifmap  hardware network interface map
+ # Output variables:
+ #   KDUMP_REQUIRED_PROGRAMS updated as necessary
+ function kdump_setup_files()						   # {{{

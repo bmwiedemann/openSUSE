@@ -1,0 +1,48 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue, Nov 12 2019 14:53:37 +0100
+Subject: Preserve white space when removing kernel command line options
+References: bsc#1117652
+Upstream: merged
+Git-commit: 23d593b54a9c97a204ea7412e53c60d3d3852cab
+
+The function was originally designed to remove unwanted options
+from the panic kernel command line. It is now also used to check
+whether the current command line contains a fadump option or not,
+but the check is broken, because remove_from_commandline() may
+change the amount (and type) of white space. For example, it
+always adds an extra space if the original string ends with a
+space.
+
+Modify the function to copy original separators verbatim, except
+that any white space preceding the removed option is removed.
+
+Fixes: a4718a2c7b714d0594903fc8dc5ae47252a9b9ba
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/load.sh |   12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+--- a/init/load.sh
++++ b/init/load.sh
+@@ -17,15 +17,13 @@ function remove_from_commandline()
+     awk 'BEGIN { ORS="" }
+     {
+         while(length()) {
+-            sub(/^[[:space:]]+/,"");
+-            pstart=match($0,/("[^"]*"?|[^"[:space:]])+/);
+-            plength=RLENGTH;
+-            param=substr($0,pstart,plength);
+-            raw=param;
++            match($0,/^([[:space:]]*)(.*)/,w);
++            match(w[2],/(("[^"]*"?|[^"[:space:]])+)(.*)/,p);
++            raw=p[1];
+             gsub(/"/,"",raw);
+             if (raw !~ /^('"$option"')(=|$)/)
+-                print param " ";
+-            $0=substr($0,pstart+plength);
++                print w[1] p[1];
++            $0=p[3];
+         }
+         print "\n";
+     }'

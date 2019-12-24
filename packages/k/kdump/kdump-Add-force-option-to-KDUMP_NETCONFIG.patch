@@ -1,0 +1,109 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue, 20 Nov 2018 10:23:28 +0100
+Subject: Add ":force" option to KDUMP_NETCONFIG
+References: bsc#1108919
+Upstream: merged
+Git-commit 4e112a28055a57dbcdf9a72c4bdcf586296ec81a
+
+Make it possible to force network setup in kdump initrd by adding a
+":force" suffix to KDUMP_NETCONFIG. This is needed to configure
+fence_kdump.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ doc/man/kdump.5.txt.in |    6 ++++++
+ init/module-setup.sh   |   37 +++++++++++++++++++++----------------
+ sysconfig.kdump.in     |    6 +++++-
+ 3 files changed, 32 insertions(+), 17 deletions(-)
+
+--- a/doc/man/kdump.5.txt.in
++++ b/doc/man/kdump.5.txt.in
+@@ -544,6 +544,12 @@ Auto-detection cannot be used to set up
+ because of limitations in the implementation of the _ip=_ initrd command line
+ option.
+ 
++Network is configured only if needed, e.g. the dump target is on a remote
++machine, or an email notification should be sent. If network is needed by
++something else, such as a custom script used as KDUMP_PRESCRIPT or
++KDUMP_POSTSCRIPT, add a _:force_ suffix to the network configuration, for
++example "auto:force" or "eth0:dhcp4:force".
++
+ Use a _netdevice:mode_ string to force a specific network device to be used. A
+ _netdevice_ is for example "eth0". The _mode_ can be:
+ 
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -19,20 +19,25 @@ kdump_needed() {
+ }
+ 
+ kdump_check_net() {
+-    kdump_neednet=
+-    for protocol in "${kdump_Protocol[@]}" ; do
+-	if [ "$protocol" != "file" -a "$protocol" != "srcfile" ]; then
+-	    kdump_neednet=y
+-	fi
+-    done
++    if [ -z "$KDUMP_NETCONFIG" ]; then
++        # network explicitly disabled in configuration
++        kdump_neednet=
++    elif [ "${KDUMP_NETCONFIG%:force}" != "$KDUMP_NETCONFIG" ]; then
++        # always set up network
++        kdump_neednet=y
++    else
++        kdump_neednet=
++        for protocol in "${kdump_Protocol[@]}" ; do
++	    if [ "$protocol" != "file" -a "$protocol" != "srcfile" ]; then
++	        kdump_neednet=y
++	    fi
++        done
+ 
+-    # network configuration
+-    if [ -n "$KDUMP_SMTP_SERVER" -a -n "$KDUMP_NOTIFICATION_TO" ]; then
+-	kdump_neednet=y
++        # network configuration
++        if [ -n "$KDUMP_SMTP_SERVER" -a -n "$KDUMP_NOTIFICATION_TO" ]; then
++	    kdump_neednet=y
++        fi
+     fi
+-
+-    # network explicitly disabled in configuration?
+-    [ -z "$KDUMP_NETCONFIG" ] && kdump_neednet=
+ }
+ 
+ kdump_get_fs_type() {
+@@ -161,13 +166,13 @@ kdump_cmdline_zfcp() {
+ kdump_cmdline_ip() {
+     [ "$kdump_neednet" = y ] || return 0
+ 
+-    if [ "$KDUMP_NETCONFIG" = "auto" ] ; then
++    local _cfg="${KDUMP_NETCONFIG%:force}"
++    if [ "$_cfg" = "auto" ] ; then
+ 	kdump_host_if=default
+ 	kdump_net_mode=auto
+     else
+-	set -- ${KDUMP_NETCONFIG//:/ }
+-	kdump_host_if=$1
+-	kdump_net_mode=$2
++	kdump_host_if="${_cfg%%:*}"
++	kdump_net_mode="${_cfg#*:}"
+     fi
+ 
+     if [ "$kdump_host_if" = "default" ] ; then
+--- a/sysconfig.kdump.in
++++ b/sysconfig.kdump.in
+@@ -294,9 +294,13 @@ KDUMPTOOL_FLAGS=""
+ # that contains the network device and the mode (static, dhcp, dhcp6, auto6),
+ # separated by a colon. Example: "eth0:static" or "eth1:dhcp".
+ #
+-# For static configuration, you have to add the configuration to
++# For static configuration, you may have to add the configuration to
+ # KDUMP_COMMANDLINE_APPEND.
+ #
++# By default, network is set up only if needed. Add ":force" to make sure
++# that network is always available (e.g. for use by a custom pre- or
++# post-script).
++#
+ # See also: kdump(5)
+ #
+ KDUMP_NETCONFIG="auto"

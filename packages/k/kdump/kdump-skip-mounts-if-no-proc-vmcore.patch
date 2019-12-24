@@ -1,0 +1,40 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Mon, 2 Sep 2019 15:27:24 +0200
+Subject: Skip kdump-related mounts if there is no /proc/vmcore
+References: bsc#1102252, bsc#1125011
+Upstream: merged
+Git-commit b91c1e16d373e5631ce725acf52db097d8248389
+
+With FADUMP, the same initrd is used for saving a dump and for
+normal boot. It is not necessary to mount kdump-related filesystems
+on a normal boot, so let's add a systemd condition.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/module-setup.sh |    9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+--- a/init/module-setup.sh
++++ b/init/module-setup.sh
+@@ -249,13 +249,18 @@ install() {
+ 	        "$initdir/$systemdsystemunitdir"/kdump-save.service
+ 
+         local _d _mp
++        local _mnt
+         _d="$initdir/$systemdsystemunitdir"/initrd-switch-root.target.d
+         mkdir -p "$_d"
+         (
+             echo "[Unit]"
+             for _mp in "${kdump_mnt[@]}" ; do
+-                echo -n "Conflicts="
+-                systemd-escape -p --suffix=mount "$_mp"
++                _mnt=$(systemd-escape -p --suffix=mount "$_mp")
++                _d="$initdir/$systemdsystemunitdir/$_mnt".d
++                mkdir -p "$_d"
++                echo -e "[Unit]\nConditionPathExists=/proc/vmcore" \
++                     > "$_d"/kdump.conf
++                echo "Conflicts=$_mnt"
+             done
+         ) > "$_d"/kdump.conf
+ 

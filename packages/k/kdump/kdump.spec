@@ -1,7 +1,7 @@
 #
 # spec file for package kdump
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
 Group:          System/Kernel
-Url:            https://github.com/openSUSE/kdump
+URL:            https://github.com/openSUSE/kdump
 Source:         %{name}-%{version}.tar.bz2
 Source2:        %{name}-rpmlintrc
 Patch1:         %{name}-fillupdir-fixes.patch
@@ -63,6 +63,19 @@ Patch14:        %{name}-fix-multipath-user_friendly_names.patch
 Patch15:        %{name}-Add-skip_balance-option-to-BTRFS-mounts.patch
 Patch16:        %{name}-kdumprd-Look-for-boot-image-and-boot-Image.patch
 Patch17:        %{name}-savedump-search-also-for-vmlinux.xz.patch
+Patch18:        %{name}-preserve-white-space.patch
+Patch19:        %{name}-Clean-up-the-use-of-current-vs-boot-network-iface.patch
+Patch20:        %{name}-Use-a-custom-namespace-for-physical-NICs.patch
+Patch21:        %{name}-clean-up-kdump-mount-points.patch
+Patch22:        %{name}-skip-mounts-if-no-proc-vmcore.patch
+Patch23:        %{name}-nss-modules.patch
+Patch24:        %{name}-Add-force-option-to-KDUMP_NETCONFIG.patch
+Patch25:        %{name}-Add-fence_kdump_send-when-fence-agents-installed.patch
+Patch26:        %{name}-FENCE_KDUMP_SEND-variable.patch
+Patch27:        %{name}-Document-fence_kdump_send.patch
+Patch28:        %{name}-powerpc-no-reload-on-CPU-removal.patch
+Patch29:        %{name}-prefer-by-path-and-device-mapper.patch
+Patch30:        %{name}-calibrate-Update-values.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -137,6 +150,19 @@ after a crash dump has occured.
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
 
 %build
 export CFLAGS="%{optflags}"

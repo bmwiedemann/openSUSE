@@ -1,0 +1,67 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Thu, 14 Nov 2019 19:13:39 +0100
+Subject: Improve the handling of NSS
+References: bsc#1021846
+Upstream: merged
+Git-commit 598d7517ccbbf29dc51e0a9c14146722d2324731
+
+The current code mostly works, but can be improved in two ways:
+
+1. Only the 'hosts' database is really needed in the kdump
+   environment, and its settings should be copied from the running
+   system. The openSSH client also needs 'passwd' (and maybe
+   'group'), but it is not necessary to handle fancy setups (such
+   as NIS or AD). The client merely requires that UID 0 can be
+   translated to a user name. The 'file' service is more than
+   sufficient for that purpose.
+
+2. The NSS configuration file may not contain configuration of all
+   categories. If configuration for a given category is missing,
+   glibc will use a default setting, but kdump will not install
+   the corresponding modules. Fix it by adding the glibc default
+   to the configuration file explicitly if needed.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ init/setup-kdump.functions |   22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
+
+--- a/init/setup-kdump.functions
++++ b/init/setup-kdump.functions
+@@ -892,8 +892,6 @@ function kdump_modify_config()						   #
+             KDUMP_SAVEDIR="${KDUMP_SAVEDIR}file://${kdump_Realpath[i]}"
+ 	elif [ "$protocol" != "srcfile" ] ; then
+             KDUMP_SAVEDIR="${KDUMP_SAVEDIR}${kdump_URL[i]}"
+-            cp /etc/hosts "${dest}/etc"
+-            grep '^hosts:' /etc/nsswitch.conf > "${dest}/etc/nsswitch.conf"
+ 	fi
+ 
+ 	#
+@@ -919,6 +917,26 @@ function kdump_modify_config()						   #
+ 	KDUMP_REQUIRED_PROGRAMS="$KDUMP_REQUIRED_PROGRAMS ssh"
+     fi
+ 
++    # make sure NSS works somehow
++    cp /etc/hosts "${dest}/etc"
++    { cat <<-EOF
++	passwd: files
++	shadow: files
++	group: files
++EOF
++      grep '^[[:space:]]*hosts:' /etc/nsswitch.conf \
++	  || echo 'hosts: dns [!UNAVAIL=return] files'
++    } > "${dest}/etc/nsswitch.conf"
++
++    # install necessary NSS modules
++    local _nssmods=$(
++	sed -e 's/#.*//; s/^[^:]*://; s/\[[^]]*\]//' \
++	    "${dest}/etc/nsswitch.conf" \
++	    | tr -s '[:space:]' '\n' | sort -u | tr '\n' '|' )
++    _nssmods=${_nssmods#|}
++    _nssmods=${_nssmods%|}
++    inst_libdir_file -n "/libnss_($_nssmods)" 'libnss_*.so*'
++
+     #
+     # dump the configuration file, modifying:
+     #   KDUMP_SAVEDIR  -> resolved path
