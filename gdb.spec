@@ -247,6 +247,7 @@ Patch2008:      gdb-testsuite-i386-pkru-exp.patch
 Patch2009:      gdb-s390-handle-arch13.diff
 Patch2010:      gdb-fix-heap-use-after-free-in-typename-concat.patch
 Patch2011:      gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch
+Patch2012:      gdb-0001-remove-alloca-0-calls.patch
 
 # Proposed patch for PR symtab/24971
 Patch2500:      gdb-symtab-prefer-var-def-over-decl.patch
@@ -599,6 +600,7 @@ find -name "*.info*"|xargs rm -f
 %patch2009 -p1
 %patch2010 -p1
 %patch2011 -p1
+%patch2012 -p1
 
 %patch2500 -p1
 %patch2501 -p1

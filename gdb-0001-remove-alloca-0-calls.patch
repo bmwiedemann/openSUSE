@@ -1,0 +1,57 @@
+Remove alloca(0) calls
+
+PR gdb/24653 points out that a gcc snapshot will complain about the
+calls to alloca(0) in gdb.
+
+These calls are only needed when using the C alloca.  I'm inclined to
+think that no current platform needs this, so this patch removes the
+calls.
+
+Let me know what you think.
+
+gdb/ChangeLog
+2019-06-14  Tom Tromey  <tromey@adacore.com>
+
+	PR gdb/24653:
+	* regcache.c (registers_changed): Don't call alloca.
+	* top.c (execute_command): Don't call alloca.
+
+---
+ gdb/ChangeLog  | 6 ++++++
+ gdb/regcache.c | 7 -------
+ gdb/top.c      | 4 ----
+ 3 files changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/gdb/regcache.c b/gdb/regcache.c
+index 6e3eee96631..323f0f5ab4e 100644
+--- a/gdb/regcache.c
++++ b/gdb/regcache.c
+@@ -454,13 +454,6 @@ void
+ registers_changed (void)
+ {
+   registers_changed_ptid (minus_one_ptid);
+-
+-  /* Force cleanup of any alloca areas if using C alloca instead of
+-     a builtin alloca.  This particular call is used to clean up
+-     areas allocated by low level target code which may build up
+-     during lengthy interactions between gdb and the target before
+-     gdb gives control to the user (ie watchpoints).  */
+-  alloca (0);
+ }
+ 
+ void
+diff --git a/gdb/top.c b/gdb/top.c
+index b46de90f755..857207c3767 100644
+--- a/gdb/top.c
++++ b/gdb/top.c
+@@ -560,10 +560,6 @@ execute_command (const char *p, int from_tty)
+   auto cleanup_if_error = make_scope_exit (bpstat_clear_actions);
+   scoped_value_mark cleanup = prepare_execute_command ();
+ 
+-  /* Force cleanup of any alloca areas if using C alloca instead of
+-     a builtin alloca.  */
+-  alloca (0);
+-
+   /* This can happen when command_line_input hits end of file.  */
+   if (p == NULL)
+     {
