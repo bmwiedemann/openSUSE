@@ -17,8 +17,10 @@ unsorted:
   - ASL-devel 
   - ASL-doc 
   - AppCSXCAD 
+  - AppStream: [i586] 
   - AppStream-devel 
   - AppStream-doc 
+  - AppStream-lang: [i586] 
   - AusweisApp2 
   - Bear 
   - Botan 
@@ -76,6 +78,8 @@ unsorted:
   - Mesa-demo 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
+  - Mesa-dri-devel: [i586] # devel package of dvd:libgbm1 
+  - Mesa-dri-nouveau: [i586] 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
   - Mesa-libEGL-devel 
@@ -96,7 +100,10 @@ unsorted:
   - Mesa-libglapi-devel 
   - Mesa-libglapi-devel-32bit: [x86_64] 
   - Mesa-libglapi0-32bit: [x86_64] 
+  - ModemManager: [i586] 
+  - ModemManager-bash-completion: [i586] 
   - ModemManager-devel 
+  - ModemManager-lang: [i586] 
   - Modules 
   - Modules-doc 
   - MotionBox 
@@ -107,13 +114,20 @@ unsorted:
   - MozillaFirefox-devel 
   - MozillaFirefox-translations-common: [i586] 
   - MozillaFirefox-translations-other 
+  - MozillaThunderbird: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - MozillaThunderbird-translations-common: [i586] 
   - MozillaThunderbird-translations-other 
   - MultiMarkdown-6 
   - MyGUI 
   - MyGUI-demo 
   - MyGUI-devel 
   - MyGUI-devel-doc 
+  - NetworkManager: [i586] 
+  - NetworkManager-applet: [i586] 
+  - NetworkManager-applet-lang: [i586] 
+  - NetworkManager-branding-openSUSE: [i586] 
   - NetworkManager-branding-upstream 
+  - NetworkManager-connection-editor: [i586] 
   - NetworkManager-devel 
   - NetworkManager-devel-32bit: [x86_64] 
   - NetworkManager-fortisslvpn 
@@ -125,12 +139,25 @@ unsorted:
   - NetworkManager-l2tp 
   - NetworkManager-l2tp-gnome 
   - NetworkManager-l2tp-lang 
+  - NetworkManager-lang: [i586] 
   - NetworkManager-libreswan 
   - NetworkManager-libreswan-gnome 
   - NetworkManager-libreswan-lang 
+  - NetworkManager-openconnect: [i586] 
+  - NetworkManager-openconnect-gnome: [i586] 
+  - NetworkManager-openconnect-lang: [i586] 
+  - NetworkManager-openvpn: [i586] 
+  - NetworkManager-openvpn-gnome: [i586] 
+  - NetworkManager-openvpn-lang: [i586] 
+  - NetworkManager-pptp: [i586] 
+  - NetworkManager-pptp-gnome: [i586] 
+  - NetworkManager-pptp-lang: [i586] 
   - NetworkManager-strongswan 
   - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
+  - NetworkManager-vpnc: [i586] 
+  - NetworkManager-vpnc-gnome: [i586] 
+  - NetworkManager-vpnc-lang: [i586] 
   - OOKiedokie 
   - OpenColorIO 
   - OpenColorIO-devel 
@@ -157,9 +184,14 @@ unsorted:
   - OpenShadingLanguage-doc 
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
+  - PackageKit: [i586] 
   - PackageKit-Qt-devel 
+  - PackageKit-backend-zypp: [i586] 
+  - PackageKit-branding-openSUSE: [i586] 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
+  - PackageKit-gtk3-module: [i586] 
+  - PackageKit-lang: [i586] 
   - PgTcl 
   - Photini 
   - PlayOnLinux 
@@ -271,7 +303,9 @@ unsorted:
   - VirtualGL 
   - VirtualGL-32bit: [x86_64] 
   - VirtualGL-devel 
+  - WindowMaker: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - WindowMaker-devel 
+  - WindowMaker-themes: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - WoeUSB 
   - XyGrib 
   - YODA-devel 
@@ -288,6 +322,8 @@ unsorted:
   - abi-dumper 
   - abi-monitor 
   - abi-tracker 
+  - abiword: [i586] 
+  - abiword-docs: [i586] 
   - abook 
   - abook-lang 
   - abootimg 
@@ -297,12 +333,18 @@ unsorted:
   - acars-examples 
   - acarsdec 
   - accerciser-plugin-IPython 
+  - accounts-qml-module: [i586] 
   - accounts-qml-module-doc 
+  - accountsservice: [i586] 
   - accountsservice-devel 
+  - accountsservice-lang: [i586] 
   - acct 
   - ack 
   - acpi 
+  - acpica: [i586] 
+  - acpid: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - actkbd 
+  - adaptec-firmware: [i586] 
   - adaptx 
   - adaptx-doc 
   - adaptx-javadoc 
@@ -371,6 +413,7 @@ unsorted:
   - adolc-devel-32bit: [x86_64] 
   - adolc-doc 
   - ads 
+  - adwaita-qt5: [i586] 
   - aegisub: [x86_64] 
   - aelfred 
   - aelfred-javadoc 
@@ -379,6 +422,7 @@ unsorted:
   - afl 
   - agenda 
   - agenda-lang 
+  - agrep: [i586] 
   - aha 
   - aide 
   - aide-test 
@@ -391,13 +435,34 @@ unsorted:
   - aisleriot-lang 
   - aisleriot-themes 
   - akonadi-calendar-devel 
+  - akonadi-calendar-lang: [i586] 
+  - akonadi-calendar-tools: [i586] 
+  - akonadi-calendar-tools-lang: [i586] 
+  - akonadi-contact: [i586] 
   - akonadi-contact-devel 
+  - akonadi-contact-lang: [i586] 
+  - akonadi-import-wizard: [i586] 
   - akonadi-import-wizard-devel 
+  - akonadi-import-wizard-lang: [i586] 
+  - akonadi-mime: [i586] 
   - akonadi-mime-devel 
+  - akonadi-mime-lang: [i586] 
   - akonadi-notes-devel 
+  - akonadi-notes-lang: [i586] 
+  - akonadi-plugin-calendar: [i586] 
+  - akonadi-plugin-contacts: [i586] 
+  - akonadi-plugin-kalarmcal: [i586] 
+  - akonadi-plugin-mime: [i586] 
+  - akonadi-search: [i586] 
   - akonadi-search-devel 
+  - akonadi-search-lang: [i586] 
+  - akonadi-server: [i586] 
   - akonadi-server-devel 
+  - akonadi-server-lang: [i586] 
+  - akonadi-server-sqlite: [i586] 
   - akonadiconsole 
+  - akregator: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - akregator-lang: [i586] 
   - alac 
   - alac-devel 
   - alacarte 
@@ -421,6 +486,7 @@ unsorted:
   - allegro44-tools 
   - almanah 
   - almanah-lang 
+  - alpine: [i586] # suggested by dvd:suggested:patterns-base-console 
   - alpine-branding-openSUSE 
   - alsa-devel 
   - alsa-devel-32bit: [x86_64] 
@@ -433,6 +499,7 @@ unsorted:
   - alsa-plugins-lavrate 
   - alsa-plugins-maemo 
   - alsa-plugins-maemo-32bit: [x86_64] 
+  - alsa-plugins-pulse: [i586] 
   - alsa-plugins-samplerate 
   - alsa-plugins-samplerate-32bit: [x86_64] 
   - alsa-plugins-speex 
@@ -445,6 +512,7 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda: [x86_64] 
+  - amarok: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - amarok-lang 
   - amazon-ecs-init 
   - amazon-ssm-agent 
@@ -462,7 +530,11 @@ unsorted:
   - android-udev-rules 
   - angelscript 
   - angelscript-devel 
+  - anjuta: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
   - anjuta-devel 
+  - anjuta-extras: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
+  - anjuta-extras-lang: [i586] 
+  - anjuta-lang: [i586] 
   - anki 
   - ansible 
   - ansible-cmdb 
@@ -604,6 +676,7 @@ unsorted:
   - apache2-mod_apparmor 
   - apache2-mod_auth_openidc 
   - apache2-mod_authn_otp 
+  - apache2-mod_dnssd: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - apache2-mod_encoding 
   - apache2-mod_evasive 
   - apache2-mod_fcgid 
@@ -640,7 +713,9 @@ unsorted:
   - appmenu-gtk3-module 
   - appmenu-registrar 
   - appres 
+  - appstream-glib: [i586] 
   - appstream-glib-devel 
+  - appstream-glib-lang: [i586] 
   - apt-cacher-ng 
   - apulse: [i586] 
   - aqbanking 
@@ -669,12 +744,18 @@ unsorted:
   - argus 
   - argus-client 
   - argus-server 
+  - argyllcms: [i586] 
   - argyllcms-doc 
+  - aria2: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - aria2-devel 
+  - aria2-lang: [i586] 
   - arj 
+  - ark: [i586] 
+  - ark-lang: [i586] 
   - armadillo-devel 
   - armadillo-devel-32bit: [x86_64] 
   - armadillo-doc 
+  - armagetron: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - armnn: [x86_64] 
   - armnn-devel: [x86_64] 
   - armnn-extratests: [x86_64] 
@@ -714,6 +795,7 @@ unsorted:
   - asm5-examples 
   - asm5-javadoc 
   - asn1c 
+  - aspell: [i586] 
   - aspell-af 
   - aspell-agal 
   - aspell-am 
@@ -725,14 +807,21 @@ unsorted:
   - aspell-bn 
   - aspell-br 
   - aspell-ca 
+  - aspell-cs: [i586] 
   - aspell-csb 
   - aspell-cy 
+  - aspell-da: [i586] 
+  - aspell-de: [i586] 
   - aspell-devel 
+  - aspell-el: [i586] 
+  - aspell-en: [i586] 
   - aspell-eo 
+  - aspell-es: [i586] 
   - aspell-et 
   - aspell-fa 
   - aspell-fi 
   - aspell-fo 
+  - aspell-fr: [i586] 
   - aspell-fy 
   - aspell-ga 
   - aspell-gd 
@@ -745,12 +834,14 @@ unsorted:
   - aspell-hil 
   - aspell-hr 
   - aspell-hsb 
+  - aspell-hu: [i586] 
   - aspell-hus 
   - aspell-hy 
   - aspell-ia 
   - aspell-id 
   - aspell-is 
   - aspell-ispell 
+  - aspell-it: [i586] 
   - aspell-kn 
   - aspell-ku 
   - aspell-ky 
@@ -772,12 +863,17 @@ unsorted:
   - aspell-ny 
   - aspell-or 
   - aspell-pa 
+  - aspell-pl: [i586] 
+  - aspell-pt_BR: [i586] 
+  - aspell-pt_PT: [i586] 
   - aspell-qu 
   - aspell-ro 
+  - aspell-ru: [i586] 
   - aspell-rw 
   - aspell-sc 
   - aspell-sk 
   - aspell-sl 
+  - aspell-spell: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - aspell-sr 
   - aspell-sv 
   - aspell-sw 
@@ -802,6 +898,7 @@ unsorted:
   - asteroids3D 
   - astyle 
   - asusfan 
+  - at: [i586] 
   - at-spi-sharp 
   - at-spi-sharp-devel 
   - at-spi2-atk-devel 
@@ -823,6 +920,7 @@ unsorted:
   - atkmm1_6-devel-32bit: [x86_64] 
   - atkmm1_6-doc 
   - atlascpp-devel 
+  - atmel-firmware: [i586] 
   - atomiks 
   - atomix 
   - atomix-lang 
@@ -836,6 +934,7 @@ unsorted:
   - atril-thumbnailer 
   - attica-qt5-devel 
   - attica-qt5-devel-32bit: [x86_64] 
+  - attr: [i586] 
   - attractmode 
   - aubio-tools 
   - audacious 
@@ -873,6 +972,8 @@ unsorted:
   - autoconf213 
   - autocutsel 
   - autofdo 
+  - autofs: [i586] 
+  - autogen: [i586] 
   - autojump 
   - autonym-fonts 
   - autoopts 
@@ -898,6 +999,7 @@ unsorted:
   - avr-libc 
   - avrdude 
   - avrdude-devel 
+  - awesfx: [i586] 
   - awesome 
   - awesome-branding-openSUSE 
   - awesome-branding-upstream 
@@ -1049,6 +1151,7 @@ unsorted:
   - azure-cli-telemetry 
   - azure-cli-test 
   - azure-cli-vm 
+  - b43-fwcutter: [i586] 
   - babe 
   - babelstone-han-fonts 
   - babelstone-marchen-fonts 
@@ -1069,7 +1172,17 @@ unsorted:
   - baka-mplayer 
   - ballerburg 
   - baloo5-devel 
+  - baloo5-file: [i586] 
+  - baloo5-file-lang: [i586] 
+  - baloo5-imports: [i586] 
+  - baloo5-imports-lang: [i586] 
+  - baloo5-kioslaves: [i586] 
+  - baloo5-kioslaves-lang: [i586] 
+  - baloo5-tools: [i586] 
+  - baloo5-tools-lang: [i586] 
+  - baloo5-widgets: [i586] 
   - baloo5-widgets-devel 
+  - baloo5-widgets-lang: [i586] 
   - balsa 
   - balsa-lang 
   - bam 
@@ -1077,6 +1190,8 @@ unsorted:
   - bamf-devel 
   - bamf-doc 
   - bandwidth 
+  - baobab: [i586] 
+  - baobab-lang: [i586] 
   - barbie_seahorse_adventures 
   - barcode 
   - barcode-devel 
@@ -1130,6 +1245,7 @@ unsorted:
   - bdfresize 
   - bdftopcf 
   - bea-stax 
+  - bea-stax-api: [i586] 
   - beansbinding 
   - beansbinding-javadoc 
   - beets 
@@ -1159,6 +1275,8 @@ unsorted:
   - biboumi 
   - bibtool 
   - bibview 
+  - bijiben: [i586] 
+  - bijiben-lang: [i586] 
   - bind-devel 
   - bind-devel-32bit: [x86_64] 
   - bindfs 
@@ -1166,6 +1284,7 @@ unsorted:
   - binutils-devel-32bit: [x86_64] 
   - binutils-gold 
   - binwalk 
+  - biosdevname: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - bird 
   - bird-common 
   - bird-doc 
@@ -1215,6 +1334,10 @@ unsorted:
   - blogbench 
   - blogc 
   - blosc-devel 
+  - blueberry: [i586] 
+  - blueberry-lang: [i586] 
+  - bluedevil5: [i586] 
+  - bluedevil5-lang: [i586] 
   - bluefish 
   - blueman 
   - blueman-lang 
@@ -1226,8 +1349,12 @@ unsorted:
   - bluez-cups 
   - bluez-devel 
   - bluez-devel-32bit: [x86_64] 
+  - bluez-firmware: [i586] 
   - bluez-qt-devel 
+  - bluez-qt-imports: [i586] 
+  - bluez-qt-udev: [i586] 
   - bluez-test 
+  - bluez-tools: [i586] 
   - bmake 
   - bmon 
   - bnd-maven-plugin 
@@ -1240,6 +1367,7 @@ unsorted:
   - boinc-client-lang 
   - boinc-manager 
   - boinc-manager-lang 
+  - bolt: [i586] 
   - bolt-tools 
   - bomber 
   - bomber-lang 
@@ -1302,7 +1430,16 @@ unsorted:
   - bpftool 
   - bpm-tools 
   - branding-upstream 
+  - brasero: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - brasero-devel 
+  - brasero-lang: [i586] 
+  - brasero-nautilus: [i586] 
+  - breeze: [i586] 
+  - breeze5-cursors: [i586] 
+  - breeze5-decoration: [i586] 
+  - breeze5-style: [i586] 
+  - breeze5-style-lang: [i586] 
+  - breeze5-wallpapers: [i586] 
   - brevity 
   - brickd 
   - brickv 
@@ -1315,8 +1452,14 @@ unsorted:
   - brlapi-devel 
   - brlapi-java 
   - brlemu 
+  - brltty: [i586] 
+  - brltty-driver-at-spi2: [i586] 
+  - brltty-driver-brlapi: [i586] 
   - brltty-driver-espeak 
   - brltty-driver-libbraille 
+  - brltty-driver-speech-dispatcher: [i586] 
+  - brltty-driver-xwindow: [i586] 
+  - brltty-lang: [i586] 
   - brltty-utils 
   - brotli 
   - browserpass-native 
@@ -1327,6 +1470,7 @@ unsorted:
   - bs 
   - bs-update 
   - bs2b-tools 
+  - bsd-games: [i586] # suggested by dvd:suggested:patterns-base-console 
   - bsdiff 
   - bsf 
   - bsf-javadoc 
@@ -1346,7 +1490,10 @@ unsorted:
   - btcflash 
   - btfs 
   - btrfs-extent-same 
+  - btrfsmaintenance: [i586] 
+  - btrfsprogs: [i586] 
   - btrfsprogs-static 
+  - btrfsprogs-udev-rules: [i586] 
   - bucklespring 
   - buffer 
   - bugreporter 
@@ -1367,6 +1514,7 @@ unsorted:
   - bumpversion 
   - busybox 
   - busybox-container 
+  - busybox-static: [i586] 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -1398,6 +1546,7 @@ unsorted:
   - cabal-install 
   - cabal-install-bash-completion 
   - cabal2spec 
+  - cabextract: [i586] 
   - caca-utils 
   - cachefilesd 
   - cacti 
@@ -1469,7 +1618,9 @@ unsorted:
   - calc-devel 
   - calcurse 
   - calcurse-lang 
+  - calendarsupport: [i586] 
   - calendarsupport-devel 
+  - calendarsupport-lang: [i586] 
   - calibre 
   - calligra 
   - calligra-devel 
@@ -1527,6 +1678,8 @@ unsorted:
   - casync: [x86_64] 
   - catatonit: [i586] 
   - catcodec 
+  - catfish: [i586] 
+  - catfish-lang: [i586] 
   - cava 
   - cbi-plugins 
   - cbi-plugins-javadoc 
@@ -1546,6 +1699,7 @@ unsorted:
   - ccze 
   - ccze-devel 
   - cd-paranoia 
+  - cdda2wav: [i586] 
   - cddlib-devel 
   - cddlib-doc 
   - cdecl 
@@ -1558,6 +1712,8 @@ unsorted:
   - cdk-devel 
   - cdogs-sdl 
   - cdparanoia-devel 
+  - cdrdao: [i586] 
+  - cdrecord: [i586] 
   - cdrskin 
   - cec-client 
   - cecilia 
@@ -1635,7 +1791,9 @@ unsorted:
   - check_postgres 
   - checkbashisms 
   - checkpolicy: [i586] 
+  - cheese: [i586] 
   - cheese-devel 
+  - cheese-lang: [i586] 
   - chemical-mime-data 
   - cherrytree 
   - cherrytree-lang 
@@ -1695,12 +1853,14 @@ unsorted:
   - cinnamon-settings-daemon-lang 
   - cinnamon-theme-adapta 
   - cinnamon-theme-plata 
+  - circuslinux: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - civetweb 
   - civetweb-devel 
   - cjs 
   - cjs-devel 
   - ck-devel 
   - ckb-next 
+  - ckermit: [i586] 
   - ckermit-doc 
   - clFFT: [x86_64] 
   - clFFT-devel: [x86_64] 
@@ -1724,14 +1884,20 @@ unsorted:
   - clang8-checker 
   - clang8-devel 
   - clang8-devel-32bit: [x86_64] 
+  - clang9: [i586] 
+  - clang9-checker: [i586] 
   - clang9-devel 
   - clang9-devel-32bit: [x86_64] 
+  - clang9-doc: [i586] 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
   - clanlib-examples 
   - clatd 
+  - claws-mail: [i586] 
   - claws-mail-devel 
+  - claws-mail-lang: [i586] 
+  - clazy: [i586] 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -1778,7 +1944,6 @@ unsorted:
   - cmpi-bindings-pywbem 
   - cmpi-bindings-ruby 
   - cmpi-pywbem-base 
-  - cmpi-pywbem-power-management 
   - cmrt-devel 
   - cmuclmtk 
   - cmus 
@@ -1850,9 +2015,13 @@ unsorted:
   - colm-devel 
   - colm-doc 
   - color-filesystem 
+  - colord: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - colord-color-profiles: [i586] 
   - colord-gtk 
+  - colord-gtk-lang: [i586] 
   - colord-kde 
   - colord-kde-lang 
+  - colord-lang: [i586] 
   - colordiff 
   - colorhug-client 
   - colorhug-client-lang 
@@ -1861,6 +2030,7 @@ unsorted:
   - colorpicker-lang 
   - compartm 
   - compcache 
+  - compface: [i586] 
   - compface-devel 
   - compicc 
   - compiz 
@@ -1966,6 +2136,7 @@ unsorted:
   - cpluff 
   - cpmono_v07-fonts 
   - cpp7 
+  - cppcheck: [i586] 
   - cppcheck-gui 
   - cppi 
   - cppi-lang 
@@ -1981,6 +2152,7 @@ unsorted:
   - cppzmq-devel 
   - cpuid 
   - cpulimit 
+  - cpupower: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - cpupower-bench 
   - cpupower-devel 
   - cpuset 
@@ -2015,6 +2187,7 @@ unsorted:
   - cross-arm-binutils 
   - cross-arm-gcc7: [x86_64] 
   - cross-arm-gcc9: [x86_64] 
+  - cross-arm-gcc9-icecream-backend: [x86_64] 
   - cross-arm-none-gcc7 
   - cross-arm-none-gcc7-bootstrap 
   - cross-arm-none-gcc9 
@@ -2108,6 +2281,7 @@ unsorted:
   - cryptctl: [x86_64] 
   - crystalhd-firmware 
   - csindex 
+  - csmash: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - csmith 
   - csound 
   - csound-devel 
@@ -2136,6 +2310,8 @@ unsorted:
   - cups-devel-32bit: [x86_64] 
   - cups-filters-devel 
   - cups-pdf 
+  - cups-pk-helper: [i586] 
+  - cups-pk-helper-lang: [i586] 
   - cups-rpm-helper 
   - cura: [x86_64] 
   - cura-engine: [x86_64] 
@@ -2151,6 +2327,7 @@ unsorted:
   - cutterff-lang 
   - cvs-doc 
   - cvs2svn 
+  - cwstudio 
   - cxref 
   - cxsc 
   - cxsc-devel 
@@ -2162,6 +2339,7 @@ unsorted:
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
   - cyrus-sasl-32bit: [x86_64] 
+  - cyrus-sasl-crammd5: [i586] 
   - cyrus-sasl-crammd5-32bit: [x86_64] 
   - cyrus-sasl-devel-32bit: [x86_64] 
   - cyrus-sasl-digestmd5-32bit: [x86_64] 
@@ -2198,12 +2376,18 @@ unsorted:
   - dapl-devel-32bit: [x86_64] 
   - dapl-utils 
   - daps 
+  - dar: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - dar-lang: [i586] 
   - darktable: [x86_64] 
   - darktable-doc: [x86_64] 
   - darktable-tools-basecurve: [x86_64] 
   - darktable-tools-noise: [x86_64] 
   - darts 
   - dash 
+  - dasher: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - dasher-data-extras: [i586] 
+  - dasher-data-recommended: [i586] 
+  - dasher-lang: [i586] 
   - data-partition-service 
   - datamash 
   - dataquay-devel 
@@ -2218,6 +2402,7 @@ unsorted:
   - davix-devel 
   - dazzle-list-counters 
   - db48-doc 
+  - db48-utils: [i586] 
   - dbench 
   - dbench4 
   - dbh-devel 
@@ -2246,6 +2431,8 @@ unsorted:
   - dcmtk 
   - dcmtk-devel 
   - dconf-devel 
+  - dconf-editor: [i586] 
+  - dconf-editor-lang: [i586] 
   - dd-opentracing-cpp-devel 
   - dd_rescue 
   - dd_rescue-crypt 
@@ -2297,10 +2484,12 @@ unsorted:
   - deja-dup 
   - deja-dup-lang 
   - delaguardo-inconsolata_lgc-fonts 
+  - delayacct-utils: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - delta 
   - deltafs 
   - deluge 
   - deluge-lang 
+  - desktop-file-utils: [i586] 
   - desktopfolder 
   - desktopfolder-lang 
   - deutex 
@@ -2320,6 +2509,7 @@ unsorted:
   - dfu-tool 
   - dh-autoreconf 
   - dh-make 
+  - dhcp-client: [i586] 
   - dhcp-devel 
   - dhewm3 
   - dhex 
@@ -2345,6 +2535,8 @@ unsorted:
   - digikam-plugin-gmic 
   - digikam-plugins 
   - dina-bitmap-fonts 
+  - ding: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - ding-dict-de_en: [i586] 
   - dippi 
   - dippi-lang 
   - dirac 
@@ -2354,6 +2546,11 @@ unsorted:
   - direvent 
   - dirvish 
   - discount 
+  - discover: [i586] 
+  - discover-backend-flatpak: [i586] 
+  - discover-backend-fwupd: [i586] 
+  - discover-backend-packagekit: [i586] 
+  - discover-lang: [i586] 
   - discover-notifier 
   - diskimage-builder 
   - diskscan 
@@ -2378,8 +2575,11 @@ unsorted:
   - dkgpg 
   - dkimproxy 
   - dkms 
+  - dleyna-connector-dbus: [i586] 
   - dleyna-core-devel 
+  - dleyna-renderer: [i586] 
   - dleyna-renderer-devel 
+  - dleyna-server: [i586] 
   - dleyna-server-devel 
   - dm-zoned-tools 
   - dmd 
@@ -2428,7 +2628,10 @@ unsorted:
   - docker_auth 
   - dogtail 
   - doh 
+  - dolphin: [i586] 
   - dolphin-devel 
+  - dolphin-part: [i586] 
+  - dolphin-part-lang: [i586] 
   - dolphin-plugins 
   - dolphin-plugins-lang 
   - dom2-core-tests 
@@ -2439,8 +2642,10 @@ unsorted:
   - domination 
   - domination-data 
   - doomsday 
+  - dos2unix: [i586] 
   - dosbox 
   - dosemu 
+  - dosfstools: [i586] 
   - dotconf-devel 
   - double-conversion-devel 
   - double-cross 
@@ -2583,6 +2788,7 @@ unsorted:
   - ecryptfs-utils-devel 
   - ecryptfs-utils-devel-32bit: [x86_64] 
   - ecwolf 
+  - ed: [i586] 
   - edgar 
   - edgar-data 
   - edgar-lang 
@@ -2611,10 +2817,11 @@ unsorted:
   - elementary-icon-theme-gimp-palette 
   - elementary-icon-theme-inkscape-palette 
   - elementary-wallpapers 
+  - elementary-xfce-icon-theme: [i586] 
   - elemines 
   - elftoaout 
   - elib 
-  - elinks: [x86_64] 
+  - elinks 
   - elisa 
   - elisa-lang 
   - elixir 
@@ -2627,8 +2834,11 @@ unsorted:
   - emacs-color-theme 
   - emacs-completion-golang 
   - emacs-el 
+  - emacs-flim: [i586] 
+  - emacs-nox: [i586] 
   - emacs-scheme48 
   - emacs-semi 
+  - emacs-w3m: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - embree-devel-static: [x86_64] 
   - embryo 
   - emf2svg-conv 
@@ -2661,6 +2871,8 @@ unsorted:
   - engauge-digitizer-devel-doc 
   - engauge-digitizer-doc 
   - engdic 
+  - engrampa: [i586] 
+  - engrampa-lang: [i586] 
   - enigmail 
   - enlightenment 
   - enlightenment-branding-openSUSE 
@@ -2686,7 +2898,9 @@ unsorted:
   - envoy-protoc-gen-validate-source 
   - envoy-proxy: [x86_64] 
   - envy24control 
+  - eog: [i586] 
   - eog-devel 
+  - eog-lang: [i586] 
   - eog-plugin-exif-display 
   - eog-plugin-export-to-folder 
   - eog-plugin-fit-to-width 
@@ -2699,7 +2913,9 @@ unsorted:
   - eog-plugin-pythonconsole 
   - eog-plugin-send-by-mail 
   - eog-plugin-slideshowshuffle 
+  - eog-plugins: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - eog-plugins-data 
+  - eog-plugins-lang: [i586] 
   - eolie 
   - eolie-lang 
   - eom 
@@ -2746,7 +2962,9 @@ unsorted:
   - erlang-src 
   - erlang-wx 
   - erlang-wx-src 
+  - espeak: [i586] 
   - espeak-devel 
+  - espeak-ng: [i586] 
   - espeak-ng-compat 
   - espeak-ng-compat-devel 
   - espeak-ng-devel 
@@ -2766,14 +2984,26 @@ unsorted:
   - evemu 
   - evemu-devel 
   - eventstat 
+  - eventviews: [i586] 
   - eventviews-devel 
+  - eventviews-lang: [i586] 
   - evieproto-devel 
+  - evince: [i586] 
   - evince-devel 
+  - evince-lang: [i586] 
+  - evince-plugin-comicsdocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - evince-plugin-djvudocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - evince-plugin-dvidocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - evince-plugin-pdfdocument: [i586] 
   - evince-plugin-psdocument 
+  - evince-plugin-tiffdocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - evince-plugin-xpsdocument: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - evmctl: [i586] 
   - evolution-data-server-32bit: [x86_64] 
   - evolution-data-server-devel 
   - evolution-devel 
+  - evolution-ews: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - evolution-ews-lang: [i586] 
   - evtest 
   - exa: [x86_64] 
   - exaile 
@@ -2784,14 +3014,21 @@ unsorted:
   - exempi-tools 
   - exercism 
   - exfat-utils 
+  - exif: [i586] 
+  - exiftool: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - exiftran 
   - eximon 
   - eximstats-html 
   - exiv2 
   - exiv2-lang 
   - exmh 
+  - exo-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - exo-branding-upstream 
+  - exo-data: [i586] 
   - exo-devel 
+  - exo-helpers: [i586] 
+  - exo-lang: [i586] 
+  - exo-tools: [i586] 
   - exodusii-devel 
   - expect-devel 
   - explain 
@@ -2920,6 +3157,7 @@ unsorted:
   - fd-bash-completion 
   - fd-fish-completion 
   - fd-zsh-completion 
+  - fd0ssh: [i586] 
   - featherpad 
   - featherpad-lang 
   - fec-devel 
@@ -2954,6 +3192,7 @@ unsorted:
   - fence-agents-amt_ws 
   - fence-agents-devel 
   - fence-sanlock 
+  - festival: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - festival-devel 
   - fetchmail 
   - fetchmailconf 
@@ -2974,6 +3213,8 @@ unsorted:
   - ffmpeg-4-libswscale-devel 
   - ffmpeg-4-private-devel 
   - ffmpegthumbnailer 
+  - ffmpegthumbs: [i586] 
+  - ffmpegthumbs-lang: [i586] 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -3007,6 +3248,8 @@ unsorted:
   - figlet 
   - file-devel 
   - file-devel-32bit: [x86_64] 
+  - file-roller: [i586] 
+  - file-roller-lang: [i586] 
   - file-unpack 
   - filebench 
   - filelight 
@@ -3047,6 +3290,8 @@ unsorted:
   - firewall-applet 
   - firewall-config 
   - firewall-macros 
+  - firewalld: [i586] 
+  - firewalld-lang: [i586] 
   - firewalld-rpcbind-helper 
   - fish 
   - fish-devel 
@@ -3073,6 +3318,7 @@ unsorted:
   - flashfocus 
   - flashrom 
   - flatbuffers-devel 
+  - flatpak: [i586] 
   - flatpak-devel 
   - flatpak-zsh-completion 
   - flawfinder 
@@ -3112,6 +3358,7 @@ unsorted:
   - foliate 
   - foliate-lang 
   - folks-devel 
+  - folks-lang: [i586] 
   - folks-tools 
   - foma 
   - foma-devel 
@@ -3125,6 +3372,7 @@ unsorted:
   - fontawesome-fonts-web 
   - fontcacheproto-devel 
   - fontconfig-32bit: [x86_64] 
+  - fontconfig-devel: [i586] # devel package of dvd:fontconfig-lang 
   - fontconfig-devel-32bit: [x86_64] 
   - fontconfig-devel-doc 
   - fontconfig-doc 
@@ -3155,13 +3403,17 @@ unsorted:
   - fping 
   - fplll 
   - fplll-devel 
+  - fprintd: [i586] 
   - fprintd-devel 
+  - fprintd-lang: [i586] 
+  - fprintd-pam: [i586] 
   - fractal 
   - fractal-lang 
   - frame 
   - frame-devel 
   - frameworkintegration-devel 
   - frameworkintegration-devel-32bit: [x86_64] 
+  - frameworkintegration-plugin: [i586] 
   - frameworkintegration-plugin-32bit: [x86_64] 
   - free-ttf-fonts 
   - freealut-devel 
@@ -3178,6 +3430,7 @@ unsorted:
   - freeglut-devel 
   - freeglut-devel-32bit: [x86_64] 
   - freeimage-devel 
+  - freeipmi: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - freeipmi-bmc-watchdog 
   - freeipmi-devel 
   - freeipmi-ipmidetectd 
@@ -3201,6 +3454,7 @@ unsorted:
   - freeradius-server-python 
   - freeradius-server-sqlite 
   - freeradius-server-utils 
+  - freerdp: [i586] 
   - freerdp-devel 
   - freerdp-server 
   - freerdp-wayland 
@@ -3213,6 +3467,7 @@ unsorted:
   - freetype 
   - freetype-devel 
   - freetype-tools 
+  - freetype2-devel: [i586] # devel package of dvd:libfreetype6 
   - freetype2-devel-32bit: [x86_64] 
   - freetype2-profile-tti35 
   - freexl-devel 
@@ -3220,6 +3475,7 @@ unsorted:
   - frei0r-plugins-opencv 
   - frescobaldi 
   - freshplayerplugin 
+  - fribidi: [i586] 
   - fribidi-devel 
   - frink 
   - fritzing 
@@ -3285,7 +3541,9 @@ unsorted:
   - fwnn-devel 
   - fwnncom 
   - fwts 
+  - fwupd: [i586] 
   - fwupd-devel 
+  - fwupd-lang: [i586] 
   - fxload 
   - fzf 
   - fzf-bash-completion 
@@ -3299,6 +3557,8 @@ unsorted:
   - gajim-lang 
   - gajim-plugin-omemo 
   - galaxis 
+  - galculator: [i586] 
+  - galculator-lang: [i586] 
   - gama 
   - gambas3 
   - gambas3-devel 
@@ -3415,8 +3675,12 @@ unsorted:
   - gbrainy 
   - gbrainy-lang 
   - gc-devel 
+  - gcab: [i586] 
   - gcab-devel 
+  - gcab-lang: [i586] 
   - gcad3d 
+  - gcal: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - gcal-lang: [i586] 
   - gcc-32bit: [x86_64] 
   - gcc-PIE 
   - gcc-ada 
@@ -3472,6 +3736,7 @@ unsorted:
   - gcin-gtk2-32bit: [x86_64] 
   - gcin-gtk3-32bit: [x86_64] 
   - gcin-qt5-32bit: [x86_64] 
+  - gcolor2: [i586] 
   - gcolor3 
   - gcompris 
   - gcompris-devel 
@@ -3504,10 +3769,12 @@ unsorted:
   - gcompris-voices-sr 
   - gcompris-voices-sv 
   - gcompris-voices-tr 
+  - gconf-polkit: [i586] 
   - gconf2-32bit: [x86_64] 
   - gconf2-devel 
   - gcovr 
   - gcovr-doc 
+  - gcr-ssh-askpass: [i586] 
   - gcstar 
   - gd-devel 
   - gd-devel-32bit: [x86_64] 
@@ -3525,13 +3792,18 @@ unsorted:
   - gdcm-libgdcm3_0 
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit: [x86_64] 
+  - gdk-pixbuf-loader-libopenraw: [i586] 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
   - gdl-devel 
   - gdlmm-devel 
+  - gdm: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - gdm-branding-openSUSE: [i586] 
   - gdm-branding-upstream 
   - gdm-devel 
+  - gdm-lang: [i586] 
   - gdm-systemd 
+  - gdmflexiserver: [i586] 
   - gdouros-abydos-fonts 
   - gdouros-abydos-fonts-doc 
   - gdouros-aegean-fonts 
@@ -3546,8 +3818,12 @@ unsorted:
   - gdouros-symbola-fonts 
   - gdouros-text-fonts 
   - gdouros-unidings-fonts 
+  - geany: [i586] 
   - geany-devel 
   - geany-doc 
+  - geany-lang: [i586] 
+  - geany-plugins: [i586] # suggested by dvd:suggested:patterns-lxde-lxde 
+  - geany-plugins-lang: [i586] 
   - geary 
   - geary-lang 
   - gebaar-libinput 
@@ -3584,6 +3860,7 @@ unsorted:
   - gedit-plugin-textsize 
   - gedit-plugin-translate 
   - gedit-plugin-wordcompletion 
+  - gedit-plugin-zeitgeist: [i586] 
   - gedit-theme-adapta 
   - gedit-theme-plata 
   - geekodoc 
@@ -3605,6 +3882,7 @@ unsorted:
   - genius-devel 
   - genius-lang 
   - genromfs 
+  - geoclue2: [i586] 
   - geoclue2-devel 
   - geocode-glib-devel 
   - geoipupdate 
@@ -4337,6 +4615,7 @@ unsorted:
   - gimp-plugin-lqr-lang 
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
+  - gimp-ufraw: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - ginac 
   - gio-branding-upstream 
   - gio-sharp 
@@ -4364,6 +4643,7 @@ unsorted:
   - givaro-devel 
   - givaro-doc 
   - gjiten 
+  - gjs: [i586] 
   - gkeyfile-sharp 
   - gkeyfile-sharp-devel 
   - gkrellm 
@@ -4372,7 +4652,9 @@ unsorted:
   - gkrellm-lang 
   - gkrellmd 
   - gl2ps-devel 
+  - glabels: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - glabels-devel 
+  - glabels-lang: [i586] 
   - glade-catalog-anjuta 
   - glade-catalog-evolution 
   - glade-catalog-gitg 
@@ -4452,6 +4734,7 @@ unsorted:
   - glyrc 
   - gmavenplus-plugin 
   - gmavenplus-plugin-javadoc 
+  - gmenudbusmenuproxy: [i586] 
   - gmetrics 
   - gmetrics-javadoc 
   - gmic 
@@ -4477,26 +4760,51 @@ unsorted:
   - gnome-2048 
   - gnome-2048-lang 
   - gnome-autoar-devel 
+  - gnome-backgrounds: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - gnome-backgrounds-lang: [i586] 
+  - gnome-bluetooth: [i586] 
   - gnome-bluetooth-devel 
+  - gnome-bluetooth-lang: [i586] 
   - gnome-books 
   - gnome-books-lang 
   - gnome-boxes 
   - gnome-boxes-lang 
+  - gnome-calculator: [i586] 
   - gnome-calculator-devel 
+  - gnome-calculator-lang: [i586] 
   - gnome-calendar 
   - gnome-calendar-lang 
+  - gnome-characters: [i586] 
+  - gnome-characters-lang: [i586] 
+  - gnome-clocks: [i586] 
+  - gnome-clocks-lang: [i586] 
+  - gnome-color-manager: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - gnome-color-manager-lang: [i586] 
   - gnome-colors-icon-theme 
   - gnome-common 
+  - gnome-contacts: [i586] 
+  - gnome-contacts-lang: [i586] 
+  - gnome-control-center: [i586] 
+  - gnome-control-center-color: [i586] 
   - gnome-control-center-devel 
+  - gnome-control-center-goa: [i586] 
+  - gnome-control-center-lang: [i586] 
+  - gnome-control-center-user-faces: [i586] 
   - gnome-desktop2 
   - gnome-desktop2-lang 
   - gnome-devel-docs 
   - gnome-devel-docs-lang 
+  - gnome-dictionary: [i586] 
+  - gnome-dictionary-lang: [i586] 
   - gnome-directory-thumbnailer 
   - gnome-directory-thumbnailer-lang 
+  - gnome-disk-utility: [i586] 
+  - gnome-disk-utility-lang: [i586] 
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
+  - gnome-documents: [i586] 
+  - gnome-documents-lang: [i586] 
   - gnome-epub-thumbnailer 
   - gnome-firmware 
   - gnome-firmware-lang 
@@ -4512,15 +4820,25 @@ unsorted:
   - gnome-gmail-notifier-lang 
   - gnome-internet-radio-locator 
   - gnome-internet-radio-locator-lang 
+  - gnome-keyring: [i586] 
+  - gnome-keyring-lang: [i586] 
+  - gnome-keyring-pam: [i586] 
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
   - gnome-keysign 
   - gnome-klotski 
   - gnome-klotski-lang 
   - gnome-latex 
+  - gnome-logs: [i586] 
+  - gnome-logs-lang: [i586] 
+  - gnome-maps: [i586] 
+  - gnome-maps-lang: [i586] 
+  - gnome-menus: [i586] 
   - gnome-menus-branding-SLED 
+  - gnome-menus-branding-openSUSE: [i586] 
   - gnome-menus-branding-upstream 
   - gnome-menus-devel 
+  - gnome-menus-lang: [i586] 
   - gnome-multi-writer 
   - gnome-multi-writer-lang 
   - gnome-nettool 
@@ -4530,56 +4848,109 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
+  - gnome-online-miners: [i586] 
+  - gnome-packagekit: [i586] 
   - gnome-packagekit-extras 
+  - gnome-packagekit-lang: [i586] 
   - gnome-passwordsafe 
   - gnome-passwordsafe-lang 
   - gnome-patch-translation 
+  - gnome-photos: [i586] 
+  - gnome-photos-lang: [i586] 
   - gnome-pie 
   - gnome-pomodoro 
   - gnome-pomodoro-lang 
+  - gnome-power-manager: [i586] 
+  - gnome-power-manager-lang: [i586] 
   - gnome-recipes 
   - gnome-recipes-lang 
   - gnome-robots 
   - gnome-robots-lang 
+  - gnome-screenshot: [i586] 
+  - gnome-screenshot-lang: [i586] 
   - gnome-search-tool 
   - gnome-search-tool-lang 
+  - gnome-session: [i586] 
+  - gnome-session-core: [i586] 
+  - gnome-session-default-session: [i586] 
+  - gnome-session-lang: [i586] 
+  - gnome-session-wayland: [i586] 
+  - gnome-settings-daemon: [i586] 
   - gnome-settings-daemon-devel 
+  - gnome-settings-daemon-lang: [i586] 
+  - gnome-shell: [i586] 
+  - gnome-shell-calendar: [i586] 
+  - gnome-shell-classic: [i586] 
+  - gnome-shell-classic-session: [i586] 
   - gnome-shell-devel 
+  - gnome-shell-extension-desktop-icons: [i586] 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
   - gnome-shell-extension-terminus 
+  - gnome-shell-extensions-common: [i586] 
+  - gnome-shell-extensions-common-lang: [i586] 
+  - gnome-shell-lang: [i586] 
+  - gnome-shell-search-provider-bijiben: [i586] 
   - gnome-shell-search-provider-boxes 
+  - gnome-shell-search-provider-contacts: [i586] 
+  - gnome-shell-search-provider-documents: [i586] 
   - gnome-shell-search-provider-eolie 
+  - gnome-shell-search-provider-epiphany: [i586] 
+  - gnome-shell-search-provider-gnome-calculator: [i586] 
   - gnome-shell-search-provider-gnome-calendar 
+  - gnome-shell-search-provider-gnome-characters: [i586] 
+  - gnome-shell-search-provider-gnome-clocks: [i586] 
+  - gnome-shell-search-provider-gnome-photos: [i586] 
   - gnome-shell-search-provider-gnome-recipes 
+  - gnome-shell-search-provider-gnome-terminal: [i586] 
+  - gnome-shell-search-provider-gnome-weather: [i586] 
   - gnome-shell-search-provider-gnote 
   - gnome-shell-search-provider-lollypop 
+  - gnome-shell-search-provider-nautilus: [i586] 
+  - gnome-shell-search-provider-seahorse: [i586] 
   - gnome-shell-theme-adapta 
   - gnome-shell-theme-plata 
+  - gnome-software: [i586] 
   - gnome-software-devel 
+  - gnome-software-lang: [i586] 
   - gnome-sound-recorder 
   - gnome-sound-recorder-lang 
   - gnome-subtitles 
   - gnome-subtitles-lang 
+  - gnome-system-monitor: [i586] 
+  - gnome-system-monitor-lang: [i586] 
   - gnome-taquin 
   - gnome-taquin-lang 
+  - gnome-terminal: [i586] 
+  - gnome-terminal-lang: [i586] 
   - gnome-tetravex 
   - gnome-tetravex-lang 
   - gnome-themes 
+  - gnome-themes-accessibility: [i586] 
+  - gnome-themes-accessibility-gtk2: [i586] 
   - gnome-themes-extras 
   - gnome-themes-lang 
   - gnome-todo 
   - gnome-todo-devel 
   - gnome-todo-lang 
+  - gnome-tweaks: [i586] 
+  - gnome-tweaks-lang: [i586] 
   - gnome-usage 
   - gnome-usage-lang 
+  - gnome-user-share: [i586] 
+  - gnome-user-share-lang: [i586] 
+  - gnome-version: [i586] 
   - gnome-vfs2 
   - gnome-vfs2-32bit: [x86_64] 
   - gnome-vfs2-devel 
   - gnome-vfs2-doc 
   - gnome-vfs2-lang 
+  - gnome-video-effects: [i586] 
   - gnome-video-effects-devel 
+  - gnome-weather: [i586] 
+  - gnome-weather-lang: [i586] 
+  - gnomekbd-tools: [i586] 
   - gnonograms 
   - gnonograms-devel 
   - gnonograms-lang 
@@ -4603,6 +4974,7 @@ unsorted:
   - gnu-regexp 
   - gnu-regexp-demo 
   - gnu-regexp-javadoc 
+  - gnu-unifont-bitmap-fonts: [i586] 
   - gnu-unifont-legacy-bitmap-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
@@ -4630,7 +5002,6 @@ unsorted:
   - gnumeric-devel 
   - gnumeric-doc 
   - gnumeric-lang 
-  - gnump3d 
   - gnuplot 
   - gnuplot-doc 
   - gnuradio 
@@ -4686,6 +5057,7 @@ unsorted:
   - godot-runner 
   - godot-server 
   - goffice-devel 
+  - goffice-lang: [i586] 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
   - golang-github-docker-libnetwork 
@@ -4770,6 +5142,7 @@ unsorted:
   - gpa-lang 
   - gpars 
   - gpars-bootstrap 
+  - gpart: [i586] 
   - gparted 
   - gparted-lang 
   - gpaste 
@@ -4780,6 +5153,7 @@ unsorted:
   - gperftools-devel-static 
   - gperiodic 
   - gperiodic-lang 
+  - gpgme: [i586] 
   - gpgmepp5 
   - gpgmepp5-32bit: [x86_64] 
   - gpgmepp5-devel 
@@ -4790,6 +5164,7 @@ unsorted:
   - gpick-lang 
   - gpicview 
   - gpicview-lang 
+  - gpm: [i586] 
   - gpm-devel 
   - gpomme 
   - gpp 
@@ -4802,6 +5177,7 @@ unsorted:
   - gpsd 
   - gpsd-clients 
   - gpsd-devel 
+  - gptfdisk: [i586] 
   - gptfdisk-fixparts 
   - gputils 
   - gputils-doc 
@@ -4833,10 +5209,13 @@ unsorted:
   - granite-lang 
   - grantlee-editor 
   - grantlee-editor-lang 
+  - grantlee5: [i586] 
   - grantlee5-32bit: [x86_64] 
   - grantlee5-devel 
   - grantlee5-devel-32bit: [x86_64] 
+  - grantleetheme: [i586] 
   - grantleetheme-devel 
+  - grantleetheme-lang: [i586] 
   - graphite2 
   - graphite2-devel 
   - graphviz-devel 
@@ -4856,6 +5235,7 @@ unsorted:
   - grass-devel 
   - grass-doc 
   - grc 
+  - grepmail: [i586] # suggested by dvd:suggested:patterns-base-console 
   - grfcodec 
   - gri 
   - grilo-devel 
@@ -4915,6 +5295,7 @@ unsorted:
   - gsettings-desktop-schemas-devel 
   - gsettings-qt 
   - gsettings-qt-devel 
+  - gsf-office-thumbnailer: [i586] 
   - gsl 
   - gsl-devel 
   - gsl-doc 
@@ -4974,7 +5355,9 @@ unsorted:
   - gstreamermm-doc 
   - gswrap 
   - gtest 
+  - gthumb: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - gthumb-devel 
+  - gthumb-lang: [i586] 
   - gti 
   - gtick 
   - gtick-lang 
@@ -4997,6 +5380,7 @@ unsorted:
   - gtk-sharp3-gapi 
   - gtk-sharp3-gapi-devel 
   - gtk-vnc-devel 
+  - gtk-vnc-lang: [i586] 
   - gtk-vnc-tools 
   - gtk2-branding-upstream 
   - gtk2-devel 
@@ -5028,10 +5412,12 @@ unsorted:
   - gtk2-metatheme-ambiant-mate 
   - gtk2-metatheme-arc 
   - gtk2-metatheme-bluebird 
+  - gtk2-metatheme-breeze: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - gtk2-metatheme-e17gtk 
   - gtk2-metatheme-elementary 
   - gtk2-metatheme-equinox 
   - gtk2-metatheme-greybird 
+  - gtk2-metatheme-greybird-geeko: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - gtk2-metatheme-mint 
   - gtk2-metatheme-nimbus 
   - gtk2-metatheme-numix 
@@ -5063,9 +5449,11 @@ unsorted:
   - gtk3-metatheme-ambiant-mate 
   - gtk3-metatheme-arc 
   - gtk3-metatheme-bluebird 
+  - gtk3-metatheme-breeze: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - gtk3-metatheme-e17gtk 
   - gtk3-metatheme-elementary 
   - gtk3-metatheme-greybird 
+  - gtk3-metatheme-greybird-geeko: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - gtk3-metatheme-mint 
   - gtk3-metatheme-numix 
   - gtk3-metatheme-paper 
@@ -5128,7 +5516,9 @@ unsorted:
   - guava20 
   - guava20-javadoc 
   - guava20-testlib 
+  - gucharmap: [i586] 
   - gucharmap-devel 
+  - gucharmap-lang: [i586] 
   - gudev-sharp 
   - gudev-sharp-devel 
   - guestfs-tools: [x86_64] 
@@ -5161,6 +5551,7 @@ unsorted:
   - guitarix 
   - guix 
   - gup 
+  - gupnp-av: [i586] 
   - gupnp-dlna-tools 
   - gupnp-tools 
   - gupnp-tools-lang 
@@ -5173,11 +5564,16 @@ unsorted:
   - guvcview-qt5-lang 
   - gv 
   - gvfs-32bit: [x86_64] 
+  - gvfs-backend-samba: [i586] 
+  - gvfs-backends: [i586] 
   - gvfs-devel 
+  - gvim: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - gwenhywfar 
   - gwenhywfar-devel 
   - gwenhywfar-lang 
   - gwenhywfar-tools 
+  - gwenview5: [i586] 
+  - gwenview5-lang: [i586] 
   - gyp 
   - gypsy 
   - gzdoom 
@@ -5186,6 +5582,7 @@ unsorted:
   - ha-cluster-bootstrap 
   - haas-proxy 
   - habootstrap-formula 
+  - hack-fonts: [i586] 
   - hackbench 
   - hackrf 
   - hackrf-devel 
@@ -5235,6 +5632,7 @@ unsorted:
   - hda-verb 
   - hdajackretask 
   - hdajacksensetest 
+  - hddtemp: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - hdf 
   - hdf-devel 
   - hdf-devel-data 
@@ -5305,16 +5703,22 @@ unsorted:
   - hdhomerun_config 
   - hdhomerun_config_gui 
   - hdjmod-kmp-pae: [i586] 
+  - hdparm: [i586] 
   - hdspconf 
   - hdsploader 
   - hdspmixer 
   - headmore 
   - health-check 
+  - health-checker: [i586] # suggested by dvd:suggested:patterns-base-transactional_base 
+  - health-checker-plugins-MicroOS: [i586] 
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic: [i586] 
   - health-checker-testing 
   - heapster 
+  - heaptrack: [i586] 
   - heaptrack-devel 
+  - heaptrack-gui: [i586] # suggested by dvd:suggested:patterns-kde-kde_ide 
+  - heaptrack-lang: [i586] 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -5336,7 +5740,9 @@ unsorted:
   - hevea 
   - hex 
   - hex2bin 
+  - hexchat: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - hexchat-devel 
+  - hexchat-lang: [i586] 
   - hexchat-plugins-lua 
   - hexchat-plugins-perl 
   - hexchat-plugins-python3 
@@ -5346,6 +5752,7 @@ unsorted:
   - hfst-devel 
   - hfst-ospell 
   - hfst-ospell-devel 
+  - hfsutils: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - hg-fast-export 
   - hg-git 
   - hiawatha 
@@ -5417,8 +5824,10 @@ unsorted:
   - hub 
   - hugin 
   - humanity-icon-theme 
+  - hunspell: [i586] 
   - hunspell-devel 
   - hunspell-devel-32bit: [x86_64] 
+  - hunspell-tools: [i586] 
   - hwinfo-devel 
   - hwloc 
   - hwloc-data 
@@ -5432,6 +5841,7 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
+  - hyper-v: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - hyperscan-devel 
   - hyphen 
   - hyphen-devel 
@@ -5520,11 +5930,15 @@ unsorted:
   - icc-targets-npes 
   - iceWMCP 
   - iceWMCP-addons 
+  - iceauth: [i586] 
   - icecast 
   - icecast-doc 
   - icecream-clang-wrappers 
   - icecream-monitor 
+  - icedtea-web: [i586] 
+  - icedtea-web-javadoc: [i586] # suggested by dvd:suggested:patterns-lxde-lxde 
   - ices 
+  - icewm-theme-branding: [i586] 
   - icewm-theme-yast-installation 
   - icewm-themes 
   - icinga2 
@@ -5569,11 +5983,13 @@ unsorted:
   - idzebra 
   - idzebra-devel 
   - idzebra-doc 
+  - ifplugd: [i586] 
   - ifuse 
   - igerman98-doc 
   - ignition 
   - ignition-config-transpiler 
   - ignition-dracut 
+  - iio-sensor-proxy: [i586] 
   - iio-sensor-proxy-doc 
   - ikiwiki 
   - ikiwiki-w3m 
@@ -5622,7 +6038,9 @@ unsorted:
   - imv 
   - imwheel 
   - imx-usb-loader 
+  - incidenceeditor: [i586] 
   - incidenceeditor-devel 
+  - incidenceeditor-lang: [i586] 
   - include-what-you-use 
   - include-what-you-use-tools 
   - ineffassign 
@@ -5631,6 +6049,7 @@ unsorted:
   - infinoted 
   - influxdb 
   - influxdb-devel 
+  - info-std: [i586] 
   - info2html 
   - info4 
   - infos-creator-rpm 
@@ -5668,6 +6087,7 @@ unsorted:
   - intel-cmt-cat 
   - intel-hybrid-driver 
   - intel-media-driver: [x86_64] 
+  - intel-vaapi-driver: [i586] 
   - intel-vaapi-driver-32bit: [x86_64] 
   - intelhex 
   - interbench 
@@ -5683,7 +6103,9 @@ unsorted:
   - intlfonts-phonetic-bitmap-fonts 
   - intlfonts-ttf-fonts 
   - intlfonts-type1-fonts 
+  - intltool: [i586] 
   - inwee 
+  - inxi: [i586] 
   - iodbc 
   - iodbc-admin 
   - iodine 
@@ -5715,17 +6137,22 @@ unsorted:
   - iprange 
   - iproute2-bash-completion 
   - iproxy 
+  - ipset: [i586] 
   - ipset-devel 
   - iptables-backend-nft 
   - ipv6gen 
   - ipv6toolkit 
   - ipvsadm 
+  - ipw-firmware: [i586] 
   - ipxe-bootimgs 
   - ipxrip 
+  - irda: [i586] # suggested by dvd:suggested:patterns-desktop-laptop 
   - irman-common 
   - irman-utils 
+  - irqbalance: [i586] 
   - irrlicht-data 
   - irrlicht-devel 
+  - irssi: [i586] # suggested by dvd:suggested:patterns-base-console 
   - irssi-devel 
   - irssi-otr 
   - isapnp: [i586] 
@@ -5737,17 +6164,33 @@ unsorted:
   - iso-codes-devel 
   - iso-country-flags-png 
   - isorelax 
+  - ispell: [i586] 
+  - ispell-american: [i586] 
+  - ispell-brazilian: [i586] 
+  - ispell-british: [i586] 
   - ispell-bulgarian 
   - ispell-catalan 
+  - ispell-czech: [i586] 
+  - ispell-danish: [i586] 
   - ispell-dutch 
   - ispell-esperanto 
   - ispell-estonian 
   - ispell-finnish 
+  - ispell-french: [i586] 
+  - ispell-german: [i586] 
+  - ispell-greek: [i586] 
+  - ispell-hungarian: [i586] 
+  - ispell-italian: [i586] 
   - ispell-naustrian 
+  - ispell-ngerman: [i586] 
   - ispell-norsk 
   - ispell-nswiss 
+  - ispell-polish: [i586] 
+  - ispell-portuguese: [i586] 
+  - ispell-russian: [i586] 
   - ispell-slovak 
   - ispell-slovene 
+  - ispell-spanish: [i586] 
   - ispell-swedish 
   - istgt 
   - istio-proxy: [x86_64] 
@@ -5762,6 +6205,7 @@ unsorted:
   - ivtv 
   - ivy-local 
   - ivykis-devel 
+  - iw: [i586] 
   - iwatch 
   - iwd 
   - iwidgets 
@@ -5998,6 +6442,7 @@ unsorted:
   - jflex-doc 
   - jformatstring 
   - jformatstring-javadoc 
+  - jfsutils: [i586] 
   - jgit 
   - jgit-bootstrap 
   - jgit-javadoc 
@@ -6016,6 +6461,7 @@ unsorted:
   - jgroups-manual 
   - jgroups-repolib 
   - jhbuild-recommended-deps 
+  - jhead: [i586] 
   - jhighlight 
   - jhighlight-javadoc 
   - jigdo 
@@ -6035,6 +6481,7 @@ unsorted:
   - jlfgr 
   - jline 
   - jline-javadoc 
+  - jline1: [i586] 
   - jline1-javadoc 
   - jmock 
   - jmock-demo 
@@ -6049,6 +6496,7 @@ unsorted:
   - joda-convert-javadoc 
   - joda-time 
   - joda-time-javadoc 
+  - joe: [i586] 
   - jogl2 
   - john 
   - jomolhari-fonts 
@@ -6215,17 +6663,29 @@ unsorted:
   - jzlib 
   - jzlib-demo 
   - jzlib-javadoc 
+  - k3b: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - k3b-devel 
+  - k3b-lang: [i586] 
   - k3s 
   - k3s-hyperkube 
+  - kaccounts-integration: [i586] 
   - kaccounts-integration-32bit: [x86_64] 
   - kaccounts-integration-devel 
   - kaccounts-integration-devel-32bit: [x86_64] 
+  - kaccounts-integration-lang: [i586] 
+  - kaccounts-providers: [i586] 
+  - kaccounts-providers-lang: [i586] 
   - kactivities-stats-devel 
   - kactivities-stats-devel-32bit: [x86_64] 
   - kactivities5-devel 
   - kactivities5-devel-32bit: [x86_64] 
+  - kactivities5-imports: [i586] 
   - kactivities5-tools 
+  - kactivitymanagerd: [i586] 
+  - kactivitymanagerd-lang: [i586] 
+  - kaddressbook: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - kaddressbook-doc: [i586] 
+  - kaddressbook-lang: [i586] 
   - kadu 
   - kadu-devel 
   - kadu-sound-bns 
@@ -6249,9 +6709,12 @@ unsorted:
   - kakoune 
   - kalarm 
   - kalarm-lang 
+  - kalarmcal: [i586] 
   - kalarmcal-devel 
+  - kalarmcal-lang: [i586] 
   - kalgebra-mobile 
   - kalzium-devel 
+  - kamera-lang: [i586] 
   - kamerka 
   - kamerka-lang 
   - kamoso 
@@ -6282,12 +6745,22 @@ unsorted:
   - kbookmarks-devel 
   - kbookmarks-devel-32bit: [x86_64] 
   - kbuild 
+  - kcalc: [i586] 
+  - kcalc-lang: [i586] 
   - kcalendarcore-devel 
+  - kcalutils: [i586] 
   - kcalutils-devel 
+  - kcalutils-lang: [i586] 
+  - kcm_sddm: [i586] 
+  - kcm_sddm-lang: [i586] 
+  - kcm_tablet: [i586] 
+  - kcm_tablet-lang: [i586] 
   - kcmutils-devel 
   - kcmutils-devel-32bit: [x86_64] 
   - kcodecs-devel 
   - kcodecs-devel-32bit: [x86_64] 
+  - kcolorchooser: [i586] 
+  - kcolorchooser-lang: [i586] 
   - kcompletion-devel 
   - kcompletion-devel-32bit: [x86_64] 
   - kconfig-devel 
@@ -6296,12 +6769,17 @@ unsorted:
   - kconfigwidgets-devel-32bit: [x86_64] 
   - kcontacts-devel 
   - kcontacts-devel-32bit: [x86_64] 
+  - kcontacts-lang: [i586] 
   - kcoreaddons-devel 
   - kcoreaddons-devel-32bit: [x86_64] 
   - kcov 
   - kcrash-devel 
   - kcrash-devel-32bit: [x86_64] 
+  - kcron: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - kcron-lang: [i586] 
+  - kdav: [i586] 
   - kdav-devel 
+  - kdav-lang: [i586] 
   - kdb-devel 
   - kdb-lang 
   - kdb-mysql-driver 
@@ -6309,22 +6787,46 @@ unsorted:
   - kdb-sqlite3-driver 
   - kdbusaddons-devel 
   - kdbusaddons-devel-32bit: [x86_64] 
+  - kde-cli-tools5: [i586] 
+  - kde-cli-tools5-lang: [i586] 
+  - kde-gtk-config5: [i586] 
+  - kde-gtk-config5-gtk2: [i586] 
+  - kde-gtk-config5-gtk3: [i586] 
+  - kde-gtk-config5-lang: [i586] 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
+  - kde-print-manager: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_basis 
+  - kde-print-manager-lang: [i586] 
+  - kde-user-manager: [i586] 
+  - kde-user-manager-lang: [i586] 
   - kdebugsettings 
   - kdebugsettings-lang 
+  - kdeclarative-components: [i586] 
   - kdeclarative-components-32bit: [x86_64] 
   - kdeclarative-devel 
   - kdeclarative-devel-32bit: [x86_64] 
   - kdeclarative-tools 
+  - kdeconnect-kde: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - kdeconnect-kde-lang: [i586] 
   - kded-devel 
   - kdegames-carddecks-other 
+  - kdegraphics-thumbnailers: [i586] 
+  - kdelibs4support: [i586] 
   - kdelibs4support-32bit: [x86_64] 
   - kdelibs4support-devel 
   - kdelibs4support-devel-32bit: [x86_64] 
+  - kdelibs4support-lang: [i586] 
+  - kdenetwork-filesharing: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - kdenetwork-filesharing-lang: [i586] 
   - kdenlive 
   - kdenlive-lang 
+  - kdepim-addons: [i586] 
+  - kdepim-addons-lang: [i586] 
+  - kdepim-apps-libs: [i586] 
   - kdepim-apps-libs-devel 
+  - kdepim-apps-libs-lang: [i586] 
+  - kdepim-runtime: [i586] 
+  - kdepim-runtime-lang: [i586] 
   - kdesdk-scripts 
   - kdesdk-scripts-kf5-porting 
   - kdesdk-scripts-lang 
@@ -6336,18 +6838,24 @@ unsorted:
   - kdesu-devel 
   - kdesu-devel-32bit: [x86_64] 
   - kdesvn 
+  - kdevelop5: [i586] 
+  - kdevelop5-lang: [i586] 
   - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
   - kdevelop5-plugin-php-lang 
   - kdevelop5-plugin-python3 
   - kdevelop5-plugin-python3-lang 
+  - kdevplatform: [i586] 
   - kdevplatform-devel 
+  - kdevplatform-lang: [i586] 
   - kdewebkit-devel 
   - kdewebkit-devel-32bit: [x86_64] 
   - kdgantt2 
   - kdgantt2-devel 
   - kdiagram-devel 
+  - kdialog: [i586] 
+  - kdialog-lang: [i586] 
   - kdiff3 
   - kdiff3-lang 
   - kdnssd 
@@ -6398,24 +6906,36 @@ unsorted:
   - keyutils-devel 
   - keyutils-devel-32bit: [x86_64] 
   - kf5-filesystem 
+  - kf5-kcm-fcitx: [i586] 
+  - kf5-kcm-fcitx-icons: [i586] 
   - kf5-mediainfo 
+  - kfilemetadata5: [i586] 
   - kfilemetadata5-32bit: [x86_64] 
   - kfilemetadata5-devel 
+  - kfilemetadata5-lang: [i586] 
   - kfind 
   - kfind-lang 
   - kfloppy 
   - kfloppy-lang 
   - kfourinline 
   - kfourinline-lang 
+  - kgamma5: [i586] 
+  - kgamma5-lang: [i586] 
+  - kget: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - kget-lang: [i586] 
   - kglobalaccel-devel 
   - kglobalaccel-devel-32bit: [x86_64] 
   - kgpg 
   - kgpg-lang 
   - kguiaddons-devel 
   - kguiaddons-devel-32bit: [x86_64] 
+  - khelpcenter5: [i586] 
+  - khelpcenter5-lang: [i586] 
   - kholidays 
   - kholidays-devel 
+  - khotkeys5: [i586] 
   - khotkeys5-devel 
+  - khotkeys5-lang: [i586] 
   - khtml-devel 
   - khtml-devel-32bit: [x86_64] 
   - khunphan 
@@ -6481,6 +7001,7 @@ unsorted:
   - kid3-qt 
   - kid3-qt-doc 
   - kidentitymanagement-devel 
+  - kidentitymanagement-lang: [i586] 
   - kidletime-devel 
   - kidletime-devel-32bit: [x86_64] 
   - kigo 
@@ -6494,8 +7015,13 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
+  - kimageformats: [i586] 
   - kimageformats-32bit: [x86_64] 
+  - kimageformats-eps: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - kimap-devel 
+  - kimap-lang: [i586] 
+  - kinfocenter5: [i586] 
+  - kinfocenter5-lang: [i586] 
   - kinit-32bit: [x86_64] 
   - kinit-devel 
   - kinput2 
@@ -6503,25 +7029,33 @@ unsorted:
   - kio-core-32bit: [x86_64] 
   - kio-devel 
   - kio-devel-32bit: [x86_64] 
+  - kio-extras5: [i586] 
+  - kio-extras5-lang: [i586] 
   - kio-gdrive 
   - kio-gdrive-lang 
   - kio-stash 
   - kio-stash-lang 
   - kio_audiocd-devel 
+  - kio_kamera: [i586] 
   - kio_perldoc 
   - kio_perldoc-lang 
+  - kipi-plugins: [i586] 
+  - kipi-plugins-lang: [i586] 
   - kirigami 
   - kirigami-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
   - kirigami-lang 
+  - kirigami2: [i586] 
   - kirigami2-devel 
+  - kirigami2-lang: [i586] 
   - kismet-devel 
   - kitemmodels-devel 
   - kitemmodels-devel-32bit: [x86_64] 
   - kitemviews-devel 
   - kitemviews-devel-32bit: [x86_64] 
   - kiten-devel 
+  - kitinerary: [i586] 
   - kitinerary-devel 
   - kitty 
   - kiwi-boot-descriptions 
@@ -6551,22 +7085,37 @@ unsorted:
   - klatexformula-apidoc 
   - klavaro 
   - klavaro-devel 
+  - kldap: [i586] 
   - kldap-devel 
+  - kldap-lang: [i586] 
   - klee 
   - klee-uclibc-devel-static 
+  - kleopatra: [i586] 
+  - kleopatra-lang: [i586] 
   - klettres 
   - klettres-lang 
   - klfbackend-devel 
   - klftools-devel 
   - klickety 
   - klickety-lang 
+  - klogd: [i586] 
+  - kmail: [i586] 
+  - kmail-account-wizard: [i586] 
+  - kmail-account-wizard-lang: [i586] 
+  - kmail-application-icons: [i586] 
+  - kmail-lang: [i586] 
+  - kmailtransport: [i586] 
   - kmailtransport-devel 
+  - kmailtransport-lang: [i586] 
   - kmarkdownwebview 
   - kmarkdownwebview-lang 
   - kmbox-devel 
   - kmediaplayer-devel 
   - kmediaplayer-devel-32bit: [x86_64] 
+  - kmenuedit5: [i586] 
+  - kmenuedit5-lang: [i586] 
   - kmime-devel 
+  - kmime-lang: [i586] 
   - kmix 
   - kmix-lang 
   - kmod-bash-completion 
@@ -6586,6 +7135,8 @@ unsorted:
   - knock 
   - knockd 
   - knot 
+  - knotes: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - knotes-lang: [i586] 
   - knotifications-devel 
   - knotifications-devel-32bit: [x86_64] 
   - knotifyconfig-devel 
@@ -6593,6 +7144,8 @@ unsorted:
   - kochmorse 
   - kohsuke-pom 
   - kolor-manager 
+  - kolourpaint: [i586] # suggested by dvd:suggested:patterns-kde-kde_imaging 
+  - kolourpaint-lang: [i586] 
   - kompare-devel 
   - kompose 
   - konkretcmpi-devel 
@@ -6601,7 +7154,13 @@ unsorted:
   - konqueror-devel 
   - konqueror-lang 
   - konqueror-plugins 
+  - konsole: [i586] 
+  - konsole-part: [i586] 
+  - konsole-part-lang: [i586] 
+  - kontact: [i586] 
+  - kontact-lang: [i586] 
   - kontactinterface-devel 
+  - kontactinterface-lang: [i586] 
   - kopano-archiver 
   - kopano-backup 
   - kopano-bash-completion 
@@ -6634,7 +7193,11 @@ unsorted:
   - kopano-webapp-titlecounter 
   - kopano-webapp-webappmanual 
   - kopano-webapp-zdeveloper 
+  - kopete: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - kopete-devel 
+  - kopete-lang: [i586] 
+  - korganizer: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - korganizer-lang: [i586] 
   - kpackage-32bit: [x86_64] 
   - kpackage-devel 
   - kpackage-devel-32bit: [x86_64] 
@@ -6642,12 +7205,17 @@ unsorted:
   - kpartloader-lang 
   - kparts-devel 
   - kparts-devel-32bit: [x86_64] 
+  - kpeople5: [i586] 
   - kpeople5-32bit: [x86_64] 
   - kpeople5-devel 
   - kpeople5-devel-32bit: [x86_64] 
+  - kpeople5-lang: [i586] 
   - kphotoalbum 
   - kphotoalbum-lang 
+  - kpimtextedit: [i586] 
   - kpimtextedit-devel 
+  - kpimtextedit-lang: [i586] 
+  - kpkpass: [i586] 
   - kpkpass-devel 
   - kplotting-devel 
   - kplotting-devel-32bit: [x86_64] 
@@ -6659,6 +7227,7 @@ unsorted:
   - kproperty-lang 
   - kpty-devel 
   - kpty-devel-32bit: [x86_64] 
+  - kqtquickcharts: [i586] 
   - kquickcharts 
   - kquickcharts-devel 
   - kraft 
@@ -6676,38 +7245,56 @@ unsorted:
   - krdc 
   - krdc-devel 
   - krdc-lang 
+  - krename: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - kreport 
   - kreport-devel 
   - kreport-lang 
   - krfb 
   - krfb-lang 
+  - krita: [i586] # suggested by dvd:suggested:patterns-kde-kde_imaging 
   - krita-devel 
+  - krita-lang: [i586] 
   - krita-plugin-gmic 
   - kronometer 
   - kross-32bit: [x86_64] 
   - kross-devel 
   - kross-devel-32bit: [x86_64] 
   - kross-python 
+  - kruler: [i586] # suggested by dvd:suggested:patterns-kde-kde_imaging 
+  - kruler-lang: [i586] 
   - krunner-devel 
   - krunner-devel-32bit: [x86_64] 
   - krusader-doc 
   - kryo 
   - kryo-javadoc 
+  - kscreen5: [i586] 
+  - kscreen5-lang: [i586] 
+  - kscreen5-plasmoid: [i586] 
+  - kscreenlocker: [i586] 
   - kscreenlocker-devel 
+  - kscreenlocker-lang: [i586] 
   - kservice-32bit: [x86_64] 
   - kservice-devel 
   - kservice-devel-32bit: [x86_64] 
   - ksh 
   - ksh-devel 
   - kshutdown 
+  - ksmtp: [i586] 
   - ksmtp-devel 
+  - ksmtp-lang: [i586] 
   - ksnakeduel 
   - ksnakeduel-lang 
+  - ksshaskpass5: [i586] 
+  - ksshaskpass5-lang: [i586] 
   - kssl 
   - kst 
   - kst-devel 
   - kstars 
   - kstars-lang 
+  - ksysguard5: [i586] 
+  - ksysguard5-lang: [i586] 
+  - ksystemlog: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - ksystemlog-lang: [i586] 
   - ktexteditor-32bit: [x86_64] 
   - ktexteditor-devel 
   - ktexteditor-devel-32bit: [x86_64] 
@@ -6715,11 +7302,15 @@ unsorted:
   - ktextwidgets-devel-32bit: [x86_64] 
   - ktimetracker 
   - ktimetracker-lang 
+  - ktnef: [i586] 
   - ktnef-devel 
+  - ktnef-lang: [i586] 
   - ktoblzcheck 
   - ktoblzcheck-devel 
   - ktorrent 
   - ktorrent-lang 
+  - ktouch: [i586] 
+  - ktouch-lang: [i586] 
   - ktp-accounts-kcm 
   - ktp-accounts-kcm-lang 
   - ktp-approver 
@@ -6773,19 +7364,29 @@ unsorted:
   - kvirc 
   - kwallet-devel 
   - kwallet-devel-32bit: [x86_64] 
+  - kwallet-tools: [i586] 
+  - kwallet-tools-lang: [i586] 
+  - kwalletd5: [i586] 
+  - kwalletd5-lang: [i586] 
+  - kwalletmanager5: [i586] 
+  - kwalletmanager5-lang: [i586] 
   - kwave 
   - kwave-lang 
   - kwayland-32bit: [x86_64] 
   - kwayland-devel 
   - kwayland-devel-32bit: [x86_64] 
+  - kwayland-integration: [i586] 
   - kwebkitpart 
   - kwebkitpart-lang 
   - kwidgetsaddons-devel 
   - kwidgetsaddons-devel-32bit: [x86_64] 
+  - kwin5: [i586] 
   - kwin5-devel 
+  - kwin5-lang: [i586] 
   - kwindowsystem-devel 
   - kwindowsystem-devel-32bit: [x86_64] 
   - kwrite 
+  - kwrited5: [i586] 
   - kxml 
   - kxml-javadoc 
   - kxmlgui-devel 
@@ -6876,6 +7477,7 @@ unsorted:
   - ldns-devel 
   - ldtp 
   - leafnode 
+  - leafpad: [i586] 
   - lector 
   - ledger 
   - ledmon 
@@ -7030,6 +7632,8 @@ unsorted:
   - leveldb 
   - leveldb-devel 
   - leveldb-devel-static 
+  - lftp: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - lhasa: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - lhasa-devel 
   - lib3270-5_2 
   - lib3270-devel 
@@ -7042,6 +7646,7 @@ unsorted:
   - libAPFEL0 
   - libAlembic1_7 
   - libAppStreamQt-devel 
+  - libAppStreamQt2: [i586] 
   - libArcus-devel 
   - libArcus3 
   - libBox2D-devel 
@@ -7100,6 +7705,7 @@ unsorted:
   - libHACD2_88 
   - libHX-devel 
   - libHX-devel-32bit: [x86_64] 
+  - libHX28: [i586] 
   - libHYPRE-gnu-mpich-hpc 
   - libHYPRE-gnu-mvapich2-hpc 
   - libHYPRE-gnu-openmpi1-hpc 
@@ -7123,6 +7729,7 @@ unsorted:
   - libHalf-2_4-24-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
+  - libICE-devel: [i586] # devel package of dvd:libICE6 
   - libICE-devel-32bit: [x86_64] 
   - libICE6-32bit: [x86_64] 
   - libIDL-2-0 
@@ -7139,25 +7746,50 @@ unsorted:
   - libIlmThread-2_4-24-32bit: [x86_64] 
   - libImath-2_4-24 
   - libImath-2_4-24-32bit: [x86_64] 
+  - libImlib2-1: [i586] 
   - libIrrlicht1_8 
+  - libKChart2: [i586] 
   - libKDb3-4 
   - libKF5Activities5-32bit: [x86_64] 
   - libKF5ActivitiesStats1-32bit: [x86_64] 
+  - libKF5AkonadiAgentBase5: [i586] 
+  - libKF5AkonadiCalendar5: [i586] 
+  - libKF5AkonadiContact5: [i586] 
+  - libKF5AkonadiCore5: [i586] 
+  - libKF5AkonadiMime5: [i586] 
+  - libKF5AkonadiNotes5: [i586] 
+  - libKF5AkonadiPrivate5: [i586] 
+  - libKF5AkonadiSearch: [i586] 
+  - libKF5AkonadiWidgets5: [i586] 
+  - libKF5AkonadiXml5: [i586] 
+  - libKF5AlarmCalendar5: [i586] 
   - libKF5Archive5-32bit: [x86_64] 
   - libKF5Attica5-32bit: [x86_64] 
+  - libKF5Auth5: [i586] 
   - libKF5Auth5-32bit: [x86_64] 
+  - libKF5Auth5-lang: [i586] 
   - libKF5AuthCore5-32bit: [x86_64] 
+  - libKF5Baloo5: [i586] 
   - libKF5Baloo5-32bit: [x86_64] 
+  - libKF5BalooEngine5: [i586] 
   - libKF5BalooEngine5-32bit: [x86_64] 
+  - libKF5BalooEngine5-lang: [i586] 
   - libKF5Blog5 
+  - libKF5BluezQt6: [i586] 
   - libKF5Bookmarks5-32bit: [x86_64] 
+  - libKF5CalendarCore5: [i586] 
+  - libKF5CalendarEvents5: [i586] 
   - libKF5CalendarEvents5-32bit: [x86_64] 
+  - libKF5CalendarSupport5: [i586] 
+  - libKF5CalendarUtils5: [i586] 
   - libKF5CddbWidgets5 
   - libKF5Codecs5-32bit: [x86_64] 
   - libKF5Completion5-32bit: [x86_64] 
   - libKF5ConfigCore5-32bit: [x86_64] 
   - libKF5ConfigGui5-32bit: [x86_64] 
   - libKF5ConfigWidgets5-32bit: [x86_64] 
+  - libKF5ContactEditor5: [i586] 
+  - libKF5Contacts5: [i586] 
   - libKF5Contacts5-32bit: [x86_64] 
   - libKF5CoreAddons5-32bit: [x86_64] 
   - libKF5Crash5-32bit: [x86_64] 
@@ -7166,55 +7798,99 @@ unsorted:
   - libKF5Declarative5-32bit: [x86_64] 
   - libKF5DocTools5-32bit: [x86_64] 
   - libKF5Emoticons5-32bit: [x86_64] 
+  - libKF5EventViews5: [i586] 
   - libKF5GlobalAccel5-32bit: [x86_64] 
+  - libKF5GrantleeTheme5: [i586] 
+  - libKF5Gravatar5: [i586] 
   - libKF5GuiAddons5-32bit: [x86_64] 
+  - libKF5Holidays5: [i586] 
+  - libKF5Holidays5-lang: [i586] 
   - libKF5I18n5-32bit: [x86_64] 
+  - libKF5IMAP5: [i586] 
   - libKF5IconThemes5-32bit: [x86_64] 
+  - libKF5IdentityManagement5: [i586] 
   - libKF5IdleTime5-32bit: [x86_64] 
+  - libKF5IncidenceEditor5: [i586] 
   - libKF5ItemModels5-32bit: [x86_64] 
   - libKF5ItemViews5-32bit: [x86_64] 
   - libKF5JS5-32bit: [x86_64] 
+  - libKF5JSApi5: [i586] 
   - libKF5JSApi5-32bit: [x86_64] 
   - libKF5JobWidgets5-32bit: [x86_64] 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-32bit: [x86_64] 
   - libKF5JsEmbed5-lang 
+  - libKF5KCMUtils5: [i586] 
   - libKF5KCMUtils5-32bit: [x86_64] 
+  - libKF5KCMUtils5-lang: [i586] 
+  - libKF5KDELibs4Support5: [i586] 
   - libKF5KDELibs4Support5-32bit: [x86_64] 
   - libKF5KDGantt2-5 
+  - libKF5KDcraw5: [i586] 
+  - libKF5KExiv2-15_0_0: [i586] 
   - libKF5KGeoMap10_0_0 
   - libKF5KHtml5-32bit: [x86_64] 
+  - libKF5Kipi32_0_0: [i586] 
+  - libKF5Kirigami2-5: [i586] 
+  - libKF5KontactInterface5: [i586] 
+  - libKF5Ldap5: [i586] 
+  - libKF5Libkdepim5: [i586] 
+  - libKF5LibkdepimAkonadi5: [i586] 
+  - libKF5Libkleo5: [i586] 
+  - libKF5MailCommon5: [i586] 
+  - libKF5MailImporter5: [i586] 
+  - libKF5MailImporterAkonadi5: [i586] 
+  - libKF5MailTransport5: [i586] 
+  - libKF5MailTransportAkonadi5: [i586] 
+  - libKF5Mbox5: [i586] 
   - libKF5MediaPlayer5 
   - libKF5MediaPlayer5-32bit: [x86_64] 
+  - libKF5MediaWiki5: [i586] 
+  - libKF5Mime5: [i586] 
   - libKF5ModemManagerQt-devel 
+  - libKF5ModemManagerQt6: [i586] 
   - libKF5NetworkManagerQt-devel 
   - libKF5NetworkManagerQt-devel-32bit: [x86_64] 
+  - libKF5NetworkManagerQt6: [i586] 
   - libKF5NetworkManagerQt6-32bit: [x86_64] 
   - libKF5NewStuff5-32bit: [x86_64] 
   - libKF5NewStuffCore5-32bit: [x86_64] 
   - libKF5Notifications5-32bit: [x86_64] 
   - libKF5NotifyConfig5-32bit: [x86_64] 
   - libKF5Parts5-32bit: [x86_64] 
+  - libKF5PimCommon5: [i586] 
+  - libKF5PimCommonAkonadi5: [i586] 
+  - libKF5PimTextEdit5: [i586] 
   - libKF5Plasma5-32bit: [x86_64] 
   - libKF5Plotting5-32bit: [x86_64] 
+  - libKF5Prison5: [i586] 
   - libKF5Prison5-32bit: [x86_64] 
   - libKF5Pty5-32bit: [x86_64] 
   - libKF5PulseAudioQt2 
+  - libKF5Purpose5: [i586] 
   - libKF5Purpose5-32bit: [x86_64] 
+  - libKF5PurposeWidgets5: [i586] 
   - libKF5PurposeWidgets5-32bit: [x86_64] 
   - libKF5QGpgme5 
   - libKF5QGpgme5-32bit: [x86_64] 
   - libKF5QuickAddons5-32bit: [x86_64] 
+  - libKF5Runner5: [i586] 
   - libKF5Runner5-32bit: [x86_64] 
+  - libKF5Sane5: [i586] 
+  - libKF5Screen7: [i586] 
   - libKF5Screen7-32bit: [x86_64] 
   - libKF5Solid5-32bit: [x86_64] 
   - libKF5SonnetCore5-32bit: [x86_64] 
   - libKF5SonnetUi5-32bit: [x86_64] 
+  - libKF5Style5: [i586] 
   - libKF5Style5-32bit: [x86_64] 
   - libKF5Su5-32bit: [x86_64] 
+  - libKF5Syndication5: [i586] 
   - libKF5SyntaxHighlighting5-32bit: [x86_64] 
   - libKF5TextWidgets5-32bit: [x86_64] 
   - libKF5ThreadWeaver5-32bit: [x86_64] 
+  - libKF5Tnef5: [i586] 
+  - libKF5Torrent6: [i586] 
   - libKF5UnitConversion5-32bit: [x86_64] 
   - libKF5Vkontakte2 
   - libKF5Wallet5-32bit: [x86_64] 
@@ -7226,13 +7902,26 @@ unsorted:
   - libKF5XmlRpcClient5 
   - libKF5XmlRpcClient5-32bit: [x86_64] 
   - libKF5XmlRpcClient5-lang 
+  - libKGantt2: [i586] 
   - libKPimGAPIBlogger5 
+  - libKPimGAPICalendar5: [i586] 
+  - libKPimGAPIContacts5: [i586] 
+  - libKPimGAPICore5: [i586] 
   - libKPimGAPIDrive5 
   - libKPimGAPILatitude5 
   - libKPimGAPIMaps5 
+  - libKPimGAPITasks5: [i586] 
+  - libKPimImportWizard5: [i586] 
+  - libKPimItinerary5: [i586] 
+  - libKPimItinerary5-lang: [i586] 
+  - libKPimKDAV5: [i586] 
+  - libKPimPkPass5: [i586] 
+  - libKPimSMTP5: [i586] 
   - libKPropertyCore3-4 
   - libKPropertyWidgets3-4 
   - libKReport3-4 
+  - libKScreenLocker5: [i586] 
+  - libKasten4: [i586] 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_2_3 
@@ -7249,6 +7938,7 @@ unsorted:
   - libLTO7-32bit: [x86_64] 
   - libLTO8 
   - libLTO8-32bit: [x86_64] 
+  - libLTO9: [i586] 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite19_04-1 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
@@ -7281,11 +7971,13 @@ unsorted:
   - libOgreTerrain1_9_0 
   - libOgreVolume-devel 
   - libOgreVolume1_9_0 
+  - libOkteta3: [i586] 
   - libOpenCL1 
   - libOpenCOLLADABaseUtils0_3 
   - libOpenCOLLADAFramework0_3 
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
+  - libOpenColorIO1: [i586] 
   - libOpenIPMI0 
   - libOpenImageDenoise0: [x86_64] 
   - libOpenImageIO1_8 
@@ -7375,6 +8067,7 @@ unsorted:
   - libQt5Gui5-32bit: [x86_64] 
   - libQt5Help5-32bit: [x86_64] 
   - libQt5HunspellInputMethod-private-headers-devel 
+  - libQt5HunspellInputMethod5: [i586] 
   - libQt5KmsSupport-devel-static 
   - libQt5KmsSupport-private-headers-devel 
   - libQt5Location5-32bit: [x86_64] 
@@ -7403,7 +8096,9 @@ unsorted:
   - libQt5PrintSupport-devel-32bit: [x86_64] 
   - libQt5PrintSupport-private-headers-devel 
   - libQt5PrintSupport5-32bit: [x86_64] 
+  - libQt5QuickControls2-5: [i586] 
   - libQt5QuickControls2-devel 
+  - libQt5QuickTemplates2-5: [i586] 
   - libQt5QuickTemplates2-devel 
   - libQt5RemoteObjects5 
   - libQt5RemoteObjects5-32bit: [x86_64] 
@@ -7419,6 +8114,7 @@ unsorted:
   - libQt5Sql-devel-32bit: [x86_64] 
   - libQt5Sql-private-headers-devel 
   - libQt5Sql5-32bit: [x86_64] 
+  - libQt5Sql5-mysql: [i586] 
   - libQt5Sql5-mysql-32bit: [x86_64] 
   - libQt5Sql5-postgresql 
   - libQt5Sql5-postgresql-32bit: [x86_64] 
@@ -7431,7 +8127,10 @@ unsorted:
   - libQt5Test-private-headers-devel 
   - libQt5Test5-32bit: [x86_64] 
   - libQt5TextToSpeech5-32bit: [x86_64] 
+  - libQt5VirtualKeyboard5: [i586] 
+  - libQt5WaylandClient5: [i586] 
   - libQt5WaylandClient5-32bit: [x86_64] 
+  - libQt5WaylandCompositor5: [i586] 
   - libQt5WaylandCompositor5-32bit: [x86_64] 
   - libQt5WebChannel5-32bit: [x86_64] 
   - libQt5WebKit-private-headers-devel 
@@ -7498,9 +8197,11 @@ unsorted:
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
+  - libSDL_image-1_2-0: [i586] 
   - libSDL_image-1_2-0-32bit: [x86_64] 
   - libSDL_image-devel 
   - libSDL_image-devel-32bit: [x86_64] 
+  - libSDL_mixer-1_2-0: [i586] 
   - libSDL_mixer-1_2-0-32bit: [x86_64] 
   - libSDL_mixer-devel 
   - libSDL_mixer-devel-32bit: [x86_64] 
@@ -7522,6 +8223,7 @@ unsorted:
   - libSDLmm-devel-32bit: [x86_64] 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
+  - libSM-devel: [i586] # devel package of dvd:libSM6 
   - libSM-devel-32bit: [x86_64] 
   - libSM6-32bit: [x86_64] 
   - libSPIRV-Tools-suse15 
@@ -7550,9 +8252,11 @@ unsorted:
   - libVFlib3-5 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
+  - libX11-devel: [i586] # devel package of dvd:libX11-xcb1 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
   - libXRes1-32bit: [x86_64] 
+  - libXau-devel: [i586] # devel package of dvd:libXau6 
   - libXau-devel-32bit: [x86_64] 
   - libXaw-devel 
   - libXaw-devel-32bit: [x86_64] 
@@ -7581,22 +8285,28 @@ unsorted:
   - libXcursor-devel-32bit: [x86_64] 
   - libXdamage-devel 
   - libXdamage-devel-32bit: [x86_64] 
+  - libXdmcp-devel: [i586] # devel package of dvd:libXdmcp6 
   - libXdmcp-devel-32bit: [x86_64] 
+  - libXdmcp6: [i586] 
   - libXdmcp6-32bit: [x86_64] 
   - libXevie-devel 
   - libXevie-devel-32bit: [x86_64] 
   - libXevie1 
   - libXevie1-32bit: [x86_64] 
+  - libXext-devel: [i586] # devel package of dvd:libXext6 
   - libXext-devel-32bit: [x86_64] 
+  - libXfixes-devel: [i586] # devel package of dvd:libXfixes3 
   - libXfixes-devel-32bit: [x86_64] 
   - libXfont-devel 
   - libXfont-devel-32bit: [x86_64] 
   - libXfont1-32bit: [x86_64] 
+  - libXfont2-2: [i586] 
   - libXfont2-2-32bit: [x86_64] 
   - libXfont2-devel 
   - libXfont2-devel-32bit: [x86_64] 
   - libXfontcache-devel 
   - libXfontcache-devel-32bit: [x86_64] 
+  - libXfontcache1: [i586] 
   - libXfontcache1-32bit: [x86_64] 
   - libXft-devel 
   - libXft-devel-32bit: [x86_64] 
@@ -7608,44 +8318,56 @@ unsorted:
   - libXiterm1 
   - libXm4 
   - libXm4-32bit: [x86_64] 
+  - libXmu-devel: [i586] # devel package of dvd:libXmu6 
   - libXmu-devel-32bit: [x86_64] 
   - libXmu6-32bit: [x86_64] 
   - libXmuu1-32bit: [x86_64] 
+  - libXp-devel: [i586] 
   - libXp-devel-32bit: [x86_64] 
+  - libXp6: [i586] 
   - libXp6-32bit: [x86_64] 
+  - libXpm-devel: [i586] # devel package of dvd:libXpm4 
   - libXpm-devel-32bit: [x86_64] 
   - libXpm-tools 
   - libXpm4-32bit: [x86_64] 
   - libXpresent-devel 
+  - libXpresent1: [i586] 
   - libXprintAppUtil-devel 
   - libXprintAppUtil-devel-32bit: [x86_64] 
   - libXprintAppUtil1 
   - libXprintAppUtil1-32bit: [x86_64] 
+  - libXprintUtil-devel: [i586] 
   - libXprintUtil-devel-32bit: [x86_64] 
+  - libXprintUtil1: [i586] 
   - libXprintUtil1-32bit: [x86_64] 
   - libXrandr-devel 
   - libXrandr-devel-32bit: [x86_64] 
+  - libXrender-devel: [i586] # devel package of dvd:libXrender1 
   - libXrender-devel-32bit: [x86_64] 
   - libXres-devel 
   - libXres-devel-32bit: [x86_64] 
   - libXss-devel 
   - libXss-devel-32bit: [x86_64] 
   - libXss1-32bit: [x86_64] 
+  - libXt-devel: [i586] # devel package of dvd:libXt6 
   - libXt-devel-32bit: [x86_64] 
   - libXt6-32bit: [x86_64] 
   - libXtst-devel 
   - libXtst-devel-32bit: [x86_64] 
   - libXtst6-32bit: [x86_64] 
+  - libXv-devel: [i586] # devel package of dvd:libXv1 
   - libXv-devel-32bit: [x86_64] 
   - libXv1-32bit: [x86_64] 
   - libXvMC-devel 
   - libXvMC-devel-32bit: [x86_64] 
+  - libXvMC1: [i586] 
   - libXvMC1-32bit: [x86_64] 
   - libXvMC_nouveau 
   - libXvMC_nouveau-32bit: [x86_64] 
   - libXvMC_r600 
   - libXvMC_r600-32bit: [x86_64] 
   - libXvnc-devel 
+  - libXvnc1: [i586] 
   - libXxf86dga-devel 
   - libXxf86dga-devel-32bit: [x86_64] 
   - libXxf86dga1-32bit: [x86_64] 
@@ -7653,6 +8375,7 @@ unsorted:
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_7_7 
+  - libZXingCore1: [i586] 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -7662,6 +8385,7 @@ unsorted:
   - libabigail-devel 
   - libabigail-tools 
   - libabigail0 
+  - libabiword-3_0: [i586] 
   - libabiword-3_0-devel 
   - libabseil0: [x86_64] 
   - libabw-devel 
@@ -7672,10 +8396,13 @@ unsorted:
   - libaccounts-glib-devel 
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
+  - libaccounts-glib1: [i586] 
   - libaccounts-glib1-32bit: [x86_64] 
+  - libaccounts-qt5-1: [i586] 
   - libaccounts-qt5-1-32bit: [x86_64] 
   - libaccounts-qt5-devel 
   - libaccounts-qt5-doc 
+  - libaccountsservice0: [i586] 
   - libacl-devel 
   - libacl-devel-32bit: [x86_64] 
   - libacr38ucontrol0 
@@ -7743,6 +8470,7 @@ unsorted:
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
   - libangelscript2_33_0 
+  - libanjuta-3-0: [i586] 
   - libansilove-devel 
   - libansilove1 
   - libanthy0 
@@ -7765,6 +8493,8 @@ unsorted:
   - libappmenu-gtk2-parser0 
   - libappmenu-gtk3-parser-devel 
   - libappmenu-gtk3-parser0 
+  - libappstream-glib8: [i586] 
+  - libappstream4: [i586] 
   - libapr-util1-dbd-mysql 
   - libapr-util1-dbd-pgsql 
   - libapr-util1-dbd-sqlite3 
@@ -7772,6 +8502,7 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
+  - libaria2-0: [i586] 
   - libarm_compute16: [x86_64] 
   - libarmadillo9 
   - libarmadillo9-32bit: [x86_64] 
@@ -7803,6 +8534,7 @@ unsorted:
   - libasm1-32bit: [x86_64] 
   - libasn1c-devel 
   - libasn1c1 
+  - libaspell15: [i586] 
   - libaspell15-32bit: [x86_64] 
   - libass-devel 
   - libass9-32bit: [x86_64] 
@@ -7816,6 +8548,8 @@ unsorted:
   - libasyncns-devel 
   - libasyncns0 
   - libatasmart-devel 
+  - libatasmart-utils: [i586] 
+  - libatasmart4: [i586] 
   - libathemecore1 
   - libatk-bridge-2_0-0-32bit: [x86_64] 
   - libatkmm-1_6-1-32bit: [x86_64] 
@@ -7854,6 +8588,8 @@ unsorted:
   - libavahi-glib-devel 
   - libavahi-glib1-32bit: [x86_64] 
   - libavahi-gobject-devel 
+  - libavahi-gobject0: [i586] 
+  - libavahi-ui-gtk3-0: [i586] 
   - libavc1394-0-32bit: [x86_64] 
   - libavc1394-devel 
   - libavc1394-devel-32bit: [x86_64] 
@@ -7904,23 +8640,31 @@ unsorted:
   - libbcunit1 
   - libbcunit1-32bit: [x86_64] 
   - libbd_btrfs-devel 
+  - libbd_btrfs2: [i586] 
   - libbd_crypto-devel 
+  - libbd_crypto2: [i586] 
   - libbd_dm-devel 
   - libbd_dm2 
   - libbd_fs-devel 
+  - libbd_fs2: [i586] 
   - libbd_kbd-devel 
   - libbd_kbd2 
   - libbd_loop-devel 
+  - libbd_loop2: [i586] 
   - libbd_lvm-dbus-devel 
   - libbd_lvm-dbus2 
   - libbd_lvm-devel 
   - libbd_lvm2 
   - libbd_mdraid-devel 
+  - libbd_mdraid2: [i586] 
   - libbd_mpath-devel 
   - libbd_mpath2 
   - libbd_part-devel 
+  - libbd_part2: [i586] 
   - libbd_swap-devel 
+  - libbd_swap2: [i586] 
   - libbd_utils-devel 
+  - libbd_utils2: [i586] 
   - libbd_vdo-devel 
   - libbd_vdo2 
   - libbde-devel 
@@ -7973,7 +8717,9 @@ unsorted:
   - libbliss-0_73 
   - libblkid-devel-32bit: [x86_64] 
   - libblkid-devel-static 
+  - libblockdev: [i586] 
   - libblockdev-devel 
+  - libblockdev2: [i586] 
   - libblosc1 
   - libbluetooth3-32bit: [x86_64] 
   - libbluray-bdj 
@@ -8056,6 +8802,7 @@ unsorted:
   - libboost_numpy-py3-1_71_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
+  - libboost_program_options1_71_0: [i586] 
   - libboost_program_options1_71_0-32bit: [x86_64] 
   - libboost_program_options1_71_0-devel 
   - libboost_python-devel 
@@ -8110,6 +8857,10 @@ unsorted:
   - libbraille 
   - libbraille-devel 
   - libbraille-fake 
+  - libbrasero-burn3-1: [i586] 
+  - libbrasero-media3-1: [i586] 
+  - libbrasero-utils3-1: [i586] 
+  - libbreezecommon5-5: [i586] 
   - libbrotli-devel 
   - libbrotlicommon1-32bit: [x86_64] 
   - libbrotlidec1-32bit: [x86_64] 
@@ -8137,6 +8888,9 @@ unsorted:
   - libbuzztrax-ic1 
   - libbuzztrax-ic1-32bit: [x86_64] 
   - libbytesize-devel 
+  - libbytesize-lang: [i586] 
+  - libbytesize1: [i586] 
+  - libbz2-devel: [i586] # devel package of dvd:libbz2-1 
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
@@ -8235,11 +8989,15 @@ unsorted:
   - libcerf1 
   - libcerror-devel 
   - libcerror1 
+  - libcetcd0: [i586] 
+  - libcfg6: [i586] 
   - libcfg6-32bit: [x86_64] 
   - libcfile-devel 
   - libcfile1 
+  - libcfitsio8: [i586] 
   - libcgns3_4 
   - libchafa0 
+  - libchamplain-0_12-0: [i586] 
   - libchamplain-devel 
   - libchardet-devel 
   - libchardet1 
@@ -8247,6 +9005,9 @@ unsorted:
   - libchck0 
   - libcheck0 
   - libcheck0-32bit: [x86_64] 
+  - libcheese-common: [i586] 
+  - libcheese-gtk25: [i586] 
+  - libcheese8: [i586] 
   - libchewing-devel 
   - libchewing3-32bit: [x86_64] 
   - libchipcard 
@@ -8289,6 +9050,7 @@ unsorted:
   - libclang8-32bit: [x86_64] 
   - libclang9-32bit: [x86_64] 
   - libclastfm-devel 
+  - libclastfm0: [i586] 
   - libclaw-devel 
   - libclaw-doc 
   - libclaw1 
@@ -8306,6 +9068,7 @@ unsorted:
   - libclutter-gst-3_0-0-32bit: [x86_64] 
   - libclutter-gtk-1_0-0-32bit: [x86_64] 
   - libclzma-suse0 
+  - libcmap4: [i586] 
   - libcmap4-32bit: [x86_64] 
   - libcmark0_29_0 
   - libcmis-c-0_5-5 
@@ -8339,8 +9102,10 @@ unsorted:
   - libcolm-0_13_0_7 
   - libcolord-devel 
   - libcolord-gtk-devel 
+  - libcolord-gtk1: [i586] 
   - libcolord-gtk1-32bit: [x86_64] 
   - libcolord2-32bit: [x86_64] 
+  - libcolorhug2: [i586] 
   - libcom_err-devel-32bit: [x86_64] 
   - libcom_err-devel-static 
   - libcompel1: [x86_64] 
@@ -8362,12 +9127,14 @@ unsorted:
   - libconfuse2 
   - libcontainers-common: [i586] 
   - libcorosync-devel 
+  - libcorosync_common4: [i586] 
   - libcorosync_common4-32bit: [x86_64] 
   - libcorrect-devel 
   - libcorrect0_0_0 
   - libcourier-unicode4 
   - libcpath-devel 
   - libcpath1 
+  - libcpg4: [i586] 
   - libcpg4-32bit: [x86_64] 
   - libcpluff-devel 
   - libcpluff0 
@@ -8381,6 +9148,7 @@ unsorted:
   - libcpuid-devel 
   - libcpuid-tools 
   - libcpuid14 
+  - libcpupower0: [i586] 
   - libcpuset-devel 
   - libcpuset1 
   - libcreaterepo_c-devel 
@@ -8392,6 +9160,7 @@ unsorted:
   - libcrossc1-32bit: [x86_64] 
   - libcrossguid0 
   - libcryptmount-devel 
+  - libcryptmount0: [i586] 
   - libcrypto45 
   - libcrypto45-32bit: [x86_64] 
   - libcryptopp-devel 
@@ -8399,7 +9168,10 @@ unsorted:
   - libcryptopp8_2_0-32bit: [x86_64] 
   - libcryptsetup-devel 
   - libcryptsetup12-hmac-32bit: [x86_64] 
+  - libcryptui-data: [i586] 
   - libcryptui-devel 
+  - libcryptui-lang: [i586] 
+  - libcryptui0: [i586] 
   - libcrystalhd-devel 
   - libcrystalhd-devel-32bit: [x86_64] 
   - libcrystalhd3 
@@ -8470,6 +9242,7 @@ unsorted:
   - libdSFMT2_2 
   - libdaemon-devel 
   - libdar-devel 
+  - libdar5000: [i586] 
   - libdat2-2 
   - libdat2-2-32bit: [x86_64] 
   - libdataquay0 
@@ -8542,7 +9315,10 @@ unsorted:
   - libdiscid-devel 
   - libdiscid0-32bit: [x86_64] 
   - libdjvulibre-devel 
+  - libdleyna-core-1_0-5: [i586] 
+  - libdlm: [i586] 
   - libdlm-devel 
+  - libdlm3: [i586] 
   - libdmapsharing-3_0-2-32bit: [x86_64] 
   - libdmapsharing-4_0-3 
   - libdmapsharing-4_0-3-32bit: [x86_64] 
@@ -8552,6 +9328,7 @@ unsorted:
   - libdmmp0_2_0 
   - libdmr0_1 
   - libdmtx-devel 
+  - libdmtx0: [i586] 
   - libdmtx0-32bit: [x86_64] 
   - libdmusic1 
   - libdmx-devel 
@@ -8565,8 +9342,11 @@ unsorted:
   - libdns1311-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
+  - libdolphinvcs5: [i586] 
+  - libdotconf0: [i586] 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-18_11: [x86_64] 
+  - libdrm-devel: [i586] # devel package of dvd:libdrm_intel1 
   - libdrm-devel-32bit: [x86_64] 
   - libdrm-tools 
   - libdrm2-32bit: [x86_64] 
@@ -8650,6 +9430,8 @@ unsorted:
   - libedata-cal-2_0-1-32bit: [x86_64] 
   - libedataserver-1_2-24-32bit: [x86_64] 
   - libedataserverui-1_2-2-32bit: [x86_64] 
+  - libedc_ecc1_0: [i586] 
+  - libedc_ecc_dec1_0: [i586] 
   - libedit-devel 
   - libedit0-32bit: [x86_64] 
   - libeditorconfig-devel 
@@ -8659,6 +9441,7 @@ unsorted:
   - libeet1 
   - libeeze1 
   - libefa1-32bit: [x86_64] 
+  - libefivar1: [i586] 
   - libefl1 
   - libefreet1 
   - libefreet_mime1 
@@ -8682,6 +9465,7 @@ unsorted:
   - libemf2svg1 
   - libemile1 
   - libemotion1 
+  - libenca0: [i586] 
   - libenca0-32bit: [x86_64] 
   - libenchant-2-2-32bit: [x86_64] 
   - libenchant1-32bit: [x86_64] 
@@ -8698,6 +9482,7 @@ unsorted:
   - libepoxy0-32bit: [x86_64] 
   - libeppic-devel 
   - libepub-devel 
+  - libepub0: [i586] 
   - libepub0-32bit: [x86_64] 
   - libepubgen-devel 
   - libepubgen-devel-doc 
@@ -8709,6 +9494,7 @@ unsorted:
   - libesedb-tools 
   - libesedb1 
   - libesmtp-devel 
+  - libespeak-ng1: [i586] 
   - libestr-devel 
   - libethumb1 
   - libethumb_client1 
@@ -8716,11 +9502,14 @@ unsorted:
   - libetonyek-devel-doc 
   - libetonyek-tools 
   - libetpan-devel 
+  - libetpan20: [i586] 
   - libetrophy0 
   - libev-devel 
   - libev4-32bit: [x86_64] 
   - libevas1 
+  - libevdev-devel: [i586] # devel package of dvd:libevdev2 
   - libevdev2-32bit: [x86_64] 
+  - libevdocument3-4: [i586] 
   - libevemu3 
   - libevent-2_1-7-32bit: [x86_64] 
   - libevent-devel 
@@ -8734,6 +9523,7 @@ unsorted:
   - libevtx-devel 
   - libevtx-tools 
   - libevtx1 
+  - libevview3-3: [i586] 
   - libewf-devel 
   - libewf-tools 
   - libewf2 
@@ -8752,6 +9542,8 @@ unsorted:
   - libexiv2-devel 
   - libexiv2-doc 
   - libexiv2-xmp-static 
+  - libexo-1-0: [i586] 
+  - libexo-2-0: [i586] 
   - libexoIIv2for-5_14_0 
   - libexodus-5_14_0 
   - libexpat-devel-32bit: [x86_64] 
@@ -8771,6 +9563,7 @@ unsorted:
   - libfabric1 
   - libfabric1-32bit: [x86_64] 
   - libfakekey-devel 
+  - libfakekey0: [i586] 
   - libfaketime 
   - libfallocate-devel 
   - libfallocate-devel-static 
@@ -8824,6 +9617,7 @@ unsorted:
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
   - libfftw3_omp3-32bit: [x86_64] 
+  - libfftw3_threads3: [i586] 
   - libfftw3_threads3-32bit: [x86_64] 
   - libfgetdata6 
   - libfguid-devel 
@@ -8862,23 +9656,32 @@ unsorted:
   - libfluidsynth2 
   - libfluidsynth2-32bit: [x86_64] 
   - libflxmlrpc1 
+  - libfm: [i586] 
   - libfm-devel 
   - libfm-doc 
   - libfm-extra-devel 
+  - libfm-extra4: [i586] 
   - libfm-gtk-devel 
+  - libfm-gtk4: [i586] 
+  - libfm-lang: [i586] 
   - libfm-qt-devel 
   - libfm-qt-lang 
   - libfm-qt6 
+  - libfm4: [i586] 
   - libfmapi-devel 
   - libfmapi1 
   - libfmt6 
   - libfmt6-32bit: [x86_64] 
   - libfole-devel 
   - libfole1 
+  - libfolks-data: [i586] 
+  - libfolks-eds25: [i586] 
   - libfolks-telepathy25 
   - libfolks-tracker25 
+  - libfolks25: [i586] 
   - libfoma-hfst0 
   - libfoma0 
+  - libfontenc-devel: [i586] # devel package of dvd:libfontenc1 
   - libfontenc-devel-32bit: [x86_64] 
   - libfontenc1-32bit: [x86_64] 
   - libfonts-javadoc 
@@ -8888,6 +9691,7 @@ unsorted:
   - libfplll6 
   - libfpm_pb0 
   - libfprint-devel 
+  - libfprint0: [i586] 
   - libfprint0-32bit: [x86_64] 
   - libframe6 
   - libframe6-32bit: [x86_64] 
@@ -8915,6 +9719,7 @@ unsorted:
   - libftdi1 
   - libftdi1-2 
   - libftdi1-devel 
+  - libftgl2: [i586] 
   - libftgl2-32bit: [x86_64] 
   - libftoa0_3 
   - libfunambol-9_0_1 
@@ -8934,6 +9739,7 @@ unsorted:
   - libfwnt1 
   - libfwsi-devel 
   - libfwsi1 
+  - libfwupd2: [i586] 
   - libgadu-devel 
   - libgamemode-devel 
   - libgamemode0 
@@ -8949,16 +9755,21 @@ unsorted:
   - libgaminggearfx0 
   - libgaminggearwidget0 
   - libganesha_nfsd-devel: [x86_64] 
-  - libganesha_nfsd3_0: [x86_64] 
+  - libganesha_nfsd3_1: [x86_64] 
   - libganglia0 
+  - libgarcon-1-0: [i586] 
+  - libgarcon-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - libgarcon-branding-upstream 
+  - libgarcon-data: [i586] 
   - libgarcon-devel 
   - libgarcon-doc 
+  - libgarcon-lang: [i586] 
   - libgasnet-1_32_0 
   - libgavl-devel 
   - libgbm-devel 
   - libgbm-devel-32bit: [x86_64] 
   - libgbm1-32bit: [x86_64] 
+  - libgcab-1_0-0: [i586] 
   - libgcalc-1-0_0_0 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
@@ -8966,6 +9777,7 @@ unsorted:
   - libgck-1-0-32bit: [x86_64] 
   - libgck-devel 
   - libgck-devel-32bit: [x86_64] 
+  - libgck-modules-gnome-keyring: [i586] 
   - libgcr-3-1-32bit: [x86_64] 
   - libgcr-devel 
   - libgcr-devel-32bit: [x86_64] 
@@ -8974,6 +9786,9 @@ unsorted:
   - libgcrypt-devel-32bit: [x86_64] 
   - libgcrypt20-hmac-32bit: [x86_64] 
   - libgd3-32bit: [x86_64] 
+  - libgda-5_0-4: [i586] 
+  - libgda-5_0-4-lang: [i586] 
+  - libgda-5_0-bdb: [i586] 
   - libgda-5_0-devel 
   - libgda-5_0-doc 
   - libgda-5_0-firebird 
@@ -8983,10 +9798,13 @@ unsorted:
   - libgda-5_0-mysql 
   - libgda-5_0-postgres 
   - libgda-5_0-sqlcipher 
+  - libgda-5_0-sqlite: [i586] 
   - libgda-5_0-tools 
   - libgda-5_0-web 
   - libgda-report-5_0-4 
   - libgda-tools 
+  - libgda-ui-5_0-4: [i586] 
+  - libgda-ui-5_0-plugins: [i586] 
   - libgda-ui-5_0-tools 
   - libgda-xslt-5_0-4 
   - libgdal26 
@@ -8998,8 +9816,10 @@ unsorted:
   - libgdbm_compat4-32bit: [x86_64] 
   - libgdiplus-devel 
   - libgdiplus0 
+  - libgdm1: [i586] 
   - libgdruntime76 
   - libgdruntime76-32bit: [x86_64] 
+  - libgeany0: [i586] 
   - libgeda-data 
   - libgeda-devel 
   - libgeda45 
@@ -9027,6 +9847,7 @@ unsorted:
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
   - libgf2x3 
+  - libgfbgraph-0_2-0: [i586] 
   - libgfchangelog0 
   - libgfdb0 
   - libgflags2 
@@ -9057,12 +9878,14 @@ unsorted:
   - libgitg-devel 
   - libgivaro9 
   - libgjs-devel 
+  - libgjs0: [i586] 
   - libgl2ps1 
   - libglade-2_0-0-32bit: [x86_64] 
   - libglade2-devel 
   - libglade2-doc 
   - libgladeui-2-devel 
   - libgle-devel 
+  - libgle3: [i586] 
   - libglfw-devel 
   - libglfw2 
   - libglfw3 
@@ -9086,6 +9909,7 @@ unsorted:
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
   - libglvnd-devel-32bit: [x86_64] 
+  - libglyr1: [i586] 
   - libglyr1-32bit: [x86_64] 
   - libgme-devel 
   - libgme0-32bit: [x86_64] 
@@ -9096,6 +9920,7 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_4 
+  - libgnome-bluetooth13: [i586] 
   - libgnome-desktop-2-17 
   - libgnome-desktop-2-17-32bit: [x86_64] 
   - libgnome-desktop-2-devel 
@@ -9103,14 +9928,22 @@ unsorted:
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
   - libgnome-keyring-devel 
+  - libgnome-keyring-lang: [i586] 
+  - libgnome-keyring0: [i586] 
   - libgnome-keyring0-32bit: [x86_64] 
+  - libgnome-menu-3-0: [i586] 
   - libgnome-menu-3-0-32bit: [x86_64] 
   - libgnomecanvas-2-0 
   - libgnomecanvas-2-0-32bit: [x86_64] 
   - libgnomecanvas-devel 
   - libgnomecanvas-lang 
   - libgnomekbd-devel 
+  - libgnomekbd-lang: [i586] 
+  - libgnomekbd8: [i586] 
+  - libgnomesu: [i586] 
   - libgnomesu-devel 
+  - libgnomesu-lang: [i586] 
+  - libgnomesu0: [i586] 
   - libgnonograms-core0 
   - libgnuastro9 
   - libgnuradio-3_8_0 
@@ -9131,6 +9964,7 @@ unsorted:
   - libgo14-32bit: [x86_64] 
   - libgoa-1_0-0-32bit: [x86_64] 
   - libgoa-backend-1_0-1-32bit: [x86_64] 
+  - libgoffice-0_10-10: [i586] 
   - libgomp1-32bit: [x86_64] 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit: [x86_64] 
@@ -9154,7 +9988,9 @@ unsorted:
   - libgpgmepp6-32bit: [x86_64] 
   - libgphobos76 
   - libgphobos76-32bit: [x86_64] 
+  - libgphoto2-6: [i586] 
   - libgphoto2-6-32bit: [x86_64] 
+  - libgphoto2-6-lang: [i586] 
   - libgphoto2-devel 
   - libgphoto2-devel-32bit: [x86_64] 
   - libgphoto2-devel-doc 
@@ -9167,14 +10003,20 @@ unsorted:
   - libgpm2-32bit: [x86_64] 
   - libgpod-devel 
   - libgpod-doc 
+  - libgpod-lang: [i586] 
+  - libgpod-tools: [i586] 
+  - libgpod4: [i586] 
   - libgpod4-32bit: [x86_64] 
+  - libgps25: [i586] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
   - libgranite5 
   - libgraphblas3 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
+  - libgravatar: [i586] 
   - libgravatar-devel 
+  - libgravatar-lang: [i586] 
   - libgromacs4 
   - libgroove-devel 
   - libgroove4 
@@ -9243,6 +10085,7 @@ unsorted:
   - libgtk-4-0 
   - libgtk-4-0-32bit: [x86_64] 
   - libgtk-frdp-0_1 
+  - libgtk-vnc-2_0-0: [i586] 
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-0 
   - libgtkdatabox-devel 
@@ -9256,6 +10099,7 @@ unsorted:
   - libgtkhtml-4_0-0-32bit: [x86_64] 
   - libgtkhtml-editor-4_0-0 
   - libgtkhtml-editor-4_0-0-32bit: [x86_64] 
+  - libgtkimageview0: [i586] 
   - libgtkmm-2_4-1-32bit: [x86_64] 
   - libgtkmm-3_0-1-32bit: [x86_64] 
   - libgtkpod1 
@@ -9269,9 +10113,11 @@ unsorted:
   - libgtp5 
   - libgtpnl-devel 
   - libgtpnl0 
+  - libgucharmap_2_90-7: [i586] 
   - libgudev-1_0-0-32bit: [x86_64] 
   - libgudev-1_0-devel 
   - libguess-devel 
+  - libguess1: [i586] 
   - libguess1-32bit: [x86_64] 
   - libguestfs-devel: [x86_64] 
   - libguestfs-test: [x86_64] 
@@ -9285,18 +10131,24 @@ unsorted:
   - libguile17 
   - libguilereadline-v-17-17 
   - libgumbo-devel 
+  - libgumbo1: [i586] 
   - libgupnp-1_2-0-32bit: [x86_64] 
+  - libgupnp-av-1_0-2: [i586] 
   - libgupnp-av-devel 
   - libgupnp-devel 
+  - libgupnp-dlna-2_0-3: [i586] 
+  - libgupnp-dlna-backend-gstreamer: [i586] 
   - libgupnp-dlna-devel 
   - libgupnp-igd-1_0-4-32bit: [x86_64] 
   - libgupnp-igd-devel 
   - libgusb-devel 
+  - libgusb2: [i586] 
   - libgviewaudio-2_0-2 
   - libgviewencoder-2_0-2 
   - libgviewrender-2_0-2 
   - libgviewv4l2core-2_0-2 
   - libgviewv4l2core-lang 
+  - libgvnc-1_0-0: [i586] 
   - libgvncpulse-1_0-0 
   - libgweather-3-16-32bit: [x86_64] 
   - libgweather-devel 
@@ -9318,6 +10170,7 @@ unsorted:
   - libhal1 
   - libhamlib++2 
   - libhamlib2 
+  - libhandle1: [i586] 
   - libhandy-devel 
   - libhangul-devel 
   - libhangul1 
@@ -9585,8 +10438,11 @@ unsorted:
   - libipa_hbac-devel 
   - libipa_hbac0 
   - libiperf0 
+  - libipmiconsole2: [i586] 
+  - libipmidetect0: [i586] 
   - libipq-devel 
   - libipq0 
+  - libipset13: [i586] 
   - libiptc-devel 
   - libiptcdata-devel 
   - libiptcdata-doc 
@@ -9607,6 +10463,7 @@ unsorted:
   - libisds-devel 
   - libisds5 
   - libisl19-32bit: [x86_64] 
+  - libiso9660-11: [i586] 
   - libiso9660-11-32bit: [x86_64] 
   - libisoburn-devel 
   - libisofs-devel 
@@ -9619,6 +10476,7 @@ unsorted:
   - libitpp8 
   - libivykis0 
   - libiw-devel 
+  - libiw30: [i586] 
   - libixion-devel 
   - libixion-tools 
   - libixml10-32bit: [x86_64] 
@@ -9642,6 +10500,7 @@ unsorted:
   - libjbig2dec0-32bit: [x86_64] 
   - libjd0 
   - libjim0_75 
+  - libjpeg-turbo: [i586] # suggested by dvd:suggested:patterns-kde-kde_imaging 
   - libjpeg62 
   - libjpeg62-32bit: [x86_64] 
   - libjpeg62-devel 
@@ -9665,7 +10524,9 @@ unsorted:
   - libjthread1_3_3 
   - libjwt_verify_lib0: [x86_64] 
   - libjxrglue0 
+  - libkaccounts1: [i586] 
   - libkaccounts1-32bit: [x86_64] 
+  - libkasten-lang: [i586] 
   - libkate-devel 
   - libkate-tools 
   - libkate1-32bit: [x86_64] 
@@ -9675,6 +10536,7 @@ unsorted:
   - libkcarchiver0 
   - libkcddb-devel 
   - libkcfreebusy0 
+  - libkchart-lang: [i586] 
   - libkcicalmapi0 
   - libkcindex0 
   - libkcinetmapi0 
@@ -9686,10 +10548,16 @@ unsorted:
   - libkdcraw-devel 
   - libkdecoration2-devel 
   - libkdecoration2-devel-32bit: [x86_64] 
+  - libkdecorations2-5: [i586] 
   - libkdecorations2-5-32bit: [x86_64] 
+  - libkdecorations2-5-lang: [i586] 
+  - libkdecorations2private6: [i586] 
   - libkdecorations2private6-32bit: [x86_64] 
   - libkdegames-devel 
+  - libkdepim: [i586] 
   - libkdepim-devel 
+  - libkdepim-lang: [i586] 
+  - libkdevplatform54: [i586] 
   - libkdstatemachineeditor_core1_2_5 
   - libkdstatemachineeditor_view1_2_5 
   - libkdumpfile-devel 
@@ -9720,18 +10588,27 @@ unsorted:
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
+  - libkerfuffle19: [i586] 
   - libkexiv2-devel 
+  - libkeybinder-3_0-0: [i586] 
+  - libkeybinder0: [i586] 
+  - libkgantt-lang: [i586] 
   - libkgapi-devel 
+  - libkgapi-lang: [i586] 
   - libkgeomap 
   - libkgeomap-devel 
   - libkgeomap-lang 
   - libkim-api2 
   - libkioarchive-devel 
+  - libkioarchive5: [i586] 
+  - libkipi-data: [i586] 
   - libkipi-devel 
   - libkkc-devel 
   - libkkc2 
   - libkkc2-32bit: [x86_64] 
+  - libkleo: [i586] 
   - libkleo-devel 
+  - libkleo-lang: [i586] 
   - libklfbackend4 
   - libklftools4 
   - libklu-doc 
@@ -9755,25 +10632,36 @@ unsorted:
   - libknet1-devel 
   - libknet1-plugins-all 
   - libkolabxml-devel 
+  - libkolabxml1: [i586] 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
+  - libkpathsea6: [i586] 
   - libkpmcore7 
   - libksane-devel 
+  - libksane-lang: [i586] 
   - libksba-devel 
   - libkscreen2-devel 
   - libkscreen2-devel-32bit: [x86_64] 
+  - libkscreen2-plugin: [i586] 
   - libkscreen2-plugin-32bit: [x86_64] 
   - libksi-devel 
   - libksi1 
+  - libksieve: [i586] 
   - libksieve-devel 
+  - libksieve-lang: [i586] 
+  - libksysguard5: [i586] 
   - libksysguard5-32bit: [x86_64] 
   - libksysguard5-devel 
   - libksysguard5-devel-32bit: [x86_64] 
+  - libksysguard5-helper: [i586] 
+  - libksysguard5-lang: [i586] 
   - libktoblzcheck1 
   - libktorrent-devel 
+  - libktorrent-lang: [i586] 
   - libktpaccountskcminternal9 
   - libkvkontakte-devel 
   - libkvkontakte-lang 
+  - libkwalletbackend5-5: [i586] 
   - libkwalletbackend5-5-32bit: [x86_64] 
   - libkwnn0 
   - libkyotocabinet-devel 
@@ -9784,7 +10672,9 @@ unsorted:
   - liblapack3-32bit: [x86_64] 
   - liblapacke3 
   - liblapacke3-32bit: [x86_64] 
+  - liblasem-0_4-4: [i586] 
   - liblastfm-qt5-devel 
+  - liblastfm5-1: [i586] 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -9829,6 +10719,8 @@ unsorted:
   - liblept5 
   - liblept5-32bit: [x86_64] 
   - libleveldb1 
+  - liblhasa0: [i586] 
+  - liblightdm-gobject-1-0: [i586] 
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
@@ -9839,6 +10731,7 @@ unsorted:
   - liblinbox0 
   - liblinebreak-devel 
   - liblinebreak2 
+  - liblink-grammar5: [i586] 
   - liblinphone++9 
   - liblinphone++9-32bit: [x86_64] 
   - liblinphone-data 
@@ -9873,6 +10766,7 @@ unsorted:
   - libloadpng44-devel 
   - libloadpng4_4 
   - libloadpng4_4-32bit: [x86_64] 
+  - liblockdev1: [i586] 
   - liblockdev1-32bit: [x86_64] 
   - liblodepng-r84 
   - liblog4c-devel 
@@ -9894,9 +10788,11 @@ unsorted:
   - libloki-doc 
   - libloki0_1_7 
   - libloudmouth-1-0 
+  - liblouis-data: [i586] 
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
+  - liblouis19: [i586] 
   - liblqr-1-0-32bit: [x86_64] 
   - liblqr-devel 
   - liblrdf-devel 
@@ -9918,6 +10814,7 @@ unsorted:
   - liblur3 
   - liblxc-devel 
   - liblxc1 
+  - liblxpanel0: [i586] 
   - liblxqt-devel 
   - liblxqt-globalkeys-ui0 
   - liblxqt-globalkeys0 
@@ -9949,6 +10846,7 @@ unsorted:
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
   - libmariadbd-devel 
+  - libmariadbd19: [i586] 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -9989,7 +10887,9 @@ unsorted:
   - libmbedtls12-32bit: [x86_64] 
   - libmbedx509-0 
   - libmbedx509-0-32bit: [x86_64] 
+  - libmbim: [i586] 
   - libmbim-devel 
+  - libmbim-glib4: [i586] 
   - libmca_common_dstore1 
   - libmcpp0 
   - libmd-devel 
@@ -10021,6 +10921,7 @@ unsorted:
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
   - libmemphis-0_2-0 
+  - libmenu-cache3: [i586] 
   - libmesode-devel 
   - libmesode0 
   - libmetacity1 
@@ -10042,6 +10943,7 @@ unsorted:
   - libmicrohttpd-devel 
   - libmidori-core0 
   - libmikmod-devel 
+  - libmikmod3: [i586] 
   - libmikmod3-32bit: [x86_64] 
   - libmilter-doc 
   - libmimetic-devel 
@@ -10058,6 +10960,7 @@ unsorted:
   - libmirisdr-devel 
   - libmirisdr0 
   - libmisdn1 
+  - libmission-control-plugins0: [i586] 
   - libmjpegutils-2_0-0-32bit: [x86_64] 
   - libmjpegutils-devel 
   - libmlt++-devel 
@@ -10068,6 +10971,7 @@ unsorted:
   - libmlt6-modules 
   - libmlx4-1-32bit: [x86_64] 
   - libmlx5-1-32bit: [x86_64] 
+  - libmm-glib0: [i586] 
   - libmms-devel 
   - libmms0-32bit: [x86_64] 
   - libmng-devel 
@@ -10078,6 +10982,7 @@ unsorted:
   - libmodman-devel 
   - libmodman1-32bit: [x86_64] 
   - libmodplug-devel 
+  - libmodplug1: [i586] 
   - libmodplug1-32bit: [x86_64] 
   - libmodsecurity3 
   - libmodulemd-devel 
@@ -10107,13 +11012,16 @@ unsorted:
   - libmozjs-38 
   - libmozjs-38-32bit: [x86_64] 
   - libmozjs-52 
+  - libmozjs-60: [i586] 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
   - libmpcdec-devel 
+  - libmpcdec5: [i586] 
   - libmpcdec5-32bit: [x86_64] 
   - libmpcdec6-32bit: [x86_64] 
   - libmpd-devel 
+  - libmpd1: [i586] 
   - libmpd1-32bit: [x86_64] 
   - libmpdclient-devel 
   - libmpdclient2 
@@ -10176,13 +11084,16 @@ unsorted:
   - libmuparser2_2_6-32bit: [x86_64] 
   - libmuparserx4_0_8 
   - libmusicbrainz-devel 
+  - libmusicbrainz4: [i586] 
   - libmusicbrainz4-32bit: [x86_64] 
   - libmusicbrainz5-1-32bit: [x86_64] 
   - libmusicbrainz5-devel 
+  - libmutter-5-0: [i586] 
   - libmwaw-devel 
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
+  - libmygpo-qt5-1: [i586] 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -10194,6 +11105,7 @@ unsorted:
   - libmysqlcppconn8-1 
   - libmysqlcppconn8-devel 
   - libnanomsg5 
+  - libnautilus-extension1: [i586] 
   - libnautilus-extension1-32bit: [x86_64] 
   - libnauty-2_7_rc2 
   - libncurses5 
@@ -10203,6 +11115,7 @@ unsorted:
   - libndctl6: [x86_64] 
   - libndp 
   - libndp-devel 
+  - libndp0: [i586] 
   - libndpi-devel 
   - libndpi2 
   - libndr-devel 
@@ -10278,6 +11191,7 @@ unsorted:
   - libnetpbm11-32bit: [x86_64] 
   - libnettle-devel 
   - libnettle-devel-32bit: [x86_64] 
+  - libnewt0_52: [i586] 
   - libnewt0_52-32bit: [x86_64] 
   - libnextcloudsync-devel 
   - libnextcloudsync0 
@@ -10290,6 +11204,7 @@ unsorted:
   - libnfs-devel 
   - libnfsidmap-sss 
   - libnfsjunct0 
+  - libnftables1: [i586] 
   - libnftnl-devel 
   - libnghttp2-14-32bit: [x86_64] 
   - libnghttp2-devel 
@@ -10320,6 +11235,8 @@ unsorted:
   - libnm-util2 
   - libnm-util2-32bit: [x86_64] 
   - libnma-devel 
+  - libnma-lang: [i586] 
+  - libnma0: [i586] 
   - libnormaliz3 
   - libnoson2 
   - libnotify-devel 
@@ -10330,12 +11247,14 @@ unsorted:
   - libnova-devel 
   - libnscd-devel 
   - libnsl-devel 
+  - libnss_nis2: [i586] 
   - libnss_usrfiles2-32bit: [x86_64] 
   - libnsssharedhelper0 
   - libnsssharedhelper0-32bit: [x86_64] 
   - libntfs-3g-devel 
+  - libntfs-3g88: [i586] 
   - libntirpc-devel: [x86_64] 
-  - libntirpc3_0: [x86_64] 
+  - libntirpc3_1: [x86_64] 
   - libntk1 
   - libntl42 
   - libntlm-devel 
@@ -10358,6 +11277,8 @@ unsorted:
   - libobjc4-gcc7 
   - libobjc4-gcc7-32bit: [x86_64] 
   - libobjc4_6 
+  - libobrender32: [i586] 
+  - libobt2: [i586] 
   - libode8 
   - libodfgen-devel 
   - libodfgen-devel-doc 
@@ -10380,6 +11301,7 @@ unsorted:
   - liboil-32bit: [x86_64] 
   - liboil-devel 
   - liboil-doc 
+  - libokteta-lang: [i586] 
   - liboldX-devel 
   - liboldX-devel-32bit: [x86_64] 
   - liboldX6 
@@ -10422,11 +11344,13 @@ unsorted:
   - libopenblas_serial0 
   - libopencascade7 
   - libopencensus-cpp0: [x86_64] 
+  - libopenconnect5: [i586] 
   - libopencsg1 
   - libopencv4_1 
   - libopendkim10 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
+  - libopenjpeg1: [i586] 
   - libopenjpeg1-32bit: [x86_64] 
   - libopenlibm2 
   - libopenmpi1-gnu-hpc 
@@ -10441,6 +11365,7 @@ unsorted:
   - libopenmpt_modplug1-32bit: [x86_64] 
   - libopenobex2 
   - libopenraw-devel 
+  - libopenraw1: [i586] 
   - libopenraw1-32bit: [x86_64] 
   - libopenscap25 
   - libopenscap_sce25 
@@ -10470,10 +11395,12 @@ unsorted:
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
   - liboping0-32bit: [x86_64] 
+  - libopts25: [i586] 
   - libopus-devel 
   - libopus0-32bit: [x86_64] 
   - libopusenc-devel 
   - libopusenc0 
+  - libopusfile0: [i586] 
   - liborc-0_4-0-32bit: [x86_64] 
   - liborcania2_0 
   - liborcus-devel 
@@ -10543,6 +11470,7 @@ unsorted:
   - libossp-uuid++16 
   - libossp-uuid16 
   - libossp-uuid_dce16 
+  - libostree: [i586] 
   - libostree-devel 
   - libostree-grub2 
   - libotb7 
@@ -10552,6 +11480,7 @@ unsorted:
   - libotf0-32bit: [x86_64] 
   - libotr-devel 
   - libotr-tools 
+  - libotr5: [i586] 
   - libout123-0 
   - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
@@ -10573,6 +11502,7 @@ unsorted:
   - libpackagekit-glib2-18-32bit: [x86_64] 
   - libpackagekit-glib2-devel 
   - libpackagekit-glib2-devel-32bit: [x86_64] 
+  - libpackagekitqt5-1: [i586] 
   - libpagemaker-devel 
   - libpagemaker-devel-doc 
   - libpagemaker-tools 
@@ -10595,6 +11525,7 @@ unsorted:
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
   - libpapi_5_7_0-hpc 
+  - libparanoia1_0: [i586] 
   - libpari-gmp-tls6 
   - libparlatype-devel 
   - libparlatype2 
@@ -10617,9 +11548,11 @@ unsorted:
   - libpcap-devel-32bit: [x86_64] 
   - libpcap-devel-static 
   - libpcap1-32bit: [x86_64] 
+  - libpcaudio0: [i586] 
   - libpcd-devel 
   - libpcd2 
   - libpci3-32bit: [x86_64] 
+  - libpciaccess-devel: [i586] # devel package of dvd:libpciaccess0 
   - libpciaccess0-32bit: [x86_64] 
   - libpcp-devel 
   - libpcp3 
@@ -10671,6 +11604,7 @@ unsorted:
   - libpfm-devel-static 
   - libpfm4 
   - libpfm4-32bit: [x86_64] 
+  - libpfs2: [i586] 
   - libpgeasy-devel 
   - libpgeasy3 
   - libpgf-devel 
@@ -10680,6 +11614,7 @@ unsorted:
   - libphobos2-ldc86 
   - libphodav-2_0-0 
   - libphonenumber-devel 
+  - libphonenumber8: [i586] 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
   - libphysfs1 
@@ -10687,13 +11622,15 @@ unsorted:
   - libpinyin-tools 
   - libpinyin13-32bit: [x86_64] 
   - libpipeline-devel 
+  - libpipewire-0_2-1: [i586] 
   - libpisock-devel 
   - libpisync-devel 
   - libpisync1 
+  - libpixman-1-0-devel: [i586] # devel package of dvd:libpixman-1-0 
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo21 
+  - libplacebo29 
   - libplank1 
   - libplayerctl2 
   - libplib0 
@@ -10709,6 +11646,10 @@ unsorted:
   - libplplotfortran0 
   - libplplotqt2 
   - libplplotwxwidgets1 
+  - libply-boot-client5: [i586] 
+  - libply-splash-core5: [i586] 
+  - libply-splash-graphics5: [i586] 
+  - libply5: [i586] 
   - libpmem-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmemblk-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmemblk1: [x86_64] 
@@ -10741,17 +11682,22 @@ unsorted:
   - libpocketsphinx1 
   - libpocl2 
   - libpodofo-devel 
+  - libpodofo0_9_6: [i586] 
+  - libpolkit-qt5-1-1: [i586] 
   - libpolkit-qt5-1-1-32bit: [x86_64] 
   - libpolkit-qt5-1-devel 
   - libpolkit-qt5-1-devel-32bit: [x86_64] 
+  - libpolkit0: [i586] 
   - libpolkit0-32bit: [x86_64] 
   - libpoppler-cpp0-32bit: [x86_64] 
   - libpoppler-devel 
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit: [x86_64] 
+  - libpoppler-qt5-1: [i586] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
   - libpoppler91-32bit: [x86_64] 
+  - libportaudio2: [i586] 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libportmidi0 
@@ -10796,12 +11742,17 @@ unsorted:
   - libproxy-sharp 
   - libproxy-tools 
   - libproxy1-32bit: [x86_64] 
+  - libproxy1-config-gnome3: [i586] 
   - libproxy1-config-gnome3-32bit: [x86_64] 
+  - libproxy1-config-kde: [i586] 
   - libproxy1-config-kde-32bit: [x86_64] 
+  - libproxy1-networkmanager: [i586] 
   - libproxy1-networkmanager-32bit: [x86_64] 
+  - libproxy1-pacrunner-webkit: [i586] 
   - libproxy1-pacrunner-webkit-32bit: [x86_64] 
   - libpsiconv6 
   - libpskc-devel 
+  - libpskc0: [i586] 
   - libpsl-devel 
   - libpsl5-32bit: [x86_64] 
   - libpsm2-2: [x86_64] 
@@ -10854,6 +11805,7 @@ unsorted:
   - libqb-devel-32bit: [x86_64] 
   - libqb-tests 
   - libqb-tools 
+  - libqb20: [i586] 
   - libqb20-32bit: [x86_64] 
   - libqca-qt5-32bit: [x86_64] 
   - libqca-qt5-devel 
@@ -10865,6 +11817,7 @@ unsorted:
   - libqcustomplot2 
   - libqd0 
   - libqgpgme-devel 
+  - libqgpgme7: [i586] 
   - libqgpgme7-32bit: [x86_64] 
   - libqhexedit4 
   - libqhull7-7_3_2 
@@ -10874,6 +11827,8 @@ unsorted:
   - libqjack0 
   - libqmatrixclient-devel 
   - libqmi-devel 
+  - libqmi-glib5: [i586] 
+  - libqmi-tools: [i586] 
   - libqmmp-devel 
   - libqmmp-plugins 
   - libqmmp1 
@@ -10895,6 +11850,7 @@ unsorted:
   - libqt5-creator-plugin-devel 
   - libqt5-linguist 
   - libqt5-linguist-devel 
+  - libqt5-qdbus: [i586] 
   - libqt5-qt3d-devel 
   - libqt5-qt3d-examples 
   - libqt5-qt3d-imports 
@@ -10929,6 +11885,7 @@ unsorted:
   - libqt5-qtgamepad-devel-32bit: [x86_64] 
   - libqt5-qtgamepad-examples 
   - libqt5-qtgamepad-private-headers-devel 
+  - libqt5-qtgraphicaleffects: [i586] 
   - libqt5-qtimageformats-32bit: [x86_64] 
   - libqt5-qtimageformats-devel 
   - libqt5-qtlocation-devel 
@@ -10944,7 +11901,10 @@ unsorted:
   - libqt5-qtnetworkauth-devel-32bit: [x86_64] 
   - libqt5-qtnetworkauth-examples 
   - libqt5-qtnetworkauth-private-headers-devel 
+  - libqt5-qtpaths: [i586] 
+  - libqt5-qtquickcontrols: [i586] 
   - libqt5-qtquickcontrols-examples 
+  - libqt5-qtquickcontrols2: [i586] 
   - libqt5-qtquickcontrols2-examples 
   - libqt5-qtquickcontrols2-private-headers-devel 
   - libqt5-qtremoteobjects-devel 
@@ -10978,6 +11938,7 @@ unsorted:
   - libqt5-qtspeech-devel 
   - libqt5-qtspeech-devel-32bit: [x86_64] 
   - libqt5-qtspeech-examples 
+  - libqt5-qtspeech-plugin-speechd: [i586] 
   - libqt5-qtspeech-plugin-speechd-32bit: [x86_64] 
   - libqt5-qtstyleplugins 
   - libqt5-qtstyleplugins-devel 
@@ -10994,9 +11955,12 @@ unsorted:
   - libqt5-qttools-examples 
   - libqt5-qttools-private-headers-devel 
   - libqt5-qttools-qhelpgenerator 
+  - libqt5-qtvirtualkeyboard: [i586] 
   - libqt5-qtvirtualkeyboard-devel 
   - libqt5-qtvirtualkeyboard-examples 
+  - libqt5-qtvirtualkeyboard-hunspell: [i586] 
   - libqt5-qtvirtualkeyboard-private-headers-devel 
+  - libqt5-qtwayland: [i586] 
   - libqt5-qtwayland-32bit: [x86_64] 
   - libqt5-qtwayland-devel 
   - libqt5-qtwayland-devel-32bit: [x86_64] 
@@ -11038,6 +12002,7 @@ unsorted:
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit: [x86_64] 
   - libquagga_pb0 
+  - libquazip5-1: [i586] 
   - libquicktime 
   - libquicktime-devel 
   - libquicktime-lang 
@@ -11045,6 +12010,7 @@ unsorted:
   - libquicktime0-32bit: [x86_64] 
   - libquo-devel 
   - libquo6 
+  - libquorum5: [i586] 
   - libquorum5-32bit: [x86_64] 
   - libquvi-devel 
   - libquvi-scripts-devel 
@@ -11090,8 +12056,10 @@ unsorted:
   - librbio2 
   - librbl1 
   - librcc-devel 
+  - librcc0: [i586] 
   - librcc0-32bit: [x86_64] 
   - librcd-devel 
+  - librcd0: [i586] 
   - librcd0-32bit: [x86_64] 
   - librdf0-32bit: [x86_64] 
   - librdkafka-devel 
@@ -11129,6 +12097,7 @@ unsorted:
   - libreiserfs-devel-32bit: [x86_64] 
   - libreiserfs-progs 
   - libreiserfscore-devel 
+  - libreiserfscore0: [i586] 
   - librelp-devel 
   - librelp0 
   - libreoffice-base-drivers-postgresql 
@@ -11136,6 +12105,7 @@ unsorted:
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
+  - libreoffice-gtk3: [i586] 
   - libreoffice-l10n-af 
   - libreoffice-l10n-am 
   - libreoffice-l10n-ar 
@@ -11242,6 +12212,7 @@ unsorted:
   - libreoffice-sdk-doc 
   - libreoffice-voikko 
   - libreoffice-writer-extensions 
+  - libreofficekit: [i586] 
   - libreofficekit-devel 
   - librep 
   - librep-devel 
@@ -11277,6 +12248,7 @@ unsorted:
   - librlog5 
   - librlog5-doc 
   - librmt-devel-doc 
+  - librmt1_0: [i586] 
   - librocsgraphtheory0 
   - librpmem-devel: [x86_64] # devel package of dvd:pmdk 
   - librpmem1: [x86_64] 
@@ -11295,10 +12267,12 @@ unsorted:
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
+  - librygel-core-2_6-2: [i586] 
   - librygel-db-2_6-2 
   - librygel-renderer-2_6-2 
   - librygel-renderer-gst-2_6-2 
   - librygel-ruih-2_0-1 
+  - librygel-server-2_6-2: [i586] 
   - libs3-4 
   - libs3-devel 
   - libs3-tools 
@@ -11433,6 +12407,7 @@ unsorted:
   - libsignal-protocol-c2 
   - libsignon-glib-devel 
   - libsignon-glib2 
+  - libsignon-qt5-1: [i586] 
   - libsignon-qt5-1-32bit: [x86_64] 
   - libsignon-qt5-devel 
   - libsignon-qt5-docs 
@@ -11462,6 +12437,8 @@ unsorted:
   - libsmbclient0-32bit: [x86_64] 
   - libsmbconf-devel 
   - libsmbios-devel 
+  - libsmbios-lang: [i586] 
+  - libsmbios_c2: [i586] 
   - libsmbldap-devel 
   - libsmdev-devel 
   - libsmdev-tools 
@@ -11470,6 +12447,7 @@ unsorted:
   - libsmpp34-1 
   - libsmpp34-devel 
   - libsmputils-devel 
+  - libsmputils1-1: [i586] 
   - libsmraw-devel 
   - libsmraw-tools 
   - libsmraw1 
@@ -11504,6 +12482,7 @@ unsorted:
   - libsource-highlight-devel 
   - libsource-highlight4 
   - libsource-highlight4-32bit: [x86_64] 
+  - libsox3: [i586] 
   - libsoxr-lsr0 
   - libsoxr-lsr0-32bit: [x86_64] 
   - libsoxr0-32bit: [x86_64] 
@@ -11514,7 +12493,9 @@ unsorted:
   - libspdlog1 
   - libspdylay7 
   - libspectre-devel 
+  - libspectre1: [i586] 
   - libspeechd-devel 
+  - libspeechd2: [i586] 
   - libspeechd2-32bit: [x86_64] 
   - libspeex1-32bit: [x86_64] 
   - libspeexdsp1-32bit: [x86_64] 
@@ -11523,6 +12504,9 @@ unsorted:
   - libsphinxbase1 
   - libsphinxclient-0_0_1 
   - libsphinxclient-devel 
+  - libspice-client-glib-2_0-8: [i586] 
+  - libspice-client-glib-helper: [i586] 
+  - libspice-client-gtk-3_0-5: [i586] 
   - libspice-server-devel 
   - libspiro-devel 
   - libspiro0 
@@ -11560,6 +12544,7 @@ unsorted:
   - libstaroffice-devel 
   - libstaroffice-devel-doc 
   - libstaroffice-tools 
+  - libstartup-notification-1-0: [i586] 
   - libstartup-notification-1-0-32bit: [x86_64] 
   - libstatgrab-devel 
   - libstatgrab-devel-32bit: [x86_64] 
@@ -11579,6 +12564,7 @@ unsorted:
   - libstk-devel 
   - libstk4 
   - libstlink-shared1 
+  - libstoken1: [i586] 
   - libstorage-ng-devel 
   - libstorage-ng-integration-tests 
   - libstorage-ng-python3 
@@ -11652,6 +12638,8 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm2 
+  - libsvn_auth_gnome_keyring-1-0: [i586] 
+  - libsvn_auth_kwallet-1-0: [i586] 
   - libswitchboard-2_0-0 
   - libsword-1_8_1 
   - libswresample3-32bit: [x86_64] 
@@ -11660,6 +12648,7 @@ unsorted:
   - libsympol0_1 
   - libsynce-devel 
   - libsynce0 
+  - libsynctex2: [i586] 
   - libsysstat-qt5-0 
   - libsysstat-qt5-devel 
   - libsystemd0-mini 
@@ -11681,7 +12670,9 @@ unsorted:
   - libtachyon-devel 
   - libtag-devel 
   - libtag-doc 
+  - libtag-extras1: [i586] 
   - libtag1-32bit: [x86_64] 
+  - libtag_c0: [i586] 
   - libtag_c0-32bit: [x86_64] 
   - libtaginfo-devel 
   - libtaginfo1 
@@ -11702,12 +12693,15 @@ unsorted:
   - libteam-devel 
   - libteam-tools 
   - libteam5 
+  - libteamdctl0: [i586] 
   - libtecla_r1 
   - libteec1 
   - libtelepathy-farstream3 
   - libtelepathy-farstream3-32bit: [x86_64] 
+  - libtelepathy-glib0: [i586] 
   - libtelepathy-glib0-32bit: [x86_64] 
   - libtelepathy-logger-qt5 
+  - libtelepathy-logger3: [i586] 
   - libtelepathy-qt5-0 
   - libtelepathy-qt5-0-32bit: [x86_64] 
   - libtelepathy-qt5-farstream0 
@@ -11734,6 +12728,7 @@ unsorted:
   - libthrift_c_glib0 
   - libthriftnb-0_12_0 
   - libthriftz-0_12_0 
+  - libthunarx-3-0: [i586] 
   - libtidy-devel 
   - libtidyp-1_04-0 
   - libtidyp-devel 
@@ -11750,6 +12745,7 @@ unsorted:
   - libtinyb0 
   - libtinygettext0 
   - libtinyobjloader1 
+  - libtinyxml0: [i586] 
   - libtinyxml2-6 
   - libtirpc-devel 
   - libtls19 
@@ -11764,6 +12760,7 @@ unsorted:
   - libtolua5 
   - libtomcrypt-devel 
   - libtomcrypt-examples 
+  - libtomcrypt1: [i586] 
   - libtomcrypt1-32bit: [x86_64] 
   - libtommath-devel 
   - libtommath-examples 
@@ -11777,6 +12774,7 @@ unsorted:
   - libtorrent21 
   - libtotem_pg5 
   - libtotem_pg5-32bit: [x86_64] 
+  - libtowitoko2: [i586] 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm_unseal1 
@@ -11787,6 +12785,7 @@ unsorted:
   - libtranslate-devel 
   - libtranslate-progs 
   - libtranslate0 
+  - libtre5: [i586] 
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
   - libtrilinos-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi2-hpc: [x86_64] 
@@ -11804,9 +12803,12 @@ unsorted:
   - libtsm4 
   - libtspi1 
   - libtspi1-32bit: [x86_64] 
+  - libtss2-esys0: [i586] 
   - libtss2-esys0-32bit: [x86_64] 
+  - libtss2-mu0: [i586] 
   - libtss2-mu0-32bit: [x86_64] 
   - libtss2-rc0 
+  - libtss2-sys0: [i586] 
   - libtss2-sys0-32bit: [x86_64] 
   - libtss2-tcti-device0 
   - libtss2-tcti-device0-32bit: [x86_64] 
@@ -11817,7 +12819,9 @@ unsorted:
   - libttf2 
   - libttf2-32bit: [x86_64] 
   - libttsmimic0 
+  - libtumbler-1-0: [i586] 
   - libtun6-0 
+  - libturbojpeg0: [i586] 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
   - libturris-spectator0 
@@ -11845,13 +12849,16 @@ unsorted:
   - libucs0: [x86_64] 
   - libuct-devel: [x86_64] 
   - libuct0: [x86_64] 
+  - libudev-devel: [i586] # devel package of dvd:systemd-sysvinit 
   - libudev-devel-32bit: [x86_64] 
   - libudev-mini-devel 
   - libudev-mini1 
   - libudf0 
   - libudf0-32bit: [x86_64] 
+  - libudisks2-0: [i586] 
   - libudisks2-0-devel 
   - libudisks2-0_bcache 
+  - libudisks2-0_btrfs: [i586] 
   - libudisks2-0_lsm 
   - libudisks2-0_lvm2 
   - libudisks2-0_vdo 
@@ -11878,12 +12885,15 @@ unsorted:
   - libunicap2-32bit: [x86_64] 
   - libuninameslist-devel 
   - libuninameslist0 
+  - libunique-1_0-0: [i586] 
   - libunique1-devel 
   - libunistring-devel 
   - libunistring-devel-32bit: [x86_64] 
   - libunity-devel 
   - libunity-gtk-parser-devel 
+  - libunity-gtk2-parser0: [i586] 
   - libunity-gtk2-parser0-32bit: [x86_64] 
+  - libunity-gtk3-parser0: [i586] 
   - libunity-gtk3-parser0-32bit: [x86_64] 
   - libunity-tools 
   - libunity9 
@@ -11920,6 +12930,7 @@ unsorted:
   - libusbmuxd-devel 
   - libusbmuxd4-32bit: [x86_64] 
   - libusbprog0 
+  - libusbredirhost1: [i586] 
   - libuser 
   - libuser-devel 
   - libuser-lang 
@@ -11935,6 +12946,7 @@ unsorted:
   - libuuid-devel-32bit: [x86_64] 
   - libuuid-devel-static 
   - libuv-devel 
+  - libuv1: [i586] 
   - libuwac0-0 
   - libv3270-5_2 
   - libv3270-devel 
@@ -11968,6 +12980,7 @@ unsorted:
   - libvapoursynth-script0 
   - libvarnishapi2 
   - libvbr2 
+  - libvcdinfo0: [i586] 
   - libvcdinfo0-32bit: [x86_64] 
   - libvdehist-devel 
   - libvdehist0 
@@ -11979,12 +12992,17 @@ unsorted:
   - libvdpau-devel 
   - libvdpau-devel-32bit: [x86_64] 
   - libvdpau1-32bit: [x86_64] 
+  - libvdpau_nouveau: [i586] 
   - libvdpau_nouveau-32bit: [x86_64] 
+  - libvdpau_r300: [i586] 
   - libvdpau_r300-32bit: [x86_64] 
+  - libvdpau_r600: [i586] 
   - libvdpau_r600-32bit: [x86_64] 
+  - libvdpau_radeonsi: [i586] 
   - libvdpau_radeonsi-32bit: [x86_64] 
   - libvdpau_trace1 
   - libvdpau_trace1-32bit: [x86_64] 
+  - libvdpau_va_gl1: [i586] 
   - libvdpau_va_gl1-32bit: [x86_64] 
   - libventrilo3-0 
   - libventrilo3-devel 
@@ -12050,11 +13068,13 @@ unsorted:
   - libvmmalloc-devel: [x86_64] # devel package of dvd:pmdk 
   - libvmmalloc1: [x86_64] 
   - libvmtools-devel 
+  - libvmtools0: [i586] 
+  - libvncclient1: [i586] 
   - libvncserver1 
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
-  - libvolk2_0 
+  - libvolk2_1 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
@@ -12089,7 +13109,9 @@ unsorted:
   - libvtk1-openmpi2 
   - libvulkan1 
   - libvulkan1-32bit: [x86_64] 
+  - libvulkan_intel: [i586] 
   - libvulkan_intel-32bit: [x86_64] 
+  - libvulkan_radeon: [i586] 
   - libvulkan_radeon-32bit: [x86_64] 
   - libwacom-devel 
   - libwacom-tools 
@@ -12138,11 +13160,13 @@ unsorted:
   - libwmf-devel 
   - libwmf-gnome 
   - libwmf-gnome-32bit: [x86_64] 
+  - libwnck-1-22: [i586] 
   - libwnck-1-22-32bit: [x86_64] 
   - libwnck-3-0-32bit: [x86_64] 
   - libwnck-devel 
   - libwnck-tools 
   - libwnck2-devel 
+  - libwnck2-lang: [i586] 
   - libwnn0 
   - libwoff2common1_0_2-32bit: [x86_64] 
   - libwoff2dec1_0_2-32bit: [x86_64] 
@@ -12170,6 +13194,7 @@ unsorted:
   - libwtdbo4_2_0 
   - libwtdbomysql4_2_0 
   - libwtdbopostgres4_2_0 
+  - libwv-1_2-4: [i586] 
   - libwv2-4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
@@ -12248,11 +13273,14 @@ unsorted:
   - libxalan-c-devel 
   - libxalan-c111 
   - libxapian-devel 
+  - libxapian30: [i586] 
   - libxapian30-32bit: [x86_64] 
   - libxapp-devel 
+  - libxapp1: [i586] 
   - libxar-devel 
   - libxar1 
   - libxatracker-devel 
+  - libxatracker2: [i586] 
   - libxbase64-1 
   - libxbrz-1_7 
   - libxbsql0 
@@ -12261,10 +13289,14 @@ unsorted:
   - libxcam-devel 
   - libxcam1 
   - libxcb-composite0-32bit: [x86_64] 
+  - libxcb-cursor0: [i586] 
   - libxcb-cursor0-32bit: [x86_64] 
+  - libxcb-damage0: [i586] 
   - libxcb-damage0-32bit: [x86_64] 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-xinput0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
+  - libxcb-dpms0: [i586] 
   - libxcb-dpms0-32bit: [x86_64] 
   - libxcb-dri2-0-32bit: [x86_64] 
   - libxcb-dri3-0-32bit: [x86_64] 
@@ -12278,34 +13310,50 @@ unsorted:
   - libxcb-keysyms1-32bit: [x86_64] 
   - libxcb-present0-32bit: [x86_64] 
   - libxcb-randr0-32bit: [x86_64] 
+  - libxcb-record0: [i586] 
   - libxcb-record0-32bit: [x86_64] 
   - libxcb-render-util0-32bit: [x86_64] 
   - libxcb-res0-32bit: [x86_64] 
+  - libxcb-screensaver0: [i586] 
   - libxcb-screensaver0-32bit: [x86_64] 
   - libxcb-shape0-32bit: [x86_64] 
   - libxcb-sync1-32bit: [x86_64] 
   - libxcb-util1-32bit: [x86_64] 
+  - libxcb-xf86dri0: [i586] 
   - libxcb-xf86dri0-32bit: [x86_64] 
   - libxcb-xfixes0-32bit: [x86_64] 
   - libxcb-xinerama0-32bit: [x86_64] 
   - libxcb-xinput0-32bit: [x86_64] 
   - libxcb-xkb1-32bit: [x86_64] 
   - libxcb-xrm0 
+  - libxcb-xtest0: [i586] 
   - libxcb-xtest0-32bit: [x86_64] 
   - libxcb-xv0-32bit: [x86_64] 
+  - libxcb-xvmc0: [i586] 
   - libxcb-xvmc0-32bit: [x86_64] 
   - libxclass-0_9_2 
   - libxcrypt-devel-32bit: [x86_64] 
   - libxcrypt-devel-static 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
+  - libxerces-c-3_2: [i586] 
   - libxerces-c-3_2-32bit: [x86_64] 
   - libxerces-c-devel 
+  - libxfce4panel-1_0-4: [i586] 
+  - libxfce4panel-2_0-4: [i586] 
+  - libxfce4ui-1-0: [i586] 
+  - libxfce4ui-2-0: [i586] 
+  - libxfce4ui-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - libxfce4ui-branding-upstream 
   - libxfce4ui-devel 
   - libxfce4ui-doc 
+  - libxfce4ui-lang: [i586] 
+  - libxfce4ui-tools: [i586] 
   - libxfce4util-devel 
+  - libxfce4util-lang: [i586] 
   - libxfce4util-tools 
+  - libxfce4util7: [i586] 
+  - libxfconf-0-3: [i586] 
   - libxfconf-devel 
   - libxfdashboard0 
   - libxine-devel 
@@ -12320,6 +13368,7 @@ unsorted:
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit: [x86_64] 
   - libxkbcommon0-32bit: [x86_64] 
+  - libxkbfile-devel: [i586] # devel package of dvd:libxkbfile1 
   - libxkbfile-devel-32bit: [x86_64] 
   - libxkbfile1-32bit: [x86_64] 
   - libxkbui-devel 
@@ -12344,6 +13393,7 @@ unsorted:
   - libxml2-devel-32bit: [x86_64] 
   - libxml2-doc 
   - libxmlb-devel 
+  - libxmlb1: [i586] 
   - libxmlbird1 
   - libxmlrpc++8 
   - libxmlrpc3 
@@ -12364,6 +13414,7 @@ unsorted:
   - libxmlrpc_util3 
   - libxmlsec1-gcrypt1 
   - libxmlsec1-gnutls1 
+  - libxmlsec1-openssl1: [i586] 
   - libxmltooling-devel 
   - libxmltooling-lite8 
   - libxmltooling8 
@@ -12374,6 +13425,8 @@ unsorted:
   - libxplayer-plparser-mini18-32bit: [x86_64] 
   - libxplayer-plparser18 
   - libxplayer-plparser18-32bit: [x86_64] 
+  - libxreaderdocument3: [i586] 
+  - libxreaderview3: [i586] 
   - libxshmfence-devel 
   - libxshmfence1-32bit: [x86_64] 
   - libxslt-devel 
@@ -12399,6 +13452,7 @@ unsorted:
   - libyami-devel 
   - libyami-utils: [x86_64] 
   - libyami1 
+  - libyaml-cpp0_6: [i586] 
   - libyaml-devel 
   - libyang-cpp-devel 
   - libyang-cpp0_16 
@@ -12444,6 +13498,7 @@ unsorted:
   - libyui-rest-api-devel 
   - libyui-rest-api10 
   - libz3-4_8 
+  - libzapojit-0_0-0: [i586] 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -12457,6 +13512,7 @@ unsorted:
   - libzck-devel 
   - libzeitgeist-1_0-1 
   - libzeitgeist-1_0-1-32bit: [x86_64] 
+  - libzeitgeist-2_0-0: [i586] 
   - libzeitgeist-devel 
   - libzen-devel 
   - libzen0 
@@ -12491,14 +13547,22 @@ unsorted:
   - libzvbi0-32bit: [x86_64] 
   - libzypp-devel 
   - libzypp-devel-doc 
+  - libzypp-plugin-appdata: [i586] 
   - libzypp-testsuite-tools 
   - libzzip-0-13 
   - libzzip-0-13-32bit: [x86_64] 
   - lifelines 
   - light-locker 
   - light-locker-lang 
+  - lightdm: [i586] 
   - lightdm-gobject-devel 
+  - lightdm-gtk-greeter: [i586] 
+  - lightdm-gtk-greeter-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - lightdm-gtk-greeter-branding-upstream 
+  - lightdm-gtk-greeter-lang: [i586] 
+  - lightdm-gtk-greeter-settings: [i586] 
+  - lightdm-gtk-greeter-settings-lang: [i586] 
+  - lightdm-lang: [i586] 
   - lightdm-qt5-devel 
   - lightdm-slick-greeter 
   - lightdm-slick-greeter-branding-openSUSE 
@@ -12550,6 +13614,7 @@ unsorted:
   - link-grammar-devel 
   - linkchecker 
   - linkloop 
+  - links: [i586] # suggested by dvd:suggested:patterns-base-console 
   - linphone 
   - linphone-cli 
   - linssid 
@@ -12666,6 +13731,7 @@ unsorted:
   - lnav 
   - lndir 
   - loadlin: [i586] 
+  - lockdev: [i586] 
   - lockdev-devel 
   - lodepng-devel 
   - log4cplus-devel 
@@ -12694,6 +13760,7 @@ unsorted:
   - logwatch 
   - lollypop 
   - lollypop-lang 
+  - lomoco: [i586] 
   - lomt-blackout-fonts 
   - lomt-chunk-fonts 
   - lomt-fanwood-fonts 
@@ -12833,6 +13900,7 @@ unsorted:
   - luckybackup 
   - lugaru 
   - lugaru-data 
+  - luit: [i586] 
   - lutris 
   - luvcview 
   - lv2 
@@ -12846,19 +13914,32 @@ unsorted:
   - lvm2-devel 
   - lvm2-lockd 
   - lvm2-testsuite 
+  - lxappearance: [i586] 
   - lxappearance-devel 
+  - lxappearance-lang: [i586] 
+  - lxappearance-obconf: [i586] 
+  - lxappearance-obconf-lang: [i586] 
   - lxc 
   - lxc-bash-completion 
+  - lxcc: [i586] 
   - lxcfs 
   - lxcfs-hooks-lxc 
   - lxd 
   - lxd-bash-completion 
+  - lxde-common: [i586] 
+  - lxde-common-branding-openSUSE: [i586] 
   - lxde-common-branding-upstream 
   - lximage-qt 
   - lximage-qt-lang 
+  - lxinput: [i586] 
+  - lxinput-lang: [i586] 
+  - lxlauncher: [i586] # suggested by dvd:suggested:patterns-lxde-lxde 
+  - lxmenu-data: [i586] 
   - lxmusic 
   - lxmusic-lang 
+  - lxpanel: [i586] 
   - lxpanel-devel 
+  - lxpanel-lang: [i586] 
   - lxqt-about 
   - lxqt-about-lang 
   - lxqt-build-tools-devel 
@@ -12889,13 +13970,22 @@ unsorted:
   - lxqt-theme-openSUSE-leaper 
   - lxqt-theme-openSUSE-light 
   - lxqt-themes 
+  - lxrandr: [i586] 
+  - lxrandr-lang: [i586] 
+  - lxsession: [i586] 
   - lxshortcut 
+  - lxtask: [i586] 
+  - lxtask-lang: [i586] 
+  - lxterminal: [i586] 
+  - lxterminal-lang: [i586] 
   - lynis 
+  - lynx: [i586] # suggested by dvd:suggested:patterns-base-console 
   - lyx 
   - lz4 
   - lzfse-devel 
   - lzham_codec-devel 
   - lzham_codec-libs 
+  - lzip: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - lziprecover 
   - lzlib-devel 
   - lzma-sdk-devel 
@@ -12914,10 +14004,14 @@ unsorted:
   - madplay 
   - madplay-lang 
   - maelstrom 
+  - mailcommon: [i586] 
   - mailcommon-devel 
+  - mailcommon-lang: [i586] 
   - maildir-utils 
   - mailgraph 
+  - mailimporter: [i586] 
   - mailimporter-devel 
+  - mailimporter-lang: [i586] 
   - mailman 
   - mailnag 
   - mailnag-lang 
@@ -12959,6 +14053,7 @@ unsorted:
   - mariadb-bench 
   - mariadb-connector-odbc 
   - mariadb-galera 
+  - mariadb-rpm-macros 
   - mariadb-test 
   - mariadb-tools 
   - marisa 
@@ -12976,6 +14071,8 @@ unsorted:
   - mate-applets-lang 
   - mate-backgrounds 
   - mate-backgrounds-lang 
+  - mate-calc: [i586] 
+  - mate-calc-lang: [i586] 
   - mate-common 
   - mate-control-center 
   - mate-control-center-branding-openSUSE 
@@ -13281,7 +14378,12 @@ unsorted:
   - mayavi-doc 
   - mayavi-jupyter 
   - mbedtls-devel 
+  - mbimcli-bash-completion: [i586] 
+  - mbox-importer: [i586] 
+  - mbox-importer-lang: [i586] 
   - mbuffer 
+  - mc: [i586] 
+  - mc-lang: [i586] 
   - mcabber 
   - mcabber-devel 
   - mccs 
@@ -13329,13 +14431,18 @@ unsorted:
   - memphis-devel 
   - memprof 
   - memprof-lang 
+  - memtest86+: [i586] 
+  - menu-cache: [i586] 
   - menu-cache-devel 
+  - menulibre: [i586] 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
   - meson-tools 
   - meson-vim 
+  - messagelib: [i586] 
   - messagelib-devel 
+  - messagelib-lang: [i586] 
   - metacity 
   - metacity-devel 
   - metacity-lang 
@@ -13352,9 +14459,11 @@ unsorted:
   - metatheme-ambiant-mate-common 
   - metatheme-arc-common 
   - metatheme-bluebird-common 
+  - metatheme-breeze-common: [i586] 
   - metatheme-e17gtk-common 
   - metatheme-elementary-common 
   - metatheme-greybird-common 
+  - metatheme-greybird-geeko-common: [i586] 
   - metatheme-mint-common 
   - metatheme-numix-common 
   - metatheme-paper-common 
@@ -13395,6 +14504,8 @@ unsorted:
   - midori-devel 
   - midori-lang 
   - miller 
+  - milou5: [i586] 
+  - milou5-lang: [i586] 
   - miltertest 
   - mimic 
   - mimic-devel 
@@ -13408,6 +14519,8 @@ unsorted:
   - minetestserver 
   - mingetty 
   - mingzat-fonts 
+  - minicom: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - minicom-lang: [i586] 
   - minidlna 
   - minikube 
   - minimodem 
@@ -13447,6 +14560,8 @@ unsorted:
   - mkvtoolnix 
   - mkvtoolnix-gui 
   - mlmmj 
+  - mlocate: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - mlocate-lang: [i586] 
   - mlterm 
   - mlterm-canna 
   - mlterm-ibus 
@@ -13462,6 +14577,8 @@ unsorted:
   - moarvm 
   - moarvm-devel 
   - mobidict 
+  - mobile-broadband-provider-info: [i586] 
+  - mobipocket: [i586] 
   - mobipocket-devel 
   - moc 
   - mockito 
@@ -13569,6 +14686,7 @@ unsorted:
   - mopac7 
   - moreutils 
   - moreutils-parallel 
+  - mosh: [i586] 
   - mosquitto 
   - mosquitto-clients 
   - mosquitto-devel 
@@ -13580,6 +14698,10 @@ unsorted:
   - motoya-lcedar-fonts 
   - motoya-lmaru-fonts 
   - motv 
+  - mousepad: [i586] 
+  - mousepad-lang: [i586] 
+  - mousetweaks: [i586] 
+  - mousetweaks-lang: [i586] 
   - movit-devel 
   - movit8-data 
   - mozaddon-devel 
@@ -13626,6 +14748,7 @@ unsorted:
   - mpg123-openal-32bit: [x86_64] 
   - mpg123-portaudio 
   - mpg123-portaudio-32bit: [x86_64] 
+  - mpg123-pulse: [i586] 
   - mpg123-pulse-32bit: [x86_64] 
   - mpg123-sdl 
   - mpg123-sdl-32bit: [x86_64] 
@@ -13695,6 +14818,8 @@ unsorted:
   - mpitests-openmpi3 
   - mpitests-openmpi3-gnu-hpc 
   - mplus-fonts 
+  - mpt-firmware: [i586] 
+  - mpt-status: [i586] 
   - mpv 
   - mpv-bash-completion 
   - mpv-devel 
@@ -13731,9 +14856,12 @@ unsorted:
   - msv-xsdlib 
   - mt-st 
   - mtdev 
+  - mtdev-devel: [i586] # devel package of dvd:libmtdev1 
   - mtools-doc 
   - mtp-tools 
+  - mtpaint: [i586] 
   - mtpaint-handbook 
+  - mtpaint-lang: [i586] 
   - mtr-gtk 
   - mtree 
   - mtx 
@@ -13741,6 +14869,7 @@ unsorted:
   - muffin 
   - muffin-devel 
   - muffin-lang 
+  - mugshot: [i586] 
   - multimon-ng 
   - multipath-tools-devel 
   - multitail 
@@ -13840,7 +14969,13 @@ unsorted:
   - musepack-devel 
   - musescore 
   - musescore-fonts 
+  - mutt: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - mutt-doc: [i586] 
+  - mutt-lang: [i586] 
+  - mutter: [i586] 
+  - mutter-data: [i586] 
   - mutter-devel 
+  - mutter-lang: [i586] 
   - mvapich2 
   - mvapich2-devel 
   - mvapich2-devel-static 
@@ -14039,7 +15174,9 @@ unsorted:
   - nailgun 
   - nailgun-javadoc 
   - namdhinggo-fonts 
+  - nano: [i586] 
   - nano-icinga2 
+  - nano-lang: [i586] 
   - nano-plugin-conky 
   - nanomsg-devel 
   - nanopb-devel 
@@ -14058,24 +15195,34 @@ unsorted:
   - native-maven-plugin 
   - native-platform 
   - native-platform-javadoc 
+  - nautilus: [i586] 
   - nautilus-deja-dup 
   - nautilus-devel 
   - nautilus-eiciel 
+  - nautilus-evince: [i586] 
   - nautilus-extension-actions 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
   - nautilus-extension-nextcloud 
   - nautilus-extension-nitroshare 
+  - nautilus-extension-seahorse: [i586] 
+  - nautilus-extension-terminal: [i586] 
   - nautilus-extension-tilix 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
+  - nautilus-lang: [i586] 
   - nautilus-plugin-easytag 
+  - nautilus-sendto: [i586] 
+  - nautilus-sendto-lang: [i586] 
+  - nautilus-share: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - nautilus-share-lang: [i586] 
   - nautilus-terminal 
   - nauty 
   - nauty-devel 
   - nbd 
   - ncat 
   - ncdu 
+  - ncftp: [i586] # suggested by dvd:suggested:patterns-base-console 
   - ncmpcpp 
   - ncompress 
   - ncurses-devel-32bit: [x86_64] 
@@ -14264,6 +15411,7 @@ unsorted:
   - nfs4-acl-tools 
   - nfsidmap-devel 
   - nfswatch 
+  - nftables: [i586] 
   - nftables-devel 
   - nghttp2 
   - nginx 
@@ -14292,6 +15440,7 @@ unsorted:
   - nlopt-devel 
   - nm-tray 
   - nm-tray-lang 
+  - nma-data: [i586] 
   - nmapsi4 
   - nmcli-dmenu 
   - nmh 
@@ -14342,6 +15491,7 @@ unsorted:
   - notmuch-devel 
   - notmuch-doc 
   - notmuch-emacs 
+  - noto-coloremoji-fonts: [i586] 
   - noto-kufiarabic-fonts 
   - noto-mono-fonts 
   - noto-naskharabic-fonts 
@@ -14562,11 +15712,12 @@ unsorted:
   - nss-shared-helper-devel 
   - nss-systemd 
   - nss_wrapper 
+  - ntfs-3g: [i586] 
+  - ntfsprogs: [i586] 
   - ntfsprogs-extra 
   - ntl-devel 
   - ntl-doc 
   - ntp 
-  - ntp2chrony 
   - ntpsec 
   - ntpsec-doc 
   - ntpsec-utils 
@@ -14580,11 +15731,13 @@ unsorted:
   - numactl: [i586] 
   - numad: [i586] 
   - numatop: [x86_64] 
+  - numlockx: [i586] 
   - nunit 
   - nunit-devel 
   - nuntius 
   - nuntius-lang 
   - nuosu-fonts 
+  - nuoveXT2-icon-theme: [i586] 
   - nut-devel 
   - nut-drivers-net 
   - nvdock 
@@ -14605,6 +15758,7 @@ unsorted:
   - obby 
   - obby-devel 
   - obby-lang 
+  - obconf: [i586] 
   - obconf-qt 
   - obconf-qt-lang 
   - obex-data-server 
@@ -14749,6 +15903,7 @@ unsorted:
   - oce 
   - oce-DRAWEXE 
   - oce-devel 
+  - ocfs2-tools: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - ocfs2-tools-devel 
   - ocfs2-tools-devel-static 
   - ocfs2-tools-o2cb 
@@ -14876,6 +16031,7 @@ unsorted:
   - officecodepro-fonts 
   - offlineimap 
   - offlineimap-htmldoc 
+  - ofl: [i586] 
   - ofono 
   - ofono-devel 
   - ofono-tests 
@@ -14887,10 +16043,16 @@ unsorted:
   - ogre-tools 
   - ohcount 
   - oidentd 
+  - okteta: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - okteta-data: [i586] 
   - okteta-devel 
+  - okteta-lang: [i586] 
   - okteta-part 
   - okteta-part-lang 
+  - okular: [i586] 
   - okular-devel 
+  - okular-lang: [i586] 
+  - okular-spectre: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - omnisharp-server 
   - omping 
   - onboard 
@@ -14920,6 +16082,8 @@ unsorted:
   - open-isns-devel 
   - open-lldp: [i586] 
   - open-lldp-devel 
+  - open-vm-tools: [i586] 
+  - open-vm-tools-desktop: [i586] 
   - openCryptoki 
   - openCryptoki-32bit: [i586] 
   - openCryptoki-64bit: [x86_64] 
@@ -14975,6 +16139,7 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openSUSE-xfce-icon-theme: [i586] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
   - openafs-devel 
@@ -14996,6 +16161,8 @@ unsorted:
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
+  - openbox: [i586] 
+  - openbox-adwaita-ob-theme: [i586] 
   - openbox-devel 
   - openbox-gnome 
   - openbox-kde 
@@ -15013,8 +16180,10 @@ unsorted:
   - opencl-headers-1_2 
   - openclonk 
   - openclonk-data 
+  - openconnect: [i586] 
   - openconnect-devel 
   - openconnect-doc 
+  - openconnect-lang: [i586] 
   - opencsg-devel 
   - opencv 
   - opencv-devel 
@@ -15049,6 +16218,7 @@ unsorted:
   - openldap2-back-perl 
   - openldap2-back-sock 
   - openldap2-back-sql 
+  - openldap2-client: [i586] 
   - openldap2-contrib 
   - openldap2-devel-32bit: [x86_64] 
   - openldap2-devel-static 
@@ -15164,6 +16334,8 @@ unsorted:
   - openstack-suse-macros 
   - openstack-suse-sudo 
   - openstack-utils 
+  - opensuse-welcome: [i586] 
+  - opensuse-welcome-lang: [i586] 
   - opentest4j 
   - opentest4j-javadoc 
   - opentoonz 
@@ -15219,6 +16391,8 @@ unsorted:
   - orbit2-doc 
   - orc 
   - orc-doc 
+  - orca: [i586] 
+  - orca-lang: [i586] 
   - orcania-devel 
   - origami-icon-theme 
   - orion 
@@ -15319,6 +16493,7 @@ unsorted:
   - oxygen5-decoration 
   - oxygen5-icon-theme-scalable 
   - oxygen5-lang 
+  - oxygen5-sounds: [i586] 
   - oxygen5-style 
   - oxygen5-style-32bit: [x86_64] 
   - oyranos 
@@ -15340,6 +16515,8 @@ unsorted:
   - pacemaker-remote 
   - packETH 
   - package-translations 
+  - package-update-indicator: [i586] 
+  - package-update-indicator-lang: [i586] 
   - packit 
   - paexec 
   - paexec-examples 
@@ -15371,6 +16548,7 @@ unsorted:
   - palette-lang 
   - palm-db-tools 
   - pam-devel-32bit: [x86_64] 
+  - pam-doc: [i586] 
   - pam-python 
   - pam-test 
   - pam_ccreds 
@@ -15389,6 +16567,7 @@ unsorted:
   - pam_kwallet-common 
   - pam_mktemp 
   - pam_mktemp-32bit: [x86_64] 
+  - pam_mount: [i586] 
   - pam_oath 
   - pam_p11 
   - pam_p11-32bit: [x86_64] 
@@ -15402,6 +16581,7 @@ unsorted:
   - pam_radius-32bit: [x86_64] 
   - pam_script 
   - pam_snapper 
+  - pam_ssh: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - pam_u2f 
   - pam_userpass 
   - pam_userpass-32bit: [x86_64] 
@@ -15439,7 +16619,10 @@ unsorted:
   - papi_5_7_0-hpc-devel 
   - papi_5_7_0-hpc-devel-static 
   - papirus-icon-theme 
+  - paprefs: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - paprefs-lang: [i586] 
   - paps 
+  - par: [i586] 
   - par2cmdline 
   - paradise 
   - parallel-netcdf-devel-data 
@@ -15468,6 +16651,7 @@ unsorted:
   - parboiled-javadoc 
   - parboiled-scala 
   - parboiled-scala-javadoc 
+  - parcellite: [i586] 
   - pari-devel 
   - pari-elldata 
   - pari-galdata 
@@ -15478,7 +16662,11 @@ unsorted:
   - parkverbot 
   - parlatype 
   - parlatype-lang 
+  - parley: [i586] 
+  - parley-lang: [i586] 
+  - parole: [i586] 
   - parole-devel 
+  - parole-lang: [i586] 
   - parpack-openmpi1-devel 
   - parpack-openmpi1-devel-32bit: [x86_64] 
   - parpack-openmpi2-devel 
@@ -15504,14 +16692,24 @@ unsorted:
   - patool-bash-completion 
   - patterns-base-32bit: [x86_64] 
   - patterns-base-apparmor-32bit 
+  - patterns-base-base: [i586] 
   - patterns-base-base-32bit 
+  - patterns-base-basic_desktop: [i586] 
+  - patterns-base-console: [i586] 
+  - patterns-base-documentation: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - patterns-base-enhanced_base: [i586] 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-minimal_base-32bit 
   - patterns-base-sw_management-32bit 
+  - patterns-base-transactional_base: [i586] 
   - patterns-base-update_test 
+  - patterns-base-x11: [i586] 
   - patterns-base-x11-32bit 
+  - patterns-base-x11_enhanced: [i586] 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
+  - patterns-desktop-imaging: [i586] 
+  - patterns-desktop-laptop: [i586] 
   - patterns-devel-base-devel_basis-32bit 
   - patterns-devel-base-devel_kernel-32bit 
   - patterns-devel-java-devel_java 
@@ -15519,13 +16717,27 @@ unsorted:
   - patterns-devel-python-devel_python3 
   - patterns-devel-tcl-devel_tcl 
   - patterns-enlightenment-enlightenment 
+  - patterns-games-games: [i586] 
   - patterns-gnome-devel_gnome 
+  - patterns-gnome-gnome: [i586] 
+  - patterns-gnome-gnome_basic: [i586] 
+  - patterns-gnome-gnome_basis: [i586] 
+  - patterns-gnome-gnome_basis_opt: [i586] 
+  - patterns-gnome-gnome_imaging: [i586] 
+  - patterns-gnome-gnome_office: [i586] 
+  - patterns-gnome-gnome_utilities: [i586] 
+  - patterns-gnome-gnome_x11: [i586] 
+  - patterns-gnome-sw_management_gnome: [i586] 
   - patterns-hpc-compute_node: [x86_64] 
   - patterns-hpc-development_node: [x86_64] 
   - patterns-hpc-libraries: [x86_64] 
   - patterns-hpc-workload_server: [x86_64] 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_qt5 
+  - patterns-kde-kde: [i586] 
+  - patterns-kde-kde_imaging: [i586] 
+  - patterns-kde-kde_pim: [i586] 
+  - patterns-kde-kde_plasma: [i586] 
   - patterns-kde-kde_telepathy 
   - patterns-leechcraft-leechcraft 
   - patterns-leechcraft-leechcraft_browser 
@@ -15534,6 +16746,9 @@ unsorted:
   - patterns-leechcraft-leechcraft_netutils 
   - patterns-leechcraft-leechcraft_office 
   - patterns-leechcraft-leechcraft_utilities 
+  - patterns-lxde-lxde: [i586] 
+  - patterns-lxde-lxde_laptop: [i586] 
+  - patterns-lxde-lxde_office: [i586] 
   - patterns-lxqt-lxqt 
   - patterns-mate-mate 
   - patterns-mate-mate_admin 
@@ -15543,6 +16758,7 @@ unsorted:
   - patterns-mate-mate_office 
   - patterns-mate-mate_office_opt 
   - patterns-mate-mate_utilities 
+  - patterns-media-rest_cd_core: [i586] 
   - patterns-media-rest_cd_gnome 
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
@@ -15559,7 +16775,13 @@ unsorted:
   - patterns-server-mail_server-32bit 
   - patterns-server-printing-32bit 
   - patterns-server-xen_tools: [x86_64] 
+  - patterns-xfce-xfce: [i586] 
+  - patterns-xfce-xfce_basis: [i586] 
+  - patterns-xfce-xfce_laptop: [i586] 
+  - patterns-xfce-xfce_office: [i586] 
   - patterns-yast-devel_yast 
+  - pavucontrol: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - pavucontrol-lang: [i586] 
   - pavucontrol-qt 
   - pavucontrol-qt-lang 
   - pavumeter 
@@ -15578,10 +16800,13 @@ unsorted:
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
   - pcm 
+  - pcmanfm: [i586] 
   - pcmanfm-devel 
+  - pcmanfm-lang: [i586] 
   - pcmanfm-qt 
   - pcmanfm-qt-lang 
   - pcmanx-gtk2 
+  - pcmciautils: [i586] 
   - pcp 
   - pcp-conf 
   - pcp-devel 
@@ -15671,14 +16896,21 @@ unsorted:
   - pcre2-devel-static 
   - pcre2-doc 
   - pcre2-tools 
+  - pcsc-acr38: [i586] 
   - pcsc-acr38-devel 
   - pcsc-acsccid 
   - pcsc-asedriveiiie-serial 
+  - pcsc-asedriveiiie-usb: [i586] 
+  - pcsc-asekey: [i586] 
   - pcsc-ccid 
+  - pcsc-cyberjack: [i586] 
   - pcsc-eco5000 
+  - pcsc-gempc: [i586] 
+  - pcsc-lite: [i586] 
   - pcsc-lite-devel 
   - pcsc-reflex60 
   - pcsc-tools 
+  - pcsc-towitoko: [i586] 
   - pcsc-towitoko-devel 
   - pcsx2: [i586] 
   - pdf2djvu 
@@ -15784,6 +17016,7 @@ unsorted:
   - perl-CGI-Simple 
   - perl-CHI 
   - perl-CLASS 
+  - perl-CPAN-Changes 
   - perl-CPAN-DistnameInfo 
   - perl-CPAN-Meta-Check 
   - perl-CPAN-Meta-Requirements 
@@ -15853,6 +17086,7 @@ unsorted:
   - perl-Contextual-Return 
   - perl-Convert-BER 
   - perl-Cookie-Baker 
+  - perl-Cpanel-JSON-XS: [i586] 
   - perl-Crypt-DH-GMP 
   - perl-Crypt-Eksblowfish 
   - perl-Crypt-MySQL 
@@ -15913,6 +17147,7 @@ unsorted:
   - perl-Data-Visitor 
   - perl-Date-Calc 
   - perl-Date-Holidays-CZ 
+  - perl-Date-Manip: [i586] 
   - perl-Date-Simple 
   - perl-Date-Tiny 
   - perl-DateTime-Calendar-Julian 
@@ -15974,6 +17209,7 @@ unsorted:
   - perl-Eval-LineNumbers 
   - perl-Event 
   - perl-Exception-Base 
+  - perl-Expect: [i586] 
   - perl-Export-Attrs 
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
@@ -16009,6 +17245,7 @@ unsorted:
   - perl-File-Mork 
   - perl-File-Next 
   - perl-File-Path-Tiny 
+  - perl-File-RandomAccess: [i586] 
   - perl-File-ReadBackwards 
   - perl-File-Remove 
   - perl-File-Rsync 
@@ -16105,6 +17342,7 @@ unsorted:
   - perl-IPC-System-Simple 
   - perl-IRI 
   - perl-Ima-DBI 
+  - perl-Image-ExifTool: [i586] 
   - perl-Image-Info 
   - perl-Image-Sane 
   - perl-Import-Into 
@@ -16364,6 +17602,7 @@ unsorted:
   - perl-Plack 
   - perl-Plack-Middleware-LogErrors 
   - perl-Plack-Middleware-Session 
+  - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
   - perl-Pod-Eventual 
@@ -16481,6 +17720,7 @@ unsorted:
   - perl-Template-GD 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
+  - perl-Term-ReadLine-Gnu: [i586] 
   - perl-Term-ReadPassword 
   - perl-Term-Table 
   - perl-Term-UI 
@@ -16537,6 +17777,7 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
+  - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
   - perl-Test-Requires-Git 
   - perl-Test-Script 
@@ -16641,6 +17882,7 @@ unsorted:
   - perl-XML-Bare 
   - perl-XML-CommonNS 
   - perl-XML-DOM-XPath 
+  - perl-XML-Dumper: [i586] 
   - perl-XML-Entities 
   - perl-XML-Feed 
   - perl-XML-Filter-BufferText 
@@ -16657,6 +17899,7 @@ unsorted:
   - perl-XML-SemanticDiff 
   - perl-XML-SimpleObject-LibXML 
   - perl-XML-Structured 
+  - perl-XML-Writer: [i586] 
   - perl-XML-Writer-String 
   - perl-XML-XPathEngine 
   - perl-XMLRPC-Lite 
@@ -16734,7 +17977,10 @@ unsorted:
   - petsc_3_12_2-gnu-openmpi2-hpc-saws 
   - petsc_3_12_2-gnu-openmpi3-hpc-devel 
   - petsc_3_12_2-gnu-openmpi3-hpc-saws 
+  - pfscalibration: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - pfsglview 
+  - pfstmo: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - pfstools: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - pfstools-devel 
   - pfstools-exr 
   - pfstools-imgmagick 
@@ -16812,6 +18058,7 @@ unsorted:
   - picard-lang 
   - picmi 
   - picmi-lang 
+  - pico: [i586] # suggested by dvd:suggested:patterns-base-console 
   - picocli 
   - picocli-javadoc 
   - picocom 
@@ -16842,10 +18089,20 @@ unsorted:
   - pijul-zsh-completion 
   - pilot 
   - pilot-link 
+  - pim-data-exporter: [i586] 
+  - pim-data-exporter-lang: [i586] 
+  - pim-sieve-editor: [i586] 
+  - pim-sieve-editor-lang: [i586] 
+  - pimcommon: [i586] 
   - pimcommon-devel 
+  - pimcommon-lang: [i586] 
   - pin 
   - pinentry-emacs 
   - pinentry-fltk 
+  - pinentry-gnome3: [i586] 
+  - pinentry-gtk2: [i586] 
+  - pinentry-qt5: [i586] 
+  - pinfo: [i586] # suggested by dvd:suggested:patterns-base-console 
   - pingtunnel 
   - pingus 
   - pink-pony 
@@ -16855,7 +18112,12 @@ unsorted:
   - pinta-lang 
   - pipenightdreams 
   - piper 
+  - pipewire: [i586] 
   - pipewire-devel 
+  - pipewire-modules: [i586] 
+  - pipewire-spa-plugins: [i586] 
+  - pipewire-spa-tools: [i586] 
+  - pipewire-tools: [i586] 
   - pithos 
   - pix 
   - pix-devel 
@@ -16880,29 +18142,58 @@ unsorted:
   - plasma-applet-weather-widget-lang 
   - plasma-browser-integration: [i586] 
   - plasma-browser-integration-lang: [i586] 
+  - plasma-framework: [i586] 
   - plasma-framework-32bit: [x86_64] 
+  - plasma-framework-components: [i586] 
   - plasma-framework-components-32bit: [x86_64] 
   - plasma-framework-devel 
   - plasma-framework-devel-32bit: [x86_64] 
+  - plasma-framework-lang: [i586] 
   - plasma-mycroft 
+  - plasma-nm5: [i586] 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
   - plasma-nm5-l2tp 
+  - plasma-nm5-lang: [i586] 
+  - plasma-nm5-openconnect: [i586] 
   - plasma-nm5-openswan 
+  - plasma-nm5-openvpn: [i586] 
+  - plasma-nm5-pptp: [i586] 
   - plasma-nm5-ssh 
   - plasma-nm5-sstp 
   - plasma-nm5-strongswan 
+  - plasma-nm5-vpnc: [i586] 
   - plasma-pass 
   - plasma-pass-lang 
   - plasma-vault 
   - plasma-vault-backend-cryfs 
   - plasma-vault-backend-encfs 
   - plasma-vault-lang 
+  - plasma5-addons: [i586] 
   - plasma5-addons-devel 
+  - plasma5-addons-lang: [i586] 
   - plasma5-applet-suse-prime 
+  - plasma5-defaults-openSUSE: [i586] 
+  - plasma5-desktop: [i586] 
+  - plasma5-desktop-lang: [i586] 
+  - plasma5-integration-plugin: [i586] 
+  - plasma5-integration-plugin-lang: [i586] 
+  - plasma5-pa: [i586] 
+  - plasma5-pa-lang: [i586] 
+  - plasma5-pk-updates: [i586] 
+  - plasma5-pk-updates-lang: [i586] 
   - plasma5-sdk 
   - plasma5-sdk-lang 
+  - plasma5-session: [i586] 
+  - plasma5-session-wayland: [i586] 
+  - plasma5-theme-openSUSE: [i586] 
+  - plasma5-thunderbolt: [i586] 
+  - plasma5-thunderbolt-lang: [i586] 
+  - plasma5-workspace: [i586] 
+  - plasma5-workspace-branding-openSUSE: [i586] 
   - plasma5-workspace-devel 
+  - plasma5-workspace-lang: [i586] 
+  - plasma5-workspace-libs: [i586] 
   - plasma5-workspace-libs-32bit: [x86_64] 
   - plasma5-workspace-wallpapers 
   - plasmaengineexplorer5 
@@ -16990,18 +18281,27 @@ unsorted:
   - pluma 
   - pluma-devel 
   - pluma-lang 
+  - plymouth: [i586] 
+  - plymouth-branding-openSUSE: [i586] 
   - plymouth-devel 
+  - plymouth-dracut: [i586] 
   - plymouth-plugin-fade-throbber 
+  - plymouth-plugin-label: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - plymouth-plugin-label-ft: [i586] 
   - plymouth-plugin-script 
   - plymouth-plugin-space-flares 
   - plymouth-plugin-throbgress 
   - plymouth-plugin-tribar 
+  - plymouth-plugin-two-step: [i586] 
+  - plymouth-scripts: [i586] 
+  - plymouth-theme-bgrt: [i586] 
   - plymouth-theme-breeze 
   - plymouth-theme-breeze-plugin-breeze 
   - plymouth-theme-fade-in 
   - plymouth-theme-script 
   - plymouth-theme-solar 
   - plymouth-theme-spinfinity 
+  - plymouth-theme-spinner: [i586] 
   - plymouth-theme-tribar 
   - plzip 
   - pmacct 
@@ -17017,6 +18317,7 @@ unsorted:
   - pngcheck 
   - pngcrush 
   - pnglite-devel 
+  - pngquant: [i586] 
   - pngtoico 
   - pnm2ppa 
   - po-utils 
@@ -17033,12 +18334,20 @@ unsorted:
   - poedit-lang 
   - poezio 
   - poezio-doc 
+  - polari: [i586] 
+  - polari-lang: [i586] 
   - policycoreutils: [i586] 
   - policycoreutils-devel 
   - policycoreutils-lang: [i586] 
   - policycoreutils-newrole 
+  - polkit: [i586] 
+  - polkit-default-privs: [i586] 
   - polkit-devel 
   - polkit-doc 
+  - polkit-gnome: [i586] 
+  - polkit-gnome-lang: [i586] 
+  - polkit-kde-agent-5: [i586] 
+  - polkit-kde-agent-5-lang: [i586] 
   - polkit-whitelisting 
   - pology 
   - pology-lang 
@@ -17135,6 +18444,8 @@ unsorted:
   - povray 
   - powdertoy 
   - powerd 
+  - powerdevil5: [i586] 
+  - powerdevil5-lang: [i586] 
   - powerline 
   - powerline-docs 
   - powerline-fonts 
@@ -17151,6 +18462,8 @@ unsorted:
   - powermock-reflect 
   - powermock-testng 
   - powerstat 
+  - powertop: [i586] # suggested by dvd:suggested:patterns-desktop-laptop 
+  - powertop-lang: [i586] 
   - poxml-lang 
   - ppp-devel 
   - ppp-modem 
@@ -17161,9 +18474,14 @@ unsorted:
   - ppsspp-common 
   - ppsspp-headless 
   - ppsspp-qt 
+  - pptp: [i586] 
   - praat 
+  - pragha: [i586] 
+  - pragha-lang: [i586] 
+  - pragha-plugins: [i586] 
   - pragha-plugins-devel 
   - prboom-plus 
+  - prctl: [i586] 
   - prelude-correlator 
   - prelude-lml 
   - prelude-lml-devel 
@@ -17182,10 +18500,13 @@ unsorted:
   - primus 
   - primus-32bit: [x86_64] 
   - printer-driver-brlaser 
+  - printproto-devel: [i586] 
   - prison-qt5-devel 
   - prison-qt5-devel-32bit: [x86_64] 
+  - prison-qt5-imports: [i586] 
   - privoxy-doc 
   - procdump 
+  - procinfo: [i586] 
   - procmeter 
   - procmeter-devel 
   - procps-devel 
@@ -17278,6 +18599,7 @@ unsorted:
   - pspp-devel 
   - pssh 
   - pstoedit-devel 
+  - pthread-stubs-devel: [i586] 
   - ptokax 
   - ptpd 
   - ptscotch-gnu-mpich-hpc 
@@ -17327,28 +18649,42 @@ unsorted:
   - ptscotch_6_0_9-gnu-openmpi3-hpc-devel-static 
   - puddletag 
   - pugixml-devel 
+  - pullin-bcm43xx-firmware: [i586] 
+  - pulseaudio: [i586] 
+  - pulseaudio-bash-completion: [i586] 
   - pulseaudio-equalizer 
   - pulseaudio-esound-compat 
+  - pulseaudio-gdm-hooks: [i586] 
+  - pulseaudio-lang: [i586] 
+  - pulseaudio-module-bluetooth: [i586] 
   - pulseaudio-module-gconf 
+  - pulseaudio-module-gsettings: [i586] 
   - pulseaudio-module-jack 
   - pulseaudio-module-lirc 
+  - pulseaudio-module-x11: [i586] 
+  - pulseaudio-module-zeroconf: [i586] 
   - pulseaudio-qt-devel 
   - pulseaudio-system-wide 
+  - pulseaudio-utils: [i586] 
   - pulseaudio-utils-32bit: [x86_64] 
+  - pulseaudio-zsh-completion: [i586] 
   - pulseeffects 
   - pulseeffects-lang 
   - pulseview 
   - pumpa 
   - pure-ftpd 
-  - purge-kernels-service 
+  - purge-kernels-service: [i586] 
+  - purpose: [i586] 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
+  - purpose-lang: [i586] 
   - putty 
   - pv 
   - pw3270 
   - pw3270-branding 
   - pw3270-devel 
+  - pwgen: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - py-fishcrypt 
   - pybugz-common 
   - pydf 
@@ -18196,6 +19532,7 @@ unsorted:
   - python2-catkin-pkg 
   - python2-cbor 
   - python2-cbor2 
+  - python2-cchardet 
   - python2-cdecimal 
   - python2-celery 
   - python2-celery-batches 
@@ -19434,7 +20771,6 @@ unsorted:
   - python2-pyuv 
   - python2-pyviz-comms 
   - python2-pyvmomi 
-  - python2-pywbem 
   - python2-pywinrm 
   - python2-pyxattr 
   - python2-pyxb 
@@ -19830,7 +21166,6 @@ unsorted:
   - python2-visitor 
   - python2-vispy 
   - python2-vistir 
-  - python2-visvis 
   - python2-vobject 
   - python2-voluptuous 
   - python2-vsts 
@@ -19900,7 +21235,6 @@ unsorted:
   - python2-yamldoc 
   - python2-yamllint 
   - python2-yamlloader 
-  - python2-yamlordereddictloader 
   - python2-yapf 
   - python2-yappi 
   - python2-yaql 
@@ -20494,6 +21828,7 @@ unsorted:
   - python3-branca 
   - python3-breathe 
   - python3-brewer2mpl 
+  - python3-brlapi: [i586] 
   - python3-bsddb3 
   - python3-bsddb3-devel 
   - python3-bson 
@@ -20530,6 +21865,7 @@ unsorted:
   - python3-cauldron-notebook 
   - python3-cbor 
   - python3-cbor2 
+  - python3-cchardet 
   - python3-ccm 
   - python3-celery 
   - python3-celery-batches 
@@ -20590,6 +21926,7 @@ unsorted:
   - python3-clustershell 
   - python3-cmarkgfm 
   - python3-cmd2 
+  - python3-cmdln: [i586] 
   - python3-coards 
   - python3-coconut 
   - python3-codecov 
@@ -20610,6 +21947,7 @@ unsorted:
   - python3-compizconfig 
   - python3-concurrentloghandler 
   - python3-configargparse 
+  - python3-configobj: [i586] 
   - python3-configparser 
   - python3-configshell-fb 
   - python3-confluent-kafka 
@@ -20638,6 +21976,7 @@ unsorted:
   - python3-cram 
   - python3-crayons 
   - python3-crcmod 
+  - python3-createrepo_c: [i586] 
   - python3-cron-descriptor 
   - python3-croniter 
   - python3-crontab 
@@ -20651,6 +21990,7 @@ unsorted:
   - python3-ctypesgen 
   - python3-ctypeslib2 
   - python3-cufflinks 
+  - python3-cupshelpers: [i586] 
   - python3-curio 
   - python3-cursive 
   - python3-curtsies 
@@ -20901,6 +22241,7 @@ unsorted:
   - python3-filelock 
   - python3-finance_enums 
   - python3-fire 
+  - python3-firewall: [i586] 
   - python3-first 
   - python3-fissix 
   - python3-fixtures 
@@ -21306,6 +22647,7 @@ unsorted:
   - python3-line_profiler 
   - python3-linecache2 
   - python3-lineup-widget 
+  - python3-linux-procfs: [i586] 
   - python3-lit 
   - python3-lldb: [x86_64] 
   - python3-lldb6: [x86_64] 
@@ -21325,6 +22667,7 @@ unsorted:
   - python3-loguru 
   - python3-logutils 
   - python3-logzero 
+  - python3-louis: [i586] 
   - python3-lttngust 
   - python3-lupa 
   - python3-lws 
@@ -21452,6 +22795,7 @@ unsorted:
   - python3-networkx: [i586] 
   - python3-neutronclient 
   - python3-newt 
+  - python3-nftables 
   - python3-nghttp2 
   - python3-nibabel 
   - python3-nilearn 
@@ -21732,7 +23076,7 @@ unsorted:
   - python3-pyannotate 
   - python3-pybars3 
   - python3-pybeam 
-  - python3-pybind11 
+  - python3-pybind11: [i586] 
   - python3-pyblake2 
   - python3-pybluez 
   - python3-pybtex 
@@ -21747,6 +23091,7 @@ unsorted:
   - python3-pycryptodomex 
   - python3-pycsw 
   - python3-pyct 
+  - python3-pycups: [i586] 
   - python3-pycxx 
   - python3-pycxx-devel 
   - python3-pydantic 
@@ -21862,6 +23207,7 @@ unsorted:
   - python3-pyside2-devel 
   - python3-pyside2-examples 
   - python3-pysmb 
+  - python3-pysmbc: [i586] 
   - python3-pysmi 
   - python3-pysndfile 
   - python3-pysnmp 
@@ -22025,6 +23371,7 @@ unsorted:
   - python3-pytools 
   - python3-pytricia 
   - python3-pyuca 
+  - python3-pyudev: [i586] 
   - python3-pyusb 
   - python3-pyuv 
   - python3-pyverbs 
@@ -22157,7 +23504,7 @@ unsorted:
   - python3-scikit-umfpack 
   - python3-scipy: [i586] 
   - python3-scipy-gnu-hpc: [x86_64] 
-  - python3-scipy_1_3_2-gnu-hpc: [x86_64] 
+  - python3-scipy_1_4_1-gnu-hpc: [x86_64] 
   - python3-scp 
   - python3-scripttest 
   - python3-scrypt 
@@ -22178,6 +23525,7 @@ unsorted:
   - python3-serpy 
   - python3-serverfiles 
   - python3-setools: [i586] 
+  - python3-setproctitle: [i586] 
   - python3-setuptools-git 
   - python3-setuptools_scm 
   - python3-setuptools_scm_git_archive 
@@ -22205,10 +23553,14 @@ unsorted:
   - python3-sklearn-pandas 
   - python3-sleekxmpp 
   - python3-slimit 
+  - python3-slip: [i586] 
+  - python3-slip-dbus: [i586] 
   - python3-slixmpp 
   - python3-slumber 
   - python3-slycot 
   - python3-smartypants 
+  - python3-smbios: [i586] 
+  - python3-smbios-utils: [i586] # suggested by dvd:suggested:patterns-desktop-laptop 
   - python3-smbprotocol 
   - python3-smbus 
   - python3-smmap 
@@ -22232,6 +23584,7 @@ unsorted:
   - python3-speaklater 
   - python3-spec 
   - python3-spec_tools 
+  - python3-speechd: [i586] 
   - python3-sphinx-argparse 
   - python3-sphinx-autodoc-typehints 
   - python3-sphinx-bootstrap-theme 
@@ -22428,6 +23781,7 @@ unsorted:
   - python3-upm 
   - python3-uritemplate 
   - python3-urlgrabber 
+  - python3-urwid: [i586] 
   - python3-user-agents 
   - python3-user_agent 
   - python3-userpath 
@@ -22542,7 +23896,6 @@ unsorted:
   - python3-yamldoc 
   - python3-yamllint 
   - python3-yamlloader 
-  - python3-yamlordereddictloader 
   - python3-yang 
   - python3-yapf 
   - python3-yappi 
@@ -22685,6 +24038,7 @@ unsorted:
   - qprint 
   - qps 
   - qps-lang 
+  - qqc2-desktop-style: [i586] 
   - qqc2-desktop-style-devel 
   - qqwing 
   - qqwing-devel 
@@ -22802,6 +24156,7 @@ unsorted:
   - rbd-mirror: [x86_64] 
   - rbd-nbd: [x86_64] 
   - rbutil 
+  - rcc-runtime: [i586] 
   - rclone 
   - rclone-bash-completion 
   - rclone-zsh-completion 
@@ -22817,7 +24172,9 @@ unsorted:
   - rds-tools-devel 
   - re2-devel 
   - read-edid 
+  - read-only-root-fs: [i586] 
   - read-only-root-fs-volatile 
+  - readcd: [i586] 
   - readline-devel-32bit: [x86_64] 
   - readline-devel-static 
   - readline5-devel 
@@ -22827,6 +24184,7 @@ unsorted:
   - realmd 
   - realmd-lang 
   - rear 
+  - rebootmgr: [i586] 
   - recidivm 
   - reco 
   - reco-lang 
@@ -22847,16 +24205,23 @@ unsorted:
   - regexp 
   - reiser4progs 
   - reiser4progs-devel 
+  - reiserfs: [i586] 
   - remake 
   - remake-lang 
   - remind 
+  - remmina: [i586] 
   - remmina-devel 
   - remmina-kiosk 
+  - remmina-lang: [i586] 
   - remmina-plugin-exec 
   - remmina-plugin-kwallet 
+  - remmina-plugin-rdp: [i586] 
+  - remmina-plugin-secret: [i586] 
   - remmina-plugin-spice 
   - remmina-plugin-st 
+  - remmina-plugin-vnc: [i586] 
   - remmina-plugin-www 
+  - remmina-plugin-xdmcp: [i586] 
   - rendercheck 
   - rep-gtk 
   - rep-gtk-devel 
@@ -22881,9 +24246,11 @@ unsorted:
   - rfcat 
   - rfcat-udev 
   - rfcdiff 
+  - rgb: [i586] 
   - rhash 
   - rhash-devel 
   - rhash-lang 
+  - rhino: [i586] 
   - rhino-demo 
   - rhythmbox 
   - rhythmbox-devel 
@@ -22895,6 +24262,8 @@ unsorted:
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
   - ripgrep-zsh-completion 
+  - ristretto: [i586] 
+  - ristretto-lang: [i586] 
   - rk-devel 
   - rkhunter 
   - rkward 
@@ -22950,6 +24319,7 @@ unsorted:
   - rott 
   - roundcubemail 
   - rox-filer 
+  - rp-pppoe: [i586] 
   - rpcgen 
   - rpcsvc-proto-devel 
   - rpm-32bit: [x86_64] 
@@ -22978,6 +24348,7 @@ unsorted:
   - rst2html5 
   - rstart 
   - rsvg-convert 
+  - rsvg-thumbnailer: [i586] 
   - rsvndump 
   - rsvndump-lang 
   - rsyslog-diag-tools 
@@ -23000,6 +24371,7 @@ unsorted:
   - rt-tests 
   - rtags 
   - rtaudio-devel 
+  - rtkit: [i586] 
   - rtl-sdr-devel 
   - rtl8812au 
   - rtl8812au-kmp-pae: [i586] 
@@ -23814,6 +25186,8 @@ unsorted:
   - rygel-plugin-gstreamer-renderer 
   - rygel-plugin-tracker 
   - rypper 
+  - rzip: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - rzsz: [i586] 
   - s3backer 
   - s3fs 
   - sablot-devel 
@@ -23852,6 +25226,7 @@ unsorted:
   - sar2 
   - sar2-data 
   - sarg 
+  - sasl2-kdexoauth2: [i586] 
   - sassc 
   - sat4j 
   - saweri-fonts 
@@ -24022,6 +25397,7 @@ unsorted:
   - scotch-devel 
   - scotch-devel-static 
   - scotch-metis-devel 
+  - screen: [i586] 
   - screen-message 
   - screencast 
   - screencast-lang 
@@ -24045,13 +25421,22 @@ unsorted:
   - sdcc-doc 
   - sdcc-libc-sources 
   - sdcv 
+  - sddm: [i586] 
+  - sddm-branding-openSUSE: [i586] 
   - sddm-branding-upstream 
+  - sddm-theme-openSUSE: [i586] 
   - sdl-asylum 
   - sdl-ball 
   - sdl_bomber 
   - sdlpop 
   - sdlscavenger 
   - sdparm 
+  - seahorse: [i586] 
+  - seahorse-daemon: [i586] 
+  - seahorse-lang: [i586] 
+  - seahorse-nautilus-lang: [i586] 
+  - seahorse-sharing: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - seahorse-sharing-lang: [i586] 
   - seccheck 
   - sedutil: [x86_64] 
   - segv_handler 
@@ -24072,9 +25457,12 @@ unsorted:
   - servletapi4 
   - servletapi4-javadoc 
   - servletapi5 
+  - sessreg: [i586] 
   - setconf 
   - setools-console 
   - setools-gui 
+  - setserial: [i586] 
+  - setxkbmap: [i586] 
   - sev-tool 
   - sfftobmp 
   - sffview 
@@ -24097,8 +25485,6 @@ unsorted:
   - shairport-sync 
   - shapelib 
   - shared-color-targets 
-  - shared-desktop-ontologies 
-  - shared-desktop-ontologies-devel 
   - shellementary 
   - shepherd 
   - shepherd-bins 
@@ -24116,6 +25502,8 @@ unsorted:
   - shorewall6-lite 
   - shotcut 
   - shotcut-lang 
+  - shotwell: [i586] 
+  - shotwell-lang: [i586] 
   - showfont 
   - showfoto 
   - shp 
@@ -24129,11 +25517,17 @@ unsorted:
   - sigil 
   - signify 
   - signing-party 
+  - signon-kwallet-extension: [i586] 
+  - signon-plugin-oauth2: [i586] 
   - signon-plugin-oauth2-devel 
+  - signon-plugins: [i586] 
   - signon-plugins-32bit: [x86_64] 
   - signon-plugins-devel 
   - signon-plugins-docs 
+  - signon-ui: [i586] 
+  - signond: [i586] 
   - signond-docs 
+  - signond-libs: [i586] 
   - signond-libs-32bit: [x86_64] 
   - signond-libs-devel 
   - signpost-commonshttp4 
@@ -24153,6 +25547,8 @@ unsorted:
   - simple-mtpfs 
   - simple-obfs 
   - simple-obfs-doc 
+  - simple-scan: [i586] 
+  - simple-scan-lang: [i586] 
   - simplescreenrecorder 
   - singularity 
   - sipcalc 
@@ -24166,6 +25562,8 @@ unsorted:
   - sitar 
   - sitecopy 
   - sitecopy-lang 
+  - skanlite: [i586] 
+  - skanlite-lang: [i586] 
   - skelcd-control-Kubic 
   - skelcd-control-MicroOS 
   - skelcd-control-openSUSE 
@@ -24190,6 +25588,7 @@ unsorted:
   - sl 
   - slade 
   - slang-devel 
+  - slang-slsh: [i586] 
   - sleuth 
   - sleuthkit 
   - sleuthkit-devel 
@@ -24206,6 +25605,8 @@ unsorted:
   - slirp4netns: [i586] 
   - slop 
   - slop-devel 
+  - slrn: [i586] # suggested by dvd:suggested:patterns-base-console 
+  - slrn-lang: [i586] 
   - sluice 
   - slurm 
   - slurm-auth-none 
@@ -24229,6 +25630,7 @@ unsorted:
   - slurm-torque 
   - slurp 
   - smake 
+  - smartmontools: [i586] 
   - smatch 
   - smbios-utils 
   - smc-tools 
@@ -24241,6 +25643,7 @@ unsorted:
   - smillaenlarger 
   - smilutils 
   - smlnj: [i586] 
+  - smp_utils: [i586] 
   - smplayer 
   - smplayer-lang 
   - smproxy 
@@ -24347,6 +25750,7 @@ unsorted:
   - soup-sharp-devel 
   - source-highlight 
   - source-highlight-cgi 
+  - sox: [i586] 
   - sox-devel 
   - soxr-devel 
   - spacefm 
@@ -24359,16 +25763,22 @@ unsorted:
   - sparsehash-devel 
   - spatialindex-devel 
   - spawn-fcgi 
+  - spax: [i586] 
   - spdlog-devel 
   - spdylay 
   - spdylay-devel 
   - spec-cleaner-format_spec_file 
   - spec-version-maven-plugin 
   - spec-version-maven-plugin-javadoc 
+  - spectacle: [i586] 
   - spectacle-doc 
+  - spectacle-lang: [i586] 
   - spectator 
   - spectcl 
   - spectre-meltdown-checker 
+  - speech-dispatcher: [i586] 
+  - speech-dispatcher-configure: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - speech-dispatcher-module-espeak: [i586] 
   - speedtest-cli 
   - speex 
   - speex-devel 
@@ -24450,6 +25860,7 @@ unsorted:
   - ssh-contact 
   - ssh-contact-client 
   - ssh-contact-service 
+  - sshfs: [i586] 
   - sshguard 
   - sshpass 
   - sshuttle 
@@ -24469,6 +25880,7 @@ unsorted:
   - staging-build-key 
   - stalonetray 
   - stan 
+  - star: [i586] 
   - stardict 
   - stardict-dic-enru-engcom 
   - stardict-dic-enru-mueller7 
@@ -24505,6 +25917,7 @@ unsorted:
   - stp 
   - stp-devel 
   - stp-python 
+  - strace: [i586] 
   - strawberry 
   - stress-ng 
   - stress-ng-bash-completion 
@@ -24593,7 +26006,12 @@ unsorted:
   - suse-prime 
   - suse-prime-bbswitch 
   - suse-xsl-stylesheets 
+  - susefirewall2-to-firewalld: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - susepaste: [i586] 
+  - susepaste-screenshot: [i586] 
   - suseprime-appindicator 
+  - sushi: [i586] 
+  - sushi-lang: [i586] 
   - svg-schema-doc 
   - svgcleaner 
   - svgcleaner-gui 
@@ -24652,6 +26070,7 @@ unsorted:
   - sysbench 
   - sysdig 
   - sysdig-kmp-pae: [i586] 
+  - sysfsutils: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
   - sysinfo 
@@ -24673,7 +26092,15 @@ unsorted:
   - sysprof-lang 
   - sysstat 
   - sysstat-isag 
+  - system-config-printer: [i586] 
+  - system-config-printer-applet: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - system-config-printer-common: [i586] 
+  - system-config-printer-common-lang: [i586] 
+  - system-config-printer-dbus-service: [i586] 
   - system-group-obsolete 
+  - system-tuning-common-SUSE: [i586] 
+  - system-user-flatpak: [i586] 
+  - system-user-srvGeoClue: [i586] 
   - system-user-uuidd 
   - systemd-coredump 
   - systemd-devel 
@@ -24684,9 +26111,12 @@ unsorted:
   - systemd-mini-sysvinit 
   - systemd-network 
   - systemd-portable 
+  - systemd-presets-branding-transactional-server: [i586] 
   - systemd-ui 
   - systemd-zram-service 
+  - systemsettings5: [i586] 
   - systemsettings5-devel 
+  - systemsettings5-lang: [i586] 
   - systemtap 
   - systemtap-docs 
   - systemtap-dtrace 
@@ -24704,6 +26134,7 @@ unsorted:
   - tagbanwa-fonts 
   - taglib 
   - taglib-extras-devel 
+  - tagsoup: [i586] 
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
   - taigo 
@@ -24779,9 +26210,13 @@ unsorted:
   - telepathy-glib-devel 
   - telepathy-glib-doc 
   - telepathy-haze 
+  - telepathy-idle: [i586] 
+  - telepathy-logger: [i586] 
   - telepathy-logger-devel 
   - telepathy-logger-qt5-devel 
+  - telepathy-mission-control: [i586] 
   - telepathy-mission-control-devel 
+  - telepathy-mission-control-plugin-goa: [i586] 
   - telepathy-qt5-devel 
   - telepathy-qt5-devel-32bit: [x86_64] 
   - telepathy-rakia 
@@ -24789,6 +26224,7 @@ unsorted:
   - telepathy-sipe 
   - tellico 
   - tellico-lang 
+  - telnet: [i586] 
   - telnet-server 
   - template-glib-devel 
   - template-resolver 
@@ -32193,14 +33629,23 @@ unsorted:
   - threadweaver-devel-32bit: [x86_64] 
   - thrift 
   - thttpd 
+  - thunar: [i586] 
   - thunar-devel 
+  - thunar-lang: [i586] 
+  - thunar-plugin-archive: [i586] 
+  - thunar-plugin-archive-lang: [i586] 
+  - thunar-plugin-media-tags: [i586] 
+  - thunar-plugin-media-tags-lang: [i586] 
   - thunar-plugin-shares 
   - thunar-plugin-shares-lang 
   - thunar-plugin-vcs 
   - thunar-plugin-vcs-lang 
   - thunar-sendto-blueman 
   - thunar-sendto-clamtk 
+  - thunar-volman: [i586] 
+  - thunar-volman-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - thunar-volman-branding-upstream 
+  - thunar-volman-lang: [i586] 
   - thunarx-python 
   - thunarx-python-doc 
   - thunderbolt-user-space 
@@ -32251,16 +33696,20 @@ unsorted:
   - tkirc 
   - tktable 
   - tkxcd 
+  - tlp: [i586] 
+  - tlp-rdw: [i586] 
   - tls 
   - tlswrap 
   - tmate 
   - tmon 
   - tmpwatch 
+  - tmux: [i586] 
   - tmux-powerline 
   - tmxtools 
   - tn5250 
   - tn5250-devel 
   - tnef 
+  - tnftp: [i586] 
   - tntdb-doc 
   - tntdb-mysql 
   - tntdb-postgresql 
@@ -32321,22 +33770,35 @@ unsorted:
   - tracker-devel 
   - trader 
   - trader-lang 
+  - transactional-update: [i586] 
+  - transactional-update-zypp-config: [i586] 
   - transconnect 
   - transfig 
   - transifex-client 
   - translate-shell 
   - translate-toolkit 
   - translate-toolkit-devel-doc 
+  - translation-update: [i586] 
   - translation-update-bg 
   - translation-update-ca 
+  - translation-update-cs: [i586] 
+  - translation-update-da: [i586] 
+  - translation-update-de: [i586] 
   - translation-update-dz 
+  - translation-update-el: [i586] 
   - translation-update-en_CA 
+  - translation-update-en_GB: [i586] 
+  - translation-update-es: [i586] 
   - translation-update-et 
   - translation-update-eu 
   - translation-update-fi 
+  - translation-update-fr: [i586] 
   - translation-update-ga 
   - translation-update-gl 
   - translation-update-hr 
+  - translation-update-hu: [i586] 
+  - translation-update-it: [i586] 
+  - translation-update-ja: [i586] 
   - translation-update-ko 
   - translation-update-lt 
   - translation-update-lv 
@@ -32345,7 +33807,11 @@ unsorted:
   - translation-update-ne 
   - translation-update-nl 
   - translation-update-pa 
+  - translation-update-pl: [i586] 
+  - translation-update-pt: [i586] 
+  - translation-update-pt_BR: [i586] 
   - translation-update-ro 
+  - translation-update-ru: [i586] 
   - translation-update-sk 
   - translation-update-sl 
   - translation-update-sr 
@@ -32354,6 +33820,8 @@ unsorted:
   - translation-update-uk 
   - translation-update-upstream 
   - translation-update-vi 
+  - translation-update-zh_CN: [i586] 
+  - translation-update-zh_TW: [i586] 
   - translator 
   - translator-lang 
   - transmageddon 
@@ -32363,7 +33831,10 @@ unsorted:
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
+  - tre: [i586] 
   - tre-devel 
+  - tre-lang: [i586] 
+  - tree: [i586] 
   - treelayout 
   - treelayout-demo 
   - treelayout-javadoc 
@@ -32429,10 +33900,13 @@ unsorted:
   - ttf2pt1 
   - tudu 
   - tuladha-jejeg-fonts 
+  - tumbler: [i586] 
   - tumbler-devel 
   - tumbler-doc 
+  - tumbler-lang: [i586] 
   - tumbleweed-cli 
   - tunctl 
+  - tuned: [i586] 
   - tuned-gtk 
   - tuned-profiles-atomic 
   - tuned-profiles-nfv 
@@ -32487,6 +33961,7 @@ unsorted:
   - tycho-extras-javadoc 
   - tycho-javadoc 
   - typelib-1_0-Accounts-1_0 
+  - typelib-1_0-AccountsService-1_0: [i586] 
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
   - typelib-1_0-AppIndicator-0_1 
@@ -32512,11 +33987,16 @@ unsorted:
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
   - typelib-1_0-Caribou-1_0 
+  - typelib-1_0-Champlain-0_12: [i586] 
+  - typelib-1_0-Cheese-3_0: [i586] 
   - typelib-1_0-CinnamonDesktop-3_0 
   - typelib-1_0-CjsPrivate-1_0 
   - typelib-1_0-CloudProviders-0_3_0 
+  - typelib-1_0-Clutter-1_0: [i586] 
   - typelib-1_0-ClutterGst-3_0 
+  - typelib-1_0-Cogl-1_0: [i586] 
   - typelib-1_0-Cogl-2_0 
+  - typelib-1_0-CoglPango-1_0: [i586] 
   - typelib-1_0-CoglPango-2_0 
   - typelib-1_0-Colord-1_0 
   - typelib-1_0-ColordGtk-1_0 
@@ -32539,15 +34019,21 @@ unsorted:
   - typelib-1_0-Eek-0_90 
   - typelib-1_0-Entangle-0_1 
   - typelib-1_0-Eom-1_0 
+  - typelib-1_0-EvinceDocument-3_0: [i586] 
+  - typelib-1_0-EvinceView-3_0: [i586] 
   - typelib-1_0-Farstream-0_2 
   - typelib-1_0-Fcitx-1_0 
+  - typelib-1_0-Flatpak-1_0: [i586] 
   - typelib-1_0-Folks-0_6 
   - typelib-1_0-FolksEds-0_6 
   - typelib-1_0-FolksTelepathy-0_6 
   - typelib-1_0-FolksTracker-0_6 
   - typelib-1_0-Fwupd-2_0 
   - typelib-1_0-GCab-1_0 
+  - typelib-1_0-GData-0_0: [i586] 
   - typelib-1_0-GExiv2-0_10 
+  - typelib-1_0-GFBGraph-0_2: [i586] 
+  - typelib-1_0-GMenu-3_0: [i586] 
   - typelib-1_0-GMime-2_6 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
@@ -32563,23 +34049,33 @@ unsorted:
   - typelib-1_0-GUsb-1_0 
   - typelib-1_0-GVnc-1_0 
   - typelib-1_0-GVncPulse-1_0 
+  - typelib-1_0-GWeather-3_0: [i586] 
   - typelib-1_0-GXPS-0_1 
+  - typelib-1_0-Gck-1: [i586] 
+  - typelib-1_0-Gcr-3: [i586] 
   - typelib-1_0-GcrUi-3 
   - typelib-1_0-Gda-5_0 
   - typelib-1_0-Gdaui-5_0 
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gdl-3 
+  - typelib-1_0-Gdm-1_0: [i586] 
   - typelib-1_0-Gee-0_8 
   - typelib-1_0-Gee-1_0 
   - typelib-1_0-Gegl-0_4 
+  - typelib-1_0-Geoclue-2_0: [i586] 
+  - typelib-1_0-GeocodeGlib-1_0: [i586] 
   - typelib-1_0-Gepub-0_6 
   - typelib-1_0-Ggit-1_0 
   - typelib-1_0-Gitg-1_0 
   - typelib-1_0-GitgExt-1_0 
+  - typelib-1_0-GjsPrivate-1_0: [i586] 
   - typelib-1_0-Gkbd-3_0 
   - typelib-1_0-Gladeui-2_0 
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
+  - typelib-1_0-GnomeBluetooth-1_0: [i586] 
+  - typelib-1_0-GnomeDesktop-3_0: [i586] 
+  - typelib-1_0-GnomeKeyring-1_0: [i586] 
   - typelib-1_0-GoVirt-1_0 
   - typelib-1_0-Gom-1_0 
   - typelib-1_0-GooCanvas-2_0 
@@ -32590,6 +34086,7 @@ unsorted:
   - typelib-1_0-GrlPls-0_3 
   - typelib-1_0-Grss-0_7 
   - typelib-1_0-Gsf-1 
+  - typelib-1_0-Gspell-1: [i586] 
   - typelib-1_0-GstAllocators-1_0 
   - typelib-1_0-GstApp-1_0 
   - typelib-1_0-GstGL-1_0 
@@ -32604,10 +34101,12 @@ unsorted:
   - typelib-1_0-Gtd-1_0 
   - typelib-1_0-Gtk-2_0 
   - typelib-1_0-Gtk-4_0 
+  - typelib-1_0-GtkClutter-1_0: [i586] 
   - typelib-1_0-GtkFrdp-0_1 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
+  - typelib-1_0-Handy-0_0: [i586] 
   - typelib-1_0-HarfBuzz-0_0 
   - typelib-1_0-Hinawa-2_0 
   - typelib-1_0-ICal-3_0 
@@ -32631,33 +34130,44 @@ unsorted:
   - typelib-1_0-Modulemd-1_0 
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
+  - typelib-1_0-NM-1_0: [i586] 
+  - typelib-1_0-NMA-1_0: [i586] 
   - typelib-1_0-NMClient-1_0 
   - typelib-1_0-Nautilus-3_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-NetworkManager-1_0 
   - typelib-1_0-OSTree-1_0 
   - typelib-1_0-OsmGpsMap-1_0 
+  - typelib-1_0-PackageKitGlib-1_0: [i586] 
   - typelib-1_0-Playerctl-2_0_1 
   - typelib-1_0-Pluma-1_0 
+  - typelib-1_0-Polari-1_0: [i586] 
+  - typelib-1_0-Polkit-1_0: [i586] 
   - typelib-1_0-Poppler-0_18 
+  - typelib-1_0-Rest-0_7: [i586] 
   - typelib-1_0-Retro-0_14-0 
   - typelib-1_0-RygelCore-2_6 
   - typelib-1_0-RygelRenderer-2_6 
   - typelib-1_0-RygelRendererGst-2_6 
   - typelib-1_0-RygelServer-2_6 
+  - typelib-1_0-Secret-1: [i586] 
   - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-SpiceClientGlib-2_0 
   - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
+  - typelib-1_0-TelepathyGlib-0_12: [i586] 
+  - typelib-1_0-TelepathyLogger-0_2: [i586] 
   - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
+  - typelib-1_0-TrackerControl-2_0: [i586] 
   - typelib-1_0-TrackerMiner-2_0 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Unique-1_0 
   - typelib-1_0-Unity-7_0 
   - typelib-1_0-UnityExtras-7_0 
+  - typelib-1_0-UpowerGlib-1_0: [i586] 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_5 
   - typelib-1_0-WebKit2WebExtension-4_0 
@@ -32670,8 +34180,10 @@ unsorted:
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
   - typelib-1_0-Zeitgeist-2_0 
+  - typelib-1_0-Zpj-0_0: [i586] 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libmirage-3_2 
+  - typelib-1_0-libxfce4util-1_0: [i586] 
   - typesafe-config 
   - typesafe-config-javadoc 
   - typescript 
@@ -32687,28 +34199,37 @@ unsorted:
   - uchardet 
   - ucl-devel 
   - ucm 
+  - ucode-amd: [i586] 
+  - ucode-intel: [i586] 
   - ucommon 
   - ucommon-devel 
   - ucpp 
   - ucpp-devel 
   - udav 
   - udev-browse 
+  - udev-configure-printer: [i586] 
   - udev-mini 
   - udev-persistent-ifnames 
   - udftools 
   - udhcp 
   - udiskie 
   - udiskie-lang 
+  - udisks2: [i586] 
+  - udisks2-lang: [i586] 
   - udns 
   - udns-devel 
   - udp2raw-tunnel 
   - udpspeeder 
   - udtrace 
   - ufiformat 
+  - ufraw: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - ufraw-lang: [i586] 
   - uftpd 
   - ufw 
   - ufw-lang 
+  - uget: [i586] 
   - uget-integrator: [i586] 
+  - uget-lang: [i586] 
   - uhd-devel 
   - uhd-doc 
   - uhd-firmware 
@@ -32735,11 +34256,14 @@ unsorted:
   - ulogd-sqlite3 
   - ultimatestunts 
   - ultimatestunts-data 
+  - umbrello: [i586] 
+  - umbrello-lang: [i586] 
   - umoci 
   - unbound 
   - unbound-anchor: [i586] 
   - unbound-devel 
   - unbound-munin 
+  - unclutter: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - uncrustify 
   - unetbootin 
   - unibilium-devel 
@@ -32751,7 +34275,11 @@ unsorted:
   - unifraktur-fonts 
   - unionfs-fuse 
   - unison 
+  - units: [i586] # suggested by dvd:suggested:patterns-base-console 
   - unittest-cpp-devel 
+  - unity-gtk-module-common: [i586] 
+  - unity-gtk2-module: [i586] 
+  - unity-gtk3-module: [i586] 
   - universal-ctags 
   - univocity-parsers 
   - univocity-parsers-javadoc 
@@ -32763,6 +34291,7 @@ unsorted:
   - unmass 
   - unoconv 
   - unpaper 
+  - unrar_wrapper: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - unsermake 
   - unshield 
   - unshield-devel 
@@ -32797,10 +34326,14 @@ unsorted:
   - uriparser 
   - uriparser-devel 
   - uriparser-doc 
+  - urlscan: [i586] 
+  - urlview: [i586] 
   - urlwatch 
   - urxvt-font-size 
   - urxvt-perls 
   - us428control 
+  - usb_modeswitch: [i586] 
+  - usb_modeswitch-data: [i586] 
   - usbauth 
   - usbauth-notifier 
   - usbguard 
@@ -32823,6 +34356,7 @@ unsorted:
   - utf8proc-devel 
   - utfcpp-devel 
   - uthash-devel 
+  - util-macros-devel: [i586] 
   - utils-libnfs 
   - utox 
   - uucp 
@@ -32921,6 +34455,7 @@ unsorted:
   - varnish-devel 
   - vboot 
   - vbrfix 
+  - vcdimager: [i586] 
   - vcdimager-devel 
   - vcron 
   - vcsh 
@@ -32951,6 +34486,8 @@ unsorted:
   - vidcutter 
   - vido 
   - vido-lang 
+  - viewnior: [i586] 
+  - viewnior-lang: [i586] 
   - viewres 
   - viewvc 
   - vifm 
@@ -33000,6 +34537,8 @@ unsorted:
   - vim-plugin-vimwiki 
   - vim-plugin-zoomwin 
   - vimb 
+  - vinagre: [i586] 
+  - vinagre-lang: [i586] 
   - vino 
   - vino-lang 
   - vips-doc 
@@ -33011,6 +34550,7 @@ unsorted:
   - virt-top 
   - virt-v2v: [x86_64] 
   - virt-viewer 
+  - virt-what: [i586] 
   - virtme 
   - virtualbox 
   - virtualbox-devel 
@@ -33030,6 +34570,7 @@ unsorted:
   - vkeybd 
   - vkmark: [x86_64] 
   - vkquake 
+  - vlan: [i586] 
   - vlc-devel 
   - vlc-jack 
   - vm-dump-metrics 
@@ -33074,6 +34615,7 @@ unsorted:
   - votca-xtp-doc 
   - voxelands 
   - vpcs 
+  - vpnc: [i586] 
   - vpp: [x86_64] 
   - vpp-api-lua: [x86_64] 
   - vpp-api-python: [x86_64] 
@@ -33106,6 +34648,7 @@ unsorted:
   - vulkan-tools 
   - vulkan-validationlayers 
   - vusb-analyzer 
+  - vym: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - w3c-markup-validator 
   - w3c-markup-validator-libs 
   - w3m-inline-image 
@@ -33212,6 +34755,7 @@ unsorted:
   - wipe 
   - wireguard-kmp-pae: [i586] 
   - wireguard-tools 
+  - wireless-tools: [i586] 
   - wireshark-devel 
   - wireshark-plugin-libvirt 
   - withlock 
@@ -33221,11 +34765,14 @@ unsorted:
   - wlc-devel 
   - wlroots-devel 
   - wm-icons 
+  - wmctrl: [i586] 
   - wmgui 
   - wminput 
   - wmpomme 
   - wmutils 
   - woff2-devel 
+  - wol: [i586] 
+  - wol-lang: [i586] 
   - wol-udev-rules 
   - woodstox-core 
   - woodstox-core-javadoc 
@@ -33233,11 +34780,14 @@ unsorted:
   - wordcut-devel 
   - wordnet 
   - wordnet-devel 
+  - words: [i586] 
   - words-british 
   - words-canadian 
   - workrave 
   - workrave-devel 
   - wp-cli 
+  - wpa_supplicant: [i586] 
+  - wpa_supplicant-gui: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - wpan-tools 
   - wpebackend-fdo-devel 
   - wqy-bitmap-fonts 
@@ -33283,11 +34833,11 @@ unsorted:
   - wxstedit 
   - wxstedit-devel 
   - wxsvg 
-  - wyrd 
   - wyrmgus 
   - wyrmgus-devel 
   - wyrmsun 
   - x11-japanese-bitmap-fonts 
+  - x11-tools: [i586] 
   - x11perf 
   - x11vnc 
   - x11vnc-frontend 
@@ -33303,6 +34853,8 @@ unsorted:
   - xapian-core 
   - xapian-core-doc 
   - xapian-core-examples 
+  - xapps-common: [i586] 
+  - xapps-common-lang: [i586] 
   - xar 
   - xautolock 
   - xautomation 
@@ -33317,8 +34869,10 @@ unsorted:
   - xbench 
   - xbiff 
   - xbindkeys 
+  - xbitmaps-devel: [i586] # devel package of dvd:xbitmaps 
   - xbomb 
   - xboxdrv 
+  - xbrlapi: [i586] 
   - xbrz-devel 
   - xbsql 
   - xbsql-devel 
@@ -33343,20 +34897,37 @@ unsorted:
   - xcb-util-xrm-devel 
   - xclass 
   - xclass-devel 
+  - xclip: [i586] 
   - xclipboard 
   - xcm 
   - xcmsdb 
   - xcolors 
   - xcompmgr 
+  - xconsole: [i586] 
   - xcoral 
   - xcowsay 
   - xcursor-themes 
   - xcursorgen 
   - xdbedizzy 
+  - xdelta3: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - xdg-desktop-portal: [i586] 
   - xdg-desktop-portal-devel 
+  - xdg-desktop-portal-gtk: [i586] 
+  - xdg-desktop-portal-gtk-lang: [i586] 
+  - xdg-desktop-portal-kde: [i586] 
+  - xdg-desktop-portal-kde-lang: [i586] 
+  - xdg-desktop-portal-lang: [i586] 
+  - xdg-user-dirs: [i586] 
+  - xdg-user-dirs-gtk: [i586] 
+  - xdg-user-dirs-gtk-lang: [i586] 
+  - xdg-user-dirs-lang: [i586] 
   - xdiskusage 
   - xditview 
+  - xdm: [i586] 
+  - xdm-xsession: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - xdmbgrd: [i586] 
   - xdmsc 
+  - xdotool: [i586] 
   - xdotool-devel 
   - xdriinfo 
   - xed 
@@ -33369,6 +34940,7 @@ unsorted:
   - xemacs-packages 
   - xemacs-packages-el 
   - xemacs-packages-info 
+  - xembedsniproxy: [i586] 
   - xen-devel 
   - xen-doc-html: [x86_64] 
   - xen-libs-32bit: [x86_64] 
@@ -33379,58 +34951,189 @@ unsorted:
   - xerces-j2-javadoc 
   - xev 
   - xeyes 
+  - xf86-input-evdev: [i586] 
   - xf86-input-evdev-devel 
+  - xf86-input-joystick: [i586] 
   - xf86-input-joystick-devel 
+  - xf86-input-keyboard: [i586] 
+  - xf86-input-libinput: [i586] 
   - xf86-input-libinput-devel 
+  - xf86-input-mouse: [i586] 
   - xf86-input-mouse-devel 
+  - xf86-input-synaptics: [i586] 
   - xf86-input-synaptics-devel 
+  - xf86-input-vmmouse: [i586] 
+  - xf86-input-void: [i586] 
+  - xf86-input-wacom: [i586] 
   - xf86-input-wacom-devel 
   - xf86-video-amdgpu 
+  - xf86-video-ark: [i586] 
+  - xf86-video-ast: [i586] 
+  - xf86-video-ati: [i586] 
+  - xf86-video-chips: [i586] 
+  - xf86-video-cirrus: [i586] 
+  - xf86-video-dummy: [i586] 
+  - xf86-video-fbdev: [i586] 
   - xf86-video-fbturbo 
   - xf86-video-fbturbo-live 
+  - xf86-video-glint: [i586] 
+  - xf86-video-i128: [i586] 
+  - xf86-video-intel: [i586] 
   - xf86-video-intel-32bit: [x86_64] 
+  - xf86-video-mach64: [i586] 
+  - xf86-video-mga: [i586] 
+  - xf86-video-neomagic: [i586] 
+  - xf86-video-nouveau: [i586] 
+  - xf86-video-nv: [i586] 
   - xf86-video-openchrome 
+  - xf86-video-qxl: [i586] 
+  - xf86-video-r128: [i586] 
+  - xf86-video-savage: [i586] 
+  - xf86-video-siliconmotion: [i586] 
+  - xf86-video-sis: [i586] 
+  - xf86-video-sisusb: [i586] 
+  - xf86-video-tdfx: [i586] 
+  - xf86-video-tga: [i586] 
   - xf86-video-trident 
+  - xf86-video-v4l: [i586] 
+  - xf86-video-vesa: [i586] 
+  - xf86-video-vmware: [i586] 
+  - xf86-video-voodoo: [i586] 
   - xf86dga 
   - xfburn 
   - xfburn-lang 
+  - xfce4-appfinder: [i586] 
+  - xfce4-appfinder-lang: [i586] 
+  - xfce4-battery-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-battery-plugin-lang: [i586] 
   - xfce4-calculator-plugin 
   - xfce4-calculator-plugin-lang 
+  - xfce4-clipman-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-clipman-plugin-lang: [i586] 
+  - xfce4-cpufreq-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-cpufreq-plugin-lang: [i586] 
+  - xfce4-cpugraph-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-cpugraph-plugin-lang: [i586] 
+  - xfce4-datetime-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-datetime-plugin-lang: [i586] 
+  - xfce4-dev-tools: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-dict: [i586] 
+  - xfce4-dict-lang: [i586] 
+  - xfce4-diskperf-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-diskperf-plugin-lang: [i586] 
+  - xfce4-eyes-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-eyes-plugin-lang: [i586] 
+  - xfce4-fsguard-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-fsguard-plugin-lang: [i586] 
+  - xfce4-genmon-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-genmon-plugin-lang: [i586] 
+  - xfce4-mailwatch-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-mailwatch-plugin-lang: [i586] 
   - xfce4-mixer 
   - xfce4-mixer-lang 
   - xfce4-mixer-plugin 
+  - xfce4-mount-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-mount-plugin-lang: [i586] 
+  - xfce4-mpc-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-mpc-plugin-lang: [i586] 
   - xfce4-multiload-nandhp-plugin 
+  - xfce4-netload-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-netload-plugin-lang: [i586] 
   - xfce4-netspeed-plugin 
+  - xfce4-notes-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-notes-plugin-lang: [i586] 
+  - xfce4-notifyd: [i586] 
+  - xfce4-notifyd-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-notifyd-branding-upstream 
+  - xfce4-notifyd-lang: [i586] 
   - xfce4-notifyd-theme-adapta 
   - xfce4-notifyd-theme-plata 
+  - xfce4-panel: [i586] 
+  - xfce4-panel-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
+  - xfce4-panel-lang: [i586] 
   - xfce4-panel-plugin-appmenu 
+  - xfce4-panel-plugin-dict: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-panel-plugin-sntray 
+  - xfce4-panel-profiles: [i586] 
+  - xfce4-panel-restore-defaults: [i586] 
+  - xfce4-places-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-places-plugin-lang: [i586] 
+  - xfce4-power-manager: [i586] 
+  - xfce4-power-manager-branding-openSUSE: [i586] 
   - xfce4-power-manager-branding-upstream 
+  - xfce4-power-manager-lang: [i586] 
+  - xfce4-power-manager-plugin: [i586] 
+  - xfce4-pulseaudio-plugin: [i586] 
+  - xfce4-pulseaudio-plugin-lang: [i586] 
+  - xfce4-screensaver: [i586] 
+  - xfce4-screenshooter: [i586] 
+  - xfce4-screenshooter-lang: [i586] 
+  - xfce4-screenshooter-plugin: [i586] # suggested by dvd:suggested:patterns-lxde-lxde 
+  - xfce4-sensors-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-sensors-plugin-devel 
+  - xfce4-sensors-plugin-lang: [i586] 
+  - xfce4-session: [i586] 
+  - xfce4-session-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-session-branding-upstream 
+  - xfce4-session-lang: [i586] 
+  - xfce4-settings: [i586] 
+  - xfce4-settings-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfce4-settings-branding-upstream 
+  - xfce4-settings-lang: [i586] 
+  - xfce4-smartbookmark-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-smartbookmark-plugin-lang: [i586] 
+  - xfce4-statusnotifier-plugin: [i586] 
+  - xfce4-statusnotifier-plugin-lang: [i586] 
   - xfce4-stopwatch-plugin 
   - xfce4-stopwatch-plugin-lang 
+  - xfce4-systemload-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-systemload-plugin-lang: [i586] 
+  - xfce4-taskmanager: [i586] 
+  - xfce4-taskmanager-lang: [i586] 
+  - xfce4-terminal: [i586] 
+  - xfce4-terminal-lang: [i586] 
   - xfce4-time-out-plugin 
   - xfce4-time-out-plugin-lang 
+  - xfce4-timer-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-timer-plugin-lang: [i586] 
+  - xfce4-vala: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-verve-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-verve-plugin-lang: [i586] 
+  - xfce4-wavelan-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-wavelan-plugin-lang: [i586] 
+  - xfce4-weather-plugin: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
+  - xfce4-weather-plugin-lang: [i586] 
+  - xfce4-whiskermenu-plugin: [i586] 
+  - xfce4-whiskermenu-plugin-lang: [i586] 
+  - xfce4-xkb-plugin: [i586] 
+  - xfce4-xkb-plugin-lang: [i586] 
+  - xfconf: [i586] 
+  - xfconf-lang: [i586] 
   - xfd 
   - xfdashboard 
   - xfdashboard-devel 
   - xfdashboard-lang 
   - xfdashboard-themes 
+  - xfdesktop: [i586] 
+  - xfdesktop-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfdesktop-branding-upstream 
+  - xfdesktop-lang: [i586] 
   - xfig 
   - xfishtank 
   - xfmpc 
   - xfmpc-lang 
   - xfontsel 
   - xfs 
+  - xfsdump: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xfsinfo 
+  - xfsprogs: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xfsprogs-devel 
+  - xfwm4: [i586] 
+  - xfwm4-branding-openSUSE: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - xfwm4-branding-upstream 
+  - xfwm4-lang: [i586] 
   - xfwm4-theme-adapta 
   - xfwm4-theme-plata 
   - xgalaga++ 
@@ -33446,20 +35149,25 @@ unsorted:
   - xindy-rules 
   - xine-ui 
   - xine-ui-32bit: [x86_64] 
+  - xinit: [i586] 
   - xinput 
   - xiphos 
   - xiphos-lang 
   - xiterm 
   - xjadeo 
+  - xkbcomp: [i586] 
   - xkbcomp-devel 
   - xkbevd 
   - xkbprint 
   - xkbutils 
   - xkeycaps 
+  - xkill: [i586] 
   - xl2tpd 
   - xlatencytop 
   - xless 
+  - xli: [i586] 
   - xload 
+  - xlockmore: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xlogin 
   - xlogo 
   - xls2csv 
@@ -33470,6 +35178,7 @@ unsorted:
   - xmahjongg 
   - xman 
   - xmanja 
+  - xmessage: [i586] 
   - xmgrace 
   - xmgrace-devel 
   - xmh 
@@ -33488,6 +35197,7 @@ unsorted:
   - xml2po 
   - xml2po-devel 
   - xmlb-tool 
+  - xmlbeans: [i586] 
   - xmlbeans-mini 
   - xmlbeans-scripts 
   - xmlbird-devel 
@@ -33515,6 +35225,7 @@ unsorted:
   - xmlunit 
   - xmlunit-javadoc 
   - xmobar 
+  - xmodmap: [i586] 
   - xmonad 
   - xmoontool 
   - xmore 
@@ -33552,15 +35263,27 @@ unsorted:
   - xorg-scripts 
   - xorg-sgml-doctools 
   - xorg-x11 
+  - xorg-x11-Xvnc: [i586] 
   - xorg-x11-Xvnc-java 
+  - xorg-x11-Xvnc-module: [i586] 
   - xorg-x11-Xvnc-novnc 
   - xorg-x11-devel 
   - xorg-x11-driver-input 
+  - xorg-x11-driver-video: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - xorg-x11-essentials: [i586] 
+  - xorg-x11-libX11-ccache: [i586] 
   - xorg-x11-libs 
+  - xorg-x11-server: [i586] 
   - xorg-x11-server-Xspice: [x86_64] 
+  - xorg-x11-server-Xvfb: [i586] 
+  - xorg-x11-server-extra: [i586] 
+  - xorg-x11-server-sdk: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xorg-x11-server-source 
+  - xorg-x11-server-wayland: [i586] 
   - xorg-x11-util-devel 
+  - xorgproto-devel: [i586] 
   - xorgxrdp 
+  - xorriso: [i586] 
   - xorriso-tcltk 
   - xortool 
   - xosd 
@@ -33595,10 +35318,20 @@ unsorted:
   - xprehashprinterlist 
   - xprintidle 
   - xprompt 
+  - xprop: [i586] 
   - xquarto 
+  - xrandr: [i586] 
+  - xrdb: [i586] 
   - xrdp 
   - xrdp-devel 
+  - xreader: [i586] 
   - xreader-devel 
+  - xreader-lang: [i586] 
+  - xreader-plugin-epubdocument: [i586] 
+  - xreader-plugin-pdfdocument: [i586] 
+  - xreader-plugin-psdocument: [i586] 
+  - xreader-plugin-tiffdocument: [i586] 
+  - xreader-plugin-xpsdocument: [i586] 
   - xrefresh 
   - xrestop 
   - xroach 
@@ -33612,14 +35345,18 @@ unsorted:
   - xrootd-private-devel 
   - xrootd-server 
   - xrootd-server-devel 
+  - xsane: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - xscope 
+  - xscreensaver-data-extra: [i586] # suggested by dvd:suggested:patterns-lxde-lxde 
   - xsd 
   - xsd-doc 
   - xsel 
   - xselection 
   - xsession 
+  - xset: [i586] 
   - xsetmode 
   - xsetpointer 
+  - xsetroot: [i586] 
   - xsettingsd 
   - xsm 
   - xsp 
@@ -33635,9 +35372,12 @@ unsorted:
   - xtables-addons-kmp-pae: [i586] 
   - xtables-geoip 
   - xteddy 
+  - xterm: [i586] 
+  - xtermset: [i586] 
   - xtexit 
   - xtrabackup 
   - xtrabackup-test 
+  - xtrans: [i586] 
   - xtrx-tools 
   - xtrx-usb-udev 
   - xtrx_lms7002m-devel 
@@ -33682,6 +35422,8 @@ unsorted:
   - yafc 
   - yaics 
   - yajl 
+  - yakuake: [i586] # suggested by dvd:suggested:patterns-kde-kde 
+  - yakuake-lang: [i586] 
   - yamagi-quake2 
   - yamagi-quake2-ctf 
   - yaml-cpp-devel 
@@ -33751,6 +35493,7 @@ unsorted:
   - yast2-trans-tk 
   - yast2-update-FACTORY 
   - yast2-usbauth 
+  - yast2-x11: [i586] 
   - yast2-ycp-ui-bindings-devel 
   - yate 
   - yate-bts 
@@ -33777,6 +35520,7 @@ unsorted:
   - youtube-dl-gui 
   - youtube-dl-gui-lang 
   - youtube-dl-zsh-completion 
+  - ypbind: [i586] 
   - yubico-piv-tool 
   - yubikey-manager 
   - yubikey-manager-qt 
@@ -33814,9 +35558,13 @@ unsorted:
   - zaz 
   - zbar 
   - zchunk 
+  - zd1211-firmware: [i586] 
   - zdbsp 
   - zeal 
+  - zeitgeist: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - zeitgeist-devel 
+  - zenity: [i586] 
+  - zenity-lang: [i586] 
   - zerobranestudio 
   - zerofree: [i586] 
   - zeroinstall-injector 
@@ -33829,6 +35577,7 @@ unsorted:
   - zimg-devel 
   - zinc 
   - zinnia-devel 
+  - zip: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - zipkin-cpp-opentracing-devel 
   - zipkin-cpp-opentracing-devel-static 
   - zita-convolver-devel 
@@ -33849,6 +35598,7 @@ unsorted:
   - zp 
   - zpaq 
   - zramcfg 
+  - zsh: [i586] 
   - zsh-htmldoc 
   - zsync 
   - zutils 
