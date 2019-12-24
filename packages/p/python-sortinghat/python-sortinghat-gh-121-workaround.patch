@@ -1,0 +1,65 @@
+Index: sortinghat-0.7.6/sortinghat/db/model.py
+===================================================================
+--- sortinghat-0.7.6.orig/sortinghat/db/model.py	2019-06-05 00:26:10.000000000 +0200
++++ sortinghat-0.7.6/sortinghat/db/model.py	2019-09-23 15:30:11.325722141 +0200
+@@ -95,7 +95,7 @@ class Domain(ModelBase):
+ 
+     id = Column(Integer, primary_key=True)
+     domain = Column(String(128), nullable=False)
+-    is_top_domain = Column(CoerceToBool(name='top_domain_check'), default=False)
++    is_top_domain = Column(Boolean(name='top_domain_check'), default=False)
+     organization_id = Column(Integer,
+                              ForeignKey('organizations.id', ondelete='CASCADE',
+                                         onupdate='CASCADE'),
+@@ -219,7 +219,7 @@ class Profile(ModelBase):
+     email = Column(String(128))
+     gender = Column(String(32))
+     gender_acc = Column(Integer())
+-    is_bot = Column(CoerceToBool(name='is_bot_check'), default=False)
++    is_bot = Column(Boolean(name='is_bot_check'), default=False)
+     country_code = Column(String(2),
+                           ForeignKey('countries.code', ondelete='CASCADE'))
+ 
+Index: sortinghat-0.7.6/tests/test_model.py
+===================================================================
+--- sortinghat-0.7.6.orig/tests/test_model.py	2019-06-17 12:26:18.963611797 +0200
++++ sortinghat-0.7.6/tests/test_model.py	2019-09-23 15:31:18.366114007 +0200
+@@ -210,19 +210,6 @@ class TestDomain(TestCaseBase):
+             self.session.add(dom1)
+             self.session.commit()
+ 
+-    def test_is_top_domain_invalid_type(self):
+-        """Check invalid values on top_domain bool collumn"""
+-
+-        with self.assertRaisesRegex(StatementError, INVALID_DATATYPE_ERROR):
+-            org1 = Organization(name='Example')
+-            self.session.add(org1)
+-
+-            dom1 = Domain(domain='example.com', is_top_domain='True')
+-            dom1.organization = org1
+-
+-            self.session.add(dom1)
+-            self.session.commit()
+-
+     def test_to_dict(self):
+         """Test output of to_dict() method"""
+ 
+@@ -474,18 +461,6 @@ class TestProfile(TestCaseBase):
+             self.session.add(prf2)
+             self.session.commit()
+ 
+-    def test_is_bot_invalid_type(self):
+-        """Check invalid values on is_bot bool column"""
+-
+-        with self.assertRaisesRegex(StatementError, INVALID_DATATYPE_ERROR):
+-            uid = UniqueIdentity(uuid='John Smith')
+-            self.session.add(uid)
+-
+-            prf = Profile(uuid='John Smith', name='John Smith', is_bot='True')
+-
+-            self.session.add(prf)
+-            self.session.commit()
+-
+     def test_to_dict(self):
+         """Test output of to_dict() method"""
+ 

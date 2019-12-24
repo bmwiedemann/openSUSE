@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,46 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
+%define skip_python2 1
 Name:           python-sortinghat
-Version:        0.4.3
+Version:        0.7.6
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/grimoirelab/sortinghat
-Source:         https://files.pythonhosted.org/packages/source/s/sortinghat/sortinghat-%{version}.tar.gz
+URL:            https://github.com/grimoirelab/sortinghat
+Source0:        https://files.pythonhosted.org/packages/source/s/sortinghat/sortinghat-%{version}.tar.gz
+# https://github.com/chaoss/grimoirelab-sortinghat/issues/207#issuecomment-534094890
+Source1:        tests.tar.bz2
+# workaround for https://github.com/chaoss/grimoirelab-sortinghat/issues/121
+# reverting https://github.com/chaoss/grimoirelab-sortinghat/commit/5f69ed899c94584de17d47b37152098f64012e10
+# plus, test_is_top_domain_invalid_type and test_is_bot_invalid_type tests exception thrown from
+# CoerceToBool(), thus disabling
+Patch0:         python-sortinghat-gh-121-workaround.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module PyMySQL}
+BuildRequires:  %{python_module PyMySQL >= 0.7.0}
 BuildRequires:  %{python_module PyYAML >= 3.12}
-BuildRequires:  %{python_module SQLAlchemy >= 1.0.0}
+BuildRequires:  %{python_module SQLAlchemy >= 1.2}
+BuildRequires:  %{python_module httpretty >= 0.9.5}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pandas >= 0.17}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6.0}
-%endif
+BuildRequires:  %{python_module requests >= 2.9}
+BuildRequires:  mariadb-rpm-macros
+# /SECTION
 BuildRequires:  fdupes
 Requires:       python-Jinja2
-Requires:       python-PyMySQL
+Requires:       python-PyMySQL >= 0.7.0
 Requires:       python-PyYAML >= 3.12
-Requires:       python-SQLAlchemy >= 1.0.0
-Requires:       python-pandas >= 0.17
+Requires:       python-SQLAlchemy >= 1.2
+Requires:       python-pandas >= 0.18.1
 Requires:       python-python-dateutil >= 2.6.0
+Requires:       python-requests >= 2.9
+Requires:       python-urllib3 >= 1.22
 BuildArch:      noarch
 
 %python_subpackages
@@ -73,7 +87,9 @@ to store the identities obtained into its database, and later merge them
 into unique identities (and maybe affiliate them).
 
 %prep
-%setup -q -n sortinghat-%{version}
+%setup -q -a1 -n sortinghat-%{version}
+%patch0 -p1
+sed -i "s/\('pandoc'\|'wheel',\)//" setup.py
 
 %build
 %python_build
@@ -81,6 +97,31 @@ into unique identities (and maybe affiliate them).
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+exit_code=0
+user=abuild
+pass=abuildpw
+port=63306
+run_dir=/tmp/mysql
+#
+# start the mariadb server
+#
+%mysql_testserver_start -u $user -p $pass -t $port
+#
+# running the test
+#
+cp tests/tests.conf.sample tests/tests.conf
+sed -i -e "s/3306/$port/" \
+       -e "s/\(user=\)/\1$user/" \
+       -e "s/\(password=\)/\1$pass/" tests/tests.conf
+sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
+%{python_expand $python setup.py test || exit_code=1}
+#
+# stopping mariadb
+#
+%mysql_testserver_stop
+exit $exit_code
 
 %files %{python_files}
 %doc NEWS README.md
