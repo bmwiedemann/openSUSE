@@ -20,16 +20,28 @@
 # Define "python" as a package in _multibuild file
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "python"
-%define pysuffix -python
-%define oldpython python
 %bcond_without python
-%else
-%define pysuffix %{nil}
-%bcond_with python
+%define skip_python3 1
+%define psuffix -python
+%define oldpython python
+%define python_pname python2-libxml2
 %endif
+
+%if "%{flavor}" == "python3"
+%bcond_without python
+%define skip_python2 1
+%define psuffix -python3
+%define python_pname python3-libxml2
+%endif
+
+%if "%{flavor}" == ""
+%bcond_with python
+%define python_pname void
+%endif
+
 %define bname libxml2
 %define lname libxml2-2
-Name:           %{bname}%{pysuffix}
+Name:           %{bname}%{?psuffix}
 Version:        2.9.10
 Release:        0
 Summary:        A Library to Manipulate XML Files
@@ -134,32 +146,15 @@ The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
 
-%package -n python2-libxml2
+%package -n %{python_pname}
 Summary:        Python 2 Bindings for libxml2
 Group:          Development/Libraries/Python
 Obsoletes:      libxml2-python
-Provides:       python2-libxml2-python
-Obsoletes:      python2-libxml2-python
+Provides:       %{python_pname}-python
+Obsoletes:      %{python_pname}-python
 
-%description -n python2-libxml2
-The python2-libxml2 package contains a module that permits
-applications written in the Python programming language to use the
-interface supplied by the libxml2 library to manipulate XML files.
-
-This library allows manipulation of XML files. It includes support for
-reading, modifying, and writing XML and HTML files. There is DTD
-support that includes parsing and validation even with complex DTDs,
-either at parse time or later once the document has been modified.
-
-%package -n python3-libxml2
-Summary:        Python 3 Bindings for libxml2
-Group:          Development/Libraries/Python
-Obsoletes:      libxml2-python
-Provides:       python3-libxml2-python
-Obsoletes:      python3-libxml2-python
-
-%description -n python3-libxml2
-The python3-libxml2 package contains a module that permits
+%description -n %{python_pname}
+The %{python_pname} package contains a module that permits
 applications written in the Python programming language to use the
 interface supplied by the libxml2 library to manipulate XML files.
 
@@ -262,27 +257,24 @@ make %{?_smp_mflags} check
 %dir %{_datadir}/gtk-doc/html
 
 %else
-%files -n python2-libxml2
+%files -n %{python_pname}
 %doc python/TODO
 %doc python/libxml2class.txt
 %doc doc/*.py
 %doc doc/python.html
+%if "%{python_flavor}" == "python2"
 %{python2_sitearch}/libxml2.py*
 %{python2_sitearch}/drv_libxml2.py*
 %{python2_sitearch}/libxml2mod*.so
 %{python2_sitearch}/*.egg-info
-
-%files -n python3-libxml2
-%doc python/TODO
-%doc python/libxml2class.txt
-%doc doc/*.py
-%doc doc/python.html
+%else
 %{python3_sitearch}/libxml2.py
 %{python3_sitearch}/__pycache__/libxml2.*
 %{python3_sitearch}/drv_libxml2.py
 %{python3_sitearch}/__pycache__/drv_libxml2.*
 %{python3_sitearch}/libxml2mod*.so
 %{python3_sitearch}/*.egg-info
+%endif
 
 %endif
 

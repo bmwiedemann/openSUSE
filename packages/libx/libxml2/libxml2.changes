@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 15 17:56:15 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Build python2 and python3 bindings in separate flavors. As
+  python3-libxml2 is a dependency of e.g. itstools and thus many
+  other packages these packages no longer have a build dependency
+  on python2. Breaks a build loop for python2.
+
+-------------------------------------------------------------------
 Thu Nov 28 15:32:58 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Since libxml2-2.9.10 perl-XML-LibXSLT fails to build: [bsc#1157450]
