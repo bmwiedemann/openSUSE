@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 23 20:30:59 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Added inotify.patch
+  The inotify filesystem monitor now handles
+  `OSError: [Errno 24] Too many open files` errors by disabling inotify.
+  https://github.com/git-cola/git-cola/issues/1015
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1155700
+
+-------------------------------------------------------------------
 Wed Nov 27 14:31:31 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 3.6

@@ -19,7 +19,7 @@
 
 Name:           git-cola
 Version:        3.6
-Release:        0
+Release:        2
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
@@ -28,6 +28,7 @@ URL:            https://git-cola.github.io/
 %{!?python_sitelib: %global python_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
+Patch1:         inotify.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dos2unix
 BuildRequires:  git-core
@@ -53,6 +54,7 @@ interact with Git repositories.
 
 %prep
 %setup -q
+%patch1
 
 %build
 dos2unix qtpy/py3compat.py
