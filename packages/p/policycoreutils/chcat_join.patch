@@ -1,0 +1,16 @@
+Index: policycoreutils-2.9/selinux-python-2.9/chcat/chcat
+===================================================================
+--- policycoreutils-2.9.orig/selinux-python-2.9/chcat/chcat	2019-03-15 10:32:30.000000000 +0000
++++ policycoreutils-2.9/selinux-python-2.9/chcat/chcat	2019-12-17 10:31:24.683910599 +0000
+@@ -246,7 +246,10 @@ def chcat_user_replace(newcat, users):
+             add_ind = 1
+             user = seusers["__default__"]
+         serange = user[1].split("-")
+-        new_serange = "%s-%s:%s" % (serange[0], newcat[0], ",".join(newcat[1:]))
++        if len(newcat[1:]) > 0:
++            new_serange = "%s-%s:%s" % (serange[0], newcat[0], ",".join(newcat[1:]))
++        else:
++            new_serange = "%s-%s" % (serange[0], newcat[0])
+         if new_serange[-1:] == ":":
+             new_serange = new_serange[:-1]
+ 

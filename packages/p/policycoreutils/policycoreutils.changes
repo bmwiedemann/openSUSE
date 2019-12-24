@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 10:36:49 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
+
+- Added chcat_join.patch to prevent joining non-existing categories
+  (bsc#1159262)
+
+-------------------------------------------------------------------
 Wed Sep 18 11:19:12 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
 
 - Added run_init_use_pam_keyinit.patch
