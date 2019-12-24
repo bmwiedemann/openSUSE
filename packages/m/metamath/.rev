@@ -32,4 +32,12 @@ versioned alongside the program.
 - Remove Windows executable from sources before building.</comment>
     <requestid>733250</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9934bacf3724c708cf401194a04f4b41</srcmd5>
+    <version>unknown</version>
+    <time>1577194194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.180.</comment>
+    <requestid>759050</requestid>
+  </revision>
 </revisionlist>

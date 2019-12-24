@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 20 22:31:33 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.180.
+  * MINIMIZE_WITH axiom trace now starts from current NEW_PROOF
+    instead of SAVEd proof.
+  * Make sure traceback flags are cleared after MINIMIZE_WITH.
+  * Add url pointer to HELP WRITE SOURCE /SPLIT.
+  * Clarify HELP WRITE SOURCE /REWRAP.
+  * Add bug check info for user.
+  * Use '|->' (not 'e.') as syntax hint for maps-to.
+  * Remove extraneous </TD>.
+  * Fix "line 0" in error msg when label clashes with math symbol.
+  * Improve TOOLS> HELP INSERT, DELETE.
+  * Change bug 1511 to error message.
+  * Trigger Most Recent link on mmtheorems.html when there is a
+    mathbox statement (currently set.mm and iset.mm).
+  * Improve help for TOOLS> DELETE and SUBSTITUTE.
+  * Change "htmlHome" in warnings to "htmlhome".
+
+-------------------------------------------------------------------
 Wed Sep 25 20:34:17 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.178.
