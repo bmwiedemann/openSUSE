@@ -1,7 +1,7 @@
 #
 # spec file for package metamath
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2016-2019 by Aaron Puchert
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,12 +28,12 @@
 
 # Global definitions
 Name:           metamath
-Version:        0.178
+Version:        0.180
 Release:        0
 Summary:        Formal proof verifier and proof assistant
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://us.metamath.org/
+URL:            http://us.metamath.org/
 # Source links aren't stable. (They always points to the latest version.)
 # http://us.metamath.org/downloads/metamath.tar.bz2
 Source0:        %{name}.tar.bz2
