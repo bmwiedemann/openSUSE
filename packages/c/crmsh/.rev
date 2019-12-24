@@ -1929,4 +1929,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>757217</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>3da9d7438585fab1b63d58a363e8a921</srcmd5>
+    <version>4.2.0+git.1577086871.f544180c</version>
+    <time>1577194235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759059</requestid>
+  </revision>
 </revisionlist>
