@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Dec 13 06:30:17 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 3.34.2+0:
+  * popupMenu: Close when a system modal pops up
+  * switcherPopup: Dismiss when a system modal dialog opens
+  * weather: Only require auto-location authorization if sandboxed
+  * util: Place spawned processes into a systemd scope
+  * shell-global: Place launched applications into a systemd scope
+  * Update Malay translation
+  * closeDialog: Fix scale of dialog for x11 clients in Wayland sessions
+  * switcherPopup: Fix scrollable check
+  * calendar-server: Use correct timezone for all-day events
+  * theme: Add light styling to message buttons
+  * Update Chinese (Taiwan) translation
+  * appIcon: Draw running dot above the overview icon
+  * texture-cache: Remove also scaled keys from the cache
+  * data: Enable clean session shutdown after gnome-shell failure
+  * extensionSystem: Create a file to flag that extensions are being loaded
+  * extensions-tool: Fix removing from settings list
+  * introspect: Fix whitelist check
+  * theme: Add :active styling to message-close and media control buttons
+  * theme: Add message close button styling
+  * theme: Darken hovered message-media-control button
+  * magnifier: Use new cursor tracker API to keep wayland focus while hidden
+  * magnifier: Use own showSystemCursor() instead of set_pointer_visible()
+  * Update Brazilian Portuguese translation
+  * polkitAgent: Use dialog as confirmation when the user has no password
+  * polkitAgent: Update user name on user changes
+  * polkitAgent: Fix a typo of a signal name
+  * appDisplay: Add a timeout when switching pages during DnD
+  * appDisplay: Add threshold after overshoot page switches
+  * appDisplay: Simplify event blocking while folder is opened
+  * appDisplay: Ensure we don't recreate existing AppIcons for folders
+  * appDisplay: Add missing .actor
+  * keyboard: Try harder to find a matching layout
+  * screenShield: Replace child properties
+  * switcherPopup: Fix last commit
+  * switcherPopup: Improve modifier-less keybinding navigation
+  * switcherPopup: Use roundtrip time when the popup is modifier-less
+  * appDisplay: Don't crash if app is missing categories
+  * panel: Update window section items on title changes
+  * power: Handle "100% but charging" case
+  * closeDialog: Fix dialog size when using geometry scaling
+  * appIcon: Remove drag monitor on destroy
+  * folderView: Reset schemas before removing the folder
+  * baseAppView: Destroy icon when removing
+  * allView: Rename variable
+  * allView, frequentView: Only create icons when necessary
+  * polkitAgent: Fix spinner
+  * Increase .calendar-today visibility
+  * appMenu: Hide stopped spinner actor
+  * animation: Add parameter for hiding stopped Spinner actor
+  * animation: Turn Spinner animate parameter into Params option
+
+-------------------------------------------------------------------
 Thu Nov 21 15:58:13 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Update gnome-shell-domain.patch to fix syntax errors.
