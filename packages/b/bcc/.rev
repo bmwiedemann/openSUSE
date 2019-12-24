@@ -265,4 +265,12 @@
 - Add bcc-fix-test_map_in_map.patch to fix the build error in the test case</comment>
     <requestid>757219</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>6b9136fb949772e6b59b1bb4dac3dd1d</srcmd5>
+    <version>0.12.0</version>
+    <time>1577194202</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build when pkg_vcmp is not defined</comment>
+    <requestid>759094</requestid>
+  </revision>
 </revisionlist>

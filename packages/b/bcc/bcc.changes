@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 23 13:25:47 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Fix build when pkg_vcmp is not defined 
+
+-------------------------------------------------------------------
 Mon Dec 16 01:46:17 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.12.0

@@ -147,7 +147,7 @@ Documentation on how to write programs with the BPF Compiler Collection.
 
 %prep
 %setup -q -D -n %{name}-%{version}
-%if %{pkg_vcmp llvm-devel >= 9.0}
+%if %{?pkg_vcmp:%pkg_vcmp llvm-devel >= 9.0}%{!?pkg_vcmp:0}
 %patch1 -p1
 %endif
 %patch2 -p1
