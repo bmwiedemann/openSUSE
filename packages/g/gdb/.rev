@@ -1457,4 +1457,13 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   bootstrapping. (forwarded request 747309 from lnussel)</comment>
     <requestid>747713</requestid>
   </revision>
+  <revision rev="135" vrev="5">
+    <srcmd5>98ee95476392c44cb8a18bed6aea9585</srcmd5>
+    <version>8.3.1</version>
+    <time>1577194160</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gcc 10 [bsc#1158539, swo#24653].
+  * gdb-0001-remove-alloca-0-calls.patch (forwarded request 756824 from tomdevries)</comment>
+    <requestid>757565</requestid>
+  </revision>
 </revisionlist>
