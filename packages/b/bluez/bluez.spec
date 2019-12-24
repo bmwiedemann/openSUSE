@@ -23,6 +23,8 @@
 %bcond_with    mesh
 %endif
 
+%bcond_without bluez_deprecated
+
 # maintained at https://github.com/seifes-opensuse-packages/bluez.git
 # contributions via pull requests are welcome!
 #
@@ -36,6 +38,9 @@ URL:            http://www.bluez.org
 Source:         http://www.kernel.org/pub/linux/bluetooth/bluez-%{version}.tar.xz
 # unused in the package, but allows to use "extract *.*" in source service
 Source42:       README.md
+NoSource:       42
+# we still want debuginfo
+#KEEP NOSOURCE DEBUGINFO
 Source5:        baselibs.conf
 Source7:        bluetooth.modprobe
 # fix some logitech HID devices, bnc#681049, bnc#850478 --seife+obs@b1-systems.com
@@ -158,6 +163,22 @@ desktop specific applets like blueman or GNOME or KDE applets).
 %postun auto-enable-devices
 {  systemctl status -n0 bluetooth.service > /dev/null && systemctl restart bluetooth.service ; } ||:
 
+%if %{with bluez_deprecated}
+%package deprecated
+Summary:        Bluez tools that upstream considers obsolete
+License:        GPL-2.0-or-later
+Group:          Hardware/Mobile
+
+%description deprecated
+This package contains tools from the bluez package that are only built
+if the "--enable-deprecated" switch is used. These are considered obsolete
+by the upstream developers and might contain serious issues, even security
+bugs. Use at your own risk.
+
+Note that this package will go away before end of 2020, change your code
+to use the modern tools instead.
+%endif
+
 %prep
 %setup -q
 %patch1 -p1
@@ -193,7 +214,9 @@ autoreconf -fi
 	--enable-midi		\
 	--enable-test		\
 	--enable-experimental	\
+%if %{with bluez_deprecated}
 	--enable-deprecated	\
+%endif
 	--enable-datafiles	\
 	--enable-sixaxis	\
 	--with-systemdsystemunitdir=%{_unitdir}		\
@@ -215,7 +238,9 @@ rm %{buildroot}%{_userunitdir}/obex.service
 ## same as in fedora...
 # "make install" fails to install gatttool, used with Bluetooth Low Energy
 # boo#970628
+%if %{with bluez_deprecated}
 install -m0755 attrib/gatttool %{buildroot}%{_bindir}
+%endif
 
 ## install btgatt-client for -test package, see
 ## https://www.spinics.net/lists/linux-bluetooth/msg63258.html
@@ -252,6 +277,23 @@ org.bluez.mesh.service to %{_datadir}/dbus-1/system-services/,
 then reboot.
 EOF
 touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
+%endif
+
+%if %{with bluez_deprecated}
+mkdir -p %{buildroot}/var/adm/update-messages
+UM=%{buildroot}/var/adm/update-messages/bluez-deprecated-%version-%release-1
+cat >> $UM << EOF
+WARNING:
+The bluez-deprecated package contains tools that are considered obsolete by
+bluez upstream. They may contain serious issues, even unfixed security bugs.
+Use at your own risk.
+
+Note that this package will go away before end of 2020, so fix your code to
+use the modern tools instead!.
+
+Have a lot of fun...
+EOF
+touch -r %{SOURCE0} $UM
 %endif
 
 %check
@@ -291,14 +333,7 @@ make check V=0
 %license COPYING
 %{_bindir}/bluemoon
 %{_bindir}/btattach
-%{_bindir}/gatttool
-%{_bindir}/hcitool
 %{_bindir}/l2ping
-%{_bindir}/rfcomm
-%{_bindir}/sdptool
-%{_bindir}/ciptool
-%{_bindir}/hciattach
-%{_bindir}/hciconfig
 %{_bindir}/hex2hcd
 %{_bindir}/mpris-proxy
 %dir %{_libdir}/bluetooth
@@ -315,21 +350,13 @@ make check V=0
 %if %{with mesh}
 %{_bindir}/meshctl
 %endif
-%{_bindir}/hcidump
 %{_bindir}/bccmd
 %{_prefix}/lib/udev/
 %{_mandir}/man1/btattach.1%{ext_man}
-%{_mandir}/man1/hcidump.1%{ext_man}
-%{_mandir}/man1/hciattach.1%{ext_man}
-%{_mandir}/man1/hciconfig.1%{ext_man}
 %{_mandir}/man8/bluetoothd.8%{ext_man}
 %{_mandir}/man1/hid2hci.1%{ext_man}
 %{_mandir}/man1/bccmd.1%{ext_man}
 %{_mandir}/man1/l2ping.1%{ext_man}
-%{_mandir}/man1/hcitool.1%{ext_man}
-%{_mandir}/man1/sdptool.1%{ext_man}
-%{_mandir}/man1/ciptool.1%{ext_man}
-%{_mandir}/man1/rfcomm.1%{ext_man}
 %{_mandir}/man1/rctest.1%{ext_man}
 %config %{_sysconfdir}/dbus-1/system.d/bluetooth.conf
 # not packaged, boo#1151518
@@ -346,6 +373,26 @@ make check V=0
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system-services/org.bluez.mesh.service
 %{_datadir}/zsh/site-functions/_bluetoothctl
+
+%if %{with bluez_deprecated}
+%files deprecated
+%{_bindir}/gatttool
+%{_bindir}/hcitool
+%{_bindir}/rfcomm
+%{_bindir}/sdptool
+%{_bindir}/ciptool
+%{_bindir}/hciattach
+%{_bindir}/hciconfig
+%{_bindir}/hcidump
+%{_mandir}/man1/hcidump.1%{ext_man}
+%{_mandir}/man1/hciattach.1%{ext_man}
+%{_mandir}/man1/hciconfig.1%{ext_man}
+%{_mandir}/man1/hcitool.1%{ext_man}
+%{_mandir}/man1/sdptool.1%{ext_man}
+%{_mandir}/man1/ciptool.1%{ext_man}
+%{_mandir}/man1/rfcomm.1%{ext_man}
+/var/adm/update-messages/bluez-deprecated-%version-%release-1
+%endif
 
 %files devel
 %defattr(-, root, root)

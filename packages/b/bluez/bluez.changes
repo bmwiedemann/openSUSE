@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 16 14:27:14 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add NoSource tag for omitting README.md from src.rpm
+
+-------------------------------------------------------------------
+Thu Dec  5 09:58:03 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- move all deprecated tools into bluez-deprecated package which can
+  be disabled by prjconf in OBS.
+- bluez-deprecated will go away before end of 2020 in Tumbleweed!
+
+-------------------------------------------------------------------
 Thu Nov 21 16:51:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - BuildIgnore shared-mime-info, pulled in by libgio-2_0-0, not
