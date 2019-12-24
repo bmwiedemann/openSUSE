@@ -369,4 +369,12 @@
   own files below ~/.cache/texmf/</comment>
     <requestid>756829</requestid>
   </revision>
+  <revision rev="38" vrev="41">
+    <srcmd5>384ed62829dc7b15e7b14be3faedc8d0</srcmd5>
+    <version>unknown</version>
+    <time>1577194166</time>
+    <user>dimstar_suse</user>
+    <comment>- Harden ls-R file generation at installation (bsc#1158910)</comment>
+    <requestid>758097</requestid>
+  </revision>
 </revisionlist>

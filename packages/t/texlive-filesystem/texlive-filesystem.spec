@@ -24,7 +24,7 @@
 %define texlive_version  2019
 %define texlive_previous 2018
 %define texlive_release  20190407
-%define texlive_noarch   165
+%define texlive_noarch   169
 %define texlive_source   texlive-20190407-source
 
 %define __perl_requires		%{nil}
@@ -46,6 +46,8 @@ Requires(pre):  /usr/bin/getent
 Requires(pre):  /usr/sbin/groupadd
 Requires(post): %fillup_prereq
 Requires(post): permissions
+Requires(post): /usr/bin/mktemp
+Requires(post): /usr/bin/mv
 Requires(pre):  /usr/bin/perl
 Requires(pre):  /usr/bin/clear
 Requires(pre):  /usr/bin/dialog
@@ -15383,6 +15385,7 @@ popd
 %post
 %fillup_only -n texlive
 # the ls-R file (empty at package time)
+error=0
 for dir in	%{_texmfconfdir}	\
 		%{_fontcache}		\
 		%{_texmfvardir}		\
@@ -15390,10 +15393,16 @@ for dir in	%{_texmfconfdir}	\
 		%{_texmfvardir}/main
 do
     test ! -e ${dir}/ls-R || continue
+    tmp=$(mktemp ${dir}/ls-R.XXXXXX) || error=1
+    test $error = 0 || continue
+    mv ${tmp} ${dir}/ls-R || error=1
+    test $error = 0 || continue
+    chown root:%{texgrp} ${dir}/ls-R || error=1
+    test $error = 0 || continue
+    chmod 0664 ${dir}/ls-R || error=1
+    test $error = 0 || continue
     echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \
     ${dir}/ls-R
-    chown root:%{texgrp} ${dir}/ls-R || :
-    chmod 0664 ${dir}/ls-R || :
 done
 %if %{defined set_permissions}
 %set_permissions %{_texmfconfdir}/ls-R
@@ -15418,6 +15427,7 @@ done
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
+test $error = 0 || exit 1
 
 %postun
 if test $1 = 1; then
