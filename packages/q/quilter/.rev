@@ -224,4 +224,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>747380</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8ed0af9367ae4d5f8990d9031f2361a2</srcmd5>
+    <version>2.0.5</version>
+    <time>1577194210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 759015 from awissu)</comment>
+    <requestid>759018</requestid>
+  </revision>
 </revisionlist>

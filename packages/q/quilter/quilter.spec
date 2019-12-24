@@ -17,7 +17,7 @@
 
 
 Name:           quilter
-Version:        2.0.3
+Version:        2.0.5
 Release:        0
 Summary:        Writing application
 License:        GPL-3.0-only
@@ -49,6 +49,7 @@ A fullscreen word processor for Elementary OS.
 
 # use default font
 sed -i '/QuiltMono.ttf/d' $(grep -rl QuiltMono.ttf)
+sed -i '/QuiltVier.ttf/d' $(grep -rl QuiltVier.ttf)
 
 %build
 %meson

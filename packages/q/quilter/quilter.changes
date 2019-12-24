@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec 23 17:49:17 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.5:
+  * 2.0.6 - Add LaTeX support finally
+  * 2.0.4 - Sync edit view scroll to preview scroll
+  * 2.0.4 - Quilt Vier
+  * 2.0.4 - Start work on syncing panes in half-width mode
+  * 2.0.4 - Don't remember open files if history setting is off
+  * 2.0.4 - Fix outline pane
+  * 2.0.4 - Some more fixes and additions
+  * Merge pull request #304 from michalzkosmosu/master
+  * Merge pull request #302 from NathanBnm/update-fr
+  * Merge pull request #301 from NathanBnm/editorconfig
+  * .editorconfig with elementary recommended config
+  * 2.0.4 - Change tooltip on search icon // Add tooltip on
+    replace button
+  * Merge pull request #299 from michalzkosmosu/master
+  * - follow up fixes
+  * - fix weird text in sidebar file boxes
+  * Merge pull request #292 from meisenzahl/master
+
+-------------------------------------------------------------------
 Mon Nov  4 14:12:59 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.0.3:
