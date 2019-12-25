@@ -35,7 +35,7 @@ BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  pkg-config
 Requires:       openssl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 ppc64le ppc64
 
 %description
 This program provides the means to enroll and erase the machine owner
