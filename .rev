@@ -1276,4 +1276,12 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     <comment></comment>
     <requestid>733091</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>0d37c1db96cf9bdd427d2688527143c9</srcmd5>
+    <version>9.0.1</version>
+    <time>1577267675</time>
+    <user>dimstar_suse</user>
+    <comment>.</comment>
+    <requestid>758955</requestid>
+  </revision>
 </revisionlist>

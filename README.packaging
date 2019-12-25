@@ -52,18 +52,11 @@ llvmX package need to be updated.
       new sources.
    4. Update the version number in the patches to match the
       new sources.
-   5. Update the "_revsn" tag in llvmX.spec to match the
-      revision number of the tag.  This can be found on
-      https://lists.llvm.org/pipermail/llvm-branch-commits
-      and should have like "[llvm-tag]" and 
-      "Creating release candidate final" in the subject
-      line.  You want to find the one for the current LLVM
-      release.
-   6. Update the "_relver" tag in llvmX.spec to match
+   5. Update the "_relver" tag in llvmX.spec to match
       the "Version" tag.
-   7. Confirm everything builds successfully and there are
+   6. Confirm everything builds successfully and there are
       no new rpmlint issues.
-   8. Update the llvmX.changes file.
+   7. Update the llvmX.changes file.
 2. llvm package:
    1. Update the "Version" tag to match the new llvmX
       version.
@@ -91,19 +84,12 @@ needs to be updated.
       new sources.
    4. Update the version number in the patches to match the
       new sources.
-   5. Update the "_revsn" tag in llvmX.spec to match the
-      revision number of the tag.  This can be found on
-      https://lists.llvm.org/pipermail/llvm-branch-commits
-      and should have like "[llvm-tag]" and 
-      "Creating release candidate final" in the subject
-      line.  You want to find the one for the current LLVM
-      release.
-   6. Update the "_relver" tag in llvmX.spec to match
+   5. Update the "_relver" tag in llvmX.spec to match
       the "Version" tag.
-   7. Confirm everything builds successfully and there are
+   6. Confirm everything builds successfully and there are
       no new rpmlint issues.  Some patches may need to be 
       removed or rebased.
-   8. Update the llvmX.changes file.
+   7. Update the llvmX.changes file.
 
 
 ===============================
@@ -138,8 +124,8 @@ needs to be modified.
       form "X.0".
    8. Change the "_uaver" tag in llvmX.spec to match the
       new major/minor versions. It should be of the form "X00".
-   9. Update the "Version", "_revsn", and "_relver" tags
-      and the version numbers in the patches as described in
+   9. Update the "Version", and "_relver" tags and the
+      version numbers in the patches as described in
       PATCH-LEVEL UPDATES above.
   10. Confirm llvmX.spec builds successfully and there are
       no new rpmlint issues.
