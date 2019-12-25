@@ -1,7 +1,7 @@
 #
 # spec file for package p11-kit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -99,7 +99,9 @@ Unix domain socket.  Note that this feature is still experimental.
 %setup -q
 
 %build
-%configure --with-trust-paths=%{trustdir_cfg}:%{trustdir_static}
+%configure \
+  --with-trust-paths=%{trustdir_cfg}:%{trustdir_static} \
+  --enable-doc
 make %{?_smp_mflags} V=1
 
 %install
@@ -175,6 +177,9 @@ make %{?_smp_mflags} check
 %defattr(-,root,root)
 %{_bindir}/p11-kit
 %{_bindir}/trust
+%{_mandir}/man1/trust.1.gz
+%{_mandir}/man5/pkcs11.conf.5.gz
+%{_mandir}/man8/p11-kit.8.gz
 
 %files devel
 %defattr(-,root,root)

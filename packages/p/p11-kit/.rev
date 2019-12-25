@@ -326,4 +326,12 @@
     <comment></comment>
     <requestid>703089</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>844b1866410438cb44925240b87367a5</srcmd5>
+    <version>0.23.12</version>
+    <time>1577267675</time>
+    <user>dimstar_suse</user>
+    <comment>- Also build documentation (boo#1013125)</comment>
+    <requestid>758967</requestid>
+  </revision>
 </revisionlist>

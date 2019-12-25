@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 23 11:00:15 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- Also build documentation (boo#1013125)
+
+-------------------------------------------------------------------
 Fri May 10 09:28:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.
