@@ -11,11 +11,11 @@ Bug 1488552 - Ensure proper running on 64-bit and 32-bit BE platforms.
  js/src/vm/StringType.h        | 13 +++++++++++++
  4 files changed, 49 insertions(+), 1 deletion(-)
 
-Index: firefox-60.9.0/js/src/gc/Marking-inl.h
-===================================================================
---- firefox-60.9.0.orig/js/src/gc/Marking-inl.h	2019-09-01 15:09:17.000000000 +0200
-+++ firefox-60.9.0/js/src/gc/Marking-inl.h	2019-12-09 11:42:31.024301901 +0100
-@@ -82,12 +82,28 @@
+diff --git a/js/src/gc/Marking-inl.h b/js/src/gc/Marking-inl.h
+index 6d2a4c7..c773c21 100644
+--- a/js/src/gc/Marking-inl.h
++++ b/js/src/gc/Marking-inl.h
+@@ -82,12 +82,28 @@ inline void RelocationOverlay::forwardTo(Cell* cell) {
    MOZ_ASSERT(!isForwarded());
    // The location of magic_ is important because it must never be valid to see
    // the value Relocated there in a GC thing that has not been moved.
@@ -44,11 +44,11 @@ Index: firefox-60.9.0/js/src/gc/Marking-inl.h
    static_assert(
        offsetof(RelocationOverlay, magic_) == offsetof(JSString, d.u1.length),
        "RelocationOverlay::magic_ is in the wrong location");
-Index: firefox-60.9.0/js/src/gc/RelocationOverlay.h
-===================================================================
---- firefox-60.9.0.orig/js/src/gc/RelocationOverlay.h	2019-09-01 15:09:17.000000000 +0200
-+++ firefox-60.9.0/js/src/gc/RelocationOverlay.h	2019-12-09 11:42:31.024301901 +0100
-@@ -33,14 +33,25 @@
+diff --git a/js/src/gc/RelocationOverlay.h b/js/src/gc/RelocationOverlay.h
+index a568843..399a541 100644
+--- a/js/src/gc/RelocationOverlay.h
++++ b/js/src/gc/RelocationOverlay.h
+@@ -33,14 +33,25 @@ class RelocationOverlay {
    /* See comment in js/public/HeapAPI.h. */
    static const uint32_t Relocated = js::gc::Relocated;
  
@@ -75,10 +75,10 @@ Index: firefox-60.9.0/js/src/gc/RelocationOverlay.h
  
    /* The location |this| was moved to. */
    Cell* newLocation_;
-Index: firefox-60.9.0/js/src/jsfriendapi.h
-===================================================================
---- firefox-60.9.0.orig/js/src/jsfriendapi.h	2019-09-01 15:09:18.000000000 +0200
-+++ firefox-60.9.0/js/src/jsfriendapi.h	2019-12-09 11:42:31.024301901 +0100
+diff --git a/js/src/jsfriendapi.h b/js/src/jsfriendapi.h
+index 4b8d18a..70ce0a1 100644
+--- a/js/src/jsfriendapi.h
++++ b/js/src/jsfriendapi.h
 @@ -9,6 +9,7 @@
  
  #include "mozilla/Atomics.h"
@@ -87,7 +87,7 @@ Index: firefox-60.9.0/js/src/jsfriendapi.h
  #include "mozilla/Maybe.h"
  #include "mozilla/MemoryReporting.h"
  #include "mozilla/UniquePtr.h"
-@@ -609,8 +610,15 @@
+@@ -609,8 +610,15 @@ struct String {
    static const uint32_t LATIN1_CHARS_BIT = JS_BIT(6);
    static const uint32_t EXTERNAL_FLAGS = LINEAR_BIT | NON_ATOM_BIT | JS_BIT(5);
    static const uint32_t TYPE_FLAGS_MASK = JS_BIT(6) - 1;
@@ -103,10 +103,10 @@ Index: firefox-60.9.0/js/src/jsfriendapi.h
    union {
      const JS::Latin1Char* nonInlineCharsLatin1;
      const char16_t* nonInlineCharsTwoByte;
-Index: firefox-60.9.0/js/src/vm/StringType.h
-===================================================================
---- firefox-60.9.0.orig/js/src/vm/StringType.h	2019-09-01 15:09:39.000000000 +0200
-+++ firefox-60.9.0/js/src/vm/StringType.h	2019-12-09 11:42:31.028301901 +0100
+diff --git a/js/src/vm/StringType.h b/js/src/vm/StringType.h
+index cde3427..c3400db 100644
+--- a/js/src/vm/StringType.h
++++ b/js/src/vm/StringType.h
 @@ -7,6 +7,7 @@
  #ifndef vm_StringType_h
  #define vm_StringType_h
@@ -115,7 +115,7 @@ Index: firefox-60.9.0/js/src/vm/StringType.h
  #include "mozilla/MemoryReporting.h"
  #include "mozilla/PodOperations.h"
  #include "mozilla/Range.h"
-@@ -168,8 +169,20 @@
+@@ -168,8 +169,20 @@ class JSString : public js::gc::Cell {
    struct Data {
      union {
        struct {
@@ -136,89 +136,6 @@ Index: firefox-60.9.0/js/src/vm/StringType.h
        };
        uintptr_t flattenData; /* JSRope (temporary while flattening) */
      } u1;
-Index: firefox-60.9.0/js/src/js-config.h.in
-===================================================================
---- firefox-60.9.0.orig/js/src/js-config.h.in	2019-09-01 15:09:18.000000000 +0200
-+++ firefox-60.9.0/js/src/js-config.h.in	2019-12-09 11:43:13.052302975 +0100
-@@ -38,6 +38,13 @@
- /* Define to 1 if SpiderMonkey should include ctypes support.  */
- #undef JS_HAS_CTYPES
- 
-+/* Define to 1 if SpiderMonkey should include trace logging support. */
-+#undef JS_TRACE_LOGGING
-+
-+/* Define to 1 if SpiderMonkey should include a breakpoint function for
-+ * artificial OOMs. */
-+#undef JS_OOM_BREAKPOINT
-+
- /* Define to 1 if SpiderMonkey should support the ability to perform
-    entirely too much GC.  */
- #undef JS_GC_ZEAL
-@@ -48,12 +55,25 @@
- /* Define to 1 to perform extra assertions and heap poisoning. */
- #undef JS_CRASH_DIAGNOSTICS
- 
-+/* Define to 1 if SpiderMonkey is compiled with support for private values at
-+ * odd-numbered memory addresses. */
-+#undef JS_UNALIGNED_PRIVATE_VALUES
-+
- /* Define to 1 if SpiderMonkey is in NUNBOX32 mode. */
- #undef JS_NUNBOX32
- 
- /* Define to 1 if SpiderMonkey is in PUNBOX64 mode. */
- #undef JS_PUNBOX64
- 
-+/* Define exactly one of these to 1 to indicate JIT code generation mode. */
-+#undef JS_CODEGEN_NONE
-+#undef JS_CODEGEN_ARM
-+#undef JS_CODEGEN_ARM64
-+#undef JS_CODEGEN_MIPS32
-+#undef JS_CODEGEN_MIPS64
-+#undef JS_CODEGEN_X86
-+#undef JS_CODEGEN_X64
-+
- /* MOZILLA JSAPI version number components */
- #undef MOZJS_MAJOR_VERSION
- #undef MOZJS_MINOR_VERSION
-Index: firefox-60.9.0/js/src/jsapi.cpp
-===================================================================
---- firefox-60.9.0.orig/js/src/jsapi.cpp	2019-09-01 15:09:18.000000000 +0200
-+++ firefox-60.9.0/js/src/jsapi.cpp	2019-12-09 11:43:13.052302975 +0100
-@@ -115,6 +115,14 @@
- #define JS_ADDRESSOF_VA_LIST(ap) (&(ap))
- #endif
- 
-+// See preprocessor definition of JS_BITS_PER_WORD in jstypes.h; make sure
-+// JS_64BIT (used internally) agrees with it
-+#ifdef JS_64BIT
-+static_assert(JS_BITS_PER_WORD == 64, "values must be in sync");
-+#else
-+static_assert(JS_BITS_PER_WORD == 32, "values must be in sync");
-+#endif
-+
- JS_PUBLIC_API bool JS::CallArgs::requireAtLeast(JSContext* cx,
-                                                 const char* fnname,
-                                                 unsigned required) const {
-Index: firefox-60.9.0/js/src/jstypes.h
-===================================================================
---- firefox-60.9.0.orig/js/src/jstypes.h	2019-09-01 15:09:18.000000000 +0200
-+++ firefox-60.9.0/js/src/jstypes.h	2019-12-09 11:43:13.052302975 +0100
-@@ -141,12 +141,17 @@
- #define JS_BITS_PER_BYTE 8
- #define JS_BITS_PER_BYTE_LOG2 3
- 
--#if defined(JS_64BIT)
-+#if (defined(__SIZEOF_POINTER__) && __SIZEOF_POINTER__ == 8) || \
-+    (defined(UINTPTR_MAX) && UINTPTR_MAX == 0xFFFFFFFFFFFFFFFFu)
- #define JS_BITS_PER_WORD 64
- #else
- #define JS_BITS_PER_WORD 32
- #endif
- 
-+static_assert(sizeof(void*) == 8 ? JS_BITS_PER_WORD == 64
-+                                 : JS_BITS_PER_WORD == 32,
-+              "preprocessor and compiler must agree");
-+
- /***********************************************************************
- ** MACROS:      JS_FUNC_TO_DATA_PTR
- **              JS_DATA_TO_FUNC_PTR
+-- 
+2.23.0
+
