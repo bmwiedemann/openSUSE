@@ -40,6 +40,7 @@ addCheck("CheckRCLinks")
 addCheck("CheckSystemdInstall")
 addCheck("TmpFilesCheck")
 addCheck("CheckSysVinitOnSystemd")
+addCheck("CheckCronJobs")
 
 # stuff autobuild takes care about
 addFilter('.*invalid-version.*')

@@ -2892,4 +2892,13 @@ bugzilla.opensuse.org/show_bug.cgi?id=939831 (forwarded request 330560 from aboe
     <comment></comment>
     <requestid>757377</requestid>
   </revision>
+  <revision rev="327" vrev="16">
+    <srcmd5>95c725c984312ac4ab56b235effe9086</srcmd5>
+    <version>1.11</version>
+    <time>1577267682</time>
+    <user>dimstar_suse</user>
+    <comment>- finally enable the new CheckCronJobs, the check is now available and should
+  work in rpmlint-mini (bsc#1150175)</comment>
+    <requestid>758973</requestid>
+  </revision>
 </revisionlist>
