@@ -261,9 +261,6 @@
   <group name="i686_packages">
     <conditional name="i686_replacement"/>
     <packagelist relationship="requires">
-      <package name="libmozjs-60"/>
-      <package name="mozjs60"/>
-      <package name="mozjs60-devel"/>
       <package name="MozillaFirefox"/>
       <package name="MozillaFirefox-devel"/>
       <package name="MozillaFirefox-buildsymbols"/>
