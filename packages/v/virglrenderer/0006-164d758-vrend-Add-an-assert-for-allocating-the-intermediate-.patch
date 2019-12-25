@@ -1,0 +1,31 @@
+commit 164d7587adc437dcc1cc9bdf843640ae450a96ff
+Author: Gert Wollny <gert.wollny@collabora.com>
+Date:   Mon Oct 7 14:00:12 2019 +0200
+
+    vrend: Add an assert for allocating the intermediate texture
+    
+    With the format checks introduced earlier the double free bug reported
+    in #139 should no longer be possible. Nevertheless, add an assert to
+    ensure that this is checked.
+    
+    Closes #139
+    
+    v2: Update NDEBUG_UNUSED to MAYBE_UNUSED
+    
+    Signed-off-by: Gert Wollny <gert.wollny@collabora.com>
+    Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+
+Index: virglrenderer-virglrenderer-0.8.0/src/vrend_renderer.c
+===================================================================
+--- virglrenderer-virglrenderer-0.8.0.orig/src/vrend_renderer.c
++++ virglrenderer-virglrenderer-0.8.0/src/vrend_renderer.c
+@@ -8268,7 +8268,8 @@ static void vrend_renderer_blit_int(stru
+       args.array_size = src_res->base.array_size;
+       intermediate_copy = (struct vrend_resource *)CALLOC_STRUCT(vrend_texture);
+       vrend_renderer_resource_copy_args(&args, intermediate_copy);
+-      vrend_renderer_resource_allocate_texture(intermediate_copy, NULL);
++      MAYBE_UNUSED int r = vrend_renderer_resource_allocate_texture(intermediate_copy, NULL);
++      assert(!r);
+ 
+       glGenFramebuffers(1, &intermediate_fbo);
+    } else {

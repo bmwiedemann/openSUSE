@@ -1,7 +1,7 @@
 #
 # spec file for package virglrenderer
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,14 @@ BuildRequires:  pkgconfig(gbm) >= 18.0.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.50
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(x11)
+
+#Upstream patches:
+Patch0001:      0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
+Patch0002:      0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
+Patch0003:      0003-24f67de-vrend-check-info-formats-in-blits.patch
+Patch0004:      0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
+Patch0005:      0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
+Patch0006:      0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
 
 %description
 The virgil3d rendering library is a library used by
@@ -72,6 +80,12 @@ without GL.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch0001 -p1
+%patch0002 -p1
+%patch0003 -p1
+%patch0004 -p1
+%patch0005 -p1
+%patch0006 -p1
 
 %build
 sed -i -e 's|@CODE_COVERAGE_RULES@| |g' Makefile.am

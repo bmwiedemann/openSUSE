@@ -1,0 +1,49 @@
+commit 5d03711f88643b6b6639aebd8983c179cdd248b0
+Author: Gert Wollny <gert.wollny@collabora.com>
+Date:   Mon Oct 7 17:15:37 2019 +0200
+
+    vrend: Keep the max texture sizes in the vrend_state
+    
+    This is needed to check the resource creation parameters.
+    
+    Signed-off-by: Gert Wollny <gert.wollny@collabora.com>
+    Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+
+Index: virglrenderer-virglrenderer-0.8.0/src/vrend_renderer.c
+===================================================================
+--- virglrenderer-virglrenderer-0.8.0.orig/src/vrend_renderer.c
++++ virglrenderer-virglrenderer-0.8.0/src/vrend_renderer.c
+@@ -278,6 +278,9 @@ struct global_renderer_state {
+    /* these appeared broken on at least one driver */
+    bool use_explicit_locations;
+    uint32_t max_draw_buffers;
++   uint32_t max_texture_2d_size;
++   uint32_t max_texture_3d_size;
++   uint32_t max_texture_cube_size;
+    struct list_head active_ctx_list;
+ 
+    /* threaded sync */
+@@ -5685,6 +5688,10 @@ int vrend_renderer_init(struct vrend_if_
+       vrend_state.inited = true;
+       vrend_object_init_resource_table();
+       vrend_clicbs = cbs;
++      /* Give some defaults to be able to run the tests */
++      vrend_state.max_texture_2d_size =
++            vrend_state.max_texture_3d_size =
++            vrend_state.max_texture_cube_size = 16384;
+    }
+ 
+ #ifndef NDEBUG
+@@ -9306,6 +9313,12 @@ static void vrend_renderer_fill_caps_v2(
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, (GLint*)&caps->v2.max_texture_2d_size);
+    glGetIntegerv(GL_MAX_3D_TEXTURE_SIZE, (GLint*)&caps->v2.max_texture_3d_size);
+    glGetIntegerv(GL_MAX_CUBE_MAP_TEXTURE_SIZE, (GLint*)&caps->v2.max_texture_cube_size);
++   vrend_state.max_texture_2d_size = caps->v2.max_texture_2d_size;
++   vrend_state.max_texture_3d_size = caps->v2.max_texture_3d_size;
++   vrend_state.max_texture_cube_size = caps->v2.max_texture_cube_size;
++   VREND_DEBUG(dbg_features, NULL, "Texture limits: 2D:%u 3D:%u Cube:%u\n",
++               vrend_state.max_texture_2d_size, vrend_state.max_texture_3d_size,
++               vrend_state.max_texture_cube_size);
+ 
+    if (has_feature(feat_geometry_shader)) {
+       glGetIntegerv(GL_MAX_GEOMETRY_OUTPUT_VERTICES, (GLint*)&caps->v2.max_geom_output_vertices);

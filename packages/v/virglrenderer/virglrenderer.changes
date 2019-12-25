@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 23 05:33:34 UTC 2019 - lma@suse.com
+
+- Add 5 security fixes
+* Check resource creation more thoroughly (CVE-2019-18388 bsc#1159479)
+  0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
+  0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
+
+* check info formats in blits (CVE-2019-18390 bsc#1159478)
+  0003-24f67de-vrend-check-info-formats-in-blits.patch
+
+* check transfer bounds for negative values too (CVE-2019-18389 bsc#1159482)
+  0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
+
+* check transfer iov holds enough data for the data upload (CVE-2019-18391 bsc#1159486)
+  0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
+
+* Add an assert for allocating the intermediate texture (CVE-2019-18392 bsc#1159454)
+  0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
+
+-------------------------------------------------------------------
 Tue Nov 26 21:42:29 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Update package to 0.8.0
