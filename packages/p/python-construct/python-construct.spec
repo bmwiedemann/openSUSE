@@ -1,7 +1,7 @@
 #
-# spec file for package python-construct
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-construct
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%endif
+Name:           python-construct%{?psuffix}
 Version:        2.9.45
 Release:        0
 Summary:        A declarative parser/builder for binary data
@@ -25,14 +32,16 @@ License:        MIT
 URL:            https://github.com/construct/construct
 Source:         https://github.com/construct/construct/archive/v%{version}.tar.gz
 Patch0:         split_debug.patch
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+%if %{with test}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  python2-enum34
+%endif
 Requires:       python-arrow
 Requires:       python-six
 BuildArch:      noarch
@@ -58,19 +67,27 @@ rm -rf tests/gallery
 rm -rf tests/deprecated_gallery
 
 %build
+%if %{without test}
 %python_build
+%endif
 
 %install
+%if %{without test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if %{without test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/construct
 %{python_sitelib}/construct-%{version}-py%{python_version}.egg-info
+%endif
 
 %changelog

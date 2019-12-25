@@ -104,4 +104,12 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743979</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e0e9019d2b2864f890a57ef565d2ad5e</srcmd5>
+    <version>2.9.45</version>
+    <time>1577267658</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>758775</requestid>
+  </revision>
 </revisionlist>
