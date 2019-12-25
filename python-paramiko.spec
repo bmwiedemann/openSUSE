@@ -1,7 +1,7 @@
 #
 # spec file for package python-paramiko
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,29 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-paramiko
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
+Group:          Documentation/Other
 URL:            http://www.paramiko.org/
-Source:         https://files.pythonhosted.org/packages/source/p/paramiko/paramiko-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/paramiko/paramiko-%{version}.tar.gz
+Source1:        configs.tar.gz
 Patch0:         paramiko-test_extend_timeout.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.5}
 BuildRequires:  %{python_module gssapi}
+BuildRequires:  %{python_module invocations}
+BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module pyasn1 >= 0.1.7}
 BuildRequires:  %{python_module pytest-relaxed}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-gssapi
+Recommends:     python-invoke
 Requires:       python-PyNaCl >= 1.0.1
 Requires:       python-bcrypt >= 3.1.3
 Requires:       python-cryptography >= 2.5
@@ -67,6 +72,7 @@ This package contains the documentation.
 %prep
 %setup -q -n paramiko-%{version}
 %autopatch -p1
+tar -C tests/ -xzf %{SOURCE1}
 
 # Fix non-executable script rpmlint issue:
 find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;

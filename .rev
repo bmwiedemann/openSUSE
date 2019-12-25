@@ -501,4 +501,14 @@
  * Add backwards-compatible support for the gssapi</comment>
     <requestid>711850</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d9b08448f4b619e14cea9356716298c6</srcmd5>
+    <version>2.7.1</version>
+    <time>1577267657</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1
+- add configs.tar.gz with missing test data
+ * full changelog at http://www.paramiko.org/changelog.html</comment>
+    <requestid>758748</requestid>
+  </revision>
 </revisionlist>
