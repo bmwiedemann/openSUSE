@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 22 03:12:43 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.028
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.028     2019-12-21 20:16:01Z
+            - allow for calling warnings->import being called after importing
+              the "warnings" sub
+
+-------------------------------------------------------------------
 Mon Sep 30 10:47:24 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.027
