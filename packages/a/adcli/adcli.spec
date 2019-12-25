@@ -1,7 +1,7 @@
 #
 # spec file for package adcli
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           adcli
-Version:        0.8.2
+Version:        0.9.0+git.0.1b15280
 Release:        0
 Summary:        Tool for performing actions on an Active Directory domain
 License:        LGPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            http://cgit.freedesktop.org/realmd/adcli
-Source0:        http://www.freedesktop.org/software/realmd/releases/%{name}-%{version}.tar.gz
-Source1:        http://www.freedesktop.org/software/realmd/releases/%{name}-%{version}.tar.gz.sig
+URL:            https://gitlab.freedesktop.org/realmd/adcli
+Source0:        %{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -51,6 +53,7 @@ This package contains the documentation for adcli.
 %setup -q
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure --disable-static \
            --disable-silent-rules
 make %{?_smp_mflags}
