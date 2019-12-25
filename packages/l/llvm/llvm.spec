@@ -1,7 +1,7 @@
 #
 # spec file for package llvm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %endif
 Name:           llvm
-Version:        9.0.0
+Version:        9.0.1
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -98,7 +98,7 @@ don't require a specific LLVM version should depend on this.
 %package -n clang
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
-Url:            https://clang.llvm.org/
+URL:            https://clang.llvm.org/
 Requires:       clang%{_sonum} = %{version}
 Recommends:     clang-doc
 Provides:       llvm-clang = %{version}
@@ -114,7 +114,7 @@ don't require a specific Clang version should depend on this.
 %package -n clang-checker
 Summary:        Static code analyzer for CLANG
 Group:          Development/Languages/C and C++
-Url:            https://clang-analyzer.llvm.org/
+URL:            https://clang-analyzer.llvm.org/
 Requires:       clang%{_sonum}-checker = %{version}
 Provides:       llvm-clang-checker = %{version}
 Obsoletes:      llvm-clang-checker < %{version}
@@ -213,7 +213,7 @@ don't require a specific LLVM version should depend on this.
 %package -n lldb
 Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
-Url:            https://lldb.llvm.org/
+URL:            https://lldb.llvm.org/
 Requires:       lldb%{_sonum} = %{version}
 Recommends:     python3-lldb
 
@@ -254,7 +254,7 @@ don't require a specific LLDB version should depend on this.
 %package -n lld
 Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
-Url:            https://lld.llvm.org/
+URL:            https://lld.llvm.org/
 Requires:       lld%{_sonum} = %{version}
 
 %description -n lld
