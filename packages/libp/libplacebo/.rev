@@ -414,4 +414,19 @@ Fixes and performance improvements:
   * make libplacebo slightly less log spammy in general</comment>
     <requestid>758911</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3cc39a3f671736f241188c2a290bd865</srcmd5>
+    <version>1.29.1</version>
+    <time>1577267692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.29.1
+This is a minor bug fix follow-up, to address one major and two
+minor issues with the v1.29.0 release.
+Fixes:
+  * segfault in the test framework on platforms without vulkan
+  * error message spam when rendering to minimized/hidden windows
+  * compilation on certain glslang versions
+</comment>
+    <requestid>759132</requestid>
+  </revision>
 </revisionlist>

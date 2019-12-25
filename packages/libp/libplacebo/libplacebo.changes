@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 24 15:21:06 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 1.29.1
+
+This is a minor bug fix follow-up, to address one major and two
+minor issues with the v1.29.0 release.
+
+Fixes:
+  * segfault in the test framework on platforms without vulkan
+  * error message spam when rendering to minimized/hidden windows
+  * compilation on certain glslang versions
+
+-------------------------------------------------------------------
 Mon Dec 23 02:47:30 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.29.0
