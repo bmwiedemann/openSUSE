@@ -36,6 +36,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version
 Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Possible-fix-for-KDecoration-crash-in-systemsettings.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
 # PATCH-FEATURE-OPENSUSE
