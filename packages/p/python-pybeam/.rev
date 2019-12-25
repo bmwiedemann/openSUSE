@@ -113,4 +113,12 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
 </comment>
     <requestid>679053</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5a4e1f38cac206ba2e2dca078536a7c3</srcmd5>
+    <version>0.5</version>
+    <time>1577267659</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>758778</requestid>
+  </revision>
 </revisionlist>

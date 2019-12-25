@@ -1,0 +1,65 @@
+From c1b08b470291b8f9334e600563efa6d2651c2a66 Mon Sep 17 00:00:00 2001
+From: StefanBruens <stefan.bruens@rwth-aachen.de>
+Date: Sun, 15 Dec 2019 02:29:27 +0100
+Subject: [PATCH] Do no require Sphinx when doing just a regular build
+
+Only the 'build_sphinx' command requires sphinx, so do the
+import from the command.
+---
+ setup.py | 33 +++++++++++++++++++++------------
+ 1 file changed, 21 insertions(+), 12 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 2057839..04a5917 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,11 +1,27 @@
+-from setuptools import find_packages, setup
+-from sphinx.setup_command import BuildDoc
+-cmdclass = {'build_sphinx': BuildDoc}
++from setuptools import find_packages, setup, Command
+ 
+ name="pybeam"
+ version="0.5"
+ test_suite="test"
+ 
++class BuildSphinx(Command):
++	description = 'Build Sphinx documentation'
++	user_options = []
++
++	def initialize_options(self):
++		pass
++
++	def finalize_options(self):
++		pass
++
++	def run(self):
++		import sphinx.cmd.build as scb
++		scb.build_main(['-b', 'html',
++			'-D', 'project=' + name,
++			'-D', 'version=' + version,
++			'-D', 'release=' + version,
++			'./doc', './build/html'])
++
+ setup(name=name,
+ 	version=version,
+ 	description='Python module to parse Erlang BEAM files',
+@@ -15,13 +31,6 @@ setup(name=name,
+ 	license='MIT',
+ 	packages=find_packages(exclude=(test_suite,)),
+ 	test_suite=test_suite,
+-	install_requires=['construct>=2.9,<2.10', 'six', 'sphinx'],
+-	command_options={
+-		'build_sphinx': {
+-			'project': ('setup.py', name),
+-			'version': ('setup.py', version),
+-			'release': ('setup.py', version),
+-			'source_dir': ('setup.py', 'doc')
+-		}
+-	},
++	install_requires=['construct>=2.9,<2.10', 'six'],
++	cmdclass = {'build_sphinx': BuildSphinx},
+ 	zip_safe=False)
+-- 
+2.24.0
+

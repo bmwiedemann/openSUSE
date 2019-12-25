@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 15 02:38:15 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make Sphinx dependency optional (docs are not built by default),
+  add make_sphinx_optional.patch
+- Use _multibuild for tests to reduce the build dependencies
+  and simplify bootstrap for e.g. rpmlint.
+
+-------------------------------------------------------------------
 Fri Jan 11 09:48:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call
