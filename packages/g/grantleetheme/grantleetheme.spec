@@ -42,6 +42,7 @@ BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(Qt5Network) >= 5.4.0
 BuildRequires:  cmake(Qt5Test) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+%requires_eq    grantlee5
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
