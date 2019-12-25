@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Dec 23 14:25:01 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.16
+- New Features and Improvements
+  + ZBXNEXT-5271 Implemented 'delete missing' option for imported template linkages
+- Bug Fixes
+  + ZBX-17101 Fixed url validation before output
+  + ZBX-16929 Fixed detection of invalid sender data request
+  + ZBX-16804 Added missing get parameters in availability report
+  + ZBX-16286 Fixed graph widget dimensions errors on high dpi screens
+  + ZBX-16848 Fixed fatal error occurring in user profile and user edit
+    forms when php fileinfo extension does not exist
+  + ZBX-16684 Fixed incorrect double quotes in history plain text view
+  + ZBX-16903 Fixed validation of "interfaceid" field for http agent items with large ids
+  + ZBX-16751 Fixed support for php 7.4
+  + ZBX-16879 Changed condition description message for tag value in actions and event correlations
+  + ZBX-9084 Fixed high memory usage during startup
+  + ZBX-16932 Fixed build fail on netbsd
+  + ZBX-16111 Removed templateid from screen api output
+  + ZBX-16919 Fixed server check warning width in chrome
+  + ZBX-16944 Fixed "type of information" field in item form being marked as required when it is read-only
+  + ZBX-16912 Fixed image map elements having a hand cursor when there is no context menu available
+  + ZBX-15041 Fixed request not being cancelled along with popup window in widgets
+  + ZBX-1977 Fixed axis labels calculation
+  + ZBX-17034 Updated zabbix website links
+  + ZBX-16874 Fixed map-type widget clipping in internet explorer
+  + ZBX-16915 Fixed memory leak
+  + ZBX-17008 Improved zabbix server performance when using maintenance
+  + ZBX-16779 Fixed infinite loop when writing export to file fails
+  + ZBX-16540 Splitted host_resources templates into 3 subtemplates: for cpu, memory and storage
+
+-------------------------------------------------------------------
 Thu Nov 28 10:27:02 UTC 2019 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.15
