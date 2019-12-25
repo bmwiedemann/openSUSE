@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 21 16:21:42 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.4:
+  + libmbim-glib:
+    - Fixed memleak when processing responses with multiple
+      fragments.
+    - Fixed memleak when processing failed Open operations.
+    - Removed redundant method declaration in UUID header.
+
+-------------------------------------------------------------------
 Wed Nov  6 20:34:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.20.2:
