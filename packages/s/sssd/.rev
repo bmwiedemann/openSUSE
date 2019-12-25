@@ -871,4 +871,12 @@
     <comment>- Update to release 2.2.2</comment>
     <requestid>751618</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>2dd9f78ad15b46c074a04f129258ccd1</srcmd5>
+    <version>2.2.2</version>
+    <time>1577267683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758977</requestid>
+  </revision>
 </revisionlist>

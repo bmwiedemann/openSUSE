@@ -21,7 +21,7 @@ Name:           sssd
 Version:        2.2.2
 Release:        0
 Summary:        System Security Services Daemon
-License:        GPL-3.0+ and LGPL-3.0+
+License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://pagure.io/SSSD/sssd
 #Git-Clone:	https://pagure.io/SSSD/sssd
@@ -100,7 +100,7 @@ services for projects like FreeIPA.
 
 %package ad
 Summary:        The ActiveDirectory backend plugin for sssd
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       %name-krb5-common = %version
 Requires:       adcli
@@ -112,7 +112,7 @@ server.
 
 %package dbus
 Summary:        The D-Bus responder of sssd
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Base
 Requires:       %name = %version
 
@@ -122,7 +122,7 @@ information from sssd to be transmitted over the system bus.
 
 %package ipa
 Summary:        FreeIPA backend plugin for sssd
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       %name = %version
 Requires:       %name-ad = %version-%release
@@ -136,7 +136,7 @@ data from and authenticate against an IPA server.
 
 %package krb5
 Summary:        The Kerberos authentication backend plugin for sssd
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       %name-krb5-common = %version-%release
 
@@ -146,7 +146,7 @@ against a Kerberos server.
 
 %package krb5-common
 Summary:        SSSD helpers needed for Kerberos and GSSAPI authentication
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       cyrus-sasl-gssapi
 
@@ -156,7 +156,7 @@ use for Kerberos user or host authentication.
 
 %package ldap
 Summary:        The LDAP backend plugin for sssd
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       %name-krb5-common = %version-%release
 
@@ -166,7 +166,7 @@ identity data from and authenticate against an LDAP server.
 
 %package proxy
 Summary:        The proxy backend plugin for sssd
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Daemons
 
 %description proxy
@@ -175,7 +175,7 @@ and/or PAM modules to leverage SSSD caching.
 
 %package tools
 Summary:        Commandline tools for sssd
-License:        GPL-3.0+ and LGPL-3.0+
+License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          System/Management
 Requires:       python3-sssd-config = %version
 Requires:       sssd = %version
@@ -186,7 +186,7 @@ the "local" id provider of the System Security Services Daemon (sssd).
 
 %package wbclient
 Summary:        SSSD's implementation of the Winbind pipe protocol
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description wbclient
@@ -200,7 +200,7 @@ by their POSIX UIDs and GIDs respectively.
 
 %package wbclient-devel
 Summary:        Development files for SSSD winbind
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %name-wbclient = %version
 
@@ -211,7 +211,7 @@ groups identified by their SID to POSIX users and groups identified
 by their POSIX UIDs and GIDs respectively.
 
 %package winbind-idmap
-Summary:        idmap backend for Winbind
+Summary:        The sss idmap backend for Winbind
 Group:          System/Libraries
 
 %description winbind-idmap
@@ -220,7 +220,7 @@ UIDs/GIDs and SIDs.
 
 %package -n libsss_certmap0
 Summary:        FreeIPA ID mapping library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libsss_certmap0
@@ -228,7 +228,7 @@ A utility library for FreeIPA to map certs.
 
 %package -n libsss_certmap-devel
 Summary:        Development files for the FreeIPA certmap library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libsss_certmap0 = %version
 
@@ -237,7 +237,7 @@ A utility library for FreeIPA to map certs.
 
 %package -n libipa_hbac0
 Summary:        FreeIPA HBAC Evaluator library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libipa_hbac0
@@ -246,7 +246,7 @@ requests.
 
 %package -n libipa_hbac-devel
 Summary:        Development files for the FreeIPA HBAC Evaluator library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libipa_hbac0 = %version
 
@@ -256,7 +256,7 @@ requests.
 
 %package -n libnfsidmap-sss
 Summary:        Library to allow communication between libnfsidmap and SSSD
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Libraries
 Supplements:    packageand(nfsidmap:sssd-client)
 
@@ -265,7 +265,7 @@ A utility library to allow communication between libnfsidmap and SSSD.
 
 %package -n libsss_idmap0
 Summary:        FreeIPA ID mapping library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libsss_idmap0
@@ -273,7 +273,7 @@ A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
 %package -n libsss_idmap-devel
 Summary:        Development files for the FreeIPA idmap library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libsss_idmap0 = %version
 
@@ -282,7 +282,7 @@ A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
 %package -n libsss_nss_idmap0
 Summary:        FreeIPA ID mapping library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libsss_nss_idmap0
@@ -290,7 +290,7 @@ A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
 %package -n libsss_nss_idmap-devel
 Summary:        Development files for the FreeIPA idmap library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libsss_nss_idmap0 = %version
 
@@ -299,7 +299,7 @@ A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
 %package -n libsss_simpleifp0
 Summary:        The SSSD D-Bus responder helper library
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libsss_simpleifp0
@@ -308,7 +308,7 @@ the SSSD InfoPipe responder.
 
 %package -n libsss_simpleifp-devel
 Summary:        Development files for the SSSD D-Bus responder helper library
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libsss_simpleifp0 = %version
 
@@ -319,7 +319,7 @@ responder.
 
 %package -n libsss_sudo
 Summary:        A library to allow communication between sudo and SSSD
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 Supplements:    packageand(sudo:sssd-client)
 
@@ -328,7 +328,7 @@ A utility library to allow communication between sudo and SSSD.
 
 %package -n python3-ipa_hbac
 Summary:        Python bindings for the FreeIPA HBAC Evaluator library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       python3
 
@@ -338,7 +338,7 @@ can be used by Python applications.
 
 %package -n python3-sss-murmur
 Summary:        Python3 bindings for SSSD Murmur hash function
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       python3
 
@@ -348,7 +348,7 @@ Murmur hash version 3.
 
 %package -n python3-sss_nss_idmap
 Summary:        Python bindings for libsss_nss_idmap
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       python3
 
@@ -358,7 +358,7 @@ libsss_nss_idmap can be used by Python applications.
 
 %package -n python3-sssd-config
 Summary:        Python API for configuring sssd
-License:        GPL-3.0+ and LGPL-3.0+
+License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       python3
 
@@ -428,6 +428,13 @@ install -m644 src/examples/logrotate "$b/%_sysconfdir/logrotate.d/sssd"
 
 rm -Rfv "$b/%_initddir"
 ln -sfv service "$b/%_sbindir/rcsssd"
+ln -sfv service "$b/%_sbindir/rcsssd-autofs"
+ln -sfv service "$b/%_sbindir/rcsssd-ifp"
+ln -sfv service "$b/%_sbindir/rcsssd-nss"
+ln -sfv service "$b/%_sbindir/rcsssd-pac"
+ln -sfv service "$b/%_sbindir/rcsssd-pam"
+ln -sfv service "$b/%_sbindir/rcsssd-ssh"
+ln -sfv service "$b/%_sbindir/rcsssd-sudo"
 
 mkdir -pv "$b/%sssdstatedir/mc"
 mkdir -pv "$b/%_sysconfdir/ld.so.conf.d"
@@ -435,7 +442,6 @@ cat >"$b/%_sysconfdir/ld.so.conf.d/sssd-wbclient.conf" <<-EOF
 	%_libdir/%name/modules
 EOF
 find "$b" -type f -name "*.la" -print -delete
-rm -Rfv "$b/%_sysconfdir/dbus-1" "$b/%_datadir/dbus-1"
 rm -Rfv "$b/usr/lib/debug/usr/lib/sssd/p11_child-1.16.2-0.x86_64.debug"
 %find_lang %name --all-name
 
@@ -444,16 +450,16 @@ rm -Rfv "$b/usr/lib/debug/usr/lib/sssd/p11_child-1.16.2-0.x86_64.debug"
 make %{?_smp_mflags} check ||:
 
 %pre
-%service_add_pre sssd.service
+%service_add_pre sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
 %post
 /sbin/ldconfig
 # migrate config variable krb5_kdcip to krb5_server (bnc#851048)
 /bin/sed -i -e 's,^krb5_kdcip =,krb5_server =,g' %_sysconfdir/sssd/sssd.conf
-%service_add_post sssd.service
+%service_add_post sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
 %preun
-%service_del_preun sssd.service
+%service_del_preun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
 %postun
 /sbin/ldconfig
@@ -464,8 +470,10 @@ fi
 # (especially, downgrades)
 rm -f /var/lib/sss/db/*.ldb
 # del_postun includes a try-restart
-%service_del_postun sssd.service
+%service_del_postun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
+%post   -n libsss_certmap0 -p /sbin/ldconfig
+%postun -n libsss_certmap0 -p /sbin/ldconfig
 %post   -n libipa_hbac0 -p /sbin/ldconfig
 %postun -n libipa_hbac0 -p /sbin/ldconfig
 %post   -n libsss_idmap0 -p /sbin/ldconfig
@@ -475,14 +483,44 @@ rm -f /var/lib/sss/db/*.ldb
 %post   -n libsss_simpleifp0 -p /sbin/ldconfig
 %postun -n libsss_simpleifp0 -p /sbin/ldconfig
 
+%pre dbus
+%service_add_pre sssd-ifp.service
+
+%post dbus
+%service_add_post sssd-ifp.service
+
+%preun dbus
+%service_del_preun sssd-ifp.service
+
+%postun dbus
+%service_del_postun sssd-ifp.service
+
 %files -f sssd.lang
 %license COPYING
-%_unitdir
 %_unitdir/sssd.service
+%_unitdir/sssd-autofs.socket
+%_unitdir/sssd-autofs.service
+%_unitdir/sssd-nss.socket
+%_unitdir/sssd-nss.service
+%_unitdir/sssd-pac.socket
+%_unitdir/sssd-pac.service
+%_unitdir/sssd-pam.socket
+%_unitdir/sssd-pam-priv.socket
+%_unitdir/sssd-pam.service
+%_unitdir/sssd-ssh.socket
+%_unitdir/sssd-ssh.service
+%_unitdir/sssd-sudo.socket
+%_unitdir/sssd-sudo.service
 %_bindir/sss_ssh_*
 %_sbindir/sssctl
 %_sbindir/sssd
 %_sbindir/rcsssd
+%_sbindir/rcsssd-autofs
+%_sbindir/rcsssd-nss
+%_sbindir/rcsssd-pac
+%_sbindir/rcsssd-pam
+%_sbindir/rcsssd-ssh
+%_sbindir/rcsssd-sudo
 %dir %_mandir/??/
 %dir %_mandir/??/man[158]/
 %_mandir/??/man1/sss_ssh_*
@@ -592,6 +630,10 @@ rm -f /var/lib/sss/db/*.ldb
 %dir %_mandir/??/
 %dir %_mandir/??/man5/
 %_mandir/??/man5/sssd-ifp.5*
+%_unitdir/sssd-ifp.service
+%_sbindir/rcsssd-ifp
+%config %_sysconfdir/dbus-1/system.d/org.freedesktop.sssd.infopipe.conf
+%_datadir/dbus-1/system-services/org.freedesktop.sssd.infopipe.service
 
 %files ipa
 %dir %_libdir/%name/
@@ -678,7 +720,6 @@ rm -f /var/lib/sss/db/*.ldb
 %_libdir/pkgconfig/ipa_hbac.pc
 
 %files -n libsss_certmap0
-%_libdir/libsss_certmap.so
 %_libdir/libsss_certmap.so.0*
 
 %files -n libsss_certmap-devel
