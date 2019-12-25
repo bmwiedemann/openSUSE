@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Test) >= 5.2.0
+%requires_eq    grantlee5
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
