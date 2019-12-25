@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 20 21:13:19 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 9.0.1.
+  * This release contains bug-fixes for the LLVM 9.0.0 release.
+    This release is API and ABI compatible with 9.0.0.
+- Drop patches that have landed upstream:
+  * dont-install-example-analyzer-plugins.patch
+  * fix-module-test.patch
+  * llvm-add-missing-include.patch
+- Drop set-revision.patch, don't provide revision number in clang.
+  The upstream repository has moved from Subversion to git, so the
+  revision number is just a hash, which limits its usefulness.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Thu Dec  5 23:49:17 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Modify libcxx-tests-linux-distribution.patch to remove dependency

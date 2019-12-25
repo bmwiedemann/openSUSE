@@ -2,10 +2,10 @@ This has similar effect as simply deleting the static libraries which we don't
 want after installation. By not copying them in the first place we reduce the
 disk usage during installation.
 
-Index: llvm-9.0.0.src/cfe-9.0.0.src/cmake/modules/AddClang.cmake
+Index: llvm-9.0.1.src/clang-9.0.1.src/cmake/modules/AddClang.cmake
 ===================================================================
---- llvm-9.0.0.src.orig/cfe-9.0.0.src/cmake/modules/AddClang.cmake
-+++ llvm-9.0.0.src/cfe-9.0.0.src/cmake/modules/AddClang.cmake
+--- llvm-9.0.1.src.orig/clang-9.0.1.src/cmake/modules/AddClang.cmake
++++ llvm-9.0.1.src/clang-9.0.1.src/cmake/modules/AddClang.cmake
 @@ -106,12 +106,15 @@ macro(add_clang_library name)
          set_property(GLOBAL PROPERTY CLANG_HAS_EXPORTS True)
        endif()
@@ -36,10 +36,10 @@ Index: llvm-9.0.0.src/cfe-9.0.0.src/cmake/modules/AddClang.cmake
    else()
      # Add empty "phony" target
      add_custom_target(${name})
-Index: llvm-9.0.0.src/cmake/modules/AddLLVM.cmake
+Index: llvm-9.0.1.src/cmake/modules/AddLLVM.cmake
 ===================================================================
---- llvm-9.0.0.src.orig/cmake/modules/AddLLVM.cmake
-+++ llvm-9.0.0.src/cmake/modules/AddLLVM.cmake
+--- llvm-9.0.1.src.orig/cmake/modules/AddLLVM.cmake
++++ llvm-9.0.1.src/cmake/modules/AddLLVM.cmake
 @@ -695,11 +695,13 @@ macro(add_llvm_library name)
          set_property(GLOBAL PROPERTY LLVM_HAS_EXPORTS True)
        endif()
@@ -59,10 +59,10 @@ Index: llvm-9.0.0.src/cmake/modules/AddLLVM.cmake
  
        if (NOT LLVM_ENABLE_IDE)
          add_llvm_install_targets(install-${name}
-Index: llvm-9.0.0.src/lld-9.0.0.src/cmake/modules/AddLLD.cmake
+Index: llvm-9.0.1.src/lld-9.0.1.src/cmake/modules/AddLLD.cmake
 ===================================================================
---- llvm-9.0.0.src.orig/lld-9.0.0.src/cmake/modules/AddLLD.cmake
-+++ llvm-9.0.0.src/lld-9.0.0.src/cmake/modules/AddLLD.cmake
+--- llvm-9.0.1.src.orig/lld-9.0.1.src/cmake/modules/AddLLD.cmake
++++ llvm-9.0.1.src/lld-9.0.1.src/cmake/modules/AddLLD.cmake
 @@ -17,13 +17,6 @@ macro(add_lld_library name)
        set_property(GLOBAL PROPERTY LLD_HAS_EXPORTS True)
      endif()
@@ -77,10 +77,10 @@ Index: llvm-9.0.0.src/lld-9.0.0.src/cmake/modules/AddLLD.cmake
      if (${ARG_SHARED} AND NOT CMAKE_CONFIGURATION_TYPES)
        add_llvm_install_targets(install-${name}
          DEPENDS ${name}
-Index: llvm-9.0.0.src/polly-9.0.0.src/cmake/polly_macros.cmake
+Index: llvm-9.0.1.src/polly-9.0.1.src/cmake/polly_macros.cmake
 ===================================================================
---- llvm-9.0.0.src.orig/polly-9.0.0.src/cmake/polly_macros.cmake
-+++ llvm-9.0.0.src/polly-9.0.0.src/cmake/polly_macros.cmake
+--- llvm-9.0.1.src.orig/polly-9.0.1.src/cmake/polly_macros.cmake
++++ llvm-9.0.1.src/polly-9.0.1.src/cmake/polly_macros.cmake
 @@ -42,12 +42,14 @@ macro(add_polly_library name)
      llvm_config(${name} ${LLVM_LINK_COMPONENTS})
    endif( LLVM_LINK_COMPONENTS )
@@ -101,10 +101,10 @@ Index: llvm-9.0.0.src/polly-9.0.0.src/cmake/polly_macros.cmake
  endmacro(add_polly_library)
  
  macro(add_polly_loadable_module name)
-Index: llvm-9.0.0.src/polly-9.0.0.src/lib/CMakeLists.txt
+Index: llvm-9.0.1.src/polly-9.0.1.src/lib/CMakeLists.txt
 ===================================================================
---- llvm-9.0.0.src.orig/polly-9.0.0.src/lib/CMakeLists.txt
-+++ llvm-9.0.0.src/polly-9.0.0.src/lib/CMakeLists.txt
+--- llvm-9.0.1.src.orig/polly-9.0.1.src/lib/CMakeLists.txt
++++ llvm-9.0.1.src/polly-9.0.1.src/lib/CMakeLists.txt
 @@ -74,7 +74,7 @@ set_target_properties(PollyCore PROPERTI
  # LLVM_POLLY_LINK_INTO_TOOLS=ON, its dependencies like PollyISL are linked as
  # well.

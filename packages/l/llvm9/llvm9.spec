@@ -16,13 +16,12 @@
 #
 
 
-%define _relver 9.0.0
+%define _relver 9.0.1
 %define _minor  9.0
 %define _sonum  9
 # Integer version used by update-alternatives
-%define _uaver  900
+%define _uaver  901
 %define _socxx  1
-%define _revsn  372316
 %ifarch x86_64 aarch64 %arm
 %bcond_without libcxx
 %else
@@ -67,32 +66,30 @@
 %endif
 
 Name:           llvm9
-Version:        9.0.0
+Version:        9.0.1
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
 Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # NOTE: please see README.packaging in the llvm package for details on how to update this package
-Source0:        https://releases.llvm.org/%{_relver}/llvm-%{_relver}.src.tar.xz
-Source1:        https://releases.llvm.org/%{_relver}/cfe-%{_relver}.src.tar.xz
-Source2:        https://releases.llvm.org/%{_relver}/clang-tools-extra-%{_relver}.src.tar.xz
-Source3:        https://releases.llvm.org/%{_relver}/compiler-rt-%{_relver}.src.tar.xz
-Source4:        https://releases.llvm.org/%{_relver}/libcxx-%{_relver}.src.tar.xz
-Source5:        https://releases.llvm.org/%{_relver}/libcxxabi-%{_relver}.src.tar.xz
-Source6:        https://releases.llvm.org/%{_relver}/openmp-%{_relver}.src.tar.xz
-Source7:        https://releases.llvm.org/%{_relver}/lld-%{_relver}.src.tar.xz
-Source8:        https://releases.llvm.org/%{_relver}/lldb-%{_relver}.src.tar.xz
-Source9:        https://releases.llvm.org/%{_relver}/polly-%{_relver}.src.tar.xz
+Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/llvm-%{version}.src.tar.xz
+Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/clang-%{version}.src.tar.xz
+Source2:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/clang-tools-extra-%{version}.src.tar.xz
+Source3:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/compiler-rt-%{version}.src.tar.xz
+Source4:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/libcxx-%{version}.src.tar.xz
+Source5:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/libcxxabi-%{version}.src.tar.xz
+Source6:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/openmp-%{version}.src.tar.xz
+Source7:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/lld-%{version}.src.tar.xz
+Source8:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/lldb-%{version}.src.tar.xz
+Source9:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/polly-%{version}.src.tar.xz
 # Docs are created manually, see below
 Source50:       llvm-docs-%{version}.src.tar.xz
-Source51:       cfe-docs-%{version}.src.tar.xz
+Source51:       clang-docs-%{version}.src.tar.xz
 Source100:      %{name}-rpmlintrc
 Source101:      baselibs.conf
 # PATCH-FIX-OPENSUSE lto-disable-cache.patch -- Disable ThinLTO cache
 Patch0:         lto-disable-cache.patch
-# PATCH-FIX-OPENSUSE set-revision.patch idoenmez@suse.de -- Allow us to set revision
-Patch1:         set-revision.patch
 # PATCH-FIX-OPENSUSE assume-opensuse.patch idoenmez@suse.de -- Always enable openSUSE/SUSE features
 Patch2:         assume-opensuse.patch
 # PATCH-FIX-OPENSUSE default-to-i586.patch -- Use i586 as default target for 32bit
@@ -108,8 +105,6 @@ Patch11:        lldb-cmake.patch
 Patch12:        link-lldb-shared.patch
 Patch13:        llvm-normally-versioned-libllvm.patch
 Patch14:        llvm-do-not-install-static-libraries.patch
-Patch15:        dont-install-example-analyzer-plugins.patch
-Patch16:        fix-module-test.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
@@ -119,9 +114,8 @@ Patch26:        clang-fix-powerpc-triplet.patch
 Patch27:        openmp-export-fini.patch
 # https://github.com/llvm/llvm-project/commit/343597789eba1e6482e130b0c1b0818b1432d311
 Patch28:        gwp-asan-lto.patch
-# Replace deprecated platform.linux_distribution by distro.linux_distribution.
+# Do not use the deprecated platform.linux_distribution.
 Patch29:        libcxx-tests-linux-distribution.patch
-Patch30:        llvm-add-missing-include.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -549,7 +543,7 @@ Provides:       llvm-polly-devel-provider = %{version}
 This package contains the development files for Polly.
 
 %prep
-%setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -a 51 -n llvm-%{_relver}.src
+%setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -a 51 -n llvm-%{version}.src
 
 %patch0 -p2
 %patch5 -p1
@@ -559,22 +553,18 @@ This package contains the development files for Polly.
 %patch21 -p1
 %patch22 -p1
 %patch24 -p1
-%patch30 -p2
 
-pushd compiler-rt-%{_relver}.src
+pushd compiler-rt-%{version}.src
 %patch28 -p2
 popd
 
-pushd cfe-%{_relver}.src
-%patch1 -p1
+pushd clang-%{version}.src
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch6 -p1
 %patch8 -p1
 %patch9 -p2
-%patch15 -p2
-%patch16 -p2
 %patch26 -p1
 
 # We hardcode openSUSE
@@ -583,17 +573,14 @@ rm unittests/Driver/DistroTest.cpp
 # We hardcode i586
 rm test/Driver/x86_features.c
 rm test/Driver/nacl-direct.c
-
-sed -i s,CLANG_REVISION,\"%{_revsn}\",g lib/Basic/Version.cpp
-sed -i s,LLVM_REVISION,\"%{_revsn}\",g lib/Basic/Version.cpp
 popd
 
-pushd clang-tools-extra-%{_relver}.src
+pushd clang-tools-extra-%{version}.src
 %patch10 -p2
 popd
 
 %if %{with lldb}
-pushd lldb-%{_relver}.src
+pushd lldb-%{version}.src
 %patch11 -p1
 %patch12 -p2
 # Set LLDB revision
@@ -602,7 +589,7 @@ popd
 %endif
 
 %if %{with libcxx}
-pushd libcxx-%{_relver}.src
+pushd libcxx-%{version}.src
 %patch29 -p2
 rm test/libcxx/thread/thread.threads/thread.thread.this/sleep_for.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname.pass.cpp
@@ -613,28 +600,28 @@ rm -rf test/std/thread/
 popd
 %endif
 
-pushd openmp-%{_relver}.src
+pushd openmp-%{version}.src
 %patch27 -p2
 popd
 
 # Move into right place
-mv cfe-%{_relver}.src tools/clang
-mv compiler-rt-%{_relver}.src projects/compiler-rt
-mv clang-tools-extra-%{_relver}.src tools/clang/tools/extra
-mv lld-%{_relver}.src tools/lld
-mv polly-%{_relver}.src tools/polly
+mv clang-%{version}.src tools/clang
+mv compiler-rt-%{version}.src projects/compiler-rt
+mv clang-tools-extra-%{version}.src tools/clang/tools/extra
+mv lld-%{version}.src tools/lld
+mv polly-%{version}.src tools/polly
 
 %if %{with lldb}
-mv lldb-%{_relver}.src tools/lldb
+mv lldb-%{version}.src tools/lldb
 %endif
 
 %if %{with openmp}
-mv openmp-%{_relver}.src  projects/openmp
+mv openmp-%{version}.src  projects/openmp
 %endif
 
 %if %{with libcxx}
-mv libcxx-%{_relver}.src projects/libcxx
-mv libcxxabi-%{_relver}.src projects/libcxxabi
+mv libcxx-%{version}.src projects/libcxx
+mv libcxxabi-%{version}.src projects/libcxxabi
 %endif
 
 %build
@@ -835,14 +822,16 @@ cd ..
 
 # Docs are prebuilt due to sphinx dependency
 #
-# pushd llvm-9.0.0.src/docs
+# tar xf llvm-9.0.1.src.tar.xz
+# tar xf clang-9.0.1.src.tar.xz
+# pushd llvm-9.0.1.src/docs
 # make -f Makefile.sphinx man html
 # popd
-# pushd cfe-9.0.0.src/docs
+# pushd clang-9.0.1.src/docs
 # make -f Makefile.sphinx man html
 # popd
-# tar cvJf llvm-docs-9.0.0.src.tar.xz llvm-9.0.0.src/docs/_build/{man,html}
-# tar cvJf cfe-docs-9.0.0.src.tar.xz cfe-9.0.0.src/docs/_build/{man,html}
+# tar cvJf llvm-docs-9.0.1.src.tar.xz llvm-9.0.1.src/docs/_build/{man,html}
+# tar cvJf clang-docs-9.0.1.src.tar.xz clang-9.0.1.src/docs/_build/{man,html}
 
 # Build man/html pages
 pushd docs
@@ -999,7 +988,6 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
 %_llvm_minorver %{_minor}
 %_llvm_sonum  %{_sonum}
 %_libcxx_sonum %{_socxx}
-%_llvm_revision  %{_revsn}
 
 # Build information
 %_llvm_with_libcxx %{with libcxx}
