@@ -1,5 +1,43 @@
 -------------------------------------------------------------------
-Thu Nov 28 17:19:22 UTC 2019 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+Tue Dec 24 18:39:11 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to release 2019.12.25
+  * [mediaset] Fix parse formats (#23508)
+  * [tv2dk:bornholm:play] Add support for play.tv2bornholm.dk (#23291)
+  * [slideslive] Add support for url and vimeo service names (#23414)
+  * [slideslive] Fix extraction (#23413)
+  * [twitch:clips] Fix extraction (#23375)
+  * [soundcloud] Add support for token protected embeds (#18954)
+  * [vk] Improve extraction
+  * [kontrtube] Remove extractor
+  * [videopremium] Remove extractor
+  * [musicplayon] Remove extractor (#9225)
+  * [ufctv] Add support for ufcfightpass.imgdge.com and
+    ufcfightpass.imggaming.com (#23343)
+  * [twitch] Extract m3u8 formats frame rate (#23333)
+  * [imggaming] Add support for playlists and extract subtitles
+  * [ufcarabia] Add support for UFC Arabia (#23312)
+  * [ufctv] Fix extraction
+  * [yahoo] Fix gyao brightcove player id (#23303)
+  * [vzaar] Override AES decryption key URL (#17521)
+  * [vzaar] Add support for AES HLS manifests (#17521, #23299)
+  * [nrl] Fix extraction
+  * [teachingchannel] Fix extraction
+  * [nintendo] Fix extraction and partially add support for Nintendo Direct
+    videos (#4592)
+  * [ooyala] Add better fallback values for domain and streams variables
+  * [youtube] Add support youtubekids.com (#23272)
+  * [tv2] Detect DRM protection
+  * [tv2] Add support for katsomo.fi and mtv.fi (#10543)
+  * [tv2] Fix tv2.no article extraction
+  * [msn] Improve extraction
+  * [abcotvs] Relax URL regular expression and improve metadata extraction
+    (#18014)
+  * [channel9] Reduce response size
+  * [adobetv] Improve extaction
+
+-------------------------------------------------------------------
+Thu Nov 28 17:15:56 UTC 2019 - Sebastien CHAVAUX <seb95.scou@gmail.com>
 
 - Update to release 2019.11.28
   * [utils] Add generic caesar cipher and rot47
