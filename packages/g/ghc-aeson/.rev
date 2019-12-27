@@ -278,4 +278,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>737186</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>582ca0bcd99c44ba41be351fc72034dc</srcmd5>
+    <version>1.4.6.0</version>
+    <time>1577451076</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759329</requestid>
+  </revision>
 </revisionlist>

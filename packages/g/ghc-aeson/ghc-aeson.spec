@@ -19,11 +19,10 @@
 %global pkg_name aeson
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.5.0
+Version:        1.4.6.0
 Release:        0
 Summary:        Fast JSON parsing and encoding
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -73,7 +72,6 @@ To get started, see the documentation for the 'Data.Aeson' module below.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
