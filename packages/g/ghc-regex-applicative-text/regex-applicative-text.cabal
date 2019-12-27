@@ -1,36 +1,43 @@
-cabal-version:  >= 1.10
-name:           regex-applicative-text
-version:        0.1.0.1
-x-revision:     3
+cabal-version:      >=1.10
+name:               regex-applicative-text
+version:            0.1.0.1
+x-revision:         4
+synopsis:           regex-applicative on text
+category:           Text
+description:        Wrapped regex-applicative primitives to work with Text
+homepage:           https://github.com/phadej/regex-applicative-text#readme
+bug-reports:        https://github.com/phadej/regex-applicative-text/issues
+author:             Oleg Grenrus <oleg.grenrus@iki.fi>
+maintainer:         Oleg Grenrus <oleg.grenrus@iki.fi>
+license:            BSD3
+license-file:       LICENSE
+tested-with:
+  GHC ==7.0.4
+   || ==7.2.2
+   || ==7.4.2
+   || ==7.6.3
+   || ==7.8.4
+   || ==7.10.3
+   || ==8.0.1
+   || ==8.2.2
+   || ==8.4.4
+   || ==8.6.5
+   || ==8.8.1
 
-synopsis:       regex-applicative on text
-category:       Text
-description:    Wrapped regex-applicative primitives to work with Text
-
-homepage:       https://github.com/phadej/regex-applicative-text#readme
-bug-reports:    https://github.com/phadej/regex-applicative-text/issues
-author:         Oleg Grenrus <oleg.grenrus@iki.fi>
-maintainer:     Oleg Grenrus <oleg.grenrus@iki.fi>
-license:        BSD3
-license-file:   LICENSE
-tested-with:    GHC==7.0.4, GHC==7.2.2, GHC==7.4.2, GHC==7.6.3, GHC==7.8.4, GHC==7.10.3, GHC==8.0.1, GHC==8.2.2, GHC==8.4.3, GHC==8.6.1
-build-type:     Simple
-
-extra-source-files:
-    README.md
+build-type:         Simple
+extra-source-files: README.md
 
 source-repository head
-  type: git
+  type:     git
   location: https://github.com/phadej/regex-applicative-text
 
 library
-  hs-source-dirs:
-      src
-  ghc-options: -Wall
+  hs-source-dirs:   src
+  ghc-options:      -Wall
   build-depends:
-      base >= 4.3 && <4.13
-    , regex-applicative >=0.3 && <0.4
+      base               >=4.3 && <4.14
+    , regex-applicative  >=0.3 && <0.4
     , text
-  exposed-modules:
-      Text.Regex.Applicative.Text
+
+  exposed-modules:  Text.Regex.Applicative.Text
   default-language: Haskell2010
