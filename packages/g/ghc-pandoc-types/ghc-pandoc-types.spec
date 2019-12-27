@@ -19,11 +19,10 @@
 %global pkg_name pandoc-types
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.17.6.1
+Version:        1.20
 Release:        0
 Summary:        Types for representing a structured document
 License:        GPL-2.0-only
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -34,6 +33,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-syb-devel
+BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
@@ -64,7 +64,6 @@ Pandoc documents.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
