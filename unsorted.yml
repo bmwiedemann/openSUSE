@@ -1091,6 +1091,7 @@ unsorted:
   - bats 
   - bazel 
   - bazel-apple-support-source 
+  - bazel-compilation-database-source 
   - bazel-gazelle 
   - bazel-gazelle-source 
   - bazel-rules-apple-source 
@@ -1301,6 +1302,8 @@ unsorted:
   - bowtie: [x86_64] 
   - bowtie2: [x86_64] 
   - bpftool 
+  - bpftrace: [x86_64] 
+  - bpftrace-tools: [x86_64] 
   - bpm-tools 
   - branding-upstream 
   - brasero-devel 
@@ -3695,6 +3698,8 @@ unsorted:
   - ghc-HUnit 
   - ghc-HUnit-devel 
   - ghc-HsYAML 
+  - ghc-HsYAML-aeson 
+  - ghc-HsYAML-aeson-devel 
   - ghc-HsYAML-devel 
   - ghc-JuicyPixels 
   - ghc-JuicyPixels-devel 
@@ -3848,6 +3853,8 @@ unsorted:
   - ghc-distributive-devel 
   - ghc-dlist 
   - ghc-dlist-devel 
+  - ghc-doclayout 
+  - ghc-doclayout-devel 
   - ghc-doctemplates 
   - ghc-doctemplates-devel 
   - ghc-easy-file 
@@ -3860,10 +3867,14 @@ unsorted:
   - ghc-edit-distance-devel 
   - ghc-either 
   - ghc-either-devel 
+  - ghc-emojis 
+  - ghc-emojis-devel 
   - ghc-enclosed-exceptions 
   - ghc-enclosed-exceptions-devel 
   - ghc-erf 
   - ghc-erf-devel 
+  - ghc-errors 
+  - ghc-errors-devel 
   - ghc-exceptions 
   - ghc-exceptions-devel 
   - ghc-extensible-exceptions 
@@ -3995,6 +4006,8 @@ unsorted:
   - ghc-lifted-base-devel 
   - ghc-logict 
   - ghc-logict-devel 
+  - ghc-lukko 
+  - ghc-lukko-devel 
   - ghc-managed 
   - ghc-managed-devel 
   - ghc-math-functions 
@@ -4190,6 +4203,8 @@ unsorted:
   - ghc-texmath 
   - ghc-texmath-devel 
   - ghc-text 
+  - ghc-text-conversions 
+  - ghc-text-conversions-devel 
   - ghc-text-devel 
   - ghc-text-metrics 
   - ghc-text-metrics-devel 
@@ -8191,8 +8206,6 @@ unsorted:
   - libcaribou0 
   - libcblas3 
   - libcblas3-32bit: [x86_64] 
-  - libcbor-devel 
-  - libcbor0 
   - libccrtp3 
   - libcdata-devel 
   - libcdata1 
@@ -8826,9 +8839,6 @@ unsorted:
   - libfgetdata6 
   - libfguid-devel 
   - libfguid1 
-  - libfido2-1 
-  - libfido2-devel 
-  - libfido2-utils 
   - libfife0_4_2 
   - libfifechan0_1_5 
   - libfifechan_opengl0_1_5 
@@ -12397,10 +12407,11 @@ unsorted:
   - libyami1 
   - libyaml-devel 
   - libyang-cpp-devel 
-  - libyang-cpp0_16 
+  - libyang-cpp1 
   - libyang-devel 
   - libyang-doc 
-  - libyang0_16 
+  - libyang-extentions 
+  - libyang1 
   - libyara-devel 
   - libyara3 
   - libyate6 
@@ -22180,6 +22191,7 @@ unsorted:
   - python3-sh 
   - python3-shaptools 
   - python3-shellingham 
+  - python3-sherpa: [x86_64] 
   - python3-shijian 
   - python3-shinyutils 
   - python3-shodan 
@@ -24115,6 +24127,7 @@ unsorted:
   - shutter 
   - shutter-lang 
   - siege 
+  - sierra-gtk-theme 
   - siga 
   - sigil 
   - signify 
@@ -24647,6 +24660,9 @@ unsorted:
   - sysinfo 
   - syslinux-debuginfo-x86_64: [x86_64] 
   - syslinux-x86_64: [x86_64] 
+  - syslinux6 
+  - syslinux6-debuginfo-x86_64: [x86_64] 
+  - syslinux6-x86_64: [x86_64] 
   - syslog-ng 
   - syslog-ng-curl 
   - syslog-ng-devel 
