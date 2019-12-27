@@ -94,4 +94,15 @@
     <comment></comment>
     <requestid>749182</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b9ef3c3428793a2931532944f943c091</srcmd5>
+    <version>6.2.0</version>
+    <time>1577450949</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude failing tests due to gh#SethMMorton/natsort#107
+- Add too_slow.patch which switches off suppressing
+  hypothesis.HealthCheck.too_slow health check
+  (gh#SethMMorton/natsort#108).</comment>
+    <requestid>759229</requestid>
+  </revision>
 </revisionlist>

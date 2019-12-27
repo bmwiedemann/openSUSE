@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 22 23:52:46 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Exclude failing tests due to gh#SethMMorton/natsort#107
+- Add too_slow.patch which switches off suppressing
+  hypothesis.HealthCheck.too_slow health check
+  (gh#SethMMorton/natsort#108).
+
+-------------------------------------------------------------------
 Sat Nov 16 17:24:43 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:
