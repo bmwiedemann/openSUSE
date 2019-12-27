@@ -1,6 +1,7 @@
 #
 # spec file for package libansilove
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +20,11 @@
 %global sover   1
 %global libname %{name}%{sover}
 Name:           libansilove
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Library for converting ANSI, ASCII, and other formats to PNG
-Group:          Productivity/Graphics/Other
 License:        BSD-2-Clause
+Group:          Productivity/Graphics/Other
 URL:            https://www.ansilove.org
 #Git-Clone:     https://github.com/ansilove/libansilove.git
 Source:         https://github.com/ansilove/libansilove/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -48,6 +49,7 @@ The following formats are supported:
 
 %package -n %{libname}
 Summary:        Library for converting ANSI, ASCII, and other formats to PNG
+Group:          Productivity/Graphics/Other
 
 %description -n %{libname}
 This library contains shared code regarding the conversion of ANSI and
@@ -55,6 +57,7 @@ artscene related file formats into PNG images.
 
 %package devel
 Summary:        Library for converting ANSI, ASCII, and other formats to PNG
+Group:          Productivity/Graphics/Other
 Requires:       %{libname} = %{version}
 
 %description devel

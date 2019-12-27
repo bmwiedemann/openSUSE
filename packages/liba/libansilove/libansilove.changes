@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 19 19:17:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.7
+  * Rename the alSelectFont() function to select_font()
+  * Only export symbols which are part of the public API
+
+-------------------------------------------------------------------
 Mon Nov 18 19:13:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.6
