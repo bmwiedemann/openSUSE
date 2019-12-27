@@ -19,14 +19,12 @@
 %global pkg_name http-download
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.0
+Version:        0.1.0.1
 Release:        0
 Summary:        Verified downloads with retries
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
@@ -53,11 +51,10 @@ BuildRequires:  ghc-hspec-discover-devel
 %endif
 
 %description
-Verified downloads with retries.
+Higher level HTTP download APIs include verification of content and retries.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -68,7 +65,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 echo > Setup.hs 'import Distribution.Simple'
 echo >>Setup.hs 'main = defaultMain'
 
