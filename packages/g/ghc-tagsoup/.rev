@@ -150,4 +150,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>701774</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>83daeb319f691b6cf1131361e52bd31b</srcmd5>
+    <version>0.14.8</version>
+    <time>1577451483</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759523</requestid>
+  </revision>
 </revisionlist>
