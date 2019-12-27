@@ -19,11 +19,10 @@
 %global pkg_name filelock
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.3
+Version:        0.1.1.4
 Release:        0
 Summary:        Portable interface to file locking (flock / LockFileEx)
 License:        CC0-1.0
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -40,7 +39,6 @@ functionalities.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
