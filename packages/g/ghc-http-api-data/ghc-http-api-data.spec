@@ -19,11 +19,10 @@
 %global pkg_name http-api-data
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.1
+Version:        0.4.1.1
 Release:        0
 Summary:        Converting to/from HTTP API data like URL pieces, headers and query parameters
 License:        BSD-2-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -31,7 +30,6 @@ BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-iso8601-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-cookie-devel
 BuildRequires:  ghc-hashable-devel
@@ -45,9 +43,6 @@ BuildRequires:  ghc-uuid-types-devel
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-nats-devel
 BuildRequires:  ghc-quickcheck-instances-devel
@@ -61,7 +56,6 @@ Please see README.md.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}

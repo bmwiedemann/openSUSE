@@ -116,4 +116,12 @@
     <comment>Update http-api-data to version 0.4.1.</comment>
     <requestid>709187</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>30f04367998fed033f9cdfbf512aa23c</srcmd5>
+    <version>0.4.1.1</version>
+    <time>1577451251</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759420</requestid>
+  </revision>
 </revisionlist>
