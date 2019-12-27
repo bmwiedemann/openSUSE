@@ -1,7 +1,7 @@
 #
 # spec file for package bolt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,11 @@ URL:            https://gitlab.freedesktop.org/bolt/bolt
 Source0:        https://gitlab.freedesktop.org/bolt/bolt/-/archive/%{version}/bolt-%{version}.tar.bz2
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel >= 2.27
-BuildRequires:  libudev-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  polkit-devel
-BuildRequires:  udev
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(udev)
 
 %description
 Userspace system daemon to enable security levels for Thunderbolt 3

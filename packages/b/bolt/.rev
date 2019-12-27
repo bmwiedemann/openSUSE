@@ -62,4 +62,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>711856</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>12ae9c00418eef0e49dc46adb3b0c958</srcmd5>
+    <version>0.8</version>
+    <time>1577450933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759291</requestid>
+  </revision>
 </revisionlist>
