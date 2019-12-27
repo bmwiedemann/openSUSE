@@ -1,0 +1,118 @@
+From 215814e03ee59e8aa1c69084732d7036c06b564f Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Wed, 6 Nov 2019 13:29:24 +0100
+Subject: [PATCH] drbd: Update resync target's dagtag after a reconciliation
+ resync
+
+Updating the resync target's dagtag towards the lost node after a
+reconciliation resync is the right way to avoid that the reconciliation
+resync is done multiple times.
+---
+ drbd/drbd_int.h      |  5 +++++
+ drbd/drbd_main.c     |  1 +
+ drbd/drbd_receiver.c |  7 +++++++
+ drbd/drbd_sender.c   | 21 ++++++++++++++++++++-
+ 4 files changed, 33 insertions(+), 1 deletion(-)
+
+diff --git a/drbd/drbd_int.h b/drbd/drbd_int.h
+index 0b13ecd6..7db21238 100644
+--- a/drbd/drbd_int.h
++++ b/drbd/drbd_int.h
+@@ -1058,6 +1058,11 @@ struct drbd_connection {
+ 		u64 current_dagtag_sector;
+ 	} send;
+ 
++	struct {
++		u64 dagtag_sector;
++		int lost_node_id;
++	} after_reconciliation;
++
+ 	unsigned int peer_node_id;
+ 	struct list_head twopc_parent_list;
+ 	struct rcu_head rcu;
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index 2d52681e..a7294639 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -3488,6 +3488,7 @@ struct drbd_connection *drbd_create_connection(struct drbd_resource *resource,
+ 	kref_get(&resource->kref);
+ 	kref_debug_get(&resource->kref_debug, 3);
+ 	connection->resource = resource;
++	connection->after_reconciliation.lost_node_id = -1;
+ 
+ 	INIT_LIST_HEAD(&connection->transport.paths);
+ 	connection->transport.log_prefix = resource->name;
+diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+index 82abd9c4..f69fc7b8 100644
+--- a/drbd/drbd_receiver.c
++++ b/drbd/drbd_receiver.c
+@@ -7486,6 +7486,11 @@ static int receive_peer_dagtag(struct drbd_connection *connection, struct packet
+ 	if (new_repl_state != L_ESTABLISHED) {
+ 		unsigned long irq_flags;
+ 
++		if (new_repl_state == L_WF_BITMAP_T) {
++			connection->after_reconciliation.dagtag_sector = be64_to_cpu(p->dagtag);
++			connection->after_reconciliation.lost_node_id = be32_to_cpu(p->node_id);
++		}
++
+ 		drbd_info(connection, "Reconciliation resync because \'%s\' disappeared. (o=%d)\n",
+ 			  lost_peer->transport.net_conf->name, (int)dagtag_offset);
+ 
+@@ -7893,6 +7898,8 @@ void conn_disconnect(struct drbd_connection *connection)
+ 
+ 	drain_resync_activity(connection);
+ 
++	connection->after_reconciliation.lost_node_id = -1;
++
+ 	/* Wait for current activity to cease.  This includes waiting for
+ 	 * peer_request queued to the submitter workqueue. */
+ 	conn_wait_ee_empty(connection, &connection->active_ee);
+diff --git a/drbd/drbd_sender.c b/drbd/drbd_sender.c
+index f71ce5f6..ea6fa372 100644
+--- a/drbd/drbd_sender.c
++++ b/drbd/drbd_sender.c
+@@ -1035,6 +1035,23 @@ static void init_resync_stable_bits(struct drbd_peer_device *first_target_pd)
+ 	clear_bit(STABLE_RESYNC, &device->flags);
+ }
+ 
++static void after_reconciliation_resync(struct drbd_connection *connection)
++{
++	struct drbd_connection *lost_peer =
++		drbd_get_connection_by_node_id(connection->resource,
++					       connection->after_reconciliation.lost_node_id);
++
++	if (lost_peer) {
++		if (lost_peer->cstate[NOW] < C_CONNECTED)
++			lost_peer->last_dagtag_sector =
++				connection->after_reconciliation.dagtag_sector;
++
++		kref_put(&lost_peer->kref, drbd_destroy_connection);
++	}
++
++	connection->after_reconciliation.lost_node_id = -1;
++}
++
+ int drbd_resync_finished(struct drbd_peer_device *peer_device,
+ 			 enum drbd_disk_state new_peer_disk_state)
+ {
+@@ -1203,7 +1220,7 @@ int drbd_resync_finished(struct drbd_peer_device *peer_device,
+ 		} else if (repl_state[NOW] == L_SYNC_SOURCE || repl_state[NOW] == L_PAUSED_SYNC_S) {
+ 			if (new_peer_disk_state != D_MASK)
+ 				__change_peer_disk_state(peer_device, new_peer_disk_state);
+-			if (peer_device->connection->agreed_pro_version < 110) {
++			if (connection->agreed_pro_version < 110) {
+ 				drbd_uuid_set_bitmap(peer_device, 0UL);
+ 				drbd_print_uuids(peer_device, "updated UUIDs");
+ 			}
+@@ -1226,6 +1243,8 @@ out_unlock:
+ 
+ 	resync_again(device, source_m, target_m);
+ 	spin_unlock_irq(&device->resource->req_lock);
++	if (connection->after_reconciliation.lost_node_id != -1)
++		after_reconciliation_resync(connection);
+ 
+ out:
+ 	/* reset start sector, if we reached end of device */
+-- 
+2.16.4
+

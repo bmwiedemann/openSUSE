@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 26 07:55:03 UTC 2019 - nick wang <nwang@suse.com>
+
+- bsc#1159333, back port patch for duplicate resync.
+  add patch drbd-update-resync-target-s-dagtag.patch
+
+-------------------------------------------------------------------
 Mon Dec 16 06:29:42 UTC 2019 - nick wang <nwang@suse.com>
 
 - bsc#1158446, fix metadata limit due to 64k page size of ppc64le.

@@ -1,7 +1,7 @@
 #
 # spec file for package drbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,8 @@ Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
 Patch2:         rely-on-sb-handlers.patch
 Patch3:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
-Patch4:         suse-coccinelle.patch
+Patch4:         drbd-update-resync-target-s-dagtag.patch
+Patch5:         suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle
 BuildRequires:  kernel-source
@@ -73,6 +74,7 @@ installed kernel.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 mkdir source
 cp -a drbd/. source/. || :
