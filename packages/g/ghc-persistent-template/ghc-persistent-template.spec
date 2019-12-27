@@ -19,11 +19,10 @@
 %global pkg_name persistent-template
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Type-safe, non-relational, multi-backend persistence
 License:        MIT
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -51,7 +50,6 @@ please see: <http://www.stackage.org/package/persistent-template>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}

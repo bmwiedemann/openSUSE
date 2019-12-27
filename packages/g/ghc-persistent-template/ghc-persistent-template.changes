@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  8 16:14:27 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Tue Oct 29 07:32:27 UTC 2019 - psimons@suse.com
+
+- Update persistent-template to version 2.7.3.
+  ## Unreleased changes
+
+  ## 2.7.3
+
+  * Update module documentation for `Database.Persist.TH` to better describe the purpose of the module [#968](https://github.com/yesodweb/persistent/pull/968)
+  * Support template-haskell-2.15 [#959](https://github.com/yesodweb/persistent/pull/959)
+
+-------------------------------------------------------------------
 Thu Jul 18 08:17:38 UTC 2019 - psimons@suse.com
 
 - Update persistent-template to version 2.7.2.
