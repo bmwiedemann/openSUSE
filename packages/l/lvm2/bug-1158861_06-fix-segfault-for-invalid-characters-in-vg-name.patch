@@ -15,10 +15,11 @@ _vg_make_handle function.
  lib/metadata/metadata.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff -Nupr a/lib/metadata/metadata.c b/lib/metadata/metadata.c
---- a/lib/metadata/metadata.c	2019-12-09 15:26:11.751210108 +0800
-+++ b/lib/metadata/metadata.c	2019-12-09 15:26:58.103346514 +0800
-@@ -4829,7 +4829,8 @@ struct volume_group *vg_read(struct cmd_
+diff --git a/lib/metadata/metadata.c b/lib/metadata/metadata.c
+index 2c61bdeca2..6d21ff99cc 100644
+--- a/lib/metadata/metadata.c
++++ b/lib/metadata/metadata.c
+@@ -4900,7 +4900,8 @@ struct volume_group *vg_read(struct cmd_context *cmd, const char *vg_name, const
  
  	if (!validate_name(vg_name)) {
  		log_error("Volume group name \"%s\" has invalid characters.", vg_name);
@@ -27,4 +28,7 @@ diff -Nupr a/lib/metadata/metadata.c b/lib/metadata/metadata.c
 +		goto_bad;
  	}
  
- 	if (!lock_vol(cmd, vg_name, writing ? LCK_VG_WRITE : LCK_VG_READ, NULL)) {
+ 	/*
+-- 
+2.16.4
+

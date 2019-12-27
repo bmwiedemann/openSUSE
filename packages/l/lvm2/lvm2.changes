@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 23 07:22:00 UTC 2019 - heming.zhao@suse.com
+
+- LVM Metadata Error: Error writing device at 4096 length 512 (bsc#1150021)
+ + bug-1150021_01-scanning-open-devs-rw-when-rescanning-for-write.patch
+ + bug-1150021_02-bcache-add-bcache_abort.patch
+ + bug-1150021_03-label-Use-bcache_abort_fd-to-ensure-blocks-are-no-lo.patch
+ + bug-1150021_04-bcache-add-unit-test.patch
+ + bug-1150021_05-bcache-bcache_invalidate_fd-only-remove-prefixes-on.patch
+ + bug-1150021_06-fix-dev_unset_last_byte-after-write-error.patch
+- Update patch, according to bug-1150021_01-scanning-xxx.patch
+ + bug-1158861_06-fix-segfault-for-invalid-characters-in-vg-name.patch
+
+-------------------------------------------------------------------
 Tue Dec 10 08:26:00 UTC 2019 - heming.zhao@suse.com
 
 - backport patches for lvm2 to avoid software abnormal work (bsc#1158861)
