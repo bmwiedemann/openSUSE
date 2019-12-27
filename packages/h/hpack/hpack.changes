@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  8 16:15:19 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Oct 12 02:01:57 UTC 2019 - psimons@suse.com
+
+- Update hpack to version 0.33.0.
+  ## Changes in 0.33.0
+    - Support GHC 8.8.1: `fail` is no longer a part of `Monad`. Instead, it lives
+      in the `MonadFail` class. Adapting our code to this change meant changing
+      the types of exporting functions, unfortunately, hence the major version
+      bump.
+
+-------------------------------------------------------------------
 Fri Aug 30 02:05:52 UTC 2019 - psimons@suse.com
 
 - Update hpack to version 0.32.0.
