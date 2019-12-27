@@ -29,4 +29,12 @@
     <comment>trivial cosmetic change in comments</comment>
     <requestid>643426</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2bb6d757dbdb6232d41b8e93d72d93fc</srcmd5>
+    <version>0.14.0.0</version>
+    <time>1577451328</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759455</requestid>
+  </revision>
 </revisionlist>
