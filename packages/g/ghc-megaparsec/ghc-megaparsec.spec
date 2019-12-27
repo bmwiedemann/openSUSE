@@ -18,11 +18,10 @@
 
 %global pkg_name megaparsec
 Name:           ghc-%{pkg_name}
-Version:        7.0.5
+Version:        8.0.0
 Release:        0
 Summary:        Monadic parser combinators
 License:        BSD-2-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -39,12 +38,11 @@ BuildRequires:  ghc-transformers-devel
 
 %description
 This is an industrial-strength monadic parser combinator library.
-Megaparsec is a feature-rich package that strikes a nice balance between speed,
-flexibility, and quality of parse errors.
+Megaparsec is a feature-rich package that tries to find a nice balance between
+speed, flexibility, and quality of parse errors.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -72,6 +70,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE.md
 
 %files devel -f %{name}-devel.files
-%doc AUTHORS.md CHANGELOG.md README.md
+%doc CHANGELOG.md README.md
 
 %changelog
