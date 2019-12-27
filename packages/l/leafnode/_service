@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionprefix">2.0.0+git</param>
+    <param name="url">https://gitlab.com/leafnode-2/leafnode-2.git/</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git*</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">leafnode</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

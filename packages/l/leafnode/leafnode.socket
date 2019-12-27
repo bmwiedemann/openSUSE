@@ -1,9 +1,0 @@
-[Unit]
-Description=Leafnode NNTP server
-
-[Socket]
-ListenStream=119
-Accept=true
-
-[Install]
-WantedBy=sockets.target

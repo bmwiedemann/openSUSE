@@ -76,4 +76,41 @@
     <comment></comment>
     <requestid>746027</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85c44c9312a43c42cb0737145485333c</srcmd5>
+    <version>2.0.0+git.1527241185.66da754</version>
+    <time>1577450632</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace leafnode-1 with leafnode-2 (original leafnode-2
+  changelog is interspersed among the records of this changelog).
+  Details of the change are available in the file
+  CHANGES-FROM-LEAFNODE-1 packaged as a documentation file within
+  the package.
+- Add README-SUSE.rst for more information on the status of the
+  package in the openSUSE world.
+- Add systemd-timers.patch to switch from cron to systemd-timers
+  (bsc#1115443)
+- Remove leafnode-1.11.6-spooldir-permissions.diff patch which is
+  not relevant for the rebased leafnode.
+
+- Add Conflicts: inn, because of conflicting moderators(5)
+  manpage and really, these shouldn't be on one system together.
+
+- Remove support for cron and xinetd
+- Silence rpmlint
+
+- Clean up SPEC and setup _service, remove unnecessary RHEL/Fedora
+  conditionals.
+
+- Update to version 2.0.0+git.1527241185.66da754:
+  * Convert manpages to UTF8 and mark them a such.
+  * Fixes autotools on systemd-based systems.
+  * #define _DEFAULT_SOURCE for newer glibc features.h
+  * Avoid crash on missing/empty authentication file.
+  * Gitorious -&gt; GitLab.
+  * Replace defunct URLs by those that work.
+  * Replace COPYING.LGPL with a fresh copy.
+  * Apparently leafnode-2 as of now builds with autoconf 2.63</comment>
+    <requestid>753993</requestid>
+  </revision>
 </revisionlist>

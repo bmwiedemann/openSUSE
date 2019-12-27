@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec  4 14:22:18 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add Conflicts: inn, because of conflicting moderators(5)
+  manpage and really, these shouldn't be on one system together.
+
+-------------------------------------------------------------------
+Mon Nov 18 16:40:43 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace leafnode-1 with leafnode-2 (original leafnode-2
+  changelog is interspersed among the records of this changelog).
+  Details of the change are available in the file
+  CHANGES-FROM-LEAFNODE-1 packaged as a documentation file within
+  the package.
+- Add README-SUSE.rst for more information on the status of the
+  package in the openSUSE world.
+- Add systemd-timers.patch to switch from cron to systemd-timers
+  (bsc#1115443)
+- Remove leafnode-1.11.6-spooldir-permissions.diff patch which is
+  not relevant for the rebased leafnode.
+
+-------------------------------------------------------------------
+Mon Nov 11 16:31:30 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Remove support for cron and xinetd
+- Silence rpmlint
+
+-------------------------------------------------------------------
 Wed Nov  6 13:24:51 UTC 2019 - matthias.gerstner@suse.com
 
 - add patch fix_overflow.diff: fixes potential stack buffer overflow if
@@ -12,11 +39,43 @@ Tue Aug 20 11:44:25 CEST 2019 - kukuk@suse.de
 - Use %license instead of %doc [bsc#1082318]
 
 -------------------------------------------------------------------
+Sun May 27 21:56:45 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC and setup _service, remove unnecessary RHEL/Fedora
+  conditionals.
+
+-------------------------------------------------------------------
+Sun May 27 21:17:34 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 2.0.0+git.1527241185.66da754:
+  * Convert manpages to UTF8 and mark them a such.
+  * Fixes autotools on systemd-based systems.
+  * #define _DEFAULT_SOURCE for newer glibc features.h
+  * Avoid crash on missing/empty authentication file.
+  * Gitorious -> GitLab.
+  * Replace defunct URLs by those that work.
+  * Replace COPYING.LGPL with a fresh copy.
+  * Apparently leafnode-2 as of now builds with autoconf 2.63
+  * Convert to UTF-8. Suggested by Matěj Cepl.
+  * Add Lloyd Zusman and Robert Grimm to authors file.
+
+-------------------------------------------------------------------
+Fri Mar 16 00:00:00 UTC 2018 - mcepl@redhat.com
+
+- Port to OpenSUSE (as well)
+
+-------------------------------------------------------------------
 Fri Jun 16 11:36:40 UTC 2017 - aliouliaki@suse.com
 
 - Removed xinetd service
 - Added leafnode@.service and leafnode.socket 
 - Clean up of leafnode.spec file
+
+-------------------------------------------------------------------
+Tue Nov 22 00:00:00 UTC 2016 - mcepl@redhat.com
+
+- systemd unit files are not executable anymore
+- rebase on the top of the upstream Gitlab checkout.
 
 -------------------------------------------------------------------
 Tue Aug 25 07:25:35 UTC 2015 - astieger@suse.com
@@ -35,6 +94,38 @@ Tue Aug 25 07:25:35 UTC 2015 - astieger@suse.com
 Tue Mar 24 20:28:23 UTC 2015 - astieger@suse.com
 
 - format spec file, remove gpg-offline fixing SLE 12 build
+
+-------------------------------------------------------------------
+Thu Jan  8 00:00:00 UTC 2015 - mcepl@redhat.com
+
+- Make cronjobs into proper scripts and add proper configuration
+  file.
+
+-------------------------------------------------------------------
+Mon Dec 29 00:00:00 UTC 2014 - mcepl@redhat.com
+
+- Add patch converting fetchnews(8) to UTF-8.
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 UTC 2014 - mcepl@redhat.com
+
+- Make it buildable on RHEL-6 (apparently just decreasing required
+  autoconf is enough).
+
+-------------------------------------------------------------------
+Fri Dec 26 00:00:00 UTC 2014 - mcepl@redhat.com
+
+- Set run_as_user parameter in /etc/leafnode/config explicitly.
+
+-------------------------------------------------------------------
+Mon Dec 15 00:00:00 UTC 2014 - mcepl@redhat.com
+
+- [leafnode 2] Update to the latest upstream
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2014 - mcepl@redhat.com
+
+- [leafnode 2] Update to the latest upstream
 
 -------------------------------------------------------------------
 Tue Jun 11 22:12:43 UTC 2013 - andreas.stieger@gmx.de
@@ -202,6 +293,25 @@ Tue Jun  5 23:56:14 CEST 2007 - seife@suse.de
 - add some tricks to get the package past the rpmlint censors
 
 -------------------------------------------------------------------
+Wed May 23 00:00:00 UTC 2007 - mcepl@redhat.com
+
+- [leafnode 2] Added support for croning of texpire daily
+
+-------------------------------------------------------------------
+Thu Apr 26 00:00:00 UTC 2007 - mcepl@redhat.com
+
+- [leafnode 2] Add pcre-devel to Build-Requires; thanks
+  build.opensuse.org for catching this.
+- Add /etc/leafnode/local.groups
+
+
+-------------------------------------------------------------------
+Fri Mar 23 00:00:00 UTC 2007 - mcepl@redhat.com
+
+- [leafnode 2] new upstream release
+- enabled pam
+
+-------------------------------------------------------------------
 Wed Mar 21 12:28:52 CET 2007 - seife@suse.de
 
 - Update to version 1.11.6:
@@ -240,6 +350,11 @@ Wed Jan 25 21:37:20 CET 2006 - mls@suse.de
 Fri Jan 20 23:11:21 CET 2006 - schwab@suse.de
 
 - Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Jan  2 00:00:00 UTC 2006 - mcepl@redhat.com
+
+- [leafnode 2] experimental build
 
 -------------------------------------------------------------------
 Fri Oct 28 02:15:41 CEST 2005 - ro@suse.de

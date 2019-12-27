@@ -1,0 +1,50 @@
+--- /dev/null
++++ b/systemd/leafnode-daily.service
+@@ -0,0 +1,10 @@
++[Unit]
++Description=Daily maintenance of news spool
++After=network.target
++
++[Service]
++User=news
++ExecStart=/usr/sbin/texpire
++
++[Install]
++WantedBy=multi-user.target
+--- /dev/null
++++ b/systemd/leafnode-daily.timer
+@@ -0,0 +1,9 @@
++[Unit]
++Description=Daily maintenance of news spool
++
++[Timer]
++OnCalendar=*-*-* 04:26:00
++Persistent=false
++
++[Install]
++WantedBy=timers.target
+--- /dev/null
++++ b/systemd/leafnode-hourly.service
+@@ -0,0 +1,10 @@
++[Unit]
++Description=fetching news messages spool hourly
++After=network.target
++
++[Service]
++User=news
++ExecStart=/usr/sbin/fetchnews
++
++[Install]
++WantedBy=multi-user.target
+--- /dev/null
++++ b/systemd/leafnode-hourly.timer
+@@ -0,0 +1,9 @@
++[Unit]
++Description=fetching news messages spool hourly
++
++[Timer]
++OnBootSec=15min
++OnUnitActiveSec=1h
++
++[Install]
++WantedBy=timers.target

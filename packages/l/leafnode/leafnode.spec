@@ -1,7 +1,7 @@
 #
 # spec file for package leafnode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,123 +16,160 @@
 #
 
 
-Name:           leafnode
-Version:        1.11.11
+%define spooldir    %{_localstatedir}/spool/news
+%define confdir     %{_sysconfdir}/leafnode
+%define runas_user  news
+%define runas_group news
+%define upname leafnode
+Name:           %{upname}
+Version:        2.0.0+git.1527241185.66da754
 Release:        0
-Summary:        A Leaf Site NNTP Server
-License:        LGPL-2.1-or-later AND SUSE-Public-Domain AND MIT
-Group:          Productivity/Networking/News/Servers
-Url:            http://sourceforge.net/projects/leafnode/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
-Source1:        README.SUSE
-Source2:        leafnode.cron.daily
-Source3:        filters
-Source4:        leafnode@.service
-Source5:        leafnode-fetch.cron
-Source6:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz.asc
-# https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/pgpkeys-developers.html#pgpkey-mandree
-Source7:        leafnode.keyring
-Source8:        leafnode.socket
-Patch0:         leafnode-1.11.6-spooldir-permissions.diff
-Patch1:         fix_overflow.diff
-BuildRequires:  cron
-BuildRequires:  pcre-devel >= 2.06
-BuildRequires:  systemd-rpm-macros
-Requires:       cron
-Conflicts:      cnews
+Summary:        Leaf site NNTP server
+License:        MIT
+Summary(de):    Ein offline-Newsserver
+URL:            http://www.dt.e-technik.uni-dortmund.de/~ma/leafnode/beta/
+# Use checkout from the git repo at
+# https://gitlab.com/leafnode-2/leafnode-2/
+Source0:        %{name}-%{version}.tar.xz
+Source1:        README-SUSE.rst
+# PATCH-FEATURE-UPSTREAM name-of-file.patch bsc#1115443 mcepl@suse.com
+# Replace /etc/cron.daily/leafnode with systemd timer
+Patch0:         systemd-timers.patch
+BuildRequires:  autoconf >= 2.68
+BuildRequires:  automake
+BuildRequires:  gettext
+BuildRequires:  intltool
+BuildRequires:  libtool
+BuildRequires:  pam-devel
+BuildRequires:  pcre-devel
+BuildRequires:  perl
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(systemd)
+Requires(post): coreutils
+Requires(post): systemd
+Requires(postun): systemd
+Requires(preun): systemd
+Obsoletes:      leafnode < %{version}
+Provides:       leafnode = %{version}-%{release}
+# Because of moderators(5) manpage, and really these two
+# shouldn't be on one system at once.
 Conflicts:      inn
-Provides:       nntp_daemon
-%{?systemd_requires}
-%if 0%{?suse_version} >= 1330
-Requires(pre):  group(news)
-%endif
+BuildRequires:  shadow
+Requires(pre):  permissions
+Requires(pre):  shadow
 
 %description
 Leafnode is a small NNTP server for leaf sites without permanent
-connections to the Internet. It supports a subset of NNTP and is able
-to automatically fetch the newsgroups the user reads regularly from the
-ISP's news server.
+connection to the internet. It supports a subset of NNTP and is able to
+automatically fetch the newsgroups the user reads regularly from the
+newsserver of the ISP and additionally offer local (site-specific)
+groups to a LAN.
+
+%description -l de
+Leafnode ist ein offline-Newsserver, der vor allem für den typischen
+Einzelnutzer-Rechner ohne permanente Internetanbindung geeignet ist.
+Leafnode bezieht automatisch die Newsgroups, die der oder die Nutzer
+regelmäßig lesen, vom Newsserver des Providers. Weiter erlaubt es, lokale
+(Standort-spezifische) Newsgruppen im LAN anzubieten.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}
+
+autoreconf -v -i
+
+cp -p %{SOURCE1} .
 
 %build
-%configure\
-  --with-ipv6 \
-  --sysconfdir=%{_sysconfdir}/%{name} \
-  --with-spooldir=%{_localstatedir}/spool/news \
-  --with-lockfile=%{_localstatedir}/spool/news/leaf.node/lock.file
+%configure \
+ --disable-silent-rules \
+ --enable-spooldir=%{spooldir} \
+ --enable-runas-user=$(id -un) \
+ --sysconfdir=%{_sysconfdir}/%{upname} --with-pam
 make %{?_smp_mflags}
 
 %check
 make %{?_smp_mflags} check
 
 %install
+# first clean out any prior aborted runs
 %make_install
-mkdir -p %{buildroot}/%{_sysconfdir}/cron.daily
-install -m 755 %{SOURCE2} %{buildroot}/%{_sysconfdir}/cron.daily/%{name}
-mv %{buildroot}/%{_sysconfdir}/%{name}/config.example %{buildroot}/%{_sysconfdir}/%{name}/config
-install -m 644 %{SOURCE1} .
-install -m 640 %{SOURCE3} %{buildroot}/%{_sysconfdir}/%{name}
-install -d -m 755 %{buildroot}%{_mandir}/de/man1
-install -d -m 755 %{buildroot}%{_mandir}/de/man8
-install -D -m 644 %{SOURCE4} %{buildroot}/%{_unitdir}/leafnode@.service
-install -D -m 644 %{SOURCE8} %{buildroot}/%{_unitdir}/leafnode.socket
 
-# Get rid of files we don't want to package or package with doc below
-rm -f %{buildroot}/%{_sysconfdir}/%{name}/*.dist
-rm -f %{buildroot}/%{_sysconfdir}/%{name}/UNINSTALL-daemontools
-rm -f %{buildroot}/%{_sysconfdir}/%{name}/filters.example
-mkdir examples
-cp -a update.sh tools examples
-cp %{SOURCE5} examples
+# We actually do not want filters to be installed in /etc/leafnode
+rm %{buildroot}/%{_sysconfdir}/leafnode/filters*
+
+# install systemd units
+install -D -m 644 -t %{buildroot}%{_unitdir} systemd/*
+
+for file in %{buildroot}/%{_sysconfdir}/leafnode/*.example ; do
+   NEWFN=$(basename $file .example);
+   mv $file %{buildroot}/%{_sysconfdir}/leafnode/$NEWFN
+done
+
+# When building without runas_user, then we need to set this
+# parameter explicitly.
+sed -i -e "s/^#\s*run_as_user.*\$/run_as_user = %{runas_user}/" \
+    %{buildroot}/%{_sysconfdir}/leafnode/config
+
+cat >%{buildroot}/%{_sysconfdir}/leafnode/local.groups << EOS
+# List of all local groups
+# The format of the file containing the local groups is
+# news.group.name[tab]status[tab]Description
+# where
+# status could be y, n, or m letter, where
+# y - "Local postings are allowed",
+# m - "The group is moderated and all postings must be approved.",
+# n - "No local postings are allowed, only articles from peers."
+EOS
 
 %pre
-%service_add_pre leafnode@.service leafnode.socket
+%service_add_pre leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
+
+# create daemon group, if not existing
+getent group %{runas_group} >/dev/null || groupadd -r %{runas_group}  2>/dev/null || :
+# create daemon user, if not existing
+getent passwd %{runas_user} >/dev/null || \
+    useradd -r -g %{runas_group} -s /bin/false -c "leafnode daemon" \
+        -d %{spooldir} %{runas_user}  2>/dev/null || :
+exit 0
 
 %post
-%service_add_post leafnode@.service leafnode.socket
+%set_permissions %{spooldir}/leaf.node
+%service_add_post leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
+
+if [ $1 -eq 1 ] ; then
+    chown -R news:news %{spooldir}
+    chmod -R 775 %{spooldir}
+fi
 
 %preun
-%service_del_preun leafnode@.service leafnode.socket
+%service_del_preun leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
 
 %postun
-%service_del_postun leafnode@.service leafnode.socket
+%service_del_postun leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
 
 %files
-%defattr(-,root,root)
-%attr(640,root,news) %config(noreplace) %{_sysconfdir}/%{name}/config
-%attr(640,root,news) %config(noreplace) %{_sysconfdir}/%{name}/filters
-%attr(755,root,root) %config(noreplace) %{_sysconfdir}/cron.daily/%{name}
-%attr(750,root,news) %dir %{_sysconfdir}/%{name}
-%license COPYING
-%doc ChangeLog CREDITS NEWS FAQ.txt FAQ.pdf
-%doc README README.SUSE README-FQDN
-%doc filters.example
-%doc ADD-ONS KNOWNBUGS
-%doc doc_german/INSTALL_de
-%doc doc_german/LIESMICH-daemontools
-%doc doc_german/README
-%doc doc_german/README_de
-%doc examples/
-%{_mandir}/man1/newsq.1%{ext_man}
-%{_mandir}/man1/leafnode-version.1%{ext_man}
-%{_mandir}/man8/applyfilter.8%{ext_man}
-%{_mandir}/man8/checkgroups.8%{ext_man}
-%{_mandir}/man8/fetchnews.8%{ext_man}
-%{_mandir}/man8/leafnode.8%{ext_man}
-%{_mandir}/man8/texpire.8%{ext_man}
-%{_bindir}/newsq
-%{_bindir}/leafnode-version
-%{_sbindir}/applyfilter
-%{_sbindir}/checkgroups
-%{_sbindir}/fetchnews
-%{_sbindir}/leafnode
-%{_sbindir}/texpire
-%attr(775,news,news) %{_localstatedir}/spool/news
-%{_unitdir}/leafnode.socket
-%{_unitdir}/leafnode@.service
+%license COPYING COPYING.LGPL
+%doc config.example filters.example CREDITS README-SUSE.rst
+%doc DEBUGGING ENVIRONMENT FAQ.tex CHANGES-FROM-LEAFNODE-1 NEWS
+%doc README-FQDN.tex TODO ChangeLog AUTHORS README-leaf.node README.html
+
+%config %{_sysconfdir}/leafnode/
+%attr(644,root,root) %{_unitdir}/%{upname}*
+%config(noreplace) %attr(640,root,news) %{_sysconfdir}/leafnode/uucp
+%config(noreplace) %attr(640,root,news) %{_sysconfdir}/leafnode/local.groups
+%attr(755,root,root) %{_bindir}/leafnode-version
+%attr(755,root,root) %{_bindir}/lsmac.pl
+%attr(755,root,root) %{_bindir}/newsq
+%attr(755,root,root) %{_sbindir}/applyfilter
+%attr(755,root,root) %{_sbindir}/checkgroups
+%attr(755,root,root) %{_sbindir}/fetchnews
+%attr(755,root,root) %{_sbindir}/leafnode
+%attr(755,root,root) %{_sbindir}/rnews
+%attr(755,root,root) %{_sbindir}/sendbatch.bash
+%attr(755,root,root) %{_sbindir}/texpire
+%{_mandir}/man1/*
+%{_mandir}/man5/*
+%{_mandir}/man8/*
+%attr(775,%{runas_user},%{runas_group}) %{spooldir}
 
 %changelog
