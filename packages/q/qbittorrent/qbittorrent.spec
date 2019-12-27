@@ -1,7 +1,7 @@
 #
 # spec file for package qbittorrent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -79,7 +79,8 @@ for ui in nox gui; do
       $ui_opt      \
       -DSYSTEMD=ON \
       -DSystemd_SERVICES_INSTALL_DIR=%{_unitdir}
-    %make_jobs
+# override because this needs absurd amounts of RAM to build
+    %make_jobs -j1
     cd ..
     mv build build.$ui
 done
