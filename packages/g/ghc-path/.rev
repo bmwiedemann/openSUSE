@@ -121,4 +121,12 @@
     <comment>trivial cosmetic change in comments</comment>
     <requestid>643435</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>e5f39c8db4d65ca4b6118f1808a125bb</srcmd5>
+    <version>0.6.1</version>
+    <time>1577451367</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759471</requestid>
+  </revision>
 </revisionlist>
