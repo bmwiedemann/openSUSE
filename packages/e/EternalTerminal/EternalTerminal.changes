@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 27 11:23:46 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.5:
+  * Fix SSH config parsing bug when Hostname is specified (#235) 
+  * Expand tilde before parsing include file (#244)
+  * Add a build option to disable easylogging's default
+    crash handler (#246)
+  * Several bug fixes
+
+-------------------------------------------------------------------
 Wed Nov 27 08:27:09 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Initial package 6.0.4 for openSUSE

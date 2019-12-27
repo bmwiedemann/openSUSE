@@ -18,7 +18,7 @@
 
 %global _firewalld_dir %{_prefix}/lib/firewalld
 Name:           EternalTerminal
-Version:        6.0.4
+Version:        6.0.5
 Release:        0
 Summary:        Remote shell that survives IP roaming and disconnect
 License:        Apache-2.0
@@ -27,14 +27,14 @@ Source0:        https://github.com/MisterTea/EternalTerminal/archive/et-v%{versi
 Source1:        et.xml
 BuildRequires:  boost-devel
 BuildRequires:  cmake
-BuildRequires:  firewalld
 BuildRequires:  firewall-macros
+BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  gflags-devel
 BuildRequires:  libsodium-devel
-BuildRequires:  utempter-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  protobuf-devel
+BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
