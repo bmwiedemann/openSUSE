@@ -23,7 +23,6 @@ Version:        0.9.6
 Release:        0
 Summary:        ASN1 data reader and writer in RAW, BER and DER forms
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
@@ -44,7 +43,6 @@ ASN1 (BER, and DER).
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
