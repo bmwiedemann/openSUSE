@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Dec 27 11:09:04 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20191216:
+  * Fix gnome 3.34 issues
+  * Fix dark theme issues
+
+-------------------------------------------------------------------
+Wed May 22 08:47:59 UTC 2019 - mvetter@suse.com
+
+- Update to 20190507:
+  * Fixed gnome 3.32 issues
+
+-------------------------------------------------------------------
+Thu Mar 21 13:07:22 UTC 2019 - mvetter@suse.com
+
+- Remove sierra-gtk-theme-rpmlintrc
+- Use fdupes
+- Cleanup requirements
+
+-------------------------------------------------------------------
+Fri Oct 19 10:36:26 UTC 2018 - mvetter@suse.com
+
+- Update to 20181012:
+  * Fixed xfce4 gtk3 issues
+  * Fixed nautilus 3.30 issues
+
+-------------------------------------------------------------------
+Tue Oct  2 11:17:19 UTC 2018 - mvetter@suse.com
+
+- Update to 20181001:
+  * Fix Budgie issues
+  * Fix XFCE issues
+  * Fix GNOME shell 3.30 issues
+  * Fix nemo bugs
+  * Fix wingpanel bugs
+- Remove destdir.patch: new install script allows specifying destdir
+
+-------------------------------------------------------------------
+Fri Jun  8 07:42:28 UTC 2018 - mvetter@suse.com
+
+- Update to 20180808:
+  * Fix submenu issues
+
+-------------------------------------------------------------------
+Wed Jun  6 06:33:25 UTC 2018 - mvetter@suse.com
+
+- Update to 20180606:
+  * Fix menu bugs
+  * Add thin titlebutton version
+
+-------------------------------------------------------------------
+Sun Apr  8 07:20:17 UTC 2018 - mvetter@suse.com
+
+- Update to 20180408:
+  * Update SVGs
+  * Update SCSSs
+  * Update scripts
+- Update destdir.patch
+
+-------------------------------------------------------------------
+Wed Mar 28 11:52:46 UTC 2018 - mvetter@suse.com
+
+- update destdir.patch and link to GH issue
+
+-------------------------------------------------------------------
+Wed Mar 28 09:10:56 UTC 2018 - mvetter@suse.com
+
+- Initial package for openSUSE in version 20180312
