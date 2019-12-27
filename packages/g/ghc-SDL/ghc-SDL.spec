@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-SDL
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.6.7.0
 Release:        0
 Summary:        Binding to libSDL
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -38,7 +37,6 @@ port of "Civilization: Call To Power.".
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires:       libSDL-devel
