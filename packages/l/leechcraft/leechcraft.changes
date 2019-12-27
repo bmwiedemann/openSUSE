@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 25 19:11:49 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Refactored changes file.
+- Updated to 0.6.70-13588-g98cf733e94 snapshot:
+  * Aggregator WA (fixed cmake search after wt 4.2 update);
+  * LMP (drop support for taglib < 1.6);
+  * Overall code refactoring.
+- Raised qxmpp version required to build to fix Leap 15.1.
+
+-------------------------------------------------------------------
 Wed Nov  6 10:16:06 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Kwin package name was fixed (kwin => kwin5)

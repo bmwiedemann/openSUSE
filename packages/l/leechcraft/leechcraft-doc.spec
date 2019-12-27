@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
-%define LEECHCRAFT_VERSION 0.6.70-13186-g2c3ee31903
+%define LEECHCRAFT_VERSION 0.6.70-13588-g98cf733e94
 
 Name:           leechcraft-doc
-Version:        0.6.70+git.13186.g2c3ee31903
+Version:        0.6.70+git.13588.g98cf733e94
 Release:        0
 Summary:        Modular Internet Client Documentation
 License:        BSL-1.0

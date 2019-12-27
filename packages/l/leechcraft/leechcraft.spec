@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-13186-g2c3ee31903
+%define LEECHCRAFT_VERSION 0.6.70-13588-g98cf733e94
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -43,7 +43,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.13186.g2c3ee31903
+Version:        0.6.70+git.13588.g98cf733e94
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -77,7 +77,7 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblastfm-qt5-devel
 BuildRequires:  libqt5-qtbase-common-devel >= 5.9
-BuildRequires:  libqxmpp-qt5-devel
+BuildRequires:  libqxmpp-qt5-devel >= 1.1
 BuildRequires:  libsensors4-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  pkgconfig
@@ -158,7 +158,7 @@ BuildRequires:  pkgconfig(purple)
 BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  pkgconfig(qtermwidget5)
 BuildRequires:  pkgconfig(speex)
-BuildRequires:  pkgconfig(taglib)
+BuildRequires:  pkgconfig(taglib) >= 1.6
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
