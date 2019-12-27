@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Nov 18 03:02:55 UTC 2019 - psimons@suse.com
+
+- Update store to version 0.7.1.
+  ## 0.7.1
+
+  * Fixes compilation with GHC-7.10 due to it not defining `Generic`
+    instances for `Complex` and `Identity`. See [#142][].
+
+  * Documents some gotchas about using store vs other libraries
+
+  [#142]: https://github.com/fpco/store/issues/142
+
+-------------------------------------------------------------------
+Sun Nov 10 03:03:18 UTC 2019 - psimons@suse.com
+
+- Update store to version 0.7.0.
+  ## 0.7.0
+
+  * Fixes a bug where the `Store` instances for `Identity`, `Const`, and
+    `Complex` all have `Storable` superclasses instead of `Store. See
+    [#143][].
+
+  [#143]: https://github.com/fpco/store/issues/143
+
+  ## 0.6.1
+
+  * Can now optionally be built with `integer-simple` instead of
+    `integer-gmp`, via the `integer-simple` cabal flag.  Note that the
+    serialization of `Integer` with `integer-simple` differs from what
+    is used by the GMP default. See [#147][].
+
+  [#147]: https://github.com/fpco/store/pull/147
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:50 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Thu Oct 24 02:03:05 UTC 2019 - psimons@suse.com
+
+- Update store to version 0.6.0.1.
+  ## 0.6.0.1
+
+  * Now builds with GHC-7.10 - compatibility was broken in 0.6.0 due to
+    the fix for GHC-8.8. See
+    [#146][https://github.com/fpco/store/issues/146].
+
+-------------------------------------------------------------------
+Fri Oct 18 02:02:37 UTC 2019 - psimons@suse.com
+
+- Update store to version 0.6.0.
+  ## 0.6.0
+
+  * Now builds with GHC-8.8. This is a major version bump because
+    MonadFail constraints were added to some functions, which is
+    potentially a breaking change.
+
+-------------------------------------------------------------------
 Mon Jul  8 02:01:12 UTC 2019 - psimons@suse.com
 
 - Update store to version 0.5.1.2.

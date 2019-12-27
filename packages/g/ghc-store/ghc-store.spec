@@ -19,11 +19,10 @@
 %global pkg_name store
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.1.2
+Version:        0.7.1
 Release:        0
 Summary:        Fast binary serialization
 License:        MIT
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -38,6 +37,7 @@ BuildRequires:  ghc-contravariant-devel
 BuildRequires:  ghc-cryptohash-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-fail-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-free-devel
 BuildRequires:  ghc-hashable-devel
@@ -76,7 +76,6 @@ Fast binary serialization.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
