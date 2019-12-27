@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 18 15:16:28 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Don't remove the failing network tests, use --no-network.
+
+-------------------------------------------------------------------
 Thu Dec 12 08:30:14 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Yes, we do require html5lib, and no, autodiscovery won’t find it.

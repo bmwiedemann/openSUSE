@@ -28,6 +28,7 @@ URL:            https://github.com/dephell/dephell
 Source:         https://files.pythonhosted.org/packages/source/d/dephell/dephell-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Cerberus
@@ -120,24 +121,6 @@ test, build graph, show outdated, audit. Manage venvs, build package, bump versi
 %setup -q -n dephell-%{version}
 
 find tests -type d -name __pycache__ | xargs rm -rf
-# Network and missing dependencies
-rm \
-  tests/test_commands/test_deps_outdated.py \
-  tests/test_commands/test_deps_install.py \
-  tests/test_commands/test_deps_licenses.py \
-  tests/test_commands/test_deps_tree.py \
-  tests/test_commands/test_generate_license.py \
-  tests/test_commands/test_inspect_venv.py \
-  tests/test_commands/test_jail_install.py \
-  tests/test_commands/test_package_downloads.py \
-  tests/test_commands/test_package_install.py \
-  tests/test_commands/test_package_search.py \
-  tests/test_commands/test_package_show.py \
-  tests/test_controllers/test_safety.py \
-  tests/test_controllers/test_snyk.py \
-  tests/test_converters/test_imports.py \
-  tests/test_repositories/test_conda.py \
-  tests/test_resolving/test_smoke.py
 
 %build
 %python_build
@@ -149,7 +132,8 @@ rm \
 %check
 # Emulate Travis, which disables tests which expect a git repository
 export TRAVIS_OS_NAME=1
-%pytest -k 'not (test_load or test_repository_preserve or test_idempotency or test_get_deps_auth or test_get_deps or test_extra or test_get_releases or test_info_from_files or test_deps_file or test_preserve_path or test_git_parsing or test_bump_command_with_placeholder_tag)'
+# Failing tests dicsussed on gh#dephell/dephell_setuptools#4
+%pytest --no-network -k 'not (test_load or test_repository_preserve or test_idempotency or test_get_deps_auth or test_get_deps or test_extra or test_get_releases or test_info_from_files or test_deps_file or test_preserve_path or test_git_parsing or test_bump_command_with_placeholder_tag or test_inspect_venv_command)'
 
 %files %{python_files}
 %doc README.md README.rst

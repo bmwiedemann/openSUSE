@@ -66,4 +66,12 @@
     <comment>- Yes, we do require html5lib, and no, autodiscovery won’t find it.</comment>
     <requestid>755998</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>46f11aa2dd53ed5f1179e78e99ba4bab</srcmd5>
+    <version>0.7.9</version>
+    <time>1577450943</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>759199</requestid>
+  </revision>
 </revisionlist>
