@@ -5,8 +5,8 @@
     <param name="revision">master</param>
     <param name="scm">git</param>
     <param name="filename">teeworlds</param>
-    <param name="parent-tag">0.7.3.1</param>
-    <param name="versionformat">0.7.3.1</param>
+    <param name="parent-tag">0.7.4</param>
+    <param name="versionformat">0.7.4</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

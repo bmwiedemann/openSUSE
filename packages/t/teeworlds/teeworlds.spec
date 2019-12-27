@@ -17,7 +17,7 @@
 
 
 Name:           teeworlds
-Version:        0.7.3.1
+Version:        0.7.4
 Release:        0
 Summary:        A retro multiplayer jump-and-swing shooter
 License:        Zlib AND CC-BY-SA-3.0
@@ -27,6 +27,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  dejavu-fonts
+BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -77,6 +78,8 @@ install -D -m 0644 other/teeworlds.appdata.xml %{buildroot}%{_datadir}/appdata/t
 # Unbundle DejaVu font
 rm -rf %{buildroot}%{_datadir}/%{name}/data/fonts/*
 ln -s %{_ttfontsdir}/DejaVuSans.ttf %{buildroot}%{_datadir}/%{name}/data/fonts/DejaVuSans.ttf
+
+%fdupes -s %{buildroot}/%{_datadir}/%{name}
 
 %if 0%{?suse_version} < 1330
 %post
