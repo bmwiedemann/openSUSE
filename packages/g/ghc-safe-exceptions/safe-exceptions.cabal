@@ -1,6 +1,6 @@
 name:                safe-exceptions
 version:             0.1.7.0
-x-revision: 4
+x-revision: 5
 synopsis:            Safe, consistent, and easy exception handling
 description:         Please see README.md
 homepage:            https://github.com/fpco/safe-exceptions#readme
@@ -17,7 +17,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Control.Exception.Safe
-  build-depends:       base >= 4.7 && < 4.13
+  build-depends:       base >= 4.7 && < 4.14
                      , deepseq >= 1.2 && < 1.5
                      , exceptions >= 0.8 && < 0.11
                      , transformers >= 0.2 && < 0.6
