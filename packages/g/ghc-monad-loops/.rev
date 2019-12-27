@@ -50,4 +50,12 @@ I am sorry, I apparently missed that change in my previous submission sr#623812.
     <comment>trivial cosmetic change in comments</comment>
     <requestid>643423</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>68d27c9acf355b83203cb4a9899b8773</srcmd5>
+    <version>0.4.3</version>
+    <time>1577451322</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759452</requestid>
+  </revision>
 </revisionlist>
