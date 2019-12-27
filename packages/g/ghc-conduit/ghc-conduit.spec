@@ -19,11 +19,10 @@
 %global pkg_name conduit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.1.1
+Version:        1.3.1.2
 Release:        0
 Summary:        Streaming data processing library
 License:        MIT
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -66,7 +65,6 @@ please see: <http://www.stackage.org/package/conduit>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
