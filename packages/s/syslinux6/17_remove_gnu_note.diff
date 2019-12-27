@@ -1,0 +1,11 @@
+--- a/mbr/Makefile
++++ b/mbr/Makefile
+@@ -38,7 +38,7 @@
+ 	$(LD) $(LDFLAGS) -T $(SRC)/$(ARCH)/mbr.ld -e _start -o $@ $<
+ 
+ %.bin: %.elf $(SRC)/checksize.pl
+-	$(OBJCOPY) -O binary $< $@
++	$(OBJCOPY) -O binary --remove-section .note.gnu.property $< $@
+ 	$(PERL) $(SRC)/checksize.pl $@
+ 	$(CHMOD) -x $@
+ 

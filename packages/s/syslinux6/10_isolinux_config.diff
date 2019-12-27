@@ -1,0 +1,59 @@
+diff -u -r a/core/elflink/load_env32.c b/core/elflink/load_env32.c
+--- a/core/elflink/load_env32.c	2017-11-23 15:03:12.000000000 +0100
++++ b/core/elflink/load_env32.c	2019-12-06 16:00:38.252792661 +0100
+@@ -161,14 +161,27 @@
+ 	char realname[FILENAME_MAX];
+ 	size_t size;
+ 
+-	static const char *search_directories[] = {
+-		"/boot/isolinux",
+-		"/isolinux",
+-		"/boot/syslinux",
+-		"/syslinux",
+-		"/",
+-		NULL
+-	};
++	/*
++	 * Put search_directories[] to different section so it won't be
++	 * compressed and can be patched with isolinux-config.
++	 *
++	 * This list is also shared with iso9660.c.
++	 */
++	__asm__(
++	  ".section .data16\n"
++	  ".s1: .ascii \"/boot\"\n"
++	  ".s2: .string \"/isolinux\"\n"
++	  ".fill 64, 1, 0\n"
++	  ".s3: .ascii \"/boot\"\n"
++	  ".s4: .string \"/syslinux\"\n"
++	  ".s5: .string \"/\"\n"
++	  ".align 4\n"
++	  ".globl search_directories\n"
++	  "search_directories:\n"
++	  ".long .s1, .s2, .s3, .s4, .s5, 0\n"
++	  ".text\n"
++	);
++        extern const char *search_directories[];
+ 
+ 	static const char *filenames[] = {
+ 		LDLINUX,
+diff -u -r a/core/fs/iso9660/iso9660.c b/core/fs/iso9660/iso9660.c
+--- a/core/fs/iso9660/iso9660.c	2017-11-23 15:03:12.000000000 +0100
++++ b/core/fs/iso9660/iso9660.c	2019-12-06 16:00:59.536997817 +0100
+@@ -257,14 +257,8 @@
+ /* Load the config file, return 1 if failed, or 0 */
+ static int iso_open_config(struct com32_filedata *filedata)
+ {
+-    static const char *search_directories[] = {
+-	"/boot/isolinux", 
+-	"/isolinux",
+-	"/boot/syslinux", 
+-	"/syslinux", 
+-	"/",
+-	NULL
+-    };
++    extern const char *search_directories[];
++
+     static const char *filenames[] = {
+ 	"isolinux.cfg",
+ 	"syslinux.cfg",

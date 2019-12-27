@@ -1,0 +1,69 @@
+#! /usr/bin/perl
+
+#
+# Patch new base dir into isolinux.
+#
+# Makes some assumptions about memory layout in isolinux.
+#
+
+use Getopt::Long;
+
+sub help;
+
+$opt_base = undef;
+$opt_help = undef;
+
+GetOptions(
+  'help'   => \$opt_help,
+  'base=s' => \$opt_base,
+);
+
+$file = shift;
+
+help if $file eq '' || $opt_help;
+
+open F, $file or die "$file: $!\n";
+sysread F, $file_buf, -s($file);
+close F;
+
+if((length $file_buf > (8 << 10)) && ($file_buf =~ m#(/boot(/[\x20-\xff]*)\x00*)\x00isolinux.cfg\x00#s)) {
+  $format = 1;
+}
+elsif((length $file_buf > (8 << 10)) && ($file_buf =~ m#(/boot(/[\x20-\xff]*)\x00*)\x00/boot/syslinux\x00#s)) {
+  $format = 2;
+} 
+
+die "$file: is not isolinux\n" unless $format;
+
+$start = length $`;
+$base_buf = $1;
+$old_base = $2;
+
+if(defined $opt_base) {
+  ($base = $opt_base) =~ s#^/*##;
+
+  $base = "/boot/$base";
+  die "$opt_base: file name too long\n" if length($base) > length($base_buf);
+  $base_buf = $base . "\x00" x (length($base_buf) - length($base));
+  substr($file_buf, $start, length($base_buf)) = $base_buf;
+
+  open F, ">$file" or die "$file: $!\n";
+  syswrite F, $file_buf;
+  close F;
+
+  ($old_base = $base) =~ s#^/boot##;
+}
+
+print "base=$old_base\n";
+
+
+sub help
+{
+  die
+    "usage: isolinux-config [options] isolinux_binary\n" .
+    "Configure isolinux.\n" .
+    "Options:\n" .
+    "  --base dir\tset isolinux base directory to dir\n" .
+    "  --help\tthis message\n";
+}
+

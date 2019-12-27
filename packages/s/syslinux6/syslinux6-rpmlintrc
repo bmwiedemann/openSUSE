@@ -1,0 +1,2 @@
+addFilter("syslinux6.* arch-dependent-file-in-usr-share")
+addFilter("syslinux6.* shared-lib-without-dependency-information /usr/share/syslinux")

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://repo.or.cz/syslinux.git</param>
+              <param name="changesrevision">2ea44cbedb297bd6b409d5c1e0402d5f89592be4</param></service></servicedata>

@@ -1,0 +1,23 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: prefix keywords with $(SRC)
+
+Even keywords shall have $(SRC) prefix, otherwise our HEXDATE fails
+terrible death:
+core/diskstart.inc:45: error: expression syntax error
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ core/Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -44,7 +44,7 @@ NASMHDR  := $(sort $(wildcard $(SRC)/*.i
+ CSRC	 := $(shell find $(SRC) -name '*.c' -print)
+ SSRC	 := $(shell find $(SRC) -name '*.S' -print)
+ CHDR	 := $(shell find $(SRC) -name '*.h' -print)
+-OTHERSRC := keywords
++OTHERSRC := $(SRC)/keywords
+ ALLSRC    = $(NASMSRC) $(NASMHDR) $(CSRC) $(SSRC) $(CHDR) $(OTHERSRC)
+ 
+ COBJ	 := $(subst $(SRC)/,,$(patsubst %.c,%.o,$(CSRC)))

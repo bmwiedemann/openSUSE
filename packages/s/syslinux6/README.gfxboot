@@ -1,0 +1,46 @@
+Using gfxboot with syslinux 6.x
+===============================
+
+***  Please note that gfxboot does NOT work with any of the syslinux EFI variants.  ***
+
+Compared to syslinux 4.x there is a major limitation: with syslinux 6.x,
+gfxboot can not access the file system directly.
+
+The only files it can read are those contained in the 'bootlogo' archive.
+
+This means you have to run:
+
+  gfxboot --archive /etc/bootsplash/themes/openSUSE/cdrom --pack-archive /tmp/bootlogo
+
+and then use /tmp/bootlogo (instead of all the files that were in
+/etc/bootsplash/themes/openSUSE/cdrom).
+
+It also means gfxboot does not know the initrd size and cannot show the loading
+progress correctly. To help it, there's the initrd.size config setting in
+gfxboot.cfg. The value need not be exact, it is only used for the progress
+indicator. The actual initrd loading is not affected by this value.
+
+For example, to prepare the directory /tmp/cd/boot/x86_64/loader, do:
+
+  mkdir -p /tmp/cd/boot/x86_64/loader
+  cp /usr/share/syslinux/{isolinux.bin,ldlinux.c32,libcom32.c32,gfxboot.c32} /tmp/cd/boot/x86_64/loader
+  isolinux-config --base /boot/x86_64/loader /tmp/cd/boot/x86_64/loader/isolinux.bin
+  gfxboot --archive /etc/bootsplash/themes/openSUSE/cdrom --pack-archive /tmp/cd/boot/x86_64/loader/bootlogo
+  gfxboot --archive /tmp/cd/boot/x86_64/loader/bootlog --change-config install::initrd.size=XXX
+
+(replace XXX with the real initrd size in bytes).
+
+To activate gfxboot, add a line like
+
+  ui gfxboot bootlogo
+
+to isolinux.cfg. You can also use
+
+  ui gfxboot bootlogo message
+
+and remove the
+
+  display message
+
+line. The 'message' file (a text file) will be shown when you leave the
+gfxboot module (or gfxboot couldn't be started).

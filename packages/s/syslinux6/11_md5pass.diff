@@ -1,0 +1,16 @@
+--- a/utils/md5pass
++++ b/utils/md5pass
+@@ -1,7 +1,6 @@
+ #!/usr/bin/perl
+ 
+ use bytes;
+-use Crypt::PasswdMD5;
+ use MIME::Base64;
+ 
+ sub random_bytes($) {
+@@ -31,4 +30,4 @@ unless (defined($salt)) {
+     $salt =~ tr/\+/./;		# . not +
+ }
+ 
+-print unix_md5_crypt($pass, $salt), "\n";
++print crypt($pass, "\$1\$$salt\$"), "\n";
