@@ -18,7 +18,7 @@
 
 %define so_ver 4
 Name:           tesseract-ocr
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later

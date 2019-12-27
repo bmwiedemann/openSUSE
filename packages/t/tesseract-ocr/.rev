@@ -84,4 +84,13 @@
   * Cleanups and fixes</comment>
     <requestid>756765</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed93921bb5be2a49cfd8af253dfc3e62</srcmd5>
+    <version>4.1.1</version>
+    <time>1577451665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.1
+  * Bugfixes</comment>
+    <requestid>759653</requestid>
+  </revision>
 </revisionlist>
