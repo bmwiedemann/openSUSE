@@ -23,7 +23,6 @@ Version:        0.7.0
 Release:        0
 Summary:        Shell script analysis tool
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  chrpath
@@ -57,14 +56,12 @@ advanced user's otherwise working script to fail under future circumstances.
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
-Group:          System/Libraries
 
 %description -n ghc-%{name}
 This package provides the Haskell %{name} shared library.
 
 %package -n ghc-%{name}-devel
 Summary:        Haskell %{name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
