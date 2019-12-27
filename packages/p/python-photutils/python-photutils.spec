@@ -1,7 +1,7 @@
 #
 # spec file for package python-photutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-photutils
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -42,7 +42,7 @@ Recommends:     python-gwcs >= 0.11
 BuildRequires:  %{python_module astropy >= 2.0}
 BuildRequires:  %{python_module astropy-helpers >= 2.0}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module pytest-astropy >= 0.4}
+BuildRequires:  %{python_module pytest-astropy >= 0.7}
 BuildRequires:  %{python_module scikit-image >= 0.14.2}
 BuildRequires:  %{python_module scikit-learn >= 0.19}
 BuildRequires:  python3-dbm
@@ -62,9 +62,10 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-rm -rf  %{buildroot}%{$python_sitearch}/photutils/*.c
-rm -rf  %{buildroot}%{$python_sitearch}/photutils/geometry/*.c
+rm -rf  %{buildroot}%{python_sitearch}/photutils/*.c
+rm -rf  %{buildroot}%{python_sitearch}/photutils/geometry/*.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
 %check
 %python_exec setup.py test --skip-docs
 

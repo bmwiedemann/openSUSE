@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 11 14:44:27 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 0.7.2:
+  photutils.isophote
+    * Fixed computation of upper harmonics a3, b3, a4, and b4 
+       in the ellipse fitting algorithm. [#1008]
+  photutils.psf 
+    * Fix to algorithm in EPSFBuilder, addressing issues where
+      ePSFs failed to build (yielding striped ePSFs). [#974]
+    * Fix to IterativelySubtractedPSFPhotometry where an error
+      could be thrown when a Finder was passed which did not 
+      return None if no sources were found. [#986]
+    * Fix to centroid_epsf where the wrong oversampling factor
+      was used along the y axis. [#1002]
+- needs new python-pytest-astropy 0.7 because of -header package
+- fix clean c source files
+
+-------------------------------------------------------------------
 Thu Oct 10 09:48:35 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 0.7.1 
