@@ -1,0 +1,11 @@
+diff --git a/man/man8/CMakeLists.txt.orig b/man/man8/CMakeLists.txt
+index 45cfe5d..47b343c 100644
+--- a/man/man8/CMakeLists.txt.orig
++++ b/man/man8/CMakeLists.txt
+@@ -9,4 +9,5 @@ foreach(FIL ${FILES})
+   list(APPEND GZFILES "${CMAKE_CURRENT_BINARY_DIR}/${NAME}.gz")
+ endforeach()
+ add_custom_target(man ALL DEPENDS ${GZFILES})
+-install(FILES ${GZFILES} DESTINATION man/man8)
++include(GNUInstallDirs)
++install(FILES ${GZFILES} DESTINATION ${CMAKE_INSTALL_MANDIR}/man8)

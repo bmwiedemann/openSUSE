@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Thu Nov 21 20:49:17 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.3
+  * Allow attaching to uprobes at an offset
+  * BTF support
+  * integer casts
+  * integer pointer casts
+
+-------------------------------------------------------------------
+Tue Nov 19 06:41:39 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update bpftrace to v0.9.2
+  + New environment variables (BPFTRACE_NO_USER_SYMBOLS,
+    BPFTRACE_LOG_SIZE)
+  + New probe type: memory watchpoint
+  + Support for JSON output
+- Exclude armv7 and i586 since bcc doesn't support USDT for these
+  two architectures
+
+-------------------------------------------------------------------
+Tue Aug 20 14:05:31 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup using spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug 20 08:50:27 UTC 2019 - Antonio Ojea <aojeagarcia@suse.com>
+
+- Add readline missing dependency
+
+-------------------------------------------------------------------
+Sat Jul 13 21:54:11 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use %cmake for building, don't set flags manually.
+- Use %cmake_install instead of installing manually.
+- install-man-dir.patch: Fix installation directory for man pages.
+- Fix executable bit for tools.
+- Fix shebangs in %prep, use -exec instead of piping to xargs.
+- Disable LTO, because -flto=<number> isn't supported by Clang.
+  Also LTO is perhaps not so important here.
+
+-------------------------------------------------------------------
+Wed Jun 26 01:49:06 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update bpftrace to v0.9.1. Upstream changelog:
+  * Additions:
+    + Introduce compound assignment operators (+= and friends).
+    + Add support for arrays and IPv6 for the ntop builtin function.
+    + Add basic support to enums (treat them as constants).
+    + Add macro definition support.
+    + Add support for arrays and IPv6 for the ntop builtin function.
+    + Allow comparison of two string variables.
+    + Add pre and post behavior to ++ and -- operators.
+  * Breaking changes:
+    - Ban kprobes that cause CPU deadlocks.
+    + Add unsafe-mode and make default execution mode safe-mode.
+
+-------------------------------------------------------------------
+Wed Apr 24 14:58:42 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update bpftrace to v0.9.
+- Deprecated: sym() and stack() are deprecated.
+              Use ksym() and kstack() instead.
+
+-------------------------------------------------------------------
+Tue Jan 15 09:56:40 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update bpftrace import to 0.0.0 (again).
+- Remove patch for bcc-devel now that there is an upstream fix for it
+  (https://github.com/iovisor/bpftrace/pull/327). boo#1117223
+  - 0001-cmake-fix-builds-within-OBS.patch
+
+-------------------------------------------------------------------
+Sun Nov 25 01:11:33 UTC 2018 - Aleksa Sarai <asarai@suse.com>
+
+- Switch to using bcc-devel from Base:System. This required a few backports
+  from upstream and some other various changes. boo#1117223
+  https://github.com/iovisor/bpftrace/pull/227
+  * 0001-cmake-fix-builds-within-OBS.patch
+
+-------------------------------------------------------------------
+Tue Oct 30 18:51:01 UTC 2018 - Aleksa Sarai <asarai@suse.com>
+
+- Initial bpftrace 0.0.0 import. Upstream doesn't really have versioning, so
+  now we just use _service and pull from master. BCC required a bit of
+  vendoring work, though hopefully we can switch to using bcc-tool-devel.
+  boo#1117223
