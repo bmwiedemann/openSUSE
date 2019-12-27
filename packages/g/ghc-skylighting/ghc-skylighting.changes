@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 27 03:00:59 UTC 2019 - psimons@suse.com
+
+- Update skylighting to version 0.8.3.
+  ## 0.8.3 -- 2019-11-26
+
+    * Update XML syntax definitions for c, cmake, coffee, cpp, css,
+      diff, djangotemplate, elixir, elm, glsl, haskell, html, isocpp,
+      javascript-react, javascript, json, jsp, julia, latex, lua,
+      markdown, matlab, mediawiki, modelines, mustache, perl, php,
+      powershell, qml, rest, rust, typescript, vhdl.
+
+    * Fix highlighting errors with non-ASCII characters in JSON (#90).
+      This error was due to an optimization that made some incorrect
+      assumptions.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:46 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
 Fri Oct  4 02:02:00 UTC 2019 - psimons@suse.com
 
 - Update skylighting to version 0.8.2.3.
