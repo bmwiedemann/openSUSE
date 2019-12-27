@@ -19,11 +19,10 @@
 %global pkg_name tls
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        TLS/SSL protocol native implementation (Server and Client)
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -65,7 +64,6 @@ Some debug tools linked with tls, are available through the
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
