@@ -7,4 +7,12 @@
     <comment>new dependency of ghc-constraints</comment>
     <requestid>737197</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>48254f3f80323f6bde9138a28b4da3f3</srcmd5>
+    <version>1</version>
+    <time>1577451520</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759545</requestid>
+  </revision>
 </revisionlist>
