@@ -19,11 +19,10 @@
 %global pkg_name retry
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.0.2
+Version:        0.8.1.0
 Release:        0
 Summary:        Retry combinators for monadic actions that may fail
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -53,7 +52,6 @@ retry the query instead of simply raising an exception.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
