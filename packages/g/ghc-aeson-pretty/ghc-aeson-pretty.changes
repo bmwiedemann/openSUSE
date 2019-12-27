@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 16:13:10 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
 Sat Sep 28 02:01:16 UTC 2019 - psimons@suse.com
 
 - Update aeson-pretty to version 0.8.8.
