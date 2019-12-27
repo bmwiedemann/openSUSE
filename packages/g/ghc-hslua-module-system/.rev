@@ -7,4 +7,12 @@
     <comment>new dependenciy for stack and/or pandoc</comment>
     <requestid>710608</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f99f5932128d6325499f66de5b4627d3</srcmd5>
+    <version>0.2.1</version>
+    <time>1577451242</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759414</requestid>
+  </revision>
 </revisionlist>
