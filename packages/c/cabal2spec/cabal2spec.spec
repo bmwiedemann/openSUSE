@@ -23,9 +23,9 @@ Version:        2.2.2.1
 Release:        0
 Summary:        Convert Cabal files into rpm spec files
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-filepath-devel
@@ -48,14 +48,12 @@ is currently not available. Check out
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
-Group:          System/Libraries
 
 %description -n ghc-%{name}
 This package provides the Haskell %{name} shared library.
 
 %package -n ghc-%{name}-devel
 Summary:        Haskell %{name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -66,6 +64,7 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
+cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build

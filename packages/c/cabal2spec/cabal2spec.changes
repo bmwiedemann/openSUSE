@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 16:13:08 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
 Thu Jan 17 03:03:29 UTC 2019 - psimons@suse.com
 
 - Update cabal2spec to version 2.2.2.1.
