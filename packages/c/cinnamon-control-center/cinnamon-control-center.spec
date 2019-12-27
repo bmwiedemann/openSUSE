@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-control-center
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cinnamon-desktop)
@@ -62,6 +61,7 @@ BuildRequires:  pkgconfig(libgnomekbdui)
 BuildRequires:  pkgconfig(libnotify) >= 0.7.3
 BuildRequires:  pkgconfig(libpulse) >= 1.1
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 1.1
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(libxklavier) >= 5.1
 BuildRequires:  pkgconfig(libxml-2.0)
