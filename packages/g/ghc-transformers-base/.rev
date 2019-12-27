@@ -65,4 +65,12 @@
     <comment>trivial cosmetic change in comments</comment>
     <requestid>643478</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ba8fdf64a6cb554b96c920a842e1192c</srcmd5>
+    <version>0.4.5.2</version>
+    <time>1577451515</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759542</requestid>
+  </revision>
 </revisionlist>
