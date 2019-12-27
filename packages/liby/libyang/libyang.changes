@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Dec 20 11:53:20 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Package extensions in a separate package - libyang-extentions
+
+-------------------------------------------------------------------
+Mon Dec  9 21:16:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0r5
+  Main features of this release are:
+  * value canonization support in API functions
+  * new debug message categories
+  * nested notification/action validation clarifications and fixes
+  * LYB format decimal64 value handling fixed
+  * C++ bindings minor improvements
+  * other minor fixes
+
+-------------------------------------------------------------------
+Fri Nov  1 12:17:11 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0r4
+  Main features of this release are:
+  * many bugfixes in various parts of the library
+    + schema and data validation
+    + manipulation with internal schemas and loading user schemas
+      in the context
+    + xpath
+    + LYB format
+
+-------------------------------------------------------------------
+Fri Jul 12 19:22:46 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0r3
+  Main features of this release are:
+  * many bugfixes in various parts of the library
+    + LYB format
+    + schema
+    + data
+    + xpath
+
+-------------------------------------------------------------------
+Tue Jun 18 09:31:02 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Build with ENABLE_LYD_PRIV=ON
+
+-------------------------------------------------------------------
+Sat Apr  6 09:28:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0r2
+  * New LYD_DUP_OPT_WITH_WHEN and LYD_DUP_OPT_WITH_KEYS options for
+    duplicating data nodes.
+  * New --disable-searchdir option of yanglint(1) to allow forcing
+    explicit specification of all the loaded modules.
+  * Plugins (extension and user type) are now more strictly checked
+    for compatibility - all plugins are now supposed to use
+    LYEXT_VERSION_CHECK or LYTYPE_VERSION_CHECK macro to be
+    compatible with libyang 1.0.
+  * User type plugins are now able not only to store the value in a
+    specific way, but also to change its original string value (e.g.
+    to make the value canonical). Change to the canonical value is
+    also used in the provided user types plugins implementing
+    ietf-yang-types and ietf-int-types data types.
+  * Many bugfixes as usual.
+
+-------------------------------------------------------------------
 Tue Feb 12 23:20:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove duplicated pkgconfig() require (rpm has autodetection!)

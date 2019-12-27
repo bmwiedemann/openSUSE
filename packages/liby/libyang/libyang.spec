@@ -1,6 +1,7 @@
 #
 # spec file for package libyang
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,14 +13,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define sover 0_16
-%define realver 0.16-r3
+%define sover 1
+%define realver 1.0-r5
 Name:           libyang
-Version:        0.16r3
+Version:        1.0r5
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
@@ -54,6 +55,7 @@ to use in processing configurations.
 %package -n libyang%{sover}
 Summary:        IETF YANG data modeling parser toolkit runtime
 Group:          System/Libraries
+Recommends:     %{name}-extentions = %{version}
 
 %description -n libyang%{sover}
 Libyang implements functions to process schemas expressed in the
@@ -66,6 +68,18 @@ functions to process data described by the schemas.
 
 The library is implemented in C and provides an API for other software
 to use in processing configurations.
+
+%package extentions
+Summary:        IETF YANG data modeling parser toolkit runtime extentions
+Group:          System/Libraries
+Requires:       libyang%{sover} = %{version}
+
+%description extentions
+Libyang implements functions to process schemas expressed in the
+YANG data modeling language defined by the IETF in RFCs 6020/7950.
+
+This package contains extentions and user types used that enhance
+behaviour of the libyang runtime library.
 
 %package devel
 Summary:        Development files for libyang
@@ -140,6 +154,7 @@ This is the API documentation of libyang.
 %build
 %cmake \
     -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
+    -DENABLE_LYD_PRIV=ON \
     -DGEN_LANGUAGE_BINDINGS=ON \
     -DENABLE_BUILD_TESTS=ON
 make %{?_smp_mflags}
@@ -160,6 +175,8 @@ mv build/doc/html %{buildroot}%{_docdir}/%{name}/
 %license LICENSE
 %doc FAQ.md KNOWNISSUES.md README.md
 %{_libdir}/libyang.so.*
+
+%files extentions
 %dir %{_libdir}/libyang
 %dir %{_libdir}/libyang/extensions/
 %{_libdir}/libyang/extensions/*.so
