@@ -17,7 +17,7 @@
 
 
 Name:           telemetrics-client
-Version:        2.2.3+git20191008.4119bde
+Version:        2.3.2+git20191217.8ca2993
 Release:        0
 Summary:        Telemetrics solution
 License:        LGPL-2.1-or-later
@@ -103,7 +103,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_prefix}/lib/telemetrics-probes
 %{_sysusersdir}/telemetrics-users.conf
 %{_tmpfilesdir}/telemetrics-dirs.conf
-%{_libdir}/libtelemetry.so.3*
+%{_libdir}/libtelemetry.so.4*
 %dir %{_datadir}/defaults
 %dir %{_datadir}/defaults/telemetrics
 %{_datadir}/defaults/telemetrics/telemetrics.conf

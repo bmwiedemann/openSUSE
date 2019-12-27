@@ -1,5 +1,5 @@
 diff --git a/docs/man/telemctl.1.rst b/docs/man/telemctl.1.rst
-index 2aef720..0ab7017 100644
+index c4c7eed..8127f33 100644
 --- a/docs/man/telemctl.1.rst
 +++ b/docs/man/telemctl.1.rst
 @@ -31,6 +31,9 @@ OPTIONS
@@ -10,13 +10,13 @@ index 2aef720..0ab7017 100644
 +   Enables or disables all telemetry services.
 +
   * ``opt-in``:
-    Opts in to telemetry, and starts telemetry services. The opt-out file
-    ``/etc/telemetrics/opt-out`` is removed.
+    Opts in to telemetry and the opt-in file ``/etc/telemetrics/opt-in``
+    is created. Note: this is a one time required operation before
 diff --git a/src/telemctl.c b/src/telemctl.c
-index 4df8dbb..ade3659 100644
+index 599b74e..2c46cd4 100644
 --- a/src/telemctl.c
 +++ b/src/telemctl.c
-@@ -64,6 +64,8 @@ static char *SERVICES[] = {
+@@ -63,6 +63,8 @@ static char *SERVICES[] = {
  static int telemctl_start(void);
  static int telemctl_stop(void);
  static int telemctl_restart(void);
@@ -25,16 +25,16 @@ index 4df8dbb..ade3659 100644
  static int telemctl_is_active(void);
  static int telemctl_opt_out(void);
  static int telemctl_opt_in(void);
-@@ -82,6 +84,8 @@ static struct telemcmd commands[] = {
-         {"stop",      {.f1=telemctl_stop},     "Stops all running telemetry services" },
-         {"start",     {.f1=telemctl_start},    "Starts all telemetry services" },
-         {"restart",   {.f1=telemctl_restart},  "Restarts all telemetry services" },
-+        {"enable",    {.f1=telemctl_enable},   "Enable telemetry services" },
-+        {"disable",   {.f1=telemctl_disable},  "Disable telemetry services" },
-         {"is-active", {.f1=telemctl_is_active},"Checks if telemprobd and telempostd are active" },
-         {"opt-in",    {.f1=telemctl_opt_in},   "Opts in to telemetry, and starts telemetry services" },
-         {"opt-out",   {.f1=telemctl_opt_out},  "Opts out of telemetry, and stops telemetry services" },
-@@ -216,6 +220,38 @@ static int telemctl_restart(void)
+@@ -83,6 +85,8 @@ static struct telemcmd commands[] = {
+         {true,  "start",     {.f1=telemctl_start},    "Starts all telemetry services" },
+         {true,  "restart",   {.f1=telemctl_restart},  "Restarts all telemetry services" },
+         {false, "is-active", {.f1=telemctl_is_active},"Checks if telemprobd and telempostd are active" },
++	{true,  "enable",    {.f1=telemctl_enable},   "Enable telemetry services" },
++        {true,  "disable",   {.f1=telemctl_disable},  "Disable telemetry services" },
+         {true,  "opt-in",    {.f1=telemctl_opt_in},   "Opts in to telemetry, and starts telemetry services" },
+         {true,  "opt-out",   {.f1=telemctl_opt_out},  "Opts out of telemetry, and stops telemetry services" },
+         {true,  "journal",   {.f2=telemctl_journal},  "Prints telemetry journal contents. Use -h argument with\n            command for more options"}
+@@ -218,6 +222,38 @@ static int telemctl_restart(void)
  /*
  Script code:
  
