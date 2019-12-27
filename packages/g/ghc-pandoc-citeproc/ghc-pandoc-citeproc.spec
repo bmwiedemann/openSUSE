@@ -19,16 +19,16 @@
 %global pkg_name pandoc-citeproc
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.16.2
+Version:        0.16.4.1
 Release:        0
 Summary:        Supports using pandoc with citeproc
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-HsYAML-aeson-devel
+BuildRequires:  ghc-HsYAML-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-attoparsec-devel
@@ -76,7 +76,6 @@ pandoc-citeproc originated as a fork of Andrea Rossato's citeproc-hs.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -88,7 +87,6 @@ files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
