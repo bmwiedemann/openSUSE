@@ -19,11 +19,10 @@
 %global pkg_name texmath
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.11.3
+Version:        0.12
 Release:        0
 Summary:        Conversion between formats used to represent mathematics
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  chrpath
@@ -36,7 +35,6 @@ BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-syb-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-xml-devel
@@ -74,14 +72,12 @@ or 'success' and the converted result.
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
-Group:          System/Libraries
 
 %description -n ghc-%{name}
 This package provides the Haskell %{name} shared library.
 
 %package -n ghc-%{name}-devel
 Summary:        Haskell %{name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
