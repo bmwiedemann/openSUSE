@@ -1,7 +1,7 @@
 #
 # spec file for package postsrsd
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           postsrsd
-Version:        1.2.g9
+Version:        1.6
 Release:        0
 Summary:        Sender Rewriting Support for postfix
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Servers
-Url:            https://github.com/roehling/postsrsd
+URL:            https://github.com/roehling/postsrsd
 
 #Git-Clone:	git://github.com/roehling/postsrsd
-#Snapshot:	1.2-9-gb161cb4 ; no regular release tarballs available
-Source:         %name-%version.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://github.com/roehling/postsrsd/archive/%version.tar.gz
 BuildRequires:  cmake
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  xz
 
 %description
 PostSRSd provides the Sender Rewriting Scheme (SRS) via TCP-based 
@@ -38,7 +35,7 @@ lookup tables for Postfix. SRS is needed if your mail server acts
 as forwarder.
 
 %prep
-%setup -qn %name
+%autosetup -p1
 
 %build
 %cmake -DGENERATE_SRS_SECRET=0 -DCHROOT_DIR=/var/lib/empty \
@@ -72,7 +69,6 @@ fi
 %service_del_postun postsrsd.service
 
 %files
-%defattr(-,root,root)
 %dir %_sysconfdir/apparmor.d
 %config %_sysconfdir/apparmor.d/*
 %config(noreplace) %_sysconfdir/default/postsrsd
@@ -81,6 +77,6 @@ fi
 %_sbindir/rcpostsrsd
 %_prefix/lib/systemd/system/*.service
 %_docdir/%name/
-%doc LICENSE
+%license LICENSE
 
 %changelog
