@@ -1,7 +1,7 @@
 #
 # spec file for package cabal-install
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        2.4.0.0
 Release:        0
 Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
@@ -66,10 +65,9 @@ installation of Haskell libraries and programs.
 
 %package bash-completion
 Summary:        Bash completion for cabal-install
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
 Optional sub-package offering bash completion for cabal-install.
