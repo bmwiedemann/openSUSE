@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 27 10:53:41 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2:
+  * Fix format overflow and truncation warnings with GCC-8. 
+  * Fix array bounds error in diff_path
+  * extract: allow blank lines in unified diffs
+  * Add --no-backup option
+  * Preserve file mode when using doing --merge --replace 
+  * Fix very minor memory leaks in do_merge()
+  * Several small fixes
+
+-------------------------------------------------------------------
 Thu Aug  9 21:39:57 UTC 2018 - rpm@fthiessen.de
 
 - Update to 1.1:
