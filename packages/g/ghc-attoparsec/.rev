@@ -139,4 +139,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>version update</comment>
     <requestid>737192</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>5e3d645510fb525acda3e28432d642fe</srcmd5>
+    <version>0.13.2.3</version>
+    <time>1577451090</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759339</requestid>
+  </revision>
 </revisionlist>
