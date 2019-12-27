@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cookie
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %global pkg_name cookie
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        HTTP cookie parsing and rendering
 License:        MIT
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -47,7 +46,6 @@ please see: <https://www.stackage.org/package/cookie>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
