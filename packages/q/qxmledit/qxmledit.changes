@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 25 09:11:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.14
+  * Apply transformations splitting files.
+  * Fixed an issue relative to remove siblings.
+  * Test XML without loading it.
+  * Fixed some menu labels.
+  * Refactored project files for common options and create
+    option to avoid transform warning in errors.
+  * Issue #62, build fails with Qt 5.13.
+  * Issue #63, updated appdata metainfo file.
+
+- Dropped qxmledit-no_warnings_as_errors.patch (no longer
+  necessary)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Jul 22 20:45:55 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added qxmledit-no_warnings_as_errors.patch to fix Factory build

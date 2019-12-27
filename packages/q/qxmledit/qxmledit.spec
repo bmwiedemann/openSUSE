@@ -1,7 +1,7 @@
 #
 # spec file for package qxmledit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,17 @@
 
 
 %define major   0
-%define _version 0.9.13
 Name:           qxmledit
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        XML Editor and XSD Viewer
 License:        LGPL-2.0-or-later AND LGPL-3.0-or-later
-Group:          Productivity/Publishing/XML
 URL:            http://qxmledit.org/
-Source:         https://github.com/lbellonda/qxmledit/archive/%{_version}.tar.gz#/%{name}-%{_version}.tar.gz
+Source:         https://github.com/lbellonda/qxmledit/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM qxmledit-no_warnings_as_errors.patch
-Patch0:         qxmledit-no_warnings_as_errors.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glu)
-%if 0%{?suse_version} > 1325
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -41,20 +35,13 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5Scxml)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
-%else
-BuildRequires:  pkgconfig(QtCore)
-BuildRequires:  pkgconfig(QtGui)
-BuildRequires:  pkgconfig(QtNetwork)
-BuildRequires:  pkgconfig(QtSql)
-BuildRequires:  pkgconfig(QtSvg)
-BuildRequires:  pkgconfig(QtXml)
-BuildRequires:  pkgconfig(QtXmlPatterns)
-%endif
+BuildRequires:  pkgconfig(glu)
 
 %description
 QXmlEdit is a XML editor written in Qt. Its main features are
@@ -82,7 +69,6 @@ compare XML files. It can also few XSD files.
 
 %package -n libqxmledit%{major}
 Summary:        XML Editor Shared Libraries
-Group:          System/Libraries
 
 %description -n libqxmledit%{major}
 QXmlEdit is a XML editor written in Qt. It uses a tree-based
@@ -92,7 +78,6 @@ This package includes QXmlEdit shared libraries.
 
 %package devel
 Summary:        XML Editor Development Files
-Group:          Development/Libraries/C and C++
 Requires:       libqxmledit%{major} = %{version}
 
 %description devel
@@ -102,10 +87,7 @@ interface to ease the edit of long files.
 This package includes QXmlEdit development files.
 
 %prep
-%setup -q -n %{name}-%{_version}
-%if 0%{?suse_version} > 1500
-%patch0 -p1
-%endif
+%autosetup
 
 %build
 export QXMLEDIT_INST_DATA_DIR=%{_datadir}/%{name}/
@@ -116,23 +98,11 @@ export QXMLEDIT_INST_LIB_DIR=%{_libdir}/
 export QXMLEDIT_INST_TRANSLATIONSDIR=%{_datadir}/%{name}/translations/
 export QXMLEDIT_INST_USE_C11=y
 export QXMLEDIT_NO_QWTPLOT=y
-%if 0%{?suse_version} > 1325
 %qmake5
 %make_jobs
-%else
-qmake \
-  QMAKE_CFLAGS+="%{optflags}" \
-  QMAKE_CXXFLAGS+="%{optflags}" \
-  QMAKE_STRIP="true"
-make %{?_smp_mflags}
-%endif
 
 %install
-%if 0%{?suse_version} > 1325
 %qmake5_install
-%else
-make INSTALL_ROOT=%{buildroot} install
-%endif
 
 # Install icons.
 install -Dm 0644 install_scripts/environment/icon/qxmledit_48x48.png \
@@ -158,16 +128,6 @@ rm -f \
 
 %suse_update_desktop_file QXmlEdit TextEditor Development Documentation Qt
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %post -n libqxmledit%{major} -p /sbin/ldconfig
 %postun -n libqxmledit%{major} -p /sbin/ldconfig
 
@@ -177,9 +137,6 @@ rm -f \
 %doc doc/QXmlEdit_manual.pdf
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%if 0%{?suse_version} && 0%{?suse_version} < 1320
-%dir %{_datadir}/appdata/
-%endif
 %{_datadir}/appdata/QXmlEdit.appdata.xml
 %{_datadir}/applications/QXmlEdit.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}.*
