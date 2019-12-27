@@ -48,4 +48,12 @@
     <comment>trivial cosmetic change in comments</comment>
     <requestid>643461</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a4c234e3c1517078afebe91f2ecf11e7</srcmd5>
+    <version>3.0.0.4</version>
+    <time>1577451459</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759515</requestid>
+  </revision>
 </revisionlist>
