@@ -17,7 +17,7 @@
 
 
 Name:           ppsspp
-Version:        1.9.3~git20191201
+Version:        1.9.3~git20191218
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later
