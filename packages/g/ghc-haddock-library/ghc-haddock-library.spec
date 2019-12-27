@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-haddock-library
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global pkg_name haddock-library
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Library exposing some functionality of Haddock
-License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
+License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
@@ -37,19 +37,22 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-optparse-applicative-devel
+BuildRequires:  ghc-tree-diff-devel
 %endif
 
 %description
 Haddock is a documentation-generation tool for Haskell libraries.
 These modules expose some functionality of it without pulling in the GHC
-dependency. Please note that the API is likely to change so specify upper
-bounds in your project. For interacting with Haddock itself, see the [haddock
-package](https://hackage.haskell.org/package/haddock).
+dependency. Please note that the API is likely to change so be sure to specify
+upper bounds in your projects. For interacting with Haddock itself, see the
+[haddock package](https://hackage.haskell.org/package/haddock).
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -61,6 +64,7 @@ files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
