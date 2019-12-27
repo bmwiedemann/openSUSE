@@ -19,11 +19,10 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.7.3
+Version:        2.9
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
-Group:          Productivity/Publishing/Other
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source10:       pandoc-pdf.readme
@@ -49,7 +48,9 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-doclayout-devel
 BuildRequires:  ghc-doctemplates-devel
+BuildRequires:  ghc-emojis-devel
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-haddock-library-devel
@@ -70,12 +71,14 @@ BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-scientific-devel
+BuildRequires:  ghc-skylighting-core-devel
 BuildRequires:  ghc-skylighting-devel
 BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-syb-devel
 BuildRequires:  ghc-tagsoup-devel
 BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-texmath-devel
+BuildRequires:  ghc-text-conversions-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unicode-transforms-devel
@@ -119,7 +122,6 @@ Thus, adding an input or output format requires only adding a reader or writer.
 %if 0%{?is_opensuse}
 %package pdf
 Summary:        Meta package for support generating pdf with pandoc
-Group:          Productivity/Publishing/PDF
 Requires:       %{name} = %{version}
 Requires:       texlive-latex-bin-bin
 # bsc#1014590
@@ -131,14 +133,12 @@ Meta package for support generating pdf with pandoc.
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
-Group:          System/Libraries
 
 %description -n ghc-%{name}
 This package provides the Haskell %{name} shared library.
 
 %package -n ghc-%{name}-devel
 Summary:        Haskell %{name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -172,7 +172,7 @@ install -D -m444 man/pandoc.1 %{buildroot}%{_mandir}/man1/pandoc.1
 
 %files
 %license COPYING.md
-%doc AUTHORS.md README.md changelog
+%doc AUTHORS.md README.md changelog.md
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %dir %{_datadir}/%{name}-%{version}/data
@@ -328,6 +328,7 @@ install -D -m444 man/pandoc.1 %{buildroot}%{_mandir}/man1/pandoc.1
 %{_datadir}/%{name}-%{version}/data/templates/default.textile
 %{_datadir}/%{name}-%{version}/data/templates/default.xwiki
 %{_datadir}/%{name}-%{version}/data/templates/default.zimwiki
+%{_datadir}/%{name}-%{version}/data/templates/styles.html
 %{_datadir}/%{name}-%{version}/data/translations/*.yaml
 %{_mandir}/man1/pandoc.1%{?ext_man}
 
@@ -340,6 +341,6 @@ install -D -m444 man/pandoc.1 %{buildroot}%{_mandir}/man1/pandoc.1
 %license COPYING.md
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
-%doc AUTHORS.md README.md changelog
+%doc AUTHORS.md README.md changelog.md
 
 %changelog
