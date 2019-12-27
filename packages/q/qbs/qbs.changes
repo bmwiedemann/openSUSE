@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 26 08:30:23 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.15.0. Check the changes-1.15.0.md file for the complete changelog.
+  * Added a timeout property to Command, JavaScriptCommand and AutotestRunner.
+  * Linker map files can be generated with all toolchains.
+  * Added a session command which offers a JSON-based API for interaction with
+    other tools via stdin/ stdout.
+- Update the license tag.
+
+-------------------------------------------------------------------
 Sat Dec  7 08:56:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.14.1

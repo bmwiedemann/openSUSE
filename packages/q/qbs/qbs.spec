@@ -19,10 +19,15 @@
 
 %define qt5_version 5.11.0
 Name:           qbs
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Modern build tool for software projects
-License:        (LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only) AND GPL-3.0-with-Qt-Company-Qt-exception-1.1
+# Legal:
+# scripts/ is LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+# share/ is LGPL-2.1-only OR LGPL-3.0-only WITH Qt-LGPL-exception-1.1.
+# src/ is a mix of both licenses combo...except transformerchangetracking.{cpp,h}
+# which is GPL-3.0-only WITH Qt-GPL-exception-1.0
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND (LGPL-2.1-only OR LGPL-3.0-only WITH Qt-LGPL-exception-1.1) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 Group:          Development/Tools/Building
 URL:            https://wiki.qt.io/Qbs
 Source:         https://download.qt.io/official_releases/%{name}/%{version}/%{name}-src-%{version}.tar.gz
@@ -103,7 +108,7 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 %postun -p /sbin/ldconfig
 
 %files
-%license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3
+%license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
 %doc README changelogs/changes-%{version}.md
 %dir %{_datadir}/%{name}/
 %dir %{_libdir}/%{name}/
@@ -124,6 +129,8 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 %{_libdir}/%{name}/plugins/lib%{name}_cpp_scanner.so
 %{_libdir}/%{name}/plugins/lib%{name}_qt_scanner.so
 %{_libdir}/%{name}/plugins/libclangcompilationdbgenerator.so
+%{_libdir}/%{name}/plugins/libiarewgenerator.so
+%{_libdir}/%{name}/plugins/libkeiluvgenerator.so
 %{_libdir}/%{name}/plugins/libmakefilegenerator.so
 %{_libdir}/%{name}/plugins/libvisualstudiogenerator.so
 %{_libdir}/lib%{name}*.so.*
@@ -132,7 +139,7 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 %{_mandir}/man1/qbs*%{ext_man}
 
 %files devel
-%license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3
+%license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
 %doc %{_datadir}/%{name}/examples/
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}*.prl
