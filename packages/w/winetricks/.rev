@@ -39,4 +39,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>732082</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7b68f49e8dbb20c33e2856ccc949960d</srcmd5>
+    <version>20191224</version>
+    <time>1577450936</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20191224
+  - adjusted to current wine
+  - lots of changes and updates</comment>
+    <requestid>759194</requestid>
+  </revision>
 </revisionlist>
