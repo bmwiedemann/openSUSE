@@ -23,9 +23,9 @@ Version:        0.5.3
 Release:        0
 Summary:        Haskell98 invariant functors
 License:        BSD-2-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-StateVar-devel
 BuildRequires:  ghc-array-devel
@@ -56,7 +56,6 @@ For more information, see Edward Kmett's article "Rotten Bananas":
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -67,6 +66,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
