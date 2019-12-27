@@ -19,11 +19,10 @@
 %global pkg_name th-lift
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.0.1
+Version:        0.8.1
 Release:        0
 Summary:        Derive Template Haskell's Lift class for datatypes
 License:        (BSD-3-Clause OR GPL-2.0-only)
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -32,18 +31,25 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-th-abstraction-devel
 
 %description
-Derive Template Haskell's Lift class for datatypes using 'TemplateHaskell'
+Derive Template Haskell's 'Lift' class for datatypes using 'TemplateHaskell'.
+The functionality in this package has largely been subsumed by the 'DeriveLift'
+language extension, which is available in GHC 8.0 and later versions.
+This package can still be useful as a uniform way to derive 'Lift' instances
+that is backwards-compatible with older GHCs.
 
-* <https://hackage.haskell.org/package/th-orphans th-orphans> package provides
-instances for 'template-haskell' syntax types
+The following libraries are related:
 
-* <http://hackage.haskell.org/package/th-lift-instances th-lift-instances>
-package provides 'Lift' (compat) instances for types in 'base', 'text',
-'bytestring', 'vector' etc.
+* The <https://hackage.haskell.org/package/th-orphans th-orphans> package
+provides instances for 'template-haskell' syntax types.
+
+* The <http://hackage.haskell.org/package/th-lift-instances th-lift-instances>
+package provides 'Lift' instances for types in 'base', 'text', 'bytestring',
+'vector', etc. Some of these instances are only provided for old versions of
+their respective libraries, as the same 'Lift' instances are also present
+upstream on newer versions.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
