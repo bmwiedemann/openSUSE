@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 27 11:14:53 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fix a crash/incorrect rendering when detaching a window in
+    some circumstances (#2173)
+  * hints kitten: Add an option kitty +kitten hints --ascending
+    to control if the hints numbers increase or decrease from
+    top to bottom
+  * Fix background_opacity incorrectly applying to selected
+    text and reverse video text (#2177)
+  * Add a new option tab_bar_background to specify a different
+    color for the tab bar (#2198)
+  * Add a new option active_tab_title_template to specify a
+    different template for active tab titles (#2198)
+  * Fix lines at the edge of the window at certain windows sizes
+    when drawing images on a transparent window (#2079)
+  * Fix window not being rendered for the first time until some
+    input has been received from child process (#2216)
+
+-------------------------------------------------------------------
 Wed Nov 27 07:36:34 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.0:
