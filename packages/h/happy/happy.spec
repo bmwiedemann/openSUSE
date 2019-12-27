@@ -22,7 +22,6 @@ Version:        1.19.12
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
