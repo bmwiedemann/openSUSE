@@ -19,11 +19,10 @@
 %global pkg_name regex-tdfa
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.0
+Version:        1.3.1.0
 Release:        0
-Summary:        Replaces/Enhances Text.Regex
+Summary:        Pure Haskell Tagged DFA Backend for "Text.Regex" (regex-base)
 License:        BSD-3-Clause
-Group:          Development/Libraries/Haskell
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -34,18 +33,26 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-regex-base-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
 %if %{with tests}
-BuildRequires:  ghc-file-embed-devel
+BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-utf8-string-devel
 %endif
 
 %description
-A new all Haskell "tagged" DFA regex engine, inspired by libtre.
+This package provides a pure Haskell "Tagged" DFA regex engine for
+<//hackage.haskell.org/package/regex-base regex-base>. This implementation was
+inspired by the algorithm (and Master's thesis) behind the regular expression
+library known as <https://github.com/laurikari/tre/ TRE or libtre>.
+
+Please consult the "Text.Regex.TDFA" module for API documentation including a
+tutorial with usage examples; see also
+<https://wiki.haskell.org/Regular_expressions> for general information about
+regular expression support in Haskell.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
-Group:          Development/Libraries/Haskell
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
@@ -56,6 +63,8 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+echo > Setup.hs 'import Distribution.Simple'
+echo >>Setup.hs 'main = defaultMain'
 
 %build
 %ghc_lib_build
