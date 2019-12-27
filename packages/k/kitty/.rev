@@ -129,4 +129,27 @@
   * Wayland: Fix incorrect scale used when first creating an OS window (#2133)</comment>
     <requestid>751189</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a23e4269d5efbc4050f34ad95766fe4f</srcmd5>
+    <version>0.15.1</version>
+    <time>1577451680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.1:
+  * Fix a crash/incorrect rendering when detaching a window in
+    some circumstances (#2173)
+  * hints kitten: Add an option kitty +kitten hints --ascending
+    to control if the hints numbers increase or decrease from
+    top to bottom
+  * Fix background_opacity incorrectly applying to selected
+    text and reverse video text (#2177)
+  * Add a new option tab_bar_background to specify a different
+    color for the tab bar (#2198)
+  * Add a new option active_tab_title_template to specify a
+    different template for active tab titles (#2198)
+  * Fix lines at the edge of the window at certain windows sizes
+    when drawing images on a transparent window (#2079)
+  * Fix window not being rendered for the first time until some
+    input has been received from child process (#2216)</comment>
+    <requestid>759671</requestid>
+  </revision>
 </revisionlist>
