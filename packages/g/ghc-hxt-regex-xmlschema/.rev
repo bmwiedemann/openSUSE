@@ -56,4 +56,12 @@
     <comment>version update</comment>
     <requestid>710630</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>97a274f58b53777fab45da01b6082388</srcmd5>
+    <version>9.2.0.3</version>
+    <time>1577451265</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759428</requestid>
+  </revision>
 </revisionlist>
