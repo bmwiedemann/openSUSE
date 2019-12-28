@@ -1,8 +1,15 @@
 <services>
-    <service name="download_url" mode="disabled">
-        <param name="protocol">https</param>
-        <param name="host">github.com</param>
-        <param name="path">/keybase/client/archive/v4.7.2.tar.gz</param>
-    </service>
-    <service name="set_version" mode="disabled" />
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/keybase/client.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/v5.1.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
 </services>

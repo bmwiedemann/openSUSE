@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 27 08:53:55 UTC 2019 - Stefan Weiberg <sweiberg@suse.com>
+
+- Upgrade to version 5.1.1
+  * Enabled blocking users from their profile
+- Upgrade to version 5.1.0
+  * New features for blocking and reporting bad people
+  * Large File Storage in git
+  * Various bug fixes around team management
+  * Dark mode fixes
+  * Smaller bug fixes and performance improvements
+- Upgrade to version 5.0.0
+  * Switch between multiple accounts quickly
+  * Send short audio snippets in chat in mobile
+  * Sync KBFS files to your device for offline access
+  * Keybase FM: Learn about new features in each release in the app
+  * Better location sharing in chat
+  * Removed navigation while in chat in mobile
+  * Dark mode fixes
+  * Faster startup time
+  * Improved animations
+
+-------------------------------------------------------------------
 Tue Oct 29 19:31:55 UTC 2019 - Matthias Bach <marix@marix.org>
 
 - Upgrade to version 4.7.2

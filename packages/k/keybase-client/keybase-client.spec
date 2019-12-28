@@ -1,7 +1,7 @@
 #
 # spec file for package keybase-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019, Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,13 @@
 %{go_nostrip}
 
 Name:           keybase-client
-Version:        4.7.2
+Version:        5.1.1
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause
 Group:          Productivity/Security
-Url:            https://github.com/keybase/client/
-Source:         https://github.com/keybase/client/archive/v%{version}.tar.gz
+URL:            https://github.com/keybase/client/
+Source:         client-%{version}.tar.xz
 Source1:        README.SUSE
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
