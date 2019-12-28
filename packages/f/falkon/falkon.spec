@@ -30,6 +30,8 @@ Source1:        %{name}.changes
 # Search engine favicons.
 Source2:        obs.png
 Source3:        opensusesoftware.png
+# PATCH-FIX-UPSTREAM
+Patch0:         Add-missing-include-in-last-qt5.14.patch
 BuildRequires:  cmake(KF5Crash) >= 5.54.0
 BuildRequires:  cmake(KF5CoreAddons) >= 5.54.0
 BuildRequires:  cmake(KF5KIO) >= 5.54.0
@@ -111,6 +113,7 @@ such as storing passwords in KWallet.
 
 %prep
 %setup -q -n %{name}-%{version}
+%autopatch -p1
 # Remove __DATE__ and __TIME__
 FAKE_DATE="\"$(LC_ALL=C date -u -r %{SOURCE1} '+%%b %%e %%Y')\""
 FAKE_TIME="\"$(LC_ALL=C date -u -r %{SOURCE1} '+%%H:%%M')\""
