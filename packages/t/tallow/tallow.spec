@@ -34,7 +34,7 @@ BuildRequires:  automake
 BuildRequires:  libjson-c-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  rubygem(ronn)
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:50:26 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Thu Nov 28 12:58:54 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - 0001-Add-extra-path-for-firewall-cmd.patch: firewall-cmd can be
