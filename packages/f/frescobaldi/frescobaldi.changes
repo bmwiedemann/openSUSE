@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Dec 27 13:02:42 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.1:
+  * Requirement changes:
+    - Frescobaldi now requires Python3.3+
+  * New features:
+    - New "Document Fonts" dialog supporting text and music fonts
+      and providing a font sample previewer
+    - Possibility to load external extensions
+    - New "First System Only" option in Custom Engrave
+    - Goto Line command (#927, feature request #676)
+    - Rename file command (#1057, feature request #980)
+    - Music view:
+      - Copy to Image can copy/export to SVG, PDF and EPS in addtion to PNG/JPG
+      - New toolbar button to show/hide the magnifier
+      - New preference Horizontal / Vertical
+      - New preference Continuous / non-continuous (displays only current page(s))
+      - New commands to rotate left / right
+      - New raster layout mode (displays as many pages as fit in a View)
+      - View settings are remembered per-document
+    - Manuscript viewer:
+      - Toolbar buttons to rotate the pages left / right
+      - New toolbar button to show/hide the magnifier
+  * Bug fixes:
+    - fixed #895 seeking in MIDI player during playing stops sound
+    - fixed #768, now paper orientation is properly handled in New Score Wizard
+    - fixed #705, discrepancy of LilyPond vs. system version of GhostScript
+      on Linux (#926)
+    - fixed #1094, includepaths on Windows (#1095)
+    - fixed #1121, NameError: name 'widgets' is not defined
+  * Improvements:
+    - Score Wizard: Titles and Headers are shown in preview (#1216)
+    - Score Wizard: checkbox to write/omit pitches after \relative command
+    - Score Wizard: allow "none" for instrument names on first system (#1141)
+    - Smarter behaviour of the autocompletion popup (#918, #922)
+    - New command File->Rename/Move... (#980)
+    - Sessions can be grouped in the Sessions menu
+    - Show absolute path of include files in tooltip (#941)
+    - Restructure Tools Menu (#1080)
+    - File Open toolbar button shows recent files menu on long click
+    - Added "Blank Sheet Music" template snippet (#1139)
+  * Internals:
+    - Multithreaded Job Queue preparing multicore support (#1103)
+    - Rewrite code handling external processes/jobs (#1100)
+    - Music (pre)views could previously only display PDF documents; this has been
+      rewritten so that many more formats can be displayed like SVG and images,
+      which will open up new possibilities for the music view and the manuscript
+      viewer (#1202)
+    - The SVG view and the LilyPond documentation browser now use QtWebEngine
+      instead of the deprecated QtWebKit
+  * Translations:
+    - Userguide now has its own PO files. PO files for userguide and Frescobaldi
+      both are in 'i18n/xx_CC' directories, see README-translations
+    - updated nl translation by Wilbert Berendsen
+    - updated Italian translation by Federico Bruni
+
+-------------------------------------------------------------------
 Wed Jun 27 19:56:01 UTC 2018 - cornelis@solcon.nl
 
 - Revert use %find_lang macro: is not working

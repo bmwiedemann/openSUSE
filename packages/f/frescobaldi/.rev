@@ -114,4 +114,12 @@
 - added %find_lang to stop rpmlint warnings</comment>
     <requestid>619447</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8d53bc9aaed95f972bb8b10499e564ac</srcmd5>
+    <version>3.1</version>
+    <time>1577536826</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>759696</requestid>
+  </revision>
 </revisionlist>

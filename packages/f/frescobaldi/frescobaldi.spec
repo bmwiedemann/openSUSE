@@ -1,7 +1,7 @@
 #
 # spec file for package frescobaldi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,15 @@ Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        3.0.0
+Version:        3.1
 Release:        0
-Url:            http://www.frescobaldi.org/
+URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/frescobaldi/frescobaldi/archive/v%{version}/%{name}-%{version}.tar.gz
 # New package, was before part of frescobaldi
 # Url: https://pypi.python.org/pypi/python-ly
 # Keep in this package, because frescobaldi is the only one using it.
-Source1:        python-ly-0.9.5.tar.gz
+Source1:        https://files.pythonhosted.org/packages/01/ca/e86c73614a690d778ec9831adee0a728a495f4fb717fab263b5e4887b086/python-ly-0.9.5.tar.gz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
