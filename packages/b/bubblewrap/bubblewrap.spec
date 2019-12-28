@@ -1,7 +1,7 @@
 #
 # spec file for package bubblewrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           bubblewrap
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        Core execution tool for unprivileged containers
 License:        LGPL-2.0-or-later
 Group:          Productivity/Security
-Url:            https://github.com/projectatomic/bubblewrap
-Source0:        https://github.com/projectatomic/bubblewrap/releases/download/v%{version}/%{name}-%{version}.tar.xz
+URL:            https://github.com/projectatomic/bubblewrap
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -41,7 +41,7 @@ containers that works as a setuid binary on kernels without
 user namespaces.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 sed -i '1d' completions/bash/bwrap
 %if 0%{?suse_version} < 1500
 sed -i '1s,/usr/bin/env bash,/bin/bash,' demos/bubblewrap-shell.sh
