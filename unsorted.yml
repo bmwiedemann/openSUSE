@@ -10758,8 +10758,8 @@ unsorted:
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
   - libpoppler91-32bit: [x86_64] 
-  - libportal-devel: [i586] 
-  - libportal0: [i586] 
+  - libportal-devel 
+  - libportal0 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libportmidi0 
