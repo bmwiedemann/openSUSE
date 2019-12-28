@@ -1,7 +1,7 @@
 #
 # spec file for package python-poppler-qt5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2011 LISA GmbH, Bingen, Germany.
 # Copyright (c) 2012 Johannes Engel <jcnengel@gmail.com>
 #
@@ -21,13 +21,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-poppler-qt5
-Version:        0.25.1
+Version:        0.75.0
 Release:        0
 Summary:        Python binding to poppler-qt5
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
-URL:            https://github.com/zehome/python-poppler-qt5
-Source0:        https://github.com/zehome/python-poppler-qt5/archive/v%{version}.tar.gz
+URL:            https://pypi.org/project/python-poppler-qt5/
+Source0:        https://files.pythonhosted.org/packages/6a/7d/65a14ece5dd6a1564b576c1ca30b0f5639be64cc55b62b4d2b497159ed43/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module sip-devel}
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  python-rpm-macros
