@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 20 22:59:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.0:
+  + The biggest feature in this release is the support for joining
+    existing user and pid namespaces. This doesn't work in the
+    setuid mode (at the moment).
+  + Other changes:
+    - Stores namespace info in status json.
+    - In setuid mode pid 1 is now marked dumpable.
+    - Now builds with musl libc.
+
+-------------------------------------------------------------------
 Fri Jun  7 14:38:21 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use /bin/bash instead of /usr/bin/bash in SLE12

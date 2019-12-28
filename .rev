@@ -94,4 +94,21 @@
     <comment></comment>
     <requestid>713457</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>57f86d66128fc8363dd119c3abf65c7a</srcmd5>
+    <version>0.4.0</version>
+    <time>1577536814</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for new flatpak.
+- Update to version 0.4.0:
+  + The biggest feature in this release is the support for joining
+    existing user and pid namespaces. This doesn't work in the
+    setuid mode (at the moment).
+  + Other changes:
+    - Stores namespace info in status json.
+    - In setuid mode pid 1 is now marked dumpable.
+    - Now builds with musl libc.
+</comment>
+    <requestid>759115</requestid>
+  </revision>
 </revisionlist>
