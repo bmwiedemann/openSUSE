@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rspec
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 %define mod_name rspec
 %define mod_full_name %{mod_name}-%{version}
@@ -33,9 +33,10 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/rspec
+URL:            http://github.com/rspec
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+Source1:        rspec-3.9.0.gem.sha256
+Source2:        gem2rpm.yml
 Summary:        meta-gem that depends on the other components
 License:        MIT
 Group:          Development/Languages/Ruby
