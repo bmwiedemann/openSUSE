@@ -1,7 +1,7 @@
 #
 # spec file for package platformsh-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           platformsh-cli
-Version:        3.50.1
+Version:        3.51.0
 Release:        0
 Summary:        Tool for managing Platform.sh services from the command line
 # See licenses.txt for dependency licenses.
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
-Url:            https://github.com/platformsh/platformsh-cli
+URL:            https://github.com/platformsh/platformsh-cli
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-vendor.tar.xz
 Source10:       extensions.php

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 27 20:30:03 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.51.0:
+  * Release v3.51.0
+  * Cherry-pick from master: Templates have moved to platformsh-templates (#884)
+  * Add health.webhook integration type (#882)
+  * Fix: avoid listing duplicate activities and avoid an infinite loop
+  * Keep 'slow' build tests on PHP 7.3 because of Drush errors
+  * Update Box for PHP 7.4 support
+  * Activities will no longer have a "log" property
+  * Templates have moved to platformsh-templates (#884)
+  * Add PLATFORMSH_CLI_NO_INTERACTION variable (#878)
+  * Update the project git URL when adding/deleting an integration (#877)
+  * Test against PHP 7.4
+
+-------------------------------------------------------------------
 Fri Dec 13 21:22:59 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.50.1:
