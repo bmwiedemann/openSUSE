@@ -28,4 +28,26 @@
 </comment>
     <requestid>686021</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69fa0330300fdc80b79de31409a2e19d</srcmd5>
+    <version>0.3.0</version>
+    <time>1577536822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * Uses default the monospace 10 font now to match dmenu
+    and to be more robust
+  * Hidpi support for wayland
+- Add bemenu-0.3.0-curses.patch:
+  See https://github.com/Cloudef/bemenu/pull/77
+
+- Update to 0.2.0:
+  * wayland: implement a proper repaint cycle 
+  * Add options for renderers
+  * Add option to respect panel position
+  * x11: add pango as dependency of the x11 rendere
+  * bemenu: add --line-height / -H option
+  * Add C-g shortcut to x11 and wayland
+  * Add manpage</comment>
+    <requestid>759688</requestid>
+  </revision>
 </revisionlist>

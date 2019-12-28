@@ -18,19 +18,22 @@
 
 %define bcond_with curses
 Name:           bemenu
-Version:        0.1.0
+Version:        0.3.0
 Release:        0
 Summary:        Dynamic menu library and client program inspired by dmenu
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Cloudef/bemenu
 Source0:        https://github.com/Cloudef/bemenu/archive/%{version}.tar.gz
+# https://github.com/Cloudef/bemenu/pull/77
+Patch0:         bemenu-0.3.0-curses.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(x11)
@@ -46,8 +49,8 @@ for X, Wayland and ncurses.
 
 %package -n libbemenu0
 Summary:        Dynamic menu library inspired by dmenu
-Group:          Development/Libraries/C and C++
 # you need renderers
+Group:          Development/Libraries/C and C++
 Requires:       %{name}
 
 %description -n libbemenu0
@@ -66,6 +69,7 @@ Files required for development for Bemenu.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %if %{with curses}
 # fix colliding name with our ncurses library specifics
@@ -74,7 +78,6 @@ sed -i 's@stdscr@std_scr@g' lib/renderers/curses/curses.c
 
 %build
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
-
 
 make %{?_smp_mflags} VERBOSE=1
 
@@ -94,5 +97,7 @@ make %{?_smp_mflags} VERBOSE=1
 %files
 %{_bindir}/%{name}*
 %{_libdir}/%{name}
+%{_mandir}/man1/bemenu-run.1%{?ext_man}
+%{_mandir}/man1/bemenu.1%{?ext_man}
 
 %changelog

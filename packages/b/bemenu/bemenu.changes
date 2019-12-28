@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 27 13:37:31 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * Uses default the monospace 10 font now to match dmenu
+    and to be more robust
+  * Hidpi support for wayland
+- Add bemenu-0.3.0-curses.patch:
+  See https://github.com/Cloudef/bemenu/pull/77
+
+-------------------------------------------------------------------
+Wed Oct 30 13:15:01 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * wayland: implement a proper repaint cycle 
+  * Add options for renderers
+  * Add option to respect panel position
+  * x11: add pango as dependency of the x11 rendere
+  * bemenu: add --line-height / -H option
+  * Add C-g shortcut to x11 and wayland
+  * Add manpage
+
+-------------------------------------------------------------------
 Mon Mar  4 08:23:32 UTC 2019 - mvetter@suse.com
 
 - Update to first official release 0.1.0
