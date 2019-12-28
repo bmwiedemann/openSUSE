@@ -31,7 +31,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Golang
 Url:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.xz
-Source1:        rpmlintrc
+Source1:        %{name}-rpmlintrc
 Source2:        godoc.service
 Source3:        WORKSPACE
 Patch0:         https://raw.githubusercontent.com/bazelbuild/rules_go/0.18.5/third_party/org_golang_x_tools-gazelle.patch

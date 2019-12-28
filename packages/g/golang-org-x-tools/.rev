@@ -91,4 +91,12 @@
     <comment>- Remove reduntant usage of bazel-gazelle. (forwarded request 756831 from mrostecki)</comment>
     <requestid>756865</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>03aa34c4a1be41b6288c9a86d6c049ab</srcmd5>
+    <version>1.12+git20190313.aa829657</version>
+    <time>1577536838</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix name of the rpmlintrc file. (forwarded request 757903 from mrostecki)</comment>
+    <requestid>759729</requestid>
+  </revision>
 </revisionlist>
