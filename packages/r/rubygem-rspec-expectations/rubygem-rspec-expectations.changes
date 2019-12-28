@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:36:18 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.9.0
+
+  [Full Changelog](http://github.com/rspec/rspec-expectations/compare/v3.8.6...v3.9.0)
+
+  Enhancements:
+
+  * The `respond_to` matcher now uses the signature from `initialize` to validate checks
+    for `new` (unless `new` is non standard). (Jon Rowe, #1072)
+  * Generated descriptions for matchers now use `is expected to` rather than `should` in
+    line with our preferred DSL. (Pete Johns, #1080, rspec/rspec-core#2572)
+  * Add the ability to re-raise expectation errors when matching
+    with `match_when_negated` blocks. (Jon Rowe, #1130)
+  * Add a warning when an empty diff is produce due to identical inspect output.
+    (Benoit Tigeot, #1126)
+
+-------------------------------------------------------------------
 Mon Jul  8 07:51:08 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.8.4
