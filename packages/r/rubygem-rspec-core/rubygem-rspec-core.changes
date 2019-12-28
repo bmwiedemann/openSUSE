@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:46:03 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.9.0
+
+  [Full Changelog](http://github.com/rspec/rspec-core/compare/v3.8.2...v3.9.0)
+
+  Enhancements:
+  * Improve the handling of errors during loading support files, if a file
+    errors before loading specs, RSpec will now skip loading the specs.
+    (David Rodríguez, #2568)
+  * Add support for --example-matches to run examples by regular expression.
+    (Sam Joseph, Matt Rider, @okothkongo1, #2586)
+  * Add `did_you_mean` suggestions for file names encountering a `LoadError`
+    outside of examples. (@obromios, #2601)
+  * Add a minimalist quick fix style formatter, only outputs failures as
+    `file:line:message`. (Romain Tartière, #2614)
+  * Convert string number values to integer when used for `RSpec::Configuration#fail_fast`
+    (Viktor Fonic, #2634)
+  * Issue warning when invalid values are used for `RSpec::Configuration#fail_fast`
+    (Viktor Fonic, #2634)
+  * Add support for running the Rake task in a clean environment.
+    (Jon Rowe, #2632)
+  * Indent messages by there example group / example in the documentation formatter.
+    (Samuel Williams, #2649)
+
+-------------------------------------------------------------------
 Mon Jul  8 07:45:14 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.8.2

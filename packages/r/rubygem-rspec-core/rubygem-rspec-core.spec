@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-core
-Version:        3.8.2
+Version:        3.9.0
 Release:        0
 %define mod_name rspec-core
 %define mod_full_name %{mod_name}-%{version}
