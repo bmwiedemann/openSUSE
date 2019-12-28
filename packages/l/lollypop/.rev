@@ -1195,4 +1195,19 @@
   * Handle radios in lyrics view (glgo#World/lollypop#2131).</comment>
     <requestid>751140</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>9488af819db7373f4ca58710c2677b44</srcmd5>
+    <version>1.2.18</version>
+    <time>1577536849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.18:
+  * Fix artists and albums appearing multiple times
+    (glgo#World/lollypop#2155).
+- Changes from version 1.2.17:
+  * Fix an issue with album view (glgo#World/lollypop#2156).
+  * Fix a crash (glgo#World/lollypop#2150).
+  * Make &quot;Playback options&quot; menu faster (glgo#World/lollypop#2141).
+  * Fix a crash when editing tags (glgo#World/lollypop#2133).</comment>
+    <requestid>759772</requestid>
+  </revision>
 </revisionlist>
