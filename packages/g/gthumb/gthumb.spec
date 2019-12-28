@@ -1,7 +1,7 @@
 #
 # spec file for package gthumb
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
@@ -116,9 +116,8 @@ translation-update-upstream po %{name}
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.gnome.gThumb.appdata.xml
 %{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor/*/apps/gthumb.png
-%{_datadir}/icons/hicolor/*/apps/gthumb.svg
-%{_datadir}/icons/hicolor/*/apps/gthumb-symbolic.svg
+%{_datadir}/icons/hicolor/*/apps/gthumb*
+%{_datadir}/icons/hicolor/*/apps/org.gnome.gThumb*
 %{_datadir}/glib-2.0/schemas/org.gnome.gthumb.*.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gthumb.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gthumb.gschema.xml
