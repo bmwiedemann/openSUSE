@@ -23,8 +23,9 @@ Release:        0
 Summary:        Module for parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-URL:            http://pypi.python.org/pypi/rfc3987
+URL:            https://github.com/dgerber/rfc3987
 Source:         https://files.pythonhosted.org/packages/source/r/rfc3987/rfc3987-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,6 +41,7 @@ utilities for composition and relative resolution of references.
 
 %prep
 %setup -q -n rfc3987-%{version}
+sed -i '1{/^#!/d}' rfc3987.py
 
 %build
 %python_build
@@ -49,7 +51,7 @@ utilities for composition and relative resolution of references.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no tests in git repo
+%pytest --doctest-modules
 
 %files %{python_files}
 %license COPYING.txt
