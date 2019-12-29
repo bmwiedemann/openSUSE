@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysqlclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/PyMySQL/mysqlclient-python
 Source:         https://files.pythonhosted.org/packages/source/m/mysqlclient/mysqlclient-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python3-attrs
 BuildRequires:  fdupes
 BuildRequires:  libmysqlclient-devel
+BuildRequires:  mariadb-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-attrs
 BuildRequires:  unzip
 Recommends:     mariadb
 Provides:       python-mysql = %{version}
@@ -59,6 +62,29 @@ This package adds Python 3 support and bug fixes to MySQLdb1.
 %python_build
 
 python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+
+%check
+exit_code=0
+cconf=abuild-myclient.cnf
+#
+# start the mariadb server
+#
+%mysql_testserver_start -u abuild -p abuildpw
+#
+# creating client mysql config
+#
+%mysql_testserver_cconf -n $cconf
+#
+# running the test
+#
+rm -r MySQLdb
+export TESTDB="$PWD/$cconf"
+%pytest_arch -k "not (test_LONG or test_TEXT)"
+#
+# stopping mariadb
+#
+%mysql_testserver_stop
+exit $exit_code
 
 %install
 %python_install
