@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-server-fixtures
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,7 +113,7 @@ export PATH=$HOME/bin:$PATH:%{_sbindir}
 export SERVER_FIXTURES_HTTPD_MODULES=%{_libdir}/apache2/
 export SERVER_FIXTURES_HTTPD=httpd
 export SERVER_FIXTURES_REDIS=%{_sbindir}/redis-server
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGES.md README.md
