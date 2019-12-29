@@ -17,9 +17,9 @@
 
 
 # define libraries
-%define libutil libwsutil10
-%define libwire libwireshark12
-%define libtap libwiretap9
+%define libutil libwsutil11
+%define libwire libwireshark13
+%define libtap libwiretap10
 %define libcodecs libwscodecs2
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
@@ -27,7 +27,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.0.7
+Version:        3.2.0
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  flex
 BuildRequires:  glib2-devel >= 2.32
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  krb5-devel
+BuildRequires:  libbrotli-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcares-devel
 BuildRequires:  libgcrypt-devel >= 1.8.0
@@ -66,6 +67,7 @@ Requires(pre):  permissions
 Requires(pre):  shadow
 Recommends:     wireshark-ui = %{version}
 Provides:       ethereal = %{version}
+Obsoletes:      %{libcodecs} < %{version}
 Obsoletes:      ethereal < %{version}
 Provides:       group(wireshark)
 %if %{with lz4}
@@ -121,17 +123,9 @@ Group:          System/Libraries
 Wiretap, part of the Wireshark project, is a library that allows one to read
 and write several packet capture file formats.
 
-%package -n %{libcodecs}
-Summary:        Network packet dissection codecs library
-Group:          System/Libraries
-
-%description -n %{libcodecs}
-The libwscodecs library provides codec functions for libwireshark.
-
 %package devel
 Summary:        A Network Traffic Analyser
 Group:          Development/Libraries/C and C++
-Requires:       %{libcodecs} = %{version}
 Requires:       %{libtap} = %{version}
 Requires:       %{libutil} = %{version}
 Requires:       %{libwire} = %{version}
@@ -232,8 +226,6 @@ exit 0
 %postun -n %{libwire} -p /sbin/ldconfig
 %post -n %{libtap} -p /sbin/ldconfig
 %postun -n %{libtap} -p /sbin/ldconfig
-%post -n %{libcodecs} -p /sbin/ldconfig
-%postun -n %{libcodecs} -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -265,9 +257,6 @@ exit 0
 
 %files -n %{libtap}
 %{_libdir}/libwiretap.so.*
-
-%files -n %{libcodecs}
-%{_libdir}/libwscodecs.so.*
 
 %files devel
 %{_includedir}/wireshark

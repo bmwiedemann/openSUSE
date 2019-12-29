@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 19 08:54:00 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.2.0 
+  * Brotli decompression support in HTTP/HTTP2 (requires the brotli library).
+  * You can now follow HTTP/2 and QUIC streams.
+  * HTTP2 support streaming mode reassembly. To use this feature, subdissectors can register itself to "streaming_content_type" dissector table and return pinfo→desegment_len and pinfo→desegment_offset to tell HTTP2 when to start and how many additional bytes requires when next called.
+  * IOGraph automatically adds a graph for the selected display filter if no previous graph exists
+  * WireGuard decryption can now be enabled through keys embedded in a pcapng in addition to the existing key log preference (Bug 15571).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.2.0.html
+
+-------------------------------------------------------------------
 Thu Dec 05 04:10:01 UTC 2019 - seanlew@opensuse.org
 
 - wireshark 3.0.7:
