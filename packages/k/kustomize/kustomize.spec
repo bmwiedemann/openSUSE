@@ -28,6 +28,9 @@ Source1:        vendor.tar.xz
 BuildRequires:  golang(API) >= 1.12
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
+%ifarch %arm aarch64
+BuildRequires:  binutils-gold
+%endif
 
 %description
 kustomize customizes raw, template-free kubernetes YAML files for
