@@ -1,0 +1,12 @@
+Index: gummi-0.8.0/src/configfile.c
+===================================================================
+--- gummi-0.8.0.orig/src/configfile.c
++++ gummi-0.8.0/src/configfile.c
+@@ -31,6 +31,7 @@
+ 
+ #include <glib.h>
+ #include <sys/stat.h>
++#include <string.h>
+ 
+ #include "constants.h"
+ #include "utils.h"

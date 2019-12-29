@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Tue Dec 24 14:08:08 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- New patch: gummi-implicit-fortify-decl.patch to fix GCC warning
+  for incompatible implicit declaration of built-in function
+  'strlen' (gh#alexandervdm/gummi#124). 
+
