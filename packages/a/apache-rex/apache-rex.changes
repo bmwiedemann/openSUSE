@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 10:29:45 UTC 2019 - pgajdos@suse.com
+
+- version update to 20191219
+  * modify: mod_authn_dbd-pgsql: control ipc
+  * new:    mod_authz_unixgroup
+
+-------------------------------------------------------------------
 Tue Dec  3 13:34:14 UTC 2019 - pgajdos@suse.com
 
 - version update to 20191203
