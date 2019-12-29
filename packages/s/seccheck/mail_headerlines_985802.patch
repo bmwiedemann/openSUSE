@@ -1,0 +1,21 @@
+diff -ur a/security-control.sh b/security-control.sh
+--- a/security-control.sh	2019-03-07 09:37:00.000000000 +0100
++++ b/security-control.sh	2019-09-08 17:53:36.960000000 +0200
+@@ -58,7 +58,7 @@
+          if [ -s "$OUT2" ]; then
+             {
+                 cat <<-EOF
+-    From: $SECCHK_FROM
++		From: $SECCHK_FROM
+ 		To: $SECCHK_USER
+ 		Subject: Local Weekly Security for `hostname`: Changes
+ 
+@@ -79,7 +79,7 @@
+          test -e "$SEC_DATA/devices" || /bin/sh "$SEC_BIN/security-weekly.sh" 1> "$OLD2"
+          {
+             cat <<-EOF
+-    From: $SECCHK_FROM
++		From: $SECCHK_FROM
+ 		To: $SECCHK_USER
+ 		Subject: Local Monthly Security for `hostname`: Complete
+ 

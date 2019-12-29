@@ -30,6 +30,8 @@ Group:          Productivity/Security
 Url:            https://github.com/openSUSE/seccheck
 Source0:        https://github.com/openSUSE/seccheck/archive/master.zip
 Source1:        sysconfig.seccheck
+Patch1:         mail_headerlines_985802.patch
+Patch2:         timers_wanted_by_1132919.patch
 BuildRequires:  unzip
 Requires:       bash
 # FIXME: use proper Requires(pre/post/preun/...)
@@ -43,11 +45,13 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
 %description
-Regularly executable scripts (via cron) for checking the security of
-your system.
+Regularly executable scripts (via systemd timers) for checking the security of
+your system. The seccheck systemd timers have to be enabled (and possibly started)
+by the administrator for the checks to be run.
 
 %prep
 %setup -q -n seccheck-master
+%autopatch -p1
 
 %build
 
