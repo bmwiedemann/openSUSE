@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs8
-Version:        8.16.2
+Version:        8.17.0
 Release:        0
 
 %define node_version_number 8
@@ -122,7 +122,6 @@ Patch3:         fix_ci_tests.patch
 Patch7:         manual_configure.patch
 Patch12:        openssl_1_1_1.patch
 
-Patch31:        CVE-2019-13173.patch
 Patch32:        fix_build_with_openssl_1.1.1d.patch
 
 ## Patches specific to SUSE and openSUSE
@@ -186,11 +185,16 @@ BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
+
+%if %node_version_number > 12
+BuildRequires:  python3
+%else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
 %else
 BuildRequires:  python
 %endif
+%endif  # python3
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
 BuildRequires:  group(nobody)
@@ -279,13 +283,14 @@ Requires:       %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.4.1
+Provides:       npm(npm) = 6.13.4
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
 Recommends:     python2
+Recommends:     python3
 %else
 Recommends:     python
 %endif
@@ -324,7 +329,6 @@ tar Jxvf %{SOURCE11}
 %if 0%{with valgrind_tests}
 %endif
 %patch12 -p1
-%patch31 -p1
 %patch32 -p1
 %patch101 -p1
 %patch102 -p1
