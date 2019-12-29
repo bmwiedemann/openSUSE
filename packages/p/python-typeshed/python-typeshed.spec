@@ -1,7 +1,7 @@
 #
 # spec file for package python-typeshed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define modname typeshed
 Name:           python-typeshed
-Version:        0.0.1+git.1562136779.4af283e1
+Version:        0.0.1+git.20191227.21a9e696
 Release:        0
 Summary:        Static type information for python modules
 License:        Apache-2.0
@@ -34,13 +34,13 @@ BuildRequires:  python3-base
 BuildRequires:  python3-flake8
 BuildRequires:  python3-flake8-bugbear
 BuildRequires:  python3-flake8-pyi
+#BuildRequires:  python3-pytype
 BuildRequires:  python3-typed-ast
 Recommends:     mypy
 Provides:       python3-typeshed = %{version}
 Obsoletes:      python3-typeshed < %{version}
 Provides:       python2-typeshed = %{version}
 Obsoletes:      python2-typeshed < %{version}
-# BuildRequires:  pytype>=2018.9.19
 BuildArch:      noarch
 
 %description

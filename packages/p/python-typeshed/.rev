@@ -100,4 +100,41 @@
     <comment>- Provide/obsolete python2-typeshed too</comment>
     <requestid>717185</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>36498a54ffc4d21fb74862f03635d93e</srcmd5>
+    <version>0.0.1+git.20191227.21a9e696</version>
+    <time>1577630965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.20191227.21a9e696:
+  * Update shutil.unpack_archive for 3.7 and up (#3558)
+  * Add ast.unparse (#3557)
+  * Add antigravity module (#3555)
+  * Add __init__ to MappingView and its subclasses (#3528)
+  * Remove unused type _HTTPResponse (#3531)
+  * Fix RSAPublicNumbers stub (#3505)
+  * shutil: Fix rmtree type (#3536)
+  * Add typestubs for the warnings module (#3543)
+  * Add dbm stubs (#3508)
+  * functools: remove first type param of cached_property (#3553)
+  * Preserve original type in total_ordering annotation (#3552)
+  * Update stubs for Crypto.Random (#3546)
+  * Add undocumented methods and make types more specific in 2/unittest (#3550)
+  * add jinja macro fields (#3548)
+  * add a couple missing stubs and fix an incorrect return type for redis stubs (#3545)
+  * Add stubs for winsound module (#3535)
+  * Make sure that the context manager for sqlite3.Connection works (#3542)
+  * Add __enter__, __exit__ to IMAP4, make __init__ arguments optional (#3540)
+  * Add date.__radd__ and datetime.__radd__ (#3539)
+
+- Update to version 0.0.1+git.20191209.a06abc5d:
+  * Make fieldnames of csv.DictReader Optional (#3534)
+  * Update orjson stub from orjson repository(#3532)
+  * Update stub for socket module (#3451)
+  * Use Literal to improve SpooledTemporaryFile (#3526)
+  * random: fix type for sample (#3525)
+  * add raw property to BufferedIOBase (#3483)
+  * Minor fixes to cryptography (x509) (#3520)
+  * Simplify `WatchedFileHandler.__init__` (#3506)</comment>
+    <requestid>759722</requestid>
+  </revision>
 </revisionlist>

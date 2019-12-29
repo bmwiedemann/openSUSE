@@ -1,10 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionprefix">0.0.1+git</param>
     <param name="url">https://github.com/python/typeshed.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git*</param>
     <param name="changesgenerate">enable</param>
+    <param name="versionformat">0.0.1+git.%cd.%h</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>
