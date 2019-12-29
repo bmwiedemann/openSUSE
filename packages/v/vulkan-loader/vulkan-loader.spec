@@ -16,20 +16,19 @@
 #
 
 
-Name:           vulkan-loader
 %define lname	libvulkan1
+Name:           vulkan-loader
 Version:        1.1.130
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Loader
-
 Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/v%version.tar.gz
 Source9:        baselibs.conf
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  pkgconfig(pciaccess)
@@ -67,13 +66,13 @@ This subpackage contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%setup -qn Vulkan-Loader-%version
+%autosetup -n Vulkan-Loader-%version
 
 %build
 %cmake \
 	-DVulkanHeaders_INCLUDE_DIR:PATH="%_includedir" \
 	-DVulkanRegistry_DIR:PATH="%_datadir/vulkan/registry"
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
