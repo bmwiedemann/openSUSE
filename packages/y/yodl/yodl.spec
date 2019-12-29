@@ -1,7 +1,7 @@
 #
 # spec file for package yodl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yodl
-Version:        4.02.01
+Version:        4.02.02
 Release:        0
 Summary:        Yet One-other Document Language
 License:        GPL-3.0-only
 Group:          Development/Tools/Doc Generators
-Url:            https://fbb-git.gitlab.io/yodl/
+URL:            https://fbb-git.gitlab.io/yodl/
 Source:         https://gitlab.com/fbb-git/yodl/-/archive/%{version}/yodl-%{version}.tar.gz
 Patch0:         %{name}-doc-packages.patch
 BuildRequires:  bison

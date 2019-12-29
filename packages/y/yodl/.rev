@@ -336,4 +336,12 @@ Fixes build failure seen in openSUSE:Factory:Staging</comment>
     <comment>remove clear screen from build to make this package build on s390x (forwarded request 733082 from azouhr)</comment>
     <requestid>733086</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d1ef3cf191e521d08d6dd2e22973c057</srcmd5>
+    <version>4.02.02</version>
+    <time>1577630919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>759303</requestid>
+  </revision>
 </revisionlist>

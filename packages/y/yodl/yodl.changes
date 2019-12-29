@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 19 11:37:43 UTC 2019 - pgajdos@suse.com
+
+- version update to 4.02.02
+  * Yodlverbinsert's -N option appends verb('s closing ) to the last line of
+     the verbatim text, preventing an extra blank line at the end. The
+     description of the verb(...) macro in yodlmacros(7) advises on how to 
+     prevent extra blank lines when using the verb(...) macros in Yodl text.
+ 
+-------------------------------------------------------------------
 Mon Sep 23 10:43:22 UTC 2019 - Berthold Gunreben <azouhr@opensuse.org>
 
 - Remove clear screen from build for s390x since this is broken on 
