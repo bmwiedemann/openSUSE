@@ -1,7 +1,7 @@
 #
 # spec file for package otrs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@
 
 Name:           otrs
 
-%define otrs_ver 6.0.22
-%define itsm_ver 6.0.22
+%define otrs_ver 6.0.24
+%define itsm_ver 6.0.24
 %define itsm_min 6
 %define otrs_root /srv/%{name}
 %define otrsdoc_dir_files AUTHORS* CHANGES* COPYING* CREDITS README* UPGRADING.SUSE doc
@@ -245,6 +245,9 @@ install -d %{buildroot}/%{_sbindir}
 # install OTRS base system
 cp -a . %{buildroot}/${DESTROOT}
 
+# remove SECURITY.md
+rm -f %{buildroot}/${DESTROOT}/SECURITY.md
+
 for configFile in .fetchmailrc .mailfilter .procmailrc; do
   touch %{buildroot}/${DESTROOT}/${configFile}
 done
@@ -387,7 +390,7 @@ exit 0
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS.md CHANGES.md COPYING* README* UPGRADING.SUSE
+%doc AUTHORS.md CHANGES.md COPYING* README* SECURITY.md UPGRADING.SUSE
 %{otrs_root}/ARCHIVE
 %{otrs_root}/RELEASE
 %{otrs_root}/.bash_completion

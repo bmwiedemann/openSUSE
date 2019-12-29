@@ -506,4 +506,12 @@ update OTRS:ITSM to 3.1.4</comment>
     <comment>update to 6.0.22</comment>
     <requestid>728241</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>23522a663b51701cb46cac58f88ae32c</srcmd5>
+    <version>6.0.24</version>
+    <time>1577630983</time>
+    <user>dimstar_suse</user>
+    <comment>update to 6.0.24, fix for boo#1157001 (CVE-2019-18179, OSA-2019-14),(CVE-2019-18180, OSA-2019-15) (forwarded request 759811 from computersalat)</comment>
+    <requestid>759812</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,40 @@
 -------------------------------------------------------------------
+Sat Dec 28 18:16:25 UTC 2019 - chris@computersalat.de
+
+- Update 6.0.24
+  https://community.otrs.com/otrs-community-edition-6-patch-level-24/
+- fix for boo#1157001
+  * (CVE-2019-18180, OSA-2019-15)
+    Denial of service
+    OTRS can be put into an endless loop by providing filenames with
+    overly long extensions. This applies to the PostMaster
+    (sending in email) and also upload
+    (attaching files to mails, for example).
+  * (CVE-2019-18179, OSA-2019-14)
+    Information Disclosure
+    An attacker who is logged into OTRS as an agent is able to list
+    tickets assigned to other agents, which are in the queue where
+    attacker doesn’t have permissions.
+
+-------------------------------------------------------------------
+Sun Nov 10 13:42:13 UTC 2019 - chris@computersalat.de
+
+- Update to 6.0.23
+  https://community.otrs.com/otrs-community-edition-6-patch-level-23/
+- fix for boo#1156431
+  * (CVE-2019-16375, OSA-2019-13)
+    Stored XXS
+    An attacker who is logged into OTRS as an agent or customer user
+    with appropriate permissions can create a carefully crafted
+    string containing malicious JavaScript code as an article body.
+    This malicious code is executed when an agent compose an answer
+    to the original article.
+
+-------------------------------------------------------------------
 Tue Sep  3 14:45:53 UTC 2019 - chris@computersalat.de
 
 - Update to 6.0.22
-  https://community.otrs.com/release-notes-otrs-6-patch-level-22/
+  https://community.otrs.com/otrs-community-edition-6-patch-level-22/
 
 -------------------------------------------------------------------
 Sat Jul 20 11:26:28 UTC 2019 - chris@computersalat.de
