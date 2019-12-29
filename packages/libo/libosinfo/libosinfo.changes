@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 27 09:30:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire and Require hwdata: usb.ids and pci.ids are shipped
+  and maintained by this package. Prior to version 1.7.x, libosinfo
+  shipped own, outdated copies (boo#1159838).
+
+-------------------------------------------------------------------
 Wed Dec  4 08:04:03 MST 2019 - carnold@suse.com
 
 - Update to version 1.7.1

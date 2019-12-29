@@ -1,7 +1,7 @@
 #
 # spec file for package libosinfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,10 +25,11 @@ Release:        0
 Summary:        Operating system and hypervisor information management library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://releases.pagure.org/libosinfo/
+URL:            https://releases.pagure.org/libosinfo/
 Source0:        https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
 Source1:        ids.tar.bz2
 BuildRequires:  gtk-doc
+BuildRequires:  hwdata
 BuildRequires:  libcurl-devel
 BuildRequires:  meson
 BuildRequires:  vala
@@ -54,6 +55,8 @@ combination.
 Summary:        Operating system and hypervisor information management library
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
+# for usb.ids and pci.ids
+Requires:       hwdata
 
 %description -n libosinfo-1_0-0
 libosinfo is a library that allows virtualization provisioning tools to
