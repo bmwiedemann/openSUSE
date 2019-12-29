@@ -1,7 +1,7 @@
 #
 # spec file for package libnl3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libnl3
 %define lname	libnl3-200
 %define with_tools 1
-%define uver	3_4_0
-%define rversion 3.4.0
-Version:        3.4
+%define uver	3_5_0
+Version:        3.5.0
 Release:        0
 Summary:        Convenience library for working with Netlink sockets
-License:        LGPL-2.1 and GPL-2.0
+License:        LGPL-2.1-only AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://www.carisma.slowglass.com/~tgr/libnl/#(outdated)
+URL:            http://www.carisma.slowglass.com/~tgr/libnl/#(outdated)
 
-#Git-Clone:	git://github.com/thom311/libnl/
+#Git-Clone:	https://github.com/thom311/libnl/
 #Mailing-List:	http://lists.infradead.org/mailman/listinfo/libnl
-Source:         https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%rversion.tar.gz
-Source2:        https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%rversion.tar.gz.sig
+Source:         https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz
+Source2:        https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz.sig
 Source3:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison >= 2.4
@@ -51,7 +50,7 @@ Netlink protocol based Linux kernel interfaces.
 
 %package -n %lname
 Summary:        Convenience library for working with Netlink sockets
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
 Requires:       libnl-config >= %version
 
@@ -61,7 +60,7 @@ netlink protocol based Linux kernel interfaces.
 
 %package devel
 Summary:        Libraries and headers for libnl
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Provides:       libnl-devel = %version-%release
@@ -78,7 +77,7 @@ Netlink protocol based Linux kernel interfaces.
 
 %package -n libnl-config
 Summary:        Name maps for libnl
-License:        LGPL-2.1 and GPL-2.0
+License:        LGPL-2.1-only AND GPL-2.0-only
 Group:          Productivity/Networking/Security
 %if 0%{?suse_version} >= 1130
 BuildArch:      noarch
@@ -92,7 +91,7 @@ the same; in particular
 
 %package -n libnl-tools
 Summary:        Command line utilities to directly work with Netlink
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 
 %description -n libnl-tools
@@ -102,7 +101,7 @@ demonstrated.
 %endif
 
 %prep
-%setup -qn libnl-%rversion
+%setup -qn libnl-%version
 
 %build
 %configure --disable-static

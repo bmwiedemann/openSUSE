@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 19 23:02:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.0
+  * route/qdisc: add 64-bit rate/ceil support for htb class
+  * xfrmi: introduce XFRM interfaces support
+  * xfrm: fix memory corruption (dangling pointer) when when
+    setting xfrmnl_sa
+  * route/link: avoid dangling pointer in rtnl_link_set_slave_type()
+  * nla_ok: fix overrun in attribute iteration.
+  * route:act: add vlan action
+  * route:tc: allow to set chain index for tc objects
+  * route:qdisc: add MQPRIO Qdisc
+  * if_tunnel: update IFLA defines up to FWMARK
+  * Add support for cloning cgroup filter objects
+  * neigh: cache updates as well query AF_BRIDGE neigh
+  * route:cls: add matchall classifier
+  * neigh: support bridge entries for vxlan interfaces
+  * rule: add support for protocol and port ranges
+  * link: add Geneve support
+
+-------------------------------------------------------------------
 Mon Feb 26 11:31:07 UTC 2018 - jengelh@inai.de
 
 - Update to new upstream release 3.4.0 [boo#1082756]

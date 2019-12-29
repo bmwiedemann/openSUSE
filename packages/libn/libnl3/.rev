@@ -304,4 +304,12 @@ Dunno.</comment>
     <comment>- Update to new upstream release 3.4.0 [boo#1082756]</comment>
     <requestid>580261</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>dff1872dbfd0300932ad4e2db759076f</srcmd5>
+    <version>3.5.0</version>
+    <time>1577630933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>759593</requestid>
+  </revision>
 </revisionlist>
