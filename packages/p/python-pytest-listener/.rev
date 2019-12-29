@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>732123</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c5e9bd2ff53ceb26054a5fd39b1a251f</srcmd5>
+    <version>1.7.0</version>
+    <time>1577630979</time>
+    <user>dimstar_suse</user>
+    <comment>- use pytest macro</comment>
+    <requestid>759800</requestid>
+  </revision>
 </revisionlist>
