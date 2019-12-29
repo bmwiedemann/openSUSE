@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 22 15:40:06 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 0.19.3
+  * The major changes of this version:
+  * Direct ASCOM support for Telescope Control plugin on Windows
+  * Refactoring the GUI
+  * Many improvements in the code
+  * Added many DSO textures
+  * Improvements in DSO catalog
+  * Many improvements in AstroCalc tool
+
+-------------------------------------------------------------------
 Sun Sep 29 10:32:29 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 0.19.2

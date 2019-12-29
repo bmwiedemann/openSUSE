@@ -312,4 +312,21 @@
     <comment></comment>
     <requestid>733912</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d36d40d645ae10cba1437db8b54d7253</srcmd5>
+    <version>0.19.3</version>
+    <time>1577631013</time>
+    <user>dimstar_suse</user>
+    <comment>Using mode='localonly' in the _service file
+
+- Update to version 0.19.3
+  * The major changes of this version:
+  * Direct ASCOM support for Telescope Control plugin on Windows
+  * Refactoring the GUI
+  * Many improvements in the code
+  * Added many DSO textures
+  * Improvements in DSO catalog
+  * Many improvements in AstroCalc tool</comment>
+    <requestid>759889</requestid>
+  </revision>
 </revisionlist>
