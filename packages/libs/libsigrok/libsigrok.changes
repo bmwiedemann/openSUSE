@@ -1,8 +1,32 @@
 -------------------------------------------------------------------
+Sun Dec 29 01:34:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.5.2
+  * New supported hardware:
+    + Logic analyzers: Microchip PICkit2, Sysclk SLA5032
+    + Multimeters: Agilent 34405A, Agilent U127x, HP 34401A,
+      Keysight 34465A, MASTECH MS2115B, Mooshimeter
+    + Programmable power supplies: BK Precision 9130, HP 661xC,
+      HP 66312A, HP 663xA, Korad KA3005P/KD6005P, Manson HCS-330x,
+      RND 320-KD3005P, Stamos S-LS-31, TENMA 72-2535 V2.1,
+      Voltcraft DPPS-32-15
+    + Oscilloscopes: Agilent DSO1000B series, Hameg HMO3522,
+      Rigol MSO5000 series, R&S HMO1000/RTA4000/RTB2000/RTC1000/RTM3000
+      series, YiXingDianZi MDSO
+    + LCR meters: MASTECH MS5308, PeakTech 2165, UNI-T UT612,
+      Voltcraft 4080
+    + Thermometers: MASTECH MS6514
+  * This release also includes improved (and portable) USB HID
+    support via HIDAPI, and Bluetooth/BLE support.
+  * See included NEWS file for more details
+- Drop upstream 0001-Fix-link-errors-when-compiling-with-LTO-enabled.patch
+- Rebase LTO-linking-fix.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 08:20:05 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - Another fix for LTO (https://sigrok.org/bugzilla/show_bug.cgi?id=1433)
- * add LTO-linking-fix.patch 
+ * add LTO-linking-fix.patch
 
 -------------------------------------------------------------------
 Sat Sep 14 21:22:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>

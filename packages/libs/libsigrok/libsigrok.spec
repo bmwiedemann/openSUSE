@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrok
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           libsigrok
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 %define libname %{name}4
 %define libcxxname libsigrokcxx4
 Summary:        API for talking to logic analyzer hardware
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            http://sigrok.org
+URL:            http://sigrok.org
 Source0:        http://sigrok.org/download/source/libsigrok/%{name}-%{version}.tar.gz
 Source1:        sigrok-mime.xml
-Patch0:         0001-Fix-link-errors-when-compiling-with-LTO-enabled.patch
 Patch1:         LTO-linking-fix.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
@@ -123,14 +122,6 @@ sed -i '/ID_SIGROK/ p; s/TAG.*/%{mm_ignore}/' %{buildroot}%{_udevrulesdir}/61-li
 install -m 644 -D %{SOURCE1} %{buildroot}%{_datadir}/mime/packages/vnd.sigrok.session.xml
 install -m 644 -D contrib/libsigrok.png %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/libsigrok.png
 install -m 644 -D contrib/libsigrok.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes/libsigrok.svg
-
-%post data
-%mime_database_post
-%icon_theme_cache_post
-
-%postun data
-%mime_database_postun
-%icon_theme_cache_postun
 
 %post -n %{libname} -p /sbin/ldconfig
 
