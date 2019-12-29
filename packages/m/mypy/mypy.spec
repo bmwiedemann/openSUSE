@@ -1,7 +1,7 @@
 #
 # spec file for package mypy
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mypy
-Version:        0.720
+Version:        0.750
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -62,6 +62,9 @@ for scr in mypy/typeshed/tests/*.py ; do
     sed -i -e '1 s|env ||' $scr
 done
 
+sed -i '/env python3/d' ./mypy/stubgenc.py
+sed -i '/env python3/d' ./mypy/stubgen.py
+
 %build
 %python3_build
 pushd docs
@@ -75,6 +78,8 @@ popd
 
 %check
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
+sed -i '/plugin/d' ./mypy_self_check.ini
+sed -i '/warn_unused_ignores/d' ./mypy_self_check.ini
 python3 -m mypy --config-file mypy_self_check.ini -p mypy
 # py.test3 -v … we need to analyze subset of tests which would be
 # available and without large dependencies.
@@ -85,6 +90,7 @@ python3 -m mypy --config-file mypy_self_check.ini -p mypy
 %{python3_sitelib}/*
 %{_bindir}/dmypy
 %{_bindir}/mypy
+%{_bindir}/mypyc
 %{_bindir}/stubgen
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 12 12:09:10 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.750
+ * More Precise Error Locations
+ * Colors in Output
+ * Pretty Output Mode
+ * Old Semantic Analyzer Removed
+ * Type Checking for str.format Calls
+ * Improved check_untyped_defs
+ * Stricter Treatment of Context Manager Objects
+ * More Powerful Self-types
+ * Mypy Daemon is No Longer Experimental
+
+-------------------------------------------------------------------
 Fri Nov 15 11:07:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Pull in full interpreter as we can't have this package working

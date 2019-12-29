@@ -162,4 +162,21 @@
   with just base interpreter</comment>
     <requestid>748862</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>825c7e75429402e9c7456d6541f25b25</srcmd5>
+    <version>0.750</version>
+    <time>1577630963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.750
+ * More Precise Error Locations
+ * Colors in Output
+ * Pretty Output Mode
+ * Old Semantic Analyzer Removed
+ * Type Checking for str.format Calls
+ * Improved check_untyped_defs
+ * Stricter Treatment of Context Manager Objects
+ * More Powerful Self-types
+ * Mypy Daemon is No Longer Experimental</comment>
+    <requestid>756059</requestid>
+  </revision>
 </revisionlist>
