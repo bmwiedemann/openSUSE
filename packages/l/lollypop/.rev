@@ -1210,4 +1210,13 @@
   * Fix a crash when editing tags (glgo#World/lollypop#2133).</comment>
     <requestid>759772</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>378c4f8a01ec1345ec327fa3da8d2d14</srcmd5>
+    <version>1.2.19</version>
+    <time>1577630982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.19:
+  * Fix an issue with party mode.</comment>
+    <requestid>759802</requestid>
+  </revision>
 </revisionlist>
