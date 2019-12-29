@@ -5172,6 +5172,8 @@ unsorted:
   - guilt 
   - guitarix 
   - guix 
+  - gummi 
+  - gummi-lang 
   - gup 
   - gupnp-dlna-tools 
   - gupnp-tools 
@@ -12865,8 +12867,6 @@ unsorted:
   - lxde-common-branding-upstream 
   - lximage-qt 
   - lximage-qt-lang 
-  - lxmusic 
-  - lxmusic-lang 
   - lxpanel-devel 
   - lxqt-about 
   - lxqt-about-lang 
@@ -15257,8 +15257,6 @@ unsorted:
   - osc-plugin-origin: [x86_64] 
   - osc-plugin-staging: [x86_64] 
   - osclib: [x86_64] 
-  - osdlyrics 
-  - osdlyrics-lang 
   - osgi-annotation 
   - osgi-annotation-javadoc 
   - osgi-compendium 
@@ -21544,7 +21542,6 @@ unsorted:
   - python3-osc-lib 
   - python3-osc-tiny 
   - python3-oscrypto 
-  - python3-osdlyrics 
   - python3-oslo.cache 
   - python3-oslo.concurrency 
   - python3-oslo.config 
