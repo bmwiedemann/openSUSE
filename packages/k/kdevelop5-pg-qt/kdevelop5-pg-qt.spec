@@ -25,6 +25,8 @@ License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org/
 Source0:        https://download.kde.org/stable/kdevelop-pg-qt/%{version}/src/%{rname}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-build-with-Qt-5.14.patch
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flex
@@ -39,6 +41,7 @@ Supporting package for the additional plugins for Kdevelop5 Integrated Developme
 
 %prep
 %setup -q -n %{rname}-%{version}
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build
