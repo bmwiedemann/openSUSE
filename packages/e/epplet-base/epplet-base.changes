@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  7 15:52:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing Xext build dependency
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Sep 27 17:36:52 UTC 2017 - dimstar@opensuse.org
 
 - Drop esound-devel BuildRequires: esound has been obsoleted by a

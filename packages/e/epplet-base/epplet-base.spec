@@ -1,7 +1,7 @@
 #
 # spec file for package epplet-base
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Url:            http://www.enlightenment.org/
-
 Name:           epplet-base
+Version:        0.10
+Release:        0
+Summary:        Applets for the Enlightenment DR16 Window Manager
+License:        GPL-2.0-or-later
+Group:          System/GUI/Other
+URL:            https://www.enlightenment.org/
+Source:         epplets-%{version}.tar.bz2
+Patch0:         epplets-unsuficient_include.patch
+Patch1:         epplet-base-linking.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  imlib2-devel >= 1.2.0
 BuildRequires:  libtool
-BuildRequires:  pkg-config >= 0.9.0
-Summary:        Applets for the Enlightenment DR16 Window Manager
-License:        GPL-2.0+
-Group:          System/GUI/Other
-Version:        0.10
-Release:        0
-Source:         epplets-%{version}.tar.bz2
-Patch:          epplets-unsuficient_include.patch
-Patch1:         epplet-base-linking.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(xext)
 
 %description
 Epplets are programs designed to work with the Enlightenment Window
@@ -43,26 +42,25 @@ information.
 
 %prep
 %setup -q -n epplets-%{version}
-%patch 
+%patch0
 %patch1 -p1
 
 %build
 autoreconf --force --install
-CFLAGS="$CFLAGS $RPM_OPT_FLAGS -fno-strict-aliasing" \
+CFLAGS="$CFLAGS %{optflags} -fno-strict-aliasing" \
 %configure --disable-static --with-pic --enable-fsstd
 make %{?_smp_mflags}
 
 %check
 export MALLOC_CHECK_=2
-%{__make} check
+make %{?_smp_mflags} check
 unset MALLOC_CHECK_
 
 %install
 make DESTDIR=%{buildroot} libdir=%{_libdir} install
-rm -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
