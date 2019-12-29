@@ -1,7 +1,7 @@
 #
 # spec file for package proftpd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
 Version:        1.3.6b
 Release:        0
-Url:            http://www.proftpd.org/
+URL:            http://www.proftpd.org/
 Source0:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz.asc
 Source11:       %{name}.init
@@ -47,6 +47,8 @@ Patch103:       %{name}-strip.patch
 Patch104:       %{name}-no_BuildDate.patch
 #RPMLINT-FIX-openSUSE: env-script-interpreter
 Patch105:       %{name}_env-script-interpreter.patch
+#PATCH-FIX-UPSTREAM: (CVE-2019-19269, CVE-2019-19270)
+Patch200:       %{name}-tls-crls-issue859.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  gpg-offline
 BuildRequires:  fdupes
@@ -54,7 +56,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 #BuildRequires:  libmemcached-devel
-BuildRequires:  libGeoIP-devel
+#BuildRequires:  libGeoIP-devel
 BuildRequires:  mysql-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
@@ -155,8 +157,11 @@ rm README.AIX
 %patch104
 %patch105
 
+%patch200 -p1
+
 %build
 rm contrib/mod_wrap.c
+rm contrib/mod_geoip.c
 PROFTPD_SHARED_MODS="$(for spec_mod in $(find contrib -name mod_\*.c|sort); do echo "$(basename ${spec_mod%%.c})"; done | tr '\n' ':' | sed -e 's|:$||')"
 export CFLAGS="%{optflags} -D_GNU_SOURCE -DLDAP_DEPRECATED"
 export CXXFLAGS="$CFLAGS"

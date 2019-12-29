@@ -1,0 +1,35 @@
+commit 81cc5dce4fc0285629a1b08a07a109af10c208dd
+Author: TJ Saunders <tj@castaglia.org>
+Date:   Sun Nov 24 14:03:54 2019 -0800
+
+    Issue #859, #861: Fix handling of CRL lookups by properly using issuer for
+    lookups, and guarding against null pointers.
+    (CVE-2019-19269, CVE-2019-19270)
+
+diff --git a/contrib/mod_tls.c b/contrib/mod_tls.c
+index 4b74cf989..0e08b0399 100644
+--- a/contrib/mod_tls.c
++++ b/contrib/mod_tls.c
+@@ -9777,10 +9777,10 @@ static int tls_verify_crl(int ok, X509_STORE_CTX *ctx) {
+ 
+ #if OPENSSL_VERSION_NUMBER >= 0x10100000L && \
+     !defined(HAVE_LIBRESSL)
+-  crls = X509_STORE_CTX_get1_crls(store_ctx, subject);
++  crls = X509_STORE_CTX_get1_crls(store_ctx, issuer);
+ #elif OPENSSL_VERSION_NUMBER >= 0x10000000L && \
+       !defined(HAVE_LIBRESSL)
+-  crls = X509_STORE_get1_crls(store_ctx, subject);
++  crls = X509_STORE_get1_crls(store_ctx, issuer);
+ #else
+   /* Your OpenSSL is before 1.0.0.  You really need to upgrade. */
+   crls = NULL;
+@@ -9799,6 +9799,9 @@ static int tls_verify_crl(int ok, X509_STORE_CTX *ctx) {
+         ASN1_INTEGER *sn;
+ 
+         revoked = sk_X509_REVOKED_value(X509_CRL_get_REVOKED(crl), j);
++        if (revoked == NULL) {
++          continue;
++        }
+ #if OPENSSL_VERSION_NUMBER >= 0x10100000L && \
+     !defined(HAVE_LIBRESSL)
+         sn = X509_REVOKED_get0_serialNumber(revoked);
