@@ -42,4 +42,12 @@ Thanks</comment>
 - drop libxdg-basedir-fix_tests.patch</comment>
     <requestid>335029</requestid>
   </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>f4d04372a2620f102c5d74b38f86d2c5</srcmd5>
+    <version>1.2.0</version>
+    <time>1577631003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759834</requestid>
+  </revision>
 </revisionlist>

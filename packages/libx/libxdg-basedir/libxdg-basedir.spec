@@ -2,7 +2,7 @@
 #
 # spec file for package libxdg-basedir
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,22 +14,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+
+%define soname 1
 Name:           libxdg-basedir
 Version:        1.2.0
 Release:        0
-%define soname 1
 Summary:        XDG Base Directory Specification Library
 License:        MIT
 Group:          System/Libraries
-Url:            http://nevill.ch/libxdg-basedir/
-Source:         http://nevill.ch/libxdg-basedir/downloads/libxdg-basedir-%{version}.tar.gz
+URL:            https://github.com/devnev/libxdg-basedir
+Source:         https://github.com/devnev/libxdg-basedir/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/devnev/libxdg-basedir/pull/3 -- lnussel@suse.de
 Patch0:         0001-Overflow-bug.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -75,31 +76,30 @@ This library implements functions to list the directories according to the
 specification and provides a few higher-level functions.
 
 %prep
-%setup -q -n "libxdg-basedir-%{version}"
+%setup -q -n "%{name}-%{name}-%{version}"
 %patch0 -p1
 
 %build
+autoreconf --force --install
 %configure
-%__make %{?_smp_flags}
+make %{?_smp_mflags}
 
 %check
-%__make check
+make %{?_smp_mflags} check
 
 %install
-%makeinstall
-%__rm "%{buildroot}%{_libdir}/libxdg-basedir.la"
+%make_install
+rm "%{buildroot}%{_libdir}/libxdg-basedir.la"
 
 %post   -n libxdg-basedir1 -p /sbin/ldconfig
 %postun -n libxdg-basedir1 -p /sbin/ldconfig
 
 %files -n "%{name}%{soname}"
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libxdg-basedir.so.%{soname}
 %{_libdir}/libxdg-basedir.so.%{soname}.*
 
 %files -n "%{name}-devel"
-%defattr(-,root,root)
 %{_includedir}/basedir.h
 %{_includedir}/basedir_fs.h
 %{_libdir}/libxdg-basedir.so
