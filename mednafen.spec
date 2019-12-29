@@ -1,7 +1,7 @@
 #
 # spec file for package mednafen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mednafen
-Version:        1.22.2
+Version:        1.24.0
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
 Group:          System/Emulators/Other
 URL:            https://mednafen.github.io
-Source:         https://mednafen.github.io/releases/files/%{name}-%{version}.tar.xz
+Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}-UNSTABLE.tar.xz
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  alsa-devel
 BuildRequires:  gcc-c++
@@ -47,6 +47,7 @@ Nintendo: NES, FDS, Game Boy (Color|Advance), Super Nintendo, Virtual Boy.
 Sega: Master System, Game Gear, Genesis/MegaDrive, Saturn.
 Nec: TurboGrafx-16/PC Engine (CD), SuperGrafx, PC-FX.
 Sony: PlayStation.
+Apple: II/II+.
 Atari: Lynx.
 SNK: Neo Geo Poket (Color).
 Bandai: Wonderswan (Color).
@@ -66,17 +67,16 @@ This package contains optional documentation provided in addition to this packag
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang %{name}
 
 %files
-%defattr(0644,root,root,-)
 %license COPYING
 %doc ChangeLog TODO
-%attr(0755,root,root) %{_bindir}/%{name}
+%{_bindir}/%{name}
 
 %files doc
 %doc Documentation/?*.{css,def,html,png,txt}
