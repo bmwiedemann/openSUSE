@@ -19,15 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-zeroconf
-Version:        0.23.0
+Version:        0.24.3
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/jstasiak/python-zeroconf
-Source:         https://github.com/jstasiak/python-zeroconf/archive/%{version}.tar.gz
+Source:         https://github.com/jstasiak/python-zeroconf/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         python-zeroconf-disable-some-tests.patch
 BuildRequires:  %{python_module ifaddr}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,22 +44,24 @@ is not tied to Bonjour or Avahi, does not use D-Bus and
 does not force you to use a particular event loop or python-twisted.
 
 %prep
-%setup -q -n python-zeroconf-%{version}
+%setup -q
+%patch0 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand rm -f %{buildroot}%{$python_sitelib}/zeroconf/test.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# needs network interface test_launch_and_close
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v -k 'not test_launch_and_close'
+# tests that do not run in an OBS chroot are disabled via python-zeroconf-disable-some-tests.patch
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %python_exec -m unittest discover -v
 
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/zeroconf*
 
 %changelog

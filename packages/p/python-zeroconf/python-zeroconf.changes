@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec 28 20:25:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Adjust dependencies and the %check section so the testsuite can
+  still be executed
+- Add patch:
+  * python-zeroconf-disable-some-tests.patch
+- Update to version 0.24.3
+  * Fixed import-time "TypeError: 'ellipsis' object is not
+    iterable." on CPython 3.5.2
+- Update to version 0.24.2
+  * Added support for AWDL interface on macOS (needed and used by
+    the opendrop project but should be useful in general)
+  * Added missing type hints
+- Update to version 0.24.1
+  * Applied some significant performance optimizations
+  * Fixed flushing outdated cache entries when incoming record
+    is unique
+  * Fixed handling updates of TXT records (they'd not get recorded
+    previously)
+- Update to version 0.24.0
+  * Added IPv6 support
+  * Added additional recommended records to PTR responses
+  * Added handling of ENOTCONN being raised during shutdown when
+    using Eventlet
+  * Included the py.typed marker in the package so that type
+    checkers know to use type hints from the source code
+
+-------------------------------------------------------------------
 Thu Jun  6 07:35:15 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - version update to 0.23.0
