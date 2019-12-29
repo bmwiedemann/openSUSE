@@ -1,7 +1,7 @@
 #
 # spec file for package php7-gmagick
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,6 +27,8 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/gmagick
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        %{pkg_name}.ini
+# PATCH-FIX-UPSTREAM fix-segfault-on-shutdown.patch https://bugs.php.net/bug.php?id=78465
+Patch0:         fix-segfault-on-shutdown.patch
 BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  GraphicsMagick-devel >= 1.3.17
 BuildRequires:  ghostscript-fonts-std
@@ -47,6 +49,7 @@ the GraphicsMagick API
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+%patch0
 mkdir %{name}
 
 %build
