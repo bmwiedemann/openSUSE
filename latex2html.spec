@@ -1,7 +1,7 @@
 #
 # spec file for package latex2html
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        LaTeX to HTML Converter
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Utilities
-Url:            http://www.ctan.org/tex-archive/support/latex2html
+URL:            https://github.com/latex2html/latex2html/
 Source0:        https://github.com/latex2html/latex2html/archive/v%{version}.tar.gz
 Source1:        latex2html-manual.tar.bz2
 Patch0:         latex2html-share-dir.diff
