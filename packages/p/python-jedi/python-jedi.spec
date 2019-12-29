@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jedi
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -70,7 +70,8 @@ export LANG="en_US.UTF-8"
 # test_static_analysis is flaky
 # test_os_path_join is time based
 # test_import and test_compiled_signature gh#davidhalter/jedi#1429
-%pytest -k "not (test_venv_and_pths or test_completion or test_builtin_details or test_static_analysis or test_os_path_join or test_import or test_compiled_signature)"
+# test_module__file__ and test_sqlite3_conversion based on 'bundled' typeshed
+%pytest -k "not (test_venv_and_pths or test_completion or test_builtin_details or test_static_analysis or test_os_path_join or test_import or test_compiled_signature or test_module__file__ or test_sqlite3_conversion)"
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGELOG.rst README.rst

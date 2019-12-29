@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 28 15:02:12 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.2
+- skip tests based on bundled typeshed
+- refreshed unbundle.patch
+ * Call signatures are now detected a lot better
+ * Add fuzzy completions with Script(...).completions(fuzzy=True)
+ * Files bigger than one MB (about 20kLOC) get cropped to avoid
+    getting stuck completely.
+ * A big refactoring around contexts/values
+
+-------------------------------------------------------------------
 Sat Nov 23 17:06:14 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - So, this is completely boring, non-offensive changelog record,

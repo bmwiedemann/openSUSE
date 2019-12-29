@@ -157,4 +157,19 @@
   gh#davidhalter/jedi#1429</comment>
     <requestid>750559</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>80dad82ca76cfe0b6164f0a1fc3e53fb</srcmd5>
+    <version>0.15.2</version>
+    <time>1577630966</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.2
+- skip tests based on bundled typeshed
+- refreshed unbundle.patch
+ * Call signatures are now detected a lot better
+ * Add fuzzy completions with Script(...).completions(fuzzy=True)
+ * Files bigger than one MB (about 20kLOC) get cropped to avoid
+    getting stuck completely.
+ * A big refactoring around contexts/values</comment>
+    <requestid>759790</requestid>
+  </revision>
 </revisionlist>
