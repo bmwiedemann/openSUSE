@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pybind11
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause

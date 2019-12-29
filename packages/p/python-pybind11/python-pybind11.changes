@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 21 15:51:16 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.4.3
+  * Adapt pybind11 to a C API convention change in Python 3.8.
+
+-------------------------------------------------------------------
 Tue Oct  8 09:11:41 UTC 2019 - Christian Goll <cgoll@suse.com>
 
 - updated to 2.4.2
