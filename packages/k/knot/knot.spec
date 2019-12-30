@@ -1,7 +1,7 @@
 #
 # spec file for package knot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -39,9 +39,9 @@ Version:        1.6.8
 Release:        0
 %define pkg_name knot
 Summary:        An authoritative DNS daemon
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/DNS/Servers
-Url:            http://www.knot-dns.cz
+URL:            http://www.knot-dns.cz
 Source0:        https://secure.nic.cz/files/knot-dns/%{pkg_name}-%{version}.tar.xz
 Source1:        knot.conf
 Source2:        knot.service
@@ -75,7 +75,7 @@ BuildRequires:  protobuf-c >= 1.0.0
 %endif
 %if %{with systemd}
 %define has_systemd 1
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Conflicts:      knot2
