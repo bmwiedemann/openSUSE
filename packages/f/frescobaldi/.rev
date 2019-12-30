@@ -122,4 +122,15 @@
     <comment>new version</comment>
     <requestid>759696</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>624b1e035580833332d5861c80911d78</srcmd5>
+    <version>3.1</version>
+    <time>1577705723</time>
+    <user>dimstar_suse</user>
+    <comment>- Also build translations
+
+- Add python3-qtwebengine-qt5 to Requires, is needed to run
+  frescobaldi</comment>
+    <requestid>759962</requestid>
+  </revision>
 </revisionlist>

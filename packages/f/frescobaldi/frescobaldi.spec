@@ -35,6 +35,7 @@ BuildRequires:  update-desktop-files
 Requires:       lilypond
 Requires:       python3-poppler-qt5
 Requires:       python3-qt5
+Requires:       python3-qtwebengine-qt5
 Requires:       python3-sip
 Recommends:     libportmidi0
 BuildArch:      noarch
@@ -55,6 +56,7 @@ tools to manipulate the rhythm, acticulations, lyrics hyphenation, etc.
 %build
 rm -rf %{name}_app/icons/Tango
 python3 setup.py build
+make -C i18n
 
 %install
 %suse_update_desktop_file %{name} Multimedia AudioVideoEditing

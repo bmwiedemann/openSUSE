@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 29 23:48:05 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Also build translations
+
+-------------------------------------------------------------------
+Sun Dec 29 23:09:44 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Add python3-qtwebengine-qt5 to Requires, is needed to run
+  frescobaldi
+
+-------------------------------------------------------------------
 Fri Dec 27 13:02:42 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.1:
