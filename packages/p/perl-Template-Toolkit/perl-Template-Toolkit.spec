@@ -17,7 +17,7 @@
 
 
 Name:           perl-Template-Toolkit
-Version:        2.29
+Version:        3.003
 Release:        0
 %define cpan_name Template-Toolkit
 Summary:        Template Processing System
@@ -40,7 +40,7 @@ Template Processing System
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -56,6 +56,6 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes HACKING README testrules.yml TODO
+%doc Changes HACKING README.md testrules.yml TODO
 
 %changelog
