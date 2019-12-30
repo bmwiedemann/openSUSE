@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 30 10:22:00 UTC 2019 - marix@marix.org
+
+- Update to version 0.12:
+  * Logitech devices now work when connected via Bluetooh
+  * Default verbosity level changed to raw
+  * Added and improved devices:
+    + Roccat Kone Pure
+    + Logitech M585/M590
+  * Fixed devices:
+    + Logitech G305
+
+-------------------------------------------------------------------
 Mon Nov 11 20:04:08 UTC 2019 - marix@marix.org
 
 - Update to version 0.11:
