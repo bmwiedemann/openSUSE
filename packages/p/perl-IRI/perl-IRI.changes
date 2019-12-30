@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 28 03:09:20 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.010  2019-12-26
+  
+   - (Update) Fix component resolution to remove dots when base resolution
+     occurs without a scheme but with a user/port/host.
+
+-------------------------------------------------------------------
 Fri Aug 30 18:45:09 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Remove outdated patch fix-package.diff (also not needed anymore)

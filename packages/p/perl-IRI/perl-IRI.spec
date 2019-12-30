@@ -17,7 +17,7 @@
 
 
 Name:           perl-IRI
-Version:        0.009
+Version:        0.010
 Release:        0
 %define cpan_name IRI
 Summary:        Internationalized Resource Identifiers
