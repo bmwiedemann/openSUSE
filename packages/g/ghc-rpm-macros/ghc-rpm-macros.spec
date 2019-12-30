@@ -19,7 +19,7 @@
 %global macros_dir %{_sysconfdir}/rpm
 %global without_hscolour 1
 Name:           ghc-rpm-macros
-Version:        1.7.4
+Version:        1.9.90
 Release:        0
 Summary:        RPM Macros for building packages for GHC
 License:        GPL-3.0-or-later
@@ -27,10 +27,8 @@ Group:          Development/Libraries/Other
 Url:            https://fedoraproject.org/wiki/Haskell_SIG
 # source gets updated with osc service dr
 Source0:        %{name}-%{version}.tar.xz
-Patch:          no-selfbootstrap-check.patch
 BuildRequires:  xz
 Requires:       rpm
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if %{undefined without_hscolour}
 Requires:       hscolour
@@ -60,7 +58,6 @@ Macros used when generating source Haskell rpm packages.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 echo no build stage needed
@@ -76,9 +73,7 @@ install -p -D -m 0755 cabal-tweak-flag %{buildroot}/%{_bindir}/cabal-tweak-flag
 install -p -D -m 0755 ghc-pkg-wrapper %{buildroot}/%{_prefix}/lib/rpm/ghc-pkg-wrapper
 install -p -D -m 0644 ghc.attr %{buildroot}/%{_prefix}/lib/rpm/fileattrs/ghc.attr
 install -p -D -m 0755 ghc-dirs.sh %{buildroot}/%{_prefix}/lib/rpm/ghc-dirs.sh
-%if 0%{?suse_version} <= 1320
-install -d -D -m 0755 %{buildroot}%{_datadir}/licenses
-%endif
+install -p -D -m 0644 Setup.hs %{buildroot}/%{_datadir}/%{name}/Setup.hs
 
 %files
 %doc AUTHORS
@@ -92,11 +87,8 @@ install -d -D -m 0755 %{buildroot}%{_datadir}/licenses
 %{_prefix}/lib/rpm/ghc-pkg-wrapper
 %{_prefix}/lib/rpm/fileattrs/ghc.attr
 %{_prefix}/lib/rpm/ghc-dirs.sh
-# With 1.7.4 of ghc-rpm-macros license files are installed here
-# but rpm does not own this directory on older openSUSE.
-%if 0%{?suse_version} <= 1320
-%dir %{_datadir}/licenses
-%endif
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/Setup.hs
 
 %files extra
 %config %{macros_dir}/macros.ghc-extra

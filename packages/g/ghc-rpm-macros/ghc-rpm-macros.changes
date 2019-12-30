@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 20 07:44:37 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.9.90
+ * backport upstream changes
+ * workaround for packages without Setup.hs file
+ - drop no-selfbootstrap-check.patch
+
+-------------------------------------------------------------------
 Wed Jul 18 14:26:39 UTC 2018 - psimons@suse.com
 
 - Cosmetic: replace tabs with blanks, strip trailing white space,

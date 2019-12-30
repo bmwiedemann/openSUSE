@@ -367,4 +367,15 @@ Fix macros to generate file permissions</comment>
 - update to 1.6.91</comment>
     <requestid>623848</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4a09dca486b3d13be4fa3bb3cb1051a5</srcmd5>
+    <version>1.9.90</version>
+    <time>1577705678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.90
+ * backport upstream changes
+ * workaround for packages without Setup.hs file
+ - drop no-selfbootstrap-check.patch</comment>
+    <requestid>759906</requestid>
+  </revision>
 </revisionlist>
