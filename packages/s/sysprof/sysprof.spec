@@ -1,7 +1,7 @@
 #
 # spec file for package sysprof
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
 Source0:        http://download.gnome.org/sources/sysprof/3.34/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM sysprof-libsysprof-ui-avoid-use-of-env.patch -- Avoid use of env
+Patch0:         sysprof-libsysprof-ui-avoid-use-of-env.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

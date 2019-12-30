@@ -147,4 +147,12 @@
     <comment>New stable release</comment>
     <requestid>754914</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>d33bc7bb7e289c353c863ea1efd52d7a</srcmd5>
+    <version>3.34.1</version>
+    <time>1577705662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759890</requestid>
+  </revision>
 </revisionlist>
