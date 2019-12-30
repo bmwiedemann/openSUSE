@@ -59,7 +59,7 @@ Xdebug also provides:
 %setup -q -n %{pkg_name}-%{pkg_version}
 
 %build
-sed -i -e "s|; This is a generated file, do not modify by hand|zend_extension = \"xdebug.so\"|g" xdebug.ini
+sed -i '1s|^|; comment out next line to disable xdebug extension in php\nzend_extension=xdebug.so\n\n|' xdebug.ini
 export CFLAGS="%{optflags} -fvisibility=hidden"
 %{__phpize}
 %configure --enable-xdebug
