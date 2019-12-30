@@ -1,7 +1,7 @@
 #
 # spec file for package nginx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,7 @@
 #
 
 
-%bcond_with    cpp_test
-%bcond_with    google_perftools
-
-%if 0%{?is_opensuse}
-%bcond_without extra_modules
-%else
-%bcond_with    extra_modules
-%endif
-
-%if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
-%bcond_without libatomic
-%else
-%bcond_with    libatomic
-%endif
-
-%if 0%{?suse_version} > 1220
-%bcond_without http2
-%bcond_without pcre_jit
-%bcond_without systemd
-%else
-%bcond_with    http2
-%bcond_with    pcre_jit
-%bcond_with    systemd
-%endif
-
-%{!?vim_data_dir:%global vim_data_dir /usr/share/vim/%(readlink /usr/share/vim/current)}
-
+%{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim/%(readlink %{_datadir}/vim/current)}
 %define pkg_name nginx
 %define ngx_prefix     %{_prefix}
 %define ngx_sbin_path  %{_sbindir}/nginx
@@ -59,6 +33,37 @@
 %define ngx_tmp_scgi   %{ngx_home}/scgi/
 %define ngx_tmp_uwsgi  %{ngx_home}/uwsgi/
 %define ngx_user_group nginx
+%define ngx_doc_dir    %{_docdir}/%{name}
+%define ngx_fancyindex_version 0.4.2
+%define ngx_fancyindex_module_path ngx-fancyindex-%{ngx_fancyindex_version}
+%define headers_more_nginx_version 0.33
+%define headers_more_nginx_module_path headers-more-nginx-module-%{headers_more_nginx_version}
+%define nginx_upstream_check_version 0.3.0
+%define nginx_upstream_check_module_path nginx_upstream_check_module-%{nginx_upstream_check_version}
+%define nginx_rtmp_version 1.2.1
+%define nginx_rtmp_module_path nginx-rtmp-module-%{nginx_rtmp_version}
+%define src_install_dir %{_prefix}/src/%{name}
+%if 0%{?is_opensuse}
+%bcond_without extra_modules
+%else
+%bcond_with    extra_modules
+%endif
+%if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
+%bcond_without libatomic
+%else
+%bcond_with    libatomic
+%endif
+%if 0%{?suse_version} > 1220
+%bcond_without http2
+%bcond_without pcre_jit
+%bcond_without systemd
+%else
+%bcond_with    http2
+%bcond_with    pcre_jit
+%bcond_with    systemd
+%endif
+%bcond_with    cpp_test
+%bcond_with    google_perftools
 #
 %if %{with systemd}
 %define ngx_pid_path   /run/nginx.pid
@@ -67,25 +72,10 @@
 %define ngx_pid_path   %{_localstatedir}/run/nginx.pid
 %define ngx_lock_path  %{_localstatedir}/run/nginx.lock
 %endif
-%define ngx_doc_dir    %{_datadir}/doc/packages/%{name}
 #
 Name:           nginx
-Version:        1.17.6
+Version:        1.17.7
 Release:        0
-%define ngx_fancyindex_version 0.4.2
-%define ngx_fancyindex_module_path ngx-fancyindex-%{ngx_fancyindex_version}
-
-%define headers_more_nginx_version 0.33
-%define headers_more_nginx_module_path headers-more-nginx-module-%{headers_more_nginx_version}
-
-%define nginx_upstream_check_version 0.3.0
-%define nginx_upstream_check_module_path nginx_upstream_check_module-%{nginx_upstream_check_version}
-
-%define nginx_rtmp_version 1.2.1
-%define nginx_rtmp_module_path nginx-rtmp-module-%{nginx_rtmp_version}
-
-%define src_install_dir /usr/src/%{name}
-
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
@@ -99,7 +89,7 @@ Source5:        https://github.com/openresty/headers-more-nginx-module/archive/v
 Source6:        https://github.com/yaoweibin/nginx_upstream_check_module/archive/v%{nginx_upstream_check_version}/%{nginx_upstream_check_module_path}.tar.gz
 Source7:        https://github.com/arut/nginx-rtmp-module/archive/v%{nginx_rtmp_version}/%{nginx_rtmp_module_path}.tar.gz
 Source100:      nginx.rpmlintrc
-Source101:      http://nginx.org/download/nginx-%{version}.tar.gz.asc
+Source101:      https://nginx.org/download/nginx-%{version}.tar.gz.asc
 Source102:      https://nginx.org/keys/mdounin.key#/%{name}.keyring
 # PATCH-FIX-UPSTREAM nginx-1.11.2-no_Werror.patch
 Patch0:         nginx-1.11.2-no_Werror.patch
@@ -115,6 +105,8 @@ Patch4:         nginx-aio.patch
 Patch5:         check_1.9.2+.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gd-devel
+#
+BuildRequires:  libGeoIP-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
@@ -122,14 +114,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  vim
 BuildRequires:  zlib-devel
 %requires_eq    perl
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Recommends:     logrotate
 Recommends:     vim-plugin-nginx
-Conflicts:      otherproviders(nginx)
+Conflicts:      nginx
 Provides:       http_daemon
 Provides:       httpd
-#
-BuildRequires:  libGeoIP-devel
 #
 %if %{with google_perftools}
 BuildRequires:  google-perftools-devel
@@ -154,10 +144,11 @@ It has been running on many heavily loaded Russian sites for more than two years
 %package -n vim-plugin-nginx
 Summary:        VIM support for nginx config files
 Group:          Productivity/Text/Editors
+%requires_eq    vim
 %if 0%{?suse_version} > 1110
 BuildArch:      noarch
 %endif
-%requires_eq    vim
+
 %description -n vim-plugin-nginx
 nginx [engine x] is a HTTP server and IMAP/POP3 proxy server written by Igor Sysoev.
 It has been running on many heavily loaded Russian sites for more than two years.
@@ -192,6 +183,7 @@ sed -i "s/\/var\/run/\/run/" conf/nginx.conf
 %endif
 
 %build
+# FIXME: you should use the %%configure macro
 ./configure                                    \
   --prefix=%{ngx_prefix}/                      \
   --sbin-path=%{ngx_sbin_path}                 \
