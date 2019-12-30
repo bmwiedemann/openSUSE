@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec  9 10:08:02 UTC 2019 - wullinger@rz.uni-kiel.de
+
+- update to exim 4.93
+  * SUPPORT_DMARC replaces EXPERIMENTAL_DMARC
+  * DISABLE_TLS replaces SUPPORT_TLS
+  * Bump the version for the local_scan API.
+  * smtp transport option hosts_try_fastopen defaults to "*".
+  * DNSSec is requested (not required) for all queries. (This seemes to
+    ask for trouble if your resolver is a systemd-resolved.)
+  * Generic router option retry_use_local_part defaults to "true" under specific
+    pre-conditions.
+  * Introduce a tainting mechanism for values read from untrusted sources.
+  * Use longer file names for temporary spool files (this avoids
+    name conflicts with spool on a shared file system).
+  * Use dsn_from main config option (was ignored previously).
+
+-------------------------------------------------------------------
+Mon Sep 30 15:39:54 UTC 2019 - poeml@cmdline.net
+
+- update to exim 4.92.3
+  * CVE-2019-16928: fix against Heap-based buffer overflow in string_vformat,
+    remote code execution seems to be possible
+
+-------------------------------------------------------------------
 Sat Sep  7 18:22:08 UTC 2019 - poeml@cmdline.net
 
 - update to exim 4.92.2

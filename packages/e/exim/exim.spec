@@ -1,7 +1,7 @@
 #
 # spec file for package exim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xt)
-Url:            http://www.exim.org/
+URL:            http://www.exim.org/
 Conflicts:      sendmail sendmail-tls postfix
 Provides:       smtp_daemon
 %if %{?suse_version:%suse_version}%{?!suse_version:0} > 800
@@ -72,7 +72,7 @@ Requires(pre):  group(mail)
 %endif
 Requires(pre):  fileutils textutils
 %endif
-Version:        4.92.2
+Version:        4.93
 Release:        0
 %if %{with_mysql}
 BuildRequires:  mysql-devel
@@ -197,7 +197,7 @@ cat <<-EOF > Local/Makefile
 	LOOKUP_PASSWD=yes
 	# LOOKUP_WHOSON=yes
 	CYRUS_SASLAUTHD_SOCKET=/var/run/sasl2/mux
-	LOOKUP_LIBS=-llber
+	LOOKUP_LIBS=-llber -lnsl
 %if %{with_ldap}
 	LDAP_LIB_TYPE=OPENLDAP2
 	LOOKUP_LIBS+=-lldap
@@ -224,6 +224,7 @@ cat <<-EOF > Local/Makefile
 	AUTH_DOVECOT=yes
     AUTH_TLS=yes
 	AUTH_LIBS=-lsasl2
+    USE_OPENSSL=yes
 	SUPPORT_TLS=yes
 	TLS_LIBS=-lssl -lcrypto
 	INFO_DIRECTORY=%{_infodir}
@@ -273,7 +274,7 @@ cat <<-EOF > Local/Makefile
 	HAVE_IPV6=YES
     SUPPORT_SPF=yes
 	LOOKUP_LIBS+=-lspf2
-    #EXPERIMENTAL_DMARC=yes
+    #SUPPORT_DMARC=yes
 	#CFLAGS += -I/usr/local/include
 	#LDFLAGS += -lopendmarc
 	EXPERIMENTAL_EVENT=yes
@@ -289,7 +290,7 @@ cat <<-EOF > Local/Makefile
 	EXPERIMENTAL_INTERNATIONAL=yes
 %endif
 	LDFLAGS += -lidn
-	CFLAGS=$RPM_OPT_FLAGS -Wall $CFLAGS_OPT_WERROR -fno-strict-aliasing -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DLDAP_DEPRECATED $fPIE
+	CFLAGS=$RPM_OPT_FLAGS -std=gnu99 -Wall $CFLAGS_OPT_WERROR -fno-strict-aliasing -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DLDAP_DEPRECATED $fPIE
 	EXTRALIBS=-ldl -lpam -L/usr/X11R6/%{_lib} $pie
 EOF
 touch Local/eximon.conf
