@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 27 17:23:35 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- add mozilla-bmo1583471.patch to allow building with rust 1.39
+
+-------------------------------------------------------------------
+Fri Dec 20 16:02:55 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.3.1
+  * In dark theme unread messages no longer shown in blue to
+    distinguish from tagged messages
+  * Account setup is now using client side DNS MX lookup instead of
+    relying on a server
+  Bugfixes
+  * Searching LDAP address book crashed in some circumstances
+  * Message navigation with backward and forward buttons did not work
+    in some circumstances
+  * WebExtension toolbar icons were displayed too small
+  * Calendar: Tasks due today were not listed in bold
+  * Calendar: Last day of long-running events was not shown
+
+-------------------------------------------------------------------
 Thu Dec  5 10:29:18 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.3.0:

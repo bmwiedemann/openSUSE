@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Nov 29 14:43:11 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Rename README to README.suse-maint and add it as a source
+  to stop factory-auto from declining submissions automatically
+
+-------------------------------------------------------------------
+Mon Nov 25 13:25:52 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Re-format the spec file
+- Add a README to explain the update process
+- Add _service file for download the assets and re-base the patches
+
+-------------------------------------------------------------------
+Fri Nov  8 23:43:13 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add hopefully-fix-rustdoc-build.patch to fix rustdoc compilation
+
+-------------------------------------------------------------------
+Thu Nov  7 15:33:25 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1.39.0
+  + Language
+    - You can now create async functions and blocks with async fn,
+      async move {}, and async {} respectively, and you can now call
+      .await on async expressions.
+    - You can now use certain attributes on function, closure, and
+      function pointer parameters.
+    - You can now take shared references to bind-by-move patterns in
+      the if guards of match arms.
+  + Compiler
+    - Added tier 3 support for the i686-unknown-uefi target.
+    - Added tier 3 support for the sparc64-unknown-openbsd target.
+    - rustc will now trim code snippets in diagnostics to fit in your
+      terminal.
+    - You can now pass --show-output argument to test binaries to
+      print the output of successful tests.
+  + For more details:
+    https://github.com/rust-lang/rust/blob/stable/RELEASES.md#version-1390-2019-11-07
+- Drop patches already merged in upstream:
+  + rust-61206-assume-tarball-llvm-is-fresh.patch
+  + add-option-to-allow-warnings.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 09:56:33 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
 
 - Switch to bundled version of libgit2 for now. libgit2-sys seems

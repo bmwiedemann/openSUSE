@@ -4141,4 +4141,41 @@
   * CVE-2019-11765 (bmo#1562582)</comment>
     <requestid>744799</requestid>
   </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>c7aa7a727f25aca42d50d5cf9402031a</srcmd5>
+    <version>71.0</version>
+    <time>1577710101</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 71.0
+  * Improvements to Lockwise, our integrated password manager
+  * More information about Enhanced Tracking Protection in action
+  * Native MP3 decoding on Windows, Linux, and macOS
+  * Configuration page (about:config) reimplemented in HTML
+  * New kiosk mode functionality, which allows maximum screen space
+    for customer-facing displays
+  MFSA 2019-36
+  * CVE-2019-11756 (bmo#1508776)
+    Use-after-free of SFTKSession object
+  * CVE-2019-17008 (bmo#1546331)
+    Use-after-free in worker destruction
+  * CVE-2019-13722 (bmo#1580156) (Windows only)
+    Stack corruption due to incorrect number of arguments in WebRTC code
+  * CVE-2019-17014 (bmo#1322864)
+    Dragging and dropping a cross-origin resource, incorrectly loaded
+    as an image, could result in information disclosure
+  * CVE-2019-17010 (bmo#1581084)
+    Use-after-free when performing device orientation checks
+  * CVE-2019-17005 (bmo#1584170)
+    Buffer overflow in plain text serializer
+  * CVE-2019-17011 (bmo#1591334)
+    Use-after-free when retrieving a document in antitracking
+  * CVE-2019-17012 (bmo#1449736, bmo#1533957, bmo#1560667, bmo#1567209
+    bmo#1580288, bmo#1585760, bmo#1592502)
+    Memory safety bugs fixed in Firefox 71 and Firefox ESR 68.3
+  * CVE-2019-17013 (bmo#1298509, bmo#1472328, bmo#1577439, bmo#1577937
+    bmo#1580320, bmo#1584195, bmo#1585106, bmo#1586293, bmo#1593865
+    bmo#1594181)
+    Memory safety bugs fixed in Firefox 71</comment>
+    <requestid>757910</requestid>
+  </revision>
 </revisionlist>

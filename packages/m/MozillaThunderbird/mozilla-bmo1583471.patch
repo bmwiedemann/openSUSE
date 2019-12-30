@@ -1,0 +1,1360 @@
+diff --git a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -170,7 +170,7 @@
+ name = "baldrdash"
+ version = "0.1.0"
+ dependencies = [
+- "bindgen 0.49.1 (registry+https://github.com/rust-lang/crates.io-index)",
++ "bindgen 0.49.4 (registry+https://github.com/rust-lang/crates.io-index)",
+  "cranelift-codegen 0.30.0 (git+https://github.com/CraneStation/Cranelift?rev=cc216b46b35a797d03c0f3e8b16a2096f1c6db61)",
+  "cranelift-wasm 0.30.0 (git+https://github.com/CraneStation/Cranelift?rev=cc216b46b35a797d03c0f3e8b16a2096f1c6db61)",
+  "env_logger 0.5.6 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -232,14 +232,13 @@
+ 
+ [[package]]
+ name = "bindgen"
+-version = "0.49.1"
++version = "0.49.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ dependencies = [
+  "bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
+  "cexpr 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
+  "cfg-if 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
+  "clang-sys 0.28.0 (registry+https://github.com/rust-lang/crates.io-index)",
+- "clap 2.31.2 (registry+https://github.com/rust-lang/crates.io-index)",
+  "fxhash 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+  "lazy_static 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "peeking_take_while 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -1475,7 +1474,7 @@
+ name = "js"
+ version = "0.1.4"
+ dependencies = [
+- "bindgen 0.49.1 (registry+https://github.com/rust-lang/crates.io-index)",
++ "bindgen 0.49.4 (registry+https://github.com/rust-lang/crates.io-index)",
+  "cmake 0.1.29 (registry+https://github.com/rust-lang/crates.io-index)",
+  "env_logger 0.5.6 (registry+https://github.com/rust-lang/crates.io-index)",
+  "glob 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -2881,7 +2880,7 @@
+  "app_units 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "arrayvec 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)",
+  "atomic_refcell 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+- "bindgen 0.49.1 (registry+https://github.com/rust-lang/crates.io-index)",
++ "bindgen 0.49.4 (registry+https://github.com/rust-lang/crates.io-index)",
+  "bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
+  "byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
+  "cssparser 0.25.5 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -3758,7 +3757,7 @@
+ "checksum base64 0.9.3 (registry+https://github.com/rust-lang/crates.io-index)" = "489d6c0ed21b11d038c31b6ceccca973e65d73ba3bd8ecb9a2babf5546164643"
+ "checksum binary-space-partition 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "88ceb0d16c4fd0e42876e298d7d3ce3780dd9ebdcbe4199816a32c77e08597ff"
+ "checksum bincode 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "bda13183df33055cbb84b847becce220d392df502ebe7a4a78d7021771ed94d0"
+-"checksum bindgen 0.49.1 (registry+https://github.com/rust-lang/crates.io-index)" = "6bd7710ac8399ae1ebe1e3aac7c9047c4f39f2c94b33c997f482f49e96991f7c"
++"checksum bindgen 0.49.4 (registry+https://github.com/rust-lang/crates.io-index)" = "4c07087f3d5731bf3fb375a81841b99597e25dc11bd3bc72d16d43adf6624a6e"
+ "checksum binjs_meta 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)" = "430239e4551e42b80fa5d92322ac80ea38c9dda56e5d5582e057e2288352b71a"
+ "checksum bit-set 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "6f1efcc46c18245a69c38fcc5cc650f16d3a59d034f3106e9ed63748f695730a"
+ "checksum bit-vec 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "f59bbe95d4e52a6398ec21238d31577f2b28a9d86807f06ca59d191d8440d0bb"
+diff --git a/third_party/rust/bindgen/.cargo-checksum.json b/third_party/rust/bindgen/.cargo-checksum.json
+--- a/third_party/rust/bindgen/.cargo-checksum.json
++++ b/third_party/rust/bindgen/.cargo-checksum.json
+@@ -1 +1 @@
+-{"files":{"Cargo.toml":"9af635e7bad9021a49742a312faf6178b757dbd48aabc998931d6f491f14c179","LICENSE":"c23953d9deb0a3312dbeaf6c128a657f3591acee45067612fa68405eaa4525db","README.md":"5a1f556c6a57c0a6ccc65e19c27718e0f4b32381a8efcc80f6601b33c58c5d59","build.rs":"a9f6915c54d75f357ce32f96327bf4df53dc81a505b70831978f9dac6f43841d","src/callbacks.rs":"b24d7982332c6a35928f134184ddf4072fe4545a45546b97b9b0e0c1fbb77c08","src/clang.rs":"e9203eb5a1b432efebafcd011896e35e8c9145037bf99e7bb3709dc1b8e8e783","src/codegen/bitfield_unit.rs":"88b0604322dc449fc9284850eadc1f5d14b42fa747d4258bae0b6b9535f52dfd","src/codegen/bitfield_unit_tests.rs":"2073ac6a36e0bc9afaef5b1207966817c8fb7a1a9f6368c3b1b8f79822efbfba","src/codegen/error.rs":"2613af1d833377fd4a70719f4a09951d9d45dc9227827b9a2a938a1bcaaea2dd","src/codegen/helpers.rs":"fbd23e68dd51ccaddeb9761394d5df2db49baded0e2dccf6bbc52a2d6de502eb","src/codegen/impl_debug.rs":"f82969461d522fb758eca552ceaf189122a404cbb47fcc16008bfe52fc62aefa","src/codegen/impl_partialeq.rs":"d40d9ee2849c4d3d557b033c4d3af5e6de4a44347f67c0f016198086338811af","src/codegen/mod.rs":"238d989e13b7556e5d120a2bfe85b43332fba56cbe8df886d4c32e650fff1247","src/codegen/struct_layout.rs":"3fa5524aff82365ce292b0cc85080514c85a6dbd31bce90f001773b995dda28e","src/extra_assertions.rs":"494534bd4f18b80d89b180c8a93733e6617edcf7deac413e9a73fd6e7bc9ced7","src/features.rs":"c5fd7149f4a3b41fd4f89ade08505170942f4bc791bcb6a34fdddd3ae61856f8","src/ir/analysis/derive.rs":"325d4c1c1e6194e743f42a2316f1501b0ef852fe309f2e9cac3434825ad235f0","src/ir/analysis/has_destructor.rs":"63644f479738df35e531d3324ff892614083c3656e0747aa34d9f20dada878ec","src/ir/analysis/has_float.rs":"76162a309e4285a806755a08c687a3e7bc894a100a63da4e88584035e215b11d","src/ir/analysis/has_type_param_in_array.rs":"fdbc0af28a144c88ea2de83e6e6da5e1ffb40e3dd63fd7a708095d085bb06f94","src/ir/analysis/has_vtable.rs":"5788372d27bdbaaf0454bc17be31a5480918bc41a8a1c4832e8c61185c07f9cd","src/ir/analysis/mod.rs":"1f218e15c19f6666512908abc853fa7ff9ca5d0fafd94f026d9e4b0ce287ec3c","src/ir/analysis/sizedness.rs":"8dc10043d872e68e660ef96edca4d9733f95be45cdad4893462fa929b335014f","src/ir/analysis/template_params.rs":"6312c008bbc80f50e72a766756c8daddea0b6eeb31ec924b83a231df931e170e","src/ir/annotations.rs":"39a5ab19f4d5dfa617577e4a0d0d2b67b5369d480c7cca4b14d172458c9843f0","src/ir/comment.rs":"c48abe01c5af0f09f583a89f1394bc6c161b40f6c8f0f600bbfe3c907b47969b","src/ir/comp.rs":"ca439407faefbe3a198246f0a1dbdf4e40307e45eaaad317e85d1aab37bb31fc","src/ir/context.rs":"599226eb04d337a1b1b13af91af91bdb02dbd5f26f274cbc0ebc4489eb144fc0","src/ir/derive.rs":"34f9aa76b6c9c05136bb69dcd6455397faef571a567254d2c541d50a962994db","src/ir/dot.rs":"95ed2968fc3239d87892e9f1edf1ed6dd18630d949564961765967ea1d16960c","src/ir/enum_ty.rs":"9cc242d6b3c1866665594e8b306860ee39c0ea42d22198d46b7fded473fe3e84","src/ir/function.rs":"2d41d9df19f42b0c383f338be4c026c005853a8d1caf5f3e5a2f3a8dad202232","src/ir/int.rs":"07e0c7dbd2dd977177fae3acd2a14adf271c6cf9ff4b57cddc11d50734fd4801","src/ir/item.rs":"3bcdb69b793350e5744aec3577cdbb1e5068ece5220c38763cecd82dfb5e8f03","src/ir/item_kind.rs":"dbeae8c4fd0e5c9485d325aea040e056a1f2cd6d43fc927dee8fe1c0c59a7197","src/ir/layout.rs":"d49582081f5f86f7595afbe4845f38fb3b969a840b568f4a49b265e7d790bb5b","src/ir/mod.rs":"2eae90f207fad2e45957ec9287064992a419e3fc916aba84faff2ea25cbeb5ee","src/ir/module.rs":"c4d90bf38fe3672e01923734ccbdb7951ea929949d5f413a9c2aee12395a5094","src/ir/objc.rs":"758aa955a0c5d6ad82606c88a1f4cd1d93e666b71e82d43b18b1aaae96cf888a","src/ir/template.rs":"c0f8570b927dfd6a421fc4ce3094ec837a3ed936445225dbfac961e8e0842ae5","src/ir/traversal.rs":"ea751379a5aec02f93f8d2c61e18232776b1f000dbeae64b9a7195ba21a19dd6","src/ir/ty.rs":"952fb04cd6a71a2bca5c509aecacb42a1de0cae75824941541a38dc589f0993a","src/ir/var.rs":"8bdafb6d02f2c55ae11c28d88b19fb7a65ba8466da12ff039ae4c16c790b291e","src/lib.rs":"d5c8b404c515d30fc2d78b28eb84cff6b256f1f1e2dbd6aca280529bb2af6879","src/log_stubs.rs":"6dfdd908b7c6453da416cf232893768f9480e551ca4add0858ef88bf71ee6ceb","src/main.rs":"e519053bcdde6bc88f60f955246a02d53b3db1cc5ccd1612e6675b790b7460b0","src/options.rs":"041d635c8f6712ca32676a68f06d0245faed5577d9513786e058540ea2a69a7f","src/parse.rs":"be7d13cc84fae79ec7b3aa9e77063fa475a48d74a854423e2c72d75006a25202","src/regex_set.rs":"5cb72fc3714c0d79e9e942d003349c0775fafd7cd0c9603c65f5261883bbf9cf","src/time.rs":"3b763e6fee51d0eb01228dfe28bc28a9f692aff73b2a7b90a030902e0238fca6"},"package":"6bd7710ac8399ae1ebe1e3aac7c9047c4f39f2c94b33c997f482f49e96991f7c"}
+\ No newline at end of file
++{"files":{"Cargo.lock":"64e3ab337a32b50cfc460db6748d58ac35ed0fed4327ec7e5217ce433e09abbc","Cargo.toml":"7792453d29231e3f3964f1b789598a37c4a516af733b0f2e1a442724a0a67765","LICENSE":"c23953d9deb0a3312dbeaf6c128a657f3591acee45067612fa68405eaa4525db","README.md":"5a1f556c6a57c0a6ccc65e19c27718e0f4b32381a8efcc80f6601b33c58c5d59","build.rs":"a9f6915c54d75f357ce32f96327bf4df53dc81a505b70831978f9dac6f43841d","csmith-fuzzing/README.md":"7107b70fedb0c0a0cadb3c439a49c1bd0119a6d38dc63b1aecc74d1942256ef2","src/callbacks.rs":"b24d7982332c6a35928f134184ddf4072fe4545a45546b97b9b0e0c1fbb77c08","src/clang.rs":"e9203eb5a1b432efebafcd011896e35e8c9145037bf99e7bb3709dc1b8e8e783","src/codegen/bitfield_unit.rs":"87be2d7f7774327a1608c2c4d64df869e17fb34b7efdacb4030b6794d98e40f3","src/codegen/bitfield_unit_tests.rs":"2073ac6a36e0bc9afaef5b1207966817c8fb7a1a9f6368c3b1b8f79822efbfba","src/codegen/error.rs":"2613af1d833377fd4a70719f4a09951d9d45dc9227827b9a2a938a1bcaaea2dd","src/codegen/helpers.rs":"aa0daff2061c6de31acfbd113190889e0f7ca2d2b8d4f46740bfd5832c33e4d2","src/codegen/impl_debug.rs":"f82969461d522fb758eca552ceaf189122a404cbb47fcc16008bfe52fc62aefa","src/codegen/impl_partialeq.rs":"d40d9ee2849c4d3d557b033c4d3af5e6de4a44347f67c0f016198086338811af","src/codegen/mod.rs":"9fb48eb14ef1f97e313fe13cfbc1ca96d74262f7a229f1f94011b52079d3df5b","src/codegen/struct_layout.rs":"3fa5524aff82365ce292b0cc85080514c85a6dbd31bce90f001773b995dda28e","src/extra_assertions.rs":"494534bd4f18b80d89b180c8a93733e6617edcf7deac413e9a73fd6e7bc9ced7","src/features.rs":"82511f1bb8cbd04d98f57b000903b0264237962af93a72a58220437213eba1ef","src/ir/analysis/derive.rs":"325d4c1c1e6194e743f42a2316f1501b0ef852fe309f2e9cac3434825ad235f0","src/ir/analysis/has_destructor.rs":"63644f479738df35e531d3324ff892614083c3656e0747aa34d9f20dada878ec","src/ir/analysis/has_float.rs":"76162a309e4285a806755a08c687a3e7bc894a100a63da4e88584035e215b11d","src/ir/analysis/has_type_param_in_array.rs":"fdbc0af28a144c88ea2de83e6e6da5e1ffb40e3dd63fd7a708095d085bb06f94","src/ir/analysis/has_vtable.rs":"8c92a52c0f859c7bec7bfbc36b9d18f904baab0c8c9dc1b3e7af34de1a0b0da4","src/ir/analysis/mod.rs":"1f218e15c19f6666512908abc853fa7ff9ca5d0fafd94f026d9e4b0ce287ec3c","src/ir/analysis/sizedness.rs":"efdada601d13c489451da9d65a78c42598841cebddf6f3a8012add2380628a51","src/ir/analysis/template_params.rs":"6312c008bbc80f50e72a766756c8daddea0b6eeb31ec924b83a231df931e170e","src/ir/annotations.rs":"39a5ab19f4d5dfa617577e4a0d0d2b67b5369d480c7cca4b14d172458c9843f0","src/ir/comment.rs":"c48abe01c5af0f09f583a89f1394bc6c161b40f6c8f0f600bbfe3c907b47969b","src/ir/comp.rs":"498dc771461f9f30db712dd5596fc959133ec5583e2ba6b75036b9afe9d28dcd","src/ir/context.rs":"599226eb04d337a1b1b13af91af91bdb02dbd5f26f274cbc0ebc4489eb144fc0","src/ir/derive.rs":"e5581852eec87918901a129284b4965aefc8a19394187a8095779a084f28fabe","src/ir/dot.rs":"95ed2968fc3239d87892e9f1edf1ed6dd18630d949564961765967ea1d16960c","src/ir/enum_ty.rs":"7658cf68c00b1732dfa599c2d6b6a93a82de8401142591c3afe5fcb27d901a66","src/ir/function.rs":"c2feb2e26d47aa96a74af9912ada26be077e2b0c36d46fa10167da7109590500","src/ir/int.rs":"07e0c7dbd2dd977177fae3acd2a14adf271c6cf9ff4b57cddc11d50734fd4801","src/ir/item.rs":"3bcdb69b793350e5744aec3577cdbb1e5068ece5220c38763cecd82dfb5e8f03","src/ir/item_kind.rs":"dbeae8c4fd0e5c9485d325aea040e056a1f2cd6d43fc927dee8fe1c0c59a7197","src/ir/layout.rs":"d49582081f5f86f7595afbe4845f38fb3b969a840b568f4a49b265e7d790bb5b","src/ir/mod.rs":"2eae90f207fad2e45957ec9287064992a419e3fc916aba84faff2ea25cbeb5ee","src/ir/module.rs":"c4d90bf38fe3672e01923734ccbdb7951ea929949d5f413a9c2aee12395a5094","src/ir/objc.rs":"758aa955a0c5d6ad82606c88a1f4cd1d93e666b71e82d43b18b1aaae96cf888a","src/ir/template.rs":"c0f8570b927dfd6a421fc4ce3094ec837a3ed936445225dbfac961e8e0842ae5","src/ir/traversal.rs":"ea751379a5aec02f93f8d2c61e18232776b1f000dbeae64b9a7195ba21a19dd6","src/ir/ty.rs":"952fb04cd6a71a2bca5c509aecacb42a1de0cae75824941541a38dc589f0993a","src/ir/var.rs":"8bdafb6d02f2c55ae11c28d88b19fb7a65ba8466da12ff039ae4c16c790b291e","src/lib.rs":"4fc488a4bf68f4b2f1a454e334be7e9c5a2c5ad4aaa25a8464e6a320f773b14d","src/log_stubs.rs":"6dfdd908b7c6453da416cf232893768f9480e551ca4add0858ef88bf71ee6ceb","src/main.rs":"8c96cd2a051e3f09b1b87b75cd9ed77e82e889c8309ebd3e4bc782960cf63e58","src/options.rs":"5b309b225cc51e665bd42ed3e7965a7cd73d984e4455a2d76987fc42ab271ff8","src/parse.rs":"be7d13cc84fae79ec7b3aa9e77063fa475a48d74a854423e2c72d75006a25202","src/regex_set.rs":"5cb72fc3714c0d79e9e942d003349c0775fafd7cd0c9603c65f5261883bbf9cf","src/time.rs":"3b763e6fee51d0eb01228dfe28bc28a9f692aff73b2a7b90a030902e0238fca6"},"package":"4c07087f3d5731bf3fb375a81841b99597e25dc11bd3bc72d16d43adf6624a6e"}
+\ No newline at end of file
+diff --git a/third_party/rust/bindgen/Cargo.lock b/third_party/rust/bindgen/Cargo.lock
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/bindgen/Cargo.lock
+@@ -0,0 +1,452 @@
++# This file is automatically @generated by Cargo.
++# It is not intended for manual editing.
++[[package]]
++name = "aho-corasick"
++version = "0.6.8"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "memchr 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "ansi_term"
++version = "0.11.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "atty"
++version = "0.2.11"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)",
++ "termion 1.5.1 (registry+https://github.com/rust-lang/crates.io-index)",
++ "winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "backtrace"
++version = "0.3.11"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "backtrace-sys 0.1.28 (registry+https://github.com/rust-lang/crates.io-index)",
++ "cfg-if 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)",
++ "rustc-demangle 0.1.14 (registry+https://github.com/rust-lang/crates.io-index)",
++ "winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "backtrace-sys"
++version = "0.1.28"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "cc 1.0.25 (registry+https://github.com/rust-lang/crates.io-index)",
++ "libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "bindgen"
++version = "0.49.4"
++dependencies = [
++ "bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
++ "cexpr 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
++ "cfg-if 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "clang-sys 0.28.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "clap 2.32.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "diff 0.1.11 (registry+https://github.com/rust-lang/crates.io-index)",
++ "env_logger 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "fxhash 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
++ "lazy_static 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "log 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "peeking_take_while 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
++ "proc-macro2 0.4.19 (registry+https://github.com/rust-lang/crates.io-index)",
++ "quote 0.6.8 (registry+https://github.com/rust-lang/crates.io-index)",
++ "regex 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "shlex 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
++ "which 2.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "bitflags"
++version = "1.0.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "byteorder"
++version = "1.2.7"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "cc"
++version = "1.0.25"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "cexpr"
++version = "0.3.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "nom 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "cfg-if"
++version = "0.1.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "clang-sys"
++version = "0.28.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "glob 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)",
++ "libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)",
++ "libloading 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "clap"
++version = "2.32.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "ansi_term 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "atty 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)",
++ "bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
++ "strsim 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "textwrap 0.10.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "unicode-width 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "vec_map 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "diff"
++version = "0.1.11"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "env_logger"
++version = "0.6.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "atty 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)",
++ "humantime 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
++ "log 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "regex 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "termcolor 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "failure"
++version = "0.1.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "backtrace 0.3.11 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "fxhash"
++version = "0.2.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "byteorder 1.2.7 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "glob"
++version = "0.2.11"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "humantime"
++version = "1.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "quick-error 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "lazy_static"
++version = "1.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "version_check 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "libc"
++version = "0.2.43"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "libloading"
++version = "0.5.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "cc 1.0.25 (registry+https://github.com/rust-lang/crates.io-index)",
++ "winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "log"
++version = "0.4.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "cfg-if 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "memchr"
++version = "2.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "cfg-if 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)",
++ "version_check 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "nom"
++version = "4.0.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "memchr 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "peeking_take_while"
++version = "0.1.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "proc-macro2"
++version = "0.4.19"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "unicode-xid 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "quick-error"
++version = "1.2.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "quote"
++version = "0.6.8"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "proc-macro2 0.4.19 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "redox_syscall"
++version = "0.1.40"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "redox_termios"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "redox_syscall 0.1.40 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "regex"
++version = "1.0.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "aho-corasick 0.6.8 (registry+https://github.com/rust-lang/crates.io-index)",
++ "memchr 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "regex-syntax 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)",
++ "thread_local 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
++ "utf8-ranges 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "regex-syntax"
++version = "0.6.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "ucd-util 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "rustc-demangle"
++version = "0.1.14"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "shlex"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "strsim"
++version = "0.7.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "termcolor"
++version = "1.0.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "wincolor 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "termion"
++version = "1.5.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)",
++ "redox_syscall 0.1.40 (registry+https://github.com/rust-lang/crates.io-index)",
++ "redox_termios 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "textwrap"
++version = "0.10.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "unicode-width 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "thread_local"
++version = "0.3.6"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "lazy_static 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "ucd-util"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "unicode-width"
++version = "0.1.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "unicode-xid"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "utf8-ranges"
++version = "1.0.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "vec_map"
++version = "0.8.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "version_check"
++version = "0.1.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "which"
++version = "2.0.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "winapi"
++version = "0.3.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "winapi-i686-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "winapi-x86_64-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "winapi-i686-pc-windows-gnu"
++version = "0.4.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "winapi-util"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[[package]]
++name = "winapi-x86_64-pc-windows-gnu"
++version = "0.4.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++
++[[package]]
++name = "wincolor"
++version = "1.0.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++dependencies = [
++ "winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "winapi-util 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
++]
++
++[metadata]
++"checksum aho-corasick 0.6.8 (registry+https://github.com/rust-lang/crates.io-index)" = "68f56c7353e5a9547cbd76ed90f7bb5ffc3ba09d4ea9bd1d8c06c8b1142eeb5a"
++"checksum ansi_term 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ee49baf6cb617b853aa8d93bf420db2383fab46d314482ca2803b40d5fde979b"
++"checksum atty 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)" = "9a7d5b8723950951411ee34d271d99dddcc2035a16ab25310ea2c8cfd4369652"
++"checksum backtrace 0.3.11 (registry+https://github.com/rust-lang/crates.io-index)" = "18b65ea1161bfb2dd6da6fade5edd4dbd08fba85012123dd333d2fd1b90b2782"
++"checksum backtrace-sys 0.1.28 (registry+https://github.com/rust-lang/crates.io-index)" = "797c830ac25ccc92a7f8a7b9862bde440715531514594a6154e3d4a54dd769b6"
++"checksum bitflags 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "228047a76f468627ca71776ecdebd732a3423081fcf5125585bcd7c49886ce12"
++"checksum byteorder 1.2.7 (registry+https://github.com/rust-lang/crates.io-index)" = "94f88df23a25417badc922ab0f5716cc1330e87f71ddd9203b3a3ccd9cedf75d"
++"checksum cc 1.0.25 (registry+https://github.com/rust-lang/crates.io-index)" = "f159dfd43363c4d08055a07703eb7a3406b0dac4d0584d96965a3262db3c9d16"
++"checksum cexpr 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)" = "8fc0086be9ca82f7fc89fc873435531cb898b86e850005850de1f820e2db6e9b"
++"checksum cfg-if 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "0c4e7bb64a8ebb0d856483e1e682ea3422f883c5f5615a90d51a2c82fe87fdd3"
++"checksum clang-sys 0.28.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4227269cec09f5f83ff160be12a1e9b0262dd1aa305302d5ba296c2ebd291055"
++"checksum clap 2.32.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b957d88f4b6a63b9d70d5f454ac8011819c6efa7727858f458ab71c756ce2d3e"
++"checksum diff 0.1.11 (registry+https://github.com/rust-lang/crates.io-index)" = "3c2b69f912779fbb121ceb775d74d51e915af17aaebc38d28a592843a2dd0a3a"
++"checksum env_logger 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "afb070faf94c85d17d50ca44f6ad076bce18ae92f0037d350947240a36e9d42e"
++"checksum failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "795bd83d3abeb9220f257e597aa0080a508b27533824adf336529648f6abf7e2"
++"checksum fxhash 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "c31b6d751ae2c7f11320402d34e41349dd1016f8d5d45e48c4312bc8625af50c"
++"checksum glob 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)" = "8be18de09a56b60ed0edf84bc9df007e30040691af7acd1c41874faac5895bfb"
++"checksum humantime 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "0484fda3e7007f2a4a0d9c3a703ca38c71c54c55602ce4660c419fd32e188c9e"
++"checksum lazy_static 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ca488b89a5657b0a2ecd45b95609b3e848cf1755da332a0da46e2b2b1cb371a7"
++"checksum libc 0.2.43 (registry+https://github.com/rust-lang/crates.io-index)" = "76e3a3ef172f1a0b9a9ff0dd1491ae5e6c948b94479a3021819ba7d860c8645d"
++"checksum libloading 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "9c3ad660d7cb8c5822cd83d10897b0f1f1526792737a179e73896152f85b88c2"
++"checksum log 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)" = "d4fcce5fa49cc693c312001daf1d13411c4a5283796bac1084299ea3e567113f"
++"checksum memchr 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4b3629fe9fdbff6daa6c33b90f7c08355c1aca05a3d01fa8063b822fcf185f3b"
++"checksum nom 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "898696750eb5c3ce5eb5afbfbe46e7f7c4e1936e19d3e97be4b7937da7b6d114"
++"checksum peeking_take_while 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "19b17cddbe7ec3f8bc800887bab5e717348c95ea2ca0b1bf0837fb964dc67099"
++"checksum proc-macro2 0.4.19 (registry+https://github.com/rust-lang/crates.io-index)" = "ffe022fb8c8bd254524b0b3305906c1921fa37a84a644e29079a9e62200c3901"
++"checksum quick-error 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "9274b940887ce9addde99c4eee6b5c44cc494b182b97e73dc8ffdcb3397fd3f0"
++"checksum quote 0.6.8 (registry+https://github.com/rust-lang/crates.io-index)" = "dd636425967c33af890042c483632d33fa7a18f19ad1d7ea72e8998c6ef8dea5"
++"checksum redox_syscall 0.1.40 (registry+https://github.com/rust-lang/crates.io-index)" = "c214e91d3ecf43e9a4e41e578973adeb14b474f2bee858742d127af75a0112b1"
++"checksum redox_termios 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "7e891cfe48e9100a70a3b6eb652fef28920c117d366339687bd5576160db0f76"
++"checksum regex 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)" = "2069749032ea3ec200ca51e4a31df41759190a88edca0d2d86ee8bedf7073341"
++"checksum regex-syntax 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "747ba3b235651f6e2f67dfa8bcdcd073ddb7c243cb21c442fc12395dfcac212d"
++"checksum rustc-demangle 0.1.14 (registry+https://github.com/rust-lang/crates.io-index)" = "ccc78bfd5acd7bf3e89cffcf899e5cb1a52d6fafa8dec2739ad70c9577a57288"
++"checksum shlex 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "7fdf1b9db47230893d76faad238fd6097fd6d6a9245cd7a4d90dbd639536bbd2"
++"checksum strsim 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "bb4f380125926a99e52bc279241539c018323fab05ad6368b56f93d9369ff550"
++"checksum termcolor 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "4096add70612622289f2fdcdbd5086dc81c1e2675e6ae58d6c4f62a16c6d7f2f"
++"checksum termion 1.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "689a3bdfaab439fd92bc87df5c4c78417d3cbe537487274e9b0b2dce76e92096"
++"checksum textwrap 0.10.0 (registry+https://github.com/rust-lang/crates.io-index)" = "307686869c93e71f94da64286f9a9524c0f308a9e1c87a583de8e9c9039ad3f6"
++"checksum thread_local 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)" = "c6b53e329000edc2b34dbe8545fd20e55a333362d0a321909685a19bd28c3f1b"
++"checksum ucd-util 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "fd2be2d6639d0f8fe6cdda291ad456e23629558d466e2789d2c3e9892bda285d"
++"checksum unicode-width 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "882386231c45df4700b275c7ff55b6f3698780a650026380e72dabe76fa46526"
++"checksum unicode-xid 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "fc72304796d0818e357ead4e000d19c9c174ab23dc11093ac919054d20a6a7fc"
++"checksum utf8-ranges 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "fd70f467df6810094968e2fce0ee1bd0e87157aceb026a8c083bcf5e25b9efe4"
++"checksum vec_map 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)" = "05c78687fb1a80548ae3250346c3db86a80a7cdd77bda190189f2d0a0987c81a"
++"checksum version_check 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)" = "7716c242968ee87e5542f8021178248f267f295a5c4803beae8b8b7fd9bc6051"
++"checksum which 2.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b57acb10231b9493c8472b20cb57317d0679a49e0bdbee44b3b803a6473af164"
++"checksum winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)" = "773ef9dcc5f24b7d850d0ff101e542ff24c3b090a9768e03ff889fdef41f00fd"
++"checksum winapi-i686-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6"
++"checksum winapi-util 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "afc5508759c5bf4285e61feb862b6083c8480aec864fa17a81fdec6f69b461ab"
++"checksum winapi-x86_64-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
++"checksum wincolor 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "561ed901ae465d6185fa7864d63fbd5720d0ef718366c9a4dc83cf6170d7e9ba"
+diff --git a/third_party/rust/bindgen/Cargo.toml b/third_party/rust/bindgen/Cargo.toml
+--- a/third_party/rust/bindgen/Cargo.toml
++++ b/third_party/rust/bindgen/Cargo.toml
+@@ -12,7 +12,7 @@
+ 
+ [package]
+ name = "bindgen"
+-version = "0.49.1"
++version = "0.49.4"
+ authors = ["Jyun-Yan You <jyyou.tw@gmail.com>", "Emilio Cobos Álvarez <emilio@crisal.io>", "Nick Fitzgerald <fitzgen@gmail.com>", "The Servo project developers"]
+ build = "build.rs"
+ include = ["LICENSE", "README.md", "Cargo.toml", "build.rs", "src/*.rs", "src/**/*.rs"]
+@@ -32,6 +32,7 @@
+ name = "bindgen"
+ path = "src/main.rs"
+ doc = false
++required-features = ["clap"]
+ [dependencies.bitflags]
+ version = "1.0.3"
+ 
+@@ -47,6 +48,7 @@
+ 
+ [dependencies.clap]
+ version = "2"
++optional = true
+ 
+ [dependencies.env_logger]
+ version = "0.6"
+@@ -91,7 +93,7 @@
+ version = "0.1"
+ 
+ [features]
+-default = ["logging"]
++default = ["logging", "clap"]
+ logging = ["env_logger", "log"]
+ static = []
+ testing_only_docs = []
+diff --git a/third_party/rust/bindgen/csmith-fuzzing/README.md b/third_party/rust/bindgen/csmith-fuzzing/README.md
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/bindgen/csmith-fuzzing/README.md
+@@ -0,0 +1,65 @@
++# Fuzzing `bindgen` with `csmith`
++
++[`csmith`][csmith] generates random C and C++ programs that can be used as test
++cases for compilers. When testing `bindgen` with `csmith`, we interpret the
++generated programs as header files, and emit Rust bindings to them. If `bindgen`
++panics, the emitted bindings won't compile with `rustc`, or the generated layout
++tests in the bindings fail, then we report an issue containing the test case!
++
++<!-- START doctoc generated TOC please keep comment here to allow auto update -->
++<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
++
++
++- [Prerequisites](#prerequisites)
++- [Running the Fuzzer](#running-the-fuzzer)
++- [Reporting Issues](#reporting-issues)
++
++<!-- END doctoc generated TOC please keep comment here to allow auto update -->
++
++## Prerequisites
++
++Requires `python3`, `csmith`, and `creduce` to be in `$PATH`.
++
++Many OS package managers have `csmith` and `creduce` packages:
++
++```
++$ sudo apt install csmith creduce
++$ brew install csmith creduce
++$ # Etc...
++```
++
++## Running the Fuzzer
++
++Run `csmith` and test `bindgen` on the generated test cases with this command:
++
++```
++$ ./driver.py
++```
++
++The driver will keep running until it encounters an error in `bindgen`.
++
++Each invocation of `./driver.py` will use its own temporary directories, so
++running it in multiple terminals in parallel is supported.
++
++`csmith` is run with `--no-checksum --nomain --max-block-size 1
++--max-block-depth 1` which disables the `main` function, and makes function
++bodies as simple as possible as `bindgen` does not care about them, but they
++cannot be completely disabled in `csmith`. Run `csmith --help` to see what
++exactly those options do.
++
++## Reporting Issues
++
++Once the fuzz driver finds a test case that causes some kind of error in
++`bindgen` or its emitted bindings, it is helpful to
++[run C-Reduce on the test case][creducing] to remove the parts that are
++irrelevant to reproducing the error. This is ***very*** helpful for the folks
++who further investigate the issue and come up with a fix!
++
++Additionally, mention that you discovered the issue via `csmith` and we will add
++the `A-csmith` label. You can find all the issues discovered with `csmith`, and
++related to fuzzing with `csmith`, by looking up
++[all issues tagged with the `A-csmith` label][csmith-issues].
++
++[csmith]: https://github.com/csmith-project/csmith
++[creducing]: ../CONTRIBUTING.md#using-creduce-to-minimize-test-cases
++[csmith-issues]: https://github.com/rust-lang/rust-bindgen/issues?q=label%3AA-csmith
+diff --git a/third_party/rust/bindgen/src/codegen/bitfield_unit.rs b/third_party/rust/bindgen/src/codegen/bitfield_unit.rs
+--- a/third_party/rust/bindgen/src/codegen/bitfield_unit.rs
++++ b/third_party/rust/bindgen/src/codegen/bitfield_unit.rs
+@@ -1,25 +1,26 @@
+ #[repr(C)]
+ #[derive(Copy, Clone, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
+ pub struct __BindgenBitfieldUnit<Storage, Align>
+-where
+-    Storage: AsRef<[u8]> + AsMut<[u8]>,
+ {
+     storage: Storage,
+     align: [Align; 0],
+ }
+ 
+ impl<Storage, Align> __BindgenBitfieldUnit<Storage, Align>
+-where
+-    Storage: AsRef<[u8]> + AsMut<[u8]>,
+ {
+     #[inline]
+-    pub fn new(storage: Storage) -> Self {
++    pub const fn new(storage: Storage) -> Self {
+         Self {
+             storage,
+             align: [],
+         }
+     }
++}
+ 
++impl<Storage, Align> __BindgenBitfieldUnit<Storage, Align>
++where
++    Storage: AsRef<[u8]> + AsMut<[u8]>,
++{
+     #[inline]
+     pub fn get_bit(&self, index: usize) -> bool {
+         debug_assert!(index / 8 < self.storage.as_ref().len());
+diff --git a/third_party/rust/bindgen/src/codegen/helpers.rs b/third_party/rust/bindgen/src/codegen/helpers.rs
+--- a/third_party/rust/bindgen/src/codegen/helpers.rs
++++ b/third_party/rust/bindgen/src/codegen/helpers.rs
+@@ -42,6 +42,12 @@
+         }
+     }
+ 
++    pub fn non_exhaustive() -> TokenStream {
++        quote! {
++            #[non_exhaustive]
++        }
++    }
++
+     pub fn doc(comment: String) -> TokenStream {
+         // NOTE(emilio): By this point comments are already preprocessed and in
+         // `///` form. Quote turns them into `#[doc]` comments, but oh well.
+diff --git a/third_party/rust/bindgen/src/codegen/mod.rs b/third_party/rust/bindgen/src/codegen/mod.rs
+--- a/third_party/rust/bindgen/src/codegen/mod.rs
++++ b/third_party/rust/bindgen/src/codegen/mod.rs
+@@ -410,7 +410,7 @@
+                     utils::prepend_objc_header(ctx, &mut *result);
+                 }
+                 if result.saw_bitfield_unit {
+-                    utils::prepend_bitfield_unit_type(&mut *result);
++                    utils::prepend_bitfield_unit_type(ctx, &mut *result);
+                 }
+             }
+         };
+@@ -1618,7 +1618,7 @@
+         // is making the struct 1-byte sized.
+         //
+         // This is apparently not the case for C, see:
+-        // https://github.com/rust-lang-nursery/rust-bindgen/issues/551
++        // https://github.com/rust-lang/rust-bindgen/issues/551
+         //
+         // Just get the layout, and assume C++ if not.
+         //
+@@ -1841,7 +1841,7 @@
+                             })
+                         };
+ 
+-                    // FIXME when [issue #465](https://github.com/rust-lang-nursery/rust-bindgen/issues/465) ready
++                    // FIXME when [issue #465](https://github.com/rust-lang/rust-bindgen/issues/465) ready
+                     let too_many_base_vtables = self.base_members()
+                         .iter()
+                         .filter(|base| base.ty.has_vtable(ctx))
+@@ -2170,7 +2170,10 @@
+ #[derive(Copy, Clone, PartialEq, Debug)]
+ pub enum EnumVariation {
+     /// The code for this enum will use a Rust enum
+-    Rust,
++    Rust {
++        /// Indicates whether the generated struct should be #[non_exhaustive]
++        non_exhaustive: bool
++    },
+     /// The code for this enum will use a bitfield
+     Bitfield,
+     /// The code for this enum will use consts
+@@ -2182,14 +2185,7 @@
+ impl EnumVariation {
+     fn is_rust(&self) -> bool {
+         match *self {
+-            EnumVariation::Rust => true,
+-            _ => false
+-        }
+-    }
+-
+-    fn is_bitfield(&self) -> bool {
+-        match *self {
+-            EnumVariation::Bitfield {..} => true,
++            EnumVariation::Rust{ .. } => true,
+             _ => false
+         }
+     }
+@@ -2216,13 +2212,14 @@
+     /// Create a `EnumVariation` from a string.
+     fn from_str(s: &str) -> Result<Self, Self::Err> {
+         match s {
+-            "rust" => Ok(EnumVariation::Rust),
++            "rust" => Ok(EnumVariation::Rust{ non_exhaustive: false }),
++            "rust_non_exhaustive" => Ok(EnumVariation::Rust{ non_exhaustive: true }),
+             "bitfield" => Ok(EnumVariation::Bitfield),
+             "consts" => Ok(EnumVariation::Consts),
+             "moduleconsts" => Ok(EnumVariation::ModuleConsts),
+             _ => Err(std::io::Error::new(std::io::ErrorKind::InvalidInput,
+                                          concat!("Got an invalid EnumVariation. Accepted values ",
+-                                                 "are 'rust', 'bitfield', 'consts', and ",
++                                                 "are 'rust', 'rust_non_exhaustive', 'bitfield', 'consts', and ",
+                                                  "'moduleconsts'."))),
+         }
+     }
+@@ -2288,7 +2285,7 @@
+                 }
+             }
+ 
+-            EnumVariation::Rust => {
++            EnumVariation::Rust { .. } => {
+                 let tokens = quote!();
+                 EnumBuilder::Rust {
+                     codegen_depth: enum_codegen_depth + 1,
+@@ -2580,15 +2577,24 @@
+         let variation = self.computed_enum_variation(ctx, item);
+ 
+         // TODO(emilio): Delegate this to the builders?
+-        if variation.is_rust() {
+-            attrs.push(attributes::repr(repr_name));
+-        } else if variation.is_bitfield() {
+-            if ctx.options().rust_features.repr_transparent {
+-                attrs.push(attributes::repr("transparent"));
+-            } else {
+-                attrs.push(attributes::repr("C"));
+-            }
+-        }
++        match variation {
++            EnumVariation::Rust { non_exhaustive } => {
++                attrs.push(attributes::repr(repr_name));
++                if non_exhaustive && ctx.options().rust_features().non_exhaustive {
++                    attrs.push(attributes::non_exhaustive());
++                } else if non_exhaustive && !ctx.options().rust_features().non_exhaustive {
++                    panic!("The rust target you're using doesn't seem to support non_exhaustive enums");
++                }
++            },
++            EnumVariation::Bitfield => {
++                if ctx.options().rust_features.repr_transparent {
++                    attrs.push(attributes::repr("transparent"));
++                } else {
++                    attrs.push(attributes::repr("C"));
++                }
++            },
++            _ => {},
++        };
+ 
+         if let Some(comment) = item.comment(ctx) {
+             attrs.push(attributes::doc(comment));
+@@ -3591,11 +3597,21 @@
+     use ir::item::{Item, ItemCanonicalPath};
+     use ir::ty::TypeKind;
+     use proc_macro2;
++    use std::borrow::Cow;
+     use std::mem;
+     use std::str::FromStr;
+ 
+-    pub fn prepend_bitfield_unit_type(result: &mut Vec<proc_macro2::TokenStream>) {
+-        let bitfield_unit_type = proc_macro2::TokenStream::from_str(include_str!("./bitfield_unit.rs")).unwrap();
++    pub fn prepend_bitfield_unit_type(
++        ctx: &BindgenContext,
++        result: &mut Vec<proc_macro2::TokenStream>
++    ) {
++        let bitfield_unit_src = include_str!("./bitfield_unit.rs");
++        let bitfield_unit_src = if ctx.options().rust_features().min_const_fn {
++            Cow::Borrowed(bitfield_unit_src)
++        } else {
++            Cow::Owned(bitfield_unit_src.replace("const fn ", "fn "))
++        };
++        let bitfield_unit_type = proc_macro2::TokenStream::from_str(&bitfield_unit_src).unwrap();
+         let bitfield_unit_type = quote!(#bitfield_unit_type);
+ 
+         let items = vec![bitfield_unit_type];
+@@ -3653,6 +3669,14 @@
+     ) {
+         let prefix = ctx.trait_prefix();
+ 
++        // If the target supports `const fn`, declare eligible functions
++        // as `const fn` else just `fn`.
++        let const_fn = if ctx.options().rust_features().min_const_fn {
++            quote!{ const fn }
++        } else {
++            quote!{ fn }
++        };
++
+         // TODO(emilio): The fmt::Debug impl could be way nicer with
+         // std::intrinsics::type_name, but...
+         let union_field_decl = quote! {
+@@ -3663,7 +3687,7 @@
+         let union_field_impl = quote! {
+             impl<T> __BindgenUnionField<T> {
+                 #[inline]
+-                pub fn new() -> Self {
++                pub #const_fn new() -> Self {
+                     __BindgenUnionField(::#prefix::marker::PhantomData)
+                 }
+ 
+@@ -3752,6 +3776,14 @@
+     ) {
+         let prefix = ctx.trait_prefix();
+ 
++        // If the target supports `const fn`, declare eligible functions
++        // as `const fn` else just `fn`.
++        let const_fn = if ctx.options().rust_features().min_const_fn {
++            quote!{ const fn }
++        } else {
++            quote!{ fn }
++        };
++
+         let incomplete_array_decl = quote! {
+             #[repr(C)]
+             #[derive(Default)]
+@@ -3762,7 +3794,7 @@
+         let incomplete_array_impl = quote! {
+             impl<T> __IncompleteArrayField<T> {
+                 #[inline]
+-                pub fn new() -> Self {
++                pub #const_fn new() -> Self {
+                     __IncompleteArrayField(::#prefix::marker::PhantomData, [])
+                 }
+ 
+@@ -3908,9 +3940,13 @@
+             // [1]: http://c0x.coding-guidelines.com/6.7.5.3.html
+             let arg_ty = match *arg_ty.canonical_type(ctx).kind() {
+                 TypeKind::Array(t, _) => {
+-                    t.to_rust_ty_or_opaque(ctx, &())
+-                        .to_ptr(ctx.resolve_type(t).is_const())
+-                },
++                    let stream = if ctx.options().array_pointers_in_arguments {
++                        arg_ty.to_rust_ty_or_opaque(ctx, &arg_item)
++                    } else {
++                        t.to_rust_ty_or_opaque(ctx, &())
++                    };
++                    stream.to_ptr(ctx.resolve_type(t).is_const())
++                }
+                 TypeKind::Pointer(inner) => {
+                     let inner = ctx.resolve_item(inner);
+                     let inner_ty = inner.expect_type();
+diff --git a/third_party/rust/bindgen/src/features.rs b/third_party/rust/bindgen/src/features.rs
+--- a/third_party/rust/bindgen/src/features.rs
++++ b/third_party/rust/bindgen/src/features.rs
+@@ -102,6 +102,8 @@
+             => Stable_1_27 => 1.27;
+             /// Rust stable 1.28
+             => Stable_1_28 => 1.28;
++            /// Rust stable 1.30
++            => Stable_1_30 => 1.30;
+             /// Rust stable 1.33
+             => Stable_1_33 => 1.33;
+             /// Nightly rust
+@@ -192,6 +194,11 @@
+         /// repr(transparent) ([PR](https://github.com/rust-lang/rust/pull/51562))
+         => repr_transparent;
+     }
++    Stable_1_30 {
++        /// `const fn` support for limited cases
++        /// ([PR](https://github.com/rust-lang/rust/pull/54835/)
++        => min_const_fn;
++    }
+     Stable_1_33 {
+         /// repr(packed(N)) ([PR](https://github.com/rust-lang/rust/pull/57049))
+         => repr_packed_n;
+@@ -199,6 +206,8 @@
+     Nightly {
+         /// `thiscall` calling convention ([Tracking issue](https://github.com/rust-lang/rust/issues/42202))
+         => thiscall_abi;
++        /// `non_exhaustive` enums/structs ([Tracking issue](https://github.com/rust-lang/rust/issues/44109))
++        => non_exhaustive;
+     }
+ );
+ 
+diff --git a/third_party/rust/bindgen/src/ir/analysis/has_vtable.rs b/third_party/rust/bindgen/src/ir/analysis/has_vtable.rs
+--- a/third_party/rust/bindgen/src/ir/analysis/has_vtable.rs
++++ b/third_party/rust/bindgen/src/ir/analysis/has_vtable.rs
+@@ -9,17 +9,17 @@
+ use {HashMap, Entry};
+ 
+ /// The result of the `HasVtableAnalysis` for an individual item.
+-#[derive(Copy, Clone, Debug, PartialEq, Eq, Ord)]
++#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
+ pub enum HasVtableResult {
+-    /// The item has a vtable, but the actual vtable pointer is in a base
+-    /// member.
+-    BaseHasVtable,
++    /// The item does not have a vtable pointer.
++    No,
+ 
+     /// The item has a vtable and the actual vtable pointer is within this item.
+     SelfHasVtable,
+ 
+-    /// The item does not have a vtable pointer.
+-    No
++    /// The item has a vtable, but the actual vtable pointer is in a base
++    /// member.
++    BaseHasVtable,
+ }
+ 
+ impl Default for HasVtableResult {
+@@ -28,21 +28,6 @@
+     }
+ }
+ 
+-impl cmp::PartialOrd for HasVtableResult {
+-    fn partial_cmp(&self, rhs: &Self) -> Option<cmp::Ordering> {
+-        use self::HasVtableResult::*;
+-
+-        match (*self, *rhs) {
+-            (x, y) if x == y => Some(cmp::Ordering::Equal),
+-            (BaseHasVtable, _) => Some(cmp::Ordering::Greater),
+-            (_, BaseHasVtable) => Some(cmp::Ordering::Less),
+-            (SelfHasVtable, _) => Some(cmp::Ordering::Greater),
+-            (_, SelfHasVtable) => Some(cmp::Ordering::Less),
+-            _ => unreachable!(),
+-        }
+-    }
+-}
+-
+ impl HasVtableResult {
+     /// Take the least upper bound of `self` and `rhs`.
+     pub fn join(self, rhs: Self) -> Self {
+diff --git a/third_party/rust/bindgen/src/ir/analysis/sizedness.rs b/third_party/rust/bindgen/src/ir/analysis/sizedness.rs
+--- a/third_party/rust/bindgen/src/ir/analysis/sizedness.rs
++++ b/third_party/rust/bindgen/src/ir/analysis/sizedness.rs
+@@ -22,13 +22,14 @@
+ ///
+ /// We initially assume that all types are `ZeroSized` and then update our
+ /// understanding as we learn more about each type.
+-#[derive(Copy, Clone, Debug, PartialEq, Eq, Ord)]
++#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
+ pub enum SizednessResult {
+-    /// Has some size that is known to be greater than zero. That doesn't mean
+-    /// it has a static size, but it is not zero sized for sure. In other words,
+-    /// it might contain an incomplete array or some other dynamically sized
+-    /// type.
+-    NonZeroSized,
++    /// The type is zero-sized.
++    ///
++    /// This means that if it is a C++ type, and is not being used as a base
++    /// member, then we must add an `_address` byte to enforce the
++    /// unique-address-per-distinct-object-instance rule.
++    ZeroSized,
+ 
+     /// Whether this type is zero-sized or not depends on whether a type
+     /// parameter is zero-sized or not.
+@@ -49,15 +50,14 @@
+     /// have an `_address` byte inserted.
+     ///
+     /// We don't properly handle this situation correctly right now:
+-    /// https://github.com/rust-lang-nursery/rust-bindgen/issues/586
++    /// https://github.com/rust-lang/rust-bindgen/issues/586
+     DependsOnTypeParam,
+ 
+-    /// The type is zero-sized.
+-    ///
+-    /// This means that if it is a C++ type, and is not being used as a base
+-    /// member, then we must add an `_address` byte to enforce the
+-    /// unique-address-per-distinct-object-instance rule.
+-    ZeroSized,
++    /// Has some size that is known to be greater than zero. That doesn't mean
++    /// it has a static size, but it is not zero sized for sure. In other words,
++    /// it might contain an incomplete array or some other dynamically sized
++    /// type.
++    NonZeroSized,
+ }
+ 
+ impl Default for SizednessResult {
+@@ -66,21 +66,6 @@
+     }
+ }
+ 
+-impl cmp::PartialOrd for SizednessResult {
+-    fn partial_cmp(&self, rhs: &Self) -> Option<cmp::Ordering> {
+-        use self::SizednessResult::*;
+-
+-        match (*self, *rhs) {
+-            (x, y) if x == y => Some(cmp::Ordering::Equal),
+-            (NonZeroSized, _) => Some(cmp::Ordering::Greater),
+-            (_, NonZeroSized) => Some(cmp::Ordering::Less),
+-            (DependsOnTypeParam, _) => Some(cmp::Ordering::Greater),
+-            (_, DependsOnTypeParam) => Some(cmp::Ordering::Less),
+-            _ => unreachable!(),
+-        }
+-    }
+-}
+-
+ impl SizednessResult {
+     /// Take the least upper bound of `self` and `rhs`.
+     pub fn join(self, rhs: Self) -> Self {
+diff --git a/third_party/rust/bindgen/src/ir/comp.rs b/third_party/rust/bindgen/src/ir/comp.rs
+--- a/third_party/rust/bindgen/src/ir/comp.rs
++++ b/third_party/rust/bindgen/src/ir/comp.rs
+@@ -1280,7 +1280,7 @@
+                     // Let's just assume that if the cursor we've found is a
+                     // definition, it's a valid inner type.
+                     //
+-                    // [1]: https://github.com/rust-lang-nursery/rust-bindgen/issues/482
++                    // [1]: https://github.com/rust-lang/rust-bindgen/issues/482
+                     let is_inner_struct = cur.semantic_parent() == cursor ||
+                                           cur.is_definition();
+                     if !is_inner_struct {
+@@ -1654,7 +1654,7 @@
+             // If we don't have `#[repr(packed(N)]`, the best we can
+             // do is make this struct opaque.
+             //
+-            // See https://github.com/rust-lang-nursery/rust-bindgen/issues/537 and
++            // See https://github.com/rust-lang/rust-bindgen/issues/537 and
+             // https://github.com/rust-lang/rust/issues/33158
+             if self.is_packed(ctx, layout) && layout.map_or(false, |l| l.align > 1) {
+                 warn!("Found a type that is both packed and aligned to greater than \
+diff --git a/third_party/rust/bindgen/src/ir/derive.rs b/third_party/rust/bindgen/src/ir/derive.rs
+--- a/third_party/rust/bindgen/src/ir/derive.rs
++++ b/third_party/rust/bindgen/src/ir/derive.rs
+@@ -92,10 +92,10 @@
+ ///
+ /// Initially we assume that we can derive trait for all types and then
+ /// update our understanding as we learn more about each type.
+-#[derive(Debug, Copy, Clone, PartialEq, Eq, Ord)]
++#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
+ pub enum CanDerive {
+-    /// No, we cannot.
+-    No,
++    /// Yes, we can derive automatically.
++    Yes,
+ 
+     /// The only thing that stops us from automatically deriving is that
+     /// array with more than maximum number of elements is used.
+@@ -103,8 +103,8 @@
+     /// This means we probably can "manually" implement such trait.
+     Manually,
+ 
+-    /// Yes, we can derive automatically.
+-    Yes,
++    /// No, we cannot.
++    No,
+ }
+ 
+ impl Default for CanDerive {
+@@ -113,22 +113,6 @@
+     }
+ }
+ 
+-impl cmp::PartialOrd for CanDerive {
+-    fn partial_cmp(&self, rhs: &Self) -> Option<cmp::Ordering> {
+-        use self::CanDerive::*;
+-
+-        let ordering = match (*self, *rhs) {
+-            (x, y) if x == y => cmp::Ordering::Equal,
+-            (No, _) => cmp::Ordering::Greater,
+-            (_, No) => cmp::Ordering::Less,
+-            (Manually, _) => cmp::Ordering::Greater,
+-            (_, Manually) => cmp::Ordering::Less,
+-            _ => unreachable!()
+-        };
+-        Some(ordering)
+-    }
+-}
+-
+ impl CanDerive {
+     /// Take the least upper bound of `self` and `rhs`.
+     pub fn join(self, rhs: Self) -> Self {
+diff --git a/third_party/rust/bindgen/src/ir/enum_ty.rs b/third_party/rust/bindgen/src/ir/enum_ty.rs
+--- a/third_party/rust/bindgen/src/ir/enum_ty.rs
++++ b/third_party/rust/bindgen/src/ir/enum_ty.rs
+@@ -164,7 +164,9 @@
+         } else if self.is_matching_enum(ctx, &ctx.options().bitfield_enums, item) {
+             EnumVariation::Bitfield
+         } else if self.is_matching_enum(ctx, &ctx.options().rustified_enums, item) {
+-            EnumVariation::Rust
++            EnumVariation::Rust { non_exhaustive: false }
++        } else if self.is_matching_enum(ctx, &ctx.options().rustified_non_exhaustive_enums, item) {
++            EnumVariation::Rust { non_exhaustive: true }
+         } else if self.is_matching_enum(ctx, &ctx.options().constified_enums, item) {
+             EnumVariation::Consts
+         } else {
+diff --git a/third_party/rust/bindgen/src/ir/function.rs b/third_party/rust/bindgen/src/ir/function.rs
+--- a/third_party/rust/bindgen/src/ir/function.rs
++++ b/third_party/rust/bindgen/src/ir/function.rs
+@@ -253,7 +253,7 @@
+ 
+     // We early return here because libclang may crash in some case
+     // if we pass in a variable inside a partial specialized template.
+-    // See rust-lang-nursery/rust-bindgen#67, and rust-lang-nursery/rust-bindgen#462.
++    // See rust-lang/rust-bindgen#67, and rust-lang/rust-bindgen#462.
+     if cursor.is_in_non_fully_specialized_template() {
+         return None;
+     }
+@@ -535,7 +535,7 @@
+     ///
+     /// For more details, see:
+     ///
+-    /// * https://github.com/rust-lang-nursery/rust-bindgen/issues/547,
++    /// * https://github.com/rust-lang/rust-bindgen/issues/547,
+     /// * https://github.com/rust-lang/rust/issues/38848,
+     /// * and https://github.com/rust-lang/rust/issues/40158
+     pub fn function_pointers_can_derive(&self) -> bool {
+diff --git a/third_party/rust/bindgen/src/lib.rs b/third_party/rust/bindgen/src/lib.rs
+--- a/third_party/rust/bindgen/src/lib.rs
++++ b/third_party/rust/bindgen/src/lib.rs
+@@ -8,7 +8,6 @@
+ //! See the [Users Guide](https://rust-lang.github.io/rust-bindgen/) for
+ //! additional documentation.
+ #![deny(missing_docs)]
+-#![deny(warnings)]
+ #![deny(unused_extern_crates)]
+ // To avoid rather annoying warnings when matching with CXCursor_xxx as a
+ // constant.
+@@ -224,9 +223,10 @@
+         output_vector.push(self.options.rust_target.into());
+ 
+         if self.options.default_enum_style != Default::default() {
+-            output_vector.push("--default-enum-variant=".into());
++            output_vector.push("--default-enum-style=".into());
+             output_vector.push(match self.options.default_enum_style {
+-                codegen::EnumVariation::Rust => "rust",
++                codegen::EnumVariation::Rust { non_exhaustive: false } => "rust",
++                codegen::EnumVariation::Rust { non_exhaustive: true } => "rust_non_exhaustive",
+                 codegen::EnumVariation::Bitfield => "bitfield",
+                 codegen::EnumVariation::Consts => "consts",
+                 codegen::EnumVariation::ModuleConsts => "moduleconsts",
+@@ -254,6 +254,16 @@
+             .count();
+ 
+         self.options
++            .rustified_non_exhaustive_enums
++            .get_items()
++            .iter()
++            .map(|item| {
++                output_vector.push("--rustified-enum-non-exhaustive".into());
++                output_vector.push(item.to_owned());
++            })
++            .count();
++
++        self.options
+             .constified_enum_modules
+             .get_items()
+             .iter()
+@@ -444,6 +454,10 @@
+             output_vector.push("--no-prepend-enum-name".into());
+         }
+ 
++        if self.options.array_pointers_in_arguments {
++            output_vector.push("--use-array-pointers-in-arguments".into());
++        }
++
+         self.options
+             .opaque_types
+             .get_items()
+@@ -630,7 +644,7 @@
+     /// implement some processing on comments to work around issues as described
+     /// in:
+     ///
+-    /// https://github.com/rust-lang-nursery/rust-bindgen/issues/426
++    /// https://github.com/rust-lang/rust-bindgen/issues/426
+     pub fn generate_comments(mut self, doit: bool) -> Self {
+         self.options.generate_comments = doit;
+         self
+@@ -694,7 +708,7 @@
+     /// However, some old libclang versions seem to return incorrect results in
+     /// some cases for non-mangled functions, see [1], so we allow disabling it.
+     ///
+-    /// [1]: https://github.com/rust-lang-nursery/rust-bindgen/issues/528
++    /// [1]: https://github.com/rust-lang/rust-bindgen/issues/528
+     pub fn trust_clang_mangling(mut self, doit: bool) -> Self {
+         self.options.enable_mangling = doit;
+         self
+@@ -806,15 +820,24 @@
+     /// This makes bindgen generate enums instead of constants. Regular
+     /// expressions are supported.
+     ///
+-    /// **Use this with caution.** You should not be using Rust enums unless
+-    /// you have complete control of the C/C++ code that you're binding to.
+-    /// Take a look at https://github.com/rust-lang/rust/issues/36927 for
+-    /// more information.
++    /// **Use this with caution,** you probably want to use the non_exhaustive
++    /// flavor of rust enums instead of this one. Take a look at
++    /// https://github.com/rust-lang/rust/issues/36927 for more information.
+     pub fn rustified_enum<T: AsRef<str>>(mut self, arg: T) -> Builder {
+         self.options.rustified_enums.insert(arg);
+         self
+     }
+ 
++    /// Mark the given enum (or set of enums, if using a pattern) as a Rust
++    /// enum with the #[non_exhaustive] attribute.
++    ///
++    /// This makes bindgen generate enums instead of constants. Regular
++    /// expressions are supported.
++    pub fn rustified_non_exhaustive_enum<T: AsRef<str>>(mut self, arg: T) -> Builder {
++        self.options.rustified_non_exhaustive_enums.insert(arg);
++        self
++    }
++
+     /// Mark the given enum (or set of enums, if using a pattern) as a set of
+     /// constants that are not to be put into a module.
+     pub fn constified_enum<T: AsRef<str>>(mut self, arg: T) -> Builder {
+@@ -1310,6 +1333,12 @@
+         self.options.no_hash_types.insert(arg.into());
+         self
+     }
++
++    /// Set whether `arr[size]` should be treated as `*mut T` or `*mut [T; size]` (same for mut)
++    pub fn array_pointers_in_arguments(mut self, doit: bool) -> Self {
++        self.options.array_pointers_in_arguments = doit;
++        self
++    }
+ }
+ 
+ /// Configuration options for generated bindings.
+@@ -1357,6 +1386,8 @@
+     /// The enum patterns to mark an enum as a Rust enum.
+     rustified_enums: RegexSet,
+ 
++    rustified_non_exhaustive_enums: RegexSet,
++
+     /// The enum patterns to mark an enum as a module of constants.
+     constified_enum_modules: RegexSet,
+ 
+@@ -1507,7 +1538,7 @@
+     /// However, some old libclang versions seem to return incorrect results in
+     /// some cases for non-mangled functions, see [1], so we allow disabling it.
+     ///
+-    /// [1]: https://github.com/rust-lang-nursery/rust-bindgen/issues/528
++    /// [1]: https://github.com/rust-lang/rust-bindgen/issues/528
+     enable_mangling: bool,
+ 
+     /// Whether to detect include paths using clang_sys.
+@@ -1544,6 +1575,9 @@
+ 
+     /// The set of types that we should not derive `Hash` for.
+     no_hash_types: RegexSet,
++
++    /// Decide if C arrays should be regular pointers in rust or array pointers
++    array_pointers_in_arguments: bool,
+ }
+ 
+ /// TODO(emilio): This is sort of a lie (see the error message that results from
+@@ -1607,6 +1641,7 @@
+             default_enum_style: Default::default(),
+             bitfield_enums: Default::default(),
+             rustified_enums: Default::default(),
++            rustified_non_exhaustive_enums: Default::default(),
+             constified_enums: Default::default(),
+             constified_enum_modules: Default::default(),
+             builtins: false,
+@@ -1656,6 +1691,7 @@
+             no_partialeq_types: Default::default(),
+             no_copy_types: Default::default(),
+             no_hash_types: Default::default(),
++            array_pointers_in_arguments: false,
+         }
+     }
+ }
+diff --git a/third_party/rust/bindgen/src/main.rs b/third_party/rust/bindgen/src/main.rs
+--- a/third_party/rust/bindgen/src/main.rs
++++ b/third_party/rust/bindgen/src/main.rs
+@@ -71,12 +71,12 @@
+     println!("Bindgen unexpectedly panicked");
+     println!(
+         "This may be caused by one of the known-unsupported \
+-              things (https://github.com/rust-lang-nursery/rust-bindgen#c), \
++              things (https://rust-lang.github.io/rust-bindgen/cpp.html), \
+               please modify the bindgen flags to work around it as \
+-              described in https://github.com/rust-lang-nursery/rust-bindgen#c"
++              described in https://rust-lang.github.io/rust-bindgen/cpp.html"
+     );
+     println!(
+         "Otherwise, please file an issue at \
+-              https://github.com/rust-lang-nursery/rust-bindgen/issues/new"
++              https://github.com/rust-lang/rust-bindgen/issues/new"
+     );
+ }
+diff --git a/third_party/rust/bindgen/src/options.rs b/third_party/rust/bindgen/src/options.rs
+--- a/third_party/rust/bindgen/src/options.rs
++++ b/third_party/rust/bindgen/src/options.rs
+@@ -31,7 +31,7 @@
+                 .help("The default style of code used to generate enums.")
+                 .value_name("variant")
+                 .default_value("consts")
+-                .possible_values(&["consts", "moduleconsts", "bitfield", "rust"])
++                .possible_values(&["consts", "moduleconsts", "bitfield", "rust", "rust_non_exhaustive"])
+                 .multiple(false),
+             Arg::with_name("bitfield-enum")
+                 .long("bitfield-enum")
+@@ -129,7 +129,7 @@
+             Arg::with_name("no-doc-comments")
+                 .long("no-doc-comments")
+                 .help("Avoid including doc comments in the output, see: \
+-                      https://github.com/rust-lang-nursery/rust-bindgen/issues/426"),
++                      https://github.com/rust-lang/rust-bindgen/issues/426"),
+             Arg::with_name("no-recursive-whitelist")
+                 .long("no-recursive-whitelist")
+                 .help("Disable whitelisting types recursively. This will cause \
+@@ -326,6 +326,9 @@
+                 .long("enable-function-attribute-detection")
+                 .help("Enables detecting unexposed attributes in functions (slow).
+                        Used to generate #[must_use] annotations."),
++            Arg::with_name("use-array-pointers-in-arguments")
++                .long("use-array-pointers-in-arguments")
++                .help("Use `*const [T; size]` instead of `*const T` for C arrays"),
+         ]) // .args()
+         .get_matches_from(args);
+ 
+@@ -458,6 +461,10 @@
+         builder = builder.time_phases(true);
+     }
+ 
++    if matches.is_present("use-array-pointers-in-arguments") {
++        builder = builder.array_pointers_in_arguments(true);
++    }
++
+     if let Some(prefix) = matches.value_of("ctypes-prefix") {
+         builder = builder.ctypes_prefix(prefix);
+     }
+

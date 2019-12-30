@@ -3041,4 +3041,25 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
 - add mozilla-bmo849632.patch to fix color issues on big endian</comment>
     <requestid>754691</requestid>
   </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>448390a102c9d1bdd3b87c903226e3ad</srcmd5>
+    <version>68.3.1</version>
+    <time>1577710132</time>
+    <user>dimstar_suse</user>
+    <comment>- add mozilla-bmo1583471.patch to allow building with rust 1.39
+
+- Mozilla Thunderbird 68.3.1
+  * In dark theme unread messages no longer shown in blue to
+    distinguish from tagged messages
+  * Account setup is now using client side DNS MX lookup instead of
+    relying on a server
+  Bugfixes
+  * Searching LDAP address book crashed in some circumstances
+  * Message navigation with backward and forward buttons did not work
+    in some circumstances
+  * WebExtension toolbar icons were displayed too small
+  * Calendar: Tasks due today were not listed in bold
+  * Calendar: Last day of long-running events was not shown</comment>
+    <requestid>759724</requestid>
+  </revision>
 </revisionlist>

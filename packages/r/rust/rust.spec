@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,38 +17,49 @@
 #
 
 
-%global version_current 1.38.0
-%global version_previous 1.37.0
-%global version_bootstrap 1.37.0
-# some sub-packages are versioned independantly
-%global rustfmt_version 1.0.3
+%global version_current 1.39.0
+%global version_previous 1.38.0
+%global version_bootstrap 1.38.0
+
+# some sub-packages are versioned independently
+%global rustfmt_version 1.4.8
 %global clippy_version 0.0.212
+
 # Build the rust target triple.
 # Some rust arches don't match what SUSE labels them.
 %global rust_arch %{_arch}
 %global abi gnu
+
 %ifarch armv7hl
 %global rust_arch armv7
 %global abi gnueabihf
 %endif
+
 %ifarch armv6hl
 %global rust_arch arm
 %global abi gnueabihf
 %endif
+
 %ifarch ppc
 %global rust_arch powerpc
 %endif
+
 %ifarch ppc64
 %global rust_arch powerpc64
 %endif
+
 %ifarch ppc64le
 %global rust_arch powerpc64le
 %endif
-# Must restrict the x86 build to i686 since i586 is currently unsupported
+
+# Must restrict the x86 build to i686 since i586 is currently
+# unsupported
 %ifarch %{ix86}
 %global rust_arch i686
 %endif
+
 %global rust_triple %{rust_arch}-unknown-linux-%{abi}
+
 # All sources and bootstraps are fetched form here
 %global dl_url https://static.rust-lang.org/dist
 
@@ -56,10 +67,10 @@
 %global common_libdir %{_prefix}/lib
 %global rustlibdir %{common_libdir}/rustlib
 
-# Will build with distro LLVM by default, but the following
-# versions do not have a version new enough, >= 6.0
-# add --without bundled_llvm option, i.e. enable bundled_llvm by default
-# Leap 42 to 42.3, SLE12 SP1 to SLE12 SP3, Leap 15.0, SLE15 SP0
+# Will build with distro LLVM by default, but the following versions
+# do not have a version new enough, >= 6.0 add --without bundled_llvm
+# option, i.e. enable bundled_llvm by default Leap 42 to 42.3, SLE12
+# SP1 to SLE12 SP3, Leap 15.0, SLE15 SP0
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150000
 %bcond_without bundled_llvm
 %endif
@@ -70,9 +81,6 @@
 %else
 %bcond_without rls
 %endif
-
-# enable the --with-rust_bootstrap flag
-%bcond_with rust_bootstrap
 
 # Debuginfo can exhaust memory on these architecture workers
 %ifarch  %{arm} %{ix86}
@@ -103,13 +111,16 @@
 # Exclude implicitly-scanned Provides, especially the libLLVM.so ones:
 %global __provides_exclude_from ^%{rustlibdir}/.*$
 
+# enable the --with-rust_bootstrap flag
+%bcond_with rust_bootstrap
+
 Name:           rust
 Version:        %{version_current}
 Release:        0
 Summary:        A systems programming language
 License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
-Url:            https://www.rust-lang.org
+URL:            https://www.rust-lang.org
 Source0:        %{dl_url}/rustc-%{version}-src.tar.xz
 Source99:       %{name}-rpmlintrc
 Source100:      %{dl_url}/rust-%{version_bootstrap}-x86_64-unknown-linux-gnu.tar.xz
@@ -120,13 +131,22 @@ Source105:      %{dl_url}/rust-%{version_bootstrap}-powerpc64-unknown-linux-gnu.
 Source106:      %{dl_url}/rust-%{version_bootstrap}-powerpc64le-unknown-linux-gnu.tar.xz
 Source107:      %{dl_url}/rust-%{version_bootstrap}-s390x-unknown-linux-gnu.tar.xz
 Source108:      %{dl_url}/rust-%{version_bootstrap}-powerpc-unknown-linux-gnu.tar.xz
+# Make factory-auto stop complaining...
+Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
-# PATCH-FIX-UPSTREAM: Fix bug with timestamps which caused LLVM to rebuild - https://github.com/rust-lang/rust/issues/61206
-Patch1:         rust-61206-assume-tarball-llvm-is-fresh.patch
-# PATCH-FIX-UPSTREAM: Adds an option to ignore warnings, primaraily used in this build to allow v1.38 to bootstrap itself
-Patch2:         add-option-to-allow-warnings.patch
+# PATCH-FIX-UPSTREAM: fix rustdoc compilation: https://github.com/rust-lang/rust/issues/66224
+Patch1:         hopefully-fix-rustdoc-build.patch
 BuildRequires:  ccache
+BuildRequires:  curl
+BuildRequires:  fdupes
+BuildRequires:  git
+BuildRequires:  pkgconfig
+BuildRequires:  procps
+BuildRequires:  python3-base
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 # Leap 42 to 42.3, SLE12 SP1, SP2
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120200
 # In these distros cmake is 2.x, so we need cmake3 for building llvm.
@@ -135,8 +155,6 @@ BuildRequires:  cmake3
 # cmake got upgraded to 3.5 in SLE-12 SP2
 BuildRequires:  cmake
 %endif
-BuildRequires:  curl
-BuildRequires:  fdupes
 # In all of SLE12, the default gcc is 4.8.  Rust's LLVM wants 5.1 at least.
 # So, we'll just use gcc7.
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
@@ -144,74 +162,67 @@ BuildRequires:  gcc7-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  git
-BuildRequires:  pkgconfig
-BuildRequires:  procps
-BuildRequires:  python3-base
-BuildRequires:  pkgconfig(libcurl)
-# The following requires must mirror:
-# LIBSSH2_SYS_USE_PKG_CONFIG
+# The following requires must mirror: LIBSSH2_SYS_USE_PKG_CONFIG
 %if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
 BuildRequires:  pkgconfig(libssh2) >= 1.4.3
 %endif
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(zlib)
-# The compiler is not generally useful without the std library installed
-# And the std library is exactly specific to the version of the compiler
+# Real LLVM minimum version should be 7.x, but rust has a fallback
+# mode
+%if !%with bundled_llvm
+BuildRequires:  llvm-devel >= 6.0
+%endif
+%if !%with rust_bootstrap
+# We will now package cargo using the version number of rustc since it
+# is being built from rust sources. Old cargo packages have a 0.x
+# number
+BuildRequires:  cargo <= %{version_current}
+BuildRequires:  cargo >= %{version_previous}
+BuildRequires:  rust <= %{version_current}
+BuildRequires:  rust >= %{version_previous}
+BuildRequires:  rust-std-static <= %{version_current}
+BuildRequires:  rust-std-static >= %{version_previous}
+%endif
+# The compiler is not generally useful without the std library
+# installed and the std library is exactly specific to the version of
+# the compiler
 Requires:       %{name}-std-static = %{version}
 Recommends:     %{name}-doc
 Recommends:     cargo
 Conflicts:      rust
 Conflicts:      rustc-bootstrap
-# Restrict the architectures as building rust relies on being initially
-# bootstrapped before we can build the n+1 release
+# Restrict the architectures as building rust relies on being
+# initially bootstrapped before we can build the n+1 release
 ExclusiveArch:  x86_64 %{arm} aarch64 ppc ppc64 ppc64le s390x %{ix86}
 %ifarch %{ix86}
 ExclusiveArch:  i686
 %endif
-# Real LLVM minimum version should be 7.x, but rust has a fallback mode
-%if !%with bundled_llvm
-BuildRequires:  llvm-devel >= 6.0
-%endif
-%if !%with rust_bootstrap
-# We will now package cargo using the version number of rustc since
-# it is being built from rust sources. Old cargo packages have a 0.x number
-BuildRequires:  cargo <= %{version_current}
-BuildRequires:  cargo >= %{version_previous}
-BuildRequires:  rust <= %{version_current}
-BuildRequires:  rust >= %{version_previous}
-# This must be bumped to rust-std-static after 1.27.2 is in mainstream
-BuildRequires:  rust-std-static <= %{version_current}
-BuildRequires:  rust-std-static >= %{version_previous}
-%endif
 
 %description
-Rust is a systems programming language focused on three goals:
-safety, speed, and concurrency. It maintains these goals without
-having a garbage collector, making it a useful language for a
-number of use cases other languages are not good at: embedding
-in other languages, programs with specific space and time
-requirements, and writing low-level code, like device drivers
-and operating systems. It improves on current languages targeting
-this space by having a number of compile-time safety checks
-that produce no runtime overhead, while eliminating all
-data races. Rust also aims to achieve "zero-cost abstractions",
-even though some of these abstractions feel like those of a
-high-level language. Even then, Rust still allows precise
-control like a low-level language would.
+Rust is a systems programming language focused on three goals: safety,
+speed, and concurrency. It maintains these goals without having a
+garbage collector, making it a useful language for a number of use
+cases other languages are not good at: embedding in other languages,
+programs with specific space and time requirements, and writing
+low-level code, like device drivers and operating systems. It improves
+on current languages targeting this space by having a number of
+compile-time safety checks that produce no runtime overhead, while
+eliminating all data races. Rust also aims to achieve "zero-cost
+abstractions", even though some of these abstractions feel like those
+of a high-level language. Even then, Rust still allows precise control
+like a low-level language would.
 
 %package -n rust-std-static
 Summary:        Standard library for Rust
 License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
-Obsoletes:      rust-std < %{version}
 Conflicts:      rust-std < %{version}
+Obsoletes:      rust-std < %{version}
 Provides:       rust-std = %{version}
 
 %description -n rust-std-static
-This package includes the standard libraries for building
-applications written in Rust.
+This package includes the standard libraries for building applications
+written in Rust.
 
 %package -n rust-doc
 Summary:        Rust documentation
@@ -263,8 +274,8 @@ Requires:       %{name}-src = %{version}
 The RLS provides a server that runs in the background, providing IDEs,
 editors, and other tools with information about Rust programs. It
 supports functionality such as 'goto definition', symbol search,
-reformatting, and code completion, and enables renaming and refactorings.
-It can be used with an IDE such as Gnome-Builder.
+reformatting, and code completion, and enables renaming and
+refactorings.  It can be used with an IDE such as Gnome-Builder.
 
 %package -n rust-analysis
 Summary:        Compiler analysis data for the Rust standard library
@@ -273,9 +284,10 @@ Group:          Development/Languages/Rust
 Requires:       rust-std-static = %{version}
 
 %description -n rust-analysis
-This package contains analysis data files produced with rustc's -Zsave-analysis
-feature for the Rust standard library. The RLS (Rust Language Server) uses this
-data to provide information about the Rust standard library.
+This package contains analysis data files produced with rustc's
+-Zsave-analysis feature for the Rust standard library. The RLS (Rust
+Language Server) uses this data to provide information about the Rust
+standard library.
 
 %package -n rustfmt
 Summary:        Code formatting tool for Rust lang
@@ -283,6 +295,8 @@ License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
 Requires:       cargo = %{version}
+Provides:       cargo-fmt = %{rustfmt_version}
+Provides:       rustfmt = %{rustfmt_version}
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 # Legacy SUSE-only form
 Supplements:    packageand(%{name}:cargo)
@@ -290,8 +304,6 @@ Supplements:    packageand(%{name}:cargo)
 # Standard form
 Supplements:    (%{name} and cargo)
 %endif
-Provides:       cargo-fmt = %{rustfmt_version}
-Provides:       rustfmt = %{rustfmt_version}
 
 %description -n rustfmt
 A tool for formatting Rust code according to style guidelines.
@@ -313,11 +325,11 @@ Summary:        The Rust package manager
 License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
 Requires:       %{name} = %{version}
-Obsoletes:      cargo < %{version}
 Conflicts:      cargo < %{version}
-Provides:       rustc:%{_bindir}/cargo = %{version}
-Obsoletes:      cargo-vendor < %{version}
+Obsoletes:      cargo < %{version}
 Conflicts:      cargo-vendor < %{version}
+Obsoletes:      cargo-vendor < %{version}
+Provides:       rustc:%{_bindir}/cargo = %{version}
 
 %description -n cargo
 Cargo downloads dependencies of Rust projects and compiles it.
@@ -376,7 +388,6 @@ This package includes HTML documentation for Cargo.
 
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # use python3
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" x.py
@@ -589,7 +600,7 @@ rm -rf %{buildroot}/home
 
 %if %{with rls}
 %files -n rls
-%if 0%{?suse_version} == 1315
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
 %doc src/tools/rls/LICENSE-{APACHE,MIT}
 %else
 %license src/tools/rls/LICENSE-{APACHE,MIT}
@@ -602,7 +613,7 @@ rm -rf %{buildroot}/home
 %{rustlibdir}/%{rust_triple}/analysis/
 
 %files -n rustfmt
-%if 0%{?suse_version} == 1315
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
 %doc src/tools/rustfmt/LICENSE-{APACHE,MIT}
 %else
 %license src/tools/rustfmt/LICENSE-{APACHE,MIT}
@@ -612,7 +623,7 @@ rm -rf %{buildroot}/home
 %{_bindir}/rustfmt
 
 %files -n clippy
-%if 0%{?suse_version} == 1315
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
 %doc src/tools/clippy/LICENSE-{APACHE,MIT}
 %else
 %license src/tools/clippy/LICENSE-{APACHE,MIT}
@@ -622,7 +633,7 @@ rm -rf %{buildroot}/home
 %{_bindir}/clippy-driver
 
 %files -n cargo
-%if 0%{?suse_version} == 1315
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
 %doc src/tools/cargo/LICENSE-{APACHE,MIT,THIRD-PARTY}
 %else
 %license src/tools/cargo/LICENSE-{APACHE,MIT,THIRD-PARTY}

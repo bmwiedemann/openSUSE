@@ -1,7 +1,7 @@
 #
 # spec file for package MozillaFirefox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #               2006-2019 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,13 @@
 
 
 # changed with every update
-%define major          70
-%define mainver        %major.0.1
-%define orig_version   70.0.1
+%define major          71
+%define mainver        %major.0
+%define orig_version   71.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
 %define devpkg         1
-%define releasedate    20191030021342
 
 # always build with GCC as SUSE Security Team requires that
 %define clang_build 0
@@ -73,7 +72,7 @@ BuildRequires:  gcc7-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.36
+BuildRequires:  cargo >= 1.37
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
@@ -81,14 +80,14 @@ BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.22
-BuildRequires:  mozilla-nss-devel >= 3.46.1
+BuildRequires:  mozilla-nspr-devel >= 4.23
+BuildRequires:  mozilla-nss-devel >= 3.47.1
 BuildRequires:  nasm >= 2.13
 BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
-BuildRequires:  rust >= 1.36
+BuildRequires:  rust >= 1.37
 BuildRequires:  rust-cbindgen >= 0.9.1
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
@@ -138,22 +137,20 @@ Provides:       mozilla-kde4-version = %{kde_helper_version}
 Summary:        Mozilla %{appname} Web Browser
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
-Url:            http://www.mozilla.org/
+URL:            http://www.mozilla.org/
 %if !%{with only_print_mozconfig}
 Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz
 Source1:        MozillaFirefox.desktop
 Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
-Source5:        source-stamp.txt
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
 Source8:        firefox-mimeinfo.xml
 Source9:        firefox.js
-Source10:       compare-locales.tar.xz
 Source11:       firefox.1
 Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/master/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/d414e38/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
 # Set up API keys, see http://www.chromium.org/developers/how-tos/api-keys
@@ -167,26 +164,26 @@ Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig
 Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
-Patch4:         mozilla-openaes-decl.patch
-Patch5:         mozilla-aarch64-startup-crash.patch
-Patch6:         mozilla-bmo1463035.patch
-Patch7:         mozilla-cubeb-noreturn.patch
-Patch8:         mozilla-fix-aarch64-libopus.patch
-Patch9:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
-Patch10:        mozilla-s390-context.patch
-Patch11:        mozilla-s390-bigendian.patch
-Patch12:        mozilla-reduce-rust-debuginfo.patch
-Patch13:        mozilla-ppc-altivec_static_inline.patch
-Patch14:        mozilla-bmo1005535.patch
-Patch15:        mozilla-bmo1568145.patch
-Patch16:        mozilla-bmo1504834-part1.patch
-Patch17:        mozilla-bmo1504834-part2.patch
-Patch18:        mozilla-bmo1504834-part3.patch
-Patch19:        mozilla-bmo1511604.patch
-Patch20:        mozilla-bmo1554971.patch
-Patch21:        mozilla-bmo1512162.patch
-Patch22:        mozilla-fix-top-level-asm.patch
-Patch23:        mozilla-bmo1504834-part4.patch
+Patch4:         mozilla-aarch64-startup-crash.patch
+Patch5:         mozilla-bmo1463035.patch
+Patch6:         mozilla-cubeb-noreturn.patch
+Patch7:         mozilla-fix-aarch64-libopus.patch
+Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
+Patch9:         mozilla-s390-context.patch
+Patch10:        mozilla-s390-bigendian.patch
+Patch11:        mozilla-reduce-rust-debuginfo.patch
+Patch12:        mozilla-ppc-altivec_static_inline.patch
+Patch13:        mozilla-bmo1005535.patch
+Patch14:        mozilla-bmo1568145.patch
+Patch15:        mozilla-bmo1504834-part1.patch
+Patch16:        mozilla-bmo1504834-part2.patch
+Patch17:        mozilla-bmo1504834-part3.patch
+Patch18:        mozilla-bmo1554971.patch
+Patch19:        mozilla-bmo1512162.patch
+Patch20:        mozilla-fix-top-level-asm.patch
+Patch21:        mozilla-bmo1504834-part4.patch
+Patch22:        mozilla-bmo849632.patch
+Patch23:        mozilla-bmo1601707.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -293,7 +290,7 @@ if (( $(stat -Lc%s "%{SOURCE7}") < MINSIZE)); then
     exit 1
 fi
 
-%setup -q -n %{srcname}-%{orig_version} -b 7 -b 10
+%setup -q -n %{srcname}-%{orig_version} -b 7
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
@@ -307,10 +304,10 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
 %ifarch s390x ppc64
-%patch11 -p1
+%patch10 -p1
 %endif
+%patch11 -p1
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
@@ -341,15 +338,15 @@ if test "$kdehelperversion" != %{kde_helper_version}; then
   echo fix kde helper version in the .spec file
   exit 1
 fi
-source %{SOURCE5}
+source %{SOURCE4}
 %endif # only_print_mozconfig
 
 export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
-export MOZ_SOURCE_CHANGESET=$REV
-export SOURCE_REPO=$REPO
-export source_repo=$REPO
-export MOZ_SOURCE_REPO=$REPO
-export MOZ_BUILD_DATE=%{releasedate}
+export MOZ_SOURCE_CHANGESET=$RELEASE_TAG
+export SOURCE_REPO=$RELEASE_REPO
+export source_repo=$RELEASE_REPO
+export MOZ_SOURCE_REPO=$RELEASE_REPO
+export MOZ_BUILD_DATE=$RELEASE_TIMESTAMP
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
@@ -446,9 +443,6 @@ ac_add_options --with-arch=armv6
 ac_add_options --with-arch=armv7-a
 %endif
 %endif
-%ifarch aarch64 %arm s390x
-ac_add_options --disable-webrtc
-%endif
 # mitigation/workaround for bmo#1512162
 %ifarch s390x
 ac_add_options --enable-optimize="-O1"
@@ -478,13 +472,38 @@ rm -f config/external/icu/data/icudt*l.dat
 xvfb-run --server-args="-screen 0 1920x1080x24" \
 %endif
 ./mach build -v
+
+# build additional locales
+%if %localize
+mkdir -p %{buildroot}%{progdir}/browser/extensions
+truncate -s 0 %{_tmppath}/translations.{common,other}
+sed -r '/^(ja-JP-mac|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
+    | xargs -n 1 -I {} /bin/sh -c '
+        locale=$1
+        ./mach build langpack-$locale
+        cp -rL ../obj/dist/xpi-stage/locale-$locale \
+            %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org
+        # remove prefs, profile defaults, and hyphenation from langpack
+        rm -rf %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org/defaults
+        rm -rf %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org/hyphenation
+        # check against the fixed common list and sort into the right filelist
+        _matched=0
+        for _match in ar ca cs da de el en-GB es-AR es-CL es-ES fi fr hu it ja ko nb-NO nl pl pt-BR pt-PT ru sv-SE zh-CN zh-TW; do
+            [ "$_match" = "$locale" ] && _matched=1
+        done
+        [ $_matched -eq 1 ] && _l10ntarget=common || _l10ntarget=other
+        echo %{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org \
+            >> %{_tmppath}/translations.$_l10ntarget
+' -- {}
+%endif
+
 %endif # only_print_mozconfig
 
 %install
 cd $RPM_BUILD_DIR/obj
-source %{SOURCE5}
-export MOZ_SOURCE_STAMP=$REV
-export MOZ_SOURCE_REPO=$REPO
+source %{SOURCE4}
+export MOZ_SOURCE_STAMP=$RELEASE_TAG
+export MOZ_SOURCE_REPO=$RELEASE_REPO
 # need to remove default en-US firefox-l10n.js before it gets
 # populated into browser's omni.ja; it only contains general.useragent.locale
 # which should be loaded from each language pack (set in firefox.js)
@@ -506,35 +525,7 @@ mv %{buildroot}%{progdir}/%{srcname}-bin %{buildroot}%{progdir}/%{progname}-bin
 install -m 644 %{SOURCE13} %{buildroot}%{progdir}/defaults/pref/
 # install browser prefs
 install -m 644 %{SOURCE9} %{buildroot}%{progdir}/browser/defaults/preferences/firefox.js
-# build additional locales
-%if %localize
-mkdir -p %{buildroot}%{progdir}/browser/extensions
-truncate -s 0 %{_tmppath}/translations.{common,other}
-sed -r '/^(ja-JP-mac|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
-    | xargs -n 1 -I {} /bin/sh -c '
-        locale=$1
-        pushd $RPM_BUILD_DIR/compare-locales
-        PYTHONPATH=lib \
-            scripts/compare-locales -m ../l10n-merged/$locale \
-            ../%{srcname}-%{orig_version}/browser/locales/l10n.ini ../l10n $locale
-        popd
-        LOCALE_MERGEDIR=$RPM_BUILD_DIR/l10n-merged/$locale \
-            make -C browser/locales langpack-$locale
-        cp -rL dist/xpi-stage/locale-$locale \
-            %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org
-        # remove prefs, profile defaults, and hyphenation from langpack
-        rm -rf %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org/defaults
-        rm -rf %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org/hyphenation
-        # check against the fixed common list and sort into the right filelist
-        _matched=0
-        for _match in ar ca cs da de el en-GB es-AR es-CL es-ES fi fr hu it ja ko nb-NO nl pl pt-BR pt-PT ru sv-SE zh-CN zh-TW; do
-            [ "$_match" = "$locale" ] && _matched=1
-        done
-        [ $_matched -eq 1 ] && _l10ntarget=common || _l10ntarget=other
-        echo %{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org \
-            >> %{_tmppath}/translations.$_l10ntarget
-' -- {}
-%endif
+
 # remove some executable permissions
 find %{buildroot}%{progdir} \
      -name "*.js" -o \

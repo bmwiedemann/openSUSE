@@ -1,0 +1,9 @@
+<services>
+  <service mode="disabled" name="download_files">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="disabled" name="refresh_patches">
+    <param name="changesgenerate">enable</param>
+    <param name="ignorefuzz">enable</param>
+  </service>
+</services>

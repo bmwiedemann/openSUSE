@@ -1,0 +1,52 @@
+diff --git a/dom/indexedDB/ActorsParent.cpp b/dom/indexedDB/ActorsParent.cpp
+--- a/dom/indexedDB/ActorsParent.cpp
++++ b/dom/indexedDB/ActorsParent.cpp
+@@ -24311,9 +24311,9 @@
+   // if we allow overwrite or not. By not allowing overwrite we raise
+   // detectable errors rather than corrupting data.
+   DatabaseConnection::CachedStatement stmt;
+-  const auto& optReplaceDirective = (!mOverwrite || keyUnset)
+-                                        ? NS_LITERAL_CSTRING("")
+-                                        : NS_LITERAL_CSTRING("OR REPLACE ");
++  const auto optReplaceDirective = (!mOverwrite || keyUnset)
++                                       ? NS_LITERAL_CSTRING("")
++                                       : NS_LITERAL_CSTRING("OR REPLACE ");
+   rv = aConnection->GetCachedStatement(
+       NS_LITERAL_CSTRING("INSERT ") + optReplaceDirective +
+           NS_LITERAL_CSTRING("INTO object_data "
+@@ -25869,7 +25869,7 @@
+     }
+   }
+ 
+-  const auto& comparisonChar =
++  const auto comparisonChar =
+       isIncreasingOrder ? NS_LITERAL_CSTRING(">") : NS_LITERAL_CSTRING("<");
+ 
+   mCursor->mContinueToQuery =
+@@ -26076,9 +26076,9 @@
+ 
+   const bool usingKeyRange = mOptionalKeyRange.isSome();
+ 
+-  const auto& indexTable = mCursor->mUniqueIndex
+-                               ? NS_LITERAL_CSTRING("unique_index_data")
+-                               : NS_LITERAL_CSTRING("index_data");
++  const auto indexTable = mCursor->mUniqueIndex
++                              ? NS_LITERAL_CSTRING("unique_index_data")
++                              : NS_LITERAL_CSTRING("index_data");
+ 
+   NS_NAMED_LITERAL_CSTRING(sortColumn, "sort_column");
+ 
+@@ -26198,9 +26198,9 @@
+ 
+   const bool usingKeyRange = mOptionalKeyRange.isSome();
+ 
+-  const auto& table = mCursor->mUniqueIndex
+-                          ? NS_LITERAL_CSTRING("unique_index_data")
+-                          : NS_LITERAL_CSTRING("index_data");
++  const auto table = mCursor->mUniqueIndex
++                         ? NS_LITERAL_CSTRING("unique_index_data")
++                         : NS_LITERAL_CSTRING("index_data");
+ 
+   NS_NAMED_LITERAL_CSTRING(sortColumn, "sort_column");
+ 
+
