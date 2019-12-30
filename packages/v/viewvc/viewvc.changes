@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 28 20:19:42 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.1.27
+  * suppress stack traces (with option to show) (#140)
+  * distinguish text/binary/image files by icons (#166, #175)
+  * colorize alternating file content lines (#167)
+  * link to the instance root from the ViewVC logo (#168)
+  * display directory and root counts, too (#169)
+  * fix double fault error in standalone.py (#157)
+  * support timezone offsets with minutes piece (#176)
+- rebase viewvc-buglink.patch => viewvc-1.1.27-buglink.patch
+- use license macro
+- avoid /usr/bin/env and make the files using this executable
+- source has been moved to GitHub
+- use _service file for downloading the source
+
+-------------------------------------------------------------------
 Mon Feb 13 09:09:31 UTC 2017 - michael@stroeder.com
 
 - vievwc 1.1.26, including one security fix:

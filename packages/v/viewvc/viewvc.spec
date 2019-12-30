@@ -1,7 +1,7 @@
 #
 # spec file for package viewvc
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,16 +25,18 @@
 #
 %define viewvc_dir /srv/viewvc
 Name:           viewvc
-Version:        1.1.26
+Version:        1.1.27
 Release:        0
 Summary:        Browse a Subversion Repository with a Web Browser
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 Url:            http://www.viewvc.org/
-Source0:        http://www.viewvc.org/viewvc-%{version}.tar.gz
+Source0:        viewvc-%{version}.tar.gz
 Source1:        viewvc.conf
 Source99:       viewvc-rpmlintrc
-Patch0:         viewvc-buglink.patch
+# PATCH-FIX-OPENSUSE: adds a config option for a 'buglink_base' value that can be used to form a URL 
+#                     by appending a bug number in a log message
+Patch0:         viewvc-1.1.27-buglink.patch
 BuildRequires:  apache2-devel
 BuildRequires:  python-devel
 Requires:       subversion-python
@@ -60,7 +62,10 @@ ViewVC is the successor of ViewCVS.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p1
+
+find lib/ -name "*.py" -type f \
+   -exec sed -i '1s|^#!.*/usr/bin/env |#!/usr/bin/|' {} \;
 
 %build
 
@@ -97,12 +102,15 @@ find %{buildroot}%{viewvc_dir} -type d | \
 sed "s@%{buildroot}@%dir @" > files.viewvc
 find %{buildroot}%{viewvc_dir} -type f | \
 sed "s@%{buildroot}@@;/\/templates\/\|\.conf$/s@^@%config (noreplace) @" >> files.viewvc
+for file in blame.py compat_difflib.py compat_ndiff.py ezt.py py2html.py query.py parse_rcs_file.py run-tests.py; do
+	sed -i "s|\(.*$file\)|%attr(0755,root,root) &|" files.viewvc
+done
 cat files.viewvc
 #
 
 %files -f files.viewvc
 %defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %dir %{apache_sysconfdir}/conf.d
 %config (noreplace) %{apache_sysconfdir}/conf.d/viewvc.conf
 

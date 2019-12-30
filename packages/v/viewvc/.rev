@@ -395,4 +395,24 @@
     <comment>vievwc 1.1.26 CVE-2017-5938 boo#1024393</comment>
     <requestid>456699</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ae378787464dab9abe4b73be75407a67</srcmd5>
+    <version>1.1.27</version>
+    <time>1577705682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.27
+  * suppress stack traces (with option to show) (#140)
+  * distinguish text/binary/image files by icons (#166, #175)
+  * colorize alternating file content lines (#167)
+  * link to the instance root from the ViewVC logo (#168)
+  * display directory and root counts, too (#169)
+  * fix double fault error in standalone.py (#157)
+  * support timezone offsets with minutes piece (#176)
+- rebase viewvc-buglink.patch =&gt; viewvc-1.1.27-buglink.patch
+- use license macro
+- avoid /usr/bin/env and make the files using this executable
+- source has been moved to GitHub
+- use _service file for downloading the source</comment>
+    <requestid>759914</requestid>
+  </revision>
 </revisionlist>

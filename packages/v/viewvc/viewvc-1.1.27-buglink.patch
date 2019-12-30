@@ -1,6 +1,8 @@
---- conf/viewvc.conf.dist
-+++ conf/viewvc.conf.dist
-@@ -329,6 +329,21 @@
+Index: viewvc-1.1.27/conf/viewvc.conf.dist
+===================================================================
+--- viewvc-1.1.27.orig/conf/viewvc.conf.dist
++++ viewvc-1.1.27/conf/viewvc.conf.dist
+@@ -343,6 +343,21 @@
  ##---------------------------------------------------------------------------
  [options]
  
@@ -22,30 +24,33 @@
  ## root_as_url_component: Interpret the first path component in the URL
  ## after the script location as the root to use.  This is an
  ## alternative to using the "root=" query key. If ViewVC is configured
---- lib/config.py
-+++ lib/config.py
-@@ -438,6 +438,7 @@
-     self.options.log_pagesize = 0
+Index: viewvc-1.1.27/lib/config.py
+===================================================================
+--- viewvc-1.1.27.orig/lib/config.py
++++ viewvc-1.1.27/lib/config.py
+@@ -445,6 +445,7 @@ class Config:
      self.options.log_pagesextra = 3
      self.options.limit_changes = 100
+     self.options.stacktraces = 0
 +    self.options.buglink_base = None
  
      self.templates.diff = None
      self.templates.directory = None
---- lib/viewvc.py
-+++ lib/viewvc.py
-@@ -1122,6 +1122,10 @@
+Index: viewvc-1.1.27/lib/viewvc.py
+===================================================================
+--- viewvc-1.1.27.orig/lib/viewvc.py
++++ viewvc-1.1.27/lib/viewvc.py
+@@ -1167,6 +1167,9 @@ class ViewVCHtmlFormatterTokens:
+           return out, out_len, 1
      return out, out_len, 0
  
-     
 +# Matches bug numbers
 +_re_rewrite_bug = re.compile(r'((?:\bbug[\s:#+]|[^&]#|^#)\s*(\d\d+))', re.I)
 +_re_buglink_prefix = ""
-+ 
+     
  class ViewVCHtmlFormatter:
    """Format a string as HTML-encoded output with customizable markup
-   rules, for example turning strings that look like URLs into anchor links.
-@@ -1134,6 +1138,19 @@
+@@ -1180,6 +1183,19 @@ class ViewVCHtmlFormatter:
    def __init__(self):
      self._formatters = []
  
@@ -65,7 +70,7 @@
    def format_url(self, mobj, userdata, maxlen=0):
      """Return a 2-tuple containing:
           - the text represented by MatchObject MOBJ, formatted as
-@@ -1356,6 +1373,11 @@
+@@ -1399,6 +1415,11 @@ class LogFormatter:
            lf.add_formatter(_re_rewrite_svnrevref, lf.format_svnrevref,
                             revision_to_url)
  
