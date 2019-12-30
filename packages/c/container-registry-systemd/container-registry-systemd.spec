@@ -17,11 +17,11 @@
 
 
 Name:           container-registry-systemd
-Version:        0.0+git20191222.b00b515
+Version:        0.0+git20191229.fbbe884
 Release:        0
 Summary:        Systemd service files and config files for container-registry
 License:        GPL-3.0-or-later
-URL:            https://github.com/thkukuk/container-registry-systemd
+URL:            https://github.com/kubic-project/container-registry-systemd
 Source:         container-registry-systemd-%{version}.tar.xz
 Requires:       certstrap
 Requires(post): %fillup_prereq

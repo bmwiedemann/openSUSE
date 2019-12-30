@@ -40,4 +40,13 @@
   * Only run after network is online</comment>
     <requestid>758990</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>659608f6d70780689fb52d8a37ca23aa</srcmd5>
+    <version>0.0+git20191229.fbbe884</version>
+    <time>1577705671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20191229.fbbe884:
+  * Add re-generation of certificates</comment>
+    <requestid>759895</requestid>
+  </revision>
 </revisionlist>
