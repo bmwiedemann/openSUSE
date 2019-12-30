@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.4.2
+Version:        1.6.0
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/flatpak/xdg-desktop-portal
-Source0:        https://github.com/flatpak/xdg-desktop-portal/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(flatpak)
@@ -35,6 +36,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.5.2
 BuildRequires:  pkgconfig(libpipewire-0.2) >= 0.2.6
+BuildRequires:  pkgconfig(libportal)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
 Recommends:     %{name}-lang

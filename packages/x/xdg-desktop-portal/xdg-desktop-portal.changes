@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Dec 20 23:44:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + tests: Adapt to libportal api changes.
+- Changes from version 1.5.4:
+  + background:
+    - Add a signal to the impl api.
+    - Rewrite the monitoring to better track when apps disappear.
+  + permissions: Fix SetValue handling of GVariant wrapping. This
+    is an api change.
+  + openuri:
+    - Add a per-type always-ask option.
+    - Show the app chooser dialog less often.
+  + memorymonitor: A new portal to let apps receive low memory
+    warnings.
+  + filetransfer: A new portal to rewrite file paths between
+    sandboxes.
+- Changes from version 1.5.3:
+  + Add more tests.
+  + location: Various fixes.
+  + document portal: Monitor fuse mount.
+  + openuri:
+    - Only ask 3 times to use the same app.
+    - Add an 'ask' option.
+  + Fix build from git.
+  + email: Allow multiple addresses, cc and bcc.
+  + filechooser: Allow saving multiple files.
+  + Update translations.
+- Changes from version 1.5.2:
+  + Add many more tests, using libportal.
+  + gamemode: Add a pidfd-based api.
+  + inhibit: Send a Response signal.
+  + openuri: Add an OpenDirectory api.
+  + Updated translations.
+- Changes from version 1.5.1:
+  + Add a portal for setting desktop backgrounds
+  + Add tests.
+  + Optionally use libportal (for tests).
+- Changes from version 1.5.0:
+  + Add a secret portal that is meant be used via libsecret inside
+    the sandbox. One backend for this will live in gnome-keyring,
+    others are possible.
+  + Fix a file descriptor leak.
+  + Reduce log spam.
+  + Updated translations.
+- Add pkgconfig(libportal) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Thu Jun 13 23:39:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.2:
