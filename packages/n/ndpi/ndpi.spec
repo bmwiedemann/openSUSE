@@ -21,9 +21,9 @@
 %bcond_without hyperscan
 %endif
 
-%define sover 2
+%define sover 3
 Name:           ndpi
-Version:        2.8
+Version:        3.0
 Release:        0
 Summary:        Extensible deep packet inspection library
 # wireshark/ndpi.lua is GPL-3.0-or-later
@@ -31,10 +31,6 @@ License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/ntop/nDPI
 Source:         https://github.com/ntop/nDPI/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# FIXME: Upstream makefile is broken
-Patch0:         ndpi-fix-build.patch
-# PATCH-FIX-UPSTREAM https://github.com/ntop/nDPI/pull/662
-Patch1:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -90,8 +86,6 @@ This package contains the ndpiReader binary.
 
 %prep
 %setup -q -n nDPI-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 sh autogen.sh
@@ -105,6 +99,7 @@ make %{?_smp_mflags}
 %install
 %make_install PREFIX=%{_prefix} prefix=%{_prefix} libdir=%{_libdir}
 rm -f %{buildroot}/%{_libdir}/libndpi.a
+rm -rf %{buildroot}/%{_sbindir}/ndpi
 
 %post   -n libndpi%{sover} -p /sbin/ldconfig
 %postun -n libndpi%{sover} -p /sbin/ldconfig
