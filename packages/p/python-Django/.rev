@@ -657,4 +657,14 @@
     <comment></comment>
     <requestid>752876</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ecee234406f9c21a5421aa663c9e49b3</srcmd5>
+    <version>2.2.9</version>
+    <time>1577705654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.9
+ * CVE-2019-19844: Potential account hijack via password reset form (bsc#1159447)
+ * Fixed a data loss possibility in SplitArrayField.</comment>
+    <requestid>759885</requestid>
+  </revision>
 </revisionlist>

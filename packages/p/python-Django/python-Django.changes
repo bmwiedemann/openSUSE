@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 29 11:00:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 2.2.9
+ * CVE-2019-19844: Potential account hijack via password reset form (bsc#1159447)
+ * Fixed a data loss possibility in SplitArrayField.
+
+-------------------------------------------------------------------
 Mon Dec  2 09:45:57 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 2.2.8

@@ -22,8 +22,8 @@
 %bcond_with selenium
 %bcond_with memcached
 Name:           python-Django
-# We want support LTS versions of Django - odd numbered 2.2 -> 2.4 -> 2.6 -> 3.0 etc
-Version:        2.2.8
+# We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
+Version:        2.2.9
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
