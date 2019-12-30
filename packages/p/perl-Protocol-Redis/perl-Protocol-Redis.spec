@@ -17,7 +17,7 @@
 
 
 Name:           perl-Protocol-Redis
-Version:        1.0010
+Version:        1.0011
 Release:        0
 %define cpan_name Protocol-Redis
 Summary:        Redis protocol parser/encoder with asynchronous capabilities
@@ -40,7 +40,7 @@ http://redis.io/topics/pipelining support.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -56,6 +56,6 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README
+%doc Changes
 
 %changelog
