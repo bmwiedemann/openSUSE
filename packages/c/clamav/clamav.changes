@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 24 10:49:25 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- The freshclam.service should not be started before the network is
+  online (it checks for updates immediately upon service start)
+
+-------------------------------------------------------------------
 Thu Dec 19 15:31:58 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
