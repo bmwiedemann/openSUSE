@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 29 03:13:35 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.008001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.008001	2019-12-28
+  
+   - Types::TypeTiny honours $Type::Tiny::AvoidCallbacks.
+   - Types::TypeTiny now better mocks Type::Library, offering is_* and
+     assert_* functions for export.
+   - Use improved inline_assert when building the coderef for &{$type}
+     overloading.
+
+-------------------------------------------------------------------
 Wed Dec 18 11:01:18 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Limit description paragraphs to 2
