@@ -1,7 +1,7 @@
 #
 # spec file for package ansible
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright 2013 by Lars Vogdt
 # Copyright 2014 by Boris Manojlovic
 #
@@ -17,101 +17,65 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?suse_version} && 0%{?suse_version} >= 1500
-%bcond_without python3
-%else
-%bcond_with    python3
+# Disable shebang munging for specific paths. These files are data files.
+# ansible-test munges the shebangs itself.
+%global __brp_mangle_shebangs_exclude_from %{_prefix}/lib/python[0-9]+\.[0-9]+/site-packages/ansible_test/_data/.*
+%if 0%{?rhel} || 0%{?fedora}
+# RHEL and Fedora add -s to the shebang line.  We do *not* use -s -E -S or -I
+# with ansible because it has many optional features which users need to
+# install libraries on their own to use.  For instance, paramiko for the
+# network connection plugins or winrm to talk to windows hosts.
+# Set this to nil to remove -s
+%define py_shbang_opts %{nil}
+%define py2_shbang_opts %{nil}
+%define py3_shbang_opts %{nil}
 %endif
+
+# While Windows Powershell meanwhile exists, it is not in Factory/Leap for now.
+# So let's exclude /usr/bin/pwsh from the dependencies
+%define __requires_exclude ^%{_bindir}/pwsh$
+
+# Python 2 or Python 3?
+%if 0%{?suse_version} >= 1315
+%bcond_without  python3
+%else
+%bcond_with     python3
+%endif
+
 %if %{with python3}
-%define __python %{__python3}
+%define __python python3
 %define python python3
 %else
 %define python python
 %endif
 
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110 || 0%{?rhel} == 5
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%else
-BuildArch:      noarch
-%endif
+# Disable/Enable tests only on newer distributions, which have the 
+# needed dependencies.
+%define with_tests 0
+
+
 Name:           ansible
-Version:        2.9.0
+Version:        2.9.2
 Release:        0
-Summary:        Software automation engine
+Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://ansible.com/
+URL:            https://ansible.com/
 Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
-Source1:        ansible-%{version}.tar.gz.sha
+Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
 Source99:       ansible-rpmlintrc
-# SuSE/openSuSE
-%if 0%{?suse_version}
-%if %{with python3}
-BuildRequires:  python3-devel >= 3.5
-%else
-BuildRequires:  python-devel
-%endif
-BuildRequires:  %{python}-setuptools
-Recommends:     %{python}-dnspython
-Recommends:     %{python}-dopy
-Recommends:     %{python}-pywinrm
-Recommends:     sshpass
-Recommends:     %{python}-httplib2
-Recommends:     %{python}-keyczar
-Recommends:     %{python}-six
-Requires:       %{python}-setuptools
-%if 0%{?suse_version} >= 01130
-BuildRequires:  %{python}-Jinja2
-BuildRequires:  %{python}-PyYAML
-BuildRequires:  %{python}-paramiko
-BuildRequires:  %{python}-pycrypto >= 2.6
-BuildRequires:  fdupes
-Requires:       %{python}-Jinja2
-Requires:       %{python}-PyYAML
-Requires:       %{python}-paramiko
-Requires:       %{python}-passlib
-Requires:       %{python}-pycrypto >= 2.6
-%else
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
-%endif
-# RHEL <=5
-%if 0%{?rhel} && 0%{?rhel} <= 5
-BuildRequires:  python26-devel
-BuildRequires:  python26-setuptools
-Requires:       python26-PyYAML
-Requires:       python26-httplib2
-Requires:       python26-jinja2
-Requires:       python26-keyczar
-Requires:       python26-paramiko
-Requires:       python26-setuptools
-Requires:       python26-six
-Requires:       sshpass
-%endif
-# RHEL > 5
-%if 0%{?rhel} && 0%{?rhel} >= 5
-BuildRequires:  python-setuptools
-BuildRequires:  python2-devel
-Requires:       PyYAML
-Requires:       python-jinja2
-Requires:       python-paramiko
-Requires:       python-setuptools
-Requires:       python-six
-Requires:       sshpass
-%endif
-# RHEL == 6
-%if 0%{?rhel} == 6
-Requires:       python-crypto
-%endif
-# RHEL >=7
-%if 0%{?rhel} >= 7
-Requires:       python2-cryptography
-BuildRequires:  perl(Exporter)
-%endif
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildArch:      noarch
+#
+# Fedora
+#
 %if 0%{?fedora} >= 18
+%global         with_python2 0
+%global         with_python3 1
+%define         __python python2
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
+BuildRequires:  python-straight-plugin
 Requires:       PyYAML
 Requires:       python-httplib2
 Requires:       python-jinja2
@@ -120,23 +84,239 @@ Requires:       python-paramiko
 Requires:       python-setuptools
 Requires:       python-six
 Requires:       sshpass
-%define         __python %{__python2}
+# Bundled provides
+Provides:       bundled(python-backports-ssl_match_hostname) = 3.7.0.1
+Provides:       bundled(python-distro) = 1.4.0
+Provides:       bundled(python-ipaddress) = 1.0.22
+Provides:       bundled(python-selectors2) = 1.1.1
+Provides:       bundled(python-six) = 1.12.0
+%endif
+#
+# SUSE/openSUSE
+#
+%if 0%{?suse_version}
+# Enable WinRM (Run tasks over Microsoft's WinRM)
+# by setting the following definition to 1
+%define with_winrm 0
+# Enable Gitlab support (runner, project, hook, deploy)
+# by setting this definition to 1
+%define with_gitlab 0
+# openSUSE has currently not good enough python3 sphinx (sub-)packages
+# disable building extensive docs per default:
+%define with_docs 0
+# Distribution version dependend stuff
+%if 0%{?suse_version} >= 1500 
+# Enable VMWare support for newer openSUSE distributions here
+# otherwise disable this by setting the value below to 0
+%define with_vmware 1
+# Enable Amazon EC2 support (modules) dependencies
+# by setting the following definition to 1
+%define with_amazon 1
+%else
+%define with_amazon 0
+%define with_vmware 0
+%define with_tests  0
+%endif
+BuildRequires:  %{python}-Jinja2
+BuildRequires:  %{python}-PyYAML
+BuildRequires:  %{python}-coverage
+BuildRequires:  %{python}-devel
+BuildRequires:  %{python}-jmespath
+BuildRequires:  %{python}-paramiko
+BuildRequires:  %{python}-pycrypto >= 2.6
+BuildRequires:  %{python}-setuptools > 0.6
+BuildRequires:  %{python}-straight-plugin
+BuildRequires:  fdupes
+Requires:       %{python}-Jinja2
+Requires:       %{python}-PyYAML
+Requires:       %{python}-coverage
+Requires:       %{python}-jmespath
+Requires:       %{python}-paramiko
+Requires:       %{python}-passlib
+Requires:       %{python}-pycrypto >= 2.6
+Requires:       %{python}-setuptools > 0.6
+Recommends:     %{python}-boto3
+Recommends:     %{python}-botocore
+Recommends:     %{python}-dnspython
+Recommends:     %{python}-dopy
+Recommends:     %{python}-httplib2
+Recommends:     %{python}-keyczar
+Recommends:     %{python}-python-memcached
+Recommends:     %{python}-pbkdf2
+Recommends:     %{python}-pywinrm
+Recommends:     %{python}-redis
+Recommends:     %{python}-requests
+Recommends:     %{python}-six
+Recommends:     sshpass
+%if 0%{?with_amazon}
+BuildRequires:  %{python}-boto3
+BuildRequires:  %{python}-botocore
+%endif
+%if 0%{?with_gitlab}
+BuildRequires:  %{python}-gitlab
+BuildRequires:  %{python}-httmock
+Recommends:     %{python}-gitlab
+Recommends:     %{python}-httmock
+%endif
+%if 0%{?with_tests}
+BuildRequires:  %{python}-python-memcached
+BuildRequires:  %{python}-pbkdf2
+BuildRequires:  %{python}-pytest
+BuildRequires:  %{python}-redis
+BuildRequires:  %{python}-requests
+%endif
+%if 0%{?with_vmware}
+BuildRequires:  %{python}-pyvmomi
+Recommends:     %{python}-pyvmomi
+%endif
+%if 0%{?with_winrm}
+BuildRequires:  %{python}-pywinrm
+BuildRequires:  %{python}-pexpect
+Recommends:     %{python}-pywinrm
+%endif
+%endif
+#
+# RHEL
+#
+%if 0%{?rhel}
+# Bundled provides
+Provides:       bundled(python-backports-ssl_match_hostname) = 3.7.0.1
+Provides:       bundled(python-distro) = 1.4.0
+Provides:       bundled(python-ipaddress) = 1.0.22
+Provides:       bundled(python-selectors2) = 1.1.1
+Provides:       bundled(python-six) = 1.12.0
+%if 0%{?rhel} >= 8
+%global         with_python2 0
+%global         with_python3 1
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-docutils
+BuildRequires:  python3-jinja2
+BuildRequires:  python3-PyYAML
+BuildRequires:  python3-cryptography
+BuildRequires:  python3-six
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-xdist
+BuildRequires:  python3-pytest-mock
+BuildRequires:  python3-requests
+BUildRequires:  %{py3_dist coverage}
+BuildRequires:  python3-mock
+BuildRequires:  python3-systemd
+BuildRequires:  git-core
+Requires:       python3-jinja2
+Requires:       python3-PyYAML
+Requires:       python3-cryptography
+Requires:       python3-six
+Requires:       sshpass
+%else
+%if 0%{?rhel} >= 7
+%global         with_python2 1
+%global         with_python3 0
+BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
+BuildRequires:  python-sphinx
+BuildRequires:  python-jinja2
+BuildRequires:  PyYAML
+BuildRequires:  python2-cryptography
+BuildRequires:  python-six
+BuildRequires:  pytest
+BuildRequires:  python-requests
+BuildRequires:  python-coverage
+BuildRequires:  python-mock
+BuildRequires:  python-boto3
+BuildRequires:  git
+BuildRequires:  python-paramiko
+BuildRequires:  python-jmespath
+BuildRequires:  python-passlib
+Requires:       python-jinja2
+Requires:       PyYAML
+Requires:       python2-cryptography
+Requires:       python-six
+Requires:       sshpass
+Requires:       python-paramiko
+%endif  # Requires for RHEL 7
+%endif  # Requires for RHEL 8
+%endif
+
+# extented documentation
+%if 0%{?with_docs}
+BuildRequires:  asciidoc
+BuildRequires:  python-sphinx
+BuildRequires:  python-sphinx-notfound-page
+BuildRequires:  python-sphinx-theme-alabaster
 %endif
 
 %description
-Ansible is an IT automation system. It handles
-configuration-management, application deployment, cloud provisioning, ad-hoc
-task-execution, and multinode orchestration - including trivializing things
-like zero downtime rolling updates with load balancers.
+Ansible is a radically simple model-driven configuration management, multi-node
+deployment, and remote task execution system. Ansible works over SSH and does
+not require any software or daemons to be installed on remote nodes. Extension
+modules can be written in any language and are transferred to managed machines
+automatically.
+
+
+%package doc
+Summary:        Documentation for Ansible
+Recommends:     %{name} = %{version}
+
+%description doc
+This package contains extensive documentation for ansible.
+
+Ansible is a radically simple model-driven configuration management, multi-node
+deployment, and remote task execution system. Ansible works over SSH and does
+not require any software or daemons to be installed on remote nodes. Extension
+modules can be written in any language and are transferred to managed machines
+automatically.
+
+
+%package test
+Summary:        Tool for testing ansible plugin and module code
+Requires:       %{name} = %{version}
+#
+# RHEL
+#
+%if 0%{?rhel} >= 7
+Requires:       python-virtualenv
+BuildRequires:  python-virtualenv
+%endif
+#
+# SUSE/openSUSE
+#
+%if 0%{?suse_version} >= 1500
+Requires:       %{python}-virtualenv
+BuildRequires:  %{python}-virtualenv
+%endif
+
+
+%description test
+This package installs the ansible-test command for testing modules and plugins
+developed for ansible.
+
+Ansible is a radically simple model-driven configuration management, multi-node
+deployment, and remote task execution system. Ansible works over SSH and does
+not require any software or daemons to be installed on remote nodes. Extension
+modules can be written in any language and are transferred to managed machines
+automatically.
+
 
 %prep
 %setup -q -n ansible-%{version}
-
-find . -name .git_keep -delete
+for file in .git_keep .travis.yml ; do
+  find . -name "$file" -delete
+done
 find contrib/ -type f -exec chmod 644 {} +
+
+# Replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly.
+find ./ -type f -exec \
+    sed -i '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} \;
+
 
 %build
 %{__python} setup.py build
+%if 0%{?with_docs}
+  make %{?_smp_mflags} PYTHON=%{_bindir}/%{python} SPHINXBUILD=sphinx-build webdocs
+%else
+  make %{?_smp_mflags} PYTHON=%{_bindir}/%{python} -Cdocs/docsite config cli keywords modules plugins testing
+%endif
 
 %install
 %{__python} setup.py install --prefix=%{_prefix} --root=%{buildroot}
@@ -151,14 +331,61 @@ mkdir -p %{buildroot}/%{_datadir}/ansible
 %fdupes %{buildroot}/%{python_sitelib}/ansible/
 %endif
 
-%files
-%defattr(-,root,root,-)
-%if 0%{?suse_version} >= 1200
-%license COPYING
-%else
-%doc COPYING
+# Create system directories that Ansible defines as default locations in
+# ansible/config/base.yml
+DATADIR_LOCATIONS='%{_datadir}/ansible/collections
+%{_datadir}/ansible/plugins/doc_fragments
+%{_datadir}/ansible/plugins/action
+%{_datadir}/ansible/plugins/become
+%{_datadir}/ansible/plugins/cache
+%{_datadir}/ansible/plugins/callback
+%{_datadir}/ansible/plugins/cliconf
+%{_datadir}/ansible/plugins/connection
+%{_datadir}/ansible/plugins/filter
+%{_datadir}/ansible/plugins/httpapi
+%{_datadir}/ansible/plugins/inventory
+%{_datadir}/ansible/plugins/lookup
+%{_datadir}/ansible/plugins/modules
+%{_datadir}/ansible/plugins/module_utils
+%{_datadir}/ansible/plugins/netconf
+%{_datadir}/ansible/roles
+%{_datadir}/ansible/plugins/strategy
+%{_datadir}/ansible/plugins/terminal
+%{_datadir}/ansible/plugins/test
+%{_datadir}/ansible/plugins/vars'
+
+UPSTREAM_DATADIR_LOCATIONS=$(grep -ri default lib/ansible/config/base.yml| tr ':' '\n' | grep '%{_datadir}/ansible')
+
+if [ "$SYSTEM_LOCATIONS" != "$UPSTREAM_SYSTEM_LOCATIONS" ] ; then
+    echo "The upstream Ansible datadir locations have changed.  Spec file needs to be updated"
+    exit 1
+fi
+
+mkdir -p %{buildroot}%{_datadir}/ansible/plugins/
+for location in $DATADIR_LOCATIONS ; do
+    mkdir %{buildroot}"$location"
+done
+mkdir -p %{buildroot}%{_sysconfdir}/ansible/
+mkdir -p %{buildroot}%{_sysconfdir}/ansible/roles/
+
+cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
+cp examples/ansible.cfg %{buildroot}%{_sysconfdir}/ansible/
+mkdir -p %{buildroot}/%{_mandir}/man1/
+cp -v docs/man/man1/*.1 %{buildroot}/%{_mandir}/man1/
+
+cp -pr docs/docsite/rst .
+%if 0%{?with_docs}
+  cp -pr docs/docsite/_build/html %{_builddir}/%{name}-%{version}/html
 %endif
-%doc *.rst contrib examples changelogs
+
+%if 0%{?with_tests} &&  0%{with python3}
+%check
+%{__python3} bin/ansible-test units -v --python %{python3_version}
+%endif
+
+
+%files
+%license COPYING
 %{_bindir}/ansible
 %{_bindir}/ansible-config
 %{_bindir}/ansible-connection
@@ -168,12 +395,13 @@ mkdir -p %{buildroot}/%{_datadir}/ansible
 %{_bindir}/ansible-inventory
 %{_bindir}/ansible-playbook
 %{_bindir}/ansible-pull
-%{_bindir}/ansible-test
 %{_bindir}/ansible-vault
 %if %{with python3}
 %{python3_sitelib}/*
+%exclude %{python3_sitelib}/ansible_test
 %else
 %{python_sitelib}/*
+%exclude %{python_sitelib}/ansible_test
 %endif
 %{_mandir}/man1/ansible.1%{?ext_man}*
 %{_mandir}/man1/ansible-config.1%{?ext_man}*
@@ -187,5 +415,24 @@ mkdir -p %{buildroot}/%{_datadir}/ansible
 %dir %{_sysconfdir}/ansible
 %config(noreplace) %{_sysconfdir}/ansible/ansible.cfg
 %config(noreplace) %{_sysconfdir}/ansible/hosts
+%{_datadir}/ansible/
+
+%files doc
+%doc changelogs contrib examples rst
+%if 0%{?with_docs}
+%doc html
+%endif
+
+%files test
+%{_bindir}/ansible-test
+%if %{with python3}
+%{python3_sitelib}/ansible_test
+%attr(0755,root,root) %{python3_sitelib}/ansible_test/_data/injector/*.sh
+%attr(0755,root,root) %{python3_sitelib}/ansible_test/_data/setup/*.sh
+%else
+%{python2_sitelib}/ansible_test
+%attr(0755,root,root) %{python2_sitelib}/ansible_test/_data/injector/*.sh
+%attr(0755,root,root) %{python2_sitelib}/ansible_test/_data/setup/*.sh
+%endif
 
 %changelog

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Dec 29 15:21:09 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- sync with upstream spec file (especially for RHEL & Fedora builds)
+- ran spec-cleaner
+- remove old SUSE targets (SLE-11, Leap 42.3 and below)
+  This simplifies the spec file and makes building easier
+- Additional required packages for building:
+  + python-boto3 and python-botocore for Amazon EC2
+  + python-jmespath for json queries
+  + python-memcached for cloud modules and local caching of JSON 
+    formatted, per host records
+  + python-redis for cloud modules and local caching of JSON 
+    formatted, per host records
+  + python-requests for many web-based modules (cloud, network, 
+    netapp)
+  => as the need for those packages depends on the usage of the 
+     tool, they are just recommended on openSUSE/SUSE machines
+- made dependencies for gitlab, vmware and winrm modules configurable,
+  as most of their dependencies are not (yet) available on current 
+  openSUSE/SUSE distributions
+- exclude /usr/bin/pwsh from the automatic dependency generation, 
+  as the Windows Power Shell is not available (yet) on openSUSE/SUSE
+- build additional docs and split up ansible-doc package; 
+  moving changelogs, contrib and example directories there
+- prepare for building HTML documentation, but disable this per 
+  default for the moment, as not all package dependencies are available
+  in openSUSE/SUSE (yet)
+- package some test scripts with executable permissions
+
+-------------------------------------------------------------------
+Thu Dec  5 09:21:27 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.2
+  maintenance release containing numerous bugfixes
+
+-------------------------------------------------------------------
+Thu Nov 21 16:27:05 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Create system directories that Ansible defines as default locations 
+  in ansible/config/base.yml
+- rephrase the summary line 
+- Disable shebang munging for specific paths. These files are data files.
+  ansible-test munges the shebangs itself.
+
+-------------------------------------------------------------------
+Tue Nov 19 18:04:50 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- split out ansible-test package for module developers
+
+-------------------------------------------------------------------
+Fri Nov 15 12:44:55 UTC 2019 - lars@linux-schulserver.de - 2.9.1
+
+- update to version 2.9.1
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.9/changelogs/CHANGELOG-v2.9.rst
+  + CVE-2019-14864: fixed Splunk and Sumologic callback plugins leak 
+    sensitive data in logs
+- replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly
+
+-------------------------------------------------------------------
 Sun Nov  3 19:26:21 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
 
 - added file '/usr/bin/ansible-test' to spec file
