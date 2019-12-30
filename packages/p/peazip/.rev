@@ -752,4 +752,12 @@
     <comment>fix 15.2 build</comment>
     <requestid>753246</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b976ec7f0f70f5105d1f74c5d2565f0b</srcmd5>
+    <version>7.0.1</version>
+    <time>1577705712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759934</requestid>
+  </revision>
 </revisionlist>

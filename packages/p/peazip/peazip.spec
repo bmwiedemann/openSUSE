@@ -18,11 +18,10 @@
 
 %define         _peazipinstalldir %{_libdir}/peazip
 Name:           peazip
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
-Group:          Productivity/Archiving/Compression
 URL:            http://www.peazip.org
 Source0:        https://sourceforge.net/projects/peazip/files/%{version}/peazip-%{version}.src.zip
 Source1:        altconf.txt
@@ -70,7 +69,6 @@ export job definition as a script.
 
 %package kf5
 Summary:        KF5 servicemenu for peazip
-Group:          Productivity/Archiving/Compression
 Requires:       peazip
 %if 0%{?suse_version} < 1500
 Requires(post): update-desktop-files
