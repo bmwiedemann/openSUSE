@@ -535,4 +535,12 @@ Added patch from git:
     <comment></comment>
     <requestid>738088</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>239dfb964a20280f70ed9a7948e4d2f7</srcmd5>
+    <version>1.3.9</version>
+    <time>1577705737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release version 1.3.9, first release since 2016.</comment>
+    <requestid>760012</requestid>
+  </revision>
 </revisionlist>

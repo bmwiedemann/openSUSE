@@ -16,9 +16,9 @@
 #
 
 
-%define rev 664c5a31f9cf519af5a4c3adcb30dbbc73d037d6
+%define rev 240ba7b487e7132f14053e643866307b323b5f01
 
-%bcond_without git
+%bcond_with git
 
 %if 0%{?suse_version} > 1500
 %bcond_without manpage
@@ -26,18 +26,19 @@
 %bcond_with manpage
 %endif
 %bcond_without qt5
+%define gname Clementine
 
 Name:           clementine
-Version:        1.3.1+git20191004
+Version:        1.3.9
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 Url:            https://clementine-player.org/
 %if %{without git}
-#Source:         https://github.com/clementine-player/Clementine/releases/download/%%{version}/%%{name}-%%{version}.tar.xz
+Source:         https://github.com/clementine-player/%{gname}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 %else
-Source0:        https://github.com/clementine-player/Clementine/archive/%{rev}.tar.gz#/%{name}-%{version}.tar.gz
+#Source0:        https://github.com/clementine-player/Clementine/archive/%%{rev}.tar.gz#/%%{name}-%%{version}.tar.gz
 %endif
 # PATCH-FEATURE-UPSTREAM uudisks2-support-for-devicemanager.patch
 Patch1:         clementine-udisks-headers.patch
@@ -140,9 +141,9 @@ Features:
 
 %prep
 %if %{without git}
-%setup -q
+%setup -q -n %{gname}-%{version}
 %else
-%setup -q -n Clementine-%{rev}
+%setup -q -n %{gname}-%{rev}
 %endif
 %autopatch -p1
 
