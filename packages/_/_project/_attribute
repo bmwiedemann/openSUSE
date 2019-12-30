@@ -52,7 +52,7 @@
   boo#1144894: '20190921'
   boo#1145372: '20191023'
   boo#1145461: '20190820'
-  boo#1146736: '20191228'
+  boo#1146736: '20191229'
   boo#1148477: '20191009'
   boo#1148850: '20191008'
   boo#1150977: '20190917'
@@ -65,7 +65,7 @@
   boo#1153162: '20191009'
   boo#1153188: '20191014'
   boo#1153514: '20191228'
-  boo#1153562: '20191228'
+  boo#1153562: '20191229'
   boo#1153568: '20191204'
   boo#1154311: '20191018'
   boo#1154582: '20191229'
@@ -75,14 +75,14 @@
   boo#1155548: '20191104'
   boo#1155624: '20191104'
   boo#1156459: '20191110'
-  boo#1156497: '20191228'
+  boo#1156497: '20191229'
   boo#1156745: '20191121'
   boo#1157429: '20191229'
   boo#1157579: '20191124'
   boo#1157889: '20191210'
   boo#1158096: '20191205'
-  boo#1158326: '20191228'
-  boo#1159149: '20191228'
+  boo#1158326: '20191229'
+  boo#1159149: '20191229'
   boo#1159169: '20191212'
   boo#1159269: '20191229'
   boo#1159444: '20191229'
@@ -194,7 +194,7 @@
   poo#60740: '20191207'
   poo#61176: '20191228'
   poo#61704: '20191229'
-  poo#61707: '20191228'
+  poo#61707: '20191229'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -218,7 +218,7 @@ pkglistgen-scopes = target rings
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility
 
-repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cpio,cracklib,dejagnu,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,flex,gawk,gcc,gcc8,gcc9,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libffi,libnsl,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,m4,make,mpc,mpfr,ncurses,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python3-base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tcpd,texinfo,update-alternatives,utempter,util-linux,which,xz,zlib,zstd
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cpio,cracklib,dejagnu,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,flex,gawk,gcc,gcc8,gcc9,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libffi,libnsl,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,m4,make,mpc,mpfr,ncurses,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python3-base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tcpd,texinfo,update-alternatives,utempter,util-linux,which,xz,zlib,zstd
 
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
