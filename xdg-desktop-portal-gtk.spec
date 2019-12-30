@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-gtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,23 @@
 
 
 Name:           xdg-desktop-portal-gtk
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        Backend implementation for xdg-desktop-portal using GTK+
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/flatpak/xdg-desktop-portal-gtk
-Source0:        https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
-BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.4.2
+BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.5
 # Requires the xdg-desktop-portal service to be available
 Requires:       xdg-desktop-portal
 Recommends:     %{name}-lang
