@@ -166,4 +166,33 @@
   * Deprecated Qt methods are replaced.</comment>
     <requestid>724704</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5da6dc9eaaac051cda61797483bb4a4b</srcmd5>
+    <version>0.12.0</version>
+    <time>1577705677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Removed useless options related to icons.
+  * Added an option for a single shared search history.
+  * Don't replace double hyphens with em dashes in programming texts.
+  * Also replace &quot;-&gt;&quot;, &quot;&lt;-&quot;, &quot;&gt;=&quot; and &quot;&lt;=&quot; with &quot;→&quot;, &quot;←&quot;, &quot;≥&quot;
+    and &quot;≤&quot;, respectively, in non-programming texts.
+  * Mark encoded and unencoded ampersands in HTML.
+  * Set the limit of highlighting the syntax of a line
+    to 10,000 characters.
+  * Allow shortcut removal.
+  * Added &quot;Save All Files&quot; for saving modifications to
+    all files that are open inside a window.
+  * Added mnemonics to the close prompt dialog.
+  * Added support for Dart syntax highlighting.
+  * Better JS, YAML and Markdown syntax highlighting.
+  * Added a menu item to open the user dictionary.
+  * Fixed a minor problem in backward search and replacement.
+  * On triple clicking, select the current block without
+    selecting its newline and start and end whitespaces.
+  * Fixes for RTL, including a workaround for a Qt bug.
+  * Added a (temporary) workaround for the text rendering
+    bug of Qt 5.14.0.</comment>
+    <requestid>759903</requestid>
+  </revision>
 </revisionlist>
