@@ -64,4 +64,16 @@
     <comment>- Update to release 0.9.1</comment>
     <requestid>746156</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fffcbb3f283d50d13ff8c926cd0b967e</srcmd5>
+    <version>0.9.3</version>
+    <time>1577705715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.3
+    [CVE-2019-20010, boo#1159825], [CVE-2019-20011, boo#1159826],
+    [CVE-2019-20012, boo#1159827], [CVE-2019-20013, boo#1159828],
+    [CVE-2019-20014, boo#1159831], [CVE-2019-20015, boo#1159832]
+    [CVE-2019-20009, boo#1159824]</comment>
+    <requestid>759939</requestid>
+  </revision>
 </revisionlist>

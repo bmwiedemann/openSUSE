@@ -1,7 +1,7 @@
 #
 # spec file for package libredwg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           libredwg
-Version:        0.9.1
+Version:        0.9.3
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libredwg/
-Source:         https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz
-Source2:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.xz.sig
+
+#Git-Clone:	https://github.com/LibreDWG/libredwg/
+Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz
+Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%{name}.keyring
 Source4:        %{name}-rpmlintrc
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 GNU LibreDWG is a C library to handle DWG files. It can replace the
@@ -67,7 +69,7 @@ GNU LibreDWG is a C library to handle DWG files. It can replace the
 OpenDWG libraries. DWG is the native file format of AutoCAD.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # No management of SO version despite ABI breaking changes:
@@ -99,7 +101,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README README-alpha TODO
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_includedir}/*.h
 %{_libdir}/libredwg.so
 %{_libdir}/pkgconfig/libredwg.pc

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 29 20:45:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9.3
+  * Added the -x,--extnames option to dwglayers for r13-r14 DWGs.
+  * Fixed some leaks: SORTENTSTABLE, PROXY_ENTITY.ownerhandle
+    for r13.
+  * Add DICTIONARY.itemhandles[] for r13 and r14.
+  * Fixed some dwglayers null pointer derefs, and flush its output
+    for each layer.
+  * Added several overflow checks from fuzzing
+    [CVE-2019-20010, boo#1159825], [CVE-2019-20011, boo#1159826],
+    [CVE-2019-20012, boo#1159827], [CVE-2019-20013, boo#1159828],
+    [CVE-2019-20014, boo#1159831], [CVE-2019-20015, boo#1159832]
+  * Disallow illegal SPLINE scenarios
+    [CVE-2019-20009, boo#1159824]
+
+-------------------------------------------------------------------
 Wed Oct 30 14:46:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.9.1
