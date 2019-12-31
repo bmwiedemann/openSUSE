@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Dec 24 10:03:46 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.11.9:
+ - Adding test TLDs list to the package.
+- switch back to pypi file.
+
+-------------------------------------------------------------------
+Sun Dec 15 22:01:42 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Switch to github tarball because of missing test files.
+
+-------------------------------------------------------------------
+Sun Dec 15 09:22:45 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.11.8:
+ - Minor fixes in setup.py.
+- update to version 0.11.7
+ - There have been no code changes since 0.11.2. The only change is that
+   support for Python 2.7 and 3.5 has been added.
+ - Added support for Python 2.7.
+- update to version 0.11.6:
+ - Targeted releases for all supported Python versions.
+- update to version 0.11.5:
+ - Targeted releases for all supported Python versions.
+- update to version 0.11.4:
+ - Changed order of the releases (Python 3.6 and up come first, then Python 3.5).
+ - Make all distributions except Python 3.5 universal.
+- update to version 0.11.3:
+ - Added missing resources to the Python 3.5 release.
+- update to version 0.11.2:
+ - Bring back Python 3.5 support.
+- update to version 0.11.1:
+ - Minor speed ups.
+ - More on adding typing.
+- update to version 0.11:
+ - Since introduction of parser classes, usage of
+   ``NAMES_SOURCE_URL`` and ``NAMES_LOCAL_PATH`` of the ``tld.conf``
+   module is deprecated. Also, ``tld_names_local_path``
+   and ``tld_names_source_url`` arguments are deprecated as well.
+   If you want to customise things, implement your own parser (inherit from
+   ``BaseTLDSourceParser``).
+ - Drop support for Python versions prior to 3.6.
+ - Clean-up dependencies.
+ - Introduce parsers.
+ - Drop ``tld_names_source_url`` and ``tld_names_local_path`` introduced
+   in the previous release.
+ - Minor speed-ups (including tests).
+- update to version 0.10:
+ - This is the last release to support Python 2.
+ - Make it possible to provide a custom path to the TLD names file.
+ - Make it possible to free up some resources occupied due to loading custom
+   tld names by calling the ``reset_tld_names`` function
+   with ``tld_names_local_path`` parameter.
+
+-------------------------------------------------------------------
 Tue Nov 26 14:03:36 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.9.8:
