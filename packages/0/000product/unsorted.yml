@@ -466,7 +466,9 @@ unsorted:
   - anki 
   - ansible 
   - ansible-cmdb 
+  - ansible-doc 
   - ansible-runner 
+  - ansible-test 
   - ansifilter 
   - ansifilter-gui 
   - ansilove 
@@ -4535,7 +4537,6 @@ unsorted:
   - gnome-klotski 
   - gnome-klotski-lang 
   - gnome-latex 
-  - gnome-menus-branding-SLED 
   - gnome-menus-branding-upstream 
   - gnome-menus-devel 
   - gnome-multi-writer 
@@ -10212,7 +10213,7 @@ unsorted:
   - libndp 
   - libndp-devel 
   - libndpi-devel 
-  - libndpi2 
+  - libndpi3 
   - libndr-devel 
   - libndr-krb5pac-devel 
   - libndr-nbt-devel 
