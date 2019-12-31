@@ -31,8 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 Recommends:     %{name}-lang
-Provides:       mate-calc = %{version}
-Obsoletes:      mate-calc < %{version}
+
 
 %description
 galculator is a GTK 3 based calculator with ordinary notation/reverse
