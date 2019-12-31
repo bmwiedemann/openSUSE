@@ -4507,8 +4507,6 @@ unsorted:
   - gnome-colors-icon-theme 
   - gnome-common 
   - gnome-control-center-devel 
-  - gnome-desktop2 
-  - gnome-desktop2-lang 
   - gnome-devel-docs 
   - gnome-devel-docs-lang 
   - gnome-directory-thumbnailer 
@@ -6410,7 +6408,6 @@ unsorted:
   - keybinder-devel 
   - keybinder-lua 
   - keychain 
-  - keyutils-devel 
   - keyutils-devel-32bit: [x86_64] 
   - kf5-filesystem 
   - kf5-mediainfo 
@@ -6679,7 +6676,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
   - krb5-mini-devel 
@@ -9107,9 +9103,6 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_4 
-  - libgnome-desktop-2-17 
-  - libgnome-desktop-2-17-32bit: [x86_64] 
-  - libgnome-desktop-2-devel 
   - libgnome-desktop-3-18-32bit: [x86_64] 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
@@ -11999,7 +11992,6 @@ unsorted:
   - libvdpau_va_gl1-32bit: [x86_64] 
   - libventrilo3-0 
   - libventrilo3-devel 
-  - libverto-devel 
   - libverto-devel-32bit: [x86_64] 
   - libverto-glib-devel 
   - libverto-glib1 

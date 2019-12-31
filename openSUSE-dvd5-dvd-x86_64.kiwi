@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20191230" schemaversion="4.1">
+<image name="OBS__openSUSE___20191231" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20191230</productvar>
+      <productvar name="VERSION">20191231</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191230,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20191231,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191230/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20191231/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -1296,6 +1296,7 @@
       <repopackage name="kernel-syms" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
+      <repopackage name="keyutils-devel"/>
       <repopackage name="kf5-kcm-fcitx"/>
       <repopackage name="kf5-kcm-fcitx-icons"/>
       <repopackage name="kfilemetadata5"/>
@@ -1432,6 +1433,7 @@
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
       <repopackage name="krb5-client"/>
+      <repopackage name="krb5-devel"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -3054,6 +3056,7 @@
       <repopackage name="libvdpau_r600"/>
       <repopackage name="libvdpau_radeonsi"/>
       <repopackage name="libvdpau_va_gl1"/>
+      <repopackage name="libverto-devel"/>
       <repopackage name="libverto1"/>
       <repopackage name="libverto1-32bit" arch="x86_64"/>
       <repopackage name="libvidstab1_1"/>
