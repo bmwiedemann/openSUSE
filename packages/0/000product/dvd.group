@@ -1257,6 +1257,7 @@
     <package name="kernel-source" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="keyutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="keyutils-devel" supportstatus="unsupported"/> <!-- reason: dvd:postgresql10-devel -->
     <package name="kf5-kcm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf5-kcm-fcitx-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kfilemetadata5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1391,6 +1392,7 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="krb5-devel" supportstatus="unsupported"/> <!-- reason: dvd:postgresql10-devel -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kreversi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2936,6 +2938,7 @@
     <package name="libvdpau_r600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvdpau_radeonsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvdpau_va_gl1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libverto-devel" supportstatus="unsupported"/> <!-- reason: dvd:postgresql10-devel -->
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libvidstab1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvirglrenderer1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
