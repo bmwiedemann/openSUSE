@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 30 22:21:33 UTC 2019 - chris@computersalat.de
+
+- fix for boo#1138214
+  * fix filling of empty sysconfig vars
+    - MAILGRAPH_LOG_TYPE="syslog"
+    - MAILGRAPH_LOG_FILE="/var/log/mail"
+  * remove '-d' option from MAILGRAPH_OPTS
+    - MAILGRAPH_OPTS=" -v"
+- fix sysconfig file
+  * for systemd there needs to be a [SPACE] before first option
+
+-------------------------------------------------------------------
 Thu Aug  8 20:50:51 UTC 2019 - Karol Babioch <kbabioch@suse.com>
 
 - Removed ExecStop from service file, since it is not needed and

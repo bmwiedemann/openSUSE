@@ -16,9 +16,8 @@
 ##  --rbl-is-spam      count rbl rejects as spam
 ##  --virbl-is-virus   count virbl rejects as viruses
 #
-## for systemd there needs to be a [SPACE] before first option
-#
-MAILGRAPH_OPTS="-v"
+## !!! for systemd there needs to be a [SPACE] before first option !!!
+MAILGRAPH_OPTS=" -v"
 
 ## Type:        string
 ## Default:     "/var/run/mailgraph.pid"

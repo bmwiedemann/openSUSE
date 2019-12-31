@@ -1,7 +1,7 @@
 #
 # spec file for package mailgraph
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Release:        0
 Summary:        RRDtool frontend for Mail statistics
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            http://mailgraph.schweikert.ch/
+URL:            http://mailgraph.schweikert.ch/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}.init
 Source2:        %{name}.service
@@ -113,6 +113,12 @@ ln -sf %{_sysconfdir}/init.d/%{name} %{buildroot}/%{_sbindir}/rc%{name}
 %endif
 
 %pre
+if [[ -f %{_sysconfdir}/sysconfig/%{name} ]]; then
+  sed -i -e 's#^MAILGRAPH_OPTS=" -d -v"$#MAILGRAPH_OPTS=" -v"#'\
+    -e 's#^MAILGRAPH_LOG_TYPE=""$#MAILGRAPH_LOG_TYPE="syslog"#'\
+    -e 's#^MAILGRAPH_LOG_FILE=""#MAILGRAPH_LOG_FILE="/var/log/mail"#'\
+    %{_sysconfdir}/sysconfig/%{name}
+fi
 %if 0%{?has_systemd}
 %service_add_pre %{name}.service
 %endif
@@ -129,7 +135,7 @@ ln -sf %{_sysconfdir}/init.d/%{name} %{buildroot}/%{_sbindir}/rc%{name}
 %service_add_post %{name}.service
 %{fillup_only mailgraph}
 %else
-%{fillup_and_insserv -f mailgraph}
+%{fillup_and_insserv mailgraph}
 install -d %{_localstatedir}/run/%{name}
 %endif
 
