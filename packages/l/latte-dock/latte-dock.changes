@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Dec 30 20:37:19 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.9.6
+  * Qt5.14 - restore properly the dragged tasks to normal mode
+    (kde#415333)
+  * Qt5.14 - release properly the edit mode animation state
+    (kde#412940)
+  * Do not wait for dock to show in order to activate based on
+    position global shortcuts. The new approach is smart enough in
+    order to identify applets with popups in order to wait for them
+    to slide-in first. (kde#415417)
+  * Dynamic touching of views enabled isBusy state for them only
+    when they are really touching. If one of them is hidden from
+    its visibility mode then isBusy states should not be applied
+    (kde#415347)
+  * Wayland: fix crash from unavailable windows
+  * Set a minimum length of screen edge activation area to 25% of
+    the entire screen length this view is attached at.
+  * Fix crash from unloading views by disconnecting their sensitive
+    signals early in the chain
+  * Show proper tooltip for installed indicators in Effects page
+  * Update panelshadows to latest plasma code
+  * Improve behavior of the AutomaticItemSizer
+  * Improve publish tasks geometries code
+  * Accept only left click as valid action when clicking neutral
+    areas of applets, that is areas that even though the visually
+    belong to the applet, the applet does not have any access to
+    it.
+  * Do not require a window to intersect with the view in order to
+    be considered maximized
+  * Consider windows as maximized only when both MaxHorizontally
+    and MaxVertically are both applied
+  * Remove various deprecated code
+- Add Fixed-compile-with-qt-5.9.patch to fix build with Qt 5.9
+  (kde#415715)
+
+-------------------------------------------------------------------
 Thu Dec 12 13:47:14 UTC 2019 - wbauer@tmo.at
 
 - Update to 0.9.5

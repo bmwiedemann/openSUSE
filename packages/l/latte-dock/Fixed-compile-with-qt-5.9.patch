@@ -1,0 +1,27 @@
+From ca8aadf1a9ad721865537183bfed66bb7d9c2b6f Mon Sep 17 00:00:00 2001
+From: Michail Vourlakos <mvourlakos@gmail.com>
+Date: Mon, 30 Dec 2019 23:52:58 +0200
+Subject: fixed compile with qt 5.9
+
+FIXED-IN:0.9.7
+BUG:415715
+---
+ app/view/panelshadows.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/view/panelshadows.cpp b/app/view/panelshadows.cpp
+index 011505c..7221c8a 100644
+--- a/app/view/panelshadows.cpp
++++ b/app/view/panelshadows.cpp
+@@ -262,7 +262,7 @@ Qt::HANDLE PanelShadows::Private::createPixmap(const QPixmap& source)
+         _connection, XCB_IMAGE_FORMAT_Z_PIXMAP, pixmap, _gc,
+         image.width(), image.height(), 0, 0,
+         0, 32,
+-        image.sizeInBytes(), image.constBits());
++        image.byteCount(), image.constBits());
+ 
+     return (Qt::HANDLE)pixmap;
+ 
+-- 
+cgit v1.1
+
