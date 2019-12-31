@@ -96,10 +96,11 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        10.10
+Version:        10.11
 Release:        0
 Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
-Source1:        baselibs.conf
+Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2.sha256
+Source2:        baselibs.conf
 Source3:        postgresql-README.SUSE
 Source17:       postgresql-rpmlintrc
 Patch1:         postgresql-conf.patch
@@ -187,6 +188,14 @@ Provides:       postgresql-devel-exclusive = %pgmajor
 Conflicts:      postgresql-devel-exclusive < %pgmajor
 Provides:       postgresql-server-devel-exclusive = %pgmajor
 Conflicts:      postgresql-server-devel-exclusive < %pgmajor
+# all libs returned from pg_config --libs
+Requires:       openssl-devel
+Requires:       zlib-devel
+%if 0%{?suse_version} == 1110
+Requires:       krb5-devel
+%else
+Requires:       pkgconfig(krb5)
+%endif
 
 %description devel
 PostgreSQL is an advanced object-relational database management system

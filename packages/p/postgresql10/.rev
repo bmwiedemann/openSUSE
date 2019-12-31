@@ -435,4 +435,19 @@
 - Use FAT LTO objects in order to provide proper static library.</comment>
     <requestid>723109</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c9404c3c583be1f2e19367c9b1047f2e</srcmd5>
+    <version>10.11</version>
+    <time>1577784464</time>
+    <user>dimstar_suse</user>
+    <comment>- use (and package) sha256 checksum file for source
+
+- update to 10.11:
+  https://www.postgresql.org/about/news/1994/
+  https://www.postgresql.org/docs/10/release-10-11.html
+
+- add requires to the devel package for the libs that are returned
+  by pg_config --libs</comment>
+    <requestid>759916</requestid>
+  </revision>
 </revisionlist>
