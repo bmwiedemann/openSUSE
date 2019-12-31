@@ -24,4 +24,12 @@
   * Support pytest 4</comment>
     <requestid>707089</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6d31edb37fe31a7548d4ea93f7cd69f7</srcmd5>
+    <version>1.7.0</version>
+    <time>1577784484</time>
+    <user>dimstar_suse</user>
+    <comment>- fix python-path/python-path.py requires</comment>
+    <requestid>759815</requestid>
+  </revision>
 </revisionlist>
