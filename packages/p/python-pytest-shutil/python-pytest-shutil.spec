@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-shutil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ tools for automated tests.
 %prep
 %setup -q -n pytest-shutil-%{version}
 sed -i '/contextlib2/d' setup.py
+sed -i '/path.\py/d' setup.py
 
 %build
 %python_build
