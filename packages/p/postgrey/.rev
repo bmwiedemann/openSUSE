@@ -275,4 +275,12 @@
     <comment></comment>
     <requestid>544947</requestid>
   </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>becddd7573c8fa5e1259d315f82a1918</srcmd5>
+    <version>1.37</version>
+    <time>1577784499</time>
+    <user>dimstar_suse</user>
+    <comment>fix for boo#1115454 (forwarded request 760079 from computersalat)</comment>
+    <requestid>760081</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package postgrey
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,17 +25,19 @@ Name:           postgrey
 Version:        1.37
 Release:        0
 Summary:        Postfix greylisting policy server
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
-Url:            http://postgrey.schweikert.ch/
+URL:            http://postgrey.schweikert.ch/
 Source0:        http://postgrey.schweikert.ch/pub/%{name}-%{version}.tar.gz
 Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        %{name}.README.SUSE
-Source4:        %{name}_daily_greylist.crontab
 # http://hg.schweikert.ch/dispatch.fcgi/postgrey-1.x/raw-file/ca06ef218498/postgrey_clients_dump
 Source5:        postgrey_clients_dump
 Source6:        %{name}.service
+Source7:        %{name}_daily_greylist.service
+Source8:        %{name}_daily_greylist.timer
+Source9:        %{name}_daily_greylist.sh
 # PATCH-FIX-OPENSUSE -- Adapt default config and documentation to pathnames for openSUSE
 # /etc/postfix => /etc/postgrey
 # /var/spool/postfix/postgrey => /var/lib/postgrey
@@ -88,6 +90,10 @@ mysql nor postgresql DB needed.
 %setup -q
 test -d examples || mkdir examples
 cp %{SOURCE5} examples/
+test -d timer || mkdir timer
+cp -a %{SOURCE7} timer/
+cp -a %{SOURCE8} timer/
+cp -a %{SOURCE9} timer/
 %patch0
 %patch1
 %patch2
@@ -129,8 +135,6 @@ ln -sf %{_initddir}/%{name} %{buildroot}%{_sbindir}/rc%{name}
 install -d %{buildroot}/%{_localstatedir}/lib/%{name}
 # directory for socket
 install -d -m 0775 %{buildroot}/%{_localstatedir}/spool/postfix/%{name}
-# some helper tools
-install -m 0644 %{SOURCE4} .
 
 %pre
 getent passwd %{name} >/dev/null || useradd -r -g nogroup -d %{_localstatedir}/lib/%{name} -s /sbin/nologin -c "Postgrey Daemon" %{name}
@@ -163,6 +167,8 @@ getent passwd %{name} >/dev/null || useradd -r -g nogroup -d %{_localstatedir}/l
 
 %files
 %defattr(-,root,root)
+%doc Changes COPYING README README.SUSE
+%doc examples timer
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/whitelist_recipients
 %config(noreplace) %{_sysconfdir}/%{name}/whitelist_clients
@@ -174,7 +180,6 @@ getent passwd %{name} >/dev/null || useradd -r -g nogroup -d %{_localstatedir}/l
 %{_fillupdir}/sysconfig.%{name}
 %dir %attr(0770,postgrey,postfix) %{_localstatedir}/spool/postfix/%{name}
 %doc %{_mandir}/man?/*
-%doc Changes COPYING README README.SUSE examples %{name}_daily_greylist.crontab
 %if 0%{?suse_version} > 1210
 %{_unitdir}/%{name}.service
 %else
