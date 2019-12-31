@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-terminal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_with git
 Name:           xfce4-terminal
-Version:        0.8.8
+Version:        0.8.9.1
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
