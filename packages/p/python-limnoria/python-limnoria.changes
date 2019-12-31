@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Dec 30 21:57:04 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to version 2019-12-21:
+  + Add config supybot.reply.format.list.maximumItems to limit the size o… 
+  + Add fallback if getting supybot.language from registry cache failed.
+  + All plugins: set Limnoria contributors as maintainer
+  + Better formatting in supybot.Author if some fields are missing
+  + Get locale name on startup from registry cache instead of parsing con…
+  + Make getLocaleFromRegistryCache reload existing locales. 
+  + Math: Fix test on Pypy.
+  + Math: Display a nicer error in case of MemoryError. 
+  + MoobotFactoids: Fix support of commands sent in private. 
+  + Nicer error message in getChannel/makeChannelFilename when channel is…
+  + Plugin: support showing __maintainer__ field in the 'author' command
+  + Plugin: accept author name in 'contributors' command
+  + QuoteGrabs: fix SyntaxWarning (#1391) 
+  + Remove dead code from Group that belongs in Value.
+  + Request msgid capability.
+  + RSS: Register feed config in config.py instead of plugin.py. 
+  + Scheduler: Use assertRegexp instead of assertNotRegexp in tests.
+  + Scheduler: Use default timeout for assertResponse.
+  + Scheduler: Use mocking to make tests faster.
+  + Services: Fix typo in doInvite() (#1394)
+  + Update core fr translation.
+  + Update supybot-plugin-doc to work with current version of the registry. 
+  + Web: Lower log level when title could not be found.
+  + Web: Remove leading space if the prefix is empty.
+  + Web: Add early returns on exception when snarfing titles. 
+  + src/callbacks.py: use network-specific values. 
+  + test: Don't overwrite the main Schedule in the driver list.
+  + test: Mock calls to time.sleep()
+  + test: choose a random free port for tests using the HTTP server
+
+-------------------------------------------------------------------
 Sun Nov 17 19:01:04 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
 
 - Update to version 2019-11-09:
