@@ -227,4 +227,19 @@
   * https://www.postgresql.org/docs/9.4/release-9-4-23.html</comment>
     <requestid>723119</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>36c80259c7eb46b2096d0a6574604f3e</srcmd5>
+    <version>9.4.25</version>
+    <time>1577784471</time>
+    <user>dimstar_suse</user>
+    <comment>- use and package sha256 checksum file for source
+
+- update to 9.4.25:
+  https://www.postgresql.org/about/news/1994/
+  https://www.postgresql.org/docs/9.4/release-9-4-25.html
+
+- add requires to the devel package for the libs that are returned
+  by pg_config --libs</comment>
+    <requestid>759917</requestid>
+  </revision>
 </revisionlist>
