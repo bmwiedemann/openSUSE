@@ -57,7 +57,7 @@ to Windows Server 2012 R2.
 %prep
 %setup -q
 %patch0
-%patch3 -p1
+%patch3
 %patch4 -p1
 
 ## rpmlint

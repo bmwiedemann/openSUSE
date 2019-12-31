@@ -303,4 +303,12 @@
     <comment></comment>
     <requestid>758655</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>4569a9d4ac4392f0f8451682b765af96</srcmd5>
+    <version>1.9.0</version>
+    <time>1577784498</time>
+    <user>dimstar_suse</user>
+    <comment>fix for boo#1158593 (forwarded request 760071 from computersalat)</comment>
+    <requestid>760072</requestid>
+  </revision>
 </revisionlist>
