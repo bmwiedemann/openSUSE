@@ -225,4 +225,19 @@
 - Use FAT LTO objects in order to provide proper static library.</comment>
     <requestid>723110</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8aee31996426399bda349d1225578353</srcmd5>
+    <version>9.6.16</version>
+    <time>1577784475</time>
+    <user>dimstar_suse</user>
+    <comment>- use and package the sha256 checksum for for source
+
+- update to 9.6.16:
+  https://www.postgresql.org/about/news/1994/
+  https://www.postgresql.org/docs/9.6/release-9-6-16.html
+
+- add requires to the devel package for the libs that are returned
+  by pg_config --libs</comment>
+    <requestid>759918</requestid>
+  </revision>
 </revisionlist>
