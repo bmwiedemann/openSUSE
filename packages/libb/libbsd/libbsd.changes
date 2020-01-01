@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:18:45 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.10.0:
+  * Several security related fixes for nlist() reported by Daniel
+    Hodson and one by Coverity Scan.
+  * Preliminary and partial Windows porting, thanks to Aaron
+    Dierking.
+  * Fix for a leak in the vis family of functions.
+  * Fix for a configure check to not unnecessarily link against
+    librt.
+  * General portability fixes for musl, uClibc, macOS and
+    GNU/kFreeBSD.
+  * New architectures support for nlist().
+  * Switch the <err.h> *c() functions to be standalone and add
+    err(), warn(), errx() and warnx() familiy of functions in case
+    the system lacks them.
+  * Several man page fixes.
+
+-------------------------------------------------------------------
 Tue Apr 23 12:29:53 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO - symbol versioning unsupported by GCC (boo#1133096).
