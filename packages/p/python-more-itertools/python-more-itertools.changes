@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 20 19:18:54 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.0.2:
+  * Bug fixes
+      * The type stub files are now part of the wheel distribution (thanks to keisheiled)
+      * The type stub files now work for functions imported from the
+        root package (thanks to keisheiled)
+  * New itertools and other additions
+      * This library now ships type hints for use with mypy.
+        (thanks to ilai-deutel for the implementation, and to gabbard and fmagin for assistance)
+      * :func:`split_when` (thanks to jferard)
+      * :func:`repeat_last` (thanks to d-ryzhikov)
+  * Changes to existing itertools:
+      * The implementation for :func:`set_partitions` was improved. (thanks to jferard)
+      * :func:`partition` was optimized for expensive predicates. (thanks to stevecj)
+      * :func:`unique_everseen` and :func:`groupby_transform` were re-factored. (thanks to SergBobrovsky)
+      * The implementation for :func:`difference` was improved. (thanks to Jabbey92)
+
+-------------------------------------------------------------------
 Thu Aug 29 15:01:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Place a mildly useful text in the %description section.
