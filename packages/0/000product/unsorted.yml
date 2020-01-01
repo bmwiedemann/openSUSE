@@ -6515,6 +6515,7 @@ unsorted:
   - kio-core-32bit: [x86_64] 
   - kio-devel 
   - kio-devel-32bit: [x86_64] 
+  - kio-fuse 
   - kio-gdrive 
   - kio-gdrive-lang 
   - kio-stash 
@@ -11529,7 +11530,7 @@ unsorted:
   - libsphinxclient-devel 
   - libspice-server-devel 
   - libspiro-devel 
-  - libspiro0 
+  - libspiro1 
   - libspirv-cross-c-shared-devel 
   - libspirv-cross-c-shared0 
   - libsplinter-3-0 
@@ -17457,8 +17458,6 @@ unsorted:
   - python-gevent-doc 
   - python-gexiv2 
   - python-glanceclient-doc 
-  - python-glareclient 
-  - python-glareclient-doc 
   - python-glucat 
   - python-gluster 
   - python-gobject-common-devel 
@@ -17483,8 +17482,6 @@ unsorted:
   - python-ipywidgets-doc 
   - python-ironicclient-doc 
   - python-jaraco.stream-doc 
-  - python-k8sclient 
-  - python-k8sclient-doc 
   - python-katedj 
   - python-keybinder 
   - python-keystoneauth1-doc 
@@ -17544,7 +17541,6 @@ unsorted:
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
   - python-optcomplete 
-  - python-os-testr-doc 
   - python-osc-lib-doc 
   - python-oslo-middleware-doc 
   - python-oslo.cache-doc 
@@ -18986,7 +18982,6 @@ unsorted:
   - python2-os-api-ref 
   - python2-os-client-config 
   - python2-os-service-types 
-  - python2-os-testr 
   - python2-osc-lib 
   - python2-oscrypto 
   - python2-oslo.cache 
@@ -21531,7 +21526,6 @@ unsorted:
   - python3-os-api-ref 
   - python3-os-client-config 
   - python3-os-service-types 
-  - python3-os-testr 
   - python3-osc-lib 
   - python3-osc-tiny 
   - python3-oscrypto 
