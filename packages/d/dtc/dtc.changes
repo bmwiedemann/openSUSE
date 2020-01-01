@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:18:44 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build and recpect %optflags.
+
+-------------------------------------------------------------------
 Wed Oct 30 15:38:12 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - switch to building python3 bindings using setuptools to avoid

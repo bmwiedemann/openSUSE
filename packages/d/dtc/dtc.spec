@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,8 @@ Python binding part.
 %setup -q
 
 %build
-make %{?_smp_mflags} V=1 NO_PYTHON=1
+export EXTRA_CFLAGS="%{optflags}"
+%make_build NO_PYTHON=1
 cd pylibfdt
 python3 setup.py build_ext
 %py3_build
@@ -86,7 +87,8 @@ cd pylibfdt
 %python3_install
 
 %check
-make %{?_smp_mflags} check
+export EXTRA_CFLAGS="%{optflags}"
+%make_build check
 
 %files
 %license README.license
