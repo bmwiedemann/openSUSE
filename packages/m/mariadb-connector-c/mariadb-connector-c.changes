@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 20 00:13:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.6
+  * Fixed: ERROR 2026 (HY000): SSL connection error: Certificate
+    signature check failed
+  * Fixed: Provide error code and message for Schannel errors
+  * Fixed SEC_E_INVALID_TOKEN when server sends large message
+    during SSL handshake 
+
+-------------------------------------------------------------------
 Thu Nov 28 16:06:53 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - New upstream version 3.1.5 [bsc#1156669]

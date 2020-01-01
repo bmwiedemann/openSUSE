@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-connector-c
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define sover 3
 %define libname libmariadb
 # equivalent mariadb version
-%define mariadb_version 10.3.20
+%define mariadb_version 10.3.21
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
@@ -51,7 +51,9 @@ BuildRequires:  pkgconfig(sqlite3)
 
 %description
 MariaDB Connector is used to connect applications developed in
-C or C++ to MariaDB and MySQL databases.
+C or C++ to MariaDB and MySQL databases. This is a different
+implementation from the traditional libmariadbclient/libmysqlclient
+that is shipped with mariadb-server/mysql-server, but the API is the same.
 
 %package -n %{libname}%{sover}
 Summary:        MariaDB connector in C
@@ -59,7 +61,9 @@ Group:          System/Libraries
 
 %description -n %{libname}%{sover}
 MariaDB Connector is used to connect applications developed in
-C or C++ to MariaDB and MySQL databases.
+C or C++ to MariaDB and MySQL databases. This is a different
+implementation from the traditional libmariadbclient/libmysqlclient
+that is shipped with mariadb-server/mysql-server, but the API is the same.
 
 This package holds the runtime components.
 
