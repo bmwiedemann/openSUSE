@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-mini
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Url:            http://rpmlint.zarb.org/
+URL:            http://rpmlint.zarb.org/
 Source:         desktop-file-utils-0.24.tar.xz
 Source2:        rpmlint-security-whitelistings-master.tar.xz
 Source100:      rpmlint-deps.txt
@@ -93,7 +93,7 @@ done
 # ErlangCheck dependencies that are not under %_libdir but under /usr/lib :-(
 cp -a %{python3_sitelib}/{construct,pybeam,six.py} %{buildroot}/opt/testing/%{_lib}/python%{py3_ver}/site-packages
 install -D %{_bindir}/python3 %{buildroot}/opt/testing/bin/python3
-cp -a %{_libdir}/libpython%{py3_ver}m.so.* %{buildroot}/opt/testing/%{_lib}
+cp -a %{_libdir}/libpython%{py3_ver}*.so.* %{buildroot}/opt/testing/%{_lib}
 cp -a %{_bindir}/rpmlint %{buildroot}/opt/testing/share/rpmlint/rpmlint.py
 pushd %{buildroot}/opt/testing/share/rpmlint
 PYTHONOPTIMIZE=1 python3 -O -m compileall -b *.py

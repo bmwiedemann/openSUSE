@@ -766,4 +766,12 @@ undo bootstrap workaround</comment>
     rpmlnit-security-whitelistings.</comment>
     <requestid>756805</requestid>
   </revision>
+  <revision rev="96" vrev="13">
+    <srcmd5>0a726f82fd806e7e2f24cdf76a4b295b</srcmd5>
+    <version>1.10</version>
+    <time>1577886997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758428</requestid>
+  </revision>
 </revisionlist>
