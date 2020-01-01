@@ -39,7 +39,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module redis >= 3.3.11}
 BuildRequires:  %{python_module setuptools >= 20.6.7}
-BuildRequires:  %{python_module zstandard}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-amqp >= 2.5.2
