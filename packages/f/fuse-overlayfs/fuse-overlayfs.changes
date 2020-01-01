@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 17 14:06:08 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.2
+  - introduce inodes cache
+  - correctly read inode for unix sockets
+  - avoid hash map lookup when possible 
+  - use st_dev for the ino key
+  - check whether writeback is supported
+  - set_attrs: don't require write to S_IFREG
+  - ioctl: do not reuse fi->fh for directories
+  - fix skip whiteout deletion optimization
+  - store the new mode after chmod
+
+-------------------------------------------------------------------
 Mon Aug 19 08:04:35 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v0.5.1
