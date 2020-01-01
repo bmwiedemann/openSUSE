@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 23:06:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.2
+  * Add support for io-uring related system calls
+
+-------------------------------------------------------------------
 Wed Jul 24 09:37:26 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - ignore make check error for ppc64/ppc64le, bypass boo#1142614

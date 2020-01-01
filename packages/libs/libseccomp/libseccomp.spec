@@ -1,7 +1,7 @@
 #
 # spec file for package libseccomp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname   libseccomp2
 Name:           libseccomp
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        A Seccomp (mode 2) helper library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            http://github.com/seccomp
-#Git-Clone:	git://github.com/seccomp/libseccomp
+URL:            https://github.com/seccomp/libseccomp
+
 Source:         https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz
-Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
+# no fitting key found
+#Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source99:       baselibs.conf
 Patch1:         no-static.diff
@@ -35,7 +36,6 @@ BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The libseccomp library provides an interface to the Linux Kernel's
@@ -87,8 +87,7 @@ syscall filtering mechanism, seccomp.
 This subpackage contains debug utilities for the seccomp interface.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 if [ ! -f configure ]; then
@@ -121,19 +120,16 @@ make check
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/%name.so.2*
 %license LICENSE
 
 %files devel
-%defattr(-,root,root)
 %_mandir/man3/seccomp_*.3*
 %_includedir/%name/
 %_libdir/%name.so
 %_libdir/pkgconfig/%name.pc
 
 %files tools
-%defattr(-,root,root)
 %_bindir/scmp_sys_resolver
 %_mandir/man1/scmp_sys_resolver.1*
 
