@@ -1,7 +1,7 @@
 #
 # spec file for package you-get
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           you-get
-Version:        0.4.1355
+Version:        0.4.1388
 Release:        0
 Summary:        Dumb downloader that scrapes the web
 License:        MIT
-Group:          Productivity/Networking/Web/Utilities
 URL:            https://you-get.org
 Source0:        https://github.com/soimort/you-get/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
@@ -40,7 +39,6 @@ handy way to do it.
 
 %package        bash-completion
 Summary:        Bash completion for %{name}
-Group:          System/Shells
 Requires:       bash-completion
 Supplements:    packageand(%{name}:bash)
 BuildArch:      noarch
@@ -50,7 +48,6 @@ Bash command line completion support for %{name}.
 
 %package        fish-completion
 Summary:        Fish completion for %{name}
-Group:          System/Shells
 Requires:       fish
 Supplements:    packageand(%{name}:fish)
 BuildArch:      noarch
@@ -60,7 +57,6 @@ Fish command line completion support for %{name}.
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       zsh
 Supplements:    packageand(%{name}:zsh)
 BuildArch:      noarch
