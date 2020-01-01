@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 09:50:16 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernize spec file
+- Build in build phase
+
+-------------------------------------------------------------------
 Sat Jan 30 22:05:21 UTC 2016 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner

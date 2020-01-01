@@ -101,4 +101,13 @@
 - Use macro for configure</comment>
     <requestid>356878</requestid>
   </revision>
+  <revision rev="16" vrev="513">
+    <srcmd5>7c5857074cca0124a6579fc2c6cc70b3</srcmd5>
+    <version>1.4</version>
+    <time>1577887020</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize spec file
+- Build in build phase</comment>
+    <requestid>758471</requestid>
+  </revision>
 </revisionlist>
