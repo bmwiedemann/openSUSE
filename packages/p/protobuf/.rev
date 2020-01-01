@@ -383,4 +383,18 @@
     <comment></comment>
     <requestid>733606</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2c8eb2d8ae196519b6f3875fdd010e74</srcmd5>
+    <version>3.9.2</version>
+    <time>1577887013</time>
+    <user>dimstar_suse</user>
+    <comment>- Use tarball provided by upstream
+- Small package cleanup
+
+- Updated to version 3.9.2
+   (Objective-C)
+  * Remove OSReadLittle* due to alignment requirements. (#6678)
+  * Don't use unions and instead use memcpy for the type swaps. (#6672)</comment>
+    <requestid>758459</requestid>
+  </revision>
 </revisionlist>

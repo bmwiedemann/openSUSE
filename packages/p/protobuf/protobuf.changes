@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 20 09:04:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use tarball provided by upstream
+- Small package cleanup
+
+-------------------------------------------------------------------
+Thu Dec 19 12:47:53 UTC 2019 - Madhu Mohan Nelemane <mmnelemane@suse.com>
+
+- Updated to version 3.9.2
+   (Objective-C)
+  * Remove OSReadLittle* due to alignment requirements. (#6678)
+  * Don't use unions and instead use memcpy for the type swaps. (#6672)
+
+-------------------------------------------------------------------
 Fri Sep 27 07:00:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Package also the protobuf-bom pom file

@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define sover 20
 %define tarname protobuf
-%define src_install_dir /usr/src/%{name}
+%define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
 # requires gmock, which is not yet in the distribution
 %bcond_with check
@@ -27,7 +27,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -208,13 +208,13 @@ mkdir -p %{buildroot}%{src_install_dir}
 tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %fdupes %{buildroot}%{src_install_dir}
 # Fix env-script-interpreter rpmlint error
-find %{buildroot}%{src_install_dir} -type f -name "*.js" -exec sed -i 's|#!.*/usr/bin/env node|#!/usr/bin/node|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*/usr/bin/env python2.7|#!/usr/bin/python2.7|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*/usr/bin/env python|#!/usr/bin/python|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.rb" -exec sed -i 's|#!.*/usr/bin/env ruby|#!/usr/bin/ruby|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*/usr/bin/env bash|#!/bin/bash|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.js" -exec sed -i 's|#!.*%{_bindir}/env node|#!%{_bindir}/node|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_bindir}/env python2.7|#!%{_bindir}/python2.7|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_bindir}/env python|#!%{_bindir}/python|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.rb" -exec sed -i 's|#!.*%{_bindir}/env ruby|#!%{_bindir}/ruby|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*%{_bindir}/env bash|#!/bin/bash|' "{}" +
 # And stop requiring ridiculously old Python version
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!/usr/bin/python2.4|#!/usr/bin/python2.7|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!%{_bindir}/python2.4|#!%{_bindir}/python2.7|' "{}" +
 # Fix spurious-executable-perm rpmlint error
 chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/arenastring.h
 chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/compiler/js/js_generator.h
