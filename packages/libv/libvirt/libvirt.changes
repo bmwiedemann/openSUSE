@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:11:02 UTC 2019 - James Fehlig <jfehlig@suse.com>
+
+- CVE-2019-11135: Add TSX_CTRL and TAA_NO bits for
+  IA32_ARCH_CAPABILITIES MSR
+  07aaced4-Add-TAA-No.patch, f411b7ef6-Add-TSX-CTRL.patch
+  bsc#1152505
+
+-------------------------------------------------------------------
 Tue Dec 10 08:24:09 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - virt-create-rootfs: add SLE 15 and SLE 12 service packs support

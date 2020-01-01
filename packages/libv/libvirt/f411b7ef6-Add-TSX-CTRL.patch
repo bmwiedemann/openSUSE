@@ -1,0 +1,28 @@
+commit f411b7ef68221e82dec0129aaf2f2a26a8987504
+Author: Jiri Denemark <jdenemar@redhat.com>
+Date:   Thu Dec 12 15:12:05 2019 +0100
+
+    cpu_map: Add TSX_CTRL bit for IA32_ARCH_CAPABILITIES MSR
+    
+    CVE-2019-11135
+    
+    When TSX_CTRL bit of IA32_ARCH_CAPABILITIES MSR is set to 1, the CPU
+    supports IA32_TSX_CTRL MSR which can be used to disable and/or mask TSX.
+    
+    Signed-off-by: Jiri Denemark <jdenemar@redhat.com>
+    Reviewed-by: Ján Tomko <jtomko@redhat.com>
+
+Index: libvirt-5.10.0/src/cpu_map/x86_features.xml
+===================================================================
+--- libvirt-5.10.0.orig/src/cpu_map/x86_features.xml
++++ libvirt-5.10.0/src/cpu_map/x86_features.xml
+@@ -502,6 +502,9 @@
+   <feature name='mds-no'>
+     <msr index='0x10a' edx='0x00000000' eax='0x00000020'/>
+   </feature>
++  <feature name='tsx-ctrl'>
++    <msr index='0x10a' edx='0x00000000' eax='0x00000080'/>
++  </feature>
+   <feature name='taa-no'>
+     <msr index='0x10a' edx='0x00000000' eax='0x00000100'/>
+   </feature>

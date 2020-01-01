@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -344,6 +344,8 @@ Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
 Patch0:         0a65cba4-news-fix.patch
+Patch1:         07aaced4-Add-TAA-No.patch
+Patch2:         f411b7ef6-Add-TSX-CTRL.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -878,6 +880,8 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1

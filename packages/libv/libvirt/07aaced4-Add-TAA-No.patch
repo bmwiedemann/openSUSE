@@ -1,0 +1,27 @@
+commit 07aaced4e6ea6db8b27f44636f51cafa6f1847a8
+Author: Jiri Denemark <jdenemar@redhat.com>
+Date:   Thu Dec 12 15:12:05 2019 +0100
+
+    cpu_map: Add TAA_NO bit for IA32_ARCH_CAPABILITIES MSR
+    
+    CVE-2019-11135
+    
+    CPUs with TAA_NO bit of IA32_ARCH_CAPABILITIES MSR set to 1 are not
+    vulnerable to TSX Asynchronous Abort and passing this bit to a guest
+    may avoid unnecessary mitigations.
+    
+    Signed-off-by: Jiri Denemark <jdenemar@redhat.com>
+    Reviewed-by: Ján Tomko <jtomko@redhat.com>
+
+Index: libvirt-5.10.0/src/cpu_map/x86_features.xml
+===================================================================
+--- libvirt-5.10.0.orig/src/cpu_map/x86_features.xml
++++ libvirt-5.10.0/src/cpu_map/x86_features.xml
+@@ -502,4 +502,7 @@
+   <feature name='mds-no'>
+     <msr index='0x10a' edx='0x00000000' eax='0x00000020'/>
+   </feature>
++  <feature name='taa-no'>
++    <msr index='0x10a' edx='0x00000000' eax='0x00000100'/>
++  </feature>
+ </cpus>
