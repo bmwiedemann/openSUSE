@@ -344,4 +344,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment></comment>
     <requestid>676976</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>dd7924d9cb94a955dd553792ef644c9c</srcmd5>
+    <version>3.9.0</version>
+    <time>1577887177</time>
+    <user>dimstar_suse</user>
+    <comment>fix for boo#1127387 (forwarded request 760192 from computersalat)</comment>
+    <requestid>760193</requestid>
+  </revision>
 </revisionlist>

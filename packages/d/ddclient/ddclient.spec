@@ -1,7 +1,7 @@
 #
 # spec file for package ddclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/DNS/Utilities
 Version:        3.9.0
 Release:        0
-Url:            http://ddclient.sourceforge.net/
+URL:            http://ddclient.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}.sysconfig

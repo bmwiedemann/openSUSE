@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 31 23:19:02 UTC 2019 - chris@computersalat.de
+
+- fix for boo#1127387
+  * systemd-tmpfiles need updating from /var/run/* to /run/*
+
+-------------------------------------------------------------------
 Sat Feb 16 00:08:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description.
