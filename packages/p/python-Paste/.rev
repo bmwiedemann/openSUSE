@@ -255,4 +255,14 @@
   * no changelog</comment>
     <requestid>735885</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>89b27a3ef947a932b080b3ad3476a763</srcmd5>
+    <version>3.2.3</version>
+    <time>1577887083</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.3:
+  * Correct ``100 Continue`` in Python 3
+  * Avoid some reference cycles through tracebacks in httpserver.py</comment>
+    <requestid>758637</requestid>
+  </revision>
 </revisionlist>
