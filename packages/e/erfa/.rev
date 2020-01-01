@@ -48,4 +48,15 @@
     <comment></comment>
     <requestid>745570</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ebec47e6f958c7ad5c93b3e9c3400f1c</srcmd5>
+    <version>1.7.0</version>
+    <time>1577887194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.0:
+  * Based on &quot;20190722&quot; except for the added `eraVersion`,
+    `eraSofaVersion`, and leap second functions.
+</comment>
+    <requestid>760238</requestid>
+  </revision>
 </revisionlist>

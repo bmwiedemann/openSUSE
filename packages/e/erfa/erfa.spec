@@ -1,7 +1,7 @@
 #
 # spec file for package erfa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	liberfa1
 Name:           erfa
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Essential Routines for Fundamental Astronomy
 License:        BSD-3-Clause
