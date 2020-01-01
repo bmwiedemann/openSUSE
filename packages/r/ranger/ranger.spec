@@ -1,7 +1,7 @@
 #
 # spec file for package ranger
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ranger
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Console File Manager
 License:        GPL-3.0-or-later
@@ -72,6 +72,7 @@ rm -rf "%{buildroot}%{_datadir}/doc/ranger"
 %endif
 
 %files
+%license LICENSE
 %doc AUTHORS CHANGELOG.md README.md HACKING.md
 %doc doc/colorschemes.md
 %doc doc/tools

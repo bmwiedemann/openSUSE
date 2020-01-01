@@ -1,6 +1,8 @@
---- ranger-1.8.1.orig/doc/ranger.desktop	2017-12-11 13:46:27.000000000 +0100
-+++ ranger-1.8.1/doc/ranger.desktop	2017-12-21 14:33:47.854478237 +0100
-@@ -1,9 +1,11 @@
+Index: ranger-1.9.3/doc/ranger.desktop
+===================================================================
+--- ranger-1.9.3.orig/doc/ranger.desktop
++++ ranger-1.9.3/doc/ranger.desktop
+@@ -1,10 +1,12 @@
  [Desktop Entry]
  Type=Application
  Name=ranger
@@ -13,3 +15,4 @@
 -Categories=ConsoleOnly;System;FileTools;FileManager
 +Categories=ConsoleOnly;System;FileTools;FileManager;
  MimeType=inode/directory;
+ Keywords=File;Manager;Browser;Explorer;Launcher;Vi;Vim;Python
