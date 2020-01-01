@@ -753,4 +753,41 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
     <comment></comment>
     <requestid>728224</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f8ae2fb9356b228993b84c8cd780d36f</srcmd5>
+    <version>10.88.1</version>
+    <time>1577887049</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 10.88.1
+  * anytopnm: Fix unpredictable behavior when file name contains
+    spaces.
+    pnmquant: Fail if user specifies more than one of -meanpixel,
+    -meancolor, and -center, rather than just pick one.
+  * pnmremap: Don't output any part of the image if program fails
+    because the maxval of input and map file do not match, in a
+    case where matching maxval is required, i.e. the user specified
+    -firstisdefault or -missingcolor.
+  * ppmhist: sort secondarily by RGB with -sort=frequency, so
+    output is repeatable.
+  * pnmcolormap: Add -splitpix, -splitcol, -splitdim.
+    Thanks Vladislav Zavjalov.
+  * pbmtext: fix erroneous failure message with long input text.
+  * jpeg2ktopam, pamtojpeg2k: fix negative array index.  Always
+    broken (pamtojpeg2k was new in Netpbm 10.12 (November 2002)).
+  * jpeg2ktopam, pamtojpeg2k: fix assertion failure.  Always
+    broken (pamtojpeg2k was new in Netpbm 10.12 (November 2002)).
+  * jpeg2ktopam: Fix memory leak after decoder failure.  Always
+    broken (pamtojpeg2k was new in Netpbm 10.12 (November 2002)).
+  * jpeg2ktopam: fix null pointer dereference.  Always broken
+    (pamtojpeg2k was new in Netpbm 10.12 (November 2002)).
+  * pnmtorle, rletopnm: fix wild pointer dereference when memory
+    allocation fails.  Always broken (programs were added to
+    Netpbm in Release 9.0 (April 2000).
+  * pamsumm: Fix bug: with -mean and a conflicting option such as
+    -sum, the program ignores one of the options.  It should fail.
+    Always broken (pamsumm was new in Netpbm 10.21 (March 2004).
+    pamfind: Add -machine .
+  * Multiple: fix bug: when you specify the same option twice, you</comment>
+    <requestid>758532</requestid>
+  </revision>
 </revisionlist>
