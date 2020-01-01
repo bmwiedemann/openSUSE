@@ -52,4 +52,20 @@
   * FIX: Remove undocumented _QUIRKS mode flag</comment>
     <requestid>729764</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1610d119924b08afe4af1299c8abced5</srcmd5>
+    <version>1.9.5</version>
+    <time>1577887063</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.5:
+  * **FIX**: `:placeholder-shown` should not match if the element has content
+  that overrides the pl aceholder.
+  * **FIX**: `:checked` rule was too strict with `option` elements. The
+  specification for `:checked ` does not require an `option` element to be under
+  a `select` element.
+  * **FIX**: Fix level 4 `:lang()` wildcard match handling with singletons.
+  Implicit wildcard match ing should not match any singleton. Explicit wildcard
+  matching (`*` in the language range: `*-US`) is allowed to match singletons.</comment>
+    <requestid>758624</requestid>
+  </revision>
 </revisionlist>

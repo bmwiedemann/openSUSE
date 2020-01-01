@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 20 18:49:34 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9.5:
+  * **FIX**: `:placeholder-shown` should not match if the element has content
+  that overrides the pl aceholder.
+  * **FIX**: `:checked` rule was too strict with `option` elements. The
+  specification for `:checked ` does not require an `option` element to be under
+  a `select` element.
+  * **FIX**: Fix level 4 `:lang()` wildcard match handling with singletons.
+  Implicit wildcard match ing should not match any singleton. Explicit wildcard
+  matching (`*` in the language range: `*-US`) is allowed to match singletons.
+
+-------------------------------------------------------------------
 Tue Sep 10 10:11:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.9.2:
