@@ -163,7 +163,6 @@ BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(liboil-0.3) >= 0.3.15
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
