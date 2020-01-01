@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>708374</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bbf8487929b66745d95ae352a506c19a</srcmd5>
+    <version>0.14.1</version>
+    <time>1577887077</time>
+    <user>dimstar_suse</user>
+    <comment>- revert back to 0.14.1 as 0.15 is blacklisted in OpenDev due
+  to races with eventlet</comment>
+    <requestid>758634</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 19:17:02 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- revert back to 0.14.1 as 0.15 is blacklisted in OpenDev due
+  to races with eventlet
+
+-------------------------------------------------------------------
 Fri Jun  7 12:56:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.15
