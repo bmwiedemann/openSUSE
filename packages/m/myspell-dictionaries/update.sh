@@ -258,7 +258,6 @@ function package_metadata()
   sum="MySpell $locale Dictionary"
   sed -i "s#@METADATA@#%package -n myspell-$locale\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#Summary:        $sum\n@METADATA@#" myspell-dictionaries.spec
-  sed -i "s#@METADATA@#Group:          Productivity/Text/Spell\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#Requires:       myspell-dictionaries\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#Provides:       myspell-dictionary\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#Provides:       locale(libreoffice:$locale)\n@METADATA@#" myspell-dictionaries.spec
@@ -293,7 +292,6 @@ function lightproof_package_metadata()
 
   sed -i "s#@METADATA@#%package -n myspell-lightproof-$dir\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#Summary:        Lightproof for $dir\n@METADATA@#" myspell-dictionaries.spec
-  sed -i "s#@METADATA@#Group:          Productivity/Text/Spell\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#Requires:       myspell-$dir\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#\n@METADATA@#" myspell-dictionaries.spec
   sed -i "s#@METADATA@#\n@METADATA@#" myspell-dictionaries.spec
@@ -311,6 +309,16 @@ function finish_spec()
 }
 
 #
+# prerequisites
+#
+
+if [ ! -x /usr/bin/th_gen_idx.pl ]; then
+  echo "ERROR: /usr/bin/th_gen_idx.pl not found"
+  echo "Install mythes-devel package."
+  exit 1
+fi
+
+#
 # prepare 'dictionaries' directory
 #
 
@@ -325,7 +333,7 @@ if [ $DOWNLOAD == "yes" ]; then
   rm -rf $GIT_DIR/.git
   # exceptions >>>>>>>>>>>>>>>>>>>>>
   pushd $GIT_DIR
-    for dir in ca gd_GB; do
+    for dir in ca; do
       pushd $dir
         cp --force dictionaries/* .
         sed -i 's:dictionaries/::' dictionaries.xcu
@@ -379,11 +387,6 @@ locale_to_file_map
 
 # create *.idx files from *.dat files
 echo '--- Creating idx files'
-if [ ! -x /usr/bin/th_gen_idx.pl ]; then
-  echo "ERROR: /usr/bin/th_gen_idx.pl not found"
-  echo "Install mythes-devel package."
-  exit 1
-fi
 for datf in $(dat_files); do
   idxf=$(idx_file $datf)
   [ "$VERBOSE" == "yes" ] && echo "th_gen_idx.pl < $GIT_DIR/$datf > $GIT_DIR/$idxf"

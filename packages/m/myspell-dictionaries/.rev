@@ -504,4 +504,21 @@
   * Fix logo management for &quot;ca&quot;</comment>
     <requestid>743962</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>5030b1478c4a494775682c107780303f</srcmd5>
+    <version>20191219</version>
+    <time>1577886982</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20191219
+  * Updated the English dictionaries: GB+US+CA+AU
+  * tdf#128341 use python3
+  * Bring shipped Spanish dictionary up to version 2.5
+- modified sources
+  % update.sh 
+    . gd_GB does not have dictionaries in gd_GB/dictionaries
+      anymore, thus removing exception
+    . check for /usr/bin/th_gen_idx.pl existence sooner
+    . no Group: tag</comment>
+    <requestid>758150</requestid>
+  </revision>
 </revisionlist>

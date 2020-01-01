@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 19 09:37:24 UTC 2019 - pgajdos@suse.com
+
+- version update to 20191219
+  * Updated the English dictionaries: GB+US+CA+AU
+  * tdf#128341 use python3
+  * Bring shipped Spanish dictionary up to version 2.5
+- modified sources
+  % update.sh 
+    . gd_GB does not have dictionaries in gd_GB/dictionaries
+      anymore, thus removing exception
+    . check for /usr/bin/th_gen_idx.pl existence sooner
+    . no Group: tag
+
+-------------------------------------------------------------------
 Wed Oct 16 12:14:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 20191016:

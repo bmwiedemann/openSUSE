@@ -1,7 +1,7 @@
 #
 # spec file for package myspell-dictionaries
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 ## Generate: sh update.sh
 ###################################################################
 Name:           myspell-dictionaries
-Version:        20191016
+Version:        20191219
 Release:        0
 Summary:        A Source Package for Dictionaries Used by MySpell
 License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
@@ -2325,8 +2325,8 @@ cp -P ca/README_ca.txt %{buildroot}%{_docdir}/myspell-ca/README_ca.txt
 cp -P ca/README_hyph_ca.txt %{buildroot}%{_docdir}/myspell-ca/README_hyph_ca.txt
 cp -P ca/README_thes_ca.txt %{buildroot}%{_docdir}/myspell-ca/README_thes_ca.txt
 cp -P ca/description.xml %{buildroot}%{_docdir}/myspell-ca/description.xml
-cp -P ca/package-description.txt %{buildroot}%{_docdir}/myspell-ca/package-description.txt
 cp -P ca/dictionaries.xcu %{buildroot}%{_docdir}/myspell-ca/dictionaries.xcu
+cp -P ca/package-description.txt %{buildroot}%{_docdir}/myspell-ca/package-description.txt
 cp -P cs_CZ/cs_CZ.aff %{buildroot}%{_datadir}/hunspell/cs_CZ.aff
 ln -s %{_datadir}/hunspell/cs_CZ.aff %{buildroot}%{_datadir}/myspell/cs_CZ.aff
 cp -P cs_CZ/cs_CZ.dic %{buildroot}%{_datadir}/hunspell/cs_CZ.dic
@@ -2376,20 +2376,24 @@ cp -P de/de_AT.aff %{buildroot}%{_datadir}/hunspell/de_AT.aff
 ln -s %{_datadir}/hunspell/de_AT.aff %{buildroot}%{_datadir}/myspell/de_AT.aff
 cp -P de/de_AT.dic %{buildroot}%{_datadir}/hunspell/de_AT.dic
 ln -s %{_datadir}/hunspell/de_AT.dic %{buildroot}%{_datadir}/myspell/de_AT.dic
-cp -P de/de_DE.aff %{buildroot}%{_datadir}/hunspell/de_DE.aff
-ln -s %{_datadir}/hunspell/de_DE.aff %{buildroot}%{_datadir}/myspell/de_DE.aff
-cp -P de/de_DE.dic %{buildroot}%{_datadir}/hunspell/de_DE.dic
-ln -s %{_datadir}/hunspell/de_DE.dic %{buildroot}%{_datadir}/myspell/de_DE.dic
 cp -P de/de_CH.aff %{buildroot}%{_datadir}/hunspell/de_CH.aff
 ln -s %{_datadir}/hunspell/de_CH.aff %{buildroot}%{_datadir}/myspell/de_CH.aff
 cp -P de/de_CH.dic %{buildroot}%{_datadir}/hunspell/de_CH.dic
 ln -s %{_datadir}/hunspell/de_CH.dic %{buildroot}%{_datadir}/myspell/de_CH.dic
+cp -P de/de_DE.aff %{buildroot}%{_datadir}/hunspell/de_DE.aff
+ln -s %{_datadir}/hunspell/de_DE.aff %{buildroot}%{_datadir}/myspell/de_DE.aff
+cp -P de/de_DE.dic %{buildroot}%{_datadir}/hunspell/de_DE.dic
+ln -s %{_datadir}/hunspell/de_DE.dic %{buildroot}%{_datadir}/myspell/de_DE.dic
 cp -P de/hyph_de_AT.dic %{buildroot}%{_datadir}/hyphen/hyph_de_AT.dic
 ln -s %{_datadir}/hyphen/hyph_de_AT.dic %{buildroot}%{_datadir}/myspell/hyph_de_AT.dic
-cp -P de/hyph_de_DE.dic %{buildroot}%{_datadir}/hyphen/hyph_de_DE.dic
-ln -s %{_datadir}/hyphen/hyph_de_DE.dic %{buildroot}%{_datadir}/myspell/hyph_de_DE.dic
 cp -P de/hyph_de_CH.dic %{buildroot}%{_datadir}/hyphen/hyph_de_CH.dic
 ln -s %{_datadir}/hyphen/hyph_de_CH.dic %{buildroot}%{_datadir}/myspell/hyph_de_CH.dic
+cp -P de/hyph_de_DE.dic %{buildroot}%{_datadir}/hyphen/hyph_de_DE.dic
+ln -s %{_datadir}/hyphen/hyph_de_DE.dic %{buildroot}%{_datadir}/myspell/hyph_de_DE.dic
+cp -P de/th_de_CH_v2.dat %{buildroot}%{_datadir}/mythes/th_de_CH_v2.dat
+ln -s %{_datadir}/mythes/th_de_CH_v2.dat %{buildroot}%{_datadir}/myspell/th_de_CH_v2.dat
+cp -P de/th_de_CH_v2.idx %{buildroot}%{_datadir}/mythes/th_de_CH_v2.idx
+ln -s %{_datadir}/mythes/th_de_CH_v2.idx %{buildroot}%{_datadir}/myspell/th_de_CH_v2.idx
 cp -P de/th_de_DE_v2.dat %{buildroot}%{_datadir}/mythes/th_de_DE_v2.dat
 ln -s %{_datadir}/mythes/th_de_DE_v2.dat %{buildroot}%{_datadir}/myspell/th_de_DE_v2.dat
 ln -s %{_datadir}/mythes/th_de_DE_v2.dat %{buildroot}%{_datadir}/mythes/th_de_AT_v2.dat
@@ -2398,10 +2402,6 @@ cp -P de/th_de_DE_v2.idx %{buildroot}%{_datadir}/mythes/th_de_DE_v2.idx
 ln -s %{_datadir}/mythes/th_de_DE_v2.idx %{buildroot}%{_datadir}/myspell/th_de_DE_v2.idx
 ln -s %{_datadir}/mythes/th_de_DE_v2.idx %{buildroot}%{_datadir}/mythes/th_de_AT_v2.idx
 ln -s %{_datadir}/mythes/th_de_AT_v2.idx %{buildroot}%{_datadir}/myspell/th_de_AT_v2.idx
-cp -P de/th_de_CH_v2.dat %{buildroot}%{_datadir}/mythes/th_de_CH_v2.dat
-ln -s %{_datadir}/mythes/th_de_CH_v2.dat %{buildroot}%{_datadir}/myspell/th_de_CH_v2.dat
-cp -P de/th_de_CH_v2.idx %{buildroot}%{_datadir}/mythes/th_de_CH_v2.idx
-ln -s %{_datadir}/mythes/th_de_CH_v2.idx %{buildroot}%{_datadir}/myspell/th_de_CH_v2.idx
 mkdir -p %{buildroot}%{_docdir}/myspell-de
 cp -P de/COPYING_GPLv2 %{buildroot}%{_docdir}/myspell-de/COPYING_GPLv2
 cp -P de/COPYING_GPLv3 %{buildroot}%{_docdir}/myspell-de/COPYING_GPLv3
@@ -2973,8 +2973,8 @@ cp -P gl/README %{buildroot}%{_docdir}/myspell-gl/README
 cp -P gl/README_hyph-gl.txt %{buildroot}%{_docdir}/myspell-gl/README_hyph-gl.txt
 cp -P gl/README_th_gl.txt %{buildroot}%{_docdir}/myspell-gl/README_th_gl.txt
 cp -P gl/description.xml %{buildroot}%{_docdir}/myspell-gl/description.xml
-cp -P gl/package-description.txt %{buildroot}%{_docdir}/myspell-gl/package-description.txt
 cp -P gl/dictionaries.xcu %{buildroot}%{_docdir}/myspell-gl/dictionaries.xcu
+cp -P gl/package-description.txt %{buildroot}%{_docdir}/myspell-gl/package-description.txt
 ln -s %{_datadir}/hunspell/gug.aff %{buildroot}%{_datadir}/hunspell/gug_PY.aff
 ln -s %{_datadir}/hunspell/gug_PY.aff %{buildroot}%{_datadir}/myspell/gug_PY.aff
 cp -P gug/gug.aff %{buildroot}%{_datadir}/hunspell/gug.aff
@@ -3952,8 +3952,8 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-ca/README_hyph_ca.txt
 %{_docdir}/myspell-ca/README_thes_ca.txt
 %{_docdir}/myspell-ca/description.xml
-%{_docdir}/myspell-ca/package-description.txt
 %{_docdir}/myspell-ca/dictionaries.xcu
+%{_docdir}/myspell-ca/package-description.txt
 
 %files -n myspell-ca_ES
 %{_datadir}/hunspell/ca_ES.aff
@@ -4714,8 +4714,8 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-gl/README_hyph-gl.txt
 %{_docdir}/myspell-gl/README_th_gl.txt
 %{_docdir}/myspell-gl/description.xml
-%{_docdir}/myspell-gl/package-description.txt
 %{_docdir}/myspell-gl/dictionaries.xcu
+%{_docdir}/myspell-gl/package-description.txt
 
 %files -n myspell-gl_ES
 %{_datadir}/hunspell/gl_ES.aff
