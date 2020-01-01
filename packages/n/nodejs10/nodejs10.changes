@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 27 14:57:23 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- node-gyp-addon-gypi.patch: Fix wrong path in gypi files (bsc#1159812)
+
+-------------------------------------------------------------------
+Thu Dec 19 13:46:52 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.18.0:
+  * deps: update npm to 6.13.4 fixing an arbitrary path overwrite
+    and access via "bin" field (bsc#1159352, CVE-2019-16777,
+    CVE-2019-16776, CVE-2019-16775)
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Tue Dec  3 13:36:20 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Increase _constraints to allow all unit tests to execute
+
+-------------------------------------------------------------------
 Tue Nov  5 08:38:31 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - skip_no_console.patch: skip tests on build platforms where console

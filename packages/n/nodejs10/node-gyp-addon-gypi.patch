@@ -8,7 +8,7 @@ Index: node-v12.8.0/addon-rpm.gypi
 +    'type': 'loadable_module',
 +    'product_prefix': '',
 +    'include_dirs': [
-+      '/usr/include/node12/',
++      '/usr/include/node10/',
 +      '/usr/include/'
 +    ],
 +
@@ -60,7 +60,7 @@ Index: node-v12.8.0/deps/npm/node_modules/node-gyp/lib/configure.js
 +      } else {
 +        // if no --target was specified then use RPM-installed headers
 +        log.verbose('get node dir', 'no --target version specified, falling back to RPM installed headers')
-+        nodeDir = '/usr/include/node12'
++        nodeDir = '/usr/include/node10'
 +        createBuildDir()
 +      }
      }

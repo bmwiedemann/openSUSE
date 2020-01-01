@@ -254,4 +254,20 @@
   is set to a dumb terminal</comment>
     <requestid>745498</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca8efac742e4c15532084e6006e87723</srcmd5>
+    <version>10.18.0</version>
+    <time>1577887089</time>
+    <user>dimstar_suse</user>
+    <comment>- node-gyp-addon-gypi.patch: Fix wrong path in gypi files (bsc#1159812)
+
+- New upstream LTS version 10.18.0:
+  * deps: update npm to 6.13.4 fixing an arbitrary path overwrite
+    and access via &quot;bin&quot; field (bsc#1159352, CVE-2019-16777,
+    CVE-2019-16776, CVE-2019-16775)
+- versioned.patch: refreshed
+
+- Increase _constraints to allow all unit tests to execute</comment>
+    <requestid>759700</requestid>
+  </revision>
 </revisionlist>
