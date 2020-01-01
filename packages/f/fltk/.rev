@@ -325,4 +325,14 @@ Feel free to revert the update to submit it to Factory or to leave the request o
     <comment></comment>
     <requestid>723014</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>cf47c18c9b26eb1d182645822815b91e</srcmd5>
+    <version>1.3.5</version>
+    <time>1577886985</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.3.5
+  * see CHANGES or
+    https://www.fltk.org/articles.php?L1635</comment>
+    <requestid>758157</requestid>
+  </revision>
 </revisionlist>

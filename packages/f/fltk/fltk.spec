@@ -1,7 +1,7 @@
 #
 # spec file for package fltk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           fltk
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        C++ GUI Toolkit for the X Window System, OpenGL, and WIN32
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
-Url:            http://www.fltk.org/
-Source:         http://fltk.org/pub/fltk/%{version}/fltk-%{version}-source.tar.gz
+URL:            https://www.fltk.org/
+Source:         https://fltk.org/pub/fltk/%{version}/fltk-%{version}-source.tar.gz
 Source2:        baselibs.conf
 # PATCH-FIX-UPSTREAM fltk-1.3.4-fltk_config.patch tchvatal@suse.com -- obey libdir and other options in fltk-config taken from Fedora
 Patch0:         fltk-1.3.4-fltk_config.patch
