@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.19.7
+Version:        9.19.8
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi

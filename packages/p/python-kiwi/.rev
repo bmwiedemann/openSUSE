@@ -1276,4 +1276,38 @@
   Post image build metadata like the packages file which are</comment>
     <requestid>755480</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4b68d3b92059f342cd676fd50c0d19c3</srcmd5>
+    <version>9.19.8</version>
+    <time>1577887024</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.19.7 → 9.19.8
+
+- Update libyui-ncurses-pkg10 to libyui-ncurses-pkg11
+  In Tumbleweed there is no longer the libyui-ncurses-pkg10 its been
+  superseded by libyui-ncurses-pkg11.
+  This fixes the test-image-qcow-openstack integration test
+
+- Reference commit for SUSE maintenance
+  This commit adds a reference to Issue #1301 and the report in bugzilla
+  bsc#1159538. The issue was fixed in commit 7d96d19c
+
+- Fix grub2 configuration for shim fallback setup
+  If shim fallback setup is enabled the grub.cfg is copied to the EFI
+  partition. This commit makes sure that the grub.cfg is copied to the EFI
+  partition according to the efi mount point.
+  Fixes bsc#1159235
+
+- Ensure no swap volume is added on btrfs
+  When the selected filesystem is btrfs the volume manager is not LVM.
+  In that case the swap partition is not volume, it is a completely
+  independent partition. So that we cannot add and additional volume
+  for swap when swap is specified in the description file.
+  This patch fixes #1301 and fulfills #1297
+
+- Fixed installation chapter in the documentation
+  The chapter still outlines multipython support but we
+  dropped support for python2 some time ago</comment>
+    <requestid>758475</requestid>
+  </revision>
 </revisionlist>
