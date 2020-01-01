@@ -223,7 +223,7 @@ repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bi
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
 
-installcheck-ignore-duplicated-binaries = 
+installcheck-ignore-duplicated-binaries = gnome-menus-branding-openSUSE
 
 # for scan_baselibs.py
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
@@ -388,9 +388,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20191230'
-published: '20191229'
-publishing: '20191229'
+    <value>failed: ''
+published: '20191230'
+publishing: '20191230'
 testing: '20191230'
 </value>
   </attribute>
