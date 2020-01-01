@@ -1,0 +1,26 @@
+Index: libarchive-3.4.0/build/cmake/CreatePkgConfigFile.cmake
+===================================================================
+--- libarchive-3.4.0.orig/build/cmake/CreatePkgConfigFile.cmake
++++ libarchive-3.4.0/build/cmake/CreatePkgConfigFile.cmake
+@@ -29,5 +29,5 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DI
+ # And install it, of course ;).
+ IF(ENABLE_INSTALL)
+   INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/build/pkgconfig/libarchive.pc
+-          DESTINATION "lib/pkgconfig")
++          DESTINATION "lib${LIB_SUFFIX}/pkgconfig")
+ ENDIF()
+Index: libarchive-3.4.0/libarchive/CMakeLists.txt
+===================================================================
+--- libarchive-3.4.0.orig/libarchive/CMakeLists.txt
++++ libarchive-3.4.0/libarchive/CMakeLists.txt
+@@ -254,8 +254,8 @@ IF(ENABLE_INSTALL)
+   # How to install the libraries
+   INSTALL(TARGETS archive archive_static
+           RUNTIME DESTINATION bin
+-          LIBRARY DESTINATION lib
+-          ARCHIVE DESTINATION lib)
++          LIBRARY DESTINATION lib${LIB_SUFFIX}
++          ARCHIVE DESTINATION lib${LIB_SUFFIX})
+   INSTALL_MAN(${libarchive_MANS})
+   INSTALL(FILES ${include_HEADERS} DESTINATION include)
+ ENDIF()

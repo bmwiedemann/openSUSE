@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Dec 30 08:40:05 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Revert back to autoconf, cmake introduces a cycle. Leave cmake
+  patches in since they are basically correct and might be useful
+  in the future.
+
+-------------------------------------------------------------------
+Mon Dec 30 08:14:13 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.4.1
+  New features:
+  * Unicode filename support for reading lha/lzh archives
+  * New pax write option "xattrhdr"
+  Important bugfixes:
+  * security fixes in wide string processing (#1276 #1298)
+  * security fixes in RAR5 reader (#1212 #1217 #1296) CVE-2019-19221
+  * security fixes and optimizations to write filter logic (#351)
+  * security fix related to use of readlink(2) (1dae5a5)
+  * sparse file handling fixes (#1218 #1260)
+- Drop CVE-2019-19221.patch and fix-zstd-test.patch, fixed upstream
+
+-------------------------------------------------------------------
+Fri Nov 22 13:17:53 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- fix bsc#1157569
+  CVE-2019-19221.patch out-of-bounds read in libarchive
+
+-------------------------------------------------------------------
+Sun Aug 18 12:33:05 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Switch to cmake build 
+- Add lib-suffix.patch to honor LIB_SUFFIX
+- Add fix-zstd-test.patch to fix zstd test
+- Add fix-soversion.patch to fix the soversion to 13 as autotools
+
+-------------------------------------------------------------------
+Thu Jun 20 11:35:15 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Add lz4 and zstd support
+- Add BuildRequires on liblz4-devel and libzstd-devel
+
+-------------------------------------------------------------------
 Thu Jun 13 08:00:36 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.4.0

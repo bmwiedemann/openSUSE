@@ -1,7 +1,7 @@
 #
 # spec file for package libarchive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_without	ext2fs
 %endif
 Name:           libarchive
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Utility and C library to create and read several different streaming archive formats
 License:        BSD-2-Clause
@@ -40,10 +40,14 @@ Source0:        https://github.com/libarchive/libarchive/releases/download/v%{ve
 Source1:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.gz.asc
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
+Patch1:         lib-suffix.patch
+Patch2:         fix-soversion.patch
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel
+BuildRequires:  liblz4-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
@@ -157,6 +161,7 @@ Static library for libarchive
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -D_REENTRANT -pipe"
@@ -174,11 +179,11 @@ sed -i -e "/HAVE_LZMA_STREAM_ENCODER_MT/d" config.h
 make %{?_smp_mflags}
 
 %check
-# test suite is a bit racy unfortunatly, so give it three attempts
-make %{?_smp_mflags} check || make check || make check
+make %{?_smp_mflags} check
 
 %install
 %make_install
+
 find %{buildroot} -type f -name "*.la" -delete -print
 rm "%{buildroot}%{_mandir}/man5/"{tar,cpio,mtree}.5*
 sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc

@@ -1,0 +1,13 @@
+Index: libarchive-3.4.0/CMakeLists.txt
+===================================================================
+--- libarchive-3.4.0.orig/CMakeLists.txt
++++ libarchive-3.4.0/CMakeLists.txt
+@@ -71,7 +71,7 @@ SET(LIBARCHIVE_VERSION_STRING  "${VERSIO
+ # libarchive 2.9 == interface version 11 = 2 + 9
+ # libarchive 3.0 == interface version 12
+ # libarchive 3.1 == interface version 13
+-math(EXPR INTERFACE_VERSION  "13 + ${_minor}")
++set(INTERFACE_VERSION  "13")
+ 
+ # Set SOVERSION == Interface version
+ # ?? Should there be more here ??
