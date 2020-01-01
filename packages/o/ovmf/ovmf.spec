@@ -58,7 +58,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  iasl
 BuildRequires:  libuuid-devel
 BuildRequires:  python3
-%ifnarch %arm
+%ifnarch armv7hl
 BuildRequires:  nasm
 %endif
 %ifarch %{secureboot_archs}
@@ -75,7 +75,7 @@ BuildRequires:  qemu-ipxe
 %endif
 BuildRequires:  unzip
 %endif
-ExclusiveArch:  %ix86 x86_64 aarch64 %arm
+ExclusiveArch:  %ix86 x86_64 aarch64 armv7hl
 
 %description
 The Open Virtual Machine Firmware (OVMF) project aims to support
@@ -144,7 +144,7 @@ This package contains the UEFI rom image (AArch64) for QEMU cortex-a57
 virt board.
 %endif
 
-%ifarch %arm
+%ifarch armv7hl
 %package -n qemu-uefi-aarch32
 Summary:        UEFI QEMU rom image (AArch32)
 Group:          System/Emulators/PC
@@ -159,7 +159,7 @@ virt board.
 %setup -q -n edk2-edk2-stable%{version}
 
 # bsc#973038 Remove the packages we don't need to avoid any potential
-# license issue. 
+# license issue.
 PKG_TO_REMOVE="AppPkg DuetPkg CorebootModulePkg CorebootPayloadPkg \
 EmulatorPkg Nt32Pkg Omap35xxPkg QuarkPlatformPkg QuarkSocPkg StdLib \
 StdLibPrivateInternalFiles UnixPkg Vlv2DeviceRefCodePkg Vlv2TbltDevicePkg"
@@ -231,7 +231,7 @@ TOOL_CHAIN_TAG=GCC$(gcc -dumpversion|sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/')
 	BUILD_OPTIONS="$OVMF_FLAGS -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc -b DEBUG -t $TOOL_CHAIN_TAG"
 	ARCH=AARCH64 make -C BaseTools
 %else
-%ifarch %arm
+%ifarch armv7hl
 	# Flavors for arm
 	FLAVORS=("aavmf-aarch32")
 	BUILD_ARCH="AARCH32"
@@ -324,7 +324,7 @@ cp Build/ArmVirtQemu-AARCH64/DEBUG_*/AARCH64/Shell.efi .
 cp Build/ArmVirtQemu-AARCH64/DEBUG_*/AARCH64/EnrollDefaultKeys.efi .
 
 %else
-%ifarch %arm
+%ifarch armv7hl
 
 # Build the UEFI image
 build $BUILD_OPTIONS
@@ -391,7 +391,7 @@ build_template()
 	CDROM="$CDROM,file=${ISO_FILE}"
 
 	if [ $ARCH == "X64" ]; then
-		# qemu command 
+		# qemu command
 		local QEMU="qemu-system-x86_64"
 
 		# machine parameters
@@ -404,7 +404,7 @@ build_template()
 		MACHINE="$MACHINE -chardev pty,id=charserial1"
 		MACHINE="$MACHINE -device isa-serial,chardev=charserial1,id=serial1"
 	elif [ $ARCH == "AARCH64" ]; then
-		# qemu command 
+		# qemu command
 		local QEMU="qemu-system-aarch64"
 
 		# machine parameters
@@ -525,7 +525,7 @@ install -m 0644 -D aavmf-aarch64-*.bin -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D descriptors/*-aarch64*.json \
 	-t %{buildroot}/%{_datadir}/qemu/firmware
 %else
-%ifarch %arm
+%ifarch armv7hl
 install -m 0644 -D qemu-uefi-aarch32.bin -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D aavmf-aarch32-*.bin -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D descriptors/*-aarch32*.json \
@@ -560,7 +560,7 @@ install -m 0755 %{SOURCE102} %{buildroot}/%{_datadir}/ovmf/
 %ifarch %ix86
 %files -n qemu-ovmf-ia32
 %defattr(-,root,root)
-%license License.txt License-ovmf.txt 
+%license License.txt License-ovmf.txt
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/ovmf-ia32*.bin
 %dir %{_datadir}/qemu/firmware
@@ -597,7 +597,7 @@ install -m 0755 %{SOURCE102} %{buildroot}/%{_datadir}/ovmf/
 %{_datadir}/qemu/firmware/*-aarch64*.json
 %endif
 
-%ifarch %arm
+%ifarch armv7hl
 %files -n qemu-uefi-aarch32
 %defattr(-,root,root)
 %license License.txt

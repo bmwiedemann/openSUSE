@@ -321,4 +321,12 @@
     <comment></comment>
     <requestid>753074</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>1b57f9686a0205cb7a243ebe8703a277</srcmd5>
+    <version>201911</version>
+    <time>1577887016</time>
+    <user>dimstar_suse</user>
+    <comment>- only build -aarch32 Cortex-A15 EFI on armv7hl</comment>
+    <requestid>758466</requestid>
+  </revision>
 </revisionlist>
