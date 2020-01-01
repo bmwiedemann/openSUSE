@@ -1,7 +1,7 @@
 #
 # spec file for package aspell-en
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@
 %define aspell_data_dir %(aspell dump config data-dir)
 
 Name:           aspell-en
-Version:        2018.04.16
+Version:        2019.10.06
 Release:        0
 Summary:        English Dictionaries for ASpell
-License:        MIT and BSD-3-Clause
+License:        MIT AND BSD-3-Clause
 Group:          Productivity/Text/Spell
 
-Url:            http://wordlist.aspell.net/
+URL:            http://wordlist.aspell.net/
 Source0:        ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-%{version}-0.tar.bz2
 Source1:        ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-%{version}-0.tar.bz2.sig
 # keyring from ftp://ftp.gnu.org/gnu/aspell/dict/0index.html

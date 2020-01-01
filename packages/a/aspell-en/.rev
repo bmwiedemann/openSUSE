@@ -191,4 +191,14 @@ Use SPDX format (using same license form as Fedora for this package) (forwarded 
   * various new words (see SCOWL-README for other changes)</comment>
     <requestid>628787</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>83274a6a74268e3a228799924bdc947e</srcmd5>
+    <version>2019.10.06</version>
+    <time>1577886986</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2019.10.06
+  Various new words.
+  Remove compare's and fail's.</comment>
+    <requestid>758165</requestid>
+  </revision>
 </revisionlist>
