@@ -57,4 +57,17 @@
   * provide license file in the tarball</comment>
     <requestid>729777</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>861fcdc2b55b0b37ea726a58c8cbf900</srcmd5>
+    <version>2.0.0</version>
+    <time>1577887071</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Simplified generated code for ``repeat`` and ``atleast`` commands.
+  * Implemented “go grouping” optimisation.
+  * Removed caching layer (#114).
+  * Enabled building wheels (#115).
+  * Updated package README.</comment>
+    <requestid>758628</requestid>
+  </revision>
 </revisionlist>
