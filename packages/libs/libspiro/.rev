@@ -55,4 +55,17 @@
   * Verify libspiro output data is correct for test curves {0,1,2,4}.</comment>
     <requestid>349191</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a461826ff71afad55a20db7b0cca6c4f</srcmd5>
+    <version>20190731</version>
+    <time>1577886987</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20190731
+  * Scaling bug fixed. This allows libspiro to scale, and move spiro
+    paths, therefore allowing users and/or programs the ability of
+    using/making templates.
+  * Additional spiro controls 'anchor' and 'handle' added.
+  * Toggle switch ncq added, to allow further control of output results.</comment>
+    <requestid>758168</requestid>
+  </revision>
 </revisionlist>

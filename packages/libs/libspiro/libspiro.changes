@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 19 12:46:12 UTC 2019 - pgajdos@suse.com
+
+- version update to 20190731
+  * Scaling bug fixed. This allows libspiro to scale, and move spiro
+    paths, therefore allowing users and/or programs the ability of
+    using/making templates.
+  * Additional spiro controls 'anchor' and 'handle' added.
+  * Toggle switch ncq added, to allow further control of output results.
+
+-------------------------------------------------------------------
 Wed Dec 16 15:17:58 UTC 2015 - pgajdos@suse.com
 
 - update to version 0.5.20150702
