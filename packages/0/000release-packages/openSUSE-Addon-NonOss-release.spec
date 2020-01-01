@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-Addon-NonOss-release (Version 20191231)
 #
-# Copyright (c) 2019 openSUSE.
+# Copyright (c) 2020 openSUSE.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
