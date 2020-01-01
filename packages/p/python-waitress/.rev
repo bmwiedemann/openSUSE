@@ -158,4 +158,23 @@
     <comment></comment>
     <requestid>727098</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>41812e7eed887ce20c41c0caed58d228</srcmd5>
+    <version>1.4.0</version>
+    <time>1577887055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  - Waitress used to slam the door shut on HTTP pipelined requests without
+  setting the ``Connection: close`` header as appropriate in the response. This
+  is of course not very friendly. Waitress now explicitly sets the header when
+  responding with an internally generated error such as 400 Bad Request or 500
+  Internal Server Error to notify the remote client that it will be closing the
+  connection after the response is sent.
+  - Waitress no longer allows any spaces to exist between the header field-name
+  and the colon. While waitress did not strip the space and thereby was not
+  vulnerable to any potential header field-name confusion, it should have sent
+  back a 400 Bad Request. See https://github.com/Pylons/waitress/issues/273
+  - CRLR handling Security fixes</comment>
+    <requestid>758618</requestid>
+  </revision>
 </revisionlist>

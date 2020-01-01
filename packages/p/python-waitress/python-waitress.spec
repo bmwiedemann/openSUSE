@@ -1,7 +1,7 @@
 #
 # spec file for package python-waitress
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-waitress
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1
@@ -59,7 +59,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n waitress-%{version}
-%patch -p1
+#%patch -p1
 cp %{S:1} docs/
 
 %build
