@@ -26,7 +26,7 @@
 %endif
 %define shortversion 3.16
 Name:           cmake%{psuffix}
-Version:        3.16.0
+Version:        3.16.2
 Release:        0
 URL:            https://www.cmake.org/
 Source0:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}.tar.gz
