@@ -60,8 +60,10 @@ and processes can be seen.  Child processes can also be tracked.
 %setup -q
 
 %build
-# LTO breaks mpers.sh
-%global _lto_cflags %{nil}
+# Make sure LTO doesn't break mpers.sh
+%if "%{?_lto_cflags}" != ""
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 %configure \
 %ifarch aarch64
   --disable-mpers \

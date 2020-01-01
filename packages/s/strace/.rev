@@ -1027,4 +1027,12 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
       of AUDIT_ARCH_* constants. (forwarded request 752470 from AndreasSchwab)</comment>
     <requestid>752471</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>c460821cec25793c0d7b94dd3c6fa6b1</srcmd5>
+    <version>5.4</version>
+    <time>1577886977</time>
+    <user>dimstar_suse</user>
+    <comment>- Use -ffat-lto-objects to work around mpers.sh failure (forwarded request 758125 from Andreas_Schwab)</comment>
+    <requestid>758126</requestid>
+  </revision>
 </revisionlist>
