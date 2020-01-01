@@ -10,7 +10,7 @@
  8 files changed, 312 insertions(+), 67 deletions(-)
 
 --- magic/Magdir/elf
-+++ magic/Magdir/elf	2019-05-27 09:12:24.240057311 +0000
++++ magic/Magdir/elf	2019-12-17 09:32:49.679457205 +0000
 @@ -135,7 +135,7 @@
  >18	leshort		47		Renesas H8/300H,
  >18	leshort		48		Renesas H8S,
@@ -21,7 +21,7 @@
  >18	leshort		52		Motorola Coldfire,
  >18	leshort		53		Motorola M68HC12,
 --- magic/Magdir/linux
-+++ magic/Magdir/linux	2019-05-27 09:16:20.143608597 +0000
++++ magic/Magdir/linux	2019-12-17 09:32:49.679457205 +0000
 @@ -112,27 +112,31 @@
  # All known start with: b8 c0 07 8e d8 b8 00 90 8e c0 b9 00 01 29 f6 29
  # Linux kernel boot images (i386 arch) (Wolfram Kleff)
@@ -71,7 +71,7 @@
  0		belong	0xb8c0078e	Linux kernel
  >0x1e3		string	Loading		version 1.3.79 or older
 --- magic/Magdir/msad
-+++ magic/Magdir/msad	2019-05-27 09:12:24.240057311 +0000
++++ magic/Magdir/msad	2019-12-17 09:32:49.679457205 +0000
 @@ -0,0 +1,5 @@
 +#------------------------------------------------------------------------------
 +# msad:  file(1) magic for msad
@@ -79,20 +79,20 @@
 +# This must precede the heuristic for raw G3 data
 +4	string	Standard\ Jet\ DB	Microsoft Access Database
 --- magic/Magdir/msdos
-+++ magic/Magdir/msdos	2019-05-27 09:12:24.240057311 +0000
-@@ -135,9 +135,9 @@
- >>>(0x3c.l+22)	leshort&0x0200	>0	(stripped to external PDB)
- >>>(0x3c.l+22)	leshort&0x1000	>0	system file
- >>>(0x3c.l+24)	leshort		0x010b
-->>>>(0x3c.l+232) lelong	>0	Mono/.Net assembly
-+>>>>(0x3c.l+232) lelong	>0	\b, Mono/.Net assembly
- >>>(0x3c.l+24)	leshort		0x020b
-->>>>(0x3c.l+248) lelong	>0	Mono/.Net assembly
-+>>>>(0x3c.l+248) lelong	>0	\b, Mono/.Net assembly
++++ magic/Magdir/msdos	2019-12-17 09:39:04.532385769 +0000
+@@ -142,9 +142,9 @@
+ >>(0x3c.l+22)	leshort&0x0200	>0	(stripped to external PDB)
+ >>(0x3c.l+22)	leshort&0x1000	>0	system file
+ >>(0x3c.l+24)	leshort		0x010b
+->>>(0x3c.l+232) lelong	>0	Mono/.Net assembly
++>>>(0x3c.l+232) lelong	>0	\b, Mono/.Net assembly
+ >>(0x3c.l+24)	leshort		0x020b
+->>>(0x3c.l+248) lelong	>0	Mono/.Net assembly
++>>>(0x3c.l+248) lelong	>0	\b, Mono/.Net assembly
  
  # hooray, there's a DOS extender using the PE format, with a valid PE
  # executable inside (which just prints a message and exits if run in win)
-@@ -520,7 +520,7 @@
+@@ -531,7 +531,7 @@
  # negative offset, must not lead into PSP
  >1          short   <-259
  # that offset must be accessible
@@ -102,7 +102,7 @@
  
  # updated by Joerg Jenderek at Oct 2008,2015
 --- magic/Makefile.am
-+++ magic/Makefile.am	2019-05-27 09:18:21.205329508 +0000
++++ magic/Makefile.am	2019-12-17 09:39:43.019659705 +0000
 @@ -5,7 +5,7 @@ MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
  MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
@@ -128,7 +128,7 @@
  $(MAGIC_FRAGMENT_DIR)/finger \
  $(MAGIC_FRAGMENT_DIR)/flash \
  $(MAGIC_FRAGMENT_DIR)/flif \
-@@ -138,6 +136,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+@@ -140,6 +138,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
  $(MAGIC_FRAGMENT_DIR)/java \
  $(MAGIC_FRAGMENT_DIR)/javascript \
  $(MAGIC_FRAGMENT_DIR)/jpeg \
@@ -137,7 +137,7 @@
  $(MAGIC_FRAGMENT_DIR)/karma \
  $(MAGIC_FRAGMENT_DIR)/kde \
  $(MAGIC_FRAGMENT_DIR)/keepass \
-@@ -147,14 +147,12 @@ $(MAGIC_FRAGMENT_DIR)/kml \
+@@ -149,14 +149,12 @@ $(MAGIC_FRAGMENT_DIR)/kml \
  $(MAGIC_FRAGMENT_DIR)/lecter \
  $(MAGIC_FRAGMENT_DIR)/lex \
  $(MAGIC_FRAGMENT_DIR)/lif \
@@ -152,11 +152,12 @@
  $(MAGIC_FRAGMENT_DIR)/macos \
  $(MAGIC_FRAGMENT_DIR)/magic \
  $(MAGIC_FRAGMENT_DIR)/mail.news \
-@@ -178,10 +176,10 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+@@ -180,11 +178,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
  $(MAGIC_FRAGMENT_DIR)/mkid \
  $(MAGIC_FRAGMENT_DIR)/mlssa \
  $(MAGIC_FRAGMENT_DIR)/mmdf \
 -$(MAGIC_FRAGMENT_DIR)/modem \
+ $(MAGIC_FRAGMENT_DIR)/modulefile \
  $(MAGIC_FRAGMENT_DIR)/motorola \
  $(MAGIC_FRAGMENT_DIR)/mozilla \
  $(MAGIC_FRAGMENT_DIR)/msdos \
@@ -164,7 +165,7 @@
  $(MAGIC_FRAGMENT_DIR)/msooxml \
  $(MAGIC_FRAGMENT_DIR)/msvc \
  $(MAGIC_FRAGMENT_DIR)/msx \
-@@ -234,6 +232,8 @@ $(MAGIC_FRAGMENT_DIR)/python \
+@@ -240,6 +238,8 @@ $(MAGIC_FRAGMENT_DIR)/python \
  $(MAGIC_FRAGMENT_DIR)/qt \
  $(MAGIC_FRAGMENT_DIR)/revision \
  $(MAGIC_FRAGMENT_DIR)/riff \
@@ -173,7 +174,7 @@
  $(MAGIC_FRAGMENT_DIR)/rpi \
  $(MAGIC_FRAGMENT_DIR)/rpm \
  $(MAGIC_FRAGMENT_DIR)/rpmsg \
-@@ -311,8 +311,20 @@ $(MAGIC_FRAGMENT_DIR)/zilog \
+@@ -319,8 +319,20 @@ $(MAGIC_FRAGMENT_DIR)/zilog \
  $(MAGIC_FRAGMENT_DIR)/zip \
  $(MAGIC_FRAGMENT_DIR)/zyxel
  
@@ -195,7 +196,7 @@
  
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file; for now we bail if the local version does not match
-@@ -324,19 +336,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
+@@ -332,19 +344,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
  FILE_COMPILE_DEP = $(FILE_COMPILE)
  endif
  
@@ -235,8 +236,8 @@
 +#	$(FILE_COMPILE) -C -m magic
 +#	@rm -fr magic
 --- magic/Makefile.in
-+++ magic/Makefile.in	2019-05-27 09:19:14.804321308 +0000
-@@ -278,7 +278,7 @@ top_srcdir = @top_srcdir@
++++ magic/Makefile.in	2019-12-17 09:40:11.435123643 +0000
+@@ -279,7 +279,7 @@ top_srcdir = @top_srcdir@
  MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
  MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
@@ -245,7 +246,7 @@
  EXTRA_DIST = \
  $(MAGIC_DIR)/Header \
  $(MAGIC_DIR)/Localstuff \
-@@ -295,7 +295,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
+@@ -296,7 +296,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
  $(MAGIC_FRAGMENT_DIR)/aout \
  $(MAGIC_FRAGMENT_DIR)/apache \
  $(MAGIC_FRAGMENT_DIR)/apl \
@@ -253,7 +254,7 @@
  $(MAGIC_FRAGMENT_DIR)/application \
  $(MAGIC_FRAGMENT_DIR)/applix \
  $(MAGIC_FRAGMENT_DIR)/apt \
-@@ -366,7 +365,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+@@ -367,7 +366,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
  $(MAGIC_FRAGMENT_DIR)/espressif \
  $(MAGIC_FRAGMENT_DIR)/esri \
  $(MAGIC_FRAGMENT_DIR)/fcs \
@@ -261,7 +262,7 @@
  $(MAGIC_FRAGMENT_DIR)/finger \
  $(MAGIC_FRAGMENT_DIR)/flash \
  $(MAGIC_FRAGMENT_DIR)/flif \
-@@ -410,6 +408,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+@@ -413,6 +411,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
  $(MAGIC_FRAGMENT_DIR)/java \
  $(MAGIC_FRAGMENT_DIR)/javascript \
  $(MAGIC_FRAGMENT_DIR)/jpeg \
@@ -270,7 +271,7 @@
  $(MAGIC_FRAGMENT_DIR)/karma \
  $(MAGIC_FRAGMENT_DIR)/kde \
  $(MAGIC_FRAGMENT_DIR)/keepass \
-@@ -419,14 +419,12 @@ $(MAGIC_FRAGMENT_DIR)/kml \
+@@ -422,14 +422,12 @@ $(MAGIC_FRAGMENT_DIR)/kml \
  $(MAGIC_FRAGMENT_DIR)/lecter \
  $(MAGIC_FRAGMENT_DIR)/lex \
  $(MAGIC_FRAGMENT_DIR)/lif \
@@ -285,11 +286,12 @@
  $(MAGIC_FRAGMENT_DIR)/macos \
  $(MAGIC_FRAGMENT_DIR)/magic \
  $(MAGIC_FRAGMENT_DIR)/mail.news \
-@@ -450,10 +448,10 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+@@ -453,11 +451,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
  $(MAGIC_FRAGMENT_DIR)/mkid \
  $(MAGIC_FRAGMENT_DIR)/mlssa \
  $(MAGIC_FRAGMENT_DIR)/mmdf \
 -$(MAGIC_FRAGMENT_DIR)/modem \
+ $(MAGIC_FRAGMENT_DIR)/modulefile \
  $(MAGIC_FRAGMENT_DIR)/motorola \
  $(MAGIC_FRAGMENT_DIR)/mozilla \
  $(MAGIC_FRAGMENT_DIR)/msdos \
@@ -297,7 +299,7 @@
  $(MAGIC_FRAGMENT_DIR)/msooxml \
  $(MAGIC_FRAGMENT_DIR)/msvc \
  $(MAGIC_FRAGMENT_DIR)/msx \
-@@ -506,6 +504,8 @@ $(MAGIC_FRAGMENT_DIR)/python \
+@@ -513,6 +511,8 @@ $(MAGIC_FRAGMENT_DIR)/python \
  $(MAGIC_FRAGMENT_DIR)/qt \
  $(MAGIC_FRAGMENT_DIR)/revision \
  $(MAGIC_FRAGMENT_DIR)/riff \
@@ -306,7 +308,7 @@
  $(MAGIC_FRAGMENT_DIR)/rpi \
  $(MAGIC_FRAGMENT_DIR)/rpm \
  $(MAGIC_FRAGMENT_DIR)/rpmsg \
-@@ -583,10 +583,22 @@ $(MAGIC_FRAGMENT_DIR)/zilog \
+@@ -592,10 +592,22 @@ $(MAGIC_FRAGMENT_DIR)/zilog \
  $(MAGIC_FRAGMENT_DIR)/zip \
  $(MAGIC_FRAGMENT_DIR)/zyxel
  
@@ -330,7 +332,7 @@
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file; for now we bail if the local version does not match
  @IS_CROSS_COMPILE_TRUE@FILE_COMPILE = file${EXEEXT}
-@@ -808,23 +820,25 @@ uninstall-am: uninstall-pkgdataDATA
+@@ -820,23 +832,25 @@ uninstall-am: uninstall-pkgdataDATA
  
  .PRECIOUS: Makefile
  
@@ -373,7 +375,7 @@
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
  # Otherwise a system limit (for SysV at least) may be exceeded.
 --- src/Makefile.am
-+++ src/Makefile.am	2019-05-27 09:12:24.272056708 +0000
++++ src/Makefile.am	2019-12-17 09:32:49.711456600 +0000
 @@ -1,4 +1,4 @@
 -MAGIC = $(pkgdatadir)/magic
 +MAGIC = $(sysconfdir)/magic:$(pkgdatadir)/magic
@@ -381,7 +383,7 @@
  nodist_include_HEADERS = magic.h
  
 --- src/dcore.c
-+++ src/dcore.c	2019-05-27 09:12:24.272056708 +0000
++++ src/dcore.c	2019-12-17 09:32:49.711456600 +0000
 @@ -0,0 +1,207 @@
 +/*
 + * Show goo about ELF core files

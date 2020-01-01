@@ -29,7 +29,7 @@
  private char *mkdbname(struct magic_set *, const char *, int);
  private struct magic_map *apprentice_buf(struct magic_set *, struct magic *,
      size_t);
-@@ -3292,67 +3294,6 @@ byteswap(struct magic *magic, uint32_t n
+@@ -3282,67 +3284,6 @@ byteswap(struct magic *magic, uint32_t n
  }
  
  /*
@@ -107,7 +107,7 @@
  
  #ifndef EFTYPE
  #define EFTYPE EINVAL
-@@ -116,55 +117,9 @@ cdf_calloc(const char *file __attribute_
+@@ -120,55 +121,9 @@ cdf_calloc(const char *file __attribute_
  	return calloc(n, u);
  }
  

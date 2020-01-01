@@ -1268,4 +1268,41 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment></comment>
     <requestid>743447</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>08b48109c0b161623ae03d68c0d95501</srcmd5>
+    <version>5.38</version>
+    <time>1577887035</time>
+    <user>dimstar_suse</user>
+    <comment>- Require pkgconfig(libseccomp) to enable the sandboxing feature
+
+- Update to file version 5.38
+  * Always accept -S (no sandbox) even if we don't support sandboxing
+  * More syscalls elided for sandboxiing
+  * For ELF dynamic means having an interpreter not just PT_DYNAMIC
+  * Check for large ELF session header offset
+  * When saving and restoring a locale, keep the locale name in our
+    own storage.
+  * Add a flag to disable CSV file detection.
+  * Don't pass NULL/0 to memset to appease sanitizers.
+  * Avoid spurious prints when looks for extensions or apple strings
+    in fsmagic.
+  * Add builtin decompressors for xz and and bzip.
+  * Add a limit for the number of CDF elements.
+  * More checks for overflow in CDF.
+- Removed patches fixed upstream
+  * CVE-2019-18218-46a8443f.patch
+  * file-5.15-clear-invalid.patch
+  * file-upstream.patch
+- Modify patches
+  * file-5.12-zip.dif
+  * file-5.16-ocloexec.patch
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.23-endian.patch
+  * file-5.24-nitpick.dif
+  * file-5.28-btrfs-image.dif</comment>
+    <requestid>758529</requestid>
+  </revision>
 </revisionlist>

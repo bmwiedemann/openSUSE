@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ BuildRequires:  findutils
 BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
-Url:            http://www.darwinsys.com/file/
-Version:        5.37
+URL:            http://www.darwinsys.com/file/
+Version:        5.38
 Release:        0
 Summary:        Python module to use libmagic
 License:        BSD-3-Clause AND BSD-4-Clause

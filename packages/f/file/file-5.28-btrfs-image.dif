@@ -16,7 +16,7 @@ contained within the image.
 diff --git a/magic/Magdir/filesystems b/magic/Magdir/filesystems
 --- a/magic/Magdir/filesystems
 +++ b/magic/Magdir/filesystems
-@@ -2291,20 +2291,29 @@
+@@ -2281,20 +2281,29 @@
  >>0x10060        string          >\0             lockproto %s)
  
  # Russell Coker <russell@coker.com.au>

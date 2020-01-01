@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Dec 20 14:00:22 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Require pkgconfig(libseccomp) to enable the sandboxing feature
+
+-------------------------------------------------------------------
+Tue Dec 17 09:42:55 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to file version 5.38
+  * Always accept -S (no sandbox) even if we don't support sandboxing
+  * More syscalls elided for sandboxiing
+  * For ELF dynamic means having an interpreter not just PT_DYNAMIC
+  * Check for large ELF session header offset
+  * When saving and restoring a locale, keep the locale name in our
+    own storage.
+  * Add a flag to disable CSV file detection.
+  * Don't pass NULL/0 to memset to appease sanitizers.
+  * Avoid spurious prints when looks for extensions or apple strings
+    in fsmagic.
+  * Add builtin decompressors for xz and and bzip.
+  * Add a limit for the number of CDF elements.
+  * More checks for overflow in CDF.
+- Removed patches fixed upstream
+  * CVE-2019-18218-46a8443f.patch
+  * file-5.15-clear-invalid.patch
+  * file-upstream.patch
+- Modify patches
+  * file-5.12-zip.dif
+  * file-5.16-ocloexec.patch
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.23-endian.patch
+  * file-5.24-nitpick.dif
+  * file-5.28-btrfs-image.dif
+  * file-secure_getenv.patch
+- Modify and rename patch file-5.37.dif which becomes now file-5.38.dif
+
+-------------------------------------------------------------------
 Tue Oct 22 13:24:26 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add temporary patch CVE-2019-18218-46a8443f.patch from upstream

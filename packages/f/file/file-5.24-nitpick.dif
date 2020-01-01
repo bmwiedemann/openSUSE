@@ -5,7 +5,7 @@
 
 --- src/file.c
 +++ src/file.c	2018-10-22 07:56:59.735038350 +0000
-@@ -108,10 +108,12 @@ private const struct option long_options
+@@ -102,10 +102,12 @@ private const struct option long_options
  #define OPT_MIME_ENCODING	5
  #define OPT(shortname, longname, opt, def, doc)      \
      {longname, opt, NULL, shortname},
@@ -18,7 +18,7 @@
  #undef OPT_LONGONLY
      {0, 0, NULL, 0}
      };
-@@ -647,6 +649,7 @@ docprint(const char *opts, int def)
+@@ -645,6 +647,7 @@ docprint(const char *opts, int def)
  private void
  help(void)
  {
@@ -26,7 +26,7 @@
  	(void)fputs(
  "Usage: file [OPTION...] [FILE...]\n"
  "Determine type of FILEs.\n"
-@@ -654,11 +657,16 @@ help(void)
+@@ -652,11 +655,16 @@ help(void)
  #define OPT(shortname, longname, opt, def, doc)      \
  	fprintf(stdout, "  -%c, --" longname, shortname), \
  	docprint(doc, def);
@@ -45,7 +45,7 @@
  	exit(EXIT_SUCCESS);
 --- src/file_opts.h
 +++ src/file_opts.h	2018-10-22 07:55:03.281221021 +0000
-@@ -36,8 +36,8 @@ OPT_LONGONLY("mime-encoding", 0, 0, "
+@@ -39,8 +39,8 @@ OPT_LONGONLY("mime-encoding", 0, 0, "
  OPT('k', "keep-going", 0, 0, "           don't stop at the first match\n")
  OPT('l', "list", 0, 0, "                 list magic strength\n")
  #ifdef S_IFLNK

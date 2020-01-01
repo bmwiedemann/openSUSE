@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,15 @@ Name:           file
 BuildRequires:  bash >= 4.0
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
-Url:            http://www.darwinsys.com/file/
+BuildRequires:  pkgconfig(libseccomp)
+URL:            http://www.darwinsys.com/file/
 # bug437293
 %ifarch ppc64
 Obsoletes:      file-64bit
 %endif
 #
 # Set Version also in python-magic.spec
-Version:        5.37
+Version:        5.38
 Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
@@ -40,7 +41,7 @@ Source2:        baselibs.conf
 Source3:        file-rpmlintrc
 Source4:        ftp://ftp.astron.com/pub/file/file-%{version}.tar.gz.asc
 Source5:        file.keyring
-Patch:          file-5.37.dif
+Patch:          file-5.38.dif
 Patch1:         file-5.19-misc.dif
 Patch4:         file-4.24-autoconf.dif
 Patch5:         file-5.14-tex.dif
@@ -61,11 +62,8 @@ Patch32:        file-5.19-clicfs.dif
 Patch33:        file-5.16-ocloexec.patch
 Patch34:        file-5.23-endian.patch
 Patch35:        file-5.24-nitpick.dif
-Patch36:        file-5.15-clear-invalid.patch
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
-Patch42:        file-upstream.patch
-Patch43:        CVE-2019-18218-46a8443f.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         _miscdir    %{_datadir}/misc
@@ -129,11 +127,8 @@ to develop applications that require the magic "file" interface.
 %patch33 -p0 -b .clexe
 %patch34 -p0 -b .endian
 %patch35 -p0 -b .nitpick
-%patch36 -p1 -b .clear
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
-%patch42 -p0 -b .tmp
-%patch43 -p0 -b .CVE-2019-18218
 %patch -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
@@ -144,7 +139,7 @@ export LC_ALL=POSIX
 rm -f Magdir/*,v Magdir/*~
 rm -f ltcf-c.sh ltconfig ltmain.sh
 autoreconf -fiv
-export CFLAGS="%{optflags} -DHOWMANY=69632 -fPIE"
+export CFLAGS="%{optflags} -DHOWMANY=69632 -fPIE $(pkg-config libseccomp --cflags)"
 %configure --disable-silent-rules --datadir=%{_miscdir} --disable-static --enable-fsect-man5
 make %{?_smp_mflags} pkgdatadir='$(datadir)' LDFLAGS="-pie"
 
