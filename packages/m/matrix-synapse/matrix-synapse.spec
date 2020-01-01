@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-synapse
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0

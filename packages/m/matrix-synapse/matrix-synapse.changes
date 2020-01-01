@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  1 03:26:40 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.7.3.
+
+  * Fix exceptions caused by state resolution choking on malformed events.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Sat Dec 21 00:57:27 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Use packaged service file not the one in the repo (the one in the repo is
