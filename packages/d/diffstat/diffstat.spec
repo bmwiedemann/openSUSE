@@ -1,7 +1,7 @@
 #
 # spec file for package diffstat
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           diffstat
-Version:        1.62
+Version:        1.63
 Release:        0
 Summary:        Utility That Provides Statistics Based on the Output of diff
 License:        MIT
 Group:          Productivity/Text/Utilities
-Url:            http://dickey.his.com/diffstat/diffstat.html
+URL:            https://dickey.his.com/diffstat/diffstat.html
 Source0:        https://invisible-mirror.net/archives/diffstat/diffstat-%{version}.tgz
 Source1:        https://invisible-mirror.net/archives/diffstat/diffstat-%{version}.tgz.asc
 Source2:        %{name}.keyring

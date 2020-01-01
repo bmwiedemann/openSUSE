@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:11:21 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.63
+  + eliminate fixed buffer when decoding range.
+  + use locale in computing filename column-width.
+  + improve parsing for git diffs.
+  + use terminal-width as default for -w to tty.
+  + minor fix in do_merging (Miloslaw Smyk).
+  + improve relative-pathname matching in count_lines()
+  + add a parsing-case for svn diff.
+  + quote filenames in -t/-T output.
+  + fix cppcheck warnings about sscanf.
+  + update configure macros
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
 Mon Dec 31 09:20:21 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
 
 - Update to 1.62

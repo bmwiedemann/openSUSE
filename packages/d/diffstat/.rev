@@ -239,4 +239,23 @@
   + minor fixes for prefix-stripping with -S option.</comment>
     <requestid>662193</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2d7b5d8eb78e1798ba0d72de7850085e</srcmd5>
+    <version>1.63</version>
+    <time>1577886988</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.63
+  + eliminate fixed buffer when decoding range.
+  + use locale in computing filename column-width.
+  + improve parsing for git diffs.
+  + use terminal-width as default for -w to tty.
+  + minor fix in do_merging (Miloslaw Smyk).
+  + improve relative-pathname matching in count_lines()
+  + add a parsing-case for svn diff.
+  + quote filenames in -t/-T output.
+  + fix cppcheck warnings about sscanf.
+  + update configure macros
+  + update config.guess, config.sub</comment>
+    <requestid>758173</requestid>
+  </revision>
 </revisionlist>
