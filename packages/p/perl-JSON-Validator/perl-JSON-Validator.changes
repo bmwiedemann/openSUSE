@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 30 03:07:46 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.17
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.17 2019-12-29T14:21:53+0900
+   - Fix for deep recursion on Windows #170
+   - Fix reading unicode specifiation from __DATA__ #179
+
+-------------------------------------------------------------------
 Tue Oct 29 09:41:31 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.16
