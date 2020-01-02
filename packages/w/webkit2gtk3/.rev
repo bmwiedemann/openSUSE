@@ -722,4 +722,12 @@
     <comment>- Add webkit2gtk3-icu-build-fix.patch: fix build with icu 65.1. (forwarded request 747647 from mgorse)</comment>
     <requestid>747649</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>4726b7a65b5773cfa8dfc457016f7daf</srcmd5>
+    <version>2.26.2</version>
+    <time>1577972390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758317</requestid>
+  </revision>
 </revisionlist>

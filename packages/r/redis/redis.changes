@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 30 17:59:52 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make redis useable in a container (drop size from 100MB to 20MB):
+  - Change user generation from shadow to sysusers
+  - Drop redis-initscript.patch and sudo requires, we use systemd
+  - Drop BuildRequires for procps and tcl, they are not needed
+  - Make logrotate recommend, it's not required for redis to work
+
+-------------------------------------------------------------------
 Sun Dec  1 15:47:06 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 5.0.7

@@ -1,7 +1,7 @@
-Index: NetworkManager-1.16.0/data/NetworkManager.service.in
+Index: NetworkManager-1.20.0/data/NetworkManager.service.in
 ===================================================================
---- NetworkManager-1.16.0.orig/data/NetworkManager.service.in
-+++ NetworkManager-1.16.0/data/NetworkManager.service.in
+--- NetworkManager-1.20.0.orig/data/NetworkManager.service.in
++++ NetworkManager-1.20.0/data/NetworkManager.service.in
 @@ -1,7 +1,7 @@
  [Unit]
  Description=Network Manager
@@ -11,7 +11,7 @@ Index: NetworkManager-1.16.0/data/NetworkManager.service.in
  After=network-pre.target dbus.service
  Before=network.target @DISTRO_NETWORK_SERVICE@
  
-@@ -24,6 +24,7 @@ ProtectHome=read-only
+@@ -21,6 +21,7 @@ ProtectHome=read-only
  
  [Install]
  WantedBy=multi-user.target
@@ -19,10 +19,10 @@ Index: NetworkManager-1.16.0/data/NetworkManager.service.in
  Also=NetworkManager-dispatcher.service
  
  # We want to enable NetworkManager-wait-online.service whenever this service
-Index: NetworkManager-1.16.0/data/NetworkManager-wait-online.service.in
+Index: NetworkManager-1.20.0/data/NetworkManager-wait-online.service.in
 ===================================================================
---- NetworkManager-1.16.0.orig/data/NetworkManager-wait-online.service.in
-+++ NetworkManager-1.16.0/data/NetworkManager-wait-online.service.in
+--- NetworkManager-1.20.0.orig/data/NetworkManager-wait-online.service.in
++++ NetworkManager-1.20.0/data/NetworkManager-wait-online.service.in
 @@ -7,7 +7,9 @@ Before=network-online.target
  
  [Service]

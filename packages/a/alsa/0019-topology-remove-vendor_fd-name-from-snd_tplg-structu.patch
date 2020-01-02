@@ -1,0 +1,30 @@
+From 075ee165e647a6b434f63ca578f2f8faff2a55f6 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 13 Dec 2019 16:09:35 +0100
+Subject: [PATCH 19/30] topology: remove vendor_fd/name from snd_tplg structure
+ - not used
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/tplg_local.h | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index c32267d29510..22648fa51f9b 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -60,11 +60,6 @@ typedef enum _snd_pcm_rates {
+ } snd_pcm_rates_t;
+ 
+ struct snd_tplg {
+-
+-	/* opaque vendor data */
+-	int vendor_fd;
+-	char *vendor_name;
+-
+ 	/* out file */
+ 	int out_fd;
+ 
+-- 
+2.16.4
+

@@ -118,4 +118,16 @@
     <comment></comment>
     <requestid>628498</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>15c7420ed5152be330e363759d586ffc</srcmd5>
+    <version>0.6.3</version>
+    <time>1577972553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.3:
+  * bug fixes
+  * CMake updates, now requiring 3.1
+- Remove merged patch to fix PIE build:
+  * yaml-cpp-fix-pie.patch</comment>
+    <requestid>760350</requestid>
+  </revision>
 </revisionlist>

@@ -115,4 +115,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1159775</comment>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>41bf2c777926d530e103662151c0a5af</srcmd5>
+    <version>60.9.0</version>
+    <time>1577972449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760235</requestid>
+  </revision>
 </revisionlist>

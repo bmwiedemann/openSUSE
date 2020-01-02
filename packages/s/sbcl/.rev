@@ -1029,4 +1029,41 @@ Thanks</comment>
     <comment></comment>
     <requestid>722647</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>4ffd3748325a727770bcf422aca95ac5</srcmd5>
+    <version>2.0.0</version>
+    <time>1577972467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  * minor incompatible change: heap relocation now works on Windows.  Since
+    this feature now works on all platforms, it is enabled unconditionally and
+    the :RELOCATABLE-HEAP symbol no longer appears on *FEATURES* in any
+    builds.  (Thanks to Luís Borges de Oliveira)
+  * enhancement: malformed type specifiers and occurrences of deprecated types
+    in :TYPE initargs of DEFCLASS and DEFINE-CONDITION slot specifications
+    are detected and result in compile-time errors and warnings respectively.
+  * enhancement: parallel contrib building, controlled by SBCL_MAKE_JOBS=-jX
+    the same as for the C runtime.
+  * bug fix: add a walker template for WITH-SOURCE-FORM.
+  * bug fix: start the summary of a compilation unit on a fresh line.  (Thanks
+    to Zach Beane)
+  * bug fix: on Windows, PARSE-NATIVE-NAMESTRING produces an absolute
+    directory when parsing a bare drive name and :AS-DIRECTORY is specified.
+    (Thanks to Luís Borges de Oliveira)
+  * bug fix: on RISCV, the runtime is linked with libz if the core compression
+    feature is requested.  (Thanks to Andreas Schwab)
+  * bug fix: ADJOIN using an EQL test and a KEY function only transforms into
+    an EQ test if the key function returns values for which EQ and EQL are
+    guaranteed to be the same.
+  * optimizations:
+    ** the instruction sequence for multiple-value calls is more
+       efficient on x86-64.
+    ** the direction flag is now unused on x86 and x86-64 when handling
+       an unknown number of return values.  (Thanks to Fanael Linithien)
+    ** the x86-64 backend is better able to use memory operands for arithmetic
+       operations.
+    ** compilation of TYPECASE to a jump table is enabled when all the types
+       being tested are frozen.</comment>
+    <requestid>760259</requestid>
+  </revision>
 </revisionlist>

@@ -35,20 +35,18 @@ Source5:        README.SUSE
 Source6:        %{name}.sysctl
 Source7:        %{name}-sentinel@.service
 Source8:        %{name}-sentinel.target
-# PATCH-FIX-OPENSUSE -- openSUSE-style init script
-Patch0:         %{name}-initscript.patch
+Source9:        %{name}-user.conf
 # PATCH-MISSING-TAG -- See https://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
-Patch1:         %{name}-conf.patch
-Patch2:         %{name}-enable-bactrace-on-x86-ia64-and_arm32_only.patch
-Patch3:         %{name}-disable_integration_logging.patch
-Patch4:         reproducible.patch
+Patch0:         %{name}-conf.patch
+Patch1:         %{name}-enable-bactrace-on-x86-ia64-and_arm32_only.patch
+Patch2:         %{name}-disable_integration_logging.patch
+Patch3:         reproducible.patch
 BuildRequires:  pkgconfig
-BuildRequires:  procps
-BuildRequires:  tcl
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
-Requires:       logrotate
-Requires:       sudo
-Requires(pre):  shadow
+Recommends:     logrotate
+%sysusers_requires
 
 %description
 %{name} is an advanced key-value store. It is similar to memcached but the dataset
@@ -62,16 +60,16 @@ different kind of sorting abilities.
 %setup -q
 %patch0
 %patch1
-%patch2
 %ifnarch %{ix86} x86_64 ia64 %{arm}
 # We have no backtrace, so disable logging test
-%patch3
+%patch2
 %endif
-%patch4 -p1
+%patch3 -p1
 
 %build
 export HOST=OBS # for reproducible builds
 make %{?_smp_mflags} CFLAGS="%{optflags}" V=1
+%sysusers_generate_pre %{SOURCE9} redis
 
 %install
 install -m 0750 -d \
@@ -110,6 +108,9 @@ install -Dm 0644 %{SOURCE8} %{buildroot}%{_unitdir}/%{name}-sentinel.target
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 cp %{SOURCE5} README.SUSE
 
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE9} %{buildroot}%{_sysusersdir}/
+
 %check
 %ifnarch ppc ppc64
 cat <<EOF
@@ -121,11 +122,7 @@ EOF
 make %{?_smp_mflags} test || true
 %endif
 
-%pre
-getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name} || :
-getent passwd %{name} >/dev/null || \
-	%{_sbindir}/useradd -g %{name} -s /bin/false -r \
-	-c "User for %{name} key-value store" -d %{_data_dir} %{name} || :
+%pre -f redis.pre
 %service_add_pre redis.target redis@.service redis-sentinel.target redis-sentinel@.service
 
 %post
@@ -148,6 +145,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %{_sbindir}/%{name}-*
 %{_sbindir}/rc%{name}
 %{_libexecdir}/tmpfiles.d/%{name}.conf
+%{_sysusersdir}/redis-user.conf
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}.target
 %{_unitdir}/%{name}-sentinel@.service

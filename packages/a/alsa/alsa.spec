@@ -26,7 +26,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.1.1
+Version:        1.2.1.2
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -48,7 +48,37 @@ Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
 # upstream fixes
-Patch1:         0001-alsa.m4-Fix-the-detection-of-topology-library-availa.patch
+Patch1:         0001-ucm-Use-strncmp-to-avoid-access-out-of-boundary.patch
+Patch2:         0002-ucm-return-always-at-least-NULL-if-no-list-is-availa.patch
+Patch3:         0003-ucm-add-_identifiers-list.patch
+Patch4:         0004-namehint-correct-the-args-check.patch
+Patch5:         0005-namehint-improve-the-previous-patch-check-the-return.patch
+Patch6:         0006-ucm-docs-allow-spaces-in-device-names-for-JackHWMute.patch
+Patch7:         0007-use-case-docs-add-PlaybackMixerCopy-and-CaptureMixer.patch
+Patch8:         0008-ucm-docs-add-JackCTL-rearrange-JackControl-and-JackD.patch
+Patch9:         0009-ucm-Do-not-fail-to-parse-configs-on-cards-with-an-em.patch
+Patch10:        0010-src-ucm-main.c-fix-build-without-mixer.patch
+Patch11:        0011-alsa.m4-another-try-to-fix-the-libatopology-detectio.patch
+Patch12:        0012-ucm-docs-add-Mic-DigitalMic-and-multiple-devices-com.patch
+Patch13:        0013-ucm-docs-remove-DigitalMic-it-does-not-have-sense.patch
+Patch14:        0014-ucm-docs-change-the-Mic-description-to-simple-Microp.patch
+Patch15:        0015-ucm-docs-add-note-about-the-sequences-and-device-spl.patch
+Patch16:        0016-ucm-docs-remove-MixerCopy-values-add-Priority-for-ve.patch
+Patch17:        0017-ucm-setup-conf_format-after-getting-ALSA_CONFIG_UCM_.patch
+Patch18:        0018-alsa-lib-fix-the-array-parser-unique-compound-keys.patch
+Patch19:        0019-topology-remove-vendor_fd-name-from-snd_tplg-structu.patch
+Patch20:        0020-topology-file-position-and-size-cleanups.patch
+Patch21:        0021-topology-use-an-array-describing-blocks-for-the-main.patch
+Patch22:        0022-topology-use-size_t-for-calc_block_size.patch
+Patch23:        0023-topology-merge-write_block-to-tplg_write_data.patch
+Patch24:        0024-topology-make-vebose-output-more-nice.patch
+Patch25:        0025-topology-use-list_insert-macro-in-tplg_elem_insert.patch
+Patch26:        0026-topology-dapm-coding-fixes.patch
+Patch27:        0027-topology-dapm-merge-identical-index-blocks-like-for-.patch
+Patch28:        0028-topology-more-coding-fixes.patch
+Patch29:        0029-Fix-alsa-sound-.h-for-external-programs.patch
+Patch30:        0030-type_compat-Add-missing-__s64-and-__u64-definitions-.patch
+Patch31:        0031-uapi-Move-typedefs-from-uapi-to-sound.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -134,6 +164,36 @@ This package contains the library for ALSA topology support.
 %prep
 %setup -q -n alsa-lib-%{version}
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
 %patch101 -p1
 
 %build
@@ -141,7 +201,7 @@ This package contains the library for ALSA topology support.
 %define _lto_cflags %{nil}
 export AUTOMAKE_JOBS="%{?_smp_mflags}"
 # build alsa-lib
-# autoreconf -fi
+autoreconf -fi
 %configure \
   --disable-static \
   --enable-symbolic-functions \

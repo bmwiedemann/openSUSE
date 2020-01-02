@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 const unsigned min_version = 4;
-const unsigned max_version = 20;
+const unsigned max_version = 42;
 const char *default_version = "-default";
 
 const char * const supported_execs[] = {

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 19 17:45:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.4:
+  + Apply recursion depth limits to variants in D-Bus messages.
+  + Bugs fixed: glgo#GNOME/GLib#1938, glgo#GNOME/GLib!1240,
+    glgo#GNOME/GLib!1257, glgo#GNOME/GLib!1266,
+    glgo#GNOME/GLib!1276, glgo#GNOME/GLib!1290.
+
+-------------------------------------------------------------------
 Tue Nov 19 20:25:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.3:

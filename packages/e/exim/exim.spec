@@ -300,6 +300,7 @@ rm -f doc/*.{orig,txt~}
 make
 
 %install
+mkdir -p "$RPM_BUILD_ROOT/%{_docdir}/%{name}"
 %if 0%{?suse_version} > 1220
 mkdir -p $RPM_BUILD_ROOT/%{_unitdir}
 %else
@@ -474,6 +475,7 @@ exit 0
 /usr/lib/sendmail
 %{_fillupdir}/sysconfig.exim
 %dir %attr(750,mail,mail) /var/log/exim
+%dir %{_docdir}/%{name}
 
 %files -n eximon
 %defattr(-,root,root)

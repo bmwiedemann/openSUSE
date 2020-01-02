@@ -1,0 +1,47 @@
+From a0fc4447bb7c7f9a850a0a85f3a5a32c1509caf4 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 3 Dec 2019 15:01:04 +0100
+Subject: [PATCH 08/30] ucm: docs - add JackCTL, rearrange JackControl and
+ JackDev
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/use-case.h | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/include/use-case.h b/include/use-case.h
+index 71fcc949a117..25998cb9bad5 100644
+--- a/include/use-case.h
++++ b/include/use-case.h
+@@ -338,14 +338,20 @@ int snd_use_case_get_list(snd_use_case_mgr_t *uc_mgr,
+  *      - Valid values: "soft" (software attenuation)
+  *   - EDIDFile
+  *      - Path to EDID file for HDMI devices
+- *   - JackControl, JackDev
+- *      - Jack information for a device. The jack status can be reported via
+- *        a kcontrol and/or via an input device. **JackControl** is the
+- *        kcontrol name of the jack, and **JackDev** is the input device id of
+- *        the jack (if the full input device path is /dev/input/by-id/foo, the
+- *        JackDev value should be "foo"). UCM configuration files should
+- *        contain both JackControl and JackDev when possible, because
+- *        applications are likely to support only one or the other.
++ *   - JackCTL
++ *      - jack control device name
++ *   - JackControl
++ *      - jack control identificator
++ *      - can be parsed using snd_use_case_parse_ctl_elem_id()
++ *      - UCM configuration files should contain both JackControl and JackDev
++ *        when possible, because applications are likely to support only one
++ *        or the other
++ *   - JackDev
++ *      - the input device id of the jack (if the full input device path is
++ *        /dev/input/by-id/foo, the JackDev value should be "foo")
++ *      - UCM configuration files should contain both JackControl and JackDev
++ *        when possible, because applications are likely to support only one
++ *        or the other
+  *   - JackHWMute
+  *	  If this value is set, it indicates that when the jack is plugged
+  *	  in, the hardware automatically mutes some other device(s). The
+-- 
+2.16.4
+

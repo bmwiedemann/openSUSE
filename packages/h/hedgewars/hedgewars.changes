@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 10 18:11:54 UTC 2019 - buckyballreaction@gmail.com
+
+- Update to 1.0.0. Highlights:
+  * Campaigns now use your team identity instead of ignoring it
+  * Single missions can now be played with your favourite teams and keep track of your progress
+  * Hand-drawn maps can be scaled with a slider
+  * Quick games are more random
+  * Homing bee can be used as secondary ammo
+  * Can change hedgehog order in The Specialists
+  * Various small HUD improvements
+  * Various controls improvements and bugfixes
+- Add hedgewars-disable_fpc_workaround.patch.
+
+-------------------------------------------------------------------
 Fri Jun 14 16:33:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix builds on 32bit archs, use CLang+Pas2C instead of FPC

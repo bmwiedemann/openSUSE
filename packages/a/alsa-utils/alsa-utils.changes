@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 20 16:51:55 CET 2019 - tiwai@suse.de
+
+- Remove empty man8 dirs (used for removed alsaconf.8)
+- Drop obsolete TODO and Changelog files, also irrelevant INSTALL.
+- Provide alsaucm and alsatplg man pages by formatting via rst2man;
+  a new dependency on python3-docutils is added
+
+-------------------------------------------------------------------
 Sun Nov 24 17:38:29 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Replace incorrect usage of %_libexecdir with %_prefix/lib

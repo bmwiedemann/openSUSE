@@ -1,10 +1,212 @@
 -------------------------------------------------------------------
+Tue Dec 24 16:11:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + Fix multiple issues in the internal DHCP client, including
+    wrong parsing of search domains and classless routes options,
+    and failures in obtaining and renewing the lease with certain
+    server configurations.
+  + Export NM_CAPABILITY_OVS capability on D-Bus and in libnm to
+    indicate that the OVS plugin is loaded.
+  + Fix libnm annotations for nm_sriov_vf_get_vlan_ids() to allow
+    the usage of the function through GObject introspection.
+
+-------------------------------------------------------------------
+Tue Dec 17 12:33:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.0:
+  + Drop support for BlueZ 4. BlueZ 5 was released in 2012 and
+    should nowadays be available everywhere.
+  + DHCP: switch "internal" DHCPv4 plugin from code based on
+    systemd to use nettools' n-dhcp4 library.
+  + Add support for "scope" attribute for IPv4 routes.
+  + Add support for specifying IAID and FQDN flags for DHCP
+    request.
+  + Add a '802-1x.optional' property to consider the wired 802.1X
+    authentication as optional.
+  + Use the Network Cost Wi-Fi information element to determine
+    metered device state.
+  + Support main.auth-polkit=root-only setting to disable PolicyKit
+    use and restrict authorization to root user.
+  + core: declare "startup complete" when device reaches
+    "connected" state, even if IP addressing methods did not yet
+    fully complete. This changes behavior for unblocking
+    "NetworkManager-wait-online.service", and
+    "network-online.target" earlier. If this causes issues in your
+    setup, you may need to configure "ipv4.may-fail=no" or
+    "ipv6.may-fail=no", which delays reaching "connected" state for
+    the address family accordingly.
+  + libnm: hide NMObject and NMClient typedefs from header files.
+    This prevents the user from subclassing these types and is an
+    ABI change (in the unlikely case that a user was subclassing
+    the types, which is no longer supported).
+  + libnm: retire deprecated WiMAX API NMDeviceWimax and
+    NMWimaxNsp. WiMAX support was removed from NetworkManager in
+    version 1.2 (2016) and no such type instances would have been
+    created by NMClient for a while now.
+  + Deprecate synchronous API for D-Bus calls in libnm. We don't
+    remove libnm API so you are free to continue using it. But
+    tells you that using it might be a bad idea.
+  + libnm: heavily internal rework NMClient. This slims down libnm
+    and makes the implementation more efficient. NMClient should
+    work now well with a separate GMainContext.
+  + Add `nmcli general reload` subcommand to reload NetworkManager
+    configuration and DNS settings.
+  + nm-cloud-setup: add new tool for automatically configuring
+    NetworkManager in cloud. This is still experimental and
+    currently only EC2 and IPv4 is supported.
+  + Add new NetworkManager logo to "contrib/art/logo".
+  + Various bug fixes and improvements.
+- Disable networkmanager-checks-po.patch: Needs rebase.
+- Add new nm-cloud-setup.service to pre/post/preun/postun calls.
+
+-------------------------------------------------------------------
+Mon Nov 25 15:24:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.8:
+  + Fix handling of system CA certificates in the ifcfg parser.
+  + Handle ReachableTime and RetransTimer from IPv6 Router
+    Advertisements.
+  + Fixed setting of MTU according to its parent device for some
+    device types.
+  + Various fixes for the initramfs configuration genertor.
+
+-------------------------------------------------------------------
+Wed Nov  6 17:36:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.6:
+  + Fix updating agent-owned VPN secrets.
+  + Adjust IWD support to new D-Bus path of IWD 1.0.
+  + Introduce an 'optional' property in the 802-1x setting to
+    allow the activation to proceed in case of missing
+    authenticator.
+  + Fix ARP announcements for IP addresses configured on
+    interfaces.
+  + Use proper interface when adding s390 specific details in
+    initrd generator.
+  + Don't disable PMF on Wi-Fi connections using SAE.
+  + Properly handle uint16 property types in libnm.
+
+-------------------------------------------------------------------
 Thu Oct 31 08:31:22 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop NetworkNanager-client recommends: this is no longer needed,
   as NM itself ships a frontend by now (nmtui). If a DE has a
   better way to manage NM (by means of applets or other way of
   integration) it is up to the DE to depend on the applets.
+
+-------------------------------------------------------------------
+Wed Oct  9 19:26:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + Fix crash related to Wi-Fi-P2P.
+  + Support rd.znet option in initrd generator to support s390.
+  + Fix not creating default-wired-connection when a suitable
+    profile exists which is not tied to the device by
+    interface-name.
+  + tui: support WPA3-Personal (SAE).
+  + Fixes for OLPC Mesh Wi-Fi.
+  + Various bug fixes. Notably, fix unit test and build issues.
+- Drop nm-fix-gtk-doc.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct  9 18:26:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add nm-fix-gtk-doc.patch: Fix build with gtk-doc 1.32 and newer.
+
+-------------------------------------------------------------------
+Wed Oct  9 17:26:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.2:
+  + Don't ask wpa_supplicant to attempt to enable FT if the
+    interface doesn't support it.
+  + Various bug fixes and improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct  9 16:26:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + The libnm-glib library, deprecated in favor of libnm since
+    NetworkManager 1.0, and disabled by default since
+    NetworkManager 1.12, has now been removed.
+  + The DHCP client now defaults to "internal". The default can be
+    overriden at build time by using the --with-config-dhcp-default
+    option of the configure script or at run time by setting the
+    main.dhcp option in the configuration file.
+  + Added support for configuring fq_codel line discipline and
+    mirred action.
+  + Added a possibility for distributions to ship dispatcher
+    scripts in /usr/lib.
+  + Drop deprecated setting "main.monitor-connection-files" in
+    NetworkManager.conf. This setting now has no more effect and
+    was disabled by default for a long time. Instead, after
+    changes, load files explicitly with `nmcli connection load` or
+    `nmcli connection reload`.
+  + Rework parsing team JSON config in libnm and stricter validate
+    settings. With this, NetworkManager rejects settings that it
+    considers invalid while still allowing setting arbitrary JSON
+    config directly.
+  + Drop ibft settings plugin. This functionality is now covered by
+    using nm-initrd-generator from initrd to pre-generate in-memory
+    profiles.
+  + Support "suppress_prefixlength" attribute for policy routing
+    rules.
+  + This is what wg-quick uses for the "Improved Rule-based
+    Routing" solution, and the user can now manually configure such
+    policy routing rules.
+  + Support "wireguard.ip4-auto-default-route" and
+    "wireguard.ip6-auto-default-route". This automatically
+    implements the "Improved Rule-based Routing" of wg-quick to
+    help avoiding routing loops when setting the default-route on
+    the WireGuard interface. Note that this is now enabled by
+    default, so there is a change in behavior if your WireGuard
+    connection profiles from before had a default-route (/0) in
+    allowed-ips.
+  + Rework implementation of settings plugins and how profiles are
+    presisted to disk. This is a large internal refactoring of the
+    settings plugins that allows to migrate a connection profile
+    between plugins.
+  + In-memory profiles are now only handled by keyfile plugin and
+    will also be persisted to /run directory. This allows to
+    restart NetworkManager without loosing these profiles and it
+    provides a file-system based API for creating in-memory
+    profiles.
+  + Keyfile plugin now supports a read-only directory of profiles
+    under directory "/usr/lib/NetworkManager/system-connections".
+    Such profiles still can be modified and deleted via D-Bus,
+    which results in writing profiles to /etc or /run that shadow
+    the read-only files.
+  + Add new D-Bus method AddConnection2() that allows to block
+    autoconnect of the profile at the moment when creating the
+    profile. Also add support for this API to libnm.
+  + Add flag "no-reapply" to Update2() D-Bus method. Normally, when
+    a connection profile gets modified, this only changes the
+    profile itself. When the profile is currently activated on a
+    device, then the device's configuration does not update before
+    the profile is fully re-activated or Reapply on the device is
+    called. There is an exception to this: the "connection.zone"
+    and the "connection.metered" properties take effect
+    immediately. The "no-reapply" flag allows suppressing to
+    reapply any properties, so that no changes take effect
+    automatically. The purpose is to really only modify the profile
+    itself without changes to the runtime configuration of the
+    device.
+  + Add "ipv6.method=disabled" to disable IPv6 on a device, like
+    also possible for IPv4. Until now, the users could only set
+    "ipv6.method=ignore" which means the users are free to set IPv6
+    related sysctl values themselves.
+  + Added support for Wi-Fi Mesh network.
+- Stop passing --with-libnm-glib to configure, feature was dropped.
+- Drop sub-packages libnm-util2, libnm-glib4 and libnm-glib-vpn1
+  and obsolete them from the main package (also in baselibs.conf).
+- Drop typelib-1_0-NetworkManager-1_0 and typelib-1_0-NMClient-1_0.
+- Rebase some patches with quilt.
+- Disable nm-add-CAP_SYS_ADMIN-permission.patch: Needs rework or
+  possibly dropping as the ibft plugin is dropped.
+- Pass --with-iwd=yes to configure, build experimental IWD backend
+  support. Not recommended for endusers, only for testers willing
+  to take the risk of broken wifi with no support from distro.
 
 -------------------------------------------------------------------
 Wed Oct  9 15:26:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -148,7 +350,7 @@ Mon Mar 18 07:52:13 UTC 2019 - sckang@suse.com
 - Rebase systemd-network-config.patch and
   nm-dont-overwrite-resolv-conf.patch.
 - Drop NetworkManager-1.12.2-docker-unmanaged.patch and
-  NM-add-wifi-scan-polkit-rule.patch: Fixed upstream.
+  NM-add-wifi-scan-polkit-rule.patch: Fixed upstream (bsc#1128560).
 
 -------------------------------------------------------------------
 Sun Mar 17 10:13:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
@@ -307,7 +509,7 @@ Thu Jul 26 20:56:06 UTC 2018 - bjorn.lie@gmail.com
   + Added capability to set IP Tunnel configuration flags.
   + The systemd-resolved DNS plugins now supports MDNS.
   + Systemd-resolved and dnsmasq DNS plugins now honor the DNS
-    priority setting.
+    priority setting (CVE-2018-1000135).
   + Wi-Fi devices now support FILS for speedier roaming support.
   + Drop dependency on libnl3 library.
   + Add support for "onlink" routes.

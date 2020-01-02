@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.18.4
+Version:        1.22.2
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager/
-Source0:        http://download.gnome.org/sources/%{name}/1.18/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/1.22/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -38,7 +38,7 @@ Source99:       NetworkManager-rpmlintrc
 Patch0:         systemd-network-config.patch
 # PATCH-FIX-UPSTREAM nm-probe-radius-server-cert.patch bnc#574266 glin@suse.com -- Probe the RADIUS server certificate
 Patch1:         nm-probe-radius-server-cert.patch
-# PATCH-FIX-OPENSUSE networkmanager-checks-po.patch tchvatal@suse.com -- fix translation validation error caused by our patch systemd-network-config.patch
+# PATCH-NEEDS-REBASE networkmanager-checks-po.patch tchvatal@suse.com -- fix translation validation error caused by our patch systemd-network-config.patch was: PATCH-FIX-OPENSUSE
 Patch2:         networkmanager-checks-po.patch
 # PATCH-NEEDS-REBASE networkmanager-obs-net.patch tchvatal@suse.com -- disable tests that are by design broken on OBS workers # WAS PATCH-FIX-OPENSUSE
 Patch3:         networkmanager-obs-net.patch
@@ -48,7 +48,7 @@ Patch4:         nm-dont-overwrite-resolv-conf.patch
 Patch5:         NetworkManager-1.10.6-netconfig.patch
 # PATCH-FIX-UPSTREAM 0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch boo#1103678
 Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
-# PATCH-FIX-OPENSUSE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname
+# PATCH-NEEDS-REBASE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname WAS PATCH-FIX-OPENSUSE
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 
 BuildRequires:  dnsmasq
@@ -111,6 +111,9 @@ Recommends:     org.freedesktop.ModemManager
 Recommends:     rp-pppoe
 Provides:       dhcdbd = 1.14
 Obsoletes:      dhcdbd < 1.14
+Obsoletes:      libnm-glib-vpn1
+Obsoletes:      libnm-glib4
+Obsoletes:      libnm-util2
 %{?systemd_requires}
 
 %description
@@ -125,13 +128,8 @@ whenever it sees fit.
 Summary:        Libraries and headers for adding NetworkManager support to applications
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
-Requires:       libnm-glib-vpn1 = %{version}
-Requires:       libnm-glib4 = %{version}
-Requires:       libnm-util2 = %{version}
 Requires:       libnm0 = %{version}
 Requires:       typelib-1_0-NM-1_0 = %{version}
-Requires:       typelib-1_0-NMClient-1_0 = %{version}
-Requires:       typelib-1_0-NetworkManager-1_0 = %{version}
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 
@@ -147,62 +145,11 @@ Group:          System/Libraries
 This package contains the libraries that make it easier to use some
 Network Manager functionality from applications that use glib.
 
-%package -n libnm-util2
-Summary:        Convenience library for clients of NetworkManager
-Group:          System/Libraries
-%if %{with_cacert_patch}
-Provides:       NetworkManager(cacert-patch)
-%endif
-
-%description -n libnm-util2
-This package contains the libraries that make it easier to use some
-Network Manager functionality from applications that use glib.
-
-%package -n libnm-glib4
-Summary:        Convenience library for clients of NetworkManager
-Group:          System/Libraries
-Provides:       %{name}-glib = %{version}
-Obsoletes:      %{name}-glib < %{version}
-
-%description -n libnm-glib4
-This package contains the libraries that make it easier to use some
-Network Manager functionality from applications that use glib.
-
-%package -n libnm-glib-vpn1
-Summary:        Convenience library for NetworkManager VPN plugins
-Group:          System/Libraries
-
-%description -n libnm-glib-vpn1
-This package contains the libraries that make it easier to use some
-Network Manager functionality from applications that use glib.
-
-%package -n typelib-1_0-NetworkManager-1_0
-Summary:        Introspection bindings for the Networkmanager client convenience library
-Group:          System/Libraries
-
-%description -n typelib-1_0-NetworkManager-1_0
-This package contains the gi-bindings that make it easier to use some
-Network Manager functionality from applications that use glib.
-
-This package provides the GObject Introspection bindings for the
-NetworkManager library.
-
 %package -n typelib-1_0-NM-1_0
 Summary:        Introspection bindings for the NetworkManager client convenience library
 Group:          System/Libraries
 
 %description -n typelib-1_0-NM-1_0
-This package contains the gi-bindings that make it easier to use some
-Network Manager functionality from applications that use glib.
-
-This package provides the GObject Introspection bindings for the
-NetworkManager library.
-
-%package -n typelib-1_0-NMClient-1_0
-Summary:        Introspection bindings for the NetworkManager client convenience library
-Group:          System/Libraries
-
-%description -n typelib-1_0-NMClient-1_0
 This package contains the gi-bindings that make it easier to use some
 Network Manager functionality from applications that use glib.
 
@@ -234,12 +181,12 @@ translation-update-upstream
 %if %{with_cacert_patch}
 %patch1 -p1
 %endif
-%patch2 -p1
+#patch2 -p1
 #patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
+#patch7 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
@@ -248,7 +195,6 @@ test -n "$pppddir" || exit 1
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export PYTHON=%{_bindir}/python3
 %configure \
-    --with-libnm-glib \
     --disable-silent-rules \
     --with-hostname-persist=suse \
     --enable-ld-gc \
@@ -269,7 +215,8 @@ export PYTHON=%{_bindir}/python3
     --enable-wifi=yes \
     --with-nmtui \
     --with-session-tracking=systemd \
-    --with-suspend-resume=systemd
+    --with-suspend-resume=systemd \
+    --with-iwd=yes
 # Fail if netconfig was not detected. Avoids future occurences of bnc#817592
 if grep "with_netconfig='no'" config.log; then
   print netconfig support was not found -- BUILD ABORTED
@@ -300,23 +247,17 @@ rm %{buildroot}%{_datadir}/doc/NetworkManager/examples/server.conf
 rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkManager.service
 
 %pre
-%service_add_pre NetworkManager.service NetworkManager-dispatcher.service
+%service_add_pre NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
 
 %post
-%service_add_post NetworkManager.service NetworkManager-dispatcher.service
+%service_add_post NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
 
 %preun
-%service_del_preun NetworkManager.service NetworkManager-dispatcher.service
+%service_del_preun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
 
 %postun
-%service_del_postun NetworkManager.service NetworkManager-dispatcher.service
+%service_del_postun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
 
-%post -n libnm-util2 -p /sbin/ldconfig
-%postun -n libnm-util2 -p /sbin/ldconfig
-%post -n libnm-glib4 -p /sbin/ldconfig
-%postun -n libnm-glib4 -p /sbin/ldconfig
-%post -n libnm-glib-vpn1 -p /sbin/ldconfig
-%postun -n libnm-glib-vpn1 -p /sbin/ldconfig
 %post -n libnm0 -p /sbin/ldconfig
 %postun -n libnm0 -p /sbin/ldconfig
 
@@ -359,6 +300,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_libdir}/NetworkManager/%{version}/libnm-wwan.so
 %dir %{_libdir}/pppd/2.*
 %{_libdir}/pppd/2.*/nm-pppd-plugin.*
+%{_libexecdir}/nm-cloud-setup
 %{_libexecdir}/nm-dhcp-helper
 %{_libexecdir}/nm-dispatcher
 %{_libexecdir}/nm-iface-helper
@@ -378,54 +320,31 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_udevdir}/rules.d/84-nm-drivers.rules
 %{_udevdir}/rules.d/85-nm-unmanaged.rules
 %{_udevdir}/rules.d/90-nm-thunderbolt.rules
+%{_unitdir}/nm-cloud-setup.service
+%{_unitdir}/nm-cloud-setup.timer
 %ghost %config(noreplace) %{_localstatedir}/log/NetworkManager
+%dir %{_prefix}/lib/NetworkManager
+%dir %{_prefix}/lib/NetworkManager/dispatcher.d
+%dir %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d
+%{_prefix}/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh
+%{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d/90-nm-cloud-setup.sh
 
 %files devel
-%{_includedir}/NetworkManager/
 %{_includedir}/libnm/
-%{_includedir}/libnm-glib/
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libnm.deps
 %{_datadir}/vala/vapi/libnm.vapi
-%{_datadir}/vala/vapi/libnm-glib.deps
-%{_datadir}/vala/vapi/libnm-glib.vapi
-%{_datadir}/vala/vapi/libnm-util.deps
-%{_datadir}/vala/vapi/libnm-util.vapi
 %{_libdir}/libnm.so
-%{_libdir}/libnm-util.so
-%{_libdir}/libnm-glib.so
-%{_libdir}/libnm-glib-vpn.so
-%{_libdir}/pkgconfig/NetworkManager.pc
 %{_libdir}/pkgconfig/libnm.pc
-%{_libdir}/pkgconfig/libnm-util.pc
-%{_libdir}/pkgconfig/libnm-glib.pc
-%{_libdir}/pkgconfig/libnm-glib-vpn.pc
 %doc %{_datadir}/gtk-doc/html/NetworkManager/
 %doc %{_datadir}/gtk-doc/html/libnm/
-%doc %{_datadir}/gtk-doc/html/libnm-glib/
-%doc %{_datadir}/gtk-doc/html/libnm-util/
 
 %files -n libnm0
 %{_libdir}/libnm.so.*
 
-%files -n libnm-util2
-%{_libdir}/libnm-util.so.*
-
-%files -n libnm-glib4
-%{_libdir}/libnm-glib.so.*
-
-%files -n libnm-glib-vpn1
-%{_libdir}/libnm-glib-vpn.so.*
-
-%files -n typelib-1_0-NetworkManager-1_0
-%{_libdir}/girepository-1.0/NetworkManager-1.0.typelib
-
 %files -n typelib-1_0-NM-1_0
 %{_libdir}/girepository-1.0/NM-1.0.typelib
-
-%files -n typelib-1_0-NMClient-1_0
-%{_libdir}/girepository-1.0/NMClient-1.0.typelib
 
 %files lang -f %{name}.lang
 

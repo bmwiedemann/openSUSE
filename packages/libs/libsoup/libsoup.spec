@@ -29,7 +29,7 @@ Source99:       baselibs.conf
 Patch0:         libsoup-disable-hsts-tests.patch
 
 BuildRequires:  glib-networking
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0

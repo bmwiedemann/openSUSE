@@ -1,7 +1,7 @@
 #
 # spec file for package vapoursynth
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython
 BuildRequires:  pkgconfig(Magick++) >= 7.0
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)

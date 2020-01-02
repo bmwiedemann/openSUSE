@@ -39,4 +39,12 @@
     <comment>New upstream release</comment>
     <requestid>741222</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b6257eb1ce05f7ae3fce8c33ceba5d7</srcmd5>
+    <version>1.8.0</version>
+    <time>1577972418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760029</requestid>
+  </revision>
 </revisionlist>

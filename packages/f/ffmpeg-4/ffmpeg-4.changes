@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 30 17:39:01 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop unused liboil BuildRequires.
+
+-------------------------------------------------------------------
 Wed Sep 18 20:08:06 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.2.1:

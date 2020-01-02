@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 22 16:32:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * httpie-adjust-requirements.patch
+    Lower requirements for requests and Pygemnts to make it work
+    on Leap 15.1
+
+-------------------------------------------------------------------
 Tue Aug 27 14:23:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.3

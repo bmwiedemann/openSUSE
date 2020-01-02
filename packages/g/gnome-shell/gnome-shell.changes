@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 30 10:08:06 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- Update BuildRequires for latest release of gnome-desktop-3
+  to get systemd scope support for launched applications.
+- Update BuildRequires to mutter libraries >= 3.34.0 and 
+  gsettings-desktop-schemas >= 3.33.1.
+
+-------------------------------------------------------------------
 Fri Dec 27 09:05:56 UTC 2019 - dimstar@opensuse.org
 
 - Update to version 3.34.2+2:

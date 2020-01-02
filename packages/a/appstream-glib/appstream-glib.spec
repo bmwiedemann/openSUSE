@@ -1,7 +1,7 @@
 #
 # spec file for package appstream-glib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           appstream-glib
-Version:        0.7.15
+Version:        0.7.16
 Release:        0
 Summary:        AppStream Abstraction Library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          System/Libraries
 URL:            http://people.freedesktop.org/~hughsient/appstream-glib/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE-appstream-process
-#PATCH-FIX-UPSTREAM as-glib-fix-broken-appstream-files-permission.patch gh#hughsie/appstream-glib#312 sckang@suse.com -- Do not preserve restrictive permissions when installing AppStream files.
-Patch0:         as-glib-fix-broken-appstream-files-permission.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcab >= 0.6
 BuildRequires:  gobject-introspection-devel

@@ -22,7 +22,7 @@
 %define	serviceuser   prometheus
 
 Name:           golang-github-lusitaniae-apache_exporter
-Version:        0.5.0
+Version:        0.7.0
 Release:        0
 License:        MIT
 Summary:        Apache Exporter for Prometheus

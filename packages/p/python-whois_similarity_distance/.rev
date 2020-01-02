@@ -31,4 +31,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659757</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>de1d024ab091de162521f4fbd7f652af</srcmd5>
+    <version>1.0.2</version>
+    <time>1577972650</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable python2 build as python-tld is py3 only nowdays</comment>
+    <requestid>760392</requestid>
+  </revision>
 </revisionlist>

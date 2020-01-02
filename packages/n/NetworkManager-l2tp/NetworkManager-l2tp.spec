@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-l2tp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
 Name:           NetworkManager-l2tp
-Version:        1.2.14
+Version:        1.8.0
 Release:        0
 Summary:        NetworkManager VPN support for L2TP and L2TP/IPsec
 License:        GPL-2.0-or-later
@@ -27,14 +27,16 @@ URL:            https://github.com/nm-l2tp/NetworkManager-l2tp
 Source0:        https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libnm) >= 1.2.0
-BuildRequires:  pkgconfig(libnma) >= 1.2.0
+BuildRequires:  pkgconfig(libnm) >= 1.8.0
+BuildRequires:  pkgconfig(libnma) >= 1.8.0
 BuildRequires:  pkgconfig(libsecret-1)
-Requires:       NetworkManager >= 1.2.0
+BuildRequires:  pkgconfig(nss)
+Requires:       NetworkManager >= 1.8.0
 Requires:       xl2tpd
 %requires_eq    ppp
 Recommends:     %{name}-lang

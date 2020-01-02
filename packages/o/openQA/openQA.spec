@@ -1,7 +1,7 @@
 #
 # spec file for package openQA
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,7 @@
 %define devel_requires %build_requires %test_requires rsync chromedriver curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1577344382.5aaa6ced5
+Version:        4.6.1577879607.68ae00aa4
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later

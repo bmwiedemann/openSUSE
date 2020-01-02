@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrok
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,17 +27,21 @@ Group:          Productivity/Scientific/Electronics
 URL:            http://sigrok.org
 Source0:        http://sigrok.org/download/source/libsigrok/%{name}-%{version}.tar.gz
 Source1:        sigrok-mime.xml
+Patch0:         0001-Use-pkg-config-for-rpc-library-detection.patch
 Patch1:         LTO-linking-fix.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  bluez-devel
 BuildRequires:  check-devel >= 0.9.4
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.32.0
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libftdi1-devel >= 1.0
+BuildRequires:  libhidapi-devel
 BuildRequires:  libserialport-devel >= 0.1.1
+BuildRequires:  libtirpc-devel
 BuildRequires:  libtool
 BuildRequires:  libudev-devel
 BuildRequires:  libusb-1_0-devel
@@ -102,6 +106,8 @@ libraries.
 %prep
 %setup -q
 %autopatch -p1
+# avoid autoconf/automake rerun
+touch aclocal.m4 Makefile.in configure
 
 %build
 %configure \
@@ -122,6 +128,12 @@ sed -i '/ID_SIGROK/ p; s/TAG.*/%{mm_ignore}/' %{buildroot}%{_udevrulesdir}/61-li
 install -m 644 -D %{SOURCE1} %{buildroot}%{_datadir}/mime/packages/vnd.sigrok.session.xml
 install -m 644 -D contrib/libsigrok.png %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/libsigrok.png
 install -m 644 -D contrib/libsigrok.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes/libsigrok.svg
+
+%check
+%ifnarch %{ix86}
+# Fails on i586, https://sigrok.org/bugzilla/show_bug.cgi?id=1475
+make check
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 

@@ -1,7 +1,7 @@
 #
 # spec file for package glib2
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without     systemtap
 Name:           glib2
-Version:        2.62.3
+Version:        2.62.4
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later

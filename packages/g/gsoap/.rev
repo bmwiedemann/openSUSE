@@ -505,4 +505,12 @@
     <comment>- Update to release 2.8.95</comment>
     <requestid>749860</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e363ae40591fe160cda3aae06b6cd1e8</srcmd5>
+    <version>2.8.96</version>
+    <time>1577972387</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>758172</requestid>
+  </revision>
 </revisionlist>

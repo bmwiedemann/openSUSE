@@ -1,7 +1,7 @@
 #
 # spec file for package python-txtorcon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,14 +30,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-ipaddress
 BuildRequires:  python-rpm-macros
 Requires:       python-Automat
-Requires:       python-GeoIP >= 1.2.9
 Requires:       python-Twisted >= 15.5.0
 Requires:       python-incremental
 Requires:       python-zope.interface >= 3.6.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Automat}
-BuildRequires:  %{python_module GeoIP >= 1.2.9}
 BuildRequires:  %{python_module Twisted >= 15.5.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}

@@ -1,7 +1,7 @@
 #
 # spec file for package mozjs60
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2018 Luciano Santos <luc14n0@linuxmail.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,10 @@
 #
 
 
+# use system icu
+# keep fallback if something goes wrong
+%bcond_without system_icu
+
 %global major   60
 Name:           mozjs%{major}
 Version:        60.9.0
@@ -27,9 +31,6 @@ Group:          Development/Libraries/Other
 URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 Source0:        https://ftp.mozilla.org/pub/firefox/releases/%{version}esr/source/firefox-%{version}esr.source.tar.xz
 Source1:        LICENSE.txt
-# This should be removed when bmo#1322212 and bmo#1264836 are resolved:
-# Missing ICU big-endian data file in firefox source:
-Source2:        icudt60b.dat.xz
 Patch0:         mozjs60-fix-armv6-build.patch
 Patch1:         mozjs60-mozilla-s390-bigendian.patch
 Patch2:         riscv-support.patch
@@ -46,6 +47,22 @@ Patch8:         jsproperty-endian.patch
 # aarch64 fixes for -O2
 Patch9:         Save-x28-before-clobbering-it-in-the-regex-compiler.patch
 Patch10:        Save-and-restore-non-volatile-x28-on-ARM64-for-generated-unboxed-object-constructor.patch
+# based on https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/tests-Skip-a-test-on-s390x.patch
+Patch11:        Don-t-run-non262-extensions-clone-errors.js-on-s390x.patch
+# based on https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/tests-Expect-a-test-to-fail-on-big-endian.patch
+Patch12:        tests-Expect-a-test-to-fail-on-big-endian.patch
+# https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/icu_sources_data.py-Decouple-from-Mozilla-build-system.patch
+Patch13:        icu_sources_data.py-Decouple-from-Mozilla-build-system.patch
+# https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/icu_sources_data-Write-command-output-to-our-stderr.patch
+Patch14:        icu_sources_data-Write-command-output-to-our-stderr.patch
+# https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/Skip-some-i18n-tests-because-we-are-now-using-system-ICU.patch
+Patch15:        Skip-some-i18n-tests-because-we-are-now-using-system-ICU.patch
+# https://salsa.debian.org/gnome-team/mozjs60/blob/debian/master/debian/patches/Update-to-ICU-61-Part-3-Update-tests.patch
+Patch16:        Update-to-ICU-61-Part-3-Update-tests.patch
+# fix testsuite when built with ICU 65 https://phabricator.services.mozilla.com/D49445 https://unicode-org.atlassian.net/browse/ICU-20654
+Patch17:        Update-to-ICU-65-Part-3-Update-tests.patch
+# fix testsuite when building on i586 (some tests requires SSE / i686) boo#1159775
+Patch18:        skip-i586-failing-tests.patch
 
 BuildRequires:  autoconf213
 BuildRequires:  gcc-c++
@@ -56,6 +73,9 @@ BuildRequires:  python-pip
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
+%if %{with system_icu}
+BuildRequires:  pkgconfig(icu-i18n)
+%endif
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
@@ -106,16 +126,34 @@ This package contains the header file and tools to develop with JavaScript.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# only supported with ICU >= 61
+%patch16 -p1
+# only supported with ICU >= 65 (https://unicode-org.atlassian.net/browse/ICU-20654)
+%patch17 -p1
+%endif
+%patch18 -p1
+
+# make sure we don't ever accidentally link against bundled security libs
+rm -rf security/
 
 # Remove zlib directory to make sure the use of zlib from distro:
 rm -rf modules/zlib
 
-cd js/src
 # FIX-ME: This should be removed when bmo#1322212 and bmo#1264836 are resolved:
-xz -dk %{SOURCE2}
-DATFILE=%{SOURCE2}
-DATFILE="${DATFILE%.xz}"
-mv -v ${DATFILE} ../../config/external/icu/data/
+%if !%{with system_icu}
+%ifarch s390 s390x ppc ppc64 m68k
+echo "Generate big endian version of config/external/icu/data/icud58l.dat"
+python intl/icu_sources_data.py .
+ls -l config/external/icu/data
+rm -f config/external/icu/data/icudt*l.dat
+%endif
+%endif
 
 %build
 cd js/src
@@ -124,17 +162,8 @@ modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
-#
-# Add extra cflags for Power8 ppc64le compiling with gcc7+ (bmo#1399248)
-%ifarch ppc64le
-GCCVER=`gcc --version | sed "s/.* \([0-9]\.[0-9]\.[0-9]\).*/\1/" | head -n1`
-if [ ${GCCVER} > "7.0" ]; then
-XTRA_CFLAGS="-mcpu=power7 -mtune=power7"
-fi
-%endif
-#
-# Disable null pointer gcc6 optimization in gcc6 (rhbz#1328045):
-export CFLAGS="%{optflags} -fno-tree-vrp -fno-strict-aliasing -fno-delete-null-pointer-checks ${XTRA_CFLAGS}"
+
+export CFLAGS="%{optflags}"
 export CXXFLAGS=$CFLAGS
 autoconf-2.13
 # An out of source directory build is wanted here to prevent failures:
@@ -144,21 +173,21 @@ cd build_OPT.OBJ
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
     --includedir=%{_includedir} \
-    --enable-optimize \
-    --enable-pie \
+%if %{with system_icu}
+    --with-system-icu \
+%else
+    --without-system-icu \
+%endif
     --enable-posix-nspr-emulation \
+    --with-system-zlib \
+    --enable-tests \
+    --disable-strip \
+    --with-intl-api \
     --enable-readline \
     --enable-shared-js \
-    --enable-release \
-    --with-intl-api \
-    --with-pthreads \
+    --disable-optimize \
+    --enable-pie \
     --disable-jemalloc \
-    --without-system-icu \
-    --with-system-zlib \
-
-# Without adding these sources resulted library has weak symbols:
-#echo "CPPSRCS += \$(DEPTH)/mfbt/Unified_cpp_mfbt0.cpp \$(DEPTH)/../../mfbt/Compression.cpp \$(DEPTH)/../../mfbt/decimal/Decimal.cpp" >> js/src/backend.mk
-#echo "STATIC_LIBS += \$(DEPTH)/mfbt/libmfbt.a" >> js/src/backend.mk
 
 # do not eat all memory
 %limit_build -m 1300
@@ -170,7 +199,9 @@ cd js/src/build_OPT.OBJ
 %make_install
 # Remove unneeded executable bits:
 chmod a-x  %{buildroot}%{_libdir}/pkgconfig/*.pc \
+%if !%{with system_icu}
 %{buildroot}%{_includedir}/mozjs-%{major}/unicode/selfmt.h \
+%endif
 %{buildroot}%{_includedir}/mozjs-%{major}/js-config.h
 # Do not install static libraries:
 rm -f %{buildroot}%{_libdir}/*.a %{buildroot}%{_libdir}/*.ajs %{buildroot}%{_bindir}/js-config
@@ -187,19 +218,24 @@ install -m 755 dist/bin/js-gdb.py %{buildroot}%{_bindir}
 install -m 644 %{SOURCE1} .
 
 %check
-## Tests are currently (60.1.0) failing
-#cd js/src/build_OPT.OBJ
+# NEVER DISABLE THOSE TESTS : if they aren't passing, something is wrong,
+# don't submit with tests disabled
+cd js/src/build_OPT.OBJ
 # Run SpiderMonkey tests:
-#../tests/jstests.py -d -s -t 1800 --no-progress ../build_OPT.OBJ/js/src/shell/js \
-%ifnarch s390 s390x ppc %{power64}
-#;
+../tests/jstests.py -d -s -t 1800 --no-progress ../build_OPT.OBJ/js/src/shell/js \
+%ifnarch s390
+;
 %else
-#|| :
+|| :
 %endif
 
-# Run basic JIT tests. JIT is disabled on s390 and ppc (see bmo#1415360 comment 6):
-%ifnarch s390 s390x ppc %{power64}
-#../jit-test/jit_test.py -s -t 1800 --no-progress ../build_OPT.OBJ/js/src/shell/js basic
+# this test doesn't pass on i586, kill it
+%ifarch i586
+rm -f ../jit-test/tests/basic/bug653153.js 
+%endif
+# Run basic JIT tests. JIT is disabled on s390 (see bmo#1415360 comment 6):
+%ifnarch s390
+../jit-test/jit_test.py -s -t 1800 --no-progress  ../build_OPT.OBJ/js/src/shell/js basic 
 %endif
 
 %post -n libmozjs-%{major} -p /sbin/ldconfig

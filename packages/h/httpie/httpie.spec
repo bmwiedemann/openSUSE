@@ -27,6 +27,7 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://httpie.org/
 Source:         https://github.com/jakubroztocil/httpie/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        http.1
+Patch0:         httpie-adjust-requirements.patch
 BuildRequires:  %{python_module Pygments >= 2.1.3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module mock}
@@ -53,6 +54,7 @@ responses.
 
 %prep
 %setup -q
+%patch0 -p1
 
 #drop shebang
 sed -i -e '/^#!\//, 1d' httpie/__main__.py

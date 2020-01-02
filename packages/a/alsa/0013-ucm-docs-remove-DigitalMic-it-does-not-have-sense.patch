@@ -1,0 +1,27 @@
+From 1ad660ddeecb2a364f1ca62aa60f256f7029cfdc Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 5 Dec 2019 17:01:31 +0100
+Subject: [PATCH 13/30] ucm: docs - remove DigitalMic, it does not have sense
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/use-case.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/include/use-case.h b/include/use-case.h
+index 1736da25b649..214a2a4c4691 100644
+--- a/include/use-case.h
++++ b/include/use-case.h
+@@ -124,8 +124,7 @@ extern "C" {
+ #define SND_USE_CASE_DEV_NONE		"None"		/**< None Device */
+ #define SND_USE_CASE_DEV_SPEAKER	"Speaker"	/**< Speaker Device */
+ #define SND_USE_CASE_DEV_LINE		"Line"		/**< Line Device */
+-#define SND_USE_CASE_DEV_MIC            "Mic"           /**< Integrated Analog Microphone */
+-#define SND_USE_CASE_DEV_DIGITAL_MIC    "DigitalMic"    /**< Integrated Digital Microphone */
++#define SND_USE_CASE_DEV_MIC            "Mic"           /**< Integrated Microphone */
+ #define SND_USE_CASE_DEV_HEADPHONES	"Headphones"	/**< Headphones Device */
+ #define SND_USE_CASE_DEV_HEADSET	"Headset"	/**< Headset Device */
+ #define SND_USE_CASE_DEV_HANDSET	"Handset"	/**< Handset Device */
+-- 
+2.16.4
+

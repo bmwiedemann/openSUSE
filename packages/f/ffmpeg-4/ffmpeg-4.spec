@@ -156,7 +156,6 @@ BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libgme)
-BuildRequires:  pkgconfig(liboil-0.3) >= 0.3.15
 BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
 BuildRequires:  pkgconfig(libopenjpeg)
 %if %{with openmpt}

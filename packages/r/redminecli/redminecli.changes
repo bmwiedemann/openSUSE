@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Jan  2 09:47:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.0
+  Features:
+  * Allow updating multiple issues at once
+  * Add special keywords for start date and due date
+  * Allow aliases for create command
+  Fixes:
+  * Allow group_anonymous membership type
+  * Don't open $EDITOR for description on update --edit
+  * Set minimum versions for dependencies
+
+-------------------------------------------------------------------
+Tue Oct 22 21:50:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.1.8

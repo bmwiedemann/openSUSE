@@ -20,14 +20,14 @@
 %bcond_with videorec
 
 # FPC (Pascal) engine is disabled on 32bit archs due to a FPC bug
-%ifarch %ix86 %arm %ppc
+%ifarch %arm %ppc
 %bcond_without engine_c
 %else
 %bcond_with engine_c
 %endif
 
 Name:           hedgewars
-Version:        0.9.25
+Version:        1.0.0
 Release:        0
 Summary:        Turn-based artillery game, featuring fighting hedgehogs
 License:        GPL-2.0-only
@@ -35,17 +35,18 @@ Group:          Amusements/Games/Strategy/Turn Based
 Url:            http://www.hedgewars.org/
 Source:         http://hedgewars.org/download/releases/hedgewars-src-%{version}.tar.bz2
 Source99:       %{name}-rpmlintrc
+Patch0:         hedgewars-disable_fpc_workaround.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
 BuildRequires:  SDL2_net-devel
 BuildRequires:  SDL2_ttf-devel
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  fdupes
 %if %{with engine_c}
 BuildRequires:  clang
 BuildRequires:  ghc
@@ -61,10 +62,10 @@ BuildRequires:  libpng-devel
 # Required for QAbstractFileEngine*, which is no longer public since Qt5.12
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(lua5.1)
 Requires:       %{name}-data = %{version}
 Recommends:     %{name}-server = %{version}
 
@@ -120,6 +121,8 @@ This package contains a standalone local hedgewars server.
 
 %prep
 %setup -q -n %{name}-src-%{version}
+
+%patch0 -p0
 
 %build
 # CMAKE_POLICY_DEFAULT_CMP0083=NEW - apply POSITION_INDEPENDENT_CODE also to "-pie", since CMake 3.14

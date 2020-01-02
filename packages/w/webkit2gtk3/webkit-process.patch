@@ -1,0 +1,29 @@
+From: Mike Gorse <mgorse@suse.com>
+Date: Thu 19 Dec 2019 10:33:14 AM EST
+Subject: [patch] Use single web process for evolution and geary.
+
+https://mail.gnome.org/archives/distributor-list/2019-October/msg00000.html
+
+Index: webkitgtk/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
+===================================================================
+--- webkitgtk.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
++++ webkitgtk/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
+@@ -348,8 +348,16 @@ ALLOW_DEPRECATED_DECLARATIONS_END
+         configuration.setLocalStorageDirectory(FileSystem::stringFromFileSystemRepresentation(priv->localStorageDirectory.data()));
+ 
+     const char* useSingleWebProcess = getenv("WEBKIT_USE_SINGLE_WEB_PROCESS");
+-    if (useSingleWebProcess && strcmp(useSingleWebProcess, "0"))
+-        configuration.setUsesSingleWebProcess(true);
++    if (useSingleWebProcess) {
++        if (strcmp(useSingleWebProcess, "0")) {
++            configuration.setUsesSingleWebProcess(true);
++        }
++    } else {
++        const char* prgname = g_get_prgname();
++        if (!g_strcmp0(prgname, "evolution") || !g_strcmp0(prgname, "geary")) {
++            configuration.setUsesSingleWebProcess(true);
++        }
++    }
+     priv->processPool = WebProcessPool::create(configuration);
+ 
+     if (!priv->websiteDataManager)

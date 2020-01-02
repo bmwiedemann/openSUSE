@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 19 22:36:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.7
+  * Fix memory leaks in attachment handling and elsewhere.
+  * Fix a multithreading race condition.
+
+-------------------------------------------------------------------
 Wed Oct 30 11:49:14 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Fix multibuild building. For baselibs.conf and _multibuild to

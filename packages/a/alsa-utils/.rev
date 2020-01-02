@@ -970,4 +970,12 @@
   * aplay: fix memory leak when setup_chmap() fail</comment>
     <requestid>750712</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>855a32b33935b54828fa6ab4b02acc73</srcmd5>
+    <version>1.2.1</version>
+    <time>1577972408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758570</requestid>
+  </revision>
 </revisionlist>

@@ -4204,4 +4204,41 @@ always built-in because vim has direct perl dependencies anyway.
  * Opening cmdline window with feedkeys() does not work.</comment>
     <requestid>756787</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>8fc05e0b33e70b42d5dc27ac8a8b4b33</srcmd5>
+    <version>8.2.0063</version>
+    <time>1577972430</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.0063, fixes the following problems
+  * #endif comments do not reflect corresponding #ifdef.
+  * &quot;dj&quot; only deletes first line of closed fold.
+  * Build file dependencies are incomplete.
+  * Get E685 and E931 if buffer reload is interrupted.
+  * Duplication in version info.
+  * Test using long file name may fail. (Vladimir Lomov)
+  * Popup menu positioned wrong with folding in two tabs.
+  * Test72 is old style.
+  * Test64 is old style.
+  * Screen updating wrong when opening preview window.
+  * Some undo functionality is not tested.
+  * Not using a typedef for condstack.
+  * Test69 and test95 are old style.
+  * Not all modeline variants are tested.
+  * Test name used twice, option not restored properly.
+  * :join does not add white space where it should. (Zdenek Dohnal)
+  * Cannot get number of lines of another buffer.
+  * Mouse clicks in the command line not tested.
+  * Click in popup window doesn't close it in the GUI. (Sergey Vlasov)
+  * Command line editing not sufficiently tested.
+  * Filetype Rego not recognized.
+  * Repeated word in comment.
+  * Still some /* */ comments.
+  * Searchpairpos() is not tested.
+  * &quot;gF&quot; does not work on output of &quot;verbose command&quot;.
+  * Crash when make_extmatch() runs out of memory.
+  * Missing check for out of memory.
+  * Saving and restoring called_emsg is clumsy.
+  * Not enough test coverage for match functions.</comment>
+    <requestid>760080</requestid>
+  </revision>
 </revisionlist>

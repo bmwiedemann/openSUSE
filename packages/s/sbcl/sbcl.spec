@@ -1,7 +1,7 @@
 #
 # spec file for package sbcl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        1.5.4
+Version:        2.0.0
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        SUSE-Public-Domain AND BSD-3-Clause
 Group:          Development/Languages/Other
-Url:            http://www.sbcl.org/
+URL:            http://www.sbcl.org/
 Source:         http://downloads.sourceforge.net/project/sbcl/sbcl/%version/%{name}-%{version}-source.tar.bz2
 Source1:        README.openSUSE
 Source2:        sbclrc.sample
@@ -36,8 +36,9 @@ Source20:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.3-x86
 Source21:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.7-x86-64-linux-binary.tar.bz2
 Source22:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.7-powerpc-linux-binary.tar.bz2
 Source23:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.7-armel-linux-binary.tar.bz2
-Source24:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.3.12-armhf-linux-binary.tar.bz2
+Source24:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.11-armhf-linux-binary.tar.bz2
 Source25:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.2-arm64-linux-binary.tar.bz2
+Source26:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.5.8-ppc64le-linux-binary.tar.bz2
 %ifarch %{ix86}
 %define sbcl_arch x86
 %define sbcl_bootstrap_src 20
@@ -61,6 +62,10 @@ Source25:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.2-arm
 %ifarch aarch64
 %define sbcl_arch arm64
 %define sbcl_bootstrap_src 25
+%endif
+%ifarch ppc64le
+%define sbcl_arch ppc64
+%define sbcl_bootstrap_src 26
 %endif
 ###BuildRequires:  clisp
 %else
@@ -88,8 +93,10 @@ Patch0:         sbcl-1.1.2-install.patch
 Patch1:         disable-localport-bsd-sockets-test.patch
 # PATCH-FIX-OPENSUSE  fix some unsafe tests for our build hosts
 Patch2:         fix-tests.patch
+# PATCH-FIX-OPENSUSE  strip -armv5 from CFLAGS
+Patch3:         strip-arm-CFLAGS.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    ppc64 ppc64le
+ExcludeArch:    ppc64 s390x
 
 %description
 Steel Bank Common Lisp (SBCL) is a high performance Common Lisp
@@ -107,6 +114,7 @@ ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
 %patch0 -p1 -b install
 %patch1 -p1 -b sockets
 %patch2
+%patch3 -p1
 
 cp %{S:1} .
 cp %{S:2} .

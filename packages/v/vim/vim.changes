@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Dec 30 21:12:22 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.0063, fixes the following problems
+  * #endif comments do not reflect corresponding #ifdef.
+  * "dj" only deletes first line of closed fold.
+  * Build file dependencies are incomplete.
+  * Get E685 and E931 if buffer reload is interrupted.
+  * Duplication in version info.
+  * Test using long file name may fail. (Vladimir Lomov)
+  * Popup menu positioned wrong with folding in two tabs.
+  * Test72 is old style.
+  * Test64 is old style.
+  * Screen updating wrong when opening preview window.
+  * Some undo functionality is not tested.
+  * Not using a typedef for condstack.
+  * Test69 and test95 are old style.
+  * Not all modeline variants are tested.
+  * Test name used twice, option not restored properly.
+  * :join does not add white space where it should. (Zdenek Dohnal)
+  * Cannot get number of lines of another buffer.
+  * Mouse clicks in the command line not tested.
+  * Click in popup window doesn't close it in the GUI. (Sergey Vlasov)
+  * Command line editing not sufficiently tested.
+  * Filetype Rego not recognized.
+  * Repeated word in comment.
+  * Still some /* */ comments.
+  * Searchpairpos() is not tested.
+  * "gF" does not work on output of "verbose command".
+  * Crash when make_extmatch() runs out of memory.
+  * Missing check for out of memory.
+  * Saving and restoring called_emsg is clumsy.
+  * Not enough test coverage for match functions.
+  * Missing renamed message.
+  * Spell suggestions insufficiently tested.
+  * Memory access error when "z=" has no suggestions.
+  * Timers test is still flaky on Travis for Mac.
+  * Leaking memory when selecting spell suggestion.
+  * Clearing funccal values twice.
+  * Timers test is still flaky on Travis for Mac.
+  * Expression type is used inconsistently.
+  * Script test fails.
+  * Tests for spell suggestions are slow.
+  * Another timers test is flaky on Travis for Mac.
+  * Command line completion not fully tested.
+  * After deleting a file mark it is still in viminfo.
+  * Command line completion test skipped. (Christian Brabandt)
+  * More-prompt not properly tested.
+  * windowsversion() does not always return the right value.
+  * :diffget and :diffput don't have good completion.
+  * Cannot use ":gui" in vimrc with VIMDLL enabled.
+  * Execution stack is incomplete and inefficient.
+  * Cannot build with small features.
+  * Running tests changes ~/.viminfo.
+  * Compiler warnings for unused variables in small build. (Tony Mechelynck)
+  * Message test only runs with one encoding. (Dominique Pelle)
+  * The execute stack can grow big and never shrinks.
+  * Wrong size argument to vim_snprintf(). (Dominique Pelle)
+
+-------------------------------------------------------------------
 Fri Dec 13 11:05:45 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to version 8.2.0000

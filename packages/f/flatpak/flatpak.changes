@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec 30 10:00:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change %_prefix/lib to %_libexecdir: Makefile installs the file
+  explicitly into libexecdir. Let's be ready in case this path is
+  going to change.
+
+-------------------------------------------------------------------
+Fri Dec 27 10:23:14 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Co-own  /usr/lib/systemd/user-environment-generators. We don't
+  want to forcibly pull in systemd into the buildroot just to own
+  this directory.
+
+-------------------------------------------------------------------
+Fri Dec 20 22:44:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + This is the first stable release in the 1.6 series, main
+    changes since 1.4 is the support for protected content and
+    improvements in the self-sandboxing support.
+  + There is one change in the support for OCI remotes, we now only
+    support the use of labels, not annotations, as labels work with
+    more registries. This means pre-existing OCI flatpak registries
+    (like fedora) may need some changes.
+  + New permissions --socket=cups for direct cups access.
+  + Fix some leaks.
+  + Fix reporting of progress with latest version of ostree.
+  + New no-interaction flag for authenticators.
+  + Support for auto-installing authenticators from a flatpak
+    remote.
+  + Warn less about unset XDG_DATA_DIRS.
+  + Don't poll for updates in the portal when on a metered
+    connection.
+- Modernize spec with current macros.
+
+-------------------------------------------------------------------
 Mon Nov 25 16:59:29 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Package empty /etc/flatpak/remotes.d.

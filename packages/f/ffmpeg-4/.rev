@@ -232,4 +232,12 @@
     <comment>- Update to version 4.2.1</comment>
     <requestid>732021</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>35b5c11fb05460827862d51c87951a0a</srcmd5>
+    <version>4.2.1</version>
+    <time>1577972443</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused liboil BuildRequires. (forwarded request 760067 from StefanBruens)</comment>
+    <requestid>760194</requestid>
+  </revision>
 </revisionlist>

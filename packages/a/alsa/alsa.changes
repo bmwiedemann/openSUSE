@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec 20 16:54:25 CET 2019 - tiwai@suse.de
+
+- Upstream fixes, including the alsa-tools build breakage:
+  0001-ucm-Use-strncmp-to-avoid-access-out-of-boundary.patch
+  0002-ucm-return-always-at-least-NULL-if-no-list-is-availa.patch
+  0003-ucm-add-_identifiers-list.patch
+  0004-namehint-correct-the-args-check.patch
+  0005-namehint-improve-the-previous-patch-check-the-return.patch
+  0006-ucm-docs-allow-spaces-in-device-names-for-JackHWMute.patch
+  0007-use-case-docs-add-PlaybackMixerCopy-and-CaptureMixer.patch
+  0008-ucm-docs-add-JackCTL-rearrange-JackControl-and-JackD.patch
+  0009-ucm-Do-not-fail-to-parse-configs-on-cards-with-an-em.patch
+  0010-src-ucm-main.c-fix-build-without-mixer.patch
+  0011-alsa.m4-another-try-to-fix-the-libatopology-detectio.patch
+  0012-ucm-docs-add-Mic-DigitalMic-and-multiple-devices-com.patch
+  0013-ucm-docs-remove-DigitalMic-it-does-not-have-sense.patch
+  0014-ucm-docs-change-the-Mic-description-to-simple-Microp.patch
+  0015-ucm-docs-add-note-about-the-sequences-and-device-spl.patch
+  0016-ucm-docs-remove-MixerCopy-values-add-Priority-for-ve.patch
+  0017-ucm-setup-conf_format-after-getting-ALSA_CONFIG_UCM_.patch
+  0018-alsa-lib-fix-the-array-parser-unique-compound-keys.patch
+  0019-topology-remove-vendor_fd-name-from-snd_tplg-structu.patch
+  0020-topology-file-position-and-size-cleanups.patch
+  0021-topology-use-an-array-describing-blocks-for-the-main.patch
+  0022-topology-use-size_t-for-calc_block_size.patch
+  0023-topology-merge-write_block-to-tplg_write_data.patch
+  0024-topology-make-vebose-output-more-nice.patch
+  0025-topology-use-list_insert-macro-in-tplg_elem_insert.patch
+  0026-topology-dapm-coding-fixes.patch
+  0027-topology-dapm-merge-identical-index-blocks-like-for-.patch
+  0028-topology-more-coding-fixes.patch
+  0029-Fix-alsa-sound-.h-for-external-programs.patch
+  0030-type_compat-Add-missing-__s64-and-__u64-definitions-.patch
+  0031-uapi-Move-typedefs-from-uapi-to-sound.patch
+
+-------------------------------------------------------------------
+Fri Nov 29 20:41:29 CET 2019 - tiwai@suse.de
+
+- Update to alsa-lib 1.2.1.2:
+  More UCM and UCMv2 fixes / enhancements, details are found in
+    https://www.alsa-project.org/wiki/Changes_v1.2.1.1_v1.2.1.2
+- Obsoleted patch:
+  0001-alsa.m4-Fix-the-detection-of-topology-library-availa.patch 
+
+-------------------------------------------------------------------
 Wed Nov 27 10:21:23 CET 2019 - tiwai@suse.de
 
 - Fix the detection of topology library in alsa.m4:

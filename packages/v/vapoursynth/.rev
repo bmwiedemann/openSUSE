@@ -107,4 +107,12 @@
   * fixed linux and non-x86 builds</comment>
     <requestid>758506</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7e81a33037bd430069224ae95f90dc27</srcmd5>
+    <version>48</version>
+    <time>1577972669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760398</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 30 11:57:49 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- fix writting multiple new elements to previously single element
+  (found during fixing bsc#1156929)
+- 1.0.2
+
+-------------------------------------------------------------------
 Wed Jul 17 06:25:41 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - fix writting subtree when element change to collection and vice

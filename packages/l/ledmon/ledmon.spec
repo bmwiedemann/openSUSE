@@ -1,7 +1,7 @@
 #
 # spec file for package ledmon
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,10 @@ Group:          Hardware/Other
 URL:            https://github.com/intel/ledmon/
 Source0:        https://github.com/intel/ledmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM ledmon-amd_sgpio.patch
-Patch0:         ledmon-amd_sgpio.patch
+Patch0:         Don-t-build-with-Werror.patch
+Patch1:         ledmon-paths-in-systemd-service-file-are-generated.patch
+Patch2:         smp-fix-the-activity-indicator-states.patch
+Patch3:         amd_sgpio-Correct-use-of-packed-structs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libsgutils-devel

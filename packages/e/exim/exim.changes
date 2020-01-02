@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  2 08:40:29 CET 2020 - wullinger@rz.uni-kiel.de
+
+spec file cleanup to make update work
+- add docdir to spec
+
+-------------------------------------------------------------------
 Mon Dec  9 10:08:02 UTC 2019 - wullinger@rz.uni-kiel.de
 
 - update to exim 4.93

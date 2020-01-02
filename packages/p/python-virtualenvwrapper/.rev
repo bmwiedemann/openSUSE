@@ -192,4 +192,12 @@
     <comment></comment>
     <requestid>757257</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>6e72a5015eb73fc00eaf8ceaa02404a5</srcmd5>
+    <version>4.8.4</version>
+    <time>1577972574</time>
+    <user>dimstar_suse</user>
+    <comment>  instead of python2 bsc#1159243</comment>
+    <requestid>760360</requestid>
+  </revision>
 </revisionlist>

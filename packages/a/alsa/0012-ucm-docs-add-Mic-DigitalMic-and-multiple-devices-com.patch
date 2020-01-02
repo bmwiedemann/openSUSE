@@ -1,0 +1,37 @@
+From 555a5dbdabc5ed3be1ca81865abdb997bc3a6082 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 5 Dec 2019 16:59:05 +0100
+Subject: [PATCH 12/30] ucm: docs - add Mic/DigitalMic and multiple devices
+ comments
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/use-case.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/include/use-case.h b/include/use-case.h
+index 25998cb9bad5..1736da25b649 100644
+--- a/include/use-case.h
++++ b/include/use-case.h
+@@ -114,10 +114,18 @@ extern "C" {
+  *
+  * Physical system devices the render and capture audio. Devices can be OR'ed
+  * together to support audio on simultaneous devices.
++ *
++ * If multiple devices with the same name exists, the number suffixes should
++ * be added to these names like HDMI1,HDMI2,HDMI3 etc. No number gaps are
++ * allowed. The names with numbers must be continuous.
++ *
++ * The preference of the devices is determined by the priority value.
+  */
+ #define SND_USE_CASE_DEV_NONE		"None"		/**< None Device */
+ #define SND_USE_CASE_DEV_SPEAKER	"Speaker"	/**< Speaker Device */
+ #define SND_USE_CASE_DEV_LINE		"Line"		/**< Line Device */
++#define SND_USE_CASE_DEV_MIC            "Mic"           /**< Integrated Analog Microphone */
++#define SND_USE_CASE_DEV_DIGITAL_MIC    "DigitalMic"    /**< Integrated Digital Microphone */
+ #define SND_USE_CASE_DEV_HEADPHONES	"Headphones"	/**< Headphones Device */
+ #define SND_USE_CASE_DEV_HEADSET	"Headset"	/**< Headset Device */
+ #define SND_USE_CASE_DEV_HANDSET	"Handset"	/**< Handset Device */
+-- 
+2.16.4
+

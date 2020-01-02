@@ -1,0 +1,30 @@
+From ca67e823833213e140a09ce43b6399b7676616df Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 6 Dec 2019 11:11:54 +0100
+Subject: [PATCH 15/30] ucm: docs - add note about the sequences and device
+ split
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/use-case.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/include/use-case.h b/include/use-case.h
+index b04f7b9d38de..2efcb4d8fdc3 100644
+--- a/include/use-case.h
++++ b/include/use-case.h
+@@ -119,6 +119,11 @@ extern "C" {
+  * be added to these names like HDMI1,HDMI2,HDMI3 etc. No number gaps are
+  * allowed. The names with numbers must be continuous.
+  *
++ * If EnableSequence/DisableSequence controls independent paths in the hardware
++ * it is also recommended to split playback and capture UCM devices and use
++ * the number suffixes. Example use case: Use the integrated microphone
++ * in the laptop instead the microphone in headphones.
++ *
+  * The preference of the devices is determined by the priority value.
+  */
+ #define SND_USE_CASE_DEV_NONE		"None"		/**< None Device */
+-- 
+2.16.4
+

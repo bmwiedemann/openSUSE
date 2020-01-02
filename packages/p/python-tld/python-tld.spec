@@ -1,7 +1,7 @@
 #
 # spec file for package python-tld
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,18 +29,16 @@ Source:         https://files.pythonhosted.org/packages/source/t/tld/tld-%{versi
 # PATCH-FIX-OPENSUSE skip_internet_tests.patch
 Patch0:         skip_internet_tests.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six >= 1.9
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module factory_boy}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.9}
-BuildRequires:  %{python_module tox}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-six >= 1.9
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -62,7 +60,7 @@ chmod -x src/tld/res/old/effective_tld_names-2015-07-19.dat.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst

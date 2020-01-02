@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 30 15:53:34 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Version 0.1.11
+- Changed structure of sub-modules
+- Added `osctiny.utils.changelog`
+- Added parameter `expand` to `osctiny.extensions.packages.Package.get_file`
+
+-------------------------------------------------------------------
 Tue Dec  3 11:36:51 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Source package instead of _serive "download_files"

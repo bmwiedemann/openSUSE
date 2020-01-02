@@ -1,0 +1,28 @@
+<services>
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/jpd002/Play-.git</param>
+    <param name="filename">Play</param>
+    <param name="revision">master</param>
+    <param name="versionformat">0~git%cd</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">deps/Dependencies/BoostMac</param>
+    <param name="exclude">deps/Dependencies/build_android</param>
+    <param name="exclude">deps/Dependencies/build_win32</param>
+    <param name="exclude">deps/Dependencies/bzip2-1.0.6</param>
+    <param name="exclude">deps/Dependencies/cmake-ios</param>
+    <param name="exclude">deps/Dependencies/cmake-modules/FindGLEW.cmake</param>
+    <param name="exclude">deps/Dependencies/d3dcompiler_winxp</param>
+    <param name="exclude">deps/Dependencies/glew-2.0.0</param>
+    <param name="exclude">deps/Dependencies/iCade-iOS</param>
+    <param name="exclude">deps/Dependencies/nlohmann_json</param>
+    <param name="exclude">deps/Dependencies/sqlite-3.20.1</param>
+    <param name="exclude">deps/Dependencies/unrar*</param>
+    <param name="exclude">deps/Dependencies/zlib-1.2.8</param>
+  </service>
+  <service name="recompress" mode="localonly">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+</services>

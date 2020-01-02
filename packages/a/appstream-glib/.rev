@@ -737,4 +737,12 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     <comment></comment>
     <requestid>723727</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>599ddb87a30023e48c756535e493e0d9</srcmd5>
+    <version>0.7.16</version>
+    <time>1577972391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758319</requestid>
+  </revision>
 </revisionlist>

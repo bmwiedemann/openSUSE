@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec 30 19:00:00 UTC 2019 - doug@uq.edu.au
+
+- Update to version 1.8.0:
+  * User and machine TLS certificate support.
+  * New dependency on OpenSSL's libcrypto (>= 1.1.0).
+  * New dependency on Network Security Services (NSS) libraries.
+  * Routines to auto detect the TLS certificate and private key
+    file formats by looking at the file contents and not the file
+    extension, also determines if the files are encrypted with a
+    password, which includes testing if the password is the empty
+    string or NULL.
+  * Routines to import certificates and privates keys into a
+    Libreswan NSS database.
+  * Grey out the auth type selection for user authentication if
+    EAP-TLS pppd patch (i.e. https://www.nikhef.nl/~janjust/ppp/)
+    was not detected, e.g. with openSUSE.
+  * Updated translations.
+- Changes from version 1.2.10:
+  * Updated translations.
+  * Remove "Prevalent Algorithms" button, override default
+    algorithms. The phase 1 & 2 proposals previously provided by
+    the Prevalent Algorithms button are now the new defaults for
+    the IKEv1 proposals.
+- Added BuildRequires for openssl-devel and pkgconfig(nss) 
+
+-------------------------------------------------------------------
 Sat Oct 19 11:20:00 UTC 2019 - doug@uq.edu.au
 
 - Update to version 1.2.14:

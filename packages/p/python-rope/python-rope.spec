@@ -1,7 +1,7 @@
 #
 # spec file for package python-rope
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,10 +52,8 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-# %%python_exec setup.py test
-py.test2 -v
 # Work around gh#python-rope/rope#247
-py.test3 -v -k 'not (test_hint_parametrized_iterable or test_hint_parametrized_iterator)'
+%pytest -k 'not (test_hint_parametrized_iterable or test_hint_parametrized_iterator)'
 
 %files %{python_files}
 %license COPYING

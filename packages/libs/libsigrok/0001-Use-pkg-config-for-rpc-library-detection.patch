@@ -1,0 +1,158 @@
+From 0efe71d10402096dc013188fce5fb6bd5dc33d54 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 29 Dec 2019 16:19:41 +0100
+Subject: [PATCH] Use pkg-config for rpc library detection
+
+The old SunRPC was removed with glibc 2.26, and libtirpc should be used
+instead. As RPC is implemented in a separate library the lib has to be
+added to linker flags as well (otherwise the linking during configure
+already fails). Instead of rolling our own autoconf macros, use
+pkg-config instead.
+---
+ configure.ac | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9c42cf3b..6d5a28ac 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -186,15 +186,9 @@ AS_CASE([$host_os], [mingw*], [SR_PREPEND([SR_EXTRA_LIBS], [-lws2_32])])
+ SR_SEARCH_LIBS([SR_EXTRA_LIBS], [pow], [m])
+ 
+ # RPC is only needed for VXI support.
+-AC_CACHE_CHECK([for RPC support], [sr_cv_have_rpc],
+-	[AC_LINK_IFELSE([AC_LANG_PROGRAM(
+-			[[#include <rpc/rpc.h>]m4_newline[CLIENT *rpc_test(void);]],
+-			[[(void) clnt_create("", 0, 0, "");]])],
+-		[sr_cv_have_rpc=yes], [sr_cv_have_rpc=no])])
+-AS_IF([test "x$sr_cv_have_rpc" = xyes],
+-	[AC_DEFINE([HAVE_RPC], [1], [Specifies whether we have RPC support.])])
++SR_ARG_OPT_PKG([rpc], [RPC], , [libtirpc])
+ # VXI support is only compiled if RPC support was found.
+-AM_CONDITIONAL([NEED_RPC], [test "x$sr_cv_have_rpc" = xyes])
++AM_CONDITIONAL([NEED_RPC], [test "x$sr_have_rpc" = xyes])
+ 
+ # Check for compiler support of 128 bit integers
+ AC_CHECK_TYPES([__int128_t, __uint128_t], [], [], [])
+@@ -644,7 +638,7 @@ Enabled serial communication transports:
+ 
+ Enabled SCPI backends:
+  - TCP............................. yes
+- - RPC............................. $sr_cv_have_rpc
++ - RPC/VXI11....................... $sr_have_rpc
+  - serial.......................... $sr_have_serial_comm
+  - VISA............................ $sr_have_librevisa
+  - GPIB............................ $sr_have_libgpib
+-- 
+2.24.1
+
+--- a/configure	2019-12-29 16:21:35.607251980 +0100
++++ b/configure	2019-12-29 16:35:04.448337838 +0100
+@@ -1039,6 +1039,7 @@
+ with_libgio
+ enable_warnings
+ enable_largefile
++with_rpc
+ enable_all_drivers
+ enable_agilent_dmm
+ enable_appa_55ii
+@@ -1890,6 +1891,7 @@
+   --without-libgpib       disable libgpib support [default=detect]
+   --without-libieee1284   disable libieee1284 support [default=detect]
+   --without-libgio        disable libgio support [default=detect]
++  --without-rpc           disable rpc support [default=detect]
+   --with-jni-include-path=DIR-LIST (space-separated)
+                           specify JNI include directories [default=detect]
+ 
+@@ -18851,40 +18853,56 @@
+ 
+ 
+ # RPC is only needed for VXI support.
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for RPC support" >&5
+-$as_echo_n "checking for RPC support... " >&6; }
+-if ${sr_cv_have_rpc+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <rpc/rpc.h>
+-CLIENT *rpc_test(void);
+-int
+-main ()
+-{
+-(void) clnt_create("", 0, 0, "");
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_link "$LINENO"; then :
+-  sr_cv_have_rpc=yes
++
++# Check whether --with-rpc was given.
++if test "${with_rpc+set}" = set; then :
++  withval=$with_rpc;
++fi
++
++if test "x$with_rpc" = xno; then :
++  sr_have_rpc=no
++elif test "x$sr_have_rpc" != xyes; then :
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for rpc" >&5
++$as_echo_n "checking for rpc... " >&6; }
++if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libtirpc\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libtirpc") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  	sr_have_rpc=yes
++	SR_PKGLIBS=${SR_PKGLIBS}${SR_PKGLIBS:+' '}"libtirpc"
++	sr_rpc_version=`$PKG_CONFIG --modversion "libtirpc" 2>&5`
++	sr_pkg_check_summary_append "libtirpc" "$sr_rpc_version"
+ else
+-  sr_cv_have_rpc=no
++  	sr_pkg_check_summary_append "libtirpc" no
++	sr_have_rpc=no sr_rpc_version=
+ fi
+-rm -f core conftest.err conftest.$ac_objext \
+-    conftest$ac_exeext conftest.$ac_ext
++
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $sr_have_rpc" >&5
++$as_echo "$sr_have_rpc" >&6; }
+ fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $sr_cv_have_rpc" >&5
+-$as_echo "$sr_cv_have_rpc" >&6; }
+-if test "x$sr_cv_have_rpc" = xyes; then :
++if test "x$with_rpc$sr_have_rpc" = xyesno; then :
++  as_fn_error $? "rpc support requested, but it was not found." "$LINENO" 5
++fi
++if test "x$sr_have_rpc" = xyes; then :
++
++	sr_deps_avail=${sr_deps_avail}${sr_deps_avail:+' '}"rpc"
+ 
+ $as_echo "#define HAVE_RPC 1" >>confdefs.h
+ 
+ fi
++
++if test "x$sr_have_rpc" = xyes; then :
++
++cat >>confdefs.h <<_ACEOF
++#define CONF_RPC_VERSION "$sr_rpc_version"
++_ACEOF
++
++fi
++
+ # VXI support is only compiled if RPC support was found.
+- if test "x$sr_cv_have_rpc" = xyes; then
++ if test "x$sr_have_rpc" = xyes; then
+   NEED_RPC_TRUE=
+   NEED_RPC_FALSE='#'
+ else
+@@ -26512,7 +26530,7 @@
+ 
+ Enabled SCPI backends:
+  - TCP............................. yes
+- - RPC............................. $sr_cv_have_rpc
++ - RPC/VXI11....................... $sr_have_rpc
+  - serial.......................... $sr_have_serial_comm
+  - VISA............................ $sr_have_librevisa
+  - GPIB............................ $sr_have_libgpib

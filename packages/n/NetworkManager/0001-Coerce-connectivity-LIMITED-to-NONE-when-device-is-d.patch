@@ -12,11 +12,11 @@ Fixes #138
  src/devices/nm-device.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/src/devices/nm-device.c b/src/devices/nm-device.c
-index 7514fa784..48279c4ec 100644
---- a/src/devices/nm-device.c
-+++ b/src/devices/nm-device.c
-@@ -2821,7 +2821,8 @@ concheck_update_state (NMDevice *self, int addr_family,
+Index: NetworkManager-1.20.0/src/devices/nm-device.c
+===================================================================
+--- NetworkManager-1.20.0.orig/src/devices/nm-device.c
++++ NetworkManager-1.20.0/src/devices/nm-device.c
+@@ -2887,7 +2887,8 @@ concheck_update_state (NMDevice *self,
  				state = NM_CONNECTIVITY_LIMITED;
  		} else
  			state = NM_CONNECTIVITY_NONE;
@@ -26,6 +26,3 @@ index 7514fa784..48279c4ec 100644
  
  	if (priv->concheck_x[IS_IPv4].state == state) {
  		/* we got a connectivty update, but the state didn't change. If we were probing,
--- 
-2.21.0
-

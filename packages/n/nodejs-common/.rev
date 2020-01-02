@@ -39,4 +39,13 @@
     <comment>- Remove extra -g from compiler command-line</comment>
     <requestid>743470</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8f46a35b59e964c1b705f2dc0847a9ff</srcmd5>
+    <version>3.0</version>
+    <time>1577972428</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump max supported version to 42 to account for automatically
+  built master branch called nodejs42</comment>
+    <requestid>760050</requestid>
+  </revision>
 </revisionlist>

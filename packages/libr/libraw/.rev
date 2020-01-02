@@ -551,4 +551,24 @@
 - Use FAT LTO objects in order to provide proper static library.</comment>
     <requestid>725044</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>09a5270a9a7b0abe166e2e26209d854c</srcmd5>
+    <version>0.19.5</version>
+    <time>1577972399</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.19.5
+  * LibRaw 0.19.5
+  * WB coefficients check was too strong, weakened
+  * Fixed possible buffer underrun in modern Samsung loader
+  * LibRaw 0.19.4
+  * CRW/metadata loop prevention code is rolled back due to ABI
+    incompatibility. To enable, use -DLIBRAW_METADATA_LOOP_PREVENTION=1
+    compile flag for LibRaw and ALL APPS.
+  * Fixed possible buffer underflow
+  * LibRaw 0.19.3
+  * Several fixes inspired by OSS-Fuzz
+- deleted patches
+  - libraw-half-size-allocation-buffer-overflow.patch (upstreamed)</comment>
+    <requestid>758470</requestid>
+  </revision>
 </revisionlist>

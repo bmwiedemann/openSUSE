@@ -1,7 +1,7 @@
 #
 # spec file for package glusterfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           glusterfs
-Version:        5.5
+Version:        7.0
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
 Group:          System/Filesystems
-Url:            http://www.gluster.org/
+URL:            http://www.gluster.org/
 
 #Git-Clone:	git://github.com/gluster/glusterfs
 #Git-Clone:	git://github.com/fvzwieten/lsgvt
-Source:         https://download.gluster.org/pub/gluster/glusterfs/5/5.5/glusterfs-5.5.tar.gz
+Source:         https://download.gluster.org/pub/gluster/glusterfs/7/7.0/glusterfs-7.0.tar.gz
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -36,7 +36,7 @@ BuildRequires:  flex
 BuildRequires:  libaio-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python2
+BuildRequires:  python3
 BuildRequires:  readline-devel
 BuildRequires:  rpcgen
 BuildRequires:  systemd-rpm-macros
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
 %{?systemd_requires}
@@ -105,19 +105,14 @@ Group:          System/Libraries
 GlusterFS is a clustered file-system capable of scaling to several
 petabytes.
 
-%package -n libgfdb0
-Summary:        GlusterFS's database library
-Group:          System/Libraries
-
-%description -n libgfdb0
-GlusterFS is a clustered file-system capable of scaling to several
-petabytes.
-
-%package -n python-gluster
+%package -n python3-gluster
 Summary:        Python bindings for GlusterFS
 Group:          Development/Languages/Python
+BuildArch:      noarch
+# Legacy Python 2 bindings are no longer available...
+Obsoletes:      python-gluster < 7.0
 
-%description -n python-gluster
+%description -n python3-gluster
 GlusterFS is a clustered file-system capable of scaling to several
 petabytes.
 
@@ -193,6 +188,8 @@ perl -i -pe 's{#!/usr/bin/env python}{#!/usr/bin/python}' \
 perl -i -pe 's{#!/usr/bin/env bash}{#!/bin/bash}' \
 	"$b/%_datadir/glusterfs/scripts"/*.sh
 
+cp -a COPYING-GPLV2 COPYING-LGPLV3 ChangeLog NEWS README.md "$b/%_docdir/%name/"
+
 mkdir -p "%buildroot/%_unitdir"
 ln -s service "%buildroot/%_sbindir/rcglusterd"
 chmod u-s "%buildroot/%_bindir/fusermount-glusterfs"
@@ -200,16 +197,16 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %fdupes %buildroot/%_prefix
 
 %pre
-%service_add_pre glusterd.service glustereventsd.service glusterfssharedstorage.service
+%service_add_pre glusterd.service glustereventsd.service glusterfssharedstorage.service gluster-ta-volume.service
 
 %post
-%service_add_post glusterd.service glustereventsd.service glusterfssharedstorage.service
+%service_add_post glusterd.service glustereventsd.service glusterfssharedstorage.service gluster-ta-volume.service
 
 %preun
-%service_del_preun glusterd.service glustereventsd.service glusterfssharedstorage.service
+%service_del_preun glusterd.service glustereventsd.service glusterfssharedstorage.service gluster-ta-volume.service
 
 %postun
-%service_del_postun glusterd.service glustereventsd.service glusterfssharedstorage.service
+%service_del_postun glusterd.service glustereventsd.service glusterfssharedstorage.service gluster-ta-volume.service
 
 %post   -n libgfapi0 -p /sbin/ldconfig
 %postun -n libgfapi0 -p /sbin/ldconfig
@@ -221,20 +218,18 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %postun -n libgfxdr0 -p /sbin/ldconfig
 %post   -n libglusterfs0 -p /sbin/ldconfig
 %postun -n libglusterfs0 -p /sbin/ldconfig
-%post   -n libgfdb0 -p /sbin/ldconfig
-%postun -n libgfdb0 -p /sbin/ldconfig
 
 %files
-%doc COPYING-GPLV2 COPYING-LGPLV3 ChangeLog NEWS README.md
 %dir %_sysconfdir/%name
 %config(noreplace) %_sysconfdir/%name/eventsconfig.json
 %config(noreplace) %_sysconfdir/%name/g*lusterd.vol
 %config(noreplace) %_sysconfdir/%name/glusterfs-logrotate
-%config %_sysconfdir/%name/gluster-rsyslog*.conf
-%config %_sysconfdir/%name/*.example
-%config %_sysconfdir/%name/*-logrotate
+%config %_sysconfdir/%name/gluster-rsyslog*
+%config %_sysconfdir/%name/glusterfs-georep*
 %config %_sysconfdir/%name/group-*
-%config %_sysconfdir/%name/gsyncd.conf
+%config %_sysconfdir/%name/gsync*
+%config %_sysconfdir/%name/logger*
+%config %_sysconfdir/%name/thin*
 %_bindir/fusermount-glusterfs
 %_bindir/glusterfind
 /sbin/mount.%name
@@ -255,6 +250,7 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %_unitdir/glusterd.service
 %_unitdir/glustereventsd.service
 %_unitdir/glusterfssharedstorage.service
+%_unitdir/gluster-ta-volume.service
 %_libexecdir/ocf
 
 %files -n libgfapi0
@@ -272,15 +268,8 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %files -n libglusterfs0
 %_libdir/libglusterfs.so.0*
 
-%files -n libgfdb0
-%_libdir/libgfdb.so.0*
-
-%files -n python-gluster
-%dir %python_sitelib/gluster
-%dir %python_sitelib/gluster/glupy
-%python_sitelib/gluster/__init__.*
-%python_sitelib/gluster/cliutils/
-%python_sitelib/gluster/glupy/__init__.*
+%files -n python3-gluster
+%python3_sitelib/gluster/
 
 %files devel
 %_includedir/%name

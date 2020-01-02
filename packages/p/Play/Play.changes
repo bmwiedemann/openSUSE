@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Thu Jan  2 10:54:22 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Remove unrar source
+
+-------------------------------------------------------------------
+Thu Jan 02 10:50:43 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20191220:
+  * Make cdvd_ee_driver stoppable and unloadable, even if it doesn't exist.
+  * Add a no link threshold for recycled blocks.
+  * Recycle compiled blocks.
+  * Remove boost dependency
+  * use Iop::PathUtils::MakeHostPath() in CDirectoryDevice
+  * move MakeHostPath(...) to seperate namespace
+  * use MakeHostPath(...) in GetEntSpace(...)
+
+-------------------------------------------------------------------
+Fri Nov 29 15:50:24 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20191127:
+  * add missing break in CStdio::PrintFormatted(...)
+  * rearrange IOP memory reserve to reduce foot print
+  * reserve IOP Mem addr 0x480 for intr handler table, set CDVDROM fake handler
+  * dont include libc, as it will cause issues with newer OSs
+  * Update submodules to solve GLEW issue
+  * Code style fixes.
+  * Make sure GetAvailableBits won't return a negative value.
+  * Make the change to IPU_CMD register behavior less intrusive.
+  * Remove useless asserts.
+  * Add default values to intra & non-intra IQ matrices.
+  * Various IPU tests
+  * Update submodules.
+  * Code style fix.
+  * Add exception for VU SUB instruction which is meant to clear a register.
+  * Enable receiving IPU DMA transfers from SPR.
+  * Fillchar can only be 0 or a space.
+  * cleanup
+  * Fix path
+  * Linux: bundle libc and libstdc++ with AppImage to increase compatibility with older distros
+  * prepare entire env before building, this should avoid odd failure, where you'd go through the entire build, but then fails to download needed binary for deployment
+
+-------------------------------------------------------------------
+Mon Nov  4 19:23:55 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Use system library as much as possible
+
+-------------------------------------------------------------------
+Mon Nov 04 11:15:21 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20191031:
+  * Let's hope this is the last one.
+  * Remove last remnants of boost.
+  * Grab error code to prevent exception being thrown on Windows.
+  * Remove more boost usage.
+  * Remove boost::filesystem usage.
+  * Update submodule.
+  * Remove boost usage.
+  * Replace boost header by system header.
+  * Remove boost version number.
+
+-------------------------------------------------------------------
+Wed Oct 30 10:44:25 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20191029:
+  * Fix Linux build.
+  * Change detecting scheme for S3 paths.
+  * Change the path format used to specify images stored on S3.
+  * Code style fixes.
+  * Add missing include.
+  * Update Framework submodule.
+  * Don't store current working directory in a fs::path.
+  * Also check ChDir's result.
+  * Update path handling in MCSERV.
+  * Code style fixes.
+  * Fix iOS build.
+  * Use helper function to get save modification time.
+  * Remove unicode literals.
+  * Remove boost filesystem header.
+  * Add missing files to CMakeLists.
+  * Android build fixes.
+  * Use new time conversion function.
+  * Remove boost::filesystem dependency.
+  * Move misplaced include.
+  * Add missing include.
+  * Remove some more boost::filesystem remnants.
+  * Remove wchar_t literals.
+  * Remove boost::filesystem namespace rename.
+  * Update submodules.
+  * Remove usage of boost::filesystem.
+  * Reorganise Travis script.
+  * Add repo.
+  * Build using GCC9 on TravisCI.
+  * Fix Qt GLES builds
+  * build arm64 on travis ci
+  * Be granular also on VU microprogram upload.
+  * Be a bit more granular when invalidating VU microprograms.
+  * Code style fixes.
+  * Check test validation algorithm.
+  * Add missing file in CMakeLists.txt.
+  * Make sure test fails in Release config.
+
+-------------------------------------------------------------------
+Sun Oct 20 11:11:58 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20191019:
+  * Also test on Linux and macOS.
+  * Run tests after building.
+  * update submodule, and references to it
+  * Update README.md.
+  * Fix screen orientation issues on iOS 13.
+  * Prevent VF0 from being clobbered.
+  * Install png and svg icons to correct location on Unix
+  * Correct .desktop and icon file installation
+  * Unix: install icon before .desktop file
+
+-------------------------------------------------------------------
+Wed Oct 16 07:37:38 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20191015:
+  * Code style fixes.
+  * Prevent crashing when erasing something that's not there.
+  * Remove extra VU state copies.
+  * Make sure EE's and VU0's states are synced before starting VU0.
+
+-------------------------------------------------------------------
+Tue Oct 15 19:38:36 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Initial version

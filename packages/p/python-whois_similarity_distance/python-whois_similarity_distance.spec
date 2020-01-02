@@ -1,7 +1,7 @@
 #
 # spec file for package python-whois_similarity_distance
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-whois_similarity_distance
 Version:        1.0.2
 Release:        0
 Summary:        Python module for calculating the WHOIS Similarity Distance between two given domains
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/stratosphereips/whois-similarity-distance
+URL:            https://github.com/stratosphereips/whois-similarity-distance
 Source:         https://files.pythonhosted.org/packages/source/w/whois_similarity_distance/whois_similarity_distance-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

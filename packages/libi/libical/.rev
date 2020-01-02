@@ -354,4 +354,12 @@
   libical.pc.</comment>
     <requestid>744148</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>754692c9842f438220156af08ce36d4c</srcmd5>
+    <version>3.0.7</version>
+    <time>1577972403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758531</requestid>
+  </revision>
 </revisionlist>

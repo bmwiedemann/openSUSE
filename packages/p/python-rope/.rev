@@ -129,4 +129,12 @@
     <comment></comment>
     <requestid>687823</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>098f2a80cae9f09c076a6c1535eb8bd1</srcmd5>
+    <version>0.14.0</version>
+    <time>1577972655</time>
+    <user>dimstar_suse</user>
+    <comment>- Run the pytest call only once</comment>
+    <requestid>760393</requestid>
+  </revision>
 </revisionlist>

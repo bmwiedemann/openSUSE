@@ -82,11 +82,11 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.57.3
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.9.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.7.90
+BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.34.2
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.27.90
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.1
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
@@ -98,7 +98,7 @@ BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.8
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.2
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-5) >= 3.33.92
+BuildRequires:  pkgconfig(libmutter-5) >= 3.34.0
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
@@ -107,9 +107,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-5) >= 3.33.92
-BuildRequires:  pkgconfig(mutter-cogl-5) >= 3.33.92
-BuildRequires:  pkgconfig(mutter-cogl-pango-5) >= 3.33.92
+BuildRequires:  pkgconfig(mutter-clutter-5) >= 3.34.0
+BuildRequires:  pkgconfig(mutter-cogl-5) >= 3.34.0
+BuildRequires:  pkgconfig(mutter-cogl-pango-5) >= 3.34.0
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3

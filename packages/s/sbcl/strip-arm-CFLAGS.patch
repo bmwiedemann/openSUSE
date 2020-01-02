@@ -1,0 +1,12 @@
+diff -Nru sbcl-1.5.9.orig/src/runtime/Config.arm-linux sbcl-1.5.9/src/runtime/Config.arm-linux
+--- sbcl-1.5.9.orig/src/runtime/Config.arm-linux	2019-11-26 21:35:11.000000000 +0100
++++ sbcl-1.5.9/src/runtime/Config.arm-linux	2019-12-14 21:36:19.114492503 +0100
+@@ -9,7 +9,7 @@
+ # provided with absolutely no warranty. See the COPYING and CREDITS
+ # files for more information.
+ 
+-CFLAGS += -marm -march=armv5
++CFLAGS += -marm
+ NM = ./linux-nm
+ 
+ ASSEM_SRC = arm-assem.S ldso-stubs.S

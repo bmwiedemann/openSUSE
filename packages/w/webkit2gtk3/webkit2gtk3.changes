@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:36:37 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit-process.patch: use single web process for evolution
+  and geary on 15.0 (boo#1159329 glgo#GNOME/evolution#587).
+
+-------------------------------------------------------------------
 Mon Nov 11 22:31:54 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-icu-build-fix.patch: fix build with icu 65.1.

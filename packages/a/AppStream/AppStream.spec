@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,13 +35,13 @@ Patch3:         0002-Don-t-ignore-xmlNodeDump-return-code.patch
 Patch4:         0003-Fix-infinite-recursion-if-component-has-itself-liste.patch
 # PATCH-FIX-UPSTREAM (https://github.com/ximion/appstream/issues/239)
 Patch1000:      find-lmdb.patch
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gperf
-BuildRequires:  itstool
 BuildRequires:  lmdb-devel
 BuildRequires:  meson >= 0.42
 BuildRequires:  pkgconfig
-BuildRequires:  xmlto
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(gio-2.0)

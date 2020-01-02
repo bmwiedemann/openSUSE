@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>730376</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f29343c51d56bc1d45f0c5dc3d7fccf4</srcmd5>
+    <version>1.2.1</version>
+    <time>1577972534</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not install examples in generic examples folder in sitelib</comment>
+    <requestid>760353</requestid>
+  </revision>
 </revisionlist>

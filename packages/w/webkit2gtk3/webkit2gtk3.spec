@@ -45,6 +45,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         webkit2gtk3-fdo-soname.patch
 # PATCh-FIX-UPSTREAM webkit2gtk3-icu-build-fix.patch mgorse@suse.com -- fix build with icu 65.1.
 Patch1:         webkit2gtk3-icu-build-fix.patch
+# PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
+Patch2:         webkit-process.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -270,7 +272,12 @@ A small test browswer from webkit, useful for testing features.
 %lang_package -n %{_pkgname_no_slpp}
 
 %prep
-%autosetup -p1 -n webkitgtk-%{version}
+%setup -n webkitgtk-%{version}
+%patch0 -p1
+%patch1 -p1
+%if 0%{?suse_version} <= 1500
+%patch2 -p1
+%endif
 
 %build
 %define _lto_cflags %{nil}

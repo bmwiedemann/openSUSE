@@ -1,0 +1,27 @@
+From 5473c5d677915b88d5c93d5bcc6cd16bb6a40342 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 5 Dec 2019 17:19:06 +0100
+Subject: [PATCH 14/30] ucm: docs - change the Mic description to simple
+ Microphone Device
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/use-case.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/use-case.h b/include/use-case.h
+index 214a2a4c4691..b04f7b9d38de 100644
+--- a/include/use-case.h
++++ b/include/use-case.h
+@@ -124,7 +124,7 @@ extern "C" {
+ #define SND_USE_CASE_DEV_NONE		"None"		/**< None Device */
+ #define SND_USE_CASE_DEV_SPEAKER	"Speaker"	/**< Speaker Device */
+ #define SND_USE_CASE_DEV_LINE		"Line"		/**< Line Device */
+-#define SND_USE_CASE_DEV_MIC            "Mic"           /**< Integrated Microphone */
++#define SND_USE_CASE_DEV_MIC            "Mic"           /**< Microphone Device */
+ #define SND_USE_CASE_DEV_HEADPHONES	"Headphones"	/**< Headphones Device */
+ #define SND_USE_CASE_DEV_HEADSET	"Headset"	/**< Headset Device */
+ #define SND_USE_CASE_DEV_HANDSET	"Handset"	/**< Handset Device */
+-- 
+2.16.4
+

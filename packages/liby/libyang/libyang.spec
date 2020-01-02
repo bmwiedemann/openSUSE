@@ -166,6 +166,10 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 mv build/doc/html %{buildroot}%{_docdir}/%{name}/
 %fdupes -s %{buildroot}/%{_docdir}/%{name}/html
 
+%check
+export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/swig
+%ctest
+
 %post   -n libyang%{sover} -p /sbin/ldconfig
 %postun -n libyang%{sover} -p /sbin/ldconfig
 %post   -n libyang-cpp%{sover} -p /sbin/ldconfig

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 30 13:38:19 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop GeoIP dependency. The geoip interface is no longer valid and
+  this package was not portedto GeoIP2. The test has already been
+  disarmed a while back.
+
+-------------------------------------------------------------------
 Mon Sep 16 13:02:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 19.1.0:

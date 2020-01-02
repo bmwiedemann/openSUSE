@@ -63,7 +63,7 @@ BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libsndfile-devel >= 1.0.18
 BuildRequires:  libtool
-BuildRequires:  libudev-devel >= 143
+BuildRequires:  pkgconfig(libudev) >= 143
 BuildRequires:  libwebrtc_audio_processing-devel >= 0.3
 BuildRequires:  lirc-devel
 BuildRequires:  orc >= 0.4.9

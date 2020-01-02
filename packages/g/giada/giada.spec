@@ -1,7 +1,7 @@
 #
 # spec file for package giada
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -19,11 +19,10 @@
 
 
 Name:           giada
-Version:        0.15.4
+Version:        0.16.0
 Release:        0
 Summary:        Sampler Audio Tool
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://giadamusic.com
 Source0:        https://github.com/monocasual/giada/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        giada.svg
@@ -76,16 +75,6 @@ make %{?_smp_mflags}
 
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %suse_update_desktop_file -c %{name} %{name} "Sampler Audio Tool" %{name} %{name} AudioVideo Audio Sequencer
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%endif
 
 %files
 %doc ChangeLog

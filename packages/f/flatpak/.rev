@@ -480,4 +480,12 @@
     <comment>- Package empty /etc/flatpak/remotes.d. (forwarded request 750870 from fcrozat)</comment>
     <requestid>750957</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8b908c2bc0c17a4254ebd389730bf975</srcmd5>
+    <version>1.6.0</version>
+    <time>1577972418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760030</requestid>
+  </revision>
 </revisionlist>

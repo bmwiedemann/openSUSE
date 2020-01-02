@@ -43,4 +43,12 @@
 - Build with ENABLE_LYD_PRIV=ON</comment>
     <requestid>758498</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>267428e516e28c4e037a956bbf601fb4</srcmd5>
+    <version>1.0r5</version>
+    <time>1577972477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760257</requestid>
+  </revision>
 </revisionlist>

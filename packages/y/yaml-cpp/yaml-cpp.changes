@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 17 14:57:04 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to 0.6.3:
+  * bug fixes
+  * CMake updates, now requiring 3.1
+- Remove merged patch to fix PIE build:
+  * yaml-cpp-fix-pie.patch
+
+-------------------------------------------------------------------
 Thu Aug  9 21:53:21 UTC 2018 - rpm@fthiessen.de
 
 - Update to 0.6.2:

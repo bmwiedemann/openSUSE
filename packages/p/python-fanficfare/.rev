@@ -163,4 +163,12 @@
   - Fix for 404 error on XF always_login. Closes #438</comment>
     <requestid>748964</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a623c2c2c9d56120b0ff7b7e9a46ce26</srcmd5>
+    <version>3.13.0</version>
+    <time>1577972646</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python2 build as it is no longer resolvable</comment>
+    <requestid>760388</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 26 08:22:55 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix the name of the Python bindings subpackage
+- Properly mark Python bindings subpackage as noarch
+
+-------------------------------------------------------------------
+Fri Dec 13 16:13:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0
+  * Latency based read child to improve read workload latency in
+    a cluster, especially in a cloud setup. Also provides a load
+    balancing with the outstanding pending request.
+  * Thin-arbiter integration with GD1.
+  * If a client older than glusterfs-4.x (i.e. 3.x clients)
+    accesses a volume which has the `fips-mode-rchecksum` volume
+    option enabled, it can cause erroneous checksum computation/
+    unwanted behaviour during afr self-heal.
+
+-------------------------------------------------------------------
 Wed Apr 24 08:59:02 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Move definition of _lto_cflags into %build.

@@ -1,7 +1,7 @@
 #
 # spec file for package libraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,15 @@
 %define lver    19
 %define lname	libraw%{lver}
 Name:           libraw
-Version:        0.19.2
+Version:        0.19.5
 Release:        0
 Summary:        Library for reading RAW files obtained from digital photo cameras
 License:        CDDL-1.0 OR LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://www.libraw.org/
+URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source:         https://www.libraw.org/data/%tar_name-%version.tar.gz
 Patch1:         libraw-Add-Sony-ILCE-7M3.patch
-Patch2:         libraw-half-size-allocation-buffer-overflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -103,7 +102,6 @@ against LibRaw. LibRaw does not provide dynamic libraries.
 %prep
 %setup -q -n %{tar_name}-%{version}
 %patch1 -p1
-%patch2 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

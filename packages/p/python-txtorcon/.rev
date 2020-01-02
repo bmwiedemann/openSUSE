@@ -50,4 +50,12 @@
   * python-txtorcon-methods-are-bytes.patch</comment>
     <requestid>731285</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9704c2cd068d11a5738989d7055f30e5</srcmd5>
+    <version>19.1.0</version>
+    <time>1577972590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760367</requestid>
+  </revision>
 </revisionlist>

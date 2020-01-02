@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-cfa
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 %define mod_name cfa
 %define mod_full_name %{mod_name}-%{version}

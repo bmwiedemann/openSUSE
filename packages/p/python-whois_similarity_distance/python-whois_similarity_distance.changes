@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  2 10:15:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable python2 build as python-tld is py3 only nowdays
+
+-------------------------------------------------------------------
 Tue Dec  4 12:56:03 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

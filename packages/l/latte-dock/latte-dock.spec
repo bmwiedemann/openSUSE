@@ -19,15 +19,13 @@
 
 %define kf5_version 5.38.0
 Name:           latte-dock
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Task manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://phabricator.kde.org/source/latte-dock/
 Source:         https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch:          Fixed-compile-with-qt-5.9.patch
 BuildRequires:  fdupes
 BuildRequires:  libSM-devel
 BuildRequires:  pkgconfig
@@ -70,7 +68,6 @@ contents by using parabolic zoom effect.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %if 0%{?suse_version} <= 1315

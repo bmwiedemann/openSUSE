@@ -1,0 +1,39 @@
+From 3b9e39dab5ebfb525b4437a644fe54569e419874 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 13 Dec 2019 21:23:52 +0100
+Subject: [PATCH 25/30] topology: use list_insert() macro in tplg_elem_insert()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/elem.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/topology/elem.c b/src/topology/elem.c
+index a9d1d8547bd2..2066fad83774 100644
+--- a/src/topology/elem.c
++++ b/src/topology/elem.c
+@@ -131,7 +131,7 @@ struct tplg_elem *tplg_elem_lookup(struct list_head *base, const char* id,
+ 	return NULL;
+ }
+ 
+-/* insert a new element into list in the ascending order of index value*/
++/* insert a new element into list in the ascending order of index value */
+ static void tplg_elem_insert(struct tplg_elem *elem_p, struct list_head *list)
+ {
+ 	struct list_head *pos, *p = &(elem_p->list);
+@@ -142,10 +142,8 @@ static void tplg_elem_insert(struct tplg_elem *elem_p, struct list_head *list)
+ 		if (elem_p->index < elem->index)
+ 			break;
+ 	}
+-	p->prev = pos->prev;
+-	pos->prev->next = p;
+-	pos->prev = p;
+-	p->next = pos;
++	/* insert item before pos */
++	list_insert(p, pos->prev, pos);
+ }
+ 
+ /* create a new common element and object */
+-- 
+2.16.4
+
