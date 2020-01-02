@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 
 %define libname libflatpak0
 Name:           flatpak
-Version:        1.4.3
+Version:        1.6.0
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -42,7 +42,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        system-user-flatpak.conf
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
-BuildRequires:  bubblewrap >= 0.2.1
+BuildRequires:  bubblewrap >= 0.4.0
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.35.0
@@ -140,24 +140,21 @@ more information.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
-
-# UPSTREAM: https://github.com/flatpak/flatpak/pull/2963
-mv doc/reference/libflapak-docs.xml doc/reference/libflatpak-docs.xml
 
 %build
 %define _lto_cflags %{nil}
 NOCONFIGURE=1 ./autogen.sh
 %configure \
-    --disable-silent-rules \
-    --enable-gtk-doc \
-    --disable-document-portal \
-    --with-system-bubblewrap \
-    --with-priv-mode=none \
-    --with-dbus-config-dir=%{_dbusconfigdir}
-make %{?_smp_mflags}
+	--disable-silent-rules \
+	--enable-gtk-doc \
+	--disable-document-portal \
+	--with-system-bubblewrap \
+	--with-priv-mode=none \
+	--with-dbus-config-dir=%{_dbusconfigdir} \
+	%{nil}
+%make_build
 %sysusers_generate_pre %{SOURCE1} system-user-flatpak
 
 %install
@@ -243,8 +240,13 @@ mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 %{_userunitdir}/flatpak-portal.service
 %ghost %dir %{_localstatedir}/lib/flatpak
 %if %{support_environment_generators}
+%dir %{_libexecdir}/systemd/user-environment-generators
 %{_libexecdir}/systemd/user-environment-generators/60-flatpak
 %endif
+%{_libexecdir}/flatpak-oci-authenticator
+%{_userunitdir}/flatpak-oci-authenticator.service
+%{_datadir}/dbus-1/interfaces/org.freedesktop.Flatpak.Authenticator.xml
+%{_datadir}/dbus-1/services/org.flatpak.Authenticator.Oci.service
 
 %files -n system-user-flatpak
 %{_sysusersdir}/system-user-flatpak.conf
