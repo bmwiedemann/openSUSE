@@ -1,7 +1,7 @@
 #
 # spec file for package libupnp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,19 +17,18 @@
 #
 
 
-%define pnpver 13
-%define ixmlver 10
+%define pnpver 15
+%define ixmlver 11
 Name:           libupnp
-Version:        1.8.4
+Version:        1.10.1
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/mrjimenez/pupnp
-Source0:        https://downloads.sourceforge.net/pupnp/libupnp-%{version}.tar.bz2
-Source1:        https://downloads.sourceforge.net/pupnp/libupnp-%{version}.tar.bz2.sha1
+Source0:        https://github.com/pupnp/pupnp/releases/download/release-%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://github.com/pupnp/pupnp/releases/download/release-%{version}/%{name}-%{version}.tar.bz2.sha1
 Source42:       baselibs.conf
-Patch0:         libupnp-configure.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
@@ -68,11 +67,9 @@ systems.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # the openssl simply does not compile
-autoreconf -fiv
 %configure \
     --disable-samples \
     --enable-ipv6 \

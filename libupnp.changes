@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 30 14:37:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.1:
+  + Fix format string for ExtraHeaders.
+  + Use higher port when reuseaddr is set and the default port is
+    busy (boo#1132829).
+- Drop libupnp-configure.patch: patch seems no longer needed (patch
+  was added before 2013 and only ever rebased without validating
+  its usefulness).
+- Drop libtool BuildRequires and no longer call autoreconf: since
+  we have no patch left, there is no need to bootstrap.
+- Bump libpnpn defines to 15 and libixmlver to 11, following
+  upstream chanes (also in baselibs.conf).
+
+-------------------------------------------------------------------
 Thu Nov 29 19:32:02 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions. "Portable" is part of the proper noun,
