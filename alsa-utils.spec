@@ -36,6 +36,7 @@ BuildRequires:  fftw3-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-docutils
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -90,6 +91,7 @@ rm -f %{buildroot}%{_sbindir}/alsaconf
 rm -f %{buildroot}%{_datadir}/locale/*/*/alsaconf.mo
 rm -f %{buildroot}%{_mandir}/*/man*/alsaconf.*
 rm -f %{buildroot}%{_mandir}/man*/alsaconf.*
+rmdir --ignore-fail-on-non-empty -p %{buildroot}%{_mandir}/*/man* %{buildroot}%{_mandir}/man*
 %find_lang %{name} --all-name
 ln -s alsa-restore.service %{buildroot}%{_unitdir}/alsasound.service
 mkdir -p %{buildroot}%{_localstatedir}/lib/alsa
@@ -113,11 +115,10 @@ install -c -m 0755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts
 
 %files -f %{name}.lang
 %license COPYING
-%doc ChangeLog INSTALL README.md TODO
+%doc README.md
 %doc seq/aconnect/README*
 %doc seq/aseqnet/README*
 %{_mandir}/man*/*
-%{_mandir}/fr
 %{_bindir}/*
 %{_sbindir}/*
 %exclude %{_bindir}/alsabat
