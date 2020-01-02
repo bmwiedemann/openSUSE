@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  2 10:03:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip python2 build as it is no longer resolvable
+
+-------------------------------------------------------------------
 Fri Nov 15 20:46:24 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.13.0:
