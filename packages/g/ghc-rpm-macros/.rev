@@ -378,4 +378,12 @@ Fix macros to generate file permissions</comment>
  - drop no-selfbootstrap-check.patch</comment>
     <requestid>759906</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>ae11ba315b247e0202eea5f94b9d50d1</srcmd5>
+    <version>1.9.90</version>
+    <time>1578069345</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>760297</requestid>
+  </revision>
 </revisionlist>
