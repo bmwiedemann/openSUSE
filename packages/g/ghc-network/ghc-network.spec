@@ -19,7 +19,7 @@
 %global pkg_name network
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.8.0.1
+Version:        3.1.1.1
 Release:        0
 Summary:        Low-level networking interface
 License:        BSD-3-Clause
@@ -27,21 +27,32 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-unix-devel
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-hspec-devel
 %endif
 
 %description
 This package provides a low-level networking interface.
 
-In network-2.6 the 'Network.URI' module was split off into its own package,
-network-uri-2.6. If you're using the 'Network.URI' module you can automatically
-get it from the right package by adding this to your .cabal file:
+=== High-Level Packages Other packages provide higher level interfaces:
+
+* connection * hookup * network-simple
+
+=== Extended Packages 'network' seeks to provide a cross-platform core for
+networking. As such some APIs live in extended libraries. Packages in the
+'network' ecosystem are often prefixed with 'network-'.
+
+==== 'network-bsd' In 'network-3.0.0.0' the 'Network.BSD' module was split off
+into its own package, 'network-bsd-3.0.0.0'.
+
+==== 'network-uri' In 'network-2.6' the 'Network.URI' module was split off into
+its own package, 'network-uri-2.6'. If you're using the 'Network.URI' module
+you can automatically get it from the right package by adding this to your
+'.cabal' file:
 
 > library > build-depends: network-uri-flag.
 
