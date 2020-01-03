@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Dec 29 10:27:08 UTC 2019 - psimons@suse.com
+
+- Update pandoc to version 2.9.1.
+
+  * Add Jira reader (Albert Krewinkel, #5556).
+
+  * Jira writer: use jira-wiki-markup renderer (Albert Krewinkel,
+    #5926). The following improvements are included in this change:
+
+    + non-jira raw blocks are fully discarded instead of showing
+      as blank lines;
+    + table cells can contain multiple blocks;
+    + unnecessary blank lines are removed from the output;
+    + markup chars within words are properly surrounded by
+      braces;
+    + preserving soft linebreaks via `--wrap=preserve` is
+      supported.
+
+    Note that backslashes are rendered as HTML entities, as there
+    appears no alternative to produce a plain backslash if it is
+    followed by markup. This may cause problems when used with
+    confluence, where rendering seems to fail in this case.
+
+  * Fix regression with `--number-sections`. Starting with 2.8,
+    `--number-sections` also had the effect of `--section-divs`,
+    even if `--section-divs` was not specified.
+
+  * Improved table of contents generation in markdown, RTF,
+    commonmark, better handling cases where section headings are
+    enclosed in divs.
+
+  * Ensure that later default file values for `variable` replace
+    earlier ones (5988).
+
+  * HTML reader: Add `nav` to list of block-level tags.
+
+  * Org reader (Albert Krewinkel):
+
+    + Wrap named table in Div, using name as id (#5984).
+      Tables which are given a name via `#+NAME:` or `#+LABEL:`
+      are wrapped in an additional Div, with the name set as the
+      Div's ID.
+    + Report parsing errors properly.
+    + Fix parsing problem for colons in headline (#5993).
+
+  * Text.Pandoc.PDF: Ensure UTF8 when printing source in
+    `--verbose` mode, avoiding an error on platforms that
+    default to something other than UTF-8 (#5997).
+
+  * Text.Pandoc.Templates: Strip directory before trying to find
+    partial in data files (#5987).
+
+  * Text.Pandoc.Shared: Improve `makeSections` so we don't get
+    doubled "number" attributes in EPUB output (or anywhere
+    else) (#5986).
+
+  * Added tests for `--toc` and `--section-divs`.
+
+  * Text.Pandoc.MIME: Added glsl MIME type for WebGL maps (#6000,
+    Jared Lander).
+
+  * MANUAL: A bit clearer explanation for `--base-header-level`.
+    We now say exactly how to translate between the deprecated
+    `--base-header-level` and `--shift-heading-level-by`.
+
+  * lua-filters.md:
+
+    + Remove spurious dot in title (#5996, Mauro Bieg).
+    + Replace metadata example with image centering (#6004,
+      Albert Krewinkel). Thanks to @efx for proposing this filter.
+
+-------------------------------------------------------------------
 Fri Dec 13 09:58:42 UTC 2019 - psimons@suse.com
 
 - Update pandoc to version 2.9.

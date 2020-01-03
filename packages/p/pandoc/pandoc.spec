@@ -19,13 +19,12 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.9
+Version:        2.9.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source10:       pandoc-pdf.readme
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  ghc-Cabal-devel
@@ -61,6 +60,7 @@ BuildRequires:  ghc-http-client-devel
 BuildRequires:  ghc-http-client-tls-devel
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-ipynb-devel
+BuildRequires:  ghc-jira-wiki-markup-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-uri-devel
@@ -103,33 +103,22 @@ BuildRequires:  ghc-tasty-quickcheck-devel
 Pandoc is a Haskell library for converting from one markup format to another,
 and a command-line tool that uses this library. It can read several dialects of
 Markdown and (subsets of) HTML, reStructuredText, LaTeX, DocBook, JATS,
-MediaWiki markup, DokuWiki markup, TWiki markup, TikiWiki markup, Creole 1.0,
-Haddock markup, OPML, Emacs Org-Mode, Emacs Muse, txt2tags, ipynb (Jupyter
-notebooks), Vimwiki, Word Docx, ODT, EPUB, FictionBook2, roff man, and Textile,
-and it can write Markdown, reStructuredText, XHTML, HTML 5, LaTeX, ConTeXt,
-DocBook, JATS, OPML, TEI, OpenDocument, ODT, Word docx, PowerPoint pptx, RTF,
-MediaWiki, DokuWiki, XWiki, ZimWiki, Textile, Jira, roff man, roff ms, plain
-text, Emacs Org-Mode, AsciiDoc, Haddock markup, EPUB (v2 and v3), ipynb,
-FictionBook2, InDesign ICML, Muse, LaTeX beamer slides, and several kinds of
-HTML/JavaScript slide shows (S5, Slidy, Slideous, DZSlides, reveal.js).
+MediaWiki markup, DokuWiki markup, TWiki markup, TikiWiki markup, Jira markup,
+Creole 1.0, Haddock markup, OPML, Emacs Org-Mode, Emacs Muse, txt2tags, ipynb
+(Jupyter notebooks), Vimwiki, Word Docx, ODT, EPUB, FictionBook2, roff man, and
+Textile, and it can write Markdown, reStructuredText, XHTML, HTML 5, LaTeX,
+ConTeXt, DocBook, JATS, OPML, TEI, OpenDocument, ODT, Word docx, PowerPoint
+pptx, RTF, MediaWiki, DokuWiki, XWiki, ZimWiki, Textile, Jira, roff man, roff
+ms, plain text, Emacs Org-Mode, AsciiDoc, Haddock markup, EPUB (v2 and v3),
+ipynb, FictionBook2, InDesign ICML, Muse, LaTeX beamer slides, and several
+kinds of HTML/JavaScript slide shows (S5, Slidy, Slideous, DZSlides,
+reveal.js).
 
 In contrast to most existing tools for converting Markdown to HTML, pandoc has
 a modular design: it consists of a set of readers, which parse text in a given
 format and produce a native representation of the document, and a set of
 writers, which convert this native representation into a target format.
 Thus, adding an input or output format requires only adding a reader or writer.
-
-%if 0%{?is_opensuse}
-%package pdf
-Summary:        Meta package for support generating pdf with pandoc
-Requires:       %{name} = %{version}
-Requires:       texlive-latex-bin-bin
-# bsc#1014590
-Requires:       texlive-upquote
-
-%description pdf
-Meta package for support generating pdf with pandoc.
-%endif
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
@@ -149,7 +138,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
-cp %{SOURCE10} .
 
 %build
 %ghc_lib_build
@@ -159,7 +147,6 @@ cp %{SOURCE10} .
 %ghc_fix_rpath %{pkg_name}-%{version}
 # Link duplicate template files
 %fdupes %{buildroot}%{_datadir}/%{pkg_name}-%{version}/data/templates/
-install -D -m444 man/pandoc.1 %{buildroot}%{_mandir}/man1/pandoc.1
 
 %check
 %cabal_test
@@ -330,12 +317,6 @@ install -D -m444 man/pandoc.1 %{buildroot}%{_mandir}/man1/pandoc.1
 %{_datadir}/%{name}-%{version}/data/templates/default.zimwiki
 %{_datadir}/%{name}-%{version}/data/templates/styles.html
 %{_datadir}/%{name}-%{version}/data/translations/*.yaml
-%{_mandir}/man1/pandoc.1%{?ext_man}
-
-%if 0%{?is_opensuse}
-%files pdf
-%doc pandoc-pdf.readme
-%endif
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license COPYING.md
