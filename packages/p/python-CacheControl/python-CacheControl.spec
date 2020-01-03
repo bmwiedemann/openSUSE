@@ -1,7 +1,7 @@
 #
 # spec file for package python-CacheControl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-CacheControl
-Version:        0.12.5
+Version:        0.12.6
 Release:        0
-Summary:        httplib2 caching for requests
+Summary:        Caching library for Python requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ionrock/cachecontrol
-Source:         https://github.com/ionrock/cachecontrol/archive/v0.12.5.tar.gz#/CacheControl-%{version}.tar.gz
-Patch0:         pytest4.patch
+Source:         https://github.com/ionrock/cachecontrol/archive/v%{version}.tar.gz#/CacheControl-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,7 +51,6 @@ requests session object.
 
 %prep
 %setup -q -n cachecontrol-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -62,8 +60,8 @@ requests session object.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# These two failures are possibly bugs needing investigation
-PYTHONPATH=%{buildroot}%{python3_sitelib} py.test-%{python3_bin_suffix} -v -k 'not test_file_cache_recognizes_consumed_file_handle and not test_etags_get_example'
+# test_file_cache_recognizes_consumed_file_handle uses httpbin.org directly
+PYTHONPATH=%{buildroot}%{python3_sitelib} py.test-%{python3_bin_suffix} -v -k 'not test_file_cache_recognizes_consumed_file_handle'
 
 %files %{python_files}
 %license LICENSE.txt

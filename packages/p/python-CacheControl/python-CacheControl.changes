@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  2 11:57:41 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop merged pytest4.patch
+- Add explanation of one test failure
+- Remove mention of httplib2 from package summary
+- Update to v0.12.6
+  * Test if cache is None before falling back to DictCache
+  * Fixed body in 304 response to etag request
+  * Added check for "*" value in Vary header
+  * Make v4 cache compatible with msgpack 1.0 in the future
+
+-------------------------------------------------------------------
 Fri Nov  1 09:31:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with new pytest:
