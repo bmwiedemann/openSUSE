@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  2 15:18:41 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to current version from git
+  * new support for VYUY format
+  * new bayer formats
+  * WebP output support
+  * update videodev2.h header
+  * optflags are taken into account
+  * documentation and build env updates
+- fix URL references
+
+-------------------------------------------------------------------
 Tue Jul  1 07:48:08 UTC 2014 - adrian@suse.de
 
 - initial package of version 20140113

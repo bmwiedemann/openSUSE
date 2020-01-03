@@ -1,7 +1,7 @@
 #
 # spec file for package fswebcam
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Summary:        Tiny and flexible webcam program
-License:        GPL-2.0
-Group:          Applications/Multimedia
+License:        GPL-2.0-only
 Name:           fswebcam
-Version:        20140113
+Version:        20190307
 Release:        0
-Source0:        http://www.firestorm.cx/fswebcam/files/fswebcam-%{version}.tar.xz
-Url:            http://www.firestorm.cx/fswebcam/
+Source0:        fswebcam-%{version}.tar.xz
+Url:            http://www.sanslogic.co.uk/fswebcam/
 BuildRequires:  gd-devel > 2
 Requires:       gd > 2
-%if 0%{?suse_version} < 1120
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  xz
-%endif
 
 %description
 Tiny and flexible webcam program for capturing images from a V4L1/V4L2
 device, and overlaying a caption or image.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %configure
@@ -46,8 +41,8 @@ make %{?_smp_mflags}
 make DESTDIR="%{buildroot}" install
 
 %files
-%defattr(-,root,root)
-%doc README CHANGELOG LICENSE example.conf
+%license LICENSE
+%doc README CHANGELOG example.conf
 %{_bindir}/fswebcam
 %{_mandir}/man1/fswebcam.1.gz
 

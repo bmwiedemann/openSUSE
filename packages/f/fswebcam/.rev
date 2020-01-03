@@ -15,4 +15,19 @@ scripts, eg. for time laps movies or surveillance</comment>
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8774e7da278dbe483bcbf0bfe62ab29</srcmd5>
+    <version>20190307</version>
+    <time>1578069410</time>
+    <user>dimstar_suse</user>
+    <comment>- update to current version from git
+  * new support for VYUY format
+  * new bayer formats
+  * WebP output support
+  * update videodev2.h header
+  * optflags are taken into account
+  * documentation and build env updates
+- fix URL references</comment>
+    <requestid>760453</requestid>
+  </revision>
 </revisionlist>
