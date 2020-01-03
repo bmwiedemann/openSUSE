@@ -1,7 +1,7 @@
 #
 # spec file for package uranium
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           uranium
-Version:        4.3.0
+Version:        4.4.1
 Release:        0
 Summary:        Python framework for Desktop applications
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
-Url:            http://github.com/Ultimaker/Uranium
+URL:            http://github.com/Ultimaker/Uranium
 Source0:        Uranium-%{version}.tar.xz
 # X-OPENSUSE-FIX fix cmake install directory.
 Patch1:         fix-cmake-install.patch
