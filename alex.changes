@@ -1,20 +1,16 @@
 -------------------------------------------------------------------
-Fri Nov  8 16:13:07 UTC 2019 - Peter Simons <psimons@suse.com>
+Thu Nov  7 06:42:07 UTC 2019 - psimons@suse.com
 
 - Drop obsolete group attributes.
 
--------------------------------------------------------------------
-Thu Nov  7 06:42:07 UTC 2019 - psimons@suse.com
-
 - Update alex to version 3.2.5.
-  ## Changes in 3.2.5:
-
-   * Build fixes for GHC 8.8.x
+  * Build fixes for GHC 8.8.x. This allows us to run the test
+    suite again.
 
 -------------------------------------------------------------------
 Wed Nov 28 10:15:25 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Disable tests on aarch64 as they are broken. 
+- Disable tests on aarch64 as they are broken.
   See: https://github.com/simonmar/alex/issues/130
 
 -------------------------------------------------------------------
