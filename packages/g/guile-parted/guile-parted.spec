@@ -17,7 +17,7 @@
 
 
 Name:           guile-parted
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Guile bindings to Parted
 License:        GPL-3.0-or-later
@@ -50,6 +50,8 @@ make %{?_smp_mflags}
 %make_install
 
 %files
+%doc README.org
+%license COPYING
 %{_datadir}/guile/*
 %{_libdir}/guile/*
 

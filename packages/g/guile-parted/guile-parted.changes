@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:59:07 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 0.0.2:
+  * Add unit tests.
+  * Add a README file.
+  * Add pointer finalizers.
+  * Add partition type and partition helpers.
+  * Rename make-geometry to geometry-new.
+  * Remove functions freeing pointers such as disk-destroy.
+- Install README.org and COPYING.
+
+-------------------------------------------------------------------
 Fri Apr 26 12:51:35 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - add missing guile-parted-rpmlintrc as source 
