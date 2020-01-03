@@ -1,7 +1,7 @@
 #
 # spec file for package edict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           edict
-Version:        20190313
+Version:        20191016
 Release:        0
 Summary:        The Japanese Dictionary from the EDRDG project (EDICT format)
 License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0
-Group:          System/I18n/Japanese
-Url:            http://www.edrdg.org/jmdict/edict.html
+Group:          dictionary japanese
+URL:            http://www.edrdg.org/jmdict/edict.html
 # The files change daily, so we do not include their full URL here,
 # but do see download_dicts.sh.
 Source:         JMdict.gz
@@ -39,8 +39,6 @@ Source97:       download_dicts.sh
 Source98:       http://www.edrdg.org/edrdg/licence.html
 Source99:       http://www.kanji.org/kanji/dictionaries/skip_permission.htm
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Provides:       locale(ja)
 
 %description
 JMdict/EDICT is a machine-readable multilingual Japanese dictionary.
@@ -113,7 +111,7 @@ done
 popd
 
 %files
-%doc licence.html skip_permission.htm
+%license licence.html skip_permission.htm
 %dir %_datadir/edict/
 %_datadir/edict/edict
 %_datadir/edict/enamdict
@@ -124,13 +122,13 @@ popd
 %_datadir/edict/radkfile
 
 %files -n jmdict
-%doc licence.html
+%license licence.html
 %dir %_datadir/edict/
 %_datadir/edict/JMdict
 %_datadir/edict/kanjidic2.xml
 
 %files -n edict2
-%doc licence.html
+%license licence.html
 %dir %_datadir/edict/
 %_datadir/edict/edict2u
 
