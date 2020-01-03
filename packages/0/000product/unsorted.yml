@@ -3616,6 +3616,7 @@ unsorted:
   - geoclue2-devel 
   - geocode-glib-devel 
   - geoipupdate 
+  - geolite2legacy 
   - geos-devel 
   - geotiff 
   - geotiff-devel 
@@ -3783,6 +3784,7 @@ unsorted:
   - ghc-blaze-markup 
   - ghc-blaze-markup-devel 
   - ghc-bootstrap 
+  - ghc-bootstrap-helpers: [x86_64] 
   - ghc-byteable 
   - ghc-byteable-devel 
   - ghc-bytestring 
@@ -3914,6 +3916,8 @@ unsorted:
   - ghc-ghc-heap-devel 
   - ghc-ghci 
   - ghc-ghci-devel 
+  - ghc-githash 
+  - ghc-githash-devel 
   - ghc-gitrev 
   - ghc-gitrev-devel 
   - ghc-hackage-security 
@@ -3924,8 +3928,6 @@ unsorted:
   - ghc-hashable-devel 
   - ghc-haskeline 
   - ghc-haskeline-devel 
-  - ghc-haskell-src-exts 
-  - ghc-haskell-src-exts-devel 
   - ghc-hi-file-parser 
   - ghc-hi-file-parser-devel 
   - ghc-hinotify 
@@ -3990,8 +3992,8 @@ unsorted:
   - ghc-iso8601-time-devel 
   - ghc-iwlib 
   - ghc-iwlib-devel 
-  - ghc-json 
-  - ghc-json-devel 
+  - ghc-jira-wiki-markup 
+  - ghc-jira-wiki-markup-devel 
   - ghc-kan-extensions 
   - ghc-kan-extensions-devel 
   - ghc-lens 
@@ -4065,8 +4067,6 @@ unsorted:
   - ghc-pandoc-devel 
   - ghc-pandoc-types 
   - ghc-pandoc-types-devel 
-  - ghc-pantry 
-  - ghc-pantry-devel 
   - ghc-parallel 
   - ghc-parallel-devel 
   - ghc-parsec 
@@ -4169,8 +4169,6 @@ unsorted:
   - ghc-split-devel 
   - ghc-splitmix 
   - ghc-splitmix-devel 
-  - ghc-stack 
-  - ghc-stack-devel 
   - ghc-stm 
   - ghc-stm-chans 
   - ghc-stm-chans-devel 
@@ -4265,8 +4263,6 @@ unsorted:
   - ghc-unliftio-devel 
   - ghc-unordered-containers 
   - ghc-unordered-containers-devel 
-  - ghc-uri-bytestring 
-  - ghc-uri-bytestring-devel 
   - ghc-utf8-string 
   - ghc-utf8-string-devel 
   - ghc-uuid-types 
@@ -4281,6 +4277,8 @@ unsorted:
   - ghc-vector-th-unbox-devel 
   - ghc-void 
   - ghc-void-devel 
+  - ghc-word8 
+  - ghc-word8-devel 
   - ghc-x509 
   - ghc-x509-devel 
   - ghc-x509-store 
@@ -4994,6 +4992,7 @@ unsorted:
   - gtk-doc-lang 
   - gtk-frdp-devel 
   - gtk-key-theme-ctrluftw 
+  - gtk-layer-shell-devel 
   - gtk-recordMyDesktop 
   - gtk-recordMyDesktop-lang 
   - gtk-sharp-beans 
@@ -9246,6 +9245,7 @@ unsorted:
   - libgtk-4-0 
   - libgtk-4-0-32bit: [x86_64] 
   - libgtk-frdp-0_1 
+  - libgtk-layer-shell0 
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-0 
   - libgtkdatabox-devel 
@@ -18665,7 +18665,6 @@ unsorted:
   - python2-iocapture 
   - python2-ioflo 
   - python2-ipaddr 
-  - python2-ipdb 
   - python2-iptables 
   - python2-ipy 
   - python2-ipykernel 
@@ -18730,7 +18729,6 @@ unsorted:
   - python2-jupyter-client 
   - python2-jupyter-core 
   - python2-jupyter-packaging 
-  - python2-jupyter-sphinx 
   - python2-jwcrypto 
   - python2-k5test 
   - python2-kafka-python 
@@ -18900,8 +18898,6 @@ unsorted:
   - python2-napalm-procurve 
   - python2-nbconvert 
   - python2-nbformat 
-  - python2-nbindex-jupyter 
-  - python2-nbsmoke 
   - python2-nbxmpp 
   - python2-nbxmpp-doc 
   - python2-ncclient 
@@ -19836,7 +19832,6 @@ unsorted:
   - python2-warlock 
   - python2-watchdog 
   - python2-watchdog-doc 
-  - python2-watermark 
   - python2-wcwidth 
   - python2-weave 
   - python2-web.py 
@@ -22713,6 +22708,7 @@ unsorted:
   - qtodotxt 
   - qtox 
   - qtractor 
+  - qtxdg-tools 
   - quagga-devel 
   - quakespasm 
   - quantum-espresso: [x86_64] 
@@ -22768,6 +22764,9 @@ unsorted:
   - ragel 
   - ragel-6 
   - ragel-devel 
+  - rainbow 
+  - rainbow-bash-completion 
+  - rainbow-zsh-completion 
   - rakudo 
   - raleway-fonts 
   - ranger 
@@ -24462,7 +24461,6 @@ unsorted:
   - sssd-wbclient 
   - sssd-wbclient-devel 
   - sssd-winbind-idmap 
-  - stack 
   - staging-build-key 
   - stalonetray 
   - stan 
@@ -32605,6 +32603,7 @@ unsorted:
   - typelib-1_0-Gtk-2_0 
   - typelib-1_0-Gtk-4_0 
   - typelib-1_0-GtkFrdp-0_1 
+  - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
@@ -33045,6 +33044,7 @@ unsorted:
   - vodovod 
   - voikkospell 
   - vokoscreen 
+  - vokoscreenNG 
   - volk 
   - volk-devel 
   - volk_modtool 

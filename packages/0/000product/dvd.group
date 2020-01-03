@@ -456,7 +456,7 @@
     <package name="e2fsprogs-scrub" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ebtables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="edict" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="edict" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="edict2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="eekboard" supportstatus="unsupported"/> <!-- reason: dvd:eekboard -->
     <package name="efont-unicode-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
