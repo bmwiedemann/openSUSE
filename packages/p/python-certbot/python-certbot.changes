@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  3 11:16:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.0.0 (boo#1160066)
+  * certbot-auto has deprecated support for systems using OpenSSL 1.0.1 
+    that are not running on x86-64.
+  * Certbot's config_changes subcommand has been removed
+  * certbot.plugins.common.TLSSNI01 has been removed.
+  * The functions certbot.client.view_config_changes,
+    certbot.main.config_changes,
+    certbot.plugins.common.Installer.view_config_changes,
+    certbot.reverter.Reverter.view_config_changes, and
+    certbot.util.get_systemd_os_info have been removed
+  * Certbot's register --update-registration subcommand has been removed
+  * When possible, default to automatically configuring the webserver so all requests
+    redirect to secure HTTPS access. This is mostly relevant when running Certbot
+    in non-interactive mode. Previously, the default was to not redirect all requests.
+
+-------------------------------------------------------------------
 Thu Nov 14 12:19:12 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.40.1

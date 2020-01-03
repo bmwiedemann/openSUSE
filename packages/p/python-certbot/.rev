@@ -186,4 +186,25 @@
     <comment>certbot version bump</comment>
     <requestid>748664</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7f1d8d8fffd4157f0549f413cf88e463</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069574</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0 (boo#1160066)
+  * certbot-auto has deprecated support for systems using OpenSSL 1.0.1 
+    that are not running on x86-64.
+  * Certbot's config_changes subcommand has been removed
+  * certbot.plugins.common.TLSSNI01 has been removed.
+  * The functions certbot.client.view_config_changes,
+    certbot.main.config_changes,
+    certbot.plugins.common.Installer.view_config_changes,
+    certbot.reverter.Reverter.view_config_changes, and
+    certbot.util.get_systemd_os_info have been removed
+  * Certbot's register --update-registration subcommand has been removed
+  * When possible, default to automatically configuring the webserver so all requests
+    redirect to secure HTTPS access. This is mostly relevant when running Certbot
+    in non-interactive mode. Previously, the default was to not redirect all requests.</comment>
+    <requestid>760673</requestid>
+  </revision>
 </revisionlist>
