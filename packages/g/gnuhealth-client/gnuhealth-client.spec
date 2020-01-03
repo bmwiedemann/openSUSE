@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2015-2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
