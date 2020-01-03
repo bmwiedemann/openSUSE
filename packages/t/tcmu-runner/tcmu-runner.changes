@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Thu Jan 02 23:19:36 UTC 2020 - lduncan@suse.com
+
+- Update to version 1.5.2:
+  * Bump version to 1.5.2
+  * Fix man unmap len reporting
+  * Bump version to 1.5.1.
+  * spec: fix build error
+  * Bump version to 1.5.0.
+  * Disable explicit alua support.
+  * Don't install headers.
+  * Add missing whatis entry for manpage
+  * Add link to tcmu-runner manpage from tcmu-runner.service
+  * Fix spelling s/Igoring/Ignoring/
+  * Fix spelling s/reseting/resetting/
+  * darray.h: avoid UB when decrementing zero pointer
+  * Log timed out commands
+  * lib/runner: Add helpers to convert lbas and bytes
+  * Check for optional handler callouts
+  * Drop unused tcmulib_cmd code
+  * Convert runner handlers and core code to tcmur_cmd
+  * Add tcmur-runner cmd struct
+  * Prep for separating runner fields from tcmulib_cmd
+  * tcmu-runner: simplify format unit io limit check
+  * Cleanup runner callout definitions
+  * runner: unbind aio code from tcmulib_cmd
+  * Set write_verify cbks in write_verify_init
+  * Set handle_caw_read_cbk in caw_init_readcmd
+  * Add tcmu-runner cmd completion function
+  * runner: fix up callout return info
+  * rename tcmur tcmulib command completion function
+  * libtcmu: Allow handlers to allocate n bytes with each command
+  * tcmur: remove useless code
+  * alua: fix pthread attr destroy
+  * tcmur: fix free of xcopy parse
+  * fbo: fix mutex destroy
+  * reconfig_device: add request cfg type to logs
+  * api: tcmu_cdb_print_info convert err log to debug
+  * tcmu: reconfig_device convert err log to debug
+  * tcmu: link libtcmalloc with libtcmu and handlers
+  * runner: fix crash during compound command execution
+  * cmake: set '-fno-builtin-XYZ' options when tcmalloc is used
+  * configfs: fix index out of bounds
+  * cmake: add a minor .so version number to libtcmu
+  * spec: track backuped files
+  * spec: update the spec file to fix the build error
+  * spec: pass the tcmalloc option to cmake command
+  * spec: switch to use rpm conditional switches
+  * extra: add gperftools-devel to install_dep script
+  * Optionally link against tcmalloc for improved small IO performance
+  * libtcmu_time: void header file include muti-times
+  * glfs: update the glfs logdir
+  * README: update to add uninstall
+  * lockfile: switch to use /run/tcmu.lock
+  * logrotate: fix duplicate log entry error
+  * Validate input for tcmu_log_dir_check()
+  * Fix parameter for tcmu_setup_log()
+  * Follow coding style, move leading brace
+  * Add method to query whether OOOC is supported
+  * glfs: fix build error for GFAPI version check
+  * glfs: add gfapi version check
+  * Fix unmap to handle refcount being 0
+  * fix typo in code
+  * rpm: remove %defattr
+  * rpm: remove %clean section
+  * rpm: use valid short name licenses in License field
+  * configfs: clean up the code
+  * Fix pthread error ret
+  * rbd: fix the error ret in tcmu_rbd_unlock
+  * Drop sense arg from tcmu_explicit_transition
+  * libtcmu: setup_netlink maybe failure but can't sensed
+  * Drop is_sync arg from tcmu_acquire_dev_lock
+  * Allow some commands to run while taking lock
+  * Drop in_lock_thread from __tcmu_reopen_dev
+  * Fix pthread error handling
+  * Check if device is opened before calling handler
+  * main: load_our_module maybe failure but can't sensed
+  * tcmu: clean up the code
+  * spec: fix building error
+  * logrotate: do not overwrite the exist config file
+  * logrotate: fix the install cmake file
+  * README: update and add the make_runnerrpm.sh info
+  * Fix 80 col formatting in def_log_path setup
+  * format-security: fix snprintf usage
+  * config: clean up the code
+  * Drop cfg path variable
+  * Switch some inotify messages from info to debug.
+  * libtcmu: carve-out library packages separately
+  * logger: skip resetting options if they match with current
+  * load_config: retry opening conf-file if the initial attempt fail
+  * cmake_install: backup old tcmu.conf version as tcmu.conf.old
+  * doc: update readme
+  * daemon: log start/exit msgs with crit level
+  * dyn-logger-config: honor the precedence
+  * main: organize the cleanup sequence
+  * config: deprecate tcmu_parse_config
+  * logger-init: honor the defaults when config key:value pair is commented
+  * config: cleanup few allocations and naming
+  * inotify: watch the directory not just file
+  * logger: check for -1 return value on open
+  * Call block/reset nl directly
+  * Call block/reset dev directly
+  * Fix up configfs file not found error message
+  * Move tcmu_get_runner_handler
+  * Build zbc/fbo with scsi.c
+  * Remove daemon priv hack
+  * Sync lbtmcu cmd and misc naming
+  * Sync libtcmu dev get/set naming
+  * Rename dev/nl block/reset cfgfs functions
+  * Rename tcmu_get_wwn to tcmu_cfgfs_dev_get_wwn
+  * Use uin32_t for cfgfs action values
+  * Rename tcmu_cfgfs_dev_get_attr to tcmu_cfgfs_dev_get_attr_int
+  * Drop tcmu_get_dev_size
+  * Drop tcmu_set_dev_size
+  * Rename tcmu_set_control to match cfgfs lib functions
+  * Use uin32_t instead of unsigned long for cfgfs lib function
+  * cfgfs: Add tcmu_cfgfs prefix to cfgfs lib functions
+  * lib: Update tcmulib_command_complete comments
+  * Partial revert of "libtcmu: do not install headers and drop libtcmu stable API"
+  * Revert "build: drop versionless libtcmu.so symlink"
+  * libtcmu: move tcmu_get_runner_handler into scsi.c
+  * libtcmu: move SCSI helpers out of libtcmu
+  * libtcmu: declare tcmu_cancel_thread in libtcmu_common.h
+  * libtcmu_log: get subtype from tcmulib_handler
+  * libtcmu_priv.h: drop unnecessary header files
+  * libtcmu: explicitly include tcmu-runner.h where necessary
+  * cmake: drop rsyslog build time check
+  * spec: remove changelog
+  * cmake: add rsyslog to dependencies list
+  * spec: add rsyslog to requires list
+  * systemd: start rsyslog.service before tcmu-runner.service
+  * config: do not update the logdir when it's commented in conf
+  * logger: add critical log level support
+  * libtcmu: remove useless parameter in remove_device
+  * spec-file: further changes to take options to ignore dependencies
+  * logrotate: add logrotate support for tcmu-runner-glfs.log
+  * tcmur: fix the unmap logging format
+  * glfs: add writesame support
+  * api: add zeroed iov check support
+  * tcmu: Fix CMake to install file_optical
+  * tcmu:fix extra backslash
+  * tcmu-runner.spec: fix the rpm build errors
+  * tcmu: Simplify command completion
+  * file_zbc: optionally build zbc handler
+  * file_zbc: fixed compile error under ppc64le
+  * Enable explicit alua support.
+
+  This replaced tcmu-runner-1.4.0.tar.xz with
+  tcmu-runner-1.5.2.tar.xz, and removed two patches that are
+  already in 1.5.2 so no longer needed:
+  * file_zbc-fixed-compile-error-under-ppc64le.patch
+  * file_zbc-optionally-build-zbc-handler.patch
+
+-------------------------------------------------------------------
 Tue Jun 18 17:15:22 UTC 2019 - David Disseldorp <ddiss@suse.com>
 
 - Move tcmu.conf into main package; (bsc#1138443)

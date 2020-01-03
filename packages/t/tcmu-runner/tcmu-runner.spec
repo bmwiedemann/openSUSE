@@ -1,7 +1,7 @@
 #
 # spec file for package tcmu-runner
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,10 @@
 %endif
 %endif
 
+%bcond_with tcmalloc
+
 Name:           tcmu-runner
-Version:        1.4.0
+Version:        1.5.2
 Release:        0
 Summary:        A userspace daemon that handles the LIO TCM-User backstore
 License:        Apache-2.0
@@ -42,12 +44,11 @@ Url:            https://github.com/agrover/%{name}
 Source:         %{name}-%{version}.tar.xz
 Patch1:         %{name}-handler_file-add-libtcmu.patch
 Patch2:         %{name}-remove-handler-path-install-prefix.patch
-Patch3:         file_zbc-fixed-compile-error-under-ppc64le.patch
-Patch4:         file_zbc-optionally-build-zbc-handler.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel
+BuildRequires:  gperftools-devel
 %if 0%{?build_handler_glusterfs}
 BuildRequires:  glusterfs-devel
 %endif
@@ -63,6 +64,10 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       libtcmu2 = %{version}
 Requires:       logrotate
+%if %{with tcmalloc}
+BuildRequires:  gperftools-devel
+Requires:       gperftools-libs
+%endif
 %{?systemd_requires}
 
 %description
@@ -132,8 +137,6 @@ file backstore in tcmu-runner.
 %setup
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 CMAKE_OPTIONS="\
@@ -153,6 +156,9 @@ CMAKE_OPTIONS="\
 %else
 	-Dwith-zbc=0 \
 %endif
+	-Dwith-qcow=1 \
+	-Dwith-fbo=0 \
+	%{?_without_tcmalloc:-Dwith-tcmalloc=false} \
 "
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
 	${CMAKE_OPTIONS}
@@ -204,7 +210,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctcmu-runner
 
 %files -n libtcmu2
 %defattr(-,root,root)
-%{_libdir}/libtcmu.so.2
+%{_libdir}/libtcmu.so*
 
 %if 0%{?build_handler_glusterfs}
 %files handler-glusterfs

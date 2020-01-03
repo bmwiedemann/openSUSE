@@ -1,10 +1,18 @@
+From David Disseldorp <ddiss@suse.com>
+Date: Tue May 21 13:48:20 UTC 2019
+Subject: tcmu-runner: handler_file: add libtcmu
+Patch-mainline: never (SUSE-specific)
+References: bsc#1135815
+
+Add explicit libtcmu package dependency to avoid incorrect
+upstream ".so" versioning.
 ---
  CMakeLists.txt |    1 +
  1 file changed, 1 insertion(+)
 
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -146,6 +146,7 @@ add_library(handler_file
+@@ -161,6 +161,7 @@ add_library(handler_file
    SHARED
    file_example.c
    )
