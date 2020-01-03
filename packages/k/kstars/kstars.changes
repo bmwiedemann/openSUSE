@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan  2 09:59:22 UTC 2020 - wbauer@tmo.at
+
+- Update to 3.3.9
+  * http://knro.blogspot.com/2020/01/kstars-v339-is-released.html
+  * Implemented adjustable and fast stretch controls for mono and
+    color images within the FITS Viewer
+  * New experimental linear focusing algorithm
+  * Improved Focus Module in Ekos by adding autofocus support for
+    DSLR's that use manualfocusdrive command by gphoto instead of
+    rel_focus_position, for example Nikon Z6
+  * Added new western Sky Culture
+  * Bugfix for re-connecting a weather device initializes the
+    weather display
+  * Fix off-by-one bug in stretch
+  * Fix minor EBN issues
+  * Account for exposure less than 0.001 seconds in the file name
+  * Making the Columns in the Align view resize automatically
+  * Add markers for the documentation configuration pages, add some
+    info about sky cultures
+  * Abort plate solving when slewing is detected
+  * Fix crash when focused object is either asteroid or comet and
+    the data is loaded
+  * Fix bug re filter-change-autofocus
+  * Reset guiding calibration if the mount moves and "Always Reset
+    Guide Calibration" option is set
+
+-------------------------------------------------------------------
 Mon Nov 18 10:50:59 UTC 2019 - wbauer@tmo.at
 
 - Update to 3.3.8

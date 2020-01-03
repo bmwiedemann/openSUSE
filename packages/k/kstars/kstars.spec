@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kstars
-Version:        3.3.8
+Version:        3.3.9
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -100,7 +100,7 @@ rm -f %{buildroot}%{_kf5_libdir}/libhtmesh.a
 
 %files
 %license COPYING COPYING.DOC
-%doc AUTHORS ChangeLog README README.customize README.ephemerides README.images
+%doc AUTHORS ChangeLog README.md README.customize README.ephemerides README.images
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_configkcfgdir}
 %doc %{_kf5_htmldir}/en/kstars/
