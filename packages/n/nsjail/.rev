@@ -23,4 +23,12 @@
     <comment>- Fixed ExclusiveArch: to correct architecture (forwarded request 684097 from jsegitz)</comment>
     <requestid>684098</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1a859e88cc7e1672505ab1e8e9ee4304</srcmd5>
+    <version>2.8</version>
+    <time>1578069494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760584</requestid>
+  </revision>
 </revisionlist>

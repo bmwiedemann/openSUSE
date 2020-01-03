@@ -1,7 +1,7 @@
 #
 # spec file for package nsjail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,7 @@ Release:        0
 Summary:        A light-weight process isolation tool
 License:        Apache-2.0
 Group:          System/GUI/Other
-ExclusiveArch:  x86_64
-URL:            http://nsjail.com
+URL:            https://nsjail.com
 Source0:        nsjail-%{version}.tar.gz
 Source1:        kafel.tar.gz
 BuildRequires:  autoconf
@@ -34,27 +33,29 @@ BuildRequires:  git-core
 BuildRequires:  glibc-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  make
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
+ExclusiveArch:  x86_64
 
 %description
 A light-weight process isolation tool, making use of Linux namespaces and
-seccomp-bpf syscall filters (with help of the kafel bpf language) 
+seccomp-bpf syscall filters (with help of the kafel bpf language)
 
 %prep
 %setup -qa1
 
 %build
+%define _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
 export CXXFLAGS="$CFLAGS"
-make %{?_smp_mflags} 
+make %{?_smp_mflags}
 
 %install
 mkdir -p %{buildroot}/%{_bindir}/
 cp nsjail %{buildroot}/%{_bindir}/
 
-%files 
-%defattr(-,root,root)
+%files
+%license LICENSE
 %{_bindir}/nsjail
 
 %changelog
