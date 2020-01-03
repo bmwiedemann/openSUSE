@@ -29,18 +29,21 @@
 %global unregisterised_archs s390 s390x riscv64
 
 Name:           ghc
-Version:        8.6.5
+Version:        8.8.1
 Release:        0
-Url:            http://haskell.org/ghc/dist/%{version}/%{name}-%{version}-src.tar.xz
+URL:            https://www.haskell.org/ghc/
+Source:         https://downloads.haskell.org/~ghc/8.8.1/ghc-%{version}-src.tar.xz
+Source1:        https://downloads.haskell.org/~ghc/8.8.1/ghc-%{version}-src.tar.xz.sig
+Source2:        ghc-rpmlintrc
 Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le s390x riscv64
+ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le riscv64 s390x
 # hard to port to PIE, some prebuilt static libraries are non-PIC ...
 #!BuildIgnore:  gcc-PIE
 BuildRequires:  binutils-devel
 BuildRequires:  gcc
-BuildRequires:  ghc-bootstrap >= 8.0
+BuildRequires:  ghc-bootstrap >= 8.4
 BuildRequires:  ghc-rpm-macros-extra
 BuildRequires:  glibc-devel
 BuildRequires:  gmp-devel
@@ -65,7 +68,7 @@ BuildRequires:  binutils-gold
 %endif
 %ifarch aarch64 %{arm} %{ix86} x86_64
 %if 0%{?suse_version} >= 1550
-BuildRequires:  llvm6-devel
+BuildRequires:  llvm7-devel
 %else
 BuildRequires:  llvm-devel
 %endif
@@ -79,24 +82,30 @@ BuildRequires:  libnuma-devel
 %endif
 
 # for patch 1
-BuildRequires:  python3
+# BuildRequires:  python3
+
+# bogus requires
+%ifarch x86_64
+BuildRequires:  ghc-bootstrap-helpers
+%else
+BuildRequires:  alex
+BuildRequires:  happy
+%endif
 
 PreReq:         update-alternatives
 Requires:       ghc-compiler = %{version}-%{release}
 Requires:       ghc-ghc-devel = %{version}-%{release}
 Requires:       ghc-libraries = %{version}-%{release}
-Source:         http://haskell.org/ghc/dist/%{version}/%{name}-%{version}-src.tar.xz
-Source1:        ghc-rpmlintrc
 # PATCH-FIX-UPSTREAM 0001-Fix-check-whether-GCC-supports-__atomic_-builtins.patch ptrommler@icloud.com -- Fix __atomic_builtin detection. Patch taken from upstream commit ce3897ff.
 Patch1:         0001-Fix-check-whether-GCC-supports-__atomic_-builtins.patch
 # PATCH-FIX-UPSTREAM D5212.patch ptrommler@icloud.com -- Fix GHCi on big endiansystems. Submitted for upstream review.
 Patch2:         D5212.patch
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-# PATCH-FIX-UPSTREAM allow-riscv-and-riscv64-CPU.patch slyfox@gentoo.org -- aclocal.m4: allow riscv and riscv64 CPU
-Patch4:         allow-riscv-and-riscv64-CPU.patch
 # PATCH-FIX-UPSTREAM fix-build-using-unregisterized-v8.4.patch
 Patch5:         fix-build-using-unregisterized-v8.4.patch
+# PATCH-FIX-UPSTREAM fix-unregisterised-v8.4-8.6.patch
+Patch6:         fix-unregisterised-v8.4-8.6.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
 # PATCH-FIX-OPENSUSE ghc-8.0.2-Cabal-dynlibdir.patch -- Fix shared library directory location.
@@ -131,11 +140,18 @@ Requires(postun): update-alternatives
 %ifarch aarch64 %{arm}
 Requires:       binutils-gold
 %endif
-%ifarch aarch64 %{arm} %{ix86} x86_64
+%ifarch aarch64 %{arm}
 %if 0%{?suse_version} >= 1550
-Requires:       llvm6
+Requires:       llvm7
 %else
 Requires:       llvm
+%endif
+%endif
+%ifarch x86_64 %{ix86}
+%if 0%{?suse_version} >= 1550
+Suggests:       llvm7
+%else
+Suggests:       llvm
 %endif
 %endif
 
@@ -156,14 +172,14 @@ To install all of GHC install package ghc.
 %endif
 
 %if %{defined ghclibdir}
-%ghc_lib_subpackage -d Cabal-2.4.0.1
-%ghc_lib_subpackage -d array-0.5.3.0
-%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.12.0.0
-%ghc_lib_subpackage -d binary-0.8.6.0
-%ghc_lib_subpackage -d bytestring-0.10.8.2
-%ghc_lib_subpackage -d containers-0.6.0.1
+%ghc_lib_subpackage -d Cabal-3.0.0.0
+%ghc_lib_subpackage -d array-0.5.4.0
+%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.13.0.0
+%ghc_lib_subpackage -d binary-0.8.7.0
+%ghc_lib_subpackage -d bytestring-0.10.9.0
+%ghc_lib_subpackage -d containers-0.6.2.1
 %ghc_lib_subpackage -d deepseq-1.4.4.0
-%ghc_lib_subpackage -d directory-1.3.3.0
+%ghc_lib_subpackage -d directory-1.3.3.2
 %ghc_lib_subpackage -d filepath-1.4.2.1
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-%{ghc_version_override}
@@ -171,18 +187,18 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d ghc-compact-0.1.0.0
 %ghc_lib_subpackage -d ghc-heap-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
-%ghc_lib_subpackage -d haskeline-0.7.4.3
+%ghc_lib_subpackage -d haskeline-0.7.5.0
 %ghc_lib_subpackage -d hpc-0.6.0.3
-%ghc_lib_subpackage -d libiserv-8.6.3
+%ghc_lib_subpackage -d libiserv-%{ghc_version_override}
 %ghc_lib_subpackage -d mtl-2.2.2
-%ghc_lib_subpackage -d parsec-3.1.13.0
+%ghc_lib_subpackage -d parsec-3.1.14.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.5.0
+%ghc_lib_subpackage -d process-1.6.5.1
 %ghc_lib_subpackage -d stm-2.5.0.0
-%ghc_lib_subpackage -d template-haskell-2.14.0.0
-%ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.2
-%ghc_lib_subpackage -d text-1.2.3.1
-%ghc_lib_subpackage -d time-1.8.0.2
+%ghc_lib_subpackage -d template-haskell-2.15.0.0
+%ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.4
+%ghc_lib_subpackage -d text-1.2.4.0
+%ghc_lib_subpackage -d time-1.9.3
 %ghc_lib_subpackage -d transformers-0.5.6.2
 %ghc_lib_subpackage -d unix-2.7.2.2
 %ghc_lib_subpackage -d xhtml-3000.2.2.1
@@ -206,20 +222,20 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
+#%%patch1 -p1
+#%%patch2 -p1
 %ifarch ppc64 s390 s390x
 %patch3 -p1
 %endif
-%patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
 
 %build
 # patch 1 modifies build system, we need to recreate configure
-./boot
+# ./boot
 
 cat > mk/build.mk <<EOF
 %ifarch aarch64 %{arm}
@@ -291,7 +307,8 @@ for i in %{ghc_packages_list}; do
 name=$(echo $i | sed -e "s/\(.*\)-.*/\1/")
 ver=$(echo $i | sed -e "s/.*-\(.*\)/\1/")
 %ghc_gen_filelists $name $ver
-echo "%doc libraries/$name/LICENSE" >> ghc-$name.files
+# TODO: containers have license in $name/$name
+#echo "%%doc libraries/$name/LICENSE" >> ghc-$name.files
 done
 
 # ghc-base should own ghclibdir
@@ -446,8 +463,9 @@ fi
 %{ghcdocbasedir}/users_guide
 %endif
 %{ghcdocbasedir}/libraries/gen_contents_index
-%{ghcdocbasedir}/libraries/hslogo-16.png
-%{ghcdocbasedir}/libraries/ocean.css
+#%%{ghcdocbasedir}/libraries/hslogo-16.png
+#%%{ghcdocbasedir}/libraries/ocean.css
+%{ghcdocbasedir}/libraries/linuwial.css
 %{ghcdocbasedir}/libraries/quick-jump.css
 %{ghcdocbasedir}/libraries/prologue.txt
 %{ghcdocbasedir}/libraries/synopsis.png

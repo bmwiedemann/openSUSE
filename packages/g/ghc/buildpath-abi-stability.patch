@@ -1,8 +1,8 @@
-Index: ghc-8.6.1/compiler/iface/MkIface.hs
+Index: ghc-8.8.1/compiler/iface/MkIface.hs
 ===================================================================
---- ghc-8.6.1.orig/compiler/iface/MkIface.hs
-+++ ghc-8.6.1/compiler/iface/MkIface.hs
-@@ -702,7 +702,7 @@ addFingerprints hsc_env mb_old_fingerpri
+--- ghc-8.8.1.orig/compiler/iface/MkIface.hs
++++ ghc-8.8.1/compiler/iface/MkIface.hs
+@@ -713,7 +713,7 @@ addFingerprints hsc_env mb_old_fingerpri
     iface_hash <- computeFingerprint putNameLiterally
                        (mod_hash,
                         ann_fn (mkVarOcc "module"),  -- See mkIfaceAnnCache
@@ -11,7 +11,7 @@ Index: ghc-8.6.1/compiler/iface/MkIface.hs
                         sorted_deps,
                         mi_hpc iface0)
  
-@@ -737,6 +737,9 @@ addFingerprints hsc_env mb_old_fingerpri
+@@ -748,6 +748,9 @@ addFingerprints hsc_env mb_old_fingerpri
      (non_orph_fis,   orph_fis)   = mkOrphMap ifFamInstOrph (mi_fam_insts iface0)
      fix_fn = mi_fix_fn iface0
      ann_fn = mkIfaceAnnCache (mi_anns iface0)

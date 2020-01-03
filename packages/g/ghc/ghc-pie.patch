@@ -1,8 +1,8 @@
-Index: ghc-8.6.1/compiler/main/DynFlags.hs
+Index: ghc-8.8.1/compiler/main/DynFlags.hs
 ===================================================================
---- ghc-8.6.1.orig/compiler/main/DynFlags.hs
-+++ ghc-8.6.1/compiler/main/DynFlags.hs
-@@ -4317,6 +4317,7 @@ default_PIC :: Platform -> [GeneralFlag]
+--- ghc-8.8.1.orig/compiler/main/DynFlags.hs
++++ ghc-8.8.1/compiler/main/DynFlags.hs
+@@ -4511,6 +4511,7 @@ default_PIC :: Platform -> [GeneralFlag]
  default_PIC platform =
    case (platformOS platform, platformArch platform) of
      (OSDarwin, ArchX86_64) -> [Opt_PIC]
