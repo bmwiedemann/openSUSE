@@ -1,7 +1,7 @@
 #
 # spec file for package cura-engine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           cura-engine
-Version:        4.3.0
+Version:        4.4.1
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
-Url:            https://github.com/Ultimaker/CuraEngine
+URL:            https://github.com/Ultimaker/CuraEngine
 Source0:        CuraEngine-%{version}.tar.xz
 Source1:        CuraEngine.1
 # X-OPENSUSE-PATCH fix-build.patch follow openSUSE policies
@@ -40,7 +40,7 @@ BuildRequires:  gtest
 BuildRequires:  libArcus-devel
 BuildRequires:  stb-devel
 # No 32bit support anymore
-ExcludeArch:    %ix86 %arm
+ExcludeArch:    %ix86 %arm s390
 
 %description
 CuraEngine is an engine for processing 3D models into 3D printing
