@@ -1,7 +1,7 @@
 #
 # spec file for package python-poppler-qt5
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 LISA GmbH, Bingen, Germany.
 # Copyright (c) 2012 Johannes Engel <jcnengel@gmail.com>
 #
@@ -35,6 +35,7 @@ BuildRequires:  python3-qt5-devel
 %requires_eq    python-qt5
 Requires:       python-sip(api) = %{python_sip_api_ver}
 Obsoletes:      python-poppler-qt4
+Obsoletes:      python-poppler-qt5
 %python_subpackages
 
 %description

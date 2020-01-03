@@ -31,4 +31,13 @@
     <comment>new version</comment>
     <requestid>759686</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a641810001667c1be0863e67a4a4158f</srcmd5>
+    <version>0.75.0</version>
+    <time>1578069592</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes: python-poppler-qt5 to prevent file conflict in 
+  Leap 15.2</comment>
+    <requestid>760623</requestid>
+  </revision>
 </revisionlist>
