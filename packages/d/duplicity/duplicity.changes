@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan  2 15:25:52 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.08: 
+  + Fixed a typo made during Python 3 conversion.
+  + Issue warning on temporary connection loss.
+  + Fixes bug #1840044: Migrate boto backend to boto3
+    - New module uses boto3+s3:// as schema.
+  + Fixed bug #1853809 - Tests failing with Python 3.8 /
+    Deprecation warnings.
+  + Fixed bug #1853655 - duplicity crashes with
+    --exclude-older-than
+    - The exclusion setup checked for valid string only.  Made
+      the code comprehend datetime (int) as well.
+  + Applied patches to handle translations.
+  + Added build signing to dist/makesnap.
+  + Fixed bug #1852876 '_io.BufferedReader' object has no
+    attribute 'uc_name'.
+  + B2 moved the API from "b2" package into a separate "b2sdk"
+    package.
+- Rebase duplicity-remove_shebang.patch.
+
+-------------------------------------------------------------------
 Thu Nov 14 19:44:31 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.07: 
