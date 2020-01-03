@@ -19,13 +19,13 @@
 %global pkg_name path
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Support for well-typed paths
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-deepseq-devel
@@ -34,10 +34,12 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-text-devel
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-genvalidity-devel
+BuildRequires:  ghc-genvalidity-hspec-devel
 BuildRequires:  ghc-genvalidity-property-devel
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-mtl-devel
