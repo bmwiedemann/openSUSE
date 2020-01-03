@@ -1,7 +1,7 @@
 #
 # spec file for package python-watermark
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-watermark
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        IPython magic function to psystem information
 License:        BSD-3-Clause
