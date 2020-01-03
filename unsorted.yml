@@ -162,6 +162,7 @@ unsorted:
   - PackageKit-devel 
   - PgTcl 
   - Photini 
+  - Play 
   - PlayOnLinux 
   - Printrun 
   - Printrun-common 
@@ -9036,7 +9037,6 @@ unsorted:
   - libgexiv2-devel 
   - libgf2x3 
   - libgfchangelog0 
-  - libgfdb0 
   - libgflags2 
   - libgfortran4 
   - libgfortran4-32bit: [x86_64] 
@@ -9207,7 +9207,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_95 
+  - libgsoap-2_8_96 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -9624,7 +9624,7 @@ unsorted:
   - libiw-devel 
   - libixion-devel 
   - libixion-tools 
-  - libixml10-32bit: [x86_64] 
+  - libixml11-32bit: [x86_64] 
   - libjack-devel 
   - libjack-devel-32bit: [x86_64] 
   - libjack0-32bit: [x86_64] 
@@ -10316,12 +10316,6 @@ unsorted:
   - libnl3-devel 
   - libnl3-devel-32bit: [x86_64] 
   - libnlopt0 
-  - libnm-glib-vpn1 
-  - libnm-glib-vpn1-32bit: [x86_64] 
-  - libnm-glib4 
-  - libnm-glib4-32bit: [x86_64] 
-  - libnm-util2 
-  - libnm-util2-32bit: [x86_64] 
   - libnma-devel 
   - libnormaliz3 
   - libnoson2 
@@ -11899,7 +11893,7 @@ unsorted:
   - libupb0 
   - libupm1 
   - libupnp-devel 
-  - libupnp13-32bit: [x86_64] 
+  - libupnp15-32bit: [x86_64] 
   - libupower-glib-devel 
   - liburcu-devel 
   - liburcu6-32bit: [x86_64] 
@@ -12126,7 +12120,7 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1-32bit: [x86_64] 
   - libwebsockets-devel 
-  - libwebsockets13 
+  - libwebsockets15 
   - libwebvfx1 
   - libweston-7 
   - libweston-7-0 
@@ -15252,6 +15246,8 @@ unsorted:
   - osc-plugin-origin: [x86_64] 
   - osc-plugin-staging: [x86_64] 
   - osclib: [x86_64] 
+  - osdlyrics: [x86_64] 
+  - osdlyrics-lang: [x86_64] 
   - osgi-annotation 
   - osgi-annotation-javadoc 
   - osgi-compendium 
@@ -17459,7 +17455,6 @@ unsorted:
   - python-gexiv2 
   - python-glanceclient-doc 
   - python-glucat 
-  - python-gluster 
   - python-gobject-common-devel 
   - python-gobject2-devel 
   - python-gr-fcdproplus 
@@ -18311,6 +18306,7 @@ unsorted:
   - python2-csscompressor 
   - python2-cssselect 
   - python2-cssutils 
+  - python2-ctypescrypto 
   - python2-ctypesgen 
   - python2-cursive 
   - python2-curtsies 
@@ -18473,7 +18469,6 @@ unsorted:
   - python2-fake-useragent 
   - python2-fakeredis 
   - python2-falcon 
-  - python2-fanficfare 
   - python2-fann2 
   - python2-fastcluster 
   - python2-fasteners 
@@ -18486,6 +18481,7 @@ unsorted:
   - python2-fido2 
   - python2-fields 
   - python2-filelock 
+  - python2-filetype 
   - python2-finance_enums 
   - python2-fire 
   - python2-first 
@@ -19075,6 +19071,7 @@ unsorted:
   - python2-pilkit 
   - python2-pip 
   - python2-pip-api 
+  - python2-pip-licenses 
   - python2-pip-run 
   - python2-pip-shims 
   - python2-pip-tools 
@@ -19548,7 +19545,6 @@ unsorted:
   - python2-schema 
   - python2-scikit-build 
   - python2-scikit-dsp-comm 
-  - python2-scikit-image 
   - python2-scikit-learn 
   - python2-scikit-sparse: [x86_64] 
   - python2-scikit-umfpack 
@@ -19741,6 +19737,7 @@ unsorted:
   - python2-tornado4 
   - python2-tornado5 
   - python2-toro 
+  - python2-towncrier 
   - python2-tox 
   - python2-tox-no-internet 
   - python2-tox-travis 
@@ -19854,7 +19851,6 @@ unsorted:
   - python2-wheel 
   - python2-whichcraft 
   - python2-whitenoise 
-  - python2-whois_similarity_distance 
   - python2-wikipedia 
   - python2-wiring 
   - python2-wolframalpha 
@@ -20642,6 +20638,7 @@ unsorted:
   - python3-cssselect2 
   - python3-cssutils 
   - python3-csvkit 
+  - python3-ctypescrypto 
   - python3-ctypesgen 
   - python3-ctypeslib2 
   - python3-cufflinks 
@@ -20685,6 +20682,7 @@ unsorted:
   - python3-dennis 
   - python3-dephell 
   - python3-dephell-archive 
+  - python3-dephell-argparse 
   - python3-dephell-discover 
   - python3-dephell-licenses 
   - python3-dephell-links 
@@ -20893,6 +20891,7 @@ unsorted:
   - python3-fields 
   - python3-fife 
   - python3-filelock 
+  - python3-filetype 
   - python3-finance_enums 
   - python3-fire 
   - python3-first 
@@ -20981,6 +20980,7 @@ unsorted:
   - python3-glfw 
   - python3-glob2 
   - python3-glom 
+  - python3-gluster 
   - python3-gmconfig 
   - python3-gmpy 
   - python3-gmpy2 
@@ -21529,6 +21529,7 @@ unsorted:
   - python3-osc-lib 
   - python3-osc-tiny 
   - python3-oscrypto 
+  - python3-osdlyrics: [x86_64] 
   - python3-oslo.cache 
   - python3-oslo.concurrency 
   - python3-oslo.config 
@@ -21627,6 +21628,7 @@ unsorted:
   - python3-pika-pool 
   - python3-pilkit 
   - python3-pip-api 
+  - python3-pip-licenses 
   - python3-pip-run 
   - python3-pip-shims 
   - python3-pip-tools 
@@ -21691,6 +21693,7 @@ unsorted:
   - python3-psycopg2 
   - python3-ptpython 
   - python3-ptpython-ptipython 
+  - python3-ptr 
   - python3-publicsuffixlist 
   - python3-pudb 
   - python3-pulsectl 
@@ -22360,6 +22363,7 @@ unsorted:
   - python3-tornado5 
   - python3-tornado6 
   - python3-toro 
+  - python3-towncrier 
   - python3-tox 
   - python3-tox-no-internet 
   - python3-tox-travis 
@@ -22418,6 +22422,8 @@ unsorted:
   - python3-untokenize 
   - python3-upm 
   - python3-uritemplate 
+  - python3-uritools 
+  - python3-urlextract 
   - python3-urlgrabber 
   - python3-user-agents 
   - python3-user_agent 
@@ -22827,6 +22833,8 @@ unsorted:
   - redeclipse-data 
   - redland 
   - redland-storage-postgresql 
+  - redminecli 
+  - redminecli-bash-completion 
   - rednotebook 
   - rednotebook-lang 
   - redsea 
@@ -32623,10 +32631,8 @@ unsorted:
   - typelib-1_0-Modulemd-1_0 
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
-  - typelib-1_0-NMClient-1_0 
   - typelib-1_0-Nautilus-3_0 
   - typelib-1_0-Nemo-3_0 
-  - typelib-1_0-NetworkManager-1_0 
   - typelib-1_0-OSTree-1_0 
   - typelib-1_0-OsmGpsMap-1_0 
   - typelib-1_0-Playerctl-2_0_1 

@@ -2316,7 +2316,7 @@
     <package name="libitm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="libiw30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libixion-0_15-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libixml10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libixml11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libjack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libjansson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjasper4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2905,7 +2905,7 @@
     <package name="libunity-gtk2-parser0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libunity-gtk3-parser0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libunwind" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libupnp13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libupnp15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libupsclient1" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="liburcu6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
