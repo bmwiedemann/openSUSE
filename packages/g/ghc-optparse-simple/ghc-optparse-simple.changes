@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 29 10:27:17 UTC 2019 - psimons@suse.com
+
+- Update optparse-simple to version 0.1.1.2.
+  # ChangeLog for optparse-simple
+
+  ## 0.1.1.2
+
+  * Run TH slice at the right time to get proper Git info [#13](https://github.com/fpco/optparse-simple/issues/13)
+
+  ## 0.1.1.1
+
+  * Add explicit signature to work around [#12](https://github.com/fpco/optparse-simple/issues/12)
+
+  ## 0.1.1
+
+  * Switch dependency `gitrev` to `githash`
+
+-------------------------------------------------------------------
 Wed Jul 18 14:26:34 UTC 2018 - psimons@suse.com
 
 - Cosmetic: replace tabs with blanks, strip trailing white space,
