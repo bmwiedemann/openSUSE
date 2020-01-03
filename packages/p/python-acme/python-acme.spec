@@ -1,7 +1,7 @@
 #
 # spec file for package python-acme
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libname acme
 Name:           python-%{libname}
-Version:        0.40.1
+Version:        1.0.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -68,15 +68,11 @@ Python library implementing the Automatic Certificate Management Environment
 
 %install
 %python_install
-# remove test-data
-%python_expand rm -r %{buildroot}%{$python_sitelib}/%{libname}/testdata
-%python_expand rm -r %{buildroot}%{$python_sitelib}/%{libname}/*_test.py*
-rm -r %{buildroot}%{python3_sitelib}/%{libname}/__pycache__/*_test*
 # remove duplicates
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{libname}
 
 %check
-%pytest acme/
+%pytest tests/
 
 %files %{python_files}
 %license LICENSE.txt

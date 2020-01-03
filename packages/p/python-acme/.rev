@@ -417,4 +417,14 @@
     <comment>certbot version bump</comment>
     <requestid>748663</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3dd5ede58bcec0791719f479f951df9c</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069569</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0 (bsc#1160066)
+  * Deprecated attributes related to the TLS-SNI-01 challenge in
+    acme.challenges and acme.standalone have been removed.</comment>
+    <requestid>760670</requestid>
+  </revision>
 </revisionlist>
