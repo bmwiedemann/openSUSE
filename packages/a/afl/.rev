@@ -479,4 +479,12 @@
   - removed unnecessary warnings (forwarded request 759706 from msmeissn)</comment>
     <requestid>759716</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>dc62c5d029166820085bdafeab147fef</srcmd5>
+    <version>2.60c</version>
+    <time>1578069437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760476</requestid>
+  </revision>
 </revisionlist>

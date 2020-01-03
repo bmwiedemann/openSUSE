@@ -1,7 +1,7 @@
 #
 # spec file for package afl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           afl
-Version:        2.59c
+Version:        2.60c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
@@ -67,6 +67,8 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as
 %{_libexecdir}/%{name}/as
+%{_libexecdir}/%{name}/argvfuzz*.so
+%{_libexecdir}/%{name}/socketfuzz*.so
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/testcases
 %{_datadir}/%{name}/testcases/*
