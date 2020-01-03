@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Dec 31 13:35:50 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.0
+  * first stable release
+  * complete rewrite of vokoscreen, now using gstreamer instead of
+    ffmpeg
+
+-------------------------------------------------------------------
+Sun Oct 13 12:08:47 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.9-beta
+
+-------------------------------------------------------------------
+Mon May 20 10:08:12 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.8-beta
+
+-------------------------------------------------------------------
+Fri May 10 07:21:59 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.7-beta
+- Made Requirements more specific
+
+-------------------------------------------------------------------
+Sat Apr 13 17:44:08 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.9.6-beta
+
+-------------------------------------------------------------------
+Tue Feb 19 16:22:41 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Initial build for Version 2.9.5-beta
