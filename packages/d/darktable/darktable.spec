@@ -1,7 +1,7 @@
 #
 # spec file for package darktable
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,6 @@
 #
 
 
-%if 0%{?fedora_version}
-%bcond_with    basecurve_tool
-%else
-%bcond_without basecurve_tool
-%endif
 %bcond_with clang
 
 %if 0%{?is_opensuse} || 0%{?fedora_version} >= 26
@@ -33,22 +28,20 @@
 %bcond_with    translated_manpages
 %endif
 
-%if 0%{?suse_version} >= 1330 || 0%{?fedora_version} >= 26
-%bcond_without  system_lua
-%else
-%bcond_with     system_lua
-%endif
-
 %ifarch ppc64le
+# The OpenCL kernels don't compile on ppc64le and if you get
+# them compiled there are funny runtime issues.
 %bcond_with     opencl
 %else
 %bcond_without  opencl
 %endif
 
-%if 0%{?suse_version} > 1320 || 0%{?fedora_version} >= 26
-%bcond_without  system_opencl
+%bcond_without  openmp
+
+%if %{with openmp}
+%global _use_openmp "ON"
 %else
-%bcond_with     system_opencl
+%global _use_openmp "OFF"
 %endif
 
 %if %{with opencl}
@@ -57,44 +50,28 @@
 %global _use_opencl "OFF"
 %endif
 
-%global _libexec_subdir "lib"
-%if 0%{?fedora_version}
-%global _libexec_subdir "libexec"
-%endif
-
-%global _rawspeed_with_lto "ON"
-%if (0%{?fedora_version} && 0%{?fedora_version} <= 27) || (0%{?suse_version} && 0%{?suse_version} < 1550)
-# Linker crashes. Do not really care since F27 is EOL.
-%global _rawspeed_with_lto "OFF"
-%endif
-
-%define cmake_options -DCMAKE_SKIP_RPATH:BOOL=OFF -DCMAKE_BUILD_TYPE=Release -DRAWSPEED_ENABLE_LTO="%{_rawspeed_with_lto}" -DBINARY_PACKAGE_BUILD=1 -DCMAKE_INSTALL_DATAROOTDIR="share" -DCMAKE_INSTALL_LIBDIR="%{_lib}" -DCMAKE_INSTALL_LIBEXECDIR="%{_libexec_subdir}" -DUSE_OPENCL="%{_use_opencl}" -DBUILD_NOISE_TOOLS=ON
-
-%if 0%{?suse_version} == 1315
+%if 0%{?suse_version} < 1550
 %define force_gcc_version 7
 %endif
 
 Name:           darktable
-Version:        2.6.3
+Version:        3.0.0
 Release:        0
 %define pkg_name darktable
-%define pkg_version 2.6.3
-Url:            http://www.darktable.org/
-Source0:        %{name}-%{pkg_version}.tar.xz
+%define pkg_version 3.0.0
+URL:            http://www.darktable.org/
+Source0:        %{pkg_name}-%{pkg_version}.tar.xz
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-2.6.1/darktable-usermanual.pdf
 Source2:        https://github.com/darktable-org/darktable/releases/download/release-2.6.1/darktable-usermanual-de.pdf
 Source3:        https://github.com/darktable-org/darktable/releases/download/release-2.6.1/darktable-usermanual-it.pdf
 Source4:        https://github.com/darktable-org/darktable/releases/download/release-2.0.0/darktable-lua-api.pdf
-Source96:       %{name}-%{pkg_version}.tar.xz.asc
+Source96:       %{pkg_name}-%{pkg_version}.tar.xz.asc
 Source97:       darktable.dsc
 Source98:       debian.tar.xz
 Source99:       README.openSUSE
 Patch:          darktable-old-glib.patch
-Patch1:         basecurve.readme.patch
-# PATCH-FIX-UPSTREAM Fixed (differently) in 2.8.0
-Patch2:         0001-Fix-build-with-exiv2-0.27.patch
 
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.4
@@ -103,7 +80,7 @@ BuildRequires:  llvm-devel
 %if 0%{?fedora_version}
 BuildRequires:  llvm-static
 %endif
-%if ! %{with clang}
+%if %{without clang}
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 5
 %if 0%{?force_gcc_version}
 #!BuildIgnore:  libgcc_s1
@@ -126,28 +103,24 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml2-devel
 #
-%if %{with system_lua}
 BuildRequires:  lua-devel >= 5.3
-%endif
 BuildRequires:  pugixml-devel
 #
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} != 1315 || ( 0%{?suse_version} == 1315 && 0%{?is_opensuse} )
 BuildRequires:  pkgconfig(GraphicsMagick)
-BuildRequires:  pkgconfig(libopenjp2)
-%endif
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(colord-gtk)
-BuildRequires:  pkgconfig(exiv2) > 0.24
+BuildRequires:  pkgconfig(exiv2)
+BuildRequires:  pkgconfig(libopenjp2)
 %if %{with flickcurl}
 BuildRequires:  pkgconfig(flickcurl)
 %endif
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) > 2.40
-BuildRequires:  pkgconfig(gtk+-3.0) > 3.14
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(lcms2)
@@ -162,12 +135,20 @@ BuildRequires:  pkgconfig(osmgpsmap-1.0)
 %endif
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sqlite3)
-%if %{with opencl} && %{with system_opencl}
+%if %{with opencl}
 BuildRequires:  opencl-headers
 %endif
 # for the sake of simplicity we do not enforce the version here
 # the package is small enough that installing it doesnt hurt
 Requires:       iso-codes
+#
+# Some CSS themes suggest to use the the Roboto font family
+# https://github.com/darktable-org/darktable/releases/tag/release-3.0.0
+%if 0%{?fedora_version}
+Recommends:     roboto-fontface-fonts
+%else
+Recommends:     google-roboto-fonts
+%endif
 #
 Summary:        A virtual Lighttable and Darkroom
 License:        GPL-3.0-or-later
@@ -221,28 +202,31 @@ lighttable. It also enables developing raw images and enhance them.
 This package provides the user manual in PDF format.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-%patch -p1
-%patch1 -p1
-%patch2 -p1
-chmod -x tools/basecurve/* tools/noise/*
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 cp %{S:1} %{S:2} %{S:3} %{S:4} .
 cp %{S:99} .
 
-%if %{with system_opencl} || !%{with opencl}
 # Remove bundled OpenCL headers.
 rm -rf src/external/CL src/external/OpenCL
 sed -i -e 's, \"external/CL/\*\.h\" , ,' src/CMakeLists.txt
-%endif
 
-%if %{with system_lua}
 # Remove bundled lua
 rm -rf src/external/lua/
-%endif
 
 %build
-export BUILDDIR="$PWD"
+%define cmake_options \\\
+   -DCMAKE_SKIP_RPATH:BOOL=OFF \\\
+   -DCMAKE_INSTALL_DATAROOTDIR="share" \\\
+   -DCMAKE_INSTALL_LIBEXECDIR="%{_libexecdir}" \\\
+   -DCMAKE_INSTALL_DOCDIR="%{_defaultdocdir}/%{pkg_name}" \\\
+   -DBINARY_PACKAGE_BUILD=1 \\\
+   -DRAWSPEED_ENABLE_LTO=ON \\\
+   -DUSE_OPENCL="%{_use_opencl}" \\\
+   -DUSE_OPENMP="%{_use_openmp}" \\\
+   -DBUILD_NOISE_TOOLS=ON \\\
+   -DBUILD_CURVE_TOOLS=ON
+
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
@@ -256,105 +240,49 @@ export _OPENCL_INCLUDE_DIR=$(clang -print-search-dirs | awk -F= '/^libra/ {print
 #suse branch
 %cmake \
   -DCLANG_OPENCL_INCLUDE_DIR=${_OPENCL_INCLUDE_DIR} \
-  %if ! %{with system_lua}
-  -DDONT_USE_INTERNAL_LUA=Off \
-  %endif
+  -DDONT_USE_INTERNAL_LUA=ON \
   %ifarch aarch64
   -DTESTBUILD_OPENCL_PROGRAMS=OFF \
   %endif
   %{cmake_options} \
    || cat CMakeFiles/CMakeError.log
-make %{_smp_mflags} VERBOSE=1
-cd $BUILDDIR
+%cmake_build
 
-cd tools/basecurve
-%cmake
-make %{_smp_mflags} VERBOSE=1
 #/ suse branch
 %else
 #fedora branch
 mkdir %{_target_platform}
 pushd %{_target_platform}
 %cmake \
-  %if ! %{with system_lua}
-  -DDONT_USE_INTERNAL_LUA=Off \
-  %endif
+  -DDONT_USE_INTERNAL_LUA=ON \
   %ifarch aarch64
   -DTESTBUILD_OPENCL_PROGRAMS=OFF \
   %endif  
   %{cmake_options} ..
 make %{_smp_mflags} VERBOSE=1
-cd $BUILDDIR
 
-%if %{with basecurve_tool}
-cd tools/basecurve
-mkdir %{_target_platform}
-pushd %{_target_platform}
-%cmake ..
-make %{_smp_mflags} VERBOSE=1
 %endif
-%endif
-cd $BUILDDIR
 
 %install
 %if 0%{?suse_version}
 # suse branch
 %cmake_install
-%if %{with basecurve_tool}
-pushd tools/basecurve
-%cmake_install
-popd
-%endif
 %suse_update_desktop_file darktable
-
-mkdir -p %{buildroot}%{_defaultdocdir}/%{pkg_name}/
-mv %{buildroot}%{_datadir}/doc/darktable/* %{buildroot}%{_defaultdocdir}/%{pkg_name}/
 #/ suse branch
 %else
 # fedora branch
 %make_install -C %{_target_platform}
-%if %{with basecurve_tool}
-%make_install -C tools/basecurve/%{_target_platform}
-%endif
 #/ fedora branch
 %endif
-find %{buildroot}%{_libdir} -name "*.la" -delete
 %find_lang darktable
 
-cp -av %{S:1} %{S:2} %{S:3} %{S:4}      \
-    doc/ChangeLog doc/NEWS              \
-    doc/thumbnail_color_management.txt  \
-    doc/TODO doc/TRANSLATORS*           \
+cp -av %{S:1} %{S:2} %{S:3} %{S:4} doc/TODO \
   %{buildroot}%{_defaultdocdir}/%{pkg_name}
-
-mkdir -p %{buildroot}%{_defaultdocdir}/%{pkg_name}/tools/ %{buildroot}%{_datadir}/%{pkg_name}/tools/
-
-cp -av tools/purge* tools/common.sh \
-  %{buildroot}%{_datadir}/%{pkg_name}/tools/
-
-%if %{with basecurve_tool}
-mkdir -p %{buildroot}%{_datadir}/%{pkg_name}/tools/basecurve/
-cp -av tools/basecurve/plot* \
-  %{buildroot}%{_datadir}/%{pkg_name}/tools/basecurve/
-
-install -D -m 0644 tools/basecurve/README.md \
-  %{buildroot}%{_defaultdocdir}/%{pkg_name}/README.tools.basecurve.md
-%endif
+rm %{buildroot}%{_defaultdocdir}/%{pkg_name}/LICENSE
 
 %fdupes %{buildroot}/%{_prefix}
 
-%if 0%{?suse_version}
-# on newer distros it is handled via file trigger
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-%else
+%if ! 0%{?suse_version}
 %post
 touch --no-create %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 
@@ -371,10 +299,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 
 %files -f darktable.lang
 %doc %{_defaultdocdir}/%{pkg_name}
+%license LICENSE
 %exclude %{_defaultdocdir}/%{pkg_name}/*.pdf
-%if %{with basecurve_tool}
 %exclude %{_defaultdocdir}/%{pkg_name}/README.tools.basecurve.md
-%endif
 %{_bindir}/darktable
 %if %{with opencl}
 %{_bindir}/darktable-cltest
@@ -398,13 +325,11 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %dir %{_libexecdir}/darktable
 %dir %{_libexecdir}/darktable/tools
 
-%if %{with basecurve_tool}
 %files tools-basecurve
-%{_bindir}/dt-curve-tool
-%{_bindir}/dt-curve-tool-helper
+%{_libexecdir}/darktable/tools/darktable-curve-tool
+%{_libexecdir}/darktable/tools/darktable-curve-tool-helper
 %{_datadir}/%{pkg_name}/tools/basecurve/
 %doc %{_defaultdocdir}/%{pkg_name}/README.tools.basecurve.md
-%endif
 
 %files tools-noise
 %{_libexecdir}/darktable/tools/darktable-gen-noiseprofile
