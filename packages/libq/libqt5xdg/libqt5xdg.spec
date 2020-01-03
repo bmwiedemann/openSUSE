@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5xdg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name libqtxdg
 Name:           libqt5xdg
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Qt implementation of xdg specs for lxqt
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://lxqt.org
+URL:            https://lxqt.org
 Source:         https://github.com/lxde/%{_name}/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        https://github.com/lxde/%{_name}/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(glib-2.0)
 
 %description
 Qt implementation of freedesktop.org XDG specs for LXQt
@@ -58,6 +58,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libQt5Xdg3 = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(Qt5UiTools)
+Recommends:     qtxdg-tools
 
 %description devel
 QtXDG libraries for development
@@ -78,6 +79,13 @@ Requires:       libQt5XdgIconLoader3 = %{version}
 %description -n libQt5XdgIconLoader-devel
 Development files for QtXDG icon loader libraries used in LXQt
 
+%package -n qtxdg-tools
+Summary:        Tools for QtXdg
+Group:          System/X11/Utilities
+
+%description -n qtxdg-tools
+Tools for QtXdg.
+
 %prep
 %setup -q -n %{_name}-%{version}
 
@@ -95,24 +103,21 @@ make %{?_smp_mflags}
 %postun -n libQt5XdgIconLoader3 -p /sbin/ldconfig
 
 %files -n libQt5Xdg3
-%defattr(-,root,root)
-%doc AUTHORS COPYING
+%license COPYING
+%doc AUTHORS
 %{_libdir}/libQt5Xdg.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_datadir}/cmake/qt5xdg
 %{_includedir}/qt5xdg
 %{_libdir}/pkgconfig/Qt5Xdg.pc
 %{_libdir}/libQt5Xdg.so
 
 %files -n libQt5XdgIconLoader3
-%defattr(-,root,root)
 %{_libdir}/libQt5XdgIconLoader.so.3
 %{_libdir}/libQt5XdgIconLoader.so.3.*
 
 %files -n libQt5XdgIconLoader-devel
-%defattr(-,root,root)
 %dir %{_includedir}/qt5xdgiconloader
 %dir %{_includedir}/qt5xdgiconloader/%{version}
 %dir %{_includedir}/qt5xdgiconloader/%{version}/private
@@ -127,5 +132,8 @@ make %{?_smp_mflags}
 %{_datadir}/cmake/qt5xdgiconloader/qt5xdgiconloader-config.cmake
 %{_datadir}/cmake/qt5xdgiconloader/qt5xdgiconloader-targets-*.cmake
 %{_datadir}/cmake/qt5xdgiconloader/qt5xdgiconloader-targets.cmake
+
+%files -n qtxdg-tools
+%{_bindir}/qtxdg-mat
 
 %changelog
