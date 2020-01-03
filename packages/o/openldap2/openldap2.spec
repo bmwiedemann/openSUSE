@@ -81,7 +81,7 @@ BuildRequires:  openslp-devel
 BuildRequires:  unixODBC-devel
 %if %{suse_version} >= 1310 && %{suse_version} != 1315
 # avoid cycle with krb5
-BuildRequires:  krb5-mini
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(systemd)
 %if %{suse_version} < 1500
 %{?systemd_requires}
