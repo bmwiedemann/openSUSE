@@ -17,7 +17,7 @@
 
 
 Name:           pcb
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        CAD Program for the Design of Printed Circuit Boards
 License:        GPL-2.0
