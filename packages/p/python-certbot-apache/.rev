@@ -114,4 +114,14 @@
     <comment>certbot version bump</comment>
     <requestid>748665</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>098b569af2fc570c665cc01c988259ad</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0 (boo#1160066)
+  * The docs extras for the certbot-apache and certbot-nginx packages
+    have been removed.</comment>
+    <requestid>760676</requestid>
+  </revision>
 </revisionlist>
