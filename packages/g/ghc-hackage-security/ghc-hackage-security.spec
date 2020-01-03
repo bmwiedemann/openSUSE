@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hackage-security
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/6.cabal#/%{pkg_name}.cabal
+Patch01:        https://raw.githubusercontent.com/hvr/head.hackage/master/patches/hackage-security-0.5.3.0.patch#/fix-ghc-8.8.x-build.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-base64-bytestring-devel
@@ -85,6 +86,8 @@ files.
 %prep
 %setup -q -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
+%patch01 -p1
+cabal-tweak-dep-ver base '< 4.13' '< 5'
 
 %build
 %ghc_lib_build
