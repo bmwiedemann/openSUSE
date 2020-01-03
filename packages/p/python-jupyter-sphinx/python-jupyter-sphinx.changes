@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  3 02:08:46 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.3
+  * strip Latex math delimiters that would be rendered by math blocks
+  * adjusts jupyter_container margin as a better fix
+  * fix sphinx_rtd_theme spacing issue
+  * Update jupyter-sphinx.css
+  * fix for overflow errror in code cell
+- Drop python2 support due to dependencies dropping python2
+
+-------------------------------------------------------------------
 Tue Nov 12 16:36:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.2.2
