@@ -44,4 +44,14 @@ there is no online file with xz compression, so the url is in the _service file.
 - enable test cases</comment>
     <requestid>712875</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f1617e6b95fc9bb40d2088a334d96e8</srcmd5>
+    <version>4.4.1</version>
+    <time>1578069405</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.1
+  * mostly internal changes
+</comment>
+    <requestid>760480</requestid>
+  </revision>
 </revisionlist>
