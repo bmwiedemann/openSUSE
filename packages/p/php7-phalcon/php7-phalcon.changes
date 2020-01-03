@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Dec 27 15:07:30 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 4.0.0
+  * Provided PHP 7.4 support
+  * Added the ability to Phalcon\Model::findFirstBy* and Phalcon\Model::findBy* to process passed
+    parameters (for order etc.)
+  * Added Phalcon\Helper\Str::decrement to remove a number from a string or decrements that number
+    if it already is defined
+  * Added Exception storing and getting in the Phalcon\Domain\Payload\*
+  * Added options array in Phalcon\Http\Cookie in the constructor as well as getOptions and
+    setOptions
+  * Added options array in Phalcon\Http\Response\Cookies in the set()
+  * Changed Phalcon\Mvc\Router\Annotations to use converters instead of conversors
+  * Changed Phalcon\Di::setRaw to Phalcon\Di::setService to align more with the use of the method
+  * Changed Phalcon\Http\CookieInterface to Phalcon\Http\Cookie\CookieInterface to avoid confusion
+  * Changed Phalcon\Storage\Adapter\*::getKeys to accept an optional $prefix so as to filter the
+    keys returned
+  * Changed dates reported by the logger to use the "c" date mask for better sorting
+  * Changed the Phalcon\Storage\Adapter\* constructors to require the
+    Phalcon\Storage\SerializerFactory object
+  * Fixed PhalconMvc\Model to ignore internal setters if properties have the same name as the
+    setter
+  * Fixed Phalcon\Logger\Formatter\Line to not add PHP_EOL at the end of the message and added it
+    to the Phalcon\Logger\Adapter\Stream
+  * Fixed Phalcon\Mvc\Model\MetaData\Apcu and Phalcon\Mvc\Model\MetaData\Redis to allow setting the
+    prefix and lifetime using the options or use the default.
+  * Fixed Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Adapter\AbstractInterface
+    getters to contain a default value
+  * Fixed Phalcon\Storage\Adapter\Memory initializing the array store correctly
+  * Fixed Phalcon\Storage\Adapter\Stream to capture notice if the stream is not opened properly
+  * Fixed Phalcon\Security::getRandomBytes to return int
+  * Fixed Phalcon\Security to use 10 as the default work factor
+  * Fixed Phalcon\Helper\Arr::validateAny and Phalcon\Helper\Arr::validateAllto use null as default
+    for the callback method
+  * Fixed Phalcon\Escaper::escapeHtml and Phalcon\Escaper::escapeHtmlAttr to allow null values
+  * Fixed Phalcon\Mvc\Model::cloneResultMap to correctly recognize aliased fields and include them
+    in the resultset
+  * Fixed Phalcon\Http\Request::getQuery,Phalcon\Http\Request::getPut,Phalcon\Http\Request::getPost
+    to treat 0 as non empty for allowNoEmpty
+  * Fixed Phalcon\Router::handle() to use the / route on empty string
+  * Fixed Phalcon\Storage\Adapter\Libmemcached::getKeys and Phalcon\Storage\Adapter\Redis::getKeys
+    to return the keys that are prefixed only for that adapter
+  * Fixed factories to return a new instance when calling newInstance and not a cached one from the
+    internal mapper
+    + Phalcon/Annotations/AnnotationsFactory
+    + Phalcon/Cache/AdapterFactory
+    + Phalcon/Config/ConfigFactory
+    + Phalcon/Db/Adapter/PdoFactory
+    + Phalcon/Image/ImageFactory
+    + Phalcon/Logger/AdapterFactory
+    + Phalcon/Paginator/PaginatorFactory
+    + Phalcon/Storage/AdapterFactory
+    + Phalcon/Storage/SerializerFactory
+    + Phalcon/Translate/InterpolatorFactory
+    + Phalcon/Translate/TranslateFactory
+    + Phalcon/Validation/ValidatorFactory
+  * Fixed Phalcon\Mvc\Model::cloneResultMap to cast integers when fields are TYPE_BIGINTEGER,
+    TYPE_INTEGER, TYPE_MEDIUMINTEGER, TYPE_SMALLINTEGER, TYPE_TINYINTEGER
+  * Fixed Phalcon\Http\Response::setCookies to use the correct interface
+  * Fixed Phalcon\Test\Unit\Image\Adapter\Gd::processBackground to correctly calculate the alpha
+    value.
+  * Fixed Phalcon\Logger\Adapter\AdapterInterface adding missing inTransaction()
+  * Fixed Phalcon\Mvc\Model::cloneResultsetMap to remove fatal error when looking up the columnMap.
+  * Fixed Phalcon\Http\Request\FileInterface by adding getError that was missing.
+- Update to 3.4.5
+  * Fixed segfault in Phalcon\Mvc\Micro\LazyLoader::__call() when the handler has a syntax error.
+  * Fixed RuntimeException in Phalcon\Db\Adapter\Pdo Trying to call method upper on a non-object.
+  * Fixed Phalcon\Storage\Adapter\Redis::delete() deprecated warning from php-redis
+- Update to 3.4.4
+  * Generated Dialect Class referring to a PHP class can't be found
+  * Changed default gcc's CFLAGS so that, the extension should be properly generated for most hosts,
+    including Docker
+  * Phalcon\Forms\Form::clear() now correctly clears single fields.
+  * Used latest stable Zephir from 0.10.x branch to prevent segfaults with PHP 7.3.6
+
+-------------------------------------------------------------------
 Sun Mar  3 22:51:40 UTC 2019 - Mariusz Fik <fisiu@opensuse.org>
 
 - Update to 3.4.3:
