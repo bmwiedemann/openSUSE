@@ -60,4 +60,18 @@
     <comment>version update</comment>
     <requestid>737379</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>283d5dff9d9e014472501a9e9ca06a74</srcmd5>
+    <version>4.4.1</version>
+    <time>1578069389</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/v4.4.1
+
+- update to version 4.4.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/v4.4.0</comment>
+    <requestid>760441</requestid>
+  </revision>
 </revisionlist>
