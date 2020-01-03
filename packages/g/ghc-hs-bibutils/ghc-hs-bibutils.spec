@@ -18,7 +18,7 @@
 
 %global pkg_name hs-bibutils
 Name:           ghc-%{pkg_name}
-Version:        6.7.0.0
+Version:        6.8.0.0
 Release:        0
 Summary:        Haskell bindings to bibutils, the bibliography conversion utilities
 License:        GPL-2.0-or-later
