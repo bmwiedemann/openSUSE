@@ -106,4 +106,13 @@
     <comment>certbot version bump</comment>
     <requestid>748671</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b582727d48df1a968f8e163e7db2c872</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069550</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0
+  * sync with main certbot package</comment>
+    <requestid>760655</requestid>
+  </revision>
 </revisionlist>
