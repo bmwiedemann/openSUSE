@@ -37,8 +37,6 @@ BuildRequires:  %{python_module traittypes >= 0.2.0}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-BuildRequires:  zip
 # SECTION test requirements
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module pytest}
@@ -100,18 +98,16 @@ This package provides the JupyterLab extension.
 
 %prep
 %setup -q -T -c
-unzip %{SOURCE0} 'ipydatawidgets/*'
-find ipydatawidgets/ -type f -name "*.py" -exec sed -i 's/\r$//' {} +
-find ipydatawidgets/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
-zip -r %{SOURCE0} ipydatawidgets
-rm -rf ipydatawidgets
 
 %build
 # Not Needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 %{jupyter_move_config}
+%python_expand find %{buildroot}%{$python_sitelib}/ipydatawidgets/ -type f -name "*.py" -exec sed -i 's/\r$//' {} +
+%python_expand find %{buildroot}%{$python_sitelib}/ipydatawidgets/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
 cp %{buildroot}%{python3_sitelib}/ipydatawidgets-%{mainver}.dist-info/LICENSE.txt .
