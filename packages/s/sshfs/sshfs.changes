@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  3 11:46:09 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.7.0
+  * New max_conns option enables the use of multiple connections to
+    improve responsiveness during large file transfers.
+  * The buflimit workaround is now disabled by default.
+    The corresponding bug in OpenSSH has been fixed in 2007 
+    (cf. https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=365541#37),
+    so this shouldn't be needed anymore.
+
+-------------------------------------------------------------------
 Sun Nov  3 09:56:36 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.6.0
