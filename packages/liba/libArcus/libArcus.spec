@@ -1,7 +1,7 @@
 #
 # spec file for package libArcus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %define sover 3
 Name:           libArcus
-Version:        4.3.0
+Version:        4.4.1
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://github.com/Ultimaker/%name
+URL:            http://github.com/Ultimaker/%name
 Source:         %name-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Install-the-Python-extension-module-to-Python-sitear.patch
-Patch1:         0002-Fix-Python3_SITEARCH-for-old-cmake.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
@@ -56,8 +53,6 @@ tools necessary for compiling and linking programs which use %{name}.
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
 
 %build
 %cmake
