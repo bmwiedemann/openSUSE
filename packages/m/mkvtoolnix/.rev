@@ -994,4 +994,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>754878</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>8ddc8a8e09d2b0253403a10eac2cf37a</srcmd5>
+    <version>42.0.0</version>
+    <time>1578069440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760475</requestid>
+  </revision>
 </revisionlist>
