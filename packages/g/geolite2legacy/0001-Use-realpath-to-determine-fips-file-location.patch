@@ -1,0 +1,27 @@
+From 6dbe2bec1361d0b5cae99b5eec73d0152105e7da Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Fri, 3 Jan 2020 10:43:28 +0100
+Subject: [PATCH] Use realpath to determine fips file location
+
+Help with system installation where /usr/bin/geolite2legacy would be a
+symlink to the actual location
+---
+ geolite2legacy.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/geolite2legacy.py b/geolite2legacy.py
+index 43969ea..87bd549 100755
+--- a/geolite2legacy.py
++++ b/geolite2legacy.py
+@@ -438,7 +438,7 @@ def main():
+         sys.exit(1)
+ 
+     if dbtype != 'ASN':
+-        fips_file = opts.fips_file or os.path.join(os.path.dirname(__file__), 'geoname2fips.csv')
++        fips_file = opts.fips_file or os.path.join(os.path.dirname(os.path.realpath(__file__)), 'geoname2fips.csv')
+         parse_fips(fips_file)
+ 
+     tstart = time()
+-- 
+2.16.4
+

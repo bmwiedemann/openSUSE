@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Jan 03 09:38:56 UTC 2020 - lnussel@suse.de
+
+- Update to version 0+git20200101.56d8a4f:
+  * silence pycharm warning
+  * add version in comment using dirname inside zip
+  * use geoname2fips.csv in script dir if not specified
+  * remap country code from AS to AP (GH-6)
+  * correct city v6 database version
+
+-------------------------------------------------------------------
+Mon Dec 30 12:48:37 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- initial package
