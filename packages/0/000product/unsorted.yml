@@ -15246,8 +15246,8 @@ unsorted:
   - osc-plugin-origin: [x86_64] 
   - osc-plugin-staging: [x86_64] 
   - osclib: [x86_64] 
-  - osdlyrics: [x86_64] 
-  - osdlyrics-lang: [x86_64] 
+  - osdlyrics 
+  - osdlyrics-lang 
   - osgi-annotation 
   - osgi-annotation-javadoc 
   - osgi-compendium 
@@ -21529,7 +21529,7 @@ unsorted:
   - python3-osc-lib 
   - python3-osc-tiny 
   - python3-oscrypto 
-  - python3-osdlyrics: [x86_64] 
+  - python3-osdlyrics 
   - python3-oslo.cache 
   - python3-oslo.concurrency 
   - python3-oslo.config 
