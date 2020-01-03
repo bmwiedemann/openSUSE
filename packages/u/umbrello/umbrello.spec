@@ -53,6 +53,8 @@ BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  kdevelop5-pg-qt
+BuildRequires:  kdevplatform-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  subversion-devel
