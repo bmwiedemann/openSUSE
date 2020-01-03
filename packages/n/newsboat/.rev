@@ -446,4 +446,28 @@ run -osc service localrun format_spec_file to fix copyright
 - Add newsboat-no-git-hash.patch: Don't depend on git. Fix build</comment>
     <requestid>713038</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>83318a5397951d6978432c41d8b5edce</srcmd5>
+    <version>2.18</version>
+    <time>1578069248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.18:
+  Added:
+  * Logo by noobilanderi
+  Changed:
+  * `open-in-browser-and-mark-read` no longer marks item read if browser returned
+    a non-zero exit code. Similarly, `open-all-unread-in-browser` and
+    `open-all-unread-in-browser-and-mark-read` abort on non-zero exit code
+  * Update vendored version of Catch3 to 2.11.0
+  * Update vendored version of nlohmann/json to 3.7.3
+  * Update translations: German, Russian, Ukrainian
+  Fixed:
+  * `unbind-key -a` breaking cmdline, search and goto-url (#454) (kmws)
+  * Flaky `run_command()` test (Alexander Batischev)
+  Security:
+  * smallvec crate bumped to 0.6.10, to get fixes for RUSTSEC-2019-0009 and
+    RUSTSEC-2019-0012
+- Remove newsboat-no-git-hash.patch</comment>
+    <requestid>759910</requestid>
+  </revision>
 </revisionlist>

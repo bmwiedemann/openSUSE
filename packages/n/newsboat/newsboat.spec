@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           newsboat
-Version:        2.16.1
+Version:        2.18
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -27,9 +27,8 @@ Source:         https://newsboat.org/releases/%{version}/%{name}-%{version}.tar.
 Source1:        https://newsboat.org/releases/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        https://newsboat.org/newsboat.pgp#/%{name}.keyring
 Source3:        vendor.tar.xz
-Patch0:         newsboat-no-git-hash.patch
 # pbleser: introduce OPTFLAGS make variable, instead of hard-coded -ggdb
-Patch1:         newsbeuter-makefile.patch
+Patch0:         newsbeuter-makefile.patch
 BuildRequires:  asciidoc
 BuildRequires:  cargo
 BuildRequires:  gcc-c++
@@ -61,7 +60,6 @@ text terminals.
 %prep
 %setup -qa3
 %patch0 -p1
-%patch1 -p1
 mkdir cargo-home
 cat >cargo-home/config <<EOF
 [source.crates-io]
@@ -91,7 +89,7 @@ done
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.md TODO
+%doc CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_bindir}/podboat
 %dir %{_docdir}/%{name}/examples

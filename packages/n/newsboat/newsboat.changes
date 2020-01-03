@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 29 16:48:58 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.18:
+  Added:
+  * Logo by noobilanderi
+  Changed:
+  * `open-in-browser-and-mark-read` no longer marks item read if browser returned
+    a non-zero exit code. Similarly, `open-all-unread-in-browser` and
+    `open-all-unread-in-browser-and-mark-read` abort on non-zero exit code
+  * Update vendored version of Catch3 to 2.11.0
+  * Update vendored version of nlohmann/json to 3.7.3
+  * Update translations: German, Russian, Ukrainian
+  Fixed:
+  * `unbind-key -a` breaking cmdline, search and goto-url (#454) (kmws)
+  * Flaky `run_command()` test (Alexander Batischev)
+  Security:
+  * smallvec crate bumped to 0.6.10, to get fixes for RUSTSEC-2019-0009 and
+    RUSTSEC-2019-0012
+- Remove newsboat-no-git-hash.patch
+
+-------------------------------------------------------------------
 Mon Jul  1 11:24:38 UTC 2019 - mvetter@suse.com
 
 - Update to 2.16.1:
