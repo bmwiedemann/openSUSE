@@ -1,0 +1,87 @@
+Name:                vector-binary-instances
+Version:             0.2.5.1
+x-revision: 1
+Synopsis:            Instances of Data.Binary for vector
+Description:
+   Instances for Binary for the types defined in the vector package,
+   making it easy to serialize vectors to and from disk. We use the
+   generic interface to vectors, so all vector types are supported.
+   Specific instances are provided for unboxed, boxed and storable
+   vectors.
+   .
+   To serialize a vector:
+   .
+   > *Data.Vector.Binary> let v = Data.Vector.fromList [1..10]
+   > *Data.Vector.Binary> v
+   > fromList [1,2,3,4,5,6,7,8,9,10] :: Data.Vector.Vector
+   > *Data.Vector.Binary> encode v
+   > Chunk "\NUL\NUL\NUL\NUL\NUL...\NUL\NUL\NUL\t\NUL\NUL\NUL\NUL\n" Empty
+   .
+   Which you can in turn compress before writing to disk:
+   .
+   > compress . encode $ v
+   > Chunk "\US\139\b\NUL\NUL\N...\229\240,\254:\NUL\NUL\NUL" Empty
+   .
+   Try the cereal-vector package if you are looking for Data.Serialize
+   instances.
+
+-- URL for the project homepage or repository.
+Homepage:            https://github.com/bos/vector-binary-instances
+bug-reports:         https://github.com/bos/vector-binary-instances/issues
+License:             BSD3
+License-file:        LICENSE
+Author:              Don Stewart
+Maintainer:          dons00@gmail.com, bos@serpentine.com, Ben Gamari <ben@smart-cactus.org>
+Tested-With:         GHC==8.6.1, GHC==8.0.2, GHC==7.10.3, GHC==7.8.4, GHC==7.6.3, GHC==7.4.2
+
+-- A copyright notice.
+-- Copyright:
+
+-- Stability of the pakcage (experimental, provisional, stable...)
+Stability:           Experimental
+Category:            Data
+Build-type:          Simple
+
+-- Constraint on the version of Cabal needed to build this package.
+Cabal-version:       >=1.8
+
+
+Library
+  Ghc-options: -Wall
+  -- Modules exported by the library.
+  Exposed-modules:
+    Data.Vector.Binary
+
+  -- Packages needed in order to build this package.
+  Build-depends:
+    base > 3 && < 4.14,
+    vector >= 0.6 && < 0.13,
+    binary >= 0.5 && < 0.11
+
+Benchmark benchmarks
+  Type:           exitcode-stdio-1.0
+  Main-is:        Benchmarks.hs
+  Build-depends:
+    base >= 4.7,
+    vector-binary-instances,
+    vector,
+    bytestring,
+    binary,
+    gauge,
+    deepseq
+  hs-source-dirs: benchmarks
+
+Test-Suite tests
+  Type:           exitcode-stdio-1.0
+  Main-is:        test/Main.hs
+  Build-depends:
+    base,
+    vector-binary-instances,
+    vector,
+    binary,
+    tasty,
+    tasty-quickcheck
+
+source-repository head
+  type:     git
+  location: https://github.com/bos/vector-binary-instances
