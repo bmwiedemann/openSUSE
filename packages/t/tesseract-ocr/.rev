@@ -93,4 +93,12 @@
   * Bugfixes</comment>
     <requestid>759653</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2f501c911488045ca04cfed4ce2f53ad</srcmd5>
+    <version>4.1.1</version>
+    <time>1578069516</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libarchive in the devel package</comment>
+    <requestid>760613</requestid>
+  </revision>
 </revisionlist>

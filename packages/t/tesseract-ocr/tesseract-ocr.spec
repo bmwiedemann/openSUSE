@@ -1,7 +1,7 @@
 #
 # spec file for package tesseract-ocr
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        4.1.1
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
-Group:          Productivity/Graphics/Other
 URL:            https://github.com/tesseract-ocr/tesseract
 Source0:        https://github.com/tesseract-ocr/tesseract/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  asciidoc
@@ -54,9 +53,9 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 
 %package devel
 Summary:        Tesseract Open Source OCR Engine Development files
-Group:          Development/Libraries/Other
-Requires:       liblept-devel
 Requires:       libtesseract%{so_ver} = %{version}
+Requires:       pkgconfig(lept) >= 1.74
+Requires:       pkgconfig(libarchive)
 
 %description devel
 This package contains development files for the Tesseract Open Source OCR
@@ -64,7 +63,6 @@ Engine.
 
 %package -n libtesseract%{so_ver}
 Summary:        Open Source OCR Engine
-Group:          System/Libraries
 
 %description -n libtesseract%{so_ver}
 A commercial quality OCR engine originally developed at HP between 1985 and
