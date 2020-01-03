@@ -17,13 +17,12 @@
 
 
 Name:           cabal-install
-Version:        2.4.0.0
+Version:        3.0.0.0
 Release:        0
 Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HTTP-devel
 BuildRequires:  ghc-array-devel
@@ -54,45 +53,27 @@ BuildRequires:  ghc-tar-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-zip-archive-devel
 BuildRequires:  ghc-zlib-devel
-Suggests:       %{name}-bash-completion
 
 %description
 The 'cabal' command-line program simplifies the process of managing Haskell
 software by automating the fetching, configuration, compilation and
 installation of Haskell libraries and programs.
 
-%package bash-completion
-Summary:        Bash completion for cabal-install
-Requires:       %{name} = %{version}
-Requires:       bash-completion
-Supplements:    (%{name} and bash-completion)
-
-%description bash-completion
-Optional sub-package offering bash completion for cabal-install.
-
 %prep
 %setup -q
-cp -p %{SOURCE1} %{name}.cabal
-cabal-tweak-dep-ver zip-archive '< 0.4' '< 0.5'
+cabal-tweak-dep-ver base '< 4.13' '< 5'
 
 %build
 %ghc_bin_build
 
 %install
 %ghc_bin_install
-install -D -m444 bash-completion/cabal %{buildroot}%{_datadir}/bash-completion/completions/cabal
 
 %files
 %license LICENSE
 %doc README.md changelog
 %{_bindir}/cabal
 %{_mandir}/man1/cabal.1%{?ext_man}
-
-%files bash-completion
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/cabal
 
 %changelog
