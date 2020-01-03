@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  2 12:42:40 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix test getdate [bsc#1159990]
+- Add perl-TimeDate-getdate.patch
+
+-------------------------------------------------------------------
+Thu Jan  2 12:42:12 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update spec file
+
+-------------------------------------------------------------------
 Sat May  2 09:53:14 UTC 2015 - coolo@suse.com
 
 - updated to 2.30

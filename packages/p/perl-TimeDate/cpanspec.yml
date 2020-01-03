@@ -15,4 +15,5 @@ description: |-
      could be extracted from the date string. The $zone element is the timezone
      offset in seconds from GMT. An empty array is returned upon failure.
 
-
+patches:
+  perl-TimeDate-getdate.patch: -p1
