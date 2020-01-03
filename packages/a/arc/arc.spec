@@ -26,6 +26,8 @@ Source:         https://github.com/ani6al/arc/archive/%{version}.tar.gz#/%{name}
 Patch0:         arc-5.21p-directory-traversel.patch
 Patch1:         arc-5.21p-fix-arcdie.patch
 Patch2:         arc-5.21p-hdrv1-read-fix.patch
+# /usr/bin/arc binary name conflicts
+Conflicts:      arcanist
 
 %description
 This package allows you to unpack *.arc file
