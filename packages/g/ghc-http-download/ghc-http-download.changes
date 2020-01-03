@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  1 18:02:54 UTC 2020 - psimons@suse.com
+
+- Drop obsolete code to create a Setup.hs file. The RPM macros do
+  this automatically now.
+
+-------------------------------------------------------------------
 Mon Dec 23 11:12:02 UTC 2019 - psimons@suse.com
 
 - Update http-download to version 0.1.0.1.
