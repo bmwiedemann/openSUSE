@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-microlens
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,11 @@ This library is an extract from <http://hackage.haskell.org/package/lens lens>
 (with no dependencies). It's not a toy lenses library, unsuitable for “real
 world”, but merely a small one. It is compatible with lens, and should have
 same performance. It also has better documentation.
+
+There's a longer readme <https://github.com/monadfix/microlens#readme on
+Github>. It has a migration guide for lens users, a description of other
+packages in the family, a discussion of other lens libraries you could use
+instead, and so on.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
