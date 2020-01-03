@@ -31,4 +31,42 @@
     <comment></comment>
     <requestid>748352</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>68de922b56d18c71ff8833d3fe1af3d1</srcmd5>
+    <version>0.4.1</version>
+    <time>1578069469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1
+  * Don't completely fail to import if beautifulsoup4 and requests
+    are unavailable (only the &quot;verify&quot; functionality requires them;
+    beautifulsoup4 and requests are supposed to be optional
+    dependencies).
+- Update to 0.4.0
+  * The dependencies for the &quot;verify&quot; command are now optional;
+    pip users wanting this feature will need to add the &quot;verify&quot;
+    extra (pip install nbsmoke[verify] or pip install nbsmoke[all]),
+    or add the dependencies manually (pip install requests
+    beautifulsoup4).
+  * The dependency for holoviews magics lint checking (i.e.
+    holoviews) is now optional; pip users wanting this feature will
+    need to add the &quot;holoviews-magics&quot; extra (pip install
+    nbsmoke[holoviews-magics] or pip install nbsmoke[all]), or add
+    the dependency manually (pip install holoviews).
+  * Bug fix: Avoid importing holoviews if available when nbsmoke is
+    imported (#36). Previously, the mere presence of nbsmoke in an
+    environment could affect test coverage measurement for projects
+    that holoviews itself imports.
+- Update to 0.3.0
+  * support for flake messages to ignore (by regex)
+  * support for magics blacklist (i.e. magics that if present cause a flake)
+  * added support for script &amp; capture cell magics (mainly as a demo)
+  * increased the number of builtin magics that will be silently
+    ignored (as they don't interact with the python process), e.g.
+    bookmark, edit, who, etc
+  * lint failures can be set to be warnings only (potentially
+    useful for systems that report warnings
+- Drop python2 support due to dependencies dropping python2
+</comment>
+    <requestid>760530</requestid>
+  </revision>
 </revisionlist>

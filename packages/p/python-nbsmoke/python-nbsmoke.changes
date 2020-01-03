@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jan  3 01:26:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.1
+  * Don't completely fail to import if beautifulsoup4 and requests
+    are unavailable (only the "verify" functionality requires them;
+    beautifulsoup4 and requests are supposed to be optional
+    dependencies).
+- Update to 0.4.0
+  * The dependencies for the "verify" command are now optional;
+    pip users wanting this feature will need to add the "verify"
+    extra (pip install nbsmoke[verify] or pip install nbsmoke[all]),
+    or add the dependencies manually (pip install requests
+    beautifulsoup4).
+  * The dependency for holoviews magics lint checking (i.e.
+    holoviews) is now optional; pip users wanting this feature will
+    need to add the "holoviews-magics" extra (pip install
+    nbsmoke[holoviews-magics] or pip install nbsmoke[all]), or add
+    the dependency manually (pip install holoviews).
+  * Bug fix: Avoid importing holoviews if available when nbsmoke is
+    imported (#36). Previously, the mere presence of nbsmoke in an
+    environment could affect test coverage measurement for projects
+    that holoviews itself imports.
+- Update to 0.3.0
+  * support for flake messages to ignore (by regex)
+  * support for magics blacklist (i.e. magics that if present cause a flake)
+  * added support for script & capture cell magics (mainly as a demo)
+  * increased the number of builtin magics that will be silently
+    ignored (as they don't interact with the python process), e.g.
+    bookmark, edit, who, etc
+  * lint failures can be set to be warnings only (potentially
+    useful for systems that report warnings
+- Drop python2 support due to dependencies dropping python2
+
+-------------------------------------------------------------------
 Wed Nov 13 14:40:52 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - jupyter_client renamed to jupyter-client
