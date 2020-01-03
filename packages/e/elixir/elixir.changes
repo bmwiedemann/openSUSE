@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Dec 15 17:58:38 UTC 2019 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Refresh elixir-1.9.4.tar.gz
+
+-------------------------------------------------------------------
+Tue Dec  3 09:25:13 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
+
+- Elixir 1.9.4
+  * Bug fixes
+    Mix
+    [mix local.hex] Remove invalid deprecation warning on mix local.hex command
+  
+- Elixir 1.9.3
+  * Enhancements
+    Mix
+    [mix release] Add :tar option for releases to create a tarball
+  
+  * Bug fixes
+    Mix
+    [mix release] Use default_release option when name is not given
+    [mix release] Make release's boot script contents deterministic
+
+  * Deprecations
+    Mix
+    [mix archive.install] Warn when installing from URI
+    [mix escript.install] Warn when installing from URI
+
+- Elixir 1.9.2
+  * Enhancements
+    Mix
+    [mix release] Allow {:from_app, app_name} as a version for releases
+  
+  * Bug fixes
+    Elixir
+    [Kernel] Ensure compilation works for a variable named super
+    [Kernel] Ensure capture operator of a local function expands correctly inside a macro
+    [Regex] Ensure dynamic recompilation of regexes considers options. 
+    This fixes an issue where parsing the protocol in URI.parse/1 seemingly looked case sensitive when running Elixir precompiled on another machine
+
+  * Mix
+    [mix release] Use Base.encode32 when generating cookie to avoid unsafe chars
+    [mix release] Fix install command on Windows
+    [mix release] Quote executable path on Windows to ensure it works on directories with spaces
+
+- Elixir 1.9.1
+  * Enhancements
+    Mix
+    [mix format] Print relative paths in --check-formatted output
+    [mix release] Support included applications
+
+  * Bug fixes
+    Elixir
+    [Code] Fix formatter wrongly removing nested parens in nested calls
+
+  * Logger
+    [Logger] Do not crash translator on poorly formatted supervisor names
+
+  * Mix
+    [mix compile] Raise readable error for mismatched sources during compilation
+    [mix release] Preserve UTF8 encoding in release config files
+
+-------------------------------------------------------------------
 Tue Jun 25 08:55:44 UTC 2019 - g.santomaggio@gmail.com
 
 - Elixir 1.9.0
