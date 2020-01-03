@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 %bcond_without  test
 Name:           jupyter-imatlab
 Version:        0.4
@@ -60,8 +61,10 @@ mkdir matlab
 echo 'EngineError = MatlabExecutionError = Exception' > matlab/engine.py
 
 %install
-# use --no-deps because it looks for MATLAB itself
-pip%{python3_bin_suffix} install --root %{buildroot} --prefix %{_prefix} --no-compile --no-deps %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
+# avoid time-based .pyc files for reproducibility:
+%py3_compile %{buildroot}%{python3_sitelib}
 
 PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m imatlab install --prefix %{buildroot}%{_prefix}
 
