@@ -1,7 +1,7 @@
 #
 # spec file for package hugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,13 @@
 Name:           hugin
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
-%if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 150000
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  exiftool
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_system-devel
 %if %{with system_flann}
 BuildRequires:  flann-devel
 %endif
@@ -58,28 +54,20 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  vigra-devel
 BuildRequires:  wxWidgets-devel >= 3
-%define mversion 2019.0
-Version:        2019.0.0
+%define mversion 2019.2
+Version:        2019.2.0
 Release:        0
 Summary:        Toolchain for Stitching of Images and Creating Panoramas
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://hugin.sourceforge.net/
+URL:            http://hugin.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
-# This script is a combined appdata.prov and desktop-file.prov to enable hugin to provide appdata.xml and desktop files see boo#952324
-Source1:        find-hugin-provides.prov
 Patch0:         hugin.appdata.patch
-# PATCH-FIX-UPSTREAM https://sourceforge.net/p/hugin/hugin/ci/01e87b730bb3d2fba65e5738e4e20c25900d7ab0/
-Patch1:         0001-Unified-inclusion-of-exiv2-library-1828925.patch
 Requires:       enblend-enfuse >= 3.2
 # needed for photo stiching (bnc#822775)
 Requires:       make
-Recommends:     autopano-sift
+Recommends:     autopano-sift-C
 Recommends:     exiftool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-%define __find_provides %{SOURCE1}
-#%%debug_package
 
 %description
 Hugin can be used to stitch multiple images together. The resulting
@@ -93,18 +81,14 @@ detection and extraction of key points.
 %prep
 %setup -q
 %patch0
-%patch1 -p1
 
-chmod -x AUTHORS authors.txt Changes.txt README TODO COPYING.txt
+chmod -x AUTHORS authors.txt Changes.txt README COPYING.txt
 
 # Rename Czech in Czech Republic to Czech.
 mv src/translations/cs_CZ.po src/translations/cs.po
 #sed -i "s/ca_ES/ca/;s/cs_CZ/cs/" src/hugin/po/LINGUAS
-chmod 0755 %{SOURCE1}
 
 %build
-echo -n be8da0221960 > rev.txt
-
 %cmake \
 	-DENABLE_LAPACK=%{?with_lapack:ON}%{!?with_lapack:OFF} \
 	-DBUILD_HSI=%{?with_hsi:ON}%{!?with_hsi:OFF} \
@@ -146,7 +130,7 @@ install -m644 -D -t %{buildroot}%{_licensedir}/hugin/ COPYING.txt
 
 %files -f %{name}.lang
 %license COPYING.txt
-%doc AUTHORS authors.txt Changes.txt README TODO
+%doc AUTHORS authors.txt Changes.txt README
 %{_bindir}/*
 %{_datadir}/hugin
 %{_datadir}/applications/*.desktop

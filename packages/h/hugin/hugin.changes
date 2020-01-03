@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  2 18:43:08 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 2019.2.0
+  * 2019.2.0 is mainly a bug fix release.
+  * Fixes bugs in verdandi/internal blender.
+  * Scripting interface needs now Python3.
+  * Improvements for high dpi displays (Windows, GTK+3).
+  * Fixes for several small bugs...
+- Some minor spec file cleanup
+- Drop obsolete 0001-Unified-inclusion-of-exiv2-library-1828925.patch
+- Remove obsolete find-hugin-provides.prov
+- Change autopano-sift Recommends to autopano-sift-C, the former
+  does not exist anymore.
+
+-------------------------------------------------------------------
 Sun Jul 14 16:12:38 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 2019.0.0
