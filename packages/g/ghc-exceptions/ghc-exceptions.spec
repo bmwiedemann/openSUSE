@@ -19,7 +19,7 @@
 %global pkg_name exceptions
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Extensible optionally-pure exceptions
 License:        BSD-3-Clause
@@ -30,7 +30,6 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-template-haskell-devel
-BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
