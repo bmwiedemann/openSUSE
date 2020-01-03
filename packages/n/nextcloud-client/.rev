@@ -169,4 +169,12 @@
 - Fix boo#1155457.</comment>
     <requestid>747009</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c1d2664600928d77a7a70290573b2969</srcmd5>
+    <version>2.6.2</version>
+    <time>1578069257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760245</requestid>
+  </revision>
 </revisionlist>

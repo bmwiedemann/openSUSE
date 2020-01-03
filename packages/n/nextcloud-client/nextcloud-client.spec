@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-client
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -55,6 +55,7 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
 Requires:       %{soname}%{sover} = %{version}
 Recommends:     %{name}-lang
 %if 0%{?is_opensuse}

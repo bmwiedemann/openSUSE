@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Dec 31 19:15:00 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 2.6.2
+  * desktop#1456 Revert DEFAULT_REMOTE_POLL_INTERVAL back from 5 seconds to 30 seconds
+  * desktop#1459 Use user-provided username in displayName() - Fix #836
+  * desktop#1462 Fix typo
+  * desktop#1471 Build with libcloudproviders on debian and in the AppImage
+  * desktop#1487 Fix tests for Windows platform
+  * desktop#1523 Merge the list of ignored files/symlinks into one Activity notification.
+  * desktop#1526 Fix clang's variadic macro warnings
+  * desktop#1531 Add libdbus-1-dev to the build dependencies
+  * desktop#1593 Compare QDateTime objects more efficient
+  * desktop#1611 Improve the translation of "Share via …"
+  * desktop#1617 Upgrade for Qt 5.12.5 in docker-ci
+  * desktop#1619 Bump Qt 5.12.5 image
+  * desktop#1621 Add timestamp to Mac installer code signing
+  * desktop#1623 MacOS build: Avoid the Get-Task-Allow Entitlement (Notarization)
+  * desktop#1629 Build for Debian stable and oldstable
+  * desktop#1641 Happy new year
+  * desktop#1644 Fall back to old login flow on GS as this is not yet ready
+  * desktop#1645 [stable-2.6] macOS build: Avoid the Get-Task-Allow Entitlement (Notarization)
+  * desktop#1646 Fix remote wipe keychain storage (issue #1592)
+  * desktop#1647 Fix copyright year in MacOSXBundleInfo.plist.in for 2019
+  * desktop#1651 Fix macOS GUI (Qt 5.12)
+  * desktop#1664 Windows: Workaround for storing >= 4k (4096 bit) client-cert SSL keys
+  * desktop#1685 Fix Activity List: Add check to avoid first empty entry
+  * desktop#1687 Fix macOS GUI (Qt 5.12) No. 2 (continuation of #1651)
+  * desktop#1688 Show date and time in activity log (fixes issue #1683)
+  * desktop#1689 Login Flow v2 enhancements
+  * desktop#1694 Activity List: Fix crash and folder opening
+  * desktop#1695 Fix issue #1237: White text on almost-white background
+  * desktop#1696 Heavy refactoring: Windows workaround for >= 4k (4096 bit) client-cert SSL keys and large certs
+  * desktop#1697 Fix date in ActivityWidget and remove unnecessary string conversion
+
+-------------------------------------------------------------------
 Sat Nov  9 12:30:21 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to 2.6.1
