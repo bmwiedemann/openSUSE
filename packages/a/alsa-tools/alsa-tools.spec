@@ -37,6 +37,7 @@ Source2:        sbipatches.tar.bz2
 Source4:        rmedigicontrol.desktop
 Source7:        rmedigicontrol.png
 # upstream fixes
+Patch1:         0001-hdspmixer-Use-__u32-and-__u64-for-RMS-array-types.patch
 # build fixes
 Patch101:       alsa-tools-no_m4_dir.dif
 BuildRequires:  alsa-devel
@@ -301,6 +302,7 @@ Hammerfall DSP soundcard series.
 %setup -q -a 2 -n %{name}-%{package_version}
 cp %{SOURCE1} .
 # upstream fixes
+%patch1 -p1
 # build fixes
 #patch100 -p1
 %patch101 -p1

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 16:56:52 CET 2019 - tiwai@suse.de
+
+- Fix hdspmixer build error with the latest alsa-lib:
+  0001-hdspmixer-Use-__u32-and-__u64-for-RMS-array-types.patch
+
+-------------------------------------------------------------------
 Wed Nov 27 10:23:27 CET 2019 - tiwai@suse.de
 
 - Drop the superfluous buildreq alsa-topology-devel again;
