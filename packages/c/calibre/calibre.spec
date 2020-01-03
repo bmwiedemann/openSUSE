@@ -1,7 +1,7 @@
 #
 # spec file for package calibre
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        4.5.0
+Version:        4.8.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -99,8 +99,10 @@ BuildRequires:  python-sip-devel >= 4.12
 BuildRequires:  python-feedparser >= 5.2.1
 # upstream use python-Markdown 3.0.1
 BuildRequires:  python-Markdown >= 2.6.11
-# upstream use python-html2text 2018.1.9
-BuildRequires:  python-html2text >= 2016.9.19
+%if 0%{?suse_version} <= 1500
+# python-html2text no more in Tumbleweed but normally needed
+BuildRequires:  python-html2text >= 2018.1.9
+%endif
 BuildRequires:  python-pycrypto >= 2.6.1
 # Need at buildtime too, to produce the bash completion
 BuildRequires:  python-qtwebengine-qt5 >= 5.13.0
@@ -109,6 +111,7 @@ BuildRequires:  python-soupsieve >= 1.8
 #BuildRequires:  python-unrardll >= 0.1.3
 BuildRequires:  python-webencodings >= 0.5.1
 #
+BuildRequires:  hyphen-devel >= 2.8.8
 BuildRequires:  sqlite3-devel
 BuildRequires:  xdg-utils >= 1.0.2
 BuildRequires:  pkgconfig(hunspell)
@@ -150,7 +153,10 @@ Requires:       python-sip >= 4.12.1
 # 29.05.2019
 Requires:       python-Markdown >= 2.6.11
 Requires:       python-feedparser >= 5.2.1
-Requires:       python-html2text >= 2016.9.19
+%if 0%{?suse_version} <= 1500
+# python-html2text no more in Tumbleweed but normally needed
+Requires:       python-html2text >= 2018.1.9
+%endif
 Requires:       python-pycrypto >= 2.6.1
 Requires:       python-six >= 1.10.0
 Requires:       python-soupsieve >= 1.8
