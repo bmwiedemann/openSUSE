@@ -1,7 +1,7 @@
 #
 # spec file for package hibiscus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define _build 382
-%define tag V_2_8_18_BUILD_%{_build}
+%define _build 386
+%define tag V_2_8_22_BUILD_%{_build}
 
 Name:           hibiscus
 Summary:        Java online banking client using the HBCI standard
 License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
-Version:        2.8.18
+Version:        2.8.22
 Release:        0
-Url:            https://www.willuhn.de/products/hibiscus/
+URL:            https://www.willuhn.de/products/hibiscus/
 Source:         https://github.com/willuhn/hibiscus/archive/%{tag}.tar.gz
 Source2:        hibiscus-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
