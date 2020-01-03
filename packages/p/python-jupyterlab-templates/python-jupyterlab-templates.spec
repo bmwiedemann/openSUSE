@@ -59,7 +59,8 @@ Support for jupyter notebook templates in jupyterlab.
 # not needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --no-deps --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 %{jupyter_move_config}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
