@@ -1,7 +1,7 @@
 #
 # spec file for package qgis
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,10 @@ Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
 # PATCH-FIX-UPSTREAM fix randomness in desktop file translations
-Patch2:         qgis-3.8.3-reproducible.patch
-Patch3:         a07d915d7bf9c7c54b2047f8819ba2aae6669f35.patch
+Patch0:         qgis-3.8.3-reproducible.patch
+Patch1:         a07d915d7bf9c7c54b2047f8819ba2aae6669f35.patch
+# PATCH-FIX-UPSTREAM fix build with recent txt2tags versions
+Patch2:         Fix-build-with-txt2tags-3.3.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -179,9 +181,7 @@ Development packages for QGIS, including the C header files.
 QGIS sample data with raster, vector, gps files and a GRASS location from the Alaska area.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 # Remove bad env and python version in grass plugin
 sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
 sed -i 's,^#!%{_bindir}/env python3$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
