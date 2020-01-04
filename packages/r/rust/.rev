@@ -418,4 +418,12 @@
   + add-option-to-allow-warnings.patch</comment>
     <requestid>752417</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>68df860747814b2ee8affb04be690fba</srcmd5>
+    <version>1.40.0</version>
+    <time>1578165342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760263</requestid>
+  </revision>
 </revisionlist>

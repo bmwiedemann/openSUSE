@@ -17,12 +17,12 @@
 #
 
 
-%global version_current 1.39.0
-%global version_previous 1.38.0
-%global version_bootstrap 1.38.0
+%global version_current 1.40.0
+%global version_previous 1.39.0
+%global version_bootstrap 1.39.0
 
 # some sub-packages are versioned independently
-%global rustfmt_version 1.4.8
+%global rustfmt_version 1.4.9
 %global clippy_version 0.0.212
 
 # Build the rust target triple.
@@ -136,7 +136,6 @@ Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
 # PATCH-FIX-UPSTREAM: fix rustdoc compilation: https://github.com/rust-lang/rust/issues/66224
-Patch1:         hopefully-fix-rustdoc-build.patch
 BuildRequires:  ccache
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -387,7 +386,6 @@ This package includes HTML documentation for Cargo.
 %setup -q -n rustc-%{version}-src
 
 %patch0 -p1
-%patch1 -p1
 
 # use python3
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" x.py
@@ -400,11 +398,12 @@ rm -rf src/tools/clang
 rm -rf src/tools/lld
 rm -rf src/tools/lldb
 # CI tooling won't be used
-rm -rf src/stdsimd/ci
+rm -rf src/ci
 
 # Remove hidden files from source
 find src/ -type f -name '.appveyor.yml' -exec rm -v '{}' '+'
 find src/ -type f -name '.travis.yml' -exec rm -v '{}' '+'
+find src/ -type f -name '.cirrus.yml' -exec rm -v '{}' '+'
 
 %if !%with bundled_llvm
 rm -rf src/llvm/

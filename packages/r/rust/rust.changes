@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Dec 30 03:48:37 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 1.40.0
+  + Language
+    - You can now use tuple `struct`s and tuple `enum` variant's constructors in
+      `const` contexts. e.g.
+      pub struct Point(i32, i32);
+      const ORIGIN: Point = {
+        let constructor = Point;
+        constructor(0, 0)
+      };
+    - You can now mark `struct`s, `enum`s, and `enum` variants with the `#[non_exhaustive]` attribute to
+      indicate that there may be variants or fields added in the future.
+      For example this requires adding a wild-card branch (`_ => {}`) to any match
+      statements on a non-exhaustive `enum`.
+    - You can now use function-like procedural macros in `extern` blocks and in
+      type positions. e.g. `type Generated = macro!();`
+    - Function-like and attribute procedural macros can now emit
+      `macro_rules!` items, so you can now have your macros generate macros.
+    - The `meta` pattern matcher in `macro_rules!` now correctly matches the modern
+      attribute syntax. For example `(#[$m:meta])` now matches `#[attr]`,
+      `#[attr{tokens}]`, `#[attr[tokens]]`, and `#[attr(tokens)]`.
+  + Compiler
+    - Added tier 3 support\* for the
+      `thumbv7neon-unknown-linux-musleabihf` target.
+    - Added tier 3 support for the
+      `aarch64-unknown-none-softfloat` target.
+    - Added tier 3 support for the `mips64-unknown-linux-muslabi64`, and
+      `mips64el-unknown-linux-muslabi64` targets.
+  + Libraries
+    - The `is_power_of_two` method on unsigned numeric types is now a `const` function.
+  + Stabilized APIs
+    - BTreeMap::get_key_value
+    - HashMap::get_key_value
+    - Option::as_deref_mut
+    - Option::as_deref
+    - Option::flatten
+    - UdpSocket::peer_addr
+    - f32::to_be_bytes
+    - f32::to_le_bytes
+    - f32::to_ne_bytes
+    - f64::to_be_bytes
+    - f64::to_le_bytes
+    - f64::to_ne_bytes
+    - f32::from_be_bytes
+    - f32::from_le_bytes
+    - f32::from_ne_bytes
+    - f64::from_be_bytes
+    - f64::from_le_bytes
+    - f64::from_ne_bytes
+    - mem::take
+    - slice::repeat
+    - todo!
+  + Cargo
+    - Cargo will now always display warnings, rather than only on
+      fresh builds.
+    - Feature flags (except `--all-features`) passed to a virtual workspace will
+      now produce an error. Previously these flags were ignored.
+    - You can now publish `dev-dependencies` without including
+      a `version`.
+  + Misc
+    - You can now specify the `#[cfg(doctest)]` attribute to include an item only
+      when running documentation tests with `rustdoc`.
+
+  + Compatibility Notes
+    - As previously announced, any previous NLL warnings in the 2015 edition are
+      now hard errors.
+    - The `include!` macro will now warn if it failed to include the
+      entire file. The `include!` macro unintentionally only includes the
+      first _expression_ in a file, and this can be unintuitive. This will become
+      either a hard error in a future release, or the behavior may be fixed to include all expressions as expected.
+    - Using `#[inline]` on function prototypes and consts now emits a warning under
+      `unused_attribute` lint. Using `#[inline]` anywhere else inside traits
+      or `extern` blocks now correctly emits a hard error.
+
+-------------------------------------------------------------------
+Mon Dec 30 03:42:44 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Rebased patches:
+  + hopefully-fix-rustdoc-build.patch dropped (merged upstream)
+
+-------------------------------------------------------------------
 Fri Nov 29 14:43:11 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Rename README to README.suse-maint and add it as a source
@@ -70,17 +152,17 @@ Mon Sep 30 02:46:51 UTC 2019 - Luke Jones <luke@ljones.dev>
   + Libraries
     - `ascii::EscapeDefault` now implements `Clone` and `Display`.
     - Derive macros for prelude traits (e.g. `Clone`, `Debug`, `Hash`) are now
-	  available at the same path as the trait. (e.g. The `Clone` derive macro
-	  is available at `std::clone::Clone`). This also makes all built-in macros
-	  available in `std`/`core` root. e.g. `std::include_bytes!`.
+    available at the same path as the trait. (e.g. The `Clone` derive macro
+    is available at `std::clone::Clone`). This also makes all built-in macros
+    available in `std`/`core` root. e.g. `std::include_bytes!`.
     - `str::Chars` now implements `Debug`.
     - `slice::{concat, connect, join}` now accepts `&[T]` in addition to `&T`.
     - `*const T` and `*mut T` now implement `marker::Unpin`.
     - `Arc<[T]>` and `Rc<[T]>` now implement `FromIterator<T>`.
     - Added euclidean remainder and division operations (`div_euclid`,
-	  `rem_euclid`) to all numeric primitives. Additionally `checked`,
-	  `overflowing`, and `wrapping` versions are available for all
-	  integer primitives.
+    `rem_euclid`) to all numeric primitives. Additionally `checked`,
+    `overflowing`, and `wrapping` versions are available for all
+    integer primitives.
     - `thread::AccessError` now implements `Clone`, `Copy`, `Eq`, `Error`, and
       `PartialEq`.
     - `iter::{StepBy, Peekable, Take}` now implement `DoubleEndedIterator`.
@@ -482,17 +564,17 @@ Sat Mar  2 05:17:36 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
       expression. E.g.
       ```
       enum Creature {
-		  Crab(String),
-		  Lobster(String),
-		  Person(String),
+      Crab(String),
+      Lobster(String),
+      Person(String),
       }
 
       fn main() {
-		  let state = Creature::Crab("Ferris");
+      let state = Creature::Crab("Ferris");
 
-		  if let Creature::Crab(name) | Creature::Person(name) = state {
-			      println!("This creature's name is: {}", name);
-		  }
+      if let Creature::Crab(name) | Creature::Person(name) = state {
+            println!("This creature's name is: {}", name);
+      }
       }
       ```
     - You can now have irrefutable `if let` and `while let` patterns. Using
@@ -504,7 +586,7 @@ Sat Mar  2 05:17:36 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
       ```
       const unsafe fn foo() -> i32 { 5 }
       const fn bar() -> i32 {
-		  unsafe { foo() }
+      unsafe { foo() }
       }
       ```
     - You can now specify multiple attributes in a `cfg_attr` attribute.
@@ -654,24 +736,24 @@ Thu Jan 17 21:22:11 UTC 2019 - Luke Jones <jones_ld@protonmail.com>
       struct Point(i32, i32);
 
       impl Point {
-	  pub fn new(x: i32, y: i32) -> Self {
-	      Self(x, y)
-	  }
+    pub fn new(x: i32, y: i32) -> Self {
+        Self(x, y)
+    }
 
-	  pub fn is_origin(&self) -> bool {
-	      match self {
-		  Self(0, 0) => true,
-		  _ => false,
-	      }
-	  }
+    pub fn is_origin(&self) -> bool {
+        match self {
+      Self(0, 0) => true,
+      _ => false,
+        }
+    }
       }
     - Self can also now be used in type definitions. E.g.
       enum List<T>
       where
-	  Self: PartialOrd<Self> // can write `Self` instead of `List<T>`
+    Self: PartialOrd<Self> // can write `Self` instead of `List<T>`
       {
-	  Nil,
-	  Cons(T, Box<Self>) // likewise here
+    Nil,
+    Cons(T, Box<Self>) // likewise here
       }
     - You can now mark traits with `#[must_use]`. This provides a warning if
       a `impl Trait` or `dyn Trait` is returned and unused in the program.
@@ -1118,11 +1200,11 @@ Update to version 1.30.0 (2018-10-25)
       trait Trait {}
 
       impl Trait + Send {
-	  fn test(&self) { println!("one"); } //~ ERROR duplicate definitions with name `test`
+    fn test(&self) { println!("one"); } //~ ERROR duplicate definitions with name `test`
       }
 
       impl Trait + Send + Send {
-	  fn test(&self) { println!("two"); }
+    fn test(&self) { println!("two"); }
       }
 - Update to version 1.27.2:
   + Compatibility Notes
@@ -2026,47 +2108,47 @@ Mon Feb  6 08:25:17 UTC 2017 - luke.nukem.jones@gmail.com
 - Update to 1.15.0
 
 - Language updates
-	* Basic procedural macros allowing custom `#[derive]`, aka "macros 1.1", are
-	stable. This allows popular code-generating crates like Serde and Diesel to
-	work ergonomically. [RFC 1681].
-	* [Tuple structs may be empty. Unary and empty tuple structs may be instantiated
-	with curly braces][36868]. Part of [RFC 1506].
-	* [A number of minor changes to name resolution have been activated][37127].
-	They add up to more consistent semantics, allowing for future evolution of
-	Rust macros. Specified in [RFC 1560], see its section on ["changes"] for
-	details of what is different. The breaking changes here have been transitioned
-	through the [`legacy_imports`] lint since 1.14, with no known regressions.
-	* [In `macro_rules`, `path` fragments can now be parsed as type parameter
-	bounds][38279]
-	* [`?Sized` can be used in `where` clauses][37791]
-	* [There is now a limit on the size of monomorphized types and it can be
-	modified with the `#![type_size_limit]` crate attribute, similarly to
-	the `#![recursion_limit]` attribute][37789]
+  * Basic procedural macros allowing custom `#[derive]`, aka "macros 1.1", are
+  stable. This allows popular code-generating crates like Serde and Diesel to
+  work ergonomically. [RFC 1681].
+  * [Tuple structs may be empty. Unary and empty tuple structs may be instantiated
+  with curly braces][36868]. Part of [RFC 1506].
+  * [A number of minor changes to name resolution have been activated][37127].
+  They add up to more consistent semantics, allowing for future evolution of
+  Rust macros. Specified in [RFC 1560], see its section on ["changes"] for
+  details of what is different. The breaking changes here have been transitioned
+  through the [`legacy_imports`] lint since 1.14, with no known regressions.
+  * [In `macro_rules`, `path` fragments can now be parsed as type parameter
+  bounds][38279]
+  * [`?Sized` can be used in `where` clauses][37791]
+  * [There is now a limit on the size of monomorphized types and it can be
+  modified with the `#![type_size_limit]` crate attribute, similarly to
+  the `#![recursion_limit]` attribute][37789]
 
 - Compiler changes
-	* [On Windows, the compiler will apply dllimport attributes when linking to
-	extern functions][37973]. Additional attributes and flags can control which
-	library kind is linked and its name. [RFC 1717].
-	* [Rust-ABI symbols are no longer exported from cdylibs][38117]
-	* [The `--test` flag works with procedural macro crates][38107]
-	* [Fix `extern "aapcs" fn` ABI][37814]
-	* [The `-C no-stack-check` flag is deprecated][37636]. It does nothing.
-	* [The `format!` expander recognizes incorrect `printf` and shell-style
-	formatting directives and suggests the correct format][37613].
-	* [Only report one error for all unused imports in an import list][37456]
+  * [On Windows, the compiler will apply dllimport attributes when linking to
+  extern functions][37973]. Additional attributes and flags can control which
+  library kind is linked and its name. [RFC 1717].
+  * [Rust-ABI symbols are no longer exported from cdylibs][38117]
+  * [The `--test` flag works with procedural macro crates][38107]
+  * [Fix `extern "aapcs" fn` ABI][37814]
+  * [The `-C no-stack-check` flag is deprecated][37636]. It does nothing.
+  * [The `format!` expander recognizes incorrect `printf` and shell-style
+  formatting directives and suggests the correct format][37613].
+  * [Only report one error for all unused imports in an import list][37456]
 
 - Compiler performance
-	* [Avoid unnecessary `mk_ty` calls in `Ty::super_fold_with`][37705]
-	* [Avoid more unnecessary `mk_ty` calls in `Ty::super_fold_with`][37979]
-	* [Don't clone in `UnificationTable::probe`][37848]
-	* [Remove `scope_auxiliary` to cut RSS by 10%][37764]
-	* [Use small vectors in type walker][37760]
-	* [Macro expansion performance was improved][37701]
-	* [Change `HirVec<P<T>>` to `HirVec<T>` in `hir::Expr`][37642]
-	* [Replace FNV with a faster hash function][37229]
+  * [Avoid unnecessary `mk_ty` calls in `Ty::super_fold_with`][37705]
+  * [Avoid more unnecessary `mk_ty` calls in `Ty::super_fold_with`][37979]
+  * [Don't clone in `UnificationTable::probe`][37848]
+  * [Remove `scope_auxiliary` to cut RSS by 10%][37764]
+  * [Use small vectors in type walker][37760]
+  * [Macro expansion performance was improved][37701]
+  * [Change `HirVec<P<T>>` to `HirVec<T>` in `hir::Expr`][37642]
+  * [Replace FNV with a faster hash function][37229]
 
 - For full change list, please see
-	https://raw.githubusercontent.com/rust-lang/rust/master/RELEASES.md
+  https://raw.githubusercontent.com/rust-lang/rust/master/RELEASES.md
 
 -------------------------------------------------------------------
 Tue Jan 31 09:41:33 UTC 2017 - luke.nukem.jones@gmail.com
