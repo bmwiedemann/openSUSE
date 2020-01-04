@@ -1403,7 +1403,6 @@ unsorted:
   - ca-certificates-steamtricks 
   - caasp-cli 
   - cabal-install 
-  - cabal-install-bash-completion 
   - cabal2spec 
   - caca-utils 
   - cachefilesd 
@@ -3827,6 +3826,8 @@ unsorted:
   - ghc-cookie 
   - ghc-cookie-devel 
   - ghc-cryptohash 
+  - ghc-cryptohash-conduit 
+  - ghc-cryptohash-conduit-devel 
   - ghc-cryptohash-devel 
   - ghc-cryptohash-sha256 
   - ghc-cryptohash-sha256-devel 
@@ -4270,6 +4271,8 @@ unsorted:
   - ghc-vector 
   - ghc-vector-algorithms 
   - ghc-vector-algorithms-devel 
+  - ghc-vector-binary-instances 
+  - ghc-vector-binary-instances-devel 
   - ghc-vector-builder 
   - ghc-vector-builder-devel 
   - ghc-vector-devel 
@@ -15410,7 +15413,6 @@ unsorted:
   - pan 
   - pan-lang 
   - pandoc 
-  - pandoc-pdf 
   - pango-devel 
   - pango-devel-32bit: [x86_64] 
   - pango-tools 
