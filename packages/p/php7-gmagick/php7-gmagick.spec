@@ -1,7 +1,7 @@
 #
 # spec file for package php7-gmagick
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        %{pkg_name}.ini
 # PATCH-FIX-UPSTREAM fix-segfault-on-shutdown.patch https://bugs.php.net/bug.php?id=78465
 Patch0:         fix-segfault-on-shutdown.patch
-BuildRequires:  %{php_name}-devel >= 7.0.1
-BuildRequires:  GraphicsMagick-devel >= 1.3.17
+BuildRequires:  %{php_name}-devel
+BuildRequires:  GraphicsMagick-devel
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  re2c
 Conflicts:      php7-imagick
@@ -50,26 +50,25 @@ the GraphicsMagick API
 %prep
 %setup -q -n %{pkg_name}-%{version}
 %patch0
-mkdir %{name}
 
 %build
+export CFLAGS="%{optflags} -fvisibility=hidden %(GraphicsMagick-config --cflags)"
 %{_bindir}/phpize
-export CFLAGS="%{optflags} -fvisibility=hidden"
-%configure --with-%{pkg_name}=%{_usr}
-make %{?_smp_mflags}
+%configure
+%make_build
 
 %check
-make %{?_smp_mflags} PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
+%make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
 
 %install
-make DESTDIR=%{buildroot} install INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/%{php_name}/conf.d
-install --mode=0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
+install -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
 
 %files
-%{_libdir}/%{php_name}/extensions/%{pkg_name}.so
 %config(noreplace) %{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
 %license LICENSE
 %doc CONTRIBUTORS.md README.md
+%{_libdir}/%{php_name}/extensions/%{pkg_name}.so
 
 %changelog
