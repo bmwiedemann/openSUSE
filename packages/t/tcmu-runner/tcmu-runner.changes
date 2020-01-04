@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  3 17:12:42 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Fixed i586 compilation complaint in tcmur_cmd_handler.c, adding:
+  * tcmu-runner-fix-i586-size_t-error.patch
+  (which came from David Disseldorp). Also, added requirement for
+  libnl3-devel version that supports signed network functions,
+  such as nla_put_s32().
+
+-------------------------------------------------------------------
 Thu Jan 02 23:19:36 UTC 2020 - lduncan@suse.com
 
 - Update to version 1.5.2:

@@ -44,6 +44,7 @@ Url:            https://github.com/agrover/%{name}
 Source:         %{name}-%{version}.tar.xz
 Patch1:         %{name}-handler_file-add-libtcmu.patch
 Patch2:         %{name}-remove-handler-path-install-prefix.patch
+Patch3:         %{name}-fix-i586-size_t-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
@@ -59,7 +60,7 @@ BuildRequires:  librbd-devel
 BuildRequires:  libzbc-devel
 %endif
 BuildRequires:  libkmod-devel
-BuildRequires:  libnl3-devel
+BuildRequires:  libnl3-devel >= 3.3
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       libtcmu2 = %{version}
@@ -137,6 +138,7 @@ file backstore in tcmu-runner.
 %setup
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 CMAKE_OPTIONS="\
