@@ -1,7 +1,7 @@
 #
 # spec file for package python-oauth2client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module httplib2 >= 0.9.1}
 BuildRequires:  %{python_module jsonpickle}
-BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pyasn1-modules >= 0.0.5}
@@ -45,7 +44,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-fasteners
 Requires:       python-httplib2 >= 0.9.1
-Requires:       python-keyring
 Requires:       python-pyasn1 >= 0.1.7
 Requires:       python-pyasn1-modules >= 0.0.5
 Requires:       python-pycrypto
@@ -103,6 +101,11 @@ Utilities for making it easier to use OAuth 2.0 on Google Compute Engine.
 rm -rf oauth2client/contrib/django*
 rm -rf tests/contrib/django_util/
 %endif
+
+# Remove keyring support
+rm oauth2client/contrib/keyring_storage.py tests/contrib/test_keyring_storage.py
+# XsrfUtilTests.testGenerateAndValidateToken - broken parameters with py 3.8 and newer
+rm tests/contrib/test_xsrfutil.py
 
 %build
 %python_build
