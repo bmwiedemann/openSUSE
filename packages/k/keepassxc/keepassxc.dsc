@@ -2,7 +2,7 @@ Format: 3.0 (quilt)
 Source: keepassxc
 Binary: keepassxc
 Architecture: any
-Version: 2.5.0-1.1
+Version: 2.5.2-1.1
 Maintainer: Julian Andres Klode <jak@debian.org>
 Homepage: https://www.keepassxc.org/
 Standards-Version: 4.4.0
