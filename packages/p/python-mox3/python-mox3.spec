@@ -74,8 +74,9 @@ sed -i 's/^warning-is-error.*/warning-is-error = 0/g' setup.cfg
 %python_build
 
 # generate html docs
-python3 setup.py build_sphinx
-rm doc/build/html/.buildinfo
+%sphinx_build -b html doc/source doc/build/html
+# remove the sphinx-build leftovers
+rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
 %python_install

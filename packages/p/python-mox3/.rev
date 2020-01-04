@@ -121,4 +121,12 @@
   * Replace git.openstack.org URLs with opendev.org URLs</comment>
     <requestid>730107</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>385f92a91060f416473da8107b7a84ee</srcmd5>
+    <version>0.28.0</version>
+    <time>1578162019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760365</requestid>
+  </revision>
 </revisionlist>
