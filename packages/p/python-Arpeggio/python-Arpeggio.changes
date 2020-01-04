@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  2 07:31:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not install examples in site-packages/examples to avoid conflicts
+
+-------------------------------------------------------------------
 Sun Oct  6 17:57:05 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 1.9.2:

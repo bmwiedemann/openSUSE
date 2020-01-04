@@ -77,4 +77,12 @@
 - remvove imp-to-importlib.patch, integrated upstream</comment>
     <requestid>735856</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8c3956938f25d7c6918ddfd9bc39f4b5</srcmd5>
+    <version>1.9.2</version>
+    <time>1578162010</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not install examples in site-packages/examples to avoid conflicts</comment>
+    <requestid>760352</requestid>
+  </revision>
 </revisionlist>
