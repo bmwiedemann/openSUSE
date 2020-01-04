@@ -1,7 +1,7 @@
 #
 # spec file for package python-ctypesgen
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define modname ctypesgen
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        0.1.1
+Version:        1.0.2
 Release:        0
 Summary:        Pure Python Wrapper Generator for ctypes
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            https://github.com/olsonse/ctypesgen
-Source:         https://github.com/olsonse/ctypesgen/archive/ctypesgen-%{version}.tar.gz
+URL:            https://github.com/davidjamesca/ctypesgen
+Source:         https://github.com/davidjamesca/ctypesgen/archive/ctypesgen-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,17 +49,16 @@ This project automatically generates ctypes wrappers for header files written in
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/ctypesgen/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pushd test
 export PYTHONDONTWRITEBYTECODE=1
-%python_exec testsuite.py
-popd
+%pytest ctypesgen/test/testsuite.py
 
 %files %{python_files}
 %license LICENSE
-%doc README todo.txt demo/*.{c,h,py}
+%doc README.md todo.txt demo/*.{c,h,py}
 %python3_only %{_bindir}/%{modname}
 %{python_sitelib}/ctypesgen*
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  2 12:09:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.2:
+  * Simplify and unify library loader for various platforms. Improve library
+  * path searches on Linux (parsed ld.so.conf includes now).
+  * First implementaion of #pragma pack
+  * First implemenation of #undef
+  * ties in with Travis CI to watch code developments
+  * improves testsuite, including moving all JSON tests to testsuite
+  * includes a decent Debian package build configuration
+  * automatically creates a man page to be included in the Debian package
+
+-------------------------------------------------------------------
 Thu Dec  6 13:17:34 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix to build on py3, switch to github url/release/etc.

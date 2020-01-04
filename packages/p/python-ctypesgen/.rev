@@ -24,4 +24,20 @@
 </comment>
     <requestid>659384</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32a7c4c56400e728b5af87f8d8fd6384</srcmd5>
+    <version>1.0.2</version>
+    <time>1578162025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * Simplify and unify library loader for various platforms. Improve library
+  * path searches on Linux (parsed ld.so.conf includes now).
+  * First implementaion of #pragma pack
+  * First implemenation of #undef
+  * ties in with Travis CI to watch code developments
+  * improves testsuite, including moving all JSON tests to testsuite
+  * includes a decent Debian package build configuration
+  * automatically creates a man page to be included in the Debian package</comment>
+    <requestid>760412</requestid>
+  </revision>
 </revisionlist>
