@@ -1,8 +1,58 @@
 -------------------------------------------------------------------
+Sat Jan  4 01:21:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.2.8:
+  * More versatile handling of Trace, including sorting using
+    cyclic symmetry (Connor).
+  * Fixes for combine (Connor).
+  * Save command-line history (Connor).
+  * Make imported notebooks use the default post_process function.
+  * Make unwrap move scalars out of exterior (wedge) products, see
+    this Q&A post.
+  * Fix bug with indices with accents (github/166).
+  * Added a cadabra2latex command to convert notebooks to LaTeX.
+  * Fixed issue building with latest Homebrew on macOS.
+  * Fixed Windows build issues and add python path settings at
+    runtime.
+  * Fixed bug with multipliers not reducing to canonical form.
+- Add Fix-linking-of-cadabra-module.patch
+- Remove timestamps from Doxygen generated HTML files, drop
+  obsolete cadabra2-rpmlintrc
+- Use system jsoncpp
+- Drop conditionals for obsolete distro versions
+- Remove lots of unused/obsolete TeX BuildRequires.
+
+-------------------------------------------------------------------
 Tue Jun 25 09:24:38 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.7:
-  * List of changes unavailable from upstream.
+  * Added cdb.utils.develop and cdb.relativity.abstract.
+  * Added authentication token to all client-server communication.
+  * Various extensions to the Trace property.
+  * Make property info available from Python (Dominic).
+  * Fixed integration by parts with index-less derivatives.
+  * Added eliminate_vielbein.
+  * Fixed display of lists of sympy expressions.
+  * Fixed (finally) UTF8 input for non-English symbols.
+
+- Update to 2.2.6
+  * Experimental notebook diff viewer (Dominic).
+  * Warn when about to overwrite an existing notebook.
+  * Improvements for HiDPI screens especially on macOS.
+  * Fix crash in sym/asym.
+  * Fix undo/redo crash in notebook when deleting cells.
+  * Improvements to the cdb.core.manip package (Dominic).
+  * Fix in young_project_tensor.
+  * Fix pattern matching for anti-commuting factors.
+  * Added explicit_indices to convert expressions with
+    implicit indices to their explicit form.
+  * Add option to build a Jupyter kernel.
+  * Fix bug in split_index (acted on wrong parts of expressions).
+  * Fix bug with substitute not checking constraints for
+    single-factor patterns.
+  * Add partial option to substitute to require that products or sums
+    match all terms, not just a partial sum or partial product.
+
 - Refresh cadabra2-add-pthread-to-cxxflags.patch for version
   update, no effective changes.
 
