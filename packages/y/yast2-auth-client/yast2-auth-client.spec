@@ -17,7 +17,7 @@
 
 
 Name:           yast2-auth-client
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Url:            https://github.com/yast/yast-auth-client
 Summary:        YaST2 - Centralised System Authentication Configuration
