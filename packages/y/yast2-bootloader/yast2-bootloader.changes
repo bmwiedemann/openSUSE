@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  3 13:08:10 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- deduplicate kernel parameters after merging them
+  (bsc#1130954, bsc#1043103, bsc#1132328, bsc#1134895)
+- 4.2.15
+
+-------------------------------------------------------------------
+Mon Dec 30 14:51:02 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Report proper error when /etc/default/grub missing and allow
+  user to repropose it (bsc#1100755)
+- 4.2.14
+
+-------------------------------------------------------------------
 Tue Nov 26 12:22:50 UTC 2019 - David Diaz <dgonzalez@suse.com>
 
 - Abort the execution when the module run without enough
