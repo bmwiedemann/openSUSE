@@ -1,7 +1,7 @@
 #
 # spec file for package fetchmsttfonts
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fetchmsttfonts
-Summary:        Helper package to run the fetchmsttfonts script
-License:        GPL-2.0+
-Group:          System/X11/Fonts
 Version:        11.4
 Release:        0
+Summary:        Helper package to download Microsoft Core fonts for the Web
+License:        GPL-2.0-or-later
+Group:          System/X11/Fonts
 Source0:        fetchmsttfonts.sh.in
 Source1:        COPYING
 Source2:        corefonts.md5
@@ -30,7 +30,6 @@ Source4:        corefonts.sha512
 #these stop the patch from pulling in the package
 #Provides:       pullin-msttf-fonts = 11.1
 #Obsoletes:      pullin-msttf-fonts <= 11.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       awk
 Requires:       cabextract
 Requires:       coreutils
@@ -41,15 +40,16 @@ Requires:       w3m
 BuildArch:      noarch
 
 %description
-This package contains the fetchmsttfonts helper script, which on
-running retrieves and unpacks the freely available MS Truetype fonts.
+This package contains a helper script that downloads and installs
+a number of TrueType fonts collectively known as corefonts, or the
+Core fonts for the Web. Originally made available my Micosoft under
+a non-free End-user licence agreement (EULA), they continue to be
+distributed subject to the same licence terms. The user is shown
+a copy of the licence text upon execution.
 
-
-
-Authors:
---------
-    Marcus Meissner <meissner@suse.de>
-    Stefan Dirsch <sndirsch@suse.de>
+The Core fonts for the Web include: Arial, Arial Black, Andale Mono,
+Monotype, Courier New, Comic Sans MS, Georgia, Impact, Times New
+Roman, Trebuchet MS, Verdana, Webdings.
 
 %prep
 cp %{SOURCE0} .
@@ -86,8 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /usr/sbin/fonts-config
 
 %files
-%defattr(-, root, root)
-%doc COPYING
+%license COPYING
 %doc corefonts.{md5,sha1,sha512}
 /var/adm/update-scripts/*
 %dir /usr/share/doc/corefonts
