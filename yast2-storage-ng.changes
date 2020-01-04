@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Dec 23 08:29:03 CET 2019 - aschnell@suse.com
+
+- Improved sorting by device name and size in tables (bsc#1140018)
+- 4.2.67
+
+-------------------------------------------------------------------
+Fri Dec 20 16:20:29 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed an error when applying fallback_max_size_lvm in some corner
+  cases (bsc#1075990).
+- 4.2.66
+
+-------------------------------------------------------------------
+Thu Dec 19 14:22:49 UTC 2019 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: use the multipath device when the 'device' element
+  points to one of its wires (bsc#1159081).
+- 4.2.65
+
+-------------------------------------------------------------------
+Tue Dec 17 12:48:40 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Wrap long details message when error happens (bsc#1085468)
+- 4.2.64
+
+-------------------------------------------------------------------
+Fri Dec 13 16:37:32 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Improved support for Raspberry Pi in the Guided Proposal: now it
+  also works without preexisting firmware partition (jsc#SLE-7298)
+- 4.2.63
+
+-------------------------------------------------------------------
 Wed Dec 11 15:19:00 UTC 2019 - José Iván López González <jlopez@suse.com>
 
 - Show device name when activating a LUKS device (related to

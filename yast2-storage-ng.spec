@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.2.62
+Version:        4.2.67
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -26,11 +26,11 @@ Url:            https://github.com/yast/yast-storage-ng
 
 Source:         %{name}-%{version}.tar.bz2
 
-# Storage::LuksInfo
-BuildRequires:  libstorage-ng-ruby >= 4.2.39
+# Device::get_name_sort_key
+BuildRequires:  libstorage-ng-ruby >= 4.2.43
 BuildRequires:  update-desktop-files
-# CWM::Dialog#next_handler (4.1 branch) and improved CWM::Dialog
-BuildRequires:  yast2 >= 4.1.11
+# for CWM sort_key helper
+BuildRequires:  yast2 >= 4.2.48
 BuildRequires:  yast2-devtools >= 4.2.2
 # for AbortException and handle direct abort
 BuildRequires:  yast2-ruby-bindings >= 4.0.6
@@ -48,14 +48,16 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 
 # findutils for xargs
 Requires:       findutils
-# Storage::LuksInfo
+# Device::get_name_sort_key
 Requires:       libstorage-ng-ruby >= 4.2.39
-# CWM::Dialog#next_handler (4.1 branch) and improved CWM::Dialog
-Requires:       yast2 >= 4.1.11
+# for CWM sort_key helper
+Requires:       yast2 >= 4.2.48
 # Y2Packager::Repository
 Requires:       yast2-packager >= 3.3.7
 # for AbortException and handle direct abort
 Requires:       yast2-ruby-bindings >= 4.0.6
+# for sortKey
+Requires:       yast2-ycp-ui-bindings >= 4.2.7
 # communicate with udisks
 Requires:       rubygem(%{rb_default_ruby_abi}:ruby-dbus)
 Requires(post): %fillup_prereq
