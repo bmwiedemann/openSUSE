@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  1 08:52:41 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to 4.8.2
+  * Added Python docstrings to all public methods of the most commonly
+    used classes.
+  * Fixed two deprecation warnings. Patches by Colin
+    Watson and Nicholas Neumann. [bug=1847592] [bug=1855301]
+  * The html.parser tree builder now correctly handles DOCTYPEs that are
+    not uppercase. [bug=1848401]
+  * PageElement.select() now returns a ResultSet rather than a regular
+    list, making it consistent with methods like find_all().
+
+-------------------------------------------------------------------
 Fri Nov  1 08:59:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.8.1:
