@@ -1,7 +1,7 @@
 #
 # spec file for package python-kubernetes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/kubernetes-incubator/client-python
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 3.12}
-BuildRequires:  %{python_module adal}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
-# Test
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
-# gh#kubernetes-client/python#749
-# BuildRequires:  %%{python_module randomize}
 BuildRequires:  %{python_module recommonmark}
 BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
@@ -49,10 +43,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-ipaddress >= 1.0.17
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.12
-Requires:       python-adal
 Requires:       python-certifi >= 14.05.14
 Requires:       python-google-auth >= 1.0.1
-Requires:       python-oauth2client
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-requests
 Requires:       python-requests-oauthlib
@@ -80,7 +72,7 @@ Python client for kubernetes http://kubernetes.io/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
