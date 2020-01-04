@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 17 14:48:01 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix returning error codes from y2start start point. Helps with
+  CLI exit codes and also with failed installation (helps e.g. with
+  bsc#1144351 and yast lan CLI)
+- 4.2.6
+
+-------------------------------------------------------------------
 Thu Dec  5 10:37:29 CET 2019 - schubi@suse.de
 
 - S390: Evaluating an architecture specific string which will be
