@@ -1,7 +1,7 @@
 #
 # spec file for package enigmail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2014 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           enigmail
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        OpenPGP addon for Mozilla Thunderbird
 License:        MPL-2.0
@@ -44,7 +44,7 @@ This package contains the Enigmail OpenPGP Addon for Mozilla Thunderbird.
 
 %build
 %configure
-make %{?_smp_mflags}
+make # %{?_smp_mflags}
 
 %install
 # Thunderbird location

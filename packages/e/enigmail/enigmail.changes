@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  3 11:46:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.5:
+  * Security issue: unsigned MIME parts displayed as signed boo#1159973
+  * Ensure that upgrading GnuPG 2.0.x to 2.2.x upgrade converts keyring format
+  * Make Enigmail Compatible with Protected-Headers spec, draft 2
+
+-------------------------------------------------------------------
 Sun Dec 15 11:42:00 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enigmail 2.1.4:
