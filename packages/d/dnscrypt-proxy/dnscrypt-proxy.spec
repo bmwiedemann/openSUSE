@@ -1,7 +1,7 @@
 #
 # spec file for package dnscrypt-proxy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        BSD-3-Clause
 Group:          Productivity/Networking/DNS/Utilities
-Url:            https://dnscrypt.org/
+URL:            https://dnscrypt.org/
 Source:         https://download.dnscrypt.org/dnscrypt-proxy/%{name}-%{version}.tar.bz2
 Source1:        %{name}@.service
 Source5:        %{name}.tmpfile
@@ -31,8 +31,8 @@ BuildRequires:  libsodium-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
-BuildRequires:  systemd-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libsystemd)
 Requires(pre):  coreutils
 Requires(pre):  diffutils
 Requires(pre):  fillup
