@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 30 16:11:40 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- fix crash with undefined method mkdir (bsc#1158421)
+- 4.2.3
+
+-------------------------------------------------------------------
 Thu Oct  3 10:45:18 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix autoyast client (bsc#1149932)
