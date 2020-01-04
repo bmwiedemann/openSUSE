@@ -1,10 +1,60 @@
 -------------------------------------------------------------------
+Fri Jan  3 10:11:52 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bnc#1159970 
+  - suppport for reading / writing MTU
+- 4.2.42
+
+-------------------------------------------------------------------
+Thu Jan  2 08:54:15 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bnc#1153198, fate#319639
+  - fixed internal error caused by incompatibility between new and
+    old DNS / Hostname handling code.
+- 4.2.41
+
+-------------------------------------------------------------------
+Fri Dec 27 11:37:02 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
+
+- read properly old wireless auth modes and use new ones instead
+  (bsc#1159160)
+- 4.2.40
+
+-------------------------------------------------------------------
+Mon Dec 23 07:42:56 UTC 2019 - Michal Filka <mfilka@suse.com>
+
+- bnc#1153198, fate#319639
+  - improved previous fix - exception handling
+- 4.2.39
+
+-------------------------------------------------------------------
+Tue Dec 17 10:57:27 UTC 2019 - Knut Andersse <kanderssen@suse.com>
+
+- bsc#1156986
+  - Fixed the creation of network configuration for virtualization
+- 4.2.38
+
+-------------------------------------------------------------------
+Tue Dec 17 10:49:05 UTC 2019 - Michal Filka <mfilka@suse.com>
+
+- bnc#1153198, fate#319639
+  improved previous fix together with some cleanup
+- 4.2.37
+
+-------------------------------------------------------------------
+Mon Dec 16 08:43:36 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
+
+- Centered and added title to the add interface dialog
+  (jsc#SLE-7753)
+- 4.2.36
+
+-------------------------------------------------------------------
 Wed Dec  4 09:51:38 UTC 2019 - Michal Filka <mfilka@suse.com>
 
 - bnc#1158122
   - fixed internal error when incorrectly querying for hostname in
     AY's second stage
-- 4.2.35 
+- 4.2.35
 
 -------------------------------------------------------------------
 Tue Nov 26 15:16:04 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
