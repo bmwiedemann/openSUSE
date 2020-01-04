@@ -675,4 +675,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>755254</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>3b87ffce933995b2e03a26c10b54f282</srcmd5>
+    <version>14.451</version>
+    <time>1578162039</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>758197</requestid>
+  </revision>
 </revisionlist>
