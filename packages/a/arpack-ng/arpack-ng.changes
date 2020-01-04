@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jan  3 14:14:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.7.0:
+  * [BUG FIX] ICB: missing workev for *[ds]neupd (real+not-sym) =>
+    API/ABI change for *[ds]neupd_c.
+  * [BUG FIX] autotools - make distcheck: fix circular dependencies.
+  * arpackmm: utility to test arpack with matrix market files.
+  * ICB: add ILP64 support.
+    - arpack includes arpackdef.h when/where needed:
+      - #define provide c_int/a_int according to architecture.
+      - all f90 who need to include "arpackdef.h" must be moved to F90.
+        Note: by convention, F90 are preprocessed (f90 are not).
+    - MPI does not support ILP64: integer*4 must be imposed in all
+      calls involving MPI (f90 example/test code).
+- Update to version 3.6.3:
+  * Add Fortran common initialization (block data).
+  * Give up forcing the initial residual to be in the range of the
+    operator OP after a restart (Closes: #142).
+- Update to version 3.6.2:
+  * Install: move headers into a dedicated directory
+    (local/include/arpack).  (Closes #126)
+  * Add configuration summary.
+  * Improve the flag detection. Hopefully fix the ppc64el and other
+    archs issues in Debian
+- Update to version 3.6.1:
+  * Fix a regression on i386 and other archs (Closes #123)
+- Update to version 3.6.0:
+  * Add support for ISO_C_BINDING (Fortran 2003) for ARPACK,
+    PARPACK (Fortran <-> C/C++).
+  * Provide find_package for (cmake) users to find arpack-ng.
+  * Rename pslamch to pslamch10 to avoid symbol collision with
+    Scalapack 2.0.2 in MPI context.
+  * Force the initial residual to be in the range of the operator
+    OP in the standard case, too (Closes: #79).
+  * Add coverage information to improve testing:
+    https://coveralls.io/github/opencollab/arpack-ng
+  * Add C++11 interface through arpack.hpp and parpack.hpp
+  * Rewrite C++ examples / tests demonstrating new C++11 interface
+  * Pre-C++11 interface available through arpack.h and parpack.h
+
+-------------------------------------------------------------------
 Sun Dec 15 20:27:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Create baselibs.conf on the fly, based on flavor.

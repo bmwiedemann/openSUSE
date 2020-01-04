@@ -1,7 +1,7 @@
 #
 # spec file for package arpack-ng
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,16 +67,18 @@ ExclusiveArch:  do_not_build
 %define libname() libparpack%{so_ver}-%{mpi_family}%{?mpi_ext}
 %global my_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
 %global my_libdir %{my_prefix}/%{_lib}
+%global my_incdir %{my_prefix}/include
 %else
 %{bcond_with mpi}
 %define pkgname   arpack-ng
 %define libname() libarpack%{so_ver}
 %global my_prefix %{_prefix}
 %global my_libdir %{_libdir}
+%global my_incdir %{_includedir}
 %endif
 
 Name:           %{pkgname}
-Version:        3.5.0
+Version:        3.7.0
 Release:        0
 Summary:        Fortran77 subroutines for solving large scale eigenvalue problems
 License:        BSD-3-Clause
@@ -145,6 +147,12 @@ cat >  %{_sourcedir}/baselibs.conf <<EOF
 EOF
 
 %build
+# Force -fPIC, otherwise linking of the test binaries fails
+# on aarch64 an ppc64
+export FFLAGS="%{optflags} -fPIC"
+export FCFLAGS="%{optflags} -fPIC"
+export CFLAGS="%{optflags} -fPIC"
+export CXXFLAGS="%{optflags} -fPIC"
 
 %if %{with mpi}
 export F77=%{my_prefix}/bin/mpif77
@@ -174,19 +182,23 @@ rm %{buildroot}%{my_libdir}/libarpack.so*
 ln -s EXAMPLES examples
 
 %check
-make %{?_smp_mflags} check
+%if %{with mpi}
+export PATH="%{my_prefix}/bin/:$PATH"
+%endif
+%make_build check
 
 %post   -n %{libname}           -p /sbin/ldconfig
 %postun -n %{libname}           -p /sbin/ldconfig
 
 %files -n %{libname}
 %license COPYING
-%doc CHANGES README TODO
 %{my_libdir}/*.so.*
 
 %files devel
 %doc examples
+%doc CHANGES README.md
 %{my_libdir}/*.so
+%{my_incdir}/arpack
 %if %{without mpi}
 %dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/*.pc
