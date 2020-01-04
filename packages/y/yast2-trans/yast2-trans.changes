@@ -1,4 +1,220 @@
 -------------------------------------------------------------------
+Mon Dec 30 05:13:29 UTC 2019 - git@opensuse.org
+
+- Update to version 84.87.20191229.ed49b3ce0a:
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'auth-client'.
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Albanian)
+
+-------------------------------------------------------------------
+Mon Dec 23 05:13:07 UTC 2019 - git@opensuse.org
+
+- Update to version 84.87.20191222.53df11f8fb:
+  * Translated using Weblate (Finnish)
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'network'.
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * New POT for text domain 'network'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'rmt'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'auth-client'.
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Automatic update of rmt.
+  * Automatic update of installation.
+  * Automatic update of firstboot.
+  * Automatic update of firewall.
+  * Automatic update of control.
+  * Automatic update of base.
+  * Automatic update of auth-client.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'rmt'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'auth-client'.
+  * DOMAIN_MAP: Add hana* components.
+  * weblate-functions.inc: Refer to python3, as Weblate now runs on python3.
+  * Automatic update of storage.
+  * Automatic update of rmt.
+  * Automatic update of network.
+  * Automatic update of installation.
+  * Automatic update of hana-update.
+  * Automatic update of hana-ha.
+  * Automatic update of hanafirewall.
+  * Automatic update of firewall.
+  * Automatic update of control.
+  * Automatic update of base.
+  * Automatic update of auth-client.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * New POT for text domain 'network'.
+  * Translated using Weblate (Persian)
+
+-------------------------------------------------------------------
+Mon Dec 16 05:13:09 UTC 2019 - git@opensuse.org
+
+- Update to version 84.87.20191215.58f3983ff2:
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'ncurses-pkg'.
+  * New POT for text domain 'autoinst'.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'packager'.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 's390'.
+  * New POT for text domain 'ncurses-pkg'.
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'qt-pkg'.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'rmt'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'auth-client'.
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Catalan)
+  * weblate-functions.inc: Updates for new Weblate
+  * DOMAIN_MAP: add rmt and samba-provision
+  * Automatic update of samba-provision.
+  * Automatic update of rmt.
+  * Automatic update of installation.
+  * Automatic update of firewall.
+  * Automatic update of control.
+  * Automatic update of base.
+  * Automatic update of auth-client.
+  * Automatic update of add-on.
+  * Translated using Weblate (Slovak)
+
+-------------------------------------------------------------------
 Mon Dec 09 05:13:00 UTC 2019 - git@opensuse.org
 
 - Update to version 84.87.20191209.9412cbcf88:
