@@ -221,4 +221,31 @@
     <comment></comment>
     <requestid>758871</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f90aac979b7848c70f7f2413279dc507</srcmd5>
+    <version>0.9.0</version>
+    <time>1578162067</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dependency on systemd and new gtk-layer-shell-devel
+- Update to 0.9.0:
+  Added:
+  * Use GTK Layer Shell for working Popups #441
+  * Disk module #471
+  * Man pages option #443
+  * Battery: format time #455
+  * Systemd user unit #460
+  * Detect timezone changes #480
+  * Pulseaudio: export desc as a format #507
+  * Toggle opacity #510
+  Changed:
+  * Fix man memory description #444
+  * Fix output typo #445
+  * Fix typo: persistant -&gt; persistent #446
+  * Fix exclusive zone #447
+  * Network: clamp signal strength 334bc1e
+  * MPD: take lock in waitForEvent to prevent SIGABORT #467
+  * Pulseaudio: audio scroll bound #475
+</comment>
+    <requestid>759783</requestid>
+  </revision>
 </revisionlist>

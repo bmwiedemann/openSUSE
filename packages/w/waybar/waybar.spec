@@ -1,7 +1,7 @@
 #
 # spec file for package waybar
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,42 @@
 
 
 Name:           waybar
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source:         %{url}/archive/%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+# optional: man pages
+BuildRequires:  scdoc
+# optional: tray module
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(sigc++-2.0)
-BuildRequires:  pkgconfig(spdlog)
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-protocols)
-# optional: man pages
-BuildRequires:  scdoc
-# optional: tray module
-BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
+# optional: mpd module
+BuildRequires:  pkgconfig(libmpdclient)
 # optional: network
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 # optional: audio
 BuildRequires:  pkgconfig(libpulse)
-# optional: mpd module
-BuildRequires:  pkgconfig(libmpdclient)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(sigc++-2.0)
+BuildRequires:  pkgconfig(spdlog)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-protocols)
 # optional: sway integration
 Recommends:     sway
 
@@ -70,5 +73,6 @@ Customizable Wayland bar for Sway and Wlroots based compositors.
 %{_sysconfdir}/xdg/waybar/
 %{_bindir}/waybar
 %{_mandir}/man?/%{name}*
+%{_prefix}/lib/systemd/user/waybar.service
 
 %changelog
