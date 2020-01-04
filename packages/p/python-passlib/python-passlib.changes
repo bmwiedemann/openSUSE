@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan  1 22:15:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Removed obsolete patches:
+  * python-passlib-1.7.1-libxcrypt-compat.patch
+  * pr_9_1.patch and pr_9_2.patch
+- Update to 1.7.2
+  * New Features
+    - argon2: Now supports Argon2 “ID” and “D” hashes
+      (assuming new enough backend library).
+    - scrypt: Now uses python 3.6 stdlib’s hashlib.scrypt() as backend,
+      if present (issue 86).
+
+  * Bugfixes
+    - Python 3.8 compatibility fixes
+    - passlib.apache.HtpasswdFile:
+      Now generates bcrypt hashes using the "$2y$" prefix, which should work 
+      properly with Apache 2.4’s htpasswd tool.
+    - passlib.totp: The TOTP.to_uri() method now prepends the issuer to URI label,
+      (per the KeyURI spec). This should fix some compatibility issues with 
+      older TOTP clients (issue 92)
+    - Fixed error in argon2.parsehash() (issue 97)
+    - unittests: crypt() unittests now account for linux systems running
+      libxcrypt (such as recent Fedora releases)
+
+-------------------------------------------------------------------
 Thu Oct  3 15:09:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Add two patches to fix Python 3.8 compatibility
