@@ -101,4 +101,12 @@
   - BUG FIX: Typo in Spanish translation was fixed.</comment>
     <requestid>323184</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>057dc7fd985885024fc00c4e4ce28a3b</srcmd5>
+    <version>3.2.0</version>
+    <time>1578234088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760818</requestid>
+  </revision>
 </revisionlist>

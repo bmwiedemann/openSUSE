@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Jan  4 10:11:59 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- defattr still needed to support SLE11-SP4 
+
+-------------------------------------------------------------------
+Sat Jan  4 10:04:23 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind-3.2.0
+- removed buildroot and defattr calls from spec. No londer needed. 
+- IMPROVEMENT: Add support for events spanning multiple days (with AT
+  and DURATION).  Add trigeventstart() and trigeventduration()
+  introspection functions; see "MULTI-DAY EVENTS" in the man page.
+- IMPROVEMENT: Add introspection functions trigback(), trigdelta(),
+  trigduration(), trigfrom(), trigpriority(), trigrep(),
+  trigscanfrom(), trigtimedelta(), trigtimerep(), and triguntil().  See
+  man page for details; thanks to Tim Chase for the suggestion.
+- IMPROVEMENT: TkRemind: Use PNG images for the next month / previous
+  month buttons rather than -> and <-.  Also use nice anti-aliased
+  moon phase images instead of ugly blocky bitmaps.
+- CHANGE: Modify addition so that previously-illegal combinations
+  TIME + TIME, TIME + DATETIME and DATETIME + TIME are now allowed.
+  Also allow DATETIME - TIME.  If t1 and t2 are expressions of type TIME
+  and dt is an expression of type DATETIME, then the following are now
+  equivalent (before, the expressions on the left-hand side would fail
+  with a "Type mismatch" error.)
+  t1 + t2     ==     t1                + coerce("INT", t2)
+  dt + t2     ==     dt                + coerce("INT", t2)
+  t1 + dt     ==     coerce("INT", t1) + dt
+  dt - t2     ==     dt                - coerce("INT", t2)
+- DOC FIX: Document previously-undocumented $MaxStringLen system variable
+- DOC FIX: Various minor documentation fixes.
+- BUG FIX: Specifying a DURATION without an AT clause results in an error.
+  Before, it would be accepted but not do anything useful.
+- BUG FIX: Catch potential date overflow in slide() function
+- BUG FIX: Fix compile error when compiling Romanian version; eliminate
+  compiler warning when compiling non-English versions.
+- BUG FIX: TkRemind: Fix startup failure of TkRemind if options are at
+  default. :(
+-------------------------------------------------------------------
 Fri Aug 14 15:32:07 UTC 2015 - puzel@suse.com
 
 - update to remind-3.1.15 

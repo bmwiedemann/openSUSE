@@ -1,7 +1,7 @@
 #
 # spec file for package remind
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           remind
-Version:        3.1.15
+Version:        3.2.0
 Release:        0
-%define tar_version 03.01.15
+%define tar_version 03.02.00
 Summary:        A sophisticated calendar and alarm program
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
-Url:            http://www.roaringpenguin.com/products/remind
+URL:            http://www.roaringpenguin.com/products/remind
 Source0:        %{name}-%{tar_version}.tar.gz
 Source100:      %{name}-%{version}-rpmlintrc
 Patch0:         remind-nostrip.patch
@@ -67,6 +67,7 @@ rm -rf %{buildroot}
 %doc %{_mandir}/man1/rem2ps.1%{ext_man}
 %doc %{_mandir}/man1/remind.1%{ext_man}
 %doc %{_mandir}/man1/tkremind.1%{ext_man}
+
 %attr(0755,root,root) %{_bindir}/cm2rem.tcl
 %attr(0755,root,root) %{_bindir}/rem
 %attr(0755,root,root) %{_bindir}/rem2ps
