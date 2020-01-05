@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec  6 07:53:09 UTC 2019 - Torsten Gruner <t.gruner@katodev.de>
+
+- Version 5.0.1 (released 2019-10-16)
+  - New colors for the account icons.
+  - Use Roboto font on all platforms.
+  - Increase some text sizes for better readability.
+  - Change icon for the Settings button and move it to the left.
+  - SysTray: Open application on double-click.
+  - Terminology: Use "Accounts" instead of "Credentials".
+  - Bugfix: Clear old accounts correctly when switching between devices.
+  - Add keyboard shortcut (Ctrl/Cmd + i) for info popup.
+
+- Version 5.0.0 (released 2019-09-23)
+  - New UI based on Material Design and Qt Quick Controls 2
+  - Add Dark Mode and Light Mode
+  - Feature: Allow switching between connected YubiKeys
+  - Feature: Select favorite credentials, available from the System Tray/Menu Bar
+  - Show some information about the connected YubiKey, such as firmware version and serial number
+  - Add experimental support for external smart card readers, enabling the use of a YubiKey over NFC
+  - Add initial accessability support
+
+- Version 4.3.6b (released 2019-06-11)
+  - Fixes problem where YubiKey was not being detected on macOS. 
+
+-------------------------------------------------------------------
 Mon Jun  3 07:19:42 UTC 2019 - Karol Babioch <kbabioch@suse.de>
 
 - Add release dates and reference to bug to changes file

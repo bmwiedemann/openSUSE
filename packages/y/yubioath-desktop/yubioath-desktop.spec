@@ -18,7 +18,7 @@
 
 %define binname yubioath
 Name:           yubioath-desktop
-Version:        4.3.6
+Version:        5.0.1
 Release:        0
 Summary:        Graphical interface for displaying OATH codes with a Yubikey
 License:        GPL-3.0-or-later
@@ -27,13 +27,13 @@ URL:            https://developers.yubico.com/yubioath-desktop/
 Source0:        https://developers.yubico.com/yubioath-desktop/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/yubioath-desktop/Releases/%{name}-%{version}.tar.gz.sig
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libQt5QuickControls2-devel
+BuildRequires:  libqt5-qtbase-devel => 5.12
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(python3)
-Requires:       libqt5-qtquickcontrols
 Requires:       pyotherside
 Requires:       yubikey-manager
 

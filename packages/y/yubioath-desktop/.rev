@@ -210,4 +210,12 @@ Version 3.0.0 (released 2016-06-09)
     <comment>Bump to version 4.3.6 to enable support for latest generation of YubiKeys</comment>
     <requestid>707032</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f2aa0dcb84f2cdff8118d6c8ab124893</srcmd5>
+    <version>5.0.1</version>
+    <time>1578234156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760929</requestid>
+  </revision>
 </revisionlist>
