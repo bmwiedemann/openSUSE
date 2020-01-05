@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -200,6 +200,10 @@ Requires:       python-base = %{version}
 Obsoletes:      pygdmod
 Provides:       pygdmod
 Provides:       python2-gdbm = %{version}
+# Compat to allow BR on python_module dbm and have it properly
+# pull in gdbm on py2 and dbm on py3
+Provides:       python-dbm = %{version}
+Provides:       python2-dbm = %{version}
 
 %description gdbm
 An easy to use interface for GDBM databases. GDBM is the GNU

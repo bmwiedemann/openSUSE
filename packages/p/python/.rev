@@ -1312,4 +1312,22 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
     <comment></comment>
     <requestid>758106</requestid>
   </revision>
+  <revision rev="146" vrev="4">
+    <srcmd5>2d0214c1549ba48f2d57f4b4f824e774</srcmd5>
+    <version>2.7.17</version>
+    <time>1578234051</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides in gdbm subpackage to provide dbm symbols. This
+  allows us to use %%{python_module dbm} as a dependency and have
+  it properly resolved for both python2 and python3
+
+- Add provides in gdbm subpackage to provide dbm symbols. This
+  allows us to use %%{python_module dbm} as a dependency and have
+  it properly resolved for both python2 and python3
+
+- Add provides in gdbm subpackage to provide dbm symbols. This
+  allows us to use %%{python_module dbm} as a dependency and have
+  it properly resolved for both python2 and python3</comment>
+    <requestid>760397</requestid>
+  </revision>
 </revisionlist>
