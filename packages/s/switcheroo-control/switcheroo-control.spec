@@ -1,7 +1,7 @@
 #
 # spec file for package switcheroo-control
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           switcheroo-control
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        D-Bus service to check the availability of dual-GPU
 License:        GPL-3.0-only
 Group:          Hardware/Other
-Url:            https://gitlab.freedesktop.org/hadess/switcheroo-control
+URL:            https://gitlab.freedesktop.org/hadess/switcheroo-control
 Source0:        https://gitlab.freedesktop.org/hadess/switcheroo-control/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  gtk-doc
-BuildRequires:  automake
 BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(gio-2.0)
