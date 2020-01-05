@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  2 09:40:57 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(libxml++-2.6) with pkgconfig(libxml++-3.0)
+  BuildRequires.
+
+-------------------------------------------------------------------
 Mon Feb  4 14:29:04 UTC 2019 - davejplater@gmail.com
 
 - Change Buildrequires: pkgconfig(dbus-python-3.6) back to the plain

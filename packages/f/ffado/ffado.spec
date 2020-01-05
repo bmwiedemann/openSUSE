@@ -1,7 +1,7 @@
 #
 # spec file for package ffado
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        FireWire 1394 support for audio devices, svn snapshot
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://www.ffado.org/
+URL:            http://www.ffado.org/
 Source0:        http://www.ffado.org/files/%{tname}-%{version}.tgz
 Source1:        baselibs.conf
 # No current date and time allowed.
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(libavc1394)
 BuildRequires:  pkgconfig(libconfig++)
 BuildRequires:  pkgconfig(libiec61883) >= 1.1.0
 BuildRequires:  pkgconfig(libraw1394) >= 2.0.5
-BuildRequires:  pkgconfig(libxml++-2.6) >= 2.13.0
+BuildRequires:  pkgconfig(libxml++-3.0) >= 3.0.0
 Requires:       libffado%{sover} = %{version}
 Recommends:     ffado-mixer = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -1,7 +1,7 @@
 #
 # spec file for package ffado-mixer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        FireWire 1394 support for audio devices, svn snapshot
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://www.ffado.org/
+URL:            http://www.ffado.org/
 # NOTE: download of tarball is taken care of in ffado
 Source0:        %{tname}-%{version}.tgz
 # No current date and time allowed.
@@ -54,7 +54,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  pkgconfig(libffado) = %{version}
-BuildRequires:  pkgconfig(libxml++-2.6) >= 2.13.0
+BuildRequires:  pkgconfig(libxml++-3.0) >= 3.0.0
 Requires:       ffado = %{version}
 #Requires:       python-qt4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
