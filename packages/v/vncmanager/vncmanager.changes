@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:51:36 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Mon Aug  6 12:22:52 UTC 2018 - msrb@suse.com
 
 - n_vncmanager-add-target-to-service.patch

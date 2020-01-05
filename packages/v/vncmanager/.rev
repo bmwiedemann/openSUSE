@@ -67,4 +67,12 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
     dependency for xvnc-novnc.service. (bnc#1103552)</comment>
     <requestid>627669</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>6ba6764c7c450c871b78df42ba57c980</srcmd5>
+    <version>1.0.2</version>
+    <time>1578234090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760839</requestid>
+  </revision>
 </revisionlist>
