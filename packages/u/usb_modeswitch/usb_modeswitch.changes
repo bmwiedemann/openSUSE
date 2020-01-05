@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Dec 23 21:41:13 UTC 2019 - enzokiel@kabelmail.de
+
+- Update to version 2.6.0
+  * Removed included libjim source alltogether
+  * Rewrote parts of the dispatcher script to make location of
+    global config file into a parameter: --config-file, so it can be
+    customised now
+  * Replaced tcl helper file for jim embedding with a sh script,
+    dropping the install dependency on a tcl interpreter
+    (Attention maintainers!)
+  * Changed Makefile to prevent parallel build issues as reported
+    here:
+    http://www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?f=2&t=2829,
+    make targets have changed names (Attention maintainers!)
+- Update usb-modeswitch-data package to version 20191128
+  * Slight change of the 'skipping' rules to avoid unnecessary
+    checks (thanks to Florian Zumbiehl)
+  * Added devices: [03f0:0857] HP lt4220, [05c6:1000:uMa=Qualcomm]
+    Venus Fast2, [0bda:1a2b] D-Link DWA-171 Wifi Dongle,
+    [0e8d:2870] COMFAST CF-WU782AC WiFi Dongle, [12d1:15ee]
+    Vodafone/Huawei K5160, [12d1:1f0a] Vodafone/Huawei R218h
+    (lkly compat. to E5573cs), [1410:9030] Novatel USB730L,
+    [1410:b00c] Novatel MiFi 6620L, [15eb:a403] Abit AK-020,
+    [161c:f010] KuWfi 4g LTE, [19d2:1421] ZTE MF833V / Telewell
+    TW-LTE v2, [1c9e:3003] 4G System XS W21s, [1c9e:f030] JioFi
+    JMR1040, [2001:ac01] D-Link DWM-222 A2, [2020:2030] Telewell
+    TW-LTE / Olicard 600 / Digisol BG-BA4305, [2357:0601] TP-Link
+    UE300, [2fd4:9aff] 4G Systems W1208, [413c:81a2] Dell DW5806,
+    [413c:81a3] Dell DW5570, [413c:81a4] Dell DW5570e, [413c:81a8]
+    Dell DW5808, [413c:81b1] Dell DW5809e, [413c:81b3] Dell DW5809e,
+    [413c:81d7] Dell DW5821e, [413c:81e0] Dell DW5821e-eSIM
+  * Corrected/amended configs: [057c:62ff] AVM Fritz!Wlan USB
+    Sticks (added target 8602), [1199:0fff] Sierra devices
+    (3 erroneous target IDs removed)
+- Fixed usb_modeswitch-fix_fsf_address.patch
+
+-------------------------------------------------------------------
 Wed Jun 12 14:17:34 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

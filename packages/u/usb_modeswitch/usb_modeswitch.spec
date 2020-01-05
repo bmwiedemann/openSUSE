@@ -1,7 +1,7 @@
 #
 # spec file for package usb_modeswitch
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define source_name	usb-modeswitch
-%define date		20170806
+%define date		20191128
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           usb_modeswitch
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        A mode switching tool for controlling multiple-device USB gear
 License:        GPL-2.0+
@@ -33,7 +33,6 @@ Source3:        http://www.draisberghof.de/usb_modeswitch/parameter_reference.tx
 Patch1:         usb_modeswitch-fix_fsf_address.patch
 BuildRequires:  fdupes
 BuildRequires:  pkg-config
-BuildRequires:  tcl
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(systemd)
