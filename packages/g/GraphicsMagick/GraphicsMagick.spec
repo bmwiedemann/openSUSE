@@ -1,7 +1,7 @@
 #
 # spec file for package GraphicsMagick
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,22 +30,18 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.33
+Version:        1.3.34
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
 Group:          Productivity/Graphics/Convertors
-Url:            http://www.GraphicsMagick.org/
+URL:            http://www.GraphicsMagick.org/
 Source:         ftp://ftp.GraphicsMagick.org/pub/%{name}/%{base_version}/%{name}-%{version}.tar.xz
-# following typemap file is needed for building PerlMagick with perl 5.16;
-# should be present in Graphics Magick 1.4.0
-%if %{bindperl}
-Source1:        typemap
-%endif
 %if %{bindperl}
 Patch0:         GraphicsMagick-perl-linkage.patch
 %endif
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
+Patch2:         GraphicsMagick-wait-for-threads-close.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
@@ -216,6 +212,7 @@ images, and to create thumbnail images.
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 # This shouldn't be there yet.
@@ -233,9 +230,12 @@ export CXXFLAGS="$RPM_OPT_FLAGS -O0"
 %else
         --without-modules \
 %endif
-        --enable-lzw \
 	--with-frozenpaths \
+	--without-dps \
+	--without-jp2 \
 	--without-perl \
+	--without-trio \
+	--without-zstd \
 	--with-magick-plus-plus \
 	--with-quantum-depth=%{quant} \
 	--enable-quantum-library-names \
@@ -265,13 +265,6 @@ make %{?_smp_mflags}
 %endif
 %if %{bindperl}
 cd PerlMagick
-if [ -e PerlMagick/typemap ]; then
-  echo "With Graphics Magick 1.4.0, typmap exists yet, please "
-  echo "no need to carry it as a package source anymore."
-  exit 1
-else
-  cp %{SOURCE1} .
-fi
 perl Makefile.PL
 make %{?_smp_mflags} LD_RUN_PATH="%{_libdir}"
 %endif

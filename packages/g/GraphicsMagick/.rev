@@ -834,4 +834,13 @@
     the 1.3.32 release.</comment>
     <requestid>736253</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ff16ce1808a01c578b404fa0978a6c6e</srcmd5>
+    <version>1.3.34</version>
+    <time>1578234081</time>
+    <user>dimstar_suse</user>
+    <comment>- Due to a broken check, it wasn't noticed the typemap file is
+  already provided in the source archive (removed typemap) (forwarded request 760488 from adkorte)</comment>
+    <requestid>760580</requestid>
+  </revision>
 </revisionlist>

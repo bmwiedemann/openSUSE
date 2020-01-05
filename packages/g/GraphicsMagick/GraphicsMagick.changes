@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Jan  2 20:18:49 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Due to a broken check, it wasn't noticed the typemap file is
+  already provided in the source archive (removed typemap)
+
+-------------------------------------------------------------------
+Sun Dec 29 14:32:23 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Relinquish resources used by OpenMP on all devices (GCC >= 9)
+  + GraphicsMagick-wait-for-threads-close.patch
+- Set configure options to what is actually build
+
+-------------------------------------------------------------------
+Fri Dec 27 17:03:02 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 1.3.34
+  * DPS: Eliminate a memory leak.
+  * Debug Trace: Only output text to terminate an XML format log file
+    if XML format is active.
+  * EXIF Parser: Detect non-terminal parsing and report an error.
+  * EXIF Parser: Eliminate heap buffer overflows.
+  * HuffmanDecodeImage(): Fix heap overflow in 32-bit applications.
+  * MAT: Implement subimage/subrange support.
+  * MVG: Address non-terminal loops, excessive run-time, thrown
+    assertions, divide-by-zero, heap overflow, and memory leaks.
+  * OpenModule(): Now properly case-insensitive, as it used to be.
+  * PCX: Verify that pixel region is not negative. Assure that opacity
+    channel is initialized to opaqueOpacity. Update DirectClass
+    representation while PseudoClass representation is updated.
+    Improve read performance with uncompressed PCX.
+  * PICT: Fix heap overflow in PICT writer.
+  * PNG: Fix validation of raw profile length.
+  * PNG: Skip coalescing layers if there is only one layer.
+  * PNM: Fix denial of service opportunity by limiting the length of
+    PNM comment text.
+  * WPG: Avoid Avoid dereferencing a null pointer.
+  * WPG: Implement subimage/subrange support.
+  * WPG: Improve performance when reading an embedded image.
+  * Wand library: In MagickClearException(), destroy any existing
+    exception info before re-initializing the exception info or else
+    there will be a memory leak.
+  * XPM: Rquire that image properties appear in the first 512 bytes
+    of the XPM file header.
+  * Compliles clean using GCC 9.
+  * Python scripts related to the build (enabled by --enable-maintainer-mode)
+    are now compatible with Python 3.
+  * Now supports using Google gperftools tcmalloc library for the memory
+    allocator. This improves performance for certain repetitive work-loads
+    and heavily-threaded algorithms.
+  * Configure now reports the status of zstd (FaceBook Zstandard)
+    compression in its configuration summary.
+  * TclMagick: Address many issues mentioned by SourceForge issue #420
+    "TclMagick issues and patch".
+  * PNG: Post-processing to convert the image type in the PNG reader based
+    on a specified magick prefix string is now disabled. This can (and
+    should) be done after the image has been returned.
+  * Trace Logging: The compiled-in logging default is always to stderr,
+    which may be over-ridden using log.mgk as soon as it is loaded.
+ 
+-------------------------------------------------------------------
 Tue Oct  8 15:00:02 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.3.33
