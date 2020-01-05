@@ -1,7 +1,7 @@
 #
 # spec file for package xtables-geoip
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xtables-geoip
-Version:        20191112
+Version:        20191224
 Release:        0
 Summary:        Geolocation database files for xt_geoip
 License:        CC-BY-SA-4.0
