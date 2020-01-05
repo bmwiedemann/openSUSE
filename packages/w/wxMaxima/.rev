@@ -329,4 +329,12 @@ Depends on maxima (sr#121612)</comment>
     <comment></comment>
     <requestid>742276</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>55db77ee259ee7d053f972e3d1596a03</srcmd5>
+    <version>20.01.1</version>
+    <time>1578234114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760920</requestid>
+  </revision>
 </revisionlist>
