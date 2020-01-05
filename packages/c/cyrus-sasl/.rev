@@ -508,4 +508,13 @@
     <comment></comment>
     <requestid>751846</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>7938cec4cfa3621ac9a7f813cf261d56</srcmd5>
+    <version>2.1.27</version>
+    <time>1578234047</time>
+    <user>dimstar_suse</user>
+    <comment>  (see CVE-2019-19906 bsc#1159635)
+  (see CVE-2019-19906 bsc#1159635)</comment>
+    <requestid>760381</requestid>
+  </revision>
 </revisionlist>

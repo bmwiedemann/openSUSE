@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl-saslauthd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Release:        0
 Summary:        The SASL Authentication Server
 License:        BSD-4-Clause
 Group:          Productivity/Networking/Other
-Url:            http://asg.web.cmu.edu/sasl/
+URL:            http://asg.web.cmu.edu/sasl/
 
 Source:         ftp://ftp.cyrusimap.org/cyrus-sasl/cyrus-sasl-%{version}.tar.gz
 Source1:        cyrus-sasl-rc.tar.bz2

@@ -3,7 +3,7 @@ Thu Nov 28 20:07:43 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - added backport-patch cyrus-sasl-bug587.patch which fixes
   off-by-one error in _sasl_add_string function
-  (see https://github.com/cyrusimap/cyrus-sasl/issues/587)
+  (see CVE-2019-19906 bsc#1159635)
 
 -------------------------------------------------------------------
 Sat Nov 17 10:14:14 UTC 2018 - Michael Ströder <michael@stroeder.com>
