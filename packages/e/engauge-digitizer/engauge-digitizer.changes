@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan  4 12:52:28 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 12.1:
+  * Fix autorepeat with Segment Settings dialog
+    (gh#markummitchell/engauge-digitizer#362).
+  * Display Coordinate Toolbar after import when appropriate
+    (gh#markummitchell/engauge-digitizer#361).
+  * Starting directory is saved and reused
+    (gh#markummitchell/engauge-digitizer#360).
+  * Fix log scale over very small range
+    (gh#markummitchell/engauge-digitizer#355).
+  * Fix tutorial page transition
+    (gh#markummitchell/engauge-digitizer#353).
+  * Add Farsi support (gh#markummitchell/engauge-digitizer#350).
+
+-------------------------------------------------------------------
 Tue Aug 20 11:48:27 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 12:

@@ -1,7 +1,7 @@
 #
 # spec file for package engauge-digitizer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           engauge-digitizer
-Version:        12
+Version:        12.1
 Release:        0
 Summary:        Ditigizer software that converts old graphs into numbers again
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
-Url:            http://markummitchell.github.io/engauge-digitizer/
+URL:            http://markummitchell.github.io/engauge-digitizer/
 Source0:        https://github.com/markummitchell/%{name}/archive/v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  doxygen
