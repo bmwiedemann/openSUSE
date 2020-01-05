@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:44:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  * Increased logging at default log level. Now all relevant
+    interaction is logged. See the man page for how to adjust.
+  * Fix buffer overflow in FTP PORT parser
+  * Fix TFTP/FTP directory traversal regression
+  * Fix potential DOS through non-busy loop and segfault
+  * Fix potential segfault through empty FTP password
+  * Fix potential segfault through FTP PORT command
+
+-------------------------------------------------------------------
 Mon Aug 26 20:56:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10
