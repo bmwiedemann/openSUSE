@@ -292,4 +292,15 @@ into the same staging project.</comment>
       code)</comment>
     <requestid>755853</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e6651a6e918c6d5791a8bb0f8d6ebcf3</srcmd5>
+    <version>2.3.2</version>
+    <time>1578234041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 2.3.2:
+  - changes since version 2.3.0:
+    - Fix unit tests on S390 architectures
+    - Fixed HMAC generation for policy sessions (forwarded request 759944 from mnhauke)</comment>
+    <requestid>760375</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           tpm2-0-tss
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
