@@ -27,6 +27,7 @@ URL:            https://github.com/sherpa/sherpa/
 Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM config_with_build.patch -- https://github.com/sherpa/sherpa/pull/714
 Patch0:         config_with_build.patch
+Patch1:         reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
