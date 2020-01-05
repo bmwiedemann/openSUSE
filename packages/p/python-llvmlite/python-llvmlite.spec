@@ -1,7 +1,7 @@
 #
 # spec file for package python-llvmlite
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define         llvm_major 7
 %endif
 Name:           python-llvmlite
-Version:        0.30.0
+Version:        0.31.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
