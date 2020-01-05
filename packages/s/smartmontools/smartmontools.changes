@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jan  4 01:53:52 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 7.1:
+  * smartctl: Fixed bogus exception on unknown form factor value.
+  * smartctl '--json=cg': Suppresses extra spaces also in 'g'
+    format.
+  * smartctl '-i': ATA ACS-4 and ACS-5 enhancements.
+  * smartd: No longer truncates very long device names in warning
+    emails.
+  * smartd: No longer skips scheduled tests if system clock has
+    been adjusted to the past.
+  * smartd '-A': Attribute logs now use local time instead of UTC.
+  * ATA: Device type '-d jmb39x,N' for drives behind JMicron JMB39x
+    RAID port multipliers.
+  * SCSI: Workaround for incomplete Log subpages response from some
+    SAS SSDs.
+  * HDD, SSD and USB additions to drive database.
+  * Autodetection of '-d sntjmicron' type for JMicron USB to NVMe
+    bridges.
+  * Fixed segfault on CCISS transfer sizes > 512 bytes.
+  * Fixed smartd.service 'Type' if libsystemd-dev is not available.
+  * Fixed '/dev/megaraid_sas_ioctl_node' fd leak.
+  * Fixed GPL licensing problem of 'linux_nvme_ioctl.h'
+    (smartmontools#1226,
+    drop smartmontools-nvme_ioctl_h-license.patch).
+- Update smartmontools.keyring. Developers use new key.
+- smartmontools-drivedb_h-update.sh: Recognize equal files in
+  different commits.
+- Remove smartmontools-drivedb.h. No update available in the
+  upstream branch RELEASE_7_0_DRIVEDB.
+
+-------------------------------------------------------------------
+Thu Dec 19 14:52:51 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Tue Aug  6 18:50:22 CEST 2019 - sbrabec@suse.com
 
 - Fix license of nvme_ioctl.h

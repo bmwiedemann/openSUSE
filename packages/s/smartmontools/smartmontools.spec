@@ -1,7 +1,7 @@
 #
 # spec file for package smartmontools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           smartmontools
-Version:        7.0
+Version:        7.1
 Release:        0
 Source:         https://sourceforge.net/projects/smartmontools/files/smartmontools/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://sourceforge.net/projects/smartmontools/files/smartmontools/%{version}/%{name}-%{version}.tar.gz.asc
@@ -34,7 +34,7 @@ Source5:        %{name}.generate_smartd_opts.in
 # SOURCE-FEATURE-SLE smartmontools-drivedb_h-update.sh bnc851276 sbrabec@suse.cz -- Supplementary script to update drivedb.h.
 Source6:        smartmontools-drivedb_h-update.sh
 # SOURCE-FEATURE-UPSTREAM smartmontools-drivedb.h bnc851276 sbrabec@suse.cz -- Update of drivedb.h. (Following line is handled by smartmontools-drivedb_h-update.sh.)
-Source7:        smartmontools-drivedb.h
+#Source7:        smartmontools-drivedb.h
 Source8:        smartd_generate_opts.path
 Source9:        smartd_generate_opts.service
 # PATCH-FEATURE-OPENSUSE smartmontools-suse-default.patch sbrabec@suse.cz -- Define smart SUSE defaults.
@@ -43,17 +43,15 @@ Patch4:         smartmontools-suse-default.patch
 Patch10:        smartmontools-var-lock-subsys.patch
 # PATCH-FEATURE-OPENSUSE smartd-service-novm.patch crrodriguez@opensuse.org -- Do not start smartd in virtual environment.
 Patch11:        smartd-service-novm.patch
-# PATCH-FIX-LEGAL smartmontools-nvme_ioctl_h-license.patch https://www.smartmontools.org/ticket/1226 sbrabec@suse.com -- Fix license of nvme_ioctl.h.
-Patch12:        smartmontools-nvme_ioctl_h-license.patch
 Requires(pre):  %fillup_prereq
 # Needed by generate_smartd_opt:
 Requires(pre):  coreutils
-Url:            https://www.smartmontools.org/
+URL:            https://www.smartmontools.org/
 BuildRequires:  gcc-c++
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libselinux-devel
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 Summary:        Monitor for SMART devices
@@ -77,11 +75,10 @@ commands man smartctl and man smartd will provide more information.
 %setup -q
 cp -a %{SOURCE2} %{SOURCE5} .
 # Following line is handled by smartmontools-drivedb_h-update.sh.
-cp -a %{SOURCE7} drivedb.h.new
+#cp -a %{SOURCE7} drivedb.h.new
 %patch4
 %patch10 -p1
 %patch11
-%patch12
 #
 # PATCH-FEATURE-OPENSUSE (sed on smartd.service.in) sbrabec@suse.cz -- Use generated smartd_opts (from SUSE sysconfig file). Systemd smartd.service cannot be smart enough to parse SUSE sysconfig file and generate smartd_opts on fly. And we do not want to launch shell just for it in every boot.
 sed "s:/usr/local/etc/sysconfig/smartmontools:%{_localstatedir}/lib/smartmontools/smartd_opts:" <smartd.service.in >smartd.service.in.new
@@ -111,13 +108,12 @@ export CXXFLAGS="%{optflags} -fPIE $(getconf LFS_CFLAGS)"
 export LDFLAGS="-pie"
 %configure\
 	--docdir=%{_defaultdocdir}/%{name}\
-        --with-selinux\
+	--with-selinux\
 	--with-libsystemd\
 	--with-systemdsystemunitdir=%{_unitdir}\
-	--with-drivedb\
-    --with-savestates \
-    --with-attributelog \
-    --with-nvme-devicescan
+	--with-savestates \
+	--with-attributelog \
+	--with-nvme-devicescan
 
 make %{?_smp_mflags} BUILD_INFO='"(SUSE RPM)"'
 SERVICE=/usr/sbin/service

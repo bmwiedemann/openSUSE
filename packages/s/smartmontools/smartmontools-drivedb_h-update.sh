@@ -59,12 +59,21 @@ chmod +x update-smart-drivedb-wd
 rm -f "$DEST.lastcheck"
 rm -f "$DEST.old"
 
+# Compare time (file in the drivedb branch can be older) and compare
+# files without Id (files can be equal but committed in two commits).
 UPD_TIME=$(date -d "$(sed -n 's/^.*$Id: drivedb.h [0-9][0-9]* \([^ ]* [^ ]*\) .*$/\1/p' <smartmontools-drivedb.h)" +%s)
+sed '/^.*$Id:/d' <smartmontools-$VERSION/drivedb.h >smartmontools-$VERSION/drivedb-noid.h
+sed '/^.*$Id:/d' <smartmontools-drivedb.h >smartmontools-drivedb-noid.h
+if cmp -s drivedb-noid.h smartmontools-drivedb-noid.h ; then
+	EQUAL=true
+else
+	EQUAL=false
+fi
 
 # Return to the OSC repository and perform needed changes.
 cd - >/dev/null
 
-if test $UPD_TIME -le $PCK_TIME ; then
+if test $EQUAL -o \( $UPD_TIME -le $PCK_TIME \) ; then
 	echo "No drivedb.h update available."
 	if test -f smartmontools-drivedb.h ; then
 		osc rm --force smartmontools-drivedb.h
