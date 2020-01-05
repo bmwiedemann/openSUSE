@@ -1,7 +1,7 @@
 #
 # spec file for package mkosi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mkosi
-Version:        4
+Version:        5
 Release:        0
 Summary:        Build Legacy-Free OS Images
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Management
-Url:            https://github.com/systemd/mkosi
+URL:            https://github.com/systemd/mkosi
 Source:         https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-setuptools
@@ -65,7 +65,7 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc README.md
+%doc mkosi.md
 %if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %license LICENSE
 %else
