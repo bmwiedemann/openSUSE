@@ -1,7 +1,7 @@
 #
 # spec file for package logrotate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://github.com/%{name}/%{name}
+URL:            https://github.com/%{name}/%{name}
 Source0:        https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # SUSE specific logrotate configurations
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(systemd) >= 197
 Requires:       xz
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 The logrotate utility does automatic rotation, compression, mailing and removal
