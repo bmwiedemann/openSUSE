@@ -1,7 +1,7 @@
 #
 # spec file for package osdlyrics
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define  with_mpd     0
 %define  date         20190330
@@ -96,10 +97,10 @@ NOCONFIGURE=1 ./autogen.sh
 
 %install
 %make_install
-install -d %{buildroot}%{_datadir}/appdata
-cp %{SOURCE1} %{buildroot}%{_datadir}/appdata/
+install -d %{buildroot}%{_datadir}/metainfo
+cp %{SOURCE1} %{buildroot}%{_datadir}/metainfo
 sed -i 's/$$version/%{_version}/g; s/$$date/%{date}/g' \
-%{buildroot}%{_datadir}/appdata/%{name}-appdata.xml
+%{buildroot}%{_datadir}/metainfo/%{name}-appdata.xml
 
 %suse_update_desktop_file %{name}
 
@@ -117,8 +118,8 @@ sed -i 's/$$version/%{_version}/g; s/$$date/%{date}/g' \
 %{_datadir}/icons/hicolor/
 %{_datadir}/%{name}/
 %{_datadir}/dbus-1/services/org.%{name}.*
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}-appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/%{name}-appdata.xml
 
 %files -n python3-%{name}
 %{python3_sitelib}/%{name}
