@@ -1018,4 +1018,12 @@
   * New patch: hplip-change-pgp-server.patch</comment>
     <requestid>741595</requestid>
   </revision>
+  <revision rev="128" vrev="4">
+    <srcmd5>6f3bc7b51d9754be3212c9c88e8aa92d</srcmd5>
+    <version>3.19.6</version>
+    <time>1578234071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760414</requestid>
+  </revision>
 </revisionlist>

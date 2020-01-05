@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -325,9 +325,11 @@ sed -i -e 's|%{_datadir}/icons/Humanity/devices/48/printer.svg|printer|' hp-uisc
 # complains about missing files like NEWS, README, AUTHORS, ChangeLog
 # in each directory where a Makefile.am exists:
 AUTOMAKE='automake --foreign' autoreconf -fvi
+# Fix improper method of Python.h lookup in configure, no longer working with Python 3.8
+PYTHON_INCLUDEDIR="$(python3-config --includes)"
 # Set our preferred architecture-specific flags for the compiler and linker:
-export CFLAGS="%{optflags} -Wno-error=return-type"
-export CXXFLAGS="%{optflags} -fno-strict-aliasing -Wno-error=return-type"
+export CFLAGS="%{optflags} ${PYTHON_INCLUDEDIR} -Wno-error=return-type"
+export CXXFLAGS="%{optflags} ${PYTHON_INCLUDEDIR} -fno-strict-aliasing -Wno-error=return-type"
 # --disable-pp-build disables parallel port build because parallel port support is deprecated by upstream HPLIP
 # and by upstream in general cf. "Parallel port printers" at https://en.opensuse.org/SDB:Installing_a_Printer
 # Since version 3.9.6 the default printer driver install changed from hpijs to hpcups.
@@ -378,7 +380,6 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing -Wno-error=return-type"
             --with-mimedir=%{_sysconfdir}/cups \
             --with-docdir=%{_defaultdocdir}/%{name} \
             --with-htmldir=%{_defaultdocdir}/%{name} \
-	    CFLAGS='%{optflags} -Wno-error=return-type' \
 	    PYTHON=%{pyexe}
 %make_build
 sed -i 's|ppd/hpcups/\*.ppd.gz ||g' Makefile
