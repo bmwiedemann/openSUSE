@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan  6 04:35:05 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.45:
+  + Breaking Changes
+    * Branch.edit_{user,team}_push_restrictions() have been removed
+      The new API is:
+         Branch.add_{user,team}_push_restrictions() to add new members
+         Branch.replace_{user,team}_push_restrictions() to replace all members
+         Branch.remove_{user,team}_push_restrictions() to remove members
+    * The api_preview parameter to Github() has been removed.
+  + Bug Fixes & Improvements
+    * Allow sha=None for InputGitTreeElement
+    * Support github timeline events.
+    * Add support for update branch
+    * Refactor Logging tests
+    * Fix rtd build
+    * Apply black to whole codebase
+    * Fix class used returning pull request comments
+    * Support for create_fork
+    * Use Repository.get_contents() in tests
+    * Allow GithubObject.update() to be passed headers
+    * Correct URL for assignees on PRs
+    * Use inclusive ordered comparison for 'parameterized' requirement
+    * Deprecate Repository.get_dir_contents()
+    * Apply some polish to manage.sh
+- Refresh no-hardcoded-dep.patch
+
+-------------------------------------------------------------------
 Wed Dec 11 08:26:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to not pull in hardcoded dependencies:
