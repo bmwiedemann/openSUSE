@@ -1,7 +1,7 @@
 #
 # spec file for package llvm9
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,8 @@
 %bcond_with openmp
 %endif
 # LLVM currently doesn't build with Gold on ppc
-%ifarch ppc
+# Gold is not supported on riscv64
+%ifarch ppc riscv64
 %bcond_with gold
 %else
 %bcond_without gold
@@ -116,6 +117,11 @@ Patch27:        openmp-export-fini.patch
 Patch28:        gwp-asan-lto.patch
 # Do not use the deprecated platform.linux_distribution.
 Patch29:        libcxx-tests-linux-distribution.patch
+# Backports of RISC-V patches (D65634, D66003, D63497, D69723, D60657)
+Patch30:        clang-riscv64-rv64gc.diff
+Patch31:        riscv64-suse-linux.patch
+Patch32:        llvm-riscv64-fix-cffi.diff
+Patch33:        D60657-riscv-pcrel_lo.diff
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -134,7 +140,6 @@ Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    riscv64
 # llvm does not work on s390
 ExcludeArch:    s390
 BuildRequires:  gcc
@@ -244,8 +249,8 @@ static code analyzers for CLANG.
 
 %package -n clang%{_sonum}-include-fixer
 Summary:        Automatically add missing includes
-# Avoid multiple provider errors
 Group:          Development/Languages/C and C++
+# Avoid multiple provider errors
 Requires:       libclang%{_sonum} = %{version}
 Conflicts:      clang-include-fixer < %{version}
 Conflicts:      find-all-symbols < %{version}
@@ -266,8 +271,8 @@ namespace qualifiers.
 
 %package -n libclang%{_sonum}
 Summary:        Library files needed for clang
-# Avoid multiple provider errors
 Group:          System/Libraries
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 
 %description -n libclang%{_sonum}
@@ -301,8 +306,8 @@ This package contains documentation for the Clang compiler.
 
 %package -n libLTO%{_sonum}
 Summary:        Link-time optimizer for LLVM
-# Avoid multiple provider errors
 Group:          System/Libraries
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 
 %description -n libLTO%{_sonum}
@@ -310,8 +315,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package LTO-devel
 Summary:        Link-time optimizer for LLVM (devel package)
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       %{name}-devel = %{version}
 Requires:       libLTO%{_sonum}
 Conflicts:      libLTO.so < %{version}
@@ -323,8 +328,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package gold
 Summary:        Gold linker plugin for LLVM
-# Avoid multiple provider errors
 Group:          Development/Tools/Building
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
@@ -334,8 +339,8 @@ This package contains the Gold linker plugin for LLVM.
 
 %package -n libomp%{_sonum}-devel
 Summary:        MPI plugin for LLVM
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Conflicts:      libomp-devel < %{version}
 Provides:       libomp-devel = %{version}
@@ -356,8 +361,8 @@ standard library, targeting C++11.
 
 %package -n libc++-devel
 Summary:        C++ standard library implementation (devel package)
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       libc++%{_socxx} = %{version}
 Requires:       libc++abi-devel = %{version}
 Conflicts:      libc++.so < %{version}
@@ -475,8 +480,8 @@ disassembler.
 
 %package -n liblldb%{_sonum}
 Summary:        LLDB software debugger runtime library
-# Avoid multiple provider errors
 Group:          System/Libraries
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Requires:       libclang%{_sonum}
 
@@ -485,8 +490,8 @@ This subpackage contains the main LLDB component.
 
 %package -n lldb%{_sonum}-devel
 Summary:        Development files for LLDB
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       clang%{_sonum}-devel = %{version}
 Requires:       liblldb%{_sonum} = %{version}
 Requires:       llvm%{_sonum}-devel = %{version}
@@ -553,6 +558,8 @@ This package contains the development files for Polly.
 %patch21 -p1
 %patch22 -p1
 %patch24 -p1
+%patch32 -p1
+%patch33 -p1
 
 pushd compiler-rt-%{version}.src
 %patch28 -p2
@@ -566,6 +573,8 @@ pushd clang-%{version}.src
 %patch8 -p1
 %patch9 -p2
 %patch26 -p1
+%patch30 -p1
+%patch31 -p1
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -1673,7 +1682,9 @@ fi
 # The sanitizer runtime is not available for ppc.
 %ifnarch ppc
 %{_libdir}/clang/%{_relver}/lib
+%ifnarch riscv64
 %{_libdir}/clang/%{_relver}/share
+%endif
 %endif
 %{_datadir}/bash-completion/completions/clang.sh
 

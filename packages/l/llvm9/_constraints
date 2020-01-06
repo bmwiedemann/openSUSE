@@ -51,4 +51,17 @@
       </memory>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">55</size>
+      </disk>
+      <memory>
+        <size unit="M">14000</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>

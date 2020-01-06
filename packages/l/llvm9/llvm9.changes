@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  3 15:28:52 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable support for riscv64
+- clang-riscv64-rv64gc.diff, riscv64-suse-linux.patch,
+  llvm-riscv64-fix-cffi.diff, D60657-riscv-pcrel_lo.diff: Backports from
+  master
+
+-------------------------------------------------------------------
 Fri Dec 20 21:13:19 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 9.0.1.
