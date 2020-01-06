@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Jan  4 16:48:23 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.20.0:
+  - Customizable preview window color (preview-fg and preview-bg
+    for --color)
+
+    fzf --preview 'cat {}' \
+        --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899' \
+        --border --height 20 --layout reverse --info inline
+
+    Removed the immediate flicking of the screen on reload action.
+
+    : | fzf --bind 'change:reload:seq {q}' --phony
+
+    Added clear-query and clear-selection actions for --bind
+
+  - It is now possible to split a composite bind action over
+    multiple --bind expressions by prefixing the later ones with
+    +.
+
+    fzf --bind 'ctrl-a:up+up'
+
+    # Can be now written as
+    fzf --bind 'ctrl-a:up' --bind 'ctrl-a:+up'
+
+    # This is useful when you need to write special
+    # execute/reload form (i.e. `execute:...`)
+    # to avoid parse errors and add more actions to the same key
+    fzf --multi --bind 'ctrl-l:select-all+execute:less {+f}' --bind 'ctrl-l:+deselect-all'
+
+  - Fixed parse error of --bind expression where concatenated
+    execute/reload action contains + character.
+
+    fzf --multi --bind 'ctrl-l:select-all+execute(less {+f})+deselect-all'
+
+  - Fixed bugs of reload action
+    - Not triggered when there's no match even when the command
+      doesn't have any placeholder expressions
+    - Screen not properly cleared when --header-lines not filled
+      on reload
+
+-------------------------------------------------------------------
 Sun Nov 17 17:48:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to 0.19.0
