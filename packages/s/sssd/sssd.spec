@@ -30,6 +30,7 @@ Source2:        https://releases.pagure.org/SSSD/sssd/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Patch1:         krb-noversion.diff
+Patch2:         sssd-gpo_host_security_filter-2.2.2.patch
 BuildRoot:      %_tmppath/%name-%version-build
 
 %define servicename	sssd
