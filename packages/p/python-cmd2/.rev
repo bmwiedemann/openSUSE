@@ -372,4 +372,35 @@
     <comment>- Fix up dependencies and everything after last update to 0.9.20</comment>
     <requestid>750700</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c74995412f63fb7e970dfa92a249af2d</srcmd5>
+    <version>0.9.22</version>
+    <time>1578322928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.22:
+  - Fixed bug where a redefined ansi.style_error was not being
+    used in all cmd2 files
+  - Enabled line buffering when redirecting output to a file
+  - Added align_left(), align_center(), and align_right() to
+    utils.py. All 3 of these functions support ANSI escape
+    sequences and characters with display widths greater than 1.
+    They wrap align_text() which is also in utils.py.
+  - Fixed bug where pipe processes were not being stopped by Ctrl-C
+  - Added exception handling to account for non-standard Python
+    environments in which readline is not loaded dynamically from
+    a shared library file
+  - Added read_input() function that is used to read from stdin.
+    Unlike the Python built-in input(), it also has an argument
+    to disable tab completion while input is being entered.
+  - Added capability to override the argument parser class used
+    by cmd2 built-in commands. See override_parser.py example for
+    more details.
+  - Added end argument to pfeedback() to be consistent with the
+    other print functions like poutput().
+  - Added apply_style to pwarning().
+  - For consistency between all the print functions:
+    - Made end and chop keyword-only arguments of ppaged()
+    - end is always added to message in ppaged()</comment>
+    <requestid>760618</requestid>
+  </revision>
 </revisionlist>
