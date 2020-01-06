@@ -1,7 +1,7 @@
 #
 # spec file for package python-jirafs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-jirafs
-Version:        1.17.3
+Version:        1.17.5
 Release:        0
 Summary:        Library for editing JIRA issues as local text files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/coddingtonbear/jirafs
-Source:         https://files.pythonhosted.org/packages/source/j/jirafs/jirafs-%{version}.tar.gz
+Source:         https://github.com/coddingtonbear/jirafs/archive/%{version}.tar.gz
 Patch0:         capitalization.patch
 BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module behave}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  3 01:53:39 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.17.5
+  * Much saner method of setting up logging.
+- Update to 1.17.4
+  * Adding better error messages for incorrectly-subclassed loaded plugins.
+  * Updating LICENSE year range.
+- Drop python2 support due to dependency dropping python2
+  
+-------------------------------------------------------------------
 Thu Mar 28 10:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add missing ipdb dependency
