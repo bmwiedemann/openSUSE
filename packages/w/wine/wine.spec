@@ -1,7 +1,7 @@
 #
 # spec file for package wine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.0-rc3
-Version:        5.0~rc3
+%define realver 5.0-rc4
+Version:        5.0~rc4
 Release:        0
 
 %if "%{flavor}" != ""
@@ -147,7 +147,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.0rc3
+%define staging_version 5.0rc4
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

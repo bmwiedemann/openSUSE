@@ -3369,4 +3369,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>760791</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>757d171ba6cf209e914f06a408ed9180</srcmd5>
+    <version>5.0~rc4</version>
+    <time>1578320447</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.0-rc4 release candidate
+  - Bug fixes only, we are in code freeze.
+- updated staging to 5.0-rc4</comment>
+    <requestid>760959</requestid>
+  </revision>
 </revisionlist>
