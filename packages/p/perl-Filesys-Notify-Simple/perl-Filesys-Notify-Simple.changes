@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  4 03:08:50 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Filesys-Notify-Simple/Changes
+
+  0.14  2020-01-03 11:36:49 PST
+          - Inlude path for linux error message
+          - Demote the error above to a warning
+
+-------------------------------------------------------------------
 Fri Mar  9 06:20:01 UTC 2018 - coolo@suse.com
 
 - updated to 0.13
