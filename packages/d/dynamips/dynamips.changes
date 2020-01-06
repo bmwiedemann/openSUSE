@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 25 10:32:09 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.21
+  * Fix SEGV during snprintf and localtime_r.
+- Update to version 0.2.20
+  * New fix for segmentation fault when using localtime()
+- Update to version 0.2.19
+  * Fix segmentation fault when using localtime() (64-bit only).
+- Update to version 0.2.18
+  * Allow to reuse socket in udp_connect.
+  * Fix segfault when exporting startup-config.
+
+-------------------------------------------------------------------
 Sun Feb 18 08:54:40 UTC 2018 - avindra@opensuse.org
 
 - new upstream version 0.2.17

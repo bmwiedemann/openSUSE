@@ -1,7 +1,7 @@
 #
 # spec file for package dynamips
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dynamips
-Version:        0.2.17
+Version:        0.2.21
 Release:        0
 Summary:        Cisco router Emulator
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
-Url:            https://www.gns3.net
+URL:            https://www.gns3.net
 Source:         https://github.com/GNS3/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         define-s390x-arch.patch
 BuildRequires:  cmake
@@ -62,9 +62,9 @@ or people wanting to pass their CCNA/CCNP/CCIE exams.
 %files
 %{_bindir}/%{name}
 %{_bindir}/nvram_export
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/nvram_export.1%{ext_man}
-%{_mandir}/man7/hypervisor_mode.7%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/nvram_export.1%{?ext_man}
+%{_mandir}/man7/hypervisor_mode.7%{?ext_man}
 %{_datadir}/doc/%{name}
 
 %changelog
