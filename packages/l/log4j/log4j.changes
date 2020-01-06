@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 09:29:32 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Obsolete log4j-mini, since on systems where this package is
+  installed, the log4j-mini is not supposed to exist, but the
+  compatibility version log4j12-mini/log4j12
+
+-------------------------------------------------------------------
 Mon Nov  4 14:22:37 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Run fdupes on the javadoc

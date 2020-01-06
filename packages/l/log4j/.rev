@@ -214,4 +214,12 @@
     <comment>fdupes</comment>
     <requestid>745198</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>8bb7a02289a2c1b4a9173e8c78fad7d5</srcmd5>
+    <version>2.11.1</version>
+    <time>1578320604</time>
+    <user>dimstar_suse</user>
+    <comment>Obsolete log4j-mini</comment>
+    <requestid>761090</requestid>
+  </revision>
 </revisionlist>

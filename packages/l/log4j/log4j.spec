@@ -1,7 +1,7 @@
 #
 # spec file for package log4j
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ BuildRequires:  mvn(org.jctools:jctools-core)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
+Obsoletes:      log4j-mini
 BuildArch:      noarch
 %if %{with extras}
 BuildRequires:  mvn(com.datastax.cassandra:cassandra-driver-core)
