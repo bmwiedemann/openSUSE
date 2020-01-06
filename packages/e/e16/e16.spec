@@ -1,7 +1,7 @@
 #
 # spec file for package e16
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 %define enable_composite   1
 %define enable_pango       1
 Name:           e16
-Version:        1.0.19
+Version:        1.0.21
 Release:        0
 Summary:        A Window Manager for the X Window System
 License:        MIT-advertising AND GPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            http://www.enlightenment.org
+URL:            http://www.enlightenment.org
 Source:         e16-%{version}.tar.xz
 Patch0:         fix-compile-gtk.patch
 BuildRequires:  fdupes

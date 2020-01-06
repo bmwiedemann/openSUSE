@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan  2 05:10:08 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Add sndio sound back end for OpenBSD
+- Menu generation speedups  
+
+-------------------------------------------------------------------
+Thu Sep  5 07:16:38 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Update to 16.0.20
+  * Theming macro updates (Don Harrop)
+  * Warning fixes for gcc 9
+  * Fix transient placement involving desk/area change
+  * GSOD: Fix restart after choosing Restart on e.g. segv
+  * GSOD: Better keyboard grab
+  * Don't do double-clicks on scroll wheel events
+  * Correct refresh when switching away from background "None"
+  * Restore background to last set if quitting background selector
+  * Fix memory leak in pulseaudio sound loader
+  * Fix potential segv in pulseaudio sound handler
+  * Fix compositing glitches with tiled backgrounds
+  * Make config dialog edge flip mode changes take effect immediately
+  * Add gobject-2.0 dependency in case pango doesn't include it
+
+-------------------------------------------------------------------
 Sun Jun  2 12:36:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias and filler wording from description.

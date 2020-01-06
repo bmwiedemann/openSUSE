@@ -81,4 +81,28 @@ Mostly a couple of minor bug fixes and some internal reworkings.</comment>
     <comment></comment>
     <requestid>707126</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>501020917e3532d5e14f3154de477c86</srcmd5>
+    <version>1.0.21</version>
+    <time>1578320563</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sndio sound back end for OpenBSD
+- Menu generation speedups  
+- Update to 16.0.20
+  * Theming macro updates (Don Harrop)
+  * Warning fixes for gcc 9
+  * Fix transient placement involving desk/area change
+  * GSOD: Fix restart after choosing Restart on e.g. segv
+  * GSOD: Better keyboard grab
+  * Don't do double-clicks on scroll wheel events
+  * Correct refresh when switching away from background &quot;None&quot;
+  * Restore background to last set if quitting background selector
+  * Fix memory leak in pulseaudio sound loader
+  * Fix potential segv in pulseaudio sound handler
+  * Fix compositing glitches with tiled backgrounds
+  * Make config dialog edge flip mode changes take effect immediately
+  * Add gobject-2.0 dependency in case pango doesn't include it
+</comment>
+    <requestid>761066</requestid>
+  </revision>
 </revisionlist>
