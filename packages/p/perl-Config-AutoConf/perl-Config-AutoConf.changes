@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  3 03:07:20 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.318
+   see /usr/share/doc/packages/perl-Config-AutoConf/Changes
+
+  0.318	2020-01-02
+  	- use File::Slurper instead of File::Slurp::Tiny
+  	- use cached pkg_config_prog, when available
+  	- bump copyright notice
+
+-------------------------------------------------------------------
 Sat Jun  9 05:10:05 UTC 2018 - coolo@suse.com
 
 - updated to 0.317
