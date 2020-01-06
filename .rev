@@ -146,4 +146,35 @@
   * no-hardcoded-dep.patch</comment>
     <requestid>755746</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6b81204d251a405c2476a235e9788187</srcmd5>
+    <version>1.45</version>
+    <time>1578320528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.45:
+  + Breaking Changes
+    * Branch.edit_{user,team}_push_restrictions() have been removed
+      The new API is:
+         Branch.add_{user,team}_push_restrictions() to add new members
+         Branch.replace_{user,team}_push_restrictions() to replace all members
+         Branch.remove_{user,team}_push_restrictions() to remove members
+    * The api_preview parameter to Github() has been removed.
+  + Bug Fixes &amp; Improvements
+    * Allow sha=None for InputGitTreeElement
+    * Support github timeline events.
+    * Add support for update branch
+    * Refactor Logging tests
+    * Fix rtd build
+    * Apply black to whole codebase
+    * Fix class used returning pull request comments
+    * Support for create_fork
+    * Use Repository.get_contents() in tests
+    * Allow GithubObject.update() to be passed headers
+    * Correct URL for assignees on PRs
+    * Use inclusive ordered comparison for 'parameterized' requirement
+    * Deprecate Repository.get_dir_contents()
+    * Apply some polish to manage.sh
+- Refresh no-hardcoded-dep.patch</comment>
+    <requestid>761017</requestid>
+  </revision>
 </revisionlist>

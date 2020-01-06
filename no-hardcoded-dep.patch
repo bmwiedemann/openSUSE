@@ -1,13 +1,8 @@
-Index: PyGithub-1.44.1/setup.py
+Index: PyGithub-1.45/setup.py
 ===================================================================
---- PyGithub-1.44.1.orig/setup.py
-+++ PyGithub-1.44.1/setup.py
-@@ -52,11 +52,11 @@ version = "1.44.1"
- tests_require = [
-     "cryptography",
-     "httpretty>=0.9.6",
--    "parameterized==0.7.0",
-+    "parameterized>=0.7.0",
+--- PyGithub-1.45.orig/setup.py
++++ PyGithub-1.45/setup.py
+@@ -55,7 +55,7 @@ tests_require = [
  ]
  
  if sys.version_info < (3, 3):
