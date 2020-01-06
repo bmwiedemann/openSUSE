@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-super-check
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-super-check
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Pytest plugin to check your TestCase classes call super in setUp, tearDown, etc
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/pytest-super-check
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-super-check/pytest-super-check-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
-# /SECTION
 %python_subpackages
 
 %description
@@ -49,7 +47,7 @@ Pytest plugin to check your TestCase classes call super in setUp, tearDown, etc.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py pytest
+%pytest
 
 %files %{python_files}
 %doc README.rst HISTORY.rst

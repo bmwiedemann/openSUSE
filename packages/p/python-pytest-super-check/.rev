@@ -8,4 +8,14 @@
 </comment>
     <requestid>687565</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ec3dbe728bed5d621320a9fc31a2ed7</srcmd5>
+    <version>2.1.0</version>
+    <time>1578320681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Update Python support to 3.5-3.8, as 3.4 has reached its end of life.
+  * Converted setuptools metadata to configuration file.</comment>
+    <requestid>761145</requestid>
+  </revision>
 </revisionlist>
