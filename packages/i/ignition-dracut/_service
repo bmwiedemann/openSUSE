@@ -5,7 +5,6 @@
     <param name="url">git://github.com/coreos/ignition-dracut.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">kukuk@suse.de</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>

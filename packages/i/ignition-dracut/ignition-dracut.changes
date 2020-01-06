@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan  5 14:03:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Really increase timeout for 'ignition' device on ARM
+
+-------------------------------------------------------------------
 Mon Dec 23 13:53:43 UTC 2019 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 0.0+git20191211.c4790bc:
