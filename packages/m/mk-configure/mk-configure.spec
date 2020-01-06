@@ -17,7 +17,7 @@
 
 
 Name:           mk-configure
-Version:        0.31.0
+Version:        0.32.1
 Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND BSD-2-Clause AND MIT AND ISC
