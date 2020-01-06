@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jan  5 02:53:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use pkgconfig(libpng) BuildRequires, the build system looks for
+  the unversioned libpng.so and falls back to its bundled version.
+- Remove bundled zlib source, otherwise it is built even when the
+  system zlib is found. This triggers a fatal rpm check failure on
+  Leap 15.x due to compiler warnings.
+- Also remove bundled png/tiff/axTLS sources.
+- Remove pkgconfig(mxml) dependency, ArgyllCMS bundles a patched one.
+
+-------------------------------------------------------------------
+Wed Dec  4 17:06:10 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v2.1.1
+  * Added SpyderX support
+  * Changed spotread -E option to work with all the spectral instruments
+  * Improvements and bug fixes to oeminst and oemdnld
+  * Increased maximum render channels to 16
+  * Added -O option to collink to allow creating a link purely from calibration file
+  * Added -w parameter to spotread, to use the -i parameter illuminant for L*a*b* calculation
+- Remove obsolete patch argyllcms-decl.patch 
+
+-------------------------------------------------------------------
 Wed Apr 24 09:16:27 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133108).

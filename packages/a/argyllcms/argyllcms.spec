@@ -1,7 +1,7 @@
 #
 # spec file for package argyllcms
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,23 @@
 %define tarname Argyll
 
 Name:           argyllcms
-Version:        1.9.2
+Version:        2.1.1
 Release:        0
 Summary:        ICC compatible color management system
 License:        AGPL-3.0-only AND GPL-2.0-or-later AND MIT
 Group:          System/X11/Utilities
-Url:            http://www.argyllcms.com/
+URL:            http://www.argyllcms.com/
 Source0:        http://www.argyllcms.com/%{tarname}_V%{version}_src.zip
 Source1:        19-color.fdi
 Source2:        color-device-file.policy
 Source3:        ajam-2.5.2-1.3.3.tgz
-Source4:        %{name}.changes
 Patch1:         ajam-include.patch
-Patch2:         argyllcms-decl.patch
 
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xext)
@@ -73,8 +72,8 @@ viewer.
 
 %package doc
 Summary:        Argyll CMS documentation
-# Does not really make sense without Argyll CMS itself
 Group:          System/X11/Utilities
+# Does not really make sense without Argyll CMS itself
 Requires:       %{name} = %{version}
 
 %description doc
@@ -86,13 +85,13 @@ This package contains the Argyll color management system documentation.
 
 %prep
 %setup -q -n %{tarname}_V%{version} -a3
-%patch2 -p1
 cd ajam-2.5.2-1.3.3
 %patch1 -p1 -b .include
 cd ..
 
 # remove unused source code
 rm -fr usb/{*.inf,*.rtf,*.inf,*.cat,*.vcproj,*.sys,*.dsw,*.sln,*.dsp,*template*,WinCo*,winsub*,*kext*,KDRIVER_LICENSE,README_MSVC.txt,msvc,*.cmd,bin,driver,binfiles.*}
+rm -fr zlib tiff png ccast/axTLS/*.c
 
 %build
 %define _lto_cflags %{nil}
@@ -117,8 +116,8 @@ install -m 0755 -D bin/* %{buildroot}/%{_bindir}
 install -m 0644 -D ref/*  %{buildroot}/%{_datadir}/color/argyll/ref
 rm -f %{buildroot}/%{_datadir}/color/argyll/License.txt
 
-# ensure timestamp is shipped files is not changing for each rebuild (boo#916158)
-TIMESTAMP=$(LC_ALL=C date -r %{SOURCE4} +%c)
+# ensure timestamp in shipped files is not changing for each rebuild (boo#916158)
+TIMESTAMP=$(LC_ALL=C date --date=@${SOURCE_DATE_EPOCH} +%c)
 
 sed -i -e 's/^CREATED .*/CREATED "$TIMESTAMP"/g' %{buildroot}%{_datadir}/color/argyll/ref/RefMediumGamut.gam
 
@@ -129,16 +128,13 @@ chmod a-x *.txt
 chmod a-x doc/*
 
 %files
-%defattr(-,root,root,-)
 %doc *.txt
-
 %{_bindir}/*
 %dir %{_datadir}/color
 %{_datadir}/color/argyll
 %{_udevrulesdir}/55-Argyll.rules
 
 %files doc
-%defattr(-,root,root,-)
 %doc doc/*.html doc/*.jpg doc/*.txt
 
 %changelog

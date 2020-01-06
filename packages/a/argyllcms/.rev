@@ -306,4 +306,12 @@ The spec file changes were made by obs-service-format_spec_file... (forwarded re
     <comment></comment>
     <requestid>710692</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>320791659ef5874c1c850915d6911b96</srcmd5>
+    <version>2.1.1</version>
+    <time>1578322935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761015</requestid>
+  </revision>
 </revisionlist>
