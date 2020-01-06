@@ -36,6 +36,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         calendar-Check-out-of-bounds-array-access.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -133,6 +135,7 @@ Plasma library and runtime components based upon KF5 and Qt5
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build
