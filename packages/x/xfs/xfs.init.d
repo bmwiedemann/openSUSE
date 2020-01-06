@@ -37,13 +37,7 @@ case "$1" in
                 rc_status -v
                 exit
         fi
-	# create new fonts.dir files if necessary
 	/sbin/conf.d/SuSEconfig.fonts > /dev/null
-	find /tmp/.font-unix -type f -exec safe-rm {} \; 2> /dev/null
-	find /tmp/.font-unix -type d -exec safe-rmdir {} \; 2> /dev/null
-	rm -rf /tmp/.font-unix
-	mkdir --mode=0700 /tmp/.font-unix > /dev/null || { echo "can not create directory '/tmp/.font-unix'"; exit -1;}
-	chown nobody.nobody /tmp/.font-unix
 	startproc -l /var/log/fs-errors $XFS_BIN -nodaemon -user nobody -port 7100
 	rc_status -v
 	;;

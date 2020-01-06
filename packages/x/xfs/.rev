@@ -132,4 +132,13 @@ This is HPND, not MIT (absence of express sublicensing permission etc) (forwarde
 - cleanup in specfile</comment>
     <requestid>649350</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>b41b1bcdfbbb8c1f749229085c1270c6</srcmd5>
+    <version>1.2.0</version>
+    <time>1578320509</time>
+    <user>dimstar_suse</user>
+    <comment>- dropped /tmp/.font-unix deletion/creation from the init script 
+  (boo#1159121)</comment>
+    <requestid>761009</requestid>
+  </revision>
 </revisionlist>

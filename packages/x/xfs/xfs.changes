@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  5 21:17:26 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- dropped /tmp/.font-unix deletion/creation from the init script 
+  (boo#1159121)
+
+-------------------------------------------------------------------
 Thu Nov 15 11:40:11 UTC 2018 - sndirsch@suse.com
 
 - switched from init.d script to a native systemd service 
