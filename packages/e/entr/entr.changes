@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  5 19:24:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4
+  * Use a single inotify queue on Linux, limited by
+    /proc/sys/fs/inotify/max_user_watches
+  * Set the environment variable `ENTR_INOTIFY_WORKAROUND` to
+    enable a compatibility mode for platforms with deformed
+    inotify support
+
+-------------------------------------------------------------------
 Sat Oct  5 20:49:45 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.3
