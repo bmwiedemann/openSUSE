@@ -1,0 +1,24 @@
+From 074b8a9370ae73d4c2b29d86cef84a77ff428b16 Mon Sep 17 00:00:00 2001
+From: StefanBruens <stefan.bruens@rwth-aachen.de>
+Date: Thu, 2 Jan 2020 23:48:58 +0100
+Subject: [PATCH] Account for encoded length when limiting path components
+
+A single UTF-8 character may be encoded to several bytes. For Linux,
+the typical maximum component length is 255 bytes.
+---
+ tests/test_path.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/test_path.py b/tests/test_path.py
+index 1f979de..32ae8c4 100644
+--- a/tests/test_path.py
++++ b/tests/test_path.py
+@@ -68,6 +68,8 @@ def test_mkdir_p(base_dir, subdir):
+     assume(not (os.path.relpath(subdir, start=base_dir) == "."))
+     assume(os.path.abspath(base_dir) != os.path.abspath(os.path.join(base_dir, subdir)))
+     assume(len(base_dir) < 255 and len(subdir) < 255)
++    assume(len(vistir.compat.fs_encode(subdir)) < 255)
++    assume(len(vistir.compat.fs_encode(base_dir)) < 255)
+     with vistir.compat.TemporaryDirectory() as temp_dir:
+         target = os.path.join(temp_dir.name, base_dir, subdir)
+         assume(

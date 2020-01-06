@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  2 22:53:33 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix test case failing due to too long generated name:
+  * Add fix-test_Account-for-encoded-length.patch
+
+-------------------------------------------------------------------
 Wed Dec  4 09:37:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip additional tests as they requires bigger seed than most

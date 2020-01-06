@@ -1,7 +1,7 @@
 #
 # spec file for package python-vistir
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/vistir
 Source:         https://github.com/sarugaku/vistir/archive/%{version}.tar.gz#/vistir-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/sarugaku/vistir/issues/65
+Patch0:         fix-test_Account-for-encoded-length.patch
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,6 +62,7 @@ subprocesses, and more.
 
 %prep
 %setup -q -n vistir-%{version}
+%patch0 -p1
 
 sed -i '/invoke/d;/parver/d;/wheel$/d;/addopts/d' setup.cfg
 rm -r tasks
