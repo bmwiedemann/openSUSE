@@ -280,4 +280,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>755660</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>6bd1bc8d32b793e9754b6363f0cf04c6</srcmd5>
+    <version>20191125</version>
+    <time>1578322921</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1159445 win2k9 detection</comment>
+    <requestid>760479</requestid>
+  </revision>
 </revisionlist>

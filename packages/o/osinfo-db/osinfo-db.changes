@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  2 10:33:53 MST 2020 - carnold@suse.com
+
+- bsc#1159445 - [virt-manager] Detected the wrong win guest system
+  version from the local install media
+  add-win-2k19-media-info.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 10:29:38 MST 2019 - carnold@suse.com
 
 - Update database to version 20191125
