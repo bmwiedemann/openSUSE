@@ -1,7 +1,7 @@
 #
 # spec file for package kbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,7 @@ Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
 License:        GPL-2.0-or-later
 Group:          System/Console
-Url:            ftp://ftp.altlinux.org/pub/people/legion/kbd/
+URL:            ftp://ftp.altlinux.org/pub/people/legion/kbd/
 # ftp://ftp.kernel.org/pub/linux/utils/kbd/kbd-%{version}.tar.xz repack_kbd.sh
 Source:         %{name}-%{version}-repack.tar.xz
 Source1:        kbd_fonts.tar.bz2
@@ -274,8 +274,8 @@ install -m 755 fbtest      %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_libexecdir}/%{name}
 install -m 755 numlockbios %{buildroot}%{_libexecdir}/%{name}
 %endif
-install -d %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/vlock
+install -d %{buildroot}%{_distconfdir}/pam.d
+install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/vlock
 install -m 644 %{SOURCE12} %{buildroot}%{_mandir}/man8/
 install -m 755 %{SOURCE13} %{buildroot}%{_bindir}/guess_encoding
 install -m 755 %{SOURCE14} %{buildroot}%{_bindir}/kbd
@@ -371,6 +371,8 @@ install -m0644 kbdsettings.service %{buildroot}%{_prefix}/lib/systemd/system
 
 %pre
 %{service_add_pre kbdsettings.service}
+# move outdated pam.d/*.rpmsave files away
+test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vlock.rpmsave.old ||:
 
 %post
 %{fillup_only -n console}
@@ -393,6 +395,8 @@ sed -i 's/^KBD_NUMLOCK="bios"/KBD_NUMLOCK="no"/' /etc/sysconfig/keyboard
 
 %posttrans
 %{?regenerate_initrd_posttrans}
+# Migration to /usr/etc.
+test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vlock ||:
 
 %files -f %{name}.lang
 #config(noreplace) /etc/sysconfig/console
@@ -515,7 +519,7 @@ sed -i 's/^KBD_NUMLOCK="bios"/KBD_NUMLOCK="no"/' /etc/sysconfig/keyboard
 %{_mandir}/man8/setvesablank.8%{ext_man}
 %{_mandir}/man8/setvtrgb.8%{ext_man}
 %{_mandir}/man8/vcstime.8%{ext_man}
-%config(noreplace) %{_sysconfdir}/pam.d/vlock
+%{_distconfdir}/pam.d/vlock
 %dir %{_datadir}/systemd
 %{_prefix}/lib/systemd/system/kbdsettings.service
 %{_datadir}/systemd/kbd-model-map.xkb-generated
