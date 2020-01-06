@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan  5 22:40:58 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.6.8
+ + Fixed stuck tabbar and collection GUI with some themes.
+ + Fixed possible crashes related to QProxyStyle.
+ + Fixed a bug where metadata in the playlist was not updated when editing metadata for the current playing track.
+ + Fixed crash when deleting a folder with playlists.
+ + Fixed restoring to correct screen when maximized.
+ + Increased lyrics score if lyrics text is larger than 60 characters to avoid using "no lyrics available" text.
+ + Made context title and summary changeable.
+ + Added option to disable playlist clear button.
+ + Added confirmation dialog before clearing playlists with more than 500 songs.
+ + Added German, French, Italian and Indonesian translations.
+ + Added StartupWMClass to desktop file.
+ + Replaced use of Qt deprecated functionality as of 5.14.
+
+-------------------------------------------------------------------
 Wed Nov 27 22:21:09 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
 
 - Update to version 0.6.7

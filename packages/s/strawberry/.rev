@@ -363,4 +363,25 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>751470</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a2165c9ef21b45db4e7c302bb8d9e004</srcmd5>
+    <version>0.6.8</version>
+    <time>1578320520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.8
+ + Fixed stuck tabbar and collection GUI with some themes.
+ + Fixed possible crashes related to QProxyStyle.
+ + Fixed a bug where metadata in the playlist was not updated when editing metadata for the current playing track.
+ + Fixed crash when deleting a folder with playlists.
+ + Fixed restoring to correct screen when maximized.
+ + Increased lyrics score if lyrics text is larger than 60 characters to avoid using &quot;no lyrics available&quot; text.
+ + Made context title and summary changeable.
+ + Added option to disable playlist clear button.
+ + Added confirmation dialog before clearing playlists with more than 500 songs.
+ + Added German, French, Italian and Indonesian translations.
+ + Added StartupWMClass to desktop file.
+ + Replaced use of Qt deprecated functionality as of 5.14.
+</comment>
+    <requestid>761010</requestid>
+  </revision>
 </revisionlist>

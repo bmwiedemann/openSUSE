@@ -1,7 +1,7 @@
 #
 # spec file for package strawberry
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
