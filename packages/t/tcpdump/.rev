@@ -342,4 +342,12 @@
     <comment>- Trim CFLAGS</comment>
     <requestid>743961</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>5e9ca5fc49b83487cfbedc36f4d7df52</srcmd5>
+    <version>4.9.3</version>
+    <time>1578322930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760624</requestid>
+  </revision>
 </revisionlist>
