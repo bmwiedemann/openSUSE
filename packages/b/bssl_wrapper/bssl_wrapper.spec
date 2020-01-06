@@ -1,7 +1,7 @@
 #
 # spec file for package bssl_wrapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Group:          Development/Libraries/C and C++
 Url:            https://github.com/Maistra/%{name}
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bazel
+BuildRequires:  bazel-rules-cc-source
+BuildRequires:  bazel-rules-java-source
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 ExclusiveArch:  aarch64 x86_64 ppc64le
@@ -66,6 +68,8 @@ bazel build \
     --genrule_strategy=standalone \
     --host_javabase=@local_jdk//:jdk \
     --linkopt="-Wl,-soname,lib%{name}_lib.so.%{sover}" \
+    --override_repository="rules_cc=/usr/src/bazel-rules-cc" \
+    --override_repository="rules_java=/usr/src/bazel-rules-java" \
     --spawn_strategy=standalone \
     --strip=never \
     --verbose_failures \

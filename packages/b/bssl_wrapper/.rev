@@ -18,4 +18,13 @@ https://github.com/Maistra</comment>
     <comment></comment>
     <requestid>732964</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8467277eb80b81ccef4486500dbe93c1</srcmd5>
+    <version>0.12.0</version>
+    <time>1578320656</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bazel-rules-cc-source and bazel-rules-java-source as
+  dependencies. (forwarded request 761136 from mrostecki)</comment>
+    <requestid>761137</requestid>
+  </revision>
 </revisionlist>
