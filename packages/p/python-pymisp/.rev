@@ -396,4 +396,32 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>758907</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dfb54351c05b9d44a5095ba30312b833</srcmd5>
+    <version>2.4.119.1</version>
+    <time>1578320667</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.119.1:
+- New
+ - URLObject (requires pyfaup) [Raphaël Vinot]
+- Changes
+ - Version bump. [Raphaël Vinot]
+ - Bump test files. [Raphaël Vinot]
+ - Bump misp-objects. [Raphaël Vinot]
+ - Debug travis error message. [Raphaël Vinot]
+ - [types] eppn type added. [Alexandre Dulaunoy]
+ - Fix typo. [Raphaël Vinot]
+ - Move scrippsco2 feed generator to a sub directory. [Raphaël Vinot]
+ - Update documentation. [Raphaël Vinot]
+    Fix #396
+ - Bump objects. [Raphaël Vinot]
+- Fix
+ - Properly test custom objects. [Raphaël Vinot]
+ - Adding a sighting takes a little bit of time. [Raphaël Vinot]
+ - Test case on reference. [Raphaël Vinot]
+ - Add missing fields to event &amp; attribute for the feed output. [Raphaël
+    Vinot]
+ - Make sure the publish timestamp is bumped on update. [Raphaël Vinot]</comment>
+    <requestid>761127</requestid>
+  </revision>
 </revisionlist>

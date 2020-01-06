@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymisp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymisp
-Version:        2.4.119
+Version:        2.4.119.1
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
