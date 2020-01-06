@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:07:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.3.0:
+  * Improve message in uncaught exceptions by mentioning the Qt event loop instead of Qt virtual methods (#255).
+  * pytest-qt now requires pytest version >= 3.0.
+  * qtbot.addWiget now supports an optional before_close_func keyword-only argument, which if given is a function which is called before the widget is closed, with the widget as first argument.
+
+-------------------------------------------------------------------
 Thu Jan 31 09:05:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.2.2:

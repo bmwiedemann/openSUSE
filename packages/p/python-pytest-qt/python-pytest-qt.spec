@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-qt
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Pytest support for PyQt and PySide applications
 License:        MIT
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            http://github.com/pytest-dev/pytest-qt
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-%{version}.tar.gz
 Patch0:         skip-timeout-tests.patch
-BuildRequires:  %{python_module pytest >= 2.7.0}
+BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -34,7 +34,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
-Requires:       python-pytest >= 2.7.0
+Requires:       python-pytest >= 3.0
 Requires:       python-qt5
 BuildArch:      noarch
 %python_subpackages

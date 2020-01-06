@@ -57,4 +57,15 @@
   * Fix Off-by-one error in modeltester (#249). Thanks @ext-jmmugnes for the PR.</comment>
     <requestid>670279</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54dff06a367e81f518f64c208aaec58f</srcmd5>
+    <version>3.3.0</version>
+    <time>1578320682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Improve message in uncaught exceptions by mentioning the Qt event loop instead of Qt virtual methods (#255).
+  * pytest-qt now requires pytest version &gt;= 3.0.
+  * qtbot.addWiget now supports an optional before_close_func keyword-only argument, which if given is a function which is called before the widget is closed, with the widget as first argument.</comment>
+    <requestid>761148</requestid>
+  </revision>
 </revisionlist>
