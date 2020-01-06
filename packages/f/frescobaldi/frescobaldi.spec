@@ -1,7 +1,7 @@
 #
 # spec file for package frescobaldi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        3.1
+Version:        3.1.1
 Release:        0
 URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -38,6 +38,7 @@ Requires:       python3-qt5
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-sip
 Recommends:     libportmidi0
+Recommends:     python3-pycups
 BuildArch:      noarch
 
 %description
