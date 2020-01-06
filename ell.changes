@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  2 11:25:54 UTC 2020 - Harry ten Berge <htenberge@gmail.com>
+
+- ver 0.27:
+  * Fix issue with data overflow and multiple PEMs.
+  * Fix issue with handling DHCP lease expiration.
+
+-------------------------------------------------------------------
 Wed Oct 30 16:26:16 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.26:
