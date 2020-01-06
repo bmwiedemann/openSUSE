@@ -1,7 +1,7 @@
 #
 # spec file for package cookiecutter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,20 +18,16 @@
 
 
 Name:           cookiecutter
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/audreyr/cookiecutter
+URL:            https://github.com/audreyr/cookiecutter
 Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
 Source1:        ccext.py
-# PATCH-FIX-OPENSUSE fix-python-invocation-tests.diff hpj@urpla.net
-Patch0:         fix-python-invocation-tests.diff
-Patch1:         cookiecutter-click7.patch
 BuildRequires:  git
 BuildRequires:  python3-Jinja2 >= 2.7
-BuildRequires:  python3-Sphinx
 BuildRequires:  python3-binaryornot >= 0.2.0
 BuildRequires:  python3-click >= 7.0
 BuildRequires:  python3-devel
@@ -60,6 +56,10 @@ BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-requests >= 2.18.0
 # /SECTION
+# SECTION Documentation requirements
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-recommonmark
+# /SECTION
 
 %package doc
 Summary:        Documentation files for %{name}
@@ -81,8 +81,6 @@ This package contains the documentation for cookiecutter.
 
 %prep
 %setup -q -n cookiecutter-%{version}
-%patch0 -p1
-%patch1 -p1
 sed -i "s/cookiecutter =/cookiecutter-%{py3_ver} =/" setup.py
 cp %{SOURCE1} docs
 
@@ -116,7 +114,6 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %files
-%doc AUTHORS.rst README.rst
 %license LICENSE
 %ghost %{_sysconfdir}/alternatives/cookiecutter
 %{_bindir}/cookiecutter
