@@ -1,7 +1,7 @@
 #
 # spec file for package frei0r-plugins
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,18 @@
 
 
 Name:           frei0r-plugins
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            http://frei0r.dyne.org/
-Source0:        http://files.dyne.org/frei0r/releases/frei0r-plugins-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM frei0r-plugins-1.4-missing_include.patch http://www.piksel.no/projects/frei0r/ticket/41 reddwarf@opensuse.org -- Add missing header
-Patch0:         frei0r-plugins-1.4-missing_include.patch
-# PATCH-FIX-UPSTREAM frei0r-plugins-openCV-3.0-compatibility.patch  tittiatcoke@gmail.com -- Make it compile with openCV3. This is a rebase of the two usptream commits by Dan Dennedy
-Patch1:         frei0r-plugins-openCV-3.0-compatibility.patch
-# PATCH-FIX-UPSTREAM frei0r-plugins-openCV-3.4.2-compatibility.patch -- Fix build with opencv > 3.4.1
-Patch2:         frei0r-plugins-openCV-3.4.2-compatibility.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+URL:            https://frei0r.dyne.org/
+Source0:        https://files.dyne.org/frei0r/releases/frei0r-plugins-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/dyne/frei0r/pull/97
+Patch0:         0001-Port-facebl0r-to-OpenCV-C-API.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.0.0
 BuildRequires:  pkgconfig(gavl) >= 0.2.3
@@ -66,18 +60,14 @@ adaptation issue of standard effects.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
+%patch0 -p1
 
 %build
-autoreconf -fvi
-%configure
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-%make_install
-rm %{buildroot}%{_datadir}/doc/frei0r-plugins/{AUTHORS.txt,ChangeLog.txt,README.txt,TODO.txt}
+%cmake_install
 
 %files
 %license COPYING.txt

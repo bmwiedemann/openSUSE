@@ -141,4 +141,13 @@
     <comment></comment>
     <requestid>645693</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>89c5df367010f8d2c63e5efc28b0dc67</srcmd5>
+    <version>1.7.0</version>
+    <time>1578322901</time>
+    <user>dimstar_suse</user>
+    <comment> Update to version 1.7.0
+  * This release includes three new filters, code cleanups and several bugfixes improving stability of existing plugins.</comment>
+    <requestid>760789</requestid>
+  </revision>
 </revisionlist>
