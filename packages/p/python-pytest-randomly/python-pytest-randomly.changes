@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:03:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.2.0:
+  * Converted setuptools metadata to configuration file
+  * Convert reading entrypoints to use importlib.metadata.
+    Depend on importlib-metadata on Python < 3.8.
+  * Update Python support to 3.5-3.8.
+
+-------------------------------------------------------------------
 Mon Sep  9 09:20:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.0:

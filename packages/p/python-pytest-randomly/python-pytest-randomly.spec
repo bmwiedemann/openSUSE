@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-randomly
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,24 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-randomly
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/pytest-randomly
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-randomly/pytest-randomly-%{version}.tar.gz
+Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-entrypoints
+Requires:       python-importlib-metadata
 Requires:       python-pytest
 Recommends:     python-Faker
 Suggests:       python-numpy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Faker}
-BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
@@ -79,7 +79,7 @@ sed -i '/python_requires/d' setup.py
 %check
 export PYTHONDONTWRITEBYTECODE=true
 # test_entrypoint_injection needs installed module for pytest to use
-%pytest -k 'not test_entrypoint_injection'
+%pytest -k 'not test_entrypoint_injection and not test_passing_nonsense_for_randomly_seed'
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst

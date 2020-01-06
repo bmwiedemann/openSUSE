@@ -44,4 +44,16 @@
 - Drop patch tests-restore-python2.7.patch</comment>
     <requestid>729484</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a8281bffbc45d9e071d98fb8665343e6</srcmd5>
+    <version>3.2.0</version>
+    <time>1578320681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Converted setuptools metadata to configuration file
+  * Convert reading entrypoints to use importlib.metadata.
+    Depend on importlib-metadata on Python &lt; 3.8.
+  * Update Python support to 3.5-3.8.</comment>
+    <requestid>761147</requestid>
+  </revision>
 </revisionlist>
