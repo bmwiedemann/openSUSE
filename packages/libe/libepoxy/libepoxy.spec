@@ -1,7 +1,7 @@
 #
 # spec file for package libepoxy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,20 @@
 
 Name:           libepoxy
 %define sonum   0
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        OpenGL function pointer management library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/anholt/libepoxy
-Source0:        https://github.com/anholt/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/anholt/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM -- https://github.com/anholt/libepoxy/commit/5c0dff60907983b0e764006053637febcc3e48ec.patch
+Patch0:         Lower-the-minimum-required-version-of-Meson.patch
 
-BuildRequires:  meson >= 0.47
+BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(x11)
@@ -59,9 +61,9 @@ function names like glCompileShader().
 Summary:        Development files for libepoxy
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sonum} = %{version}
-Requires:       pkgconfig(x11)
-Requires:       pkgconfig(egl)
 Requires:       glibc-devel
+Requires:       pkgconfig(egl)
+Requires:       pkgconfig(x11)
 
 %description devel
 Epoxy is a library for handling OpenGL function pointer management for you.

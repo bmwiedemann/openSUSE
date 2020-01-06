@@ -1,11 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan  4 17:31:21 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.5.4:
+  + Don't build GLX tests if X11 support is disabled
+  + Add unit tests for epoxy_gl_version()
+  + Reduce the size of the binary by reusing static strings
+  + Fix build on Solaris
+  + Update the GL registries
+- Only require python3-base package for building instead of
+  full python3 package.
+- Allow building with meson 0.46:
+  Add Lower-the-minimum-required-version-of-Meson.patch
+
+-------------------------------------------------------------------
 Wed Apr 17 15:33:55 UTC 2019 - Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de>
 
 - Remove pkgconfig dependecies for glesv1_cm and glesv2:
-  Starting with mesa commit b01524fff05 
-  "meson: don't build libGLES*.so with GLVND" mesa stopped providing
-  glesv1_cm.pc and glesv2.pc along. Let epoxy find the libraries directly 
-  instead.
+  Starting with mesa commit b01524fff05
+  "meson: don't build libGLES*.so with GLVND" mesa stopped
+  providing glesv1_cm.pc and glesv2.pc along. Let epoxy find the
+  libraries directly instead.
 
 -------------------------------------------------------------------
 Fri Oct  5 11:51:19 UTC 2018 - bjorn.lie@gmail.com

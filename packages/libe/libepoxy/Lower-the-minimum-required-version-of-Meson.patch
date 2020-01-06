@@ -1,0 +1,23 @@
+From 5c0dff60907983b0e764006053637febcc3e48ec Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Tue, 26 Nov 2019 15:08:23 +0000
+Subject: [PATCH] Lower the minimum required version of Meson
+
+Makes it easier to build Epoxy on older operating systems.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index fe632c5..029798c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -5,7 +5,7 @@ project('libepoxy', 'c', version: '1.5.5',
+           'warning_level=1',
+         ],
+         license: 'MIT',
+-        meson_version: '>= 0.47.0')
++        meson_version: '>= 0.46.0')
+ 
+ epoxy_version = meson.project_version().split('.')
+ epoxy_major_version = epoxy_version[0].to_int()

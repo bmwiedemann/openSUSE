@@ -96,4 +96,21 @@
     <comment></comment>
     <requestid>695294</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bdd3d8d9bafef8fab2922ca68f86d69a</srcmd5>
+    <version>1.5.4</version>
+    <time>1578320696</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.4:
+  + Don't build GLX tests if X11 support is disabled
+  + Add unit tests for epoxy_gl_version()
+  + Reduce the size of the binary by reusing static strings
+  + Fix build on Solaris
+  + Update the GL registries
+- Only require python3-base package for building instead of
+  full python3 package.
+- Allow building with meson 0.46:
+  Add Lower-the-minimum-required-version-of-Meson.patch</comment>
+    <requestid>760848</requestid>
+  </revision>
 </revisionlist>
