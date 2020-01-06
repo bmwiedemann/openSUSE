@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jan  6 05:05:16 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.9.1:
+  * Array
+    + Support Array.view with dtype=None (:pr:`5736`) Anderson
+      Banihirwe
+    + Add dask.array.nanmedian (:pr:`5684`) Deepak Cherian
+  * Core
+    + xfail test_temporary_directory on Python 3.8 (:pr:`5734`) James
+      Bourbeau
+    + Add support for Python 3.8 (:pr:`5603`) James Bourbeau
+    + Use id to dedupe constants in rewrite_blockwise (:pr:`5696`) Jim
+      Crist
+  * DataFrame
+    + Raise error when converting a dask dataframe scalar to a boolean
+      (:pr:`5743`) James Bourbeau
+    + Ensure dataframe groupby-variance is greater than zero
+      (:pr:`5728`) Matthew Rocklin
+    + Fix DataFrame.__iter__ (:pr:`5719`) Tom Augspurger
+    + Support Parquet filters in disjunctive normal form, like PyArrow
+      (:pr:`5656`) Matteo De Wint
+    + Auto-detect categorical columns in ArrowEngine-based
+      read_parquet (:pr:`5690`) Richard J Zamora
+    + Skip parquet getitem optimization tests if no engine found
+      (:pr:`5697`) James Bourbeau
+    + Fix independent optimization of parquet-getitem (:pr:`5613`) Tom
+      Augspurger
+  * Documentation
+    + Update helm config doc (:pr:`5750`) Ray Bell
+    + Link to examples.dask.org in several places (:pr:`5733`) Tom
+      Augspurger
+    + Add missing " in performance report example (:pr:`5724`) James
+      Bourbeau
+    + Resolve several documentation build warnings (:pr:`5685`) James
+      Bourbeau
+    + add info on performance_report (:pr:`5713`) Ben Zaitlen
+    + Add more docs disclaimers (:pr:`5710`) Julia Signell
+    + Fix simple typo: wihout -> without (:pr:`5708`) Tim Gates
+    + Update numpydoc dependency (:pr:`5694`) James Bourbeau
+
+-------------------------------------------------------------------
 Sat Dec  7 19:08:29 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.9.0:
