@@ -1,7 +1,7 @@
 #
 # spec file for package usbauth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2017 Stefan Koch <stefan.koch10@gmail.com>
 # Copyright (c) 2015 SUSE LLC. All Rights Reserved.
 # Author: Stefan Koch <skoch@suse.de>
@@ -31,8 +31,8 @@ Requires:       systemd
 Requires:       udev
 BuildRequires:  gcc
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  libusbauth-configparser-devel
+BuildRequires:  pkgconfig(libudev)
 
 BuildRequires:  dbus-1-devel
 BuildRequires:  systemd-rpm-macros
