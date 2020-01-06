@@ -2404,4 +2404,27 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * The -layers optimize option requires a fully transparent previous image.</comment>
     <requestid>758468</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>c7c2ee06941b806c7d2f7e1b0b3d4609</srcmd5>
+    <version>7.0.9.13</version>
+    <time>1578322918</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.13
+  * xc:white no longer creates a black PNM image (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1817).
+  * Sync pixel cache for -kmeans option.
+  * Thread -kmeans option.
+  * PSD: only set the alpha channel when type is not 0.
+ * Fix Lab to custom profile (CMYK or RGB) conversion bug (reference
+   https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=37318).
+  * Fix Build failure with MinGW-w64 (reference
+    https://github.com/ImageMagick/ImageMagick6/issues/67).
+  * Inject image profile properties immediately after the image is read.
+  * Replace pseudo-random number generator with a Xoshiro generator.
+  * The -layers optimize option requires a fully transparent previous image.
+  * Some clang releases do not support _aligned_alloc().
+  * Support -kmeans command-line option.
+  * The -layers optimize option requires a fully transparent previous image.</comment>
+    <requestid>760458</requestid>
+  </revision>
 </revisionlist>
