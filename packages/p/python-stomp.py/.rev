@@ -32,4 +32,26 @@
     <comment></comment>
     <requestid>697387</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b160b91b5a45c188488d3dbf4b940b5</srcmd5>
+    <version>5.0.0</version>
+    <time>1578320675</time>
+    <user>dimstar_suse</user>
+    <comment>- dropped Python 2 support, not supported by the package
+- update to version 5.0.0:
+ * Fix for credentials exposure (https://github.com/jasonrbriggs/stomp.py/pull/244)
+ * Check for ``STOMP_SKIP_HOSTNAME_SCAN`` environment variable before extending ``LOCALHOST_NAMES``
+ * Remove python2 backwards compatibility
+ * Update dockerfile for better local testing
+ * Fix docker and travis setup, so there are consistent builds both locally and via CI
+ * Drop deprecated start/stop methods from connection (issue https://github.com/jasonrbriggs/stomp.py/issues/257)
+ * Fix for missing return in get_ssl (https://github.com/jasonrbriggs/stomp.py/pull/258)
+ * Clear heartbeat event after heartbeat loop ends (https://github.com/jasonrbriggs/stomp.py/pull/260)
+ * Update listener to move receive/message_received/heartbeat_received vars inside the 'with' blocks (https://github.com/jasonrbriggs/stomp.py/pull/252)
+ * Simplify logging calls
+ * Tidy up listeners (correct the behaviour of TestListener)
+ * Fix problem with double-disconnect notification (ihttps://github.com/jasonrbriggs/stomp.py/issues/245)
+ * Add facility for PrintingListener to write to log rather than print statements</comment>
+    <requestid>761142</requestid>
+  </revision>
 </revisionlist>
