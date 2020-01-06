@@ -10,4 +10,13 @@
 primesieve is a new package, it's a command-line program and C/C++ library that generates prime numbers using a highly optimized sieve of Eratosthenes implementation. primesieve is primarily used by students who learn about prime numbers in school, by research scientists and by benchmark enthusiasts e.g. for benchmarking CPUs. primesieve is quite popular on GitHub, it currently has 453 stars which is more than any other program for computing prime numbers. primesieve is already included in Debian/Ubuntu, Fedora, Homebrew, Chocolatey and the Phoronix Test Suite.</comment>
     <requestid>699883</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b1f5301e552f3574e040221453650ee</srcmd5>
+    <version>7.5</version>
+    <time>1578320645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primesieve-7.5
+</comment>
+    <requestid>761109</requestid>
+  </revision>
 </revisionlist>

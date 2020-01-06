@@ -17,7 +17,7 @@
 
 
 Name:           primesieve
-Version:        7.4
+Version:        7.5
 Release:        0
 Summary:        A prime number generator
 License:        BSD-2-Clause
@@ -29,7 +29,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-BuildRequires:  help2man
+BuildRequires:  asciidoc
 BuildRequires:  pkgconfig
 
 %description
@@ -58,6 +58,7 @@ It also contains the API documentation of the library.
 
 %build
 %cmake -DBUILD_DOC=ON \
+       -DBUILD_MANPAGE=ON \
        -DBUILD_TESTS=ON \
        -DCMAKE_SKIP_RPATH:BOOL=OFF
 %cmake_build
