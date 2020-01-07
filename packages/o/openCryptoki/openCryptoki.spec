@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2018, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018-2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch1:         ocki-3.11-remove-make-install-chgrp.patch
+Patch2:         oki-3.12-EP11-Fix-EC-uncompress-buffer-length.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -128,6 +129,7 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %prep
 %setup -q -n %{oc_cvs_tag}-%{version}
 %patch1 -p1
+%patch2 -p1
 
 cp %{SOURCE2} .
 

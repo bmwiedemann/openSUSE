@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 19:25:16 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added oki-3.12-EP11-Fix-EC-uncompress-buffer-length.patch (bsc#1159114)
+  The EP11 token may fail to import an ECC public key. Function
+   C_CreateObject returns CKR_BUFFER_TOO_SMALL in this case.
+
+-------------------------------------------------------------------
 Mon Dec  2 21:29:35 UTC 2019 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 3.12.1 (bsc#1157863)
