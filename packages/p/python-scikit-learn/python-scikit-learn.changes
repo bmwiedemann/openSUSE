@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:53:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.22.1
+  * Clear definition of the public API
+  * Deprecations: using FutureWarning from now on
+  * Certain estimators and functions may produce different models
+  * See
+  https://scikit-learn.org/stable/whats_new/v0.22.html#version-0-22-0
+
+-------------------------------------------------------------------
 Tue Nov 19 20:10:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to Version 0.21.3
