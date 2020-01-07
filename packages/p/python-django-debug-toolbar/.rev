@@ -124,4 +124,16 @@ Too many small improvements and cleanups to list them all.
 - Remove merged patch t_integrations.patch</comment>
     <requestid>731227</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>23d348ef28c494a0f73af6705babc5b1</srcmd5>
+    <version>2.1</version>
+    <time>1578437666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1:
+  * Changed the Travis CI matrix to run style checks first.
+  * Exposed the djdt.init function too.
+  * Small improvements to the code to take advantage of newer Django APIs and avoid warnings because of deprecated code.
+  * Verified compatibility with the upcoming Django 3.0 (at the time of writing).</comment>
+    <requestid>761487</requestid>
+  </revision>
 </revisionlist>

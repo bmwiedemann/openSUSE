@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-debug-toolbar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-debug-toolbar
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        A configurable set of panels that display various debug information
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-debug-toolbar
 Source:         https://github.com/jazzband/django-debug-toolbar/archive/%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.0}
 BuildRequires:  %{python_module django-jinja}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= 0.2.0}
 BuildRequires:  fdupes
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.0
 Requires:       python-django-jinja
 Requires:       python-sqlparse >= 0.2.0
 BuildArch:      noarch
