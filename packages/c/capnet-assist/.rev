@@ -25,4 +25,12 @@
   * Travis: Use Houston CI (#41) (forwarded request 681429 from awissu)</comment>
     <requestid>700176</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96ab9ab9f24e24f579e644f0af4409bf</srcmd5>
+    <version>2.2.4</version>
+    <time>1578437528</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>761271</requestid>
+  </revision>
 </revisionlist>

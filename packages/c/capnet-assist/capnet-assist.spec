@@ -17,7 +17,7 @@
 
 
 Name:           capnet-assist
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Captive Portal Assistant
 License:        GPL-3.0-only
@@ -67,7 +67,7 @@ in Vala and using WebkitGtk+.
 
 %files
 %license COPYING
-%doc AUTHORS README*
+%doc README*
 %{_bindir}/io.elementary.capnet-assist
 %{_datadir}/applications/io.elementary.capnet-assist.desktop
 %{_datadir}/glib-2.0/schemas/io.elementary.capnet-assist.gschema.xml

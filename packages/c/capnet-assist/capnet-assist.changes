@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 25 19:55:59 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.4:
+  * Travis: Downgrade node to 10 to fix CI
+  * Add Gettext Updates to Actions
+  * README: Fix weblate badge
+  * Delete AUTHORS
+  * Add Release to Actions
+  * AppData: Add releases info
+  * Add Lint to CI (#49)
+  * Fix code style issues
+  * Delete CODE_OF_CONDUCT.md
+  * Fix wrong merge
+  * Merge remote-tracking branch 'weblate/master'
+  * Application.vala: Replace "the following URL" with "this
+    address" (#46)
+
+-------------------------------------------------------------------
 Mon Mar  4 03:12:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.2.3:
