@@ -1,0 +1,38 @@
+## Path:	Hardware/Thermald
+## Description:	Thermald settings
+## Type:	string
+## Default:	"--disable-active-power"
+## ServiceRestart: thermald
+#
+# Options for thermald
+#
+# For the active power limits adjustment (since 1.9) see
+# - /usr/share/doc/packages/thermald/README.txt
+# - /usr/share/doc/packages/thermald/thermald_optimization_with_dptfxtract
+# - https://github.com/intel/dptfxtract
+# - thermald(8)
+#
+# eg.
+#    --workaround-enabled
+#        Enable special workarounds. This is currently used for /dev/mem based power control.
+#
+#    --disable-active-power
+#        Disable active power management. This will not set active power limits.
+#
+THERMALD_OPTS="--disable-active-power"
+
+## Type:        string
+## Default:     "/etc/thermald/thermal-conf.xml"
+#
+# The config file.
+#
+THERMALD_CONFIG="/etc/thermald/thermal-conf.xml"
+
+## Type:        integer
+## Default:     4
+#
+# Poll interval in seconds: Poll for zone temperature changes.
+# To disable polling, set to zero. Polling can only be disabled,
+# if available temperature sensors can notify temperature change asynchronously.
+#
+THERMALD_POLL="4"

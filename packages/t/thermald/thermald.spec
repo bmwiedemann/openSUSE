@@ -1,7 +1,7 @@
 #
 # spec file for package thermald
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,50 +16,97 @@
 #
 
 
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
+
 Name:           thermald
-Version:        1.8
+Version:        1.9.1
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://01.org/linux-thermal-daemon
-Source0:        https://github.com/01org/thermal_daemon/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        thermald.conf
-Patch0:         fix_long_int_i586_issue.patch
-Patch1:         fix_missing_include.patch
+Source0:        https://github.com/intel/thermal_daemon/archive/v%{version}/thermal_daemon-%{version}.tar.gz
+Source1:        %{name}.conf
+Source2:        %{name}-group.conf
+Source3:        sysconfig.%{name}
+Source10:       thermal-monitor.desktop
+Source11:       thermal-monitor.png
+Patch0:         fix-systemd-service.patch
+Patch1:         fix-man-thermald_8.patch
 BuildRequires:  automake
 BuildRequires:  dbus-1-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(systemd)
+Requires(post): %fillup_prereq
+Suggests:       acpica
+Suggests:       dptfxtract
+Suggests:       thermal-monitor
 ExclusiveArch:  %{ix86} x86_64
+%sysusers_requires
 
 %description
 Thermald is a Linux daemon used to prevent the overheating of platforms.
 This daemon monitors temperature and applies compensation using available cooling methods.
 
+%package -n thermal-monitor
+Summary:        Displays current temperature readings
+License:        GPL-3.0-or-later
+Group:          Hardware/Other
+Requires:       %{name} >= 1.4.3
+Requires:       group(power)
+
+%description -n thermal-monitor
+Thermal Monitor displays current temperature readings on a graph.
+To communicate with thermald via dbus, the user has to be member of "power" group.
+
 %prep
-%setup -q -n thermal_daemon-%{version}
-%autopatch -p1
+%autosetup -n thermal_daemon-%{version} -p1
 
 %build
 autoreconf -fiv
 %configure
 make %{?_smp_mflags} CFLAGS="%{optflags}"
+%sysusers_generate_pre %{SOURCE2} power
 
-%pre
-%service_add_pre thermald.service
+pushd tools/thermal_monitor
+%qmake5 ThermalMonitor.pro
+make %{?_smp_mflags}
+popd
 
 %install
 %make_install
 
 ln -s service %{buildroot}%{_sbindir}/rcthermald
-install -Dm644 "%{_sourcedir}/thermald.conf" "%{buildroot}/%{_libexecdir}/modules-load.d/thermald.conf"
+install -D -m 0755 -t %{buildroot}%{_sbindir}/ tools/thermald_set_pref.sh
+install -D -m 0644 -t %{buildroot}%{_libexecdir}/modules-load.d/ %{SOURCE1}
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m 0644 -t %{buildroot}%{_fillupdir}/ %{SOURCE3}
+
+install -D -m 0755 -t %{buildroot}%{_bindir}/ tools/thermal_monitor/ThermalMonitor
+install -D -m 0644 -t %{buildroot}%{_datadir}/applications/ %{SOURCE10}
+install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
+%suse_update_desktop_file thermal-monitor
+
+%pre -f power.pre
+%service_add_pre thermald.service
 
 %post
+%fillup_only
 %service_add_post thermald.service
 
 %preun
@@ -69,19 +116,31 @@ install -Dm644 "%{_sourcedir}/thermald.conf" "%{buildroot}/%{_libexecdir}/module
 %service_del_postun thermald.service
 
 %files
+%license COPYING
+%doc README.txt data/thermal-conf.xml
+%doc test/thermald_optimization_with_dptfxtract
 %dir %{_datadir}/dbus-1/system-services
 %dir %{_sysconfdir}/dbus-1/system.d
 %dir %{_sysconfdir}/thermald
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.thermald.conf
-%doc data/thermal-conf.xml
-%config %{_sysconfdir}/thermald/thermal-cpu-cdev-order.xml
+%config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.freedesktop.thermald.conf
+%config(noreplace) %{_sysconfdir}/thermald/thermal-cpu-cdev-order.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.thermald.service
+%{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man5/thermal-conf.xml.5%{?ext_man}
 %{_mandir}/man8/thermald.8%{?ext_man}
-%{_sbindir}/thermald
 %dir %{_libexecdir}/modules-load.d
 %{_libexecdir}/modules-load.d/thermald.conf
-%{_unitdir}/thermald.service
 %{_sbindir}/rcthermald
+%{_sbindir}/thermald
+%{_sbindir}/thermald_set_pref.sh
+%{_sysusersdir}/%{name}.conf
+%{_unitdir}/thermald.service
+
+%files -n thermal-monitor
+%license tools/thermal_monitor/qcustomplot/GPL.txt
+%doc tools/thermal_monitor/README
+%{_bindir}/ThermalMonitor
+%{_datadir}/applications/thermal-monitor.desktop
+%{_datadir}/pixmaps/thermal-monitor.png
 
 %changelog

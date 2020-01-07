@@ -68,4 +68,12 @@ A fix_long_int_i586_issue.patch
   * Add dptfxtract tool, which converts DPTF tables to thermald</comment>
     <requestid>647322</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc47ebe9efd57b43aa31cd6929321328</srcmd5>
+    <version>1.9.1</version>
+    <time>1578437690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761495</requestid>
+  </revision>
 </revisionlist>

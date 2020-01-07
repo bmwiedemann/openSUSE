@@ -1,0 +1,13 @@
+--- a/man/thermald.8
++++ b/man/thermald.8
+@@ -100,8 +100,10 @@
+ .TP
+ .B \-\-ignore-default-control
+ Ignore default CPU temperature control. Strictly follow thermal-conf.xml or thermal-conf.xml.auto.
++.TP
+ .B \-\-workaround-enabled
+ Enable special workarounds. This is currently used for /dev/mem based power control.
++.TP
+ .B \-\-disable-active-power
+ Disable active power management. This will not set active power limits.
+ 

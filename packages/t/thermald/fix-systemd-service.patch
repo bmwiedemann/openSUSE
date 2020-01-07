@@ -1,0 +1,17 @@
+--- a/data/thermald.service.in
++++ b/data/thermald.service.in
+@@ -3,9 +3,13 @@
+ 
+ [Service]
+ Type=dbus
++Environment=THERMALD_CONFIG="/etc/thermald/thermal-conf.xml"
++Environment=THERMALD_POLL="4"
++Environment=THERMALD_OPTS="--disable-active-power"
++EnvironmentFile=-/etc/sysconfig/thermald
+ SuccessExitStatus=1
+ BusName=org.freedesktop.thermald
+-ExecStart=@sbindir@/thermald --no-daemon --dbus-enable
++ExecStart=@sbindir@/thermald --no-daemon --dbus-enable --config-file ${THERMALD_CONFIG} --poll-interval $THERMALD_POLL $THERMALD_OPTS
+ 
+ [Install]
+ WantedBy=multi-user.target
