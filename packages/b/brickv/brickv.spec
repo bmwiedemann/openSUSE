@@ -1,6 +1,7 @@
 #
 # spec file for package brickv
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,27 +13,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           brickv
-Version:        2.4.9
+Version:        2.4.11
 Release:        0
 Summary:        Tinkerforge Brick Viewer
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
-Url:            http://www.tinkerforge.com
+URL:            http://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickv/archive/v%{version}.tar.gz
-Patch0:         0001-Support-to-use-local-iso-codes-and-mobile-providers-.patch
-Patch1:         0002-Fix-shebang.patch
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-rpm-macros
-BuildRequires:  python3-qt5
 BuildRequires:  fdupes
-BuildRequires:  mobile-broadband-provider-info
 BuildRequires:  iso-codes
+BuildRequires:  mobile-broadband-provider-info
+BuildRequires:  python3-qt5
+BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
+Requires:       python3-pytz
 Requires:       python3-qt5
 Requires:       python3-serial
-Requires:       python3-pytz
 Requires:       python3-tzlocal
 BuildArch:      noarch
 
@@ -41,8 +43,6 @@ Small Qt GUI to control and test all Bricks and Bricklets from Tinkerforge.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 export SERVICEPROVIDERS_XML_PATH=/usr/share/mobile-broadband-provider-info/serviceproviders.xml
@@ -72,6 +72,5 @@ popd
 %{_libexecdir}/udev/rules.d/*.rules
 /usr/share/pixmaps/*
 /usr/share/applications/*
-
 
 %changelog

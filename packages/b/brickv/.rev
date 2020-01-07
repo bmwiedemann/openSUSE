@@ -8,4 +8,12 @@
 - fix review comment to remove buildroot and defattr</comment>
     <requestid>738462</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e293afcd00b5ffc78f219d13f6628987</srcmd5>
+    <version>2.4.11</version>
+    <time>1578437559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream version 2.4.11...</comment>
+    <requestid>761278</requestid>
+  </revision>
 </revisionlist>

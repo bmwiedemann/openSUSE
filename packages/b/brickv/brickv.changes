@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan  5 11:00:43 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.11:
+- Make Thermal Imaging Bricklet image view detachable
+- Fix firmware auto-update for Co-MCU Bricklets
+- Avoid potential config file writing collision between two Brick Viewer
+  instances on Linux and macOS
+- Notarize Brick Viewer app to make it ready for macOS 10.15
+- Fix potential crash in WIFI Extension 2.0 firmware update detection logic
+- Fix exception hook for Python 3.8
+- Prefer hPa over mbar and Tesla over Gauss
+- Add Data Logger support for RS232 Bricklet 2.0 data reading
+- Add Server Monitoring support for Humidity Bricklet 2.0 temperature value
+- Lower Hardened Runtime restrictions to make ctypes work again on macOS
+- Fix encoding issues in Server Monitoring script
+- remove integrated upstream patches
+   0001-Support-to-use-local-iso-codes-and-mobile-providers-.patch
+   0002-Fix-shebang.patch
+
+-------------------------------------------------------------------
 Mon Oct 14 17:08:20 UTC 2019 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - fix review comment to use full path for source location
