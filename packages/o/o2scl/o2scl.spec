@@ -1,7 +1,7 @@
 #
 # spec file for package o2scl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,22 @@
 
 %define shlib lib%{name}0
 Name:           o2scl
-Version:        0.923
+Version:        0.924
 Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
-Url:            https://isospin.roam.utk.edu/static/code/o2scl/
+URL:            https://isospin.roam.utk.edu/static/code/o2scl/
 Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM o2scl-fix-LU-tests.patch gh#awsteiner/o2scl#9 badshah400@gmail.com -- Fix LU test that fails on x86_64
-Patch0:         o2scl-fix-LU-tests.patch
+# PATCH-FIX-UPSTREAM o2scl-disable-failing-eos-test.patch gh#wsteiner/o2scl#10 badshah400@gmail.com -- Disable a failing test for eos which fails due to minor float error in the test file
+Patch0:         o2scl-disable-failing-eos-test.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
+# Required For Patch0
+BuildRequires:  libtool
 %if 0%{?suse_version} > 1320
 BuildRequires:  libboost_headers-devel
 %else
@@ -90,12 +92,16 @@ This package provides the documentation for %{name}.
 %patch0 -p1
 
 %build
+autoreconf -fvi
+# NEED TO PASS ADDITIONAL CXXFLAG TO FIX USED hdf5 HEADER LOCATION
+export CXXFLAGS+=" -DO2SCL_PLAIN_HDF5_HEADER"
 %configure \
 %if 0%{?suse_version} >= 1500
   --enable-gsl2 \
 %endif
   --enable-eigen \
   --disable-static
+
 make %{?_smp_mflags}
 
 %install
@@ -127,7 +133,8 @@ make %{?_smp_mflags} check
 %{_libdir}/*.so.*
 
 %files devel
-%doc AUTHORS ChangeLog README NEWS COPYING
+%doc AUTHORS ChangeLog README NEWS
+%license COPYING
 %{_libdir}/*.so
 %{_includedir}/o2scl/
 %{_bindir}/acol

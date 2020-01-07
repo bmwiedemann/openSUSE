@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Jan  4 23:22:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.924:
+  * Updated second derivatives of the pressure for the particle
+    clases and updated the eos_had_skyrme class to compute second
+    derivatives.
+  * Created a new system for OS detection to make compilation a
+    bit more user-friendly. HDF5 headers have been reworked a bit
+    accordingly. 
+  * Improved integration between acol and o2sclpy. 
+  * Improved the handling of aliases in acol and cli.
+  * Generalized convert_units, several of the integration classes,
+    a few derivative and solver classes, and several of the
+    particle classes to templates to allow for other floating
+    point types.
+  * Improvements to the ex_mmin example and the example plots.
+    Created new example ex_fermion_summ.
+  * Improvements to the ode_iv_solve_grid class.
+  * Improved error handling for calculator class.
+  * Created functions vector_refine(), file_exists(), and
+    o2isfinite().
+  * Created classes inte_tanh_sinh_boost, inte_sinh_sinh_boost,
+    inte_kronrod_boost, inte_exp_tanh_boost, nucmass_gen, and
+    frib_mex.
+  * Created a couple_threads option and an ac_coeffs() function
+    for mcmc_para.
+  * Creating strings_spec() for string list specifications and
+    updated vector_spec() and mult_vector_spec().
+  * Improved tabulate option for tov_love::calc_y().
+  * Updated constants for CODATA 2018 release.
+- Drop o2scl-fix-LU-tests.patch: incorporated upstream.
+- Add o2scl-disable-failing-eos-test.patch -- Disable a failing
+  test for eos which fails due to minor float error in the test
+  file (gh#awsteiner/o2scl#10).
+- Use %license to install COPYING file.
+
+-------------------------------------------------------------------
 Wed Oct 30 09:28:27 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add o2scl-fix-LU-tests.patch: Fix -- rather than disable --
