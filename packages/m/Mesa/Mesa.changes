@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan  5 20:07:47 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * fixes patch (boo#1145188)  
+
+-------------------------------------------------------------------
+Sun Dec 29 09:09:03 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Update to version 19.3.1
+  * Bugfixes for i965/iris, anv and radv
+
+-------------------------------------------------------------------
+Mon Dec 16 15:42:01 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Update to version 19.3.0
+  * Mainly changes to the build system, i965, aco, radv and anv
+  * New features, check Phoronix:
+    https://www.phoronix.com/scan.php?page=article&item=mesa-193-features
+
+-------------------------------------------------------------------
 Fri Nov 22 11:06:45 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 19.2.6

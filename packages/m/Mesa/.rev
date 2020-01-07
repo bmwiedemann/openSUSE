@@ -3913,4 +3913,21 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - supersedes u_call-shmget-with-permission-0600-instead-of-0777.patch</comment>
     <requestid>750318</requestid>
   </revision>
+  <revision rev="363" vrev="235">
+    <srcmd5>509bdc641dd4766d73db0731591ea35f</srcmd5>
+    <version>unknown</version>
+    <time>1578437477</time>
+    <user>dimstar_suse</user>
+    <comment>- n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * fixes patch (boo#1145188)  
+
+- Update to version 19.3.1
+  * Bugfixes for i965/iris, anv and radv
+
+- Update to version 19.3.0
+  * Mainly changes to the build system, i965, aco, radv and anv
+  * New features, check Phoronix:
+    https://www.phoronix.com/scan.php?page=article&amp;item=mesa-193-features</comment>
+    <requestid>761001</requestid>
+  </revision>
 </revisionlist>
