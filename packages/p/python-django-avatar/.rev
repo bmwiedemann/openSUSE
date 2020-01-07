@@ -64,4 +64,15 @@
     <comment>- Skip the check if flavor python2 is not being built</comment>
     <requestid>731304</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2fe4bb2870e9c45e682dec9627b42e3f</srcmd5>
+    <version>5.0.0</version>
+    <time>1578437677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0:
+  * Added Django 2.1, 2.2, and 3.0 support.
+  * Added Python 3.7 and 3.8 support.
+  * Fixed bug where avatars couldn't be deleted if file was already deleted.</comment>
+    <requestid>761499</requestid>
+  </revision>
 </revisionlist>

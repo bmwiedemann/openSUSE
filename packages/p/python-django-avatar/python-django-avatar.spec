@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-avatar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           python-django-avatar
-Version:        4.1.0
+Version:        5.0.0
 Release:        0
 Summary:        Django-avatar package
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            https://github.com/grantmcconnaughey/django-avatar/
 Source:         https://files.pythonhosted.org/packages/source/d/django-avatar/django-avatar-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Pillow >= 2.0}
 BuildRequires:  %{python_module django-appconf >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 1.11
 Requires:       python-Pillow >= 2.0
 Requires:       python-django-appconf >= 0.6
 BuildArch:      noarch
@@ -53,11 +52,7 @@ file storage backend for retrieval later.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# TODO: The test config is not loading on Python 3
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-export DJANGO_SETTINGS_MODULE=tests.settings
-%{_bindir}/django-admin.py-2.7 test tests --pythonpath=`pwd`
-%endif
+%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test --settings=tests.settings --pythonpath=`pwd`
 
 %files %{python_files}
 %license LICENSE.txt
