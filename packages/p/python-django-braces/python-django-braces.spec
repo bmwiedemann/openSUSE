@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-braces
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,24 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-braces
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Reusable, generic mixins for Django
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/brack3t/django-braces/
 Source:         https://files.pythonhosted.org/packages/source/d/django-braces/django-braces-%{version}.tar.gz
-Source1:        form.html
-Patch0:         dj21.patch
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module Django >= 1.11.0}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 1.11.0
+Requires:       python-six
 BuildArch:      noarch
-Requires:       python-Django
 %python_subpackages
 
 %description
@@ -43,12 +43,9 @@ Reusable, generic mixins for Django.
 
 %prep
 %setup -q -n django-braces-%{version}
-%patch0 -p1
-# https://github.com/brack3t/django-braces/pull/249
-mkdir tests/templates/
-cp %{SOURCE1} tests/templates/
-touch tests/templates/blank.html
-echo '<h1>404!!!!</h1>' > tests/templates/404.html
+# do not mess with the test setup and rely on pytest defaults
+rm tox.ini
+rm conftest.py
 
 %build
 %python_build
@@ -59,7 +56,7 @@ echo '<h1>404!!!!</h1>' > tests/templates/404.html
 
 %check
 export DJANGO_SETTINGS_MODULE=tests.settings
-%python_exec -m pytest
+%pytest --nomigrations
 
 %files %{python_files}
 %doc README.md
