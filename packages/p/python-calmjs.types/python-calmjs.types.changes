@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jan  6 15:14:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not package tests
+
+-------------------------------------------------------------------
+Mon Jan  6 14:46:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by python-calmjs
+
