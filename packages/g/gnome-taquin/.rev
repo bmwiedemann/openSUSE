@@ -135,4 +135,12 @@
     <comment>New stable release (forwarded request 750453 from iznogood)</comment>
     <requestid>750943</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>570f58945bd7bcf909da7e92723b1132</srcmd5>
+    <version>3.34.3</version>
+    <time>1578437829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761686</requestid>
+  </revision>
 </revisionlist>
