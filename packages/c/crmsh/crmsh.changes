@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 07 09:13:02 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1578387778.867a085b:
+  * Dev: bootstrap: Maximum number of SBD device is 3
+  * Dev: bootstrap: improve multi disk sbd usability support both '-s device1 -s device2' and '-s "device1;device2"' improve the logic of code
+
+-------------------------------------------------------------------
+Fri Jan 03 06:04:25 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1578030883.465b4212:
+  * dev: unittest: fix test_report.py failing in 2020
+
+-------------------------------------------------------------------
 Mon Dec 23 07:50:47 UTC 2019 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1577086871.f544180c:

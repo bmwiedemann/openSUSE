@@ -1937,4 +1937,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>759059</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>46efa03e925139685be98cac0c1cd0f0</srcmd5>
+    <version>4.2.0+git.1578387778.867a085b</version>
+    <time>1578437600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761367</requestid>
+  </revision>
 </revisionlist>
