@@ -1342,4 +1342,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>New stable release (forwarded request 750380 from iznogood)</comment>
     <requestid>750939</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>720fa17a3632a809133e1c9469d9bf6e</srcmd5>
+    <version>3.34.3.1</version>
+    <time>1578437517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761232</requestid>
+  </revision>
 </revisionlist>
