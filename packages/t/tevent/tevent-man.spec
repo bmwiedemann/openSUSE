@@ -1,7 +1,7 @@
 #
 # spec file for package tevent-man
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,8 +44,8 @@ BuildRequires:  python3-talloc-devel >= %{talloc_version}
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Url:            https://tevent.samba.org/
-Version:        0.10.0
+URL:            https://tevent.samba.org/
+Version:        0.10.1
 Release:        0
 Summary:        An event system based on the talloc memory management library
 License:        LGPL-3.0-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 26 21:52:29 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.10.1 ... make build with Python 3.8 working again
+  (new waf).
+
+-------------------------------------------------------------------
 Thu Oct 03 22:04:33 UTC 2019 - James McDonough <jmcdonough@suse.com>
 
 - Update to version 0.10.0
