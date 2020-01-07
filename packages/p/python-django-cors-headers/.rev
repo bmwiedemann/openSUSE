@@ -35,4 +35,14 @@
     sent by some versions of Chrome on Android.</comment>
     <requestid>735847</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68f84b573eee0192665d39e3642d546b</srcmd5>
+    <version>3.2.1</version>
+    <time>1578437668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1:
+  * Converted setuptools metadata to configuration file.
+  * Support Python 3.8.</comment>
+    <requestid>761490</requestid>
+  </revision>
 </revisionlist>
