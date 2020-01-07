@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-core
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-core
-Version:        2.10.1
+Version:        2.10.2
 Release:        0
 Summary:        Core part of Jackson
 License:        Apache-2.0

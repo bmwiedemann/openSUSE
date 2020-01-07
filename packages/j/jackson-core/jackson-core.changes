@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:32:16 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Changes for 2.10.2
+  #580: FilteringGeneratorDelegate writeRawValue delegate to 'writeRaw()'
+  	instead of 'writeRawValue()'
+  #582: 'FilteringGeneratorDelegate' bug when filtering arrays (in 2.10.1)
+
+-------------------------------------------------------------------
 Wed Nov 20 17:42:21 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Version update to 2.10.1
