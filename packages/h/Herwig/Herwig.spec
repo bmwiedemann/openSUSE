@@ -1,7 +1,7 @@
 #
 # spec file for package Herwig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _lto_cflags %{nil}
 %define so_name Herwig-libs
 Name:           Herwig
-Version:        7.1.5
+Version:        7.2.0
 Release:        0
 Summary:        Multi-purpose event generator for high-energy physics
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://herwig.hepforge.org/
+URL:            http://herwig.hepforge.org/
 Source0:        http://www.hepforge.org/archive/herwig/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE Herwig-disable-repo-install.patch badshah400@gmail.com -- Disable post-install hooks intended to set up the Herwig repo, this doesn't work inside the build script because of missing LHAPDF data that needs to be installed by the user; the install-hook doesn't serve any purpose while building the rpm and users can easily set this up on their own
@@ -31,7 +32,7 @@ Patch0:         Herwig-disable-repo-install.patch
 BuildRequires:  HepMC2-devel
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel
-BuildRequires:  ThePEG-devel >= 2.0.4
+BuildRequires:  ThePEG-devel >= 2.2.0
 %if 0%{?suse_version} > 1320
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
@@ -107,6 +108,12 @@ with %{name}.
 %setup -q
 %patch0 -p1
 
+# REMOVE A SPURIOUS BACKUP FILE
+rm Models/Feynrules/python/ufo2peg/converter.py.rej~
+
+# FIX ENV BASED HASHBANG
+sed -i "1{s|/usr/bin/env bash|/bin/bash|}" src/herwig-config.in
+
 %build
 autoreconf -fvi
 %configure --disable-static
@@ -131,6 +138,7 @@ do
 done
 
 %fdupes -s %{buildroot}%{_libdir}/%{name}/
+%fdupes -s %{buildroot}%{_datadir}/%{name}/
 
 %post -n %{so_name} -p /sbin/ldconfig
 %postun -n %{so_name} -p /sbin/ldconfig
