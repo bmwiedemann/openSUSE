@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 07 06:49:24 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1578338128.7d62398b0:
+  * Asset download: fix return statement broken in f0d70f1
+  * Minor cleanups for job settings
+
+-------------------------------------------------------------------
 Wed Jan 01 11:53:51 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1577879607.68ae00aa4:
