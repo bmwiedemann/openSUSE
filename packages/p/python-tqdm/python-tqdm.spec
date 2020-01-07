@@ -1,7 +1,7 @@
 #
 # spec file for package python-tqdm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.41.0
+Version:        4.41.1
 Release:        0
 Summary:        An extensible progress meter
 License:        MPL-2.0 AND MIT
@@ -42,12 +42,12 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module tqdm}
+BuildRequires:  python3-ipython
+BuildRequires:  python3-ipywidgets
 # /SECTION
 %endif
 %python_subpackages
@@ -91,10 +91,8 @@ nosetests-%%{$python_bin_suffix} --ignore-files="tests_perf\.py" --ignore-files=
 %doc README.rst logo.png
 %doc examples/
 %license LICENCE
-%dir %{python_sitelib}/tqdm
-%dir %{python_sitelib}/tqdm-%{version}-py%{py_ver}.egg-info
-%{python_sitelib}/tqdm/*
-%{python_sitelib}/tqdm-%{version}-py%{py_ver}.egg-info/*
+%{python_sitelib}/tqdm/
+%{python_sitelib}/tqdm-%{version}-py*.egg-info
 %python_alternative %{_bindir}/tqdm
 %endif
 
