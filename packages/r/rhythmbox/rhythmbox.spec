@@ -1,7 +1,7 @@
 #
 # spec file for package rhythmbox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rhythmbox
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
@@ -135,12 +135,11 @@ rm -rf %{buildroot}/%{_libdir}/rhythmbox/plugins/context
 %{_datadir}/applications/rhythmbox-device.desktop
 %{_datadir}/dbus-1/services/org.gnome.Rhythmbox3.service
 %{_datadir}/glib-2.0/schemas/org.gnome.rhythmbox.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/rhythmbox*
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Rhythmbox*.svg
 %{_datadir}/rhythmbox/
 %{_libdir}/girepository-1.0/MPID-3.0.typelib
 %{_libdir}/girepository-1.0/RB-3.0.typelib
 %{_libdir}/librhythmbox-core.so.*
-%{_libdir}/browser-plugins/librhythmbox-itms-detection-plugin.*
 %dir %{_libdir}/rhythmbox
 %dir %{_libdir}/rhythmbox/plugins
 %{_libdir}/rhythmbox/plugins/android/
@@ -158,6 +157,7 @@ rm -rf %{buildroot}/%{_libdir}/rhythmbox/plugins/context
 %{_libdir}/rhythmbox/plugins/im-status/
 %{_libdir}/rhythmbox/plugins/ipod/
 %{_libdir}/rhythmbox/plugins/iradio/
+%{_libdir}/rhythmbox/plugins/listenbrainz/
 %{_libdir}/rhythmbox/plugins/lyrics/
 %{_libdir}/rhythmbox/plugins/magnatune/
 %{_libdir}/rhythmbox/plugins/mmkeys/
@@ -170,7 +170,6 @@ rm -rf %{buildroot}/%{_libdir}/rhythmbox/plugins/context
 %{_libdir}/rhythmbox/plugins/rblirc/
 %{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %{_libdir}/rhythmbox/plugins/replaygain/
-%{_libdir}/rhythmbox/plugins/sendto/
 %{_libdir}/rhythmbox/plugins/soundcloud/
 %{_libdir}/rhythmbox/plugins/webremote/
 %{_libexecdir}/rhythmbox-metadata

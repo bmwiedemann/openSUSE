@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  5 12:26:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.4:
+  + Support for fetching cover art from coverartarchive.org.
+  + Uses HTTPS for external requests where possible.
+  + New Listenbrainz plugin.
+  + Sendto plugin removed.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jan  6 11:32:17 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 3.4.3:
