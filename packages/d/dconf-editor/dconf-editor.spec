@@ -1,7 +1,7 @@
 #
 # spec file for package dconf-editor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dconf-editor
-Version:        3.34.2
+Version:        3.34.3
 Release:        0
 Summary:        Graphical editor for the dconf key-based configuration system
 License:        GPL-3.0-or-later
