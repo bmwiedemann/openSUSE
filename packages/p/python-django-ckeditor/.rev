@@ -25,4 +25,13 @@
   * Allow using settings to configure extra_plugins and external_plugin_resources</comment>
     <requestid>731230</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>835c3f49ba6d449b8c892feb35a8e3c6</srcmd5>
+    <version>5.8.0</version>
+    <time>1578437671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.8.0:
+  * CKEditor 4.13</comment>
+    <requestid>761493</requestid>
+  </revision>
 </revisionlist>
