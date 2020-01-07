@@ -1,7 +1,7 @@
 #
 # spec file for package libinput
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
+%bcond_with documentation
+
 Name:           libinput
 %define lname	libinput10
-Version:        1.14.3
+Version:        1.15.0
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
 Group:          c development hardware
 URL:            https://www.freedesktop.org/wiki/Software/libinput/
 
-#Git-Clone:	https://gitlab.freedesktop.org/libinput/libinput.git
 #Git-Web:	https://gitlab.freedesktop.org/libinput/libinput/
-#DL-URL:	http://freedesktop.org/software/libinput/
 Source:         http://freedesktop.org/software/libinput/%name-%version.tar.xz
 Source2:        http://freedesktop.org/software/libinput/%name-%version.tar.xz.sig
 Source3:        baselibs.conf
@@ -35,10 +35,12 @@ Source4:        %name.keyring
 Source5:        libinput-rpmlintrc
 Patch1:         kill-env.diff
 
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if %{with documentation}
+BuildRequires:  doxygen
 BuildRequires:  graphviz >= 2.26
+%endif
 BuildRequires:  grep
 BuildRequires:  meson >= 0.41.0
 BuildRequires:  pkg-config
@@ -107,7 +109,7 @@ to develop applications that require libinput.
 	--datadir="%_datadir/%name-%version" \
 	-Dudev-dir="%_prefix/lib/udev" \
 	-Dtests=false \
-	-Ddocumentation=false \
+	-Ddocumentation=%{?with_documentation:true}%{!?with_documentation:false} \
 	%nil
 %meson_build
 
@@ -126,7 +128,7 @@ perl -i -pe 's{#!/usr/bin/env python}{#!/usr/bin/python}g' \
 
 %files udev
 %_prefix/lib/udev/libinput-device-group
-%_prefix/lib/udev/libinput-fuzz-override
+%_prefix/lib/udev/libinput-fuzz-*
 %_prefix/lib/udev/rules.d/
 
 %files -n %lname

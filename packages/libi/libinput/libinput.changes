@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan  4 17:56:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove doxygen and graphviz BuildRequires, documentation has
+  been disabled for some time already.
+
+-------------------------------------------------------------------
+Fri Jan  3 11:40:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.0
+  * Scroll button locking and tablet pad keys support.
+  * Table device hardware buttons that are designed to map to a
+    specific functionality (e.g. to open the OSD) are now
+    supported through the new LIBINPUT_EVENT_TABLET_PAD_KEY
+    event.
+  * Quirks for the Logitech MX Master 2S and the Madcatz R.A.T.3
+    mouse were added.
+  * Touchpad scrolling was approximately 10% faster than the
+    nominal pointer speed, that has been adjusted now.
+
+-------------------------------------------------------------------
 Mon Oct 28 08:37:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.3

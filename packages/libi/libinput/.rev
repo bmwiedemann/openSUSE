@@ -708,4 +708,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.14.3</comment>
     <requestid>743437</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e0c608dca491ee58cc57c30d98fad2ff</srcmd5>
+    <version>1.15.0</version>
+    <time>1578437446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760844</requestid>
+  </revision>
 </revisionlist>
