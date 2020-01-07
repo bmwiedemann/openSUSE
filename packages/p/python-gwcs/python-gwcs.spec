@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwcs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-gwcs
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
@@ -28,23 +28,17 @@ URL:            https://gwcs.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf
-Requires:       python-astropy
+Requires:       python-astropy >= 4.0
 Recommends:     python-scipy
 Recommends:     python-matplotlib
-Suggests:       python-pytest-astropy
-Suggests:       python-sphinx
-Suggests:       python-sphinx-asdf
-Suggests:       python-sphinx-astropy
-Suggests:       python-sphinx-automodapi
-Suggests:       python-sphinx-rtd-theme
-Suggests:       python-stsci-rtd-theme
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module asdf}
-BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module astropy >= 4.0}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
