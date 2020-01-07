@@ -169,4 +169,14 @@ See COPYING (forwarded request 116002 from babelworx)</comment>
     <comment></comment>
     <requestid>611733</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>88337e9c5b8c54b69cc2664f5ef05903</srcmd5>
+    <version>0.12.0</version>
+    <time>1578437472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.0
+- supersedes U_06-Remove-reference-to-virtualFrom.patch,
+  U_07-xf86-video-sis-remove-the-GlxSetVisualConfigs-stub-and-friends.patch</comment>
+    <requestid>760850</requestid>
+  </revision>
 </revisionlist>

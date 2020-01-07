@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-sis
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xf86-video-sis
-Version:        0.10.9
+Version:        0.12.0
 Release:        0
 Summary:        SiS and XGI video driver for the Xorg X server
-License:        BSD-3-Clause and MIT
+License:        BSD-3-Clause AND MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
-Source2:        %{name}.keyring
-Patch6:         U_06-Remove-reference-to-virtualFrom.patch
-Patch7:         U_07-xf86-video-sis-remove-the-GlxSetVisualConfigs-stub-and-friends.patch
+Url:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 BuildRequires:  Mesa-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontsproto)
@@ -59,9 +55,6 @@ and 24 bpp. XVideo, Render and other extensions are supported as well.
 
 %prep
 %setup -q
-
-%patch6 -p1
-%patch7 -p1
 
 %build
 %configure
