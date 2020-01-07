@@ -72,7 +72,7 @@ Requires(pre):  group(mail)
 %endif
 Requires(pre):  fileutils textutils
 %endif
-Version:        4.93
+Version:        4.93.0.4
 Release:        0
 %if %{with_mysql}
 BuildRequires:  mysql-devel
@@ -87,8 +87,8 @@ Summary:        The Exim Mail Transfer Agent, a Replacement for sendmail
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Servers
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         http://ftp.exim.org/pub/exim/exim4/exim-%{version}.tar.bz2
-Source3:        http://ftp.exim.org/pub/exim/exim4/exim-%{version}.tar.bz2.asc
+Source:         http://ftp.exim.org/pub/exim/exim4/fixes/exim-%{version}.tar.bz2
+Source3:        http://ftp.exim.org/pub/exim/exim4/fixes/exim-%{version}.tar.bz2.asc
 # http://ftp.exim.org/pub/exim/Exim-Maintainers-Keyring.asc
 Source4:        exim.keyring
 Source1:        sysconfig.exim
