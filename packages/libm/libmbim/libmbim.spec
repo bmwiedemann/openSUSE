@@ -27,7 +27,7 @@ URL:            https://www.freedesktop.org/wiki/Software/libmbim/
 Source:         https://www.freedesktop.org/software/libmbim/%{name}-%{version}.tar.xz
 
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
