@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:59:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.41.0:
+  * Fixes CVE-2019-19844: Potential account hijack via password reset form
+  bsc#1159447
+  * Dropped Python 2 and Django 1 compatibility.
+- Do not bother with the lang subpkg as it is needed to have languages
+  to be present always anyway
+
+-------------------------------------------------------------------
 Mon Sep 16 10:06:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.40.0:
