@@ -1,7 +1,7 @@
 #
 # spec file for package raft
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %bcond_without libuv
 Name:           raft
-Version:        0.9.9
+Version:        0.9.16
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
-License:        Apache-2.0
+License:        LGPL-3.0-only WITH linking-exception-lgpl-3.0
 URL:            https://github.com/canonical/raft
 Source:         https://github.com/canonical/raft/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf

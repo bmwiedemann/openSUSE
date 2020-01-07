@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>746363</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>38e6344860cc9909ea1acb572d36770e</srcmd5>
+    <version>0.9.16</version>
+    <time>1578437571</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.9.16</comment>
+    <requestid>761282</requestid>
+  </revision>
 </revisionlist>
