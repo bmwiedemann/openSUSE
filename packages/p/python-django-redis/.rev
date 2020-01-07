@@ -32,4 +32,19 @@
     <comment></comment>
     <requestid>677660</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>19063fc3bed78d62deb5aac318f211c0</srcmd5>
+    <version>4.11.0</version>
+    <time>1578437653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.11.0:
+  * Added support for Python 3.8.
+  * Added support for Django 2.2 and 3.0.
+  * Changed msgpack-python soft dependency to msgpack.
+  * Fixed .touch() method for sharded client.
+  * Fixed prefix escaping for the sharded client.
+  * Fixed .add() method to return a bool.
+- Remove merged tests-fix-urls.patch</comment>
+    <requestid>761365</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-redis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-redis
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        A redis cache backend for Django
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/niwibe/django-redis
 Source:         https://files.pythonhosted.org/packages/source/d/django-redis/django-redis-%{version}.tar.gz
-# Fix tests to be compatible with Python 3 url parser.
-Patch0:         tests-fix-urls.patch
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module msgpack >= 0.4.6}
@@ -37,7 +36,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 Requires:       python-lz4 >= 0.15
 Requires:       python-msgpack >= 0.4.6
 Requires:       python-redis >= 2.10.0
@@ -49,7 +48,6 @@ A redis cache backend for Django.
 
 %prep
 %setup -q -n django-redis-%{version}
-%patch0 -p1
 
 %build
 %python_build

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:06:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.11.0:
+  * Added support for Python 3.8.
+  * Added support for Django 2.2 and 3.0.
+  * Changed msgpack-python soft dependency to msgpack.
+  * Fixed .touch() method for sharded client.
+  * Fixed prefix escaping for the sharded client.
+  * Fixed .add() method to return a bool.
+- Remove merged tests-fix-urls.patch
+
+-------------------------------------------------------------------
 Wed Feb 20 11:11:17 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Add tests-fix-urls.patch fixing failing tests, which were using
