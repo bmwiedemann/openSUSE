@@ -1,7 +1,7 @@
 #
 # spec file for package sunwait
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           sunwait
-Version:        20041208
+Version:        20190321
 Release:        0
 Summary:        Sunrise, sunset and twilight calculator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Astronomy
-URL:            http://www.risacher.org/sunwait
-Source:         http://www.risacher.org/sunwait/%{name}-%{version}.tar.gz
+URL:            https://github.com/risacher/sunwait
+Source:         %{name}-%{version}.tar.xz
 Patch0:         sunwait-no-rpm-opt-flags.patch
-Patch1:         sunwait-implicit-declaration.patch
-Patch2:         sunwait-no-return-in-nonvoid-function.patch
-BuildRequires:  gcc
+BuildRequires:  gcc-c++
 
 %description
 Sunwait is a small C program for calculating sunrise and sunset, as well as
@@ -37,8 +35,6 @@ useful for home automation tasks.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %make_build
@@ -48,7 +44,7 @@ install -m 755 -d %{buildroot}%{_bindir}
 install -m 755 sunwait %{buildroot}%{_bindir}
 
 %files
-%license COPYING
+%license LICENSE
 %{_bindir}/sunwait
 
 %changelog

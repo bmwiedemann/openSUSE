@@ -2,7 +2,7 @@ Source: sunwait
 Section: science
 Priority: optional
 Maintainer: Jan Baier <jbaier@suse.com>
-Build-Depends: debhelper (>= 9), build-essential
+Build-Depends: debhelper (>= 10), build-essential
 
 Package: sunwait
 Architecture: any

@@ -1,19 +1,19 @@
-Index: sunwait-20041208/Makefile
-===================================================================
---- sunwait-20041208/Makefile	2019-03-07 18:54:00.998492523 +0100
-+++ sunwait-20041208/Makefile	2019-03-07 18:54:28.906683825 +0100
-@@ -1,10 +1,10 @@
--CFLAGS = -g 
-+CFLAGS = -g $(RPM_OPT_FLAGS)
- LIBS = -lm
- OBJS = main.o print.o sunriset.o 
+--- sunwait/makefile	2020-01-06 12:34:43.516253962 +0100
++++ sunwait/makefile	2020-01-06 13:07:41.381297590 +0100
+@@ -6,7 +6,7 @@
  
  
- sunwait: $(OBJS)
--	$(CC) -o sunwait $(CFLAGS) $(OBJS) -lm
-+	$(CC) -o sunwait $(CFLAGS) $(OBJS) $(LIBS)
+ C=gcc
+-CFLAGS=-c -Wall 
++CFLAGS=-c -Wall $(RPM_OPT_FLAGS)
+ LDFLAGS= -lm -lstdc++
+ SOURCES=sunwait.cpp sunriset.cpp print.cpp sunwait.h sunriset.h print.h
+ OBJECTS=$(SOURCES:.cpp=.o)
+@@ -21,6 +21,6 @@
+ 	$(C) $(CFLAGS) $< -o $@
  
  clean:
 -	rm *.o sunwait
-\ No newline at end of file
 +	$(RM) *.o sunwait
+ 
+ 

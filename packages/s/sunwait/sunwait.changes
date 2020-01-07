@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 11:58:56 UTC 2020 - Jan Baier <jbaier@suse.com>
+
+- update to version 20190322
+	- sunwait-no-return-in-nonvoid-function.patch no longer needed
+	- sunwait-implicit-declaration.patch no longer needed
+
+-------------------------------------------------------------------
 Thu Mar  7 16:35:32 UTC 2019 - Jan Baier <jbaier@suse.com>
 
 - add new package sunwait version 20041208 

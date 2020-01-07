@@ -1,6 +1,6 @@
 Format: 1.0
 Source: sunwait
-Version: 20041208
+Version: 20190321
 Binary: sunwait
 Maintainer: Jan Baier <jbaier@suse.com>
 Architecture: any
