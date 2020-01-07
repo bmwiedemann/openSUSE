@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-grappelli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-grappelli
-Version:        2.13.1
+Version:        2.13.3
 Release:        0
 Summary:        A skin for the Django Admin-Interface
 License:        BSD-2-Clause AND LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/sehmaschine/django-grappelli
 Source:         https://github.com/sehmaschine/django-grappelli/archive/%{version}.tar.gz
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module py >= 1.7}
-BuildRequires:  %{python_module pytest >= 3.9}
-BuildRequires:  %{python_module pytest-django >= 3.4}
+BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module py >= 1.8}
+BuildRequires:  %{python_module pytest >= 5.0}
+BuildRequires:  %{python_module pytest-django >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 2.2
 BuildArch:      noarch
 %python_subpackages
 

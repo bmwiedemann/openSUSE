@@ -138,4 +138,23 @@
   * First release of Grappelli which is compatible with Django 2.2.</comment>
     <requestid>731219</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1199a319bb5be0a9f2e8d2b67d3c19f4</srcmd5>
+    <version>2.13.3</version>
+    <time>1578437658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.3:
+  * Fixed: Horizontal scrolling.
+  * Fixed: Changelist with custom filters.
+  * Fixed: Form select icons (Chrome).
+  * Fixed: added Django autocomplete JS files.
+  * Fixed: added minified jQuery 3.3.1 file.
+  * Fixed: added request to formfield_for_dbfield.
+  * Fixed: use safe label with autocompletes.
+  * Improved: added separate file for documentation URLs.
+  * Improved: removed Python 2 support.
+  * Improved: CSS footer and submit-row fixes.
+  * Improved: CSS field width with inline tabular.</comment>
+    <requestid>761484</requestid>
+  </revision>
 </revisionlist>
