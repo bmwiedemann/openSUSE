@@ -1,7 +1,7 @@
 #
 # spec file for package iwd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iwd
-Version:        1.0
+Version:        1.4
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ell) >= 0.26
+BuildRequires:  pkgconfig(ell) >= 0.27
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
@@ -49,9 +49,9 @@ features provided by the Linux kernel.
 
 %build
 %configure \
-	--libexecdir=%{_libexecdir}/%{name} \
-	--enable-external-ell \
-	%{nil}
+    --libexecdir=%{_libexecdir}/%{name} \
+    --enable-external-ell \
+    %{nil}
 %make_build
 
 %install
@@ -99,6 +99,7 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 %{_mandir}/man1/iwmon.1%{?ext_man}
 %{_mandir}/man5/iwd.config.5%{?ext_man}
 %{_mandir}/man5/iwd.network.5%{?ext_man}
+%{_mandir}/man7/iwd.debug.7%{?ext_man}
 %{_mandir}/man8/iwd.8%{?ext_man}
 
 %changelog
