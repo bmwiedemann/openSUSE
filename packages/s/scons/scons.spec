@@ -1,7 +1,7 @@
 #
 # spec file for package scons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %bcond_with test
 %endif
 Name:           scons%{psuffix}
-Version:        3.0.5
+Version:        3.1.2
 Release:        0
 Summary:        Replacement for Make
 License:        MIT
 Group:          Development/Tools/Building
-URL:            http://www.scons.org/
-Source0:        https://github.com/SCons/%{modname}/archive/%{version}.tar.gz
+URL:            https://www.scons.org/
+Source0:        http://prdownloads.sourceforge.net/scons/%{modname}-src-%{version}.tar.gz
 #http://www.scons.org/doc/%%{version}/HTML/scons-user.html
 Source1:        scons-user.html-%{version}.tar.bz2
 # Adjust to exclude all failing tests
@@ -74,7 +74,7 @@ provides itself as well as the features. SCons allows you to use the
 full power of Python to control compilation.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n %{modname}-src-%{version} -a1
 %autopatch -p1
 
 sed -i -e '/QT_LIBPATH = os.path.join.*QTDIR/s/lib/%{_lib}/' \
@@ -129,6 +129,7 @@ echo "Skiping tests on this architecture due to failures"
 %files
 %license LICENSE
 %doc src/CHANGES.txt README.rst src/RELEASE.txt
+%doc scons-user.html
 %{_bindir}/*
 %{python3_sitelib}/SCons
 %{python3_sitelib}/%{modname}*.egg-info
