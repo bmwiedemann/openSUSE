@@ -40,8 +40,6 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  lua-devel
-BuildRequires:  python
-BuildRequires:  python-devel
 BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -79,13 +77,13 @@ Requires:       %{name} = %{version}
 %description devel
 genders headers and libraries files needed for development
 
-%package -n python-%{name}
+%package -n python3-%{name}
 Summary:        Python bindings for genders
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python
 
-%description -n python-%{name}
+%description -n python3-%{name}
 Necessary files for using genders with Python.
 
 %package -n lua-%{name}
@@ -150,6 +148,9 @@ aclocal --force --install -I config
 libtoolize -f -i
 automake -a -f
 autoconf --force
+mkdir -p bin/
+ln -s $(which python3) bin/python
+export PATH=$(pwd)/bin/:${PATH}
 %configure --program-prefix=%{?_program_prefix:%{_program_prefix}} \
     %{?_with_perl_extensions} \
     %{?_without_perl_extensions} \
@@ -184,6 +185,7 @@ for file in %{buildroot}%{_prefix}/lib/genders/*.pl; do grep '#!/usr/bin/perl' $
 rm -v %{buildroot}%{_libdir}/libgendersplusplus.la
 %endif
 rm -v %{buildroot}%{_libdir}/libgenders.la
+rm -rv %{buildroot}%{_libdir}/python*/site-packages/__pycache__
 find %{buildroot}%{_libdir}/lua -name \*.la -delete 
 mkdir -p  %{buildroot}%{_sysconfdir}
 # create sample config, but remove comments
@@ -241,7 +243,7 @@ sed -i -e 's/^\([^#]\)/## \1/' %{buildroot}%{_sysconfdir}/genders
 %{_mandir}/man3/libgenders*
 
 %if %{?_with_python_extensions:1}%{!?_with_python_extensions:0}
-%files -n python-%{name}
+%files -n python3-%{name}
 %{_libdir}/python*
 %endif
 
