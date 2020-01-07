@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>720782</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>649bfa38a7fd976358e718ff8dc31103</srcmd5>
+    <version>2.2.0</version>
+    <time>1578437494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * minor fixes</comment>
+    <requestid>761150</requestid>
+  </revision>
 </revisionlist>
