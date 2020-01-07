@@ -1,0 +1,143 @@
+From 271219d559e1cb1569650879cd02f24f88400d7a Mon Sep 17 00:00:00 2001
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Thu, 2 Jan 2020 14:37:13 +0100
+Subject: [PATCH] Sync Utils::securityIsValid with NetworkManager
+
+BUG: 415670
+---
+ src/utils.cpp | 67 ++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 37 insertions(+), 30 deletions(-)
+
+diff --git a/src/utils.cpp b/src/utils.cpp
+index 1e0c3a5..8c38e4a 100644
+--- a/src/utils.cpp
++++ b/src/utils.cpp
+@@ -167,7 +167,7 @@ bool NetworkManager::deviceSupportsApCiphers(NetworkManager::WirelessDevice::Cap
+     return (havePair && haveGroup);
+ }
+ 
+-// Keep this in sync with NetworkManager/libnm-util/nm-utils.c:nm_utils_security_valid()
++// Keep this in sync with NetworkManager/libnm-core/nm-utils.c:nm_utils_security_valid()
+ bool NetworkManager::securityIsValid(WirelessSecurityType type, NetworkManager::WirelessDevice::Capabilities interfaceCaps, bool haveAp, bool adhoc, NetworkManager::AccessPoint::Capabilities apCaps, NetworkManager::AccessPoint::WpaFlags apWpa, NetworkManager::AccessPoint::WpaFlags apRsn)
+ {
+     bool good = true;
+@@ -184,6 +184,8 @@ bool NetworkManager::securityIsValid(WirelessSecurityType type, NetworkManager::
+             if (interfaceCaps.testFlag(NetworkManager::WirelessDevice::Wep40) ||
+                     interfaceCaps.testFlag(NetworkManager::WirelessDevice::Wep104)) {
+                 return true;
++            } else {
++                return false;
+             }
+         }
+ 
+@@ -205,7 +207,6 @@ bool NetworkManager::securityIsValid(WirelessSecurityType type, NetworkManager::
+ //                 return true;
+ //             }
+ //         }
+-        return false;
+     }
+ 
+     switch (type) {
+@@ -254,21 +255,15 @@ bool NetworkManager::securityIsValid(WirelessSecurityType type, NetworkManager::
+         }
+         break;
+     case WpaPsk:
++        if (adhoc) {
++            return false;
++        }
++
+         if (!interfaceCaps.testFlag(NetworkManager::WirelessDevice::Wpa)) {
+             return false;
+         }
+         if (haveAp) {
+-            /* Ad-Hoc WPA APs won't necessarily have the PSK flag set */
+-            if (adhoc) {
+-                if (apWpa.testFlag(NetworkManager::AccessPoint::GroupTkip) &&
+-                        interfaceCaps.testFlag(NetworkManager::WirelessDevice::Tkip)) {
+-                    return true;
+-                }
+-                if (apWpa.testFlag(NetworkManager::AccessPoint::GroupCcmp) &&
+-                        interfaceCaps.testFlag(NetworkManager::WirelessDevice::Ccmp)) {
+-                    return true;
+-                }
+-            } else if (apWpa.testFlag(NetworkManager::AccessPoint::KeyMgmtPsk)) {
++            if (apWpa.testFlag(NetworkManager::AccessPoint::KeyMgmtPsk)) {
+                 if (apWpa.testFlag(NetworkManager::AccessPoint::PairTkip) &&
+                         interfaceCaps.testFlag(NetworkManager::WirelessDevice::Tkip)) {
+                     return true;
+@@ -286,16 +281,25 @@ bool NetworkManager::securityIsValid(WirelessSecurityType type, NetworkManager::
+             return false;
+         }
+         if (haveAp) {
+-            /* Ad-Hoc WPA APs won't necessarily have the PSK flag set */
+-            if (apRsn.testFlag(NetworkManager::AccessPoint::KeyMgmtPsk) || adhoc) {
+-                if (apRsn.testFlag(NetworkManager::AccessPoint::PairTkip) &&
+-                        interfaceCaps.testFlag(NetworkManager::WirelessDevice::Tkip)) {
+-                    return true;
++            if (adhoc) {
++                if (!interfaceCaps.testFlag(NetworkManager::WirelessDevice::IBSSRsn)) {
++                    return false;
+                 }
+                 if (apRsn.testFlag(NetworkManager::AccessPoint::PairCcmp) &&
+                         interfaceCaps.testFlag(NetworkManager::WirelessDevice::Ccmp)) {
+                     return true;
+                 }
++            } else {
++                if (apRsn.testFlag(NetworkManager::AccessPoint::KeyMgmtPsk)) {
++                    if (apRsn.testFlag(NetworkManager::AccessPoint::PairTkip) &&
++                            interfaceCaps.testFlag(NetworkManager::WirelessDevice::Tkip)) {
++                        return true;
++                    }
++                    if (apRsn.testFlag(NetworkManager::AccessPoint::PairCcmp) &&
++                            interfaceCaps.testFlag(NetworkManager::WirelessDevice::Ccmp)) {
++                        return true;
++                    }
++                }
+             }
+             return false;
+         }
+@@ -339,26 +343,29 @@ bool NetworkManager::securityIsValid(WirelessSecurityType type, NetworkManager::
+             return false;
+         }
+         if (haveAp) {
+-            if (!interfaceCaps.testFlag(NetworkManager::WirelessDevice::IBSSRsn)) {
+-                return false;
+-            }
+-            if (apRsn.testFlag(NetworkManager::AccessPoint::PairCcmp) &&
+-                    interfaceCaps.testFlag(NetworkManager::WirelessDevice::Ccmp)) {
+-                return true;
+-            }
+-        } else {
+-            if (apRsn.testFlag(NetworkManager::AccessPoint::KeyMgmtSAE)) {
+-                if (apRsn.testFlag(NetworkManager::AccessPoint::PairTkip) &&
+-                        interfaceCaps.testFlag(NetworkManager::WirelessDevice::Tkip)) {
+-                    return true;
++            if (adhoc) {
++                if (!interfaceCaps.testFlag(NetworkManager::WirelessDevice::IBSSRsn)) {
++                    return false;
+                 }
+                 if (apRsn.testFlag(NetworkManager::AccessPoint::PairCcmp) &&
+                         interfaceCaps.testFlag(NetworkManager::WirelessDevice::Ccmp)) {
+                     return true;
+                 }
++            } else {
++                if (apRsn.testFlag(NetworkManager::AccessPoint::KeyMgmtSAE)) {
++                    if (apRsn.testFlag(NetworkManager::AccessPoint::PairTkip) &&
++                            interfaceCaps.testFlag(NetworkManager::WirelessDevice::Tkip)) {
++                        return true;
++                    }
++                    if (apRsn.testFlag(NetworkManager::AccessPoint::PairCcmp) &&
++                            interfaceCaps.testFlag(NetworkManager::WirelessDevice::Ccmp)) {
++                        return true;
++                    }
++                }
+             }
+             return false;
+         }
++        break;
+     default:
+         good = false;
+         break;
+-- 
+2.23.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package libKF5NetworkManagerQt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/networkm
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Sync-Utils-securityIsValid-with-NetworkManager.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
@@ -78,7 +80,7 @@ your network devices and also provides a library for parsing connection
 settings which are used in DBus communication.
 
 %prep
-%setup -q -n networkmanager-qt-%{version}
+%autosetup -p1 -n networkmanager-qt-%{version}
 
 %build
   %cmake_kf5 -d build
