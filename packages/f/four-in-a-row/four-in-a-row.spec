@@ -1,7 +1,7 @@
 #
 # spec file for package four-in-a-row
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           four-in-a-row
-Version:        3.34.1
+Version:        3.34.3
 Release:        0
 Summary:        Connect Four Game for GNOME
 # License notice: Source code is GPL-2.0+, Icon themes are GPL-3.0+
