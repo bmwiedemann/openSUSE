@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 11:01:33 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.1.38+git20190428 (changes since
+  0.1.38+git20161212):
+  * Fix grammar in bt-obex help.
+  * Add UUID for SIMAccess.
+
+-------------------------------------------------------------------
 Sun Feb 19 16:13:49 UTC 2017 - sor.alexei@meowr.ru
 
 - Initial package.

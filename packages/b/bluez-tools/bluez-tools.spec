@@ -1,7 +1,7 @@
 #
 # spec file for package bluez-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bluez-tools
-Version:        0.1.38+git20161212
+Version:        0.1.38+git20190428
 Release:        0
 Summary:        A set of tools to manage bluetooth devices
-License:        GPL-2.0+
-Group:          Hardware/Mobile
-Url:            https://github.com/khvzak/bluez-tools
-Source:         %{name}-%{version}.tar.gz
+License:        GPL-2.0-or-later
+URL:            https://github.com/khvzak/bluez-tools
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -50,8 +49,8 @@ make %{?_smp_mflags} V=1
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/bt-*
 %{_mandir}/man1/bt-*.1%{?ext_man}
 
