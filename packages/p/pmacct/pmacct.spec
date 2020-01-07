@@ -1,7 +1,7 @@
 #
 # spec file for package pmacct
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with ndpi
 
 Name:           pmacct
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Accounting and aggregation toolsuite for IPv4 and IPv6
 License:        GPL-2.0-only
