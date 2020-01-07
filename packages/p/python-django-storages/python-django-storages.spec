@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-storages
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-storages
-Version:        1.7.2
+Version:        1.8
 Release:        0
 Summary:        Support for many storage backends in Django
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ Suggests:       python-azure-storage-blob >= 1.3.1
 Suggests:       python-boto >= 2.32.0
 Suggests:       python-boto3 >= 1.4.4
 Suggests:       python-dropbox >= 7.2.1
-Suggests:       python-google-cloud-storage >= 0.22.0
+Suggests:       python-google-cloud-storage >= 1.15.0
 Suggests:       python-paramiko
 BuildArch:      noarch
 # SECTION test requirements
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module azure-storage-blob >= 1.3.1}
 BuildRequires:  %{python_module boto >= 2.32.0}
 BuildRequires:  %{python_module boto3 >= 1.4.4}
 BuildRequires:  %{python_module dropbox >= 7.2.1}
-BuildRequires:  %{python_module google-cloud-storage >= 0.22.0}
+BuildRequires:  %{python_module google-cloud-storage >= 1.15.0}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  python2-mock

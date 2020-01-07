@@ -28,4 +28,13 @@
 - Drop merged e9bb4bcb8a1b7720468add08bc8343ffbaa0165c.patch</comment>
     <requestid>731206</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4b2a5a58d7aa69210914d84914f98f3</srcmd5>
+    <version>1.8</version>
+    <time>1578437651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8:
+  * support for django 3.x</comment>
+    <requestid>761364</requestid>
+  </revision>
 </revisionlist>
