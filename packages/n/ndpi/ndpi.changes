@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  2 11:50:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add hyperscan-devel as dependency to libndpi-devel
+
+-------------------------------------------------------------------
 Wed Dec 25 10:13:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Drop not longer needed patches (fixed upstream)

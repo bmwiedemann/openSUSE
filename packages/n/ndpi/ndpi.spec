@@ -1,7 +1,7 @@
 #
 # spec file for package ndpi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -65,6 +65,9 @@ un-necessary for network traffic monitoring.
 Summary:        Development headers for nNDPI
 Group:          Development/Libraries/C and C++
 Requires:       libndpi%{sover} = %{version}
+%if 0%{with hyperscan}
+Requires:       pkgconfig(libhs)
+%endif
 
 %description -n libndpi-devel
 nDPI is a ntop-maintained superset of the OpenDPI library. It extends
