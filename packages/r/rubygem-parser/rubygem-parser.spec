@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,16 @@
 #
 
 Name:           rubygem-parser
-Version:        2.6.4.1
+Version:        2.7.0.1
 Release:        0
 %define mod_name parser
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://github.com/whitequark/parser
+URL:            https://github.com/whitequark/parser
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A Ruby parser written in pure Ruby
@@ -57,7 +57,6 @@ A Ruby parser written in pure Ruby.
 %fdupes %{buildroot}%{gem_base}
 find %{buildroot}%{gem_base} \( -name .travis.yml -o -name .yardopts -o -name .gitkeep -o -name .gitignore -o -name run_rubocop_specs \) | xargs rm
 # /MANUAL
-
 
 %gem_packages
 
