@@ -1,7 +1,7 @@
 #
 # spec file for package gajim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
 Source:         https://gajim.org/downloads/%{_version}/%{name}-%{version}.tar.bz2
+Patch:          ssl_use_system_certs.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -102,6 +103,7 @@ Features:
 
 %prep
 %setup -q
+%autopatch -p1
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 
 # FIXME: Some leftover.
@@ -117,13 +119,6 @@ python3 setup.py install \
 mkdir -p %{buildroot}%{_datadir}/
 mv %{buildroot}{%{python3_sitelib}/%{name}/data,%{_datadir}/%{name}}/
 ln -s %{_datadir}/%{name} %{buildroot}%{python3_sitelib}/%{name}/data
-
-# Do not package PEM certificates.
-for cert in DST_Root_CA_X3.pem; do
-    [ -f "%{trustdir_static}/$cert" ]
-    rm "%{buildroot}%{_datadir}/%{name}/plugins/plugin_installer/$cert"
-    ln -s "%{trustdir_static}/$cert" %{buildroot}%{_datadir}/%{name}/plugins/plugin_installer/
-done
 
 %suse_update_desktop_file -r org.gajim.Gajim Network InstantMessaging
 %fdupes %{buildroot}%{_prefix}/
