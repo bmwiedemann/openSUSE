@@ -1,7 +1,7 @@
 #
 # spec file for package log4j12
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,12 +38,13 @@ Source4:        log4j-chainsaw.png
 Source5:        log4j-chainsaw.sh
 Source6:        log4j-chainsaw.desktop
 Source7:        log4j.catalog
-Source1000:     jpackage-mini-prepare.sh
 Patch0:         log4j-logfactor5-userdir.patch
 Patch1:         log4j-javadoc-xlink.patch
 Patch2:         log4j-mx4j-tools.patch
 # PATCH-FIX-OPENSUSE -- Drop javadoc timestamp
 Patch3:         log4j-reproducible.patch
+# PATCH-FIX-UPSTREAM bsc#1159646 CVE-2019-17571 deserialization of untrusted data in SocketServer
+Patch4:         log4j-CVE-2019-17571.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -55,11 +56,12 @@ Requires:       javapackages-tools
 Requires:       jaxp_parser_impl
 Requires:       xml-apis
 Requires(pre):  coreutils
+Obsoletes:      log4j < 1.3
+Obsoletes:      log4j-mini < 1.3
 BuildArch:      noarch
 %if %{with bootstrap}
 Name:           %{real}-mini
 Provides:       %{real} = %{version}-%{release}
-Obsoletes:      log4j-mini < 1.3
 %else
 Name:           %{real}
 BuildRequires:  geronimo-jaf-1_0_2-api
@@ -71,7 +73,6 @@ BuildRequires:  mx4j
 #!BuildIgnore:  axis
 Provides:       %{real}-mini
 Obsoletes:      %{real}-mini
-Obsoletes:      log4j < 1.3
 #!BuildRequires: %{real}-mini
 %endif
 
@@ -99,6 +100,7 @@ Documentation javadoc for Java logging tool log4j.
 %patch1
 %patch2
 %patch3 -p1
+%patch4 -p1
 
 sed -i 's/\r//g' LICENSE NOTICE src/site/resources/css/*.css
 
@@ -113,7 +115,7 @@ for i in contribs/JimMoore/mail*;do
 done
 
 %build
-%ant \
+%{ant} \
         -Djavamail.jar=$(build-classpath javamail/mailapi) \
         -Dactivation.jar=$(build-classpath jaf) \
         -Djaxp.jaxp.jar.jar=$(build-classpath jaxp_parser_impl) \
