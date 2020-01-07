@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  6 15:11:42 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 subpackage due to dependencies dropping python2.
+
+-------------------------------------------------------------------
 Sat Dec  8 19:39:33 UTC 2018 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.8.0:
