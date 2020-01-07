@@ -59,4 +59,23 @@
 - get rid of _service/_servicedata files</comment>
     <requestid>629905</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aa444382565f947dabbe6cee9a5f9b5b</srcmd5>
+    <version>1.1.0</version>
+    <time>1578437626</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0 
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Correct a string literal
+  * Mention .otb as an extension
+  * Accept a BDF font on stdin
+  * Avoid undefined behaviour
+  * Round font size to integer value when reading bitmap font
+  * Mark vsprintf_alloc as printf-like function
+  * check for freetype NULL atoms
+  * let freetype handle ISO-8859-1 mapping
+  * allow ISO-646.1991-IRV as well, adobe standard for bdf</comment>
+    <requestid>761498</requestid>
+  </revision>
 </revisionlist>

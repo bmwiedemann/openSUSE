@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:38:28 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.0 
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Correct a string literal
+  * Mention .otb as an extension
+  * Accept a BDF font on stdin
+  * Avoid undefined behaviour
+  * Round font size to integer value when reading bitmap font
+  * Mark vsprintf_alloc as printf-like function
+  * check for freetype NULL atoms
+  * let freetype handle ISO-8859-1 mapping
+  * allow ISO-646.1991-IRV as well, adobe standard for bdf
+
+-------------------------------------------------------------------
 Fri Aug 17 10:46:14 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.0.5
