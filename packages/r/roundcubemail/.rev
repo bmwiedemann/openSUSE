@@ -459,4 +459,41 @@
     <comment></comment>
     <requestid>758883</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>26f606ca871ff7997a47fce9780e788e</srcmd5>
+    <version>1.4.2</version>
+    <time>1578437710</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  * Plugin API: Make actionbefore, before, actionafter and after 
+                events working with plugin actions (#7106)
+  * Managesieve: Replace &quot;Filter disabled&quot; with &quot;Filter enabled&quot; (#7028)
+  * Managesieve: Fix so modifier type select wasn't hidden after hiding 
+                 modifier select on header change
+  * Managesieve: Fix filter selection after removing a first filter (#7079)
+  * Markasjunk: Fix marking more than one message as spam/ham with 
+                email_learn driver (#7121)
+  * Password: Fix kpasswd and smb drivers' double-escaping bug (#7092)
+  * Enigma: Add script to import keys from filesystem to the db 
+            storage (for multihost)
+  * Installer: Fix DB Write test on SQLite database
+               (&quot;database is locked&quot; error) (#7064)
+  * Installer: Fix so SQLite DSN with a relative path to the database
+               file works in Installer
+  * Elastic: Fix contrast of warning toasts (#7058)
+  * Elastic: Simple search in pretty selects (#7072)
+  * Elastic: Fix hidden list widget on mobile/tablet when selecting 
+             folder while search menu is open (#7120)
+  * Fix so type attribute on script tags is not used on HTML5 pages (#6975)
+  * Fix unread count after purge on a folder that is not currently selected (#7051)
+  * Fix bug where Enter key didn't work on messages list in &quot;List&quot; layout (#7052)
+  * Fix bug where deleting a saved search in addressbook caused 
+    display issue on sources/groups list (#7061)
+  * Fix bug where a new saved search added after removing all searches
+    wasn't added to the list (#7061)
+  * Fix bug where a new contact group added after removing all groups
+    from addressbook wasn't added to the list
+  * Fix so install-jsdeps.sh removes Bootstrap's sourceMappingURL (#7035)</comment>
+    <requestid>761569</requestid>
+  </revision>
 </revisionlist>

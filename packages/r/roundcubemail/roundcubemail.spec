@@ -1,7 +1,7 @@
 #
 # spec file for package roundcubemail
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 %define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
 Name:           roundcubemail
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -37,7 +37,7 @@ Source6:        https://roundcube.net/download/pubkey.asc#/%{name}.keyring
 Source7:        https://github.com/roundcube/roundcubemail/releases/download/%{version}/%{name}-%{version}-complete.tar.gz.asc
 Source8:        robots.txt
 # PATCH-FIX-OPENSUSE roundcubemail-1.1-beta-config_dir.patch -- use the general config directory /etc
-Patch0:         %{name}-1.1-beta-config_dir.patch
+Patch0:         %{name}-%{version}-config_dir.patch
 BuildRequires:  apache2-devel
 BuildRequires:  pcre-devel
 BuildRequires:  php
@@ -244,7 +244,7 @@ sed -i "s/rcmail-\!24ByteDESkey\*Str/`makedesstr`/" %{roundcubeconfigpath}/defau
 # Update ?
 if [ ${1:-0} -eq 1 ]; then
   if [ -x %{_sbindir}/a2enmod ]; then
-  # enable apache required apache modules
+  # enable required apache modules
   %if 0%{?suse_version} > 01500
     if ! grep -q php %{_sysconfdir}/sysconfig/apache2 1>&2 2>/dev/null; then
       %{_sbindir}/a2enmod -q php7    || %{_sbindir}/a2enmod php7

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Jan  2 19:43:40 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.4.2:
+  * Plugin API: Make actionbefore, before, actionafter and after 
+                events working with plugin actions (#7106)
+  * Managesieve: Replace "Filter disabled" with "Filter enabled" (#7028)
+  * Managesieve: Fix so modifier type select wasn't hidden after hiding 
+                 modifier select on header change
+  * Managesieve: Fix filter selection after removing a first filter (#7079)
+  * Markasjunk: Fix marking more than one message as spam/ham with 
+                email_learn driver (#7121)
+  * Password: Fix kpasswd and smb drivers' double-escaping bug (#7092)
+  * Enigma: Add script to import keys from filesystem to the db 
+            storage (for multihost)
+  * Installer: Fix DB Write test on SQLite database
+               ("database is locked" error) (#7064)
+  * Installer: Fix so SQLite DSN with a relative path to the database
+               file works in Installer
+  * Elastic: Fix contrast of warning toasts (#7058)
+  * Elastic: Simple search in pretty selects (#7072)
+  * Elastic: Fix hidden list widget on mobile/tablet when selecting 
+             folder while search menu is open (#7120)
+  * Fix so type attribute on script tags is not used on HTML5 pages (#6975)
+  * Fix unread count after purge on a folder that is not currently selected (#7051)
+  * Fix bug where Enter key didn't work on messages list in "List" layout (#7052)
+  * Fix bug where deleting a saved search in addressbook caused 
+    display issue on sources/groups list (#7061)
+  * Fix bug where a new saved search added after removing all searches
+    wasn't added to the list (#7061)
+  * Fix bug where a new contact group added after removing all groups
+    from addressbook wasn't added to the list
+  * Fix so install-jsdeps.sh removes Bootstrap's sourceMappingURL (#7035)
+  * Fix so use of Ctrl+A does not scroll the list (#7020)
+  * Fix/remove useless keyup event handler on username input in logon form (#6970)
+  * Fix bug where cancelling switching from HTML to plain text didn't
+    set the flag properly (#7077)
+  * Fix bug where HTML reply could add an empty line with extra indentation
+    above the original message (#7088)
+  * Fix matching multiple X-Forwarded-For addresses with 'proxy_whitelist' (#7107)
+  * Fix so displayed maximum attachment size depends also on 'max_message_size' (#7105)
+  * Fix bug where 'skins_allowed' option didn't enforce user skin 
+    preference (#7080)
+  * Fix so contact's organization field accepts up to 128 characters
+    (it was 50)
+  * Fix bug where listing tables in PostgreSQL database with db_prefix 
+    didn't work (#7093)
+  * Fix bug where 'text' attribute on body tag was ignored when 
+    displaying HTML message (#7109)
+  * Fix bug where next message wasn't displayed after delete in List mode (#7096)
+  * Fix so number of contacts in a group is not limited to 200 when
+    redirecting to mail composer from Contacts (#6972)
+  * Fix malformed characters in HTML message with charset meta tag 
+   not in head (#7116)
+- renamed patches:
+  - roundcubemail-1.1-beta-config_dir.patch
+  + roundcubemail-1.4.2-config_dir.patch
+
+-------------------------------------------------------------------
 Mon Dec 16 09:48:52 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
 
 - remove more cruft from the source (like .tavis or .gitignore)
