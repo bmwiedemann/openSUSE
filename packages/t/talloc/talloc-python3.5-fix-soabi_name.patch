@@ -1,6 +1,6 @@
---- a/buildtools/wafsamba/wafsamba.py	2015-11-06 08:28:25.000000000 -0500
-+++ b/buildtools/wafsamba/wafsamba.py	2016-03-07 14:28:58.412124485 -0500
-@@ -115,7 +115,7 @@
+--- a/buildtools/wafsamba/wafsamba.py
++++ b/buildtools/wafsamba/wafsamba.py
+@@ -108,7 +108,7 @@ def SAMBA_LIBRARY(bld, libname, source,
                    ldflags='',
                    external_library=False,
                    realname=None,

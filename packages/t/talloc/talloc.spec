@@ -1,7 +1,7 @@
 #
 # spec file for package talloc-man
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,8 @@ BuildRequires:  python3-base
 BuildRequires:  python3-devel
 #!BuildIgnore:  python
 %endif # build_man
-Url:            http://talloc.samba.org/
-Version:        2.2.0
+URL:            http://talloc.samba.org/
+Version:        2.3.0
 Release:        0
 Summary:        Samba talloc Library
 License:        LGPL-3.0-or-later
@@ -44,8 +44,6 @@ Source:         https://download.samba.org/pub/talloc/talloc-%{version}.tar.gz
 Source1:        https://download.samba.org/pub/talloc/talloc-%{version}.tar.asc
 Source4:        baselibs.conf
 Patch0:         talloc-python3.5-fix-soabi_name.patch
-Patch1:         waf_upgrade.patch
-Patch2:         waf_use_native_waf_timer.patch
 Source50:       talloc.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 17:24:56 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 2.3.0.
+- Patches waf_upgrade.patch and waf_use_native_waf_timer.patch
+  are no needed anymore. They are subsumed by the upstream
+  tarball.
+
+-------------------------------------------------------------------
 Mon Oct 21 14:36:01 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add two patches making build compatible with Python 3.8.0:
