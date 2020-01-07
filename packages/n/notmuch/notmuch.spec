@@ -1,7 +1,7 @@
 #
 # spec file for package notmuch
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,28 @@
 #
 
 
+%define libversion 5
 Name:           notmuch
 Version:        0.29.3
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Email/Utilities
 URL:            https://notmuchmail.org
 Source0:        %{URL}/releases/notmuch-%{version}.tar.xz
 Source1:        %{URL}/releases/notmuch-%{version}.tar.xz.asc
 Source3:        %{URL}/releases/test-databases/database-v1.tar.xz
 # key fingerprint: 7A18 807F 100A 4570 C596  8420 7E4E 65C8 720B 706B
 Source4:        notmuch.keyring
+BuildRequires:  libxapian-devel
+# info pages
+BuildRequires:  makeinfo
+BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
+BuildRequires:  pkgconfig(gmime-3.0)
+BuildRequires:  pkgconfig(talloc)
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
-%{bcond_with python}
 %{bcond_without python3}
 %{bcond_without emacs}
 
@@ -37,26 +45,13 @@ Source4:        notmuch.keyring
 %{bcond_with ruby}
 %{bcond_with go}
 
-# dtach is not present on Leap 42 or SLE <= 12
+# dtach is not present on SLE
 # cannot run the tests there
-%if 0%{?suse_version} == 1315
-%{bcond_with tests}
-%else
+%if 0%{is_opensuse}
 %{bcond_without tests}
+%else
+%{bcond_with tests}
 %endif
-
-%define libversion 5
-
-BuildRequires:  libxapian-devel
-BuildRequires:  pkg-config
-BuildRequires:  python3-Sphinx
-BuildRequires:  pkgconfig(gmime-3.0)
-BuildRequires:  pkgconfig(talloc)
-# info pages
-BuildRequires:  makeinfo
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
-
 # testsuite
 %if %{with tests}
 BuildRequires:  dtach
@@ -65,16 +60,12 @@ BuildRequires:  libgcrypt-cavs
 BuildRequires:  man
 BuildRequires:  valgrind-devel
 %endif # {with tests}
-
 %if %{with emacs}
 BuildRequires:  emacs-el
 BuildRequires:  emacs-nox
 %endif
-%if %{with python}
-BuildRequires:  python-devel
-%endif
 %if %{with python3}
-BuildRequires:  python3-devel
+BuildRequires:  python3-base
 %endif
 %if %{with ruby}
 BuildRequires:  ruby-devel
@@ -82,7 +73,6 @@ BuildRequires:  ruby-devel
 %if %{with go}
 BuildRequires:  go
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Because dealing with your mail can be so much better.
@@ -115,7 +105,6 @@ much.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libnotmuch%{libversion} = %{version}-%{release}
 
 %description    devel
@@ -124,59 +113,36 @@ developing applications that use %{name}.
 
 %package        doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Man
 Requires:       %{name} = %{version}-%{release}
 
 %description    doc
 This package contains the info pages for %{name}.
 
-
 %package   -n libnotmuch%{libversion}
 Summary:        A shared library for %{name}
-Group:          Productivity/Networking/Email/Utilities
 
 %description -n libnotmuch%{libversion}
 The libnotmuch3 package contains shared libraries for %{name}.
 
-%if %{with python}
-%package -n python-%{name}
-Summary:        Python bindings for %{name}
-#py_requires is useless as it was not designed for sub-packages
-#BR: python-devel is on the top of spec file
-Group:          Development/Libraries/Python
-Requires:       python = %{py_ver}
+%if %{with python3}
+%package -n python3-%{name}
+Summary:        Python3 bindings for %{name}
+Requires:       python = %{py3_ver}
 Recommends:     python-%{name}-doc = %{version}
 
-%description -n python-%{name}
-Python interface (bindings) for %{name}
+%description -n python3-%{name}
+Python3 interface (bindings) for %{name}
 
 %package -n python-%{name}-doc
 Summary:        Documentation of Python bindings for %{name}
-Group:          Documentation/HTML
 
 %description -n python-%{name}-doc
 Documentation of Python interface (bindings) for %{name}
 %endif
 
-%if %{with python3}
-%package -n python3-%{name}
-Summary:        Python3 bindings for %{name}
-Group:          Development/Libraries/Python
-Requires:       python = %{py3_ver}
-%if %{with python}
-#documentation is built only when python2 is installed
-#this shall be fixed once python2 disappear from openSUSE
-Recommends:     python-%{name}-doc = %{version}
-%endif
-
-%description -n python3-%{name}
-Python3 interface (bindings) for %{name}
-%endif
-
 %if %{with emacs}
 %package emacs
 Summary:        Emacs lisp email client based on %{name}
-Group:          Productivity/Networking/Email/Utilities
 Requires:       %{name} = %{version}-%{release}
 Requires:       emacs
 Requires:       emacs-el
@@ -219,14 +185,8 @@ pushd bindings
 cp -r python python3
 pushd python3
 python3 setup.py build
-popd
-%endif
-
-%if %{with python}
-pushd python
-python2 setup.py build
 pushd docs
-make dirhtml
+make %{?_smp_mflags} dirhtml
 rm -f build/dirhtml/.buildinfo
 popd
 popd
@@ -243,23 +203,17 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
 %endif
 
-%if %{with python}
-pushd bindings/python
-python2 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-popd
-%endif
-
 %check
 %if %{with tests}
 cp %{SOURCE3} test/test-databases
 
 # this test fails on PPC64 & PPC64LE
 # upstream knows about that
-%ifarch %power64
+%ifarch %{power64}
 export NOTMUCH_SKIP_TESTS="T360-symbol-hiding"
 %endif # power64
 # FIXME: why does this test fail only on armv7l?
-%ifarch %arm
+%ifarch %{arm}
 export NOTMUCH_SKIP_TESTS="T600-named-queries"
 %endif # arm
 
@@ -270,14 +224,13 @@ export NOTMUCH_SKIP_TESTS="T357-index-decryption ${NOTMUCH_SKIP_TESTS}"
 
 # can only run the testsuite when debugging symbols are available (boo#1152451)
 if echo "%{optflags}"|grep -q '\-g'; then
-    make check
+    make %{?_smp_mflags} check
 fi
 
 %endif # {with tests}
 
 %post -n libnotmuch%{libversion} -p /sbin/ldconfig
 %postun -n libnotmuch%{libversion} -p /sbin/ldconfig
-
 %post doc
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
@@ -289,10 +242,10 @@ fi
 %license COPYING COPYING-GPL-3
 %{_bindir}/%{name}
 %{_bindir}/%{name}-emacs-mua
-%{_mandir}/man1/%{name}*.1*
-%{_mandir}/man5/%{name}-hooks.5*
-%{_mandir}/man7/%{name}-search-terms.7*
-%{_mandir}/man7/%{name}-properties.7*
+%{_mandir}/man1/%{name}*.1%{?ext_man}
+%{_mandir}/man5/%{name}-hooks.5%{?ext_man}
+%{_mandir}/man7/%{name}-search-terms.7%{?ext_man}
+%{_mandir}/man7/%{name}-properties.7%{?ext_man}
 
 %files -n libnotmuch%{libversion}
 %{_libdir}/libnotmuch.so.%{libversion}*
@@ -302,24 +255,17 @@ fi
 %{_libdir}/libnotmuch.so
 
 %files doc
-%{_infodir}/%{name}.info.*
-%{_infodir}/%{name}-*.info.*
-
-%if %{with python}
-%files -n python-%{name}
-%doc bindings/python/README
-%{python_sitelib}/%{name}/
-%{python_sitelib}/%{name}*egg-info
-
-%files -n python-%{name}-doc
-%doc bindings/python/docs/build/dirhtml/
-%endif
+%{_infodir}/%{name}.info%{?ext_info}
+%{_infodir}/%{name}-*.info%{?ext_info}
 
 %if %{with python3}
 %files -n python3-%{name}
 %doc bindings/python/README
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}*egg-info
+
+%files -n python-%{name}-doc
+%doc bindings/python3/docs/build/dirhtml/
 %endif
 
 %if %{with emacs}
