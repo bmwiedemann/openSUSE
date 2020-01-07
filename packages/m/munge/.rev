@@ -106,4 +106,12 @@ as well.</comment>
   has been fixed. (forwarded request 754490 from eeich)</comment>
     <requestid>754491</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>c3323530bf24fce65e244f04d82968b4</srcmd5>
+    <version>0.5.13</version>
+    <time>1578437595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761356</requestid>
+  </revision>
 </revisionlist>

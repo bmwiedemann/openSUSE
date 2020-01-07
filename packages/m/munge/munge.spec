@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,8 @@ reserved ports, or platform-specific methods.
 Summary:        Libraries for applications using MUNGE
 Group:          System/Libraries
 Recommends:     munge
+# For compatibility with the MUNGE upstream SPEC file.
+Provides:       munge-libs = %version
 
 %description -n lib%{name}%{lversion}
 A shared library for applications using the MUNGE authentication service.
