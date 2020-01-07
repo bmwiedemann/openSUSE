@@ -1,7 +1,7 @@
 #
 # spec file for package kismet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,13 @@
 #
 
 
-%define realver 2019-09-R1
+%ifarch %{ix86} x86_64
+%bcond_with ubertooth
+%endif
+
+%define realver 2019-12-R2
 Name:           kismet
-Version:        2019_09_R1
+Version:        2019_12_R2
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -46,14 +50,23 @@ BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{with ubertooth}
+BuildRequires:  libbtbb-devel
+BuildRequires:  ubertooth-devel
+%endif
 Recommends:     kismet-capture-linux-wifi
 Recommends:     kismet-capture-linux-bluetooth
 Recommends:     kismet-capture-freaklabs-zigbee
 Recommends:     kismet-capture-nrf-mousejack
+Recommends:     kismet-capture-ti-cc2540
+Recommends:     kismet-capture-nrf-51822
 Recommends:     kismet-capture-sdr-rtladsb
 Recommends:     kismet-capture-sdr-rtlamr
 Recommends:     kismet-capture-sdr-rtl433
 Recommends:     kismet-logtools
+%if 0%{with ubertooth}
+Recommends:     kismet-capture-ubertooth-one
+%endif
 %{?systemd_requires}
 
 %description
@@ -163,7 +176,40 @@ Requires:       python3-pyserial
 Kismet is a wireless network and device detector, sniffer, wardriving
 tool, and WIDS (wireless intrusion detection) framework.
 
-This subpackage contains the Freaklabs Zigbee captere helper.
+This subpackage contains the Freaklabs Zigbee capture helper.
+
+%package capture-ti-cc2540
+Summary:        Kismet TI CC2540 (BTLE) capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-ti-cc2540
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Texas Instruments CC2540 BTLE capture
+helper.
+
+%package capture-nrf-51822 
+Summary:        Kismet nRF 51822 (BTLE) capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-nrf-51822
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the nRF 51822 BTLE capture helper.
+
+%if 0%{with ubertooth}
+%package capture-ubertooth-one
+Summary:        Kismet Ubertooth One (BTLE) capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-ubertooth-one
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Ubertooth One (BTLE) capture helper.
+%endif
 
 %package devel
 Summary:        Development files for kismet
@@ -257,18 +303,26 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %files capture-sdr-rtladsb
 %{_bindir}/kismet_cap_sdr_rtladsb
-%{_bindir}/kismet_cap_sdr_rtladsb_mqtt
 %{python3_sitelib}/KismetCaptureRtladsb*
 
 %files capture-sdr-rtlamr
 %{_bindir}/kismet_cap_sdr_rtlamr
-%{_bindir}/kismet_cap_sdr_rtlamr_mqtt
 %{python3_sitelib}/KismetCaptureRtlamr*
 
 %files capture-sdr-rtl433
 %{_bindir}/kismet_cap_sdr_rtl433
-%{_bindir}/kismet_cap_sdr_rtl433_mqtt
 %{python3_sitelib}/KismetCaptureRtl433*
+
+%files capture-ti-cc2540
+%{_bindir}/kismet_cap_ti_cc_2540
+
+%files capture-nrf-51822
+%{_bindir}/kismet_cap_nrf_51822
+
+%if 0%{with ubertooth}
+%files capture-ubertooth-one
+%{_bindir}/kismet_cap_ubertooth_one
+%endif
 
 %files devel
 %{_libdir}/pkgconfig/kismet.pc

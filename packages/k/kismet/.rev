@@ -300,4 +300,41 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>752704</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7a65b3dc923d8a25a53d03b0a11676d5</srcmd5>
+    <version>2019_12_R2</version>
+    <time>1578437492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019-12-R2
+  A bugfix release for Kismet 2019-12, R2 solves a number of quirks
+  which were quite annoying:
+  * Solve a race condition in Linux with interface naming. Due to
+    how the nl80211 layer handles interface naming, combined with
+    how systemd can name interfaces on some systems, it was
+    possible to have a race condition when Kismet defaulted to
+    kismonX interface names, resulting in either errors or Kismet
+    ignoring one of the interfaces.
+  * Solve a free on an unused pointer in nl80211 vif creation. The
+    new vif creation code doesn’t use the nl80211 flags
+    sub-message when there are no flags to add, but tried to free
+    it. This could cause a crash the first time trying to open a
+    source, but the second time would succeed.
+  * Fix TICC2540 USB devices. Some systems were very unhappy with
+    the order in which the USB device was initialized; now it
+    should be fine.
+  * Work around the very broken RTL8812BU driver. While we don’t
+    recommend this driver or these cards, due to a HUGE number of
+    issues, Kismet will now do its best to open one and get it
+    into monitor mode.
+  * Much smoother operation with very very large numbers of
+    sources. A side effect of the vif naming fix, interfaces are
+    now initialized and opened one at a time. While this may take
+    much longer to open huge numbers (dozens or more) of
+    interfaces, it is much more reliable and much less likely to
+    cause Kismet or kernel problems during the initial bring-up
+    and firmware load of interfaces.
+  * Minor output text fixes. Capture interface and base
+    interface were swapped in some messages to the user.</comment>
+    <requestid>761085</requestid>
+  </revision>
 </revisionlist>

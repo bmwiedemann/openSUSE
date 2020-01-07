@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Jan  5 19:43:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2019-12-R2
+  A bugfix release for Kismet 2019-12, R2 solves a number of quirks
+  which were quite annoying:
+  * Solve a race condition in Linux with interface naming. Due to
+    how the nl80211 layer handles interface naming, combined with
+    how systemd can name interfaces on some systems, it was
+    possible to have a race condition when Kismet defaulted to
+    kismonX interface names, resulting in either errors or Kismet
+    ignoring one of the interfaces.
+  * Solve a free on an unused pointer in nl80211 vif creation. The
+    new vif creation code doesn’t use the nl80211 flags
+    sub-message when there are no flags to add, but tried to free
+    it. This could cause a crash the first time trying to open a
+    source, but the second time would succeed.
+  * Fix TICC2540 USB devices. Some systems were very unhappy with
+    the order in which the USB device was initialized; now it
+    should be fine.
+  * Work around the very broken RTL8812BU driver. While we don’t
+    recommend this driver or these cards, due to a HUGE number of
+    issues, Kismet will now do its best to open one and get it
+    into monitor mode.
+  * Much smoother operation with very very large numbers of
+    sources. A side effect of the vif naming fix, interfaces are
+    now initialized and opened one at a time. While this may take
+    much longer to open huge numbers (dozens or more) of
+    interfaces, it is much more reliable and much less likely to
+    cause Kismet or kernel problems during the initial bring-up
+    and firmware load of interfaces.
+  * Minor output text fixes. Capture interface and base
+    interface were swapped in some messages to the user.
+
+-------------------------------------------------------------------
+Wed Dec 25 20:33:37 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2019-12-R1
+  Bugfixes and performance boosts
+  * Remove OpenMP/parallel processing; this resolves a massive
+    CPU burn on even moderate numbers of devices.
+  * Fix logging bug causing export of all devices every logging
+    cycle, instead of only modified and new devices.
+  * Revamped python-kismet-external using asyncio to prevent a
+    large CPU wasting IO loop.
+  * Bugfixes to the Linux netlink monitor controls to prefer
+    nl80211, find existing monitor interfaces correctly, and to
+    work on devices that don’t support IOxIWCTL iocontrols at all
+    (AX200).
+  * Switch to std::unordered_map hash maps for O(1) lookups
+    whenever possible
+  New features
+  * BTLE packet capture and basic device display, using the
+    aUbertooth One, CC2540, or nRF51822;
+  * New SDR demodulators for ADSB (airplane) and AMR (power and
+    water meter) with no external dependencies beyond librtlsdr
+    and python3!
+  * New ADSB mapping UI
+  * BTLE support in the UI
+  * New formatting options for ekjson to simplify export to other
+    tools
+  * Device present/missing alerts
+  * ADSB geolocation
+  * Detection of CVE-2019-17666 RTLWIFI vulnerabilities
+
+-------------------------------------------------------------------
 Sun Dec  1 10:16:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Completely rewritten spec-file
