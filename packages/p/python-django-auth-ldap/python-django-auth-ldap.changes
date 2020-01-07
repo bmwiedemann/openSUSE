@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:58:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.0:
+  - Reject authentication requests without a username.
+  - Added support for Django 3.0 and Python 3.8.
+  - Removed support for Django end of life Django 2.1.
+
+-------------------------------------------------------------------
 Mon Sep 16 10:01:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.0:

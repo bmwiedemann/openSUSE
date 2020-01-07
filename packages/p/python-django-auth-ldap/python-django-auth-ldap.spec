@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-auth-ldap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-auth-ldap
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Django LDAP authentication backend
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/django-auth-ldap/django-auth-ldap
 Source:         https://files.pythonhosted.org/packages/source/d/django-auth-ldap/django-auth-ldap-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module ldap >= 3.1}
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -35,7 +34,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  openldap2
 # needed for ldapadd binary in tests
 BuildRequires:  openldap2-client
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 Requires:       python-ldap >= 3.1
 BuildArch:      noarch
 %python_subpackages
