@@ -176,4 +176,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>752702</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8969a8deca0c18488d3c3cf8493201ae</srcmd5>
+    <version>2020.01</version>
+    <time>1578437540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761268</requestid>
+  </revision>
 </revisionlist>

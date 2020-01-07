@@ -1,0 +1,32 @@
+commit 105d09d62d80a62f40b0db2146eec1a09bfdfb37
+Author: Stefan Seifert <nine@detonation.org>
+Date:   Mon Jan 6 17:00:23 2020 +0100
+
+    Fix NativeCall libraries losing state during repossession
+    
+    Repossession of objects calls their gc_free. For NativeCall sites this
+    will lead to unloading the library. Doing so causes trouble as the
+    module may alreay have run some initialization call as is the case for
+    IO::Socket::Async::SSL. Even though we later load the library again, we
+    will run into issues.
+    Better to keep libraries loaded in the very theoretical case of some
+    program only referencing a native call for a while than to run into
+    segfaults. So remove the call to MVM_nativecall_free_lib until we have a
+    proper solution.
+
+diff --git a/src/6model/reprs/NativeCall.c b/src/6model/reprs/NativeCall.c
+index 398e7da56..0eef99b11 100644
+--- a/src/6model/reprs/NativeCall.c
++++ b/src/6model/reprs/NativeCall.c
+@@ -143,8 +143,11 @@ static void gc_cleanup(MVMThreadContext *tc, MVMSTable *st, void *data) {
+     MVMNativeCallBody *body = (MVMNativeCallBody *)data;
+     if (body->lib_name)
+         MVM_free(body->lib_name);
++/* FIXME don't free the library unconditionally, as the handle will be shared among NativeCall sites
++ * Also if we're called by repossession, we would use any initialized state of the library
+     if (body->lib_handle)
+         MVM_nativecall_free_lib(body->lib_handle);
++*/
+     if (body->arg_types)
+         MVM_free(body->arg_types);
+     if (body->arg_info)

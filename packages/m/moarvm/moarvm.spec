@@ -1,7 +1,7 @@
 #
 # spec file for package moarvm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global mvrel 2019.11
+%global mvrel 2020.01
 Name:           moarvm
 Version:        %mvrel
 Release:        2.1
@@ -27,7 +27,7 @@ URL:            http://moarvm.org
 Source:         http://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
-Patch1:         MoarVM-buildroot-fix.diff
+Patch1:         moarvm-fix-segfaults-in-openssl.diff
 BuildRequires:  perl(ExtUtils::Command)
 
 %description
