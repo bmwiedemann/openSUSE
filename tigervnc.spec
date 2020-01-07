@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 
 Name:           tigervnc
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Provides:       tightvnc = 1.3.9
 Obsoletes:      tightvnc < 1.3.9
@@ -105,13 +105,13 @@ BuildRequires:  pkgconfig(xtrans) >= 1.2.2
 Requires(post):   update-alternatives
 Requires(postun): update-alternatives
 %endif
-Url:            http://tigervnc.org/
+URL:            http://tigervnc.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        An implementation of VNC
 #Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz
 License:        GPL-2.0-only AND MIT
 Group:          System/X11/Servers/XF86_4
-Source1:        tigervnc-1.9.0-201-e71a426.tar.gz
+Source1:        tigervnc-%{version}.tar.gz
 Source4:        10-libvnc.conf
 Source5:        vnc-server.susefirewall
 Source6:        vnc-httpd.susefirewall
@@ -140,6 +140,7 @@ Patch8:         u_tigervnc-add-autoaccept-parameter.patch
 Patch9:         u_change-button-layout-in-ServerDialog.patch
 Patch10:        n_correct_path_in_desktop_file.patch
 Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
+Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
 
 %description
 TigerVNC is an implementation of VNC (Virtual Network Computing), a
@@ -244,7 +245,7 @@ This is a wrapper that looks like x11vnc, but starts x0vncserver instead.
 It maps common x11vnc arguments to x0vncserver arguments.
 
 %prep
-%setup -T -b1 -q -n tigervnc
+%setup -T -b1 -q -n tigervnc-%{version}
 cp -r /usr/src/xserver/* unix/xserver/
 
 %patch1 -p1
@@ -258,6 +259,7 @@ cp -r /usr/src/xserver/* unix/xserver/
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 pushd unix/xserver
 patch -p1 < ../xserver120.patch
