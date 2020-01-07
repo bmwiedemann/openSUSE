@@ -7,4 +7,12 @@
     <comment>This package provides the Tinkerforce brick daemon (https://www.tinkerforge.com/en/doc/). It acts as a bridge between the Tinkerforge hardware and the API bindings for the different programming languages.</comment>
     <requestid>738120</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31729a9c654154b7ecaff55dc3b0bd52</srcmd5>
+    <version>2.4.1</version>
+    <time>1578437565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream version 2.4.1...</comment>
+    <requestid>761279</requestid>
+  </revision>
 </revisionlist>

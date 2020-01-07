@@ -1,6 +1,7 @@
 #
 # spec file for package brickd
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,21 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           brickd
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Tinkerforce Brick Daemon
 License:        GPL-2.0-only
 Group:          System/Daemons
-Url:            http://www.tinkerforge.com
-Source0:        https://github.com/Tinkerforge/brickd/archive/v2.4.0.tar.gz
-Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-2.4.0.tar.gz
-# backport from upstream
-Patch0:         0001-Makefile-Support-DESTDIR-variable.patch
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-use-RPM_OPT_FLAGS-in-rpm-package-builds.patch
-Patch2:         0001-systemd-unit-files-are-always-in-prefix-lib-systemd.patch
+URL:            http://www.tinkerforge.com
+Source0:        https://github.com/Tinkerforge/brickd/archive/v%{version}.tar.gz
+Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-%{version}.tar.gz
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(systemd)
 Suggests:       logrotate
@@ -38,9 +37,6 @@ the TCP/IP socket connection to the language binding APIs.
 
 %prep
 %setup -q -a 1 -n %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 mv daemonlib-%{name}-%{version} src/daemonlib
 
 %build
