@@ -1,7 +1,7 @@
 #
 # spec file for package libXpm
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXpm
 %define lname	libXpm4
-Version:        3.5.12
+Version:        3.5.13
 Release:        0
 Summary:        X Pixmap image file format library
 License:        MIT
@@ -68,8 +68,8 @@ in %lname.
 
 %package tools
 Summary:        Conversion utilities for X Pixmap (XPM) files
-Group:          Productivity/Graphics/Convertors
 # O/P added for 12.2
+Group:          Productivity/Graphics/Convertors
 Provides:       xorg-x11-libXpm = 7.6_%version-%release
 Obsoletes:      xorg-x11-libXpm < 7.6_%version-%release
 

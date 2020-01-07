@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  4 22:46:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 3.5.13
+  The fixes here are some found by static analysers, and a build
+  fix for Windows (which, curiously, is dated to 2012 so clearly
+  we're at the top of the game here). Nothing overly exciting,
+  but covscan, parfait, etc. should be a bit happier now.
+
+-------------------------------------------------------------------
 Sun Jan  1 21:31:52 UTC 2017 - sndirsch@suse.com
 
 - added baselibs.conf as source in specfile 

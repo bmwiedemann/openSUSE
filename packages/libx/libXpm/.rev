@@ -74,4 +74,16 @@
   * Handle size_t in file/buffer length</comment>
     <requestid>448432</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2bb282f9e6be5ae0242e072f2fc9cfb0</srcmd5>
+    <version>3.5.13</version>
+    <time>1578437447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.13
+  The fixes here are some found by static analysers, and a build
+  fix for Windows (which, curiously, is dated to 2012 so clearly
+  we're at the top of the game here). Nothing overly exciting,
+  but covscan, parfait, etc. should be a bit happier now.</comment>
+    <requestid>760856</requestid>
+  </revision>
 </revisionlist>
