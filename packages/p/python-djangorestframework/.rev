@@ -96,4 +96,14 @@
   * Various bugfixes</comment>
     <requestid>731201</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b6d346ccc38c04a4fe5573f76fda4b1d</srcmd5>
+    <version>3.11.0</version>
+    <time>1578437631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.0:
+  * various minor updates
+  * django 3.x compatibility</comment>
+    <requestid>761156</requestid>
+  </revision>
 </revisionlist>
