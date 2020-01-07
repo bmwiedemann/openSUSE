@@ -1,7 +1,7 @@
 #
 # spec file for package osc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.167.1
+%define version_unconverted 0.167.2
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 
 Name:           osc
-Version:        0.167.1
+Version:        0.167.2
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
@@ -85,7 +85,7 @@ Recommends:     obs-service-source_validator
 Recommends:     xdg-utils
 # for osc >= 0.167.0 the newest build version is needed. 
 # Otherwise osc chroot might not work correctly.
-Conflicts:      build < 20191205
+Conflicts:      build < 20200106
 %endif
 %endif
 # needed for storing credentials in kwallet/gnome-keyring

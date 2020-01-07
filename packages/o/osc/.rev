@@ -1282,4 +1282,16 @@ The actual python-keyring package is only available in the devel:languages:pytho
   python3 version on CentOS 8 and higer</comment>
     <requestid>755560</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>b4835847e76c5051ed58c97e1322d33d</srcmd5>
+    <version>0.167.2</version>
+    <time>1578437734</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.167.2
+  * fix regression in osc chroot
+  * fix broken importsrcpkg
+
+sr#761596 needed for this.</comment>
+    <requestid>761597</requestid>
+  </revision>
 </revisionlist>

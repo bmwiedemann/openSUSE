@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:54:25 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.167.2
+  * fix regression in osc chroot
+  * fix broken importsrcpkg 
+
+-------------------------------------------------------------------
 Tue Dec 10 12:44:18 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.167.1
