@@ -1,7 +1,7 @@
 #
 # spec file for package YODA
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define so_name lib%{name}-1_7_7
+%define so_name lib%{name}-1_8_0
 
 Name:           YODA
-Version:        1.7.7
+Version:        1.8.0
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://yoda.hepforge.org/
+URL:            http://yoda.hepforge.org/
 Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
 Patch1:         sover.diff
 BuildRequires:  gcc-c++
@@ -132,7 +132,8 @@ sed -E -i "s|^#! /usr/bin/env bash|#! /bin/bash|" %{buildroot}%{_bindir}/yoda-co
 
 %files devel
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING
+%doc AUTHORS ChangeLog
+%license COPYING
 %{_bindir}/aida2flat
 %{_bindir}/aida2yoda
 %{_bindir}/flat2yoda

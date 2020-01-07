@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan  4 16:41:21 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.0:
+  * Add extra optional bool arguments to the mkScatter converter
+    functions for Histo1D and Histo2D types.
+  * Force rebuild of the Python interface if a sufficient Cython
+    is found, even if the generated .cpp file is present at
+    configure-time.
+  * Final conversion to use ast module not just in autotype but as
+    first choice in AO.annotation.
+  * Remove ALL uses of @property in the Python interfaces: all
+    methods must have call-parentheses now.
+  * Improve Python annotation parsing to preferentially use ast
+    rather than yaml.
+  * Add x/yErrs and x/yErrAvgs functions to Scatter2D Python.
+- Rebase so numbering patch for updated version.
+
+-------------------------------------------------------------------
 Wed Aug 21 08:14:14 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.7.7:
