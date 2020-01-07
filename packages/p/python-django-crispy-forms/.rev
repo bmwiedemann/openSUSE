@@ -48,4 +48,15 @@
   * django-20.patch</comment>
     <requestid>744151</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7ece3452f586cde1c534f701bb84822d</srcmd5>
+    <version>1.8.1</version>
+    <time>1578437667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  * Fixing FileField UI bug introduced with 1.8.0
+  * Remove is-valid css class for radio (bug introduced with 1.8.0)
+  * Various alignment and margin fixes for Bootstrap 4 template pack</comment>
+    <requestid>761489</requestid>
+  </revision>
 </revisionlist>
