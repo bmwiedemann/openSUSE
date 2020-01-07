@@ -1,7 +1,7 @@
 #
 # spec file for package xortool
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xortool
-Version:        0.96
+Version:        0.98+git20191025
 Release:        0
 Summary:        A tool to analyze multi-byte xor cipher
 License:        MIT
 Group:          Productivity/Security
-Url:            https://github.com/hellman/xortool
-Source:         https://github.com/hellman/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+URL:            https://github.com/hellman/xortool
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-docopt
+BuildRequires:  python3-setuptools
 BuildArch:      noarch
 
 %description
@@ -37,16 +38,16 @@ A tool to do some xor analysis:
 %setup -q
 
 %build
-python2 setup.py build
+%python3_build
 
 %install
-python2 setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%python3_install
 
 %files
-%defattr (-,root,root)
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/%{name}*
-%{python_sitelib}/%{name}/
-%{python_sitelib}/%{name}-*
+%{python3_sitelib}/%{name}/
+%{python3_sitelib}/%{name}-*
 
 %changelog

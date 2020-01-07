@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/hellman/xortool.git</param>
+    <param name="filename">xortool</param>
+    <param name="versionformat">0.98+git%cd</param>
+    <param name="revision">8827320d493a381dda46b537ebf330b135a08d66</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>
