@@ -18,7 +18,7 @@
 
 %define sover   2_0-0
 Name:           switchboard
-Version:        2.3.6
+Version:        2.3.7
 Release:        0
 Summary:        Modular Desktop Settings Hub
 License:        LGPL-2.1-only AND LGPL-3.0-only
