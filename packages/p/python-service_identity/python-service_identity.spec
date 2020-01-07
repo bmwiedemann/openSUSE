@@ -1,7 +1,7 @@
 #
 # spec file for package python-service_identity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ service_identity implements RFC 6125 fully and plans to add other
 relevant RFCs too.
 
 %prep
-%setup -q -n %{oname}-%{version}
+%setup -q -n service-identity-%{version}
 
 %build
 %python_build
@@ -68,7 +68,7 @@ relevant RFCs too.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %license LICENSE

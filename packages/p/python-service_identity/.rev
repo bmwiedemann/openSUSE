@@ -83,4 +83,13 @@
 - add fetch-intersphinx-inventories.sh to fetch the inventories</comment>
     <requestid>680512</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5a274da72c8c31ce1d9939145f4646b7</srcmd5>
+    <version>18.1.0</version>
+    <time>1578437430</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+- Upstream seems to rebase the tarball, refetch it</comment>
+    <requestid>760706</requestid>
+  </revision>
 </revisionlist>
