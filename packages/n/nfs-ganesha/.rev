@@ -67,4 +67,14 @@
 </comment>
     <requestid>758112</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1f4dbefcb8408b7d9eeef193c2f1053f</srcmd5>
+    <version>3.1+git0.4de09d665</version>
+    <time>1578437439</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop -DCMAKE_BUILD_TYPE=Release in favour of %cmake macro default.
+
+- Use %cmake macros for build in order to respect $optflags.</comment>
+    <requestid>760717</requestid>
+  </revision>
 </revisionlist>

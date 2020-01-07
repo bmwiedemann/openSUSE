@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-ganesha
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -500,12 +500,12 @@ export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
-cmake .	-DCMAKE_BUILD_TYPE=Release			\
+%cmake							\
 	-DBUILD_CONFIG=rpmbuild				\
 	-DUSE_FSAL_NULL=%{use_fsal_null}		\
 	-DUSE_FSAL_MEM=%{use_fsal_mem}			\
 	-DUSE_FSAL_XFS=%{use_fsal_xfs}			\
-	-DUSE_FSAL_LUSTRE=%{use_fsal_lustre}			\
+	-DUSE_FSAL_LUSTRE=%{use_fsal_lustre}		\
 	-DUSE_FSAL_CEPH=%{use_fsal_ceph}		\
 	-DUSE_FSAL_RGW=%{use_fsal_rgw}			\
 	-DUSE_FSAL_GPFS=%{use_fsal_gpfs}		\
@@ -531,7 +531,7 @@ cmake .	-DCMAKE_BUILD_TYPE=Release			\
 	-DALLOCATOR=jemalloc
 %endif
 
-make %{?_smp_mflags} || make %{?_smp_mflags} || make
+%cmake_build
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/ganesha/
@@ -586,7 +586,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/init.d
 install -m 755 scripts/init.d/nfs-ganesha.gpfs		%{buildroot}%{_sysconfdir}/init.d/nfs-ganesha-gpfs
 %endif
 
-%make_install
+%cmake_install
 
 %if ( 0%{?suse_version} )
 %pre
