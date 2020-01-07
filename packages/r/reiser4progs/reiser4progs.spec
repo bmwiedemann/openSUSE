@@ -1,7 +1,7 @@
 #
 # spec file for package reiser4progs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           reiser4progs
-Version:        1.2.1
+Version:        2.0.0
 Release:        0
-%define lsuf	-1_2-1
+%define lsuf	-2_0-0
 Summary:        Utilities for Managing the Reiser4 File System
 License:        GPL-2.0-only
 Group:          System/Filesystems
@@ -106,13 +106,13 @@ rm -f "%buildroot/%_libdir"/*.la
 %_sbindir/*reiser4
 
 %files -n libreiser4%lsuf
-%_libdir/libreiser4-1.2.so.1*
+%_libdir/libreiser4-2.0.so.0*
 
 %files -n libreiser4-minimal%lsuf
-%_libdir/libreiser4-minimal-1.2.so.1*
+%_libdir/libreiser4-minimal-2.0.so.0*
 
 %files -n librepair%lsuf
-%_libdir/librepair-1.2.so.1*
+%_libdir/librepair-2.0.so.0*
 
 %files devel
 %_includedir/reiser4/
