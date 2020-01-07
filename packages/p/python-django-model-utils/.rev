@@ -125,4 +125,19 @@
 - Remove upstream merged fix-deferred.patch</comment>
     <requestid>713052</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92e176215ab717aa9b7452451ae296f8</srcmd5>
+    <version>4.0.0</version>
+    <time>1578437656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  * Added Choices.subset.
+  * Remove hacks for previously supported Django versions. (Fixes GH-390)
+  * Dropped support for Python 2.7. (Fixes GH-393)
+  * Dropped usage of six
+  * Drop support for Django 1.11
+  * Add support for Python 3.8
+  * Add support for Django 3.0</comment>
+    <requestid>761368</requestid>
+  </revision>
 </revisionlist>

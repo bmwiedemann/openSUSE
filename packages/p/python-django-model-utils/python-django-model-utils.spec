@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-model-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define skip_python2 1
 Name:           python-django-model-utils
-Version:        3.2.0
+Version:        4.0.0
 Release:        0
 Summary:        Django model mixins and utilities
 License:        BSD-3-Clause
@@ -26,12 +27,12 @@ URL:            http://github.com/carljm/django-model-utils/
 Source:         https://github.com/jazzband/django-model-utils/archive/%{version}.tar.gz#/django-model-utils-%{version}.tar.gz
 # PATCH-FIX-SUSE switch to sqlite from pgsql during testing
 Patch0:         use-sqlite.patch
-BuildRequires:  %{python_module Django >= 1.4.2}
+BuildRequires:  %{python_module Django >= 2.0}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-Django >= 1.4.2
+Requires:       python-Django >= 2.0
 BuildArch:      noarch
 %python_subpackages
 

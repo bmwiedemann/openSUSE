@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:15:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.0:
+  * Added Choices.subset.
+  * Remove hacks for previously supported Django versions. (Fixes GH-390)
+  * Dropped support for Python 2.7. (Fixes GH-393)
+  * Dropped usage of six
+  * Drop support for Django 1.11
+  * Add support for Python 3.8
+  * Add support for Django 3.0
+
+-------------------------------------------------------------------
 Tue Jul  2 12:20:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch use-sqlite.patch to use sqlite for testing and not
