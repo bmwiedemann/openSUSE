@@ -14,4 +14,14 @@
 </comment>
     <requestid>693124</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5aaab51c45fefb34c6019c1b185838dd</srcmd5>
+    <version>1.9.2</version>
+    <time>1578437669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * Prevented deprecation warnings with Django 3.0.
+  * Updated Danish and Indonesian translations.</comment>
+    <requestid>761491</requestid>
+  </revision>
 </revisionlist>

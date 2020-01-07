@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:32:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.2:
+  * Prevented deprecation warnings with Django 3.0.
+  * Updated Danish and Indonesian translations.
+
+-------------------------------------------------------------------
 Tue Apr  9 23:44:10 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite, and set Source to PyPI sdist
