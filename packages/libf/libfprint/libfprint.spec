@@ -1,7 +1,7 @@
 #
 # spec file for package libfprint
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2013 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 Name:           libfprint
-Version:        0.99.0
+Version:        1.0
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/fprint
-Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/uploads/82ba3cef5bdf72997df711eacdb13c0f/%{name}-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/uploads/aff93e9921d1cff53d7c070944952ff9/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
