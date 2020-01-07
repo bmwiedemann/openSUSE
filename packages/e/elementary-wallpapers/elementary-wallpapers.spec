@@ -17,7 +17,7 @@
 
 
 Name:           elementary-wallpapers
-Version:        5.4
+Version:        5.5.0
 Release:        0
 Summary:        The desktop backgrounds from Pantheon
 License:        CC-BY-NC-SA-2.0
@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 Url:            https://elementary.io/
 Source:         https://github.com/elementary/wallpapers/archive/%{version}.tar.gz#/wallpapers-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  meson
 Conflicts:      luna-wallpapers
 Provides:       pantheon-wallpapers = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -51,29 +52,25 @@ This package provides the default wallpaper in Elementary OS.
 %prep
 %setup -q -n wallpapers-%{version}
 
-cp --no-preserve=mode debian/copyright COPYING
-
 %build
-:
+%meson
+%meson_build
 
 %install
-cat debian/install | while read _install; do
-  ! echo "$_install" | grep -q "^#" || continue
-  install -d %{buildroot}/${_install#* }
-  install -m0644 ${_install% *} %{buildroot}/${_install#* }
-done
+%meson_install
 
 # NOTE: cat switchboard-plug-pantheon-shell.spec
-install -m0644 elementaryos-default %{buildroot}%{_datadir}/backgrounds/default-wallpaper
-rm -rf %{buildroot}%{_datadir}/backgrounds/elementaryos-default
+rm -f %{buildroot}%{_datadir}/backgrounds/elementaryos-default
+mv elementaryos-default %{buildroot}%{_datadir}/backgrounds/default-wallpaper
 
 %fdupes -s %{buildroot}%{_datadir}
 
 %files
 %defattr(-,root,root)
-%doc COPYING
+%doc README.md
 %dir %{_datadir}/backgrounds
 %{_datadir}/backgrounds/*.jpg
+%{_datadir}/metainfo/io.elementary.wallpapers.appdata.xml
 
 %files -n pantheon-wallpapers-branding-upstream
 %{_datadir}/backgrounds/default-wallpaper

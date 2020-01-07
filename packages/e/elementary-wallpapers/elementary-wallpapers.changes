@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 18 15:36:21 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.5.0:
+  * Add Release to Actions
+  * Run test script with GitHub Actions (#86)
+  * Add AppData (#85)
+  * Add symlink back to master
+  * Split deb packaging into its own branch
+  * Use Meson build system (#84)
+  * Delete CODE_OF_CONDUCT.md
+  * Redo 5.1 symlink (#81)
+
+-------------------------------------------------------------------
 Mon Nov  4 14:38:26 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 5.4:
