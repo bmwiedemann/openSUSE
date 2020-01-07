@@ -1,0 +1,11 @@
+--- rt-8u202-b07/build.gradle	2018-12-10 17:30:22.000000000 +0100
++++ rt-8u202-b07/build.gradle	2019-11-23 08:23:34.257641998 +0100
+@@ -714,7 +714,7 @@
+ } else if (IS_MAC && OS_ARCH != "x86_64") {
+     throw new Exception("Unknown and unsupported build architecture: $OS_ARCH")
+ } else if (IS_LINUX && OS_ARCH != "i386" && OS_ARCH != "amd64") {
+-    throw new Exception("Unknown and unsupported build architecture: $OS_ARCH")
++    logger.warn("Unknown and unsupported build architecture: $OS_ARCH")
+ }
+ 
+ // Sanity check that we actually have a list of compile targets to execute

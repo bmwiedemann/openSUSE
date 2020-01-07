@@ -1,0 +1,14 @@
+--- rt-8u202-b07/modules/fxpackager/src/main/java/com/oracle/tools/packager/linux/LinuxAppBundler.java
++++ rt-8u202-b07-patched/modules/fxpackager/src/main/java/com/oracle/tools/packager/linux/LinuxAppBundler.java
+@@ -116,8 +116,8 @@
+             BundleParams.PARAM_RUNTIME,
+             RelativeFileSet.class,
+             params -> JreUtils.extractJreAsRelativeFileSet(System.getProperty("java.home"),
+-                    LINUX_JRE_RULES.fetchFrom(params)),
+-            (s, p) -> JreUtils.extractJreAsRelativeFileSet(s, LINUX_JRE_RULES.fetchFrom(p))
++                    LINUX_JRE_RULES.fetchFrom(params), true),
++            (s, p) -> JreUtils.extractJreAsRelativeFileSet(s, LINUX_JRE_RULES.fetchFrom(p), true)
+     );
+ 
+     @Override
+

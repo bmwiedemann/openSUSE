@@ -1,0 +1,11 @@
+--- rt-8u202-b07/modules/swing/src/main/java/javafx/embed/swing/JFXPanel.java	2018-12-10 17:30:22.000000000 +0100
++++ rt-8u202-b07/modules/swing/src/main/java/javafx/embed/swing/JFXPanel.java	2019-11-20 22:16:40.575328115 +0100
+@@ -720,7 +720,7 @@
+ 
+             int newScaleFactor = scaleFactor;
+             if (g instanceof SunGraphics2D) {
+-                newScaleFactor = ((SunGraphics2D)g).surfaceData.getDefaultScale();
++                newScaleFactor = (int)(((SunGraphics2D)g).surfaceData.getDefaultScaleX());
+             }
+             if (scaleFactor != newScaleFactor) {
+                 resizePixelBuffer(newScaleFactor);
