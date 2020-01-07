@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  5 21:10:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.9
+  * SDL2: fix linux window resizing
+  * SDL2: arrow keys on GamePad(#46)
+- Add patch:
+  * mrboom-fix-build.patch
+
+-------------------------------------------------------------------
 Mon Apr  1 23:33:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid name repetition in summary. Generalize description.

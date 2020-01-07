@@ -1,7 +1,7 @@
 #
 # spec file for package mrboom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           mrboom
-Version:        4.7
+Version:        4.9
 Release:        0
 Summary:        A Bomberman clone
 License:        MIT
@@ -26,6 +26,8 @@ Group:          Amusements/Games/Action/Other
 URL:            http://mrboom.mumblecore.org
 #Git-Clone:     https://github.com/Javanaise/mrboom-libretro.git
 Source:         https://github.com/Javanaise/%{name}-libretro/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE mrboom-fix-build.patch mardnh@gmx.de -- Fix broken Makefile for standalone builds.
+Patch0:         mrboom-fix-build.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -41,6 +43,8 @@ The goal of the game is to bomb away enemies and other players.
 
 %prep
 %setup -q -n %{name}-libretro-%{version}
+%patch0 -p1
+sed -i 's|GIT_VERSION := " $(shell git rev-parse --short HEAD)"|GIT_VERSION := " %{version}"|g' Makefile
 
 %build
 export CFLAGS="%{optflags} -fPIE"
