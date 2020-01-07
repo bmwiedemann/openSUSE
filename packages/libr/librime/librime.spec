@@ -1,7 +1,7 @@
 #
 # spec file for package librime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           librime
-Version:        1.4.1~git20190324.dcdc301
+Version:        1.5.3
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 #PATCH-FIX-OPENSUSE workaround for gcc bug 53613 on 12.3 and lower
 Patch1:         librime-1.1-gcc53613.patch
@@ -66,8 +66,8 @@ Mainly it's about to express your thinking with your keystrokes.
 
 %package -n librime1
 Summary:        Rime Input Method Engine
-Group:          System/Libraries
 # dictionaries
+Group:          System/Libraries
 Recommends:     brise
 # configuration manager
 Requires:       rime-plum
@@ -97,7 +97,6 @@ This package is the development headers of Rime.
 %patch1 -p1
 %patch2 -p1
 %endif
-sed -i "s/1.46.0/1.36.0/" CMakeLists.txt
 
 %build
 %cmake \
@@ -118,7 +117,7 @@ make %{?_smp_mflags}
 
 %files -n librime1
 %{_libdir}/%{name}.so.1
-%{_libdir}/%{name}.so.1.4.0
+%{_libdir}/%{name}.so.%{version}
 
 %files devel
 %{_includedir}/rime_api.h

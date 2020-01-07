@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  6 18:23:35 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 1.5.3:
+  * fix(cmake): find optional dependency icu [skip appveyor] (17a80f8)
+  * fix(single_char_filter): broken in librime 1.5.2 (6948a62)
+  * feat(appveyor): build variant "rime-with-plugins" for tagged commits [skip travis] (eef8c30)
+- changes in 1.5.2:
+  * fix(user_dictionary, contextual_translation): fix user phrase quality; order contextual suggestions by type (695c32)
+
+-------------------------------------------------------------------
 Sat Jul 20 13:22:57 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Don't rely on brise anymore.
