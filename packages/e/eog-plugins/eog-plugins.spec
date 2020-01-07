@@ -1,7 +1,7 @@
 #
 # spec file for package eog-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eog-plugins
-Version:        3.26.4
+Version:        3.26.5
 Release:        0
 #FIXME: add postr BuildRequires when we have a package
 Summary:        A collection of plugins for Eye of GNOME
