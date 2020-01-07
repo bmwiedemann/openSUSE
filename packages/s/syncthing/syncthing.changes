@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:33:41 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.3.3:
+  - Bugfixes:    
+    - #6133: Race condition in restarting folder
+    - #6139: Some sync errors get cleared despite them still being
+      valid
+  - Enhancements:   
+    - #5887: Upgrade Button Does Not Have Confirmation Dialog
+    - #6057: "Nearby devices" links should look more like links
+      (mouse pointer)
+    - #6190: Do not create .stignore if there are no ignore
+      patterns
+
+-------------------------------------------------------------------
 Wed Dec  4 14:06:40 UTC 2019 - Martin Rey <mrey@suse.com>
 
 - Update to 1.3.2:
