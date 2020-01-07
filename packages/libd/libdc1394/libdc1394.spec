@@ -1,7 +1,7 @@
 #
 # spec file for package libdc1394
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libraw1394)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2) >= 0.8.4
-BuildRequires:  pkgconfig(sdl)
 
 %description
 This library provides functionality for controlling any camera that
@@ -43,11 +42,11 @@ conforms to the 1394-Based Digital Camera Specification. It utilizes
 the low-level functionality provided by libraw1394 to communicate with
 the camera.
 
-%package 25
+%package -n libdc1394-25
 Summary:        1394-based Digital Camera Control library
 Group:          System/Libraries
 
-%description 25
+%description -n libdc1394-25
 This library provides functionality for controlling any camera that
 conforms to the 1394-Based Digital Camera Specification (which can be
 found at http://www.1394ta.org/Download/Technology/Specifications/Camera120.pdf).
@@ -78,6 +77,8 @@ This subpackage contains a 1394 bus reset utility.
 %prep
 %setup -q
 %autopatch -p1
+# Dummy macro for ignored SDL, autoreconf fails otherwise
+echo "AC_DEFUN([AM_PATH_SDL], [])" >> m4/dummy_sdl.m4
 
 %build
 autoreconf -fvi
@@ -93,8 +94,8 @@ rm -f %{buildroot}%{_mandir}/man1/dc1394_multiview.1*
 rm -f %{buildroot}%{_mandir}/man1/grab_*_image.1*
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post 25 -p /sbin/ldconfig
-%postun 25 -p /sbin/ldconfig
+%post -n libdc1394-25 -p /sbin/ldconfig
+%postun -n libdc1394-25 -p /sbin/ldconfig
 
 %files tools
 %license COPYING
@@ -102,7 +103,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/dc1394_reset_bus
 %{_mandir}/man1/dc1394_reset_bus.1%{?ext_man}
 
-%files 25
+%files -n libdc1394-25
 %{_libdir}/libdc1394.so.25*
 
 %files devel
