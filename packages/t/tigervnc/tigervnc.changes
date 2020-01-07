@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec 31 09:53:30 UTC 2019 - Loic Devulder <ldevulder@suse.com>
+
+- Add tigervnc-fix-saving-of-bad-server-certs.patch
+  * fix saving of bad server certificates (boo#1159948)
+
+-------------------------------------------------------------------
+Tue Dec  3 10:32:36 UTC 2019 - Marius Kittler <marius.kittler@suse.com>
+
+- tigervnc-1.10.0
+  * The clipboard now supports full Unicode in the native viewer, WinVNC and Xvnc/libvnc.so
+  * The native client will now respect the system trust store when verifying server certificates
+  * Improved compatibility with VMware's VNC server
+  * Improved compatibility with some input methods on macOS
+  * Improvements to the automatic "repair" of JPEG artefacts
+  * Better handling of the Alt keys in some corner cases
+  * The Java web server has been removed as applets are no longer support by most browsers
+  * x0vncserver can now be configured to only allow local connections
+  * x0vncserver has received fixes for when only part of the display is shared
+  * Polling is now default in WinVNC as that works better for most
+
+-------------------------------------------------------------------
 Fri Oct  4 14:19:48 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - tigervnc-1.9.0-201-e71a426
