@@ -21,13 +21,9 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%ifarch s390 s390x
-%define have_wayland 0
-%else
 %define pci_ids_dir %{_sysconfdir}/X11/xorg_pci_ids
 %if 0%{?suse_version} >= 1330 || 0%{?build_xwayland}
 %define have_wayland 1
-%endif
 %endif
 
 %define build_suid_wrapper 0
