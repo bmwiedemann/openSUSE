@@ -1,7 +1,7 @@
 #
 # spec file for package ThePEG
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@
 #
 
 Name:           ThePEG
-Version:        2.1.5
+Version:        2.2.0
 Release:        0
 Summary:        Toolkit providing a common platform for event generators in C++
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://home.thep.lu.se/~leif/ThePEG/
+URL:            http://home.thep.lu.se/~leif/ThePEG/
 Source:         http://www.hepforge.org/archive/thepeg/%{name}-%{version}.tar.bz2
 Patch1:         ThePEG_gcc6_failed.patch
 BuildRequires:  HepMC2-devel
@@ -50,6 +50,8 @@ BuildRequires:  java-devel
 %endif
 BuildRequires:  pkgconfig(zlib)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# 32-BIT BUILDS ARE NOT SUPPORTED BY UPSTREAM
+ExcludeArch:    i586
 
 %description
 ThePEG project is a toolkit for providing a common platform for using and
@@ -103,7 +105,8 @@ find %{buildroot}%{_libdir}/%{name} -name "*.la" -delete
 
 %files -n ThePEG-libs
 %defattr(-,root,root)
-%doc AUTHORS GUIDELINES ChangeLog NEWS README COPYING
+%doc AUTHORS GUIDELINES ChangeLog NEWS README
+%license COPYING
 %config %{_sysconfdir}/ld.so.conf.d/%{name}.conf
 %dir %{_libdir}/%{name}/
 %{_libdir}/%{name}/*.so.*
@@ -112,6 +115,7 @@ find %{buildroot}%{_libdir}/%{name} -name "*.la" -delete
 %defattr(-,root,root)
 %{_bindir}/runThePEG
 %{_bindir}/setupThePEG
+%{_bindir}/thepeg-config
 %{_includedir}/%{name}/
 %dir %{_libdir}/%{name}/
 %{_libdir}/%{name}/*.so

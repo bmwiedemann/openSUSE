@@ -108,4 +108,12 @@ Depends on
     <comment></comment>
     <requestid>700426</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a2e4476398950a28249a6c77f842feb9</srcmd5>
+    <version>2.2.0</version>
+    <time>1578437739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761604</requestid>
+  </revision>
 </revisionlist>
