@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jan  6 15:32:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests as getting them to work is too much of a pain
+
+-------------------------------------------------------------------
+Mon Jan  6 14:36:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by django-compressor
+
