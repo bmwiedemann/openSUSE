@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:23:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2:
+  * Dropped testing for Django 1.8, 1.9, 1.10.
+  * Dropped support for Python 2.
+  * Added support for Django 2.1, 2.2, 3.0, and Python 3.7.
+  * Updated translations from Transifex.
+- Remove merged patch django-21.patch
+
+-------------------------------------------------------------------
 Mon Dec  9 14:57:10 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Remove useless pysqlite dependency. If explicit sqlite3

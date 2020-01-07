@@ -41,4 +41,17 @@
     <comment></comment>
     <requestid>755462</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>443c8efdd239e95f16e27bb46429c8f5</srcmd5>
+    <version>2.2</version>
+    <time>1578437659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2:
+  * Dropped testing for Django 1.8, 1.9, 1.10.
+  * Dropped support for Python 2.
+  * Added support for Django 2.1, 2.2, 3.0, and Python 3.7.
+  * Updated translations from Transifex.
+- Remove merged patch django-21.patch</comment>
+    <requestid>761486</requestid>
+  </revision>
 </revisionlist>
