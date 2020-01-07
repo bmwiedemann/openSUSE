@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-language-server
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-language-server
-Version:        0.31.2
+Version:        0.31.4
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -99,7 +99,8 @@ will be enabled:
 # Remove pytest addopts
 rm setup.cfg
 # One test failure on Leap 15.1 due to different pylint version
-%pytest -k 'not test_syntax_error_pylint_py3'
+SKIP_TESTS='test_syntax_error_pylint_py3'
+%pytest -k "not $SKIP_TESTS"
 
 %files %{python_files}
 %doc README.rst
