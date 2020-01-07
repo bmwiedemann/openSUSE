@@ -1,0 +1,8 @@
+--- redfish-finder_orig/redfish-finder	2019-12-10 17:16:51.421232049 +0100
++++ redfish-finder-0.4/redfish-finder	2019-12-10 17:17:33.929316027 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/libexec/platform-python
++#!/usr/bin/python3
+ 
+ import sys
+ import os

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Jan  7 11:37:34 UTC 2020 - Christian Vögl <cvoegl@suse.de>
+
+- Removed Readme.md and COPYING.
+  This files are contained in the tarball.
+
+
+-------------------------------------------------------------------
+Tue Dec 10 16:44:24 UTC 2019 - Christian Vögl <cvoegl@suse.de>
+
+- Created package from release version 0.4
+- Added python_path.patch to fix the shebang
