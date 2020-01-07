@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name libsigc++
 Name:           libsigc++3
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-3.0-or-later
