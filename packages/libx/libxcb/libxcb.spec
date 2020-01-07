@@ -1,7 +1,7 @@
 #
 # spec file for package libxcb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,20 +23,19 @@
 %bcond_without python2
 %endif
 Name:           libxcb
-Version:        1.13
+Version:        1.13.1
 Release:        0
 Summary:        X11 core protocol C library
 License:        MIT
 Group:          Development/Libraries/C and C++
 Url:            http://xcb.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xcb/libxcb
-#Git-Web:	http://cgit.freedesktop.org/xcb/libxcb/
-#DL-URL:	http://xcb.freedesktop.org/dist/
+#Git-Web:	https://cgit.freedesktop.org/xcb/libxcb/
+#DL-URL:	https://xcb.freedesktop.org/dist/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Patch1:         bug-262309_xcb-xauthlocalhostname.diff
 Patch2:         n_If-auth-with-credentials-for-hostname-fails-retry-with-XAUTHLOCALHOSTNAME.patch
-Patch3:         u_don-t-flag-extra-reply-in-xcb_take_socket.patch
 BuildRequires:  autoconf >= 2.57
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -391,7 +390,6 @@ libxcb.
 %setup -q
 %patch1
 %patch2 -p1
-%patch3 -p1
 
 %build
 ./autogen.sh
