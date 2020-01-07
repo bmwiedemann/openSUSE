@@ -245,4 +245,12 @@
     <comment>New stable release (forwarded request 750470 from iznogood)</comment>
     <requestid>750948</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f33f62d858c581cc42b77ae857e61eca</srcmd5>
+    <version>3.34.4</version>
+    <time>1578437833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761688</requestid>
+  </revision>
 </revisionlist>
