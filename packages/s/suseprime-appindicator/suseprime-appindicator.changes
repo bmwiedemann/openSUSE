@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:12:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Do not pull in any python2 based code
+
+-------------------------------------------------------------------
 Sat May 11 20:12:04 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Initial release
