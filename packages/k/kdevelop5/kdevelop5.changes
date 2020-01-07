@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan  7 13:55:48 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.4.6
+  * Filetemplates: update addresses to web ones for GPLv2 & LGPLv2
+  * Filetemplates: fix wrong text of LGPLv2+ (KDE) (was GPLv2+
+    (KDE) one) (kde#414978)
+  * Shell: default to kdevelop icon for plugins in
+    LoadedPluginsDialog list
+  * Shell: use KAboutPluginDialog in LoadedPluginsDialog
+  * Make ForegroundLock::isLockedForThread() also consider the
+    current thread being the main (Qt) thread, and thus add this
+    check in more places
+  * Clang: Fix a case of concurrent access to KTextEditor
+  * Fix wrongly internally duplicated KHelpMenu instance
+  * Only unload plugins after the DUChain shutdown to prevent
+    infinite loop due to non-loaded factories for types
+
+-------------------------------------------------------------------
 Sun Dec 22 08:04:26 UTC 2019 - wbauer@tmo.at
 
 - Require exact grantlee5 version by kdevplatform with which it was
