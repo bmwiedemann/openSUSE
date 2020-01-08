@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  5 17:29:31 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 0.9.1
+  * Extended angular neighbor search to 'close the sphere'
+  * Added and exposed mysofa_getfilter_float_nointerp method
+  * Fixed various security issues
+- Drop libmysofa-0-pkgconfig-paths.patch
+
+-------------------------------------------------------------------
 Sun Mar 31 23:23:39 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 0.7

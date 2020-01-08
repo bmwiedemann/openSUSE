@@ -33,4 +33,16 @@
 </comment>
     <requestid>690777</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5df602e8825485d26a198de257dd9c9c</srcmd5>
+    <version>0.9.1</version>
+    <time>1578508323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1
+  * Extended angular neighbor search to 'close the sphere'
+  * Added and exposed mysofa_getfilter_float_nointerp method
+  * Fixed various security issues
+- Drop libmysofa-0-pkgconfig-paths.patch</comment>
+    <requestid>760995</requestid>
+  </revision>
 </revisionlist>
