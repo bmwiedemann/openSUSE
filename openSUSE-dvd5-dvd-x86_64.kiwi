@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200107" schemaversion="4.1">
+<image name="OBS__openSUSE___20200108" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200107</productvar>
+      <productvar name="VERSION">20200108</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200107,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200108,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200107/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200108/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -584,7 +584,6 @@
       <repopackage name="fillup"/>
       <repopackage name="findutils"/>
       <repopackage name="findutils-lang"/>
-      <repopackage name="fipscheck" arch="x86_64"/>
       <repopackage name="firebird"/>
       <repopackage name="firefox-uget-integrator" arch="x86_64"/>
       <repopackage name="firewalld"/>
@@ -1258,7 +1257,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-devel"/>
       <repopackage name="kernel-devel"/>
       <repopackage name="kernel-docs"/>
       <repopackage name="kernel-firmware-all"/>
@@ -1293,7 +1291,6 @@
       <repopackage name="kernel-firmware-usb-network"/>
       <repopackage name="kernel-macros"/>
       <repopackage name="kernel-source"/>
-      <repopackage name="kernel-syms" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
       <repopackage name="keyutils-devel"/>
@@ -1846,7 +1843,6 @@
       <repopackage name="libfftw3_threads3"/>
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind3_0"/>
-      <repopackage name="libfipscheck1" arch="x86_64"/>
       <repopackage name="libfl-devel"/>
       <repopackage name="libfl2"/>
       <repopackage name="libFLAC++6"/>
@@ -4133,8 +4129,6 @@
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="permissions-doc"/>
-      <repopackage name="pesign" arch="x86_64"/>
-      <repopackage name="pesign-obs-integration" arch="x86_64"/>
       <repopackage name="pfscalibration"/>
       <repopackage name="pfstmo"/>
       <repopackage name="pfstools"/>

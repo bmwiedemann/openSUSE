@@ -2541,6 +2541,7 @@ unsorted:
   - e3 
   - eaglemode 
   - easy-rsa 
+  - easyloggingpp-devel 
   - easymock 
   - easymock-javadoc 
   - easytag 
@@ -3039,7 +3040,7 @@ unsorted:
   - finger-server 
   - fio 
   - fips 
-  - fipscheck: [i586] 
+  - fipscheck 
   - fipscheck-devel 
   - firebird-doc 
   - firebird-examples 
@@ -4774,6 +4775,7 @@ unsorted:
   - google-oauth-java-client-javadoc 
   - google-oauth-java-client-parent 
   - google-oauth-java-client-servlet 
+  - google-quiche-source 
   - google-roboto-mono-fonts 
   - googleapis-source 
   - googler 
@@ -6394,8 +6396,8 @@ unsorted:
   - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
-  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
+  - kernel-default-devel: [x86_64] # devel package of dvd:kernel-default 
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-kvmsmall: [x86_64] 
@@ -6405,7 +6407,7 @@ unsorted:
   - kernel-pae: [i586] 
   - kernel-pae-devel: [i586] 
   - kernel-source-vanilla 
-  - kernel-syms: [i586] 
+  - kernel-syms 
   - kernel-vanilla 
   - kernel-vanilla-devel 
   - ketchup 
@@ -8858,7 +8860,7 @@ unsorted:
   - libfinal-devel 
   - libfinal-examples 
   - libfinal0 
-  - libfipscheck1: [i586] 
+  - libfipscheck1 
   - libfipscheck1-32bit: [x86_64] 
   - libfishsound-devel 
   - libfishsound1 
@@ -9277,7 +9279,7 @@ unsorted:
   - libgtop-devel 
   - libgtop-doc 
   - libgtp-devel 
-  - libgtp5 
+  - libgtp6 
   - libgtpnl-devel 
   - libgtpnl0 
   - libgudev-1_0-0-32bit: [x86_64] 
@@ -10507,15 +10509,17 @@ unsorted:
   - libosmo-mgcp-client-devel 
   - libosmo-mgcp-client5 
   - libosmo-mgcp-devel 
-  - libosmo-mtp-1_1_0 
+  - libosmo-mtp-1_2_0 
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
-  - libosmo-ranap2 
-  - libosmo-sccp-1_1_0 
+  - libosmo-ranap3 
+  - libosmo-sabp-devel 
+  - libosmo-sabp0 
+  - libosmo-sccp-1_2_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
-  - libosmo-sigtran3 
-  - libosmo-xua-1_1_0 
+  - libosmo-sigtran5 
+  - libosmo-xua-1_2_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis6 
@@ -10540,6 +10544,8 @@ unsorted:
   - libosmosim0 
   - libosmotrau-devel 
   - libosmotrau2 
+  - libosmousb-devel 
+  - libosmousb0 
   - libosmovty-devel 
   - libosmovty4 
   - libosmvendor5 
@@ -13414,6 +13420,40 @@ unsorted:
   - minetest-lang 
   - minetestserver 
   - mingetty 
+  - mingw32-cross-binutils 
+  - mingw32-cross-breakpad-tools 
+  - mingw32-cross-cpp 
+  - mingw32-cross-cpp-bootstrap 
+  - mingw32-cross-gcc 
+  - mingw32-cross-gcc-bootstrap 
+  - mingw32-cross-gcc-c++ 
+  - mingw32-cross-gcc-fortran 
+  - mingw32-cross-gcc-objc 
+  - mingw32-cross-pkgconf 
+  - mingw32-filesystem 
+  - mingw32-headers 
+  - mingw32-headers-dummy-pthread 
+  - mingw32-libwinpthread1 
+  - mingw32-runtime 
+  - mingw32-winpthreads-debug 
+  - mingw32-winpthreads-devel 
+  - mingw64-cross-binutils 
+  - mingw64-cross-breakpad-tools 
+  - mingw64-cross-cpp 
+  - mingw64-cross-cpp-bootstrap 
+  - mingw64-cross-gcc 
+  - mingw64-cross-gcc-bootstrap 
+  - mingw64-cross-gcc-c++ 
+  - mingw64-cross-gcc-fortran 
+  - mingw64-cross-gcc-objc 
+  - mingw64-cross-pkgconf 
+  - mingw64-filesystem 
+  - mingw64-headers 
+  - mingw64-headers-dummy-pthread 
+  - mingw64-libwinpthread1 
+  - mingw64-runtime 
+  - mingw64-winpthreads-debug 
+  - mingw64-winpthreads-devel 
   - mingzat-fonts 
   - minidlna 
   - minigalaxy 
@@ -16721,8 +16761,8 @@ unsorted:
   - permissions-zypp-plugin 
   - permlib-devel 
   - perseus-sdr-tools 
-  - pesign: [i586] 
-  - pesign-obs-integration: [i586] 
+  - pesign 
+  - pesign-obs-integration 
   - petsc-devel 
   - petsc-doc 
   - petsc-gnu-mpich-hpc-devel 
@@ -17367,6 +17407,7 @@ unsorted:
   - pyenv-zsh-completion 
   - pymilter-common 
   - pyprompter 
+  - pyradio 
   - pyspacewar 
   - pythia-devel 
   - pythia-doc 
@@ -19172,7 +19213,6 @@ unsorted:
   - python2-pycountry 
   - python2-pycryptodome 
   - python2-pycryptodomex 
-  - python2-pycsw 
   - python2-pyct 
   - python2-pycurl 
   - python2-pycxx 
@@ -19714,6 +19754,7 @@ unsorted:
   - python2-textile 
   - python2-texttable 
   - python2-textwrap3 
+  - python2-thespian 
   - python2-thrift 
   - python2-thriftpy2 
   - python2-tinydb 
@@ -22338,6 +22379,7 @@ unsorted:
   - python3-texttable 
   - python3-textwrap3 
   - python3-thLib 
+  - python3-thespian 
   - python3-threevis 
   - python3-thrift 
   - python3-thriftpy2 
@@ -22773,6 +22815,7 @@ unsorted:
   - rainbow-zsh-completion 
   - rakudo 
   - raleway-fonts 
+  - rang-devel 
   - ranger 
   - rapid-photo-downloader 
   - rapid-photo-downloader-lang 
