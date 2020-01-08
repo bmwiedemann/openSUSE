@@ -106,4 +106,39 @@
 </comment>
     <requestid>757264</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1ba334eb3964de3022f4ba1d00b945fa</srcmd5>
+    <version>0.15.5</version>
+    <time>1578508336</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update copyright year
+- update to version 0.15.5:
+  * [WARN] Python 2 reached EOL on 2020-01-01. arrow will drop support
+    for Python 2 in a future release to be decided (see #739).
+  * [NEW] Added bounds parameter to span_range, interval and span
+    methods. This allows you to include or exclude the start and end
+    values.
+  * [NEW] arrow.get() can now create arrow objects from a timestamp
+    with a timezone, for example:
+    &gt;&gt;&gt; arrow.get(1367900664, tzinfo=tz.gettz('US/Pacific'))
+    &lt;Arrow [2013-05-06T21:24:24-07:00]&gt;
+  * [NEW] humanize can now combine multiple levels of granularity, for
+    example:
+    &gt;&gt;&gt; later140 = arrow.utcnow().shift(seconds=+8400)
+    &gt;&gt;&gt; later140.humanize(granularity=&quot;minute&quot;)
+    'in 139 minutes'
+    &gt;&gt;&gt; later140.humanize(granularity=[&quot;hour&quot;, &quot;minute&quot;])
+    'in 2 hours and 19 minutes'
+  * [NEW] Added Hong Kong locale (zh_hk).
+  * [NEW] Added humanize week granularity translation for Dutch.
+  * [NEW] Numbers are now displayed when using the seconds granularity
+    in humanize.
+  * [CHANGE] range now supports both the singular and plural forms of
+    the frames argument (e.g. day and days).
+  * [FIX] Improved parsing of strings that contain punctuation.
+  * [FIX] Improved behaviour of humanize when singular seconds are
+    involved.</comment>
+    <requestid>761075</requestid>
+  </revision>
 </revisionlist>
