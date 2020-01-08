@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-sql
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-sql
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Microsoft Azure SQL Management Client Library
 License:        MIT
