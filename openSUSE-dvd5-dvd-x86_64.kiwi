@@ -584,6 +584,7 @@
       <repopackage name="fillup"/>
       <repopackage name="findutils"/>
       <repopackage name="findutils-lang"/>
+      <repopackage name="fipscheck" arch="x86_64"/>
       <repopackage name="firebird"/>
       <repopackage name="firefox-uget-integrator" arch="x86_64"/>
       <repopackage name="firewalld"/>
@@ -1257,6 +1258,8 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
+      <repopackage name="kernel-default-base"/>
+      <repopackage name="kernel-default-devel"/>
       <repopackage name="kernel-devel"/>
       <repopackage name="kernel-docs"/>
       <repopackage name="kernel-firmware-all"/>
@@ -1291,6 +1294,7 @@
       <repopackage name="kernel-firmware-usb-network"/>
       <repopackage name="kernel-macros"/>
       <repopackage name="kernel-source"/>
+      <repopackage name="kernel-syms" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
       <repopackage name="keyutils-devel"/>
@@ -1843,6 +1847,7 @@
       <repopackage name="libfftw3_threads3"/>
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind3_0"/>
+      <repopackage name="libfipscheck1" arch="x86_64"/>
       <repopackage name="libfl-devel"/>
       <repopackage name="libfl2"/>
       <repopackage name="libFLAC++6"/>
@@ -4129,6 +4134,8 @@
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="permissions-doc"/>
+      <repopackage name="pesign" arch="x86_64"/>
+      <repopackage name="pesign-obs-integration" arch="x86_64"/>
       <repopackage name="pfscalibration"/>
       <repopackage name="pfstmo"/>
       <repopackage name="pfstools"/>
