@@ -1,7 +1,7 @@
 #
 # spec file for package GraphicsMagick
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ Source:         ftp://ftp.GraphicsMagick.org/pub/%{name}/%{base_version}/%{name}
 Patch0:         GraphicsMagick-perl-linkage.patch
 %endif
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
-Patch2:         GraphicsMagick-wait-for-threads-close.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
@@ -73,7 +72,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libxml-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %endif
-Requires:       xorg-x11-fonts
 
 %description
 GraphicsMagick provides an image manipulation and translation
@@ -212,17 +210,15 @@ images, and to create thumbnail images.
 %patch0 -p1
 %endif
 %patch1 -p1
-%patch2 -p1
 
 %build
 # This shouldn't be there yet.
 rm -f PerlMagick/Makefile.PL
-export CFLAGS="%{optflags} -fPIE"
 %if !%{debug_build}
 export CFLAGS="%{optflags} -fPIE"
 %else
-export CFLAGS="$RPM_OPT_FLAGS -O0"
-export CXXFLAGS="$RPM_OPT_FLAGS -O0"
+export CFLAGS="%{optflags} -O0"
+export CXXFLAGS="%{optflags} -O0"
 %endif
 %configure --enable-shared --disable-static \
 %if !%{debug_build}

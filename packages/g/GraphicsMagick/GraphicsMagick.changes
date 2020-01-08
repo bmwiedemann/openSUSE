@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  6 22:29:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove xorg-x11-fonts runtime Requires, gm display no longer
+  fails when it is missing (see boo#619103).
+- Cleanup, replace $RPM_OPT_FLAGS with %optflags  
+
+-------------------------------------------------------------------
+Sat Jan  4 16:04:54 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Revert the change to relinquish resources used by OpenMP on all
+  devices. There are concerns upstream that this might break
+  applications that use OpenMP too and suddenly find their threads
+  closed (remove GraphicsMagick-wait-for-threads-close.patch)
+
+-------------------------------------------------------------------
 Thu Jan  2 20:18:49 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Due to a broken check, it wasn't noticed the typemap file is
