@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan  8 01:39:09 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.09: 
+  + Merged in translation updates
+  + Add snapcraft login to makesnap
+  + Fixed bug #1858295 - Unicode error in source filename.
+  + Fixed bug #1855736 - Duplicity fails to start.
+  + Fix bytes/string differences in subprocess_popen().
+  + Fix bug #1857734 - TypeError in ssh_paramiko_backend.
+  + Fix bug #1858153 with patch from az
+    - mega backend: fails to create directory.
+  + Convert all shebangs to python3 for bug #1855736.
+  + Fixed bug #1857554 name 'file' is not defined
+  + Renamed testing/infrastructure to testing/docker.
+  + fix manpage indention
+  + clarify difference between boto backends
+  * add boto+s3:// for future use when boto3+s3://
+    will become default s3 backend.
+  + Fixed a mess I made.  setup.py was shebanged to
+    Py3, duplicity was shebanged to Py2.  This meant
+    that duplicity ran as Py2 but could not find its
+    modules because they were under Py3.  AArgh!
+  + Fixed bug #1856447 with hint from Enno L
+    - Replaced with formatted string
+  + Fixed bug #1855636 with patch from Filip Slunecko
+      - Wrong buf type returned on error.  Make bytes.
+
+-------------------------------------------------------------------
 Thu Jan  2 15:25:52 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.08: 
