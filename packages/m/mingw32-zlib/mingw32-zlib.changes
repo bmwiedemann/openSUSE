@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sun May  5 15:02:38 UTC 2019 - ralf.habacker@freenet.de
+
+- migrate to cmake to support static library
+   (Adapting the custom configure script required too much effort)
+- use mingw filename pattern for shared library (libz.dll) to
+   prevent conflicts with preinstalled z libraries on native Windows
+- let zlib1.dll still be existant for compatibility
