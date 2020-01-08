@@ -1,13 +1,25 @@
-Index: plugins/jabber_protocol/CMakeLists.txt
-===================================================================
---- plugins/jabber_protocol/CMakeLists.txt.orig
-+++ plugins/jabber_protocol/CMakeLists.txt
+From 57816e0f06ed9c4de0cb345ca2c0e1cc7a115fa0 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 12 Dec 2019 13:28:17 +0100
+Subject: [PATCH] Try different names for the qxmpp dependency.
+
+---
+ plugins/jabber_protocol/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/jabber_protocol/CMakeLists.txt b/plugins/jabber_protocol/CMakeLists.txt
+index 920de84..275dd63 100644
+--- a/plugins/jabber_protocol/CMakeLists.txt
++++ b/plugins/jabber_protocol/CMakeLists.txt
 @@ -7,7 +7,7 @@ find_package (Kadu REQUIRED CONFIG)
  find_package (PkgConfig)
  pkg_search_module (IDN REQUIRED libidn)
  pkg_search_module (ZLIB REQUIRED zlib)
 -pkg_search_module (QXMPP REQUIRED qxmpp>=0.8.3)
-+pkg_search_module (QXMPP REQUIRED qxmpp-qt5>=0.8.3)
++pkg_search_module (QXMPP REQUIRED qxmpp>=0.8.3 qxmpp-qt5>=0.8.3)
  
  if (NOT ZLIB_FOUND)
  	find_package (ZLIB REQUIRED)
+-- 
+2.24.1
+

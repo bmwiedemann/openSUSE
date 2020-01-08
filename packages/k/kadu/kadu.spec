@@ -1,7 +1,7 @@
 #
 # spec file for package kadu
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2018 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,35 +13,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define real    %{name}-%{version}
 %define build_penguins 0
-
 Name:           kadu
 Version:        4.3
 Release:        0
-# Choosing GPL-3.0+ because of presence and usage of numerous GPL-3.0 files
 Summary:        Gadu-Gadu and Jabber/XMPP protocol Instant Messenger
+# Choosing GPL-3.0+ because of presence and usage of numerous GPL-3.0 files
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-Url:            http://www.kadu.im/
-Source0:        http://download.kadu.im/stable/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM fix-gcc7.patch fisiu@opensuse.org -- fix compilation with gcc7
-Patch7:         fix-gcc7.patch
-# PATCH-FEATURE-OPENSUSE enable_external_plugins.patch fisiu@opensuse.org -- not ready yet for kadu >= 4
-Patch0:         enable_external_plugins.patch
-# PATCH-FIX-UPSTREAM 0001-fix_SDK_DIR.patch sfalken@opensuse.org -- fixed CMake Buildfailure
-Patch1:         0001-fix_SDK_DIR.patch
-# PATCH-FIX-OPENSUSE libqxmpp-qt5-fix.patch fisiu@opensuse.org
-Patch100:       libqxmpp-qt5-fix.patch
+URL:            https://gitlab.com/kadu/kadu/wikis/home
+Source0:        %{name}-%{version}.tar.bz2
 ### 1x - External Plugins ### not ready yet for kadu >= 4
-Source10:       http://download.kadu.im/external-plugins/2.0/anonymous_check-2.0.1.tar.bz2
-Source11:       http://download.kadu.im/external-plugins/2.0/import_history-2.0.tar.bz2
-Source12:       http://download.kadu.im/external-plugins/2.0/kadu_completion-2.0.tar.bz2
-Source13:       http://download.kadu.im/external-plugins/2.0/mime_tex-2.0.tar.bz2
+Source10:       anonymous_check-2.0.1.tar.bz2
+Source11:       import_history-2.0.tar.bz2
+Source12:       kadu_completion-2.0.tar.bz2
+Source13:       mime_tex-2.0.tar.bz2
 ### 2x - Emoticons ###
 %if %{build_penguins}
 Source20:       kompatybilne_z_GG6.tar.gz
@@ -54,12 +45,27 @@ Source32:       kadu-sound-florkus.tar.bz2
 Source33:       kadu-sound-michalsrodek.tar.bz2
 Source34:       kadu-sound-percussion.tar.bz2
 Source35:       kadu-sound-ultr.tar.bz2
+# PATCH-FEATURE-OPENSUSE enable_external_plugins.patch fisiu@opensuse.org -- not ready yet for kadu >= 4
+Patch0:         enable_external_plugins.patch
+# PATCH-FIX-UPSTREAM 0001-fix_SDK_DIR.patch sfalken@opensuse.org -- fixed CMake Buildfailure
+Patch1:         0001-fix_SDK_DIR.patch
+# PATCH-FIX-UPSTREAM 0001-X11-is-not-a-FindX11.cmake-component.patch -- More CMake failures fixes
+Patch2:         0001-X11-is-not-a-FindX11.cmake-component.patch
+# PATCH-FIX-OPENSUSE libqxmpp-qt5-fix.patch fisiu@opensuse.org
+Patch3:         libqxmpp-qt5-fix.patch
+# PATCH-FIX-UPSTREAM fix-gcc7.patch fisiu@opensuse.org -- fix compilation with gcc7
+Patch4:         fix-gcc7.patch
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libqt5-linguist-devel >= 5.2
+BuildRequires:  libqxmpp-qt5-devel >= 0.8.3
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} > 1500
+BuildRequires:  xorgproto-devel
+%endif
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.2
@@ -82,17 +88,17 @@ BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libotr) >= 4.0
 BuildRequires:  pkgconfig(phonon4qt5)
 BuildRequires:  pkgconfig(qca2-qt5)
-BuildRequires:  pkgconfig(qxmpp-qt5) >= 0.8.3
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(zlib)
-# runtime requires
-Requires:       libgadu3 >= 1.12.2
 # sql_history plugin needs qt5-sqlite to operate
 Requires:       libQt5Sql5-sqlite
+# runtime requires
+Requires:       libgadu3 >= 1.12.2
 # packages dropped in kadu-2.0
 Obsoletes:      globalhotkeys
 Obsoletes:      lednotify
@@ -106,7 +112,6 @@ Obsoletes:      anonymous_check
 Obsoletes:      completion
 Obsoletes:      import_history
 Obsoletes:      mimetex
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Kadu is an open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger
@@ -168,7 +173,6 @@ Files mandatory for development.
 
 ### Emoticons ###
 %if %{build_penguins}
-
 %package        emoticons_gg6_compatible
 Summary:        Emoticons theme compatybility witch Gadu-Gadu 6
 License:        GPL-3.0-or-later
@@ -269,17 +273,20 @@ status.wav: http://www.pdsounds.org/sounds/clickick_switch
 %setup -qTD -a30 -a31 -a32 -a33 -a34 -a35 -n %{real}/varia/themes/sounds
 #
 %setup -qDTn %{real}
-%patch7 -p0
 # enable external plugins (patch0):
 #
 # anonymous_check, completion, importhistory, mime_tex
 #
 # %patch0
 %patch1 -p1
-%patch100
+%patch2 -p1
+%patch3 -p1
+%patch4
 
 # fix qxmpp include path
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 sed -e 's:<qxmpp/:<qxmpp-qt5/:' -i plugins/jabber_protocol/{,*/}*.{h,cpp}
+%endif
 
 # switch state of internal plugins
 # don't enable mpd since it's not in oss repository
@@ -297,20 +304,15 @@ sed -e "s:\tdefault:\tdefault\n\tbns\n\tdrums\n\tflorkus\n\tmichalsrodek\n\tperc
     -i varia/themes/sounds/CMakeLists.txt
 
 %build
-cmake \
-%if %{_lib} == "lib64"
-      -DLIB_SUFFIX=64 \
-%endif
-      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-      -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-      -DWITH_ENCHANT=ON \
-      -DENABLE_TESTS=OFF \
-      -DINSTALL_UNOFFICIAL_TRANSLATIONS=ON \
-      -DQCA_SUFFIX:STRING=qt5
-make %{?_smp_mflags}
+%cmake \
+  -DWITH_ENCHANT=ON \
+  -DENABLE_TESTS=OFF \
+  -DINSTALL_UNOFFICIAL_TRANSLATIONS=ON \
+  -DQCA_SUFFIX:STRING=qt5
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 %fdupes %{buildroot}%{_prefix}
 %suse_update_desktop_file -r kadu Network InstantMessaging
@@ -318,14 +320,7 @@ make %{?_smp_mflags}
 # Don't check RPATH
 export NO_BRP_CHECK_RPATH=true
 
-%post
-# none
-
-%postun
-# none
-
 %files
-%defattr(-,root,root)
 %{_bindir}/kadu
 %{_datadir}/applications/kadu.desktop
 %dir %{_libdir}/kadu
@@ -541,7 +536,6 @@ export NO_BRP_CHECK_RPATH=true
 %{_libdir}/kadu/plugins/libword_fix.so
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/kadu
 %{_includedir}/kadu/kadu-core
 %{_includedir}/kadu/plugins
@@ -587,40 +581,31 @@ export NO_BRP_CHECK_RPATH=true
 
 ### Emoticons ###
 %if %{build_penguins}
-
 %files emoticons_gg6_compatible
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/emoticons/gg6_compatible
 
 %files emoticons_gg10_compatible
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/emoticons/gg10_compatible
 %endif
 
 ### Sounds ###
 
 %files sound-bns
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/sounds/bns
 
 %files sound-drums
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/sounds/drums
 
 %files sound-florkus
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/sounds/florkus
 
 %files sound-michalsrodek
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/sounds/michalsrodek
 
 %files sound-percussion
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/sounds/percussion
 
 %files sound-ultr
-%defattr(-,root,root)
 %{_datadir}/kadu/themes/sounds/ultr
 
 %changelog

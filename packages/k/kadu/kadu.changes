@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  9 23:16:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the build requirements for openSUSE Factory.
+- Remove the URLs from 'Sources' lines.The kadu.im domain is down.
+- Add patch to fix the X11 detection:
+  * 0001-X11-is-not-a-FindX11.cmake-component.patch
+- Update libqxmpp-qt5-fix.patch to look for either qxmpp.pc or qxmpp-qt5.pc
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Mar  8 21:19:01 UTC 2018 - crrodriguez@opensuse.org
 
 - Remove BuildRequires on xorg-x11-devel.

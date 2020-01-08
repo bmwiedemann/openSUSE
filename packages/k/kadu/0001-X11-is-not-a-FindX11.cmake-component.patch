@@ -1,0 +1,67 @@
+From b92813cc6791261a7f161e355cee525eed972b7c Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 12 Dec 2019 13:21:24 +0100
+Subject: [PATCH] 'X11' is not a FindX11.cmake component.
+
+---
+ kadu-core/CMakeLists.txt          | 2 +-
+ plugins/idle/CMakeLists.txt       | 2 +-
+ plugins/pcspeaker/CMakeLists.txt  | 2 +-
+ plugins/screenshot/CMakeLists.txt | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/kadu-core/CMakeLists.txt b/kadu-core/CMakeLists.txt
+index 6ade6d9..954621e 100644
+--- a/kadu-core/CMakeLists.txt
++++ b/kadu-core/CMakeLists.txt
+@@ -111,7 +111,7 @@ include_directories (${LibArchive_INCLUDE_DIRS})
+ list (APPEND ADDITIONAL_LIBKADU_LIBRARIES ${LibArchive_LIBRARIES})
+ 
+ if (UNIX AND NOT APPLE)
+-	find_package (X11 REQUIRED COMPONENTS X11 Xutil Xfixes)
++	find_package (X11 REQUIRED COMPONENTS Xutil Xfixes)
+ 	if (X11_FOUND AND X11_Xutil_FOUND AND X11_Xfixes_FOUND)
+ 		message (STATUS "Found required X11 libraries: ${X11_X11_LIB};${X11_Xfixes_LIB}")
+ 	else ()
+diff --git a/plugins/idle/CMakeLists.txt b/plugins/idle/CMakeLists.txt
+index cf61bdf..d5a3afb 100644
+--- a/plugins/idle/CMakeLists.txt
++++ b/plugins/idle/CMakeLists.txt
+@@ -15,7 +15,7 @@ set (SOURCES
+ )
+ 
+ if (UNIX AND NOT APPLE)
+-	find_package (X11 REQUIRED COMPONENTS X11 Xutil Xscreensaver)
++	find_package (X11 REQUIRED COMPONENTS Xutil Xscreensaver)
+ 	if (X11_Xscreensaver_FOUND)
+ 		message (STATUS "Found required X11 libraries: ${X11_X11_LIB};${X11_Xscreensaver_LIB}")
+ 	else ()
+diff --git a/plugins/pcspeaker/CMakeLists.txt b/plugins/pcspeaker/CMakeLists.txt
+index 0ac3a6f..620bc76 100644
+--- a/plugins/pcspeaker/CMakeLists.txt
++++ b/plugins/pcspeaker/CMakeLists.txt
+@@ -15,7 +15,7 @@ set (SOURCES
+ set (LIBRARIES "")
+ 
+ if (UNIX AND NOT APPLE)
+-	find_package (X11 REQUIRED COMPONENTS X11)
++	find_package (X11 REQUIRED)
+ 	if (NOT X11_FOUND)
+ 		message (SEND_ERROR "Could NOT find X11")
+ 	endif ()
+diff --git a/plugins/screenshot/CMakeLists.txt b/plugins/screenshot/CMakeLists.txt
+index e9b8374..f101e6c 100644
+--- a/plugins/screenshot/CMakeLists.txt
++++ b/plugins/screenshot/CMakeLists.txt
+@@ -30,7 +30,7 @@ set (CONFIGURATION_FILES
+ 
+ if (UNIX AND NOT APPLE)
+ 	set (PLUGIN_ADDITIONAL_QT_MODULES X11Extras)
+-	find_package (X11 REQUIRED COMPONENTS X11 Xext Xshape)
++	find_package (X11 REQUIRED COMPONENTS Xext Xshape)
+ 	if (X11_Xshape_FOUND)
+ 		message (STATUS "Found required X11 libraries: ${X11_X11_LIB};${X11_Xext_LIB}")
+ 	else ()
+-- 
+2.24.1
+
