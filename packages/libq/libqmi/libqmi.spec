@@ -1,7 +1,7 @@
 #
 # spec file for package libqmi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,14 +24,14 @@ Version:        1.24.2
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
-License:        LGPL-2.1+ AND GPL-2.0+
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Hardware/Modem
 URL:            https://www.freedesktop.org/wiki/Software/libqmi/
 Source0:        https://www.freedesktop.org/software/libqmi/%{name}-%{version}.tar.xz
 Source99:       libqmi-rpmlintrc
 
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
