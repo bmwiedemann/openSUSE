@@ -1,7 +1,7 @@
 #
 # spec file for package alacritty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,11 @@
 #
 
 
+# Use hardening ldflags.
+%global rustflags "-Clink-arg=-Wl,-z,relro,-z,now"
+
 Name:           alacritty
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -25,15 +28,15 @@ Group:          System/X11/Terminals
 URL:            https://github.com/jwilm/alacritty/
 Source:         https://github.com/jwilm/alacritty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        alacritty.ico
+Source2:        cargo_config
+Source3:        README.suse-maint
 BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freetype-devel
-BuildRequires:  icoutils
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust
+BuildRequires:  rust >= 1.36
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)
@@ -72,17 +75,9 @@ BuildArch:      noarch
 The official zsh completion script for alacritty.
 
 %prep
-%setup -q -a1
-cp --remove-destination %{S:2} extra/windows/
-icotool -x -i 1 extra/windows/alacritty.ico -o extra/windows/alacritty.png
-mkdir cargo-home
-cat >cargo-home/config <<EOF
-[source.crates-io]
-replace-with = "vendored-sources"
-
-[source.vendored-sources]
-directory = "./vendor"
-EOF
+%setup -qa1
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %ifarch aarch64 ppc64le
 # Remove checksum of config.guess and config.sub since aarch64 and ppc64le modify them
@@ -91,20 +86,20 @@ sed -i 's#"expat/conftools/config.sub":"523cb028db907d1fbbcecdcac6737f9e2eeba48f
 %endif
 
 %build
-export CARGO_HOME=$PWD/cargo-home
-cargo build --release %{?_smp_mflags}
+RUSTFLAGS=%{rustflags} cargo build --release --bin alacritty
 
 %install
-export CARGO_HOME=$PWD/cargo-home
-cargo install --root=%{buildroot}%{_prefix} --path=./alacritty
+mkdir -p "%{buildroot}%{_bindir}"
+install -D -m 0755 target/release/alacritty %{buildroot}%{_bindir}/alacritty
 
 # rm duplicate license and useless toml file
 rm -fr %{buildroot}%{_datadir}
-rm  %{buildroot}%{_prefix}/.crates.toml
 
 # install man page and completions
 install -Dm 0644 extra/linux/alacritty.desktop %{buildroot}/%{_datadir}/applications/Alacritty.desktop
-install -Dm 0644 extra/windows/alacritty.png %{buildroot}/%{_datadir}/pixmaps/Alacritty.png
+install -Dm 0644 extra/logo/alacritty-simple.svg %{buildroot}/%{_datadir}/pixmaps/Alacritty.svg
+install -Dm 0644 extra/linux/io.alacritty.Alacritty.appdata.xml \
+                 %{buildroot}/%{_datadir}/appdata/io.alacritty.Alacritty.appdata.xml
 install -Dm 0644 extra/%{name}.man %{buildroot}/%{_mandir}/man1/%{name}.1
 install -Dm 0644 extra/completions/%{name}.bash %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
 install -Dm 0644 extra/completions/%{name}.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish
@@ -117,10 +112,12 @@ install -Dm 0644 extra/completions/_%{name}  %{buildroot}/%{_datadir}/zsh/site-f
 
 %files
 %license LICENSE-APACHE
+%doc alacritty.yml CHANGELOG.md CONTRIBUTING.md README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/applications/Alacritty.desktop
-%{_datadir}/pixmaps/Alacritty.png
+%{_datadir}/pixmaps/Alacritty.svg
+%{_datadir}/appdata/io.alacritty.Alacritty.appdata.xml
 
 %files bash-completion
 %{_datadir}/bash-completion

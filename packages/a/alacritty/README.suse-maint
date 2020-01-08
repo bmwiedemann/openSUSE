@@ -1,0 +1,4 @@
+When a new tarball release is added you must run the obs service to
+update the vendored sources: obs service disabledrun
+
+In future OBS may be able to do this.

@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Dec 30 03:35:40 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to 0.4.0
+  * Clean up spec file
+  * Minimum rust version is now >= 1.36
+  * Include the config example as documentation
+  * Add _service file to enable easy updates of vendored sources
+  * Include a README.suse-maint
+- Added:
+  * Block selection mode when Control is held while starting a selection
+  * Allow setting general window class on X11 using CLI or config (window.class.general)
+  * Config option window.gtk_theme_variant to set GTK theme variant
+  * Completions for --class and -t (short title)
+  * Change the mouse cursor when hovering over the message bar and its close button
+  * Support combined bold and italic text (with font.bold_italic to customize it)
+  * Extra bindings for F13-F20
+  * Terminal escape bindings with combined modifiers
+  * Bindings for ScrollToTop and ScrollToBottom actions
+  * ReceiveChar key binding action to insert the key's text character
+  * New CLI flag --hold for keeping Alacritty opened after its child process exits
+  * Escape sequence to save and restore window title from stack
+  * Alternate scroll escape sequence (CSI ? 1007 h / CSI ? 1007 l)
+  * Print name of launch command if Alacritty failed to execute it
+  * Live reload font settings from config
+  * UTF-8 mouse mode escape sequence (CSI ? 1005 h / CSI ? 1005 l)
+  * Escape for reading clipboard (OSC 52 ; <s / p / c> ; ? BEL)
+  * Set selection clipboard (OSC 52 ; <s / p> ; <BASE64> BEL)
+- Changed:
+  * Scroll lines out of the visible region instead of deleting them when clearing the screen
+- Fixed:
+  * GUI programs launched by Alacritty starting in the background on X11
+  * Text Cursor position when scrolling
+  * Performance issues while resizing Alacritty
+  * First unfullscreen action ignored on window launched in fullscreen mode
+  * The window is now filled with the background color before displaying
+  * Cells sometimes not getting cleared correctly
+  * X11 clipboard hanging when mime type is set
+  * Debug ref tests are now written to disk regardless of shutdown method
+  * Cursor color setting with escape sequence
+  * Override default bindings with subset terminal mode match
+  * On Linux, respect fontconfig's embeddedbitmap configuration option
+  * Selecting trailing tab with semantic expansion
+  * URL parser incorrectly handling Markdown URLs and angled brackets
+  * Intermediate bytes of CSI sequences not checked
+  * Wayland clipboard integration
+  * Use text mouse cursor when mouse mode is temporarily disabled with shift
+  * Wayland primary selection clipboard not storing text when selection is stopped outside of the window
+  * Block URL highlight while a selection is active
+  * Bindings for Alt + F1-F12
+  * Discard scrolling region escape with bottom above top
+  * Opacity always applying to cells with their background color matching the teriminal background
+  * Allow semicolons when setting titles using an OSC
+  * Background always opaque on X11
+  * Skipping redraws on PTY update
+  * Not redrawing while resizing on Windows/macOS
+  * Decorations none launching an invisible window on Windows
+  * Alacritty turning transparent when opening another window on macOS with chunkwm
+  * Startup mode Maximized having no effect on Windows
+  * Inserting Emojis using Super+. or compose sequences on Windows
+  * Change mouse cursor depending on mode with Wayland
+  * Hide mouse cursor when typing if the mouse.hide_when_typing option is set on Wayland
+  * Glitches when DPI changes on Windows
+  * Crash when resuming after suspension
+  * Crash when trying to start on X11 with a Wayland compositor running
+  * Crash with a virtual display connected on X11
+  * Use \ instead of \\ as path separators on Windows for logging config file location
+  * Underline/strikeout drawn above visual bell
+  * Terminal going transparent during visual bell
+  * Selection not being cleared when sending chars through a binding
+  * Mouse protocols/encodings not being mutually exclusive within themselves
+  * Escape CSI Ps M deleting lines above cursor when at the bottom of the viewport
+  * Cell reset not clearing underline, strikeout and foreground color
+  * Escape CSI Ps c honored with a wrong Ps
+  * Ignore ESC escapes with invalid intermediates
+  * Blank lines after each line when pasting from GTK apps on Wayland
+- Removed:
+  * Bindings for Super/Command + F1-F12
+  * Automatic config generation
+  * Deprecated scrolling.faux_multiplier, the alternate scroll
+    escape can now be used to disable it and scrolling.multiplier
+    controls the number of scrolled lines
+
+-------------------------------------------------------------------
 Mon Jul 22 13:15:34 UTC 2019 - Xu Zhao <i@xuzhao.net>
 
 - update to 0.3.3
@@ -18,7 +101,7 @@ Mon Jul 22 13:15:34 UTC 2019 - Xu Zhao <i@xuzhao.net>
   * Default Window padding to 0x0
   * Moved config option render_timer and persistent_logging to the debug group
   * When the cursor is in the selection, it will be inverted again, making it visible
-  Fixed: 
+  Fixed:
   * Double-width characters in URLs only being highlit on the left half
   * PTY size not getting updated when message bar is shown
   * Text Cursor disappearing
@@ -29,7 +112,7 @@ Mon Jul 22 13:15:34 UTC 2019 - Xu Zhao <i@xuzhao.net>
   * URL parser dropping trailing slashes from valid URLs
   * UTF-8 BOM skipped when reading config file
   * Terminfo backspace escape sequence (kbs)
-  Removed:  
+  Removed:
   * Deprecated mouse.faux_scrollback_lines config field
   * Deprecated custom_cursor_colors config field
   * Deprecated hide_cursor_when_typing config field
@@ -59,7 +142,7 @@ Tue Apr 23 09:37:15 UTC 2019 - Dag Jönsson <dag@jnsson.eu>
   * Subprocess spawning on macros
   * Unnecessary resize at startup
   * Text getting blurry after live-reloading shaders with padding active
-  * Resize events are not send to the shell anymore if dimensions haven't 
+  * Resize events are not send to the shell anymore if dimensions haven't
     changed
   * Minor performance issues with underline and strikeout checks
   * Rare bug which would extend underline and strikeout beyond the end of line
@@ -74,21 +157,21 @@ Tue Apr  9 16:05:59 UTC 2019 - Dag Jönsson <dagjo270@student.liu.se>
 - upate to 0.3.0
   Added:
   * Ability to specify starting position with the --position flag
-  * New configuration field window.position allows specifying the starting 
+  * New configuration field window.position allows specifying the starting
     position
   * Added the ability to change the selection color
   * Text will reflow instead of truncating when resizing Alacritty
-  * Underline text and change cursor when hovering over URLs with required 
-    modifiers pressed 
+  * Underline text and change cursor when hovering over URLs with required
+    modifiers pressed
   Changed:
-  * Clicking on non-alphabetical characters in front of URLs will no longer 
+  * Clicking on non-alphabetical characters in front of URLs will no longer
     open them
   Fixed
   * Slow startup time on some X11 systems
   * On Wayland, the --title flag will set the Window title now
   * Fix start_maximized option on X11
   * Terminfo support for extended capabilities
-  * Crash when decreasing scrollback history in config while scrolled in 
+  * Crash when decreasing scrollback history in config while scrolled in
     history
   * Scrollback history live reload only working when shrinking lines
 - refresh vendor.tar.xz
@@ -150,7 +233,7 @@ Sat Jul 28 15:49:09 UTC 2018 - avindra@opensuse.org
 -------------------------------------------------------------------
 Wed Apr 25 11:33:09 UTC 2018 - guillaume.gardet@opensuse.org
 
-- Remove checksums for config.guess and config.sub for aarch64 
+- Remove checksums for config.guess and config.sub for aarch64
   and ppc64le since they are updated
 
 -------------------------------------------------------------------

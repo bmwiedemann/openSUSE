@@ -1,0 +1,15 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."https://github.com/chrisduerr/glutin"]
+git = "https://github.com/chrisduerr/glutin"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/rust-windowing/winit"]
+git = "https://github.com/rust-windowing/winit"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
