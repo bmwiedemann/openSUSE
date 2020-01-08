@@ -1,7 +1,7 @@
 #
 # spec file for package gssdp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define sover 1.2
 
 Name:           gssdp
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Library for resource discovery and announcement over SSDP
 License:        LGPL-2.0-or-later
@@ -33,7 +33,7 @@ Source1:        baselibs.conf
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.54
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26.1
