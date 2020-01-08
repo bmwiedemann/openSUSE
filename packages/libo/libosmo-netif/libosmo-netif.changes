@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan  5 10:49:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 0.7.0
+  * libosmo-netif.pc.in: Append -lsctp to Libs.private
+  * stream: osmo_stream_cli: Support setting multiple addr
+  * stream: osmo_stream_srv_link: Support setting multiple addr
+  * stream: Fix scheduling of queued messages during connecting state
+  * stream: Introduce API osmo_stream_cli_is_connected
+- Update patch
+  * osmo-talloc.diff
+
+-------------------------------------------------------------------
 Thu Aug 15 04:32:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.6.0

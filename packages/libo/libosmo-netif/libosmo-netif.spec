@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-netif
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define version_unconverted 0.6.0
+%define version_unconverted 0.7.0
 
 Name:           libosmo-netif
 Summary:        Osmocom library for muxed audio
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Url:            https://osmocom.org/projects/libosmo-netif
 
@@ -35,8 +35,8 @@ BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
 BuildRequires:  pkgconfig(talloc)
 
 %description
