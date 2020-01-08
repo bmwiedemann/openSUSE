@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-sccp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libosmo-sccp
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Hardware/Mobile
-Url:            https://projects.osmocom.org/projects/libosmo-sccp
+URL:            https://projects.osmocom.org/projects/libosmo-sccp
 
 #Git-Clone:	git://git.osmocom.org/libosmo-sccp
 Source:         %name-%version.tar.xz
@@ -35,10 +35,10 @@ BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.4.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.0.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 0.7.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
 
 %description
 SCCP is a network layer protocol that provides extended routing, flow
@@ -98,19 +98,19 @@ in SS7 telecommunications networks.
 This subpackage contains the development files for the Osmocom SCCP
 library.
 
-%package -n libosmo-sigtran3
+%package -n libosmo-sigtran5
 Summary:        Osmocom SIGTRAN library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmo-sigtran3
+%description -n libosmo-sigtran5
 Osmocom implementation of (parts of) SIGTRAN.
 
 %package -n libosmo-sigtran-devel
 Summary:        Development files for the Osmocom sigtran library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-sigtran3 = %version
+Requires:       libosmo-sigtran5 = %version
 
 %description -n libosmo-sigtran-devel
 Osmocom implementation of (parts of) SIGTRAN.
@@ -155,8 +155,7 @@ implementation, missing lots of the functionality usually present in
 a STP, such as Global Title Routing, Global Title Translation.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 echo "%version" >.tarball-version
@@ -187,8 +186,8 @@ fi
 %postun -n libosmo-mtp-%libversion -p /sbin/ldconfig
 %post   -n libosmo-sccp-%libversion -p /sbin/ldconfig
 %postun -n libosmo-sccp-%libversion -p /sbin/ldconfig
-%post   -n libosmo-sigtran3 -p /sbin/ldconfig
-%postun -n libosmo-sigtran3 -p /sbin/ldconfig
+%post   -n libosmo-sigtran5 -p /sbin/ldconfig
+%postun -n libosmo-sigtran5 -p /sbin/ldconfig
 %post   -n libosmo-xua-%libversion -p /sbin/ldconfig
 %postun -n libosmo-xua-%libversion -p /sbin/ldconfig
 
@@ -228,9 +227,9 @@ fi
 %_libdir/libosmo-sccp.so
 %_libdir/pkgconfig/libosmo-sccp.pc
 
-%files -n libosmo-sigtran3
+%files -n libosmo-sigtran5
 %defattr(-,root,root)
-%_libdir/libosmo-sigtran.so.3*
+%_libdir/libosmo-sigtran.so.5*
 
 %files -n libosmo-sigtran-devel
 %defattr(-,root,root)

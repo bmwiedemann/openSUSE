@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  7 11:42:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update 0001-build-fixes.patch to build sccp_test with SOURCES,
+  not LDADD.
+
+-------------------------------------------------------------------
+Sun Jan  5 10:19:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.2.0
+  * ASP FSM: Permit DOWN -> DOWN "transition"
+  * xua: Implement traffic mode broadcast
+  * osmo_ss7: Add osmo_ss7_asp_find()
+  * introduce public enum osmo_ss7_asp_role for ASP/SG/IPSP
+  * ss7: Implement AS traffic mode loadshare using round robin ASP
+    selection
+  * ipa: Fix crash when parsing of received IPA SCCP message fails
+  * ipa: Don't send non-SCCP data over IPA/SCCPlite
+
+-------------------------------------------------------------------
 Thu Aug 15 04:44:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.1.0

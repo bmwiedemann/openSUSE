@@ -4,37 +4,38 @@ Date: Mon, 21 Jul 2014 10:13:00 +0200
 Subject: [PATCH] build: fixes
 
 Find and use system talloc, do not rely on OSMO's bundled copy.
+
+Avoid adding .o files into _LDADD, this is nonportable.
+
 Rename libmtp to libosmo-mtp, as libmtp is already used by the
 Multimedia Transfer Protocol library.
 ---
- configure.ac           |    2 +-
+ configure.ac           |    1 +
  libosmo-mtp.pc.in      |    2 +-
  libosmo-sccp.pc.in     |    2 +-
  src/Makefile.am        |   20 +++++++++++++++-----
  tests/m2ua/Makefile.am |    2 +-
- tests/sccp/Makefile.am |    4 ++--
+ tests/sccp/Makefile.am |    6 +++---
  tests/ss7/Makefile.am  |    2 --
  tests/xua/Makefile.am  |    6 ++----
- 8 files changed, 23 insertions(+), 17 deletions(-)
+ 8 files changed, 24 insertions(+), 17 deletions(-)
 
-Index: libosmo-sccp-0.8.1/configure.ac
+Index: libosmo-sccp-1.2.0/configure.ac
 ===================================================================
---- libosmo-sccp-0.8.1.orig/configure.ac
-+++ libosmo-sccp-0.8.1/configure.ac
-@@ -30,6 +29,7 @@ if test "x$PKG_CONFIG_INSTALLED" = "xno"
+--- libosmo-sccp-1.2.0.orig/configure.ac
++++ libosmo-sccp-1.2.0/configure.ac
+@@ -29,6 +29,7 @@ if test "x$PKG_CONFIG_INSTALLED" = "xno"
  fi
  PKG_PROG_PKG_CONFIG([0.20])
  
 +PKG_CHECK_MODULES([TALLOC], [talloc])
- PKG_CHECK_MODULES(LIBOSMOCORE, libosmocore >= 1.0.0)
- PKG_CHECK_MODULES(LIBOSMOVTY, libosmovty >= 1.0.0)
- PKG_CHECK_MODULES(LIBOSMOGSM, libosmogsm >= 1.0.0)
- PKG_CHECK_MODULES(LIBOSMONETIF, libosmo-netif >= 0.4.0)
-
-Index: libosmo-sccp-0.8.1/libosmo-mtp.pc.in
+ PKG_CHECK_MODULES(LIBOSMOCORE, libosmocore >= 1.3.0)
+ PKG_CHECK_MODULES(LIBOSMOVTY, libosmovty >= 1.3.0)
+ PKG_CHECK_MODULES(LIBOSMOGSM, libosmogsm >= 1.3.0)
+Index: libosmo-sccp-1.2.0/libosmo-mtp.pc.in
 ===================================================================
---- libosmo-sccp-0.8.1.orig/libosmo-mtp.pc.in
-+++ libosmo-sccp-0.8.1/libosmo-mtp.pc.in
+--- libosmo-sccp-1.2.0.orig/libosmo-mtp.pc.in
++++ libosmo-sccp-1.2.0/libosmo-mtp.pc.in
 @@ -6,5 +6,5 @@ includedir=@includedir@
  Name: Osmo MTP Lib
  Description: Osmo MTP Lib
@@ -42,10 +43,10 @@ Index: libosmo-sccp-0.8.1/libosmo-mtp.pc.in
 -Libs: -L${libdir} -lmtp
 +Libs: -L${libdir} -losmo-mtp
  Cflags: -I${includedir}/
-Index: libosmo-sccp-0.8.1/libosmo-sccp.pc.in
+Index: libosmo-sccp-1.2.0/libosmo-sccp.pc.in
 ===================================================================
---- libosmo-sccp-0.8.1.orig/libosmo-sccp.pc.in
-+++ libosmo-sccp-0.8.1/libosmo-sccp.pc.in
+--- libosmo-sccp-1.2.0.orig/libosmo-sccp.pc.in
++++ libosmo-sccp-1.2.0/libosmo-sccp.pc.in
 @@ -6,5 +6,5 @@ includedir=@includedir@
  Name: OpenBSC SCCP Lib
  Description: OpenBSC SCCP Lib
@@ -53,10 +54,10 @@ Index: libosmo-sccp-0.8.1/libosmo-sccp.pc.in
 -Libs: -L${libdir} -lsccp
 +Libs: -L${libdir} -losmo-sccp
  Cflags: -I${includedir}/
-Index: libosmo-sccp-0.8.1/src/Makefile.am
+Index: libosmo-sccp-1.2.0/src/Makefile.am
 ===================================================================
---- libosmo-sccp-0.8.1.orig/src/Makefile.am
-+++ libosmo-sccp-0.8.1/src/Makefile.am
+--- libosmo-sccp-1.2.0.orig/src/Makefile.am
++++ libosmo-sccp-1.2.0/src/Makefile.am
 @@ -7,15 +7,21 @@ noinst_HEADERS = sccp_internal.h xua_asp
  # Legacy static libs
  
@@ -92,37 +93,41 @@ Index: libosmo-sccp-0.8.1/src/Makefile.am
 +noinst_LTLIBRARIES = libosmo-sigtran-internal.la
 +libosmo_sigtran_internal_la_SOURCES = $(libosmo_sigtran_la_SOURCES)
 +libosmo_sigtran_internal_la_LIBADD = $(libosmo_sigtran_la_LIBADD)
-Index: libosmo-sccp-0.8.1/tests/m2ua/Makefile.am
+Index: libosmo-sccp-1.2.0/tests/m2ua/Makefile.am
 ===================================================================
---- libosmo-sccp-0.8.1.orig/tests/m2ua/Makefile.am
-+++ libosmo-sccp-0.8.1/tests/m2ua/Makefile.am
+--- libosmo-sccp-1.2.0.orig/tests/m2ua/Makefile.am
++++ libosmo-sccp-1.2.0/tests/m2ua/Makefile.am
 @@ -5,4 +5,4 @@ EXTRA_DIST = m2ua_test.ok
  
  noinst_PROGRAMS = m2ua_test
  m2ua_test_SOURCES = m2ua_test.c
 -m2ua_test_LDADD = $(top_builddir)/src/libxua.a $(LIBOSMOCORE_LIBS)
 +m2ua_test_LDADD = $(top_builddir)/src/libosmo-xua.la $(LIBOSMOCORE_LIBS) ${TALLOC_LIBS}
-Index: libosmo-sccp-0.8.1/tests/sccp/Makefile.am
+Index: libosmo-sccp-1.2.0/tests/sccp/Makefile.am
 ===================================================================
---- libosmo-sccp-0.8.1.orig/tests/sccp/Makefile.am
-+++ libosmo-sccp-0.8.1/tests/sccp/Makefile.am
-@@ -1,4 +1,4 @@
+--- libosmo-sccp-1.2.0.orig/tests/sccp/Makefile.am
++++ libosmo-sccp-1.2.0/tests/sccp/Makefile.am
+@@ -1,13 +1,13 @@
 -AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include
 +AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include ${TALLOC_CFLAGS}
  AM_CFLAGS=-Wall -ggdb3 $(LIBOSMOCORE_CFLAGS)
  
  EXTRA_DIST = sccp_test.ok
-@@ -6,5 +6,5 @@ EXTRA_DIST = sccp_test.ok
+ 
  noinst_PROGRAMS = sccp_test
  
- sccp_test_SOURCES = sccp_test.c $(top_srcdir)/src/sccp.c
--sccp_test_LDADD = $(LIBOSMOCORE_LIBS)
-+sccp_test_LDADD = $(LIBOSMOCORE_LIBS) ${TALLOC_LIBS}
+-sccp_test_SOURCES = sccp_test.c
++sccp_test_SOURCES = sccp_test.c ${top_srcdir}/src/sccp.c
+ sccp_test_LDADD = \
+ 	$(LIBOSMOCORE_LIBS) \
+-	$(top_builddir)/src/sccp.o \
++	${TALLOC_LIBS} \
+ 	$(NULL)
  
-Index: libosmo-sccp-0.8.1/tests/ss7/Makefile.am
+Index: libosmo-sccp-1.2.0/tests/ss7/Makefile.am
 ===================================================================
---- libosmo-sccp-0.8.1.orig/tests/ss7/Makefile.am
-+++ libosmo-sccp-0.8.1/tests/ss7/Makefile.am
+--- libosmo-sccp-1.2.0.orig/tests/ss7/Makefile.am
++++ libosmo-sccp-1.2.0/tests/ss7/Makefile.am
 @@ -1,7 +1,5 @@
  AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include -Wall
  AM_CFLAGS=-Wall $(LIBOSMOCORE_CFLAGS) $(LIBOSMOVTY_CFLAGS)
@@ -131,10 +136,10 @@ Index: libosmo-sccp-0.8.1/tests/ss7/Makefile.am
  LDADD = $(top_builddir)/src/libosmo-sigtran.la \
  	$(LIBOSMOCORE_LIBS) $(LIBOSMOVTY_LIBS) $(LIBOSMONETIF_LIBS) $(LIBSCTP_LIBS)
  
-Index: libosmo-sccp-0.8.1/tests/xua/Makefile.am
+Index: libosmo-sccp-1.2.0/tests/xua/Makefile.am
 ===================================================================
---- libosmo-sccp-0.8.1.orig/tests/xua/Makefile.am
-+++ libosmo-sccp-0.8.1/tests/xua/Makefile.am
+--- libosmo-sccp-1.2.0.orig/tests/xua/Makefile.am
++++ libosmo-sccp-1.2.0/tests/xua/Makefile.am
 @@ -1,8 +1,6 @@
 -AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include -Wall
 +AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include -Wall $(LIBOSMOCORE_CFLAGS) $(LIBOSMOVTY_CFLAGS) $(LIBOSMONETIF_CFLAGS) $(LIBSCTP_CFLAGS)
