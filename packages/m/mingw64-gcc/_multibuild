@@ -1,0 +1,4 @@
+<multibuild>
+  <package>mingw64-cross-gcc</package>
+  <package>mingw64-cross-gcc-bootstrap</package>
+</multibuild>
