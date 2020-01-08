@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  7 15:56:27 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Updated to 2.4.1 release
+  * [WIP] Fix configuration paths and db paths
+  * Handle different formats for CRS code input
+  * fix CAT 3.0 schema locations
+  * fix to handle '/' or '\\'
+  * Update pyproj to 1.9.6
+  * try latest Shapely constructs first
+  * safeguard WKT exceptions against newer versions of Shapely
+  * Support indexing the ISO files from the IOOS Catalog 
+  * Rename 'async' property to fix SyntaxError with Python 3.7. 
+  * Use xdg-open rather than using firefox explicitely
+  * update OpenSearch Description document to have option geo:uid
+- Disable python2 subpackage due to dependencies dropping python2.
+
+-------------------------------------------------------------------
 Wed Mar  6 19:39:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Updated to 2.2.0 release
