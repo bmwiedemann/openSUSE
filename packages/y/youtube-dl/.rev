@@ -1153,4 +1153,12 @@
   * [msn] Improve extraction (forwarded request 759138 from namtrac)</comment>
     <requestid>759139</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>74b14eb8581d95e59a5f4d0ca1d80003</srcmd5>
+    <version>2020.01.01</version>
+    <time>1578502549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>761709</requestid>
+  </revision>
 </revisionlist>

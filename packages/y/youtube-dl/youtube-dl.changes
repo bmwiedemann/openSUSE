@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 31 23:48:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.01.01
+  * soundcloud: fix client id extraction for non fatal requests
+  * prosiebensat1: improve geo restriction handling
+  * brightcove: cache brightcove player policy keys
+  * scrippsnetworks: Add new extractor
+  * mitele: fix extraction
+  * soundcloud: Update client id
+
+-------------------------------------------------------------------
 Tue Dec 24 18:39:11 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to release 2019.12.25
