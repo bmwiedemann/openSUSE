@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec 23 15:07:01 UTC 2019 - tiwai@suse.com
+
+- Update to version 20191220 (git commit 6871bffa79ed):
+  * ath10k: WCN3990 hw1.0: add firmware WLAN.HL.2.0-01387-QCAHLSWMTPLZ-1
+  * ath10k: QCA9984 hw1.0: update firmware-5.bin to 10.4-3.9.0.2-00070
+  * ath10k: QCA988X hw2.0: update firmware-5.bin to 10.2.4-1.0-00047
+  * ath10k: QCA9888 hw2.0: update firmware-5.bin to 10.4-3.9.0.2-00070
+  * ath10k: QCA9887 hw1.0: update firmware-5.bin to 10.2.4-1.0-00047
+  * ath10k: QCA6174 hw3.0: update board-2.bin
+
+-------------------------------------------------------------------
+Wed Dec 18 16:09:46 UTC 2019 - tiwai@suse.com
+
+- Update to version 20191218 (git commit c4586ffaac0c):
+  * linux-firmware: Update AMD cpu microcode
+  * inside-secure: add new "mini" firmware for the EIP197 driver
+  * WHENCE: Add raspberry-pi4 SDIO file
+  * qcom: update venus firmware files for v5.4
+  * cxgb4: Update firmware to revision 1.24.11.0
+  * brcm: Add BCM43455 NVRAM for Raspberry Pi 4 B
+  * qcom: Add SDM845 Compute DSP firmware
+  * qcom: Add SDM845 Audio DSP firmware
+  * qcom: Add SDM845 modem firmware
+- Update topics and aliases for 5.5 kernels
+
+-------------------------------------------------------------------
 Tue Nov 19 16:03:18 UTC 2019 - tiwai@suse.com
 
 - Update to version 20191118 (git commit e8a0f4c93147):

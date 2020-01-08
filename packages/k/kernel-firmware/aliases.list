@@ -230,7 +230,9 @@ amdgpu: pci:v00001002d0000731Fsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00007340sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00007341sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00007347sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000734Fsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00007360sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d00007362sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00007388sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000738Csv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000738Esv*sd*bc*sc*i*
@@ -543,6 +545,8 @@ btmrvl_sdio: sdio:c*v02DFd9136*
 btmrvl_sdio: sdio:c*v02DFd9142*
 btmrvl_sdio: sdio:c*v02DFd9146*
 btmrvl_sdio: sdio:c*v02DFd914A*
+btmtksdio: sdio:c*v037Ad7663*
+btmtksdio: sdio:c*v037Ad7668*
 btmtkuart: of:N*T*Cmediatek,mt7622-bluetooth
 btmtkuart: of:N*T*Cmediatek,mt7622-bluetoothC*
 btmtkuart: of:N*T*Cmediatek,mt7663u-bluetooth
@@ -629,6 +633,7 @@ ccp: pci:v00001022d00001537sv*sd*bc*sc*i*
 cpia2: usb:v0553p0100d*dc*dsc*dp*ic*isc*ip*in*
 cpia2: usb:v0553p0140d*dc*dsc*dp*ic*isc*ip*in*
 cpia2: usb:v0553p0151d*dc*dsc*dp*ic*isc*ip*in*
+crypto_safexcel: pci:v000010EEd00009038sv000016AEsd0000C522bc*sc*i*
 csiostor: pci:v00001425d00004600sv*sd*bc*sc*i*
 csiostor: pci:v00001425d00004601sv*sd*bc*sc*i*
 csiostor: pci:v00001425d00004602sv*sd*bc*sc*i*
@@ -1083,6 +1088,7 @@ dvb_usb_af9035: usb:v15A4p9035d*dc*dsc*dp*ic*isc*ip*in*
 dvb_usb_af9035: usb:v1B80pE409d*dc*dsc*dp*ic*isc*ip*in*
 dvb_usb_af9035: usb:v1B80pE410d*dc*dsc*dp*ic*isc*ip*in*
 dvb_usb_af9035: usb:v1B80pE411d*dc*dsc*dp*ic*isc*ip*in*
+dvb_usb_af9035: usb:v1D19p0100d*dc*dsc*dp*ic*isc*ip*in*
 dvb_usb_af9035: usb:v1F4DpA115d*dc*dsc*dp*ic*isc*ip*in*
 dvb_usb_af9035: usb:v2013p025Ad*dc*dsc*dp*ic*isc*ip*in*
 dvb_usb_af9035: usb:v2013p0262d*dc*dsc*dp*ic*isc*ip*in*
@@ -2971,12 +2977,16 @@ r8152: usb:v17EFp3062d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp3062d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFp3069d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp3069d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v17EFp3082d*dc*dsc*dp*ic02isc06ip00in*
+r8152: usb:v17EFp3082d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFp7205d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp7205d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFp720Cd*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp720Cd*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFp7214d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp7214d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v17EFpA387d*dc*dsc*dp*ic02isc06ip00in*
+r8152: usb:v17EFpA387d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v2357p0601d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v2357p0601d*dc*dsc*dp*icFFisc*ip*in*
 r8169: pci:v00000001d00008168sv*sd00002410bc*sc*i*
@@ -4431,6 +4441,7 @@ rtl8xxxu: usb:v4855p0091d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v4856p0091d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392p7811d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392p7822d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v7392pA611d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:vCDABp8010d*dc*dsc*dp*icFFiscFFipFFin*
 s2255drv: usb:v1943p2255d*dc*dsc*dp*ic*isc*ip*in*
 s2255drv: usb:v1943p2257d*dc*dsc*dp*ic*isc*ip*in*

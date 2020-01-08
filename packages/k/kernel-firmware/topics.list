@@ -175,3 +175,6 @@ mscc-phy:	platform
 meson-vdec:	media
 ice:		network
 ast:		platform
+inside-secure:	platform	crypto_safexcel
+qcom_q6v5_pas:	platform
+qcom_q6v5_mss:	platform
