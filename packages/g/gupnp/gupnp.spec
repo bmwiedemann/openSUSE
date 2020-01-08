@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define sover 1.2
 
 Name:           gupnp
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.0-or-later
@@ -33,10 +33,10 @@ Source1:        baselibs.conf
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.44
+BuildRequires:  pkgconfig(gio-2.0) >= 2.58
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.58
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.4
 BuildRequires:  pkgconfig(gssdp-1.2) >= 1.1.3
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
@@ -120,6 +120,7 @@ libraries utilizing the GUPnP framework.
 %{_libdir}/girepository-1.0/GUPnP-%{sover}.typelib
 
 %files -n libgupnp-devel
+%{_mandir}/man1/gupnp-binding-tool-1.2.1%{?ext_man}
 %{_bindir}/gupnp-binding-tool-%{sover}
 %{_includedir}/%{name}-%{sover}
 %{_libdir}/*.so
