@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  5 16:33:45 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Refreshed suse-specfile.patch to reflect current spec-cleaner
+  templates
+  * Updated company name
+  * Removed groups
+
+-------------------------------------------------------------------
 Sat Dec 29 17:48:07 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
 
 - Refreshed suse-specfile.patch to reflect current spec-cleaner

@@ -15,11 +15,11 @@ Index: rpmdevtools-8.10/spectemplate-R.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-R.spec
 +++ rpmdevtools-8.10/spectemplate-R.spec
-@@ -1,27 +1,41 @@
+@@ -1,27 +1,40 @@
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,6 @@ Index: rpmdevtools-8.10/spectemplate-R.spec
 -
 -Group:          Applications/Engineering
  License:        
-+Group:          Development/Libraries/Other
  URL:            http://cran.r-project.org/web/packages/%{packname}/
  Source0:        ftp://cran.r-project.org/pub/R/contrib/main/%{packname}_%{version}-%{packrel}.tar.gz
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -66,7 +65,7 @@ Index: rpmdevtools-8.10/spectemplate-R.spec
  
  %description
  
-@@ -29,28 +43,18 @@ Requires:       R-core
+@@ -29,28 +42,18 @@ Requires:       R-core
  %prep
  %setup -q -c -n %{packname}
  
@@ -98,7 +97,7 @@ Index: rpmdevtools-8.10/spectemplate-R.spec
  %license add-license-file-here
  %dir %{rlibdir}/%{packname}
  %doc %{rlibdir}/%{packname}/doc
-@@ -64,5 +68,4 @@ rm -rf $RPM_BUILD_ROOT
+@@ -64,5 +67,4 @@ rm -rf $RPM_BUILD_ROOT
  %{rlibdir}/%{packname}/R-ex
  %{rlibdir}/%{packname}/help
  
@@ -108,11 +107,11 @@ Index: rpmdevtools-8.10/spectemplate-dummy.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-dummy.spec
 +++ rpmdevtools-8.10/spectemplate-dummy.spec
-@@ -1,31 +1,38 @@
+@@ -1,31 +1,37 @@
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -138,7 +137,6 @@ Index: rpmdevtools-8.10/spectemplate-dummy.spec
 -URL:            http://fedoraproject.org/
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 +License:        SUSE-Public-Domain
-+Group:          Productivity/Other
 +URL:            http://www.opensuse.org
  
  %description
@@ -167,11 +165,11 @@ Index: rpmdevtools-8.10/spectemplate-lib.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-lib.spec
 +++ rpmdevtools-8.10/spectemplate-lib.spec
-@@ -1,14 +1,29 @@
+@@ -1,14 +1,28 @@
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -194,7 +192,6 @@ Index: rpmdevtools-8.10/spectemplate-lib.spec
 -
 -Group:          System Environment/Libraries
  License:        
-+Group:          System/Libraries
  URL:            
  Source0:        
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -202,13 +199,12 @@ Index: rpmdevtools-8.10/spectemplate-lib.spec
  BuildRequires:  
  Requires:       
  
-@@ -17,40 +32,28 @@ Requires:
+@@ -17,40 +31,27 @@ Requires:
  
  %package        devel
  Summary:        Development files for %{name}
 -Group:          Development/Libraries
 -Requires:       %{name}%{?_isa} = %{version}-%{release}
-+Group:          Development/Libraries/
 +Requires:       %{name} = %{version}
  
  %description    devel
@@ -247,7 +243,7 @@ Index: rpmdevtools-8.10/spectemplate-lib.spec
  %license add-license-file-here
  %doc add-main-docs-here
  %{_libdir}/*.so.*
-@@ -60,5 +63,4 @@ rm -rf $RPM_BUILD_ROOT
+@@ -60,5 +61,4 @@ rm -rf $RPM_BUILD_ROOT
  %{_includedir}/*
  %{_libdir}/*.so
  
@@ -257,11 +253,11 @@ Index: rpmdevtools-8.10/spectemplate-minimal.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-minimal.spec
 +++ rpmdevtools-8.10/spectemplate-minimal.spec
-@@ -1,14 +1,29 @@
+@@ -1,14 +1,28 @@
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -284,7 +280,6 @@ Index: rpmdevtools-8.10/spectemplate-minimal.spec
 -
 -Group:          
  License:        
-+Group:          
  URL:            
  Source0:        
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -292,7 +287,7 @@ Index: rpmdevtools-8.10/spectemplate-minimal.spec
  BuildRequires:  
  Requires:       
  
-@@ -18,26 +33,15 @@ Requires:
+@@ -18,26 +32,15 @@ Requires:
  %prep
  %setup -q
  
@@ -324,11 +319,11 @@ Index: rpmdevtools-8.10/spectemplate-ocaml.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-ocaml.spec
 +++ rpmdevtools-8.10/spectemplate-ocaml.spec
-@@ -1,72 +1,76 @@
+@@ -1,72 +1,74 @@
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -360,7 +355,6 @@ Index: rpmdevtools-8.10/spectemplate-ocaml.spec
 -
 -Group:          Development/Libraries
  License:        
-+Group:          System/Libraries
  URL:            
  Source0:        
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -378,7 +372,6 @@ Index: rpmdevtools-8.10/spectemplate-ocaml.spec
  Summary:        Development files for %{name}
 -Group:          Development/Libraries
 -Requires:       %{name} = %{version}-%{release}
-+Group:          Development/Libraries/Other
 +Requires:       %{name} = %{version}
  
  %description    devel
@@ -430,7 +423,7 @@ Index: rpmdevtools-8.10/spectemplate-ocaml.spec
  %exclude %{_libdir}/ocaml/*/*.a
  %exclude %{_libdir}/ocaml/*/*.cmxa
  %exclude %{_libdir}/ocaml/*/*.cmx
-@@ -75,16 +79,14 @@ rm -rf $RPM_BUILD_ROOT
+@@ -75,16 +77,14 @@ rm -rf $RPM_BUILD_ROOT
  %{_libdir}/ocaml/stublibs/*.so
  %{_libdir}/ocaml/stublibs/*.so.owner
  
@@ -452,11 +445,11 @@ Index: rpmdevtools-8.10/spectemplate-perl.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-perl.spec
 +++ rpmdevtools-8.10/spectemplate-perl.spec
-@@ -1,24 +1,38 @@
+@@ -1,24 +1,37 @@
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -479,7 +472,6 @@ Index: rpmdevtools-8.10/spectemplate-perl.spec
 -
 -Group:          Development/Libraries
  License:        
-+Group:          Development/Libraries/Perl
  URL:            
  Source0:        
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -500,7 +492,7 @@ Index: rpmdevtools-8.10/spectemplate-perl.spec
  
  %description
  
-@@ -26,33 +40,20 @@ Requires:  perl(:MODULE_COMPAT_%(eval "`
+@@ -26,33 +39,20 @@ Requires:  perl(:MODULE_COMPAT_%(eval "`
  %prep
  %setup -q
  
@@ -539,7 +531,7 @@ Index: rpmdevtools-8.10/spectemplate-perl.spec
  %license add-license-file-here
  %doc add-docs-here
  # For noarch packages: vendorlib
-@@ -60,7 +61,6 @@ rm -rf $RPM_BUILD_ROOT
+@@ -60,7 +60,6 @@ rm -rf $RPM_BUILD_ROOT
  # For arch-specific packages: vendorarch
  %{perl_vendorarch}/*
  %exclude %dir %{perl_vendorarch}/auto/
@@ -552,11 +544,11 @@ Index: rpmdevtools-8.10/spectemplate-php-pear.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-php-pear.spec
 +++ rpmdevtools-8.10/spectemplate-php-pear.spec
-@@ -1,59 +1,64 @@
+@@ -1,59 +1,63 @@
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -584,7 +576,6 @@ Index: rpmdevtools-8.10/spectemplate-php-pear.spec
 -
 -Group:          
  License:        
-+Group:          
  URL:            http://pear.php.net/package/%{pear_name}
  Source0:        http://pear.php.net/get/%{pear_name}-%{version}.tgz
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -646,7 +637,7 @@ Index: rpmdevtools-8.10/spectemplate-php-pear.spec
  
  %post
  %{__pear} install --nodeps --soft --force --register-only \
-@@ -65,9 +70,7 @@ if [ $1 -eq 0 ] ; then
+@@ -65,9 +69,7 @@ if [ $1 -eq 0 ] ; then
          %{pear_name} >/dev/null || :
  fi
  
@@ -656,7 +647,7 @@ Index: rpmdevtools-8.10/spectemplate-php-pear.spec
  %license add-license-file-here
  %doc %{pear_name}-%{version}/docdir/%{pear_name}/*
  %{pear_xmldir}/%{pear_name}.xml
-@@ -76,5 +79,4 @@ fi
+@@ -76,5 +78,4 @@ fi
  # Expand this as needed to avoid owning dirs owned by our dependencies
  %{pear_phpdir}/*
  
@@ -666,13 +657,13 @@ Index: rpmdevtools-8.10/spectemplate-ruby.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-ruby.spec
 +++ rpmdevtools-8.10/spectemplate-ruby.spec
-@@ -1,26 +1,39 @@
+@@ -1,26 +1,38 @@
 -%{!?ruby_sitelib: %global ruby_sitelib %(ruby -rrbconfig -e "puts Config::CONFIG['sitelibdir']")}
 -%{!?ruby_sitearch: %global ruby_sitearch %(ruby -rrbconfig -e "puts Config::CONFIG['sitearchdir']")}
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -696,7 +687,6 @@ Index: rpmdevtools-8.10/spectemplate-ruby.spec
 -Group:          Development/Languages
 -
  License:        
-+Group:          Development/Languages/Ruby
  URL:            
  Source0:        
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -717,7 +707,7 @@ Index: rpmdevtools-8.10/spectemplate-ruby.spec
  
  %description
  
-@@ -28,30 +41,20 @@ Provides:       ruby(LIBNAME)
+@@ -28,30 +40,20 @@ Provides:       ruby(LIBNAME)
  %prep
  %setup -q
  
@@ -758,7 +748,7 @@ Index: rpmdevtools-8.10/spectemplate-python.spec
 ===================================================================
 --- rpmdevtools-8.10.orig/spectemplate-python.spec
 +++ rpmdevtools-8.10/spectemplate-python.spec
-@@ -1,117 +1,58 @@
+@@ -1,117 +1,57 @@
 -# sitelib for noarch packages, sitearch for others (remove the unneeded one)
 -%{!?__python2: %global __python2 %__python}
 -%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
@@ -772,7 +762,7 @@ Index: rpmdevtools-8.10/spectemplate-python.spec
 +#
 +# spec file for package [spectemplate]
 +#
-+# Copyright (c) __YEAR__ SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) __YEAR__ SUSE LLC
 +#
 +# All modifications and additions to the file contributed by third parties
 +# remain the property of their copyright owners, unless otherwise agreed
@@ -796,7 +786,6 @@ Index: rpmdevtools-8.10/spectemplate-python.spec
 -
 -Group:          Development/Languages
  License:        
-+Group:          Development/Languages/Python
  URL:            
  Source0:        
 -BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
