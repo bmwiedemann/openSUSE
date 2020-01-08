@@ -1,0 +1,214 @@
+%_mingw64_cpu             x86_64
+%_mingw64_vendor          w64
+%_mingw64_os              mingw32
+
+%_mingw64_target          %{_mingw64_cpu}-%{_mingw64_vendor}-%{_mingw64_os}
+
+# Paths.
+%_mingw64_sysroot         %{_prefix}/%{_mingw64_target}/sys-root
+%_mingw64_prefix          %{_mingw64_sysroot}/mingw
+%_mingw64_exec_prefix     %{_mingw64_prefix}
+%_mingw64_bindir          %{_mingw64_exec_prefix}/bin
+%_mingw64_sbindir         %{_mingw64_exec_prefix}/sbin
+%_mingw64_libexecdir      %{_mingw64_exec_prefix}/libexec
+%_mingw64_libdir          %{_mingw64_exec_prefix}/lib
+%_mingw64_datadir         %{_mingw64_prefix}/share
+%_mingw64_docdir          %{_mingw64_prefix}/share/doc
+%_mingw64_infodir         %{_mingw64_prefix}/share/info
+%_mingw64_mandir          %{_mingw64_prefix}/share/man
+%_mingw64_sysconfdir      %{_mingw64_prefix}/etc
+%_mingw64_sharedstatedir  %{_mingw64_prefix}/com
+%_mingw64_localstatedir   %{_mingw64_prefix}/var
+%_mingw64_includedir      %{_mingw64_prefix}/include
+
+# Build macros.
+%_mingw64_host            %{_mingw64_target}
+
+%_mingw64_cflags          -O2 -g -pipe -Wall -fexceptions --param=ssp-buffer-size=4 -mms-bitfields
+%_mingw64_cxxflags        %{_mingw64_cflags}
+
+%_mingw64_ldflags_base    -Wl,--exclude-libs=libintl.a -Wl,--exclude-libs=libiconv.a -Wl,--no-keep-memory
+# used for bootstrap packages
+%_mingw64_ldflags_bootstrap %{_mingw64_ldflags_base}
+# for normal packages
+%_mingw64_ldflags         %{_mingw64_ldflags_base} -fstack-protector
+
+%_mingw64_classpath       %{_mingw64_datadir}/java/libgcj.jar:%{_mingw64_datadir}/java/libgcj-tools.jar
+
+%_mingw64_cc              %{_mingw64_target}-gcc
+%_mingw64_cxx             %{_mingw64_target}-g++
+%_mingw64_cpp             %{_mingw64_target}-gcc -E
+%_mingw64_addr2line       %{_mingw64_target}-addr2line
+%_mingw64_ar              %{_mingw64_target}-ar
+%_mingw64_as              %{_mingw64_target}-as
+%_mingw64_dlltool         %{_mingw64_target}-dlltool
+%_mingw64_dllwrap         %{_mingw64_target}-dllwrap
+%_mingw64_gcov            %{_mingw64_target}-gcov
+%_mingw64_gprof           %{_mingw64_target}-gprof
+%_mingw64_ld              %{_mingw64_target}-ld
+%_mingw64_nm              %{_mingw64_target}-nm
+%_mingw64_objcopy         %{_mingw64_target}-objcopy
+%_mingw64_objdump         %{_mingw64_target}-objdump
+%_mingw64_ranlib          %{_mingw64_target}-ranlib
+%_mingw64_readelf         %{_mingw64_target}-readelf
+%_mingw64_size            %{_mingw64_target}-size
+%_mingw64_strings         %{_mingw64_target}-strings
+%_mingw64_strip           %{_mingw64_target}-strip
+%_mingw64_windmc          %{_mingw64_target}-windmc
+%_mingw64_windres         %{_mingw64_target}-windres
+%_mingw64_gcj             %{_mingw64_target}-gcj
+
+%_mingw64_cache           mingw64-config.cache
+
+%_mingw64_findprovides    /usr/lib/rpm/mingw64-find-provides.sh
+%_mingw64_findrequires    /usr/lib/rpm/mingw64-find-requires.sh
+%_mingw64_install_post    /usr/lib/rpm/mingw64-install-post.sh
+%_mingw64_find_lang       /usr/lib/rpm/mingw64-find-lang.sh %{buildroot}
+
+%_mingw64_debug_install_post   \
+   /usr/lib/rpm/mingw64-find-debuginfo.sh %{_builddir} 1\
+%{nil}
+
+# Template for debug sub-package.
+%_mingw64_debug_package(n:) \
+%package %{-n:-n %{-n*}-}debug \
+Summary: Debug information for package %{name} \
+Group: Development/Debug \
+BuildArch: noarch \
+%description %{-n:-n %{-n*}-}debug \
+This package provides debug information for package %{name}.\
+Debug information is useful when developing applications that use this\
+package or when debugging this package.\
+%files %{-n:-n %{-n*}-}debug -f %{_builddir}/mingw64-debugfiles.list\
+%defattr(-,root,root)\
+%{nil}
+
+%_mingw64_env HOST_CC=gcc; export HOST_CC; \
+  PKG_CONFIG_PATH="%{_mingw64_libdir}/pkgconfig:%{_mingw64_datadir}/pkgconfig"; export PKG_CONFIG_PATH; \
+  CLASSPATH="$CLASSPATH:${MINGW64_CLASSPATH:-%_mingw64_classpath}"; export CLASSPATH; \
+  _PREFIX="%{_bindir}/%{_mingw64_target}-"; \
+  for i in `ls -1 ${_PREFIX}* | grep -v 'gcc-'`; do \
+    x=`echo $i|sed "s,${_PREFIX},,"|sed "s,\\.awk*,,"|tr [:lower:] [:upper:] | tr "+-" "X_" | sed "s,\\.,,g"`; \
+    declare -x $x="$i" ; export $x; \
+  done; \
+  unset _PREFIX; \
+  CC="${MINGW64_CC:-%_mingw64_cc}"; export CC; \
+  CFLAGS="${MINGW64_CFLAGS:-%_mingw64_cflags}"; export CFLAGS; \
+  LDFLAGS="${MINGW64_LDFLAGS:-%_mingw64_ldflags}"; export LDFLAGS; \
+  if [ -x "%{_bindir}/%{_mingw64_cxx}" ]; then \
+    CXX="${MINGW64_CXX:-%_mingw64_cxx}"; export CXX; \
+    CXXFLAGS="${MINGW64_CXXFLAGS:-%_mingw64_cxxflags}"; export CXXFLAGS; \
+  else \
+    CXX=; export CXX; \
+    ac_cv_prog_CXX=no; export ac_cv_prog_CXX; \
+    CXXFLAGS=; export CXXFLAGS; \
+  fi; \
+  for i in `ls %{_mingw64_bindir}/*|grep -- "-config\$"` ; do \
+    x=`basename $i|tr [:lower:] [:upper:] | tr "+-" "X_" | sed "s,\\.,,g"`; \
+    declare -x $x="$i" ; export $x; \
+  done; \
+  unset x i
+
+%_mingw64_package_header \
+  %global __strip %{_mingw64_strip} \
+  %global __objdump %{_mingw64_objdump} \
+  %global _use_internal_dependency_generator 0 \
+  %global __find_requires %{_mingw64_findrequires} \
+  %global __find_provides %{_mingw64_findprovides} \
+  %global __os_install_post %{_mingw64_install_post}
+
+# this macro also disables the default debug package
+%_mingw64_package_header_debug \
+  %global debug_package %{nil} \
+  %global __strip %{_mingw64_strip} \
+  %global __objdump %{_mingw64_objdump} \
+  %global _use_internal_dependency_generator 0 \
+  %global __find_requires %{_mingw64_findrequires} \
+  %global __find_provides %{_mingw64_findprovides} \
+  %global __os_install_post %{_mingw64_debug_install_post} \\\
+                            %{_mingw64_install_post}
+
+%_mingw64_configure %{_mingw64_env} ; \
+  __mingw64_topdir=.; if ! test -x configure; then __mingw64_topdir=..; fi; \\\
+  $__mingw64_topdir/configure --cache-file=%{_mingw64_cache} \\\
+	--host=%{_mingw64_host} \\\
+	--build=%_build \\\
+	--target=%{_mingw64_target} \\\
+	--prefix=%{_mingw64_prefix} \\\
+	--exec-prefix=%{_mingw64_exec_prefix} \\\
+	--bindir=%{_mingw64_bindir} \\\
+	--sbindir=%{_mingw64_sbindir} \\\
+	--sysconfdir=%{_mingw64_sysconfdir} \\\
+	--datadir=%{_mingw64_datadir} \\\
+	--includedir=%{_mingw64_includedir} \\\
+	--libdir=%{_mingw64_libdir} \\\
+	--libexecdir=%{_mingw64_libexecdir} \\\
+	--localstatedir=%{_mingw64_localstatedir} \\\
+	--sharedstatedir=%{_mingw64_sharedstatedir} \\\
+	--mandir=%{_mingw64_mandir} \\\
+	--infodir=%{_mingw64_infodir}
+
+%_mingw64_make %{_mingw64_env} ; \
+  make \\\
+	prefix=%{_mingw64_prefix} \\\
+	exec_prefix=%{_mingw64_exec_prefix} \\\
+	bindir=%{_mingw64_bindir} \\\
+	sbindir=%{_mingw64_sbindir} \\\
+	sysconfdir=%{_mingw64_sysconfdir} \\\
+	datadir=%{_mingw64_datadir} \\\
+	includedir=%{_mingw64_includedir} \\\
+	libdir=%{_mingw64_libdir} \\\
+	libexecdir=%{_mingw64_libexecdir} \\\
+	localstatedir=%{_mingw64_localstatedir} \\\
+	sharedstatedir=%{_mingw64_sharedstatedir} \\\
+	mandir=%{_mingw64_mandir} \\\
+	infodir=%{_mingw64_infodir}
+
+%_mingw64_make_install %{_mingw64_env} ; \
+  make \\\
+	prefix=%{?buildroot:%{buildroot}}%{_mingw64_prefix} \\\
+	exec_prefix=%{?buildroot:%{buildroot}}%{_mingw64_exec_prefix} \\\
+	bindir=%{?buildroot:%{buildroot}}%{_mingw64_bindir} \\\
+	sbindir=%{?buildroot:%{buildroot}}%{_mingw64_sbindir} \\\
+	sysconfdir=%{?buildroot:%{buildroot}}%{_mingw64_sysconfdir} \\\
+	datadir=%{?buildroot:%{buildroot}}%{_mingw64_datadir} \\\
+	includedir=%{?buildroot:%{buildroot}}%{_mingw64_includedir} \\\
+	libdir=%{?buildroot:%{buildroot}}%{_mingw64_libdir} \\\
+	libexecdir=%{?buildroot:%{buildroot}}%{_mingw64_libexecdir} \\\
+	localstatedir=%{?buildroot:%{buildroot}}%{_mingw64_localstatedir} \\\
+	sharedstatedir=%{?buildroot:%{buildroot}}%{_mingw64_sharedstatedir} \\\
+	mandir=%{?buildroot:%{buildroot}}%{_mingw64_mandir} \\\
+	infodir=%{?buildroot:%{buildroot}}%{_mingw64_infodir} \\\
+  install
+
+# deprecated, use _mingw64_make_install (unix variant is named %make_install)
+%_mingw64_makeinstall %_mingw64_make_install
+
+# internal macro used by related filesystem packages
+%__mingw64_cmake %{_mingw64_env} ; \
+  cmake \\\
+        -DCMAKE_SYSTEM_NAME="Windows" \\\
+        -DCMAKE_VERBOSE_MAKEFILE=ON \\\
+        -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
+        -DCMAKE_INSTALL_PREFIX:PATH=%{_mingw64_prefix} \\\
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_mingw64_libdir} \\\
+        -DBIN_INSTALL_DIR=%{_mingw64_bindir} \\\
+        -DINCLUDE_INSTALL_DIR:PATH=%{_mingw64_includedir} \\\
+        -DLIB_INSTALL_DIR:PATH=%{_mingw64_libdir} \\\
+        -DSHARE_INSTALL_DIR:PATH=%{_mingw64_datadir} \\\
+        -DSYSCONF_INSTALL_DIR:PATH=%{_mingw64_sysconfdir} \\\
+        -DSHARE_INSTALL_PREFIX:PATH=%{_mingw64_datadir} \\\
+        -DBUILD_SHARED_LIBS:BOOL=ON \\\
+        -DCMAKE_C_COMPILER="%{_bindir}/%{_mingw64_cc}" \\\
+        -DCMAKE_CXX_COMPILER="%{_bindir}/%{_mingw64_cxx}" \\\
+        -DCMAKE_RC_COMPILER="%{_bindir}/%{_mingw64_windres}" \\\
+        -DCMAKE_FIND_ROOT_PATH="%{_mingw64_prefix}" \\\
+        -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \\\
+        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \\\
+        -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
+
+# cmake > 3.13.1 requires setting source dir 
+%_mingw64_cmake %{__mingw64_cmake} .
+
+%_mingw64_cmake_install %{_mingw64_env} ; \
+  make VERBOSE=1 DESTDIR=%{buildroot} install/fast
