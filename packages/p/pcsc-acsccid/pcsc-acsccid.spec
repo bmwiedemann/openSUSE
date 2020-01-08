@@ -1,8 +1,8 @@
 #
 # spec file for package pcsc-acsccid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Advanced Card Systems Ltd.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 Advanced Card Systems Ltd.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1140
 BuildRequires:  udev
 %endif
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 Url:            http://acsccid.sourceforge.net/
 Summary:        PCSC Driver for ACS CCID Based Smart Card Readers
@@ -79,6 +79,8 @@ Enhances:       modalias(usb:v072FpB102d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB103d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB10Cd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB104d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB113d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB114d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB000d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp90D2d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp8306d*dc*dsc*dp*ic*isc*ip*)
@@ -107,6 +109,7 @@ Enhances:       modalias(usb:v072Fp221Bd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2232d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2242d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2238d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp225Fd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp224Fd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp223Bd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp223Ed*dc*dsc*dp*ic*isc*ip*)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:26:37 UTC 2020 - Godfrey Chung <godfrey.chung@acs.com.hk>
+
+- Updated to version 1.1.8. 
+  * Add the following readers support:
+    ACR39U-W1 Top ICC Reader
+    ACR39U-W1 Edge ICC Reader
+    ACR1251T CL Reader
+  * Remove response timeout fix for APG8201 and APG8201Z.
+
+-------------------------------------------------------------------
 Thu Jul 25 07:16:38 UTC 2019 - Godfrey Chung <godfrey.chung@acs.com.hk>
 
 - Updated to version 1.1.7.
