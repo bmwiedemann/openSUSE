@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-iuh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           osmo-iuh
-%define lname	libosmo-ranap2
-Version:        0.5.0
+%define lname	libosmo-ranap3
+Version:        0.6.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -32,8 +32,8 @@ BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
-# python2 for asn1tostruct.py
-BuildRequires:  python2
+# python3 for asn1tostruct.py
+BuildRequires:  python3
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
 BuildRequires:  pkgconfig(libosmo-netif) >= 0.3.0
@@ -65,6 +65,24 @@ Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmoranap.
 
+%package -n libosmo-sabp0
+Summary:        Osmocom Service Area Broadcast Protocol library
+Group:          System/Libraries
+
+%description -n libosmo-sabp0
+Osmocom code for the Service Area Broadcast Protocol interface.
+
+%package -n libosmo-sabp-devel
+Summary:        Development files for Osmocom SABP library
+Group:          Development/Libraries/C and C++
+Requires:       libosmo-sabp0 = %version
+
+%description -n libosmo-sabp-devel
+Osmocom code for the Service Area Broadcast Protocol interface.
+
+This subpackage contains libraries and header files for developing
+applications that want to make use of libosmo-sabp.
+
 %prep
 %autosetup -p1
 
@@ -93,12 +111,18 @@ fi
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
+%post   -n libosmo-sabp0 -p /sbin/ldconfig
+%postun -n libosmo-sabp0 -p /sbin/ldconfig
+
 %pre
 %service_add_pre    osmo-hnbgw.service
+
 %post
 %service_add_post   osmo-hnbgw.service
+
 %preun
 %service_del_preun  osmo-hnbgw.service
+
 %postun
 %service_del_postun osmo-hnbgw.service
 
@@ -114,11 +138,21 @@ fi
 %_sbindir/rcosmo-hnbgw
 
 %files -n %lname
-%_libdir/libosmo-ranap.so.2*
+%_libdir/libosmo-ranap.so.3*
 
 %files -n libosmo-ranap-devel
-%_includedir/*
+%dir %{_includedir}/osmocom
+%_includedir/osmocom/ranap
 %_libdir/libosmo-ranap.so
-%_libdir/pkgconfig/*.pc
+%_libdir/pkgconfig/libosmo-ranap.pc
+
+%files -n libosmo-sabp0
+%_libdir/libosmo-sabp.so.0*
+
+%files -n libosmo-sabp-devel
+%dir %{_includedir}/osmocom
+%_includedir/osmocom/sabp
+%_libdir/libosmo-sabp.so
+%_libdir/pkgconfig/libosmo-sabp.pc
 
 %changelog

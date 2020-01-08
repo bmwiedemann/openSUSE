@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan  5 10:57:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 0.6.0
+  * sabp: Generate C/H files for SABP; create libosmo-sabp
+  * sabp: Add Procedure Codes and IEI constants to CommonDataTypes
+  * sabp: fixup SABP ASN.1 to avoid IOC (which are not supported
+    by our toolchain)
+  * sabp: Initial import of SABP ASN.1 from 3GPP TS 25.419 V11.1.0
+    (2013-03)
+  * hnbgw: Add libosmoctrl's VTY CTRL command initialization
+  * iu_client: allow to control the notifications
+- Add subpackage for libosmo-sabp
+- Update patch:
+  * 0001-iu_client-uses-gprs_msgb.h.patch
+
+-------------------------------------------------------------------
 Thu Aug 15 05:13:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.5.0
