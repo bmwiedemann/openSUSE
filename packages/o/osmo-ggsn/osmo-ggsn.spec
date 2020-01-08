@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-ggsn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %define _lto_cflags %nil
 
 Name:           osmo-ggsn
-%define lname   libgtp5
-Version:        1.4.0
+%define lname   libgtp6
+Version:        1.5.0
 Release:        0
 Summary:        GPRS Support Node
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -66,7 +66,9 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libgtp.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch1 -p1 -F2
+sed -i 's|/usr/bin/osmo-ggsn|/usr/sbin/osmo-ggsn|g' contrib/systemd/osmo-ggsn.service
 
 %build
 echo "%version" >.tarball-version
@@ -116,7 +118,7 @@ install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
 %config(noreplace) %_sysconfdir/osmocom/sgsnemu.conf
 
 %files -n %lname
-%_libdir/libgtp.so.5*
+%_libdir/libgtp.so.6*
 
 %files -n libgtp-devel
 %_includedir/%name/
