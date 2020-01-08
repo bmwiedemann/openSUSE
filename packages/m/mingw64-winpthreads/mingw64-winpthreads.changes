@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Mon Nov 25 17:31:02 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use macro _mingw64_ldflags_bootstrap from mingw64-filesystem package
+  for setting LDFLAGS to keep common settings in one place
+
+-------------------------------------------------------------------
+Mon Nov 25 12:41:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Disable stack-protector because we don't have ssp support
+  in mingw64-cross-gcc-bootstrap (yet).
+
+-------------------------------------------------------------------
+Sat Nov 23 14:39:46 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to new upstream release 7.0.0
+  * No changelog entries specific to winpthreads found.
+
+-------------------------------------------------------------------
+Wed Oct 17 19:02:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 6.0.0
+  * No changelog entries specific to winpthreads found.
+
+-------------------------------------------------------------------
+Tue Nov 21 11:32:43 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.3
+- Drop gcc7.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Tue Mar 28 11:43:07 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.2
+  * Fix some crashes in due to misaligned memory access when
+    used with some SSE instructions.
+- Drop memleak.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan 14 20:49:21 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.1
+
+-------------------------------------------------------------------
+Wed Mar 23 21:33:34 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 5.0~rc1
+* Winpthreads performance improvements
+* ARM, gcc-5 support
+
+-------------------------------------------------------------------
+Fri Sep  4 11:58:16 UTC 2015 - idonmez@suse.com
+
+- Update to version 4.0.4
+  * Major speed improvements to mutex & spinlock implementation
+
+-------------------------------------------------------------------
+Fri May 29 09:26:59 UTC 2015 - idonmez@suse.com
+
+- Enable static libraries
+
+-------------------------------------------------------------------
+Wed Mar 25 10:38:10 UTC 2015 - jengelh@inai.de
+
+- Update to winpthreads from mingw-w64-4.0.1
+* Reentrant time functions localtime_r, gmtime_r, etc. are removed
+  from pthread.h and are now available through time.h ONLY.
+
+-------------------------------------------------------------------
+Mon Jul 14 10:47:35 UTC 2014 - jengelh@inai.de
+
+- Implement shlib package naming guidelines
+
+-------------------------------------------------------------------
+Thu Jun 19 12:24:42 UTC 2014 - jw@owncloud.com
+
+- BuildRequires: mingw32-runtime
+  Linker fails miserably without.
+
+-------------------------------------------------------------------
+Mon Feb  3 12:07:45 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 3.1.0) for build.opensuse.org
