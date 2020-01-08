@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Jan  6 12:19:01 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update multibuild package names: mingw64* -> mingw32*
+
+-------------------------------------------------------------------
+Fri Dec 27 09:19:40 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- change license to GPL-3.0-or-later to match gcc package
+
+-------------------------------------------------------------------
+Tue Dec 17 15:48:20 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- use <package> tags instead of <flavor> in _multibuild as we are referring to
+  extra spec files
+
+-------------------------------------------------------------------
+Fri Dec  6 13:52:32 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- avoid file conflict with debug package
+- merge sjlj1 and seh1 package to be able to use sed between 32bit
+  and 64bit spec files.
+
+-------------------------------------------------------------------
+Sat Nov 23 17:18:03 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 9.2.0 
+
+-------------------------------------------------------------------
+Wed Nov 20 18:57:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- inital package for Factory submission
