@@ -106,4 +106,14 @@ Required to implement boo#1138725.</comment>
     <comment></comment>
     <requestid>760987</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a37e75db4dad772b5a441fbe37dfd84</srcmd5>
+    <version>0.0+git20200107.e490517</version>
+    <time>1578502633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200107.e490517:
+  * Make setfiles optional; this avoids an error message when building the initrd on systems without SELinux.
+</comment>
+    <requestid>761810</requestid>
+  </revision>
 </revisionlist>

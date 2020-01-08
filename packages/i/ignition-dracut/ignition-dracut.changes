@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 08 10:40:19 UTC 2020 - iforster@suse.com
+
+- Update to version 0.0+git20200107.e490517:
+  * Make setfiles optional
+
+-------------------------------------------------------------------
 Sun Jan  5 14:03:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Really increase timeout for 'ignition' device on ARM
