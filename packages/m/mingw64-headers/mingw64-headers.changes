@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Wed Oct 17 18:50:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 6.0.0
+  * C++ __cxa_atexit
+  * Massive additions to support UCRT
+  * Sync COM interface headers with Wine development
+  * WinRT additions
+  * ARM32 and ARM64 additions
+  * CRT library api-ms-win-core additions
+  * CRT library def file reorganization
+- Removed popcnt.patch, 0001-Add-missing-D3D_CS_-variables.patch
+  (no longer needed; included upstream)
+
+-------------------------------------------------------------------
+Tue Nov 21 11:37:09 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.3
+
+-------------------------------------------------------------------
+Thu Apr 20 08:26:10 UTC 2017 - idonmez@suse.com
+
+- Add popcnt.patch 
+
+-------------------------------------------------------------------
+Tue Mar 28 11:40:03 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.2
+  * RegSetKeyValueW now has proper wide arguments.
+  * Fix pdh.h function calls to have proper stdcall decorators.
+
+-------------------------------------------------------------------
+Sat Jan 14 20:48:23 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.1 
+
+-------------------------------------------------------------------
+Wed Mar 23 21:07:00 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 5.0~rc1
+* Basic ARM support
+* gcc-5 support
+
+-------------------------------------------------------------------
+Fri Sep  4 11:50:23 UTC 2015 - idonmez@suse.com
+
+- Update to version 4.0.4
+  * Fixes to tchar.h
+- Remove order.diff, upstream
+
+-------------------------------------------------------------------
+Tue Apr 21 09:00:58 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.0.2
+* Fix PdhValidatePathExW declaration.
+* Fix WAVE_FORMAT_POLYCOM_G729_A typo in mmreg.h.
+* Fix missing newlines separating define macros in commctrl.h.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:19:04 UTC 2015 - jengelh@inai.de
+
+- Add order.diff to fix SHGetFolderPathW compile errors in code
+  using shlobj.h.
+
+-------------------------------------------------------------------
+Wed Mar 25 10:48:30 UTC 2015 - jengelh@inai.de
+
+- Update to mingw-w64-4.0.1
+* 32-bit ARM thumb software math
+* Improved DirectX 11, OpenGL 4.5/GLES 3.1 support
+* added POSIX.1-2008 ftw.h
+* more secure functions: qsort_s, gmtime64_s, time_s.h, ...
+* added to stat.h: S_IRGRP, S_IRWXG, ...
+* added to unistd.h: SHUT_*
