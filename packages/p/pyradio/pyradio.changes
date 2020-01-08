@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Jan  8 07:57:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the download url
+
+-------------------------------------------------------------------
+Thu Jan  2 03:25:28 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 0.8.7:
+  * Fixing volume issue with mpv 0.30.0.
+  * mpv on python3 uses socket only (no stdout parsing).
+  * socat is no longer needed to use mpv.
+  * Player's config file will be saved even if it does not already
+    exist.
+- Changes from version 0.8.6:
+  * Adding playlist history (for local playlists).
+  * https URLs will be converted to http before connecting.
+  * Fixing station moving when appending station.
+  * Config / Default station: pading fixed.
+- Changes from version 0.8.5:
+  * PyRadio will not crush with mpv 0.30.0, changing mpv's volume
+    is still possible, but no info will be presented on the Status
+    Bar. Furthermore, saving mpv's volume will not be possible,
+    (gh#mpv-player/mpv#7153).
+  * When the default played is changed in the config, a message
+    to restart the application is presented to the user.
+  * Config / Default station: pading fixed.
+
+-------------------------------------------------------------------
+Fri Nov 15 04:18:28 UTC 2019 - malcolmlewis@opensuse.org
+
+- Initial build at version 0.8.4.
