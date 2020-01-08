@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 27
+%define micro_version 30
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -73,14 +73,12 @@ Source1002:     %{name}.keyring
 Patch0:         %{name}-%{major_version}.%{minor_version}-bootstrap-MANIFEST.MF.patch
 #PATCH-FIX-UPSTREAM: from jpackage.org package
 Patch1:         %{name}-%{major_version}.%{minor_version}-tomcat-users-webapp.patch
-# PATCH-FIX-UPSTREAM: https://issues.apache.org/bugzilla/show_bug.cgi?id=56373
-Patch2:         %{name}-%{major_version}.%{minor_version}-JDTCompiler-java.patch
 # PATCH-FIX-SLE: Change security manager default policies bnc#891264
-Patch3:         %{name}-%{major_version}.%{minor_version}-sle.catalina.policy.patch
+Patch2:         %{name}-%{major_version}.%{minor_version}-sle.catalina.policy.patch
 # PATCH-FIX-OPENSUSE: build javadoc with the same java source level as the class files
-Patch4:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
+Patch3:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
 # PATCH-FIX-OPENSUSE: disable adding OSGi metadata to JAR files because bndtools is not avalable in SLES/OpenSUSE
-Patch5:         tomcat-9.0-disable-osgi-build.patch
+Patch4:         tomcat-9.0-disable-osgi-build.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -255,10 +253,9 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
           -name "*.jar" -o -name "*.war" -o -name "*.zip" \) -print -delete
 %patch0
 %patch1
-#%patch2 -p1
-%patch3
+%patch2
+%patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
