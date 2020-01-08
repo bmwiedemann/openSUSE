@@ -1,7 +1,7 @@
 #
 # spec file for package dtb-aarch64
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.3
-%define patchversion 5.3.12
+%define srcversion 5.4
+%define patchversion 5.4.7
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        5.3.12
+Version:        5.4.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga6f6081
+Release:        <RELEASE>.g34ebd00
 %else
 Release:        0
 %endif

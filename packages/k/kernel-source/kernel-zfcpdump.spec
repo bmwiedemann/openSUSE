@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-zfcpdump
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.3
-%define patchversion 5.3.12
+%define srcversion 5.4
+%define patchversion 5.4.7
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
-%define compress_vmlinux gz
+%define compress_vmlinux xz
 %define livepatch livepatch%{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -65,9 +65,9 @@ Name:           kernel-zfcpdump
 Summary:        The IBM System Z zfcpdump Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.3.12
+Version:        5.4.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga6f6081
+Release:        <RELEASE>.g34ebd00
 %else
 Release:        0
 %endif
@@ -172,10 +172,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-a6f60814d3dbf81b05caf84e6143251ca14f5f37
-Provides:       kernel-srchash-a6f60814d3dbf81b05caf84e6143251ca14f5f37
+Provides:       kernel-%build_flavor-base-srchash-34ebd00cfe5fe0f030f33cc081662ff856d0f36e
+Provides:       kernel-srchash-34ebd00cfe5fe0f030f33cc081662ff856d0f36e
 # END COMMON DEPS
-Provides:       %name-srchash-a6f60814d3dbf81b05caf84e6143251ca14f5f37
+Provides:       %name-srchash-34ebd00cfe5fe0f030f33cc081662ff856d0f36e
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
