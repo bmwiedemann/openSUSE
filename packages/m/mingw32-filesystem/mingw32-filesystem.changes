@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Nov 25 16:31:30 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- add macro _mingw32_ldflags_bootstrap for bootstrap packages
+
+-------------------------------------------------------------------
+Sun Nov 24 21:36:08 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- fix compile errors: undefined reference to `__memcpy_chk`
+
+-------------------------------------------------------------------
+Fri Nov 22 10:58:42 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- disable default debug package only if the mingw debug macro is used
+
+-------------------------------------------------------------------
+Wed Nov 20 13:40:31 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- inital package for Factory submission

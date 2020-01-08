@@ -1,0 +1,215 @@
+%_mingw32_cpu             i686
+%_mingw32_vendor          w64
+%_mingw32_os              mingw32
+
+%_mingw32_target          %{_mingw32_cpu}-%{_mingw32_vendor}-%{_mingw32_os}
+
+# Paths.
+%_mingw32_sysroot         %{_prefix}/%{_mingw32_target}/sys-root
+%_mingw32_prefix          %{_mingw32_sysroot}/mingw
+%_mingw32_exec_prefix     %{_mingw32_prefix}
+%_mingw32_bindir          %{_mingw32_exec_prefix}/bin
+%_mingw32_sbindir         %{_mingw32_exec_prefix}/sbin
+%_mingw32_libexecdir      %{_mingw32_exec_prefix}/libexec
+%_mingw32_libdir          %{_mingw32_exec_prefix}/lib
+%_mingw32_datadir         %{_mingw32_prefix}/share
+%_mingw32_docdir          %{_mingw32_prefix}/share/doc
+%_mingw32_infodir         %{_mingw32_prefix}/share/info
+%_mingw32_mandir          %{_mingw32_prefix}/share/man
+%_mingw32_sysconfdir      %{_mingw32_prefix}/etc
+%_mingw32_sharedstatedir  %{_mingw32_prefix}/com
+%_mingw32_localstatedir   %{_mingw32_prefix}/var
+%_mingw32_includedir      %{_mingw32_prefix}/include
+
+# Build macros.
+%_mingw32_host            %{_mingw32_target}
+
+%_mingw32_cflags          -O2 -g -pipe -Wall -fexceptions --param=ssp-buffer-size=4 -mms-bitfields
+%_mingw32_cxxflags        %{_mingw32_cflags}
+
+%_mingw32_ldflags_base    -Wl,--exclude-libs=libintl.a -Wl,--exclude-libs=libiconv.a -Wl,--no-keep-memory
+# for bootstrap packages
+%_mingw32_ldflags_bootstrap %{_mingw32_ldflags_base}
+# for normal packages
+%_mingw32_ldflags         %{_mingw32_ldflags_base} -fstack-protector
+
+%_mingw32_classpath       %{_mingw32_datadir}/java/libgcj.jar:%{_mingw32_datadir}/java/libgcj-tools.jar
+
+%_mingw32_cc              %{_mingw32_target}-gcc
+%_mingw32_cxx             %{_mingw32_target}-g++
+%_mingw32_cpp             %{_mingw32_target}-gcc -E
+%_mingw32_addr2line       %{_mingw32_target}-addr2line
+%_mingw32_ar              %{_mingw32_target}-ar
+%_mingw32_as              %{_mingw32_target}-as
+%_mingw32_dlltool         %{_mingw32_target}-dlltool
+%_mingw32_dllwrap         %{_mingw32_target}-dllwrap
+%_mingw32_gcov            %{_mingw32_target}-gcov
+%_mingw32_gprof           %{_mingw32_target}-gprof
+%_mingw32_ld              %{_mingw32_target}-ld
+%_mingw32_nm              %{_mingw32_target}-nm
+%_mingw32_objcopy         %{_mingw32_target}-objcopy
+%_mingw32_objdump         %{_mingw32_target}-objdump
+%_mingw32_ranlib          %{_mingw32_target}-ranlib
+%_mingw32_readelf         %{_mingw32_target}-readelf
+%_mingw32_size            %{_mingw32_target}-size
+%_mingw32_strings         %{_mingw32_target}-strings
+%_mingw32_strip           %{_mingw32_target}-strip
+%_mingw32_windmc          %{_mingw32_target}-windmc
+%_mingw32_windres         %{_mingw32_target}-windres
+%_mingw32_gcj             %{_mingw32_target}-gcj
+
+%_mingw32_cache           mingw32-config.cache
+
+%_mingw32_findprovides    /usr/lib/rpm/mingw32-find-provides.sh
+%_mingw32_findrequires    /usr/lib/rpm/mingw32-find-requires.sh
+%_mingw32_install_post    /usr/lib/rpm/mingw32-install-post.sh
+%_mingw32_find_lang       /usr/lib/rpm/mingw32-find-lang.sh %{buildroot}
+
+%_mingw32_debug_install_post   \
+   /usr/lib/rpm/mingw32-find-debuginfo.sh %{_builddir} 1\
+%{nil}
+
+# Template for combined debuginfo and debugsource sub-package.
+%_mingw32_debug_package(n:) \
+%package %{-n:-n %{-n*}-}debug \
+Summary: Debug information for package %{name} \
+Group: Development/Debug \
+BuildArch: noarch \
+%description %{-n:-n %{-n*}-}debug \
+This package provides debug information for package %{name}.\
+Debug information is useful when developing applications that use this\
+package or when debugging this package.\
+%files %{-n:-n %{-n*}-}debug -f %{_builddir}/mingw32-debugfiles.list\
+%defattr(-,root,root)\
+%{nil}
+
+%_mingw32_env HOST_CC=gcc; export HOST_CC; \
+  PKG_CONFIG_PATH="%{_mingw32_libdir}/pkgconfig:%{_mingw32_datadir}/pkgconfig"; export PKG_CONFIG_PATH; \
+  CLASSPATH="$CLASSPATH:${MINGW32_CLASSPATH:-%_mingw32_classpath}"; export CLASSPATH; \
+  _PREFIX="%{_bindir}/%{_mingw32_target}-"; \
+  for i in `ls -1 ${_PREFIX}* | grep -v 'gcc-'`; do \
+    x=`echo $i|sed "s,${_PREFIX},,"|sed "s,\\.awk*,,"|tr [:lower:] [:upper:] | tr "+-" "X_" | sed "s,\\.,,g"`; \
+    declare -x $x="$i" ; export $x; \
+  done; \
+  unset _PREFIX; \
+  CC="${MINGW32_CC:-%_mingw32_cc}"; export CC; \
+  CFLAGS="${MINGW32_CFLAGS:-%_mingw32_cflags}"; export CFLAGS; \
+  LDFLAGS="${MINGW32_LDFLAGS:-%_mingw32_ldflags}"; export LDFLAGS; \
+  if [ -x "%{_bindir}/%{_mingw32_cxx}" ]; then \
+    CXX="${MINGW32_CXX:-%_mingw32_cxx}"; export CXX; \
+    CXXFLAGS="${MINGW32_CXXFLAGS:-%_mingw32_cxxflags}"; export CXXFLAGS; \
+  else \
+    CXX=; export CXX; \
+    ac_cv_prog_CXX=no; export ac_cv_prog_CXX; \
+    CXXFLAGS=; export CXXFLAGS; \
+  fi; \
+  for i in `ls %{_mingw32_bindir}/*|grep -- "-config\$"` ; do \
+    x=`basename $i|tr [:lower:] [:upper:] | tr "+-" "X_" | sed "s,\\.,,g"`; \
+    declare -x $x="$i" ; export $x; \
+  done; \
+  unset x i
+
+%_mingw32_package_header \
+  %global __strip %{_mingw32_strip} \
+  %global __objdump %{_mingw32_objdump} \
+  %global _use_internal_dependency_generator 0 \
+  %global __find_requires %{_mingw32_findrequires} \
+  %global __find_provides %{_mingw32_findprovides} \
+  %global __os_install_post %{_mingw32_install_post}
+
+
+# this macro also disables the default debug package
+%_mingw32_package_header_debug \
+  %global debug_package %{nil} \
+  %global __strip %{_mingw32_strip} \
+  %global __objdump %{_mingw32_objdump} \
+  %global _use_internal_dependency_generator 0 \
+  %global __find_requires %{_mingw32_findrequires} \
+  %global __find_provides %{_mingw32_findprovides} \
+  %global __os_install_post %{_mingw32_debug_install_post} \\\
+                            %{_mingw32_install_post}
+
+%_mingw32_configure %{_mingw32_env} ; \
+  __mingw32_topdir=.; if ! test -x configure; then __mingw32_topdir=..; fi; \\\
+  $__mingw32_topdir/configure --cache-file=%{_mingw32_cache} \\\
+	--host=%{_mingw32_host} \\\
+	--build=%_build \\\
+	--target=%{_mingw32_target} \\\
+	--prefix=%{_mingw32_prefix} \\\
+	--exec-prefix=%{_mingw32_exec_prefix} \\\
+	--bindir=%{_mingw32_bindir} \\\
+	--sbindir=%{_mingw32_sbindir} \\\
+	--sysconfdir=%{_mingw32_sysconfdir} \\\
+	--datadir=%{_mingw32_datadir} \\\
+	--includedir=%{_mingw32_includedir} \\\
+	--libdir=%{_mingw32_libdir} \\\
+	--libexecdir=%{_mingw32_libexecdir} \\\
+	--localstatedir=%{_mingw32_localstatedir} \\\
+	--sharedstatedir=%{_mingw32_sharedstatedir} \\\
+	--mandir=%{_mingw32_mandir} \\\
+	--infodir=%{_mingw32_infodir}
+
+%_mingw32_make %{_mingw32_env} ; \
+  make \\\
+	prefix=%{_mingw32_prefix} \\\
+	exec_prefix=%{_mingw32_exec_prefix} \\\
+	bindir=%{_mingw32_bindir} \\\
+	sbindir=%{_mingw32_sbindir} \\\
+	sysconfdir=%{_mingw32_sysconfdir} \\\
+	datadir=%{_mingw32_datadir} \\\
+	includedir=%{_mingw32_includedir} \\\
+	libdir=%{_mingw32_libdir} \\\
+	libexecdir=%{_mingw32_libexecdir} \\\
+	localstatedir=%{_mingw32_localstatedir} \\\
+	sharedstatedir=%{_mingw32_sharedstatedir} \\\
+	mandir=%{_mingw32_mandir} \\\
+	infodir=%{_mingw32_infodir}
+
+%_mingw32_make_install %{_mingw32_env} ; \
+  make \\\
+	prefix=%{?buildroot:%{buildroot}}%{_mingw32_prefix} \\\
+	exec_prefix=%{?buildroot:%{buildroot}}%{_mingw32_exec_prefix} \\\
+	bindir=%{?buildroot:%{buildroot}}%{_mingw32_bindir} \\\
+	sbindir=%{?buildroot:%{buildroot}}%{_mingw32_sbindir} \\\
+	sysconfdir=%{?buildroot:%{buildroot}}%{_mingw32_sysconfdir} \\\
+	datadir=%{?buildroot:%{buildroot}}%{_mingw32_datadir} \\\
+	includedir=%{?buildroot:%{buildroot}}%{_mingw32_includedir} \\\
+	libdir=%{?buildroot:%{buildroot}}%{_mingw32_libdir} \\\
+	libexecdir=%{?buildroot:%{buildroot}}%{_mingw32_libexecdir} \\\
+	localstatedir=%{?buildroot:%{buildroot}}%{_mingw32_localstatedir} \\\
+	sharedstatedir=%{?buildroot:%{buildroot}}%{_mingw32_sharedstatedir} \\\
+	mandir=%{?buildroot:%{buildroot}}%{_mingw32_mandir} \\\
+	infodir=%{?buildroot:%{buildroot}}%{_mingw32_infodir} \\\
+  install
+
+# deprecated, use _mingw32_make_install (unix variant is named %make_install)
+%_mingw32_makeinstall %_mingw32_make_install
+
+# internal macro used by related filesystem packages
+%__mingw32_cmake %{_mingw32_env} ; \
+  cmake \\\
+        -DCMAKE_SYSTEM_NAME="Windows" \\\
+        -DCMAKE_VERBOSE_MAKEFILE=ON \\\
+        -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
+        -DCMAKE_INSTALL_PREFIX:PATH=%{_mingw32_prefix} \\\
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_mingw32_libdir} \\\
+        -DBIN_INSTALL_DIR=%{_mingw32_bindir} \\\
+        -DINCLUDE_INSTALL_DIR:PATH=%{_mingw32_includedir} \\\
+        -DLIB_INSTALL_DIR:PATH=%{_mingw32_libdir} \\\
+        -DSHARE_INSTALL_DIR:PATH=%{_mingw32_datadir} \\\
+        -DSYSCONF_INSTALL_DIR:PATH=%{_mingw32_sysconfdir} \\\
+        -DSHARE_INSTALL_PREFIX:PATH=%{_mingw32_datadir} \\\
+        -DBUILD_SHARED_LIBS:BOOL=ON \\\
+        -DCMAKE_C_COMPILER="%{_bindir}/%{_mingw32_cc}" \\\
+        -DCMAKE_CXX_COMPILER="%{_bindir}/%{_mingw32_cxx}" \\\
+        -DCMAKE_RC_COMPILER="%{_bindir}/%{_mingw32_windres}" \\\
+        -DCMAKE_FIND_ROOT_PATH="%{_mingw32_prefix}" \\\
+        -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \\\
+        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \\\
+        -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
+
+# cmake > 3.13.1 requires setting source dir 
+%_mingw32_cmake %{__mingw32_cmake} .
+
+%_mingw32_cmake_install %{_mingw32_env} ; \
+  make VERBOSE=1 DESTDIR=%{buildroot} install/fast
