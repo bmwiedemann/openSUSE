@@ -1,7 +1,7 @@
 #
 # spec file for package python-onnx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -21,22 +22,22 @@
 Name:           python-onnx
 Version:        1.6.0
 Release:        0
-License:        MIT
 Summary:        Open Neural Network Exchange
-Url:            https://onnx.ai/
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pybind11}
-BuildRequires:  python-pybind11-devel
-BuildRequires:  fdupes
+BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel
+BuildRequires:  python-pybind11-devel
+BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires:       python-protobuf
 Requires:       python-six
@@ -75,14 +76,14 @@ done
 # https://github.com/pybind/pybind11/issues/1949
 
 %files %{python_files}
-%doc LICENSE README.md
+%doc README.md
+%license LICENSE 
 %python3_only %{_bindir}/check-model
 %python3_only %{_bindir}/check-node
 %python3_only %{_bindir}/backend-test-tools
 %{python_sitearch}/*
 %exclude %{python_sitearch}/onnx/*.[hc]
 %exclude %{python_sitearch}/onnx/common
-%exclude %{python_sitearch}/onnx/defs
 %exclude %{python_sitearch}/onnx/optimizer
 %exclude %{python_sitearch}/onnx/version_converter
 %exclude %{python_sitearch}/onnx/shape_inference
@@ -90,7 +91,6 @@ done
 %files %{python_files devel}
 %{python_sitearch}/onnx/*.[hc]
 %{python_sitearch}/onnx/common
-%{python_sitearch}/onnx/defs
 %{python_sitearch}/onnx/optimizer
 %{python_sitearch}/onnx/version_converter
 %{python_sitearch}/onnx/shape_inference
