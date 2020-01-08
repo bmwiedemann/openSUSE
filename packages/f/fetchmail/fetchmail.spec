@@ -1,7 +1,7 @@
 #
 # spec file for package fetchmail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,7 @@ Version:        6.4.1
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Email/Utilities
-Url:            http://www.fetchmail.info/
+URL:            http://www.fetchmail.info/
 Source:         https://sourceforge.net/projects/fetchmail/files/branch_6.4/%{name}-%{version}.tar.xz
 #Source1:        https://sourceforge.net/projects/fetchmail/files/branch_6.4/%%{name}-%%{version}.tar.xz.asc
 Source2:        %{name}.logrotate
@@ -44,7 +43,7 @@ BuildRequires:  opie
 BuildRequires:  postfix
 BuildRequires:  procmail
 BuildRequires:  pwdutils
-BuildRequires:  python-devel
+BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       logrotate
@@ -52,10 +51,7 @@ Requires(pre):  %fillup_prereq
 Requires(pre):  coreutils
 Requires(pre):  pwdutils
 Suggests:       smtp_daemon
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} >= 1315
 Requires(pre):	group(daemon)
-%endif
 %{?systemd_requires}
 
 %description
@@ -72,9 +68,8 @@ is included in the fetchmailconf package.
 
 %package -n fetchmailconf
 Summary:        Fetchmail Configuration Utility
-Group:          Productivity/Networking/Email/Utilities
 Requires:       %{name} = %{version}
-Requires:       python-tk
+Requires:       python3-tk
 
 %description -n fetchmailconf
 A GUI configuration utility for generating fetchmail configuration
@@ -154,7 +149,6 @@ fi
 make %{?_smp_mflags} check
 
 %files -f %{name}.lang
-%defattr(-, root, root)
 %license COPYING
 %doc FAQ FEATURES NEWS NOTES OLDNEWS README README.NTLM README.SSL README.SSL-SERVER TODO contrib *.html *.txt *.pdf
 %{_bindir}/fetchmail
@@ -170,9 +164,9 @@ make %{?_smp_mflags} check
 %{_fillupdir}/sysconfig.%{name}
 
 %files -n fetchmailconf
-%defattr(-, root, root)
 %{_bindir}/fetchmailconf
 %{_mandir}/man1/fetchmailconf.1.gz
-%{python_sitelib}/fetchmailconf.*
+%{python3_sitelib}/fetchmailconf.*
+%{python3_sitelib}/__pycache__/fetchmailconf*
 
 %changelog
