@@ -1,7 +1,7 @@
 #
 # spec file for package opencensus-cpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -36,6 +36,7 @@ BuildRequires:  bazel-rules-cc-source
 BuildRequires:  bazel-rules-go-source
 BuildRequires:  bazel-rules-java-source
 BuildRequires:  bazel-rules-proto-source
+BuildRequires:  bazel-rules-swift-source
 BuildRequires:  bazel-skylib-source
 BuildRequires:  bazel-workspaces
 BuildRequires:  bazel0.29
@@ -44,10 +45,9 @@ BuildRequires:  c-ares-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git
-BuildRequires:  golang(API) >= 1.10.4
+BuildRequires:  gmock
 BuildRequires:  googleapis-source
 BuildRequires:  grpc-source
-BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  libcurl-devel
 BuildRequires:  nanopb-source
@@ -57,6 +57,7 @@ BuildRequires:  protobuf-source
 BuildRequires:  rapidjson-devel
 BuildRequires:  upb-source
 BuildRequires:  zlib-devel
+BuildRequires:  golang(API) >= 1.10.4
 BuildRequires:  pkgconfig(openssl)
 ExcludeArch:    %ix86
 
@@ -126,9 +127,9 @@ sed -i \
 find examples/ -type f -name BUILD -exec rm -f {} +
 
 %build
-cat /usr/src/grpc/WORKSPACE
 TARGETS=$(bazel query \
     --override_repository="bazel_skylib=/usr/src/bazel-skylib" \
+    --override_repository="build_bazel_rules_swift=/usr/src/bazel-rules-swift" \
     --override_repository="com_github_cares_cares=%{_datadir}/bazel-workspaces/c-ares" \
     --override_repository="com_github_curl=%{_datadir}/bazel-workspaces/curl" \
     --override_repository="com_github_google_benchmark=%{_datadir}/bazel-workspaces/benchmark" \
@@ -155,6 +156,7 @@ bazel build \
     --host_javabase=@local_jdk//:jdk \
     --incompatible_use_jdk11_as_host_javabase \
     --override_repository="bazel_skylib=/usr/src/bazel-skylib" \
+    --override_repository="build_bazel_rules_swift=/usr/src/bazel-rules-swift" \
     --override_repository="com_github_cares_cares=%{_datadir}/bazel-workspaces/c-ares" \
     --override_repository="com_github_curl=%{_datadir}/bazel-workspaces/curl" \
     --override_repository="com_github_google_benchmark=%{_datadir}/bazel-workspaces/benchmark" \
@@ -210,4 +212,3 @@ cp -r * %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-
