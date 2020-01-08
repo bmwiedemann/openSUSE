@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Dec  9 09:20:18 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- fix file list
+
+-------------------------------------------------------------------
+Fri Dec  6 13:05:22 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- don't package debug files in main package
+
+-------------------------------------------------------------------
+Tue Dec  3 10:56:10 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- can't use _multibuild and multiple specs atm
+  https://github.com/openSUSE/obs-service-source_validator/issues/79
+- fix download url
+
+-------------------------------------------------------------------
+Fri Nov 29 12:41:49 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix package build errors by restoring the previous package
+  (mingw32-pkg-config) and the executable file (pkg-config.exe).
+
+-------------------------------------------------------------------
+Fri Nov 29 06:14:36 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix building mingw32-cross-pkgconf package by adding _multibuild file
+
+-------------------------------------------------------------------
+Wed Nov 27 08:41:44 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- initial package
