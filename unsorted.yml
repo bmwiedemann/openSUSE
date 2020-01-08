@@ -260,8 +260,8 @@ unsorted:
   - SoQt-devel 
   - SoQt-doc 
   - Supybot 
-  - ThePEG-devel 
-  - ThePEG-libs 
+  - ThePEG-devel: [x86_64] 
+  - ThePEG-libs: [x86_64] 
   - UEFITool 
   - VFlib3 
   - VFlib3-devel 
@@ -1103,6 +1103,7 @@ unsorted:
   - bazel-rules-go-source 
   - bazel-rules-java-source 
   - bazel-rules-proto-source 
+  - bazel-rules-swift-source 
   - bazel-skylib-source 
   - bazel-toolchains-source 
   - bazel-workspaces 
@@ -2716,7 +2717,7 @@ unsorted:
   - ephoto 
   - ephoto-lang 
   - epic 
-  - epiphany-branding-upstream 
+  - epiphany-branding-openSUSE 
   - epour 
   - epour-lang 
   - epplet-base 
@@ -5861,6 +5862,10 @@ unsorted:
   - java-1_8_0-openjdk-headless 
   - java-1_8_0-openjdk-javadoc 
   - java-1_8_0-openjdk-src 
+  - java-1_8_0-openjfx 
+  - java-1_8_0-openjfx-devel 
+  - java-1_8_0-openjfx-javadoc 
+  - java-1_8_0-openjfx-src 
   - java-atk-wrapper 
   - java-binfmt-misc 
   - java-cup 
@@ -7668,7 +7673,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_7_7 
+  - libYODA-1_8_0 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -11123,8 +11128,8 @@ unsorted:
   - libregf-tools 
   - libregf1 
   - libregina3 
-  - libreiser4-1_2-1 
-  - libreiser4-minimal-1_2-1 
+  - libreiser4-2_0-0 
+  - libreiser4-minimal-2_0-0 
   - libreiserfs-0_3-0 
   - libreiserfs-0_3-0-32bit: [x86_64] 
   - libreiserfs-devel 
@@ -11248,7 +11253,7 @@ unsorted:
   - librep 
   - librep-devel 
   - librep16 
-  - librepair-1_2-1 
+  - librepair-2_0-0 
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
@@ -17452,7 +17457,6 @@ unsorted:
   - python-gamin 
   - python-gcs-oauth2-boto-plugin 
   - python-gdbm 
-  - python-genders 
   - python-getdata 
   - python-gevent-doc 
   - python-gexiv2 
@@ -17531,6 +17535,7 @@ unsorted:
   - python-nlopt 
   - python-notify 
   - python-notify-devel 
+  - python-notmuch-doc 
   - python-novaclient-doc 
   - python-obexftp 
   - python-octaviaclient-doc 
@@ -18181,6 +18186,9 @@ unsorted:
   - python2-cairocffi-pixbuf 
   - python2-caja 
   - python2-caldav 
+  - python2-calmjs 
+  - python2-calmjs.parse 
+  - python2-calmjs.types 
   - python2-cangjie 
   - python2-canonicaljson 
   - python2-capng 
@@ -18362,32 +18370,27 @@ unsorted:
   - python2-distroinfo 
   - python2-distutils-extra 
   - python2-dj-database-url 
-  - python2-django-allauth 
-  - python2-django-allauth-lang 
   - python2-django-appconf 
   - python2-django-avatar 
   - python2-django-babel 
   - python2-django-braces 
   - python2-django-ckeditor 
   - python2-django-classy-tags 
+  - python2-django-compressor 
   - python2-django-contrib-comments 
   - python2-django-crispy-forms 
   - python2-django-environ 
-  - python2-django-formtools 
-  - python2-django-grappelli 
   - python2-django-invitations 
   - python2-django-jinja 
   - python2-django-js-asset 
   - python2-django-json-widget 
   - python2-django-jsonfield 
-  - python2-django-model-utils 
   - python2-django-nine 
   - python2-django-nose 
   - python2-django-oidc-provider 
   - python2-django-picklefield 
   - python2-django-pipeline 
   - python2-django-pyscss 
-  - python2-django-redis 
   - python2-django-registration 
   - python2-django-rest-framework-client 
   - python2-django-rest-framework-social-oauth2 
@@ -18648,7 +18651,6 @@ unsorted:
   - python2-imagesize 
   - python2-img2pdf 
   - python2-iminuit 
-  - python2-importlab 
   - python2-importlib-metadata 
   - python2-importlib_resources 
   - python2-imread 
@@ -19309,7 +19311,6 @@ unsorted:
   - python2-pytest-flakes 
   - python2-pytest-flask 
   - python2-pytest-forked 
-  - python2-pytest-git 
   - python2-pytest-helpers-namespace 
   - python2-pytest-httpbin 
   - python2-pytest-instafail 
@@ -19380,7 +19381,6 @@ unsorted:
   - python2-python-jsonrpc-server 
   - python2-python-jsonschema-objects 
   - python2-python-language-server 
-  - python2-python-louvain 
   - python2-python-lzo 
   - python2-python-magic 
   - python2-python-memcached 
@@ -19590,7 +19590,6 @@ unsorted:
   - python2-sip 
   - python2-sip-devel 
   - python2-siphashc 
-  - python2-sklearn-pandas 
   - python2-sleekxmpp 
   - python2-slimit 
   - python2-slip 
@@ -20500,6 +20499,9 @@ unsorted:
   - python3-cairocffi 
   - python3-cairocffi-pixbuf 
   - python3-caldav 
+  - python3-calmjs 
+  - python3-calmjs.parse 
+  - python3-calmjs.types 
   - python3-calysto 
   - python3-cangjie 
   - python3-canonicaljson 
@@ -20723,6 +20725,7 @@ unsorted:
   - python3-django-braces 
   - python3-django-ckeditor 
   - python3-django-classy-tags 
+  - python3-django-compressor 
   - python3-django-contrib-comments 
   - python3-django-cors-headers 
   - python3-django-crispy-forms 
@@ -20954,6 +20957,7 @@ unsorted:
   - python3-gear 
   - python3-ged4py 
   - python3-geis 
+  - python3-genders 
   - python3-genty 
   - python3-geographiclib 
   - python3-geoip2 
@@ -22830,6 +22834,7 @@ unsorted:
   - recordmydesktop 
   - redeclipse 
   - redeclipse-data 
+  - redfish-finder 
   - redland 
   - redland-storage-postgresql 
   - redminecli 
@@ -32182,6 +32187,7 @@ unsorted:
   - tftpboot-installation-openSUSE-Tumbleweed-i586: [i586] 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64: [x86_64] 
   - the_silver_searcher 
+  - thermal-monitor 
   - thermald 
   - thessalonica-oldstandard-ttf-fonts 
   - thessalonica-tempora-lgc-otf-fonts 
