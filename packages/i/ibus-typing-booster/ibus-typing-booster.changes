@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 18 16:39:36 UTC 2019 - maiku.fabian@gmail.com
+
+- Update to 2.7.5
+- Add libvoikko support for Finnish
+- Add support for (almost) arbitrary dead key sequences
+  (suggested by Marko Myllynen)
+
+-------------------------------------------------------------------
 Sat Dec 14 11:18:05 UTC 2019 - maiku.fabian@gmail.com
 
 - Update to 2.7.4
