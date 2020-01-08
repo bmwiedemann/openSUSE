@@ -5,7 +5,8 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">bazel-rules-go</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">refs/tags/0.18.5</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">refs/tags/v0.20.1</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
