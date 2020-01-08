@@ -1,7 +1,7 @@
 #
 # spec file for package phpMyAdmin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define ap_grp nogroup
 %endif
 Name:           phpMyAdmin
-Version:        4.9.3
+Version:        4.9.4
 Release:        0
 Summary:        Administration of MySQL over the web
 License:        GPL-2.0-or-later

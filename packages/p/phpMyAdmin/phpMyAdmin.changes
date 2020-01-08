@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  8 14:26:20 UTC 2020 - chris@computersalat.de
+
+- update to 4.9.4 (2020-01-07)
+  * https://github.com/phpmyadmin/phpmyadmin/blob/RELEASE_4_9_4/ChangeLog
+- fix for boo#1160456
+  * PMASA-2020-1 (CVE-2020-5504, CWE-661)
+    https://www.phpmyadmin.net/security/PMASA-2020-1/
+    - SQL injection in user accounts page
+- fix changes about corresponding PMASA
+
+-------------------------------------------------------------------
 Mon Dec 30 15:41:02 UTC 2019 - ecsos@opensuse.org
 
 - phpMyAdmin 4.9.3
@@ -15,7 +26,7 @@ Mon Dec 30 15:41:02 UTC 2019 - ecsos@opensuse.org
 Sat Nov 23 09:42:06 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - phpMyAdmin 4.9.2:
-  * CVE-2019-18622: SQL injection in Designer feature (boo#1157614)
+  * CVE-2019-18622: SQL injection in Designer feature (PMASA-2019-5, boo#1157614)
   * Fixes for "Failed to set session cookie" error 
   * Advisor with MySQL 8.0.3 and newer
   * Fix PHP deprecation errors
@@ -32,7 +43,7 @@ Sat Nov 23 09:42:06 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 Sat Sep 21 19:16:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - phpMyAdmin 4.9.1:
-  * CVE-2019-12922: hardening against CSRF (boo#1150914)
+  * CVE-2019-12922: hardening against CSRF (no PMASA, boo#1150914)
   * Editing columns with CURRENT_TIMESTAMP for MySQL versions 8.0.13
     and newer
   * Compatibility issues with PHP 8
