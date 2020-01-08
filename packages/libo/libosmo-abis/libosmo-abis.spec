@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-abis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define version_unconverted 0.7.0
+%define version_unconverted 0.8.0
 
 Name:           libosmo-abis
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -108,7 +108,11 @@ applications that want to make use of libosmotrau.
 %build
 echo "%version" >.tarball-version
 autoreconf -fiv
-%configure --enable-shared --disable-static --includedir="%_includedir/%name"
+%configure \
+    --enable-shared \
+    --disable-static \
+    --disable-dahdi \
+    --includedir="%_includedir/%name"
 make %{?_smp_mflags}
 
 %install
