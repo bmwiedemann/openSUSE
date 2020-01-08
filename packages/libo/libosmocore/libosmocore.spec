@@ -1,7 +1,7 @@
 #
 # spec file for package libosmocore
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmocore
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND AGPL-3.0-or-later
@@ -26,11 +26,13 @@ URL:            https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 Source:         %name-%version.tar.xz
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
+BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
-BuildRequires:  python2
+BuildRequires:  python3
 BuildRequires:  xz
 BuildRequires:  pkgconfig(gnutls) >= 2.12.0
 BuildRequires:  pkgconfig(libpcsclite)
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(talloc) >= 2.0.1
 
 %description
@@ -270,6 +272,33 @@ VTY (Virtual TTY), as well as configuration file parsing.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmovty.
 
+%package -n libosmousb0
+Summary:        Osmocom USB library
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n libosmousb0
+libosmocore is a package with various utility functions that were
+originally developed as part of the OpenBSC project.
+
+The libosmosub library in particular contains routines for USB device
+access via libusb-1.0, integrated into the libosmocore select event loop.
+
+%package -n libosmousb-devel
+Summary:        Development files for the Osmocom USB library
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       libosmocore-devel = %version
+Requires:       libosmousb0 = %version
+Requires:       libusb-1_0-devel
+
+%description -n libosmousb-devel
+The libosmosub library in particular contains routines for USB device
+access via libusb-1.0, integrated into the libosmocore select event loop.
+
+This subpackage contains libraries and header files for developing
+applications that want to make use of libosmousb.
+
 %prep
 %autosetup -p1
 
@@ -306,6 +335,8 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %postun -n libosmosim0 -p /sbin/ldconfig
 %post   -n libosmovty4 -p /sbin/ldconfig
 %postun -n libosmovty4 -p /sbin/ldconfig
+%post   -n libosmousb0 -p /sbin/ldconfig
+%postun -n libosmousb0 -p /sbin/ldconfig
 
 %files tools
 %_bindir/osmo-*
@@ -339,6 +370,8 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %_includedir/%name/osmocom/core/
 %_libdir/libosmocore.so
 %_libdir/pkgconfig/libosmocore.pc
+%_datadir/aclocal/osmo_ax_code_coverage.m4
+%_datadir/aclocal/osmo_ac_code_coverage.m4
 
 %files -n libosmoctrl0
 %_libdir/libosmoctrl.so.0*
@@ -391,5 +424,17 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %_includedir/%name/osmo-release.mk
 %_libdir/libosmovty.so
 %_libdir/pkgconfig/libosmovty.pc
+
+%files -n libosmousb0
+%defattr(-,root,root)
+%_libdir/libosmousb.so.0*
+
+%files -n libosmousb-devel
+%defattr(-,root,root)
+%dir %_includedir/%name
+%dir %_includedir/%name/osmocom
+%_includedir/%name/osmocom/usb/
+%_libdir/libosmousb.so
+%_libdir/pkgconfig/libosmousb.pc
 
 %changelog
