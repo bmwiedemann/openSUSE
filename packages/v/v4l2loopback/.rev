@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>754868</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f5b9c8710d23df46457d8ec23fde5182</srcmd5>
+    <version>0.12.3</version>
+    <time>1578502638</time>
+    <user>dimstar_suse</user>
+    <comment>fixes boo#1159777</comment>
+    <requestid>761860</requestid>
+  </revision>
 </revisionlist>
