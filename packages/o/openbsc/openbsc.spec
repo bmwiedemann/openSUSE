@@ -1,7 +1,7 @@
 #
 # spec file for package openbsc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _lto_cflags %nil
 
 Name:           openbsc
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Base station controller for a GSM stack
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,7 +32,7 @@ BuildRequires:  libdbi-drivers-dbd-sqlite3
 BuildRequires:  libpcap-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbi)
 BuildRequires:  pkgconfig(libcares)
