@@ -1228,8 +1228,8 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-base" arch="i586,i686"/>
-      <repopackage name="kernel-default-devel" arch="i586,i686"/>
+      <repopackage name="kernel-default-base"/>
+      <repopackage name="kernel-default-devel"/>
       <repopackage name="kernel-devel"/>
       <repopackage name="kernel-docs"/>
       <repopackage name="kernel-firmware-all"/>
