@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Wed Oct 17 18:50:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 6.0.0
+  * C++ __cxa_atexit
+  * Massive additions to support UCRT
+  * Sync COM interface headers with Wine development
+  * WinRT additions
+  * ARM32 and ARM64 additions
+  * CRT library api-ms-win-core additions
+  * CRT library def file reorganization
+- Removed popcnt.patch, 0001-Add-missing-D3D_CS_-variables.patch
+  (no longer needed; included upstream)
+
+-------------------------------------------------------------------
+Tue Nov 21 11:38:40 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.3 
+- Drop libmsvcrt.a-Added-_create_locale-and-_free_locale-ent.diff,
+  fixed upstream.
+
+-------------------------------------------------------------------
+Tue Apr 18 14:12:37 UTC 2017 - idonmez@suse.com
+
+- Add libmsvcrt.a-Added-_create_locale-and-_free_locale-ent.diff  
+
+-------------------------------------------------------------------
+Tue Mar 28 11:41:07 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.2 
+
+-------------------------------------------------------------------
+Sat Jan 14 20:48:37 UTC 2017 - idonmez@suse.com
+
+- Update to version 5.0.1 
+
+-------------------------------------------------------------------
+Wed Mar 23 21:07:00 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 5.0~rc1
+* Basic ARM support
+* gcc-5 support
+
+-------------------------------------------------------------------
+Fri Sep  4 11:55:01 UTC 2015 - idonmez@suse.com
+
+- Update to version 4.0.4
+  * No changelog upstream
+
+-------------------------------------------------------------------
+Tue Apr 21 09:13:45 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.0.2
+* Fix 64bit __mingw_printf %l*, %z* and %g
+
+-------------------------------------------------------------------
+Tue Mar 31 16:59:00 UTC 2015 - jengelh@inai.de
+
+- Add mkstemp.diff, addressing broken behavior of mkstemp(),
+  a newly implemented function since mingw 4.0.1.
+
+-------------------------------------------------------------------
+Thu Mar 26 22:48:14 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 4.0.1
+* 32-bit ARM thumb software math
+* Improved DirectX 11, OpenGL 4.5/GLES 3.1 support
+* added POSIX.1-2008 ftw.h
+* more secure functions: qsort_s, gmtime64_s, time_s.h, ...
+* added to stat.h: S_IRGRP, S_IRWXG, ...
+* added to unistd.h: SHUT_*
+
+-------------------------------------------------------------------
+Tue Dec 20 16:21:59 UTC 2011 - dev@dominik-schmidt.de
+
+- apply patch from trunk, that fixes crash on startup on certain systems
+
