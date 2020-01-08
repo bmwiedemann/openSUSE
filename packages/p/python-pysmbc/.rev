@@ -16,4 +16,19 @@
   * no changelog</comment>
     <requestid>717615</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8a478f06408b5689dbd68248541a41f</srcmd5>
+    <version>1.0.18</version>
+    <time>1578508333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.18:
+  + New in 1.0.18:
+    * Support Fix memleak for auth_fn #32
+    * Support readinto #31
+  + New in 1.0.17:
+    * Support buffer protocol #30
+    * exceptions: use a shared superclass #28
+    * setup: autodetect required library dirs #27</comment>
+    <requestid>761016</requestid>
+  </revision>
 </revisionlist>
