@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  6 09:32:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Not only provide python-antlr, but also obsolete it
+
+-------------------------------------------------------------------
 Wed Jul 31 08:51:20 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library. 
