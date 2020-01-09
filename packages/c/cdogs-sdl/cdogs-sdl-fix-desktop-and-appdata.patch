@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c58e5c5..6a24b7d 100644
+index 295c8d2..84fb093 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -255,12 +255,12 @@ INSTALL(FILES
+@@ -252,12 +252,12 @@ INSTALL(FILES
  	${CMAKE_SOURCE_DIR}/README.md
  	DESTINATION ${DATA_INSTALL_DIR})
  IF(UNIX AND NOT APPLE AND NOT BEOS AND NOT HAIKU)
@@ -18,19 +18,11 @@ index c58e5c5..6a24b7d 100644
  	endforeach(RES)
  elseif(WIN32)
  	# Package for Windows
-diff --git a/build/linux/io.github.cxong.cdogs-sdl.desktop.cmake b/build/linux/io.github.cxong.cdogs-sdl.desktop.cmake
-index 3d40fbf..567315f 100644
---- a/build/linux/io.github.cxong.cdogs-sdl.desktop.cmake
-+++ b/build/linux/io.github.cxong.cdogs-sdl.desktop.cmake
-@@ -1,7 +1,6 @@
- [Desktop Entry]
- Name=C-Dogs SDL
- GenericName=Action/Arcade Game
--Version=@VERSION@
- Type=Application
- Categories=Game;ActionGame;
- Keywords=Game;Arcade;Shooter;Retro;
-@@ -9,4 +8,4 @@ Comment=Classic overhead run-and-gun game
+diff --git a/build/linux/io.github.cxong.cdogs-sdl.desktop b/build/linux/io.github.cxong.cdogs-sdl.desktop
+index ab648a9..bb3464b 100644
+--- a/build/linux/io.github.cxong.cdogs-sdl.desktop
++++ b/build/linux/io.github.cxong.cdogs-sdl.desktop
+@@ -9,4 +9,4 @@ Comment=Classic overhead run-and-gun game
  TryExec=cdogs-sdl
  Exec=cdogs-sdl
  Terminal=false
