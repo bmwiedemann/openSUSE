@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-pipeline
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-pipeline
-Version:        1.6.14
+Version:        1.7.0
 Release:        0
 Summary:        An asset packaging library for Django
 License:        MIT
@@ -28,17 +28,18 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-pipeline
 Patch0:         django-pipeline-setpcfg.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module jsmin}
 BuildRequires:  %{python_module setuptools}
-BuildRequires: sqlite3
+BuildRequires:  %{python_module slimit}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-futures
+BuildRequires:  python2-futures >= 2.1.3
 BuildRequires:  python2-mock
-Requires:       python-Jinja2
 Requires:       python-Django >= 1.11
+Requires:       python-Jinja2
 BuildArch:      noarch
 %ifpython2
-Requires:       python2-futures
+Requires:       python2-futures >= 2.1.3
 %endif
 %python_subpackages
 
@@ -49,7 +50,7 @@ and optional data-URI image and font embedding.
 
 %prep
 %setup -q -n django-pipeline-%{version}
-%patch0 -p1
+#%%patch0 -p1
 
 %build
 %python_build
@@ -58,10 +59,8 @@ and optional data-URI image and font embedding.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# The tests quite spectaculary fail on newer django releases, upstream must fix
-#%check
-#export DJANGO_SETTINGS_MODULE=tests.settings
-#%%python_exec setup.py test
+%check
+%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test tests --settings=tests.settings --pythonpath=`pwd`
 
 %files %{python_files}
 %license LICENSE

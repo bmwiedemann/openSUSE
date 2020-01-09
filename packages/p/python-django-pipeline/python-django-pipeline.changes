@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  9 08:42:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.0:
+  * Apply an optimization to save time during development. Thank to @blankser
+  * Edit setup.py to follow the recommendation of the documentation. Thank to @shaneikennedy
+  * Add tests for Django 3.0 and Python 3.8
+  * Add alternatives imports for django.utils.six, who has been removed in Django 3.0
+
+-------------------------------------------------------------------
 Wed Aug  8 12:15:42 UTC 2018 - jengelh@inai.de
 
 - Fix name repetition in summary (rpmlint).

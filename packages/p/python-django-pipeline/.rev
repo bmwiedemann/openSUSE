@@ -7,4 +7,16 @@
     <comment>rep</comment>
     <requestid>628074</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>20637ab01352c727c25209e4052b4817</srcmd5>
+    <version>1.7.0</version>
+    <time>1578606700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Apply an optimization to save time during development. Thank to @blankser
+  * Edit setup.py to follow the recommendation of the documentation. Thank to @shaneikennedy
+  * Add tests for Django 3.0 and Python 3.8
+  * Add alternatives imports for django.utils.six, who has been removed in Django 3.0</comment>
+    <requestid>762086</requestid>
+  </revision>
 </revisionlist>
