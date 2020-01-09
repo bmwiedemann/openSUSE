@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:02:23 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
+
+- BuildRequire python configparser to make tests work on Python 2
+- Update to 3.2.0:
+  * Add support for noSquash (no-squash) in jms-messaging trigger
+  * Fix the yaml load warning.
+  * Switch to debug log level for not deleting job
+  * Add alias to multijob builder
+  * Add Private and WIP change support for gerrit
+  * Fix double inderection of name templates
+  * Allow use of jinja templates in defaults
+- Update to 3.1.0:
+  * Fix repository location in README.rst
+  * registry: cache component loading
+  * Support sectioned views
+  * registry: preload entrypoints before caching
+  * Support nested views
+  * text-finder: support not-built-if-found
+  * Add support for new 'notify every failure' option in Slack Plugin
+  * Fix Authorization properties for folder and job in Folder
+  * Setup python-black for auto code style fmt
+  * Auto-generated output from python-black
+
+-------------------------------------------------------------------
 Wed Sep 11 14:31:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.2:

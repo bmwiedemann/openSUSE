@@ -219,4 +219,12 @@
   * Add support for two new plugins, and a new version of one</comment>
     <requestid>730188</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fda33115feede0ff4a18cc6fb92daaf4</srcmd5>
+    <version>3.2.0</version>
+    <time>1578606747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762179</requestid>
+  </revision>
 </revisionlist>
