@@ -1,0 +1,48 @@
+Index: stp-2.3.3+20190713/CMakeLists.txt
+===================================================================
+--- stp-2.3.3+20190713.orig/CMakeLists.txt
++++ stp-2.3.3+20190713/CMakeLists.txt
+@@ -607,15 +607,11 @@ option(ENABLE_TESTING "Enable testing" O
+ # try finding python if the user did not explicitly said that
+ # he/she does not want python bindings
+ if ((NOT DEFINED ENABLE_PYTHON_INTERFACE) OR ENABLE_PYTHON_INTERFACE)
+-    find_package (PythonInterp 2.7)
+-    find_package (PythonLibs 2.7)
+-    if (PYTHON_EXECUTABLE AND PYTHON_LIBRARY AND PYTHON_INCLUDE_DIR)
++    find_package (PythonInterp)
++    if (PYTHON_EXECUTABLE)
+         message(STATUS "PYTHON_EXECUTABLE:FILEPATH=${PYTHON_EXECUTABLE}")
+-        message(STATUS "PYTHON_LIBRARY:FILEPATH=${PYTHON_LIBRARY}")
+-        message(STATUS "PYTHON_INCLUDE_DIR:FILEPATH=${PYTHON_INCLUDE_DIR}")
+-        message(STATUS "PYTHONLIBS_VERSION_STRING=${PYTHONLIBS_VERSION_STRING}")
+         set(PYTHON_OK ON)
+-        message(STATUS "OK, found python interpreter, libs and header files")
++        message(STATUS "OK, found python interpreter")
+     else()
+         message(WARNING "Cannot find python interpreter, libs and header files, cannot build python interface")
+     endif()
+Index: stp-2.3.3+20190713/bindings/python/stp/library_path.py.in_install
+===================================================================
+--- stp-2.3.3+20190713.orig/bindings/python/stp/library_path.py.in_install
++++ stp-2.3.3+20190713/bindings/python/stp/library_path.py.in_install
+@@ -28,6 +28,5 @@
+ 
+ # Search paths for the stp shared library
+ PATHS = [
+-    '@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/@LIBSTP_FILENAME@',
+-    '@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@/@LIBSTP_FILENAME@'
++    '@CMAKE_INSTALL_LIBDIR@/@LIBSTP_FILENAME@.2.3'
+ ]
+Index: stp-2.3.3+20190713/bindings/python/stp/stp.py.in
+===================================================================
+--- stp-2.3.3+20190713.orig/bindings/python/stp/stp.py.in
++++ stp-2.3.3+20190713/bindings/python/stp/stp.py.in
+@@ -42,7 +42,7 @@ Py3 = sys.version_info >= (3, 0, 0)
+ if Py3:
+     long = int
+ 
+-from library_path import PATHS
++from .library_path import PATHS
+ 
+ for path in PATHS:
+     if not os.path.exists(path):

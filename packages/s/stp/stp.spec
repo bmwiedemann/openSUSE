@@ -1,7 +1,7 @@
 #
 # spec file for package stp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,23 @@
 
 
 %define sover 2_3
-
 Name:           stp
+Version:        2.3.3+20190713
+Release:        0
+Summary:        Constraint Solver
+License:        MIT
+URL:            https://github.com/stp/stp/wiki
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         py3.patch
 BuildRequires:  bison
-%if 0%{?suse_version} > 1320
-BuildRequires:  libboost_program_options-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_program_options-devel
 BuildRequires:  minisat-devel
 BuildRequires:  ninja
-BuildRequires:  python-devel
+BuildRequires:  python3-base
 BuildRequires:  xz
-Summary:        Constraint Solver
-License:        MIT
-Group:          Productivity/Scientific/Other
-Version:        2.3.3+20190713
-Release:        0
-Url:            https://github.com/stp/stp/wiki
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}-%{version}.tar.xz
 
 %description
 STP is an efficient decision procedure for the validity (or satisfiability) of
@@ -53,7 +47,6 @@ bitvector terms.
 
 %package -n libstp%{sover}
 Summary:        Constraint Solver
-Group:          System/Libraries
 
 %description -n libstp%{sover}
 STP is an efficient decision procedure for the validity (or satisfiability) of
@@ -67,29 +60,28 @@ bitvector terms.
 
 %package devel
 Summary:        Devel files for stp
-Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
+Requires:       libstp%{sover} = %{version}
+Requires:       minisat-devel
 %if 0%{?suse_version} > 1320
 Requires:       libboost_program_options-devel
 %else
 Requires:       boost-devel
 %endif
-Requires:       libstp%{sover} = %{version}
-Requires:       minisat-devel
 
 %description devel
 Developmnet files for stp library.
 
-%package python
+%package -n python3-stp
 Summary:        Python bindings for stp
-Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
+Requires:       libstp%{sover} = %{version}
 
-%description python
+%description -n python3-stp
 Python bindings for stp library.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %define __builder ninja
@@ -97,19 +89,18 @@ Python bindings for stp library.
 	-DBUILD_SHARED_LIBS:BOOL="on" \
 	-DALSO_BUILD_STATIC_LIB:BOOL="off" \
 	-DSTP_TIMESTAMPS:BOOL="off"
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
-%__install -d %{buildroot}/%{_docdir}/%{name}/example
-%__install -m 644 -t %{buildroot}/%{_docdir}/%{name}/example examples/simple/*
+install -d %{buildroot}/%{_docdir}/%{name}/example
+install -m 644 -t %{buildroot}/%{_docdir}/%{name}/example examples/simple/*
 
 %post -n libstp%{sover} -p /sbin/ldconfig
 %postun -n libstp%{sover} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README.markdown
 %license LICENSE
 %{_bindir}/stp*
@@ -119,7 +110,6 @@ Python bindings for stp library.
 %{_libdir}/libstp.so.*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/stp/
 %{_includedir}/stp/*.h
 %dir %{_libdir}/cmake/
@@ -127,8 +117,7 @@ Python bindings for stp library.
 %{_libdir}/cmake/STP/
 %{_docdir}/%{name}/example/
 
-%files python
-%defattr(-,root,root)
-%{python_sitelib}/*
+%files -n python3-stp
+%{python3_sitelib}/*
 
 %changelog
