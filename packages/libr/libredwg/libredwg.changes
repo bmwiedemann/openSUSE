@@ -1,3 +1,25 @@
+Thu Jan  9 13:22:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.10
+  * API breaking changes:
+  * Added a new int *isnewp argument to all dynapi utf8text
+    getters, if the returned string is freshly malloced or not.
+  * removed the UNKNOWN supertype, there are only UNKNOWN_OBJ and
+    UNKNOWN_ENT left, with common_entity_data.
+  * renamed BLOCK_HEADER.preview_data to preview,
+    preview_data_size to preview_size.
+  * renamed SHAPE.shape_no to style_id.
+  * renamed CLASS.wasazombie to is_zombie.
+  * Bugfixes:
+  * Harmonized INDXFB with INDXF, removed extra src/in_dxfb.c.
+  * Fixed encoding of added r2000 AUXHEADER address.
+  * Fixed EED encoding from dwgrewrite.
+  * Add several checks against
+    [CVE-2020-6609, boo#1160520], [CVE-2020-6610, boo#1160522],
+    [CVE-2020-6611, boo#1160523], [CVE-2020-6612, boo#1160524],
+    [CVE-2020-6613, boo#1160525], [CVE-2020-6614, boo#1160526],
+    [CVE-2020-6615, boo#1160527]
+
 -------------------------------------------------------------------
 Sun Dec 29 20:45:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 

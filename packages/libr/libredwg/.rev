@@ -76,4 +76,17 @@
     [CVE-2019-20009, boo#1159824]</comment>
     <requestid>759939</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4749fd3dbce5e8f523e3a651a6a817a2</srcmd5>
+    <version>0.10</version>
+    <time>1578606771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.10
+  * Add several checks against
+    [CVE-2020-6609, boo#1160520], [CVE-2020-6610, boo#1160522],
+    [CVE-2020-6611, boo#1160523], [CVE-2020-6612, boo#1160524],
+    [CVE-2020-6613, boo#1160525], [CVE-2020-6614, boo#1160526],
+    [CVE-2020-6615, boo#1160527]</comment>
+    <requestid>762209</requestid>
+  </revision>
 </revisionlist>
