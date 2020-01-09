@@ -30,8 +30,8 @@ Patch1:         sover.diff
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-Cython
-BuildRequires:  python-devel
+BuildRequires:  python3-Cython
+BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(zlib)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -86,13 +86,13 @@ system for MC event generator validation analyses.
 
 This package provides the source files for development with %{name}.
 
-%package -n python-%{name}
+%package -n python3-%{name}
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 Group:          Development/Libraries/Python
 Requires:       %{so_name} = %{version}
-Requires:       python = %{py_ver}
+Provides:       python-%{name} = %{version}
 
-%description -n python-%{name}
+%description -n python3-%{name}
 YODA is a small set of data analysis (specifically histogramming)
 classes being developed by MCnet members as a lightweight common
 system for MC event generator validation analyses. 
@@ -104,6 +104,7 @@ This package provides the python binidings for %{name}.
 %patch -P 1 -p1
 
 %build
+export PYTHON_VERSION=%{py3_ver}
 autoreconf -fi
 %configure
 make %{?_smp_mflags}
@@ -113,15 +114,15 @@ make %{?_smp_mflags}
 
 find %{buildroot}%{_libdir}/ -name "*.la" -delete
 
-# Remove traces of BUILDROOT from files
-sed -i "s|%{buildroot}||g" %{buildroot}%{python_sitearch}/yoda/*.pyc
-
 # FIX env BASED HASHBANGS
 for exe in %{buildroot}%{_bindir}/*
 do
   sed -E -i "s|^#! /usr/bin/env python|#! /usr/bin/python|" ${exe}
 done
 sed -E -i "s|^#! /usr/bin/env bash|#! /bin/bash|" %{buildroot}%{_bindir}/yoda-config
+
+# REMOVE AN UNNECESSARY ONE
+sed -E -i "1{s|^#! /usr/bin/env python||}" %{buildroot}%{python3_sitearch}/yoda/search.py
 
 %post   -n %{so_name} -p /sbin/ldconfig
 %postun -n %{so_name} -p /sbin/ldconfig
@@ -154,10 +155,10 @@ sed -E -i "s|^#! /usr/bin/env bash|#! /bin/bash|" %{buildroot}%{_bindir}/yoda-co
 %{_includedir}/%{name}/
 %{_datadir}/%{name}/
 
-%files -n python-%{name}
+%files -n python3-%{name}
 %defattr(-,root,root)
-%{python_sitearch}/yoda/
-%{python_sitearch}/yoda1/
-%{python_sitearch}/yoda*.egg-info
+%{python3_sitearch}/yoda/
+%{python3_sitearch}/yoda1/
+%{python3_sitearch}/yoda*.egg-info
 
 %changelog
