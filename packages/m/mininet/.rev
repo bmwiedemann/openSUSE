@@ -24,4 +24,24 @@
   packages have been merged into a single 'openvswitch' package.</comment>
     <requestid>479157</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10161b5a68df0a914e61ab544a59bd46</srcmd5>
+    <version>2.3.0d6</version>
+    <time>1578606781</time>
+    <user>dimstar_suse</user>
+    <comment>- With the upgrade to 2.3.0d6 obsoleted these patches:
+  * mininet-2.2.1-private-mount.patch
+  * mininet-2.2.1-fallback-to-ovs-testcontroller.patch
+  * mininet-2.2.1-add-ovs-testcontroller.patch
+  * mininet-2.2.1-default-ofport.patch
+
+- Rename back to mininet as it is simple tool only
+- Build with just python3 in mind
+
+- Upgraded to version 2.3.0d6.
+- Removed previous patches, as they seem to have been merged upstream.
+- SPEC remade to conform to python single-spec.
+- Enabled tests (but they seem to required a root user).</comment>
+    <requestid>762221</requestid>
+  </revision>
 </revisionlist>

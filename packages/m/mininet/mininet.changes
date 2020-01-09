@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan  9 13:34:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- With the upgrade to 2.3.0d6 obsoleted these patches:
+  * mininet-2.2.1-private-mount.patch
+  * mininet-2.2.1-fallback-to-ovs-testcontroller.patch
+  * mininet-2.2.1-add-ovs-testcontroller.patch
+  * mininet-2.2.1-default-ofport.patch
+
+-------------------------------------------------------------------
+Thu Jan  9 12:58:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename back to mininet as it is simple tool only
+- Build with just python3 in mind
+
+-------------------------------------------------------------------
+Wed Dec 11 03:04:03 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Upgraded to version 2.3.0d6.
+- Removed previous patches, as they seem to have been merged upstream.
+- SPEC remade to conform to python single-spec.
+- Enabled tests (but they seem to required a root user).
+
+-------------------------------------------------------------------
 Mon Mar 13 23:47:26 UTC 2017 - mchandras@suse.de
 
 - Adjust openvswitch dependencies since the openvswitch and openvswitch-dpdk

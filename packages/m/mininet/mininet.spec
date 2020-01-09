@@ -1,7 +1,7 @@
 #
 # spec file for package mininet
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mininet
-Version:        2.2.1
+Version:        2.3.0d6
 Release:        0
 Summary:        Network emulator for rapid prototyping of Software Defined Networks (SDN)
 # mininet is MIT and util/sch_htb-ofbuf/sch_htb.c is GPL-2.0+
-License:        MIT and GPL-2.0+
+License:        MIT AND GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://mininet.org
+URL:            http://mininet.org
 Source0:        https://github.com/mininet/mininet/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mininet-2.2.1-private-mount.patch gh#mininet/mininet/565
-Patch0:         mininet-2.2.1-private-mount.patch
-# PATCH-FIX-UPSTREAM mininet-2.2.1-ovs-testcontroller
-Patch1:         mininet-2.2.1-add-ovs-testcontroller.patch
-# PATCH-FIX-UPSTREAM mininet-2.2.1-ovs-testcontroller gh#mininet/mininet/pull/608
-Patch2:         mininet-2.2.1-fallback-to-ovs-testcontroller.patch
-# PATCH-FIX-UPSTREAM mininet-2.2.1-default-ofport.patch gh#mininet/mininet/545
-Patch3:         mininet-2.2.1-default-ofport.patch
 BuildRequires:  fdupes
 BuildRequires:  help2man
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 Requires:       ethtool
 Requires:       iperf
 Requires:       iproute2
@@ -54,40 +46,35 @@ Mininet can usually be transferred to hardware with minimal changes for full
 line-rate execution.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%setup -q -n mininet-%{version}
 
 # remove shebang to make rpmlint happy
-sed -i "/#\!\/usr\/bin\/env python$/d" %{name}/topo.py
+sed -i "/#\!\/usr\/bin\/env python$/d" mininet/topo.py
+
+# fix the shebangs
+sed -i "s/#\!\/usr\/bin\/env python$/\#\!\/usr\/bin\/python3/g" examples/*py
+
+# add missing shebangs
+sed -i "1s/^/\#\!\/usr\/bin\/python3\n/" mininet/examples/__init__.py
 
 %build
-make %{?_smp_mflags} man mnexec
-python setup.py build
+make %{?_smp_mflags} CFLAGS="%{optflags}" man mnexec PYTHON=%{_bindir}/python3
+%python3_build
 
 %install
-python setup.py install --prefix=%{_prefix} --root=%{buildroot}
-# Makefile needs some love
-install -d %{buildroot}%{_mandir}/man1
-install -m 644 mn.1 mnexec.1 %{buildroot}%{_mandir}/man1
-install -d %{buildroot}%{_bindir}
-install -m 755 mnexec %{buildroot}%{_bindir}
-# Set the exec bit on examples files because they are standalone
-# scripts.
-chmod a+x %{buildroot}%{python_sitelib}/%{name}/examples/[a-z0-9]*.py
-
-%fdupes %{buildroot}/%{python_sitelib}
+%python3_install
+%fdupes %{buildroot}%{python3_sitelib}
+install -Dm 644 mn.1 %{buildroot}%{_mandir}/man1/mn.1
+install -Dm 644 mnexec.1 %{buildroot}%{_mandir}/man1/mnexec.1
+install -Dm 755 mnexec %{buildroot}%{_bindir}/mnexec
 
 %files
-%defattr(-,root,root,-)
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
 %{_bindir}/mn
+%{_mandir}/man1/mn.1%{?ext_man}
 %{_bindir}/mnexec
-%{_mandir}/man1/mn.1*
-%{_mandir}/man1/mnexec.1*
-%{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-%{version}-*.egg-info
+%{_mandir}/man1/mnexec.1%{?ext_man}
+%{python3_sitelib}/*
 
 %changelog
