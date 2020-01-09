@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-hlr
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           osmo-hlr
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Osmocom Home Location Register for GSUP protocol towards OsmoSGSN and OsmoCSCN
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -29,13 +29,14 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
-BuildRequires:  python2
+BuildRequires:  python3
+BuildRequires:  sqlite3
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.0.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.0.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(talloc) >= 2.0.1
 # only needed for populate_hlr_db.pl

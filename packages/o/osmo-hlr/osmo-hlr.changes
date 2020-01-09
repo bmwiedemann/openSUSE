@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan  5 11:38:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.2.0
+  * AUC: Add support for setting the AMF separation bit to '1' for EUTRAN
+  * db v4: add column last_lu_seen_ps
+  * fix upgrade test in presence of ~/.sqliterc
+  * add --db-check option
+- Update to new upstream release 1.1.0
+  * db_auc.c: verify hex key sizes read from DB
+  * VTY: add subscriber update network-access-mode
+  * Create subscribers on demand
+  * Enable statsd support
+  * Optionally store IMEI in subscriber table
+
+-------------------------------------------------------------------
 Wed Jan 30 21:49:08 UTC 2019 - mardnh@gmx.de
 
 - Update to new upstream release 1.0.0
