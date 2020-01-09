@@ -17,4 +17,12 @@
 - Merged patch setup-ascii.patch</comment>
     <requestid>705387</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e84cef734f111c8ba4d7fc67acc1894a</srcmd5>
+    <version>1.2.1</version>
+    <time>1578606834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762519</requestid>
+  </revision>
 </revisionlist>
