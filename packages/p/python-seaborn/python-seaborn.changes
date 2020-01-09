@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  8 17:57:48 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Disable tests that are incompatible with numpy 1.18
+  See: https://github.com/mwaskom/seaborn/issues/1917
+
+-------------------------------------------------------------------
 Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 support since dependencies dropped python2
