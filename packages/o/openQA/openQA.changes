@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jan 09 14:49:46 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1578575737.d02ae56c3:
+  * Add auto-cleanup for temp files created by web UI
+  * Fix db migration for size_limit_db column of job_group_parents table
+  * Be more defensive and accept more host formats
+  * Hosts are passed to the cache service jobs without a scheme
+  * Prevent jshint warning in test_result.js
+  * Render investigation info as table
+  * openqa-clone-custom-git-refspec: fix curl_github
+  * Add test for Sync button in ObsRsync plugin
+  * Rename TEST_SUITE_DESCRIPTION to JOB_DESCRIPTION
+  * Prevent loading investigation tab contents twice
+  * Support downloading assets with special characters like "#" and ":" in the name
+  * Allow unsetting asset size limit in web UI
+  * Assign job group asset limits explicitly
+  * Extend asset cleanup tests to cover job groups within parents
+  * Adapt tests for asset limit on parent level
+  * Migrate default_size_limit_gb to size_limit_gb
+  * Adapt group property editor to asset limit on parent level
+  * Adapt asset table on admin page to parent level asset limit
+  * Adapt asset list on admin page to parent level asset limit
+  * Enforce asset size limit on parent group level
+
+-------------------------------------------------------------------
 Tue Jan 07 06:49:24 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1578338128.7d62398b0:
