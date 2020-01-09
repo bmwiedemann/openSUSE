@@ -1,0 +1,12 @@
+## Path:        System/Memory
+## Description: configuration for Early OOM Daemon
+
+## Type:        string
+## Default:     "-r 3 -m 10 -s 20 -n --avoid '(^|/)(systemd|Xorg|X|Xwayland|xdm|ssdm|kdm|gdm|lightdm|ssh|yast|yast2|y2controlcenter|zypper|rpm)$' --prefer '(^|/)(java|firefox|chromium|chrome|opera|ffmpeg|vlc|akregator|thumbnail.so)$'"
+## Config:      earlyoom
+#
+# Command-line options to pass to earlyoom
+#
+# see man(1) earlyoom
+#
+EARLYOOM_ARGS="-r 3 -m 10 -s 20 -n --avoid '(^|/)(systemd|Xorg|X|Xwayland|xdm|ssdm|kdm|gdm|lightdm|ssh|yast|yast2|y2controlcenter|zypper|rpm)$' --prefer '(^|/)(java|firefox|chromium|chrome|opera|ffmpeg|vlc|akregator|thumbnail.so)$'"
