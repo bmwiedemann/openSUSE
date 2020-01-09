@@ -1,7 +1,7 @@
 #
 # spec file for package netty-tcnative
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,24 @@
 #
 
 
-%global namedreltag .Fork2
+%global namedreltag .Fork26
 %global namedversion %{version}%{?namedreltag}
 Name:           netty-tcnative
-Version:        1.1.30
+Version:        1.1.33
 Release:        0
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0
 URL:            https://github.com/netty/netty/wiki/Forked-Tomcat-Native
-Source0:        https://github.com/netty/netty-tcnative/archive/%{name}-%{namedversion}.tar.gz
-Source1:         fixLibNames.patch.in
-Patch2:         i388aprFix.patch
-BuildRequires:  apr-devel
-BuildRequires:  autoconf fdupes
-BuildRequires:  automake
-BuildRequires:  glibc-devel
-BuildRequires:  libopenssl-1_0_0-devel
-BuildRequires:  libtool
+Source0:        https://github.com/netty/netty-tcnative/archive/%{name}-parent-%{namedversion}.tar.gz
+Source1:        fixLibNames.patch.in
+BuildRequires:  fdupes
+BuildRequires:  libtcnative-1-0
 BuildRequires:  maven-local
 BuildRequires:  mvn(io.netty:netty-parent:pom:)
 BuildRequires:  mvn(kr.motd.maven:os-maven-plugin)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
-BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  mvn(org.fusesource.hawtjni:maven-hawtjni-plugin)
-BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
-#!BuildIgnore:  openssl
+Requires:       libtcnative-1-0
 
 %description
 netty-tcnative is a fork of Tomcat Native. It includes a set of changes
@@ -62,11 +53,20 @@ BuildArch:      noarch
 %{summary}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{namedversion}
+%setup -q -n %{name}-%{name}-parent-%{namedversion}
 patch=`mktemp`
-sed "s;@PATH@;%{_libdir}/%{name};g" < %{SOURCE1} > $patch
+sed "s;@PATH@;%{_libdir};g" < %{SOURCE1} > $patch
 patch -p1 < $patch
-%patch2 -p1
+
+# Build only the openssl-dynamic module
+%pom_disable_module openssl-static
+%pom_disable_module boringssl-static
+%pom_disable_module libressl-static
+
+%pom_remove_plugin :maven-enforcer-plugin .
+%pom_remove_plugin :maven-antrun-plugin . openssl-dynamic
+%pom_remove_plugin :maven-hawtjni-plugin openssl-dynamic
+%pom_xpath_remove pom:project/pom:profiles openssl-dynamic
 
 %build
 %{mvn_build} -f -- -Dsource=7
@@ -74,14 +74,8 @@ patch -p1 < $patch
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
-mkdir -p %{buildroot}%{_libdir}/%{name}/
-cp target/native-build/target/lib/lib%{name}-%{namedversion}.so %{buildroot}%{_libdir}/%{name}/lib%{name}.so
 
 %files -f .mfiles
-%dir %{_libdir}/%{name}
-%dir %{_jnidir}/%{name}
-%dir %{_mavenpomdir}/%{name}
-%{_libdir}/%{name}/lib%{name}.so
 
 %files javadoc -f .mfiles-javadoc
 
