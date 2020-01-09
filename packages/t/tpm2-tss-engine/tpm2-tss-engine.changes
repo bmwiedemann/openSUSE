@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 07 10:15:39 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to stable upstream version v1.0.1:
+  * Release v1.0.1
+  * test: use tpm2-tools 3.X
+  * Tests: Fix for latest tools
+  * Tests: Use long parameters for tpm2-tools
+  * test: migrate tpm2_create option from -A to -b
+  * build: link against tss2-mu
+  * Release v1.0.0
+  * Release v1.0.0-rc3
+  * Docu: Update Install.md
+  * Updates for 1.0.0-rc2
+  * TESTS: Add test for client auth
+  * Bump required version of tpm2-tss to >=2.2.2
+  * Build: Bump required tpm2-tss to 2.2
+  * Update for v1.0.0-rc1
+  * Dead code removal
+- This fixes the build against tpm2-0-tss version >= 2.3 (bsc#1160123)
+
+-------------------------------------------------------------------
+Fri Dec 20 13:19:08 UTC 2019 - matthias.gerstner@suse.com
+
+- move *.so files into the main package, not -devel. libtpm2tss.so is actually
+  the engine library itself, not a symlink. It's needed to actually use the
+  package. tpm2tss.so is probably a (backwards) compatiblity symlink. Both are
+  not intended for linking and therefore not suitable for the -devel package.
+
+-------------------------------------------------------------------
 Sun Mar 03 18:01:10 UTC 2019 - jsikes@suse.de
 
 - Update to version 0+git20190222.cef2c43:

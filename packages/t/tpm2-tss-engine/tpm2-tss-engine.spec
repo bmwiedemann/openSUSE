@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-tss-engine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Find out where that is.
 %define _ENGINE_DIR %(pkg-config --variable=enginesdir libcrypto)
 Name:           tpm2-tss-engine
-Version:        0+git20190222.cef2c43
+Version:        1.0.1
 Release:        0
 Summary:        OpenSSL Engine for TPM2 devices
 License:        BSD-3-Clause
@@ -94,6 +94,8 @@ rm %{buildroot}/%{_ENGINE_DIR}/libtpm2tss.la
 %{_mandir}/man3/tpm2tss_rsa_makekey.3%{?ext_man}
 %{_mandir}/man3/tpm2tss_tpm2data_read.3%{?ext_man}
 %{_mandir}/man3/tpm2tss_tpm2data_write.3%{?ext_man}
+%{_ENGINE_DIR}/libtpm2tss.so
+%{_ENGINE_DIR}/tpm2tss.so
 
 %files bash-completion
 %dir %{_datadir}/bash-completion
@@ -102,7 +104,5 @@ rm %{buildroot}/%{_ENGINE_DIR}/libtpm2tss.la
 
 %files devel
 %{_includedir}/tpm2-tss-engine.h
-%{_ENGINE_DIR}/libtpm2tss.so
-%{_ENGINE_DIR}/tpm2tss.so
 
 %changelog
