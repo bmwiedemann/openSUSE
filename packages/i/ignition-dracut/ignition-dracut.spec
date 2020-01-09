@@ -31,6 +31,7 @@ Source5:        01_suse_set_ignition
 Source6:        change-ignition-firstboot-path.conf
 Source7:        README.SUSE
 Source8:        ignition-setup-user-suse.sh
+Source9:        prevent-boot-cycle.conf
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
 Patch2:         0002-Support-different-flagfile-location.patch
@@ -59,7 +60,7 @@ This package contains the dracut scripts for this.
 %patch3 -p1
 mkdir dracut/30ignition-microos
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
-cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} dracut/30ignition-microos/
+cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} dracut/30ignition-microos/
 %ifarch aarch64 %{arm}
 cp %{SOURCE21} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 %else

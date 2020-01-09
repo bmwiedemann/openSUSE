@@ -11,6 +11,8 @@ install() {
         "$systemdsystemunitdir/ignition-mount-initrd-fstab.service"
     inst_simple "$moddir/ignition-userconfig-timeout.conf" \
 	"$systemdsystemunitdir/dev-disk-by\x2dlabel-ignition.device.d/ignition-userconfig-timeout.conf"
+    inst_simple "$moddir/prevent-boot-cycle.conf" \
+	"$systemdsystemunitdir/ignition-complete.target.d/prevent-boot-cycle.conf"
     inst_simple "$moddir/ignition-suse-generator" \
         "$systemdutildir/system-generators/ignition-suse-generator"
     inst_script "$moddir/ignition-setup-user-suse.sh" \

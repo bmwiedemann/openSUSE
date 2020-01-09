@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  9 13:57:27 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Add prevent-boot-cycle.conf to prevent a systemd reboot cycle if
+  the files stage should be failing; this is a temporary workaround
+  until [gh#coreos/ignition-dracut#115] is fixed.
+
+-------------------------------------------------------------------
 Wed Jan 08 10:40:19 UTC 2020 - iforster@suse.com
 
 - Update to version 0.0+git20200107.e490517:
