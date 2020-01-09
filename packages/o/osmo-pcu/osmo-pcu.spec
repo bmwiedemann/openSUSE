@@ -1,6 +1,7 @@
 #
 # spec file for package osmo-pcu
 #
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           osmo-pcu
-Version:        0.6.0
+Version:        0.8.0
 Release:        0
 Summary:        Osmocom GPRS Packet Control Unit (PCU)
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -30,10 +31,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmocore) >= 0.12.0
-BuildRequires:  pkgconfig(libosmogb) >= 0.12.0
-BuildRequires:  pkgconfig(libosmogsm) >= 0.12.0
-BuildRequires:  pkgconfig(libosmovty) >= 0.12.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
 %{?systemd_ordering}
 
 %description
@@ -81,9 +82,5 @@ make %{?_smp_mflags} check || find . -name testsuite.log -exec cat {} +
 %config(noreplace) %{_sysconfdir}/osmocom/osmo-pcu.cfg
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
-%dir %{_includedir}/osmocom
-%dir %{_includedir}/osmocom/pcu
-%{_includedir}/osmocom/pcu/pcuif_proto.h
-%{_libdir}/pkgconfig/osmo-pcu.pc
 
 %changelog

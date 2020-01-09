@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan  5 11:47:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 0.8.0
+  * PTCCH: implement basic message codec and API
+  * BSSGP: do not reject SUSPEND ACK / NACK messages
+  * VTY: fix command 'show tbf all': properly filter TBFs
+  * Forward ETWS Primary Notification to MS
+  * Introduce osmo_tdef infra and timer VTY commands
+- Update to new upstream release 0.7.0
+  * Initial commit for OC-2G support.
+  * MCS: add Channel Coding Command encoder
+
+-------------------------------------------------------------------
 Mon Apr  1 23:23:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce scriptlets' hard dependency on systemd.
