@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan  9 07:14:29 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to version 1.6.0
+  * fix for a possible memory corruption in version 1.5.0 and 1.5.1
+  * composer.json file now conflicts with all versions of the
+    maxminddb C extension less than the Composer version.
+- Updated to version 1.5.1
+  * Minor performance improvements.
+  * Make tests pass with older versions of libmaxminddb
+  * Make tests pass with older versions of libmaxminddb
+- Updated to version 1.5.0
+  * PHP 5.6 or greater is now required.
+  * supports for PHP 8
+  * new method, getWithPrefixLen, was added to the Reader class
+
+-------------------------------------------------------------------
 Wed Jun 19 10:53:38 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to version 1.4.1
