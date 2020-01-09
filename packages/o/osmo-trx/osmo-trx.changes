@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan  5 12:11:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.2.0
+  * Transceiver: Fix wrong response upon CMD HANDOVER failure
+  * radioDevice: Introduce getTxGain() API
+  * Drop old setPriority related code
+- Update to new upstream release 1.1.0
+  * Transceiver: Store TRXD version per channel
+  * Bind CTRL port to IP addr specified in VTY config
+  * Transceiver: Support TRXD v1
+  * Transceiver: Support SETFORMAT command
+  * Add VTY commands to set error ctr thresholds
+  * lms: Log underrun/overrun events
+  * VTY: add extended (11-bit) RACH detection toggle
+
+-------------------------------------------------------------------
 Tue Jan 29 21:05:16 UTC 2019 - mardnh@gmx.de
 
 - Update to new upstream release 1.0.0

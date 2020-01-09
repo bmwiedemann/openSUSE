@@ -1,6 +1,7 @@
 #
 # spec file for package osmo-trx
 #
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           osmo-trx
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        SDR transceiver that implements Layer 1 of a GSM BTS
 License:        AGPL-3.0-or-later
@@ -32,10 +33,10 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  pkgconfig(LimeSuite)
 BuildRequires:  pkgconfig(fftw3f)
-BuildRequires:  pkgconfig(libosmocore) >= 0.11.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 0.11.0
-BuildRequires:  pkgconfig(libosmovty) >= 0.11.0
-BuildRequires:  pkgconfig(libosmogsm) >= 0.11.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(uhd)
 BuildRequires:  pkgconfig(usrp) >= 3.3
@@ -179,7 +180,7 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc README.md
 %doc %{_docdir}/%{name}/examples
 
 %files lms
