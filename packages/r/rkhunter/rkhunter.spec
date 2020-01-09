@@ -1,7 +1,7 @@
 #
 # spec file for package rkhunter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2009-2010 by Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -44,8 +44,8 @@ Patch1:         rkhunter-grep-fix.patch
 BuildRequires:  wget
 PreReq:         %fillup_prereq
 Requires:       bash
-Requires:       cron
 Requires:       findutils
+Recommends:     cron
 Recommends:     logrotate
 Recommends:     netcfg
 Recommends:     wget
@@ -88,9 +88,7 @@ install -D -m640 %{SOURCE2} %{buildroot}/%{_fillupdir}/sysconfig.%{name}
 install -d %{buildroot}/%{_docdir}/%{name}-%{version}
 install -m644 %{SOURCE5} %{buildroot}/%{_docdir}/%{name}-%{version}/README.SUSE
 install -D -m640 %{SOURCE6} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
-# Make a cron.daily file to mail us the reports
-install -d %{buildroot}/%{_sysconfdir}/cron.daily/
-install -Dm750 %{SOURCE3} %{buildroot}/%{_sysconfdir}/cron.daily/suse.de-%{name}
+install -m644 %{SOURCE3} %{buildroot}/%{_docdir}/%{name}-%{version}/%{name}.cron
 # adapt the default config for using in openSUSE
 sed "s|^PREFIX*|PREFIX="%{_prefix}"|g; \
      s|^#SCRIPTDIR=.*|SCRIPTDIR=%{_prefix}/lib/%{name}/scripts|g; \
@@ -189,8 +187,6 @@ touch %{buildroot}%{_localstatedir}/log/%{name}.log
 %ghost %verify(not md5 size mtime) %config(noreplace)%{_localstatedir}/log/%{name}.log
 %defattr(750,root,root,-)
 %{_bindir}/%{name}
-%dir %{_sysconfdir}/cron.daily
-%{_sysconfdir}/cron.daily/suse.de-%{name}
 %{_libdir}/%{name}/scripts/*.pl
 %{_libdir}/%{name}/scripts/*.sh
 

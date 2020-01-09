@@ -213,4 +213,14 @@ This package needs to be relased for oS 13.2 etc. See bnc#930331
 - BuildRequire cron, as this contains now the cron directories</comment>
     <requestid>725634</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>c87e778459b3d58789c32dd1dfd41a3d</srcmd5>
+    <version>1.4.6</version>
+    <time>1578606818</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove default cron job and install it with the documentation.
+  This way the user can decide if he needs rkhunter to run regularly
+  (bsc#1150553). (forwarded request 762232 from jsegitz)</comment>
+    <requestid>762491</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  9 14:22:50 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Remove default cron job and install it with the documentation.
+  This way the user can decide if he needs rkhunter to run regularly
+  (bsc#1150553).
+
+-------------------------------------------------------------------
 Fri Aug 23 15:11:01 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - package the /etc/cron.daily instead of buildrequire cron
