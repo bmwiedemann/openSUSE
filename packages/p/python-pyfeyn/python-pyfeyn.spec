@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfeyn
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-pyfeyn
 Version:        1.0.0
 Release:        0
@@ -26,7 +27,6 @@ Group:          Development/Languages/Python
 Url:            http://projects.hepforge.org/pyfeyn/
 Source:         https://files.pythonhosted.org/packages/source/p/pyfeyn/pyfeyn-%{version}.tar.gz
 BuildRequires:  %{python_module PyX}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +55,6 @@ using constructs from PyX, which PyFeyn is based around.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %python3_only %{_bindir}/mkfeyndiag
 %{python_sitelib}/pyfeyn/
 %{python_sitelib}/pyfeyn-%{version}-py*.egg-info

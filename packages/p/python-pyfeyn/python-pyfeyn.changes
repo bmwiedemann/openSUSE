@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 19:01:42 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 subpackage due to dependencies dropping python2.
+
+-------------------------------------------------------------------
 Tue Sep 12 15:54:42 UTC 2017 - jengelh@inai.de
 
 - Ensure neutrality of description.
