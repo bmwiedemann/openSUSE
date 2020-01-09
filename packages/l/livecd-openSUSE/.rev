@@ -708,4 +708,11 @@
     <comment></comment>
     <requestid>758258</requestid>
   </revision>
+  <revision rev="84" vrev="84">
+    <srcmd5>678edc79da3fbf51dbf8cea9ec5b57e9</srcmd5>
+    <version>unknown</version>
+    <time>1578559805</time>
+    <user>dimstar_suse</user>
+    <comment>- Block iso-codes-lang from the Rescue CD: once again space constraints.</comment>
+  </revision>
 </revisionlist>

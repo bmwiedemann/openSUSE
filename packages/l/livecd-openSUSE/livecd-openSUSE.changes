@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 08:49:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block iso-codes-lang from the Rescue CD: once again space constraints.
+
+-------------------------------------------------------------------
 Thu Dec 19 15:14:46 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Add hack to remove LOADER_TYPE to fix upgrading (boo#1155545)
