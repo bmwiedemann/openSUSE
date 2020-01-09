@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,10 +53,10 @@ BuildRequires:  libxerces-c-devel >= 3.2
 BuildRequires:  libxml-security-c-devel >= 2.0.0
 BuildRequires:  libxmltooling-devel >= 3.0.4
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       openssl
 PreReq:         opensaml-schemas >= 3.0.1
 PreReq:         xmltooling-schemas >= 3.0.4

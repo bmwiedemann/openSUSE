@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:40:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Mon Dec  2 10:36:30 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - remove fixing of the ownership of log files as this allows shibd
@@ -15,7 +21,7 @@ Wed Mar 20 13:06:50 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
 
 - update to 3.0.4
   * list of fixes and enhancements
-    https://issues.shibboleth.net/jira/browse/SSPCPP-851?filter=12771    
+    https://issues.shibboleth.net/jira/browse/SSPCPP-851?filter=12771
 - update xmltooling and opensaml versions in "Requires"
 
 -------------------------------------------------------------------
