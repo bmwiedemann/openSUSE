@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:03:57 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- use -ftlo-fat-objects for static library
+
+-------------------------------------------------------------------
 Sun Jan 17 11:59:37 UTC 2016 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner

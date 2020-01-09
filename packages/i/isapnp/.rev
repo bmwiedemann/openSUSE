@@ -141,4 +141,12 @@
     <comment>1</comment>
     <requestid>355408</requestid>
   </revision>
+  <revision rev="22" vrev="638">
+    <srcmd5>1ee7bde3803c5eadf4d8f342fe1fda0f</srcmd5>
+    <version>1.26</version>
+    <time>1578606815</time>
+    <user>dimstar_suse</user>
+    <comment>- use -ftlo-fat-objects for static library</comment>
+    <requestid>762489</requestid>
+  </revision>
 </revisionlist>
