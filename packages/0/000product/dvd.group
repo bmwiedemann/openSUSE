@@ -485,7 +485,7 @@
     <package name="eog-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="eog-plugins-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="epiphany" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="epiphany-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="epiphany-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="epiphany-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="epson-inkjet-printer-escpr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="erofs-utils" supportstatus="unsupported"/> <!-- reason: dvd:erofs-utils -->
@@ -1220,7 +1220,6 @@
     <package name="kdoctools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-default-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kernel-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="kernel-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3148,8 +3147,6 @@
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="lsscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ltrace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="lttng-modules" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lua53" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lua53-luasocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="luit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
