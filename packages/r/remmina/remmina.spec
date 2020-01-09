@@ -1,7 +1,7 @@
 #
 # spec file for package remmina
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.3.8
+Version:        1.3.10
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
