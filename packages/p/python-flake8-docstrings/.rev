@@ -58,4 +58,12 @@
   * Add --ignore-decorators option</comment>
     <requestid>736030</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a091cf6ecee52c3d43acd5b40b8f7207</srcmd5>
+    <version>1.5.0</version>
+    <time>1578606845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762534</requestid>
+  </revision>
 </revisionlist>

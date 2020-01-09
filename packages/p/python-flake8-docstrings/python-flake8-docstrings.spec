@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-docstrings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-flake8-docstrings
 Version:        1.5.0
 Release:        0
@@ -50,8 +51,7 @@ A module that adds an extension for the pydocstyle tool to flake8.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/flake8_docstrings.*
-%dir %{python_sitelib}/flake8_docstrings-%{version}-py*.egg-info
-%{python_sitelib}/flake8_docstrings-%{version}-py*.egg-info/*
+%{python_sitelib}/flake8_docstrings-%{version}-py*.egg-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog
