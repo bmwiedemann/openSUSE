@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-sgsn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 
 %define with_iu 1
 Name:           osmo-sgsn
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        Osmocom's SGSN for 2G and 3G packet-switched mobile networks
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -35,20 +35,20 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.5
-BuildRequires:  pkgconfig(libgtp) >= 1.2.0
-BuildRequires:  pkgconfig(libosmo-gsup-client) >= 0.2.1
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.2.0
-BuildRequires:  pkgconfig(libosmoabis) >= 0.5.0
-BuildRequires:  pkgconfig(libosmocore) >= 0.11.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 0.11.0
-BuildRequires:  pkgconfig(libosmogb) >= 0.11.0
-BuildRequires:  pkgconfig(libosmogsm) >= 0.11.0
-BuildRequires:  pkgconfig(libosmovty) >= 0.11.0
+BuildRequires:  pkgconfig(libgtp) >= 1.5.0
+BuildRequires:  pkgconfig(libosmo-gsup-client) >= 1.0.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 0.4.0
+BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.2.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.2.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.2.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.2.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.2.0
 %{?systemd_requires}
 %if %{with_iu}
-BuildRequires:  pkgconfig(libasn1c)
-BuildRequires:  pkgconfig(libosmo-ranap) >= 0.3.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 0.9.0
+BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
+BuildRequires:  pkgconfig(libosmo-ranap) >= 0.6.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.0.0
 %endif
 
 %description
@@ -128,6 +128,7 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %exclude %{_docdir}/%{name}/examples/osmo-gtphub
 %exclude %{_docdir}/%{name}/examples/osmo-gbproxy
 %{_docdir}/%{name}/examples/osmo-sgsn/osmo-sgsn-accept-all.cfg
+%{_docdir}/%{name}/examples/osmo-sgsn/osmo-sgsn_custom-sccp.cfg
 %{_docdir}/%{name}/examples/osmo-sgsn/osmo-sgsn.cfg
 %{_bindir}/osmo-sgsn
 %dir %{_sysconfdir}/osmocom

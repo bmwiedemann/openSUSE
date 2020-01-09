@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan  4 10:51:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.6.0
+  * Improve logging in gprs_llc.c code
+  * sgsn: Gb: implementing PS Paging when MS is MM_STANDBY
+  * sgsn_libgtp: refactor ps paging into gprs_gb
+  * ranap: add non-spec X1001
+  * Iu: implement a user inactivity timer
+  * Implement GMM State using osmocom FSM
+  * Introduce FSM mm_state_iu_fsm, mm_state_gb_fsm
+  * gprs_gmm: only update gb/iu cell information when Iu/Gb present
+  * vty: Introduce cs7-instance-iu
+  * gprs/gprs_gmm: implement T3314. Timeout to reset MM state
+    READY->STANDBY
+- Update to new upstream release 1.5.0
+  * sgsn: Have authentication required on by default
+  * osmo-sgsn: add VTY parameter to toggle authentication
+  * sgsn_libgtp: Use new per-GSN libgtp API instead of deprecated
+    API
+  * Fix IMSI padding in imsi-acl
+  * Improve 'show subscriber cache' vty command
+
+-------------------------------------------------------------------
 Sat Jul 27 19:52:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Disable LTO for now since it breaks compilation of the tests
