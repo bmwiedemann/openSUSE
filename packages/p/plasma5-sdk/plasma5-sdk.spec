@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-sdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           plasma5-sdk
-Version:        5.17.4
+Version:        5.17.5
 Release:        0
 Summary:        Plasma SDK
 License:        LGPL-2.0-or-later AND GPL-2.0-only
@@ -29,8 +29,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{v
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Cuttlefish-Make-AppStream-file-valid.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
