@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:15:49 UTC 2019 - Madhu Mohan Nelemane <mmnelemane@suse.com>
+
+- Update to version 20190926 
+  * Fix generated code to have load statements strictly in the beginning (#231)
+  * Explicitly name the nested workspace for tests on Bazel CI (#230) 
+  * Remove support for the versions of Bazel before 0.22 (#234) 
+  * Pass --copt, --cxxopt, --conlyopt, --linkopt to cmake_external/configure_make rules (#235)
+  * Fix Buildkite breakage caused by gmaven_rules rename (#236)
+  * Remove rules_apple dependency (#233)
+  * remove unneeded -print option from find command (#242)
+  * Windows, tests: fix for native test wrapper (#246)
+  * Fixes a bug where bootstrap options weren't being passed (#245)
+  * Correct environment variable references to the platform-independent style (#248)
+  * Example with malloc attribute, currently not working (#250)
+  * Fix using Bazel-built libraries by cmake_external and configure_make (#249)
+  * Allow ranlib to be overridden (#253)
+  * For cmake_external and configure_make, do not prepend relative install (#258)
+  * Fix #254 (Linker flags passed to ar). (#256)
+  * Migrate for incompatible_require_ctx_in_configure_features (#260)
+  * Migrate for --incompatible_enable_cc_toolchain_resolution (#262)
+  * Windows: tests now work with native test wrapper (#263)
+  * Guard cc_common.configure_features with a version check (#270)
+  * Migrate for --incompatible_depset_is_not_iterable (#267)
+  * Use forward compatible version of _configure_features (#271)
+  * Fix the code to work with Bazel HEAD: (#274)
+  * Fix patch file for nghttp2 (#275)
+  * Fix #123 Improve code readability for collecting input dependencies (#257)
+  * fix(cmake): Use "Debug" and "Release" instead of "DEBUG" and "RELEASE" (#277)
+  * Fix replace_in_files function in windows_commands.bzl (#280)
+  * Minor fixes in example files (#264)
+  * Add examples' bazel symlinks to gitignore (#288)
+  * Implement support for "pure" GNU Make in make.bzl (#285)
+  * Switch to rules_jvm_external (#287)
+  * Add -L to cp (#266) 
+  * Fix a way of wiping CMake cache entry values defined by toolchain from CL (#293)
+  * Remove unnecessary restrictions on the library filename - fixes #276 (#294)
+  * Build Android example on CI (#286)
+  * Add -H to find in symlink_contents_to_dir (#303)
+  * Adapt rules_foreign_cc for working with libtool instead of ar. (#315)
+  * Fix make() rule to run make commands sequentially and not in parallel. (#317)
+  * Be resilient with Bazel-built transitive dependencies duplicates (#318)
+  * When executed without sandbox, target- and host- configured targets are
+    created in the same execution root with the same names. (#321)
+
+-------------------------------------------------------------------
+Thu Oct 17 14:24:40 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sat May 25 12:57:37 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
 
 - Include rpmlintrc file in sources.

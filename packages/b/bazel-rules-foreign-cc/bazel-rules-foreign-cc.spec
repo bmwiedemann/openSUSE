@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-rules-foreign-cc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-rules-foreign-cc
-Version:        20190214
+Version:        20190926
 Release:        0
 Summary:        Build rules for interfacing with non-Bazel build systems
 License:        Apache-2.0
-Group:          Development/Tools/Building
 Url:            https://github.com/bazelbuild/rules_foreign_cc
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
@@ -35,7 +34,6 @@ projects.
 
 %package source
 Summary:        Source code of bazel-rules-foreign-cc
-Group:          Development/Sources
 BuildArch:      noarch
 
 %description source
@@ -64,4 +62,3 @@ find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!/usr/
 %{src_install_dir}
 
 %changelog
-
