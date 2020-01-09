@@ -16,6 +16,9 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+
 Name:           calibre
 Version:        4.8.0
 Release:        0
@@ -28,6 +31,8 @@ Source1:        https://calibre-ebook.com/signatures/calibre-%{version}.tar.xz.s
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
 Source3:        %{name}.desktop
 Source100:      %{name}-rpmlintrc
+# PATCH-FIX-OPENSUSE: disabling unrar test
+Patch1:         %{name}-python_test.patch
 #
 Patch2:         %{name}-setup.install.py.diff
 # PATCH-FIX-OPENSUSE: disabling Autoupdate Searcher
@@ -49,7 +54,8 @@ BuildRequires:  update-desktop-files
 #   a Required package does not build
 # For those reasons put Requires also in the BuildRequires list below
 BuildRequires:  chmlib-devel >= 0.40
-BuildRequires:  dbus-1-python >= 1.2.0
+BuildRequires:  dbus-1-python3 >= 1.2.0
+BuildRequires:  hyphen-devel >= 2.8.8
 BuildRequires:  libQt5Core-private-headers-devel >= 5.13.0
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.13.0
 BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.13.0
@@ -63,113 +69,110 @@ BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  optipng >= 0.7.5
 BuildRequires:  podofo >= 0.8.2
 BuildRequires:  poppler-tools >= 0.20.2
-BuildRequires:  python >= 2.7.9
-BuildRequires:  python-Pillow >= 3.2.0
+BuildRequires:  xdg-utils >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core) >= 5.13.0
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.13.0
-# upstream use python-Pygments 2.3.1
-BuildRequires:  python-Pygments >= 2.1.3
-# upstream use python-apsw 3.27.1
-BuildRequires:  python-apsw >= 3.7.17
-BuildRequires:  python-beautifulsoup4
-# upstream use python-chardet 3.0.3
-BuildRequires:  python-chardet
-BuildRequires:  python-css-parser >= 1.0.4
-BuildRequires:  python-dateutil >= 2.5.3
-BuildRequires:  python-devel >= 2.7.9
-# upstream use python-dnspython 0.14.0
-BuildRequires:  python-dnspython >= 1.12.0
-BuildRequires:  python-dukpy-kovidgoyal
-BuildRequires:  python-html5-parser >= 0.4.6
-BuildRequires:  python-html5lib
-BuildRequires:  python-lxml >= 3.8.0
-# upstream use python-mechanize 0.3.5
-BuildRequires:  python-mechanize >= 0.2.5
-# upstream use python-msgpack 0.5.6
-BuildRequires:  python-msgpack >= 0.5.4
-BuildRequires:  python-netifaces >= 0.10.5
-BuildRequires:  python-odfpy
-BuildRequires:  python-psutil >= 4.3.0
-BuildRequires:  python-qt5-devel >= 5.13.0
-# upstream use python-regex 2018.07.11
-BuildRequires:  python-regex >= 2017.05.26
-BuildRequires:  python-setuptools >= 23.1.0
-BuildRequires:  python-sip-devel >= 4.12
-# 29.05.2019
-BuildRequires:  python-feedparser >= 5.2.1
-# upstream use python-Markdown 3.0.1
-BuildRequires:  python-Markdown >= 2.6.11
-%if 0%{?suse_version} <= 1500
-# python-html2text no more in Tumbleweed but normally needed
-BuildRequires:  python-html2text >= 2018.1.9
-%endif
-BuildRequires:  python-pycrypto >= 2.6.1
-# Need at buildtime too, to produce the bash completion
-BuildRequires:  python-qtwebengine-qt5 >= 5.13.0
-BuildRequires:  python-six >= 1.10.0
-BuildRequires:  python-soupsieve >= 1.8
-#BuildRequires:  python-unrardll >= 0.1.3
-BuildRequires:  python-webencodings >= 0.5.1
-#
-BuildRequires:  hyphen-devel >= 2.8.8
-BuildRequires:  sqlite3-devel
-BuildRequires:  xdg-utils >= 1.0.2
+BuildRequires:  pkgconfig(Qt5Network) >= 5.13.0
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.13.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13.0
 BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sqlite3)
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
-
+#
+BuildRequires:  libjpeg-turbo
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-qt5-devel >= 5.13.0
+BuildRequires:  pkgconfig(libjpeg)
+# BuildRequires:  python-Pillow >= 3.2.0
+BuildRequires:  %{python_module Pillow >= 3.2.0}
+# upstream use python-Pygments 2.3.1
+BuildRequires:  %{python_module Pygments >= 2.2.0}
+# upstream use python-apsw 3.27.1
+BuildRequires:  %{python_module apsw >= 3.7.17}
+BuildRequires:  %{python_module beautifulsoup4}
+# upstream use python-chardet 3.0.3
+BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module css-parser >= 1.0.4}
+BuildRequires:  %{python_module dateutil >= 2.5.3}
+# upstream use python-dnspython 0.14.0
+BuildRequires:  %{python_module dnspython >= 1.12.0}
+BuildRequires:  %{python_module dukpy-kovidgoyal >= 0.3}
+BuildRequires:  %{python_module html5-parser >= 0.4.6}
+BuildRequires:  %{python_module html5lib}
+BuildRequires:  %{python_module lxml >= 3.8.0}
+BuildRequires:  %{python_module mechanize >= 0.3.5}
+# upstream use python-msgpack 0.5.6
+BuildRequires:  %{python_module msgpack >= 0.5.4}
+# upstream use python-netifaces 0.10.7
+BuildRequires:  %{python_module netifaces >= 0.10.6}
+BuildRequires:  %{python_module odfpy}
+BuildRequires:  %{python_module psutil >= 4.3.0}
+# upstream use python-regex 2018.07.11
+BuildRequires:  %{python_module feedparser >= 5.2.1}
+BuildRequires:  %{python_module regex >= 2017.07.28}
+BuildRequires:  %{python_module setuptools >= 23.1.0}
+BuildRequires:  %{python_module sip-devel >= 4.12}
+# upstream use python-Markdown 3.0.1
+BuildRequires:  %{python_module Markdown >= 2.6.11}
+BuildRequires:  %{python_module html2text >= 2018.1.9}
+BuildRequires:  %{python_module pycrypto >= 2.6.1}
+# Need at buildtime too, to produce the bash completion
+BuildRequires:  %{python_module qtwebengine-qt5 >= 5.13.0}
+BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  %{python_module soupsieve >= 1.8}
+#BuildRequires:  python-unrardll >= 0.1.3
+BuildRequires:  %{python_module webencodings >= 0.5.1}
+BuildRequires:  %{python_module zeroconf}
+#
 Requires:       chmlib >= 0.40
-Requires:       dbus-1-python >= 1.2.0
+Requires:       dbus-1-python3 >= 1.2.0
 Requires:       liberation-fonts
 Requires:       libmtp9 >= 1.1.5
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5
 Requires:       podofo >= 0.8.2
 Requires:       poppler-tools >= 0.20.2
-Requires:       python >= 2.7.9
-Requires:       python-Pillow >= 3.2.0
-Requires:       python-Pygments >= 2.1.3
-Requires:       python-apsw >= 3.7.17
-Requires:       python-beautifulsoup4
-Requires:       python-chardet
-Requires:       python-css-parser >= 1.0.4
-Requires:       python-dateutil >= 2.5.3
-Requires:       python-dnspython >= 1.12.0
-Requires:       python-dukpy-kovidgoyal
-Requires:       python-html5-parser >= 0.4.6
-Requires:       python-html5lib
-Requires:       python-lxml >= 3.8.0
-Requires:       python-mechanize >= 0.2.5
-Requires:       python-msgpack >= 0.5.4
-Requires:       python-netifaces >= 0.10.5
-Requires:       python-odfpy
-Requires:       python-psutil >= 4.3.0
-Requires:       python-qt5 >= 5.13.0
-Requires:       python-qtwebengine-qt5 >= 5.13.0
-Requires:       python-regex >= 2017.05.26
-Requires:       python-setuptools >= 23.1.0
-Requires:       python-sip >= 4.12.1
-# 29.05.2019
-Requires:       python-Markdown >= 2.6.11
-Requires:       python-feedparser >= 5.2.1
-%if 0%{?suse_version} <= 1500
-# python-html2text no more in Tumbleweed but normally needed
-Requires:       python-html2text >= 2018.1.9
-%endif
-Requires:       python-pycrypto >= 2.6.1
-Requires:       python-six >= 1.10.0
-Requires:       python-soupsieve >= 1.8
-#Requires:       python-unrardll >= 0.1.3
-Requires:       python-webencodings >= 0.5.1
+Requires:       python3
+Requires:       python3-Markdown >= 2.6.11
+Requires:       python3-Pillow >= 3.2.0
+Requires:       python3-Pygments >= 2.1.3
+Requires:       python3-apsw >= 3.7.17
+Requires:       python3-beautifulsoup4
+Requires:       python3-chardet
+Requires:       python3-css-parser >= 1.0.4
+Requires:       python3-dateutil >= 2.5.3
+Requires:       python3-dnspython >= 1.12.0
+Requires:       python3-dukpy-kovidgoyal >= 0.3
+Requires:       python3-feedparser >= 5.2.1
+Requires:       python3-html2text >= 2018.1.9
+Requires:       python3-html5-parser >= 0.4.6
+Requires:       python3-html5lib
+Requires:       python3-lxml >= 3.8.0
+Requires:       python3-mechanize >= 0.3.5
+Requires:       python3-msgpack >= 0.5.4
+Requires:       python3-netifaces >= 0.10.7
+Requires:       python3-odfpy
+Requires:       python3-psutil >= 4.3.0
+Requires:       python3-pycrypto >= 2.6.1
+Requires:       python3-qt5 >= 5.13.0
+Requires:       python3-qtwebengine-qt5 >= 5.13.0
+Requires:       python3-regex >= 2017.07.28
+Requires:       python3-setuptools >= 23.1.0
+Requires:       python3-sip >= 4.12.1
+Requires:       python3-six >= 1.10.0
+Requires:       python3-soupsieve >= 1.8
+#Requires:       python3-unrardll >= 0.1.3
+Requires:       python3-webencodings >= 0.5.1
+Requires:       python3-zeroconf
 #
 Requires:       sqlite3
 Requires:       xdg-utils >= 1.0.2
 Requires(pretrans): findutils
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{py_requires}
-# http://lists.opensuse.org/opensuse-packaging/2009-08/msg00110.html
 
 %description
 Calibre is an ebook library manager. It can view, convert and catalog
@@ -180,6 +183,7 @@ into ebooks for convenient reading.
 
 %prep
 %setup -q
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1 -b .no-update
 
@@ -201,8 +205,8 @@ sed -i -e '/^#!\//, 1d' resources/default_tweaks.py
 find src/calibre -name "*.py" -type f -exec chmod -x {} +
 chmod -x recipes/*.recipe
 
-# rpmlint: wrong-script-interpreter /usr/bin/env python2
-find setup -type f  | xargs sed -i -e 's:#!/usr/bin/env python2:#!/usr/bin/python2:g'
+# rpmlint: wrong-script-interpreter /usr/bin/env python3
+find setup -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
 
 cp -v %{SOURCE3}  .
 
@@ -211,10 +215,12 @@ LANG="en_US.UTF8" \
 CFLAGS="%{optflags}" \
 CXXFLAGS="%{optflags}" \
 OVERRIDE_CFLAGS="%{optflags}" \
-python setup.py build
+CALIBRE_PY3_PORT=1 python3 setup.py build
+###python setup.py build
 
 %install
-python setup.py install \
+###python setup.py install \
+CALIBRE_PY3_PORT=1 python3 setup.py install \
    --prefix=%{_prefix} \
    --root=%{buildroot}%{_prefix} \
    --staging-bindir=%{buildroot}%{_bindir} \
@@ -235,9 +241,9 @@ done
 
 %fdupes %{buildroot}/%{_prefix}
 
-# rpmlint: wrong-script-interpreter /usr/bin/env python2
-find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python2:#!/usr/bin/python2:g'
-find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python2:#!/usr/bin/python2:g'
+# rpmlint: wrong-script-interpreter /usr/bin/env python3
+find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
+find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
 
 # these are provided as separate packages
 rm -r %{buildroot}%{_libdir}/%{name}/odf
@@ -274,6 +280,9 @@ end
 if st and st.type == "directory" then
   os.execute("find " .. path .. " -type f -delete")
 end
+
+%check
+CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
 
 %post
 %desktop_database_post

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  9 12:13:29 UTC 2020 - Eric Schirra ecsos@opensuse.org
+
+- Calibre now running with python3
+  Change many things in spec.
+- Add Patch calibre-python_test.patch to run python test in %check
+
+-------------------------------------------------------------------
 Fri Jan  3 10:31:52 UTC 2020 - ecsos@opensuse.org
 
 - Update to 4.8.0
