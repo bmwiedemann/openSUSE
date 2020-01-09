@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan  9 18:28:21 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.25.1
+  + Features
+    * Bump `pytest-cov` 2.8.1
+    * Bump `flake8` 3.7.9
+    * Bump `coverage` 4.5.4
+  + Bugfixes
+    * Decode APIError explanation to unicode before usage on start and create of a container
+    * Reports when images that cannot be pulled and must be built
+    * Discard label `com.docker.compose.filepaths` having None as value. Typically, when coming from stdin
+    * Added OSX binary as a directory to solve slow start up time caused by MacOS Catalina binary scan
+    * Passed in HOME env-var in container mode (running with `script/run/run.sh`)
+    * Reverted behavior of "only pull images that we can't build" and replace by a warning informing the image we can't pull and must be built
+- Drop python2 subpackage due to dropping backports packages.
+
+-------------------------------------------------------------------
 Fri Dec 13 08:41:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch no-restrict-upper.patch to add back removal of upper

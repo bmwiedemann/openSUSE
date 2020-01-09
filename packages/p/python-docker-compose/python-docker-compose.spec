@@ -1,7 +1,7 @@
 #
 # spec file for package python-docker-compose
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define mod_name compose
+%define         skip_python2 1
 Name:           python-docker-compose
-Version:        1.25.0
+Version:        1.25.1
 Release:        0
 Summary:        Tool to define and run complex applications using Docker
 License:        Apache-2.0
@@ -40,12 +40,6 @@ BuildRequires:  %{python_module texttable >= 0.9.0}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-backports.shutil_get_terminal_size >= 1.0.0
-BuildRequires:  python2-backports.ssl_match_hostname >= 3.5
-BuildRequires:  python2-enum34 >= 1.0.4
-BuildRequires:  python2-ipaddress >= 1.0.16
-BuildRequires:  python2-mock >= 1.0.1
-BuildRequires:  python2-subprocess32 >= 3.5.4
 Requires:       docker
 Requires:       python-PySocks >= 1.5.6
 Requires:       python-PyYAML >= 3.10
@@ -63,18 +57,8 @@ Requires:       python-texttable >= 0.9.1
 Requires:       python-urllib3 >= 1.21.1
 Requires:       python-websocket-client >= 0.32.0
 BuildArch:      noarch
-# This is py3 only as we have the binary just there
-%ifpython3
 Provides:       docker-compose = %{version}
 Obsoletes:      docker-compose < %{version}
-%endif
-%ifpython2
-Requires:       python-backports.shutil_get_terminal_size >= 1.0.0
-Requires:       python-backports.ssl_match_hostname >= 3.5
-Requires:       python-enum34 >= 1.0.4
-Requires:       python-ipaddress >= 1.0.16
-Requires:       python-subprocess32 >= 3.5.4
-%endif
 %python_subpackages
 
 %description
