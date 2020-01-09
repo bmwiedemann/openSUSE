@@ -16,4 +16,15 @@
 - We really don't need to support SLE-11 in openSUSE packages.</comment>
     <requestid>738383</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91edbb354a5f9d529177a87e537cb1a3</srcmd5>
+    <version>0.5.4</version>
+    <time>1578606768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.4:
+  * Switch to python3 interpreter
+  * minor documentation improvements
+- Switch to singlespec</comment>
+    <requestid>762227</requestid>
+  </revision>
 </revisionlist>

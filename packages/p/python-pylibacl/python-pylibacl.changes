@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  9 14:06:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.4:
+  * Switch to python3 interpreter
+  * minor documentation improvements
+- Switch to singlespec
+
+-------------------------------------------------------------------
 Mon Oct 14 14:15:19 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

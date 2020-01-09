@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibacl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,54 +16,44 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylibacl
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
-Summary:        Python POSIX.1e ACL module
+Summary:        POSIX1e ACLs for python
 License:        LGPL-2.1-or-later
 URL:            https://pylibacl.k1024.org/
-Source:         https://github.com/iustin/pylibacl/releases/download/pylibacl-v%{version}/pylibacl-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pylibacl/pylibacl-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  libacl-devel
-# Documentation requirements:
-BuildRequires:  python-Sphinx
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libacl)
+%python_subpackages
 
 %description
-This Python 2.4+ extension module allows you to manipulate the POSIX.1e Access
-Control Lists present in some OS/file-systems combinations. It is a wrapper on
-top of the systems's acl C library - see acl(5).
-
-%package doc
-Summary:        Python POSIX.1e ACL module
-Requires:       %{name} = %{version}
-
-%description doc
-This Python 2.4+ extension module allows you to manipulate the POSIX.1e Access
-Control Lists present in some OS/file-systems combinations. It is a wrapper on
-top of the systems's acl C library - see acl(5).
+This is a C extension module for Python which
+implements POSIX ACLs manipulation. It is a wrapper on top
+of the systems's acl C library - see acl(5).
 
 %prep
 %setup -q -n pylibacl-%{version}
 
 %build
-CFLAGS="%{optflags} -fno-strict-aliasing" python setup.py build
-python setup.py build_sphinx
+%python_build
 
 %install
-python setup.py install --prefix=%{_prefix} --root=%{buildroot}
-%fdupes %{buildroot}/%{_prefix}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-python setup.py test
+%pytest_arch
 
-%files
+%files %{python_files}
 %license COPYING
-%doc NEWS README
+%doc NEWS README.rst
 %{python_sitearch}/*
-
-%files doc
-%doc build/sphinx/html
 
 %changelog
