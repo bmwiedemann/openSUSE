@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan  4 19:18:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.6.0
+  * bsc: Send MS Power Control msg upon max MS power change
+  * osmo_bsc_main.c: verify the physical channel mapping at startup
+  * SMSCB: Send ETWS Primary Notifiation via RSL to BTS
+  * SMSCB: Send ETWS primary warning message via all dedicated channels
+  * Cell Broadcast: CBSP and CBCH scheduling support
+  * add vty 'no neighbors' to remove all HO targets
+- Update to new upstream release 1.5.0
+  * vty: adjust config name for unit-id
+  * Introduce msc_is_{sccplite,aoip}() helpers
+  * Move msc related code from gsm_data to bsc_msc
+  * Move LCLS references from gsm_data to osmo_bsc_lcls
+  * bsc_vty: add features to disable specific lchans via vty
+  * Implement CSFB "Fast Return" Handling at RR RELEASE
+  * bsc_vty: add vty command to display all lchans
+
+-------------------------------------------------------------------
 Sat Jul 27 19:45:11 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Disable LTO for now since it breaks compilation of the tests

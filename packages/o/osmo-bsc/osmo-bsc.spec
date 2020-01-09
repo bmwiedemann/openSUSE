@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-bsc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 
 Name:           osmo-bsc
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        OsmoBSC: Osmocom's Base Station Controller for 2G CS mobile networks
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -32,16 +32,16 @@ BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.5
-BuildRequires:  pkgconfig(libosmo-mgcp-client) >= 1.4.0
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.3.0
+BuildRequires:  pkgconfig(libosmo-mgcp-client) >= 1.6.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 0.6.0
 BuildRequires:  pkgconfig(libosmo-sccp) >= 0.10.0
 BuildRequires:  pkgconfig(libosmo-sigtran) >= 0.10.0
-BuildRequires:  pkgconfig(libosmoabis) >= 0.5.1
-BuildRequires:  pkgconfig(libosmocore) >= 0.12.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 0.12.0
+BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
 BuildRequires:  pkgconfig(libosmogb)
-BuildRequires:  pkgconfig(libosmogsm) >= 0.12.0
-BuildRequires:  pkgconfig(libosmovty) >= 0.12.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
 BuildRequires:  pkgconfig(talloc)
 %{?systemd_requires}
 
