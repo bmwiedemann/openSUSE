@@ -1,7 +1,7 @@
 #
 # spec file for package HepMC
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           HepMC
 %define lname	libHepMC3-1
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://hepmc.web.cern.ch/hepmc/
+URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  graphviz-gd
 BuildRequires:  ghostscript-fonts-std
+BuildRequires:  graphviz-gd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -95,7 +95,8 @@ chmod +x %{buildroot}%{_bindir}/HepMC3-config
 #Install examples manually so that fdupes can be run on them
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -pr examples %{buildroot}%{_docdir}/%{name}/
-%fdupes %{buildroot}%{_docdir}/%{name}/examples
+cp -pr doc/doxygen/html %{buildroot}%{_docdir}/%{name}/
+%fdupes %{buildroot}%{_docdir}/%{name}/
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -105,9 +106,10 @@ cp -pr examples %{buildroot}%{_docdir}/%{name}/
 %{_libdir}/libHepMC3search.so.*
 
 %files devel
-%doc README* ChangeLog DESIGN doc/doxygen/html
+%doc README* ChangeLog DESIGN
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/examples
+%doc %{_docdir}/%{name}/html
 %{_bindir}/HepMC3-config
 %{_libdir}/libHepMC3.so
 %{_libdir}/libHepMC3search.so
