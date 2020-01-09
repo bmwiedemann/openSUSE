@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/grafana/piechart-panel.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">.editorconfig</param>
+    <param name="exclude">.circleci</param>
+    <param name="exclude">docker-compose.yml</param>
+    <param name="versionformat">1.3.9</param>
+    <param name="revision">master</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">piechart-panel-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">piechart-panel</param>
+  </service>
+</services>
