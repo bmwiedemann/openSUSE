@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index c74526be..8973fe5b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,6 +39,8 @@ AC_SEARCH_LIBS([dlopen], [dl dld], [LIBRARY_DL="$LIBS";LIBS=""])
+ AC_SUBST(LIBRARY_DL)
+ 
+ 
++
++PKG_CHECK_MODULES(LIBOSMOCODING, libosmocodec >= 1.1.0)
+ PKG_CHECK_MODULES(LIBOSMOCORE, libosmocore >= 1.1.0)
+ PKG_CHECK_MODULES(LIBOSMOGSM, libosmogsm >= 1.1.0)
+ PKG_CHECK_MODULES(LIBOSMOVTY, libosmovty >= 1.1.0)
