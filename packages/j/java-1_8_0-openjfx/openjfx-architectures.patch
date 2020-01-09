@@ -1,5 +1,14 @@
 --- rt-8u202-b07/build.gradle	2018-12-10 17:30:22.000000000 +0100
-+++ rt-8u202-b07/build.gradle	2019-11-23 08:23:34.257641998 +0100
++++ rt-8u202-b07/build.gradle	2019-12-01 12:09:56.693961753 +0100
+@@ -249,7 +249,7 @@
+ // this build running on a Mac, Windows, or Linux machine? 32 or 64 bit?
+ ext.OS_NAME = System.getProperty("os.name").toLowerCase()
+ ext.OS_ARCH = System.getProperty("os.arch")
+-ext.IS_64 = OS_ARCH.toLowerCase().contains("64")
++ext.IS_64 = OS_ARCH.toLowerCase().contains("64") || OS_ARCH.toLowerCase().contains("s390x")
+ ext.IS_MAC = OS_NAME.contains("mac") || OS_NAME.contains("darwin")
+ ext.IS_WINDOWS = OS_NAME.contains("windows")
+ ext.IS_LINUX = OS_NAME.contains("linux")
 @@ -714,7 +714,7 @@
  } else if (IS_MAC && OS_ARCH != "x86_64") {
      throw new Exception("Unknown and unsupported build architecture: $OS_ARCH")
