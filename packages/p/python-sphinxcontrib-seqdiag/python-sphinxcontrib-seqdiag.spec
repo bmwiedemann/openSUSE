@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-seqdiag
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-s
 BuildRequires:  %{python_module Sphinx >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-setuptools
 Requires:       python-Sphinx >= 0.6
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-seqdiag >= 0.9.3

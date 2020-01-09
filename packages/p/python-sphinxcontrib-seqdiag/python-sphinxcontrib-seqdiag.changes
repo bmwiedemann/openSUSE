@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 12:02:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove bogus python-devel and python-setuptools deps
+
+-------------------------------------------------------------------
 Fri Dec 14 12:53:58 UTC 2018 - Matěj Cepl <mcepl@suse.com>
 
 - Package should own whole sitelib/sphinxcontrib/__pycache__
