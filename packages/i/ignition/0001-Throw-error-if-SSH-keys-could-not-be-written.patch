@@ -1,0 +1,29 @@
+commit 7d5235ce7ab91ec21e50f09295dd40fd59a98005
+Author: Ignaz Forster <iforster@suse.com>
+Date:   Wed Jan 8 17:29:55 2020 +0100
+References: [boo#1159232]
+Upstream: Merged [gh#coreos/ignition#908]
+
+    Throw error if SSH keys could not be written
+
+diff --git a/internal/exec/util/passwd.go b/internal/exec/util/passwd.go
+index 5d961e3..55c378c 100644
+--- a/internal/exec/util/passwd.go
++++ b/internal/exec/util/passwd.go
+@@ -173,11 +173,14 @@ func (u Util) AuthorizeSSHKeys(c types.PasswdUser) error {
+ 		}
+ 
+ 		if distro.WriteAuthorizedKeysFragment() {
+-			writeAuthKeysFile(usr, filepath.Join(usr.HomeDir, ".ssh", "authorized_keys.d", "ignition"), []byte(ks))
++			err = writeAuthKeysFile(usr, filepath.Join(usr.HomeDir, ".ssh", "authorized_keys.d", "ignition"), []byte(ks))
+ 		} else {
+-			writeAuthKeysFile(usr, filepath.Join(usr.HomeDir, ".ssh", "authorized_keys"), []byte(ks))
++			err = writeAuthKeysFile(usr, filepath.Join(usr.HomeDir, ".ssh", "authorized_keys"), []byte(ks))
+ 		}
+ 
++		if err != nil {
++			return fmt.Errorf("failed to set SSH key: %v", err)
++		}
+ 		return nil
+ 	}, "adding ssh keys to user %q", c.Name)
+ }

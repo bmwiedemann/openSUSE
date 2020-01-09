@@ -1,7 +1,7 @@
 #
 # spec file for package ignition
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/coreos/ignition
 Source:         %{name}-%{version}.tar.xz
+Patch1:         0001-Throw-error-if-SSH-keys-could-not-be-written.patch
 Requires:       dracut
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
@@ -40,6 +41,7 @@ applies the configuration.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build

@@ -113,4 +113,15 @@ Ignition is a minimal alternative to cloud-init, supposed to replace it for cert
 </comment>
     <requestid>758999</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>efe9eeb62281e274e64f3c7f7cde5c01</srcmd5>
+    <version>2.1.1</version>
+    <time>1578606624</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Throw-error-if-SSH-keys-could-not-be-written.patch:
+  Don't silently ignore if the SSH key could not be written
+  [boo#1159232]
+</comment>
+    <requestid>761945</requestid>
+  </revision>
 </revisionlist>
