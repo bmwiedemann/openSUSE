@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 15:14:41 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Split pom-only artifacts into a subpackage netty-pom in order
+  to generate their dependencies correctly
+
+-------------------------------------------------------------------
 Wed Nov 13 19:18:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of netty 4.1.13

@@ -1,7 +1,7 @@
 #
 # spec file for package netty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,12 @@ of protocols such as FTP, SMTP, HTTP, and various binary and
 text-based legacy protocols. As a result, Netty has succeeded to find
 a way to achieve ease of development, performance, stability, and
 flexibility without a compromise.
+
+%package poms
+Summary:        POM-only artifacts for %{name}
+
+%description poms
+%{summary}.
 
 %package javadoc
 Summary:        API documentation for %{name}
@@ -198,6 +204,9 @@ sed -i 's|taskdef|taskdef classpathref="maven.plugin.classpath"|' all/pom.xml
 # the linux classifier.
 %{mvn_package} ":::linux*:"
 
+%{mvn_package} ":netty-parent" poms
+%{mvn_package} ":netty-bom" poms
+
 %{mvn_package} ':*-tests' __noinstall
 
 %build
@@ -210,6 +219,9 @@ export CFLAGS="%{optflags}" LDFLAGS="$RPM_LD_FLAGS"
 %mvn_install
 
 %files -f .mfiles
+%license LICENSE.txt NOTICE.txt
+
+%files poms -f .mfiles-poms
 %license LICENSE.txt NOTICE.txt
 
 %files javadoc -f .mfiles-javadoc
