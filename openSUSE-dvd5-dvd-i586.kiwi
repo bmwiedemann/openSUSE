@@ -487,7 +487,7 @@
       <repopackage name="eog-plugins"/>
       <repopackage name="eog-plugins-lang"/>
       <repopackage name="epiphany"/>
-      <repopackage name="epiphany-branding-upstream"/>
+      <repopackage name="epiphany-branding-openSUSE"/>
       <repopackage name="epiphany-lang"/>
       <repopackage name="epson-inkjet-printer-escpr"/>
       <repopackage name="erofs-utils"/>
@@ -1228,7 +1228,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-base"/>
       <repopackage name="kernel-default-devel"/>
       <repopackage name="kernel-devel"/>
       <repopackage name="kernel-docs"/>
@@ -3158,8 +3157,6 @@
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
       <repopackage name="ltrace"/>
-      <repopackage name="lttng-modules"/>
-      <repopackage name="lttng-modules-kmp-default"/>
       <repopackage name="lua53"/>
       <repopackage name="lua53-luasocket"/>
       <repopackage name="luit"/>

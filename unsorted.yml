@@ -2718,7 +2718,7 @@ unsorted:
   - ephoto 
   - ephoto-lang 
   - epic 
-  - epiphany-branding-openSUSE 
+  - epiphany-branding-upstream 
   - epour 
   - epour-lang 
   - epplet-base 
@@ -6396,6 +6396,7 @@ unsorted:
   - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-docs-html 
   - kernel-firmware 
@@ -12746,6 +12747,8 @@ unsorted:
   - lswm 
   - lsyncd 
   - ltrace-32bit: [x86_64] 
+  - lttng-modules 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-ust-devel 
   - lttng-ust-doc 
