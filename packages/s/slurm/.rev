@@ -443,4 +443,41 @@
     <comment>- Set %base_ver for SLE-15-SP2 to 18.08 (for now).</comment>
     <requestid>734512</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b9bc93d612a2552574d922f0eba4571b</srcmd5>
+    <version>18.08.9</version>
+    <time>1578606629</time>
+    <user>dimstar_suse</user>
+    <comment>- Deprecate &quot;ControlMachine&quot; only for SLURM version upgrades and
+  products newer than 1501. This ensures that the original setting
+  is retained for the SLURM version shipped origianlly with SLE-15-SP1
+  or Leap 15.1.
+
+- Update to v18.08.9 for fixing CVE-2019-19728 (bsc#1159692).
+  * Wrap END_TIMER{,2,3} macro definition in &quot;do {} while (0)&quot; block.
+  * Make sview work with glib2 v2.62.
+  * Make Slurm compile on linux after sys/sysctl.h was deprecated.
+  * Install slurmdbd.conf.example with 0600 permissions to encourage secure
+    use. CVE-2019-19727.
+  * srun - do not continue with job launch if --uid fails. CVE-2019-19728.
+
+- added pmix support jsc#SLE-10800 
+
+- Use --with-shared-libslurm to build slurm binaries using libslurm.
+- Make libslurm depend on slurm-config.
+
+- Fix ownership of /var/spool/slurm on new installations
+  and upgrade (boo#1158696).
+
+- Fix permissions of slurmdbd.conf (bsc#1155784, CVE-2019-19727).
+- Fix %posttrans macro _res_update to cope with added newline
+  (bsc#1153259).
+
+- Add package slurm-webdoc which sets up a web server to provide
+  the documentation for the version shipped.
+
+- Move srun from 'slurm' to 'slurm-node': srun is required on the
+  nodes as well so sbatch will work. 'slurm-node' is a requirement (forwarded request 760450 from eeich)</comment>
+    <requestid>761961</requestid>
+  </revision>
 </revisionlist>

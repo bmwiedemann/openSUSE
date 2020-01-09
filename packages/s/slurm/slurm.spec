@@ -1,7 +1,7 @@
 #
 # spec file for package slurm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 33
-%define ver 18.08.8
+%define ver 18.08.9
 %define _ver _18_08
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -43,6 +43,13 @@
 %define upgrade 1
 %endif
 
+# Build with PMIx only for SLE >= 15.2 and TW
+%if 0%{?sle_version} >= 150200 || 0%{suse_version} >= 1550
+%{bcond_without pmix}
+%else
+%{bcond_with pmix}
+%endif
+
 # For anything newer than Leap 42.1 and SLE-12-SP1 build compatible to OpenHPC.
 %if 0%{suse_version} > 1320 || 0%{?sle_version} >= 120200
 %define OHPC_BUILD 1
@@ -51,10 +58,14 @@
 %if 0%{?suse_version} >= 1220 || 0%{?sle_version} >= 120000
  %define with_systemd 1
 %endif
+
 %if 0%{?suse_version:1} && 0%{?suse_version} <= 1140
  %define comp_at %defattr(-,root,root)
 %else
  %define have_json_c 1
+ %if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
+ %define have_apache_rpm_macros 1
+ %endif
 %endif
 
 %if 0
@@ -97,7 +108,7 @@ Release:        0
 Summary:        Simple Linux Utility for Resource Management
 License:        SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Clustering/Computing 
-Url:            https://www.schedmd.com
+URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
 Source1:        slurm-rpmlintrc
 Patch0:         slurm-2.4.4-rpath.patch
@@ -141,6 +152,7 @@ BuildRequires:  libnuma-devel
 %endif
 BuildRequires:  mysql-devel >= 5.0.0
 BuildRequires:  ncurses-devel
+%{?with_pmix:BuildRequires:  pmix-devel}
 BuildRequires:  openssl-devel >= 0.9.6
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel >= 8.0.0
@@ -190,6 +202,20 @@ Group:          Documentation/HTML
 %{?upgrade:Provides: %{pname}-doc = %{version}}
 %{?upgrade:Conflicts: %{pname}-doc}
 
+%package webdoc
+Summary:        Set up SLURM Documentation Server
+Group:          Productivity/Clustering/Computing
+%if 0%{?have_apache_rpm_macros}
+BuildRequires:  apache-rpm-macros
+%else
+%define apache_sysconfdir /etc/apache2
+%endif
+Requires:       slurm-doc = %{version}
+Requires(pre):  apache2
+
+%description webdoc
+Set up HTTP server for SLURM configuration.
+
 %description doc
 Documentation (HTML) for the SLURM cluster managment software.
 
@@ -213,17 +239,20 @@ through Perl.
 %package -n %{libslurm}
 Summary:        Libraries for SLURM
 Group:          System/Libraries
+Requires:       %{name}-config = %{version}
 
 %description -n %{libslurm}
 This package contains the library needed to run programs dynamically linked
 with SLURM.
 
 
-%package -n libpmi%{pmi_so}
+%package -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 Summary:        Libraries for SLURM
 Group:          System/Libraries
+%{?upgrade:Provides: libpmi%{pmi_so} = %{version}}
+%{?upgrade:Conflicts: libpmi%{pmi_so}}
 
-%description -n libpmi%{pmi_so}
+%description -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 This package contains the library needed to run programs dynamically linked
 with SLURM.
 
@@ -233,13 +262,12 @@ Summary:        Development package for SLURM
 Group:          Development/Libraries/C and C++ 
 Requires:       %{libslurm} = %{version}
 Requires:       %{name} = %{version}
-Requires:       libpmi%{pmi_so} = %{version}
+Requires:       libpmi%{pmi_so}%{?upgrade:%{_ver}} = %{version}
 %{?upgrade:Provides: %{pname}-devel = %{version}}
 %{?upgrade:Conflicts: %{pname}-devel}
 
 %description devel
 This package includes the header files for the SLURM API.
-
 
 %package auth-none
 Summary:        SLURM auth NULL implementation (no authentication)
@@ -486,6 +514,7 @@ Contains also cray specific documentation.
            --disable-static \
            --without-rpath \
            --without-datawarp \
+           --with-shared-libslurm \
 %{!?have_netloc:--without-netloc} \
            --sysconfdir=%{_sysconfdir}/%{pname} \
 %{!?have_hdf5:--without-hdf5} \
@@ -516,7 +545,7 @@ install -D -m755 etc/init.d.slurmdbd %{buildroot}%{_initrddir}/slurmdbd
 ln -sf %{_initrddir}/slurm %{buildroot}%{_sbindir}/rcslurm
 ln -sf %{_initrddir}/slurmdbd %{buildroot}%{_sbindir}/rcslurmdbd
 %endif
-mkdir -p %{buildroot}%{_var}/spool/slurm
+mkdir -p %{buildroot}%{_localstatedir}/spool/slurm
 
 rm -f contribs/cray/opt_modulefiles_slurm
 rm -f %{buildroot}%{_sysconfdir}/plugstack.conf.template
@@ -530,8 +559,8 @@ install -D -m644 etc/layouts.d.power.conf.example %{buildroot}/%{_sysconfdir}/%{
 install -D -m644 etc/layouts.d.power_cpufreq.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/power_cpufreq.conf.example
 install -D -m644 etc/layouts.d.unit.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/unit.conf.example
 install -D -m644 etc/slurm.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf%{?OHPC_BUILD:.example}
-install -D -m644 etc/slurmdbd.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
-install -D -m644 etc/slurmdbd.conf.example %{buildroot}%{_sysconfdir}/%{pname}/slurmdbd.conf.example
+install -D -m600 etc/slurmdbd.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
+install -D -m600 etc/slurmdbd.conf.example %{buildroot}%{_sysconfdir}/%{pname}/slurmdbd.conf.example
 install -D -m755 contribs/sjstat %{buildroot}%{_bindir}/sjstat
 install -D -m755 contribs/sgather/sgather %{buildroot}%{_bindir}/sgather
 
@@ -544,11 +573,13 @@ sed -i 's#\(StateSaveLocation=\).*#\1%_localstatedir/lib/slurm#'  %{buildroot}/%
 sed -i 's#^\(SlurmdPidFile=\).*$#\1%{_localstatedir}/run/slurm/slurmd.pid#' %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 sed -i 's#^\(SlurmctldPidFile=\).*$#\1%{_localstatedir}/run/slurm/slurmctld.pid#' %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 sed -i 's#^\(SlurmdSpoolDir=\)/.*#\1%{_localstatedir}/spool/slurm#' %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
+%if 0%{?upgrade} || 0%{suse_version} > 1501
 sed -i -e '/^ControlMachine=/i# Ordered List of Control Nodes' \
     -e 's#ControlMachine=\(.*\)$#SlurmctldHost=\1(10.0.10.20)#' \
     -e 's#BackupController=.*#SlurmctldHost=linux1(10.0.10.21)#' \
     -e '/.*ControlAddr=.*/d' \
     -e '/.*BackupAddr=.*/d'  %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
+%endif
 cat >>%{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf <<EOF 
 # SUSE default configuration
 PropagateResourceLimitsExcept=MEMLOCK
@@ -644,8 +675,26 @@ cat <<EOF > %{buildroot}/%{_sysconfdir}/logrotate.d/${service}.conf
 }
 EOF
 done
+mkdir -p %{buildroot}/%{apache_sysconfdir}/conf.d
+cat > %{buildroot}/%{apache_sysconfdir}/conf.d/slurm.conf <<EOF
+Alias /slurm/ "/usr/share/doc/slurm-%{ver}/html/"
+<Directory "/usr/share/doc/slurm-%{ver}/html/">
+        AllowOverride None
+        DirectoryIndex slurm.html
+        # Controls who can get stuff from this server.
+        <IfModule !mod_access_compat.c>
+                Require all granted
+        </IfModule>
+        <IfModule mod_access_compat.c>
+                Order allow,deny
+                Allow from all
+        </IfModule>
+</Directory>
+EOF
 
 %fdupes -s %{buildroot}
+
+%define fixperm() [ $1 -eq 1 -a -e %2 ] && /bin/chmod %1 %2
 
 %pre
 %if 0%{?with_systemd}
@@ -677,6 +726,8 @@ done
 %endif
 
 %post slurmdbd
+%{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf}
+%{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf.example}
 %if 0%{?with_systemd}
 %service_add_post slurmdbd.service
 %else
@@ -691,6 +742,8 @@ done
 %endif
 
 %postun slurmdbd
+%{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf}
+%{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf.example}
 %if 0%{?with_systemd}
 %service_del_postun -n slurmdbd.service
 %else
@@ -728,6 +781,7 @@ done
 %define slurmdescr "SLURM workload manager"
 getent group %slurm_g >/dev/null || groupadd -r %slurm_g
 getent passwd %slurm_u >/dev/null || useradd -r -g %slurm_g -d %slurmdir -s /bin/false -c %{slurmdescr} %slurm_u
+[ -d %{_localstatedir}/spool/slurm ] && /bin/chown -h %slurm_u:%slurm_g %{_localstatedir}/spool/slurm
 exit 0
 
 %post config
@@ -742,8 +796,8 @@ exit 0
 %post -n %{libslurm} -p /sbin/ldconfig
 %postun -n %{libslurm} -p /sbin/ldconfig
 
-%post -n  libpmi%{pmi_so} -p /sbin/ldconfig
-%postun -n  libpmi%{pmi_so} -p /sbin/ldconfig
+%post -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
+%postun -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 
 %{!?nil:
 # On update the %%postun code of the old package restarts the
@@ -768,8 +822,12 @@ exit 0
 %define _rest() %{?with_systemd:[ -e /run/%{1}.rst ] && { systemctl status %{1} &>/dev/null || systemctl restart %{1}; }; rm -f /run/%{1}.rst;}
 %{!?nil:
 # Until a posttrans macro has been added to macros.systemd, we need this
+# Do NOT delete the line breaks in the macro definition: they help
+# to cope with different versions of the %_restart_on_update.
 }
-%define _res_update() %{?with_systemd:%{expand:%%_restart_on_update %{?*}};}
+%define _res_update() %{?with_systemd: 
+ %{expand:%%_restart_on_update %{?*}}
+}
 
 %pretrans -p <lua>
 %_test_rest slurmctld
@@ -817,7 +875,6 @@ exit 0
 %{_bindir}/sprio
 %{_bindir}/squeue
 %{_bindir}/sreport
-%{_bindir}/srun
 %{_bindir}/smap
 %{_bindir}/sshare
 %{_bindir}/sstat
@@ -846,7 +903,6 @@ exit 0
 %{_mandir}/man1/sprio.1*
 %{_mandir}/man1/squeue.1*
 %{_mandir}/man1/sreport.1*
-%{_mandir}/man1/srun.1*
 %{_mandir}/man1/sshare.1*
 %{_mandir}/man1/sstat.1*
 %{_mandir}/man1/strigger.1*
@@ -872,11 +928,15 @@ exit 0
 %dir %{_datadir}/doc/%{pname}-%{dl_ver}
 %{_datadir}/doc/%{pname}-%{dl_ver}/*
 
+%files webdoc
+%{?comp_at}
+%{apache_sysconfdir}/conf.d/slurm.conf
+
 %files -n %{libslurm}
 %{?comp_at}
 %{_libdir}/libslurm*.so.%{so_version}*
 
-%files -n libpmi%{pmi_so}
+%files -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 %{?comp_at}
 %{_libdir}/libpmi*.so.%{pmi_so}*
 
@@ -919,8 +979,8 @@ exit 0
 %{_sbindir}/slurmdbd
 %{_mandir}/man5/slurmdbd.*
 %{_mandir}/man8/slurmdbd.*
-%config(noreplace) %{_sysconfdir}/%{pname}/slurmdbd.conf
-%{_sysconfdir}/%{pname}/slurmdbd.conf.example
+%config(noreplace) %attr(0600,%slurm_u,%slurm_g) %{_sysconfdir}/%{pname}/slurmdbd.conf
+%attr(0600,%slurm_u,%slurm_g) %{_sysconfdir}/%{pname}/slurmdbd.conf.example
 %if 0%{?with_systemd}
 %{_unitdir}/slurmdbd.service
 %else
@@ -983,6 +1043,10 @@ exit 0
 %{_libdir}/slurm/mpi_none.so
 %{_libdir}/slurm/mpi_openmpi.so
 %{_libdir}/slurm/mpi_pmi2.so
+%if %{with pmix}
+%{_libdir}/slurm/mpi_pmix.so
+%{_libdir}/slurm/mpi_pmix_v3.so
+%endif
 %{_libdir}/slurm/power_none.so
 %{_libdir}/slurm/preempt_none.so
 %{_libdir}/slurm/preempt_partition_prio.so
@@ -1068,6 +1132,9 @@ exit 0
 %{?comp_at}
 %{_sbindir}/slurmd
 %{_sbindir}/slurmstepd
+# bsc#1153095
+%{_bindir}/srun
+%{_mandir}/man1/srun.1*
 %{_mandir}/man8/slurmd.*
 %{_mandir}/man8/slurmstepd*
 %if 0%{?with_systemd}
@@ -1090,7 +1157,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/unit.conf.example
 %{?OHPC_BUILD:%attr(0755, %slurm_u, %slurm_g) %_localstatedir/lib/slurm}
 %{?with_systemd:%{_tmpfilesdir}/%{pname}.conf}
-%dir %{_var}/spool/slurm
+%dir %attr(0755, %slurm_u, %slurm_g)%{_localstatedir}/spool/slurm
 %config(noreplace) %{_sysconfdir}/logrotate.d/slurm*
 
 %files config-man

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Jan  2 09:14:56 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Deprecate "ControlMachine" only for SLURM version upgrades and
+  products newer than 1501. This ensures that the original setting
+  is retained for the SLURM version shipped origianlly with SLE-15-SP1
+  or Leap 15.1.
+
+-------------------------------------------------------------------
+Sat Dec 21 09:07:42 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Update to v18.08.9 for fixing CVE-2019-19728 (bsc#1159692).
+  * Wrap END_TIMER{,2,3} macro definition in "do {} while (0)" block.
+  * Make sview work with glib2 v2.62.
+  * Make Slurm compile on linux after sys/sysctl.h was deprecated.
+  * Install slurmdbd.conf.example with 0600 permissions to encourage secure
+    use. CVE-2019-19727.
+  * srun - do not continue with job launch if --uid fails. CVE-2019-19728.
+
+-------------------------------------------------------------------
+Wed Dec 11 18:23:46 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added pmix support jsc#SLE-10800 
+
+-------------------------------------------------------------------
+Sun Dec  8 11:33:42 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Use --with-shared-libslurm to build slurm binaries using libslurm.
+- Make libslurm depend on slurm-config.
+
+-------------------------------------------------------------------
+Fri Dec  6 17:06:32 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix ownership of /var/spool/slurm on new installations
+  and upgrade (boo#1158696).
+
+-------------------------------------------------------------------
+Thu Oct 31 10:18:21 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix permissions of slurmdbd.conf (bsc#1155784, CVE-2019-19727).
+- Fix %posttrans macro _res_update to cope with added newline
+  (bsc#1153259).
+
+-------------------------------------------------------------------
+Mon Oct 21 15:54:43 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add package slurm-webdoc which sets up a web server to provide
+  the documentation for the version shipped.
+
+-------------------------------------------------------------------
+Mon Oct  7 15:39:43 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Move srun from 'slurm' to 'slurm-node': srun is required on the
+  nodes as well so sbatch will work. 'slurm-node' is a requirement
+  when 'slurm' is installed (bsc#1153095).
+
+-------------------------------------------------------------------
 Wed Oct  2 08:26:02 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Set %base_ver for SLE-15-SP2 to 18.08 (for now).
