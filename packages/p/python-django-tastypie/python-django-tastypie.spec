@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tastypie
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-tastypie
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        A webservice API framework layer for Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/django-tastypie/django-tastypie
 Source:         https://github.com/django-tastypie/django-tastypie/archive/v%{version}.tar.gz
-# https://github.com/django-tastypie/django-tastypie/pull/1562
-BuildRequires:  %{python_module Django >= 1.8}
+BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module biplist}
 BuildRequires:  %{python_module defusedxml}
@@ -37,7 +35,7 @@ BuildRequires:  %{python_module python-mimeparse >= 0.1.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.8
+Requires:       python-Django >= 1.11
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-python-mimeparse >= 0.1.4
 Recommends:     python-PyYAML

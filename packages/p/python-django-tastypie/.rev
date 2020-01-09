@@ -106,4 +106,13 @@
     <comment></comment>
     <requestid>678837</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>97dc9baf42de0d25e124939132ac0ac8</srcmd5>
+    <version>0.14.3</version>
+    <time>1578606706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.3:
+  * no upstream changelog</comment>
+    <requestid>762088</requestid>
+  </revision>
 </revisionlist>
