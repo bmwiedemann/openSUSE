@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-openapi-core
 Version:        0.12.0
 Release:        0
@@ -36,9 +37,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module strict-rfc3339}
 BuildRequires:  fdupes
-BuildRequires:  python-backports.functools_lru_cache
-BuildRequires:  python-backports.functools_partialmethod
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-isodate
@@ -47,11 +45,6 @@ Requires:       python-openapi-spec-validator
 Requires:       python-six
 Requires:       python-strict-rfc3339
 BuildArch:      noarch
-%ifpython2
-Requires:       python-backports.functools_lru_cache
-Requires:       python-backports.functools_partialmethod
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
