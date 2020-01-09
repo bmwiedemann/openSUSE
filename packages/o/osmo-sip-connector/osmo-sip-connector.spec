@@ -1,6 +1,7 @@
 #
 # spec file for package osmo-sip-connector
 #
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           osmo-sip-connector
 Version:        1.2.0
@@ -28,9 +30,9 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmocore) >= 0.11.0
-BuildRequires:  pkgconfig(libosmogsm) >= 0.11.0
-BuildRequires:  pkgconfig(libosmovty) >= 0.11.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.0.0
 BuildRequires:  pkgconfig(sofia-sip-ua-glib) >= 1.12.0
 %{?systemd_requires}
 
