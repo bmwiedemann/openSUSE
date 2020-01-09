@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 18:56:36 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 subpackage due to dependencies dropping python2.
+
+-------------------------------------------------------------------
 Tue May 21 20:07:52 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix conflicts with old python2-only version

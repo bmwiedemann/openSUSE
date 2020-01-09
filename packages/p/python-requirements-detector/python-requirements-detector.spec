@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-detector
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %define         oldpython python
 Name:           python-requirements-detector
 Version:        0.6
@@ -39,8 +40,6 @@ BuildArch:      noarch
 %ifpython3
 Conflicts:      %{oldpython}-requirements-detector < 0.6
 %endif
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
 
 %python_subpackages
 
@@ -60,22 +59,15 @@ depends on.
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/detect-requirements
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$pthon_sitelib} nosetests-%{$python_bin_suffix}
 
-%post
-%python_install_alternative detect-requirements
-
-%postun
-%python_uninstall_alternative detect-requirements
-
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/*
-%python_alternative %{_bindir}/detect-requirements
+%python3_only %{_bindir}/detect-requirements
 
 %changelog
