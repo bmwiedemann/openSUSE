@@ -1,7 +1,7 @@
 #
 # spec file for package python-numexpr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-numexpr
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
-Patch0:         fix_test.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.6}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +42,6 @@ calculation in Python.
 
 %prep
 %setup -q -n numexpr-%{version}
-%patch0 -p1
 # wrong-file-end-of-line-encoding
 sed -i 's/\r$//' ANNOUNCE.rst AUTHORS.txt  README.rst RELEASE_NOTES.rst site.cfg.example
 # remove unwanted shebang

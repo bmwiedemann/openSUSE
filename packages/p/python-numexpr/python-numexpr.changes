@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  8 18:04:17 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.7.1
+  * Python 3.8 support has been added.
+  * Python 3.4 support is discontinued.
+  * The tests are now compatible with NumPy 1.18.
+  * site.cfg.example was updated to use the libraries tag instead
+    of mkl_libs, which is recommended for newer version of NumPy.
+- Drop upstream-included fix_test.patch
+
+-------------------------------------------------------------------
 Sat Aug 31 04:46:34 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:
