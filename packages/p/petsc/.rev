@@ -229,4 +229,12 @@
     <comment>- Remove unneeded dependency from HPC devel package.</comment>
     <requestid>755903</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>7103de8e861493ba5deefbba1cd7ef56</srcmd5>
+    <version>3.12.2</version>
+    <time>1578606826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762495</requestid>
+  </revision>
 </revisionlist>

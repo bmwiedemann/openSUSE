@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:40:51 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Force use of python3 on Tumbleweed. As the python2 executable was
+  also set in petsc's configuration, dependent packages no longer
+  depend on python2.
+- Fix she-bangs in python scripts
+- Only require python{2,3}-base packages instead of full packages.
+
+-------------------------------------------------------------------
 Wed Dec 11 17:31:03 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Remove unneeded dependency from HPC devel package.

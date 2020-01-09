@@ -1,7 +1,7 @@
 #
 # spec file for package petsc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,12 @@ ExcludeArch:    s390 s390x
 %bcond_with hypre
 # Only available as openmpi flavor, and not in Factory
 %bcond_with pastix
+
+%if 0%{suse_version} < 1550
+%define python_ver 2
+%else
+%define python_ver 3
+%endif
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -302,8 +308,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{!?makedoc:1}
 BuildRequires:  fdupes
 BuildRequires:  pkg-config
-BuildRequires:  python2
-BuildRequires:  python3
+%if %{python_ver} == 2
+BuildRequires:  python2-base
+%endif
+BuildRequires:  python3-base
 %if 0%{?suse_version} >= 1315
 BuildRequires:  hwloc-devel
 %endif
@@ -433,6 +441,16 @@ yet supported by %{?is_opensuse:open}SUSE.
 %patch0 -p1 -b .rpath
 %patch1 -p1 -b .pastix-detect
 
+# Fix shebangs in packaged scripts
+find src lib config -type f -iname \*.py -exec sed -i \
+  -e '1 s@#!.*env python3@#!/usr/bin/python3@' \
+  -e '1 s@#!.*env python@#!/usr/bin/python%{python_ver}@' \
+  \{\} \;
+find lib/petsc/bin -type f -exec sed -i \
+  -e '1 s@#!.*env python3@#!/usr/bin/python3@' \
+  -e '1 s@#!.*env python@#!/usr/bin/python%{python_ver}@' \
+  \{\} \;
+
 %if 0%{?makedoc:1}
 %files doc
 %defattr(-,root,root,-)
@@ -463,7 +481,7 @@ module load phdf5 scalapack openblas
 export ARCHCFLAGS=-fPIC
 %endif
 
-./config/configure.py \
+python%{python_ver} ./config/configure.py \
 	--CFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
 	--FFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
 	--CXXFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
@@ -472,6 +490,7 @@ export ARCHCFLAGS=-fPIC
         --with-c-support \
 	--with-fortran-interfaces=1 \
 	--with-debugging=no \
+	--with-python-exec=python%{python_ver} \
 	--with-shared-libraries \
 	--with-batch=0 \
 %if %{without hpc}
@@ -608,7 +627,7 @@ done
 [ -s $tmp ] && { echo "One or more python script not Python 3 compliant!"; cat $tmp; exit 1; }
 rm -f $tmp
 
-#pyton_sitesearch_path=%{hpc_python_sitearch_no_singlespec}
+#python_sitearch_path=%%{hpc_python_sitearch_no_singlespec}
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
 
@@ -646,8 +665,8 @@ if [ expr [ module-info mode load ] || [module-info mode display ] ] {
 
 prepend-path    PATH                %{hpc_prefix}/lib/petsc/bin
 prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
-if {[file isdirectory  $pyton_sitesearch_path]} {
-prepend-path    PYTHONPATH          $pyton_sitesearch_path
+if {[file isdirectory  $python_sitearch_path]} {
+prepend-path    PYTHONPATH          $python_sitearch_path
 }
 
 setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
