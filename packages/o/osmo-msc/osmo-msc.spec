@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-msc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define with_iu 1
 %define _lto_cflags %{nil}
 Name:           osmo-msc
-Version:        1.3.1
+Version:        1.6.0
 Release:        0
 Summary:        Osmocom's MSC for 2G and 3G circuit-switched mobile networks
 License:        AGPL-3.0-or-later AND GPL-2.0-only
@@ -29,20 +29,22 @@ URL:            https://osmocom.org/projects/osmomsc/wiki
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libdbi-drivers-dbd-sqlite3
 BuildRequires:  libtool
+BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  pkgconfig(dbi)
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.5
 BuildRequires:  pkgconfig(libosmo-gsup-client) >= 1.0.0
-BuildRequires:  pkgconfig(libosmo-mgcp-client) >= 1.5.0
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.4.0
-BuildRequires:  pkgconfig(libosmo-sccp) >= 1.0.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.0.0
+BuildRequires:  pkgconfig(libosmo-mgcp-client) >= 1.7.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 0.6.0
+BuildRequires:  pkgconfig(libosmo-sccp) >= 1.1.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.1.0
 BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.0.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.0.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
 BuildRequires:  pkgconfig(libsmpp34) >= 1.13.0
 %{?systemd_requires}
 %if %{with_iu}

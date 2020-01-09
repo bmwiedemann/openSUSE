@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan  4 18:26:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.6.0
+  * MNCC v6: add optional SDP to the socket protocol
+  * add sdp_msg API: SDP parsing/composition
+  * BSSMAP: decode Codec List (BSS Supported)
+  * vlr_auth_fsm: on SAI use the GSUP provided GMM cause code
+  * paging: Send SGsAP-SERVICE-ABORT-REQUEST on paging timeout
+  * sgs_iface: Accept messages with unknown TLV elements
+  * fix error on BSSMAP Cipher Mode Complete L3 msg IE
+  * Implement a global switch on the network to disable call waiting.
+  * mncc: send payload type matching chosen codec
+- Update to new upstream release 1.5.0
+  * replace osmo_counter with stat_items
+  * Use GSM23003_MSISDN_MAX_DIGITS from libosmogsm
+  * libmsc/gsm_04_11.c: properly handle MMTS indication
+  * vty: Add option to enable osmux towards BSCs
+  * vty: make retrieve-imeisv-early configurable
+  * Allow MME name preformatted as FQDN in SGsAP
+  * sms queue: avoid repeated Paging for a failed SMS
+  * Add SGs Interface
+
+-------------------------------------------------------------------
 Sun Nov 10 21:03:53 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Disable LTO for now since it breaks compilation of the tests
