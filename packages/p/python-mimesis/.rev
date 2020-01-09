@@ -26,4 +26,13 @@
   * Removed duplicated names in the countries of et locale.</comment>
     <requestid>730116</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8304d1626c13a7d7d1dca72d1dfddf6c</srcmd5>
+    <version>3.3.0</version>
+    <time>1578606681</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test test_cpf_with_666_prefix as it fails with new
+  mocker behaviour</comment>
+    <requestid>762090</requestid>
+  </revision>
 </revisionlist>
