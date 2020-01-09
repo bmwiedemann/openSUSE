@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-bts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           osmo-bts
-Version:        1.0.1
+Version:        1.2.0
 Release:        0
 Summary:        Osmocom BTS-Side code (Abis, scheduling)
 License:        AGPL-3.0-or-later AND GPL-2.0-only
@@ -31,13 +31,14 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.0.0
-BuildRequires:  pkgconfig(libosmocoding) >= 1.0.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.0.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.3.0
+BuildRequires:  pkgconfig(libosmocoding) >= 1.3.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
+BuildRequires:  pkgconfig(libosmogb)
+BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
 BuildRequires:  pkgconfig(libosmotrau) >= 0.6.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.0.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
 
 %description
 Osmocom BTS-Side code (A-bis, scheduling).
