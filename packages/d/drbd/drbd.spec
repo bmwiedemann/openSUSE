@@ -1,7 +1,7 @@
 #
 # spec file for package drbd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,9 @@ Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
 Patch2:         rely-on-sb-handlers.patch
 Patch3:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
 Patch4:         drbd-update-resync-target-s-dagtag.patch
-Patch5:         suse-coccinelle.patch
+#In 61ff72f401680(v5.5-rc2), pr_warning is removed
+Patch5:         without_pr_warning.patch
+Patch6:         suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle
 BuildRequires:  kernel-source
@@ -75,6 +77,7 @@ installed kernel.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 mkdir source
 cp -a drbd/. source/. || :
@@ -97,9 +100,11 @@ for flavor in %{flavors_to_build}; do
     cp -r source $flavor
     cp %{_sourcedir}/Module.supported $flavor
     export DRBDSRC="$PWD/obj/$flavor"
+    # bsc#1160194, check the coccicheck work.
+    #make coccicheck
     make %{?_smp_mflags} -C %{kernel_source $flavor} modules M=$PWD/$flavor SPAAS=${SPAAS}
 
-    #Check the compat result
+    # Check the compat result
     cat $PWD/$flavor/compat.h
 done
 
