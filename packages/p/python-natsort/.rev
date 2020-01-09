@@ -105,4 +105,18 @@
   (gh#SethMMorton/natsort#108).</comment>
     <requestid>759229</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ece0a4a155fff65c79706280763f41e</srcmd5>
+    <version>7.0.0</version>
+    <time>1578606691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.0:
+  - Update testing dependency versions
+  - Support for Python 2
+
+- Upgrade to the preliminary version 6.2.0+3843c27, which fixes
+  our testing problems.
+- Remove too_slow.patch which is harmful now.</comment>
+    <requestid>762092</requestid>
+  </revision>
 </revisionlist>

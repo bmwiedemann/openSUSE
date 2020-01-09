@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  9 09:39:48 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 7.0.0:
+  - Update testing dependency versions
+  - Support for Python 2
+
+-------------------------------------------------------------------
+Tue Jan  7 08:13:31 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to the preliminary version 6.2.0+3843c27, which fixes
+  our testing problems.
+- Remove too_slow.patch which is harmful now.
+
+-------------------------------------------------------------------
 Sun Dec 22 23:52:46 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Exclude failing tests due to gh#SethMMorton/natsort#107
