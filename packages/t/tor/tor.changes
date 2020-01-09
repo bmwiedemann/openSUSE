@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  7 11:21:02 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update tor.service and add defaults-torrc
+  to work without dropped torctl (boo#1072274)
+- Add tor-master.service to allow handling multiple tor daemons
+
+-------------------------------------------------------------------
+Sat Dec 14 20:35:25 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.2.5:
+  * first stable release in the 0.4.2.x series
+  * improves reliability and stability
+  * several stability and correctness improvements for onion services
+  *  fixes many smaller bugs present in previous series
+
+-------------------------------------------------------------------
 Tue Dec 10 08:27:14 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.1.7:

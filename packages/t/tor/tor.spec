@@ -20,7 +20,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.1.7
+Version:        0.4.2.5
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
@@ -31,6 +31,8 @@ Source1:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz.asc
 Source2:        tor.keyring
 Source3:        tor.service
 Source4:        tor.tmpfiles
+Source5:        defaults-torrc
+Source6:        tor-master.service
 Patch0:         tor-0.2.5.x-logrotate.patch
 Patch1:         fix-test.patch
 BuildRequires:  openssl-devel >= 1.0.1
@@ -102,12 +104,11 @@ install -d -m 755 \
         %{buildroot}/%{_sbindir}
 
 install -m 644 -D %{SOURCE3} %{buildroot}/%{_unitdir}/%{name}.service
+install -m 644 -D %{SOURCE6} %{buildroot}/%{_unitdir}/%{name}-master.service
+install -m 644 %{SOURCE5} %{buildroot}%{_datadir}/tor/defaults-torrc
 install -d -m 0755 %{buildroot}%{_libexecdir}/tmpfiles.d/
 install -m 0644 %{SOURCE4} %{buildroot}%{_libexecdir}/tmpfiles.d/%{name}.conf
 ln -s -f service %{buildroot}%{_sbindir}/rc%{name}
-
-# control script
-install -p -m 755 contrib/dist/torctl %{buildroot}/%{_bindir}
 
 # sample config files
 install -p -m 644 -D src/config/torrc.{sample,minimal} %{buildroot}/%{_sysconfdir}/%{name}
@@ -148,6 +149,7 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/tor.conf || :
 %{_bindir}/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/geoip*
+%{_datadir}/%{name}/defaults-torrc
 %config(noreplace) %attr(0644,root,root) %{_sysconfdir}/logrotate.d/%{name}
 %dir %attr(0755,root,%{torgroup}) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(0644,root,%{torgroup}) %{_sysconfdir}/%{name}/torrc
@@ -155,6 +157,7 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/tor.conf || :
 %attr(0700,%{toruser},%{torgroup}) %dir %{_localstatedir}/lib/%{name}
 %attr(0750,%{toruser},%{torgroup}) %dir %{_localstatedir}/log/%{name}
 %{_unitdir}/%{name}.service
+%{_unitdir}/%{name}-master.service
 %{_libexecdir}/tmpfiles.d/%{name}.conf
 %{_sbindir}/rc%{name}
 

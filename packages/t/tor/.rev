@@ -692,4 +692,20 @@ expose the tor-related ports.</comment>
     <comment></comment>
     <requestid>755515</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>8176acdd2394c15c23e41e9e569bd41f</srcmd5>
+    <version>0.4.2.5</version>
+    <time>1578606658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tor.service and add defaults-torrc
+  to work without dropped torctl (boo#1072274)
+- Add tor-master.service to allow handling multiple tor daemons
+
+- tor 0.4.2.5:
+  * first stable release in the 0.4.2.x series
+  * improves reliability and stability
+  * several stability and correctness improvements for onion services
+  *  fixes many smaller bugs present in previous series</comment>
+    <requestid>761967</requestid>
+  </revision>
 </revisionlist>
