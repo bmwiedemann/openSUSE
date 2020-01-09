@@ -1,7 +1,7 @@
-Index: node-v12.7.0/tools/install.py
+Index: node-v13.2.0/tools/install.py
 ===================================================================
---- node-v12.7.0.orig/tools/install.py
-+++ node-v12.7.0/tools/install.py
+--- node-v13.2.0.orig/tools/install.py
++++ node-v13.2.0/tools/install.py
 @@ -7,6 +7,7 @@ import errno
  import os
  import shutil
@@ -46,16 +46,16 @@ Index: node-v12.7.0/tools/install.py
  
    # behave similarly for systemtap
    action(['src/node.stp'], 'share/systemtap/tapset/')
-Index: node-v12.7.0/lib/internal/modules/cjs/loader.js
+Index: node-v13.2.0/lib/internal/modules/cjs/loader.js
 ===================================================================
---- node-v12.7.0.orig/lib/internal/modules/cjs/loader.js
-+++ node-v12.7.0/lib/internal/modules/cjs/loader.js
-@@ -902,7 +902,7 @@ Module._initPaths = function() {
-   } else {
-     prefixDir = path.resolve(process.execPath, '..', '..');
-   }
--  var paths = [path.resolve(prefixDir, 'lib', 'node')];
-+  var paths = ['/usr/lib/node'];
+--- node-v13.2.0.orig/lib/internal/modules/cjs/loader.js
++++ node-v13.2.0/lib/internal/modules/cjs/loader.js
+@@ -1247,7 +1247,7 @@ Module._initPaths = function() {
+     path.resolve(process.execPath, '..') :
+     path.resolve(process.execPath, '..', '..');
+ 
+-  let paths = [path.resolve(prefixDir, 'lib', 'node')];
++  let paths = ['/usr/lib/node'];
  
    if (homeDir) {
      paths.unshift(path.resolve(homeDir, '.node_libraries'));

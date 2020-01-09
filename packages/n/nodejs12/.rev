@@ -118,4 +118,20 @@
 - refreshed: fix_ci_tests.patch versioned.patch</comment>
     <requestid>758472</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb8d3b5d3ae38f130d09f57bf6858daa</srcmd5>
+    <version>12.14.1</version>
+    <time>1578606764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LTS release 12.14.1:
+  * crypto: fix key requirements in asymmetric cipher
+  * deps:
+    + update llhttp to 2.0.1
+    + update nghttp2 to 1.40.0
+  * v8: mark serdes API as stable
+- nodejs-libpath.patch: refreshed
+
+- Really disable LTO when required (nodejs &lt; 12)</comment>
+    <requestid>762223</requestid>
+  </revision>
 </revisionlist>
