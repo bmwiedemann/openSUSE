@@ -1,7 +1,7 @@
 #
 # spec file for package pam_kwallet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without lang
 
 Name:           pam_kwallet
-Version:        5.17.4
+Version:        5.17.5
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        LGPL-2.1-only AND GPL-2.0-or-later AND GPL-3.0-only
