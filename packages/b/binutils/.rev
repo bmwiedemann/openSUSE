@@ -1811,4 +1811,12 @@ bsc#1157755)
   build fails on aarch64 (PR25210, bsc#1157755).</comment>
     <requestid>751311</requestid>
   </revision>
+  <revision rev="142" vrev="3">
+    <srcmd5>592a45facd31cc3379a3d4e38e864c34</srcmd5>
+    <version>2.33.1</version>
+    <time>1578678013</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO during testsuite run (forwarded request 761623 from Andreas_Schwab)</comment>
+    <requestid>761640</requestid>
+  </revision>
 </revisionlist>

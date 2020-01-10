@@ -1,7 +1,7 @@
 #
 # spec file for package cross-mips-binutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -68,7 +68,7 @@ Release:        0
 #
 #
 #
-Url:            http://www.gnu.org/software/binutils/
+URL:            http://www.gnu.org/software/binutils/
 PreReq:         %{install_info_prereq}
 # bug437293
 %ifarch ppc64
@@ -347,9 +347,12 @@ make -C gas-nesc %{?_smp_mflags}
 unset SUSE_ASNEEDED
 cd build-dir
 %if 0%{?cross:1}
-make -k check CFLAGS="-O2 -g" CXXFLAGS="-O2 -g" || %{make_check_handling}
+make -k check CFLAGS="-O2 -g" CXXFLAGS="-O2 -g" CFLAGS_FOR_TARGET="-O2 -g" CXXFLAGS_FOR_TARGET="-O2 -g" || %{make_check_handling}
 %else
-make -k check CFLAGS="$RPM_OPT_FLAGS -Wno-unused -Wno-unprototyped-calls" || :
+%if "%{?_lto_cflags}" != ""
+RPM_OPT_FLAGS+=" -fno-lto"
+%endif
+make -k check CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS_FOR_TARGET="$RPM_OPT_FLAGS" CXXFLAGS_FOR_TARGET="$RPM_OPT_FLAGS" || %{make_check_handling}
 %endif
 
 %install
