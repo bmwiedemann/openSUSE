@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Dec 25 01:25:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.2.0
+  * DNN module:
+    + Integrated GSoC project with CUDA backend: #14827
+    + Intel® Inference Engine backend ( OpenVINO™ ):
+      - support for nGraph OpenVINO API (preview / experimental): #15537
+  * G-API module:
+    + Enabled in-graph inference: #15090. Now G-API can express more
+      complex hybrid CV/DL algorithms;
+      - Intel® Inference Engine backend is the only available now,
+        support for DNN module will be added in the future releases.
+    + Extended execution model with streaming support: #15216. Decoding,
+      image processing, inference, and post-processing are now pipelined
+      efficiently when processing a video stream with G-API.
+    + Added tutorials covering these new features: Face analytics
+      pipeline and a sample Face beautification algorithm.
+  * Performance improvements:
+    + SIMD intrinsics: StereoBM/StereoSGBM algorithms, resize, integral,
+      flip, accumulate with mask, HOG, demosaic, moments
+    + Muti-threading: pyrDown
+  * And many other great patches from OpenCV community:
+    + VideoCapture: video stream extraction (demuxing) through
+      FFmpeg backend.
+    + VideoCapture: waitAny() API for camera input multiplexing
+      (Video4Linux through poll() calls).
+    + (opencv_contrib) new algorithm Rapid Frequency Selective
+      Reconstruction (FSR): #2296 + tutorial.
+    + (opencv_contrib) RIC method for sparse match interpolation: #2367.
+    + (opencv_contrib) LOGOS features matching strategy: #2383.
+  * Breaking changes:
+    + Disabled constructors for legacy C API structures.
+    + Implementation of Thread Local Storage (TLS) has been improved to
+      release data from terminated threads. API has been changed.
+    + Don't define unsafe CV_XADD implementation by default.
+    + Python conversion rules of passed arguments will be updated in
+      next releases: #15915.
+
+-------------------------------------------------------------------
 Sun Nov  3 19:50:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Limit build parallelism with limit_build, some ARM and PPC workers
