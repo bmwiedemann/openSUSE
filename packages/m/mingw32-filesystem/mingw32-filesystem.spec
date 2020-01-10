@@ -18,7 +18,7 @@
 
 %define debug_package %{nil}
 Name:           mingw32-filesystem
-Version:        20190529
+Version:        20191217
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0+
