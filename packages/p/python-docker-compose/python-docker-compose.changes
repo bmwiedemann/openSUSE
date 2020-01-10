@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:56:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Properly conditionalize python2 build
+
+-------------------------------------------------------------------
 Thu Jan  9 18:28:21 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.25.1

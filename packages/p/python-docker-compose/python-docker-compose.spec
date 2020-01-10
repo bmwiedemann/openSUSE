@@ -17,7 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%if 0%{suse_version} > 1500
+%bcond_with python2
+%define skip_python2 1
+%else
+%bcond_without python2
+%endif
 Name:           python-docker-compose
 Version:        1.25.1
 Release:        0
@@ -57,8 +62,26 @@ Requires:       python-texttable >= 0.9.1
 Requires:       python-urllib3 >= 1.21.1
 Requires:       python-websocket-client >= 0.32.0
 BuildArch:      noarch
+# This is py3 only as we have the binary just there
+%ifpython3
 Provides:       docker-compose = %{version}
 Obsoletes:      docker-compose < %{version}
+%endif
+%if %{with python2}
+BuildRequires:  python2-backports.shutil_get_terminal_size >= 1.0.0
+BuildRequires:  python2-backports.ssl_match_hostname >= 3.5
+BuildRequires:  python2-enum34 >= 1.0.4
+BuildRequires:  python2-ipaddress >= 1.0.16
+BuildRequires:  python2-mock >= 1.0.1
+BuildRequires:  python2-subprocess32 >= 3.5.4
+%endif
+%ifpython2
+Requires:       python-backports.shutil_get_terminal_size >= 1.0.0
+Requires:       python-backports.ssl_match_hostname >= 3.5
+Requires:       python-enum34 >= 1.0.4
+Requires:       python-ipaddress >= 1.0.16
+Requires:       python-subprocess32 >= 3.5.4
+%endif
 %python_subpackages
 
 %description
