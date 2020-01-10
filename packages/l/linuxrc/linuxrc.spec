@@ -30,6 +30,9 @@ BuildRequires:  libmediacheck-devel
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(hwinfo)
 BuildRequires:  pkgconfig(libcurl)
+%ifarch s390x
+BuildRequires:  qclib-devel
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
