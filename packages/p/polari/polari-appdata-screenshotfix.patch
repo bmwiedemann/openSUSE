@@ -1,0 +1,41 @@
+From 718c08d043f8c45fff99aa8a13520a9e76b7d7b1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Sat, 4 Jan 2020 22:31:53 +0100
+Subject: [PATCH] appdata: Point screenshots to the stable branch
+
+---
+ data/appdata/org.gnome.Polari.appdata.xml.in | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/data/appdata/org.gnome.Polari.appdata.xml.in b/data/appdata/org.gnome.Polari.appdata.xml.in
+index f160baf..7b86bf2 100644
+--- a/data/appdata/org.gnome.Polari.appdata.xml.in
++++ b/data/appdata/org.gnome.Polari.appdata.xml.in
+@@ -22,19 +22,19 @@
+   </description>
+   <screenshots>
+     <screenshot type="default">
+-      <image>https://gitlab.gnome.org/GNOME/polari/raw/master/data/appdata/polari-main.png</image>
++      <image>https://gitlab.gnome.org/GNOME/polari/raw/gnome-3-34/data/appdata/polari-main.png</image>
+     </screenshot>
+     <screenshot>
+-      <image>https://gitlab.gnome.org/GNOME/polari/raw/master/data/appdata/polari-user-list.png</image>
++      <image>https://gitlab.gnome.org/GNOME/polari/raw/gnome-3-34/data/appdata/polari-user-list.png</image>
+     </screenshot>
+     <screenshot>
+-      <image>https://gitlab.gnome.org/GNOME/polari/raw/master/data/appdata/polari-join-dialog.png</image>
++      <image>https://gitlab.gnome.org/GNOME/polari/raw/gnome-3-34/data/appdata/polari-join-dialog.png</image>
+     </screenshot>
+     <screenshot>
+-      <image>https://gitlab.gnome.org/GNOME/polari/raw/master/data/appdata/polari-connection.png</image>
++      <image>https://gitlab.gnome.org/GNOME/polari/raw/gnome-3-34/data/appdata/polari-connection.png</image>
+     </screenshot>
+     <screenshot>
+-      <image>https://gitlab.gnome.org/GNOME/polari/raw/master/data/appdata/polari-connection-properties.png</image>
++      <image>https://gitlab.gnome.org/GNOME/polari/raw/gnome-3-34/data/appdata/polari-connection-properties.png</image>
+     </screenshot>
+   </screenshots>
+   <launchable type="desktop-id">org.gnome.Polari.desktop</launchable>
+-- 
+2.24.1
+

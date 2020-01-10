@@ -1,7 +1,7 @@
 #
 # spec file for package polari
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          Productivity/Networking/IRC
 URL:            https://wiki.gnome.org/Apps/Polari
 Source0:        https://download.gnome.org/sources/polari/3.34/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
+# PATCH-FIX-UPSTREAM polari-appdata-screenshotfix.patch -- appdata: Point screenshots to the stable branch
+Patch0:         polari-appdata-screenshotfix.patch
 
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  meson >= 0.43.0
@@ -63,7 +65,7 @@ This package contains Introspection bindings.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson
