@@ -11,7 +11,7 @@
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
+# the Free Software Foundation; either version 2.1 of the License, or
 # (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
@@ -73,7 +73,7 @@ do
 	;;
     -sOutputFile=*)
 	case "${arg#-sOutputFile=}" in
-	%stdout%|%stderr%|-|"")
+	%stdout%|%stderr%|%stdout|%stderr|-|"")
 	    continue ;;
 	%pipe%*)
 	    pipecmd=${arg#-sOutputFile=%pipe%}
@@ -104,8 +104,6 @@ do
 		trap "finish '$PWD' '$tmp'" ERR EXIT SIGINT SIGHUP
 		opts[o++]="--bind ${tmp+"$tmp"} $home/out"
 	    fi
-	    # change to new working directory in sandbox
-	    opts[o++]="--chdir $home/out"
 	fi
 	argv[argc]="-sOutputFile=$home/out/${file}"
 	continue
@@ -129,6 +127,8 @@ do
     then
 	opts[o++]="--ro-bind $arg $home/$arg"
     else
+	arg="$(realpath $arg)" || exit 1
+	argv[argc]="$arg"
 	test "$arg" != / || continue
 	test "$arg" != /home || continue
 	test "$arg" != $home || continue

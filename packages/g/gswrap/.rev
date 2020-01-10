@@ -7,4 +7,14 @@
     <comment>Fix spelling of coreutils</comment>
     <requestid>726735</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e167e4af92ffd3cfac37fdbe51b551c</srcmd5>
+    <version>0.1</version>
+    <time>1578674976</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle relative paths more gracefully 
+
+- Allow %stdout as well as %stdout% for -sOutputFile=</comment>
+    <requestid>762787</requestid>
+  </revision>
 </revisionlist>
