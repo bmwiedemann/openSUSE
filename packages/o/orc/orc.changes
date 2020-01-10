@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  7 14:01:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.31:
+  + Fix OrcTargetPowerPCFlags enum typedef to revert API change on
+    macOS/iOS.
+  + Fixes for various PowerPC issues.
+  + Enable flush-to-zero mode for float programs on ARM/neon.
+  + Fix some opcodes to support x2/x4 processing on PowerPC.
+
+-------------------------------------------------------------------
 Mon Sep  9 10:17:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.30:
