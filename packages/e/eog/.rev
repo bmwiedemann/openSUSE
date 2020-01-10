@@ -1078,4 +1078,12 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>Scripted push from {project}</comment>
     <requestid>736504</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>def86a6980ad93e504ca16f44dfd81e1</srcmd5>
+    <version>3.34.2</version>
+    <time>1578674814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761236</requestid>
+  </revision>
 </revisionlist>
