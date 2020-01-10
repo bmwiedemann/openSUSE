@@ -25,4 +25,13 @@
     <comment></comment>
     <requestid>762519</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c8a74e6ea88f22e3a62c9b59489fe113</srcmd5>
+    <version>1.2.1</version>
+    <time>1578675090</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not skip the python2 build manually but wait for the prjconf
+  declearation</comment>
+    <requestid>762867</requestid>
+  </revision>
 </revisionlist>

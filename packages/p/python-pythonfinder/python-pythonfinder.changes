@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:59:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not skip the python2 build manually but wait for the prjconf
+  declearation
+
+-------------------------------------------------------------------
 Thu Jan  9 18:04:29 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 due to dropped backports indirect dependency.
