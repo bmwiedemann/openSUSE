@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan  5 12:52:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.3:
+  + Fix various crashes due to regressions during the 3.34 core
+    rewrite.
+  + Restore keyboard shortcut to open help.
+  + Bugs fixed: glgo#GNOME/gnome-music#348,
+    glgo#GNOME/gnome-music#354, glgo#GNOME/gnome-music#355,
+    glgo#GNOME/gnome-music#357.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Nov 24 19:37:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.2:
