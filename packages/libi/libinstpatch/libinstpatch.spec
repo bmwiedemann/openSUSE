@@ -1,7 +1,7 @@
 #
 # spec file for package libinstpatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Release:        0
 Summary:        MIDI instrument patch library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            http://www.swamiproject.org/
+URL:            http://www.swamiproject.org/
 # Fetch source via
 # sh libinstpatch-snapshot.sh latest
 Source0:        libinstpatch-%{version}.tar.gz
+Source99:       baselibs.conf
 # .pc file fixes. Patch sent upstream via their mailing list
 Patch0:         libinstpatch-cmake-fixes.patch
 BuildRequires:  cmake

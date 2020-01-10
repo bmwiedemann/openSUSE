@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:58:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: produce -32bit libraries, which are used by
+  fluidsynth (new dependency).
+
+-------------------------------------------------------------------
 Tue Oct 29 15:23:50 UTC 2019 - Joël Krähemann <jkraehemann@gmail.com>
 
 - update libinstpatch-cmake-fixes.patch to fix soname in
