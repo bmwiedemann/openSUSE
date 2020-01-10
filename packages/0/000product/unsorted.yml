@@ -2540,6 +2540,7 @@ unsorted:
   - e16 
   - e3 
   - eaglemode 
+  - earlyoom 
   - easy-rsa 
   - easyloggingpp-devel 
   - easymock 
@@ -4836,6 +4837,8 @@ unsorted:
   - gradle-bootstrap 
   - gradle-local 
   - grafana 
+  - grafana-piechart-panel 
+  - grafana-status-panel 
   - grail 
   - grail-devel 
   - gramofile 
@@ -10507,7 +10510,7 @@ unsorted:
   - libosmo-gsup-client-devel 
   - libosmo-gsup-client0 
   - libosmo-mgcp-client-devel 
-  - libosmo-mgcp-client5 
+  - libosmo-mgcp-client6 
   - libosmo-mgcp-devel 
   - libosmo-mtp-1_2_0 
   - libosmo-mtp-devel 
@@ -14272,6 +14275,7 @@ unsorted:
   - nettle 
   - netty 
   - netty-javadoc 
+  - netty-poms 
   - netty-tcnative 
   - netty-tcnative-javadoc 
   - netty3 
@@ -17439,7 +17443,6 @@ unsorted:
   - python-WebOb-doc 
   - python-WebTest-doc 
   - python-Whoosh-doc 
-  - python-YODA 
   - python-Yapsy-doc 
   - python-ZODB-doc 
   - python-acitoolkit-doc 
@@ -17629,8 +17632,8 @@ unsorted:
   - python-pyghmi-doc 
   - python-pygraphviz-doc 
   - python-pyinsane 
-  - python-pylibacl 
-  - python-pylibacl-doc 
+  - python-pylibacl: [i586] 
+  - python-pylibacl-doc: [i586] 
   - python-pymisp-doc 
   - python-pymod2pkg-doc 
   - python-pynag 
@@ -18453,7 +18456,6 @@ unsorted:
   - python2-dnspython 
   - python2-docformatter 
   - python2-docker 
-  - python2-docker-compose 
   - python2-docker-pycreds 
   - python2-dockerpty 
   - python2-docopt 
@@ -18541,7 +18543,6 @@ unsorted:
   - python2-flake8-class-newline 
   - python2-flake8-debugger 
   - python2-flake8-deprecated 
-  - python2-flake8-docstrings 
   - python2-flake8-future-import 
   - python2-flake8-import-order 
   - python2-flake8-imports 
@@ -18960,7 +18961,6 @@ unsorted:
   - python2-neutronclient 
   - python2-newt 
   - python2-nibabel 
-  - python2-nilearn 
   - python2-nine 
   - python2-nltk 
   - python2-nodeenv 
@@ -19001,7 +19001,6 @@ unsorted:
   - python2-odfpy 
   - python2-odorik 
   - python2-opcodes 
-  - python2-openapi-core 
   - python2-openapi-spec-validator 
   - python2-opencv 
   - python2-opencv3 
@@ -19072,7 +19071,6 @@ unsorted:
   - python2-parted 
   - python2-parver 
   - python2-pass_python_keyring 
-  - python2-passa 
   - python2-passivetotal 
   - python2-passlib 
   - python2-pastel 
@@ -19237,7 +19235,6 @@ unsorted:
   - python2-pyenchant 
   - python2-pyface 
   - python2-pyfakefs 
-  - python2-pyfeyn 
   - python2-pyfg 
   - python2-pyfiglet 
   - python2-pyflakes 
@@ -19266,6 +19263,7 @@ unsorted:
   - python2-pykwalify 
   - python2-pylama 
   - python2-pylev 
+  - python2-pylibacl: [x86_64] 
   - python2-pyliblzma 
   - python2-pylibmc 
   - python2-pylint 
@@ -19453,7 +19451,6 @@ unsorted:
   - python2-python-xlib 
   - python2-python-yubico 
   - python2-python3-saml 
-  - python2-pythonfinder 
   - python2-pythonwhois 
   - python2-pytidylib 
   - python2-pytils 
@@ -19528,7 +19525,6 @@ unsorted:
   - python2-requests-unixsocket 
   - python2-requests_ntlm 
   - python2-requestsexceptions 
-  - python2-requirements-detector 
   - python2-requirements-parser 
   - python2-requirementslib 
   - python2-resampy 
@@ -20174,6 +20170,7 @@ unsorted:
   - python3-XStatic-term.js 
   - python3-XStatic-tv4 
   - python3-XlsxWriter 
+  - python3-YODA 
   - python3-Yapsy 
   - python3-ZConfig 
   - python3-ZConfig-doc 
@@ -21833,6 +21830,7 @@ unsorted:
   - python3-pylama 
   - python3-pylast 
   - python3-pylev 
+  - python3-pylibacl: [x86_64] 
   - python3-pylineclip 
   - python3-pylint 
   - python3-pylons-sphinx-themes 
@@ -22317,6 +22315,7 @@ unsorted:
   - python3-stevedore 
   - python3-stomp.py 
   - python3-stomper 
+  - python3-stp 
   - python3-straight-plugin 
   - python3-streamz 
   - python3-strict-rfc3339 
@@ -24273,6 +24272,7 @@ unsorted:
   - slurm-sql 
   - slurm-sview 
   - slurm-torque 
+  - slurm-webdoc 
   - slurp 
   - smake 
   - smatch 
@@ -24549,7 +24549,6 @@ unsorted:
   - stow-doc 
   - stp 
   - stp-devel 
-  - stp-python 
   - strawberry 
   - stress-ng 
   - stress-ng-bash-completion 
