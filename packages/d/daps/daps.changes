@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 15:25:56 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on xml-commons-jaxp-1.3-apis, but on generic
+  xml-apis provider
+
+-------------------------------------------------------------------
 Mon Dec  3 13:54:30 UTC 2018 - fsundermeyer@opensuse.org
 
 - Updated license statement in spec file to SPDX 3.3 notation 
