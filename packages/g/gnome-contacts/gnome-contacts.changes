@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  5 20:57:49 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.1:
+  + Make sure Contacts is started when opening a contact from
+    another app (like Geary).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 11 21:17:51 CDT 2019 - mgorse@suse.com
 
 - Update to version 3.34:
