@@ -50,7 +50,7 @@
 %global _use_opencl "OFF"
 %endif
 
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 %define force_gcc_version 7
 %endif
 

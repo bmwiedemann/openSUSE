@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 10 08:34:01 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building on Fedora
+
+-------------------------------------------------------------------
+Sun Jan  5 19:47:21 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update Debian files to reflect current version
+
+-------------------------------------------------------------------
 Thu Jan  2 19:52:30 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Cleanup spec file:
