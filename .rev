@@ -434,4 +434,15 @@
     <comment></comment>
     <requestid>751697</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>78f6e1f7c872e0cdf3eab67fd3151f81</srcmd5>
+    <version>2.20.1</version>
+    <time>1578677994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.1
+  - Add missing documentation about --continue option
+  - Avoid error message about missing fstab file on first snapshot creation. [boo#1160213]
+</comment>
+    <requestid>761568</requestid>
+  </revision>
 </revisionlist>
