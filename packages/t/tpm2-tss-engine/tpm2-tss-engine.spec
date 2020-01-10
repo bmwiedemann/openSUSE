@@ -26,12 +26,18 @@ Release:        0
 Summary:        OpenSSL Engine for TPM2 devices
 License:        BSD-3-Clause
 Group:          Productivity/Security
-URL:            https://github.com/tpm2-software/tpm2-tss-engine
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://github.com/tpm2-software
+Source0:        %{url}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf-archive
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
+%if 0%{?is_opensuse}
+# there's no pandoc on SLE, see also tpm2.0-tools for reasoning.
+#
+# current release tarballs contain the generated man pages already so nothing
+# is lost.
 BuildRequires:  pandoc
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  pkgconfig(libcrypto)
