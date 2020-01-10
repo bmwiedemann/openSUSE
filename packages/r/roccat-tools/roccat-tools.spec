@@ -1,7 +1,7 @@
 #
 # spec file for package roccat-tools
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Source:         http://downloads.sourceforge.net/roccat/%{name}-%{version}.tar.b
 Patch0:         0001-Fix-build-with-recent-pango-releases.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  lua53-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -42,11 +42,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  shadow
-%if 0%{?suse_version} > 1320
-BuildRequires:  lua53-devel
-%else
-BuildRequires:  lua-devel
-%endif
 
 %package -n     roccat-arvo
 Summary:        Roccat Arvo userland tools
@@ -252,11 +247,7 @@ perl -p -i -e 's|\r\n|\n|g' skeltr/roccatskeltrconfig/roccatskeltrconfig.desktop
 
 %build
 %cmake \
-%if 0%{?suse_version} > 1320
     -DWITH_LUA=5.3 \
-%else
-    -DWITH_LUA=5.2 \
-%endif
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
 make %{?_smp_mflags}
 
