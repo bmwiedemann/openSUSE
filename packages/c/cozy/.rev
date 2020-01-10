@@ -60,4 +60,19 @@
     <comment></comment>
     <requestid>745233</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1a659f9750b890eee354fe8b08e9201</srcmd5>
+    <version>0.6.11</version>
+    <time>1578675013</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.11:
+  * Fix: some valid media files were not detected
+  * Support for python 3.8. Cheers to emmaliddell
+  * Updated translations
+  * Fixes in the titlebar
+  * Fix: show navigation bar when searching from book overview
+  * Other small fixes
+</comment>
+    <requestid>762805</requestid>
+  </revision>
 </revisionlist>

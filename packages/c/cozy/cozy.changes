@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  6 23:23:34 UTC 2020 - Julian Geywitz <suse@geigi.de>
+
+- Update to 0.6.11:
+  * Fix: some valid media files were not detected
+  * Support for python 3.8. Cheers to emmaliddell
+  * Updated translations
+  * Fixes in the titlebar
+  * Fix: show navigation bar when searching from book overview
+  * Other small fixes
+
+-------------------------------------------------------------------
 Mon Nov  4 14:36:34 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 0.6.9:
