@@ -1,7 +1,7 @@
 #
 # spec file for package orion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           orion
-Version:        1.6.6+git~20190714
+Version:        1.6.6+git~20191230
 Release:        0
 Summary:        Twitch stream client using Qt
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Video/Players
-Url:            http://alamminsalo.github.io/orion/
+URL:            http://alamminsalo.github.io/orion/
 Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
