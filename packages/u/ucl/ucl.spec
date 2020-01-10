@@ -1,7 +1,7 @@
 #
 # spec file for package ucl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,10 @@ Name:           ucl
 Version:        1.03
 Release:        0
 Summary:        The UCL Compression Library
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.oberhumer.com/opensource/ucl/
+URL:            https://www.oberhumer.com/opensource/ucl/
 Source0:        http://www.oberhumer.com/opensource/ucl/download/ucl-%{version}.tar.gz
-Source1:        %{name}.changes
 BuildRequires:  gcc-c++
 
 %description
@@ -54,22 +53,15 @@ Obsoletes:      %{libname}-devel < %{version}
 Headers and other development files for UCL library.
 
 %prep
-%setup -q
-# remove _DATE_ and _TIME_ macros
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE1}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find .  -name '*.[ch]' |\
-    xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -std=c90"
 export CXXFLAGS="%{optflags} -std=c90"
-export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"
 %configure \
   --disable-static \
   --enable-shared
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -82,11 +74,11 @@ make %{?_smp_mflags} check
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%doc COPYING NEWS README THANKS TODO
+%license COPYING
 %{_libdir}/libucl.so.%{sover}*
 
 %files devel
-%doc COPYING
+%doc NEWS README THANKS TODO
 %{_includedir}/ucl
 %{_libdir}/libucl.so
 
