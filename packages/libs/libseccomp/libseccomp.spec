@@ -1,7 +1,7 @@
 #
 # spec file for package libseccomp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@ Summary:        A Seccomp (mode 2) helper library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/seccomp/libseccomp
-
 Source:         https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz
 # no fitting key found
 #Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source99:       baselibs.conf
 Patch1:         no-static.diff
+Patch2:         libseccomp-fix_aarch64-test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
@@ -106,15 +106,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %fdupes %buildroot/%_prefix
 
 %check
-# for ppc64* ref to boo#1142614
-%ifarch ppc s390 s390x i586 ppc64 ppc64le
-make check || true
-#pushd tests/
-#./regression -v
-#popd
-%else
 make check
-%endif
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
