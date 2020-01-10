@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Dec  6 15:30:48 CET 2019 - mls@suse.de
+
+- disable pythondist requires generator for now
+  * modified patch: fileattrs.diff
+
+-------------------------------------------------------------------
+Wed Nov 20 11:56:20 CET 2019 - mls@suse.de
+
+- drop python3-setuptools dependency from rpm-build, the package
+  is not part of ring-0
+
+-------------------------------------------------------------------
+Tue Nov 19 11:09:08 CET 2019 - mls@suse.de
+
+- update to rpm-4.15.1
+  * bugfix release
+- dropped patches:
+  * fix_lua_cflags.diff
+
+-------------------------------------------------------------------
+Tue Nov  5 16:25:53 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix shebang for pythondistdeps.py to use Python 3
+  + Modify patch: pythondistdeps.diff
+- Move pythondistdeps dependency generator to rpm-build
+- Add python3-setuptools and python3 dependencies to rpm-build for pythondistdeps
+
+-------------------------------------------------------------------
+Tue Oct 29 14:42:26 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Declare /var/lib/rpm as a ghost file (it is a link to /usr/lib/sysimage/rpm
+  generated in post script for quite some time now) [boo#1132796]
+
+-------------------------------------------------------------------
+Wed Oct  2 14:53:19 CEST 2019 - mls@suse.de
+
+- update to rpm-4.15.0
+  * dynamic build dependencies
+  * support for %elif, %elifos and %elifarch statements in spec
+  * caret version operator (the opposite of tilde)
+  * new %patchlist and %sourcelist spec sections
+  * new %{expr:#} built-in macro for evaluating expressions
+  * new %dnl macro primitive for comments
+- dropped patches:
+  * 0001-Stop-papering-over-the-security-disaster-known-as-pr.patch
+  * 0002-Fix-use-after-free-introduced-in-0f21bdd0d7b2c45564d.patch
+  * adopt-language-specific-build_fooflags-macros-from-F.patch
+  * auto-config-update-riscv64.diff
+  * debugedit-macro.diff
+  * dwz-compression.patch
+  * getncpus.diff
+  * nameversioncompare.diff
+  * mono-find-requires.diff
+  * rpmfc-push-name-epoch-version-release-macro-before-invoking-depgens.patch
+  * set-flto=auto-by-default.patch
+  * source_date_epoch_buildtime.diff
+- new patches:
+  * fix_lua_cflags.diff
+
+-------------------------------------------------------------------
 Wed Aug 28 11:17:12 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Split librpmbuild into a separate subpackage, it's pulled in by

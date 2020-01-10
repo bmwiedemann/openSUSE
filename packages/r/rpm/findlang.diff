@@ -1,5 +1,5 @@
---- ./scripts/find-lang.sh.orig	2018-01-16 09:02:23.879253043 +0000
-+++ ./scripts/find-lang.sh	2018-01-31 13:20:30.938048419 +0000
+--- ./scripts/find-lang.sh.orig	2019-09-09 07:56:53.377788842 +0000
++++ ./scripts/find-lang.sh	2019-10-02 11:12:53.774861485 +0000
 @@ -22,11 +22,11 @@ the top of the tree containing the files
  PACKAGE_NAME is the %{name} of the package. This should also be
  the basename of the .mo files.  the output is written to
@@ -137,7 +137,7 @@
 +/^$/d' >> $MO_NAME_NEW
  
  KDE3_HTML=`kde-config --expandvars --install html 2>/dev/null`
- if [ x"$KDE3_HTML" != x -a -d "$TOP_DIR$KDE3_HTML" ]; then
+ if [ x"$KDE3_HTML" != x ] && [ -d "$TOP_DIR$KDE3_HTML" ]; then
 @@ -193,7 +203,7 @@ s:'"$TOP_DIR"'::
  '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+$\):%lang(\2) \1\2\3:
  s:^\([^%].*\)::

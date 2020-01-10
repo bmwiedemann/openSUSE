@@ -1,5 +1,5 @@
---- ./build/parseReqs.c.orig	2017-10-05 10:04:56.887602165 +0000
-+++ ./build/parseReqs.c	2017-12-01 16:00:06.956343096 +0000
+--- ./build/parseReqs.c.orig	2019-06-26 14:17:31.396985719 +0000
++++ ./build/parseReqs.c	2019-10-02 12:10:51.879570016 +0000
 @@ -42,7 +42,7 @@ static rpmRC checkEpoch(const char *s, c
      return RPMRC_OK;
  }
@@ -54,11 +54,11 @@
 +	if (checkDep(spec, tagflags, N, EVR, &emsg))
  	    goto exit;
  
- 	if (nametag == RPMTAG_FILETRIGGERNAME ||
---- ./macros.in.orig	2017-12-01 16:00:02.705355493 +0000
-+++ ./macros.in	2017-12-01 16:00:06.957343106 +0000
-@@ -456,7 +456,7 @@ package or when debugging this package.\
- %_invalid_encoding_terminates_build 0
+ 	if (nametag == RPMTAG_OBSOLETENAME) {
+--- ./macros.in.orig	2019-10-02 12:10:45.431583601 +0000
++++ ./macros.in	2019-10-02 12:10:51.879570016 +0000
+@@ -452,7 +452,7 @@ package or when debugging this package.\
+ %_invalid_encoding_terminates_build 1
  
  # Should invalid version format in requires, provides, ... terminate a build?
 -%_wrong_version_format_terminate_build 1

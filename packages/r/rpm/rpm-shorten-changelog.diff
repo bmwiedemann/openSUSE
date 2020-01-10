@@ -1,7 +1,7 @@
---- ./build/pack.c.orig	2017-10-11 12:39:53.009897937 +0000
-+++ ./build/pack.c	2017-12-04 16:02:29.299440578 +0000
-@@ -641,6 +641,71 @@ static rpmRC checkPackages(char *pkgchec
-     return RPMRC_OK;
+--- ./build/pack.c.orig	2019-06-26 14:17:31.395985720 +0000
++++ ./build/pack.c	2019-10-02 11:31:05.908639084 +0000
+@@ -743,11 +743,78 @@ static rpmRC packageBinary(rpmSpec spec,
+     return rc;
  }
  
 +static void trimChangelog(Header h)
@@ -71,18 +71,17 @@
 +
  rpmRC packageBinaries(rpmSpec spec, const char *cookie, int cheating)
  {
-     rpmRC rc;
-@@ -648,6 +713,7 @@ rpmRC packageBinaries(rpmSpec spec, cons
+     rpmRC rc = RPMRC_OK;
      Package pkg;
-     char *pkglist = NULL;
  
 +    trimChangelog(spec->packages->header);
-     for (pkg = spec->packages; pkg != NULL; pkg = pkg->next) {
- 	char *fn;
- 
---- ./build/parseChangelog.c.orig	2017-10-05 10:04:56.859602170 +0000
-+++ ./build/parseChangelog.c	2017-12-04 14:47:41.249346774 +0000
-@@ -255,6 +255,11 @@ static rpmRC addChangelog(Header h, ARGV
++
+     /* Run binary creation in parallel */
+     #pragma omp parallel
+     #pragma omp single
+--- ./build/parseChangelog.c.orig	2019-06-26 14:17:31.395985720 +0000
++++ ./build/parseChangelog.c	2019-10-02 11:29:26.684840735 +0000
+@@ -253,6 +253,11 @@ static rpmRC addChangelog(Header h, ARGV
  	    goto exit;
  	}
  

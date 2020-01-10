@@ -19,7 +19,7 @@
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{?!_fillupdir:%define _fillupdir /var/adm/fillup-templates}
 
-%global librpmsover 8
+%global librpmsover 9
 
 Name:           rpm
 BuildRequires:  binutils
@@ -57,11 +57,11 @@ Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.14.2.1
+Version:        4.15.1
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
-Source:         http://ftp.rpm.org/releases/rpm-4.14.x/rpm-%{version}.tar.bz2
+Source:         http://ftp.rpm.org/releases/rpm-4.15.x/rpm-%{version}.tar.bz2
 Source1:        RPM-HOWTO.tar.bz2
 Source5:        rpmsort
 Source8:        rpmconfigcheck
@@ -79,7 +79,6 @@ Patch5:         usr-lib-sysimage-rpm.patch
 Patch11:        debugedit.diff
 Patch13:        ignore-auxv.diff
 Patch12:        localetag.diff
-Patch14:        nameversioncompare.diff
 Patch15:        dbfsync.diff
 Patch16:        dbrointerruptable.diff
 Patch18:        refreshtestarch.diff
@@ -116,7 +115,6 @@ Patch69:        nobuildcolor.diff
 Patch70:        fileattrs.diff
 Patch71:        nomagiccheck.diff
 Patch73:        assumeexec.diff
-Patch74:        mono-find-requires.diff
 Patch75:        rpm-deptracking.patch
 Patch77:        langnoc.diff
 Patch78:        headerchk2.diff
@@ -127,19 +125,9 @@ Patch99:        enable-postin-scripts-error.diff
 Patch100:       rpm-findlang-inject-metainfo.patch
 Patch102:       emptymanifest.diff
 Patch103:       find-lang-qt-qm.patch
-Patch108:       debugedit-macro.diff
 Patch109:       pythondistdeps.diff
-Patch114:       source_date_epoch_buildtime.diff
 Patch117:       findsupplements.diff
-Patch118:       dwz-compression.patch
-Patch119:       getncpus.diff
-Patch120:       rpmfc-push-name-epoch-version-release-macro-before-invoking-depgens.patch
-Patch121:       adopt-language-specific-build_fooflags-macros-from-F.patch
-Patch122:       0001-Stop-papering-over-the-security-disaster-known-as-pr.patch
-Patch123:       0002-Fix-use-after-free-introduced-in-0f21bdd0d7b2c45564d.patch
-Patch124:       set-flto=auto-by-default.patch
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
-Patch6465:      auto-config-update-riscv64.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
 # avoid bootstrapping problem
@@ -212,6 +200,10 @@ Requires:       xz
 # drop candidates
 Requires:       cpio
 Requires:       file
+# for pythondistdeps generator
+Requires:       python3-base
+# The point of the split
+Conflicts:      rpm < 4.15.0
 
 %description build
 If you want to build a rpm, you need this package. It provides rpmbuild
@@ -234,28 +226,20 @@ rm -f rpmdb/db.h
 %patch3 -p1
 %patch -P 4
 %patch5 -p1
-%patch       -P 11 -P 12 -P 13 -P 14 -P 15 -P 16       -P 18
+%patch       -P 11 -P 12 -P 13       -P 15 -P 16       -P 18
 %patch -P 20 -P 21             -P 24 -P 25 -P 26 -P 27       -P 29
 %patch -P 30       -P 32 -P 33 -P 34 -P 35 -P 36       -P 38
 %patch                   -P 43       -P 45 -P 46 -P 47       -P 49
 %patch       -P 51                   -P 55 -P 56 -P 57 -P 58
 %patch -P 60 -P 61                         -P 66 -P 67 -P 68 -P 69
-%patch -P 70 -P 71       -P 73 -P 74 -P 75       -P 77 -P 78
+%patch -P 70 -P 71       -P 73       -P 75       -P 77 -P 78
 %patch                               -P 85
 %patch                   -P 93 -P 94                         -P 99
-%patch -P 100        -P 102 -P 103                             -P 108
-%patch -P 109                      -P 114               -P 117 -P 118
-%patch -P 119 -P 120
-%patch121 -p1
-%patch122 -p1
-%patch123 -p1
-%patch124 -p1
+%patch -P 100        -P 102 -P 103                            
+%patch -P 109                                           -P 117
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
-%endif
-%ifarch riscv64
-%patch6465
 %endif
 
 cp config.guess config.sub db/dist/
@@ -286,13 +270,17 @@ popd
 
 autoreconf -fi
 ./configure --disable-dependency-tracking --prefix=%{_prefix} --mandir=%{_mandir} --infodir=%{_infodir} \
---libdir=%{_libdir} --sysconfdir=/etc --localstatedir=/var --sharedstatedir=/var/lib --with-lua \
---without-external-db \
+--libdir=%{_libdir} --sysconfdir=/etc --localstatedir=/var --sharedstatedir=/var/lib \
+--with-lua \
 --with-vendor=suse \
 --with-rundir=/run \
 --without-archive \
---with-selinux --with-internal-beecrypt \
---with-acl --with-cap --enable-shared %{?with_python: --enable-python} $BUILDTARGET
+--with-selinux \
+--with-internal-beecrypt \
+--with-acl \
+--with-cap \
+--enable-zstd \
+--enable-shared %{?with_python: --enable-python} $BUILDTARGET
 
 rm po/de.gmo
 make %{?_smp_mflags}
@@ -327,7 +315,6 @@ for d in %{buildroot}/usr/lib/rpm/platform/*-linux/macros ; do
   chmod 755 %{buildroot}/usr/src/packages/RPMS/$dd
 done
 mkdir -p %{buildroot}/usr/lib/sysimage/rpm
-mkdir -p %{buildroot}/var/lib/rpm
 gzip -9 %{buildroot}/%{_mandir}/man[18]/*.[18]
 export RPM_BUILD_ROOT
 %ifarch s390x
@@ -386,6 +373,7 @@ if test ! -L var/lib/rpm -a -f var/lib/rpm/Packages -a ! -f usr/lib/sysimage/rpm
 fi
 
 test -f usr/lib/sysimage/rpm/Packages || rpmdb --initdb
+test -e var/lib/rpm || ln -s ../../usr/lib/sysimage/rpm var/lib/rpm
 
 %posttrans
 # var/lib/rpm migration
@@ -405,7 +393,8 @@ if test ! -L var/lib/rpm ; then
     mv -f var/lib/rpm/.[!.]* usr/lib/sysimage/rpm/
     mv -f var/lib/rpm/* usr/lib/sysimage/rpm/
   fi
-  rmdir var/lib/rpm && ln -s ../../usr/lib/sysimage/rpm var/lib/rpm
+  test -d var/lib/rpm && rmdir var/lib/rpm
+  test -e var/lib/rpm || ln -s ../../usr/lib/sysimage/rpm var/lib/rpm
 fi
 
 %files -f rpm.lang
@@ -428,6 +417,8 @@ fi
 	%exclude /usr/lib/rpm/brp-*
 	%exclude /usr/lib/rpm/check-*
 	%exclude /usr/lib/rpm/*find*
+	%exclude /usr/lib/rpm/fileattrs/pythondist.attr
+	%exclude /usr/lib/rpm/pythondistdeps.py
 	/usr/sbin/rpmconfigcheck
 	/usr/lib/systemd/system/rpmconfigcheck.service
 	/usr/lib/rpm
@@ -438,7 +429,7 @@ fi
 %doc	%{_mandir}/man[18]/*.[18]*
 %dir 	/usr/lib/sysimage
 %dir 	/usr/lib/sysimage/rpm
-%dir 	/var/lib/rpm
+%ghost	/var/lib/rpm
 %dir 	%attr(755,root,root) /usr/src/packages/BUILD
 %dir 	%attr(755,root,root) /usr/src/packages/SPECS
 %dir 	%attr(755,root,root) /usr/src/packages/SOURCES
@@ -465,6 +456,8 @@ fi
 /usr/lib/rpm/brp-*
 /usr/lib/rpm/check-*
 /usr/lib/rpm/*find*
+/usr/lib/rpm/fileattrs/pythondist.attr
+/usr/lib/rpm/pythondistdeps.py
 
 %files devel
 %defattr(644,root,root,755)

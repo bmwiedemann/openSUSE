@@ -2,8 +2,8 @@ Suspend exclusive database lock when scriptlets get called, allowing
 read access in scriptlets. Only needed for DB_PRIVATE (aka global)
 locking.
 
---- ./lib/backend/db3.c.orig	2017-12-01 14:27:03.193486711 +0000
-+++ ./lib/backend/db3.c	2017-12-01 14:27:23.747426200 +0000
+--- ./lib/backend/db3.c.orig	2019-10-02 09:56:46.416347458 +0000
++++ ./lib/backend/db3.c	2019-10-02 09:56:52.084335992 +0000
 @@ -552,6 +552,46 @@ static void db3_dbSetFSync(rpmdb rdb, in
  
  static int db3_Ctrl(rpmdb rdb, dbCtrlOp ctrl)
@@ -51,8 +51,8 @@ locking.
      return 0;
  }
  
---- ./lib/backend/dbi.h.orig	2017-12-01 14:27:03.193486711 +0000
-+++ ./lib/backend/dbi.h	2017-12-01 14:27:23.747426200 +0000
+--- ./lib/backend/dbi.h.orig	2019-10-02 09:56:46.416347458 +0000
++++ ./lib/backend/dbi.h	2019-10-02 09:56:52.084335992 +0000
 @@ -17,7 +17,9 @@ typedef enum dbCtrlOp_e {
      DB_CTRL_UNLOCK_RO		= 2,
      DB_CTRL_LOCK_RW		= 3,
@@ -64,9 +64,9 @@ locking.
  } dbCtrlOp;
  
  typedef struct dbiIndex_s * dbiIndex;
---- ./lib/rpmdb.c.orig	2017-12-01 14:27:03.190486720 +0000
-+++ ./lib/rpmdb.c	2017-12-01 14:27:23.748426197 +0000
-@@ -2639,6 +2639,12 @@ int rpmdbCtrl(rpmdb db, rpmdbCtrlOp ctrl
+--- ./lib/rpmdb.c.orig	2019-10-02 09:56:46.416347458 +0000
++++ ./lib/rpmdb.c	2019-10-02 09:56:52.084335992 +0000
+@@ -2644,6 +2644,12 @@ int rpmdbCtrl(rpmdb db, rpmdbCtrlOp ctrl
      case RPMDB_CTRL_INDEXSYNC:
  	dbctrl = DB_CTRL_INDEXSYNC;
  	break;
@@ -79,8 +79,8 @@ locking.
      }
      return dbctrl ? dbCtrl(db, dbctrl) : 1;
  }
---- ./lib/rpmdb.h.orig	2017-10-05 10:04:57.035602138 +0000
-+++ ./lib/rpmdb.h	2017-12-01 14:27:23.748426197 +0000
+--- ./lib/rpmdb.h.orig	2019-06-26 14:17:31.412985694 +0000
++++ ./lib/rpmdb.h	2019-10-02 09:56:52.088335984 +0000
 @@ -35,7 +35,9 @@ typedef enum rpmdbCtrlOp_e {
      RPMDB_CTRL_UNLOCK_RO       = 2,
      RPMDB_CTRL_LOCK_RW         = 3,
@@ -92,24 +92,24 @@ locking.
  } rpmdbCtrlOp;
  
  /** \ingroup rpmdb
---- ./lib/transaction.c.orig	2017-12-01 14:27:23.750426192 +0000
-+++ ./lib/transaction.c	2017-12-01 14:28:43.232192224 +0000
-@@ -1457,6 +1457,7 @@ rpmRC runScript(rpmts ts, rpmte te, Head
- 		     stag != RPMTAG_PREUN &&
- 		     stag != RPMTAG_PRETRANS &&
- 		     stag != RPMTAG_VERIFYSCRIPT);
+--- ./lib/transaction.c.orig	2019-10-02 09:56:52.088335984 +0000
++++ ./lib/transaction.c	2019-10-02 09:58:36.956123870 +0000
+@@ -1601,6 +1601,7 @@ rpmRC runScript(rpmts ts, rpmte te, Head
+     rpmTagVal stag = rpmScriptTag(script);
+     FD_t sfd = NULL;
+     int warn_only = !(rpmScriptFlags(script) & RPMSCRIPT_FLAG_CRITICAL);
 +    rpmdb rdb = rpmtsGetRdb(ts);
  
-     /* Fake up a transaction element for triggers from rpmdb */
+     /* Create a temporary transaction element for triggers from rpmdb */
      if (te == NULL) {
-@@ -1468,10 +1469,12 @@ rpmRC runScript(rpmts ts, rpmte te, Head
+@@ -1612,10 +1613,12 @@ rpmRC runScript(rpmts ts, rpmte te, Head
      if (sfd == NULL)
  	sfd = rpmtsScriptFd(ts);
  
 +    rpmdbCtrl(rdb, RPMDB_CTRL_SUSPEND_DBLOCK);
      rpmswEnter(rpmtsOp(ts, RPMTS_OP_SCRIPTLETS), 0);
      rc = rpmScriptRun(script, arg1, arg2, sfd,
- 		      prefixes, warn_only, rpmtsPlugins(ts));
+ 		      prefixes, rpmtsPlugins(ts));
      rpmswExit(rpmtsOp(ts, RPMTS_OP_SCRIPTLETS), 0);
 +    rpmdbCtrl(rdb, RPMDB_CTRL_RESUME_DBLOCK);
  

@@ -1,8 +1,8 @@
 Make debugedit build without dwarf.h
 
---- ./Makefile.am.orig	2017-12-01 14:15:13.963574699 +0000
-+++ ./Makefile.am	2017-12-01 14:16:10.634407860 +0000
-@@ -154,7 +154,6 @@ rpm2archive_LDADD +=	@WITH_POPT_LIB@ @WI
+--- ./Makefile.am.orig	2019-06-26 14:17:31.394985722 +0000
++++ ./Makefile.am	2019-10-02 09:48:35.949316743 +0000
+@@ -167,7 +167,6 @@ rpm2archive_LDADD +=	@WITH_POPT_LIB@ @WI
  
  
  if LIBELF
@@ -10,7 +10,7 @@ Make debugedit build without dwarf.h
  if LIBDW
  rpmconfig_SCRIPTS += scripts/find-debuginfo.sh
  
-@@ -168,7 +167,6 @@ else
+@@ -181,7 +180,6 @@ else
  debugedit_LDADD +=	@WITH_LIBDW_LIB@ -lebl
  endif # HAVE_LIBDW_STRTAB
  endif # LIBDW
@@ -18,9 +18,9 @@ Make debugedit build without dwarf.h
  rpmlibexec_PROGRAMS +=	elfdeps
  elfdeps_SOURCES =	tools/elfdeps.c
  elfdeps_LDADD =		rpmio/librpmio.la
---- ./tools/debugedit.c.orig	2017-10-05 10:04:57.714602011 +0000
-+++ ./tools/debugedit.c	2017-12-01 14:15:13.965574668 +0000
-@@ -39,7 +39,37 @@
+--- ./tools/debugedit.c.orig	2019-06-26 14:17:31.462985619 +0000
++++ ./tools/debugedit.c	2019-10-02 09:48:35.953316735 +0000
+@@ -39,7 +39,45 @@
  #include <popt.h>
  
  #include <gelf.h>
@@ -56,6 +56,14 @@ Make debugedit build without dwarf.h
 +#define DW_FORM_ref8		0x14
 +#define DW_FORM_ref_udata	0x15
 +#define DW_FORM_indirect	0x16
++
++#define DW_MACRO_GNU_define	1
++#define DW_MACRO_GNU_undef	2
++#define DW_MACRO_GNU_start_file	3
++#define DW_MACRO_GNU_end_file	4
++#define DW_MACRO_GNU_define_indirect	5
++#define DW_MACRO_GNU_undef_indirect	6
++#define DW_MACRO_GNU_transparent_include 7
+ 
  
  /* Unfortunately strtab manipulation functions were only officially added
-    to elfutils libdw in 0.167.  Before that there were internal unsupported

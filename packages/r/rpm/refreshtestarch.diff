@@ -1,14 +1,9 @@
 Also test architecture in "refresh" test when not colored. This allows
 updates to different architectures.
 
---- ./lib/psm.c.orig	2012-03-20 08:07:25.000000000 +0000
-+++ ./lib/psm.c	2012-06-01 10:22:24.000000000 +0000
-@@ -680,13 +680,14 @@ void rpmpsmNotify(rpmpsm psm, int what,
-  */
- static void markReplacedInstance(rpmts ts, rpmte te)
- {
-+    /* this must match rpmNameVersionCompare in depends.c */
-     rpmdbMatchIterator mi = rpmtsInitIterator(ts, RPMDBI_NAME, rpmteN(te), 0);
+--- ./lib/psm.c.orig	2019-10-02 09:54:56.180565818 +0000
++++ ./lib/psm.c	2019-10-02 09:55:02.700552941 +0000
+@@ -518,9 +518,9 @@ static void markReplacedInstance(rpmts t
      rpmdbSetIteratorRE(mi, RPMTAG_EPOCH, RPMMIRE_STRCMP, rpmteE(te));
      rpmdbSetIteratorRE(mi, RPMTAG_VERSION, RPMMIRE_STRCMP, rpmteV(te));
      rpmdbSetIteratorRE(mi, RPMTAG_RELEASE, RPMMIRE_STRCMP, rpmteR(te));

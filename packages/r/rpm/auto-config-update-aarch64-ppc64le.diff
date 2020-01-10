@@ -1,28 +1,28 @@
-Index: build/parseBuildInstallClean.c
-===================================================================
---- build/parseBuildInstallClean.c.orig
-+++ build/parseBuildInstallClean.c
-@@ -46,7 +46,22 @@ int parseBuildInstallClean(rpmSpec spec,
-     } else if (rc < 0) {
- 	goto exit;
-     }
--    
-+
-+    if (parsePart == PART_BUILD) {
-+        char* buf = strdup(
-+            "ref=/usr/lib/rpm\n"
-+            "for s in guess sub; do\n"
-+            "    for c in $(find -maxdepth 8 -name \"config.$s\"); do\n"
-+            "         grep -q config-patches@ $c || continue\n"
-+            "         grep -q aarch64 $c || install -m 755 $ref/config.$s $c\n"
-+            "         grep -q ppc64le $c || install -m 755 $ref/config.$s $c\n"
-+            "     done\n"
-+            "done\n"
-+        );
-+        appendLineStringBuf(*sbp, buf);
-+        free(buf);
-+    }
-+
-     while (! (nextPart = isPart(spec->line))) {
- 	appendStringBuf(*sbp, spec->line);
- 	if ((rc = readLine(spec, STRIP_NOTHING)) > 0) {
+--- ./build/parseSpec.c.orig	2019-10-02 12:38:51.836127743 +0000
++++ ./build/parseSpec.c	2019-10-02 12:52:33.818447657 +0000
+@@ -926,7 +926,24 @@ static rpmSpec parseSpec(const char *spe
+ 					  &(spec->buildrequires));
+ 	    break;
+ 	case PART_BUILD:
+-	    parsePart = parseSimpleScript(spec, "%build", &(spec->build));
++	    if (spec->build) {
++		rpmlog(RPMLOG_ERR, _("line %d: second %s\n"), spec->lineNum, "%build");
++		parsePart = PART_ERROR;
++		break;
++	    }
++	    spec->build = newStringBuf();
++	    appendLineStringBuf(spec->build,
++		"ref=/usr/lib/rpm\n"
++		"for s in guess sub; do\n"
++		"    for c in $(find -maxdepth 8 -name \"config.$s\"); do\n"
++		"         grep -q config-patches@ $c || continue\n"
++		"         grep -q aarch64 $c || install -m 755 $ref/config.$s $c\n"
++		"         grep -q ppc64le $c || install -m 755 $ref/config.$s $c\n"
++		"         grep -q 'riscv64[-:]' $c || install -m 755 $ref/config.$s $c\n"
++		"     done\n"
++		"done\n"
++	    );
++	    parsePart = parseLines(spec, STRIP_NOTHING, NULL, &(spec->build));
+ 	    break;
+ 	case PART_INSTALL:
+ 	    parsePart = parseSimpleScript(spec, "%install", &(spec->install));

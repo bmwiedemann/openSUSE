@@ -1,16 +1,16 @@
---- ./scripts/brp-compress.orig	2018-01-31 13:07:37.130104408 +0000
-+++ ./scripts/brp-compress	2018-01-31 13:07:16.234159981 +0000
-@@ -5,51 +5,78 @@ if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD
+--- ./scripts/brp-compress.orig	2019-10-02 09:59:40.403995534 +0000
++++ ./scripts/brp-compress	2019-10-02 10:03:27.075537047 +0000
+@@ -5,6 +5,9 @@ if [ -z "$RPM_BUILD_ROOT" ] || [ "$RPM_B
  	exit 0
  fi
  
 +LC_ALL=
 +LANG=
 +LC_TIME=POSIX
-+
- cd "$RPM_BUILD_ROOT"
+ PREFIX=${1:-/usr}
  
- # Compress man pages
+ cd "$RPM_BUILD_ROOT"
+@@ -13,6 +16,29 @@ cd "$RPM_BUILD_ROOT"
  COMPRESS=${COMPRESS:-gzip -9 -n}
  COMPRESS_EXT=${COMPRESS_EXT:-.gz}
  
@@ -37,10 +37,11 @@
 +    done
 +}
 +
- for d in ./usr/man/man* ./usr/man/*/man* ./usr/info \
- 	./usr/share/man/man* ./usr/share/man/*/man* ./usr/share/info \
- 	./usr/kerberos/man ./usr/X11R6/man/man* ./usr/lib/perl5/man/man* \
- 	./usr/share/doc/*/man/man* ./usr/lib/*/man/man* ./usr/share/fish/man/man*
+ for d in .${PREFIX}/man/man* .${PREFIX}/man/*/man* .${PREFIX}/info \
+ 	.${PREFIX}/share/man/man* .${PREFIX}/share/man/*/man* \
+ 	.${PREFIX}/share/info .${PREFIX}/kerberos/man \
+@@ -21,39 +47,39 @@ for d in .${PREFIX}/man/man* .${PREFIX}/
+ 	.${PREFIX}/share/fish/man/man*
  do
      [ -d $d ] || continue
 -    for f in `find $d -type f ! -name dir`
@@ -52,11 +53,10 @@
 -	 *.gz|*.Z)    gunzip  -f $f; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
 -	 *.bz2)       bunzip2 -f $f; b=`echo $f | sed -e 's/\.bz2$//'`;;
 -	 *.xz|*.lzma) unxz    -f $f; b=`echo $f | sed -e 's/\.\(xz\|lzma\)$//'`;;
--	 *) b=$f;;
-+	 *.gz|*.Z)    gunzip  "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
-+	 *.bz2)       bunzip2 "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.bz2$//'`;;
-+	 *.xz|*.lzma) unxz    "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(xz\|lzma\)$//'`;;
-+	 *) b="$f";;
++	 *.gz|*.Z)    gunzip  -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
++	 *.bz2)       bunzip2 -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.bz2$//'`;;
++	 *.xz|*.lzma) unxz    -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(xz\|lzma\)$//'`;;
+ 	 *) b=$f;;
  	esac
  
 -	$COMPRESS $b </dev/null 2>/dev/null || {

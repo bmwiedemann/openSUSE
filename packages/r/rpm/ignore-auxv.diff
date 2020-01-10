@@ -1,6 +1,6 @@
---- ./lib/rpmrc.c.orig	2014-07-03 15:11:48.572096075 +0000
-+++ ./lib/rpmrc.c	2014-09-17 12:04:27.330717791 +0000
-@@ -79,10 +79,12 @@ struct rpmOption {
+--- ./lib/rpmrc.c.orig	2019-06-26 14:17:31.416985688 +0000
++++ ./lib/rpmrc.c	2019-10-02 09:52:05.076903733 +0000
+@@ -79,11 +79,13 @@ struct rpmOption {
      int localize;
  };
  
@@ -8,21 +8,22 @@
  static struct rpmat_s {
      const char *platform;
      uint64_t hwcap;
+     uint64_t hwcap2;
  } rpmat;
 +#endif
  
  typedef struct defaultEntry_s {
      char * name;
-@@ -936,7 +938,7 @@ static int is_geode(void)
+@@ -950,7 +952,7 @@ static int is_geode(void)
  #endif
  
  
 -#if defined(__linux__)
 +#if defined(__linux__) && (defined(__powerpc__) || defined(__sparc__) || (defined(__arm__) && defined(__ARM_PCS_VFP)))
- /**
-  * Populate rpmat structure with auxv values
-  */
-@@ -993,7 +995,7 @@ static void defaultMachine(rpmrcCtx ctx,
+ #ifndef AT_HWCAP2 /* glibc < 2.18 */
+ #define AT_HWCAP2 26
+ #endif
+@@ -1013,7 +1015,7 @@ static void defaultMachine(rpmrcCtx ctx,
      canonEntry canon;
      int rc;
  

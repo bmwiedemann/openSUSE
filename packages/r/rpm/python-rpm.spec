@@ -21,14 +21,13 @@
 %global with_python 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpm
-Version:        4.14.2.1
+Version:        4.15.1
 Release:        0
 Summary:        Python Bindings for Manipulating RPM Packages
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
-Source99:       rpm.spec
 BuildRequires:  %{python_module devel}
 BuildRequires:  file-devel
 BuildRequires:  libacl-devel
@@ -47,6 +46,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libzstd)
 Requires:       rpm = %{version}
 %{expand:%(sed -n -e '/^Source:/,/^BuildRoot:/p' <%{_sourcedir}/rpm.spec)}
+Source99:       rpm.spec
 %if "%{python_flavor}" == "python2"
 Obsoletes:      rpm-python < %{version}-%{release}
 Provides:       rpm-python = %{version}-%{release}
