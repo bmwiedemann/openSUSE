@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  3 17:18:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.3:
+  + Bugs fixed: glgo#GNOME/evolution-data-server#177: DAV: Ignore
+    404 responses on content refresh.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 22 11:01:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.2:
