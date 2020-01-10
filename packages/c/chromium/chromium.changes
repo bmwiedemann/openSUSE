@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 07:48:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 79.0.3945.117 bsc#1160337:
+  * CVE-2020-6377: Use after free in audio
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Mon Dec 30 17:31:38 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop obsolete liboil BuildRequires.
@@ -588,6 +595,7 @@ Thu Mar 21 11:00:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Wed Mar 13 10:19:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 73.0.3683.75 bsc#1129059:
+  * CVE-2019-5844 CVE-2019-5845 CVE-2019-5846
   * CVE-2019-5787: Use after free in Canvas.
   * CVE-2019-5788: Use after free in FileAPI.
   * CVE-2019-5789: Use after free in WebMIDI.
