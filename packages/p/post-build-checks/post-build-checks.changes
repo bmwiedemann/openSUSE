@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 10 11:45:01 UTC 2020 - lnussel@suse.de
+
+- Update to version 84.87+git20200110.2d02f07:
+  * Tweaks to make rpm-ndb build
+  * Detect name of coreutils package and don't remove it
+- restore correct version
+
+-------------------------------------------------------------------
+Tue Jan 07 10:27:55 UTC 2020 - ro@suse.com
+
+- Update to version 84.88+git20200107.dc3b3a3:
+  * 99-check-remove-rpms: preserve libgomp variants
+
+-------------------------------------------------------------------
 Tue Jul 16 11:32:46 UTC 2019 - ro@suse.com
 
 - Update to version 84.88+git20190716.5a0e034:

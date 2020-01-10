@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">84.88</param>
-    <param name="versionformat">84.88+git%cd.%h</param>
+    <param name="version">84.87</param>
+    <param name="versionformat">84.87+git%cd.%h</param>
     <param name="url">git://github.com/openSUSE/post-build-checks.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
