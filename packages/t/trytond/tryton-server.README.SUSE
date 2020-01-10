@@ -162,21 +162,6 @@ As result you will have a bare Tryton database with the base modules installed.
 
 See: http://doc.tryton.org/4.2/trytond/doc/topics/configuration.html
 
-
-Installation of the Webfrontend for tryton (sao) from package
--------------------------------------------------------------
-
-For most openSUSE Flavours tryton-sao is packed. You can install it with
-     > zypper install tryton-sao
-
-You need to edit /etc/tryton/trytond.conf. Installation of tryton-sao follows the 
-standards for nodejs-installations, so the path is within the node-modules:
-
-In the section [web], set the path:
-    root = /usr/lib/node-modules/tryton-sao
-
-Now restart trytond.
-
 Installation of the Webfrontend for tryton (sao) from source
 ------------------------------------------------------------
 
@@ -199,7 +184,7 @@ Last but not least, edit /etc/tryton/trytond.conf
 In the section [web], set the path:
     root = /srv/tryton-sao/package
 
-Now restart trytond.
+Now restart trytond (or gnuhealth).
     
 
 Upgrade
