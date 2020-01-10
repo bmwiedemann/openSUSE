@@ -1,7 +1,7 @@
 #
 # spec file for package fail2ban
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,23 +53,23 @@ Patch202:       %{name}-0.10.4-upstream-pid-file-location.patch
 Patch300:       fail2ban-opensuse-service-sfw.patch
 BuildRequires:  fdupes
 BuildRequires:  logrotate
-BuildRequires:  python-devel
+BuildRequires:  python3-tools
 # timezone package is required to run the tests
 BuildRequires:  timezone
 Requires:       cron
 Requires:       ed
 Requires:       iptables
 Requires:       logrotate
-Requires:       python >= 2.6
+Requires:       python3 >= 3.2
 Requires:       whois
 %if 0%{?suse_version} != 1110
 BuildArch:      noarch
 %endif
 %if 0%{?suse_version} >= 1230
 # systemd
-BuildRequires:  python-systemd
+BuildRequires:  python3-systemd
 BuildRequires:  pkgconfig(systemd)
-Requires:       python-systemd
+Requires:       python3-systemd
 Requires:       systemd > 204
 %{?systemd_requires}
 %else
@@ -78,11 +78,8 @@ Requires:       lsof
 Requires:       syslog
 %endif
 %if 0%{?suse_version} >= 1140 && 0%{?suse_version} != 1010  && 0%{?suse_version} != 1110 && 0%{?suse_version} != 1315
-BuildRequires:  python-pyinotify >= 0.8.3
-Requires:       python-pyinotify >= 0.8.3
-%endif
-%if 0%{?suse_version} >= 1220
-Requires:       python-gamin >= 0.0.21
+BuildRequires:  python3-pyinotify >= 0.8.3
+Requires:       python3-pyinotify >= 0.8.3
 %endif
 
 %description
@@ -129,9 +126,6 @@ install -m644 %{SOURCE8} config/paths-opensuse.conf
 # Use openSUSE paths
 sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 
-# Remove shebang
-sed -i -e '/^#!\/usr\/bin\/python$/d' fail2ban/client/fail2banregex.py
-
 %patch100
 %patch101 -p1
 %if 0%{?suse_version} < 1310
@@ -159,11 +153,12 @@ sed -i -e 's|^\([^_]*_backend = systemd\)|#\1|' config/paths-opensuse.conf
 
 %build
 export CFLAGS="%{optflags}"
-python setup.py build
+./fail2ban-2to3
+python3 setup.py build
 gzip man/*.{1,5}
 
 %install
-python setup.py install \
+python3 setup.py install \
 	--root=%{buildroot} \
 	--prefix=%{_prefix}
 
@@ -224,7 +219,7 @@ install -D -m 755 files/nagios/check_fail2ban %{buildroot}%{nagios_plugindir}/ch
 rm -r %{buildroot}%{_docdir}/%{name}
 
 # remove duplicates
-%fdupes -s %{buildroot}%{python_sitelib}
+%fdupes -s %{buildroot}%{python3_sitelib}
 
 %check
 #stat /dev/log
@@ -315,9 +310,9 @@ export LANG=en_US.UTF-8
 %{_bindir}/%{name}-client
 %{_bindir}/%{name}-python
 %{_bindir}/%{name}-regex
-%{python_sitelib}/%{name}
-%exclude %{python_sitelib}/%{name}/tests
-%{python_sitelib}/%{name}-*
+%{python3_sitelib}/%{name}
+%exclude %{python3_sitelib}/%{name}/tests
+%{python3_sitelib}/%{name}-*
 %{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man1/*
 %{_mandir}/man5/*
@@ -326,7 +321,7 @@ export LANG=en_US.UTF-8
 
 # do not include tests as they are executed during the build process
 %exclude %{_bindir}/%{name}-testcases
-%exclude %{python_sitelib}/%{name}/tests
+%exclude %{python3_sitelib}/%{name}/tests
 
 %if !0%{?suse_version} > 1500
 %if 0%{?_unitdir:1}

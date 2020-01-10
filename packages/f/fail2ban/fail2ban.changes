@@ -1,15 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan  9 14:06:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch to use python3 (upstream supported):
+  + BuildRequire python3-tools instead of python-devel (for the
+    2to3 tool).
+  + Drop the python-gamin dependency.
+  + Replace all python-FOO deps for their python3-FOO counterpart.
+
+-------------------------------------------------------------------
 Mon Aug 12 09:10:37 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added fail2ban-0.10.4-env-script-interpreter.patch to define interpretor
-- removal of SuSEfirewall2-fail2ban for factory versions since SuSEfirewall2 
+- removal of SuSEfirewall2-fail2ban for factory versions since SuSEfirewall2
   will be removed from Factory (see sr#713247):
   * fail2ban-opensuse-service.patch: removed references to SuSEfirewall2 service
   * fail2ban-opensuse-service-sfw.patch: use references to SuSEfirewall2 only for
     older distributions
   * Removed installation recommendation of the fail2ban-SuSEfirewall2
     package for all distributions as it is deprecated.
-- fail2ban-0.10.4-upstream-pid-file-location.patch changed fail2ban unit file 
+- fail2ban-0.10.4-upstream-pid-file-location.patch changed fail2ban unit file
   location (boo#1145181, gh#fail2ban/fail2ban#2474)
 
 -------------------------------------------------------------------
