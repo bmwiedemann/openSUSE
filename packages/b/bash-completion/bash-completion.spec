@@ -1,7 +1,7 @@
 #
 # spec file for package bash-completion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,12 @@ Name:           bash-completion
 %define build_core 1
 # Always set %%build_doc to 0 before submit to OBS.
 %define build_doc 0
-Version:        2.8
+Version:        2.10
 Release:        0
 Summary:        Programmable Completion for Bash
 License:        GPL-2.0-or-later
 Group:          System/Shells
-Url:            https://github.com/scop/bash-completion/
+URL:            https://github.com/scop/bash-completion/
 Source0:        https://github.com/scop/bash-completion/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        bash-completion-rpmlintrc
 # PATCH-FIX-UPSTREAM bnc#717151 -- Terminal tab autocompletion error
@@ -50,12 +50,8 @@ Patch8:         respect-variables-boo940837.patch
 Patch9:         rm-completion-smart-boo958462.patch
 # PATCH-FIX-SUSE boo#963140
 Patch10:        backticks-bsc963140.patch
-# PATCH-FIX-SUSE boo#977336
-Patch11:        sh-script-completion-boo977336.patch
 # PATCH-FIX-SUSE boo#1090515
 Patch12:        bash-completion-2.7-unRAR-remove.patch
-# PATCH-ENHANCE-SUSE from pull request 564d068 of Martin to upstream of bash-completion
-Patch13:        gcc-564d068.patch
 %if %build_doc
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
@@ -108,9 +104,7 @@ package bash-completion.
 %patch8 -b .p8
 %patch9 -b .p9
 %patch10 -b .p10 -p1
-%patch11 -b .p11 -p0
 %patch12 -b .p12 -p0
-%patch13 -b .p13 -p0
 
 %build
 %configure

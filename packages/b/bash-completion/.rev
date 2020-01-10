@@ -431,4 +431,12 @@
   Martin to upstream of bash-completion</comment>
     <requestid>698099</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>02c6fbdc9288b5b3f90e8d6bad397cbc</srcmd5>
+    <version>2.10</version>
+    <time>1578677985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761503</requestid>
+  </revision>
 </revisionlist>

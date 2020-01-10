@@ -4,7 +4,7 @@
 
 --- bash_completion
 +++ bash_completion	2017-07-04 07:40:15.221922680 +0000
-@@ -1881,12 +1881,13 @@ _longopt()
+@@ -1938,12 +1938,13 @@ _longopt()
      fi
  }
  # makeinfo and texi2dvi are defined elsewhere.
@@ -21,5 +21,5 @@
 +    texindex touch tr unexpand uniq vdir wc who
 +complete -F _longopt -o default env netstat seq uname units
  
- declare -A _xspecs
- _filedir_xspec()
+ # declare only knows -g in bash >= 4.2.
+ if [[ ${BASH_VERSINFO[0]} -gt 4 || ${BASH_VERSINFO[1]} -ge 2 ]]; then

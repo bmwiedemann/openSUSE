@@ -1,7 +1,7 @@
 #
 # spec file for package bash-completion-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@ Name:           bash-completion-doc
 %define _name bash-completion
 # WARNING: Never edit this file!!! Edit bash-completion.spec and call pre_checkin.sh to update bash-completion-doc.spec.
 # Always set %%build_doc to 0 before submit to OBS.
-Version:        2.8
+Version:        2.10
 Release:        0
 Summary:        The Documentation of Programmable Completion for Bash
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/scop/bash-completion/
+URL:            https://github.com/scop/bash-completion/
 Source0:        https://github.com/scop/bash-completion/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        bash-completion-rpmlintrc
 # PATCH-FIX-UPSTREAM bnc#717151 -- Terminal tab autocompletion error
@@ -48,8 +48,6 @@ Patch8:         respect-variables-boo940837.patch
 Patch9:         rm-completion-smart-boo958462.patch
 # PATCH-FIX-SUSE boo#963140
 Patch10:        backticks-bsc963140.patch
-# PATCH-FIX-SUSE boo#977336
-Patch11:        sh-script-completion-boo977336.patch
 # PATCH-FIX-SUSE boo#1090515
 Patch12:        bash-completion-2.7-unRAR-remove.patch
 BuildRequires:  asciidoc
@@ -74,7 +72,6 @@ package bash-completion.
 %patch8 -b .p8
 %patch9 -b .p9
 %patch10 -b .p10 -p1
-%patch11 -b .p11 -p0
 %patch12 -b .p12 -p0
 
 %build

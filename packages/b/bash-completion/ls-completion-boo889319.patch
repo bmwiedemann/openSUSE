@@ -4,7 +4,7 @@
 
 --- bash_completion
 +++ bash_completion	2017-07-04 07:45:25.480233012 +0000
-@@ -1928,11 +1928,12 @@ _longopt()
+@@ -1940,11 +1940,12 @@ _longopt()
  # makeinfo and texi2dvi are defined elsewhere.
  complete -F _longopt -o filenames a2ps awk base64 bash bc bison cat chroot colordiff cp \
      csplit cut date df diff dir du enscript expand fmt fold gperf \
@@ -16,5 +16,5 @@
  complete -F _longopt -o default env netstat seq uname units
 +complete -F _longopt -o bashdefault -o default -o filenames -o nospace ls ll la l ls-l lf
  
- declare -A _xspecs
- _filedir_xspec()
+ # declare only knows -g in bash >= 4.2.
+ if [[ ${BASH_VERSINFO[0]} -gt 4 || ${BASH_VERSINFO[1]} -ge 2 ]]; then

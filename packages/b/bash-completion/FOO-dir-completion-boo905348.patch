@@ -4,15 +4,15 @@
 
 --- bash_completion
 +++ bash_completion	2017-07-04 07:44:47.556933294 +0000
-@@ -551,6 +551,7 @@ _filedir()
+@@ -555,6 +555,7 @@ _filedir()
      local IFS=$'\n'
  
      _tilde "$cur" || return
 +    _dollar "$cur" || return
  
      local -a toks
-     local x tmp
-@@ -979,6 +980,41 @@ _tilde()
+     local reset
+@@ -1006,6 +1007,41 @@ _tilde()
      return $result
  }
  
@@ -54,7 +54,7 @@
  
  # Expand variable starting with tilde (~)
  # We want to expand ~foo/... to /home/foo/... to avoid problems when
-@@ -1666,7 +1702,16 @@ complete -F _known_hosts traceroute trac
+@@ -1720,7 +1756,16 @@ complete -F _known_hosts traceroute traceroute6 \
  _cd()
  {
      local cur prev words cword

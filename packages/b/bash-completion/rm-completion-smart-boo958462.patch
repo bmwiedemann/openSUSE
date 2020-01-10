@@ -9,7 +9,7 @@ does not return anything.
 
 --- bash_completion
 +++ bash_completion	2017-07-04 07:48:24.632925756 +0000
-@@ -1945,11 +1945,13 @@ _longopt()
+@@ -1941,11 +1941,13 @@ _longopt()
  complete -F _longopt -o filenames a2ps awk base64 bash bc bison cat chroot colordiff cp \
      csplit cut date df diff dir du enscript expand fmt fold gperf \
      grep grub head irb ld ldd less ln m4 md5sum mkdir mkfifo mknod \
@@ -22,5 +22,5 @@ does not return anything.
 +complete -F _longopt -o bashdefault -o default -o filenames -o nospace rm rmdir
 +
  
- declare -A _xspecs
- _filedir_xspec()
+ # declare only knows -g in bash >= 4.2.
+ if [[ ${BASH_VERSINFO[0]} -gt 4 || ${BASH_VERSINFO[1]} -ge 2 ]]; then
