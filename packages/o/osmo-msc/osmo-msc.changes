@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  9 22:16:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.6.1
+  Bugfix release:
+  * libmsc/gsm_04_08.c: fix: verify MI before calling
+    vlr_subscr_rx_id_resp()
+  * vlr.c: fix condition to check MSISDN presence
+
+-------------------------------------------------------------------
 Sat Jan  4 18:26:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.6.0

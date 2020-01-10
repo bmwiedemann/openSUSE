@@ -20,7 +20,7 @@
 %define with_iu 1
 %define _lto_cflags %{nil}
 Name:           osmo-msc
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Osmocom's MSC for 2G and 3G circuit-switched mobile networks
 License:        AGPL-3.0-or-later AND GPL-2.0-only
