@@ -17,14 +17,19 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 33
-%define ver 18.08.9
-%define _ver _18_08
+%define so_version 34
+%define ver 19.05.5
+%define _ver _19_05
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
+%define nss_so 2
 
 %define pname slurm
+
+%ifarch i586
+ExclusiveArch:  do_not_build
+%endif
 
 %if 0%{?sle_version} == 120200
 %define base_ver 1702
@@ -41,6 +46,9 @@
 
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %(echo %{_ver} | tr -d _)
 %define upgrade 1
+%endif
+%if !0%{?is_opensuse} && 0%{!?upgrade:1} && 0%{?sle_version} < 150200
+%define legacy_cray 1
 %endif
 
 # Build with PMIx only for SLE >= 15.2 and TW
@@ -111,7 +119,7 @@ Group:          Productivity/Clustering/Computing
 URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
 Source1:        slurm-rpmlintrc
-Patch0:         slurm-2.4.4-rpath.patch
+Patch0:         Remove-rpath-from-build.patch
 Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
 Patch3:         split-xdaemon-in-xdaemon_init-and-xdaemon_finish-for.patch
@@ -121,9 +129,6 @@ Patch6:         slurmdbd-uses-xdaemon_-for-systemd.patch
 Patch7:         slurmsmwd-uses-xdaemon_-for-systemd.patch
 Patch8:         removed-deprecated-xdaemon.patch
 Patch9:         slurmctld-rerun-agent_init-when-backup-controller-takes-over.patch
-Patch10:        pam_slurm_adopt-avoid-running-outside-of-the-sshd-PA.patch
-Patch11:        pam_slurm_adopt-send_user_msg-don-t-copy-undefined-d.patch
-Patch12:        pam_slurm_adopt-use-uid-to-determine-whether-root-is.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -240,29 +245,37 @@ through Perl.
 Summary:        Libraries for SLURM
 Group:          System/Libraries
 Requires:       %{name}-config = %{version}
+Provides:       libslurm = %{version}
+Conflicts:      libslurm
 
 %description -n %{libslurm}
 This package contains the library needed to run programs dynamically linked
 with SLURM.
 
 
-%package -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
-Summary:        Libraries for SLURM
+%package -n libpmi%{pmi_so}
+Summary:        SLURM PMI Library
 Group:          System/Libraries
-%{?upgrade:Provides: libpmi%{pmi_so} = %{version}}
-%{?upgrade:Conflicts: libpmi%{pmi_so}}
 
-%description -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
+%description -n libpmi%{pmi_so}
 This package contains the library needed to run programs dynamically linked
 with SLURM.
 
+%package -n libnss_%{pname}%{nss_so}
+Summary:        NSS Plugin for SLURM
+Group:          System/Libraries
+
+%description -n libnss_%{pname}%{nss_so}
+libnss_slurm is an optional NSS plugin that permits password and group
+resolution for a job on a compute node to be serviced through the local
+slurmstepd process.
 
 %package devel
 Summary:        Development package for SLURM
 Group:          Development/Libraries/C and C++ 
 Requires:       %{libslurm} = %{version}
 Requires:       %{name} = %{version}
-Requires:       libpmi%{pmi_so}%{?upgrade:%{_ver}} = %{version}
+Requires:       libpmi%{pmi_so} = %{version}
 %{?upgrade:Provides: %{pname}-devel = %{version}}
 %{?upgrade:Conflicts: %{pname}-devel}
 
@@ -449,6 +462,7 @@ This package contains just the minmal code to run a compute node.
 %package config
 Summary:        Config files and directories for slurm services
 Group:          Productivity/Clustering/Computing
+Requires:       logrotate
 %if 0%{?suse_version} <= 1140
 Requires(pre):  pwdutils
 %else
@@ -493,7 +507,7 @@ Contains also cray specific documentation.
 
 %prep
 %setup -q -n %{pname}-%{dl_ver}
-%patch0 -p1
+%patch0 -p2
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -504,9 +518,6 @@ Contains also cray specific documentation.
 %patch8 -p1
 # Drop this fix as it is considered to be resolved by c1a537dbbe6
 ##%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -691,7 +702,13 @@ Alias /slurm/ "/usr/share/doc/slurm-%{ver}/html/"
         </IfModule>
 </Directory>
 EOF
-
+cat > %{buildroot}/%{_sysconfdir}/%{pname}/nss_slurm.conf <<EOF
+## Optional config for libnss_slurm
+## Specify if different from default 
+# SlurmdSpoolDir /var/spool/slurmd
+## Specify if does not match hostname
+# NodeName myname
+EOF
 %fdupes -s %{buildroot}
 
 %define fixperm() [ $1 -eq 1 -a -e %2 ] && /bin/chmod %1 %2
@@ -796,8 +813,11 @@ exit 0
 %post -n %{libslurm} -p /sbin/ldconfig
 %postun -n %{libslurm} -p /sbin/ldconfig
 
-%post -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
-%postun -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
+%post -n  libpmi%{pmi_so} -p /sbin/ldconfig
+%postun -n  libpmi%{pmi_so} -p /sbin/ldconfig
+
+%post -n libnss_%{pname}%{nss_so} -p /sbin/ldconfig
+%postun -n libnss_%{pname}%{nss_so} -p /sbin/ldconfig
 
 %{!?nil:
 # On update the %%postun code of the old package restarts the
@@ -936,9 +956,14 @@ exit 0
 %{?comp_at}
 %{_libdir}/libslurm*.so.%{so_version}*
 
-%files -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
+%files -n libpmi%{pmi_so}
 %{?comp_at}
 %{_libdir}/libpmi*.so.%{pmi_so}*
+
+%files -n libnss_%{pname}%{nss_so}
+%{?comp_at}
+%config(noreplace) %{_sysconfdir}/%{pname}/nss_slurm.conf
+%{_libdir}/libnss_slurm.so.%{nss_so}
 
 %files devel
 %{?comp_at}
@@ -946,7 +971,6 @@ exit 0
 %{_libdir}/libpmi.so
 %{_libdir}/libpmi2.so
 %{_libdir}/libslurm.so
-%{_libdir}/libslurmdb.so
 %{_libdir}/slurm/src/*
 %{_mandir}/man3/slurm_*
 %{_libdir}/pkgconfig/slurm.pc
@@ -963,7 +987,7 @@ exit 0
 %files munge
 %{?comp_at}
 %{_libdir}/slurm/auth_munge.so
-%{_libdir}/slurm/crypto_munge.so
+%{_libdir}/slurm/cred_munge.so
 
 %files -n perl-%{name}
 %{?comp_at}
@@ -1009,14 +1033,18 @@ exit 0
 %{_libdir}/slurm/acct_gather_filesystem_none.so
 %{_libdir}/slurm/acct_gather_interconnect_none.so
 %{_libdir}/slurm/acct_gather_profile_none.so
+%{?have_json_c:%{_libdir}/slurm/burst_buffer_datawarp.so}
 %{_libdir}/slurm/burst_buffer_generic.so
 %{_libdir}/slurm/checkpoint_none.so
 %{_libdir}/slurm/checkpoint_ompi.so
 %{_libdir}/slurm/core_spec_none.so
-%{_libdir}/slurm/crypto_openssl.so
+%{_libdir}/slurm/cli_filter_none.so
+%{_libdir}/slurm/cred_none.so
 %{_libdir}/slurm/ext_sensors_none.so
+%{_libdir}/slurm/gpu_generic.so
 %{_libdir}/slurm/gres_gpu.so
 %{_libdir}/slurm/gres_mic.so
+%{_libdir}/slurm/gres_mps.so
 %{_libdir}/slurm/gres_nic.so
 %{_libdir}/slurm/jobacct_gather_cgroup.so
 %{_libdir}/slurm/jobacct_gather_linux.so
@@ -1061,10 +1089,10 @@ exit 0
 %{_libdir}/slurm/sched_backfill.so
 %{_libdir}/slurm/sched_builtin.so
 %{_libdir}/slurm/sched_hold.so
-%{_libdir}/slurm/select_alps.so
 %{_libdir}/slurm/select_cons_res.so
+%{_libdir}/slurm/select_cons_tres.so
 %{_libdir}/slurm/select_linear.so
-%{_libdir}/slurm/select_serial.so
+%{_libdir}/slurm/site_factor_none.so
 %{_libdir}/slurm/slurmctld_nonstop.so
 %{_libdir}/slurm/switch_generic.so
 %{_libdir}/slurm/switch_none.so
@@ -1089,19 +1117,22 @@ exit 0
 %{_libdir}/slurm/acct_gather_profile_influxdb.so
 %{_libdir}/slurm/ext_sensors_rrd.so
 %{_libdir}/slurm/jobcomp_elasticsearch.so
-%if !0%{?is_opensuse}
-%{_libdir}/slurm/acct_gather_energy_cray.so
-%{_libdir}/slurm/core_spec_cray.so
-%{_libdir}/slurm/job_submit_cray.so
-%{_libdir}/slurm/select_cray.so
-%{_libdir}/slurm/switch_cray.so
-%{_libdir}/slurm/task_cray.so
+%if 0%{?legacy_cray}
+%{_libdir}/slurm/acct_gather_energy_cray_aries.so
+%{_libdir}/slurm/core_spec_cray_aries.so
+%{_libdir}/slurm/job_submit_cray_aries.so
+%{_libdir}/slurm/select_cray_aries.so
+%{_libdir}/slurm/switch_cray_aries.so
+%{_libdir}/slurm/task_cray_aries.so
+ %if 0%{?have_json_c}
+%{_libdir}/slurm/node_features_knl_cray.so
+%{_libdir}/slurm/power_cray_aries.so
+ %endif
 %endif
 
 %files lua
 %{?comp_at}
 %{_libdir}/slurm/job_submit_lua.so
-%{_libdir}/slurm/proctrack_lua.so
 
 %files torque
 %{?comp_at}
@@ -1171,7 +1202,7 @@ exit 0
 %{_mandir}/man5/nonstop.conf.5.*
 %{_mandir}/man5/topology.*
 %{_mandir}/man5/knl.conf.5.*
-%if !0%{?is_opensuse}
+%if 0%{?legacy_cray}
 %{_mandir}/man5/cray.*
 %endif
 
@@ -1182,23 +1213,20 @@ exit 0
 %{_mandir}/man1/sh5util.1.gz
 %endif
 
-%if 0%{?is_opensuse} || 0%{?have_json_c}
+%if !0%{?legacy_cray}
 %files cray
 # do not remove cray sepcific packages from SLES update
- %if 0%{?is_opensuse}
-%{_libdir}/slurm/acct_gather_energy_cray.so
-%{_libdir}/slurm/core_spec_cray.so
-%{_libdir}/slurm/job_submit_cray.so
-%{_libdir}/slurm/select_cray.so
-%{_libdir}/slurm/switch_cray.so
-%{_libdir}/slurm/task_cray.so
+%{_libdir}/slurm/acct_gather_energy_cray_aries.so
+%{_libdir}/slurm/core_spec_cray_aries.so
+%{_libdir}/slurm/job_submit_cray_aries.so
+%{_libdir}/slurm/select_cray_aries.so
+%{_libdir}/slurm/switch_cray_aries.so
+%{_libdir}/slurm/task_cray_aries.so
 %{_mandir}/man5/cray.*
- %endif
  %if 0%{?have_json_c}
-%{_libdir}/slurm/burst_buffer_cray.so
 %{_libdir}/slurm/node_features_knl_cray.so
- %{_libdir}/slurm/power_cray.so
-%endif
+%{_libdir}/slurm/power_cray_aries.so
+ %endif
 %endif
 
 %changelog

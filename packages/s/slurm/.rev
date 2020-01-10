@@ -480,4 +480,12 @@
   nodes as well so sbatch will work. 'slurm-node' is a requirement (forwarded request 760450 from eeich)</comment>
     <requestid>761961</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>44e1a08d0f29e6b7ca7f4ccee6c1e5a8</srcmd5>
+    <version>19.05.5</version>
+    <time>1578675005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762780</requestid>
+  </revision>
 </revisionlist>

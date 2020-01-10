@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  8 20:01:19 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to version 19.05.5 (jsc#SLE-8491)
+  * Check %docdir/NEWS for details.
+  * Includes security fixes CVE-2019-19727, CVE-2019-19728,
+    CVE-2019-12838.
+  * Disable i586 builds as this is no longer supported.
+  * Create libnss_slurm package to support user and group resolution
+    thru slurmstepd.
+  * slurm-2.4.4-rpath.patch -> Remove-rpath-from-build.patch
+    Obsoleted:
+    - pam_slurm_adopt-avoid-running-outside-of-the-sshd-PA.patch
+    - pam_slurm_adopt-send_user_msg-don-t-copy-undefined-d.patch
+    - pam_slurm_adopt-use-uid-to-determine-whether-root-is.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 09:14:56 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Deprecate "ControlMachine" only for SLURM version upgrades and

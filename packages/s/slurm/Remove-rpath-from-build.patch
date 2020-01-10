@@ -1,16 +1,29 @@
-diff -aruN slurm-2.4.4.orig/contribs/perlapi/libslurm/perl/Makefile.PL.in slurm-2.4.4/contribs/perlapi/libslurm/perl/Makefile.PL.in
---- slurm-2.4.4.orig/contribs/perlapi/libslurm/perl/Makefile.PL.in	2012-11-02 17:46:12.000000000 +0100
-+++ slurm-2.4.4/contribs/perlapi/libslurm/perl/Makefile.PL.in	2012-11-17 17:42:51.919815606 +0100
-@@ -77,7 +77,7 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Jan 8 20:56:25 2020 +0100
+Subject: Remove rpath from build
+Patch-mainline: never
+Git-commit: f79af97c35f38775a7a90cd8e4b98814729d9a9c
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in   | 4 ++--
+ slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+diff --git a/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in b/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in
+index fcae437..797c943 100644
+--- a/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in
++++ b/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in
+@@ -77,7 +77,7 @@ DESTDIR_BUG
  # AIX has problems with not always having the correct
  # flags so we have to add some :)
  my $os = lc(`uname`);
 -my $other_ld_flags = "-Wl,-rpath,@top_builddir@/src/api/.libs -Wl,-rpath,@prefix@/lib";
-+my $other_ld_flags = "-L@top_builddir@/src/api/.libs -lslurm"; 
++my $other_ld_flags = "-L@top_builddir@/src/api/.libs -lslurm";
  $other_ld_flags = " -brtl -G -bnoentry -bgcbypass:1000 -bexpfull"
  	if $os =~ "aix";
  
-@@ -88,7 +88,7 @@
+@@ -88,7 +88,7 @@ WriteMakefile(
  	($] >= 5.005 ?     ## Add these new keywords supported since 5.005
  	(ABSTRACT_FROM    => 'lib/Slurm.pm', # retrieve abstract from module
  	 AUTHOR           => 'Hongjia Cao <hjcao@nudt.edu.cn>') : ()),
@@ -19,10 +32,11 @@ diff -aruN slurm-2.4.4.orig/contribs/perlapi/libslurm/perl/Makefile.PL.in slurm-
  	DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
  	INC               => "-I. -I@top_srcdir@ -I@top_srcdir@/contribs/perlapi/common -I@top_builddir@",
  	# Un-comment this if you add C files to link with later:
-diff -aruN slurm-2.4.4.orig/contribs/perlapi/libslurmdb/perl/Makefile.PL.in slurm-2.4.4/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
---- slurm-2.4.4.orig/contribs/perlapi/libslurmdb/perl/Makefile.PL.in	2012-11-02 17:46:12.000000000 +0100
-+++ slurm-2.4.4/contribs/perlapi/libslurmdb/perl/Makefile.PL.in	2012-11-17 17:41:27.163818599 +0100
-@@ -76,7 +76,7 @@
+diff --git a/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in b/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
+index 2db028c..83eb4e2 100644
+--- a/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
++++ b/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
+@@ -76,7 +76,7 @@ DESTDIR_BUG
  # AIX has problems with not always having the correct
  # flags so we have to add some :)
  my $os = lc(`uname`);
@@ -31,11 +45,11 @@ diff -aruN slurm-2.4.4.orig/contribs/perlapi/libslurmdb/perl/Makefile.PL.in slur
  $other_ld_flags = " -brtl -G -bnoentry -bgcbypass:1000 -bexpfull"
  	if $os =~ "aix";
  
-@@ -87,7 +87,7 @@
+@@ -87,7 +87,7 @@ WriteMakefile(
      ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
        (ABSTRACT_FROM  => 'Slurmdb.pm', # retrieve abstract from module
         AUTHOR         => 'Don Lipari <lipari@llnl.gov>') : ()),
--    LIBS              => ["-L@top_builddir@/src/db_api/.libs -L@prefix@/lib -lslurmdb"], # e.g., '-lm'
+-    LIBS              => ["-L@top_builddir@/src/api/.libs -L@prefix@/lib -lslurm"], # e.g., '-lm'
 +    LIBS              => ["-L@prefix@/lib -lslurmdb"], # e.g., '-lm'
      DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
      INC               => "-I. -I@top_srcdir@ -I@top_srcdir@/contribs/perlapi/common -I@top_builddir@",
