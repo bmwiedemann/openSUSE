@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-runtime
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mingw64-runtime
-Version:        6.0.0
+Version:        7.0.0
 Release:        0
 Summary:        MinGW-w64 runtime libraries for Win64
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Url:            http://mingw-w64.sf.net/
-
-#DL-URL:	http://downloads.sf.net/mingw-w64/mingw-w64-v%%version.tar.bz2
-# Unpack DL-URL and re-tar the "mingw64-headers" directory
-Source:         mingw-w64-crt-%version.tar.xz
+URL:            http://mingw-w64.sf.net/
+Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%{version}.tar.bz2
 Source100:      %name-rpmlintrc
 #!BuildIgnore: post-build-checks
 BuildRequires:  mingw64-cross-binutils
@@ -42,7 +39,7 @@ Requires:       mingw64-headers <= %version
 # Once this is installed, mingw64-bootstrap (binary bootstrapper) is no
 # longer needed.
 Obsoletes:      mingw64-runtime-bootstrap
-BuildRoot:      %_tmppath/%name-%version-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %_mingw64_package_header
 
@@ -50,7 +47,7 @@ BuildArch:      noarch
 MinGW Win64 cross-compiler runtime, base libraries.
 
 %prep
-%setup -q -n mingw-w64-crt
+%setup -q -n mingw-w64-v%{version}/mingw-w64-crt
 
 %build
 %_mingw64_configure --disable-lib32 --enable-lib64

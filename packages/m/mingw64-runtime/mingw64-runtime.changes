@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 23 14:40:09 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to new upstream release 7.0.0
+  * _FORTIFY_SOURCE support thanks to Christian Franke.
+  * Lots of math fixes from Martin Storsjö.
+  * Many headers updated from Wine by Jacek Caban.
+  * UCRT support by Martin Storsjö.
+
+-------------------------------------------------------------------
 Wed Oct 17 18:50:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 6.0.0
