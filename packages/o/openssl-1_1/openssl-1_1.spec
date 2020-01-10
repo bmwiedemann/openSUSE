@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_1
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,8 +73,6 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 Summary:        Secure Sockets and Transport Layer Security
 Group:          Productivity/Networking/Security
 Recommends:     ca-certificates-mozilla
-# install libopenssl and libopenssl-hmac close together (bsc#1090765)
-Suggests:       libopenssl1_1-hmac = %{version}-%{release}
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl1_1_0
 
@@ -96,6 +94,8 @@ Conflicts:      ssl-devel
 Provides:       ssl-devel
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl-1_1_0-devel
+# Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
+Obsoletes:      libopenssl-1_0_0-devel
 
 %description -n libopenssl-1_1-devel
 This subpackage contains header files for developing applications

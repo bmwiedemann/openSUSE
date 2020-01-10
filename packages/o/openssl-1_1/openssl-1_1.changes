@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 18 16:29:46 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Obsolete libopenssl-1_0_0-devel in order to avoid conflict upon
+  upgrade from SLE-12 (bsc#1158499)
+- remove useless Suggests: libopenssl1_1-hmac, there's no such
+  package anymore
+
+-------------------------------------------------------------------
 Tue Dec 10 16:04:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Security fix: [bsc#1158809, CVE-2019-1551]
