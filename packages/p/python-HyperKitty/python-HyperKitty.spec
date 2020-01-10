@@ -1,7 +1,7 @@
 #
 # spec file for package python-HyperKitty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
+Requires:       python-django-compressor >= 1.3
 Requires:       python-django-extensions >= 1.3.7
 Requires:       python-django-gravatar2 >= 1.0.6
 Requires:       python-django-haystack >= 2.8.0
 Requires:       python-django-mailman3 >= 1.2.0
 Requires:       python-django-q >= 1.0.0
-Requires:       python-django_compressor >= 1.3
 Requires:       python-djangorestframework >= 3.0.0
 Requires:       python-flufl.lock
 Requires:       python-libsass
@@ -49,12 +49,12 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Whoosh >= 2.5.7}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.3.2}
+BuildRequires:  %{python_module django-compressor >= 1.3}
 BuildRequires:  %{python_module django-extensions >= 1.3.7}
 BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
 BuildRequires:  %{python_module django-haystack >= 2.8.0}
 BuildRequires:  %{python_module django-mailman3 >= 1.2.0}
 BuildRequires:  %{python_module django-q >= 1.0.0}
-BuildRequires:  %{python_module django_compressor >= 1.3}
 BuildRequires:  %{python_module djangorestframework >= 3.0.0}
 BuildRequires:  %{python_module flufl.lock}
 BuildRequires:  %{python_module mailmanclient >= 3.1.1}
