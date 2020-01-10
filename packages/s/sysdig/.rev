@@ -347,4 +347,19 @@
   * sysdig-linking.patch</comment>
     <requestid>748647</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ddb8b9642ca030c3fa8fe67896b90a06</srcmd5>
+    <version>0.26.5</version>
+    <time>1578674990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.26.5:
+  * Fixed segfault that happens at startup (#1475, #1528)
+  * Fixed memory leaks from certain thread/socket operations (#1491)
+  * Fixed handling of SEND_SIG_NOINFO in the eBPF driver (#1493)
+  * Fixed a regression in reading certain partial container events from scap files (#1513)
+  * Updated use of Kubernetes APIs to support v1.16 (#1521)
+  * Fixed rare driver deadlock that could occur during a context switch (#1522)
+  * Added more detail to probe loader error message (#1541)</comment>
+    <requestid>762636</requestid>
+  </revision>
 </revisionlist>

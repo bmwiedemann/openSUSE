@@ -1,7 +1,7 @@
 #
 # spec file for package sysdig
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sysdig
-Version:        0.26.4
+Version:        0.26.5
 Release:        0
 Summary:        System-level exploration
 License:        Apache-2.0
@@ -69,6 +69,7 @@ export SYSDIG_CHISEL_DIR=%{_datadir}%{name}/chisels
   -DUSE_BUNDLED_CARES=OFF \
   -DUSE_BUNDLED_PROTOBUF=OFF \
   -DUSE_BUNDLED_GRPC=OFF \
+  -DCREATE_TEST_TARGETS=OFF \
   -DDIR_ETC=%{_sysconfdir} \
   -DBUILD_DRIVER=OFF \
   -Wno-dev
@@ -80,9 +81,7 @@ export INSTALL_MOD_PATH=%{buildroot}
 cd build
 for flavor in %{flavors_to_build} ; do
 	make KERNELDIR="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor" \
-		clean install_driver DESTDIR=%{buildroot}
-#	make KERNELDIR="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor" \
-#		-C ../driver clean
+	 clean install_driver DESTDIR=%{buildroot}
 done
 rm -rf %{buildroot}%{_prefix}/src/*
 %fdupes -s %{buildroot}/%{_datadir}
