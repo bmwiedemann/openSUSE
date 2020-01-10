@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:21:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build vagrant images for aarch64 too
+
+-------------------------------------------------------------------
 Tue Dec 17 16:12:39 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Set the locale to en_US explicitly (.UTF-8 is added by kiwi)
