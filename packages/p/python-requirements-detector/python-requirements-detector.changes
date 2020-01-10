@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 15:06:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Revert back the previous commit
+
+-------------------------------------------------------------------
 Thu Jan  9 18:56:36 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 subpackage due to dependencies dropping python2.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-detector
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 %define         oldpython python
 Name:           python-requirements-detector
 Version:        0.6
@@ -25,7 +24,7 @@ Release:        0
 Summary:        Python tool to find and list requirements of a Python project
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/landscapeio/requirements-detector
+URL:            https://github.com/landscapeio/requirements-detector
 # https://github.com/landscapeio/requirements-detector/issues/25
 Source:         https://github.com/landscapeio/requirements-detector/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
