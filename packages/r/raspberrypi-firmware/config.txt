@@ -31,6 +31,9 @@ avoid_warnings=1
 # upstream provides
 dtoverlay=upstream
 
+# overscan is only needed on old TV sets and if analog gear is in the chain (e.g. DPI)
+disable_overscan=1
+
 [pi1]
 
 # Max ARM freq (default 700 MHz)

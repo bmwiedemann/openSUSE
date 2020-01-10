@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 15:19:58 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Disable overscan by default (bsc#1160473)
+
+-------------------------------------------------------------------
 Thu Dec 19 14:53:30 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0c01dbefba (2019-12-11):
