@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 18 21:49:44 UTC 2019 - Martin Koegler <martin.koegler@chello.at>
+
+- Revert -lssp 
+
+-------------------------------------------------------------------
+Tue Dec 17 09:21:43 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add -lssp to the link flags, otherwise building of some packages
+  (like mingw64-cairo) will be aborted with the error 'undefined
+  reference to `__memcpy_chk`'. This library seems not be added by
+  gcc 9.2 automatically.
+
+-------------------------------------------------------------------
 Mon Nov 25 16:31:30 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - add macro _mingw64_ldflags_bootstrap for bootstrap packages
