@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-maps
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        3.34.2
+Version:        3.34.3
 Release:        0
 Summary:        Maps Application for GNOME
 License:        GPL-2.0-or-later
