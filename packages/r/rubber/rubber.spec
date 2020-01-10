@@ -1,7 +1,7 @@
 #
 # spec file for package rubber
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rubber
-Version:        1.4
+Version:        1.5.1
 Release:        0
 Summary:        An automated system for building LaTeX documents
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
-Url:            https://launchpad.net/rubber
+URL:            https://launchpad.net/rubber
 Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE rubber-makeinfo-unsupported-option.patch badshah400@gmail.com -- older versions of makeinfo does not support the "--info" option, patch it out to fix building on openSUSE <= 13.2.
-Patch0:         rubber-makeinfo-unsupported-option.patch
+BuildRequires:  fdupes
 BuildRequires:  makeinfo
-BuildRequires:  python-devel >= 2.5
+BuildRequires:  python3-devel
 BuildRequires:  texinfo
-Requires:       python >= 2.5
-Requires:       python-base >= 2.5
+Requires:       python3
 Requires:       texlive-latex
-Requires(post):  info
+Requires(post): info
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%py_requires
 
 %description
 Rubber is a building system for LaTeX documents. It is based on a routine that
@@ -49,34 +45,33 @@ Metapost compilation).
 
 %prep
 %setup -q
-%if 0%{?suse_version} <= 1320
-%patch0 -p1
-%endif
 
 %build
-python setup.py build
+python3 setup.py build
 
 %install
-python setup.py install --root=%{buildroot} --mandir=%{_mandir} --infodir=%{_infodir} --docdir=%{_docdir}/%{name}
+python3 setup.py install --root=%{buildroot} --mandir=%{_mandir} --infodir=%{_infodir} --docdir=%{_docdir}/%{name}
 
-%post    
+%fdupes %{buildroot}%{python3_sitelib}/rubber/
+
+%post
 install-info %{_infodir}/rubber.info.gz %{_infodir}/dir
 
-%postun    
+%postun
 install-info --delete %{_infodir}/rubber.info.gz %{_infodir}/dir
 
 %files
-%defattr(-,root,root)
-%doc COPYING NEWS README
+%doc NEWS README
+%license COPYING
 %{_bindir}/rubber
 %{_bindir}/rubber-pipe
 %{_bindir}/rubber-info
-%{python_sitelib}/rubber/
-%{python_sitelib}/rubber-%{version}-py%{py_ver}.egg-info
-%{_mandir}/man1/rubber-info.1*
-%{_mandir}/man1/rubber-pipe.1*
-%{_mandir}/man1/rubber.1*
-%{_infodir}/rubber.info.gz
+%{python3_sitelib}/rubber/
+%{python3_sitelib}/rubber-%{version}-py%{py3_ver}.egg-info
+%{_mandir}/man1/rubber-info.1%{?ext_man}
+%{_mandir}/man1/rubber-pipe.1%{?ext_man}
+%{_mandir}/man1/rubber.1%{?ext_man}
+%{_infodir}/rubber.info%{?ext_info}
 %{_mandir}/fr/man1/*.gz
 %{_docdir}/%{name}/
 
