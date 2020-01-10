@@ -1,4 +1,439 @@
 -------------------------------------------------------------------
+Thu Jan 02 12:52:09 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.3.6:
+  * plugins/coreboot: Add missing fu_hash dependency
+  * trivial: synaptics-cxaudio: Add Google type C <-> 3.5mm adapter
+  * fu-engine: don't expose bootloader version errors to users
+  * trivial: dell-dock: drop unused quirk keyx
+  * trivial: rename synapticsmst to synaptics-mst
+  * trivial: actually set vendor ID for synaptics
+  * fu-remote-list: Drop fallback path behavior
+  * libfwupdplugin: Make sure systemd created environment variables exist
+  * trivial: fu-remotes-list: drop usage of `FU_SELF_TEST_REMOTES_DIR`
+  * trivial: synaptics-rmi: hardcode Vendor string
+  * trivial: Set vendor ID for Dell WD19 to USB:0x413C (Fixes: #1653)
+  * trivial: Document the use of vendor-id in each plugin
+  * superio: Use the baseboard vendor as the vendor ID
+  * uefi: Use the BIOS vendor as the vendor ID
+  * coreboot: Use the BIOS vendor as the vendor ID
+  * flashrom: Use the BIOS vendor as the vendor ID
+  * dell: Hardcode a plausible vendor ID
+  * emmc: Set the correct vendor ID prefix
+  * fu-util-common: correct the default prompt for reboot/shutdown (Fixes: #1617)
+  * Split out the remote loading from FuConfig
+  * vli-usbhub: Fix the quirk for the legacy VIA 813 chip
+  * Clarify error messages when no upgrades available
+  * trivial: Don't handle a vendor-id requirement error that cannot happen
+  * Only check the vendor ID if the device has one set
+  * fu-install-task: Enforce that device protocol matches metadata
+  * Add a new plugin that can parse the TPM event log
+  * Allow other plugins to contribute report metadata
+  * trivial: dell: hardcode the physical device ID for tpm to match the tpm plugin
+  * Add a new plugin that exposes the system TPM device firmware version
+  * Add fu_udev_device_set_flags()
+  * trivial: Render large values of VersionRaw in a more portable way
+  * trivial: wacom-raw: mark all Moffett SKUs as self recovery
+  * Throw exit status 0 (instead of 2) if there is no firmware to be updated
+  * Add a `dell-bios` version format
+  * Add support for multiple LVFS::VersionFormat tags
+  * Do not do semver conversion in fu_common_vercmp()
+  * trivial: Deprecate fu_common_version_parse()
+  * trivial: Support 'plain' in fu_common_version_from_uintXX()
+  * Add the sysfs 'description' as the one-line device summary
+  * trivial: Also print the parent keys when using FU_UDEV_DEVICE_DEBUG
+  * trivial: Add fu_common_version_from_uint64()
+  * trivial: Convert the VersionRaw value to a uint64_t for future use
+  * Allow building on Windows with MinGW
+  * synaptics-prometheus: Allow incremental version major and minor number
+  * Replace 'scheduing' with 'scheduling'
+  * Export the raw device version to the client --verbose output
+  * trivial: Only dlopen the test plugin once
+  * Export the device protocol to the client --verbose output
+  * trivial: installed-tests: try to display journal for failed tests
+  * trivial: ci: debian: enable verbose daemon logging for failure analysis
+  * trivial: installed-tests: explicitly choose webcam device ID
+  * trivial: debian: remove obj-* built files to fix back to back builds
+  * trivial: ci: don't let bad symlinks cause debian build failures
+  * trivial: debian: correct a dependency for libfwupdplugin-dev
+- Changes from version 1.3.5:
+  * plugins: Fix potential use of NULL pointer in fu_dell_dock_mst_write_register
+  * Fix shifting integer by more than 31 in fu_util_filter_device
+  * synaptics-prometheus: Reload the device version after IOTA update
+  * synaptics-prometheus: Reload the device version after update
+  * trivial: wacom: remove coretronic config from Moffett scope
+  * trivial: Fix a NULL/FALSE confusion
+  * trivial: Add a BR for Fedora
+  * trivial: Fix coreboot commit to fix CI
+  * trivial: libfwupdplugin: clarify name of self test
+  * plugins/coreboot: Improve version detection
+  * plugins/coreboot: Get rid of FU_HWIDS_KEY_BIOS_VENDOR in coldplug
+  * trivial: Move progressbar out of libfwupdplugin
+  * trivial: Unexport fu_test_get_filename()
+  * trivial: Unexport fu_test_compare_lines()
+  * trivial: Unexport fu_test_loop_run_with_timeout()
+  * trivial: Do not include non-introspectable functions in the GIR
+  * trivial: Fix up a few introspection problems in FwupdPlugin
+  * trivial: Include the Fwupd GIR in the FwupdPLugin GIR
+  * trivial: Never add duplicate symbols to the map file
+  * trivial: Properly namespace the defines in the exported header
+  * Install development files for libfwupdplugin
+  * Convert libfwupdprivate to a shared library libfwupdplugin
+  * trivial: Allow building GCab from a subpackage
+  * trivial: Fix under-include to define O_RDONLY
+  * trivial: Allow compiling without <glib-unix.h>
+  * trivial: Do not use FuProgressbar in dfu-tool
+  * synaptics-prometheus: Manually set the bootloader mode when attaching
+  * trivial: Split out a new helper funtion
+  * trivial: Add some optional debugging when hotplugging devices
+  * trivial: Include the correct header for S_IRWXU
+  * Always use the more portable 3-arg form for open()
+  * trivial: Untangle FuHistory from FuPlugin
+  * trivial: Allow compiling without <fnmatch.h>
+  * Revert "synaptics-rmi: Use the build ID as the version number to match the vendor tool"
+  * Add missing documentation from the plugin interface
+  * trivial: fu-udev-device: remove a prototype that was missed in b3d4d2ff
+  * trivial: add missing gtk-doc fields for many files in src/
+  * trivial: fix compile failure without gudev
+  * synaptics-prometheus: Mirror the _IS_BOOTLOADER from device to config
+  * Allow setting the device flags using GObject properties
+  * vli_usbhub: Set the composite parent at construction time
+  * synaptics-prometheus: Set the composite parent at construction time
+  * Allow plugins to set the parent during construction
+  * vli-usbhub: Whitelist the PD and I²C devices
+  * Set the protocol per-device not per-plugin
+  * synaptics-rmi: Use the build ID as the version number to match the vendor tool
+  * Create a REV_00 instance ID as this may be what the vendor needs to target
+  * fu-util-common: Invert default behavior for reboot and shutdown prompts
+  * trivial: fu-plugin-vfuncs: Add GTK documentation for all vfuncs
+  * Make gudev a compile-time option
+  * trivial: Set the offline trigger using an environment variable
+  * trivial: ci: pull lintian from unstable for now.
+  * trivial: stop including fu-hash.h as part of fu-plugin-vfuncs.h
+  * Fix shebangs on scripts
+  * trivial: Use prefixes for DATADIR in config.h for portability
+  * Allow compiling GUsb as a subproject
+  * trivial: fu-udev-device: add a to_string func for debugging
+  * trivial: Don't assume that plugins end in .so
+  * trivial: optionrom: remove unneeded includes
+  * trivial: debian: ci: ignore library-not-linked-against-libc for more
+  * trivial: remove version-format.md
+  * trivial: Allow compiling without pwrite()
+  * trivial: Allow compiling without <errno.h>
+  * trivial: Allow compiling without realpath()
+  * trivial: Allow compiling without HAVE_LC_MESSAGES
+  * trivial: Allow compiling without getuid()
+  * trivial: Allow compiling without <sys/ioctl.h>
+  * trivial: Allow compiling without <poll.h>
+  * trivial: Allow compiling without <sys/utsname.h>
+  * Ensure the _get_type() gets the same ABI version as the constructor
+  * Use the correct unlocker when using GRWLock
+  * trivial: plugins: only build coreboot when option set
+  * fwupdtool: don't show a warning when calling `get-plugins`
+- Changes from version 1.3.4:
+  * trivial: Don't force specific linker flash when cross building
+  * dell: Use the more portable g_usleep()
+  * trivial: Fix unused header includes
+  * vli-usbhub: Make erasing less verbose and writing more obvious
+  * vli-usbhub: Correctly print the 24-bit USB3 offset
+  * vli-usbhub: Print the PD firmware offset and size for debugging
+  * vli-usbhub: Open the parent device before attempting to read or write from the child
+  * vli-usbhub: Set the install duration for the PD device
+  * trivial: Fix a failed error prefix string
+  * trivial: wacom-raw: Remove embedded from device name
+  * wacom-raw: Correct HWID support
+  * uefi: Just use a uint16_t for BootNext processing
+  * uefi: Use a simpler entries set algorithm
+  * vli-usbhub: Add support for writing using I2C passthru
+  * vli-usbhub: Support updating PD devices that share the hub flash
+  * vli-usbhub: Support the PD file format
+  * trivial: uefi: correct a NULL pointer dereference
+  * uefi: fall back to `ID_LIKE` when the path for `ID` doesn't exist (Fixes:# 1566)
+  * uefi: Make generate_binary.sh more robust
+  * Tokenize the Intel Hex file before parsing
+  * trivial: Detect the USB version automatically
+  * trivial: fu-util/fu-tool: explicitly block unsupported flags
+  * Add support for matching <firmware> requirements on device parents
+  * Skip cleanup after device is done updating if `will-disappear` is set (Fixes: #1529)
+  * efi: use a wildcard section copy for final EFI generation
+  * modem-manager: explicitly use plain version format
+  * modem-manager: add quirks for the Foxconn T77W968 modules
+  * Allows confined snaps to activate fwupd via D-Bus
+  * trivial: thunderbolt: clarify error message
+  * Add a new property `Interactive` to the daemon
+  * trivial: contrib/get-version.py: require git less hard
+  * superio: Never read from port offset zero
+  * superio: Fix regression when coldplugging superio devices
+  * trivial: Fix Fedora CI build
+  * trivial: Fix the autobuilt spec file with the new tarball version
+  * Dynamically determine release version
+  * trivial: synapticmst: allow missing `/proc/modules`
+  * synapticsmst: filter invalid chip IDs
+  * trivial: Provide some defines for common image names
+  * Allow aborting early when using fu_archive_iterate()
+  * Add fu_firmware_image_set_version() for future use
+  * modem-manager: increase re-enumeration delay to 20000ms
+  * modem-manager: add counterpart GUID for the DW5821e/eSIM
+  * Add versions formats for the Microsoft Surface devices
+  * usb: make loading vendor/product/serial strings non-fatal
+  * trivial: Fix the protocol ID for VLI usbhub devices
+  * trivial: wacom-raw: add more device IDs for Dell devices
+  * trivial: contrib: don't require TSS for debian archs without EFI
+  * fu-udev-device: Adjust bounds checking to be safer
+  * fu-udev-device: Don't assume all devices have `device_file`
+  * synaptics-rmi: correct an error cleaning up on probe
+  * trivial: fu-udev-device: add some safety checks for fd
+  * udev-device: fix offset of vendor id of hidraw devices
+  * flashrom: switch to upstream source
+  * trivial: fu-plugin: only show an error once  "failed to open plugin" was being prefixed twice
+  * trivial: debian: only use mingw-w64-tools in archs with UEFI plugin
+  * fastboot: Fix a regression when updating modem firmware
+  * trivial: conflict with old unifying plugin
+  * Rename unifying plugin to logitech-hidpp (Fixes: #1329)
+  * Add a new contrib script for installing a Dell BIOS from an EXE file
+  * trivial: add-capsule-header: rename to make it easier to import
+  * trivial: simple_client: make it easier to reuse code
+  * trivial: firmware-packager: make it easier to reuse code
+  * trivial: add-capsule-header: make it actually work
+  * trivial: fix some gtkdoc sections
+  * Bump the required gudev version
+  * trivial: Fix a compile error with older versions of gudev
+  * trivial: wacom: add vid/pid for panels in Moffett
+  * trivial: post release version bump
+- Changes from version 1.3.3
+  * unifying: notify users to replug when using dfu control (Fixes: #1383)
+  * trivial: 8bitdo: set a transient failure while waiting for user action
+  * libfwupd: Add a new error type for user action needed
+  * trivial: 8bitdo: show the same message for SN30pro and SN30pro+
+  * trivial: Fix up some typos from codespell
+  * trivial: Ensure config.h is included in all source files
+  * trivial: Fix up some NULL/FALSE confusion
+  * trivial: Add all the _LAST enums that shouldn't be checked for ABI
+  * trivial: Fix a typo that means that UEFI results were never cleared
+  * Always report the update-error correctly for multiple updates
+  * trivial: Fix fwupdmgr get-history if the firmware was not installed from the LVFS
+  * trivial: Do not emit a warning if a child has no version number
+  * Move the file descriptor lifecycle into FuUdevDevice
+  * trivial: Fix some GtkDoc annotations
+  * ebitdo: Modernize the plugin to use FuFirmware
+  * nitrokey: Use fu_common_dump_raw() when debugging
+  * thunderbolt: Create a unique GUID including Thunderbolt controller path
+  * Use device safety flags to show prompts before installing updates
+  * trivial: Use the new possible_plugin support for USB devices too
+  * jabra: Move the Jabra-specific detach out into its own plugin
+  * Ensure the device is open when doing the subclassed prepare() and cleanup()
+  * vli-usbhub: Add support for updating V2 devices
+  * Allow verifying the device image itself from fwupdtool
+  * Use XMLb to query quirks
+  * trivial: ci: disable pulling libxmlb from unstable
+  * synaptics-prometheus: Don't add a config-subdevice in bootloader mode
+  * dfu: Use the VID/PID to identify devices without download capability in runtime
+  * trivial: debian: remove some unneeded lintian
+  * trivial: debian: bump compat version
+  * ebitdo: Add SN30Pro+ to recognized quirk list (Fixes: #1503)
+  * dfu: Add several quirks for Realtek camera hardware
+  * dfu: Always mark devices as UPDATABLE
+  * uefi: use `genpeimg` to mark ASLR and DP/NX on EFI binary
+  * trivial: solokey: correct a typo
+  * trivial: fu-util: fix typo
+  * uefi: rework ESP path detection and lifecycle
+  * trivial: uefi: show more metadata in to_string method
+  * trivial: fu-device: add new method to remove metadata
+  * Add a plugin to update VIA USB hub hardware
+  * trivial: Add fu_common_read_uint8_safe()
+  * trivial: Fix two typos in fu_common_read_uint16_safe()
+  * solokey: Allow parsing firmware with fwupdtool
+  * Allow fwupdtool to dump details of common firmware formats
+  * trivial: Do not do system coldplug when using FU_ENGINE_LOAD_FLAG_NO_ENUMERATE
+  * trivial: fu-self-test: set polling self tests to slow
+  * trivial: fu-tool: Allow `detach`/`attach` to prompt for device
+  * Strip trailing whitespace from USB descriptors
+  * trivial: Add fu_common_read_uint16_safe()
+  * trivial: Add version to the FuFirmware->to_string() output
+  * Add fu_firmware_set_version()
+  * Add a systemd preset file for `fwupd-refresh.service`
+  * trivial: dell: work around a memory leak caught by address sanitizer
+  * ebitdo: if the device has the will disappear flag, don't wait for ack (Fixes: #994)
+  * Add a new plugin for working with eMMC devices (Fixes: #1455)
+  * fu-engine: Check multiple plugins if quirks match
+  * trivial: don't try to enable LVFS from systemd
+  * trivial: coreboot: fix a clang compiler error
+  * fu-util: Add user friendly strings for all device flags
+  * Add new device flags indicating update resilience
+  * plugins: Add coreboot plugin
+  * fu-plugin: Add fu_plugin_get_hwid_replace_value
+  * trivial: Increase verbosity when actually updating devices
+  * trivial: Allow plugins to use WAIT_FOR_REPLUG in prepare and cleanup
+  * Add FuDevice->prepare() and FuDevice->cleanup() vfuncs for future use
+  * dfu: Implement FuDevice->to_string()
+  * trivial: colorhug: fix a crash that occurs when flashing sometimes
+  * trivial: fu-util: break out of automatic reports if one is not automatic
+  * thunderbolt: some more clarifications when using ICL
+  * trivial: fwupd-refresh: activate motd if using systemd v243 or later
+  * trivial: fwupd-refresh: allow exit code 2 for success
+  * trivial: synaptics-cxaudio: Add Google Pixel buds
+  * trivial: arch: ci: Wait some time for tpm_server to start up
+  * Allow a custom FuFirmwareImage->write() in superclassed objects
+  * dfu: Remove two completely unused helpers
+  * dfu: Make DfuFirmware derive from FuFirmware
+  * dfu: Make DfuImage derive from FuFirmwareImage
+  * dfu: Remove private headers that do not need to exist
+  * Fix device flag filtering
+  * trivial: fu-engine: Don't compare device and content checksums
+  * fu-engine: Read all releases and convert versions when comparing
+  * Add new flags `can-verify` and `can-verify-image`
+  * trivial: make verify and verify-update safer
+  * trivial: test: add checksums for "stock" 1.2.2
+  * trivial: fu-udev-device: use parent udev device to indicate `internal`
+  * trivial: fix TPM2 simulator tests for arch
+  * trivial: uefi: don't add PCRs with all 0's
+  * trivial: Fix a recent regression causing a double-free
+  * synaptics-cxaudio: Support the ThinkPad USB-C Dock Gen2
+  * trivial: fu-util: add some extra checks around automatic reports
+  * trivial: fu-tool: typo
+  * fu-systemd: Use correct method for stopping units.
+  * trivial: fu-udev-device: Use ID_PCI_CLASS_FROM_DATABASE if name not set
+  * trivial: fu-plugin: quiet down debug output for optionrom plugin
+  * 8bitdo: use will-disappear flag for sf30/sn30 controllers (Fixes: #783)
+  * trivial: ebitdo: don't dump out firmware header unless plugin verbose
+  * trivial: ebitdo: don't use local errors when writing firmware
+  * Add a new device flag for indicating device won't come back
+  * wacom-emr: Fix a regression for EMR devices
+  * Add a generic DFU firmware object for plugins to use
+  * dfu: Use FwupdInstallFlags rather than a DFU-specific version
+  * dfu: Remove functionality for modifying DfuSe files
+  * dfu: Remove functionality you can do now with fwupdtool
+  * dfu: Remove the merge command as it's unused and broken
+  * trivial: Add fu_firmware_parse_file() helper for future use
+  * trivial: Remove the fuzzing details for DfuPatch
+  * trivial: Add klass->to_string for superclassed FuFirmwareImage objects
+  * dfu: Remove DfuPatch as no vendor actually uses this
+  * dfu: Don't wrap provided VID-PID functions
+  * dfu: Use the standard FuDevice custom flags functionality
+  * dfu: Use klass_device->write_firmware() directly
+  * dfu: Use the generic fu_plugin_usb_device_added() function
+  * dfu: Use daemon flags to ignore devices rather than a special flag
+  * dfu: Set the device state directly to avoid proxying signals
+  * dfu: Use the built-in detach() and attach() vfuncs
+  * Read firmware back from the device as a FuFirmware
+  * dfu: Remove a pointless function
+  * dfu: Remove support for the Metadata Store Proposal
+  * dfu: Remove XTEA support
+  * dfu: Remove the SREC and IHEX parsing out of the DFU plugin
+  * ebitdo: Use klass_device->write_firmware like other plugins
+  * trivial: Remove G_BEGIN_DECLS from all private headers
+  * Remove FU_PLUGIN_RULE_REQUIRES_QUIRK as all the plugins now use it
+  * Set all FuUdevDevice plugins to use FU_QUIRKS_PLUGIN
+  * thunderbolt: recognize new 'generation' sysfs attribute
+  * Rename and modernize the udev plugin
+  * synaptics-rmi: Also add the product ID as a GUID without the minor version
+  * synaptics-rmi: Correctly set the payload length rather than hardcoding it
+  * synaptics-rmi: Write the core config correctly
+  * synaptics-rmi: Decode BL7 status failures as actual errors
+  * synaptics-rmi: Add some trivial debugging to help debug a write problem
+  * trivial: uefi: Make efivarvs errors clearer (Fixes: 1330)
+  * trivial: uefi: don't prefix efivar errors
+  * trivial: Remove some now-unused vfuncs
+  * altos: Modernize the plugin to simplify it
+  * Create the custom plugin GType in common code
+  * Reduce more boilerplate in plugins
+  * synaptics-rmi: Check the correct register when querying bootloader mode
+  * trivial: fu-engine: fix never reporting remotes
+  * trivial: fu-util: don't show warnings for no reports to upload
+  * trivial: debian: remove more conffiles from transitions (Closes: #932617)
+  * trivial: debian/control*: Update for fwupdate transition
+  * trivial: Fix a tiny memory leak when starting the daemon
+  * modem-manager: Fix a tiny memory leak when starting the daemon
+  * synaptics-rmi: Copy the behavior of rmi4utils for BL7 detach
+  * synaptics-rmi: Simplify fu_synaptics_rmi_device_read()
+  * synaptics-rmi: Set the version after ->setup has run
+  * synaptics-rmi: Use the correct mask when getting the bootloader mode on BL7
+  * syanptics-rmi: The build_id is 3 bytes long, not 2
+  * synaptics-rmi: Read the config partition the same as rmi4utils
+  * Provide a default implementation of common FuDevice actions
+  * thunderbolt-power: avoid checking for bolt support
+  * synaptics-rmi: Add some debugging for BL7 devices
+  * Fix usage of incorrect type for return value
+  * synaptics-rmi: Do as little as possible in device setup
+  * synaptics-rmi: Speed up reading the PDT from 900ms to 30ms
+  * fu-util: add support for a reinstall command
+  * trivial: fu-util/fu-tool: update re-install help text to reinstall
+  * trivial: fu-util: remove double printed message about succesful firmware update
+  * trivial: fu-util: show no updatable devices error for update command
+  * synaptics-rmi: Ignore the ATTN reports from the hardware when reading DATA
+  * synaptics-rmi: Move the fuzzing instructions to the toplevel README
+  * Fuzz the SREC and IHEX file parsers once more
+  * Use parallel fuzzing for the SMBIOS checks too
+  * synaptics-rmi: Fix the packing of the partition table
+  * Add a plugin to update Synaptics RMI4 devices
+  * trivial: Add a parallel fuzzing script
+  * trivial: fu-util: output newline after prompt.
+  * trivial: fix %u output in report upload
+  * Add a --no-domain logging option
+  * trivial: Fix compiler warning for impossible-to-hit condition
+  * Add support for automatically uploading reports
+  * trivial: motd: disable updating motd for now
+  * trivial: fwupd-refresh: fix a clash with fwupd.service (Closes: #941360)
+  * trivial: Fix Fedora CI
+  * trivial: fu-udev-device: fix some assertions
+  * Search up the tree for a vendor name rather than (ab)using the HID_NAME
+  * Add some success messages when CLI tasks have completed
+  * trivial: Put the boolean prompt on the same line as the text
+  * Never show LicenseRef-proprietary to the end user
+  * trivial: snap: correct install hook root directory
+  * Export the instructions for detaching the device
+  * uefi: detect unmounted ESP partitions (Fixes: #1405)
+  * uefi: stop recording efibootmgr output after flash
+  * trivial: post release version bump
+- Changes from version 1.3.2:
+  * Add support for '<name_variant_suffix>' to disambiguate some firmware
+  * thelio-io: Add a plugin to detach the Thelio IO board
+  * trivial: uefi, dell: skip self tests with TPM if non-root (Fixes: #1396)
+  * trivial: dell: quiet the TSS output
+  * trivial: uefi: allow forcing to TPM2 via environment variable
+  * Do not ask the user to upload a report if ReportURI is not set
+  * Do not enumerate physical devices when running the internal self tests
+  * trivial: libfwupd: skip tests if machine-id is empty too
+  * Add a new plugin to update Conexant audio devices
+  * Export the salted machine ID as a daemon property
+  * Fall back to /var/lib/dbus/machine-id when required
+  * trivial: add stalebot (Fixes: #1393)
+  * trivial: dell-dock: correct another write_size error
+  * Align the key values to the text *width* not the number of bytes
+  * trivial: Move dbus directory location for snap too
+  * trivial: Fix some NULL/FALSE confusion
+  * synaptics-prometheus: Fix tiny memory leak when using FuSynapromConfig
+  * trivial: Fix tiny memory leak when using FuSrecFirmware
+  * snap: switch to core18
+  * trivial: Return the correct property when getting the host product
+  * trivial: fu-util-common: fix description wrapping (Fixes: #1378)
+  * fu-util/fu-tool: Map out changelogs from remotes
+  * fu-util/fu-tool: Better display historical information
+  * fu-history: Update device_modified in sql database during updates
+  * unifying: Use the instance ID to check for supported devices
+  * unifying: Ensure HID++ v2.0 peripheral devices get scanned by the plugin
+  * trivial: Add some more defines to the srec parser
+  * trivial: fix wget command in fu-tool.c
+  * Allow parsing a raw SREC file
+  * trivial: wacom: Add support for second vendor ID
+  * uefi, dell-esrt: Show firmware version when capsule updates unavailable
+  * Add some more debugging to the SREC and IHEX parsers
+  * Print the instance IDs if the GUIDs are unconverted
+  * Add fu_common_bytes_compare_raw() for future usage
+  * Call the set_quirk_kv() vfunc for the superclassed object
+  * uefi: make the TPM optional for runtime again (Fixes: #1362)
+  * trivial: uefi: Make the TCTI output less verbose
+  * Support <issues> in AppStream metadata
+  * Include all GUIDs when uploading a report
+  * Do not crash when starting tpm2-abrmd
+  * trivial: Update DBus conf path for example Fedora package
+  * Move D-Bus conf file to datadir/dbus-1/system.d
+  * trivial: Add fu_io_channel_write_byte_array() for future use
+  * trivial: post release version bump
+- Package new sub-packages typelib-1_0-FwupdPlugin-1_0 and
+  libfwupdplugin1.
+
+-------------------------------------------------------------------
 Mon Oct 28 10:40:45 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - Fix file list

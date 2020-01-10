@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %global efidir sles
 %endif
 Name:           fwupd
-Version:        1.3.1
+Version:        1.3.6
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -120,11 +120,28 @@ Requires:       %{name} >= %{version}
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
+%package -n libfwupdplugin1
+Summary:        Allow session software to update device firmware
+Group:          System/Libraries
+Requires:       %{name} >= %{version}
+
+%description -n libfwupdplugin1
+fwupd is a daemon to allows session software to update device firmware on
+the local machine.
+
 %package -n typelib-1_0-Fwupd-2_0
 Summary:        GObject-introspection bindings for libfwupd
 Group:          System/Libraries
 
 %description -n typelib-1_0-Fwupd-2_0
+fwupd is a daemon to allows session software to update device firmware on
+the local machine.
+
+%package -n typelib-1_0-FwupdPlugin-1_0
+Summary:        GObject-introspection bindings for libfwupd
+Group:          System/Libraries
+
+%description -n typelib-1_0-FwupdPlugin-1_0
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
@@ -197,6 +214,10 @@ ln -s %{_libexecdir}/fwupd/efi/$FWUPD_EFI %{buildroot}/%{_libexecdir}/fwupd/efi/
 
 %post   -n libfwupd2 -p /sbin/ldconfig
 %postun -n libfwupd2 -p /sbin/ldconfig
+
+%post   -n libfwupdplugin1 -p /sbin/ldconfig
+%postun -n libfwupdplugin1 -p /sbin/ldconfig
+
 %preun
 %service_del_preun %{name}.service fwupd-offline-update.service
 
@@ -239,7 +260,7 @@ fi
 %{_bindir}/fwupdmgr
 %{_sbindir}/rc%{name}
 %{_sbindir}/rcfwupd-offline-update
-%{_sysconfdir}/dbus-1/system.d/org.freedesktop.fwupd.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.fwupd.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.fwupd.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.fwupd.service
 %dir %{_datadir}/%{name}
@@ -252,7 +273,10 @@ fi
 %dir %{_datadir}/%{name}/remotes.d/dell-esrt
 %{_datadir}/%{name}/remotes.d/dell-esrt/metadata.xml
 %endif
-%{_datadir}/%{name}/firmware-packager
+%{_datadir}/%{name}/add_capsule_header.py
+%{_datadir}/%{name}/firmware_packager.py
+%{_datadir}/%{name}/install_dell_bios_exe.py
+%{_datadir}/%{name}/simple_client.py
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/quirks.d/*.quirk
@@ -280,6 +304,7 @@ fi
 %{_datadir}/bash-completion/completions/fwupdagent
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
+%{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
 
 %files -n dfu-tool
 %{_bindir}/dfu-tool
@@ -288,8 +313,14 @@ fi
 %files -n libfwupd2
 %{_libdir}/libfwupd.so.*
 
+%files -n libfwupdplugin1
+%{_libdir}/libfwupdplugin.so.*
+
 %files -n typelib-1_0-Fwupd-2_0
 %{_libdir}/girepository-1.0/Fwupd-2.0.typelib
+
+%files -n typelib-1_0-FwupdPlugin-1_0
+%{_libdir}/girepository-1.0/FwupdPlugin-1.0.typelib
 
 %files lang -f %{name}.lang
 %if %{with efi_fw_update}
@@ -297,12 +328,17 @@ fi
 %endif
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/libfwupd/
+%doc %{_datadir}/gtk-doc/html/fwupd/
 %{_datadir}/gir-1.0/Fwupd-2.0.gir
+%{_datadir}/gir-1.0/FwupdPlugin-1.0.gir
 %{_datadir}/vala/vapi/fwupd.deps
 %{_datadir}/vala/vapi/fwupd.vapi
+%{_datadir}/vala/vapi/fwupdplugin.deps
+%{_datadir}/vala/vapi/fwupdplugin.vapi
 %{_includedir}/fwupd-1/
 %{_libdir}/pkgconfig/fwupd.pc
+%{_libdir}/pkgconfig/fwupdplugin.pc
 %{_libdir}/libfwupd.so
+%{_libdir}/libfwupdplugin.so
 
 %changelog

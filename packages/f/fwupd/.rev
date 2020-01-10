@@ -214,4 +214,13 @@
     <comment></comment>
     <requestid>743490</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3aa7e7a30d0799a36b07571ffdf1d46a</srcmd5>
+    <version>1.3.6</version>
+    <time>1578677983</time>
+    <user>dimstar_suse</user>
+    <comment>Versionbump.
+Please do not fwd without building it, and checking new rpmlint warnings we may or may not want to do something about. (forwarded request 761269 from iznogood)</comment>
+    <requestid>761359</requestid>
+  </revision>
 </revisionlist>
