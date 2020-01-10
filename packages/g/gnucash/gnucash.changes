@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 10 10:39:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.8b:
+  + New Scheme Functions:
+    - gnc:html-markup-ol: creates an HTML ordered list.
+    - gnc:multiline-to-html-textt: creates html-text with
+      elements.
+    - gnc:make-html-table-cell/min-width: Create a table-cell with
+      min-width style attribute gnc:collector+ and gnc:collector
+  + API Deprecations:
+    - gnc:html-table-append-ruler/at!
+    - gnc:html-table-remove-last-row!
+  + Updated translations.
+- Add gnucash-libm.patch: fix build by linking against libm.
+- Unconditionally BuildRequire pkgconfig(gwengui-gtk3): all
+  supported distros ship it.
+- No longer recommend gnucash-lang: the lang package has relevant
+  supplements which pulls it in whenever needed.
+
+-------------------------------------------------------------------
 Fri Sep 20 19:19:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Export C(XX)FLAGS="-Wno-error", fix build in GNOME:Next.

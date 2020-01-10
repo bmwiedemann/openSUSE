@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __builder ninja
 
 Name:           gnucash
-Version:        3.7
+Version:        3.8b
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -30,6 +30,8 @@ Source1:        %{name}-rpmlintrc
 ## Cpan-warning patch must always be applied.
 # PATCH-FIX-UPSTREAM gnucash-cpan-warning.patch -- Add a warning about the danger of using gnc-fq-update to update the perl modules used by GnuCash.
 Patch0:         gnucash-cpan-warning.patch
+# PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
+Patch1:         gnucash-libm.patch
 
 BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
@@ -60,9 +62,6 @@ BuildRequires:  pkgconfig(gnome-keyring-1) >= 0.6
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(gwengui-gtk3)
-%endif
 BuildRequires:  pkgconfig(gwenhywfar) >= 3.99.20
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
@@ -74,13 +73,13 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.0
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 Recommends:     %{name}-docs
-Recommends:     %{name}-lang
 # For translation of currency names
 Recommends:     iso-codes
 Recommends:     python3-gnucash = %{version}
 # Optional perl modules for online price retrieval
 Recommends:     perl(Date::Manip)
 Recommends:     perl(Finance::Quote)
+BuildRequires:  pkgconfig(gwengui-gtk3)
 
 %description
 GnuCash is a personal finance manager. A check book-like register GUI
@@ -118,7 +117,7 @@ a personal finance manager.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-3.8
 
 %build
 export CFLAGS="-Wno-error"
