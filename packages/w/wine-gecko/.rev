@@ -252,4 +252,12 @@
     <comment>- update to 2.47 (Firefox 47 based) for Wine 1.9.13</comment>
     <requestid>404502</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>26003ceadb11055838993d094791a88a</srcmd5>
+    <version>2.47.1</version>
+    <time>1578674967</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.47.1 - wine5 actually needs this version at least (See https://progress.opensuse.org/issues/61704)</comment>
+    <requestid>762637</requestid>
+  </revision>
 </revisionlist>

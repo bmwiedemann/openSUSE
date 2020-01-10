@@ -1,7 +1,7 @@
 #
 # spec file for package wine-gecko
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           wine-gecko
 Summary:        The Wine specific Gecko HTML rendering engine
 License:        MPL-1.1+
 Group:          Development/Tools/Other
-Version:        2.47
+Version:        2.47.1
 Release:        0
-Source0:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine_gecko-%{version}-x86.msi
-Source1:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine_gecko-%{version}-x86_64.msi
+Source0:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86.msi
+Source1:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86_64.msi
 BuildArch:      noarch
 # Source of this CAB is at:
 # http://wine.git.sourceforge.net/git/gitweb.cgi?p=wine/wine-gecko;a=summary
