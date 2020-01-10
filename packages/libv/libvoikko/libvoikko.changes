@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  4 18:40:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop explicit requires for full python3 package, python3-base
+  pulled in by python3-xml is sufficient.
+- Require minimum version for pkgconfig(hfstospell), >= 0.5
+
+-------------------------------------------------------------------
 Thu Oct 31 11:32:09 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Update to version 4.3

@@ -30,9 +30,8 @@ Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(hfstospell)
+BuildRequires:  pkgconfig(hfstospell) >= 0.5
 
 %description
 Libvoikko is a library of free natural language processing tools. It
