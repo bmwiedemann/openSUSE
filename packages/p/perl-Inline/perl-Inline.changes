@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 10 03:07:43 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.86
+   see /usr/share/doc/packages/perl-Inline/Changes
+
+  0.86 Wed Jan  8 21:19:58 PST 2020
+   - Fix various test problems
+  
+  0.85 Mon Jan  6 07:33:52 PST 2020
+   - Fix a taint issue @mohawk2++
+  
+  0.84 Mon Jan  6 07:04:31 PST 2020
+   - https://github.com/ingydotnet/inline-pm/pull/75 Make correct PERL5LIB to
+     pass on including -I flags @mohawk2++
+
+-------------------------------------------------------------------
 Mon Apr 29 05:15:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.83
