@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/openSUSE/xfce4-branding-openSUSE.git</param>
-              <param name="changesrevision">9c42d6bdb31cd56296dbdbbf0f4106b7ffff6b77</param></service></servicedata>
+              <param name="changesrevision">b0a749c5c72e1e0c67fc9e365035d971555f1438</param></service><service name="tar_scm">
+                <param name="url">https://github.com/Mau-G/xfce4-branding-openSUSE.git</param>
+              <param name="changesrevision">b0a749c5c72e1e0c67fc9e365035d971555f1438</param></service></servicedata>
