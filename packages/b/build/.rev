@@ -1157,4 +1157,14 @@ Stephan Kulow (2):
 - Add systemd-nspawn backend (by Oleg Girko)</comment>
     <requestid>754369</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>153d8d92a939e7ac8f95c8cc5163a50b</srcmd5>
+    <version>20200107</version>
+    <time>1578678006</time>
+    <user>dimstar_suse</user>
+    <comment>- allow to enter an existing buildroot w/o recipe
+- generate milestone files also for pure online media
+- fix ccache setup of non-dotted compiler versions</comment>
+    <requestid>761596</requestid>
+  </revision>
 </revisionlist>
