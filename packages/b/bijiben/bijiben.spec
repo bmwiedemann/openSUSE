@@ -1,7 +1,7 @@
 #
 # spec file for package bijiben
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with zeitgeist
 
 Name:           bijiben
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        Note editor for GNOME
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
