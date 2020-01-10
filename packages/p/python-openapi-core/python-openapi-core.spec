@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%if 0%{?suse_version} > 1500
+%define skip_python2 1
+%bcond_with python2
+%else
+%bcond_without python2
+%endif
 Name:           python-openapi-core
 Version:        0.12.0
 Release:        0
@@ -45,6 +50,16 @@ Requires:       python-openapi-spec-validator
 Requires:       python-six
 Requires:       python-strict-rfc3339
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-backports.functools_lru_cache
+BuildRequires:  python-backports.functools_partialmethod
+BuildRequires:  python-enum34
+%endif
+%ifpython2
+Requires:       python-backports.functools_lru_cache
+Requires:       python-backports.functools_partialmethod
+Requires:       python-enum34
+%endif
 %python_subpackages
 
 %description

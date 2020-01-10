@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:50:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Properly conditionalize the python2 drop so it lets us backport
+  the packages
+
+-------------------------------------------------------------------
 Thu Jan  9 18:01:55 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 subpackage due to dropping backports dependencies.
