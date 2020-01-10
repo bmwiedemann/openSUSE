@@ -1,7 +1,7 @@
 #
 # spec file for package qbittorrent
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,8 +47,6 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 # For geolocalisation.
 Requires:       GeoIP
-%requires_ge    libtorrent-rasterbar9
-Recommends:     python
 # For search engines.
 Recommends:     python3
 
