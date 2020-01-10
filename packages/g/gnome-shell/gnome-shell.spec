@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.34.2+2
+Version:        3.34.3+0
 Release:        0
 Summary:        GNOME Shell
 License:        GPL-2.0-or-later
