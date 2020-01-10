@@ -34,7 +34,7 @@ BuildRequires:  pkgconf
 # requires currently disabled debuginfo in project settings
 Requires:       mingw32-filesystem
 # Because we will not install the pkg.m4 package
-Requires:       pkgconf
+Requires:       pkg-config
 # compat. May move to separate package like native version but I'm lazy
 Conflicts:      mingw32-cross-pkg-config < %{pkgconfig_obsver}
 Obsoletes:      mingw32-cross-pkg-config < %{pkgconfig_obsver}
@@ -53,9 +53,8 @@ CFLAGS="%{optflags}" \
 ./configure \
   --prefix=%{_prefix} \
   --program-prefix=%{_mingw32_target}- \
-  --disable-host-tool \
   --disable-shared \
-  --with-pc-path=%{_mingw32_libdir}/pkgconfig:%{_mingw32_datadir}/pkgconfig
+  --with-pkg-config-dir=%{_mingw32_libdir}/pkgconfig:%{_mingw32_datadir}/pkgconfig
 
 make %{?_smp_mflags} || make
 

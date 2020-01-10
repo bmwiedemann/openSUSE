@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 15 21:29:17 UTC 2019 - Martin Koegler <martin.koegler@chello.at>
+
+- Fix configure options 
+
+-------------------------------------------------------------------
+Sun Dec 15 15:55:25 UTC 2019 - martin.koegler@chello.at
+
+- autoconf m4 is provided by the compat packages 
+
+-------------------------------------------------------------------
 Tue Dec  3 10:56:10 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - can't use _multibuild and multiple specs atm
