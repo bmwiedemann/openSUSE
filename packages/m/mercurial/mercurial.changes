@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  3 22:28:39 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch Mercurial to Python 3 (it should be supported already,
+  according to https://www.mercurial-scm.org/wiki/Python3)
+- Fix rpmlint warnings.
+
+-------------------------------------------------------------------
 Fri Dec  6 19:20:49 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mercurial 5.2.1

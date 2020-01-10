@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,19 +39,17 @@ Patch2:         mercurial-locale-path-fix.patch
 # PATCH-FIX-OPENSUSE mercurial-4.8-python2-shebang.patch develop7@develop7.info sets shebang to python2
 Patch3:         mercurial-4.8-python2-shebang.patch
 BuildRequires:  fdupes
-BuildRequires:  python-devel
-BuildRequires:  python-xml
-Requires:       python-curses
-Requires:       python-openssl
-Requires:       python-xml
-Requires:       python(abi) < 3.0
-Requires:       python(abi) >= 2.7
+BuildRequires:  python3
+BuildRequires:  python3-devel
+BuildRequires:  python3-xml
+Requires:       python3-curses
+Requires:       python3-xml
 Recommends:     %{name}-lang
 Provides:       hg = %{version}
 %if 0%{?suse_version} < 1210
 BuildRequires:  docutils
 %else
-BuildRequires:  python-docutils
+BuildRequires:  python3-docutils
 %endif
 %if 0%{?sles_version}
 Requires:       openssl-certs
@@ -64,8 +62,7 @@ BuildRequires:  bzr
 BuildRequires:  git
 BuildRequires:  gpg
 BuildRequires:  ncurses-devel
-BuildRequires:  python-Pygments
-BuildRequires:  python-openssl
+BuildRequires:  python3-Pygments
 BuildRequires:  subversion-python
 BuildRequires:  unzip
 #BuildRequires:  python-pyflakes
@@ -84,24 +81,26 @@ designed for efficient handling of very large distributed projects.
 %patch1
 %endif
 %patch2 -p1
-%patch3 -p0
+%patch3
+
+sed -i -e '1s@env @@' contrib/hgk
 
 chmod 644 hgweb.cgi
 
 %build
-make %{?_smp_mflags} all
+make %{?_smp_mflags} all PYTHON=python3
 
 %install
-make install PREFIX="%{_prefix}" DESTDIR=%{buildroot}
+make install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=python3
 
 # Move locales to proper location
 mkdir -p %{buildroot}%{_datadir}/locale
-mv %{buildroot}%{python_sitearch}/mercurial/locale/* %{buildroot}%{_datadir}/locale
+mv %{buildroot}%{python3_sitearch}/mercurial/locale/* %{buildroot}%{_datadir}/locale
 %find_lang hg
 
 # Install stuff in contrib
 install -m0755 contrib/hgk %{buildroot}%{_bindir}
-install -Dm0644 contrib/bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/mercurial.sh
+install -Dm0644 contrib/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/mercurial.sh
 install -Dm0644 contrib/zsh_completion %{buildroot}%{_datadir}/zsh/site-functions/_mercurial
 mkdir -p %{buildroot}%{_datadir}/{x,}emacs/site-lisp
 install -m0644 contrib/*.el %{buildroot}%{_datadir}/emacs/site-lisp
@@ -111,7 +110,7 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/mercurial/hgrc.d/cacerts.r
 
 %if 0%{?with_tests}
 %check
-make %{?_smp_mflags} tests TESTFLAGS="-v --blacklist=%{SOURCE90}"
+make %{?_smp_mflags} tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=python3
 %endif
 
 %files lang -f hg.lang
@@ -120,7 +119,7 @@ make %{?_smp_mflags} tests TESTFLAGS="-v --blacklist=%{SOURCE90}"
 %license COPYING
 %doc README.rst CONTRIBUTORS hgweb.cgi
 %{_bindir}/*
-%{_sysconfdir}/bash_completion.d/*
+%{_datadir}/bash-completion/completions/*
 %{_datadir}/zsh/
 %dir %{_sysconfdir}/mercurial
 %dir %{_sysconfdir}/mercurial/hgrc.d
@@ -131,6 +130,6 @@ make %{?_smp_mflags} tests TESTFLAGS="-v --blacklist=%{SOURCE90}"
 %{_mandir}/man5/hgignore.5%{?ext_man}
 %{_mandir}/man5/hgrc.5%{?ext_man}
 %{_mandir}/man8/hg-ssh.8%{?ext_man}
-%{python_sitearch}/*
+%{python3_sitearch}/*
 
 %changelog
