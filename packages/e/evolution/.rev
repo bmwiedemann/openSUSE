@@ -1936,4 +1936,12 @@ Recommended for 12.3</comment>
     <comment>New stable release (forwarded request 750273 from iznogood)</comment>
     <requestid>750935</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>cb866117f5df8515a3b450758ada6632</srcmd5>
+    <version>3.34.3</version>
+    <time>1578674820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761240</requestid>
+  </revision>
 </revisionlist>
