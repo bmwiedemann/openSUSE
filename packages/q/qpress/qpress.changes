@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:09:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Enable profile guided optimization
+
+-------------------------------------------------------------------
 Sun Jan 31 09:44:40 UTC 2016 - mpluskal@suse.com
 
 - Use optflags for building

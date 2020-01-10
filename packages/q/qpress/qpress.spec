@@ -1,7 +1,7 @@
 #
 # spec file for package qpress
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Andreas Stieger <andreas.stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,15 +21,14 @@ Name:           qpress
 Version:        1.1
 Release:        0
 Summary:        File archiver designed for speed
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Archiving/Compression
-Url:            http://www.quicklz.com/
+URL:            https://www.quicklz.com/
 Source0:        http://www.quicklz.com/%{name}-11-source.zip
 Source1:        COPYING
 Patch0:         qpress-1.1-isatty-include.patch
 BuildRequires:  gcc-c++
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 qpress is a portable file archiver using QuickLZ and designed to utilize
@@ -51,14 +50,21 @@ because the destination is smaller than the source. A few features:
 cp %{SOURCE1} .
 
 %build
-c++ %{optflags} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+%if %{do_profiling}
+  c++ %{optflags} %{cflags_profile_generate} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+  ./qpress -m %{SOURCE0}
+  rm ./qpress
+  c++ %{optflags} %{cflags_profile_feedback} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+%else
+  c++ %{optflags} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+%endif
 
 %install
-install -D -m 0755 qpress %{buildroot}%{_bindir}/qpress
+install -Dpm 0755 qpress \
+  %{buildroot}%{_bindir}/qpress
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_bindir}/qpress
 
 %changelog

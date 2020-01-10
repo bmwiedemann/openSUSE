@@ -37,4 +37,13 @@
     <comment>- Use optflags for building</comment>
     <requestid>356916</requestid>
   </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>6cca08b62372fb0aeed9e40922b828c0</srcmd5>
+    <version>1.1</version>
+    <time>1578675034</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Enable profile guided optimization</comment>
+    <requestid>762829</requestid>
+  </revision>
 </revisionlist>
