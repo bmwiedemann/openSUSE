@@ -473,6 +473,9 @@ Prefer: -maven-compiler-plugin-bootstrap -maven-resources-plugin-bootstrap -mave
 Prefer: -maven-javadoc-plugin-bootstrap -maven-plugin-plugin-bootstrap -maven-failsafe-plugin-bootstrap
 Prefer: -maven-surefire-plugin-bootstrap -maven-surefire-report-plugin-bootstrap
 
+# have choice for mingw32-unistd-pthread-devel needed by mingw32-headers: mingw32-headers-dummy-pthread mingw32-winpthreads-devel
+Prefer: -mingw64-headers-dummy-pthread -mingw32-headers-dummy-pthread
+
 # Below list still needs to be reviewed
 
 Prefer: xorg-x11-Xvnc:icewm
