@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 11:54:00 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Add a sanity test for CLI error code reporting (bsc#1144351)
+- 4.2.43
+
+-------------------------------------------------------------------
 Fri Jan  3 10:11:52 UTC 2020 - Michal Filka <mfilka@suse.com>
 
 - bnc#1159970 
