@@ -872,4 +872,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.17.4</comment>
     <requestid>754036</requestid>
   </revision>
+  <revision rev="103" vrev="12">
+    <srcmd5>b25480f929835aa71fa94b1d9cbc412c</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1578749960</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
+    <requestid>762002</requestid>
+  </revision>
 </revisionlist>

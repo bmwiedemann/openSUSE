@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-openSUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define plasma_version 5.17.4
+%define plasma_version 5.17.5
 Name:           plasma5-openSUSE
 Version:        84.87~git20190606T185118~3d37a0c
 Release:        0
