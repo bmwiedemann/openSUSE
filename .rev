@@ -171,4 +171,29 @@
     <comment>- Skip python2 build as it is no longer resolvable</comment>
     <requestid>760388</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5334d516c3d59287152adcec0a9d0da6</srcmd5>
+    <version>3.14.0</version>
+    <time>1578750155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.0:
+  - Different email URL for royalroad.com. Closes #452
+  - Update adapter_fictionmaniatv to use HTML versions containing
+    images and fall back if not found.
+  - Update adapter_fictionmaniatv to use HTML versions vs text by
+    default.
+  - Update Translations
+  - New Site fanfics.me (Russian language site).
+  - Base_eFiction - Get Rating/Rated from TOC page if not found
+    on print page. Remove from 2 individual adapters.
+  - Failsafe for max_zalgo setting. Closes #449.
+  - Add plugin option for toolbar button to pop menu.
+  - Fix AO3 chapterstotal replace_metadata for multi digits.
+  - Add
+  - around AO3 chapter head/foot notes. Issue 447
+  - Remove feature to save cookiejar between downloads and BG
+    jobs--causes some obscure problems with QQ at least. Closes
+    #466</comment>
+    <requestid>762920</requestid>
+  </revision>
 </revisionlist>
