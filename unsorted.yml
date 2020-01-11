@@ -1109,8 +1109,6 @@ unsorted:
   - bazel-workspaces 
   - bazel0.19: [x86_64] 
   - bazel0.24: [x86_64] 
-  - bazel0.25: [x86_64] 
-  - bazel0.26: [x86_64] 
   - bazel0.29: [x86_64] 
   - bb 
   - bbe 
@@ -5002,8 +5000,6 @@ unsorted:
   - gtk-frdp-devel 
   - gtk-key-theme-ctrluftw 
   - gtk-layer-shell-devel 
-  - gtk-recordMyDesktop 
-  - gtk-recordMyDesktop-lang 
   - gtk-sharp-beans 
   - gtk-sharp-beans-devel 
   - gtk-sharp2 
@@ -9595,6 +9591,7 @@ unsorted:
   - libinput10-32bit: [x86_64] 
   - libinsighttoolkit4 
   - libinstpatch-1_0-1 
+  - libinstpatch-1_0-1-32bit: [x86_64] 
   - libinstpatch-devel 
   - libiodbc-devel 
   - libiodbc3 
@@ -10340,6 +10337,7 @@ unsorted:
   - libnova-devel 
   - libnscd-devel 
   - libnsl-devel 
+  - libnss_slurm2: [x86_64] 
   - libnss_usrfiles2-32bit: [x86_64] 
   - libnsssharedhelper0 
   - libnsssharedhelper0-32bit: [x86_64] 
@@ -10433,7 +10431,7 @@ unsorted:
   - libopencascade7 
   - libopencensus-cpp0: [x86_64] 
   - libopencsg1 
-  - libopencv4_1 
+  - libopencv4_2 
   - libopendkim10 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
@@ -10452,8 +10450,6 @@ unsorted:
   - libopenobex2 
   - libopenraw-devel 
   - libopenraw1-32bit: [x86_64] 
-  - libopenscap25 
-  - libopenscap_sce25 
   - libopenshot-audio-devel 
   - libopenshot-audio6 
   - libopenshot-devel 
@@ -10734,7 +10730,7 @@ unsorted:
   - libpmemobj1: [x86_64] 
   - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmempool1: [x86_64] 
-  - libpmi0 
+  - libpmi0: [x86_64] 
   - libpmix2 
   - libpnetcdf1-mvapich2 
   - libpnetcdf1-openmpi1 
@@ -11471,7 +11467,7 @@ unsorted:
   - libskk0-32bit: [x86_64] 
   - libslang2-32bit: [x86_64] 
   - libslopy7_4 
-  - libslurm33 
+  - libslurm34: [x86_64] 
   - libsmartcols-devel 
   - libsmartcols-devel-static 
   - libsmbclient-devel 
@@ -14997,8 +14993,6 @@ unsorted:
   - odp-devel: [x86_64] 
   - odt2txt 
   - officecodepro-fonts 
-  - offlineimap 
-  - offlineimap-htmldoc 
   - ofono 
   - ofono-devel 
   - ofono-tests 
@@ -15256,11 +15250,6 @@ unsorted:
   - opensc 
   - opensc-32bit: [x86_64] 
   - openscad 
-  - openscap 
-  - openscap-content 
-  - openscap-devel 
-  - openscap-docker 
-  - openscap-utils 
   - openshot-qt 
   - openslide-doc 
   - openslide-tools 
@@ -16819,7 +16808,7 @@ unsorted:
   - perl-qpid 
   - perl-qpid-proton 
   - perl-rrdtool 
-  - perl-slurm 
+  - perl-slurm: [x86_64] 
   - perl-solv 
   - perl-strictures 
   - perl-subunit 
@@ -17401,7 +17390,6 @@ unsorted:
   - pspg 
   - pspp 
   - pspp-devel 
-  - pssh 
   - pstoedit-devel 
   - ptokax 
   - ptpd 
@@ -17548,6 +17536,7 @@ unsorted:
   - python-congressclient 
   - python-congressclient-doc 
   - python-cotyledon-doc 
+  - python-curses 
   - python-cwiid 
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
@@ -17691,7 +17680,6 @@ unsorted:
   - python-praatio-doc 
   - python-presage 
   - python-presagemate 
-  - python-pssh 
   - python-py2pack-doc 
   - python-pybind11-devel 
   - python-pycadf-common 
@@ -19256,6 +19244,7 @@ unsorted:
   - python2-pyLibravatar 
   - python2-pyModis 
   - python2-pyOCD 
+  - python2-pyOpenSSL 
   - python2-pyPEG2 
   - python2-pyRFC3339 
   - python2-pyScss 
@@ -19521,6 +19510,7 @@ unsorted:
   - python2-python-xlib 
   - python2-python-yubico 
   - python2-python3-saml 
+  - python2-pythonfinder 
   - python2-pythonwhois 
   - python2-pytidylib 
   - python2-pytils 
@@ -19595,6 +19585,7 @@ unsorted:
   - python2-requests-unixsocket 
   - python2-requests_ntlm 
   - python2-requestsexceptions 
+  - python2-requirements-detector 
   - python2-requirements-parser 
   - python2-requirementslib 
   - python2-resampy 
@@ -22994,8 +22985,6 @@ unsorted:
   - rfb 
   - rfbplaymacro 
   - rfbproxy 
-  - rfcat 
-  - rfcat-udev 
   - rfcdiff 
   - rhash 
   - rhash-devel 
@@ -24072,8 +24061,6 @@ unsorted:
   - scamper 
   - scanmem 
   - scantailor 
-  - scap-workbench 
-  - scap-workbench-doc 
   - scat 
   - sccs 
   - scdl 
@@ -24322,27 +24309,27 @@ unsorted:
   - slop 
   - slop-devel 
   - sluice 
-  - slurm 
-  - slurm-auth-none 
-  - slurm-config 
-  - slurm-config-man 
-  - slurm-cray 
-  - slurm-devel 
-  - slurm-doc 
-  - slurm-hdf5 
-  - slurm-lua 
-  - slurm-munge 
-  - slurm-node 
-  - slurm-openlava 
-  - slurm-pam_slurm 
-  - slurm-plugins 
-  - slurm-seff 
-  - slurm-sjstat 
-  - slurm-slurmdbd 
-  - slurm-sql 
-  - slurm-sview 
-  - slurm-torque 
-  - slurm-webdoc 
+  - slurm: [x86_64] 
+  - slurm-auth-none: [x86_64] 
+  - slurm-config: [x86_64] 
+  - slurm-config-man: [x86_64] 
+  - slurm-cray: [x86_64] 
+  - slurm-devel: [x86_64] 
+  - slurm-doc: [x86_64] 
+  - slurm-hdf5: [x86_64] 
+  - slurm-lua: [x86_64] 
+  - slurm-munge: [x86_64] 
+  - slurm-node: [x86_64] 
+  - slurm-openlava: [x86_64] 
+  - slurm-pam_slurm: [x86_64] 
+  - slurm-plugins: [x86_64] 
+  - slurm-seff: [x86_64] 
+  - slurm-sjstat: [x86_64] 
+  - slurm-slurmdbd: [x86_64] 
+  - slurm-sql: [x86_64] 
+  - slurm-sview: [x86_64] 
+  - slurm-torque: [x86_64] 
+  - slurm-webdoc: [x86_64] 
   - slurp 
   - smake 
   - smatch 
@@ -24755,8 +24742,6 @@ unsorted:
   - synapse 
   - synapse-lang 
   - syncthing 
-  - syncthing-gtk 
-  - syncthing-gtk-lang 
   - syncthing-relaysrv 
   - syndication-devel 
   - synergy 
@@ -32663,7 +32648,7 @@ unsorted:
   - typelib-1_0-FolksEds-0_6 
   - typelib-1_0-FolksTelepathy-0_6 
   - typelib-1_0-FolksTracker-0_6 
-  - typelib-1_0-Fwupd-2_0 
+  - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GMime-2_6 
