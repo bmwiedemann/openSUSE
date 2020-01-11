@@ -367,4 +367,12 @@
     <comment></comment>
     <requestid>758828</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e44b6bfc8ebadead90c68c11fa5ce25d</srcmd5>
+    <version>19.12.1</version>
+    <time>1578750000</time>
+    <user>dimstar_suse</user>
+    <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
+    <requestid>762295</requestid>
+  </revision>
 </revisionlist>
