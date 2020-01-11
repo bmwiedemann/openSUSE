@@ -48,7 +48,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
@@ -134,7 +134,7 @@ sed -i "1{/\/usr\/bin\/env/d;}" %{buildroot}%{_libdir}/%{name}/python/ufo2herwig
 # Fix hashbangs to directly point to python
 for exe in gosam2herwig herwig-mergegrids mg2herwig slha2herwig ufo2herwig
 do 
- sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python/;}" %{buildroot}%{_bindir}/${exe}
+ sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_bindir}/${exe}
 done
 
 %fdupes -s %{buildroot}%{_libdir}/%{name}/
