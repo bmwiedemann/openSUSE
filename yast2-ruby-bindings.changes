@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  3 15:02:24 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix previous fix to really set exit code in ruby wrapper
+  (bsc#1144351)
+- 4.2.7
+
+-------------------------------------------------------------------
 Tue Dec 17 14:48:01 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix returning error codes from y2start start point. Helps with
