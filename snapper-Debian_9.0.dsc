@@ -1,14 +1,14 @@
 Format: 1.0
 Source: snapper
-Version: 0.8.6
+Version: 0.8.8
 Binary: snapper
 Maintainer: Arvin Schnell <aschnell@suse.com>
 Architecture: any
-Build-Depends: debhelper (>= 4.1.16), acl-dev, g++, libboost-dev, libboost-thread-dev, libboost-system-dev, libboost-test-dev, libxml2-dev, libz-dev, libdbus-1-dev, libpam-dev, xsltproc, docbook-xsl, locales-all
+Build-Depends: debhelper (>= 4.1.16), acl-dev, dbus, g++, libboost-dev, libboost-thread-dev, libboost-system-dev, libboost-test-dev, libxml2-dev, libz-dev, libdbus-1-dev, libjson-c-dev, libpam-dev, xsltproc, docbook-xsl, locales-all
 #
 # The 'Files' line is generated during 'make package':
 # Files:
 #  423a20ae6e882d44e65a4eff97f2269f 630905 snapper-0.2.8.tar.gz
 #
 Files:
-536706b97170ab732314f690947757ae 603358 snapper-0.8.6.tar.bz2
+3e58beb64b0c3cbf774033cbd4185090 622739 snapper-0.8.8.tar.bz2

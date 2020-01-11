@@ -1,7 +1,7 @@
 #
 # spec file for package snapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           snapper
-Version:        0.8.6
+Version:        0.8.8
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         snapper-%{version}.tar.bz2
@@ -72,8 +72,13 @@ BuildRequires:  xsltproc
 BuildRequires:  libzypp(plugin:commit)
 %endif
 BuildRequires:  pam-devel
+%if 0%{?fedora_version}
+BuildRequires:  json-c-devel
+%else
+BuildRequires:  libjson-c-devel
+%endif
 Requires:       diffutils
-Requires:       libsnapper4 = %version
+Requires:       libsnapper5 = %version
 %if 0%{?suse_version}
 Recommends:     logrotate snapper-zypp-plugin
 Supplements:    btrfsprogs
@@ -159,7 +164,8 @@ fi
 %if 0%{?suse_version} > 1310
 %{_sbindir}/mksubvolume
 %endif
-%{_prefix}/lib/snapper
+%dir %{_prefix}/lib/snapper
+%{_prefix}/lib/snapper/*-helper
 %doc %{_mandir}/*/snapper.8*
 %doc %{_mandir}/*/snapperd.8*
 %doc %{_mandir}/*/snapper-configs.5*
@@ -171,7 +177,7 @@ fi
 %config /etc/dbus-1/system.d/org.opensuse.Snapper.conf
 %{_datadir}/dbus-1/system-services/org.opensuse.Snapper.service
 
-%package -n libsnapper4
+%package -n libsnapper5
 Summary:        Library for filesystem snapshot management
 Group:          System/Libraries
 Requires:       util-linux
@@ -179,12 +185,12 @@ Requires:       util-linux
 PreReq:         %fillup_prereq
 %endif
 # expands to Obsoletes: libsnapper1 libsnapper2 libsnapper3...
-Obsoletes:      %(echo `seq -s " " -f "libsnapper%.f" $((4 - 1))`)
+Obsoletes:      %(echo `seq -s " " -f "libsnapper%.f" $((5 - 1))`)
 
-%description -n libsnapper4
+%description -n libsnapper5
 This package contains libsnapper, a library for filesystem snapshot management.
 
-%files -n libsnapper4
+%files -n libsnapper5
 %defattr(-,root,root)
 %{_libdir}/libsnapper.so.*
 %dir %{_sysconfdir}/snapper
@@ -202,13 +208,13 @@ This package contains libsnapper, a library for filesystem snapshot management.
 %config(noreplace) %{_sysconfdir}/sysconfig/snapper
 %endif
 
-%post -n libsnapper4
+%post -n libsnapper5
 /sbin/ldconfig
 %if 0%{?suse_version}
 %{fillup_only -n snapper}
 %endif
 
-%postun -n libsnapper4 -p /sbin/ldconfig
+%postun -n libsnapper5 -p /sbin/ldconfig
 
 %package -n libsnapper-devel
 %if 0%{?suse_version} > 1325
@@ -218,7 +224,7 @@ Requires:       boost-devel
 %endif
 Requires:       gcc-c++
 Requires:       libacl-devel
-Requires:       libsnapper4 = %version
+Requires:       libsnapper5 = %version
 Requires:       libstdc++-devel
 Requires:       libxml2-devel
 %if 0%{?suse_version} > 1230
@@ -240,9 +246,6 @@ libsnapper.
 %{_includedir}/snapper
 
 %package -n snapper-zypp-plugin
-BuildArch:      noarch
-Requires:       python3-dbus-python
-Requires:       python3-zypp-plugin
 Requires:       snapper = %version
 Requires:       libzypp(plugin:commit) = 1
 Summary:        A zypp commit plugin for calling snapper
@@ -260,7 +263,7 @@ snapper during commits.
 %dir /usr/lib/zypp/plugins
 %dir /usr/lib/zypp/plugins/commit
 %endif
-/usr/lib/zypp/plugins/commit/snapper.py*
+/usr/lib/zypp/plugins/commit/snapper-zypp-plugin
 %doc %{_mandir}/*/snapper-zypp-plugin.8*
 %doc %{_mandir}/*/snapper-zypp-plugin.conf.5*
 
@@ -279,5 +282,18 @@ A PAM module for calling snapper during user login and logout.
 %dir /usr/lib/pam_snapper
 /usr/lib/pam_snapper/*.sh
 %doc %{_mandir}/*/pam_snapper.8*
+
+%package testsuite
+Summary:        Integration tests for snapper
+Group:          System/Packages
+
+%description testsuite
+Tests to be run in a scratch machine to test that snapper operates as expected.
+
+%files testsuite
+%defattr(-,root,root)
+%dir %{_libdir}/snapper
+%dir %{_libdir}/snapper/testsuite
+%{_libdir}/snapper/testsuite/*
 
 %changelog
