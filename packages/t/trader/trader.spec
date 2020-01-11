@@ -1,8 +1,8 @@
 #
 # spec file for package trader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2012-19 John Zaitseff <J.Zaitseff@zap.org.au>
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2012-20 John Zaitseff <J.Zaitseff@zap.org.au>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,19 @@
 # ***********************************************************************
 # *                                                                     *
 # *            Star Traders: A Game of Interstellar Trading             *
-# *               Copyright (C) 1990-2019, John Zaitseff                *
+# *               Copyright (C) 1990-2020, John Zaitseff                *
 # *                                                                     *
 # ***********************************************************************
 
 # Author: John Zaitseff <J.Zaitseff@zap.org.au>
-# $Id: cb06367b59f99e896cd916a5a858a3959f734607 $
+# $Id: 93048e804cac81e200f0e08e124be95a7f556632 $
 
 # This file is distributed under the same licence as Star Traders itself:
 # the GNU General Public License, version 3 or later.
 
-%define upstream_version   7.13
-%define normalised_version 7.13
-%define rpm_release_num    3
+%define upstream_version   7.14
+%define normalised_version 7.14
+%define rpm_release_num    1
 %define is_prerelease      0
 
 Name:           trader
