@@ -1,7 +1,7 @@
 #
 # spec file for package tcsh
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch2:         tcsh-6.16.00-norm-cmd.dif
 Patch4:         tcsh-6.18.03-colorls.dif
 Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
+Patch7:         tcsh-6.22.02-workaround-common.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -57,6 +58,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch4      -b .colorls
 %patch5      -b .dspmbyte
 %patch6      -b .catalogs
+%patch7 -p 1 -b .workaround
 %patch0      -b .0
 
 %build

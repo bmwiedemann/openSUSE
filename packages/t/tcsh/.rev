@@ -703,4 +703,13 @@
   * PR/81: Fix range matching issue where we were comparing with the</comment>
     <requestid>754265</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>c780c6bda3f2446d31afd75c7aadd88a</srcmd5>
+    <version>6.22.02</version>
+    <time>1578749833</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary patch tcsh-6.22.02-workaround-common.patch to avoid
+  common variable seen twice by compiler (boo#1160296)</comment>
+    <requestid>761828</requestid>
+  </revision>
 </revisionlist>
