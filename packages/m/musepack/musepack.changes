@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:52:02 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add libmpcdec-extern.patch: add missing extern declarations
+  (boo#1160284). 
+
+-------------------------------------------------------------------
 Mon Aug 26 08:21:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove degree adverbs from description.
