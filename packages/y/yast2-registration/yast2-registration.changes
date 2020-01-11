@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:16:55 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Load the old repositories before running the migration
+  so the code can properly detect the old and the new repositories
+  and remove the obsoleted services from the system (bsc#1159433)
+- 4.2.24
+
+-------------------------------------------------------------------
 Fri Dec  6 13:12:59 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Improve messages when auto upgrading unregistered system with 

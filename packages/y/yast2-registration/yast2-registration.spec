@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-registration
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.2.23
+Version:        4.2.24
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
