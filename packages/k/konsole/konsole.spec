@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konsole
-Version:        19.12.0
+Version:        19.12.1
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -40,10 +40,6 @@ Source23:       utilities-terminal-su-32.png
 Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
-# PATCH-FIX-OPENSUSE
-Patch0:         fix-build-with-gcc48.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         ColorScheme-fix-stack-use-after-scope.patch
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Completion)
@@ -113,10 +109,6 @@ Provides translations for the "%{name}" package.
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1500
-%patch0 -p1
-%endif
-%patch1 -p1
 
 %build
   %cmake_kf5 -d build

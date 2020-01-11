@@ -958,4 +958,12 @@
     <comment></comment>
     <requestid>757562</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>b43f0ed3c4b300cd5d40c7978f0cb8d8</srcmd5>
+    <version>19.12.1</version>
+    <time>1578750053</time>
+    <user>dimstar_suse</user>
+    <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
+    <requestid>762399</requestid>
+  </revision>
 </revisionlist>
