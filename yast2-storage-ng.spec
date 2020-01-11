@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-storage-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.2.67
+Version:        4.2.69
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -26,8 +26,8 @@ Url:            https://github.com/yast/yast-storage-ng
 
 Source:         %{name}-%{version}.tar.bz2
 
-# Device::get_name_sort_key
-BuildRequires:  libstorage-ng-ruby >= 4.2.43
+# Bitlocker
+BuildRequires:  libstorage-ng-ruby >= 4.2.47
 BuildRequires:  update-desktop-files
 # for CWM sort_key helper
 BuildRequires:  yast2 >= 4.2.48
@@ -48,8 +48,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 
 # findutils for xargs
 Requires:       findutils
-# Device::get_name_sort_key
-Requires:       libstorage-ng-ruby >= 4.2.39
+# Bitlocker
+Requires:       libstorage-ng-ruby >= 4.2.47
 # for CWM sort_key helper
 Requires:       yast2 >= 4.2.48
 # Y2Packager::Repository

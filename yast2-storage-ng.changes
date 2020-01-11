@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 09 12:45:00 CET 2020 - aschnell@suse.com
+
+- disallow to mount BitLocker (related to bsc#1159318)
+- 4.2.69
+
+-------------------------------------------------------------------
+Tue Jan  7 09:10:11 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Use partition id names defined by libstorage-ng.
+- 4.2.68
+
+-------------------------------------------------------------------
 Mon Dec 23 08:29:03 CET 2019 - aschnell@suse.com
 
 - Improved sorting by device name and size in tables (bsc#1140018)
