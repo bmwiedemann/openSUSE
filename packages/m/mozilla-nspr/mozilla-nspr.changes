@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 08:17:40 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 4.24
+  * added macro PR_ASSERT_ARG
+  * removed some declarations
+  * added support for Nios-II, Nds32 and Microblaze architectures
+
+-------------------------------------------------------------------
 Fri Nov 15 23:22:52 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - update to version 4.23

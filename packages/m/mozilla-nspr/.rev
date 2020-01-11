@@ -623,4 +623,15 @@ require it nevertheless
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>750434</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>27e9e65320f1f2742129bb04271bbd97</srcmd5>
+    <version>4.24</version>
+    <time>1578749867</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.24
+  * added macro PR_ASSERT_ARG
+  * removed some declarations
+  * added support for Nios-II, Nds32 and Microblaze architectures</comment>
+    <requestid>761943</requestid>
+  </revision>
 </revisionlist>
