@@ -1,7 +1,7 @@
 #
 # spec file for package kwin5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.17.4
+Version:        5.17.5
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -36,8 +36,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version
 Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Possible-fix-for-KDecoration-crash-in-systemsettings.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
 # PATCH-FEATURE-OPENSUSE
