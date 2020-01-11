@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:17:59 CET 2020 - tiwai@suse.de
+
+- Disable the build with python for Tumbleweed, as python 2 support
+  is dropped
+
+-------------------------------------------------------------------
 Fri Jun 17 13:27:42 UTC 2016 - i@marguerite.su
 
 - fix boo#985148: GCC6: zinnia fails to build

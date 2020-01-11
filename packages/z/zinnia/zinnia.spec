@@ -1,7 +1,7 @@
 #
 # spec file for package zinnia
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%if %{suse_version} < 1530
+%define with_python 1
 %{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%else
+%define with_python 0
+%endif
+
 Name:           zinnia
 Version:        0.06
 Release:        0
@@ -32,7 +38,9 @@ Patch2:         zinnia-gcc6.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+%if %{with_python}
 BuildRequires:  python-devel
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -54,6 +62,7 @@ Requires:       %{name} = %{version}
 The zinnia-devel package contains libraries and header files for
 developing applications that use zinnia.
 
+%if %{with_python}
 %package -n python-zinnia
 Summary:        Python bindings for zinnia
 Group:          Development/Languages/Python
@@ -61,6 +70,7 @@ Requires:       %{name} = %{version}
 
 %description -n python-zinnia
 This package contains python bindings for zinnia.
+%endif
 
 %prep
 %setup -q
@@ -77,9 +87,11 @@ make %{?_smp_mflags}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%if %{with_python}
 cd python
 CFLAGS="%{optflags} -I../" LDFLAGS="-L../.libs" \
 python setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%endif
 
 %post -n libzinnia0 -p /sbin/ldconfig
 %postun -n libzinnia0 -p /sbin/ldconfig
@@ -104,8 +116,10 @@ python setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %{_libdir}/libzinnia.so
 %{_libdir}/pkgconfig/zinnia.pc
 
+%if %{with_python}
 %files -n python-zinnia
 %defattr (-,root,root)
 %{python_sitearch}/*
+%endif
 
 %changelog
