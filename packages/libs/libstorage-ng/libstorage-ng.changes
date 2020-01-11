@@ -1,4 +1,55 @@
 --------------------------------------------------------------------
+Thu Jan 9 13:16:12 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#696
+- updated pot and po files
+- 4.2.49
+
+--------------------------------------------------------------------
+Thu Jan 9 12:12:39 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#697
+- merge gh#openSUSE/libstorage-ng#693
+- Translated using Weblate (Estonian) (bsc#1149754)
+- Translated using Weblate (Finnish) (bsc#1149754)
+- Add unit tests
+- Bump version
+- Ensure default to 0 for optional columns
+- Improve test
+- Revert "Translated using Weblate (Finnish)" (bsc#1149754)
+- Revert "Translated using Weblate (Estonian)" (bsc#1149754)
+- Allow optional fstab columns (merge SLE-15-SP1)
+- 4.2.48
+
+--------------------------------------------------------------------
+Thu Jan 9 11:24:40 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#695
+- added probing of BitLocker (bsc#1159318)
+- added unit test
+- fixed message
+- add minimal support for BitLocker
+- 4.2.47
+
+--------------------------------------------------------------------
+Wed Jan 8 14:31:54 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#694
+- Fix partition id when creating partition
+- Bump version
+- 4.2.46
+
+--------------------------------------------------------------------
+Tue Jan 7 10:41:46 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#691
+- Add method to get partition id name
+- Bump version
+- Add note
+- Partition Id names
+- 4.2.45
+
+--------------------------------------------------------------------
 Fri Jan 3 16:05:56 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#692
