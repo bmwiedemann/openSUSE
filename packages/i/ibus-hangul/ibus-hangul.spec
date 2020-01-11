@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-hangul
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 Requires:       python3-gobject
+# Make sure there is a font available. Pango 1.44 requires
+# a scalable font. However, since scalable-font-ko does not
+# pull the current default Korean font, Noto Sans KR, thereby
+# this spec files specifies its concrete font package name.
+Requires:       scalable-font-ko
+Recommends:     noto-sans-kr-fonts
 Provides:       locale(ibus:ko)
 
 %description
