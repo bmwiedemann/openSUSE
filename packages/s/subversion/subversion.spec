@@ -1,7 +1,7 @@
 #
 # spec file for package subversion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 %bcond_without gnome
-%bcond_without	python_ctypes
+%bcond_with	python_ctypes
 %bcond_with	all_regression_tests
 Name:           subversion
 Version:        1.13.0

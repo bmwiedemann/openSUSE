@@ -1478,4 +1478,12 @@
     <comment></comment>
     <requestid>747192</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>4996fc3575108f1ce39ba0b768ad36bf</srcmd5>
+    <version>1.13.0</version>
+    <time>1578749828</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable dependency on ctypesgen which is borked with new pythons</comment>
+    <requestid>761798</requestid>
+  </revision>
 </revisionlist>
