@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan  8 12:29:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix button ordering in Qt interface:
+  * 0001-tdf-129879-Fix-wrong-order-of-buttons.patch
+
+-------------------------------------------------------------------
+Sun Jan  5 03:59:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Set LANG during check; needed for a UTF8-related test to pass. 
+
+-------------------------------------------------------------------
+Thu Jan  2 10:05:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.4.0.1:
+  * Various minor fixes for the RC1 of 6.4 branch
+
+-------------------------------------------------------------------
+Tue Dec  3 08:58:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.4.0.0.beta1:
+  * Various features for 6.4 libreoffice series
+- Remove upstreamed patch mdds-1-5.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 11:37:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop disable-kde4 switch as it is no longer known by configure

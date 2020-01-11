@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         numbertext_version 0.9.5
 # Urls
 %define external_url https://dev-www.libreoffice.org/src/
-#%define tarball_url https://download.documentfoundation.org/libreoffice/src/6.1.0
+#%%define tarball_url https://download.documentfoundation.org/libreoffice/src/6.4.0
 %define tarball_url  https://dev-builds.libreoffice.org/pre-releases/src/
 # LTO needs newer toolchain stack only
 %if 0%{?suse_version} >= 1500
@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        6.3.3.2
+Version:        6.4.0.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -90,7 +90,7 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-1.2.0-incubating-SNAPSHOT-jar-with-dependencies-971c54fd38a968f5860014b44301872706f9e540.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-3794.tar.bz2
+Source2008:     %{external_url}/pdfium-3963.tar.bz2
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -98,7 +98,7 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-Patch5:         mdds-1-5.patch
+Patch4:         0001-tdf-129879-Fix-wrong-order-of-buttons.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -151,6 +151,7 @@ BuildRequires:  pentaho-reporting-flow-engine
 BuildRequires:  pkgconfig
 BuildRequires:  python3-lxml
 BuildRequires:  python3-xml
+BuildRequires:  qrcodegen-devel
 BuildRequires:  sac
 BuildRequires:  ucpp
 BuildRequires:  unixODBC-devel
@@ -218,7 +219,7 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(redland)
 BuildRequires:  pkgconfig(sane-backends)
 BuildRequires:  pkgconfig(serf-1) >= 1.1.0
-BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.24
+BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.28
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xt)
 Requires:       liberation-fonts
@@ -828,122 +829,122 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 \
 %{expand:%%_link_noarch_files %{pkgname}} \
 %{nil}
-%langpack -l af -n Afrikaans -m af_ZA
-%langpack -l am -n Amharic -T
-%langpack -l ar -n Arabic -s ctl -m ar -T
-%langpack -l as -n Assamese
-%langpack -l ast -n Asturian -T
-%langpack -l be -n Belarusian -m be_BY
+%langpack -l af -n Afrikaans -m af_ZA -X
+%langpack -l am -n Amharic -T -X
+%langpack -l ar -n Arabic -s ctl -m ar -T -X
+%langpack -l as -n Assamese -X
+%langpack -l ast -n Asturian -T -X
+%langpack -l be -n Belarusian -m be_BY -X
 %langpack -l bg -n Bulgarian -X -m bg_BG -T
-%langpack -l bn -n Bengali -m bn_BD -T
-%langpack -l bn_IN -n Bengali_India -T -p bn-IN -m bn_IN -L bn-IN -g bn_IN -j bn_IN
-%langpack -l bo -n Tibetian -T -s ctl -m bo
-%langpack -l br -n Breton -m br_FR
-%langpack -l brx -n Bodo
-%langpack -l bs -n Bosnian -T
+%langpack -l bn -n Bengali -m bn_BD -T -X
+%langpack -l bn_IN -n Bengali_India -T -p bn-IN -m bn_IN -L bn-IN -g bn_IN -j bn_IN -X
+%langpack -l bo -n Tibetian -T -s ctl -m bo -X
+%langpack -l br -n Breton -m br_FR -X
+%langpack -l brx -n Bodo -X
+%langpack -l bs -n Bosnian -T -X
 %langpack -l ca -n Catalan -M -X -T
-%langpack -l ca_valencia -n Valencian -m ca_ES_valencia -T -L ca-valencia -g ca@valencia -j ca_valencia
+%langpack -l ca_valencia -n Valencian -m ca_ES_valencia -T -L ca-valencia -g ca@valencia -j ca_valencia -X
 %langpack -l cs -n Czech -X -m cs_CZ -T
-%langpack -l cy -n Welsh
+%langpack -l cy -n Welsh -X
 %langpack -l da -n Danish -X -m da_DK -T
 %langpack -l de -n German -X -M -T
-%langpack -l dgo -n Dogri
-%langpack -l dsb -n Lower_Sorbian
-%langpack -l dz -n Dzongkha -s ctl -T
-%langpack -l el -n Greek  -m el_GR -T
+%langpack -l dgo -n Dogri -X
+%langpack -l dsb -n Lower_Sorbian -X
+%langpack -l dz -n Dzongkha -s ctl -T -X
+%langpack -l el -n Greek  -m el_GR -T -X
 %langpack -l en -n English -L en-US -X -M -g en_US -T -j en_US
 %langpack -l en_GB -n English_GB -M -T -X -L en-GB -g en_GB -j en_GB
 %langpack -l en_ZA -n English_ZA -M -T -X -L en-ZA -g en_ZA -j en_ZA
-%langpack -l eo -n Esperanto -T
+%langpack -l eo -n Esperanto -T -X
 %langpack -l es -n Spanish -M -X -T
-%langpack -l et -n Estonian -m et_EE -T
-%langpack -l eu -n Basque -T
+%langpack -l et -n Estonian -m et_EE -T -X
+%langpack -l eu -n Basque -T -X
 %langpack -l fa -n Farsi -s ctl -X
 %langpack -l fi -n Finnish -r libreoffice-voikko -X -T
 %langpack -l fr -n French -X -m fr_FR -T
-%langpack -l fy -n Frisian
-%langpack -l ga -n Irish
-%langpack -l gd -n Gaelic -m gd_GB
-%langpack -l gl -n Galician -M -T
-%langpack -l gu -n Gujarati -s ctl -p gu-IN -m gu_IN -T
-%langpack -l gug -n Paraguayan_Guaraní -M
-%langpack -l he -n Hebrew -s ctl -m he_IL -T
-%langpack -l hi -n Hindi -s ctl -p hi-IN -m hi_IN -T
+%langpack -l fy -n Frisian -X
+%langpack -l ga -n Irish -X
+%langpack -l gd -n Gaelic -m gd_GB -X
+%langpack -l gl -n Galician -M -T -X
+%langpack -l gu -n Gujarati -s ctl -p gu-IN -m gu_IN -T -X
+%langpack -l gug -n Paraguayan_Guaraní -M -X
+%langpack -l he -n Hebrew -s ctl -m he_IL -T -X
+%langpack -l hi -n Hindi -s ctl -p hi-IN -m hi_IN -T -X
 %langpack -l hr -n Croatian -m hr_HR -X -T
-%langpack -l hsb -n Upper_Sorbian
+%langpack -l hsb -n Upper_Sorbian -X
 %langpack -l hu -n Hungarian -X -m hu_HU -T
 %langpack -l it -n Italian -X -m it_IT -T
-%langpack -l id -n Indonesian -T -M
+%langpack -l id -n Indonesian -T -M -X
 %langpack -l is -n Icelandic -T -X -M
 %langpack -l ja -n Japanese -s cjk -X -T
-%langpack -l ka -n Georgian -T
-%langpack -l kab -n Kabyle
-%langpack -l kk -n Kazakh
-%langpack -l kn -n Kannada
+%langpack -l ka -n Georgian -T -X
+%langpack -l kab -n Kabyle -X
+%langpack -l kk -n Kazakh -X
+%langpack -l kn -n Kannada -X
 %langpack -l km -n Khmer -T -X -s ctl -c ctlseqcheck_km
-%langpack -l kmr_Latn -n Kurdish -M -g kmr@latin -L kmr-Latn -j kmr_Latn
+%langpack -l kmr_Latn -n Kurdish -M -g kmr@latin -L kmr-Latn -j kmr_Latn -X
 %langpack -l ko -n Korean -s cjk -X -T
-%langpack -l kok -n Konkani
-%langpack -l ks -n Kashmiri
-%langpack -l lb -n Luxembourgish
-%langpack -l lo -n Lao -T -s ctl -m lo_LA -c ctlseqcheck_lo
+%langpack -l kok -n Konkani -X
+%langpack -l ks -n Kashmiri -X
+%langpack -l lb -n Luxembourgish -X
+%langpack -l lo -n Lao -T -s ctl -m lo_LA -c ctlseqcheck_lo -X
 %langpack -l lt -n Lithuanian -m lt_LT -X -T
-%langpack -l lv -n Latvian -m lv_LV -T
-%langpack -l mai -n Maithili
-%langpack -l mk -n Macedonian -T
-%langpack -l ml -n Malayalam
+%langpack -l lv -n Latvian -m lv_LV -T -X
+%langpack -l mai -n Maithili -X
+%langpack -l mk -n Macedonian -T -X
+%langpack -l ml -n Malayalam -X
 %langpack -l mn -n Monglolian -X
-%langpack -l mni -n Manipuri
-%langpack -l mr -n Marathi
-%langpack -l my -n Burnese -s ctl
-%langpack -l nb -n Bokmal -M -m no -T
-%langpack -l ne -n Nepali -T -s ctl -m ne_NP
+%langpack -l mni -n Manipuri -X
+%langpack -l mr -n Marathi -X
+%langpack -l my -n Burnese -s ctl -X
+%langpack -l nb -n Bokmal -M -m no -T -X
+%langpack -l ne -n Nepali -T -s ctl -m ne_NP -X
 %langpack -l nl -n Dutch -X -m nl_NL -T
-%langpack -l nn -n Nynorsk -m nn_NO -T
-%langpack -l nr -n Southern_Ndebele
-%langpack -l nso -n Northern_Sotho
-%langpack -l oc -n Occitan -m oc_FR
-%langpack -l om -n Oromo -T
-%langpack -l or -n Odia -s ctl
-%langpack -l pa -n Punjabi -s ctl -L pa-IN -p pa-IN -g pa_IN -j pa_IN
+%langpack -l nn -n Nynorsk -m nn_NO -T -X
+%langpack -l nr -n Southern_Ndebele -X
+%langpack -l nso -n Northern_Sotho -X
+%langpack -l oc -n Occitan -m oc_FR -X
+%langpack -l om -n Oromo -T -X
+%langpack -l or -n Odia -s ctl -X
+%langpack -l pa -n Punjabi -s ctl -L pa-IN -p pa-IN -g pa_IN -j pa_IN -x pa-IN
 %langpack -l pl -n Polish -X -m pl_PL -T
 %langpack -l pt_BR -n Brazilian_Portuguese -m pt_BR -L pt-BR -p pt-BR -X  -g pt_BR -j pt_BR -T
 %langpack -l pt_PT -n Portuguese -m pt_PT -L pt -x pt -p pt -q pt-PT -T
 %langpack -l ro -n Romanian -M -X -T
 %langpack -l ru -n Russian -X -m ru_RU -T
-%langpack -l rw -n Kinyarwanda
-%langpack -l sa_IN -n Sanskrit -L sa-IN -g sa_IN -j sa_IN
-%langpack -l sat -n Santali
-%langpack -l sd -n Sindhi
-%langpack -l si -n Sinhalese -S ctl -m si_LK -T
-%langpack -l sid -n Sidamo -T
+%langpack -l rw -n Kinyarwanda -X
+%langpack -l sa_IN -n Sanskrit -L sa-IN -g sa_IN -j sa_IN -x sa-IN
+%langpack -l sat -n Santali -X
+%langpack -l sd -n Sindhi -X
+%langpack -l si -n Sinhalese -S ctl -m si_LK -T -X
+%langpack -l sid -n Sidamo -T -X
 %langpack -l sk -n Slovak -X -m sk_SK -T
 %langpack -l sl -n Slovenian -X -m sl_SI -T
-%langpack -l sq -n Albanian -T -m sq_AL
-%langpack -l sr -n Serbian -i sr-Latn -M -j sr -g sr -k sr@latin -o sr_Latn
-%langpack -l ss -n Swati
-%langpack -l st -n Southern_Sotho
+%langpack -l sq -n Albanian -T -m sq_AL -X
+%langpack -l sr -n Serbian -i sr-Latn -M -j sr -g sr -k sr@latin -o sr_Latn -x sr-Latn
+%langpack -l ss -n Swati -X
+%langpack -l st -n Southern_Sotho -X
 %langpack -l sv -n Swedish -X -m sv_SE -T
-%langpack -l sw_TZ -n Swahili -M -L sw-TZ -g sw_TZ -j sw_TZ
-%langpack -l szl -n Silesian
-%langpack -l ta -n Tamil -s ctl -T
-%langpack -l te -n Telugu -m te_IN
-%langpack -l tg -n Tajik -T
-%langpack -l th -n Thai -s ctl -c ctlseqcheck_th -m th_TH
-%langpack -l tn -n Tswana
+%langpack -l sw_TZ -n Swahili -M -L sw-TZ -g sw_TZ -j sw_TZ -x sw-TZ
+%langpack -l szl -n Silesian -X
+%langpack -l ta -n Tamil -s ctl -T -X
+%langpack -l te -n Telugu -m te_IN -X
+%langpack -l tg -n Tajik -T -X
+%langpack -l th -n Thai -s ctl -c ctlseqcheck_th -m th_TH -X
+%langpack -l tn -n Tswana -X
 %langpack -l tr -n Turkish -X -T -m tr_TR
-%langpack -l ts -n Tsonga
-%langpack -l tt -n Tatar
-%langpack -l ug -n Uyghur -T
-%langpack -l uk -n Ukrainian -m uk_UA -T
-%langpack -l uz -n Uzbek
+%langpack -l ts -n Tsonga -X
+%langpack -l tt -n Tatar -X
+%langpack -l ug -n Uyghur -T -X
+%langpack -l uk -n Ukrainian -m uk_UA -T -X
+%langpack -l uz -n Uzbek -X
 %langpack -l vi -n Vietnamese -T -X -M
-%langpack -l ve -n Venda
-%langpack -l vec -n Venetian
-%langpack -l xh -n Xhosa
+%langpack -l ve -n Venda -X
+%langpack -l vec -n Venetian -X
+%langpack -l xh -n Xhosa -X
 %langpack -l zh_CN -n Simplified_Chinese -p zh-CN -s cjk -L zh-CN -x zh-CN -q zh-Hans  -g zh_CN -j zh_CN -T
 %langpack -l zh_TW -n Traditional_Chinese -p zh-TW -s cjk -L zh-TW -x zh-TW -q zh-Hant  -g zh_TW -j zh_TW -T
-%langpack -l zu -n Zulu -m zu_ZA
+%langpack -l zu -n Zulu -m zu_ZA -X
 
 %prep
 %setup -q -b2 -b4
@@ -953,7 +954,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch2
 %patch3
-%patch5 -p1
+%patch4 -p1
 %patch990 -p1
 %patch991 -p1
 
@@ -1053,16 +1054,14 @@ export NOCONFIGURE=yes
         --with-external-tar="$RPM_SOURCE_DIR" \
         --disable-epm \
         --disable-online-update \
-        --disable-gstreamer-0-10 \
         --enable-gstreamer-1-0 \
         --enable-gtk3 \
-        --disable-gtk \
 %if %{with kdeintegration}
         --disable-gtk3-kde5 \
-        --enable-kde5 \
+        --enable-kf5 \
         --enable-qt5 \
 %else
-        --disable-kde5 \
+        --disable-kf5 \
         --disable-qt5 \
 %endif
         --enable-introspection \
@@ -1117,6 +1116,7 @@ export NOCONFIGURE=yes
 make verbose=t build-nocheck
 
 %check
+export LANG=C.UTF-8
 # Run tests only on x86_64 and ppc64le as they are resource hogs
 %ifarch x86_64 ppc64le
 # safeguard jarfires that can get magically overriden by the make
@@ -1254,6 +1254,10 @@ for file in $files; do
     echo "%{_libdir}/%{name}/share/autocorr/$file" >> file-lists/common_list.txt
 done
 
+# we don't bother with serbian non-latin autocorr (as the lang logic allows us to dynamically allocate
+# just one autotext filler and it does not make sense to have special case just for serbian
+rm -r %{buildroot}%{_datadir}/libreoffice/share/autotext/sr/
+
 # Install appdata files, so we're shown in gnome-software (and other, future app stores)
 # upstream ships the files called libreoffice-{base,writer,...}, but the destop files are called base.destop [...]
 # fixup the appdata files internal reference to the .desktop file and rename them on the go to match the name
@@ -1313,6 +1317,12 @@ ln -s %{_libdir}/%{name}/program/liblibreofficekitgtk.so %{buildroot}%{_libdir}/
 # Libreofficekit headers
 mkdir -p %{buildroot}%{_includedir}/LibreOfficeKit/
 install -m 0644 include/LibreOfficeKit/* %{buildroot}%{_includedir}/LibreOfficeKit/
+
+# typelib data
+mkdir -p %{buildroot}%{_libdir}/girepository-1.0/
+install -m 0644 workdir/CustomTarget/sysui/share/libreoffice/LOKDocView-0.1.typelib %{buildroot}%{_libdir}/girepository-1.0/
+mkdir -p %{buildroot}%{_datadir}/gir-1.0/
+install -m 0644 workdir/CustomTarget/sysui/share/libreoffice/LOKDocView-0.1.gir %{buildroot}%{_datadir}/gir-1.0/
 
 # Symlink uno.py and unohelper.py so that python can find them
 # This is done after the cache files generating on purpose
@@ -1488,8 +1498,8 @@ exit 0
 
 %if %{with kdeintegration}
 %files -f file-lists/kde4_list.txt qt5
-%{_libdir}/libreoffice/program/libkde5be1lo.so
-%{_libdir}/libreoffice/program/libvclplug_kde5lo.so
+%{_libdir}/libreoffice/program/libkf5be1lo.so
+%{_libdir}/libreoffice/program/libvclplug_kf5lo.so
 %{_libdir}/libreoffice/program/libvclplug_qt5lo.so
 %endif
 

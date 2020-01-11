@@ -2605,4 +2605,22 @@ Petr</comment>
   * 6.3.3 stable release</comment>
     <requestid>744644</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>176e8e3b2c205a126f9b585864fee30a</srcmd5>
+    <version>6.4.0.1</version>
+    <time>1578749834</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix button ordering in Qt interface:
+  * 0001-tdf-129879-Fix-wrong-order-of-buttons.patch
+
+- Set LANG during check; needed for a UTF8-related test to pass. 
+
+- Update to 6.4.0.1:
+  * Various minor fixes for the RC1 of 6.4 branch
+
+- Update to 6.4.0.0.beta1:
+  * Various features for 6.4 libreoffice series
+- Remove upstreamed patch mdds-1-5.patch</comment>
+    <requestid>761834</requestid>
+  </revision>
 </revisionlist>
