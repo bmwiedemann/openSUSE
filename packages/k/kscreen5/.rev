@@ -691,4 +691,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.17.4</comment>
     <requestid>754010</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>7208fcdd81e75a903cb3e55d2220d7b9</srcmd5>
+    <version>5.17.5</version>
+    <time>1578749940</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
+    <requestid>761983</requestid>
+  </revision>
 </revisionlist>
