@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:41:50 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.8.0.
+
+  WARNING: As of this release Synapse will refuse to start if the log_file
+  config option is specified. Support for the option was removed in v1.3.0.
+
+  * Add v2 APIs for the send_join and send_leave federation endpoints (as
+    described in MSC1802).
+  * Add a develop script to generate full SQL schemas.
+  * Add custom SAML username mapping functinality through an external provider
+    plugin.
+  * Automatically delete empty groups/communities.
+  * Add option limit_profile_requests_to_users_who_share_rooms to prevent
+    requirement of a local user sharing a room with another user to query their
+    profile information.
+  * Add an export_signing_key script to extract the public part of signing keys
+    when rotating them.
+  * Add experimental config option to specify multiple databases.
+  * Raise an error if someone tries to use the log_file config option.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Wed Jan  1 03:26:40 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 1.7.3.
