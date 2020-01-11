@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:54:50 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 7.68.0
+  * Changes:
+    - TLS: add BearSSL vtls implementation
+    - XFERINFOFUNCTION: support CURL_PROGRESSFUNC_CONTINUE
+    - curl: add --etag-compare and --etag-save
+    - curl: add --parallel-immediate
+    - multi: add curl_multi_wakeup()
+    - openssl: CURLSSLOPT_NO_PARTIALCHAIN can disable partial cert chains 
+  * Bugfixes:
+    - CVE-2019-15601: file: on Windows, refuse paths that start with \\
+    - Azure Pipelines: add several builds
+    - CMake: add support for building with the NSS vtls backend
+    - CURL-DISABLE: initial docs for the CURL_DISABLE_* defines
+    - CURLOPT_HEADERFUNCTION.3: Document that size is always 1
+    - CURLOPT_QUOTE.3: fix typos
+    - CURLOPT_READFUNCTION.3: fix the example
+    - CURLOPT_URL.3: "curl supports SMB version 1 (only)"
+    - CURLOPT_VERBOSE.3: see also ERRORBUFFER
+    - HISTORY: added cmake, HTTP/3 and parallel downloads with curl
+    - HISTORY: the SMB(S) support landed in 2014
+    - INSTALL.md: provide Android build instructions
+    - KNOWN_BUGS: Connection information when using TCP Fast Open
+    - KNOWN_BUGS: LDAP on Windows doesn't work correctly
+    - KNOWN_BUGS: TLS session cache doesn't work with TFO
+    - OPENSOCKETFUNCTION.3: correct the purpose description
+    - TrackMemory tests: always remove CR before LF
+    - altsvc: bump to h3-24
+    - altsvc: make the save function ignore NULL filenames
+    - build: Disable Visual Studio warning "conditional expression is constant"
+    - build: fix for CURL_DISABLE_DOH
+    - checksrc.bat: Add a check for vquic and vssh directories
+    - checksrc: repair the copyrightyear check
+    - cirrus-ci: enable clang sanitizers on freebsd 13
+    - cirrus: Drop the FreeBSD 10.4 build
+    - config-win32: cpu-machine-OS for Windows on ARM
+    - configure: avoid unportable `==' test(1) operator
+    - configure: enable IPv6 support without `getaddrinfo`
+    - configure: fix typo in help text
+    - conncache: CONNECT_ONLY connections assumed always in-use
+    - conncache: fix multi-thread use of shared connection cache
+    - copyrights: fix copyright year range
+    - create_conn: prefer multiplexing to using new connections
+    - curl -w: handle a blank input file correctly
+    - curl.h: add two missing defines for "pre ISO C" compilers
+    - curl/parseconfig: fix mem-leak
+    - curl/parseconfig: use curl_free() to free memory allocated by libcurl
+    - curl: cleanup multi handle on failure
+    - curl: fix --upload-file . hangs if delay in STDIN
+    - curl: fix -T globbing
+    - curl: improved cleanup in upload error path
+    - curl: make a few char pointers point to const char instead
+    - curl: properly free mimepost data
+    - curl: show better error message when no homedir is found
+    - curl: show error for --http3 if libcurl lacks support
+    - curl_setup_once: consistently use WHILE_FALSE in macros
+    - define: remove HAVE_ENGINE_LOAD_BUILTIN_ENGINES, not used anymore
+    - docs: Change 'experiemental' to 'experimental'
+    - docs: TLS SRP doesn't work with TLS 1.3
+    - docs: fix several typos
+    - docs: mention CURL_MAX_INPUT_LENGTH restrictions
+    - doh: improved both encoding and decoding
+    - doh: make it behave when built without proxy support
+    - examples/postinmemory.c: Call curl_global_cleanup always
+    - examples/url2file.c: corrected erroneous comment
+    - examples: add multi-poll.c
+    - global_init: undo the "intialized" bump in case of failure
+    - hostip: suppress compiler warning
+    - http_ntlm: Remove duplicate NSS initialisation
+    - lib: Move lib/ssh.h -> lib/vssh/ssh.h
+    - lib: fix compiler warnings with `CURL_DISABLE_VERBOSE_STRINGS`
+    - lib: fix warnings found when porting to NuttX
+    - lib: remove ASSIGNWITHINCONDITION exceptions, use our code style
+    - lib: remove erroneous +x file permission on some c files
+    - libssh2: add support for ECDSA and ed25519 knownhost keys
+    - multi.h: remove INITIAL_MAX_CONCURRENT_STREAMS from public header
+    - multi: free sockhash on OOM
+    - multi_poll: avoid busy-loop when called without easy handles attached
+    - ngtcp2: Support the latest update key callback type
+    - ngtcp2: fix thread-safety bug in error-handling
+    - ngtcp2: free used resources on disconnect
+    - ngtcp2: handle key updates as ngtcp2 master branch tells us
+    - ngtcp2: increase QUIC window size when data is consumed
+    - ngtcp2: use overflow buffer for extra HTTP/3 data
+    - ntlm: USE_WIN32_CRYPTO check removed to get USE_NTLM2SESSION set
+    - ntlm_wb: fix double-free in OOM
+    - openssl: Revert to less sensitivity for SYSCALL errors
+    - openssl: improve error message for SYSCALL during connect
+    - openssl: prevent recursive function calls from ctx callbacks
+    - openssl: retrieve reported LibreSSL version at runtime
+    - openssl: set X509_V_FLAG_PARTIAL_CHAIN by default
+    - parsedate: offer a getdate_capped() alternative
+    - pause: avoid updating socket if done was already called
+    - projects: Fix Visual Studio projects SSH builds
+    - projects: Fix Visual Studio wolfSSL configurations
+    - quiche: reject HTTP/3 headers in the wrong order
+    - remove_handle: clear expire timers after multi_done()
+    - runtests: --repeat=[num] to repeat tests
+    - runtests: introduce --shallow to reduce huge torture tests
+    - schannel: fix --tls-max for when min is --tlsv1 or default
+    - setopt: Fix ALPN / NPN user option when built without HTTP2
+    - strerror: Add Curl_winapi_strerror for Win API specific errors
+    - strerror: Fix an error looking up some Windows error strings
+    - strerror: Fix compiler warning "empty expression"
+    - system.h: fix for MCST lcc compiler
+    - test/sws: search for "Testno:" header unconditionally if no testno
+    - test1175: verify symbols-in-versions and libcurl-errors.3 in sync
+    - test1270: a basic -w redirect_url test
+    - test1456: remove the use of a fixed local port number
+    - test1558: use double slash after file:
+    - test1560: require IPv6 for IPv6 aware URL parsing
+    - tests/lib1557: fix mem-leak in OOM
+    - tests/lib1559: fix mem-leak in OOM
+    - tests/lib1591: free memory properly on OOM, in the trailers callback
+    - tests/unit1607: fix mem-leak in OOM
+    - tests/unit1609: fix mem-leak in OOM
+    - tests/unit1620: fix bad free in OOM
+    - tests: Change NTLM tests to require SSL
+    - tests: Fix bounce requests with truncated writes
+    - tests: fix build with `CURL_DISABLE_DOH`
+    - tests: fix permissions of ssh keys in WSL
+    - tests: make it possible to set executable extensions
+    - tests: make sure checksrc runs on header files too
+    - tests: set LC_ALL=en_US.UTF-8 instead of blank in several tests
+    - tests: use DoH feature for DoH tests
+    - tests: use \r\n for log messages in WSL
+    - tool_operate: fix mem leak when failed config parse
+    - travis: Fix error detection
+    - travis: abandon coveralls, it is not reliable
+    - travis: build ngtcp2 with --enable-lib-only
+    - travis: export the CC/CXX variables when set
+    - vtls: make BearSSL possible to set with CURL_SSL_BACKEND
+    - winbuild: Define CARES_STATICLIB when WITH_CARES=static
+    - winbuild: Document CURL_STATICLIB requirement for static libcurl 
+- Remove curl-expire-clear.patch
+
+-------------------------------------------------------------------
 Thu Nov 14 16:55:18 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix segfault in zypper ref: [bsc#1156481]
