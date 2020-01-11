@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  3 14:51:57 CET 2020 - schubi@suse.de
+
+- Aborting upgrade: Restoring old settings e.g. RPM database
+  (bsc#1158914).
+- mount /run and efivars into target to fix hanging LVM (bsc#1148500)
+  by Steffen Winterfeldt <snwint@suse.com>
+- 4.2.13
+
+-------------------------------------------------------------------
 Wed Dec  4 14:29:12 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - fix upgrade for online medium (bsc#1158056 and bsc#1157636)

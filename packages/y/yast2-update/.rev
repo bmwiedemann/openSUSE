@@ -963,4 +963,12 @@
     <comment>submit new version 4.2.12</comment>
     <requestid>754097</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>6c3e338bb2bda88f5a03afc175fd4954</srcmd5>
+    <version>4.2.13</version>
+    <time>1578750446</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.13</comment>
+    <requestid>761522</requestid>
+  </revision>
 </revisionlist>
