@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent  051b75a600dfbf7503c3485cebfd34d4eb29be96
+# Parent  83da7ee18178639b2a89d5e21f78e190e4e72d7e
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
-diff -r 051b75a600df gfx/2d/DrawTargetSkia.cpp
---- a/gfx/2d/DrawTargetSkia.cpp	Fri Jul 05 12:42:44 2019 +0200
-+++ b/gfx/2d/DrawTargetSkia.cpp	Mon Jul 08 10:59:30 2019 +0200
-@@ -138,8 +138,7 @@
+diff -r 83da7ee18178 gfx/2d/DrawTargetSkia.cpp
+--- a/gfx/2d/DrawTargetSkia.cpp	Mon Jul 22 00:00:00 2019 +0200
++++ b/gfx/2d/DrawTargetSkia.cpp	Wed Jan 08 12:17:44 2020 +0100
+@@ -136,8 +136,7 @@
    return surfaceBounds.Intersect(bounds);
  }
  
@@ -15,38 +15,38 @@ diff -r 051b75a600df gfx/2d/DrawTargetSkia.cpp
  
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
-diff -r 051b75a600df gfx/2d/Types.h
---- a/gfx/2d/Types.h	Fri Jul 05 12:42:44 2019 +0200
-+++ b/gfx/2d/Types.h	Mon Jul 08 10:59:30 2019 +0200
-@@ -85,15 +85,8 @@
+diff -r 83da7ee18178 gfx/2d/Types.h
+--- a/gfx/2d/Types.h	Mon Jul 22 00:00:00 2019 +0200
++++ b/gfx/2d/Types.h	Wed Jan 08 12:17:44 2020 +0100
+@@ -86,15 +86,8 @@
  // The following values are endian-independent synonyms. The _UINT32 suffix
  // indicates that the name reflects the layout when viewed as a uint32_t
  // value.
 -#if MOZ_LITTLE_ENDIAN
    A8R8G8B8_UINT32 = B8G8R8A8,  // 0xAARRGGBB
-   X8R8G8B8_UINT32 = B8G8R8X8   // 0x00RRGGBB
+   X8R8G8B8_UINT32 = B8G8R8X8,  // 0x00RRGGBB
 -#elif MOZ_BIG_ENDIAN
 -  A8R8G8B8_UINT32 = A8R8G8B8,  // 0xAARRGGBB
--  X8R8G8B8_UINT32 = X8R8G8B8   // 0x00RRGGBB
+-  X8R8G8B8_UINT32 = X8R8G8B8,  // 0x00RRGGBB
 -#else
 -#  error "bad endianness"
 -#endif
- };
  
- static inline int BytesPerPixel(SurfaceFormat aFormat) {
-diff -r 051b75a600df gfx/skia/skia/third_party/skcms/skcms.cc
---- a/gfx/skia/skia/third_party/skcms/skcms.cc	Fri Jul 05 12:42:44 2019 +0200
-+++ b/gfx/skia/skia/third_party/skcms/skcms.cc	Mon Jul 08 10:59:30 2019 +0200
-@@ -17,6 +17,8 @@
-     #include <arm_neon.h>
- #elif defined(__SSE__)
-     #include <immintrin.h>
+   // The following values are OS and endian-independent synonyms.
+   //
+diff -r 83da7ee18178 gfx/skia/skia/third_party/skcms/skcms.cc
+--- a/gfx/skia/skia/third_party/skcms/skcms.cc	Mon Jul 22 00:00:00 2019 +0200
++++ b/gfx/skia/skia/third_party/skcms/skcms.cc	Wed Jan 08 12:17:44 2020 +0100
+@@ -30,6 +30,8 @@
+         #include <avx512fintrin.h>
+         #include <avx512dqintrin.h>
+     #endif
 +#else
 +    #define SKCMS_PORTABLE
  #endif
  
  // sizeof(x) will return size_t, which is 32-bit on some machines and 64-bit on others.
-@@ -124,20 +126,28 @@
+@@ -280,20 +282,28 @@
  static uint16_t read_big_u16(const uint8_t* ptr) {
      uint16_t be;
      memcpy(&be, ptr, sizeof(be));

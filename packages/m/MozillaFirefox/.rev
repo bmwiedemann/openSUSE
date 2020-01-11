@@ -4178,4 +4178,41 @@
     Memory safety bugs fixed in Firefox 71</comment>
     <requestid>757910</requestid>
   </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>c0fdd8181eccec3989c61f933b038d81</srcmd5>
+    <version>72.0.1</version>
+    <time>1578749876</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 72.0.1
+  MFSA 2020-03 (bsc#1160498)
+  * CVE-2019-17026 (bmo#1607443)
+    IonMonkey type confusion with StoreElementHole and FallibleStoreElement
+- Mozilla Firefox 72.0
+  * block fingerprinting scripts by default
+  * new notification pop-ups
+  * Picture-in-picture video
+  MFSA 2020-01 (bsc#1160305)
+  * CVE-2019-17016 (bmo#1599181)
+    Bypass of @namespace CSS sanitization during pasting
+  * CVE-2019-17017 (bmo#1603055)
+    Type Confusion in XPCVariant.cpp
+  * CVE-2019-17020 (bmo#1597645)
+    Content Security Policy not applied to XSL stylesheets applied
+    to XML documents
+  * CVE-2019-17022 (bmo#1602843)
+    CSS sanitization does not escape HTML tags
+  * CVE-2019-17023 (bmo#1590001) (fixed in NSS FIXME)
+    NSS may negotiate TLS 1.2 or below after a TLS 1.3
+    HelloRetryRequest had been sent
+  * CVE-2019-17024 (bmo#1507180,bmo#1595470,bmo#1598605,bmo#1601826)
+    Memory safety bugs fixed in Firefox 72 and Firefox ESR 68.4
+  * CVE-2019-17025 (bmo#1328295,bmo#1328300,bmo#1590447,bmo#1590965
+    bmo#1595692,bmo#1597321,bmo#1597481)
+    Memory safety bugs fixed in Firefox 72
+- update create-tar.sh to skip compare-locales
+- requires NSPR 4.24 and NSS 3.48
+- removed usage of browser-plugins convention for NPAPI plugins
+  from start wrapper and changed the RPM macro to the</comment>
+    <requestid>762071</requestid>
+  </revision>
 </revisionlist>

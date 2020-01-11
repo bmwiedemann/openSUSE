@@ -14,7 +14,7 @@ VERSION_SUFFIX="esr"
 RELEASE_TAG="" # Needs only to be set if no tar-ball can be downloaded
 PREV_VERSION="60.6.3" # Prev. version only needed for locales (leave empty to force l10n-generation)
 PREV_VERSION_SUFFIX="esr"
-#SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
+#SKIP_LOCALES="" # Uncomment to skip l10n-generation
 EOF
 
 exit 1
@@ -331,15 +331,3 @@ elif [ -f "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" ]; then
   echo "Moving l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz to l10n-$VERSION$VERSION_SUFFIX.tar.xz"
   mv "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" "l10n-$VERSION$VERSION_SUFFIX.tar.xz"
 fi
-
-# compare-locales
-echo "creating compare-locales"
-if [ -d compare-locales/.hg ]; then
-  pushd compare-locales || exit 1
-  hg pull
-  popd || exit 1
-else
-  hg clone http://hg.mozilla.org/build/compare-locales
-fi
-tar $compression -cf compare-locales.tar.xz --exclude=.hgtags --exclude=.hgignore --exclude=.hg compare-locales
-

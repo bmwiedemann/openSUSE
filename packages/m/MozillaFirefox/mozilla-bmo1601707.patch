@@ -1,7 +1,15 @@
+# HG changeset patch
+# Parent  862430a659a4f1fcbbbbfcf1cba98eb7e31035dc
+
 diff --git a/dom/indexedDB/ActorsParent.cpp b/dom/indexedDB/ActorsParent.cpp
 --- a/dom/indexedDB/ActorsParent.cpp
 +++ b/dom/indexedDB/ActorsParent.cpp
-@@ -24311,9 +24311,9 @@
+@@ -24612,19 +24612,19 @@ nsresult ObjectStoreAddOrPutRequestOp::D
+     }
+   }
+ 
+   // The "|| keyUnset" here is mostly a debugging tool. If a key isn't
+   // specified we should never have a collision and so it shouldn't matter
    // if we allow overwrite or not. By not allowing overwrite we raise
    // detectable errors rather than corrupting data.
    DatabaseConnection::CachedStatement stmt;
@@ -14,16 +22,17 @@ diff --git a/dom/indexedDB/ActorsParent.cpp b/dom/indexedDB/ActorsParent.cpp
    rv = aConnection->GetCachedStatement(
        NS_LITERAL_CSTRING("INSERT ") + optReplaceDirective +
            NS_LITERAL_CSTRING("INTO object_data "
-@@ -25869,7 +25869,7 @@
-     }
-   }
+                              "(object_store_id, key, file_ids, data) "
+                              "VALUES (:") +
+           kStmtParamNameObjectStoreId + NS_LITERAL_CSTRING(", :") +
+           kStmtParamNameKey + NS_LITERAL_CSTRING(", :") +
+           kStmtParamNameFileIds + NS_LITERAL_CSTRING(", :") +
+@@ -26452,19 +26452,19 @@ nsresult Cursor::OpenOp::DoIndexDatabase
+   MOZ_ASSERT(mCursor->mType == OpenCursorParams::TIndexOpenCursorParams);
+   MOZ_ASSERT(mCursor->mObjectStoreId);
+   MOZ_ASSERT(mCursor->mIndexId);
  
--  const auto& comparisonChar =
-+  const auto comparisonChar =
-       isIncreasingOrder ? NS_LITERAL_CSTRING(">") : NS_LITERAL_CSTRING("<");
- 
-   mCursor->mContinueToQuery =
-@@ -26076,9 +26076,9 @@
+   AUTO_PROFILER_LABEL("Cursor::OpenOp::DoIndexDatabaseWork", DOM);
  
    const bool usingKeyRange = mOptionalKeyRange.isSome();
  
@@ -34,9 +43,19 @@ diff --git a/dom/indexedDB/ActorsParent.cpp b/dom/indexedDB/ActorsParent.cpp
 +                              ? NS_LITERAL_CSTRING("unique_index_data")
 +                              : NS_LITERAL_CSTRING("index_data");
  
-   NS_NAMED_LITERAL_CSTRING(sortColumn, "sort_column");
+   // The result of MakeColumnPairSelectionList is stored in a local variable,
+   // since inlining it into the next statement causes a crash on some Mac OS X
+   // builds (see https://bugzilla.mozilla.org/show_bug.cgi?id=1168606#c110).
+   const auto columnPairSelectionList = MakeColumnPairSelectionList(
+       NS_LITERAL_CSTRING("index_table.value"),
+       NS_LITERAL_CSTRING("index_table.value_locale"), kColumnNameAliasSortKey,
+       mCursor->IsLocaleAware());
+@@ -26558,19 +26558,19 @@ nsresult Cursor::OpenOp::DoIndexKeyDatab
+   MOZ_ASSERT(mCursor->mType == OpenCursorParams::TIndexOpenKeyCursorParams);
+   MOZ_ASSERT(mCursor->mObjectStoreId);
+   MOZ_ASSERT(mCursor->mIndexId);
  
-@@ -26198,9 +26198,9 @@
+   AUTO_PROFILER_LABEL("Cursor::OpenOp::DoIndexKeyDatabaseWork", DOM);
  
    const bool usingKeyRange = mOptionalKeyRange.isSome();
  
@@ -47,6 +66,10 @@ diff --git a/dom/indexedDB/ActorsParent.cpp b/dom/indexedDB/ActorsParent.cpp
 +                         ? NS_LITERAL_CSTRING("unique_index_data")
 +                         : NS_LITERAL_CSTRING("index_data");
  
-   NS_NAMED_LITERAL_CSTRING(sortColumn, "sort_column");
- 
-
+   // The result of MakeColumnPairSelectionList is stored in a local variable,
+   // since inlining it into the next statement causes a crash on some Mac OS X
+   // builds (see https://bugzilla.mozilla.org/show_bug.cgi?id=1168606#c110).
+   const auto columnPairSelectionList = MakeColumnPairSelectionList(
+       NS_LITERAL_CSTRING("value"), NS_LITERAL_CSTRING("value_locale"),
+       kColumnNameAliasSortKey, mCursor->IsLocaleAware());
+   const nsCString sortColumnAlias = NS_LITERAL_CSTRING("SELECT ") +

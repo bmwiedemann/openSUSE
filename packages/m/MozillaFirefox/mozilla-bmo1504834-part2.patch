@@ -1,19 +1,14 @@
 # HG changeset patch
-# Parent  6fa4b62427433e8f445d05c557e5db096667d880
+# Parent  0e579dcbf7328dda4512cbdafc9b42acec4935ea
 Skia does not support big endian. The places to fix are too numerous and upstream (skia, not Mozilla)
 has no interest in maintaining big endian.
 So here we try to swizzle the input for skia, so that skia always works on LE, and when it comes
 out again, we transform back to BE.
 
-diff --git a/gfx/2d/ConvolutionFilter.cpp b/gfx/2d/ConvolutionFilter.cpp
---- a/gfx/2d/ConvolutionFilter.cpp
-+++ b/gfx/2d/ConvolutionFilter.cpp
-@@ -30,32 +30,79 @@ bool ConvolutionFilter::GetFilterOffsetA
-                                                  int32_t* aResultLength) {
-   if (aRowIndex >= mFilter->numValues()) {
-     return false;
-   }
-   mFilter->FilterForValue(aRowIndex, aResultOffset, aResultLength);
+diff -r 0e579dcbf732 gfx/2d/ConvolutionFilter.cpp
+--- a/gfx/2d/ConvolutionFilter.cpp	Wed Jan 08 12:17:44 2020 +0100
++++ b/gfx/2d/ConvolutionFilter.cpp	Wed Jan 08 12:17:49 2020 +0100
+@@ -35,9 +35,38 @@
    return true;
  }
  
@@ -52,11 +47,7 @@ diff --git a/gfx/2d/ConvolutionFilter.cpp b/gfx/2d/ConvolutionFilter.cpp
  }
  
  void ConvolutionFilter::ConvolveVertically(uint8_t* const* aSrc, uint8_t* aDst,
-                                            int32_t aRowIndex, int32_t aRowSize,
-                                            bool aHasAlpha) {
-   MOZ_ASSERT(aRowIndex < mFilter->numValues());
- 
-   int32_t filterOffset;
+@@ -49,8 +78,26 @@
    int32_t filterLength;
    auto filterValues =
        mFilter->FilterForValue(aRowIndex, &filterOffset, &filterLength);
@@ -83,20 +74,10 @@ diff --git a/gfx/2d/ConvolutionFilter.cpp b/gfx/2d/ConvolutionFilter.cpp
  }
  
  /* ConvolutionFilter::ComputeResizeFactor is derived from Skia's
-  * SkBitmapScaler/SkResizeFilter::computeFactors. It is governed by Skia's
-  * BSD-style license (see gfx/skia/LICENSE) and the following copyright:
-  * Copyright (c) 2015 Google Inc.
-  */
- bool ConvolutionFilter::ComputeResizeFilter(ResizeMethod aResizeMethod,
-diff --git a/gfx/skia/skia/include/core/SkPreConfig.h b/gfx/skia/skia/include/core/SkPreConfig.h
---- a/gfx/skia/skia/include/core/SkPreConfig.h
-+++ b/gfx/skia/skia/include/core/SkPreConfig.h
-@@ -68,17 +68,17 @@
-         #define SK_CPU_BENDIAN
-     #elif defined(__BYTE_ORDER__) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
-         #define SK_CPU_LENDIAN
-     #elif defined(__sparc) || defined(__sparc__) || \
-       defined(_POWER) || defined(__powerpc__) || \
+diff -r 0e579dcbf732 gfx/skia/skia/include/core/SkPreConfig.h
+--- a/gfx/skia/skia/include/core/SkPreConfig.h	Wed Jan 08 12:17:44 2020 +0100
++++ b/gfx/skia/skia/include/core/SkPreConfig.h	Wed Jan 08 12:17:49 2020 +0100
+@@ -73,7 +73,7 @@
        defined(__ppc__) || defined(__hppa) || \
        defined(__PPC__) || defined(__PPC64__) || \
        defined(_MIPSEB) || defined(__ARMEB__) || \
@@ -105,8 +86,3 @@ diff --git a/gfx/skia/skia/include/core/SkPreConfig.h b/gfx/skia/skia/include/co
        (defined(__sh__) && defined(__BIG_ENDIAN__)) || \
        (defined(__ia64) && defined(__BIG_ENDIAN__))
           #define SK_CPU_BENDIAN
-     #else
-         #define SK_CPU_LENDIAN
-     #endif
- #endif
- 
