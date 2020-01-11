@@ -1,7 +1,7 @@
 #
 # spec file for package bluedevil5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Raymond Wooninck <tittiatcoke@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without lang
 Name:           bluedevil5
-Version:        5.17.4
+Version:        5.17.5
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
