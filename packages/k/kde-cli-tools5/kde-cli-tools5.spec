@@ -1,7 +1,7 @@
 #
 # spec file for package kde-cli-tools5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define kf5_version 5.54.0
 %bcond_without lang
 Name:           kde-cli-tools5
-Version:        5.17.4
+Version:        5.17.5
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
