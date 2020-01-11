@@ -1275,4 +1275,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * NET::StaysOnTop -&gt; NET::KeepAbove (since 5.0)</comment>
     <requestid>754992</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>ac9b7ed08813a3098718cbaf4473ba11</srcmd5>
+    <version>5.17.5</version>
+    <time>1578749962</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
+    <requestid>762006</requestid>
+  </revision>
 </revisionlist>

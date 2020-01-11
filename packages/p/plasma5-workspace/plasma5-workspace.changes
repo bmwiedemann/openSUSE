@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  7 16:24:37 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.5.php
+- Changes since 5.17.4:
+  * Fix build with gpsd 3.20 (kde#425939)
+  * [Notifications] Don't show DrKonqi notifications in history
+  * Revert "Add Meta+Space as a default shortcut to activate KRunner"
+  * [Notifications] Release all cookies when service unregisters
+  * Revert "[sddm-theme] Fix initial focus after SDDM QQC2 Port" (kde#414875)
+  * Keep at least one system monitor alive
+  * Use the right value of EnableMagicMimeActions
+  * [sddm-theme] Fix initial focus after SDDM QQC2 Port
+
+-------------------------------------------------------------------
 Wed Dec  4 08:37:02 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.4
