@@ -1,7 +1,7 @@
 #
 # spec file for package openconnect
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -114,6 +114,8 @@ make %{?_smp_mflags}
 %make_install
 # do not install androit script
 rm %{buildroot}%{_libexecdir}/%{name}/*android.sh
+# remove py2 only script due to python2 removal
+rm %{buildroot}%{_libexecdir}/%{name}/tncc-wrapper.py
 install -D -m0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/openconnect/vpnc-script
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
