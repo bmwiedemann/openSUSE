@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:47:58 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- PackageSlideShow: Do not show medium if there is only one
+  (bsc#1158498)
+- PackageSlideShow: Show hourglass when computing remaining time
+- PackageSlideShow: Never exceed 2 hours for time estimation
+- 4.2.43
+
+-------------------------------------------------------------------
 Thu Jan  2 16:29:45 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Improve warning when all repositories are disabled (bsc#1158512)

@@ -2840,4 +2840,12 @@
     <comment>submit new version 4.2.42</comment>
     <requestid>760602</requestid>
   </revision>
+  <revision rev="384" vrev="1">
+    <srcmd5>a2d789287b799b44da6f381de92952fe</srcmd5>
+    <version>4.2.43</version>
+    <time>1578750456</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.43</comment>
+    <requestid>762868</requestid>
+  </revision>
 </revisionlist>
