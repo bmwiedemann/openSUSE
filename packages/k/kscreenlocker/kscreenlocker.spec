@@ -1,7 +1,7 @@
 #
 # spec file for package kscreenlocker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
+%{!?_distconfdir:%global _distconfdir %_sysconfdir}
+
 %bcond_without lang
 Name:           kscreenlocker
-Version:        5.17.4
+Version:        5.17.5
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
@@ -29,7 +31,7 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-
 Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-Source3:        kscreenlocker
+Source3:        kde
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
@@ -88,12 +90,12 @@ Development files for Library and components for secure lock screen architecture
 %setup -q -n %{name}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DKDE4_COMMON_PAM_SERVICE=kscreenlocker -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+  %cmake_kf5 -d build -- -DKDE4_COMMON_PAM_SERVICE=kde -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %make_jobs
 
 %install
   # Ship our own file to not depend on a display manager being installed (boo#1108329)
-  install -D -m0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/kscreenlocker
+  install -D -m0644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/kde
   %kf5_makeinstall -C build
 %if %{with lang}
   %kf5_find_lang
@@ -126,7 +128,7 @@ exit 0
 
 %files
 %license COPYING*
-%config(noreplace) %{_sysconfdir}/pam.d/kscreenlocker
+%{_distconfdir}/pam.d/kde
 %{_kf5_libdir}/libexec/kcheckpass
 %{_kf5_libdir}/libexec/kscreenlocker_greet
 %{_kf5_servicesdir}/

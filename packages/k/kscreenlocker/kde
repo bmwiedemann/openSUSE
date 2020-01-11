@@ -1,4 +1,6 @@
 #%PAM-1.0
+# This service is only used by kcheckpass for unlocking,
+# so only auth is really relevant here.
 auth     include        common-auth
 account  include        common-account
 password include        common-password
