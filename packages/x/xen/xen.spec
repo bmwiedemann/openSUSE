@@ -60,7 +60,7 @@ ExclusiveArch:  %ix86 x86_64 aarch64
 %define with_gcc48 0
 %define _fwdefdir /etc/sysconfig/SuSEfirewall2.d/services
 %systemd_requires
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %define with_systemd_modules_load %{_prefix}/lib/modules-load.d
 PreReq:         %fillup_prereq
 %ifarch %arm aarch64
@@ -108,7 +108,7 @@ BuildRequires:  ocaml-runtime
 BuildRequires:  acpica
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  xz-devel
 %ifarch x86_64
 BuildRequires:  gcc-32bit

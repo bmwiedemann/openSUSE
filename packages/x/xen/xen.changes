@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:43:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Wed Dec 18 10:16:52 MST 2019 - carnold@suse.com
 
 - bsc#1159320 - Xen logrotate file needs updated
