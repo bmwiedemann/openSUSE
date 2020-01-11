@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.5.php
+- Changes since 5.17.4:
+  * [Notifications KCM] Fixup current item syncing logic (kde#410842)
+  * [KRunner KCM] Mark KCM as dirty when plugin configuration changes
+  * [Pager] Fix switching pages on drag (kde#415423)
+  * [Colors KCM] Increase delegate height
+  * Fix regression in "Port the pager applet away from QtWidgets" (kde#414849)
+  * [KCMs/Activities] Fix jagginess for activities list icons on high DPI systems (kde#414945)
+  * [Icons KCM] Use help-browser icon
+
+-------------------------------------------------------------------
 Wed Dec  4 08:37:01 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.4
