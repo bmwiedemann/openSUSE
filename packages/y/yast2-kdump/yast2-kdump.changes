@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 14:25:28 CET 2020 - schubi@suse.de
+
+- Showing default (expected) values for high/low kdump memory.
+  (bsc#1153940)
+- 4.2.7
+
+-------------------------------------------------------------------
 Wed Oct 30 10:48:37 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - fix crash for empty kdump section (related to change for
