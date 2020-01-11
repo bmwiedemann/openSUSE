@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  7 16:24:38 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.5.php
+- Changes since 5.17.4:
+  * Do not crash when changing advanced IPv4 configuration (kde#415856)
+  * Port KCM menu away from PlasmaComponents (kde#414762)
+  * Fortisslvpn: add option to ignore the password BUG: 414975 (kde#414975)
+
+-------------------------------------------------------------------
 Wed Dec  4 08:37:02 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.4
