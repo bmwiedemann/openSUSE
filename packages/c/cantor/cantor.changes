@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:08:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Changes since 19.12.0:
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
 Mon Dec 23 07:37:50 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add necessary Requires to devel package
