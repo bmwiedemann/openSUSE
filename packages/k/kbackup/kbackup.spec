@@ -1,7 +1,7 @@
 #
 # spec file for package kbackup
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kbackup
-Version:        19.12.0
+Version:        19.12.1
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
