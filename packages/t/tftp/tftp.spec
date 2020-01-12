@@ -1,7 +1,7 @@
 #
 # spec file for package tftp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           tftp
 Version:        5.2
 Release:        0
 Summary:        Trivial File Transfer Protocol (TFTP)
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Ftp/Clients
-Url:            http://www.kernel.org/pub/software/network/tftp/
+URL:            https://www.kernel.org/pub/software/network/tftp/
 Source:         http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.bz2
 Source3:        tftp.service
 Source4:        tftp.socket
@@ -41,18 +40,17 @@ Patch7:         tftp-hpa-0.48-macros-crash.patch
 Patch8:         tftp-hpa-0.48-macros-v6mapped.patch
 Patch43:        tftp-config_h.patch
 BuildRequires:  autoconf
+BuildRequires:  binutils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcpd-devel
 Requires:       netcfg
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Recommends:     inet-daemon
 Conflicts:      atftp
 Provides:       tftp(client)
 Provides:       tftp(server)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  binutils-devel
 
 %description
 The Trivial File Transfer Protocol (TFTP) is normally used only for
@@ -72,6 +70,7 @@ component configuration files.
 
 %build
 autoreconf -fi
+export CFLAGS="%{optflags} -fcommon"
 %configure \
   --enable-largefile \
   --with-tcpwrappers \
@@ -111,14 +110,13 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %service_del_postun %{name}.service %{name}.socket
 
 %files
-%defattr(-,root,root)
 %doc README README.security tftpd/sample.rules
 %{_bindir}/tftp
 %{_sbindir}/in.tftpd
 %{_sbindir}/rctftp
-%{_mandir}/man1/tftp.1%{ext_man}
-%{_mandir}/man8/in.tftpd.8%{ext_man}
-%{_mandir}/man8/tftpd.8%{ext_man}
+%{_mandir}/man1/tftp.1%{?ext_man}
+%{_mandir}/man8/in.tftpd.8%{?ext_man}
+%{_mandir}/man8/tftpd.8%{?ext_man}
 %{_unitdir}/tftp.service
 %{_unitdir}/tftp.socket
 

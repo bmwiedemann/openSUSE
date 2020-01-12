@@ -301,4 +301,12 @@
     <comment></comment>
     <requestid>738539</requestid>
   </revision>
+  <revision rev="40" vrev="21">
+    <srcmd5>cd72be1075446b6bc19818b5a7c219d5</srcmd5>
+    <version>5.2</version>
+    <time>1578867344</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass fcommon to cflags wrt bsc#1160297</comment>
+    <requestid>761757</requestid>
+  </revision>
 </revisionlist>
