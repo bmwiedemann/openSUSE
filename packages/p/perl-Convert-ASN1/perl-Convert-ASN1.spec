@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Convert-ASN1
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           perl-Convert-ASN1
 Version:        0.27
 Release:        0
 %define cpan_name Convert-ASN1
-Summary:        Asn.1 Encode/Decode Library
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        ASN.1 Encode/Decode library
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Convert-ASN1/
-Source:         http://www.cpan.org/authors/id/G/GB/GBARR/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        http://www.cpan.org/authors/id/G/GB/GBARR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         Convert-ASN1-0.22-test.diff
 BuildArch:      noarch
@@ -44,11 +44,11 @@ rules.
 %patch0 
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -57,6 +57,7 @@ rules.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc ChangeLog examples LICENSE mkparse OldChanges parser.y README.md
+%doc ChangeLog examples mkparse OldChanges parser.y README.md
+%license LICENSE
 
 %changelog
