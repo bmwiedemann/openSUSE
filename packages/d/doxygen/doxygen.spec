@@ -1,7 +1,7 @@
 #
 # spec file for package doxygen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 # build with "--with libclang" to enable libclang support
 %bcond_with libclang
-
 Name:           doxygen
 Version:        1.8.16
 Release:        0
@@ -26,7 +25,7 @@ Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Tools/Doc Generators
-Url:            http://www.doxygen.nl/
+URL:            http://www.doxygen.nl/
 Source0:        http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
 # suse specific
 Patch0:         %{name}-modify_footer.patch
@@ -39,18 +38,20 @@ Patch5:         doxygen-git-not-required.patch
 Patch6:         doxygen-llvm-libs.patch
 # PATCH-FIX-UPSTREAM: Populate FILE_PATTERN default if not set (issue#7190)
 Patch7:         PR_7193_fix_blank_file_patterns.patch
+# PATCH-FIX-UPSTREAM Including external tag files with TOC produces a broken index.qhp
+Patch8:         0001-issue-7248-Including-external-tag-files-with-TOC-pro.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-%if %{with libclang}
-BuildRequires:  llvm-clang-devel
-%endif
 # Do not bother building documentation with latex since it is present on the
 # web trivialy for all versions of doxygen
 Obsoletes:      doxygen-doc
+%if %{with libclang}
+BuildRequires:  llvm-clang-devel
+%endif
 
 %description
 Doxygen is a documentation system for C, C++, Java, and IDL. It can
@@ -70,6 +71,7 @@ as well.
 %patch6
 %endif
 %patch7 -p1
+%patch8 -p1
 
 %build
 %cmake \
@@ -85,7 +87,7 @@ as well.
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_STATIC_LIBS=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

@@ -854,4 +854,14 @@
   doxygen-dot-one-thread.patch (forwarded request 746429 from StefanBruens)</comment>
     <requestid>746480</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>055d2a966844e2170f8a91422ab4c294</srcmd5>
+    <version>1.8.16</version>
+    <time>1578867488</time>
+    <user>dimstar_suse</user>
+    <comment>- Use modern cmake macros
+
+- Use modern cmake macros (forwarded request 762640 from pluskalm)</comment>
+    <requestid>762643</requestid>
+  </revision>
 </revisionlist>

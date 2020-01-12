@@ -1,7 +1,7 @@
 #
 # spec file for package doxywizard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Tools/Doc Generators
-Url:            http://www.doxygen.nl/
+URL:            http://www.doxygen.nl/
 Source:         http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
@@ -35,14 +35,15 @@ BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
-Requires:       doxygen = %{version}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+Requires:       doxygen = %{version}
 %if 0%{?suse_version} > 1230 && 0%{?suse_version} != 1315
 # for make tests
 BuildRequires:  libxml2-tools
@@ -68,16 +69,14 @@ export CXXFLAGS="%{optflags} -fPIC"
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DBUILD_SHARED_LIBS=OFF \
     -DBUILD_STATIC_LIBS=ON
-%make_jobs
+%cmake_build
 
 %if 0%{?suse_version} > 1230 && 0%{?suse_version} != 1315
 %check
 export LANG=C.UTF-8
 # testing doxygen package here to avoid build
 # cycle between latex and doxygen
-pushd build
-make tests %{?_smp_mflags}
-popd
+%ctest
 %endif
 
 %install
