@@ -358,4 +358,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment></comment>
     <requestid>759662</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>f5be3baa83aed107cf49a2ea0d72ca49</srcmd5>
+    <version>1.7.1</version>
+    <time>1578867400</time>
+    <user>dimstar_suse</user>
+    <comment>Drop ids.tar.bz2 in favor of using hwdata for pci.ids and usb.ids</comment>
+    <requestid>761909</requestid>
+  </revision>
 </revisionlist>
