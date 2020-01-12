@@ -574,4 +574,17 @@
     <comment></comment>
     <requestid>760349</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>dc422563b0a2e1ecbe0204825ef0f349</srcmd5>
+    <version>3.15.1</version>
+    <time>1578867340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.15.1:
+  * use correct create mode in examples/btmp (#257)
+  * fix several bugs found by fuzzing (#254)
+  * do not abort globbing on a broken symlink (#251)
+  * rearrange logrotate.8 man page to improve readability (#248)
+  * encourage admins to use the su directive in logrotate.8 man page (#236)</comment>
+    <requestid>761751</requestid>
+  </revision>
 </revisionlist>

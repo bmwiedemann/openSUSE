@@ -17,12 +17,12 @@
 
 
 Name:           logrotate
-Version:        3.15.0
+Version:        3.15.1
 Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later
 Group:          System/Base
-URL:            https://github.com/%{name}/%{name}
+URL:            https://github.com/logrotate/logrotate
 Source0:        https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # SUSE specific logrotate configurations

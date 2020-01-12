@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  8 08:28:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.15.1:
+  * use correct create mode in examples/btmp (#257)
+  * fix several bugs found by fuzzing (#254)
+  * do not abort globbing on a broken symlink (#251)
+  * rearrange logrotate.8 man page to improve readability (#248)
+  * encourage admins to use the su directive in logrotate.8 man page (#236)
+
+-------------------------------------------------------------------
 Thu Jan  2 07:46:43 CET 2020 - kukuk@suse.de
 
 - Use systemd_ordering instead of systemd_requires
