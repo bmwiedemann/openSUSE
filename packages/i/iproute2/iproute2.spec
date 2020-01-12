@@ -1,7 +1,7 @@
 #
 # spec file for package iproute2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
-Url:            https://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
+URL:            https://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 # Using GPL-2.0 instead of GPL-2.0+ because of tc_skbedit.h and tc/q_multiq.c
 
 #DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
@@ -37,6 +37,7 @@ Patch3:         add-explicit-typecast-to-avoid-gcc-warning.patch
 Patch4:         xfrm-support-displaying-transformations-used-for-Mob.patch
 Patch6:         split-link-and-compile-steps-for-binaries.patch
 Patch7:         ss-fix-end-of-line-printing-in-misc-ss.c.patch
+Patch8:         no-double-definitions.patch
 Patch101:       Revert-tc-ematch-fix-deprecated-yacc-warning.patch
 Patch102:       Revert-emp-fix-warning-on-deprecated-bison-directive.patch
 Patch201:       bpf-data-section-support-poc.patch
@@ -87,7 +88,7 @@ bash command line completion support for iproute.
 
 %prep
 %setup -qn %name-%rversion
-%patch -P 1 -P 2 -P 3 -P 4 -P 6 -P 7 -P 201 -P 202 -p1
+%patch -P 1 -P 2 -P 3 -P 4 -P 6 -P 7 -P 8 -P 201 -P 202 -p1
 %if 0%{?suse_version} < 1500
 %patch -P 101 -p1
 %endif

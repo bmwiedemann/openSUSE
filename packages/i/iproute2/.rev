@@ -846,4 +846,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment></comment>
     <requestid>753328</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>d72eae5b9083b08d0c76e67a9a5eaaaa</srcmd5>
+    <version>5.4</version>
+    <time>1578867387</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-double-definitions.patch [boo#1160271]</comment>
+    <requestid>761802</requestid>
+  </revision>
 </revisionlist>
