@@ -1,7 +1,7 @@
 #
 # spec file for package pcp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -281,7 +281,7 @@ BuildRequires:  initscripts
 %endif
 BuildRequires:  man
 %if !%{disable_systemd}
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd) 
 %{?systemd_requires}
 %endif
 %if !%{disable_qt}
@@ -800,7 +800,7 @@ Zabbix via the Zabbix agent - see zbxpcp(3) for further details.
 Summary:        Performance Co-Pilot tools for exporting PCP metrics to ElasticSearch
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-URL:            https://pcp.io
+Url:            https://pcp.io
 Requires:       %{lib_pkg} >= %{version}-%{release}
 %if !%{disable_python3}
 Requires:       python3-pcp = %{version}-%{release}
@@ -1625,7 +1625,7 @@ collecting metrics about Intel MIC cards.
 Summary:        Performance Co-Pilot (PCP) metrics for HAProxy
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-URL:            https://pcp.io
+Url:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -2124,7 +2124,7 @@ collecting metrics about web server logs.
 Summary:        Performance Co-Pilot (PCP) Zeroconf Package
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-URL:            https://pcp.io
+Url:            https://pcp.io
 Requires:       pcp
 Requires:       pcp-doc
 Requires:       pcp-pmda-dm
