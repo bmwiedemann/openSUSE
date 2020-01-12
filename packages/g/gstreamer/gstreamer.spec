@@ -38,6 +38,8 @@ Source99:       baselibs.conf
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
+# PATCH-FIX-UPSTREAM gstreamer-revert-encforce-elements.patch -- Revert enforce elements
+Patch3:         gstreamer-revert-encforce-elements.patch
 
 BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
@@ -165,6 +167,7 @@ gnome-patch-translation-prepare po gstreamer-%{gst_branch}
 # The order matters. Only run gnome-patch-translation-update after patching!
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 gnome-patch-translation-update po gstreamer-%{gst_branch}
 
 %build
