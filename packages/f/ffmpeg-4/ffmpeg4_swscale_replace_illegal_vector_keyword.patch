@@ -27,10 +27,10 @@ Signed-off-by: Daniel Kolesa <daniel at octaforge.org>
  libswscale/ppc/swscale_vsx.c     |  882 +++++++++++++++++++--------------------
  2 files changed, 459 insertions(+), 459 deletions(-)
 
-Index: ffmpeg-4.2/libswscale/ppc/swscale_altivec.c
+Index: ffmpeg-4.2.1/libswscale/ppc/swscale_altivec.c
 ===================================================================
---- ffmpeg-4.2.orig/libswscale/ppc/swscale_altivec.c
-+++ ffmpeg-4.2/libswscale/ppc/swscale_altivec.c
+--- ffmpeg-4.2.1.orig/libswscale/ppc/swscale_altivec.c
++++ ffmpeg-4.2.1/libswscale/ppc/swscale_altivec.c
 @@ -153,13 +153,13 @@ static void yuv2plane1_float_altivec(con
      const int add = (1 << (shift - 1));
      const int clip = (1 << 16) - 1;
@@ -88,10 +88,10 @@ Index: ffmpeg-4.2/libswscale/ppc/swscale_altivec.c
  
          vec_st(vd, 0, (float *) &dest[i]);
      }
-Index: ffmpeg-4.2/libswscale/ppc/swscale_vsx.c
+Index: ffmpeg-4.2.1/libswscale/ppc/swscale_vsx.c
 ===================================================================
---- ffmpeg-4.2.orig/libswscale/ppc/swscale_vsx.c
-+++ ffmpeg-4.2/libswscale/ppc/swscale_vsx.c
+--- ffmpeg-4.2.1.orig/libswscale/ppc/swscale_vsx.c
++++ ffmpeg-4.2.1/libswscale/ppc/swscale_vsx.c
 @@ -103,9 +103,9 @@ static void yuv2plane1_8_vsx(const int16
      const int dst_u = -(uintptr_t)dest & 15;
      int i, j;

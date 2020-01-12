@@ -1,0 +1,32 @@
+From 929e5159bc13da374b83f5627879c607acce180b Mon Sep 17 00:00:00 2001
+From: Gilles Bouthenot <misc@atomas.com>
+Date: Wed, 8 Jan 2020 19:47:55 +0100
+Subject: [PATCH] avformat/id3v2enc: fix bad ID3v2 tag length
+
+---
+ libavformat/id3v2enc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: ffmpeg-4.2.1/libavformat/id3v2enc.c
+===================================================================
+--- ffmpeg-4.2.1.orig/libavformat/id3v2enc.c
++++ ffmpeg-4.2.1/libavformat/id3v2enc.c
+@@ -268,15 +268,15 @@ static int write_ctoc(AVFormatContext *s
+     if ((ret = avio_open_dyn_buf(&dyn_bc)) < 0)
+         goto fail;
+ 
+-    id3->len += avio_put_str(dyn_bc, "toc");
++    avio_put_str(dyn_bc, "toc");
+     avio_w8(dyn_bc, 0x03);
+     avio_w8(dyn_bc, s->nb_chapters);
+     for (int i = 0; i < s->nb_chapters; i++) {
+         snprintf(name, 122, "ch%d", i);
+-        id3->len += avio_put_str(dyn_bc, name);
++        avio_put_str(dyn_bc, name);
+     }
+     len = avio_close_dyn_buf(dyn_bc, &dyn_buf);
+-    id3->len += 16 + ID3v2_HEADER_SIZE;
++    id3->len += len + ID3v2_HEADER_SIZE;
+ 
+     avio_wb32(s->pb, MKBETAG('C', 'T', 'O', 'C'));
+     avio_wb32(s->pb, len);

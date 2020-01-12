@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,7 +102,7 @@ Release:        0
 Summary:        Library for working with various multimedia formats
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            https://ffmpeg.org/
+URL:            https://ffmpeg.org/
 
 #Freshcode-URL:    http://freshcode.club/projects/ffmpeg
 #Git-Clone:     git://source.ffmpeg.org/ffmpeg
@@ -122,6 +122,7 @@ Patch6:         ffmpeg-4.2-dlopen-fdk_aac.patch
 # https://trac.ffmpeg.org/ticket/7861
 Patch7:         ffmpeg4_swscale_replace_illegal_vector_keyword.patch
 Patch8:         ffmpeg4_swscale_fix_altivec_vsx_recent_gcc.patch
+Patch9:         929e5159bc13da374b83f5627879c607acce180b.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

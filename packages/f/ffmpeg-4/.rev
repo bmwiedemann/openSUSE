@@ -240,4 +240,12 @@
     <comment>- Drop unused liboil BuildRequires. (forwarded request 760067 from StefanBruens)</comment>
     <requestid>760194</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>7ba1ca990f9ee6a05b1460a7ac1f0aaa</srcmd5>
+    <version>4.2.1</version>
+    <time>1578867509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762875</requestid>
+  </revision>
 </revisionlist>
