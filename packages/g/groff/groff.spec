@@ -1,7 +1,7 @@
 #
 # spec file for package groff
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,9 @@ BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xt)
 Requires:       ghostscript-library
+# ghostscript-library pulls in X and stuff anyways, so let's
+# piggyback on that one
+Supplements:    packageand(groff:ghostscript-library)
 # requires the -base package
 Requires:       groff = %{version}
 Requires:       netpbm
@@ -87,8 +90,6 @@ Obsoletes:      groff-devx <= 1.21
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%else
-Recommends:     groff-full
 %endif
 
 %description
