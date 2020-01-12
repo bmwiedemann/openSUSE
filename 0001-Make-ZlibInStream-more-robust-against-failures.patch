@@ -1,0 +1,147 @@
+From d61a767d6842b530ffb532ddd5a3d233119aad40 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Tue, 10 Sep 2019 11:05:48 +0200
+Subject: [PATCH] Make ZlibInStream more robust against failures
+
+Move the checks around to avoid missing cases where we might access
+memory that is no longer valid. Also avoid touching the underlying
+stream implicitly (e.g. via the destructor) as it might also no
+longer be valid.
+
+A malicious server could theoretically use this for remote code
+execution in the client.
+
+Issue found by Pavel Cheremushkin from Kaspersky Lab
+---
+ common/rdr/ZlibInStream.cxx | 13 +++++++------
+ common/rdr/ZlibInStream.h   |  2 +-
+ common/rfb/CMsgReader.cxx   |  3 ++-
+ common/rfb/SMsgReader.cxx   |  3 ++-
+ common/rfb/TightDecoder.cxx |  3 ++-
+ common/rfb/zrleDecode.h     |  3 ++-
+ 6 files changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/common/rdr/ZlibInStream.cxx b/common/rdr/ZlibInStream.cxx
+index 4053bd19..a361010c 100644
+--- a/common/rdr/ZlibInStream.cxx
++++ b/common/rdr/ZlibInStream.cxx
+@@ -52,16 +52,16 @@ int ZlibInStream::pos()
+   return offset + ptr - start;
+ }
+ 
+-void ZlibInStream::removeUnderlying()
++void ZlibInStream::flushUnderlying()
+ {
+   ptr = end = start;
+-  if (!underlying) return;
+ 
+   while (bytesIn > 0) {
+     decompress(true);
+     end = start; // throw away any data
+   }
+-  underlying = 0;
++
++  setUnderlying(NULL, 0);
+ }
+ 
+ void ZlibInStream::reset()
+@@ -90,7 +90,7 @@ void ZlibInStream::init()
+ void ZlibInStream::deinit()
+ {
+   assert(zs != NULL);
+-  removeUnderlying();
++  setUnderlying(NULL, 0);
+   inflateEnd(zs);
+   delete zs;
+   zs = NULL;
+@@ -100,8 +100,6 @@ int ZlibInStream::overrun(int itemSize, int nItems, bool wait)
+ {
+   if (itemSize > bufSize)
+     throw Exception("ZlibInStream overrun: max itemSize exceeded");
+-  if (!underlying)
+-    throw Exception("ZlibInStream overrun: no underlying stream");
+ 
+   if (end - ptr != 0)
+     memmove(start, ptr, end - ptr);
+@@ -127,6 +125,9 @@ int ZlibInStream::overrun(int itemSize, int nItems, bool wait)
+ 
+ bool ZlibInStream::decompress(bool wait)
+ {
++  if (!underlying)
++    throw Exception("ZlibInStream overrun: no underlying stream");
++
+   zs->next_out = (U8*)end;
+   zs->avail_out = start + bufSize - end;
+ 
+diff --git a/common/rdr/ZlibInStream.h b/common/rdr/ZlibInStream.h
+index 6bd4da4c..86ba1ff1 100644
+--- a/common/rdr/ZlibInStream.h
++++ b/common/rdr/ZlibInStream.h
+@@ -38,7 +38,7 @@ namespace rdr {
+     virtual ~ZlibInStream();
+ 
+     void setUnderlying(InStream* is, int bytesIn);
+-    void removeUnderlying();
++    void flushUnderlying();
+     int pos();
+     void reset();
+ 
+diff --git a/common/rfb/CMsgReader.cxx b/common/rfb/CMsgReader.cxx
+index a9e12d70..52d40ce7 100644
+--- a/common/rfb/CMsgReader.cxx
++++ b/common/rfb/CMsgReader.cxx
+@@ -242,7 +242,8 @@ void CMsgReader::readExtendedClipboard(rdr::S32 len)
+       num++;
+     }
+ 
+-    zis.removeUnderlying();
++    zis.flushUnderlying();
++    zis.setUnderlying(NULL, 0);
+ 
+     handler->handleClipboardProvide(flags, lengths, buffers);
+ 
+diff --git a/common/rfb/SMsgReader.cxx b/common/rfb/SMsgReader.cxx
+index ab42e59a..dc7ddea6 100644
+--- a/common/rfb/SMsgReader.cxx
++++ b/common/rfb/SMsgReader.cxx
+@@ -293,7 +293,8 @@ void SMsgReader::readExtendedClipboard(rdr::S32 len)
+       num++;
+     }
+ 
+-    zis.removeUnderlying();
++    zis.flushUnderlying();
++    zis.setUnderlying(NULL, 0);
+ 
+     handler->handleClipboardProvide(flags, lengths, buffers);
+ 
+diff --git a/common/rfb/TightDecoder.cxx b/common/rfb/TightDecoder.cxx
+index 5b7c553d..ebc98b06 100644
+--- a/common/rfb/TightDecoder.cxx
++++ b/common/rfb/TightDecoder.cxx
+@@ -341,7 +341,8 @@ void TightDecoder::decodeRect(const Rect& r, const void* buffer,
+ 
+     zis[streamId].readBytes(netbuf, dataSize);
+ 
+-    zis[streamId].removeUnderlying();
++    zis[streamId].flushUnderlying();
++    zis[streamId].setUnderlying(NULL, 0);
+     delete ms;
+ 
+     bufptr = netbuf;
+diff --git a/common/rfb/zrleDecode.h b/common/rfb/zrleDecode.h
+index 32b5c92b..f4325385 100644
+--- a/common/rfb/zrleDecode.h
++++ b/common/rfb/zrleDecode.h
+@@ -174,7 +174,8 @@ void ZRLE_DECODE (const Rect& r, rdr::InStream* is,
+     }
+   }
+ 
+-  zis->removeUnderlying();
++  zis->flushUnderlying();
++  zis->setUnderlying(NULL, 0);
+ }
+ 
+ #undef ZRLE_DECODE
+-- 
+2.16.4
+

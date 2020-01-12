@@ -1,0 +1,57 @@
+From cd1d650c532a46e95a1229dffaf281c76a50cdfe Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Tue, 10 Sep 2019 16:07:50 +0200
+Subject: [PATCH] Add sanity checks for PixelFormat shift values
+
+Otherwise we might be tricked in to reading and writing things at
+incorrect offsets for pixels which ultimately could result in an
+attacker writing things to the stack or heap and executing things
+they shouldn't.
+
+This only affects the server as the client never uses the pixel
+format suggested by th server.
+
+Issue found by Pavel Cheremushkin from Kaspersky Lab.
+---
+ common/rfb/PixelFormat.cxx | 7 +++++++
+ tests/unit/pixelformat.cxx | 6 ++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/common/rfb/PixelFormat.cxx b/common/rfb/PixelFormat.cxx
+index 2d8142d1..789c43ed 100644
+--- a/common/rfb/PixelFormat.cxx
++++ b/common/rfb/PixelFormat.cxx
+@@ -682,6 +682,13 @@ bool PixelFormat::isSane(void)
+   if (totalBits > depth)
+     return false;
+ 
++  if ((bits(redMax) + redShift) > bpp)
++    return false;
++  if ((bits(greenMax) + greenShift) > bpp)
++    return false;
++  if ((bits(blueMax) + blueShift) > bpp)
++    return false;
++
+   if (((redMax << redShift) & (greenMax << greenShift)) != 0)
+     return false;
+   if (((redMax << redShift) & (blueMax << blueShift)) != 0)
+diff --git a/tests/unit/pixelformat.cxx b/tests/unit/pixelformat.cxx
+index 7b6087f7..46fecfb4 100644
+--- a/tests/unit/pixelformat.cxx
++++ b/tests/unit/pixelformat.cxx
+@@ -108,6 +108,12 @@ int main(int argc, char** argv)
+ 
+     doTest(true, 32, 16, false, true, 255, 255, 255, 0, 8, 16);
+ 
++    /* Invalid shift values */
++
++    doTest(true, 32, 24, false, true, 255, 255, 255, 25, 8, 16);
++    doTest(true, 32, 24, false, true, 255, 255, 255, 0, 25, 16);
++    doTest(true, 32, 24, false, true, 255, 255, 255, 0, 8, 25);
++
+     /* Overlapping channels */
+ 
+     doTest(true, 32, 24, false, true, 255, 255, 255, 0, 7, 16);
+-- 
+2.16.4
+

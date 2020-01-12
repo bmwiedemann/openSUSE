@@ -1,0 +1,54 @@
+From 9f615301aba1cc54a749950bf9462c5a85217bc4 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Tue, 10 Sep 2019 15:25:30 +0200
+Subject: [PATCH] Add write protection to OffsetPixelBuffer
+
+No one should every try to write to this buffer. Enforce that by
+throwing an exception if any one tries to get a writeable pointer
+to the data.
+---
+ common/rfb/EncodeManager.cxx | 6 ++++++
+ common/rfb/EncodeManager.h   | 3 +++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/common/rfb/EncodeManager.cxx b/common/rfb/EncodeManager.cxx
+index 54f7102b..92ac5676 100644
+--- a/common/rfb/EncodeManager.cxx
++++ b/common/rfb/EncodeManager.cxx
+@@ -28,6 +28,7 @@
+ #include <rfb/SMsgWriter.h>
+ #include <rfb/UpdateTracker.h>
+ #include <rfb/LogWriter.h>
++#include <rfb/Exception.h>
+ 
+ #include <rfb/RawEncoder.h>
+ #include <rfb/RREEncoder.h>
+@@ -1053,6 +1054,11 @@ void EncodeManager::OffsetPixelBuffer::update(const PixelFormat& pf,
+   setBuffer(width, height, (rdr::U8*)data_, stride_);
+ }
+ 
++rdr::U8* EncodeManager::OffsetPixelBuffer::getBufferRW(const Rect& r, int* stride)
++{
++  throw rfb::Exception("Invalid write attempt to OffsetPixelBuffer");
++}
++
+ // Preprocessor generated, optimised methods
+ 
+ #define BPP 8
+diff --git a/common/rfb/EncodeManager.h b/common/rfb/EncodeManager.h
+index bdae9063..f8201c34 100644
+--- a/common/rfb/EncodeManager.h
++++ b/common/rfb/EncodeManager.h
+@@ -148,6 +148,9 @@ namespace rfb {
+ 
+       void update(const PixelFormat& pf, int width, int height,
+                   const rdr::U8* data_, int stride);
++
++    private:
++      virtual rdr::U8* getBufferRW(const Rect& r, int* stride);
+     };
+ 
+     OffsetPixelBuffer offsetPixelBuffer;
+-- 
+2.16.4
+

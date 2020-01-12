@@ -1,0 +1,53 @@
+From 05e28490873a861379c943bf616614b78b558b89 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Wed, 2 Oct 2019 16:06:08 +0200
+Subject: [PATCH] Handle pixel formats with odd shift values
+
+Our fast paths assume that each channel fits in to a separate byte.
+That means the shift needs to be a multiple of 8. Start actually
+checking this so that a client cannot trip us up and possibly cause
+incorrect code exection.
+
+Issue found by Pavel Cheremushkin from Kaspersky Lab.
+---
+ common/rfb/PixelFormat.cxx | 6 ++++++
+ tests/unit/pixelformat.cxx | 6 ++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/common/rfb/PixelFormat.cxx b/common/rfb/PixelFormat.cxx
+index 789c43ed..1b4ab1ba 100644
+--- a/common/rfb/PixelFormat.cxx
++++ b/common/rfb/PixelFormat.cxx
+@@ -206,6 +206,12 @@ bool PixelFormat::is888(void) const
+     return false;
+   if (blueMax != 255)
+     return false;
++  if ((redShift & 0x7) != 0)
++    return false;
++  if ((greenShift & 0x7) != 0)
++    return false;
++  if ((blueShift & 0x7) != 0)
++    return false;
+ 
+   return true;
+ }
+diff --git a/tests/unit/pixelformat.cxx b/tests/unit/pixelformat.cxx
+index cfae2f9d..2e0c0bbb 100644
+--- a/tests/unit/pixelformat.cxx
++++ b/tests/unit/pixelformat.cxx
+@@ -170,6 +170,12 @@ void is888Tests()
+ 
+     do888Test(false, 8, 8, false, false, 0, 0, 0, 0, 0, 0);
+ 
++    /* Odd shifts */
++
++    do888Test(false, 32, 24, false, true, 255, 255, 255, 0, 8, 18);
++    do888Test(false, 32, 24, false, true, 255, 255, 255, 0, 11, 24);
++    do888Test(false, 32, 24, false, true, 255, 255, 255, 4, 16, 24);
++
+     printf("\n");
+ }
+ 
+-- 
+2.16.4
+

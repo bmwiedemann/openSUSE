@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -141,6 +141,19 @@ Patch9:         u_change-button-layout-in-ServerDialog.patch
 Patch10:        n_correct_path_in_desktop_file.patch
 Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
 Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
+Patch21:        0001-Make-ZlibInStream-more-robust-against-failures.patch
+Patch22:        0002-Encapsulate-PixelBuffer-internal-details.patch
+Patch23:        0003-Restrict-PixelBuffer-dimensions-to-safe-values.patch
+Patch24:        0004-Add-write-protection-to-OffsetPixelBuffer.patch
+Patch25:        0005-Handle-empty-Tight-gradient-rects.patch
+Patch26:        0006-Add-unit-test-for-PixelFormat-sanity-checks.patch
+Patch27:        0007-Fix-depth-sanity-test-in-PixelFormat.patch
+Patch28:        0008-Add-sanity-checks-for-PixelFormat-shift-values.patch
+Patch29:        0009-Remove-unused-FixedMemOutStream.patch
+Patch30:        0010-Use-size_t-for-lengths-in-stream-objects.patch
+Patch31:        0011-Be-defensive-about-overflows-in-stream-objects.patch
+Patch32:        0012-Add-unit-tests-for-PixelFormat.is888-detection.patch
+Patch33:        0013-Handle-pixel-formats-with-odd-shift-values.patch
 
 %description
 TigerVNC is an implementation of VNC (Virtual Network Computing), a
@@ -260,6 +273,19 @@ cp -r /usr/src/xserver/* unix/xserver/
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
 
 pushd unix/xserver
 patch -p1 < ../xserver120.patch
