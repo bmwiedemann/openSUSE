@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  9 13:23:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable python bindings (python2-only):
+  + Drop python-devel BuildRequires.
+  + Drop gamin-fix_python_main.patch: no longer needed.
+  + No longer build python-gamin sub-package.
+
+-------------------------------------------------------------------
 Mon Aug  6 09:33:25 UTC 2018 - dimstar@opensuse.org
 
 - Add baselibs.conf to the file source list.

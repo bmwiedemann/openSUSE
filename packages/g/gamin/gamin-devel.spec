@@ -1,7 +1,7 @@
 #
 # spec file for package gamin-devel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Source:         http://www.gnome.org/~veillard/gamin/sources/gamin-%{version}.ta
 Source2:        gamin-rpmlintrc
 Patch0:         gamin-return.patch
 Patch1:         gamin-fam_abi_compatibility_FamErrlist.patch
-Patch2:         gamin-fix_python_main.patch
 Patch3:         gamin-obsol-glib.diff
 # PATCH-FIX-UPSTREAM gamin-0.1.11-double-lock.patch (bgo#669292)
 Patch4:         gamin-0.1.11-double-lock.patch
@@ -78,7 +77,6 @@ daemon.
 %setup -q -n gamin-%version
 %patch0 -p0
 %patch1
-%patch2
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1

@@ -1,7 +1,7 @@
 #
 # spec file for package gamin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Source2:        %name-rpmlintrc
 Source99:       baselibs.conf
 Patch0:         gamin-return.patch
 Patch1:         gamin-fam_abi_compatibility_FamErrlist.patch
-Patch2:         gamin-fix_python_main.patch
 Patch3:         gamin-obsol-glib.diff
 # PATCH-FIX-UPSTREAM gamin-0.1.11-double-lock.patch (bgo#669292)
 Patch4:         gamin-0.1.11-double-lock.patch
@@ -42,25 +41,12 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  pkgconfig(glib-2.0)
 
 %description
 This C library provides an API and ABI compatible file alteration
 monitor mechanism compatible with FAM, but not dependent on a system wide
 daemon.
-
-%package -n python-%{name}
-Summary:        Python bindings for the %{name} library
-Group:          Development/Libraries/Python
-Requires:       lib%{name}-%{packnum} = %{version}
-Provides:       %{name}-python = %{version}-%{release}
-Obsoletes:      %{name}-python < %{version}-%{release}
-
-%description -n python-%{name}
-The python-%{name} package contains a module that allow monitoring of
-files and directories from the Python language based on the support
-of the %{name} package.
 
 %package doc
 Summary:        Documentation for %{name}
@@ -84,7 +70,6 @@ It is split off into its own subpackage to void file conflicts when both
 %setup -q
 %patch0 -p0
 %patch1
-%patch2
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
@@ -96,8 +81,6 @@ make %{?_smp_mflags}
 %install
 %make_install
 rm "%{buildroot}%{_libdir}"/*.la
-mkdir -p .rpmdoc/python
-mv doc/python.html .rpmdoc/python/doc.html
 %fdupes %{buildroot}
 
 # drop files which are build via libgamin spec file
@@ -110,12 +93,6 @@ rm %buildroot%{_includedir}/fam.h              \
 %check
 # tests are currently broken :/
 make tests || echo "**** WARNING TESTSUITE FAILS ****"
-
-%files -n python-%{name}
-%defattr(-,root,root)
-%doc .rpmdoc/python/*
-%{python_sitearch}/gamin.py*
-%{python_sitearch}/_gamin*
 
 %files server
 %defattr(-, root, root)
