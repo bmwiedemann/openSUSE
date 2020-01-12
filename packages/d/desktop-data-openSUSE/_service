@@ -3,7 +3,7 @@
     <param name="scm">git</param>
     <param name="url">git://github.com/openSUSE/desktop-data.git</param>
     <param name="filename">desktop-data</param>
-    <param name="versionformat">15.1.%cd</param>
+    <param name="versionformat">15.2.%cd</param>
     <param name="exclude">update_rpm</param>
     <param name="changesgenerate">enable</param>
   </service>

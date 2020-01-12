@@ -2,7 +2,7 @@
 # spec file for package desktop-data-openSUSE
 #
 # Copyright (c) 2019 SUSE LLC.
-# Copyright (c) 2018 Stasiek Michalski <hellcp@opensuse.org>
+# Copyright (c) 2018-2020 Stasiek Michalski <hellcp@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           desktop-data-openSUSE
-Version:        15.1.20191124
+Version:        15.2.20200107
 Release:        0
 Summary:        Shared Desktop Files for openSUSE
 License:        GPL-2.0-or-later
