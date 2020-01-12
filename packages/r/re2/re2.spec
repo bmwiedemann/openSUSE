@@ -1,7 +1,7 @@
 #
 # spec file for package re2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global longver 2019-12-01
+%global longver 2020-01-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-0
 Name:           re2

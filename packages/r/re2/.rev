@@ -227,4 +227,13 @@
     <comment></comment>
     <requestid>754865</requestid>
   </revision>
+  <revision rev="27" vrev="28">
+    <srcmd5>29ec3e41b5ec4b769f861a1c5a014866</srcmd5>
+    <version>MACRO</version>
+    <time>1578867347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020-01-01:
+  * various developer visible changes</comment>
+    <requestid>761763</requestid>
+  </revision>
 </revisionlist>
