@@ -26,6 +26,7 @@ unsorted:
   - Box2D-doc 
   - CSXCAD-devel 
   - CSXCAD-matlab 
+  - Catch2-devel: [i586] 
   - CharLS-devel 
   - Coin-devel 
   - ColPack-devel 
@@ -3269,7 +3270,6 @@ unsorted:
   - ftvalid 
   - ftview 
   - ftwnn 
-  - funkload 
   - fuse-devel 
   - fuse-devel-static 
   - fuse-doc 
@@ -5361,7 +5361,6 @@ unsorted:
   - hfst-ospell 
   - hfst-ospell-devel 
   - hg-fast-export 
-  - hg-git 
   - hiawatha 
   - hiawatha-letsencrypt 
   - hibiscus 
@@ -8612,7 +8611,7 @@ unsorted:
   - libdvbpsi7-32bit: [x86_64] 
   - libdvbv5-0 
   - libdvbv5-0-32bit: [x86_64] 
-  - libdvbv5-0-lang 
+  - libdvbv5-0-lang: [x86_64] 
   - libdvbv5-devel 
   - libdvdnav-devel 
   - libdvdnav4-32bit: [x86_64] 
@@ -8964,7 +8963,7 @@ unsorted:
   - libganesha_nfsd-devel: [x86_64] 
   - libganesha_nfsd3_1: [x86_64] 
   - libganglia0 
-  - libgarcon-branding-upstream 
+  - libgarcon-branding-upstream: [x86_64] 
   - libgarcon-devel 
   - libgarcon-doc 
   - libgasnet-1_32_0 
@@ -12592,7 +12591,6 @@ unsorted:
   - live555 
   - live555-devel 
   - livedtd 
-  - livestreamer 
   - lksctp-tools 
   - lksctp-tools-devel 
   - llcbench 
@@ -12948,6 +12946,7 @@ unsorted:
   - mame-data 
   - mame-mess: [x86_64] 
   - mame-tools 
+  - man-pages-fr-extra 
   - manaplus 
   - manaplus-lang 
   - manchu-fonts 
@@ -13085,8 +13084,6 @@ unsorted:
   - mathjax-winchrome-fonts 
   - mathjax-winie6-fonts 
   - mathml-dtd 
-  - mathomatic 
-  - mathomatic-devel 
   - matio-tools 
   - matomo 
   - matrix-quaternion 
@@ -15382,6 +15379,7 @@ unsorted:
   - osmo-iuh 
   - osmo-mgw 
   - osmo-msc 
+  - osmo-pcap: [i586] 
   - osmo-pcu 
   - osmo-sgsn 
   - osmo-sip-connector 
@@ -17553,7 +17551,6 @@ unsorted:
   - python-flup-doc 
   - python-freezerclient-doc 
   - python-funcsigs 
-  - python-gamin 
   - python-gcs-oauth2-boto-plugin 
   - python-gdbm 
   - python-getdata 
@@ -22904,7 +22901,6 @@ unsorted:
   - rcs 
   - rdesktop 
   - rdiff 
-  - rdiff-backup 
   - rdma-core-devel 
   - rdma-core-devel-32bit: [x86_64] 
   - rdma-ndd 
@@ -24122,7 +24118,6 @@ unsorted:
   - screenfetch 
   - screengrab 
   - screengrab-lang 
-  - screenkey 
   - scribus 
   - scribus-doc 
   - scrot 
@@ -24621,9 +24616,6 @@ unsorted:
   - stunnel 
   - stunnel-doc 
   - su-wrapper 
-  - submin 
-  - submin-apache 
-  - submin-svn 
   - subnetcalc 
   - subtitlecomposer 
   - subtitlecomposer-lang 
@@ -33503,8 +33495,8 @@ unsorted:
   - xfce4-panel-plugin-sntray 
   - xfce4-power-manager-branding-upstream 
   - xfce4-sensors-plugin-devel 
-  - xfce4-session-branding-upstream 
-  - xfce4-settings-branding-upstream 
+  - xfce4-session-branding-upstream: [x86_64] 
+  - xfce4-settings-branding-upstream: [x86_64] 
   - xfce4-stopwatch-plugin 
   - xfce4-stopwatch-plugin-lang 
   - xfce4-time-out-plugin 
