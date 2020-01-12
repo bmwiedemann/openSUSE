@@ -1,7 +1,7 @@
 #
 # spec file for package liblbxutil
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,6 +28,8 @@ Url:            http://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/liblbxutil
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/liblbxutil/
 Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.bz2
+Source1:        baselibs.conf
+Patch0:         u_fno-common.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.57, automake, libtool
 BuildRequires:  pkgconfig
@@ -65,6 +67,7 @@ in %lname.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure --disable-static

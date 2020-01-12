@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 17:48:26 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_fno-common.patch
+  * fix build with gcc's -fno-common option (boo#1160278) 
+- added baselibs.conf as source to specfile
+
+-------------------------------------------------------------------
 Mon Apr 15 12:32:17 UTC 2013 - mmeister@suse.com
 
 - Added url as source.
