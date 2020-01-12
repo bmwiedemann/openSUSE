@@ -42,6 +42,10 @@ URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gst-plugins-good/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gst-good-qtdemux-Specify-REDIRECT-info.patch -- qtdemux: Specify REDIRECT information in error message
+Patch0:         gst-good-qtdemux-Specify-REDIRECT-info.patch
+# PATCH-FIX-UPSTREAM gst-good-rtpjpegdepay-outputs-framed-jpeg.patch -- rtpjpegdepay: outputs framed jpeg
+Patch1:         gst-good-rtpjpegdepay-outputs-framed-jpeg.patch
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
