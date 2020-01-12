@@ -1,0 +1,11 @@
+--- xf86-video-ati-19.1.0.old/src/drmmode_display.h	2020-01-09 23:19:29.783677517 +0000
++++ xf86-video-ati-19.1.0/src/drmmode_display.h	2020-01-09 23:20:10.268450223 +0000
+@@ -262,7 +262,7 @@ Bool drmmode_wait_vblank(xf86CrtcPtr crt
+ 			 uint64_t *ust, uint32_t *result_seq);
+ 
+ 
+-miPointerSpriteFuncRec drmmode_sprite_funcs;
++extern miPointerSpriteFuncRec drmmode_sprite_funcs;
+ 
+ 
+ #endif

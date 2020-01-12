@@ -523,4 +523,13 @@ Just leave it pending if you dont want it 'till 13.1 (forwarded request 150617 f
   * bug fixes and minor improvements</comment>
     <requestid>738665</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>9f02583c6ba7bc22a800d2bbfcfe6399</srcmd5>
+    <version>19.1.0</version>
+    <time>1578867477</time>
+    <user>dimstar_suse</user>
+    <comment>- u_fno-common.patch
+  * fix build with gcc's -fno-common option (boo#1160422)</comment>
+    <requestid>762589</requestid>
+  </revision>
 </revisionlist>
