@@ -157,4 +157,14 @@
   [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html (forwarded request 718144 from mgerstner)</comment>
     <requestid>718272</requestid>
   </revision>
+  <revision rev="24" vrev="168">
+    <srcmd5>8ccdd2769a5809e6f23fc1d2a6b64b2e</srcmd5>
+    <version>1.3</version>
+    <time>1578867348</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  Build with -no-common, [bsc#1160264]
+  + finger-no-common.patch</comment>
+    <requestid>761766</requestid>
+  </revision>
 </revisionlist>

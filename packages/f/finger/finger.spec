@@ -1,7 +1,7 @@
 #
 # spec file for package finger
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,6 +27,8 @@ Source3:        finger.socket
 Source4:        finger@.service
 Patch1:         finger-utf8_segfault.patch
 Patch2:         finger-memory-leak.patch
+# Build with -no-common, [bsc#1160264]
+Patch3:         finger-no-common.patch
 Requires:       netcfg
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -52,6 +54,7 @@ particular person.
 %setup -q -n finger-bsd-%{version}
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export CFLAGS="%{optflags} -fpie" LDFLAGS="-pie"
