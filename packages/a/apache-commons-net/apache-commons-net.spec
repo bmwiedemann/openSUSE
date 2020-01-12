@@ -1,7 +1,7 @@
 #
-# spec file for package apache
+# spec file for package apache-commons-net
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,7 @@ Group:          Documentation/HTML
 %prep
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE1} build.xml
+%pom_remove_parent .
 
 %build
 %{ant} \
