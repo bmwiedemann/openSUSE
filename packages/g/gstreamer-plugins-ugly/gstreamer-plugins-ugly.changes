@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 23 19:06:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gst-ugly-x264enc-fixes.patch: x264enc: corrected em_data
+  value. Patch from upstream git.
+- Drop no longer needed conditional libtool BuildRequires.
+
+-------------------------------------------------------------------
 Wed Dec  4 12:59:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.2:

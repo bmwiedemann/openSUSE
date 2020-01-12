@@ -35,6 +35,9 @@ Group:          Productivity/Multimedia/Other
 URL:            http://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gst-ugly-x264enc-fixes.patch -- x264enc: corrected em_data value
+Patch0:         gst-ugly-x264enc-fixes.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc >= 1.12
 BuildRequires:  liba52-devel
@@ -42,9 +45,6 @@ BuildRequires:  libcdio-devel >= 0.76
 BuildRequires:  libdvdread-devel
 %if %{use_meson}
 BuildRequires:  meson >= 0.47.0
-%else
-# Needed for patches 0 and 1
-BuildRequires:  libtool
 %endif
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
@@ -120,7 +120,7 @@ installing new plug-ins.
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 export PYTHON=%{_bindir}/python3
