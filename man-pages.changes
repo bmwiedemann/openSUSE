@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 10 11:31:23 UTC 2020 - pgajdos@suse.com
+
+- do not install man7/bpf-helpers.7 as it is already part of
+  bpftool package
+
+-------------------------------------------------------------------
+Fri Jan 10 10:42:38 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- don't use alternatives for man.7, just move it to a different directory
+  (boo#1160568)
+- use packageand to supplement the documentation pattern instead of
+  unconditionally hooking on man.
+
+-------------------------------------------------------------------
 Wed Dec  4 22:09:23 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Set up %{_mandir}/man7/man.7%{?ext_man} as an alternative for

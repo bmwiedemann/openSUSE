@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,7 @@ Patch5:         %{name}-tty_ioctl.patch
 # [bsc#1154701]
 Patch6:         man-pages-tcp_fack.patch
 BuildRequires:  fdupes
-BuildRequires:  update-alternatives
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Supplements:    man
+Supplements:    packageand(man:patterns-base-documentation)
 BuildArch:      noarch
 
 %description
@@ -66,9 +63,14 @@ rm man2/ioctl_list.2
 rm man3/{getifaddrs.3,freeifaddrs.3,crypt.3,crypt_r.3}
 # remove .so link to bzero.3, conflicts with libbsd
 rm man3/explicit_bzero.3
+# already in bpftool package
+rm man7/bpf-helpers.7
+# conflicts with mandoc
+mkdir man7mp
+mv man7/man.7 man7mp/man.7mp
 
 %install
-for i in man? ; do
+for i in man[0-9]*; do
   mkdir -p "%{buildroot}/%{_mandir}/$i"
   cp -p "$i"/* "%{buildroot}/%{_mandir}/$i/"
 done
@@ -93,30 +95,13 @@ if [ "$RETVAL" -ne 0 ] ; then
   exit "$RETVAL"
 fi
 
-# Prepare alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-from=$(readlink -f %{buildroot}%{_mandir}/man7/man.7*)
-to=$(echo $from|sed -e 's!\.7$!!')-mp.7
-mv -v "$from" "$to"
-ln -s -f %{_sysconfdir}/alternatives/man.7 "$from"
-
 # Remove duplicates
 %fdupes -s %{buildroot}/%{_prefix}
 
-%post
-update-alternatives --install \
-   %{_mandir}/man7/man.7%{?ext_man} man.7%{?ext_man} \
-   %{_mandir}/man7/man-mp.7%{?ext_man} 500
-
-%preun
-if [ $1 -eq 0 ] ; then
-   update-alternatives --remove man.7%{?ext_man} %{_mandir}/man7/man-mp.7%{?ext_man}
-fi
-
 %files
 %defattr(644,root,root,755)
+%dir %{_mandir}/man7mp
 %{_mandir}/man*/*.gz
-%ghost %{_sysconfdir}/alternatives/man.7%{?ext_man}
 %doc README Changes Changes.old
 %doc man-pages-*.Announce
 %doc man-pages-*.lsm
