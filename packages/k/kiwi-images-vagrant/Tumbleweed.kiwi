@@ -61,7 +61,6 @@
         <package name="ca-certificates"/>
         <package name="ca-certificates-mozilla"/>
         <package name="curl"/>
-        <package name="ifplugd"/>
         <package name="iputils"/>
         <package name="vim"/>
         <package name="grub2"/>

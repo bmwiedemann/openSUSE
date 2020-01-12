@@ -15,4 +15,13 @@
     <comment>Add bootstrap package openSUSE-release-appliance-vagrant</comment>
     <requestid>743851</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>85e44fab39a5dd23463d1dcefc4eebf3</srcmd5>
+    <version>1.0</version>
+    <time>1578867518</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop required package ifplugd
+</comment>
+    <requestid>762894</requestid>
+  </revision>
 </revisionlist>
