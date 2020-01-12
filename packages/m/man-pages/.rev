@@ -1711,4 +1711,18 @@
   http://mandoc.bsd.lv/ for more. (forwarded request 754656 from mcepl)</comment>
     <requestid>754699</requestid>
   </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>d8b2c83f16a5c90090e94b107fdd731f</srcmd5>
+    <version>5.04</version>
+    <time>1578867495</time>
+    <user>dimstar_suse</user>
+    <comment>- do not install man7/bpf-helpers.7 as it is already part of
+  bpftool package
+
+- don't use alternatives for man.7, just move it to a different directory
+  (boo#1160568)
+- use packageand to supplement the documentation pattern instead of
+  unconditionally hooking on man.</comment>
+    <requestid>762803</requestid>
+  </revision>
 </revisionlist>
