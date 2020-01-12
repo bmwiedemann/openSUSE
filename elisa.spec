@@ -1,7 +1,7 @@
 #
 # spec file for package elisa
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define kf5_version 5.48.0
 %bcond_without lang
 Name:           elisa
-Version:        19.12.0
+Version:        19.12.1
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
@@ -100,21 +100,13 @@ built and played.
 %license COPYING*
 %doc README*
 %doc %lang(en) %{_kf5_htmldir}/en/elisa/
-%{_kf5_bindir}/elisa
 %{_kf5_applicationsdir}/org.kde.elisa.desktop
-%{_kf5_debugdir}/elisa.categories
-%{_kf5_libdir}/elisa/
-%dir %{_kf5_plugindir}/kcms
-%{_kf5_plugindir}/kcms/kcm_elisa_local_file.so
-%{_kf5_qmldir}/org/kde/elisa/
-%{_kf5_iconsdir}/hicolor/*/apps/elisa.*
 %{_kf5_appstreamdir}/org.kde.elisa.appdata.xml
-%dir %{_kf5_sharedir}/kpackage
-%dir %{_kf5_sharedir}/kpackage/kcms
-%dir %{_kf5_sharedir}/kpackage/kcms/kcm_elisa_local_file
-%{_kf5_sharedir}/kpackage/kcms/kcm_elisa_local_file/contents.rcc
-%{_kf5_sharedir}/kpackage/kcms/kcm_elisa_local_file/metadata.json
-%{_kf5_servicesdir}/kcm_elisa_local_file.desktop
+%{_kf5_bindir}/elisa
+%{_kf5_debugdir}/elisa.categories
+%{_kf5_iconsdir}/hicolor/*/apps/elisa.*
+%{_kf5_libdir}/elisa/
+%{_kf5_qmldir}/org/kde/elisa/
 
 %if %{with lang}
 %files lang -f %{name}.lang
