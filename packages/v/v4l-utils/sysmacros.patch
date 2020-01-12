@@ -1,19 +1,19 @@
-Index: v4l-utils-1.14.1/lib/libv4lconvert/control/libv4lcontrol.c
+Index: v4l-utils-1.18.0/lib/libv4lconvert/control/libv4lcontrol.c
 ===================================================================
---- v4l-utils-1.14.1.orig/lib/libv4lconvert/control/libv4lcontrol.c
-+++ v4l-utils-1.14.1/lib/libv4lconvert/control/libv4lcontrol.c
+--- v4l-utils-1.18.0.orig/lib/libv4lconvert/control/libv4lcontrol.c
++++ v4l-utils-1.18.0/lib/libv4lconvert/control/libv4lcontrol.c
 @@ -19,6 +19,7 @@
  # Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA  02110-1335  USA
   */
  
 +#include "config.h"
  #include <sys/types.h>
- #if defined(MAJOR_IN_SYSMACROS)
+ #ifndef __OpenBSD__
  #include <sys/sysmacros.h>
-Index: v4l-utils-1.14.1/utils/v4l2-ctl/v4l2-ctl.cpp
+Index: v4l-utils-1.18.0/utils/v4l2-ctl/v4l2-ctl.cpp
 ===================================================================
---- v4l-utils-1.14.1.orig/utils/v4l2-ctl/v4l2-ctl.cpp
-+++ v4l-utils-1.14.1/utils/v4l2-ctl/v4l2-ctl.cpp
+--- v4l-utils-1.18.0.orig/utils/v4l2-ctl/v4l2-ctl.cpp
++++ v4l-utils-1.18.0/utils/v4l2-ctl/v4l2-ctl.cpp
 @@ -20,6 +20,7 @@
      Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA  02110-1335  USA
   */
@@ -30,5 +30,5 @@ Index: v4l-utils-1.14.1/utils/v4l2-ctl/v4l2-ctl.cpp
 +#include <sys/sysmacros.h>
 +#endif
  #include <sys/stat.h>
+ #include <sys/epoll.h>
  #include <fcntl.h>
- #include <ctype.h>

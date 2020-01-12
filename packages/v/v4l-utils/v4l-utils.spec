@@ -1,7 +1,7 @@
 #
 # spec file for package v4l
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,11 @@
 %if "%{flavor}" == "qv4l2"
 %global psuffix -%{flavor}
 %endif
-
 %define _udevdir %(pkg-config --variable udevdir udev)
 %define so_ver 0
 %define sname v4l-utils
 Name:           v4l-utils%{?psuffix}
-Version:        1.14.2
+Version:        1.18.0
 Release:        0
 Summary:        Utilities for video4linux
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only
@@ -38,19 +37,21 @@ Source100:      baselibs.conf
 Patch0:         sysmacros.patch
 Patch1:         use_system_v4l_for_qv4l.patch
 Patch2:         v4l-utils-32bitfix.patch
+BuildRequires:  alsa-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(udev)
+Requires:       libv4l = %{version}
 %if "%{flavor}" == ""
 BuildRequires:  doxygen
 BuildRequires:  kernel-headers
 %endif
 %if "%{flavor}" == "qv4l2"
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -60,7 +61,6 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libv4lconvert)
 %endif
-Requires:       libv4l = %{version}
 
 %description
 v4l-utils is a collection of various video4linux (V4L) utilities.
@@ -95,8 +95,6 @@ libdvbv5 is a library meant to be used by digital TV applications that need to
 talk with media hardware.
 
 This package contains shared lib for packages that use libdvbv5.
-
-%lang_package -n libdvbv5-%{so_ver}
 
 %package -n libdvbv5-devel
 Summary:        Development files for libdvbv5
@@ -194,7 +192,6 @@ Requires(postun): update-desktop-files
 %description -n qv4l2
 qv4l2 is a test control and streaming test application for video4linux.
 
-
 %prep
 %setup -q -n %{sname}-%{version}
 %patch0 -p1
@@ -202,17 +199,13 @@ qv4l2 is a test control and streaming test application for video4linux.
 %patch2 -p1
 
 %build
-%if "%{flavor}" == "qv4l2"
 autoreconf -vfi
-%endif
 %configure \
   --disable-static \
   --disable-silent-rules \
 %if "%{flavor}" == "qv4l2"
   --disable-libdvb5 \
-  --enable-qv4l2 \
 %else
-  --enable-libdvb5 \
   --disable-qv4l2 \
 %endif
   --with-udevdir=%{_udevdir}
@@ -233,7 +226,6 @@ autoreconf -vfi
 %else
 %make_install
 %find_lang "%{name}"
-%find_lang "libdvbv5" libdvbv5.lang
 
 # Not needed (links to plugins in libv4l subdir)
 rm %{buildroot}%{_libdir}/{v4l1compat.so,v4l2convert.so}
@@ -273,12 +265,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/rds-ctl
 %{_bindir}/v4l2-ctl
 %{_bindir}/v4l2-sysfs-path
-%{_mandir}/man1/ir-keytable.1%{ext_man}
-%{_mandir}/man1/v4l2-ctl.1%{ext_man}
-%{_mandir}/man1/cec-compliance.1%{ext_man}
-%{_mandir}/man1/cec-ctl.1%{ext_man}
-%{_mandir}/man1/cec-follower.1%{ext_man}
-%{_mandir}/man1/ir-ctl.1%{ext_man}
+%{_mandir}/man5/rc_keymap.5%{?ext_man}
+%{_mandir}/man1/ir-keytable.1%{?ext_man}
+%{_mandir}/man1/v4l2-ctl.1%{?ext_man}
+%{_mandir}/man1/cec-compliance.1%{?ext_man}
+%{_mandir}/man1/cec-ctl.1%{?ext_man}
+%{_mandir}/man1/cec-follower.1%{?ext_man}
+%{_mandir}/man1/ir-ctl.1%{?ext_man}
 
 %files lang -f "%{name}.lang"
 
@@ -288,20 +281,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/decode_tm6000
 %{_bindir}/v4l2-compliance
 %{_sbindir}/v4l2-dbg
-%{_mandir}/man1/v4l2-compliance.1%{ext_man}
+%{_mandir}/man1/v4l2-compliance.1%{?ext_man}
 
 %files -n dvb-utils
 %license COPYING
 %doc ChangeLog README TODO
 %{_bindir}/dvb-*
 %{_bindir}/dvbv5-*
-%{_mandir}/man1/dvb-*1%{ext_man}
-%{_mandir}/man1/dvbv5-*1%{ext_man}
+%{_mandir}/man1/dvb-*1%{?ext_man}
+%{_mandir}/man1/dvbv5-*1%{?ext_man}
 
 %files -n libdvbv5-%{so_ver}
 %{_libdir}/libdvbv5.so.%{so_ver}*
-
-%files -n libdvbv5-%{so_ver}-lang -f "libdvbv5.lang"
 
 %files -n libdvbv5-devel
 %license COPYING.libdvbv5
@@ -347,7 +338,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/*/apps/qv4l2.*
-%{_mandir}/man1/qv4l2.1%{ext_man}
+%{_mandir}/man1/qv4l2.1%{?ext_man}
 %endif
 
 %changelog
