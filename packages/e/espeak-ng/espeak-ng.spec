@@ -1,7 +1,7 @@
 #
 # spec file for package espeak-ng
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,13 @@ Version:        1.50
 Release:        0
 Summary:        Software speech synthesizer (text-to-speech)
 License:        GPL-3.0-or-later AND BSD-2-Clause AND Apache-2.0 AND Unicode-DFS-2015
-Group:          Productivity/Multimedia/Other
 URL:            https://github.com/espeak-ng/espeak-ng
 Source0:        https://github.com/espeak-ng/espeak-ng/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         espeak-ng-1.49.2-fix_no_return_nonvoid-in-configure.patch
+# PATCH-FIX-UPSTREAM espeak-ng-1.50-fix_gcc10_no_common.patch
+Patch2:         espeak-ng-1.50-fix_gcc10_no_common.patch
+# PATCH-FIX_UPSTREAM espeak-ng-1.50-fix_gcc10_no_common_2.patch
+Patch3:         espeak-ng-1.50-fix_gcc10_no_common_2.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2.4.2
 BuildRequires:  pcaudiolib-devel
@@ -41,7 +44,6 @@ more natural sound.
 
 %package        devel
 Summary:        Development files for espeak-ng
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description    devel
@@ -49,7 +51,6 @@ This package contains development files for espeak-ng.
 
 %package        compat
 Summary:        Executables compatible with the original espeak
-Group:          Productivity/Multimedia/Other
 Requires:       %{name} = %{version}
 Conflicts:      espeak
 
@@ -58,7 +59,6 @@ This package contains executables compatible with the original espeak.
 
 %package        compat-devel
 Summary:        Development files for espeak-ng compatible with espeak
-Group:          Development/Languages/C and C++
 Requires:       %{name}-compat = %{version}
 Requires:       espeak-ng-devel = %{version}
 Conflicts:      espeak-devel
@@ -69,7 +69,6 @@ compatible with the original espeak.
 
 %package     -n lib%{name}%{sover}
 Summary:        Software speech synthesizer (text-to-speech)
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 Software speech synthesizer (text-to-speech), support

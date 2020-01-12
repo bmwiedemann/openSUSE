@@ -52,4 +52,12 @@
     <comment></comment>
     <requestid>752507</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3441b6723ea319751a67139aeeee4a78</srcmd5>
+    <version>1.50</version>
+    <time>1578867472</time>
+    <user>dimstar_suse</user>
+    <comment>fixes boo#1160389</comment>
+    <requestid>762568</requestid>
+  </revision>
 </revisionlist>

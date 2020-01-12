@@ -1,0 +1,22 @@
+From 5feff569cc8b6d5817f04d9c65a0bd736f82d67d Mon Sep 17 00:00:00 2001
+From: "Reece H. Dunn" <msclrhd@gmail.com>
+Date: Thu, 9 Jan 2020 18:47:52 +0000
+Subject: [PATCH] fix #699: -Wlto-type-mismatch when using gcc with -flto=4.
+
+---
+ src/libespeak-ng/setlengths.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libespeak-ng/setlengths.c b/src/libespeak-ng/setlengths.c
+index a99159fc4..2e6b4fb7f 100644
+--- a/src/libespeak-ng/setlengths.c
++++ b/src/libespeak-ng/setlengths.c
+@@ -377,7 +377,7 @@ espeak_ng_STATUS SetParameter(int parameter, int value, int relative)
+ 
+ 	int new_value = value;
+ 	int default_value;
+-	extern const int *param_defaults;
++	extern const int param_defaults[N_SPEECH_PARAM];
+ 
+ 	if (relative) {
+ 		if (parameter < 5) {
