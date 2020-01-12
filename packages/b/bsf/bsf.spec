@@ -1,7 +1,7 @@
 #
 # spec file for package bsf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  rhino
 BuildRequires:  xalan-j2
-#!BuildIgnore:  jline
+#!BuildIgnore:  jline1
 Requires:       mvn(commons-logging:commons-logging)
 BuildArch:      noarch
 
