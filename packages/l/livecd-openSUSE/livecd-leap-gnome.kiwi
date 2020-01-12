@@ -425,6 +425,8 @@
     <ignore name="colord"/>
     <package name="aaa_base" replaces="apparmor-utils"/>
     <ignore name="apparmor-utils"/>
+    <package name="aaa_base" replaces="java-11-openjdk-headless"/>
+    <ignore name="java-11-openjdk-headless"/>
     <package name="branding-openSUSE"/>
     <package name="adobe-sourcecodepro-fonts"/>
     <package name="aaa_base" replaces="google-carlito-fonts"/>

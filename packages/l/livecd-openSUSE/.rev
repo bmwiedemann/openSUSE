@@ -728,4 +728,11 @@
     <time>1578855374</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="87" vrev="87">
+    <srcmd5>27f951c31aa0168b3f67126a4213c428</srcmd5>
+    <version>unknown</version>
+    <time>1578857731</time>
+    <user>dimstar_suse</user>
+    <comment>- Block java-11-openjdk-headless from the GNOME Live CDs.</comment>
+  </revision>
 </revisionlist>
