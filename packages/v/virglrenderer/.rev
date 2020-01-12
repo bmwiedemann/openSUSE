@@ -65,4 +65,28 @@
     <comment></comment>
     <requestid>758914</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e5f3cdcbb8e9b679e93763a3eb40b74d</srcmd5>
+    <version>0.8.1</version>
+    <time>1578867331</time>
+    <user>dimstar_suse</user>
+    <comment>- Update package to 0.8.1
+  Requires very recent libepoxy, which is currently only available
+  in Factory. Accordingly also switch to meson build, which also
+  excludes older releases.
+  Other highlights include:
+  + support emulating planar image sampling
+  + Add all formats to VIRGL_FORMAT that are referenced in Gallium
+  + deprecation of the autotools build system
+  + miscellaneous bug and performance fixes
+  + drop the following patches, which are included in this release:
+    0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
+    0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
+    0003-24f67de-vrend-check-info-formats-in-blits.patch
+    0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
+    0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
+    0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
+</comment>
+    <requestid>761654</requestid>
+  </revision>
 </revisionlist>

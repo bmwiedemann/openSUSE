@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan  6 16:57:48 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.8.1
+  Requires very recent libepoxy, which is currently only available
+  in Factory. Accordingly also switch to meson build, which also
+  excludes older releases.
+  Other highlights include:
+  + support emulating planar image sampling
+  + Add all formats to VIRGL_FORMAT that are referenced in Gallium
+  + deprecation of the autotools build system
+  + miscellaneous bug and performance fixes
+  + drop the following patches, which are included in this release:
+    0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
+    0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
+    0003-24f67de-vrend-check-info-formats-in-blits.patch
+    0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
+    0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
+    0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
+
+-------------------------------------------------------------------
 Mon Dec 23 05:33:34 UTC 2019 - lma@suse.com
 
 - Add 5 security fixes

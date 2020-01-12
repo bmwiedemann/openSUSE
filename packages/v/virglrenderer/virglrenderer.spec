@@ -1,7 +1,7 @@
 #
 # spec file for package virglrenderer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         libname lib%{name}1
 Name:           virglrenderer
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Virgl Rendering library
 License:        MIT
@@ -26,23 +26,13 @@ Group:          Development/Libraries/C and C++
 URL:            https://virgil3d.github.io/
 Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  python3-base
+BuildRequires:  pkgconfig(epoxy) >= 1.5.4
 BuildRequires:  pkgconfig(gbm) >= 18.0.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.50
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(x11)
-
-#Upstream patches:
-Patch0001:      0001-5d03711-vrend-Keep-the-max-texture-sizes-in-the-vrend_state.patch
-Patch0002:      0002-0d9a2c8-vrend-Check-resource-creation-more-thoroughly.patch
-Patch0003:      0003-24f67de-vrend-check-info-formats-in-blits.patch
-Patch0004:      0004-cbc8d8b-vrend-check-transfer-bounds-for-negative-values-too-.patch
-Patch0005:      0005-2abeb18-vrend-check-that-the-transfer-iov-holds-enough-data-.patch
-Patch0006:      0006-164d758-vrend-Add-an-assert-for-allocating-the-intermediate-.patch
 
 %description
 The virgil3d rendering library is a library used by
@@ -80,22 +70,13 @@ without GL.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
-%patch0004 -p1
-%patch0005 -p1
-%patch0006 -p1
 
 %build
-sed -i -e 's|@CODE_COVERAGE_RULES@| |g' Makefile.am
-autoreconf -fi
-%configure
-make %{?_smp_mflags} V=1
+%meson
+%meson_build
 
 %install
-%make_install
-rm -f %{buildroot}%{_libdir}/libvirglrenderer.la
+%meson_install
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
