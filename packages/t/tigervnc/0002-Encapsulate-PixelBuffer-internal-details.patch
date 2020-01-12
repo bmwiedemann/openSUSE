@@ -1,0 +1,533 @@
+From 53f913a76196c7357d4858bfbf2c33caa9181bae Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Tue, 10 Sep 2019 15:18:30 +0200
+Subject: [PATCH] Encapsulate PixelBuffer internal details
+
+Don't allow subclasses to just override dimensions or buffer details
+directly and instead force them to go via methods. This allows us
+to do sanity checks on the new values and catch bugs and attacks.
+---
+ common/rfb/Cursor.cxx                 |   3 +-
+ common/rfb/EncodeManager.cxx          |   5 +-
+ common/rfb/PixelBuffer.cxx            | 103 +++++++++++++++++++++-------------
+ common/rfb/PixelBuffer.h              |  17 ++++--
+ unix/x0vncserver/XPixelBuffer.cxx     |   9 +--
+ unix/xserver/hw/vnc/XserverDesktop.cc |  24 ++++----
+ unix/xserver/hw/vnc/XserverDesktop.h  |   2 +-
+ vncviewer/PlatformPixelBuffer.cxx     |   9 ++-
+ win/rfb_win32/DIBSectionBuffer.cxx    |  41 ++++++--------
+ 9 files changed, 111 insertions(+), 102 deletions(-)
+
+diff --git a/common/rfb/Cursor.cxx b/common/rfb/Cursor.cxx
+index d7b536de..3ca69f7c 100644
+--- a/common/rfb/Cursor.cxx
++++ b/common/rfb/Cursor.cxx
+@@ -272,8 +272,7 @@ void RenderedCursor::update(PixelBuffer* framebuffer,
+   assert(cursor);
+ 
+   format = framebuffer->getPF();
+-  width_ = framebuffer->width();
+-  height_ = framebuffer->height();
++  setSize(framebuffer->width(), framebuffer->height());
+ 
+   rawOffset = pos.subtract(cursor->hotspot());
+   clippedRect = Rect(0, 0, cursor->width(), cursor->height())
+diff --git a/common/rfb/EncodeManager.cxx b/common/rfb/EncodeManager.cxx
+index 735be072..54f7102b 100644
+--- a/common/rfb/EncodeManager.cxx
++++ b/common/rfb/EncodeManager.cxx
+@@ -1049,11 +1049,8 @@ void EncodeManager::OffsetPixelBuffer::update(const PixelFormat& pf,
+                                               int stride_)
+ {
+   format = pf;
+-  width_ = width;
+-  height_ = height;
+   // Forced cast. We never write anything though, so it should be safe.
+-  data = (rdr::U8*)data_;
+-  stride = stride_;
++  setBuffer(width, height, (rdr::U8*)data_, stride_);
+ }
+ 
+ // Preprocessor generated, optimised methods
+diff --git a/common/rfb/PixelBuffer.cxx b/common/rfb/PixelBuffer.cxx
+index 7f4c1ad3..0aa67744 100644
+--- a/common/rfb/PixelBuffer.cxx
++++ b/common/rfb/PixelBuffer.cxx
+@@ -35,8 +35,14 @@ static LogWriter vlog("PixelBuffer");
+ // -=- Generic pixel buffer class
+ 
+ PixelBuffer::PixelBuffer(const PixelFormat& pf, int w, int h)
+-  : format(pf), width_(w), height_(h) {}
+-PixelBuffer::PixelBuffer() : width_(0), height_(0) {}
++  : format(pf), width_(0), height_(0)
++{
++  setSize(w, h);
++}
++
++PixelBuffer::PixelBuffer() : width_(0), height_(0)
++{
++}
+ 
+ PixelBuffer::~PixelBuffer() {}
+ 
+@@ -53,7 +59,7 @@ PixelBuffer::getImage(void* imageBuf, const Rect& r, int outStride) const
+   if (!r.enclosed_by(getRect()))
+     throw rfb::Exception("Source rect %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          r.width(), r.height(),
+-                         r.tl.x, r.tl.y, width_, height_);
++                         r.tl.x, r.tl.y, width(), height());
+ 
+   data = getBuffer(r, &inStride);
+ 
+@@ -89,7 +95,7 @@ void PixelBuffer::getImage(const PixelFormat& pf, void* imageBuf,
+   if (!r.enclosed_by(getRect()))
+     throw rfb::Exception("Source rect %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          r.width(), r.height(),
+-                         r.tl.x, r.tl.y, width_, height_);
++                         r.tl.x, r.tl.y, width(), height());
+ 
+   if (stride == 0)
+     stride = r.width();
+@@ -100,6 +106,12 @@ void PixelBuffer::getImage(const PixelFormat& pf, void* imageBuf,
+                       stride, srcStride);
+ }
+ 
++void PixelBuffer::setSize(int width, int height)
++{
++  width_ = width;
++  height_ = height;
++}
++
+ // -=- Modifiable generic pixel buffer class
+ 
+ ModifiablePixelBuffer::ModifiablePixelBuffer(const PixelFormat& pf,
+@@ -124,7 +136,7 @@ void ModifiablePixelBuffer::fillRect(const Rect& r, const void* pix)
+ 
+   if (!r.enclosed_by(getRect()))
+     throw rfb::Exception("Destination rect %dx%d at %d,%d exceeds framebuffer %dx%d",
+-                         r.width(), r.height(), r.tl.x, r.tl.y, width_, height_);
++                         r.width(), r.height(), r.tl.x, r.tl.y, width(), height());
+ 
+   w = r.width();
+   h = r.height();
+@@ -175,7 +187,7 @@ void ModifiablePixelBuffer::imageRect(const Rect& r,
+   if (!r.enclosed_by(getRect()))
+     throw rfb::Exception("Destination rect %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          r.width(), r.height(),
+-                         r.tl.x, r.tl.y, width_, height_);
++                         r.tl.x, r.tl.y, width(), height());
+ 
+   bytesPerPixel = getPF().bpp/8;
+ 
+@@ -214,13 +226,13 @@ void ModifiablePixelBuffer::copyRect(const Rect &rect,
+   if (!drect.enclosed_by(getRect()))
+     throw rfb::Exception("Destination rect %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          drect.width(), drect.height(),
+-                         drect.tl.x, drect.tl.y, width_, height_);
++                         drect.tl.x, drect.tl.y, width(), height());
+ 
+   srect = drect.translate(move_by_delta.negate());
+   if (!srect.enclosed_by(getRect()))
+     throw rfb::Exception("Source rect %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          srect.width(), srect.height(),
+-                         srect.tl.x, srect.tl.y, width_, height_);
++                         srect.tl.x, srect.tl.y, width(), height());
+ 
+   bytesPerPixel = format.bpp/8;
+ 
+@@ -275,7 +287,7 @@ void ModifiablePixelBuffer::imageRect(const PixelFormat& pf, const Rect &dest,
+   if (!dest.enclosed_by(getRect()))
+     throw rfb::Exception("Destination rect %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          dest.width(), dest.height(),
+-                         dest.tl.x, dest.tl.y, width_, height_);
++                         dest.tl.x, dest.tl.y, width(), height());
+ 
+   if (stride == 0)
+     stride = dest.width();
+@@ -304,7 +316,7 @@ rdr::U8* FullFramePixelBuffer::getBufferRW(const Rect& r, int* stride_)
+   if (!r.enclosed_by(getRect()))
+     throw rfb::Exception("Pixel buffer request %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          r.width(), r.height(),
+-                         r.tl.x, r.tl.y, width_, height_);
++                         r.tl.x, r.tl.y, width(), height());
+ 
+   *stride_ = stride;
+   return &data[(r.tl.x + (r.tl.y * stride)) * (format.bpp/8)];
+@@ -319,55 +331,68 @@ const rdr::U8* FullFramePixelBuffer::getBuffer(const Rect& r, int* stride_) cons
+   if (!r.enclosed_by(getRect()))
+     throw rfb::Exception("Pixel buffer request %dx%d at %d,%d exceeds framebuffer %dx%d",
+                          r.width(), r.height(),
+-                         r.tl.x, r.tl.y, width_, height_);
++                         r.tl.x, r.tl.y, width(), height());
+ 
+   *stride_ = stride;
+   return &data[(r.tl.x + (r.tl.y * stride)) * (format.bpp/8)];
+ }
+ 
++void FullFramePixelBuffer::setBuffer(int width, int height,
++                                     rdr::U8* data_, int stride_)
++{
++  ModifiablePixelBuffer::setSize(width, height);
++  stride = stride_;
++  data = data_;
++}
++
++void FullFramePixelBuffer::setSize(int w, int h)
++{
++  // setBuffer() should be used
++  throw rfb::Exception("Invalid call to FullFramePixelBuffer::setSize()");
++}
++
+ // -=- Managed pixel buffer class
+ // Automatically allocates enough space for the specified format & area
+ 
+ ManagedPixelBuffer::ManagedPixelBuffer()
+-  : datasize(0)
++  : data_(NULL), datasize(0)
+ {
+-  checkDataSize();
+-};
++}
+ 
+ ManagedPixelBuffer::ManagedPixelBuffer(const PixelFormat& pf, int w, int h)
+-  : FullFramePixelBuffer(pf, w, h, NULL, w), datasize(0)
++  : FullFramePixelBuffer(pf, 0, 0, NULL, 0), data_(NULL), datasize(0)
+ {
+-  checkDataSize();
+-};
+-
+-ManagedPixelBuffer::~ManagedPixelBuffer() {
+-  if (data) delete [] data;
+-};
++  setSize(w, h);
++}
+ 
++ManagedPixelBuffer::~ManagedPixelBuffer()
++{
++  if (data_)
++    delete [] data_;
++}
+ 
+-void
+-ManagedPixelBuffer::setPF(const PixelFormat &pf) {
+-  format = pf; checkDataSize();
+-};
+-void
+-ManagedPixelBuffer::setSize(int w, int h) {
+-  width_ = w; height_ = h; stride = w; checkDataSize();
+-};
++void ManagedPixelBuffer::setPF(const PixelFormat &pf)
++{
++  format = pf;
++  setSize(width(), height());
++}
+ 
++void ManagedPixelBuffer::setSize(int w, int h)
++{
++  unsigned long new_datasize = w * h * (format.bpp/8);
+ 
+-inline void
+-ManagedPixelBuffer::checkDataSize() {
+-  unsigned long new_datasize = width_ * height_ * (format.bpp/8);
++  new_datasize = w * h * (format.bpp/8);
+   if (datasize < new_datasize) {
+-    if (data) {
+-      delete [] data;
+-      datasize = 0; data = 0;
++    if (data_) {
++      delete [] data_;
++      data_ = NULL;
++      datasize = 0;
+     }
+     if (new_datasize) {
+-      data = new U8[new_datasize];
+-      if (!data)
+-        throw Exception("rfb::ManagedPixelBuffer unable to allocate buffer");
++      data_ = new U8[new_datasize];
+       datasize = new_datasize;
+     }
+   }
+-};
++
++  setBuffer(w, h, data_, w);
++}
+diff --git a/common/rfb/PixelBuffer.h b/common/rfb/PixelBuffer.h
+index d89793f5..3e4018f9 100644
+--- a/common/rfb/PixelBuffer.h
++++ b/common/rfb/PixelBuffer.h
+@@ -90,7 +90,12 @@ namespace rfb {
+ 
+   protected:
+     PixelBuffer();
++    virtual void setSize(int width, int height);
++
++  protected:
+     PixelFormat format;
++
++  private:
+     int width_, height_;
+   };
+ 
+@@ -154,7 +159,12 @@ namespace rfb {
+ 
+   protected:
+     FullFramePixelBuffer();
++    virtual void setBuffer(int width, int height, rdr::U8* data, int stride);
+ 
++  private:
++    virtual void setSize(int w, int h);
++
++  private:
+     rdr::U8* data;
+     int stride;
+   };
+@@ -172,12 +182,9 @@ namespace rfb {
+     virtual void setPF(const PixelFormat &pf);
+     virtual void setSize(int w, int h);
+ 
+-    // Return the total number of bytes of pixel data in the buffer
+-    int dataLen() const { return width_ * height_ * (format.bpp/8); }
+-
+-  protected:
++  private:
++    rdr::U8* data_; // Mirrors FullFramePixelBuffer::data
+     unsigned long datasize;
+-    void checkDataSize();
+   };
+ 
+ };
+diff --git a/unix/x0vncserver/XPixelBuffer.cxx b/unix/x0vncserver/XPixelBuffer.cxx
+index 4769b651..f0b06967 100644
+--- a/unix/x0vncserver/XPixelBuffer.cxx
++++ b/unix/x0vncserver/XPixelBuffer.cxx
+@@ -50,13 +50,8 @@ XPixelBuffer::XPixelBuffer(Display *dpy, ImageFactory &factory,
+                        ffs(m_image->xim->blue_mask) - 1);
+ 
+   // Set up the remaining data of the parent class.
+-  width_ = rect.width();
+-  height_ = rect.height();
+-  data = (rdr::U8 *)m_image->xim->data;
+-
+-  // Calculate the distance in pixels between two subsequent scan
+-  // lines of the framebuffer. This may differ from image width.
+-  stride = m_image->xim->bytes_per_line * 8 / m_image->xim->bits_per_pixel;
++  setBuffer(rect.width(), rect.height(), (rdr::U8 *)m_image->xim->data,
++            m_image->xim->bytes_per_line * 8 / m_image->xim->bits_per_pixel);
+ 
+   // Get initial screen image from the X display.
+   m_image->get(DefaultRootWindow(m_dpy), m_offsetLeft, m_offsetTop);
+diff --git a/unix/xserver/hw/vnc/XserverDesktop.cc b/unix/xserver/hw/vnc/XserverDesktop.cc
+index 4edffec7..5c8b4cef 100644
+--- a/unix/xserver/hw/vnc/XserverDesktop.cc
++++ b/unix/xserver/hw/vnc/XserverDesktop.cc
+@@ -75,7 +75,7 @@ XserverDesktop::XserverDesktop(int screenIndex_,
+                                void* fbptr, int stride)
+   : screenIndex(screenIndex_),
+     server(0), listeners(listeners_),
+-    directFbptr(true),
++    shadowFramebuffer(NULL),
+     queryConnectId(0), queryConnectTimer(this)
+ {
+   format = pf;
+@@ -97,8 +97,8 @@ XserverDesktop::~XserverDesktop()
+     delete listeners.back();
+     listeners.pop_back();
+   }
+-  if (!directFbptr)
+-    delete [] data;
++  if (shadowFramebuffer)
++    delete [] shadowFramebuffer;
+   delete server;
+ }
+ 
+@@ -116,22 +116,18 @@ void XserverDesktop::setFramebuffer(int w, int h, void* fbptr, int stride_)
+ {
+   ScreenSet layout;
+ 
+-  width_ = w;
+-  height_ = h;
+-
+-  if (!directFbptr) {
+-    delete [] data;
+-    directFbptr = true;
++  if (shadowFramebuffer) {
++    delete [] shadowFramebuffer;
++    shadowFramebuffer = NULL;
+   }
+ 
+   if (!fbptr) {
+-    fbptr = new rdr::U8[w * h * (format.bpp/8)];
++    shadowFramebuffer = new rdr::U8[w * h * (format.bpp/8)];
++    fbptr = shadowFramebuffer;
+     stride_ = w;
+-    directFbptr = false;
+   }
+ 
+-  data = (rdr::U8*)fbptr;
+-  stride = stride_;
++  setBuffer(w, h, (rdr::U8*)fbptr, stride_);
+ 
+   vncSetGlueContext(screenIndex);
+   layout = ::computeScreenLayout(&outputIdMap);
+@@ -492,7 +488,7 @@ void XserverDesktop::handleClipboardData(const char* data_)
+ 
+ void XserverDesktop::grabRegion(const rfb::Region& region)
+ {
+-  if (directFbptr)
++  if (shadowFramebuffer == NULL)
+     return;
+ 
+   std::vector<rfb::Rect> rects;
+diff --git a/unix/xserver/hw/vnc/XserverDesktop.h b/unix/xserver/hw/vnc/XserverDesktop.h
+index 6c670689..cc50f9e9 100644
+--- a/unix/xserver/hw/vnc/XserverDesktop.h
++++ b/unix/xserver/hw/vnc/XserverDesktop.h
+@@ -118,7 +118,7 @@ private:
+   int screenIndex;
+   rfb::VNCServer* server;
+   std::list<network::SocketListener*> listeners;
+-  bool directFbptr;
++  rdr::U8* shadowFramebuffer;
+ 
+   uint32_t queryConnectId;
+   network::Socket* queryConnectSocket;
+diff --git a/vncviewer/PlatformPixelBuffer.cxx b/vncviewer/PlatformPixelBuffer.cxx
+index ff1935e7..61f7b743 100644
+--- a/vncviewer/PlatformPixelBuffer.cxx
++++ b/vncviewer/PlatformPixelBuffer.cxx
+@@ -36,7 +36,7 @@ static rfb::LogWriter vlog("PlatformPixelBuffer");
+ PlatformPixelBuffer::PlatformPixelBuffer(int width, int height) :
+   FullFramePixelBuffer(rfb::PixelFormat(32, 24, false, true,
+                                         255, 255, 255, 16, 8, 0),
+-                       width, height, NULL, 0),
++                       0, 0, NULL, 0),
+   Surface(width, height)
+ #if !defined(WIN32) && !defined(__APPLE__)
+   , shminfo(NULL), xim(NULL)
+@@ -56,14 +56,13 @@ PlatformPixelBuffer::PlatformPixelBuffer(int width, int height) :
+     vlog.debug("Using standard XImage");
+   }
+ 
+-  data = (rdr::U8*)xim->data;
+-  stride = xim->bytes_per_line / (getPF().bpp/8);
++  setBuffer(width, height, (rdr::U8*)xim->data,
++            xim->bytes_per_line / (getPF().bpp/8));
+ 
+   // On X11, the Pixmap backing this Surface is uninitialized.
+   clear(0, 0, 0);
+ #else
+-  FullFramePixelBuffer::data = (rdr::U8*)Surface::data;
+-  stride = width;
++  setBuffer(width, height, (rdr::U8*)Surface::data, width);
+ #endif
+ }
+ 
+diff --git a/win/rfb_win32/DIBSectionBuffer.cxx b/win/rfb_win32/DIBSectionBuffer.cxx
+index e2b0d641..e00cf233 100644
+--- a/win/rfb_win32/DIBSectionBuffer.cxx
++++ b/win/rfb_win32/DIBSectionBuffer.cxx
+@@ -52,39 +52,28 @@ void DIBSectionBuffer::setPF(const PixelFormat& pf) {
+   if (!pf.trueColour)
+     throw rfb::Exception("palette format not supported");
+   format = pf;
+-  recreateBuffer();
++  setSize(width(), height());
+ }
+ 
+-void DIBSectionBuffer::setSize(int w, int h) {
+-  if (width_ == w && height_ == h) {
+-    vlog.debug("size unchanged by setSize()");
+-    return;
+-  }
+-  width_ = w;
+-  height_ = h;
+-  recreateBuffer();
+-}
+-
+-
+ inline void initMaxAndShift(DWORD mask, int* max, int* shift) {
+   for ((*shift) = 0; (mask & 1) == 0; (*shift)++) mask >>= 1;
+   (*max) = (rdr::U16)mask;
+ }
+ 
+-void DIBSectionBuffer::recreateBuffer() {
++void DIBSectionBuffer::setSize(int w, int h) {
+   HBITMAP new_bitmap = 0;
+   rdr::U8* new_data = 0;
+ 
+-  if (width_ && height_ && (format.depth != 0)) {
++  if (w && h && (format.depth != 0)) {
+     BitmapInfo bi;
+     memset(&bi, 0, sizeof(bi));
+     UINT iUsage = DIB_RGB_COLORS;
+     bi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+     bi.bmiHeader.biBitCount = format.bpp;
+-    bi.bmiHeader.biSizeImage = (format.bpp / 8) * width_ * height_;
++    bi.bmiHeader.biSizeImage = (format.bpp / 8) * w * h;
+     bi.bmiHeader.biPlanes = 1;
+-    bi.bmiHeader.biWidth = width_;
+-    bi.bmiHeader.biHeight = -height_;
++    bi.bmiHeader.biWidth = w;
++    bi.bmiHeader.biHeight = -h;
+     bi.bmiHeader.biCompression = (format.bpp > 8) ? BI_BITFIELDS : BI_RGB;
+     bi.mask.red = format.pixelFromRGB((rdr::U16)~0, 0, 0);
+     bi.mask.green = format.pixelFromRGB(0, (rdr::U16)~0, 0);
+@@ -115,12 +104,12 @@ void DIBSectionBuffer::recreateBuffer() {
+     if (device) {
+       BitmapDC src_dev(device, bitmap);
+       BitmapDC dest_dev(device, new_bitmap);
+-      BitBlt(dest_dev, 0, 0, width_, height_, src_dev, 0, 0, SRCCOPY);
++      BitBlt(dest_dev, 0, 0, w, h, src_dev, 0, 0, SRCCOPY);
+     } else {
+       WindowDC wndDC(window);
+       BitmapDC src_dev(wndDC, bitmap);
+       BitmapDC dest_dev(wndDC, new_bitmap);
+-      BitBlt(dest_dev, 0, 0, width_, height_, src_dev, 0, 0, SRCCOPY);
++      BitBlt(dest_dev, 0, 0, w, h, src_dev, 0, 0, SRCCOPY);
+     }
+   }
+   
+@@ -128,17 +117,17 @@ void DIBSectionBuffer::recreateBuffer() {
+     // Delete the old bitmap
+     DeleteObject(bitmap);
+     bitmap = 0;
+-    data = 0;
++    setBuffer(0, 0, NULL, 0);
+   }
+ 
+   if (new_bitmap) {
+     int bpp, depth;
+     int redMax, greenMax, blueMax;
+     int redShift, greenShift, blueShift;
++    int new_stride;
+ 
+     // Set up the new bitmap
+     bitmap = new_bitmap;
+-    data = new_data;
+ 
+     // Determine the *actual* DIBSection format
+     DIBSECTION ds;
+@@ -147,14 +136,16 @@ void DIBSectionBuffer::recreateBuffer() {
+ 
+     // Correct the "stride" of the DIB
+     // *** This code DWORD aligns each row - is that right???
+-    stride = width_;
+-    int bytesPerRow = stride * format.bpp/8;
++    new_stride = w;
++    int bytesPerRow = new_stride * format.bpp/8;
+     if (bytesPerRow % 4) {
+       bytesPerRow += 4 - (bytesPerRow % 4);
+-      stride = (bytesPerRow * 8) / format.bpp;
+-      vlog.info("adjusting DIB stride: %d to %d", width_, stride);
++      new_stride = (bytesPerRow * 8) / format.bpp;
++      vlog.info("adjusting DIB stride: %d to %d", w, new_stride);
+     }
+ 
++    setBuffer(w, h, new_data, new_stride);
++
+     // Calculate the PixelFormat for the DIB
+     bpp = depth = ds.dsBm.bmBitsPixel;
+ 
+-- 
+2.16.4
+

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan  7 15:43:09 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- TigerVNC security fix:
+  0001-Make-ZlibInStream-more-robust-against-failures.patch
+  0002-Encapsulate-PixelBuffer-internal-details.patch
+  0003-Restrict-PixelBuffer-dimensions-to-safe-values.patch
+  0004-Add-write-protection-to-OffsetPixelBuffer.patch
+  0005-Handle-empty-Tight-gradient-rects.patch
+  0006-Add-unit-test-for-PixelFormat-sanity-checks.patch
+  0007-Fix-depth-sanity-test-in-PixelFormat.patch
+  0008-Add-sanity-checks-for-PixelFormat-shift-values.patch
+  0009-Remove-unused-FixedMemOutStream.patch
+  0010-Use-size_t-for-lengths-in-stream-objects.patch
+  0011-Be-defensive-about-overflows-in-stream-objects.patch
+  0012-Add-unit-tests-for-PixelFormat.is888-detection.patch
+  0013-Handle-pixel-formats-with-odd-shift-values.patch
+  * stack use-after-return due to incorrect usage of stack memory
+    in ZRLEDecoder (CVE-2019-15691, bsc#1159856)
+  * improper value checks in CopyRectDecode may lead to heap
+    buffer overflow (CVE-2019-15692, bsc#1160250)
+  * heap buffer overflow in TightDecoder::FilterGradient
+    (CVE-2019-15693, bsc#1159858)
+  * improper error handling in processing MemOutStream may lead
+    to heap buffer overflow (CVE-2019-15694, bsc#1160251
+  * stack buffer overflow, which could be triggered from
+    CMsgReader::readSetCurso (CVE-2019-15695, bsc#1159860) 
+
+-------------------------------------------------------------------
 Tue Dec 31 09:53:30 UTC 2019 - Loic Devulder <ldevulder@suse.com>
 
 - Add tigervnc-fix-saving-of-bad-server-certs.patch

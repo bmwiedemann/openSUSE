@@ -571,4 +571,35 @@
     <comment></comment>
     <requestid>760855</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>afb73bc73ab299c1d9548d681c107603</srcmd5>
+    <version>1.10.0</version>
+    <time>1578867424</time>
+    <user>dimstar_suse</user>
+    <comment>- TigerVNC security fix:
+  0001-Make-ZlibInStream-more-robust-against-failures.patch
+  0002-Encapsulate-PixelBuffer-internal-details.patch
+  0003-Restrict-PixelBuffer-dimensions-to-safe-values.patch
+  0004-Add-write-protection-to-OffsetPixelBuffer.patch
+  0005-Handle-empty-Tight-gradient-rects.patch
+  0006-Add-unit-test-for-PixelFormat-sanity-checks.patch
+  0007-Fix-depth-sanity-test-in-PixelFormat.patch
+  0008-Add-sanity-checks-for-PixelFormat-shift-values.patch
+  0009-Remove-unused-FixedMemOutStream.patch
+  0010-Use-size_t-for-lengths-in-stream-objects.patch
+  0011-Be-defensive-about-overflows-in-stream-objects.patch
+  0012-Add-unit-tests-for-PixelFormat.is888-detection.patch
+  0013-Handle-pixel-formats-with-odd-shift-values.patch
+  * stack use-after-return due to incorrect usage of stack memory
+    in ZRLEDecoder (CVE-2019-15691, bsc#1159856)
+  * improper value checks in CopyRectDecode may lead to heap
+    buffer overflow (CVE-2019-15692, bsc#1160250)
+  * heap buffer overflow in TightDecoder::FilterGradient
+    (CVE-2019-15693, bsc#1159858)
+  * improper error handling in processing MemOutStream may lead
+    to heap buffer overflow (CVE-2019-15694, bsc#1160251
+  * stack buffer overflow, which could be triggered from
+    CMsgReader::readSetCurso (CVE-2019-15695, bsc#1159860)</comment>
+    <requestid>762160</requestid>
+  </revision>
 </revisionlist>

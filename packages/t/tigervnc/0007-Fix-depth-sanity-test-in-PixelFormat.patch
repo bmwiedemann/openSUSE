@@ -1,0 +1,41 @@
+From f1b9b868ec943d51ef631f53a095d48d3f178f4f Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Tue, 10 Sep 2019 16:01:44 +0200
+Subject: [PATCH] Fix depth sanity test in PixelFormat
+
+---
+ common/rfb/PixelFormat.cxx | 2 +-
+ tests/unit/pixelformat.cxx | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/common/rfb/PixelFormat.cxx b/common/rfb/PixelFormat.cxx
+index 0be4d1da..2d8142d1 100644
+--- a/common/rfb/PixelFormat.cxx
++++ b/common/rfb/PixelFormat.cxx
+@@ -679,7 +679,7 @@ bool PixelFormat::isSane(void)
+     return false;
+ 
+   totalBits = bits(redMax) + bits(greenMax) + bits(blueMax);
+-  if (totalBits > bpp)
++  if (totalBits > depth)
+     return false;
+ 
+   if (((redMax << redShift) & (greenMax << greenShift)) != 0)
+diff --git a/tests/unit/pixelformat.cxx b/tests/unit/pixelformat.cxx
+index 4eb45281..7b6087f7 100644
+--- a/tests/unit/pixelformat.cxx
++++ b/tests/unit/pixelformat.cxx
+@@ -104,6 +104,10 @@ int main(int argc, char** argv)
+     doTest(true, 32, 24, false, true, 127, 511, 127, 0, 4, 20);
+     doTest(true, 32, 24, false, true, 127, 127, 511, 0, 4, 8);
+ 
++    /* Insufficient depth */
++
++    doTest(true, 32, 16, false, true, 255, 255, 255, 0, 8, 16);
++
+     /* Overlapping channels */
+ 
+     doTest(true, 32, 24, false, true, 255, 255, 255, 0, 7, 16);
+-- 
+2.16.4
+

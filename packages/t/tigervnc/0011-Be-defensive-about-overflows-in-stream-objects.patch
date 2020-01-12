@@ -1,0 +1,358 @@
+From 75e6e0653a48baf474fd45d78b1da53e2f324642 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Tue, 24 Sep 2019 09:41:07 +0200
+Subject: [PATCH] Be defensive about overflows in stream objects
+
+We use a lot of lengths given to us over the network, so be more
+paranoid about them causing an overflow as otherwise an attacker
+might trick us in to overwriting other memory.
+
+This primarily affects the client which often gets lengths from the
+server, but there are also some scenarios where the server might
+theoretically be vulnerable.
+
+Issue found by Pavel Cheremushkin from Kaspersky Lab.
+---
+ common/rdr/FdInStream.cxx    |  8 +++++---
+ common/rdr/FdOutStream.cxx   |  7 ++++---
+ common/rdr/FileInStream.cxx  |  8 +++++---
+ common/rdr/HexInStream.cxx   |  8 +++++---
+ common/rdr/HexOutStream.cxx  |  6 ++++--
+ common/rdr/InStream.h        | 24 +++++++++++++-----------
+ common/rdr/MemOutStream.h    |  4 ++++
+ common/rdr/OutStream.h       | 24 +++++++++++++-----------
+ common/rdr/RandomStream.cxx  |  6 ++++--
+ common/rdr/TLSInStream.cxx   | 10 ++++++----
+ common/rdr/TLSOutStream.cxx  |  6 ++++--
+ common/rdr/ZlibInStream.cxx  |  6 ++++--
+ common/rdr/ZlibOutStream.cxx |  6 ++++--
+ 13 files changed, 75 insertions(+), 48 deletions(-)
+
+diff --git a/common/rdr/FdInStream.cxx b/common/rdr/FdInStream.cxx
+index 9e84ab7a..1730d6d1 100644
+--- a/common/rdr/FdInStream.cxx
++++ b/common/rdr/FdInStream.cxx
+@@ -136,7 +136,7 @@ size_t FdInStream::overrun(size_t itemSize, size_t nItems, bool wait)
+   ptr = start;
+ 
+   size_t bytes_to_read;
+-  while (end < start + itemSize) {
++  while ((size_t)(end - start) < itemSize) {
+     bytes_to_read = start + bufSize - end;
+     if (!timing) {
+       // When not timing, we must be careful not to read too much
+@@ -152,8 +152,10 @@ size_t FdInStream::overrun(size_t itemSize, size_t nItems, bool wait)
+     end += n;
+   }
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/FdOutStream.cxx b/common/rdr/FdOutStream.cxx
+index 1757dc35..f5d07e4b 100644
+--- a/common/rdr/FdOutStream.cxx
++++ b/common/rdr/FdOutStream.cxx
+@@ -149,9 +149,10 @@ size_t FdOutStream::overrun(size_t itemSize, size_t nItems)
+     }
+   }
+ 
+-  // Can we fit all the items asked for?
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/FileInStream.cxx b/common/rdr/FileInStream.cxx
+index 94f5db88..bdb05a3a 100644
+--- a/common/rdr/FileInStream.cxx
++++ b/common/rdr/FileInStream.cxx
+@@ -68,7 +68,7 @@ size_t FileInStream::overrun(size_t itemSize, size_t nItems, bool wait)
+   ptr = b;
+ 
+ 
+-  while (end < b + itemSize) {
++  while ((size_t)(end - b) < itemSize) {
+     size_t n = fread((U8 *)end, b + sizeof(b) - end, 1, file);
+     if (n == 0) {
+       if (ferror(file))
+@@ -80,8 +80,10 @@ size_t FileInStream::overrun(size_t itemSize, size_t nItems, bool wait)
+     end += b + sizeof(b) - end;
+   }
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/HexInStream.cxx b/common/rdr/HexInStream.cxx
+index 8f939889..a6bc92cd 100644
+--- a/common/rdr/HexInStream.cxx
++++ b/common/rdr/HexInStream.cxx
+@@ -91,7 +91,7 @@ size_t HexInStream::overrun(size_t itemSize, size_t nItems, bool wait) {
+   offset += ptr - start;
+   ptr = start;
+ 
+-  while (end < ptr + itemSize) {
++  while ((size_t)(end - ptr) < itemSize) {
+     size_t n = in_stream.check(2, 1, wait);
+     if (n == 0) return 0;
+     const U8* iptr = in_stream.getptr();
+@@ -110,8 +110,10 @@ size_t HexInStream::overrun(size_t itemSize, size_t nItems, bool wait) {
+     end += length;
+   }
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/HexOutStream.cxx b/common/rdr/HexOutStream.cxx
+index 7232514c..eac2eff8 100644
+--- a/common/rdr/HexOutStream.cxx
++++ b/common/rdr/HexOutStream.cxx
+@@ -102,8 +102,10 @@ HexOutStream::overrun(size_t itemSize, size_t nItems) {
+ 
+   writeBuffer();
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/InStream.h b/common/rdr/InStream.h
+index 14ecf093..f71a4d9e 100644
+--- a/common/rdr/InStream.h
++++ b/common/rdr/InStream.h
+@@ -43,12 +43,15 @@ namespace rdr {
+ 
+     inline size_t check(size_t itemSize, size_t nItems=1, bool wait=true)
+     {
+-      if (ptr + itemSize * nItems > end) {
+-        if (ptr + itemSize > end)
+-          return overrun(itemSize, nItems, wait);
++      size_t nAvail;
++
++      if (itemSize > (size_t)(end - ptr))
++        return overrun(itemSize, nItems, wait);
++
++      nAvail = (end - ptr) / itemSize;
++      if (nAvail < nItems)
++        return nAvail;
+ 
+-        nItems = (end - ptr) / itemSize;
+-      }
+       return nItems;
+     }
+ 
+@@ -93,13 +96,12 @@ namespace rdr {
+     // readBytes() reads an exact number of bytes.
+ 
+     void readBytes(void* data, size_t length) {
+-      U8* dataPtr = (U8*)data;
+-      U8* dataEnd = dataPtr + length;
+-      while (dataPtr < dataEnd) {
+-        size_t n = check(1, dataEnd - dataPtr);
+-        memcpy(dataPtr, ptr, n);
++      while (length > 0) {
++        size_t n = check(1, length);
++        memcpy(data, ptr, n);
+         ptr += n;
+-        dataPtr += n;
++        data = (U8*)data + n;
++        length -= n;
+       }
+     }
+ 
+diff --git a/common/rdr/MemOutStream.h b/common/rdr/MemOutStream.h
+index 4a815b30..b56bac3a 100644
+--- a/common/rdr/MemOutStream.h
++++ b/common/rdr/MemOutStream.h
+@@ -23,6 +23,7 @@
+ #ifndef __RDR_MEMOUTSTREAM_H__
+ #define __RDR_MEMOUTSTREAM_H__
+ 
++#include <rdr/Exception.h>
+ #include <rdr/OutStream.h>
+ 
+ namespace rdr {
+@@ -65,6 +66,9 @@ namespace rdr {
+       if (len < (size_t)(end - start) * 2)
+         len = (end - start) * 2;
+ 
++      if (len < (size_t)(end - start))
++        throw Exception("Overflow in MemOutStream::overrun()");
++
+       U8* newStart = new U8[len];
+       memcpy(newStart, start, ptr - start);
+       ptr = newStart + (ptr - start);
+diff --git a/common/rdr/OutStream.h b/common/rdr/OutStream.h
+index 11aafd2d..0f60ccc1 100644
+--- a/common/rdr/OutStream.h
++++ b/common/rdr/OutStream.h
+@@ -46,12 +46,15 @@ namespace rdr {
+ 
+     inline size_t check(size_t itemSize, size_t nItems=1)
+     {
+-      if (ptr + itemSize * nItems > end) {
+-        if (ptr + itemSize > end)
+-          return overrun(itemSize, nItems);
++      size_t nAvail;
++
++      if (itemSize > (size_t)(end - ptr))
++        return overrun(itemSize, nItems);
++
++      nAvail = (end - ptr) / itemSize;
++      if (nAvail < nItems)
++        return nAvail;
+ 
+-        nItems = (end - ptr) / itemSize;
+-      }
+       return nItems;
+     }
+ 
+@@ -91,13 +94,12 @@ namespace rdr {
+     // writeBytes() writes an exact number of bytes.
+ 
+     void writeBytes(const void* data, size_t length) {
+-      const U8* dataPtr = (const U8*)data;
+-      const U8* dataEnd = dataPtr + length;
+-      while (dataPtr < dataEnd) {
+-        size_t n = check(1, dataEnd - dataPtr);
+-        memcpy(ptr, dataPtr, n);
++      while (length > 0) {
++        size_t n = check(1, length);
++        memcpy(ptr, data, n);
+         ptr += n;
+-        dataPtr += n;
++        data = (U8*)data + n;
++        length -= n;
+       }
+     }
+ 
+diff --git a/common/rdr/RandomStream.cxx b/common/rdr/RandomStream.cxx
+index d5f1cc85..1be9b251 100644
+--- a/common/rdr/RandomStream.cxx
++++ b/common/rdr/RandomStream.cxx
+@@ -126,8 +126,10 @@ size_t RandomStream::overrun(size_t itemSize, size_t nItems, bool wait) {
+       *(U8*)end++ = (int) (256.0*rand()/(RAND_MAX+1.0));
+   }
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/TLSInStream.cxx b/common/rdr/TLSInStream.cxx
+index d0f94263..3e1172f1 100644
+--- a/common/rdr/TLSInStream.cxx
++++ b/common/rdr/TLSInStream.cxx
+@@ -43,7 +43,7 @@ ssize_t TLSInStream::pull(gnutls_transport_ptr_t str, void* data, size_t size)
+       return -1;
+     }
+ 
+-    if (in->getend() - in->getptr() < (ptrdiff_t)size)
++    if ((size_t)(in->getend() - in->getptr()) < size)
+       size = in->getend() - in->getptr();
+   
+     in->readBytes(data, size);
+@@ -92,15 +92,17 @@ size_t TLSInStream::overrun(size_t itemSize, size_t nItems, bool wait)
+   end -= ptr - start;
+   ptr = start;
+ 
+-  while (end < start + itemSize) {
++  while ((size_t)(end - start) < itemSize) {
+     size_t n = readTLS((U8*) end, start + bufSize - end, wait);
+     if (!wait && n == 0)
+       return 0;
+     end += n;
+   }
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/TLSOutStream.cxx b/common/rdr/TLSOutStream.cxx
+index 30c456fe..7d7c3b56 100644
+--- a/common/rdr/TLSOutStream.cxx
++++ b/common/rdr/TLSOutStream.cxx
+@@ -100,8 +100,10 @@ size_t TLSOutStream::overrun(size_t itemSize, size_t nItems)
+ 
+   flush();
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/ZlibInStream.cxx b/common/rdr/ZlibInStream.cxx
+index e2f971c7..9fcfaf6b 100644
+--- a/common/rdr/ZlibInStream.cxx
++++ b/common/rdr/ZlibInStream.cxx
+@@ -113,8 +113,10 @@ size_t ZlibInStream::overrun(size_t itemSize, size_t nItems, bool wait)
+       return 0;
+   }
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+diff --git a/common/rdr/ZlibOutStream.cxx b/common/rdr/ZlibOutStream.cxx
+index 26a11315..7a0d692c 100644
+--- a/common/rdr/ZlibOutStream.cxx
++++ b/common/rdr/ZlibOutStream.cxx
+@@ -130,8 +130,10 @@ size_t ZlibOutStream::overrun(size_t itemSize, size_t nItems)
+     }
+   }
+ 
+-  if (itemSize * nItems > (size_t)(end - ptr))
+-    nItems = (end - ptr) / itemSize;
++  size_t nAvail;
++  nAvail = (end - ptr) / itemSize;
++  if (nAvail < nItems)
++    return nAvail;
+ 
+   return nItems;
+ }
+-- 
+2.16.4
+
