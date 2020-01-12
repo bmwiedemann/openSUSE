@@ -1,5 +1,6 @@
 buildignore libreoffice-calc
 buildignore libreoffice-draw
+buildignore libreoffice-l10n-en
 buildignore libreoffice-impress
 buildignore libreoffice-icon-theme-breeze
 buildignore libreoffice-icon-theme-sifr

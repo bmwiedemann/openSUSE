@@ -413,6 +413,8 @@
     <ignore name="libreoffice-calc"/>
     <package name="aaa_base" replaces="libreoffice-draw"/>
     <ignore name="libreoffice-draw"/>
+    <package name="aaa_base" replaces="libreoffice-l10n-en"/>
+    <ignore name="libreoffice-l10n-en"/>
     <package name="aaa_base" replaces="libreoffice-impress"/>
     <ignore name="libreoffice-impress"/>
     <package name="aaa_base" replaces="libreoffice-icon-theme-breeze"/>

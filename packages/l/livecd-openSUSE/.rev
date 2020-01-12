@@ -715,4 +715,11 @@
     <user>dimstar_suse</user>
     <comment>- Block iso-codes-lang from the Rescue CD: once again space constraints.</comment>
   </revision>
+  <revision rev="85" vrev="85">
+    <srcmd5>3799f3e4c0b9022c1788e10673602dff</srcmd5>
+    <version>unknown</version>
+    <time>1578854063</time>
+    <user>dimstar_suse</user>
+    <comment>- ignore libreoffice-l10n-en on gnome iso.</comment>
+  </revision>
 </revisionlist>
