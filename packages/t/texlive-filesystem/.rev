@@ -377,4 +377,15 @@
     <comment>- Harden ls-R file generation at installation (bsc#1158910)</comment>
     <requestid>758097</requestid>
   </revision>
+  <revision rev="39" vrev="42">
+    <srcmd5>46cadfc626123602cc212795128cb7df</srcmd5>
+    <version>unknown</version>
+    <time>1578867498</time>
+    <user>dimstar_suse</user>
+    <comment>- Set default user for ls-R files and font cache directories
+  to user nobody (bsc#1159740) 
+- Use setpriv to switch to nobody:mktex before clearing
+  font cache directories (bsc#1158910)</comment>
+    <requestid>762831</requestid>
+  </revision>
 </revisionlist>

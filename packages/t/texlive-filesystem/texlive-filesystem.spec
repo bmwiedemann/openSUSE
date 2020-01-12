@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-filesystem
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,12 +56,16 @@ Requires(pre):  ed
 Requires(pre):  findutils
 Requires(pre):  grep
 Requires(pre):  sed
+Requires(pre):  group(nobody)
+Requires(pre):  user(nobody)
 Requires(verify): permissions
 Obsoletes:      tetex
 BuildRequires:  cron
 BuildRequires:  ed
 BuildRequires:  fontconfig
 #BuildConflicts: texinfo
+BuildRequires:  group(nobody)
+BuildRequires:  user(nobody)
 Source10:       rc.config.texlive
 Source11:       update.texlive
 Source12:       texlive.cron
@@ -151,6 +155,7 @@ Prefix:         %{_bindir}
 %define _appdefdir	%{_x11data}/app-defaults
 #
 %define texgrp          mktex
+%define nobody          nobody
 #define texgid          505
 #
 %description
@@ -15273,6 +15278,7 @@ popd
     do
 	echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \
 	%{buildroot}${dir}/ls-R
+	chmod 0664 %{buildroot}${dir}/ls-R
     done
     ln -sf %{_texmfvardir}/dist/ls-R %{buildroot}%{_texmfdistdir}/
     ln -sf %{_texmfvardir}/main/ls-R %{buildroot}%{_texmfmaindir}/
@@ -15287,11 +15293,11 @@ popd
     mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive.texlive) <<-EOF
 	%{_libexecdir}/mktex/public	root:%{texgrp}	2755
-	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
-	%{_fontcache}/ls-R		root:%{texgrp}	0664
-	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
-	%{_texmfvardir}/dist/ls-R	root:%{texgrp}	0664
-	%{_texmfvardir}/main/ls-R	root:%{texgrp}	0664
+	%{_texmfconfdir}/ls-R	   %{nobody}:%{texgrp}	0664
+	%{_fontcache}/ls-R	   %{nobody}:%{texgrp}	0664
+	%{_texmfvardir}/ls-R	   %{nobody}:%{texgrp}	0664
+	%{_texmfvardir}/dist/ls-R  %{nobody}:%{texgrp}	0664
+	%{_texmfvardir}/main/ls-R  %{nobody}:%{texgrp}	0664
 	%{_texmfvardir}/		root:root	1755
 	%{_texmfvardir}/dist/		root:root	1755
 	%{_texmfvardir}/main/		root:root	1755
@@ -15300,18 +15306,18 @@ popd
 	%{_texmfvardir}/fonts/dvips/	root:root	1755
 	%{_texmfvardir}/fonts/pdftex/	root:root	1755
 	%{_texmfcache}/			root:root	1755
-	%{_fontcache}/			root:%{texgrp}	1775
-	%{_fontcache}/pk/		root:%{texgrp}	1775
-	%{_fontcache}/source/		root:%{texgrp}	1775
-	%{_fontcache}/tfm/		root:%{texgrp}	1775
+	%{_fontcache}/		   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/pk/	   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/source/	   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/tfm/	   %{nobody}:%{texgrp}	1775
 	EOF
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive) <<-EOF
 	%{_libexecdir}/mktex/public	root:%{texgrp}	0755
-	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
-	%{_fontcache}/ls-R		root:%{texgrp}	0664
-	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
-	%{_texmfvardir}/dist/ls-R	root:%{texgrp}	0664
-	%{_texmfvardir}/main/ls-R	root:%{texgrp}	0664
+	%{_texmfconfdir}/ls-R	   %{nobody}:%{texgrp}	0664
+	%{_fontcache}/ls-R	   %{nobody}:%{texgrp}	0664
+	%{_texmfvardir}/ls-R	   %{nobody}:%{texgrp}	0664
+	%{_texmfvardir}/dist/ls-R  %{nobody}:%{texgrp}	0664
+	%{_texmfvardir}/main/ls-R  %{nobody}:%{texgrp}	0664
 	%{_texmfvardir}/		root:root	1755
 	%{_texmfvardir}/dist/		root:root	1755
 	%{_texmfvardir}/main/		root:root	1755
@@ -15320,10 +15326,10 @@ popd
 	%{_texmfvardir}/fonts/dvips/	root:root	1755
 	%{_texmfvardir}/fonts/pdftex/	root:root	1755
 	%{_texmfcache}/			root:root	1755
-	%{_fontcache}/			root:%{texgrp}	1775
-	%{_fontcache}/pk/		root:%{texgrp}	1775
-	%{_fontcache}/source/		root:%{texgrp}	1775
-	%{_fontcache}/tfm/		root:%{texgrp}	1775
+	%{_fontcache}/		   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/pk/	   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/source/	   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/tfm/	   %{nobody}:%{texgrp}	1775
 	EOF
 
 %if %{with zypper_posttrans}
@@ -15397,7 +15403,7 @@ do
     test $error = 0 || continue
     mv ${tmp} ${dir}/ls-R || error=1
     test $error = 0 || continue
-    chown root:%{texgrp} ${dir}/ls-R || error=1
+    chown %{nobody}:%{texgrp} ${dir}/ls-R || error=1
     test $error = 0 || continue
     chmod 0664 ${dir}/ls-R || error=1
     test $error = 0 || continue
@@ -26858,18 +26864,18 @@ rm -f /var/run/texlive/run-update
 %dir %attr(1755,root,root) %{_texmfvardir}/web2c/tex
 %dir %attr(1755,root,root) %{_texmfvardir}/web2c/xetex
 %dir %attr(1755,root,root) %{_texmfcache}
-%dir %attr(1775,root,%{texgrp}) %verify(not mode) %{_fontcache}
-%dir %attr(1775,root,%{texgrp}) %verify(not mode) %{_fontcache}/pk
-%dir %attr(1775,root,%{texgrp}) %verify(not mode) %{_fontcache}/source
-%dir %attr(1775,root,%{texgrp}) %verify(not mode) %{_fontcache}/tfm
+%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}
+%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}/pk
+%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}/source
+%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}/tfm
 %dir %{_texmfvardir}/md5
 %verify(link) %{_texmfmaindir}/ls-R
 %verify(link) %{_texmfdistdir}/ls-R
-%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfconfdir}/ls-R
-%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_fontcache}/ls-R
-%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/ls-R
-%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/dist/ls-R
-%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/main/ls-R
+%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfconfdir}/ls-R
+%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_fontcache}/ls-R
+%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/ls-R
+%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/dist/ls-R
+%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/main/ls-R
 %{_fillupdir}/sysconfig.texlive
 %if %{with zypper_posttrans}
 /var/adm/update-scripts/%{name}-%{version}-%{release}-zypper

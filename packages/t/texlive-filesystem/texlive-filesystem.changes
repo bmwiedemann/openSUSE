@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:35:50 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Set default user for ls-R files and font cache directories
+  to user nobody (bsc#1159740) 
+- Use setpriv to switch to nobody:mktex before clearing
+  font cache directories (bsc#1158910)
+
+-------------------------------------------------------------------
 Thu Dec 19 08:04:39 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Harden ls-R file generation at installation (bsc#1158910) 
