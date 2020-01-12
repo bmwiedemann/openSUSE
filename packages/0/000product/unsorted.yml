@@ -4697,11 +4697,7 @@ unsorted:
   - gocode 
   - gocr 
   - gocr-gui 
-  - godot 
-  - godot-headless 
   - godot-rpm-macros 
-  - godot-runner 
-  - godot-server 
   - goffice-devel 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
@@ -10897,7 +10893,6 @@ unsorted:
   - libqpid-proton-cpp10 
   - libqpid-proton10 
   - libqrcodegen1 
-  - libqrcodegencpp1 
   - libqrencode4-32bit: [x86_64] 
   - libqrupdate1 
   - libqsastime0 
@@ -14365,7 +14360,6 @@ unsorted:
   - nextcloud-client-doc 
   - nextcloud-client-dolphin 
   - nextcloud-client-lang 
-  - nf3d 
   - nfacct 
   - nfc-eventd 
   - nfcutils 
@@ -17752,7 +17746,6 @@ unsorted:
   - python-wxWidgets-3_0-devel 
   - python-xapian 
   - python-yui 
-  - python-zinnia 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
   - python-zope.hookable-doc 
@@ -18422,7 +18415,6 @@ unsorted:
   - python2-cssselect 
   - python2-cssutils 
   - python2-ctypescrypto 
-  - python2-ctypesgen 
   - python2-cursive 
   - python2-curtsies 
   - python2-cymruwhois 
@@ -20737,7 +20729,6 @@ unsorted:
   - python3-cssutils 
   - python3-csvkit 
   - python3-ctypescrypto 
-  - python3-ctypesgen 
   - python3-ctypeslib2 
   - python3-cufflinks 
   - python3-curio 
@@ -24382,6 +24373,7 @@ unsorted:
   - snack 
   - snakeyaml 
   - snakeyaml-javadoc 
+  - snapper-testsuite 
   - snappy-devel 
   - snd 
   - snd_sf2 
@@ -24643,7 +24635,6 @@ unsorted:
   - subunit-shell 
   - subversion-devel 
   - subversion-python 
-  - subversion-python-ctypes 
   - subversion-ruby 
   - subversion-server 
   - subversion-tools 
