@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200111" schemaversion="4.1">
+<image name="OBS__openSUSE___20200112" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200111</productvar>
+      <productvar name="VERSION">20200112</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200111,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200112,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200111/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200112/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -1816,6 +1816,7 @@
       <repopackage name="libgadu3"/>
       <repopackage name="libgarcon-1-0"/>
       <repopackage name="libgarcon-branding-openSUSE"/>
+      <repopackage name="libgarcon-branding-upstream" arch="i586,i686"/>
       <repopackage name="libgarcon-data"/>
       <repopackage name="libgarcon-lang"/>
       <repopackage name="libgavl1"/>
@@ -3203,7 +3204,6 @@
       <repopackage name="man"/>
       <repopackage name="man-pages"/>
       <repopackage name="man-pages-fr"/>
-      <repopackage name="man-pages-fr-extra"/>
       <repopackage name="man-pages-ja"/>
       <repopackage name="man-pages-posix"/>
       <repopackage name="man-pages-zh_CN"/>
@@ -5495,9 +5495,11 @@
       <repopackage name="xfce4-sensors-plugin-lang"/>
       <repopackage name="xfce4-session"/>
       <repopackage name="xfce4-session-branding-openSUSE"/>
+      <repopackage name="xfce4-session-branding-upstream" arch="i586,i686"/>
       <repopackage name="xfce4-session-lang"/>
       <repopackage name="xfce4-settings"/>
       <repopackage name="xfce4-settings-branding-openSUSE"/>
+      <repopackage name="xfce4-settings-branding-upstream" arch="i586,i686"/>
       <repopackage name="xfce4-settings-lang"/>
       <repopackage name="xfce4-smartbookmark-plugin"/>
       <repopackage name="xfce4-smartbookmark-plugin-lang"/>

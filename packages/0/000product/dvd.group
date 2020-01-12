@@ -3191,11 +3191,10 @@
     <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="makeinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="man-pages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="man-pages-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="man-pages-fr-extra" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-fr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-ja" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="man-pages-posix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="man-pages-posix" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-zh_CN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="manufacturer-PPDs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="mariadb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5707,10 +5706,13 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgarcon-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.2.i586-->
+    <package name="xfce4-session-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="xfce4-settings-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
