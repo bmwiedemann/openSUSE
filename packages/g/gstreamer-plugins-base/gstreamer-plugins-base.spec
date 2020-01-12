@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-base
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,12 @@ URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gst-plugins-base/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
+# PATCH-FIX-UPSTREAM gst-base-playbin-handle-error.patch -- playbin: Handle error message with redirection indication
+Patch0:         gst-base-playbin-handle-error.patch
+# PATCH-FIX-UPSTREAM gst-base-audioencoder-fix-leak.patch -- audioencoder: fix segment event leak
+Patch1:         gst-base-audioencoder-fix-leak.patch
+# PATCH-FIX-UPSTREAM gst-base-fft-update-kiss-version.patch -- fft: Update our kiss fft version
+Patch2:         gst-base-fft-update-kiss-version.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
