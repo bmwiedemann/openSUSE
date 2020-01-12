@@ -313,4 +313,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Applications 19.12.0</comment>
     <requestid>756173</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b44774668d16337a18c30d7565d95d3a</srcmd5>
+    <version>19.12.1</version>
+    <time>1578867608</time>
+    <user>dimstar_suse</user>
+    <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
+    <requestid>762304</requestid>
+  </revision>
 </revisionlist>
