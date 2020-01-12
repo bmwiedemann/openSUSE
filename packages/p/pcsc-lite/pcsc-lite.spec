@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-lite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,12 +26,12 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.8.25
+Version:        1.8.26
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Productivity/Security
-Url:            https://pcsclite.apdu.fr/
+URL:            https://pcsclite.apdu.fr/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}.sysconfig
 Source2:        README.SUSE

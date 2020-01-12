@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:29:59 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Updated to version 1.8.26
+  * Use poll() instead of select() to allow file descriptor higher
+    than FD_SETSIZE
+  * Enable reader filtering by default
+  * pcsc-spy:
+    - Do not read output buffer after error
+    - Adjust code to handle autoallocated buffers
+    - fix year-2038 issue by using long instead of int
+  * Android: fix compilation
+  * polkit: log the error message if polkit_authority_get_sync() fails
+  * Exit with EXIT_SUCCESS on shutdown to please systemd
+  * Fix a minor memory leak
+
+-------------------------------------------------------------------
 Fri Apr 26 11:17:53 UTC 2019 - mvetter@suse.com
 
 - bsc#1130588: Require shadow instead of old pwdutils
