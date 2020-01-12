@@ -235,7 +235,7 @@
             fsmountoptions="noatime,compress=lzo"
             bootloader="grub2"
             firmware="efi"
-            kernelcmdline="quiet plymouth.enable=0 swiotlb=512 cma=64M console=ttyS0,115200 console=tty"
+            kernelcmdline="quiet plymouth.enable=0 console=ttyS0,115200 console=tty"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_quota_groups="true"

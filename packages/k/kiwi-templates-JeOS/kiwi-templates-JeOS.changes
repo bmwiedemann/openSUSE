@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 14:16:16 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Remove explicit swiotlb and cma assignments from RPi cmdline
+  as the defaults are better meanwhile (bsc#1160308)
+
+-------------------------------------------------------------------
 Tue Dec  3 15:31:37 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Fix editbootinstall_rpi.sh with newer kiwi

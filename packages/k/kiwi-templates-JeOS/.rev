@@ -39,4 +39,13 @@
     <comment>- Fix editbootinstall_rpi.sh with newer kiwi</comment>
     <requestid>753295</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>ef22ef30f7f48ec746ec3ab6dea12a88</srcmd5>
+    <version>84.87</version>
+    <time>1578867464</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove explicit swiotlb and cma assignments from RPi cmdline
+  as the defaults are better meanwhile (bsc#1160308)</comment>
+    <requestid>762238</requestid>
+  </revision>
 </revisionlist>
