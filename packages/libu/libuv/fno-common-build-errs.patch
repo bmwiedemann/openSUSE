@@ -1,0 +1,82 @@
+From 35a43bdbfd9c4d6d875e92903799e693d5ac18ac Mon Sep 17 00:00:00 2001
+From: Ben Noordhuis <info@bnoordhuis.nl>
+Date: Tue, 7 Jan 2020 15:21:03 +0100
+Subject: [PATCH 1/2] test: fix -fno-common build errors
+
+Fixes: https://github.com/libuv/libuv/issues/2603
+---
+ test/test-poll-close-doesnt-corrupt-stack.c | 6 ++----
+ test/test-poll-closesocket.c                | 5 ++---
+ 2 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/test/test-poll-close-doesnt-corrupt-stack.c b/test/test-poll-close-doesnt-corrupt-stack.c
+index 3393820fc4..1d7e84f603 100644
+--- a/test/test-poll-close-doesnt-corrupt-stack.c
++++ b/test/test-poll-close-doesnt-corrupt-stack.c
+@@ -31,11 +31,9 @@
+ # define NO_INLINE __attribute__ ((noinline))
+ #endif
+ 
+-
+-uv_os_sock_t sock;
+-uv_poll_t handle;
+-
+ #ifdef _WIN32
++static uv_os_sock_t sock;
++static uv_poll_t handle;
+ static int close_cb_called = 0;
+ 
+ 
+diff --git a/test/test-poll-closesocket.c b/test/test-poll-closesocket.c
+index ecaa9e54a2..1a1c364112 100644
+--- a/test/test-poll-closesocket.c
++++ b/test/test-poll-closesocket.c
+@@ -25,10 +25,9 @@
+ #include "uv.h"
+ #include "task.h"
+ 
+-uv_os_sock_t sock;
+-uv_poll_t handle;
+-
+ #ifdef _WIN32
++static uv_os_sock_t sock;
++static uv_poll_t handle;
+ static int close_cb_called = 0;
+ 
+ 
+
+From 5de278e32e50e7600e7aa3d88199e0a51d016b79 Mon Sep 17 00:00:00 2001
+From: Ben Noordhuis <info@bnoordhuis.nl>
+Date: Tue, 7 Jan 2020 15:21:03 +0100
+Subject: [PATCH 2/2] build: turn on -fno-common to catch regressions
+
+Refs: https://github.com/libuv/libuv/issues/2603
+---
+ common.gypi | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/common.gypi b/common.gypi
+index 2297bdf0fb..8e2aa7160b 100644
+--- a/common.gypi
++++ b/common.gypi
+@@ -35,7 +35,7 @@
+         },
+         'conditions': [
+           ['OS != "zos"', {
+-            'cflags': [ '-O0', '-fwrapv' ]
++            'cflags': [ '-O0', '-fno-common', '-fwrapv' ]
+           }],
+           ['OS == "android"', {
+             'cflags': [ '-fPIE' ],
+@@ -80,9 +80,10 @@
+         'conditions': [
+           ['OS != "zos"', {
+             'cflags': [
+-              '-fomit-frame-pointer',
+               '-fdata-sections',
+               '-ffunction-sections',
++              '-fno-common',
++              '-fomit-frame-pointer',
+             ],
+           }],
+         ]
