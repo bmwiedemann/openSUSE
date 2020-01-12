@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 # (for auto-generated printer driver Provides:)
 %bcond_with new_pycups
 Name:           hplip
-Version:        3.19.6
+Version:        3.19.12
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -72,6 +72,8 @@ Patch301:       hplip-misc-missing-includes-and-definitions.patch
 Patch302:       hp_ipp.h-add-missing-prototypes.patch
 # Fix import error for pcardext
 Patch303:       photocard-fix-import-error-for-pcardext.patch
+# bsc#1159240, lp#1859179
+Patch304:       hp-sendfax-avoid-crash-if-python-reportlab-is-missin.patch
 # PATCH-FIX-SUSE: Remove references to the closed-source ImageProcessor
 Patch400:       hplip-remove-imageprocessor.diff
 # Let a function return NULL instead of nothing
@@ -150,6 +152,7 @@ Requires(post): coreutils
 Obsoletes:      hplip17
 Provides:       hplip3 = 3.9.5
 Obsoletes:      hplip3 < 3.9.5
+Recommends:     python3-reportlab
 %if 0%{?with_new_pycups}
 # All printer driver packages should have "BuildRequires: cups-rpm-helper"
 # for automatic generation of Provides: tags.
@@ -307,6 +310,7 @@ This sub-package is only required by developers.
 %patch301 -p1 -b .misc-headers
 %patch302 -p1 -b .hp_ipp_missing_prototypes
 %patch303 -p1 -b .photocard_import
+%patch304 -p1
 %patch400 -p1
 %patch401 -p1
 %patch402 -p1

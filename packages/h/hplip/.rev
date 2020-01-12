@@ -1026,4 +1026,76 @@
     <comment></comment>
     <requestid>760414</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>1538f357c89496e8a5f53187b4e9c751</srcmd5>
+    <version>3.19.12</version>
+    <time>1578867527</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix crash if python3-reportlab is missing (bsc#1159240, lp#1859179)
+  * Added hp-sendfax-avoid-crash-if-python-reportlab-is-missin.patch
+  * Added recommends on python3-reportlab
+- updated to 3.19.12
+  Rendering print jobs with cupsfilter command 
+  Added support for the following new Printers:
+  * HP Color LaserJet Pro M256dn
+  * HP Color LaserJet Pro M255dn
+  * HP Color LaserJet Pro M256nw
+  * HP Color LaserJet Pro M255nw
+  * HP Color LaserJet Pro M256dw
+  * HP Color LaserJet Pro M255dw
+  * HP Color LaserJet Pro M155a
+  * HP Color LaserJet Pro M156a
+  * HP Color LaserJet Pro M155nw
+  * HP Color LaserJet Pro M156nw
+  * HP Color LaserJet Pro MFP M282nw
+  * HP Color LaserJet Pro MFP M284nw
+  * HP Color LaserJet Pro MFP M283fdn
+  * HP Color LaserJet Pro MFP M285fdn
+  * HP Color LaserJet Pro MFP M283fdw
+  * HP Color LaserJet Pro MFP M285fdw
+  * HP Color LaserJet Pro MFP M283cdw
+  * HP Color LaserJet Pro MFP M285cdw
+  * HP Color LaserJet Pro MFP M182n
+  * HP Color LaserJet Pro MFP M184n
+  * HP Color LaserJet Pro MFP M182nw
+  * HP Color LaserJet Pro MFP M184nw
+  * HP Color LaserJet Pro MFP M183fw
+  * HP Color LaserJet Pro MFP M185fw
+- updated to 3.19.11
+  Added Supported for “hp-uiscan” to scan only backside of a page
+  Added support for the following new Printers:
+  * HP Color LaserJet MFP M776dn
+  * HP Color LaserJet Flow MFP M776z
+  * HP Color LaserJet Flow MFP M776zs
+  * HP Color LaserJet M856dn
+  * HP Color LaserJet M856x
+  * HP Color LaserJet E85055dn
+  Added Job Accounting Support for the following devices:
+  * HP LaserJet Managed Flow MFP E77822-28-30 Printer
+  * HP LaserJet Managed MFP E77822-28-30 Printer
+  * HP LaserJet Managed Flow MFP E87640-50-60 Printer
+  * HP LaserJet Managed MFP E87640-50-60 Printer
+  * HP LaserJet Managed Flow MFP E82540-50-60 Printer
+  * HP LaserJet Managed MFP E82540-50-60 Printer
+  * HP LaserJet Managed Flow MFP E72525-30-35 Printer
+  * HP LaserJet Managed MFP E72525-30-35 Printer
+- updated to 3.19.8
+  hp-uiscan will fetch the paper sizes from the device dynamically for ScanJet devices.
+  hp-uiscan will prompt error message when paper jam occurs for ScanJet devices.
+  Added support for the following new Printers:
+  * HP DesignJet T1530 Postscript
+  * HP DesignJet T1600 Postscript Printer
+  * HP DesignJet T1600dr Postscript Printer
+  * HP DesignJet T2530 Postscript 
+  * HP DesignJet T2600 Postscript MFP
+  * HP DesignJet T930 Postscript
+  * HP LaserJet Pro M304a
+  * HP LaserJet Pro M305d
+  * HP LaserJet Pro M305dn
+  * HP LaserJet Pro M305dw
+  * HP LaserJet Pro MFP M329dn
+  * HP LaserJet Pro MFP M329dw
+</comment>
+    <requestid>762938</requestid>
+  </revision>
 </revisionlist>
