@@ -313,7 +313,7 @@
     <package name="patterns-yast-yast2_basis"/>
     <namedCollection name="yast2_basis"/>
     <package name="kernel-default"/>
-    <package name="kernel-firmware-all"/>
+    <package name="kernel-firmware"/>
     <package name="patterns-base-enhanced_base"/>
     <namedCollection name="enhanced_base"/>
     <package name="patterns-base-x11"/>

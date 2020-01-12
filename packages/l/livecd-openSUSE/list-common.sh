@@ -192,7 +192,7 @@ installPattern yast2_basis
 
 # This was previously required by rest_cd_core
 install kernel-default
-install kernel-firmware-all
+install kernel-firmware
 install patterns-base-enhanced_base
 installPattern enhanced_base
 install patterns-base-x11

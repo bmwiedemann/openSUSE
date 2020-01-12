@@ -24,8 +24,9 @@ buildignore noto-sans-jp-regular-fonts
 buildignore noto-sans-kr-bold-fonts
 buildignore noto-sans-kr-regular-fonts
 
-# Expected by openQA
-install libreoffice-writer
+# Expected by openQA - But no more space on the CD
+# install libreoffice-writer
+buildignore libreoffice
 
 # Packages for the installer
 source "$PWD/list-installer.sh"

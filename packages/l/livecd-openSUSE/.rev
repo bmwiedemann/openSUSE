@@ -744,4 +744,12 @@
   kernel modules) instead of kernel-firmware (all uncompressed
   kernel modules).</comment>
   </revision>
+  <revision rev="89" vrev="89">
+    <srcmd5>75bff9fb64bc39085093a9817c729e8c</srcmd5>
+    <version>unknown</version>
+    <time>1578863125</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop LO now also from the GNOME Live CD: no more space
+  (overshot by 30MB).</comment>
+  </revision>
 </revisionlist>
