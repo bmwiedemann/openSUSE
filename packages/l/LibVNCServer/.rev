@@ -348,4 +348,14 @@
   + LibVNCServer-CVE-2019-15681.patch</comment>
     <requestid>745157</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>80c12d51659728a8e70642840a86e230</srcmd5>
+    <version>0.9.12</version>
+    <time>1578867485</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix crash on shutdown:
+  * avoid-pthread_join-if-backgroundLoop-is-FALSE.patch
+  * fix-crash-on-shutdown.patch (forwarded request 762623 from favogt)</comment>
+    <requestid>762624</requestid>
+  </revision>
 </revisionlist>

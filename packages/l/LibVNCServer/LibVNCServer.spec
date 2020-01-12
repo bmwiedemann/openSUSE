@@ -1,7 +1,7 @@
 #
 # spec file for package LibVNCServer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,10 @@ Patch1:         cmake-libdir.patch
 Patch2:         LibVNCServer-CVE-2018-20749.patch
 # CVE-2019-15681 [bsc#1155419]
 Patch3:         LibVNCServer-CVE-2019-15681.patch
+# PATCH-FIX-UPSTREAM: https://github.com/LibVNC/libvncserver/commit/d0a76539835d11c0f4723499f8be4bc9c7724eb9
+Patch4:         avoid-pthread_join-if-backgroundLoop-is-FALSE.patch
+# PATCH-FIX-UPSTREAM: https://github.com/LibVNC/libvncserver/pull/361
+Patch5:         fix-crash-on-shutdown.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
@@ -103,6 +107,8 @@ files for LibVNCServer.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 #%patch2 -p1
 # fix encoding
 for file in ChangeLog ; do
