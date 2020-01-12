@@ -1,0 +1,26 @@
+From 34dc7303045877226ebdd6cd07ce6384c0881eb8 Mon Sep 17 00:00:00 2001
+From: Davis King <davis@dlib.net>
+Date: Sun, 22 Dec 2019 07:52:08 -0500
+Subject: [PATCH] Fix opencv version check to work on all opencv versions
+
+Index: digikam-6.4.0/core/libs/facesengine/recognition/dlib-dnn/dnnface/dnn_base/cv_image.h
+===================================================================
+--- digikam-6.4.0.orig/core/libs/facesengine/recognition/dlib-dnn/dnnface/dnn_base/cv_image.h
++++ digikam-6.4.0/core/libs/facesengine/recognition/dlib-dnn/dnnface/dnn_base/cv_image.h
+@@ -52,7 +52,16 @@ public:
+                      << "\n\t img.channels(): " << img.channels()
+                      << "\n\t img.pixel_traits<pixel_type>::num: " << pixel_traits<pixel_type>::num
+                      );
++// Note, do NOT use CV_VERSION_MAJOR because in OpenCV 2 CV_VERSION_MAJOR actually held
++// CV_VERSION_MINOR and instead they used CV_VERSION_EPOCH.  So for example, in OpenCV
++// 2.4.9.1 CV_VERSION_MAJOR==4 and CV_VERSION_EPOCH==2.  However, CV_MAJOR_VERSION has always
++// (seemingly) held the actual major version number, so we use that to test for the OpenCV major
++// version.
++#if CV_MAJOR_VERSION > 3
++	IplImage temp = cvIplImage(img);
++#else
+         IplImage temp = img;
++#endif
+         init(&temp);
+     }
+ 

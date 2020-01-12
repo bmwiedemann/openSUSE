@@ -1,7 +1,7 @@
 #
 # spec file for package kirigami-gallery
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kirigami-gallery
-Version:        19.12.0
+Version:        19.12.1
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 12 00:54:29 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 5.1.1:
+  - Fix removing a range of versions with index inheritance.
+  - Add keyring support for devpi push to external repositories
+    like pypi.org. This is compatible with twine, see
+    https://twine.readthedocs.io/en/latest/#keyring-support
+  - fix #666: output nicer error message when section couldn’t be
+    found in pypirc.
+  - the 410 status for the register action isn’t marked as error
+    anymore for push to external repository.
+
+-------------------------------------------------------------------
 Tue Sep 17 11:16:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use upstream description.

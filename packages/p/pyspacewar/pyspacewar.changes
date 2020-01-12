@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  9 13:46:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to python3
+- Enable tests
+- Update to 1.1.1:
+  * various minor fixes
+
+-------------------------------------------------------------------
 Thu Nov  3 11:24:47 UTC 2016 - nemysis@openSUSE.org
 
 

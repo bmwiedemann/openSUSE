@@ -48,7 +48,8 @@ When files are changed the process is restarted.
 # Not Needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/hupper

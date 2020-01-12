@@ -1,7 +1,7 @@
 #
 # spec file for package courier-unicode
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           courier-unicode
 %define libname   lib%{name}
 %define libsoname %{libname}4
 
+Name:           courier-unicode
+Version:        2.1
+Release:        0
 Summary:        Courier Unicode Library
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Servers
-Version:        2.1
-Release:        0
-Url:            http://www.courier-mta.org/
-Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}-%{version}.tar.bz2.sig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://www.courier-mta.org/
+Source0:        https://downloads.sourceforge.net/project/courier/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://downloads.sourceforge.net/project/courier/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
+# Keyring downloaded from https://www.courier-mta.org/KEYS.bin#/%{name}.keyring
+Source2:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 
@@ -74,16 +75,16 @@ BuildArch:      noarch
 This package contains the docs and the man pages of the Courier Unicode Library
 
 %prep
-%setup -n %{name}-%{version}
+%setup -q
 
 %build
 %configure \
   --disable-static
 
-%{__make} %{_smp_mflags}
+make %{?_smp_mflags}
 
 %install
-%{__make} install DESTDIR=%{buildroot}
+%make_install
 
 # cleanup *.la libs
 find %{buildroot} -name %{libname}.la -exec rm {} \;
@@ -94,9 +95,10 @@ find %{buildroot} -name %{libname}.la -exec rm {} \;
 %post   -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
 
-%files  -n %{libsoname}
+%files -n %{libsoname}
 %defattr(-,root,root)
-%doc COPYING ChangeLog README
+%license COPYING
+%doc ChangeLog README
 %{_libdir}/%{libname}.so.*
 
 %files devel

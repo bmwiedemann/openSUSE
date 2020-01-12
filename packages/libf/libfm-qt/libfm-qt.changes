@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  5 13:22:07 UTC 2020 - Namor Barcode <gutaper@gmail.com>
+
+- Add patch "fix_query_cancellation_error.patch" from upstream,
+  fixed harmless pop-up error message (See https://github.com/lxqt/pcmanfm-qt/issues/1041)
+
+-------------------------------------------------------------------
 Mon Feb 25 10:02:03 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.1:

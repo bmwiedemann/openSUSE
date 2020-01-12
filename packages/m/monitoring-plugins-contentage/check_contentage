@@ -4,6 +4,7 @@
 # check_contentage - nagios plugin
 #
 # Copyright (C) 2012, SUSE Linux Products GmbH
+# Copyright (C) 2020, SUSE LCC
 # Author: Lars Vogdt
 #
 # All rights reserved.
@@ -34,8 +35,6 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
-# $Id$
-#
 
 use lib "/usr/lib/nagios/plugins";
 use utils qw{$TIMEOUT %ERRORS print_revision};
@@ -47,11 +46,12 @@ use File::Basename;
 use File::stat;
 use POSIX qw(strftime);
 
-our $version="0.4";
+our $version="0.7";
 our $time_warn=1440;
 our $time_crit=4880;
 our @pathnames=qw();
 our $help=0;
+our @ignores=qw();
 our $rev=0;
 our $recursive=0;
 our $errorstr="";
@@ -74,20 +74,22 @@ alarm($TIMEOUT);
 sub print_usage {
 	print "This plugin checks one or more directory for files older than a specified age.\n";
 	print "You can define the age of files for warning and critical states.\n\n";
-	print "Usage: ".basename($0)." -w $time_warn -c $time_crit -p /tmp\n";
+	print "Usage: ".basename($0)." -w $time_warn -c $time_crit -p /tmp,/var/tmp -i /tmp/foo,/tmp/bar\n";
 	print "Options:\n";
 	print "       -w|--warning   : time for warnings (minutes)\n";
 	print "       -c|--critical  : time for critical warnings (minutes)\n";
 	print "       -p|--pathnames : absolute path to the folders, split mutliple pathnames with commata\n";
 #	print "       -r|--recursive : dive into subfolders\n";
 	print "       -t|--timeout   : timeout (default: $TIMEOUT)\n";
+	print "       -i|--ignore    : ignore filenames (comma separated)\n";
+	print "       -d|--debug     : print debug output\n";
 }
 
 sub print_help {
 	my $exitcode=shift || 1;
-	print "Copyright (c) 2009, Novell, Inc.\n\n";
+	print "Copyright (c) 2020, SUSE LCC\n\n";
 	print_usage();
-    print "\n";
+	print "\n";
 	exit $exitcode;
 }
 
@@ -98,10 +100,11 @@ sub print_error {
 	exit $ERRORS{'UNKNOWN'};
 }
 
-sub check_dir($$$){
+sub check_dir($$$$){
 	my $dir = shift;	
 	my $secwarn = shift;
 	my $seccrit = shift;
+	my $ignores_ref = shift;
 	my %res;
 	my $count=0;
 	my $futurecount=0;
@@ -111,26 +114,30 @@ sub check_dir($$$){
 	$res{'errorstr'}="";
 	if (opendir(DIR,"$dir")){
 	    print "Working in $dir\n" if ($DEBUG);
-	    for (readdir(DIR)) {
+	    for my $file (readdir(DIR)) {
 #		if ($recursive){
-#			&check_dir("$dir/$_",$secwarn,$seccrit) if (-d "$dir/$_");
+#			&check_dir("$dir/$file",$secwarn,$seccrit) if (-d "$dir/$file");
 #		}
  	        $count++;
-	        next if (! -f "$dir/$_");
-	        my $mtime=stat("$dir/$_")->mtime;
+	        next if (! -f "$dir/$file");
+		if (grep(/\Q$dir\/$file\E/, @$ignores_ref)){
+			print "$dir/$file is in ignores\n" if ($DEBUG);
+			next;
+		}
+	        my $mtime=stat("$dir/$file")->mtime;
 	        my $age = time() - $mtime;
 	        my $time=strftime("%a %b %e %H:%M:%S %Y",localtime($mtime));
-	        print "$_ : $mtime : $age sec\n" if ($DEBUG);
+	        print "$dir/$file : $mtime : $age sec\n" if ($DEBUG);
 		if ( $age < 0 ){
-			$res{'errorstr'}.="$dir/$_ was modified in the future!\n";
+			$res{'errorstr'}.="$dir/$file was modified in the future!\n";
 			$res{'level'}=$ERRORS{'CRITICAL'};
 			$futurecount++;
 		} elsif ( $age >= $seccrit ){
-			$res{'errorstr'}.="$dir/$_ was last modified on $time\n";
+			$res{'errorstr'}.="$dir/$file was last modified on $time\n";
         	        $res{'level'}=$ERRORS{'CRITICAL'};
 			$oldcount++;
 	        } elsif ( $age >= $secwarn ){
-			$res{'errorstr'}.="$dir/$_ was last modified on $time\n";
+			$res{'errorstr'}.="$dir/$file was last modified on $time\n";
 			$res{'level'}=$ERRORS{'WARNING'} if ($res{'level'} < $ERRORS{'WARNING'});
 			$warncount++;
                 }
@@ -149,6 +156,8 @@ sub check_dir($$$){
 Getopt::Long::Configure('bundling');
 if(!GetOptions(	'w|warning=i'  => \$time_warn,
 				'c|critical=i' => \$time_crit,
+				'd|debug'      => \$DEBUG,
+				'i|ignore=s'   => \@ignores,
 				'p|pathname=s' => \@pathnames,
 				'r|recursive'  => \$recursive,
 				't|timeout=i'  => \$TIMEOUT,
@@ -168,12 +177,13 @@ print_error("critical must be greater than 0") if ($time_crit <= 0);
 print_error("critical ($time_crit) must be greater than warning ($time_warn)") if ($time_crit <= $time_warn);
 print_error("Please provide at least one pathname") if (!defined($pathnames[0]) || ( $pathnames[0] eq "" ));
 @pathnames=split(/,/,join(',',@pathnames));
+@ignores=split(/,/,join(',',@ignores));
 our $secwarn = $time_warn * 60;
 our $seccrit = $time_crit * 60;
-print STDERR "TIMEOUT: $TIMEOUT\nWARN: $time_warn\nCRIT: $time_crit\nPATHNAMES: ".join(" ",@pathnames)."\n" if ($DEBUG);
+print STDERR "TIMEOUT: $TIMEOUT\nWARN: $time_warn\nCRIT: $time_crit\nPATHNAMES: ".join(" ",@pathnames)."\nIGNORES: ".join(" ",@ignores)."\n" if ($DEBUG);
 
 foreach my $path (@pathnames){
-	$status{"$path"}=check_dir("$path",$secwarn, $seccrit);
+	$status{"$path"}=check_dir("$path",$secwarn, $seccrit, \@ignores);
 }
 
 our $exitcode=0;

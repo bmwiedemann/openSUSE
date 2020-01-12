@@ -1,7 +1,0 @@
-<package name="funkload" project="openSUSE:Factory">
-  <title>Functional and Load Web Tester</title>
-  <description>FunkLoad is a functional and load Web tester whose main use cases are functional testing of Web projects (and thus regression testing as well), performance testing, load testing (such as volume testing or longevity testing), and stress testing. It can also be used to write Web agents to script any Web repetitive task, like checking whether a site is alive.
-</description>
-  <devel project="benchmark" package="funkload"/>
-  <url>http://funkload.nuxeo.org/</url>
-</package>

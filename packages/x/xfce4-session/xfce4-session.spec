@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-session
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.14.0
+Version:        4.14.1
 Release:        0
 Summary:        Xfce Session Manager
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-session/start
 Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.14/%{name}-%{version}.tar.bz2
@@ -36,12 +36,13 @@ Patch1:         xfce4-session-adapt-session-scripts.patch
 # PATCH-FIX-OPENSUSE add-light-locker-support.patch  -- add light-locker to xflock4 script.
 Patch3:         add-light-locker-support.patch
 %endif
+BuildRequires:  fdupes
 BuildRequires:  iceauth
 BuildRequires:  intltool
-BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
+BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -55,7 +56,6 @@ BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(atk)
 Requires:       %{name}-branding = %{version}
 Requires:       systemd
 Requires:       xfce4-settings
@@ -73,8 +73,8 @@ Recommends:     thunar
 Recommends:     xfce4-panel
 # xfce4-about needs to be dragged at a low level
 Recommends:     libxfce4ui-tools
-Obsoletes:      xfce4-session-devel < %{version}
 Obsoletes:      libxfsm-4_6-0 < %{version}
+Obsoletes:      xfce4-session-devel < %{version}
 
 %description
 xfce4-session is the session manager for the Xfce desktop environment.
@@ -174,4 +174,3 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
 %changelog
-

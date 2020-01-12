@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  4 22:18:08 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 0.7:
+  + add debug output option
+  + add option to ignore specific files
+  + updated copyright notice
+
+-------------------------------------------------------------------
 Wed Jul 30 23:17:29 UTC 2014 - lars@linux-schulserver.de
 
 - renamed package to monitoring-plugins-contentage

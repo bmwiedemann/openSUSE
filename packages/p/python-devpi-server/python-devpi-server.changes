@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 12 00:25:31 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update from 5.1.0 to 5.3.1:
+  see
+  https://devpi.net/docs/devpi/devpi/stable/+d/changelog.html#devpi-server
+  for detailed changelog.
+  Many options to devpi (e.g., devpi --export) were replaced by
+  the dedicated commands (e.g., devpi-export).
+
+-------------------------------------------------------------------
 Tue Sep 17 11:16:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.

@@ -756,4 +756,12 @@
     <comment>KDE Applications 19.12.0</comment>
     <requestid>756254</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>dc23a152967f3b1d62c7f2834cd4ebe0</srcmd5>
+    <version>19.12.1</version>
+    <time>1578867686</time>
+    <user>dimstar_suse</user>
+    <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
+    <requestid>762384</requestid>
+  </revision>
 </revisionlist>

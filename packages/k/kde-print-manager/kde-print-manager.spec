@@ -1,7 +1,7 @@
 #
 # spec file for package kde-print-manager
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 24.9.90 Raymond Wooninck <tittiatcoke@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-print-manager
-Version:        19.12.0
+Version:        19.12.1
 Release:        0
 Summary:        A print manager for KDE
 License:        GPL-2.0-or-later

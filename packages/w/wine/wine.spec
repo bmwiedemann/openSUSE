@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.0-rc4
-Version:        5.0~rc4
+%define realver 5.0-rc5
+Version:        5.0~rc5
 Release:        0
 
 %if "%{flavor}" != ""
@@ -131,7 +131,10 @@ Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
 #Patch0:         susepatches.patch
-Recommends:     wine-gecko >= 2.47
+Recommends:     wine-gecko >= 2.47.1
+Conflicts:      wine-gecko < 2.47.1
+Recommends:     wine-mono >= 4.9.2
+Conflicts:      wine-mono < 4.9.2
 # not packaged in distro...
 Recommends:     wine-mono
 Recommends:     dosbox
@@ -139,7 +142,6 @@ Recommends:     alsa-plugins
 Recommends:     alsa-plugins-pulse
 Recommends:     winetricks
 Requires:       samba-winbind
-Conflicts:      wine-gecko < 1.3
 %ifarch x86_64
 Requires:       %{name}-32bit = %{version}
 %endif
@@ -147,7 +149,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.0rc4
+%define staging_version 5.0rc5
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

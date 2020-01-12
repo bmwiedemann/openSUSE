@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:36:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Changes since 19.12.0:
+  * Remove obsolete code
+  * Fix 'No undo support for adding connected widgets' (kde#415888)
+  * Fix 'Different name when adding connected states compared to adding via the toolbar' (kde#415890)
+  * Fix 'Adding connected widgets cannot be cancelled' (kde#415889)
+  * Limit building local KDev::Tests library for KF5 only when kdevplatform library has been found
+  * Library KDev::Tests: remove Qt5::Tests dependencies (kde#415849)
+  * Embed KDev::Tests library to not depend on kdevplatform for KF5 builds
+  * Fix 'The initial cursor position in the properties dialog of a state should be set to the name field' (kde#415784)
+  * Fix 'Adding a connected state should allow entering of a state name' (kde#415779)
+
+-------------------------------------------------------------------
 Tue Dec 10 06:39:19 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 11 14:03:38 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
 Wed May 16 16:52:49 UTC 2018 - toddrme2178@gmail.com
 
 - Update to 0.4.7.12

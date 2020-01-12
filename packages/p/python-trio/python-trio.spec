@@ -1,7 +1,7 @@
 #
 # spec file for package python-trio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-trio
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        An async/await-native I/O library
 License:        MIT OR Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/python-trio/trio
 Source:         https://github.com/python-trio/trio/archive/v%{version}.tar.gz#/trio-%{version}.tar.gz
 BuildRequires:  %{python_module astor >= 0.8}
 BuildRequires:  %{python_module async_generator >= 1.9}
-BuildRequires:  %{python_module attrs >= 18.2.0}
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module outcome}
 BuildRequires:  %{python_module pyOpenSSL}
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 Requires:       python-async_generator >= 1.9
-Requires:       python-attrs >= 18.2.0
+Requires:       python-attrs >= 19.2.0
 Requires:       python-idna
 Requires:       python-outcome
 Requires:       python-sniffio

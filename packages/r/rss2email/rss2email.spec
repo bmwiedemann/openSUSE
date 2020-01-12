@@ -1,7 +1,7 @@
 #
 # spec file for package rss2email
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           rss2email
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        Receive RSS feeds by email
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Languages/Python
-Url:            http://pypi.python.org/pypi/rss2email/
+URL:            http://pypi.python.org/pypi/rss2email/
 Source:         rss2email-%{version}.tar.gz
 BuildRequires:  python3
 BuildRequires:  python3-feedparser

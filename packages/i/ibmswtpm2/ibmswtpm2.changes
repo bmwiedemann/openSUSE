@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 23 12:06:22 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
+
+- Add ibmswtpm2-fix-empty-decrypt.patch: Fix a corner case in the emulator
+  that causes an error when trying to RSA-decrypt an empty message
+  (bsc#1159510). This fix was confirmed to be by the upstream author and is
+  supposed to be contained in the next release.
+
+-------------------------------------------------------------------
 Thu Jul  4 17:02:41 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to upstream version 1332

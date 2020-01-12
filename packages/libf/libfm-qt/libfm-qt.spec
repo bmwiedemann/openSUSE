@@ -26,6 +26,9 @@ URL:            http://lxqt.org
 Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        libfm-qt.keyring
+# Fixed in upstream https://github.com/lxqt/libfm-qt/commit/4b7896836e868f069009e65ab75051ab64a1d583
+# Drop the patch after new version release. 
+Patch0:         fix_query_cancellation_error.patch
 BuildRequires:  cmake >= 3.1.0
 # Needs private headers, see xdndworkaround.cpp
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -75,6 +78,7 @@ Libfm-Qt libraries for development
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake -DPULL_TRANSLATIONS=No

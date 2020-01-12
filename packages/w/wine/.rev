@@ -3379,4 +3379,15 @@
 - updated staging to 5.0-rc4</comment>
     <requestid>760959</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>8e941497d10fa2d40f23504bc4a22ecb</srcmd5>
+    <version>5.0~rc5</version>
+    <time>1578867859</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.0-rc5 release candidate
+  - Bug fixes only, we are in code freeze.
+- updated staging to 5.0-rc5
+- adjust mono / gecko recommends / conflicts</comment>
+    <requestid>763539</requestid>
+  </revision>
 </revisionlist>

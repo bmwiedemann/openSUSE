@@ -1,7 +1,7 @@
 #
 # spec file for package libvterm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 %define sover 0
-%define relno 755
+%define relno 762
 
 Name:           libvterm
-Version:        0.1+bzr755
+Version:        0.1.3+bzr762
 Release:        0
 Summary:        An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://launchpad.net/libvterm
-# https://bazaar.launchpad.net/~libvterm/libvterm/trunk/tarball/%{relno}
+# https://bazaar.launchpad.net/~libvterm/libvterm/trunk/tarball/%%{relno}
 Source:         %{name}-0~bzr%{relno}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@
 %define with_bindings 0
 
 Name:           openscap
-Version:        1.3.1
-Release:        1.0
-Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
+Version:        1.3.1+git.20200110
+Release:        0
+#Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
+# temp snapshot to make it build with new RPM before 1.3.2
+Source:         openscap-%version.tar.bz2
 Source1:        openscap-rpmlintrc
 Source2:        sysconfig.oscap-scan
 # SUSE specific profile, based on yast2-security checks.
@@ -45,7 +47,7 @@ BuildRequires:  doxygen
 %if !0%{?is_opensuse} && 0%{?sle_version} < 130000 
 BuildRequires:  sles-release
 %else
-BuildRequires:  dummy-release
+BuildRequires:  distribution-release
 %endif
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
@@ -290,6 +292,7 @@ ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/ope
 %{_bindir}/oscap-chroot
 %{_bindir}/scap-as-rpm
 %{_bindir}/oscap-podman
+%{_bindir}/oscap-run-sce-script
 %{_sbindir}/rcoscap-scan
 %{_datadir}/bash-completion/completions/*
 

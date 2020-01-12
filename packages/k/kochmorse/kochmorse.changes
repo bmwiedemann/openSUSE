@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 10 20:05:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.0
+  * Added keyboard entry and comparison (work in progress).
+  * Added Wordsworth tutor.
+  * Fixed sound clipping issue for the filtered noise effect.
+  * Fixed session statistics for Koch and Random tutor.
+  * Fixed .desktop categories
+  * Added Play shortcut (Ctrl-X)
+  * Added Spanish translation
+  * Added French translation
+- Update patch:
+  * kochmorse-fix-desktop-file-and-iconpath.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 10:09:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update kochmorse-fix-desktop-file-and-iconpath.patch to fix categories.

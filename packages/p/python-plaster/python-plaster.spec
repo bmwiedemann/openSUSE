@@ -48,7 +48,8 @@ entrypoint.
 # Not Needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}

@@ -72,7 +72,11 @@ BuildRequires:  xz-devel
 BuildRequires:  liblz4-devel
 %endif
 BuildRequires:  libsodium-devel
+%if 0%{?suse_version} >= 1520
+BuildRequires:  libmysqlclient-devel
+%else
 BuildRequires:  mysql-devel
+%endif
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig

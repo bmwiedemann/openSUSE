@@ -1,0 +1,33 @@
+From 4b7896836e868f069009e65ab75051ab64a1d583 Mon Sep 17 00:00:00 2001
+From: Tsu Jan <tsujan2000@gmail.com>
+Date: Fri, 6 Dec 2019 02:53:33 +0330
+Subject: [PATCH] Set info query cancellation error to mild in dir list job
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes https://github.com/lxqt/pcmanfm-qt/issues/1041
+
+For some reason, that error may happen with MTP, in which case, pcmanfm-qt shouldn't show an annoying and useless error message (pcmanfm-qt only shows errors with severalties greater than `ErrorSeverity::MILD`). Moreover, if it happens in another case, the message will be useless — although I haven't encountered it without MTP.
+
+SIDE NOTE: The current patch can be seen as the followup of an old patch, which fixed a similar issue: https://github.com/lxqt/libfm-qt/commit/670d80631b20f74eec9ffc984baf12c353398783
+---
+ src/core/dirlistjob.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/dirlistjob.cpp b/src/core/dirlistjob.cpp
+index d3058b1..5a7bba4 100644
+--- a/src/core/dirlistjob.cpp
++++ b/src/core/dirlistjob.cpp
+@@ -30,7 +30,9 @@ void DirListJob::exec() {
+         false
+     };
+     if(!dir_inf) {
+-        ErrorAction act = emitError(err, ErrorSeverity::MODERATE);
++        ErrorAction act = emitError(err, err.domain() == G_IO_ERROR && err.code() == G_IO_ERROR_CANCELLED
++                                         ? ErrorSeverity::MILD // may happen with MTP
++                                         : ErrorSeverity::MODERATE);
+         if(act == ErrorAction::RETRY) {
+             err.reset();
+             goto _retry;
+

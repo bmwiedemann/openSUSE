@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 11 18:31:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.16
+  * stress-bad-altstack: aggressively re-try when we can't
+    segfault the handler
+  * stress-aio-linux: perform periodic async fdsync and fsync
+    and use lots of open files
+  * stress-aio-linux: add async reads and allocate buffers
+  * stress-dev: Add TIOCMBIS and TIOCMBIC ioctls
+  * stress-dev: add TIOCNXCL and TIOCEXCL ioctls
+  * stress-dev: add a couple more tty specific ioctls
+  * stress-aio: fix sleepy wait to make it interruptible
+  * Manual: move the --set and --set-ops to the correct place
+  * stress-sysfs: improve timeout on slow sysfs entries
+  * stress-ramfs: create/lstat/remove symlink file on ramfs
+    filesystem
+
+-------------------------------------------------------------------
 Fri Jan  3 19:30:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.15

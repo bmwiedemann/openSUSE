@@ -1226,4 +1226,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment></comment>
     <requestid>760592</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8b4be38f350a902832f8031ee1a8f62a</srcmd5>
+    <version>19.12.1</version>
+    <time>1578867812</time>
+    <user>dimstar_suse</user>
+    <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
+    <requestid>762483</requestid>
+  </revision>
 </revisionlist>

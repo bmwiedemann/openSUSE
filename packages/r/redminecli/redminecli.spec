@@ -1,6 +1,7 @@
 #
-# spec file for package python-redminecli
+# spec file for package redminecli
 #
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,15 +13,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 Name:           redminecli
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Command line interface for Redmine
-Group:          Development/Tools/Other
 License:        CECILL-B
+Group:          Development/Tools/Other
 URL:            https://github.com/egegunes/redmine-cli
 Source:         https://github.com/egegunes/redmine-cli/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -40,6 +42,7 @@ A command line interface for Redmine.
 
 %package -n redminecli-bash-completion
 Summary:        Bash completion for redminecli
+Group:          Development/Tools/Other
 BuildRequires:  bash-completion
 Requires:       bash-completion
 Requires:       redminecli

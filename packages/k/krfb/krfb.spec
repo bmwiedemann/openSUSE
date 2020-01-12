@@ -1,7 +1,7 @@
 #
 # spec file for package krfb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        19.12.0
+Version:        19.12.1
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -33,6 +33,11 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
+BuildRequires:  pipewire-devel
+BuildRequires:  pkgconfig
+BuildRequires:  telepathy-qt5-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  xcb-util-image-devel
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -46,15 +51,11 @@ BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  telepathy-qt5-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  xcb-util-image-devel
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)

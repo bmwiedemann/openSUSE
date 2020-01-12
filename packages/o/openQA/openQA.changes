@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 11 22:50:14 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1578688138.bc8a43167:
+  * Don't have a default size limit on parent group level
+  * Prevent old but newly cloned assets from being cleaned up immediately
+  * Use a fallback to symlink assets if hardlinks fail
+  * Use hardlinks for downloaded assets when possible
+  * Test whether web UI actually works after db migration
+  * Only fetch job groups when delivering HTML
+
+-------------------------------------------------------------------
 Thu Jan 09 14:49:46 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1578575737.d02ae56c3:

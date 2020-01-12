@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:00:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Changes since 19.12.0:
+  * Update Appstream for new release
+  * Add Extension to Filename to Save to Kig Format
+  * Add a QDialogButtonBox to the Coordinate Precision Dialog (kde#414641)
+  * Fix crash with simple python script (kde#401512)
+
+-------------------------------------------------------------------
 Tue Dec 10 06:38:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.0
   * New feature release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.0
+  * https://www.kde.org/announcements/releases/19.12
 - Changes since 19.11.90:
   * Update Appstream for new release
   * Port away from deprecated QWheelEvent API.

@@ -1,0 +1,13 @@
+Index: ibmswtpm2-1119/src/CryptRsa.c
+===================================================================
+--- ibmswtpm2-1119.orig/src/CryptRsa.c
++++ ibmswtpm2-1119/src/CryptRsa.c
+@@ -469,7 +469,7 @@ RSAES_Decode(
+     pSize++;
+     // Make sure that pSize has not gone over the end and that there are at least 8
+     // bytes of pad data.
+-    fail = (pSize >= coded->size) | fail;
++    fail = (pSize > coded->size) | fail;
+     fail = ((pSize - 2) < 8) | fail;
+     if((message->size < (UINT16)(coded->size - pSize)) || fail)
+ 	return TPM_RC_VALUE;

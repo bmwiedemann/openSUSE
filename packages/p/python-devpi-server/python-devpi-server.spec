@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-devpi-server
-Version:        5.1.0
+Version:        5.3.1
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
@@ -92,7 +92,7 @@ export PATH=$PATH:%{buildroot}/%{_bindir}
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
-%python3_only %{_bindir}/devpi-server
+%python3_only %{_bindir}/devpi*
 %{python_sitelib}/*
 
 %changelog

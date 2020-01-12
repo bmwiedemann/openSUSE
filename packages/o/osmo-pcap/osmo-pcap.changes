@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Sun Jan  5 12:17:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 0.1.2
+  * server: Add pcap snaplen VTY cmd
+  * client: Add pcap snaplen VTY cmd
+  * Add support for generating IPIP to osmo-pcap-client
+  * client: Allow to bind to a specific source_ip
+  * client: Allow to configure and connect multiple servers
+  * client: Enable a non-blocking connect to the PCAP server
+  * client: Prepare to work with a list of servers
+  * server: Introduce tls mode for the server
+  * server: Add zmq based event and data interface to the server
+  * server: Add zmq interface for publishing events
+  * server: Deal with jumbo frames on the wire
+  * gprs: Do not collect BVC FLOW CONTROL / ACK messages
+
+-------------------------------------------------------------------
+Thu Dec 28 10:11:24 UTC 2017 - mardnh@gmx.de
+
+- Update to new upstream release 0.0.6
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sat Apr 22 14:43:34 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.6.git1488925061.4776b29:
+  * jenkins: Add the build script from jenkins here
+  * distcheck: Need to package .version on Ubuntu as well
+  * jenkins: Attempt to fix build on FreeBSD and not break Linux
+  * freebsd: Include netinet/in.h and hopefully fix the build
+  * freebsd: Another fix for the next file
+  * jenkins: Attempt to fix FreeBSD distcheck
+  * todo: Update with my long term goal to have TLS support
+  * todo: Add another of my wishlist items
+  * ci: Add travis.yml for the github account
+  * server: Add a config knob to not store the pcap stream
+  * server: Add zmq interface for publishing events
+  * server: Add zmq based event and data interface to the server
+  * todo: With zeromq we can stream the data anywhere we want
+  * misc: Update the todo with an obvious thing to do
+  * vty: Fix compiler warning about type changes
+  * misc: Address compiler warning about deprecated header
+  * stats: Initialize the stats(d) backend in the client/server
+  * client: Fail to start if it can't bind the telnet interface
+  * server: Fail if the telnet interface can not be bound
+  * client: First round of statistics in the pcap client
+  * client: Additional counters for the statistics
+  * server: Add global and per client counters and begin to count
+  * client: Use pcap_stats and export them as statistics
+  * tests: Enable the vty tests for the osmo-pcap as well
+  * tls: Add initial ideas about TLS in the client/server
+  * client: Add API function to close and re-connect network connection
+  * client: Initial support for TLS in the client
+  * server: Update copyright after zmq changes
+  * server: Move to a write_queue for the conn socket
+  * server: Add API function to close a connection
+  * server: Re-factor the read dispatch and connection close
+  * server: Introduce tls mode for the server
+  * server: Allow to enable tls for the pcap server
+  * server: Add vty interface for the TLS configuration
+  * doc: Add initial documentation for the tls support
+  * test: Add tls config file and enable tls a bit
+  * client: Prepare to have multiple server connections
+  * client: Finish renaming client to conn in other places of the code
+  * client: Prepare to work with a list of servers
+  * client: Enable a non-blocking connect to the PCAP server
+  * client: Allow to configure and connect multiple servers
+  * client: Do not connect default connection if no ip/port present
+  * client: Allow to stop and remove a connection
+  * client: disconnect before connecting the connection
+  * client: Tolerate an invalid pcap_handle
+  * debian: Make a new release with the new features we gained
+  * client: Allow to bind to a specific source_ip
+  * debian: Make a new release with the new feature
+  * debian: Add -dbg packages for the osmo-pcap-client and osmo-pcap-server
+
+-------------------------------------------------------------------
+Sat Feb 20 22:20:47 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.6.git1453123519.3fedbf8:
+  + misc: Add a readme to describe the project purpose a bit
+  + misc: Update the readme
+  + Point to a stand-a-lone repository with many many packages
+  + Mention the packages available
+
+-------------------------------------------------------------------
+Sat Dec 26 23:00:43 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.6.git1449177446.c016b5d:
+  + gprs: Do not collect BVC FLOW CONTROL / ACK messages
+  + debian: Make a new release of the code
+  + server: Fix the language and refer to the received data length
+  + server: Deal with jumbo frames on the wire
+  + client: Allow receiving jumbo frames on the client as well
+  + debian: Make a new release
+  + client: Deal with external representation for pcap files
+  + Make a new release with 64bit client fixes
+
+-------------------------------------------------------------------
+Mon Sep 21 07:38:33 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.0.6.git1441897900.f42bbbc:
+  + gprs: Add a custom GPRS filter
+  + gprs: Remove left over for counting llc frames
+  + debian: Prepare a new release
+
+-------------------------------------------------------------------
+Mon Dec 22 21:41:20 UTC 2014 - mardnh@gmx.de
+
+- Update to version 0.0.4.git1419284011.07d96eb:
+  + build: Replace deprecated INCLUDES with AM_CPPFLAGS
+
+-------------------------------------------------------------------
+Sun Dec 21 22:15:38 UTC 2014 - mardnh@gmx.de
+
+- initial package, version 0.0.4.git1365611892.4edd6e6
+

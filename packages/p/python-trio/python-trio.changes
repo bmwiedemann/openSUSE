@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan 11 12:01:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.13.0
+ * Use slots for memory channel state and statistics which should make
+    memory channels slightly smaller and faster. 
+ * OpenSSL has a bug in its handling of TLS 1.3 session tickets that can cause
+    deadlocks or data loss in some rare edge cases. These edge cases most frequently
+    happen during tests.
+ * Trio now uses signal.set_wakeup_fd on all platforms.
+ * Trio no longer crashes when an async function is implemented in C or Cython
+    and then passed directly to trio.run or nursery.start_soon.
+ * When a Trio task makes improper use of a non-Trio async library, Trio nowi
+    causes an exception to be raised within the task at the point of the error,
+    rather than abandoning the task and raising an error in its parent.
+    This improves debuggability and resolves the TrioInternalError that would
+    sometimes result from the old strategy. (#552)
+ * In 0.12.0 we deprecated trio.run_sync_in_worker_thread in favor
+    of trio.to_thread.run_sync. But, the deprecation message listed the wrong
+    name for the replacement.
+ * Fix regression introduced with cancellation changes in 0.12.0, where
+    a trio.CancelScope which isn't cancelled could catch a propagating
+    trio.Cancelled exception if shielding were changed while the cancellation
+    was propagating.
+ * Fix a crash that could happen when using MockClock with autojump enabled
+    and a non-zero rate.
+ * If you nest >1000 cancel scopes within each other, Trio now handles that
+    gracefully instead of crashing with a RecursionError.
+ * Fixed the hash behavior of trio.Path to match pathlib.Path. Previously
+    trio.Path's hash was inherited from object instead of from pathlib.PurePath.
+
+-------------------------------------------------------------------
 Mon Aug  5 12:56:53 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.12.1

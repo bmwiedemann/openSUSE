@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 11 22:09:41 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix build with OpenCV >= 4.2 (boo#1160721):
+  * fix-build-with-opencv-4.2.patch
+  * dlib-update-to-work-with-latest-version-of-OpenCV.patch
+
+-------------------------------------------------------------------
 Thu Nov 21 21:38:08 UTC 2019 - wbauer@tmo.at
 
 - Add patch to make it build with exiv2 0.26 on Leap 15:

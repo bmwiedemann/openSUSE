@@ -34,6 +34,7 @@ URL:            https://sourceforge.net/projects/ibmswtpm2
 Source:         https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm%{version}.tar.gz
 Patch1:         makefile.patch
 Patch2:         ibmswtpm2-fix-uninitialized.patch
+Patch3:         ibmswtpm2-fix-empty-decrypt.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description

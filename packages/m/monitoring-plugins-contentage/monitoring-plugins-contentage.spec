@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-contentage
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
 Name:           monitoring-plugins-contentage
-Version:        0.6
-Release:        1
-License:        BSD-3-Clause
+Version:        0.7
+Release:        0
 Summary:        Check age of files in a directory
-Url:            http://en.opensuse.org/Monitoring-plugins-contentage
+License:        BSD-3-Clause
 Group:          System/Monitoring
+Url:            http://en.opensuse.org/Monitoring-plugins-contentage
 Source0:        check_contentage
 BuildRequires:  nagios-rpm-macros
 Provides:       nagios-plugins-contentage = %{version}-%{release}
@@ -42,12 +41,15 @@ You can define the age of files for warning and critical states.
 
 Note: the plugin checks the mtime of files, not the ctime.
 
-Usage: check_dircontent.pl -w 24 -c 48 -p /tmp
+Usage: check_dircontent.pl -w 24 -c 48 -p /tmp,/var/tmp -i foo,bar
 Options:
        -w|--warning   : time for warnings (minutes)
        -c|--critical  : time for critical warnings (minutes)
        -p|--pathnames : absolute path to the folders, split mutliple pathnames with commata
        -t|--timeout   : timeout (default: 15)
+	   -i|--ignore    : ignore filenames (comma separated)
+	   -d|--debug     : print debug output
+
 
 %prep
 #

@@ -41,9 +41,6 @@ BuildRequires:  fdupes
 BuildRequires:  kdiagram-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
-# Disabled until alkimia stops using Qtwebkit
-#BuildRequires:  libalkimia5-devel >= 8.0
-BuildRequires:  libalkimia5-devel < 8.0
 BuildRequires:  libalkimia5-devel >= 7.0
 BuildRequires:  libofx-devel
 BuildRequires:  libqgpgme-devel

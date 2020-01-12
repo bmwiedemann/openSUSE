@@ -1,7 +1,7 @@
 #
 # spec file for package frogr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           frogr
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Tool to Manage Flickr Accounts
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
-Url:            https://wiki.gnome.org/Apps/Frogr
+URL:            https://wiki.gnome.org/Apps/Frogr
 Source:         http://download.gnome.org/sources/frogr/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  libgcrypt-devel >= 1.5.0
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2
 BuildRequires:  pkgconfig(libexif) >= 0.6.14
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.34
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.8
-Recommends:     %{name}-lang
 
 %description
 Frogr is a application for the GNOME desktop that allows users to
