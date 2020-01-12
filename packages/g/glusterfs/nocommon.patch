@@ -1,0 +1,33 @@
+References: https://bugzilla.suse.com/show_bug.cgi?id=1160382
+---
+ cli/src/cli.c |    1 +
+ cli/src/cli.h |    4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: glusterfs-7.1/cli/src/cli.c
+===================================================================
+--- glusterfs-7.1.orig/cli/src/cli.c
++++ glusterfs-7.1/cli/src/cli.c
+@@ -61,6 +61,7 @@
+ 
+ #include "xdr-generic.h"
+ 
++int cli_default_conn_timeout, cli_ten_minutes_timeout;
+ extern int connected;
+ /* using argp for command line parsing */
+ 
+Index: glusterfs-7.1/cli/src/cli.h
+===================================================================
+--- glusterfs-7.1.orig/cli/src/cli.h
++++ glusterfs-7.1/cli/src/cli.h
+@@ -39,8 +39,8 @@ enum argp_option_keys {
+     ARGP_PORT_KEY = 'p',
+ };
+ 
+-int cli_default_conn_timeout;
+-int cli_ten_minutes_timeout;
++extern int cli_default_conn_timeout;
++extern int cli_ten_minutes_timeout;
+ 
+ typedef enum {
+     COLD_BRICK_COUNT,

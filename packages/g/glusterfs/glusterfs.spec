@@ -1,7 +1,7 @@
 #
 # spec file for package glusterfs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           glusterfs
-Version:        7.0
+Version:        7.1
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
 Group:          System/Filesystems
 URL:            http://www.gluster.org/
 
-#Git-Clone:	git://github.com/gluster/glusterfs
-#Git-Clone:	git://github.com/fvzwieten/lsgvt
-Source:         https://download.gluster.org/pub/gluster/glusterfs/7/7.0/glusterfs-7.0.tar.gz
+#Git-Clone:	https://github.com/gluster/glusterfs
+#Git-Clone:	https://github.com/fvzwieten/lsgvt
+Source:         https://download.gluster.org/pub/gluster/glusterfs/7/7.1/glusterfs-7.1.tar.gz
+Patch1:         nocommon.patch
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -135,16 +136,13 @@ This package provides development files such as headers and library
 links.
 
 %prep
-%setup -q
-#%patch -P 2 -p1
+%autosetup -p1
 >contrib/sunrpc/xdr_sizeof.c
 
 %build
-%define _lto_cflags %{nil}
+%define _lto_cflags %nil
 ./autogen.sh
-%configure \
-    --disable-static \
-    --disable-silent-rules
+%configure --disable-static
 make %{?_smp_mflags} V=0
 find . -name 'xdr_sizeof*' -type f -exec ls -lgo {} + || :
 

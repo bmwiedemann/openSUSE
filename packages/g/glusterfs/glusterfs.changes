@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  9 15:30:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * Fix rebalance causing IO Error - File descriptor in bad state
+  * Fix geo-replication sessions going faulty
+  * Fix memory leak in glusterfsd process
+  * Fix GlusterFS brick process crash
+- Add nocommon.patch [boo#1160392]
+
+-------------------------------------------------------------------
 Thu Dec 26 08:22:55 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Fix the name of the Python bindings subpackage
