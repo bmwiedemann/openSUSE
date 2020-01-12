@@ -63,6 +63,7 @@ Patch7:         0007-Recover-on-DB-version-change.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch9:         0009-Fix-ldap-host-lookup-ipv6.patch
 Patch11:        0011-openldap-re24-its7796.patch
+Patch13:        0013_openldap-its9124_fix_crash_with_cancel_exop.patch
 Patch15:        openldap-r-only.dif
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
 Source200:      %{name_ppolicy_check_module}-%{version_ppolicy_check_module}.tar.gz
@@ -258,6 +259,7 @@ gzip -k %{S:203}
 %patch8 -p1
 %patch9 -p1
 %patch11 -p1
+%patch13 -p1
 %patch15 -p1
 %patch16 -p1
 cp %{SOURCE5} .

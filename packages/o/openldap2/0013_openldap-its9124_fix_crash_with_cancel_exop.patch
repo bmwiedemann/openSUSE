@@ -1,0 +1,47 @@
+--- openldap-2.4.48.orig/servers/slapd/cancel.c	2019-07-23 16:46:22.000000000 +0200
++++ openldap-2.4.48/servers/slapd/cancel.c	2020-01-10 13:15:53.884714390 +0100
+@@ -2,7 +2,7 @@
+ /* $OpenLDAP$ */
+ /* This work is part of OpenLDAP Software <http://www.openldap.org/>.
+  *
+- * Copyright 1998-2019 The OpenLDAP Foundation.
++ * Copyright 1998-2020 The OpenLDAP Foundation.
+  * All rights reserved.
+  *
+  * Redistribution and use in source and binary forms, with or without
+@@ -34,7 +34,8 @@
+ 	Operation *o;
+ 	int rc;
+ 	int opid;
+-	BerElement *ber;
++	BerElementBuffer berbuf;
++	BerElement *ber = (BerElement *)&berbuf;
+ 
+ 	assert( ber_bvcmp( &slap_EXOP_CANCEL, &op->ore_reqoid ) == 0 );
+ 
+@@ -43,19 +44,19 @@
+ 		return LDAP_PROTOCOL_ERROR;
+ 	}
+ 
+-	ber = ber_init( op->ore_reqdata );
+-	if ( ber == NULL ) {
+-		rs->sr_text = "internal error";
+-		return LDAP_OTHER;
++	if ( op->ore_reqdata->bv_len == 0 ) {
++		rs->sr_text = "empty request data field";
++		return LDAP_PROTOCOL_ERROR;
+ 	}
+ 
++	/* ber_init2 uses reqdata directly, doesn't allocate new buffers */
++	ber_init2( ber, op->ore_reqdata, 0 );
++
+ 	if ( ber_scanf( ber, "{i}", &opid ) == LBER_ERROR ) {
+ 		rs->sr_text = "message ID parse failed";
+ 		return LDAP_PROTOCOL_ERROR;
+ 	}
+ 
+-	(void) ber_free( ber, 1 );
+-
+ 	Statslog( LDAP_DEBUG_STATS, "%s CANCEL msg=%d\n",
+ 		op->o_log_prefix, opid, 0, 0, 0 );
+ 
