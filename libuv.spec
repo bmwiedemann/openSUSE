@@ -1,7 +1,7 @@
 #
 # spec file for package libuv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,9 @@ Source1:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
 # https://github.com/libuv/libuv/blob/v1.x/MAINTAINERS.md
 Source2:        %{name}.keyring
 Patch1:         fix_tests.patch
+# PATCH-FIX-UPSTREAM fno-common-build-errs.patch gh#libuv/libuv#2603 mcepl@suse.com
+# Builds with -fno-common fails in run_tests-test-poll-close-doesnt-corrupt-stack.c
+Patch2:         fno-common-build-errs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -63,7 +66,7 @@ Mozilla's Rust language, Luvit, Julia, pyuv, and others.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch1 -p1
+%autopatch -p1
 
 %build
 ./autogen.sh
