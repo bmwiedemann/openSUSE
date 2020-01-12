@@ -1,7 +1,7 @@
 #
 # spec file for package cni-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define         cni_doc_dir  %{_docdir}/cni-plugins
 
 Name:           cni-plugins
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/containernetworking/plugins
+URL:            https://github.com/containernetworking/plugins
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  go >= 1.11
 BuildRequires:  golang-packaging
