@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:18:57 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.3
+  - fix build with -fno-common
+  - fix possible segmentation fault in direct_fsync()
+  - use the data store to create missing whiteouts
+  - after a rename, force a directory reload
+
+-------------------------------------------------------------------
 Tue Dec 17 14:06:08 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v0.7.2
