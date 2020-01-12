@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec 27 21:27:34 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.0
+  New features:
+  * new, less "ringing" reverb engine (#380, thanks to @jjceresa)
+  * new, stereophonic chorus engine (#548, thanks to @jjceresa)
+  * support for Downloadable Sounds (DLS) files was added (#320,
+    requires libinstpatch)
+  * improved integrity checking of SoundFont modulators (#467,
+    thanks to @jjceresa)
+  * rendering to stdout is now possible (#553, thanks to @mawe42)
+  * the following Audio Drivers have been added:
+    + Oboe (#464, tested on Android, thanks to @atsushieno)
+    + OpenSLES (#464, tested on Android, thanks to @atsushieno)
+    + SDL2 (#478, thanks to @carlo-bramini)
+    + WaveOut (#466, tested on Win98, WinNT4.0, WinXP, thanks to
+      @carlo-bramini)
+  * various performance improvements (#543, #545, #547, #569,
+    #573)
+  Bug fixes:
+  * generator modEnvAttack now has a convex shape according to
+    SoundFont spec (#153)
+  * the default MIDI Pitch Wheel to Initial Pitch modulator now
+    uses Fine Tune as destination generator, allowing it to be
+    overridden by the soundfont designer (#154, thanks to
+    @jjceresa)
+  version 2.0.9
+  * an implicitly declared function caused a pointer to int
+    truncation in CoreAudio driver (#591)
+  * fix a stack-based overflow in CoreAudio driver (#594, thanks
+    to @fkmclane)
+
+- Enable sdl2 and libinstpatch
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Oct 28 16:20:41 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.0.8

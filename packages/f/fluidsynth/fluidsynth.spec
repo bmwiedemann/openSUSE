@@ -1,7 +1,7 @@
 #
 # spec file for package fluidsynth
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
  %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%define sover   2
 Name:           fluidsynth
-Version:        2.0.8
+Version:        2.1.0
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Sound/Midi
-Url:            http://www.fluidsynth.org/
+URL:            http://www.fluidsynth.org/
 Source:         https://github.com/FluidSynth/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1000:     baselibs.conf
 BuildRequires:  cmake >= 3.1.0
@@ -39,12 +39,12 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libinstpatch-1.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
-%if 0%{?suse_version}
 %{?systemd_requires}
 PreReq:         %fillup_prereq
-%endif
 
 %description
 FluidSynth (formerly IIWU Synth) is a real-time software synthesizer
@@ -54,30 +54,28 @@ can also play MIDI files.
 
 %package devel
 Summary:        Development package for the fluidsynth library
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libfluidsynth2 = %{version}
+Requires:       libfluidsynth%{sover} = %{version}
 Provides:       libfluidsynth-devel = %{version}
 
 %description devel
 This package contains the files needed to compile programs that use the
 fluidsynth library.
 
-%package -n libfluidsynth2
+%package -n libfluidsynth%{sover}
 Summary:        Library for Fluidsynth
-Group:          System/Libraries
 
-%description -n libfluidsynth2
+%description -n libfluidsynth%{sover}
 This package contains the shared library for Fluidsynth.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake \
     -DFLUID_DAEMON_ENV_FILE=%{_fillupdir}/sysconfig.%{name} \
     -Denable-lash=0
-make %{?_smp_mflags}
+%make_jobs
 
 %check
 # depending on the distribution being built for, cmake
@@ -87,14 +85,7 @@ make %{?_smp_mflags}
 make check
 
 %install
-%if 0%{?suse_version}
 %cmake_install
-%else
-%cmake
-DESTDIR=$RPM_BUILD_ROOT make install
-%endif
-
-%if 0%{?suse_version}
 
 # manually install systemd service files
 install -Dm 644 build/fluidsynth.conf %{buildroot}%{_fillupdir}/sysconfig.%{name}
@@ -115,28 +106,25 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %postun
 %service_del_postun %{name}.service
 
-%endif
-
-%post -n libfluidsynth2 -p /sbin/ldconfig
-%postun -n libfluidsynth2 -p /sbin/ldconfig
+%post -n libfluidsynth%{sover} -p /sbin/ldconfig
+%postun -n libfluidsynth%{sover} -p /sbin/ldconfig
 
 %files
 %license LICENSE
-%doc AUTHORS ChangeLog NEWS README.md THANKS TODO
-%{_mandir}/man?/*
-%{_bindir}/*
-%if 0%{?suse_version}
-%{_unitdir}/%{name}.service
-%{_sbindir}/rc%{name}
+%doc AUTHORS ChangeLog README.md THANKS TODO
+%{_bindir}/%{name}
 %{_fillupdir}/sysconfig.%{name}
-%endif
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_sbindir}/rc%{name}
+%{_unitdir}/%{name}.service
 
 %files devel
-%{_libdir}/lib*.so
-%{_includedir}/*
-%{_libdir}/pkgconfig/*.pc
+%{_includedir}/%{name}
+%{_includedir}/%{name}.h
+%{_libdir}/lib%{name}.so
+%{_libdir}/pkgconfig/%{name}.pc
 
-%files -n libfluidsynth2
-%{_libdir}/lib*.so.*
+%files -n libfluidsynth%{sover}
+%{_libdir}/lib%{name}.so.%{sover}*
 
 %changelog
