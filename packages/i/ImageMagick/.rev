@@ -2427,4 +2427,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * The -layers optimize option requires a fully transparent previous image.</comment>
     <requestid>760458</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>846148845f5b3aa01bd504cb3f9fe62c</srcmd5>
+    <version>7.0.9.14</version>
+    <time>1578867351</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.14
+  * Support extended Fx assignment operators (e.g. *=, /=, ++, --, etc.)
+  * Support Fx for() iterator.
+  * Optimize Fx performance.
+  * Ensure circle.rb renders the same for IMv6 and IMv7</comment>
+    <requestid>761772</requestid>
+  </revision>
 </revisionlist>

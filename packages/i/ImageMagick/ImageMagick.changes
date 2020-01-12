@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:07:45 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.9.14
+  * Support extended Fx assignment operators (e.g. *=, /=, ++, --, etc.)
+  * Support Fx for() iterator.
+  * Optimize Fx performance.
+  * Ensure circle.rb renders the same for IMv6 and IMv7
+
+-------------------------------------------------------------------
 Thu Jan  2 16:08:24 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.9.13
