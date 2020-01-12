@@ -378,4 +378,22 @@
     <comment></comment>
     <requestid>717459</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d4d3b55cfced26a2a038ecbd5ff50ee1</srcmd5>
+    <version>1.8.2</version>
+    <time>1578867500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2:
+  Fixes:
+   - CVE-2019-2126 bsc#1160611: double free in ParseContentEncodingEntry()
+   - CVE-2019-9325 bsc#1160612: out-of-bounds read
+   - CVE-2019-9232 bsc#1160613: Fix OOB memory access on fuzzed data
+   - CVE-2019-9433 bsc#1160614: use-after-free in vp8_deblock()
+   - CVE-2019-9371 bsc#1160615: resource exhaustion after memory leak
+  official changelog:
+  * This release collects incremental improvements to many aspects of the library.
+  * Upgrading:
+    ARCH_* defines have been removed in favor of VPX_ARCH_*.</comment>
+    <requestid>762837</requestid>
+  </revision>
 </revisionlist>

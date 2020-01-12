@@ -1,7 +1,7 @@
 #
 # spec file for package libvpx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define         sover 6
 Name:           libvpx
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://www.webmproject.org/
+URL:            http://www.webmproject.org/
 Source0:        libvpx-%{version}.tar.xz
 Source1000:     baselibs.conf
 Patch1:         libvpx-define-config_pic.patch
