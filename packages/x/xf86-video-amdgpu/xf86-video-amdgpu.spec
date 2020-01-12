@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-amdgpu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source:         http://xorg.freedesktop.org/releases/individual/driver/%{name}-%
 Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source3:        amdgpu.ids
+Patch0:         u_fno-common.patch
 BuildRequires:  autoconf >= 2.6.0
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -64,6 +65,7 @@ Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv

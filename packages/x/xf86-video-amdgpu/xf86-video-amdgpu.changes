@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 23:39:11 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_fno-common.patch
+  * fix build with gcc's -fno-common option (boo#1160421) 
+
+-------------------------------------------------------------------
 Sat Oct 12 13:39:40 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 19.1.0 
