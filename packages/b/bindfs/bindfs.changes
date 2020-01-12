@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  8 10:41:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.3
+  * No longer check that numeric UIDs and GIDs exist, since
+    /etc/passwd etc are not always available.
+  * Address -fno-common build [boo#1160257]
+
+-------------------------------------------------------------------
 Thu Aug 22 20:03:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.14.1

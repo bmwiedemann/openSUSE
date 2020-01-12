@@ -1,7 +1,7 @@
 #
 # spec file for package bindfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           bindfs
-Version:        1.14.1
+Version:        1.14.3
 Release:        0
 Summary:        Filesystem for mapping directories with alternate permissions
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://bindfs.org/
 
-#Git-Clone:	git://github.com/mpartel/bindfs
+#Git-Clone:	https://github.com/mpartel/bindfs
 Source:         https://bindfs.org/downloads/%name-%version.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse) >= 2.6.0
