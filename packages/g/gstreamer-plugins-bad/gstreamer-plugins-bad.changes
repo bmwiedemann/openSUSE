@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  6 10:10:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fix patches:
+  + gst-bad-interlace-fixes.patch: Fix various issues with
+    interlace.
+  + gst-bad-autoconvert-fix-lock-less.patch: autoconvert: Fix
+    lock-less exchange or free condition.
+
+-------------------------------------------------------------------
 Thu Dec 12 10:22:56 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add a BuildRequires for pkgconfig(pangocairo) since it's needed

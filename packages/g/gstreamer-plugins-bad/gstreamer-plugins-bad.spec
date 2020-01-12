@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-bad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,10 @@ URL:            https://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-plugins-bad/%{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gst-bad-interlace-fixes.patch -- Fix various issues with interlace
+Patch0:         gst-bad-interlace-fixes.patch
+# PATCH-FIX-UPSTREAM gst-bad-autoconvert-fix-lock-less.patch -- autoconvert: Fix lock-less exchange or free condition.
+Patch1:         gst-bad-autoconvert-fix-lock-less.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -530,7 +534,7 @@ export PYTHON=%{_bindir}/python3
 	--enable-introspection \
 	--with-hls-crypto=openssl \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 %endif
 
 %install
