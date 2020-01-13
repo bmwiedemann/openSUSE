@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 16 08:46:22 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.17.0:
+  * crictl
+    * Bump cri-tools version in markdown docs
+    * Vendor kubernetes v1.17.0
+    * Update golang dependencies
+    * Print the previous log of the container(just like kubectl)
+    * Add rmi --prune command
+    * Update README.md to contain latest version hint
+    * Download golangci-lint via wget
+    * Fix pod and container name filter for JSON/YAML output
+    * Fix e2e tests by pinning CRI-O and conmon
+    * Fixed Tim St. Clair's username
+    * Add fish shell completion support
+
+-------------------------------------------------------------------
 Thu Sep 26 09:07:07 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Update to v1.16.1:
