@@ -23,4 +23,16 @@
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738335</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22a53c65a5bf229c18ae68453bde2a07</srcmd5>
+    <version>1.6.0</version>
+    <time>1578950455</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to rekall-innovations fork
+- update to 1.6.0
+ * fully support python3
+
+- convert to singlespec</comment>
+    <requestid>763953</requestid>
+  </revision>
 </revisionlist>

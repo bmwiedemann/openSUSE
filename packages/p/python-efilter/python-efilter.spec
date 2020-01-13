@@ -1,7 +1,7 @@
 #
 # spec file for package python-efilter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,50 @@
 #
 
 
-%define base_name efilter
-%define version 1.1.5
-%define mangled_version 1!1.5
-%define unmangled_version 1-1.5
-%define release 1
-Name:           python-%{base_name}
-Version:        1.1.5
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+Name:           python-efilter
+Version:        1.6.0
 Release:        0
 Summary:        EFILTER query language
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        Apache-2.0
-URL:            https://github.com/google/dotty/
-Source0:        https://pypi.python.org/packages/9f/48/82fd1254d70b5d7831ece84270cb99c178c0254e2568efad72c5ca2a31c7/%{base_name}-%{unmangled_version}.tar.gz
+URL:            https://github.com/rekall-innovations/efilter
+Source0:        https://github.com/rekall-innovations/efilter/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-setuptools
+BuildRequires:  python-rpm-macros
+Requires:       python-future
 Requires:       python-python-dateutil
+Requires:       python-pytz
 Requires:       python-six >= 1.4.0
-Requires:       python-tz
 BuildArch:      noarch
+%python_subpackages
 
 %description
 EFILTER is a general-purpose destructuring and search language implemented in Python, and suitable for integration with any Python project that requires a search function for some of its data.
 
-%package -n python-%{name}
-Summary:        EFILTER query language
-
-%description -n python-%{name}
-EFILTER is a general-purpose destructuring and search language implemented in Python, and suitable for integration with any Python project that requires a search function for some of its data.
-
 %prep
-%setup -q -n %{base_name}-%{unmangled_version}
+%setup -q -n efilter-%{version}
 
 %build
-python setup.py build
+%python_build
 
 %install
-python setup.py install -O1 --root=%{buildroot}
-%fdupes %{buildroot}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files
+%check
+%pytest
+
+%files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.txt README.md
 %{python_sitelib}/efilter*
+%{python_sitelib}/rekall_efilter*
 %exclude %{python_sitelib}/sample_projects
 
 %changelog
