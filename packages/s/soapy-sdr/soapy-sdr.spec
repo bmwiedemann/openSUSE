@@ -19,7 +19,7 @@
 
 %define sover 0_7
 Name:           soapy-sdr
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Vendor and platform neutral SDR support library
 License:        BSL-1.0
