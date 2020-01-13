@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ Requires:       python-azure-mgmt-containerregistry >= 3.0.0
 Requires:       python-azure-mgmt-containerservice < 9.0.0
 Requires:       python-azure-mgmt-containerservice >= 8.0.0
 Requires:       python-azure-mgmt-cosmosdb < 1.0.0
-Requires:       python-azure-mgmt-cosmosdb >= 0.5.2
+Requires:       python-azure-mgmt-cosmosdb >= 0.11.0
 Requires:       python-azure-mgmt-costmanagement < 1.0.0
 Requires:       python-azure-mgmt-costmanagement >= 0.1.0
 Requires:       python-azure-mgmt-databricks < 1.0.0
@@ -105,7 +105,7 @@ Requires:       python-azure-mgmt-frontdoor >= 0.1.0
 Requires:       python-azure-mgmt-hanaonazure < 1.0.0
 Requires:       python-azure-mgmt-hanaonazure >= 0.4.0
 Requires:       python-azure-mgmt-hdinsight < 2.0.0
-Requires:       python-azure-mgmt-hdinsight >= 1.2.0
+Requires:       python-azure-mgmt-hdinsight >= 1.3.0
 Requires:       python-azure-mgmt-healthcareapis < 1.0.0
 Requires:       python-azure-mgmt-healthcareapis >= 0.1.0
 Requires:       python-azure-mgmt-imagebuilder < 1.0.0
@@ -167,15 +167,15 @@ Requires:       python-azure-mgmt-rdbms >= 1.7.0
 Requires:       python-azure-mgmt-recoveryservices < 1.0.0
 Requires:       python-azure-mgmt-recoveryservices >= 0.3.0
 Requires:       python-azure-mgmt-recoveryservicesbackup < 1.0.0
-Requires:       python-azure-mgmt-recoveryservicesbackup >= 0.3.0
-Requires:       python-azure-mgmt-redis < 7.0.0
-Requires:       python-azure-mgmt-redis >= 6.0.0
+Requires:       python-azure-mgmt-recoveryservicesbackup >= 0.5.0
+Requires:       python-azure-mgmt-redis < 8.0.0
+Requires:       python-azure-mgmt-redis >= 7.0.0rc1
 Requires:       python-azure-mgmt-relay < 1.0.0
 Requires:       python-azure-mgmt-relay >= 0.1.0
 Requires:       python-azure-mgmt-reservations < 1.0.0
 Requires:       python-azure-mgmt-reservations >= 0.3.1
-Requires:       python-azure-mgmt-resource < 5.0.0
-Requires:       python-azure-mgmt-resource >= 4.0.0
+Requires:       python-azure-mgmt-resource < 8.0.0
+Requires:       python-azure-mgmt-resource >= 7.0.0
 Requires:       python-azure-mgmt-resourcegraph < 3.0.0
 Requires:       python-azure-mgmt-resourcegraph >= 2.0.0
 Requires:       python-azure-mgmt-scheduler < 3.0.0
@@ -195,11 +195,11 @@ Requires:       python-azure-mgmt-servicefabric >= 0.2.0
 Requires:       python-azure-mgmt-signalr < 1.0.0
 Requires:       python-azure-mgmt-signalr >= 0.1.1
 Requires:       python-azure-mgmt-sql < 1.0.0
-Requires:       python-azure-mgmt-sql >= 0.11.0
+Requires:       python-azure-mgmt-sql >= 0.16.0
 Requires:       python-azure-mgmt-sqlvirtualmachine < 1.0.0
-Requires:       python-azure-mgmt-sqlvirtualmachine >= 0.2.0
-Requires:       python-azure-mgmt-storage < 7.0.0
-Requires:       python-azure-mgmt-storage >= 6.0.0
+Requires:       python-azure-mgmt-sqlvirtualmachine >= 0.5.0
+Requires:       python-azure-mgmt-storage < 8.0.0
+Requires:       python-azure-mgmt-storage >= 7.0.0
 Requires:       python-azure-mgmt-storagecache < 1.0.0
 Requires:       python-azure-mgmt-storagecache >= 0.1.0
 Requires:       python-azure-mgmt-storagesync < 1.0.0
