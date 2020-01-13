@@ -1,7 +1,7 @@
 #
 # spec file for package icinga2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -149,11 +149,11 @@ BuildRequires:  make
 
 %if 0%{?build_icinga_org} && "%{_vendor}" == "redhat" && (0%{?el5} || 0%{?rhel} == 5 || "%{?dist}" == ".el5" || 0%{?el6} || 0%{?rhel} == 6 || "%{?dist}" == ".el6")
 # el5 and el6 require packages.icinga.com
-BuildRequires:  boost153-devel
+BuildRequires:  boost166-devel
 %else
 %if 0%{?build_icinga_org} && "%{_vendor}" == "suse" && 0%{?suse_version} < 1310
 # sles 11 sp3 requires packages.icinga.com
-BuildRequires:  boost153-devel
+BuildRequires:  boost166-devel
 %else
 %if "%{_vendor}" == "suse" && 0%{?suse_version} > 1320
 BuildRequires:  libboost_context-devel >= 1.66
@@ -166,9 +166,9 @@ BuildRequires:  libboost_thread-devel >= 1.66
 %else
 %if (0%{?el5} || 0%{?rhel} == 5 || "%{?dist}" == ".el5" || 0%{?el6} || 0%{?rhel} == 6 || "%{?dist}" == ".el6")
 # Requires EPEL repository
-BuildRequires:  boost148-devel >= 1.48
+BuildRequires:  boost166-devel >= 1.66
 %else
-BuildRequires:  boost-devel >= 1.48
+BuildRequires:  boost-devel >= 1.66
 %endif
 %endif
 %endif
@@ -660,7 +660,7 @@ fi
 %{_libexecdir}/%{name}/prepare-dirs
 %{_libexecdir}/%{name}/safe-reload
 
-%attr(0750,root,%{icinga_group}) %dir %{_sysconfdir}/%{name}
+%attr(0750,%{icinga_user},%{icinga_group}) %dir %{_sysconfdir}/%{name}
 %attr(0750,%{icinga_user},%{icinga_group}) %dir %{_sysconfdir}/%{name}/conf.d
 %attr(0750,%{icinga_user},%{icinga_group}) %dir %{_sysconfdir}/%{name}/features-available
 %exclude %{_sysconfdir}/%{name}/features-available/ido-*.conf

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:49:05 UTC 2020 - ecsos@opensuse.org
+
+- Set minimum require boost version to 1.66
+
+-------------------------------------------------------------------
+Mon Jan 13 13:56:46 UTC 2020 - ecsos@opensuse.org
+
+- Fix boo#1159869
+  Permission error when use the icinga cli wizard. 
+
+-------------------------------------------------------------------
 Thu Dec 19 15:05:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
