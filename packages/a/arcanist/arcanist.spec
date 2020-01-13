@@ -1,7 +1,7 @@
 #
 # spec file for package arcanist
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           arcanist
-Version:        0.0~git.20190905T053100~3cdfe1ff
+Version:        0.0~git.20191118T203151~cc850163
 Release:        0
 Summary:        Command-line interface to Phabricator
 License:        Apache-2.0
 
-Url:            https://secure.phabricator.com/diffusion/ARC/
+URL:            https://secure.phabricator.com/diffusion/ARC/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         remove-arc-upgrade.patch
 
@@ -84,7 +84,8 @@ install -m 0644 resources/shell/bash-completion %{buildroot}%{_datadir}/bash-com
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE NOTICE README.md
+%doc NOTICE README.md
+%license LICENSE
 %{_bindir}/arc
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions

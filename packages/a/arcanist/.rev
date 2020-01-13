@@ -15,4 +15,24 @@
     <comment></comment>
     <requestid>739619</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6f36fdc19ef2970bb28e5f93b6bc7fa</srcmd5>
+    <version>0.0~git.20191118T203151~cc850163</version>
+    <time>1578950555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0~git.20191118T203151~cc850163:
+  * When &quot;arc close-revision --finalize ...&quot; skips closing a revision, print a message
+  * When generating diffs in &quot;arc diff&quot;, disable Git config option &quot;diff.suppressBlankEmpty&quot;
+  * Make &quot;arc land --merge&quot; an explicit error when targeting a Perforce remote
+  * In &quot;arc land&quot;, when &quot;remote/onto&quot; does not exist locally, try to fetch it before giving up
+  * Update &quot;arc help land&quot; to reference Perforce support
+  * Support Perforce/Git repositories in &quot;arc land&quot;
+  * Move Git-specific &quot;arc land&quot; parsing of &quot;--onto&quot; and &quot;--remote&quot; into GitLandEngine
+  * Add a lint check for deprecated argument order to &quot;implode()&quot;
+  * When running &quot;arc land&quot; from a detached HEAD, don't try to delete the source ref
+  * Fix two &quot;msort()&quot; vs &quot;msortv()&quot; issues in &quot;arc land&quot;
+- Change LICENSE to %license section and update template
+</comment>
+    <requestid>764032</requestid>
+  </revision>
 </revisionlist>

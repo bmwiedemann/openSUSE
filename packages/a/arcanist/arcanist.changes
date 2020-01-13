@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:56:00 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0.0~git.20191118T203151~cc850163:
+  * When "arc close-revision --finalize ..." skips closing a revision, print a message
+  * When generating diffs in "arc diff", disable Git config option "diff.suppressBlankEmpty"
+  * Make "arc land --merge" an explicit error when targeting a Perforce remote
+  * In "arc land", when "remote/onto" does not exist locally, try to fetch it before giving up
+  * Update "arc help land" to reference Perforce support
+  * Support Perforce/Git repositories in "arc land"
+  * Move Git-specific "arc land" parsing of "--onto" and "--remote" into GitLandEngine
+  * Add a lint check for deprecated argument order to "implode()"
+  * When running "arc land" from a detached HEAD, don't try to delete the source ref
+  * Fix two "msort()" vs "msortv()" issues in "arc land"
+
+-------------------------------------------------------------------
+Mon Jan 13 12:52:01 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Change LICENSE to %license section and update template
+
+-------------------------------------------------------------------
 Thu Oct 17 13:32:20 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
