@@ -43,6 +43,7 @@ Source4:        cri-o-rpmlintrc
 Source5:        kubelet.env
 Source6:        %{name_source4}
 Source7:        %{name_source5}
+Patch1:         prevent-local-loopback-teardown-rh1754154.patch
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel-static
@@ -90,11 +91,13 @@ This package provides the CRI-O container runtime configuration for kubeadm
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 # Keep cgroupfs as the default cgroup manager for SLE15 builds
 %if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
 sed -i "s|^cgroup_manager = \"systemd\"$|cgroup_manager = \"cgroupfs\"|g" %{SOURCE3}
+sed -i "s|--cgroup-driver=systemd|--cgroup-driver=cgroupfs|g" %{SOURCE5}
 %endif
 
 # We can't use symlinks here because go-list gets confused by symlinks, so we

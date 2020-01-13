@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:40:13 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add prevent-local-loopback-teardown-rh1754154.patch to stop local loopback interfaces being torndown before cluster is bootstrapped 
+
+-------------------------------------------------------------------
+Tue Dec 17 08:51:58 UTC 2019 - jmassaguerpla@suse.com
+
+- Make cgroup-driver for kubelet be cgroupfs for SLE to be consistent
+  with the cri-o configuration 
+
+-------------------------------------------------------------------
 Wed Nov 27 10:36:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.16.1:
