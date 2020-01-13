@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 09:56:29 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Have openmpi3-config provide pmix-runtime-config
+
+-------------------------------------------------------------------
 Thu Dec  5 10:36:33 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints file for ppc64le for disk > 4G

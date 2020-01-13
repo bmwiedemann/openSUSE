@@ -1,7 +1,7 @@
 #
 # spec file for package openmpi3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -129,7 +129,7 @@ Release:        0
 Summary:        An implementation of MPI/SHMEM
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
-Url:            http://www.open-mpi.org/
+URL:            http://www.open-mpi.org/
 Source0:        openmpi-%{version}%{git_ver}.tar.bz2
 Source2:        openmpi3-rpmlintrc
 Source3:        macros.hpc-openmpi
@@ -357,6 +357,9 @@ Summary:        Runtime configuration files for openMPI %{?with_hpc:HPC} version
 Group:          Development/Libraries/Parallel
 Provides:       openmpi-runtime-config = %{version}
 Conflicts:      otherproviders(openmpi-runtime-config)
+# OpenMPI3 is PMIx enabled
+Provides:       pmix-runtime-config = %{version}
+Conflicts:      otherproviders(pmix-runtime-config)
 
 %description -n %{pname}%{m_f_ver}-config
 OpenMPI is an implementation of the Message Passing Interface, a
