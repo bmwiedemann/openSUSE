@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:46:01 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 4.14.3
+  * Always provide files for vala binding in dist tarball
+- Changes from 4.14.2
+  * plugins: Fix enter/leave opacity w/o compositing (bxo#14577)
+  * tasklist: Fix drag&drop in deskbar mode (bxo#16298)
+  * appmenu: Use panel's icon size
+  * appmenu: Listen to icon theme changes (bxo#15861)
+  * prefs: Plug memory leaks (bxo#16016)
+  * Replace GtkStock icon 
+  * Translation updates
+
+-------------------------------------------------------------------
 Thu Sep 26 09:13:11 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 4.14.1
