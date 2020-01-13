@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 10 19:57:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.2
+  * Fix transitions for enums with str behavior
+  * Don't mask away KeyError when executing a transition
+  * Add support for dynamic model state attribute
+
+-------------------------------------------------------------------
 Mon Sep 30 18:47:43 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.7.1
