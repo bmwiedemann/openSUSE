@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.0.77
+Version:        2.0.79
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -45,7 +45,7 @@ Patch1:         ac_use-python3-by-default.patch
 BuildRequires:  %{short_name} = %{version}
 %else
 BuildRequires:  azure-cli-command-modules-nspkg >= 2.0
-BuildRequires:  azure-cli-core >= 2.0.77
+BuildRequires:  azure-cli-core >= 2.0.78
 BuildRequires:  azure-cli-nspkg >= 3.0
 BuildRequires:  azure-cli-telemetry >= 1.0.2
 BuildRequires:  fdupes
@@ -53,7 +53,7 @@ BuildRequires:  python3-Fabric >= 2.4
 BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-azure-batch >= 8.0
 BuildRequires:  python3-azure-cosmos >= 3.0
-BuildRequires:  python3-azure-datalake-store >= 0.0.45
+BuildRequires:  python3-azure-datalake-store >= 0.0.48
 BuildRequires:  python3-azure-functions-devops-build >= 0.0.22
 BuildRequires:  python3-azure-graphrbac >= 0.60.0
 BuildRequires:  python3-azure-keyvault >= 1.1
@@ -74,7 +74,7 @@ BuildRequires:  python3-azure-mgmt-consumption >= 2.0
 BuildRequires:  python3-azure-mgmt-containerinstance >= 1.4
 BuildRequires:  python3-azure-mgmt-containerregistry >= 3.0.0rc7
 BuildRequires:  python3-azure-mgmt-containerservice >= 8.0.0
-BuildRequires:  python3-azure-mgmt-cosmosdb >= 0.8.0
+BuildRequires:  python3-azure-mgmt-cosmosdb >= 0.11.0
 BuildRequires:  python3-azure-mgmt-datalake-analytics >= 0.2.1
 BuildRequires:  python3-azure-mgmt-datalake-store >= 0.5.0
 BuildRequires:  python3-azure-mgmt-datamigration >= 0.1.0
@@ -83,7 +83,7 @@ BuildRequires:  python3-azure-mgmt-devtestlabs >= 2.2
 BuildRequires:  python3-azure-mgmt-dns >= 2.1
 BuildRequires:  python3-azure-mgmt-eventgrid >= 2.2
 BuildRequires:  python3-azure-mgmt-eventhub >= 2.6
-BuildRequires:  python3-azure-mgmt-hdinsight >= 1.1.0
+BuildRequires:  python3-azure-mgmt-hdinsight >= 1.3.0
 BuildRequires:  python3-azure-mgmt-imagebuilder >= 0.2.1
 BuildRequires:  python3-azure-mgmt-iotcentral >= 1.0
 BuildRequires:  python3-azure-mgmt-iothub >= 0.8.2
@@ -104,19 +104,19 @@ BuildRequires:  python3-azure-mgmt-policyinsights >= 0.3.1
 BuildRequires:  python3-azure-mgmt-privatedns >= 0.1.0
 BuildRequires:  python3-azure-mgmt-rdbms >= 1.8
 BuildRequires:  python3-azure-mgmt-recoveryservices >= 0.4.0
-BuildRequires:  python3-azure-mgmt-recoveryservicesbackup >= 0.4.0
-BuildRequires:  python3-azure-mgmt-redis >= 6.0
+BuildRequires:  python3-azure-mgmt-recoveryservicesbackup >= 0.5.0
+BuildRequires:  python3-azure-mgmt-redis >= 7.0.0rc1
 BuildRequires:  python3-azure-mgmt-relay >= 0.1.0
 BuildRequires:  python3-azure-mgmt-reservations >= 0.6.0
-BuildRequires:  python3-azure-mgmt-resource >= 4.0
+BuildRequires:  python3-azure-mgmt-resource >= 7.0
 BuildRequires:  python3-azure-mgmt-search >= 2.0
 BuildRequires:  python3-azure-mgmt-security >= 0.1.0
 BuildRequires:  python3-azure-mgmt-servicebus >= 0.6.0
 BuildRequires:  python3-azure-mgmt-servicefabric >= 0.2.0
 BuildRequires:  python3-azure-mgmt-signalr >= 0.3.0
-BuildRequires:  python3-azure-mgmt-sql >= 0.15
-BuildRequires:  python3-azure-mgmt-sqlvirtualmachine >= 0.4.0
-BuildRequires:  python3-azure-mgmt-storage >= 5.0.0
+BuildRequires:  python3-azure-mgmt-sql >= 0.15.0
+BuildRequires:  python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
+BuildRequires:  python3-azure-mgmt-storage >= 7.0.0
 BuildRequires:  python3-azure-mgmt-trafficmanager >= 0.51.0
 BuildRequires:  python3-azure-mgmt-web >= 0.42.0
 BuildRequires:  python3-azure-multiapi-storage >= 0.2.4
@@ -147,14 +147,14 @@ BuildRequires:  python3-vsts-cd-manager >= 1.0.0
 BuildRequires:  python3-websocket-client >= 0.56.0
 BuildRequires:  python3-xmltodict >= 0.12
 Requires:       azure-cli-command-modules-nspkg >= 2.0
-Requires:       azure-cli-core >= 2.0.77
+Requires:       azure-cli-core >= 2.0.78
 Requires:       azure-cli-nspkg >= 3.0
 Requires:       azure-cli-telemetry >= 1.0.2
 Requires:       python3-Fabric >= 2.4
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-azure-batch >= 8.0
 Requires:       python3-azure-cosmos >= 3.0
-Requires:       python3-azure-datalake-store >= 0.0.45
+Requires:       python3-azure-datalake-store >= 0.0.48
 Requires:       python3-azure-functions-devops-build >= 0.0.22
 Requires:       python3-azure-graphrbac >= 0.60.0
 Requires:       python3-azure-keyvault >= 1.1
@@ -175,7 +175,7 @@ Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 1.4
 Requires:       python3-azure-mgmt-containerregistry >= 3.0.0rc7
 Requires:       python3-azure-mgmt-containerservice >= 8.0.0
-Requires:       python3-azure-mgmt-cosmosdb >= 0.8.0
+Requires:       python3-azure-mgmt-cosmosdb >= 0.11.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
 Requires:       python3-azure-mgmt-datalake-store >= 0.5.0
 Requires:       python3-azure-mgmt-datamigration >= 0.1.0
@@ -184,7 +184,7 @@ Requires:       python3-azure-mgmt-devtestlabs >= 2.2
 Requires:       python3-azure-mgmt-dns >= 2.1
 Requires:       python3-azure-mgmt-eventgrid >= 2.2
 Requires:       python3-azure-mgmt-eventhub >= 2.6
-Requires:       python3-azure-mgmt-hdinsight >= 1.1.0
+Requires:       python3-azure-mgmt-hdinsight >= 1.3.0
 Requires:       python3-azure-mgmt-imagebuilder >= 0.2.1
 Requires:       python3-azure-mgmt-iotcentral >= 1.0
 Requires:       python3-azure-mgmt-iothub >= 0.8.2
@@ -205,19 +205,19 @@ Requires:       python3-azure-mgmt-policyinsights >= 0.3.1
 Requires:       python3-azure-mgmt-privatedns >= 0.1.0
 Requires:       python3-azure-mgmt-rdbms >= 1.8
 Requires:       python3-azure-mgmt-recoveryservices >= 0.4.0
-Requires:       python3-azure-mgmt-recoveryservicesbackup >= 0.4.0
-Requires:       python3-azure-mgmt-redis >= 6.0
+Requires:       python3-azure-mgmt-recoveryservicesbackup >= 0.5.0
+Requires:       python3-azure-mgmt-redis >= 7.0.0rc1
 Requires:       python3-azure-mgmt-relay >= 0.1.0
 Requires:       python3-azure-mgmt-reservations == 0.6.0
-Requires:       python3-azure-mgmt-resource >= 4.0
+Requires:       python3-azure-mgmt-resource >= 7.0
 Requires:       python3-azure-mgmt-search >= 2.0
 Requires:       python3-azure-mgmt-security >= 0.1.0
 Requires:       python3-azure-mgmt-servicebus >= 0.6.0
 Requires:       python3-azure-mgmt-servicefabric >= 0.2.0
 Requires:       python3-azure-mgmt-signalr >= 0.3.0
-Requires:       python3-azure-mgmt-sql >= 0.15
-Requires:       python3-azure-mgmt-sqlvirtualmachine >= 0.4.0
-Requires:       python3-azure-mgmt-storage >= 5.0.0
+Requires:       python3-azure-mgmt-sql >= 0.15.0
+Requires:       python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
+Requires:       python3-azure-mgmt-storage >= 7.0.0
 Requires:       python3-azure-mgmt-trafficmanager >= 0.51.0
 Requires:       python3-azure-mgmt-web >= 0.42.0
 Requires:       python3-azure-multiapi-storage >= 0.2.4
