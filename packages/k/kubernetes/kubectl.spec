@@ -18,9 +18,9 @@
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
 # baseversion - version of kubernetes for this package
-%define baseversion 1.16
+%define baseversion 1.17
 Name:           kubectl
-Version:        %{baseversion}.3
+Version:        %{baseversion}.0
 Release:        0
 Summary:        Kubectl (Kubernetes client tools)
 License:        Apache-2.0
@@ -34,9 +34,9 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.16.1 requires at least go 1.12.10 (see changelog)
-BuildRequires:  golang(API) = 1.12
-BuildRequires:  go >= 1.12.10
+# Kubernetes 1.17.0 requires at least go 1.13.4 (see changelog)
+BuildRequires:  golang(API) = 1.13
+BuildRequires:  go >= 1.13.4
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -45,6 +45,10 @@ Requires:       bash-completion
 # Conflict with kubernetes-client which already provides kubectl but as a link
 # to hyperkube, provided by kubernetes-common
 Conflicts:      kubernetes-client
+# kubectl as a seperate package was created purely for use in SLE/PackageHub, not relevant to openSUSE where kubernetes-client is packaged. So disable building outside of Backports
+%if 0%{?is_opensuse} && ! 0%{?is_backports}
+ExclusiveArch: do-not-build
+%endif
 ExcludeArch:    %{ix86} s390
 %{go_nostrip}
 %{go_provides}

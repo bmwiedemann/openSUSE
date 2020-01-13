@@ -18,11 +18,11 @@
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
 # baseversion - version of kubernetes for this package
-%define baseversion 1.16
+%define baseversion 1.17
 # maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
-%define maxcriversion 1.17
+%define maxcriversion 1.18
 Name:           kubernetes
-Version:        %{baseversion}.3
+Version:        %{baseversion}.0
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -48,18 +48,20 @@ Source29:       kubernetes.obsinfo
 Patch2:         kubeadm-opensuse-registry.patch
 # Patch to change the version check server to kubic.opensuse.org
 Patch3:         opensuse-version-checks.patch
+# Patch to change the default flexvolume path in kubeadm to match that used by our kubelet, else kubeadm tries to write to /usr when kubelet is already looking at a path on /var thanks to the fix to bsc#1084766
+Patch4:         kubeadm-opensuse-flexvolume.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.16.1 requires at least go 1.12.10 (see changelog)
-BuildRequires:  golang(API) = 1.12
-BuildRequires:  go >= 1.12.9
+# Kubernetes 1.17.0 requires at least go 1.13.4 (see changelog)
+BuildRequires:  golang(API) = 1.13
+BuildRequires:  go >= 1.13.4
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
-ExcludeArch:    %{ix86} s390
+ExcludeArch:    %{ix86} s390 ppc64
 %{go_nostrip}
 %{go_provides}
 
@@ -246,6 +248,7 @@ providers, demos, testsuite...
 %if 0%{?is_opensuse}
 %patch2 -p0
 %patch3 -p1
+%patch4 -p0
 %endif
 %{goprep} github.com/kubernetes/kubernetes
 
