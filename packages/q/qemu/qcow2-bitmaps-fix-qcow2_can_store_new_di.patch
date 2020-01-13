@@ -1,0 +1,96 @@
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Date: Mon, 14 Oct 2019 14:51:25 +0300
+Subject: qcow2-bitmaps: fix qcow2_can_store_new_dirty_bitmap
+
+Git-commit: a1db8733d28d615bc0daeada6c406a6dd5c5d5ef
+
+qcow2_can_store_new_dirty_bitmap works wrong, as it considers only
+bitmaps already stored in the qcow2 image and ignores persistent
+BdrvDirtyBitmap objects.
+
+So, let's instead count persistent BdrvDirtyBitmaps. We load all qcow2
+bitmaps on open, so there should not be any bitmap in the image for
+which we don't have BdrvDirtyBitmaps version. If it is - it's a kind of
+corruption, and no reason to check for corruptions here (open() and
+close() are better places for it).
+
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-id: 20191014115126.15360-2-vsementsov@virtuozzo.com
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/qcow2-bitmap.c | 41 ++++++++++++++++++-----------------------
+ 1 file changed, 18 insertions(+), 23 deletions(-)
+
+diff --git a/block/qcow2-bitmap.c b/block/qcow2-bitmap.c
+index c6c8ebbe89d4252432bfb80e3426..d41f5d049b7d791ac30e1e36d3c5 100644
+--- a/block/qcow2-bitmap.c
++++ b/block/qcow2-bitmap.c
+@@ -1703,8 +1703,14 @@ bool coroutine_fn qcow2_co_can_store_new_dirty_bitmap(BlockDriverState *bs,
+                                                       Error **errp)
+ {
+     BDRVQcow2State *s = bs->opaque;
+-    bool found;
+-    Qcow2BitmapList *bm_list;
++    BdrvDirtyBitmap *bitmap;
++    uint64_t bitmap_directory_size = 0;
++    uint32_t nb_bitmaps = 0;
++
++    if (bdrv_find_dirty_bitmap(bs, name)) {
++        error_setg(errp, "Bitmap already exists: %s", name);
++        return false;
++    }
+ 
+     if (s->qcow_version < 3) {
+         /* Without autoclear_features, we would always have to assume
+@@ -1720,38 +1726,27 @@ bool coroutine_fn qcow2_co_can_store_new_dirty_bitmap(BlockDriverState *bs,
+         goto fail;
+     }
+ 
+-    if (s->nb_bitmaps == 0) {
+-        return true;
++    FOR_EACH_DIRTY_BITMAP(bs, bitmap) {
++        if (bdrv_dirty_bitmap_get_persistence(bitmap)) {
++            nb_bitmaps++;
++            bitmap_directory_size +=
++                calc_dir_entry_size(strlen(bdrv_dirty_bitmap_name(bitmap)), 0);
++        }
+     }
++    nb_bitmaps++;
++    bitmap_directory_size += calc_dir_entry_size(strlen(name), 0);
+ 
+-    if (s->nb_bitmaps >= QCOW2_MAX_BITMAPS) {
++    if (nb_bitmaps > QCOW2_MAX_BITMAPS) {
+         error_setg(errp,
+                    "Maximum number of persistent bitmaps is already reached");
+         goto fail;
+     }
+ 
+-    if (s->bitmap_directory_size + calc_dir_entry_size(strlen(name), 0) >
+-        QCOW2_MAX_BITMAP_DIRECTORY_SIZE)
+-    {
++    if (bitmap_directory_size > QCOW2_MAX_BITMAP_DIRECTORY_SIZE) {
+         error_setg(errp, "Not enough space in the bitmap directory");
+         goto fail;
+     }
+ 
+-    qemu_co_mutex_lock(&s->lock);
+-    bm_list = bitmap_list_load(bs, s->bitmap_directory_offset,
+-                               s->bitmap_directory_size, errp);
+-    qemu_co_mutex_unlock(&s->lock);
+-    if (bm_list == NULL) {
+-        goto fail;
+-    }
+-
+-    found = find_bitmap_by_name(bm_list, name);
+-    bitmap_list_free(bm_list);
+-    if (found) {
+-        error_setg(errp, "Bitmap with the same name is already stored");
+-        goto fail;
+-    }
+-
+     return true;
+ 
+ fail:

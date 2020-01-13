@@ -1,0 +1,47 @@
+From: Simon Veith <sveith@amazon.de>
+Date: Fri, 20 Dec 2019 14:03:00 +0000
+Subject: hw/arm/smmuv3: Report F_STE_FETCH fault address in correct word
+ position
+
+Git-commit: b255cafb59578d16716186ed955717bc8f87bdb7
+
+The smmuv3_record_event() function that generates the F_STE_FETCH error
+uses the EVT_SET_ADDR macro to record the fetch address, placing it in
+32-bit words 4 and 5.
+
+The correct position for this address is in words 6 and 7, per the
+SMMUv3 Architecture Specification.
+
+Update the function to use the EVT_SET_ADDR2 macro instead, which is the
+macro intended for writing to these words.
+
+ref. ARM IHI 0070C, section 7.3.4.
+
+Signed-off-by: Simon Veith <sveith@amazon.de>
+Acked-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Message-id: 1576509312-13083-7-git-send-email-sveith@amazon.de
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Acked-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/arm/smmuv3.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 31ac3ca32ebe3c1073350843c8ab..8b5f157dc702322b5424ab585b8a 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -172,7 +172,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+     case SMMU_EVT_F_STE_FETCH:
+         EVT_SET_SSID(&evt, info->u.f_ste_fetch.ssid);
+         EVT_SET_SSV(&evt,  info->u.f_ste_fetch.ssv);
+-        EVT_SET_ADDR(&evt, info->u.f_ste_fetch.addr);
++        EVT_SET_ADDR2(&evt, info->u.f_ste_fetch.addr);
+         break;
+     case SMMU_EVT_C_BAD_STE:
+         EVT_SET_SSID(&evt, info->u.c_bad_ste.ssid);

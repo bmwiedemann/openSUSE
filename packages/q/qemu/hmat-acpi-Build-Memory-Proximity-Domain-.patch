@@ -1,0 +1,258 @@
+From: Liu Jingqi <jingqi.liu@intel.com>
+Date: Fri, 13 Dec 2019 09:19:25 +0800
+Subject: hmat acpi: Build Memory Proximity Domain Attributes Structure(s)
+
+Git commit: e6f123c3b81241be33f1b763d0ff8b36d1ae9c1e
+References: jsc#SLE-8897
+
+HMAT is defined in ACPI 6.3: 5.2.27 Heterogeneous Memory Attribute Table
+(HMAT). The specification references below link:
+http://www.uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf
+
+It describes the memory attributes, such as memory side cache
+attributes and bandwidth and latency details, related to the
+Memory Proximity Domain. The software is
+expected to use this information as hint for optimization.
+
+This structure describes Memory Proximity Domain Attributes by memory
+subsystem and its associativity with processor proximity domain as well as
+hint for memory usage.
+
+In the linux kernel, the codes in drivers/acpi/hmat/hmat.c parse and report
+the platform's HMAT tables.
+
+Acked-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Daniel Black <daniel@linux.ibm.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Liu Jingqi <jingqi.liu@intel.com>
+Signed-off-by: Tao Xu <tao3.xu@intel.com>
+Message-Id: <20191213011929.2520-5-tao3.xu@intel.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/acpi/Kconfig       |  7 ++-
+ hw/acpi/Makefile.objs |  1 +
+ hw/acpi/hmat.c        | 99 +++++++++++++++++++++++++++++++++++++++++++
+ hw/acpi/hmat.h        | 42 ++++++++++++++++++
+ hw/i386/acpi-build.c  |  5 +++
+ 5 files changed, 152 insertions(+), 2 deletions(-)
+
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index 12e3f1e86e62256bf274b554938b..54209c6f2f17d4ca0a737cb25403 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -7,6 +7,7 @@ config ACPI_X86
+     select ACPI_NVDIMM
+     select ACPI_CPU_HOTPLUG
+     select ACPI_MEMORY_HOTPLUG
++    select ACPI_HMAT
+ 
+ config ACPI_X86_ICH
+     bool
+@@ -23,6 +24,10 @@ config ACPI_NVDIMM
+     bool
+     depends on ACPI
+ 
++config ACPI_HMAT
++    bool
++    depends on ACPI
++
+ config ACPI_PCI
+     bool
+     depends on ACPI && PCI
+@@ -33,5 +38,3 @@ config ACPI_VMGENID
+     depends on PC
+ 
+ config ACPI_HW_REDUCED
+-    bool
+-    depends on ACPI
+diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+index 655a9c197341fed6fcea2062a30c..517bd88704769d8605dde18a6776 100644
+--- a/hw/acpi/Makefile.objs
++++ b/hw/acpi/Makefile.objs
+@@ -7,6 +7,7 @@ common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+ common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+ common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
+ common-obj-$(CONFIG_ACPI_HW_REDUCED) += generic_event_device.o
++common-obj-$(CONFIG_ACPI_HMAT) += hmat.o
+ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+ 
+ common-obj-y += acpi_interface.o
+diff --git a/hw/acpi/hmat.c b/hw/acpi/hmat.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..9ff79308a497fe40a1b0a2f9a043ad3bebb2c3cb
+--- /dev/null
++++ b/hw/acpi/hmat.c
+@@ -0,0 +1,99 @@
++/*
++ * HMAT ACPI Implementation
++ *
++ * Copyright(C) 2019 Intel Corporation.
++ *
++ * Author:
++ *  Liu jingqi <jingqi.liu@linux.intel.com>
++ *  Tao Xu <tao3.xu@intel.com>
++ *
++ * HMAT is defined in ACPI 6.3: 5.2.27 Heterogeneous Memory Attribute Table
++ * (HMAT)
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>
++ */
++
++#include "qemu/osdep.h"
++#include "sysemu/numa.h"
++#include "hw/acpi/hmat.h"
++
++/*
++ * ACPI 6.3:
++ * 5.2.27.3 Memory Proximity Domain Attributes Structure: Table 5-145
++ */
++static void build_hmat_mpda(GArray *table_data, uint16_t flags,
++                            uint32_t initiator, uint32_t mem_node)
++{
++
++    /* Memory Proximity Domain Attributes Structure */
++    /* Type */
++    build_append_int_noprefix(table_data, 0, 2);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 2);
++    /* Length */
++    build_append_int_noprefix(table_data, 40, 4);
++    /* Flags */
++    build_append_int_noprefix(table_data, flags, 2);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 2);
++    /* Proximity Domain for the Attached Initiator */
++    build_append_int_noprefix(table_data, initiator, 4);
++    /* Proximity Domain for the Memory */
++    build_append_int_noprefix(table_data, mem_node, 4);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 4);
++    /*
++     * Reserved:
++     * Previously defined as the Start Address of the System Physical
++     * Address Range. Deprecated since ACPI Spec 6.3.
++     */
++    build_append_int_noprefix(table_data, 0, 8);
++    /*
++     * Reserved:
++     * Previously defined as the Range Length of the region in bytes.
++     * Deprecated since ACPI Spec 6.3.
++     */
++    build_append_int_noprefix(table_data, 0, 8);
++}
++
++/* Build HMAT sub table structures */
++static void hmat_build_table_structs(GArray *table_data, NumaState *numa_state)
++{
++    uint16_t flags;
++    int i;
++
++    for (i = 0; i < numa_state->num_nodes; i++) {
++        flags = 0;
++
++        if (numa_state->nodes[i].initiator < MAX_NODES) {
++            flags |= HMAT_PROXIMITY_INITIATOR_VALID;
++        }
++
++        build_hmat_mpda(table_data, flags, numa_state->nodes[i].initiator, i);
++    }
++}
++
++void build_hmat(GArray *table_data, BIOSLinker *linker, NumaState *numa_state)
++{
++    int hmat_start = table_data->len;
++
++    /* reserve space for HMAT header  */
++    acpi_data_push(table_data, 40);
++
++    hmat_build_table_structs(table_data, numa_state);
++
++    build_header(linker, table_data,
++                 (void *)(table_data->data + hmat_start),
++                 "HMAT", table_data->len - hmat_start, 2, NULL, NULL);
++}
+diff --git a/hw/acpi/hmat.h b/hw/acpi/hmat.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..437dbc6872e82e4c1ae42a9ff16299465eec052f
+--- /dev/null
++++ b/hw/acpi/hmat.h
+@@ -0,0 +1,42 @@
++/*
++ * HMAT ACPI Implementation Header
++ *
++ * Copyright(C) 2019 Intel Corporation.
++ *
++ * Author:
++ *  Liu jingqi <jingqi.liu@linux.intel.com>
++ *  Tao Xu <tao3.xu@intel.com>
++ *
++ * HMAT is defined in ACPI 6.3: 5.2.27 Heterogeneous Memory Attribute Table
++ * (HMAT)
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>
++ */
++
++#ifndef HMAT_H
++#define HMAT_H
++
++#include "hw/acpi/aml-build.h"
++
++/*
++ * ACPI 6.3: 5.2.27.3 Memory Proximity Domain Attributes Structure,
++ * Table 5-145, Field "flag", Bit [0]: set to 1 to indicate that data in
++ * the Proximity Domain for the Attached Initiator field is valid.
++ * Other bits reserved.
++ */
++#define HMAT_PROXIMITY_INITIATOR_VALID  0x1
++
++void build_hmat(GArray *table_data, BIOSLinker *linker, NumaState *numa_state);
++
++#endif
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 12ff55fcfb543208c18ba44d569e..90a9c2ce6f8c01221efc56f63f79 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -67,6 +67,7 @@
+ #include "hw/i386/intel_iommu.h"
+ 
+ #include "hw/acpi/ipmi.h"
++#include "hw/acpi/hmat.h"
+ 
+ /* These are used to size the ACPI tables for -M pc-i440fx-1.7 and
+  * -M pc-i440fx-2.0.  Even if the actual amount of AML generated grows
+@@ -2834,6 +2835,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+             acpi_add_table(table_offsets, tables_blob);
+             build_slit(tables_blob, tables->linker, machine);
+         }
++        if (machine->numa_state->hmat_enabled) {
++            acpi_add_table(table_offsets, tables_blob);
++            build_hmat(tables_blob, tables->linker, machine->numa_state);
++        }
+     }
+     if (acpi_get_mcfg(&mcfg)) {
+         acpi_add_table(table_offsets, tables_blob);

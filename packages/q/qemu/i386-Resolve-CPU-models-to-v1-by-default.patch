@@ -1,0 +1,83 @@
+From: Eduardo Habkost <ehabkost@redhat.com>
+Date: Thu, 5 Dec 2019 19:33:39 -0300
+Subject: i386: Resolve CPU models to v1 by default
+
+Git-commit: ad18392892c04637fb56956d997f4bc600224356
+
+When using `query-cpu-definitions` using `-machine none`,
+QEMU is resolving all CPU models to their latest versions.  The
+actual CPU model version being used by another machine type (e.g.
+`pc-q35-4.0`) might be different.
+
+In theory, this was OK because the correct CPU model
+version is returned when using the correct `-machine` argument.
+
+Except that in practice, this breaks libvirt expectations:
+libvirt always use `-machine none` when checking if a CPU model
+is runnable, because runnability is not expected to be affected
+when the machine type is changed.
+
+For example, when running on a Haswell host without TSX,
+Haswell-v4 is runnable, but Haswell-v1 is not.  On those hosts,
+`query-cpu-definitions` says Haswell is runnable if using
+`-machine none`, but Haswell is actually not runnable using any
+of the `pc-*` machine types (because they resolve Haswell to
+Haswell-v1).  In other words, we're breaking the "runnability
+guarantee" we promised to not break for a few releases (see
+qemu-deprecated.texi).
+
+To address this issue, change the default CPU model version to v1
+on all machine types, so we make `query-cpu-definitions` output
+when using `-machine none` match the results when using `pc-*`.
+This will change in the future (the plan is to always return the
+latest CPU model version if using `-machine none`), but only
+after giving libvirt the opportunity to adapt.
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1779078
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Message-Id: <20191205223339.764534-1-ehabkost@redhat.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ qemu-deprecated.texi | 8 ++++++++
+ target/i386/cpu.c    | 8 +++++++-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+index 4b4b7425ac1e8f71ad6a2becafb1..b42d8b3c5fbd7e74acc826678a90 100644
+--- a/qemu-deprecated.texi
++++ b/qemu-deprecated.texi
+@@ -374,6 +374,14 @@ guarantees must resolve the CPU model aliases using te
+ ``alias-of'' field returned by the ``query-cpu-definitions'' QMP
+ command.
+ 
++While those guarantees are kept, the return value of
++``query-cpu-definitions'' will have existing CPU model aliases
++point to a version that doesn't break runnability guarantees
++(specifically, version 1 of those CPU models).  In future QEMU
++versions, aliases will point to newer CPU model versions
++depending on the machine type, so management software must
++resolve CPU model aliases before starting a virtual machine.
++
+ 
+ @node Recently removed features
+ @appendix Recently removed features
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index de828e29d8d6a35c1f03bc4a456a..8a1993ac64bd763b7bb70c98b8b8 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -3984,7 +3984,13 @@ static PropValue tcg_default_props[] = {
+ };
+ 
+ 
+-X86CPUVersion default_cpu_version = CPU_VERSION_LATEST;
++/*
++ * We resolve CPU model aliases using -v1 when using "-machine
++ * none", but this is just for compatibility while libvirt isn't
++ * adapted to resolve CPU model versions before creating VMs.
++ * See "Runnability guarantee of CPU models" at * qemu-deprecated.texi.
++ */
++X86CPUVersion default_cpu_version = 1;
+ 
+ void x86_cpu_set_default_version(X86CPUVersion version)
+ {

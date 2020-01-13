@@ -1,0 +1,49 @@
+From: Simon Veith <sveith@amazon.de>
+Date: Fri, 20 Dec 2019 14:03:00 +0000
+Subject: hw/arm/smmuv3: Use correct bit positions in EVT_SET_ADDR2 macro
+
+Git-commit: a7f65ceb851af5a5b639c6e30801076d848db2c2
+
+The bit offsets in the EVT_SET_ADDR2 macro do not match those specified
+in the ARM SMMUv3 Architecture Specification. In all events that use
+this macro, e.g. F_WALK_EABT, the faulting fetch address or IPA actually
+occupies the 32-bit words 6 and 7 in the event record contiguously, with
+the upper and lower unused bits clear due to alignment or maximum
+supported address bits. How many bits are clear depends on the
+individual event type.
+
+Update the macro to write to the correct words in the event record so
+that guest drivers can obtain accurate address information on events.
+
+ref. ARM IHI 0070C, sections 7.3.12 through 7.3.16.
+
+Signed-off-by: Simon Veith <sveith@amazon.de>
+Acked-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Message-id: 1576509312-13083-6-git-send-email-sveith@amazon.de
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Acked-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/arm/smmuv3-internal.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index 042b4358084b6b87e8b9e42d5622..4112394129e0069018a5967cb685 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -461,8 +461,8 @@ typedef struct SMMUEventInfo {
+     } while (0)
+ #define EVT_SET_ADDR2(x, addr)                            \
+     do {                                                  \
+-            (x)->word[7] = deposit32((x)->word[7], 3, 29, addr >> 16);   \
+-            (x)->word[7] = deposit32((x)->word[7], 0, 16, addr & 0xffff);\
++            (x)->word[7] = (uint32_t)(addr >> 32);        \
++            (x)->word[6] = (uint32_t)(addr & 0xffffffff); \
+     } while (0)
+ 
+ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);

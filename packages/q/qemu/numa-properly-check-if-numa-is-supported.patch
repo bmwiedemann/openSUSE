@@ -1,0 +1,67 @@
+From: Igor Mammedov <imammedo@redhat.com>
+Date: Thu, 12 Dec 2019 13:48:56 +0100
+Subject: numa: properly check if numa is supported
+
+Git-commit: fcd3f2cc124600385dba46c69a80626985c15b50
+
+Commit aa57020774b, by mistake used MachineClass::numa_mem_supported
+to check if NUMA is supported by machine and also as unrelated change
+set it to true for sbsa-ref board.
+
+Luckily change didn't break machines that support NUMA, as the field
+is set to true for them.
+
+But the field is not intended for checking if NUMA is supported and
+will be flipped to false within this release for new machine types.
+
+Fix it:
+ - by using previously used condition
+      !mc->cpu_index_to_instance_props || !mc->get_default_cpu_node_id
+   the first time and then use MachineState::numa_state down the road
+   to check if NUMA is supported
+ - dropping stray sbsa-ref chunk
+
+Fixes: aa57020774b690a22be72453b8e91c9b5a68c516
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <1576154936-178362-3-git-send-email-imammedo@redhat.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/arm/sbsa-ref.c | 1 -
+ hw/core/machine.c | 4 ++--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 27046cc284f4b9daa59468889430..c6261d44a4c53e8a6bc14bbf088d 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -791,7 +791,6 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
+     mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
+     mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
+     mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
+-    mc->numa_mem_supported = true;
+ }
+ 
+ static const TypeInfo sbsa_ref_info = {
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 1689ad3bf8afd18f0e774ed41a8d..aa63231f3160aaf32874e59ba452 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -958,7 +958,7 @@ static void machine_initfn(Object *obj)
+                                         NULL);
+     }
+ 
+-    if (mc->numa_mem_supported) {
++    if (mc->cpu_index_to_instance_props && mc->get_default_cpu_node_id) {
+         ms->numa_state = g_new0(NumaState, 1);
+     }
+ 
+@@ -1102,7 +1102,7 @@ void machine_run_board_init(MachineState *machine)
+ {
+     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
+ 
+-    if (machine_class->numa_mem_supported) {
++    if (machine->numa_state) {
+         numa_complete_configuration(machine);
+         if (machine->numa_state->num_nodes) {
+             machine_numa_finish_cpu_init(machine);

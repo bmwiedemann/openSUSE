@@ -1,0 +1,44 @@
+From: Simon Veith <sveith@amazon.de>
+Date: Fri, 20 Dec 2019 14:03:00 +0000
+Subject: hw/arm/smmuv3: Correct SMMU_BASE_ADDR_MASK value
+
+Git-commit: 3293b9f514a413e019b7dbc9d543458075b4849e
+
+There are two issues with the current value of SMMU_BASE_ADDR_MASK:
+
+- At the lower end, we are clearing bits [4:0]. Per the SMMUv3 spec,
+  we should also be treating bit 5 as zero in the base address.
+- At the upper end, we are clearing bits [63:48]. Per the SMMUv3 spec,
+  only bits [63:52] must be explicitly treated as zero.
+
+Update the SMMU_BASE_ADDR_MASK value to mask out bits [63:52] and [5:0].
+
+ref. ARM IHI 0070C, section 6.3.23.
+
+Signed-off-by: Simon Veith <sveith@amazon.de>
+Acked-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Message-id: 1576509312-13083-3-git-send-email-sveith@amazon.de
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/arm/smmuv3-internal.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index d190181ef1bf3d116ecc48abc1bc..042b4358084b6b87e8b9e42d5622 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -99,7 +99,7 @@ REG32(GERROR_IRQ_CFG2, 0x74)
+ 
+ #define A_STRTAB_BASE      0x80 /* 64b */
+ 
+-#define SMMU_BASE_ADDR_MASK 0xffffffffffe0
++#define SMMU_BASE_ADDR_MASK 0xfffffffffffc0
+ 
+ REG32(STRTAB_BASE_CFG,     0x88)
+     FIELD(STRTAB_BASE_CFG, FMT,      16, 2)

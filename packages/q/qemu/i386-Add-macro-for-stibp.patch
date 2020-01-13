@@ -1,0 +1,35 @@
+From: Cathy Zhang <cathy.zhang@intel.com>
+Date: Tue, 22 Oct 2019 15:35:27 +0800
+Subject: i386: Add macro for stibp
+
+Git commit: 5af514d0cb314f43bc53f2aefb437f6451d64d0c
+References: jsc#SLE-7923
+
+stibp feature is already added through the following commit.
+https://github.com/qemu/qemu/commit/0e8916582991b9fd0b94850a8444b8b80d0a0955
+
+Add a macro for it to allow CPU models to report it when host supports.
+
+Signed-off-by: Cathy Zhang <cathy.zhang@intel.com>
+Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
+Reviewed-by: Tao Xu <tao3.xu@intel.com>
+Message-Id: <1571729728-23284-3-git-send-email-cathy.zhang@intel.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/i386/cpu.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 39d37e12256069b92c7998590849..af282936a785a25f651d0db1a8cf 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -771,6 +771,8 @@ typedef uint64_t FeatureWordArray[FEATURE_WORDS];
+ #define CPUID_7_0_EDX_AVX512_4FMAPS     (1U << 3)
+ /* Speculation Control */
+ #define CPUID_7_0_EDX_SPEC_CTRL         (1U << 26)
++/* Single Thread Indirect Branch Predictors */
++#define CPUID_7_0_EDX_STIBP             (1U << 27)
+ /* Arch Capabilities */
+ #define CPUID_7_0_EDX_ARCH_CAPABILITIES (1U << 29)
+ /* Core Capability */

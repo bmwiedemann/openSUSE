@@ -1,0 +1,38 @@
+From: Liu Yi L <yi.l.liu@intel.com>
+Date: Fri, 3 Jan 2020 21:28:05 +0800
+Subject: intel_iommu: a fix to vtd_find_as_from_bus_num()
+
+Git-commit: a2e1cd41ccfe796529abfd1b6aeb1dd4393762a2
+
+Ensure the return value of vtd_find_as_from_bus_num() is NULL by
+enforcing vtd_bus=NULL. This would help caller of vtd_find_as_from_bus_num()
+to decide if any further operation on the returned vtd_bus.
+
+Cc: qemu-stable@nongnu.org
+Cc: Kevin Tian <kevin.tian@intel.com>
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>
+Cc: Peter Xu <peterx@redhat.com>
+Cc: Yi Sun <yi.y.sun@linux.intel.com>
+Signed-off-by: Liu Yi L <yi.l.liu@intel.com>
+Signed-off-by: Yi Sun <yi.y.sun@linux.intel.com>
+Message-Id: <1578058086-4288-2-git-send-email-yi.l.liu@intel.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/i386/intel_iommu.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 43c94b993b4ab591067676ed022a..00ebae4863cf7e49368779bd1fc4 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -948,6 +948,7 @@ static VTDBus *vtd_find_as_from_bus_num(IntelIOMMUState *s, uint8_t bus_num)
+                 return vtd_bus;
+             }
+         }
++        vtd_bus = NULL;
+     }
+     return vtd_bus;
+ }

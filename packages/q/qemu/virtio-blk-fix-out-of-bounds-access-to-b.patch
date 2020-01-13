@@ -1,0 +1,36 @@
+From: Li Hangjing <lihangjing@baidu.com>
+Date: Mon, 16 Dec 2019 10:30:50 +0800
+Subject: virtio-blk: fix out-of-bounds access to bitmap in notify_guest_bh
+
+Git-commit: 725fe5d10dbd4259b1853b7d253cef83a3c0d22a
+
+When the number of a virtio-blk device's virtqueues is larger than
+BITS_PER_LONG, the out-of-bounds access to bitmap[ ] will occur.
+
+Fixes: e21737ab15 ("virtio-blk: multiqueue batch notify")
+Cc: qemu-stable@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Li Hangjing <lihangjing@baidu.com>
+Reviewed-by: Xie Yongji <xieyongji@baidu.com>
+Reviewed-by: Chai Wen <chaiwen@baidu.com>
+Message-id: 20191216023050.48620-1-lihangjing@baidu.com
+Message-Id: <20191216023050.48620-1-lihangjing@baidu.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/block/dataplane/virtio-blk.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/block/dataplane/virtio-blk.c b/hw/block/dataplane/virtio-blk.c
+index 119906a5fe78dcd165f5775c42a0..1b52e8159c8d1056f56bd5f7c22f 100644
+--- a/hw/block/dataplane/virtio-blk.c
++++ b/hw/block/dataplane/virtio-blk.c
+@@ -67,7 +67,7 @@ static void notify_guest_bh(void *opaque)
+     memset(s->batch_notify_vqs, 0, sizeof(bitmap));
+ 
+     for (j = 0; j < nvqs; j += BITS_PER_LONG) {
+-        unsigned long bits = bitmap[j];
++        unsigned long bits = bitmap[j / BITS_PER_LONG];
+ 
+         while (bits != 0) {
+             unsigned i = j + ctzl(bits);

@@ -1,0 +1,33 @@
+From: Thomas Huth <thuth@redhat.com>
+Date: Mon, 2 Dec 2019 11:16:30 +0100
+Subject: iotests: Skip test 060 if it is not possible to create large files
+
+Git-commit: efd0e5a1215bbdfd28168485800f5cfec9735cf8
+
+Test 060 fails in the arm64, s390x and ppc64le LXD containers on Travis
+(which we will hopefully enable in our CI soon). These containers
+apparently do not allow large files to be created. The repair process
+in test 060 creates a file of 64 GiB, so test first whether such large
+files are possible and skip the test if that's not the case.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/060 | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/qemu-iotests/060 b/tests/qemu-iotests/060
+index b91d8321bb8d20d1033a3081acf4..d96f17a4846979aa3cb86c8388fa 100755
+--- a/tests/qemu-iotests/060
++++ b/tests/qemu-iotests/060
+@@ -49,6 +49,9 @@ _supported_fmt qcow2
+ _supported_proto file
+ _supported_os Linux
+ 
++# The repair process will create a large file - so check for availability first
++_require_large_file 64G
++
+ rt_offset=65536  # 0x10000 (XXX: just an assumption)
+ rb_offset=131072 # 0x20000 (XXX: just an assumption)
+ l1_offset=196608 # 0x30000 (XXX: just an assumption)

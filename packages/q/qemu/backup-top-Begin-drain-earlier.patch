@@ -1,0 +1,40 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Thu, 19 Dec 2019 19:26:38 +0100
+Subject: backup-top: Begin drain earlier
+
+Git-commit: 503ca1262bab2c11c533a4816d1ff4297d4f58a6
+
+When dropping backup-top, we need to drain the node before freeing the
+BlockCopyState.  Otherwise, requests may still be in flight and then the
+assertion in shres_destroy() will fail.
+
+(This becomes visible in intermittent failure of 056.)
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-id: 20191219182638.104621-1-mreitz@redhat.com
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/backup-top.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/block/backup-top.c b/block/backup-top.c
+index 7cdb1f8eba1065c04057b4a2137e..818d3f26b48da425ba061e21887f 100644
+--- a/block/backup-top.c
++++ b/block/backup-top.c
+@@ -257,12 +257,12 @@ void bdrv_backup_top_drop(BlockDriverState *bs)
+     BDRVBackupTopState *s = bs->opaque;
+     AioContext *aio_context = bdrv_get_aio_context(bs);
+ 
+-    block_copy_state_free(s->bcs);
+-
+     aio_context_acquire(aio_context);
+ 
+     bdrv_drained_begin(bs);
+ 
++    block_copy_state_free(s->bcs);
++
+     s->active = false;
+     bdrv_child_refresh_perms(bs, bs->backing, &error_abort);
+     bdrv_replace_node(bs, backing_bs(bs), &error_abort);

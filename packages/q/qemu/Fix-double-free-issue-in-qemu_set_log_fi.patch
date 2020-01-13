@@ -1,0 +1,33 @@
+From: Robert Foley <robert.foley@linaro.org>
+Date: Mon, 18 Nov 2019 16:15:23 -0500
+Subject: Fix double free issue in qemu_set_log_filename().
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 0f516ca4767042aec8716369d6d62436fa10593a
+
+After freeing the logfilename, we set logfilename to NULL, in case of an
+error which returns without setting logfilename.
+
+Signed-off-by: Robert Foley <robert.foley@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20191118211528.3221-2-robert.foley@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ util/log.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/util/log.c b/util/log.c
+index 1ca13059eef5441dce01769e046d..4316fe74eee8ba96fd2d3c9afd3b 100644
+--- a/util/log.c
++++ b/util/log.c
+@@ -113,6 +113,7 @@ void qemu_set_log_filename(const char *filename, Error **errp)
+ {
+     char *pidstr;
+     g_free(logfilename);
++    logfilename = NULL;
+ 
+     pidstr = strstr(filename, "%");
+     if (pidstr) {

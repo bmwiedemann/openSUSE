@@ -1,0 +1,82 @@
+From: Thomas Huth <thuth@redhat.com>
+Date: Wed, 4 Dec 2019 16:46:12 +0100
+Subject: iotests: Provide a function for checking the creation of huge files
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 30729ae93b7e123e472a2d42792134ae39bf9df0
+
+Some tests create huge (but sparse) files, and to be able to run those
+tests in certain limited environments (like CI containers), we have to
+check for the possibility to create such files first. Thus let's introduce
+a common function to check for large files, and replace the already
+existing checks in the iotests 005 and 220 with this function.
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
+Tested-by: Cleber Rosa <crosa@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20191204154618.23560-2-thuth@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/005       |  5 +----
+ tests/qemu-iotests/220       |  6 ++----
+ tests/qemu-iotests/common.rc | 10 ++++++++++
+ 3 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/tests/qemu-iotests/005 b/tests/qemu-iotests/005
+index 58442762fe366d0f5eb9bf7a1860..b6d03ac37deabcbf6372ffb17113 100755
+--- a/tests/qemu-iotests/005
++++ b/tests/qemu-iotests/005
+@@ -59,10 +59,7 @@ fi
+ # Sanity check: For raw, we require a file system that permits the creation
+ # of a HUGE (but very sparse) file. Check we can create it before continuing.
+ if [ "$IMGFMT" = "raw" ]; then
+-    if ! truncate --size=5T "$TEST_IMG"; then
+-        _notrun "file system on $TEST_DIR does not support large enough files"
+-    fi
+-    rm "$TEST_IMG"
++    _require_large_file 5T
+ fi
+ 
+ echo
+diff --git a/tests/qemu-iotests/220 b/tests/qemu-iotests/220
+index 2d62c5dcac2a258ed82cd4bca775..15159270d33550e4649a25fe772e 100755
+--- a/tests/qemu-iotests/220
++++ b/tests/qemu-iotests/220
+@@ -42,10 +42,8 @@ echo "== Creating huge file =="
+ 
+ # Sanity check: We require a file system that permits the creation
+ # of a HUGE (but very sparse) file.  tmpfs works, ext4 does not.
+-if ! truncate --size=513T "$TEST_IMG"; then
+-    _notrun "file system on $TEST_DIR does not support large enough files"
+-fi
+-rm "$TEST_IMG"
++_require_large_file 513T
++
+ IMGOPTS='cluster_size=2M,refcount_bits=1' _make_test_img 513T
+ 
+ echo "== Populating refcounts =="
+diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+index 0cc8acc9edd23e1cadf942676882..6f0582c79af429c14f197b301f5c 100644
+--- a/tests/qemu-iotests/common.rc
++++ b/tests/qemu-iotests/common.rc
+@@ -643,5 +643,15 @@ _require_drivers()
+     done
+ }
+ 
++# Check that we have a file system that allows huge (but very sparse) files
++#
++_require_large_file()
++{
++    if ! truncate --size="$1" "$TEST_IMG"; then
++        _notrun "file system on $TEST_DIR does not support large enough files"
++    fi
++    rm "$TEST_IMG"
++}
++
+ # make sure this script returns success
+ true

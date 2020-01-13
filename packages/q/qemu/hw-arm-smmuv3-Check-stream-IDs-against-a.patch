@@ -1,0 +1,55 @@
+From: Simon Veith <sveith@amazon.de>
+Date: Fri, 20 Dec 2019 14:03:00 +0000
+Subject: hw/arm/smmuv3: Check stream IDs against actual table LOG2SIZE
+
+Git-commit: 05ff2fb80ce4ca85d8a39d48ff8156de739b4f51
+
+When checking whether a stream ID is in range of the stream table, we
+have so far been only checking it against our implementation limit
+(SMMU_IDR1_SIDSIZE). However, the guest can program the
+STRTAB_BASE_CFG.LOG2SIZE field to a size that is smaller than this
+limit.
+
+Check the stream ID against this limit as well to match the hardware
+behavior of raising C_BAD_STREAMID events in case the limit is exceeded.
+Also, ensure that we do not go one entry beyond the end of the table by
+checking that its index is strictly smaller than the table size.
+
+ref. ARM IHI 0070C, section 6.3.24.
+
+Signed-off-by: Simon Veith <sveith@amazon.de>
+Acked-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Message-id: 1576509312-13083-4-git-send-email-sveith@amazon.de
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/arm/smmuv3.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index eef9a18d70f891af08ef7b03235c..727558bcfa5e782b8a9225adb302 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -377,11 +377,15 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+                          SMMUEventInfo *event)
+ {
+     dma_addr_t addr;
++    uint32_t log2size;
+     int ret;
+ 
+     trace_smmuv3_find_ste(sid, s->features, s->sid_split);
+-    /* Check SID range */
+-    if (sid > (1 << SMMU_IDR1_SIDSIZE)) {
++    log2size = FIELD_EX32(s->strtab_base_cfg, STRTAB_BASE_CFG, LOG2SIZE);
++    /*
++     * Check SID range against both guest-configured and implementation limits
++     */
++    if (sid >= (1 << MIN(log2size, SMMU_IDR1_SIDSIZE))) {
+         event->type = SMMU_EVT_C_BAD_STREAMID;
+         return -EINVAL;
+     }

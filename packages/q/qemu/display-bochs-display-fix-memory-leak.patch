@@ -1,0 +1,34 @@
+From: Cameron Esfahani <dirty@apple.com>
+Date: Tue, 10 Dec 2019 13:27:54 -0800
+Subject: display/bochs-display: fix memory leak
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit 0d82411d0e38a0de7829f97d04406765c8d2210d
+
+Fix memory leak in bochs_display_update().  Leaks 304 bytes per frame.
+
+Fixes: 33ebad54056
+Signed-off-by: Cameron Esfahani <dirty@apple.com>
+Message-Id: <d6c26e68db134c7b0c7ce8b61596ca2e65e01e12.1576013209.git.dirty@apple.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/display/bochs-display.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/display/bochs-display.c b/hw/display/bochs-display.c
+index dc1bd1641d3428247204993da0c3..215db9a231d3564289a3e7971098 100644
+--- a/hw/display/bochs-display.c
++++ b/hw/display/bochs-display.c
+@@ -252,6 +252,8 @@ static void bochs_display_update(void *opaque)
+             dpy_gfx_update(s->con, 0, ys,
+                            mode.width, y - ys);
+         }
++
++        g_free(snap);
+     }
+ }
+ 

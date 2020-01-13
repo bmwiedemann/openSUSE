@@ -1,0 +1,34 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Wed, 18 Dec 2019 11:48:55 +0100
+Subject: iotests: Fix IMGOPTSSYNTAX for nbd
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: eb4ea9aaa0051054b3c148ad8631be7510851681
+
+There is no $SOCKDIR, only $SOCK_DIR.
+
+Fixes: f3923a72f199b2c63747a7032db74730546f55c6
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/common.rc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+index 6f0582c79af429c14f197b301f5c..555c45391157d58534f0702094bc 100644
+--- a/tests/qemu-iotests/common.rc
++++ b/tests/qemu-iotests/common.rc
+@@ -217,7 +217,8 @@ if [ "$IMGOPTSSYNTAX" = "true" ]; then
+         TEST_IMG="$DRIVER,file.filename=$TEST_DIR/t.$IMGFMT"
+     elif [ "$IMGPROTO" = "nbd" ]; then
+         TEST_IMG_FILE=$TEST_DIR/t.$IMGFMT
+-        TEST_IMG="$DRIVER,file.driver=nbd,file.type=unix,file.path=$SOCKDIR/nbd"
++        TEST_IMG="$DRIVER,file.driver=nbd,file.type=unix"
++        TEST_IMG="$TEST_IMG,file.path=$SOCK_DIR/nbd"
+     elif [ "$IMGPROTO" = "ssh" ]; then
+         TEST_IMG_FILE=$TEST_DIR/t.$IMGFMT
+         TEST_IMG="$DRIVER,file.driver=ssh,file.host=127.0.0.1,file.path=$TEST_IMG_FILE"

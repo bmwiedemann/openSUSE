@@ -1,0 +1,35 @@
+From: Han Han <hhan@redhat.com>
+Date: Thu, 5 Dec 2019 10:48:21 +0800
+Subject: Revert "qemu-options.hx: Update for reboot-timeout parameter"
+
+Git-commit: 8937a39da22e5d5689c516a2d4ce4f2bb6a378fc
+
+This reverts commit bbd9e6985ff342cbe15b9cb7eb30e842796fbbe8.
+
+In 20a1922032 we allowed reboot-timeout=-1 again, so update the doc
+accordingly.
+
+Signed-off-by: Han Han <hhan@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20191205024821.245435-1-hhan@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ qemu-options.hx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 65c9473b7325545c00befcbac651..e14d88e9b2f3a3c13a4c20db0b36 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -327,8 +327,8 @@ format(true color). The resolution should be supported by the SVGA mode, so
+ the recommended is 320x240, 640x480, 800x640.
+ 
+ A timeout could be passed to bios, guest will pause for @var{rb_timeout} ms
+-when boot failed, then reboot. If @option{reboot-timeout} is not set,
+-guest will not reboot by default. Currently Seabios for X86
++when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will not
++reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
+ system support it.
+ 
+ Do strict boot via @option{strict=on} as far as firmware/BIOS

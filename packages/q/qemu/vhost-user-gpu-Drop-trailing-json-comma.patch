@@ -1,0 +1,36 @@
+From: Cole Robinson <crobinso@redhat.com>
+Date: Thu, 19 Sep 2019 16:33:44 -0400
+Subject: vhost-user-gpu: Drop trailing json comma
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: ca26b032e5a0e8a190c763ce828a8740d24b9b65
+
+Trailing comma is not valid json:
+
+$ cat contrib/vhost-user-gpu/50-qemu-gpu.json.in | jq
+parse error: Expected another key-value pair at line 5, column 1
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-id: 7f5dd2ac9f3504e2699f23e69bc3d8051b729832.1568925097.git.crobinso@redhat.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ contrib/vhost-user-gpu/50-qemu-gpu.json.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/vhost-user-gpu/50-qemu-gpu.json.in b/contrib/vhost-user-gpu/50-qemu-gpu.json.in
+index 658b545864b1acd02b1ceb8dee82..f5edd097f805b839939a7423395a 100644
+--- a/contrib/vhost-user-gpu/50-qemu-gpu.json.in
++++ b/contrib/vhost-user-gpu/50-qemu-gpu.json.in
+@@ -1,5 +1,5 @@
+ {
+   "description": "QEMU vhost-user-gpu",
+   "type": "gpu",
+-  "binary": "@libexecdir@/vhost-user-gpu",
++  "binary": "@libexecdir@/vhost-user-gpu"
+ }

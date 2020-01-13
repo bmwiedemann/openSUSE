@@ -1,0 +1,35 @@
+From: Yuri Benditovich <yuri.benditovich@daynix.com>
+Date: Thu, 26 Dec 2019 06:36:49 +0200
+Subject: virtio-net: delete also control queue when TX/RX deleted
+
+Git-commit: d945d9f1731244ef341f74ede93120fc9de35913
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1708480
+If the control queue is not deleted together with TX/RX, it
+later will be ignored in freeing cache resources and hot
+unplug will not be completed.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Yuri Benditovich <yuri.benditovich@daynix.com>
+Message-Id: <20191226043649.14481-3-yuri.benditovich@daynix.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/net/virtio-net.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index db3d7c38e6feea5b7d6898389b17..f325440d0144d3388ad255b71178 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -3101,7 +3101,8 @@ static void virtio_net_device_unrealize(DeviceState *dev, Error **errp)
+     for (i = 0; i < max_queues; i++) {
+         virtio_net_del_queue(n, i);
+     }
+-
++    /* delete also control vq */
++    virtio_del_queue(vdev, max_queues * 2);
+     qemu_announce_timer_del(&n->announce_timer, false);
+     g_free(n->vqs);
+     qemu_del_nic(n->nic);

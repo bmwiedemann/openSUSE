@@ -1,0 +1,44 @@
+From: Xiaoyao Li <xiaoyao.li@intel.com>
+Date: Wed, 8 Jan 2020 13:32:39 +0100
+Subject: target/i386: Add new bit definitions of MSR_IA32_ARCH_CAPABILITIES
+
+Git-commit: 0000000000000000000000000000000000000000
+References: jsc#SLE-7923
+
+The bit 6, 7 and 8 of MSR_IA32_ARCH_CAPABILITIES are recently disclosed
+for some security issues. Add the definitions for them to be used by named
+CPU models.
+
+Signed-off-by: Xiaoyao Li <xiaoyao.li@intel.com>
+Message-Id: <20191225063018.20038-2-xiaoyao.li@intel.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/i386/cpu.h | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index af282936a785a25f651d0db1a8cf..594326a7946798aba6ac42415164 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -835,12 +835,15 @@ typedef uint64_t FeatureWordArray[FEATURE_WORDS];
+ #define CPUID_TOPOLOGY_LEVEL_DIE      (5U << 8)
+ 
+ /* MSR Feature Bits */
+-#define MSR_ARCH_CAP_RDCL_NO    (1U << 0)
+-#define MSR_ARCH_CAP_IBRS_ALL   (1U << 1)
+-#define MSR_ARCH_CAP_RSBA       (1U << 2)
++#define MSR_ARCH_CAP_RDCL_NO            (1U << 0)
++#define MSR_ARCH_CAP_IBRS_ALL           (1U << 1)
++#define MSR_ARCH_CAP_RSBA               (1U << 2)
+ #define MSR_ARCH_CAP_SKIP_L1DFL_VMENTRY (1U << 3)
+-#define MSR_ARCH_CAP_SSB_NO     (1U << 4)
+-#define MSR_ARCH_CAP_MDS_NO     (1U << 5)
++#define MSR_ARCH_CAP_SSB_NO             (1U << 4)
++#define MSR_ARCH_CAP_MDS_NO             (1U << 5)
++#define MSR_ARCH_CAP_PSCHANGE_MC_NO     (1U << 6)
++#define MSR_ARCH_CAP_TSX_CTRL_MSR       (1U << 7)
++#define MSR_ARCH_CAP_TAA_NO             (1U << 8)
+ 
+ #define MSR_CORE_CAP_SPLIT_LOCK_DETECT  (1U << 5)
+ 

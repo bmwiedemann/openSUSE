@@ -1,0 +1,42 @@
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Mon, 2 Dec 2019 22:09:43 +0100
+Subject: arm/arm-powerctl: set NSACR.{CP11, CP10} bits in arm_set_cpu_on()
+
+Git-commit: 0c7f8c43daf6556078e51de98aa13f069e505985
+
+This change ensures that the FPU can be accessed in Non-Secure mode
+when the CPU core is reset using the arm_set_cpu_on() function call.
+The NSACR.{CP11,CP10} bits define the exception level required to
+access the FPU in Non-Secure mode. Without these bits set, the CPU
+will give an undefined exception trap on the first FPU access for the
+secondary cores under Linux.
+
+This is necessary because in this power-control codepath QEMU
+is effectively emulating a bit of EL3 firmware, and has to set
+the CPU up as the EL3 firmware would.
+
+Fixes: fc1120a7f5
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+[PMM: added clarifying para to commit message]
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/arm/arm-powerctl.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index f77a950db67276513977af686aa9..b064513d44a86932bbd70b06b3ca 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -104,6 +104,9 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+         /* Processor is not in secure mode */
+         target_cpu->env.cp15.scr_el3 |= SCR_NS;
+ 
++        /* Set NSACR.{CP11,CP10} so NS can access the FPU */
++        target_cpu->env.cp15.nsacr |= 3 << 10;
++
+         /*
+          * If QEMU is providing the equivalent of EL3 firmware, then we need
+          * to make sure a CPU targeting EL2 comes out of reset with a

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:12:38 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Include upstream patches targeted for the next stable release
+  (bug fixes only)
+  arm-arm-powerctl-set-NSACR.-CP11-CP10-bi.patch
+  backup-top-Begin-drain-earlier.patch
+  block-Activate-recursively-even-for-alre.patch
+  display-bochs-display-fix-memory-leak.patch
+  Fix-double-free-issue-in-qemu_set_log_fi.patch
+  hw-arm-smmuv3-Align-stream-table-base-ad.patch
+  hw-arm-smmuv3-Apply-address-mask-to-line.patch
+  hw-arm-smmuv3-Check-stream-IDs-against-a.patch
+  hw-arm-smmuv3-Correct-SMMU_BASE_ADDR_MAS.patch
+  hw-arm-smmuv3-Report-F_STE_FETCH-fault-a.patch
+  hw-arm-smmuv3-Use-correct-bit-positions-.patch
+  i386-Resolve-CPU-models-to-v1-by-default.patch
+  intel_iommu-a-fix-to-vtd_find_as_from_bu.patch
+  iotests-Fix-IMGOPTSSYNTAX-for-nbd.patch
+  iotests-Provide-a-function-for-checking-.patch
+  iotests-Skip-test-060-if-it-is-not-possi.patch
+  iotests-Skip-test-079-if-it-is-not-possi.patch
+  numa-properly-check-if-numa-is-supported.patch
+  qcow2-bitmaps-fix-qcow2_can_store_new_di.patch
+  Revert-qemu-options.hx-Update-for-reboot.patch
+  vhost-user-gpu-Drop-trailing-json-comma.patch
+  virtio-blk-fix-out-of-bounds-access-to-b.patch
+  virtio-mmio-update-queue-size-on-guest-w.patch
+  virtio-net-delete-also-control-queue-whe.patch
+  virtio-update-queue-size-on-guest-write.patch
+- Include performance improvement
+  virtio-don-t-enable-notifications-during.patch
+- Repair incorrect packaging references to Jira tracked features
+
+-------------------------------------------------------------------
+Thu Jan  9 17:48:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Add Cooperlake vcpu model (jsc#SLE-7923)
+  i386-Add-MSR-feature-bit-for-MDS-NO.patch
+  i386-Add-macro-for-stibp.patch
+  i386-Add-new-CPU-model-Cooperlake.patch
+  target-i386-Add-new-bit-definitions-of-M.patch
+  target-i386-Add-missed-features-to-Coope.patch
+- Add HMAT support (jsc#SLE-8897) (the test case for this series
+  isn't included because we aren't set up to handle binary patches)
+  numa-Extend-CLI-to-provide-initiator-inf.patch
+  numa-Extend-CLI-to-provide-memory-latenc.patch
+  numa-Extend-CLI-to-provide-memory-side-c.patch
+  hmat-acpi-Build-Memory-Proximity-Domain-.patch
+  hmat-acpi-Build-System-Locality-Latency-.patch
+  hmat-acpi-Build-Memory-Side-Cache-Inform.patch
+  tests-numa-Add-case-for-QMP-build-HMAT.patch
+
+-------------------------------------------------------------------
 Thu Dec 12 19:05:29 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Update to v4.2.0: See http://wiki.qemu.org/ChangeLog/4.2
@@ -80,7 +133,7 @@ Wed Nov 27 03:10:09 UTC 2019 - Bruce Rogers <brogers@suse.com>
   CVE-2019-11135 CVE-2019-12068 CVE-2019-12155 CVE-2019-13164
   CVE-2019-14378 CVE-2019-15890, and the following feature requests
   are satisfied by this package: fate#327410 fate#327764 fate#327796
-  jira-SLE-4883 jira-SLE-6132 jira-SLE-6237 jira-SLE-6754
+  jsc#SLE-4883 jsc#SLE-6132 jsc#SLE-6237 jsc#SLE-6754
 
 -------------------------------------------------------------------
 Tue Nov 19 19:13:41 UTC 2019 - Bruce Rogers <brogers@suse.com>
