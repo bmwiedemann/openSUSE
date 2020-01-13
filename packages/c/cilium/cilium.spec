@@ -35,11 +35,10 @@
 %endif
 
 Name:           cilium
-Version:        1.6.3
+Version:        1.6.5
 Release:        0
 Summary:        Linux Native, HTTP Aware Networking and Security for Containers
 License:        Apache-2.0 AND GPL-2.0-or-later
-Group:          System/Management
 URL:            https://github.com/cilium/cilium
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
@@ -98,7 +97,6 @@ Kubernetes.
 
 %package cni
 Summary:        CNI plugin for Cilium
-Group:          System/Management
 Requires:       cilium
 Requires:       cni
 Requires:       cni-plugins
@@ -113,7 +111,6 @@ This package provides a CNI (Container Network Interface) plugin for Cilium.
 
 %package docker
 Summary:        Docker libnetwork plugin for Cilium
-Group:          System/Management
 Requires:       cilium
 Requires:       docker
 
@@ -127,7 +124,6 @@ This package provides a Docker libnetwork plugin for Cilium.
 
 %package init
 Summary:        Script for the Cilium init container
-Group:          System/Management
 
 %description init
 Cilium is a software for providing, and transparently securing, network
@@ -141,7 +137,6 @@ clusters.
 
 %package operator
 Summary:        Kubernetes operator for Cilium
-Group:          System/Management
 
 %description operator
 
@@ -155,7 +150,6 @@ for Cilium.
 
 %package -n %{lname}
 Summary:        Shared library for Cilium
-Group:          System/Libraries
 
 %description -n %{lname}
 Cilium is a software for providing, and transparently securing, network
@@ -168,7 +162,6 @@ in Envoy.
 
 %package devel
 Summary:        Development files for Cilium
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -182,7 +175,6 @@ Cilium filters in Envoy.
 
 %package k8s-yaml
 Summary:        Kubernetes yaml file to run Cilium containers
-Group:          System/Management
 BuildArch:      noarch
 
 %description k8s-yaml

@@ -229,4 +229,12 @@
     <comment>Please stage with K8s 1.16 (Currently in N)</comment>
     <requestid>738202</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c45c3228e8415d32167ad95f3bf92536</srcmd5>
+    <version>1.6.5</version>
+    <time>1578950120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758994</requestid>
+  </revision>
 </revisionlist>
