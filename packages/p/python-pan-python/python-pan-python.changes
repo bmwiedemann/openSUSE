@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 11 18:27:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.16.0
+  * pan.config: Support 9.1.0 config for set format.
+  * pan.licapi: 'version' field in request header should use
+    version attribute and not int(). This was not noticed because
+    version:256 would previously use the current API version of 1.
+  * pan.licapi.rst: Document pan.licapi._ApiVersion int() layout
+    correctly.
+    panwfapi.py: Fix 'SyntaxWarning: "is" with a literal. Did you
+    mean "=="?' warning from Python 3.8.
+  * setup.py: Add Python 3.8.
+
+-------------------------------------------------------------------
 Sat Oct 12 12:02:37 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.15.0

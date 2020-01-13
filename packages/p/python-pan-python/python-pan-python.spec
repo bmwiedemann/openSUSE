@@ -1,6 +1,7 @@
 #
 # spec file for package python-pan-python
 #
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +19,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pan-python
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Multi-tool set for Palo Alto Networks PAN-OS, Panorama, WildFire and AutoFocus
-Group:          Development/Languages/Python
 License:        ISC
+Group:          Development/Languages/Python
 URL:            https://github.com/kevinsteves/pan-python
 Source:         https://files.pythonhosted.org/packages/source/p/pan-python/pan-python-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
