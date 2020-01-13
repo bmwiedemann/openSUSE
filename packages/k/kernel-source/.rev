@@ -4923,4 +4923,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.4.7 &amp; change vmlinux compression to xz</comment>
     <requestid>760237</requestid>
   </revision>
+  <revision rev="520" vrev="1">
+    <srcmd5>bc3cdb8a693b52a1f7f133d2b2bbc7ad</srcmd5>
+    <version>5.4.10</version>
+    <time>1578950244</time>
+    <user>dimstar_suse</user>
+    <comment>5.4.10 &amp; 5.4.9 &amp; 5.4.8 &amp; CVE fixes &amp; TPM fix &amp; s390 fix</comment>
+    <requestid>762531</requestid>
+  </revision>
 </revisionlist>
