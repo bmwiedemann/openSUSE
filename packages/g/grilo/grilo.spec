@@ -1,7 +1,7 @@
 #
 # spec file for package grilo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           grilo
-Version:        0.3.10
+Version:        0.3.11
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo/0.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM grilo-fix-build-totem-pl-parser.patch -- Fix build with totem-pl-parser 3.26.4
-Patch0:         grilo-fix-build-totem-pl-parser.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
