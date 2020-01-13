@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jan  8 14:33:13 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to v1.2.1:
+  *Add missing env var  `ROOK_CEPH_MON_HOST` for OSDs (#4589)
+  *Avoid logging sensitive info when debug logging is enabled (#4568)
+  *Add missing vol mount for encrypted osds (#4583) 
+  *Bumping ceph-operator memory limit to 256Mi (#4561) 
+  *Fix object bucket provisioner when rgw not on port 80 (#4508) 
+
+-------------------------------------------------------------------
+Fri Dec 20 18:22:58 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to v1.2.0:
+  * Security audit completed by Trail of Bits found no major concerns
+  * Ceph: Added a new "crash collector" daemon to send crash telemetry
+    to the Ceph dashboard, support for priority classes, and a new
+    CephClient resource to create user credentials
+  * The minimum version of Kubernetes supported by Rook changed from
+    1.11 to 1.12.
+  * Device filtering is now configurable for the user by adding an
+    environment variable
+    + A new environment variable DISCOVER_DAEMON_UDEV_BLACKLIST is
+      added through which the user can blacklist the devices
+    + If no device is specified, the default values will be used to
+      blacklist the devices
+  * The topology setting has been removed from the CephCluster CR. To
+    configure the OSD topology, node labels must be applied.
+  * See the OSD topology topic. This setting only affects OSDs when
+    they are first created, thus OSDs will not be impacted during
+    upgrade.
+  * The topology settings only apply to bluestore OSDs on raw devices.
+    The topology labels are not applied to directory-based OSDs.
+  * Creation of new Filestore OSDs on disks is now deprecated.
+    Filestore is in sustaining mode in Ceph.
+    + The storeType storage config setting is now ignored
+    + New OSDs created in directories are always Filestore type
+    + New OSDs created on disks are always Bluestore type
+    + Preexisting disks provisioned as Filestore OSDs will remain as
+      Filestore OSDs
+  * Rook will no longer automatically remove OSDs if nodes are removed
+    from the cluster CR to avoid the risk of destroying OSDs
+    unintentionally. To remove OSDs manually, see the new doc on OSD
+    Management
+
+- Update csi-dummy-images.patch
+- Update flexvolume-dir.patch
+- Drop outdated patch 0001-bsc-1152690-ceph-csi-Driver-will-fail-with-error.patch
+
+-------------------------------------------------------------------
 Tue Dec  3 14:20:09 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Update rook to v1.1.7:

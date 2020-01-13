@@ -1,7 +1,7 @@
 #
 # spec file for package rook
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.1.7+git0.g50c6ca1f
+Version:        1.2.1+git0.gccc10604
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -40,8 +40,6 @@ Patch0:         csi-dummy-images.patch
 Patch1:         csi-template-paths.patch
 # Change the default FlexVolume dir path to support Kubic.
 Patch2:         flexvolume-dir.patch
-# Set option to force kernel driver usage in ceph-csi (bsc#1152690)
-Patch3:         0001-bsc-1152690-ceph-csi-Driver-will-fail-with-error.patch
 
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
@@ -139,11 +137,10 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service
-%global rook_container_version 1.1.7.0  # this is updated by update-tarball.sh
+%global rook_container_version 1.2.1.0  # this is updated by update-tarball.sh
 %if 0%{?is_opensuse}
 %global rook_image     registry.opensuse.org/opensuse/rook/ceph:%{rook_container_version}.%{release}
 %global ceph_image     registry.opensuse.org/opensuse/ceph/ceph:%CEPH_VERSION%

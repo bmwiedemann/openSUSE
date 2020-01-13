@@ -145,4 +145,12 @@
     <comment>Handle SES 6/7 (forwarded request 754359 from KGronlund)</comment>
     <requestid>754360</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c23065a2b9cc0910786c7381f83e1eae</srcmd5>
+    <version>1.2.1+git0.gccc10604</version>
+    <time>1578950139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761907</requestid>
+  </revision>
 </revisionlist>
