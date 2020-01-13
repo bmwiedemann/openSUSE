@@ -1,7 +1,7 @@
 #
 # spec file for package gtk3
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -681,6 +681,7 @@ fi
 %{_datadir}/glib-2.0/schemas/org.gtk.Demo.gschema.xml
 
 %files data
+%{_datadir}/locale/en/
 %{_datadir}/themes/Default/
 %{_datadir}/themes/Emacs/
 
@@ -730,6 +731,8 @@ fi
 %{_datadir}/gettext/its/gtkbuilder.loc
 
 %files lang -f gtk30.lang -f gtk30-properties.lang
+# english locale should be in the main package
+%exclude %{_datadir}/locale/en
 %endif
 
 %if %{with doc}

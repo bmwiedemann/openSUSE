@@ -1353,4 +1353,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
   libgtk3 itself only takes a fraction of the time to build. (forwarded request 756128 from StefanBruens)</comment>
     <requestid>756771</requestid>
   </revision>
+  <revision rev="154" vrev="3">
+    <srcmd5>4e0c750ed8ac6cb23f5478f0e4852aa3</srcmd5>
+    <version>3.24.13+0</version>
+    <time>1578950289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762897</requestid>
+  </revision>
 </revisionlist>

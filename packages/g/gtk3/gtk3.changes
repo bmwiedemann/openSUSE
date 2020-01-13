@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:03:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move /usr/share/locale/en from the -lang package to the -data
+  package: English is installed on all systems. This avoids
+  gtk3-lang being triggered for installation on english-only
+  systems.
+
+-------------------------------------------------------------------
 Wed Dec 11 20:03:40 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Split API doc generation from main package using _multibuild,
