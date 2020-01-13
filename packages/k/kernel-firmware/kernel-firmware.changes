@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 08 17:06:58 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200107 (git commit 67d4ff59bf33):
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2000.2714
+  * radeon: update oland rlc microcode from amdgpu
+  * amdgpu: update vega20 microcode for 19.50
+  * amdgpu: update vega12 microcode for 19.50
+  * amdgpu: update vega10 microcode for 19.50
+  * amdgpu: update picasso microcode for 19.50
+  * amdgpu: update raven2 microcode for 19.50
+  * amdgpu: update raven microcode for 19.50
+  * amdgpu: update navi10 microcode for 19.50
+  * amdgpu: update navi14 microcode for 19.50
+  * amdgpu: add TA microcode for Raven asics
+  * qed: Add firmware 8.42.2.0
+  * Adjust WHENCE entry to check_whence doesn't complain
+  * qcom: Switch SDM845 WLAN firmware
+  * linux-firmware: add NXP firmware licence file
+
+-------------------------------------------------------------------
 Mon Dec 23 15:07:01 UTC 2019 - tiwai@suse.com
 
 - Update to version 20191220 (git commit 6871bffa79ed):
