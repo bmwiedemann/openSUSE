@@ -1,7 +1,7 @@
 #
 # spec file for package python-modernize
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,16 @@ Version:        0.7
 Release:        0
 Summary:        A tool for modernizing Python code using lib2to3
 License:        BSD-3-Clause AND Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/python-modernize/python-modernize
-Source:         https://github.com/python-modernize/python-modernize/archive/0.7.tar.gz#//modernize-%{version}.tar.gz
+Source:         https://github.com/python-modernize/python-modernize/archive/%{version}.tar.gz#//modernize-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-dbm
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module nose}
-BuildRequires:  python-gdbm
 # /SECTION
 %python_subpackages
 

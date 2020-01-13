@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>692294</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1adfdd64a275b3b5f2cb06ecb3d92f38</srcmd5>
+    <version>0.7</version>
+    <time>1578950445</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python dbm dependency instead of legacy gdbm</comment>
+    <requestid>761544</requestid>
+  </revision>
 </revisionlist>
