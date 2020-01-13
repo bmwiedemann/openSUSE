@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysaml2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,30 @@ Version:        4.8.0
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/IdentityPython/pysaml2
 Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module Paste}
+BuildRequires:  %{python_module cryptography >= 1.4}
+BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module defusedxml}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module pymongo}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module repoze.who}
+BuildRequires:  %{python_module requests >= 1.0.0}
+BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
+# This is needed as xmlsec itself does not pull any backend by default
+# Will be fixed in future xmlsec releases
+BuildRequires:  libxmlsec1-openssl1
 BuildRequires:  python-rpm-macros
+BuildRequires:  xmlsec1
 Requires:       python-Paste
 Requires:       python-cryptography >= 1.4
 Requires:       python-defusedxml
@@ -40,26 +58,6 @@ Requires:       python-requests >= 1.0.0
 Requires:       python-six
 Requires:       python-zope.interface
 BuildArch:      noarch
-BuildRequires:  %{python_module Paste}
-BuildRequires:  %{python_module cryptography >= 1.4}
-BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pyOpenSSL}
-BuildRequires:  %{python_module pymongo}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module repoze.who}
-BuildRequires:  %{python_module requests >= 1.0.0}
-BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module zope.interface}
-# This is needed as xmlsec itself does not pull any backend by default
-# Will be fixed in future xmlsec releases
-BuildRequires:  libxmlsec1-openssl1
-BuildRequires:  python2-gdbm
-BuildRequires:  python3-dbm
-BuildRequires:  xmlsec1
 %python_subpackages
 
 %description

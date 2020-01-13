@@ -116,4 +116,12 @@
   * docs: Fix misc typos</comment>
     <requestid>717622</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4ae56e9f2e32ce73da368f5bf5790e0e</srcmd5>
+    <version>4.8.0</version>
+    <time>1578950449</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python dbm dependency instead of legacy gdbm</comment>
+    <requestid>761551</requestid>
+  </revision>
 </revisionlist>
