@@ -73,7 +73,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.93.0.4
-Release:        0
+Release:        1
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -300,7 +300,6 @@ rm -f doc/*.{orig,txt~}
 make
 
 %install
-mkdir -p "$RPM_BUILD_ROOT/%{_docdir}/%{name}"
 %if 0%{?suse_version} > 1220
 mkdir -p $RPM_BUILD_ROOT/%{_unitdir}
 %else
@@ -381,6 +380,21 @@ install -m 0755 $RPM_SOURCE_DIR/eximstats-html-update.py $RPM_BUILD_ROOT/%{_sbin
 # apparmor profile
 install -D -m 0644 $RPM_SOURCE_DIR/apparmor.usr.sbin.exim $RPM_BUILD_ROOT/usr/share/apparmor/extra-profiles/usr.sbin.exim
 
+%pretrans
+if [ -d "%{_docdir}/%{name}/doc/cve-2019-13917" ]; then
+    moved_suffix=""
+    moved_index=""
+    while [ -d "%{_docdir}/%{name}/doc/cve-2019-13917.rpmmoved${moved_suffix}${moved_index}" ]; do
+        if [ -z "${moved_suffix}" ]; then
+            moved_suffix="."
+            moved_index="0"
+        else
+            moved_index=$((${moved_index} + 1))
+        fi
+    done
+	mv "%{_docdir}/%{name}/doc/cve-2019-13917" "%{_docdir}/%{name}/doc/cve-2019-13917.rpmmoved${moved_suffix}${moved_index}"
+fi
+
 %pre
 %if 0%{?suse_version} > 1220
 %service_add_pre exim.service
@@ -437,6 +451,7 @@ exit 0
 
 %files
 %defattr(-,root,root)
+%ghost %{_docdir}/%{name}/doc/cve-2019-13917.rpmmoved
 %doc ACKNOWLEDGMENTS CHANGES LICENCE NOTICE README.UPDATING README
 %doc doc
 %doc src/configure.default
@@ -475,7 +490,6 @@ exit 0
 /usr/lib/sendmail
 %{_fillupdir}/sysconfig.exim
 %dir %attr(750,mail,mail) /var/log/exim
-%dir %{_docdir}/%{name}
 
 %files -n eximon
 %defattr(-,root,root)

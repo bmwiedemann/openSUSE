@@ -1,4 +1,8 @@
 -------------------------------------------------------------------
+Mon Jan 13 08:48:53 CET 2020 - wullinger@rz.uni-kiel.de
+- add a spec-file workaround for bsc#1160726
+
+-------------------------------------------------------------------
 Tue Jan  7 07:50:35 CET 2020 - wullinger@rz.uni-kiel.de
 
 - update to exim 4.93.0.4 (+fixes release)
