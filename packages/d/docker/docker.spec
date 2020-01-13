@@ -97,7 +97,7 @@ BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  libtool
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  zsh
 Requires:       apparmor-parser
 Requires:       ca-certificates-mozilla
