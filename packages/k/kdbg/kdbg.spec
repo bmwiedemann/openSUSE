@@ -1,7 +1,7 @@
 #
 # spec file for package kdbg
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           kdbg
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Graphical User Interface for GDB
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
-Url:            http://www.kdbg.org/
+URL:            http://www.kdbg.org/
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.3
 BuildRequires:  extra-cmake-modules
@@ -34,8 +34,8 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       gdb
 Recommends:     %{name}-lang = %{version}
 Suggests:       %{name}-doc = %{version}
@@ -71,7 +71,8 @@ This package provides the documentation for %{name}
 %files lang -f %{name}.lang
 
 %files
-%doc COPYING BUGS ChangeLog-pre-2.2.0 TODO README ReleaseNotes-*
+%license COPYING
+%doc README ReleaseNotes-*
 %config %{_kf5_configdir}/kdbgrc
 %doc %lang(en) %{_kf5_htmldir}/en/kdbg
 %{_kf5_bindir}/kdbg

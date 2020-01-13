@@ -273,4 +273,12 @@
     <comment>Update to 3.0.0</comment>
     <requestid>556575</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2f9bd90f46cc569386826c6f36ea0514</srcmd5>
+    <version>3.0.1</version>
+    <time>1578950515</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.0.1</comment>
+    <requestid>763949</requestid>
+  </revision>
 </revisionlist>
