@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:18:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.1:
+  * Allow searching in the language menu by typing continuously.
+  * More informative message when a non-text file isn't opened
+    because of Preferences.
+  * Fixed the disabled sort line actions in context menu.
+  * Considered the new behavior of horizontal wheel
+    scrolling in Qt 5.14.0.
+  * Added a workaround to the text editor for the bug in
+    horizontal scrollbars of Qt 5.14.0.
+
+-------------------------------------------------------------------
 Sun Dec 29 16:15:21 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.0:

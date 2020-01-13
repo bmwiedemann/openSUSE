@@ -195,4 +195,20 @@
     bug of Qt 5.14.0.</comment>
     <requestid>759903</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d25e993a329d888d397813e4594b2992</srcmd5>
+    <version>0.12.1</version>
+    <time>1578950521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1:
+  * Allow searching in the language menu by typing continuously.
+  * More informative message when a non-text file isn't opened
+    because of Preferences.
+  * Fixed the disabled sort line actions in context menu.
+  * Considered the new behavior of horizontal wheel
+    scrolling in Qt 5.14.0.
+  * Added a workaround to the text editor for the bug in
+    horizontal scrollbars of Qt 5.14.0.</comment>
+    <requestid>763940</requestid>
+  </revision>
 </revisionlist>
