@@ -29,4 +29,16 @@
     <comment></comment>
     <requestid>717447</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b9e9923c7c8cb5a5012dbed546099c9</srcmd5>
+    <version>1.4.1</version>
+    <time>1578950529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * `makoctl menu` to choose a notification action
+  * A CLI flag to use a custom config file path
+  * Improved touch support (multiple touches)
+  * Bug fixes</comment>
+    <requestid>763930</requestid>
+  </revision>
 </revisionlist>

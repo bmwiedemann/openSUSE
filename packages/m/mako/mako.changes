@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:10:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.1:
+  * `makoctl menu` to choose a notification action
+  * A CLI flag to use a custom config file path
+  * Improved touch support (multiple touches)
+  * Bug fixes
+
+-------------------------------------------------------------------
 Sat Jul 20 17:41:42 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
 
 - Update to 1.4
