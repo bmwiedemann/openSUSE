@@ -1,7 +1,7 @@
 #
 # spec file for package hello-kubic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           hello-kubic
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        A mini webserver showing a hello kubic page
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/thkukuk/hello-kubic
+URL:            https://github.com/thkukuk/hello-kubic
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.12
@@ -61,6 +61,7 @@ cp -av webpage/* %{buildroot}%{_datadir}/hello-kubic/
 # Install provided yaml file to download and run the hello-kubic container
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/hello-kubic
 install -m 0644 yaml/hello-kubic.yaml %{buildroot}%{_datadir}/k8s-yaml/hello-kubic/hello-kubic.yaml
+install -m 0644 yaml/kustomization.yaml %{buildroot}%{_datadir}/k8s-yaml/hello-kubic/kustomization.yaml
 
 %files
 %defattr(-,root,root)
@@ -72,5 +73,6 @@ install -m 0644 yaml/hello-kubic.yaml %{buildroot}%{_datadir}/k8s-yaml/hello-kub
 %dir %{_datarootdir}/k8s-yaml
 %dir %{_datarootdir}/k8s-yaml/hello-kubic
 %{_datarootdir}/k8s-yaml/hello-kubic/hello-kubic.yaml
+%{_datarootdir}/k8s-yaml/hello-kubic/kustomization.yaml
 
 %changelog
