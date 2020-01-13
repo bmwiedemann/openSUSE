@@ -55,6 +55,7 @@ buildignore hugin
 buildignore icewm
 buildignore kate-lang
 buildignore kmahjongg-lang
+buildignore konversation-lang
 buildignore libproxy1-pacrunner-webkit
 
 install partitionmanager

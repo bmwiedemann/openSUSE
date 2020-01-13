@@ -759,4 +759,12 @@
     <user>dimstar_suse</user>
     <comment>- Drop kmahjongg-lang from the KDE Live image: save some MiB.</comment>
   </revision>
+  <revision rev="91" vrev="91">
+    <srcmd5>4e4a7a7f94d889dd9c80f8b7b0d8003b</srcmd5>
+    <version>unknown</version>
+    <time>1578916391</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop kmahjongg-lang and konversation-lang from the KDE Live
+  image: save some MiB.</comment>
+  </revision>
 </revisionlist>
