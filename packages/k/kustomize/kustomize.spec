@@ -1,7 +1,7 @@
 #
 # spec file for package kustomize
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kustomize
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        Customization of kubernetes YAML configurations
 License:        Apache-2.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 09:42:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.5.4
+  - Upgrade some deps in kustomize.
+  - Update VERSIONS for cmd/resource and cmd/config
+
+-------------------------------------------------------------------
 Sat Dec 28 19:17:04 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use binutils-gold on ARM
