@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-default-base
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define extrasummary base modules
 %define extradescription This package contains only the base modules, required in all installs.
 
-%define misc_modules button edd iscsi_ibft i6300esb efivarfs
+%define misc_modules button edd i6300esb efivarfs
 
 %define virtio_modules virtio virtio_.* virtio-.*
 

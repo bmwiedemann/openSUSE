@@ -65,4 +65,13 @@
     <comment></comment>
     <requestid>745513</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>455f0543eb1c7ace0100b54cd47980e5</srcmd5>
+    <version>MACRO</version>
+    <time>1578950253</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove iscsi_ibft (bsc#1157460)
+</comment>
+    <requestid>762790</requestid>
+  </revision>
 </revisionlist>

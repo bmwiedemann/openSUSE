@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 14:24:45 UTC 2020 - Guilherme Moro <gmoro@suse.com>
+
+- Remove iscsi_ibft (bsc#1157460)
+
+-------------------------------------------------------------------
 Fri Oct 25 10:21:46 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
 
 - Add efivarfs required by mokutil (bsc#1154858).
