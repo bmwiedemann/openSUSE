@@ -1,0 +1,38 @@
+diff --git a/Makefile b/Makefile
+index 5dcc01c..75dc8f7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,12 +1,12 @@
+-CFLAGS=-Wall -Werror -I.
++CFLAGS+=-Wall -Werror -I.
+ LDFLAGS=-L /usr/local/lib -lmosquitto -lconfig
+ 
+ ### Debian,Ubuntu
+-# CFLAGS += `pkg-config --cflags lua5.3`
+-# LDFLAGS += `pkg-config --libs lua5.3`
+-# LDFLAGS += `pkg-config --libs libbsd`
+-# BINDIR = /usr/local/bin
+-# MANDIR  = /usr/local/share/man
++CFLAGS += `pkg-config --cflags lua5.3`
++LDFLAGS += `pkg-config --libs lua5.3`
++LDFLAGS += `pkg-config --libs libbsd`
++BINDIR = /usr/local/bin
++MANDIR  = /usr/local/share/man
+ 
+ ### Alpine
+ # CFLAGS = -I/usr/include/lua5.3 -Wall -I.
+@@ -15,10 +15,10 @@ LDFLAGS=-L /usr/local/lib -lmosquitto -lconfig
+ # MANDIR = /usr/local/share/man
+ 
+ ### macOS
+-CFLAGS += `pkg-config --cflags lua5.3`
+-LDFLAGS += `pkg-config --libs lua5.3`
+-BINDIR = /usr/local/bin
+-MANDIR  = /usr/local/share/man
++#CFLAGS += `pkg-config --cflags lua5.3`
++#LDFLAGS += `pkg-config --libs lua5.3`
++#BINDIR = /usr/local/bin
++#MANDIR  = /usr/local/share/man
+ 
+ ### FreeBSD
+ # CFLAGS += -I/usr/local/include -I/usr/local/include/lua53/
