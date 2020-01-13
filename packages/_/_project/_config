@@ -1149,8 +1149,6 @@ Macros:
 %product_libs_gcc_ver_libgo13 8
 %gcc_version 9
 
-# %build_ldflags %{?_lto_cflags}
-
 %ext_info .gz
 %ext_man .gz
 
