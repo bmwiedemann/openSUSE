@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Jan 12 21:23:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  * Improve fake gps data for Paris
+  * Add version, adapt CFLAGS, and -s and -v
+  * Decrease default publish interval to 1s
+  * Add fake data generator
+- Remove patch:
+  * ocli-obey-cflags.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Jan  6 20:46:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.06
