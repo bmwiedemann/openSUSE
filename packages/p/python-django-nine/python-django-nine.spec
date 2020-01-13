@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-nine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-nine
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Compatibility library for Django
 License:        GPL-2.0-only OR LGPL-2.1-or-later
-Group:          Development/Languages/Python
-Url:            https://github.com/barseghyanartur/django-nine/
+URL:            https://github.com/barseghyanartur/django-nine/
 Source:         https://files.pythonhosted.org/packages/source/d/django-nine/django-nine-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
