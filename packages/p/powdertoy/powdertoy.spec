@@ -1,7 +1,7 @@
 #
 # spec file for package powdertoy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,20 +21,18 @@ Version:        94.1
 Release:        0
 Summary:        Physics sandbox game
 License:        GPL-3.0-only
-Group:          Amusements/Games/Other
 URL:            http://powdertoy.co.uk
 Source:         https://github.com/simtr/The-Powder-Toy/archive/v%{version}.tar.gz
+Patch0:         no-crazy-flags.patch
 BuildRequires:  ImageMagick
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_mixer-devel
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  git
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libbz2-devel
-BuildRequires:  lua51-devel
-BuildRequires:  python-devel
+BuildRequires:  luajit-devel
 BuildRequires:  scons
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
@@ -50,24 +48,17 @@ bombs, realistic terrains and almost anything else.
 
 %prep
 %setup -q -n The-Powder-Toy-%{version}
+%patch0 -p1
 
 %build
-%ifarch x86_64
-scons --lin --release --64
-%else
-%ifarch %{ix86}
-scons --lin --release --32
-%else
-scons --lin --release --no-sse
-%endif
-%endif
+export CCFLAGS="%{optflags}"
+scons \
+  --luajit \
+  --lin \
+  --release
 
 %install
-%ifarch x86_64
-install -D -m 0755 build/powder64 %{buildroot}%{_bindir}/powder
-%else
-install -D -m 0755 build/powder %{buildroot}%{_bindir}/powder
-%endif
+install -D -m 0755 build/powder* %{buildroot}%{_bindir}/powder
 convert resources/icon.ico -strip resources/powder.png
 install -D -m 0644 resources/icon/powder-256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/powder.png
 install -D -m 0644 resources/icon/powder-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/powder.png
@@ -79,16 +70,6 @@ install -D -m 0644 resources/icon/powder-16.png %{buildroot}%{_datadir}/icons/hi
 install -D -m 0644 resources/powder.desktop %{buildroot}%{_datadir}/applications/powder.desktop
 install -D -m 0644 resources/powder.appdata.xml %{buildroot}%{_datadir}/appdata/powder.appdata.xml
 install -D -m 0644 resources/powdertoy-save.xml %{buildroot}%{_datadir}/mime/packages/powdertoy-save.xml
-
-%post
-%icon_theme_cache_post
-%desktop_database_post
-%mime_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%mime_database_postun
 
 %files
 %license LICENSE

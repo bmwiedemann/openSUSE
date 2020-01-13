@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 09:25:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to python3 build
+- Add patch to not force optflags crazyness:
+  * no-crazy-flags.patch
+
+-------------------------------------------------------------------
 Tue Oct 15 00:00:00 CEST 2019 - dsterba@suse.cz
 
 - Update to version 94.1
