@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-core
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.0.77
+Version:        2.0.79
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -38,8 +38,8 @@ Requires:       python3-adal < 2.0
 Requires:       python3-adal >= 1.2
 Requires:       python3-argcomplete < 2.0
 Requires:       python3-argcomplete >= 1.8
-Requires:       python3-azure-mgmt-resource < 5.0
-Requires:       python3-azure-mgmt-resource >= 4.0
+Requires:       python3-azure-mgmt-resource < 8.0
+Requires:       python3-azure-mgmt-resource >= 7.0
 Requires:       python3-azure-nspkg >= 3.0.0
 Requires:       python3-colorama >= 0.3.9
 Requires:       python3-humanfriendly < 5.0
