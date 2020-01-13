@@ -1,7 +1,7 @@
 #
 # spec file for package kubic-control
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubic-control
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Simple setup tool for kubernetes
 License:        Apache-2.0
@@ -37,8 +37,11 @@ Group:          System/Management
 Requires:       cilium-k8s-yaml
 Requires:       etcdctl
 Requires:       flannel-k8s-yaml
+Requires:       hello-kubic-k8s-yaml >= 1.3
 Requires:       kubicctl
 Requires:       kured-k8s-yaml
+Requires:       kustomize
+Requires:       metallb-k8s-yaml >= 0.8.3
 Requires:       salt-master
 Requires:       weave-k8s-yaml
 

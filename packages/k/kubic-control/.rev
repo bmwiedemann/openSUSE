@@ -138,4 +138,13 @@
     <comment>- Fix path of /usr/etc/kubicd</comment>
     <requestid>744917</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fc5cd3878170185a7901b4b9d9b5ab5d</srcmd5>
+    <version>0.9.1</version>
+    <time>1578950129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1
+  - Add support to deploy metallb and hello-kubic via kustomize</comment>
+    <requestid>760991</requestid>
+  </revision>
 </revisionlist>

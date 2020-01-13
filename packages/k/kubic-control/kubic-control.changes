@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  5 16:56:34 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.1
+  - Add support to deploy metallb and hello-kubic via kustomize
+
+-------------------------------------------------------------------
 Sat Nov  2 20:23:13 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix path of /usr/etc/kubicd
