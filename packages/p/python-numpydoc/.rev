@@ -95,4 +95,12 @@
   * Escape the * in *args and **kwargs</comment>
     <requestid>718088</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24f3b6589b5001c124ee04d1c7d8d6f3</srcmd5>
+    <version>0.9.2</version>
+    <time>1578950487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763812</requestid>
+  </revision>
 </revisionlist>

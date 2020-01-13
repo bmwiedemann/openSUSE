@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpydoc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-numpydoc
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Sphinx extension to support docstrings in Numpy format
 License:        BSD-3-Clause
@@ -30,12 +30,12 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 Requires:       python-Jinja2 >= 2.3
 Requires:       python-Sphinx >= 1.6.5
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description

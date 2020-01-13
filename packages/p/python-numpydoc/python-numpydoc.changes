@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 11 18:28:01 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.9.2:
+  * Delay import of Sphinx (#248)
+
+-------------------------------------------------------------------
 Wed Jul 24 07:27:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull both nose and pytest, just stick with pytest
