@@ -126,4 +126,12 @@
     <comment>- Add k9s to kubernetes utilities pattern</comment>
     <requestid>751261</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>502c7a14a873b51d0deea26804218380</srcmd5>
+    <version>5.0</version>
+    <time>1578950107</time>
+    <user>dimstar_suse</user>
+    <comment>- loadbalancer: add kubic-haproxycfg</comment>
+    <requestid>758861</requestid>
+  </revision>
 </revisionlist>

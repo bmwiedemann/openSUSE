@@ -148,6 +148,7 @@ Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9020
 Provides:       pattern-visible()
 Requires:       haproxy
+Requires:       kubic-haproxycfg
 Requires:       salt-minion
 Requires:       pattern() = basesystem
 
