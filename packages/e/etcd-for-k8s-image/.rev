@@ -23,4 +23,40 @@
     <comment></comment>
     <requestid>736853</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6bae890c5fedfe8b878b89b4e4100a83</srcmd5>
+    <version>3.4.3</version>
+    <time>1578950101</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove incorrectly added go_provides and go_nostrip macros 
+
+- Update to version 3.4.3:
+  * version: 3.4.3
+  * *: use Go 1.12.12
+  * rafthttp: add 3.4 stream type
+  * etcdserver: strip patch version in metrics
+  * etcdserver: strip patch version in cluster version
+  * etcdserver: unset old cluster version in metrics
+  * Add version, tag and branch checks to release script
+  * scripts: fix read failure prompt in release; use https for git clone.
+  * version: 3.4.2
+  * etcdserver: trace compaction request; add return parameter 'trace' to applierV3.Compaction() mvcc: trace compaction request; add input parameter 'trace' to KV.Compact()
+  * etcdserver: trace raft requests.
+  * etcdserver: add put request steps. mvcc: add put request steps; add trace to KV.Write() as input parameter.
+  * pkg: use zap logger to format the structure log output.
+  * pkg: add field to record additional detail of trace; add stepThreshold to reduce log volume.
+  * pkg: create package traceutil for tracing. mvcc: add tracing steps:range from the in-memory index tree; range from boltdb. etcdserver: add tracing steps: agreement among raft nodes before linerized reading; authentication; filter and sort kv pairs; assemble the response.
+  * clientv3: Replace endpoint.ParseHostPort with net.SplitHostPort to fix IPv6 client endpoints
+  * clientv3: Set authority used in cert checks to host of endpoint
+  * tests/e2e: fix metrics tests
+  * etcdctl: fix member add command
+  * scripts/build-binary: fix darwin tar commands
+  * scripts/release: fix SHA256SUMS command
+  * version: 3.4.1
+  * scripts/release: fix docker push command
+  * integration: fix bug in for loop, make it break properly
+  * embed: expose ZapLoggerBuilder
+  * vendor: upgrade to gRPC v1.23.1</comment>
+    <requestid>757584</requestid>
+  </revision>
 </revisionlist>

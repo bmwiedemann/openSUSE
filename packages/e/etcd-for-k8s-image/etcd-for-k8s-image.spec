@@ -1,7 +1,7 @@
 #
 # spec file for package etcd-for-k8s-image
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
+%define project go.etcd.io/etcd
 Name:           etcd-for-k8s-image
-Version:        3.3.15
+Version:        3.4.3
 Release:        0
 Summary:        Etcd and etcdtl for k8s image
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/coreos/etcd
-Source:         etcd-%{version}.tar.xz
-BuildRequires:  go1.12 >= 1.12.9
+URL:            https://github.com/etcd-io/etcd
+Source0:        etcd-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  go1.12 >= 1.12.12
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.12
 ExcludeArch:    %ix86
@@ -41,11 +43,18 @@ etcdctl for the kubernetes container image.
 %setup -q -n etcd-%{version} 
 
 %build
-%{goprep} github.com/coreos/etcd
-%{gobuild} .
-%{gobuild} etcdctl
-mkdir bin
-mv ../go/bin/etcd* bin
+# Can't use goprep and gobuild macros due to the packagename and projectname confusing things
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+rm -rf $HOME/go/src
+mkdir -pv $HOME/go/src/%{project}
+find . -mindepth 1 -maxdepth 1 -exec cp -r {} $HOME/go/src/%{project} \;
+
+cd $HOME/go/src/%{project}
+go build -v -buildmode=pie -o bin/etcd %{project}
+go build -v -buildmode=pie -o bin/etcdctl %{project}/etcdctl
+mkdir -p $HOME/rpmbuild/BUILD/etcd-%{version}/bin
+mv bin/etcd* $HOME/rpmbuild/BUILD/etcd-%{version}/bin
 
 %install
 mkdir -p %{buildroot}%{_bindir}
