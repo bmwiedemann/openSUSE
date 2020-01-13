@@ -1,10 +1,10 @@
-diff -urEbwB minigalaxy-0.9.1/data/minigalaxy.desktop minigalaxy-0.9.1.new/data/minigalaxy.desktop
---- minigalaxy-0.9.1/data/minigalaxy.desktop	2019-12-27 22:41:49.000000000 +0100
-+++ minigalaxy-0.9.1.new/data/minigalaxy.desktop	2019-12-28 13:03:13.847354751 +0100
+diff -urEbw minigalaxy-0.9.2/data/minigalaxy.desktop minigalaxy-0.9.2.new/data/minigalaxy.desktop
+--- minigalaxy-0.9.2/data/minigalaxy.desktop	2020-01-07 21:31:08.000000000 +0100
++++ minigalaxy-0.9.2.new/data/minigalaxy.desktop	2020-01-13 13:28:38.160031364 +0100
 @@ -6,4 +6,4 @@
  Icon=minigalaxy
  Type=Application
  Keywords=galaxy,gaming,games,game,old,good
--Categories=GTK;Utility;Game;
+-Categories=Game
 \ No newline at end of file
 +Categories=Game;Amusement;
