@@ -1,9 +1,40 @@
 -------------------------------------------------------------------
-Mon Dec  9 22:41:54 UTC 2019 - Richard Brown <rbrown@suse.com>
+Fri Jan 10 08:25:35 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- go1.13.5 (released 2019/12/04) includes fixes to the go command, the runtime, the linker, and the net/http package
-- go1.13.4 (released 2019/10/31) includes fixes to the net/http and syscall packages
-- go1.13.4 or greater is required by Kubernetes 1.17.0
+- go1.13.6 (released 2020/01/09) includes fixes to the runtime
+  and the net/http package
+  Refs boo#1149259.
+  * go#36434 net/http: racing write to t.ProxyConnectHeader in dialConn when proxy URL includes auth credentials
+  * go#36361 runtime: sweep increased allocation count crash on arm64
+  * go#36127 runtime: "attempt to execute system stack code on user stack" during heap scavenging
+  * go#36003 doc: release history webpage contains suboptimal links
+  * go#35746 runtime: "fatal error: PowerRegisterSuspendResumeNotification failure" when running in Windows docker containers
+
+-------------------------------------------------------------------
+Fri Dec  6 04:38:50 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.5 (released 2019/12/04) includes fixes to the go command,
+  the runtime, the linker, and the net/http package.
+  Refs boo#1149259.
+  * go#35765 net/http: Server.ConnContext accidentally modifies context for all connections
+  * go#35748 ensure that Go toolchain meets Apple’s notarization requirements
+  * go#35408 runtime: panic when using errors.As with validation errors from github.com/go-ozzo/ozzo-validation
+  * go#35318 cmd/go: "fatal error: concurrent map writes" during go get
+  * go#35211 runtime: function textOff returns incorrect value if multiple text sections are present
+  * go#34825 cmd/link: nil pointer dereference crash when building with an Android NDK toolchain
+  * go#34642 syscall: (*LazyProc).Call does not keep arguments alive (anymore)
+
+-------------------------------------------------------------------
+Fri Nov  1 04:38:50 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.4 (released 2019/10/31) includes fixes to the net/http and
+  syscall packages. It also fixes an issue on macOS 10.15 Catalina
+  where the non-notarized installer and binaries were being rejected
+  by Gatekeeper.
+  Refs boo#1149259.
+  * go#35119 cmd/go: incorrectly rejects '@' character in directory names
+  * go#35105 syscall: the wrong sysctl was gimped on iOS
+  * go#35087 net/http: transport caches permanently broken persistent connections if write error happens during h2 handshake
 
 -------------------------------------------------------------------
 Wed Oct 23 20:52:04 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
