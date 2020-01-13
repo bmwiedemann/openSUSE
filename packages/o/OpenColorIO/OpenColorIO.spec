@@ -1,8 +1,8 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Asterios Dramis <asterios.dramis@gmail.com>.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,9 @@
 #
 
 
+# Ensure that libyaml-cpp version is the one that is built against
+# See boo#1160171
+%define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml)
 %define so_ver 1
 Name:           OpenColorIO
 Version:        1.1.1
@@ -24,7 +27,7 @@ Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            http://opencolorio.org/
+URL:            https://opencolorio.org/
 ######
 ######
 # The package contains the below non OSS licensed files (see bnc#821203)
@@ -63,11 +66,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-MarkupSafe
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+BuildRequires:  python3-MarkupSafe
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  tinyxml-devel
-BuildRequires:  yaml-cpp-devel >= 0.5.0
+BuildRequires:  pkgconfig(yaml-cpp) >= 0.5.0
 Recommends:     %{name}-doc = %{version}
 
 %description
@@ -98,6 +101,7 @@ This package contains documentation for OpenColorIO.
 %package -n libOpenColorIO%{so_ver}
 Summary:        Complete Color Management Solution Geared Towards Motion Picture Production
 Group:          System/Libraries
+Requires:       %{yamlrequires}
 
 %description -n libOpenColorIO%{so_ver}
 OpenColorIO (OCIO) is a color management solution geared towards motion picture
@@ -136,6 +140,7 @@ rm -f ext/yaml*
 
 %build
 %cmake \
+    -DPYTHON=%{_bindir}/python3 \
     -DOCIO_BUILD_STATIC=OFF \
     -DOCIO_BUILD_DOCS=ON \
     -DOCIO_BUILD_TESTS=ON \
@@ -146,9 +151,8 @@ rm -f ext/yaml*
     -DUSE_EXTERNAL_YAML=ON \
     -DUSE_EXTERNAL_TINYXML=ON \
     -DUSE_EXTERNAL_LCMS=ON \
-    -DUSE_EXTERNAL_SETUPTOOLS=ON \
-    ..
-%make_jobs
+    -DUSE_EXTERNAL_SETUPTOOLS=ON
+%cmake_build
 
 %install
 %cmake_install
@@ -184,7 +188,7 @@ mv %{buildroot}%{_prefix}/*.cmake %{buildroot}%{_prefix}/cmake/*.cmake %{buildro
 %{_libdir}/libOpenColorIO.so.%{so_ver}*
 
 %files -n python-OpenColorIO
-%{python_sitearch}/PyOpenColorIO.so
+%{python3_sitearch}/PyOpenColorIO.so
 
 %files -n python-OpenColorIO-devel
 %{_includedir}/PyOpenColorIO/
