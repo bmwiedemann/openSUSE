@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-testconfig
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-testconfig
-Version:        0.1.3
+Version:        0.2.0
 Release:        0
 Summary:        Test configuration plugin for pytest
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/wojole/pytest-testconfig
 Source:         https://github.com/wojole/pytest-testconfig/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tox}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 3.5

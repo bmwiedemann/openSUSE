@@ -25,4 +25,13 @@
   * Fix warning about unclosed files</comment>
     <requestid>749187</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0896b817c7f2790060692c6d3337a989</srcmd5>
+    <version>0.2.0</version>
+    <time>1578950568</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * Move config loading form pytest_configure to pytest_cmdline_main</comment>
+    <requestid>764064</requestid>
+  </revision>
 </revisionlist>
