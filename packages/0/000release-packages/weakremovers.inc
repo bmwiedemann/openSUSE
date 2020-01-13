@@ -4591,6 +4591,11 @@ Provides: weakremover(ruby2.5-rubygem-bootsnap-doc)
 Provides: weakremover(ruby2.5-rubygem-net-ssh-5.0)
 Provides: weakremover(ruby2.5-rubygem-net-ssh-doc-5.0)
 %endif
+# 15.1:update
+%ifarch x86_64
+Provides: weakremover(python3-numpy_1_17_3-gnu-hpc)
+Provides: weakremover(python3-numpy_1_17_3-gnu-hpc-devel)
+%endif
 # 42.1
 Provides: weakremover(Qrosspython-devel)
 Provides: weakremover(QtZeitgeist-devel)
