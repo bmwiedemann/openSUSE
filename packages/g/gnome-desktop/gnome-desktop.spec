@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-desktop
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-desktop
-Version:        3.34.2
+Version:        3.34.3
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
@@ -79,7 +79,6 @@ Requires:       bubblewrap
 Requires:       gsettings-desktop-schemas
 # Data files for libgnome-desktop, split in an own package for SLPP compliancy
 Requires:       libgnome-desktop-3_0-common >= %{version}
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
@@ -154,6 +153,7 @@ translation-update-upstream po gnome-desktop
 %doc %{_datadir}/help/C/fdl/
 %doc %{_datadir}/help/C/gpl/
 %doc %{_datadir}/help/C/lgpl/
+%{_datadir}/locale/en/
 %{_libexecdir}/gnome-rr-debug
 
 %files -n typelib-1_0-GnomeDesktop-3_0
@@ -167,6 +167,8 @@ translation-update-upstream po gnome-desktop
 %doc %{_datadir}/gtk-doc/html/gnome-desktop3/
 
 %files lang -f %{name}-3.0.lang
+# english locale should be in the main package
+%exclude %{_datadir}/locale/en
 
 %files -n gnome-version
 %dir %{_datadir}/gnome
