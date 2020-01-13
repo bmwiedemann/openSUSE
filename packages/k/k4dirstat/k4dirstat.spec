@@ -1,7 +1,7 @@
 #
 # spec file for package k4dirstat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           k4dirstat
-Version:        3.1.4
+Version:        3.2.0
 Release:        0
 Summary:        Graphical Disk Usage Utility
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/File utilities
-URL:            https://bitbucket.org/jeromerobert/k4dirstat/wiki/Home
-Source0:        https://bitbucket.org/jeromerobert/k4dirstat/get/%{name}-%{version}.tar.bz2
+URL:            https://github.com/jeromerobert/k4dirstat
+Source0:        https://github.com/jeromerobert/k4dirstat/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Add-the-missing-cassert-include.patch
 BuildRequires:  kf5-filesystem
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5CoreAddons)
@@ -50,7 +52,7 @@ graphically.
 %lang_package
 
 %prep
-%setup -q -n jeromerobert-k4dirstat-0fd87f361645
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -67,7 +69,7 @@ graphically.
 
 %files
 %license COPYING*
-%doc AUTHORS CREDITS TODO
+%doc AUTHORS CREDITS
 %doc %lang(en) %{_kf5_htmldir}/en/k4dirstat
 %dir %{_kf5_configkcfgdir}
 %{_kf5_applicationsdir}/k4dirstat.desktop

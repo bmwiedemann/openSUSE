@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:35:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.2.0:
+  * Rewrite the tree view to support navigation with keyboard and
+    multi-selection
+  * 'Open in terminal' now open Konsole in the selected folder
+  * Move from bitbucket to github
+- Add patch to fix build on Leap 15.1
+  * 0001-Add-the-missing-cassert-include.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 15:30:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.1.4:

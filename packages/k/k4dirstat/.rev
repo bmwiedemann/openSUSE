@@ -26,4 +26,18 @@
 </comment>
     <requestid>690699</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>393710a5aa559fe10649aff18eb13d31</srcmd5>
+    <version>3.2.0</version>
+    <time>1578950517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Rewrite the tree view to support navigation with keyboard and
+    multi-selection
+  * 'Open in terminal' now open Konsole in the selected folder
+  * Move from bitbucket to github
+- Add patch to fix build on Leap 15.1
+  * 0001-Add-the-missing-cassert-include.patch</comment>
+    <requestid>763967</requestid>
+  </revision>
 </revisionlist>

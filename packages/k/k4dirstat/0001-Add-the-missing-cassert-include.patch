@@ -1,0 +1,37 @@
+From dec30fec70d9ec9bcb52372b054d0d409f8c3075 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 13 Jan 2020 13:50:23 +0100
+Subject: [PATCH] Add the missing cassert include
+
+---
+ src/kdirtreeview.cpp | 1 +
+ src/ktreemaptile.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/kdirtreeview.cpp b/src/kdirtreeview.cpp
+index 808d20a..88b2ee3 100644
+--- a/src/kdirtreeview.cpp
++++ b/src/kdirtreeview.cpp
+@@ -7,6 +7,7 @@
+ 
+ #include <stdlib.h>
+ #include <time.h>
++#include <cassert>
+ 
+ #include <QDesktopServices>
+ #include <QHeaderView>
+diff --git a/src/ktreemaptile.cpp b/src/ktreemaptile.cpp
+index 3c140eb..27c4632 100644
+--- a/src/ktreemaptile.cpp
++++ b/src/ktreemaptile.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include <QDebug>
+ #include <algorithm>
++#include <cassert>
+ #include <math.h>
+ #include <qimage.h>
+ #include <qpainter.h>
+-- 
+2.24.1
+
