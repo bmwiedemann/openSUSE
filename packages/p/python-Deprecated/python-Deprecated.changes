@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:06:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.2.7
+  * Fix: Warning displays the correct filename and line number when 
+    decorating a function if wrapt does not have the compiled c extension.
+  * Add Black configuration file.
+
+-------------------------------------------------------------------
 Mon Jul 22 09:11:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.2.6:

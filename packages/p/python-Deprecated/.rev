@@ -16,4 +16,12 @@
   * Fix #9: Change the project's configuration: reinforce the constraint to the Wrapt requirement.</comment>
     <requestid>717495</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37c101d4e708ddc7cee4554a3b389d14</srcmd5>
+    <version>1.2.7</version>
+    <time>1578950562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764062</requestid>
+  </revision>
 </revisionlist>
