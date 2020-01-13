@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-control-center
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Source0:        %{name}-%{version}.tar.xz
 Patch1:         gnome-control-center-can-not-find-usermod.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-Initialize-GError-to-NULL-before-use.patch xwang@suse.com -- user-accounts: Initialize GError* to NULL before use
 Patch2:         gnome-control-center-Initialize-GError-to-NULL-before-use.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-fno-common.patch boo#1160393 mgorse@suse.com -- fix build with -fno-common.
+Patch3:         gnome-control-center-fno-common.patch
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
@@ -113,7 +115,6 @@ Requires:       iso-codes
 Requires:       gnomekbd-tools
 # For the thunderbolt panel
 Recommends:     bolt
-Recommends:     %{name}-lang
 Recommends:     %{name}-user-faces
 # cups-pk-helper should only be recommended, rather than a hard Requires, see boo#904047
 Recommends:     cups-pk-helper
@@ -196,6 +197,7 @@ translation-update-upstream po gnome-control-center-2.0
 
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1
@@ -241,6 +243,7 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
 %{_datadir}/icons/hicolor/*/*/*.png
 %{_datadir}/icons/hicolor/*/*/*.svg
+%{_datadir}/locale/en/
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
@@ -272,5 +275,7 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/gettext/its/sounds.loc
 
 %files lang -f %{name}-2.0.lang
+# english locale should be in the main package
+%exclude %{_datadir}/locale/en
 
 %changelog
