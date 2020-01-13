@@ -26,7 +26,7 @@ unsorted:
   - Box2D-doc 
   - CSXCAD-devel 
   - CSXCAD-matlab 
-  - Catch2-devel: [i586] 
+  - Catch2-devel 
   - CharLS-devel 
   - Coin-devel 
   - ColPack-devel 
@@ -8611,7 +8611,6 @@ unsorted:
   - libdvbpsi7-32bit: [x86_64] 
   - libdvbv5-0 
   - libdvbv5-0-32bit: [x86_64] 
-  - libdvbv5-0-lang: [x86_64] 
   - libdvbv5-devel 
   - libdvdnav-devel 
   - libdvdnav4-32bit: [x86_64] 
@@ -8963,7 +8962,7 @@ unsorted:
   - libganesha_nfsd-devel: [x86_64] 
   - libganesha_nfsd3_1: [x86_64] 
   - libganglia0 
-  - libgarcon-branding-upstream: [x86_64] 
+  - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
   - libgasnet-1_32_0 
@@ -10445,6 +10444,8 @@ unsorted:
   - libopenobex2 
   - libopenraw-devel 
   - libopenraw1-32bit: [x86_64] 
+  - libopenscap25 
+  - libopenscap_sce25 
   - libopenshot-audio-devel 
   - libopenshot-audio6 
   - libopenshot-devel 
@@ -15241,6 +15242,11 @@ unsorted:
   - opensc 
   - opensc-32bit: [x86_64] 
   - openscad 
+  - openscap 
+  - openscap-content 
+  - openscap-devel 
+  - openscap-docker 
+  - openscap-utils 
   - openshot-qt 
   - openslide-doc 
   - openslide-tools 
@@ -15379,7 +15385,7 @@ unsorted:
   - osmo-iuh 
   - osmo-mgw 
   - osmo-msc 
-  - osmo-pcap: [i586] 
+  - osmo-pcap 
   - osmo-pcu 
   - osmo-sgsn 
   - osmo-sip-connector 
@@ -22154,7 +22160,6 @@ unsorted:
   - python3-remoto 
   - python3-rencode 
   - python3-renderspec 
-  - python3-reportlab 
   - python3-repoze.lru 
   - python3-repoze.sphinx.autointerface 
   - python3-repoze.who 
@@ -33495,8 +33500,8 @@ unsorted:
   - xfce4-panel-plugin-sntray 
   - xfce4-power-manager-branding-upstream 
   - xfce4-sensors-plugin-devel 
-  - xfce4-session-branding-upstream: [x86_64] 
-  - xfce4-settings-branding-upstream: [x86_64] 
+  - xfce4-session-branding-upstream 
+  - xfce4-settings-branding-upstream 
   - xfce4-stopwatch-plugin 
   - xfce4-stopwatch-plugin-lang 
   - xfce4-time-out-plugin 

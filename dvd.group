@@ -4260,6 +4260,7 @@
     <package name="python3-qt5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-redis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-reno" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python3-reportlab" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-roman" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5706,13 +5707,10 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgarcon-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.2.i586-->
-    <package name="xfce4-session-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xfce4-settings-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">

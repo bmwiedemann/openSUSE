@@ -1816,7 +1816,6 @@
       <repopackage name="libgadu3"/>
       <repopackage name="libgarcon-1-0"/>
       <repopackage name="libgarcon-branding-openSUSE"/>
-      <repopackage name="libgarcon-branding-upstream" arch="i586,i686"/>
       <repopackage name="libgarcon-data"/>
       <repopackage name="libgarcon-lang"/>
       <repopackage name="libgavl1"/>
@@ -4311,6 +4310,7 @@
       <repopackage name="python3-qt5"/>
       <repopackage name="python3-redis"/>
       <repopackage name="python3-reno"/>
+      <repopackage name="python3-reportlab"/>
       <repopackage name="python3-requests"/>
       <repopackage name="python3-roman"/>
       <repopackage name="python3-rpm"/>
@@ -5495,11 +5495,9 @@
       <repopackage name="xfce4-sensors-plugin-lang"/>
       <repopackage name="xfce4-session"/>
       <repopackage name="xfce4-session-branding-openSUSE"/>
-      <repopackage name="xfce4-session-branding-upstream" arch="i586,i686"/>
       <repopackage name="xfce4-session-lang"/>
       <repopackage name="xfce4-settings"/>
       <repopackage name="xfce4-settings-branding-openSUSE"/>
-      <repopackage name="xfce4-settings-branding-upstream" arch="i586,i686"/>
       <repopackage name="xfce4-settings-lang"/>
       <repopackage name="xfce4-smartbookmark-plugin"/>
       <repopackage name="xfce4-smartbookmark-plugin-lang"/>
