@@ -48,13 +48,14 @@ install xf86-video-vmware i686,x86_64
 # No PIM
 buildignore patterns-kde-kde_pim
 
-buildignore gdb
-buildignore icewm
-buildignore libproxy1-pacrunner-webkit
 buildignore digikam
-buildignore hugin
+buildignore gdb
 buildignore gimp-lang
+buildignore hugin
+buildignore icewm
 buildignore kate-lang
+buildignore kmahjongg-lang
+buildignore libproxy1-pacrunner-webkit
 
 install partitionmanager
 

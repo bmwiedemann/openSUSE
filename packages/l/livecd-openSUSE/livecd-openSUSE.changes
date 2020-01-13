@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 11:02:29 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop kmahjongg-lang from the KDE Live image: save some MiB.
+
+-------------------------------------------------------------------
 Sun Jan 12 21:02:45 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop LO now also from the GNOME Live CD: no more space
