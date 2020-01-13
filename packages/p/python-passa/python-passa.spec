@@ -1,7 +1,7 @@
 #
 # spec file for package python-passa
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-passa
 Version:        0.3.0
 Release:        0
@@ -69,7 +68,7 @@ A resolver implementation for generating and interacting with Pipenv-compatible 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst

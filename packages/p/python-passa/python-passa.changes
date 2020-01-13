@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 15:01:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Revert back the previous commit and wait for prjconf declaration
+
+-------------------------------------------------------------------
 Thu Jan  9 18:04:29 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 due to dropped backports indirect dependency.
