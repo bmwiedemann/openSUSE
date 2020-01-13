@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan  8 08:33:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.58.4:
+  + Now prints a warning when constructing an unregistered object
+    inheriting from GObject (i.e. if you forgot to use
+    GObject.registerClass.) In 1.58.2 this would throw an
+    exception, which broke some existing code, so that change was
+    reverted in 1.58.3. In this version the check is reinstated,
+    but we log a warning instead of throwing an exception, so that
+    people know to fix their code, but without breaking things.
+    NOTE: In 1.64 (the next stable release) the warning will be
+    changed back into an exception, because code with this problem
+    can be subtly broken and cause unexpected errors elsewhere. So
+    make sure to fix your code if you get this warning.
+  + GSettings crash fixes.
+  + Memory savings for Cairo objects.
+  + Fix for crash in debug functions.
+
+-------------------------------------------------------------------
 Wed Dec  4 13:52:11 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Enable systemtap support.
