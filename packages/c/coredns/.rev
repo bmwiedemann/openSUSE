@@ -95,4 +95,12 @@
   * Three new plugins: azure, route53 and forward</comment>
     <requestid>736835</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>85f64d6f23406ef72e936aa441055f1c</srcmd5>
+    <version>1.6.5</version>
+    <time>1578950097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757324</requestid>
+  </revision>
 </revisionlist>
