@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 08:58:08 UTC 2020 - olaf@aepfle.de
+
+- Usage of g_canonicalize_filename requires glib 2.58
+
+-------------------------------------------------------------------
 Fri Dec 20 22:17:50 UTC 2019 - olaf@aepfle.de
 
 - meson >=0.50 is required for building
