@@ -419,4 +419,12 @@
     <comment>Xfce 4.14 Upgrade - mention wallpaper-scaling.patch being dropped in changelog</comment>
     <requestid>724142</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>685175637bb372b9e9bc1fc850a5cc18</srcmd5>
+    <version>4.14.2</version>
+    <time>1578950471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763780</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:58:07 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.14.2
+  * Update thumbnail when file changes (bxo#14919)
+  * Add DnD support for application/octet-stream (bxo#14919)
+  * windowlist: Fix ellipsizing (bxo#15851)
+  * Add padding to custom actions without icon (bxo#14628)
+  * Fix yet another rubber band DnD issue (bxo#16046)
+  * Reintroduce workaround for bxo#11283
+  * Show file names in tooltips (bxo#15899)
+  * fallback style: Highlight selected icons (bxo#15866)
+  * Translation Updates 
+
+-------------------------------------------------------------------
 Fri Aug 16 12:59:40 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
