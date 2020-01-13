@@ -1,7 +1,7 @@
 #
 # spec file for package python-proselint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,7 @@ Version:        0.10.2
 Release:        0
 Summary:        A linter for prose
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://github.com/amperser/proselint
+URL:            https://github.com/amperser/proselint
 Source:         https://files.pythonhosted.org/packages/source/p/proselint/proselint-%{version}.tar.gz
 # test_weasel_words_misc is empty in this release, and `setup.py test` doesnt recognise nose's SkipTest
 Patch0:         disable-empty-test.patch
@@ -32,24 +31,18 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
+Requires:       python-dbm
 Requires:       python-future
 Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module six}
-BuildRequires:  python2-gdbm
 BuildRequires:  python2-mock
-BuildRequires:  python3-dbm
 # /SECTION
-%ifpython3
-Requires:       python3-dbm
-%endif
-%ifpython2
-Recommends:     python-gdbm
-%endif
 %python_subpackages
 
 %description
