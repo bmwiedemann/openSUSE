@@ -1,7 +1,7 @@
 #
 # spec file for package pcsx2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pcsx2
-Version:        1.5.0~git20191208
+Version:        1.5.0~git20200105
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
 License:        LGPL-3.0-only

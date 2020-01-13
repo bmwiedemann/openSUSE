@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Jan 05 22:02:13 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200105:
+  * gsdx-hw: Add GT4 Mazda MX-5 Edition to crc list.
+
+-------------------------------------------------------------------
+Fri Jan 03 09:03:56 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191231:
+  * GameDB: Add patch for Nascar09. (#3193)
+  * gsdx-hw: Add Jak1 Cingular/Underground Demo, Jak X trilogy demo, RatchetAndClank3 1108 Beta to crc list.
+  * onepad: Update to latest controller database.
+  * Fix CMSAR1 execution to use correct multiplier Fix ILW/ISW/LQ/SQ on microVU for reading VU1 regs
+
+-------------------------------------------------------------------
+Sat Dec 28 15:53:08 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191223:
+  * pcsx2-gui: Remove Dump memory option from Debugger.
+  * GameDB: Add Burnout 3 - Takedown [Demo], International Cue Club, Telly Addicts to db. (#3185)
+
+-------------------------------------------------------------------
+Mon Dec 23 13:54:14 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191223:
+  * Fix VIF unpack log message in Vif_Unpack.cpp for VU1
+  * gamedb: remove gamefix patches for DI execution fixes.
+  * pcsx2: DI execution is delayed by one instruction.
+
+-------------------------------------------------------------------
+Thu Dec 19 19:28:34 UTC 2019 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20191219:
+  * gui: Fix about dialog logo DPI scaling
+  * pcsx2-gui: Fix dpi scaling for some windows.
+  * pcsx2-gui: Update About window.
+  * Lilypad-gui: Fix gui overlapping for force feedback axis 2 value.
+  * gsdx-gui: Redesign hw hacks gui on Windows.
+  * gsdx-gui: Adjust some gui options.
+  * gsdx-hw: Add missing crc id for Star Wars: The Force Unleashed PAL region.
+  * GameDB: Resolve missing blade issue in Castlevania Curse of Darkness. (#3173)
+
+-------------------------------------------------------------------
 Tue Dec 10 22:32:43 UTC 2019 - pousaduarte@gmail.com
 
 - Update to version 1.5.0~git20191208:
