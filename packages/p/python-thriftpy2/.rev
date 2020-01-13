@@ -16,4 +16,13 @@
   * minor bugfixes</comment>
     <requestid>736036</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fae823034ca5704136dad084bae36e03</srcmd5>
+    <version>0.4.7</version>
+    <time>1578950451</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python dbm dependency instead of legacy gdbm
+- Tweak up the dependencies to not be unresolvable</comment>
+    <requestid>763946</requestid>
+  </revision>
 </revisionlist>

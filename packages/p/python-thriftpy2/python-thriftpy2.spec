@@ -1,7 +1,7 @@
 #
 # spec file for package python-thriftpy2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Thriftpy/thriftpy2
 Source:         https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.28.4}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tornado >= 4.0}
-BuildRequires:  %{python_module toro >= 0.6}
+BuildRequires:  %{python_module tornado >= 5.0}
 BuildRequires:  fdupes
-BuildRequires:  python-gdbm
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dbm
 BuildRequires:  python3-pytest-asyncio
 Requires:       python-ply >= 3.4
-Recommends:     python-tornado >= 4.0
+Recommends:     python-tornado >= 5.0
 Recommends:     python-toro >= 0.6
 %python_subpackages
 
@@ -60,7 +58,8 @@ export CFLAGS="%{optflags}"
 %check
 cd tests
 # the two tests fail in OBS on timeout
-%pytest_arch -k 'not (test_able_to_communicate or test_zero_length_string)'
+# test_asynchronous_exception/test_asynchronous_result - needs old tornado to work
+%pytest_arch -k 'not (test_able_to_communicate or test_zero_length_string or test_asynchronous_exception or test_asynchronous_result)'
 
 %files %{python_files}
 %license LICENSE
