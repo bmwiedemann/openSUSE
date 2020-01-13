@@ -1,7 +1,7 @@
 #
 # spec file for package pmix
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,8 @@ BuildRequires:  libtool
 BuildRequires:  munge-devel
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       pmix-mca-params
+Requires:       pmix-runtime-config
+Recommends:     pmix-mca-params
 
 %description
 The Process Management Interface (PMI) has been used for quite some time as a
@@ -84,7 +85,8 @@ This Package contains necessary the headers for PMI-X.
 %package -n pmix-mca-params
 Summary:        Settings for the Module Component Architecure
 Group:          hpc mpi devel
-Conflicts:      openmpi3-config
+Provides:       pmix-runtime-config = %{version}
+Conflicts:      otherproviders(pmix-runtime-config)
 
 %description -n pmix-mca-params
 PMIX is part of the Module Component Architecure and needs so to have its

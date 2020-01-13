@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:30:55 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- configuration can now also be provided with openmpi flavors 
+
+-------------------------------------------------------------------
 Mon Nov 25 14:57:45 UTC 2019 - Christian Goll <cgoll@suse.com>
 
 - using now correct openSUSE:Shared library packaging policy  
