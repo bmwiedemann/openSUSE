@@ -1240,4 +1240,12 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
 - Remove unneeded systemd BuildRequires. (forwarded request 754859 from jfkw)</comment>
     <requestid>754860</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5a68651ea462650024a346f9b60c4275</srcmd5>
+    <version>1.12.15</version>
+    <time>1578950158</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.12.15 (released 2020/01/09) includes fixes to the runtime and the net/http package (forwarded request 762912 from jfkw)</comment>
+    <requestid>762913</requestid>
+  </revision>
 </revisionlist>

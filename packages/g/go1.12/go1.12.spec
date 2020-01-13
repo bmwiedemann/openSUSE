@@ -1,7 +1,7 @@
 #
 # spec file for package go1.12
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,7 +118,7 @@
 %endif
 
 Name:           go1.12
-Version:        1.12.14
+Version:        1.12.15
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
