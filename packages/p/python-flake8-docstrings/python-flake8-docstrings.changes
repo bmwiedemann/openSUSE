@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 15:02:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Revert back the python2 dropping; lets do it globaly in the
+  project config
+
+-------------------------------------------------------------------
 Thu Jan  9 18:54:16 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 subpackage due to dependencies dropping python2.

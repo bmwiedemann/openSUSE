@@ -66,4 +66,13 @@
     <comment></comment>
     <requestid>762534</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7903ec0e711278d0afd66f7eb9b25c67</srcmd5>
+    <version>1.5.0</version>
+    <time>1578950483</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert back the python2 dropping; lets do it globaly in the
+  project config</comment>
+    <requestid>763821</requestid>
+  </revision>
 </revisionlist>
