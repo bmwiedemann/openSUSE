@@ -1,7 +1,7 @@
 #
 # spec file for package python-evdev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %define modname evdev
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-evdev
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python bindings to the Linux input handling subsystem
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/gvalkov/python-evdev
-Source:         https://github.com/gvalkov/%{name}/archive/v%{version}.tar.gz
+# Source needs to be pulled form Github as the source distribution on PyPI lacks the test directory
+Source:         https://github.com/gvalkov/python-evdev/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
