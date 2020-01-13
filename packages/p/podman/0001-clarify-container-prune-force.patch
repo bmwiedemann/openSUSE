@@ -1,0 +1,105 @@
+From 864b5fd9638953d9ee61113c4ba8311cafe9bcd8 Mon Sep 17 00:00:00 2001
+From: baude <bbaude@redhat.com>
+Date: Sun, 12 Jan 2020 10:54:14 -0600
+Subject: [PATCH] clarify container prune --force
+
+the --force parameter should only be used for the CLI and should only
+dictate whether to prompt the user for confirmation.
+
+Fixes: #4844
+Signed-off-by: baude <bbaude@redhat.com>
+---
+ cmd/podman/containers_prune.go                   | 4 ++--
+ cmd/podman/system_prune.go                       | 2 +-
+ docs/source/markdown/podman-container-prune.1.md | 3 +++
+ pkg/adapter/containers.go                        | 4 ++--
+ pkg/adapter/containers_remote.go                 | 2 +-
+ 5 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/cmd/podman/containers_prune.go b/cmd/podman/containers_prune.go
+index 78c50268..6b371d85 100644
+--- a/cmd/podman/containers_prune.go
++++ b/cmd/podman/containers_prune.go
+@@ -40,7 +40,7 @@ func init() {
+ 	pruneContainersCommand.SetHelpTemplate(HelpTemplate())
+ 	pruneContainersCommand.SetUsageTemplate(UsageTemplate())
+ 	flags := pruneContainersCommand.Flags()
+-	flags.BoolVarP(&pruneContainersCommand.Force, "force", "f", false, "Force removal of a running container.  The default is false")
++	flags.BoolVarP(&pruneContainersCommand.Force, "force", "f", false, "Skip interactive prompt for container removal.")
+ 	flags.StringArrayVar(&pruneContainersCommand.Filter, "filter", []string{}, "Provide filter values (e.g. 'until=<timestamp>')")
+ }
+ 
+@@ -68,7 +68,7 @@ Are you sure you want to continue? [y/N] `)
+ 	if c.GlobalIsSet("max-workers") {
+ 		maxWorkers = c.GlobalFlags.MaxWorks
+ 	}
+-	ok, failures, err := runtime.Prune(getContext(), maxWorkers, c.Force, c.Filter)
++	ok, failures, err := runtime.Prune(getContext(), maxWorkers, c.Filter)
+ 	if err != nil {
+ 		if errors.Cause(err) == define.ErrNoSuchCtr {
+ 			if len(c.InputArgs) > 1 {
+diff --git a/cmd/podman/system_prune.go b/cmd/podman/system_prune.go
+index 74fdcde9..28f22d33 100644
+--- a/cmd/podman/system_prune.go
++++ b/cmd/podman/system_prune.go
+@@ -92,7 +92,7 @@ Are you sure you want to continue? [y/N] `, volumeString)
+ 
+ 	rmWorkers := shared.Parallelize("rm")
+ 	fmt.Println("Deleted Containers")
+-	ok, failures, err = runtime.Prune(ctx, rmWorkers, false, []string{})
++	ok, failures, err = runtime.Prune(ctx, rmWorkers, []string{})
+ 	if err != nil {
+ 		if lasterr != nil {
+ 			logrus.Errorf("%q", err)
+diff --git a/docs/source/markdown/podman-container-prune.1.md b/docs/source/markdown/podman-container-prune.1.md
+index 856843a8..1b0561e8 100644
+--- a/docs/source/markdown/podman-container-prune.1.md
++++ b/docs/source/markdown/podman-container-prune.1.md
+@@ -11,6 +11,9 @@ podman-container-prune - Remove all stopped containers from local storage
+ 
+ ## OPTIONS
+ 
++**--force**, **-f**
++Do not provide an interactive prompt for containers removal.
++
+ **-h**, **--help**
+ 
+ Print usage statement
+diff --git a/pkg/adapter/containers.go b/pkg/adapter/containers.go
+index 3334e9fa..c2206caa 100644
+--- a/pkg/adapter/containers.go
++++ b/pkg/adapter/containers.go
+@@ -1048,7 +1048,7 @@ func (r *LocalRuntime) ExecContainer(ctx context.Context, cli *cliconfig.ExecVal
+ }
+ 
+ // Prune removes stopped containers
+-func (r *LocalRuntime) Prune(ctx context.Context, maxWorkers int, force bool, filters []string) ([]string, map[string]error, error) {
++func (r *LocalRuntime) Prune(ctx context.Context, maxWorkers int, filters []string) ([]string, map[string]error, error) {
+ 	var (
+ 		ok         = []string{}
+ 		failures   = map[string]error{}
+@@ -1100,7 +1100,7 @@ func (r *LocalRuntime) Prune(ctx context.Context, maxWorkers int, force bool, fi
+ 		pool.Add(shared.Job{
+ 			ID: ctr.ID(),
+ 			Fn: func() error {
+-				err := r.Runtime.RemoveContainer(ctx, ctr, force, false)
++				err := r.Runtime.RemoveContainer(ctx, ctr, false, false)
+ 				if err != nil {
+ 					logrus.Debugf("Failed to prune container %s: %s", ctr.ID(), err.Error())
+ 				}
+diff --git a/pkg/adapter/containers_remote.go b/pkg/adapter/containers_remote.go
+index 36db4af6..60ee3cb2 100644
+--- a/pkg/adapter/containers_remote.go
++++ b/pkg/adapter/containers_remote.go
+@@ -922,7 +922,7 @@ func (r *LocalRuntime) Top(cli *cliconfig.TopValues) ([]string, error) {
+ }
+ 
+ // Prune removes stopped containers
+-func (r *LocalRuntime) Prune(ctx context.Context, maxWorkers int, force bool, filter []string) ([]string, map[string]error, error) {
++func (r *LocalRuntime) Prune(ctx context.Context, maxWorkers int, filter []string) ([]string, map[string]error, error) {
+ 
+ 	var (
+ 		ok       = []string{}
+-- 
+2.24.1
+
