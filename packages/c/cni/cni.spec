@@ -1,7 +1,7 @@
 #
 # spec file for package cni
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Container Network Interface - networking for Linux containers
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/containernetworking/cni
+URL:            https://github.com/containernetworking/cni
 Source:         %{name}-%{version}.tar.xz
 Source1:        99-loopback.conf
 Source2:        build.sh
