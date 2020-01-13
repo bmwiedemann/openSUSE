@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jan 11 18:24:51 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.9.1:
+  * Add lock around dumps_function cache (GH#3337) Matthew Rocklin
+  * Add setuptools to dependencies (GH#3320) James Bourbeau
+  * Use TaskPrefix.name in Graph layout (GH#3328) Matthew Rocklin
+  * Add missing “ in performance report example (GH#3329) John Kirkham
+  * Add performance report docs and color definitions to docs
+    (GH#3325) Benjamin Zaitlen
+  * Switch startstops to dicts and add worker name to transfer
+    (GH#3319) Jacob Tomlinson
+  * Add plugin entry point for out-of-tree comms library (GH#3305)
+    Patrick Sodré
+  * All scheduler task states in prometheus (GH#3307) fjetter
+  * Use worker name in logs (GH#3309) Stephan Erb
+  * Add TaskGroup and TaskPrefix scheduler state (GH#3262) Matthew
+    Rocklin
+  * Update latencies with heartbeats (GH#3310) fjetter
+  * Update inlining Futures in task graph in Client._graph_to_futures
+    (GH#3303) James Bourbeau
+  * Use hostname as default IP address rather than localhost (GH#3308)
+    Matthew Rocklin
+  * Clean up flaky test_nanny_throttle (GH#3295) Tom Augspurger
+  * Add lock to scheduler for sensitive operations (GH#3259) Matthew
+    Rocklin
+  * Log address for each of the Scheduler listerners (GH#3306) Matthew
+    Rocklin
+  * Make ConnectionPool.close asynchronous (GH#3304) Matthew Rocklin
+
+-------------------------------------------------------------------
 Sat Dec  7 19:09:30 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:
