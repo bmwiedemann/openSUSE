@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 16:35:33 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.8.2
+  * Fixed some HTML entities not being properly recognised
+  * Fixed unexpected <DOCTYPE> when including templates
+
+-------------------------------------------------------------------
 Fri Jun 21 10:15:58 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.8.0
