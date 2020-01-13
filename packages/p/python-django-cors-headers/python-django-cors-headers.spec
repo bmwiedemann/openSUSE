@@ -26,8 +26,6 @@ License:        MIT
 URL:            https://github.com/adamchainz/django-cors-headers
 Source:         https://files.pythonhosted.org/packages/source/d/django-cors-headers/django-cors-headers-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
-# Test config requires 100% test coverage
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,6 +40,7 @@ responses.
 
 %prep
 %setup -q -n django-cors-headers-%{version}
+rm pytest.ini
 
 %build
 %python_build
@@ -52,7 +51,7 @@ responses.
 
 %check
 export DJANGO_SETTINGS_MODULE=tests.settings
-%pytest
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest -v
 
 %files %{python_files}
 %license LICENSE

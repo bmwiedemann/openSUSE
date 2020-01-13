@@ -45,4 +45,12 @@
   * Support Python 3.8.</comment>
     <requestid>761490</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>68202694cb8e84e698d7e5856c4997ef</srcmd5>
+    <version>3.2.1</version>
+    <time>1578950531</time>
+    <user>dimstar_suse</user>
+    <comment>- Build on Leap by not using the macros</comment>
+    <requestid>763928</requestid>
+  </revision>
 </revisionlist>
