@@ -1,7 +1,7 @@
 #
 # spec file for package k9s
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           k9s
-Version:        0.9.3
+Version:        0.12.0
 Release:        0
 Summary:        Curses based terminal UI for Kubernetes clusters
 License:        Apache-2.0
@@ -25,7 +25,7 @@ URL:            https://github.com/derailed/k9s
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch:          Makefile.diff
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
