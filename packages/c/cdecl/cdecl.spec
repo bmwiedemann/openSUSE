@@ -17,14 +17,14 @@
 
 
 Name:           cdecl
-Version:        6.6.2
+Version:        6.8
 Release:        0
 Summary:        C/C++ function declaration translator
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://github.com/paul-j-lucas/cdecl/
 
-Source:         https://github.com/paul-j-lucas/cdecl/releases/download/cdecl-6.6.2/cdecl-6.6.2.tar.gz
+Source:         https://github.com/paul-j-lucas/cdecl/releases/download/cdecl-%version/cdecl-%version.tar.gz
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel

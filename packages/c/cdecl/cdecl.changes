@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 13 17:04:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.8
+  * Since the set explicit-int option was added (an option that
+    takes a value), a set lang=lang option was added.
+
+-------------------------------------------------------------------
+Tue Jan  7 09:01:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.7
+  * Add emission of explicit "int" to English output mode.
+
+-------------------------------------------------------------------
 Mon Dec 16 15:57:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.6.2

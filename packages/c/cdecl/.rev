@@ -82,4 +82,12 @@
     <comment>- Update to release 6.6.2</comment>
     <requestid>757692</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>636e008bc626d4cefb94b60599a1957b</srcmd5>
+    <version>6.8</version>
+    <time>1578950584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.8</comment>
+    <requestid>764101</requestid>
+  </revision>
 </revisionlist>
