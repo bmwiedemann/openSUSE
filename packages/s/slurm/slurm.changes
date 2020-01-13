@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:41:48 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix base_ver for SLE 15 SP2.
+
+-------------------------------------------------------------------
 Wed Jan  8 20:01:19 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Update to version 19.05.5 (jsc#SLE-8491)

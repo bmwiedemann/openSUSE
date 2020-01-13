@@ -41,7 +41,7 @@ ExclusiveArch:  do_not_build
 %define base_ver 1808
 %endif
 %if 0%{?sle_version} == 150200
-%define base_ver 1808
+%define base_ver 1905
 %endif
 
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %(echo %{_ver} | tr -d _)
