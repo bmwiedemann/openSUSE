@@ -1,7 +1,7 @@
 #
 # spec file for package stgit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,21 @@
 
 
 Name:           stgit
-Version:        0.19
+Version:        0.21
 Release:        0
 Summary:        Stacked GIT - Source Code Management Tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
-Url:            https://github.com/ctmarinas/stgit
+URL:            https://github.com/ctmarinas/stgit
 Source0:        https://github.com/ctmarinas/stgit/releases/download/v%{version}/stgit-%{version}.tar.gz
 BuildRequires:  asciidoc
+BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  python-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 BuildRequires:  xmlto
 Requires:       git-core
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%py_requires
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description
 StGIT is a Python application providing similar functionality to Quilt
@@ -46,22 +44,20 @@ other repositories using standard GIT functionality.
 %setup -q
 
 %build
-make %{?_smp_mflags} prefix=%{_prefix} all doc
+%python3_build
+make %{?_smp_mflags} prefix=%{_prefix} doc
 
 %install
-make prefix=%{_prefix} DESTDIR=%{buildroot} install
-make -C Documentation prefix=%{_prefix} mandir=%{_mandir} DESTDIR=%{buildroot} install
+%python3_install
+make %{?_smp_mflags} prefix=%{_prefix} mandir=%{_mandir} DESTDIR=%{buildroot} install-doc
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
-%defattr(-, root, root, -)
-%doc AUTHORS COPYING README RELEASENOTES TODO
+%license COPYING
+%doc AUTHORS README RELEASENOTES TODO
 %{_bindir}/stg
 %{_mandir}/man1/stg*%{ext_man}
-%if 0%{?suse_version} > 1110
-%{python_sitelib}/*
-%else
-%{py_sitedir}/*
-%endif
+%{python3_sitelib}/*
 %{_datadir}/stgit
 
 %changelog

@@ -173,4 +173,24 @@ thank you for your patience (forwarded request 202534 from dbahi)</comment>
     <comment></comment>
     <requestid>721951</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6775e9854a4cd81178ef207f8e82399e</srcmd5>
+    <version>0.21</version>
+    <time>1578950534</time>
+    <user>dimstar_suse</user>
+    <comment>- Revive asciidoc; will be replaced or dropped later, depending on
+  the general solution of asciidoc support on TW
+
+- Update to 0.21:
+  * Build reproducibility repairs (Thanks reproducible-builds.org team!)
+  * Faster handling of large patches (#44)
+  * Python can now be run with optimizations (python -O)
+  * stg log now prints trailing newline
+  * Improved command line option parsing for stg log
+
+- Switch to python3 to build
+- Disable documentation generating using asciidoc as that requires
+  python2</comment>
+    <requestid>764114</requestid>
+  </revision>
 </revisionlist>
