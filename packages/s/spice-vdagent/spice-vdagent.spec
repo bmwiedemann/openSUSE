@@ -1,7 +1,7 @@
 #
 # spec file for package spice-vdagent
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,10 +38,10 @@ BuildRequires:  libdrm-devel
 BuildRequires:  libpciaccess-devel
 BuildRequires:  libtool
 BuildRequires:  spice-protocol-devel >= 0.12.8
-BuildRequires:  systemd
-BuildRequires:  systemd-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.34
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Supplements:    modalias(xorg-x11-server:virtio:d00000003v*)
 %{?systemd_requires}
