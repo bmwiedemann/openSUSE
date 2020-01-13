@@ -1,7 +1,7 @@
 #
 # spec file for package jgmenu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jgmenu
-Version:        3.5
+Version:        4.0
 Release:        0
 Summary:        Small X11 menu intended to be used with openbox and tint2
 License:        GPL-2.0-only
@@ -49,6 +49,7 @@ jgmenu is a simple X11 menu intended to be used with tint2 and openbox.
 grep -rl '^#!' | xargs sed -i '/^#!/s/env.*py.*/python3/'
 
 %build
+%configure
 make %{?_smp_mflags} prefix=%{_prefix}
 
 %install

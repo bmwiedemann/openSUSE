@@ -202,4 +202,26 @@
   * Some minor fixes</comment>
     <requestid>741684</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>91768223f06e98bf4b4c5cbbb2230260</srcmd5>
+    <version>4.0</version>
+    <time>1578950527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0:
+  * Add apps module - a replacement for pmenu and the default menu
+    generator from v4.0 (hence major bump)
+  * Move pmenu and lx modules to contrib/ to make maintenance and
+    packaging easier.
+  * jgmenu.c: hide 'last selection border' (issue #103).
+  * Update man pages and usage() to prefer `jgmenu_run init` over
+    `jgmenu init`
+  * Add banned.h to make audits easier
+  * Add scripts/pbuild to simplify building deb packages with pbuilder.
+  * Add configure script in order to (a) make contrib/ packages easier
+    to manange; and (b) remove dependency checking from Makefile
+  * greeneye: change category 'Games' to 'Game' in order to comply with
+    freedesktop.org XDG menu-spec.
+  * filter.c: support case-insensitive non-ASCII search (issue #91)</comment>
+    <requestid>763936</requestid>
+  </revision>
 </revisionlist>

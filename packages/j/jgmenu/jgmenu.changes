@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:14:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0:
+  * Add apps module - a replacement for pmenu and the default menu
+    generator from v4.0 (hence major bump)
+  * Move pmenu and lx modules to contrib/ to make maintenance and
+    packaging easier.
+  * jgmenu.c: hide 'last selection border' (issue #103).
+  * Update man pages and usage() to prefer `jgmenu_run init` over
+    `jgmenu init`
+  * Add banned.h to make audits easier
+  * Add scripts/pbuild to simplify building deb packages with pbuilder.
+  * Add configure script in order to (a) make contrib/ packages easier
+    to manange; and (b) remove dependency checking from Makefile
+  * greeneye: change category 'Games' to 'Game' in order to comply with
+    freedesktop.org XDG menu-spec.
+  * filter.c: support case-insensitive non-ASCII search (issue #91)
+
+-------------------------------------------------------------------
 Tue Oct 22 07:26:41 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.5:
