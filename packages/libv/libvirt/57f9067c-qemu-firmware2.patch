@@ -1,0 +1,61 @@
+commit 57f9067ca3efffcfbbc7cd3f435482b63f875b72
+Author: Michal Prívozník <mprivozn@redhat.com>
+Date:   Tue Jan 7 10:10:02 2020 +0100
+
+    qemu_firmware: Introduce @want variable to qemuFirmwareMatchDomain()
+    
+    This simplifies condition when matching FW interface by having a
+    single line condition instead of multiline one. Also, it prepares
+    the code for future expansion.
+    
+    Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+    Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+Index: libvirt-5.10.0/src/qemu/qemu_firmware.c
+===================================================================
+--- libvirt-5.10.0.orig/src/qemu/qemu_firmware.c
++++ libvirt-5.10.0/src/qemu/qemu_firmware.c
+@@ -930,22 +930,39 @@ qemuFirmwareMatchesMachineArch(const qem
+ }
+ 
+ 
++static qemuFirmwareOSInterface
++qemuFirmwareOSInterfaceTypeFromOsDefFirmware(virDomainOsDefFirmware fw)
++{
++    switch (fw) {
++    case VIR_DOMAIN_OS_DEF_FIRMWARE_BIOS:
++        return QEMU_FIRMWARE_OS_INTERFACE_BIOS;
++    case VIR_DOMAIN_OS_DEF_FIRMWARE_EFI:
++        return QEMU_FIRMWARE_OS_INTERFACE_UEFI;
++    case VIR_DOMAIN_OS_DEF_FIRMWARE_NONE:
++    case VIR_DOMAIN_OS_DEF_FIRMWARE_LAST:
++        break;
++    }
++
++    return QEMU_FIRMWARE_OS_INTERFACE_NONE;
++}
++
++
+ static bool
+ qemuFirmwareMatchDomain(const virDomainDef *def,
+                         const qemuFirmware *fw,
+                         const char *path)
+ {
+     size_t i;
++    qemuFirmwareOSInterface want;
+     bool supportsS3 = false;
+     bool supportsS4 = false;
+     bool requiresSMM = false;
+     bool supportsSEV = false;
+ 
++    want = qemuFirmwareOSInterfaceTypeFromOsDefFirmware(def->os.firmware);
++
+     for (i = 0; i < fw->ninterfaces; i++) {
+-        if ((def->os.firmware == VIR_DOMAIN_OS_DEF_FIRMWARE_BIOS &&
+-             fw->interfaces[i] == QEMU_FIRMWARE_OS_INTERFACE_BIOS) ||
+-            (def->os.firmware == VIR_DOMAIN_OS_DEF_FIRMWARE_EFI &&
+-             fw->interfaces[i] == QEMU_FIRMWARE_OS_INTERFACE_UEFI))
++        if (fw->interfaces[i] == want)
+             break;
+     }
+ 

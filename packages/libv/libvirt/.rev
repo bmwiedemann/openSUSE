@@ -3444,4 +3444,18 @@ py2 vs py3 crap. I just want to use python!
     <comment></comment>
     <requestid>758262</requestid>
   </revision>
+  <revision rev="296" vrev="4">
+    <srcmd5>916813c93669d2a81edaed7dfec13db3</srcmd5>
+    <version>5.10.0</version>
+    <time>1578950231</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typo in changelog entry and resubmit, superseding SR#762259.
+
+- qemu: Fix firmware auto detection
+  50d7465f-qemu-firmware1.patch, 57f9067c-qemu-firmware2.patch,
+  7c5264d2-qemu-firmware3.patch, 8e1804f9-qemu-firmware4.patch,
+  8fcee478-qemu-firmware5.patch
+  boo#1157378, bsc#1159796</comment>
+    <requestid>762487</requestid>
+  </revision>
 </revisionlist>

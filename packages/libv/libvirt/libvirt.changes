@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  9 01:33:23 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix firmware auto detection
+  50d7465f-qemu-firmware1.patch, 57f9067c-qemu-firmware2.patch,
+  7c5264d2-qemu-firmware3.patch, 8e1804f9-qemu-firmware4.patch,
+  8fcee478-qemu-firmware5.patch
+  boo#1157378, bsc#1159796
+
+-------------------------------------------------------------------
 Thu Dec 19 15:11:02 UTC 2019 - James Fehlig <jfehlig@suse.com>
 
 - CVE-2019-11135: Add TSX_CTRL and TAA_NO bits for

@@ -213,7 +213,7 @@ Index: libvirt-5.10.0/src/libvirt_private.syms
 ===================================================================
 --- libvirt-5.10.0.orig/src/libvirt_private.syms
 +++ libvirt-5.10.0/src/libvirt_private.syms
-@@ -697,6 +697,9 @@ virDomainConfNWFilterInstantiate;
+@@ -699,6 +699,9 @@ virDomainConfNWFilterInstantiate;
  virDomainConfNWFilterTeardown;
  virDomainConfVMNWFilterTeardown;
  
@@ -223,7 +223,7 @@ Index: libvirt-5.10.0/src/libvirt_private.syms
  
  # conf/interface_conf.h
  virInterfaceDefFormat;
-@@ -1669,6 +1672,7 @@ virCgroupGetMemoryUsage;
+@@ -1671,6 +1674,7 @@ virCgroupGetMemoryUsage;
  virCgroupGetMemSwapHardLimit;
  virCgroupGetMemSwapUsage;
  virCgroupGetPercpuStats;
@@ -243,7 +243,7 @@ Index: libvirt-5.10.0/src/qemu/qemu_driver.c
  #include "domain_audit.h"
  #include "node_device_conf.h"
  #include "virpci.h"
-@@ -20389,13 +20390,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
+@@ -20388,13 +20389,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
                          virTypedParamListPtr params,
                          unsigned int privflags G_GNUC_UNUSED)
  {
@@ -258,7 +258,7 @@ Index: libvirt-5.10.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -20596,17 +20591,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
+@@ -20595,17 +20590,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
      if (!priv->cgroup)
          return 0;
  
@@ -277,7 +277,7 @@ Index: libvirt-5.10.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -20763,76 +20748,15 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
+@@ -20762,76 +20747,15 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
      return ret;
  }
  
