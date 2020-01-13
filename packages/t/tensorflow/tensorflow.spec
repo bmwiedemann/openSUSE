@@ -541,7 +541,7 @@ install -D tensorflow/lite/schema/schema.fbs %{buildroot}%{_includedir}/tensorfl
 %else
 
 pip install %{_topdir}/%{name}-%{version}/*whl --root=%{buildroot}%{?hpc_prefix} \
-	--no-warn-script-location --no-index --no-deps
+	--no-warn-script-location --no-index --no-deps --no-compile
 # remove spurious executeable bits
 # for hpc build remove usr prefix dir
 %if %{with hpc}
