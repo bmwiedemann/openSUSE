@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jan  7 12:20:08 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Add TimedOutMessage to config to share with go code
+- Fix format string to limit the size of the string to 10
+  characters
+
+-------------------------------------------------------------------
+Mon Dec 16 08:41:54 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Persist oom files on cgroup v2
+- Revert the check for  the OOM counter on cgroups v1 before
+  writing OOM file
+
+-------------------------------------------------------------------
+Fri Dec 13 08:23:04 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add --persist-dir flag to allow important container files to be
+  written to a persistent directory
+- Check OOM counter on cgroups v1 before writing OOM file
+- Use splice(2) to copy from stdin
+
+-------------------------------------------------------------------
+Thu Dec 12 11:37:19 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Kill the process group on timeout
+
+-------------------------------------------------------------------
+Wed Dec 11 07:39:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add --persist-dir to allow callers to specify a directory that
+  conmon should mirror certain important files that should persist
+  reboots (right now, just the container exit file)
+
+-------------------------------------------------------------------
+Mon Dec  9 17:34:49 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Fix tight loop on OOM
+
+-------------------------------------------------------------------
 Thu Nov 14 14:25:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Add log level trace
@@ -8,7 +47,7 @@ Thu Nov 14 14:25:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 Tue Oct 29 09:03:03 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Add CONN_SOCK_BUF_SIZE to config
-- Fix bug to close the sync pipe before exit command 
+- Fix bug to close the sync pipe before exit command
 
 -------------------------------------------------------------------
 Mon Sep 16 16:59:28 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
@@ -27,7 +66,7 @@ Fri Aug 16 11:48:30 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 - Use `%make_build` macro instead of `%{__make}`
 - Use `%make_install` macro instead of `%{__make} install`
 - Use `%{_bindir}` macro instead of `%{_usr}/bin`
-- Change `PREFIX` to not contain `%{buildroot}` and use the 
+- Change `PREFIX` to not contain `%{buildroot}` and use the
   `$DESTDIR` variable
 
 -------------------------------------------------------------------

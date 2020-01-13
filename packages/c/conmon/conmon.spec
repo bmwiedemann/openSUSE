@@ -1,7 +1,7 @@
 #
 # spec file for package conmon
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           conmon
-Version:        2.0.3
+Version:        2.0.9
 Release:        0
 Summary:        An OCI container runtime monitor
 License:        Apache-2.0
