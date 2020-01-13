@@ -56,4 +56,13 @@
 - Refresh vendor.tar.gz</comment>
     <requestid>744083</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4eab8f0718a6abad131e6a204e99a3d1</srcmd5>
+    <version>0.8.3</version>
+    <time>1578950112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.3
+  - Add kustomize.yaml file</comment>
+    <requestid>758892</requestid>
+  </revision>
 </revisionlist>

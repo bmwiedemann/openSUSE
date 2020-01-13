@@ -1,7 +1,7 @@
 #
 # spec file for package metallb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           metallb
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Load Balancer for bare metal Kubernetes clusters
 License:        Apache-2.0
