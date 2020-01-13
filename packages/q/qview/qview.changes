@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 13 11:04:41 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 3.0
+  * Added keyboard shortcut customization
+  * Added the ability to open images from URLs
+  * Added the ability to open multiple images from the file dialog
+  * Added the ability to copy images from the application
+  * Added option to change file sorting
+  * Added high DPI support
+  * SVGs are now displayed in a high resolution
+  * Slideshow timer is now configurable in tenths of a second
+  * Added option to not display the recents list
+  * Added option to disable scrolling "towards the cursor"
+  * The recents menu is now more proactive in clearing out entries that no longer exist
+  * Fixed small bug with the "window matches image size" option
+  * Fixed bug where the window would exceed the screen boundaries with the "window matches image size" option enabled
+  * Fixed crashing with multiple windows under macOS
+  * Fixed dock menu oddities under macOS
+
+-------------------------------------------------------------------
 Mon Jun  3 20:03:54 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
 
 - fix download source url

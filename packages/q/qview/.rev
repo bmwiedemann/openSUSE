@@ -9,4 +9,28 @@
 </comment>
     <requestid>707329</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d297429bedb21809aad034343ed04bd4</srcmd5>
+    <version>3.0</version>
+    <time>1578950587</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0
+  * Added keyboard shortcut customization
+  * Added the ability to open images from URLs
+  * Added the ability to open multiple images from the file dialog
+  * Added the ability to copy images from the application
+  * Added option to change file sorting
+  * Added high DPI support
+  * SVGs are now displayed in a high resolution
+  * Slideshow timer is now configurable in tenths of a second
+  * Added option to not display the recents list
+  * Added option to disable scrolling &quot;towards the cursor&quot;
+  * The recents menu is now more proactive in clearing out entries that no longer exist
+  * Fixed small bug with the &quot;window matches image size&quot; option
+  * Fixed bug where the window would exceed the screen boundaries with the &quot;window matches image size&quot; option enabled
+  * Fixed crashing with multiple windows under macOS
+  * Fixed dock menu oddities under macOS
+</comment>
+    <requestid>764106</requestid>
+  </revision>
 </revisionlist>
