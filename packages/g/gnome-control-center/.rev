@@ -1580,4 +1580,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment> (forwarded request 755964 from yfjiang)</comment>
     <requestid>756054</requestid>
   </revision>
+  <revision rev="186" vrev="3">
+    <srcmd5>a020bf32ac232f6487d0db0b6c30ed95</srcmd5>
+    <version>3.34.2</version>
+    <time>1578950307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763357</requestid>
+  </revision>
 </revisionlist>
