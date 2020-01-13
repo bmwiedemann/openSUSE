@@ -957,4 +957,12 @@
     <comment>- Trim descriptions of secondary packages. (forwarded request 725436 from jengelh)</comment>
     <requestid>725539</requestid>
   </revision>
+  <revision rev="129" vrev="10">
+    <srcmd5>9efb65964007367e1617e3b7929a7e6f</srcmd5>
+    <version>0.7</version>
+    <time>1578950215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761956</requestid>
+  </revision>
 </revisionlist>

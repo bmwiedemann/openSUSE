@@ -1,7 +1,7 @@
 #
 # spec file for package avahi-glib2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -506,16 +506,16 @@ export PYTHON=%{_bindir}/python3
 %if %{build_glib2} && !%{build_core}
 for DIR in avahi-glib avahi-gobject avahi-ui avahi-discover-standalone avahi-python man ; do
 cd $DIR
-make %{?_smp_mflags}
+%make_build
 cd ..
 done
 %endif
 %if %{build_mono} && !%{build_core}
 cd avahi-sharp
-make %{?_smp_mflags}
+%make_build
 cd ../avahi-ui-sharp
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %install
 %if %{build_glib2} && !%{build_core}
@@ -536,7 +536,8 @@ cd ../avahi-ui-sharp
 rm -rf %{buildroot}%{_sysconfdir}/init.d/
 %if !%{build_core}
 cd ..
-make %{?_smp_mflags} install-pkgconfigDATA DESTDIR=%{buildroot}
+%make_build install-pkgconfigDATA DESTDIR=%{buildroot}
+
 %endif
 %if %{build_core}
 # do not remove this unless you plan to fix _all_ the references to
