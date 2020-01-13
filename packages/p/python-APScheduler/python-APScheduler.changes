@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:12:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 3.6.3
+  * just pytest4 compatibility
+- drop obsolete patch compat-pytest4+.patch
+
+-------------------------------------------------------------------
 Mon Nov  4 23:50:32 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.6.2, which fixes (together with the patch

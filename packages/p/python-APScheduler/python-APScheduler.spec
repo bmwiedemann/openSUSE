@@ -1,7 +1,7 @@
 #
 # spec file for package python-APScheduler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-APScheduler
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/apscheduler
 Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APScheduler-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM compat-pytest4+.patch gh#agronholm/apscheduler#401 mcepl@suse.com
-# fix the test suite to be compatible with pytest4+
-Patch0:         compat-pytest4+.patch
 BuildRequires:  %{python_module SQLAlchemy >= 0.8}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools >= 0.7}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 36.2.7}
+BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module tzlocal >= 1.2}
@@ -87,10 +85,6 @@ APscheduler provides multiple job stores.
 
 %prep
 %setup -q -n APScheduler-%{version}
-%autopatch -p1
-
-# we don't want the tweaked pytest config options
-rm setup.cfg
 
 %build
 %python_build
