@@ -428,4 +428,14 @@
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762466</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>136bcca44d09f85e1c95a28621a24c09</srcmd5>
+    <version>19.12.1</version>
+    <time>1579032292</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix display of large messages (kde#387061)
+  * 0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
+  * 0002-Initialize-variable.patch</comment>
+    <requestid>764022</requestid>
+  </revision>
 </revisionlist>

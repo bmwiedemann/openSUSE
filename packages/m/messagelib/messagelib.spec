@@ -32,6 +32,9 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
+Patch1:         0002-Initialize-variable.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
@@ -118,7 +121,7 @@ This package contains source headers for messagelib.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DMESSAGEVIEWER_USE_QTWEBENGINE=TRUE -DQTWEBENGINE_SUPPORT_OPTION=TRUE

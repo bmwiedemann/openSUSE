@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:33:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix display of large messages (kde#387061)
+  * 0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
+  * 0002-Initialize-variable.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 10:36:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1
