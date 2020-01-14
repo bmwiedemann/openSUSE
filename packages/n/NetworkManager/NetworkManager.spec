@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.22.2
+Version:        1.22.4
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later

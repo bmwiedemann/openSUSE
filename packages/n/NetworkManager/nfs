@@ -57,7 +57,7 @@ NET_MOUNTS=$(sed -e '/^.*#/d' -e '/^.*:/!d' -e 's/\t/ /g' /etc/fstab | tr -s " "
 case "$COMMAND" in
     up|dhcp4-change|dhcp6-change)
         # Check with systemd if nfs service is enabled
-        if /usr/bin/systemctl is-enabled nfs.service >/dev/null 2>&1; then
+        if /usr/bin/systemctl is-enabled nfs-client.target >/dev/null 2>&1; then
             printf %s "$NET_MOUNTS" | while IFS= read -r line; do
                 MOUNT_POINT=$(echo $line | cut -f2 -d" ")
                 FS_TYPE=$(echo $line | cut -f3 -d" ")
