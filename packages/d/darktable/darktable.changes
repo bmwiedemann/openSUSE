@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:20:20 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Move libdarktable.so to %_libdir (boo#1160739)
+
+-------------------------------------------------------------------
 Fri Jan 10 08:34:01 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix building on Fedora

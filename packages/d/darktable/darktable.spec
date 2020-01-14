@@ -267,6 +267,7 @@ make %{_smp_mflags} VERBOSE=1
 %if 0%{?suse_version}
 # suse branch
 %cmake_install
+mv %{buildroot}%{_libdir}/darktable/libdarktable.so %{buildroot}%{_libdir}
 %suse_update_desktop_file darktable
 #/ suse branch
 %else
@@ -312,6 +313,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %{_bindir}/darktable-cmstest
 %{_bindir}/darktable-rs-identify
 %{_libdir}/darktable
+%{_libdir}/libdarktable.so
 %{_datadir}/applications/darktable.desktop
 %{_datadir}/darktable
 %exclude %{_datadir}/%{pkg_name}/tools/basecurve/
