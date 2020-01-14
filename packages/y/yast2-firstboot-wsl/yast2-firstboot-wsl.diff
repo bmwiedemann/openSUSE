@@ -1,0 +1,76 @@
+Index: YaST2/firstboot-wsl.xml
+===================================================================
+--- YaST2.orig/firstboot-wsl.xml
++++ YaST2/firstboot-wsl.xml
+@@ -20,8 +20,8 @@
+ 	If the variable is missing (commented), the check box won't appear.
+ 
+ 	The value of the variable (true/false) will set the default value for the check box.
+-	<root_password_as_first_user config:type="boolean">true</root_password_as_first_user>
+ 	 -->
++	<root_password_as_first_user config:type="boolean">true</root_password_as_first_user>
+ 
+ 	<!-- The default value of "Automatic Login" checkbox -->
+ 	<enable_autologin config:type="boolean">false</enable_autologin>
+@@ -84,11 +84,12 @@
+             <modules  config:type="list">
+                 <module>
+                     <label>Network Autosetup</label>
++                    <enabled config:type="boolean">false</enabled>
+                     <name>firstboot_setup_dhcp</name>
+                 </module>
+                 <module>
+                     <label>Language and Keyboard</label>
+-                    <enabled config:type="boolean">true</enabled>
++                    <enabled config:type="boolean">false</enabled>
+ 		    <!-- step for configuration of both language and keyboard layout (fate#306296) -->
+                     <name>firstboot_language_keyboard</name>
+                 </module>
+@@ -123,7 +124,7 @@
+                     <enabled config:type="boolean">false</enabled>
+                 </module>
+                 <module>
+-                    <enabled config:type="boolean">true</enabled>
++                    <enabled config:type="boolean">false</enabled>
+                     <name>firstboot_ssh</name>
+                 </module>
+                 <module>
+@@ -138,7 +139,7 @@
+                  </module>
+                 <module>
+                     <label>Time and Date</label>
+-                    <enabled config:type="boolean">true</enabled>
++                    <enabled config:type="boolean">false</enabled>
+                     <name>firstboot_timezone</name>
+                 </module>
+                 <module>
+@@ -184,6 +185,13 @@
+                     <enable_next>no</enable_next>
+                 </module>
+                 <module>
++                    <label>Finish WSL Setup</label>
++                    <name>firstboot_write_wsl</name>
++                    <enable_back>no</enable_back>
++                    <enable_next>no</enable_next>
++                </module>
++
++                <module>
+                     <label>Finish Setup</label>
+                     <name>inst_congratulate</name>
+                 </module>
+@@ -192,10 +200,10 @@
+         </workflow>
+     </workflows>
+     <texts>
+-	<!--
+-	Labels used during Automatic Configuration: use "text_id" from "ac_step"
+-	-->
+-	<ac_label_1><label>Configuring network...</label></ac_label_1>
+-	<ac_label_2><label>Configuring hardware...</label></ac_label_2>
++        <congratulate><label>
++            &lt;p&gt;Configuration of &amp;product; for WSL is complete!&lt;/p&gt;
++            &lt;p&gt;Call yast2 any time to tweak it.&lt;/p&gt;
++            &lt;p&gt;Have a lot of fun...&lt;/p&gt;
++        </label></congratulate>
+     </texts>
+ </productDefines>
