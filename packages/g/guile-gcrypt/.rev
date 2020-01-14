@@ -32,4 +32,12 @@
     <comment>this time with sources mentioned in the spec file :)</comment>
     <requestid>758240</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d0840e45d0abcfbb1886347662437d35</srcmd5>
+    <version>0.2.1</version>
+    <time>1579032704</time>
+    <user>dimstar_suse</user>
+    <comment>Make ready for Guile 3.0</comment>
+    <requestid>764388</requestid>
+  </revision>
 </revisionlist>

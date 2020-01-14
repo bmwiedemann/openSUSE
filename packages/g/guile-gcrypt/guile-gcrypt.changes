@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 21:37:13 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Make guile-gcrypt-rpmlintrc compatible with Guile 3.0 
+
+-------------------------------------------------------------------
 Thu Dec 19 15:09:11 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Add guile-gcrypt-rpmlintrc as source to the spec file 
