@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 10:16:27 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add "quiet" to kernelcmdline
+
+-------------------------------------------------------------------
 Fri Jan 10 12:21:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build vagrant images for aarch64 too
