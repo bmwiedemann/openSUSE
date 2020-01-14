@@ -25,4 +25,13 @@
 - Tweak up the dependencies to not be unresolvable</comment>
     <requestid>763946</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1baa362d5e0973a94a64f37467d5743b</srcmd5>
+    <version>0.4.10</version>
+    <time>1579032541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.10:
+  * various bugfixes all around</comment>
+    <requestid>764222</requestid>
+  </revision>
 </revisionlist>
