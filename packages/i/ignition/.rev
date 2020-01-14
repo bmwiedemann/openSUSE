@@ -124,4 +124,14 @@ Ignition is a minimal alternative to cloud-init, supposed to replace it for cert
 </comment>
     <requestid>761945</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>0f80e275d40d6fd129a5f84db1fe7466</srcmd5>
+    <version>2.1.1</version>
+    <time>1579032681</time>
+    <user>dimstar_suse</user>
+    <comment>Add 0002-allow-multiple-mounts-of-same-device.patch:
+Allows mounting a device multiple times, e.g. to mount several subvolumes from a Btrfs device or bind mounting the device to multiple places, by adding the path to the key. [Workaround for gh#coreos/ignition#890]
+</comment>
+    <requestid>764393</requestid>
+  </revision>
 </revisionlist>

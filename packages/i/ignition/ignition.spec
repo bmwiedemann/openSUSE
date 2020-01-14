@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/coreos/ignition
 Source:         %{name}-%{version}.tar.xz
 Patch1:         0001-Throw-error-if-SSH-keys-could-not-be-written.patch
+Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Requires:       dracut
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
@@ -42,6 +43,7 @@ applies the configuration.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build

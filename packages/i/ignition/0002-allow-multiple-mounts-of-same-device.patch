@@ -1,0 +1,21 @@
+Author: Ignaz Forster <iforster@suse.com>
+Date:   Wed Jan 14 17:57:52 2020 +0100
+Upstream: Ticket opened [gh#coreos/ignition#890]
+
+    Implement poor man's solution for mounting a device multiple times,
+    e.g. to mount several subvolumes from a Btrfs device or bind mounting
+    the device to multiple places, by also adding the path to the key.
+
+diff --git a/config/v3_1_experimental/types/filesystem.go b/config/v3_1_experimental/types/filesystem.go
+index 964dfca..bd301f8 100644
+--- a/config/v3_1_experimental/types/filesystem.go
++++ b/config/v3_1_experimental/types/filesystem.go
+@@ -23,7 +23,7 @@ import (
+ )
+ 
+ func (f Filesystem) Key() string {
+-	return f.Device
++	return f.Device + *f.Path
+ }
+ 
+ func (f Filesystem) IgnoreDuplicates() map[string]struct{} {

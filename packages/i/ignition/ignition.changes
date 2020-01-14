@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 14 17:05:19 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Add 0002-allow-multiple-mounts-of-same-device.patch:
+  Allow mounting a device multiple times, e.g. to mount several
+  subvolumes from a Btrfs device or bind mounting the device to
+  multiple places, by also adding the path to the key.
+  [Workaround for gh#coreos/ignition#890]
+
+-------------------------------------------------------------------
 Wed Jan  8 17:47:30 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Add 0001-Throw-error-if-SSH-keys-could-not-be-written.patch:
