@@ -36,7 +36,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  polkit-default-privs
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
