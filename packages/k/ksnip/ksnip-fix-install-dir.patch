@@ -1,0 +1,11 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3dfac9b..6d6f787 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -109,5 +109,5 @@ elseif(WIN32)
+ endif ()
+ 
+ if (UNIX AND NOT APPLE)
+-	install(TARGETS ksnip RUNTIME DESTINATION /bin)
++	install(TARGETS ksnip RUNTIME DESTINATION /usr/bin)
+ endif ()
