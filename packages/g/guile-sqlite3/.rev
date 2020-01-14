@@ -33,4 +33,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>719579</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>937c1ce07a387ca9ff9825c6c19bb546</srcmd5>
+    <version>0.1.0</version>
+    <time>1579032716</time>
+    <user>dimstar_suse</user>
+    <comment>Make ready for Guile 3.0 with patch from upstream</comment>
+    <requestid>764391</requestid>
+  </revision>
 </revisionlist>

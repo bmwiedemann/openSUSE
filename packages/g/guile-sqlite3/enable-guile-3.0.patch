@@ -1,0 +1,23 @@
+From 103fa4973b4d3033d9a69751d6164536d9893fd9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ludovic=20Court=C3=A8s?= <ludo@gnu.org>
+Date: Sat, 1 Jun 2019 16:35:11 +0200
+Subject: [PATCH] build: Allow builds with Guile 3.0.
+
+* configure.ac: Add 3.0 to 'GUILE_PKG'.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index f648fcb..7e20075 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,7 +14,7 @@ dnl Make sure they are available.
+ m4_pattern_forbid([PKG_CHECK_MODULES])
+ m4_pattern_forbid([GUILE_PKG])
+ 
+-GUILE_PKG([2.2 2.0])
++GUILE_PKG([3.0 2.2 2.0])
+ GUILE_PROGS
+ 
+ PKG_CHECK_MODULES([SQLITE], [sqlite3])

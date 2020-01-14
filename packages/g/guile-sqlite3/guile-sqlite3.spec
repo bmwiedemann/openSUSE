@@ -1,7 +1,7 @@
 #
 # spec file for package guile-sqlite3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,10 @@ Release:        0
 Summary:        SQLite3 database access from Guile
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/Other
-Url:            https://notabug.org/guile-sqlite3/guile-sqlite3
+URL:            https://notabug.org/guile-sqlite3/guile-sqlite3
 Source0:        https://notabug.org/guile-sqlite3/%{name}/archive/v%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM: enable-guile-3.0.patch -- 103fa4973b
+Patch0:         enable-guile-3.0.patch
 BuildRequires:  automake
 BuildRequires:  guile-devel >= 2.0.10
 BuildRequires:  pkg-config
@@ -37,6 +39,7 @@ This package provides Guile bindings to the SQLite3 database system.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 
 %build
 autoreconf -vfi
