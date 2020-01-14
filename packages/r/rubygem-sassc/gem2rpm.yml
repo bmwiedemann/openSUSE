@@ -19,24 +19,25 @@
 #   BuildRequires: foobar
 #   Requires: foobar
 :preamble: |-
-  BuildRequires: gcc-c++
+  BuildRequires:  gcc-c++
 # ## used by gem2rpm
-# :patches:
-#   foo.patch: -p1
+:patches:
+  reproducible.patch: -p1
 #   bar.patch:
 # :post_patch:
 #   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
 :sources:
   - rpmlintrc
-# :gem_install_args: '....'
+:gem_install_args: '  --extconf-opts=--disable-march-tune-native'
 # ## used by gem2rpm
 # :pre_install: |-
 #   %if 0%{?use_system_libev}
 #   export USE_VENDORED_LIBEV="no"
 #   %endif
 # ## used by gem2rpm
-# :post_install: |-
+:post_install: |-
+   find %{buildroot}%{_libdir} -name sassc-2.\*.info -delete
 #   # delete custom files here or do other fancy stuff
 #   install -D -m 0644 %{S:1} %{buildroot}%{_bindir}/gem2rpm-opensuse
 # ## used by gem2rpm

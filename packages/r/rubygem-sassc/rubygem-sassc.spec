@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sassc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,9 @@ Url:            https://github.com/sass/sassc-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rpmlintrc
 Source2:        gem2rpm.yml
+# MANUAL
+Patch0:  reproducible.patch
+# /MANUAL
 Summary:        Use libsass with Ruby!
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -47,14 +50,23 @@ Group:          Development/Languages/Ruby
 Use libsass with Ruby!.
 
 %prep
+%gem_unpack
+%patch0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 
 %install
 %gem_install \
+  --extconf-opts=--disable-march-tune-native \
   --doc-files="CHANGELOG.md LICENSE.txt README.md" \
   -f
 %gem_cleanup
+# MANUAL
+find %{buildroot}%{_libdir} -name sassc-2.\*.info -delete
+# /MANUAL
+
 
 %gem_packages
 

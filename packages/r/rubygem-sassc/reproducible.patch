@@ -1,0 +1,28 @@
+https://github.com/sass/sassc-ruby/pull/178
+
+commit 0458396c8494aff3d71aa75cb401b2ad6fe78c1e
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Thu Jan 9 21:12:33 2020 +0100
+
+    Sort input file list
+    
+    so that libsass.so builds in a reproducible way
+    in spite of indeterministic filesystem readdir order.
+    
+    See https://reproducible-builds.org/ for why this is good.
+    
+    This PR was done while working on reproducible builds for openSUSE.
+
+diff --git a/ext/extconf.rb b/ext/extconf.rb
+index 08e067c..5e36d97 100644
+--- a/ext/extconf.rb
++++ b/ext/extconf.rb
+@@ -56,7 +56,7 @@ $INCFLAGS << " -I$(srcdir)/libsass/include"
+ $VPATH << "$(srcdir)/libsass/src"
+ Dir.chdir(__dir__) do
+   $VPATH += Dir['libsass/src/*/'].map { |p| "$(srcdir)/#{p}" }
+-  $srcs = Dir['libsass/src/**/*.{c,cpp}']
++  $srcs = Dir['libsass/src/**/*.{c,cpp}'].sort
+ end
+ 
+ MakeMakefile::LINK_SO << "\nstrip -x $@"
