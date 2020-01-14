@@ -319,4 +319,12 @@
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762473</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6b7b1b50e43d6f28f924931a217b658c</srcmd5>
+    <version>19.12.1</version>
+    <time>1579032760</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the unneeded python2 requirement</comment>
+    <requestid>764402</requestid>
+  </revision>
 </revisionlist>

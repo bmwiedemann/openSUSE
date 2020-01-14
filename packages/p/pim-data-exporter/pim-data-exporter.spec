@@ -36,7 +36,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext-devel
 # Only required for the icon
 BuildRequires:  kontact
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
