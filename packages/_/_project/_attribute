@@ -91,6 +91,7 @@
   boo#1160164: '20200112'
   boo#1160720: '20200111'
   boo#1160721: '20200111'
+  boo#1160869: '20200112'
   bsc#1114673: '20191202'
   bsc#1120957: '20190508'
   bsc#1126782: '20191016'
@@ -311,6 +312,8 @@ products:
     - x86_64
   - opensuse-mariadb-image:
     - x86_64
+  - opensuse-redis-image:
+    - x86_64
   - opensuse-registry-image:
     - x86_64
   - opensuse-toolbox-image:
@@ -400,7 +403,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200112'
+    <value>failed: ''
 published: '20200111'
 publishing: '20200111'
 testing: '20200112'
