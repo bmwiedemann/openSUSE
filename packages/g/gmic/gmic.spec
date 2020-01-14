@@ -1,7 +1,7 @@
 #
 # spec file for package gmic
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Disable LTO as it removes important symbols
+#
+# g++ use_libgmic.cpp -o use_gmic -L/tmp/local/gmic/lib64 -lgmic
+# use_libgmic.cpp:function main: error: undefined reference to 'cimg_library::CImgList<float>::assign(unsigned int)'
+#
+# https://discuss.pixls.us/t/gmic-lookup-symbol-err-on-opensuse-darktable-master-build/15827
+#
+%define _lto_cflags %{nil}
 
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
