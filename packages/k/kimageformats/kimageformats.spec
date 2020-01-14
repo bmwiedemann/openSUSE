@@ -1,7 +1,7 @@
 #
 # spec file for package kimageformats
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.65
+%define _tar_path 5.66
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kimageformats
-Version:        5.65.0
+Version:        5.66.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
