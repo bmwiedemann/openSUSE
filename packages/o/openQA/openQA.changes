@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 14 06:50:10 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1578936542.0e251d1f0:
+  * Fix cache service log formatting
+  * Test asset download of openqa-clone-job script
+  * Fix support for symlinked cache dirs
+  * Allow to skip removing documentation output
+  * Improve referencing different setup documentations
+  * Move "Development setup" to contributing
+  * Improve documentation about db migration
+  * Fix documentation for passing --from to openqa-bootstrap
+  * Add further documentation from openQA-helper
+  * Provide general info about making a devel setup, mention openQA-helper
+  * Use job_template_name as the TEST when scheduling jobs
+
+-------------------------------------------------------------------
 Sat Jan 11 22:50:14 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1578688138.bc8a43167:
