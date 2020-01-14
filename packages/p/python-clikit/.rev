@@ -26,4 +26,13 @@
   - Fixed parsing of options after a -- token. (forwarded request 751627 from mcepl)</comment>
     <requestid>751628</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d3edf49b09821152e263169b8baef4f</srcmd5>
+    <version>0.4.1</version>
+    <time>1579032548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * minor fixes</comment>
+    <requestid>764231</requestid>
+  </revision>
 </revisionlist>

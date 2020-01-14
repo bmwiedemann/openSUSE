@@ -1,7 +1,7 @@
 #
 # spec file for package python-clikit
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-clikit
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Helper to build testable command line interfaces
 License:        MIT
@@ -49,7 +49,6 @@ command line interfaces.
 %prep
 %setup -q -n clikit-%{version}
 dephell deps convert --from pyproject.toml --to setup.py
-mv src/clikit .
 
 %build
 %python_build
