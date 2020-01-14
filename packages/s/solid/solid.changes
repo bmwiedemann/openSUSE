@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:02:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Remove endl. qCritical/qDebug already adds a endl.
+  * Clean up unnecessary code
+  * Display first / in mounted storage access description
+  * Port QSet::toList deprecated method
+  * Remove unused header from QtWidgets
+  * Fix build on BSD
+  * Port solid from Qt5::Widgets to Qt5::Gui
+  * Ensure mounted nfs filesystems matches their fstab declared counterpart (kde#406242)
+  * Update the obsolete projects.kde.org URL
+
+-------------------------------------------------------------------
 Sun Dec  8 11:18:58 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.65.0

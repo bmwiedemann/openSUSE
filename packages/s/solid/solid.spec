@@ -1,7 +1,7 @@
 #
 # spec file for package solid
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.65
+%define _tar_path 5.66
 %bcond_without lang
 Name:           solid
-Version:        5.65.0
+Version:        5.66.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -41,9 +41,9 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent) >= 5.11.0
 BuildRequires:  cmake(Qt5DBus) >= 5.11.0
+BuildRequires:  cmake(Qt5Gui) >= 5.11.0
 BuildRequires:  cmake(Qt5Qml) >= 5.11.0
 BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 BuildRequires:  pkgconfig(libudev)
 %if %{with lang}
