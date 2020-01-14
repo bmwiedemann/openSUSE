@@ -1,7 +1,7 @@
 #
 # spec file for package baloo5
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.65
+%define _tar_path 5.66
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5
-Version:        5.65.0
+Version:        5.66.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -187,7 +187,6 @@ package contains aditional command line utilities. Development files.
 %{_kf5_bindir}/baloo_file_extractor
 %{_kf5_bindir}/balooctl
 %{_kf5_configdir}/autostart/baloo_file.desktop
-%{_kf5_iconsdir}/hicolor/*/apps/baloo.png
 %{_kf5_debugdir}/baloo.categories
 
 %files kioslaves
