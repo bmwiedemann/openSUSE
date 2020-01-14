@@ -53,7 +53,6 @@ BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libspectre-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  python3-devel
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  xz
@@ -155,7 +154,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_appstreamdir}/
 %{_kf5_bindir}/cantor
 %{_kf5_bindir}/cantor_python3server
-%{_kf5_bindir}/cantor_python2server
 %{_kf5_bindir}/cantor_rserver
 %{_kf5_bindir}/cantor_scripteditor
 %{_kf5_configkcfgdir}/
@@ -182,7 +180,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/cantor/backends/cantor_kalgebrabackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_maximabackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_octavebackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_python2backend.so
 %{_kf5_plugindir}/cantor/backends/cantor_python3backend.so
 %{_kf5_plugindir}/cantor/backends/cantor_rbackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_sagebackend.so
