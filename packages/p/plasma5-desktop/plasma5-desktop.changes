@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 12 20:33:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the activity list in the KCM (kde#416158):
+  * 0001-Revert-KCMs-Activities-Fix-jagginess-for-activities-.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5

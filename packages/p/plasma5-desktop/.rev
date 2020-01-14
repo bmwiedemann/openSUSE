@@ -1096,4 +1096,13 @@
     <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
     <requestid>762000</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>5fa978125616dd17114f579b7574b5de</srcmd5>
+    <version>5.17.5</version>
+    <time>1579032288</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix the activity list in the KCM (kde#416158):
+  * 0001-Revert-KCMs-Activities-Fix-jagginess-for-activities-.patch</comment>
+    <requestid>763704</requestid>
+  </revision>
 </revisionlist>
