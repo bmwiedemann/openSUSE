@@ -137,4 +137,12 @@
     <comment>- Run the pytest call only once</comment>
     <requestid>760393</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>864daa605549b7521374f52c87e36e66</srcmd5>
+    <version>0.14.0</version>
+    <time>1579032728</time>
+    <user>dimstar_suse</user>
+    <comment>- Add isAlive_failed_test.patch as a fix for gh#python-rope/rope#283</comment>
+    <requestid>764326</requestid>
+  </revision>
 </revisionlist>

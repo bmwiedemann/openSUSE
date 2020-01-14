@@ -26,6 +26,9 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/python-rope/rope
 Source:         https://files.pythonhosted.org/packages/source/r/rope/rope-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM isAlive_failed_test.patch gh#python-rope/rope#283 mcepl@suse.com
+# Fix problems with aliased collections -> collections.abc
+Patch0:         isAlive_failed_test.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -38,6 +41,7 @@ Rope is a python refactoring library.
 
 %prep
 %setup -q -n rope-%{version}
+%autopatch -p1
 
 %build
 export LANG=en_US.UTF-8
@@ -52,8 +56,7 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-# Work around gh#python-rope/rope#247
-%pytest -k 'not (test_hint_parametrized_iterable or test_hint_parametrized_iterator)'
+%pytest
 
 %files %{python_files}
 %license COPYING

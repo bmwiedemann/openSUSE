@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 15:29:21 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add isAlive_failed_test.patch as a fix for gh#python-rope/rope#283
+
+-------------------------------------------------------------------
 Thu Jan  2 10:23:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Run the pytest call only once
