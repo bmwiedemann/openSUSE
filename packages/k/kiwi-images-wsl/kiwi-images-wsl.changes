@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Tue Nov 19 16:31:52 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- add aaa_base-wsl to fix default PATH for Windows integration (boo#1156950)
+
+-------------------------------------------------------------------
+Mon Oct 14 15:27:15 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- use yast2-firstboot with custom control file
+- remove empty password hack
+
+-------------------------------------------------------------------
+Fri Oct 11 11:30:27 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- do not delete dracut and stuff. Even though they are not useful other
+  packages require them. So force removing would produce an inconsistent system
+- add iputils explicitly. It's only recommended by the minimal pattern but
+  still useful to have by default as it includes ping
+
+-------------------------------------------------------------------
+Wed Oct  2 10:03:39 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- remove devel packages like gcc to avoid excessive size
+
+-------------------------------------------------------------------
+Tue Oct  1 13:11:09 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- remove root.tar.bz2
+- merge config.sh from docker container template
+- use openSUSE-release-appliance-wsl
+
+-------------------------------------------------------------------
+Tue Oct  1 13:04:39 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- rename to kiwi-images-wsl
+
+-------------------------------------------------------------------
+Wed May 22 22:03:04 UTC 2019 - Rich Williams <riwilliams@suse.com>
+
+- Deliberately adding in the "openSUSE-release" and "lsb-release"
+  packages.
+  - "lsb-release" is part of the Linux Standard Base.
+  - If "openSUSE-release" is _not_ specified, then "dummy-release"
+    seems to be automatically picked.
+- Deliberately deleted the "dummy-release" package.  DO NOT WANT. 
+
+-------------------------------------------------------------------
+Tue Apr  9 13:06:34 UTC 2019 - Rich Williams <riwilliams@suse.com>
+
+- package change 15.0->15.1: 
+  openSUSE-release -> openSUSE-release-appliance-custom
+- WSL tarball built sucessfully!
+
+-------------------------------------------------------------------
+Tue Apr  9 12:43:32 UTC 2019 - Rich Williams <riwilliams@suse.com>
+
+- working thru included packages errors when building 
+  (libyui-ncurses-pkg8 -> libyui-ncurses-pkg) 
+
+-------------------------------------------------------------------
+Tue Apr  9 12:38:43 UTC 2019 - Rich Williams <riwilliams@suse.com>
+
+- Updated for building 15.1 
+
+-------------------------------------------------------------------
+Wed Jan 30 14:14:39 UTC 2019 - agraf@suse.com
+
+- Add Ports repos for aarch64
+- Change repo names to more descriptive ones
+
+-------------------------------------------------------------------
+Wed Jan 30 13:48:59 UTC 2019 - agraf@suse.com
+
+- Use obsrepositories:/
+
+-------------------------------------------------------------------
+Thu Sep 27 14:51:11 UTC 2018 - Rich Williams <riwilliams@suse.com>
+
+- Initial image

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="6.1" name="opensuse-wsl">
+  <!-- IMPORTANT:
+        Before submitting this package, enable the 
+        production repo and disable the development one.
+        Afterwards, do the oppposite action -->
+  <description type="system">
+    <author>SUSE WSL Team</author>
+    <contact>wsl@suse.com</contact>
+    <specification>openSUSE WSL Image</specification>
+  </description>
+  <!-- so far we need docker just to please containment-rpm-docker -->
+  <preferences>
+    <type image="docker">
+      <containerconfig
+        name="opensuse/wsl"
+        tag="15.2"
+        maintainer="SUSE WSL Team &lt;wsl@suse.com&gt;">
+      </containerconfig>
+    </type>
+    <version>15.2</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="image">
+    <package name="ca-certificates"/>
+    <package name="ca-certificates-mozilla"/>
+    <package name="openSUSE-build-key"/>
+    <package name="sudo"/>
+    <package name="command-not-found"/>
+    <package name="vim"/>
+    <package name="joe"/>
+    <package name="patterns-openSUSE-minimal_base"/>
+    <!-- only recommended in pattern -->
+    <package name="iputils"/>
+    <package name="openssh"/>
+    <package name="wget"/>
+    <package name="screen"/>
+    <package name="less"/>
+    <package name="man"/>
+    <package name="zip"/>
+    <package name="bzip2"/>
+    <package name="dos2unix"/>
+    <package name="libyui-ncurses-pkg"/>
+    <package name="yast2-packager"/>
+    <package name="yast2-firstboot"/>
+    <package name="yast2-firstboot-wsl"/>
+    <package name="aaa_base-extras"/>
+    <package name="aaa_base-wsl"/>
+    <!-- only in enhanced_base boo#1150379 -->
+    <package name="timezone"/>
+    <!-- needed for nullok hack in config.sh for now -->
+    <package name="pam-config"/>
+    <!-- Only used in config.sh and then removed again -->
+    <package name="live-add-yast-repos"/>
+  </packages>
+  <packages type="bootstrap">
+    <package name="filesystem"/>
+    <package name="openSUSE-release"/>
+    <package name="openSUSE-release-appliance-wsl"/>
+  </packages>
+</image>
+
