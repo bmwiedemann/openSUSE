@@ -991,68 +991,11 @@ unsorted:
   - aytests-tests 
   - azove 
   - azure-cli 
-  - azure-cli-acr 
-  - azure-cli-acs 
-  - azure-cli-advisor 
-  - azure-cli-ams 
-  - azure-cli-appservice 
-  - azure-cli-backup 
-  - azure-cli-batch 
-  - azure-cli-batchai 
-  - azure-cli-billing 
-  - azure-cli-botservice 
-  - azure-cli-cdn 
-  - azure-cli-cloud 
-  - azure-cli-cognitiveservices 
   - azure-cli-command-modules-nspkg 
-  - azure-cli-component 
-  - azure-cli-configure 
-  - azure-cli-consumption 
-  - azure-cli-container 
   - azure-cli-core 
-  - azure-cli-cosmosdb 
-  - azure-cli-deploymentmanager 
-  - azure-cli-dla 
-  - azure-cli-dls 
-  - azure-cli-dms 
-  - azure-cli-eventgrid 
-  - azure-cli-eventhubs 
-  - azure-cli-extension 
-  - azure-cli-feedback 
-  - azure-cli-find 
-  - azure-cli-hdinsight 
-  - azure-cli-interactive 
-  - azure-cli-iot 
-  - azure-cli-iotcentral 
-  - azure-cli-keyvault 
-  - azure-cli-kusto 
-  - azure-cli-lab 
-  - azure-cli-maps 
-  - azure-cli-monitor 
-  - azure-cli-natgateway 
-  - azure-cli-network 
   - azure-cli-nspkg 
-  - azure-cli-policyinsights 
-  - azure-cli-privatedns 
-  - azure-cli-profile 
-  - azure-cli-rdbms 
-  - azure-cli-redis 
-  - azure-cli-relay 
-  - azure-cli-reservations 
-  - azure-cli-resource 
-  - azure-cli-role 
-  - azure-cli-search 
-  - azure-cli-security 
-  - azure-cli-servicebus 
-  - azure-cli-servicefabric 
-  - azure-cli-signalr 
-  - azure-cli-sql 
-  - azure-cli-sqlvm 
-  - azure-cli-storage 
-  - azure-cli-taskhelp 
   - azure-cli-telemetry 
   - azure-cli-test 
-  - azure-cli-vm 
   - babe 
   - babelstone-han-fonts 
   - babelstone-marchen-fonts 
@@ -6760,7 +6703,6 @@ unsorted:
   - ktp-send-file-lang 
   - ktp-text-ui 
   - ktp-text-ui-lang 
-  - kubectl: [x86_64] 
   - kubernetes-apiserver: [x86_64] 
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-dashboard: [x86_64] 
@@ -6773,7 +6715,6 @@ unsorted:
   - kubernetes-proxy: [x86_64] 
   - kubernetes-salt 
   - kubernetes-scheduler: [x86_64] 
-  - kubic-haproxycfg: [x86_64] 
   - kubic-locale-archive: [i586] 
   - kubic-pause 
   - kuiviewer 
@@ -6786,7 +6727,6 @@ unsorted:
   - kured 
   - kured-k8s-yaml: [i586] 
   - kurso-de-esperanto 
-  - kustomize: [x86_64] 
   - kvirc 
   - kwallet-devel 
   - kwallet-devel-32bit: [x86_64] 
@@ -12502,6 +12442,8 @@ unsorted:
   - libzzip-0-13 
   - libzzip-0-13-32bit: [x86_64] 
   - lifelines 
+  - liferea 
+  - liferea-lang 
   - light-locker 
   - light-locker-lang 
   - lightdm-gobject-devel 
@@ -13831,6 +13773,7 @@ unsorted:
   - msmtp 
   - msmtp-doc 
   - msmtp-mta 
+  - msoak 
   - mspack-examples 
   - msr-tools 
   - mstflint 
@@ -14864,6 +14807,7 @@ unsorted:
   - ocfs2-tools-devel-static 
   - ocfs2-tools-o2cb 
   - ocl-icd-devel 
+  - ocli 
   - oclock 
   - ocr-gnu-hpc 
   - ocr-gnu-hpc-devel 
@@ -17547,7 +17491,6 @@ unsorted:
   - python-djvulibre-doc 
   - python-doc 
   - python-doc-pdf 
-  - python-efilter 
   - python-fastcluster-doc 
   - python-faulthandler 
   - python-fedmsg-base 
@@ -18537,6 +18480,7 @@ unsorted:
   - python2-ed25519ll 
   - python2-editdistance 
   - python2-editdistance-devel 
+  - python2-efilter 
   - python2-efl 
   - python2-efl-doc 
   - python2-efl-examples 
@@ -18596,6 +18540,7 @@ unsorted:
   - python2-flake8-class-newline 
   - python2-flake8-debugger 
   - python2-flake8-deprecated 
+  - python2-flake8-docstrings 
   - python2-flake8-future-import 
   - python2-flake8-import-order 
   - python2-flake8-imports 
@@ -19124,6 +19069,7 @@ unsorted:
   - python2-parted 
   - python2-parver 
   - python2-pass_python_keyring 
+  - python2-passa 
   - python2-passivetotal 
   - python2-passlib 
   - python2-pastel 
@@ -19681,6 +19627,7 @@ unsorted:
   - python2-simpleeval 
   - python2-simplegeneric 
   - python2-simplejson 
+  - python2-simplekml 
   - python2-sip 
   - python2-sip-devel 
   - python2-siphashc 
@@ -20925,6 +20872,7 @@ unsorted:
   - python3-ed25519 
   - python3-editdistance 
   - python3-editdistance-devel 
+  - python3-efilter 
   - python3-efl 
   - python3-efl-doc 
   - python3-efl-examples 
@@ -22288,6 +22236,7 @@ unsorted:
   - python3-simplebayes 
   - python3-simpleeval 
   - python3-simplegeneric 
+  - python3-simplekml 
   - python3-sip-devel 
   - python3-siphashc 
   - python3-sklearn-pandas 
@@ -24738,6 +24687,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
+  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
@@ -32770,6 +32720,7 @@ unsorted:
   - u2f-host 
   - u2f-server 
   - u3-tool 
+  - uacme 
   - ubuntu-fonts 
   - ubuntu-mate-icon-theme 
   - ubuntu-mate-wallpapers 
