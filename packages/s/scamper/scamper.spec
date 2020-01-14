@@ -1,7 +1,7 @@
 #
 # spec file for package scamper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           scamper
-Version:        20190916
+Version:        20191102
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-Url:            https://www.caida.org/tools/measurement/scamper/
+URL:            https://www.caida.org/tools/measurement/scamper/
 Source:         https://www.caida.org/tools/measurement/%{name}/code/%{name}-cvs-%{version}.tar.gz
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig

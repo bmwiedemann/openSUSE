@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan  6 19:30:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+-update to version 20191102:
+ * scamper
+  * escape hostname in json output for tracelb
+  * use length parameters when parsing hostname responses, from
+    Marianne Fletcher
+ * sc_bdrmap
+  * add a -O noalias option to tell bdrmap to not do alias resolution.
+  * update -C documentation in the sc_bdrmap.1 man page
+  * fix a memory leak of trace objects in -d traces
+  * print RTT in -d traces
+  * add an -M option to help corner cases with private and IXP addresses
+  * relax heuristics to allow VPs to claim routers with IP2AS when no
+    other router assignments can take place
+  * turn off analytical interface alias resolution heuristics by default
+ * sc_hoiho
+  * change -O verbose to -O debug to better reflect what it does.
+  * change tpa to atp to be consistent with language in paper
+    https://www.caida.org/~mjl/pubs/rnc.pdf
+  * free a malloc, pointed out by clang static analysis
+  * add support for reading -d 3 output, which is the format of
+    regular expressions provided in the data supplement:
+    http://data.caida.org/datasets/supplement/2019-imc-hoiho/
+ * sc_uptime
+  * add a metadata table to be able to track metadata across sc_uptime
+    invocations, from Marianne Fletcher
+  * fix an error message when trying to create a database that
+    already exists.
+
+-------------------------------------------------------------------
 Wed Sep 18 19:37:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove SIOCGSTAMP.patch
