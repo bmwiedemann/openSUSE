@@ -1,7 +1,7 @@
 #
 # spec file for package pulseeffects
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pulseeffects
-Version:        4.6.8
+Version:        4.7.0
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -51,11 +51,11 @@ Requires:       gstreamer-plugins-good >= 1.12.5
 Requires:       ladspa-swh-plugins
 Requires:       pulseaudio
 Recommends:     %{name}-lang
-Recommends:     lsp-plugins
+Recommends:     ladspa-zam-plugins
 Recommends:     lv2-calf >= 0.90.1
+Recommends:     lv2-lsp-plugins
 Recommends:     mda-lv2
 Recommends:     rubberband-ladspa
-Recommends:     zam-plugins
 
 %description
 PulseEffects is a limiter, compressor, reverberation, stereo equalizer and auto volume

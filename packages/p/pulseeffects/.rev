@@ -32,4 +32,18 @@
     <comment></comment>
     <requestid>732745</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>db4dbd94f33c47b932383bf23e0bab20</srcmd5>
+    <version>4.7.0</version>
+    <time>1579032493</time>
+    <user>dimstar_suse</user>
+    <comment>-Fix recommended dependencies to enable all functionalities.
+-Update to version 4.7.0 (see CHANGELOG.md)
+ * Improved Italian translations.
+ * Do not open the main window when listing the available presets
+  through command line options.
+  This will also help third party tools like 
+  https://github.com/boomshop/pulseffectstray</comment>
+    <requestid>764192</requestid>
+  </revision>
 </revisionlist>
