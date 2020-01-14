@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:02:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Too many changes since 5.65.0, only listing bugfixes:
+  * Sync QWindow flag WindowDoesNotAcceptFocus to wayland plasmashell interface (kde#415124)
+  * [RFC] Fix Display Configuration icon margins (kde#400087)
+  * [PC3 ToolButton] Have the label take into account complementary color schemes (kde#414929)
+  * Added background colors to active and inactive icon view (kde#370465)
+- Drop calendar-Check-out-of-bounds-array-access.patch. Merged upstream
+
+-------------------------------------------------------------------
 Mon Dec 30 07:16:20 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add calendar-Check-out-of-bounds-array-access.patch to fix a

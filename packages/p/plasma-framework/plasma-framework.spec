@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-framework
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.65
+%define _tar_path 5.66
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           plasma-framework
-Version:        5.65.0
+Version:        5.66.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -36,8 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         calendar-Check-out-of-bounds-array-access.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -75,6 +73,8 @@ BuildRequires:  cmake(Qt5Svg) >= 5.11.0
 BuildRequires:  cmake(Qt5Test) >= 5.11.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.11.0
+#FIXME: Figure how to add it properly
+BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(x11)
 Recommends:     %{name}-components = %{version}
@@ -135,7 +135,6 @@ Plasma library and runtime components based upon KF5 and Qt5
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build
