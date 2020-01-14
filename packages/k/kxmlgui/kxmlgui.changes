@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:02:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Remove endl. qCritical/qDebug already add a endl.
+  * Port QSet::toList deprecated method
+  * Update the obsolete projects.kde.org URL
+  * KActionCollection: provide a changed() signal as a replacement for removed()
+  * Adjust keyboard shortcut configuration window's title
+
+-------------------------------------------------------------------
 Sun Dec  8 11:18:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.65.0
