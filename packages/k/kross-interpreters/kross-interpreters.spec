@@ -26,13 +26,14 @@ Release:        0
 Summary:        Diverse bindings for KROSS
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
+URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  python-devel
+BuildRequires:  ruby-devel
 BuildRequires:  xz
 BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5Kross) >= 5.11.0
@@ -42,14 +43,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 
 %description
-The kross interpreters for Ruby, Python and Java
-
-%package -n kross-python
-Summary:        Python Bindings for kross
-Group:          Development/Libraries/KDE
-
-%description -n kross-python
-The Python bindings which can be used with KROSS
+The kross interpreter for Ruby
 
 %package -n kross-ruby
 Summary:        Ruby Bindings for kross
@@ -58,12 +52,6 @@ Group:          Development/Libraries/KDE
 %description -n kross-ruby
 The Ruby bindings which can be used with KROSS
 
-%package -n kross-java
-Summary:        Java Bindings for kross
-Group:          Development/Libraries/KDE
-
-%description -n kross-java
-The Java bindings which can be used with KROSS
 
 %prep
 %setup -q
@@ -74,10 +62,9 @@ The Java bindings which can be used with KROSS
 
 %install
   %kf5_makeinstall -C build
-  #make DESTDIR=%{buildroot} install
 
-%files -n kross-python
+%files -n kross-ruby
 %license COPYING
-%{_kf5_plugindir}/krosspython.so
+%{_kf5_plugindir}/krossruby.so
 
 %changelog
