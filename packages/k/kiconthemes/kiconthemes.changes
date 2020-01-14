@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:02:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Set breeze as default theme when reading from configuration file
+  * Qt 5.12 is now required so remove the ifdef
+  * Deprecate the top-level IconSize() function
+  * Update the obsolete projects.kde.org URL
+  * Fix centering scaled icons on high dpi pixmaps
+
+-------------------------------------------------------------------
 Sun Dec  8 11:18:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.65.0
