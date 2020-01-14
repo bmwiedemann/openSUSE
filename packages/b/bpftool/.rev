@@ -7,4 +7,12 @@
     <comment>bpftool is a tool for inspection and manipulation of BPF programs developed by the Linux kernel and BPF community.</comment>
     <requestid>703108</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>530e1a43328f4bfafbaf784f312979b6</srcmd5>
+    <version>MACRO</version>
+    <time>1579032338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761911</requestid>
+  </revision>
 </revisionlist>

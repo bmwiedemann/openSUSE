@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:28:37 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use optflags for building
+- build and install man pages
+
+-------------------------------------------------------------------
 Thu May  9 14:41:11 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
 
 - Initial release
