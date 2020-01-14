@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:33:20 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Add automatic cloud detection  
+
+-------------------------------------------------------------------
+Wed Dec 11 15:55:33 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Add option to set multiple sbd disks to the cluster 
+
+-------------------------------------------------------------------
+Wed Dec 11 12:13:43 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Move the cluster configure part to a new state to be executed
+  even when joining executions.
+
+-------------------------------------------------------------------
+Wed Dec 11 09:46:41 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Add option to update hacluster user password 
+
+-------------------------------------------------------------------
 Thu Nov 28 19:17:37 UTC 2019 - Simranpal Singh <simranpal.singh@suse.com>
 
-- Install 'socat' package on the Azure platform
+- Version bump 0.2.10
+  * Install 'socat' package on the Azure platform
   
 -------------------------------------------------------------------
 Wed Oct 30 16:14:32 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
