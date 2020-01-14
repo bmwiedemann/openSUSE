@@ -1,0 +1,51 @@
+From: cunix@bitmessage.ch
+Date: 2019-04-29 16:00:00
+Subject: System certs as fallback for project certs
+References: https://github.com/godotengine/godot/pull/22066#issuecomment-421565719
+            https://github.com/godotengine/godot/pull/22066#issuecomment-422528664
+            https://github.com/godotengine/godot/issues/22232
+Upstream:   might be offered to upstream
+
+If project has no value set for "network/ssl/certificates" (the default),
+function "get_project_cert_array" returns no certificates because we don't
+use builtin certs - BUILTIN_CERTS_ENABLED is not defined. Therefore the
+editor shows an error.
+
+We use a distro specific "system_certs_path" as build option and apply it here
+via "_SYSTEM_CERTS_PATH" (defined in included "core/io/certs_compressed.gen.h")
+as fallback for project certificates.
+
+---
+
+diff -r -U 5 a/core/io/stream_peer_ssl.cpp b/core/io/stream_peer_ssl.cpp
+--- a/core/io/stream_peer_ssl.cpp
++++ b/core/io/stream_peer_ssl.cpp
+@@ -33,10 +33,12 @@
+ #include "core/io/certs_compressed.gen.h"
+ #include "core/io/compression.h"
+ #include "core/os/file_access.h"
+ #include "core/project_settings.h"
+ 
++#include <string.h>
++
+ StreamPeerSSL *(*StreamPeerSSL::_create)() = NULL;
+ 
+ StreamPeerSSL *StreamPeerSSL::create() {
+ 
+ 	return _create();
+@@ -96,10 +98,14 @@
+ 	ProjectSettings::get_singleton()->set_custom_property_info("network/ssl/certificates", PropertyInfo(Variant::STRING, "network/ssl/certificates", PROPERTY_HINT_FILE, "*.crt"));
+ 
+ 	if (certs_path != "") {
+ 		// Use certs defined in project settings.
+ 		return get_cert_file_as_array(certs_path);
++	} else if (strcmp(_SYSTEM_CERTS_PATH, "") != 0) {
++		// Use system certs only if user did not override it in project settings
++		// and if _SYSTEM_CERTS_PATH is set.
++		return get_cert_file_as_array(_SYSTEM_CERTS_PATH);
+ 	}
+ #ifdef BUILTIN_CERTS_ENABLED
+ 	else {
+ 		// Use builtin certs only if user did not override it in project settings.
+ 		out.resize(_certs_uncompressed_size + 1);
+
