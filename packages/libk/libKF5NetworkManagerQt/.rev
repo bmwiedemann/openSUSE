@@ -591,4 +591,12 @@
   * 0001-Sync-Utils-securityIsValid-with-NetworkManager.patch</comment>
     <requestid>760857</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>21101c8a4de5ba12340c79e090e574c4</srcmd5>
+    <version>5.66.0</version>
+    <time>1579032255</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.66.0</comment>
+    <requestid>763497</requestid>
+  </revision>
 </revisionlist>

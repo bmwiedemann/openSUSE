@@ -1,7 +1,7 @@
 #
 # spec file for package libKF5NetworkManagerQt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.65
+%define _tar_path 5.66
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           libKF5NetworkManagerQt
-Version:        5.65.0
+Version:        5.66.0
 Release:        0
 Summary:        A Qt wrapper for NetworkManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -37,8 +37,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/networkm
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Sync-Utils-securityIsValid-with-NetworkManager.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
@@ -80,7 +78,7 @@ your network devices and also provides a library for parsing connection
 settings which are used in DBus communication.
 
 %prep
-%autosetup -p1 -n networkmanager-qt-%{version}
+%setup -q -n networkmanager-qt-%{version}
 
 %build
   %cmake_kf5 -d build
