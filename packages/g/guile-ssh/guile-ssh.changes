@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan  7 14:54:46 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 0.12.0:
+  * API change: Implement new version of the RREPL API
+  * New module: (ssh agent)
+  * Make build with Guile 3.0 possible
+  * Remove bundled SRFI-64, as it's include in Guile since 2.0.12.
+  * Guile-SSH should allow cross-compilation
+  * New procedure 'userauth-gssapi!' in (ssh auth)
+  * Fix a segfault in 'libguile-ssh'
+  * Fix building with libssh 0.8
+  * Fix failing tests and some generic compilation fixes
+- Increase libsoname to 12
+- Remove patches:
+  * 0001-libguile-ssh-Remove-ssh_threads-from-LDFLAGS.patch: included
+    in the release.
+
+-------------------------------------------------------------------
 Mon Feb 25 08:54:01 UTC 2019 - jbrielmaier@suse.de
 
 - set libssh minimum version to 0.6.4 

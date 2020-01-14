@@ -34,4 +34,12 @@ Upstream doesn't have a solution yet, but I'll follow the issue there...
 </comment>
     <requestid>678846</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a147fc434f32c270f6d17d879a248e3d</srcmd5>
+    <version>0.12.0</version>
+    <time>1579032687</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>764335</requestid>
+  </revision>
 </revisionlist>

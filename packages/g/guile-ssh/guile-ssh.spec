@@ -1,7 +1,7 @@
 #
 # spec file for package guile-ssh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define         libsoname lib%{name}11
+%define         libsoname lib%{name}12
 
 Name:           guile-ssh
-Version:        0.11.3
+Version:        0.12.0
 Release:        0
 Summary:        SSH protocol access from Guile
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Other
-Url:            https://github.com/artyom-poptsov/guile-ssh
+URL:            https://github.com/artyom-poptsov/guile-ssh
 Source0:        https://github.com/artyom-poptsov/%{name}/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/artyom-poptsov/guile-ssh/issues/9
-Patch0:         0001-libguile-ssh-Remove-ssh_threads-from-LDFLAGS.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  guile-devel
@@ -60,10 +58,6 @@ The libraries and header files for developing applications that use guile-ssh.
 
 %prep
 %setup -q
-# Leap/SLE 15.0 does still have libssh_threads, so don't use patch
-%if 0%{?sle_version} > 150000 || 0%{?suse_version} > 1500
-%patch0 -p2
-%endif
 
 %build
 autoreconf -vfi
