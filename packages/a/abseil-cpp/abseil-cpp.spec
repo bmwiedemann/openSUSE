@@ -1,7 +1,7 @@
 #
 # spec file for package abseil-cpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Version:        20190808
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
-Url:            https://abseil.io/
+URL:            https://abseil.io/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  bazel-rules-cc-source
@@ -38,6 +38,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  patchelf
+ExcludeArch:    %ix86
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++

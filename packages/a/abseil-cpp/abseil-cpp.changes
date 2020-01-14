@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:54:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set ExcludeArch: %ix86: bazel is required to build which in turn
+  is not supported on ix86.
+
+-------------------------------------------------------------------
 Wed Dec 18 23:12:35 UTC 2019 - Swaminathan Vasudevan <svasudevan@suse.com>
 
 - Update to version 20190808 
