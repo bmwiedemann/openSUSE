@@ -295,4 +295,12 @@
   * Add new firmware for Creative CA0132 HD-Audio Codec</comment>
     <requestid>750715</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>b314cd9bcedfd263f7a4844ae8a1e4a7</srcmd5>
+    <version>1.2.1</version>
+    <time>1579032342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764313</requestid>
+  </revision>
 </revisionlist>

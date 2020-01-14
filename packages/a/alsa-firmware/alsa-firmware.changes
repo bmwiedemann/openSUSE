@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:46:03 CET 2020 - tiwai@suse.de
+
+- Comment out superfluous buildreq automake
+- Run fdupes for reducing the duplications
+- Remove conflicting CA0132 files against kernel-firmware
+- Add supplements for the automatic installation
+- Install license-related files into licensesdir
+- Drop the support for old distros (<1200), drop old udev rules
+
+-------------------------------------------------------------------
 Fri Nov 15 17:42:05 CET 2019 - tiwai@suse.de
 
 - Update to alsa-firmare 1.2.1:
