@@ -1,7 +1,7 @@
 #
 # spec file for package guile-bytestructures
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           guile-bytestructures
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Bytestructures for Guile
 License:        GPL-3.0-only
 Group:          Development/Libraries/Other
-Url:            https://github.com/TaylanUB/scheme-bytestructures
+URL:            https://github.com/TaylanUB/scheme-bytestructures
 Source0:        https://github.com/TaylanUB/scheme-bytestructures/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -49,9 +49,9 @@ make %{?_smp_mflags}
 %defattr(-,root,root)
 %license COPYING
 %doc README.md
-%dir %{_datadir}/guile/site/2.*
-%{_datadir}/guile/site/2.*/*
-%dir %{_libdir}/guile/2.*/site-ccache
-%{_libdir}/guile/2.*/site-ccache/bytestructures*
+%dir %{_datadir}/guile/site/*
+%{_datadir}/guile/site/*
+%dir %{_libdir}/guile/*/site-ccache
+%{_libdir}/guile/*/site-ccache/bytestructures*
 
 %changelog

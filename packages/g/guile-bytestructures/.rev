@@ -32,4 +32,12 @@ dependency for guix</comment>
     <comment>Add support for upcoming Guile 3.0 :)</comment>
     <requestid>726774</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58714f63f080df4cda960696cc2a3b1f</srcmd5>
+    <version>1.0.7</version>
+    <time>1579032698</time>
+    <user>dimstar_suse</user>
+    <comment>Update and make ready for Guile 3.0</comment>
+    <requestid>764387</requestid>
+  </revision>
 </revisionlist>
