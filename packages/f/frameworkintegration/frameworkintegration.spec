@@ -1,7 +1,7 @@
 #
 # spec file for package frameworkintegration
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Style5
-%define _tar_path 5.65
+%define _tar_path 5.66
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           frameworkintegration
-Version:        5.65.0
+Version:        5.66.0
 Release:        0
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 License:        LGPL-2.1-or-later
@@ -55,9 +55,6 @@ BuildRequires:  cmake(Qt5DBus) >= 5.11.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.11.0
 BuildRequires:  cmake(packagekitqt5)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xcursor)
 %if 0%{?suse_version} >= 1330 || (0%{?sle_version} >= 120200 && 0%{?is_opensuse})
 BuildRequires:  cmake(AppStreamQt) >= 0.10.4
 %endif

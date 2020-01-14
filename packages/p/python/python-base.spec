@@ -88,7 +88,9 @@ Patch56:        adapted-from-F00251-change-user-install-location.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
+%if %{suse_version} > 1200
 BuildRequires:  libnsl-devel
+%endif
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  zlib-devel

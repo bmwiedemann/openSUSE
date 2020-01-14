@@ -1,7 +1,0 @@
-addFilter("non-etc-or-var-file-marked-as-conffile .*/srv/moin/moin.wsgi")
-addFilter("non-executable-script .*/usr/lib/python.*/site-packages")
-addFilter("non-executable-script /usr/share/moin/server/test.wsgi")
-addFilter("zero-length .*/usr/share/moin/data")
-addFilter("zero-length .*/usr/lib/python.*/site-packages")
-addFilter("files-duplicate .*/usr/share/moin")
-

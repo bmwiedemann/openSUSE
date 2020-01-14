@@ -3062,4 +3062,41 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
   * Calendar: Last day of long-running events was not shown</comment>
     <requestid>759724</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>6b7b70ea89fa83df1fb0d30d172808dd</srcmd5>
+    <version>68.4.1</version>
+    <time>1579031868</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 68.4.1
+  * Various improvements when setting up an account for a Microsoft
+    Exchange server: Now offers IMAP/SMTP if available, better
+    detection for Office 365 accounts; re-run configuration after
+    password change
+  Fixes:
+  * After changing view layout, the message display pane showed
+    garbled content under some circumstances
+  * Various theme changes to achieve &quot;pixel perfection&quot;: Unread icon,
+    &quot;no results&quot; icon, paragraph format and font selector, background
+    of folder summary tooltip
+  * Tags were lost on messages in shared IMAP folders under some
+    circumstances
+  * Calendar: Event attendee dialog was not displayed correctly
+  MFSA 2020-04 (bsc#1160498, bsc#1160305)
+  * CVE-2019-17026 (bmo#1607443)
+    IonMonkey type confusion with StoreElementHole and FallibleStoreElement
+  * CVE-2019-17015 (bmo#1599005)
+    Memory corruption in parent process during new content process
+    initialization on Windows
+  * CVE-2019-17016 (bmo#1599181)
+    Bypass of @namespace CSS sanitization during pasting
+  * CVE-2019-17017 (bmo#1603055)
+    Type Confusion in XPCVariant.cpp
+  * CVE-2019-17021 (bmo#1599008)
+    Heap address disclosure in parent process during content process
+    initialization on Windows
+  * CVE-2019-17022 (bmo#1602843)
+    CSS sanitization does not escape HTML tags
+  * CVE-2019-17024 (bmo#1507180, bmo#1595470, bmo#1598605, bmo#1601826)</comment>
+    <requestid>763056</requestid>
+  </revision>
 </revisionlist>

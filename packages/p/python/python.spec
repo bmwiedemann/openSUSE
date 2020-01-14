@@ -94,7 +94,9 @@ BuildRequires:  fdupes
 BuildRequires:  gdbm-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
+%if %{suse_version} > 1200
 BuildRequires:  libnsl-devel
+%endif
 BuildRequires:  libopenssl-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel

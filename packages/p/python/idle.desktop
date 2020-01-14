@@ -1,6 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=IDLE
+GenericName=Python IDE
 Comment=Python 2.7 Integrated Development and Learning Environment
 Exec=idle %F
 TryExec=idle

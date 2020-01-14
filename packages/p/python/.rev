@@ -1330,4 +1330,13 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   it properly resolved for both python2 and python3</comment>
     <requestid>760397</requestid>
   </revision>
+  <revision rev="147" vrev="5">
+    <srcmd5>7cde37955a261d38fe3760cea0b15a19</srcmd5>
+    <version>2.7.17</version>
+    <time>1579031883</time>
+    <user>dimstar_suse</user>
+    <comment>- libnsl is required only on more recent SLEs and openSUSE, older
+  glibc supported NIS on its own.</comment>
+    <requestid>763333</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 16:01:57 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- libnsl is required only on more recent SLEs and openSUSE, older
+  glibc supported NIS on its own.
+
+-------------------------------------------------------------------
 Thu Jan  2 10:34:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add provides in gdbm subpackage to provide dbm symbols. This

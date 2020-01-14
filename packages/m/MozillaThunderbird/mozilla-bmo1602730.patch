@@ -1,0 +1,28 @@
+diff -r 6ef20eee3f8f gfx/layers/basic/BasicCompositor.cpp
+--- a/gfx/layers/basic/BasicCompositor.cpp	Thu Oct 31 09:11:56 2019 +0100
++++ b/gfx/layers/basic/BasicCompositor.cpp	Wed Dec 11 16:16:09 2019 +0100
+@@ -693,9 +693,13 @@
+ 
+   RefPtr<SourceSurface> sourceMask;
+   Matrix maskTransform;
++  // Setting an alpha-mask here breaks the URL-bar on big endian (s390x)
++  // if the typed URL is too long for the textbox (automatic scrolling needed)
++#if MOZ_LITTLE_ENDIAN
+   if (aTransform.Is2D()) {
+     SetupMask(aEffectChain, dest, offset, sourceMask, maskTransform);
+   }
++#endif
+ 
+   CompositionOp blendMode = CompositionOp::OP_OVER;
+   if (Effect* effect =
+diff -r 6ef20eee3f8f gfx/layers/composite/CompositableHost.cpp
+--- a/gfx/layers/composite/CompositableHost.cpp	Thu Oct 31 09:11:56 2019 +0100
++++ b/gfx/layers/composite/CompositableHost.cpp	Wed Dec 11 16:16:09 2019 +0100
+@@ -91,6 +91,7 @@
+   }
+   MOZ_ASSERT(source);
+ 
++  // Alternatively: Comment out these lines where the alpha-mask is set
+   RefPtr<EffectMask> effect =
+       new EffectMask(source, source->GetSize(), aTransform);
+   aEffects.mSecondaryEffects[EffectTypes::MASK] = effect;

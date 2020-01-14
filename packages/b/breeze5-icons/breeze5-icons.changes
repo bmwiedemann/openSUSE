@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:01:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Change XHTML icon to be a purple HTML icon
+  * Merge headphones and zigzag in the center
+  * Add application/x-audacity-project icon
+  * Add 32px preferences-system
+  * Port endl to "\n" flush at the end + use const'ref in loop
+  * Add application/vnd.apple.pkpass icon (kde#397987)
+  * icon for ktimetracker using the PNG in the app repo, to be replaced with real breeze SVG
+  * add kipi icon, needs redone as a breeze theme svg [or just kill off kipi]
+  * Update the obsolete projects.kde.org URL
+
+-------------------------------------------------------------------
 Sun Dec  8 11:18:15 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.65.0
