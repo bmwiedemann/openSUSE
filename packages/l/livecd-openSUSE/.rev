@@ -767,4 +767,11 @@
     <comment>- Drop kmahjongg-lang and konversation-lang from the KDE Live
   image: save some MiB.</comment>
   </revision>
+  <revision rev="92" vrev="92">
+    <srcmd5>82258bc79838366dd0491d10c9895f25</srcmd5>
+    <version>unknown</version>
+    <time>1579016050</time>
+    <user>dimstar_suse</user>
+    <comment>- Block (again?) vlc-lang from the KDE Lives.</comment>
+  </revision>
 </revisionlist>

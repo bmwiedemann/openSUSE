@@ -57,6 +57,7 @@ buildignore kate-lang
 buildignore kmahjongg-lang
 buildignore konversation-lang
 buildignore libproxy1-pacrunner-webkit
+buildignore vlc-lang
 
 install partitionmanager
 
