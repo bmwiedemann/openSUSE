@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -46,15 +46,18 @@
 %ifarch s390 s390x
 %define sysname ibm
 %endif
-%ifarch x86_64 %{ix86}
+%ifarch x86_64
 %define sysname deb8
 %endif
-%ifarch ppc64 ppc64le aarch64 %{arm}
+%ifarch %{ix86}
+%define sysname deb9
+%endif
+%ifarch ppc64 ppc64le %{arm} aarch64 %{ix86}
 %define sysname unknown
 %endif
 
 Name:           ghc-bootstrap
-Version:        8.4.3
+Version:        8.6.5
 Release:        0
 Url:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Summary:        Binary distributions of The Glorious Glasgow Haskell Compiler
@@ -62,13 +65,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Source1:        README.openSUSE
 Source2:        LICENSE
-Source10:       ghc-8.4.3-i386-deb8-linux.tar.xz
-Source12:       ghc-8.4.3-powerpc64-unknown-linux.tar.xz
-Source13:       ghc-8.4.3-powerpc64le-unknown-linux.tar.xz
-Source14:       ghc-8.4.3-x86_64-deb8-linux.tar.xz
-Source16:       ghc-8.4.3-s390x-ibm-linux.tar.xz
-Source17:       ghc-8.4.3-aarch64-unknown-linux.tar.xz
-Source18:       ghc-8.4.3-arm-unknown-linux.tar.xz
+Source10:       ghc-8.6.5-i386-deb9-linux.tar.xz
+Source12:       ghc-8.6.5-powerpc64-unknown-linux.tar.xz
+Source13:       ghc-8.6.5-powerpc64le-unknown-linux.tar.xz
+Source14:       ghc-8.6.5-x86_64-deb8-linux.tar.xz
+Source16:       ghc-8.6.5-s390x-ibm-linux.tar.xz
+Source17:       ghc-8.6.5-aarch64-unknown-linux.tar.xz
+Source18:       ghc-8.6.5-arm-unknown-linux.tar.xz
+Source19:       ghc-8.6.5-riscv64-unknown-linux.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -111,6 +115,7 @@ cp %SOURCE14 .
 cp %SOURCE16 .
 cp %SOURCE17 .
 cp %SOURCE18 .
+cp %SOURCE19 .
 
 %build
 tar Jxf ghc-%{version}-%{longarch}-%{sysname}-linux.tar.xz

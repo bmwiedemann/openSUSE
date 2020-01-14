@@ -127,4 +127,14 @@ Add support for ppc64le.</comment>
     <comment>Re-built 'ghc-bootstrap' binary archives for aarch64 and s390x that work properly on SLE-15-SP1.</comment>
     <requestid>693337</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ad983f264bba7b5aed61722ed76a312f</srcmd5>
+    <version>8.6.5</version>
+    <time>1579032352</time>
+    <user>dimstar_suse</user>
+    <comment>- Add RISCV bindist taken from openSUSE:Factory:RISCV64 
+- Update to version 8.6.5 for GHC 8.10 bootstrap 
+</comment>
+    <requestid>763796</requestid>
+  </revision>
 </revisionlist>
