@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 14 16:04:28 UTC 2020 - Markus S <kamikazow@opensuse.org>
+
+- Update to version 5.2
+  * NEW: Experimental: Added "--ui-dialog" command line option.
+  * Updated the Polish translation
+  * FIXED: Added proper way to enable C++14 standard and fix compile error
+    Bug: https://sourceforge.net/p/kshutdown/bugs/38/
+  * REMOVED: Obsolete stats.cpp and stats.h files
+  * CHANGED: i18n: Do not include line numbers in generated *.po/*.pot files
+  * Fixed some "QString::null" warnings (other "deprecated" warnings will be fixed later)
+  * Minor code cleanup
+
+-------------------------------------------------------------------
 Wed Sep  4 21:27:10 UTC 2019 - Markus S <kamikazow@opensuse.org>
 
 - Update to version 5.1-beta
@@ -248,4 +261,3 @@ Mon Aug 10 14:33:54 CEST 2009 - llunak@suse.cz
 Sun Jun 28 21:49:44 CEST 2009 - llunak@novell.com
 
 - Initial version 1.91 (2.0beta6)
-
