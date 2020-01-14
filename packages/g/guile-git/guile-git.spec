@@ -1,7 +1,7 @@
 #
 # spec file for package guile-git
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           guile-git
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Guile bindings of libgit2
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Other
-Url:            https://gitlab.com/guile-git/guile-git
+URL:            https://gitlab.com/guile-git/guile-git
 Source0:        https://gitlab.com/guile-git/guile-git/-/archive/v%{version}/%{name}-v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -62,8 +62,8 @@ make %{?_smp_mflags}
 %defattr(-,root,root)
 %license COPYING
 %doc NEWS README.md
-%{_libdir}/guile/2.*/site-ccache/git*
-%{_datadir}/guile/site/2.*/git*
+%{_libdir}/guile/*/site-ccache/git*
+%{_datadir}/guile/site/*/git*
 %{_infodir}/guile-git.info.gz
 
 %changelog
