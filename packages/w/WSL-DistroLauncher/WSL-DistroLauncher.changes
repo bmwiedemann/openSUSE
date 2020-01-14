@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Tue Oct 15 14:17:44 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- squash patches
+- run YaST firstboot wizard to configure WSL
+
+-------------------------------------------------------------------
+Fri Oct  4 14:41:00 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- fix username input 0001-Fix-user-name-input.patch
+
+-------------------------------------------------------------------
+Fri Oct  4 11:37:23 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- use config.h actually to set proper distro (0001-actually-use-config.h-settings.patch, boo#1133525)
+- remove usermod (0001-Don-t-add-groups-to-user.-Not-needed-on-SUSE-distros.patch, boo#1148983)
+
+-------------------------------------------------------------------
+Wed Oct  2 09:38:59 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- avoid %make_build, not available on sle12 yet
+
+-------------------------------------------------------------------
+Tue Oct  1 16:34:56 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- fix 0005-adduser-vs-useradd.patch (boo#1150663)
+
+-------------------------------------------------------------------
+Mon Sep  9 05:34:47 UTC 2019 - Rich Williams <riwilliams@suse.com>
+
+- Added patch (0005-adduser-vs-useradd.patch) to change default 
+  MS (Ubuntu-centric) user management commands to SUSE-centric 
+  commands.
+
+-------------------------------------------------------------------
+Wed Aug 29 15:16:44 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Cleanup spec file:
+  * use tar_scm service to download source
+  * fix the line endings in %prep
+- Rebase patches:
+  Added:
+  * 0001-Cross-compiling-the-launcher.patch (was mingw.patch, wslapi.patch and
+    0001-Use-mconsole-instead-of-mwindows.patch)
+  * 0002-Fix-race-during-build.patch (was 0001-Fix-race-during-build.patch)
+  * 0003-Don-t-use-any-of-the-garbage-_s-functions.patch (was
+    0002-Don-t-use-any-of-the-garbage-_s-functions.patch)
+  * 0004-Initialize-the-project-as-foreign.patch
+
+  Dropped:
+  * 0001-Fix-race-during-build.patch (rebased)
+  * 0001-Use-mconsole-instead-of-mwindows.patch (incorporated into
+    0001-Cross-compiling-the-launcher.patch)
+  * 0002-Don-t-use-any-of-the-garbage-_s-functions.patch (rebased)
+  * SUSE-distros.patch (dropped completely)
+  * mingw.patch (rebased as 0001-Cross-compiling-the-launcher.patch)
+  * wslapi.patch (incorporated into 0001-Cross-compiling-the-launcher.patch)
+
+-------------------------------------------------------------------
+Fri Aug 23 15:45:34 UTC 2019 - Rich Williams <riwilliams@suse.com>
+
+- Code now rebased from upstream (Microsoft) source.
+- Several "patches-to-patches-that-patched-a-patch" are consolidated: 
+    - `0001-Fix-race-during-build.patch`
+    - `0001-Use-mconsole-instead-of-mwindows.patch`
+    - `mingw.patch` (only patches to `*/Makefile.*`)
+  ...are consolidated (w/ preserved headers) into `makefiles.patch`.
+- C++17 standard now in use.
+- Code for `SUSEConnect` has been removed temporarily:
+    - Several upstream where `SUSEConnect` was inserted were deleted.
+    - `SUSEConnect` upon WSL init didn't work correctly anyway.
+- A better suited substitute for `wscanf_s()` was found in the
+  mingw64 headers: `wscanf_s()` --> `swscanf_s()`
+- Added shell script to handle file encoding and line ends in
+  the upstream files. 
+
+-------------------------------------------------------------------
+Thu Oct 12 11:47:49 UTC 2017 - cbosdonnat@suse.com
+
+- Initial package

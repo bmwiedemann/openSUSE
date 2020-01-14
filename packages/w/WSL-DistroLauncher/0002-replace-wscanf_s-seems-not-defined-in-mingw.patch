@@ -1,0 +1,51 @@
+From c8d0b7af2c5b444a897998a2627048c8fef43827 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Mon, 7 Oct 2019 14:12:24 +0200
+Subject: [PATCH 2/3] replace wscanf_s, seems not defined in mingw
+
+TODO: confirm
+---
+ DistroLauncher/Helpers.cpp | 5 ++++-
+ DistroLauncher/stdafx.h    | 1 +
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/DistroLauncher/Helpers.cpp b/DistroLauncher/Helpers.cpp
+index 524e8b6..a3a19f4 100644
+--- a/DistroLauncher/Helpers.cpp
++++ b/DistroLauncher/Helpers.cpp
+@@ -16,16 +16,19 @@ std::wstring Helpers::GetUserInput(DWORD promptMsg, DWORD maxCharacters)
+     size_t bufferSize = maxCharacters + 1;
+     std::unique_ptr<wchar_t[]> inputBuffer(new wchar_t[bufferSize]);
+     std::wstring input;
+-    if (wscanf_s(L"%s", inputBuffer.get(), (unsigned int)bufferSize) == 1) {
++    if (fgetws(inputBuffer.get(), (unsigned int)bufferSize, stdin) != NULL) {
+         input = inputBuffer.get();
+     }
+ 
++// XXX: check if that if needed. It's blocking as it is ...
++#if 0
+     // Throw away any additional chracters that did not fit in the buffer.
+     wchar_t wch;
+     do {
+         wch = getwchar();
+ 
+     } while ((wch != L'\n') && (wch != WEOF));
++#endif
+ 
+     return input;
+ }
+diff --git a/DistroLauncher/stdafx.h b/DistroLauncher/stdafx.h
+index c5edf19..c1b7ca5 100644
+--- a/DistroLauncher/stdafx.h
++++ b/DistroLauncher/stdafx.h
+@@ -13,6 +13,7 @@
+ 
+ #include <stdio.h>
+ #include <tchar.h>
++#include <sec_api/wchar_s.h>
+ #include <windows.h>
+ #include <stdio.h>
+ #include <conio.h>
+-- 
+2.16.4
+

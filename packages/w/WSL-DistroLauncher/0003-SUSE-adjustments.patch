@@ -1,0 +1,46 @@
+From 90fccb1b597e79b5a88b8bd431b50017c7a96bb5 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Mon, 7 Oct 2019 14:11:12 +0200
+Subject: [PATCH 3/3] SUSE adjustments
+
+- use useradd from shadow
+- also remove usermod call, it's not needed on SUSE distributions
+---
+ DistroLauncher/DistributionInfo.cpp | 15 +--------------
+ 1 file changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/DistroLauncher/DistributionInfo.cpp b/DistroLauncher/DistributionInfo.cpp
+index 4742f59..da87217 100644
+--- a/DistroLauncher/DistributionInfo.cpp
++++ b/DistroLauncher/DistributionInfo.cpp
+@@ -9,26 +9,13 @@ bool DistributionInfo::CreateUser(std::wstring_view userName)
+ {
+     // Create the user account.
+     DWORD exitCode;
+-    std::wstring commandLine = L"/usr/sbin/adduser --quiet --gecos '' ";
++    std::wstring commandLine = L"/usr/sbin/useradd -m ";
+     commandLine += userName;
+     HRESULT hr = g_wslApi.WslLaunchInteractive(commandLine.c_str(), true, &exitCode);
+     if ((FAILED(hr)) || (exitCode != 0)) {
+         return false;
+     }
+ 
+-    // Add the user account to any relevant groups.
+-    commandLine = L"/usr/sbin/usermod -aG adm,cdrom,sudo,dip,plugdev ";
+-    commandLine += userName;
+-    hr = g_wslApi.WslLaunchInteractive(commandLine.c_str(), true, &exitCode);
+-    if ((FAILED(hr)) || (exitCode != 0)) {
+-
+-        // Delete the user if the group add command failed.
+-        commandLine = L"/usr/sbin/deluser ";
+-        commandLine += userName;
+-        g_wslApi.WslLaunchInteractive(commandLine.c_str(), true, &exitCode);
+-        return false;
+-    }
+-
+     return true;
+ }
+ 
+-- 
+2.16.4
+

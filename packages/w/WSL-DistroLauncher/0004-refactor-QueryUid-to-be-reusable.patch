@@ -1,0 +1,67 @@
+From 5dfb6f8d3474cdd8e11c40144e104b810197e1fb Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Tue, 15 Oct 2019 13:34:21 +0200
+Subject: [PATCH 4/5] refactor QueryUid to be reusable
+
+---
+ DistroLauncher/DistributionInfo.cpp | 13 ++++++++-----
+ DistroLauncher/DistributionInfo.h   |  2 +-
+ 2 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/DistroLauncher/DistributionInfo.cpp b/DistroLauncher/DistributionInfo.cpp
+index da87217..69a8e75 100644
+--- a/DistroLauncher/DistributionInfo.cpp
++++ b/DistroLauncher/DistributionInfo.cpp
+@@ -19,7 +19,7 @@ bool DistributionInfo::CreateUser(std::wstring_view userName)
+     return true;
+ }
+ 
+-ULONG DistributionInfo::QueryUid(std::wstring_view userName)
++static ULONG _QueryUid(std::wstring command)
+ {
+     // Create a pipe to read the output of the launched process.
+     HANDLE readPipe;
+@@ -27,9 +27,6 @@ ULONG DistributionInfo::QueryUid(std::wstring_view userName)
+     SECURITY_ATTRIBUTES sa{sizeof(sa), nullptr, true};
+     ULONG uid = UID_INVALID;
+     if (CreatePipe(&readPipe, &writePipe, &sa, 0)) {
+-        // Query the UID of the supplied username.
+-        std::wstring command = L"/usr/bin/id -u ";
+-        command += userName;
+         int returnValue = 0;
+         HANDLE child;
+         HRESULT hr = g_wslApi.WslLaunch(command.c_str(), true, GetStdHandle(STD_INPUT_HANDLE), writePipe, GetStdHandle(STD_ERROR_HANDLE), &child);
+@@ -51,7 +48,6 @@ ULONG DistributionInfo::QueryUid(std::wstring_view userName)
+                     buffer[bytesRead] = ANSI_NULL;
+                     try {
+                         uid = std::stoul(buffer, nullptr, 10);
+-
+                     } catch( ... ) { }
+                 }
+             }
+@@ -63,3 +59,10 @@ ULONG DistributionInfo::QueryUid(std::wstring_view userName)
+ 
+     return uid;
+ }
++
++ULONG DistributionInfo::QueryUid(std::wstring_view userName)
++{
++    std::wstring command = L"/usr/bin/id -u ";
++    command += userName;
++    return _QueryUid(command);
++}
+diff --git a/DistroLauncher/DistributionInfo.h b/DistroLauncher/DistributionInfo.h
+index 0a6db9d..d8cf331 100644
+--- a/DistroLauncher/DistributionInfo.h
++++ b/DistroLauncher/DistributionInfo.h
+@@ -22,6 +22,6 @@ namespace DistributionInfo
+     // Create and configure a user account.
+     bool CreateUser(std::wstring_view userName);
+ 
+-    // Query the UID of the user account.
++    // Query the UID of a given user account
+     ULONG QueryUid(std::wstring_view userName);
+ }
+-- 
+2.16.4
+

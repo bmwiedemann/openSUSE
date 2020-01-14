@@ -1,0 +1,313 @@
+From 4a64c04f769abc97ba727bb082f6d302cffc08f5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cedric.bosdonnat@free.fr>
+Date: Wed, 28 Aug 2019 17:52:52 +0200
+Subject: [PATCH 1/3] Cross compiling the launcher
+
+In order to automate the builds and tests of WSL distros, we need to
+be able to build the application using linux machines. This can be
+done using mingw-w64.
+
+This commit adds the autotools scripts to build the project. It also
+extracts a few distro dependent variables into generated files to
+handle several distros with the same code more easily.
+---
+ LICENSE => COPYING                |  0
+ DistroLauncher/DistributionInfo.h |  7 +++---
+ DistroLauncher/DistroLauncher.rc  |  2 +-
+ DistroLauncher/Makefile.am        | 41 ++++++++++++++++++++++++++++++
+ DistroLauncher/config.h.in        |  4 +++
+ DistroLauncher/distro.rc.in       |  1 +
+ DistroLauncher/stdafx.h           |  2 +-
+ DistroLauncher/targetver.h        |  2 +-
+ DistroLauncher/wslapi.h           | 10 ++++++++
+ Makefile.am                       |  1 +
+ NEWS                              | 36 +++++++++++++++++++++++++++
+ configure.ac                      | 52 +++++++++++++++++++++++++++++++++++++++
+ update-files.sh                   |  9 +++++++
+ 13 files changed, 161 insertions(+), 6 deletions(-)
+ rename LICENSE => COPYING (100%)
+ create mode 100644 DistroLauncher/Makefile.am
+ create mode 100644 DistroLauncher/config.h.in
+ create mode 100644 DistroLauncher/distro.rc.in
+ create mode 100644 DistroLauncher/wslapi.h
+ create mode 100644 Makefile.am
+ create mode 100644 NEWS
+ create mode 100644 configure.ac
+ create mode 100644 update-files.sh
+
+diff --git a/LICENSE b/COPYING
+similarity index 100%
+rename from LICENSE
+rename to COPYING
+diff --git a/DistroLauncher/DistributionInfo.h b/DistroLauncher/DistributionInfo.h
+index cceb0e2..0a6db9d 100644
+--- a/DistroLauncher/DistributionInfo.h
++++ b/DistroLauncher/DistributionInfo.h
+@@ -4,6 +4,7 @@
+ //
+ 
+ #pragma once
++#include "config.h"
+ 
+ namespace DistributionInfo
+ {
+@@ -13,14 +14,14 @@ namespace DistributionInfo
+     //
+     // WARNING: This value must not change between versions of your app,
+     // otherwise users upgrading from older versions will see launch failures.
+-    const std::wstring Name = L"MyDistribution";
++    const std::wstring Name = DISTRO_NAME;
+ 
+     // The title bar for the console window while the distribution is installing.
+-    const std::wstring WindowTitle = L"My Distribution";
++    const std::wstring WindowTitle = DISTRO_DISPLAY_NAME;
+ 
+     // Create and configure a user account.
+     bool CreateUser(std::wstring_view userName);
+ 
+     // Query the UID of the user account.
+     ULONG QueryUid(std::wstring_view userName);
+-}
+\ No newline at end of file
++}
+diff --git a/DistroLauncher/DistroLauncher.rc b/DistroLauncher/DistroLauncher.rc
+index 80d86b9..a661acd 100644
+--- a/DistroLauncher/DistroLauncher.rc
++++ b/DistroLauncher/DistroLauncher.rc
+@@ -51,7 +51,7 @@ END
+ 
+ // Icon with lowest ID value placed first to ensure application icon
+ // remains consistent on all systems.
+-IDI_ICON1               ICON                    ".\images\icon.ico"
++#include "distro.rc"
+ 
+ #endif    // English (United States) resources
+ /////////////////////////////////////////////////////////////////////////////
+diff --git a/DistroLauncher/Makefile.am b/DistroLauncher/Makefile.am
+new file mode 100644
+index 0000000..7685dbd
+--- /dev/null
++++ b/DistroLauncher/Makefile.am
+@@ -0,0 +1,41 @@
++bin_PROGRAMS = DistroLauncher
++
++messages.rc: messages.mc
++	$(MC) $<
++
++messages.h: messages.rc
++
++# Hacky: no winres.h available with mingw, force include of winresrc.h
++# to get the LANG_* and SUBLANG_* defines.
++winres.h:
++	echo "#include <winresrc.h>" > winres.h
++
++DistroLauncher-res.$(OBJEXT): DistroLauncher.rc \
++							   messages.rc \
++							   distro.rc \
++							   resource.h \
++							   winres.h
++	$(RC) -D _UNICODE -D UNICODE -l "0x0409" -I $(DISTRO_ID) \
++		  --input-format rc -i DistroLauncher.rc \
++		  --output-format coff -o $@
++
++BUILT_SOURCES = messages.h
++
++DistroLauncher_SOURCES = \
++						 config.h \
++						 DistroLauncher.cpp \
++						 DistributionInfo.cpp \
++						 DistributionInfo.h \
++						 Helpers.cpp \
++						 Helpers.h \
++						 resource.h \
++						 stdafx.cpp \
++						 stdafx.h \
++						 targetver.h \
++						 WslApiLoader.cpp \
++						 WslApiLoader.h \
++						 DistroLauncher.rc
++
++DistroLauncher_CPPFLAGS = -DMINGW_HAS_SECURE_API -municode -mconsole -m64 -std=c++17 -fpermissive
++DistroLauncher_LDFLAGS = -municode -mconsole -m64 -static
++DistroLauncher_LDADD = DistroLauncher-res.$(OBJEXT)
+diff --git a/DistroLauncher/config.h.in b/DistroLauncher/config.h.in
+new file mode 100644
+index 0000000..d92cd01
+--- /dev/null
++++ b/DistroLauncher/config.h.in
+@@ -0,0 +1,4 @@
++#pragma once
++
++static const wchar_t * DISTRO_NAME = L"@DISTRO_ID@";
++static const wchar_t * DISTRO_DISPLAY_NAME = L"@DISTRO_NAME@";
+diff --git a/DistroLauncher/distro.rc.in b/DistroLauncher/distro.rc.in
+new file mode 100644
+index 0000000..dc8bd4f
+--- /dev/null
++++ b/DistroLauncher/distro.rc.in
+@@ -0,0 +1 @@
++IDI_ICON1               ICON                    "@DISTRO_ICON@"
+diff --git a/DistroLauncher/stdafx.h b/DistroLauncher/stdafx.h
+index baa37ae..c5edf19 100644
+--- a/DistroLauncher/stdafx.h
++++ b/DistroLauncher/stdafx.h
+@@ -13,7 +13,7 @@
+ 
+ #include <stdio.h>
+ #include <tchar.h>
+-#include <Windows.h>
++#include <windows.h>
+ #include <stdio.h>
+ #include <conio.h>
+ #include <io.h>
+diff --git a/DistroLauncher/targetver.h b/DistroLauncher/targetver.h
+index 87c0086..f6dc5bf 100644
+--- a/DistroLauncher/targetver.h
++++ b/DistroLauncher/targetver.h
+@@ -5,4 +5,4 @@
+ // If you wish to build your application for a previous Windows platform, include WinSDKVer.h and
+ // set the _WIN32_WINNT macro to the platform you wish to support before including SDKDDKVer.h.
+ 
+-#include <SDKDDKVer.h>
++#include <sdkddkver.h>
+diff --git a/DistroLauncher/wslapi.h b/DistroLauncher/wslapi.h
+new file mode 100644
+index 0000000..a6432be
+--- /dev/null
++++ b/DistroLauncher/wslapi.h
+@@ -0,0 +1,10 @@
++#pragma once
++
++typedef enum _WSL_DISTRIBUTION_FLAGS { 
++  WSL_DISTRIBUTION_FLAGS_NONE                   = 0,
++  WSL_DISTRIBUTION_FLAGS_ENABLE_INTEROP         = 1,
++  WSL_DISTRIBUTION_FLAGS_APPEND_NT_PATH         = 2,
++  WSL_DISTRIBUTION_FLAGS_ENABLE_DRIVE_MOUNTING  = 4
++} WSL_DISTRIBUTION_FLAGS;
++
++#define WSL_DISTRIBUTION_FLAGS_DEFAULT WSL_DISTRIBUTION_FLAGS_ENABLE_INTEROP | WSL_DISTRIBUTION_FLAGS_APPEND_NT_PATH | WSL_DISTRIBUTION_FLAGS_ENABLE_DRIVE_MOUNTING
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..d2caced
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1 @@
++SUBDIRS=DistroLauncher
+diff --git a/NEWS b/NEWS
+new file mode 100644
+index 0000000..3ac5fd0
+--- /dev/null
++++ b/NEWS
+@@ -0,0 +1,36 @@
++What's NEWs?
++=====================================================================
++This file comprises a basic version history for the adaptations 
++created by SUSE for the WSL-DistroLauncher code created by Microsoft.
++
++- Original Code: https://github.com/Microsoft/WSL-DistroLauncher
++- SUSE Adaptations: https://build.opensuse.org/package/show/Virtualization:WSL/wsl-launcher
++
++The Open Build Service project that SUSE uses to build openSUSE 
++for Windows Subsystem for Linux can be found at:
++https://build.opensuse.org/package/show/Virtualization:WSL
++
++The versions listed below are listed in reverse chronilogical
++order; meaning the newest is at the top.
++
++> Bon appetit!
++  - Dennis Ritchie, Anti-Forward to the UNIX-HATERS Handbook
++
++
++Version 1.1.0
++---------------------------------------------------------------------
++`Tue, 13 Aug 2019  07:23:59 -0700`<br>
++`sle-ms \at\ suse \dot\ com`
++
++1. Changed the `NEWS` file to markdown format.
++1. Rebased the code from Microsoft;
++   See "Original Code" reference at top.
++
++Version 1.0.0
++---------------------------------------------------------------------
++`Wed, 11 Oct 2017 14:00:30 +0200`<br>
++Cedric Bosdannat: `<cedric \dot\ bosdonnat \at\ free \dot\ fr>`
++
++1. Created project
++1. Ease build using GNU and mingw toolchain
++
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..ce9a547
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,52 @@
++AC_INIT([DistroLauncher], [1.0.0])
++AM_INIT_AUTOMAKE([foreign])
++
++AC_PROG_CXX
++AC_CHECK_PROG(ICONV_CHECK, iconv, yes)
++if test x"$ICONV_CHECK" != "xyes"; then
++    AC_MSG_ERROR([iconv could not be found])
++fi
++
++
++AC_ARG_WITH([distro-id],
++            [AC_HELP_STRING([--with-distro-id="MyDistro.1.0"],
++                            ["Short name of the distribution, to be used as a unique ID."])],
++            [], [with_distro_id="MyDistro.1.0"])
++AC_SUBST([DISTRO_ID], ["$with_distro_id"])
++
++AC_ARG_WITH([distro-name],
++            [AC_HELP_STRING([--with-distro-name="My Distro Name"],
++                            ["Display name of the distribution."])],
++            [], [with_distro_name="My Distro Name"])
++AC_SUBST([DISTRO_NAME], ["$with_distro_name"])
++
++AC_ARG_WITH([distro-icon],
++            [AC_HELP_STRING([--with-distro-icon="path/to/distro/icon"],
++                            ["Icon of the distribution in ico format."])],
++            [], [with_distro_icon="images/icon.ico"])
++AC_SUBST([DISTRO_ICON], ["$with_distro_icon"])
++
++
++#
++# Look for windmc and windres
++#
++AC_ARG_WITH([windmc],
++            [AC_HELP_STRING([--with-windmc="/path/to/windmc"],
++                            ["Path to the windmc binary."])],
++            [],
++            [with_windmc="windmc"])
++AC_SUBST([MC], ["$with_windmc"])
++
++AC_ARG_WITH([windres],
++            [AC_HELP_STRING([--with-windres="/path/to/windres"],
++                            ["Path to the windres binary."])],
++            [],
++            [with_windres="windres"])
++AC_SUBST([RC], ["$with_windres"])
++
++
++AC_CONFIG_FILES([Makefile
++                 DistroLauncher/Makefile
++                 DistroLauncher/distro.rc
++                 DistroLauncher/config.h])
++AC_OUTPUT
+diff --git a/update-files.sh b/update-files.sh
+new file mode 100644
+index 0000000..9950aa5
+--- /dev/null
++++ b/update-files.sh
+@@ -0,0 +1,9 @@
++#!/usr/bin/env bash
++
++# Update ChangeLog file
++git log '--pretty=format:%cd %an  <%ae>%n%n%s%n%b%n' --date=short > ChangeLog
++sed -i '/(cherry picked/d' ChangeLog
++
++# Update AUTHORS
++git log --pretty=format:'%aN <%aE>' | sort | uniq > AUTHORS
++
+-- 
+2.16.4
+

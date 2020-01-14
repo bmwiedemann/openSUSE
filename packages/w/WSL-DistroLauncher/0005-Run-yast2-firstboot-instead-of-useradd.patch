@@ -1,0 +1,147 @@
+From 16bd8b865b6bc84bf9b4eca0cfd5f3a2f0c9a14d Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Tue, 15 Oct 2019 13:36:46 +0200
+Subject: [PATCH 5/5] Run yast2-firstboot instead of useradd
+
+---
+ DistroLauncher/DistributionInfo.cpp | 18 ++++++++++++++++++
+ DistroLauncher/DistributionInfo.h   |  6 ++++++
+ DistroLauncher/DistroLauncher.cpp   | 33 ++++++++++++---------------------
+ DistroLauncher/messages.mc          |  4 +---
+ 4 files changed, 37 insertions(+), 24 deletions(-)
+
+diff --git a/DistroLauncher/DistributionInfo.cpp b/DistroLauncher/DistributionInfo.cpp
+index 69a8e75..3caadee 100644
+--- a/DistroLauncher/DistributionInfo.cpp
++++ b/DistroLauncher/DistributionInfo.cpp
+@@ -66,3 +66,21 @@ ULONG DistributionInfo::QueryUid(std::wstring_view userName)
+     command += userName;
+     return _QueryUid(command);
+ }
++
++bool DistributionInfo::FirstBoot()
++{
++    DWORD exitCode;
++    std::wstring commandLine = L"/usr/lib/YaST2/startup/YaST2.call firstboot firstboot";
++    HRESULT hr = g_wslApi.WslLaunchInteractive(commandLine.c_str(), true, &exitCode);
++    if ((FAILED(hr)) || (exitCode != 0)) {
++        return false;
++    }
++
++    return true;
++}
++
++ULONG DistributionInfo::QueryFistBootUid()
++{
++    std::wstring command = L"cat /run/wsl_firstboot_uid";
++    return _QueryUid(command);
++}
+diff --git a/DistroLauncher/DistributionInfo.h b/DistroLauncher/DistributionInfo.h
+index d8cf331..9999257 100644
+--- a/DistroLauncher/DistributionInfo.h
++++ b/DistroLauncher/DistributionInfo.h
+@@ -24,4 +24,10 @@ namespace DistributionInfo
+ 
+     // Query the UID of a given user account
+     ULONG QueryUid(std::wstring_view userName);
++
++    // Query the UID of the user account created on first boot
++    ULONG QueryFistBootUid();
++
++    // Configure distribution on first start
++    bool FirstBoot();
+ }
+diff --git a/DistroLauncher/DistroLauncher.cpp b/DistroLauncher/DistroLauncher.cpp
+index ad9fac5..7be5606 100644
+--- a/DistroLauncher/DistroLauncher.cpp
++++ b/DistroLauncher/DistroLauncher.cpp
+@@ -5,11 +5,10 @@
+ 
+ #include "stdafx.h"
+ 
+-// Commandline arguments: 
++// Commandline arguments:
+ #define ARG_CONFIG              L"config"
+ #define ARG_CONFIG_DEFAULT_USER L"--default-user"
+ #define ARG_INSTALL             L"install"
+-#define ARG_INSTALL_ROOT        L"--root"
+ #define ARG_RUN                 L"run"
+ #define ARG_RUN_C               L"-c"
+ 
+@@ -17,10 +16,10 @@
+ // https://msdn.microsoft.com/en-us/library/windows/desktop/mt826874(v=vs.85).aspx
+ WslApiLoader g_wslApi(DistributionInfo::Name);
+ 
+-static HRESULT InstallDistribution(bool createUser);
++static HRESULT InstallDistribution();
+ static HRESULT SetDefaultUser(std::wstring_view userName);
+ 
+-HRESULT InstallDistribution(bool createUser)
++HRESULT InstallDistribution()
+ {
+     // Register the distribution.
+     Helpers::PrintMessage(MSG_STATUS_INSTALLING);
+@@ -36,19 +35,13 @@ HRESULT InstallDistribution(bool createUser)
+         return hr;
+     }
+ 
+-    // Create a user account.
+-    if (createUser) {
+-        Helpers::PrintMessage(MSG_CREATE_USER_PROMPT);
+-        std::wstring userName;
+-        do {
+-            userName = Helpers::GetUserInput(MSG_ENTER_USERNAME, 32);
+-
+-        } while (!DistributionInfo::CreateUser(userName));
+-
+-        // Set this user account as the default.
+-        hr = SetDefaultUser(userName);
+-        if (FAILED(hr)) {
+-            return hr;
++    if (DistributionInfo::FirstBoot()) {
++        ULONG uid = DistributionInfo::QueryFistBootUid();
++        if (uid != UID_INVALID) {
++            HRESULT hr = g_wslApi.WslConfigureDistribution(uid, WSL_DISTRIBUTION_FLAGS_DEFAULT);
++            if (FAILED(hr)) {
++                return hr;
++            }
+         }
+     }
+ 
+@@ -99,9 +92,7 @@ int wmain(int argc, wchar_t const *argv[])
+     HRESULT hr = S_OK;
+     if (!g_wslApi.WslIsDistributionRegistered()) {
+ 
+-        // If the "--root" option is specified, do not create a user account.
+-        bool useRoot = ((installOnly) && (arguments.size() > 1) && (arguments[1] == ARG_INSTALL_ROOT));
+-        hr = InstallDistribution(!useRoot);
++        hr = InstallDistribution();
+         if (FAILED(hr)) {
+             if (hr == HRESULT_FROM_WIN32(ERROR_ALREADY_EXISTS)) {
+                 Helpers::PrintMessage(MSG_INSTALL_ALREADY_EXISTS);
+@@ -163,4 +154,4 @@ int wmain(int argc, wchar_t const *argv[])
+     }
+ 
+     return SUCCEEDED(hr) ? exitCode : 1;
+-}
+\ No newline at end of file
++}
+diff --git a/DistroLauncher/messages.mc b/DistroLauncher/messages.mc
+index 6594f3e..fd6b7a7 100644
+--- a/DistroLauncher/messages.mc
++++ b/DistroLauncher/messages.mc
+@@ -28,10 +28,8 @@ Usage:
+     <no args> 
+         Launches the user's default shell in the user's home directory.
+ 
+-    install [--root]
++    install
+         Install the distribuiton and do not launch the shell when complete.
+-          --root
+-              Do not create a user account and leave the default user set to root.
+ 
+     run <command line> 
+         Run the provided command line in the current working directory. If no
+-- 
+2.16.4
+
