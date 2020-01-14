@@ -834,7 +834,7 @@ Fri Jan 15 05:50:50 UTC 2016 - coolo@suse.com
   * `Lint/SpaceBeforeFirstArg` cop has been removed, since it just duplicates `Style/SingleSpaceBeforeFirstArg`. ([@alexdowad][])
   * `Style/SingleSpaceBeforeFirstArg` cop has been renamed to `Style/SpaceBeforeFirstArg`, which more accurately reflects what it now does. ([@alexdowad][])
   * `Style/UnneededPercentQ` reports `%q()` strings with what only appears to be an escape, but is not really (there are no escapes in `%q()` strings). ([@alexdowad][])
-  * `Performance/StringReplacement`, `Performance\StartWith`, and `PerformancendWith` more accurately identify code which can be improved. ([@alexdowad][])
+  * `Performance/StringReplacement`, `Performance/StartWith`, and `Performance/EndWith` more accurately identify code which can be improved. ([@alexdowad][])
   * The `MultiSpaceAllowedForOperators` config parameter for `Style/SpaceAroundOperators` has been removed, as it is made redundant by `AllowForAlignment`. If someone attempts to use it, config validation will fail with a helpful message. ([@alexdowad][])
   * The `RunRailsCops` config parameter in .rubocop.yml is now obsolete. If someone attempts to use it, config validation will fail with a helpful message. ([@alexdowad][])
   * If .rubocop.yml contains configuration for a custom cop, no warning regarding "unknown cop" will be printed. The custom cop must inherit from RuboCop::Cop::Cop, and must be loaded into memory for this to work. ([@alexdowad][])
