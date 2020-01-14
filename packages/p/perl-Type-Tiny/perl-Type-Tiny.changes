@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jan 14 03:14:39 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.008003
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.008003	2020-01-13
+  
+   [ Documentation ]
+   - Update copyright dates to 2020.
+  
+   [ Packaging ]
+   - Makefile.PL will now bail out on cperl if AUTOMATED_TESTING environment
+     variable is set to true.
+  
+   [ Other ]
+   - Added: Type::Registry can now have a parent registry.
+  
+  1.008002	2020-01-11
+  
+   [ Bug Fixes ]
+   - Fix bareword errors if certain Type::Tiny subclasses were loaded prior
+     to Type::Tiny.
+     Fixes RT#131401.
+     <https://rt.cpan.org/Ticket/Display.html?id=131401>
+  
+   [ Documentation ]
+   - Fix typos.
+     Hauke D++
+  
+   [ Other ]
+   - Type::Tiny didn't accept string constraints for parameterizable type
+     constraints; this was not a documented restriction and didn't seem to
+     serve any purpose, so the restriction has been lifted.
+     <https://rt.cpan.org/Ticket/Display.html?id=131238>
+
+-------------------------------------------------------------------
 Sun Dec 29 03:13:35 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.008001
