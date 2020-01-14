@@ -1,7 +1,7 @@
 #
 # spec file for package qqc2-desktop-style
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.65
+%define _tar_path 5.66
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.65.0
+Version:        5.66.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later

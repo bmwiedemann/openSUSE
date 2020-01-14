@@ -232,4 +232,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.65.0</comment>
     <requestid>757077</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9620792c28ab13e0d82cee83bc36bdef</srcmd5>
+    <version>5.66.0</version>
+    <time>1579032267</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.66.0</comment>
+    <requestid>763499</requestid>
+  </revision>
 </revisionlist>
