@@ -36,7 +36,6 @@ BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  libxapian-devel
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
