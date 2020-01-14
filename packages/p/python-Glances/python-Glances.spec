@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glances
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Glances
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -27,21 +27,20 @@ Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
 Patch0:         adjust-data-files.patch
 Patch1:         remove-shebang.patch
 Patch2:         skip-online-tests.patch
+#PATCH-FIX-UPSTREAM https://github.com/nicolargo/glances/commit/793552ea864c9220a578ee5e610ebb85c05728c9 Correct unitest
+Patch3:         fix-unittest.patch
 BuildRequires:  %{python_module bottle}
-BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module netifaces}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module psutil >= 5.3.0}
+BuildRequires:  %{python_module psutil >= 5.6.3}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bottle
-Requires:       python-curses
 Requires:       python-future
 Requires:       python-psutil >= 5.6.3
 Requires:       python-requests
+Recommends:     python-curses
 Provides:       python-glances = %{version}
 Obsoletes:      python-glances < %{version}
 BuildArch:      noarch
@@ -63,16 +62,15 @@ size of the user interface.
 %build
 %python_build
 
-# tests are failing on upstream, they apparently don't mind
+%install
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
 %check
 export LANG=en_US.UTF-8
 %python_exec unitest.py
 %python_exec unitest-restful.py
 %python_exec unitest-xmlrpc.py
-
-%install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license COPYING
