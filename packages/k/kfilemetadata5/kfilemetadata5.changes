@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:02:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * In qt5.15 QHash::insertMulti is deprecated now we need to use QMultiHash
+  * Port QRegExp to QRegularExpression
+  * partial fix for accentuated characters in file name on Windows
+  * Port deprecated QSet::toList method
+  * Update the obsolete projects.kde.org URL
+  * Remove unrequired private declarations for taglibextractor
+  * partial solution to accept accentuated characters on windows
+  * xattr: fix crash on dangling symlinks (kde#414227)
+
+-------------------------------------------------------------------
 Sun Dec  8 11:18:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.65.0
