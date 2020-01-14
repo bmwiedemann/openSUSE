@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:11:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix Google accounts:
+  * 0001-Google-provider-limit-requested-OAuth-scopes.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 10:00:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1

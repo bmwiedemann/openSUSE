@@ -31,6 +31,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Patch0:         0001-Google-provider-limit-requested-OAuth-scopes.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  intltool
@@ -51,6 +52,7 @@ KDE Accounts Providers.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
   %cmake_kf5 -d build
