@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 14 12:35:28 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 4.9.0
+  * ftp: add support for CEPR command.
+  * ftp: enabled TLS by default.
+  * ftp: fixed OPTS MLST format.
+  * ftps: apply rfc1738 rules.
+  * ftp: stop sending ALLO commands by default.
+  * http: fixed redirection to absolute path.
+  * http: improved index parsing performance.
+  * http: revert to original URL when temporary redirects led to an error.
+  * mirror --no-empty-dirs: exclude empty dirs so that chmod is not done on them.
+  * net: disable inet6 if there is no public ipv6 address.
+  * net: lowered reconnect intervals.
+  * sftp, fish: fixed yes/no/[fingerprint] and passphrase recognition.
+  * sftp: fixed a bug with truncated files when packets are reordered.
+  * torrent: fixed a coredump when all dht ports are busy.
+  * fixed file list sorting when some file names start with tilde.
+  * fixed retry counting when a site has multiple addresses.
+  * fixed "version" command for certain openssl versions.
+- Drop relax-ssh-password-prompt-recognition.patch, fixed upstream.
+
+-------------------------------------------------------------------
 Tue Mar 19 12:18:35 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Refresh "relax-ssh-password-prompt-recognition.patch" to the

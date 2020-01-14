@@ -1,7 +1,7 @@
 #
 # spec file for package lftp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lftp
-Version:        4.8.4
+Version:        4.9.0
 Release:        0
 Summary:        Command Line File Transfer Program
 License:        GPL-3.0-or-later
@@ -35,7 +35,6 @@ Patch2:         0002-Add-content-of-lftp-compat-addfiles.patch.patch
 Patch3:         0003-Add-content-of-lftp-completion.patch.patch
 Patch4:         0004-Include-config.h-to-detect-gnulib-macros.patch
 Patch5:         0005-Add-the-wrapper-code-to-the-Makefile-in-order-to-bui.patch
-Patch6:         relax-ssh-password-prompt-recognition.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

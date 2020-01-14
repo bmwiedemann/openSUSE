@@ -716,4 +716,12 @@ the underlying buffer would always contain a NUL-terminated string.
 [bsc#1120946]</comment>
     <requestid>686409</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ca4d13f32671df1b7a6aeb5290dc3129</srcmd5>
+    <version>4.9.0</version>
+    <time>1579032750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764327</requestid>
+  </revision>
 </revisionlist>
