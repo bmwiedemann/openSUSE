@@ -25,11 +25,11 @@
 %define with_bindings 0
 
 Name:           openscap
-Version:        1.3.1+git.20200110
+Version:        1.3.2
 Release:        0
-#Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
+Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
 # temp snapshot to make it build with new RPM before 1.3.2
-Source:         openscap-%version.tar.bz2
+#Source:         openscap-%version.tar.bz2
 Source1:        openscap-rpmlintrc
 Source2:        sysconfig.oscap-scan
 # SUSE specific profile, based on yast2-security checks.
