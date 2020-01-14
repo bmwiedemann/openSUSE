@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:48:30 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0.0~git.20190930T091802~39ed96c:
+  * Fix "implode()" argument order in query string construction
+  * Move PhutilProseDiff out of "libphutil/"
+  * Ignore all files in "src/extensions/", not just immediate children
+  * Remove "Web Application Only" classes from libphutil
+  * Add a rough "ProgressSink" for improved progress reporting flexibility
+  * Allow HTTPSFuture to stream very large files directly to disk
+  * Force HTTP/1.1 in HTTPSFuture until HTTP/2 support stabilizes
+  * Improve coverage of remarkup "<table>" rule and fix some bad method calls
+  * When parsing HTML in remarkup, always start a new tag when encountering "<"
+  * Fix some remarkup issues with selective construction of child nodes after HTML DOM parsing
+
+-------------------------------------------------------------------
 Wed Sep 18 08:55:59 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Disable _service for Factory submit

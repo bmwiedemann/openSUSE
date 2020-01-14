@@ -1,7 +1,7 @@
 #
-# spec file for package cmocka
+# spec file for package php7-libphutil
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 Name:           php7-libphutil
 %define lib_name libphutil
-Version:        0.0~git.20190902T075857~f51f1b3
+Version:        0.0~git.20190930T091802~39ed96c
 Release:        0
 Summary:        Phabrcator PHP utility classes
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 
-Url:            https://github.com/phacility/libphutil/
+URL:            https://github.com/phacility/libphutil/
 Source0:        %{lib_name}-%{version}.tar.xz
 
 BuildArch:      noarch
@@ -79,7 +80,8 @@ ln -s /var/lib/ca-certificates/ca-bundle.pem %{buildroot}%{_datadir}/phabricator
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE NOTICE README.md
+%doc NOTICE README.md
+%license LICENSE
 %dir %{_datadir}/phabricator
 %dir %{_datadir}/phabricator/%{lib_name}
 %{_datadir}/phabricator/%{lib_name}/externals
