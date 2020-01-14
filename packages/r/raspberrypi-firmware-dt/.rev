@@ -113,4 +113,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment>Add rpi4-genet-overlay.dts which sets the upstream compatible for the network device. (jsc#SLE-7771)</comment>
     <requestid>751537</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4946e149ec181efac6b0669af1e71de4</srcmd5>
+    <version>2020.01.09</version>
+    <time>1579032592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764256</requestid>
+  </revision>
 </revisionlist>

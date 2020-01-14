@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:33:08 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update rpi4-genet-overlay.dts and create upstream-rpi4-genet-phy.patch to fix
+  phy configuration (bsc#1160310)
+- Update to 30757c902b (2020-01-09)
+  * based on rpi-5.4.y
+
+-------------------------------------------------------------------
 Wed Nov 27 17:42:56 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
 
 - Add rpi4-genet-overlay.dts which sets the upstream compatible for the

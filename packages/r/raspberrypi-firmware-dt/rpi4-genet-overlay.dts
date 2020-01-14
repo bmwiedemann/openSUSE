@@ -13,6 +13,7 @@
 		target = <&genet>;
 		__overlay__ {
 			compatible = "brcm,bcm2711-genet-v5";
+			phy-mode = "rgmii-rxid";
 		};
 	};
 };

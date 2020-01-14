@@ -1,0 +1,28 @@
+From 2a45baeecddbabe34ce32aae6ae73cd36240e114 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Fri, 10 Jan 2020 14:46:09 +0100
+Subject: [PATCH] ARM: dts: bcm2838: fix genet's phy to match upstream
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ arch/arm/boot/dts/bcm2838.dtsi | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2838.dtsi b/arch/arm/boot/dts/bcm2838.dtsi
+index 41a31cacdffe..49e01561e11f 100644
+--- a/arch/arm/boot/dts/bcm2838.dtsi
++++ b/arch/arm/boot/dts/bcm2838.dtsi
+@@ -375,10 +375,6 @@
+ 				reg = <0xe14 0x8>;
+ 				reg-names = "mdio";
+ 				phy1: genet-phy@0 {
+-					compatible =
+-						"ethernet-phy-ieee802.3-c22";
+-					/* No interrupts - use PHY_POLL */
+-					max-speed = <1000>;
+ 					reg = <0x1>;
+ 					led-modes = <0x00 0x08>; /* link/activity link */
+ 				};
+-- 
+2.24.1
+

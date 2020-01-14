@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware-dt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-dt
-Version:        2019.09.19
+Version:        2020.01.09
 Release:        0
 Summary:        Device trees for the Raspberry Pi firmware loader
 License:        GPL-2.0-only
@@ -29,6 +29,7 @@ Source2:        rpi4-cma-overlay.dts
 Source3:        rpi4-pcie-ib-size-fix-overlay.dts
 Source4:        rpi4-genet-overlay.dts
 Source100:      get-from-git.sh
+Patch0:         upstream-rpi4-genet-phy.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -41,6 +42,7 @@ for the Raspberry Pi boot process.
 
 %prep
 %setup
+%patch0 -p1
 
 %build
 SRCDIR=`pwd`
