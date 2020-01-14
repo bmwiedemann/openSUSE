@@ -1,0 +1,38 @@
+From 1f215c310c518634dfd5c0b651ef901f38c5ada7 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Mon, 13 Jan 2020 07:55:41 +0100
+Subject: [PATCH] Initialize variable
+
+---
+ messageviewer/src/htmlwriter/webengineparthtmlwriter.cpp | 1 -
+ messageviewer/src/htmlwriter/webengineparthtmlwriter.h   | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/messageviewer/src/htmlwriter/webengineparthtmlwriter.cpp b/messageviewer/src/htmlwriter/webengineparthtmlwriter.cpp
+index f88ecee3..701cf053 100644
+--- a/messageviewer/src/htmlwriter/webengineparthtmlwriter.cpp
++++ b/messageviewer/src/htmlwriter/webengineparthtmlwriter.cpp
+@@ -33,7 +33,6 @@ using namespace MessageViewer;
+ WebEnginePartHtmlWriter::WebEnginePartHtmlWriter(MailWebEngineView *view, QObject *parent)
+     : QObject(parent)
+     , mHtmlView(view)
+-    , mState(Ended)
+ {
+     assert(view);
+ }
+diff --git a/messageviewer/src/htmlwriter/webengineparthtmlwriter.h b/messageviewer/src/htmlwriter/webengineparthtmlwriter.h
+index 31801cdb..7a4e5909 100644
+--- a/messageviewer/src/htmlwriter/webengineparthtmlwriter.h
++++ b/messageviewer/src/htmlwriter/webengineparthtmlwriter.h
+@@ -55,7 +55,7 @@ private:
+         Begun,
+         Queued,
+         Ended
+-    } mState;
++    } mState = Ended;
+     QTemporaryFile *mTempFile = nullptr;
+ };
+ }
+-- 
+2.24.1
+
