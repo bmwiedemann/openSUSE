@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 14 03:08:57 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.708
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.708     2020-01-12 22:56:43-05:00 America/New_York
+  
+      [Added]
+  
+      - Added 'Capture' adapter for capturing log messages in an array or
+        running an arbitrary callback. This makes it easier to test log
+        messages, collect messages from a certain scope for later display.
+        Thanks @nrdvana! [Github #77]
+  
+      - Added Log::Any::Adapter 'get' class method to get an adapter for
+        a category. This allows bypassing the Proxy and using the Adapter
+        directly. Doing so breaks all the features enabled by a Proxy, and
+        so should only be used in special circumstances (definitely not in
+        CPAN modules). Thanks @nrdvana! [Github #78]
+  
+      - Added 'Multiplex' adapter for directing log output to one or more
+        Log::Any adapters. This allows, for example, basic logging to
+        Stderr and logging to a remote Syslogd or Elastic. Thanks
+        @jrubinator and @GrantStreetGroup for contributing this!
+        [Github #79, Github #16]
+
+-------------------------------------------------------------------
 Fri Aug  3 05:31:39 UTC 2018 - coolo@suse.com
 
 - updated to 1.707
