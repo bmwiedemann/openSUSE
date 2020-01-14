@@ -1,0 +1,163 @@
+From 3f4680ba2e05535fa9b4349859e8bf36c40b21eb Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 4 Dec 2019 16:22:53 +0100
+Subject: [PATCH] Fix build with openSUSE clang9 package.
+
+qt-creator doesn't support linking to clang-cpp instead of split libraries.
+See https://bugreports.qt.io/browse/QTCREATORBUG-23172
+---
+ qbs/modules/libclang/functions.js             | 37 ++-----------------
+ src/shared/clang/clang_installation.pri       | 11 ++----
+ .../clangpchmanagerbackend/CMakeLists.txt     |  2 +-
+ .../source/CMakeLists.txt                     |  5 +--
+ tests/unit/unittest/CMakeLists.txt            | 12 ++----
+ 5 files changed, 12 insertions(+), 55 deletions(-)
+
+diff --git a/qbs/modules/libclang/functions.js b/qbs/modules/libclang/functions.js
+index d1bd2dd2..70a3c21e 100644
+--- a/qbs/modules/libclang/functions.js
++++ b/qbs/modules/libclang/functions.js
+@@ -110,24 +110,9 @@ function formattingLibs(llvmConfig, qtcFunctions, targetOS)
+     var clangVersion = version(llvmConfig)
+     var libs = []
+     if (qtcFunctions.versionIsAtLeast(clangVersion, MinimumLLVMVersion)) {
+-        if (qtcFunctions.versionIsAtLeast(clangVersion, "8.0.0")) {
+-            libs.push(
+-                "clangFormat",
+-                "clangToolingInclusions",
+-                "clangToolingCore",
+-                "clangRewrite",
+-                "clangLex",
+-                "clangBasic"
+-            );
+-        } else {
+-            libs.push(
+-                "clangFormat",
+-                "clangToolingCore",
+-                "clangRewrite",
+-                "clangLex",
+-                "clangBasic"
+-            );
+-        }
++        libs.push(
++            "clang-cpp"
++        );
+         libs = libs.concat(extraLibraries(llvmConfig, targetOS));
+     }
+ 
+@@ -137,21 +122,7 @@ function formattingLibs(llvmConfig, qtcFunctions, targetOS)
+ function toolingLibs(llvmConfig, targetOS)
+ {
+     var fixedList = [
+-        "clangTooling",
+-        "clangFrontend",
+-        "clangIndex",
+-        "clangParse",
+-        "clangSerialization",
+-        "clangSema",
+-        "clangEdit",
+-        "clangAnalysis",
+-        "clangDriver",
+-        "clangDynamicASTMatchers",
+-        "clangASTMatchers",
+-        "clangToolingCore",
+-        "clangAST",
+-        "clangLex",
+-        "clangBasic",
++        "clang-cpp",
+     ];
+ 
+     return fixedList.concat(extraLibraries(llvmConfig, targetOS));
+diff --git a/src/shared/clang/clang_installation.pri b/src/shared/clang/clang_installation.pri
+index 08838838..a7dd01c7 100644
+--- a/src/shared/clang/clang_installation.pri
++++ b/src/shared/clang/clang_installation.pri
+@@ -131,9 +131,7 @@ defineReplace(extractWarnings) {
+     return($$result)
+ }
+ 
+-CLANGTOOLING_LIBS=-lclangTooling -lclangIndex -lclangFrontend -lclangParse -lclangSerialization \
+-                  -lclangSema -lclangEdit -lclangAnalysis -lclangDriver -lclangDynamicASTMatchers \
+-                  -lclangASTMatchers -lclangToolingCore -lclangAST -lclangLex -lclangBasic
++CLANGTOOLING_LIBS=-lclang-cpp
+ win32:CLANGTOOLING_LIBS += -lversion
+ 
+ BIN_EXTENSION =
+@@ -207,11 +205,8 @@ isEmpty(LLVM_VERSION) {
+     isEmpty(QTC_CLANG_BUILDMODE_MISMATCH)|!equals(QTC_CLANG_BUILDMODE_MISMATCH, 1) {
+         CLANGFORMAT_MAIN_HEADER = $$LLVM_INCLUDEPATH/clang/Format/Format.h
+         exists($$CLANGFORMAT_MAIN_HEADER) {
+-            CLANGFORMAT_LIBS=-lclangFormat -lclangToolingInclusions -lclangToolingCore -lclangRewrite -lclangLex -lclangBasic
+-            ALL_CLANG_LIBS=-lclangFormat -lclangToolingInclusions -lclangTooling -lclangToolingCore \
+-                           -lclangRewrite -lclangIndex -lclangFrontend -lclangParse -lclangSerialization \
+-                           -lclangSema -lclangEdit -lclangAnalysis -lclangDriver -lclangDynamicASTMatchers \
+-                           -lclangASTMatchers -lclangAST -lclangLex -lclangBasic
++            CLANGFORMAT_LIBS=-lclang-cpp
++            ALL_CLANG_LIBS=-lclang-cpp
+             win32:CLANGFORMAT_LIBS += -lversion
+         }
+     }
+diff --git a/src/tools/clangpchmanagerbackend/CMakeLists.txt b/src/tools/clangpchmanagerbackend/CMakeLists.txt
+index 965ef441..0137a102 100644
+--- a/src/tools/clangpchmanagerbackend/CMakeLists.txt
++++ b/src/tools/clangpchmanagerbackend/CMakeLists.txt
+@@ -3,7 +3,7 @@ add_subdirectory(source)
+ add_qtc_executable(clangpchmanagerbackend
+   DEPENDS
+     clangrefactoringbackend_lib clangpchmanagerbackend_lib
+-    clangTooling libclang Sqlite ClangSupport clangQuery clangIndex
++    clang-cpp libclang Sqlite
+   SOURCES
+     clangpchmanagerbackendmain.cpp
+ )
+diff --git a/src/tools/clangrefactoringbackend/source/CMakeLists.txt b/src/tools/clangrefactoringbackend/source/CMakeLists.txt
+index 420e630c..e0fff46b 100644
+--- a/src/tools/clangrefactoringbackend/source/CMakeLists.txt
++++ b/src/tools/clangrefactoringbackend/source/CMakeLists.txt
+@@ -2,10 +2,7 @@ add_qtc_library(clangrefactoringbackend_lib STATIC
+   PUBLIC_DEPENDS
+     Threads::Threads
+     LLVMCore libclang
+-    clangAST clangASTMatchers clangBasic clangDynamicASTMatchers clangFrontend
+-    clangHandleCXX clangIndex clangLex
+-    clangSerialization clangTooling clangQuery
+-    ClangSupport
++    clang-cpp
+   PUBLIC_DEFINES CLANGSUPPORT_BUILD_LIB
+   PUBLIC_INCLUDES
+     ${CLANG_INCLUDE_DIRS}
+diff --git a/tests/unit/unittest/CMakeLists.txt b/tests/unit/unittest/CMakeLists.txt
+index 306c0276..fefb63b1 100644
+--- a/tests/unit/unittest/CMakeLists.txt
++++ b/tests/unit/unittest/CMakeLists.txt
+@@ -243,7 +243,7 @@ if (TARGET libclang)
+   target_link_libraries(unittest PRIVATE libclang)
+ endif()
+ 
+-if (TARGET clangTooling)
++if (TARGET clang-cpp)
+   target_compile_definitions(unittest PRIVATE CLANG_UNIT_TESTS)
+   target_sources(unittest PRIVATE
+     gtest-llvm-printing.cpp
+@@ -265,16 +265,10 @@ if (TARGET clangTooling)
+     builddependencycollector-test.cpp
+     mockrefactoringclient.h
+     mockrefactoringserver.h
+-  )
+-  target_link_libraries(unittest
+-    PRIVATE clangTooling clangIndex clangQuery)
+-endif()
+-
+-if (TARGET clangFormat)
+-  target_sources(unittest PRIVATE
+     clangformat-test.cpp
+   )
+-  target_link_libraries(unittest PRIVATE clangFormat)
++  target_link_libraries(unittest
++    PRIVATE clang-cpp)
+ endif()
+ 
+ if (TARGET GoogleBenchmark)
+-- 
+2.24.0
+

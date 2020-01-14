@@ -17,7 +17,7 @@
 
 
 Name:           libqt5-creator
-Version:        4.10.1
+Version:        4.11.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -29,13 +29,16 @@ Summary:        Integrated Development Environment targeting Qt apps
 License:        GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only) AND GPL-3.0-only AND LGPL-3.0-only AND MIT AND BSD-3-Clause
 Group:          Development/Tools/IDE
 Url:            https://www.qt.io/ide/
-%define major_ver 4.10
+%define major_ver 4.11
 %define qt5_version 5.11.0
-%define tar_version 4.10.1
+%define tar_version 4.11.0
+# Change back from 'development_releases' to 'official_releases' for 4.11.0
 Source:         https://download.qt.io/official_releases/qtcreator/%{major_ver}/%{tar_version}/qt-creator-opensource-src-%{tar_version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE
-Patch2:         fix-application-output.patch
+Patch0:         0001-Fix-build-with-openSUSE-clang9-package.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         fix-application-output.patch
 BuildRequires:  gdb
 BuildRequires:  libQt5Sql5-sqlite >= %{qt5_version}
 BuildRequires:  libbotan-devel

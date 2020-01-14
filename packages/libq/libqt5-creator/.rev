@@ -668,4 +668,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     - Fixed update of animation curve editor (forwarded request 738602 from cgiboudeaux)</comment>
     <requestid>738605</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>eedfdadf3c04478da9cb77ff0afa202b</srcmd5>
+    <version>4.11.0</version>
+    <time>1579032337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756134</requestid>
+  </revision>
 </revisionlist>

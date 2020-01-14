@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Dec 12 13:12:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.11.0.
+  * Check https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.11.0.md?h=4.11
+    for the changelog.
+
+-------------------------------------------------------------------
+Wed Dec  4 15:25:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.11-rc1.
+  * Check https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.11.0.md?h=4.11
+    for the changelog.
+- Add 0001-Fix-build-with-openSUSE-clang9-package.patch to work around
+  https://bugreports.qt.io/browse/QTCREATORBUG-23172.
+
+-------------------------------------------------------------------
+Tue Nov  5 14:13:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.10.2
+  * General
+    - Added experimental SerialTerminal plugin to prebuilt binaries
+  * CMake
+    - Fixed issue with deployment to remote Linux devices (QTCREATORBUG-21235)
+  * Qbs
+    - Fixed executable path in run configuration when custom installation directory
+      is specified (QTCREATORBUG-23039)
+  * Debugging
+    - Fixed crash when logging output (QTCREATORBUG-22733)
+    - Fixed crash when removing previously dragged breakpoint (QTCREATORBUG-23107)
+    - Fixed highlighting of watch item when value changes
+  * GTest
+    - Fixed `Run Under Cursor` (QTCREATORBUG-23068)
+  * Boost
+    - Fixed handling of parameterized tests
+
+-------------------------------------------------------------------
 Tue Oct 15 10:30:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.10.1
