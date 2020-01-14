@@ -1,7 +1,7 @@
 #
 # spec file for package cups-pk-helper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,9 @@ Release:        0
 Summary:        PolicyKit helper to configure cups with fine-grained privileges
 License:        GPL-2.0-or-later
 Group:          Hardware/Printing
-URL:            http://www.freedesktop.org/software/cups-pk-helper/releases/
-Source0:        http://www.freedesktop.org/software/cups-pk-helper/releases/%{name}-%{version}.tar.xz
+URL:            https://www.freedesktop.org/wiki/Software/cups-pk-helper/
+Source0:        https://www.freedesktop.org/software/cups-pk-helper/releases/%{name}-%{version}.tar.xz
+
 BuildRequires:  cups-devel
 # For directory ownership
 BuildRequires:  dbus-1
@@ -32,7 +33,6 @@ BuildRequires:  intltool
 BuildRequires:  polkit-devel
 # Without cups installed, the cups-pk-helper-mechanism gives error: CRITICAL **: Failed to connect to cupsd
 Requires:       cups
-Recommends:     %{name}-lang
 
 %description
 This package provides a PolicyKit helper to configure cups with
@@ -43,15 +43,16 @@ requiring a password for editing printer settings.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure
-make %{?_smp_mflags}
+%configure \
+	%{nil}
+%make_build
 
 %install
 %make_install
-%find_lang %{name}
+%find_lang %{name} %{?no_lang_C}
 
 %files
 %license COPYING
@@ -59,8 +60,11 @@ make %{?_smp_mflags}
 %{_sysconfdir}/dbus-1/system.d/org.opensuse.CupsPkHelper.Mechanism.conf
 %{_libexecdir}/cups-pk-helper-mechanism
 %{_datadir}/dbus-1/system-services/org.opensuse.CupsPkHelper.Mechanism.service
+%{_datadir}/locale/en/
 %{_datadir}/polkit-1/actions/org.opensuse.cupspkhelper.mechanism.policy
 
 %files lang -f %{name}.lang
+# english locale should be in the main package
+%exclude %{_datadir}/locale/en
 
 %changelog

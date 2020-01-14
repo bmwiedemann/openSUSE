@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 10 22:16:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend cups-pk-helper-lang: the lang package has
+  relevant supplements which pulls it in whenever needed.
+- Move /usr/share/locale/en from the -lang package to the main
+  package: English is installed on all systems. This avoids
+  cups-pk-helper-lang being triggered for installation on
+  english-only systems.
+- Modernize spec.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:24:31 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
