@@ -1,7 +1,7 @@
 #
 # spec file for package alkimia
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define sonum 7
+%define sonum 8
+%bcond_without lang
 Name:           alkimia
-Version:        7.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Library with common classes and functionality used by finance applications
 License:        LGPL-2.1-or-later
@@ -28,9 +29,16 @@ Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(Qt5Core) >= 5.2.0
 BuildRequires:  cmake(Qt5DBus) >= 5.2.0
+BuildRequires:  cmake(Qt5Qml) >= 5.2.0
 BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 
 %description
 libalkimia is a library with common classes and functionality used by finance
@@ -52,18 +60,44 @@ Requires:       libalkimia5-%{sonum} = %{version}
 %description -n libalkimia5-devel
 The development files for libalkimia.
 
+%lang_package
+
 %prep
 %setup -q
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DBUILD_WITH_WEBKIT=0 -DBUILD_APPLETS=0
 %make_jobs
 
 %install
 %kf5_makeinstall -C build
+mkdir -p %{buildroot}%{_datadir}/alkimia5/misc
+mv %{buildroot}/alkimia5/misc/financequote.pl %{buildroot}%{_datadir}/alkimia5/misc/financequote.pl
+
+%if %{with lang}
+%find_lang alkimia %{name}.lang
+%find_lang onlinequoteseditor %{name}.lang
+%find_lang plasma_applet_onlinequote %{name}.lang
+%find_lang plasma_applet_org.wincak.foreigncurrencies2 %{name}.lang
+%endif
 
 %post -n libalkimia5-%{sonum} -p /sbin/ldconfig
 %postun -n libalkimia5-%{sonum} -p /sbin/ldconfig
+
+%files
+%license COPYING.LIB
+%{_kf5_applicationsdir}/org.kde.onlinequoteseditor5.desktop
+%{_kf5_bindir}/onlinequoteseditor5
+%{_kf5_iconsdir}/hicolor/*/apps/onlinequoteseditor5.*
+%dir %{_kf5_qmldir}/org/
+%dir %{_kf5_qmldir}/org/kde
+%dir %{_kf5_qmldir}/org/kde/alkimia
+%{_kf5_qmldir}/org/kde/alkimia/libqmlalkimia.so
+%{_kf5_qmldir}/org/kde/alkimia/qmldir
+%{_kf5_sharedir}/alkimia5/
+%{_kf5_sysconfdir}/xdg/alkimia-quotes.knsrc
+%{_kf5_sysconfdir}/xdg/kmymoney-quotes.knsrc
+%{_kf5_sysconfdir}/xdg/skrooge-quotes.knsrc
 
 %files -n libalkimia5-devel
 %license COPYING.LIB
@@ -77,5 +111,9 @@ The development files for libalkimia.
 %license COPYING.LIB
 %doc README.md
 %{_kf5_libdir}/libalkimia5.so.%{sonum}*
+
+%if %{with lang}
+%files lang -f %{name}.lang
+%endif
 
 %changelog
