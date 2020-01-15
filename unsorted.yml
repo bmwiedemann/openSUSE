@@ -273,6 +273,8 @@ unsorted:
   - VirtualGL 
   - VirtualGL-32bit: [x86_64] 
   - VirtualGL-devel 
+  - WSL-DistroLauncher 
+  - WSL-DistroLauncher-debug 
   - WindowMaker-devel 
   - WoeUSB 
   - XyGrib 
@@ -1910,6 +1912,7 @@ unsorted:
   - cowsay 
   - cozy 
   - cozy-lang 
+  - cp437 
   - cpanspec 
   - cpluff 
   - cpmono_v07-fonts 
@@ -2798,6 +2801,7 @@ unsorted:
   - fastlzlib-devel 
   - fatrace 
   - fatsort 
+  - fb-util-for-appx 
   - fbi 
   - fbpdf 
   - fbreader 
@@ -4640,7 +4644,11 @@ unsorted:
   - gocode 
   - gocr 
   - gocr-gui 
+  - godot 
+  - godot-headless 
   - godot-rpm-macros 
+  - godot-runner 
+  - godot-server 
   - goffice-devel 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
@@ -6178,6 +6186,8 @@ unsorted:
   - k3b-devel 
   - k3s 
   - k3s-hyperkube 
+  - kColorPicker-devel 
+  - kImageAnnotator-devel 
   - kaccounts-integration-32bit: [x86_64] 
   - kaccounts-integration-devel 
   - kaccounts-integration-devel-32bit: [x86_64] 
@@ -6646,7 +6656,7 @@ unsorted:
   - kross-32bit: [x86_64] 
   - kross-devel 
   - kross-devel-32bit: [x86_64] 
-  - kross-python 
+  - kross-ruby 
   - krunner-devel 
   - krunner-devel-32bit: [x86_64] 
   - krusader-doc 
@@ -6662,6 +6672,8 @@ unsorted:
   - ksmtp-devel 
   - ksnakeduel 
   - ksnakeduel-lang 
+  - ksnip 
+  - ksnip-lang 
   - kssl 
   - kst 
   - kst-devel 
@@ -9226,7 +9238,7 @@ unsorted:
   - libguile-srfi-srfi-13-14-v-3-3 
   - libguile-srfi-srfi-4-v-3-3 
   - libguile-srfi-srfi-60-v-2-2 
-  - libguile-ssh11 
+  - libguile-ssh12 
   - libguile1-devel 
   - libguile17 
   - libguilereadline-v-17-17 
@@ -9612,6 +9624,8 @@ unsorted:
   - libjthread1_3_3 
   - libjwt_verify_lib0: [x86_64] 
   - libjxrglue0 
+  - libkColorPicker0_1_0 
+  - libkImageAnnotator0_1_0 
   - libkaccounts1-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
@@ -13532,7 +13546,6 @@ unsorted:
   - modulemd-validator 
   - modulemd-validator-v1 
   - moe 
-  - moinmoin-wiki 
   - mojave-gtk-theme 
   - mojo-executor 
   - mojo-executor-javadoc 
@@ -24349,6 +24362,7 @@ unsorted:
   - sobby 
   - socat: [i586] 
   - socket_wrapper 
+  - sof-firmware 
   - sofia-sip 
   - sofia-sip-devel 
   - softhsm 
@@ -24796,6 +24810,7 @@ unsorted:
   - tcpd-devel 
   - tcpflow 
   - tcpreplay 
+  - tcpser 
   - tdb-tools 
   - tdom 
   - tdom-devel 
@@ -33747,6 +33762,7 @@ unsorted:
   - yast2-docker: [x86_64] 
   - yast2-drbd: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - yast2-fcoe-client 
+  - yast2-firstboot-wsl 
   - yast2-geo-cluster 
   - yast2-gpmc 
   - yast2-installation-control 
