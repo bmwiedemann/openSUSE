@@ -417,6 +417,8 @@ unsorted:
   - alevt 
   - alevtd 
   - alex 
+  - alkimia 
+  - alkimia-lang 
   - allegro44 
   - allegro44-dga2-plugin 
   - allegro44-dga2-plugin-32bit: [x86_64] 
@@ -1301,7 +1303,6 @@ unsorted:
   - btrfsprogs-static 
   - bucklespring 
   - buffer 
-  - bugreporter 
   - bugzilla 
   - bugzilla-lang-de 
   - build-compare 
@@ -2326,8 +2327,6 @@ unsorted:
   - djvu2pdf 
   - djvulibre-djview4 
   - djvulibre-doc 
-  - djvusmooth 
-  - djvusmooth-lang 
   - dkgpg 
   - dkimproxy 
   - dkms 
@@ -6761,8 +6760,6 @@ unsorted:
   - kxmlgui-devel-32bit: [x86_64] 
   - kxmlrpcclient5-devel 
   - kxmlrpcclient5-devel-32bit: [x86_64] 
-  - kye 
-  - kye-data 
   - kyotocabinet 
   - labplot-kf5 
   - labplot-kf5-lang 
@@ -6843,7 +6840,6 @@ unsorted:
   - ldmtool: [i586] 
   - ldns 
   - ldns-devel 
-  - ldtp 
   - leafnode 
   - lector 
   - ledger 
@@ -7672,7 +7668,7 @@ unsorted:
   - libairspyhf0 
   - libakai0 
   - libalac0 
-  - libalkimia5-7 
+  - libalkimia5-8 
   - libalkimia5-devel 
   - liballeg44-devel 
   - liballeg4_4 
@@ -13252,7 +13248,6 @@ unsorted:
   - mchange-commons 
   - mchange-commons-javadoc 
   - mcjoin 
-  - mcomix 
   - mcpp 
   - mcpp-devel 
   - mcstrans: [i586] 
@@ -15051,7 +15046,7 @@ unsorted:
   - openal-soft-devel-32bit: [x86_64] 
   - openal-soft-makehrtf 
   - openal-soft-tools 
-  - openarena 
+  - openarena: [x86_64] 
   - openarena-data 
   - openbabel 
   - openbabel-devel 
@@ -15494,7 +15489,6 @@ unsorted:
   - paperclips 
   - paperclips-javadoc 
   - paperkey 
-  - paperwork 
   - papi 
   - papi-devel 
   - papi-devel-32bit: [x86_64] 
@@ -17393,7 +17387,6 @@ unsorted:
   - ptscotch_6_0_9-gnu-openmpi3-hpc 
   - ptscotch_6_0_9-gnu-openmpi3-hpc-devel 
   - ptscotch_6_0_9-gnu-openmpi3-hpc-devel-static 
-  - puddletag 
   - pugixml-devel 
   - pulseaudio-equalizer 
   - pulseaudio-esound-compat 
@@ -18802,6 +18795,8 @@ unsorted:
   - python2-keystonemiddleware 
   - python2-kid 
   - python2-killswitch 
+  - python2-kismet-rest 
+  - python2-kismetdb 
   - python2-kitchen 
   - python2-kmatch 
   - python2-kmod 
@@ -20941,6 +20936,7 @@ unsorted:
   - python3-fedmsg 
   - python3-feedgenerator 
   - python3-feedparser 
+  - python3-ffmpeg-python 
   - python3-fido2 
   - python3-fields 
   - python3-fife 
@@ -21264,6 +21260,8 @@ unsorted:
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
+  - python3-kismet-rest 
+  - python3-kismetdb 
   - python3-kitchen 
   - python3-kiwi 
   - python3-kmatch 
@@ -22806,6 +22804,7 @@ unsorted:
   - qxmledit 
   - qxmledit-devel 
   - qxtglobalshortcut-devel 
+  - r128gain 
   - rabbitmq-java-client 
   - rabbitmq-server 
   - rabbitmq-server-plugins 
@@ -24257,7 +24256,6 @@ unsorted:
   - slf4j-manual 
   - slf4j-sources 
   - slib 
-  - slingshot 
   - slirp4netns: [i586] 
   - slop 
   - slop-devel 

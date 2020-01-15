@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200114" schemaversion="4.1">
+<image name="OBS__openSUSE___20200115" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200114</productvar>
+      <productvar name="VERSION">20200115</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200114,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200115,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200114/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200115/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -1103,7 +1103,6 @@
       <repopackage name="iproute2"/>
       <repopackage name="ipset"/>
       <repopackage name="iptables"/>
-      <repopackage name="iptraf-ng"/>
       <repopackage name="iputils"/>
       <repopackage name="ipw-firmware"/>
       <repopackage name="irda"/>
@@ -1845,7 +1844,7 @@
       <repopackage name="libfftw3-3"/>
       <repopackage name="libfftw3_threads3"/>
       <repopackage name="libfile1_0"/>
-      <repopackage name="libfind3_0"/>
+      <repopackage name="libfind4_0"/>
       <repopackage name="libfipscheck1" arch="x86_64"/>
       <repopackage name="libfl-devel"/>
       <repopackage name="libfl2"/>
