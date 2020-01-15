@@ -39,7 +39,7 @@
   boo#1138401: '20190726'
   boo#1138417: '20190703'
   boo#1139857: '20190730'
-  boo#1140040: '20200113'
+  boo#1140040: '20200114'
   boo#1140249: '20190709'
   boo#1141597: '20190801'
   boo#1141848: '20190909'
@@ -218,7 +218,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = Virtualization:WSL server:monitoring:zabbix network:vpn:wireguard KDE:Qt:5.14 network:messaging:kafka  devel:languages:python:mailman X11:LXQt:Other
+devel-whitelist = Virtualization:WSL server:monitoring:zabbix network:vpn:wireguard KDE:Qt:5.14 network:messaging:kafka  devel:languages:python:mailman X11:LXQt:Other security:OpenVAS:STABLE
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -404,7 +404,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20200114'
 published: '20200113'
 publishing: '20200113'
 testing: '20200114'
