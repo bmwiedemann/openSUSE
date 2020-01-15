@@ -235,4 +235,20 @@
     <comment></comment>
     <requestid>744971</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f9cef7997fb09a3f716d5eba263e837c</srcmd5>
+    <version>1.9.2</version>
+    <time>1579101441</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.9.2
+  * Fixed minor git driver bugs
+  * Fixed schema validation for version field to allow dev-* versions
+    too
+  * Fixed external processes' output being formatted even though it
+    should not
+  * Fixed issue with path repositories when trying to install feature
+    branches
+</comment>
+    <requestid>764583</requestid>
+  </revision>
 </revisionlist>

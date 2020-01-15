@@ -21,10 +21,10 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  tests/t6100-mdraid-partitions.sh | 62 +++++++++++++++++++++++++++++++++++-----
  1 file changed, 55 insertions(+), 7 deletions(-)
 
-diff --git a/tests/t6100-mdraid-partitions.sh b/tests/t6100-mdraid-partitions.sh
-index dbb1686..b471f56 100755
---- a/tests/t6100-mdraid-partitions.sh
-+++ b/tests/t6100-mdraid-partitions.sh
+Index: parted-3.3/tests/t6100-mdraid-partitions.sh
+===================================================================
+--- parted-3.3.orig/tests/t6100-mdraid-partitions.sh
++++ parted-3.3/tests/t6100-mdraid-partitions.sh
 @@ -21,6 +21,7 @@
  require_root_
  require_scsi_debug_module_
@@ -33,13 +33,14 @@ index dbb1686..b471f56 100755
  
  # create memory-backed device
  scsi_debug_setup_ dev_size_mb=10 > dev-name ||
-@@ -40,13 +41,27 @@ parted -s "$scsi_dev" mklabel gpt \
+@@ -40,14 +41,28 @@ parted -s "$scsi_dev" mklabel gpt \
  compare /dev/null out || fail=1
  wait_for_dev_to_appear_ ${scsi_dev}2 || { fail=1; cat /proc/partitions; }
  
 +create_mddev() {
 +  # create mdraid on top of both partitions
-+  mdadm -C $md_dev --force -R -l1 -n2 "${scsi_dev}1" "${scsi_dev}2"
++  mdadm -C $md_dev -e0 --force -R -l1 -n2 "${scsi_dev}1" "${scsi_dev}2"
++  wait_for_dev_to_appear_ ${md_dev} || { fail=1; cat /proc/partitions; }
 +}
 +
  cleanup_fn_() {
@@ -47,8 +48,9 @@ index dbb1686..b471f56 100755
    mdadm -S $md_dev || warn_ "Failed to stop MD array, $md_dev"
  }
  
--# create mdraid on top of both partitions
--mdadm -C $md_dev --force -R -l1 -n2 "${scsi_dev}1" "${scsi_dev}2"
+-# create mdraid on top of both partitions with v0.90 metadata
+-mdadm -C $md_dev -e0 --force -R -l1 -n2 "${scsi_dev}1" "${scsi_dev}2"
+-wait_for_dev_to_appear_ ${md_dev} || { fail=1; cat /proc/partitions; }
 +remove_mdparts() {
 +  # Remove partitions from the raid device.
 +  parted -s $md_dev rm 2 rm 1 > out 2>&1 || fail=1
@@ -63,7 +65,7 @@ index dbb1686..b471f56 100755
  
  # create gpt and two partitions on the raid device
  parted -s $md_dev mklabel gpt \
-@@ -57,12 +72,45 @@ compare /dev/null out || fail=1
+@@ -58,12 +73,45 @@ compare /dev/null out || fail=1
  # Verify that kernel has been informed about the second device.
  wait_for_dev_to_appear_ ${md_dev}p2 || { fail=1; cat /proc/partitions; }
  

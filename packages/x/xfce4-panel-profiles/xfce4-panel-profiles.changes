@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:36:48 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.0.10
+  * Add openSUSE profile
+  * Add new error for invalid configuration files (bxo#15983)
+  * 'Current Configuration' now pulls the current panel state instead of
+    the state cached when the program starts (bxo#16114)
+  * A cancellable warning is now displayed when applying configurations
+    (bxo#14559)
+  * Translations updates
+- Removed patch openSUSE-profile.patch because merged upstream
+
+-------------------------------------------------------------------
 Sun Jul 28 19:09:54 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 1.0.9

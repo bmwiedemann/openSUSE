@@ -1,7 +1,7 @@
 #
 # spec file for package schily
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2019.11.11
+%global box_version	2019.12.05
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2019-11-11
+%define rver	2019-12-05
 
 Name:           schily
 Version:        %box_version
@@ -154,14 +154,14 @@ Group:          System/Libraries
 The library implements a heuristic file type determinator,
 similar to file/libmagic1.
 
-%package -n libfind3_0
+%package -n libfind4_0
 Summary:        A library for /usr/bin/find-like functionality
 License:        CDDL-1.0
 Group:          System/Libraries
 Version:        %libfind_version
 Release:        0
 
-%description -n libfind3_0
+%description -n libfind4_0
 libfind allows to be used for adding find(1)-like command-line features
 to programs.
 
@@ -259,7 +259,7 @@ Requires:       libdeflt1_0 = %box_version
 Requires:       libedc_ecc1_0 = %cdr_version
 Requires:       libedc_ecc_dec1_0 = %cdr_version
 Requires:       libfile1_0 = %box_version
-Requires:       libfind3_0 = %libfind_version
+Requires:       libfind4_0 = %libfind_version
 Requires:       librmt1_0 = %box_version
 Requires:       libschily2_0 = %box_version
 Requires:       libxtermcap1_0 = %box_version
@@ -537,6 +537,7 @@ rm -Rfv "$b/usr/ccs" "$b/usr/xpg4" "$b/%_bindir/sccs"
 rm -Rfv \
    $b/etc/sformat.dat \
    $b/usr/bin/Cstyle \
+   $b/usr/bin/cal \
    $b/usr/bin/calc \
    $b/usr/bin/calltree \
    $b/usr/bin/change \
@@ -586,8 +587,9 @@ rm -Rfv \
    $b/usr/share/doc/packages/README \
    $b/usr/share/doc/packages/libparanoia/README.interface \
    $b/usr/share/doc/packages/libparanoia/README.paranoia \
-   $b/usr/share/doc/packages/schilyutils/dotfiles.tar.bz2 \
+   $b/usr/share/doc/packages/bsh/dotfiles.tar.bz2 \
    $b/usr/share/man/de/man1/sdd.1 \
+   $b/usr/share/man/man1/cal.1 \
    $b/usr/share/man/man1/calc.1 \
    $b/usr/share/man/man1/calltree.1 \
    $b/usr/share/man/man1/change.1 \
@@ -682,8 +684,8 @@ fi
 %postun -n libedc_ecc_dec1_0 -p /sbin/ldconfig
 %post   -n libfile1_0 -p /sbin/ldconfig
 %postun -n libfile1_0 -p /sbin/ldconfig
-%post   -n libfind3_0 -p /sbin/ldconfig
-%postun -n libfind3_0 -p /sbin/ldconfig
+%post   -n libfind4_0 -p /sbin/ldconfig
+%postun -n libfind4_0 -p /sbin/ldconfig
 %post   -n libparanoia1_0 -p /sbin/ldconfig
 %postun -n libparanoia1_0 -p /sbin/ldconfig
 %post   -n librmt1_0 -p /sbin/ldconfig
@@ -775,9 +777,9 @@ fi
 %license libfile/LEGAL.NOTICE
 %_libdir/libfile.so.1.0
 
-%files -n libfind3_0
+%files -n libfind4_0
 %license CDDL.Schily.txt
-%_libdir/libfind.so.3.0
+%_libdir/libfind.so.4.0
 
 %files -n libparanoia1_0
 %license libparanoia/LICENSE
@@ -1028,11 +1030,13 @@ fi
 %license CDDL.Schily.txt
 %doc AN-*
 %config(noreplace) %_sysconfdir/default/star
+%_bindir/fifo
 %_bindir/scpio
 %_bindir/star
 %_bindir/tartest
 %_bindir/ustar
 %_docdir/star/
+%_mandir/man1/fifo.1*
 %_mandir/man1/scpio.1*
 %_mandir/man1/star.1*
 %_mandir/man1/ustar.1*

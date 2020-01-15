@@ -17,8 +17,10 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  parted/parted.c            |   16 ++++++++++++++++
  5 files changed, 78 insertions(+)
 
---- a/doc/C/parted.8
-+++ b/doc/C/parted.8
+Index: parted-3.3/doc/C/parted.8
+===================================================================
+--- parted-3.3.orig/doc/C/parted.8
++++ parted-3.3/doc/C/parted.8
 @@ -30,6 +30,10 @@ never prompts for user intervention
  .B -v, --version
  displays the version
@@ -30,9 +32,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  .B -a \fIalignment-type\fP, --align \fIalignment-type\fP
  Set alignment for newly created partitions, valid alignment types are:
  .RS
---- a/include/parted/device.in.h
-+++ b/include/parted/device.in.h
-@@ -119,6 +119,7 @@ struct _PedDeviceArchOps {
+Index: parted-3.3/include/parted/device.in.h
+===================================================================
+--- parted-3.3.orig/include/parted/device.in.h
++++ parted-3.3/include/parted/device.in.h
+@@ -122,6 +122,7 @@ struct _PedDeviceArchOps {
          /* These functions are optional */
          PedAlignment *(*get_minimum_alignment)(const PedDevice *dev);
          PedAlignment *(*get_optimum_alignment)(const PedDevice *dev);
@@ -40,7 +44,7 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  };
  
  #include <parted/constraint.h>
-@@ -155,6 +156,7 @@ extern PedConstraint *ped_device_get_opt
+@@ -158,6 +159,7 @@ extern PedConstraint *ped_device_get_opt
  
  extern PedAlignment *ped_device_get_minimum_alignment(const PedDevice *dev);
  extern PedAlignment *ped_device_get_optimum_alignment(const PedDevice *dev);
@@ -48,9 +52,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  
  /* private stuff ;-) */
  
---- a/libparted/arch/linux.c
-+++ b/libparted/arch/linux.c
-@@ -3298,6 +3298,44 @@ linux_get_optimum_alignment(const PedDev
+Index: parted-3.3/libparted/arch/linux.c
+===================================================================
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -3395,6 +3395,44 @@ linux_get_optimum_alignment(const PedDev
                  blkid_topology_get_alignment_offset(tp) / dev->sector_size,
                  blkid_topology_get_optimal_io_size(tp) / dev->sector_size);
  }
@@ -94,8 +100,8 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
 +}
  #endif
  
- static PedDeviceArchOps linux_dev_ops = {
-@@ -3318,6 +3356,9 @@ static PedDeviceArchOps linux_dev_ops =
+ #if defined __s390__ || defined __s390x__
+@@ -3471,6 +3509,9 @@ static PedDeviceArchOps linux_dev_ops =
          get_minimum_alignment:	linux_get_minimum_alignment,
          get_optimum_alignment:	linux_get_optimum_alignment,
  #endif
@@ -105,9 +111,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  };
  
  PedDiskArchOps linux_disk_ops =  {
---- a/libparted/device.c
-+++ b/libparted/device.c
-@@ -565,4 +565,21 @@ ped_device_get_optimum_alignment(const P
+Index: parted-3.3/libparted/device.c
+===================================================================
+--- parted-3.3.orig/libparted/device.c
++++ parted-3.3/libparted/device.c
+@@ -559,4 +559,21 @@ ped_device_get_optimum_alignment(const P
          return align;
  }
  
@@ -129,8 +137,10 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
 +}
 +
  /** @} */
---- a/parted/parted.c
-+++ b/parted/parted.c
+Index: parted-3.3/parted/parted.c
+===================================================================
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
 @@ -76,6 +76,7 @@ static int MEGABYTE_SECTORS (PedDevice*
  enum
  {
@@ -161,7 +171,7 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  int     opt_machine_mode = 0;
  int     disk_is_modified = 0;
  int     is_toggle_mode = 0;
-@@ -650,6 +654,7 @@ _adjust_end_if_iec (PedSector* start, Pe
+@@ -651,6 +655,7 @@ _adjust_end_if_iec (PedSector* start, Pe
          }
  }
  
@@ -169,7 +179,7 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  static int
  do_mkpart (PedDevice** dev, PedDisk** diskp)
  {
-@@ -840,6 +845,14 @@ do_mkpart (PedDevice** dev, PedDisk** di
+@@ -848,6 +853,14 @@ do_mkpart (PedDevice** dev, PedDisk** di
          if (ped_partition_is_flag_available (part, PED_PARTITION_LBA))
                  ped_partition_set_flag (part, PED_PARTITION_LBA, 1);
  
@@ -182,9 +192,9 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
 +        }
 +
          if (!ped_disk_commit (disk))
-                 goto error;
+                 goto error_remove_part;
  
-@@ -2196,6 +2209,9 @@ while (1)
+@@ -2252,6 +2265,9 @@ while (1)
                  case PRETEND_INPUT_TTY:
                    pretend_input_tty = 1;
                    break;

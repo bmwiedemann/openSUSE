@@ -394,4 +394,20 @@ Latest changes:
   * Fixed broken formatting in 90-nvidia-udev-pm-G05.rules (issue #40)</comment>
     <requestid>751712</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c38071c57321848a9ed029ea2717a21a</srcmd5>
+    <version>0.7.5</version>
+    <time>1579101485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.5
+  * Runlevel switch not needed anymore
+    + Service only starts/stops display-manager service
+      - Faster switch operation
+      - No conflicts with services that run in runlev. 3
+      - Consistence
+    + Removed references of target/runlevel switch
+    + Removed a duplicate of &quot;systemctl stop display-manager&quot; in
+      &quot;user_logout_waiter&quot; section</comment>
+    <requestid>764618</requestid>
+  </revision>
 </revisionlist>

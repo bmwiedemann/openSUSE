@@ -19,7 +19,7 @@
 %bcond_with git
 %define series 1.4
 Name:           catfish
-Version:        1.4.12
+Version:        1.4.13
 Release:        0
 Summary:        Versatile File Searching Tool
 License:        GPL-2.0-or-later

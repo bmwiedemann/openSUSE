@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMuPDF
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.16.3
+Version:        1.16.10
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        GPL-3.0-only AND AGPL-3.0-only

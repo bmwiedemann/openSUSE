@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>592921</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f9827cf6cfb3d039b86db167e3214c98</srcmd5>
+    <version>0.8.8</version>
+    <time>1579101397</time>
+    <user>dimstar_suse</user>
+    <comment>Drop i586</comment>
+    <requestid>764566</requestid>
+  </revision>
 </revisionlist>

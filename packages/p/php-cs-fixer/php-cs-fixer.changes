@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Wed Jan  8 13:21:01 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.16.1:
+  * BlankLineAfterNamespaceFixer - do not remove indent, handle comments
+  * MethodArgumentSpaceFixer - fix for on_multiline:ensure_fully_multiline with trailing comma in function call
+  * FileLintingIterator - fix current value on end/invalid
+  * FunctionTypehintSpaceFixer - Ensure single space between type declaration and parameter
+  * MethodArgumentSpaceFixer - handle misplaced )
+  * NoLeadingImportSlashFixer - Add space if needed
+  * SimpleToComplexStringVariableFixer - Fix $ bug
+  * Fix preg_match error on 7.4snapshot
+  * IsNullFixer - fix null coalescing operator handling
+  * ToolInfo - fix access to reference without checking existence
+  * Fix non-static closure unbinding this on PHP 7.4
+  * Use Box 3 to build the PHAR
+  * PHP 7.4 - Tests for support
+  * DX: test that default config is not passed in RuleSet
+  * DX: test to ensure @PHPUnitMigration rule sets are correctly defined
+  * DX: static call of markTestSkippedOrFail
+  * Add apostrophe to possessive "team's"
+  * ReadmeCommandTest - use CommandTester
+  * DX: control names of public methods in test's classes
+  * NewWithBracesFixer - Fix object operator and curly brace open cases
+  * fix typos in README
+  * DX: Fix shell script syntax in order to fix Travis builds
+  * DX: Lock binary SCA tools versions
+  * Revert PHP7.4 - Add "str_split" => "mb_str_split" mapping
+  * DX: AutoReview - ensure Travis handle all needed PHP versions
+  * MethodArgumentSpaceFixerTest - make explicit configuration to prevent fail on configuration change
+  * IndentationTypeFixer - fix handling 2 spaces indent
+  * NoSuperfluousElseifFixer - fix invalid escape sequence in character class
+  * NoUnusedImports - Fix imports detected as used in namespaces
+  * PhpUnitNoExpectationAnnotationFixer - fix handling expect empty exception message
+  * HeredocIndentationFixer - remove whitespace in empty lines
+  * ClassKeywordRemoveFixer - fix for self,static and parent keywords
+  * TokensAnalyzer - handle nested anonymous classes
+  * CombineConsecutiveIssetsFixer - fix stop based on precedence
+  * Fix command exit code on lint error after fixing fix.
+  * FunctionsAnalyzer: fix for comment in type
+  * BracesFixer - handle dynamic static method call
+  * Braces - fix both single line comment styles
+  * PhpdocTypesOrderFixer - Prevent unexpected default value change
+  * Add PHPStan
+  * IncludeFixer - remove braces when the statement is wrapped in block
+  * Allow running if installed as project specific
+  * Verify PCRE pattern before use
+  * Remove superfluous leading backslash, closes 4520
+  * DX: ensure data providers are used
+  * Redo PHP7.4 - Add "str_split" => "mb_str_split" mapping
+  * DX: use PHIVE for dev tools
+  * Docs: update Cookbook
+  * Enhancement: Use default name property to configure command names
+  * DX: removing unnecessary variable initialization
+  * DX: use ::class whenever possible
+  * DX: travis_retry for dev-tools install
+  * Allow 7.4snapshot to fail due to a bug on it
+  * GitlabReporter - fix report output
+  * Move readme-update command to Section 3
+  * Update symfony ruleset
+  * Command::execute() should always return an integer
+  * Add suport for true/false return type hints.
+  * Increase PHPStan level to 1
+  * Fix deprecation notices
+  * Output details - Explain why a file was skipped
+  * Fix STDIN test when path is one level deep
+  * PhpdocToReturnType - Add support for Foo[][]
+  * Ensure compatibility with PHP 7.4 typed properties
+  * Import cannot be used after `::` so can be removed
+  * Ensure compatibility with PHP 7.4 numeric literal separator
+  * Fix PHP 7.4 deprecation notices
+  * Ensure compatibility with PHP 7.4 arrow functions
+  * Ensure compatibility with PHP 7.4 spread operator in array expression
+  * Ensure compatibility with PHP 7.4 null coalescing assignment operator
+  * Configure no_superfluous_phpdoc_tags for Symfony
+  * Travis CI - Update known files list
+  * Remove workaround for dev-tools install reg. Phive
+  * FunctionsAnalyzer - add "isTheSameClassCall" for correct verifying of function calls
+  * Add typed properties test to VisibilityRequiredFixerTest
+  * ArrayIndentationFixer - Fix array indentation for multiline values
+  * TokensAnalyzer::isConstantInvocation - fix for extending multiple interfaces
+  * TokensAnalyzer::isConstantInvocation - fix for interface method return type
+  * Allow Symfony 5 components (l-vo)
+  * Disallow PHP 7.4 failures on Travis CI
+  * PHP 7.4 integration test
+  * DX: Update .gitattributes and move ci-integration.sh to root of the project
+  * Check PHP extensions on runtime
+  * Improve docs - README
+  * DX: generate headers in README.rst
+  * Enable execution under PHP 7.4
+  * TravisTest - rewrite tests to allow last supported by tool PHP version to be snapshot
+  * PhpdocLineSpanFixer - Introduction
+  * Add FinalPublicMethodForAbstractClassFixer
+  * FinalStaticAccessFixer - Introduction
+  * Issue #4274: Let lowercase_constants directive to be configurable.
+  * GlobalNamespaceImportFixer - Introduction
+  * SelfStaticAccessorFixer - Introduction
+  * CommentToPhpdocFixer - allow to ignore tags
+  * Add NullableTypeDeclarationForDefaultNullValueFixer
+  * Add SingleLineThrowFixer
+  * NoSuperfluousPhpdocTags - Add remove_inheritdoc option
+  * NoSuperfluousPhpdocTagsFixer - allow params that aren't on the signature
+  * PhpdocAlignFixer - add "property-read" and "property-write" to allowed tags
+  * Phpdoc to param type fixer rebase
+  * Raise deprecation warnings on usage of deprecated aliases
+  * DX: update branch alias
+  * SelfStaticAccessor - extend itests
+  * Configure no_superfluous_phpdoc_tags for Symfony
+  * DX: fix usage of deprecated options
+  * Fix PHP 7.3 strict mode warnings
+  * Add single_line_throw to Symfony ruleset
+  * FunctionsAnalyzer - add "isTheSameClassCall" for correct verifying of function calls
+  * PhpdocToParamTypeFixer - cover more cases
+  * FinalPublicMethodForAbstractClassFixer - Do not attempt to mark abstract public methods as final
+  * NullableTypeDeclarationForDefaultNullValueFixer - fix for not lowercase "null"
+  * Ensure compatibility with PHP 7.4
+  * Add typed properties test to VisibilityRequiredFixerTest
+  * ArrayIndentationFixer - Fix array indentation for multiline values
+  * TokensAnalyzer::isConstantInvocation - fix for extending multiple interfaces
+  * TokensAnalyzer::isConstantInvocation - fix for interface method return type
+  * Allow Symfony 5 components
+  * Disallow PHP 7.4 failures on Travis CI
+  * README - Mark up as code
+  * PHP 7.4 integration test
+  * DX: Update .gitattributes and move ci-integration.sh to root of the project
+  * Check PHP extensions on runtime
+  * Improve docs - README (mvorisek)
+  * DX: generate headers in README.rst
+  * Enable execution under PHP 7.4
+  * TravisTest - rewrite tests to allow last supported by tool PHP version to be snapshot
+- Update README.rst.
+- Define both the minimum and maximum versions in the PHP "build"
+  dependency.
+- Minor spec clean-up.
+
+-------------------------------------------------------------------
+Thu Jul 11 10:28:57 UTC 2019 - ecsos@opensuse.org
+
+- Update to release 2.15.1
+  * bug #4418 PhpUnitNamespacedFixer - properly translate classes 
+    which do not follow translation pattern (ktomk)
+  * bug #4419 PhpUnitTestCaseStaticMethodCallsFixer - skip 
+    anonymous classes and lambda (SpacePossum)
+  * bug #4420 MethodArgumentSpaceFixer - PHP7.3 trailing commas in 
+    function calls (SpacePossum)
+  * minor #4345 Travis: PHP 7.4 isn't allowed to fail anymore
+   (Slamdunk)
+  * minor #4403 LowercaseStaticReferenceFixer - Fix invalid PHP 
+    version in example (HypeMC)
+  * minor #4424 DX: cleanup of composer.json - no need for 
+    branch-alias (keradus)
+  * minor #4425 DX: assertions are static, adjust custom 
+    assertions (keradus)
+  * minor #4426 DX: handle deprecations of 
+    symfony/event-dispatcher:4.3 (keradus)
+  * minor #4427 DX: stop using reserved T_FN in code samples 
+   (keradus)
+  * minor #4428 DX: update dev-tools (keradus)
+  * minor #4429 DX: MethodArgumentSpaceFixerTest - fix hidden merge
+    conflict (keradus)
+
+-------------------------------------------------------------------
 Sun Jun  2 10:11:17 UTC 2019 - suse+build@de-korte.org
 
 - Update to release 2.14.4

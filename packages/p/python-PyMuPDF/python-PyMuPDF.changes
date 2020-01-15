@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 15 11:54:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.16.10
+  * PyMuPDF can also be used as a module in the commandline using 
+    "python -m fitz"
+  * Support for Python 3.4 has been dropped.
+
+-------------------------------------------------------------------
 Wed Oct  2 11:25:50 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Version update to 1.16.3

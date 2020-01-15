@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Tidy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Perl-Tidy
-Version:        20191203
+Version:        20200110
 Release:        0
 #Upstream: GPL-1.0-or-later
 %define cpan_name Perl-Tidy

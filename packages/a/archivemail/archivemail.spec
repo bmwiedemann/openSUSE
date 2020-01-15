@@ -1,7 +1,7 @@
 #
 # spec file for package archivemail
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,13 @@ Name:           archivemail
 Version:        0.9.0
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://archivemail.sf.net/
+URL:            http://archivemail.sf.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 Summary:        Tool for Archiving and Compressing Old Email in Mailboxes
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 BuildRequires:  ed
-BuildRequires:  python-devel
+BuildRequires:  python-base
 %{py_requires}
 %if %{?suse_version: %{suse_version} > 1110} %{!?suse_version:1}
 BuildArch:      noarch
@@ -48,13 +48,13 @@ w
 EOF
 
 %build
-%{__python} setup.py build
+python setup.py build
 
 %install
 # python => 2.5 expects this to exist (it will exist if the package
 # installs something there, but we don't)
 mkdir -p $RPM_BUILD_ROOT/%{python_sitelib}
-%{__python} setup.py install --prefix=%{_prefix} --root %{buildroot}
+python setup.py install --prefix=%{_prefix} --root %{buildroot}
 # we don't need the egg file which python => 2.5 installs
 rm -f $RPM_BUILD_ROOT/%{python_sitelib}/*
 

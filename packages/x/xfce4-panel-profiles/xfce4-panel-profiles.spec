@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-panel-profiles
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           xfce4-panel-profiles
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Simple application to manage Xfce panel layouts
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://git.xfce.org/apps/xfce4-panel-profiles/about/
 Source:         https://archive.xfce.org/src/apps/xfce4-panel-profiles/1.0/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE openSUSE-profile.patch maurizio.galli@gmail.com -- add panel profile style openSUSE
-Patch0:         openSUSE-profile.patch
 BuildRequires:  appstream-glib
 BuildRequires:  findutils
 BuildRequires:  gobject-introspection
@@ -51,7 +49,7 @@ Simple application to manage Xfce panel layouts.
 This tool makes it possible to backup, restore, import, and export panel layouts.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 # configure macro not working due to it using unsupported options
@@ -94,5 +92,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_datadir}/%{name}/%{name}/%{name}.glade
 %{_datadir}/%{name}/%{name}/%{name}.py
 %{_datadir}/metainfo/org.xfce.PanelProfiles.appdata.xml
+%{_mandir}/man1/xfce4-panel-profiles.1.gz
 
 %changelog

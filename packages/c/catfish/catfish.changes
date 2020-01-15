@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 15 11:32:06 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.4.13
+  * Optimized svg and png assets
+  * Fix missing results from symbolic links (bxo#16318)
+  * Do not load catfishconfig during setup as it breaks Debian
+    packaging
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Jan  2 15:57:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.4.12

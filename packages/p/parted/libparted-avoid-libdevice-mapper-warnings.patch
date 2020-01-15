@@ -5,11 +5,11 @@ Patch-mainline: no, custom SUSE patch
  libparted/arch/linux.c |    6 ++++++
  1 file changed, 6 insertions(+)
 
-Index: parted-3.2/libparted/arch/linux.c
+Index: parted-3.3/libparted/arch/linux.c
 ===================================================================
---- parted-3.2.orig/libparted/arch/linux.c
-+++ parted-3.2/libparted/arch/linux.c
-@@ -2728,6 +2728,12 @@ _dm_remove_partition(PedDisk* disk, int
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -2852,6 +2852,12 @@ _dm_remove_partition(PedDisk* disk, int
                  goto err;
          }
          close (fd);

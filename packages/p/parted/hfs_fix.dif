@@ -2,11 +2,11 @@
  libparted/labels/mac.c |    9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
 
-Index: parted-3.2/libparted/labels/mac.c
+Index: parted-3.3/libparted/labels/mac.c
 ===================================================================
---- parted-3.2.orig/libparted/labels/mac.c
-+++ parted-3.2/libparted/labels/mac.c
-@@ -467,7 +467,7 @@ _rawpart_is_void (MacRawPartition* raw_p
+--- parted-3.3.orig/libparted/labels/mac.c
++++ parted-3.3/libparted/labels/mac.c
+@@ -468,7 +468,7 @@ _rawpart_is_void (MacRawPartition* raw_p
  	return _rawpart_cmp_type (raw_part, "Apple_Void");
  }
  
@@ -15,7 +15,7 @@ Index: parted-3.2/libparted/labels/mac.c
   * doesn't represent a partition at all.  NOTE: some people make Apple_Free
   * partitions with MacOS, because they can't select another type.  So, if the
   * name is anything other than "Extra" or "", it is treated as a "real"
-@@ -530,6 +530,13 @@ _rawpart_analyse (MacRawPartition* raw_p
+@@ -531,6 +531,13 @@ _rawpart_analyse (MacRawPartition* raw_p
  	if (!part)
  		goto error;
  

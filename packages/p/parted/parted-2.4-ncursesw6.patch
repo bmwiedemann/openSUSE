@@ -5,11 +5,11 @@ Patch-mainline: no, custom SUSE patch
  configure.ac |    5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-Index: parted-3.2/configure.ac
+Index: parted-3.3/configure.ac
 ===================================================================
---- parted-3.2.orig/configure.ac
-+++ parted-3.2/configure.ac
-@@ -165,7 +165,8 @@ AM_CPPFLAGS="$AM_CPPFLAGS -D_REENTRANT"
+--- parted-3.3.orig/configure.ac
++++ parted-3.3/configure.ac
+@@ -151,7 +151,8 @@ AM_CPPFLAGS="$AM_CPPFLAGS -D_REENTRANT"
  
  dnl Check for programs.
  AC_ISC_POSIX
@@ -19,7 +19,7 @@ Index: parted-3.2/configure.ac
  AC_PROG_GCC_TRADITIONAL
  AM_PROG_CC_C_O
  
-@@ -377,7 +378,7 @@ dnl Check for termcap
+@@ -331,7 +332,7 @@ dnl Check for termcap
  if test "$with_readline" = yes; then
  	OLD_LIBS="$LIBS"
  	LIBS=""

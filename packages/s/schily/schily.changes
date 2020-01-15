@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 12 00:42:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2019.12.05
+  * libschily: the function getargs() and similar (from the
+    option parser group) now support an extended format
+    specifier: Previously, %0 and %1 have been supported, now all
+    single digit numbers %0..%9 are supported.
+  * libfind: The functions fetchdir()/dfetchdir(), sortdir(),
+    cmpdir() now use size_t instead of int for the entry number
+    count and the allocated size.
+  * star: The new-volume-script= script is now called at the end
+    of _every tape_, even at the last one. This now allows to
+    have a script that automatically renames a standard archive
+    name into numbered archive names when a tree should be
+    splitted into chunks.
+  * star: In "pax" command line mode, star now uses -no-fsync as
+    default.
+
+-------------------------------------------------------------------
 Wed Nov 20 11:11:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to relesae 2019.11.11

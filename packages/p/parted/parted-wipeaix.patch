@@ -5,11 +5,11 @@ Patch-mainline: no, custom SUSE patch
  libparted/labels/dos.c |    8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
-Index: parted-3.2/libparted/labels/dos.c
+Index: parted-3.3/libparted/labels/dos.c
 ===================================================================
---- parted-3.2.orig/libparted/labels/dos.c
-+++ parted-3.2/libparted/labels/dos.c
-@@ -1285,7 +1285,13 @@ msdos_write (const PedDisk* disk)
+--- parted-3.3.orig/libparted/labels/dos.c
++++ parted-3.3/libparted/labels/dos.c
+@@ -1287,7 +1287,13 @@ msdos_write (const PedDisk* disk)
  		return 0;
  	DosRawTable *table = (DosRawTable *) s0;
  

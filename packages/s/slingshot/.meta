@@ -1,5 +1,0 @@
-<package name="slingshot" project="openSUSE:Factory">
-  <title>Slingshot</title>
-  <description>A two dimensional, turn based simulation-strategy game</description>
-  <devel project="games" package="slingshot"/>
-</package>

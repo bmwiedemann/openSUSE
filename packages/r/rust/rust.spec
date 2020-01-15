@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -120,7 +120,7 @@ Release:        0
 Summary:        A systems programming language
 License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
-URL:            https://www.rust-lang.org
+Url:            https://www.rust-lang.org
 Source0:        %{dl_url}/rustc-%{version}-src.tar.xz
 Source99:       %{name}-rpmlintrc
 Source100:      %{dl_url}/rust-%{version_bootstrap}-x86_64-unknown-linux-gnu.tar.xz
@@ -162,8 +162,8 @@ BuildRequires:  gcc7-c++
 BuildRequires:  gcc-c++
 %endif
 # The following requires must mirror: LIBSSH2_SYS_USE_PKG_CONFIG
-%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
-BuildRequires:  pkgconfig(libssh2) >= 1.4.3
+%if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
+BuildRequires:  pkgconfig(libssh2) >= 1.6.0
 %endif
 # Real LLVM minimum version should be 7.x, but rust has a fallback
 # mode
@@ -467,9 +467,8 @@ export RUSTFLAGS="%{rustflags}"
 export CC=gcc-7
 export CXX=g++-7
 %endif
-# Cargo use system libs if not bootstrapping
-# restircted only to libssh due to version changes causing with cargo rpm deps
-%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
+# Make cargo use system libs if not bootstrapping
+%if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
 # eliminate complain from RPMlint
@@ -492,9 +491,8 @@ export RUSTFLAGS="%{rustflags}"
 export CC=gcc-7
 export CXX=g++-7
 %endif
-# Cargo use system libs if not bootstrapping
-# restircted only to libssh due to version changes causing with cargo rpm deps
-%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
+# Make cargo use system libs if not bootstrapping
+%if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
 # eliminate complain from RPMlint

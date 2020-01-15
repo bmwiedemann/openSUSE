@@ -12,10 +12,10 @@ type for msdos partition tables.
  parted/ui.c              |    3 ++
  5 files changed, 56 insertions(+), 23 deletions(-)
 
-Index: parted-3.2/include/parted/disk.in.h
+Index: parted-3.3/include/parted/disk.in.h
 ===================================================================
---- parted-3.2.orig/include/parted/disk.in.h
-+++ parted-3.2/include/parted/disk.in.h
+--- parted-3.3.orig/include/parted/disk.in.h
++++ parted-3.3/include/parted/disk.in.h
 @@ -75,10 +75,11 @@ enum _PedPartitionFlag {
          PED_PARTITION_LEGACY_BOOT=15,
          PED_PARTITION_MSFT_DATA=16,
@@ -30,11 +30,11 @@ Index: parted-3.2/include/parted/disk.in.h
  
  enum _PedDiskTypeFeature {
          PED_DISK_TYPE_EXTENDED=1,       /**< supports extended partitions */
-Index: parted-3.2/libparted/disk.c
+Index: parted-3.3/libparted/disk.c
 ===================================================================
---- parted-3.2.orig/libparted/disk.c
-+++ parted-3.2/libparted/disk.c
-@@ -2388,6 +2388,8 @@ ped_partition_flag_get_name (PedPartitio
+--- parted-3.3.orig/libparted/disk.c
++++ parted-3.3/libparted/disk.c
+@@ -2389,6 +2389,8 @@ ped_partition_flag_get_name (PedPartitio
  		return N_("lba");
  	case PED_PARTITION_HPSERVICE:
  		return N_("hp-service");
@@ -43,11 +43,11 @@ Index: parted-3.2/libparted/disk.c
  	case PED_PARTITION_PALO:
  		return N_("palo");
  	case PED_PARTITION_PREP:
-Index: parted-3.2/libparted/labels/dos.c
+Index: parted-3.3/libparted/labels/dos.c
 ===================================================================
---- parted-3.2.orig/libparted/labels/dos.c
-+++ parted-3.2/libparted/labels/dos.c
-@@ -1550,6 +1550,10 @@ msdos_partition_set_flag (PedPartition*
+--- parted-3.3.orig/libparted/labels/dos.c
++++ parted-3.3/libparted/labels/dos.c
+@@ -1565,6 +1565,10 @@ msdos_partition_set_flag (PedPartition*
  	disk = part->disk;
  
  	switch (flag) {
@@ -58,7 +58,7 @@ Index: parted-3.2/libparted/labels/dos.c
  	case PED_PARTITION_HIDDEN:
  		if (part->type == PED_PARTITION_EXTENDED) {
  			ped_exception_throw (
-@@ -1657,6 +1661,9 @@ msdos_partition_get_flag (const PedParti
+@@ -1690,6 +1694,9 @@ msdos_partition_get_flag (const PedParti
  	case PED_PARTITION_LBA:
  		return dos_data->lba;
  
@@ -68,7 +68,7 @@ Index: parted-3.2/libparted/labels/dos.c
  	case PED_PARTITION_PALO:
  		return dos_data->palo;
  
-@@ -1689,6 +1696,7 @@ msdos_partition_is_flag_available (const
+@@ -1728,6 +1735,7 @@ msdos_partition_is_flag_available (const
  	case PED_PARTITION_RAID:
  	case PED_PARTITION_LVM:
  	case PED_PARTITION_LBA:
@@ -76,11 +76,11 @@ Index: parted-3.2/libparted/labels/dos.c
  	case PED_PARTITION_PALO:
  	case PED_PARTITION_PREP:
  	case PED_PARTITION_IRST:
-Index: parted-3.2/parted/parted.c
+Index: parted-3.3/parted/parted.c
 ===================================================================
---- parted-3.2.orig/parted/parted.c
-+++ parted-3.2/parted/parted.c
-@@ -887,28 +887,40 @@ error:
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -928,28 +928,40 @@ error:
  static char*
  partition_print_flags (PedPartition const *part)
  {
@@ -140,7 +140,7 @@ Index: parted-3.2/parted/parted.c
  }
  
  static int
-@@ -1726,12 +1738,19 @@ do_set (PedDevice** dev, PedDisk **diskp
+@@ -1808,12 +1820,19 @@ do_set (PedDevice** dev, PedDisk **diskp
                  goto error;
          if (!command_line_get_part_flag (_("Flag to Invert?"), part, &flag))
                  goto error;

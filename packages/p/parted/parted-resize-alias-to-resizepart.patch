@@ -5,11 +5,11 @@ Patch-mainline: no, compatibility for parted < 3.0 syntax
  parted/parted.c |    8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)
 
-Index: parted-3.2/parted/parted.c
+Index: parted-3.3/parted/parted.c
 ===================================================================
---- parted-3.2.orig/parted/parted.c
-+++ parted-3.2/parted/parted.c
-@@ -2055,9 +2055,11 @@ NULL),
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -2111,9 +2111,11 @@ NULL),
  
  command_register (commands, command_create (
          str_list_create_unique ("resize", _("resize"), NULL),

@@ -1,8 +1,0 @@
-<package name="iptraf" project="openSUSE:Factory">
-  <title>TCP/IP Network Monitor</title>
-  <description>IPTraf-ng is a console-based network statistics utility. It gathers a
-variety of information such as TCP connection packet and byte counts,
-interface statistics and activity indicators, TCP/UDP traffic
-breakdowns, and LAN station packet and byte counts.</description>
-  <devel project="network:utilities" package="iptraf"/>
-</package>

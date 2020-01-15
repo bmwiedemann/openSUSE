@@ -55,6 +55,8 @@ BuildRequires:  update-desktop-files
 Requires:       openarena-data = %{version}
 Recommends:     openarena-doc = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# i586 does not build
+ExcludeArch:    %ix86
 
 %description
 OpenArena is an open-source content package for Quake III Arena

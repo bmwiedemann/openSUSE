@@ -17,10 +17,10 @@ Upstream: https://github.com/ya-mouse/fatresize
  configure.ac |    1 +
  2 files changed, 2 insertions(+), 1 deletion(-)
 
-Index: parted-3.1/Makefile.am
+Index: parted-3.3/Makefile.am
 ===================================================================
---- parted-3.1.orig/Makefile.am
-+++ parted-3.1/Makefile.am
+--- parted-3.3.orig/Makefile.am
++++ parted-3.3/Makefile.am
 @@ -1,5 +1,5 @@
  ACLOCAL_AMFLAGS = -I m4
 -SUBDIRS = po lib include libparted parted partprobe doc debug tests
@@ -28,12 +28,12 @@ Index: parted-3.1/Makefile.am
  
  EXTRA_DIST =				\
    .version				\
-Index: parted-3.1/configure.ac
+Index: parted-3.3/configure.ac
 ===================================================================
---- parted-3.1.orig/configure.ac
-+++ parted-3.1/configure.ac
-@@ -610,6 +610,7 @@ libparted/tests/Makefile
- libparted.pc
+--- parted-3.3.orig/configure.ac
++++ parted-3.3/configure.ac
+@@ -571,6 +571,7 @@ libparted.pc
+ libparted-fs-resize.pc
  parted/Makefile
  partprobe/Makefile
 +fatresize/Makefile

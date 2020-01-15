@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 14 19:23:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5
+  Fixed
+  * Automatic interface selection wasn't done for --traffic and
+    --live when the Interface configuration setting was left empty
+  * --setalias didn't do anything when used in combination
+    with --add
+  * -l / --live and -tr default to first interface instead of
+    producing an error if a interface merge is requested
+
+-------------------------------------------------------------------
 Mon Aug 26 22:44:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4

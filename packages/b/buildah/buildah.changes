@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 15 07:44:30 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.13.1
+  * copyFileWithTar: close source files at the right time
+  * copy: don't digest files that we ignore
+  * Check for .dockerignore specifically
+  * Don't setup excludes, if their is only one pattern to match
+  * set HOME env to /root on chroot-isolation by default
+  * docs: fix references to containers-*.5
+  * fix bug Add check .dockerignore COPY file
+  * buildah bud --volume: run from tmpdir, not source dir
+  * Fix imageNamePrefix to give consistent names in buildah-from
+  * cpp: use -traditional and -undef flags
+  * discard outputs coming from onbuild command on buildah-from --quiet
+  * make --format columnizing consistent with buildah images
+  * Fix option handling for volumes in build
+  * Rework overlay pkg for use with libpod
+  * Fix buildahimage builds for buildah
+  * Add support for FIPS-Mode backends
+  * Set the TMPDIR for pulling/pushing image to $TMPDIR
+
+-------------------------------------------------------------------
 Mon Dec 16 08:54:54 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.12.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:54:24 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- ExcludeArch %arm since build fails due to no support for aws
+
+-------------------------------------------------------------------
+Tue Jan 14 11:57:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- ExcludeArch %ix86: bazel is required to build, which in turn is
+  not supported on ix86.
+
+-------------------------------------------------------------------
 Sun Jan 12 10:04:30 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pip install --no-compile (boo#1094323)

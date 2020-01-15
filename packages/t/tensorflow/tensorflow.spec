@@ -323,6 +323,7 @@ BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macr
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
 %endif
+ExcludeArch:    %ix86 %arm
 
 %description
 This open source software library for numerical computation is used for data

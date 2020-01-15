@@ -5,8 +5,10 @@ Patch-mainline: no, upstream does not use BLKRRPART and leaves DASDs broken
  libparted/arch/linux.c |   10 +++++++---
  1 file changed, 7 insertions(+), 3 deletions(-)
 
---- a/libparted/arch/linux.c
-+++ b/libparted/arch/linux.c
+Index: parted-3.3/libparted/arch/linux.c
+===================================================================
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
 @@ -39,6 +39,7 @@
  #include <sys/stat.h>
  #include <sys/types.h>
@@ -14,8 +16,8 @@ Patch-mainline: no, upstream does not use BLKRRPART and leaves DASDs broken
 +#include <sys/file.h>
  #include <scsi/scsi.h>
  #include <assert.h>
- #ifdef ENABLE_DEVICE_MAPPER
-@@ -3102,14 +3103,15 @@ static int
+ #include <sys/sysmacros.h>
+@@ -3242,14 +3243,15 @@ static int
  _kernel_reread_part_table (PedDevice* dev)
  {
          LinuxSpecific*  arch_specific = LINUX_SPECIFIC (dev);
@@ -34,7 +36,7 @@ Patch-mainline: no, upstream does not use BLKRRPART and leaves DASDs broken
  
                  if (!retry_count) {
                          ped_exception_throw (
-@@ -3119,10 +3121,12 @@ _kernel_reread_part_table (PedDevice* de
+@@ -3259,10 +3261,12 @@ _kernel_reread_part_table (PedDevice* de
                            "table on %s (%s).  As a result, it may not "
                            "reflect all of your changes until after reboot."),
                                  dev->path, strerror (errno));

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 14 20:12:37 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Fix typo in git version
+
+-------------------------------------------------------------------
+Tue Jan 14 18:06:55 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Downgrade to git revision 78 as libportal is not shipped in
+  Leap 15.2
+
+-------------------------------------------------------------------
+Mon Jan 13 06:55:34 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Upgrade to latest git commit
+- Fix tag 
+
+-------------------------------------------------------------------
+Fri Nov  1 17:44:23 UTC 2019 - Sébastien POHER <sogal@opensuse.org>
+
+- Upgrade to latest git to fix G_PARAM_PRIVATE deprecation error
+- Remove uneeded -Dwerror=false meson flag
+
+-------------------------------------------------------------------
 Wed Oct 30 10:33:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass -Dwerror=false to meson: to not choke on deprecated APIs. It

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 20:44:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.8.2. No changelog.
+
+-------------------------------------------------------------------
 Tue Jan 14 17:54:46 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Disable LTO as it removes required symbols

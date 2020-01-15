@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 13 11:57:17 UTC 2020 - Gabriele Santomaggio <g.santomaggio@suse.com>
+
+- Update to 3.8.2 
+- RabbitMQ 3.8.2 is a maintenance release.
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.2
+- RabbitMQ 3.8.2 is a maintenance release.
+- This release requires Erlang/OTP 21.3 or later.
+  22.x series is recommended.
+- RabbitMQ 3.8.2 is an RabbitMQ 3.8.0 update
+- RabbitMQ 3.8.0 is a feature release. It contains several major improvements 
+  in areas of data safety, replication, observability, and ease of upgrades. 
+  Some highlight features are:
+    * Quorum Queues
+    * Built-in Prometheus support with a set of Grafana dashboards to complement it
+    * Feature Flags
+    * Single Active Consumer
+    * New authentication and authorisation backend that uses OAuth 2.0 (JWT) 
+      tokens and scopes
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.0
+- Read the upgrading guide before update: https://www.rabbitmq.com/upgrade.html 
+
+-------------------------------------------------------------------
 Fri Dec  6 13:14:21 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Update to RabbitMQ version 3.7.23

@@ -1161,4 +1161,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>761709</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>3cbbd5d85593be549c2fca7c96bcf091</srcmd5>
+    <version>2020.01.15</version>
+    <time>1579101478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.01.25
+  *  scrippsnetworks: add support for www.discovery.com videos
+  * twitter: add support for promo_video_website cards
+  * vodplatform: add support for embed.kwikmotion.com domain
+- Update to release 2020.01.25
+  *  scrippsnetworks: add support for www.discovery.com videos
+  * twitter: add support for promo_video_website cards
+  * vodplatform: add support for embed.kwikmotion.com domain
+</comment>
+    <requestid>764638</requestid>
+  </revision>
 </revisionlist>

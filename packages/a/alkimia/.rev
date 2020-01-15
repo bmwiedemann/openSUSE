@@ -52,4 +52,12 @@
     <comment>- Drop the KDE4/Qt4 package. (forwarded request 688137 from cgiboudeaux)</comment>
     <requestid>688139</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b42bda94271bc78333fe33c3bb76850</srcmd5>
+    <version>8.0.3</version>
+    <time>1579101245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763103</requestid>
+  </revision>
 </revisionlist>

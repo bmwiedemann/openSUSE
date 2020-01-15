@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 14 12:12:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use (no longer supported) __python indirection macros.
+- BuildRequire python-base instead of python-devel: no python
+  module is being compiled.
+
+-------------------------------------------------------------------
 Wed May 16 10:30:26 UTC 2012 - gber@opensuse.org
 
 - update to version 0.9.0

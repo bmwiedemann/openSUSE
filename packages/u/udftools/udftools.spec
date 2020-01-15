@@ -1,7 +1,7 @@
 #
 # spec file for package udftools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           udftools
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        UDF filesystem tools
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            https://github.com/pali/udftools
+URL:            https://github.com/pali/udftools
 Source:         https://github.com/pali/udftools/releases/download/%{version}/udftools-%{version}.tar.gz
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake
@@ -31,7 +31,6 @@ BuildRequires:  libtool
 BuildRequires:  udev
 Provides:       udf = %{version}
 Obsoletes:      udf < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 These are tools for UDF file systems as used, e.g., on DVD-ROMs.
@@ -53,7 +52,6 @@ mv %{buildroot}%{_datadir}/doc/udftools %{buildroot}%{_docdir}/udftools
 rm -r %{buildroot}%{_datadir}/doc
 
 %files
-%defattr(-,root,root)
 %{_bindir}/cdrwtool
 %{_bindir}/udfinfo
 %{_bindir}/wrudf
@@ -61,13 +59,13 @@ rm -r %{buildroot}%{_datadir}/doc
 %{_sbindir}/mkudffs
 %{_sbindir}/pktsetup
 %{_sbindir}/udflabel
-%{_mandir}/man1/cdrwtool.1%{ext_man}
-%{_mandir}/man1/udfinfo.1%{ext_man}
-%{_mandir}/man1/wrudf.1%{ext_man}
-%{_mandir}/man8/mkfs.udf.8%{ext_man}
-%{_mandir}/man8/mkudffs.8%{ext_man}
-%{_mandir}/man8/pktsetup.8%{ext_man}
-%{_mandir}/man8/udflabel.8%{ext_man}
+%{_mandir}/man1/cdrwtool.1%{?ext_man}
+%{_mandir}/man1/udfinfo.1%{?ext_man}
+%{_mandir}/man1/wrudf.1%{?ext_man}
+%{_mandir}/man8/mkfs.udf.8%{?ext_man}
+%{_mandir}/man8/mkudffs.8%{?ext_man}
+%{_mandir}/man8/pktsetup.8%{?ext_man}
+%{_mandir}/man8/udflabel.8%{?ext_man}
 %{_udevrulesdir}/80-pktsetup.rules
 
 %changelog

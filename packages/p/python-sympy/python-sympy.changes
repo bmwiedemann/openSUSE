@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Jan 15 09:50:57 UTC 2020 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- version update to 1.5.1
+  + Deprecate `is_EmptySet` in favor of `is_empty`
+  + Lambda now requires a tuple rather than a list for the
+    signature argument (non-tuple iterables are deprecated)
+  + Eq(expr) now raises ValueError. Eq(expr, 0) should be used
+    instead.
+  + Refactory of the units module. Scale factors and dimensions
+    are now both global and relative to single unit systems.
+  + get_dixon_matrix() now computes only the necessary monomials
+    for the Dixon matrix.
+  + The ProductSet of no sets is no longer the empty set. Instead
+    is the set consisting of the empty tuple.
+  + Deprecated tensorhead() and tensorsymmetry() static methods.
+  + Rational, irrational, transcendental and algebraic now imply
+    finite in the assumptions system. This means that all symbols
+    declared as rational, integer, odd etc are now automatically
+    assumed finite.
+  + In the (old) assumptions, `complex=True` now implies
+    `finite=True`. Note that the default assumption for Symbol is
+    `complex=None`, which allows for the possibility for it to be
+    infinite.
+  + The assumptions system is changed so that only finite numbers
+    can be considered real, positive, negative, nonnegative,
+    nonpositive or nonzero (since nonzero implies real). This
+    means that any symbol declared with e.g. real=True is now
+    automatically considered finite. It also means that infinities
+    can not be considered positive or negative since they are not
+    real (e.g. oo.is_positive is now False).
+  + New assumptions extended_real, extended_positive etc are added
+    that allow for positive and negative infinity. The equivalent
+    of `Symbol('x', real=True)` in version 1.4 is now
+    `Symbol('x', extended_real=True)`. The equivalent of
+    `Symbol('x', negative=False)` is now
+    `Symbol('x', extended_negative=False)` although it is usually
+    better to use `Symbol('x', nonnegative=True)` (which implies
+    both real=True and finite=True as well). Code that previously
+    checked `if x.is_positive` should now be written as
+    `if x.is_extended_positive` if it is intended that infinities
+    should be allowed.
+  + Numbers still compare the same as they do in Python
+    (`Float(1) == 1`) except when they appear in an Expression,
+    e.g. `x**2.0 != x**2`.
+
+-------------------------------------------------------------------
 Wed Apr 17 12:28:18 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.4

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 18:20:45 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add _constraints file to ensure enough disk for ppc64(le) builds
+- Remove unwanted comments in .spec file
+
+-------------------------------------------------------------------
+Tue Jan 14 16:19:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable LTO to build correctly
+
+-------------------------------------------------------------------
 Mon Aug 13 11:25:11 UTC 2018 - alarrosa@suse.com
 
 - Correct license to use spdx identifiers

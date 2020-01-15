@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:44:17 UTC 2020 - Federico Mena Quintero <federico@suse.com>
+
+- Bump version of libssh2 for SLE15; we now need a version with
+  libssh2_userauth_publickey_frommemory(), which appeared in libssh2
+  1.6.0.
+- Use the bundled libssh2 prior to SLE15.  SLE12 has 1.4.3, which is
+  too old for the ssh crate now.
+
+-------------------------------------------------------------------
 Mon Dec 30 03:48:37 UTC 2019 - Luke Jones <luke@ljones.dev>
 
 - Update to version 1.40.0

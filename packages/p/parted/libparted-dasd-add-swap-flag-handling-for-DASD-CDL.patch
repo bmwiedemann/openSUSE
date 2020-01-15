@@ -18,8 +18,10 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  libparted/labels/dasd.c | 42 +++++++++++++++++++++++++-----------------
  1 file changed, 25 insertions(+), 17 deletions(-)
 
---- a/libparted/labels/dasd.c
-+++ b/libparted/labels/dasd.c
+Index: parted-3.3/libparted/labels/dasd.c
+===================================================================
+--- parted-3.3.orig/libparted/labels/dasd.c
++++ parted-3.3/libparted/labels/dasd.c
 @@ -65,6 +65,7 @@ extern void ped_disk_dasd_done ();
  typedef struct {
  	int type;
@@ -64,7 +66,7 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  		vtoc_ebcdic_enc(p->f1->DS1DSNAM, p->f1->DS1DSNAM, 44);
  
  		dasd_data->type = 0;
-@@ -745,14 +741,25 @@ dasd_partition_set_flag (PedPartition* p
+@@ -749,14 +745,25 @@ dasd_partition_set_flag (PedPartition* p
  	dasd_data = part->disk_specific;
  
  	switch (flag) {
@@ -92,7 +94,7 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  			dasd_data->lvm = state;
  			return ped_partition_set_system(part, part->fs_type);
  		default:
-@@ -770,6 +777,8 @@ dasd_partition_get_flag (const PedPartit
+@@ -774,6 +781,8 @@ dasd_partition_get_flag (const PedPartit
  	dasd_data = part->disk_specific;
  
  	switch (flag) {
@@ -101,16 +103,16 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  		case PED_PARTITION_RAID:
  			return dasd_data->raid;
  		case PED_PARTITION_LVM:
-@@ -784,6 +793,8 @@ dasd_partition_is_flag_available (const
-                                   PedPartitionFlag flag)
- {
+@@ -802,6 +811,8 @@ dasd_partition_is_flag_available (const
+ 		return 0;
+ 
  	switch (flag) {
 +		case PED_PARTITION_SWAP:
 +			return 1;
  		case PED_PARTITION_RAID:
  			return 1;
  		case PED_PARTITION_LVM:
-@@ -962,17 +973,14 @@ dasd_partition_set_system (PedPartition*
+@@ -985,17 +996,14 @@ dasd_partition_set_system (PedPartition*
  		return 1;
  	}
  

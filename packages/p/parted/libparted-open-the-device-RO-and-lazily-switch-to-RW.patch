@@ -18,11 +18,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  libparted/arch/linux.h |  1 +
  2 files changed, 31 insertions(+), 3 deletions(-)
 
-Index: parted-3.2/libparted/arch/linux.c
+Index: parted-3.3/libparted/arch/linux.c
 ===================================================================
---- parted-3.2.orig/libparted/arch/linux.c
-+++ parted-3.2/libparted/arch/linux.c
-@@ -295,6 +295,9 @@ static unsigned int _device_get_partitio
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -298,6 +298,9 @@ static unsigned int _device_get_partitio
  static int _device_open (PedDevice* dev, int flags);
  static int _device_open_ro (PedDevice* dev);
  static int _device_close (PedDevice* dev);
@@ -32,8 +32,8 @@ Index: parted-3.2/libparted/arch/linux.c
  
  static int
  _read_fd (int fd, char **buf)
-@@ -442,6 +445,22 @@ _is_virtblk_major (int major)
-         return _major_type_in_devices (major, "virtblk");
+@@ -451,6 +454,22 @@ _is_blkext_major (int major)
+         return _major_type_in_devices (major, "blkext");
  }
  
 +static void
@@ -55,7 +55,7 @@ Index: parted-3.2/libparted/arch/linux.c
  #ifdef ENABLE_DEVICE_MAPPER
  static int
  _dm_task_run_wait (struct dm_task *task, uint32_t cookie)
-@@ -1603,7 +1622,7 @@ _flush_cache (PedDevice* dev)
+@@ -1678,7 +1697,7 @@ _flush_cache (PedDevice* dev)
                  if (!name)
                          break;
                  if (!_partition_is_mounted_by_path (name)) {
@@ -64,7 +64,7 @@ Index: parted-3.2/libparted/arch/linux.c
                          if (fd > 0) {
                                  ioctl (fd, BLKFLSBUF);
  retry:
-@@ -1634,7 +1653,7 @@ _device_open_ro (PedDevice* dev)
+@@ -1709,7 +1728,7 @@ _device_open_ro (PedDevice* dev)
  static int
  linux_open (PedDevice* dev)
  {
@@ -73,7 +73,7 @@ Index: parted-3.2/libparted/arch/linux.c
  }
  
  static int
-@@ -1672,6 +1691,10 @@ retry:
+@@ -1747,6 +1766,10 @@ retry:
                  }
          } else {
                  dev->read_only = 0;
@@ -84,7 +84,7 @@ Index: parted-3.2/libparted/arch/linux.c
          }
  
          _flush_cache (dev);
-@@ -1907,6 +1930,7 @@ _write_lastoddsector (PedDevice* dev, co
+@@ -1984,6 +2007,7 @@ _write_lastoddsector (PedDevice* dev, co
  
          PED_ASSERT(dev != NULL);
          PED_ASSERT(buffer != NULL);
@@ -92,7 +92,7 @@ Index: parted-3.2/libparted/arch/linux.c
  
          arch_specific = LINUX_SPECIFIC (dev);
  
-@@ -1955,6 +1979,9 @@ linux_write (PedDevice* dev, const void*
+@@ -2032,6 +2056,9 @@ linux_write (PedDevice* dev, const void*
                          return 1;
          }
  
@@ -102,7 +102,7 @@ Index: parted-3.2/libparted/arch/linux.c
          if (_get_linux_version() < KERNEL_VERSION (2,6,0)) {
                  /* Kludge.  This is necessary to read/write the last
                     block of an odd-sized disk, until Linux 2.5.x kernel fixes.
-@@ -2480,6 +2507,7 @@ _blkpg_part_command (PedDevice* dev, str
+@@ -2570,6 +2597,7 @@ _blkpg_part_command (PedDevice* dev, str
          LinuxSpecific*          arch_specific = LINUX_SPECIFIC (dev);
          struct blkpg_ioctl_arg  ioctl_arg;
  
@@ -110,10 +110,10 @@ Index: parted-3.2/libparted/arch/linux.c
          ioctl_arg.op = op;
          ioctl_arg.flags = 0;
          ioctl_arg.datalen = sizeof (struct blkpg_partition);
-Index: parted-3.2/libparted/arch/linux.h
+Index: parted-3.3/libparted/arch/linux.h
 ===================================================================
---- parted-3.2.orig/libparted/arch/linux.h
-+++ parted-3.2/libparted/arch/linux.h
+--- parted-3.3.orig/libparted/arch/linux.h
++++ parted-3.3/libparted/arch/linux.h
 @@ -30,6 +30,7 @@ struct _LinuxSpecific {
  	int	fd;
  	int	major;
@@ -122,13 +122,13 @@ Index: parted-3.2/libparted/arch/linux.h
  	char*	dmtype;         /**< device map target type */
  #if defined __s390__ || defined __s390x__
  	unsigned int real_sector_size;
-Index: parted-3.2/libparted/labels/dasd.c
+Index: parted-3.3/libparted/labels/dasd.c
 ===================================================================
---- parted-3.2.orig/libparted/labels/dasd.c
-+++ parted-3.2/libparted/labels/dasd.c
-@@ -639,6 +639,10 @@ dasd_write (const PedDisk* disk)
- 	if (disk_specific->format_type == 1)
+--- parted-3.3.orig/libparted/labels/dasd.c
++++ parted-3.3/libparted/labels/dasd.c
+@@ -637,6 +637,10 @@ dasd_write (const PedDisk* disk)
  		return 1;
+ 	}
  
 +	/* Ensure the device is open RW */
 +	char dummy[10]; /* to avoid assertion in ped_device_write */
@@ -136,4 +136,4 @@ Index: parted-3.2/libparted/labels/dasd.c
 +
  	/* initialize the anchor */
  	fdasd_initialize_anchor(&anchor);
- 	fdasd_get_geometry(disk->dev, &anchor, arch_specific->fd);
+ 	if (fdasd_get_geometry(disk->dev, &anchor, arch_specific->fd) == 0)

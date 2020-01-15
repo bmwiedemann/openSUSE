@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Jan  3 14:46:27 UTC 2020 - Anna Maresova <anicka@suse.com>
+
+- fix crash in do_resizepart
+  + parted-fix-end_input-usage.patch: Fix end_input usage in
+    do_resizepart 
+
+-------------------------------------------------------------------
+Fri Nov 22 14:25:28 UTC 2019 - Anna Maresova <anicka@suse.com>
+
+- update to version 3.3, noteworthy changes:
+ - s390: Re-enabled virtio-attached DASD heuristics by using
+   HDIO_GETGEO when probing device geometry. Fixes a bug with
+   KVM virtio-blk backed by a DASD.
+   Parted now recognizes NVMe devices, NVDIMM, and RAM drives.
+ - Fix atari disklabel false positives by probing other labels first.
+ - Fix resizepart to adjust the end to be -1 sector when using iec
+   power of 2 units so that the next partition can start immediately
+   following the new end, just like mkpart does.
+ - Fix set and disk_set to not crash when there are no flags to set.
+ - Fix a udev cookie leak when using resizepart on device-mapper devices.
+ - Fix a gettext crash/error sometimes when using localized languages.
+ - Fix fat resize to preverve boot code, and thus not render the
+   filesystem unreconized by Windows.
+ - Fix rescue command: the rescue command often failed to find
+   filesystems due to leaving on cylinder alignment.
+ - libparted-fs-resize: Prevent crash resizing FAT file systems with very
+   deep directories with path names over 512 bytes long.
+ - Use 512b sector size when communicating with device-mapper. Fixes
+   problems with partitions being created too small on dm devices
+   with sector sizes > 5121b
+ - Don't crash in the disk_set command when a disk label is not found
+ - libparted-fs-resize: Prevent crash resizing FAT16 file systems.
+ - libparted-fs-resize: Prevent crash resizing FAT16 file systems.
+ - If the user specifies start/end of the partition as cylinders
+   and a cylinder has a size which is power of 2, then such address
+   does not trigger exact placement.
+ - mkpart: Allow negative start value when FS-TYPE is not given
+- remove following patches (now in upstream):
+ - 0001-fdasd-geometry-handling-updated-from-upstream-s390-t.patch
+ - 0002-dasd-enhance-device-probing.patch
+ - 0003-parted-fix-build-error-on-s390.patch
+ - 0004-fdasd.c-Safeguard-against-geometry-misprobing.patch
+ - 0005-libparted-Remove-fdasd-geometry-code-from-alloc_meta.patch
+ - clean-the-disk-information-when-commands-fail-in-int.patch
+ - lib-fs-resize-prevent-crash-resizing-FAT16.patch
+ - libpartd-dasd-improve-flag-processing-for-DASD-LDL.patch
+ - libparted-Add-support-for-NVDIMM-devices.patch
+ - libparted-Add-support-for-NVMe-devices.patch
+ - libparted-Add-support-for-RAM-drives.patch
+ - libparted-BLKPG_RESIZE_PARTITION-uses-bytes.patch
+ - libparted-Use-read-only-when-probing-devices-on-linu.patch
+ - libparted-allow-bigger-snap-radius-if-cylinders-are-used.patch
+ - libparted-dasd-add-an-exception-for-changing-DASD-LD.patch
+ - libparted-dasd-add-new-fdasd-functions.patch
+ - libparted-dasd-add-test-cases-for-the-new-fdasd-func.patch
+ - libparted-dasd-correct-the-offset-where-the-first-pa.patch
+ - libparted-dasd-unify-vtoc-handling-for-cdl-ldl.patch
+ - libparted-dasd-update-and-improve-fdasd-functions.patch
+ - libparted-device-mapper-uses-512b-sectors.patch
+ - libparted-dont-warn-if-no-HDIO_GET_IDENTITY.patch
+ - libparted-fix-starting-CHS-in-protective-MBR.patch
+ - libparted-fix-udev-cookie-leak.patch
+ - libparted-make-sure-not-to-treat-percentages-and-cyls-as-exact.patch
+ - libparted-set-swap-flag-on-GPT-partitions.patch
+ - libparted-sysmacros.patch
+ - parted-3.2.tar.xz
+ - parted-3.2.tar.xz.sig
+ - parted-check-the-name-of-partition-first-when-to-nam.patch
+ - parted-dont-crash-in-disk_set-when-disk-label-not-found.patch
+ - parted-fix-crash-due-to-improper-partition-number-in.patch
+ - parted-fix-wrong-error-label-jump-in-mkpart.patch
+ - parted-ui-remove-unneccesary-information-of-command.patch
+ - tests-check-extended-partition-length.patch
+ - tests-increase-scsi_debug-tmo.patch
+ - tests-set-optimal-blocks-for-scsi_debug.patch
+ - tests-update-t0220-t0280-for-swap-flag.patch
+ - tests-use-wait_for_dev_to_-functions.patch
+ - tests-wait_for_-loop.patch
+- backported or refreshed remaining patches
+
+-------------------------------------------------------------------
 Wed Jul 10 10:16:16 UTC 2019 - Anna Maresova <anicka@suse.com>
 
 - changed: parted-fix-crash-due-to-improper-partition-number-in.patch

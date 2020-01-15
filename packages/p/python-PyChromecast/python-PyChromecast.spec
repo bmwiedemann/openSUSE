@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyChromecast
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyChromecast
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT
@@ -53,6 +53,9 @@ multi-room setups with Audio cast devices.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+# no tests even on GitHub https://github.com/balloob/pychromecast/issues/333
+# but they will most probably ignore this issue
 
 %files %{python_files}
 %license LICENSE

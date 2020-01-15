@@ -29,11 +29,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  parted/parted.c | 39 ++++++++++++++++++++++++++++++++-------
  2 files changed, 36 insertions(+), 7 deletions(-)
 
-diff --git a/parted/parted.c b/parted/parted.c
-index 3cc8f77..2e31659 100644
---- a/parted/parted.c
-+++ b/parted/parted.c
-@@ -228,13 +228,19 @@ _timer_handler (PedTimer* timer, void* context)
+Index: parted-3.3/parted/parted.c
+===================================================================
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -229,13 +229,19 @@ _timer_handler (PedTimer* timer, void* c
  }
  
  static int
@@ -55,7 +55,7 @@ index 3cc8f77..2e31659 100644
                              PED_EXCEPTION_WARNING,
                              PED_EXCEPTION_YES_NO,
                              _("Partition %s is being used. Are you sure you " \
-@@ -1634,6 +1640,11 @@ do_resizepart (PedDevice** dev, PedDisk** diskp)
+@@ -1655,6 +1661,11 @@ do_resizepart (PedDevice** dev, PedDisk*
          PedSector               start, end, oldend;
          PedGeometry             *range_end = NULL;
          PedConstraint*          constraint;
@@ -67,19 +67,20 @@ index 3cc8f77..2e31659 100644
          int rc = 0;
  
          if (!disk) {
-@@ -1650,26 +1661,39 @@ do_resizepart (PedDevice** dev, PedDisk** diskp)
+@@ -1671,7 +1682,8 @@ do_resizepart (PedDevice** dev, PedDisk*
  
          if (!command_line_get_partition (_("Partition number?"), disk, &part))
                  goto error;
 -        if (!_partition_warn_busy (part))
-+        /* warn early if the partition end is not provided on cmdline */
++	/* warn early if the partition end is not provided on cmdline */
 +        if (cmdline_words <= part_idx && !_partition_warn_busy (part, danger_if_busy))
                  goto error;
--
+ 
          start = part->geom.start;
-         end = oldend = part->geom.end;
-         if (!command_line_get_sector (_("End?"), *dev, &end, &range_end, NULL))
+@@ -1681,19 +1693,32 @@ do_resizepart (PedDevice** dev, PedDisk*
                  goto error;
+         _adjust_end_if_iec(&start, &end, range_end, end_input);
+         free(end_input);
 +        if (cmdline_words >= end_idx && !_partition_warn_busy (part, danger_if_busy))
 +                goto error;
 +
@@ -92,26 +93,27 @@ index 3cc8f77..2e31659 100644
 -        if (part->geom.end < oldend)
 -                if (ped_exception_throw (
 +        if (part->geom.end < oldend) {
-+                if (opt_script_mode && (!ped_partition_is_busy (part) || ignore_busy)) {
-+                        char *path = ped_partition_get_path (part);
++	        if (opt_script_mode && (!ped_partition_is_busy (part) || ignore_busy)) {
++	               	char *path = ped_partition_get_path (part);
 +                        ped_exception_throw (
-+                            PED_EXCEPTION_WARNING,
-+                            PED_EXCEPTION_UNHANDLED,
-+                            _("Shrinking partition %s, data loss possible."), path);
-+                        free(path);
++                             PED_EXCEPTION_WARNING,
++                             PED_EXCEPTION_UNHANDLED,
++                             _("Shrinking partition %s, data loss possible."), path);
++                         free(path);
 +                } else if (ped_exception_throw (
                              PED_EXCEPTION_WARNING,
                              PED_EXCEPTION_YES_NO,
                              _("Shrinking a partition can cause data loss, " \
                                "are you sure you want to continue?")) != PED_EXCEPTION_YES)
-+                {
-                         goto error_destroy_constraint;
-+                }
+-                        goto error_destroy_constraint;
++		{
++                	goto error_destroy_constraint;
++		}
 +        }
          ped_disk_commit (disk);
  
          if ((*dev)->type != PED_DEVICE_FILE)
-@@ -1690,6 +1714,7 @@ static int
+@@ -1714,6 +1739,7 @@ static int
  do_rm (PedDevice** dev, PedDisk** diskp)
  {
          PedPartition*           part = NULL;
@@ -119,7 +121,7 @@ index 3cc8f77..2e31659 100644
  
          if (!*diskp)
                  *diskp = ped_disk_new (*dev);
-@@ -1698,7 +1723,7 @@ do_rm (PedDevice** dev, PedDisk** diskp)
+@@ -1722,7 +1748,7 @@ do_rm (PedDevice** dev, PedDisk** diskp)
  
          if (!command_line_get_partition (_("Partition number?"), *diskp, &part))
                  goto error;
@@ -127,4 +129,4 @@ index 3cc8f77..2e31659 100644
 +        if (!_partition_warn_busy (part, danger_if_busy))
                  goto error;
  
-         ped_disk_delete_partition (*diskp, part);
+         if (!ped_disk_delete_partition (*diskp, part))

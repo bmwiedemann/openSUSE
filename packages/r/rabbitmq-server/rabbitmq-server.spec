@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define _make_args DESTDIR="%{buildroot}" PREFIX="%{_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MAN_INSTALL_PATH="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
 
 Name:           rabbitmq-server
-Version:        3.7.23
+Version:        3.8.2
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-1.1
@@ -55,8 +55,7 @@ Source10:       advanced.config.example
 Source11:       rabbitmq.config.example
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
-BuildRequires:  erlang
-BuildRequires:  erlang >= 19.3.6.4
+BuildRequires:  erlang >= 21.3
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
 BuildRequires:  libxslt
@@ -68,7 +67,7 @@ BuildRequires:  unzip
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zip
-Requires:       erlang >= 20.3
+Requires:       erlang >= 21.3
 Requires:       erlang-epmd
 Requires:       logrotate
 Provides:       AMQP-server
@@ -151,6 +150,8 @@ install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmqctl
 install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-server
 install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-plugins
 install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-diagnostics
+install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-queues
+install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-upgrade
 install -p -D -m 0755 scripts/rabbitmq-server.ocf %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server
 install -p -D -m 0755 scripts/rabbitmq-server-ha.ocf %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server-ha
 
@@ -233,6 +234,8 @@ systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
 %{_sbindir}/rabbitmq-plugins
 %{_sbindir}/rabbitmq-server
 %{_sbindir}/rabbitmqctl
+%{_sbindir}/rabbitmq-queues
+%{_sbindir}/rabbitmq-upgrade
 %{_sbindir}/rcrabbitmq-server
 %{_sbindir}/rabbitmq-diagnostics
 #

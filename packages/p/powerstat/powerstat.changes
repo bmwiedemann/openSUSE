@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 13 22:00:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.21
+  * No functional changes
+
+-------------------------------------------------------------------
+Tue Aug 27 09:46:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.20
+  * No functional changes
+
+-------------------------------------------------------------------
+Sun Jul  7 18:41:19 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- update to version 0.02.18
+  * Update copyright year
+  * Make struct cpu_info pack more efficiently
+
+-------------------------------------------------------------------
 Mon Jul 23 06:24:59 UTC 2018 - mardnh@gmx.de
 
 - update to version 0.02.18

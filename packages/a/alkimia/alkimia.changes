@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 11 09:28:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 8.0.3.
+  * Add option to disable Webkit on KF5 builds
+  * Bug and crash fixes
+  * Don't hardcode the QML install dir
+  * Fix integration of "Finance::Quote" sources into kmymoney
+  * Export class AlkWebPage as wrapper for a generic web page
+  * Fix installing and finding financequote.pl
+  * Add experimental support for financequote.pl
+
+-------------------------------------------------------------------
 Mon Mar 25 07:22:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the KDE4/Qt4 package.

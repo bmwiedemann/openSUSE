@@ -1,7 +1,7 @@
 #
 # spec file for package mimic
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define _lto_cflags %{nil}
 Name:           mimic
 Version:        1.2.0.2
 Release:        0
 Summary:        Mycroft's TTS engine, based on CMU's Flite (Festival Lite)
-# FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
-License:        BSD-3-Clause and MIT-CMU
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+License:        BSD-3-Clause AND MIT-CMU
 Group:          Productivity/Text/Convertors
-Url:            https://mimic.mycroft.ai
+URL:            https://mimic.mycroft.ai
 #Source:         https://github.com/MycroftAI/mimic/archive/1.2.0.2.tar.gz
 Source:         1.2.0.2.tar.gz
+BuildRequires:  automake
 BuildRequires:  gcc
+BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  automake
-BuildRequires:  pkgconfig(icu-i18n)
-BuildRequires:  libtool
 BuildRequires:  pkgconfig(alsa) >= 1.0.11
+BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libpulse)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -45,7 +44,6 @@ reads it out loud to create a voice.
 %package -n libttsmimic0
 Summary:        Core libraries of Mycroft's TTS engine
 Group:          System/Libraries
-License:        BSD-3-Clause and MIT-CMU
 
 %description -n libttsmimic0
 Mimic is a text-to-speech engine based on Carnegie Mellon
@@ -55,7 +53,6 @@ reads it out loud to create a voice.
 %package devel
 Summary:        Development files for mimic (Mycroft's TTS engine)
 Group:          Development/Libraries/C and C++
-License:        BSD-3-Clause and MIT-CMU
 Requires:       %{name} = %version
 
 %description devel

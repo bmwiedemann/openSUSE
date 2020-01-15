@@ -21,9 +21,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  parted/parted.c |   29 ++++++++++++++++++++++++++++-
  1 file changed, 28 insertions(+), 1 deletion(-)
 
---- a/parted/parted.c
-+++ b/parted/parted.c
-@@ -1038,6 +1038,30 @@ _print_disk_geometry (const PedDevice *d
+Index: parted-3.3/parted/parted.c
+===================================================================
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -1053,6 +1053,30 @@ _print_disk_geometry (const PedDevice *d
          free (cyl_size);
  }
  
@@ -54,7 +56,7 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  static void
  _print_disk_info (const PedDevice *dev, const PedDisk *diskp)
  {
-@@ -1058,6 +1082,8 @@ _print_disk_info (const PedDevice *dev,
+@@ -1073,6 +1097,8 @@ _print_disk_info (const PedDevice *dev,
          char *disk_flags = disk_print_flags (diskp);
  
          if (opt_machine_mode) {
@@ -63,7 +65,7 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
              switch (default_unit) {
                  case PED_UNIT_CHS:      puts ("CHS;");
                                          break;
-@@ -1068,9 +1094,10 @@ _print_disk_info (const PedDevice *dev,
+@@ -1083,9 +1109,10 @@ _print_disk_info (const PedDevice *dev,
  
              }
              printf ("%s:%s:%s:%lld:%lld:%s:%s:%s;\n",

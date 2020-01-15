@@ -1,7 +1,7 @@
 #
 # spec file for package python-sympy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sympy
-Version:        1.4
+Version:        1.5.1
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
@@ -64,9 +64,11 @@ find examples-%{$python_bin_suffix} -name "*.py" -exec sed -i "s|^#! %{_bindir}/
 
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/sympy/utilities/tests/diagnose_imports.py
 chmod a+x %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/models.py
+chmod a+x %{buildroot}%{$python_sitelib}/sympy/physics/optics/polarization.py
 chmod a+x %{buildroot}%{$python_sitelib}/sympy/benchmarks/bench_symbench.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/utilities/tests/diagnose_imports.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/models.py
+sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/physics/optics/polarization.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/benchmarks/bench_symbench.py
 # Deduplicating files can generate a RPMLINT warning for pyc mtime
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/utilities/tests/

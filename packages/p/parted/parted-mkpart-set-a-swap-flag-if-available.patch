@@ -16,9 +16,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  parted/parted.c | 10 ++++++++++
  1 file changed, 10 insertions(+)
 
---- a/parted/parted.c
-+++ b/parted/parted.c
-@@ -655,6 +655,13 @@ _adjust_end_if_iec (PedSector* start, Pe
+Index: parted-3.3/parted/parted.c
+===================================================================
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -656,6 +656,13 @@ _adjust_end_if_iec (PedSector* start, Pe
  }
  
  
@@ -32,8 +34,8 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  static int
  do_mkpart (PedDevice** dev, PedDisk** diskp)
  {
-@@ -844,6 +851,9 @@ do_mkpart (PedDevice** dev, PedDisk** di
-                 goto error;
+@@ -852,6 +859,9 @@ do_mkpart (PedDevice** dev, PedDisk** di
+                 goto error_remove_part;
          if (ped_partition_is_flag_available (part, PED_PARTITION_LBA))
                  ped_partition_set_flag (part, PED_PARTITION_LBA, 1);
 +        if (ped_partition_is_flag_available (part, PED_PARTITION_SWAP) &&

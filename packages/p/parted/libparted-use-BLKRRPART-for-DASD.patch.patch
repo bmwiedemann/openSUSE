@@ -11,11 +11,11 @@ and some fixups on top
  libparted/arch/linux.c |   50 ++++++++++++++++++++++++++++++++++++++++---------
  1 file changed, 41 insertions(+), 9 deletions(-)
 
-Index: parted-3.2/libparted/arch/linux.c
+Index: parted-3.3/libparted/arch/linux.c
 ===================================================================
---- parted-3.2.orig/libparted/arch/linux.c
-+++ parted-3.2/libparted/arch/linux.c
-@@ -3097,6 +3097,34 @@ _disk_sync_part_table (PedDisk* disk)
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -3239,6 +3239,34 @@ _disk_sync_part_table (PedDisk* disk)
  }
  
  static int
@@ -50,19 +50,18 @@ Index: parted-3.2/libparted/arch/linux.c
  _have_blkpg ()
  {
          static int have_blkpg = -1;
-@@ -3114,15 +3142,19 @@ static int
- linux_disk_commit (PedDisk* disk)
+@@ -3257,14 +3285,19 @@ linux_disk_commit (PedDisk* disk)
  {
          if (disk->dev->type != PED_DEVICE_FILE) {
+ 
+-                /* We now require BLKPG support.  If this assertion fails,
+-                   please write to the mailing list describing your system.
+-                   Assuming it's never triggered, ...
+-                   FIXME: remove this assertion in 2012.  */
+-                assert (_have_blkpg ());
 -
--		/* We now require BLKPG support.  If this assertion fails,
--		   please write to the mailing list describing your system.
--		   Assuming it's never triggered, ...
--		   FIXME: remove this assertion in 2012.  */
--		assert (_have_blkpg ());
--
--		if (!_disk_sync_part_table (disk))
--			return 0;
+-                if (!_disk_sync_part_table (disk))
+-                        return 0;
 +                /* The ioctl() command BLKPG_ADD_PARTITION does not notify
 +                 * the devfs system; consequently, /proc/partitions will not
 +                 * be up to date, and the proper links in /dev are not
@@ -70,12 +69,12 @@ Index: parted-3.2/libparted/arch/linux.c
 +                 * to re-read and grok the partition table.
 +                 */
 +                /* Work around kernel dasd problem so we really do BLKRRPART */
-+		if (disk->dev->type == PED_DEVICE_DASD)
-+		       return _kernel_reread_part_table(disk->dev);
++               if (disk->dev->type == PED_DEVICE_DASD)
++                      return _kernel_reread_part_table(disk->dev);
 +
-+		assert(_have_blkpg());
-+		if (!_disk_sync_part_table(disk))
-+		       return 0;
++               assert(_have_blkpg());
++               if (!_disk_sync_part_table(disk))
++                      return 0;
          }
  
          return 1;

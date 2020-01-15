@@ -7,10 +7,10 @@ Patch-mainline: no, custom SUSE patch
  libparted/labels/dasd.c  |   45 +++++++++++++++++++++++++++++++++++++++++++++
  3 files changed, 50 insertions(+), 1 deletion(-)
 
-Index: parted-3.1/include/parted/disk.in.h
+Index: parted-3.3/include/parted/disk.in.h
 ===================================================================
---- parted-3.1.orig/include/parted/disk.in.h
-+++ parted-3.1/include/parted/disk.in.h
+--- parted-3.3.orig/include/parted/disk.in.h
++++ parted-3.3/include/parted/disk.in.h
 @@ -38,9 +38,11 @@ enum _PedDiskFlag {
          PED_DISK_CYLINDER_ALIGNMENT=1,
          /* This flag controls whether the boot flag of a GPT PMBR is set */
@@ -24,11 +24,11 @@ Index: parted-3.1/include/parted/disk.in.h
  
  /**
   * Partition types
-Index: parted-3.1/libparted/disk.c
+Index: parted-3.3/libparted/disk.c
 ===================================================================
---- parted-3.1.orig/libparted/disk.c
-+++ parted-3.1/libparted/disk.c
-@@ -838,6 +838,8 @@ ped_disk_flag_get_name(PedDiskFlag flag)
+--- parted-3.3.orig/libparted/disk.c
++++ parted-3.3/libparted/disk.c
+@@ -841,6 +841,8 @@ ped_disk_flag_get_name(PedDiskFlag flag)
                  return N_("cylinder_alignment");
          case PED_DISK_GPT_PMBR_BOOT:
                  return N_("pmbr_boot");
@@ -37,10 +37,10 @@ Index: parted-3.1/libparted/disk.c
          default:
                  ped_exception_throw (
                          PED_EXCEPTION_BUG,
-Index: parted-3.1/libparted/labels/dasd.c
+Index: parted-3.3/libparted/labels/dasd.c
 ===================================================================
---- parted-3.1.orig/libparted/labels/dasd.c
-+++ parted-3.1/libparted/labels/dasd.c
+--- parted-3.3.orig/libparted/labels/dasd.c
++++ parted-3.3/libparted/labels/dasd.c
 @@ -73,6 +73,7 @@ typedef struct {
  	unsigned int format_type;
  	unsigned int label_block;
@@ -79,7 +79,7 @@ Index: parted-3.1/libparted/labels/dasd.c
  	/* CDL format, newer */
  	disk_specific->format_type = 2;
  	disk_specific->label_block = 2;
-@@ -293,6 +303,7 @@ dasd_read (PedDisk* disk)
+@@ -289,6 +299,7 @@ dasd_read (PedDisk* disk)
  			goto error_close_dev;
  
  		disk_specific->format_type = 1;
@@ -87,7 +87,7 @@ Index: parted-3.1/libparted/labels/dasd.c
  
  		/* Register implicit partition */
  		ped_disk_delete_all (disk);
-@@ -905,6 +916,40 @@ dasd_partition_enumerate (PedPartition*
+@@ -922,6 +933,40 @@ dasd_partition_enumerate (PedPartition*
  }
  
  static int

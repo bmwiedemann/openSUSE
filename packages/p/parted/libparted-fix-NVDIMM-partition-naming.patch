@@ -9,11 +9,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  libparted/arch/linux.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/libparted/arch/linux.c b/libparted/arch/linux.c
-index 1aef651..cf6c754 100644
---- a/libparted/arch/linux.c
-+++ b/libparted/arch/linux.c
-@@ -2439,6 +2439,7 @@ _device_get_part_path (PedDevice const *dev, int num)
+Index: parted-3.3/libparted/arch/linux.c
+===================================================================
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -2489,6 +2489,7 @@ _device_get_part_path (PedDevice const *
                      dev->type == PED_DEVICE_CPQARRAY ||
                      dev->type == PED_DEVICE_DAC960 ||
                      dev->type == PED_DEVICE_NVME ||

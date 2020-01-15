@@ -18,11 +18,11 @@ Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
  libparted/arch/linux.c | 20 +++++++++++++-------
  1 file changed, 13 insertions(+), 7 deletions(-)
 
-diff --git a/libparted/arch/linux.c b/libparted/arch/linux.c
-index 0f18904..cad5159 100644
---- a/libparted/arch/linux.c
-+++ b/libparted/arch/linux.c
-@@ -2342,11 +2342,17 @@ _device_get_part_path (PedDevice const *dev, int num)
+Index: parted-3.3/libparted/arch/linux.c
+===================================================================
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -2456,11 +2456,17 @@ _device_get_part_path (PedDevice const *
                  result = zasprintf ("%.*s/part%d",
                                      (int) (path_len - 5), devpath, num);
          } else {
@@ -44,8 +44,8 @@ index 0f18904..cad5159 100644
 +                             ? "p" : "");
                  result = zasprintf ("%s%s%d", devpath, p, num);
          }
-         if (dev->type == PED_DEVICE_DM)
-@@ -2797,7 +2803,7 @@ _dm_add_partition (PedDisk* disk, const PedPartition* part)
+ #ifdef ENABLE_DEVICE_MAPPER
+@@ -2927,7 +2933,7 @@ _dm_add_partition (PedDisk* disk, const
          size_t name_len = strlen (dev_name);
          vol_name = zasprintf ("%s%s%d",
                                dev_name,
@@ -54,7 +54,7 @@ index 0f18904..cad5159 100644
                                part->num);
          if (vol_name == NULL)
                  goto err;
-@@ -2870,7 +2876,7 @@ _dm_resize_partition (PedDisk* disk, const PedPartition* part)
+@@ -3004,7 +3010,7 @@ _dm_resize_partition (PedDisk* disk, con
          size_t name_len = strlen (dev_name);
          vol_name = zasprintf ("%s%s%d",
                                dev_name,

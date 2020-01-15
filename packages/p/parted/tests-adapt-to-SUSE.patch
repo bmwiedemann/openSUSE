@@ -11,8 +11,10 @@ Change dm partition name from 'pN' to '-partN'
 Tests: t6001, t6002, t6004, t6005
 For: libparted-partition-naming.patch
 ---
---- a/tests/t2200-dos-label-recog.sh
-+++ b/tests/t2200-dos-label-recog.sh
+Index: parted-3.3/tests/t2200-dos-label-recog.sh
+===================================================================
+--- parted-3.3.orig/tests/t2200-dos-label-recog.sh
++++ parted-3.3/tests/t2200-dos-label-recog.sh
 @@ -45,7 +45,7 @@ printf FAT | dd bs=1c seek=82 count=3 of
  # print the partition table
  parted -m -s $dev unit s p > out || fail=1
@@ -22,8 +24,10 @@ For: libparted-partition-naming.patch
  
  compare exp out || fail=1
  
---- a/tests/t2310-dos-extended-2-sector-min-offset.sh
-+++ b/tests/t2310-dos-extended-2-sector-min-offset.sh
+Index: parted-3.3/tests/t2310-dos-extended-2-sector-min-offset.sh
+===================================================================
+--- parted-3.3.orig/tests/t2310-dos-extended-2-sector-min-offset.sh
++++ parted-3.3/tests/t2310-dos-extended-2-sector-min-offset.sh
 @@ -33,8 +33,8 @@ p5=${scsi_dev}5
  cat <<EOF > exp || framework_failure
  BYT;
@@ -35,8 +39,10 @@ For: libparted-partition-naming.patch
  EOF
  
  # Create a DOS label with an extended partition starting at sector 64.
---- a/tests/t3200-resize-partition.sh
-+++ b/tests/t3200-resize-partition.sh
+Index: parted-3.3/tests/t3200-resize-partition.sh
+===================================================================
+--- parted-3.3.orig/tests/t3200-resize-partition.sh
++++ parted-3.3/tests/t3200-resize-partition.sh
 @@ -75,7 +75,7 @@ compare /dev/null err || fail=1
  parted -m -s $dev u s p > out 2>&1 || fail=1
  
@@ -46,8 +52,10 @@ For: libparted-partition-naming.patch
  compare exp out || fail=1
  
  # Remove the partition explicitly, so that mklabel doesn't evoke a warning.
---- a/tests/t3300-palo-prep.sh
-+++ b/tests/t3300-palo-prep.sh
+Index: parted-3.3/tests/t3300-palo-prep.sh
+===================================================================
+--- parted-3.3.orig/tests/t3300-palo-prep.sh
++++ parted-3.3/tests/t3300-palo-prep.sh
 @@ -20,9 +20,9 @@
  ss=$sector_size_
  
@@ -70,8 +78,10 @@ For: libparted-partition-naming.patch
  
  compare exp out || fail=1
  
---- a/tests/t4100-msdos-starting-sector.sh
-+++ b/tests/t4100-msdos-starting-sector.sh
+Index: parted-3.3/tests/t4100-msdos-starting-sector.sh
+===================================================================
+--- parted-3.3.orig/tests/t4100-msdos-starting-sector.sh
++++ parted-3.3/tests/t4100-msdos-starting-sector.sh
 @@ -56,7 +56,7 @@ cat <<EOF > exp || fail=1
  BYT;
  path:${N}s:file:$ss:$ss:msdos::;
@@ -81,8 +91,10 @@ For: libparted-partition-naming.patch
  EOF
  
  # create a partition at the end of the label
---- a/tests/t6001-psep.sh
-+++ b/tests/t6001-psep.sh
+Index: parted-3.3/tests/t6001-psep.sh
+===================================================================
+--- parted-3.3.orig/tests/t6001-psep.sh
++++ parted-3.3/tests/t6001-psep.sh
 @@ -31,9 +31,9 @@ linear2_=plinear-$$foo
  d1= d2=
  f1= f2=
@@ -113,8 +125,10 @@ For: libparted-partition-naming.patch
  
  if [ -n "$fail" ]; then
      ls /dev/mapper
---- a/tests/t6004-dm-many-partitions.sh
-+++ b/tests/t6004-dm-many-partitions.sh
+Index: parted-3.3/tests/t6004-dm-many-partitions.sh
+===================================================================
+--- parted-3.3.orig/tests/t6004-dm-many-partitions.sh
++++ parted-3.3/tests/t6004-dm-many-partitions.sh
 @@ -50,10 +50,10 @@ parted -m -a min -s /dev/mapper/$dm_name
  
  # Make sure all the partitions appeared under /dev/mapper/
@@ -128,8 +142,10 @@ For: libparted-partition-naming.patch
  done
  
  Exit $fail
---- a/tests/t6005-dm-uuid.sh
-+++ b/tests/t6005-dm-uuid.sh
+Index: parted-3.3/tests/t6005-dm-uuid.sh
+===================================================================
+--- parted-3.3.orig/tests/t6005-dm-uuid.sh
++++ parted-3.3/tests/t6005-dm-uuid.sh
 @@ -47,14 +47,14 @@ for ((i=1; i<=$n_partitions; i+=1)); do
    cmd="$cmd mkpart p$i ${s}s ${s}s"
  done
@@ -148,8 +164,10 @@ For: libparted-partition-naming.patch
  done
  
  Exit $fail
---- a/tests/t0283-overlap-partitions.sh
-+++ b/tests/t0283-overlap-partitions.sh
+Index: parted-3.3/tests/t0283-overlap-partitions.sh
+===================================================================
+--- parted-3.3.orig/tests/t0283-overlap-partitions.sh
++++ parted-3.3/tests/t0283-overlap-partitions.sh
 @@ -54,8 +54,8 @@ Partition Table: msdos
  Disk Flags:
  
@@ -170,8 +188,10 @@ For: libparted-partition-naming.patch
  
  (parted) rm
  Partition number? 1
---- a/tests/t6002-dm-busy.sh
-+++ b/tests/t6002-dm-busy.sh
+Index: parted-3.3/tests/t6002-dm-busy.sh
+===================================================================
+--- parted-3.3.orig/tests/t6002-dm-busy.sh
++++ parted-3.3/tests/t6002-dm-busy.sh
 @@ -35,9 +35,9 @@ d1=
  f1=
  dev=
@@ -212,8 +232,10 @@ For: libparted-partition-naming.patch
  EOF
  
  compare exp out || fail=1
---- a/tests/t9042-dos-partition-limit.sh
-+++ b/tests/t9042-dos-partition-limit.sh
+Index: parted-3.3/tests/t9042-dos-partition-limit.sh
+===================================================================
+--- parted-3.3.orig/tests/t9042-dos-partition-limit.sh
++++ parted-3.3/tests/t9042-dos-partition-limit.sh
 @@ -41,7 +41,7 @@ scsi_dev=$(cat dev-name)
  n=$((n_MiB * sectors_per_MiB))
  printf '%s\n' "BYT;" \
@@ -222,7 +244,7 @@ For: libparted-partition-naming.patch
 +    "1:$((start-2))s:$((n-1))s:$((n-start+2))s:::lba, type=0f;" \
    > exp || fail=1
  
- parted -s $scsi_dev mklabel msdos || fail=1
+ parted -s -a min $scsi_dev mklabel msdos mkpart extended $((start-2))s 100% || fail=1
 @@ -51,7 +51,7 @@ i=1
  while :; do
      end=$((start + partition_sectors - 2))
@@ -232,8 +254,10 @@ For: libparted-partition-naming.patch
      test $i = $((n_partitions - 1)) && break
      start=$((start + partition_sectors))
      i=$((i+1))
---- a/tests/t4100-msdos-partition-limits.sh
-+++ b/tests/t4100-msdos-partition-limits.sh
+Index: parted-3.3/tests/t4100-msdos-partition-limits.sh
+===================================================================
+--- parted-3.3.orig/tests/t4100-msdos-partition-limits.sh
++++ parted-3.3/tests/t4100-msdos-partition-limits.sh
 @@ -81,7 +81,7 @@ do_mkpart $n $end || fail=1
  # print the result
  parted -s $dev unit s p > out 2>&1 || fail=1

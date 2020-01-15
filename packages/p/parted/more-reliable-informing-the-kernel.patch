@@ -15,11 +15,11 @@ It consists of 2 quite unrelated parts:
  parted/parted.c        |   28 +++++++++++++++++++++++++++-
  2 files changed, 28 insertions(+), 2 deletions(-)
 
-Index: parted-3.2/libparted/arch/linux.c
+Index: parted-3.3/libparted/arch/linux.c
 ===================================================================
---- parted-3.2.orig/libparted/arch/linux.c
-+++ parted-3.2/libparted/arch/linux.c
-@@ -3011,7 +3011,7 @@ _disk_sync_part_table (PedDisk* disk)
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -3153,7 +3153,7 @@ _disk_sync_part_table (PedDisk* disk)
                  /* Attempt to remove the partition, retrying for
                     up to max_sleep_seconds upon any failure due to EBUSY. */
                  unsigned int sleep_microseconds = 10000;
@@ -28,11 +28,11 @@ Index: parted-3.2/libparted/arch/linux.c
                  unsigned int n_sleep = (max_sleep_seconds
                                          * 1000000 / sleep_microseconds);
                  do {
-Index: parted-3.2/parted/parted.c
+Index: parted-3.3/parted/parted.c
 ===================================================================
---- parted-3.2.orig/parted/parted.c
-+++ parted-3.2/parted/parted.c
-@@ -266,6 +266,32 @@ _disk_warn_loss (PedDisk* disk)
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -267,6 +267,32 @@ _disk_warn_loss (PedDisk* disk)
                  disk->dev->path) == PED_EXCEPTION_YES;
  }
  
@@ -65,7 +65,7 @@ Index: parted-3.2/parted/parted.c
  /* This function changes "sector" to "new_sector" if the new value lies
   * within the required range.
   */
-@@ -1735,7 +1761,7 @@ do_set (PedDevice** dev, PedDisk **diskp
+@@ -1791,7 +1817,7 @@ do_set (PedDevice** dev, PedDisk **diskp
  
          if (!ped_partition_set_flag (part, flag, state))
                  goto error;

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:51:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.5
+  * Runlevel switch not needed anymore
+    + Service only starts/stops display-manager service
+      - Faster switch operation
+      - No conflicts with services that run in runlev. 3
+      - Consistence
+    + Removed references of target/runlevel switch
+    + Removed a duplicate of "systemctl stop display-manager" in
+      "user_logout_waiter" section
+
+-------------------------------------------------------------------
 Thu Nov 28 21:44:21 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.7.4

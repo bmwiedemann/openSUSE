@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 15 09:01:33 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Drop i586 build (does not build with assembler errors)
+
+-------------------------------------------------------------------
 Thu Mar 29 21:33:03 UTC 2018 - kasimir_@outlook.de
 
 - Fixed armv6 build

@@ -62,4 +62,12 @@
   * support for home assistant cast</comment>
     <requestid>732890</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a4e37910ab1e23d8aff0ef76569098f</srcmd5>
+    <version>4.1.0</version>
+    <time>1579101473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764631</requestid>
+  </revision>
 </revisionlist>

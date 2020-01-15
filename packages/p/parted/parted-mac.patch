@@ -8,10 +8,10 @@ Patch-mainline: no, custom SUSE patch
  parted/parted.c          |   12 ++++++++++++
  4 files changed, 85 insertions(+), 3 deletions(-)
 
-Index: parted-3.2/include/parted/disk.in.h
+Index: parted-3.3/include/parted/disk.in.h
 ===================================================================
---- parted-3.2.orig/include/parted/disk.in.h
-+++ parted-3.2/include/parted/disk.in.h
+--- parted-3.3.orig/include/parted/disk.in.h
++++ parted-3.3/include/parted/disk.in.h
 @@ -83,10 +83,11 @@ enum _PedPartitionFlag {
  
  enum _PedDiskTypeFeature {
@@ -45,11 +45,11 @@ Index: parted-3.2/include/parted/disk.in.h
  extern int ped_partition_is_busy (const PedPartition* part);
  extern char* ped_partition_get_path (const PedPartition* part);
  
-Index: parted-3.2/libparted/disk.c
+Index: parted-3.3/libparted/disk.c
 ===================================================================
---- parted-3.2.orig/libparted/disk.c
-+++ parted-3.2/libparted/disk.c
-@@ -1184,6 +1184,39 @@ _disk_pop_update_mode (PedDisk* disk)
+--- parted-3.3.orig/libparted/disk.c
++++ parted-3.3/libparted/disk.c
+@@ -1185,6 +1185,39 @@ _disk_pop_update_mode (PedDisk* disk)
   * @{
   */
  
@@ -89,11 +89,11 @@ Index: parted-3.2/libparted/disk.c
  PedPartition*
  _ped_partition_alloc (const PedDisk* disk, PedPartitionType type,
  		      const PedFileSystemType* fs_type,
-Index: parted-3.2/libparted/labels/mac.c
+Index: parted-3.3/libparted/labels/mac.c
 ===================================================================
---- parted-3.2.orig/libparted/labels/mac.c
-+++ parted-3.2/libparted/labels/mac.c
-@@ -1393,6 +1393,36 @@ mac_get_partition_alignment(const PedDis
+--- parted-3.3.orig/libparted/labels/mac.c
++++ parted-3.3/libparted/labels/mac.c
+@@ -1396,6 +1396,36 @@ mac_get_partition_alignment(const PedDis
          return ped_alignment_new(0, 1);
  }
  
@@ -130,7 +130,7 @@ Index: parted-3.2/libparted/labels/mac.c
  static PedConstraint*
  _primary_constraint (PedDisk* disk)
  {
-@@ -1593,6 +1623,8 @@ static PedDiskOps mac_disk_ops = {
+@@ -1596,6 +1626,8 @@ static PedDiskOps mac_disk_ops = {
  
  	partition_set_name:	mac_partition_set_name,
  	partition_get_name:	mac_partition_get_name,
@@ -139,7 +139,7 @@ Index: parted-3.2/libparted/labels/mac.c
  
  	get_partition_alignment: mac_get_partition_alignment,
  
-@@ -1603,7 +1635,7 @@ static PedDiskType mac_disk_type = {
+@@ -1606,7 +1638,7 @@ static PedDiskType mac_disk_type = {
  	next:		NULL,
  	name:		"mac",
  	ops:		&mac_disk_ops,
@@ -148,11 +148,11 @@ Index: parted-3.2/libparted/labels/mac.c
  };
  
  void
-Index: parted-3.2/parted/parted.c
+Index: parted-3.3/parted/parted.c
 ===================================================================
---- parted-3.2.orig/parted/parted.c
-+++ parted-3.2/parted/parted.c
-@@ -888,6 +888,7 @@ static char*
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -929,6 +929,7 @@ static char*
  partition_print_flags (PedPartition const *part)
  {
          int  xtype;
@@ -160,7 +160,7 @@ Index: parted-3.2/parted/parted.c
          char *res = xstrdup ("");
          if (!part)
                  return res;
-@@ -920,6 +921,17 @@ partition_print_flags (PedPartition cons
+@@ -961,6 +962,17 @@ partition_print_flags (PedPartition cons
                  }
          }
  

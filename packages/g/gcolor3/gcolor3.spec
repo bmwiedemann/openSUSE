@@ -1,7 +1,7 @@
 #
 # spec file for package gcolor3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,18 @@
 #
 
 
+%global         commit be7d539383da129c0e8187946a67e062f934c8dc
+%global         rev git78
 Name:           gcolor3
-Version:        2.3.1
+Version:        2.3.1+%{rev}
 Release:        0
 Summary:        A color chooser written in GTK3 (like gcolor2)
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Other
-URL:            https://gitlab.gnome.org/World/gcolor3
-Source0:        gcolor3.tar.gz
+URL:            https://gitlab.gnome.org/World/%{name}/-/archive/%{commit}/%{name}-%{commit}.tar.gz
+Source0:        %{name}-%{commit}.tar.gz
 Patch0:         gcolor3-suse.patch
+BuildRequires:  cmake
 BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -38,10 +41,10 @@ also offers a palette to mix and match a couple of colors together.
 Colors can be saved and retrieved.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{commit}
 
 %build
-%meson -Dwerror=false
+%meson
 %meson_build
 
 %install
@@ -56,22 +59,6 @@ Colors can be saved and retrieved.
 %{_datadir}/metainfo/nl.hjdskes.gcolor3.appdata.xml
 %{_datadir}/applications/nl.hjdskes.gcolor3.desktop
 %{_datadir}/icons/hicolor/scalable/apps/nl.hjdskes.gcolor3.svg
-%{_datadir}/locale/cs/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/de/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/el/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/en_GB/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/es/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/fi/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/fr/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/gl/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/id/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/nb/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/nl/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/pl/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/pt_BR/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/ru/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/sr/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/sv/LC_MESSAGES/gcolor3.mo
-%{_datadir}/locale/uk/LC_MESSAGES/gcolor3.mo
+%{_datadir}/icons/hicolor/symbolic/apps/nl.hjdskes.gcolor3-symbolic.svg
 
 %changelog
