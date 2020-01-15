@@ -4,5 +4,5 @@
 Manager Versions 0.16 and above.  Generally they are quite small and
 provide a quick way for a user to perform simple tasks or view
 information.</description>
-  <devel project="X11:windowmanagers" package="epplet-base"/>
+  <devel project="X11:Enlightenment:Factory" package="epplet-base"/>
 </package>
