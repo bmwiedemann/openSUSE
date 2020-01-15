@@ -1,7 +1,7 @@
 #
 # spec file for package vnstat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with systemd
 %endif
 Name:           vnstat
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
