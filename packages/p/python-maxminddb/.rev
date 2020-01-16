@@ -47,4 +47,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>738122</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7199d6e4b1649e4d6579c5bdae895ce4</srcmd5>
+    <version>1.5.2</version>
+    <time>1579194792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.5.2:
+  - Minor performance improvements in the pure Python reader.</comment>
+    <requestid>761128</requestid>
+  </revision>
 </revisionlist>
