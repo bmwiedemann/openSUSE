@@ -1,7 +1,7 @@
 #
 # spec file for package python-Js2Py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Js2Py
-Version:        0.66
+Version:        0.67
 Release:        0
 Summary:        JavaScript to Python Translator & JavaScript interpreter
 License:        MIT
@@ -51,7 +51,7 @@ cp %{SOURCE1} .
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# no tests in pypi sdist and no tags in github repo
+# no tests in pypi sdist and no tags in github repo (https://github.com/PiotrDabkowski/Js2Py/issues/100)
 
 %files %{python_files}
 %doc README.md
