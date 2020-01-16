@@ -44,7 +44,7 @@ by inferring type information using compile-time introspection.
 Summary:        Development files for pybind11
 Requires:       %{name} = %{version}
 Requires:       python-devel
-Provides:       %{python_module %{name}-devel}
+Provides:       %{python_module pybind11-devel = %{version}}
 
 %description -n %{name}-devel
 This package contains files for developing applications using pybind11.
