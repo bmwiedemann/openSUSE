@@ -1,7 +1,7 @@
 #
 # spec file for package python-voila
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments >= 2.4.1
+Requires:       python-async_generator
 Requires:       python-jupyter-server >= 0.1.0
 Requires:       python-nbconvert >= 5.5
 Requires:       python-jupyterlab-pygments >= 0.1.0
