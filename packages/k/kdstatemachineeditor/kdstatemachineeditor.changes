@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 13 11:17:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.2.7
+  * Comes with an installing file for Conan (see conan folder)
+  * New CMake option BUILD_TESTS to disable building the tests
+  * Small cleanups
+  * Small buildsystem fixes for rpath and static builds
+
+-------------------------------------------------------------------
 Fri Mar  1 07:36:44 UTC 2019 - wbauer@tmo.at
 
 - Update to 1.2.5

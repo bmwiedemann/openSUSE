@@ -1,7 +1,7 @@
 #
 # spec file for package kdstatemachineeditor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,16 @@
 #
 
 
-%define sover 1_2_5
+%define sover 1_2_7
 %define libnamecore libkdstatemachineeditor_core%{sover}
+%define libnamedebuginterfaceclient libkdstatemachineeditor_debuginterfaceclient%{sover}
+%define libnamedebuginterfacesource libkdstatemachineeditor_debuginterfacesource-static
 %define libnameview libkdstatemachineeditor_view%{sover}
 Name:           kdstatemachineeditor
-Version:        1.2.5
+Version:        1.2.7
 Release:        0
 Summary:        A framework for creating Qt State Machine metacode using a GUI
+# Legal: NOTE the EULA mentioned in LICENSE.txt only applies to "Licensed Product" users.
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://kdab.github.io/KDStateMachineEditor/
@@ -31,17 +34,20 @@ BuildRequires:  cmake >= 2.8.11
 BuildRequires:  doxygen
 BuildRequires:  graphviz-devel
 BuildRequires:  graphviz-gnome
-BuildRequires:  libQt5Core-private-headers-devel >= 5.3.0
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.3.0
-BuildRequires:  libQt5Network-private-headers-devel >= 5.3.0
+BuildRequires:  libQt5Core-private-headers-devel >= 5.3
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.3
+BuildRequires:  libQt5Network-private-headers-devel >= 5.3
+BuildRequires:  libqt5-qtscxml-private-headers-devel >= 5.8
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core) >= 5.3.0
-BuildRequires:  cmake(Qt5Gui) >= 5.3.0
-BuildRequires:  cmake(Qt5Network) >= 5.3.0
-BuildRequires:  cmake(Qt5Qml) >= 5.3.0
-BuildRequires:  cmake(Qt5Test) >= 5.3.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.3.0
-BuildRequires:  cmake(Qt5XmlPatterns) >= 5.3.0
+BuildRequires:  cmake(Qt5Core) >= 5.3
+BuildRequires:  cmake(Qt5Gui) >= 5.3
+BuildRequires:  cmake(Qt5Network) >= 5.3
+BuildRequires:  cmake(Qt5Qml) >= 5.3
+BuildRequires:  cmake(Qt5RemoteObjects) >= 5.4
+BuildRequires:  cmake(Qt5Scxml) >= 5.8
+BuildRequires:  cmake(Qt5Test) >= 5.3
+BuildRequires:  cmake(Qt5Widgets) >= 5.3
+BuildRequires:  cmake(Qt5XmlPatterns) >= 5.3
 
 %description
 The KDAB State Machine Editor Library is a framework that can be used
@@ -59,6 +65,30 @@ to help develop State Machine Editing graphical user
 interfaces and tools. Output from such applications is in metacode
 or QML that can then be used in Qt or QtQuick projects.
 
+%package -n %{libnamedebuginterfaceclient}
+Summary:        KDAB State Machine Editor core library
+Group:          System/Libraries
+
+%description -n %{libnamedebuginterfaceclient}
+The KDAB State Machine Editor Library is a framework that can be used
+to help develop State Machine Editing graphical user
+interfaces and tools. Output from such applications is in metacode
+or QML that can then be used in Qt or QtQuick projects.
+
+%package -n %{libnamedebuginterfacesource}
+Summary:        KDAB State Machine Editor core library
+Group:          System/Libraries
+
+%description -n %{libnamedebuginterfacesource}
+The KDAB State Machine Editor Library is a framework that can be used
+to help develop State Machine Editing graphical user
+interfaces and tools. Output from such applications is in metacode
+or QML that can then be used in Qt or QtQuick projects.
+
+This package provides a static library that can be injected into a
+process running on the target in order to get information about the
+internal state machines.
+
 %package -n %{libnameview}
 Summary:        KDAB State Machine Editor view library
 Group:          System/Libraries
@@ -73,6 +103,8 @@ or QML that can then be used in Qt or QtQuick projects.
 Summary:        Introspection/Debugging Tool for Qt Applications
 Group:          Development/Libraries/C and C++
 Requires:       %{libnamecore} = %{version}
+Requires:       %{libnamedebuginterfaceclient} = %{version}
+Requires:       %{libnamedebuginterfacesource} = %{version}
 Requires:       %{libnameview} = %{version}
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
@@ -95,10 +127,12 @@ cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 make VERBOSE=1 %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 %post   -n %{libnamecore} -p /sbin/ldconfig
 %postun -n %{libnamecore} -p /sbin/ldconfig
+%post   -n %{libnamedebuginterfaceclient} -p /sbin/ldconfig
+%postun -n %{libnamedebuginterfaceclient} -p /sbin/ldconfig
 %post   -n %{libnameview} -p /sbin/ldconfig
 %postun -n %{libnameview} -p /sbin/ldconfig
 
@@ -106,6 +140,16 @@ make DESTDIR=%{buildroot} install
 %license LICENSE.*
 %doc CHANGES ReadMe.txt
 %{_libdir}/libkdstatemachineeditor_core.so.%{version}
+
+%files -n %{libnamedebuginterfaceclient}
+%license LICENSE.*
+%doc CHANGES ReadMe.txt
+%{_libdir}/libkdstatemachineeditor_debuginterfaceclient.so.%{version}
+
+%files -n %{libnamedebuginterfacesource}
+%license LICENSE.*
+%doc CHANGES ReadMe.txt
+%{_libdir}/libkdstatemachineeditor_debuginterfacesource.a
 
 %files -n %{libnameview}
 %license LICENSE.*
@@ -118,8 +162,11 @@ make DESTDIR=%{buildroot} install
 %{_includedir}/kdstatemachineeditor/
 %{_libdir}/cmake/KDSME/
 %{_libdir}/libkdstatemachineeditor_core.so
+%{_libdir}/libkdstatemachineeditor_debuginterfaceclient.so
 %{_libdir}/libkdstatemachineeditor_view.so
 %{_libdir}/qt5/mkspecs/modules/qt_KDSMECore.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KDSMEDebugInterfaceClient.pri
+%{_libdir}/qt5/mkspecs/modules/qt_KDSMEDebugInterfaceSource.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KDSMEView.pri
 
 %changelog
