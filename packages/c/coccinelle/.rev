@@ -196,4 +196,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>727033</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b8ca7a1879c2389aba9da3cac3adc3ed</srcmd5>
+    <version>1.0.8</version>
+    <time>1579195205</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _service file to trim the bundles directory
+
+- Update to new source URL.
+
+- bsc#1160194, change the python library to site-packages hierarchy.
+
+- Update to new upstream release 1.0.8
+  See included changes.txt for details
+- Remove usage of camlp4
+- Remove pkg-config. It is not required, but pulled in anyway
+  by other packages
+- Disable parallel build due to internal copy of stdcompat
+
+    constructions (function definitions, variable declarations</comment>
+    <requestid>764755</requestid>
+  </revision>
 </revisionlist>

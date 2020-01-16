@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 15 17:10:38 UTC 2020 - olaf@aepfle.de
+
+- Use _service file to trim the bundles directory
+
+-------------------------------------------------------------------
+Fri Jan 10 10:35:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new source URL.
+
+-------------------------------------------------------------------
+Tue Jan  7 07:45:29 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1160194, change the python library to site-packages hierarchy.
+
+-------------------------------------------------------------------
+Thu Oct 24 13:10:02 UTC 2019 - olaf@aepfle.de
+
+- Update to new upstream release 1.0.8
+  See included changes.txt for details
+- Remove usage of camlp4
+- Remove pkg-config. It is not required, but pulled in anyway
+  by other packages
+- Disable parallel build due to internal copy of stdcompat
+
+-------------------------------------------------------------------
 Thu Aug 22 14:04:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.0.7
@@ -13,7 +38,7 @@ Thu Aug 22 14:04:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
   * Allow script finalizers for parallel computation. See
     tests/countcalls.cocci and tests/countcalls_python.cocci
   * Allow disjunctions on a wider range of syntactic
-    constructions (function definitions, variable declarations,
+    constructions (function definitions, variable declarations
     …).
 
 -------------------------------------------------------------------

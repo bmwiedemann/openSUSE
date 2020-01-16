@@ -1,7 +1,7 @@
 #
 # spec file for package coccinelle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           coccinelle
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Semantic patch utility
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            http://coccinelle.lip6.fr/
-#Git-Clone:	git://github.com/coccinelle/coccinelle
-
-Source:         http://coccinelle.lip6.fr/distrib/%name-%version.tar.gz
+Source0:        %name-%version.tar.xz
 Patch1:         kill-env.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -38,8 +36,6 @@ BuildRequires:  ocaml-ocamlbuild
 BuildRequires:  ocaml-ocamldoc >= 3.11
 BuildRequires:  ocaml-parmap-devel
 BuildRequires:  ocaml-pcre-devel
-BuildRequires:  pkgconfig
-BuildRequires:  ocamlfind(camlp4)
 BuildRequires:  pkgconfig(python)
 Requires:       python-base
 
@@ -59,12 +55,12 @@ fixing bugs in systems code.
 
 %prep
 %autosetup -p1
-rm -fv tools/spgen/source/spgen{,.opt}
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+# internal copy of stdcompat
+make -j1
 
 %install
 # "because it is simply not possible to strip ocaml binaries that are built
@@ -82,10 +78,16 @@ rm -Rf "%buildroot/%_libdir/%name"/{commons,globals,ocaml,parsing_c} \
 	"%buildroot/%_mandir/man3"/Coccilib*
 %fdupes %buildroot/%_prefix
 
+# Python library have been named after directories in the site-packages hierarchy
+mkdir -p "%buildroot/%python_sitelib"
+mv "%buildroot/%_libdir/%name/python/coccilib" "%buildroot/%python_sitelib"
+%fdupes %buildroot/%python_sitelib/coccilib
+
 %files
 %doc authors.txt bugs.txt changes.txt copyright.txt credits.txt
 %license license.txt
 %doc readme.txt
+%{python_sitelib}/coccilib
 %_mandir/man?/*
 %_bindir/sp*
 %_libdir/%name

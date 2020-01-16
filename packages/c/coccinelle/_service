@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/coccinelle/coccinelle.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">d678c34afc0cfb479ad34f2225c57b1b8d3ebeae</param>
+    <param name="filename">coccinelle</param>
+<param name="exclude">bundles/menhirLib</param>
+<param name="exclude">bundles/parmap</param>
+<param name="exclude">bundles/pcre</param>
+<!--
+<param name="exclude">bundles/pyml</param>
+<param name="exclude">bundles/stdcompat</param>
+-->
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
