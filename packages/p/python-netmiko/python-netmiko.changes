@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jan 16 07:29:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Upate to version 3.0.0:
+  Key enhancements/changes
+  * PY3.6+ support only (all support for PY27 removed)
+  * Significant reliability improvements to reduce loss of session
+    state problems
+  * Add support for direct use of TextFSM template
+  * Allow custom socket timeout in SCP file_transfer
+  * Improve MD5 hashing mechanism in SCP checks
+  * Add sock parameter support
+  * Increase default banner_timeout to 15
+  New Drivers
+  * Eltex ESR
+  * Juniper ScreenOS
+  * Ruijei RGOS
+  Driver Updates
+  * Huawei driver improvements
+  * Ciena driver improvements
+  * NX-OS driver improvements
+  * Nokia SR-OS driver improvements
+  * HP ProCurve driver improvements
+  * Juniper Junos driver improvements
+  * Fortinet banner fix
+  * Ruckus handling of failed enable
+  * Linux enable/sudo improvements
+
+-------------------------------------------------------------------
 Wed Sep 11 11:08:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.4.2:

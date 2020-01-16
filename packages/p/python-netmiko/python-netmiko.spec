@@ -1,7 +1,7 @@
 #
 # spec file for package python-netmiko
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-netmiko
-Version:        2.4.2
+Version:        3.0.0
 Release:        0
 Summary:        Multi-vendor library to simplify Paramiko SSH connections to network devices
 License:        MIT
@@ -28,18 +29,12 @@ Source:         https://files.pythonhosted.org/packages/source/n/netmiko/netmiko
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
-BuildRequires:  python2-ipaddress
 Requires:       python-PyYAML
 Requires:       python-paramiko >= 2.4.1
 Requires:       python-pyserial
 Requires:       python-scp >= 0.13.2
 Requires:       python-textfsm
 BuildArch:      noarch
-%ifpython2
-Requires:       python-enum34
-Requires:       python-ipaddress
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module paramiko >= 2.4.3}
@@ -54,6 +49,8 @@ Multi-vendor library to simplify Paramiko SSH connections to network devices.
 
 %prep
 %setup -q -n netmiko-%{version}
+# drop shebang
+sed -i -e '/^#!\//, 1d' netmiko/nokia/nokia_sros_ssh.py
 
 %build
 %python_build

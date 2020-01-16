@@ -68,4 +68,12 @@
   * Add support for Linux prompt terminators via environment variables</comment>
     <requestid>730103</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>290322fe1ca0ebf9849c6c79fa31e257</srcmd5>
+    <version>3.0.0</version>
+    <time>1579195339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764892</requestid>
+  </revision>
 </revisionlist>
