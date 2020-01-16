@@ -1,0 +1,38 @@
+From ca2788b478d763e49d2463378272d9fef2ef1bf3 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Mon, 9 May 2016 16:10:21 +0200
+Subject: [PATCH 1/1] Fix /run/lock group to follow openSUSE policy
+
+This is a partial import of commit
+88013cabb939e4bd7347ce324c9eb9c1a45582de part of SUSE/v210 branch.
+
+However /var/lock/{subsys,lockdev} are left alone and will be created
+because:
+
+- a bug was opened requesting /var/lock/subsys, see commit
+0671c57670fc09e0cb970d081a1b523ea9c62b5b.
+
+- creating /var/lock/lockdev shouldn't hurt.
+
+[fixes: bnc#733523]
+---
+ tmpfiles.d/legacy.conf | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tmpfiles.d/legacy.conf b/tmpfiles.d/legacy.conf
+index 62e2ae0986..415918f407 100644
+--- a/tmpfiles.d/legacy.conf
++++ b/tmpfiles.d/legacy.conf
+@@ -10,7 +10,8 @@
+ # These files are considered legacy and are unnecessary on legacy-free
+ # systems.
+ 
+-d /run/lock 0755 root root -
++# On openSUSE, /run/lock is owned by the 'lock' group.
++d /run/lock 0775 root lock -
+ L /var/lock - - - - ../run/lock
+ 
+ # /run/lock/subsys is used for serializing SysV service execution, and
+-- 
+2.16.4
+

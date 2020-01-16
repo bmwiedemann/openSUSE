@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:21:40 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Temporarily restore /sbin/{udevd,udevadm) obsolete symlinks
+
+  They're restored until YaST stop using them (see boo#1160890)
+
+-------------------------------------------------------------------
+Tue Jan 14 13:56:31 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 8254b8d9646f3e0f5f8057d1ffb5d6c20f079aaa (merge v244.1)
+
+  639dc9f4bf network: set ipv6 mtu after link-up or device mtu change
+  cbced49daa man: fix typo in net-naming-scheme man page
+  7dd04c99b0 network: tc: drop unused element
+  bf4b7d07ba man: fix typos (#14304)
+  1ba2e7a730 ipv4ll: do not reset conflict counter on restart
+  49806bb310 macro: avoid subtraction overflow in ALIGN_POWER2()
+  c4c1600689 test-network: add a test case for SendOption=
+  6f15b45949 network: fix segfault in parsing SendOption=
+  2e531b830d seccomp: real syscall numbers are >= 0
+  f7616ed52b network: fix copy and paste mistake
+  e8b53300c4 network: do not drop foreign config if interface is in initialized state
+  00f05813bf seccomp: mmap test results depend on kernel/libseccomp/glibc
+  4de1909e61 seccomp: use per arch shmat_syscall
+  d83010521d seccomp: ensure rules are loaded in seccomp_memory_deny_write_execute
+  2c6568221a seccomp: fix multiplexed system calls
+  bcf0aa02bf Fix typo (duplicate "or")
+  96d7083c54 network: if /sys is rw, then udev should be around
+  e874419902 nspawn: do not fail if udev is not running
+  29c9144655 Create parent directories when creating systemd-private subdirs
+  9cbb8b5254 network: do not return error but return UINT64_MAX if speed meter is disabled
+  c08429ae33 core: swap priority can be negative
+  f25c0be335 networkctl: fix to show BSSID
+  65fd2fce59 systemctl: enhance message about kexec missing kernel
+  bdd0af5f81 Fixup typo in NEWS
+
+-------------------------------------------------------------------
+Wed Dec 11 17:20:04 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Manually set system-uid-max and system-gid-max to 499
+
+  It used to be detected automatically by meson but it's been broken
+  by the migration of login.defs from /etc to /usr/etc.
+
+-------------------------------------------------------------------
+Wed Dec 11 17:01:57 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Import commit d8f6a204858bff68b8e0e7be86b418c36087ab2e
+
+  6c5e492a65 cryptsetup: umount encrypted devices before detaching it during shutdown
+
+-------------------------------------------------------------------
+Thu Dec  5 14:00:03 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v244 (commit 090da85161ceb1ba0b4c208963c7156a8fdf10c6)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v244/NEWS for
+  details. 
+
+  Legacy and obsolete symlinks have been finally dropped.
+
+  Dropped 0001-logind-keep-backward-compatibility-with-UserTasksMax.patch.
+  Users were notified about the deprecation of UserTasksMax option and
+  how to move to the new mechanism. The dropin replacement for
+  UserTasksMax is therefore no more generated but its use still
+  produces a warning.
+
+  Added 0001-SUSE-policy-do-not-clean-tmp-by-default.patch and
+  0001-Fix-run-lock-group-to-follow-openSUSE-policy.patch.
+  These patches were extracted from the git repo because it's not
+  clear where the SUSE tmpfiles specificities should be located.
+
+-------------------------------------------------------------------
 Tue Dec  3 16:56:31 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Import commit dbb1d4734daffa62e0eddecfa4f784c84a9d8e76

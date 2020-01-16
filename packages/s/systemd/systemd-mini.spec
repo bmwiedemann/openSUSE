@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-mini
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.225.gdbb1d4734d
+%define suse_version +suse.58.g8254b8d964
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -55,7 +55,7 @@
 
 Name:           systemd-mini
 Url:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        243
+Version:        244
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -166,7 +166,8 @@ Source200:      scripts-udev-convert-lib-udev-path.sh
 # broken in upstream and need an urgent fix. Even in this case, the
 # patches are temporary and should be removed as soon as a fix is
 # merged by upstream.
-Patch2:         0001-logind-keep-backward-compatibility-with-UserTasksMax.patch
+Patch1:         0001-SUSE-policy-do-not-clean-tmp-by-default.patch
+Patch2:         0001-Fix-run-lock-group-to-follow-openSUSE-policy.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -480,6 +481,8 @@ opensuse_ntp_servers=({0..3}.opensuse.pool.ntp.org)
         -Drootprefix=/usr \
         -Dsplit-usr=true \
         -Dsplit-bin=true \
+        -Dsystem-uid-max=499 \
+        -Dsystem-gid-max=499 \
         -Dpamlibdir=/%{_lib}/security \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
@@ -556,11 +559,10 @@ rm %{buildroot}%{_sbindir}/resolvconf
 rm %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
-# FIXME: these symlinks should die.
-mkdir -p %{buildroot}/{sbin,lib,bin}
+# FIXME: These obsolete symlinks are still needed by YaST so let's
+# keep them until boo#1160890 is fixed.
+mkdir -p %{buildroot}/sbin
 ln -sf %{_bindir}/udevadm %{buildroot}/sbin/udevadm
-ln -sf %{_bindir}/systemd-ask-password %{buildroot}/bin/systemd-ask-password
-ln -sf %{_bindir}/systemctl %{buildroot}/bin/systemctl
 ln -sf %{_prefix}/lib/systemd/systemd-udevd %{buildroot}/sbin/udevd
 
 %if %{with sysvcompat}
@@ -583,7 +585,8 @@ for s in %{S:200}; do
 	install -m0755 -D $s %{buildroot}%{_prefix}/lib/udev/scripts/${s#*/scripts-udev-}
 done
 
-ln -s ../usr/lib/systemd/systemd %{buildroot}/bin/systemd
+# Legacy sysvinit tools
+mkdir -p %{buildroot}/sbin
 ln -s ../usr/lib/systemd/systemd %{buildroot}/sbin/init
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/reboot
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/halt
@@ -641,9 +644,6 @@ rm -f %{buildroot}%{_sysconfdir}/systemd/journal-upload.conf
 rm -f %{buildroot}%{_prefix}/lib/systemd/systemd-journal-upload
 rm -f %{buildroot}%{_unitdir}/systemd-journal-upload.*
 %endif
-
-# legacy link
-ln -s /usr/lib/udev %{buildroot}/lib/udev
 
 # Create the /var/log/journal directory to change the volatile journal
 # to a persistent one
@@ -1004,9 +1004,6 @@ fi
 %files
 %defattr(-,root,root)
 %license LICENSE*
-/bin/systemd
-/bin/systemd-ask-password
-/bin/systemctl
 %{_bindir}/busctl
 %{_bindir}/bootctl
 %{_bindir}/hostnamectl
@@ -1315,15 +1312,14 @@ fi
 %defattr(-,root,root)
 /sbin/udevd
 /sbin/udevadm
-# keep for compatibility
-%ghost /lib/udev
 %{_bindir}/udevadm
 %{_bindir}/systemd-hwdb
 %dir %{_prefix}/lib/udev/
 %{_prefix}/lib/udev/ata_id
-%{_prefix}/lib/udev/path_id_compat
 %{_prefix}/lib/udev/cdrom_id
+%{_prefix}/lib/udev/fido_id
 %{_prefix}/lib/udev/mtd_probe
+%{_prefix}/lib/udev/path_id_compat
 %{_prefix}/lib/udev/scsi_id
 %{_prefix}/lib/udev/v4l_id
 %ghost %{_prefix}/lib/udev/compat-symlink-generation
@@ -1501,9 +1497,8 @@ fi
 %{_datadir}/dbus-1/system-services/org.freedesktop.network1.service
 %{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
 %{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
-%{_prefix}/lib/systemd/network/80-container-host0.network
-%{_prefix}/lib/systemd/network/80-container-ve.network
-%{_prefix}/lib/systemd/network/80-container-vz.network
+%{_prefix}/lib/systemd/network/*.network
+%{_prefix}/lib/systemd/network/*.network.example
 %endif
 %if %{with resolved}
 %{_bindir}/resolvectl

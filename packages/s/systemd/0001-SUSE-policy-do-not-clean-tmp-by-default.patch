@@ -1,0 +1,26 @@
+From b66a7b4b5aa25a1ffb4b76fe9545046dabd92c03 Mon Sep 17 00:00:00 2001
+From: Reinhard Max <max@suse.de>
+Date: Fri, 19 Apr 2013 16:56:26 +0200
+Subject: [PATCH 1/1] SUSE policy: do not clean /tmp by default.
+
+Fix regression in the default for tmp auto-deletion (FATE#314974).
+---
+ tmpfiles.d/tmp.conf | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tmpfiles.d/tmp.conf b/tmpfiles.d/tmp.conf
+index fe5225d751..dedc7569e1 100644
+--- a/tmpfiles.d/tmp.conf
++++ b/tmpfiles.d/tmp.conf
+@@ -8,5 +8,6 @@
+ # See tmpfiles.d(5) for details
+ 
+ # Clear tmp directories separately, to make them easier to override
+-q /tmp 1777 root root 10d
+-q /var/tmp 1777 root root 30d
++# SUSE policy: we don't clean those directories
++q /tmp 1777 root root -
++q /var/tmp 1777 root root -
+-- 
+2.16.4
+
