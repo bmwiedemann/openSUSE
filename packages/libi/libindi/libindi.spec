@@ -19,7 +19,7 @@
 %define so_ver 1
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        1.7.9
+Version:        1.8.3
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -75,8 +75,8 @@ This package contains development files for libindi.
 
 %package plugins
 Summary:        Plugins for libindi
-# libindi1 was last used at version 1.3.1
 Group:          Productivity/Scientific/Astronomy
+# libindi1 was last used at version 1.3.1
 Obsoletes:      libindi1 < %{version}
 
 %description plugins
@@ -122,14 +122,8 @@ completely dynamic GUI based on the services provided by the device.
 %setup -q -n indi-%{version}
 %autopatch -p1
 
-# Cleanup
-rm -fr debian docker macosx travis-ci
-# Also remove blobs
-rm -fr 3rdparty
-
 %build
 %define _lto_cflags %{nil}
-pushd libindi
 
 # libindi doesn't check whether CMAKE_INSTALL_LIBDIR is relative or not...
 sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}|${CMAKE_INSTALL_LIBDIR}|' libs/indibase/alignment/CMakeLists.txt
@@ -147,12 +141,9 @@ export CXX=g++-7
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 
 %make_jobs
-popd
 
 %install
-pushd libindi
 %cmake_install
-popd
 
 %post -n libindiAlignmentDriver%{so_ver} -p /sbin/ldconfig
 %postun -n libindiAlignmentDriver%{so_ver} -p /sbin/ldconfig
@@ -162,21 +153,21 @@ popd
 %postun -n libindilx200-%{so_ver} -p /sbin/ldconfig
 
 %files
-%license libindi/COPYING.* libindi/COPYRIGHT libindi/LICENSE
-%doc libindi/AUTHORS libindi/ChangeLog libindi/NEWS libindi/README
+%license COPYING.* COPYRIGHT LICENSE
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/indi*
 %{_datadir}/indi/
 %{_udevdir}/rules.d/*.rules
 
 %files devel
-%license libindi/COPYING.* libindi/LICENSE
+%license COPYING.* LICENSE
 %{_includedir}/libindi/
 %{_libdir}/pkgconfig/libindi.pc
 %{_libdir}/libindi*.so
 %{_libdir}/libindi*.a
 
 %files plugins
-%license libindi/COPYING.* libindi/LICENSE
+%license COPYING.* LICENSE
 %{_libdir}/indi/
 
 %files -n libindiAlignmentDriver%{so_ver}

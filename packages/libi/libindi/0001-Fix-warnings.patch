@@ -4,13 +4,13 @@ Date: Tue, 2 Apr 2019 22:52:29 +0200
 Subject: [PATCH] Fix warnings.
 
 ---
- libindi/CMakeLists.txt | 1 +
+ CMakeLists.txt | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/libindi/CMakeLists.txt b/libindi/CMakeLists.txt
+diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 4e6a9e1d..e52231ac 100644
---- a/libindi/CMakeLists.txt
-+++ b/libindi/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -218,6 +218,7 @@ if (ANDROID)
          set(CFITSIO_LIBRARIES ${CFITSIO_DIR}/libcfitsio.a)
      endif ()
