@@ -1,7 +1,7 @@
 #
 # spec file for package kakoune
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kakoune
-Version:        2019.12.10
+Version:        2020.01.16
 Release:        0
 Summary:        A code editor heavily inspired by Vim
 License:        Unlicense

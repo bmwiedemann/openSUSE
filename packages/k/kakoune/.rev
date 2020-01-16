@@ -164,4 +164,15 @@
     converting buffer types.</comment>
     <requestid>755569</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b5370e111cc8c36c85f7f8f55efcab04</srcmd5>
+    <version>2020.01.16</version>
+    <time>1579195409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.01.16:
+  * Expose history tree through $kak_history and
+    $kak_uncommitted_modifications
+  * InsertCompletionHide parameter is the list of inserted ranges</comment>
+    <requestid>764978</requestid>
+  </revision>
 </revisionlist>
