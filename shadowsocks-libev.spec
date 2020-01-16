@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-libev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define libver 2
 
 Name:           shadowsocks-libev
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Libev port of Shadowsocks
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Proxy
-Url:            https://github.com/shadowsocks/shadowsocks-libev
+URL:            https://github.com/shadowsocks/shadowsocks-libev
 Source0:        https://github.com/shadowsocks/shadowsocks-libev/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-config.json
 Source2:        %{name}-client.service

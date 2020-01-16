@@ -104,4 +104,15 @@
   * Refine the handling of suspicious connections. (forwarded request 748541 from hillwood)</comment>
     <requestid>748545</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1d5276a9d08c587ae82b1f25d54365aa</srcmd5>
+    <version>3.3.4</version>
+    <time>1579195322</time>
+    <user>dimstar_suse</user>
+    <comment>* Fix exploitable denial-of-service vulnerability exists in the
+    UDPRelay functionality (boo#1158251, CVE-2019-5163)
+  * Fix code execution vulnerability in the ss-manager binary
+    (boo#1158365, CVE-2019-5164) (forwarded request 764827 from hillwood)</comment>
+    <requestid>764828</requestid>
+  </revision>
 </revisionlist>
