@@ -49,4 +49,13 @@
   * Add re-generation of certificates</comment>
     <requestid>759895</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6424b9230915e08285999a3cd8979987</srcmd5>
+    <version>0.0+git20200115.5e372f5</version>
+    <time>1579195282</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200115.5e372f5:
+  * Ignore if pull fails, continue with old image in that case</comment>
+    <requestid>764731</requestid>
+  </revision>
 </revisionlist>
