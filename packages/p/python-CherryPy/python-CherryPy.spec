@@ -1,7 +1,7 @@
 #
 # spec file for package python-CherryPy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-CherryPy
-Version:        18.3.0
+Version:        18.5.0
 Release:        0
 Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
@@ -29,7 +29,8 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cheroot >= 6.2.4
+Requires:       python-cheroot >= 8.2.1
+Requires:       python-jaraco.collections
 Requires:       python-more-itertools
 Requires:       python-portend >= 2.1.1
 Requires:       python-zc.lockfile
@@ -42,7 +43,8 @@ Recommends:     python-pyOpenSSL
 Recommends:     python-simplejson
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module cheroot >= 6.2.4}
+BuildRequires:  %{python_module cheroot >= 8.2.1}
+BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module portend >= 2.1.1}
@@ -76,14 +78,11 @@ sed -i -e '/addopts/d' pytest.ini
 
 %install
 %python_install
-# Do not remove the tests as other project use them for self validation
-#%%python_expand rm -r %{buildroot}%{$python_sitelib}/cherrypy/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cherryd
 
 %check
-# test_HTTP11_Timeout_after_request https://github.com/cherrypy/cherrypy/issues/1817
-%pytest -k 'not test_null_bytes and not test_HTTP11_Timeout_after_request'
+%pytest
 
 %post
 %python_install_alternative cherryd
