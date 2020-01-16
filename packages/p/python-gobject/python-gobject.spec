@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,7 +95,6 @@ Summary:        Shared development files for GObject's Python bindings
 Group:          Development/Languages/Python
 Requires:       %{python_module gobject-devel = %{version}}
 Requires:       glib2-devel >= 2.38.0
-Requires:       gnome-common
 Requires:       gobject-introspection-devel >= 1.46.0
 Requires:       libffi-devel >= 3.0.0
 Requires:       pkgconfig(cairo)

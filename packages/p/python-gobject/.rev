@@ -628,4 +628,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>Scripted push from {project}</comment>
     <requestid>736603</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>b9c8743ec04cd197f28c9704ab679ffe</srcmd5>
+    <version>3.34.0</version>
+    <time>1579195061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763798</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 11 20:21:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-common Requires from python-gobject-common-devel
+  sub-package, no longer needed, nor used since 3.29.1, where the
+  BuildRequires was dropped, but the explicit Requires was not
+  removed by mistake.
+
+-------------------------------------------------------------------
 Mon Sep  9 15:37:58 CDT 2019 - mgorse@suse.com
 
 - Update to version 3.34.0:
