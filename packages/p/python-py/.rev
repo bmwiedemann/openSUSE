@@ -382,4 +382,16 @@
     <comment>- Switch to multibuild to avoid cycle bsc#1138666</comment>
     <requestid>710865</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2330b1b59fa485b1a355096f667820b4</srcmd5>
+    <version>1.8.1</version>
+    <time>1579194813</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  - Handle ``FileNotFoundError`` when trying to import pathlib in
+    ``path.common`` on Python 3.4 (#207).
+  - ``py.path.local.samefile`` now works correctly in Python 3 on
+    Windows when dealing with symlinks.</comment>
+    <requestid>761141</requestid>
+  </revision>
 </revisionlist>
