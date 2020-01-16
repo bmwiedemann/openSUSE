@@ -1,7 +1,7 @@
 #
 # spec file for package python-adapt-parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adapt-parser
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        A text-to-intent parsing framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/MycroftAI/adapt
-Source:         https://github.com/MycroftAI/adapt/archive/release/v%{version}.tar.gz
+Source:         https://github.com/MycroftAI/adapt/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pyee >= 1.0.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
@@ -42,7 +42,7 @@ determination framework. It is intended to parse natural language text into
 a structured intent that can then be invoked programatically.
 
 %prep
-%setup -q -n adapt-release-v%{version}
+%setup -q -n adapt-%{version}
 sed -i -s "s/==/>=/" setup.py
 
 %build
