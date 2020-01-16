@@ -106,4 +106,13 @@
     <comment></comment>
     <requestid>711560</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c62666aa8d30b8bda975a5e2dcf3bfc5</srcmd5>
+    <version>0.2.1</version>
+    <time>1579194789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.1 (bsc#1146853)
+- update to 0.1.13 (bsc#1075263)</comment>
+    <requestid>761124</requestid>
+  </revision>
 </revisionlist>
