@@ -1,7 +1,7 @@
 #
 # spec file for package runc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,11 +46,13 @@ Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/opencontainers/runc
+URL:            https://github.com/opencontainers/runc
 Source0:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz#/runc-%{_version}.tar.xz
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
 Source3:        runc-rpmlintrc
+# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2207.
+Patch1:         CVE-2019-19921.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  golang(API) = %{go_version}
@@ -85,6 +87,8 @@ Test package for runc. It contains the source code and the tests.
 
 %prep
 %setup -q -n %{name}-%{_version}
+# CVE-2019-19921
+%patch1 -p1
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at
