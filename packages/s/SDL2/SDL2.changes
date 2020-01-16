@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 12 22:53:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Temporarily work around -fno-common build failure [boo#1160382].
+
+-------------------------------------------------------------------
 Wed Oct  9 13:34:31 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - sdl2-khronos.patch
