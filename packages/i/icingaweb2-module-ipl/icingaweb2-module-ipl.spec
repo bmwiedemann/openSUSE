@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-ipl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define basedir	%{_datadir}/icingaweb2
 %define module_name ipl
 Name:           icingaweb2-module-%{module_name}
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Business Processes Icinga Web 2 module
 License:        MIT
