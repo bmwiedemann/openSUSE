@@ -68,7 +68,8 @@ This package provides the JupyterLab extension.
 # Not needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 cp %{buildroot}%{python3_sitelib}/sidecar-%{mainver}.dist-info/LICENSE.txt .
 
 %files %{python_files}
