@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pytest4%{psuffix}
-Version:        4.6.6
+Version:        4.6.9
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT
@@ -55,7 +55,7 @@ Obsoletes:      python-pytest4-doc
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module importlib_metadata >= 0.12}
+BuildRequires:  %{python_module importlib-metadata >= 0.12}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest4 >= %{version}}
 BuildRequires:  %{python_module setuptools_scm}
