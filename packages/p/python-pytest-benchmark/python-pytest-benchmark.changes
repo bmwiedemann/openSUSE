@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:13:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.2.3:
+  * Fixed "already-imported" pytest warning. Contributed by Jonathan Simon Prates in #151.
+  * Fixed breakage that occurs when benchmark is disabled while using cprofile feature (by disabling cprofile too).
+  * Dropped Python 3.4 from the test suite and updated test deps.
+  * Fixed pytest_benchmark.utils.clonefunc to work on Python 3.8.
+
+-------------------------------------------------------------------
 Mon Jul 22 08:30:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests for now, the output from pytest changed quite a

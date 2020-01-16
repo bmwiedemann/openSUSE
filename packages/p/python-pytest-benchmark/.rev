@@ -53,4 +53,16 @@
   actually works, it just fails its own testsuite...</comment>
     <requestid>717475</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9aa808fef5168440cc6db79be5c55357</srcmd5>
+    <version>3.2.3</version>
+    <time>1579194870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.3:
+  * Fixed &quot;already-imported&quot; pytest warning. Contributed by Jonathan Simon Prates in #151.
+  * Fixed breakage that occurs when benchmark is disabled while using cprofile feature (by disabling cprofile too).
+  * Dropped Python 3.4 from the test suite and updated test deps.
+  * Fixed pytest_benchmark.utils.clonefunc to work on Python 3.8.</comment>
+    <requestid>764007</requestid>
+  </revision>
 </revisionlist>

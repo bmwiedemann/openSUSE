@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-benchmark
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-benchmark
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        A py.test fixture for benchmarking code
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ionelmc/pytest-benchmark
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-benchmark/pytest-benchmark-%{version}.tar.gz
 Patch0:         fix-test-fast.patch
