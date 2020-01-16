@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:51:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test test_tests_are_colorized_by_test_result as pytest 5.3
+  tweaked color output a bit
+
+-------------------------------------------------------------------
 Mon Jun 17 10:49:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.5:

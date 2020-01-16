@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-relaxed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.1.5
 Release:        0
 Summary:        Relaxed test discovery/organization for pytest
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bitprophet/pytest-relaxed
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-relaxed/pytest-relaxed-%{version}.tar.gz
 BuildRequires:  %{python_module decorator >= 4}
@@ -56,7 +55,8 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_tests_are_colorized_by_test_result upstream changed color output slightly in pytest 5.3
+%pytest -k 'not test_tests_are_colorized_by_test_result'
 
 %files %{python_files}
 %license LICENSE

@@ -26,4 +26,13 @@
   * Fix compatibility with pytest versions 3.3 and above.</comment>
     <requestid>710328</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a8dfe785c2bbce9e8c065d8c59338082</srcmd5>
+    <version>1.1.5</version>
+    <time>1579194984</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test test_tests_are_colorized_by_test_result as pytest 5.3
+  tweaked color output a bit</comment>
+    <requestid>764658</requestid>
+  </revision>
 </revisionlist>
