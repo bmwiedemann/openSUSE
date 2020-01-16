@@ -1,7 +1,7 @@
 #
 # spec file for package containers-systemd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define containers bind dhcp-server mariadb
 %define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-mariadb.service
 
 Name:           containers-systemd
-Version:        0.0+git20191030.b2f919f
+Version:        0.0+git20200116.87baa97
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
-URL:            https://github.com/thkukuk/containers-systemd
+URL:            https://github.com/kubic-project/containers-systemd
 Source:         containers-systemd-%{version}.tar.xz
 Source1:        containers-systemd.rpmlintrc
 Requires(post): %fillup_prereq
