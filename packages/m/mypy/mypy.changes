@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan  1 11:15:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.761
+- update to version 0.760:
+ - Type Signature Suggestions for Tools
+ - Type Inference Improvements
+ - Fixes to Regressions
+  - Fix regression introduced in 0.750: union (non-)simplification should not affect type inference (PR 8095) 
+ - Breaking Changes
+  - Make the error code of a binary operation involving overload operator, for consistency (PR 8124) 
+ - Other Notable Improvements and Bug Fixes
+  - Generate error when assigning an Enum or TypedDict type to an attribute (Xuanda Yang, PR 8107)
+  - Fix relative path calculation if path is on a different drive on Windows (Netzeband, PR 8094)
+  - Don’t infer an abstract type object type from concrete type object values (Xuanda Yang, PR 8096)
+  - Fix an inconsistency with type checking lambda expressions (PR 8080)
+  - Fix crash involving generic callable types (PR 8075)
+  - Improve error message with long tuple initializer (Xuanda Yang, PR 7995)
+  - Improve mypy daemon documentation (PR 8041)
+  - Recommend typing_extensions instead of mypy_extensions for TypedDict (PR 8023)
+  - Fix an inconsistency with self types (PR 8030, PR 8021)
+  - Support type alias within Literal[...] (Xuanda Yang, PR 8014)
+  - Fix --warn-return-any false positive when returning Any from a function declared to return object (Xuanda Yang, PR 8011)
+  - Stubgen: Split @abstractproperty into @abstractmethod and @property (Xuanda Yang, PR 8066)
+  - Stubgen: Give a better error message when using a .pyd file as target (Xuanda Yang, PR 8063)
+  - Update stubgen documentation (PR 8031) 
+ - Typeshed Updates
+  - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here. 
+-------------------------------------------------------------------
 Thu Dec 12 12:09:10 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.750
