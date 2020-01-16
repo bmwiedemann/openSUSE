@@ -750,4 +750,28 @@
   * #6044: Properly ignore FileNotFoundError exceptions when trying to remove old temporary directories, for instance when multiple processes try to remove the same directory (common with pytest-xdist for example).</comment>
     <requestid>749196</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>72ab05d9c7306606b84e323257690268</srcmd5>
+    <version>5.3.2</version>
+    <time>1579194926</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo importlib_metadata -&gt; importlib-metadata
+
+- Update to 5.3.2:
+  * junitxml: Logs for failed test are now passed to junit report in
+    case the test fails during call phase.
+  * supporting files in the .pytest_cache directory are kept with
+    --cache-clear, which only clears cached values now.
+  * Fix assertion rewriting for egg-based distributions and editable
+    installs (pip install --editable).
+  * Improve check for misspelling of pytest.mark.parametrize.
+  * Handle exit.Exception raised in notify_exception (via pytest_internalerror), e.g. when quitting pdb from post mortem.
+  * default value of junit_family option will change to xunit2 in
+    pytest 6.0, given that this is the version supported by default in
+    modern tools that manipulate this type of file.
+  * In order to smooth the transition, pytest will issue a warning in
+    case the --junitxml option is given in the command line but
+    junit_family is not explicitly configured in pytest.ini.</comment>
+    <requestid>764286</requestid>
+  </revision>
 </revisionlist>

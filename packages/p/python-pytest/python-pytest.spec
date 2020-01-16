@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        5.2.4
+Version:        5.3.2
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT
@@ -56,7 +56,7 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module importlib_metadata >= 0.12}
+BuildRequires:  %{python_module importlib-metadata >= 0.12}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
