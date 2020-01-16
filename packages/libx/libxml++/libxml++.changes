@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 11 21:10:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.0:
+  + Document, DomParser: Improve XInclude processing:
+    - Document: Add process_xinclude() overload that takes a
+      fixup_base_uris parameter.
+    - DomParser: Add set/get_xinclude_options() and add optional
+      XInclude processing to the parse methods (bgo#781566).
+  + Add explicit keyword to some single-parameter constructors.
+  + tests: Don't require C++17.
+  + Build: Fix srcdir != buildir build.
+- Modernize spec.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:36:49 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

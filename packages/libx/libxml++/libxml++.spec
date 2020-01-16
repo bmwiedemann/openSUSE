@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libxml++
-Version:        3.0.1
+Version:        3.2.0
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://sourceforge.net/projects/libxmlplusplus/
-Source:         http://download.gnome.org/sources/libxml++/3.0/%{name}-%{version}.tar.xz
+URL:            https://sourceforge.net/projects/libxmlplusplus/
+Source0:        https://download.gnome.org/sources/libxml++/3.2/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -56,11 +57,14 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --disable-static --with-pic
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	--with-pic \
+	%{nil}
+%make_build
 
 %install
 %make_install

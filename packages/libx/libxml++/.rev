@@ -319,4 +319,12 @@
     <comment>- Add jira / fate ids (forwarded request 729428 from zhangxiaofei)</comment>
     <requestid>729731</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2f9d38b41c874cc7ea149fe3750cc068</srcmd5>
+    <version>3.2.0</version>
+    <time>1579195068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763800</requestid>
+  </revision>
 </revisionlist>
