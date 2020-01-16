@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:54:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.2.6
+  * Correctly handle HEAD requests (to send empty body) when gzip encoding requested.
+  * Use is_alive instead of isAlive for Python 3.9 compatibility.
+  * Use encodebytes instead of deprecated encodestring.
+  * Fix Python 2 and 3 compatibility for base64.
+
+-------------------------------------------------------------------
 Fri Dec 20 19:27:02 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.2.3:

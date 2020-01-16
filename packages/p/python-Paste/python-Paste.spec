@@ -1,7 +1,7 @@
 #
 # spec file for package python-Paste
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Paste
-Version:        3.2.3
+Version:        3.2.6
 Release:        0
 Summary:        Tools for using a Web Server Gateway Interface stack
 License:        MIT
