@@ -375,4 +375,13 @@
     <comment></comment>
     <requestid>754433</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>01ae8e99685ae9f50fdfcd1a96509964</srcmd5>
+    <version>1.10.33</version>
+    <time>1579194781</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.9.57 (bsc#1118021, bsc#1118024, bsc#1118027)
+- from version 1.7.42 (bsc#1075263)</comment>
+    <requestid>761122</requestid>
+  </revision>
 </revisionlist>
