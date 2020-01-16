@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 16 15:00:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.8.0
+  * Dropped Python 3.4 support and updated minimum requirements; 
+    made Python 3.8 support official
+  * lots of new fixes and features
+
+-------------------------------------------------------------------
 Fri Aug 23 13:13:43 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.7.3

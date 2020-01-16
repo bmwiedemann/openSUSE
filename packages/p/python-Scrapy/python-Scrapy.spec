@@ -1,7 +1,7 @@
 #
 # spec file for package python-Scrapy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Scrapy
-Version:        1.7.3
+Version:        1.8.0
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
@@ -26,40 +26,38 @@ Group:          Development/Languages/Python
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/S/Scrapy/Scrapy-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Protego >= 0.1.15}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
 BuildRequires:  %{python_module Twisted >= 17.9.0}
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module cssselect >= 0.9}
+BuildRequires:  %{python_module cryptography >= 2.0}
+BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module jmespath}
-BuildRequires:  %{python_module lxml >= 3.4}
+BuildRequires:  %{python_module lxml >= 3.5.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module parsel >= 1.5}
-BuildRequires:  %{python_module pyOpenSSL >= 0.14}
-BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module parsel >= 1.5.0}
+BuildRequires:  %{python_module pyOpenSSL >= 16.2.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module queuelib >= 1.1.1}
-BuildRequires:  %{python_module service_identity}
+BuildRequires:  %{python_module queuelib >= 1.4.2}
+BuildRequires:  %{python_module service_identity >= 16.0.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.5.2}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module w3lib >= 1.17.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-Requires:       python-Pillow
+Requires:       python-Protego >= 0.1.15
 Requires:       python-PyDispatcher >= 2.0.5
 Requires:       python-Twisted >= 17.9.0
-Requires:       python-cryptography
-Requires:       python-cssselect >= 0.9
-Requires:       python-lxml >= 3.4
-Requires:       python-parsel >= 1.5
-Requires:       python-pyOpenSSL >= 0.14
-Requires:       python-pyasn1
-Requires:       python-queuelib >= 1.1.1
-Requires:       python-service_identity
+Requires:       python-cryptography >= 2.0
+Requires:       python-cssselect >= 0.9.1
+Requires:       python-lxml >= 3.5.0
+Requires:       python-parsel >= 1.5.0
+Requires:       python-pyOpenSSL >= 16.2.0
+Requires:       python-queuelib >= 1.4.2
+Requires:       python-service_identity >= 16.0.0
 Requires:       python-setuptools
-Requires:       python-six >= 1.5.2
 Requires:       python-w3lib >= 1.17.2
+Requires:       python-zope.interface >= 4.1.3
 BuildArch:      noarch
 %python_subpackages
 
