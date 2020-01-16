@@ -33,8 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-BuildRequires:  zip
 Requires:       python-ipywidgets >= 7.0.0
 Requires:       jupyter-ipyevents = %{mainver}
 BuildArch:      noarch
@@ -84,18 +82,16 @@ This package provides the JupyterLab extension.
 
 %prep
 %setup -q -c -T
-unzip %{SOURCE0} 'ipyevents/*'
-find ipyevents/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
-zip -r %{SOURCE0} ipyevents
-rm -rf ipyevents
 
 %build
 # Not Needed
 
 %install
-pip%{python3_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 
 %{jupyter_move_config}
+%python_expand find %{buildroot}%{$python_sitelib}/ipyevents/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix} 
 cp %{buildroot}%{python3_sitelib}/ipyevents-%{mainver}.dist-info/LICENSE.md .
