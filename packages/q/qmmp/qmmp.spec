@@ -1,7 +1,7 @@
 #
 # spec file for package qmmp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.3.4
+Version:        1.3.6
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
