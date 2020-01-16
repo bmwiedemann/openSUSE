@@ -513,4 +513,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>758172</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>24d8bd12e6e40cc5395200ee1fe4dd52</srcmd5>
+    <version>2.8.97</version>
+    <time>1579195048</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily work around -fno-common build failure [boo#1160267].</comment>
+    <requestid>763724</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 12 22:44:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Temporarily work around -fno-common build failure [boo#1160267].
+
+-------------------------------------------------------------------
+Wed Jan  8 16:22:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.97
+  * Fixed wsdl2h processing of schemas with a cyclic schema
+    `<xs:include>` that may cause wsdl2h to hang when schemas
+    have no `targetNamespace` attribute.
+  * Improved wsdl2h code generation of unqualified types and
+    names defined in imported schemas (with `<xs:import>`) when
+    these schemas have no `targetNamespace`. Use wsdl2h option
+    `-z10` or lesser to revert to the code generation behavior of
+    versions prior to 2.8.97.
+
+-------------------------------------------------------------------
 Thu Dec 12 12:10:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.96

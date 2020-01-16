@@ -1,7 +1,7 @@
 #
 # spec file for package gsoap
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gsoap
-%define lname	libgsoap-2_8_96
-Version:        2.8.96
+%define lname	libgsoap-2_8_97
+Version:        2.8.97
 Release:        0
 Summary:        Toolkit for SOAP/REST-based C/C++ server and client web service applications
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -29,10 +29,10 @@ Source:         gsoap-%version.tar.xz
 Source2:        sanitize_source.sh
 Patch1:         gsoap-automake1_13.diff
 Patch2:         gsoap-01-sharedlibs.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -41,9 +41,6 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-%endif
 
 %description
 gSOAP is a toolkit for C and C++ server and client Web service
@@ -94,7 +91,7 @@ perl -i -lpe 's{AC_INIT\(gsoap, 2.8\)}{AC_INIT([gsoap], [%version])}' \
 # Rebuild configure - fix that utterly long mktime test.
 # Also needed because Makefile.am and configure.ac are touched.
 autoreconf -fi
-%configure --enable-ipv6 --disable-static
+%configure --enable-ipv6 --disable-static CFLAGS="%optflags -fcommon"
 pushd gsoap/src/
 # build prerequisites for parallel build first
 make soapcpp2_yacc.c
@@ -116,7 +113,6 @@ find "$b" -type f -name "*inconsolata*" -exec chmod a-x "{}" "+"
 %postun -n %lname -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root)
 %_bindir/*soap*
 %_bindir/*wsdl*
 %_datadir/%name/
@@ -130,11 +126,9 @@ find "$b" -type f -name "*inconsolata*" -exec chmod a-x "{}" "+"
 %_libdir/pkgconfig/*gsoap*.pc
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libgsoap*-%version.so
 
 %files doc
-%defattr(-,root,root)
 %_defaultdocdir/%name/
 
 %changelog
