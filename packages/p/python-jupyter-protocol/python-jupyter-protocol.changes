@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:32:26 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.0
+  * Rework everything to use "protocol" instead of "client"
+
+-------------------------------------------------------------------
 Tue Nov 12 17:41:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - jupyter_core has been renamed to jupyter-core
