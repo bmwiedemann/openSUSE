@@ -1,0 +1,3922 @@
+From 3d1fe747ea7dd23cb099f5e93976f6de146cd250 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Sun, 27 Oct 2019 13:01:32 +0000
+Subject: [PATCH] #15030 : port scripter to Python 3
+
+git-svn-id: svn://scribus.net/trunk/Scribus@23278 11d20701-8431-0410-a711-e3c959e3b870
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7385057e28..255aae06de 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -847,10 +847,10 @@ endif()
+ 
+ #<< PYTHON
+ #set(PythonLibs_FIND_VERSION 2)
+-find_package(PythonInterp 2)
+-find_package(PythonLibs 2 REQUIRED)
++find_package(PythonInterp 3)
++find_package(PythonLibs 3 REQUIRED)
+ if (PYTHON_LIBRARY)
+-	message("Python Library Found OK")
++	message("Python 3.x Library Found OK")
+ 	set(HAVE_PYTHON ON)
+ 	set(COMPILE_PYTHON ON)
+ endif()
+diff --git a/doc/de/install2.html b/doc/de/install2.html
+index e8ec3b8820..dd46fbd72a 100644
+--- a/doc/de/install2.html
++++ b/doc/de/install2.html
+@@ -3,36 +3,39 @@
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ 	<title>Voraussetzungen</title>
+ </head>
++<style>
++@import "manual.css";
++</style>
+ <body>
+ <h2>Voraussetzungen</h2>
+ <p>Die Programme, die Sie ben&ouml;tigen, um Scribus zu kompilieren, sind:</p>
+ <ol>
+-	<li><strong>F&uuml;r Scribus 1.4.x wird mindestens GCC 3.x+ ben&ouml;tigt und GCC 3.3+ dringend empfohlen</strong>. Das Scribus-Team hat GCC 4.1+ getestet. Wir empfehlen, jeweils die aktuelle GCC 4.x-Version zu verwenden, da sich dadurch Performance-Vorteile ergeben k&ouml;nnen.</li>
+-	<li>CMake</li>
++	<li><strong>F&uuml;r Scribus 1.5.x wird mindestens GCC 4.8+ ben&ouml;tigt und GCC 7+ dringend empfohlen</strong>. Wir empfehlen, jeweils die aktuelle GCC Version zu verwenden, da sich dadurch Performance-Vorteile ergeben k&ouml;nnen.</li>
++	<li>CMake 3.12+</li>
+ 	<li>GNU make</li>
+ </ol>
+ <p>Die Abh&auml;ngigkeiten zum Kompilieren und zur Verwendung von Scribus sind:</p>
+ <ol>
+-<li>Qt 4.6.0+, sowohl die Laufzeit- als auch die Entwicklerbibliotheken.</li>
+-<li>Python und Python-devel 2.3+. Python 2.2 wird nicht unterst&uuml;tzt.</li>
+-<li>Freetype2 2.1.7+. Wegen verschiedener Fehler in Freetype2 empfehlen wir, wenn m&ouml;glich, die Verwendung von Version 2.3.x</li>
+-<li>Cairo 1.4.x. We empfehlen 1.4.10 oder h&ouml;her.</li>
+-<li>libxml2 2.6+.</li>
+-<li>Ghostscript 8.60+ wird dringend empfohlen.</li>
+-<li>littleCMS &ndash; in einigen Distributionen auch lcms genannt. Das Minimum ist 1.12, aber wir empfehlen 1.17 oder h&ouml;her. lcms 1.12+ bietet Unterst&uuml;tzung von Tiefenkompensierung.</li>
+-<li>libtiff 3.6.0+</li>
+-<li>libjpeg</li>
+-<li>CUPS-devel &ndash; Scribus unterst&uuml;tzt die direkte Druckausgabe mit CUPS. (Linux/UNIX/Mac&nbsp;OS&nbsp;X).</li>
+-<li>tkinter &ndash; f&uuml;r das &raquo;Font Sampler&laquo;- und das &raquo;Calendar Wizard&laquo;-Script.</li>
+-<li>Python-imaging f&uuml;r einige Funktionen des Scripters.</li>
+-<li>openssl-devel (einige Linux-Distributionen, insbesondere OpenSUSE, erm&ouml;glichen SSL-Unterst&uuml;tzung f&uuml;r CUPS)</li>
+-<li>fontconfig-devel &ndash; um das automatische Auffinden von Schriftdateien unter Linux, Mac&nbsp;OS&nbsp;X und UNIX zu erm&ouml;glichen. Nicht erforderlich unter Windows, OS/2 und eComStation.</li>
+-<li>Podofo 0.6 oder h&ouml;her &ndash; wird vom AI-Importfilter ben&ouml;tigt.</li>
++	<li>Qt 5.10.0+, sowohl die Laufzeit- als auch die Entwicklerbibliotheken.</li>
++	<li>Cairo 1.14.x. We empfehlen 1.16.0 oder h&ouml;her.</li>
++	<li>CUPS-devel &ndash; Scribus unterst&uuml;tzt die direkte Druckausgabe mit CUPS. (Linux/UNIX/Mac&nbsp;OS&nbsp;X).</li>
++	<li>fontconfig-devel &ndash; um das automatische Auffinden von Schriftdateien unter Linux, Mac&nbsp;OS&nbsp;X und UNIX zu erm&ouml;glichen. Nicht erforderlich unter Windows, OS/2 und eComStation.</li>
++	<li>Freetype2 2.1.7+. Wegen verschiedener Fehler in Freetype2 empfehlen wir, wenn m&ouml;glich, die Verwendung von Version 2.3.x</li>
++	<li>Ghostscript 9.0+ wird dringend empfohlen.</li>
++	<li>littleCMS &ndash; in einigen Distributionen auch lcms genannt. Das Minimum ist 2.1, aber wir empfehlen 2.9 oder h&ouml;her.</li>
++	<li>libjpeg</li>
++	<li>libtiff 3.6.0+</li>
++	<li>libxml2 2.6+.</li>
++	<li>Podofo 0.9 oder h&ouml;her &ndash; wird vom AI-Importfilter ben&ouml;tigt.</li>
++	<li>Python und Python-devel 3.3+. Python 3.2 wird nicht unterst&uuml;tzt.</li>
++	<li>Python-imaging f&uuml;r einige Funktionen des Scripters.</li>
++	<li>tkinter &ndash; f&uuml;r das &raquo;Font Sampler&laquo;- und das &raquo;Calendar Wizard&laquo;-Script.</li>
++	<li>openssl-devel (einige Linux-Distributionen, insbesondere OpenSUSE, erm&ouml;glichen SSL-Unterst&uuml;tzung f&uuml;r CUPS)</li>
+ </ol>
+ <h3>Optional:</h3>
+ <ul>
+-<li>antiword &ndash; ben&ouml;tigt f&uuml;r dem Import von MS-Word-Dateien, ist aber unn&ouml;tig beim Kompilieren. Scribus wird ein installiertes Antiword sp&auml;ter automatisch finden.</li>
+-<li>Um <a href="WwRenderframes.html">Renderrahmen</a> verwenden zu k&ouml;nnen, ben&ouml;tigen Sie zus&auml;tzliche Programme wie LaTeX oder Lilypond.</li>
++	<li>antiword &ndash; ben&ouml;tigt f&uuml;r dem Import von MS-Word-Dateien, ist aber unn&ouml;tig beim Kompilieren. Scribus wird ein installiertes Antiword sp&auml;ter automatisch finden.</li>
++	<li>Um <a href="WwRenderframes.html">Renderrahmen</a> verwenden zu k&ouml;nnen, ben&ouml;tigen Sie zus&auml;tzliche Programme wie LaTeX oder Lilypond.</li>
+ </ul>
+ <p>Scribus l&auml;uft in jeder Desktopumgebung und ben&ouml;tigt kein KDE, aber Drag&rsquo;n&rsquo;drop funktioniert nur in KDE.</p>
+ <p>Falls das Farbmanagement nicht funktioniert, m&uuml;ssen Sie zus&auml;tzlich mindestens ein RGB- und ein CMYK-Profil installieren. Anderenfalls werden die Farbmanagement-Optionen ausgeblendet oder ausgegraut. Normalerweise installiert Scribus ein RGB- and ein CMYK-Profil, und zwar nur, um das Farbmanagement zu aktivieren, aber aufgrund ihrer Lizenzpolitik (v.a. Debian) befinden sich die Profile u.U. in einem separaten Paket. </p>
+diff --git a/doc/de/scripter1.html b/doc/de/scripter1.html
+index c3acdd06c0..78fba55d9a 100644
+--- a/doc/de/scripter1.html
++++ b/doc/de/scripter1.html
+@@ -14,6 +14,9 @@ <h3>Overview</h3>
+ 
+ <p>Note that additions to the Scripter are being made frequently, which means that the available documentation may be incomplete.</p>
+ 
++<h3>Scripter and Windows</h3>
++<p>If you installed your Windows version of Scribus using the installer at Sourceforge, the installation includes Python 3.7 in a directory labeled python\. This will suffice for most uses. You may find or write some Python script which requires an additional Python package not included, and there is no way to add these to the Scribus directory. Chances are, your system is not even aware of this Python.</p>
++<p>Should you need to use some additional packages, the answer comes from installing Python 3.7 on your system, then also the desired additional packages. The next and important step is to use a file manager to go to C:\Program Files\Scribus 1.5.6\ and look for a directory named python\. Simply rename this to anything else, such as oldpython\, and the next time Scribus starts, it will use the system Python and its packages.</p>
+ 
+ <h3>Using the Plug-in</h3>
+ <p>Scribus is being shipped with some &ldquo;hard-wired&rdquo; scripts, which are available via <i>Scripter&nbsp;&gt; Scribus Scripts</i>:</p>
+diff --git a/doc/en/install2.html b/doc/en/install2.html
+index a02c4a771f..7762b5d8a6 100644
+--- a/doc/en/install2.html
++++ b/doc/en/install2.html
+@@ -10,32 +10,32 @@
+ <h2>Requirements</h2>
+ <p>The programs you will need to compile Scribus 1.4 are:</p>
+ <ol>
+-	<li><strong>For Scribus 1.4.x GCC 3.x+ is required, GCC 3.3+ is strongly recommended</strong>. The Scribus Team has tested compiling with GCC 4.1+. We recommend the newest stable GCC 4.x release for the performance benefits.</li>
+-	<li>CMake</li>
++	<li><strong>For Scribus 1.5.x GCC 4.8+ is required, GCC 7+ is strongly recommended</strong>. We recommend the newest stable GCC release for the performance benefits.</li>
++	<li>CMake 3.12+</li>
+ 	<li>GNU make</li>
+ </ol>
+ The dependencies for compilation, and also to run Scribus are:
+ <ol>
+-<li>Qt 4.6.0+, both the runtime libraries and development libraries.</li>
+-<li>Python and Python-devel libraries 2.3+. Python 2.2 is not supported.</li>
+-<li>Freetype2 2.1.7+. Due to various freetype2 bugs, we recommend, if your distribution/OS allows, to use 2.3.x</li>
+-<li>Cairo 1.4.x. We recommend 1.4.10 or later for performance reasons.</li>
+-<li>libxml2 2.6+.</li>
+-<li>Ghostscript 8.60+ is highly recommended.</li>
+-<li>littleCMS &ndash; also known as lcms in some distributions. The minimum is 1.12, whereas 1.17+ is recommended. lcms 1.12+ has support for black point compensation.</li>
+-<li>libtiff 3.6.0+</li>
+-<li>libjpeg</li>
+-<li>CUPS development libraries &ndash; Scribus directly supports printing with CUPS. (Linux/UNIX/Mac&nbsp;OS&nbsp;X only).</li>
+-<li>tkinter &ndash; for the Font Sampler and Calendar Wizard scripts.</li>
+-<li>Python-imaging libaries for some scripting features.</li>
+-<li>openssl-devel (Some Linux distributions enable ssl support for CUPS, notably OpenSUSE)</li>
+-<li>fontconfig-devel &ndash; for auto discovery of fonts on Linux, Mac&nbsp;OS&nbsp;X and UNIX. Not needed on Windows, OS/2 and eComStation.</li>
+-<li>Podofo 0.6 or later &ndash; used to enhance the Adobe Illustrator importer.</li>
++	<li>Qt 5.10.0+, both the runtime libraries and development libraries.</li>
++	<li>Cairo 1.14.x. We recommend 1.16.x.</li>
++	<li>CUPS development libraries &ndash; Scribus directly supports printing with CUPS. (Linux/UNIX/Mac&nbsp;OS&nbsp;X only).</li>
++	<li>fontconfig-devel &ndash; for auto discovery of fonts on Linux, Mac&nbsp;OS&nbsp;X and UNIX. Not needed on Windows, OS/2 and eComStation.</li>
++	<li>Freetype2 2.1.7+. Due to various freetype2 bugs, we recommend, if your distribution/OS allows, to use 2.3.x</li>
++	<li>Ghostscript 9.0+ is highly recommended.</li>
++	<li>littleCMS &ndash; also known as lcms in some distributions. The minimum is 2.1, whereas 2.9+ is recommended..</li>
++	<li>libjpeg</li>
++	<li>libtiff 3.6.0+</li>
++	<li>libxml2 2.6+.</li>
++	<li>Podofo 0.9 or later &ndash; used to enhance the Adobe Illustrator importer.</li>
++	<li>Python and Python-devel libraries 3.3+. Python 3.2 is not supported.</li>
++	<li>Python-imaging libaries for some scripting features.</li>
++	<li>tkinter &ndash; for the Font Sampler and Calendar Wizard scripts.</li>
++	<li>openssl-devel (Some Linux distributions enable ssl support for CUPS, notably OpenSUSE)</li>
+ </ol>
+ <h3>Optionally:</h3>
+ <ul>
+-<li>antiword &ndash; this is not needed at compile time for MS Word import. Scribus will detect this at run time however.</li>
+-<li>To use <a href="WwRenderframes.html">Render Frames</a>, you need additional programs, like LaTeX or Lilypond.</li>
++	<li>antiword &ndash; this is not needed at compile time for MS Word import. Scribus will detect this at run time however.</li>
++	<li>To use <a href="WwRenderframes.html">Render Frames</a>, you need additional programs, like LaTeX or Lilypond.</li>
+ </ul>
+ <p>Scribus will run under almost any window manager and does not require KDE. However, drag and drop functionality will be lost without KDE.</p>
+ <p>If color management does not work, you also need at least one RGB profile and one CMYK profile installed or the color preferences and options will not appear in the menus. Scribus installs one RGB and one CMYK profile simply to enable color management, but some distributions, notably Debian, provide ICC profiles in separate packages, due to their licensing policy. </p>
+diff --git a/doc/en/scripter1.html b/doc/en/scripter1.html
+index 922e0cf9f6..78fba55d9a 100644
+--- a/doc/en/scripter1.html
++++ b/doc/en/scripter1.html
+@@ -15,8 +15,8 @@ <h3>Overview</h3>
+ <p>Note that additions to the Scripter are being made frequently, which means that the available documentation may be incomplete.</p>
+ 
+ <h3>Scripter and Windows</h3>
+-<p>If you installed your Windows version of Scribus using the installer at Sourceforge, the installation includes Python2.7 in a directory labeled python\. This will suffice for most uses. You may find or write some Python script which requires an additional Python package not included, and there is no way to add these to the Scribus directory. Chances are, your system is not even aware of this Python.</p>
+-<p>Should you need to use some additional packages, the answer comes from installing Python27 on your system, then also the desired additional packages. The next and important step is to use a file manager to go to C:\Program Files\Scribus 1.5.3\ and look for a directory named python\. Simply rename this to anything else, such as oldpython\, and the next time Scribus starts, it will use the system Python and its packages.</p>
++<p>If you installed your Windows version of Scribus using the installer at Sourceforge, the installation includes Python 3.7 in a directory labeled python\. This will suffice for most uses. You may find or write some Python script which requires an additional Python package not included, and there is no way to add these to the Scribus directory. Chances are, your system is not even aware of this Python.</p>
++<p>Should you need to use some additional packages, the answer comes from installing Python 3.7 on your system, then also the desired additional packages. The next and important step is to use a file manager to go to C:\Program Files\Scribus 1.5.6\ and look for a directory named python\. Simply rename this to anything else, such as oldpython\, and the next time Scribus starts, it will use the system Python and its packages.</p>
+ 
+ <h3>Using the Plug-in</h3>
+ <p>Scribus is being shipped with some &ldquo;hard-wired&rdquo; scripts, which are available via <i>Scripter&nbsp;&gt; Scribus Scripts</i>:</p>
+diff --git a/doc/fr/install2.html b/doc/fr/install2.html
+index 1ff30ec699..8e802dd172 100644
+--- a/doc/fr/install2.html
++++ b/doc/fr/install2.html
+@@ -7,19 +7,24 @@
+ <h2>&Eacute;l&eacute;ments requis</h2>
+ <p>Pour compiler Scribus, vous aurez besoin de :</p>
+ <ol>
+-	<li><strong>Pour Scribus 1.3.x+ GCC 3.x+ est requis, GCC 3.3+ est fortement recommand&eacute;</strong>. L'&eacute;quipe de Scribus a test&eacute; la compilation avec GCC 3.4 ou GCC 4.0 et recommande de l'utiliser, s'il est disponible, pour les gains de performance obtenus.</li>
+-	<li>autoconf 2.53+</li>
+-	<li>automake 1.6.3+</li>
++	<li><strong>Pour Scribus 1.5.x+ GCC 4.8+ est requis, GCC 7+ est fortement recommand&eacute;</strong>. L'&eacute;quipe de Scribus recommande de l'utiliser la dernière release de GGC en raison des gains de performance obtenus.</li>
++	<li>CMake 3.12+</li>
++	<li>GNU make</li>
+ </ol>
+ Les d&eacute;pendances pour la compilation et pour ex&eacute;cuter Scribus sont:
+ <ol>
+-	<li>Qt 3.3.0+, les librairies d'ex&eacute;cution et les libraires de d&eacute;veloppement. Nous recommandons d'utiliser Qt 3.3.4+. <strong>Qt =&#060; 3.2.x n'est pas support&eacute;.</strong></li>
+-	<li>Les librairies Python et python-devel 2.3+. Vous pouvez d&eacute;sactiver le support Python &agrave; l'aide de <code>configure --without-python</code>. Python 2.2 n'est pas support&eacute;.</li>
+-	<li>Freetype2 2.1.3+. &Agrave; cause de nombreux probl&egrave;mes de freetype2, nous recommandons, si votre distribution/syst&egrave;me d'exploitation le permet, d'utiliser 2.1.10+</li>
+-	<li>libart_lgpl 2.3.10+, 2.3.17+ recommand&eacute;.</li>
+-	<li>libxml 2.6+.</li>
+-	<li>Ghostscript 7.07+ ou GPL Ghostscript 8.57+ est hautement recommand&eacute;.</li>
+-	<li>PostScript-Fonts. TrueType Fonts. Scribus supporte &eacute;galement les polices OpenType, TrueType et Type 1 Outline OpenType Fonts dans 1.1.1+.</li>
++	<li>Qt 5.10.0+, les librairies d'ex&eacute;cution et les libraires de d&eacute;veloppement. Nous recommandons d'utiliser Qt 5.12.0+.</li>
++	<li>Cairo 1.14.x. Nous recommandons 1.16.x ou ultérieur.</li>
++	<li>Les librairies de d&eacute;veloppement CUPS - Scribus supporte maintenant directement l'impression avec CUPS. (Linux/UNIX/Mac&nbsp;OS&nbsp;X uniquement)</li>
++	<li>fontconfig-devel - pour la d&eacute;couverte automatique des polices sous Linux, MacOSX et Unix. Pas n&eacute;cessaire sous Windows.</li>
++	<li>Freetype2 2.1.7+. &Agrave; cause de nombreux probl&egrave;mes de freetype2, nous recommandons, si votre distribution/syst&egrave;me d'exploitation le permet, d'utiliser 2.1.10+</li>
++	<li>Ghostscript 9.00+ est hautement recommand&eacute;.</li>
++	<li>Littlecms - aussi connu comme lcms dans certaines distributions. Minimum 2.1, 2.9+ recommand&eacute;.</li>
++	<li>libjpeg</li>
++	<li>libtiff 3.6.0+</li>
++	<li>libxml2 2.6+.</li>
++	<li>Podofo 0.9 ou ultérieur. Utilisé pour améliorer l'import des fichiers Adobe Illustrator.</li>
++	<li>Les librairies Python et python-devel 3.3+. Python 3.2 n'est pas support&eacute;.</li>
+ </ol>
+ <p>Scribus s'ex&eacute;cutera sous la plupart des gestionnaires de fen&ecirc;tres et ne requiert pas KDE en soi. Cependant, les fonctionnalit&eacute;s de glisser-d&eacute;poser seront perdues sans KDE. Un des d&eacute;veloppeurs de Scribus roule sous Gnome. L'auteur de cette documentation s'est astreint &agrave; tester chaque version de Scribus sous Blackbox &eacute;galement.
+ L'op&eacute;ration n'a r&eacute;v&eacute;l&eacute; aucune incompatibilit&eacute; ni probl&egrave;me, mise &agrave; part la perte de la fonctionnalit&eacute; glisser-d&eacute;poser.</p>
+@@ -32,13 +37,10 @@ <h2>&Eacute;l&eacute;ments requis</h2>
+ pour des options d&eacute;taill&eacute;es</p>
+ <h3>Optionnellement :</h3>
+ <ul>
+-<li>Les librairies de d&eacute;veloppement CUPS - Scribus supporte maintenant directement l'impression avec CUPS.</li>
+-<li>Les librairies de d&eacute;veloppement Gimp Print - Scribus supporte maintenant l'extension Gimp Print avec CUPS.</li>
+-<li>Littlecms - aussi connu comme lcms dans certaines distributions. Minimum 1.12, 1.16+ recommand&eacute;. lcms 1.12+ supporte la g&eacute;n&eacute;ration du point noir.</li>
+-<li>tkinter - pour le script d'&eacute;chantillonnage de police</li>
+-<li>Les librairies python-imaging pour l'aper&ccedil;u du script d'&eacute;chantillonage de police</li>
+-<li>openssl-devel (Certaines distributions activent le support ssl pour CUPS, notamment Suse Linux)</li>
+-<li>fontconfig-devel - pour la d&eacute;couverte automatique des polices sous Linux, MacOSX et Unix. Pas n&eacute;cessaire sous Windows.</li>
++	<li>Les librairies de d&eacute;veloppement Gimp Print - Scribus supporte maintenant l'extension Gimp Print avec CUPS.</li>
++	<li>tkinter - pour le script d'&eacute;chantillonnage de police</li>
++	<li>Les librairies python-imaging pour l'aper&ccedil;u du script d'&eacute;chantillonage de police</li>
++	<li>openssl-devel (Certaines distributions activent le support ssl pour CUPS, notamment Suse Linux)</li>
+ </ul>
+ </body>
+ </html> 
+\ No newline at end of file
+diff --git a/doc/it/scripter1.html b/doc/it/scripter1.html
+index d4a11d2801..78fba55d9a 100644
+--- a/doc/it/scripter1.html
++++ b/doc/it/scripter1.html
+@@ -3,6 +3,9 @@
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ 	<title>Scripting Scribus with Python</title>
+ </head>
++<style>
++@import "manual.css";
++</style>
+ <body>
+ <h2>Scripting Scribus with Python</h2>
+ 
+@@ -11,6 +14,9 @@ <h3>Overview</h3>
+ 
+ <p>Note that additions to the Scripter are being made frequently, which means that the available documentation may be incomplete.</p>
+ 
++<h3>Scripter and Windows</h3>
++<p>If you installed your Windows version of Scribus using the installer at Sourceforge, the installation includes Python 3.7 in a directory labeled python\. This will suffice for most uses. You may find or write some Python script which requires an additional Python package not included, and there is no way to add these to the Scribus directory. Chances are, your system is not even aware of this Python.</p>
++<p>Should you need to use some additional packages, the answer comes from installing Python 3.7 on your system, then also the desired additional packages. The next and important step is to use a file manager to go to C:\Program Files\Scribus 1.5.6\ and look for a directory named python\. Simply rename this to anything else, such as oldpython\, and the next time Scribus starts, it will use the system Python and its packages.</p>
+ 
+ <h3>Using the Plug-in</h3>
+ <p>Scribus is being shipped with some &ldquo;hard-wired&rdquo; scripts, which are available via <i>Scripter&nbsp;&gt; Scribus Scripts</i>:</p>
+diff --git a/scribus/main_win32.cpp b/scribus/main_win32.cpp
+index 2ee6189d42..d5164685f5 100644
+--- a/scribus/main_win32.cpp
++++ b/scribus/main_win32.cpp
+@@ -153,11 +153,13 @@ void setPythonEnvironment(const QString& appPath)
+ 	QString pythonHome = appPath + "/python";
+ 	if (!QDir(pythonHome).exists())
+ 		return; //assume a custom python
++	pythonHome = QFileInfo(pythonHome).canonicalFilePath();
+ 
+ 	QString tmp = "PYTHONHOME=" + QDir::toNativeSeparators(pythonHome);
+ 	_wputenv((const wchar_t*) tmp.utf16());
+ 
+-	QString nativePath = QDir::toNativeSeparators(appPath);
++	QString nativePath = QFileInfo(appPath).canonicalFilePath();
++	nativePath = QDir::toNativeSeparators(nativePath);
+ 	tmp = "PYTHONPATH=";
+ 	tmp += nativePath;
+ 	tmp += "\\python;";
+diff --git a/scribus/plugins/scriptplugin/cmdannotations.cpp b/scribus/plugins/scriptplugin/cmdannotations.cpp
+index a972205207..09029337ed 100644
+--- a/scribus/plugins/scriptplugin/cmdannotations.cpp
++++ b/scribus/plugins/scriptplugin/cmdannotations.cpp
+@@ -169,7 +169,7 @@ PyObject *scribus_getjsactionscript(PyObject * /*self*/, PyObject* args)
+ 		break;
+ 	}
+ 
+-	PyObject *rstr = PyString_FromString(rv.toUtf8());
++	PyObject *rstr = PyUnicode_FromString(rv.toUtf8());
+ 	return rstr;
+ }
+ 
+@@ -211,8 +211,8 @@ PyObject *scribus_isannotated(PyObject * /*self*/, PyObject* args, PyObject *key
+ 
+ 			getLinkData(drv, a.Ziel(), a.Action());
+ 			const char path[] = "path";
+-			PyObject *pathkey = PyString_FromString(path);
+-			PyObject *pathvalue = PyString_FromString(a.Extern().toUtf8());
++			PyObject *pathkey = PyUnicode_FromString(path);
++			PyObject *pathvalue = PyUnicode_FromString(a.Extern().toUtf8());
+ 			PyDict_SetItem(drv, pathkey, pathvalue);
+ 			add_text_to_dict(drv, item);
+ 			PyObject *rv = Py_BuildValue("(sO)", name3, drv);
+@@ -221,8 +221,8 @@ PyObject *scribus_isannotated(PyObject * /*self*/, PyObject* args, PyObject *key
+ 		if (atype == Annotation::Link && actype == Annotation::Action_URI)
+ 		{
+ 			const char uri[] = "uri";
+-			PyObject *ukey = PyString_FromString(uri);
+-			PyObject *uval = PyString_FromString(a.Extern().toUtf8());
++			PyObject *ukey = PyUnicode_FromString(uri);
++			PyObject *uval = PyUnicode_FromString(a.Extern().toUtf8());
+ 			PyDict_SetItem(drv, ukey, uval);
+ 			add_text_to_dict(drv, item);
+ 			char *name4= const_cast<char*>("Link URI");
+@@ -295,12 +295,12 @@ PyObject *scribus_isannotated(PyObject * /*self*/, PyObject* args, PyObject *key
+ 			};
+ 			if (icon >= 0 && icon < 9)
+ 			{
+-				PyObject *iconkey = PyString_FromString("icon");
+-				PyObject *iconvalue = PyString_FromString(icons[icon]);
++				PyObject *iconkey = PyUnicode_FromString("icon");
++				PyObject *iconvalue = PyUnicode_FromString(icons[icon]);
+ 				PyDict_SetItem(drv, iconkey, iconvalue);
+ 			}
+ 
+-			PyObject *openkey = PyString_FromString("open");
++			PyObject *openkey = PyUnicode_FromString("open");
+ 			PyObject *open = Py_False;
+ 			if (a.IsAnOpen())
+ 				open = Py_True;
+@@ -585,7 +585,7 @@ PyObject *scribus_createpdfannotation(PyObject * /*self*/, PyObject* args)
+ 			break;
+ 	}
+ 	
+-	return PyString_FromString(m_doc->Items->at(i)->itemName().toUtf8());
++	return PyUnicode_FromString(m_doc->Items->at(i)->itemName().toUtf8());
+ }
+ 
+ 
+@@ -613,23 +613,23 @@ PyObject *getLinkData(PyObject *rv,int page, const QString& action)
+ 	int x, y;
+ 
+ 	const char pagenum[] = "page";
+-	PyObject *pagekey = PyString_FromString(pagenum);
+-	PyObject *pagevalue = PyInt_FromLong((long)page);
++	PyObject *pagekey = PyUnicode_FromString(pagenum);
++	PyObject *pagevalue = PyLong_FromLong((long)page);
+ 	PyDict_SetItem(rv, pagekey, pagevalue);
+ 	
+ 	QStringList qsl = action.split(" ", QString::SkipEmptyParts);
+ 
+ 	x = qsl[0].toInt();
+ 	const char x2[] = "x";
+-	PyObject *xkey = PyString_FromString(x2);
+-	PyObject *xvalue = PyInt_FromLong((long)x);
++	PyObject *xkey = PyUnicode_FromString(x2);
++	PyObject *xvalue = PyLong_FromLong((long)x);
+ 	PyDict_SetItem(rv, xkey, xvalue);
+ 
+ 	int height =ScCore->primaryMainWindow()->doc->pageHeight();
+ 	y = height - qsl[1].toInt();
+ 	const char y2[] = "y";
+-	PyObject *ykey = PyString_FromString(y2);
+-	PyObject *yvalue = PyInt_FromLong((long)y);
++	PyObject *ykey = PyUnicode_FromString(y2);
++	PyObject *yvalue = PyLong_FromLong((long)y);
+ 	PyDict_SetItem(rv, ykey, yvalue);
+ 
+ 	return rv;
+@@ -670,9 +670,9 @@ static bool testPageItem(PageItem *item)
+ static void add_text_to_dict(PyObject *drv, PageItem * item)
+ {
+ 	const char text[] = "text";
+-	PyObject *textkey = PyString_FromString(text);
++	PyObject *textkey = PyUnicode_FromString(text);
+ 	QString txt = item->itemText.text(0, item->itemText.length());
+-	PyObject *textvalue = PyString_FromString(txt.toUtf8());
++	PyObject *textvalue = PyUnicode_FromString(txt.toUtf8());
+ 	PyDict_SetItem(drv, textkey, textvalue);
+ 
+ 	Annotation &a = item->annotation();
+@@ -681,8 +681,8 @@ static void add_text_to_dict(PyObject *drv, PageItem * item)
+ 	if (actype == Annotation::Action_JavaScript)
+ 	{
+ 		const char text[] = "javascript";
+-		PyObject *jskey = PyString_FromString(text);
+-		PyObject *jsvalue = PyString_FromString(item->annotation().Action().toUtf8());
++		PyObject *jskey = PyUnicode_FromString(text);
++		PyObject *jsvalue = PyUnicode_FromString(item->annotation().Action().toUtf8());
+ 		PyDict_SetItem(drv, jskey, jsvalue);
+ 	}
+ 
+@@ -694,17 +694,17 @@ static void add_text_to_dict(PyObject *drv, PageItem * item)
+ 						"Named", nullptr };
+ 
+ 	const char action[] = "action";
+-	PyObject *akey = PyString_FromString(action);
++	PyObject *akey = PyUnicode_FromString(action);
+ 	if (actype > 10)
+ 		actype = 6;
+-	PyObject *avalue = PyString_FromString(aactions[actype]);
++	PyObject *avalue = PyUnicode_FromString(aactions[actype]);
+ 	PyDict_SetItem(drv, akey, avalue);
+ 
+ 	int atype = a.Type();
+ 	if (atype == Annotation::Checkbox || atype == Annotation::RadioButton)
+ 	{
+ 		const char checked[] = "checked";
+-		PyObject *checkkey = PyString_FromString(checked);
++		PyObject *checkkey = PyUnicode_FromString(checked);
+ 		PyObject *checkvalue = Py_False;
+ 		if (a.IsChk())
+ 			checkvalue = Py_True;
+@@ -714,7 +714,7 @@ static void add_text_to_dict(PyObject *drv, PageItem * item)
+ 	if (atype == Annotation::Combobox || atype == Annotation::Listbox)
+ 	{
+ 		const char editable[] = "editable";
+-		PyObject *ekey = PyString_FromString(editable);
++		PyObject *ekey = PyUnicode_FromString(editable);
+ 
+ 		PyObject *edit = Py_False;
+ 		int result = Annotation::Flag_Edit & a.Flag();
+diff --git a/scribus/plugins/scriptplugin/cmdcell.cpp b/scribus/plugins/scriptplugin/cmdcell.cpp
+index fa644b596e..c05c5f7296 100644
+--- a/scribus/plugins/scriptplugin/cmdcell.cpp
++++ b/scribus/plugins/scriptplugin/cmdcell.cpp
+@@ -61,7 +61,7 @@ PyObject *scribus_getcellstyle(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(PyExc_ValueError, QObject::tr("The cell %1,%2 does not exist in table", "python error").arg(row).arg(column).toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(table->cellAt(row, column).styleName().toUtf8());
++	return PyUnicode_FromString(table->cellAt(row, column).styleName().toUtf8());
+ }
+ 
+ PyObject *scribus_setcellstyle(PyObject* /* self */, PyObject* args)
+@@ -108,7 +108,7 @@ PyObject *scribus_getcellrowspan(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get cell row span from non-table item.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(table->cellAt(row, column).rowSpan()));
++	return PyLong_FromLong(static_cast<long>(table->cellAt(row, column).rowSpan()));
+ }
+ 
+ PyObject *scribus_getcellcolumnspan(PyObject* /* self */, PyObject* args)
+@@ -128,7 +128,7 @@ PyObject *scribus_getcellcolumnspan(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get cell column span from non-table item.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(table->cellAt(row, column).columnSpan()));
++	return PyLong_FromLong(static_cast<long>(table->cellAt(row, column).columnSpan()));
+ }
+ 
+ PyObject *scribus_getcellfillcolor(PyObject* /* self */, PyObject* args)
+@@ -153,7 +153,7 @@ PyObject *scribus_getcellfillcolor(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(PyExc_ValueError, QObject::tr("The cell %1,%2 does not exist in table", "python error").arg(row).arg(column).toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(table->cellAt(row, column).fillColor().toUtf8());
++	return PyUnicode_FromString(table->cellAt(row, column).fillColor().toUtf8());
+ }
+ 
+ PyObject *scribus_setcellfillcolor(PyObject* /* self */, PyObject* args)
+diff --git a/scribus/plugins/scriptplugin/cmdcolor.cpp b/scribus/plugins/scriptplugin/cmdcolor.cpp
+index 8579d9c152..ddc261d8a0 100644
+--- a/scribus/plugins/scriptplugin/cmdcolor.cpp
++++ b/scribus/plugins/scriptplugin/cmdcolor.cpp
+@@ -22,7 +22,7 @@ PyObject *scribus_colornames(PyObject* /* self */)
+ 	l = PyList_New(edc.count());
+ 	for (it = edc.begin(); it != edc.end(); ++it)
+ 	{
+-		PyList_SetItem(l, cc, PyString_FromString(it.key().toUtf8()));
++		PyList_SetItem(l, cc, PyUnicode_FromString(it.key().toUtf8()));
+ 		cc++;
+ 	}
+ 	return l;
+diff --git a/scribus/plugins/scriptplugin/cmddialog.cpp b/scribus/plugins/scriptplugin/cmddialog.cpp
+index fb0e558068..f5bfd11936 100644
+--- a/scribus/plugins/scriptplugin/cmddialog.cpp
++++ b/scribus/plugins/scriptplugin/cmddialog.cpp
+@@ -21,7 +21,7 @@ PyObject *scribus_newdocdia(PyObject* /* self */)
+ 	QApplication::changeOverrideCursor(QCursor(Qt::ArrowCursor));
+ 	bool ret = ScCore->primaryMainWindow()->slotFileNew();
+ 	QApplication::changeOverrideCursor(Qt::ArrowCursor);
+-	return PyInt_FromLong(static_cast<long>(ret));
++	return PyLong_FromLong(static_cast<long>(ret));
+ }
+ 
+ PyObject *scribus_filedia(PyObject* /* self */, PyObject* args, PyObject* kw)
+@@ -68,7 +68,7 @@ PyObject *scribus_filedia(PyObject* /* self */, PyObject* args, PyObject* kw)
+ 										);
+ //	QApplication::restoreOverrideCursor();
+ 	// FIXME: filename return unicode OK?
+-	return PyString_FromString(fName.toUtf8());
++	return PyUnicode_FromString(fName.toUtf8());
+ }
+ 
+ PyObject *scribus_messdia(PyObject* /* self */, PyObject* args, PyObject* kw)
+@@ -103,7 +103,7 @@ PyObject *scribus_messdia(PyObject* /* self */, PyObject* args, PyObject* kw)
+ 	}
+ 	result = mb.exec();
+ //	QApplication::restoreOverrideCursor();
+-	return PyInt_FromLong(static_cast<long>(result));
++	return PyLong_FromLong(static_cast<long>(result));
+ }
+ 
+ PyObject *scribus_valdialog(PyObject* /* self */, PyObject* args)
+@@ -120,7 +120,7 @@ PyObject *scribus_valdialog(PyObject* /* self */, PyObject* args)
+ 										QLineEdit::Normal,
+ 										QString::fromUtf8(value));
+ //	QApplication::restoreOverrideCursor();
+-	return PyString_FromString(txt.toUtf8());
++	return PyUnicode_FromString(txt.toUtf8());
+ }
+ 
+ PyObject *scribus_newstyledialog(PyObject*, PyObject* args)
+@@ -143,7 +143,7 @@ PyObject *scribus_newstyledialog(PyObject*, PyObject* args)
+ 		st.create(p);
+ 		d->redefineStyles(st, false);
+ 		ScCore->primaryMainWindow()->styleMgr()->setDoc(d);
+-		return PyString_FromString(s.toUtf8());
++		return PyUnicode_FromString(s.toUtf8());
+ 	}
+ 	Py_RETURN_NONE;
+ }
+diff --git a/scribus/plugins/scriptplugin/cmddoc.cpp b/scribus/plugins/scriptplugin/cmddoc.cpp
+index 2a0778a0dd..8e2eeedc8a 100644
+--- a/scribus/plugins/scriptplugin/cmddoc.cpp
++++ b/scribus/plugins/scriptplugin/cmddoc.cpp
+@@ -74,7 +74,7 @@ PyObject *scribus_newdocument(PyObject* /* self */, PyObject* args)
+ 								orientation, firstPageNr, "Custom", true, numPages);
+ 	ScCore->primaryMainWindow()->doc->setPageSetFirstPage(pagesType, firstPageOrder);
+ 
+-	return PyInt_FromLong(static_cast<long>(ret));
++	return PyLong_FromLong(static_cast<long>(ret));
+ }
+ 
+ PyObject *scribus_newdoc(PyObject* /* self */, PyObject* args)
+@@ -109,7 +109,7 @@ PyObject *scribus_newdoc(PyObject* /* self */, PyObject* args)
+ 	btr = value2pts(btr, unit);
+ 	bool ret = ScCore->primaryMainWindow()->doFileNew(b, h, tpr, lr, rr, btr, 0, 1, false, ds, unit, fsl, ori, fNr, "Custom", true);
+ 	//	qApp->processEvents();
+-	return PyInt_FromLong(static_cast<long>(ret));
++	return PyLong_FromLong(static_cast<long>(ret));
+ }
+ 
+ PyObject *scribus_setmargins(PyObject* /* self */, PyObject* args)
+@@ -160,12 +160,12 @@ PyObject *scribus_closedoc(PyObject* /* self */)
+ 	ScCore->primaryMainWindow()->doc->setModified(false);
+ 	bool ret = ScCore->primaryMainWindow()->slotFileClose();
+ 	qApp->processEvents();
+-	return PyInt_FromLong(static_cast<long>(ret));
++	return PyLong_FromLong(static_cast<long>(ret));
+ }
+ 
+ PyObject *scribus_havedoc(PyObject* /* self */)
+ {
+-	return PyInt_FromLong(static_cast<long>(ScCore->primaryMainWindow()->HaveDoc));
++	return PyLong_FromLong(static_cast<long>(ScCore->primaryMainWindow()->HaveDoc));
+ }
+ 
+ PyObject *scribus_opendoc(PyObject* /* self */, PyObject* args)
+@@ -199,9 +199,9 @@ PyObject *scribus_getdocname(PyObject* /* self */)
+ 		return nullptr;
+ 	if (! ScCore->primaryMainWindow()->doc->hasName)
+ 	{
+-		return PyString_FromString("");
++		return PyUnicode_FromString("");
+ 	}
+-	return PyString_FromString(ScCore->primaryMainWindow()->doc->documentFileName().toUtf8());
++	return PyUnicode_FromString(ScCore->primaryMainWindow()->doc->documentFileName().toUtf8());
+ }
+ 
+ PyObject *scribus_savedocas(PyObject* /* self */, PyObject* args)
+@@ -265,7 +265,7 @@ PyObject *scribus_getunit(PyObject* /* self */)
+ {
+ 	if (!checkHaveDocument())
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->unitIndex()));
++	return PyLong_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->unitIndex()));
+ }
+ 
+ PyObject *scribus_loadstylesfromfile(PyObject* /* self */, PyObject *args)
+@@ -323,7 +323,7 @@ PyObject *scribus_masterpagenames(PyObject* /* self */)
+ 	int n = 0;
+ 	for ( ; it != itEnd; ++it )
+ 	{
+-		PyList_SET_ITEM(names, n++, PyString_FromString(it.key().toUtf8().data()) );
++		PyList_SET_ITEM(names, n++, PyUnicode_FromString(it.key().toUtf8().data()) );
+ 	}
+ 	return names;
+ }
+@@ -411,7 +411,7 @@ PyObject *scribus_getmasterpage(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(PyExc_IndexError, QObject::tr("Page number out of range: '%1'.","python error").arg(e+1).toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(currentDoc->DocPages.at(e)->MPageNam.toUtf8());
++	return PyUnicode_FromString(currentDoc->DocPages.at(e)->MPageNam.toUtf8());
+ }
+ 
+ PyObject* scribus_applymasterpage(PyObject* /* self */, PyObject* args)
+diff --git a/scribus/plugins/scriptplugin/cmdgetprop.cpp b/scribus/plugins/scriptplugin/cmdgetprop.cpp
+index b3149b4d1c..a2040f196d 100644
+--- a/scribus/plugins/scriptplugin/cmdgetprop.cpp
++++ b/scribus/plugins/scriptplugin/cmdgetprop.cpp
+@@ -44,7 +44,7 @@ PyObject *scribus_getobjecttype(PyObject* /* self */, PyObject* args)
+ 		result = "Multiple";
+ 	}
+ 
+-	return PyString_FromString(result.toUtf8());
++	return PyUnicode_FromString(result.toUtf8());
+ }
+ 
+ PyObject *scribus_getfillcolor(PyObject* /* self */, PyObject* args)
+@@ -57,7 +57,7 @@ PyObject *scribus_getfillcolor(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyString_FromString(item->fillColor().toUtf8());
++	return PyUnicode_FromString(item->fillColor().toUtf8());
+ }
+ 
+ PyObject *scribus_getfilltrans(PyObject* /* self */, PyObject* args)
+@@ -83,7 +83,7 @@ PyObject *scribus_getfillblend(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->fillBlendmode()));
++	return PyLong_FromLong(static_cast<long>(item->fillBlendmode()));
+ }
+ 
+ PyObject *scribus_getcustomlinestyle(PyObject* /* self */, PyObject* args)
+@@ -96,7 +96,7 @@ PyObject *scribus_getcustomlinestyle(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyString_FromString(item->customLineStyle().toUtf8());
++	return PyUnicode_FromString(item->customLineStyle().toUtf8());
+ }
+ 
+ PyObject *scribus_getlinecolor(PyObject* /* self */, PyObject* args)
+@@ -109,7 +109,7 @@ PyObject *scribus_getlinecolor(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyString_FromString(item->lineColor().toUtf8());
++	return PyUnicode_FromString(item->lineColor().toUtf8());
+ }
+ 
+ PyObject *scribus_getlinetrans(PyObject* /* self */, PyObject* args)
+@@ -135,7 +135,7 @@ PyObject *scribus_getlineblend(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->lineBlendmode()));
++	return PyLong_FromLong(static_cast<long>(item->lineBlendmode()));
+ }
+ 
+ PyObject *scribus_getlinewidth(PyObject* /* self */, PyObject* args)
+@@ -161,7 +161,7 @@ PyObject *scribus_getlineshade(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->lineShade()));
++	return PyLong_FromLong(static_cast<long>(item->lineShade()));
+ }
+ 
+ PyObject *scribus_getlinejoin(PyObject* /* self */, PyObject* args)
+@@ -174,7 +174,7 @@ PyObject *scribus_getlinejoin(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->PLineJoin));
++	return PyLong_FromLong(static_cast<long>(item->PLineJoin));
+ }
+ 
+ PyObject *scribus_getlinecap(PyObject* /* self */, PyObject* args)
+@@ -187,7 +187,7 @@ PyObject *scribus_getlinecap(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->PLineEnd));
++	return PyLong_FromLong(static_cast<long>(item->PLineEnd));
+ }
+ 
+ PyObject *scribus_getlinestyle(PyObject* /* self */, PyObject* args)
+@@ -200,7 +200,7 @@ PyObject *scribus_getlinestyle(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->PLineArt));
++	return PyLong_FromLong(static_cast<long>(item->PLineArt));
+ }
+ 
+ PyObject *scribus_getfillshade(PyObject* /* self */, PyObject* args)
+@@ -213,7 +213,7 @@ PyObject *scribus_getfillshade(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->fillShade()));
++	return PyLong_FromLong(static_cast<long>(item->fillShade()));
+ }
+ 
+ PyObject *scribus_getcornerrad(PyObject* /* self */, PyObject* args)
+@@ -226,7 +226,7 @@ PyObject *scribus_getcornerrad(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(item->cornerRadius()));
++	return PyLong_FromLong(static_cast<long>(item->cornerRadius()));
+ }
+ 
+ PyObject *scribus_getimgoffset(PyObject* /* self */, PyObject* args)
+@@ -265,7 +265,7 @@ PyObject *scribus_getimagefile(PyObject* /* self */, PyObject* args)
+ 	PageItem *item = GetUniqueItem(QString::fromUtf8(Name));
+ 	if (item == nullptr)
+ 		return nullptr;
+-	return PyString_FromString(item->Pfile.toUtf8());
++	return PyUnicode_FromString(item->Pfile.toUtf8());
+ }
+ 
+ PyObject *scribus_getposi(PyObject* /* self */, PyObject* args)
+@@ -358,13 +358,13 @@ PyObject *scribus_getallobj(PyObject* /* self */, PyObject* args, PyObject *keyw
+ 			{
+ 				if (currentDoc->Items->at(lam)->itemType() == typ)
+ 				{
+-					PyList_SetItem(l, counter2, PyString_FromString(currentDoc->Items->at(lam)->itemName().toUtf8()));
++					PyList_SetItem(l, counter2, PyUnicode_FromString(currentDoc->Items->at(lam)->itemName().toUtf8()));
+ 					counter2++;
+ 				}
+ 			}
+ 			else
+ 			{
+-				PyList_SetItem(l, counter2, PyString_FromString(currentDoc->Items->at(lam)->itemName().toUtf8()));
++				PyList_SetItem(l, counter2, PyUnicode_FromString(currentDoc->Items->at(lam)->itemName().toUtf8()));
+ 				counter2++;
+ 			}
+ 		}
+@@ -431,7 +431,7 @@ PyObject *scribus_getimagecolorspace(PyObject* /* self */, PyObject* args)
+ 
+ 	const ScImage& pixm = item->pixm;
+ 	if (pixm.width() == 0 || pixm.height() == 0)
+-		return PyInt_FromLong(static_cast<long>(-1));
++		return PyLong_FromLong(static_cast<long>(-1));
+ 
+ 	const ImageInfoRecord& iir = pixm.imgInfo;
+ 	int cspace = iir.colorspace;
+@@ -442,7 +442,7 @@ PyObject *scribus_getimagecolorspace(PyObject* /* self */, PyObject* args)
+ 	Duotone = 3,
+ 	Monochrome = 4
+ 	*/
+-	return PyInt_FromLong(static_cast<long>(cspace));
++	return PyLong_FromLong(static_cast<long>(cspace));
+ }
+ 
+ 
+diff --git a/scribus/plugins/scriptplugin/cmdgetsetprop.cpp b/scribus/plugins/scriptplugin/cmdgetsetprop.cpp
+index a0a9e1379b..8a4c4c7416 100644
+--- a/scribus/plugins/scriptplugin/cmdgetsetprop.cpp
++++ b/scribus/plugins/scriptplugin/cmdgetsetprop.cpp
+@@ -15,16 +15,16 @@ for which a new license (GPL+exception) is in place.
+ 
+ QObject* getQObjectFromPyArg(PyObject* arg)
+ {
+-	if (PyString_Check(arg))
++	if (PyUnicode_Check(arg))
+ 		// It's a string. Look for a pageItem by that name. Do NOT accept a
+ 		// selection.
+-		return getPageItemByName(QString::fromUtf8(PyString_AsString(arg)));
+-	if (PyCObject_Check(arg))
++		return getPageItemByName(PyUnicode_asQString(arg));
++	if (PyCapsule_CheckExact(arg))
+ 	{
+ 		// It's a PyCObject, ie a wrapped pointer. Check it's not nullptr
+ 		// and return it.
+ 		// FIXME: Try to check that its a pointer to a QObject instance
+-		QObject* tempObject = (QObject*)PyCObject_AsVoidPtr(arg);
++		QObject* tempObject = (QObject*) PyCapsule_GetPointer(arg, nullptr);
+ 		if (!tempObject)
+ 		{
+ 			PyErr_SetString(PyExc_TypeError, "INTERNAL: Passed nullptr PyCObject");
+@@ -40,7 +40,7 @@ QObject* getQObjectFromPyArg(PyObject* arg)
+ 
+ PyObject* wrapQObject(QObject* obj)
+ {
+-	return PyCObject_FromVoidPtr((void*)obj, nullptr);
++	return PyCapsule_New((void*) obj, nullptr, nullptr);
+ }
+ 
+ 
+@@ -78,13 +78,13 @@ PyObject* scribus_propertyctype(PyObject* /*self*/, PyObject* args, PyObject* kw
+ 	objArg = nullptr; // no need to decref, it's borrowed
+ 
+ 	// Look up the property and retrive its type information
+-	const char* type = getpropertytype( (QObject*)obj, propertyname, includesuper);
++	const char* type = getpropertytype( (QObject*) obj, propertyname, includesuper);
+ 	if (type == nullptr)
+ 	{
+ 		PyErr_SetString(PyExc_KeyError, QObject::tr("Property not found").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(type);
++	return PyUnicode_FromString(type);
+ }
+ 
+ PyObject* convert_QStringList_to_PyListObject(QStringList& origlist)
+@@ -94,7 +94,7 @@ PyObject* convert_QStringList_to_PyListObject(QStringList& origlist)
+ 		return nullptr;
+ 
+ 	for ( QStringList::Iterator it = origlist.begin(); it != origlist.end(); ++it )
+-		if (PyList_Append(resultList, PyString_FromString((*it).toUtf8().data())) == -1)
++		if (PyList_Append(resultList, PyUnicode_FromString((*it).toUtf8().data())) == -1)
+ 			return nullptr;
+ 
+ 	return resultList;
+@@ -283,9 +283,12 @@ PyObject* scribus_getproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 		resultobj = PyBool_FromLong(prop.toBool());
+ 	// STRING TYPES
+ 	else if (prop.type() == QVariant::ByteArray)
+-		resultobj = PyString_FromString(prop.toByteArray().data());
++	{
++		QByteArray ba = prop.toByteArray();
++		resultobj = PyBytes_FromStringAndSize(ba.data(), ba.size());
++	}
+ 	else if (prop.type() == QVariant::String)
+-		resultobj = PyString_FromString(prop.toString().toUtf8().data());
++		resultobj = PyUnicode_FromString(prop.toString().toUtf8().data());
+ 	// HIGHER ORDER TYPES
+ 	else if (prop.type() == QVariant::Point)
+ 	{
+@@ -372,8 +375,8 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 			success = obj->setProperty(propertyName, 0);
+ 		else if (PyObject_IsTrue(objValue) == 1)
+ 			success = obj->setProperty(propertyName, 1);
+-		else if (PyInt_Check(objValue))
+-			success = obj->setProperty(propertyName, PyInt_AsLong(objValue) == 0);
++		else if (PyLong_Check(objValue))
++			success = obj->setProperty(propertyName, PyLong_AsLong(objValue) == 0);
+ 		else if (PyLong_Check(objValue))
+ 			success = obj->setProperty(propertyName, PyLong_AsLong(objValue) == 0);
+ 		else
+@@ -382,10 +385,10 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 	else if (propertyType == "int")
+ 	{
+ 		matched = true;
+-		if (PyInt_Check(objValue))
+-			success = obj->setProperty(propertyName, (int)PyInt_AsLong(objValue));
++		if (PyLong_Check(objValue))
++			success = obj->setProperty(propertyName, (int) PyLong_AsLong(objValue));
+ 		else if (PyLong_Check(objValue))
+-			success = obj->setProperty(propertyName, (int)PyLong_AsLong(objValue));
++			success = obj->setProperty(propertyName, (int) PyLong_AsLong(objValue));
+ 		else
+ 			matched = false;
+ 	}
+@@ -402,8 +405,8 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 	else if (propertyType == "QString")
+ 	{
+ 		matched = true;
+-		if (PyString_Check(objValue))
+-			success = obj->setProperty(propertyName, QString::fromUtf8(PyString_AsString(objValue)));
++		if (PyBytes_Check(objValue))
++			success = obj->setProperty(propertyName, QString::fromUtf8(PyBytes_AsString(objValue)));
+ 		else if (PyUnicode_Check(objValue))
+ 		{
+ 			// Get a pointer to the internal buffer of the Py_Unicode object, which is UCS2 formatted
+@@ -417,11 +420,11 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 	else if (propertyType == "QCString")
+ 	{
+ 		matched = true;
+-		if (PyString_Check(objValue))
++		if (PyBytes_Check(objValue))
+ 		{
+ 			// FIXME: should raise an exception instead of mangling the string when
+ 			// out of charset chars present.
+-			QString utfString = QString::fromUtf8(PyString_AsString(objValue));
++			QString utfString = QString::fromUtf8(PyBytes_AsString(objValue));
+ 			success = obj->setProperty(propertyName, utfString.toLatin1());
+ 		}
+ 		else if (PyUnicode_Check(objValue))
+@@ -454,7 +457,7 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 		if (!objRepr)
+ 			return nullptr;
+ 		// Extract the repr() string
+-		QString reprString = QString::fromUtf8(PyString_AsString(objRepr));
++		QString reprString = PyUnicode_asQString(objRepr);
+ 		Py_DECREF(objRepr);
+ 
+ 		// And return an error
+diff --git a/scribus/plugins/scriptplugin/cmdmani.cpp b/scribus/plugins/scriptplugin/cmdmani.cpp
+index 03b7b3e0f2..31d378ffa5 100644
+--- a/scribus/plugins/scriptplugin/cmdmani.cpp
++++ b/scribus/plugins/scriptplugin/cmdmani.cpp
+@@ -350,7 +350,7 @@ PyObject *scribus_sizeobjabs(PyObject* /* self */, PyObject* args)
+ 
+ PyObject *scribus_groupobj(PyObject* /* self */, PyObject* args)
+ {
+-	char *Name = const_cast<char*>("");
++	const char *Name = const_cast<char*>("");
+ 	PyObject *il = nullptr;
+ 	if (!PyArg_ParseTuple(args, "|O", &il))
+ 		return nullptr;
+@@ -361,8 +361,8 @@ PyObject *scribus_groupobj(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(PyExc_TypeError, QObject::tr("Need selection or argument list of items to group", "python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	Selection *tempSelection=nullptr;
+-	Selection *finalSelection=nullptr;
++	Selection *tempSelection = nullptr;
++	Selection *finalSelection = nullptr;
+ 	//uint ap = ScCore->primaryMainWindow()->doc->currentPage()->pageNr();
+ 	// If we were passed a list of items to group...
+ 	if (il != nullptr)
+@@ -374,7 +374,7 @@ PyObject *scribus_groupobj(PyObject* /* self */, PyObject* args)
+ 			// FIXME: We might need to explicitly get this string as utf8
+ 			// but as sysdefaultencoding is utf8 it should be a no-op to do
+ 			// so anyway.
+-			Name = PyString_AsString(PyList_GetItem(il, i));
++			Name = PyUnicode_AsUTF8(PyList_GetItem(il, i));
+ 			PageItem *ic = GetUniqueItem(QString::fromUtf8(Name));
+ 			if (ic == nullptr)
+ 			{
+@@ -383,10 +383,10 @@ PyObject *scribus_groupobj(PyObject* /* self */, PyObject* args)
+ 			}
+ 			tempSelection->addItem (ic, true);
+ 		}
+-		finalSelection=tempSelection;
++		finalSelection = tempSelection;
+ 	}
+ 	else
+-		finalSelection=ScCore->primaryMainWindow()->doc->m_Selection;
++		finalSelection = ScCore->primaryMainWindow()->doc->m_Selection;
+ 	if (finalSelection->count() < 2)
+ 	{
+ 		// We can't very well group only one item
+@@ -400,7 +400,7 @@ PyObject *scribus_groupobj(PyObject* /* self */, PyObject* args)
+ 	finalSelection=nullptr;
+ 	delete tempSelection;
+ 	
+-	return (group ? PyString_FromString(group->itemName().toUtf8()) : nullptr);
++	return (group ? PyUnicode_FromString(group->itemName().toUtf8()) : nullptr);
+ }
+ 
+ PyObject *scribus_ungroupobj(PyObject* /* self */, PyObject* args)
+@@ -460,17 +460,18 @@ PyObject *scribus_getselobjnam(PyObject* /* self */, PyObject* args)
+ 		return nullptr;
+ 	if (!checkHaveDocument())
+ 		return nullptr;
+-	if ((i < static_cast<int>(ScCore->primaryMainWindow()->doc->m_Selection->count())) && (i > -1))
+-		return PyString_FromString(ScCore->primaryMainWindow()->doc->m_Selection->itemAt(i)->itemName().toUtf8());
++	Selection * selection = ScCore->primaryMainWindow()->doc->m_Selection;
++	if ((i < selection->count()) && (i > -1))
++		return PyUnicode_FromString(selection->itemAt(i)->itemName().toUtf8());
+ 	// FIXME: Should probably return None if no selection?
+-	return PyString_FromString("");
++	return PyUnicode_FromString("");
+ }
+ 
+ PyObject *scribus_selcount(PyObject* /* self */)
+ {
+ 	if (!checkHaveDocument())
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->m_Selection->count()));
++	return PyLong_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->m_Selection->count()));
+ }
+ 
+ PyObject *scribus_selectobj(PyObject* /* self */, PyObject* args)
+@@ -507,8 +508,8 @@ PyObject *scribus_lockobject(PyObject* /* self */, PyObject* args)
+ 		return nullptr;
+ 	item->toggleLock();
+ 	if (item->locked())
+-		return PyInt_FromLong(1);
+-	return PyInt_FromLong(0);
++		return PyLong_FromLong(1);
++	return PyLong_FromLong(0);
+ }
+ 
+ PyObject *scribus_islocked(PyObject* /* self */, PyObject* args)
+diff --git a/scribus/plugins/scriptplugin/cmdmisc.cpp b/scribus/plugins/scriptplugin/cmdmisc.cpp
+index 839a460b9b..eef8ef2afb 100644
+--- a/scribus/plugins/scriptplugin/cmdmisc.cpp
++++ b/scribus/plugins/scriptplugin/cmdmisc.cpp
+@@ -47,7 +47,7 @@ PyObject *scribus_fontnames(PyObject* /* self */)
+ 	{
+ 		if (it.current().usable())
+ 		{
+-			PyList_SetItem(l, cc, PyString_FromString(it.currentKey().toUtf8()));
++			PyList_SetItem(l, cc, PyUnicode_FromString(it.currentKey().toUtf8()));
+ 			cc++;
+ 		}
+ 	}
+@@ -110,8 +110,7 @@ PyObject *scribus_renderfont(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 		// User specified no format, so use the historical default of PPM format.
+ 		format =  const_cast<char*>("PPM");
+ 	QPixmap pm = FontSample(PrefsManager::instance().appPrefs.fontPrefs.AvailFonts[QString::fromUtf8(Name)], Size, ts, Qt::white);
+-	// If the user specified an empty filename, return the image data as
+-	// a string. Otherwise, save it to disk.
++	// If the user specified an empty filename, return the image data as bytes. Otherwise, save it to disk.
+ 	if (QString::fromUtf8(FileName).isEmpty())
+ 	{
+ 		QByteArray buffer_string = "";
+@@ -126,7 +125,7 @@ PyObject *scribus_renderfont(PyObject* /*self*/, PyObject* args, PyObject* kw)
+ 		int bufferSize = buffer.size();
+ 		buffer.close();
+ 		// Now make a Python string from the data we generated
+-		PyObject* stringPython = PyString_FromStringAndSize(buffer_string,bufferSize);
++		PyObject* stringPython = PyBytes_FromStringAndSize(buffer_string, bufferSize);
+ 		// Return even if the result is nullptr (error) since an exception will have been
+ 		// set in that case.
+ 		return stringPython;
+@@ -150,10 +149,10 @@ PyObject *scribus_getlayers(PyObject* /* self */)
+ {
+ 	if (!checkHaveDocument())
+ 		return nullptr;
+-	PyObject *l;
+-	l = PyList_New(ScCore->primaryMainWindow()->doc->Layers.count());
+-	for (int lam=0; lam < ScCore->primaryMainWindow()->doc->Layers.count(); lam++)
+-		PyList_SetItem(l, lam, PyString_FromString(ScCore->primaryMainWindow()->doc->Layers[lam].Name.toUtf8()));
++	ScribusDoc* doc = ScCore->primaryMainWindow()->doc;
++	PyObject *l = PyList_New(doc->Layers.count());
++	for (int i = 0; i < doc->Layers.count(); i++)
++		PyList_SetItem(l, i, PyUnicode_FromString(doc->Layers[i].Name.toUtf8()));
+ 	return l;
+ }
+ 
+@@ -184,7 +183,7 @@ PyObject *scribus_getactlayer(PyObject* /* self */)
+ {
+ 	if (!checkHaveDocument())
+ 		return nullptr;
+-	return PyString_FromString(ScCore->primaryMainWindow()->doc->activeLayerName().toUtf8());
++	return PyUnicode_FromString(ScCore->primaryMainWindow()->doc->activeLayerName().toUtf8());
+ }
+ 
+ PyObject *scribus_senttolayer(PyObject* /* self */, PyObject* args)
+@@ -474,7 +473,7 @@ PyObject *scribus_glayervisib(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(NotFoundError, QObject::tr("Layer not found.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(i));
++	return PyLong_FromLong(static_cast<long>(i));
+ }
+ 
+ PyObject *scribus_glayerprint(PyObject* /* self */, PyObject* args)
+@@ -505,7 +504,7 @@ PyObject *scribus_glayerprint(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(NotFoundError, QObject::tr("Layer not found.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(i));
++	return PyLong_FromLong(static_cast<long>(i));
+ }
+ 
+ PyObject *scribus_glayerlock(PyObject* /* self */, PyObject* args)
+@@ -536,7 +535,7 @@ PyObject *scribus_glayerlock(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(NotFoundError, QObject::tr("Layer not found.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(i));
++	return PyLong_FromLong(static_cast<long>(i));
+ }
+ 
+ PyObject *scribus_glayeroutline(PyObject* /* self */, PyObject* args)
+@@ -567,7 +566,7 @@ PyObject *scribus_glayeroutline(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(NotFoundError, QObject::tr("Layer not found.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(i));
++	return PyLong_FromLong(static_cast<long>(i));
+ }
+ 
+ PyObject *scribus_glayerflow(PyObject* /* self */, PyObject* args)
+@@ -598,7 +597,7 @@ PyObject *scribus_glayerflow(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(NotFoundError, QObject::tr("Layer not found.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(i));
++	return PyLong_FromLong(static_cast<long>(i));
+ }
+ 
+ PyObject *scribus_glayerblend(PyObject* /* self */, PyObject* args)
+@@ -629,7 +628,7 @@ PyObject *scribus_glayerblend(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(NotFoundError, QObject::tr("Layer not found.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(i));
++	return PyLong_FromLong(static_cast<long>(i));
+ }
+ 
+ PyObject *scribus_glayertrans(PyObject* /* self */, PyObject* args)
+@@ -735,7 +734,7 @@ PyObject *scribus_filequit(PyObject* /* self */, PyObject* args)
+ 
+ PyObject *scribus_getlanguage(PyObject* /* self */)
+ {
+-	return PyString_FromString(ScCore->getGuiLanguage().toUtf8());
++	return PyUnicode_FromString(ScCore->getGuiLanguage().toUtf8());
+ }
+ 
+ /*! 04.01.2007 : Joachim Neu : Moves item selection to front. */
+diff --git a/scribus/plugins/scriptplugin/cmdobj.cpp b/scribus/plugins/scriptplugin/cmdobj.cpp
+index 3513507e47..61c14baa9a 100644
+--- a/scribus/plugins/scriptplugin/cmdobj.cpp
++++ b/scribus/plugins/scriptplugin/cmdobj.cpp
+@@ -31,19 +31,20 @@ PyObject *scribus_newrect(PyObject* /* self */, PyObject* args)
+ //		PyErr_SetString(NameExistsError, QObject::tr("An object with the requested name already exists.","python error"));
+ //		return nullptr;
+ //	}
+-	int i = ScCore->primaryMainWindow()->doc->itemAdd(PageItem::Polygon, PageItem::Rectangle,
+-								pageUnitXToDocX(x), pageUnitYToDocY(y),
+-								ValueToPoint(w), ValueToPoint(h),
+-								ScCore->primaryMainWindow()->doc->itemToolPrefs().shapeLineWidth,
+-								ScCore->primaryMainWindow()->doc->itemToolPrefs().shapeFillColor, ScCore->primaryMainWindow()->doc->itemToolPrefs().shapeLineColor);
++	ScribusDoc* doc = ScCore->primaryMainWindow()->doc;
++	int i = doc->itemAdd(PageItem::Polygon, PageItem::Rectangle,
++						pageUnitXToDocX(x), pageUnitYToDocY(y),
++						ValueToPoint(w), ValueToPoint(h),
++						doc->itemToolPrefs().shapeLineWidth,
++						doc->itemToolPrefs().shapeFillColor, doc->itemToolPrefs().shapeLineColor);
+ //	ScCore->primaryMainWindow()->doc->setRedrawBounding(ScCore->primaryMainWindow()->doc->Items->at(i));
+ 	if (strlen(Name) > 0)
+ 	{
+ 		QString objName = QString::fromUtf8(Name);
+ 		if (!ItemExists(objName))
+-			ScCore->primaryMainWindow()->doc->Items->at(i)->setItemName(objName);
++			doc->Items->at(i)->setItemName(objName);
+ 	}
+-	return PyString_FromString(ScCore->primaryMainWindow()->doc->Items->at(i)->itemName().toUtf8());
++	return PyUnicode_FromString(doc->Items->at(i)->itemName().toUtf8());
+ }
+ 
+ 
+@@ -69,7 +70,7 @@ PyObject *scribus_newellipse(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(i)->setItemName(objName);
+ 	}
+-	return PyString_FromString(ScCore->primaryMainWindow()->doc->Items->at(i)->itemName().toUtf8());
++	return PyUnicode_FromString(ScCore->primaryMainWindow()->doc->Items->at(i)->itemName().toUtf8());
+ }
+ 
+ 
+@@ -94,7 +95,7 @@ PyObject *scribus_newimage(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(i)->setItemName(objName);
+ 	}
+-	return PyString_FromString(ScCore->primaryMainWindow()->doc->Items->at(i)->itemName().toUtf8());
++	return PyUnicode_FromString(ScCore->primaryMainWindow()->doc->Items->at(i)->itemName().toUtf8());
+ }
+ 
+ 
+@@ -119,7 +120,7 @@ PyObject *scribus_newtext(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(i)->setItemName(objName);
+ 	}
+-	return PyString_FromString(ScCore->primaryMainWindow()->doc->Items->at(i)->itemName().toUtf8());
++	return PyUnicode_FromString(ScCore->primaryMainWindow()->doc->Items->at(i)->itemName().toUtf8());
+ }
+ 
+ PyObject *scribus_newtable(PyObject* /* self */, PyObject* args)
+@@ -155,7 +156,7 @@ PyObject *scribus_newtable(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(i)->setItemName(objName);
+ 	}
+-	return PyString_FromString(table->itemName().toUtf8());
++	return PyUnicode_FromString(table->itemName().toUtf8());
+ }
+ 
+ PyObject *scribus_newline(PyObject* /* self */, PyObject* args)
+@@ -215,7 +216,7 @@ PyObject *scribus_newline(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(i)->setItemName(objName);
+ 	}
+-	return PyString_FromString(it->itemName().toUtf8());
++	return PyUnicode_FromString(it->itemName().toUtf8());
+ }
+ 
+ 
+@@ -292,7 +293,7 @@ PyObject *scribus_polyline(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(ic)->setItemName(objName);
+ 	}
+-	return PyString_FromString(it->itemName().toUtf8());
++	return PyUnicode_FromString(it->itemName().toUtf8());
+ }
+ 
+ 
+@@ -374,7 +375,7 @@ PyObject *scribus_polygon(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(ic)->setItemName(objName);
+ 	}
+-	return PyString_FromString(it->itemName().toUtf8());
++	return PyUnicode_FromString(it->itemName().toUtf8());
+ }
+ 
+ PyObject *scribus_bezierline(PyObject* /* self */, PyObject* args)
+@@ -465,7 +466,7 @@ PyObject *scribus_bezierline(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			ScCore->primaryMainWindow()->doc->Items->at(ic)->setItemName(objName);
+ 	}
+-	return PyString_FromString(it->itemName().toUtf8());
++	return PyUnicode_FromString(it->itemName().toUtf8());
+ }
+ 
+ 
+@@ -506,7 +507,7 @@ PyObject *scribus_pathtext(PyObject* /* self */, PyObject* args)
+ 		if (!ItemExists(objName))
+ 			i->setItemName(objName);
+ 	}
+-	return PyString_FromString(i->itemName().toUtf8());
++	return PyUnicode_FromString(i->itemName().toUtf8());
+ }
+ 
+ 
+@@ -605,13 +606,13 @@ PyObject *scribus_getstyle(PyObject* /* self */, PyObject* args)
+ 		int selectionStart = item->itemText.startOfSelection();
+ 		const ParagraphStyle& currentStyle = item->itemText.paragraphStyle(selectionStart);
+ 		if (currentStyle.hasParent())
+-			return PyString_FromString(currentStyle.parentStyle()->name().toUtf8());
++			return PyUnicode_FromString(currentStyle.parentStyle()->name().toUtf8());
+ 	}
+ 	else
+ 	{
+ 		const ParagraphStyle& itemDefaultStyle = item->itemText.defaultStyle();
+ 		if (itemDefaultStyle.hasParent())
+-			return PyString_FromString(itemDefaultStyle.parentStyle()->name().toUtf8());
++			return PyUnicode_FromString(itemDefaultStyle.parentStyle()->name().toUtf8());
+ 	}
+ 	Py_RETURN_NONE;
+ };
+@@ -798,7 +799,7 @@ PyObject *scribus_getstylenames(PyObject* /* self */)
+ 	styleList = PyList_New(0);
+ 	for (int i = 0; i < paragraphStyles.count(); ++i)
+ 	{
+-		if (PyList_Append(styleList, PyString_FromString(paragraphStyles[i].name().toUtf8())))
++		if (PyList_Append(styleList, PyUnicode_FromString(paragraphStyles[i].name().toUtf8())))
+ 		{
+ 			// An exception will have already been set by PyList_Append apparently.
+ 			return nullptr;
+@@ -817,7 +818,7 @@ PyObject *scribus_getcharstylenames(PyObject* /* self */)
+ 	charStyleList = PyList_New(0);
+ 	for (int i = 0; i < charStyles.count(); ++i)
+ 	{
+-		if (PyList_Append(charStyleList, PyString_FromString(charStyles[i].name().toUtf8())))
++		if (PyList_Append(charStyleList, PyUnicode_FromString(charStyles[i].name().toUtf8())))
+ 		{
+ 			// An exception will have already been set by PyList_Append apparently.
+ 			return nullptr;
+diff --git a/scribus/plugins/scriptplugin/cmdpage.cpp b/scribus/plugins/scriptplugin/cmdpage.cpp
+index ed4d0cefb6..b51c95e9f9 100644
+--- a/scribus/plugins/scriptplugin/cmdpage.cpp
++++ b/scribus/plugins/scriptplugin/cmdpage.cpp
+@@ -18,7 +18,7 @@ PyObject *scribus_actualpage(PyObject* /* self */)
+ {
+ 	if (!checkHaveDocument())
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->currentPageNumber() + 1));
++	return PyLong_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->currentPageNumber() + 1));
+ }
+ 
+ PyObject *scribus_redraw(PyObject* /* self */)
+@@ -45,7 +45,7 @@ PyObject *scribus_pageposition(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(PyExc_IndexError, QObject::tr("Page number out of range.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->locationOfPage(e)));
++	return PyLong_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->locationOfPage(e)));
+ }
+ 
+ PyObject *scribus_savepageeps(PyObject* /* self */, PyObject* args)
+@@ -167,7 +167,7 @@ PyObject *scribus_pagecount(PyObject* /* self */)
+ {
+ 	if (!checkHaveDocument())
+ 		return nullptr;
+-	return PyInt_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->Pages->count()));
++	return PyLong_FromLong(static_cast<long>(ScCore->primaryMainWindow()->doc->Pages->count()));
+ }
+ 
+ PyObject *scribus_pagedimension(PyObject* /* self */)
+diff --git a/scribus/plugins/scriptplugin/cmdsetprop.cpp b/scribus/plugins/scriptplugin/cmdsetprop.cpp
+index a4b2762074..251edda249 100644
+--- a/scribus/plugins/scriptplugin/cmdsetprop.cpp
++++ b/scribus/plugins/scriptplugin/cmdsetprop.cpp
+@@ -447,77 +447,77 @@ PyObject *scribus_setobjectattributes(PyObject* /* self */, PyObject* args)
+ 		}
+ 		ObjectAttribute blank;
+ 		PyObject *val;
+-		char* data;
++		const char* data;
+ 
+ 		val = PyDict_GetItemString(tmp, "Name");
+ 		if (!val) {
+ 			PyErr_SetString(PyExc_TypeError, "attribute does not have 'Name' key.");
+ 			return nullptr;
+ 		}
+-		data = PyString_AsString(val);
++		data = PyUnicode_AsUTF8(val);
+ 		if (!data)
+ 			return nullptr;
+-		blank.name = QString(data);
++		blank.name = QString::fromUtf8(data);
+ 
+ 		val = PyDict_GetItemString(tmp, "Type");
+ 		if (!val) {
+ 			PyErr_SetString(PyExc_TypeError, "attribute does not have 'Type' key.");
+ 			return nullptr;
+ 		}
+-		data = PyString_AsString(val);
++		data = PyUnicode_AsUTF8(val);
+ 		if (!data)
+ 			return nullptr;
+-		blank.type = QString(data);
++		blank.type = QString::fromUtf8(data);
+ 
+ 		val = PyDict_GetItemString(tmp, "Value");
+ 		if (!val) {
+ 			PyErr_SetString(PyExc_TypeError, "attribute does not have 'Value' key.");
+ 			return nullptr;
+ 		}
+-		data = PyString_AsString(val);
++		data = PyUnicode_AsUTF8(val);
+ 		if (!data)
+ 			return nullptr;
+-		blank.value = QString(data);
++		blank.value = QString::fromUtf8(data);
+ 
+ 		val = PyDict_GetItemString(tmp, "Parameter");
+ 		if (!val) {
+ 			PyErr_SetString(PyExc_TypeError, "attribute does not have 'Parameter' key.");
+ 			return nullptr;
+ 		}
+-		data = PyString_AsString(val);
++		data = PyUnicode_AsUTF8(val);
+ 		if (!data)
+ 			return nullptr;
+-		blank.parameter = QString(data);
++		blank.parameter = QString::fromUtf8(data);
+ 
+ 		val = PyDict_GetItemString(tmp, "Relationship");
+ 		if (!val) {
+ 			PyErr_SetString(PyExc_TypeError, "attribute does not have 'Relationship' key.");
+ 			return nullptr;
+ 		}
+-		data = PyString_AsString(val);
++		data = PyUnicode_AsUTF8(val);
+ 		if (!data)
+ 			return nullptr;
+-		blank.relationship = QString(data);
++		blank.relationship = QString::fromUtf8(data);
+ 
+ 		val = PyDict_GetItemString(tmp, "RelationshipTo");
+ 		if (!val) {
+ 			PyErr_SetString(PyExc_TypeError, "attribute does not have 'RelationshipTo' key.");
+ 			return nullptr;
+ 		}
+-		data = PyString_AsString(val);
++		data = PyUnicode_AsUTF8(val);
+ 		if (!data)
+ 			return nullptr;
+-		blank.relationshipto = QString(data);
++		blank.relationshipto = QString::fromUtf8(data);
+ 
+ 		val = PyDict_GetItemString(tmp, "AutoAddTo");
+ 		if (!val) {
+ 			PyErr_SetString(PyExc_TypeError, "attribute does not have 'AutoAddTo' key.");
+ 			return nullptr;
+ 		}
+-		data = PyString_AsString(val);
++		data = PyUnicode_AsUTF8(val);
+ 		if (!data)
+ 			return nullptr;
+-		blank.autoaddto = QString(data);
++		blank.autoaddto = QString::fromUtf8(data);
+ 
+ 		attributes.append(blank);
+ 	}
+diff --git a/scribus/plugins/scriptplugin/cmdstyle.cpp b/scribus/plugins/scriptplugin/cmdstyle.cpp
+index 11ad78a9b9..94e8f28519 100644
+--- a/scribus/plugins/scriptplugin/cmdstyle.cpp
++++ b/scribus/plugins/scriptplugin/cmdstyle.cpp
+@@ -344,31 +344,31 @@ PyObject *scribus_createcustomlinestyle(PyObject * /* self */, PyObject* args)
+ 
+ 		val = PyDict_GetItemString(line, "Color");
+ 		if (val)
+-			sl.Color = PyString_AsString(val);
++			sl.Color = PyUnicode_asQString(val);
+ 		else 
+ 			sl.Color = currentDoc->itemToolPrefs().lineColor;
+ 
+ 		val = PyDict_GetItemString(line, "Dash");
+ 		if (val)
+-			sl.Dash = PyInt_AsLong(val);
++			sl.Dash = PyLong_AsLong(val);
+ 		else 
+ 			sl.Dash = Qt::SolidLine;
+ 
+ 		val = PyDict_GetItemString(line, "LineEnd");
+ 		if (val)
+-			sl.LineEnd = PyInt_AsLong(val);
++			sl.LineEnd = PyLong_AsLong(val);
+ 		else 
+ 			sl.LineEnd = Qt::FlatCap;
+ 
+ 		val = PyDict_GetItemString(line, "LineJoin");
+ 		if (val)
+-			sl.LineJoin = PyInt_AsLong(val);
++			sl.LineJoin = PyLong_AsLong(val);
+ 		else 
+ 			sl.LineJoin = Qt::MiterJoin;
+ 
+ 		val = PyDict_GetItemString(line, "Shade");
+ 		if (val)
+-			sl.Shade = PyInt_AsLong(val);
++			sl.Shade = PyLong_AsLong(val);
+ 		else 
+ 			sl.Shade = currentDoc->itemToolPrefs().lineColorShade;
+ 
+@@ -380,7 +380,7 @@ PyObject *scribus_createcustomlinestyle(PyObject * /* self */, PyObject* args)
+ 
+ 		val = PyDict_GetItemString(line, "Shortcut");
+ 		if (val)
+-			ml.shortcut = PyString_AsString(val);
++			ml.shortcut = PyUnicode_asQString(val);
+ 		else 
+ 			ml.shortcut = "";
+ 
+diff --git a/scribus/plugins/scriptplugin/cmdtable.cpp b/scribus/plugins/scriptplugin/cmdtable.cpp
+index 6fb19fbcf4..4e7bd4e824 100644
+--- a/scribus/plugins/scriptplugin/cmdtable.cpp
++++ b/scribus/plugins/scriptplugin/cmdtable.cpp
+@@ -28,7 +28,7 @@ PyObject *scribus_gettablerows(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get table row count of non-table item.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(table->rows()));
++	return PyLong_FromLong(static_cast<long>(table->rows()));
+ }
+ 
+ PyObject *scribus_gettablecolumns(PyObject* /* self */, PyObject* args)
+@@ -48,7 +48,7 @@ PyObject *scribus_gettablecolumns(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get table column count of non-table item.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(table->columns()));
++	return PyLong_FromLong(static_cast<long>(table->columns()));
+ }
+ 
+ PyObject *scribus_inserttablerows(PyObject* /* self */, PyObject* args)
+@@ -338,7 +338,7 @@ PyObject *scribus_gettablestyle(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get table style on a non-table item.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(table->styleName().toUtf8());
++	return PyUnicode_FromString(table->styleName().toUtf8());
+ }
+ 
+ PyObject *scribus_settablestyle(PyObject* /* self */, PyObject* args)
+@@ -378,7 +378,7 @@ PyObject *scribus_gettablefillcolor(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get table fill color on a non-table item.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(table->fillColor().toUtf8());
++	return PyUnicode_FromString(table->fillColor().toUtf8());
+ }
+ 
+ PyObject *scribus_settablefillcolor(PyObject* /* self */, PyObject* args)
+diff --git a/scribus/plugins/scriptplugin/cmdtext.cpp b/scribus/plugins/scriptplugin/cmdtext.cpp
+index 756a20e314..651265f51c 100644
+--- a/scribus/plugins/scriptplugin/cmdtext.cpp
++++ b/scribus/plugins/scriptplugin/cmdtext.cpp
+@@ -92,10 +92,10 @@ PyObject *scribus_getfont(PyObject* /* self */, PyObject* args)
+ 	{
+ 		for (int i = 0; i < item->itemText.length(); i++)
+ 			if (item->itemText.selected(i))
+-				return PyString_FromString(item->itemText.charStyle(i).font().scName().toUtf8());
++				return PyUnicode_FromString(item->itemText.charStyle(i).font().scName().toUtf8());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(item->currentCharStyle().font().scName().toUtf8());
++	return PyUnicode_FromString(item->currentCharStyle().font().scName().toUtf8());
+ }
+ 
+ PyObject *scribus_gettextcolor(PyObject* /* self */, PyObject* args)
+@@ -118,11 +118,11 @@ PyObject *scribus_gettextcolor(PyObject* /* self */, PyObject* args)
+ 		for (int i = 0; i < item->itemText.length(); ++i)
+ 		{
+ 			if (item->itemText.selected(i))
+-				return PyString_FromString(item->itemText.charStyle(i).fillColor().toUtf8());
++				return PyUnicode_FromString(item->itemText.charStyle(i).fillColor().toUtf8());
+ 		}
+         return nullptr;
+ 	}
+-    return PyString_FromString(item->currentCharStyle().fillColor().toUtf8());
++    return PyUnicode_FromString(item->currentCharStyle().fillColor().toUtf8());
+ }
+ 
+ PyObject *scribus_gettextshade(PyObject* /* self */, PyObject* args)
+@@ -145,11 +145,11 @@ PyObject *scribus_gettextshade(PyObject* /* self */, PyObject* args)
+ 		for (int i = 0; i < item->itemText.length(); ++i)
+ 		{
+ 			if (item->itemText.selected(i))
+-				return PyInt_FromLong(item->itemText.charStyle(i).fillShade());
++				return PyLong_FromLong(item->itemText.charStyle(i).fillShade());
+ 		}
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(item->currentCharStyle().fillShade());
++	return PyLong_FromLong(item->currentCharStyle().fillShade());
+ }
+ 
+ PyObject *scribus_gettextsize(PyObject* /* self */, PyObject* args)
+@@ -167,7 +167,7 @@ PyObject *scribus_gettextsize(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get text size of non-text frame.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(item->itemText.length()));
++	return PyLong_FromLong(static_cast<long>(item->itemText.length()));
+ }
+ 
+ PyObject *scribus_gettextlines(PyObject* /* self */, PyObject* args)
+@@ -185,7 +185,7 @@ PyObject *scribus_gettextlines(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get number of lines of non-text frame.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(item->textLayout.lines()));
++	return PyLong_FromLong(static_cast<long>(item->textLayout.lines()));
+ }
+ 
+ PyObject *scribus_gettextverticalalignment(PyObject* /* self */, PyObject* args)
+@@ -203,7 +203,7 @@ PyObject *scribus_gettextverticalalignment(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get vertical alignment of non-text frame.", "python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(item->verticalAlignment()));
++	return PyLong_FromLong(static_cast<long>(item->verticalAlignment()));
+ }
+ 
+ PyObject *scribus_getcolumns(PyObject* /* self */, PyObject* args)
+@@ -221,7 +221,7 @@ PyObject *scribus_getcolumns(PyObject* /* self */, PyObject* args)
+ 		PyErr_SetString(WrongFrameTypeError, QObject::tr("Cannot get column count of non-text frame.","python error").toLocal8Bit().constData());
+ 		return nullptr;
+ 	}
+-	return PyInt_FromLong(static_cast<long>(item->m_columns));
++	return PyLong_FromLong(static_cast<long>(item->m_columns));
+ }
+ 
+ PyObject *scribus_getcolumngap(PyObject* /* self */, PyObject* args)
+@@ -261,10 +261,10 @@ PyObject *scribus_getfontfeatures(PyObject* /* self */, PyObject* args)
+ 	{
+ 		for (int i = 0; i < item->itemText.length(); i++)
+ 			if (item->itemText.selected(i))
+-				return PyString_FromString(item->itemText.charStyle(i).fontFeatures().toUtf8());
++				return PyUnicode_FromString(item->itemText.charStyle(i).fontFeatures().toUtf8());
+ 		return nullptr;
+ 	}
+-	return PyString_FromString(item->currentCharStyle().fontFeatures().toUtf8());
++	return PyUnicode_FromString(item->currentCharStyle().fontFeatures().toUtf8());
+ }
+ 
+ PyObject *scribus_getlinespace(PyObject* /* self */, PyObject* args)
+@@ -335,7 +335,7 @@ PyObject *scribus_getframetext(PyObject* /* self */, PyObject* args)
+ 			text += item->itemText.text(i);
+ 		}
+ 	}
+-	return PyString_FromString(text.toUtf8());
++	return PyUnicode_FromString(text.toUtf8());
+ }
+ 
+ PyObject *scribus_gettext(PyObject* /* self */, PyObject* args)
+@@ -368,7 +368,7 @@ PyObject *scribus_gettext(PyObject* /* self */, PyObject* args)
+ 			text += item->itemText.text(i);
+ 		}
+ 	} // for
+-	return PyString_FromString(text.toUtf8());
++	return PyUnicode_FromString(text.toUtf8());
+ }
+ 
+ PyObject *scribus_setboxtext(PyObject* /* self */, PyObject* args)
+@@ -1235,17 +1235,17 @@ PyObject *scribus_istextoverflowing(PyObject * self, PyObject* args, PyObject* k
+ 	}
+ 	// no overrun
+ 	if (nolinks)
+-		return PyInt_FromLong(maxchars - firstFrame);
++		return PyLong_FromLong(maxchars - firstFrame);
+ 
+ 	if (maxchars > chars)
+-		return PyInt_FromLong(0);
++		return PyLong_FromLong(0);
+ 	// number of overrunning letters
+-	return PyInt_FromLong(static_cast<long>(chars - maxchars));
++	return PyLong_FromLong(static_cast<long>(chars - maxchars));
+ 	 */
+ 	// refresh overflow information
+ 	item->invalidateLayout();
+ 	item->layout();
+-	return PyInt_FromLong(static_cast<long>(item->frameOverflows()));
++	return PyLong_FromLong(static_cast<long>(item->frameOverflows()));
+ }
+ 
+ /*
+diff --git a/scribus/plugins/scriptplugin/cmdutil.cpp b/scribus/plugins/scriptplugin/cmdutil.cpp
+index 26853e4478..a78521a56c 100644
+--- a/scribus/plugins/scriptplugin/cmdutil.cpp
++++ b/scribus/plugins/scriptplugin/cmdutil.cpp
+@@ -241,3 +241,11 @@ TableBorder parseBorder(PyObject* borderLines, bool* ok)
+ 	return border;
+ }
+ 
++QString PyUnicode_asQString(PyObject* arg)
++{
++	const char* utf8Str = PyUnicode_AsUTF8(arg);
++	if (!utf8Str)
++		return QString();
++	return QString::fromUtf8(utf8Str);
++}
++
+diff --git a/scribus/plugins/scriptplugin/cmdutil.h b/scribus/plugins/scriptplugin/cmdutil.h
+index b06f7adf7e..33f785dc2c 100644
+--- a/scribus/plugins/scriptplugin/cmdutil.h
++++ b/scribus/plugins/scriptplugin/cmdutil.h
+@@ -29,6 +29,7 @@ double docUnitYToPageY(double pageUnitY);
+ 
+ PageItem *GetItem(const QString& Name);
+ void ReplaceColor(const QString& col, const QString& rep);
++
+ /*!
+  * @brief Returns named PageItem, or selection if name '', or exception and NULL if no item.
+  *
+@@ -60,6 +61,7 @@ bool ItemExists(const QString& name);
+  * @brief Returns a list of the names of all selected PageItems
+  */
+ QStringList getSelectedItemsByName();
++
+ /*!
+  * @brief Replaces the current selection by selecting all the items named in the passed QStringList
+  *
+@@ -68,8 +70,14 @@ QStringList getSelectedItemsByName();
+  */
+ bool setSelectedItemsByName(QStringList& itemNames);
+ 
+-/// Helper method to parse a border from a list of tuples.
++/*!
++ * @brief Helper method to parse a border from a list of tuples.
++ */
+ TableBorder parseBorder(PyObject* borderLines, bool* ok);
+ 
++/*!
++ * @brief Helper method to convert a PyUnicode object to a QString
++ */
++QString PyUnicode_asQString(PyObject* arg);
+ 
+ #endif
+diff --git a/scribus/plugins/scriptplugin/cmdvar.h b/scribus/plugins/scriptplugin/cmdvar.h
+index aeee816839..fbdacc3b42 100644
+--- a/scribus/plugins/scriptplugin/cmdvar.h
++++ b/scribus/plugins/scriptplugin/cmdvar.h
+@@ -18,12 +18,21 @@ for which a new license (GPL+exception) is in place.
+ 	#undef _POSIX_C_SOURCE
+ #endif
+ 
++#if defined(_MSC_VER)
++#pragma push_macro("slots")
++#undef slots
++#endif
++
+ #if defined(HAVE_BOOST_PYTHON)
+ #include <boost/python.hpp>
+ #else
+ #include <Python.h>
+ #endif
+ 
++#if defined(_MSC_VER)
++#pragma pop_macro("slots")
++#endif
++
+ #ifndef Py_RETURN_NONE
+ 	#define Py_RETURN_NONE return Py_INCREF(Py_None), Py_None
+ #endif
+@@ -52,6 +61,8 @@ extern ScripterCore* scripterCore;
+ /** @brief Initialize the 'scribus' Python module in the currently active interpreter */
+ extern "C" void initscribus(ScribusMainWindow *pl);
+ 
++extern "C" PyObject* PyInit_scribus(void);
++
+ /* Exceptions */
+ /*! Common scribus Exception */
+ extern PyObject* ScribusException;
+diff --git a/scribus/plugins/scriptplugin/objimageexport.cpp b/scribus/plugins/scriptplugin/objimageexport.cpp
+index c30304bf9d..cfc3c3fa06 100644
+--- a/scribus/plugins/scriptplugin/objimageexport.cpp
++++ b/scribus/plugins/scriptplugin/objimageexport.cpp
+@@ -34,7 +34,7 @@ static void ImageExport_dealloc(ImageExport* self)
+ 	Py_XDECREF(self->name);
+ 	Py_XDECREF(self->type);
+ 	Py_XDECREF(self->allTypes);
+-	self->ob_type->tp_free((PyObject *)self);
++	Py_TYPE(self)->tp_free((PyObject *)self);
+ }
+ 
+ static PyObject * ImageExport_new(PyTypeObject *type, PyObject * /*args*/, PyObject * /*kwds*/)
+@@ -45,8 +45,8 @@ static PyObject * ImageExport_new(PyTypeObject *type, PyObject * /*args*/, PyObj
+ 	ImageExport *self;
+ 	self = (ImageExport *)type->tp_alloc(type, 0);
+ 	if (self != nullptr) {
+-		self->name = PyString_FromString("ImageExport.png");
+-		self->type = PyString_FromString("PNG");
++		self->name = PyUnicode_FromString("ImageExport.png");
++		self->type = PyUnicode_FromString("PNG");
+ 		self->allTypes = PyList_New(0);
+ 		self->dpi = 72;
+ 		self->scale = 100;
+@@ -77,11 +77,11 @@ static PyObject *ImageExport_getName(ImageExport *self, void * /*closure*/)
+ 
+ static int ImageExport_setName(ImageExport *self, PyObject *value, void * /*closure*/)
+ {
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, QObject::tr("The filename must be a string.", "python error").toLocal8Bit().constData());
+ 		return -1;
+ 	}
+-	if (PyString_Size(value) < 1)
++	if (PyUnicode_GET_LENGTH(value) < 1)
+ 	{
+ 		PyErr_SetString(PyExc_TypeError, QObject::tr("The filename should not be empty string.", "python error").toLocal8Bit().constData());
+ 		return -1;
+@@ -104,7 +104,7 @@ static int ImageExport_setType(ImageExport *self, PyObject *value, void * /*clos
+ 		PyErr_SetString(PyExc_TypeError, QObject::tr("Cannot delete image type settings.", "python error").toLocal8Bit().constData());
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, QObject::tr("The image type must be a string.", "python error").toLocal8Bit().constData());
+ 		return -1;
+ 	}
+@@ -122,7 +122,7 @@ static PyObject *ImageExport_getAllTypes(ImageExport * /*self*/, void * /*closur
+ 	l = PyList_New(list.count());
+ 	for (QList<QByteArray>::Iterator it = list.begin(); it != list.end(); ++it)
+ 	{
+-		PyList_SetItem(l, pos, PyString_FromString(QString((*it)).toLatin1().constData()));
++		PyList_SetItem(l, pos, PyUnicode_FromString(QString((*it)).toLatin1().constData()));
+ 		++pos;
+ 	}
+ 	return l;
+@@ -160,7 +160,9 @@ static PyObject *ImageExport_save(ImageExport *self)
+ 	int dpi = qRound(100.0 / 2.54 * self->dpi);
+ 	im.setDotsPerMeterY(dpi);
+ 	im.setDotsPerMeterX(dpi);
+-	if (!im.save(PyString_AsString(self->name), PyString_AsString(self->type)))
++
++	QString imgFileName = PyUnicode_asQString(self->name);
++	if (!im.save(imgFileName, PyUnicode_AsUTF8(self->type)))
+ 	{
+ 		PyErr_SetString(ScribusException, QObject::tr("Failed to export image", "python error").toLocal8Bit().constData());
+ 		return nullptr;
+@@ -194,7 +196,9 @@ static PyObject *ImageExport_saveAs(ImageExport *self, PyObject *args)
+ 	int dpi = qRound(100.0 / 2.54 * self->dpi);
+ 	im.setDotsPerMeterY(dpi);
+ 	im.setDotsPerMeterX(dpi);
+-	if (!im.save(value, PyString_AsString(self->type)))
++
++	QString outputFileName = QString::fromUtf8(value);
++	if (!im.save(outputFileName, PyUnicode_AsUTF8(self->type)))
+ 	{
+ 		PyErr_SetString(ScribusException, QObject::tr("Failed to export image", "python error").toLocal8Bit().constData());
+ 		return nullptr;
+@@ -212,8 +216,7 @@ static PyMethodDef ImageExport_methods[] = {
+ };
+ 
+ PyTypeObject ImageExport_Type = {
+-	PyObject_HEAD_INIT(nullptr)   // PyObject_VAR_HEAD
+-	0,
++	PyVarObject_HEAD_INIT(nullptr, 0)   // PyObject_VAR_HEAD
+ 	const_cast<char*>("scribus.ImageExport"), // char *tp_name; /* For printing, in format "<module>.<name>" */
+ 	sizeof(ImageExport),   // int tp_basicsize, /* For allocation */
+ 	0,  // int tp_itemsize; /* For allocation */
+@@ -259,6 +262,8 @@ PyTypeObject ImageExport_Type = {
+ 	nullptr, //	 PyObject *tp_subclasses;
+ 	nullptr, //	 PyObject *tp_weaklist;
+ 	nullptr, //	 destructor tp_del;
++	0, //	 unsigned int tp_version_tag;
++	0, //	 destructor tp_finalize;
+ 
+ #ifdef COUNT_ALLOCS
+ 	/* these must be last and never explicitly initialized */
+diff --git a/scribus/plugins/scriptplugin/objpdffile.cpp b/scribus/plugins/scriptplugin/objpdffile.cpp
+index 2468158de7..2ae8c93452 100644
+--- a/scribus/plugins/scriptplugin/objpdffile.cpp
++++ b/scribus/plugins/scriptplugin/objpdffile.cpp
+@@ -135,7 +135,7 @@ static void PDFfile_dealloc(PDFfile *self)
+ 	Py_XDECREF(self->info);
+ 	Py_XDECREF(self->rotateDeg);
+ 	Py_XDECREF(self->openAction);
+-	self->ob_type->tp_free((PyObject *)self);
++	Py_TYPE(self)->tp_free((PyObject *)self);
+ }
+ 
+ static PyObject * PDFfile_new(PyTypeObject *type, PyObject * /*args*/, PyObject * /*kwds*/)
+@@ -150,13 +150,13 @@ static PyObject * PDFfile_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ 	self = (PDFfile *)type->tp_alloc(type, 0);
+ 	if (self) {
+ // set file attribute
+-		self->file = PyString_FromString("");
++		self->file = PyUnicode_FromString("");
+ 		if (!self->file) {
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+ // set font embedding mode attribute
+-		self->fontEmbedding = PyInt_FromLong(0);
++		self->fontEmbedding = PyLong_FromLong(0);
+ 		if (!self->fontEmbedding) {
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -201,13 +201,13 @@ static PyObject * PDFfile_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ // set quality attribute
+ 		self->quality = 0;
+ // set resolution attribute
+-		self->resolution = PyInt_FromLong(300);
++		self->resolution = PyLong_FromLong(300);
+ 		if (!self->resolution){
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+ // set downsample attribute
+-		self->downsample = PyInt_FromLong(0);
++		self->downsample = PyLong_FromLong(0);
+ 		if (!self->downsample){
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -239,13 +239,13 @@ static PyObject * PDFfile_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ 			return nullptr;
+ 		}
+ // set owner attribute
+-		self->owner = PyString_FromString("");
++		self->owner = PyUnicode_FromString("");
+ 		if (!self->owner){
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+ // set user attribute
+-		self->user = PyString_FromString("");
++		self->user = PyUnicode_FromString("");
+ 		if (!self->user){
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -269,22 +269,22 @@ static PyObject * PDFfile_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ 		self->intents = 0; // int - 0 - ?
+ 		self->intenti = 0; // int - 0 - ?
+ 		self->noembicc = 0; // bool
+-		self->solidpr = PyString_FromString("");
++		self->solidpr = PyUnicode_FromString("");
+ 		if (!self->solidpr){
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+-		self->imagepr = PyString_FromString("");
++		self->imagepr = PyUnicode_FromString("");
+ 		if (!self->imagepr){
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+-		self->printprofc = PyString_FromString("");
++		self->printprofc = PyUnicode_FromString("");
+ 		if (!self->printprofc){
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+-		self->info = PyString_FromString("");
++		self->info = PyUnicode_FromString("");
+ 		if (!self->info){
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -299,7 +299,7 @@ static PyObject * PDFfile_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ 		self->mirrorH = 0;
+ 		self->mirrorV = 0;
+ 		self->doClip = 0;
+-		self->rotateDeg = PyInt_FromLong(0);
++		self->rotateDeg = PyLong_FromLong(0);
+ 		if (!self->rotateDeg){
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -313,7 +313,7 @@ static PyObject * PDFfile_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ 		self->hideToolBar = 0;
+ 		self->hideMenuBar = 0;
+ 		self->fitWindow = 0;
+-		self->openAction = PyString_FromString("");
++		self->openAction = PyUnicode_FromString("");
+ 		if (!self->openAction){
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -336,10 +336,10 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	QString tf = pdfOptions.fileName;
+ 	if (tf.isEmpty()) {
+ 		QFileInfo fi = QFileInfo(currentDoc->documentFileName());
+-		tf = fi.path()+"/"+fi.baseName()+".pdf";
++		tf = fi.path() + "/" + fi.baseName() + ".pdf";
+ 	}
+ 	PyObject *file = nullptr;
+-	file = PyString_FromString(tf.toLatin1());
++	file = PyUnicode_FromString(tf.toUtf8());
+ 	if (file){
+ 		Py_DECREF(self->file);
+ 		self->file = file;
+@@ -349,7 +349,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	}
+ // font embedding mode
+ 	PyObject *embeddingMode = nullptr;
+-	embeddingMode = PyInt_FromLong(pdfOptions.FontEmbedding);
++	embeddingMode = PyLong_FromLong(pdfOptions.FontEmbedding);
+ 	if (embeddingMode){
+ 		Py_DECREF(self->fontEmbedding);
+ 		self->fontEmbedding = embeddingMode;
+@@ -375,7 +375,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	{
+ 		const QString& fontName = tmpEm.at(i);
+ 		PyObject *tmp= nullptr;
+-		tmp = PyString_FromString(fontName.toLatin1());
++		tmp = PyUnicode_FromString(fontName.toUtf8());
+ 		if (tmp) {
+ 			PyList_Append(self->fonts, tmp);
+ // do i need Py_DECREF(tmp) here?
+@@ -401,7 +401,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	for (int fe = 0; fe < pdfOptions.SubsetList.count(); ++fe)
+ 	{
+ 		PyObject *tmp= nullptr;
+-		tmp = PyString_FromString(pdfOptions.SubsetList[fe].toLatin1().data());
++		tmp = PyUnicode_FromString(pdfOptions.SubsetList[fe].toUtf8().data());
+ 		if (tmp) {
+ 			PyList_Append(self->subsetList, tmp);
+ 			Py_DECREF(tmp);
+@@ -425,7 +425,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	}
+ 	for (i = 0; i<num; ++i) {
+ 		PyObject *tmp;
+-		tmp = PyInt_FromLong((long)i+1L);
++		tmp = PyLong_FromLong((long)i+1L);
+ 		if (tmp)
+ 			PyList_SetItem(pages, i, tmp);
+ 		else {
+@@ -458,7 +458,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	self->quality = pdfOptions.Quality;
+ // default resolution
+ 	PyObject *resolution = nullptr;
+-	resolution = PyInt_FromLong(300);
++	resolution = PyLong_FromLong(300);
+ 	if (resolution){
+ 		Py_DECREF(self->resolution);
+ 		self->resolution = resolution;
+@@ -469,7 +469,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ // do not downsample images
+ 	int down = pdfOptions.RecalcPic ? pdfOptions.PicRes : 0;
+ 	PyObject *downsample = nullptr;
+-	downsample = PyInt_FromLong(down);
++	downsample = PyLong_FromLong(down);
+ 	if (downsample){
+ 		Py_DECREF(self->downsample);
+ 		self->downsample = downsample;
+@@ -549,7 +549,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	self->lpival = lpival;
+ // set owner's password
+ 	PyObject *owner = nullptr;
+-	owner = PyString_FromString(pdfOptions.PassOwner.toLatin1());
++	owner = PyUnicode_FromString(pdfOptions.PassOwner.toUtf8());
+ 	if (owner){
+ 		Py_DECREF(self->owner);
+ 		self->owner = owner;
+@@ -559,7 +559,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	}
+ // set user'a password
+ 	PyObject *user = nullptr;
+-	user = PyString_FromString(pdfOptions.PassUser.toLatin1());
++	user = PyUnicode_FromString(pdfOptions.PassUser.toUtf8());
+ 	if (user){
+ 		Py_DECREF(self->user);
+ 		self->user = user;
+@@ -589,7 +589,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	if (!ScCore->InputProfiles.contains(tp))
+ 		tp = currentDoc->cmsSettings().DefaultSolidColorRGBProfile;
+ 	PyObject *solidpr = nullptr;
+-	solidpr = PyString_FromString(tp.toLatin1());
++	solidpr = PyUnicode_FromString(tp.toUtf8());
+ 	if (solidpr){
+ 		Py_DECREF(self->solidpr);
+ 		self->solidpr = solidpr;
+@@ -601,7 +601,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	if (!ScCore->InputProfiles.contains(tp2))
+ 		tp2 = currentDoc->cmsSettings().DefaultSolidColorRGBProfile;
+ 	PyObject *imagepr = nullptr;
+-	imagepr = PyString_FromString(tp2.toLatin1());
++	imagepr = PyUnicode_FromString(tp2.toUtf8());
+ 	if (imagepr){
+ 		Py_DECREF(self->imagepr);
+ 		self->imagepr = imagepr;
+@@ -613,7 +613,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	if (!ScCore->PDFXProfiles.contains(tp3))
+ 		tp3 = currentDoc->cmsSettings().DefaultPrinterProfile;
+ 	PyObject *printprofc = nullptr;
+-	printprofc = PyString_FromString(tp3.toLatin1());
++	printprofc = PyUnicode_FromString(tp3.toUtf8());
+ 	if (printprofc){
+ 		Py_DECREF(self->printprofc);
+ 		self->printprofc = printprofc;
+@@ -623,7 +623,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	}
+ 	QString tinfo = pdfOptions.Info;
+ 	PyObject *info = nullptr;
+-	info = PyString_FromString(tinfo.toLatin1());
++	info = PyUnicode_FromString(tinfo.toUtf8());
+ 	if (info){
+ 		Py_DECREF(self->info);
+ 		self->info = info;
+@@ -642,7 +642,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	self->mirrorV = pdfOptions.MirrorV; // bool
+ 	self->doClip = pdfOptions.doClip; // bool
+ 	PyObject *rotateDeg = nullptr;
+-	rotateDeg = PyInt_FromLong(0);
++	rotateDeg = PyLong_FromLong(0);
+ 	if (rotateDeg){
+ 		Py_DECREF(self->rotateDeg);
+ 		self->rotateDeg = rotateDeg;
+@@ -661,7 +661,7 @@ static int PDFfile_init(PDFfile *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	self->fitWindow = pdfOptions.fitWindow; // bool
+ 
+ 	PyObject *openAction = nullptr;
+-	openAction = PyString_FromString(pdfOptions.openAction.toLatin1().data());
++	openAction = PyUnicode_FromString(pdfOptions.openAction.toUtf8().data());
+ 	if (openAction){
+ 		Py_DECREF(self->openAction);
+ 		self->openAction = openAction;
+@@ -751,7 +751,7 @@ static int PDFfile_setfile(PDFfile *self, PyObject *value, void * /*closure*/)
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'file' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'file' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -773,11 +773,11 @@ static int PDFfile_setFontEmbeddingMode(PDFfile *self, PyObject *value, void * /
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'fontEmbedding' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyInt_Check(value)) {
++	if (!PyLong_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "'fontEmbedding' attribute value must be integer.");
+ 		return -1;
+ 	}
+-	int n = PyInt_AsLong(value);
++	int n = PyLong_AsLong(value);
+ 	if (n < 0 || n > 2) {
+ 		PyErr_SetString(PyExc_ValueError, "'fontEmbedding' value must be an integer between 0 and 2");
+ 		return -1;
+@@ -807,7 +807,7 @@ static int PDFfile_setfonts(PDFfile *self, PyObject *value, void * /*closure*/)
+ 	int n;
+ 	n = PyList_Size(value);
+ 	for (int i=0; i<n; ++i)
+-		if (!PyString_Check(PyList_GetItem(value, i))) {
++		if (!PyUnicode_Check(PyList_GetItem(value, i))) {
+ 			PyErr_SetString(PyExc_TypeError, "The 'fonts' list must contain only strings.");
+ 			return -1;
+ 		}
+@@ -840,7 +840,7 @@ static int PDFfile_setSubsetList(PDFfile *self, PyObject *value, void * /*closur
+ 	int n;
+ 	n = PyList_Size(value);
+ 	for (int i=0; i<n; ++i)
+-		if (!PyString_Check(PyList_GetItem(value, i))) {
++		if (!PyUnicode_Check(PyList_GetItem(value, i))) {
+ 			PyErr_SetString(PyExc_TypeError, "The 'subsetList' list must contain only strings.");
+ 			return -1;
+ 		}
+@@ -873,11 +873,11 @@ static int PDFfile_setpages(PDFfile *self, PyObject *value, void * /*closure*/)
+ 		// I did not check if tmp is nullptr
+ 		// how can PyList_GetItem fail in this case (my guess: short of available memory?)
+ 		// Also do I need Py_INCREF or Py_DECREF here?
+-		if (!PyInt_Check(tmp)){
++		if (!PyLong_Check(tmp)){
+ 			PyErr_SetString(PyExc_TypeError, "'pages' list must contain only integers.");
+ 			return -1;
+ 		}
+-		if (PyInt_AsLong(tmp) > static_cast<int>(ScCore->primaryMainWindow()->doc->Pages->count()) || PyInt_AsLong(tmp) < 1) {
++		if (PyLong_AsLong(tmp) > static_cast<int>(ScCore->primaryMainWindow()->doc->Pages->count()) || PyLong_AsLong(tmp) < 1) {
+ 			PyErr_SetString(PyExc_ValueError, "'pages' value out of range.");
+ 			return -1;
+ 		}
+@@ -901,11 +901,11 @@ static int PDFfile_setresolution(PDFfile *self, PyObject *value, void * /*closur
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'resolution' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyInt_Check(value)) {
++	if (!PyLong_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "'resolution' attribute value must be integer.");
+ 		return -1;
+ 	}
+-	int n = PyInt_AsLong(value);
++	int n = PyLong_AsLong(value);
+ 	if (n<35 || n>4000) {
+ 		PyErr_SetString(PyExc_ValueError, "'resolution' value must be in interval from 35 to 4000");
+ 		return -1;
+@@ -928,12 +928,12 @@ static int PDFfile_setdownsample(PDFfile *self, PyObject *value, void * /*closur
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'downsample' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyInt_Check(value)) {
++	if (!PyLong_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "'downsample' attribute value must be integer.");
+ 		return -1;
+ 	}
+-	int n = PyInt_AsLong(value);
+-	if (n!=0 && (n<35 || n>PyInt_AsLong(self->resolution))) {
++	int n = PyLong_AsLong(value);
++	if (n!=0 && (n < 35 || n > PyLong_AsLong(self->resolution))) {
+ 		PyErr_SetString(PyExc_TypeError, "'downsample' value must be 0 or in interval from 35 to value of 'resolution'");
+ 		return -1;
+ 	}
+@@ -972,7 +972,7 @@ static int PDFfile_seteffval(PDFfile *self, PyObject *value, void * /*closure*/)
+ 			return -1;
+ 		}
+ 		for ( --j; j > -1; --j) {
+-			if (!PyInt_Check(PyList_GetItem(tmp, j))) {
++			if (!PyLong_Check(PyList_GetItem(tmp, j))) {
+ 				PyErr_SetString(PyExc_TypeError, "innermost element of 'effval' must be integers.");
+ 				return -1;
+ 			}
+@@ -1005,21 +1005,21 @@ static int PDFfile_setlpival(PDFfile *self, PyObject *value, void * /*closure*/)
+ 	for (int i=0; i<n; ++i) {
+ 		PyObject *tmp = PyList_GetItem(value, i);
+ 		if (!PyList_Check(tmp)) {
+-			PyErr_SetString(PyExc_TypeError, "elemets of 'lpival' must be list of five integers.");
++			PyErr_SetString(PyExc_TypeError, "elements of 'lpival' must be list of five integers.");
+ 			return -1;
+ 		}
+ 		int j = PyList_Size(tmp);
+ 		if (j != 4) {
+-			PyErr_SetString(PyExc_TypeError, "elemets of 'lpival' must have exactly four members.");
++			PyErr_SetString(PyExc_TypeError, "elements of 'lpival' must have exactly four members.");
+ 			return -1;
+ 		}
+ 		for ( --j; j > 0; --j) {
+-			if (!PyInt_Check(PyList_GetItem(tmp, j))) {
++			if (!PyLong_Check(PyList_GetItem(tmp, j))) {
+ 				PyErr_SetString(PyExc_TypeError, "'lpival'elements must have structure [siii]");
+ 				return -1;
+ 			}
+ 		}
+-		if (!PyString_Check(PyList_GetItem(tmp, 0))) {
++		if (!PyUnicode_Check(PyList_GetItem(tmp, 0))) {
+ 			PyErr_SetString(PyExc_TypeError, "'lpival'elements must have structure [siii]");
+ 			return -1;
+ 		}
+@@ -1042,7 +1042,7 @@ static int PDFfile_setowner(PDFfile *self, PyObject *value, void * /*closure*/)
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'owner' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "'owner' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -1064,7 +1064,7 @@ static int PDFfile_setuser(PDFfile *self, PyObject *value, void * /*closure*/)
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'user' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "'user' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -1086,7 +1086,7 @@ static int PDFfile_setsolidpr(PDFfile *self, PyObject *value, void * /*closure*/
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'solidpr' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'solidpr' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -1108,7 +1108,7 @@ static int PDFfile_setimagepr(PDFfile *self, PyObject *value, void * /*closure*/
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'imagepr' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'imagepr' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -1130,7 +1130,7 @@ static int PDFfile_setprintprofc(PDFfile *self, PyObject *value, void * /*closur
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'printprofc' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'printprofc' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -1152,7 +1152,7 @@ static int PDFfile_setinfo(PDFfile *self, PyObject *value, void * /*closure*/)
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'info' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'info' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -1174,11 +1174,11 @@ static int PDFfile_setRotateDeg(PDFfile *self, PyObject *value, void * /*closure
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'rotateDeg' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyInt_Check(value)) {
++	if (!PyLong_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "'rotateDeg' attribute value must be integer.");
+ 		return -1;
+ 	}
+-	int n = PyInt_AsLong(value);
++	int n = PyLong_AsLong(value);
+ 	if (n!=0 && n!=90 && n!=180 && n!=270) {
+ 		PyErr_SetString(PyExc_TypeError, "'rotateDeg' value must be 0 or 90 or 180 or 270");
+ 		return -1;
+@@ -1201,7 +1201,7 @@ static int PDFfile_setopenAction(PDFfile *self, PyObject *value, void * /*closur
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'openAction' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "'openAction' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -1275,10 +1275,10 @@ static PyObject *PDFfile_save(PDFfile *self)
+ // apply fonts attribute
+ 	pdfOptions.EmbedList.clear();
+ 	int n = PyList_Size(self->fonts);
+-	for ( int i=0; i<n; ++i)
++	for (int i = 0; i < n; ++i)
+ 	{
+ 		QString tmpFon;
+-		tmpFon = QString(PyString_AsString(PyList_GetItem(self->fonts, i)));
++		tmpFon = PyUnicode_asQString(PyList_GetItem(self->fonts, i));
+ 		pdfOptions.EmbedList.append(tmpFon);
+ 	}
+ // apply SubsetList attribute
+@@ -1287,11 +1287,11 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 	for (int i = 0; i < n; ++i)
+ 	{
+ 		QString tmpFon;
+-		tmpFon = QString(PyString_AsString(PyList_GetItem(self->subsetList, i)));
++		tmpFon = PyUnicode_asQString(PyList_GetItem(self->subsetList, i));
+ 		pdfOptions.SubsetList.append(tmpFon);
+ 	}
+ // apply font embedding mode
+-	pdfOptions.FontEmbedding = (PDFOptions::PDFFontEmbedding) PyInt_AsLong(self->fontEmbedding);
++	pdfOptions.FontEmbedding = (PDFOptions::PDFFontEmbedding) PyLong_AsLong(self->fontEmbedding);
+ 	if (pdfOptions.Version == PDFOptions::PDFVersion_X1a ||
+ 	    pdfOptions.Version == PDFOptions::PDFVersion_X3 ||
+ 	    pdfOptions.Version == PDFOptions::PDFVersion_X4)
+@@ -1326,13 +1326,13 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 	}
+ // apply file attribute
+ 	QString fn;
+-	fn = QString(PyString_AsString(self->file));
++	fn = PyUnicode_asQString(self->file);
+ 	pdfOptions.fileName = fn;
+ // apply pages attribute
+ 	std::vector<int> pageNs;
+-	int nn=PyList_Size(self->pages);
++	int nn = PyList_Size(self->pages);
+ 	for (int i = 0; i < nn; ++i) {
+-		pageNs.push_back((int)PyInt_AsLong(PyList_GetItem(self->pages, i)));
++		pageNs.push_back((int) PyLong_AsLong(PyList_GetItem(self->pages, i)));
+ 	}
+ // apply thumbnails attribute
+ 	pdfOptions.Thumbnails = self->thumbnails;
+@@ -1358,11 +1358,11 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 	self->quality = minmaxi(self->quality, 0, 4);
+ 	pdfOptions.Quality = self->quality;
+ // apply resolusion attribute
+-	pdfOptions.Resolution = PyInt_AsLong(self->resolution);
++	pdfOptions.Resolution = PyLong_AsLong(self->resolution);
+ // apply downsample attribute
+-	pdfOptions.RecalcPic = PyInt_AsLong(self->downsample);
++	pdfOptions.RecalcPic = PyLong_AsLong(self->downsample);
+ 	if (pdfOptions.RecalcPic)
+-		pdfOptions.PicRes = PyInt_AsLong(self->downsample);
++		pdfOptions.PicRes = PyLong_AsLong(self->downsample);
+ 	else
+ 		pdfOptions.PicRes = pdfOptions.Resolution;
+ // apply bookmarks attribute
+@@ -1379,13 +1379,13 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 		PyObject *ti = PyList_GetItem(self->effval, i);
+ 		if (!ti)
+ 			continue;
+-		// Do I Need to check if every PyInt_AsLong and PyList_GetItem funtion succeed???
+-		t.pageEffectDuration = PyInt_AsLong(PyList_GetItem(ti, 0));
+-		t.pageViewDuration = PyInt_AsLong(PyList_GetItem(ti, 1));
+-		t.effectType = PyInt_AsLong(PyList_GetItem(ti, 2));
+-		t.Dm = PyInt_AsLong(PyList_GetItem(ti, 3));
+-		t.M = PyInt_AsLong(PyList_GetItem(ti, 4));
+-		t.Di = PyInt_AsLong(PyList_GetItem(ti, 5));
++		// Do I Need to check if every PyLong_AsLong and PyList_GetItem funtion succeed???
++		t.pageEffectDuration = PyLong_AsLong(PyList_GetItem(ti, 0));
++		t.pageViewDuration = PyLong_AsLong(PyList_GetItem(ti, 1));
++		t.effectType = PyLong_AsLong(PyList_GetItem(ti, 2));
++		t.Dm = PyLong_AsLong(PyList_GetItem(ti, 3));
++		t.M = PyLong_AsLong(PyList_GetItem(ti, 4));
++		t.Di = PyLong_AsLong(PyList_GetItem(ti, 5));
+ 		//	PresentVals.append(t);
+ 	}
+ 
+@@ -1404,11 +1404,10 @@ static PyObject *PDFfile_save(PDFfile *self)
+ //			return nullptr;
+ //		}
+ //		pdfOptions.LPISettings[QString(s)]=lpi;
+-		QString st;
+-		st = QString(PyString_AsString(PyList_GetItem(t,0)));
+-		lpi.Frequency = PyInt_AsLong(PyList_GetItem(t, 1));
+-		lpi.Angle = PyInt_AsLong(PyList_GetItem(t, 2));
+-		lpi.SpotFunc = PyInt_AsLong(PyList_GetItem(t, 3));
++		QString st = PyUnicode_asQString(PyList_GetItem(t, 0));
++		lpi.Frequency = PyLong_AsLong(PyList_GetItem(t, 1));
++		lpi.Angle = PyLong_AsLong(PyList_GetItem(t, 2));
++		lpi.SpotFunc = PyLong_AsLong(PyList_GetItem(t, 3));
+ 		pdfOptions.LPISettings[st] = lpi;
+ 	}
+ 
+@@ -1432,8 +1431,8 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 		if (self->allowAnnots)
+ 			Perm += 32;
+ 		pdfOptions.Permissions = Perm;
+-		pdfOptions.PassOwner = QString(PyString_AsString(self->owner));
+-		pdfOptions.PassUser = QString(PyString_AsString(self->user));
++		pdfOptions.PassOwner = PyUnicode_asQString(self->owner);
++		pdfOptions.PassUser = PyUnicode_asQString(self->user);
+ 	}
+ 	if (self->outdst == 0)
+ 	{
+@@ -1453,9 +1452,9 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 			self->intenti = minmaxi(self->intenti, 0, 3);
+ 			pdfOptions.Intent2 = self->intenti;
+ 			pdfOptions.EmbeddedI = self->noembicc;
+-			pdfOptions.SolidProf = PyString_AsString(self->solidpr);
+-			pdfOptions.ImageProf = PyString_AsString(self->imagepr);
+-			pdfOptions.PrintProf = PyString_AsString(self->printprofc);
++			pdfOptions.SolidProf = PyUnicode_asQString(self->solidpr);
++			pdfOptions.ImageProf = PyUnicode_asQString(self->imagepr);
++			pdfOptions.PrintProf = PyUnicode_asQString(self->printprofc);
+ 			if (pdfOptions.Version == PDFOptions::PDFVersion_X1a ||
+ 				pdfOptions.Version == PDFOptions::PDFVersion_X3 ||
+ 				pdfOptions.Version == PDFOptions::PDFVersion_X4)
+@@ -1469,7 +1468,7 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 					Components = 4;
+ 				if (profile.colorSpace() == ColorSpace_Cmy)
+ 					Components = 3;
+-				pdfOptions.Info = PyString_AsString(self->info);
++				pdfOptions.Info = PyUnicode_asQString(self->info);
+ 				pdfOptions.Encrypt = false;
+ 				pdfOptions.PresentMode = false;
+ 			}
+@@ -1512,7 +1511,7 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 	pdfOptions.MirrorH = self->mirrorH;
+ 	pdfOptions.MirrorV = self->mirrorV;
+ 	pdfOptions.doClip = self->doClip;
+-	pdfOptions.RotateDeg = PyInt_AsLong(self->rotateDeg);
++	pdfOptions.RotateDeg = PyLong_AsLong(self->rotateDeg);
+ 	pdfOptions.isGrayscale = self->isGrayscale;
+ 	pdfOptions.PageLayout = minmaxi(self->pageLayout, 0, 3);
+ 	pdfOptions.displayBookmarks = self->displayBookmarks;
+@@ -1522,7 +1521,7 @@ static PyObject *PDFfile_save(PDFfile *self)
+ 	pdfOptions.hideToolBar = self->hideToolBar;
+ 	pdfOptions.hideMenuBar = self->hideMenuBar;
+ 	pdfOptions.fitWindow = self->fitWindow;
+-	pdfOptions.openAction = QString(PyString_AsString(self->openAction));
++	pdfOptions.openAction = PyUnicode_asQString(self->openAction);
+ 	pdfOptions.firstUse = false;
+ 
+ 	QString errorMessage;
+@@ -1548,8 +1547,7 @@ static PyMethodDef PDFfile_methods[] = {
+ };
+ 
+ PyTypeObject PDFfile_Type = {
+-	PyObject_HEAD_INIT(nullptr) // PyObject_VAR_HEAD
+-	0,		      //
++	PyVarObject_HEAD_INIT(nullptr, 0) // PyObject_VAR_HEAD	      //
+ 	const_cast<char*>("scribus.PDFfile"), // char *tp_name; /* For printing, in format "<module>.<name>" */
+ 	sizeof(PDFfile),     // int tp_basicsize, /* For allocation */
+ 	0,		    // int tp_itemsize; /* For allocation */
+@@ -1624,6 +1622,8 @@ PyTypeObject PDFfile_Type = {
+ 	nullptr, //     PyObject *tp_subclasses;
+ 	nullptr, //     PyObject *tp_weaklist;
+ 	nullptr, //     destructor tp_del;
++	0, //	 unsigned int tp_version_tag;
++	0, //	 destructor tp_finalize;
+ 
+ #ifdef COUNT_ALLOCS
+ 	/* these must be last and never explicitly initialized */
+diff --git a/scribus/plugins/scriptplugin/objprinter.cpp b/scribus/plugins/scriptplugin/objprinter.cpp
+index 2be51b32d4..3219f77534 100644
+--- a/scribus/plugins/scriptplugin/objprinter.cpp
++++ b/scribus/plugins/scriptplugin/objprinter.cpp
+@@ -59,7 +59,7 @@ static void Printer_dealloc(Printer* self)
+ 	Py_XDECREF(self->cmd);
+ 	Py_XDECREF(self->pages);
+ 	Py_XDECREF(self->separation);
+-	self->ob_type->tp_free((PyObject *)self);
++	Py_TYPE(self)->tp_free((PyObject *)self);
+ }
+ 
+ static PyObject * Printer_new(PyTypeObject *type, PyObject * /*args*/, PyObject * /*kwds*/)
+@@ -78,19 +78,19 @@ static PyObject * Printer_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ 			return nullptr;
+ 		}
+ // set printer attribute
+-		self->printer = PyString_FromString("");
++		self->printer = PyUnicode_FromString("");
+ 		if (self->printer == nullptr){
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+ // set file attribute
+-		self->file = PyString_FromString("");
++		self->file = PyUnicode_FromString("");
+ 		if (self->file == nullptr){
+ 			Py_DECREF(self);
+ 			return nullptr;
+ 		}
+ // set cmd attribute
+-		self->cmd = PyString_FromString("");
++		self->cmd = PyUnicode_FromString("");
+ 		if (self->cmd == nullptr){
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -102,7 +102,7 @@ static PyObject * Printer_new(PyTypeObject *type, PyObject * /*args*/, PyObject
+ 			return nullptr;
+ 		}
+ // set separation attribute
+-		self->separation = PyString_FromString("No");
++		self->separation = PyUnicode_FromString("No");
+ 		if (self->separation == nullptr){
+ 			Py_DECREF(self);
+ 			return nullptr;
+@@ -143,18 +143,18 @@ static int Printer_init(Printer *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 		QString prn = printers[i];
+ 		if (prn.isEmpty())
+ 			continue;
+-		PyObject *tmppr = PyString_FromString(prn.toLocal8Bit().constData());
++		PyObject *tmppr = PyUnicode_FromString(prn.toUtf8().constData());
+ 		if (tmppr){
+ 			PyList_Append(self->allPrinters, tmppr);
+ 			Py_DECREF(tmppr);
+ 		}
+ 	}
+-	PyObject *tmp2 = PyString_FromString("File");
++	PyObject *tmp2 = PyUnicode_FromString("File");
+ 	PyList_Append(self->allPrinters, tmp2);
+ 	Py_DECREF(tmp2);
+ // as defaut set to print into file
+ 	PyObject *printer = nullptr;
+-	printer = PyString_FromString("File");
++	printer = PyUnicode_FromString("File");
+ 	if (printer){
+ 		Py_DECREF(self->printer);
+ 		self->printer = printer;
+@@ -166,7 +166,7 @@ static int Printer_init(Printer *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 		tf = fi.path()+"/"+fi.baseName()+".pdf";
+ 	}
+ 	PyObject *file = nullptr;
+-	file = PyString_FromString(tf.toLatin1());
++	file = PyUnicode_FromString(tf.toUtf8());
+ 	if (file){
+ 		Py_DECREF(self->file);
+ 		self->file = file;
+@@ -176,7 +176,7 @@ static int Printer_init(Printer *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	}
+ // alternative printer commands default to ""
+ 	PyObject *cmd = nullptr;
+-	cmd = PyString_FromString("");
++	cmd = PyUnicode_FromString("");
+ 	if (cmd){
+ 		Py_DECREF(self->cmd);
+ 		self->cmd = cmd;
+@@ -192,13 +192,13 @@ static int Printer_init(Printer *self, PyObject * /*args*/, PyObject * /*kwds*/)
+ 	}
+ 	for (int i = 0; i<num; i++) {
+ 		PyObject *tmp=nullptr;
+-		tmp = PyInt_FromLong((long)i+1L); // instead of 1 put here first page number
++		tmp = PyLong_FromLong((long)i+1L); // instead of 1 put here first page number
+ 		if (tmp)
+ 			PyList_SetItem(self->pages, i, tmp);
+ 	}
+ // do not print separation
+ 	PyObject *separation = nullptr;
+-	separation = PyString_FromString("No");
++	separation = PyUnicode_FromString("No");
+ 	if (separation){
+ 		Py_DECREF(self->separation);
+ 		self->separation = separation;
+@@ -257,7 +257,7 @@ static int Printer_setprinter(Printer *self, PyObject *value, void * /*closure*/
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'printer' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'printer' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -288,7 +288,7 @@ static int Printer_setfile(Printer *self, PyObject *value, void * /*closure*/)
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'file' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'file' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -310,7 +310,7 @@ static int Printer_setcmd(Printer *self, PyObject *value, void * /*closure*/)
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'cmd' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'cmd' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -339,11 +339,11 @@ static int Printer_setpages(Printer *self, PyObject *value, void * /*closure*/)
+ 	int len = PyList_Size(value);
+ 	for (int i = 0; i<len; i++){
+ 		PyObject *tmp = PyList_GetItem(value, i);
+-		if (!PyInt_Check(tmp)){
++		if (!PyLong_Check(tmp)){
+ 			PyErr_SetString(PyExc_TypeError, "'pages' attribute must be list containing only integers.");
+ 			return -1;
+ 		}
+-		if (PyInt_AsLong(tmp) > static_cast<int>(ScCore->primaryMainWindow()->doc->Pages->count()) || PyInt_AsLong(tmp) < 1) {
++		if (PyLong_AsLong(tmp) > static_cast<int>(ScCore->primaryMainWindow()->doc->Pages->count()) || PyLong_AsLong(tmp) < 1) {
+ 			PyErr_SetString(PyExc_ValueError, "'pages' value out of range.");
+ 			return -1;
+ 		}
+@@ -366,7 +366,7 @@ static int Printer_setseparation(Printer *self, PyObject *value, void * /*closur
+ 		PyErr_SetString(PyExc_TypeError, "Cannot delete 'separation' attribute.");
+ 		return -1;
+ 	}
+-	if (!PyString_Check(value)) {
++	if (!PyUnicode_Check(value)) {
+ 		PyErr_SetString(PyExc_TypeError, "The 'separation' attribute value must be string.");
+ 		return -1;
+ 	}
+@@ -400,16 +400,16 @@ static PyObject *Printer_print(Printer *self)
+ 	PSfile = false;
+ 
+ //    ReOrderText(ScCore->primaryMainWindow()->doc, ScCore->primaryMainWindow()->view);
+-	prn = QString(PyString_AsString(self->printer));
+-	fna = QString(PyString_AsString(self->file));
+-	fil = QString(PyString_AsString(self->printer)) == QString("File");
++	prn = PyUnicode_asQString(self->printer);
++	fna = PyUnicode_asQString(self->file);
++	fil = PyUnicode_asQString(self->printer) == QString("File");
+ 	std::vector<int> pageNs;
+ 	PrintOptions options;
+ 	for (int i = 0; i < PyList_Size(self->pages); ++i) {
+-		options.pageNumbers.push_back((int)PyInt_AsLong(PyList_GetItem(self->pages, i)));
++		options.pageNumbers.push_back((int) PyLong_AsLong(PyList_GetItem(self->pages, i)));
+ 	}
+ 	int copyCount = (self->copies < 1) ? 1 : self->copies;
+-	SepName = QString(PyString_AsString(self->separation));
++	SepName = PyUnicode_asQString(self->separation);
+ 	options.printer   = prn;
+ 	options.prnEngine = (PrintEngine) self->pslevel;
+ 	options.toFile    = fil;
+@@ -427,7 +427,7 @@ static PyObject *Printer_print(Printer *self)
+ 	options.bleeds.set(0, 0, 0, 0);
+ 	if (!PrinterUtil::checkPrintEngineSupport(options.printer, options.prnEngine, options.toFile))
+ 		options.prnEngine = PrinterUtil::getDefaultPrintEngine(options.printer, options.toFile);
+-	printcomm = QString(PyString_AsString(self->cmd));
++	printcomm = PyUnicode_asQString(self->cmd);
+ 	QMap<QString, QMap<uint, FPointArray> > ReallyUsed;
+ 	ReallyUsed.clear();
+ 	ScCore->primaryMainWindow()->doc->getUsedFonts(ReallyUsed);
+@@ -509,8 +509,7 @@ static PyMethodDef Printer_methods[] = {
+ };
+ 
+ PyTypeObject Printer_Type = {
+-	PyObject_HEAD_INIT(nullptr)   // PyObject_VAR_HEAD
+-	0,			 //
++	PyVarObject_HEAD_INIT(nullptr, 0)   // PyObject_VAR_HEAD	 //
+ 	const_cast<char*>("scribus.Printer"), // char *tp_name; /* For printing, in format "<module>.<name>" */
+ 	sizeof(Printer),   // int tp_basicsize, /* For allocation */
+ 	0,		       // int tp_itemsize; /* For allocation */
+@@ -585,6 +584,8 @@ PyTypeObject Printer_Type = {
+ 	nullptr, //     PyObject *tp_subclasses;
+ 	nullptr, //     PyObject *tp_weaklist;
+ 	nullptr, //     destructor tp_del;
++	0, //	 unsigned int tp_version_tag;
++	0, //	 destructor tp_finalize;
+ 
+ #ifdef COUNT_ALLOCS
+ 	/* these must be last and never explicitly initialized */
+diff --git a/scribus/plugins/scriptplugin/samples/3columnA4.py b/scribus/plugins/scriptplugin/samples/3columnA4.py
+index 2609c72d27..edf0a38a68 100644
+--- a/scribus/plugins/scriptplugin/samples/3columnA4.py
++++ b/scribus/plugins/scriptplugin/samples/3columnA4.py
+@@ -8,9 +8,9 @@
+     # Do so _after_ the 'import scribus' and only import the names you need, such
+     # as commonly used constants.
+     import scribus
+-except ImportError,err:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++except ImportError as err:
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ def main(argv):
+@@ -26,7 +26,7 @@ def main(argv):
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ margins = (50, 50, 50, 50)
+diff --git a/scribus/plugins/scriptplugin/samples/3columnUSLTR.py b/scribus/plugins/scriptplugin/samples/3columnUSLTR.py
+index 0148bac9ed..4e2257b76a 100644
+--- a/scribus/plugins/scriptplugin/samples/3columnUSLTR.py
++++ b/scribus/plugins/scriptplugin/samples/3columnUSLTR.py
+@@ -8,9 +8,9 @@
+     # Do so _after_ the 'import scribus' and only import the names you need, such
+     # as commonly used constants.
+     import scribus
+-except ImportError,err:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++except ImportError as err:
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ def main(argv):
+@@ -24,7 +24,7 @@ def main(argv):
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ margins = (50, 50, 50, 50)
+diff --git a/scribus/plugins/scriptplugin/samples/Calender.py b/scribus/plugins/scriptplugin/samples/Calender.py
+index 2d80546967..f09c7e291d 100644
+--- a/scribus/plugins/scriptplugin/samples/Calender.py
++++ b/scribus/plugins/scriptplugin/samples/Calender.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ import calendar
+diff --git a/scribus/plugins/scriptplugin/samples/ExtractText.py b/scribus/plugins/scriptplugin/samples/ExtractText.py
+index 6c0bfab85c..a17e28b1e2 100644
+--- a/scribus/plugins/scriptplugin/samples/ExtractText.py
++++ b/scribus/plugins/scriptplugin/samples/ExtractText.py
+@@ -73,8 +73,8 @@ def exportText(textfile):
+         if textfile == '':
+             raise Exception
+         exportText(textfile)
+-    except Exception, e:
+-        print e
++    except Exception as e:
++        print (e)
+ 
+ else:
+     scribus.messageBox('Export Error', 'You need a Document open, and a frame selected.', \
+diff --git a/scribus/plugins/scriptplugin/samples/Sample1.py b/scribus/plugins/scriptplugin/samples/Sample1.py
+index 5205543c48..5ae8302007 100644
+--- a/scribus/plugins/scriptplugin/samples/Sample1.py
++++ b/scribus/plugins/scriptplugin/samples/Sample1.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ margins = (10, 10, 10, 30)
+diff --git a/scribus/plugins/scriptplugin/samples/boilerplate.py b/scribus/plugins/scriptplugin/samples/boilerplate.py
+index 85e3b5bca9..c9b0c4be87 100644
+--- a/scribus/plugins/scriptplugin/samples/boilerplate.py
++++ b/scribus/plugins/scriptplugin/samples/boilerplate.py
+@@ -8,9 +8,9 @@
+     # Do so _after_ the 'import scribus' and only import the names you need, such
+     # as commonly used constants.
+     import scribus
+-except ImportError,err:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++except ImportError as err:
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ #########################
+diff --git a/scribus/plugins/scriptplugin/samples/golden-mean.py b/scribus/plugins/scriptplugin/samples/golden-mean.py
+index 4b7fc8bc82..2f15579732 100644
+--- a/scribus/plugins/scriptplugin/samples/golden-mean.py
++++ b/scribus/plugins/scriptplugin/samples/golden-mean.py
+@@ -44,7 +44,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ from math import sqrt
+diff --git a/scribus/plugins/scriptplugin/samples/legende.py b/scribus/plugins/scriptplugin/samples/legende.py
+index 933bc7b484..d8c13373c1 100644
+--- a/scribus/plugins/scriptplugin/samples/legende.py
++++ b/scribus/plugins/scriptplugin/samples/legende.py
+@@ -9,7 +9,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ import os
+diff --git a/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py b/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py
+index c1ee6ef615..4306eb992c 100644
+--- a/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py
++++ b/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ if haveDoc() and selectionCount():
+diff --git a/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py b/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py
+index 36d174e5c7..018e0ba0dc 100644
+--- a/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py
++++ b/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ if haveDoc() and selectionCount():
+diff --git a/scribus/plugins/scriptplugin/samples/pochette_cd.py b/scribus/plugins/scriptplugin/samples/pochette_cd.py
+index 0b8700cf3b..e098545066 100644
+--- a/scribus/plugins/scriptplugin/samples/pochette_cd.py
++++ b/scribus/plugins/scriptplugin/samples/pochette_cd.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ margins = (0, 0, 0, 0)
+diff --git a/scribus/plugins/scriptplugin/samples/quote.py b/scribus/plugins/scriptplugin/samples/quote.py
+index aee03371b3..ab69823d9d 100644
+--- a/scribus/plugins/scriptplugin/samples/quote.py
++++ b/scribus/plugins/scriptplugin/samples/quote.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ import re
+diff --git a/scribus/plugins/scriptplugin/samples/sample_db_usage.py b/scribus/plugins/scriptplugin/samples/sample_db_usage.py
+index 3449015d84..1b3239bf0f 100644
+--- a/scribus/plugins/scriptplugin/samples/sample_db_usage.py
++++ b/scribus/plugins/scriptplugin/samples/sample_db_usage.py
+@@ -47,13 +47,13 @@
+ try:
+     import scribus
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ try:
+     import MySQLdb
+ except ImportError:
+-    print "You must have 'MySQLdb' installed."
++    print ("You must have 'MySQLdb' installed.")
+     sys.exit(1)
+ 
+ 
+diff --git a/scribus/plugins/scriptplugin/samples/trait_de_coupe.py b/scribus/plugins/scriptplugin/samples/trait_de_coupe.py
+index 12ad7893d7..e8d5254000 100644
+--- a/scribus/plugins/scriptplugin/samples/trait_de_coupe.py
++++ b/scribus/plugins/scriptplugin/samples/trait_de_coupe.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ def main():
+diff --git a/scribus/plugins/scriptplugin/samples/wordcount.py b/scribus/plugins/scriptplugin/samples/wordcount.py
+index de372d6110..e7ffa132fb 100644
+--- a/scribus/plugins/scriptplugin/samples/wordcount.py
++++ b/scribus/plugins/scriptplugin/samples/wordcount.py
+@@ -8,7 +8,7 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ 
+ import re
+diff --git a/scribus/plugins/scriptplugin/scriptercore.cpp b/scribus/plugins/scriptplugin/scriptercore.cpp
+index b9a3cf97a2..41d5ea9790 100644
+--- a/scribus/plugins/scriptplugin/scriptercore.cpp
++++ b/scribus/plugins/scriptplugin/scriptercore.cpp
+@@ -17,6 +17,7 @@ for which a new license (GPL+exception) is in place.
+ #include <QPixmap>
+ #include <cstdlib>
+ 
++#include "cmdutil.h"
+ #include "runscriptdialog.h"
+ #include "ui/helpbrowser.h"
+ #include "ui/marksmanager.h"
+@@ -256,20 +257,20 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+ 		global_state = PyThreadState_Get();
+ 		state = Py_NewInterpreter();
+ 		// Init the scripter module in the sub-interpreter
+-		initscribus(ScCore->primaryMainWindow());
++		//initscribus(ScCore->primaryMainWindow());
+ 	}
+ 
+ 	// Make sure sys.argv[0] is the path to the script
+ 	arguments.prepend(na.data());
+ 	//convert arguments (QListString) to char** for Python bridge
+ 	/* typically arguments == ['path/to/script.py','--argument1','valueforarg1','--flag']*/
+-	char **comm = new char*[arguments.size()];
++	wchar_t **comm = new wchar_t*[arguments.size()];
+ 	for (int i = 0; i < arguments.size(); i++)
+ 	{
+-		QByteArray localStr = arguments.at(i).toLocal8Bit();
+-		comm[i] = new char[localStr.size() + 1]; //+1 to allow adding '\0'. may be useless, don't know how to check.
+-		comm[i][localStr.size()] = 0;
+-		strncpy(comm[i], localStr.data(), localStr.size());
++		const QString& argStr = arguments.at(i);
++		comm[i] = new wchar_t[argStr.size() + 1]; //+1 to allow adding '\0'. may be useless, don't know how to check.
++		comm[i][argStr.size()] = 0;
++		argStr.toWCharArray(comm[i]);
+ 	}
+ 	PySys_SetArgv(arguments.size(), comm);
+ 
+@@ -291,7 +292,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+ 		// Build the Python code to run the script
+ 		//QString cm = QString("from __future__ import division\n"); removed due #5252 PV
+ 		QString cm = QString("import sys\n");
+-		cm        += QString("import cStringIO\n");
++		cm        += QString("import io\n");
+ 		/* Implementation of the help() in pydoc.py reads some OS variables
+ 		 * for output settings. I use ugly hack to stop freezing calling help()
+ 		 * in script. pv. */
+@@ -299,7 +300,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+ 		cm        += QString("sys.path[0] = \"%1\"\n").arg(escapedAbsPath);
+ 		// Replace sys.stdin with a dummy StringIO that always returns
+ 		// "" for read
+-		cm        += QString("sys.stdin = cStringIO.StringIO()\n");
++		cm        += QString("sys.stdin = io.StringIO()\n");
+ 		// tell the script if it's running in the main intepreter or a subinterpreter
+ 		cm        += QString("import scribus\n");
+ 		if (inMainInterpreter)
+@@ -307,7 +308,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+ 		else
+ 			cm+= QString("scribus.mainInterpreter = False\n");
+ 		cm        += QString("try:\n");
+-		cm        += QString("    execfile(\"%1\")\n").arg(escapedFileName);
++		cm        += QString("    exec(open(\"%1\", \"rb\").read())\n").arg(escapedFileName);
+ 		cm        += QString("except SystemExit:\n");
+ 		cm        += QString("    pass\n");
+ 		// Capture the text of any other exception that's raised by the interpreter
+@@ -341,7 +342,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+ 			}
+ 			else if (ScCore->usingGUI())
+ 			{
+-				QString errorMsg = PyString_AsString(errorMsgPyStr);
++				QString errorMsg = PyUnicode_asQString(errorMsgPyStr);
+ 				// Display a dialog to the user with the exception
+ 				QClipboard *cp = QApplication::clipboard();
+ 				cp->setText(errorMsg);
+@@ -399,7 +400,7 @@ void ScripterCore::slotRunScript(const QString& Script)
+ 	cm = "# -*- coding: utf8 -*- \n";
+ 	if (PyThreadState_Get() != nullptr)
+ 	{
+-		initscribus(ScCore->primaryMainWindow());
++		//initscribus(ScCore->primaryMainWindow());
+ 		/* HACK: following loop handles all input line by line.
+ 		It *should* use I.C. because of docstrings etc. I.I. cannot
+ 		handle docstrings right.
+@@ -408,8 +409,8 @@ void ScripterCore::slotRunScript(const QString& Script)
+ 		works fine in plain Python. Not here. WTF? */
+ 		cm += (
+ 				"try:\n"
+-				"    import cStringIO\n"
+-				"    scribus._bu = cStringIO.StringIO()\n"
++				"    import io\n"
++				"    scribus._bu = io.StringIO()\n"
+ 				"    sys.stdout = scribus._bu\n"
+ 				"    sys.stderr = scribus._bu\n"
+ 				"    sys.argv = ['scribus']\n" // this is the PySys_SetArgv replacement
+@@ -420,9 +421,9 @@ void ScripterCore::slotRunScript(const QString& Script)
+ 				"    sys.stdout = sys.__stdout__\n"
+ 				"    sys.stderr = sys.__stderr__\n"
+ 				"except SystemExit:\n"
+-				"    print 'Catched SystemExit - it is not good for Scribus'\n"
++				"    print ('Catched SystemExit - it is not good for Scribus')\n"
+ 				"except KeyboardInterrupt:\n"
+-				"    print 'Catched KeyboardInterrupt - it is not good for Scribus'\n"
++				"    print ('Catched KeyboardInterrupt - it is not good for Scribus')\n"
+ 			  );
+ 	}
+ 	// Set up sys.argv
+@@ -599,8 +600,8 @@ bool ScripterCore::setupMainInterpreter()
+ 		"import sys\n"
+ 		"import code\n"
+ 		"sys.path.insert(0, \"%1\")\n"
+-		"import cStringIO\n"
+-		"sys.stdin = cStringIO.StringIO()\n"
++		"import io\n"
++		"sys.stdin = io.StringIO()\n"
+ 		"scribus._ia = code.InteractiveConsole(globals())\n"
+ 		).arg(ScPaths::instance().scriptDir());
+ 	if (m_importAllNames)
+diff --git a/scribus/plugins/scriptplugin/scriptplugin.cpp b/scribus/plugins/scriptplugin/scriptplugin.cpp
+index d8b8401272..87461a5b99 100644
+--- a/scribus/plugins/scriptplugin/scriptplugin.cpp
++++ b/scribus/plugins/scriptplugin/scriptplugin.cpp
+@@ -166,20 +166,20 @@ bool ScriptPlugin::initPlugin()
+ 	if (QDir(pyHome).exists())
+ 	{
+ 		QString ph = QDir::toNativeSeparators(pyHome);
+-		pythonHome = ph.toLocal8Bit();
+-		Py_SetPythonHome(pythonHome.data());
++		pythonHome.resize(2 * ph.length() + 2);
++		memcpy(pythonHome.data(), ph.utf16(), 2 * ph.length() + 2);
++		Py_SetPythonHome((const wchar_t*) pythonHome.constData());
+ 	}
+ #endif
+-	Py_Initialize();
+-	if (PyUnicode_SetDefaultEncoding("utf-8"))
+-	{
+-		qDebug("Failed to set default encoding to utf-8.\n");
+-		PyErr_Clear();
+-	}
+ 
+ 	scripterCore = new ScripterCore(ScCore->primaryMainWindow());
+ 	Q_CHECK_PTR(scripterCore);
+-	initscribus(ScCore->primaryMainWindow());
++
++	PyImport_AppendInittab("scribus", &PyInit_scribus);
++	Py_Initialize();
++
++	//initscribus(ScCore->primaryMainWindow());
++	
+ #ifdef HAVE_SCRIPTER2
+ 	scripter2_init();
+ #endif
+@@ -228,7 +228,7 @@ void run()
+ /*static */PyObject *scribus_retval(PyObject* /*self*/, PyObject* args)
+ {
+ 	char *Name = nullptr;
+-	if (!PyArg_ParseTuple(args, (char*)"s", &Name))
++	if (!PyArg_ParseTuple(args, (char*) "s", &Name))
+ 		return nullptr;
+ 	// Because sysdefaultencoding is not utf-8, Python is returning utf-8 encoded
+ 	// 8-bit char* strings. Make sure Qt understands that the input is utf-8 not
+@@ -236,12 +236,12 @@ void run()
+ 	/*RetString = QString::fromUtf8(Name);
+ 	RetVal = retV;*/
+ 	scripterCore->returnString = QString::fromUtf8(Name);
+-	return PyInt_FromLong(0L);
++	return PyLong_FromLong(0L);
+ }
+ 
+ /*static */PyObject *scribus_getval(PyObject* /*self*/)
+ {
+-	return PyString_FromString(scripterCore->inValue.toUtf8().data());
++	return PyUnicode_FromString(scripterCore->inValue.toUtf8().data());
+ }
+ 
+ /*! \brief Translate a docstring. Small helper function for use with the
+@@ -307,8 +307,8 @@ PyMethodDef scribus_methods[] = {
+ 	{const_cast<char*>("createRect"), scribus_newrect, METH_VARARGS, tr(scribus_newrect__doc__)},
+ 	{const_cast<char*>("createText"), scribus_newtext, METH_VARARGS, tr(scribus_newtext__doc__)},
+ 	{const_cast<char*>("createTable"), scribus_newtable, METH_VARARGS, tr(scribus_newtable__doc__)},
+-	{const_cast<char*>("createParagraphStyle"), (PyCFunction)scribus_createparagraphstyle, METH_KEYWORDS, tr(scribus_createparagraphstyle__doc__)},
+-	{const_cast<char*>("createCharStyle"), (PyCFunction)scribus_createcharstyle, METH_KEYWORDS, tr(scribus_createcharstyle__doc__)},
++	{const_cast<char*>("createParagraphStyle"), (PyCFunction)scribus_createparagraphstyle, METH_VARARGS|METH_KEYWORDS, tr(scribus_createparagraphstyle__doc__)},
++	{const_cast<char*>("createCharStyle"), (PyCFunction)scribus_createcharstyle, METH_VARARGS|METH_KEYWORDS, tr(scribus_createcharstyle__doc__)},
+ 	{const_cast<char*>("createCustomLineStyle"), scribus_createcustomlinestyle, METH_VARARGS, tr(scribus_createcustomlinestyle__doc__)},
+ 	{const_cast<char*>("currentPage"), (PyCFunction)scribus_actualpage, METH_NOARGS, tr(scribus_actualpage__doc__)},
+ 	{const_cast<char*>("defineColor"), scribus_newcolor, METH_VARARGS, tr(scribus_newcolor__doc__)},
+@@ -453,7 +453,7 @@ PyMethodDef scribus_methods[] = {
+ 	{const_cast<char*>("redrawAll"), (PyCFunction)scribus_redraw, METH_NOARGS, tr(scribus_redraw__doc__)},
+ 	{const_cast<char*>("removeTableRows"), scribus_removetablerows, METH_VARARGS, tr(scribus_removetablerows__doc__)},
+ 	{const_cast<char*>("removeTableColumns"), scribus_removetablecolumns, METH_VARARGS, tr(scribus_removetablecolumns__doc__)},
+-	{const_cast<char*>("renderFont"), (PyCFunction)scribus_renderfont, METH_KEYWORDS, tr(scribus_renderfont__doc__)},
++	{const_cast<char*>("renderFont"), (PyCFunction)scribus_renderfont, METH_VARARGS|METH_KEYWORDS, tr(scribus_renderfont__doc__)},
+ 	{const_cast<char*>("replaceColor"), scribus_replcolor, METH_VARARGS, tr(scribus_replcolor__doc__)},
+ 	{const_cast<char*>("resizeTableColumn"), scribus_resizetablecolumn, METH_VARARGS, tr(scribus_resizetablecolumn__doc__)},
+ 	{const_cast<char*>("resizeTableRow"), scribus_resizetablerow, METH_VARARGS, tr(scribus_resizetablerow__doc__)},
+@@ -535,7 +535,7 @@ PyMethodDef scribus_methods[] = {
+ 	{const_cast<char*>("dehyphenateText"), scribus_dehyphenatetext, METH_VARARGS, tr(scribus_dehyphenatetext__doc__)},
+ 	{const_cast<char*>("scrollDocument"), scribus_scrolldocument, METH_VARARGS, tr(scribus_scrolldocument__doc__) },
+ 	{const_cast<char*>("setScaleFrameToImage"), (PyCFunction)scribus_setscaleframetoimage, METH_VARARGS, tr(scribus_setscaleframetoimage__doc__)},
+-	{const_cast<char*>("setScaleImageToFrame"), (PyCFunction)scribus_setscaleimagetoframe, METH_KEYWORDS, tr(scribus_setscaleimagetoframe__doc__)},
++	{const_cast<char*>("setScaleImageToFrame"), (PyCFunction)scribus_setscaleimagetoframe, METH_VARARGS|METH_KEYWORDS, tr(scribus_setscaleimagetoframe__doc__)},
+ 	{const_cast<char*>("setStyle"), scribus_setstyle, METH_VARARGS, tr(scribus_setstyle__doc__)},
+ 	{const_cast<char*>("setCharacterStyle"), scribus_setcharstyle, METH_VARARGS, tr(scribus_setcharstyle__doc__) },
+ 	{const_cast<char*>("setTableStyle"), scribus_settablestyle, METH_VARARGS, tr(scribus_settablestyle__doc__)},
+@@ -558,19 +558,19 @@ PyMethodDef scribus_methods[] = {
+ 	{const_cast<char*>("sizeObject"), scribus_sizeobjabs, METH_VARARGS, tr(scribus_sizeobjabs__doc__)},
+ 	{const_cast<char*>("statusMessage"), scribus_messagebartext, METH_VARARGS, tr(scribus_messagebartext__doc__)},
+ 	{const_cast<char*>("textFlowMode"), scribus_textflow, METH_VARARGS, tr(scribus_textflow__doc__)},
+-	{const_cast<char*>("textOverflows"), (PyCFunction)scribus_istextoverflowing, METH_KEYWORDS, tr(scribus_istextoverflowing__doc__) },
++	{const_cast<char*>("textOverflows"), (PyCFunction)scribus_istextoverflowing, METH_VARARGS|METH_KEYWORDS, tr(scribus_istextoverflowing__doc__) },
+ 	{const_cast<char*>("traceText"), scribus_tracetext, METH_VARARGS, tr(scribus_tracetext__doc__)},
+ 	{const_cast<char*>("unGroupObject"), scribus_ungroupobj, METH_VARARGS, tr(scribus_ungroupobj__doc__)},
+ 	{const_cast<char*>("unlinkTextFrames"), scribus_unlinktextframes, METH_VARARGS, tr(scribus_unlinktextframes__doc__)},
+ 	{const_cast<char*>("valueDialog"), scribus_valdialog, METH_VARARGS, tr(scribus_valdialog__doc__)},
+ 	{const_cast<char*>("zoomDocument"), scribus_zoomdocument, METH_VARARGS, tr(scribus_zoomdocument__doc__)},
+ 	// Property magic
+-	{const_cast<char*>("getPropertyCType"), (PyCFunction)scribus_propertyctype, METH_KEYWORDS, tr(scribus_propertyctype__doc__)},
+-	{const_cast<char*>("getPropertyNames"), (PyCFunction)scribus_getpropertynames, METH_KEYWORDS, tr(scribus_getpropertynames__doc__)},
+-	{const_cast<char*>("getProperty"), (PyCFunction)scribus_getproperty, METH_KEYWORDS, tr(scribus_getproperty__doc__)},
+-	{const_cast<char*>("setProperty"), (PyCFunction)scribus_setproperty, METH_KEYWORDS, tr(scribus_setproperty__doc__)},
+-// 	{const_cast<char*>("getChildren"), (PyCFunction)scribus_getchildren, METH_KEYWORDS, tr(scribus_getchildren__doc__)},
+-// 	{const_cast<char*>("getChild"), (PyCFunction)scribus_getchild, METH_KEYWORDS, tr(scribus_getchild__doc__)},
++	{const_cast<char*>("getPropertyCType"), (PyCFunction)scribus_propertyctype, METH_VARARGS|METH_KEYWORDS, tr(scribus_propertyctype__doc__)},
++	{const_cast<char*>("getPropertyNames"), (PyCFunction)scribus_getpropertynames, METH_VARARGS|METH_KEYWORDS, tr(scribus_getpropertynames__doc__)},
++	{const_cast<char*>("getProperty"), (PyCFunction)scribus_getproperty, METH_VARARGS|METH_KEYWORDS, tr(scribus_getproperty__doc__)},
++	{const_cast<char*>("setProperty"), (PyCFunction)scribus_setproperty, METH_VARARGS|METH_KEYWORDS, tr(scribus_setproperty__doc__)},
++// 	{const_cast<char*>("getChildren"), (PyCFunction)scribus_getchildren, METH_VARARGS|METH_KEYWORDS, tr(scribus_getchildren__doc__)},
++// 	{const_cast<char*>("getChild"), (PyCFunction)scribus_getchild, METH_VARARGS|METH_KEYWORDS, tr(scribus_getchild__doc__)},
+ 	// by Christian Hausknecht
+ 	{const_cast<char*>("duplicateObject"), scribus_duplicateobject, METH_VARARGS, tr(scribus_duplicateobject__doc__)},
+ 	{const_cast<char*>("copyObject"), scribus_copyobject, METH_VARARGS, tr(scribus_copyobject__doc__)},
+@@ -591,6 +591,36 @@ PyMethodDef scribus_methods[] = {
+ 	{nullptr, (PyCFunction)(nullptr), 0, nullptr} /* sentinel */
+ };
+ 
++struct scribus_module_state
++{
++    PyObject *error;
++};
++#define GETSTATE(m) ((struct scribus_module_state*) PyModule_GetState(m))
++
++static int scribus_extension_traverse(PyObject *m, visitproc visit, void *arg)
++{
++	Py_VISIT(GETSTATE(m)->error);
++	return 0;
++}
++
++static int scribus_extension_clear(PyObject *m)
++{
++	Py_CLEAR(GETSTATE(m)->error);
++	return 0;
++}
++
++static struct PyModuleDef scribus_module_def = {
++        PyModuleDef_HEAD_INIT,
++        "scribus",
++        NULL,
++        sizeof(struct scribus_module_state),
++        scribus_methods,
++        NULL,
++        scribus_extension_traverse,
++        scribus_extension_clear,
++        NULL
++};
++
+ void initscribus_failed(const char* fileName, int lineNo)
+ {
+ 	qDebug("Scripter setup failed (%s:%i)", fileName, lineNo);
+@@ -598,68 +628,78 @@ void initscribus_failed(const char* fileName, int lineNo)
+ 		PyErr_Print();
+ }
+ 
+-void initscribus(ScribusMainWindow *mainWin)
++PyObject* PyInit_scribus(void)
+ {
++	ScribusMainWindow* mainWin = ScCore->primaryMainWindow();
+ 	if (!scripterCore)
+ 	{
+ 		qWarning("scriptplugin: Tried to init scribus module, but no scripter core. Aborting.");
+-		return;
++		return nullptr;
+ 	}
++
++	int result;
+ 	PyObject *m, *d;
+-	PyImport_AddModule((char*)"scribus");
+ 
+ 	PyType_Ready(&Printer_Type);
+ 	PyType_Ready(&PDFfile_Type);
+ 	PyType_Ready(&ImageExport_Type);
+-	m = Py_InitModule((char*)"scribus", scribus_methods);
++
++	m = PyModule_Create(&scribus_module_def);
++
+ 	Py_INCREF(&Printer_Type);
+-	PyModule_AddObject(m, (char*)"Printer", (PyObject *) &Printer_Type);
++	result = PyModule_AddObject(m, (char*) "Printer", (PyObject *) &Printer_Type);
++	if (result != 0)
++		qDebug("scriptplugin: Could not create scribus.Printer module");
+ 	Py_INCREF(&PDFfile_Type);
+-	PyModule_AddObject(m, (char*)"PDFfile", (PyObject *) &PDFfile_Type);
++	result = PyModule_AddObject(m, (char*) "PDFfile", (PyObject *) &PDFfile_Type);
++	if (result != 0)
++		qDebug("scriptplugin: Could not create scribus.PDFfile module");
+ 	Py_INCREF(&ImageExport_Type);
+-	PyModule_AddObject(m, (char*)"ImageExport", (PyObject *) &ImageExport_Type);
++	PyModule_AddObject(m, (char*) "ImageExport", (PyObject *) &ImageExport_Type);
++	if (result != 0)
++		qDebug("scriptplugin: Could not create scribus.ImageExport module");
+ 	d = PyModule_GetDict(m);
+ 
+ 	// Set up the module exceptions
+ 	// common exc.
+-	ScribusException = PyErr_NewException((char*)"scribus.ScribusException", nullptr, nullptr);
++	ScribusException = PyErr_NewException((char*) "scribus.ScribusException", nullptr, nullptr);
+ 	Py_INCREF(ScribusException);
+-	PyModule_AddObject(m, (char*)"ScribusException", ScribusException);
++	PyModule_AddObject(m, (char*) "ScribusException", ScribusException);
+ 	// no doc open
+-	NoDocOpenError = PyErr_NewException((char*)"scribus.NoDocOpenError", ScribusException, nullptr);
++	NoDocOpenError = PyErr_NewException((char*) "scribus.NoDocOpenError", ScribusException, nullptr);
+ 	Py_INCREF(NoDocOpenError);
+-	PyModule_AddObject(m, (char*)"NoDocOpenError", NoDocOpenError);
++	PyModule_AddObject(m, (char*) "NoDocOpenError", NoDocOpenError);
+ 	// wrong type of frame for operation
+-	WrongFrameTypeError = PyErr_NewException((char*)"scribus.WrongFrameTypeError", ScribusException, nullptr);
++	WrongFrameTypeError = PyErr_NewException((char*) "scribus.WrongFrameTypeError", ScribusException, nullptr);
+ 	Py_INCREF(WrongFrameTypeError);
+-	PyModule_AddObject(m, (char*)"WrongFrameTypeError", WrongFrameTypeError);
++	PyModule_AddObject(m, (char*) "WrongFrameTypeError", WrongFrameTypeError);
+ 	// Couldn't find named object, or no named object and no selection
+-	NoValidObjectError = PyErr_NewException((char*)"scribus.NoValidObjectError", ScribusException, nullptr);
++	NoValidObjectError = PyErr_NewException((char*) "scribus.NoValidObjectError", ScribusException, nullptr);
+ 	Py_INCREF(NoValidObjectError);
+-	PyModule_AddObject(m, (char*)"NoValidObjectError", NoValidObjectError);
++	PyModule_AddObject(m, (char*) "NoValidObjectError", NoValidObjectError);
+ 	// Couldn't find the specified resource - font, color, etc.
+-	NotFoundError = PyErr_NewException((char*)"scribus.NotFoundError", ScribusException, nullptr);
++	NotFoundError = PyErr_NewException((char*) "scribus.NotFoundError", ScribusException, nullptr);
+ 	Py_INCREF(NotFoundError);
+-	PyModule_AddObject(m, (char*)"NotFoundError", NotFoundError);
++	PyModule_AddObject(m, (char*) "NotFoundError", NotFoundError);
+ 	// Tried to create an object with the same name as one that already exists
+-	NameExistsError = PyErr_NewException((char*)"scribus.NameExistsError", ScribusException, nullptr);
++	NameExistsError = PyErr_NewException((char*) "scribus.NameExistsError", ScribusException, nullptr);
+ 	Py_INCREF(NameExistsError);
+-	PyModule_AddObject(m, (char*)"NameExistsError", NameExistsError);
++	PyModule_AddObject(m, (char*) "NameExistsError", NameExistsError);
+ 	// Done with exception setup
+ 
+ 	// CONSTANTS
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_POINTS"), PyInt_FromLong(unitIndexFromString("pt")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_MILLIMETERS"), PyInt_FromLong(unitIndexFromString("mm")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_INCHES"), PyInt_FromLong(unitIndexFromString("in")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_PICAS"), PyInt_FromLong(unitIndexFromString("p")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_CENTIMETRES"), PyInt_FromLong(unitIndexFromString("cm")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_CICERO"), PyInt_FromLong(unitIndexFromString("c")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_PT"), PyInt_FromLong(unitIndexFromString("pt")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_MM"), PyInt_FromLong(unitIndexFromString("mm")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_IN"), PyInt_FromLong(unitIndexFromString("in")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_P"), PyInt_FromLong(unitIndexFromString("p")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_CM"), PyInt_FromLong(unitIndexFromString("cm")));
+-	PyDict_SetItemString(d, const_cast<char*>("UNIT_C"), PyInt_FromLong(unitIndexFromString("c")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_POINTS"), PyLong_FromLong(unitIndexFromString("pt")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_MILLIMETERS"), PyLong_FromLong(unitIndexFromString("mm")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_INCHES"), PyLong_FromLong(unitIndexFromString("in")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_PICAS"), PyLong_FromLong(unitIndexFromString("p")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_CENTIMETRES"), PyLong_FromLong(unitIndexFromString("cm")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_CICERO"), PyLong_FromLong(unitIndexFromString("c")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_PT"), PyLong_FromLong(unitIndexFromString("pt")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_MM"), PyLong_FromLong(unitIndexFromString("mm")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_IN"), PyLong_FromLong(unitIndexFromString("in")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_P"), PyLong_FromLong(unitIndexFromString("p")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_CM"), PyLong_FromLong(unitIndexFromString("cm")));
++	PyDict_SetItemString(d, const_cast<char*>("UNIT_C"), PyLong_FromLong(unitIndexFromString("c")));
+ 	PyDict_SetItemString(d, const_cast<char*>("PORTRAIT"), Py_BuildValue(const_cast<char*>("i"), portraitPage));
+ 	PyDict_SetItemString(d, const_cast<char*>("LANDSCAPE"), Py_BuildValue(const_cast<char*>("i"), landscapePage));
+ 	PyDict_SetItemString(d, const_cast<char*>("NOFACINGPAGES"), Py_BuildValue(const_cast<char*>("i"), 0));
+@@ -799,28 +839,28 @@ void initscribus(ScribusMainWindow *mainWin)
+ 		if (!value)
+ 		{
+ 			initscribus_failed(__FILE__, __LINE__);
+-			return;
++			return nullptr;
+ 		}
+ 		// `in' is a reserved word in Python so we must replace it
+ 		PyObject* name;
+ 		if (unitGetUntranslatedStrFromIndex(i) == "in")
+-			name = PyString_FromString("inch");
++			name = PyUnicode_FromString("inch");
+ 		else
+-			name = PyString_FromString(unitGetUntranslatedStrFromIndex(i).toLatin1().constData());
++			name = PyUnicode_FromString(unitGetUntranslatedStrFromIndex(i).toUtf8().constData());
+ 		if (!name)
+ 		{
+ 			initscribus_failed(__FILE__, __LINE__);
+-			return;
++			return nullptr;
+ 		}
+ 		if (PyDict_SetItem(d, name, value))
+ 		{
+ 			initscribus_failed(__FILE__, __LINE__);
+-			return;
++			return nullptr;
+ 		}
+ 	}
+ 
+ 	// Export the Scribus version into the module namespace so scripts know what they're running in
+-	PyDict_SetItemString(d, const_cast<char*>("scribus_version"), PyString_FromString(const_cast<char*>(VERSION)));
++	PyDict_SetItemString(d, const_cast<char*>("scribus_version"), PyUnicode_FromString(const_cast<char*>(VERSION)));
+ 	// Now build a version tuple like that provided by Python in sys.version_info
+ 	// The tuple is of the form (major, minor, patchlevel, extraversion, reserved)
+ 	QRegExp version_re("(\\d+)\\.(\\d+)\\.(\\d+)(.*)");
+@@ -848,28 +888,20 @@ void initscribus(ScribusMainWindow *mainWin)
+ 	// the generated Python functions from inside the `scribus' module's context.
+ 	// This code makes it possible to extend the `scribus' module by running Python code
+ 	// from C in other ways too.
+-	PyObject* builtinModule = PyImport_ImportModuleEx(const_cast<char*>("__builtin__"),
++	PyObject* builtinModule = PyImport_ImportModuleEx(const_cast<char*>("builtins"),
+ 			d, d, Py_BuildValue(const_cast<char*>("[]")));
+ 	if (builtinModule == nullptr)
+ 	{
+-		qDebug("Failed to import __builtin__ module. Something is probably broken with your Python.");
+-		return;
+-	}
+-	PyDict_SetItemString(d, const_cast<char*>("__builtin__"), builtinModule);
+-	PyObject* exceptionsModule = PyImport_ImportModuleEx(const_cast<char*>("exceptions"),
+-			d, d, Py_BuildValue(const_cast<char*>("[]")));
+-	if (exceptionsModule == nullptr)
+-	{
+-		qDebug("Failed to import exceptions module. Something is probably broken with your Python.");
+-		return;
++		qDebug("Failed to import builtins module. Something is probably broken with your Python.");
++		return nullptr;
+ 	}
+-	PyDict_SetItemString(d, const_cast<char*>("exceptions"), exceptionsModule);
++	PyDict_SetItemString(d, const_cast<char*>("builtins"), builtinModule);
+ 	PyObject* warningsModule = PyImport_ImportModuleEx(const_cast<char*>("warnings"),
+ 			d, d, Py_BuildValue(const_cast<char*>("[]")));
+ 	if (warningsModule == nullptr)
+ 	{
+ 		qDebug("Failed to import warnings module. Something is probably broken with your Python.");
+-		return;
++		return nullptr;
+ 	}
+ 	PyDict_SetItemString(d, const_cast<char*>("warnings"), warningsModule);
+ 	// Create the module-level docstring. This can be a proper unicode string, unlike
+@@ -907,21 +939,11 @@ function's documentation, though as with most Python code this list\n\
+ is not exhaustive due to exceptions from called functions.\n\
+ ");
+ 
+-	PyObject* docStr = PyString_FromString(docstring.toUtf8().data());
++	PyObject* docStr = PyUnicode_FromString(docstring.toUtf8().data());
+ 	if (!docStr)
+ 		qDebug("Failed to create module-level docstring (couldn't make str)");
+ 	else
+-	{
+-		PyObject* uniDocStr = PyUnicode_FromEncodedObject(docStr, "utf-8", nullptr);
+-		Py_DECREF(docStr);
+-		docStr = nullptr;
+-		if (!uniDocStr)
+-			qDebug("Failed to create module-level docstring object (couldn't make unicode)");
+-		else
+-			PyDict_SetItemString(d, const_cast<char*>("__doc__"), uniDocStr);
+-		Py_DECREF(uniDocStr);
+-		uniDocStr = nullptr;
+-	}
++		PyDict_SetItemString(d, const_cast<char*>("__doc__"), docStr);
+ 
+ 	// Wrap up pointers to the the QApp and main window and push them out
+ 	// to Python.
+@@ -946,6 +968,8 @@ is not exhaustive due to exceptions from called functions.\n\
+ 	PyDict_SetItemString(d, const_cast<char*>("mainWindow"), wrappedMainWindow);
+ 	Py_DECREF(wrappedMainWindow);
+ 	wrappedMainWindow = nullptr;
++
++	return m;
+ }
+ 
+ /*! HACK: this removes "warning: 'blah' defined but not used" compiler warnings
+diff --git a/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py b/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py
+index 8d780fd833..1696d91d02 100644
+--- a/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py
++++ b/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py
+@@ -22,10 +22,9 @@
+ import scribus
+  
+ try:
+-    from Tkinter import *
+-    from tkFont import Font
++    from tkinter import *
+ except ImportError:
+-    print "This script requires Python's Tkinter properly installed."
++    print ("This script requires Python's Tkinter properly installed.")
+     scribus.messageBox('Script failed',
+                'This script requires Python\'s Tkinter properly installed.',
+                scribus.ICON_CRITICAL)
+@@ -83,8 +82,8 @@ def __init__(self, master=None):
+  
+     def alignImage(self):
+         if scribus.haveDoc():
+-	    restore_units = scribus.getUnit()   # since there is an issue with units other than points,
+-	    scribus.setUnit(0)			# we switch to points then restore later.
++            restore_units = scribus.getUnit()   # since there is an issue with units other than points,
++            scribus.setUnit(0)			# we switch to points then restore later.
+             nbrSelected = scribus.selectionCount()
+             objList = []
+             for i in range(nbrSelected):
+@@ -124,9 +123,9 @@ def alignImage(self):
+                     scribus.deselectAll()
+                 except:
+                     nothing = "nothing"
+-	    scribus.setUnit(restore_units)
+-	    
+-	    self.master.destroy()
++            scribus.setUnit(restore_units)
++            
++            self.master.destroy()
+  
+  
+ def main():
+diff --git a/scribus/plugins/scriptplugin/scripts/CalendarWizard.py b/scribus/plugins/scriptplugin/scripts/CalendarWizard.py
+index bf413e8276..4a13b75079 100644
+--- a/scribus/plugins/scriptplugin/scripts/CalendarWizard.py
++++ b/scribus/plugins/scriptplugin/scripts/CalendarWizard.py
+@@ -54,16 +54,16 @@
+ try:
+     from scribus import *
+ except ImportError:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ try:
+     # I wish PyQt installed everywhere :-/
+-    from Tkinter import *
+-    from tkFont import Font
++    from tkinter import *
++    from tkinter import font
+ except ImportError:
+-    print "This script requires Python's Tkinter properly installed."
++    print ("This script requires Python's Tkinter properly installed.")
+     messageBox('Script failed',
+                'This script requires Python\'s Tkinter properly installed.',
+                ICON_CRITICAL)
+@@ -307,14 +307,14 @@ def __init__(self, year, months = [], firstDay = calendar.SUNDAY, drawSauce=True
+         ScCalendar.__init__(self, year, months, firstDay, drawSauce, sepMonths, lang)
+ 
+     def printMonth(self, cal, month, week):
+-	    """ Print the month name(s) """
+-	    if week[6].day < 7:
+-		    if (week == cal[len(cal)-1]):
+-			    self.createHeader(localization[self.lang][0][month] + self.sepMonths + localization[self.lang][0][(month+1)%12])
+-		    elif ((month-1) not in self.months):
+-			    self.createHeader(localization[self.lang][0][(month-1)%12] + self.sepMonths + localization[self.lang][0][month])
+-	    else:
+-		    self.createHeader(localization[self.lang][0][month])
++        """ Print the month name(s) """
++        if week[6].day < 7:
++            if (week == cal[len(cal)-1]):
++                self.createHeader(localization[self.lang][0][month] + self.sepMonths + localization[self.lang][0][(month+1)%12])
++            elif ((month-1) not in self.months):
++                self.createHeader(localization[self.lang][0][(month-1)%12] + self.sepMonths + localization[self.lang][0][month])
++        else:
++            self.createHeader(localization[self.lang][0][month])
+ 
+     def createMonthCalendar(self, month, cal):
+         """ Draw one week calendar per page """
+@@ -325,12 +325,12 @@ def createMonthCalendar(self, month, cal):
+             # * If it starts on the first weekday
+             # * If the month before it isn't included
+             if (week != cal[0]) or (week[0].day == 1) or ((month-1) not in self.months):
+-				self.createLayout()
+-				self.printMonth(cal, month, week)
+-				self.printWeekNo(week)
++                self.createLayout()
++                self.printMonth(cal, month, week)
++                self.printWeekNo(week)
+ 
+-				for day in week:
+-				    self.printDay(day)
++                for day in week:
++                    self.printDay(day)
+ 
+ class ScHorizontalEventCalendar(ScEventCalendar):
+     """ One day = one row calendar. I suggest LANDSCAPE orientation.\
+@@ -445,11 +445,11 @@ def createMonthCalendar(self, month, cal):
+                 cel = createText(self.marginl + colCnt * self.colSize,
+                                  self.calHeight + rowCnt * self.rowSize,
+                                  self.colSize, self.rowSize)
+-		setLineColor("Black", cel)  # comment this out if you do not want border to cells
++                setLineColor("Black", cel)  # comment this out if you do not want border to cells
+                 colCnt += 1
+                 if day.month == month + 1:
+-					setText(str(day.day), cel)
+-					setStyle(self.pStyleDate, cel)
++                    setText(str(day.day), cel)
++                    setStyle(self.pStyleDate, cel)
+             rowCnt += 1
+ 
+ class ScVerticalEventCalendar(ScVerticalCalendar, ScEventCalendar):
+@@ -507,7 +507,7 @@ def __init__(self, master=None):
+         self.langScrollbar.config(command=self.langListbox.yview)
+ 
+         keys = localization.keys()
+-        keys.sort()
++        sorted(keys)
+         for i in keys:
+             self.langListbox.insert(END, i)
+         self.langButton = Button(self, text='Change language', command=self.languageChange)
+diff --git a/scribus/plugins/scriptplugin/scripts/Caption.py b/scribus/plugins/scriptplugin/scripts/Caption.py
+index 2f1934ead6..96577280c4 100644
+--- a/scribus/plugins/scriptplugin/scripts/Caption.py
++++ b/scribus/plugins/scriptplugin/scripts/Caption.py
+@@ -47,8 +47,8 @@
+ try:
+     import scribus
+ except ImportError:
+-    print "Unable to import the 'scribus' module. This script will only run within"
+-    print "the Python interpreter embedded in Scribus. Try Script->Execute Script."
++    print ("Unable to import the 'scribus' module. This script will only run within")
++    print ("the Python interpreter embedded in Scribus. Try Script->Execute Script.")
+     sys.exit(1)
+ 
+ numselect = scribus.selectionCount()
+diff --git a/scribus/plugins/scriptplugin/scripts/ColorChart.py b/scribus/plugins/scriptplugin/scripts/ColorChart.py
+index adb1ff2604..b1df6f22a6 100644
+--- a/scribus/plugins/scriptplugin/scripts/ColorChart.py
++++ b/scribus/plugins/scriptplugin/scripts/ColorChart.py
+@@ -47,9 +47,9 @@
+     # Do so _after_ the 'import scribus' and only import the names you need, such
+     # as commonly used constants.
+     import scribus
+-except ImportError,err:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++except ImportError as err:
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ ####################
+@@ -168,7 +168,7 @@ def prepareDocument():
+         y = int(color[3])
+         k = int(color[4])
+         scribus.defineColorCMYK(cname,  c, m, y, k )
+-        if spotDict.has_key(cname):
++        if cname in spotDict:
+             scribus.setSpotColor(cname, spotDict[cname])
+ 
+     #get the pageTitle form user and store it in PageTitle
+diff --git a/scribus/plugins/scriptplugin/scripts/DirectImageImport.py b/scribus/plugins/scriptplugin/scripts/DirectImageImport.py
+index f0f26b5c1a..6290fb2e5d 100644
+--- a/scribus/plugins/scriptplugin/scripts/DirectImageImport.py
++++ b/scribus/plugins/scriptplugin/scripts/DirectImageImport.py
+@@ -54,7 +54,7 @@
+     from scribus import *
+     
+ except ImportError:
+-    print "This script only runs from within Scribus."
++    print ("This script only runs from within Scribus.")
+     sys.exit(1)
+ try:
+     from PIL import Image
+@@ -77,8 +77,8 @@ def main():
+ 
+ # for images taller than they are wide we want to limit height of frame to 80% of page height
+     if (Hoehe > pageY * 0.8):
+-	Hoehe = pageY * 0.8
+-	Breite = Hoehe * xsize/ysize
++        Hoehe = pageY * 0.8
++        Breite = Hoehe * xsize/ysize
+ 
+     ImageFrame = createImage(pageX/2 - Breite/2, pageY/2 - Hoehe/2, Breite, Hoehe)
+     loadImage(ImageFileName, ImageFrame)
+diff --git a/scribus/plugins/scriptplugin/scripts/FontSample.py b/scribus/plugins/scriptplugin/scripts/FontSample.py
+index 7816467cf6..74a9201fc2 100644
+--- a/scribus/plugins/scriptplugin/scripts/FontSample.py
++++ b/scribus/plugins/scriptplugin/scripts/FontSample.py
+@@ -112,7 +112,7 @@
+ 
+ import sys
+ import os
+-import cPickle
++import pickle
+ 
+ 
+ showPreviewPanel = 1 # change to 0 to permanently hide the preview
+@@ -122,60 +122,60 @@
+ 
+ try:
+     import scribus
+-except ImportError,err:
+-    print 'This Python script is written for the Scribus scripting interface.'
+-    print 'It can only be run from within Scribus.'
++except ImportError as err:
++    print ('This Python script is written for the Scribus scripting interface.')
++    print ('It can only be run from within Scribus.')
+     sys.exit(1)
+ 
+ 
+ try:
+-    from Tkinter import *
+-except ImportError,err:
+-    print 'This script will not work without Tkinter'
+-    scribus.messageBox('Error','This script will not work without Tkinter\nPlease install and try again',
++    from tkinter import *
++except ImportError as err:
++    print ('This script will not work without tkinter')
++    scribus.messageBox('Error','This script will not work without tkinter\nPlease install and try again',
+                     scribus.ICON_WARNING)
+     sys.exit(1)
+ 
+ 
+ if not os.path.exists(CONFIG_PATH):
+     try:
+-        print 'Attempting to creating configuration file directory...'
++        print ('Attempting to creating configuration file directory...')
+         os.mkdir(CONFIG_PATH)
+-        print 'Success, now testing for write access of new directory...'
++        print ('Success, now testing for write access of new directory...')
+         if os.access(CONFIG_PATH, os.W_OK):
+-            print 'Write access ok.'
++            print ('Write access ok.')
+         else:
+-            print 'Error, unable to write to .scribus/fontsampler directory.'
++            print ('Error, unable to write to .scribus/fontsampler directory.')
+     except:
+         CONFIG_PATH = ''
+-        print 'Failed to make configuration file directory,'
+-        print 'do you have a .scribus directory in your home directory?'
+-        print 'font sampler will not be able to save your preferences'
++        print ('Failed to make configuration file directory,')
++        print ('do you have a .scribus directory in your home directory?')
++        print ('font sampler will not be able to save your preferences')
+ 
+ 
+ try:
+     from PIL import Image
+-except ImportError,err:
+-    print 'You need to install Python Imaging Library (PIL).'
+-    print 'If using gentoo then you need to emerge /dev-python/imaging'
+-    print 'If using an RPM based linux distribution then you add python-imaging or similar.'
+-    print 'Script will continue without the font preview panel.'
++except ImportError as err:
++    print ('You need to install Python Imaging Library (PIL).')
++    print ('If using gentoo then you need to emerge /dev-python/imaging')
++    print ('If using an RPM based linux distribution then you add python-imaging or similar.')
++    print ('Script will continue without the font preview panel.')
+     showPreviewPanel = 0
+ 
+ 
+ try:
+     from PIL import ImageTk
+-except ImportError,err:
+-    print 'Module ImageTk not found, font preview disabled'
++except ImportError as err:
++    print ('Module ImageTk not found, font preview disabled')
+     showPreviewPanel = 0
+ 
+ 
+ if showPreviewPanel:
+     if not os.path.exists(TEMP_PATH):
+-        print '.scribus folder not found, disabling font preview panel'
++        print ('.scribus folder not found, disabling font preview panel')
+         showPreviewPanel = 0
+     if not os.access(TEMP_PATH, os.W_OK):
+-        print 'Unable to write to .scribus folder, disabling font preview panel'
++        print ('Unable to write to .scribus folder, disabling font preview panel')
+         showPreviewPanel = 0
+ 
+ 
+@@ -369,7 +369,7 @@ def set_font_fixed(fontList):
+         for j in fontList:
+             errorList = errorList + j + '\n'
+         errorMessage ='No suitable fixed width font found.\nPlease install at least one of these fixed width fonts:\n'+errorList
+-        print errorMessage
++        print (errorMessage)
+         raise Exception(errorMessage)
+ 
+ 
+@@ -391,7 +391,7 @@ def set_font_proportional(fontList):
+         for j in fontList:
+             errorList = errorList + j + '\n'
+         errorMessage = 'No suitable proportional font found.\nPlease install at least one of these proportional fonts:\n'+errorList
+-        print errorMessage
++        print (errorMessage)
+         raise Exception(errorMessage)
+ 
+ 
+@@ -406,23 +406,23 @@ def save_user_conf(path):
+                 'a' : defaultPrefs,
+                 'b' : userPrefs
+             }
+-            cPickle.dump(data, file)
++            pickle.dump(data, file)
+             file.close()
+         except:
+-            print 'failed to save data'
++            print ('failed to save data')
+ 
+ 
+ def restore_user_conf(path):
+     """Restore the data from the save file on the path specified by CONFIG_PATH."""
+     try:
+         file = open(os.path.join(path,'fontsampler.conf'), 'r')
+-        data = cPickle.load(file)
++        data = pickle.load(file)
+         file.close()
+         defaultPrefs.update(data['a'])
+         userPrefs.update(data['b'])
+     except:
+         userPrefs.update(defaultPrefs)
+-        print 'failed to load saved data so using default values defined in the script'
++        print ('failed to load saved data so using default values defined in the script')
+ 
+ 
+ def set_page_geometry(dD, geometriesList, paperSize, wantBindingOffset):
+@@ -464,7 +464,7 @@ def set_page_geometry(dD, geometriesList, paperSize, wantBindingOffset):
+         return result
+     except:
+         errorMessage = 'set_page_geometry() failure: %s' % sys.exc_info()[1]
+-        print errorMessage
++        print (errorMessage)
+ 
+ 
+ def set_odd_even(pageNum):
+@@ -1227,10 +1227,10 @@ def statusbarUpdate(self):
+         """
+         available = self.listbox1.size()
+         selected = self.listbox2.size()
+-        size = FloatType(selected)
++        size = float(selected)
+         blocksPerSheet = draw_selection(scribus.getFontNames(), 1)
+         value = size / blocksPerSheet
+-        pages = IntType(value)                  # Get whole part of number
++        pages = int(value)                  # Get whole part of number
+         value = value - pages                   # Remove whole number part
+         if value > 0:                           # Test remainder
+             pages = pages + 1                   # Had remainder so add a page
+@@ -1241,7 +1241,7 @@ def statusbarUpdate(self):
+         self.statusPaperSize['text'] = 'Paper size: %s   ' % userPrefs['paperSize']
+ 
+     def __listSelectionToRight(self):
+-        toMoveRight = ListType(self.listbox1.curselection())
++        toMoveRight = list(self.listbox1.curselection())
+         self.listbox1.selection_clear(0,END)
+         toMoveRight.reverse()   # reverse list so we delete from bottom of listbox first
+         tempList = []
+@@ -1255,13 +1255,13 @@ def __listSelectionToRight(self):
+         self.statusbarUpdate()
+ 
+     def __listSelectionToLeft(self):
+-        toMoveLeft = ListType(self.listbox2.curselection())
++        toMoveLeft = list(self.listbox2.curselection())
+         toMoveLeft.reverse()
+         self.listbox2.selection_clear(0,END)
+         for i in toMoveLeft:
+             self.listbox1.insert(END, self.listbox2.get(i)) # Insert it at the end
+             self.listbox2.delete(i)
+-        fontList = ListType(self.listbox1.get(0, END))      # Copy contents to a list type
++        fontList = list(self.listbox1.get(0, END))      # Copy contents to a list type
+         self.listbox1.delete(0, END)                        # Remove all contents
+         fontList.sort()                                     # Use sort method of list
+         for j in fontList:
+@@ -1508,7 +1508,7 @@ def __aboutDlgShow(self):
+ 
+ 
+ def setup_tk():
+-    """Create and setup the Tkinter app."""
++    """Create and setup the tkinter app."""
+     root = Tk()
+     app = Application(root)
+     app.master.title(WINDOW_TITLE)
+@@ -1540,7 +1540,7 @@ def initialisation():
+     restore_user_conf(CONFIG_PATH)
+     # get and set the initial paper size to match default radiobutton selection...
+     dD.update(set_page_geometry(dD, geometriesList, userPrefs['paperSize'], userPrefs['wantBindingOffset']))
+-    # Made it this far so its time to create our Tkinter app...
++    # Made it this far so its time to create our tkinter app...
+     app = setup_tk()
+     # now show the main window and wait for user to do something...
+     app.mainloop()
+diff --git a/scribus/plugins/scriptplugin/scripts/InfoBox.py b/scribus/plugins/scriptplugin/scripts/InfoBox.py
+index b342ea9186..16f5f51cdf 100644
+--- a/scribus/plugins/scriptplugin/scripts/InfoBox.py
++++ b/scribus/plugins/scriptplugin/scripts/InfoBox.py
+@@ -60,8 +60,8 @@
+ try:
+     import scribus
+ except ImportError:
+-    print "Unable to import the 'scribus' module. This script will only run within"
+-    print "the Python interpreter embedded in Scribus. Try Script->Execute Script."
++    print ("Unable to import the 'scribus' module. This script will only run within")
++    print ("the Python interpreter embedded in Scribus. Try Script->Execute Script.")
+     sys.exit(1)
+ 
+ def main(argv):
+@@ -116,7 +116,7 @@ def main(argv):
+                                          str(o_cols) + ')?','1')
+             column_pos = int(column_pos) - 1 
+     if (o_cols == 1):
+-	columns_width = 1
++        columns_width = 1
+     new_height = 0
+     while (new_height <= 0):
+         new_height = scribus.valueDialog('Height','Your frame height is '+ str(o_height) +
+diff --git a/scribus/plugins/scriptplugin/scripts/Ligatursatz.py b/scribus/plugins/scriptplugin/scripts/Ligatursatz.py
+index c2803d4338..981ce350e7 100644
+--- a/scribus/plugins/scriptplugin/scripts/Ligatursatz.py
++++ b/scribus/plugins/scriptplugin/scripts/Ligatursatz.py
+@@ -137,7 +137,7 @@ def __init__(self, patterns):
+         Postcondition: Constructs a hyphenator object for the
+         given patterns.
+         """
+-        if type(patterns) is not unicode:
++        if type(patterns) is not str:
+             raise TypeError("The “patterns” parameter must be of type "
+                             "“unicode”, but it isn’t.")
+         self.tree = {}
+@@ -170,7 +170,7 @@ def hyphenate_word(self, word):
+             the word might get wrong hyphenation because the
+             upper-case-letters are not recognized).
+         """
+-        if type(word) is not unicode:
++        if type(word) is not str:
+             raise TypeError("The word must have the data type “unicode”, "
+                             "but it doesn’t.")
+         else:
+@@ -289,7 +289,7 @@ def simple_case_fold_for_lookup(self, my_unicode_string):
+         WARNING This function must be kept
+         in synch with isWordCharacter().
+         """
+-        if type(my_unicode_string) is not unicode:
++        if type(my_unicode_string) is not str:
+             raise TypeError("The “my_unicode_string” parameter must be of "
+                             "type “unicode”, but it isn’t.")
+         return my_unicode_string.lower().replace("ſ", "s")
+@@ -22283,7 +22283,7 @@ def get_instructions(self, my_word):
+         šâäéóöü
+         :rtype: list
+         """
+-        if type(my_word) is not unicode:
++        if type(my_word) is not str:
+             raise TypeError("myWord must be of type “unicode”, but it isn’t.")
+         stripped_word = u""
+         stripped_word_index = []
+@@ -22367,7 +22367,7 @@ def is_bmp_scalar_only(my_string):
+     Unicode scalar values consists of the ranges 0 to D7FF (16) and E000 (16)
+     to 10FFFF (16), inclusive.”
+     """
+-    if type(my_string) is not unicode:
++    if type(my_string) is not str:
+         raise TypeError(
+             "“my_string” must be of type “unicode”, but it isn’t.")
+     return re.search(u"[^\u0000-\uD7FF\uE000-\uFFFF]", my_string) is None
+@@ -22460,7 +22460,7 @@ def read_text(self, first, count):
+                 raise IndexError("“first” is out of range.")
+             return u""
+         scribus.selectText(first, count, self.__identifier)
+-        return scribus.getAllText(self.__identifier).decode("utf8", "strict")
++        return scribus.getAllText(self.__identifier)
+ 
+     def delete_text(self, first, count):
+         """Precondition: The object with the unique identifier “textFrame”
+@@ -22514,7 +22514,7 @@ def insert_text(self, text, first):
+         “story”, that means the common text content that is shared between
+         this text frame and all linked text frames. Note that this function
+         will (likely) change the current text selection of the story."""
+-        if (type(first) is not int) or (type(text) is not unicode):
++        if (type(first) is not int) or (type(text) is not str):
+             raise TypeError("“first” must be “integer” and “text” must "
+                             "be “unicode”, but they aren’t.")
+         if first < 0:
+@@ -22528,7 +22528,7 @@ def insert_text(self, text, first):
+                                "the constructor does currently not refer to "
+                                "a text frame in the current document.")
+         scribus.insertText(
+-            text.encode("utf8", "strict"),
++            text,
+             first,
+             self.__identifier)
+ 
+@@ -22560,9 +22560,9 @@ def show_messagebox(
+     Preconditions: “caption” and “message” are of type “unicode”. icon,
+     button1, button2 and button3 are either not used or of type int.
+     Postcondition: Calls show_messagebox and returns the result."""
+-    if type(caption) is not unicode:
++    if type(caption) is not str:
+         raise TypeError("“caption” must be of type “unicode”, but it isn’t.")
+-    if type(message) is not unicode:
++    if type(message) is not str:
+         raise TypeError("“message” must be of type “unicode”, but it isn’t.")
+     if type(icon) is not int:
+         raise TypeError("“icon” must be of type “int”, but it isn’t.")
+@@ -22573,8 +22573,8 @@ def show_messagebox(
+     if type(button3) is not int:
+         raise TypeError("“button3” must be of type “int”, but it isn’t.")
+     return scribus.messageBox(
+-        caption.encode("utf8", "strict"),
+-        message.encode("utf8", "strict"),
++        caption,
++        message,
+         icon,
+         button1,
+         button2,
+diff --git a/scribus/plugins/scriptplugin/scripts/color2csv.py b/scribus/plugins/scriptplugin/scripts/color2csv.py
+index 9157fee08e..29abf34eb4 100644
+--- a/scribus/plugins/scriptplugin/scripts/color2csv.py
++++ b/scribus/plugins/scriptplugin/scripts/color2csv.py
+@@ -45,9 +45,9 @@
+     # Do so _after_ the 'import scribus' and only import the names you need, such
+     # as commonly used constants.
+     import scribus
+-except ImportError,err:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++except ImportError as err:
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ #########################
+@@ -92,7 +92,7 @@ def writeColorCsvFile(filename, colorlist):
+     scribus.progressTotal(len(colorlist))
+     i=0
+     try:
+-        csvwriter=csv.writer(file(filename, "w"), quoting=csv.QUOTE_NONNUMERIC)
++        csvwriter=csv.writer(open(filename, "w"), quoting=csv.QUOTE_NONNUMERIC)
+         for line in colorlist:
+             csvwriter.writerow(line)
+             i=i+1
+diff --git a/scribus/plugins/scriptplugin/scripts/csv2color.py b/scribus/plugins/scriptplugin/scripts/csv2color.py
+index b888be3c3a..1e042e06ea 100644
+--- a/scribus/plugins/scriptplugin/scripts/csv2color.py
++++ b/scribus/plugins/scriptplugin/scripts/csv2color.py
+@@ -51,9 +51,9 @@
+     # Do so _after_ the 'import scribus' and only import the names you need, such
+     # as commonly used constants.
+     import scribus
+-except ImportError,err:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++except ImportError as err:
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ #########################
+@@ -79,7 +79,7 @@ def checkValue(c, m, y, k):
+ 
+ def getColorsFromCsv(filename):
+     """get colors from csv file and return a list with name and cmyk 255 values"""
+-    csvreader=csv.reader(file(filename))
++    csvreader=csv.reader(open(filename, "r"))
+ 
+     csvcolors=[]
+     i=0
+@@ -129,7 +129,7 @@ def importColors(colorlist):
+             m=color[2]
+             y=color[3]
+             k=color[4]
+-            while colordict.has_key(name):# check if color already exists - then add PREFIX to name
++            while name in colordict:# check if color already exists - then add PREFIX to name
+                 name = PREFIX+name
+             
+             scribus.defineColorCMYK(name, c, m, y, k)
+diff --git a/scribus/plugins/scriptplugin/scripts/importcsv2table.py b/scribus/plugins/scriptplugin/scripts/importcsv2table.py
+index 05c71004f2..8efd2b6895 100644
+--- a/scribus/plugins/scriptplugin/scripts/importcsv2table.py
++++ b/scribus/plugins/scriptplugin/scripts/importcsv2table.py
+@@ -72,9 +72,9 @@
+     # Do so _after_ the 'import scribus' and only import the names you need, such
+     # as commonly used constants.
+     import scribus
+-except ImportError,err:
+-    print "This Python script is written for the Scribus scripting interface."
+-    print "It can only be run from within Scribus."
++except ImportError as err:
++    print ("This Python script is written for the Scribus scripting interface.")
++    print ("It can only be run from within Scribus.")
+     sys.exit(1)
+ 
+ #########################
+@@ -102,7 +102,7 @@ def getCSVdata():
+     csvfile = scribus.fileDialog("csv2table :: open file", "*.csv")
+     if csvfile != "":
+         try:
+-            reader = csv.reader(file(csvfile))
++            reader = csv.reader(open(csvfile, "r"))
+             datalist=[]
+             for row in reader:
+                 rowlist=[]
+@@ -110,7 +110,7 @@ def getCSVdata():
+                     rowlist.append(col)
+                 datalist.append(rowlist)
+             return datalist
+-        except Exception,  e:
++        except Exception as e:
+             scribus.messageBox("csv2table", "Could not open file %s"%e)
+     else:
+         sys.exit

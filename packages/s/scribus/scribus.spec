@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,18 @@ URL:            https://www.scribus.net/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+# PATCH-FEATURE-UPSTREAM
+Patch1:         port-scripter-to-Python-3.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         Work-around-poppler-0.82-signature-changes.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         Use-same-mechanism-as-with-previous-poppler-versions.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         Fix-failure-to-build-against-poppler-0.83.0.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         Fix-failure-to-build-with-poppler-0.84.0.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         Fails-to-build-with-python-3.8.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  cmake
 BuildRequires:  cups-devel
@@ -47,7 +59,7 @@ BuildRequires:  libwpd-devel
 BuildRequires:  libwpg-devel
 BuildRequires:  libzmf-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Core) >= 5.7.0
 BuildRequires:  cmake(Qt5Gui) >= 5.7.0
@@ -72,8 +84,8 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(poppler)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     python2-Pillow
-Recommends:     python-tk
+Recommends:     python3-Pillow
+Recommends:     python3-tk
 # Only available in graphics for the moment
 Recommends:     uniconvertor
 Recommends:     scribus-doc
@@ -103,9 +115,14 @@ Group:          Documentation/HTML
 This package provides the documentation for Scribus.
 
 %prep
-%autosetup -p1
+%setup -q
 # W: wrong-script-end-of-line-encoding
 dos2unix scribus/plugins/scriptplugin/scripts/Ligatursatz.py
+# necessary to be able to apply the patches
+dos2unix scribus/plugins/scriptplugin/cmdannotations.cpp
+dos2unix scribus/plugins/scriptplugin/cmddoc.cpp
+dos2unix scribus/plugins/scriptplugin/cmdstyle.cpp
+%autopatch -p1
 
 %build
 # Don't use the %%cmake macro, it causes crashes when starting scribus

@@ -1,0 +1,185 @@
+From df0ba0a365fd36bf4a4abac3b45e65a65a46c82c Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Sun, 3 Nov 2019 01:15:12 +0000
+Subject: [PATCH] #15901: Fails to build with python 3.8
+
+git-svn-id: svn://scribus.net/trunk/Scribus@23314 11d20701-8431-0410-a711-e3c959e3b870
+---
+ .../plugins/scriptplugin/objimageexport.cpp   | 52 ++++++++++++++++---
+ scribus/plugins/scriptplugin/objpdffile.cpp   | 13 ++++-
+ scribus/plugins/scriptplugin/objprinter.cpp   | 13 ++++-
+ 3 files changed, 70 insertions(+), 8 deletions(-)
+
+diff --git a/scribus/plugins/scriptplugin/objimageexport.cpp b/scribus/plugins/scriptplugin/objimageexport.cpp
+index cfc3c3fa06..7d2fb2f0a8 100644
+--- a/scribus/plugins/scriptplugin/objimageexport.cpp
++++ b/scribus/plugins/scriptplugin/objimageexport.cpp
+@@ -220,29 +220,62 @@ PyTypeObject ImageExport_Type = {
+ 	const_cast<char*>("scribus.ImageExport"), // char *tp_name; /* For printing, in format "<module>.<name>" */
+ 	sizeof(ImageExport),   // int tp_basicsize, /* For allocation */
+ 	0,  // int tp_itemsize; /* For allocation */
++
++	/* Methods to implement standard operations */
++
+ 	(destructor) ImageExport_dealloc, //	 destructor tp_dealloc;
+-	nullptr, //	 printfunc tp_print;
++#if PY_VERSION_HEX >= 0x03080000
++	0,       //     Py_ssize_t tp_vectorcall_offset
++#else
++	nullptr, //     printfunc tp_print;
++#endif
+ 	nullptr, //	 getattrfunc tp_getattr;
+ 	nullptr, //	 setattrfunc tp_setattr;
+-	nullptr, //	 cmpfunc tp_compare;
++	nullptr, //	 cmpfunc tp_as_async;
+ 	nullptr, //	 reprfunc tp_repr;
++
++	/* Method suites for standard classes */
++
+ 	nullptr, //	 PyNumberMethods *tp_as_number;
+ 	nullptr, //	 PySequenceMethods *tp_as_sequence;
+ 	nullptr, //	 PyMappingMethods *tp_as_mapping;
++
++	/* More standard operations (here for binary compatibility) */
++
+ 	nullptr, //	 hashfunc tp_hash;
+ 	nullptr, //	 ternaryfunc tp_call;
+ 	nullptr, //	 reprfunc tp_str;
+ 	nullptr, //	 getattrofunc tp_getattro;
+ 	nullptr, //	 setattrofunc tp_setattro;
++
++	/* Functions to access object as input/output buffer */
+ 	nullptr, //	 PyBufferProcs *tp_as_buffer;
++
++	/* Flags to define presence of optional/expanded features */
+ 	Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,	// long tp_flags;
++
+ 	imgexp__doc__, // char *tp_doc; /* Documentation string */
++
++	/* Assigned meaning in release 2.0 */
++	/* call function for all accessible objects */
+ 	nullptr, //	 traverseproc tp_traverse;
++
++	/* delete references to contained objects */
+ 	nullptr, //	 inquiry tp_clear;
++
++	/* Assigned meaning in release 2.1 */
++	/* rich comparisons */
+ 	nullptr, //	 richcmpfunc tp_richcompare;
++
++	/* weak reference enabler */
+ 	0, //	 long tp_weaklistoffset;
++
++	/* Added in release 2.2 */
++	/* Iterators */
+ 	nullptr, //	 getiterfunc tp_iter;
+ 	nullptr, //	 iternextfunc tp_iternext;
++
++	/* Attribute descriptor and subclassing stuff */
+ 	ImageExport_methods, //	 struct PyMethodDef *tp_methods;
+ 	ImageExport_members, //	 struct PyMemberDef *tp_members;
+ 	ImageExport_getseters, //	 struct PyGetSetDef *tp_getset;
+@@ -264,12 +297,19 @@ PyTypeObject ImageExport_Type = {
+ 	nullptr, //	 destructor tp_del;
+ 	0, //	 unsigned int tp_version_tag;
+ 	0, //	 destructor tp_finalize;
++#if PY_VERSION_HEX >= 0x03080000
++	nullptr, // tp_vectorcall
++#endif
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
++	nullptr, //deprecated tp_print
++#endif
+ 
+ #ifdef COUNT_ALLOCS
+ 	/* these must be last and never explicitly initialized */
+-	//	int tp_allocs;
+-	//	int tp_frees;
+-	//	int tp_maxalloc;
+-	//	struct _typeobject *tp_next;
++	//    int tp_allocs;
++	//    int tp_frees;
++	//    int tp_maxalloc;
++	//    struct _typeobject *tp_prev;
++	//    struct _typeobject *tp_next;
+ #endif
+ };
+diff --git a/scribus/plugins/scriptplugin/objpdffile.cpp b/scribus/plugins/scriptplugin/objpdffile.cpp
+index 2ae8c93452..5ec423b20c 100644
+--- a/scribus/plugins/scriptplugin/objpdffile.cpp
++++ b/scribus/plugins/scriptplugin/objpdffile.cpp
+@@ -1555,10 +1555,14 @@ PyTypeObject PDFfile_Type = {
+ 	/* Methods to implement standard operations */
+ 
+ 	(destructor) PDFfile_dealloc, //     destructor tp_dealloc;
++#if PY_VERSION_HEX >= 0x03080000
++	0,       //     Py_ssize_t tp_vectorcall_offset
++#else
+ 	nullptr, //     printfunc tp_print;
++#endif
+ 	nullptr, //     getattrfunc tp_getattr;
+ 	nullptr, //     setattrfunc tp_setattr;
+-	nullptr, //     cmpfunc tp_compare;
++	nullptr, //     cmpfunc tp_as_async;
+ 	nullptr, //     reprfunc tp_repr;
+ 
+ 	/* Method suites for standard classes */
+@@ -1624,12 +1628,19 @@ PyTypeObject PDFfile_Type = {
+ 	nullptr, //     destructor tp_del;
+ 	0, //	 unsigned int tp_version_tag;
+ 	0, //	 destructor tp_finalize;
++#if PY_VERSION_HEX >= 0x03080000
++	nullptr, // tp_vectorcall
++#endif
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
++	nullptr, //deprecated tp_print
++#endif
+ 
+ #ifdef COUNT_ALLOCS
+ 	/* these must be last and never explicitly initialized */
+ 	//    int tp_allocs;
+ 	//    int tp_frees;
+ 	//    int tp_maxalloc;
++	//    struct _typeobject *tp_prev;
+ 	//    struct _typeobject *tp_next;
+ #endif
+ };
+diff --git a/scribus/plugins/scriptplugin/objprinter.cpp b/scribus/plugins/scriptplugin/objprinter.cpp
+index 3219f77534..e59e71d024 100644
+--- a/scribus/plugins/scriptplugin/objprinter.cpp
++++ b/scribus/plugins/scriptplugin/objprinter.cpp
+@@ -517,10 +517,14 @@ PyTypeObject Printer_Type = {
+ 	/* Methods to implement standard operations */
+ 
+ 	(destructor) Printer_dealloc, //     destructor tp_dealloc;
++#if PY_VERSION_HEX >= 0x03080000
++	0,       //     Py_ssize_t tp_vectorcall_offset
++#else
+ 	nullptr, //     printfunc tp_print;
++#endif
+ 	nullptr, //     getattrfunc tp_getattr;
+ 	nullptr, //     setattrfunc tp_setattr;
+-	nullptr, //     cmpfunc tp_compare;
++	nullptr, //     cmpfunc tp_as_async;
+ 	nullptr, //     reprfunc tp_repr;
+ 
+ 	/* Method suites for standard classes */
+@@ -586,12 +590,19 @@ PyTypeObject Printer_Type = {
+ 	nullptr, //     destructor tp_del;
+ 	0, //	 unsigned int tp_version_tag;
+ 	0, //	 destructor tp_finalize;
++#if PY_VERSION_HEX >= 0x03080000
++	nullptr, // tp_vectorcall
++#endif
++#if PY_VERSION_HEX >= 0x03080000 && PY_VERSION_HEX < 0x03090000
++	nullptr, //deprecated tp_print
++#endif
+ 
+ #ifdef COUNT_ALLOCS
+ 	/* these must be last and never explicitly initialized */
+ 	//    int tp_allocs;
+ 	//    int tp_frees;
+ 	//    int tp_maxalloc;
++	//    struct _typeobject *tp_prev;
+ 	//    struct _typeobject *tp_next;
+ #endif
+ };

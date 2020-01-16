@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 16 11:28:56 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add port-scripter-to-Python-3.patch and build with python3
+- Add patches to fix build with newer poppler versions:
+  * Work-around-poppler-0.82-signature-changes.patch
+  * Use-same-mechanism-as-with-previous-poppler-versions.patch
+  * Fix-failure-to-build-against-poppler-0.83.0.patch
+  * Fix-failure-to-build-with-poppler-0.84.0.patch
+- Add Fails-to-build-with-python-3.8.patch to fix build with python
+  3.8
+
+-------------------------------------------------------------------
 Mon Sep  9 17:42:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop faulty requires from documentation subpackage.
