@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa-drivers
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 19.3.1
+%define _version 19.3.2
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -74,7 +74,7 @@
   %endif
 %endif
 
-%ifarch aarch64 %{arm} ppc64 ppc64le s390x %{ix86} x86_64
+%ifarch aarch64 %{arm} ppc64 ppc64le riscv64 s390x %{ix86} x86_64
   %define with_llvm 1
 %endif
 
@@ -110,7 +110,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        19.3.1
+Version:        19.3.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -210,7 +210,7 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %endif
 %if 0%{with_llvm}
-BuildRequires:  llvm-devel >= 7.0.0
+BuildRequires:  llvm-devel >= 8.0.0
 %endif
 
 %if 0%{with_opencl}
@@ -466,8 +466,8 @@ applications using the OpenGL|ES 3.x APIs.
 
 %package -n libOSMesa8
 Summary:        Mesa Off-screen rendering extension
-# Wrongly named package shipped .so.8
 Group:          System/Libraries
+# Wrongly named package shipped .so.8
 Obsoletes:      libOSMesa9 < %{version}
 Provides:       libOSMesa9 = %{version}
 
@@ -583,8 +583,8 @@ programs against the GBM library.
 
 %package -n Mesa-libd3d
 Summary:        Mesa Direct3D9 state tracker
-# Manually provide d3d library (bnc#918294)
 Group:          System/Libraries
+# Manually provide d3d library (bnc#918294)
 %ifarch x86_64 s390x ppc64 ppc64le aarch64 riscv64
 Provides:       d3dadapter9.so.1()(64bit)
 %else
