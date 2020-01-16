@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 15 17:23:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build TensorFlow Lite (only) for %arm
+
+-------------------------------------------------------------------
 Tue Jan 14 14:54:24 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - ExcludeArch %arm since build fails due to no support for aws
