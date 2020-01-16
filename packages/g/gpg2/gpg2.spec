@@ -1,7 +1,7 @@
 #
 # spec file for package gpg2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,9 @@ Patch8:         gnupg-set_umask_before_open_outfile.patch
 Patch9:         gnupg-detect_FIPS_mode.patch
 Patch11:        gnupg-add_legacy_FIPS_mode_option.patch
 Patch12:        gnupg-2.2.16-secmem.patch
+Patch13:        gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
+Patch14:        gnupg-add-test-cases-for-import-without-uid.patch
+Patch15:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  libassuan-devel >= 2.5.0
@@ -88,6 +91,9 @@ gpg2 provides GPGSM, gpg-agent, and a keybox library.
 %patch9 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
 touch -d 2018-05-04 doc/gpg.texi # to compensate for patch11 in order to not have man pages and info files have the build date (boo#1047218)
 
 %build

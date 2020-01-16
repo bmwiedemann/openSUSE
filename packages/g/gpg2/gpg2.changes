@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 17:47:24 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Accept key updates even without UIDs [bsc#1143158]
+- Add patches:
+  * gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
+  * gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
+  * gnupg-add-test-cases-for-import-without-uid.patch
+
+-------------------------------------------------------------------
 Sat Dec  7 15:20:41 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.2.19:
