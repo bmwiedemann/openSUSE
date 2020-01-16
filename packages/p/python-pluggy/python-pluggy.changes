@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 12:52:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.1:
+  * Improved documentation, especially with regard to references.
+
+-------------------------------------------------------------------
 Fri Dec 13 14:45:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - importlib-metadata is only a runtime requirement (in accordance

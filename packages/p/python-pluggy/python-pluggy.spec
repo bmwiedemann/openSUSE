@@ -1,7 +1,7 @@
 #
 # spec file for package python-pluggy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,10 @@
 %bcond_with test
 %endif
 Name:           python-pluggy%{psuffix}
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Plugin registration and hook calling mechanisms for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pluggy
 Source:         https://files.pythonhosted.org/packages/source/p/pluggy/pluggy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}

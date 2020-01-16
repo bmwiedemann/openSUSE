@@ -127,4 +127,13 @@
     <comment></comment>
     <requestid>756850</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9901d189213832a438fc6a6563cd33eb</srcmd5>
+    <version>0.13.1</version>
+    <time>1579194804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Improved documentation, especially with regard to references.</comment>
+    <requestid>761138</requestid>
+  </revision>
 </revisionlist>
