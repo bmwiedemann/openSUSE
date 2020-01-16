@@ -1,7 +1,7 @@
 #
 # spec file for package python-hiredis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hiredis
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Python wrapper for hiredis
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/redis/hiredis-py
 Source:         https://github.com/redis/hiredis-py/archive/v%{version}.tar.gz
 Patch0:         0001-Use-system-libhiredis.patch
 Patch1:         fix_build_dir_in_tests.patch
 Patch2:         drop-vendor-sources.patch
-Patch3:         0002-Fix-README.md-has-unicode.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
