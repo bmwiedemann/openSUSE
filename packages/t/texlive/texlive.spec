@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -173,8 +173,8 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  perl-base >= 5.26.1
 BuildRequires:  perl(autovivification)
 #BuildRequires: perl(Business::ISBN)
-BuildRequires:  perl-Business-ISBN
-BuildRequires:  perl-Business-ISBN-Data
+BuildRequires:  perl-Business-ISBN >= 3.005
+BuildRequires:  perl-Business-ISBN-Data >= 20191107
 BuildRequires:  perl(Business::ISMN)
 BuildRequires:  perl(Business::ISSN)
 BuildRequires:  perl(Class::Accessor)
@@ -279,6 +279,8 @@ Patch59:        0001-Updated-tests-after-U-C-upgrade-changed-sortinit-hashes.pat
 Patch60:        source-fix-axohelp.patch
 # PATCH-FIX-TEXLIVE
 Patch61:        source-poppler0.83.0.patch
+# PATCH-FIX-SUSE Avoid common variable (boo#1160417)
+Patch62:        source-common.patch
 Prefix:         %{_bindir}
 Provides:       pdfjam = %{version}
 Obsoletes:      pdfjam < %{version}
@@ -3442,7 +3444,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://biblatex-biber.sourceforge.net/
 Recommends:     perl(Readonly::XS)
 Requires:       perl-base >= 5.26.1
-Requires:       perl(Business::ISBN)
+Requires:       perl(Business::ISBN) >= 3.005
 Requires:       perl(Business::ISMN)
 Requires:       perl(Business::ISSN)
 Requires:       perl(Class::Accessor)
@@ -3688,6 +3690,7 @@ pver=$(pkg-config --modversion poppler)
 cp ./texk/web2c/pdftexdir/pdftoepdf-poppler0.75.0.cc ./texk/web2c/pdftexdir/pdftoepdf-poppler${pver}.cc
 %endif
 %patch60 -p0
+%patch62 -p0 -b .cv
 
 if pkg-config --atleast-version=0.59 poppler
 then

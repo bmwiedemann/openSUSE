@@ -719,4 +719,12 @@
     <comment>- Add  source-poppler0.83.0.patch: support poppler 0.83.</comment>
     <requestid>756091</requestid>
   </revision>
+  <revision rev="60" vrev="63">
+    <srcmd5>e55cc7af3a8349b2de78f2b39ee10070</srcmd5>
+    <version>unknown</version>
+    <time>1579195143</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit rev 340 - Staging:I is GREEN</comment>
+    <requestid>764928</requestid>
+  </revision>
 </revisionlist>
