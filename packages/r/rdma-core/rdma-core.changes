@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 10 07:40:35 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v27.0 (bsc#1160338)
+  - No release notes available
+- Dropped patches merged upstream:
+  - bnxt_re-lib-Add-remaining-pci-ids-for-gen-P5-devices.patch
+  - bnxt_re-lib-Recognize-additional-5750x-device-ID-s.patch
+- Add patches to support older HW (nes, cxgb3) that was dropped upstream
+  - Revert-Update-kernel-headers.patch
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - Revert-libnes-Remove-libnes-from-rdma-core.patch
+
+-------------------------------------------------------------------
+Fri Dec 13 14:10:15 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix post scripts to work with systemd 244: udevadm has been moved
+  from /sbin to /usr/bin and systemd is dropping the compat links
+  now.
+
+-------------------------------------------------------------------
+Wed Dec 11 09:32:17 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Remove file listed twice
+- Disable pyverbs build for older releases that do not have python3-Cython >= 0.25
+
+-------------------------------------------------------------------
 Thu Nov 28 09:16:33 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add Broadcom fixes (bsc#1157891)

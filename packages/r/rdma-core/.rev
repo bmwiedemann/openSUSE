@@ -402,4 +402,27 @@
     <comment></comment>
     <requestid>751635</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6fee2b57182a42b49ae23f11d38cbf3e</srcmd5>
+    <version>27.0</version>
+    <time>1579195152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v27.0 (bsc#1160338)
+  - No release notes available
+- Dropped patches merged upstream:
+  - bnxt_re-lib-Add-remaining-pci-ids-for-gen-P5-devices.patch
+  - bnxt_re-lib-Recognize-additional-5750x-device-ID-s.patch
+- Add patches to support older HW (nes, cxgb3) that was dropped upstream
+  - Revert-Update-kernel-headers.patch
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - Revert-libnes-Remove-libnes-from-rdma-core.patch
+
+- Fix post scripts to work with systemd 244: udevadm has been moved
+  from /sbin to /usr/bin and systemd is dropping the compat links
+  now.
+
+- Remove file listed twice
+- Disable pyverbs build for older releases that do not have python3-Cython &gt;= 0.25</comment>
+    <requestid>763851</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rdma-core
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,15 @@
 %bcond_without  systemd
 # Do not build static libs by default.
 %define with_static 0
+%if 0%{?sle_version} > 120400
 %define with_pyverbs 1
+%else
+%define with_pyverbs 0
+%endif
 
-%define         git_ver .0.9f820de9ca7d
+%define         git_ver .0.84caf035ae61
 Name:           rdma-core
-Version:        26.1
+Version:        27.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        GPL-2.0-only OR BSD-2-Clause
@@ -59,8 +63,11 @@ Source1:        baselibs.conf
 Source2:        post_download.sh
 Source3:        prebuilt-pandoc.tgz
 Source4:        rdma-core-rpmlintrc
-Patch0:         bnxt_re-lib-Add-remaining-pci-ids-for-gen-P5-devices.patch
-Patch1:         bnxt_re-lib-Recognize-additional-5750x-device-ID-s.patch
+Source5:        gen-pandoc.sh
+Source6:        get_build.py
+Patch0:         Revert-libnes-Remove-libnes-from-rdma-core.patch
+Patch1:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+Patch2:         Revert-Update-kernel-headers.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -404,6 +411,7 @@ easy, object-oriented access to IB verbs.
 (cd buildlib && tar xf %{S:3})
 %patch0
 %patch1
+%patch2
 
 %build
 
@@ -517,8 +525,8 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 
 %post
 # we ship udev rules, so trigger an update.
-/sbin/udevadm trigger --subsystem-match=infiniband --action=change || true
-/sbin/udevadm trigger --subsystem-match=infiniband_mad --action=change || true
+%{_bindir}/udevadm trigger --subsystem-match=infiniband --action=change || true
+%{_bindir}/udevadm trigger --subsystem-match=infiniband_mad --action=change || true
 
 #
 # ibacm
@@ -544,7 +552,7 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %post -n srp_daemon
 %service_add_post srp_daemon.service
 # we ship udev rules, so trigger an update.
-/sbin/udevadm trigger --subsystem-match=infiniband_mad --action=change
+%{_bindir}/udevadm trigger --subsystem-match=infiniband_mad --action=change
 
 %preun -n srp_daemon
 %service_del_preun srp_daemon.service
@@ -715,7 +723,6 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 
 %files -n infiniband-diags
 %defattr(-, root, root)
-%config %{_sysconfdir}/infiniband-diags/error_thresholds
 %dir %{_sysconfdir}/infiniband-diags
 %config(noreplace) %{_sysconfdir}/infiniband-diags/*
 %{_sbindir}/ibaddr
@@ -870,6 +877,8 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %if %{with_pyverbs}
 %files -n python3-pyverbs
 %{python3_sitearch}/pyverbs
+%dir %{_docdir}/%{name}-%{version}/tests/
+%{_docdir}/%{name}-%{version}/tests/*.py
 %endif
 
 %changelog
