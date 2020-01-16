@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-xdist
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-xdist
-Version:        1.30.0
+Version:        1.31.0
 Release:        0
 Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/pytest-dev/pytest-xdist
+URL:            https://github.com/pytest-dev/pytest-xdist
 Source0:        https://files.pythonhosted.org/packages/source/p/pytest-xdist/pytest-xdist-%{version}.tar.gz
 BuildRequires:  %{python_module execnet >= 1.1}
 BuildRequires:  %{python_module filelock}

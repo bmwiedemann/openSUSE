@@ -105,4 +105,15 @@
   * Initialization between workers and master nodes is now more consistent</comment>
     <requestid>735843</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2471cdc23b95686cdacbfcd50c6f4e4d</srcmd5>
+    <version>1.31.0</version>
+    <time>1579194808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.31.0:
+  * #486: Add support for Python 3.8.
+  * #491: Fix regression that caused custom plugin command-line
+    arguments to be discarded when using --tx mode.</comment>
+    <requestid>761139</requestid>
+  </revision>
 </revisionlist>
