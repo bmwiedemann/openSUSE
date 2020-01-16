@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 16 06:00:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 4.9.1
+  * get1: fixed creating the target directory.
+  * get1: fixed renaming the temp file.
+  * fixed a coredump on startup when IPv6 is not supported or configured.
+
+-------------------------------------------------------------------
 Tue Jan 14 12:35:28 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 4.9.0
