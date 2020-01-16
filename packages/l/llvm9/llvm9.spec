@@ -39,33 +39,27 @@
 %else
 %bcond_without gold
 %endif
-
 %ifarch x86_64
 %bcond_without lldb
-
 %if 0%{?suse_version} > 1320
 # lldb python breaks with swig < 3.0.11
 %bcond_without lldb_python
 %else
 %bcond_with lldb_python
 %endif
-
 %else
 %bcond_with lldb
 %bcond_with lldb_python
 %endif
-
-%bcond_with ffi
-%bcond_with oprofile
-%bcond_with valgrind
-%bcond_without pyclang
-
 %ifarch %{arm} x86_64 %{ix86} ppc64le s390x
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
 %endif
-
+%bcond_with ffi
+%bcond_with oprofile
+%bcond_with valgrind
+%bcond_without pyclang
 Name:           llvm9
 Version:        9.0.1
 Release:        0
@@ -122,12 +116,17 @@ Patch30:        clang-riscv64-rv64gc.diff
 Patch31:        riscv64-suse-linux.patch
 Patch32:        llvm-riscv64-fix-cffi.diff
 Patch33:        D60657-riscv-pcrel_lo.diff
+# Backport of .eh_frame related RISC-V fixes (D61584, D63404, D66419)
+Patch34:        riscv-eh-frame-fixup.patch
+# PATCH-FIX-OPENSUSE polly-pthread.patch -- Make sure -lpthread is linked after libPollly
+Patch35:        polly-pthread.patch
+# PATCH-FEATURE_UPSTREAM compiler-rt-move-fdp.patch -- Move FuzzedDataProvider to include
+Patch36:        compiler-rt-move-fdp.patch
 BuildRequires:  binutils-devel >= 2.21.90
-%if %{with gold}
-BuildRequires:  binutils-gold
-%endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  ninja
@@ -139,11 +138,12 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Recommends:     %{name}-doc
 # llvm does not work on s390
 ExcludeArch:    s390
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+%if %{with gold}
+BuildRequires:  binutils-gold
+%endif
 %if %{with ffi}
 BuildRequires:  pkgconfig(libffi)
 %endif
@@ -153,7 +153,6 @@ BuildRequires:  pkgconfig(valgrind)
 %if %{with oprofile}
 BuildRequires:  oprofile-devel
 %endif
-Recommends:     %{name}-doc
 
 %description
 LLVM is a compiler infrastructure designed for compile-time,
@@ -180,9 +179,9 @@ Requires:       llvm%{_sonum}-LTO-devel
 Requires:       llvm%{_sonum}-gold
 Requires:       llvm%{_sonum}-polly-devel
 Requires:       pkgconfig
-Provides:       llvm-devel-provider = %{version}
 Conflicts:      llvm-devel-provider < %{version}
 Conflicts:      cmake(LLVM)
+Provides:       llvm-devel-provider = %{version}
 %if %{with ffi}
 Requires:       pkgconfig(libffi)
 %endif
@@ -201,11 +200,11 @@ new native programs that use the LLVM infrastructure.
 Summary:        Documentation for LLVM
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
-Provides:       llvm-doc-provider = %{version}
-Conflicts:      llvm-doc-provider < %{version}
-BuildArch:      noarch
 # The docs used to be contained in the devel package.
 Conflicts:      llvm-devel-provider < 9.0.0
+Conflicts:      llvm-doc-provider < %{version}
+Provides:       llvm-doc-provider = %{version}
+BuildArch:      noarch
 
 %description doc
 This package contains documentation for the LLVM infrastructure.
@@ -217,15 +216,15 @@ URL:            https://clang.llvm.org/
 # Avoid multiple provider errors
 Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     clang%{_sonum}-checker
+Recommends:     clang%{_sonum}-doc
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
 %if %{with cxx}
 Requires:       libc++%{_socxx}
 %endif
-Recommends:     clang%{_sonum}-doc
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 
 %description -n clang%{_sonum}
 This package contains the clang (C language) frontend for LLVM.
@@ -293,13 +292,13 @@ This package contains the clang (C language) frontend for LLVM.
 Summary:        Documentation for Clang
 Group:          Documentation/HTML
 Requires:       clang%{_sonum} = %{version}
-Provides:       clang-doc-provider = %{version}
 Conflicts:      clang-doc-provider < %{version}
-BuildArch:      noarch
 # The docs used to be contained in the devel package.
 Conflicts:      clang6-devel
 Conflicts:      clang7-devel
 Conflicts:      clang8-devel
+Provides:       clang-doc-provider = %{version}
+BuildArch:      noarch
 
 %description -n clang%{_sonum}-doc
 This package contains documentation for the Clang compiler.
@@ -398,7 +397,7 @@ of the C++ standard library, targeting C++11.
 %package        vim-plugins
 Summary:        Vim plugins for LLVM
 Group:          Productivity/Text/Editors
-Supplements:    packageand(llvm%{_sonum}:vim)
+Supplements:    (llvm%{_sonum} and vim)
 Conflicts:      vim-plugin-llvm < %{version}
 Provides:       vim-plugin-llvm = %{version}
 BuildArch:      noarch
@@ -409,7 +408,7 @@ This package contains vim plugins for LLVM like syntax highlighting.
 %package        emacs-plugins
 Summary:        Emacs plugins for LLVM
 Group:          Productivity/Text/Editors
-Supplements:    packageand(llvm%{_sonum}:emacs)
+Supplements:    (llvm%{_sonum} and emacs)
 Conflicts:      emacs-llvm < %{version}
 Provides:       emacs-llvm = %{version}
 BuildArch:      noarch
@@ -422,9 +421,9 @@ Summary:        Python bindings for libclang
 Group:          Development/Libraries/Python
 Requires:       clang%{_sonum}-devel = %{version}
 Requires:       python3-base
-BuildArch:      noarch
-Provides:       %{python3_sitearch}/clang/
 Conflicts:      %{python3_sitearch}/clang/
+Provides:       %{python3_sitearch}/clang/
+BuildArch:      noarch
 
 %description -n python3-clang
 This package contains the Python bindings to clang (C language)
@@ -446,9 +445,9 @@ Group:          Development/Languages/Other
 BuildRequires:  python3-base
 Requires:       python3-PyYAML
 Requires:       python3-Pygments
-BuildArch:      noarch
 Conflicts:      opt-viewer < %{version}
 Provides:       opt-viewer = %{version}
+BuildArch:      noarch
 
 %description opt-viewer
 Set of tools for visualising the LLVM optimization records generated with -fsave-optimization-record. Used for compiler-assisted performance analysis.
@@ -458,6 +457,7 @@ Set of tools for visualising the LLVM optimization records generated with -fsave
 Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
 URL:            https://lldb.llvm.org/
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -467,10 +467,10 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{version}
-Recommends:     python3-lldb%{_sonum}
-ExclusiveArch:  x86_64
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python3-lldb%{_sonum}
+ExclusiveArch:  x86_64
 
 %description -n lldb%{_sonum}
 LLDB is a next generation, high-performance debugger. It is built as a set
@@ -497,8 +497,8 @@ Requires:       liblldb%{_sonum} = %{version}
 Requires:       llvm%{_sonum}-devel = %{version}
 Requires:       pkgconfig(libedit)
 Requires:       pkgconfig(libxml-2.0)
-Provides:       lldb-devel-provider = %{version}
 Conflicts:      lldb-devel-provider < %{version}
+Provides:       lldb-devel-provider = %{version}
 
 %description -n lldb%{_sonum}-devel
 This package contains the development files for LLDB.
@@ -512,8 +512,8 @@ BuildRequires:  swig >= 3.0.11
 Requires:       liblldb%{_sonum} = %{version}
 Requires:       python3-base
 Requires:       python3-six
-Provides:       %{python3_sitearch}/lldb/
 Conflicts:      %{python3_sitearch}/lldb/
+Provides:       %{python3_sitearch}/lldb/
 
 %description -n python3-lldb%{_sonum}
 This package contains the Python bindings for LLDB. It also contains
@@ -560,9 +560,12 @@ This package contains the development files for Polly.
 %patch24 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
+%patch35 -p1
 
 pushd compiler-rt-%{version}.src
 %patch28 -p2
+%patch36 -p2
 popd
 
 pushd clang-%{version}.src
@@ -731,7 +734,7 @@ fi
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
-    -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
+    -DPYTHON_EXECUTABLE:FILEPATH=%{_bindir}/python3
 %if %{with thin_lto}
 ninja -v %{?_smp_mflags} clang llvm-tblgen clang-tblgen llvm-ar llvm-ranlib LLVMgold
 %else
@@ -807,7 +810,7 @@ export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
-    -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 \
+    -DPYTHON_EXECUTABLE:FILEPATH=%{_bindir}/python3 \
     -DPOLLY_BUNDLED_ISL:BOOL=ON
 
 # ThinLTO uses multiple threads from the linker process for optimizations, which
@@ -872,8 +875,8 @@ popd
 %endif
 
 # Note that bfd-plugins is always in /usr/lib/bfd-plugins, no matter what _libdir is.
-mkdir -p %{buildroot}/usr/lib/bfd-plugins
-ln -s %{_libdir}/LLVMgold.so %{buildroot}/usr/lib/bfd-plugins/
+mkdir -p %{buildroot}%{_prefix}/lib/bfd-plugins
+ln -s %{_libdir}/LLVMgold.so %{buildroot}%{_prefix}/lib/bfd-plugins/
 
 install -m 755 -d %{buildroot}%{_datadir}/vim/site/
 for i in ftdetect ftplugin indent syntax; do
@@ -1012,7 +1015,7 @@ EOF
 for script in %{buildroot}%{_bindir}/{{clang-{format,tidy}-diff,git-clang-format,\
 hmaptool,run-clang-tidy}-%{_relver},{ccc,c++}-analyzer,scan-{build,view},opt-{diff,stats,viewer}} \
         %{buildroot}%{python3_sitelib}/optrecord.py; do
-    sed -i '1s|/usr/bin/env *|/usr/bin/|;1s|/usr/bin/python$|/usr/bin/python3|' $script
+    sed -i '1s|%{_bindir}/env *|%{_bindir}/|;1s|%{_bindir}/python$|%{_bindir}/python3|' $script
 done
 
 # Remove executable bit where not needed.
@@ -1727,8 +1730,8 @@ fi
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/LLVMgold.so
 # Note that bfd-plugins is always in /usr/lib/bfd-plugins, no matter what _libdir is.
-%dir /usr/lib/bfd-plugins/
-/usr/lib/bfd-plugins/LLVMgold.so
+%dir %{_prefix}/lib/bfd-plugins/
+%{_prefix}/lib/bfd-plugins/LLVMgold.so
 
 %if %{with openmp}
 %files -n libomp%{_sonum}-devel

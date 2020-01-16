@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 11 20:14:12 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- riscv-eh-frame-fixup.patch: Remove changesets that alter the libLLVM ABI
+
+-------------------------------------------------------------------
+Fri Jan  8 15:30:21 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Add upstream patch to export compiler-rt FuzzedDataProvider header, 
+  required by Envoy 1.12.2:
+  * compiler-rt-move-fdp.patch 
+
+-------------------------------------------------------------------
+Mon Jan  6 19:31:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- riscv-eh-frame-fixup.patch: Fix handling of .eh_frame on RISC-V
+- polly-pthread.patch: Add missing -lpthread
+
+-------------------------------------------------------------------
 Fri Jan  3 15:28:52 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Enable support for riscv64
