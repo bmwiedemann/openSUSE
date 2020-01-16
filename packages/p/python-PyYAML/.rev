@@ -171,4 +171,27 @@
  * Fix logic for quoting special characters</comment>
     <requestid>753178</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>305da5d17b5c5e89b03910a423d012e0</srcmd5>
+    <version>5.3</version>
+    <time>1579194825</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3
+ * Use `is` instead of equality for comparing with `None`
+ * fix typos and stylistic nit
+ * Fix up small typo
+ * Fix handling of __slots__
+ * Allow calling add_multi_constructor with None
+ * Add use of safe_load() function in README
+ * Fix reader for Unicode code points over 0xFFFF
+ * Enable certain unicode tests when maxunicode not &gt; 0xffff
+ * Use full_load in yaml-highlight example
+ * Document that PyYAML is implemented with Cython
+ * Fix for Python 3.10
+ * increase size of index, line, and column fields
+ * remove some unused imports
+ * Create timezone-aware datetimes when parsed as such
+ * Add tests for timezone</comment>
+    <requestid>761501</requestid>
+  </revision>
 </revisionlist>

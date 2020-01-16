@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:55:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 5.3
+ * Use `is` instead of equality for comparing with `None`
+ * fix typos and stylistic nit
+ * Fix up small typo
+ * Fix handling of __slots__
+ * Allow calling add_multi_constructor with None
+ * Add use of safe_load() function in README
+ * Fix reader for Unicode code points over 0xFFFF
+ * Enable certain unicode tests when maxunicode not > 0xffff
+ * Use full_load in yaml-highlight example
+ * Document that PyYAML is implemented with Cython
+ * Fix for Python 3.10
+ * increase size of index, line, and column fields
+ * remove some unused imports
+ * Create timezone-aware datetimes when parsed as such
+ * Add tests for timezone
+
+-------------------------------------------------------------------
 Tue Dec  3 11:31:41 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 5.2
