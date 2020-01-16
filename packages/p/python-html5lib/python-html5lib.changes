@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:31:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict pytest to < 5.0 as it broke with 5.3 and upstream
+  still didn't bother to merge support for even pytest 4+...
+
+-------------------------------------------------------------------
 Tue Dec  3 14:25:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix comments in the spec file

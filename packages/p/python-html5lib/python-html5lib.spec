@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5lib
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,8 @@ BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module datrie}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest < 5.0}
 BuildRequires:  %{python_module pytest-expect}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  %{python_module webencodings}

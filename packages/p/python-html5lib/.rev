@@ -154,4 +154,13 @@
     <comment>- Fix comments in the spec file</comment>
     <requestid>753271</requestid>
   </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>0925cfdd6e49759cef0c13012fd2869a</srcmd5>
+    <version>1.0.1</version>
+    <time>1579194976</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict pytest to &lt; 5.0 as it broke with 5.3 and upstream
+  still didn't bother to merge support for even pytest 4+...</comment>
+    <requestid>764655</requestid>
+  </revision>
 </revisionlist>
