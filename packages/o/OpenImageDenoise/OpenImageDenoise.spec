@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageDenoise
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,6 @@
 %define sover 0
 %define libname lib%{name}%{sover}
 %define pkgname oidn
-
 Name:           OpenImageDenoise
 Version:        1.1.0
 Release:        0
@@ -32,6 +31,7 @@ Source:         https://github.com/%{name}/%{pkgname}/releases/download/v%{versi
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  tbb-devel
+ExclusiveArch:  x86_64
 
 %description
 Intel Open Image Denoise is an open source library of high-performance,
@@ -64,7 +64,7 @@ make %{?_smp_mflags}
 
 %install
 %cmake_install
-rm -r %{buildroot}/usr/share/doc
+rm -r %{buildroot}%{_datadir}/doc
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

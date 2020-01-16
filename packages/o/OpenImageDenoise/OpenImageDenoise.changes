@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:08:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only for x86_64 as it is the only supported platform
+
+-------------------------------------------------------------------
 Tue Dec 10 12:28:09 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - add memory contraints: 8G
