@@ -1,7 +1,7 @@
 #
 # spec file for package pdsh
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 #
+%define slurm_version @BUILD_FLAVOR@%{nil}
+
+%if "%slurm_version" == ""
+ExclusiveArch:  do_not_build
+%endif
+%if "%slurm_version" == "base"
+%define slurm_version %{nil}
+%endif
+
 %if 0%{!?sle_version:1} || 0%{?sle_version} >= 120300 || (0%{!?is_opensuse:1} && 0%{?sle_version} >= 120200)
 %define have_munge 1
 %define have_slurm 1
 %define have_genders 1
+%endif
+
+%if 0%{?have_slurm} && "x%{?slurm_version}" != "x"
+%define _slurm_version _%{slurm_version}
 %endif
 
 Name:           pdsh
@@ -28,7 +41,7 @@ BuildRequires:  dejagnu
 BuildRequires:  openssh
 BuildRequires:  readline-devel
 %if 0%{?have_slurm}
-BuildRequires:  slurm-devel
+BuildRequires:  slurm%{?_slurm_version}-devel
 %endif
 %if 0%{?have_munge}
 BuildRequires:  munge-devel
@@ -38,12 +51,12 @@ Recommends:     mrsh
 %if 0%{?have_genders}
 BuildRequires:  genders-devel > 1.0
 %endif
-Url:            http://pdsh.googlecode.com/
+URL:            http://pdsh.googlecode.com/
 Version:        2.33
 Release:        0
 Summary:        Parallel remote shell program
 # git clone of https://code.google.com/p/pdsh/
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
 Source:         https://github.com/chaos/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch1:         pdsh-rename-list-to-xlist.patch
@@ -59,13 +72,17 @@ multiple remote hosts in parallel.  Pdsh can use several different
 remote shell services, including Kerberos IV and ssh.
 
 %if 0%{?have_slurm}
-%package slurm
+%package slurm%{?_slurm_version}
 Summary:        SLURM plugin for pdsh
 Group:          Productivity/Clustering/Computing
 Requires:       pdsh = %{version}
-Enhances:       slurm
+Enhances:       slurm%{?_slurm_version}
+%if 0%{?_slurm_version:1}
+Provides:       %{name}-slurm = %{version}
+Conflicts:      %{name}-slurm
+%endif
 
-%description slurm
+%description slurm%{?_slurm_version}
 Plugin for pdsh to determine nodes to run on by SLURM jobs or partitions.
 %endif
 
@@ -139,7 +156,8 @@ rm -f %buildroot/%_libdir/pdsh/*.la
 
 %files
 %defattr(-,root,root)
-%doc README DISCLAIMER.* README.* NEWS COPYING TODO
+%doc README DISCLAIMER.* README.* NEWS TODO
+%license COPYING
 %attr(755, root, root) /usr/bin/pdsh
 %attr(755, root, root) /usr/bin/pdcp 
 /usr/bin/dshbak
@@ -156,7 +174,7 @@ rm -f %buildroot/%_libdir/pdsh/*.la
 %exclude %_libdir/pdsh/netgroup.so
 
 %if 0%{?have_slurm}
-%files slurm
+%files slurm%{?_slurm_version}
 %defattr(-,root,root)
 %_libdir/pdsh/slurm.so
 %endif

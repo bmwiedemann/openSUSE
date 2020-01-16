@@ -267,4 +267,14 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
     <comment></comment>
     <requestid>592455</requestid>
   </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>38d9f74bd77ed82416623a7de6be41e1</srcmd5>
+    <version>2.33</version>
+    <time>1579195202</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for an alternative SLURM version when building the
+  slurm plugin.
+- Use %license macro</comment>
+    <requestid>764793</requestid>
+  </revision>
 </revisionlist>
