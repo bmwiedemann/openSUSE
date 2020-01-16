@@ -33,7 +33,7 @@
 %bcond_without openblas
 
 Name:           opencv3
-Version:        3.4.8
+Version:        3.4.9
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
