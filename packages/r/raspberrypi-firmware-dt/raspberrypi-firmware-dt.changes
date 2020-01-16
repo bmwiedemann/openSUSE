@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:14:17 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-thermal.dts overlay, which provides CPU thermal measurements (bsc#1160311).
+
+-------------------------------------------------------------------
 Fri Jan 10 13:33:08 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update rpi4-genet-overlay.dts and create upstream-rpi4-genet-phy.patch to fix

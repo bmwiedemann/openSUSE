@@ -1,0 +1,36 @@
+/dts-v1/;
+/plugin/;
+
+/{
+	compatible = "brcm,bcm2711";
+
+	fragment@0 {
+		target = <&cpu_thermal>;
+		__overlay__ {
+			thermal-sensors = <&avs_thermal>;
+		};
+	};
+
+	fragment@1 {
+		target = <&thermal>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@2 {
+		target = <&soc>;
+		__overlay__ {
+			avs_monitor: avs-monitor@7d5d2000 {
+				compatible = "brcm,bcm2711-avs-monitor",
+					    "syscon", "simple-mfd";
+				reg = <0x7d5d2000 0xf00>;
+
+				avs_thermal: avs-thermal {
+					compatible = "brcm,bcm2711-thermal";
+					#thermal-sensor-cells = <0>;
+				};
+			};
+		};
+	};
+};
