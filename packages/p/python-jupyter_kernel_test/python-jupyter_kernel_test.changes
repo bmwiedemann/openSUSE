@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 11 14:44:25 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
 Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Provide jupyter package.

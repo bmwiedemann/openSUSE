@@ -55,12 +55,8 @@ conformance with the Jupyter Messaging Protocol
 # Not needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install \
-    --root %{buildroot} \
-    --prefix %{_prefix} \
-    --compile \
-    %{SOURCE0}
-
+cp -a %{SOURCE0} .
+%pyproject_install
 %python_expand cp %{buildroot}%{$python_sitelib}/jupyter_kernel_test-%{version}.dist-info/COPYING.md .
 
 %if %{with test}
