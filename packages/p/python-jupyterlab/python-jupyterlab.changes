@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:22:17 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.2.4
+  * update yarn.lock
+  * update terser dep
+
+-------------------------------------------------------------------
 Tue Dec 10 19:38:10 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)
