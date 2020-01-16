@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan 15 22:57:12 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.20.0
+    * Introduce new graphical user interface for Windows and macOS
+    * The DMG image for macOS is now signed
+    * Support for screen readers on Android and iOS
+    * Adjust color contrast for better readability
+    * Optimize menu layout and introduce settings
+      panel on iOS and Android
+    * Optimize the functionality to use the smartphone as card reader
+    * Support for macOS 10.11 was dropped
+    * Support for x86 architecture on Android was dropped
+    * Small bug fixes
+    * Update OpenSSL to version 1.1.1d
+    * Update Qt to version 5.12.5
+- Add libqt5-qtdeclarative-devel and libQt5QuickControls2-devel
+  to BuildRequires, required for QML-based user interface
+- Add patch to disable vendor name
+  + 0001-disable-vendor-name.patch
+- Add patch to fix path to desktop icon
+  + 0002-fix-desktop-icon-path.patch
+- Drop custom icon
+  + AusweisApp2.png
+- Drop patches for issues fixed upstream
+  + 0001-fix-resource-file-path.patch
+  + 0002-fix-translation-files-path.patch
+  + 0003-disable-auto-updater.patch
+  + 0004-set-config-path.patch
+  + 0005-disable-qtquick.patch
+- Improve grammar and semantics in Summary and %description
+- Install npa_icon.png as desktop icon
+
+-------------------------------------------------------------------
 Thu Dec 19 16:10:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel:
