@@ -1,7 +1,7 @@
 #
 # spec file for package python-docutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docutils%{psuffix}
-Version:        0.15.2
+Version:        0.16
 Release:        0
 Summary:        Python Documentation Utilities
 License:        Python-2.0 AND BSD-2-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
@@ -34,9 +34,6 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
-# PATCH-FIX-UPSTREAM fix_tests_38.patch shp#docutils#161 mcepl@suse.com
-# Fixes failing tests in test_writers.test_odt.DocutilsOdtTestCase
-Patch0:         fix_tests_38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -66,7 +63,6 @@ easy-to-read, what-you-see-is-what-you-get plaintext markup syntax.
 
 %prep
 %setup -q -n docutils-%{version}
-%autopatch -p1
 # Remove useless ".py" ending from executables:
 for i in tools/rst*; do mv "$i" "${i/.py}"; done
 sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py
@@ -78,14 +74,6 @@ sed -i -e "1d" "docutils/writers/xetex/__init__.py" "docutils/writers/_html_base
 
 %build
 %python_build
-
-# test3 is generated from test during build
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-mv test test%{python2_bin_suffix}
-%endif
-%if 0%{?have_python3} && ! 0%{?skip_python3}
-mv test3 test%{python3_bin_suffix}
-%endif
 
 %install
 %if !%{with test}
@@ -119,7 +107,7 @@ fi
 
 %check
 %if %{with test}
-%python_exec test%{$python_bin_suffix}/alltests.py
+%python_exec test/alltests.py
 %endif
 
 %if !%{with test}

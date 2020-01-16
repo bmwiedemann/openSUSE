@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:56:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.16:
+  - Dropped support for Python 2.6, 3.3 and 3.4
+  - Docutils now supports Python 2.7 and Python 3.5+ natively
+    (without conversion by ``2to3``).
+  - Keep `backslash escapes`__ in the document tree. Backslash characters in
+    text are be represented by NULL characters in the ``text`` attribute of
+    Doctree nodes and removed in the writing stage by the node's
+    ``astext()`` method.
+- Remove merged patch fix_tests_38.patch
+
+-------------------------------------------------------------------
 Fri Oct 11 14:11:49 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add fix_tests_38.patch to overcome failing
