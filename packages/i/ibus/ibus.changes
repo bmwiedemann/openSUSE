@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 11 05:14:20 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Drop ibus-delete-weak-pointer-for-vala-0.43.4.patch
+  * which cannot be applied to 1.5.21
+
+-------------------------------------------------------------------
+Wed Dec 18 07:49:54 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Add ibus-delete-weak-pointer-for-vala-0.43.4.patch:
+  Backport this fix from upstream, To make ibus-1.5.19 can success 
+  build with vala-0.43.4 and later editions(bnc#1159079).
+
+-------------------------------------------------------------------
 Fri Sep 20 05:31:52 UTC 2019 - Cliff Zhao <qzhao@suse.com>
 
 - Update hide-setup-menu.patch: make it can be compile in SLE
