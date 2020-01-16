@@ -1,0 +1,17 @@
+<services>
+  <service mode="localonly" name="obs_scm">
+    <param name="url">git://github.com/jeffmcneill/thai-font-collection.git</param>
+    <param name="scm">git</param>
+    <param name="revision">01c39b7</param>
+    <param name="versionprefix">0.0+git</param>
+    <param name="versionformat">%ct.%h</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>
+
+
