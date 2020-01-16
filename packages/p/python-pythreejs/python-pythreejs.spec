@@ -86,7 +86,8 @@ This package provides the JupyterLab extension.
 # Not Needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 %python_expand sed -i 's/\r$//' %{buildroot}%{$python_sitelib}/pythreejs/*.py
 %python_expand sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/pythreejs/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
