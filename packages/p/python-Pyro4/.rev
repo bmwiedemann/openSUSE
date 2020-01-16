@@ -52,4 +52,20 @@
   * now correctly checks for write access to the correct logfile location, instead of assuming the current directory</comment>
     <requestid>732901</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f83ca8ed64c3395dd76273dde8be397</srcmd5>
+    <version>4.77</version>
+    <time>1579195019</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly conditionalize python2 build for older openSUSE
+
+- Update to 4.77
+  * dropped support for Python 3.4 (which has reached end-of-life
+    status). Supported Python versions are now 2.7, and 3.5 or
+    newer.
+  * URIs now allow spaces in the location part. Useful for unix
+    domain sockets.
+- Dropped python2 subpackage due to dropping backports dependency.</comment>
+    <requestid>764902</requestid>
+  </revision>
 </revisionlist>

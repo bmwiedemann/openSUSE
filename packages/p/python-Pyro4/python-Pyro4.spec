@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyro4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Pyro4
-Version:        4.76
+Version:        4.77
 Release:        0
 Summary:        Distributed object middleware for Python (RPC)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/irmen/Pyro4
 Source:         https://files.pythonhosted.org/packages/source/P/Pyro4/Pyro4-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +43,9 @@ BuildRequires:  %{python_module msgpack-python >= 0.5.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module serpent >= 1.27}
 BuildRequires:  ca-certificates
+%if %{with python2}
 BuildRequires:  python-selectors34
+%endif
 # /SECTION
 %ifpython2
 Requires:       python-selectors34
