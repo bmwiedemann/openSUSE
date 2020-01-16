@@ -33,4 +33,12 @@
     <comment>- Restrict pytest5 for now</comment>
     <requestid>716999</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>44b35e3cb1e78db96400ba97c88e5945</srcmd5>
+    <version>3.0.0</version>
+    <time>1579195004</time>
+    <user>dimstar_suse</user>
+    <comment>- add healthcheck.patch to disarm too_slow healthcheck random fails</comment>
+    <requestid>764684</requestid>
+  </revision>
 </revisionlist>

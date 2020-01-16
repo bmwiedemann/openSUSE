@@ -1,7 +1,7 @@
 #
 # spec file for package python-hpack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Version:        3.0.0
 Release:        0
 Summary:        Pure-Python HPACK header compression
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/python-hyper/hpack
 Source:         https://files.pythonhosted.org/packages/source/h/hpack/hpack-%{version}.tar.gz
+Patch0:         healthcheck.patch
 BuildRequires:  %{python_module hypothesis}
 # https://github.com/python-hyper/hpack/issues/168
 BuildRequires:  %{python_module pytest < 5.0}
@@ -41,6 +41,7 @@ automatically enables the use of nghttp2 if it’s available.
 
 %prep
 %setup -q -n hpack-%{version}
+%patch0 -p1
 
 %build
 export LC_ALL="en_US.UTF-8"

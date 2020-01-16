@@ -1,0 +1,29 @@
+Index: hpack-3.0.0/test/test_hpack.py
+===================================================================
+--- hpack-3.0.0.orig/test/test_hpack.py
++++ hpack-3.0.0/test/test_hpack.py
+@@ -8,7 +8,7 @@ from hpack.struct import HeaderTuple, Ne
+ import itertools
+ import pytest
+ 
+-from hypothesis import given
++from hypothesis import given, settings, HealthCheck
+ from hypothesis.strategies import text, binary, sets, one_of
+ 
+ try:
+@@ -749,6 +749,7 @@ class TestDictToIterable(object):
+         binary().filter(lambda k: k and not k.startswith(b':'))
+     )
+ 
++    @settings(suppress_health_check=[HealthCheck.too_slow])
+     @given(
+         special_keys=sets(keys),
+         boring_keys=sets(keys),
+@@ -786,6 +787,7 @@ class TestDictToIterable(object):
+         assert special_keys == received_special
+         assert boring_keys == received_boring
+ 
++    @settings(suppress_health_check=[HealthCheck.too_slow])
+     @given(
+         special_keys=sets(keys),
+         boring_keys=sets(keys),
