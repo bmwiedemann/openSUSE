@@ -1,7 +1,7 @@
 #
 # spec file for package python3-espressomd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Build with OpenMPI
 %if 0%{?sle_version} == 0
@@ -34,7 +35,7 @@
 %define pkgname espresso
 %define modname %{pkgname}md
 Name:           python3-%{modname}
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
@@ -46,8 +47,8 @@ BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 # Currently libboost_mpi-devel and hdf5 use different mpi versions
 # BuildRequires:  hdf5-devel
-BuildRequires:  gsl-devel
 BuildRequires:  %{mpiver}-devel
+BuildRequires:  gsl-devel
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -74,6 +75,8 @@ systems, for example DNA and lipid membranes.
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
+# gh#espressomd/espresso#3396
+%define _lto_cflags %{nil}
 
 # overwrite .so linker flags on SUSE distros: drop --no-undefined
 # we don't install {i,}pypresso scripts as they aren't needed when installing in /usr
@@ -94,9 +97,9 @@ find %{buildroot}%{_prefix} -name "gen_pxiconfig" -exec chmod +x {} \;
 rm -f %{buildroot}%{_libdir}/lib*.so
 
 %check
-# https://github.com/espressomd/espresso/issues/3315
+# https://github.com/espressomd/espresso/issues/3315 & gh#espressomd/espresso#3396
 %ifarch i586
-%define testargs ARGS='-E \\(MpiCallbacks_test\\|matrix_vector_product\\|collision_detection\\)'
+%define testargs ARGS='-E \\(matrix_vector_product\\|collision_detection\\)'
 %endif
 LD_LIBRARY_PATH='%{buildroot}/%{python3_sitearch}/espressomd::%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' make -C build check CTEST_OUTPUT_ON_FAILURE=1 %{?testargs:%{testargs}}
 
