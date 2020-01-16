@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 %bcond_without  test
 Name:           jupyter-jupyter-wysiwyg
 Version:        19.10
@@ -49,7 +50,9 @@ HTML/Markdown cells in Jupyter.
 # Not needed
 
 %install
-pip%{python3_bin_suffix} install --root %{buildroot} --prefix %{_prefix} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
+export PYTHONDONTWRITEBYTECODE=1
 
 %{jupyter_nbextension_install jupyter_wysiwyg}
 %{jupyter_move_config}
