@@ -1,5 +1,0 @@
-<package name="python-WebError" project="openSUSE:Factory">
-  <title></title>
-  <description>A web error handling and exception catching module for Paste applications.</description>
-  <devel project="devel:languages:python" package="python-WebError"/>
-</package>

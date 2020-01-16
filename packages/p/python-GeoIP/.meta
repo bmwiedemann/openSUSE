@@ -1,5 +1,0 @@
-<package name="python-GeoIP" project="openSUSE:Factory">
-  <title>Python bindings for the GeoIP geographical lookup libraries</title>
-  <description>This package contains the Python bindings for the GeoIP API, allowing IP to location lookups to country, city and organisation level within Python code.</description>
-  <devel project="Application:Geo" package="python-GeoIP"/>
-</package>
