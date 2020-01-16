@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 11 04:10:44 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Extend perl-TimeDate-getdate.patch to fix another year-2020 bug
+  (bsc#1159990)
+
+-------------------------------------------------------------------
 Thu Jan  2 12:42:40 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix test getdate [bsc#1159990]

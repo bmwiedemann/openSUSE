@@ -1,3 +1,7 @@
+From: Bernhard M. Wiedemann <bwiedemann suse de>
+Subject: Fix bsc#1159990
+Date: 2020-01-11
+
 Index: TimeDate-2.30/t/getdate.t
 ===================================================================
 --- TimeDate-2.30.orig/t/getdate.t
@@ -11,3 +15,41 @@ Index: TimeDate-2.30/t/getdate.t
  
  @data = split(/\n/, $data);
  
+Index: TimeDate-2.30/t/cpanrt.t
+===================================================================
+--- TimeDate-2.30.orig/t/cpanrt.t
++++ TimeDate-2.30/t/cpanrt.t
+@@ -1,7 +1,7 @@
+ use Date::Format qw(time2str strftime);
+ use Date::Parse qw(strptime str2time);
+ 
+-print "1..8\n";
++print "1..10\n";
+ 
+ my $i = 1;
+ 
+@@ -53,3 +53,11 @@ my $i = 1;
+   print "not " if str2time('16 Oct 09') < 0;
+   print "ok ", $i++, "\n";
+ }
++
++{   # https://rt.cpan.org/Public/Bug/Display.html?id=124509 year 2020 problem
++  print "# 1970-01-01  => 0\n";
++  print "not " if str2time('1970-01-01') != 0;
++  print "ok ", $i++, "\n";
++  print "not " if str2time('01 Jan 70') == 0;
++  print "ok ", $i++, "\n";
++}
+Index: TimeDate-2.30/lib/Date/Parse.pm
+===================================================================
+--- TimeDate-2.30.orig/lib/Date/Parse.pm
++++ TimeDate-2.30/lib/Date/Parse.pm
+@@ -195,7 +195,7 @@ sub {
+     }
+   }
+ 
+-  $year -= 1900 if defined $year && $year > 1900;
++  $year -= 1900 if defined $year && $year > 2000;
+ 
+   $zone += 3600 if defined $zone && $dst;
+   $ss += "0.$frac" if $frac;
