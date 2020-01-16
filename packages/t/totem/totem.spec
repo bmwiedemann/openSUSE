@@ -1,7 +1,7 @@
 #
 # spec file for package totem
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://wiki.gnome.org/Apps/Videos
 Source0:        https://download.gnome.org/sources/totem/3.34/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE totem-revert-vaapi-disable.patch -- Revert upstreams disabling of vaapi support
 Patch0:         totem-revert-vaapi-disable.patch
+# PATCH-FIX-UPSTREAM totem-Fix-bracket-keys-and-backspace.patch -- variable-rate: Fix bracket keys and backspace not working
+Patch1:         totem-Fix-bracket-keys-and-backspace.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
