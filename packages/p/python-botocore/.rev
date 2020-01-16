@@ -536,4 +536,15 @@
     <comment></comment>
     <requestid>754430</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>ec8a439cab593e90f34ab3dfaaf3b3c9</srcmd5>
+    <version>1.13.33</version>
+    <time>1579194783</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.13.17 (bsc#1129696)
+- Version update to 1.12.57 (bsc#1118021, bsc#1118024, bsc#1118027)
+- from version 1.10.57 (bsc#1075263)
+- Version update to 1.10.40 (bsc#1075263)</comment>
+    <requestid>761123</requestid>
+  </revision>
 </revisionlist>
