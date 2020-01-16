@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Fri Nov  1 09:40:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 2.3.6
+  - Scrollbar improvements
+  - Crash fixes, bug fixes
+  - Search path issues fixed
+  - New font added for better scalibility 
+  - Updated GsKit, many code cleanups in the library 
+  - Settings fixups
+  - Modern setting makes the dithering effect a bit smoother when
+    Galaxy is shown
+  - Brought back the info menu for help and ordering info
+  - More log messages for better feedback
+- Use %cmake macros
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug  6 20:40:20 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 2.2.3
+  * Tweaked Game menu design
+  * Optimized compilation process
+  * Reduce some compiler warnings
+  * Overall code modernization
+  * AI improvements
+  * Collision improvements with switches
+- Take the source from the upstream authors gitlab instance.
+  The github mirror wasn't up to date.
+
+-------------------------------------------------------------------
+Fri Jul 27 07:58:11 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.2.2
+  * Player selection in Keen 4 Plus. Play as Lindsey, Council or
+    Kyle.
+  * Different character in Multiplayer mode.
+  * Added support for Mod, Midi and FLAC.
+  * Sprite selection screen when Single player mode (Galaxy).
+
+-------------------------------------------------------------------
+Sat Mar 17 09:46:34 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2.0.7
+  * Integration of the KeenDreams GPLed engine
+  * Many AI fixes in Keen 4, 5 and 6
+  * Platform sprite corrections in Keen 5
+  * Many collision fixes
+  * Smoother scrolling with vsync
+- Remove commandergenius-nocurrentdate.diff (no longer needed)
+
+-------------------------------------------------------------------
+Sun May  3 19:38:32 UTC 2015 - dap.darkness@gmail.com
+
+- Updated to 1.8.1.1 to resolve openSUSE:Factory build failures:
+  * Dosbox fusion;
+  * A lot of dosbox fixes;
+  * Better mouse controls;
+  * New submenu for mods;
+  * More fixes and AI improvements;
+  * More native resolutions if higher modes are used,
+    especially in the launcher;
+  * Some improved physics;
+  * Shorter game names;
+  * Last window size is now saved automatically;
+  * Heavy engine independent code cleanups which will make CG more
+    flexible for new game engines besides Commander Keen;
+  * New GsLib will take more work at low level functions and will
+    as wrapper for SDL and GUI elements;
+  * Multiple selection problem should be fixed now;
+  * Even more smooth effects readded;
+  * New pump event concept will solve a lot of deadlocks we
+    previously had on the android versions;
+  * Added Scrollbar for a bigger list of games;
+  * Wormmoutch bites again;
+  * More effects readded;
+  * Many bug fixes especially Keen 1,2 and 4.
+- Switched from tarball to _service.
+- Added commandergenius-nocurrentdate.diff vs. useless rebuilds.
+- General spec clean up.
+
+-------------------------------------------------------------------
+Thu Jan 30 22:23:01 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 1.6.5.5) for build.opensuse.org

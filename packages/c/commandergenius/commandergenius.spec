@@ -1,0 +1,68 @@
+#
+# spec file for package commandergenius
+#
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           commandergenius
+Version:        2.3.6
+Release:        0
+Summary:        An open clone of the Commander Keen engines
+License:        GPL-2.0-only
+Group:          Amusements/Games/Action/Arcade
+URL:            http://clonekeenplus.sf.net/
+#Git-Clone:     https://gitlab.com/Dringgstein/Commander-Genius.git
+Source:         https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v%version/Commander-Genius-v%version.tar.bz2
+BuildRequires:  boost-devel
+BuildRequires:  cmake >= 2.8
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SDL2_image) >= 2.0.0
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(zlib)
+
+%description
+Commander Genius is a software piece that interprets the Commander
+Keen Vorticon (1-3) and Galaxy (3½-6) series.
+
+It has 4-player cooperative mode and six difficulty modes.
+
+%prep
+%setup -q -n Commander-Genius-v%version
+
+%build
+%cmake \
+  -DCMAKE_INSTALL_PREFIX="%_prefix" \
+  -DAPPDIR="%_bindir"
+%make_jobs
+
+%install
+%cmake_install
+%fdupes %buildroot%_datadir
+
+%files
+%license COPYRIGHT
+%_bindir/CGeniusExe
+%_datadir/applications/cgenius.desktop
+%_datadir/icons/hicolor/
+%_datadir/games/%name/
+
+%changelog
