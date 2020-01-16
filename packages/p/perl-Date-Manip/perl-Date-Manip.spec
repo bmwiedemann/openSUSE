@@ -17,7 +17,7 @@
 
 
 Name:           perl-Date-Manip
-Version:        6.78
+Version:        6.79
 Release:        0
 %define cpan_name Date-Manip
 Summary:        Date manipulation routines
@@ -116,7 +116,7 @@ package.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
