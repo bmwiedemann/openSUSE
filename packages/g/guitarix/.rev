@@ -216,4 +216,12 @@
     <comment>- Update to 0.37.3 and fix build against boost1_69</comment>
     <requestid>686975</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>36aa46bb5088005982395e7a979fb312</srcmd5>
+    <version>0.39.0</version>
+    <time>1579195395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.39.0, now builds with python3</comment>
+    <requestid>764933</requestid>
+  </revision>
 </revisionlist>

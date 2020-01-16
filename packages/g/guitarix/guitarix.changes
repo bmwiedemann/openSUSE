@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:33:25 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to 0.39.0, now builds with python3
+- Rebased guitarix-boost69.patch
+- Some upstream changes:
+  *fix bug #67, dont use malloc.h on FreeBSD
+  *remove assert for ports count, to allow save removing of changed
+   LV2 plugins
+  *add new option -E --hideonquit, this makes the UI experience
+   smooth when used as LV2 plugin
+  *add support for LV2_URID_Map, LV2_URID_Unmap and LV2_OPTIONS to
+   allow more plugs to load
+  *fix compiler warnings with gcc 8
+  *add exit handler and warning when samplerate is above 96kHz
+  *hide splash on error message
+  *set online help to sourcforge/discussion
+  *add Russian-language translation by Valeriy Shtobbe and
+   Olesya Gerasimenko, many thanks!
+  *update all build scripts to use faust version 2.15.11 and update
+   all generated faust files
+
+-------------------------------------------------------------------
 Wed Mar 20 11:31:39 UTC 2019 - plater <davejplater@gmail.com>
 
 - Update to 0.37.3 and fix build against boost1_69 with patch:

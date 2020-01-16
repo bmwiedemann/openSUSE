@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_without ladspa
 
 Name:           guitarix
-Version:        0.37.3
+Version:        0.39.0
 Release:        0
 Summary:        Simple Linux amplifier for jack
 License:        GPL-2.0-or-later
@@ -52,6 +52,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zita-convolver-devel
 #BuildRequires:  zita-resampler-devel
+BuildRequires:  google-roboto-fonts
 BuildRequires:  pkgconfig(avahi-gobject)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(eigen3)
@@ -71,7 +72,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(lrdf)
 BuildRequires:  pkgconfig(lv2)
-BuildRequires:  pkgconfig(python2)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(sndfile)
 Requires:       jack
@@ -90,10 +91,7 @@ when distortion is disabled.
 
 %package -n libgxw0
 Summary:        Guitarix runtime library
-# Earlier weird packaging of internal libraries
 Group:          System/Libraries
-Obsoletes:      %{name}-devel < %{version}-%{release}
-Provides:       %{name}-devel = %{version}-%{release}
 
 %description -n libgxw0
 guitarix is a simple mono amplifier to jack with one input and two
@@ -101,10 +99,7 @@ outputs.
 
 %package -n libgxwmm0
 Summary:        Guitarix runtime library
-# Earlier weird packaging of internal libraries
 Group:          System/Libraries
-Obsoletes:      %{name}-devel < %{version}-%{release}
-Provides:       %{name}-devel = %{version}-%{release}
 
 %description -n libgxwmm0
 guitarix is a simple mono amplifier to jack with one input and two
@@ -159,7 +154,7 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 #find . -name "*.py" -print -exec 2to3 -wn {} \;
 #find . -name "*.py" -print -exec 2to3 -wn {} \;
 #for i in `grep -rl "/usr/bin/env python"`;do 2to3 -wn ${i} ;done
-#for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 export LDFLAGS="-ldl"
 %if 1 == 0
@@ -171,6 +166,7 @@ export CXX=g++-7
 ./waf configure -v --faust \
                    --libdir=%{_libdir} \
                    --includeresampler \
+                    --no-faust \
 %if %{with ladspa}
                    --ladspadir=%{_libdir}/ladspa  \
                    --ladspa \

@@ -8,11 +8,11 @@ boost/core/noncopyable.hpp needs to be specifically included.
 
 Index: src/headers/engine.h
 ===================================================================
---- src/headers/engine.h.orig	2018-07-22 06:24:50.000000000 +0200
-+++ src/headers/engine.h	2019-03-20 12:32:43.354195818 +0200
-@@ -39,6 +39,7 @@
- #include <sys/stat.h>
+--- src/headers/engine.h.orig	2020-01-14 09:47:57.000000000 +0200
++++ src/headers/engine.h	2020-01-16 11:42:17.223018118 +0200
+@@ -40,6 +40,7 @@
  #include <boost/format.hpp>
+ #include <boost/noncopyable.hpp>
  #include <boost/thread/mutex.hpp>
 +#include <boost/core/noncopyable.hpp>
  #include <glibmm/i18n.h>     // NOLINT
