@@ -1,7 +1,7 @@
 #
 # spec file for package vlc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,8 +40,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.videolan.org
 Source:         http://download.videolan.org/%{name}/%{version}/%{name}-%{version}.tar.xz
-# Add vlc.changes as source, so we can reproducibly extract the date from it during build
-Source1:        %{name}.changes
 Source2:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM vlc.a52.patch https://trac.videolan.org/vlc/ticket/3731 dimstar@opensuse.org -- Support new version of liba52
 Patch0:         vlc.a52.patch
@@ -57,6 +55,8 @@ Patch100:       vlc-projectM-qt5.patch
 Patch101:       0001-Fix-leaking-AvahiServiceResolver-in-the-error-paths.patch
 # PATCH-FIX-UPSTREAM 0002-Add-Avahi-implementation-for-chromecast-renderer-dis.patch -- Use Avahi for discovery, microdns is not available
 Patch102:       0002-Add-Avahi-implementation-for-chromecast-renderer-dis.patch
+# PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
+Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -376,6 +376,23 @@ Conflicts:      %{conflicts}-qt
 This subpackage provides a Qt interface for VLC and selects it by
 default when `vlc` is invoked from an X session.
 
+%package opencv
+Summary:        OpenCV plugins for VLC media player
+Group:          Productivity/Multimedia/Video/Players
+Requires:       %{name}-noX = %{version}-%{release}
+# We need the noX package first, as it contains vlc-cache-gen
+Requires(post): %{name}-noX
+# Package split
+Provides:       %{name}:%{_libdir}/vlc/plugins/video_filter/libopencv_example_plugin.so
+Conflicts:      %{name} < %{version}-%{release}
+Supplements:    packageand(%{name}-noX:opencv3)
+# Data required for face detection
+Recommends:     opencv3
+
+%description opencv
+This subpackage provides a wrapper plugin for OpenCV for
+OpenCV based video filters and a face detection example.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -386,6 +403,7 @@ default when `vlc` is invoked from an X session.
 %endif
 %patch101 -p1
 %patch102 -p1
+%patch103 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
@@ -396,12 +414,6 @@ fi
 
 # We do not rely on contrib but make use of system libraries
 rm -rf contrib
-# fix builddate info
-# Remove build time references so build-compare can do its work
-FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE1} '+%%H:%%M')
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{SOURCE1} '+%%b %%e %%Y')
-sed -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" -i modules/gui/qt/dialogs/help.cpp src/config/help.c
-sed -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -i modules/gui/qt/dialogs/help.cpp src/config/help.c
 
 %build
 %define _lto_cflags %{nil}
@@ -562,6 +574,12 @@ done
 %postun -n %{name}-vdpau
 %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
 
+%post -n %{name}-opencv
+%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+
+%postun -n %{name}-opencv
+%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+
 %files
 %exclude %{_libdir}/vlc/libcompat.a
 # The presence of the .desktop file is what gives AppStream the
@@ -604,10 +622,6 @@ done
 %{_libdir}/vlc/plugins/text_renderer/libfreetype_plugin.so
 %{_libdir}/vlc/plugins/text_renderer/libsvg_plugin.so
 %{_libdir}/vlc/plugins/video_chroma/libswscale_plugin.so
-%if 0%{?is_opensuse}
-%{_libdir}/vlc/plugins/video_filter/libopencv_example_plugin.so
-%{_libdir}/vlc/plugins/video_filter/libopencv_wrapper_plugin.so
-%endif
 %{_libdir}/vlc/plugins/video_output/libaa_plugin.so
 %{_libdir}/vlc/plugins/video_output/libcaca_plugin.so
 %{_libdir}/vlc/plugins/video_output/libegl_x11_plugin.so
@@ -1123,6 +1137,12 @@ done
 %{_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
 %{_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
 %{_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
+
+%if 0%{?is_opensuse}
+%files opencv
+%{_libdir}/vlc/plugins/video_filter/libopencv_example_plugin.so
+%{_libdir}/vlc/plugins/video_filter/libopencv_wrapper_plugin.so
+%endif
 
 %files -n libvlc%{libvlc}
 %{_libdir}/libvlc.so.%{libvlc}*

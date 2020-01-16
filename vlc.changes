@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 12 16:47:46 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Port away from obsolete OpenCV C API, fixes build with OpenCV 3.4.9,
+  add 0001-Port-OpenCV-facedetect-example-to-C-API.patch
+- Move OpenCV plugins to subpackage, as libopencv has a quite large
+  footprint.
+- Remove __DATE__/__TIME__ workaround, current GCC respects
+  SOURCE_DATE_EPOCH.
+
+-------------------------------------------------------------------
 Wed Sep 25 09:13:24 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use %make_build macro in order to provide verbose output.
