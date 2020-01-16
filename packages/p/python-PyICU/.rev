@@ -47,4 +47,12 @@
   * fixed build error with ICU 61, ICU 62</comment>
     <requestid>699375</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b239678726a5014a7bc8d90e7b2d31d</srcmd5>
+    <version>2.4.2</version>
+    <time>1579194967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764636</requestid>
+  </revision>
 </revisionlist>
