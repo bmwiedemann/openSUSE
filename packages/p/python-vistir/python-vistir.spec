@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-vistir
 Version:        0.4.3
 Release:        0
@@ -49,10 +50,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module yaspin}
+%if %{with python2}
 BuildRequires:  python2-backports.functools_lru_cache
 BuildRequires:  python2-backports.shutil_get_terminal_size
 BuildRequires:  python2-backports.weakref
 BuildRequires:  python2-pathlib2
+%endif
 # /SECTION
 %python_subpackages
 

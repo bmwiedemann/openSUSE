@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:46:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Conditionalize python2 build to do it only on older codestreams
+
+-------------------------------------------------------------------
 Thu Jan  2 22:53:33 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix test case failing due to too long generated name:
