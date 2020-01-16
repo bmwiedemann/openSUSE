@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:29:04 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.6.1
+  + New
+    * Include CHANGELOG in the package distribution. [Marek Cermak]
+  + Changes
+   * Use .rst for CHANGELOG. [Marek Cermak]
+  + Fix
+    * Fixed multiple action buttons after reload. [Marek Cermak]
+- Update to 0.6.0
+  + New
+    * Added Makefile. [Marek Cermak]
+    * Added .gitchangelog.rc. [Marek Cermak]
+    * Reload extension when the kernel is reloaded. [Marek Cermak]
+- Update to 0.5.0
+  + Changes
+    * Refactor RequireJS to singleton pattern. [Marek Cermak]
+- Update to 0.4.3 (2019-11-23)
+  + New
+    * Give more descriptive comm error output. [Marek Cermak]
+
+-------------------------------------------------------------------
+Sat Jan 11 14:13:51 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
 Tue Nov 12 17:05:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.4.2
