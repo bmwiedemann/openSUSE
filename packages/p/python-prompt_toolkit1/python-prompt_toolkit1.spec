@@ -1,7 +1,7 @@
 #
 # spec file for package python-prompt_toolkit1
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@
 %define         oldpython python
 %bcond_without  test
 Name:           python-prompt_toolkit1
-Version:        1.0.15
+Version:        1.0.18
 Release:        0
 Summary:        Library for building interactive command lines in Python
 License:        BSD-3-Clause
@@ -63,9 +63,8 @@ lines in Python.
 
 %if %{with test}
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix}
-}
+# https://github.com/prompt-toolkit/python-prompt-toolkit/issues/1046
+%pytest -k "not test_with_style"
 %endif
 
 %files %{python_files}
