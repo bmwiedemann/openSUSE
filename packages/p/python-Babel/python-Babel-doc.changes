@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:42:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.8.0
+  * CLDR: Upgrade to CLDR 36.0
+  * Messages: Don't even open files with the "ignore" extraction method
+  * Numbers: Fix formatting very small decimals when quantization is disabled
+  * Messages: Attempt to sort all messages
+  * Add years to changelog
+  * Note that installation requires pytz
+
+-------------------------------------------------------------------
 Tue Jun  4 05:31:14 UTC 2019 - pgajdos@suse.com
 
 - version update to 2.7.0
