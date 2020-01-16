@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           jupyter-jupyterlab-latex
 Version:        1.0.0
 Release:        0
@@ -49,7 +50,8 @@ An extension for JupyterLab which allows for live-editing of LaTeX documents.
 # Not Needed
 
 %install
-pip%{python3_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 
 %{jupyter_move_config}
 %{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
