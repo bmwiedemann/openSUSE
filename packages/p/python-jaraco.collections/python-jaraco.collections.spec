@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.collections
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jaraco.collections
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Tools to work with collections
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jaraco/jaraco.collections
+URL:            https://github.com/jaraco/jaraco.collections
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.collections/jaraco.collections-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module jaraco.classes}
@@ -41,7 +41,6 @@ Requires:       python-jaraco.functools
 Requires:       python-jaraco.text
 Requires:       python-six
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -50,7 +49,7 @@ Models and classes to supplement the stdlib ‘collections’ module.
 
 %prep
 %setup -q -n jaraco.collections-%{version}
-sed -i 's/--flake8//' pytest.ini
+sed -i 's/--flake8 --black --cov//' pytest.ini
 
 %build
 %python_build
@@ -73,9 +72,7 @@ sed -i 's/--flake8//' pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand py.test-%{$python_bin_suffix} \
-  --ignore=_build.python2 --ignore=_build.python3
-}
+%pytest
 
 %files %{python_files}
 %license LICENSE
