@@ -23,4 +23,18 @@
     grim when piping its output into another process.</comment>
     <requestid>707382</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c9c6b266c0b4be5f2105d1da28b340a</srcmd5>
+    <version>1.3.0</version>
+    <time>1579195404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0:
+  * Allow to be invoked without a destination file argument.
+    In which case a timestamped file will be written in
+    $XDG_PICTURES_DIR.
+  * Allow user to set default output dir.
+  * Provide more helpful error message
+  * Fix maybe-uninitialized warning</comment>
+    <requestid>764984</requestid>
+  </revision>
 </revisionlist>
