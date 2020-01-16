@@ -1,7 +1,7 @@
 #
 # spec file for package python-scipy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,7 @@ Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Development/Libraries/Python
-Url:            http://www.scipy.org
+URL:            http://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 Source100:      python-scipy-rpmlintrc
 # PATCH-FIX-OPENSUSE - no_implicit_decl.patch - Fix implicit-pointer-decl warnings and implicit-fortify-decl error
@@ -104,7 +104,7 @@ Patch0:         no_implicit_decl.patch
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module pybind11 >= 2.2.4}
-BuildRequires:  %{python_module python-pybind11-devel >= 2.2.4}
+BuildRequires:  %{python_module pybind11-devel >= 2.2.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
