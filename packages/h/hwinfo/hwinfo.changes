@@ -1,3 +1,10 @@
+--------------------------------------------------------------------
+Tue Jan 14 10:38:50 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#84
+- the /sbin/udevadm compat symlink is gone
+- 21.68
+
 -------------------------------------------------------------------
 Fri Aug  2 07:00:45 UTC 2019 - Martin Liška <mliska@suse.cz>
 
