@@ -28,7 +28,7 @@ Patch0:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(thunarx-3)
@@ -48,14 +48,13 @@ Group:          Documentation/HTML
 This package provides the documentation files for python thunarx.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \
     --enable-gtk-doc \
     --docdir=%{_defaultdocdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
