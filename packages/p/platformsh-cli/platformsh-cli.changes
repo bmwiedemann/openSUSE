@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 15 21:17:18 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.51.1:
+  * Release v3.51.1
+  * Deprecate password login (#850)
+  * Improve "platform branch" message in checkout command, when there is only one branch
+  * Installer: force self:install output to stdout (#890)
+  * Fix auto login when a current project is selected
+  * Fix argument quoting in db:size on Windows (#889)
+  * Make --shared-key optional for the health.webhook integration
+  * Build the Phar file on gitlab
+  * Tweak deprecation method for the --branch option on the push command [skip changelog]
+  * Handle a 403 from the subscription endpoint in project:delete
+
+-------------------------------------------------------------------
 Fri Dec 27 20:30:03 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.51.0:
