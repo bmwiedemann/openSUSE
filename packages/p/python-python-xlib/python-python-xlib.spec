@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-xlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-python-xlib
-Version:        0.25
+Version:        0.26
 Release:        0
 Summary:        Python X11 interface
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-xlib/python-xlib
 Source:         https://files.pythonhosted.org/packages/source/p/python-xlib/python-xlib-%{version}.tar.bz2
+
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 Requires:       python-six >= 1.10.0
-Requires:       xorg-x11-server
 BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-xlib = %{version}
@@ -53,9 +52,7 @@ The Python X Library is intended to be a fully functional X client
 library for Python programs.
 
 %prep
-%setup -q -n python-xlib-%{version}
-rm Xlib/ChangeLog
-dos2unix CHANGELOG.md README.rst TODO examples/*.py
+%autosetup -n python-xlib-%{version} -p1
 
 %build
 %python_build
@@ -69,7 +66,7 @@ dos2unix CHANGELOG.md README.rst TODO examples/*.py
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md README.rst TODO examples/
+%doc CHANGELOG.md README.rst TODO
 %{python_sitelib}/Xlib/
 %{python_sitelib}/python_xlib-*
 
