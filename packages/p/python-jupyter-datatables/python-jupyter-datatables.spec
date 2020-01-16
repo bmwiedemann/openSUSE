@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-datatables
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-datatables
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 License:        MIT
 Summary:        Jupyter Notebook extension to levarage pandas DataFrames
