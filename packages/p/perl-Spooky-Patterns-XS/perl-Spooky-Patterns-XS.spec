@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spooky-Patterns-XS
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Spooky-Patterns-XS
-Version:        1.52
+Version:        1.53
 Release:        0
 %define cpan_name Spooky-Patterns-XS
 Summary:        Spooky::Patterns::XS Perl module
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Spooky-Patterns-XS/
+URL:            http://search.cpan.org/dist/Spooky-Patterns-XS/
 Source0:        Spooky-Patterns-XS-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++

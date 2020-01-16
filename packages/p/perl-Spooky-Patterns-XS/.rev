@@ -23,4 +23,12 @@
     <comment>- 1.52: Record all matches even if they overlap at the start</comment>
     <requestid>719273</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1bce4c29814bbefceb3b4549e51fde90</srcmd5>
+    <version>1.53</version>
+    <time>1579195333</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>764903</requestid>
+  </revision>
 </revisionlist>
