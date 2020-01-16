@@ -40,8 +40,6 @@ BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-BuildRequires:  zip
 BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-backports.shutil_which
 # SECTION test requirements
@@ -138,20 +136,18 @@ This package provides mercurial integration.
 
 %prep
 %setup -q -c -T
-unzip %{SOURCE0} 'nbdime/*'
-find . -type f -name "*.py" -exec sed -i 's/\r$//' {} +
-find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
-find nbdime/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
-zip -r %{SOURCE0} nbdime
-rm -rf nbdime
 
 %build
 # Not needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 
 %{jupyter_move_config}
+%python_expand find %{buildroot}%{$python_sitelib} -type f -name "*.py" -exec sed -i 's/\r$//' {} +
+%python_expand find %{buildroot}%{$python_sitelib} -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
+%python_expand find %{buildroot}%{$python_sitelib}/nbdime/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
 
 cp %{buildroot}%{python3_sitelib}/nbdime-%{mainver}.dist-info/LICENSE.md .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -159,6 +155,7 @@ cp %{buildroot}%{python3_sitelib}/nbdime-%{mainver}.dist-info/LICENSE.md .
 
 %check
 export PATH=$PATH:%{buildroot}%{_bindir}
+export PYTHONDONTWRITEBYTECODE=1
 git config --global user.email "test@test.com"
 git config --global user.name "tester"
 %pytest %{buildroot}%{python3_sitelib}/nbdime/
