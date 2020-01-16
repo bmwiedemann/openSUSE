@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 13 10:42:07 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed hpc bjam package (boo#1160621)
+- added gnu-hpc-openmpi3 and mpich flavor (boo#1160622)
+
+-------------------------------------------------------------------
 Fri Dec 13 04:03:05 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove hardcoded abiflags (%py3_abiflags is not available for 3

@@ -1,7 +1,7 @@
 #
 # spec file for package boost
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -94,11 +94,46 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %endif
 %endif
 
+%if "@BUILD_FLAVOR@" == "gnu-openmpi3-hpc"
+%define build_base 0
+%define name_suffix openmpi3_hpc
+%define mpi_vers 3
+%define compiler_family gnu
+%define mpi_flavor openmpi
+%undefine c_f_ver
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python2
+%bcond_without python3
+%if %{with ringdisabled}
+ExclusiveArch:  do-not-build
+%else
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
+%endif
+%endif
+
 %if "@BUILD_FLAVOR@" == "gnu-mvapich2-hpc"
 %define build_base 0
 %define name_suffix mvapich2_hpc
 %define compiler_family gnu
 %define mpi_flavor mvapich2
+%undefine c_f_ver
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python2
+%bcond_without python3
+%if %{with ringdisabled}
+ExclusiveArch:  do-not-build
+%else
+ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
+%endif
+%endif
+
+%if "@BUILD_FLAVOR@" == "gnu-mpich-hpc"
+%define build_base 0
+%define name_suffix mpich
+%define compiler_family gnu
+%define mpi_flavor mpich
 %undefine c_f_ver
 %bcond_without hpc
 %bcond_without mpi
@@ -327,19 +362,6 @@ applications that use the Boost C++ libraries. For documentation see
 the documentation packages (html, man or pdf).
 
 %if %{with hpc}
-%if ! %{with mpi}
-%package     -n %{package_name}-jam
-Summary:        A Boost Make Replacement
-Group:          Development/Tools/Building
-Provides:       hpc-boost-jam-impl = %{version}
-
-%description -n %{package_name}-jam
-Boost Jam is a build tool based on FTJam, which in turn is based on
-Perforce Jam. It contains significant improvements made to facilitate
-its use in the Boost Build System. This version is modularized so it 
-does not conflict with other versions, but the module must be used 
-before usage.
-%endif # ! mpi
 %package     -n %{package_name}-python3
 Summary:        Boost.MPI Python 3.x serialization library
 Group:          System/Libraries
@@ -1516,8 +1538,10 @@ install -m 0755 dist/bin/quickbook %{buildroot}%{package_bindir}/quickbook
 
 %if %{build_base}
 mkdir -p %{buildroot}%{package_bindir}
+%if %{without hpc}
 install -m 755 b2 %{buildroot}%{package_bindir}/bjam
 ln -s bjam %{buildroot}%{package_bindir}/jam
+%endif
 
 # Remove exception library, but only if the symbols are not
 # actually used. For now, the only symbol that is linked is
@@ -1740,11 +1764,6 @@ EOF
 %files -n %{package_name}-devel
 %package_includedir
 %package_libdir/*.so
-# do not package jam/bjam when building with mpi
-%if ! %{with mpi}
-%files -n %{package_name}-jam
-%package_bindir
-%endif # ! with mpi
 %if %{with python2}
 %files -n %{package_name}-python2 
 %package_python2_sitearch
