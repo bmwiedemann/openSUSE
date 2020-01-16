@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 16 14:44:04 UTC 2020 - jsegitz@suse.de
+
+- Update to version 13.2+20200116.0f7fd4b:
+  * Previous submission didn't contain all necessary files (bsc#1161091)
+
+-------------------------------------------------------------------
+Thu Jan 16 13:22:06 UTC 2020 - jsegitz@suse.de
+
+- Update to version 13.2+20200116.3c654b5:
+  * flatpak: Add additional entry to whitelist to reflect added
+    override-parental-controls entry (bsc#1161091)
+
+-------------------------------------------------------------------
+Thu Jan 16 12:47:09 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 13.2+20200116.c29a8c3:
+  * whitelist new sysprof3 polkit rule org.gnome.sysprof3.profile
+    (bsc#1151418)
+
+-------------------------------------------------------------------
 Tue Dec 10 14:40:28 UTC 2019 - matthias.gerstner@suse.com
 
 - Update to version 13.2+20191210.15c9882:

@@ -1591,4 +1591,12 @@ for 12.3</comment>
 !!!</comment>
     <requestid>755595</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>6a2be1345d26da74d8f21607ffca2e40</srcmd5>
+    <version>13.2+20200116.0f7fd4b</version>
+    <time>1579211638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765003</requestid>
+  </revision>
 </revisionlist>
