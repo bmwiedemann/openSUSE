@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:07:57 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.9.4
+  * Mark nbval as incompatible with coverage
+  * Workaround for Python 3.7 on Travis no longer needed
+  * Drop Python 2.7 testing on Windows again 
+
+-------------------------------------------------------------------
 Tue Nov 12 17:32:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.9.3
