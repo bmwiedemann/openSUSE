@@ -667,4 +667,12 @@
  * Fixed a data loss possibility in SplitArrayField.</comment>
     <requestid>759885</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>a40195eff68ca7ef2268efe3995029ae</srcmd5>
+    <version>2.2.9</version>
+    <time>1579195009</time>
+    <user>dimstar_suse</user>
+    <comment>- add pyyaml53.patch - fix tests with PyYAML 5.3</comment>
+    <requestid>764691</requestid>
+  </revision>
 </revisionlist>

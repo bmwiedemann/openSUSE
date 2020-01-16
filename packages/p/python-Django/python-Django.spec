@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source99:       python-Django-rpmlintrc
 Patch0:         i18n_test.patch
 Patch1:         test_clear_site_cache-sort.patch
 Patch2:         fix-selenium-test.patch
+Patch3:         pyyaml53.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
@@ -100,6 +101,7 @@ echo "`grep -e '^[0-9a-f]\{64\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 chmod a-x django/contrib/admin/static/admin/js/vendor/xregexp/xregexp.js
 
 %build
