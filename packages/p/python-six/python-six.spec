@@ -1,7 +1,7 @@
 #
 # spec file for package python-six
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %define psuffix %{nil}
 %endif
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        Python 2 and 3 compatibility utilities
 License:        MIT
@@ -40,6 +40,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Name:           python-six%{psuffix}
 %if %{with test}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
 BuildRequires:  python3-Sphinx
@@ -70,9 +71,8 @@ This package provides documentation for %{name}.
 %setup -q -n six-%{version}
 
 %build
-%if ! %{with test}
 %python_build
-%else
+%if %{with test}
 cd documentation && make html && rm _build/html/.buildinfo
 %endif
 

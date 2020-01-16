@@ -337,4 +337,19 @@
     <comment>- Simplify the pytest call</comment>
     <requestid>716252</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e409db000f42caae72fff0d8ba916547</srcmd5>
+    <version>1.13.0</version>
+    <time>1579194795</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in dbm/gdbm module from python for testing
+
+- update to 0.13.0:
+  - Issue #298, pull request #299: Add `six.moves.dbm_ndbm`.
+  - Issue #155: Add `six.moves.collections_abc`, which aliases the `collections`
+    module on Python 2-3.2 and the `collections.abc` on Python 3.3 and greater.
+  - Pull request #304: Re-add distutils fallback in `setup.py`.
+  - Pull request #305: On Python 3.7, `with_metaclass` supports classes using PEP</comment>
+    <requestid>761132</requestid>
+  </revision>
 </revisionlist>

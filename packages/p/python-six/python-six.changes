@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  2 10:36:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Pull in dbm/gdbm module from python for testing
+
+-------------------------------------------------------------------
+Fri Dec 20 19:06:13 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.13.0:
+  - Issue #298, pull request #299: Add `six.moves.dbm_ndbm`.
+  - Issue #155: Add `six.moves.collections_abc`, which aliases the `collections`
+    module on Python 2-3.2 and the `collections.abc` on Python 3.3 and greater.
+  - Pull request #304: Re-add distutils fallback in `setup.py`.
+  - Pull request #305: On Python 3.7, `with_metaclass` supports classes using PEP
+
+-------------------------------------------------------------------
 Thu Jul 18 09:15:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Simplify the pytest call
