@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-timeout
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-timeout
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Pytest plugin to abort hanging tests
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://bitbucket.org/pytest-dev/pytest-timeout/
+URL:            https://github.com/pytest-dev/pytest-timeout/
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-timeout/pytest-timeout-%{version}.tar.gz
-Patch0:         pytest4.patch
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 3.6.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pexpect
 Requires:       python-pytest >= 3.6.0
 BuildArch:      noarch
 %python_subpackages
@@ -56,7 +52,6 @@ side-effects.
 
 %prep
 %setup -q -n pytest-timeout-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -67,11 +62,11 @@ side-effects.
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest test_pytest_timeout.py
+%pytest
 
 %files %{python_files}
 %license LICENSE
-%doc README
+%doc README.rst
 %{python_sitelib}/pytest_timeout-%{version}-py*.egg-info
 %{python_sitelib}/pytest_timeout.py*
 %pycache_only %{python_sitelib}/__pycache__/pytest_timeout*.py*
