@@ -40,4 +40,14 @@
 - Remove multibuild as per above</comment>
     <requestid>688759</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9e46f74b8dc62f09b793162e52b4a32</srcmd5>
+    <version>3.2.0</version>
+    <time>1579195023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Added normalize_newlines function.
+  * Added wrap and unwrap functions and lorem_ipsum attribute containing the Lorem Ipsum sample text.</comment>
+    <requestid>764934</requestid>
+  </revision>
 </revisionlist>

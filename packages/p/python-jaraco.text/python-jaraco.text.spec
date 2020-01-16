@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.text
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jaraco.text
-Version:        3.0
+Version:        3.2.0
 Release:        0
 Summary:        Tools to work with text
 License:        MIT
@@ -31,12 +31,15 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-importlib_resources
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.base >= 6.1
-Requires:       python-jaraco.collections
 Requires:       python-jaraco.functools
 Requires:       python-six
 BuildArch:      noarch
+%ifpython2
+Requires:       python-importlib_resources
+%endif
 %python_subpackages
 
 %description
@@ -44,7 +47,7 @@ jaraco.text Tools for working with text.
 
 %prep
 %setup -q -n jaraco.text-%{version}
-sed -i 's/--flake8//' pytest.ini
+sed -i 's/--flake8 --black --cov//' pytest.ini
 rm -rf jaraco.text.egg-info
 
 %build
@@ -52,6 +55,7 @@ rm -rf jaraco.text.egg-info
 
 %install
 %python_install
+%python_expand install -Dm 0644 jaraco/text/*.txt %{buildroot}%{$python_sitelib}/jaraco/text/
 
 %{python_expand rm -f %{buildroot}%{$python_sitelib}/jaraco/__init__.py* \
   %{buildroot}%{$python_sitelib}/jaraco/__pycache__/__init__.*
@@ -67,7 +71,6 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ja
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
 %{python_sitelib}/jaraco.text-%{version}-py*.egg-info
-%{python_sitelib}/jaraco/text.py*
-%pycache_only %{python_sitelib}/jaraco/__pycache__/text*.py*
+%{python_sitelib}/jaraco*
 
 %changelog
