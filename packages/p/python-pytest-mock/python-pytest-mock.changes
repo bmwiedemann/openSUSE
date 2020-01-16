@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:11:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.0:
+  * mocker.spy attributes for tracking returned values and raised
+    exceptions of its spied functions are now called spy_return
+    and spy_exception, instead of reusing the existing MagicMock
+    attributes return_value and side_effect.
+  * The deprecated mock alias to the mocker fixture has finally
+    been removed.
+
+-------------------------------------------------------------------
 Wed Dec  4 12:04:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.12.1:

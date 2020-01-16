@@ -151,4 +151,18 @@
     context-manager</comment>
     <requestid>753969</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d2b591f9766a5598deb77ba43f48df05</srcmd5>
+    <version>2.0.0</version>
+    <time>1579194819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * mocker.spy attributes for tracking returned values and raised
+    exceptions of its spied functions are now called spy_return
+    and spy_exception, instead of reusing the existing MagicMock
+    attributes return_value and side_effect.
+  * The deprecated mock alias to the mocker fixture has finally
+    been removed.</comment>
+    <requestid>761149</requestid>
+  </revision>
 </revisionlist>
