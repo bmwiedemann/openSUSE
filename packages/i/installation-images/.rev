@@ -683,4 +683,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>758197</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>9fb49793815fdc2c4a6c6a60c71382ab</srcmd5>
+    <version>14.452</version>
+    <time>1579195165</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>763944</requestid>
+  </revision>
 </revisionlist>
