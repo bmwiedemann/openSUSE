@@ -1,7 +1,7 @@
 #
 # spec file for package icu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,28 +219,6 @@ cd source
 # multi-threaded icu invocations
 ICU_DATA="%buildroot/%_datadir/icu/%version" make check %{?_smp_mflags} VERBOSE=1
 %endif
-
-%post
-# This should be run by whatever owns /usr/lib64/icu -
-# the (main) package in this case
-if test -d "%_libdir/icu"; then
-	current=$(cd "%_libdir/icu/"; find [0-9]* -maxdepth 1 -type d -printf '%%f\n' |
-		sort -V | tail -n1)
-	if test -n "$current"; then
-		rm -f "%_libdir/icu/current"
-		ln -sv "$current" "%_libdir/icu/current"
-	fi
-fi
-
-%postun
-if test -d "%_libdir/icu"; then
-	current=$(cd "%_libdir/icu/"; find [0-9]* -maxdepth 1 -type d -printf '%%f\n' |
-		sort -V | tail -n1)
-	if test -n "$current"; then
-		rm -f "%_libdir/icu/current"
-		ln -sv "$current" "%_libdir/icu/current"
-	fi
-fi
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

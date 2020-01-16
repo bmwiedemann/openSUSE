@@ -564,4 +564,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment></comment>
     <requestid>757647</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>273070d03df4b623f85f0ba404ce5888</srcmd5>
+    <version>65.1</version>
+    <time>1579195043</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove /usr/lib(64)/icu/current [boo#1158955].</comment>
+    <requestid>763722</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 12 20:29:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove /usr/lib(64)/icu/current [boo#1158955].
+
+-------------------------------------------------------------------
 Sat Oct  5 11:19:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 65.1 (jsc#SLE-11118).
