@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncssh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-asyncssh
-Version:        1.18.0
+Version:        2.1.0
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
-Url:            http://asyncssh.timeheart.net
+URL:            http://asyncssh.timeheart.net
 Source:         https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-%{version}.tar.gz
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
-BuildRequires:  %{python_module cryptography >= 2.7}
+BuildRequires:  %{python_module cryptography >= 2.8}
 BuildRequires:  %{python_module gssapi >= 1.2.0}
 BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module uvloop >= 0.9.1}
 BuildRequires:  fdupes
 BuildRequires:  openssh
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 Requires:       python-bcrypt >= 3.1.3
-Requires:       python-cryptography >= 2.7
+Requires:       python-cryptography >= 2.8
 Requires:       python-gssapi >= 1.2.0
 Requires:       python-libnacl >= 1.4.2
 Requires:       python-pyOpenSSL >= 17.0.0
@@ -46,8 +47,7 @@ BuildArch:      noarch
 
 %description
 AsyncSSH is a Python package which provides an asynchronous client and
-server implementation of the SSHv2 protocol on top of the Python 3.4+
-asyncio framework.
+server implementation of the SSHv2 protocol on top of the Python asyncio framework.
 
 
 %prep
@@ -61,8 +61,7 @@ asyncio framework.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -s tests_py35
-%python_exec setup.py test
+%python_exec -m unittest discover -v 
 
 %files %{python_files}
 %license LICENSE COPYRIGHT
