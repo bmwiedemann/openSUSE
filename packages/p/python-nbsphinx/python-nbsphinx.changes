@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:49:09 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.0
+  * Automatic support for Jupyter widgets,
+    customizable with nbsphinx_widgets_path\
+    (and nbsphinx_widgets_options)
+
+-------------------------------------------------------------------
 Wed Nov 13 19:27:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Latest release drops python2 support.
