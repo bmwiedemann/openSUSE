@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-tiny
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,36 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-osc-tiny
-Version:        0.1.11
+Version:        0.2.1
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/crazyscientist/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc-tiny-%{version}.tar.gz
-BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
+BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
-Requires:       python-dateutil
+BuildRequires:  python-unittest2
 Requires:       python-lxml
+Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
+Requires:       python-six
 BuildArch:      noarch
+%ifpython2
+Requires:       python-mock
+Requires:       python-unittest2
+%endif
 %python_subpackages
 
 %description

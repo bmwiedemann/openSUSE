@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  9 12:46:29 UTC 2020 - Chen Huang <chhuang@suse.com>
+
+- Updated to version 0.2.1
+- Allow invalid timestamps during changelog parsing
+- Removed dependency of the future package
+- Backport for Python2 compatibility
+- Bugfixes for :py:mod:`osctiny.utils.changelog`
+
+-------------------------------------------------------------------
 Mon Dec 30 15:53:34 UTC 2019 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Version 0.1.11
