@@ -111,4 +111,12 @@
   * Bug fix for pyfloat going over max_value. Thanks @fgs-dbudwin.</comment>
     <requestid>732881</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b9f600da7a8195efec05a98bbbd57f5</srcmd5>
+    <version>3.0.0</version>
+    <time>1579194906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764065</requestid>
+  </revision>
 </revisionlist>
