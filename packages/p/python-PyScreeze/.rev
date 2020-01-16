@@ -65,4 +65,12 @@
   * Added -z to scrot to silence the beep.</comment>
     <requestid>732896</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1900ab2bb766c74103144bb90277c923</srcmd5>
+    <version>0.1.26</version>
+    <time>1579195286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764770</requestid>
+  </revision>
 </revisionlist>
