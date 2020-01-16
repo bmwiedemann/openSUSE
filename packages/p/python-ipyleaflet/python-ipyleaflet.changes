@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 15 16:03:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.11.7
+  * Add support for font-awesome icons in Markers
+  * Add support for setting layer.popup to a Popup instance
+  * Add loading attribute to TileLayer (#460)
+  * Improvements suggested by @martinRenou
+  * Add leaflet-ant-path plugin
+  * Remove on_displayed event listener
+  * Use Bunch from traitlets
+  * Add BSD copyright headers
+- Update to 0.11.5
+  * Add Leaflet.Path.Transform
+  * Bump macaddress from 0.2.8 to 0.2.9 in /js
+  * Add show_loading attribute in docs
+  * Remove show_progress Map attribute
+  * Add leaflet.py
+  * Add spinner when tiles are loading
+  * Allow rendering GeoJSON points with CircleMarkers. 
+  * Bump lodash from 4.17.5 to 4.17.15 in /js 
+  * Sync locations
+  * Improve README
+
+-------------------------------------------------------------------
+Sat Jan 11 14:50:34 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pyproject_install macro (boo#1094323)
+
+-------------------------------------------------------------------
 Mon Nov 18 16:08:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.11.4

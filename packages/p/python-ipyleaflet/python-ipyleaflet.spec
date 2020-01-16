@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyleaflet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyleaflet
-Version:        0.11.4
+Version:        0.11.7
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
@@ -68,7 +68,8 @@ This package provides the jupyter notebook extension.
 # Not Needed
 
 %install
-%python_expand pip%{$python_bin_suffix} install --root=%{buildroot} %{SOURCE0}
+cp -a %{SOURCE0} .
+%pyproject_install
 
 %{jupyter_move_config}
 cp %{buildroot}%{python3_sitelib}/ipyleaflet-%{version}.dist-info/LICENSE .
