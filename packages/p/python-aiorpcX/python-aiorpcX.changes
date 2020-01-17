@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 16 16:55:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.18.4
+  * handle time.time() not making progress
+  * handle SOCKSError in _connect_one 
+  * socks.py: Add SOCKSRandomAuth
+
+-------------------------------------------------------------------
 Wed Jul 31 09:51:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip tests that actually can poll network

@@ -33,4 +33,12 @@
     <comment>- Skip tests that actually can poll network</comment>
     <requestid>720024</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d3165b9a73c2c895909c6e17ee05a90</srcmd5>
+    <version>0.18.4</version>
+    <time>1579273700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765074</requestid>
+  </revision>
 </revisionlist>
