@@ -649,7 +649,6 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
-  - apt-cacher-ng 
   - apulse: [i586] 
   - aqbanking 
   - aqbanking-devel 
@@ -1144,8 +1143,6 @@ unsorted:
   - blas-devel-static 
   - blas-man 
   - blasphemer 
-  - bleachbit 
-  - bleachbit-lang 
   - blender 
   - blender-cycles-devel: [x86_64] 
   - blender-lang 
@@ -1208,6 +1205,10 @@ unsorted:
   - boomaga-lang 
   - boost-gnu-hpc: [x86_64] 
   - boost-gnu-hpc-devel: [x86_64] 
+  - boost-gnu-mpich-hpc: [x86_64] 
+  - boost-gnu-mpich-hpc-devel: [x86_64] 
+  - boost-gnu-mpich-hpc-python2: [x86_64] 
+  - boost-gnu-mpich-hpc-python3: [x86_64] 
   - boost-gnu-mvapich2-hpc: [x86_64] 
   - boost-gnu-mvapich2-hpc-devel: [x86_64] 
   - boost-gnu-mvapich2-hpc-python2: [x86_64] 
@@ -1216,12 +1217,19 @@ unsorted:
   - boost-gnu-openmpi2-hpc-devel: [x86_64] 
   - boost-gnu-openmpi2-hpc-python2: [x86_64] 
   - boost-gnu-openmpi2-hpc-python3: [x86_64] 
+  - boost-gnu-openmpi3-hpc: [x86_64] 
+  - boost-gnu-openmpi3-hpc-devel: [x86_64] 
+  - boost-gnu-openmpi3-hpc-python2: [x86_64] 
+  - boost-gnu-openmpi3-hpc-python3: [x86_64] 
   - boost1_71_0-doc-html 
   - boost1_71_0-doc-pdf 
   - boost1_71_0-quickbook 
   - boost_1_71_0-gnu-hpc: [x86_64] 
   - boost_1_71_0-gnu-hpc-devel: [x86_64] 
-  - boost_1_71_0-gnu-hpc-jam: [x86_64] 
+  - boost_1_71_0-gnu-mpich-hpc: [x86_64] 
+  - boost_1_71_0-gnu-mpich-hpc-devel: [x86_64] 
+  - boost_1_71_0-gnu-mpich-hpc-python2: [x86_64] 
+  - boost_1_71_0-gnu-mpich-hpc-python3: [x86_64] 
   - boost_1_71_0-gnu-mvapich2-hpc: [x86_64] 
   - boost_1_71_0-gnu-mvapich2-hpc-devel: [x86_64] 
   - boost_1_71_0-gnu-mvapich2-hpc-python2: [x86_64] 
@@ -1230,6 +1238,10 @@ unsorted:
   - boost_1_71_0-gnu-openmpi2-hpc-devel: [x86_64] 
   - boost_1_71_0-gnu-openmpi2-hpc-python2: [x86_64] 
   - boost_1_71_0-gnu-openmpi2-hpc-python3: [x86_64] 
+  - boost_1_71_0-gnu-openmpi3-hpc: [x86_64] 
+  - boost_1_71_0-gnu-openmpi3-hpc-devel: [x86_64] 
+  - boost_1_71_0-gnu-openmpi3-hpc-python2: [x86_64] 
+  - boost_1_71_0-gnu-openmpi3-hpc-python3: [x86_64] 
   - bootchart 
   - booth 
   - booth-test 
@@ -1810,6 +1822,7 @@ unsorted:
   - colormake 
   - colorpicker 
   - colorpicker-lang 
+  - commandergenius 
   - compartm 
   - compcache 
   - compface-devel 
@@ -6030,6 +6043,7 @@ unsorted:
   - jq 
   - jrosetta 
   - jrtplib-devel 
+  - js-technology-fonts 
   - jsch 
   - jsch-agent-proxy-connector-factory 
   - jsch-agent-proxy-core 
@@ -7030,7 +7044,6 @@ unsorted:
   - libConvexDecomposition2_88 
   - libEMF-devel 
   - libEMF-utils 
-  - libEspresso4 
   - libFAudio0 
   - libFAudio0-32bit: [x86_64] 
   - libFLAC++6-32bit: [x86_64] 
@@ -9157,7 +9170,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_96 
+  - libgsoap-2_8_97 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -9586,6 +9599,7 @@ unsorted:
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
   - libjasper-devel 
+  - libjasper4 
   - libjasper4-32bit: [x86_64] 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjaylink 
@@ -9647,8 +9661,10 @@ unsorted:
   - libkdecorations2private6-32bit: [x86_64] 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdstatemachineeditor_core1_2_5 
-  - libkdstatemachineeditor_view1_2_5 
+  - libkdstatemachineeditor_core1_2_7 
+  - libkdstatemachineeditor_debuginterfaceclient1_2_7 
+  - libkdstatemachineeditor_debuginterfacesource-static 
+  - libkdstatemachineeditor_view1_2_7 
   - libkdumpfile-devel 
   - libkdumpfile7 
   - libkea-asiodns0 
@@ -10375,6 +10391,7 @@ unsorted:
   - libopencascade7 
   - libopencensus-cpp0: [x86_64] 
   - libopencsg1 
+  - libopencv3_4 
   - libopencv4_2 
   - libopendkim10 
   - libopenhpi4 
@@ -10416,6 +10433,10 @@ unsorted:
   - libopenssl1_0_0-steam-32bit: [x86_64] 
   - libopenssl_cbs_lib0: [x86_64] 
   - libopentracing-cpp1 
+  - libopenvas_wincmd-devel 
+  - libopenvas_wincmd1 
+  - libopenvas_wmiclient-devel 
+  - libopenvas_wmiclient1 
   - libopenvdb6_2 
   - libopenvswitch-2_12-0 
   - liboping-devel 
@@ -11035,6 +11056,7 @@ unsorted:
   - librasqal3-32bit: [x86_64] 
   - libratbag-devel 
   - libratbag-tools 
+  - librav1e0 
   - libraw-devel 
   - libraw-devel-static 
   - libraw-tools 
@@ -11649,6 +11671,7 @@ unsorted:
   - libtar1 
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
+  - libtbb2 
   - libtbbmalloc2 
   - libtcmalloc4 
   - libtcmu2 
@@ -12507,7 +12530,6 @@ unsorted:
   - linbox-devel 
   - link-grammar 
   - link-grammar-devel 
-  - linkchecker 
   - linkloop 
   - linphone 
   - linphone-cli 
@@ -13244,6 +13266,7 @@ unsorted:
   - mcabber 
   - mcabber-devel 
   - mccs 
+  - mcds 
   - mcelog: [i586] 
   - mchange-commons 
   - mchange-commons-javadoc 
@@ -15236,6 +15259,7 @@ unsorted:
   - openttd-opengfx 
   - openttd-openmsx 
   - openucx-tools: [x86_64] 
+  - openvas-smb 
   - openvdb-devel 
   - openvpn-auth-pam-plugin 
   - openvpn-devel 
@@ -15759,12 +15783,12 @@ unsorted:
   - pdns-recursor 
   - pdnsd 
   - pdnsd-doc 
-  - pdsh 
-  - pdsh-dshgroup 
-  - pdsh-genders 
-  - pdsh-machines 
-  - pdsh-netgroup 
-  - pdsh-slurm 
+  - pdsh: [x86_64] 
+  - pdsh-dshgroup: [x86_64] 
+  - pdsh-genders: [x86_64] 
+  - pdsh-machines: [x86_64] 
+  - pdsh-netgroup: [x86_64] 
+  - pdsh-slurm: [x86_64] 
   - peazip 
   - peazip-kf5 
   - peek 
@@ -17445,7 +17469,6 @@ unsorted:
   - python-Sphinx-doc-html 
   - python-Twisted-doc 
   - python-WTForms-doc 
-  - python-WebError 
   - python-WebOb-doc 
   - python-WebTest-doc 
   - python-Whoosh-doc 
@@ -17646,7 +17669,6 @@ unsorted:
   - python-pyrrd-docs 
   - python-pyserial-doc 
   - python-pysnmp-doc 
-  - python-pysqlite 
   - python-python-openid 
   - python-qpid 
   - python-qpid_messaging 
@@ -17667,11 +17689,9 @@ unsorted:
   - python-rdflib-doc 
   - python-renderspec-doc 
   - python-requestbuilder 
-  - python-restkit 
   - python-ruamel.ordereddict 
   - python-ryu-common 
   - python-saharaclient-doc 
-  - python-salt-testing 
   - python-senlinclient-doc 
   - python-shodan-doc 
   - python-singledispatch 
@@ -17685,13 +17705,11 @@ unsorted:
   - python-svneverever 
   - python-swiftclient-doc 
   - python-tables-doc 
-  - python-temps 
   - python-testtools-doc 
   - python-tooz-doc 
   - python-translationstring-doc 
   - python-tre 
   - python-trollius 
-  - python-txsocksx 
   - python-vips 
   - python-volatility 
   - python-weakrefmethod 
@@ -17763,7 +17781,6 @@ unsorted:
   - python2-FormEncode 
   - python2-GDAL 
   - python2-Genshi 
-  - python2-GeoIP 
   - python2-Glances 
   - python2-Gloo 
   - python2-GooCalendar 
@@ -17806,6 +17823,7 @@ unsorted:
   - python2-Pillow-tk 
   - python2-Pint 
   - python2-PrettyTable 
+  - python2-Protego 
   - python2-PsyLab 
   - python2-PyAudio 
   - python2-PyAutoGUI 
@@ -18451,7 +18469,6 @@ unsorted:
   - python2-django-threadedcomments 
   - python2-django-webpack-loader 
   - python2-django-webtest 
-  - python2-django_compressor 
   - python2-django_coverage_plugin 
   - python2-djvulibre 
   - python2-dns-lexicon 
@@ -18905,6 +18922,7 @@ unsorted:
   - python2-mhash 
   - python2-minio 
   - python2-miniupnpc 
+  - python2-misaka 
   - python2-mistralclient 
   - python2-mistune 
   - python2-moban 
@@ -18961,7 +18979,6 @@ unsorted:
   - python2-netCDF4 
   - python2-netaddr 
   - python2-netifaces 
-  - python2-netmiko 
   - python2-networkx 
   - python2-networkx-doc 
   - python2-neutronclient 
@@ -19026,6 +19043,7 @@ unsorted:
   - python2-os-client-config 
   - python2-os-service-types 
   - python2-osc-lib 
+  - python2-osc-tiny 
   - python2-oscrypto 
   - python2-oslo.cache 
   - python2-oslo.concurrency 
@@ -20039,7 +20057,6 @@ unsorted:
   - python3-FormEncode 
   - python3-GDAL 
   - python3-Genshi 
-  - python3-GeoIP 
   - python3-GitPython 
   - python3-GitgExt 
   - python3-Glances 
@@ -20088,6 +20105,7 @@ unsorted:
   - python3-Pillow-tk 
   - python3-Pint 
   - python3-PrettyTable: [i586] 
+  - python3-Protego 
   - python3-PsyLab 
   - python3-PsychoPy 
   - python3-PsychoPy-lang 
@@ -20823,7 +20841,6 @@ unsorted:
   - python3-django-threadedcomments 
   - python3-django-webpack-loader 
   - python3-django-webtest 
-  - python3-django_compressor 
   - python3-django_coverage_plugin 
   - python3-djangorestframework 
   - python3-djangorestframework-simplejwt 
@@ -20914,7 +20931,6 @@ unsorted:
   - python3-execnet 
   - python3-exiv2 
   - python3-expects 
-  - python3-experimentator 
   - python3-exrex 
   - python3-extras 
   - python3-extratools 
@@ -21417,6 +21433,7 @@ unsorted:
   - python3-minidb 
   - python3-minio 
   - python3-miniupnpc 
+  - python3-misaka 
   - python3-missingno 
   - python3-mistralclient 
   - python3-mistune 
@@ -22074,7 +22091,6 @@ unsorted:
   - python3-pyuca 
   - python3-pyusb 
   - python3-pyuv 
-  - python3-pyverbs 
   - python3-pyviz-comms 
   - python3-pyvmomi 
   - python3-pywinrm 
@@ -22849,6 +22865,8 @@ unsorted:
   - rasqal 
   - ratbagd 
   - ratslap 
+  - rav1e 
+  - rav1e-devel 
   - raw-thumbnailer 
   - rawtherapee 
   - raylib-devel 
@@ -33086,6 +33104,7 @@ unsorted:
   - vkquake 
   - vlc-devel 
   - vlc-jack 
+  - vlc-opencv 
   - vm-dump-metrics 
   - vms-empire 
   - vmtouch 
