@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-pkg-bindings-devel-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-pkg-bindings-devel-doc
-Version:        4.2.4
+Version:        4.2.5
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        yast2-pkg-bindings-%{version}.tar.bz2
