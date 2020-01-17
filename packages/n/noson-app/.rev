@@ -39,4 +39,66 @@
 </comment>
     <requestid>667839</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>433dc0944453f1d96290ed2b3b1bd9b8</srcmd5>
+    <version>4.1.0</version>
+    <time>1579273439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0
+  * Allow to seek position for local file (also it fixes the pause/play for local files)
+  * Allow to stream local media m4a
+  * Improves the GUI performances
+  * Minor fixes
+- Add %license and %doc to spec file
+- Update to 4.0.2
+  * Fix cover url for local media files
+  * Minor fixes
+  * Review the music row design
+  * Fix performance issue using MPRIS2 (The service bumps the app
+    for the current position)
+  * Sync upstream libnoson (2.0.0)
+  * Fix double path in the service stack page
+  * Supports the MPRIS2 interface for player
+  * Allow to bypass the SSDP discovery by passing the url of a
+    SONOS device
+  * Fix missing search categories for the services without
+    presentation map
+  * Fix a bug in service registration (PocketCasts and probably
+    few others)
+  * Enable loudness setting
+  * Workaround Spotify BUG using locale en_GB
+  * Support for output fixed
+  * Minor fixed and improvements
+  * Fix for ID3 parser
+  * Minor fixes
+  * Improve the ogg parser
+  * Update translations for nl
+  * Minor improvements
+  * Add support for media file with the format OGG/Vorbis
+  * Fix language range to be compliant with RFC-4647 (Issue with
+    Spotify services)
+  * Fix SSL handshake on old android platforms
+  * Show the logo of the thumbnails providers to comply with their
+    guidelines
+  * Fetch thumbnails from DEEZER by default
+  * Improvements: libnoson 1.13.2
+  * Use multicast UDP packet as fallback when discovering
+  * Fix to work around multicast filtering when discovering devices
+  * Minor fixes
+- Pulseaudio support
+- Update to 3.11.4
+  * Fix Sonos API change in build 49263270 (10.1)
+  * Improve the fluency of the volume control for a zone.
+  * Use smaller step for the volume control: The wheel mouse still
+    works.
+  * Play a service item by clicking a button &quot;play&quot; instead the
+    item itself.
+  * Improve threading of the media scanner
+  * Includes a media scanner for audio files. Types supported are
+    FLAC, MP3 and AAC.
+  * It streams local audio files.
+  * It streams the pulseaudio output
+</comment>
+    <requestid>763144</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           noson-app
-Version:        3.9.7
+Version:        4.1.0
 Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later
@@ -26,8 +26,10 @@ URL:            http://janbar.github.io/noson-app/index.html
 Source0:        https://github.com/janbar/noson-app/archive/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
+BuildRequires:  flac-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
+BuildRequires:  libpulse-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
@@ -37,7 +39,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(noson) = 1.10.4
+BuildRequires:  pkgconfig(noson) = 2.2.0
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
 
@@ -71,6 +73,8 @@ queues and playlists can be managed, and playback be controlled.
 %endif
 
 %files
+%doc README.md
+%license LICENSE
 %{_bindir}/noson-app
 %{_datadir}/applications/io.github.janbar.noson.desktop
 %{_datadir}/icons/hicolor/
