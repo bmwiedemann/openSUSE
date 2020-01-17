@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 17 07:47:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.4:
+  * FIXED: Daily progress did not show star background with some themes.
+  * Replaced deprecated code.
+  * Translations: Catalan, Swedish.
+
+-------------------------------------------------------------------
 Tue Aug 20 07:34:21 UTC 2019 - mvetter@suse.com
 
 - Update to 1.7.3:
