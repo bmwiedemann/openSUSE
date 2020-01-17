@@ -17,7 +17,7 @@
 
 
 Name:           perl-Template-Toolkit
-Version:        3.004
+Version:        3.006
 Release:        0
 %define cpan_name Template-Toolkit
 Summary:        Template Processing System
@@ -30,8 +30,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(AppConfig) >= 1.56
-BuildRequires:  perl(CGI)
-BuildRequires:  perl(Test::LeakTrace)
 Requires:       perl(AppConfig) >= 1.56
 %{perl_requires}
 
