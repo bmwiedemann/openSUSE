@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">bazel-workspaces</param>
     <param name="versionformat">%cd</param>
-    <param name="revision">5db0b6e72672aa25274509f167d3262d372b78f7</param>
+    <param name="revision">7c8f2656c458e1fc3c5177f1ab92a6f8563c0ca6</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">

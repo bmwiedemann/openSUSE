@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-workspaces
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bazel-workspaces
-Version:        20191105
+Version:        20200113
 Release:        0
 Summary:        Bazel workspaces for libraries packaged in openSUSE
 License:        Apache-2.0

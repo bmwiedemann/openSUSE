@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>746410</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f6d93352ba74396e6b189a57146af661</srcmd5>
+    <version>20200113</version>
+    <time>1579273669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200113:
+  * Add workspace for re2
+  * Add workspace for OpenSSL (forwarded request 765220 from mrostecki)</comment>
+    <requestid>765221</requestid>
+  </revision>
 </revisionlist>
