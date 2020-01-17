@@ -1,4 +1,68 @@
 --------------------------------------------------------------------
+Thu Jan 16 08:00:25 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Finnish) (bsc#1149754)
+- 4.2.55
+
+--------------------------------------------------------------------
+Wed Jan 15 10:13:28 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#700
+- merge gh#openSUSE/libstorage-ng#699
+- Unmount when mount point was active
+- Mount when mount point is active
+- Bump version
+- Add comments
+- Fix mount and unmount (forward port)
+- 4.2.54
+
+--------------------------------------------------------------------
+Tue Jan 14 16:20:39 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.2.53
+
+--------------------------------------------------------------------
+Tue Jan 14 14:32:42 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#698
+- remove default option '-m crc=1' for mkfs.xfs
+- use udevadm from /usr/bin instead of /sbin (bsc#1160890)
+- 4.2.52
+
+--------------------------------------------------------------------
+Tue Jan 14 11:31:30 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (German) (bsc#1149754)
+- 4.2.51
+
+--------------------------------------------------------------------
+Tue Jan 14 11:31:29 UTC 2020 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Jan 14 11:31:28 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Mon Jan 13 22:27:03 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.2.50
+
+--------------------------------------------------------------------
+Mon Jan 13 22:27:02 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+
+--------------------------------------------------------------------
+Mon Jan 13 21:21:14 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
 Thu Jan 9 13:16:12 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#696
