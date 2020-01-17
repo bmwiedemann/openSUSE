@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:56:13 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- replace old init.d compat symlinks usage by direct calling
+  systemctl (jsc#SLE-10976)
+- 4.2.1
+
+-------------------------------------------------------------------
 Fri May 31 12:33:54 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Add metainfo (fate#319035)
