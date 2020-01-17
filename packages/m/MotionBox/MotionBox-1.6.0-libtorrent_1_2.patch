@@ -1,0 +1,26 @@
+Index: MotionBox-1.6.0/MotionBox.pro
+===================================================================
+--- MotionBox-1.6.0.orig/MotionBox.pro
++++ MotionBox-1.6.0/MotionBox.pro
+@@ -46,7 +46,7 @@ contains(QT_MAJOR_VERSION, 4) {
+     greaterThan(QT_MINOR_VERSION, 9): DEFINES += QT_5_LATEST
+ }
+ 
+-QMAKE_CXXFLAGS += -std=c++11 -msse
++QMAKE_CXXFLAGS += -msse
+ 
+ unix:QMAKE_LFLAGS += "-Wl,-rpath,'\$$ORIGIN'"
+ 
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkTorrent/SkTorrent.pro
+===================================================================
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkTorrent/SkTorrent.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkTorrent/SkTorrent.pro
+@@ -33,8 +33,6 @@ contains(QT_MAJOR_VERSION, 4) {
+     DEFINES += QT_LATEST
+ }
+ 
+-QMAKE_CXXFLAGS += -std=c++11
+-
+ unix:QMAKE_LFLAGS += "-Wl,-rpath,'\$$ORIGIN'"
+ 
+ include(src/controllers/controllers.pri)

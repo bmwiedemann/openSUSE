@@ -1,7 +1,7 @@
 #
 # spec file for package MotionBox
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,25 @@
 
 
 Name:           MotionBox
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Qt based network video browser
 License:        GPL-3.0-only
 URL:            http://omega.gg/MotionBox
 Source0:        https://github.com/omega-gg/MotionBox/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/omega-gg/Sky/archive/%{version}.tar.gz#/Sky-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Sky-1.5.0-private_headers.patch
-Patch0:         Sky-1.5.0-private_headers.patch
-# PATCH-FIX-OPENSUSE MotionBox-1.5.0-paths.patch
-Patch1:         MotionBox-1.5.0-paths.patch
+# PATCH-FIX-OPENSUSE MotionBox-1.6.0-private_headers.patch
+Patch0:         MotionBox-1.6.0-private_headers.patch
+# PATCH-FIX-OPENSUSE MotionBox-1.6.0-paths.patch
+Patch1:         MotionBox-1.6.0-paths.patch
 # PATCH-FIX-OPENSUSE SKy-1.5.0-soname.patch
-Patch2:         Sky-1.5.0-soname.patch
-# PATCH-FEATURE-OPENSUSE Sky-1.5.0-use_system_glext.patch
-Patch3:         Sky-1.5.0-use_system_glext.patch
-# PATCH-FIX-UPSTREAM Sky-1.5.0-libtorrent_1_2.patch aloisio@gmx.com -- do not use -std=c++-11 when building sktorrent module
-Patch4:         Sky-1.5.0-libtorrent_1_2.patch
+Patch2:         Sky-1.6.0-soname.patch
+# PATCH-FEATURE-OPENSUSE Sky-1.6.0-use_system_glext.patch
+Patch3:         Sky-1.6.0-use_system_glext.patch
+# PATCH-FIX-UPSTREAM Sky-1.6.0-libtorrent_1_2.patch aloisio@gmx.com -- do not use -std=c++-11 when building sktorrent module
+Patch4:         MotionBox-1.6.0-libtorrent_1_2.patch
+# PATCH-FEATURE-OPENSUSE MotionBox-1.6.0-use_system_quazip.patch aloisio@gmx.com -- use system quazip if available
+Patch5:         MotionBox-1.6.0-use_system_quazip.patch
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_random-devel
@@ -52,6 +54,10 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(libtorrent-rasterbar)
+BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+BuildRequires:  pkgconfig(quazip)
+%endif
 Requires:       vlc
 ExclusiveArch:  %ix86 x86_64
 
@@ -60,12 +66,7 @@ A network video browser based on Qt.
 It streams Torrents, Youtube, Dailymotion, Vimeo and SoundCloud.
 
 %prep
-%setup -q -a 1
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -a 1 -p1
 mv Sky-%{version} Sky
 
 %build

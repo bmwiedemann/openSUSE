@@ -1,0 +1,86 @@
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkCore/SkCore.pro
+===================================================================
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkCore/SkCore.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkCore/SkCore.pro
+@@ -24,8 +24,9 @@ contains(QT_MAJOR_VERSION, 4) {
+ 
+ CONFIG       += unversioned_libname unversioned_soname
+ win32:CONFIG += dll
++CONFIG       += link_pkgconfig
+ 
+-DEFINES += SK_CORE_LIBRARY QUAZIP_BUILD
++DEFINES += SK_CORE_LIBRARY
+ 
+ contains(QT_MAJOR_VERSION, 4) {
+     DEFINES += QT_4
+@@ -40,6 +41,13 @@ unix:QMAKE_LFLAGS += "-Wl,-rpath,'\$$ORI
+ include(src/global/global.pri)
+ include(src/controllers/controllers.pri)
+ include(src/kernel/kernel.pri)
++packagesExist(quazip) {
++    PKGCONFIG += quazip
++    INCLUDEPATH += /usr/include/quazip5
++} else {
++    DEFINES += QUAZIP_BUILD
++    include(src/3rdparty/quazip/quazip.pri)
++}
+ include(src/io/io.pri)
+ include(src/thread/thread.pri)
+ include(src/network/network.pri)
+@@ -48,7 +56,6 @@ include(src/declarative/declarative.pri)
+ include(src/plugin/plugin.pri)
+ 
+ include(src/3rdparty/qtsingleapplication/qtsingleapplication.pri)
+-include(src/3rdparty/quazip/quazip.pri)
+ include(src/3rdparty/libcharsetdetect/libcharsetdetect.pri)
+ 
+ INCLUDEPATH += $$SK/include/SkCore \
+@@ -56,7 +63,7 @@ INCLUDEPATH += $$SK/include/SkCore \
+ 
+ win32:LIBS += -L$$SK/lib -lz
+ 
+-macx:LIBS += -lz
++unix:LIBS += -lz
+ 
+ #--------------------------------------------------------------------------------------------------
+ # Copy library to the bin directory
+Index: MotionBox-1.6.0/MotionBox.pro
+===================================================================
+--- MotionBox-1.6.0.orig/MotionBox.pro
++++ MotionBox-1.6.0/MotionBox.pro
+@@ -27,7 +27,7 @@ contains(QT_MAJOR_VERSION, 5) {
+     unix:!macx:QT += x11extras
+ }
+ 
+-DEFINES += CAN_COMPILE_SSE2 QUAZIP_BUILD \
++DEFINES += CAN_COMPILE_SSE2 \
+            SK_CORE_LIBRARY SK_GUI_LIBRARY SK_MEDIA_LIBRARY SK_TORRENT_LIBRARY SK_BACKEND_LIBRARY \
+            SK_BACKEND_LOCAL #SK_BACKEND_LOG
+ 
+@@ -50,9 +50,18 @@ QMAKE_CXXFLAGS += -msse
+ 
+ unix:QMAKE_LFLAGS += "-Wl,-rpath,'\$$ORIGIN'"
+ 
++CONFIG       += link_pkgconfig
++
+ include(src/global/global.pri)
+ include(src/controllers/controllers.pri)
+ include(src/kernel/kernel.pri)
++packagesExist(quazip) {
++    PKGCONFIG += quazip
++    INCLUDEPATH += /usr/include/quazip5
++} else {
++    DEFINES += QUAZIP_BUILD
++     include(src/3rdparty/quazip/quazip.pri)
++}
+ include(src/io/io.pri)
+ include(src/thread/thread.pri)
+ include(src/plugin/plugin.pri)
+@@ -65,7 +74,6 @@ include(src/vlc/vlc.pri)
+ include(src/torrent/torrent.pri)
+ 
+ include(src/3rdparty/qtsingleapplication/qtsingleapplication.pri)
+-include(src/3rdparty/quazip/quazip.pri)
+ include(src/3rdparty/libcharsetdetect/libcharsetdetect.pri)
+ 
+ INCLUDEPATH += $$SK/include/SkCore \

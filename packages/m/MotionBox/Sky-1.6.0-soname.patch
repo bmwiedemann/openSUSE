@@ -1,7 +1,7 @@
-Index: MotionBox-1.5.0/Sky-1.5.0/src/SkBackend/SkBackend.pro
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkBackend/SkBackend.pro
 ===================================================================
---- MotionBox-1.5.0.orig/Sky-1.5.0/src/SkBackend/SkBackend.pro
-+++ MotionBox-1.5.0/Sky-1.5.0/src/SkBackend/SkBackend.pro
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkBackend/SkBackend.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkBackend/SkBackend.pro
 @@ -22,7 +22,7 @@ contains(QT_MAJOR_VERSION, 4) {
      QT += quick network xml
  }
@@ -10,11 +10,11 @@ Index: MotionBox-1.5.0/Sky-1.5.0/src/SkBackend/SkBackend.pro
 +CONFIG       += unversioned_libname unversioned_soname
  win32:CONFIG += dll
  
- DEFINES += SK_BACKEND_LIBRARY
-Index: MotionBox-1.5.0/Sky-1.5.0/src/SkCore/SkCore.pro
+ DEFINES += SK_BACKEND_LIBRARY SK_BACKEND_LOG
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkCore/SkCore.pro
 ===================================================================
---- MotionBox-1.5.0.orig/Sky-1.5.0/src/SkCore/SkCore.pro
-+++ MotionBox-1.5.0/Sky-1.5.0/src/SkCore/SkCore.pro
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkCore/SkCore.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkCore/SkCore.pro
 @@ -22,7 +22,7 @@ contains(QT_MAJOR_VERSION, 4) {
      QT += quick widgets network xml xmlpatterns
  }
@@ -23,13 +23,13 @@ Index: MotionBox-1.5.0/Sky-1.5.0/src/SkCore/SkCore.pro
 +CONFIG       += unversioned_libname unversioned_soname
  win32:CONFIG += dll
  
- DEFINES += SK_CORE_LIBRARY
-Index: MotionBox-1.5.0/Sky-1.5.0/src/SkGui/SkGui.pro
+ DEFINES += SK_CORE_LIBRARY QUAZIP_BUILD
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkGui/SkGui.pro
 ===================================================================
---- MotionBox-1.5.0.orig/Sky-1.5.0/src/SkGui/SkGui.pro
-+++ MotionBox-1.5.0/Sky-1.5.0/src/SkGui/SkGui.pro
-@@ -28,7 +28,7 @@ contains(QT_MAJOR_VERSION, 5) {
-     unix:QT += x11extras
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkGui/SkGui.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkGui/SkGui.pro
+@@ -29,7 +29,7 @@ contains(QT_MAJOR_VERSION, 5) {
+     unix:!macx:QT += x11extras
  }
  
 -CONFIG       += plugin
@@ -37,10 +37,10 @@ Index: MotionBox-1.5.0/Sky-1.5.0/src/SkGui/SkGui.pro
  win32:CONFIG += dll
  
  DEFINES += QT_QTLOCKEDFILE_IMPORT
-Index: MotionBox-1.5.0/Sky-1.5.0/src/SkMedia/SkMedia.pro
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkMedia/SkMedia.pro
 ===================================================================
---- MotionBox-1.5.0.orig/Sky-1.5.0/src/SkMedia/SkMedia.pro
-+++ MotionBox-1.5.0/Sky-1.5.0/src/SkMedia/SkMedia.pro
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkMedia/SkMedia.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkMedia/SkMedia.pro
 @@ -22,7 +22,7 @@ contains(QT_MAJOR_VERSION, 4) {
      QT += opengl quick network
  }
@@ -50,10 +50,10 @@ Index: MotionBox-1.5.0/Sky-1.5.0/src/SkMedia/SkMedia.pro
  win32:CONFIG += dll
  
  DEFINES += SK_MEDIA_LIBRARY CAN_COMPILE_SSE2
-Index: MotionBox-1.5.0/Sky-1.5.0/src/SkTorrent/SkTorrent.pro
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkTorrent/SkTorrent.pro
 ===================================================================
---- MotionBox-1.5.0.orig/Sky-1.5.0/src/SkTorrent/SkTorrent.pro
-+++ MotionBox-1.5.0/Sky-1.5.0/src/SkTorrent/SkTorrent.pro
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkTorrent/SkTorrent.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkTorrent/SkTorrent.pro
 @@ -22,7 +22,7 @@ contains(QT_MAJOR_VERSION, 4) {
      QT += quick network
  }
@@ -63,10 +63,10 @@ Index: MotionBox-1.5.0/Sky-1.5.0/src/SkTorrent/SkTorrent.pro
  win32:CONFIG += dll
  
  DEFINES += SK_TORRENT_LIBRARY
-Index: MotionBox-1.5.0/Sky-1.5.0/src/SkWeb/SkWeb.pro
+Index: MotionBox-1.6.0/Sky-1.6.0/src/SkWeb/SkWeb.pro
 ===================================================================
---- MotionBox-1.5.0.orig/Sky-1.5.0/src/SkWeb/SkWeb.pro
-+++ MotionBox-1.5.0/Sky-1.5.0/src/SkWeb/SkWeb.pro
+--- MotionBox-1.6.0.orig/Sky-1.6.0/src/SkWeb/SkWeb.pro
++++ MotionBox-1.6.0/Sky-1.6.0/src/SkWeb/SkWeb.pro
 @@ -18,7 +18,7 @@ TEMPLATE = lib
  
  QT += network webkit webkitwidgets

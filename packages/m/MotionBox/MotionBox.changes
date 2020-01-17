@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Jan 15 06:04:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.6.0
+  Global:
+  * Rename 'The Video Browser' to 'Video Browser'.
+  C++:
+  * ControllerCore: Add 'updateBackends' and 'resetBackends'
+    functions.
+  * ControllerCore: Update 'pathCover' for backends.
+  * ControllerCore: Update the 'deleteBrowse' function.
+  * ControllerCore: Update data format.
+  * ControllerCore: Fix the 'applyTorrentOptions' function.
+  * DataLocal: Update 'torrent cache' to 2000 megabytes by
+    default.
+  QML:
+  * Create PageSettingsVideo and PageConsole.
+  * Remove PanelCover.
+  * Add 'bold' style.
+  * Add 'ratio' support.
+  * Fix 'toolTip' icon scaling.
+  * Create 'PageSubtitles(s)'.
+  * Rename 'PanelShare' to 'PanelGet'.
+  * Gui: Check hover in the 'onIdleChanged' event.
+  * Gui: Fix the automatic selection in the 'onDragEnded' event.
+  * Gui: Remove 'keepState' in the 'applyProxy' function.
+  * Gui: Remove the 'openFolder' function.
+  * PanelBrowse: Update to LineEditBoxClear.
+  * PanelBrowse: Update 'scrollBrowse' press event.
+  * PanelSettings: Add 'autoPlay' button.
+  * PanelSettings: Update 'quality' implementation.
+  * PanelSettings: Fix 'buttonRepeat' highlight.
+  * PanelTracks: No longer change 'PanelAdd' selection when
+    clicking on 'buttonBrowse'.
+  * BarWindowApplication: Add 'toggleTouch' on ViewDrag.
+  * BarWindowApplication: Update 'pOpenTabPlaylist' function.
+  * List(s): Fix the 'pRestoreScroll' function.
+  * List(s): Fix the 'pDragCheck' function.
+  * PageSettingsMain: Add the 'pApplyScale' function.
+  * PageSettingsVideo: Fix 'elide' behavior.
+
+- Replaced Sky-1.5.0-private_headers.patch,
+  MotionBox-1.5.0-paths.patch, Sky-1.5.0-soname.patch,
+  Sky-1.5.0-use_system_glext.patch and
+  Sky-1.5.0-libtorrent_1_2.patch with
+  MotionBox-1.6.0-private_headers.patch,
+  MotionBox-1.6.0-paths.patch, Sky-1.6.0-soname.patch,
+  Sky-1.6.0-use_system_glext.patch and
+  MotionBox-1.6.0-libtorrent_1_2.patch respectively
+
+- Added MotionBox-1.6.0-use_system_quazip.patch
+
+-------------------------------------------------------------------
 Sat Dec  7 09:06:06 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add Sky-1.5.0-libtorrent_1_2.patch
