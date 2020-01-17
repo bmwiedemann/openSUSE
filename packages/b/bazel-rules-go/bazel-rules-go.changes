@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:13:26 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove patch which is not needed anymore:
+  * 0001-bazel-Use-http_archive-instead-of-git_repository.patch
+
+-------------------------------------------------------------------
+Mon Jan 13 14:52:39 UTC 2020 - mrostecki@opensuse.org
+
+- Update to version 0.20.3:
+  * Support go1.13.5, 1.12.14 (#2308)
+  * tests/legacy/trans_dep_error: delete test (#2303)
+  * Migrate reproducibility test to go_bazel_test (#2299)
+  * Clear GOPATH in go_context (#2291)
+  * nogo: defer wg.Done() (#2300)
+  * Remove //tests/legacy/cgo_library_root_dir (#2297)
+  * Migrate legacy test to //tests/core/go_test:test_filter_test (#2298)
+  * Migrate legacy tests to //tests/core/go_download_sdk (a go_bazel_test) (#2296)
+  * Use bash from the environment instead of absolute path (#2295)
+  * Migrate //tests/core/race to go_bazel_test (#2293)
+  * tests/core/nogo: migrate to go_bazel_test (#2289)
+  * tests/core/coverage: migrate to go_bazel_test (#2288)
+  * go/tools/bazel_testing: support location args without external prefix (#2287)
+  * Add SetUp method to Args for go_bazel_test (#2282)
+  * Add support for dirs in txtar expander (#2280)
+  * Conditionally include Bazel testing library only if needed (#2279)
+  * go_compat_repo: alias constraint values and settings to bazel_tools or platforms (#2275)
+  * skip directory matching in FindBinary (#2274)
+  * go_bazel_test: add test to ensure data and args keep working (#2248)
+  * delete unused cgoarc flag from compilepkg builder (#2264)
+  * Set RULES_GO_VERSION to 0.20.3
+  * Support go1.13.4, 1.12.13 (#2269)
+  * Set RULES_GO_VERSION to 0.20.2
+
+-------------------------------------------------------------------
 Thu Dec 19 13:58:48 UTC 2019 - Madhu Mohan Nelemane <mmnelemane@suse.com>
 
 - Updated to version 0.20.1

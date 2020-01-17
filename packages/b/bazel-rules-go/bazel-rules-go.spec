@@ -19,7 +19,7 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-rules-go
-Version:        0.20.1
+Version:        0.20.3
 Release:        0
 Summary:        Go rules for Bazel
 License:        Apache-2.0
@@ -27,9 +27,6 @@ Group:          Development/Tools/Building
 Url:            https://github.com/bazelbuild/rules_go
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE -- Use http_archive instead of git_repository in Bazel.
-# git_repository makes it impossible to pre-fetch or override dependencies.
-Patch0:         0001-bazel-Use-http_archive-instead-of-git_repository.patch
 BuildRequires:  fdupes
 
 %description
@@ -63,7 +60,6 @@ This package contains source code of bazel-rules-go.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 

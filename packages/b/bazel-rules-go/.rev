@@ -32,4 +32,38 @@
     <comment></comment>
     <requestid>761912</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>169fd21f80b6aa58406769de99fae696</srcmd5>
+    <version>0.20.3</version>
+    <time>1579273662</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch which is not needed anymore:
+  * 0001-bazel-Use-http_archive-instead-of-git_repository.patch
+
+- Update to version 0.20.3:
+  * Support go1.13.5, 1.12.14 (#2308)
+  * tests/legacy/trans_dep_error: delete test (#2303)
+  * Migrate reproducibility test to go_bazel_test (#2299)
+  * Clear GOPATH in go_context (#2291)
+  * nogo: defer wg.Done() (#2300)
+  * Remove //tests/legacy/cgo_library_root_dir (#2297)
+  * Migrate legacy test to //tests/core/go_test:test_filter_test (#2298)
+  * Migrate legacy tests to //tests/core/go_download_sdk (a go_bazel_test) (#2296)
+  * Use bash from the environment instead of absolute path (#2295)
+  * Migrate //tests/core/race to go_bazel_test (#2293)
+  * tests/core/nogo: migrate to go_bazel_test (#2289)
+  * tests/core/coverage: migrate to go_bazel_test (#2288)
+  * go/tools/bazel_testing: support location args without external prefix (#2287)
+  * Add SetUp method to Args for go_bazel_test (#2282)
+  * Add support for dirs in txtar expander (#2280)
+  * Conditionally include Bazel testing library only if needed (#2279)
+  * go_compat_repo: alias constraint values and settings to bazel_tools or platforms (#2275)
+  * skip directory matching in FindBinary (#2274)
+  * go_bazel_test: add test to ensure data and args keep working (#2248)
+  * delete unused cgoarc flag from compilepkg builder (#2264)
+  * Set RULES_GO_VERSION to 0.20.3
+  * Support go1.13.4, 1.12.13 (#2269)
+  * Set RULES_GO_VERSION to 0.20.2 (forwarded request 765216 from mrostecki)</comment>
+    <requestid>765217</requestid>
+  </revision>
 </revisionlist>
