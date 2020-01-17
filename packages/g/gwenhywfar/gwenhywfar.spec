@@ -16,21 +16,22 @@
 #
 
 
-%define libversion 78
+%define libversion 79
 %define devversion 5
-%define devrelease 4.99
+%define devrelease 5.1
 # Beta does not mean "before release" but a release that is considered as beta:
-%define _version %{version}rc9
+%define _version %{version}
 %define _name gwenhywfar
 %bcond_with configure
 Name:           gwenhywfar
-Version:        4.99.25
+Version:        5.1.1
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.aquamaniac.de/rdm/projects/gwenhywfar
-Source:         https://github.com/aqbanking/gwenhywfar/archive/%{_version}.tar.gz#/%{_name}-%{_version}.tar.gz
+Source:         https://www.aquamaniac.de/rdm/attachments/download/233/%{name}-%{version}.tar.gz
+#Source:        https://github.com/aqbanking/gwenhywfar/archive/%%{_version}.tar.gz#/%%{_name}-%%{_version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 # For doc graphs
