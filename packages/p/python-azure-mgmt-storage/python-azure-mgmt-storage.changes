@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 16 16:23:38 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 7.1.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update %description from README.rst
+
+-------------------------------------------------------------------
 Tue Jan  7 10:40:59 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
