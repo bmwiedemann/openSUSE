@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:10:16 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.0.4 migrated to Gtk3, added GObject-Introspection
+  annotations and implemented AgsServer.
+- edited spec file to deal with improved Makefile.am, additional
+  dependencies and to install gir and typelib files.
+- dropped gsequencer.0-fix-makefile-am.patch
+
+-------------------------------------------------------------------
+Fri Dec 27 18:58:19 UTC 2019 - Joël Krähemann <jkraehemann@gmail.com>
+
+- improved performance
+
+-------------------------------------------------------------------
+Fri Dec 27 06:25:22 UTC 2019 - Joël Krähemann <jkraehemann@gmail.com>
+
+- implemented ags_audio_buffer_util_resample_with_buffer() and
+  related
+- fixed potential buffer-overflow in ags_sfz_sample.c
+- fixed SIGSEGV in ags_sound_resource.c
+
+-------------------------------------------------------------------
 Tue Dec 17 15:28:00 UTC 2019 - Joël Krähemann <jkraehemann@gmail.com>
 
 - fixed potential SIGSEGV as adding AgsBulkMember to AgsFFPlayer.
