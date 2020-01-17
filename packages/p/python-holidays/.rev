@@ -35,4 +35,12 @@
   - Allow passing years to CountryHoliday (mr.shu)</comment>
     <requestid>730322</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d2a3cc1a4cfa26e38d9e2122a2b181b1</srcmd5>
+    <version>0.9.12</version>
+    <time>1579273651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765226</requestid>
+  </revision>
 </revisionlist>
