@@ -65,4 +65,23 @@
     <comment></comment>
     <requestid>746425</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>216e74a70d6e240ac14ef6861478c85b</srcmd5>
+    <version>20191024</version>
+    <time>1579273658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191024:
+  * Add support for ES384 and ES512
+  * Add HS384 and HS512 support
+  * Clear openssl error queue if HMAC() fails
+  * Add HS256 support
+- Add source package, remove lib* and devel package - now it's not
+  possible to build jwt_verify_lib outside envoy-proxy's source
+  tree.
+- Remove Maistra sources:
+  * jwt-verify-lib-openssl-20190806.tar.xz
+- Add patch which adds compatibility with OpenSSL:
+  * jwt_verify-make-compatible-with-openssl.patch (forwarded request 765232 from mrostecki)</comment>
+    <requestid>765233</requestid>
+  </revision>
 </revisionlist>
