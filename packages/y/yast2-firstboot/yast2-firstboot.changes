@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:02:28 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't use deprecated Progress.on
+- Don't allow to go back in congratulate screen
+- Don't try to set keyboard in WSL
+- 4.2.9
+
+-------------------------------------------------------------------
+Tue Jan 14 08:24:30 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- drop starting of hal as it is also obsolete and no longer exist
+  (jsc#SLE-10976)
+- 4.2.8
+
+-------------------------------------------------------------------
+Mon Jan 13 09:59:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- drop deprecated network technologies (jsc#SLE-7753)
+- replace rc* and init.d usage by systemd (jsc#SLE-10976)
+- 4.2.7
+
+-------------------------------------------------------------------
 Wed Dec 18 15:42:53 UTC 2019 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Replace outdated "SuSE" spelling (bsc#970809).
