@@ -1,7 +1,7 @@
 #
 # spec file for package python-amqpstorm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-amqpstorm
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Thread-safe Python RabbitMQ Client & Management library
 License:        MIT

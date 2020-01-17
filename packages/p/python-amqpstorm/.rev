@@ -67,4 +67,12 @@
   * Fixed an issue with closing Channels taking too long after the server initiated it.</comment>
     <requestid>730723</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eb6b499c55fc195da7df04a9cf7ab012</srcmd5>
+    <version>2.7.2</version>
+    <time>1579273695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765072</requestid>
+  </revision>
 </revisionlist>
