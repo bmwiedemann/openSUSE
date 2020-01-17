@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jan 13 10:32:18 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1578911004.c1a33535:
+  * Dev: behave: Not allowed space value for option
+  * Fix: ui_cluster: Not allowed space value for option (bsc#1141976)
+
+-------------------------------------------------------------------
+Fri Jan 10 08:51:14 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1578645670.4df2f015:
+  * Dev: unittest: add unit test for dump_D_process function
+  * Fix: hb_report: disable dump all tasks stack into dmesg(bsc#1158060)
+
+-------------------------------------------------------------------
+Fri Jan 10 07:41:56 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1578641542.ddda681c:
+  * Dev: behave: varify help output for commands which replace as argparse
+  * Dev: replace optparse with argparse
+
+-------------------------------------------------------------------
+Tue Jan 07 12:39:32 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1578400179.830baba1:
+  * Dev: unittest: remove "placement-strategy=balanced" in ut codes
+  * Dev: behave: test placement-strategy value is "default"
+  * Fix: bootstrap: set placement-strategy value as "default"(bsc#1129462)
+
+-------------------------------------------------------------------
+Tue Jan 07 09:34:24 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1578389070.fb171448:
+  * Fix: crmsh.spec: using mktemp to create tmp file(bsc#1154163)
+
+-------------------------------------------------------------------
 Tue Jan 07 09:13:02 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1578387778.867a085b:

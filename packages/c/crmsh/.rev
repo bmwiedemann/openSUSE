@@ -1945,4 +1945,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>761367</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>f940deef238e4c738e22b64cba3efa10</srcmd5>
+    <version>4.2.0+git.1578911004.c1a33535</version>
+    <time>1579273596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765101</requestid>
+  </revision>
 </revisionlist>
