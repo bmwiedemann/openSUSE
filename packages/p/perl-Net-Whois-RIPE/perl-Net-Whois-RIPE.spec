@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Whois-RIPE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-Whois-RIPE
-Version:        2.006002
+Version:        2.007
 Release:        0
 %define cpan_name Net-Whois-RIPE
 Summary:        Pure-Perl implementation of the RIPE Database client
@@ -46,8 +46,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %check
-# remote test, will fail
-rm t/bug-hostname-constructor.t
 make test
 
 %install
