@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.0.79
+Version:        2.0.80
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -116,7 +116,7 @@ BuildRequires:  python3-azure-mgmt-servicefabric >= 0.2.0
 BuildRequires:  python3-azure-mgmt-signalr >= 0.3.0
 BuildRequires:  python3-azure-mgmt-sql >= 0.15.0
 BuildRequires:  python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
-BuildRequires:  python3-azure-mgmt-storage >= 7.0.0
+BuildRequires:  python3-azure-mgmt-storage >= 7.1.0
 BuildRequires:  python3-azure-mgmt-trafficmanager >= 0.51.0
 BuildRequires:  python3-azure-mgmt-web >= 0.42.0
 BuildRequires:  python3-azure-multiapi-storage >= 0.2.4
@@ -217,7 +217,7 @@ Requires:       python3-azure-mgmt-servicefabric >= 0.2.0
 Requires:       python3-azure-mgmt-signalr >= 0.3.0
 Requires:       python3-azure-mgmt-sql >= 0.15.0
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
-Requires:       python3-azure-mgmt-storage >= 7.0.0
+Requires:       python3-azure-mgmt-storage >= 7.1.0
 Requires:       python3-azure-mgmt-trafficmanager >= 0.51.0
 Requires:       python3-azure-mgmt-web >= 0.42.0
 Requires:       python3-azure-multiapi-storage >= 0.2.4
