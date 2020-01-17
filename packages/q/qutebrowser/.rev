@@ -1119,4 +1119,12 @@ Fixed
     login flows).</comment>
     <requestid>754543</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>71f9e88b494d22fef43380cc5fafebea</srcmd5>
+    <version>1.9.0</version>
+    <time>1579273587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765099</requestid>
+  </revision>
 </revisionlist>

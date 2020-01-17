@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Thu Jan  9 22:24:07 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 1.9.0
+Added
+  * Initial support for Qt 5.14.
+  * New content.site_specific_quirks setting which enables
+    workarounds for websites with broken user agent parsing
+    (enabled by default, see the "Fixed" section for fixed
+    websites).
+  * New qt.force_platformtheme setting to force Qt to use a given
+    platform theme.
+  * New tabs.tooltips setting which can be used to disable hover
+    tooltips for tabs.
+  * New settings to configure the appearance of context menus:
+    + fonts.contextmenu
+    + colors.contextmenu.menu.bg
+    + colors.contextmenu.menu.fg
+    + colors.contextmenu.selected.bg
+    + colors.contextmenu.selected.fg
+
+Changed
+  * The content.headers.user_agent setting now is a format string
+    with the default value resembling the behavior of it being set
+    to null before. This slightly changes the sent user agent for
+    QtWebKit: Instead of mentioning qutebrowser and its version
+    it now mentions the Qt version.
+  * The qute-pass userscript now has a new --extra-url-suffixes
+    (-s) argument which passes extra URL suffixes to the tldextract
+    library.
+  * A stack is now used for :tab-focus last rather than just saving
+    one tab. Additionally, :tab-focus now understands stack-prev
+    and stack-next arguments to traverse that stack.
+  * :hint now has a new right-click target which allows
+    right-clicking elements via hints.
+  * The Terminus font has been removed from the default monospace
+    fonts since it caused trouble with HighDPI setups. To get it
+    back, add either "xos4 Terminus" or Terminus (depending on
+    fontconfig version) to the beginning of the fonts.monospace
+    setting.
+  * As a workaround for a Qt bug causing a segfault, desktop
+    sharing is now automatically rejected on Qt versions before
+    5.13.2. Note that screen sharing still won't work on Linux
+    before Qt 5.14.
+  * Comment lines in quickmarks/bookmarks files are now ignored.
+    However, note that qutebrowser will overwrite those files if
+    bookmark/quickmark commands are used.
+  * Reopening PDF.js pages from e.g. a session file will now
+    re-download and display those PDFs.
+  * Improved behavior when using :open-download in a sandboxed
+    environment (KDE Flatpak).
+  * qutebrowser now enables the new PyQt exit scheme, which should
+    result in things being cleaned up more properly (e.g. cookies
+    being saved even without a timeout) on PyQt 5.13.1 and newer.
+  * The :spawn command has a new -m / --output-messages argument
+    which shows qutebrowser messages based on a command's standard
+    output/error.
+  * Improved insert mode detection for some CodeMirror usages
+    (e.g. in JupyterLab and Jupyter Notebook).
+  * If JavaScript is disabled globally, file://* now doesn't
+    automatically have it enabled anymore. Run :set -u file://*
+    content.javascript.enabled true to restore the previous
+    behavior.
+  * Settings with URL patterns can now be used to affect the
+    behavior of the QtWebEngine inspector. Note that the underlying
+    URL is chrome-devtools://* from Qt 5.11 to Qt 5.13, but
+    devtools://* with Qt 5.14.
+  * Improvements when tabs.tabs_are_windows is set:
+    + Using :tab-take and :tab-give now shows an error, as the
+      effect of doing so would be equal to :tab-clone.
+    + The :buffer completion doesn't show any window sections
+      anymore, only a flat list of tabs.
+  * Improved parsing in some corner cases for the QtFont type
+    (used for fonts.tabs and fonts.debug_console).
+  * Performance improvements for the following areas:
+    + Adding settings with URL patterns
+    + Matching of settings using URL patterns
+
+Fixed
+  * Downloads (e.g. via :download) now see the same user agent
+    header as webpages, which fixes cases where overly restrictive
+    servers/WAFs closed the connection before.
+  * The logic for :restart has been revisited, which should fix
+    issues with relative basedirs.
+  * Remaining issues related to Python 3.8 are now fixed
+    (mostly warnings, especially on QtWebKit).
+  * Workaround for a Qt bug where a page never finishes loading
+    with a non-overridable TLS error (e.g. due to HSTS).
+  * The qute://configdiff page now doesn't show built-in settings
+    (e.g. javascript being enabled for qute:// and chrome:// pages)
+    anymore.
+  * The qute-lastpass userscript now stops prompting for passwords
+    when cancelling the password input.
+  * The tab hover text now shows ampersands (&) correctly.
+  * With QtWebEngine and Qt >= 5.11, the inspector now shows its
+    icons correctly even if loading of images is disabled via the
+    content.images setting.
+  * Entering a very long string (over 50k characters) in the
+    completion used to crash, now it shows an error message instead
+  * Various improvements for URL/searchengine detection:
+    + Strings with a dot but with characters not allowed in a URL
+      (e.g. an underscore) are now not treated as URL anymore.
+    + Strings like "5/8" are now not treated as IP anymore.
+    + URLs with an explicit scheme and a space (%20) are correctly
+      treated as URLs.
+    + Mail addresses are now treated as search terms.
+    + With url.open_base_url set, searching for a search engine
+      name now works.
+    + url.open_base_url = True together with
+      url.auto_search = 'never' is now handled correctly.
+    + Fixed crash when a search engine URL turns out to be invalid.
+  * New "site specific quirks", which work around some broken
+    websites:
+    + WhatsApp Web
+    + Google Accounts
+    + Slack (with older QtWebEngine versions)
+    + Dell.com support pages (with Qt 5.7)
+    + Google Docs (fixes broken IME/compose key)
+
+-------------------------------------------------------------------
 Thu Dec  5 23:17:55 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.8.3
