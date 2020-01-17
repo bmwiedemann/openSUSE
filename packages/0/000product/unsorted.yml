@@ -174,6 +174,7 @@ unsorted:
   - QMPlay2 
   - QMPlay2-devel 
   - QR-Code-generator-devel 
+  - QTalarm 
   - QtAV 
   - QtAV-devel 
   - QtAV-players 
@@ -295,7 +296,6 @@ unsorted:
   - abook 
   - abook-lang 
   - abootimg 
-  - abseil-cpp-devel: [x86_64] 
   - abseil-cpp-source: [x86_64] 
   - abxtest 
   - acars-examples 
@@ -1527,6 +1527,7 @@ unsorted:
   - cecilia 
   - cedict 
   - cedilla 
+  - cel-cpp-source 
   - celluloid 
   - celluloid-lang 
   - celt 
@@ -2649,6 +2650,7 @@ unsorted:
   - entangle-plugin-photobox 
   - entangle-plugin-shooter 
   - entr 
+  - envoy-build-tools 
   - envoy-protoc-gen-validate 
   - envoy-protoc-gen-validate-source 
   - envoy-proxy: [x86_64] 
@@ -2806,6 +2808,8 @@ unsorted:
   - fasd 
   - fasterxml-oss-parent 
   - fastjar 
+  - fastjet-contrib-devel 
+  - fastjet-contrib-devel-static 
   - fastjet-devel 
   - fastjet-plugin-siscone 
   - fastjet-plugin-siscone-devel 
@@ -4873,7 +4877,6 @@ unsorted:
   - growpart: [i586] 
   - growpart-generator 
   - grpc-devel 
-  - grpc-httpjson-transcoding-devel: [x86_64] 
   - grpc-httpjson-transcoding-source: [x86_64] 
   - grpc-source 
   - grsync 
@@ -6186,7 +6189,7 @@ unsorted:
   - jupyter-widgetsnbextension 
   - jvnet-parent 
   - jvyamlb 
-  - jwt_verify_lib-devel: [x86_64] 
+  - jwt_verify_lib-source 
   - jxrlib 
   - jxrlib-devel 
   - jython 
@@ -6219,11 +6222,8 @@ unsorted:
   - kadu-sound-ultr 
   - kaffeine 
   - kaffeine-lang 
-  - kafka: [x86_64] 
-  - kafka-doc: [x86_64] 
   - kafka-kit: [x86_64] 
-  - kafka-source: [x86_64] 
-  - kafka-zookeeper: [x86_64] 
+  - kafka-source 
   - kajaani-kombat 
   - kajaani-kombat-server 
   - kajongg 
@@ -7441,7 +7441,7 @@ unsorted:
   - libQtAVWidgets1-32bit: [x86_64] 
   - libQtQuick5-32bit: [x86_64] 
   - libRaTools0 
-  - libRivet-2_7_2 
+  - libRivet-3_1_0 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL-devel 
   - libSDL-devel-32bit: [x86_64] 
@@ -7641,7 +7641,6 @@ unsorted:
   - libabigail-tools 
   - libabigail0 
   - libabiword-3_0-devel 
-  - libabseil0: [x86_64] 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -7674,7 +7673,7 @@ unsorted:
   - libaec-devel 
   - libaec0 
   - libaec0-32bit: [x86_64] 
-  - libags2 
+  - libags3 
   - libaio-devel-32bit: [x86_64] 
   - libaio1-32bit: [x86_64] 
   - libairspy0 
@@ -7841,6 +7840,9 @@ unsorted:
   - libavfilter7-32bit: [x86_64] 
   - libavformat58-32bit: [x86_64] 
   - libavfs0 
+  - libavif-devel 
+  - libavif-tools 
+  - libavif0 
   - libavrdude1 
   - libavresample4-32bit: [x86_64] 
   - libavtp-devel 
@@ -8754,6 +8756,7 @@ unsorted:
   - libfann2 
   - libfarstream-0_2-5-32bit: [x86_64] 
   - libfastjet0 
+  - libfastjetcontribfragile 
   - libfastjson-devel 
   - libfastlz1 
   - libfbclient-devel 
@@ -9151,7 +9154,6 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc-httpjson-transcoding0: [x86_64] 
   - libgrpc8 
   - libgrss-devel 
   - libgrss0 
@@ -9272,8 +9274,8 @@ unsorted:
   - libgwengui-gtk2-0 
   - libgwengui-gtk3-0 
   - libgwengui-qt5-0 
-  - libgwenhywfar78 
-  - libgwenhywfar78-plugins 
+  - libgwenhywfar79 
+  - libgwenhywfar79-plugins 
   - libgxps-devel 
   - libgxps-tools 
   - libgxw0 
@@ -9632,7 +9634,6 @@ unsorted:
   - libjson-glib-1_0-0-32bit: [x86_64] 
   - libjte-devel 
   - libjthread1_3_3 
-  - libjwt_verify_lib0: [x86_64] 
   - libjxrglue0 
   - libkColorPicker0_1_0 
   - libkImageAnnotator0_1_0 
@@ -10479,12 +10480,16 @@ unsorted:
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
   - libosmo-ranap3 
+  - libosmo-rspro-devel 
+  - libosmo-rspro1 
   - libosmo-sabp-devel 
   - libosmo-sabp0 
   - libosmo-sccp-1_2_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran5 
+  - libosmo-simtrace2-0 
+  - libosmo-simtrace2-devel 
   - libosmo-xua-1_2_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
@@ -15363,6 +15368,9 @@ unsorted:
   - osmo-msc 
   - osmo-pcap 
   - osmo-pcu 
+  - osmo-remsim-bankd 
+  - osmo-remsim-client 
+  - osmo-remsim-server 
   - osmo-sgsn 
   - osmo-sip-connector 
   - osmo-stp 
@@ -17461,8 +17469,6 @@ unsorted:
   - python-OpenColorIO-devel 
   - python-PyMuPDF-doc 
   - python-PyWavelets-doc 
-  - python-Rivet 
-  - python-SHERPA-MC 
   - python-SQLAlchemy-doc 
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
@@ -17702,7 +17708,6 @@ unsorted:
   - python-stevedore-doc 
   - python-sushy-doc 
   - python-svm 
-  - python-svneverever 
   - python-swiftclient-doc 
   - python-tables-doc 
   - python-testtools-doc 
@@ -20159,7 +20164,9 @@ unsorted:
   - python3-QtAwesome 
   - python3-QtPy 
   - python3-RegexOrder 
+  - python3-Rivet 
   - python3-Routes 
+  - python3-SHERPA-MC 
   - python3-SPARQLWrapper 
   - python3-SQLAlchemy-Utils 
   - python3-Scrapy 
@@ -22264,6 +22271,7 @@ unsorted:
   - python3-simpleeval 
   - python3-simplegeneric 
   - python3-simplekml 
+  - python3-siosocks 
   - python3-sip-devel 
   - python3-siphashc 
   - python3-sklearn-pandas 
@@ -22362,6 +22370,7 @@ unsorted:
   - python3-susepubliccloudinfo 
   - python3-sushy 
   - python3-svgwrite 
+  - python3-svneverever 
   - python3-swapper 
   - python3-swiftclient 
   - python3-swifter 
@@ -24226,6 +24235,7 @@ unsorted:
   - simple-obfs 
   - simple-obfs-doc 
   - simplescreenrecorder 
+  - simtrace2 
   - singularity 
   - sipcalc 
   - sipp 
@@ -32688,6 +32698,7 @@ unsorted:
   - typelib-1_0-Ido3-0_1 
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
+  - typelib-1_0-Libags-3_0 
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
   - typelib-1_0-LibvirtGObject-1_0 
@@ -32835,7 +32846,6 @@ unsorted:
   - unmass 
   - unoconv 
   - unpaper 
-  - unsermake 
   - unshield 
   - unshield-devel 
   - unzip-rcc 
