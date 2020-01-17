@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-socks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aiohttp-socks
-Version:        0.2.2
+Version:        0.3.4
 Release:        0
 Summary:        SOCKS proxy connector for aiohttp
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 2.3.2
+Requires:       python-attrs >= 19.2.0
 BuildArch:      noarch
 # SECTION test requirements
 #BuildRequires:  %{python_module aiohttp >= 2.3.2}
@@ -56,7 +57,7 @@ dos2unix README.md
 
 %check
 # tests need access to the internet
-#%%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix}
+#%%pytest
 
 %files %{python_files}
 %doc README.md
