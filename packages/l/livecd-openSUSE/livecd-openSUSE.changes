@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:43:37 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Rescue CD size limitation: block glib2-lang.
+
+-------------------------------------------------------------------
 Tue Jan 14 15:33:41 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Block (again?) vlc-lang from the KDE Lives.

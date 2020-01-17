@@ -53,6 +53,7 @@ install midori
 buildignore gparted-lang
 buildignore midori-lang
 buildignore iso-codes-lang
+buildignore glib2-lang
 
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
