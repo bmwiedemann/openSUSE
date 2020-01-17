@@ -124,4 +124,20 @@ Depends on
     <comment></comment>
     <requestid>725955</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5eebc5d4d701e4b82d9c8f972e928698</srcmd5>
+    <version>3.1.0</version>
+    <time>1579273452</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes: python-Rivet to python3-Rivet to help migration.
+- Update to version 3.1.0 (new upstream recommended version):
+  - Switch to python3:
+- Refresh sover.diff for updated version.
+- Drop Rivet-fix-ambiguous-namespace.patch: incorporated upstream
+- New BuildRequires: rsync, fastjet-contrib-devel
+- Update required version of YODA-devel to 1.8.0.
+- Drop conditionals for outdated openSUSE versions.
+</comment>
+    <requestid>765274</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Fri Jan 17 13:11:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Obsoletes: python-Rivet to python3-Rivet to help migration.
+
+-------------------------------------------------------------------
+Wed Jan  8 21:55:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0 (new upstream recommended version):
+  * Projections/EventMixingFinalState.hh: Replace use of
+    std::random_shuffle (deprecated in C++14, removed in C++17)
+    with std::shuffle and direct access to our thread-safe random
+    number generator.
+  * Significant revisions to tau jet efficiency functions.
+  * Add JET_EFF_ONE/ZERO aliases, cf. the Particle versions.
+  * Give precedence to user-supplied cross-section
+  * Switch required compiler dialect to C++14, to ensure that
+    compiler definitely (?) supports required C++11. C++14 or 17
+    is the current standard LCG build dialect.
+  * Add decay angle to ARGUS_1989_I268577
+  * Add polarization to OPAL_1997_S3608263
+  * Fixes to headers and brefi descriptions in various analyses
+  * Add CMD3_2019_I1770428 K0S K0S pi+ pi- cross section
+  * Fix histogram ids in BELLE_2009_I809630
+  * Add TMP to histogram labels in ARGUS_1993_S2669951
+  * Formally require YODA >= 1.8.0 in configure.
+  * Add new ALEPH analyses
+  * Fixes for pointers, booking in TASSO_1990_I284251 and
+    TASSO_1982_I177174
+  * Added MARKI_1976_I109792, DASP_1979_I132045 particle spectra
+    at low energies
+  * Added DASP_1979_I132410 eta production at low energies
+  * Added BABAR_2006_I719111 particle specta in B decays
+  * Added OPAL_2001_I536266 flavour separate charge particle
+    multiplicites
+  * Added new CLEO and CUSB analyses
+  * Added new BELLE lambda polarization and ARGUS D spectra
+  * Fix issues with ARGUS_1992_I319102, CLEO_2000_I537236
+  * Added new DELPHI analyses
+  * Added L3_1995_I381046, B*/B ratio
+  * Added new OPAL analyses
+  * Added new BES analyses
+  * Added new CMD3 analyses
+  * Added ARGUS_1988_I261672 for sigmac production
+  * Added LHCB_2013_I1243156, ARGUS_1989_I280943,
+    BABAR_2010_I867611 helicity angles for excited D meson decays
+  * Added TPC_1991_I316132, HRS_1987_I250823 D* polarization at 29
+    GeV
+  * Added VENUS_1998_I453613, TOPAZ_1997_I454183 charged particles
+    at 58 GeV
+  * ATLAS_2011_S9128077 ensure all bins outputted in d02,
+    otherwise problems with yodamerge
+  * ATLAS_2015_I1393758 and ATLAS_2016_I1419070,
+  * CMS_2012_I1111014, change numEntries -> effNumEntries to avoid
+    issues in NLO runs
+  * Change ratio plot label, was wrong way up, in
+  * ATLAS_2012_I1203852, ATLAS_2013_I1190187
+  * Use rivet normalize not yoda in ATLAS_2018_I1711114 to avoid
+    issues if histos empty
+  * Avoid crash in ATLAS_2016_I1426523 if host not found
+  * Add omega hist in BABAR_2017_I1621593
+  * EHS_1988_I265504 fix rapidity calc so in CMS not lab
+  * A2_2017_I1486671 fix omega PDG number
+  * Re-enable custom Particles and Jets vectors, with moms() and
+    other conversion functions.
+  * Add default ANY decay mode to TauFinder.
+  * Pass HepMC3 path info through to the rivet-config script.
+  * Refine testing and printing of UNVALIDATED status in analysis
+    listing.
+  * Add INF to the list of predefined constants, and rename the
+    internal constants header.
+  * Improve normalization guidance and fix energy specification in
+    mkanalysis .info file template.  
+- Changes from version 3.0.0 through 3.0.2: See
+  https://gitlab.com/hepcedar/rivet/blob/release-3-0-x/ChangeLog.
+- Switch to python3:
+  * Requires and BuildRequires switched to python3 versions
+  * Rename python package to python3-%{name} and provide
+    python-%{name} from it; this makes the py3 switch clear to
+    users.
+  * Explicitly pass PYTHON_VERSION as py3 version to make it build
+    against python3
+- Build against HepMC3 instead of HepMC2:
+  * Adapt BuildRequires for HepMC3.
+  * Pass HepMC3 specific parameters to configure.
+  * Add Rivet-plugins-use-HepMC3.patch: Port an analysis plugin to
+    HepMC3 from HepMC2
+- Refresh sover.diff for updated version.
+- Drop Rivet-fix-ambiguous-namespace.patch: incorporated upstream
+- New BuildRequires: rsync, fastjet-contrib-devel
+- Update required version of YODA-devel to 1.8.0.
+- Drop conditionals for outdated openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Aug 21 08:37:52 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.7.2

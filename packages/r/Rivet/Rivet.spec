@@ -1,7 +1,7 @@
 #
 # spec file for package Rivet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,36 @@
 #
 
 
-%define so_name lib%{name}-2_7_2
+%define so_name lib%{name}-3_1_0
 Name:           Rivet
-Version:        2.7.2
+Version:        3.1.0
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
-URL:            http://rivet.hepforge.org/
-Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.bz2
+URL:            https://rivet.hepforge.org/
+Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
-# PATCH-FIX-UPSTREAM Rivet-fix-ambiguous-namespace.patch badshah400@gmail.com -- Fixed Et -> Kin::Et to avoid ambiguous namespace; patch taken from upstream commit
-Patch1:         Rivet-fix-ambiguous-namespace.patch
-BuildRequires:  HepMC2-devel
-BuildRequires:  YODA-devel >= 1.7.4
+# PATCH-FIX-UPSTREAM Rivet-plugins-use-HepMC3.patch badshah400@gmail.com -- Port an analysis plugin to HepMC3 from HepMC2
+Patch1:         Rivet-plugins-use-HepMC3.patch
+BuildRequires:  HepMC-devel >= 3.0
+BuildRequires:  YODA-devel >= 1.8.0
 BuildRequires:  doxygen
+BuildRequires:  fastjet-contrib-devel
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-Cython
+BuildRequires:  python3-devel
+BuildRequires:  rsync
 BuildRequires:  texlive-latex-bin
 BuildRequires:  yaml-cpp-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 The Rivet project (Robust Independent Validation of Experiment and
@@ -78,6 +77,7 @@ This package provides the shared libraries for %{name}.
 Summary:        A toolkit for validation of Monte Carlo event generators
 Group:          Development/Libraries/C and C++
 Requires:       %{so_name} = %{version}
+Requires:       YODA-devel >= 1.8.0
 
 %description devel
 The Rivet project (Robust Independent Validation of Experiment and
@@ -91,11 +91,13 @@ development of future theory models.
 
 This package provides the source files for development with %{name}.
 
-%package -n python-%{name}
+%package -n python3-%{name}
 Summary:        A toolkit for validation of Monte Carlo event generators
 Group:          Productivity/Scientific/Physics
+Provides:       python-%{name}
+Obsoletes:      python-%{name}
 
-%description -n python-%{name}
+%description -n python3-%{name}
 The Rivet project (Robust Independent Validation of Experiment and
 Theory) is a toolkit for validation of Monte Carlo event generators.
 It provides a large (and ever growing) set of experimental analyses
@@ -125,9 +127,7 @@ development of future theory models.
 This package provides all the analysis plugins for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 # REMOVE EXISTING rivet.pc FILE, ALLOW make TO GENERATE rivet.pc FROM rivet.pc.in
 rm -f rivet.pc
@@ -138,7 +138,12 @@ sed -i "s| -L@GSLINCPATH@||g" rivet.pc.in
 
 %build
 autoreconf -fvi
-%configure --docdir=%{_docdir}/%{name}/
+export PYTHON_VERSION=%{py3_ver}
+%configure --with-hepmc3 \
+           --with-hepmc3-libname=HepMC3 \
+           --with-hepmc3-libpath=%{_libdir}/ \
+           --with-hepmc3-incpath=%{_includedir}/ \
+           --docdir=%{_docdir}/%{name}/
 make %{?_smp_mflags}
 
 %install
@@ -150,21 +155,18 @@ sed -Ei "1s:^#!\s*%{_bindir}/env bash:#!/bin/bash:" %{buildroot}%{_bindir}/*
 # /SECTION
 
 # SECTION Remove rpaths from config binaries and pkgconfig file
-sed -i "s|-Wl,-rpath,||g" %{buildroot}%{_libdir}/pkgconfig/rivet.pc
 sed -i "s|-Wl,-rpath,||g" %{buildroot}%{_bindir}/rivet-config
 # /SECTION
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
-# SECTION Move .so plugins to %%{_libdir}/%%{name}
-mkdir -p %{buildroot}%{_libdir}/%{name}-plugins
-mv %{buildroot}%{_libdir}/Rivet*Analyses.so %{buildroot}%{_libdir}/%{name}-plugins/
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
-echo "%{_libdir}/%{name}-plugins" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-plugins.conf
-# /SECTION
+echo "%{_libdir}/%{name}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-plugins.conf
 
-chmod -x %{buildroot}%{_datadir}/Rivet/ALICE_2012_I1126966.info %{buildroot}%{_datadir}/Rivet/ALICE_2014_I1243865.info
-sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python_sitearch}/rivet/spiresbib.py
+chmod -x %{buildroot}%{_datadir}/Rivet/ALICE_2012_I1126966.info \
+        %{buildroot}%{_datadir}/Rivet/ALICE_2014_I1243865.info \
+        %{buildroot}%{_datadir}/Rivet/STAR_2017_I1510593.{info,plot}
+sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbib.py
 
 %fdupes %{buildroot}%{_datadir}/Rivet/
 
@@ -184,15 +186,15 @@ sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python_sitearch}/rivet/spiresbib
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/rivet.pc
 
-%files -n python-%{name}
+%files -n python3-%{name}
 %{_bindir}/*
 %exclude %{_bindir}/rivet-config
 %exclude %{_bindir}/rivet-buildplugin
-%{python_sitearch}/rivet/
-%{python_sitearch}/rivet-*egg-info
+%{python3_sitearch}/rivet/
+%{python3_sitearch}/rivet-*egg-info
 
 %files plugins
 %config %{_sysconfdir}/ld.so.conf.d/%{name}-plugins.conf
-%{_libdir}/%{name}-plugins/
+%{_libdir}/%{name}/
 
 %changelog
