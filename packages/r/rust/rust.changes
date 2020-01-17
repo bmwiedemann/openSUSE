@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 17 11:04:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust constraints: Request 20GB HDD for all archs. Simplify the
+  file by removing the overrides for various disk sizes. All archs
+  are curretnly at roughly 17GB storage in use.
+
+-------------------------------------------------------------------
 Wed Jan  8 16:44:17 UTC 2020 - Federico Mena Quintero <federico@suse.com>
 
 - Bump version of libssh2 for SLE15; we now need a version with

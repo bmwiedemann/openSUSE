@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -120,7 +120,7 @@ Release:        0
 Summary:        A systems programming language
 License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
-Url:            https://www.rust-lang.org
+URL:            https://www.rust-lang.org
 Source0:        %{dl_url}/rustc-%{version}-src.tar.xz
 Source99:       %{name}-rpmlintrc
 Source100:      %{dl_url}/rust-%{version_bootstrap}-x86_64-unknown-linux-gnu.tar.xz
