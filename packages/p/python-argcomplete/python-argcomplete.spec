@@ -1,7 +1,7 @@
 #
 # spec file for package python-argcomplete
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Darin Perusich.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argcomplete
-Version:        1.10.0
+Version:        1.11.1
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
@@ -28,7 +28,9 @@ URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
 Patch0:         skip_tcsh_tests.patch
 Patch1:         trim-test-deps.patch
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  fish
@@ -63,13 +65,12 @@ resources over the network).
 rm -rf %{buildroot}%{python_sitelib}/test
 rm %{buildroot}%{_bindir}/activate-global-python-argcomplete
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-install -DTm644 %{buildroot}%{python_sitelib}/argcomplete/bash_completion.d/python-argcomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/python-argcomplete.sh
 # tcsh support is broken
 rm %{buildroot}%{_bindir}/python-argcomplete-tcsh
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
 
 %files %{python_files}
 %doc README.rst
@@ -78,6 +79,5 @@ export LANG=en_US.UTF-8
 %{python_sitelib}/argcomplete
 %python3_only %{_bindir}/python-argcomplete-check-easy-install-script
 %python3_only %{_bindir}/register-python-argcomplete
-%python3_only %{_datadir}/bash-completion/completions/python-argcomplete.sh
 
 %changelog

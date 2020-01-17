@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 17 10:42:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.11.1
+  * Add -o bashdefault to register-python-argcomplete’s output command
+  * Use shell builtins where possible
+  * Switch from pkg_resources to importlib
+  * Remove .sh extension by bash-completion convention
+  * Do not suggest options after –
+  * Include all test directory contents in source distribution
+  * Trigger completers on –optional=PARTIAL_VALUE
+  * Documentation and test improvements
+
+-------------------------------------------------------------------
 Fri Sep 13 12:45:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.10.0:

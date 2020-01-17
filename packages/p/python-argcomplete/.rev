@@ -100,4 +100,12 @@
 - Refresh patch skip_tcsh_tests.patch</comment>
     <requestid>730714</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d57f3be697f620e3b08235c4ab0a4ede</srcmd5>
+    <version>1.11.1</version>
+    <time>1579273652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765227</requestid>
+  </revision>
 </revisionlist>
