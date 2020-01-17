@@ -1,7 +1,7 @@
 #
 # spec file for package SHERPA-MC
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,32 +20,26 @@
 %define _lto_cflags %{nil}
 
 Name:           SHERPA-MC
-Version:        2.2.6
+Version:        2.2.8
 Release:        0
 Summary:        MC event generator for Simulation of High-Energy Reactions of PArticles
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://sherpa.hepforge.org/
-Source:         http://www.hepforge.org/archive/sherpa/%{name}-%{version}.tar.gz
+URL:            https://sherpa.hepforge.org/
+Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM SHERPA-MC-no-return-in-non-void-function.patch badshah400@gmail.com -- Fix a non-void (bool) function that was not returning any data to return "true"
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
-BuildRequires:  HepMC2-devel
+BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  LHAPDF-devel
-BuildRequires:  Rivet-devel
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  gcc-fortran >= 6
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkg-config
 BuildRequires:  pythia-devel
-BuildRequires:  python-devel
-BuildRequires:  scons
+BuildRequires:  python3-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gsl)
@@ -120,11 +114,13 @@ written in C++.
 This package provides the source and header files for development with
 Sherpa.
 
-%package -n python-%{name}
+%package -n python3-%{name}
 Summary:        Python extensions for SHERPA-MC
 Group:          Development/Languages/Python
+Provides:       python-%{name}
+Obsoletes:      python-%{name}
 
-%description -n python-%{name}
+%description -n python3-%{name}
 Sherpa is a Monte Carlo event generator for the Simulation of
 High-Energy Reactions of PArticles in lepton-lepton, lepton-photon,
 photon-photon, lepton-hadron and hadron-hadron collisions. It provides
@@ -140,6 +136,8 @@ This package provides the python extensions for Sherpa.
 %patch0 -p1
 
 %build
+export PYTHON=python3
+export PYTHON_VERSION=%{py3_ver}
 %configure \
   --docdir=%{_docdir}/%{name}  \
   --enable-ufo \
@@ -147,12 +145,13 @@ This package provides the python extensions for Sherpa.
   --enable-analysis    \
   --enable-multithread \
   --enable-gzip        \
-  --enable-hepmc2=%{_prefix}      \
+  --disable-hepmc3root  \
+  --enable-hepmc3=%{_prefix}      \
   --enable-fastjet=%{_prefix}     \
   --enable-lhapdf=%{_prefix}      \
   --enable-pythia=%{_prefix}
 
-# FIXME: Disable rivet bindings until SHERPA-MC builds with latest Rivet >= 2.1.2
+# FIXME: DOES NOT COMPILE AGAINST Rivet 3
 #  --enable-rivet=%%{_prefix}       \
 
 make %{?_smp_mflags}
@@ -165,8 +164,14 @@ echo %{_libdir}/%{name} > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/%{soname}.con
 
 find %{buildroot}%{_libdir}/%{name}/ -name *.la -delete
 
+# REMOVE HASHBANGS FROM FILES NOT IN EXEC PATH
+sed -E -i "1{s|#!\s?/bin/env python2||}" %{buildroot}%{python3_sitelib}/ufo_interface/test.py
+sed -E -i "1{s|#!\s?/usr/bin/python2||}" %{buildroot}%{_datadir}/%{name}/Examples/API/Events/test.py.in
+sed -E -i "1{s|#!\s?/usr/bin/python2||}" %{buildroot}%{_datadir}/%{name}/Examples/API/MPIEvents/test.py.in
+sed -E -i "1{s|#!\s?/usr/bin/env python2||}" %{buildroot}%{_datadir}/%{name}/Examples/API/ME2-Python/test.py.in
+
 %fdupes %{buildroot}%{_datadir}/%{name}/
-%fdupes %{buildroot}%{python_sitelib}/
+%fdupes %{buildroot}%{python3_sitelib}/
 
 %post -n %soname -p /sbin/ldconfig
 
@@ -207,10 +212,11 @@ find %{buildroot}%{_libdir}/%{name}/ -name *.la -delete
 %{_mandir}/man1/Sherpa.*.gz
 %{_infodir}/Sherpa.*.gz
 
-%files -n python-%{name}
+%files -n python3-%{name}
 %{_bindir}/Sherpa-generate-model
-%{python_sitelib}/Sherpa.py*
-%{python_sitelib}/ufo_interface/
-%{python_sitelib}/_Sherpa.*
+%{python3_sitelib}/Sherpa.py*
+%{python3_sitelib}/ufo_interface/
+%{python3_sitelib}/_Sherpa.*
+%{python3_sitelib}/__pycache__/
 
 %changelog

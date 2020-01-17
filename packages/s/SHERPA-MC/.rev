@@ -102,4 +102,17 @@
     <comment></comment>
     <requestid>744499</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>136d59e8d6bc4d07d6824ac052684fce</srcmd5>
+    <version>2.2.8</version>
+    <time>1579273436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update source URL.
+- Make sure to provide/obsolete the python- subpkg to support  migration
+- Update to version 2.2.8:
+- Build against python3 instead of python(2).
+- Build against HepMC (&gt;=3) instead of HepMC2.
+- Remove some hasbangs for non-exec files.</comment>
+    <requestid>765276</requestid>
+  </revision>
 </revisionlist>
