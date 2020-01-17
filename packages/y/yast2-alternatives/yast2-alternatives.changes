@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 12:12:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean spec file using spec-cleaner (main goal: use %license,
+  boo#1082318).
+- 4.2.3
+
+-------------------------------------------------------------------
 Mon Aug 26 09:17:13 CEST 2019 - schubi@suse.de
 
 - Using rb_default_ruby_abi tag in the spec file in order to
