@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 15 22:07:30 CET 2020 - aschnell@suse.com
+
+- treat partitions with BitLocker as Windows (related to
+  bsc#1159318)
+- 4.2.72
+
+-------------------------------------------------------------------
+Tue Jan 14 20:52:30 CET 2020 - aschnell@suse.com
+
+- use udevadm in /usr/bin instead of /sbin (bsc#1160890)
+- use absolute paths in mask-systemd-units
+- 4.2.71
+
+-------------------------------------------------------------------
+Tue Jan 14 09:54:08 CET 2020 - aschnell@suse.com
+
+- do not allow block sizes bigger than the system page size when
+  creating xfs (bsc#1111668)
+- check inode size depending on block size when creating xfs
+- 4.2.70
+
+-------------------------------------------------------------------
 Thu Jan 09 12:45:00 CET 2020 - aschnell@suse.com
 
 - disallow to mount BitLocker (related to bsc#1159318)
