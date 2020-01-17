@@ -1,7 +1,7 @@
 #
 # spec file for package python-WeasyPrint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-WeasyPrint
-Version:        48
+Version:        51
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
@@ -32,8 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       libgobject-2_0-0
 Requires:       pango
-Requires:       python-CairoSVG >= 1.0.20
-Requires:       python-Pyphen >= 0.8
+Requires:       python-Pyphen >= 0.9.1
 Requires:       python-cairocffi >= 0.9.0
 Requires:       python-cairocffi-pixbuf
 Requires:       python-cffi >= 0.6
@@ -46,7 +45,7 @@ Suggests:       python-CairoSVG >= 2.4.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module CairoSVG >= 2.4.0}
-BuildRequires:  %{python_module Pyphen >= 0.8}
+BuildRequires:  %{python_module Pyphen >= 0.9.1}
 BuildRequires:  %{python_module cairocffi >= 0.9.0}
 BuildRequires:  %{python_module cairocffi-pixbuf}
 BuildRequires:  %{python_module cffi >= 0.6}

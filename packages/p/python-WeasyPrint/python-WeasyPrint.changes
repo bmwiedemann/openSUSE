@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:01:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 51:
+  * Speed and memory use have been largely improved.
+  * #209: Make break-* properties work inside tables
+  * #661: Make blocks with overflow: auto grow to include floating children
+  * #882: Add support of element() and running()
+  * #972: Add HTML element to Box class
+  * 7a4d6f8: Support larger and smaller values for font-size
+
+-------------------------------------------------------------------
 Mon Jul 29 12:16:10 UTC 2019 - pgajdos@suse.com
 
 - version update to 48
