@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 16 14:50:51 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove all packages except source.
+
+-------------------------------------------------------------------
 Tue Jan 14 11:54:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set ExcludeArch: %ix86: bazel is required to build which in turn
