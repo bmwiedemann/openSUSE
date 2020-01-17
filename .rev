@@ -306,4 +306,17 @@
     <comment></comment>
     <requestid>667953</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c47da40066ea67d28d8af5b030a6b338</srcmd5>
+    <version>5.0.0</version>
+    <time>1579273554</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to use Python 3:
+  * 0001-Add-support-for-Python-3.patch
+  * 0001-This-is-not-necessary-anymore.patch
+  * 0001-Replace-FindPythonLibs-with-FindPython3-in-CMake.patch
+  * 0001-Stop-unsetting-_DEBUG-when-including-Python.h.patch
+- Drop obsolete conditions</comment>
+    <requestid>765064</requestid>
+  </revision>
 </revisionlist>

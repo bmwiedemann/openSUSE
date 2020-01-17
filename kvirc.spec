@@ -1,7 +1,7 @@
 #
 # spec file for package kvirc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,13 @@ License:        GPL-2.0-or-later AND (GPL-3.0-only OR SUSE-LGPL-2.1-with-digia-e
 Group:          Productivity/Networking/IRC
 URL:            http://www.kvirc.net/
 Source:         ftp://ftp.kvirc.net/pub/kvirc/%{version}/source/KVIrc-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM -- Patch0 to Patch3 replace python2 with python3
+Patch0:         0001-Add-support-for-Python-3.patch
+Patch1:         0001-This-is-not-necessary-anymore.patch
+Patch2:         0001-Replace-FindPythonLibs-with-FindPython3-in-CMake.patch
+Patch3:         0001-Stop-unsetting-_DEBUG-when-including-Python.h.patch
 BuildRequires:  audiofile-devel
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.12.0
 BuildRequires:  doxygen
 BuildRequires:  enchant-devel
 BuildRequires:  extra-cmake-modules
@@ -37,7 +42,7 @@ BuildRequires:  libtheora-devel
 BuildRequires:  perl
 BuildRequires:  phonon4qt5-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  subversion
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
@@ -60,10 +65,6 @@ BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
 %requires_eq    perl
 Obsoletes:      %{name}-devel < %{version}
-%if 0%{?suse_version} < 1500
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
-%endif
 
 %description
 IRC (Internet Relay Chat) client with an MDI interface; scripting,
@@ -71,15 +72,9 @@ pop-up, alias, and event editor; DCC (SEND CHAT VOICE and RESUME);
 SOCKSV4 & V5 support; and more.
 
 %prep
-%setup -q -n KVIrc-%{version}
+%autosetup -p1 -n KVIrc-%{version}
 
 %build
-%if 0%{?suse_version} < 1500
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-export CC=gcc-7
-export CXX=g++-7
-%endif
-
 EXTRA_FLAGS="-UCMAKE_MODULE_LINKER_FLAGS \
 %if "%{?_lib}" == "lib64"
 -DLIB_SUFFIX=64 \
@@ -103,7 +98,7 @@ done
 popd
 %fdupes %{buildroot}
 
-rm %{buildroot}%{_libdir}/libkvilib.so
+rm %{buildroot}%{_kf5_libdir}/libkvilib.so
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
