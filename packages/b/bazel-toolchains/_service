@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">bazel-toolchains</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.1.0</param>
+    <param name="revision">2.0.0</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

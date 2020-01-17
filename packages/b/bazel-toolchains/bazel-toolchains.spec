@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-toolchains
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define src_install_dir /usr/src/%{name}
 
 Name:           bazel-toolchains
-Version:        1.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Set of Bazel toolchain configurations
 License:        Apache-2.0
