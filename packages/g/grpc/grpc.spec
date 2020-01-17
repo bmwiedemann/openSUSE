@@ -1,7 +1,7 @@
 #
 # spec file for package grpc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
-Patch1:         0001-bazel-Replace-boringssl-with-openssl.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -113,7 +112,6 @@ This subpackage contains the python3 bindings.
 
 %prep
 %autosetup -p1
-sed -i -e "s|%%LIBDIR%%|%_libdir|" bazel/grpc_deps.bzl
 
 %build
 %define _lto_cflags %nil
