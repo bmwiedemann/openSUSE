@@ -30,4 +30,14 @@
     <comment></comment>
     <requestid>746573</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b76f9d4cbf00e347328a8ee284379bf7</srcmd5>
+    <version>20190920</version>
+    <time>1579273630</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove all subpackages except source - envoy-proxy needs the
+  whole source tree instead of a library and there is no other
+  consumer of grpc-httpjson-transcoding. (forwarded request 765176 from mrostecki)</comment>
+    <requestid>765177</requestid>
+  </revision>
 </revisionlist>

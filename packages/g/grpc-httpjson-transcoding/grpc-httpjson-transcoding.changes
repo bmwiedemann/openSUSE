@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:58:19 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove all subpackages except source - envoy-proxy needs the
+  whole source tree instead of a library and there is no other
+  consumer of grpc-httpjson-transcoding.
+
+-------------------------------------------------------------------
 Tue Nov 05 11:59:40 UTC 2019 - mrostecki@opensuse.org
 
 - Update to version 20190920:
