@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:44:24 CET 2020 - schubi@suse.de
+
+- AY: Providing a "retry" button if a request timed out.
+  (bsc#1159277)
+- 4.2.26
+
+-------------------------------------------------------------------
+Tue Jan 14 15:04:15 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- fix crash in autoyast registration (bsc#1160909)
+- 4.2.25
+
+-------------------------------------------------------------------
 Fri Jan 10 14:16:55 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Load the old repositories before running the migration
