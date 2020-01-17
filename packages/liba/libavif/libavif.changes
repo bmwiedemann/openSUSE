@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Dec 11 18:10:04 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.5.3
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.3
+
+-------------------------------------------------------------------
+Sun Nov 24 16:33:34 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.5.2
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.2
+
+-------------------------------------------------------------------
+Fri Nov 22 07:10:11 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.5.1
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.1
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.0
+
+-------------------------------------------------------------------
+Wed Nov 20 14:00:20 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- support building with libaom 1.0.0
+  https://github.com/cryptomilk/libavif/commit/cbcf62c2200be83b85b48059c819ae708216ccec.patch
+
+-------------------------------------------------------------------
+Wed Nov 20 13:51:36 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.4.8
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.4.8
+- drop libs.patch
+
+-------------------------------------------------------------------
+Mon Nov 18 23:42:37 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
