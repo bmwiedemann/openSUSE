@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 13 13:16:28 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- replace rcsymlink by direct systemd call (jsc#SLE-10976)
+- 4.2.4
+
+-------------------------------------------------------------------
 Tue Oct 15 07:51:21 UTC 2019 - Martin Vidner <mvidner@suse.com>
 
 - Add tests for the previous fix (bsc#1148763, bsc#1145538)
@@ -13,7 +19,7 @@ Fri Oct  4 08:48:05 UTC 2019 - Martin Vidner <mvidner@suse.com>
 -------------------------------------------------------------------
 Mon Aug 19 12:00:46 UTC 2019 - Michal Filka <mfilka@suse.com>
 
-- bnc#114553 
+- bnc#114553
   - loaded missing namespace to avoid internal error
 - 4.2.1
 
