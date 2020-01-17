@@ -3,22 +3,14 @@ Date: 2018-07-10
 
 https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
 
-Index: annoy-1.16.0/setup.py
+Index: annoy-1.16.3/setup.py
 ===================================================================
---- annoy-1.16.0.orig/setup.py
-+++ annoy-1.16.0/setup.py
-@@ -36,29 +36,10 @@ with codecs.open('README.rst', encoding=
-     long_description = readme_note + fobj.read()
- 
- # Various platform-dependent extras
-+cputune = []
- extra_compile_args = []
+--- annoy-1.16.3.orig/setup.py
++++ annoy-1.16.3/setup.py
+@@ -38,22 +38,6 @@ with codecs.open('README.rst', encoding=
+ extra_compile_args = ['-D_CRT_SECURE_NO_WARNINGS']
  extra_link_args = []
  
--if os.environ.get('TRAVIS') == 'true':
--    # Resolving some annoying issue
--    extra_compile_args += ['-mno-avx']
--
 -# Not all CPUs have march as a tuning parameter
 -cputune = ['-march=native',]
 -if platform.machine() == 'ppc64le':
@@ -35,6 +27,6 @@ Index: annoy-1.16.0/setup.py
 -    extra_compile_args += ['-std=c++11', '-mmacosx-version-min=10.9']
 -    extra_link_args += ['-stdlib=libc++', '-mmacosx-version-min=10.9']
 -
- setup(name='annoy',
-       version='1.16.0',
-       description='Approximate Nearest Neighbors in C++/Python optimized for memory usage and loading/saving to disk.',
+ # Manual configuration, you're on your own here.
+ manual_compiler_args = os.environ.get('ANNOY_COMPILER_ARGS', None)
+ if manual_compiler_args:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-annoy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-annoy
-Version:        1.16.0
+Version:        1.16.3
 Release:        0
 Summary:        Approximation of Nearest Neighbors
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/spotify/annoy
+URL:            https://github.com/spotify/annoy
 Source:         https://github.com/spotify/annoy/archive/v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch

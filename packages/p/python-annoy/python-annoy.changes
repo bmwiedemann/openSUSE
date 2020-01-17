@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 16 17:16:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.16.3
+  * some error message improvements
+  * doing more stack allocations instead of heap
+  * fixes to a few tests that were failing on other platforms
+- Rebase patch reproducible.patch
+
+-------------------------------------------------------------------
 Wed Sep 25 07:35:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test test_distance_consistency that fails on 32bit
