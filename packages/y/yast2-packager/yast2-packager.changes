@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 10 15:03:31 UTC 2020 - schubi@suse.de
+
+- Do not refresh package installation overview if the medium has
+  been changed and the user has switched to the release notes tab.
+  (bsc#1129426, bsc#1159367)
+- 4.2.44
+
+-------------------------------------------------------------------
 Fri Jan 10 14:47:58 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - PackageSlideShow: Do not show medium if there is only one
