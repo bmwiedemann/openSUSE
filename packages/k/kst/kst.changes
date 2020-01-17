@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:58:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the optional getdata dependency.
+  The Getdata development stalled and it still requires Python 2.
+
+-------------------------------------------------------------------
 Sat Sep  7 07:10:31 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use -ffat-lto-objects

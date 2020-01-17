@@ -416,4 +416,12 @@
     <comment>- Use -ffat-lto-objects</comment>
     <requestid>729083</requestid>
   </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>d6ac80ae9d8e382296b48e4fb923825a</srcmd5>
+    <version>2.0.8</version>
+    <time>1579273683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765264</requestid>
+  </revision>
 </revisionlist>

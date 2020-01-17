@@ -1,7 +1,7 @@
 #
 # spec file for package kst
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Christian Trippe ctrippe@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,6 @@ Patch1:         Fix-build-with-Qt-511.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  getdata-devel
 BuildRequires:  gsl-devel
 BuildRequires:  libcfitsio-devel
 BuildRequires:  libmatio-devel
