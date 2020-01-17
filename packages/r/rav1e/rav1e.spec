@@ -16,19 +16,16 @@
 #
 
 Name:           rav1e
-Version:        0.1.0
+Version:        0.2.1
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 
-# Upstream license specification: BSD-2-Clause
 License:        BSD-2-Clause
 URL:            https://github.com/xiph/rav1e
 #
-Source0:        https://github.com/xiph/rav1e/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/xiph/rav1e/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-#
-Patch0:         rav1e-0.1.0-build_nasm_debug.patch
 #
 BuildRequires:  cargo-c
 BuildRequires:  nasm
