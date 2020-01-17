@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>760478</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ea7c46875b57db6b48808198c61bd744</srcmd5>
+    <version>5.21q</version>
+    <time>1579273619</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup package</comment>
+    <requestid>765166</requestid>
+  </revision>
 </revisionlist>

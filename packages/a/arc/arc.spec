@@ -1,7 +1,7 @@
 #
 # spec file for package arc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,10 @@ Conflicts:      arcanist
 This package allows you to unpack *.arc file
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} OPT="%{optflags}"
+%make_build OPT="%{optflags}"
 
 %install
 install -Dpm 0755 arc \
@@ -54,6 +51,6 @@ install -Dpm 0644 arc.1 \
 %license LICENSE
 %{_bindir}/arc
 %{_bindir}/marc
-%{_mandir}/man1/arc.1%{ext_man}
+%{_mandir}/man1/arc.1%{?ext_man}
 
 %changelog
