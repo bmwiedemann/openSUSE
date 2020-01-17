@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>764267</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ddea619d35df880f81fd2c20fbdf7759</srcmd5>
+    <version>20190808</version>
+    <time>1579273644</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove all packages except source. (forwarded request 765214 from mrostecki)</comment>
+    <requestid>765215</requestid>
+  </revision>
 </revisionlist>
