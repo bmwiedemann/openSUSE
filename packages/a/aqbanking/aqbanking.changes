@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 15 19:58:06 UTC 2020 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 5.99.45
+  + Support chipTan-USB
+  + Copy settings to settings6 if not existing
+  + Bugfixes
+  + Switch to stable release
+
+-------------------------------------------------------------------
 Mon Nov 11 20:28:06 UTC 2019 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 5.99.44
