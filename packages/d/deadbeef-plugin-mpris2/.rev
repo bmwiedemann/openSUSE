@@ -20,4 +20,15 @@
   * New features: CanPlay, CanGoPrevious, CanGoNext (forwarded request 698756 from hillwood)</comment>
     <requestid>698757</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7af4728570a6689d3a2d170b7d28224b</srcmd5>
+    <version>1.13</version>
+    <time>1579273693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.13
+  * Fix raise method
+  * Fix missing emit of seeked signal after seek
+  * Include LICENCE file in distribution (forwarded request 765283 from hillwood)</comment>
+    <requestid>765284</requestid>
+  </revision>
 </revisionlist>

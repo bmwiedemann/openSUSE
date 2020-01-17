@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 17 13:44:58 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.13
+  * Fix raise method
+  * Fix missing emit of seeked signal after seek
+  * Include LICENCE file in distribution
+
+-------------------------------------------------------------------
 Sun Apr 28 08:15:07 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.12
