@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:59:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4.2:
+  * port to python3
+- Update package to build with python 3 in mind
+
+-------------------------------------------------------------------
 Wed Nov 19 00:52:48 UTC 2014 - tampakrap@opensuse.org
 
 - Rename svneverever to python-svneverever

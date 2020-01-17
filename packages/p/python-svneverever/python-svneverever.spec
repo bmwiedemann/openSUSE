@@ -1,7 +1,7 @@
 #
 # spec file for package python-svneverever
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define mod_name svneverever
+%define skip_python2 1
+%define oldpython python
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-svneverever
-Version:        1.2.2
+Version:        1.4.2
 Release:        0
 Summary:        Tool collecting path entries across SVN history
-License:        GPL-3.0
-Group:          Development/Tools/Version Control
-Url:            http://git.goodpoint.de/?p=svneverever.git
-Source:         http://hartwork.org/public/%{mod_name}-%{version}.tar.gz
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+License:        GPL-3.0-only
+URL:            https://github.com/hartwork/svneverever
+Source:         https://github.com/hartwork/svneverever/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-six
 Requires:       subversion
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{!?python_sitelib: %global python_sitelib %(python -c "from %{distutils}.config import get_python_lib; print get_python_lib()")}
-%if %{?suse_version}
-%py_requires
-%if 0%{?suse_version} > 1110
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-%endif
-%endif
+Obsoletes:      %{oldpython}-svneverever
+%python_subpackages
 
 %description
 Tool collecting path entries across SVN history. It runs through all SVN history
@@ -46,15 +48,22 @@ directories ever having existed in the repository.
 %setup -q -n %{mod_name}-%{version}
 
 %build
-python setup.py build
+%python_build
 
 %install
-python setup.py install --skip-build --prefix=%{_prefix} --root=%{buildroot}
+%python_install
+%python_clone %{buildroot}%{_bindir}/%{mod_name} -a
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files
-%defattr(-,root,root)
-%doc README.txt
-%{_bindir}/%{mod_name}
+%post
+%python_install_alternative %{mod_name}
+
+%postun
+%python_uninstall_alternative %{mod_name}
+
+%files %{python_files}
+%doc README.asciidoc
+%python_alternative %{_bindir}/%{mod_name}
 %{python_sitelib}/%{mod_name}-%{version}-*.egg-info
 %{python_sitelib}/%{mod_name}/
 
