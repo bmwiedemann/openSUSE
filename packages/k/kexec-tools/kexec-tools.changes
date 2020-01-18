@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 10 06:02:42 UTC 2020 - Chester Lin <clin@suse.com>
+
+- Fix compiling errors of multiboot2_x86_* functions for i586
+  * kexec-tools-build-multiboot2-for-i386.patch
+
+-------------------------------------------------------------------
+Mon Dec 16 15:45:05 UTC 2019 - Chester Lin <clin@suse.com>
+
+- Bump to version 2.0.20
+  Changelog: https://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.19..v2.0.20 
+- Backport a upstream patch series: [jsc#SLE-9943]
+  Subject: [PATCH v2 0/3] arm64: handle "reserved" entries in /proc/iomem
+  * kexec-tools-add-variant-helper-functions.patch
+  * kexec-tools-arm64-kexec-allocate-memory-space-avoiding-reserved-regions.patch
+  * kexec-tools-arm64-kdump-deal-with-resource-entries-in-proc-iomem.patch
+
+-------------------------------------------------------------------
 Fri Jun 14 12:11:18 UTC 2019 - Petr Tesarik <ptesarik@suse.com>
 
 - Bump to version 2.0.19

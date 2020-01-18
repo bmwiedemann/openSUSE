@@ -1,7 +1,7 @@
 #
 # spec file for package kexec-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kexec-tools
-Version:        2.0.19
+Version:        2.0.20
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
@@ -29,7 +29,11 @@ Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
 Patch2:         %{name}-xen-balloon-up.patch
 Patch3:         %{name}-disable-test.patch
-Patch14:        %{name}-vmcoreinfo-in-xen.patch
+Patch4:         %{name}-vmcoreinfo-in-xen.patch
+Patch5:         %{name}-add-variant-helper-functions.patch
+Patch6:         %{name}-arm64-kexec-allocate-memory-space-avoiding-reserved-regions.patch
+Patch7:         %{name}-arm64-kdump-deal-with-resource-entries-in-proc-iomem.patch
+Patch8:         %{name}-build-multiboot2-for-i386.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
@@ -55,7 +59,11 @@ the loaded kernel after it panics.
 %setup -q
 %patch2 -p1
 %patch3 -p1
-%patch14 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %build
 autoreconf -fvi

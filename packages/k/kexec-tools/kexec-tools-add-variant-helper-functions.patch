@@ -1,0 +1,84 @@
+From: AKASHI Takahiro <takahiro.akashi@linaro.org>
+Date: Fri, 11 Jan 2019 01:59:44 +0900
+Subject: kexec: add variant helper functions for handling memory regions
+References: jsc#SLE-9943
+Upstream: not yet, it's under review in upstream
+
+mem_regions_alloc_and_add() and mem_regions_alloc_and_exclude() are
+functionally equivalent to, respectively, mem_regions_add() and
+mem_regions_exclude() except the formers will re-allocate memory
+dynamically when no more entries are available in 'ranges' array.
+
+Signed-off-by: AKASHI Takahiro <takahiro.akashi@linaro.org>
+Signed-off-by: Chester Lin <clin@suse.com>
+---
+ kexec/mem_regions.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+ kexec/mem_regions.h |  7 +++++++
+ 2 files changed, 49 insertions(+)
+
+diff --git a/kexec/mem_regions.c b/kexec/mem_regions.c
+index 50c8abccb93a..ad7d3f13fd84 100644
+--- a/kexec/mem_regions.c
++++ b/kexec/mem_regions.c
+@@ -125,3 +125,45 @@ int mem_regions_exclude(struct memory_ranges *ranges,
+ 	}
+ 	return 0;
+ }
++
++#define KEXEC_MEMORY_RANGES 16
++
++int mem_regions_alloc_and_add(struct memory_ranges *ranges,
++			      unsigned long long base,
++			      unsigned long long length, int type)
++{
++	void *new_ranges;
++
++	if (ranges->size >= ranges->max_size) {
++		new_ranges = realloc(ranges->ranges,
++				sizeof(struct memory_range) *
++				(ranges->max_size + KEXEC_MEMORY_RANGES));
++		if (!new_ranges)
++			return -1;
++
++		ranges->ranges = new_ranges;
++		ranges->max_size += KEXEC_MEMORY_RANGES;
++	}
++
++	return mem_regions_add(ranges, base, length, type);
++}
++
++int mem_regions_alloc_and_exclude(struct memory_ranges *ranges,
++				  const struct memory_range *range)
++{
++	void *new_ranges;
++
++	/* for safety, we should have at least one free entry in ranges */
++	if (ranges->size >= ranges->max_size) {
++		new_ranges = realloc(ranges->ranges,
++				sizeof(struct memory_range) *
++				(ranges->max_size + KEXEC_MEMORY_RANGES));
++		if (!new_ranges)
++			return -1;
++
++		ranges->ranges = new_ranges;
++		ranges->max_size += KEXEC_MEMORY_RANGES;
++	}
++
++	return mem_regions_exclude(ranges, range);
++}
+diff --git a/kexec/mem_regions.h b/kexec/mem_regions.h
+index ae9e972b0206..e306d67e3261 100644
+--- a/kexec/mem_regions.h
++++ b/kexec/mem_regions.h
+@@ -12,4 +12,11 @@ int mem_regions_exclude(struct memory_ranges *ranges,
+ int mem_regions_add(struct memory_ranges *ranges, unsigned long long base,
+                     unsigned long long length, int type);
+ 
++int mem_regions_alloc_and_exclude(struct memory_ranges *ranges,
++				  const struct memory_range *range);
++
++int mem_regions_alloc_and_add(struct memory_ranges *ranges,
++			      unsigned long long base,
++			      unsigned long long length, int type);
++
+ #endif

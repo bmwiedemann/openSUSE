@@ -1,0 +1,77 @@
+From: AKASHI Takahiro <takahiro.akashi@linaro.org>
+Date: Fri, 11 Jan 2019 01:59:46 +0900
+Subject: arm64: kdump: deal with a lot of resource entries in /proc/iomem
+References: jsc#SLE-9943
+Upstream: not yet, it's under review in upstream
+
+As described in the commit ("arm64: kexec: allocate memory space avoiding
+reserved regions"), /proc/iomem now has a lot of "reserved" entries, and
+it's not just enough to have a fixed size of memory range array.
+
+With this patch, kdump is allowed to handle arbitrary number of memory
+ranges, using mem_regions_alloc_and_xxx() functions.
+
+Signed-off-by: AKASHI Takahiro <takahiro.akashi@linaro.org>
+Signed-off-by: Chester Lin <clin@suse.com>
+---
+ kexec/arch/arm64/crashdump-arm64.c | 25 ++++++++++---------------
+ 1 file changed, 10 insertions(+), 15 deletions(-)
+
+diff --git a/kexec/arch/arm64/crashdump-arm64.c b/kexec/arch/arm64/crashdump-arm64.c
+index 4fd7aa8fd43c..38d1a0f3000d 100644
+--- a/kexec/arch/arm64/crashdump-arm64.c
++++ b/kexec/arch/arm64/crashdump-arm64.c
+@@ -23,13 +23,8 @@
+ #include "kexec-elf.h"
+ #include "mem_regions.h"
+ 
+-/* memory ranges on crashed kernel */
+-static struct memory_range system_memory_ranges[CRASH_MAX_MEMORY_RANGES];
+-static struct memory_ranges system_memory_rgns = {
+-	.size = 0,
+-	.max_size = CRASH_MAX_MEMORY_RANGES,
+-	.ranges = system_memory_ranges,
+-};
++/* memory ranges of crashed kernel */
++static struct memory_ranges system_memory_rgns;
+ 
+ /* memory range reserved for crashkernel */
+ struct memory_range crash_reserved_mem;
+@@ -82,7 +77,7 @@ static uint64_t get_kernel_page_offset(void)
+  *
+  * This function is called once for each memory region found in /proc/iomem.
+  * It locates system RAM and crashkernel reserved memory and places these to
+- * variables, respectively, system_memory_ranges and crash_reserved_mem.
++ * variables, respectively, system_memory_rgns and usablemem_rgns.
+  */
+ 
+ static int iomem_range_callback(void *UNUSED(data), int UNUSED(nr),
+@@ -90,11 +85,11 @@ static int iomem_range_callback(void *UNUSED(data), int UNUSED(nr),
+ 				unsigned long long length)
+ {
+ 	if (strncmp(str, CRASH_KERNEL, strlen(CRASH_KERNEL)) == 0)
+-		return mem_regions_add(&usablemem_rgns,
+-				       base, length, RANGE_RAM);
++		return mem_regions_alloc_and_add(&usablemem_rgns,
++						base, length, RANGE_RAM);
+ 	else if (strncmp(str, SYSTEM_RAM, strlen(SYSTEM_RAM)) == 0)
+-		return mem_regions_add(&system_memory_rgns,
+-				       base, length, RANGE_RAM);
++		return mem_regions_alloc_and_add(&system_memory_rgns,
++						base, length, RANGE_RAM);
+ 	else if (strncmp(str, KERNEL_CODE, strlen(KERNEL_CODE)) == 0)
+ 		elf_info.kern_paddr_start = base;
+ 	else if (strncmp(str, KERNEL_DATA, strlen(KERNEL_DATA)) == 0)
+@@ -135,9 +130,9 @@ static int crash_get_memory_ranges(void)
+ 
+ 	dbgprint_mem_range("Reserved memory range", &crash_reserved_mem, 1);
+ 
+-	if (mem_regions_exclude(&system_memory_rgns, &crash_reserved_mem)) {
+-		fprintf(stderr,
+-			"Error: Number of crash memory ranges excedeed the max limit\n");
++	if (mem_regions_alloc_and_exclude(&system_memory_rgns,
++						&crash_reserved_mem)) {
++		fprintf(stderr, "Cannot allocate memory for ranges\n");
+ 		return -ENOMEM;
+ 	}
+ 
