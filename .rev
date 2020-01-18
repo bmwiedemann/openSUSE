@@ -402,4 +402,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736500</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>7714485ebc249b07ff4b266703642976</srcmd5>
+    <version>0.34.0</version>
+    <time>1579346173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764654</requestid>
+  </revision>
 </revisionlist>
