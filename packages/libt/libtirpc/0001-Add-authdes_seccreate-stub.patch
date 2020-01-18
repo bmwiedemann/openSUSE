@@ -1,0 +1,42 @@
+From a86b4ff0c4b4e53df436f83c21a5fbf01568a301 Mon Sep 17 00:00:00 2001
+From: Petr Vorel <pvorel@suse.cz>
+Date: Fri, 3 Jan 2020 09:55:28 -0500
+Subject: [PATCH 1/2] Add authdes_seccreate() stub
+
+bf8f0b82d added back authdes_create() and authdes_pk_create() interfaces
+also when authdes compiled out. Add also authdes_seccreate().
+
+Found by LTP rpc-tirpc test, which fails to link:
+
+/usr/lib64/gcc/x86_64-suse-linux/9/../../../../x86_64-suse-linux/bin/ld: /tmp/ccFanCMm.o: in function `main':
+    testcases/network/rpc/rpc-tirpc/tests_pack/rpc_suite/tirpc/tirpc_auth_authdes_seccreate/tirpc_authdes_seccreate.c:55: undefined reference to `authdes_seccreate'
+
+Fixes: bf8f0b82d ("Add back the authdes interfaces")
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ src/rpc_soc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/rpc_soc.c b/src/rpc_soc.c
+index ac7d312..fde121d 100644
+--- a/src/rpc_soc.c
++++ b/src/rpc_soc.c
+@@ -613,6 +613,13 @@ authdes_pk_create(servername, pkey, window, syncaddr, ckey)
+ 	des_block *ckey;		/* optional conversation key to use */
+ { return (NULL); }
+ 
++AUTH *
++authdes_seccreate(const char *servername, const u_int win,
++	const char *timehost, const des_block *ckey)
++{
++	return (NULL);
++}
++
+ #endif
+ 
+ 
+-- 
+2.24.0
+

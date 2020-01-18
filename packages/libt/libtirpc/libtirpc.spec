@@ -1,7 +1,7 @@
 #
 # spec file for package libtirpc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libtirpc
 # src/crypt_client.c and tirpc/rpcsvc/crypt.x have the BSD advertising clause
-Version:        1.1.4
+Version:        1.2.5
 Release:        0
 Summary:        Transport Independent RPC Library
 License:        BSD-3-Clause
@@ -31,14 +31,10 @@ BuildRequires:  krb5-devel
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-Url:            https://sourceforge.net/projects/libtirpc/
+URL:            https://sourceforge.net/projects/libtirpc/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-Patch0:         libtirpc-1-1-5-rc1.patch
-Patch1:         libtirpc-1-1-5-rc2.patch
-Patch2:         0001-Makefile.am-Use-LIBADD-instead-of-LDFLAGS-to-link-ag.patch
-Patch3:         0002-man-rpc_secure.3t-Fix-typo-in-manpage.patch
-Patch4:         0003-xdr-add-a-defensive-mask-in-xdr_int64_t-and-xdr_u_in.patch
+Patch0:         0001-Add-authdes_seccreate-stub.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define debug_package_requires libtirpc3 = %{version}-%{release}
 
@@ -84,10 +80,6 @@ TCP over IPv4.
 %prep
 %setup -q -n %name-%version
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 sed -i -e 's|@includedir@/tirpc|@includedir@|g' libtirpc.pc.in
