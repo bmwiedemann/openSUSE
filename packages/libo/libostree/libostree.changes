@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:51:44 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 2019.6:
+  * Nothing major in this release, but there is some bigger stuff
+    outstanding and ready to merge, so this version was released
+    so that work will have time to stabilize.
+  * A few build/CI fixes. A new progress API which will be used by
+    flatpak (and can be used by others). Finally, we also avoid
+    reordering kernel arguments.
+
+- Update to version 2019.5:
+  * We discovered that CLang has a static analyzer scan-build;
+    it found some small memory leaks so far, otherwise mostly
+    noise, but we haven't dug through all the errors yet.
+  * Gained a new zipl (s390x bootloader) backend
+  * Install the .hmac files needed for FIPS mode in /boot too
+  * This is also the first release where we switched to using
+    the OpenShift Prow as a merge bot, though a lot more CI work
+    is pending.
+
+- Update to version 2019.4:
+  * This is mostly a bugfix release. Notably, the 2019.3 release caused
+    some issues related to the gpg-agent code spewing messages on the
+    terminal. Additionally, Fedora 31 users have hit upon issues with
+    ostree-finalize-staged.service running too late to be able to write
+    back its logs to the journal. This then confused rpm-ostree after
+    reboot, because it looks at the previous boot's journal for this
+    message.
+  * The biggest feature-ish change is support for a partial commit
+    "reason" so that after ostree fsck --delete was used, subsequent
+    ostree fsck will continue to report an error. This should be used
+    by higher level tools that want to do "fsck and repair". It's
+    likely at some point that "fsck and repair" logic will move down
+    into the libostree core as well.
+  * There are ongoing efforts to port Fedora CoreOS to s390x: one fix
+    landed here to add the deployment prefix to BLS entries since it's
+    what the zipl bootloader expected.
+
+- Update to version 2019.3:
+  * A lot of changes since the last release. On the feature side,
+    probably the biggest is we've made public the internal API
+    for kernel arguments, which rpm-ostree now uses.
+  * Other things include a new --modern switch for init-fs,
+    better support in pull for downgrade protection, better
+    use of mmap, support for committing archives (tarballs)
+    from stdin, etc.
+  * Finally, libostree now supports being built without GPG,
+    which is an important preparatory piece for introducing
+    an alternative signature system.
+
+- Update to version 2019.2:
+  + It's been some time since the last release, so this is a slightly
+    larger one! There's lots of new features, and a few bug fixes.
+  + New features:
+    * A new sysroot.bootloader key was added to be more explicit about
+      which bootloader OSTree should use. Notably a none value is
+      supported, in which OSTree is solely responsible for writing the
+      BLS entries. This can then be used by bootloaders like GRUB2,
+      which now supports BLS natively.
+    * ostree config now supports the unset command to unset a key from
+      the OSTree repo config
+    * ostree remote add now supports the --force flag to replace a
+      remote of the same name if it exists
+    * ostree-prepare-root now logs a structured journal message after
+      finding the deployment to which to pivot. This can be used by
+      higher-level apps like RPM-OSTree to build a history of the
+      deployments the machine was booted into.
+    * The staging API now supports a lockfile which prevents
+      finalization at shutdown. This is intended to be used in systems
+      that need more fine-tuned control between staging a deployment,
+      and setting it as the default deployment on reboot.
+    * ostree static-delta show now prints the From and To commits for
+      which the delta was generated
+  + Bug fixes:
+    * Make looking up collection-refs similar to how regular refs are
+      looked up, i.e. first in the transaction, then in the current
+      repo, and then in the parent repo
+    * Don't include the OSTree commit version number twice in the boot
+      menu title. This affected at least Fedora-based systems composed
+      with RPM-OSTree's mutate-os-release.
+    * Activate ostree-finalize-staged earlier; this should hopefully
+      make deployment finalization more reliable by running it later in
+      the shutdown sequence, when less services are running
+    * Run grub2-mkconfig on the filesystem tree of the pending
+      deployment, rather than the previously deployed tree. This was a
+      corner case where the deployment failed if a previous deployment
+      did not exist, on systems where grub.cfg is used.
+
+-------------------------------------------------------------------
 Wed Apr 24 09:40:12 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133120).

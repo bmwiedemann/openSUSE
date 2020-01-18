@@ -220,4 +220,12 @@
     <comment>Disable LTO (boo#1133120). (forwarded request 697425 from marxin)</comment>
     <requestid>699589</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1da35ea9344ac5c1d302b82ae315d14b</srcmd5>
+    <version>2019.6</version>
+    <time>1579346167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764652</requestid>
+  </revision>
 </revisionlist>

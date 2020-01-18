@@ -6,7 +6,7 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="filename">libostree</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/v2019.1</param>
+    <param name="revision">refs/tags/v2019.6</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
