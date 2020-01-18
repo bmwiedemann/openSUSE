@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 17 20:44:18 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.51.3:
+  * Release v3.51.3
+  * Release v3.51.2
+  * Implement PKCE for browser login
+  * Avoid unnecessary HTTP exception message
+  * Allow PLATFORMSH_CLI_HOME variable to override the home directory (#886)
+  * Remove recommendations for auth:password-login command
+  * Fix gitlab example (#894)
+  * Fix proxy setting when there is more than 1
+  * Allow PLATFORMSH_CLI_API_URL to override the base API URL
+
+-------------------------------------------------------------------
 Wed Jan 15 21:17:18 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.51.1:
