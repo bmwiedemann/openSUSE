@@ -1,7 +1,7 @@
 #
 # spec file for package python-ara
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,12 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ara
-Version:        1.1.0
+Version:        1.3.2
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/ansible-community/ara
+URL:            https://github.com/ansible-community/ara
 Source:         https://files.pythonhosted.org/packages/source/a/ara/ara-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pbr}
@@ -43,10 +43,13 @@ BuildRequires:  %{python_module Django >= 2.1.5}
 BuildRequires:  %{python_module ara >= %{version}}
 BuildRequires:  %{python_module django-cors-headers}
 BuildRequires:  %{python_module django-filter}
+BuildRequires:  %{python_module django-health-check}
 BuildRequires:  %{python_module djangorestframework >= 3.9.1}
 BuildRequires:  %{python_module dynaconf}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module pyaml}
+BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module tzlocal}
 BuildRequires:  %{python_module whitenoise}
 %endif
 BuildRequires:  fdupes
