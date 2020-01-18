@@ -1,7 +1,7 @@
 #
 # spec file for package mutter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.34.1+27
+Version:        3.34.3+0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -33,6 +33,8 @@ Source:         %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
+# PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
+Patch4:         mutter-disable-cvt-s390x.patch
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
 Patch1000:      mutter-SLE-bell.patch
@@ -52,9 +54,11 @@ BuildRequires:  xorg-x11-server-wayland
 BuildRequires:  zenity
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gbm) >= 17.1
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.53.2
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.61.1
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.61.1
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
@@ -151,6 +155,7 @@ applications that want to make use of the mutter library.
 %prep
 %setup -q
 %patch3 -p1
+%patch4 -p1
 
 # SLE-only patches and translations.
 translation-update-upstream po mutter
