@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 14:31:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use new macro to prevent restart on update
+
+-------------------------------------------------------------------
 Thu Jan 16 14:29:33 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20200116.87baa97:

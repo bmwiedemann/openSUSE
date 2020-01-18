@@ -16,4 +16,12 @@
   * Start container only after network, don't abort if pull fails</comment>
     <requestid>764997</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c500bed359be70abcc9ed3fe8135a71a</srcmd5>
+    <version>0.0+git20200116.87baa97</version>
+    <time>1579346284</time>
+    <user>dimstar_suse</user>
+    <comment>- Use new macro to prevent restart on update</comment>
+    <requestid>765292</requestid>
+  </revision>
 </revisionlist>

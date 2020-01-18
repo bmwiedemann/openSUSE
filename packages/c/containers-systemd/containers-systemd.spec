@@ -72,8 +72,7 @@ done
 
 %postun
 # Avoid useless container restarts on update of this package
-DISABLE_RESTART_ON_UPDATE=yes
-%service_del_postun %{container_services}
+%service_del_postun_without_restart %{container_services}
 
 %files
 %license LICENSE
