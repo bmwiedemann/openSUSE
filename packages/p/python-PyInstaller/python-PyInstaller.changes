@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 17 13:33:04 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires python-devel, as `pyinstaller` cannot be used without it
+
+-------------------------------------------------------------------
+Fri Jan 17 10:56:23 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Temporary disabled of tests test_egg* and test_nspkg1*
+
+-------------------------------------------------------------------
+Thu Jan 16 16:26:53 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 3.6
+  * See changelog at https://github.com/pyinstaller/pyinstaller/blob/v3.6/doc/CHANGES.rst
+- Add %bcond_with python2
+
+-------------------------------------------------------------------
 Mon Sep 23 07:19:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner, fix license

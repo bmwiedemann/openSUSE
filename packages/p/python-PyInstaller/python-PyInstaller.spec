@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyInstaller
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 %bcond_without  test
 Name:           python-PyInstaller
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
@@ -32,6 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(zlib)
+Requires:       python-devel
 Requires:       python-macholib >= 1.8
 Requires:       python-pefile >= 2017.8.1
 Requires:       python-setuptools
@@ -54,7 +56,9 @@ BuildRequires:  %{python_module pycountry}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
+%if %{with python2}
 BuildRequires:  python-dis3
+%endif
 BuildRequires:  upx
 %endif
 %ifpython2
@@ -99,7 +103,7 @@ fi
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%pytest_arch tests/unit tests/functional --ignore=tests/functional/test_libraries.py --ignore=tests/functional/test_hooks -k 'not test_find_module'
+%pytest_arch tests/unit tests/functional --ignore=tests/functional/test_libraries.py --ignore=tests/functional/test_hooks -k 'not test_find_module and not test_egg and not test_nspkg1'
 %endif
 
 %post
