@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:23:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update dependencies required by flatpak 1.6.0 .
+- Require xdg-dbus-proxy instead of building the (outdated)
+  builtin version.
+
+-------------------------------------------------------------------
 Mon Dec 30 10:00:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change %_prefix/lib to %_libexecdir: Makefile installs the file
@@ -148,7 +155,7 @@ Thu Mar 28 13:05:50 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
   + It has been discovered that the previous fix for CVE-2017-5226,
     which uses seccomp to prevent sandboxed apps from using the
     (dangerous) TIOCSTI ioctl was only incomplete on 64bit arches.
-    This is now fixed.
+    This is now fixed (boo#1130637, gh#flatpak/flatpak#2782).
   + seccomp: Only compare the low 32bit of the TIOCSTI ioctl args.
   + Support multiple nvidia cards on the machine
   + Fix support for systems where XDG_RUNTIME_DIR is /var/run which
