@@ -30,4 +30,12 @@
     <comment></comment>
     <requestid>757872</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7da6b9bc72cf4fdd01dfb4e6b2467ec1</srcmd5>
+    <version>13.0.2.0</version>
+    <time>1579346269</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle January 2020 CPU</comment>
+    <requestid>765277</requestid>
+  </revision>
 </revisionlist>

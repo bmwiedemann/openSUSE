@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Jan 17 12:58:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-13.0.2+8 (January 2020 CPU,
+  bsc#1160968)
+  * Security fixes:
+    + S8224909, CVE-2020-2583: Unlink Set of LinkedHashSets
+    + S8225261: Better method resolutions
+    + S8225279: Better XRender interpolation
+    + S8226352, CVE-2020-2590: Improve Kerberos interop capabilities
+    + S8227758: More valid PKIX processing
+    + S8227816: More Colorful ICC profiles
+    + S8228548, CVE-2020-2593: Normalize normalization for all
+    + S8229728: Implement negotiation parameters
+    + S8229951, CVE-2020-2601: Better Ticket Granting Services
+    + S8230279: Improve Pack200 file reading
+    + S8230318: Better trust store usage
+    + S8230967: Improve Registry support of clients
+    + S8231139: Improved keystore support
+    + S8231422, CVE-2020-2604: Better serial filter handling
+    + S8231780, CVE-2020-2655: Better TLS messaging support
+    + S8231790: Provide better FileSystemProviders
+    + S8232419: Improve Registry registration
+    + S8234037, CVE-2020-2654: Improve Object Identifier Processing
+  * Other fixes:
+    + S8209178: Proxied HttpsURLConnection doesn't send BODY when 
+      retrying POST request
+    + S8213119: [macos] 
+      java/awt/GraphicsDevice/CheckDisplayModes.java fails
+    + S8223892: Improved handling of jar files
+    + S8225425: java.lang.UnsatisfiedLinkError: net.dll: Can't find 
+      dependent libraries
+    + S8226765: Commentary on Javadoc comments
+    + S8227030: Change the release version from 13.0.1 to 13.0.2
+    + S8227201: Bump version string for 13.0.1
+    + S8227230: Backout JDK-8215367 from update releases
+    + S8227601: Better collection of references
+    + S8227662: freetype seeks to index at the end of the font data
+    + S8227757: re-create 'ga' mercurial tags for CPU19_10 respin
+    + S8228465: HOST locale provider holds wrong era name for 
+      GregorianCalendar in US locale
+    + S8229242: JDK 13.0.1 L10n resource files update msgdrop 10
+    + S8229773: Resolve permissions for code source URLs lazily
+    + S8230085: (fs) FileStore::isReadOnly is always true on macOS 
+      Catalina
+    + S8230869: [macos 10.15] The String "X Y Z" was not set to 
+      application's icon in the taskbar
+    + S8230902: remove the tag jdk-13.0.1+1
+    + S8231129: More glyph images
+    + S8231134: Improved credential support
+    + S8231403: [ppc]: Align ReservedCodeCacheSize default value 
+      with other platforms
+    + S8231991: Mouse wheel change focus on awt/swing windows
+    + S8232005: [s390, PPC64] More exception checks missing in 
+      interpreter
+    + S8232019: Add LuxTrust certificate updates to the existing 
+      root program
+    + S8232051: Epsilon should warn about Xms/Xmx/AlwaysPreTouch 
+      configuration
+    + S8232106: [x86] C2: SIGILL due to usage of SSSE3 instructions 
+      on processors which don't support it
+    + S8232984: Upgrading Joni License version to 2.1.16
+    + S8233097: Fontmetrics for large Fonts has zero width
+    + S8233202: exclude javax/swing/plaf/basic/BasicGraphicsUtils/
+      /8132119/bug8132119.java
+    + S8233219: NMT output on AIX misses some categories
+    + S8233223: Add Amazon Root CA certificates
+    + S8233886: TEST_BUG jdk/java/net/CookieHandler/B6791927.java 
+      hit hardcoded expiration date
+    + S8234107: Several AWT modal dialog tests failing on Linux 
+      after JDK-8231991
+    + S8234245: sun/security/lib/cacerts/VerifyCACerts.java fails 
+      due to wrong checksum
+
+-------------------------------------------------------------------
 Wed Dec 18 07:12:26 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Switch back armv6 from zero platform to client JVM
@@ -6,7 +80,7 @@ Wed Dec 18 07:12:26 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Fri Oct 25 07:31:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
-- Update to upstream tag jdk-13.0.1-9 (October 2019 CPU,
+- Update to upstream tag jdk-13.0.1+9 (October 2019 CPU,
   bsc#1154212)
   * Security fixes:
     + S8209901: Canonical file handling

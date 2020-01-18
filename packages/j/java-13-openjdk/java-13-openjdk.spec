@@ -1,7 +1,7 @@
 #
-# spec file for package java
+# spec file for package java-13-openjdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      13
 %global interimver      0
-%global updatever       1
+%global updatever       2
 %global patchver        0
-%global datever         2019-10-15
-%global buildver        9
+%global datever         2020-01-14
+%global buildver        8
 %global hg_project      jdk-updates
 %global hg_repository   jdk13u
-%global hg_revision     8d03d066c4e8
+%global hg_revision     deaf5af54133
 %global icedtea_sound_version 1.0.1
 %global java_atk_wrapper_version 0.33.2
 # JavaEE modules
