@@ -341,12 +341,12 @@ fi
 %if 0%{suse_version} < 1500
 %attr(0744,root,root) /etc/cron.daily/suse-do_mandb
 %endif
-%ghost %config %{_sysconfdir}/alternatives/man
-%ghost %config %{_sysconfdir}/alternatives/apropos
-%ghost %config %{_sysconfdir}/alternatives/whatis
-%ghost %config %{_sysconfdir}/alternatives/man.1%{ext_man}
-%ghost %config %{_sysconfdir}/alternatives/apropos.1%{ext_man}
-%ghost %config %{_sysconfdir}/alternatives/whatis.1%{ext_man}
+%ghost %{_sysconfdir}/alternatives/man
+%ghost %{_sysconfdir}/alternatives/apropos
+%ghost %{_sysconfdir}/alternatives/whatis
+%ghost %{_sysconfdir}/alternatives/man.1%{ext_man}
+%ghost %{_sysconfdir}/alternatives/apropos.1%{ext_man}
+%ghost %{_sysconfdir}/alternatives/whatis.1%{ext_man}
 %{_bindir}/man
 %{_bindir}/apropos
 %{_bindir}/whatis

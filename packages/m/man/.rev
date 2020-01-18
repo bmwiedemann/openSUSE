@@ -714,4 +714,13 @@
   nonexecutable location below new location of %{_libexecdir}</comment>
     <requestid>745706</requestid>
   </revision>
+  <revision rev="77" vrev="6">
+    <srcmd5>fbbcf66335864df2f460e7cdb692e7ab</srcmd5>
+    <version>2.8.4</version>
+    <time>1579346027</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't mark /etc/alternatives files as %config as that would lead
+  to stale symlinks on uninstall (forwarded request 762105 from lnussel)</comment>
+    <requestid>762613</requestid>
+  </revision>
 </revisionlist>

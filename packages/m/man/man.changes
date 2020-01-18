@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 09:40:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't mark /etc/alternatives files as %config as that would lead
+  to stale symlinks on uninstall
+
+-------------------------------------------------------------------
 Wed Nov  6 08:48:22 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid racy bash code on waiting on find in do_mandb (boo#1155879) 
