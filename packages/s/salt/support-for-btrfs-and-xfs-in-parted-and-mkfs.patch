@@ -1,0 +1,56 @@
+From 92df25d10789e5d0686a882a1cbadbfc0602b2f5 Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Fri, 10 Jan 2020 17:18:14 +0100
+Subject: [PATCH] Support for Btrfs and XFS in parted and mkfs
+
+---
+ salt/modules/parted_partition.py            |  4 ++--
+ tests/unit/modules/test_parted_partition.py | 16 ++++++++++++++++
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/parted_partition.py b/salt/modules/parted_partition.py
+index c2e0ebb882..e68124c245 100644
+--- a/salt/modules/parted_partition.py
++++ b/salt/modules/parted_partition.py
+@@ -390,8 +390,8 @@ def _is_fstype(fs_type):
+     :param fs_type: file system type
+     :return: True if fs_type is supported in this module, False otherwise
+     '''
+-    return fs_type in set(['ext2', 'ext3', 'ext4', 'fat32', 'fat16', 'linux-swap', 'reiserfs',
+-                           'hfs', 'hfs+', 'hfsx', 'NTFS', 'ntfs', 'ufs'])
++    return fs_type in set(['btrfs', 'ext2', 'ext3', 'ext4', 'fat32', 'fat16', 'linux-swap', 'reiserfs',
++                           'hfs', 'hfs+', 'hfsx', 'NTFS', 'ntfs', 'ufs', 'xfs'])
+ 
+ 
+ def mkfs(device, fs_type):
+diff --git a/tests/unit/modules/test_parted_partition.py b/tests/unit/modules/test_parted_partition.py
+index 1959e5978e..5d92bd6d14 100644
+--- a/tests/unit/modules/test_parted_partition.py
++++ b/tests/unit/modules/test_parted_partition.py
+@@ -377,6 +377,22 @@ class PartedTestCase(TestCase, LoaderModuleMockMixin):
+             }
+             self.assertEqual(output, expected)
+ 
++    def test_btrfs_fstypes(self):
++        '''Tests if we see btrfs as valid fs type'''
++        with patch('salt.modules.parted_partition._validate_device', MagicMock()):
++            try:
++                parted.mkfs('/dev/foo', 'btrfs')
++            except CommandExecutionError:
++                self.fail("Btrfs is not in the supported fstypes")
++
++    def test_xfs_fstypes(self):
++        '''Tests if we see xfs as valid fs type'''
++        with patch('salt.modules.parted_partition._validate_device', MagicMock()):
++            try:
++                parted.mkfs('/dev/foo', 'xfs')
++            except CommandExecutionError:
++                self.fail("XFS is not in the supported fstypes")
++
+     def test_disk_set(self):
+         with patch('salt.modules.parted_partition._validate_device', MagicMock()):
+             self.cmdrun.return_value = ''
+-- 
+2.16.4
+
+

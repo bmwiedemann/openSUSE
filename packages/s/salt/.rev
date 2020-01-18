@@ -1238,4 +1238,34 @@ let build start it or we will get libvirt errors.
   * align-virt-full-info-fixes-with-upstream-192.patch</comment>
     <requestid>756034</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>0d31aaadaf90d29d8cfe987e2c585951</srcmd5>
+    <version>2019.2.2</version>
+    <time>1579346190</time>
+    <user>dimstar_suse</user>
+    <comment>- Support for Btrfs and XFS in parted and mkfs added
+- Added:
+  * support-for-btrfs-and-xfs-in-parted-and-mkfs.patch
+
+- Adds list_downloaded for apt Module to enable pre-downloading support
+- Adds virt.(pool|network)_get_xml functions
+- Various libvirt updates
+  * Add virt.pool_capabilities function
+  * virt.pool_running improvements
+  * Add virt.pool_deleted state
+  * virt.network_define allow adding IP configuration
+- Added:
+  * virt.network_define-allow-adding-ip-configuration.patch
+  * list_downloaded-for-apt-module.patch
+  * add-virt.network_get_xml-function.patch
+
+- virt: adding kernel boot parameters to libvirt xml
+- Added:
+  * virt-adding-kernel-boot-parameters-to-libvirt-xml-55.patch
+
+- Fix virt states to not fail on VMs already stopped
+- Added:
+  * fix-virt-states-to-not-fail-on-vms-already-stopped.-.patch</comment>
+    <requestid>764712</requestid>
+  </revision>
 </revisionlist>

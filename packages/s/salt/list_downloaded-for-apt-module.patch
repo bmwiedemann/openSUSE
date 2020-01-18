@@ -1,0 +1,162 @@
+From a1e0904a640d01d4bab0871db1ab8ea653335443 Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Thu, 9 Jan 2020 10:11:13 +0100
+Subject: [PATCH] list_downloaded for apt Module
+
+---
+ salt/modules/aptpkg.py            | 41 +++++++++++++++++++++++++++++++++++++++
+ salt/states/pkg.py                |  4 ++--
+ tests/unit/modules/test_aptpkg.py | 29 +++++++++++++++++++++++++++
+ 3 files changed, 72 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 1a60255a1d..023049b2af 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -18,6 +18,9 @@ import os
+ import re
+ import logging
+ import time
++import fnmatch
++import datetime
++
+ 
+ # Import third party libs
+ # pylint: disable=no-name-in-module,import-error,redefined-builtin
+@@ -422,6 +425,7 @@ def install(name=None,
+             pkgs=None,
+             sources=None,
+             reinstall=False,
++            downloadonly=False,
+             ignore_epoch=False,
+             **kwargs):
+     '''
+@@ -768,6 +772,9 @@ def install(name=None,
+         cmd.extend(downgrade)
+         cmds.append(cmd)
+ 
++    if downloadonly:
++        cmd.append("--download-only")
++
+     if to_reinstall:
+         all_pkgs.extend(to_reinstall)
+         cmd = copy.deepcopy(cmd_prefix)
+@@ -2917,3 +2924,37 @@ def _get_http_proxy_url():
+             )
+ 
+     return http_proxy_url
++
++
++def list_downloaded(root=None, **kwargs):
++    '''
++    .. versionadded:: 3000?
++
++    List prefetched packages downloaded by apt in the local disk.
++
++    root
++        operate on a different root directory.
++
++    CLI example:
++
++    .. code-block:: bash
++
++        salt '*' pkg.list_downloaded
++    '''
++    CACHE_DIR = '/var/cache/apt'
++    if root:
++        CACHE_DIR = os.path.join(root, os.path.relpath(CACHE_DIR, os.path.sep))
++
++    ret = {}
++    for root, dirnames, filenames in salt.utils.path.os_walk(CACHE_DIR):
++        for filename in fnmatch.filter(filenames, '*.deb'):
++            package_path = os.path.join(root, filename)
++            pkg_info = __salt__['lowpkg.bin_pkg_info'](package_path)
++            pkg_timestamp = int(os.path.getctime(package_path))
++            ret.setdefault(pkg_info['name'], {})[pkg_info['version']] = {
++                'path': package_path,
++                'size': os.path.getsize(package_path),
++                'creation_date_time_t': pkg_timestamp,
++                'creation_date_time': datetime.datetime.utcfromtimestamp(pkg_timestamp).isoformat(),
++            }
++    return ret
+diff --git a/salt/states/pkg.py b/salt/states/pkg.py
+index 22a97fe98c..be00498135 100644
+--- a/salt/states/pkg.py
++++ b/salt/states/pkg.py
+@@ -1975,7 +1975,7 @@ def downloaded(name,
+     (if specified).
+ 
+     Currently supported for the following pkg providers:
+-    :mod:`yumpkg <salt.modules.yumpkg>` and :mod:`zypper <salt.modules.zypper>`
++    :mod:`yumpkg <salt.modules.yumpkg>`, :mod:`zypper <salt.modules.zypper>` and :mod:`zypper <salt.modules.aptpkg>`
+ 
+     :param str name:
+         The name of the package to be downloaded. This parameter is ignored if
+@@ -2114,7 +2114,7 @@ def downloaded(name,
+ 
+     if not ret['changes'] and not ret['comment']:
+         ret['result'] = True
+-        ret['comment'] = 'Packages are already downloaded: ' \
++        ret['comment'] = 'Packages downloaded: ' \
+                          '{0}'.format(', '.join(targets))
+ 
+     return ret
+diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
+index bc6b610d86..5c7e38eae7 100644
+--- a/tests/unit/modules/test_aptpkg.py
++++ b/tests/unit/modules/test_aptpkg.py
+@@ -413,14 +413,17 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+                 with patch.multiple(aptpkg, **patch_kwargs):
+                     aptpkg.upgrade()
+                     args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args[0] if "--download-only" in args]
++                    # Here we shouldn't see the parameter and args_matching should be empty.
+                     self.assertFalse(any(args_matching))
+ 
+                     aptpkg.upgrade(downloadonly=True)
+                     args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args[0] if "--download-only" in args]
++                    # --download-only should be in the args list and we should have at least on True in the list.
+                     self.assertTrue(any(args_matching))
+ 
+                     aptpkg.upgrade(download_only=True)
+                     args_matching = [True for args in patch_kwargs['__salt__']['cmd.run_all'].call_args[0] if "--download-only" in args]
++                    # --download-only should be in the args list and we should have at least on True in the list.
+                     self.assertTrue(any(args_matching))
+ 
+     def test_show(self):
+@@ -545,6 +548,32 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+             self.assert_called_once(refresh_mock)
+             refresh_mock.reset_mock()
+ 
++    @patch('salt.utils.path.os_walk', MagicMock(return_value=[('test', 'test', 'test')]))
++    @patch('os.path.getsize', MagicMock(return_value=123456))
++    @patch('os.path.getctime', MagicMock(return_value=1234567890.123456))
++    @patch('fnmatch.filter', MagicMock(return_value=['/var/cache/apt/archive/test_package.rpm']))
++    def test_list_downloaded(self):
++        '''
++        Test downloaded packages listing.
++        :return:
++        '''
++        DOWNLOADED_RET = {
++            'test-package': {
++                '1.0': {
++                    'path': '/var/cache/apt/archive/test_package.rpm',
++                    'size': 123456,
++                    'creation_date_time_t': 1234567890,
++                    'creation_date_time': '2009-02-13T23:31:30',
++                }
++            }
++        }
++
++        with patch.dict(aptpkg.__salt__, {'lowpkg.bin_pkg_info': MagicMock(return_value={'name': 'test-package',
++                                                                                         'version': '1.0'})}):
++            list_downloaded = aptpkg.list_downloaded()
++            self.assertEqual(len(list_downloaded), 1)
++            self.assertDictEqual(list_downloaded, DOWNLOADED_RET)
++
+ 
+ @skipIf(pytest is None, 'PyTest is missing')
+ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
+-- 
+2.16.4
+
+

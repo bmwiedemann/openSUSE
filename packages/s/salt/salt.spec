@@ -272,6 +272,22 @@ Patch96:       align-virt-full-info-fixes-with-upstream-192.patch
 Patch97:       fix-virt.get_hypervisor-188.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/193
 Patch98:       xfs-do-not-fails-if-type-is-not-present.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/54196
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/195
+Patch99:       fix-virt-states-to-not-fail-on-vms-already-stopped.-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/55245
+Patch100:      virt-adding-kernel-boot-parameters-to-libvirt-xml-55.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/189
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/185
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/184
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/183
+Patch101:      virt.network_define-allow-adding-ip-configuration.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/196
+Patch102:      add-virt.network_get_xml-function.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/198
+Patch103:      list_downloaded-for-apt-module.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/200
+Patch104:      support-for-btrfs-and-xfs-in-parted-and-mkfs.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -886,6 +902,12 @@ cp %{S:5} ./.travis.yml
 %patch96 -p1
 %patch97 -p1
 %patch98 -p1
+%patch99 -p1
+%patch100 -p1
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
+%patch104 -p1
 
 %build
 %if 0%{?build_py2}

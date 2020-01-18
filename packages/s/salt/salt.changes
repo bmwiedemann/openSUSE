@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan 13 16:09:36 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Support for Btrfs and XFS in parted and mkfs added
+
+- Added:
+  * support-for-btrfs-and-xfs-in-parted-and-mkfs.patch
+
+-------------------------------------------------------------------
+Thu Jan  9 19:20:34 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Adds list_downloaded for apt Module to enable pre-downloading support
+- Adds virt.(pool|network)_get_xml functions
+- Various libvirt updates
+  * Add virt.pool_capabilities function
+  * virt.pool_running improvements
+  * Add virt.pool_deleted state
+  * virt.network_define allow adding IP configuration
+
+- Added:
+  * virt.network_define-allow-adding-ip-configuration.patch
+  * list_downloaded-for-apt-module.patch
+  * add-virt.network_get_xml-function.patch
+
+-------------------------------------------------------------------
+Tue Jan  7 10:28:04 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- virt: adding kernel boot parameters to libvirt xml
+
+- Added:
+  * virt-adding-kernel-boot-parameters-to-libvirt-xml-55.patch
+
+-------------------------------------------------------------------
+Mon Dec 16 10:36:42 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix virt states to not fail on VMs already stopped
+
+- Added:
+  * fix-virt-states-to-not-fail-on-vms-already-stopped.-.patch
+
+-------------------------------------------------------------------
 Thu Dec 12 10:21:15 UTC 2019 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Add missing bugzilla references:

@@ -1,0 +1,123 @@
+From a5072a8e834127c9633c1af78631dcef6db0e6cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
+Date: Mon, 30 Dec 2019 17:28:50 +0100
+Subject: [PATCH] Add virt.network_get_xml function
+
+Users may want to see the full XML definition of a network.
+
+Add virt.pool_get_xml function
+
+Users may want to see the full XML definition of a virtual storage pool.
+---
+ salt/modules/virt.py            | 48 +++++++++++++++++++++++++++++++++++++++++
+ tests/unit/modules/test_virt.py | 20 +++++++++++++++++
+ 2 files changed, 68 insertions(+)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 44c7e78ef0..339760ead4 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -4633,6 +4633,30 @@ def network_info(name=None, **kwargs):
+     return result
+ 
+ 
++def network_get_xml(name, **kwargs):
++    '''
++    Return the XML definition of a virtual network
++
++    :param name: libvirt network name
++    :param connection: libvirt connection URI, overriding defaults
++    :param username: username to connect with, overriding defaults
++    :param password: password to connect with, overriding defaults
++
++    .. versionadded:: Neon
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' virt.network_get_xml default
++    '''
++    conn = __get_conn(**kwargs)
++    try:
++        return conn.networkLookupByName(name).XMLDesc()
++    finally:
++        conn.close()
++
++
+ def network_start(name, **kwargs):
+     '''
+     Start a defined virtual network.
+@@ -5377,6 +5401,30 @@ def pool_info(name=None, **kwargs):
+     return result
+ 
+ 
++def pool_get_xml(name, **kwargs):
++    '''
++    Return the XML definition of a virtual storage pool
++
++    :param name: libvirt storage pool name
++    :param connection: libvirt connection URI, overriding defaults
++    :param username: username to connect with, overriding defaults
++    :param password: password to connect with, overriding defaults
++
++    .. versionadded:: Neon
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' virt.pool_get_xml default
++    '''
++    conn = __get_conn(**kwargs)
++    try:
++        return conn.storagePoolLookupByName(name).XMLDesc()
++    finally:
++        conn.close()
++
++
+ def pool_start(name, **kwargs):
+     '''
+     Start a defined libvirt storage pool.
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index 698e1922fc..719f97a724 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -2404,6 +2404,16 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         net = virt.network_info('foo')
+         self.assertEqual({}, net)
+ 
++    def test_network_get_xml(self):
++        '''
++        Test virt.network_get_xml
++        '''
++        network_mock = MagicMock()
++        network_mock.XMLDesc.return_value = '<net>Raw XML</net>'
++        self.mock_conn.networkLookupByName.return_value = network_mock
++
++        self.assertEqual('<net>Raw XML</net>', virt.network_get_xml('default'))
++
+     def test_pool(self):
+         '''
+         Test virt._gen_pool_xml()
+@@ -2806,6 +2816,16 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+             }
+         }, pool)
+ 
++    def test_pool_get_xml(self):
++        '''
++        Test virt.pool_get_xml
++        '''
++        pool_mock = MagicMock()
++        pool_mock.XMLDesc.return_value = '<pool>Raw XML</pool>'
++        self.mock_conn.storagePoolLookupByName.return_value = pool_mock
++
++        self.assertEqual('<pool>Raw XML</pool>', virt.pool_get_xml('default'))
++
+     def test_pool_list_volumes(self):
+         '''
+         Test virt.pool_list_volumes
+-- 
+2.16.4
+
+
