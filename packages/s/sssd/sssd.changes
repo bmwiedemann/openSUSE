@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:40:11 UTC 2020 - David Mulder <dmulder@suse.com>
+
+- SSSD GPO host entries are ignored if computer cn does not
+  match its samaccountname, add
+  0001-Resolve-computer-lookup-failure-when-sam-cn.patch;
+  (jsc#SLE-9298); (bsc#1160688)
+
+-------------------------------------------------------------------
 Thu Jan 02 17:17:00 UTC 2020 - David Mulder <dmulder@suse.com>
 
 - SSSD should accept host entries from GPO's security filter, add

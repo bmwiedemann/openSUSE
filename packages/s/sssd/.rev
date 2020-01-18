@@ -887,4 +887,12 @@
     <comment></comment>
     <requestid>760498</requestid>
   </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>bcb6215a82ce5bd418f9ef947401c61a</srcmd5>
+    <version>2.2.2</version>
+    <time>1579346213</time>
+    <user>dimstar_suse</user>
+    <comment>forward 764123</comment>
+    <requestid>764135</requestid>
+  </revision>
 </revisionlist>
