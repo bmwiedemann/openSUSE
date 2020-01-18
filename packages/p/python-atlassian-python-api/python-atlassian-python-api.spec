@@ -1,7 +1,7 @@
 #
 # spec file for package python-atlassian-python-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-atlassian-python-api
-Version:        1.13.31
+Version:        1.14.9
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0
@@ -39,6 +39,7 @@ Requires:       python-oauthlib
 Requires:       python-requests
 Requires:       python-requests-oauthlib
 Requires:       python-six
+Suggests:       python-kerberos
 BuildArch:      noarch
 %python_subpackages
 
