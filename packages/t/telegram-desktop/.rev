@@ -204,4 +204,28 @@
     <comment></comment>
     <requestid>746365</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b63add45ada53bccab6a5b6f97df9567</srcmd5>
+    <version>1.9.3</version>
+    <time>1579346260</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.9.3
+  * Videos in chats start playing automatically.
+  * Resume playback from where you left off when watching long 
+    videos and listening to long audio tracks.
+  * Control automatic playback for videos, GIFs and round video
+    messages in Settings &gt; Advanced &gt; Automatic media download.
+  * Enjoy system spell checker support on all modern systems.
+- Switch build system to Ninja
+- Rename default-gtk2.patch to 0000-gtk2-default.patch,
+  removed tdesktop.patch
+- Added patches:
+  * 0001-Dynamic-linking-system-libs.patch
+  * 0002-Dynamic-linking-system-qt.patch
+  * 0004-gtk3.patch
+  * 0005-Use-system-wide-fonts.patch
+  * 0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch
+</comment>
+    <requestid>764924</requestid>
+  </revision>
 </revisionlist>

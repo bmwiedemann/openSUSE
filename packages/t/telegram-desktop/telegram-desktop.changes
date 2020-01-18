@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 16 01:47:32 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Upgrade to 1.9.3
+  * Videos in chats start playing automatically.
+  * Resume playback from where you left off when watching long 
+    videos and listening to long audio tracks.
+  * Control automatic playback for videos, GIFs and round video
+    messages in Settings > Advanced > Automatic media download.
+  * Enjoy system spell checker support on all modern systems.
+- Switch build system to Ninja
+- Rename default-gtk2.patch to 0000-gtk2-default.patch,
+  removed tdesktop.patch
+- Added patches:
+  * 0001-Dynamic-linking-system-libs.patch
+  * 0002-Dynamic-linking-system-qt.patch
+  * 0004-gtk3.patch
+  * 0005-Use-system-wide-fonts.patch
+  * 0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch
+
+-------------------------------------------------------------------
 Tue Nov  5 20:51:58 UTC 2019 - Xu Zhao <i@xuzhao.net>
 
 - Remove the TDESKTOP_DISABLE_GTK_INTEGRATION macro in patch.py

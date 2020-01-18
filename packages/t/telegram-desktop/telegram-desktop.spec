@@ -1,7 +1,7 @@
 #
 # spec file for package telegram-desktop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,42 +29,21 @@
 %endif
 
 Name:           telegram-desktop
-Version:        1.8.15
+Version:        1.9.3
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
-Source0:        https://github.com/telegramdesktop/tdesktop/archive/v%{version}.tar.gz
-# curl https://chromium.googlesource.com/breakpad/breakpad/+archive/refs/heads/master.tar.gz -o breakpad-master.tar.gz
-Source1:        breakpad-master.tar.gz
-# curl https://chromium.googlesource.com/linux-syscall-support/+archive/master.tar.gz -o linux-syscall-support-refs-heads-master.tar.gz
-Source2:        linux-syscall-support-refs-heads-master.tar.gz
-# curl https://chromium.googlesource.com/external/gyp/+archive/master.tar.gz -o gyp-master.tar.gz
-Source3:        gyp-master.tar.gz
-Source4:        patch.py
-# curl https://codeload.github.com/Microsoft/GSL/zip/master -o GSL-master.zip
-Source5:        GSL-master.zip
-# curl https://codeload.github.com/mapbox/variant/zip/master -o variant-master.zip
-Source6:        variant-master.zip
-# curl https://codeload.github.com/grishka/libtgvoip/zip/public -o libtgvoip.zip
-Source7:        libtgvoip.zip
-# curl https://codeload.github.com/catchorg/Catch2/master -o Catch2-master.zip
-Source8:        Catch2-master.zip
+Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 # curl https://codeload.github.com/ericniebler/range-v3/zip/master -o range-v3-master.zip
-Source9:        range-v3-master.zip
-# curl https://codeload.github.com/telegramdesktop/crl/zip/master -o crl-master.zip
-Source10:       crl-master.zip
-# curl https://codeload.github.com/Cyan4973/xxHash/zip/master -o xxHash-master.zip
-Source11:       xxHash-master.zip
-# curl https://codeload.github.com/lz4/lz4/zip/dev -o lz4-dev.zip
-Source12:       lz4-dev.zip
-# curl https://codeload.github.com/john-preston/rlottie/zip/master -o rlottie-master.zip
-Source13:       rlottie-master.zip
-Source14:       qt_functions.cpp 
-
-Patch0:         tdesktop.patch
-Patch1:         default-gtk2.patch
+Source1:        range-v3-master.zip
+Patch0:         0000-gtk2-default.patch 
+Patch1:         0001-Dynamic-linking-system-libs.patch 
+Patch2:         0002-Dynamic-linking-system-qt.patch 
+Patch3:         0004-gtk3.patch 
+Patch4:         0005-Use-system-wide-fonts.patch 
+Patch5:         0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -75,18 +54,19 @@ BuildRequires:  gcc8-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  enchant-devel
 BuildRequires:  glibc-devel
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  liblz4-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtimageformats-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
-# python2-base is required for gyp, Auto pulled in for Tumbleweed, but need for Leap 15.
-BuildRequires:  python2-base
-BuildRequires:  python3
 BuildRequires:  unzip
 BuildRequires:  xorg-x11-devel
+BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -158,58 +138,17 @@ always immediately published, whereas its server-side code is closed-source and 
 The service also provides APIs to independent developers.
 
 %prep
-%setup -q -n tdesktop-%{version}
-cp %{SOURCE8} Telegram/SourceFiles/base
+%setup -q -n tdesktop-%{version}-full
 
-cp %{_sourcedir}/GSL-master.zip . && unzip GSL-master.zip
-mv GSL-master GSL
-mv GSL %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/variant-master.zip . && unzip variant-master.zip
-mv variant-master variant
-mv variant %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/libtgvoip.zip . && unzip libtgvoip.zip
-mv libtgvoip-public libtgvoip
-mv libtgvoip %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/range-v3-master.zip . && unzip range-v3-master.zip
-mv range-v3-master range-v3
-mkdir -p %{_builddir}/Libraries
-mv range-v3 %{_builddir}/Libraries/
-
-cp %{_sourcedir}/crl-master.zip . && unzip crl-master.zip
-mv crl-master crl
-mv crl %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/rlottie-master.zip . && unzip rlottie-master.zip
-mv rlottie-master rlottie
-mv rlottie %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/lz4-dev.zip . && unzip lz4-dev.zip
-mv lz4-dev lz4
-mv lz4 %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/xxHash-master.zip . && unzip xxHash-master.zip
-mv xxHash-master xxHash
-mv xxHash %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/Catch2-master.zip . && unzip Catch2-master.zip
-mv Catch2-master Catch
-mv Catch %{_builddir}/tdesktop-%{version}/Telegram/ThirdParty/
-
-cp %{_sourcedir}/tdesktop.patch %{_builddir}/tdesktop-%{version}
-cd %{_builddir}/tdesktop-%{version}
+unzip %{_sourcedir}/range-v3-master.zip -d %{_builddir}/Libraries/
+mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
 
 %patch0 -p1
 %patch1 -p1
-cp %{_sourcedir}/patch.py . && python3 ./patch.py
-cp %{_sourcedir}/qt_functions.cpp Telegram/SourceFiles/
-sed -i '1i<(src_loc)/qt_functions.cpp' Telegram/gyp/telegram/sources.txt
-
-%setup -q -T -c -n breakpad -a 1
-%setup -q -T -c -n breakpad-lss -a 2
-%setup -q -T -c -n gyp -a 3
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %if %{with gcc8}
@@ -217,65 +156,44 @@ export CC=/usr/bin/gcc-8
 export CXX=/usr/bin/g++-8
 %endif
 
-mv %{_builddir}/tdesktop-%{version} %{_builddir}/tdesktop
+cmake -B build -G Ninja . \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DTDESKTOP_API_ID=340630 \
+      -DTDESKTOP_API_HASH=98a22f733eac40f1bd187a30d19271de \
+      -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
+      -DDESKTOP_APP_USE_SYSTEM_LIBS=ON \
+      -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
+      -DTDESKTOP_DISABLE_AUTOUPDATE=ON \
+      -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
+      -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
+      -DDESKTOP_APP_SPECIAL_TARGET=""
 
-# patch gyp
-cd %{_builddir}/Libraries
-ln -s %{_builddir}/gyp
-cp %{_builddir}/tdesktop/Telegram/Patches/gyp.diff gyp
-cd gyp
-patch -p1 < gyp.diff
-
-# Build breakpad
-cd %{_builddir}/breakpad
-ln -s %{_builddir}/breakpad-lss src/third_party/lss
-%configure
-%make_build
-make %{?_smp_mflags} install DESTDIR=%{_builddir}/Libraries/breakpad
-
-cd %{_builddir}/tdesktop/Telegram/gyp
-# patch qt.gypi to change libxkbcommon path
-%{_builddir}/Libraries/gyp/gyp \
-    -Dapi_id=340630 \
-    -Dapi_hash=98a22f733eac40f1bd187a30d19271de \
-    -Dlinux_lib_ssl=-lssl \
-    -Dlinux_lib_crypto=-lcrypto \
-    -Dlinux_lib_icu="-licuuc -licutu -licui18n" \
-    -Dlinux_path_opus_include="%{_includedir}/opus" \
-    -Dlinux_path_breakpad="%{_builddir}/Libraries/breakpad%{_prefix}" \
-    -Gconfig=Release \
-    --depth=. --generator-output="%{_builddir}/tdesktop" -Goutput_dir=out Telegram.gyp --format=cmake
-
-# build Telegram
-cd %{_builddir}/tdesktop/out/Release
-%cmake ..
-sed -i 's,breakpad/usr/lib,breakpad%{_libdir},' ./CMakeFiles/Telegram.dir/link.txt
-%make_build
-chrpath --delete Telegram
+ninja -C build
 
 %install
 # Install binary
 install -dm755 %{buildroot}%{_bindir}
-install -m755 %{_builddir}/tdesktop/out/Release/build/Telegram %{buildroot}%{_bindir}/%{name}
+install -m755 build/bin/Telegram %{buildroot}%{_bindir}/%{name}
 
 # Install desktop file
 install -d %{buildroot}%{_datadir}/applications
 desktop-file-install \
     --dir %{buildroot}%{_datadir}/applications \
     --add-category InstantMessaging \
-    %{_builddir}/tdesktop/lib/xdg/telegramdesktop.desktop
+    lib/xdg/telegramdesktop.desktop
 
 # Install protocol
 install -d %{buildroot}%{_datadir}/kservices5
-install -m644 %{_builddir}/tdesktop/lib/xdg/tg.protocol \
-    %{buildroot}%{_datadir}/kservices5/tg.protocol
+install -m644 lib/xdg/tg.protocol \
+        %{buildroot}%{_datadir}/kservices5/tg.protocol
 
 # Install icons
 for icon_size in 16 32 48 64 128 256 512; do
     icon_dir="%{buildroot}%{_datadir}/icons/hicolor/${icon_size}x${icon_size}/apps"
     install -d "${icon_dir}"
-    install -m644 "%{_builddir}/tdesktop/Telegram/Resources/art/icon${icon_size}.png" \
-    "${icon_dir}/telegram.png"
+    install -m644 "Telegram/Resources/art/icon${icon_size}.png" \
+            "${icon_dir}/telegram.png"
 done
 
 %files
