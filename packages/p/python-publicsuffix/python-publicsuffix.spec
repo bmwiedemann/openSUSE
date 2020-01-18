@@ -1,7 +1,7 @@
 #
 # spec file for package python-publicsuffix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,13 +41,16 @@ Get a public suffix for a domain name using the Public Suffix List.
 %setup -q -n publicsuffix-%{version}
 
 %build
+LANG=en_US.UTF-8
 %python_build
 
 %install
+LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+LANG=en_US.UTF-8
 %pytest tests.py -k 'not test_fetch'
 
 %files %{python_files}
