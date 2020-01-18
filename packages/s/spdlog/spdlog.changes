@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Jan 13 19:58:43 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.0
+  New features:
+  * Added ringbuffer sink. Thanks @eudoxos (#1307).
+  * Auto create the required logging directories if they not
+    exist (9b7812a).
+  * Update bundled fmt to version 6.1.2.
+  * Addded the ! modifier to truncate the result if the field
+    size exceeds the specified width (see wiki for details)
+  Fixes and improvements:
+  * Fix build failure on clang 7 with libc++. Thanks @jktjkt
+    (a03f9eb).
+  * Fix some spelling errors. Thanks @flopp .
+  * Fix - compilation when using external fmt library. Thanks
+    @dvhwgumby for reporting (#1273).
+  * Fix location of CMake config info. Thanks @dvhwgumby for
+    reporting (#1274)
+  * Fix missing include (9a68bd8).
+  * CMake code duplication improvement. Thanks @bencsikandrei
+    (#1283)
+  * CMake improvments in tests . Thanks @Andrei-Florin BENCSIK
+    (2cc620e)
+  * Remove unused variable. Thanks @masmullin2000 (#1285)
+  * Fix tests to Use _FILE_OFFSET_BITS=64 when building on Linux
+    32-bit systems. Thanks @yipdw (#1288).
+  * Improve systemd journald support. Thanks @jktjkt (#1292).
+  * Improve log macros. Thanks @pck (#1294).
+  * Removed lazy argument evaluation from macros (#163).
+  * Some micro optimizations (79468cf, 3ee4f28, bf40855).
+  * Correctly guard SetHandleInformation API call to better
+    support compiling for UWP. Thanks @sylveon (#1296).
+  * Exclude from compilation prevent_child_fd() if
+    SPDLOG_PREVENT_CHILD_FD not defined (57085c8)
+  * CMake - Added tweakme options to CMakeLists.txt (18edb8b).
+  * Removed SPDLOG_NO_DATETIME option.
+  * Fix meson tests build . Thanks vedranmiletic fore reporting
+    (#1295, c081919, 4a4f13b, 436ce16).
+  * Use #include" <spdlog/.*> instead of spdlog/.* across the
+    codebase. Thanks @RedDwarf69 (#1304).
+  * Fix struct tm doesn't have tm_gmtoff in ISO C. Thanks
+    @lancesun (ff3e6c7, #1306)
+  * Always cache gmt offset (de2c07a).
+  * Optimize backtracer operator= (255f7f2).
+  * Fix some clang-tidy warnings (93008b2, bff8572, 3999613).
+  * Fix compiler error in os-inl.h min/max on Windows (#1302).
+  * Remove redundant semicolon. Thanks @inhzus (#1311).
+  * Fix compiler warnings. Thanks @0x8000-0000 (#1331).
+  * Fix missing include header in
+    `spdlog/sinks/daily_file_sink.h. Thanks @afoolsbag for
+    reporting (#1332).
+  * Fix elapsed time larger than 6 digits ignores alignment
+    width. Thanks @ivan236634452 for reporting (#1327).
+  * Set version for shared library in meson build. Thanks
+    @lgbaldoni (#1337).
+  * Improved dist_sink ctor. Thanks @mmakhalaf for reporting
+    (#1298).
+  * Fix #1325. Added SPDLOG_FMT_EXTERNAL_HO option. Thanks
+    @steffenb7333 for reporting.
+  * Fix #1340 (missing include). Thanks @jeanga for reporting.
+  * Fix compile on Win10 with Cygwin. Thanks @frfrankkopp and
+    @tt4g (#1347).
+  * Fixed #1348. Thanks @ficzerepeti for reporting.
+  * CMakeLists.txt allow overriding the cpp standard to higher
+    than 11
+  * Fix a small problem in the basic example. Thanks @mike239x
+    (#1367).
+  * Fix invalid meson option. Thanks @segfault-magnet (#1370).
+  * meson: add fallback to fmt dependency #1378. Thanks @idanko
+  * Update docs: spdlog now available in conan center,
+    bincrafters repo is deprecated #1387. Thanks @gocarlos .
+
+- Dropped spdlog-fmt_610.patch (merged upstream) and
+  spdlog-external_fmt.patch (no longer necessary)
+
+-------------------------------------------------------------------
 Wed Dec  4 20:45:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added spdlog-fmt_610.patch to fix build with fmt 6.1.0

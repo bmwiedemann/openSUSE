@@ -1,7 +1,7 @@
 #
 # spec file for package spdlog
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,12 @@
 
 %define _sover  1
 Name:           spdlog
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        C++ logging library
 License:        MIT
-Group:          Development/Languages/C and C++
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM spdlog-fmt_610.patch
-Patch0:         spdlog-fmt_610.patch
 BuildRequires:  benchmark-devel >= 1.4.0
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -46,7 +43,6 @@ logging library available at Github.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{_sover} = %{version}
 Requires:       libstdc++-devel
 Requires:       pkgconfig(fmt)
@@ -57,7 +53,6 @@ applications that use %{name}.
 
 %package     -n lib%{name}%{_sover}
 Summary:        C++ logging library
-Group:          System/Libraries
 
 %description -n lib%{name}%{_sover}
 This is a packaged version of the gabime/spdlog C++ logging library
@@ -97,8 +92,7 @@ export LD_LIBRARY_PATH="%{_builddir}/%{name}-%{version}/build"
 %doc README.md
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/cmake
+%{_libdir}/cmake/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}%{_sover}
