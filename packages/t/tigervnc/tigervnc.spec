@@ -141,6 +141,7 @@ Patch9:         u_change-button-layout-in-ServerDialog.patch
 Patch10:        n_correct_path_in_desktop_file.patch
 Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
 Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
+Patch13:        u_xorg-server-1.20.7-ddxInputThreadInit.patch
 Patch21:        0001-Make-ZlibInStream-more-robust-against-failures.patch
 Patch22:        0002-Encapsulate-PixelBuffer-internal-details.patch
 Patch23:        0003-Restrict-PixelBuffer-dimensions-to-safe-values.patch
@@ -273,6 +274,7 @@ cp -r /usr/src/xserver/* unix/xserver/
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1

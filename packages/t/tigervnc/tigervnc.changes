@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 11:42:20 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_xorg-server-1.20.7-ddxInputThreadInit.patch
+  * buildfix for xorg-server 1.20.7, which moved ddxInputThread
+    call from os layer into ddx layer
+
+-------------------------------------------------------------------
 Tue Jan  7 15:43:09 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - TigerVNC security fix:
