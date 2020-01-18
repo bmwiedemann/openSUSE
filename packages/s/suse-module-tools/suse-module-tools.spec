@@ -1,7 +1,7 @@
 #
 # spec file for package suse-module-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,17 @@
 %global fs_blacklist cramfs ufs
 %endif
 
+%if 0%{?sle_version} >= 120200 && 0%{?is_opensuse} == 0
+%global softdep_br_netfilter 1
+%endif
+
 Name:           suse-module-tools
-Version:        15.2.7
+Version:        15.2.9
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://github.com/openSUSE/suse-module-tools
+URL:            https://github.com/openSUSE/suse-module-tools
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}.rpmlintrc
 Requires:       coreutils
@@ -92,6 +96,11 @@ install -d -m 755 "%{buildroot}%{_sysconfdir}/modprobe.d"
 install -pm644 "10-unsupported-modules.conf" \
 	"%{buildroot}%{_sysconfdir}/modprobe.d/"
 install -pm644 00-system.conf "%{buildroot}%{_sysconfdir}/modprobe.d/"
+
+%if 0%{?softdep_br_netfilter}
+# softdep bridge->br_netfilter, SLE only
+install -pm644 modprobe.conf/00-system-937216.conf %{buildroot}%{_sysconfdir}/modprobe.d
+%endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150100
 install -pm644 modprobe.conf/modprobe.conf.blacklist "%{buildroot}%{_sysconfdir}/modprobe.d/50-blacklist.conf"
 %endif
@@ -245,6 +254,9 @@ done
 %doc README.SUSE
 %dir %{_sysconfdir}/modprobe.d
 %config %{_sysconfdir}/modprobe.d/00-system.conf
+%if 0%{?softdep_br_netfilter}
+%config(noreplace) %{_sysconfdir}/modprobe.d/00-system-937216.conf
+%endif
 %config(noreplace) %{_sysconfdir}/modprobe.d/10-unsupported-modules.conf
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150100
 %config(noreplace) %{_sysconfdir}/modprobe.d/50-blacklist.conf

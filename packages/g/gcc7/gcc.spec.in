@@ -307,6 +307,8 @@ Patch15:	gcc7-avoid-fixinc-error.diff
 Patch17:	gcc7-flive-patching.patch
 Patch18:	gcc7-bsc1146475.patch
 Patch19:	gcc7-pr85887.patch
+Patch20:	gcc7-bsc1160086.patch
+Patch21:	gcc7-pr92154.patch
 # A set of patches from the RH srpm
 Patch51:	gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1064,6 +1066,8 @@ ln -s nvptx-newlib/newlib .
 %patch17 -p1
 %patch18
 %patch19
+%patch20
+%patch21 -p1
 %patch51
 %patch60
 %patch61

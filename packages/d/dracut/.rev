@@ -1586,4 +1586,16 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * dracut.spec: add convertfs module correctly (boo#1158777)</comment>
     <requestid>755471</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>a826e34fc27a8a1f6d0d88a6d046bad9</srcmd5>
+    <version>049+git118.a6090e2f</version>
+    <time>1579346065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049+git118.a6090e2f:
+  * Implement support for verifying the boot with fipscheck (bsc#1158530)
+
+- Update to version 049+git117.d3206e79:
+  * Remove purge-kernels scripts and service (jsc#SLE-10162)</comment>
+    <requestid>764321</requestid>
+  </revision>
 </revisionlist>

@@ -3688,4 +3688,18 @@
     <comment></comment>
     <requestid>754611</requestid>
   </revision>
+  <revision rev="460" vrev="1">
+    <srcmd5>da0dd2597ec5d9a9312e7313c1a6b07d</srcmd5>
+    <version>84.87+git20200116.59482ba</version>
+    <time>1579346088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200116.59482ba:
+  * drop dev.cdrom.autoclose = 0 from sysctl config (bsc#1160970)
+  * Call binaries in /usr only, /bin is legacy
+
+- Update to version 84.87+git20200108.0da43d3:
+  * generalize testing for JVMs when creating the java path
+    to support sapjvm and others (boo#1157794)</comment>
+    <requestid>764921</requestid>
+  </revision>
 </revisionlist>

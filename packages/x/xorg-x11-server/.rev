@@ -3331,4 +3331,27 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>760854</requestid>
   </revision>
+  <revision rev="377" vrev="1">
+    <srcmd5>d0a6f609a7c727a8bf3d493fb3430cf8</srcmd5>
+    <version>1.20.7+0</version>
+    <time>1579346093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.7+0:
+  * xserver 1.20.7
+  * ospoll: Fix Solaris ports implementation to build on Solaris 11.4
+  * os-support/solaris: Set IOPL for input thread too
+  * Add xf86OSInputThreadInit call from common layer into os-support layer
+  * Add ddxInputThread call from os layer into ddx layer
+  * os-support/solaris: Drop ExtendedEnabled global variable
+  * glamor: Only use dual blending with GLSL &gt;= 1.30
+  * modesetting: Check whether RandR was initialized before calling rrGetScrPriv
+  * Xi: return AlreadyGrabbed for key grabs &gt; 255
+  * xwayland: Do flush GPU work in xwl_present_flush
+  * modesetting: Clear new screen pixmap storage on RandR resize
+  * xfree86/modes: Call xf86RotateRedisplay from xf86CrtcRotate
+  * modesetting: Call glamor_finish from drmmode_crtc_set_mode
+  * modesetting: Use EGL_MESA_query_driver to select DRI driver if possible
+  * glamor: Add a function to get the driver name via EGL_MESA_query_driver</comment>
+    <requestid>764307</requestid>
+  </revision>
 </revisionlist>

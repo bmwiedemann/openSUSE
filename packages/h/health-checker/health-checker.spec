@@ -1,7 +1,7 @@
 #
 # spec file for package health-checker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           health-checker
-Version:        1.2.3
+Version:        1.3
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only

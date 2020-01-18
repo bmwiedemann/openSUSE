@@ -371,4 +371,14 @@ Scripts git-archive-tarbz2.sh and report_success.sh are GPL-3.0+ licensed (forwa
     <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 591532 from kukuk)</comment>
     <requestid>591538</requestid>
   </revision>
+  <revision rev="52" vrev="17">
+    <srcmd5>9f6b18337851e6069bb8bb783f9e4b5d</srcmd5>
+    <version>1.20.7</version>
+    <time>1579346074</time>
+    <user>dimstar_suse</user>
+    <comment>- gpm-fno-common.patch: fix compilation in Tumbleweed (bsc#1160873) 
+
+- Add back support for the TAOS evaluation module to inputattach.</comment>
+    <requestid>764589</requestid>
+  </revision>
 </revisionlist>

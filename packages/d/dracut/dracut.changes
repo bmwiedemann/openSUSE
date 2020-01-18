@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:22:25 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 049+git118.a6090e2f:
+  * Implement support for verifying the boot with fipscheck (bsc#1158530)
+
+-------------------------------------------------------------------
+Thu Jan 09 10:11:10 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 049+git117.d3206e79:
+  * Remove purge-kernels scripts and service (jsc#SLE-10162)
+
+-------------------------------------------------------------------
 Tue Dec 10 08:43:44 UTC 2019 - daniel.molkentin@suse.com
 
 - Update to version 049+git116.e9995c78:

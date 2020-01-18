@@ -22,14 +22,14 @@ elif [ "$1" == "--verify" ]; then
 else
 	echo "Wrong usage of this script"
 	echo "$0 can be started in two ways:"
-	echo "1: $0 --tar {xorg-server-xxxx.tar.bz2}"
+	echo "1: $0 --tar {xserver-xxxx.tar.xz}"
 	echo "2: $0 --verify {source-folder}"
 	echo "Variant 1 creates the file xorg-server-provides to be included in the src rpm"
 	echo "Variant 2 is being called during build to ensure the ABI provides match the expectations."
 	echo ""
 	echo ""
 	echo "Trying to guess the right tarball"
-	sh $0 --tar xorg-server-*.tar.bz2
+	sh $0 --tar xserver-*.tar.xz
 	echo "... Please verify if the result makes sense"
 	exit 2
 fi

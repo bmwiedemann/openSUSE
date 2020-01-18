@@ -1,7 +1,7 @@
 #
 # spec file for package cross-avr-gcc7-bootstrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,6 +126,8 @@ Patch15:        gcc7-avoid-fixinc-error.diff
 Patch17:        gcc7-flive-patching.patch
 Patch18:        gcc7-bsc1146475.patch
 Patch19:        gcc7-pr85887.patch
+Patch20:        gcc7-bsc1160086.patch
+Patch21:        gcc7-pr92154.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -273,6 +275,8 @@ ln -s nvptx-newlib/newlib .
 %patch17 -p1
 %patch18
 %patch19
+%patch20
+%patch21 -p1
 %patch51
 %patch60
 %patch61

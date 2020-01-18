@@ -376,6 +376,9 @@ struct input_types input_types[] = {
 { "--elo4002",		"-elo6b",	B9600, CS8 | CRTSCTS,		SERIO_ELO,	1,	0,	0,	NULL },
 { "--elo271-140",	"-elo4b",	B9600, CS8 | CRTSCTS,		SERIO_ELO,	2,	0,	0,	NULL },
 { "--elo261-280",	"-elo3b",	B9600, CS8 | CRTSCTS,		SERIO_ELO,	3,	0,	0,	NULL },
+#ifdef SERIO_TAOSEVM
+{ "--taos-evm",		"-taos",	B1200, CS8,			SERIO_TAOSEVM,	0,	0,	0,	NULL },
+#endif
 { "--dump",		"-dump",	B2400, CS8, 			0,		0,	0,	0,	dump_init },
 { "", "", 0, 0 }
 
@@ -416,6 +419,9 @@ int main(int argc, char **argv)
 		puts("  --ps2serkbd     -ps2ser PS/2 via serial keyboard");
 		puts("  --twiddler      -twid   Handykey Twiddler chording keyboard");
 		puts("  --twiddler-joy  -twidjoy  Handykey Twiddler used as a joystick");
+#ifdef SERIO_TAOSEVM
+		puts("  --taos-evm      -taos     TAOS evaluation module");
+#endif
 		puts("");
                 return 1;
         }

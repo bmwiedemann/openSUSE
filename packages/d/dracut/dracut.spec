@@ -1,7 +1,7 @@
 #
 # spec file for package dracut
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        049+git116.e9995c78
+Version:        049+git118.a6090e2f
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -158,9 +158,6 @@ install -m 0755 suse/mkinitrd_setup_dummy %{buildroot}/sbin/mkinitrd_setup
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 0644 dracut.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/dracut
 
-install -D -m 0755 suse/purge-kernels %{buildroot}/sbin/purge-kernels
-install -m 644 suse/purge-kernels.service %{buildroot}/%{_unitdir}/purge-kernels.service
-
 install -D -m 0755 suse/dracut-installkernel %{buildroot}/sbin/installkernel
 
 %if 0%{?suse_version}
@@ -172,10 +169,8 @@ ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}/%{dra
 %endif
 
 %pre
-%service_add_pre purge-kernels.service
 
 %post
-%service_add_post purge-kernels.service
 # check whether /var/run has been converted to a symlink
 [ -L /var/run ] || sed -i '/GRUB_CMDLINE_LINUX_DEFAULT.*/s/"$/ rd.convertfs"/' /etc/default/grub  || :
 [ -L /var/run ] || cat >>/etc/dracut.conf.d/05-convertfs.conf<<EOF
@@ -196,10 +191,8 @@ EOF
 %{?regenerate_initrd_post}
 
 %preun
-%service_del_preun purge-kernels.service
 
 %postun
-%service_del_postun purge-kernels.service
 %{?regenerate_initrd_post}
 
 %postun fips
@@ -245,7 +238,6 @@ EOF
 %doc README HACKING TODO AUTHORS NEWS dracut.html dracut.png dracut.svg
 %{_bindir}/dracut
 %{_bindir}/lsinitrd
-/sbin/purge-kernels
 /sbin/installkernel
 /sbin/mkinitrd
 /sbin/mkinitrd_setup

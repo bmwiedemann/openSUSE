@@ -401,4 +401,12 @@
   definitions that complete an earlier declaration.  [bsc#1146475]</comment>
     <requestid>748682</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c166ab0820409899cb84213cafb0ba72</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1579346054</time>
+    <user>dimstar_suse</user>
+    <comment>- gcc7-pr92154.patch: Backport PR sanitizer/92154 (forwarded request 762415 from Andreas_Schwab)</comment>
+    <requestid>762642</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gpm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -62,6 +62,7 @@ Patch29:        gpm-do_create_symlink.patch
 Patch30:        gpm-fix_fsf_addess.patch
 #PATCH-FIX-UPSTREAM Fix missing declarations
 Patch31:        decls.patch
+Patch32:        gpm-fno-common.patch
 BuildRequires:  bison
 BuildRequires:  libtool
 BuildRequires:  lzma
@@ -127,6 +128,7 @@ Development files for the gpm (general purpose mouse) package.
 %patch29
 %patch30
 %patch31 -p1
+%patch32 -p1
 cp %{S:2} %{S:3} %{S:4} .
 cp %{S:7} COPYING
 
