@@ -4,8 +4,8 @@ Description=Ethernet Bridge Filtering tables
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/lib/ebtables start
-ExecStop=/usr/lib/ebtables stop
+ExecStart=/usr/lib/ebtables-helper start
+ExecStop=/usr/lib/ebtables-helper stop
 
 [Install]
 WantedBy=multi-user.target

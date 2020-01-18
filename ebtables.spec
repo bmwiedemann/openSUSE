@@ -1,7 +1,7 @@
 #
 # spec file for package ebtables
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,7 @@ mkdir -p %{buildroot}%{_unitdir}
 install -p %_sourcedir/ebtables.service %{buildroot}%{_unitdir}/
 chmod -x %{buildroot}%{_unitdir}/*.service
 mkdir -p %{buildroot}%{_libexecdir}
-install -m0755 %_sourcedir/ebtables.systemd %{buildroot}%{_libexecdir}/ebtables
+install -m0755 %_sourcedir/ebtables.systemd %{buildroot}%{_libexecdir}/%{name}-helper
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 touch %{buildroot}%{_fillupdir}/sysconfig.%{name}.filter
 touch %{buildroot}%{_fillupdir}/sysconfig.%{name}.nat
@@ -131,7 +131,7 @@ fi
 %defattr(-,root,root)
 %doc COPYING ChangeLog
 %{_mandir}/man8/ebtables*.8*
-%{_libexecdir}/%{name}
+%{_libexecdir}/%{name}-helper
 %{_unitdir}/%{name}.service
 %ghost %{_sysconfdir}/alternatives/ebtables
 %ghost %{_sysconfdir}/alternatives/ebtables-restore
