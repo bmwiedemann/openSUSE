@@ -690,4 +690,12 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
     <comment></comment>
     <requestid>720212</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>3f4c3e66bba0823bd3a3b5a26a9610ee</srcmd5>
+    <version>4.8.23</version>
+    <time>1579346121</time>
+    <user>dimstar_suse</user>
+    <comment>- mc-no-common.patch: fix compilation on Tumbleweed (bsc#1160401)</comment>
+    <requestid>764601</requestid>
+  </revision>
 </revisionlist>

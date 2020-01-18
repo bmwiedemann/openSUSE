@@ -1,7 +1,7 @@
 #
 # spec file for package mc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,7 @@ Patch69:        mc-extd-xdg.patch
 Patch71:        mc-ext-audio.patch
 Patch100:       xls2csv_update.patch
 Patch101:       sftp_interactive_password.patch
+Patch102:       mc-no-common.patch
 BuildRequires:  audiofile-devel
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gettext >= 0.18.1
@@ -114,6 +115,7 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOU
 %patch60 -p1
 %patch100 -p1
 %patch101 -p1
+%patch102 -p1
 
 %build
 autoreconf -fvi
