@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:11:33 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Added r_opts_global.patch to fix build problems with gcc due to 
+  multiple definitions for global symbols (bsc#1160290)
+
+-------------------------------------------------------------------
 Thu Dec  5 10:06:43 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use %make_build and respect %optflags.

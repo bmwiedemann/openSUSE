@@ -1,7 +1,7 @@
 #
 # spec file for package restorecond
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/SELinuxProject/selinux.git
 Source0:        https://github.com/SELinuxProject/selinux/releases/download/20190315/restorecond-%{version}.tar.gz
+# can be dropped with 3.0
+Patch0:         r_opts_global.patch
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libselinux-devel >= %{libselinux_ver}
 Requires:       libselinux1 >= %{libselinux_ver}
@@ -35,6 +37,7 @@ Daemon that watches for file creation and then sets the default SELinux file con
 
 %prep
 %setup -q
+%patch0 -p2
 
 %build
 export CFLAGS="%optflags"
