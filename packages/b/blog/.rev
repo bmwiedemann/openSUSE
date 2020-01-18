@@ -107,4 +107,20 @@ use private glib API but implement a share memory mkstemp</comment>
     <comment></comment>
     <requestid>729450</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9194fa8b10a462d6952b470b098c5e1d</srcmd5>
+    <version>2.20</version>
+    <time>1579346011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20
+  * Silent some gcc warnings, also avoid common variable (boo#1160385)
+  * Include &lt;sys/sysmacros.h&gt; for makedev
+  * sort input files (boo#1041090)
+  * libconsole: never return empty list from getconsoles()
+  * libconsole: Really allow to use /dev/console as a fallback in showconsole
+  * libconsole: Add console into the list only when successfully allocated
+  * libconsole: Correctly ignore early consoles
+- Remove obsolate patch blog-Remove-unused-header.patch</comment>
+    <requestid>762162</requestid>
+  </revision>
 </revisionlist>

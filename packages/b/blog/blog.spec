@@ -1,7 +1,7 @@
 #
 # spec file for package blog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 Name:           blog
-Version:        2.19
+Version:        2.20
 Release:        0
 Summary:        Boot logging
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://github.com/bitstreamout/showconsole
+URL:            https://github.com/bitstreamout/showconsole
 Source:         https://github.com/bitstreamout/showconsole/archive/v%{version}.tar.gz#/showconsole-%{version}.tar.gz
 Source1:        blog-rpmlintrc
-# PATCH-FIX-UPSTREAM blog-Remove-unused-header.patch -- Fix build with new glibc
-Patch0:         blog-Remove-unused-header.patch
-
 BuildRequires:  suse-module-tools
 Requires(post): coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -76,7 +73,6 @@ the LSB startproc command.
 
 %prep
 %setup -q -n showconsole-%version
-%patch0 -p1
 
 %build
 make %{?_smp_mflags} CC="%__cc" \

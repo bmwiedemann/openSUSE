@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:34:47 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.20
+  * Silent some gcc warnings, also avoid common variable (boo#1160385)
+  * Include <sys/sysmacros.h> for makedev
+  * sort input files (boo#1041090)
+  * libconsole: never return empty list from getconsoles()
+  * libconsole: Really allow to use /dev/console as a fallback in showconsole
+  * libconsole: Add console into the list only when successfully allocated
+  * libconsole: Correctly ignore early consoles
+- Remove obsolate patch blog-Remove-unused-header.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 19:45:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add blog-Remove-unused-header.patch: Fix build with new glibc
