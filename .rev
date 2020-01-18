@@ -602,4 +602,14 @@
     CMsgReader::readSetCurso (CVE-2019-15695, bsc#1159860)</comment>
     <requestid>762160</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>4143841de98ab664433701a727dd8d0f</srcmd5>
+    <version>1.10.0</version>
+    <time>1579346143</time>
+    <user>dimstar_suse</user>
+    <comment>- u_xorg-server-1.20.7-ddxInputThreadInit.patch
+  * buildfix for xorg-server 1.20.7, which moved ddxInputThread
+    call from os layer into ddx layer</comment>
+    <requestid>764639</requestid>
+  </revision>
 </revisionlist>
