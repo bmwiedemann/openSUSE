@@ -1,7 +1,7 @@
 #
 # spec file for package python-postorius
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,13 @@ A web user interface for GNU Mailman
 %check
 pushd example_project
 export PYTHONPATH='../src'
+%if 0%{suse_version} > 1500
 %pytest ..
+%else
+LANG=C.UTF-8
+# to take PYTHONPATH in the account
+%python_exec -m pytest -v ..
+%endif
 popd
 
 %files %{python_files}
