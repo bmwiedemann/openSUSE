@@ -1,7 +1,7 @@
 #
 # spec file for package python-argparse-manpage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define mod_name argparse-manpage
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argparse-manpage
-Version:        1.2.2
+Version:        1.3
 Release:        0
 Summary:        Tool for automatic manual page building from a Python ArgumentParser object
 License:        Apache-2.0
