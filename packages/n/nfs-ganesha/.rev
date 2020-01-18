@@ -77,4 +77,21 @@
 - Use %cmake macros for build in order to respect $optflags.</comment>
     <requestid>760717</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c78ae5761e7f4c9e977bf9ed4de70ff</srcmd5>
+    <version>3.2+git0.8d07e25a7</version>
+    <time>1579346118</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename systemd cofig file for nfs-ganesha service to support
+  upstream service configuration script
+- Update to version 3.2+git0.8d07e25a7:
+  * V3.2
+  * Move async callback to svc_req and give it its own wpe
+  * Crash under duplicate request &quot;being processed&quot;
+  * nfs3_FhandleToExportId returns an int (not a short)
+  * Stats for all ops by a client
+- Update spec to support 3.2 and remove Obsoletes
+</comment>
+    <requestid>764593</requestid>
+  </revision>
 </revisionlist>

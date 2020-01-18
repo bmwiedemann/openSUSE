@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-ganesha
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,7 +110,7 @@ BuildRequires:  distribution-release
 %define sourcename @CPACK_SOURCE_PACKAGE_FILE_NAME@
 
 Name:           nfs-ganesha
-Version:        3.1+git0.4de09d665
+Version:        3.2+git0.8d07e25a7
 Release:        0
 Summary:        An NFS server running in user space
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
@@ -212,12 +212,11 @@ back-end modules (called File System Abstraction Layers - FSALs) for different
 file systems and name-spaces (notably the Ceph "file" and "object" back-ends -
 CephFS and RGW, respectively).
 
-%package -n libntirpc3_1
+%package -n libntirpc3_2
 Summary:        NFS-Ganesha transport-independent RPC (TI-RPC) shared library
 Group:          System/Libraries
-Obsoletes:      libntirpc3_0
 
-%description -n libntirpc3_1
+%description -n libntirpc3_2
 This package contains a new implementation of the original libtirpc, 
 transport-independent RPC (TI-RPC) library for NFS-Ganesha. It has
 the following features not found in libtirpc:
@@ -230,36 +229,35 @@ the following features not found in libtirpc:
  5. Event channels (remove static arrays of xprt handles, new EPOLL/KEVENT
     integration)
 
-%post -n libntirpc3_1 -p /sbin/ldconfig
+%post -n libntirpc3_2 -p /sbin/ldconfig
 
-%postun -n libntirpc3_1 -p /sbin/ldconfig
+%postun -n libntirpc3_2 -p /sbin/ldconfig
 
 %package -n libntirpc-devel
 Summary:        Copy of TIRPC headers from NFS-Ganesha
 Group:          Development/Libraries/C and C++
-Requires:       libntirpc3_1 = %{version}
+Requires:       libntirpc3_2 = %{version}
 Obsoletes:      nfs-ganesha-devel < %{version}
 
 %description -n libntirpc-devel
 This package contains the libraries and headers needed to develop programs
 using NFS-Ganesha transport-independent RPC (TI-RPC).
 
-%package -n libganesha_nfsd3_1
+%package -n libganesha_nfsd3_2
 Summary:        NFS-Ganesha NFSD shared library
 Group:          System/Libraries
-Obsoletes:      libnfsganesha_nfsd3_0
 
-%description -n libganesha_nfsd3_1
+%description -n libganesha_nfsd3_2
 This package contains the NFSD shared library from NFS-Ganesha.
 
-%post -n libganesha_nfsd3_1 -p /sbin/ldconfig
+%post -n libganesha_nfsd3_2 -p /sbin/ldconfig
 
-%postun -n libganesha_nfsd3_1 -p /sbin/ldconfig
+%postun -n libganesha_nfsd3_2 -p /sbin/ldconfig
 
 %package -n libganesha_nfsd-devel
 Summary:        NFS-Ganesha NFSD shared library
 Group:          Development/Libraries/C and C++
-Requires:       libganesha_nfsd3_1 = %{version}
+Requires:       libganesha_nfsd3_2 = %{version}
 
 %description -n libganesha_nfsd-devel
 This package contains the libraries and headers needed to develop programs
@@ -556,7 +554,7 @@ install -D -m 444 scripts/systemd/nfs-ganesha.service.el7 %{buildroot}%{_unitdir
 install -D -m 444 scripts/systemd/nfs-ganesha-lock.service.el7 %{buildroot}%{_unitdir}/nfs-ganesha-lock.service
 install -D -m 444 scripts/systemd/nfs-ganesha-config.service %{buildroot}%{_unitdir}/nfs-ganesha-config.service
 %if 0%{?suse_version}
-install -D -m 644 scripts/systemd/sysconfig/nfs-ganesha %{buildroot}%{_fillupdir}/sysconfig.nfs-ganesha
+install -D -m 644 scripts/systemd/sysconfig/nfs-ganesha %{buildroot}%{_fillupdir}/sysconfig.ganesha
 %else
 install -D -m 644 scripts/systemd/sysconfig/nfs-ganesha %{buildroot}%{_sysconfdir}/sysconfig/ganesha
 %endif
@@ -600,7 +598,7 @@ exit 0
 %post
 %if ( 0%{?suse_version} )
 %service_add_post nfs-ganesha.service nfs-ganesha-lock.service nfs-ganesha-config.service
-%fillup_only
+%fillup_only -n ganesha
 %else
 %systemd_post nfs-ganesha-lock.service
 %endif
@@ -676,8 +674,8 @@ pgrep dbus-daemon >/dev/null 2>&1 && killall -SIGHUP dbus-daemon >/dev/null 2>&1
 
 %if ! %{with system_ntirpc}
 
-%files -n libntirpc3_1
-%{_libdir}/libntirpc.so.3.1
+%files -n libntirpc3_2
+%{_libdir}/libntirpc.so.3.2
 
 %files -n libntirpc-devel
 %{_includedir}/ntirpc/
@@ -686,7 +684,7 @@ pgrep dbus-daemon >/dev/null 2>&1 && killall -SIGHUP dbus-daemon >/dev/null 2>&1
 
 %endif
 
-%files -n libganesha_nfsd3_1
+%files -n libganesha_nfsd3_2
 %{_libdir}/libganesha_nfsd.so.*
 
 %files -n libganesha_nfsd-devel

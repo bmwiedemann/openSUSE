@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:17:21 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Rename systemd cofig file for nfs-ganesha service to support
+  upstream service configuration script
+
+-------------------------------------------------------------------
+Wed Jan 15 09:35:59 UTC 2020 - dkondratenko@suse.com
+
+- Update to version 3.2+git0.8d07e25a7:
+  * V3.2
+  * Move async callback to svc_req and give it its own wpe
+  * Crash under duplicate request "being processed"
+  * nfs3_FhandleToExportId returns an int (not a short)
+  * Stats for all ops by a client
+- Update spec to support 3.2 and remove Obsoletes
+
+-------------------------------------------------------------------
 Fri Jan  3 13:29:08 UTC 2020 - David Disseldorp <ddiss@suse.com>
 
 - Drop -DCMAKE_BUILD_TYPE=Release in favour of %cmake macro default.
