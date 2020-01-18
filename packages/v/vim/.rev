@@ -4241,4 +4241,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Not enough test coverage for match functions.</comment>
     <requestid>760080</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>dc16839303b458abf78fb7b4689dcc30</srcmd5>
+    <version>8.2.0119</version>
+    <time>1579346179</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.0119, fixes the following problems
+  * Printf formats are not exactly right.
+  * Hgignore is out of sync from gitignore.
+  * When sign text is changed a manual redraw is needed. (Pontus Lietzler)
+  * Corrupted text properties when expanding spaces.
+  * prop_find() is not implemented.
+  * VAR_SPECIAL is also used for booleans.
+  * Illegal memory access when using 'cindent'.
+  * &quot;make cmdidxs&quot; fails.
+  * Info about sourced scripts is scattered.
+  * Byte2line() does not work correctly with text properties. (Billie Cleek)
+  * BufEnter autocmd not triggered on &quot;:tab drop&quot;. (Andy Stewart)
+  * Crash when using gettabwinvar() with invalid arguments. (Yilin Yang)
+  * Crash when cycling to buffers involving popup window .
+  * Message test fails on some platforms. (Elimar Riesebieter)
+  * Wrong size argument to vim_snprintf(). (Dominique Pelle)
+  * Diffmode completion doesn't use per-window setting.
+  * Some corners of vim_snprintf() are not tested.
+  * ERROR_UNKNOWN clashes on some systems.
+  * Crash when using Python 3 with &quot;utf32&quot; encoding. (Dominique Pelle)
+  * ETYPE_ is used for two different enums.
+  * Crash when using Python 3 with &quot;debug&quot; encoding. (Dominique Pelle)
+  * Initializing globals with COMMA is clumsy.
+  * Python 3 unicode test sometimes fails.
+  * Python 3 unicode test still sometimes fails.
+  * settagstack() cannot truncate at current index.
+  * Expanding &lt;sfile&gt; works differently the second time.
+  * Python 3 unicode test still fails on MS-Windows.
+  * Globals using INIT4() are not in the tags file.
+  * When reusing a buffer listeners are not cleared. (Axel Forsman)</comment>
+    <requestid>764661</requestid>
+  </revision>
 </revisionlist>

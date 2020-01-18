@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:54:34 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.0119, fixes the following problems
+  * Printf formats are not exactly right.
+  * Hgignore is out of sync from gitignore.
+  * When sign text is changed a manual redraw is needed. (Pontus Lietzler)
+  * Corrupted text properties when expanding spaces.
+  * prop_find() is not implemented.
+  * VAR_SPECIAL is also used for booleans.
+  * Illegal memory access when using 'cindent'.
+  * "make cmdidxs" fails.
+  * Info about sourced scripts is scattered.
+  * Byte2line() does not work correctly with text properties. (Billie Cleek)
+  * BufEnter autocmd not triggered on ":tab drop". (Andy Stewart)
+  * Crash when using gettabwinvar() with invalid arguments. (Yilin Yang)
+  * Crash when cycling to buffers involving popup window .
+  * Message test fails on some platforms. (Elimar Riesebieter)
+  * Wrong size argument to vim_snprintf(). (Dominique Pelle)
+  * Diffmode completion doesn't use per-window setting.
+  * Some corners of vim_snprintf() are not tested.
+  * ERROR_UNKNOWN clashes on some systems.
+  * Crash when using Python 3 with "utf32" encoding. (Dominique Pelle)
+  * ETYPE_ is used for two different enums.
+  * Crash when using Python 3 with "debug" encoding. (Dominique Pelle)
+  * Initializing globals with COMMA is clumsy.
+  * Python 3 unicode test sometimes fails.
+  * Python 3 unicode test still sometimes fails.
+  * settagstack() cannot truncate at current index.
+  * Expanding <sfile> works differently the second time.
+  * Python 3 unicode test still fails on MS-Windows.
+  * Globals using INIT4() are not in the tags file.
+  * When reusing a buffer listeners are not cleared. (Axel Forsman)
+  * Text properties wrong when tabs and spaces are exchanged.
+  * Complete item "user_data" can only be a string.
+  * Dead code in builtin functions.
+  * Build error for small version. (Tony Mechelynck)
+  * Crash in command line expansion when out of memory.
+  * Insufficient tests for tags; bug in using extra tag field when using an
+  ex command to position the cursor.
+  * Crash when running out of memory in :setfiletype completion.
+  * Generated files show up in git status.
+  * Compiler warnings for size_t / int types.
+  * Tags functionality insufficiently tested.
+  * win_splitmove() can make Vim hang.
+  * Cannot specify exit code for :cquit.
+  * Cannot create tiny popup window in last column. (Daniel Steinberg)
+  * Crash with autocommand and spellfile. (Tim Pope)
+  * Exe stack length can be wrong without being detected.
+  * Use of NULL pointer when out of memory.
+  * Macros for Ruby are too complicated.
+  * Crash when passing null object to ":echomsg".
+  * Messages test fails in small version.
+  * Using null object with execute() has strange effects.
+  * Using channel or job with ":execute" has strange effects.
+  * Vim license not easy to find on github.
+
+-------------------------------------------------------------------
 Mon Dec 30 21:12:22 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.0063, fixes the following problems
