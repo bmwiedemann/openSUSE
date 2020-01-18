@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 10:00:30 UTC 2020 - ghe@suse.com
+
+- Update lvm.conf file (bsc#1159238)
+  - enable issue_discards by default
+
+-------------------------------------------------------------------
 Mon Dec 23 07:22:00 UTC 2019 - heming.zhao@suse.com
 
 - LVM Metadata Error: Error writing device at 4096 length 512 (bsc#1150021)
