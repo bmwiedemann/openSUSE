@@ -1,7 +1,7 @@
 #
 # spec file for package python-backoff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-backoff
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        Function decoration for backoff and retry
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/litl/backoff
+URL:            https://github.com/litl/backoff
 Source0:        https://files.pythonhosted.org/packages/source/b/backoff/backoff-%{version}.tar.gz
 # https://github.com/litl/backoff/issues/75
 # github repo does not have setup.py
 Source1:        tests.tar.bz2
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -66,7 +65,6 @@ rm -r tests/python35
 %pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
