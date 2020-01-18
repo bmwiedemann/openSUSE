@@ -1,0 +1,1689 @@
+From bd8fcb701645626ce6c442601b009b5dbda22531 Mon Sep 17 00:00:00 2001
+From: Alexander Akulich <akulichalexander@gmail.com>
+Date: Thu, 19 Sep 2019 00:39:25 +0300
+Subject: [PATCH] Tools: Sync with TelepathyQt (make compatible with Python 3)
+
+Test Plan: Do a clear build without Python 2 in the build environment.
+
+Reviewers: #kde_telepathy, davidedmundson, apol, heikobecker
+
+Subscribers: asturmlechner
+
+Tags: #kde_telepathy
+
+Differential Revision: https://phabricator.kde.org/D24065
+---
+ tools/CMakeLists.txt           |   1 -
+ tools/c-constants-gen.py       |  82 ++++++++----
+ tools/glib-ginterface-gen.py   | 222 +++++++++++++++++++--------------
+ tools/glib-gtypes-generator.py | 119 ++++++++++--------
+ tools/glib-interfaces-gen.py   | 102 +++++++++++++--
+ tools/libglibcodegen.py        |  48 ++++++-
+ tools/libqtcodegen.py          |  24 ++--
+ tools/libtpcodegen.py          |  34 ++++-
+ tools/manager-file.py          |  55 ++++----
+ tools/qt-client-gen.py         |  17 +--
+ tools/qt-constants-gen.py      |   7 +-
+ tools/qt-svc-gen.py            |  27 ++--
+ tools/qt-types-gen.py          |  56 +++++++--
+ tools/xincludator.py           |  18 ++-
+ 14 files changed, 553 insertions(+), 259 deletions(-)
+
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index e5f3c41..dba0b28 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -81,7 +81,6 @@ set(toolchain_files
+     glib-ginterface-gen.py
+     glib-gtypes-generator.py
+     glib-interfaces-gen.py
+-    glib-signals-marshal-gen.py
+     libtpcodegen.py
+     libglibcodegen.py
+     libqtcodegen.py
+diff --git a/tools/c-constants-gen.py b/tools/c-constants-gen.py
+index 8969ffd..a08afee 100644
+--- a/tools/c-constants-gen.py
++++ b/tools/c-constants-gen.py
+@@ -3,21 +3,32 @@
+ from sys import argv, stdout, stderr
+ import xml.dom.minidom
+ 
++from libtpcodegen import file_set_contents, u
+ from libglibcodegen import NS_TP, get_docstring, \
+         get_descendant_text, get_by_path
+ 
+ class Generator(object):
+-    def __init__(self, prefix, dom):
++    def __init__(self, prefix, dom, output_base):
+         self.prefix = prefix + '_'
+         self.spec = get_by_path(dom, "spec")[0]
+ 
++        self.output_base = output_base
++        self.__header = []
++        self.__docs = []
++
+     def __call__(self):
+         self.do_header()
+         self.do_body()
+         self.do_footer()
+ 
++        file_set_contents(self.output_base + '.h', u('').join(self.__header).encode('utf-8'))
++        file_set_contents(self.output_base + '-gtk-doc.h', u('').join(self.__docs).encode('utf-8'))
++
+     def write(self, code):
+-        stdout.write(code.encode('utf-8'))
++        self.__header.append(code)
++
++    def d(self, code):
++        self.__docs.append(code)
+ 
+     # Header
+     def do_header(self):
+@@ -54,25 +65,26 @@ def do_flags(self, flags):
+         value_prefix = flags.getAttribute('singular') or \
+                        flags.getAttribute('value-prefix') or \
+                        flags.getAttribute('name')
+-        self.write("""\
++        self.d("""\
+ /**
+- *
+-%s:
++ * %s:
+ """ % (self.prefix + name).replace('_', ''))
+         for flag in get_by_path(flags, 'flag'):
+             self.do_gtkdoc(flag, value_prefix)
+-        self.write(' *\n')
++        self.d(' *\n')
+         docstrings = get_by_path(flags, 'docstring')
+         if docstrings:
+-            self.write("""\
++            self.d("""\
+  * <![CDATA[%s]]>
+  *
+ """ % get_descendant_text(docstrings).replace('\n', ' '))
+-        self.write("""\
++        self.d("""\
+  * Bitfield/set of flags generated from the Telepathy specification.
+  */
+-typedef enum {
+ """)
++
++        self.write("typedef enum /*< flags >*/ {\n")
++
+         for flag in get_by_path(flags, 'flag'):
+             self.do_val(flag, value_prefix)
+         self.write("""\
+@@ -87,40 +99,56 @@ def do_enum(self, enum):
+                        enum.getAttribute('name')
+         name_plural = enum.getAttribute('plural') or \
+                       enum.getAttribute('name') + 's'
+-        self.write("""\
++        self.d("""\
+ /**
+- *
+-%s:
++ * %s:
+ """ % (self.prefix + name).replace('_', ''))
+         vals = get_by_path(enum, 'enumvalue')
+         for val in vals:
+             self.do_gtkdoc(val, value_prefix)
+-        self.write(' *\n')
++        self.d(' *\n')
+         docstrings = get_by_path(enum, 'docstring')
+         if docstrings:
+-            self.write("""\
++            self.d("""\
+  * <![CDATA[%s]]>
+  *
+ """ % get_descendant_text(docstrings).replace('\n', ' '))
+-        self.write("""\
++        self.d("""\
+  * Bitfield/set of flags generated from the Telepathy specification.
+  */
+-typedef enum {
+ """)
++
++        self.write("typedef enum {\n")
++
+         for val in vals:
+             self.do_val(val, value_prefix)
+-        self.write("""\
+-} %(mixed-name)s;
++        self.write("} %s;\n" % (self.prefix + name).replace('_', ''))
+ 
++        self.d("""\
+ /**
+- * NUM_%(upper-plural)s:
++ * %(upper-prefix)sNUM_%(upper-plural)s:
+  *
+  * 1 higher than the highest valid value of #%(mixed-name)s.
+  */
+-#define NUM_%(upper-plural)s (%(last-val)s+1)
++
++/**
++ * NUM_%(upper-prefix)s%(upper-plural)s: (skip)
++ *
++ * 1 higher than the highest valid value of #%(mixed-name)s.
++ * In new code, use %(upper-prefix)sNUM_%(upper-plural)s instead.
++ */
++""" % {'mixed-name' : (self.prefix + name).replace('_', ''),
++       'upper-prefix' : self.prefix.upper(),
++       'upper-plural' : name_plural.upper(),
++       'last-val' : vals[-1].getAttribute('value')})
++
++        self.write("""\
++#define %(upper-prefix)sNUM_%(upper-plural)s (%(last-val)s+1)
++#define NUM_%(upper-prefix)s%(upper-plural)s %(upper-prefix)sNUM_%(upper-plural)s
+ 
+ """ % {'mixed-name' : (self.prefix + name).replace('_', ''),
+-       'upper-plural' : (self.prefix + name_plural).upper(),
++       'upper-prefix' : self.prefix.upper(),
++       'upper-plural' : name_plural.upper(),
+        'last-val' : vals[-1].getAttribute('value')})
+ 
+     def do_val(self, val, value_prefix):
+@@ -133,13 +161,13 @@ def do_val(self, val, value_prefix):
+         self.write('    %s = %s,\n' % (use_name, val.getAttribute('value')))
+ 
+     def do_gtkdoc(self, node, value_prefix):
+-        self.write(' * @')
+-        self.write((self.prefix + value_prefix + '_' +
++        self.d(' * @')
++        self.d((self.prefix + value_prefix + '_' +
+             node.getAttribute('suffix')).upper())
+-        self.write(': <![CDATA[')
++        self.d(': <![CDATA[')
+         docstring = get_by_path(node, 'docstring')
+-        self.write(get_descendant_text(docstring).replace('\n', ' '))
+-        self.write(']]>\n')
++        self.d(get_descendant_text(docstring).replace('\n', ' '))
++        self.d(']]>\n')
+ 
+     # Footer
+     def do_footer(self):
+@@ -151,4 +179,4 @@ def do_footer(self):
+ 
+ if __name__ == '__main__':
+     argv = argv[1:]
+-    Generator(argv[0], xml.dom.minidom.parse(argv[1]))()
++    Generator(argv[0], xml.dom.minidom.parse(argv[1]), argv[2])()
+diff --git a/tools/glib-ginterface-gen.py b/tools/glib-ginterface-gen.py
+index 13f7f69..c0ce20d 100644
+--- a/tools/glib-ginterface-gen.py
++++ b/tools/glib-ginterface-gen.py
+@@ -26,13 +26,23 @@
+ import os.path
+ import xml.dom.minidom
+ 
+-from libglibcodegen import Signature, type_to_gtype, cmp_by_name, \
+-        NS_TP, dbus_gutils_wincaps_to_uscore, \
+-        signal_to_marshal_name, method_to_glue_marshal_name
++from libtpcodegen import file_set_contents, key_by_name, u
++from libglibcodegen import Signature, type_to_gtype, \
++        NS_TP, dbus_gutils_wincaps_to_uscore
+ 
+ 
+ NS_TP = "http://telepathy.freedesktop.org/wiki/DbusSpec#extensions-v0"
+ 
++def get_emits_changed(node):
++    try:
++        return [
++            annotation.getAttribute('value')
++            for annotation in node.getElementsByTagName('annotation')
++            if annotation.getAttribute('name') == 'org.freedesktop.DBus.Property.EmitsChangedSignal'
++            ][0]
++    except IndexError:
++        return None
++
+ class Generator(object):
+ 
+     def __init__(self, dom, prefix, basename, signal_marshal_prefix,
+@@ -41,6 +51,7 @@ def __init__(self, dom, prefix, basename, signal_marshal_prefix,
+         self.dom = dom
+         self.__header = []
+         self.__body = []
++        self.__docs = []
+ 
+         assert prefix.endswith('_')
+         assert not signal_marshal_prefix.endswith('_')
+@@ -79,6 +90,9 @@ def h(self, s):
+     def b(self, s):
+         self.__body.append(s)
+ 
++    def d(self, s):
++        self.__docs.append(s)
++
+     def do_node(self, node):
+         node_name = node.getAttribute('name').replace('/', '')
+         node_name_mixed = self.node_name_mixed = node_name.replace('_', '')
+@@ -98,6 +112,8 @@ def do_node(self, node):
+         if tmp and not self.allow_havoc:
+             raise AssertionError('%s is %s' % (self.iface_name, tmp))
+ 
++        iface_emits_changed = get_emits_changed(interface)
++
+         self.b('static const DBusGObjectInfo _%s%s_object_info;'
+                % (self.prefix_, node_name_lc))
+         self.b('')
+@@ -158,54 +174,54 @@ def do_node(self, node):
+         self.b('}')
+         self.b('')
+ 
+-        self.h('/**')
+-        self.h(' * %s%s:' % (self.Prefix, node_name_mixed))
+-        self.h(' *')
+-        self.h(' * Dummy typedef representing any implementation of this '
++        self.d('/**')
++        self.d(' * %s%s:' % (self.Prefix, node_name_mixed))
++        self.d(' *')
++        self.d(' * Dummy typedef representing any implementation of this '
+                'interface.')
+-        self.h(' */')
++        self.d(' */')
++
+         self.h('typedef struct _%s%s %s%s;'
+                % (self.Prefix, node_name_mixed, self.Prefix, node_name_mixed))
+         self.h('')
+-        self.h('/**')
+-        self.h(' * %s%sClass:' % (self.Prefix, node_name_mixed))
+-        self.h(' *')
+-        self.h(' * The class of %s%s.' % (self.Prefix, node_name_mixed))
++
++        self.d('/**')
++        self.d(' * %s%sClass:' % (self.Prefix, node_name_mixed))
++        self.d(' *')
++        self.d(' * The class of %s%s.' % (self.Prefix, node_name_mixed))
+ 
+         if methods:
+-            self.h(' *')
+-            self.h(' * In a full implementation of this interface (i.e. all')
+-            self.h(' * methods implemented), the interface initialization')
+-            self.h(' * function used in G_IMPLEMENT_INTERFACE() would')
+-            self.h(' * typically look like this:')
+-            self.h(' *')
+-            self.h(' * <programlisting>')
+-            self.h(' * static void')
+-            self.h(' * implement_%s (gpointer klass,' % self.node_name_lc)
+-            self.h(' *     gpointer unused G_GNUC_UNUSED)')
+-            self.h(' * {')
+-            # "#" is special to gtkdoc under some circumstances; it appears
+-            # that escaping "##" as "#<!---->#" or "&#35;&#35;" doesn't work,
+-            # but adding an extra hash symbol does. Thanks, gtkdoc :-(
+-            self.h(' * #define IMPLEMENT(x) %s%s_implement_###x (\\'
++            self.d(' *')
++            self.d(' * In a full implementation of this interface (i.e. all')
++            self.d(' * methods implemented), the interface initialization')
++            self.d(' * function used in G_IMPLEMENT_INTERFACE() would')
++            self.d(' * typically look like this:')
++            self.d(' *')
++            self.d(' * <programlisting>')
++            self.d(' * static void')
++            self.d(' * implement_%s (gpointer klass,' % self.node_name_lc)
++            self.d(' *     gpointer unused G_GNUC_UNUSED)')
++            self.d(' * {')
++            self.d(' * #define IMPLEMENT(x) %s%s_implement_&num;&num;x (\\'
+                    % (self.prefix_, self.node_name_lc))
+-            self.h(' *   klass, my_object_###x)')
++            self.d(' *   klass, my_object_&num;&num;x)')
+ 
+             for method in methods:
+                 class_member_name = method.getAttribute('tp:name-for-bindings')
+                 class_member_name = class_member_name.lower()
+-                self.h(' *   IMPLEMENT (%s);' % class_member_name)
++                self.d(' *   IMPLEMENT (%s);' % class_member_name)
+ 
+-            self.h(' * #undef IMPLEMENT')
+-            self.h(' * }')
+-            self.h(' * </programlisting>')
++            self.d(' * #undef IMPLEMENT')
++            self.d(' * }')
++            self.d(' * </programlisting>')
+         else:
+-            self.h(' * This interface has no D-Bus methods, so an')
+-            self.h(' * implementation can typically pass %NULL to')
+-            self.h(' * G_IMPLEMENT_INTERFACE() as the interface')
+-            self.h(' * initialization function.')
++            self.d(' * This interface has no D-Bus methods, so an')
++            self.d(' * implementation can typically pass %NULL to')
++            self.d(' * G_IMPLEMENT_INTERFACE() as the interface')
++            self.d(' * initialization function.')
+ 
+-        self.h(' */')
++        self.d(' */')
++        self.d('')
+ 
+         self.h('typedef struct _%s%sClass %s%sClass;'
+                % (self.Prefix, node_name_mixed, self.Prefix, node_name_mixed))
+@@ -260,6 +276,16 @@ def do_node(self, node):
+                     flags = ('TP_DBUS_PROPERTIES_MIXIN_FLAG_READ | '
+                              'TP_DBUS_PROPERTIES_MIXIN_FLAG_WRITE')
+ 
++                prop_emits_changed = get_emits_changed(m)
++
++                if prop_emits_changed is None:
++                    prop_emits_changed = iface_emits_changed
++
++                if prop_emits_changed == 'true':
++                    flags += ' | TP_DBUS_PROPERTIES_MIXIN_FLAG_EMITS_CHANGED'
++                elif prop_emits_changed == 'invalidates':
++                    flags += ' | TP_DBUS_PROPERTIES_MIXIN_FLAG_EMITS_INVALIDATED'
++
+                 self.b('      { 0, %s, "%s", 0, NULL, NULL }, /* %s */'
+                        % (flags, m.getAttribute('type'), m.getAttribute('name')))
+ 
+@@ -389,8 +415,7 @@ def do_method_glue(self, method, offset):
+                     'not match' % (method.getAttribute('name'), lc_name))
+         lc_name = lc_name.lower()
+ 
+-        marshaller = method_to_glue_marshal_name(method,
+-                self.signal_marshal_prefix)
++        marshaller = 'g_cclosure_marshal_generic'
+         wrapper = self.prefix_ + self.node_name_lc + '_' + lc_name
+ 
+         self.b("  { (GCallback) %s, %s, %d }," % (wrapper, marshaller, offset))
+@@ -418,7 +443,7 @@ def get_method_impl_names(self, method):
+ 
+         stub_name = (self.prefix_ + self.node_name_lc + '_' +
+                      class_member_name)
+-        return (stub_name + '_impl', class_member_name)
++        return (stub_name + '_impl', class_member_name + '_cb')
+ 
+     def do_method(self, method):
+         assert self.node_name_mixed is not None
+@@ -477,18 +502,19 @@ def do_method(self, method):
+             else:
+                 out_args.append(struct)
+ 
+-        # Implementation type declaration (in header, docs in body)
+-        self.b('/**')
+-        self.b(' * %s:' % impl_name)
+-        self.b(' * @self: The object implementing this interface')
++        # Implementation type declaration (in header, docs separated)
++        self.d('/**')
++        self.d(' * %s:' % impl_name)
++        self.d(' * @self: The object implementing this interface')
+         for (ctype, name) in in_args:
+-            self.b(' * @%s: %s (FIXME, generate documentation)'
++            self.d(' * @%s: %s (FIXME, generate documentation)'
+                    % (name, ctype))
+-        self.b(' * @context: Used to return values or throw an error')
+-        self.b(' *')
+-        self.b(' * The signature of an implementation of the D-Bus method')
+-        self.b(' * %s on interface %s.' % (dbus_method_name, self.iface_name))
+-        self.b(' */')
++        self.d(' * @context: Used to return values or throw an error')
++        self.d(' *')
++        self.d(' * The signature of an implementation of the D-Bus method')
++        self.d(' * %s on interface %s.' % (dbus_method_name, self.iface_name))
++        self.d(' */')
++
+         self.h('typedef void (*%s) (%s%s *self,'
+           % (impl_name, self.Prefix, self.node_name_mixed))
+         for (ctype, name) in in_args:
+@@ -506,7 +532,7 @@ def do_method(self, method):
+             self.b('    %s%s,' % (ctype, name))
+         self.b('    DBusGMethodInvocation *context)')
+         self.b('{')
+-        self.b('  %s impl = (%s%s_GET_CLASS (self)->%s);'
++        self.b('  %s impl = (%s%s_GET_CLASS (self)->%s_cb);'
+           % (impl_name, self.PREFIX_, self.node_name_uc, class_member_name))
+         self.b('')
+         self.b('  if (impl != NULL)')
+@@ -533,38 +559,41 @@ def do_method(self, method):
+                % (self.prefix_, self.node_name_lc, class_member_name,
+                   self.Prefix, self.node_name_mixed, impl_name))
+ 
+-        self.b('/**')
+-        self.b(' * %s%s_implement_%s:'
++        self.d('/**')
++        self.d(' * %s%s_implement_%s:'
+                % (self.prefix_, self.node_name_lc, class_member_name))
+-        self.b(' * @klass: A class whose instances implement this interface')
+-        self.b(' * @impl: A callback used to implement the %s D-Bus method'
++        self.d(' * @klass: A class whose instances implement this interface')
++        self.d(' * @impl: A callback used to implement the %s D-Bus method'
+                % dbus_method_name)
+-        self.b(' *')
+-        self.b(' * Register an implementation for the %s method in the vtable'
++        self.d(' *')
++        self.d(' * Register an implementation for the %s method in the vtable'
+                % dbus_method_name)
+-        self.b(' * of an implementation of this interface. To be called from')
+-        self.b(' * the interface init function.')
+-        self.b(' */')
++        self.d(' * of an implementation of this interface. To be called from')
++        self.d(' * the interface init function.')
++        self.d(' */')
++
+         self.b('void')
+         self.b('%s%s_implement_%s (%s%sClass *klass, %s impl)'
+                % (self.prefix_, self.node_name_lc, class_member_name,
+                   self.Prefix, self.node_name_mixed, impl_name))
+         self.b('{')
+-        self.b('  klass->%s = impl;' % class_member_name)
++        self.b('  klass->%s_cb = impl;' % class_member_name)
+         self.b('}')
+         self.b('')
+ 
+         # Return convenience function (static inline, in header)
+-        self.h('/**')
+-        self.h(' * %s:' % ret_name)
+-        self.h(' * @context: The D-Bus method invocation context')
++        self.d('/**')
++        self.d(' * %s:' % ret_name)
++        self.d(' * @context: The D-Bus method invocation context')
+         for (ctype, name) in out_args:
+-            self.h(' * @%s: %s (FIXME, generate documentation)'
++            self.d(' * @%s: %s (FIXME, generate documentation)'
+                    % (name, ctype))
+-        self.h(' *')
+-        self.h(' * Return successfully by calling dbus_g_method_return().')
+-        self.h(' * This inline function exists only to provide type-safety.')
+-        self.h(' */')
++        self.d(' *')
++        self.d(' * Return successfully by calling dbus_g_method_return().')
++        self.d(' * This inline function exists only to provide type-safety.')
++        self.d(' */')
++        self.d('')
++
+         tmp = (['DBusGMethodInvocation *context'] +
+                [ctype + name for (ctype, name) in out_args])
+         self.h('static inline')
+@@ -634,17 +663,17 @@ def do_signal(self, signal):
+ 
+         # FIXME: emit docs
+ 
+-        self.b('/**')
+-        self.b(' * %s:' % stub_name)
+-        self.b(' * @instance: The object implementing this interface')
++        self.d('/**')
++        self.d(' * %s:' % stub_name)
++        self.d(' * @instance: The object implementing this interface')
+         for (ctype, name, gtype) in args:
+-            self.b(' * @%s: %s (FIXME, generate documentation)'
++            self.d(' * @%s: %s (FIXME, generate documentation)'
+                    % (name, ctype))
+-        self.b(' *')
+-        self.b(' * Type-safe wrapper around g_signal_emit to emit the')
+-        self.b(' * %s signal on interface %s.'
++        self.d(' *')
++        self.d(' * Type-safe wrapper around g_signal_emit to emit the')
++        self.d(' * %s signal on interface %s.'
+                % (dbus_name, self.iface_name))
+-        self.b(' */')
++        self.d(' */')
+ 
+         self.b('void')
+         self.b(('%s (' % stub_name) + (',\n    '.join(tmp)) + ')')
+@@ -660,16 +689,20 @@ def do_signal(self, signal):
+ 
+         signal_name = dbus_gutils_wincaps_to_uscore(dbus_name).replace('_',
+                 '-')
+-        in_base_init.append('  /**')
+-        in_base_init.append('   * %s%s::%s:'
++
++        self.d('/**')
++        self.d(' * %s%s::%s:'
+                 % (self.Prefix, self.node_name_mixed, signal_name))
++        self.d(' * @self: an object')
+         for (ctype, name, gtype) in args:
+-            in_base_init.append('   * @%s: %s (FIXME, generate documentation)'
++            self.d(' * @%s: %s (FIXME, generate documentation)'
+                    % (name, ctype))
+-        in_base_init.append('   *')
+-        in_base_init.append('   * The %s D-Bus signal is emitted whenever '
++        self.d(' *')
++        self.d(' * The %s D-Bus signal is emitted whenever '
+                 'this GObject signal is.' % dbus_name)
+-        in_base_init.append('   */')
++        self.d(' */')
++        self.d('')
++
+         in_base_init.append('  %s_signals[%s] ='
+                             % (self.node_name_lc, const_name))
+         in_base_init.append('  g_signal_new ("%s",' % signal_name)
+@@ -677,8 +710,7 @@ def do_signal(self, signal):
+         in_base_init.append('      G_SIGNAL_RUN_LAST|G_SIGNAL_DETAILED,')
+         in_base_init.append('      0,')
+         in_base_init.append('      NULL, NULL,')
+-        in_base_init.append('      %s,'
+-                % signal_to_marshal_name(signal, self.signal_marshal_prefix))
++        in_base_init.append('      g_cclosure_marshal_generic,')
+         in_base_init.append('      G_TYPE_NONE,')
+         tmp = ['%d' % len(args)] + [gtype for (ctype, name, gtype) in args]
+         in_base_init.append('      %s);' % ',\n      '.join(tmp))
+@@ -695,13 +727,14 @@ def have_properties(self, nodes):
+ 
+     def __call__(self):
+         nodes = self.dom.getElementsByTagName('node')
+-        nodes.sort(cmp_by_name)
++        nodes.sort(key=key_by_name)
+ 
+         self.h('#include <glib-object.h>')
+         self.h('#include <dbus/dbus-glib.h>')
+ 
+-        if self.have_properties(nodes):
+-            self.h('#include <telepathy-glib/dbus-properties-mixin.h>')
++        for header in self.headers:
++            self.h('#include %s' % header)
++        self.h('')
+ 
+         self.h('')
+         self.h('G_BEGIN_DECLS')
+@@ -709,9 +742,6 @@ def __call__(self):
+ 
+         self.b('#include "%s.h"' % self.basename)
+         self.b('')
+-        for header in self.headers:
+-            self.b('#include %s' % header)
+-        self.b('')
+ 
+         for node in nodes:
+             self.do_node(node)
+@@ -725,12 +755,12 @@ def __call__(self):
+ 
+         self.h('')
+         self.b('')
+-        open(self.basename + '.h', 'w').write('\n'.join(self.__header))
+-        open(self.basename + '.c', 'w').write('\n'.join(self.__body))
+-
++        file_set_contents(self.basename + '.h', u('\n').join(self.__header).encode('utf-8'))
++        file_set_contents(self.basename + '.c', u('\n').join(self.__body).encode('utf-8'))
++        file_set_contents(self.basename + '-gtk-doc.h', u('\n').join(self.__docs).encode('utf-8'))
+ 
+ def cmdline_error():
+-    print """\
++    print("""\
+ usage:
+     gen-ginterface [OPTIONS] xmlfile Prefix_
+ options:
+@@ -750,7 +780,7 @@ def cmdline_error():
+             void symbol (DBusGMethodInvocation *context)
+         and return some sort of "not implemented" error via
+             dbus_g_method_return_error (context, ...)
+-"""
++""")
+     sys.exit(1)
+ 
+ 
+diff --git a/tools/glib-gtypes-generator.py b/tools/glib-gtypes-generator.py
+index ebc2ad4..1477bd3 100644
+--- a/tools/glib-gtypes-generator.py
++++ b/tools/glib-gtypes-generator.py
+@@ -23,6 +23,7 @@
+ import sys
+ import xml.dom.minidom
+ 
++from libtpcodegen import file_set_contents, u
+ from libglibcodegen import escape_as_identifier, \
+                            get_docstring, \
+                            NS_TP, \
+@@ -42,14 +43,16 @@ def __init__(self, dom, output, mixed_case_prefix):
+         self.PREFIX_ = self.Prefix.upper() + '_'
+         self.prefix_ = self.Prefix.lower() + '_'
+ 
+-        self.header = open(output + '.h', 'w')
+-        self.body = open(output + '-body.h', 'w')
++        self.header = []
++        self.body = []
++        self.docs = []
++        self.output = output
+ 
+-        for f in (self.header, self.body):
+-            f.write('/* Auto-generated, do not edit.\n *\n'
+-                    ' * This file may be distributed under the same terms\n'
+-                    ' * as the specification from which it was generated.\n'
+-                    ' */\n\n')
++        for f in (self.header, self.body, self.docs):
++            f.append('/* Auto-generated, do not edit.\n *\n'
++                     ' * This file may be distributed under the same terms\n'
++                     ' * as the specification from which it was generated.\n'
++                     ' */\n\n')
+ 
+         # keys are e.g. 'sv', values are the key escaped
+         self.need_mappings = {}
+@@ -65,10 +68,13 @@ def __init__(self, dom, output, mixed_case_prefix):
+         self.need_other_arrays = {}
+ 
+     def h(self, code):
+-        self.header.write(code.encode("utf-8"))
++        self.header.append(code)
+ 
+     def c(self, code):
+-        self.body.write(code.encode("utf-8"))
++        self.body.append(code)
++
++    def d(self, code):
++        self.docs.append(code)
+ 
+     def do_mapping_header(self, mapping):
+         members = mapping.getElementsByTagNameNS(NS_TP, 'member')
+@@ -85,41 +91,41 @@ def do_mapping_header(self, mapping):
+ 
+         docstring = get_docstring(mapping) or '(Undocumented)'
+ 
+-        self.h('/**\n * %s:\n *\n' % name)
+-        self.h(' * %s\n' % xml_escape(docstring))
+-        self.h(' *\n')
+-        self.h(' * This macro expands to a call to a function\n')
+-        self.h(' * that returns the #GType of a #GHashTable\n')
+-        self.h(' * appropriate for representing a D-Bus\n')
+-        self.h(' * dictionary of signature\n')
+-        self.h(' * <literal>a{%s}</literal>.\n' % impl_sig)
+-        self.h(' *\n')
++        self.d('/**\n * %s:\n *\n' % name.strip())
++        self.d(' * %s\n' % xml_escape(docstring))
++        self.d(' *\n')
++        self.d(' * This macro expands to a call to a function\n')
++        self.d(' * that returns the #GType of a #GHashTable\n')
++        self.d(' * appropriate for representing a D-Bus\n')
++        self.d(' * dictionary of signature\n')
++        self.d(' * <literal>a{%s}</literal>.\n' % impl_sig)
++        self.d(' *\n')
+ 
+         key, value = members
+ 
+-        self.h(' * Keys (D-Bus type <literal>%s</literal>,\n'
++        self.d(' * Keys (D-Bus type <literal>%s</literal>,\n'
+                           % key.getAttribute('type'))
+         tp_type = key.getAttributeNS(NS_TP, 'type')
+         if tp_type:
+-            self.h(' * type <literal>%s</literal>,\n' % tp_type)
+-        self.h(' * named <literal>%s</literal>):\n'
++            self.d(' * type <literal>%s</literal>,\n' % tp_type)
++        self.d(' * named <literal>%s</literal>):\n'
+                           % key.getAttribute('name'))
+         docstring = get_docstring(key) or '(Undocumented)'
+-        self.h(' * %s\n' % xml_escape(docstring))
+-        self.h(' *\n')
++        self.d(' * %s\n' % xml_escape(docstring))
++        self.d(' *\n')
+ 
+-        self.h(' * Values (D-Bus type <literal>%s</literal>,\n'
++        self.d(' * Values (D-Bus type <literal>%s</literal>,\n'
+                           % value.getAttribute('type'))
+         tp_type = value.getAttributeNS(NS_TP, 'type')
+         if tp_type:
+-            self.h(' * type <literal>%s</literal>,\n' % tp_type)
+-        self.h(' * named <literal>%s</literal>):\n'
++            self.d(' * type <literal>%s</literal>,\n' % tp_type)
++        self.d(' * named <literal>%s</literal>):\n'
+                           % value.getAttribute('name'))
+         docstring = get_docstring(value) or '(Undocumented)'
+-        self.h(' * %s\n' % xml_escape(docstring))
+-        self.h(' *\n')
++        self.d(' * %s\n' % xml_escape(docstring))
++        self.d(' *\n')
+ 
+-        self.h(' */\n')
++        self.d(' */\n')
+ 
+         self.h('#define %s (%s ())\n\n' % (name, impl))
+         self.need_mappings[impl_sig] = esc_impl_sig
+@@ -130,11 +136,12 @@ def do_mapping_header(self, mapping):
+             contents_sig = 'a{' + impl_sig + '}'
+             esc_contents_sig = escape_as_identifier(contents_sig)
+             impl = self.prefix_ + 'type_dbus_array_of_' + esc_contents_sig
+-            self.h('/**\n * %s:\n\n' % gtype_name)
+-            self.h(' * Expands to a call to a function\n')
+-            self.h(' * that returns the #GType of a #GPtrArray\n')
+-            self.h(' * of #%s.\n' % name)
+-            self.h(' */\n')
++            self.d('/**\n * %s:\n\n' % gtype_name)
++            self.d(' * Expands to a call to a function\n')
++            self.d(' * that returns the #GType of a #GPtrArray\n')
++            self.d(' * of #%s.\n' % name)
++            self.d(' */\n\n')
++
+             self.h('#define %s (%s ())\n\n' % (gtype_name, impl))
+             self.need_other_arrays[contents_sig] = esc_contents_sig
+ 
+@@ -157,41 +164,43 @@ def do_struct_header(self, struct):
+                 docstring = '(Undocumented)'
+         else:
+             docstring = '(Undocumented)'
+-        self.h('/**\n * %s:\n\n' % name)
+-        self.h(' * %s\n' % xml_escape(docstring))
+-        self.h(' *\n')
+-        self.h(' * This macro expands to a call to a function\n')
+-        self.h(' * that returns the #GType of a #GValueArray\n')
+-        self.h(' * appropriate for representing a D-Bus struct\n')
+-        self.h(' * with signature <literal>(%s)</literal>.\n'
++        self.d('/**\n * %s:\n\n' % name)
++        self.d(' * %s\n' % xml_escape(docstring))
++        self.d(' *\n')
++        self.d(' * This macro expands to a call to a function\n')
++        self.d(' * that returns the #GType of a #GValueArray\n')
++        self.d(' * appropriate for representing a D-Bus struct\n')
++        self.d(' * with signature <literal>(%s)</literal>.\n'
+                           % impl_sig)
+-        self.h(' *\n')
++        self.d(' *\n')
+ 
+         for i, member in enumerate(members):
+-            self.h(' * Member %d (D-Bus type '
++            self.d(' * Member %d (D-Bus type '
+                               '<literal>%s</literal>,\n'
+                               % (i, member.getAttribute('type')))
+             tp_type = member.getAttributeNS(NS_TP, 'type')
+             if tp_type:
+-                self.h(' * type <literal>%s</literal>,\n' % tp_type)
+-            self.h(' * named <literal>%s</literal>):\n'
++                self.d(' * type <literal>%s</literal>,\n' % tp_type)
++            self.d(' * named <literal>%s</literal>):\n'
+                               % member.getAttribute('name'))
+             docstring = get_docstring(member) or '(Undocumented)'
+-            self.h(' * %s\n' % xml_escape(docstring))
+-            self.h(' *\n')
++            self.d(' * %s\n' % xml_escape(docstring))
++            self.d(' *\n')
++
++        self.d(' */\n\n')
+ 
+-        self.h(' */\n')
+         self.h('#define %s (%s ())\n\n' % (name, impl))
+ 
+         array_name = struct.getAttribute('array-name')
+         if array_name != '':
+             array_name = (self.PREFIX_ + 'ARRAY_TYPE_' + array_name.upper())
+             impl = self.prefix_ + 'type_dbus_array_' + esc_impl_sig
+-            self.h('/**\n * %s:\n\n' % array_name)
+-            self.h(' * Expands to a call to a function\n')
+-            self.h(' * that returns the #GType of a #GPtrArray\n')
+-            self.h(' * of #%s.\n' % name)
+-            self.h(' */\n')
++            self.d('/**\n * %s:\n\n' % array_name)
++            self.d(' * Expands to a call to a function\n')
++            self.d(' * that returns the #GType of a #GPtrArray\n')
++            self.d(' * of #%s.\n' % name)
++            self.d(' */\n\n')
++
+             self.h('#define %s (%s ())\n\n' % (array_name, impl))
+             self.need_struct_arrays[impl_sig] = esc_impl_sig
+ 
+@@ -283,6 +292,10 @@ def __call__(self):
+             self.c('  return t;\n')
+             self.c('}\n\n')
+ 
++        file_set_contents(self.output + '.h', u('').join(self.header).encode('utf-8'))
++        file_set_contents(self.output + '-body.h', u('').join(self.body).encode('utf-8'))
++        file_set_contents(self.output + '-gtk-doc.h', u('').join(self.docs).encode('utf-8'))
++
+ if __name__ == '__main__':
+     argv = sys.argv[1:]
+ 
+diff --git a/tools/glib-interfaces-gen.py b/tools/glib-interfaces-gen.py
+index 9543968..b67d7b4 100644
+--- a/tools/glib-interfaces-gen.py
++++ b/tools/glib-interfaces-gen.py
+@@ -3,27 +3,44 @@
+ from sys import argv, stdout, stderr
+ import xml.dom.minidom
+ 
++from libtpcodegen import file_set_contents, u
+ from libglibcodegen import NS_TP, get_docstring, \
+         get_descendant_text, get_by_path
+ 
+ class Generator(object):
+     def __init__(self, prefix, implfile, declfile, dom):
+         self.prefix = prefix + '_'
+-        self.impls = open(implfile, 'w')
+-        self.decls = open(declfile, 'w')
++
++        assert declfile.endswith('.h')
++        docfile = declfile[:-2] + '-gtk-doc.h'
++
++        self.implfile = implfile
++        self.declfile = declfile
++        self.docfile = docfile
++
++        self.impls = []
++        self.decls = []
++        self.docs = []
+         self.spec = get_by_path(dom, "spec")[0]
+ 
+     def h(self, code):
+-        self.decls.write(code.encode('utf-8'))
++        self.decls.append(code)
+ 
+     def c(self, code):
+-        self.impls.write(code.encode('utf-8'))
++        self.impls.append(code)
++
++    def d(self, code):
++        self.docs.append(code)
+ 
+     def __call__(self):
+         for f in self.h, self.c:
+             self.do_header(f)
+         self.do_body()
+ 
++        file_set_contents(self.implfile, u('').join(self.impls).encode('utf-8'))
++        file_set_contents(self.declfile, u('').join(self.decls).encode('utf-8'))
++        file_set_contents(self.docfile, u('').join(self.docs).encode('utf-8'))
++
+     # Header
+     def do_header(self, f):
+         f('/* Generated from: ')
+@@ -41,6 +58,7 @@ def do_header(self, f):
+         f("""
+  */
+ 
++#include <glib.h>
+ """)
+ 
+     # Body
+@@ -50,25 +68,37 @@ def do_body(self):
+ 
+     def do_iface(self, iface):
+         parent_name = get_by_path(iface, '../@name')
+-        self.h("""\
++        self.d("""\
+ /**
+  * %(IFACE_DEFINE)s:
+  *
+  * The interface name "%(name)s"
+  */
++""" % {'IFACE_DEFINE' : (self.prefix + 'IFACE_' + \
++            parent_name).upper().replace('/', ''),
++       'name' : iface.getAttribute('name')})
++
++        self.h("""
+ #define %(IFACE_DEFINE)s \\
+ "%(name)s"
+ """ % {'IFACE_DEFINE' : (self.prefix + 'IFACE_' + \
+             parent_name).upper().replace('/', ''),
+        'name' : iface.getAttribute('name')})
+ 
+-        self.h("""
++        self.d("""
+ /**
+  * %(IFACE_QUARK_DEFINE)s:
+  *
+  * Expands to a call to a function that returns a quark for the interface \
+ name "%(name)s"
+  */
++""" % {'IFACE_QUARK_DEFINE' : (self.prefix + 'IFACE_QUARK_' + \
++            parent_name).upper().replace('/', ''),
++       'iface_quark_func' : (self.prefix + 'iface_quark_' + \
++            parent_name).lower().replace('/', ''),
++       'name' : iface.getAttribute('name')})
++
++        self.h("""
+ #define %(IFACE_QUARK_DEFINE)s \\
+   (%(iface_quark_func)s ())
+ 
+@@ -99,12 +129,20 @@ def do_iface(self, iface):
+        'name' : iface.getAttribute('name')})
+ 
+         for prop in iface.getElementsByTagNameNS(None, 'property'):
+-            self.decls.write("""
++            self.d("""
+ /**
+  * %(IFACE_PREFIX)s_%(PROP_UC)s:
+  *
+  * The fully-qualified property name "%(name)s.%(prop)s"
+  */
++""" % {'IFACE_PREFIX' : (self.prefix + 'PROP_' + \
++                parent_name).upper().replace('/', ''),
++           'PROP_UC': prop.getAttributeNS(NS_TP, "name-for-bindings").upper(),
++           'name' : iface.getAttribute('name'),
++           'prop' : prop.getAttribute('name'),
++           })
++
++            self.h("""
+ #define %(IFACE_PREFIX)s_%(PROP_UC)s \\
+ "%(name)s.%(prop)s"
+ """ % {'IFACE_PREFIX' : (self.prefix + 'PROP_' + \
+@@ -114,6 +152,56 @@ def do_iface(self, iface):
+            'prop' : prop.getAttribute('name'),
+            })
+ 
++
++        for prop in iface.getElementsByTagNameNS(NS_TP, 'contact-attribute'):
++            self.d("""
++/**
++ * %(TOKEN_PREFIX)s_%(TOKEN_UC)s:
++ *
++ * The fully-qualified contact attribute token name "%(name)s/%(prop)s"
++ */
++""" % {'TOKEN_PREFIX' : (self.prefix + 'TOKEN_' + \
++                parent_name).upper().replace('/', ''),
++           'TOKEN_UC': prop.getAttributeNS(None, "name").upper().replace("-", "_").replace(".", "_"),
++           'name' : iface.getAttribute('name'),
++           'prop' : prop.getAttribute('name'),
++           })
++
++            self.h("""
++#define %(TOKEN_PREFIX)s_%(TOKEN_UC)s \\
++"%(name)s/%(prop)s"
++""" % {'TOKEN_PREFIX' : (self.prefix + 'TOKEN_' + \
++                parent_name).upper().replace('/', ''),
++           'TOKEN_UC': prop.getAttributeNS(None, "name").upper().replace("-", "_").replace(".", "_"),
++           'name' : iface.getAttribute('name'),
++           'prop' : prop.getAttribute('name'),
++           })
++
++        for prop in iface.getElementsByTagNameNS(NS_TP, 'hct'):
++            if (prop.getAttribute('is-family') != "yes"):
++                self.d("""
++/**
++ * %(TOKEN_PREFIX)s_%(TOKEN_UC)s:
++ *
++ * The fully-qualified capability token name "%(name)s/%(prop)s"
++ */
++""" % {'TOKEN_PREFIX' : (self.prefix + 'TOKEN_' + \
++                parent_name).upper().replace('/', ''),
++           'TOKEN_UC': prop.getAttributeNS(None, "name").upper().replace("-", "_").replace(".", "_"),
++           'name' : iface.getAttribute('name'),
++           'prop' : prop.getAttribute('name'),
++           })
++
++                self.h("""
++#define %(TOKEN_PREFIX)s_%(TOKEN_UC)s \\
++"%(name)s/%(prop)s"
++""" % {'TOKEN_PREFIX' : (self.prefix + 'TOKEN_' + \
++                parent_name).upper().replace('/', ''),
++           'TOKEN_UC': prop.getAttributeNS(None, "name").upper().replace("-", "_").replace(".", "_"),
++           'name' : iface.getAttribute('name'),
++           'prop' : prop.getAttribute('name'),
++           })
++
+ if __name__ == '__main__':
+     argv = argv[1:]
+     Generator(argv[0], argv[1], argv[2], xml.dom.minidom.parse(argv[3]))()
+diff --git a/tools/libglibcodegen.py b/tools/libglibcodegen.py
+index 6a9d214..5c76f07 100644
+--- a/tools/libglibcodegen.py
++++ b/tools/libglibcodegen.py
+@@ -154,7 +154,7 @@ def type_to_gtype(s):
+         return ("GHashTable *", "DBUS_TYPE_G_STRING_STRING_HASHTABLE", "BOXED", False)
+     elif s[:2] == 'a{':  #some arbitrary hash tables
+         if s[2] not in ('y', 'b', 'n', 'q', 'i', 'u', 's', 'o', 'g'):
+-            raise Exception, "can't index a hashtable off non-basic type " + s
++            raise Exception("can't index a hashtable off non-basic type " + s)
+         first = type_to_gtype(s[2])
+         second = type_to_gtype(s[3:-1])
+         return ("GHashTable *", "(dbus_g_type_get_map (\"GHashTable\", " + first[1] + ", " + second[1] + "))", "BOXED", False)
+@@ -169,4 +169,48 @@ def type_to_gtype(s):
+         return ("GValueArray *", gtype, "BOXED", True)
+ 
+     # we just don't know ..
+-    raise Exception, "don't know the GType for " + s
++    raise Exception("don't know the GType for " + s)
++
++def move_into_gvalue(gvaluep, gtype, marshaller, name):
++    if gtype == 'G_TYPE_STRING':
++        return 'g_value_take_string (%s, %s);' % (gvaluep, name)
++    elif marshaller == 'BOXED':
++        return 'g_value_take_boxed (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_UCHAR':
++        return 'g_value_set_uchar (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_BOOLEAN':
++        return 'g_value_set_boolean (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_INT':
++        return 'g_value_set_int (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_UINT':
++        return 'g_value_set_uint (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_INT64':
++        return 'g_value_set_int (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_UINT64':
++        return 'g_value_set_uint64 (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_DOUBLE':
++        return 'g_value_set_double (%s, %s);' % (gvaluep, name)
++    else:
++        raise AssertionError("Don't know how to put %s in a GValue" % gtype)
++
++def copy_into_gvalue(gvaluep, gtype, marshaller, name):
++    if gtype == 'G_TYPE_STRING':
++        return 'g_value_set_string (%s, %s);' % (gvaluep, name)
++    elif marshaller == 'BOXED':
++        return 'g_value_set_boxed (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_UCHAR':
++        return 'g_value_set_uchar (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_BOOLEAN':
++        return 'g_value_set_boolean (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_INT':
++        return 'g_value_set_int (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_UINT':
++        return 'g_value_set_uint (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_INT64':
++        return 'g_value_set_int (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_UINT64':
++        return 'g_value_set_uint64 (%s, %s);' % (gvaluep, name)
++    elif gtype == 'G_TYPE_DOUBLE':
++        return 'g_value_set_double (%s, %s);' % (gvaluep, name)
++    else:
++        raise AssertionError("Don't know how to put %s in a GValue" % gtype)
+diff --git a/tools/libqtcodegen.py b/tools/libqtcodegen.py
+index 9ccb860..34d53a1 100644
+--- a/tools/libqtcodegen.py
++++ b/tools/libqtcodegen.py
+@@ -21,7 +21,7 @@
+ # License along with this library; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+-from sys import maxint, stderr
++from sys import maxsize, stderr
+ import re
+ from libtpcodegen import get_by_path, get_descendant_text, NS_TP, xml_escape
+ 
+@@ -31,14 +31,14 @@ def __init__(self, parent, child):
+         self.child = child
+ 
+     def __str__(self):
+-        print """
++        print("""
+     Nested <%s>s are forbidden.
+     Parent:
+         %s...
+     Child:
+         %s...
+         """ % (self.parent.nodeName, self.parent.toxml()[:100],
+-               self.child.toxml()[:100])
++               self.child.toxml()[:100]))
+ 
+ class _QtTypeBinding:
+     def __init__(self, val, inarg, outarg, array_val, custom_type, array_of,
+@@ -125,8 +125,8 @@ def get_closest_parent(el, needle):
+             parent = get_closest_parent(ref, 'interface') or get_closest_parent(ref, 'error')
+             parent_name = parent.getAttribute('name')
+             if (path + parent_name).find('.DRAFT') == -1 and (path + parent_name).find('.FUTURE') == -1:
+-                print >> stderr, 'WARNING: Failed to resolve %s to "%s" in "%s"' % (
+-                        ref.localName, path, parent_name)
++                print(('WARNING: Failed to resolve %s to "%s" in "%s"' % (
++                        ref.localName, path, parent_name)), file=stderr)
+             return path
+ 
+         if ref.localName == 'member-ref':
+@@ -166,11 +166,11 @@ def binding_from_usage(sig, tptype, custom_lists, external=False, explicit_own_n
+     custom_type = False
+     array_of = None
+ 
+-    if natives.has_key(sig):
++    if sig in natives:
+         typename, pass_by_ref, array_name = natives[sig]
+         val = typename
+         inarg = (pass_by_ref and ('const %s&' % val)) or val
+-    elif sig[0] == 'a' and natives.has_key(sig[1:]) and natives[sig[1:]][2]:
++    elif sig[0] == 'a' and sig[1:] in natives and natives[sig[1:]][2]:
+         val = natives[sig[1:]][2]
+         if explicit_own_ns:
+             val = explicit_own_ns + '::' + val
+@@ -193,7 +193,7 @@ def binding_from_usage(sig, tptype, custom_lists, external=False, explicit_own_n
+                 extra_list_nesting += 1
+                 tptype = tptype[:-2]
+ 
+-            assert custom_lists.has_key(tptype), ('No array version of custom type %s in the spec, but array version used' % tptype)
++            assert tptype in custom_lists, ('No array version of custom type %s in the spec, but array version used' % tptype)
+             val = custom_lists[tptype] + 'List' * extra_list_nesting
+         else:
+             val = tptype
+@@ -282,8 +282,8 @@ def escape_slashes(x):
+             ref.parentNode.replaceChild(text, ref)
+ 
+         splitted = ''.join([el.toxml() for el in docstring_el.childNodes]).strip(' ').strip('\n').split('\n')
+-        level = min([not match and maxint or match.end() - 1 for match in [re.match('^ *[^ ]', line) for line in splitted]])
+-        assert level != maxint
++        level = min([not match and maxsize or match.end() - 1 for match in [re.match('^ *[^ ]', line) for line in splitted]])
++        assert level != maxsize
+         lines = ['\\htmlonly'] + [line[level:] for line in splitted] + ['\\endhtmlonly']
+     else:
+         content = xml_escape(get_descendant_text(docstring_el).replace('\n', ' ').strip())
+@@ -353,13 +353,13 @@ def gather_custom_lists(spec, typesns):
+         if array_depth:
+             array_depth = int(array_depth)
+         else:
+-            array_depth = None
++            array_depth = -1
+ 
+         if array_val:
+             custom_lists[tptype] = array_val
+             custom_lists[ns + '::' + tptype] = ns + '::' + array_val
+             if array_depth >= 2:
+-                for i in xrange(array_depth):
++                for i in range(array_depth):
+                     custom_lists[tptype + ('[]' * (i+1))] = (
+                             array_val + ('List' * i))
+                     custom_lists[ns + '::' + tptype + ('[]' * (i+1))] = (
+diff --git a/tools/libtpcodegen.py b/tools/libtpcodegen.py
+index 837ff2f..99de663 100644
+--- a/tools/libtpcodegen.py
++++ b/tools/libtpcodegen.py
+@@ -20,7 +20,8 @@
+ # License along with this library; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+-
++import os
++import sys
+ from string import ascii_letters, digits
+ 
+ 
+@@ -28,11 +29,39 @@
+ 
+ _ASCII_ALNUM = ascii_letters + digits
+ 
++if sys.version_info[0] >= 3:
++    def u(s):
++        """Return s, which must be a str literal with no non-ASCII characters.
++        This is like a more restricted form of the Python 2 u'' syntax.
++        """
++        return s.encode('ascii').decode('ascii')
++else:
++    def u(s):
++        """Return a Unicode version of s, which must be a str literal
++        (a bytestring) in which each byte is an ASCII character.
++        This is like a more restricted form of the u'' syntax.
++        """
++        return s.decode('ascii')
++
++def file_set_contents(filename, contents):
++    try:
++        os.remove(filename)
++    except OSError:
++        pass
++    try:
++        os.remove(filename + '.tmp')
++    except OSError:
++        pass
++
++    open(filename + '.tmp', 'wb').write(contents)
++    os.rename(filename + '.tmp', filename)
+ 
+ def cmp_by_name(node1, node2):
+     return cmp(node1.getAttributeNode("name").nodeValue,
+                node2.getAttributeNode("name").nodeValue)
+ 
++def key_by_name(node):
++    return node.getAttributeNode("name").nodeValue
+ 
+ def escape_as_identifier(identifier):
+     """Escape the given string to be a valid D-Bus object path or service
+@@ -156,6 +185,9 @@ def __init__(self, string):
+         self.remaining = string
+ 
+     def next(self):
++        return self.__next__()
++
++    def __next__(self):
+         if self.remaining == '':
+             raise StopIteration
+ 
+diff --git a/tools/manager-file.py b/tools/manager-file.py
+index 45f6404..5e61c75 100644
+--- a/tools/manager-file.py
++++ b/tools/manager-file.py
+@@ -25,6 +25,7 @@
+ 
+ import re
+ import sys
++import os
+ 
+ _NOT_C_STR = re.compile(r'[^A-Za-z0-9_-]')
+ 
+@@ -87,18 +88,18 @@ def desktop_string(x):
+ 
+ def write_manager(f, manager, protos):
+     # pointless backwards compat section
+-    print >> f, '[ConnectionManager]'
+-    print >> f, 'BusName=org.freedesktop.Telepathy.ConnectionManager.' + manager
+-    print >> f, 'ObjectPath=/org/freedesktop/Telepathy/ConnectionManager/' + manager
++    print('[ConnectionManager]', file=f)
++    print('BusName=org.freedesktop.Telepathy.ConnectionManager.' + manager, file=f)
++    print('ObjectPath=/org/freedesktop/Telepathy/ConnectionManager/' + manager, file=f)
+ 
+     # protocols
+-    for proto, params in protos.iteritems():
+-        print >> f
+-        print >> f, '[Protocol %s]' % proto
++    for proto, params in protos.items():
++        print(file=f)
++        print('[Protocol %s]' % proto, file=f)
+ 
+         defaults = {}
+ 
+-        for param, info in params.iteritems():
++        for param, info in params.items():
+             dtype = info['dtype']
+             flags = info.get('flags', '').split()
+             struct_field = info.get('struct_field', param.replace('-', '_'))
+@@ -115,15 +116,15 @@ def write_manager(f, manager, protos):
+             else:
+                 flags = ''
+ 
+-            print >> f, 'param-%s=%s%s' % (param, desktop_string(dtype), flags)
++            print('param-%s=%s%s' % (param, desktop_string(dtype), flags), file=f)
+ 
+-        for param, default in defaults.iteritems():
+-            print >> f, 'default-%s=%s' % (param, default)
++        for param, default in defaults.items():
++            print('default-%s=%s' % (param, default), file=f)
+ 
+ def write_c_params(f, manager, proto, struct, params):
+-    print >> f, "static const TpCMParamSpec %s_%s_params[] = {" % (manager, proto)
++    print("static const TpCMParamSpec %s_%s_params[] = {" % (manager, proto), file=f)
+ 
+-    for param, info in params.iteritems():
++    for param, info in params.items():
+         dtype = info['dtype']
+         flags = info.get('flags', '').split()
+         struct_field = info.get('struct_field', param.replace('-', '_'))
+@@ -146,7 +147,7 @@ def write_c_params(f, manager, proto, struct, params):
+         else:
+             struct_offset = 'G_STRUCT_OFFSET (%s, %s)' % (struct, struct_field)
+ 
+-        print >> f, ('''  { %s, %s, %s,
++        print(('''  { %s, %s, %s,
+     %s,
+     %s, /* default */
+     %s, /* struct offset */
+@@ -154,22 +155,34 @@ def write_c_params(f, manager, proto, struct, params):
+     %s, /* filter data */
+     %s /* setter data */ },''' %
+                 (c_string(param), c_string(dtype), gtypes[dtype], flags,
+-                    default, struct_offset, filter, filter_data, setter_data))
++                    default, struct_offset, filter, filter_data, setter_data)), file=f)
+ 
+-    print >> f, "  { NULL }"
+-    print >> f, "};"
++    print("  { NULL }", file=f)
++    print("};", file=f)
+ 
+ if __name__ == '__main__':
+     environment = {}
+-    execfile(sys.argv[1], environment)
+-
+-    f = open('%s/%s.manager' % (sys.argv[2], environment['MANAGER']), 'w')
++    exec(compile(open(sys.argv[1], "rb").read(), sys.argv[1], 'exec'), environment)
++
++    filename = '%s/%s.manager' % (sys.argv[2], environment['MANAGER'])
++    try:
++        os.remove(filename)
++    except OSError:
++        pass
++    f = open(filename + '.tmp', 'w')
+     write_manager(f, environment['MANAGER'], environment['PARAMS'])
+     f.close()
+-
+-    f = open('%s/param-spec-struct.h' % sys.argv[2], 'w')
++    os.rename(filename + '.tmp', filename)
++
++    filename = '%s/param-spec-struct.h' % sys.argv[2]
++    try:
++        os.remove(filename)
++    except OSError:
++        pass
++    f = open(filename + '.tmp', 'w')
+     for protocol in environment['PARAMS']:
+         write_c_params(f, environment['MANAGER'], protocol,
+                 environment['STRUCTS'][protocol],
+                 environment['PARAMS'][protocol])
+     f.close()
++    os.rename(filename + '.tmp', filename)
+diff --git a/tools/qt-client-gen.py b/tools/qt-client-gen.py
+index d79ac30..b58ecd8 100644
+--- a/tools/qt-client-gen.py
++++ b/tools/qt-client-gen.py
+@@ -21,6 +21,7 @@
+ import xml.dom.minidom
+ import codecs
+ from getopt import gnu_getopt
++import functools
+ 
+ from libtpcodegen import NS_TP, get_descendant_text, get_by_path
+ from libqtcodegen import binding_from_usage, extract_arg_or_member_info, format_docstring, gather_externals, gather_custom_lists, get_headerfile_cmd, get_qt_name, qt_identifier_escape, RefRegistry
+@@ -43,7 +44,7 @@ def __init__(self, opts):
+             self.visibility = opts.get('--visibility', '')
+             ifacedom = xml.dom.minidom.parse(opts['--ifacexml'])
+             specdom = xml.dom.minidom.parse(opts['--specxml'])
+-        except KeyError, k:
++        except KeyError as k:
+             assert False, 'Missing required parameter %s' % k.args[0]
+ 
+         self.hs = []
+@@ -114,16 +115,16 @@ class PendingOperation;
+ 
+         # Output interface proxies
+         def ifacenodecmp(x, y):
+-            xname, yname = [self.namespace + '::' + node.getAttribute('name').replace('/', '').replace('_', '') + 'Interface' for node in x, y]
++            xname, yname = [self.namespace + '::' + node.getAttribute('name').replace('/', '').replace('_', '') + 'Interface' for node in (x, y)]
+ 
+             if xname == self.mainiface:
+                 return -1
+             elif yname == self.mainiface:
+                 return 1
+             else:
+-                return cmp(xname, yname)
++                return (xname > yname) - (xname < yname)
+ 
+-        self.ifacenodes.sort(cmp=ifacenodecmp)
++        self.ifacenodes.sort(key=functools.cmp_to_key(ifacenodecmp))
+         for ifacenode in self.ifacenodes:
+             self.do_ifacenode(ifacenode)
+ 
+@@ -136,8 +137,8 @@ def ifacenodecmp(x, y):
+             self.h("Q_DECLARE_METATYPE(" + self.namespace + "::" + classname + "*)\n")
+ 
+         # Write output to files
+-        (codecs.getwriter('utf-8')(open(self.headerfile, 'w'))).write(''.join(self.hs))
+-        (codecs.getwriter('utf-8')(open(self.implfile, 'w'))).write(''.join(self.bs))
++        (codecs.getwriter('utf-8')(open(self.headerfile, 'wb'))).write(''.join(self.hs))
++        (codecs.getwriter('utf-8')(open(self.implfile, 'wb'))).write(''.join(self.bs))
+ 
+     def do_ifacenode(self, ifacenode):
+         # Extract info
+@@ -408,7 +409,7 @@ def do_method(self, method):
+         inargs = []
+         outargs = []
+ 
+-        for i in xrange(len(args)):
++        for i in range(len(args)):
+             if args[i].getAttribute('direction') == 'out':
+                 outargs.append(i)
+             else:
+@@ -493,7 +494,7 @@ def do_signal(self, signal):
+ %s\
+ """ % (name, format_docstring(signal, self.refs, '     * ')))
+ 
+-        for i in xrange(len(argnames)):
++        for i in range(len(argnames)):
+             assert argnames[i] != None, 'Name missing from argument at index %d for signal %s' % (i, name)
+             if argdocstrings[i]:
+                 self.h("""\
+diff --git a/tools/qt-constants-gen.py b/tools/qt-constants-gen.py
+index 48fdc43..c96949b 100644
+--- a/tools/qt-constants-gen.py
++++ b/tools/qt-constants-gen.py
+@@ -31,7 +31,7 @@ def __init__(self, opts):
+             self.namespace = opts['--namespace']
+             self.must_define = opts.get('--must-define', None)
+             dom = xml.dom.minidom.parse(opts['--specxml'])
+-        except KeyError, k:
++        except KeyError as k:
+             assert False, 'Missing required parameter %s' % k.args[0]
+ 
+         self.define_prefix = None
+@@ -47,7 +47,10 @@ def __init__(self, opts):
+         self.refs = RefRegistry(self.spec)
+ 
+     def h(self, code):
+-        self.out.write(code)
++        if isinstance(code, str):
++            self.out.buffer.write(code.encode('utf8'))
++        else:
++            self.out.buffer.write(code)
+ 
+     def __call__(self):
+         # Header
+diff --git a/tools/qt-svc-gen.py b/tools/qt-svc-gen.py
+index 58b77bb..565dd01 100644
+--- a/tools/qt-svc-gen.py
++++ b/tools/qt-svc-gen.py
+@@ -21,6 +21,7 @@
+ import xml.dom.minidom
+ import codecs
+ from getopt import gnu_getopt
++import functools
+ 
+ from libtpcodegen import NS_TP, get_descendant_text, get_by_path
+ from libqtcodegen import binding_from_usage, extract_arg_or_member_info, format_docstring, gather_externals, gather_custom_lists, get_headerfile_cmd, get_qt_name, qt_identifier_escape, RefRegistry
+@@ -61,7 +62,7 @@ def __init__(self, opts):
+             self.visibility = opts.get('--visibility', '')
+             ifacedom = xml.dom.minidom.parse(opts['--ifacexml'])
+             specdom = xml.dom.minidom.parse(opts['--specxml'])
+-        except KeyError, k:
++        except KeyError as k:
+             assert False, 'Missing required parameter %s' % k.args[0]
+ 
+         if not self.realinclude:
+@@ -135,11 +136,11 @@ def __call__(self):
+ 
+         # Output interface proxies
+         def ifacenodecmp(x, y):
+-            xname, yname = [self.namespace + '::' + node.getAttribute('name').replace('/', '').replace('_', '') + 'Adaptor' for node in x, y]
++            xname, yname = [self.namespace + '::' + node.getAttribute('name').replace('/', '').replace('_', '') + 'Adaptor' for node in (x, y)]
+ 
+-            return cmp(xname, yname)
++            return (xname > yname) - (xname < yname)
+ 
+-        self.ifacenodes.sort(cmp=ifacenodecmp)
++        self.ifacenodes.sort(key=functools.cmp_to_key(ifacenodecmp))
+         for ifacenode in self.ifacenodes:
+             self.do_ifacenode(ifacenode)
+ 
+@@ -147,8 +148,8 @@ def ifacenodecmp(x, y):
+         self.hb(''.join(['\n}' for ns in self.namespace.split('::')]))
+ 
+         # Write output to files
+-        (codecs.getwriter('utf-8')(open(self.headerfile, 'w'))).write(''.join(self.hs))
+-        (codecs.getwriter('utf-8')(open(self.implfile, 'w'))).write(''.join(self.bs))
++        (codecs.getwriter('utf-8')(open(self.headerfile, 'wb'))).write(''.join(self.hs))
++        (codecs.getwriter('utf-8')(open(self.implfile, 'wb'))).write(''.join(self.bs))
+ 
+     def do_ifacenode(self, ifacenode):
+         # Extract info
+@@ -303,7 +304,7 @@ def do_method_introspection(self, methods):
+ 
+                 outindex = 0
+                 inindex = 0
+-                for i in xrange(len(argnames)):
++                for i in range(len(argnames)):
+                     assert argnames[i] != None, 'Name missing from argument at index %d for signal %s' % (i, name)
+ 
+                     argbinding = argbindings[i]
+@@ -358,7 +359,7 @@ def do_signal_introspection(self, signals):
+ "    <signal name=\\"%(name)s\\">\\n"
+ """ % {'name': name})
+ 
+-                for i in xrange(len(argnames)):
++                for i in range(len(argnames)):
+                     assert argnames[i] != None, 'Name missing from argument at index %d for signal %s' % (i, name)
+ 
+                     argbinding = argbindings[i]
+@@ -393,7 +394,7 @@ def do_mic_typedefs(self, methods):
+                     self.externals, self.typesnamespace, self.refs, '     *     ')
+ 
+             outargs = []
+-            for i in xrange(len(args)):
++            for i in range(len(args)):
+                 if args[i].getAttribute('direction') == 'out':
+                     outargs.append(i)
+ 
+@@ -519,7 +520,7 @@ def do_method(self, ifacename, method):
+         inargs = []
+         outargs = []
+ 
+-        for i in xrange(len(args)):
++        for i in range(len(args)):
+             if args[i].getAttribute('direction') == 'out':
+                 outargs.append(i)
+             else:
+@@ -603,7 +604,7 @@ def do_method(self, ifacename, method):
+         self.b("""
+ %(rettype)s %(ifacename)s::%(name)s(%(params)s)
+ {
+-    if (!adaptee()->metaObject()->indexOfMethod("%(adaptee_name)s(%(normalized_adaptee_params)s)") == -1) {
++    if (adaptee()->metaObject()->indexOfMethod("%(adaptee_name)s(%(normalized_adaptee_params)s)") < 0) {
+         dbusConnection().send(dbusMessage.createErrorReply(TP_QT_ERROR_NOT_IMPLEMENTED, QLatin1String("Not implemented")));
+ """ % {'rettype': rettype,
+        'ifacename': ifacename,
+@@ -666,7 +667,7 @@ def do_signal(self, signal):
+             'arg'), self.custom_lists, self.externals, self.typesnamespace, self.refs, '     *     ')
+         params = ', '.join(['%s %s' % (binding.inarg, param_name) for binding, param_name in zip(argbindings, argnames)])
+ 
+-        for i in xrange(len(argnames)):
++        for i in range(len(argnames)):
+             assert argnames[i] != None, 'Name missing from argument at index %d for signal %s' % (i, name)
+ 
+         self.h("""\
+@@ -683,7 +684,7 @@ def do_signal(self, signal):
+        'params': params
+        })
+ 
+-        for i in xrange(len(argnames)):
++        for i in range(len(argnames)):
+             assert argnames[i] != None, 'Name missing from argument at index %d for signal %s' % (i, name)
+             if argdocstrings[i]:
+                 self.h("""\
+diff --git a/tools/qt-types-gen.py b/tools/qt-types-gen.py
+index 119cf9c..1ade9da 100644
+--- a/tools/qt-types-gen.py
++++ b/tools/qt-types-gen.py
+@@ -116,7 +116,7 @@ def __init__(self, opts):
+             self.must_define = opts.get('--must-define', None)
+             self.visibility = opts.get('--visibility', '')
+             dom = xml.dom.minidom.parse(opts['--specxml'])
+-        except KeyError, k:
++        except KeyError as k:
+             assert False, 'Missing required parameter %s' % k.args[0]
+ 
+         self.decls = []
+@@ -254,8 +254,8 @@ def __call__(self):
+ 
+         # Write output to files
+ 
+-        open(self.declfile, 'w').write(''.join(self.decls).encode("utf-8"))
+-        open(self.implfile, 'w').write(''.join(self.impls).encode("utf-8"))
++        open(self.declfile, 'wb').write(''.join(self.decls).encode("utf-8"))
++        open(self.implfile, 'wb').write(''.join(self.impls).encode("utf-8"))
+ 
+     def decl(self, str):
+         self.decls.append(str)
+@@ -302,6 +302,40 @@ def provide_all(self):
+             self.decl(self.faketype(val, real))
+             self.to_declare.append(self.namespace + '::' + val)
+ 
++            self.both('%s QDBusArgument& operator<<(QDBusArgument& arg, const %s &list)' %
++                    (self.visibility, val))
++            self.decl(';\n')
++            self.impl("""
++{
++    int id = qMetaTypeId<%s>();
++    arg.beginArray(id);
++    for (int i = 0; i < list.count(); ++i) {
++        arg << list.at(i);
++    }
++    arg.endArray();
++    return arg;
++}
++
++""" % (array_of))
++
++            self.both('%s const QDBusArgument& operator>>(const QDBusArgument& arg, %s &list)' %
++                    (self.visibility, val))
++            self.decl(';\n\n')
++            self.impl("""
++{
++    arg.beginArray();
++    list.clear();
++    while (!arg.atEnd()) {
++        %s item;
++        arg >> item;
++        list.append(item);
++    }
++    arg.endArray();
++    return arg;
++}
++
++""" % (array_of))
++
+         structs = self.spec.getElementsByTagNameNS(NS_TP, 'struct')
+         mappings = self.spec.getElementsByTagNameNS(NS_TP, 'mapping')
+         exts = self.spec.getElementsByTagNameNS(NS_TP, 'external-type')
+@@ -313,11 +347,11 @@ def provide_all(self):
+         leaves = []
+         next_leaves = []
+ 
+-        for val, depinfo in self.depinfos.iteritems():
++        for val, depinfo in self.depinfos.items():
+             leaf = True
+ 
+             for dep in depinfo.deps:
+-                if not self.depinfos.has_key(dep):
++                if dep not in self.depinfos:
+                     raise UnresolvedDependency(val, dep)
+ 
+                 leaf = False
+@@ -400,7 +434,7 @@ def output_by_depinfo(self, depinfo):
+         'visibility': self.visibility,
+         })
+ 
+-            for i in xrange(members):
++            for i in range(members):
+                 self.decl("""\
+ %s\
+     %s %s;
+@@ -424,7 +458,7 @@ def output_by_depinfo(self, depinfo):
+             else:
+                 self.impl("""
+     return ((v1.%s.variant() == v2.%s.variant())""" % (names[0], names[0]))
+-            for i in xrange(1, members):
++            for i in range(1, members):
+                 if (bindings[i].val != 'QDBusVariant'):
+                     self.impl("""
+             && (v1.%s == v2.%s)""" % (names[i], names[i]))
+@@ -525,10 +559,10 @@ def faketype(self, fake, real):
+         return """\
+ struct %(visibility)s %(fake)s : public %(real)s
+ {
+-    inline %(fake)s() : %(real)s() {}
+-    inline %(fake)s(const %(real)s& a) : %(real)s(a) {}
++    %(fake)s() : %(real)s() {}
++    %(fake)s(const %(real)s& a) : %(real)s(a) {}
+ 
+-    inline %(fake)s& operator=(const %(real)s& a)
++    %(fake)s& operator=(const %(real)s& a)
+     {
+         *(static_cast<%(real)s*>(this)) = a;
+         return *this;
+@@ -553,5 +587,5 @@ def faketype(self, fake, real):
+     try:
+         Generator(dict(options))()
+     except BrokenSpecException as e:
+-        print >> sys.stderr, 'Your spec is broken, dear developer! %s' % e
++        print('Your spec is broken, dear developer! %s' % e, file=sys.stderr)
+         sys.exit(42)
+diff --git a/tools/xincludator.py b/tools/xincludator.py
+index 63e106a..5f852bf 100644
+--- a/tools/xincludator.py
++++ b/tools/xincludator.py
+@@ -1,17 +1,19 @@
+ #!/usr/bin/python
+ 
++import sys
+ from sys import argv, stdout, stderr
+ import codecs, locale
+ import os
+ import xml.dom.minidom
+ 
+-stdout = codecs.getwriter('utf-8')(stdout)
++if sys.version_info[0] < 3:
++    stdout = codecs.getwriter('utf-8')(stdout)
+ 
+ NS_XI = 'http://www.w3.org/2001/XInclude'
+ 
+ def xincludate(dom, base, dropns = []):
+     remove_attrs = []
+-    for i in xrange(dom.documentElement.attributes.length):
++    for i in range(dom.documentElement.attributes.length):
+         attr = dom.documentElement.attributes.item(i)
+         if attr.prefix == 'xmlns':
+             if attr.localName in dropns:
+@@ -34,6 +36,12 @@ def xincludate(dom, base, dropns = []):
+     argv = argv[1:]
+     dom = xml.dom.minidom.parse(argv[0])
+     xincludate(dom, argv[0])
+-    xml = dom.toxml()
+-    stdout.write(xml)
+-    stdout.write('\n')
++
++    if sys.version_info[0] >= 3:
++        xml = dom.toxml('utf-8')
++        stdout.buffer.write(xml)
++        stdout.buffer.write(b'\n')
++    else:
++        xml = dom.toxml()
++        stdout.write(xml)
++        stdout.write('\n')

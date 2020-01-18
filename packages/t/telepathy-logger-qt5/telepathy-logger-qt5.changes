@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 18:02:57 UTC 2020 - wbauer@tmo.at
+
+- Add make-compatible-with-Python-3.patch and build with python3
+  instead of python2
+
+-------------------------------------------------------------------
 Mon Nov 26 14:41:14 UTC 2018 - wbauer@tmo.at
 
 - Don't set LIB_SUFFIX manually, it's not necessary

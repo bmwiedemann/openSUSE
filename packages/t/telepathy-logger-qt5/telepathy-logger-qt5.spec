@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-logger-qt5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/KDE/telepathy-logger-qt
 Source0:        telepathy-logger-qt-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         make-compatible-with-Python-3.patch
 BuildRequires:  bison
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
@@ -33,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  python-xml
+BuildRequires:  python3-base
 BuildRequires:  telepathy-logger-devel >= 0.8.0
 BuildRequires:  telepathy-qt5-devel
 BuildRequires:  pkgconfig(Qt5Core)
@@ -81,9 +83,10 @@ It is needed by KDE Telepathy in order to log the chat activity.
 
 %prep
 %setup -q -n telepathy-logger-qt-%{version}
+%patch0 -p1
 
 %build
-  %cmake_kf5 -d build -- -DPYTHON_EXECUTABLE=%{_bindir}/python2
+  %cmake_kf5 -d build
   %make_jobs
 
 %install
