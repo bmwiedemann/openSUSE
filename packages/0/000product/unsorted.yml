@@ -261,7 +261,6 @@ unsorted:
   - SimGear-devel 
   - SoQt-devel 
   - SoQt-doc 
-  - Supybot 
   - ThePEG-devel: [x86_64] 
   - ThePEG-libs: [x86_64] 
   - UEFITool 
@@ -2446,7 +2445,6 @@ unsorted:
   - drc 
   - drc-doc 
   - dreampie 
-  - driconf 
   - driverctl 
   - dropbox-cli 
   - drops 
@@ -2955,7 +2953,7 @@ unsorted:
   - fftw3-gnu-mvapich2-hpc-devel 
   - fftw3-gnu-openmpi1-hpc-devel 
   - fftw3-gnu-openmpi2-hpc-devel 
-  - fftw3-gnu-openmpi3-hpc-devel 
+  - fftw3-gnu-openmpi3-hpc-devel: [x86_64] 
   - fftw3-mpi-devel 
   - fftw3-openmp-devel 
   - fftw3-threads-devel 
@@ -2969,8 +2967,8 @@ unsorted:
   - fftw3_3_3_8-gnu-openmpi1-hpc-devel-static 
   - fftw3_3_3_8-gnu-openmpi2-hpc-devel 
   - fftw3_3_3_8-gnu-openmpi2-hpc-devel-static 
-  - fftw3_3_3_8-gnu-openmpi3-hpc-devel 
-  - fftw3_3_3_8-gnu-openmpi3-hpc-devel-static 
+  - fftw3_3_3_8-gnu-openmpi3-hpc-devel: [x86_64] 
+  - fftw3_3_3_8-gnu-openmpi3-hpc-devel-static: [x86_64] 
   - fhourstones 
   - fhs 
   - fife-devel 
@@ -8791,13 +8789,13 @@ unsorted:
   - libfftw3-gnu-mvapich2-hpc 
   - libfftw3-gnu-openmpi1-hpc 
   - libfftw3-gnu-openmpi2-hpc 
-  - libfftw3-gnu-openmpi3-hpc 
+  - libfftw3-gnu-openmpi3-hpc: [x86_64] 
   - libfftw3_3_3_8-gnu-hpc 
   - libfftw3_3_3_8-gnu-mpich-hpc 
   - libfftw3_3_3_8-gnu-mvapich2-hpc 
   - libfftw3_3_3_8-gnu-openmpi1-hpc 
   - libfftw3_3_3_8-gnu-openmpi2-hpc 
-  - libfftw3_3_3_8-gnu-openmpi3-hpc 
+  - libfftw3_3_3_8-gnu-openmpi3-hpc: [x86_64] 
   - libfftw3_mpi3 
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
@@ -8924,7 +8922,7 @@ unsorted:
   - libgaminggearfx0 
   - libgaminggearwidget0 
   - libganesha_nfsd-devel: [x86_64] 
-  - libganesha_nfsd3_1: [x86_64] 
+  - libganesha_nfsd3_2: [x86_64] 
   - libganglia0 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -9576,7 +9574,7 @@ unsorted:
   - libiscsi-utils 
   - libisds-devel 
   - libisds5 
-  - libisl19-32bit: [x86_64] 
+  - libisl22-32bit: [x86_64] 
   - libiso9660-11-32bit: [x86_64] 
   - libisoburn-devel 
   - libisofs-devel 
@@ -10304,7 +10302,7 @@ unsorted:
   - libnsssharedhelper0-32bit: [x86_64] 
   - libntfs-3g-devel 
   - libntirpc-devel: [x86_64] 
-  - libntirpc3_1: [x86_64] 
+  - libntirpc3_2: [x86_64] 
   - libntk1 
   - libntl42 
   - libntlm-devel 
@@ -12903,7 +12901,6 @@ unsorted:
   - maildir-utils 
   - mailgraph 
   - mailimporter-devel 
-  - mailman 
   - mailnag 
   - mailnag-lang 
   - mailprocessing 
@@ -15192,7 +15189,7 @@ unsorted:
   - openmpi_1_10_7-gnu-hpc-devel-static 
   - openmpi_1_10_7-gnu-hpc-docs 
   - openmpi_1_10_7-gnu-hpc-macros-devel 
-  - openmpi_1_10_7-gnu-hpc-testsuite 
+  - openmpi_1_10_7-gnu-hpc-testsuite: [x86_64] 
   - openmpi_2_1_6-gnu-hpc 
   - openmpi_2_1_6-gnu-hpc-devel 
   - openmpi_2_1_6-gnu-hpc-devel-static 
@@ -17980,7 +17977,6 @@ unsorted:
   - python2-asciimatics 
   - python2-aspectlib 
   - python2-aspy.yaml 
-  - python2-asteval 
   - python2-astor 
   - python2-astral 
   - python2-astroid 
@@ -18360,7 +18356,6 @@ unsorted:
   - python2-construct 
   - python2-contexter 
   - python2-contextlib2 
-  - python2-control 
   - python2-convertdate 
   - python2-cookies 
   - python2-cooldict 
@@ -23062,6 +23057,7 @@ unsorted:
   - rsstail 
   - rst2html5 
   - rstart 
+  - rstudio 
   - rsvg-convert 
   - rsvndump 
   - rsvndump-lang 
@@ -24539,6 +24535,7 @@ unsorted:
   - sshuttle 
   - ssl-cert-check 
   - ssldump 
+  - sslh 
   - sslscan 
   - sssd-ad 
   - sssd-dbus 
@@ -33230,8 +33227,6 @@ unsorted:
   - wcslib-doc 
   - wcslib-tools 
   - wdm 
-  - weather-wallpaper 
-  - weather-wallpaper-lang 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -33719,8 +33714,6 @@ unsorted:
   - xtables-geoip 
   - xteddy 
   - xtexit 
-  - xtrabackup 
-  - xtrabackup-test 
   - xtrx-tools 
   - xtrx-usb-udev 
   - xtrx_lms7002m-devel 
