@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Wed Jan 15 09:32:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file, remove old openSUSE support
+- Fix useradd syntax
+
+-------------------------------------------------------------------
+Fri Nov 23 13:57:08 UTC 2018 - mvetter@suse.com
+
+- Update to 1.20:
+  * Added support for socks5 protocol (Eugene Protozanov)
+  * New probing method
+  * Test suite refactored
+- ChangeLog from 1.19:
+  * Added ‘syslog_facility’ configuration option to specify where to log.
+  * TLS now supports SNI and ALPN (Travis Burtrum), including support for Let’s Encrypt challenges (Jonathan McCrohan)
+  * ADB probe. (Mike Frysinger)
+  * Added per-protocol ‘fork’ option. (Oleg Oshmyan)
+  * Added chroot option. (Mike Frysinger)
+  * A truckload of bug fixes and documentation improvements (Various contributors)
+- Remove filepath-in-systemd-service.patch: upstreamed
+- Add BuildRequires: pcre-devel
+
+-------------------------------------------------------------------
+Mon Nov  6 17:38:30 UTC 2017 - chris@computersalat.de
+
+- fix systemd vs SysVinit
+  * don't install both when system should be used
+  * add var has_systemd
+
+-------------------------------------------------------------------
+Tue Jul 19 08:43:02 UTC 2016 - jsegitz@novell.com
+
+- Update to 1.18
+  * Added USELIBPCRE to make use of regex engine optional.
+  * Added support for RFC4366 SNI and RFC7301 ALPN
+    (Travis Burtrum)
+  * Changed connection log to include the name of the probe that
+    triggered.
+  * Changed configuration file format: 'probe' field is
+    no longer required, 'name' field can now contain
+    'tls' or 'regex', with corresponding options (see
+    example.cfg)
+  * Added 'log_level' option to each protocol, which
+    allows to turn off generation of log at each
+    connection.
+  * Added 'keepalive' option.
+  Version 1.17
+  * Support RFC5952-style IPv6 addresses, e.g. [::]:443.
+  * Transparant proxy support for FreeBSD  (Ruben van Staveren)
+  * Using -F with no argument will try
+    /etc/sslh/sslh.cfg and then /etc/sslh.cfg as configuration files.
+    (argument to -F can no longer be separated from the option by a space,
+    e.g. must be -Ffoo.cfg)
+  * Call setgroups() before setgid() (fixes potential
+    privilege escalation) (Lars Vogdt)
+  * Use portable way of getting modified time for OSX support (Aaron
+    Madlon-Kay)
+  * Example configuration for fail2ban (Every Mouw)
+- Dropped missing-call-to-setgroups-before-setuid.patch, included
+  upstream
+
+-------------------------------------------------------------------
+Thu Dec 18 09:31:58 UTC 2014 - jsegitz@novell.com
+
+- Added filepath-in-systemd-service.patch to point to correct
+  patch in systemd service file
+
+-------------------------------------------------------------------
+Tue Mar 25 19:05:13 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.16:
+  + Probes made more resilient, to incoming data
+    containing NULLs. Also made them behave properly
+    when receiving too short packets to probe on the
+    first incoming packet.
+    (Ondrej Kuzník)
+  + Libcap support: Keep only CAP_NET_ADMIN if started
+    as root with transparent proxying and dropping
+    priviledges (enable USELIBCAP in Makefile). This
+    avoids having to mess with filesystem capabilities.
+    (Sebastian Schmidt/yath)
+  + Fixed bugs related to getpeername that would cause
+    sslh to quit erroneously (getpeername can return
+    actual errors if connections are dropped before
+    getting to getpeername).
+  + Set IP_FREEDBIND if available to bind to addresses
+    that don't yet exist.
+- compile with libcap support
+- added missing-call-to-setgroups-before-setuid.patch
+- removed patches fixed upstream:
+  + sslh-asprintf.patch
+  + sslh-chroot.patch
+
+-------------------------------------------------------------------
+Sun Dec 22 14:50:15 UTC 2013 - rob.verduijn@gmail.com
+
+- added /etc/conf.d/sslh
+  now the service actually starts when using systemd 
+
+-------------------------------------------------------------------
+Wed Dec 11 19:20:54 UTC 2013 - rob.verduijn@gmail.com
+
+- update to 1.15:
+  + Added --transparent option for transparent proxying. See README for iptables magic and capability management.
+  + Fixed bug in sslh-select: if number of opened file descriptor became bigger than FD_SETSIZE, bad things would happen.
+  + Fixed bug in sslh-select: if socket dropped while defered_data was present, sslh-select would crash.
+  + Increased FD_SETSIZE for Cygwin, as the default 64 is too low for even moderate load.
+    Thanks to Arnaud Gendre and Michael K. Avanessian for helping with investigation of the last three points.
+
+-------------------------------------------------------------------
+Sun Jan  6 17:36:22 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.14:
+  + Corrected OpenVPN probe to support pre-shared secret
+    mode (OpenVPN port-sharing code is... wrong). Thanks
+    to Kai Ellinger for help in investigating and
+    testing.
+  + Added an actual TLS/SSL probe.
+  + Added configurable --on-timeout protocol
+    specification.
+  + Added a --anyprot protocol probe (equivalent to what
+    --ssl was).
+  + Makefile respects the user's compiler and CFLAG
+    choices (falling back to the current values if
+    undefined), as well as LDFLAGS.
+    (Michael Palimaka)
+  + Added "After" and "KillMode" to systemd.sslh.service
+    (Thomas Weißschuh).
+- use upstream sslh.systemd.service instead of own one
+
+-------------------------------------------------------------------
+Thu Aug 23 19:41:44 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.13b:
+  + WARNING: Options changed, you'll need to update your start-up 
+    scripts! Log format changed, you'll need to update log 
+    processing scripts
+  + Added support for configuration file.
+  + New protocol probes can be defined using regular expressions that 
+    match the first packet sent by the client.
+  + Added HTTP probe.
+  + Now supports IPv6 throughout (both on listening and forwarding)
+  + Logs now contain IPv6 addresses, local forwarding address, and 
+    resolved names (unless --numeric is specified).
+  + Introduced long options.
+  + Bind to multiple addresses with multiple -p options.
+  + Added -o "OpenVPN" and OpenVPN probing and support.
+  + Added -f "foreground" option.
+- adapted init script to new options
+- added option for openVPN target address in sysconfig file
+For openSUSE > 12.1:
+- added config file /etc/default/sslh - but this needs to be enabled/
+  added in SSLH_OPTS="" in /etc/sysconfig/sslh for now as the 
+  sysconfig file already contains all variables
+- added systemd file
+
+-------------------------------------------------------------------
+Wed Aug 18 21:05:06 UTC 2010 - lars@linux-schulserver.de
+
+- add special user sslh for sslh daemon
+- fix typo in init script
+
+-------------------------------------------------------------------
+Wed Aug 18 20:38:39 UTC 2010 - lars@linux-schulserver.de
+
+- use /etc/sysconfig/sslh for configuration
+- enhanced the init script
+
+-------------------------------------------------------------------
+Mon Jun 28 07:16:35 UTC 2010 - lars@linux-schulserver.de
+
+- specfile cleanup
+- package docu and manpage
+- create rcsslh symlink
+- build with distribution optflags
+- added sslh-1.7a-asprintf.patch 
+
+-------------------------------------------------------------------
+Thu Feb 25 2010 Christian Debertshaeuser <webcd@online.de>
+
+- initial build
+
