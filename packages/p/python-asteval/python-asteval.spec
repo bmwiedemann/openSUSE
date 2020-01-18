@@ -1,7 +1,7 @@
 #
 # spec file for package python-asteval
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asteval
-Version:        0.9.17
+Version:        0.9.18
 Release:        0
 Summary:        Safe, minimalistic evaluator of python expression using ast module
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/newville/asteval
+URL:            https://github.com/newville/asteval
 Source:         https://files.pythonhosted.org/packages/source/a/asteval/asteval-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -61,7 +62,7 @@ sed -i -e '/^#!\//, 1d' asteval/asteval.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc README.rst
