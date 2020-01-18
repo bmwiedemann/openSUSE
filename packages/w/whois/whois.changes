@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  3 17:37:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- whois 5.5.4:
+  * Updated the .vu TLD server
+  * Updated the list of new gTLDs
+  * Added the charset for whois.ripe.net
+  * Added support for the referrals in answers from whois.registry.in
+  * Implemented support for passing raw $salts$
+  * Fixed and updated many hiding string
+  * Cleaned up the text and typesetting of the man pages
+
+-------------------------------------------------------------------
 Mon Nov 18 18:44:57 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - whois 5.5.3:
