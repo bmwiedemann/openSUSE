@@ -1,7 +1,7 @@
 #
 # spec file for package spice
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,15 +41,9 @@ Source1:        https://www.spice-space.org/download/releases/spice-server/%{nam
 Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
 BuildRequires:  gcc-c++
+BuildRequires:  gstreamer-plugins-good
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} < 1500
-BuildRequires:  python-pyparsing
-BuildRequires:  python-six
-%else
-BuildRequires:  python3-pyparsing
-BuildRequires:  python3-six
-%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -68,6 +62,18 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     gstreamer-plugins-good
+%if 0%{?suse_version} < 1500
+BuildRequires:  python-pyparsing
+BuildRequires:  python-six
+%else
+BuildRequires:  python3-pyparsing
+BuildRequires:  python3-six
+%if 0%{?is_opensuse}
+BuildRequires:  gstreamer-plugins-libav
+Recommends:     gstreamer-plugins-libav
+%endif
+%endif
 %if %{with celt051}
 BuildRequires:  pkgconfig(celt051)
 %endif
