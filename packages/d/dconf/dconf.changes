@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 21:41:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add dconf-fix-meson.patch: Update use of link_whole for
+  meson-0.52 and newer.
+
+-------------------------------------------------------------------
 Thu Sep 12 14:28:34 CST 2019 - qkzhu@suse.com
 
 - Update to version 0.34.0:
