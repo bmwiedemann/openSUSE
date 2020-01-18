@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:34:03 UTC 2020 - matwey.kornilov@gmail.com
+
+- Changes for 22.2.2:
+  * erts: Taking a scheduler offline could cause timers set while
+    executing on that scheduler to be delayed until the scheduler
+    was put online again. This bug was introduced in ERTS version
+    10.0 (OTP 21.0).
+  * erts: The ets:update_counter/4 core dumped when given an
+    ordered_set with write_concurrency enabled and an invalid
+    position. This bug has been fixed.
+  * erts: A process calling erlang:system_flag(multi_scheduling,
+    block) could end up blocked waiting for the operation to
+    complete indefinitely.
+  * erts: Duplicate entries for [socket:]getopt and [socket:]setopt
+    in man page.
+  * stdlib: The ets:update_counter/4 core dumped when given an
+    ordered_set with write_concurrency enabled and an invalid
+    position. This bug has been fixed.
+  * crypto: Constant time comparisons added.
+  * ssh: Fixed that ssh_connection:send could allocate a large
+    amount of memory if given an iolist() as input data.
+  * ssh: Safe atom conversions.
+  * ssh: Constant time comparisons added.
+- Changes for 22.2.1:
+  * erts: Corrected an issue with the new socket api which could
+    cause a core dump. A race during socket close could cause a
+    core dump (an invalid nif environment free).
+  * erts: Corrected an issue with the new socket api which could
+    cause a core dump. When multiple accept processes waiting for a
+    connect a connect could cause a core dump.
+  * snmp: Its now possible to remove selected varbinds (from the
+    final message) when sending a notification. This is done by
+    setting the 'value' (in the varbind(s) of the varbinds list) to
+    '?NOTIFICATION_IGNORE_VB_VALUE'.
+  * snmp: Its now possible to specify that an oid shall be
+    "truncated" (trailing ".0" to be removed) when sending an
+    notification.
+  * ssl: Add missing alert handling clause for TLS record handling.
+    Could sometimes cause confusing error behaviors of TLS
+    connections.
+  * ssl: Fix handling of ssl:recv that happens during a
+    renegotiation. Using the passive receive function
+    ssl:recv/[2,3] during a renegotiation would fail the connection
+    with unexpected msg.
+
+-------------------------------------------------------------------
 Thu Dec 19 16:04:42 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
