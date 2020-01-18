@@ -170,4 +170,13 @@ release expected in about a week.
   of debuginfo stripping.  [bsc#1152590]</comment>
     <requestid>755258</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a52661f9287a42c44ec47d399da04b2f</srcmd5>
+    <version>9.2.1+r280037</version>
+    <time>1579346034</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-9-branch head (r280037).
+  * Includes fix for [gcc#92154]</comment>
+    <requestid>762615</requestid>
+  </revision>
 </revisionlist>
