@@ -1,7 +1,7 @@
 #
 # spec file for package python-control
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-control
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
 URL:            http://python-control.sourceforge.net
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
-Patch0:         python-control-fixtestaugw.patch
-Patch1:         python-control-pr317.patch
-Patch2:         python-control-pr345.patch
+Patch0:         pr365-copy-PR-320-for-robust_array_test.patch
+Patch1:         pr366-ease-precision-tolerance.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,12 +37,11 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib-qt5}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose-exclude}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module slycot}
-BuildRequires:  libtcmalloc4
+BuildRequires:  libjemalloc2
 BuildRequires:  xvfb-run
 # /SECTION
 %python_subpackages
@@ -55,7 +54,6 @@ operations for analysis and design of feedback control systems.
 %setup -q -n control-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %python_build
@@ -66,21 +64,15 @@ operations for analysis and design of feedback control systems.
 
 %check
 # The default Agg backend does not define the toolbar attribute in the Figure
-# Manager used by some tests, so we run those tests with the Qt5 backend in a
+# Manager used by some tests, so we run the tests with the Qt5 backend in a
 # virtual X server environment
 %if %{_arch} == i386
-    export LD_PRELOAD="%{_libdir}/libtcmalloc_minimal.so.4"
+    # preload malloc library to avoid free() error on i586 architecture
+    export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
 %endif
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-export MPLBACKEND="Agg"
-nosetests-%$python_bin_suffix \
-    --exclude-test control.tests.sisotool_test \
-    --exclude-test control.tests.rlocus_test
 export MPLBACKEND="Qt5Agg"
-export LD_PRELOAD="%{_libdir}/libtcmalloc_minimal.so.4"
-xvfb-run -a nosetests-%$python_bin_suffix \
-    control.tests.sisotool_test \
-    control.tests.rlocus_test
+xvfb-run -a $python setup.py test 
 }
 
 %files %{python_files}

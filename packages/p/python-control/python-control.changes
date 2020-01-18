@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 18 01:18:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 0.8.3
+- remove patches that were merged upstream:
+    python-control-fixtestaugw.patch
+    python-control-pr317.patch
+    python-control-pr345.patch
+- pr365-copy-PR-320-for-robust_array_test.patch
+  upstream PR#365 the former fixtestaugw patch for the new
+  duplicated array test  
+- pr366-ease-precision-tolerance.patch
+  upstream PR#366 to pass the checks on more architectures
+- remove Python 2 package
+- run all tests in xvfb env and prealloc differently for i586
+  architecture
+  
+-------------------------------------------------------------------
 Wed Nov 27 18:13:20 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
 - python-control-pr345.patch: PR#345 to fix fails on some

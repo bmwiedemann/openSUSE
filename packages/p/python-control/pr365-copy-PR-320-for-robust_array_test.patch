@@ -1,8 +1,17 @@
-diff --git a/control/tests/robust_test.py b/control/tests/robust_test.py
-index 9a3419f..b23f06c 100644
---- a/control/tests/robust_test.py
-+++ b/control/tests/robust_test.py
-@@ -245,7 +245,7 @@ class TestAugw(unittest.TestCase):
+From b4b3d10c1ab5ef1bbf4d992f045408f6f6e88de7 Mon Sep 17 00:00:00 2001
+From: Benjamin Greiner <code@bnavigator.de>
+Date: Sat, 4 Jan 2020 22:30:42 -0800
+Subject: [PATCH] copy PR 320 for robust_array_test
+
+---
+ control/tests/robust_array_test.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/control/tests/robust_array_test.py b/control/tests/robust_array_test.py
+index 51114f87..62cf8c6c 100644
+--- a/control/tests/robust_array_test.py
++++ b/control/tests/robust_array_test.py
+@@ -261,7 +261,7 @@ def testMimoW3(self):
      @unittest.skipIf(not slycot_check(), "slycot not installed")
      def testMimoW123(self):
          """MIMO plant with all weights"""
@@ -11,7 +20,7 @@ index 9a3419f..b23f06c 100644
          g = ss([[-1., -2], [-3, -4]],
                 [[1., 0.], [0., 1.]],
                 [[1., 0.], [0., 1.]],
-@@ -295,10 +295,10 @@ class TestAugw(unittest.TestCase):
+@@ -311,10 +311,10 @@ def testMimoW123(self):
          self.siso_almost_equal(w2[1, 1], p[3, 3])
          # u->z3 should be w3*g
          w3g = w3 * g;
