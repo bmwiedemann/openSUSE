@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,7 @@ BuildRequires:  libgpgme-devel >= 1.1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
+BuildRequires:  xdg-dbus-proxy >= 0.1.0
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dconf)
@@ -67,13 +68,14 @@ BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(ostree-1) >= 2018.7
+BuildRequires:  pkgconfig(ostree-1) >= 2018.9
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xau)
 Requires:       %{libname} = %{version}
-Requires:       bubblewrap >= 0.2.1
-Requires:       ostree >= 2018.7
+Requires:       bubblewrap >= 0.4.0
+Requires:       ostree >= 2018.9
+Requires:       xdg-dbus-proxy >= 0.1.0
 Requires:       xdg-desktop-portal >= 0.10
 Requires:       user(flatpak)
 Recommends:     %{name}-lang = %{version}
@@ -153,6 +155,7 @@ NOCONFIGURE=1 ./autogen.sh
 	--with-system-bubblewrap \
 	--with-priv-mode=none \
 	--with-dbus-config-dir=%{_dbusconfigdir} \
+        --with-system-dbus-proxy=%{_bindir}/xdg-dbus-proxy \
 	%{nil}
 %make_build
 %sysusers_generate_pre %{SOURCE1} system-user-flatpak
@@ -201,7 +204,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 %{_bindir}/flatpak
 %{_bindir}/flatpak-bisect
 %{_bindir}/flatpak-coredumpctl
-%{_libexecdir}/flatpak-dbus-proxy
 %{_libexecdir}/flatpak-portal
 %{_libexecdir}/flatpak-session-helper
 %{_libexecdir}/flatpak-system-helper
