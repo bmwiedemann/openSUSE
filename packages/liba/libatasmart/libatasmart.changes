@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  4 15:53:10 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Modernize spec file
+- Use pkgconfig(libudev) instead of libudev-devel, allows shortcut
+  via systemd-mini package.
+
+-------------------------------------------------------------------
 Wed Sep 13 18:45:50 UTC 2017 - zaitor@opensuse.org
 
 - Add libatasmart-0.19-wd-fix.patch: Fix issue with WD drives.

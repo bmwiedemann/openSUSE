@@ -1,7 +1,7 @@
 #
 # spec file for package libatasmart
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,15 @@ Name:           libatasmart
 Version:        0.19
 Release:        0
 Summary:        ATA S.M.A.R.T. Disk Health Monitoring Library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://git.0pointer.net/libatasmart.git/
+URL:            http://git.0pointer.net/libatasmart.git/
 Source:         http://0pointer.de/public/%{name}-%{version}.tar.xz
 Patch0:         libatasmart-0.19-wd-fix.patch
 
-BuildRequires:  libudev-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libudev)
 
 %description
 A small and lightweight parser library for ATA S.M.A.R.T. hard disk
@@ -96,16 +94,14 @@ rm -rf %{buildroot}
 %postun -n libatasmart4 -p /sbin/ldconfig
 
 %files -n libatasmart4
-%defattr(-,root,root)
-%doc README LGPL
+%doc README
+%license LGPL
 %{_libdir}/libatasmart.so.*
 
 %files utils
-%defattr(-,root,root)
 %{_sbindir}/sk*
 
 %files devel
-%defattr(-,root,root)
 %doc blob-examples/
 %{_includedir}/atasmart.h
 %{_libdir}/libatasmart.so
