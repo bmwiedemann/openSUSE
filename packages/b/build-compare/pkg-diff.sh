@@ -5,59 +5,43 @@
 #
 # Written by Michael Matz and Stephan Coolo
 # Enhanced by Andreas Jaeger
+declare -i watchdog_host_timeout_seconds='3600'
+declare -i watchdog_touch_percent_prior_timeout='96'
+declare -i watchdog_next_touch_seconds=0
 
-FUNCTIONS=${0%/*}/functions.sh
-: ${buildcompare_head:="head -n 200"}
-nofilter=${buildcompare_nofilter}
-sort=sort
-[[ $nofilter ]] && sort=cat
-
-check_all=
-case $1 in
-  -a | --check-all)
-    check_all=1
-    shift
-esac
-
-if test "$#" != 2; then
-   echo "usage: $0 [-a|--check-all] old.rpm new.rpm"
-   exit 1
-fi
-
-test -z $OBJDUMP && OBJDUMP=objdump
-
-# Always clean up on exit
-local_tmpdir=`mktemp -d`
-if test -z "${local_tmpdir}"
-then
-  exit 1
-fi
-function _exit()
+function watchdog_reset
 {
-  chmod -R u+w "${local_tmpdir}"
-  rm -rf "${local_tmpdir}"
+  local uptime idle
+  local -i next_touch now
+
+  read uptime idle < /proc/uptime
+
+  now="${uptime%.*}"
+  next_touch=$(( ${now} + ( (${watchdog_host_timeout_seconds} * ${watchdog_touch_percent_prior_timeout}) / 100 ) ))
+  watchdog_next_touch_seconds=${next_touch}
 }
-trap _exit EXIT
-# Let further mktemp refer to private tmpdir
-export TMPDIR=$local_tmpdir
 
-self_script=$(cd $(dirname $0); echo $(pwd)/$(basename $0))
+function watchdog_touch
+{
+  local uptime idle
+  local -i next_touch now
 
-source $FUNCTIONS
+  read uptime idle < /proc/uptime
 
-oldpkg=`readlink -f $1`
-newpkg=`readlink -f $2`
-rename_script=`mktemp`
+  now="${uptime%.*}"
+  if test "${now}" -lt "${watchdog_next_touch_seconds}"
+  then
+    return
+  fi
+  echo 'build-compare touching host-watchdog.'
+  watchdog_reset
+}
 
-if test ! -f "$oldpkg"; then
-    echo "can't open $1"
-    exit 1
-fi
-
-if test ! -f "$newpkg"; then
-    echo "can't open $2"
-    exit 1
-fi
+function wprint
+{
+  echo "$@"
+  watchdog_reset
+}
 
 function findunjarbin
 {
@@ -111,9 +95,17 @@ function unjar_l()
 
 filter_disasm()
 {
-   local file=$1
-   [[ $nofilter ]] && return
-   sed -i -e 's/^ *[0-9a-f]\+://' -e 's/\$0x[0-9a-f]\+/$something/' -e 's/callq *[0-9a-f]\+/callq /' -e 's/# *[0-9a-f]\+/#  /' -e 's/\(0x\)\?[0-9a-f]\+(/offset(/' -e 's/[0-9a-f]\+ </</' -e 's/^<\(.*\)>:/\1:/' -e 's/<\(.*\)+0x[0-9a-f]\+>/<\1 + ofs>/' ${file}
+  [[ $nofilter ]] && return
+  sed -e '
+    s/^ *[0-9a-f]\+://
+    s/\$0x[0-9a-f]\+/$something/
+    s/callq *[0-9a-f]\+/callq /
+    s/# *[0-9a-f]\+/#  /
+    s/\(0x\)\?[0-9a-f]\+(/offset(/
+    s/[0-9a-f]\+ </</
+    s/^<\(.*\)>:/\1:/
+    s/<\(.*\)+0x[0-9a-f]\+>/<\1 + ofs>/
+  ' 
 }
 
 filter_xenefi() {
@@ -202,99 +194,54 @@ filter_generic()
    done
 }
 
+# returns 0 if both files are identical
+# returns 1 if files differ or one is missing
+# returns 2 if files must be processed further
+verify_before_processing()
+{
+  local file="$1"
+  local cmpout="$2"
 
-echo "Comparing `basename $oldpkg` to `basename $newpkg`"
+  if test ! -e "old/$file"; then
+    wprint "Missing in old package: $file"
+    return 1
+  fi
+  if test ! -e "new/$file"; then
+    wprint "Missing in new package: $file"
+    return 1
+  fi
 
-case $oldpkg in
-  *.rpm)
-     cmp_rpm_meta "$rename_script" "$oldpkg" "$newpkg"
-     RES=$?
-     case $RES in
-       0)
-          echo "RPM meta information is identical"
-          if test -z "$check_all"; then
-             exit 0
-          fi
-          ;;
-       1)
-          echo "RPM meta information is different"
-          if test -z "$check_all"; then
-             exit 1
-          fi
-          ;;
-       2)
-          echo "RPM file checksum differs."
-          RES=0
-          ;;
-       *)
-          echo "Wrong exit code!"
-          exit 1
-          ;;
-     esac
-     ;;
-esac
+  if cmp -b "old/$file" "new/$file" > "${cmpout}" ; then
+    return 0
+  fi
 
-file1=`mktemp`
-file2=`mktemp`
+  if test -s "${cmpout}" ; then
+    # cmp produced output for futher processing
+    return 2
+  fi
 
-dir=`mktemp -d`
-echo "Extracting packages"
-unpackage $oldpkg $dir/old
-unpackage $newpkg $dir/new
-
-case $oldpkg in
-  *.deb|*.ipk)
-     adjust_controlfile $dir/old $dir/new
-  ;;
-esac
-
-# files is set in cmp_rpm_meta for rpms, so if RES is empty we should assume
-# it wasn't an rpm and pick all files for comparison.
-if [ -z $RES ]; then
-    oldfiles=`cd $dir/old; find . -type f`
-    newfiles=`cd $dir/new; find . -type f`
-
-    files=`echo -e "$oldfiles\n$newfiles" | sort -u`
-fi
-
-cd $dir
-bash $rename_script
-
-dfile=`mktemp`
+  # cmp failed
+  return 1
+}
 
 diff_two_files()
 {
   local offset length
-  local po pn
 
-  if test ! -e "old/$file"; then
-    echo "Missing in old package: $file"
-    return 1
-  fi
-  if test ! -e "new/$file"; then
-    echo "Missing in new package: $file"
-    return 1
-  fi
-
-  if cmp -b "old/$file" "new/$file" > $dfile ; then
-    return 0
-  fi
-  if ! test -s $dfile ; then
-    return 1
-  fi
+  verify_before_processing "${file}" "${dfile}"
+  case "$?" in
+    0) return 0 ;;
+    1) return 1 ;;
+    *) ;;
+  esac
 
   offset=`sed 's@^.*differ: byte @@;s@,.*@@' < $dfile`
-  echo "$file differs at offset '$offset' ($ftype)"
-  po=`mktemp --dry-run $TMPDIR/old.XXX`
-  pn=`mktemp --dry-run $TMPDIR/new.XXX`
-  mkfifo -m 0600 $po
-  mkfifo -m 0600 $pn
+  wprint "$file differs at offset '$offset' ($ftype)"
   offset=$(( ($offset >> 6) << 6 ))
   length=512
-  hexdump -C -s $offset -n $length "old/$file" > $po &
-  hexdump -C -s $offset -n $length "new/$file" > $pn &
-  diff -u $po $pn | $buildcompare_head
-  rm -f $po $pn
+  diff -u \
+    <( hexdump -C -s $offset -n $length "old/$file" ) \
+    <( hexdump -C -s $offset -n $length "new/$file" ) | $buildcompare_head
   return 1
 }
 
@@ -382,7 +329,7 @@ check_compressed_file()
   local tmpdir=`mktemp -d`
   local ftype
   local ret=0
-  echo "$ext file with odd filename: $file"
+  wprint "$ext file with odd filename: $file"
   if test -n "$tmpdir"; then
     mkdir $tmpdir/{old,new}
     cp --parents --dereference old/$file $tmpdir/
@@ -414,7 +361,7 @@ check_compressed_file()
       ftype=`/usr/bin/file old/$file | sed 's@^[^:]\+:[[:blank:]]*@@'`
       case $ftype in
         POSIX\ tar\ archive)
-          echo "$ext content is: $ftype"
+          wprint "$ext content is: $ftype"
           mv old/$file{,.tar}
           mv new/$file{,.tar}
           if ! check_single_file ${file}.tar; then
@@ -422,7 +369,7 @@ check_compressed_file()
           fi
           ;;
         ASCII\ cpio\ archive\ *)
-          echo "$ext content is: $ftype"
+          wprint "$ext content is: $ftype"
           mv old/$file{,.cpio}
           mv new/$file{,.cpio}
           if ! check_single_file ${file}.cpio; then
@@ -431,13 +378,12 @@ check_compressed_file()
           ;;
         fifo*pipe*)
           ftype_new="`/usr/bin/file new/$file | sed -e 's@^[^:]\+:[[:blank:]]*@@' -e 's@[[:blank:]]*$@@'`"
-          if [ "$ftype_new" = "$ftype"  ]; then
-            return 0
+          if [ "$ftype_new" != "$ftype"  ]; then
+            ret=1
           fi
-          return 1
           ;;
         *)
-          echo "unhandled $ext content: $ftype"
+          wprint "unhandled $ext content: $ftype"
           if ! diff_two_files; then
             ret=1
           fi
@@ -450,166 +396,74 @@ check_compressed_file()
   return $ret
 }
 
-check_single_file()
+# returns 0 if file should be skipped
+file_is_on_ignorelist()
 {
   local file="$1"
   local ret=0
 
-  # If the two files are the same, return at once.
-  if [ -f "old/$file" -a -f "new/$file" ]; then
-    if cmp -s "old/$file" "new/$file"; then
-      return 0
-    fi
-  fi
+  case "${file}" in
+    # Just debug information, we can skip them
+    *.exe.mdb|*.dll.mdb) ;;
+
+    # binary dump of TeX and Metafont formats, we can ignore them for good
+    /var/lib/texmf/web2c/*/*fmt|\
+    /var/lib/texmf/web2c/metafont/*.base|\
+    /var/lib/texmf/web2c/metapost/*.mem) ;;
+
+    # ruby documentation, file just contains a timestamp and nothing else
+    */created.rid) ;;
+
+    # R binary cache of DESCRIPTION
+    /usr/lib*/R/library/*/Meta/package.rds) ;;
+
+    # binary cache of interpreted R code
+    /usr/lib*/R/library/*/R/*.rd[bx]) ;;
+
+    # LibreOffice log file
+    /usr/lib/libreoffice/solver/inc/*/deliver.log) ;;
+
+    # packaged by libguestfs
+    */ld.so.cache|*/etc/machine-id) ;;
+
+    # everything else will be processed
+    *) ret=1 ;;
+  esac
+
+  return ${ret}
+}
+
+# void
+normalize_file()
+{
+  local file="$1"
+  local f
+
   case "$file" in
     *.spec)
-       sed -i -e "s,Release:.*$release1,Release: @RELEASE@," "old/$file"
-       sed -i -e "s,Release:.*$release2,Release: @RELEASE@," "new/$file"
-       ;;
-    *.exe.mdb|*.dll.mdb)
-       # Just debug information, we can skip them
-       echo "$file skipped as debug file."
-       return 0
-       ;;
-    *.a)
-       flist=`ar t "new/$file"`
-       pwd=$PWD
-       fdir=`dirname "$file"`
-       cd "old/$fdir"
-       ar x `basename "$file"`
-       cd "$pwd/new/$fdir"
-       ar x `basename "$file"`
-       cd "$pwd"
-       for f in $flist; do
-          if ! check_single_file "$fdir/$f"; then
-             return 1
-          fi
-       done
-       return 0
-       ;;
-    *.cpio)
-       flist=`cpio --quiet --list --force-local < "new/$file" | $sort`
-       pwd=$PWD
-       fdir="$file.extract.$PPID.$$"
-       mkdir "old/$fdir" "new/$fdir"
-       cd "old/$fdir"
-       cpio --quiet --extract --force-local < "../${file##*/}"
-       cd "$pwd/new/$fdir"
-       cpio --quiet --extract --force-local < "../${file##*/}"
-       cd "$pwd"
-       for f in $flist; do
-         if ! check_single_file "$fdir/$f"; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-       done
-       rm -rf "old/$fdir" "new/$fdir"
-       return $ret
-       ;;
-    *.squashfs)
-       flist=`unsquashfs -no-progress -ls -dest '' "new/$file" | grep -Ev '^(Parallel unsquashfs:|[0-9]+ inodes )' | $sort`
-       fdir="$file.extract.$PPID.$$"
-       unsquashfs -no-progress -dest "old/$fdir" "old/$file"
-       unsquashfs -no-progress -dest "new/$fdir" "new/$file"
-       for f in $flist; do
-         if ! check_single_file "$fdir/$f"; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-       done
-       rm -rf "old/$fdir" "new/$fdir"
-       return $ret
-       ;;
-    *.tar|*.tar.bz2|*.tar.gz|*.tgz|*.tbz2)
-       flist=`tar tf "new/$file"`
-       pwd=$PWD
-       fdir=`dirname "$file"`
-       cd "old/$fdir"
-       tar xf `basename "$file"`
-       cd "$pwd/new/$fdir"
-       tar xf `basename "$file"`
-       cd "$pwd"
-       for f in $flist; do
-         if ! check_single_file "$fdir/$f"; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-       done
-       return $ret
-       ;;
-    *.zip|*.egg|*.jar|*.war)
-       for dir in old new ; do
-          (
-             cd $dir
-             unjar_l ./$file | $sort > flist
-          )
-       done
-       if ! cmp -s old/flist new/flist; then
-          echo "$file has different file list"
-          diff -u old/flist new/flist
-          return 1
-       fi
-       flist=`cat new/flist`
-       pwd=$PWD
-       fdir=`dirname $file`
-       cd old/$fdir
-       unjar `basename $file`
-       cd $pwd/new/$fdir
-       unjar `basename $file`
-       cd $pwd
-       for f in $flist; do
-         if test -f new/$fdir/$f && ! check_single_file $fdir/$f; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-       done
-       return $ret;;
-     */xen*.efi)
-        filter_generic xenefi
-        ;;
-     *.pyc|*.pyo)
-        filter_generic pyc
-        ;;
-      *.dvi)
-        filter_generic dvi
+      sed -i -e "s,Release:.*$release1,Release: @RELEASE@," "old/$file"
+      sed -i -e "s,Release:.*$release2,Release: @RELEASE@," "new/$file"
       ;;
-     *.bz2)
-        bunzip2 -c old/$file > old/${file/.bz2/}
-        bunzip2 -c new/$file > new/${file/.bz2/}
-        check_single_file ${file/.bz2/}
-        return $?
-        ;;
-     *.gz)
-        gunzip -c old/$file > old/${file/.gz/}
-        gunzip -c new/$file > new/${file/.gz/}
-        check_single_file ${file/.gz/}
-        return $?
-        ;;
-     *.rpm)
-	$self_script -a old/$file new/$file
-        return $?
-        ;;
-     *png)
-        # Try to remove timestamps, only if convert from ImageMagick is installed
-        if [[ $(type -p convert) ]]; then
-          filter_generic png
-          if ! diff_two_files; then
-            return 1
-          fi
-          return 0
-        fi
-        ;;
-     /usr/share/locale/*/LC_MESSAGES/*.mo|/usr/share/locale-bundle/*/LC_MESSAGES/*.mo|/usr/share/vdr/locale/*/LC_MESSAGES/*.mo)
-       filter_generic mo
-       ;;
+    */xen*.efi)
+      filter_generic xenefi
+      ;;
+    *.pyc|*.pyo)
+      filter_generic pyc
+      ;;
+    *.dvi)
+      filter_generic dvi
+      ;;
+    *png)
+      # Try to remove timestamps, only if convert from ImageMagick is installed
+      if [[ $(type -p convert) ]]; then
+        filter_generic png
+      fi
+      ;;
+    /usr/share/locale/*/LC_MESSAGES/*.mo|\
+    /usr/share/locale-bundle/*/LC_MESSAGES/*.mo|\
+    /usr/share/vdr/locale/*/LC_MESSAGES/*.mo)
+      filter_generic mo
+    ;;
     */rdoc/files/*.html)
       # ruby documentation
       # <td>Mon Sep 20 19:02:43 +0000 2010</td>
@@ -618,9 +472,12 @@ check_single_file()
       done
       strip_numbered_anchors
     ;;
-    /usr/share/doc/HTML/*/*/index.cache|/usr/share/doc//HTML/*/*/*/index.cache|\
-    /usr/share/doc/kde/HTML/*/*/index.cache|/usr/share/doc/kde/HTML/*/*/*/index.cache|\
-    /usr/share/gtk-doc/html/*/*.html|/usr/share/gtk-doc/html/*/*.devhelp2)
+    /usr/share/doc/HTML/*/*/index.cache|\
+    /usr/share/doc//HTML/*/*/*/index.cache|\
+    /usr/share/doc/kde/HTML/*/*/index.cache|\
+    /usr/share/doc/kde/HTML/*/*/*/index.cache|\
+    /usr/share/gtk-doc/html/*/*.html|\
+    /usr/share/gtk-doc/html/*/*.devhelp2)
       # various kde and gtk packages
       strip_numbered_anchors
     ;;
@@ -658,30 +515,29 @@ check_single_file()
         # </head>
         sed -i -e '
           /^<head>/{
-          : next
-          n
-          /^<\/head>/{
-          b end_head
-          }
-          s/^<!-- Generated by javadoc ([0-9._]\+) on ... ... .. ..:..:.. \(GMT\|UTC\) .... -->/<!-- Generated by javadoX (1.8.0_72) on Thu Mar 03 12:50:28 GMT 2016 -->/
-          t next
-          s/^\(<!-- Generated by javadoc\) \((\(build\|version\) [0-9._]\+) on ... ... .. ..:..:.. \(GMT\|UTC\) ....\) \(-->\)/\1 some-date-removed-by-build-compare \5/
-          t next
-          s/^\(<!-- Generated by javadoc\) ([0-9._]\+-internal) on ... ... .. ..:..:.. \(GMT\|UTC\) .... \(-->\)/\1 some-date-removed-by-build-compare \3/
-          t next
-          s/^\(<!-- Generated by javadoc\) \(on ... ... .. ..:..:.. \(GMT\|UTC\) ....\) \(-->\)/\1 some-date-removed-by-build-compare \3/
-          t next
-          s/^<meta name="dc.created" content="[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}">/<meta name="dc.created" content="some-date-removed-by-build-compare">/
-          t next
-          s/^<meta name="date" content="[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}">/<meta name="date" content="some-date-removed-by-build-compare">/
-          b next
+            : next
+            n
+            /^<\/head>/{
+            b end_head
+            }
+            s/^<!-- Generated by javadoc ([0-9._]\+) on ... ... .. ..:..:.. \(GMT\|UTC\) .... -->/<!-- Generated by javadoX (1.8.0_72) on Thu Mar 03 12:50:28 GMT 2016 -->/
+            t next
+            s/^\(<!-- Generated by javadoc\) \((\(build\|version\) [0-9._]\+) on ... ... .. ..:..:.. \(GMT\|UTC\) ....\) \(-->\)/\1 some-date-removed-by-build-compare \5/
+            t next
+            s/^\(<!-- Generated by javadoc\) ([0-9._]\+-internal) on ... ... .. ..:..:.. \(GMT\|UTC\) .... \(-->\)/\1 some-date-removed-by-build-compare \3/
+            t next
+            s/^\(<!-- Generated by javadoc\) \(on ... ... .. ..:..:.. \(GMT\|UTC\) ....\) \(-->\)/\1 some-date-removed-by-build-compare \3/
+            t next
+            s/^<meta name="dc.created" content="[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}">/<meta name="dc.created" content="some-date-removed-by-build-compare">/
+            t next
+            s/^<meta name="date" content="[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}">/<meta name="date" content="some-date-removed-by-build-compare">/
+            b next
           }
           : end_head
+          s%Generated by Gjdoc HtmlDoclet [0-9,.]*, part of <a href="http://www.gnu.org/software/classpath/cp-tools/" title="" target="_top">GNU Classpath Tools</a>, on .*, 20.. [0-9]*:..:.. \(a\|p\)\.m\. GMT.%Generated by Gjdoc.%
+          s%<!DOCTYPE html PUBLIC "-//gnu.org///DTD XHTML 1.1 plus Target 1.0//EN"\(.*\)GNU Classpath Tools</a>, on [A-Z][a-z]* [0-9]*, 20?? [0-9]*:??:?? \(a|p\)\.m\. GMT.</p>%<!DOCTYPE html PUBLIC "-//gnu.org///DTD XHTML 1.1 plus Target 1.0//EN"\1GNU Classpath Tools</a>, on January 1, 2009 0:00:00 a.m. GMT.</p>%
+          s%<!DOCTYPE html PUBLIC "-//gnu.org///DTD\(.*GNU Classpath Tools</a>\), on [a-zA-Z]* [0-9][0-9], 20.. [0-9]*:..:.. \(a\|p\)\.m\. GMT.</p>%<!DOCTYPE html PUBLIC "-//gnu.org///DTD\1,on May 1, 2010 1:11:42 p.m. GMT.</p>%
           ' $f
-        # Gjdoc HtmlDoclet:
-        sed -i -e 's%Generated by Gjdoc HtmlDoclet [0-9,.]*, part of <a href="http://www.gnu.org/software/classpath/cp-tools/" title="" target="_top">GNU Classpath Tools</a>, on .*, 20.. [0-9]*:..:.. \(a\|p\)\.m\. GMT.%Generated by Gjdoc.%' $f
-        sed -i -e 's%<!DOCTYPE html PUBLIC "-//gnu.org///DTD XHTML 1.1 plus Target 1.0//EN"\(.*\)GNU Classpath Tools</a>, on [A-Z][a-z]* [0-9]*, 20?? [0-9]*:??:?? \(a|p\)\.m\. GMT.</p>%<!DOCTYPE html PUBLIC "-//gnu.org///DTD XHTML 1.1 plus Target 1.0//EN"\1GNU Classpath Tools</a>, on January 1, 2009 0:00:00 a.m. GMT.</p>%' $f
-        sed -i -e 's%<!DOCTYPE html PUBLIC "-//gnu.org///DTD\(.*GNU Classpath Tools</a>\), on [a-zA-Z]* [0-9][0-9], 20.. [0-9]*:..:.. \(a\|p\)\.m\. GMT.</p>%<!DOCTYPE html PUBLIC "-//gnu.org///DTD\1,on May 1, 2010 1:11:42 p.m. GMT.</p>%' $f
         # deprecated-list is randomly ordered, sort it for comparison
         case $f in
           */deprecated-list.html)
@@ -696,90 +552,66 @@ check_single_file()
         sed -i -e 's|^#[A-Z][a-z]\{2\} [A-Z][a-z]\{2\} [0-9]\{2\} ..:..:.. GMT 20..$|#Fri Jan 01 11:27:36 GMT 2009|' $f
       done
     ;;
-     */fonts.scale|*/fonts.dir|*/encodings.dir)
-       for f in old/$file new/$file; do
-         # sort files before comparing
-         [[ $nofilter ]] || sort -o $f $f
-       done
-       ;;
-     /var/adm/perl-modules/*)
-       for f in old/$file new/$file; do
-         sed -i -e 's|^=head2 ... ... .. ..:..:.. ....: C<Module>|=head2 Wed Jul  1 00:00:00 2009: C<Module>|' $f
-       done
-       ;;
-     /usr/share/man/man3/*3pm)
-       for f in old/$file new/$file; do
-         sed -i -e 's| 3 "20..-..-.." "perl v5....." "User Contributed Perl Documentation"$| 3 "2009-01-01" "perl v5.10.0" "User Contributed Perl Documentation"|' $f
-         trim_man_TH $f
-         trim_man_first_line $f
-       done
-       ;;
-     */share/man/*|/usr/lib/texmf/doc/man/*/*)
-
-       for f in old/$file new/$file; do
-         trim_man_TH $f
-         trim_man_first_line $f
-         # generated by docbook xml:
-         #.\"      Date: 09/13/2010
-         sed -i -e 's|Date: [0-1][0-9]/[0-9][0-9]/201[0-9]|Date: 09/13/2010|' $f
-       done
-       ;;
-     *.elc)
-       filter_generic emacs_lisp
-       ;;
-     /var/lib/texmf/web2c/*/*fmt|\
-     /var/lib/texmf/web2c/metafont/*.base|\
-     /var/lib/texmf/web2c/metapost/*.mem)
-       # binary dump of TeX and Metafont formats, we can ignore them for good
-       echo "difference in $file ignored."
-       return 0
-       ;;
-     */libtool)
-       for f in old/$file new/$file; do
-	  sed -i -e 's|^# Libtool was configured on host [A-Za-z0-9]*:$|# Libtool was configured on host x42:|' $f
-       done
-       ;;
-     /etc/mail/*cf|/etc/sendmail.cf)
-       # from sendmail package
-       for f in old/$file new/$file; do
-	  # - ##### built by abuild@build33 on Thu May 6 11:21:17 UTC 2010
-	  sed -i -e 's|built by abuild@[a-z0-9]* on ... ... [0-9]* [0-9]*:[0-9][0-9]:[0-9][0-9] .* 20[0-9][0-9]|built by abuild@build42 on Thu May 6 11:21:17 UTC 2010|' $f
-       done
-       ;;
-    */created.rid)
-       # ruby documentation
-       # file just contains a timestamp and nothing else, so ignore it
-       echo "Ignore $file"
-       return 0
-       ;;
-    /usr/lib*/R/library/*/DESCRIPTION)
-       # Simulate R CMD INSTALL --built-timestamp=''
-       # Built: R 3.6.1; x86_64-suse-linux-gnu; 2019-08-13 04:19:49 UTC; unix
-       sed -i -e 's|\(Built: [^;]*; [^;]*; \)20[0-9][0-9]-[01][0-9]-[0123][0-9] [012][0-9]:[0-5][0-9]:[0-5][0-9] UTC\(; .*\)$|\1\2|' old/$file new/$file
-       ;;
-    /usr/lib*/R/library/*/Meta/package.rds)
-       # R binary cache of DESCRIPTION
-       echo "Ignore $file"
-       return 0
-       ;;
-    /usr/lib*/R/library/*/R/*.rd[bx])
-       # binary cache of interpreted R code
-       echo "Ignore $file"
-       return 0
-       ;;
-    */Linux*Env.Set.sh)
-       # LibreOffice files, contains:
-       # Generated on: Mon Apr 18 13:19:22 UTC 2011
-       for f in old/$file new/$file; do
-	 sed -i -e 's%^# Generated on:.*UTC 201[0-9] *$%# Generated on: Sometime%g' $f
-       done
-       ;;
-    /usr/lib/libreoffice/solver/inc/*/deliver.log)
-       # LibreOffice log file
-      echo "Ignore $file"
-      return 0
+    */fonts.scale|\
+    */fonts.dir|\
+    */encodings.dir)
+      for f in old/$file new/$file; do
+        # sort files before comparing
+        [[ $nofilter ]] || sort -o $f $f
+      done
       ;;
-    /var/adm/update-messages/*|/var/adm/update-scripts/*)
+    /var/adm/perl-modules/*)
+      for f in old/$file new/$file; do
+        sed -i -e 's|^=head2 ... ... .. ..:..:.. ....: C<Module>|=head2 Wed Jul  1 00:00:00 2009: C<Module>|' $f
+      done
+      ;;
+    /usr/share/man/man3/*3pm)
+      for f in old/$file new/$file; do
+        sed -i -e 's| 3 "20..-..-.." "perl v5....." "User Contributed Perl Documentation"$| 3 "2009-01-01" "perl v5.10.0" "User Contributed Perl Documentation"|' $f
+        trim_man_TH $f
+        trim_man_first_line $f
+      done
+      ;;
+    */share/man/*|\
+    /usr/lib/texmf/doc/man/*/*)
+      for f in old/$file new/$file; do
+        trim_man_TH $f
+        trim_man_first_line $f
+        # generated by docbook xml:
+        #.\"      Date: 09/13/2010
+        sed -i -e 's|Date: [0-1][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]|Date: 09/13/2010|' $f
+      done
+      ;;
+    *.elc)
+      filter_generic emacs_lisp
+      ;;
+    */libtool)
+      for f in old/$file new/$file; do
+        sed -i -e 's|^# Libtool was configured on host [A-Za-z0-9]*:$|# Libtool was configured on host x42:|' $f
+      done
+      ;;
+    /etc/mail/*cf|\
+    /etc/sendmail.cf)
+      # from sendmail package
+      for f in old/$file new/$file; do
+        # - ##### built by abuild@build33 on Thu May 6 11:21:17 UTC 2010
+        sed -i -e 's|built by abuild@[a-z0-9]* on ... ... [0-9]* [0-9]*:[0-9][0-9]:[0-9][0-9] .* 20[0-9][0-9]|built by abuild@build42 on Thu May 6 11:21:17 UTC 2010|' $f
+      done
+      ;;
+    /usr/lib*/R/library/*/DESCRIPTION)
+      # Simulate R CMD INSTALL --built-timestamp=''
+      # Built: R 3.6.1; x86_64-suse-linux-gnu; 2019-08-13 04:19:49 UTC; unix
+      sed -i -e 's|\(Built: [^;]*; [^;]*; \)20[0-9][0-9]-[01][0-9]-[0123][0-9] [012][0-9]:[0-5][0-9]:[0-5][0-9] UTC\(; .*\)$|\1\2|' old/$file new/$file
+      ;;
+    */Linux*Env.Set.sh)
+      # LibreOffice files, contains:
+      # Generated on: Mon Apr 18 13:19:22 UTC 2011
+      for f in old/$file new/$file; do
+        sed -i -e 's%^# Generated on:.*UTC 201[0-9] *$%# Generated on: Sometime%g' $f
+      done
+      ;;
+    /var/adm/update-messages/*|\
+    /var/adm/update-scripts/*)
       # fetchmsttfonts embeds the release number in the update shell script.
       sed -i "s/${name_ver_rel_old_regex_l}/@NAME_VER_REL@/" old/$file
       sed -i "s/${name_ver_rel_new_regex_l}/@NAME_VER_REL@/" new/$file
@@ -790,35 +622,181 @@ check_single_file()
     *pdf)
       filter_generic pdf
       ;;
-      */linuxrc.config)
-        echo "${file}"
-        filter_generic linuxrc_config
+    */linuxrc.config)
+      filter_generic linuxrc_config
       ;;
-      */ld.so.cache|*/etc/machine-id)
-        # packaged by libguestfs
-        return 0
+    */etc/hosts)
+      # packaged by libguestfs
+      sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "old/$file"
+      sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "new/$file"
       ;;
-      */etc/hosts)
-        # packaged by libguestfs
-        sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "old/$file"
-        sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "new/$file"
-      ;;
+  esac
+}
+
+check_single_file()
+{
+  local file="$1"
+  local ret=0
+  local i
+  local failed
+  local objdump_failed
+  local elfdiff
+  local sections
+  local -a pipestatus
+
+  if file_is_on_ignorelist "${file}"
+  then
+    return 0
+  fi
+
+  verify_before_processing "${file}" "${dfile}"
+  case "$?" in
+    0) return 0 ;;
+    1) return 1 ;;
+    *) ;;
+  esac
+
+  normalize_file "${file}"
+
+  case "$file" in
+    *.a)
+       flist=`ar t "new/$file"`
+       pwd=$PWD
+       fdir=`dirname "$file"`
+       cd "old/$fdir"
+       ar x `basename "$file"`
+       cd "$pwd/new/$fdir"
+       ar x `basename "$file"`
+       cd "$pwd"
+       for f in $flist; do
+          if ! check_single_file "$fdir/$f"; then
+             return 1
+          fi
+         watchdog_touch
+       done
+       return 0
+       ;;
+    *.cpio)
+       flist=`cpio --quiet --list --force-local < "new/$file" | $sort`
+       pwd=$PWD
+       fdir="$file.extract.$PPID.$$"
+       mkdir "old/$fdir" "new/$fdir"
+       cd "old/$fdir"
+       cpio --quiet --extract --force-local < "../${file##*/}"
+       cd "$pwd/new/$fdir"
+       cpio --quiet --extract --force-local < "../${file##*/}"
+       cd "$pwd"
+       for f in $flist; do
+         if ! check_single_file "$fdir/$f"; then
+           ret=1
+           if test -z "$check_all"; then
+             break
+           fi
+         fi
+         watchdog_touch
+       done
+       rm -rf "old/$fdir" "new/$fdir"
+       return $ret
+       ;;
+    *.squashfs)
+       flist=`unsquashfs -no-progress -ls -dest '' "new/$file" | grep -Ev '^(Parallel unsquashfs:|[0-9]+ inodes )' | $sort`
+       fdir="$file.extract.$PPID.$$"
+       unsquashfs -no-progress -dest "old/$fdir" "old/$file"
+       unsquashfs -no-progress -dest "new/$fdir" "new/$file"
+       for f in $flist; do
+         if ! check_single_file "$fdir/$f"; then
+           ret=1
+           if test -z "$check_all"; then
+             break
+           fi
+         fi
+         watchdog_touch
+       done
+       rm -rf "old/$fdir" "new/$fdir"
+       return $ret
+       ;;
+    *.tar|*.tar.bz2|*.tar.gz|*.tgz|*.tbz2)
+       flist=`tar tf "new/$file"`
+       pwd=$PWD
+       fdir=`dirname "$file"`
+       cd "old/$fdir"
+       tar xf `basename "$file"`
+       cd "$pwd/new/$fdir"
+       tar xf `basename "$file"`
+       cd "$pwd"
+       for f in $flist; do
+         if ! check_single_file "$fdir/$f"; then
+           ret=1
+           if test -z "$check_all"; then
+             break
+           fi
+         fi
+         watchdog_touch
+       done
+       return $ret
+       ;;
+    *.zip|*.egg|*.jar|*.war)
+       for dir in old new ; do
+          (
+             cd $dir
+             unjar_l ./$file | $sort > flist
+          )
+       done
+       if ! cmp -s old/flist new/flist; then
+          wprint "$file has different file list"
+          diff -u old/flist new/flist
+          return 1
+       fi
+       flist=`cat new/flist`
+       pwd=$PWD
+       fdir=`dirname $file`
+       cd old/$fdir
+       unjar `basename $file`
+       cd $pwd/new/$fdir
+       unjar `basename $file`
+       cd $pwd
+       for f in $flist; do
+         if test -f new/$fdir/$f && ! check_single_file $fdir/$f; then
+           ret=1
+           if test -z "$check_all"; then
+             break
+           fi
+         fi
+         watchdog_touch
+       done
+       return $ret;;
+     *.bz2)
+        bunzip2 -c old/$file > old/${file/.bz2/}
+        bunzip2 -c new/$file > new/${file/.bz2/}
+        check_single_file ${file/.bz2/}
+        return $?
+        ;;
+     *.gz)
+        gunzip -c old/$file > old/${file/.gz/}
+        gunzip -c new/$file > new/${file/.gz/}
+        check_single_file ${file/.gz/}
+        return $?
+        ;;
+     *.rpm)
+	$self_script -a old/$file new/$file
+        return $?
+        ;;
   esac
 
   ftype=`/usr/bin/file "old/$file" | sed -e 's@^[^:]\+:[[:blank:]]*@@' -e 's@[[:blank:]]*$@@'`
   case $ftype in
      PE32\ executable*Mono\/\.Net\ assembly*)
-       echo "PE32 Mono/.Net assembly: $file"
+       wprint "PE32 Mono/.Net assembly: $file"
        if [ -x /usr/bin/monodis ] ; then
          monodis "old/$file" 2>/dev/null|sed -e 's/GUID = {.*}/GUID = { 42 }/;'> ${file1}
          monodis "new/$file" 2>/dev/null|sed -e 's/GUID = {.*}/GUID = { 42 }/;'> ${file2}
          if ! cmp -s "${file1}" "${file2}"; then
-           echo "$file differs ($ftype)"
+           wprint "$file differs ($ftype)"
            diff --speed-large-files -u "${file1}" "${file2}"
            return 1
          fi
        else
-         echo "Cannot compare, no monodis installed"
+         wprint "Cannot compare, no monodis installed"
          return 1
        fi
        ;;
@@ -828,48 +806,136 @@ check_single_file()
     setuid\ ELF*[LM]SB\ shared\ object*|\
     ELF*[LM]SB\ pie\ executable*|\
     setuid\ ELF*[LM]SB\ pie\ executable*)
-       $OBJDUMP -d --no-show-raw-insn old/$file > $file1
-       ret=$?
-       $OBJDUMP -d --no-show-raw-insn new/$file > $file2
-       if test ${ret}$? != 00 ; then
-         # objdump has no idea how to handle it
-         if ! diff_two_files; then
-           return 1
-         fi
-         return 0
-       fi
-       filter_disasm $file1
-       filter_disasm $file2
-       sed -i -e "s,old/,," $file1
-       sed -i -e "s,new/,," $file2
-       elfdiff=
-       if ! diff --speed-large-files -u $file1 $file2 > $dfile; then
-          echo "$file differs in assembler output"
-          $buildcompare_head $dfile
-          elfdiff="1"
-       fi
-       echo "" >$file1
-       echo "" >$file2
-       # Don't compare .build-id, .gnu_debuglink and .gnu_debugdata sections
-       sections="$($OBJDUMP -s new/$file | grep "Contents of section .*:" | sed -r "s,.* (.*):,\1,g" | grep -v -e "\.build-id" -e "\.gnu_debuglink" -e "\.gnu_debugdata" | tr "\n" " ")"
-       for section in $sections; do
-          $OBJDUMP -s -j $section old/$file | sed "s,^old/,," > $file1
-          $OBJDUMP -s -j $section new/$file | sed "s,^new/,," > $file2
-          if ! diff -u $file1 $file2 > $dfile; then
-             echo "$file differs in ELF section $section"
-             $buildcompare_head $dfile
-             elfdiff="1"
-          fi
-       done
-       if test -z "$elfdiff"; then
-          echo "$file: only difference was in build-id, gnu_debuglink or gnu_debugdata, GOOD."
+      diff --speed-large-files --unified \
+        <( $OBJDUMP -d --no-show-raw-insn old/$file |
+          filter_disasm |
+          sed -e "s,old/,," ;
+          echo "${PIPESTATUS[@]}" > $file1
+          ) \
+        <( $OBJDUMP -d --no-show-raw-insn new/$file |
+          filter_disasm |
+          sed -e "s,new/,," ;
+          echo "${PIPESTATUS[@]}" > $file2
+          ) > $dfile
+      ret=$?
+
+      failed=
+      read i < ${file1}
+      pipestatus=( $i )
+      objdump_failed="${pipestatus[0]}"
+      i=0
+      while test $i -lt ${#pipestatus[@]}
+      do
+        if test "${pipestatus[$i]}" != "0"
+        then
+          wprint "ELF: pipe command #$i failed with ${pipestatus[$i]} for old/$file"
+          failed='failed'
+        fi
+        : $(( i++ ))
+      done
+      read i < ${file2}
+      pipestatus=( $i )
+      objdump_failed="${objdump_failed}${pipestatus[0]}"
+      i=0
+      while test $i -lt ${#pipestatus[@]}
+      do
+        if test "${pipestatus[$i]}" != "0"
+        then
+          wprint "ELF: pipe command #$i failed with ${pipestatus[$i]} for new/$file"
+          failed='failed'
+        fi
+        : $(( i++ ))
+      done
+
+      if test "${objdump_failed}" != "00" || test -n "${failed}"
+      then
+        # objdump had no idea how to handle it
+        if diff_two_files; then
           return 0
-       fi
-       return 1
-       ;;
+        fi
+        return 1
+      fi
+
+      elfdiff=
+      if test "$ret" != "0"
+      then
+        wprint "$file differs in assembler output"
+        $buildcompare_head $dfile
+        elfdiff='elfdiff'
+      fi
+
+      sections="$(
+        $OBJDUMP -s new/$file |
+        sed -n --regexp-extended -e '
+          /Contents of section .*:/ {
+            s,.* (.*):,\1,g
+            /\.build-id/d
+            /\.gnu_debuglink/d
+            /\.gnu_debugdata/d
+            p
+          }
+        '
+        )"
+      for section in $sections
+      do
+        diff --unified \
+          <( $OBJDUMP -s -j $section old/$file |
+              sed -e "s,^old/,," ;
+              echo "${PIPESTATUS[@]}" > $file1) \
+          <( $OBJDUMP -s -j $section new/$file |
+            sed -e "s,^new/,," ;
+            echo "${PIPESTATUS[@]}" > $file2
+            ) > $dfile
+        ret=$?
+        failed=
+        read i < ${file1}
+        pipestatus=( $i )
+        objdump_failed="${pipestatus[0]}"
+        i=0
+        while test $i -lt ${#pipestatus[@]}
+        do
+          if test "${pipestatus[$i]}" != "0"
+          then
+            wprint "ELF section: pipe command #$i failed with ${pipestatus[$i]} for old/$file"
+            failed='failed'
+          fi
+          : $(( i++ ))
+        done
+        read i < ${file2}
+        pipestatus=( $i )
+        objdump_failed="${objdump_failed}${pipestatus[0]}"
+        i=0
+        while test $i -lt ${#pipestatus[@]}
+        do
+          if test "${pipestatus[$i]}" != "0"
+          then
+            wprint "ELF section: pipe command #$i failed with ${pipestatus[$i]} for new/$file"
+            failed='failed'
+          fi
+          : $(( i++ ))
+        done
+        if test -n "${failed}"
+        then
+          elfdiff='elfdiff'
+          break
+        fi
+        if test "$ret" != "0"
+        then
+          wprint "$file differs in ELF section $section"
+          $buildcompare_head $dfile
+          elfdiff='elfdiff'
+        else
+          watchdog_touch
+        fi
+      done
+      if test -n "$elfdiff"; then
+        return 1
+      fi
+      return 0
+      ;;
      *ASCII*|*text*)
        if ! cmp -s "old/$file" "new/$file"; then
-         echo "$file differs ($ftype)"
+         wprint "$file differs ($ftype)"
          diff -u "old/$file" "new/$file" | $buildcompare_head
          return 1
        fi
@@ -908,7 +974,7 @@ check_single_file()
           fi
      ;;
      Squashfs\ filesystem,*)
-        echo "$file ($ftype)"
+        wprint "$file ($ftype)"
         mv old/$file{,.squashfs}
         mv new/$file{,.squashfs}
         if ! check_single_file ${file}.squashfs; then
@@ -919,7 +985,7 @@ check_single_file()
        readlink "old/$file" > $file1
        readlink "new/$file" > $file2
        if ! diff -u $file1 $file2; then
-         echo "symlink target for $file differs"
+         wprint "symlink target for $file differs"
          return 1
        fi
        ;;
@@ -935,6 +1001,117 @@ check_single_file()
   esac
   return 0
 }
+
+FUNCTIONS=${0%/*}/functions.sh
+: ${buildcompare_head:="head -n 200"}
+nofilter=${buildcompare_nofilter}
+sort=sort
+[[ $nofilter ]] && sort=cat
+
+check_all=
+case $1 in
+  -a | --check-all)
+    check_all=1
+    shift
+esac
+
+if test "$#" != 2; then
+   echo "usage: $0 [-a|--check-all] old.rpm new.rpm"
+   exit 1
+fi
+
+test -z $OBJDUMP && OBJDUMP=objdump
+
+# Always clean up on exit
+local_tmpdir=`mktemp -d`
+if test -z "${local_tmpdir}"
+then
+  exit 1
+fi
+function _exit()
+{
+  chmod -R u+w "${local_tmpdir}"
+  rm -rf "${local_tmpdir}"
+}
+trap _exit EXIT
+# Let further mktemp refer to private tmpdir
+export TMPDIR=$local_tmpdir
+
+self_script=$(cd $(dirname $0); echo $(pwd)/$(basename $0))
+
+source $FUNCTIONS
+
+oldpkg=`readlink -f $1`
+newpkg=`readlink -f $2`
+rename_script=`mktemp`
+
+file1=`mktemp`
+file2=`mktemp`
+dir=`mktemp -d`
+dfile=`mktemp`
+
+if test ! -f "$oldpkg"; then
+    echo "can't open $1"
+    exit 1
+fi
+
+if test ! -f "$newpkg"; then
+    echo "can't open $2"
+    exit 1
+fi
+
+echo "Comparing `basename $oldpkg` to `basename $newpkg`"
+
+case $oldpkg in
+  *.rpm)
+    cmp_rpm_meta "$rename_script" "$oldpkg" "$newpkg"
+    RES=$?
+    case $RES in
+    0)
+      echo "RPM meta information is identical"
+      if test -z "$check_all"; then
+        exit 0
+      fi
+      ;;
+    1)
+      echo "RPM meta information is different"
+      if test -z "$check_all"; then
+        exit 1
+      fi
+      ;;
+    2)
+      echo "RPM file checksum differs."
+      RES=0
+      ;;
+    *)
+      echo "Wrong exit code!"
+      exit 1
+      ;;
+    esac
+  ;;
+esac
+
+wprint "Extracting packages"
+unpackage $oldpkg $dir/old
+unpackage $newpkg $dir/new
+
+case $oldpkg in
+  *.deb|*.ipk)
+    adjust_controlfile $dir/old $dir/new
+  ;;
+esac
+
+# files is set in cmp_rpm_meta for rpms, so if RES is empty we should assume
+# it wasn't an rpm and pick all files for comparison.
+if [ -z $RES ]; then
+  oldfiles=`cd $dir/old; find . -type f`
+  newfiles=`cd $dir/new; find . -type f`
+
+  files=`echo -e "$oldfiles\n$newfiles" | sort -u`
+fi
+
+cd $dir
+bash $rename_script
 
 # We need /proc mounted for some tests, so check that it's mounted and
 # complain if not.
@@ -962,8 +1139,6 @@ if [ "$PROC_MOUNTED" -eq "1" ]; then
   umount /proc
 fi
 
-rm $file1 $file2 $dfile $rename_script
-rm -rf $dir
 if test "$ret" = 0; then
      echo "Package content is identical"
 fi

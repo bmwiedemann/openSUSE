@@ -941,4 +941,23 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
   https://github.com/openSUSE/build-compare/pull/34</comment>
     <requestid>723342</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>081e5ef3c9a9ec32af6ebbd4673bf429</srcmd5>
+    <version>20200109T124459.beb05d0</version>
+    <time>1579346013</time>
+    <user>dimstar_suse</user>
+    <comment>- this new decade must be handled in man pages created by docbook.xml 
+- use bash Process Substitution in diff_two_files
+- use bash Process Substitution when processing ELF files
+- move normalizing code from check_single_file into separate function
+- better input verification in check_single_file
+- split verification from diff_two_files into separate function
+- move check for ignored files out of check_single_file
+- separate helper functions from code in pkg-diff
+- touch host watchdog when producing output and in loops (issue#35)
+- add functions to touch host watchdog
+- always run cleanup in check_compressed_file
+- use EXIT handler in pkg-diff to remove tmpfiles</comment>
+    <requestid>762170</requestid>
+  </revision>
 </revisionlist>
