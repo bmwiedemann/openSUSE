@@ -1,7 +1,7 @@
 #
 # spec file for package java-11-openjdk
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       5
+%global updatever       6
 %global patchver        0
-%global datever         2019-10-15
+%global datever         2020-01-14
 %global buildver        10
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     6385eb06af94
+%global hg_revision     837b7afec083
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -145,7 +145,7 @@ Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
-URL:            http://openjdk.java.net/
+URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
 Source0:        http://hg.openjdk.java.net/%{hg_project}/%{hg_repository}/archive/%{hg_revision}.tar.bz2
 # Accessibility support
@@ -1212,6 +1212,7 @@ fi
 %{_jvmprivdir}/*
 
 %{_jvmdir}/%{sdkdir}/bin/java
+%{_jvmdir}/%{sdkdir}/bin/jfr
 %{_jvmdir}/%{sdkdir}/bin/jjs
 %{_jvmdir}/%{sdkdir}/bin/keytool
 %{_jvmdir}/%{sdkdir}/bin/rmid
