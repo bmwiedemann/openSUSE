@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 10 08:06:27 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add isl_basic_map_underlying_set-fix.patch from upstream.
+
+-------------------------------------------------------------------
+Fri Jan  3 10:57:47 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to 0.22:
+  * improved bindings
+  * scheduler fix involving fixed dimensions
+  * accept ranges in tuples during parsing
+  * add some convenience functions
+- Update to 0.21:
+  * preliminary C++ bindings
+  * use incremental scheduler by default
+  * introduce isl_size type
+  * rename isl_ast_op_type to isl_ast_expr_op_type
+  * fix coalescing bugs
+  * use isl_bool to return extra boolean argument
+
+-------------------------------------------------------------------
 Thu Aug  9 22:28:01 UTC 2018 - rpm@fthiessen.de
 
 - Update to 0.20

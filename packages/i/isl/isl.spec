@@ -1,7 +1,7 @@
 #
 # spec file for package isl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define islsover 19
+%define islsover 22
 Name:           isl
-Version:        0.20
+Version:        0.22
 Release:        0
 Summary:        Integer Set Library
 License:        MIT
 Group:          Development/Languages/C and C++
-Url:            http://isl.gforge.inria.fr/
+URL:            http://isl.gforge.inria.fr/
 Source:         http://isl.gforge.inria.fr/isl-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch0:         isl_basic_map_underlying_set-fix.patch
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -55,6 +56,7 @@ bounded by linear constraints.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure --disable-static
