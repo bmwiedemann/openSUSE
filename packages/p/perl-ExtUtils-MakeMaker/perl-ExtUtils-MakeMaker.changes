@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 15 03:09:01 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 7.44
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.44    Tue 14 Jan 16:35:06 GMT 2020
+  
+      No changes since v7.43_01
+  
+  7.43_01 Sun  5 Jan 12:41:43 GMT 2020
+  
+      Bug fixes:
+      - Match final dir component in init_MANPODS
+  
+      Test Fixes:
+      - Use internal reference to Makefile in build_man.t
+
+-------------------------------------------------------------------
 Wed Dec 18 03:09:06 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 7.42
