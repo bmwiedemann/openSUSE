@@ -601,4 +601,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>Add missing CVE numbers</comment>
     <requestid>761823</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>b949fa31a4c6c15a19f1f186a049ec16</srcmd5>
+    <version>9.0.30</version>
+    <time>1579346289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765337</requestid>
+  </revision>
 </revisionlist>

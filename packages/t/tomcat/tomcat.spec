@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -96,7 +96,7 @@ BuildRequires:  geronimo-jaxrpc-1_1-api
 BuildRequires:  geronimo-qname-1_1-api
 BuildRequires:  geronimo-saaj-1_1-api
 BuildRequires:  jakarta-taglibs-standard >= 1.1
-BuildRequires:  java-devel >= 1.8.0
+BuildRequires:  java-devel = 1.8.0
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
