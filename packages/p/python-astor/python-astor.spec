@@ -1,7 +1,7 @@
 #
 # spec file for package python-astor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-astor
-Version:        0.8
+Version:        0.8.1
 Release:        0
 Summary:        Read/rewrite/write Python ASTs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/berkerpeksag/astor
 Source:         https://github.com/berkerpeksag/astor/archive/%{version}.tar.gz#/astor-%{version}.tar.gz
-Patch0:         python38.patch
-# PATCH-FIX-UPSTREAM setuptools-gt-41_1.patch gh#berkerpeksag/astor#163 mcepl@suse.com
-# Remove weird acrobatics in setup.py and prefer proper use of setup.cfg.
-Patch1:         setuptools-gt-41_1.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
