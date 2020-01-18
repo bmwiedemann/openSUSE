@@ -1,0 +1,58 @@
+From abe4dd26e0cbfbf0811a59b04d018c0786ea18b4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 13 Jan 2020 15:05:12 +0100
+Subject: [PATCH 6/8] Use std::thread instead of QThread for Qt < 5.10 support
+
+---
+ src/cpp/desktop/DesktopInfo.cpp | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/cpp/desktop/DesktopInfo.cpp b/src/cpp/desktop/DesktopInfo.cpp
+index b72b4e9888..cf27b90f64 100644
+--- a/src/cpp/desktop/DesktopInfo.cpp
++++ b/src/cpp/desktop/DesktopInfo.cpp
+@@ -20,7 +20,8 @@
+ 
+ #include <boost/algorithm/string.hpp>
+ 
+-#include <QThread>
++#include <thread>
++#include <memory>
+ 
+ #include <core/Algorithm.hpp>
+ #include <core/SafeConvert.hpp>
+@@ -47,7 +48,7 @@ namespace {
+ 
+ #ifndef Q_OS_MAC
+ std::atomic<bool> s_abortRequested(false);
+-QThread* s_fontDatabaseWorker = nullptr;
++std::thread s_fontDatabaseWorker;
+ #endif
+ 
+ QString s_platform             = kUnknown;
+@@ -132,8 +133,7 @@ void buildFontDatabase()
+ 
+ #endif
+ 
+-   s_fontDatabaseWorker = QThread::create(buildFontDatabaseImpl);
+-   s_fontDatabaseWorker->start();
++   s_fontDatabaseWorker = std::thread(buildFontDatabaseImpl);
+ }
+ 
+ #else
+@@ -231,10 +231,10 @@ void initialize()
+ void DesktopInfo::onClose()
+ {
+ #ifndef Q_OS_MAC
+-   if (s_fontDatabaseWorker && s_fontDatabaseWorker->isRunning())
++   if (s_fontDatabaseWorker.joinable())
+    {
+       s_abortRequested = true;
+-      s_fontDatabaseWorker->wait(1000);
++      s_fontDatabaseWorker.join();
+    }
+ #endif
+ }
+-- 
+2.24.1
+

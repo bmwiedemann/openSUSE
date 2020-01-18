@@ -1,0 +1,108 @@
+From 1fb2258dc456ecbbdecc9b366ba4a6758e4e0421 Mon Sep 17 00:00:00 2001
+From: Kevin Ushey <kevinushey@gmail.com>
+Date: Tue, 3 Sep 2019 13:23:23 -0700
+Subject: [PATCH 1/8] First pass at Boost 1.70 support
+
+---
+ src/cpp/core/include/core/http/TcpIpAsyncConnector.hpp |  6 ++++--
+ src/cpp/ext/websocketpp/transport/asio/connection.hpp  |  2 +-
+ src/cpp/ext/websocketpp/transport/asio/endpoint.hpp    | 10 +++-------
+ .../ext/websocketpp/transport/asio/security/none.hpp   |  3 +--
+ 4 files changed, 9 insertions(+), 12 deletions(-)
+
+diff --git a/src/cpp/core/include/core/http/TcpIpAsyncConnector.hpp b/src/cpp/core/include/core/http/TcpIpAsyncConnector.hpp
+index b8ea6658a1..a3578318a3 100644
+--- a/src/cpp/core/include/core/http/TcpIpAsyncConnector.hpp
++++ b/src/cpp/core/include/core/http/TcpIpAsyncConnector.hpp
+@@ -54,7 +54,8 @@ public:
+ public:
+    TcpIpAsyncConnector(boost::asio::io_service& ioService,
+                        boost::asio::ip::tcp::socket* pSocket)
+-     : pSocket_(pSocket),
++     : service_(ioService),
++       pSocket_(pSocket),
+        resolver_(ioService),
+        isConnected_(false),
+        hasFailed_(false)
+@@ -77,7 +78,7 @@ public:
+       {
+          // start a timer that will cancel any outstanding asynchronous operations
+          // when it elapses if the connection operation has not succeeded
+-         pConnectionTimer_.reset(new boost::asio::deadline_timer(resolver_.get_io_service(), timeout));
++         pConnectionTimer_.reset(new boost::asio::deadline_timer(service_, timeout));
+          pConnectionTimer_->async_wait(boost::bind(&TcpIpAsyncConnector::onConnectionTimeout,
+                                                    TcpIpAsyncConnector::shared_from_this(),
+                                                    boost::asio::placeholders::error));
+@@ -232,6 +233,7 @@ private:
+    }
+ 
+ private:
++   boost::asio::io_service& service_;
+    boost::asio::ip::tcp::socket* pSocket_;
+    boost::asio::ip::tcp::resolver resolver_;
+    ConnectedHandler connectedHandler_;
+diff --git a/src/cpp/ext/websocketpp/transport/asio/connection.hpp b/src/cpp/ext/websocketpp/transport/asio/connection.hpp
+index 395632c3f3..ef35d295ac 100644
+--- a/src/cpp/ext/websocketpp/transport/asio/connection.hpp
++++ b/src/cpp/ext/websocketpp/transport/asio/connection.hpp
+@@ -296,7 +296,7 @@ public:
+      */
+     timer_ptr set_timer(long duration, timer_handler callback) {
+         timer_ptr new_timer = lib::make_shared<boost::asio::deadline_timer>(
+-            lib::ref(*m_io_service),
++            *m_io_service,
+             boost::posix_time::milliseconds(duration)
+         );
+ 
+diff --git a/src/cpp/ext/websocketpp/transport/asio/endpoint.hpp b/src/cpp/ext/websocketpp/transport/asio/endpoint.hpp
+index ef3b07db46..b418060a85 100644
+--- a/src/cpp/ext/websocketpp/transport/asio/endpoint.hpp
++++ b/src/cpp/ext/websocketpp/transport/asio/endpoint.hpp
+@@ -183,8 +183,7 @@ public:
+ 
+         m_io_service = ptr;
+         m_external_io_service = true;
+-        m_acceptor = lib::make_shared<boost::asio::ip::tcp::acceptor>(
+-            lib::ref(*m_io_service));
++        m_acceptor = lib::make_shared<boost::asio::ip::tcp::acceptor>(*m_io_service);
+ 
+         m_state = READY;
+         ec = lib::error_code();
+@@ -609,9 +608,7 @@ public:
+      * @since 0.3.0
+      */
+     void start_perpetual() {
+-        m_work = lib::make_shared<boost::asio::io_service::work>(
+-            lib::ref(*m_io_service)
+-        );
++        m_work = lib::make_shared<boost::asio::io_service::work>(*m_io_service);
+     }
+ 
+     /// Clears the endpoint's perpetual flag, allowing it to exit when empty
+@@ -775,8 +772,7 @@ protected:
+ 
+         // Create a resolver
+         if (!m_resolver) {
+-            m_resolver = lib::make_shared<boost::asio::ip::tcp::resolver>(
+-                lib::ref(*m_io_service));
++            m_resolver = lib::make_shared<boost::asio::ip::tcp::resolver>(*m_io_service);
+         }
+ 
+         std::string proxy = tcon->get_proxy();
+diff --git a/src/cpp/ext/websocketpp/transport/asio/security/none.hpp b/src/cpp/ext/websocketpp/transport/asio/security/none.hpp
+index 14b6f8b5f7..5876c981ce 100644
+--- a/src/cpp/ext/websocketpp/transport/asio/security/none.hpp
++++ b/src/cpp/ext/websocketpp/transport/asio/security/none.hpp
+@@ -166,8 +166,7 @@ protected:
+             return socket::make_error_code(socket::error::invalid_state);
+         }
+ 
+-        m_socket = lib::make_shared<boost::asio::ip::tcp::socket>(
+-            lib::ref(*service));
++        m_socket = lib::make_shared<boost::asio::ip::tcp::socket>(*service);
+ 
+         m_state = READY;
+ 
+-- 
+2.24.1
+

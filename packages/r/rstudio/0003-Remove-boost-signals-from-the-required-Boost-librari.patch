@@ -1,0 +1,24 @@
+From 933b8de98363f190033b78febe6c0fce0845c592 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 13 Jan 2020 10:45:46 +0100
+Subject: [PATCH 3/8] Remove boost-signals from the required Boost libraries
+
+---
+ src/cpp/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index bd392c597e..5b291cf0cd 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -193,7 +193,6 @@ list(APPEND BOOST_LIBS
+    program_options
+    random
+    regex
+-   signals
+    system
+    thread
+ )
+-- 
+2.24.1
+

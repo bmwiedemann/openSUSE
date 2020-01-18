@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Mon Jan 13 15:10:57 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add patches to build on Leap 15.1:
+  * 0006-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
+  * 0007-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
+  * 0008-Remove-PauseChanged-related-handler-from-DownloadHel.patch
+
+- Rebase:
+  * 0003-Remove-boost-signals-from-the-required-Boost-librari.patch
+  * 0005-Use-find_program-to-find-qmake-if-it-is-not-in-the-p.patch
+  * 0002-Bump-bundled-gwt-version.patch
+  * 0001-First-pass-at-Boost-1.70-support.patch
+  * 0004-Unbundle-mathjax-and-pandoc.patch
+
+-------------------------------------------------------------------
+Mon Jan 13 14:33:17 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
+
+- Removed unrequired boost-devel and build requires
+- Bumped the Java requires to a higher revision
+- Cleaned up the spec via format_spec_cleaner ahead of Factory SR
+
+-------------------------------------------------------------------
+Mon Jan 13 10:44:48 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Unbundle mathjax and pandoc:
+  Add 0004-Unbundle-mathjax-and-pandoc.patch
+  and symlink to our installed packages of mathjax & pandoc instead of keeping
+  the duplicates in /usr/lib/rstudio/*
+
+- Rebase patches:
+  * disable_boost_signals.patch -> 0003-Remove-boost-signals-from-the-required-Boost-librari.patch
+  * fix_qmake_path.patch -> 0005-Use-find_program-to-find-qmake-if-it-is-not-in-the-p.patch
+  * fix_java.patch -> 0002-Bump-bundled-gwt-version.patch
+  * rstudio-fix_build_with_boost_1.71.patch -> 0001-First-pass-at-Boost-1.70-support.patch
+
+- Add workaround to prevent building gwtc twice and potentially OOM-ing the
+  worker
+
+-------------------------------------------------------------------
+Fri Jan 10 22:39:49 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix build failures
+  * cleanup BuildRequires
+  * cleanup %prep, %build & %install
+  * cleanup duplicates and fix shebangs
+  * add rpmlintrc filter for a cpp template file
+  * add %files section
+  * Bump bundled pandoc version from 2.3.1 to 2.7.3
+  * add _constraints to allow for enough disk space
+
+-------------------------------------------------------------------
+Thu Jan  9 13:31:31 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix build with boost 1.71
+  * https://github.com/rstudio/rstudio/issues/4636
+  * https://github.com/rstudio/rstudio/pull/5353
+  * add rstudio-fix_build_with_boost_1.71.patch
+
+-------------------------------------------------------------------
+Fri Jan  3 15:30:56 UTC 2020 - Marco Varlese <mvarlese@suse.com>
+
+- Initial packaging (version 1.2.5033)
+- Patches:
+  * disable_boost_signals.patch to fix some BoostSignals related 
+    issues with latest Boost 1.70
+  * fix_java.patch to address issues connected to Java9
+  * fix_qmake_path.patch to address qmake path used by discovery
+    mechanism in R-Studio
+

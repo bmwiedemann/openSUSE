@@ -1,0 +1,51 @@
+From 3d0059cf41e5dbb30d809b6b5fb5ff121e4403d8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 13 Jan 2020 15:48:54 +0100
+Subject: [PATCH 8/8] Remove PauseChanged related handler from DownloadHelper
+ for Qt < 5.10
+
+---
+ src/cpp/desktop/DesktopDownloadItemHelper.cpp | 7 -------
+ src/cpp/desktop/DesktopDownloadItemHelper.hpp | 1 -
+ 2 files changed, 8 deletions(-)
+
+diff --git a/src/cpp/desktop/DesktopDownloadItemHelper.cpp b/src/cpp/desktop/DesktopDownloadItemHelper.cpp
+index e69f1310c9..49ebb2976a 100644
+--- a/src/cpp/desktop/DesktopDownloadItemHelper.cpp
++++ b/src/cpp/desktop/DesktopDownloadItemHelper.cpp
+@@ -38,9 +38,6 @@ DownloadHelper::DownloadHelper(QWebEngineDownloadItem* item)
+    connect(item, &QWebEngineDownloadItem::finished,
+            this, &DownloadHelper::onFinished);
+    
+-   connect(item, &QWebEngineDownloadItem::isPausedChanged,
+-           this, &DownloadHelper::onPausedChanged);
+-   
+    connect(item, &QWebEngineDownloadItem::stateChanged,
+            this, &DownloadHelper::onStateChanged);
+ }
+@@ -54,10 +51,6 @@ void DownloadHelper::onFinished()
+    deleteLater();
+ }
+ 
+-void DownloadHelper::onPausedChanged(bool isPaused)
+-{
+-}
+-
+ void DownloadHelper::onStateChanged(QWebEngineDownloadItem::DownloadState state)
+ {
+ }
+diff --git a/src/cpp/desktop/DesktopDownloadItemHelper.hpp b/src/cpp/desktop/DesktopDownloadItemHelper.hpp
+index 0338aabe05..a59003e49c 100644
+--- a/src/cpp/desktop/DesktopDownloadItemHelper.hpp
++++ b/src/cpp/desktop/DesktopDownloadItemHelper.hpp
+@@ -38,7 +38,6 @@ public:
+ public Q_SLOTS:
+    void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
+    void onFinished();
+-   void onPausedChanged(bool isPaused);
+    void onStateChanged(QWebEngineDownloadItem::DownloadState state);
+    
+ private:
+-- 
+2.24.1
+

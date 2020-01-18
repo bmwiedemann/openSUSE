@@ -1,0 +1,31 @@
+From aa586f80119eb0ba639bf620c8b4eb426df456c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 13 Jan 2020 13:08:59 +0100
+Subject: [PATCH 5/8] Use find_program to find qmake if it is not in the
+ predefined path in /opt/
+
+---
+ src/cpp/desktop/CMakeLists.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/cpp/desktop/CMakeLists.txt b/src/cpp/desktop/CMakeLists.txt
+index dabe4f4900..20f1e63c6d 100644
+--- a/src/cpp/desktop/CMakeLists.txt
++++ b/src/cpp/desktop/CMakeLists.txt
+@@ -96,6 +96,13 @@ else()
+    endif()
+ endif()
+ 
++if(NOT QT_QMAKE_EXECUTABLE)
++   find_program(QT_QMAKE_EXECUTABLE
++      NAMES "qmake"
++      PATHS "/usr/lib64/qt5/bin/" "/usr/lib/qt5/bin")
++   message(STATUS ${QT_QMAKE_EXECUTABLE})
++endif()
++
+ if(QT_QMAKE_EXECUTABLE)
+    message(STATUS "Found Qt: ${QT_QMAKE_EXECUTABLE}")
+ else()
+-- 
+2.24.1
+

@@ -1,0 +1,2 @@
+# this is a template and can stay in the main package
+addFilter(".*devel-file-in-non-devel-package.*/usr/lib/rstudio/resources/templates/rcpp.cpp")
