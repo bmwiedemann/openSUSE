@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtx11extras
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
-
 %define libname libQt5X11Extras5
-
-Name:           libqt5-qtx11extras
-Version:        5.13.1
-Release:        0
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtx11extras-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtx11extras-everywhere-src-5.14.0
+Name:           libqt5-qtx11extras
+Version:        5.14.0
+Release:        0
+Summary:        Qt 5 X11 Extras Addon
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+Group:          Development/Libraries/X11
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
 BuildRequires:  libQt5PlatformHeaders-devel >= %{version}
-%if %qt5_snapshot
+BuildRequires:  xz
+%if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
-BuildRequires:  xz
-Url:            https://www.qt.io
-Summary:        Qt 5 X11 Extras Addon
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
-Group:          Development/Libraries/X11
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Qt X11 Extras enables the Qt programmer to write applications for the
@@ -52,12 +49,12 @@ without having to rewrite the source code.)
 %prep
 %setup -q -n %{tar_version}
 
-%package -n %libname
+%package -n %{libname}
 Summary:        Qt 5 X11 Extras Addon
 Group:          Development/Libraries/X11
-%requires_ge libQt5Gui5
+%requires_ge    libQt5Gui5
 
-%description -n %libname
+%description -n %{libname}
 Qt X11 Extras enables the Qt programmer to write applications for the
 Linux/X11 platform. (Applications developed with Qt can also be
 deployed across several other desktop and embedded operating systems
@@ -66,19 +63,18 @@ without having to rewrite the source code.)
 %package devel
 Summary:        Development files for the Qt5 X11 Extras library
 Group:          Development/Libraries/X11
-Requires:       %libname = %version
+Requires:       %{libname} = %{version}
 Provides:       libQt5X11Extras-devel = %{version}
 Obsoletes:      libQt5X11Extras-devel < %{version}
 
 %description devel
 You need this package if you want to compile programs with qtx11extras.
 
-%post -n %libname -p /sbin/ldconfig
-
-%postun -n %libname -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %build
-%if %qt5_snapshot
+%if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
@@ -90,14 +86,14 @@ mkdir .git
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
-%files -n %libname
+%files -n %{libname}
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/libQt5X11Extras.so.*
 
 %files devel
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_includedir}/QtX11Extras
 %{_libqt5_libdir}/cmake/Qt5X11Extras
 %{_libqt5_libdir}/libQt5X11Extras.prl
