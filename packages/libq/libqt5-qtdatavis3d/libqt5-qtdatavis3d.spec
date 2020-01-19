@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtdatavis3d
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
-
 %define libname libQt5DataVisualization5
-
+%define base_name libqt5
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtdatavis3d-everywhere-src-5.14.0
 Name:           libqt5-qtdatavis3d
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt5 Data Visualization 3D
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
-Url:            http://doc.qt.io/qt-5/qtdatavisualization-index.html
-%define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtdatavis3d-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
-BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
+URL:            https://doc.qt.io/qt-5/qtdatavisualization-index.html
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
-
-%if %qt5_snapshot
+BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
+%if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
 BuildRequires:  xz
-%requires_ge libQtQuick5
+%requires_ge    libQtQuick5
 
 %description
 Qt5 Data Visualization module provides a way to visualize data in 3D.
@@ -64,12 +61,12 @@ Qt5 Data Visualization module provides a way to visualize data in 3D.
 %prep
 %setup -q -n qtdatavis3d-everywhere-src-%{real_version}
 
-%package -n %libname
+%package -n %{libname}
 Summary:        Qt5 Data Visualization module
 Group:          System/Libraries
-%requires_ge libQt5Core5
+%requires_ge    libQt5Core5
 
-%description -n %libname
+%description -n %{libname}
 Qt Data Visualization module provides a way to visualize data in 3D.
 
 This package contains a shared library for the QtDataVisualization.
@@ -86,6 +83,7 @@ Qt Data Visualization.
 %package examples
 Summary:        Examples for the Qt5 Data Visualization module
 Group:          Development/Libraries/X11
+License:        GPL-3.0-or-later
 Recommends:     %{libname}-devel
 
 %description examples
@@ -94,18 +92,17 @@ This package provides examples for Qt 5 Data Visualization module.
 %package imports
 Summary:        QML imports for the Qt5 Data Visualization module
 Group:          Development/Libraries/X11
-Supplements:    packageand(%{libname}:libDataVisualization5)
-%requires_ge libDataVisualization5
+%requires_ge    libDataVisualization5
+Supplements:    (%{libname} and libDataVisualization5)
 
 %description imports
 This package contains QML import files for Qt5 Data Visualization module.
 
-%post -n %libname -p /sbin/ldconfig
-
-%postun -n %libname -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %build
-%if %qt5_snapshot
+%if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
@@ -119,7 +116,7 @@ mkdir .git
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
-%files -n %libname
+%files -n %{libname}
 %license LICENSE.*
 %{_libqt5_libdir}/libQt5DataVisualization.so.*
 
