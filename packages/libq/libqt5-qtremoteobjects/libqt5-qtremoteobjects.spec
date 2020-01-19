@@ -19,17 +19,17 @@
 %define qt5_snapshot 0
 %define libname libQt5RemoteObjects5
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtremoteobjects-everywhere-src-5.13.1
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtremoteobjects-everywhere-src-5.14.0
 Name:           libqt5-qtremoteobjects
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 RemoteObjects Library
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 Url:            http://qt.io
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtbase-devel >= %{version}
@@ -58,6 +58,7 @@ processes or computers.
 %package tools
 Summary:        Qt 5 RemoteObjects Tools
 Group:          Development/Tools/Debuggers
+License:        GPL-3.0-with-Qt-Company-Qt-exception-1.1
 
 %description tools
 Qt Remote Objects (QtRO) is an inter-process communication (IPC)
@@ -93,6 +94,7 @@ the exact Qt version.
 %package examples
 Summary:        Qt5 remoteobjects examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-devel
 
 %description examples
