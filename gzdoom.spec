@@ -1,7 +1,7 @@
 #
 # spec file for package gzdoom
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gzdoom
-Version:        4.2.4
+Version:        4.3.2
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
 Group:          Amusements/Games/3D/Shoot
-URL:            http://zdoom.org/
+URL:            https://zdoom.org/
 
 #Git-Clone:     https://github.com/coelckers/gzdoom
 Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz

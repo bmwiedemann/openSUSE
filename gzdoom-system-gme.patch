@@ -8,11 +8,11 @@ Use GME system libraries instead of bundled code.
  libraries/zmusic/CMakeLists.txt |    2 +-
  2 files changed, 5 insertions(+), 10 deletions(-)
 
-Index: gzdoom-g4.2.4/CMakeLists.txt
+Index: gzdoom-g4.3.1/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.2.4.orig/CMakeLists.txt
-+++ gzdoom-g4.2.4/CMakeLists.txt
-@@ -195,12 +195,7 @@ endif()
+--- gzdoom-g4.3.1.orig/CMakeLists.txt
++++ gzdoom-g4.3.1/CMakeLists.txt
+@@ -196,12 +196,7 @@ endif()
  #endif()
  
  # GME
@@ -26,7 +26,7 @@ Index: gzdoom-g4.2.4/CMakeLists.txt
  
  if( MSVC )
  	# Eliminate unreferenced functions and data
-@@ -323,7 +318,7 @@ set( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_
+@@ -325,7 +320,7 @@ set( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_
  option(FORCE_INTERNAL_ZLIB "Use internal zlib")
  option(FORCE_INTERNAL_JPEG "Use internal jpeg")
  option(FORCE_INTERNAL_BZIP2 "Use internal bzip2")
@@ -35,7 +35,7 @@ Index: gzdoom-g4.2.4/CMakeLists.txt
  mark_as_advanced( FORCE_INTERNAL_GME )
  option(FORCE_INTERNAL_ASMJIT "Use internal asmjit" ON)
  mark_as_advanced( FORCE_INTERNAL_ASMJIT )
-@@ -392,14 +387,14 @@ else()
+@@ -391,14 +386,14 @@ else()
  endif()
  
  if( GME_FOUND AND NOT FORCE_INTERNAL_GME )
@@ -52,11 +52,11 @@ Index: gzdoom-g4.2.4/CMakeLists.txt
  	set( GME_LIBRARIES gme )
  endif()
  
-Index: gzdoom-g4.2.4/libraries/zmusic/CMakeLists.txt
+Index: gzdoom-g4.3.1/libraries/zmusic/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.2.4.orig/libraries/zmusic/CMakeLists.txt
-+++ gzdoom-g4.2.4/libraries/zmusic/CMakeLists.txt
-@@ -41,7 +41,7 @@ else()
+--- gzdoom-g4.3.1.orig/libraries/zmusic/CMakeLists.txt
++++ gzdoom-g4.3.1/libraries/zmusic/CMakeLists.txt
+@@ -46,7 +46,7 @@ else()
  endif()
  
  
@@ -64,4 +64,4 @@ Index: gzdoom-g4.2.4/libraries/zmusic/CMakeLists.txt
 +include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../libraries/dumb/include" "${ZLIB_INCLUDE_DIR}" "${ADL_INCLUDE_DIR}" "${OPN_INCLUDE_DIR}" "${TIMIDITYPP_INCLUDE_DIR}" "${TIMIDITY_INCLUDE_DIR}" "${WILDMIDI_INCLUDE_DIR}" "${OPLSYNTH_INCLUDE_DIR}" "${GME_INCLUDEDIR}" "${CMAKE_CURRENT_SOURCE_DIR}" )
  
  if (WIN32)
- set( PLAT_SOURCES
+     set( PLAT_SOURCES
