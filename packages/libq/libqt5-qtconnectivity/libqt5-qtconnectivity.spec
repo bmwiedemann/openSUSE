@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtconnectivity
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
 %define libname libQt5Bluetooth5
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtconnectivity-everywhere-src-5.13.1
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtconnectivity-everywhere-src-5.14.0
 Name:           libqt5-qtconnectivity
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Nfc Addon
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-devel >= %{version}
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
-BuildRequires:  xz
-BuildRequires:  pkgconfig(bluez)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
+BuildRequires:  pkgconfig
+BuildRequires:  xz
+BuildRequires:  pkgconfig(bluez)
 
 %description
 Qt is a set of libraries for developing applications.
@@ -52,8 +52,8 @@ Qt is a set of libraries for developing applications.
 %package -n %{libname}
 Summary:        Qt 5 Bluez Addon
 Group:          Development/Libraries/X11
+%requires_ge    libQt5DBus5
 Recommends:     %{name}-tools
-%requires_ge libQt5DBus5
 
 %description -n %{libname}
 Qt is a set of libraries for developing applications.
@@ -61,7 +61,7 @@ Qt is a set of libraries for developing applications.
 %package -n libQt5Nfc5
 Summary:        Qt 5 Nfc Addon
 Group:          Development/Libraries/X11
-%requires_ge libQt5Core5
+%requires_ge    libQt5Core5
 
 %description -n libQt5Nfc5
 Qt is a set of libraries for developing applications.
@@ -69,10 +69,10 @@ Qt is a set of libraries for developing applications.
 %package -n %{libname}-imports
 Summary:        Qt 5 Bluez Addon
 Group:          Development/Libraries/X11
-Supplements:    packageand(%{libname}:libQtQuick5)
+%requires_ge    libQtQuick5
+Supplements:    (%{libname} and libQtQuick5)
 # imports splited with 5.4.1
 Conflicts:      %{libname} < 5.4.1
-%requires_ge libQtQuick5
 
 %description -n %{libname}-imports
 Qt is a set of libraries for developing applications.
@@ -80,10 +80,10 @@ Qt is a set of libraries for developing applications.
 %package -n libQt5Nfc5-imports
 Summary:        Qt 5 Nfc Addon
 Group:          Development/Libraries/X11
-Supplements:    packageand(libQt5Nfc5:libQtQuick5)
+%requires_ge    libQtQuick5
+Supplements:    (libQt5Nfc5 and libQtQuick5)
 # imports splited with 5.4.1
 Conflicts:      libQt5Nfc5 < 5.4.1
-%requires_ge libQtQuick5
 
 %description -n libQt5Nfc5-imports
 Qt is a set of libraries for developing applications.
@@ -121,17 +121,15 @@ the exact Qt version.
 %package examples
 Summary:        Qt5 location examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-devel
 
 %description examples
 Examples for libqt5-qtconnectivity module.
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
-
 %post -n libQt5Nfc5 -p /sbin/ldconfig
-
 %postun -n libQt5Nfc5 -p /sbin/ldconfig
 
 %build
@@ -140,11 +138,11 @@ Examples for libqt5-qtconnectivity module.
 mkdir .git
 %endif
 rm -rfv src/tools/sdpscanner/qt_attribution.json
-%{qmake5}
-%{make_jobs}
+%qmake5
+%make_jobs
 
 %install
-%{qmake5_install}
+%qmake5_install
 find %{buildroot}/%{_libdir} -type f -name '*la' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} \;
 find %{buildroot}/%{_libdir}/pkgconfig -type f -name '*pc' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} \;
 # kill .la files
@@ -162,33 +160,33 @@ popd
 
 %files -n %{libname}
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/libQt5Bluetooth.so.*
 
 %files -n %{libname}-imports
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_archdatadir}/qml/QtBluetooth/
 
 %files -n libQt5Nfc5
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/libQt5Nfc.so.*
 
 %files -n libQt5Nfc5-imports
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_archdatadir}/qml/QtNfc/
 
 %files private-headers-devel
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_includedir}/QtNfc/%{so_version}
 %{_libqt5_includedir}/QtBluetooth/%{so_version}
 
 %files devel
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %exclude %{_libqt5_includedir}/QtNfc/%{so_version}
 %exclude %{_libqt5_includedir}/QtBluetooth/%{so_version}
 %{_libqt5_includedir}/QtNfc
@@ -205,13 +203,13 @@ popd
 
 %files tools
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_bindir}/sdpscanner*
 %{_libqt5_bindir}/sdpscanner*
 
 %files examples
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_examplesdir}/
 
 %changelog
