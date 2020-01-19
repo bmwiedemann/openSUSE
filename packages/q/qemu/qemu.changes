@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 14 18:10:53 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix xenfv migration from xen host with pre-v4.0 qemu (bsc#1159755)
+  hw-i386-disable-smbus-migration-for-xenf.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 16:14:03 UTC 2020 - ohering@suse.de
+
+- Create files within bundles.tar.xz with fixed timestamp and uid
+
+-------------------------------------------------------------------
+Sat Jan 11 01:54:12 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Add a %bcond_without system_membarrier along with related
+  processing to the spec file, to better investigate running QEMU
+  with the --disable-membarrier configure option
+
+-------------------------------------------------------------------
 Fri Jan 10 14:12:38 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Include upstream patches targeted for the next stable release

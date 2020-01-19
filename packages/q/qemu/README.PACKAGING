@@ -29,7 +29,7 @@ the latest upstream qemu. See 'LATEST' references in the scripts for details.
 The current status as of 31 Oct 2019 is that for this incarnation of qemu
 packaging, the previous workflow which relied on the patches being in a shared
 git repo on github or gitlab is no longer supported. This new bundle based
-workflos is still a work in progress.
+workflow is still a work in progress.
 If it isn't working right, please contact Bruce Rogers <brogers@suse.com>.
 *** END SPECIAL NOTE ***
 
@@ -47,7 +47,7 @@ in the near future.
 Bug or feature tracking identifiers should also be added to the patch similarly,
 using the abbreviations identified here:
 http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines#Current_set_of_abbreviations
-using the "Reference:" tag, with multiple entries comma separated.
+using the "References:" tag, with multiple entries comma separated.
 
 The ability to provide a conditional inclusion of a patch (eg based on
 architecture, is provided by using the "Include-If:" tag similarly, as follows:

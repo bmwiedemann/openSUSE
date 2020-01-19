@@ -2,7 +2,7 @@ From: Xiaoyao Li <xiaoyao.li@intel.com>
 Date: Wed, 8 Jan 2020 13:32:40 +0100
 Subject: target/i386: Add missed features to Cooperlake CPU model
 
-Git-commit: 0000000000000000000000000000000000000000
+Git-commit: 2dea9d9ca4ea7e9afe83d0b4153b21a16987e866
 References: jsc#SLE-7923
 
 It lacks VMX features and two security feature bits (disclosed recently) in

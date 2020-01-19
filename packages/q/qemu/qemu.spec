@@ -87,6 +87,8 @@
 %define summary_string Machine emulator and virtualizer
 %endif
 
+%bcond_without system_membarrier
+
 %define qemuver 4.2.0
 %define srcver  4.2.0
 %define sbver   1.12.1+
@@ -204,6 +206,7 @@ Patch00075:     roms-change-cross-compiler-naming-to-be-.patch
 Patch00076:     tests-Disable-some-block-tests-for-now.patch
 Patch00077:     test-add-mapping-from-arch-of-i686-to-qe.patch
 Patch00078:     roms-Makefile-enable-cross-compile-for-b.patch
+Patch00079:     hw-i386-disable-smbus-migration-for-xenf.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -989,6 +992,7 @@ This package provides a service file for starting and stopping KSM.
 %patch00076 -p1
 %patch00077 -p1
 %patch00078 -p1
+%patch00079 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1211,7 +1215,11 @@ cd %mybuilddir
 %endif
 	--enable-lzo \
 	--disable-malloc-trim \
+%if %{with system_membarrier}
 	--enable-membarrier \
+%else
+	--disable-membarrier \
+%endif
 	--enable-mpath \
 	--disable-netmap \
 	--disable-nettle \
@@ -1300,7 +1308,11 @@ cd %mybuilddir
 	--disable-iconv \
 	--disable-kvm \
 	--disable-malloc-trim \
+%if %{with system_membarrier}
 	--enable-membarrier \
+%else
+	--disable-membarrier \
+%endif
 	--disable-parallels \
 	--disable-plugins \
 	--disable-qcow1 \

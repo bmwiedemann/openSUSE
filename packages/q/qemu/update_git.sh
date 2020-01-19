@@ -150,9 +150,14 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
         fi
     fi
 done
-# keep diffs to a minimum - touch bundle files to "something common" TODO: decide if there's something better
-find $BUNDLE_DIR -exec touch -r qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz {} \;
-tar --format gnu --xz -cf bundles.tar.xz -C $BUNDLE_DIR .
+# keep diffs to a minimum - touch bundle files to "something common"
+tar --format gnu --xz \
+    --numeric-owner \
+    --owner=0 \
+    --group=0 \
+    --mtime="@$(date -r qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz +%s)" \
+    --create \
+    -f bundles.tar.xz -C $BUNDLE_DIR .
 rm -rf $BUNDLE_DIR
 rm -rf $GIT_DIR
 }
@@ -578,9 +583,6 @@ rm -rf $BUNDLE_DIR
     fi
     if [ -e qemu.changes.added ]; then
         rm -f qemu.changes.added
-    fi
-    if [[ "0" = "$(expr $CHANGED_COUNT + $DELETED_COUNT + $ADDED_COUNT)" ]]; then
-        osc revert bundles.tar.xz
     fi
     echo "git patch summary"
     echo "  unchanged: $UNCHANGED_COUNT"

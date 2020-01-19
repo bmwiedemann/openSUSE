@@ -1,0 +1,38 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Mon, 13 Jan 2020 18:45:21 +0100
+Subject: hw/i386: disable smbus migration for xenfv
+
+Git-commit: 0000000000000000000000000000000000000000
+References: bsc#1159755
+
+With commit 7fccf2a06890e3bc3b30e29827ad3fb93fe88fea a new member
+smbus_no_migration_support was added, and enabled in two places.
+With commit 4ab2f2a8aabfea95cc53c64e13b3f67960b27fdf the vmstate_acpi
+got new elements, which are conditionally filled. As a result, an
+incoming migration expected smbus related data unless smbus migration
+was disabled for a given MachineClass.
+
+Since commit 7fccf2a06890e3bc3b30e29827ad3fb93fe88fea forgot to handle
+xenfv, live migration to receiving hosts using qemu-4.0 and later is broken.
+Therefore this patch must be applied to stable-4.x as well.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+[BR: changed patch as obtained from qemu-devel mailing list to reference
+xenfv, not xenpv, as Olaf indicated in followup email]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/i386/pc_piix.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index d760d3589607daf4997ea76854c4..10d4972179a0dbe40aa9eaddf37e 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -1046,6 +1046,7 @@ static void xenfv_machine_options(MachineClass *m)
+     m->desc = "Xen Fully-virtualized PC";
+     m->max_cpus = HVM_MAX_VCPUS;
+     m->default_machine_opts = "accel=xen";
++    m->smbus_no_migration_support = true;
+ }
+ 
+ DEFINE_PC_MACHINE(xenfv, "xenfv", pc_xen_hvm_init,

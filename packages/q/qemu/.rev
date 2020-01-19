@@ -1610,4 +1610,12 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>762846</requestid>
   </revision>
+  <revision rev="167" vrev="3">
+    <srcmd5>6c85e969652a7f113f85ce4e44af209f</srcmd5>
+    <version>4.2.0</version>
+    <time>1579463510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764411</requestid>
+  </revision>
 </revisionlist>

@@ -2,7 +2,7 @@ From: Xiaoyao Li <xiaoyao.li@intel.com>
 Date: Wed, 8 Jan 2020 13:32:39 +0100
 Subject: target/i386: Add new bit definitions of MSR_IA32_ARCH_CAPABILITIES
 
-Git-commit: 0000000000000000000000000000000000000000
+Git-commit: 6c997b4adb300788d61d72e2b8bc67c03a584956
 References: jsc#SLE-7923
 
 The bit 6, 7 and 8 of MSR_IA32_ARCH_CAPABILITIES are recently disclosed

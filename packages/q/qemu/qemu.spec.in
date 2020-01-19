@@ -87,6 +87,8 @@
 %define summary_string Machine emulator and virtualizer
 %endif
 
+%bcond_without system_membarrier
+
 INSERT_VERSIONING
 %define srcname qemu
 Name:           qemu%{name_suffix}
@@ -1016,7 +1018,11 @@ cd %mybuilddir
 %endif
 	--enable-lzo \
 	--disable-malloc-trim \
+%if %{with system_membarrier}
 	--enable-membarrier \
+%else
+	--disable-membarrier \
+%endif
 	--enable-mpath \
 	--disable-netmap \
 	--disable-nettle \
@@ -1105,7 +1111,11 @@ cd %mybuilddir
 	--disable-iconv \
 	--disable-kvm \
 	--disable-malloc-trim \
+%if %{with system_membarrier}
 	--enable-membarrier \
+%else
+	--disable-membarrier \
+%endif
 	--disable-parallels \
 	--disable-plugins \
 	--disable-qcow1 \
