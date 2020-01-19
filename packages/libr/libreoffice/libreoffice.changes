@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:17:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add lo-Fix-build-with-poppler-0.83.patch: Fix build with
+  poppler-0.83.
+
+-------------------------------------------------------------------
+Tue Jan 14 08:06:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.4.0.2:
+  * RC2 of 6.4 release
+- Drop merged patch 0001-tdf-129879-Fix-wrong-order-of-buttons.patch
+
+-------------------------------------------------------------------
 Wed Jan  8 12:29:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix button ordering in Qt interface:

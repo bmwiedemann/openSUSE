@@ -2623,4 +2623,12 @@ Petr</comment>
 - Remove upstreamed patch mdds-1-5.patch</comment>
     <requestid>761834</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>239b309b100500cdd9f222b67ab0d82c</srcmd5>
+    <version>6.4.0.2</version>
+    <time>1579463729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764894</requestid>
+  </revision>
 </revisionlist>
