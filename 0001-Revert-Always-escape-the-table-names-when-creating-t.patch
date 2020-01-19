@@ -19,11 +19,11 @@ This reverts commit 461ef575bcf778ba24b0be6b775098d4b80ae5e1.
  .../qsqltablemodel/tst_qsqltablemodel.cpp     |  10 ++
  11 files changed, 106 insertions(+), 138 deletions(-)
 
-diff --git a/src/plugins/sqldrivers/mysql/qsql_mysql.cpp b/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
-index febbe58506..80c0c9c522 100644
---- a/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
-+++ b/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
-@@ -1551,7 +1551,7 @@ QSqlIndex QMYSQLDriver::primaryIndex(const QString& tablename) const
+Index: qtbase-everywhere-src-5.14.0-beta2/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
+@@ -1551,7 +1551,7 @@ QSqlIndex QMYSQLDriver::primaryIndex(con
      QSqlQuery i(createResult());
      QString stmt(QLatin1String("show index from %1;"));
      QSqlRecord fil = record(tablename);
@@ -32,11 +32,11 @@ index febbe58506..80c0c9c522 100644
      while (i.isActive() && i.next()) {
          if (i.value(2).toString() == QLatin1String("PRIMARY")) {
              idx.append(fil.field(i.value(4).toString()));
-diff --git a/src/plugins/sqldrivers/psql/qsql_psql.cpp b/src/plugins/sqldrivers/psql/qsql_psql.cpp
-index c1be91cb22..7abd1f242b 100644
---- a/src/plugins/sqldrivers/psql/qsql_psql.cpp
-+++ b/src/plugins/sqldrivers/psql/qsql_psql.cpp
-@@ -1396,8 +1396,16 @@ QSqlIndex QPSQLDriver::primaryIndex(const QString &tablename) const
+Index: qtbase-everywhere-src-5.14.0-beta2/src/plugins/sqldrivers/psql/qsql_psql.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/src/plugins/sqldrivers/psql/qsql_psql.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/src/plugins/sqldrivers/psql/qsql_psql.cpp
+@@ -1402,8 +1402,16 @@ QSqlIndex QPSQLDriver::primaryIndex(cons
      QString tbl = tablename;
      QString schema;
      qSplitTableName(tbl, schema);
@@ -55,7 +55,7 @@ index c1be91cb22..7abd1f242b 100644
  
      QString stmt = QStringLiteral("SELECT pg_attribute.attname, pg_attribute.atttypid::int, "
                                    "pg_class.relname "
-@@ -1432,8 +1440,16 @@ QSqlRecord QPSQLDriver::record(const QString &tablename) const
+@@ -1438,8 +1446,16 @@ QSqlRecord QPSQLDriver::record(const QSt
      QString tbl = tablename;
      QString schema;
      qSplitTableName(tbl, schema);
@@ -72,12 +72,12 @@ index c1be91cb22..7abd1f242b 100644
 +    else
 +        schema = std::move(schema).toLower();
  
-     QString stmt = QStringLiteral("SELECT pg_attribute.attname, pg_attribute.atttypid::int, "
-                                   "pg_attribute.attnotnull, pg_attribute.attlen, pg_attribute.atttypmod, "
-diff --git a/src/sql/doc/snippets/code/doc_src_sql-driver.qdoc b/src/sql/doc/snippets/code/doc_src_sql-driver.qdoc
-index 9709deeccb..d127bdf8a5 100644
---- a/src/sql/doc/snippets/code/doc_src_sql-driver.qdoc
-+++ b/src/sql/doc/snippets/code/doc_src_sql-driver.qdoc
+     const QString adsrc = protocol() < Version8
+         ? QStringLiteral("pg_attrdef.adsrc")
+Index: qtbase-everywhere-src-5.14.0-beta2/src/sql/doc/snippets/code/doc_src_sql-driver.qdoc
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/src/sql/doc/snippets/code/doc_src_sql-driver.qdoc
++++ qtbase-everywhere-src-5.14.0-beta2/src/sql/doc/snippets/code/doc_src_sql-driver.qdoc
 @@ -237,16 +237,3 @@ Could not create database object
  //! [38]
  QPSQLDriver::getResult: Query results lost - probably discarded on executing another SQL query.
@@ -95,10 +95,10 @@ index 9709deeccb..d127bdf8a5 100644
 -// Call toLower() on the string so that it can be matched
 -QSqlRecord rec = database.record(tableString.toLower());
 -//! [40]
-diff --git a/src/sql/doc/src/sql-driver.qdoc b/src/sql/doc/src/sql-driver.qdoc
-index cccce48bb3..fd95e89812 100644
---- a/src/sql/doc/src/sql-driver.qdoc
-+++ b/src/sql/doc/src/sql-driver.qdoc
+Index: qtbase-everywhere-src-5.14.0-beta2/src/sql/doc/src/sql-driver.qdoc
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/src/sql/doc/src/sql-driver.qdoc
++++ qtbase-everywhere-src-5.14.0-beta2/src/sql/doc/src/sql-driver.qdoc
 @@ -381,23 +381,6 @@
      multibyte enabled PostgreSQL server can be found in the PostgreSQL
      Administrator Guide, Chapter 5.
@@ -123,11 +123,11 @@ index cccce48bb3..fd95e89812 100644
      \section3 QPSQL BLOB Support
  
      Binary Large Objects are supported through the \c BYTEA field type in
-diff --git a/src/sql/kernel/qsqldatabase.cpp b/src/sql/kernel/qsqldatabase.cpp
-index d63a9e59a8..12ab9671b5 100644
---- a/src/sql/kernel/qsqldatabase.cpp
-+++ b/src/sql/kernel/qsqldatabase.cpp
-@@ -1088,11 +1088,6 @@ QStringList QSqlDatabase::tables(QSql::TableType type) const
+Index: qtbase-everywhere-src-5.14.0-beta2/src/sql/kernel/qsqldatabase.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/src/sql/kernel/qsqldatabase.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/src/sql/kernel/qsqldatabase.cpp
+@@ -1096,11 +1096,6 @@ QStringList QSqlDatabase::tables(QSql::T
      Returns the primary index for table \a tablename. If no primary
      index exists, an empty QSqlIndex is returned.
  
@@ -139,7 +139,7 @@ index d63a9e59a8..12ab9671b5 100644
      \sa tables(), record()
  */
  
-@@ -1107,11 +1102,6 @@ QSqlIndex QSqlDatabase::primaryIndex(const QString& tablename) const
+@@ -1115,11 +1110,6 @@ QSqlIndex QSqlDatabase::primaryIndex(con
      the table (or view) called \a tablename. The order in which the
      fields appear in the record is undefined. If no such table (or
      view) exists, an empty record is returned.
@@ -151,11 +151,11 @@ index d63a9e59a8..12ab9671b5 100644
  */
  
  QSqlRecord QSqlDatabase::record(const QString& tablename) const
-diff --git a/src/sql/kernel/qsqldriver.cpp b/src/sql/kernel/qsqldriver.cpp
-index 7f7b81b05b..8c6ae382f6 100644
---- a/src/sql/kernel/qsqldriver.cpp
-+++ b/src/sql/kernel/qsqldriver.cpp
-@@ -488,8 +488,6 @@ QString QSqlDriver::stripDelimiters(const QString &identifier, IdentifierType ty
+Index: qtbase-everywhere-src-5.14.0-beta2/src/sql/kernel/qsqldriver.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/src/sql/kernel/qsqldriver.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/src/sql/kernel/qsqldriver.cpp
+@@ -488,8 +488,6 @@ QString QSqlDriver::stripDelimiters(cons
  QString QSqlDriver::sqlStatement(StatementType type, const QString &tableName,
                                   const QSqlRecord &rec, bool preparedStatement) const
  {
@@ -164,7 +164,7 @@ index 7f7b81b05b..8c6ae382f6 100644
      int i;
      QString s;
      s.reserve(128);
-@@ -502,12 +500,13 @@ QString QSqlDriver::sqlStatement(StatementType type, const QString &tableName,
+@@ -502,12 +500,13 @@ QString QSqlDriver::sqlStatement(Stateme
          if (s.isEmpty())
              return s;
          s.chop(2);
@@ -181,7 +181,7 @@ index 7f7b81b05b..8c6ae382f6 100644
          for (int i = 0; i < rec.count(); ++i) {
              if (!rec.isGenerated(i))
                  continue;
-@@ -524,7 +523,8 @@ QString QSqlDriver::sqlStatement(StatementType type, const QString &tableName,
+@@ -524,7 +523,8 @@ QString QSqlDriver::sqlStatement(Stateme
          break;
      }
      case UpdateStatement:
@@ -191,7 +191,7 @@ index 7f7b81b05b..8c6ae382f6 100644
          for (i = 0; i < rec.count(); ++i) {
              if (!rec.isGenerated(i))
                  continue;
-@@ -541,10 +541,10 @@ QString QSqlDriver::sqlStatement(StatementType type, const QString &tableName,
+@@ -541,10 +541,10 @@ QString QSqlDriver::sqlStatement(Stateme
              s.clear();
          break;
      case DeleteStatement:
@@ -204,11 +204,11 @@ index 7f7b81b05b..8c6ae382f6 100644
          QString vals;
          for (i = 0; i < rec.count(); ++i) {
              if (!rec.isGenerated(i))
-diff --git a/tests/auto/sql/kernel/qsqldatabase/tst_databases.h b/tests/auto/sql/kernel/qsqldatabase/tst_databases.h
-index 55875359ff..97397e3159 100644
---- a/tests/auto/sql/kernel/qsqldatabase/tst_databases.h
-+++ b/tests/auto/sql/kernel/qsqldatabase/tst_databases.h
-@@ -79,14 +79,14 @@ inline QString fixupTableName(const QString &tableName, QSqlDatabase db)
+Index: qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/kernel/qsqldatabase/tst_databases.h
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/tests/auto/sql/kernel/qsqldatabase/tst_databases.h
++++ qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/kernel/qsqldatabase/tst_databases.h
+@@ -80,14 +80,14 @@ inline QString fixupTableName(const QStr
      return tbName;
  }
  
@@ -230,11 +230,11 @@ index 55875359ff..97397e3159 100644
  }
  
  inline static QString qTableName(const QString& prefix, QSqlDatabase db)
-diff --git a/tests/auto/sql/kernel/qsqldatabase/tst_qsqldatabase.cpp b/tests/auto/sql/kernel/qsqldatabase/tst_qsqldatabase.cpp
-index f309231b10..75db31e45f 100644
---- a/tests/auto/sql/kernel/qsqldatabase/tst_qsqldatabase.cpp
-+++ b/tests/auto/sql/kernel/qsqldatabase/tst_qsqldatabase.cpp
-@@ -314,8 +314,10 @@ void tst_QSqlDatabase::createTestTables(QSqlDatabase db)
+Index: qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/kernel/qsqldatabase/tst_qsqldatabase.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/tests/auto/sql/kernel/qsqldatabase/tst_qsqldatabase.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/kernel/qsqldatabase/tst_qsqldatabase.cpp
+@@ -314,8 +314,10 @@ void tst_QSqlDatabase::createTestTables(
                 " (id integer not null, t_varchar varchar(40) not null, "
                 "t_char char(40), t_numeric numeric(6, 3), primary key (id, t_varchar))"));
      }
@@ -246,7 +246,7 @@ index f309231b10..75db31e45f 100644
              + '('
              + db.driver()->escapeIdentifier(QLatin1String("test test"), QSqlDriver::FieldName)
              + " int not null primary key)";
-@@ -339,7 +341,6 @@ void tst_QSqlDatabase::dropTestTables(QSqlDatabase db)
+@@ -339,7 +341,6 @@ void tst_QSqlDatabase::dropTestTables(QS
      const QString qtestTable = qTableName("qtest", __FILE__, db);
      QStringList tableNames;
      tableNames << qtestTable
@@ -265,7 +265,7 @@ index f309231b10..75db31e45f 100644
  
      bool views = true;
      bool tempTables = false;
-@@ -579,10 +578,10 @@ void tst_QSqlDatabase::whitespaceInIdentifiers()
+@@ -579,10 +578,10 @@ void tst_QSqlDatabase::whitespaceInIdent
      const QSqlDriver::DbmsType dbType = tst_Databases::getDatabaseType(db);
  
      if (testWhiteSpaceNames(db.driverName())) {
@@ -278,7 +278,7 @@ index f309231b10..75db31e45f 100644
          QCOMPARE(rec.count(), 1);
          QCOMPARE(rec.fieldName(0), QString("test test"));
          if (dbType == QSqlDriver::Oracle)
-@@ -590,7 +589,7 @@ void tst_QSqlDatabase::whitespaceInIdentifiers()
+@@ -590,7 +589,7 @@ void tst_QSqlDatabase::whitespaceInIdent
          else
              QCOMPARE(rec.field(0).type(), QVariant::Int);
  
@@ -310,7 +310,7 @@ index f309231b10..75db31e45f 100644
  
      QCOMPARE((int)rec.count(), 2);
  
-@@ -683,16 +681,13 @@ void tst_QSqlDatabase::testRecord(const FieldDef fieldDefs[], const QSqlRecord&
+@@ -683,16 +681,13 @@ void tst_QSqlDatabase::testRecord(const
  void tst_QSqlDatabase::commonFieldTest(const FieldDef fieldDefs[], QSqlDatabase db, const int fieldCount)
  {
      CHECK_DATABASE(db);
@@ -420,7 +420,7 @@ index f309231b10..75db31e45f 100644
      QCOMPARE(idx.count(), 1);
      QCOMPARE(idx.fieldName(0), QString("id"));
  }
-@@ -1304,21 +1288,18 @@ void tst_QSqlDatabase::psql_escapedIdentifiers()
+@@ -1304,21 +1288,18 @@ void tst_QSqlDatabase::psql_escapedIdent
      QSqlQuery q(db);
      QVERIFY_SQL( q, exec("set client_min_messages='warning'"));
  
@@ -447,7 +447,7 @@ index f309231b10..75db31e45f 100644
  
      QSqlField fld1(field1Name, QVariant::Int);
      QSqlField fld2(field2Name, QVariant::String);
-@@ -1326,9 +1307,7 @@ void tst_QSqlDatabase::psql_escapedIdentifiers()
+@@ -1326,9 +1307,7 @@ void tst_QSqlDatabase::psql_escapedIdent
      rec.append(fld1);
      rec.append(fld2);
  
@@ -458,7 +458,7 @@ index f309231b10..75db31e45f 100644
  
      rec = q.record();
      QCOMPARE(rec.count(), 2);
-@@ -1336,7 +1315,7 @@ void tst_QSqlDatabase::psql_escapedIdentifiers()
+@@ -1336,7 +1315,7 @@ void tst_QSqlDatabase::psql_escapedIdent
      QCOMPARE(rec.fieldName(1), field2Name);
      QCOMPARE(rec.field(0).type(), QVariant::Int);
  
@@ -467,7 +467,7 @@ index f309231b10..75db31e45f 100644
  }
  
  void tst_QSqlDatabase::psql_escapeBytea()
-@@ -2167,7 +2146,7 @@ void tst_QSqlDatabase::eventNotificationPSQL()
+@@ -2167,7 +2146,7 @@ void tst_QSqlDatabase::eventNotification
      CHECK_DATABASE(db);
  
      QSqlQuery query(db);
@@ -476,7 +476,7 @@ index f309231b10..75db31e45f 100644
      QString payload = "payload";
      QSqlDriver &driver=*(db.driver());
      QVERIFY_SQL(driver, subscribeToNotification(procedureName));
-@@ -2191,22 +2170,21 @@ void tst_QSqlDatabase::eventNotificationSQLite()
+@@ -2191,22 +2170,21 @@ void tst_QSqlDatabase::eventNotification
          QSKIP("QSQLITE specific test");
      }
      const QString tableName(qTableName("sqlitnotifytest", __FILE__, db));
@@ -503,11 +503,11 @@ index f309231b10..75db31e45f 100644
      QVERIFY_SQL(q, exec("INSERT INTO " + tableName + " (id, realVal) VALUES (1, 2.3)"));
      QTRY_COMPARE(notificationSpy.count(), 0);
      QTRY_COMPARE(notificationSpyExt.count(), 0);
-diff --git a/tests/auto/sql/kernel/qsqlquery/tst_qsqlquery.cpp b/tests/auto/sql/kernel/qsqlquery/tst_qsqlquery.cpp
-index 784d0a70d7..710f26b72d 100644
---- a/tests/auto/sql/kernel/qsqlquery/tst_qsqlquery.cpp
-+++ b/tests/auto/sql/kernel/qsqlquery/tst_qsqlquery.cpp
-@@ -1098,7 +1098,7 @@ void tst_QSqlQuery::record()
+Index: qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/kernel/qsqlquery/tst_qsqlquery.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/tests/auto/sql/kernel/qsqlquery/tst_qsqlquery.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/kernel/qsqlquery/tst_qsqlquery.cpp
+@@ -1092,7 +1092,7 @@ void tst_QSqlQuery::record()
      for (int i = 0; i < 3; ++i)
          QCOMPARE(q.record().field(i).tableName().toLower(), lowerQTest);
      q.clear();
@@ -516,7 +516,7 @@ index 784d0a70d7..710f26b72d 100644
      SETUP_RECORD_TABLE;
      CHECK_RECORD;
      q.clear();
-@@ -3763,13 +3763,15 @@ void tst_QSqlQuery::QTBUG_5251()
+@@ -3673,13 +3673,15 @@ void tst_QSqlQuery::QTBUG_5251()
      const QString timetest(qTableName("timetest", __FILE__, db));
      tst_Databases::safeDropTable(db, timetest);
      QSqlQuery q(db);
@@ -535,7 +535,7 @@ index 784d0a70d7..710f26b72d 100644
      QVERIFY_SQL(timetestModel, select());
  
      QCOMPARE(timetestModel.record(0).field(0).value().toTime().toString("HH:mm:ss.zzz"), QString("01:02:03.666"));
-@@ -3778,8 +3780,8 @@ void tst_QSqlQuery::QTBUG_5251()
+@@ -3688,8 +3690,8 @@ void tst_QSqlQuery::QTBUG_5251()
      QVERIFY_SQL(timetestModel, submitAll());
      QCOMPARE(timetestModel.record(0).field(0).value().toTime().toString("HH:mm:ss.zzz"), QString("00:12:34.500"));
  
@@ -546,11 +546,11 @@ index 784d0a70d7..710f26b72d 100644
      QVERIFY_SQL(timetestModel, select());
      QCOMPARE(timetestModel.record(0).field(0).value().toTime().toString("HH:mm:ss.zzz"), QString("00:11:22.330"));
  
-diff --git a/tests/auto/sql/models/qsqlrelationaltablemodel/tst_qsqlrelationaltablemodel.cpp b/tests/auto/sql/models/qsqlrelationaltablemodel/tst_qsqlrelationaltablemodel.cpp
-index 722ef9c570..e4a277e096 100644
---- a/tests/auto/sql/models/qsqlrelationaltablemodel/tst_qsqlrelationaltablemodel.cpp
-+++ b/tests/auto/sql/models/qsqlrelationaltablemodel/tst_qsqlrelationaltablemodel.cpp
-@@ -122,13 +122,13 @@ void tst_QSqlRelationalTableModel::recreateTestTables(QSqlDatabase db)
+Index: qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/models/qsqlrelationaltablemodel/tst_qsqlrelationaltablemodel.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/tests/auto/sql/models/qsqlrelationaltablemodel/tst_qsqlrelationaltablemodel.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/models/qsqlrelationaltablemodel/tst_qsqlrelationaltablemodel.cpp
+@@ -122,13 +122,13 @@ void tst_QSqlRelationalTableModel::recre
      QVERIFY_SQL( q, exec("insert into " + reltest5 + " values('mister', 'Mr')"));
  
      if (testWhiteSpaceNames(db.driverName())) {
@@ -566,7 +566,7 @@ index 722ef9c570..e4a277e096 100644
          QVERIFY_SQL( q, exec("create table " + reltest7 + " (" + db.driver()->escapeIdentifier("city id", QSqlDriver::TableName) + " int not null primary key, " + db.driver()->escapeIdentifier("city name", QSqlDriver::FieldName) + " varchar(20))"));
          QVERIFY_SQL( q, exec("insert into " + reltest7 + " values(1, 'New York')"));
          QVERIFY_SQL( q, exec("insert into " + reltest7 + " values(2, 'Washington')"));
-@@ -170,8 +170,8 @@ void tst_QSqlRelationalTableModel::dropTestTables( QSqlDatabase db )
+@@ -170,8 +170,8 @@ void tst_QSqlRelationalTableModel::dropT
              << reltest3
              << reltest4
              << reltest5
@@ -577,7 +577,7 @@ index 722ef9c570..e4a277e096 100644
              << qTableName("CASETEST1", db)
              << qTableName("casetest1", db);
      tst_Databases::safeDropTables( db, tableNames );
-@@ -1379,9 +1379,9 @@ void tst_QSqlRelationalTableModel::whiteSpaceInIdentifiers()
+@@ -1379,9 +1379,9 @@ void tst_QSqlRelationalTableModel::white
      if (!testWhiteSpaceNames(db.driverName()))
          QSKIP("White space test irrelevant for driver");
      QSqlRelationalTableModel model(0, db);
@@ -589,7 +589,7 @@ index 722ef9c570..e4a277e096 100644
                          db.driver()->escapeIdentifier("city id", QSqlDriver::FieldName),
                          db.driver()->escapeIdentifier("city name", QSqlDriver::FieldName)));
      QVERIFY_SQL(model, select());
-@@ -1547,6 +1547,8 @@ void tst_QSqlRelationalTableModel::relationOnFirstColumn()
+@@ -1547,6 +1547,8 @@ void tst_QSqlRelationalTableModel::relat
  
      //modify the model data
      QVERIFY_SQL(model, setData(model.index(0, 0), 40));
@@ -598,11 +598,11 @@ index 722ef9c570..e4a277e096 100644
      QVERIFY_SQL(model, submit());
      QVERIFY_SQL(model, setData(model.index(1, 0), 50));
      QVERIFY_SQL(model, submit());
-diff --git a/tests/auto/sql/models/qsqltablemodel/tst_qsqltablemodel.cpp b/tests/auto/sql/models/qsqltablemodel/tst_qsqltablemodel.cpp
-index b617151a36..da31f437d9 100644
---- a/tests/auto/sql/models/qsqltablemodel/tst_qsqltablemodel.cpp
-+++ b/tests/auto/sql/models/qsqltablemodel/tst_qsqltablemodel.cpp
-@@ -383,6 +383,8 @@ void tst_QSqlTableModel::selectRow()
+Index: qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/models/qsqltablemodel/tst_qsqltablemodel.cpp
+===================================================================
+--- qtbase-everywhere-src-5.14.0-beta2.orig/tests/auto/sql/models/qsqltablemodel/tst_qsqltablemodel.cpp
++++ qtbase-everywhere-src-5.14.0-beta2/tests/auto/sql/models/qsqltablemodel/tst_qsqltablemodel.cpp
+@@ -384,6 +384,8 @@ void tst_QSqlTableModel::selectRow()
      q.exec("UPDATE " + tbl + " SET a = 'Qt' WHERE id = 1");
      QCOMPARE(model.data(idx).toString(), QString("b"));
      model.selectRow(1);
@@ -611,7 +611,7 @@ index b617151a36..da31f437d9 100644
      QCOMPARE(model.data(idx).toString(), QString("Qt"));
  
      // Check if selectRow() refreshes a changed row.
-@@ -439,6 +441,8 @@ void tst_QSqlTableModel::selectRowOverride()
+@@ -440,6 +442,8 @@ void tst_QSqlTableModel::selectRowOverri
      // both rows should have changed
      QCOMPARE(model.data(idx).toString(), QString("Qt"));
      idx = model.index(2, 1);
@@ -620,7 +620,7 @@ index b617151a36..da31f437d9 100644
      QCOMPARE(model.data(idx).toString(), QString("Qt"));
  
      q.exec("DELETE FROM " + tbl);
-@@ -850,6 +854,8 @@ void tst_QSqlTableModel::insertRowFailure()
+@@ -851,6 +855,8 @@ void tst_QSqlTableModel::insertRowFailur
  
      // populate 1 row
      const QSqlDriver::DbmsType dbType = tst_Databases::getDatabaseType(db);
@@ -629,7 +629,7 @@ index b617151a36..da31f437d9 100644
      QVERIFY_SQL(model, insertRecord(0, values));
      QVERIFY_SQL(model, submitAll());
      QVERIFY_SQL(model, select());
-@@ -893,6 +899,8 @@ void tst_QSqlTableModel::insertRowFailure()
+@@ -894,6 +900,8 @@ void tst_QSqlTableModel::insertRowFailur
      // restore empty table
      model.revertAll();
      QVERIFY_SQL(model, removeRow(0));
@@ -638,7 +638,7 @@ index b617151a36..da31f437d9 100644
      QVERIFY_SQL(model, submitAll());
      QVERIFY_SQL(model, select());
      QCOMPARE(model.rowCount(), 0);
-@@ -2001,6 +2009,8 @@ void tst_QSqlTableModel::tableModifyWithBlank()
+@@ -2002,6 +2010,8 @@ void tst_QSqlTableModel::tableModifyWith
      //Should be equivalent to QSqlQuery INSERT INTO... command)
      QVERIFY_SQL(model, insertRow(0));
      QVERIFY_SQL(model, setData(model.index(0,0),timeString));
@@ -647,6 +647,3 @@ index b617151a36..da31f437d9 100644
      QVERIFY_SQL(model, submitAll());
  
      //set a filter on the table so the only record we get is the one we just made
--- 
-2.21.0
-
