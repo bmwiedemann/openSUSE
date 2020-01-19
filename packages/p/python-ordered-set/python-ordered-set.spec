@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file for package python-ordered-set
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-%{short_name}
+Name:           python-%{short_name}%{psuffix}
 Version:        3.1.1
 Release:        0
 Summary:        Custom MutableSet that remembers its order

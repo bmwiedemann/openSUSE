@@ -24,4 +24,12 @@
   in order to avoid buildcycle</comment>
     <requestid>743991</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4e0c387a5957d352bf53941954b895c4</srcmd5>
+    <version>3.1.1</version>
+    <time>1579464048</time>
+    <user>dimstar_suse</user>
+    <comment>- Use psuffix properly to not override src packages</comment>
+    <requestid>765172</requestid>
+  </revision>
 </revisionlist>
