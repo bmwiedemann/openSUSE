@@ -154,4 +154,19 @@
     <comment>- Add missing bug reference for 4.0.7 update changelog entry</comment>
     <requestid>757118</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>97f9868196a4f1d576b1dae817f728b2</srcmd5>
+    <version>4.0.13</version>
+    <time>1579463870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.13
+  + Fix: config_manager respect config file location during save
+  + Redesign reposync --latest for modular system (rh#1775434)
+  + [reposync] Fix --delete with multiple repos (rh#1774103)
+  + [doc] Skip creating and installing migrate documentation for Python 3+
+  + [config-manager] Allow use of --set-enabled without arguments (rh#1679213)
+  + [versionlock] Prevent conflicting/duplicate entries (rh#1782052)
+- Deconflict with zypper-needs-restarting on SLE to unblock PackageHub updates</comment>
+    <requestid>765594</requestid>
+  </revision>
 </revisionlist>

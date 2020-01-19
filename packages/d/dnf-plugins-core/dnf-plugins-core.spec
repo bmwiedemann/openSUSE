@@ -2,7 +2,7 @@
 # spec file for package dnf-plugins-core
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,14 @@
 %global yum_utils_subpackage_name dnf-utils
 %endif
 
+# Deal with SLE Backports issues
+%if 0%{?sle_version} && 0%{?is_backports}
+%bcond_without deconflict
+%global deconflict_prefix dnfutils-
+%else
+%bcond_with deconflict
+%global deconflict_prefix %{nil}
+%endif
 
 # Tests are broken on SUSE for now
 %bcond_with tests
@@ -49,7 +57,7 @@
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.0.12
+Version:        4.0.13
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0+
@@ -156,9 +164,11 @@ Provides:       yum-changelog = %{version}-%{release}
 Conflicts:      yum-changelog
 Conflicts:      yum-utils
 %endif
+%if ! %{with deconflict}
 # Cf. https://github.com/openSUSE/zypper/pull/254
 Conflicts:      zypper < 1.14.26
 Conflicts:      zypper-needs-restarting
+%endif
 Requires:       %{name} = %{version}-%{release}
 Requires:       dnf >= %{dnf_lowest_compatible}
 Requires:       python3-dnf >= %{dnf_lowest_compatible}
@@ -310,8 +320,11 @@ ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
 ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 
-# We never shipped this plugin, and we never will, since we never used YUM...
-rm %{buildroot}%{_mandir}/man8/dnf-migrate.8*
+%if %{with deconflict}
+# Deal with conflicts to unblock backports
+mv %{buildroot}%{_bindir}/needs-restarting %{buildroot}%{_bindir}/dnfutils-needs-restarting
+mv %{buildroot}%{_mandir}/man1/needs-restarting.1 %{buildroot}%{_mandir}/man1/dnfutils-needs-restarting.1
+%endif
 
 %if ! %{with copr_plugin}
 # Delete if we're not shipping COPR plugin
@@ -384,8 +397,8 @@ PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
 %{_mandir}/man1/dnf-utils.1*
 %{_bindir}/debuginfo-install
 %{_mandir}/man1/debuginfo-install.1*
-%{_bindir}/needs-restarting
-%{_mandir}/man1/needs-restarting.1*
+%{_bindir}/%{?deconflict_prefix}needs-restarting
+%{_mandir}/man1/%{?deconflict_prefix}needs-restarting.1*
 %{_bindir}/find-repos-of-install
 %{_bindir}/package-cleanup
 %{_mandir}/man1/package-cleanup.1*
