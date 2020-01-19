@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 18 09:34:54 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.1.0:
+  * Fix for LevelFormatter in Python >= 3.8
+  * Wrapped lines to match the rest of the code
+  * Add check if fmt is dict, missed an elif
+  * Test only on all currently supported python versions
+  * Suppress docstring section related errors
+  * Update classifiers to reflect supported versions of Python
+
+-------------------------------------------------------------------
 Mon Oct 14 11:44:22 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
