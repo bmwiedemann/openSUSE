@@ -1,7 +1,7 @@
 #
 # spec file for package fractal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           fractal
-Version:        4.0.0
+Version:        4.2.2
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://wiki.gnome.org/Apps/Fractal
-Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/ad6a483327c3e9ef5bb926b89fb26e2b/fractal-4.0.0.tar.xz
-# PATCH-FIX-UPSTREAM fractal-drop-gst-bad-video-dep.patch -- Adapt to changes in gstreamer
-Patch0:         fractal-drop-gst-bad-video-dep.patch
-
+Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/9f2b34d98cfe3c002f3afbfcbf14bc7c/fractal-%{version}.tar.xz
 BuildRequires:  cargo
 BuildRequires:  gmp-devel
 BuildRequires:  meson
@@ -40,6 +37,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gspell-1) >= 1.8
+BuildRequires:  pkgconfig(gst-editing-services-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-bad-audio-1.0)
@@ -49,7 +47,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)  >= 3.22
-BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.0
+BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0
 BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.5
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(openssl)

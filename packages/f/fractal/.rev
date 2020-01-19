@@ -56,4 +56,49 @@
   when building on SLE 15 SPx. (forwarded request 746608 from fcrozat)</comment>
     <requestid>747644</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9c1d2ea56f801af2bc898f3b2c669c91</srcmd5>
+    <version>4.2.2</version>
+    <time>1579463773</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.2:
+  + Translation strings have been updated
+  + Newlines now work when markdown is enabled
+  + Account settings can be accessed again
+  + Redaction is working again
+  + Compatibility with HTTP-only (non HTTPS) servers has been
+    restored
+  + Some crashes fixed
+  + Autocompletion popover position fix
+  + Translation strings have been updated
+  + Disable the textbox when there are no write permissions
+  + Fix crash on logout and login with wrong credentials
+  + Adaptive window, mobile friendly
+  + Window size and position are remembered
+  + Redesigned login
+  + Spellcheck
+  + Network proxy support
+  + Typing notifications
+  + Badges are shown for operators and moderators
+  + Keyboard shortcuts for easier navigation across rooms
+  + Better uploads:
+    - Audio and video files are now tagged correctly
+    - Image files have a thumbnail
+    - Various tweaks to the file chooser
+  + Logs actually output something now
+  + A few issues with invites and direct chats have been resolved
+  + More reliable scrolling
+  + Some crashes fixed
+  + Code refactor continues
+  + We’re now using Rust 2018
+  + Many improvements to the build system and CI
+- Remove fractal-drop-gst-bad-video-dep.patch, which has been
+  included upstream.
+- Replace pkgconfig(gtksourceview-3.0) with
+  pkgconfig(gtksourceview-4) BuildRequires.
+- Add pkgconfig(gst-editing-services-1.0) BuildRequires: New
+  dependency.
+</comment>
+    <requestid>763392</requestid>
+  </revision>
 </revisionlist>
