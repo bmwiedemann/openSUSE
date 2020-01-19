@@ -1,7 +1,7 @@
 #
 # spec file for package wireshark
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -42,6 +42,8 @@ BuildRequires:  glib2-devel >= 2.32
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  krb5-devel
 BuildRequires:  libbrotli-devel
+# keep until libbrotli-devel bug is fixed
+BuildRequires:  libbrotlidec1
 BuildRequires:  libcap-devel
 BuildRequires:  libcares-devel
 BuildRequires:  libgcrypt-devel >= 1.8.0
@@ -65,6 +67,9 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(pre):  permissions
 Requires(pre):  shadow
+Requires:       brotli
+# keep until libbrotli-devel bug is fixed
+Requires:       libbrotlidec1
 Recommends:     wireshark-ui = %{version}
 Provides:       ethereal = %{version}
 Obsoletes:      %{libcodecs} < %{version}
