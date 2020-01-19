@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jan 18 19:16:38 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.9.2:
+  * Array
+    + Unify chunks in broadcast_arrays (:pr:`5765`) Matthew Rocklin
+  * Core
+    + xfail CSV encoding tests (:pr:`5791`) Tom Augspurger
+    + Update order to handle empty dask graph (:pr:`5789`) James
+      Bourbeau
+    + Redo dask.order.order (:pr:`5646`) Erik Welch
+  * DataFrame
+    + Add transparent compression for on-disk shuffle with partd
+      (:pr:`5786`) Christian Wesp
+    + Fix repr for empty dataframes (:pr:`5781`) Shiva Raisinghani
+    + Pandas 1.0.0RC0 compat (:pr:`5784`) Tom Augspurger
+    + Remove buggy assertions (:pr:`5783`) Tom Augspurger
+    + Pandas 1.0 compat (:pr:`5782`) Tom Augspurger
+    + Fix bug in pyarrow-based read_parquet on partitioned datasets
+      (:pr:`5777`) Richard J Zamora
+    + Compat for pandas 1.0 (:pr:`5779`) Tom Augspurger
+    + Fix groupby/mean error with with categorical index (:pr:`5776`)
+      Richard J Zamora
+    + Support empty partitions when performing cumulative aggregation
+      (:pr:`5730`) Matthew Rocklin
+    + set_index accepts single-item unnested list (:pr:`5760`) Wes
+      Roach
+    + Fixed partitioning in set index for ordered Categorical
+      (:pr:`5715`) Tom Augspurger
+  * Documentation
+    + Note additional use case for normalize_token.register
+      (:pr:`5766`) Thomas A Caswell
+    + Update bag repartition docstring (:pr:`5772`) Timost
+    + Small typos (:pr:`5771`) Maarten Breddels
+    + Fix typo in Task Expectations docs (:pr:`5767`) James Bourbeau
+    + Add docs section on task expectations to graph page (:pr:`5764`)
+      Devin Petersohn
+
+-------------------------------------------------------------------
 Mon Jan  6 05:05:16 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
