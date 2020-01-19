@@ -2,9 +2,9 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/skyjake/Doomsday-Engine</param>
-		<param name="revision">build2967</param>
-		<param name="parent-tag">build2967</param>
-		<param name="versionformat">2.1.1</param>
+		<param name="revision">v2.2.1-1</param>
+		<param name="parent-tag">v2.2.1-1</param>
+		<param name="versionformat">2.2.1.1</param>
 		<!-- extras not in the normal tarball release -->
 		<param name="exclude">attic</param>
 		<param name="exclude">packs</param>

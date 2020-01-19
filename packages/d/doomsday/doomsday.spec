@@ -1,7 +1,7 @@
 #
 # spec file for package doomsday
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           doomsday
-Version:        2.1.1
+Version:        2.2.1.1
 Release:        0
 Summary:        The Doomsday Engine: DOOM/Hertic/Hexen port with pretty graphics
 License:        GPL-2.0-or-later AND GPL-2.0-only AND SUSE-GPL-2.0-with-linking-exception AND BSD-3-Clause AND LGPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
-Url:            http://dengine.net/
+URL:            http://dengine.net/
 
 #Git-Web:	https://github.com/skyjake/Doomsday-Engine
 #Git-Clone:	git://github.com/skyjake/Doomsday-Engine
@@ -148,6 +148,8 @@ echo "INFO: %name: The global IWAD directory is %_datadir/doom.";
 %_libdir/%name/
 %_datadir/%name/
 %_datadir/applications/*.desktop
+%_datadir/metainfo/
+%_datadir/icons/*
 %_datadir/pixmaps/*.png
 
 %changelog

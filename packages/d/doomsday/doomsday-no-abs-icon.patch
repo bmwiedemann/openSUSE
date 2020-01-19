@@ -7,25 +7,13 @@ requires the icons to be below /usr/share/icons or
 
 
 ---
- doomsday/apps/client/doomsday-engine.desktop.in |    3 +--
- doomsday/tools/shell/doomsday-shell.desktop.in  |    3 +--
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ doomsday/tools/shell/doomsday-shell.desktop.in |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Index: doomsday-2.0.0/doomsday/apps/client/doomsday-engine.desktop.in
+Index: Doomsday-Engine-2.2.1.1/doomsday/tools/shell/doomsday-shell.desktop.in
 ===================================================================
---- doomsday-2.0.0.orig/doomsday/apps/client/doomsday-engine.desktop.in
-+++ doomsday-2.0.0/doomsday/apps/client/doomsday-engine.desktop.in
-@@ -6,5 +6,4 @@ Categories=Game;ActionGame;
- Exec=${CMAKE_INSTALL_PREFIX}/bin/doomsday
- Terminal=false
- Type=Application
--Icon=${CMAKE_INSTALL_PREFIX}/${DENG_INSTALL_DATA_DIR}/deng-logo-256.png
--
-+Icon=deng-logo-256.png
-Index: doomsday-2.0.0/doomsday/tools/shell/doomsday-shell.desktop.in
-===================================================================
---- doomsday-2.0.0.orig/doomsday/tools/shell/doomsday-shell.desktop.in
-+++ doomsday-2.0.0/doomsday/tools/shell/doomsday-shell.desktop.in
+--- Doomsday-Engine-2.2.1.1.orig/doomsday/tools/shell/doomsday-shell.desktop.in
++++ Doomsday-Engine-2.2.1.1/doomsday/tools/shell/doomsday-shell.desktop.in
 @@ -6,5 +6,4 @@ Categories=Game;ActionGame;
  Exec=${CMAKE_INSTALL_PREFIX}/bin/doomsday-shell
  Terminal=false

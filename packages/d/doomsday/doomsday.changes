@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 19 11:36:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.1.1
+  * The built-in scripting language has gained wider integration
+    in the engine internals.
+  * Scripted mobj actions
+  * A number of modding related improvements have been done for
+    Heretic. For example: customizable menu labels, enhanced
+    intermission screen, Values for ammo per shot, support for
+    Hexen-like wall-bouncing missiles, and a script binding for
+    starting an enemy’s attack.
+  * Separate FOV for rendering player weapons
+  * Doomsday now detects Freedoom v0.12.1.
+
+-------------------------------------------------------------------
 Sat Nov  2 00:02:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Previous implicit dependency on xxf86vm is now added

@@ -187,4 +187,12 @@
   as an explicit BuildRequires.</comment>
     <requestid>744828</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>18f7d8724b1e3764cc69c157de42e748</srcmd5>
+    <version>2.2.1.1</version>
+    <time>1579463808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.2.1.1</comment>
+    <requestid>765561</requestid>
+  </revision>
 </revisionlist>
