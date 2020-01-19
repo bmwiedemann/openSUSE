@@ -97,4 +97,17 @@
 </comment>
     <requestid>757209</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b34f08f16a56f9addbe5dee09bed147</srcmd5>
+    <version>2.3.0</version>
+    <time>1579463819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0
+  * Discard any obsolete event according to the last stamped. 
+    That fixes some cases when rendering update events are caught
+    out of order (i.e swiping the volume up/down).
+  * Discard some device models during discovery
+</comment>
+    <requestid>765503</requestid>
+  </revision>
 </revisionlist>

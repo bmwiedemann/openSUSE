@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 16 20:38:36 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 2.3.0
+  * Discard any obsolete event according to the last stamped. 
+    That fixes some cases when rendering update events are caught
+    out of order (i.e swiping the volume up/down).
+  * Discard some device models during discovery
+
+-------------------------------------------------------------------
 Sun Dec 15 07:44:44 UTC 2019 - Bo Simonsen <bosim@opensuse.org>
 
 - Update to 2.2.0

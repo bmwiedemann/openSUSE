@@ -17,7 +17,7 @@
 
 
 Name:           noson
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        C++ library for accessing sonos devices
 License:        GPL-3.0-or-later
@@ -45,7 +45,7 @@ Group:          System/Libraries
 C++ library for accessing sonos devices
 The API supports basic features to browse music index and control playback
 in any zones.
-https://codeload.github.com/janbar/noson/tar.gz/2.2.0
+
 %package devel
 Summary:        Development files for noson library
 Group:          Development/Libraries/C and C++
