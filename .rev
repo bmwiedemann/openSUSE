@@ -495,4 +495,12 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
   (jsc#SLE-8838)</comment>
     <requestid>746615</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>88e6e555e942e1dc26094d476896b4fd</srcmd5>
+    <version>2.6.0</version>
+    <time>1579463577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764815</requestid>
+  </revision>
 </revisionlist>
