@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent-rasterbar
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _name   libtorrent
 %define sover   10
-%define _version 1_2_2
+%define _version 1_2_3
 %bcond_without  python2
 %bcond_without  python3
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
