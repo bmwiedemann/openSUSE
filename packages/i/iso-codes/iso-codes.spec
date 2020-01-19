@@ -1,7 +1,7 @@
 #
 # spec file for package iso-codes
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source0:        https://salsa.debian.org/iso-codes-team/iso-codes/uploads/049ce6
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description

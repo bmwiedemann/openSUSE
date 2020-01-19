@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 15:43:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Stop recommending iso-codes-lang: the -lang package provides
+  relevant supplements which allow zypper to be more specific when
+  to pick it (zypper lloc).
+
+-------------------------------------------------------------------
 Sat Nov 17 07:48:31 UTC 2018 - sean@suspend.net
 
 - Update to version 4.01:
-  + ISO-3166-2: Update codes for ZA-GT (Gauteng) and ZA-NL (Kwazulu-Natal) 
+  + ISO-3166-2: Update codes for ZA-GT (Gauteng) and ZA-NL (Kwazulu-Natal)
   + ISO-3166-3: translations (Italian)
   + ISO-15924: translations (Estonian)
 

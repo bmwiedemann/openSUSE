@@ -669,4 +669,12 @@
     <comment>Update iso-codes to 4.1 (forwarded request 650113 from seanlew)</comment>
     <requestid>650159</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>0c07e86f110eea32cc77a02e7d3085fe</srcmd5>
+    <version>4.1</version>
+    <time>1579463566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764790</requestid>
+  </revision>
 </revisionlist>
