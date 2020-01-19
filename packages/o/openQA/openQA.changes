@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 18 22:49:52 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1579272112.ccebff1bd:
+  * Allow more than one keepalive connection per cache service worker
+  * Update perltidy to 20200110
+  * Fix tidy in night job
+  * Retry cache service downloads for many more errors
+
+-------------------------------------------------------------------
 Thu Jan 16 14:49:57 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1579176985.3721eca2e:
