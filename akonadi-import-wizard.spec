@@ -37,7 +37,6 @@ BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Akonadi)
