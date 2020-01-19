@@ -228,4 +228,12 @@
     <comment>Add a _constraints file for ppc builds</comment>
     <requestid>733411</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9828b9a30a66f35321975f7b04ed444c</srcmd5>
+    <version>5.14.0</version>
+    <time>1579463709</time>
+    <user>dimstar_suse</user>
+    <comment>5.14.0</comment>
+    <requestid>757504</requestid>
+  </revision>
 </revisionlist>
