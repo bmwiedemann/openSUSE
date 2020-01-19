@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 16 17:28:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.8.0
+  * Distribution now includes py.typed file which signals mypy that 
+    this package contains type annotations
+  * Fix get_driver() bug / regression not working if the provider 
+    argument was a string and not a Provider ENUM.
+
+-------------------------------------------------------------------
 Fri Dec 13 13:31:28 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to 2.7.0:

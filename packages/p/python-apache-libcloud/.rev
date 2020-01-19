@@ -285,4 +285,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     a region Y.</comment>
     <requestid>756835</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5c3278f88ed2a5b721990704f95f8e25</srcmd5>
+    <version>2.8.0</version>
+    <time>1579464032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765070</requestid>
+  </revision>
 </revisionlist>

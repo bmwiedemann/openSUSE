@@ -1,9 +1,11 @@
---- apache-libcloud-2.4.0/libcloud/compute/drivers/ec2.py.orig	2019-02-25 17:38:58.959040486 +0700
-+++ apache-libcloud-2.4.0/libcloud/compute/drivers/ec2.py	2019-02-25 17:39:13.791169683 +0700
-@@ -1865,12 +1865,18 @@
+Index: apache-libcloud-2.8.0/libcloud/compute/drivers/ec2.py
+===================================================================
+--- apache-libcloud-2.8.0.orig/libcloud/compute/drivers/ec2.py
++++ apache-libcloud-2.8.0/libcloud/compute/drivers/ec2.py
+@@ -1892,12 +1892,18 @@ class BaseEC2NodeDriver(NodeDriver):
+                                               for system shutdown.
+         :type       ex_terminate_on_shutdown: ``bool``
          """
-         image = kwargs["image"]
-         size = kwargs["size"]
 +
 +        try:
 +            instance_type = size.id
@@ -13,10 +15,10 @@
          params = {
              'Action': 'RunInstances',
              'ImageId': image.id,
-             'MinCount': str(kwargs.get('ex_mincount', '1')),
-             'MaxCount': str(kwargs.get('ex_maxcount', '1')),
+             'MinCount': str(ex_mincount),
+             'MaxCount': str(ex_maxcount),
 -            'InstanceType': size.id
 +            'InstanceType': instance_type
          }
  
-         if kwargs.get("ex_terminate_on_shutdown", False):
+         if ex_terminate_on_shutdown:
