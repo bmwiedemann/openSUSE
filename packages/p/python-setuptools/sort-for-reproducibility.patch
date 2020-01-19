@@ -1,0 +1,53 @@
+Index: setuptools-41.4.0/setuptools/command/easy_install.py
+===================================================================
+--- setuptools-41.4.0.orig/setuptools/command/easy_install.py
++++ setuptools-41.4.0/setuptools/command/easy_install.py
+@@ -417,7 +417,7 @@ class easy_install(Command):
+             for spec in self.args:
+                 self.easy_install(spec, not self.no_deps)
+             if self.record:
+-                outputs = self.outputs
++                outputs = list(sorted(self.outputs))
+                 if self.root:  # strip any package prefix
+                     root_len = len(self.root)
+                     for counter in range(len(outputs)):
+Index: setuptools-41.4.0/setuptools/command/egg_info.py
+===================================================================
+--- setuptools-41.4.0.orig/setuptools/command/egg_info.py
++++ setuptools-41.4.0/setuptools/command/egg_info.py
+@@ -638,7 +638,7 @@ def warn_depends_obsolete(cmd, basename,
+ def _write_requirements(stream, reqs):
+     lines = yield_lines(reqs or ())
+     append_cr = lambda line: line + '\n'
+-    lines = map(append_cr, lines)
++    lines = map(append_cr, sorted(lines))
+     stream.writelines(lines)
+ 
+ 
+Index: setuptools-41.4.0/setuptools/dist.py
+===================================================================
+--- setuptools-41.4.0.orig/setuptools/dist.py
++++ setuptools-41.4.0/setuptools/dist.py
+@@ -195,7 +195,7 @@ def write_pkg_file(self, file):
+             self.long_description_content_type
+         )
+     if self.provides_extras:
+-        for extra in self.provides_extras:
++        for extra in sorted(self.provides_extras):
+             write_field('Provides-Extra', extra)
+ 
+ 
+Index: setuptools-41.4.0/setuptools/tests/test_egg_info.py
+===================================================================
+--- setuptools-41.4.0.orig/setuptools/tests/test_egg_info.py
++++ setuptools-41.4.0/setuptools/tests/test_egg_info.py
+@@ -291,8 +291,8 @@ class TestEggInfo:
+             wheel>=0.5
+             pytest
+ 
+-        wheel>=0.5
+         pytest
++        wheel>=0.5
+         ''',
+ 
+         '''

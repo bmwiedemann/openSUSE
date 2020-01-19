@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,25 +27,32 @@
 %bcond_with test
 %endif
 Name:           python-setuptools%{psuffix}
-Version:        41.2.0
+Version:        41.6.0
 Release:        0
 Summary:        Enhancements to distutils for building and distributing Python packages
 License:        Python-2.0 OR ZPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pypa/setuptools
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.zip
 Source1:        psfl.txt
 Source2:        zpl.txt
+Patch0:         sort-for-reproducibility.patch
+Patch1:         importlib.patch
 BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module ordered-set}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pyparsing >= 2.0.2}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-# needed for SLE
+# The dependency download feature may require SSL, which is in python3-base and python(2)
+%ifpython2
 Requires:       python
+%endif
 Requires:       python-appdirs
+Requires:       python-base
+Requires:       python-ordered-set
 Requires:       python-packaging
 Requires:       python-six
 Requires:       python-xml
@@ -57,17 +64,12 @@ BuildRequires:  %{python_module Paver}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing >= 2.0.2}
 BuildRequires:  %{python_module pytest-fixture-config}
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= %{version}}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-futures
-%else
-#!BuildIgnore:  python-pyparsing
-#!BuildIgnore:  python2-pyparsing
-#!BuildIgnore:  python3-pyparsing
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
@@ -85,6 +87,8 @@ especially ones that have dependencies on other packages.
 
 %prep
 %setup -q -n setuptools-%{version}
+%patch0 -p1
+%patch1 -p1
 find . -type f -name "*.orig" -delete
 
 # fix rpmlint spurious-executable-perm
@@ -98,6 +102,21 @@ chmod -x README.rst
 # replace with nothing
 sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py
 
+# replace the bundled stuff
+find ./ -type f -name \*.py -exec sed -i \
+  -e 's:from setuptools\.extern\.:from :g' \
+  -e 's:from pkg_resources\.extern\.:from :g' \
+  -e 's:pkg_resources\.extern\.::g' \
+  -e 's:setuptools\.extern\.::g' \
+  {} \;
+find ./ -type f -name \*.py -exec sed -i \
+  -e 's:from setuptools\.extern ::g' \
+  -e 's:from pkg_resources\.extern ::g' \
+  {} \;
+find ./ -type f -name \*.py -exec sed -i  \
+  -e 's:from .extern ::g' \
+  {} \;
+
 %build
 %python_build
 
@@ -110,8 +129,10 @@ sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py
 
 %check
 %if %{with test}
+# the 4 skipped test rely on the bundled packages but they are
+# not available on virtualenv; this is expected behaviour
 export LANG=en_US.UTF-8
-%pytest
+%pytest -k 'not (test_clean_env_install or test_pip_upgrade_from_source or test_test_command_install_requirements or test_no_missing_dependencies)'
 %endif
 
 %if !%{with test}

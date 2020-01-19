@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Nov 11 12:47:57 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 41.6.0
+- add importlib.patch
+ * Replace usage of deprecated imp module with local
+    re-implementation in setuptools._imp
+ *  Fix pkg_resources.Requirement hash/equality implementation
+ * Fix tests when running under python3.10.
+ * drop 'deprecated' documentation (test command, ez_setup, EasyInstall)
+
+-------------------------------------------------------------------
+Thu Oct 17 20:35:06 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove runtime dependency for the full python3 package, as the
+  actually required SSL module is in python3-base. For python(2),
+  SSL is in the "full" python package. Avoids build loops and
+  shortens the dependency chain for e.g. rust.
+
+-------------------------------------------------------------------
+Wed Oct 16 13:58:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Try to use system packages rather than the vendored variants
+
+-------------------------------------------------------------------
+Wed Oct 16 11:55:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to sort outputs for better reproducability:
+  * sort-for-reproducibility.patch
+- Add missing dep on ordered-set as it is now in the vendored
+  dir too
+
+-------------------------------------------------------------------
+Fri Oct 11 09:29:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 41.4.0
+  * In declarative config, now traps errors when invalid python_requires 
+    values are supplied.
+  * When storing extras, rely on OrderedSet to retain order of extras 
+    as indicated by the packager, which will also be deterministic 
+    on Python 2.7 (with PYTHONHASHSEED unset) and Python 3.6+.
+  * Fixed failing integration test triggered by 'long_description_content_type' in packaging.
+
+-------------------------------------------------------------------
 Sat Sep 14 02:08:41 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Define LANG in %check to fix openSUSE/SLE 15 testsuite
