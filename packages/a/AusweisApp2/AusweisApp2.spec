@@ -45,6 +45,8 @@ BuildRequires:  pcsc-lite-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libudev)
 Requires:       hicolor-icon-theme
+Requires:       libqt5-qtgraphicaleffects
+Requires:       libqt5-qtquickcontrols2
 
 %description
 This app is developed and issued by the German government to be

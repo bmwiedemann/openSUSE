@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 18 06:19:08 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add Requires on libqt5-qtgraphicaleffects and libqt5-qtquickcontrols2
+  This is required for the new default QML interface to work.
+
+-------------------------------------------------------------------
 Wed Jan 15 22:57:12 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
