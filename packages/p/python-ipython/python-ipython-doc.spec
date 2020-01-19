@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipython-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 # This package has to be kept separate from the main package to avoid
 # dependency loops with most of the core jupyter packages.
 %define         oldpython python
-%define doc_ver 7.9.0
+%define doc_ver 7.11.1
 Name:           python-ipython-doc
-Version:        7.9.0
+Version:        7.11.1
 Release:        0
 Summary:        Documentation for python3-jupyter_ipython
 License:        BSD-3-Clause
@@ -29,8 +29,8 @@ Group:          Documentation/Other
 URL:            https://github.com/ipython/ipython
 Source0:        https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 # Please make sure you update the documentation files at every release
-Source1:        https://buildmedia.readthedocs.org/media/pdf/ipython/%{doc_ver}/ipython.pdf
-Source2:        https://buildmedia.readthedocs.org/media/htmlzip/ipython/%{doc_ver}/ipython.zip
+Source1:        https://readthedocs.org/projects/ipython/downloads/pdf/%{doc_ver}#/ipython-%{doc_ver}.pdf
+Source2:        https://readthedocs.org/projects/ipython/downloads/htmlzip/%{doc_ver}/#/ipython-%{doc_ver}.zip
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -73,7 +73,7 @@ find examples -type f -name "*.py" -exec sed -i "s|^#!%{_bindir}/env python$|#!%
 %install
 mkdir -p %{buildroot}%{_docdir}/python-ipython
 
-cp %{SOURCE1} %{buildroot}%{_docdir}/python-ipython/
+cp %{SOURCE1} %{buildroot}%{_docdir}/python-ipython/ipython.pdf
 cp -r docs/html %{buildroot}%{_docdir}/python-ipython/
 cp -r examples %{buildroot}%{_docdir}/python-ipython/
 

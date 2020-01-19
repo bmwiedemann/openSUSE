@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:41:15 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 7.11.1
+  * A couple of deprecated functions (no-op) have been reintroduces in py3compat as
+   Cython was still relying on them, and will be removed in a couple of versions.
+- Update to 7.11.0
+  * A number of function in the ``py3compat`` have been removed; a number of types
+    in the IPython code base are now non-ambiguous and now always ``unicode``
+    instead of ``Union[Unicode,bytes]``; many of the relevant code path have thus
+    been simplified/cleaned and types annotation added.
+  * IPython support several verbosity level from exceptions. ``xmode plain`` now
+    support chained exceptions.
+  * We are starting to remove ``shell=True`` in some usages of subprocess. While not directly
+    a security issue (as IPython is made to run arbitrary code anyway) it is not good
+    practice and we'd like to show the example.
+  * Work around some bugs in Python 3.9 tokenizer
+  * IPython will now print its version after a crash.
+- Update to 7.10.2
+  * IPython 7.10.2 fix a couple of extra incompatibility between IPython, ipdb,
+    asyncio and Prompt Toolkit 3.
+- Update to IPython 7.10.1
+  * IPython 7.10.1 fix a couple of incompatibilities with Prompt toolkit 3 (please
+    update Prompt toolkit to 3.0.2 at least), and fixes some interaction with
+    headless IPython.
+- Update to IPython 7.10.0
+  * Stop Support for Python 3.5 – Adopt NEP 29
+  * Support for Prompt Toolkit 3.0
+  * Prompt Rendering Performance improvements
+  * Code autoformatting
+  * Arbitrary Mimetypes Handing in Terminal (Aka inline images in terminal)
+  * Completions can define their own ordering
+  * Enable Plotting in the same cell than the one that import matplotlib
+  * Allow to store and restore multiple variables at once
+
+-------------------------------------------------------------------
 Tue Nov 12 16:26:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - update to version 7.9.0:
