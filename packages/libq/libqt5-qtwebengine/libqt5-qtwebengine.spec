@@ -52,17 +52,17 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtwebengine-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtwebengine-everywhere-src-5.14.0
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch1:         armv6-ffmpeg-no-thumb.patch
@@ -70,12 +70,6 @@ Patch1:         armv6-ffmpeg-no-thumb.patch
 Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
 # PATCH-FIX-UPSTREAM 0001-fix-build-after-y2038-changes-in-glibc.patch
 Patch3:         0001-fix-build-after-y2038-changes-in-glibc.patch
-# PATCH-FIX-UPSTREAM harmony-fix.diff -- Show the patent-free LCD rendering. Without this patch, only grayscale rendering is used. (for freetype-2.8.1) boo#1061344
-Patch5:         harmony-fix.diff
-# PATCH-FIX-UPSTREAM icu-build-fix.patch: fix build with icu 65.1.
-Patch6:         icu-build-fix.patch
-# PATCH-FIX-OPENSUSE (copied from the chromium package)
-Patch9:         chromium-non-void-return.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint
@@ -277,9 +271,12 @@ mv qtwebengine{_new,}.pro
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS "
 export RPM_OPT_FLAGS=${RPM_OPT_FLAGS/-g / }
 %endif
+# Upstream does not care about those warnings, but optflags has -Werror=return-type.
+export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
 # It does not actually include proprietary codecs, it only makes it attempt to use ffmpeg
 # Link pulseaudio to work around QTBUG-77037
 %qmake5 QMAKE_CFLAGS="$RPM_OPT_FLAGS" \
+        QMAKE_CXXFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_LFLAGS+="-Wl,--no-keep-memory -Wl,--hash-size=31 -Wl,--reduce-memory-overheads" \
         gn_args+="link_pulseaudio=true" \
 %if 0%{?suse_version} < 1330
