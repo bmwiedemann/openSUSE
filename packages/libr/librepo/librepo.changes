@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:52:18 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.11.2
+  + Fix calling Python API without holding GIL (rh#1788918)
+  + Do not unref LrErr_Exception on exit (rh#1778854)
+  + Cleanup zchunk-related error messages (rh#1790625)
+- Fix typo in changes entry about version update to 1.11.1
+
+-------------------------------------------------------------------
 Sat Dec 14 22:17:03 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
-- Upgrade to 1.1.1
+- Upgrade to 1.11.1
   + Create a directory for gpg sockets in /run/user/ (rh#1769831, rh#1771012)
 - Fix bcond declaration for zchunk so defaults are always declared
 

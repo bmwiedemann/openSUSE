@@ -133,4 +133,16 @@
 - Fix bcond declaration for zchunk so defaults are always declared</comment>
     <requestid>757110</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eaa7cc9f2ac7ebf519214195ef90991a</srcmd5>
+    <version>1.11.2</version>
+    <time>1579463863</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.11.2
+  + Fix calling Python API without holding GIL (rh#1788918)
+  + Do not unref LrErr_Exception on exit (rh#1778854)
+  + Cleanup zchunk-related error messages (rh#1790625)
+- Fix typo in changes entry about version update to 1.11.1</comment>
+    <requestid>765590</requestid>
+  </revision>
 </revisionlist>
