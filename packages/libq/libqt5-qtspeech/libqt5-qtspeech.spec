@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtspeech
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
 %define libname libQt5TextToSpeech5
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtspeech-everywhere-src-5.13.1
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtspeech-everywhere-src-5.14.0
 Name:           libqt5-qtspeech
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Speech Addon
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel
@@ -50,7 +50,7 @@ challenged or cannot access the application for whatever reason.
 
 %prep
 %setup -q -n %{tar_version}
-%if %{suse_version} < 1330
+%if 0%{?suse_version} < 1330
 # work around wrong include directory specification in speech-dispatcher's pkgconfig file in Leap 42.x
 sed -i "s|libspeechd.h|speech-dispatcher/libspeechd.h|" src/plugins/tts/speechdispatcher/qtexttospeech_speechd.*
 %endif
@@ -71,7 +71,7 @@ challenged or cannot access the application for whatever reason.
 Summary:        Qt5 Speech Module - Speech Dispatcher support
 Group:          System/Libraries
 Requires:       %{libname} = %{version}
-Supplements:    packageand(speech-dispatcher:%{libname})
+Supplements:    (speech-dispatcher and %{libname})
 
 %description plugin-speechd
 This plugin adds support for using speech-dispatcher for speech synthesis
@@ -88,6 +88,7 @@ You need this package if you want to compile programs with qtspeech.
 %package examples
 Summary:        Qt5 Speech examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 
 %description examples
 Examples for the libqt5-qtspeech module.
