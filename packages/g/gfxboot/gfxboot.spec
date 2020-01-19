@@ -1,7 +1,7 @@
 #
 # spec file for package gfxboot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gfxboot
-Version:        4.5.63
+Version:        4.5.64
 Release:        0
 Summary:        Graphical Boot Logo for GRUB, LILO and SYSLINUX
 License:        GPL-2.0+
