@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jan 18 20:51:27 UTC 2020 - kukuk@suse.de
+
+- Update to version 0.2.0+git20191111.daeb3de:
+  * docs: add docs for storage.fs.with_mount_unit
+  * vendor: update go.{mod,sum}
+  * base/v0_2: add filesystem.with_mount_unit
+  * config: split errors to common
+  * translate: allow translations from a common source
+  * translate: split helper fns to their own file
+  * translate: split TranslationSet to own file
+  * translate: minor refactor, add tests, fix bug
+  * base/v0_2: add field to create mount units for fs
+  * base/v0_2: add new fields from ign spec 3.1.0-exp
+  * docs: add docs for v1.1.0-experimental
+  * config,distro: Start using v1.1.0-experimental
+  * config/v1_1_exp: add package
+  * base/v0_2_exp: translate to v3.1.0-experimental
+  * base/v0_2_exp: add package
+  * *: use new translation tracking
+  * translate: keep track of translations
+  * translate: add translate from ignition
+  * distro: add to config, do not create a new one
+  * docs: document inline file contents
+  * *: return reports, print reports to stderr
+  * Removed -t flag for podman run using stdin
+  * main: use O_TRUNC when opening output file
+  * docs/getting-started: document absolute path for config bind mount
+  * docs/getting-started: add fcct container docs
+  * [docs] passwords are hashed not encrypted
+  * news: add news for 0.2.0
+  * go.mod: bump ignition to 2.0.1
+
+-------------------------------------------------------------------
 Mon Aug 26 06:41:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

@@ -1,7 +1,7 @@
 #
 # spec file for package ignition-config-transpiler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ignition-config-transpiler
-Version:        0.1.0+git20190723.2c075d6
+Version:        0.2.0+git20191111.daeb3de
 Release:        0
 Summary:        Tool to convert a yaml config file into a Ignition configuration
 License:        Apache-2.0
