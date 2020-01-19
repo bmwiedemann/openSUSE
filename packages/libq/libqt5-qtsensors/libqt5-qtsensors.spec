@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtsensors
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,17 @@
 %define qt5_snapshot 0
 %define libname libQt5Sensors5
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtsensors-everywhere-src-5.13.1
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtsensors-everywhere-src-5.14.0
 Name:           libqt5-qtsensors
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Sensors library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-only)
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
@@ -66,7 +66,7 @@ recognition API for devices.
 Summary:        QML imports for the Qt 5 Sensors library
 Group:          System/Libraries
 %requires_ge    libQtQuick5
-Supplements:    packageand(%{libname}:libQtQuick5)
+Supplements:    (%{libname} and libQtQuick5)
 # imports splited with 5.4.1
 Conflicts:      %{libname} < 5.4.1
 
