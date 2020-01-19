@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jan 19 03:06:01 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.3.5
+  * Fix a crashing bug if output format S24 was chosen. 
+  * Fix a bug whereby if Loudness was enabled through the D-Bus interface, the
+    output would be muted until the volume was changed.
+  * Enhancements to the D-Bus Interface
+  * Fixes a deferred crash that occurred in Ubuntu 14.04
+  * Fixes a potential crash when an incomplete fmtp parameter set is sent by the
+    requesting client. Thanks to Angus71 for the fault report and for the
+    repair.
+  * Fixed a potential crash
+  * A fix ensures the hardware mixer of an alsa device is detected and
+    initialised before responding to the first volume setting.
+  * Fixes were made to the MPRIS and native D-Bus interfaces. 
+  * Fixes an error whereby the 'pvol'volume metadata was no longer sent if
+    Shairport Sync was configured to ignore volume control information coming
+    from the audio source. 
+  * Instead of returning EXIT_FAILURE, return EXIT_WITH_SUCCESS on early exit
+    with either "version" (–version or -V) or "help" (–help or -h) arguments.
+    Thanks to Henrik Nilsson for the patch.
+  * Normalises the 'pvol' volume outputs so that when both the software and
+    hardware attenuators are in use to extend the overall attenuation range, the
+    maximum output level corresponds to the maximum output level of the hardware
+    mixer.
+  * Add the option of including the file and line number of each log entry's
+    source.
+  * Rewrite the logic for identifying missing packets of audio and for asking
+    for resends.
+  * Expose the advanced settings controlling the resend request logic. 
+  * Exposes two advanced metadata settings related to handling cover art 
+
+-------------------------------------------------------------------
 Tue Oct 22 07:50:44 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Update version to 3.3.2
