@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwebchannel
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
 %define libname libQt5WebChannel5
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtwebchannel-everywhere-src-5.13.1
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtwebchannel-everywhere-src-5.14.0
 Name:           libqt5-qtwebchannel
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 WebChannel Addon
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
 BuildRequires:  libqt5-qtwebsockets-devel >= %{version}
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -58,7 +57,7 @@ QObjects published by the host applications.
 %package -n %{libname}
 Summary:        Qt 5 WebChannel Addon
 Group:          Development/Libraries/X11
-%requires_ge libQtQuick5
+%requires_ge    libQtQuick5
 
 %description -n %{libname}
 Qt WebChannel enables peer-to-peer communication between a server
@@ -73,10 +72,10 @@ QObjects published by the host applications.
 %package -n %{libname}-imports
 Summary:        QML imports for the Qt5 WebSockets library
 Group:          Development/Libraries/X11
-Supplements:    packageand(%{libname}:libQtQuick5)
+%requires_ge    libQtQuick5
+Supplements:    (%{libname} and libQtQuick5)
 # imports splited with 5.4.1
 Conflicts:      %{libname} < 5.4.1
-%requires_ge libQtQuick5
 
 %description -n %{libname}-imports
 The module provides a JavaScript library for seamless integration of
@@ -106,13 +105,13 @@ the exact Qt version.
 %package examples
 Summary:        Qt5 WebChannel examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-devel
 
 %description examples
 Examples for the libqt5-qtwebchannel module.
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %build
@@ -120,33 +119,33 @@ Examples for the libqt5-qtwebchannel module.
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
-%{qmake5}
-%{make_jobs}
+%qmake5
+%make_jobs
 
 %install
-%{qmake5_install}
+%qmake5_install
 
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %files -n %{libname}
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/libQt5WebChannel.so.*
 
 %files -n %{libname}-imports
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_archdatadir}/qml/QtWebChannel/
 
 %files private-headers-devel
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_includedir}/QtWebChannel/%{so_version}
 
 %files devel
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %exclude %{_libqt5_includedir}/QtWebChannel/%{so_version}
 %{_libqt5_includedir}/QtWebChannel
 %{_libqt5_libdir}/cmake/Qt5WebChannel
@@ -157,7 +156,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %files examples
 %defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_examplesdir}/
 
 %changelog
