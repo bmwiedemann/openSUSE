@@ -1,0 +1,52 @@
+From 81ad0e88644af358c30ea036c26b6f2afc457b98 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 30 Dec 2019 12:16:25 +0100
+Subject: [PATCH 2/2] Fix the openSUSE executable names.
+
+---
+ build_scripts/platforms/unix.py      | 2 +-
+ sources/pyside2-tools/pyside_tool.py | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/build_scripts/platforms/unix.py b/build_scripts/platforms/unix.py
+index f5b2760..a0109c6 100644
+--- a/build_scripts/platforms/unix.py
++++ b/build_scripts/platforms/unix.py
+@@ -189,7 +189,7 @@ def prepare_packages_posix(self, vars):
+             # compatibility
+             if sys.version_info[0] == 3:
+                 examples_path = "{st_build_dir}/{st_package_name}/examples".format(**vars)
+-                pyside_rcc_path = "/usr/bin/rcc"
++                pyside_rcc_path = "/usr/bin/rcc-qt5"
+                 pyside_rcc_options = ['-g', 'python']
+                 regenerate_qt_resources(examples_path, pyside_rcc_path, pyside_rcc_options)
+ 
+diff --git a/sources/pyside2-tools/pyside_tool.py b/sources/pyside2-tools/pyside_tool.py
+index da2d741..be32e2f 100755
+--- a/sources/pyside2-tools/pyside_tool.py
++++ b/sources/pyside2-tools/pyside_tool.py
+@@ -71,18 +71,18 @@ def qt_tool_wrapper(qt_tool, args):
+ 
+ 
+ def uic():
+-    qt_tool_wrapper("uic", ['-g', 'python'] + sys.argv[1:])
++    qt_tool_wrapper("uic-qt5", ['-g', 'python'] + sys.argv[1:])
+ 
+ 
+ def rcc():
+-    qt_tool_wrapper("rcc", ['-g', 'python'] + sys.argv[1:])
++    qt_tool_wrapper("rcc-qt5", ['-g', 'python'] + sys.argv[1:])
+ 
+ 
+ def designer():
+     if sys.platform == "darwin":
+         qt_tool_wrapper("Designer.app/Contents/MacOS/Designer", sys.argv[1:])
+     else:
+-        qt_tool_wrapper("designer", sys.argv[1:])
++        qt_tool_wrapper("designer-qt5", sys.argv[1:])
+ 
+ 
+ if __name__ == "__main__":
+-- 
+2.24.1
+

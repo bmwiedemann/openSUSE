@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,22 @@
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Name:           python3-pyside2
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Python bindings for Qt
-# shiboken2 is licensed under GPL-3.0-with-Qt-Company-Qt-exception-1.1
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-with-Qt-Company-Qt-exception-1.1
+# Legal:
+# Most files are LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+# pyside2-tools is GPL-2.0-only
+# shiboken2 contains files under GPL-3.0-only WITH Qt-GPL-exception-1.0
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 Group:          Development/Languages/Python
 URL:            http://wiki.qt.io/Qt_for_Python
-Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-%{version}-src/pyside-setup-everywhere-src-%{version}.tar.xz
+Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-%{version}-src/pyside-setup-opensource-src-%{version}.tar.xz
 Patch0:         lib64.patch
-# PATCH-FIX-UPSTREAM - PYSIDE-881
-Patch1:         0001-Remove-unnecessary-she-bang-from-icon-cache.py.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0002-Fix-the-openSUSE-executable-names.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -41,8 +46,8 @@ BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 
 ##### essential modules
 BuildRequires:  cmake(Qt5Concurrent)
-BuildConflicts: cmake(Qt5Core) >= 5.14
-BuildRequires:  cmake(Qt5Core) >= 5.13
+BuildConflicts: cmake(Qt5Core) >= 5.15
+BuildRequires:  cmake(Qt5Core) >= 5.14
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Sql)
@@ -96,7 +101,7 @@ application and UI framework.
 
 %package devel
 Summary:        Header Files for PySide2
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-with-Qt-Company-Qt-exception-1.1
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 
@@ -114,11 +119,12 @@ Requires:       %{name} = %{version}
 Examples and Tutorials for the PySide2 bindings for Qt.
 
 %prep
-%setup -q -n pyside-setup-everywhere-src-%{version}
+%setup -q -n pyside-setup-opensource-src-%{version}
+%patch1 -p1
+%patch2 -p1
 %if "%{_lib}" == "lib64"
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 export LLVM_INSTALL_DIR=%{_prefix}
@@ -161,10 +167,7 @@ sed -i 's,"[^"]*/share/PySide2/typesystems","%{_datadir}/PySide2/typesystems",' 
 sed -i 's,"[^"]*/share/PySide2/glue","%{_datadir}/PySide2/glue",' %{buildroot}/%{_libdir}/cmake/PySide2*/*.cmake
 sed -i 's,^include("[^"]*-release/%{_lib}/,include("%{_libdir}/,' %{buildroot}/%{_libdir}/cmake/PySide2*/*.cmake
 
-sed -i 's,env python,python,' %{buildroot}/%{_bindir}/pyside2-uic
-
 rm %{buildroot}%{_bindir}/*_tool.py
-rm -Rf %{buildroot}%{python_sitearch}/pyside2uic/port_v2/
 rm -Rf %{buildroot}%{_datadir}/PySide2/typesystems/typesystem_*_win.xml
 
 %fdupes %{buildroot}%{_datadir}/PySide2/examples/

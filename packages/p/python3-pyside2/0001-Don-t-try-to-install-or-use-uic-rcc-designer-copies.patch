@@ -1,0 +1,114 @@
+From 69d6c32805c57e9b1c2428567ee968bff33781be Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 30 Dec 2019 11:24:23 +0100
+Subject: [PATCH 1/2] Don't try to install or use uic/rcc/designer copies.
+
+These executables are installed by qtbase and qttools. Making copies
+is not needed.
+
+pyside2-tools wrongly assumed the executables were in /usr/bin on Linux.
+---
+ build_scripts/platforms/unix.py      | 17 +---------
+ sources/pyside2-tools/CMakeLists.txt | 48 ----------------------------
+ 2 files changed, 1 insertion(+), 64 deletions(-)
+
+diff --git a/build_scripts/platforms/unix.py b/build_scripts/platforms/unix.py
+index abca942..f5b2760 100644
+--- a/build_scripts/platforms/unix.py
++++ b/build_scripts/platforms/unix.py
+@@ -134,24 +134,9 @@ def prepare_packages_posix(self, vars):
+             "{st_build_dir}/{st_package_name}",
+             filter=[
+                 "pyside2-lupdate",
+-                "uic",
+-                "rcc",
+             ],
+             recursive=False, vars=vars))
+ 
+-        # Copying designer
+-        if sys.platform == "darwin":
+-            executables.extend(copydir(
+-                "{install_dir}/bin/Designer.app",
+-                "{st_build_dir}/{st_package_name}/Designer.app",
+-                filter=None,
+-                recursive=True, vars=vars))
+-        else:
+-            copyfile(
+-                "{install_dir}/bin/designer",
+-                "{st_build_dir}/{st_package_name}/designer",
+-                force=False, vars=vars)
+-
+         # <install>/lib/lib* -> {st_package_name}/
+         copydir(
+             "{install_dir}/lib/",
+@@ -204,7 +189,7 @@ def prepare_packages_posix(self, vars):
+             # compatibility
+             if sys.version_info[0] == 3:
+                 examples_path = "{st_build_dir}/{st_package_name}/examples".format(**vars)
+-                pyside_rcc_path = "{install_dir}/bin/rcc".format(**vars)
++                pyside_rcc_path = "/usr/bin/rcc"
+                 pyside_rcc_options = ['-g', 'python']
+                 regenerate_qt_resources(examples_path, pyside_rcc_path, pyside_rcc_options)
+ 
+diff --git a/sources/pyside2-tools/CMakeLists.txt b/sources/pyside2-tools/CMakeLists.txt
+index ce65750..ed7fb09 100644
+--- a/sources/pyside2-tools/CMakeLists.txt
++++ b/sources/pyside2-tools/CMakeLists.txt
+@@ -39,54 +39,6 @@ if (NOT PYTHON_SITE_PACKAGES)
+     endif()
+ endif()
+ 
+-# Handling .exe extension for Window and the uic/rcc executables
+-if (WIN32)
+-    set(EXE_EXT ".exe")
+-else()
+-    set(EXE_EXT "")
+-endif()
+-
+-set(TOOLS_PATH "${_qt5Core_install_prefix}/bin")
+-set(UIC_PATH "${TOOLS_PATH}/uic${EXE_EXT}")
+-set(RCC_PATH "${TOOLS_PATH}/rcc${EXE_EXT}")
+-if (APPLE)
+-    set(DESIGNER_PATH "${TOOLS_PATH}/Designer.app")
+-else()
+-    set(DESIGNER_PATH "${TOOLS_PATH}/designer${EXE_EXT}")
+-endif()
+-
+-install(FILES "${UIC_PATH}"
+-        DESTINATION bin
+-        PERMISSIONS
+-        OWNER_EXECUTE OWNER_WRITE OWNER_READ
+-        GROUP_EXECUTE GROUP_READ
+-        WORLD_EXECUTE WORLD_READ)
+-
+-install(FILES "${RCC_PATH}"
+-        DESTINATION bin
+-        PERMISSIONS
+-        OWNER_EXECUTE OWNER_WRITE OWNER_READ
+-        GROUP_EXECUTE GROUP_READ
+-        WORLD_EXECUTE WORLD_READ)
+-
+-if (EXISTS ${DESIGNER_PATH})
+-    if (APPLE)
+-        install(DIRECTORY "${DESIGNER_PATH}"
+-                DESTINATION bin
+-                FILE_PERMISSIONS
+-                OWNER_EXECUTE OWNER_WRITE OWNER_READ
+-                GROUP_EXECUTE GROUP_READ
+-                WORLD_EXECUTE WORLD_READ)
+-    else()
+-        install(FILES "${DESIGNER_PATH}"
+-                DESTINATION bin
+-                PERMISSIONS
+-                OWNER_EXECUTE OWNER_WRITE OWNER_READ
+-                GROUP_EXECUTE GROUP_READ
+-                WORLD_EXECUTE WORLD_READ)
+-    endif()
+-endif()
+-
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake"
+                "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+                IMMEDIATE @ONLY)
+-- 
+2.24.1
+
