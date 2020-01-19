@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jan 13 10:12:58 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.9 → 9.19.10
+
+-------------------------------------------------------------------
+Sun Jan 12 21:51:30 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Follow up fix for kernel version lookup
+
+  When using custom kiwi boot images a shell method named
+  baseCreateCommonKernelFile was used to create a common
+  kernel file name in the boot image to allow a simpler
+  search code in the builder. The search code in the builder
+  however uses the standard kernel naming schema and with
+  the latest changes to the kernel version lookup the
+  common name did not match the matching pattern anymore.
+  The use of such a common kernel file is obsolete and
+  the shell method can finally be deleted.
+
+-------------------------------------------------------------------
+Sat Jan 11 22:33:05 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.8 → 9.19.9
+
+-------------------------------------------------------------------
+Thu Jan 09 11:25:13 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor kernel version lookup
+
+  For the lookup of the kernel version kiwi provided a small
+  C program that reads the first bytes of the kernel binary
+  and extracts the version information. Given the various
+  compression formats and also the problem of kernel files
+  that contains the decompressor code which could be anything
+  it has turned out to be difficult to provide a stable tool
+  to read the version from the binary. Therefore the code in
+  kiwi was refactored to read the version via regexp match
+  from the filename which also makes kversion an obsolete
+  tool. This Fixes #1308
+
+-------------------------------------------------------------------
 Thu Dec 19 16:12:47 CET 2019 - David Cassany <dcassany@suse.com>
 
 - Bump version: 9.19.7 → 9.19.8

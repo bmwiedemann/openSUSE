@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.19.8
+Version:        9.19.10
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi
@@ -426,7 +426,6 @@ fi
 %files -n kiwi-tools
 %{_bindir}/dcounter
 %{_bindir}/isconsole
-%{_bindir}/kversion
 %{_bindir}/utimer
 
 %files -n dracut-kiwi-lib
