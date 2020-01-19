@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jan 18 19:17:28 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.9.3:
+  * Raise RuntimeError if no running loop (GH#3385) James Bourbeau
+  * Fix get_running_loop import (GH#3383) James Bourbeau
+  * Get JavaScript document location instead of window and handle
+    proxied url (GH#3382) Jacob Tomlinson
+
+- changes from version 2.9.2:
+  * Move Windows CI to GitHub Actions (GH#3373) Jacob Tomlinson
+  * Add client join and leave hooks (GH#3371) Jacob Tomlinson
+  * Add cluster map dashboard (GH#3361) Jacob Tomlinson
+  * Close connection comm on retry (GH#3365) James Bourbeau
+  * Fix scheduler state in case of worker name collision (GH#3366)
+    byjott
+  * Add --worker-class option to dask-worker CLI (GH#3364) James
+    Bourbeau
+  * Remove locale check that fails on OS X (GH#3360) Jacob Tomlinson
+  * Rework version checking (GH#2627) Matthew Rocklin
+  * Add websocket scheduler plugin (GH#3335) Jacob Tomlinson
+  * Return task in dask-worker on_signal function (GH#3354) James
+    Bourbeau
+  * Fix failures on mixed integer/string worker names (GH#3352)
+    Benedikt Reinartz
+  * Avoid calling nbytes multiple times when sending data (GH#3349)
+    Markus Mohrhard
+  * Avoid setting event loop policy if within IPython kernel and no
+    running event loop (GH#3336) Mana Borwornpadungkitti
+  * Relax intermittent failing test_profile_server (GH#3346) Matthew
+    Rocklin
+
+-------------------------------------------------------------------
 Sat Jan 11 18:24:51 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
