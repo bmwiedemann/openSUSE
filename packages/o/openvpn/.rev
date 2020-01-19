@@ -728,4 +728,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>741878</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8853bd8e0b9bec3accda434fcb429f85</srcmd5>
+    <version>2.4.8</version>
+    <time>1579463608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764977</requestid>
+  </revision>
 </revisionlist>

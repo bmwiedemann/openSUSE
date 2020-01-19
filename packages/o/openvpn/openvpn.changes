@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jan  7 21:28:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.4.8:
+  * mbedtls: fix segfault by calling mbedtls_cipher_free() in
+    cipher_ctx_free()
+  * cleanup: Remove RPM openvpn.spec build approach
+  * docs: Update INSTALL
+  * build: Package missing mock_msg.h
+  * Increase listen() backlog queue to 32
+  * Force combinationation of --socks-proxy and --proto UDP to use
+    IPv4.
+  * Wrong FILETYPE in .rc files
+  * Do not set pkcs11-helper 'safe fork mode'
+  * tests/t_lpback.sh: Switch sed(1) to POSIX-compatible regex.
+  * Fix various compiler warnings
+  * Fix regression, reinstate LibreSSL support.
+  * man: correct the description of --capath and --crl-verify
+    regarding CRLs
+  * Fix typo in NTLM proxy debug message
+  * Ignore --pull-filter for --mode server
+  * openssl: Fix compilation without deprecated OpenSSL 1.1 APIs
+  * Better error message when script fails due to script-security
+    setting
+  * Correct the return value of cryptoapi RSA signature callbacks
+  * Handle PSS padding in cryptoapicert
+  * cmocka: use relative paths
+  * Fix documentation of tls-verify script argument
+
+-------------------------------------------------------------------
+Thu Dec 19 15:30:15 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Wed Sep 18 06:52:56 UTC 2019 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Add p11kit build time dependency for pkcs providers autodetection
