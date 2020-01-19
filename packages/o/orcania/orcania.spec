@@ -1,7 +1,7 @@
 #
 # spec file for package orcania
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define sover 2_0
+%define sover 2_1
 Name:           orcania
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        MISC function Library
 License:        LGPL-2.1-or-later

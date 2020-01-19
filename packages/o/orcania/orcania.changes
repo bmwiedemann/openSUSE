@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 21 16:02:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.0
+  * Generate documentation via doxygen
+  * Add functions `pointer_list_clean_free`,
+    `pointer_list_remove_at_free` and
+    `pointer_list_remove_pointer_free`
+  * `split_string` returns `size_t`
+  * Add functions `o_strnchr` and `o_strrnchr`
+
+-------------------------------------------------------------------
 Fri Jul 12 20:59:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.1
