@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,8 +46,6 @@ Patch3:         gnome-settings-daemon-bgo793253.patch
 Patch4:         gnome-settings-daemon-notify-idle-resumed.patch
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-bnc873545-hide-warnings.patch bnc#873545 fezhang@suse.com -- hide the warnings when g-s-d cannot find colord running, which is expected on SLES
 Patch5:         gnome-settings-daemon-bnc873545-hide-warnings.patch
-# PATCH-FIX-OPENSUSE gnome-settings-daemon-sle-configure-timeout-blank.patch bnc#869685 bgo#710904 cxiong@suse.com -- monitor off timeout is too short, extends it to 5 min
-Patch6:         gnome-settings-daemon-sle-configure-timeout-blank.patch
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-more-power-button-actions.patch bsc#996342 fezhang@suse.com -- Bring back the "shutdown" and "interactive" power button actions.
 Patch7:         gnome-settings-daemon-more-power-button-actions.patch
 
@@ -152,11 +150,10 @@ gnome-patch-translation-prepare po %{name}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-# Enable the patches by now for both Leap 15 and SLE 15, meanwhile we should justify the patches upstream.
+# Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.
 %if 0%{?sle_version} >= 150000
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 %patch7 -p1
 %endif
 
