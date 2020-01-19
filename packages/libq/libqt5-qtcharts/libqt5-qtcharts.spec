@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtcharts
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
 %define libname libQt5Charts5
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtcharts-everywhere-src-5.13.1
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtcharts-everywhere-src-5.14.0
 Name:           libqt5-qtcharts
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Charts Library
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://doc.qt.io/qt-5/qtcharts-index.html
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://doc.qt.io/qt-5/qtcharts-index.html
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
-BuildRequires:  xz
-%requires_ge    libQtQuick5
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
+BuildRequires:  xz
+%requires_ge    libQtQuick5
 
 %description
 Qt Charts is a set of chart components.
@@ -95,7 +95,7 @@ Summary:        QML imports for the Qt 5 Charts Library
 Group:          System/Libraries
 Requires:       %{libname} = %{version}
 %requires_ge    libQtCharts5
-Supplements:    packageand(%{libname}:libQtCharts5)
+Supplements:    (%{libname} and libQtCharts5)
 
 %description imports
 This package contains QML import files.
@@ -126,11 +126,11 @@ popd
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %files -n %{libname}
-%doc LICENSE*
+%license LICENSE*
 %{_libqt5_libdir}/libQt5Charts.so.*
 
 %files -n %{libname}-devel
-%doc LICENSE*
+%license LICENSE*
 %{_libqt5_libdir}/libQt5Charts.so
 %{_libqt5_libdir}/libQt5Charts.prl
 %{_libqt5_libdir}/cmake/Qt5Charts/
@@ -141,17 +141,17 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %exclude %{_libqt5_includedir}/Qt*/%{so_version}/
 
 %files -n %{libname}-designer
-%doc LICENSE*
+%license LICENSE*
 %{_libqt5_archdatadir}/plugins
 %{_libqt5_archdatadir}/plugins/designer
 %{_libqt5_archdatadir}/plugins/designer/libqtchartsdesigner.so
 
 %files examples
-%doc LICENSE*
+%license LICENSE*
 %{_libqt5_examplesdir}/
 
 %files imports
-%doc LICENSE*
+%license LICENSE*
 %{_libqt5_archdatadir}/qml/*/
 
 %changelog
