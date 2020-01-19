@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 18 09:12:15 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- add terminator-1.91-python3.patch to add python3 support
+- add terminator-1.91-py3_dnd.patch to fix url drag and drop
+- add missing Requires: python3-configobj
+- use python3 variants of BuildRequires, Requires and macros
+- update URL (.cz -> .com)
+
+-------------------------------------------------------------------
 Mon Aug 27 07:35:43 UTC 2018 - tchvatal@suse.com
 
 - Add dependency on python-cairo wrt bug#1105830

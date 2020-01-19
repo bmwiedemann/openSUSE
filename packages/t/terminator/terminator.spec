@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,21 +23,24 @@ Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
 Group:          System/X11/Terminals
-URL:            https://gnometerminator.blogspot.cz/p/introduction.html
+URL:            https://gnometerminator.blogspot.com/p/introduction.html
 Source0:        https://launchpad.net/%{name}/gtk3/%{version}/+download/%{name}-%{version}.tar.gz
 Patch0:         terminator-desktop.patch
+Patch1:         terminator-1.91-python3.patch
+Patch2:         terminator-1.91-py3_dnd.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
-Requires:       python-cairo
-Requires:       python-gobject
-Requires:       python-gobject-Gdk
-Requires:       python-psutil
+Requires:       python3-cairo
+Requires:       python3-configobj
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
+Requires:       python3-psutil
 Requires(post): hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
 Recommends:     %{name}-lang
@@ -54,16 +57,18 @@ arrangements of terminals for different tasks.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p0
+%patch1 -p1
+%patch2 -p0
 
 # remove pointless shebangs
 sed -i '/#! \?\/usr.*/d' terminatorlib/*.py
 
 %build
-python setup.py build
+python3 setup.py build
 
 %install
-python setup.py install --root=%{buildroot} --prefix=%{_prefix}
+python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
 
 rm -f %{buildroot}/%{_datadir}/icons/hicolor/icon-theme.cache
 rm -f %{buildroot}/%{_datadir}/applications/%{name}.desktop
@@ -106,7 +111,7 @@ desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data
 %{_bindir}/remotinator
 %{_mandir}/man1/%{name}.*
 %{_mandir}/man5/%{name}_config.*
-%{python_sitelib}/*
+%{python3_sitelib}/*
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop

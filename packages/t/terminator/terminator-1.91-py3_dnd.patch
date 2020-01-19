@@ -1,0 +1,72 @@
+=== modified file 'terminatorlib/terminal.py'
+--- terminatorlib/terminal.py	2019-10-21 21:36:16 +0000
++++ terminatorlib/terminal.py	2019-11-15 19:47:49 +0000
+@@ -1093,30 +1093,35 @@
+         dbg('drag data received of type: %s' % (selection_data.get_data_type()))
+         if Gtk.targets_include_text(drag_context.list_targets()) or \
+            Gtk.targets_include_uri(drag_context.list_targets()):
+-            # copy text with no modification yet to destination
+-            txt = selection_data.get_data()
+ 
+-            # https://bugs.launchpad.net/terminator/+bug/1518705
+             if info == self.TARGET_TYPE_MOZ:
+-                 txt = txt.decode('utf-16').encode('utf-8')
+-                 txt = txt.split('\n')[0]
+-
+-            txt_lines = txt.split( "\r\n" )
+-            if txt_lines[-1] == '':
+-                for line in txt_lines[:-1]:
+-                    if line[0:7] != 'file://':
+-                        txt = txt.replace('\r\n','\n')
+-                        break
+-                else:
+-                    # It is a list of crlf terminated file:// URL. let's
+-                    # iterate over all elements except the last one.
+-                    str=''
+-                    for fname in txt_lines[:-1]:
+-                        dbg('drag data fname: %s' % fname)
+-                        fname = "'%s'" % urllib.parse.unquote(fname[7:].replace("'",
+-                                                                    '\'\\\'\''))
+-                        str += fname + ' '
+-                    txt=str
++                # TYPE_MOZ is two lines encoded in UTF-16: the URL and the visible text. Ignore the latter.
++                # https://bugs.launchpad.net/terminator/+bug/1518705
++                txt = selection_data.get_data().decode('utf-16')
++                txt = txt.split('\n')[0]
++            else:
++                # Other types are encoded in UTF-8.
++                txt = selection_data.get_data().decode()
++
++                # File managers send CRLF terminated list of filenames.
++                # Convert them to space separated, quoted for shell command line.
++                txt_lines = txt.split( "\r\n" )
++                if txt_lines[-1] == '':
++                    for line in txt_lines[:-1]:
++                        if line[0:7] != 'file://':
++                            txt = txt.replace('\r\n', '\n')
++                            break
++                    else:
++                        # It is a list of crlf terminated file:// URL. Let's
++                        # iterate over all elements except the last one.
++                        str = ''
++                        for fname in txt_lines[:-1]:
++                            dbg('drag data fname: %s' % fname)
++                            fname = "'%s'" % urllib.parse.unquote(fname[7:].replace("'",
++                                                                                    '\'\\\'\''))
++                            str += fname + ' '
++                        txt = str
++
+             for term in self.terminator.get_target_terms(self):
+                 term.feed(txt)
+             return
+@@ -1513,7 +1518,8 @@
+ 
+     def feed(self, text):
+         """Feed the supplied text to VTE"""
+-        self.vte.feed_child(text, len(text))
++        # See https://gitlab.gnome.org/GNOME/vte/issues/201.
++        self.vte.feed_child_binary(text.encode(self.vte.get_encoding()))
+ 
+     def zoom_in(self):
+         """Increase the font size"""
+
