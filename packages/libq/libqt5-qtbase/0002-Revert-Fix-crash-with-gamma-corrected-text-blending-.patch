@@ -1,0 +1,60 @@
+From a61813ac9cd94a6e7c79ccfacca9e830f905e6dc Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 25 Dec 2019 18:54:52 +0100
+Subject: [PATCH 2/3] Revert "Fix crash with gamma-corrected text blending
+ disabled"
+
+This reverts commit 6db83e2584a30b1339adba18279fbfd527a10ce7.
+---
+ src/gui/painting/qdrawhelper.cpp | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
+
+diff --git a/src/gui/painting/qdrawhelper.cpp b/src/gui/painting/qdrawhelper.cpp
+index e5f752b94e..3d06a27d8e 100644
+--- a/src/gui/painting/qdrawhelper.cpp
++++ b/src/gui/painting/qdrawhelper.cpp
+@@ -5670,8 +5670,7 @@ static inline void alphamapblend_argb32(quint32 *dst, int coverage, QRgba64 srcL
+         QRgb s = *dst;
+         blend_pixel(s, src);
+         // Then gamma-corrected blend with glyph shape
+-        QRgba64 s64 = colorProfile ? colorProfile->toLinear64(s) : QRgba64::fromArgb32(s);
+-        grayBlendPixel(dst, coverage, s64, colorProfile);
++        grayBlendPixel(dst, coverage, colorProfile->toLinear64(s), colorProfile);
+     }
+ }
+ 
+@@ -5712,9 +5711,7 @@ static inline void alphamapblend_generic(int coverage, QRgba64 *dest, int x, con
+         QRgba64 s = dest[x];
+         blend_pixel(s, src);
+         // Then gamma-corrected blend with glyph shape
+-        if (colorProfile)
+-            s = colorProfile->toLinear(s);
+-        grayBlendPixel(dest[x], coverage, s, colorProfile);
++        grayBlendPixel(dest[x], coverage, colorProfile->toLinear(s), colorProfile);
+     }
+ }
+ 
+@@ -6056,8 +6053,7 @@ static inline void alphargbblend_argb32(quint32 *dst, uint coverage, const QRgba
+         QRgb s = *dst;
+         blend_pixel(s, src);
+         // Then gamma-corrected blend with glyph shape
+-        QRgba64 s64 = colorProfile ? colorProfile->toLinear64(s) : QRgba64::fromArgb32(s);
+-        rgbBlendPixel(dst, coverage, s64, colorProfile);
++        rgbBlendPixel(dst, coverage, colorProfile->toLinear64(s), colorProfile);
+     }
+ }
+ 
+@@ -6088,9 +6084,7 @@ static inline void alphargbblend_generic(uint coverage, QRgba64 *dest, int x, co
+         QRgba64 s = dest[x];
+         blend_pixel(s, src);
+         // Then gamma-corrected blend with glyph shape
+-        if (colorProfile)
+-            s = colorProfile->toLinear(s);
+-        rgbBlendPixel(dest[x], coverage, s, colorProfile);
++        rgbBlendPixel(dest[x], coverage, colorProfile->toLinear(s), colorProfile);
+     }
+ }
+ 
+-- 
+2.23.0
+

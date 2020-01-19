@@ -2102,4 +2102,41 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   after dragging an icon on the desktop in plasma (QTBUG-66103, boo#1080044).</comment>
     <requestid>731898</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>0106bedeb32c2e0bc6e211fdffbd451c</srcmd5>
+    <version>5.14.0</version>
+    <time>1579463721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update license tag
+
+- Add patches to avoid regression with rendering of translucent text
+  (QTBUG-80982):
+  * 0001-Revert-Fix-text-rendering-regression-on-semi-transpa.patch
+  * 0002-Revert-Fix-crash-with-gamma-corrected-text-blending-.patch
+  * 0003-Revert-Handle-transparent-pen-color-in-fast-text-pat.patch
+
+- Update to 5.14.0:
+  * New bugfix release
+  * For the changes between 5.13.2 and 5.14.0 please see:
+    https://code.qt.io/cgit/qt/qtbase.git/tree/dist/changes-5.14.0?h=v5.14.0
+  * For the changes between 5.13.1 and 5.13.2 please see:
+    https://code.qt.io/cgit/qt/qtbase.git/tree/dist/changes-5.13.2?h=v5.14.0
+
+- Update to 5.14.0-rc:
+  * New bugfix release
+  * No changelog available
+  * For more details please see:
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+- Drop patch, Qt behaviour changed now and applications can deal with
+  it meanwhile:
+  * 0001-Revert-QWidgetWindow-Immediately-forward-close-event.patch
+
+- Update to 5.14.0-beta3:
+  * New bugfix release
+  * No changelog available
+- Drop libqt5-Fix-Gujarati-font.patch, didn't apply anymore:
+  * Was probably fixed upstream a loooong time ago (QTBUG-44568)</comment>
+    <requestid>759684</requestid>
+  </revision>
 </revisionlist>

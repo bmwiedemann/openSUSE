@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Dec 27 13:07:32 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update license tag
+
+-------------------------------------------------------------------
+Thu Dec 26 00:05:29 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to avoid regression with rendering of translucent text
+  (QTBUG-80982):
+  * 0001-Revert-Fix-text-rendering-regression-on-semi-transpa.patch
+  * 0002-Revert-Fix-crash-with-gamma-corrected-text-blending-.patch
+  * 0003-Revert-Handle-transparent-pen-color-in-fast-text-pat.patch
+
+-------------------------------------------------------------------
+Thu Dec 12 12:40:51 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0:
+  * New bugfix release
+  * For the changes between 5.13.2 and 5.14.0 please see:
+    https://code.qt.io/cgit/qt/qtbase.git/tree/dist/changes-5.14.0?h=v5.14.0
+  * For the changes between 5.13.1 and 5.13.2 please see:
+    https://code.qt.io/cgit/qt/qtbase.git/tree/dist/changes-5.13.2?h=v5.14.0
+
+-------------------------------------------------------------------
+Wed Dec  4 14:37:31 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-rc:
+  * New bugfix release
+  * No changelog available
+  * For more details please see:
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+- Drop patch, Qt behaviour changed now and applications can deal with
+  it meanwhile:
+  * 0001-Revert-QWidgetWindow-Immediately-forward-close-event.patch
+
+-------------------------------------------------------------------
+Tue Nov 12 13:00:31 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta3:
+  * New bugfix release
+  * No changelog available
+- Drop libqt5-Fix-Gujarati-font.patch, didn't apply anymore:
+  * Was probably fixed upstream a loooong time ago (QTBUG-44568)
+
+-------------------------------------------------------------------
+Thu Oct 24 13:22:25 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta2:
+  * New bugfix release
+  * No changelog available
+- Refresh patches:
+  * 0001-Revert-Always-escape-the-table-names-when-creating-t.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 12:34:20 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta1:
+  * New bugfix release
+  * No changelog available
+- Drop patches, now upstream:
+  * 0001-tslib-plugin-remove-debug-print-on-old-tslib-version.patch
+  * 0001-QWidget-setFocusProxy-adjust-focus-widget-properly.patch
+
+-------------------------------------------------------------------
+Wed Oct  2 19:53:24 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable relocatability, it breaks /usr/lib/sse2 (QTBUG-78948)
+
+-------------------------------------------------------------------
+Mon Sep 30 13:29:55 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-alpha:
+  * New feature release
+  * No changelog available
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+- Refresh patches:
+  * 0001-Add-remote-print-queue-support.patch
+- Drop patches, don't apply anymore after upstream refactoring and the
+  main bug for them seems fixed:
+  * 0001-Sanitize-QXcbScreen-s-pixelDensity-values.patch
+  * 0002-xcb-Use-the-screen-s-physical-DPI-as-logical-DPI-unl.patch
+- Drop patches, now upstream:
+  * 0001-Fix-notification-of-QDockWidget-when-it-gets-undocke.patch
+  * 0001-Fix-CMake-config-files-for-libdir-different-from-lib.patch
+  * 0001-Fix-qfloat16-methods-definition-without-declaration-.patch
+- Enable zstd support again, issues got fixed upstream meanwhile
+- Add patch to fix build against older tslib:
+  * 0001-tslib-plugin-remove-debug-print-on-old-tslib-version.patch
+
+-------------------------------------------------------------------
 Thu Sep 19 08:08:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix focus in some cases (QTBUG-77364):

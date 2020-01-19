@@ -18,10 +18,10 @@ a Change-Id: Ib70715d331e8f380a3c9039011bb8521986652aa
  src/plugins/printsupport/cups/qppdprintdevice.cpp  | 33 +++++++-
  4 files changed, 160 insertions(+), 11 deletions(-)
 
-Index: qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintengine.cpp
+Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintengine.cpp
 ===================================================================
---- qtbase-everywhere-src-5.12.1.orig/src/plugins/printsupport/cups/qcupsprintengine.cpp
-+++ qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintengine.cpp
+--- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qcupsprintengine.cpp
++++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintengine.cpp
 @@ -48,6 +48,7 @@
  #include <qbuffer.h>
  #include "private/qcups_p.h" // Only needed for PPK_CupsOptions
@@ -72,10 +72,10 @@ Index: qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintengi
  
          QFile::remove(tempFile);
      }
-Index: qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport.cpp
 ===================================================================
---- qtbase-everywhere-src-5.12.1.orig/src/plugins/printsupport/cups/qcupsprintersupport.cpp
-+++ qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+--- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qcupsprintersupport.cpp
++++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport.cpp
 @@ -61,6 +61,35 @@
  # include <cups/language.h>
  #endif
@@ -206,10 +206,10 @@ Index: qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintersu
 +
 +
  QT_END_NAMESPACE
-Index: qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintersupport_p.h
+Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport_p.h
 ===================================================================
---- qtbase-everywhere-src-5.12.1.orig/src/plugins/printsupport/cups/qcupsprintersupport_p.h
-+++ qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintersupport_p.h
+--- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qcupsprintersupport_p.h
++++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qcupsprintersupport_p.h
 @@ -56,6 +56,8 @@
  
  #include <QtCore/qstringlist.h>
@@ -234,19 +234,11 @@ Index: qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qcupsprintersu
  };
  
  QT_END_NAMESPACE
-Index: qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qppdprintdevice.cpp
+Index: qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qppdprintdevice.cpp
 ===================================================================
---- qtbase-everywhere-src-5.12.1.orig/src/plugins/printsupport/cups/qppdprintdevice.cpp
-+++ qtbase-everywhere-src-5.12.1/src/plugins/printsupport/cups/qppdprintdevice.cpp
-@@ -41,6 +41,7 @@
- 
- #include "qcupsprintersupport_p.h"
- 
-+#include "qcupsprintersupport_p.h"
- #include <QtCore/QMimeDatabase>
- #include <qdebug.h>
- 
-@@ -65,10 +66,36 @@ QPpdPrintDevice::QPpdPrintDevice(const Q
+--- qtbase-everywhere-src-5.14.0-alpha.orig/src/plugins/printsupport/cups/qppdprintdevice.cpp
++++ qtbase-everywhere-src-5.14.0-alpha/src/plugins/printsupport/cups/qppdprintdevice.cpp
+@@ -65,10 +65,36 @@ QPpdPrintDevice::QPpdPrintDevice(const Q
          if (parts.size() > 1)
              m_cupsInstance = parts.at(1).toUtf8();
  

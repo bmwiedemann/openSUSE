@@ -36,25 +36,23 @@
 %endif
 
 Name:           libqt5-qtbase
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        C++ Program Library, Core Components
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtbase-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtbase-everywhere-src-5.14.0
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 # to get mtime of file:
 Source1:        libqt5-qtbase.changes
 Source2:        macros.qt5
 Source3:        baselibs.conf
 Source99:       libqt5-qtbase-rpmlintrc
 # patches 0-1000 are openSUSE and/or non-upstream(able) patches #
-# PATCH-FIX-SUSE libqt5-Fix-Gujarati-font.patch bnc#878292 fix broken Gujarati font rendering
-Patch3:         libqt5-Fix-Gujarati-font.patch
 # PATCH-FIX-OPENSUSE disable-rc4-ciphers-bnc865241.diff bnc#865241-- Exclude rc4 ciphers from being used by default
 Patch6:         disable-rc4-ciphers-bnc865241.diff
 Patch8:         tell-the-truth-about-private-api.patch
@@ -63,28 +61,20 @@ Patch10:        libqt5-prioritise-gtk2-platformtheme.patch
 # PATCH-FEATURE-OPENSUSE 0001-Add-remote-print-queue-support.patch fate#322052 -- Automatically recognize and allow printing to remote cups servers
 Patch12:        0001-Add-remote-print-queue-support.patch
 # PATCH-FIX-OPENSUSE
-Patch13:        0001-Revert-QWidgetWindow-Immediately-forward-close-event.patch
-# PATCH-FIX-OPENSUSE
-Patch17:        0001-Sanitize-QXcbScreen-s-pixelDensity-values.patch
-Patch18:        0002-xcb-Use-the-screen-s-physical-DPI-as-logical-DPI-unl.patch
-# PATCH-FIX-UPSTREAM
-Patch20:        0001-Fix-qfloat16-methods-definition-without-declaration-.patch
-# PATCH-FIX-OPENSUSE
 Patch21:        0001-Revert-Blacklist-nouveau-and-llvmpipe-for-multithrea.patch
 Patch22:        0002-Revert-qtlite-Fix-build-libs-with-no-feature-regular.patch
 Patch23:        0003-Revert-White-list-more-recent-Mesa-version-for-multi.patch
 Patch24:        fix-fixqt4headers.patch
 # Revert to restore compatibility with akonadi and possibly other applications
 Patch30:        0001-Revert-Always-escape-the-table-names-when-creating-t.patch
-# patches 1000-2000 and above from upstream 5.13 branch #
-# patches 2000-3000 and above from upstream 5.14/dev branch #
-Patch2000:      0001-Fix-notification-of-QDockWidget-when-it-gets-undocke.patch
+# Reverts to avoid text rendering bug (QTBUG-80982)
+Patch40:      0001-Revert-Fix-text-rendering-regression-on-semi-transpa.patch
+Patch41:      0002-Revert-Fix-crash-with-gamma-corrected-text-blending-.patch
+Patch42:      0003-Revert-Handle-transparent-pen-color-in-fast-text-pat.patch
+# patches 1000-2000 and above from upstream 5.14 branch #
+# patches 2000-3000 and above from upstream 5.15/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
-# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/273050
-Patch2002:      0001-Fix-CMake-config-files-for-libdir-different-from-lib.patch
-# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/273365
-Patch2003:      0001-QWidget-setFocusProxy-adjust-focus-widget-properly.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
@@ -124,6 +114,8 @@ BuildRequires:  vulkan-devel
 %endif
 
 BuildRequires:  pkgconfig(pango)
+# Not packaged yet
+#BuildRequires:  pkgconfig(md4c)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xcb-renderutil)
@@ -156,8 +148,7 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.4.1
 BuildRequires:  pkgconfig(xkbcommon-x11) >= 0.4.1
 BuildRequires:  pkgconfig(zlib)
-# Breaks various existing codebases, see QTBUG-76521 
-# BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(libzstd)
 %if %journald
 BuildRequires:  pkgconfig(libsystemd)
 %endif
@@ -848,6 +839,8 @@ sed -i 's|qt_instdate=`date +%Y-%m-%d`|qt_instdate=$CHANGES|g' configure
 # so non-qt5 apps/libs don't get stripped
 sed -i -e 's|^\(QMAKE_STRIP.*=\).*$|\1|g' mkspecs/common/linux.conf
 
+# -no-feature-relocatable is needed to support /usr/lib/sse2 etc., see QTBUG-78948
+
 echo yes | ./configure \
 	-prefix %{_prefix} \
 	-L %{libqt5_libdir} \
@@ -894,13 +887,12 @@ echo yes | ./configure \
 	-system-freetype \
 	-cups \
 	-system-zlib \
-	-no-zstd \
+	-zstd \
 	-no-pch \
 	-glib \
 	-sctp \
 	-system-sqlite \
 	-no-sql-mysql \
-	-no-strip \
 %if %journald
 	-journald \
 %endif
@@ -920,6 +912,7 @@ echo yes | ./configure \
 	-plugin-sql-odbc \
 	-plugin-sql-mysql -I/usr/include/mysql/ \
 	-qpa "xcb;wayland" \
+	-no-feature-relocatable \
 	-v \
 	QMAKE_CFLAGS+="$CFLAGS" \
 	QMAKE_CXXFLAGS+="$CXXFLAGS"
@@ -1037,6 +1030,8 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %{libqt5_bindir}/uic*
 %{_bindir}/qvkgen*
 %{libqt5_bindir}/qvkgen*
+%{_bindir}/tracegen*
+%{libqt5_bindir}/tracegen*
 %{_bindir}/syncqt.pl*
 %{_bindir}/fixqt4headers.pl*
 %{libqt5_bindir}/syncqt.pl*
