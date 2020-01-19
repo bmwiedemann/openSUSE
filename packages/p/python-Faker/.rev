@@ -119,4 +119,19 @@
     <comment></comment>
     <requestid>764065</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a9a6d8e5115a01d4b8022ef3be9e18fd</srcmd5>
+    <version>3.0.1</version>
+    <time>1579464037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Add provider methods zip and tar for generating zip and tar files. Thanks @malefice.
+  * Add en-CA postcode_in_province() method. Thanks @oeuftete.
+  * Update Address and Automotive provider for Russian locale. Thanks @valestel.
+  * Add provider methods for dsv files: csv, tsv, psv and generic dsv. Thanks @malefice.
+  * Remove parenthesis from city name in de_DE address provider. Thanks @jerr0328.
+  * Add NIP generator in pl_PL. Thanks @IlfirinPL.
+  * Fix Faker.random_number intermittent exceptions. Thanks @Jengah.</comment>
+    <requestid>765159</requestid>
+  </revision>
 </revisionlist>

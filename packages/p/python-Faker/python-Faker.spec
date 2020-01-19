@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Faker
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT

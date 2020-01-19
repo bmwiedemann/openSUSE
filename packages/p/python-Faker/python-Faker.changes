@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:00:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.1:
+  * Add provider methods zip and tar for generating zip and tar files. Thanks @malefice.
+  * Add en-CA postcode_in_province() method. Thanks @oeuftete.
+  * Update Address and Automotive provider for Russian locale. Thanks @valestel.
+  * Add provider methods for dsv files: csv, tsv, psv and generic dsv. Thanks @malefice.
+  * Remove parenthesis from city name in de_DE address provider. Thanks @jerr0328.
+  * Add NIP generator in pl_PL. Thanks @IlfirinPL.
+  * Fix Faker.random_number intermittent exceptions. Thanks @Jengah.
+
+-------------------------------------------------------------------
 Mon Jan 13 15:18:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.0.0
