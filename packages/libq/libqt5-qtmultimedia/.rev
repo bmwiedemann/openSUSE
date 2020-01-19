@@ -364,4 +364,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   - remove defattr, use license</comment>
     <requestid>730215</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9183151350b08511a0e2e286afd9d137</srcmd5>
+    <version>5.14.0</version>
+    <time>1579463697</time>
+    <user>dimstar_suse</user>
+    <comment>5.14.0</comment>
+    <requestid>757474</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtmultimedia
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,45 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
 %define libname libQt5Multimedia5
-
-%ifarch %arm aarch64
+%ifarch %{arm} aarch64
 %define gles 1
 %else
 %define gles 0
 %endif
-
+%define base_name libqt5
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtmultimedia-everywhere-src-5.14.0
 Name:           libqt5-qtmultimedia
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Multimedia Library
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
-%define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtmultimedia-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
+BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
+BuildRequires:  libQt5Widgets-private-headers-devel >= %{version}
+BuildRequires:  libpulse-devel
+BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libwmf-devel
+%if %{qt5_snapshot}
+#to create the forwarding headers
+BuildRequires:  perl
+%endif
+BuildRequires:  pkgconfig
+BuildRequires:  xz
+BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
@@ -47,23 +58,9 @@ BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
-BuildRequires:  libQt5Widgets-private-headers-devel >= %{version}
-BuildRequires:  libpulse-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libwmf-devel
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(openal)
 %endif
-%if %qt5_snapshot
-#to create the forwarding headers
-BuildRequires:  perl
-%endif
-BuildRequires:  xz
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Qt Multimedia is a module that provides a set of QML types and C++
@@ -75,11 +72,11 @@ management.
 %prep
 %setup -q -n %{tar_version}
 
-%package -n %libname
+%package -n %{libname}
 Summary:        Qt 5 Multimedia Library
 Group:          Development/Libraries/X11
 
-%description -n %libname
+%description -n %{libname}
 Qt Multimedia is a module that provides a set of QML types and C++
 classes to handle multimedia content. It also provides APIs to access
 the camera and radio functionality. The included Qt Audio Engine
@@ -89,10 +86,10 @@ management.
 %package devel
 Summary:        Development files for the Qt5 Multimedia library
 Group:          Development/Libraries/X11
-Requires:       %libname = %{version}
-Requires:       libqt5-qtdeclarative-devel >= %{version}
+Requires:       %{libname} = %{version}
 # The mkspec adds -lpulse-mainloop-glib -lpulse -lglib-2.0
 Requires:       libpulse-devel
+Requires:       libqt5-qtdeclarative-devel >= %{version}
 Provides:       libQt5Multimedia-devel = %{version}
 Obsoletes:      libQt5Multimedia-devel < %{version}
 
@@ -102,12 +99,12 @@ You need this package if you want to compile programs with qtmultimedia.
 %package private-headers-devel
 Summary:        Non-ABI stable experimental API for the Qt5 Multimedia library
 Group:          Development/Libraries/C and C++
-BuildArch:      noarch
 Requires:       %{name}-devel = %{version}
 Requires:       libQt5Gui-private-headers-devel >= %{version}
 Requires:       libQt5Widgets-private-headers-devel >= %{version}
 Provides:       libQt5Multimedia-private-headers-devel = %{version}
 Obsoletes:      libQt5Multimedia-private-headers-devel < %{version}
+BuildArch:      noarch
 
 %description private-headers-devel
 This package provides private headers of libqt5-qtmultimedia that are normally
@@ -118,17 +115,17 @@ the exact Qt version.
 %package examples
 Summary:        Qt5 multimedia examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-devel
 
 %description examples
 Examples for the libqt5-qtmultimedia module.
 
-%post -n %libname -p /sbin/ldconfig
-
-%postun -n %libname -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %build
-%if %qt5_snapshot
+%if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
@@ -144,13 +141,13 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %fdupes -s %{buildroot}/%{_libqt5_includedir}
 
-%files -n %libname
+%files -n %{libname}
 %license LICENSE.*
 %{_libqt5_libdir}/libQt5*.so.*
 %{_libqt5_plugindir}/mediaservice
 %{_libqt5_plugindir}/playlistformats
 %{_libqt5_plugindir}/audio
-%if %gles
+%if %{gles}
 %{_libqt5_plugindir}/video
 %endif
 %{_libqt5_archdatadir}/qml/Qt*
