@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 12:11:54 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.3+10+suse.86684b9:
+  * libmultipath: fix compilation with -fno-common
+  (boo#1160403)
+
+-------------------------------------------------------------------
 Fri Oct 04 10:22:41 UTC 2019 - mwilck@suse.com
 
 - Update to version 0.8.3+9+suse.f6f2a52

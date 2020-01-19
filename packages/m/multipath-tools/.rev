@@ -1257,4 +1257,14 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   * libmultipath: EMC PowerMax NVMe device config (forwarded request 734962 from mwilck)</comment>
     <requestid>734963</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>5fcb7558f5329094c89df551780f7b9b</srcmd5>
+    <version>0.8.3+10+suse.86684b9</version>
+    <time>1579463601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.3+10+suse.86684b9:
+  * libmultipath: fix compilation with -fno-common
+  (boo#1160403)</comment>
+    <requestid>764967</requestid>
+  </revision>
 </revisionlist>
