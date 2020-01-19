@@ -1540,4 +1540,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>736318</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>6324be8fb05f88dab360f3198b2c8679</srcmd5>
+    <version>0.83.0</version>
+    <time>1579463727</time>
+    <user>dimstar_suse</user>
+    <comment>Lets go with last release for now</comment>
+    <requestid>764588</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package poppler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 %endif
 
 Name:           poppler%{?psuffix}
-Version:        0.81.0
+Version:        0.83.0
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
-%define poppler_sover 91
+%define poppler_sover 93
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -37,12 +37,9 @@ Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://poppler.freedesktop.org/
+URL:            https://poppler.freedesktop.org/
 Source:         http://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM -- Avoid dependency on boost_headers from splash headers
-Patch0:         0001-Include-SplashMath.h-only-where-needed.patch
-Patch1:         0002-Move-the-non-trivial-part-of-the-clip-test-to-the-im.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -170,8 +167,6 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %setup -q -n poppler-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 # Leap 15.0 doesn't know %%cmake_build

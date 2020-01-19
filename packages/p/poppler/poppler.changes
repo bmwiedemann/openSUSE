@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 28 13:47:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.83.0:
+  + core:
+    - Improve when a file is recognized as Linearized.
+    - Improve const-ness of the code.
+    - Make code a bit more readable/maintanable.
+    - Fix uninitialized memory uses in broken files.
+  + utils:
+    - pdffonts: Make code a bit more readable/maintanable.
+    - pdftohtml: Make code a bit more readable/maintanable.
+  + qt5:
+    - Remove a bunch of unused internal functions.
+    - trUtf8 -> tr (less warnings).
+  + build system: make-glib-api-docs: switch to python3.
+- Bump poppler_sover following upstream changes.
+
+-------------------------------------------------------------------
+Wed Oct 30 10:03:08 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.82.0:
+  + core:
+    - Fix not being able to open some files. Issue #832
+    - Fix crashes in malformed files
+    - Fix memory leak on broken files
+    - Minor performance improvements
+    - Minor code improvements
+  + glib:
+    - Add poppler_document_new_from_bytes
+    - PopplerAttachment: Silence deprecation warnings for ctime/mtime
+  + build system:
+    - pdf-inspector: Support builddir != srcdir
+    - Install Cairo* headers if Cairo has been found
+- Bump poppler_sover following upstream changes.
+- Drop patches already included by upstream:
+  + 0001-Include-SplashMath.h-only-where-needed.patch
+  + 0002-Move-the-non-trivial-part-of-the-clip-test-to-the-im.patch
+
+-------------------------------------------------------------------
 Tue Oct  8 17:12:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Avoid unconditional dependency on boost_headers when using the
