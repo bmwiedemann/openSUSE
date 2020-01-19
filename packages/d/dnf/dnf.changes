@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 19 15:28:20 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.2.18
+  + [doc] Remove note about user-agent whitelist
+  + Do a substitution of variables in repo_id (rh#1748841)
+  + Respect order of config files in aliases.d (rh#1680489)
+  + Unify downgrade exit codes with upgrade (rh#1759847)
+  + Improve help for 'dnf module' command (rh#1758447)
+  + Add shell restriction for local packages (rh#1773483)
+  + Fix detection of the latest module (rh#1781769)
+  + Document the retries config option only works for packages (rh#1783041)
+  + Sort packages in transaction output by nevra (rh#1773436)
+  + Honor repo priority with check-update (rh#1769466)
+  + Strip '\' from aliases when processing (rh#1680482)
+  + Print the whole alias definition in case of infinite recursion (rh#1680488)
+  + Add support of commandline packages by repoquery (rh#1784148)
+  + Running with tsflags=test doesn't update log files
+  + Restore functionality of remove --oldinstallonly
+  + Allow disabling individual aliases config files (rh#1680566)
+
+-------------------------------------------------------------------
 Sun Dec  1 17:16:02 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.2.17

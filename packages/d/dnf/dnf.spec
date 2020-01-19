@@ -2,7 +2,7 @@
 # spec file for package dnf
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 
-%global hawkey_version 0.39.1
+%global hawkey_version 0.43.1
 %global libcomps_version 0.1.8
 %global rpm_version 4.14.0
 %global min_plugins_core 4.0.12
@@ -48,7 +48,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.2.17
+Version:        4.2.18
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
