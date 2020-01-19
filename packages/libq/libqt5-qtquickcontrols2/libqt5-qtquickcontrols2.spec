@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquickcontrols2
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
-
+%define base_name libqt5
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtquickcontrols2-everywhere-src-5.14.0
 Name:           libqt5-qtquickcontrols2
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Quick Controls Addon
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
-%define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtquickcontrols2-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtbase-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
-BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
-BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
-%if %qt5_snapshot
+%if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
+BuildRequires:  pkgconfig
 BuildRequires:  xz
-%requires_ge libQt5Widgets5
-%requires_ge libQtQuick5
+BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
+BuildRequires:  pkgconfig(Qt5Quick) >= %{version}
+%requires_ge    libQt5Widgets5
+%requires_ge    libQtQuick5
 
 %description
 The Qt Quick Controls2 module provides a set of controls that
@@ -77,7 +77,7 @@ You need this package if you want to compile programs with qtquickcontrols2.
 %package -n libQt5QuickTemplates2-devel
 Summary:        Qt Development Kit
 Group:          Development/Libraries/X11
-Requires:       libQt5QuickTemplates2-5 = %version
+Requires:       libQt5QuickTemplates2-5 = %{version}
 
 %description -n libQt5QuickTemplates2-devel
 You need this package if you want to compile programs with qtquickcontrols2.
@@ -85,8 +85,8 @@ You need this package if you want to compile programs with qtquickcontrols2.
 %package private-headers-devel
 Summary:        Headers for the unstable API of the Qt5 QuickControls2 module
 Group:          Development/Libraries/X11
-Requires:       libQt5QuickControls2-devel = %version
-Requires:       libQt5QuickTemplates2-devel = %version
+Requires:       libQt5QuickControls2-devel = %{version}
+Requires:       libQt5QuickTemplates2-devel = %{version}
 
 %description private-headers-devel
 You need this package if you want to compile programs against the unstable API
@@ -95,6 +95,7 @@ of the Qt5 QuickControls 2 module.
 %package examples
 Summary:        Qt5 quickcontrols2 examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 
 %description examples
 Examples for libqt5-qtquickcontrols2 module.
@@ -103,7 +104,7 @@ Examples for libqt5-qtquickcontrols2 module.
 %autosetup -n %{tar_version}
 
 %build
-%if %qt5_snapshot
+%if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
@@ -121,7 +122,6 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %post -n libQt5QuickControls2-5 -p /sbin/ldconfig
 %postun -n libQt5QuickControls2-5 -p /sbin/ldconfig
-
 %post -n libQt5QuickTemplates2-5 -p /sbin/ldconfig
 %postun -n libQt5QuickTemplates2-5 -p /sbin/ldconfig
 
