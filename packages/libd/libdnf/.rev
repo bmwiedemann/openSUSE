@@ -226,4 +226,23 @@
   * Add patch: libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch</comment>
     <requestid>752749</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d5b527fa2ad1fab2b0428ae6966a0c60</srcmd5>
+    <version>0.43.1</version>
+    <time>1579463866</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.43.1
+  + Allow excluding packages with &quot;excludepkgs&quot; and globs
+  + Add two new query filters: obsoletes_by_priority, upgrades_by_priority
+  + [context] Use installonly_limit from global config (rh#1256108)
+  + [context] Add API to get/set &quot;install_weak_deps&quot;
+  + [context] Add wildcard support for repo_id in dnf_context_repo_enable/disable (rh#1781420)
+  + [context] Adds support for includepkgs in repository configuration.
+  + [context] Adds support for excludepkgs, exclude, includepkgs, and disable_excludes in main configuration.
+  + [context] Added function dnf_transaction_set_dont_solve_goal
+  + [context] Added functions dnf_context_get/set_config_file_path
+  + [context] Respect &quot;plugins&quot; global conf value
+  + [context] Add API to disable/enable plugins</comment>
+    <requestid>765591</requestid>
+  </revision>
 </revisionlist>
