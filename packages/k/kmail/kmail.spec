@@ -35,7 +35,6 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  gettext-devel
 BuildRequires:  libgpgmepp-devel
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
