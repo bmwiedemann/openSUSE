@@ -1,7 +1,7 @@
 #
 # spec file for package ulfius
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %define sover 2_6
 Name:           ulfius
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(jansson) >= 2.4
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmicrohttpd)
-BuildRequires:  pkgconfig(liborcania)
+BuildRequires:  pkgconfig(liborcania) >= 2.1.0
 BuildRequires:  pkgconfig(libyder) >= 1.4.8
 
 %description

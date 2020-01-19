@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 21 16:04:31 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.5
+  * Allow `NULL` values on `struct _u_map`
+  * Add function ulfius_send_smtp_rich_email to send e-mails
+    with a specified content-type
+  * Add follow_redirect in struct _u_request
+  * Fix certificate check
+
+-------------------------------------------------------------------
 Mon Nov 18 10:56:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Also add "libjansson-devel", "libgnutls-devel" and
