@@ -1283,4 +1283,13 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
     <requestid>762006</requestid>
   </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>101d799fe444d4f893175070ac56dd18</srcmd5>
+    <version>5.17.5</version>
+    <time>1579463725</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix/workaround scaling issues Qt 5.14.0 (kde#415421, boo#1160624):
+  * 0001-Set-QT_AUTO_SCREEN_SCALE_FACTOR-0-for-Qt-5.14-as-wel.patch</comment>
+    <requestid>764278</requestid>
+  </revision>
 </revisionlist>

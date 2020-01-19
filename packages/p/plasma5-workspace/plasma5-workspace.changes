@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 12:10:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix/workaround scaling issues Qt 5.14.0 (kde#415421, boo#1160624):
+  * 0001-Set-QT_AUTO_SCREEN_SCALE_FACTOR-0-for-Qt-5.14-as-wel.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:37 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5

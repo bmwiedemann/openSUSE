@@ -50,6 +50,7 @@ Patch504:       0001-Add-suffix-to-the-wayland-session-s-name.patch
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
 # PATCH-FIX-OPENSUSE
 Patch507:       lazy-sddm-theme.patch
+Patch508:       0001-Set-QT_AUTO_SCREEN_SCALE_FACTOR-0-for-Qt-5.14-as-wel.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

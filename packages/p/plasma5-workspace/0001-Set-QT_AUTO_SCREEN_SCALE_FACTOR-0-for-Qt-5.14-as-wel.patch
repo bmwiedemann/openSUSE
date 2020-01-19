@@ -1,0 +1,31 @@
+From 73ffadbeda0e27689c995aa1576e1f773a329cc8 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 11 Jan 2020 17:19:50 +0100
+Subject: [PATCH] Set QT_AUTO_SCREEN_SCALE_FACTOR=0 for Qt >= 5.14 as well
+
+It behaves differently than expected, so this is still needed.
+
+https://bugs.kde.org/show_bug.cgi?id=415421
+---
+ startkde/startplasma.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/startkde/startplasma.cpp b/startkde/startplasma.cpp
+index ffb67ffb2..5cc9ea1b3 100644
+--- a/startkde/startplasma.cpp
++++ b/startkde/startplasma.cpp
+@@ -218,11 +218,9 @@ void runEnvironmentScripts()
+ 
+ void setupPlasmaEnvironment()
+ {
+-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+     //Manually disable auto scaling because we are scaling above
+     //otherwise apps that manually opt in for high DPI get auto scaled by the developer AND manually scaled by us
+     qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "0");
+-#endif
+ 
+     qputenv("KDE_FULL_SESSION", "true");
+     qputenv("KDE_SESSION_VERSION", "5");
+-- 
+2.23.0
+
