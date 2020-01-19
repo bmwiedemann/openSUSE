@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun Dec 22 22:52:51 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove unneeded parentheses in License tag
+
+-------------------------------------------------------------------
+Mon Dec 16 09:42:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the license tags.
+
+-------------------------------------------------------------------
+Thu Dec 12 12:55:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0:
+  * New bugfix release
+  * For the changes between 5.13.2 and 5.14.0 please see:
+    https://code.qt.io/cgit/qt/qtwayland.git/tree/dist/changes-5.14.0?h=v5.14.0
+  * For the changes between 5.13.1 and 5.13.2 please see:
+    https://code.qt.io/cgit/qt/qtwayland.git/tree/dist/changes-5.13.2?h=v5.14.0
+
+-------------------------------------------------------------------
+Wed Dec  4 14:38:13 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-rc:
+  * New bugfix release
+  * No changelog available
+  * For more details please see:
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+- Add patch to address performance regression (kde#412924):
+  * 0001-Avoid-animating-single-frame-cursors.patch
+
+-------------------------------------------------------------------
+Tue Nov 12 13:03:32 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Oct 24 13:23:10 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct 15 12:34:55 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Sep 30 13:30:40 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-alpha:
+  * New feature release
+  * No changelog available
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+- Drop patch, cause of the regression was reverted in qtbase:
+  * 0003-Client-Don-t-send-fake-SurfaceCreated-Destroyed-even.patch
+- Drop patch, now upstream:
+  * 0004-Client-Make-handleUpdate-aware-of-exposure-changes.patch
+- Drop patch, it's (hopefully) no longer necessary:
+  * workaround-null-object.patch
+- Add patch to fix build:
+  * fix-return-nonvoid-function.patch
+
+-------------------------------------------------------------------
 Fri Sep  6 08:04:41 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.13.1:

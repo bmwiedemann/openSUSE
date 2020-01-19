@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwayland
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
 %define libname libQt5WaylandCompositor5
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtwayland-everywhere-src-5.13.1
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtwayland-everywhere-src-5.14.0
 Name:           libqt5-qtwayland
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Wayland Addon
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+# The wayland compositor files are GPL-3.0-or-later
+License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
-# Those aren't merged upstream yet
-# https://codereview.qt-project.org/c/qt/qtwayland/+/265999
-Patch3:         0003-Client-Don-t-send-fake-SurfaceCreated-Destroyed-even.patch
-# https://codereview.qt-project.org/c/qt/qtwayland/+/265998
-Patch4:         0004-Client-Make-handleUpdate-aware-of-exposure-changes.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Avoid-animating-single-frame-cursors.patch
 # PATCH-FIX-OPENSUSE
-Patch100:       workaround-null-object.patch
+Patch100:       fix-return-nonvoid-function.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
+BuildRequires:  pkgconfig
 BuildRequires:  xz
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
-%endif
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client) >= 1.1.0
 BuildRequires:  pkgconfig(wayland-egl)
@@ -53,6 +48,10 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.1.0
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.2.0
 Conflicts:      qtwayland
+%if 0%{?suse_version} < 1330
+# It does not build with the default compiler (GCC 4.8) on Leap 42.x
+BuildRequires:  gcc7-c++
+%endif
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -75,9 +74,9 @@ Development package to build Qt-based compositors.
 %package private-headers-devel
 Summary:        Qt 5 Wayland Addon Non-ABI stable experimental API files
 Group:          Development/Libraries/C and C++
-BuildArch:      noarch
 Requires:       %{name}-devel = %{version}
 Requires:       libqt5-qtbase-private-headers-devel
+BuildArch:      noarch
 
 %description private-headers-devel
 This package provides private headers of libqt5-qtwayland that are normally
@@ -104,6 +103,7 @@ Qt is a set of libraries for developing applications.
 %package examples
 Summary:        Qt5 wayland examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-devel
 
 %description examples
@@ -113,15 +113,10 @@ Examples for libqt5-qtwayland module.
 %autosetup -p1 -n %{tar_version}
 
 %post  -n libQt5WaylandCompositor5 -p /sbin/ldconfig
-
 %postun -n libQt5WaylandCompositor5 -p /sbin/ldconfig
-
 %post  -n libQt5WaylandClient5 -p /sbin/ldconfig
-
 %postun -n libQt5WaylandClient5 -p /sbin/ldconfig
-
 %post   -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %build
@@ -140,10 +135,10 @@ mkdir .git
     export CXX=g++-7
 %endif
 
-%{make_jobs}
+%make_jobs
 
 %install
-%{qmake5_install}
+%qmake5_install
 
 find %{buildroot}%{_libdir} -type f -name '*la' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} \;
 find %{buildroot}%{_libdir}/pkgconfig -type f -name '*pc' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} \;
@@ -153,25 +148,21 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 fdupes -s %{buildroot}
 
 %files
-%defattr(-,root,root,-)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_bindir}/qtwaylandscanner
 %{_libqt5_plugindir}/
 %{_libqt5_archdatadir}/qml/QtWayland/
 
 %files -n libQt5WaylandCompositor5
-%defattr(-,root,root,-)
-%doc  LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/libQt5WaylandCompositor.so.*
 
 %files -n libQt5WaylandClient5
-%defattr(-,root,root,-)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/libQt5WaylandClient.so.*
 
 %files devel
-%defattr(-,root,root,-)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/*.prl
 %{_libqt5_libdir}/*.so
 %{_libqt5_libdir}/pkgconfig/*
@@ -181,13 +172,11 @@ fdupes -s %{buildroot}
 %{_libqt5_includedir}/Qt*
 
 %files private-headers-devel
-%defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_includedir}/Qt*/%{so_version}
 
 %files examples
-%defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_examplesdir}/
 
 %changelog
