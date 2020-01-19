@@ -19,17 +19,17 @@
 %define qt5_snapshot 0
 
 Name:           libqt5-qtserialbus
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 Serial Bus Addon
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-3.0-only OR GPL-2.0-or-later
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtserialbus-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qtserialbus-everywhere-src-5.14.0
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
@@ -88,6 +88,7 @@ the exact Qt version.
 %package examples
 Summary:        Qt5 Serial Port examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-devel
 
 %description examples
