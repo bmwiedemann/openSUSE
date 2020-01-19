@@ -1,7 +1,7 @@
 #
 # spec file for package cups-filters
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Summary:        OpenPrinting CUPS filters, backends, and cups-browsed
+# See also http://www.linuxfoundation.org/collaborate/workgroups/openprinting/pdf_as_standard_print_job_format
 License:        GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT
 Group:          Hardware/Printing
-# See also http://www.linuxfoundation.org/collaborate/workgroups/openprinting/pdf_as_standard_print_job_format
-Url:            http://www.linuxfoundation.org/collaborate/workgroups/openprinting/cups-filters
+URL:            http://www.linuxfoundation.org/collaborate/workgroups/openprinting/cups-filters
 # For a breakdown of the licensing, see COPYING file
 # GPLv2:   filters: commandto*, imagetoraster, pdftops, rasterto*,
 #                   imagetopdf, pstopdf, texttopdf
@@ -41,6 +41,8 @@ Version:        1.25.0
 Release:        0
 Source0:        http://www.openprinting.org/download/cups-filters/cups-filters-%{version}.tar.xz
 Patch1:         add-cstring-include.patch
+# https://github.com/OpenPrinting/cups-filters/pull/184
+Patch2:         foomatic-rip-fix-compilation-with-fno-common.patch
 # Upstream fix for https://bugs.linuxfoundation.org/show_bug.cgi?id=1421
 # in https://github.com/OpenPrinting/cups-filters/commit/6db3b08d3b20332b1525b8dd1a47950381b8f637
 # dowloaded via

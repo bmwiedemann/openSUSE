@@ -343,4 +343,15 @@
     <comment>Fixes build with qpdf 9.0</comment>
     <requestid>728290</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>85e5059947bcb17fb97925213418cdca</srcmd5>
+    <version>1.25.0</version>
+    <time>1579463597</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix compilation with -fno-common, in preparation for gcc 10
+  (boo#1160387)
+  * Added foomatic-rip-fix-compilation-with-fno-common.patch
+  (merged upstream as commit e6c5025)</comment>
+    <requestid>764966</requestid>
+  </revision>
 </revisionlist>

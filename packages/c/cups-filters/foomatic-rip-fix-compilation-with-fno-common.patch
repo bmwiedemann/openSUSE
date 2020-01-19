@@ -1,0 +1,50 @@
+From e6c5025df307d3e8c79c3cd801780e4570f8607e Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 9 Jan 2020 10:20:46 +0100
+Subject: [PATCH] foomatic-rip: fix compilation with -fno-common
+
+Starting from the upcoming GCC release 10, the default of -fcommon option will
+change to -fno-common. This causes compilation errors in foomatic-rip. These
+seem to be due to missing "external" declarations.
+
+https://gcc.gnu.org/onlinedocs/gcc-9.2.0/gcc/Code-Gen-Options.html#index-fno-common
+---
+ filter/foomatic-rip/foomaticrip.c | 2 +-
+ filter/foomatic-rip/options.c     | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/filter/foomatic-rip/foomaticrip.c b/filter/foomatic-rip/foomaticrip.c
+index 3b27ce93..2c6cdb66 100644
+--- a/filter/foomatic-rip/foomaticrip.c
++++ b/filter/foomatic-rip/foomaticrip.c
+@@ -105,7 +105,7 @@ jobparams_t * get_current_job()
+ }
+ 
+ 
+-dstr_t *postpipe;  /* command into which the output of this filter should be piped */
++dstr_t *postpipe = NULL;  /* command into which the output of this filter should be piped */
+ FILE *postpipe_fh = NULL;
+ 
+ FILE * open_postpipe()
+diff --git a/filter/foomatic-rip/options.c b/filter/foomatic-rip/options.c
+index 481e5c54..3c6b63d4 100644
+--- a/filter/foomatic-rip/options.c
++++ b/filter/foomatic-rip/options.c
+@@ -38,14 +38,14 @@ typedef struct icc_mapping_entry_s {
+ } icc_mapping_entry_t;
+ 
+ /* Values from foomatic keywords in the ppd file */
+-char printer_model [256];
++extern char printer_model [256];
+ char printer_id [256];
+ char driver [128];
+ char cmd [4096];
+ char cmd_pdf [4096];
+-dstr_t *postpipe = NULL;  /* command into which the output of this
++extern dstr_t *postpipe;  /* command into which the output of this
+                              filter should be piped */
+-char cupsfilter [256];
++extern char cupsfilter [256];
+ int jobentitymaxlen = 0;
+ int userentitymaxlen = 0;
+ int hostentitymaxlen = 0;
