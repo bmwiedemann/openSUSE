@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dateutil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,18 +27,21 @@
 %bcond_with test
 %endif
 Name:           python-python-dateutil%{psuffix}
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        A Python Datetime Library
 License:        BSD-3-Clause OR Apache-2.0
 URL:            https://dateutil.readthedocs.org/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-dateutil/python-dateutil-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 18.0.1}
+BuildRequires:  %{python_module setuptools >= 24.3}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module six >= 1.9.0}
+BuildRequires:  %{python_module six >= 1.5}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.9.0
+Requires:       python-six >= 1.5
+Obsoletes:      python-dateutil < %{version}
+Provides:       python-dateutil = %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module freezegun}
@@ -49,10 +52,6 @@ BuildRequires:  timezone
 %ifpython2
 Obsoletes:      %{oldpython}-dateutil < %{version}
 Provides:       %{oldpython}-dateutil = %{version}
-%endif
-%ifpython3
-Obsoletes:      python3-dateutil < %{version}
-Provides:       python3-dateutil = %{version}
 %endif
 %python_subpackages
 
@@ -88,8 +87,7 @@ Orthodox or Julian algorithms.
 %prep
 %setup -q -n python-dateutil-%{version}
 #cleanup and MSdos style end of line separators
-sed -i 's/\r$//' LICENSE NEWS PKG-INFO README.rst
-rm -f setup.cfg
+dos2unix LICENSE NEWS PKG-INFO README.rst
 
 %build
 %python_build
@@ -102,17 +100,16 @@ rm -f setup.cfg
 
 %if %{with test}
 %check
+rm setup.cfg
 export LANG=en_US.UTF-8
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} \
-    py.test-%{$python_bin_suffix} dateutil/test}
+%pytest
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc NEWS PKG-INFO README.rst
 %license LICENSE
-%{python_sitelib}/dateutil/
-%{python_sitelib}/python_dateutil-%{version}-py*.egg-info
+%{python_sitelib}/*
 %endif
 
 %changelog

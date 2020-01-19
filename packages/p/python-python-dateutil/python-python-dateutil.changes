@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jan 16 08:42:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.8.1:
+  * Updated tzdata version to 2019c.
+  * Fixed a race condition in the tzoffset and tzstr "strong"
+    caches on Python 2.7. Reported by @kainjow (gh issue #901).
+  * Parsing errors will now raise ParserError, a subclass of
+    ValueError, which has a nicer string representation. Patch by
+    @gfyoung (gh pr #881).
+  * parser.parse will now raise TypeError when tzinfos is passed a
+    type that cannot be interpreted as a time zone. Prior to this
+    change, it would raise an UnboundLocalError instead. Patch by
+    @jbrockmendel (gh pr #891).
+  * Changed error message raised when when passing a bytes object as
+    the time zone name to gettz in Python 3. Reported and fixed by
+    @labrys () (gh issue #927, gh pr #935).
+  * Changed compatibility logic to support a potential Python 4.0
+    release. Patch by Hugo van Kemenade (gh pr #950).
+  * Updated many modules to use tz.UTC in favor of tz.tzutc()
+    internally, to avoid an unnecessary function call. (gh pr #910).
+  * Fixed issue where dateutil.tz was using a backported version of
+    contextlib.nullcontext even in Python 3.7 due to a malformed
+    import statement. (gh pr #963).
+
+-------------------------------------------------------------------
 Mon Oct 14 14:36:03 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
