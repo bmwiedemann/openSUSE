@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:08:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.1:
+  * change correction finding order (fixes issue #28)
+  * require C++1y (C++14)
+  * observe ICU namespacing (fixes issue #42)
+
+-------------------------------------------------------------------
 Fri Apr 20 12:27:04 UTC 2018 - tchvatal@suse.com
 
 - Add hack for icu 61 and newer -DU_USING_ICU_NAMESPACE=1

@@ -31,4 +31,15 @@
   * use minimal XML parsing to get locale, title, and description for Voikko and other frontends</comment>
     <requestid>599294</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0bf16d5f17fd05cd32d9dd1f5f4c8baa</srcmd5>
+    <version>0.5.1</version>
+    <time>1579463605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * change correction finding order (fixes issue #28)
+  * require C++1y (C++14)
+  * observe ICU namespacing (fixes issue #42)</comment>
+    <requestid>764972</requestid>
+  </revision>
 </revisionlist>

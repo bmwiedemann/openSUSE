@@ -1,7 +1,7 @@
 #
 # spec file for package hfst-ospell
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name hfstospell
-%define libname libhfstospell10
+%define libname libhfstospell11
 Name:           hfst-ospell
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Spell checker library and tool based on HFST
 License:        Apache-2.0
 Group:          Productivity/Text/Spell
-URL:            http://hfst.github.io/
+URL:            https://hfst.github.io/
 Source0:        https://github.com/hfst/%{name}/releases/download/v%{version}/%{_name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
@@ -73,8 +73,7 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-# 1 test is failing
-make %{?_smp_mflags} check || :
+make %{?_smp_mflags} check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
