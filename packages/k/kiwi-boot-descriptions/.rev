@@ -142,4 +142,16 @@ solution</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>742192</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>8c13824ec23f4959da2ad83aaae5a601</srcmd5>
+    <version>1.2.0</version>
+    <time>1579463506</time>
+    <user>dimstar_suse</user>
+    <comment>- remove ifplugd from tumbleweed installation
+    
+  ifplugd should get dropped from Factory/Tumbleweed, the code no longer
+  needs it since quite some time, so drop it from all tumbleweed configs.
+  Fixes bsc#1160269</comment>
+    <requestid>764367</requestid>
+  </revision>
 </revisionlist>

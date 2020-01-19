@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 14 16:16:20 UTC 2020 - Marcus Schaefer <ms@suse.com>
+
+- remove ifplugd from tumbleweed installation
+    
+  ifplugd should get dropped from Factory/Tumbleweed, the code no longer
+  needs it since quite some time, so drop it from all tumbleweed configs.
+  Fixes bsc#1160269
+
+-------------------------------------------------------------------
 Wed Oct 16 14:40:37 UTC 2019 - Marcus Schaefer <ms@suse.com>
 
 - Fixed ISO Application ID match
