@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 %endif
 
 Name:           nextcloud
-Version:        17.0.1
+Version:        18.0.0
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -91,8 +91,8 @@ Requires:       php-posix
 Requires:       php-zip
 #
 %if 0%{?fedora_version} || 0%{?rhel} || 0%{?rhel_version} || 0%{?centos_version}
-Requires:       php <= 7.3.0
-Requires:       php >= 7.0.0
+Requires:       php < 7.5.0
+Requires:       php >= 7.2.0
 Requires:       php-process
 Requires:       php-xml
 #
@@ -101,8 +101,8 @@ Recommends:     sqlite
 #
 %if 0%{?suse_version}
 Requires:       apache2
-Requires:       mod_php_any < 7.4.0
-Requires:       mod_php_any >= 7.0.0
+Requires:       mod_php_any < 7.5.0
+Requires:       mod_php_any >= 7.2.0
 Requires:       php-ctype
 Requires:       php-curl
 # SUSE does not include the fileinfo module in php-common.
@@ -279,6 +279,8 @@ if [ -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
 fi
 
 if [ -s %{statedir}/occ_maintenance_mode_during_nextcloud_install ]; then
+echo "%{name}: occ maintenance:repair (fix possible errors)"
+su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
 echo "%{name}: occ upgrade"
 su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
 echo "%{name}: occ maintenance:mode --off"
