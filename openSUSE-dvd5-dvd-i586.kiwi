@@ -55,8 +55,6 @@
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
       <repopackage name="abcde"/>
-      <repopackage name="abiword"/>
-      <repopackage name="abiword-docs"/>
       <repopackage name="accerciser"/>
       <repopackage name="accerciser-lang"/>
       <repopackage name="accounts-qml-module"/>
@@ -326,8 +324,6 @@
       <repopackage name="clang9"/>
       <repopackage name="clang9-checker"/>
       <repopackage name="clang9-doc"/>
-      <repopackage name="claws-mail"/>
-      <repopackage name="claws-mail-lang"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -340,7 +336,6 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
-      <repopackage name="compface"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-lang"/>
       <repopackage name="cpio"/>
@@ -517,7 +512,6 @@
       <repopackage name="evolution-plugin-rss-lang"/>
       <repopackage name="evolution-plugin-spamassassin"/>
       <repopackage name="evolution-plugin-text-highlight"/>
-      <repopackage name="exif"/>
       <repopackage name="exiftool"/>
       <repopackage name="exim"/>
       <repopackage name="exo-branding-openSUSE"/>
@@ -598,8 +592,6 @@
       <repopackage name="fuse3"/>
       <repopackage name="fwupd"/>
       <repopackage name="fwupd-lang"/>
-      <repopackage name="galculator"/>
-      <repopackage name="galculator-lang"/>
       <repopackage name="gamin-server"/>
       <repopackage name="gawk"/>
       <repopackage name="gcab"/>
@@ -622,7 +614,6 @@
       <repopackage name="gcin-gtk2"/>
       <repopackage name="gcin-gtk3"/>
       <repopackage name="gcin-qt5"/>
-      <repopackage name="gcolor2"/>
       <repopackage name="gconf-polkit"/>
       <repopackage name="gconf2"/>
       <repopackage name="gconf2-lang"/>
@@ -645,10 +636,6 @@
       <repopackage name="gdm-branding-openSUSE"/>
       <repopackage name="gdm-lang"/>
       <repopackage name="gdmflexiserver"/>
-      <repopackage name="geany"/>
-      <repopackage name="geany-lang"/>
-      <repopackage name="geany-plugins"/>
-      <repopackage name="geany-plugins-lang"/>
       <repopackage name="gedit"/>
       <repopackage name="gedit-lang"/>
       <repopackage name="gedit-plugin-devhelp"/>
@@ -826,7 +813,6 @@
       <repopackage name="gnome-weather-lang"/>
       <repopackage name="gnomekbd-tools"/>
       <repopackage name="gnu-unifont-bitmap-fonts"/>
-      <repopackage name="goffice-lang"/>
       <repopackage name="google-arimo-fonts"/>
       <repopackage name="google-carlito-fonts"/>
       <repopackage name="google-cousine-fonts"/>
@@ -1473,7 +1459,6 @@
       <repopackage name="kwrited5"/>
       <repopackage name="lame"/>
       <repopackage name="latex2html-pngicons"/>
-      <repopackage name="leafpad"/>
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
       <repopackage name="lftp"/>
@@ -1481,7 +1466,6 @@
       <repopackage name="liba2ps1"/>
       <repopackage name="liba52-0"/>
       <repopackage name="libaa1"/>
-      <repopackage name="libabiword-3_0"/>
       <repopackage name="libabw-0_1-1"/>
       <repopackage name="libaccounts-glib1"/>
       <repopackage name="libaccounts-qt5-1"/>
@@ -1743,7 +1727,6 @@
       <repopackage name="libespeak-ng1"/>
       <repopackage name="libestr0"/>
       <repopackage name="libetonyek-0_1-1"/>
-      <repopackage name="libetpan20"/>
       <repopackage name="libev4"/>
       <repopackage name="libevdev-devel"/>
       <repopackage name="libevdev-tools"/>
@@ -1784,11 +1767,6 @@
       <repopackage name="libFLAC8"/>
       <repopackage name="libflatpak0"/>
       <repopackage name="libfltk1"/>
-      <repopackage name="libfm"/>
-      <repopackage name="libfm-extra4"/>
-      <repopackage name="libfm-gtk4"/>
-      <repopackage name="libfm-lang"/>
-      <repopackage name="libfm4"/>
       <repopackage name="libfolks-data"/>
       <repopackage name="libfolks-eds25"/>
       <repopackage name="libfolks25"/>
@@ -1844,7 +1822,6 @@
       <repopackage name="libgdl-3-5"/>
       <repopackage name="libgdlmm-3_0-2"/>
       <repopackage name="libgdm1"/>
-      <repopackage name="libgeany0"/>
       <repopackage name="libgee-0_8-2"/>
       <repopackage name="libgegl-0_4-0"/>
       <repopackage name="libgeocode-glib0"/>
@@ -1901,7 +1878,6 @@
       <repopackage name="libgoa-1_0-0"/>
       <repopackage name="libgoa-backend-1_0-1"/>
       <repopackage name="libgobject-2_0-0"/>
-      <repopackage name="libgoffice-0_10-10"/>
       <repopackage name="libgom-1_0-0"/>
       <repopackage name="libgomp1"/>
       <repopackage name="libgooglepinyin0"/>
@@ -1983,7 +1959,6 @@
       <repopackage name="libgudev-1_0-0"/>
       <repopackage name="libguess1"/>
       <repopackage name="libguile-2_2-1"/>
-      <repopackage name="libgumbo1"/>
       <repopackage name="libgupnp-1_2-0"/>
       <repopackage name="libgupnp-av-1_0-2"/>
       <repopackage name="libgupnp-dlna-2_0-3"/>
@@ -2025,7 +2000,6 @@
       <repopackage name="libIlmImf-2_4-24"/>
       <repopackage name="libIlmThread-2_4-24"/>
       <repopackage name="libimagequant0"/>
-      <repopackage name="libImlib2-1"/>
       <repopackage name="libimobiledevice6"/>
       <repopackage name="libindicator3-7"/>
       <repopackage name="libini_config5"/>
@@ -2088,7 +2062,6 @@
       <repopackage name="libKEduVocDocument5"/>
       <repopackage name="libkerfuffle19"/>
       <repopackage name="libkeybinder-3_0-0"/>
-      <repopackage name="libkeybinder0"/>
       <repopackage name="libkeyutils1"/>
       <repopackage name="libKF5Activities5"/>
       <repopackage name="libKF5ActivitiesStats1"/>
@@ -2277,7 +2250,6 @@
       <repopackage name="libkyotocabinet16"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
-      <repopackage name="liblasem-0_4-4"/>
       <repopackage name="liblastfm5-1"/>
       <repopackage name="liblavfile-2_0-0"/>
       <repopackage name="liblavjpeg-2_0-0"/>
@@ -2293,7 +2265,6 @@
       <repopackage name="liblhasa0"/>
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
-      <repopackage name="liblink-grammar5"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia66"/>
       <repopackage name="libLLVM9"/>
@@ -2313,7 +2284,6 @@
       <repopackage name="liblua5_3-5"/>
       <repopackage name="libluajit-5_1-2"/>
       <repopackage name="liblvm2cmd2_03"/>
-      <repopackage name="liblxpanel0"/>
       <repopackage name="liblz4-1"/>
       <repopackage name="liblzma5"/>
       <repopackage name="liblzo2-2"/>
@@ -2335,7 +2305,6 @@
       <repopackage name="libmediaart-2_0-0"/>
       <repopackage name="libmediacheck5"/>
       <repopackage name="libmemcached11"/>
-      <repopackage name="libmenu-cache3"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmetis5"/>
       <repopackage name="libmicrohttpd12"/>
@@ -2422,8 +2391,6 @@
       <repopackage name="libnumbertext-data"/>
       <repopackage name="liboauth0"/>
       <repopackage name="libobjc4"/>
-      <repopackage name="libobrender32"/>
-      <repopackage name="libobt2"/>
       <repopackage name="libodfgen-0_1-1"/>
       <repopackage name="libofa0"/>
       <repopackage name="libogg0"/>
@@ -2441,7 +2408,6 @@
       <repopackage name="libopenconnect5"/>
       <repopackage name="libopeniscsiusr0_2_0"/>
       <repopackage name="libopenjp2-7"/>
-      <repopackage name="libopenjpeg1"/>
       <repopackage name="libopenmpt0"/>
       <repopackage name="libopenraw1"/>
       <repopackage name="libopenssl-1_1-devel"/>
@@ -2954,10 +2920,8 @@
       <repopackage name="libwiretap10"/>
       <repopackage name="libwmf-0_2-7"/>
       <repopackage name="libwmf-tools"/>
-      <repopackage name="libwnck-1-22"/>
       <repopackage name="libwnck-3-0"/>
       <repopackage name="libwnck-lang"/>
-      <repopackage name="libwnck2-lang"/>
       <repopackage name="libwoff2common1_0_2"/>
       <repopackage name="libwoff2dec1_0_2"/>
       <repopackage name="libwpd-0_10-10"/>
@@ -2967,7 +2931,6 @@
       <repopackage name="libwps-0_4-4"/>
       <repopackage name="libwrap0"/>
       <repopackage name="libwsutil11"/>
-      <repopackage name="libwv-1_2-4"/>
       <repopackage name="libwx_baseu-suse-nostl3_0_4"/>
       <repopackage name="libwx_baseu-suse3_0_4"/>
       <repopackage name="libwx_baseu_net-suse-nostl3_0_4"/>
@@ -3160,25 +3123,6 @@
       <repopackage name="luit"/>
       <repopackage name="lv"/>
       <repopackage name="lvm2"/>
-      <repopackage name="lxappearance"/>
-      <repopackage name="lxappearance-lang"/>
-      <repopackage name="lxappearance-obconf"/>
-      <repopackage name="lxappearance-obconf-lang"/>
-      <repopackage name="lxde-common"/>
-      <repopackage name="lxde-common-branding-openSUSE"/>
-      <repopackage name="lxinput"/>
-      <repopackage name="lxinput-lang"/>
-      <repopackage name="lxlauncher"/>
-      <repopackage name="lxmenu-data"/>
-      <repopackage name="lxpanel"/>
-      <repopackage name="lxpanel-lang"/>
-      <repopackage name="lxrandr"/>
-      <repopackage name="lxrandr-lang"/>
-      <repopackage name="lxsession"/>
-      <repopackage name="lxtask"/>
-      <repopackage name="lxtask-lang"/>
-      <repopackage name="lxterminal"/>
-      <repopackage name="lxterminal-lang"/>
       <repopackage name="lynx"/>
       <repopackage name="lzfse"/>
       <repopackage name="lzip"/>
@@ -3219,7 +3163,6 @@
       <repopackage name="meld-lang"/>
       <repopackage name="memcached"/>
       <repopackage name="memtest86+"/>
-      <repopackage name="menu-cache"/>
       <repopackage name="menulibre"/>
       <repopackage name="mercurial"/>
       <repopackage name="mercurial-lang"/>
@@ -3322,8 +3265,6 @@
       <repopackage name="mtd-utils"/>
       <repopackage name="mtdev-devel"/>
       <repopackage name="mtools"/>
-      <repopackage name="mtpaint"/>
-      <repopackage name="mtpaint-lang"/>
       <repopackage name="mtr"/>
       <repopackage name="mugshot"/>
       <repopackage name="multipath-tools"/>
@@ -3436,10 +3377,8 @@
       <repopackage name="ntfsprogs"/>
       <repopackage name="ntp-doc"/>
       <repopackage name="numlockx"/>
-      <repopackage name="nuoveXT2-icon-theme"/>
       <repopackage name="nut"/>
       <repopackage name="nut-cgi"/>
-      <repopackage name="obconf"/>
       <repopackage name="obs-service-download_files"/>
       <repopackage name="obs-service-download_url"/>
       <repopackage name="obs-service-extract_file"/>
@@ -3467,8 +3406,6 @@
       <repopackage name="openafs-client"/>
       <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
-      <repopackage name="openbox"/>
-      <repopackage name="openbox-adwaita-ob-theme"/>
       <repopackage name="opencc"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -3529,7 +3466,6 @@
       <repopackage name="paratype-pt-mono-fonts"/>
       <repopackage name="paratype-pt-sans-fonts"/>
       <repopackage name="paratype-pt-serif-fonts"/>
-      <repopackage name="parcellite"/>
       <repopackage name="parley"/>
       <repopackage name="parley-lang"/>
       <repopackage name="parole"/>
@@ -3593,9 +3529,6 @@
       <repopackage name="patterns-kde-kde_utilities"/>
       <repopackage name="patterns-kde-kde_utilities_opt"/>
       <repopackage name="patterns-kde-kde_yast"/>
-      <repopackage name="patterns-lxde-lxde"/>
-      <repopackage name="patterns-lxde-lxde_laptop"/>
-      <repopackage name="patterns-lxde-lxde_office"/>
       <repopackage name="patterns-media-rest_cd_core"/>
       <repopackage name="patterns-network-network_admin"/>
       <repopackage name="patterns-office-office"/>
@@ -3617,8 +3550,6 @@
       <repopackage name="pavucontrol-lang"/>
       <repopackage name="pcfclock-kmp-default"/>
       <repopackage name="pciutils"/>
-      <repopackage name="pcmanfm"/>
-      <repopackage name="pcmanfm-lang"/>
       <repopackage name="pcmciautils"/>
       <repopackage name="pcre2-devel"/>
       <repopackage name="pcsc-acr38"/>
@@ -5269,8 +5200,6 @@
       <repopackage name="udisks2-lang"/>
       <repopackage name="ufraw"/>
       <repopackage name="ufraw-lang"/>
-      <repopackage name="uget"/>
-      <repopackage name="uget-lang"/>
       <repopackage name="umbrello"/>
       <repopackage name="umbrello-lang"/>
       <repopackage name="un-fonts"/>
@@ -5304,8 +5233,6 @@
       <repopackage name="valgrind"/>
       <repopackage name="vcdimager"/>
       <repopackage name="vhba-kmp-default"/>
-      <repopackage name="viewnior"/>
-      <repopackage name="viewnior-lang"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
@@ -5390,7 +5317,6 @@
       <repopackage name="xdm"/>
       <repopackage name="xdm-xsession"/>
       <repopackage name="xdmbgrd"/>
-      <repopackage name="xdotool"/>
       <repopackage name="xdpyinfo"/>
       <repopackage name="xembedsniproxy"/>
       <repopackage name="xen-libs"/>
@@ -5534,7 +5460,6 @@
       <repopackage name="xkbcomp"/>
       <repopackage name="xkeyboard-config"/>
       <repopackage name="xkeyboard-config-lang"/>
-      <repopackage name="xkill"/>
       <repopackage name="xli"/>
       <repopackage name="xlockmore"/>
       <repopackage name="xmessage"/>

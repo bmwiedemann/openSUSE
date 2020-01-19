@@ -292,6 +292,8 @@ unsorted:
   - abi-dumper 
   - abi-monitor 
   - abi-tracker 
+  - abiword 
+  - abiword-docs 
   - abook 
   - abook-lang 
   - abootimg 
@@ -1695,7 +1697,9 @@ unsorted:
   - clanlib-doc 
   - clanlib-examples 
   - clatd 
+  - claws-mail 
   - claws-mail-devel 
+  - claws-mail-lang 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -1825,6 +1829,7 @@ unsorted:
   - commandergenius 
   - compartm 
   - compcache 
+  - compface 
   - compface-devel 
   - compicc 
   - compiz 
@@ -2751,6 +2756,7 @@ unsorted:
   - exempi-tools 
   - exercism 
   - exfat-utils 
+  - exif 
   - exiftran 
   - eximon 
   - eximstats-html 
@@ -3009,7 +3015,7 @@ unsorted:
   - firebird-utils 
   - firecracker: [x86_64] 
   - firefox-esr-branding-openSUSE 
-  - firefox-uget-integrator: [i586] 
+  - firefox-uget-integrator 
   - firehol 
   - firehol-doc 
   - firejail 
@@ -3268,6 +3274,8 @@ unsorted:
   - gajim-lang 
   - gajim-plugin-omemo 
   - galaxis 
+  - galculator 
+  - galculator-lang 
   - gama 
   - gambas3 
   - gambas3-devel 
@@ -3441,6 +3449,7 @@ unsorted:
   - gcin-gtk2-32bit: [x86_64] 
   - gcin-gtk3-32bit: [x86_64] 
   - gcin-qt5-32bit: [x86_64] 
+  - gcolor2 
   - gcolor3 
   - gcompris 
   - gcompris-devel 
@@ -3515,8 +3524,12 @@ unsorted:
   - gdouros-symbola-fonts 
   - gdouros-text-fonts 
   - gdouros-unidings-fonts 
+  - geany 
   - geany-devel 
   - geany-doc 
+  - geany-lang 
+  - geany-plugins 
+  - geany-plugins-lang 
   - geary 
   - geary-lang 
   - gebaar-libinput 
@@ -4664,6 +4677,7 @@ unsorted:
   - godot-runner 
   - godot-server 
   - goffice-devel 
+  - goffice-lang 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
   - golang-github-docker-libnetwork 
@@ -6853,6 +6867,7 @@ unsorted:
   - ldns 
   - ldns-devel 
   - leafnode 
+  - leafpad 
   - lector 
   - ledger 
   - ledmon 
@@ -7115,6 +7130,7 @@ unsorted:
   - libIlmThread-2_4-24-32bit: [x86_64] 
   - libImath-2_4-24 
   - libImath-2_4-24-32bit: [x86_64] 
+  - libImlib2-1 
   - libIrrlicht1_8 
   - libKDb3-4 
   - libKF5Activities5-32bit: [x86_64] 
@@ -7638,6 +7654,7 @@ unsorted:
   - libabigail-devel 
   - libabigail-tools 
   - libabigail0 
+  - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabw-devel 
   - libabw-devel-doc 
@@ -8691,6 +8708,7 @@ unsorted:
   - libetonyek-devel-doc 
   - libetonyek-tools 
   - libetpan-devel 
+  - libetpan20 
   - libetrophy0 
   - libev-devel 
   - libev4-32bit: [x86_64] 
@@ -8835,13 +8853,18 @@ unsorted:
   - libfluidsynth2 
   - libfluidsynth2-32bit: [x86_64] 
   - libflxmlrpc1 
+  - libfm 
   - libfm-devel 
   - libfm-doc 
   - libfm-extra-devel 
+  - libfm-extra4 
   - libfm-gtk-devel 
+  - libfm-gtk4 
+  - libfm-lang 
   - libfm-qt-devel 
   - libfm-qt-lang 
   - libfm-qt6 
+  - libfm4 
   - libfmapi-devel 
   - libfmapi1 
   - libfmt6 
@@ -8973,6 +8996,7 @@ unsorted:
   - libgdiplus0 
   - libgdruntime76 
   - libgdruntime76-32bit: [x86_64] 
+  - libgeany0 
   - libgeda-data 
   - libgeda-devel 
   - libgeda45 
@@ -9098,6 +9122,7 @@ unsorted:
   - libgo14-32bit: [x86_64] 
   - libgoa-1_0-0-32bit: [x86_64] 
   - libgoa-backend-1_0-1-32bit: [x86_64] 
+  - libgoffice-0_10-10 
   - libgomp1-32bit: [x86_64] 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit: [x86_64] 
@@ -9252,6 +9277,7 @@ unsorted:
   - libguile17 
   - libguilereadline-v-17-17 
   - libgumbo-devel 
+  - libgumbo1 
   - libgupnp-1_2-0-32bit: [x86_64] 
   - libgupnp-av-devel 
   - libgupnp-devel 
@@ -9693,6 +9719,7 @@ unsorted:
   - libkeccak1 
   - libkeduvocdocument-devel 
   - libkexiv2-devel 
+  - libkeybinder0 
   - libkgapi-devel 
   - libkgeomap 
   - libkgeomap-devel 
@@ -9756,6 +9783,7 @@ unsorted:
   - liblapack3-32bit: [x86_64] 
   - liblapacke3 
   - liblapacke3-32bit: [x86_64] 
+  - liblasem-0_4-4 
   - liblastfm-qt5-devel 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
@@ -9811,6 +9839,7 @@ unsorted:
   - liblinbox0 
   - liblinebreak-devel 
   - liblinebreak2 
+  - liblink-grammar5 
   - liblinphone++9 
   - liblinphone++9-32bit: [x86_64] 
   - liblinphone-data 
@@ -9890,6 +9919,7 @@ unsorted:
   - liblur3 
   - liblxc-devel 
   - liblxc1 
+  - liblxpanel0 
   - liblxqt-devel 
   - liblxqt-globalkeys-ui0 
   - liblxqt-globalkeys0 
@@ -9993,6 +10023,7 @@ unsorted:
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
   - libmemphis-0_2-0 
+  - libmenu-cache3 
   - libmesode-devel 
   - libmesode0 
   - libmetacity1 
@@ -10325,6 +10356,8 @@ unsorted:
   - libobjc4-gcc7 
   - libobjc4-gcc7-32bit: [x86_64] 
   - libobjc4_6 
+  - libobrender32 
+  - libobt2 
   - libode8 
   - libodfgen-devel 
   - libodfgen-devel-doc 
@@ -10395,6 +10428,7 @@ unsorted:
   - libopendkim10 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
+  - libopenjpeg1 
   - libopenjpeg1-32bit: [x86_64] 
   - libopenlibm2 
   - libopenmpi1-gnu-hpc 
@@ -12120,11 +12154,13 @@ unsorted:
   - libwmf-devel 
   - libwmf-gnome 
   - libwmf-gnome-32bit: [x86_64] 
+  - libwnck-1-22 
   - libwnck-1-22-32bit: [x86_64] 
   - libwnck-3-0-32bit: [x86_64] 
   - libwnck-devel 
   - libwnck-tools 
   - libwnck2-devel 
+  - libwnck2-lang 
   - libwnn0 
   - libwoff2common1_0_2-32bit: [x86_64] 
   - libwoff2dec1_0_2-32bit: [x86_64] 
@@ -12152,6 +12188,7 @@ unsorted:
   - libwtdbo4_2_0 
   - libwtdbomysql4_2_0 
   - libwtdbopostgres4_2_0 
+  - libwv-1_2-4 
   - libwv2-4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
@@ -12831,17 +12868,29 @@ unsorted:
   - lvm2-devel 
   - lvm2-lockd 
   - lvm2-testsuite 
+  - lxappearance 
   - lxappearance-devel 
+  - lxappearance-lang 
+  - lxappearance-obconf 
+  - lxappearance-obconf-lang 
   - lxc 
   - lxc-bash-completion 
   - lxcfs 
   - lxcfs-hooks-lxc 
   - lxd 
   - lxd-bash-completion 
+  - lxde-common 
+  - lxde-common-branding-openSUSE 
   - lxde-common-branding-upstream 
   - lximage-qt 
   - lximage-qt-lang 
+  - lxinput 
+  - lxinput-lang 
+  - lxlauncher 
+  - lxmenu-data 
+  - lxpanel 
   - lxpanel-devel 
+  - lxpanel-lang 
   - lxqt-about 
   - lxqt-about-lang 
   - lxqt-build-tools-devel 
@@ -12872,7 +12921,14 @@ unsorted:
   - lxqt-theme-openSUSE-leaper 
   - lxqt-theme-openSUSE-light 
   - lxqt-themes 
+  - lxrandr 
+  - lxrandr-lang 
+  - lxsession 
   - lxshortcut 
+  - lxtask 
+  - lxtask-lang 
+  - lxterminal 
+  - lxterminal-lang 
   - lynis 
   - lyx 
   - lz4 
@@ -13312,6 +13368,7 @@ unsorted:
   - memphis-devel 
   - memprof 
   - memprof-lang 
+  - menu-cache 
   - menu-cache-devel 
   - meslo-lg-fonts 
   - meson 
@@ -13821,7 +13878,9 @@ unsorted:
   - mtdev 
   - mtools-doc 
   - mtp-tools 
+  - mtpaint 
   - mtpaint-handbook 
+  - mtpaint-lang 
   - mtr-gtk 
   - mtree 
   - mtx 
@@ -14672,6 +14731,7 @@ unsorted:
   - nuntius 
   - nuntius-lang 
   - nuosu-fonts 
+  - nuoveXT2-icon-theme 
   - nut-devel 
   - nut-drivers-net 
   - nvdock 
@@ -14692,6 +14752,7 @@ unsorted:
   - obby 
   - obby-devel 
   - obby-lang 
+  - obconf 
   - obconf-qt 
   - obconf-qt-lang 
   - obex-data-server 
@@ -15082,6 +15143,8 @@ unsorted:
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
+  - openbox 
+  - openbox-adwaita-ob-theme 
   - openbox-devel 
   - openbox-gnome 
   - openbox-kde 
@@ -15557,6 +15620,7 @@ unsorted:
   - parboiled-javadoc 
   - parboiled-scala 
   - parboiled-scala-javadoc 
+  - parcellite 
   - pari-devel 
   - pari-elldata 
   - pari-galdata 
@@ -15623,6 +15687,9 @@ unsorted:
   - patterns-leechcraft-leechcraft_netutils 
   - patterns-leechcraft-leechcraft_office 
   - patterns-leechcraft-leechcraft_utilities 
+  - patterns-lxde-lxde 
+  - patterns-lxde-lxde_laptop 
+  - patterns-lxde-lxde_office 
   - patterns-lxqt-lxqt 
   - patterns-mate-mate 
   - patterns-mate-mate_admin 
@@ -15667,7 +15734,9 @@ unsorted:
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
   - pcm 
+  - pcmanfm 
   - pcmanfm-devel 
+  - pcmanfm-lang 
   - pcmanfm-qt 
   - pcmanfm-qt-lang 
   - pcmanx-gtk2 
@@ -32788,7 +32857,9 @@ unsorted:
   - uftpd 
   - ufw 
   - ufw-lang 
-  - uget-integrator: [i586] 
+  - uget 
+  - uget-integrator 
+  - uget-lang 
   - uhd-devel 
   - uhd-doc 
   - uhd-firmware 
@@ -33030,6 +33101,8 @@ unsorted:
   - vidcutter 
   - vido 
   - vido-lang 
+  - viewnior 
+  - viewnior-lang 
   - viewres 
   - viewvc 
   - vifm 
@@ -33435,6 +33508,7 @@ unsorted:
   - xdiskusage 
   - xditview 
   - xdmsc 
+  - xdotool 
   - xdotool-devel 
   - xdriinfo 
   - xed 
@@ -33534,6 +33608,7 @@ unsorted:
   - xkbprint 
   - xkbutils 
   - xkeycaps 
+  - xkill 
   - xl2tpd 
   - xlatencytop 
   - xless 
