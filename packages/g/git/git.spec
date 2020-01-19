@@ -1,7 +1,7 @@
 #
 # spec file for package git
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 
 Name:           git
-Version:        2.24.1
+Version:        2.25.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -57,8 +57,6 @@ Patch7:         git-zsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 Patch11:        0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
-# workaround for bsc#1156651, try to build without it when updating
-Patch12:        git-skip-test-s390x-aarch64-fail.patch
 Patch13:        0002-Also-use-DocBook-5-stylesheet-when-generating-HTML-o.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
@@ -287,7 +285,6 @@ directory /git/ that calls the cgi script.
 %patch8 -p1
 %patch10 -p1
 %patch11 -p1
-%patch12 -p1
 %patch13 -p1
 
 %build

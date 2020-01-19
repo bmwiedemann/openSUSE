@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:22:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- git 2.25.0
+  * The branch description ("git branch --edit-description") has been
+    used to fill the body of the cover letters by the format-patch
+    command; this has been enhanced so that the subject can also be
+    filled.
+  * A few commands learned to take the pathspec from the standard input
+    or a named file, instead of taking it as the command line
+    arguments, with the "--pathspec-from-file" option.
+  * Test updates to prepare for SHA-2 transition continues.
+  * Redo "git name-rev" to avoid recursive calls.
+  * When all files from some subdirectory were renamed to the root
+    directory, the directory rename heuristics would fail to detect that
+    as a rename/merge of the subdirectory to the root directory, which has
+    been corrected.
+  * HTTP transport had possible allocator/deallocator mismatch, which
+    has been corrected.
+ - dropped patch git-skip-test-s390x-aarch64-fail.patch (bsc#1156651)
+   * upstream maintainers have skipped the test themselves
+
+-------------------------------------------------------------------
 Wed Dec 11 06:37:34 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.24.1:
