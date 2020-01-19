@@ -728,4 +728,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>Upgrade to 1.10.7 + overhaul the packaging to have maven metadata and corresponding pom files in the same packages</comment>
     <requestid>747068</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>cc51ce8913093c7a3a6a9f6ea9114876</srcmd5>
+    <version>1.10.7</version>
+    <time>1579463452</time>
+    <user>dimstar_suse</user>
+    <comment>Fix classpath to use bootstrap package unequivocally</comment>
+    <requestid>764179</requestid>
+  </revision>
 </revisionlist>

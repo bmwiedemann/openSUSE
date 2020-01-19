@@ -1,7 +1,7 @@
 #
 # spec file for package ant-junit5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -400,7 +400,7 @@ build-jar-repository -s -p lib/optional junit5 opentest4j
 %endif
 %if %{with antlr}
 # we need to build junit in antlr, but we remove it later
-build-jar-repository -s -p lib/optional xerces-j2 xml-apis antlr-bootstrap bcel javamail/mailapi jdepend junit4 log4j12/log4j-12 oro regexp bsf commons-logging commons-net jsch xalan-j2 xalan-j2-serializer xml-resolver xz-java
+build-jar-repository -s -p lib/optional xerces-j2 xml-commons-apis-bootstrap antlr-bootstrap bcel javamail/mailapi jdepend junit4 log4j12/log4j-12 oro regexp bsf commons-logging commons-net jsch xalan-j2 xalan-j2-serializer xml-resolver xz-java
 %endif
 
 # Fix file-not-utf8 rpmlint warning

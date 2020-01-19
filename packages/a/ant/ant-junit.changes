@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 14 07:03:37 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Use xml-commons-apis-bootstrap as jar in classpath instead of
+  the common xml-apis jar, since we are forcing build against
+  the bootstrap package
+
+-------------------------------------------------------------------
 Fri Nov  8 11:15:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.10.7
