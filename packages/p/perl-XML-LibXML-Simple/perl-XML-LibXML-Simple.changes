@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 16 03:10:37 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.01
+   see /usr/share/doc/packages/perl-XML-LibXML-Simple/ChangeLog
+
+  version 1.01: Wed 15 Jan 2020 10:47:10 PM CET
+  
+  	Changes:
+  	- Slaven needs 5.8 to be supported for his processed.  Reinstated.
+  	  rt.cpan.org#131486 [Slaven Rezic]
+  
+  	Fixes:
+  	- README.md contained info of other project.
+  
+  version 1.00: Wed 15 Jan 11:57:43 CET 2020
+  
+  	Changes:
+  	- require perl 5.10
+  
+  	Improvements:
+  	- converted to GitHUB
+
+-------------------------------------------------------------------
 Tue Dec 12 07:04:56 UTC 2017 - coolo@suse.com
 
 - updated to 0.99
