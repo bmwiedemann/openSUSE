@@ -1,7 +1,7 @@
 #
 # spec file for package numactl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,17 @@
 
 
 Name:           numactl
-Version:        2.0.12
+Version:        2.0.13
 Release:        0
 Summary:        NUMA Policy Control
 License:        GPL-2.0-only
 Group:          System/Management
-Url:            https://github.com/numactl/numactl/releases
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://github.com/numactl/numactl/releases
+Source0:        https://github.com/numactl/numactl/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
-Patch0:         revert_date_in_numastat.patch
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         0001-Fixed-segfault-when-no-node-could-be-found-in-sysfs-.patch
 Patch2:         numactl-clearcache-pie.patch
-%if 0%{?suse_version} > 1110
-BuildRequires:  autoconf >= 2.64
-BuildRequires:  automake
-BuildRequires:  libtool
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    %arm
 
 %description
 Control NUMA policy for individual processes. Offer libnuma for
@@ -53,7 +44,7 @@ individual NUMA policy in applications.
 
 %package -n libnuma-devel
 Summary:        NUMA Policy Control
-License:        GPL-2.0-only
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
 Requires:       libnuma1 = %{version}
 
@@ -63,23 +54,19 @@ individual NUMA policy in applications.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
 %build
 %define _lto_cflags %{nil}
-%if 0%{?suse_version} > 1110
-autoreconf -fiv
-%endif
 %configure \
   --disable-static
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+make %{?_smp_mflags} CFLAGS="%{optflags}" V=1
 
 %install
 %make_install
 rm  %{buildroot}%{_mandir}/man2/move_pages.2*
-rm -f %{buildroot}/%{_libdir}/lib*a
+rm -f %{buildroot}/%{_libdir}/lib*.la
 
 %post -n libnuma1 -p /sbin/ldconfig
 
@@ -87,6 +74,7 @@ rm -f %{buildroot}/%{_libdir}/lib*a
 
 %files
 %defattr(-,root,root)
+%license LICENSE.GPL2 LICENSE.LGPL2.1
 %{_bindir}/*
 %{_mandir}/man8/*
 

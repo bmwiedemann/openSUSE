@@ -4,9 +4,9 @@
     <param name="url">https://github.com/numactl/numactl</param>
     <param name="subdir"></param>
     <param name="filename">numactl</param>
-    <param name="versionformat">2.0.12</param>
+    <param name="versionformat">2.0.13</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">841253d1313b01a968c380cae4f498f20c46e5aa</param>
+    <param name="revision">v2.0.13</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">numactl*.tar</param>

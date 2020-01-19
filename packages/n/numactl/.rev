@@ -474,4 +474,55 @@
     <comment></comment>
     <requestid>730080</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b5d63f4324c0b3830e2d9a17e0974f84</srcmd5>
+    <version>2.0.13</version>
+    <time>1579463456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.13:
+  * Release numactl 2.0.13
+  * Skip `test/move_pages` if we don't have at least two nodes available
+  * Add license files: GPLv2 + LGPLv2.1
+  * Handle cpu-less node for bind_range test
+  * Convert numastat.c to standard numactl coding style
+  * Disable clang travis targets for now
+  * numastat.8: clarify that information relates to resident pages
+  * Fix all declarations to be C prototypes
+  * numatopology: Add check for cpu-less nodes
+  * Update INSTALL.md
+  * numastat: when reading no-exist pid, return EXIT_FAILURE
+  * numastat: Add KReclaimable to list of known fields in meminfo
+  * numastat: Better diagnostic when find unknown string in meminfo
+  * Enable building on s390x
+  * Correct sysconf constants
+  * Removed unnecessary exit from memhog.c Solves issue #50
+  * Synchronized usage function with man page
+  * Added memhog.8 to Makefile.am
+  * memhog: add man page
+  * Allow linking with lld by deduplicating symbols
+  * numademo: free the node_to_use on the way out
+  * numademo: free test nodemask
+  * libnuma: cleanup node cpu mask in destructor
+  * numactl: add va_end to usage function
+  * travis: add build matrix
+  * remove kernel version check
+  * add missing linux version header
+  * make MPOL_ macros match linux kernel
+  * add missing policy
+  * Fix: Add ShmemHugePages and ShmemPmdMapped to system_meminfo[]
+  * Fix: move_pages test for non-contiguous nodes
+  * Correct calculation of nr_nodes and re-enable move_pages test
+  * Fix: regress test numastat function and few test fixes
+  * Fix: distance test to include all existing nodes
+  * numademo: fix wrong node input
+  * Fix: node_list with memory-less nodes
+- Drop autoconf/libtool BuildRequires and autoreconf invocation,
+  bundled configure is up-to-date.
+- Drop obsolete revert_date_in_numastat.patch, gcc sets __DATE__
+  based on SOURCE_DATE_EPOCH now.
+- Correct License for devel subpackage, same as for the library
+  (LGPL-2.1-or-later).
+</comment>
+    <requestid>764182</requestid>
+  </revision>
 </revisionlist>
