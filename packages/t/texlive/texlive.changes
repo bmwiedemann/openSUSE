@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:41:17 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Make patch suffix unique 
+
+-------------------------------------------------------------------
+Wed Jan 15 12:21:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add source-poppler0.84.0.patch: Fix build with poppler-0.84.
+
+-------------------------------------------------------------------
 Thu Jan  9 12:02:09 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add source-common.patch to avoid common variable (boo#1160417) 

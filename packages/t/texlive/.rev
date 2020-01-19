@@ -727,4 +727,12 @@
     <comment>Resubmit rev 340 - Staging:I is GREEN</comment>
     <requestid>764928</requestid>
   </revision>
+  <revision rev="61" vrev="64">
+    <srcmd5>5ed72b9a0fa6da19b1ed8ad150289404</srcmd5>
+    <version>unknown</version>
+    <time>1579463751</time>
+    <user>dimstar_suse</user>
+    <comment>Now we can submit it - would have been a shame to hold back a staging just for poppler. Thanks for waiting</comment>
+    <requestid>765170</requestid>
+  </revision>
 </revisionlist>
