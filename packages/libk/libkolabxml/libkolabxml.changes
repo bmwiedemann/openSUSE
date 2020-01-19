@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 16:27:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the python bindings package to get rid of the python2 dependency.
+- Remove obsolete conditions.
+
+-------------------------------------------------------------------
 Tue Sep 17 16:29:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - add 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch.

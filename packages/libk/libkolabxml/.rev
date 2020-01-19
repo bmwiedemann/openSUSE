@@ -270,4 +270,12 @@ Wed Nov 13 12:31:03 UTC 2013 - aj@ajaissle.de
     <comment>add 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch.</comment>
     <requestid>731590</requestid>
   </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>69a7601f0631d302a36274af238b1bca</srcmd5>
+    <version>1.1.6</version>
+    <time>1579463527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764418</requestid>
+  </revision>
 </revisionlist>

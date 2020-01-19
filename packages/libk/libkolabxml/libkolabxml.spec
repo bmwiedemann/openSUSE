@@ -1,7 +1,7 @@
 #
 # spec file for package libkolabxml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libxerces-c-devel >= 3.0
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  swig >= 2.0
 BuildRequires:  xsd >= 3.0
 %if %{with php}
@@ -98,16 +97,12 @@ Features:
 Summary:        Kolab XML Format Schema Definitions Library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Requires:       libcurl-devel
-Requires:       libxerces-c-devel
-%if 0%{?suse_version} > 1325
 Requires:       libboost_chrono-devel
 Requires:       libboost_date_time-devel
 Requires:       libboost_system-devel
 Requires:       libboost_thread-devel
-%else
-Requires:       boost-devel
-%endif
+Requires:       libcurl-devel
+Requires:       libxerces-c-devel
 
 %description devel
 Libkolabxml serves as a serialization/de-serialization library for the the Kolab XML Format
@@ -181,26 +176,6 @@ Features:
 
 This package provides the php bindings for Libkolabxml
 
-%package -n python-%{libname}
-Summary:        Python bindings for %{name}
-Group:          Development/Languages/Python
-Requires:       %{libname} = %{version}
-Provides:       python-kolabformat = %{version}
-
-%description -n python-%{libname}
-Libkolabxml serves as a serialization/de-serialization library for the the Kolab XML Format
-
-Features:
-- Based on official standards:
-- Todos/Events/Journals are fully xCal compliant
-- Contacts/Distributionlists are fully xCard compliant
-- Can model everything which is used in the Kolab XML Format 2.0, Kontact and Roundcube.
-- Easily extensible
-- Canonical storage format
-- Supports Todos/Events/Journals/Contacts/Distribution Lists/Notes/Configurations
-
-This package provides the python bindings for Libkolabxml
-
 %prep
 %setup -q
 %patch0 -p1
@@ -218,15 +193,12 @@ This package provides the python bindings for Libkolabxml
 %if %{with php}
     -DPHP_BINDINGS=TRUE -DPHP_INSTALL_DIR=%{php_extdir}\
 %endif
-    -DPYTHON_BINDINGS=TRUE -DPYTHON_INSTALL_DIR=%{python_sitearch} \
 %if %{with mono}
     -DCSHARP_BINDINGS=TRUE -DCSHARP_INSTALL_DIR=%{_libexecdir}/mono/ \
 %endif
 %if %{with tests}
     -DBUILD_TESTS=TRUE \
-%if 0%{?suse_version} > 1314
     -DBUILD_QT5=TRUE \
-%endif
 %else
     -DBUILD_TESTS=FALSE
 %endif
@@ -252,7 +224,6 @@ EOF
 export LD_LIBRARY_PATH=$(pwd)/build/src/
 cd build/
 ctest -V ||:
-python src/python/test.py ||:
 %endif
 
 %post   -n %{libname} -p /sbin/ldconfig
@@ -262,11 +233,6 @@ python src/python/test.py ||:
 %license COPYING
 %doc AUTHORS README
 %{_libdir}/libkolabxml.so.*
-
-%files -n python-%{libname}
-%license COPYING
-%{python_sitearch}/_kolabformat.so
-%{python_sitearch}/kolabformat.py*
 
 %if %{with php}
 %files -n php-%{libname}
