@@ -1,42 +1,45 @@
-Index: qtdeclarative-everywhere-src-5.13.0-beta1/src/qml/jsruntime/jsruntime.pri
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Allow building with and without JIT on i586
+
+For i586, the default Qt does not have sse2 enabled, but for sse2 capable systems
+we'd like to have it use the JIT. Do some patching in the configuration system
+to allow toggling it from the qmake call.
+
+Originally written by Wolfgang Bauer <wbauer@tmo.at>
+
+Index: qtdeclarative-everywhere-src-5.14.0-alpha/src/qml/jsruntime/jsruntime.pri
 ===================================================================
---- qtdeclarative-everywhere-src-5.13.0-beta1.orig/src/qml/jsruntime/jsruntime.pri
-+++ qtdeclarative-everywhere-src-5.13.0-beta1/src/qml/jsruntime/jsruntime.pri
-@@ -174,6 +174,11 @@ qmldevtools_build {
+--- qtdeclarative-everywhere-src-5.14.0-alpha.orig/src/qml/jsruntime/jsruntime.pri
++++ qtdeclarative-everywhere-src-5.14.0-alpha/src/qml/jsruntime/jsruntime.pri
+@@ -164,6 +164,10 @@ win32 {
+         $$PWD/qv4functiontable_unix.cpp
  }
- 
  
 +linux-g++*:isEqual(QT_ARCH,i386):!no_sse2 {
 +    QMAKE_CFLAGS += -msse2 -mfpmath=sse
 +    QMAKE_CXXFLAGS += -msse2 -mfpmath=sse
 +}
-+
+ 
  valgrind {
      DEFINES += V4_USE_VALGRIND
- }
-Index: qtdeclarative-everywhere-src-5.13.0-beta1/src/qml/jsruntime/qv4global_p.h
+Index: qtdeclarative-everywhere-src-5.14.0-alpha/src/qml/configure.json
 ===================================================================
---- qtdeclarative-everywhere-src-5.13.0-beta1.orig/src/qml/jsruntime/qv4global_p.h
-+++ qtdeclarative-everywhere-src-5.13.0-beta1/src/qml/jsruntime/qv4global_p.h
-@@ -115,7 +115,7 @@ inline double trunc(double d) { return d
- 
- // Black list some platforms
- #if defined(V4_ENABLE_JIT)
--#if defined(Q_OS_IOS) || defined(Q_OS_TVOS)
-+#if defined(Q_OS_IOS) || defined(Q_OS_TVOS) || (defined(Q_PROCESSOR_X86) && !defined(__SSE2__))
- #    undef V4_ENABLE_JIT
- #endif
- #endif
-Index: qtdeclarative-everywhere-src-5.13.0-beta1/src/qml/qml/v8/qv8engine.cpp
-===================================================================
---- qtdeclarative-everywhere-src-5.13.0-beta1.orig/src/qml/qml/v8/qv8engine.cpp
-+++ qtdeclarative-everywhere-src-5.13.0-beta1/src/qml/qml/v8/qv8engine.cpp
-@@ -141,7 +141,7 @@ QV8Engine::QV8Engine(QV4::ExecutionEngin
- #ifndef Q_OS_WASM // wasm does not have working simd QTBUG-63924
- #ifdef Q_PROCESSOR_X86_32
-     if (!qCpuHasFeature(SSE2)) {
--        qFatal("This program requires an X86 processor that supports SSE2 extension, at least a Pentium 4 or newer");
-+        qDebug("This program requires an X86 processor that supports SSE2 extension, at least a Pentium 4 or newer, processors missing the extension are NOT supported to run QML2 code!");
-     }
- #endif
- #endif
+--- qtdeclarative-everywhere-src-5.14.0-alpha.orig/src/qml/configure.json
++++ qtdeclarative-everywhere-src-5.14.0-alpha/src/qml/configure.json
+@@ -8,6 +8,7 @@
+     "commandline": {
+         "options": {
+             "qml-network": "boolean",
++            "qml-jit": "boolean",
+             "qml-debug": "boolean"
+         }
+     },
+@@ -90,7 +91,7 @@
+             "purpose": "Provides a JIT for QML and JavaScript",
+             "section": "QML",
+             "condition": [
+-                "   (arch.i386   && tests.pointer_32bit && features.sse2)
++                "   (arch.i386   && tests.pointer_32bit)
+                  || (arch.x86_64 && tests.pointer_64bit && features.sse2)
+                  || (arch.arm    && tests.pointer_32bit && tests.arm_fp && tests.arm_thumb
+                      && (config.linux || config.ios || config.tvos || config.qnx))
