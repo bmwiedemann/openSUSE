@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jan 17 10:53:14 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Remove patch perl-XML-LibXSLT-lib-versions.patch (not needed anymore)
+
+-------------------------------------------------------------------
+Fri Jan 17 03:13:08 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.99
+   see /usr/share/doc/packages/perl-XML-LibXSLT/Changes
+
+  1.99    2020-01-16
+      - Remove checks for libxslt versions
+          - https://rt.cpan.org/Ticket/Display.html?id=131155
+          - Thanks to SREZIC and others
+          - These checks were much maligned.
+  
+  1.98    2020-01-16
+      - Replace xslt-config with plkg-config
+          - The former is going away
+          - https://github.com/shlomif/perl-XML-LibXSLT/pull/3
+          - Thanks to Debian.
+
+-------------------------------------------------------------------
+Wed Jan 15 17:03:36 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Fix cpanspec.yml (duplicate mentioning of patch)
+
+-------------------------------------------------------------------
+Wed Jan 15 03:13:53 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.97
+   see /usr/share/doc/packages/perl-XML-LibXSLT/Changes
+
+  1.97    2020-01-14
+      - Tests hot fix for https://rt.cpan.org/Public/Bug/Display.html?id=131457
+          - Tests failed with XML::LibXML v 2.0202
+          - Thanks to jplesnik from Red Hat.
+
+-------------------------------------------------------------------
 Thu Nov 28 15:22:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix basic test that fails when build and run time versions are the same

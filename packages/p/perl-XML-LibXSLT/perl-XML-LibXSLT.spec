@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-LibXSLT
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           perl-XML-LibXSLT
-Version:        1.96
+Version:        1.99
 Release:        0
 %define cpan_name XML-LibXSLT
 Summary:        Interface to the GNOME libxslt library
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/%{cpan_name}
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(XML::LibXML) >= 1.70
@@ -33,7 +34,6 @@ Requires:       perl(XML::LibXML) >= 1.70
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libxslt-devel
-Patch0:         perl-XML-LibXSLT-lib-versions.patch
 # MANUAL END
 
 %description
@@ -43,9 +43,6 @@ tests showing this to be more than twice as fast as Sablotron.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-# MANUAL BEGIN
-%patch0 -p1
-# MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
