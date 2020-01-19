@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 19 11:03:29 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.2
+  * Added ML_NOSKYWALLS and ML_DRAWFULLHEIGHT
+  * Added support for new Bethesda.Net Unity Edition WADs.
+
+-------------------------------------------------------------------
+Sat Jan 11 22:33:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.1
+  * New softpoly backend for the hardware renderer.
+  * Advanced texture colorization options.
+  * Scripted map postprocessor.
+  * Dictionary class for ZScript.
+  * Add PSPF_PLAYERTRANSLATED flag (makes a PSprite layer
+    translated to the user's color).
+  * Support for MIDI on Linux via ALSA sequencer.
+
+-------------------------------------------------------------------
 Tue Dec 17 00:10:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.4
