@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Dec 16 14:43:39 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add %{_sbindir}/makewhatis to the alternatives mechanism to
+  avoid conflict with the mandoc package.
+
+-------------------------------------------------------------------
+Sun Mar 10 17:27:07 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- This package is meant as an alternative lightweight replacement
+  for man-pages package. It does not have that many dependencies,
+  it is written in C, see http://mandoc.bsd.lv/ for more.
+- Update to the 1.14.5 release proper:
+  * The apropos(1) utility now accepts case-insensitive extended
+    regular expressions by default, improving POSIX compliance
+    (thanks to Wolfram Schneider for the suggestion).
+  * The new man(1) -O tag[=term] output option opens a page at the
+    definition of a term (thanks to Klemens Nanni for the suggestion).
+  * The output from tbl(7) has been significantly improved in both
+    the HTML and the UTF-8 output modes (thanks to Pali Rohar for
+    many reports and suggestions).
+  * Several syntax errors have been fixed in HTML output and the
+    HTML output code quality has been further improved, in particular
+    with respect to paragraphs, tagged lists, and tooltips
+    (thanks to John Gardner for significant help).
+  * Low-level roff(7) support has been further improved such that
+    mandoc can now handle the manual pages of the groff package.
+  * Many bugs have been fixed.
+
+-------------------------------------------------------------------
+Wed Mar  6 21:45:26 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 1.14.5rc1. Changes too many to enlist here, for the
+  complete list see file NEWS in the package.
+- Add Provides and Conflicts man.
+- Add alternatives for all commands and manpages.
+
+-------------------------------------------------------------------
+Wed Mar  6 17:20:58 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Fix SPEC file according to the review by werner@suse.com. Thank
+  you!
+
+-------------------------------------------------------------------
+Wed Nov 28 13:52:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Initial package of mandoc 1.14.4
