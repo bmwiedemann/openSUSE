@@ -16,7 +16,6 @@
 #
 
 
-%define clang_sonum 3.8
 %define lname   libKF5ItemModels5
 %define _tar_path 5.66
 # Full KF5 version (e.g. 5.33.0)
@@ -45,11 +44,11 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.11.0
 %if %{with python}
-BuildRequires:  python-clang
-BuildRequires:  python-devel
-BuildRequires:  python-qt5-devel
-BuildRequires:  python-qt5-utils
-BuildRequires:  python-sip-devel
+BuildRequires:  python3-clang
+BuildRequires:  python3-devel
+BuildRequires:  python3-qt5-devel
+BuildRequires:  python3-qt5-utils
+BuildRequires:  python3-sip-devel
 %endif
 
 %description
@@ -79,7 +78,7 @@ Development files.
 Summary:        Set of item models extending the Qt model-view framework
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
-%requires_python_sip_api
+%requires_python3_sip_api
 
 %description -n python-%{name}
 KItemModels provides a set of item models extending the Qt model-view framework.
@@ -90,7 +89,7 @@ Python bindings.
 %setup -q
 
 %build
-  %cmake_kf5 -d build -- -Dlibclang_LIBRARY=%{_libdir}/libclang.so.%{clang_sonum}
+  %cmake_kf5 -d build
   %make_jobs
 
 %install
@@ -106,6 +105,7 @@ Python bindings.
 %{_kf5_debugdir}/*.categories
 
 %files devel
+%license COPYING*
 %{_kf5_libdir}/libKF5ItemModels.so
 %{_kf5_libdir}/cmake/KF5ItemModels/
 %{_kf5_includedir}/
@@ -113,7 +113,8 @@ Python bindings.
 
 %if %{with python}
 %files -n python-%{name}
-%{py_libdir}/dist-packages/PyKF5
+%license COPYING*
+%{python3_sitearch}/PyKF5
 %{_datadir}/sip/PyKF5/
 %endif
 
