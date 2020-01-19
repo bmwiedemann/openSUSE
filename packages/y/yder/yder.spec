@@ -1,7 +1,7 @@
 #
 # spec file for package yder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 1_4
 Name:           yder
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 Summary:        Logging library written in C
 License:        LGPL-2.1-or-later
