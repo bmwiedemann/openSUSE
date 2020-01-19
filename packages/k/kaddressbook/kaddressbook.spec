@@ -35,7 +35,6 @@ Source2:        applications.keyring
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiSearch)
