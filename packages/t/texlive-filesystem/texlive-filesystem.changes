@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 12:02:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Be sure that owner of ls-R files are corrected even on update
+  of already existing texlive filesystem
+
+-------------------------------------------------------------------
 Fri Jan 10 12:35:50 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Set default user for ls-R files and font cache directories

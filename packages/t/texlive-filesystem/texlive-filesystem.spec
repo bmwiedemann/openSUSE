@@ -15387,6 +15387,19 @@ popd
 
 %pre
 %{_bindir}/getent group %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
+# the ls-R file on update
+error=0
+for dir in	%{_texmfconfdir}	\
+		%{_fontcache}		\
+		%{_texmfvardir}		\
+		%{_texmfvardir}/dist	\
+		%{_texmfvardir}/main
+do
+    test -e ${dir}/ls-R || continue
+    test "$(stat --format '%U:%G' ${dir}/ls-R)" != %{nobody}:%{texgrp}  || continue
+    chown %{nobody}:%{texgrp} ${dir}/ls-R || error=1
+done
+test $error = 0 || exit 1
 
 %post
 %fillup_only -n texlive

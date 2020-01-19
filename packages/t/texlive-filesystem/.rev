@@ -388,4 +388,13 @@
   font cache directories (bsc#1158910)</comment>
     <requestid>762831</requestid>
   </revision>
+  <revision rev="40" vrev="43">
+    <srcmd5>859033db98e7d4683ca57597e252c30b</srcmd5>
+    <version>unknown</version>
+    <time>1579463593</time>
+    <user>dimstar_suse</user>
+    <comment>- Be sure that owner of ls-R files are corrected even on update
+  of already existing texlive filesystem</comment>
+    <requestid>764960</requestid>
+  </revision>
 </revisionlist>
