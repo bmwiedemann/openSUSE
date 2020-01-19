@@ -31,4 +31,12 @@
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738302</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>177404eadd1a1c16bce4b8f495e5cc22</srcmd5>
+    <version>1.7.0</version>
+    <time>1579463794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0 (2019-02-01), also fixes bsc#1123996 (CVE-2017-18361)</comment>
+    <requestid>765544</requestid>
+  </revision>
 </revisionlist>
