@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 20:15:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.4:
+  * libqmi-glib: the logic behind QMI_DEVICE_OPEN_FLAGS_VERSION_INFO
+    has been updated, and from now on it will only make sure the
+    version info of the device is loaded when it's opened.
+    The library will no longer prevent a given message from being
+    sent to the module based on the version information kept in
+    the message database.
+  * docs: fixed Since tags in UIM messages using the fixed
+    "Session" TLV introduced in 1.22.
+
+-------------------------------------------------------------------
 Sat Jan  4 17:47:58 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Only require python3-base package for building instead of
