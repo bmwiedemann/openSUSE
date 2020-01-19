@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 14 08:48:14 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.9.16
+  * Fixed three failing Magick.NET unit tests.
+  * Also support svg:xml-parse-huge when using librsvg.
+  * Optimize -evaluate-sequence option (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1824).
+  * Support Fx do() iterator.
+  * `magick -size 100x100 xc:black black.pnm` no longer creates a white image
+    (reference https://github.com/ImageMagick/ImageMagick/issues/1817).
+  * setjmp/longjmp in jpeg.c no longer trigger undefind behavior (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&t=37379).
+  * Permit compositing in the CMYK colorspace (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&t=37368).
+
+-------------------------------------------------------------------
 Wed Jan  8 09:07:45 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.9.14
