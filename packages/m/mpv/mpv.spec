@@ -23,7 +23,6 @@
 %define _mbc_ver 3.3.18
 %define _mpv_ver 0.31.0+git.1577540072.01de2a9bd5
 %define lname   libmpv1
-
 Name:           mpv
 Version:        %{_mpv_ver}
 Release:        0
@@ -102,6 +101,7 @@ Requires(postun): hicolor-icon-theme
 Requires(postun): update-desktop-files
 # Used via LUA scripts
 Recommends:     youtube-dl
+Conflicts:      mpv-plugin-mpris < 0.4
 # Obsoletion of mplayer2 that is dead for 2 years now
 Provides:       mplayer2 = 20140101
 Obsoletes:      mplayer2 < 20140101
@@ -146,7 +146,7 @@ Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name} = %{_mpv_ver}
 Requires:       bash-completion
 Recommends:     xrandr
-Supplements:    packageand(mpv:bash)
+Supplements:    (mpv and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -167,7 +167,7 @@ Summary:        ZSH Completion for %{name}
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name} = %{_mpv_ver}
-Supplements:    packageand(mpv:zsh)
+Supplements:    (mpv and zsh)
 BuildArch:      noarch
 
 %description zsh-completion

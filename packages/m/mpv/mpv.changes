@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 18 11:33:05 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Run spec-cleaner
+- Conflict with broken versions of mpv-plugin-mpris
+
+-------------------------------------------------------------------
 Sat Jan 11 17:17:47 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update mpv-bash-completion to 3.3.18

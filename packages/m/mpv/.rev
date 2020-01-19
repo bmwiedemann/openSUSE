@@ -684,4 +684,14 @@
     <comment></comment>
     <requestid>763371</requestid>
   </revision>
+  <revision rev="65" vrev="43">
+    <srcmd5>87f470a15e446a9888d9fdfc91785ae4</srcmd5>
+    <version>unknown</version>
+    <time>1579463812</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+- Conflict with broken versions of mpv-plugin-mpris
+</comment>
+    <requestid>765455</requestid>
+  </revision>
 </revisionlist>
