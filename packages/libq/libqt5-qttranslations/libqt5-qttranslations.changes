@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:57:26 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the license tag.
+
+-------------------------------------------------------------------
+Thu Dec 12 12:55:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0:
+  * New bugfix release
+  * For the changes between 5.13.2 and 5.14.0 please see:
+    https://code.qt.io/cgit/qt/qttranslations.git/tree/dist/changes-5.14.0?h=v5.14.0
+  * For the changes between 5.13.1 and 5.13.2 please see:
+    https://code.qt.io/cgit/qt/qttranslations.git/tree/dist/changes-5.13.2?h=v5.14.0
+
+-------------------------------------------------------------------
+Wed Dec  4 14:38:10 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-rc:
+  * New bugfix release
+  * No changelog available
+  * For more details please see:
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+
+-------------------------------------------------------------------
+Tue Nov 12 13:03:19 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Oct 24 13:23:08 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct 15 12:34:53 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Sep 30 13:30:38 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-alpha:
+  * New feature release
+  * No changelog available
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+
+-------------------------------------------------------------------
 Fri Sep  6 08:04:39 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.13.1:
@@ -218,6 +273,7 @@ Thu Dec  7 12:18:15 UTC 2017 - fabian@ritter-vogt.de
 
 - Update to 5.10.0 final
   * New bugfix release
+- Contains fixed translations (bsc#1082569)
 
 -------------------------------------------------------------------
 Sun Dec  3 14:13:01 UTC 2017 - fabian@ritter-vogt.de
