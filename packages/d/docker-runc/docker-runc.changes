@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 04:44:36 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Add backported fix for CVE-2019-19921. bsc#1160452
+  + CVE-2019-19921.patch
+
+-------------------------------------------------------------------
 Tue Oct  8 23:39:02 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc 3e425f80a8c9, which is required for Docker 19.03.3-ce.

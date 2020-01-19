@@ -1,7 +1,7 @@
 #
 # spec file for package docker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,11 +48,13 @@ Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/opencontainers/runc
+URL:            https://github.com/opencontainers/runc
 Source:         %{realname}-git.%{git_short}.tar.xz
 Source1:        %{realname}-rpmlintrc
 # FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2130.
 Patch1:         CVE-2019-16884.patch
+# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2207.
+Patch2:         CVE-2019-19921.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  libapparmor-devel
@@ -91,6 +93,8 @@ and has grown to become a separate project entirely.
 %setup -q -n %{realname}-git.%{git_short}
 # CVE-2019-16884 bsc#1152308
 %patch1 -p1
+# CVE-2019-19921
+%patch2 -p1
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at
