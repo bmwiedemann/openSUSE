@@ -1,0 +1,617 @@
+-------------------------------------------------------------------
+Thu Jan 16 19:59:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.6
+  * fix a bug in verbose mode if --nosensors is used
+
+-------------------------------------------------------------------
+Sat Dec  7 14:01:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.5
+  * update GLPlugin, reduce default maxrepetitions to 20
+
+-------------------------------------------------------------------
+Thu Dec  5 18:41:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.4
+  * reduce maxrepetitions for f5 sysCpuTable and ifTables
+
+-------------------------------------------------------------------
+Wed Dec  4 19:09:45 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.3
+  * add --nosensors which skips endless entSensor[Threshold]Table
+    for Nexuses
+
+-------------------------------------------------------------------
+Mon Nov 25 17:12:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.2
+  * fix a division by 0 for cisco reserved memory
+
+-------------------------------------------------------------------
+Tue Oct  8 11:13:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.1
+  * fix a bug in cisco wlan accesspoint-modes (InetAddrType)
+  * add session-usage for palo alto
+  * update glplugin, more nexus hardware-health improvements
+
+-------------------------------------------------------------------
+Thu Aug 29 20:54:49 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.0.6
+  * reduce runtime for nexus hardware-health
+
+-------------------------------------------------------------------
+Tue Aug 27 09:50:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.0.5
+  * fix EIGRP filtering
+
+-------------------------------------------------------------------
+Mon Jul 29 20:10:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.0.4.1
+  * fix a bug in fortigate ha-role
+  * fix a bug in interface-uptime
+
+-------------------------------------------------------------------
+Sun Jul 21 15:49:35 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.0.3
+  * fix a bug in interface-uptime
+  * fix a bug in mode ha-role for Fortigate
+
+-------------------------------------------------------------------
+Tue Jun 25 14:02:49 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.0.1
+  * fix a bug in bgp/route modes for the non-standalone version
+    (InetAddressMaker)
+
+-------------------------------------------------------------------
+Fri Jun 21 21:26:21 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10
+  * remove duplicate routes (ip-table + inet-table)
+  * --report long+address shows ip addresses for interfaces
+
+-------------------------------------------------------------------
+Sun Jun 16 09:08:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.9.0.4
+  * finish barracuda ha-role mode
+
+-------------------------------------------------------------------
+Fri Jun 14 14:22:31 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versio 7.9.0.3
+  * detect f5 firmware versions 14+
+
+-------------------------------------------------------------------
+Thu Jun 13 19:02:47 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.9.0.2
+  * fix routes. inetCidrRouteTable does not really replace
+    ipCidrRouteTable
+- Update to version  7.9.0.1
+  * fallback to BGP4-MIB if CISCO-BGP4-MIB is incomplete
+* Update to version  7.9
+  * add EIGRP
+  * fix ASA user/connection/session-count
+
+-------------------------------------------------------------------
+Sun Jun  9 10:01:06 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.8
+  * GLPlugin with better ip4/ip6 handling
+  * Fix huawei subclasses
+  * Interfaces --name filter expression can contain _adminup_ as a
+    secondary filter
+  * Route modes can handle v6
+  * Use OSPFV3-MIB, support v6
+  * Add CISCO-BGP4-MIB, support v6
+
+-------------------------------------------------------------------
+Fri Apr 26 20:21:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add perl-Net-SNMP to Requires
+
+-------------------------------------------------------------------
+Sun Apr 14 10:48:02 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.7
+  * add Barracuda
+  * add mode count-connections for F5
+
+-------------------------------------------------------------------
+Thu Apr  4 08:20:47 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+- Update to version 7.6
+  * add mode watch-ospf-neighbors 
+
+-------------------------------------------------------------------
+Mon Mar 18 08:35:18 UTC 2019 - lars@linux-schulserver.de - 7.5.0.1
+
+- Update to version 7.5.0.1
+  *  remove adsl-line-mib
+- Update check_nwc_health.php to version 1.1 to work with pnp 0.6.25 
+  and beyond
+- use %%license macro where appropriate
+- use new SPDX license description
+
+-------------------------------------------------------------------
+Mon Feb 18 15:21:08 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.5
+  * add Draytek Vigor
+  * add mode interface-security (cisco)
+  * finish ha-status for cisco wlc
+  * start ha for cisco wlc
+  * improve paloalto uptime model string
+  * improve ucd memory
+  * fix cisco bgp for routers which do not export the proptietary mib, but bgp4
+  * fix undefs for Huawei with older Mibs
+  * fix fortigate sensors
+  * detect more Huawei devices
+  * use proprietary bgp mib for cisco (and add ipv6)
+  * make ospd v6-ready
+  * add servertpe generic_ucd
+  * fix ciscoipsecflow fail timestamps
+  * add modes ha-status/role for fortigate
+  * update glplugin (CISCO-STACKWISE-MIB)
+  * update glplugin (for go-worker)
+  * better fortigate detection
+
+-------------------------------------------------------------------
+Sat Sep 29 18:59:27 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.3.0.2
+  * update glplugin
+- Update to version 7.3.0.1
+  * re-enable Huawei CloudEngine support
+- Update to version 7.3
+  * update stack-status
+  * add servertype hostresource
+  * update cisco vpn-status
+
+-------------------------------------------------------------------
+Sat Aug 18 18:00:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.2.0.2
+  * bugfix in interface-modes where –name3 found no match
+  * bugfix in ios ha-status, ignore cable “failover” description
+
+-------------------------------------------------------------------
+Thu Aug  2 09:55:08 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.2
+  * add packet forwarding engine metrics for juniper standby nodes
+
+-------------------------------------------------------------------
+Fri Jul 27 06:07:32 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.1
+  * add custom thresholds for cisco ccm
+  * detect fritzbox 7490
+
+-------------------------------------------------------------------
+Sat Jul 14 18:17:38 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.0.2
+  * add interface-uptime
+
+-------------------------------------------------------------------
+Fri Jul  6 06:03:29 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.0.1.5
+  * fix a bug in non-map FabOS memory
+  * set thresholds to 100% for cisco asa heapcache memory-usage
+
+-------------------------------------------------------------------
+Tue Jun 19 06:27:35 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.0.1.5
+  * update glplugin (get_snmp_table_objects waja fix)
+
+-------------------------------------------------------------------
+Tue Jun 12 06:06:19 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.0.1.4
+  * simplify the cisco memory exceptions
+
+-------------------------------------------------------------------
+Tue May  1 08:20:27 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.0.1.3
+  * bugfix in cisco global shared memory > 9.3.2
+  * fix a bug in link-aggregation-availability
+  * fix a bug in cisco enhanced mempool mib and posixmem (thx sabedevops)
+  * improve f5, add ha-role, check-config, count-connections
+  * update GLPlugin
+  * ignore free space of iso mounts in hostresource mib
+  * fix a bug in hostresourcesmib memory calc. (arista eos)
+  * update glplugn, add modes encode/decode, rfc3986
+  * add bluecoat asg fix from Stefan Kublik
+  * check the clock of checkpoint fw
+  * fix a bug in checkpoint vpn-status
+  * code improvements, fix hh3c entities
+  * fix f5 versions
+  * add interface-duplex
+  * fix a bug in vsx-firewall1-fork
+  * add checkpoint ha-status, fix checkpoint vpn-status
+  * rewrite pretty_sysdesc
+  * updateGLPlugin (remove session timeout)
+  * implement pool-completeness for f5-gtm-pools (--role gtm)
+  * ignore dummy filesystems in HOSTRESOURCEMIBS
+
+-------------------------------------------------------------------
+Sun Oct  1 14:23:22 UTC 2017 - mardnh@gmx.de
+
+- Update to version 6.4.1.6
+  + get ospf table twice if a 2nd contect exists
+- Update to version 6.4.1.5
+  + update GLPlugin (use 2nd context for OSPF)
+- Update to version 6.4.1.4
+  + fix interface-stack-status, arista's ifStackTable was buggy
+- Update to version 6.4.1.3
+  + blacklist l3 routing card (and power supply) if a nexus is used as l2 switch
+- Update to version 6.4.1.2
+  + workaround for CSCuv18572
+- Update to version 6.4.1.1
+  + fix hostresourcemib, interface sit0 can be down by default
+    (is disabled in Cisco UC)
+- Update to version 6.4.1
+  + add vpn-status for checkpoint
+- Update to version 6.4.0.4
+  + fix brocade aliasing in interface-status
+- Update to version 6.4.0.3
+  + fix brocade alias aliasing
+- Update to version 6.4.0.2
+  + update glplugin, sw-mib fix
+- Update to version 6.4.0.1
+  + replace empty ifAlias with swFCPortName for FabOS (Brocade) devices
+  + merge pr #147, thanks arigaud. skip undef temperatured of foundry devices
+  + implement eltex gear (pull request #144)
+  + fix a perl-undef in Juniper BGP (pull request #143)
+  + nsPowerDesc can be null (pullrequest #134)
+
+-------------------------------------------------------------------
+Tue Aug  8 06:27:01 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3.0.8
+  fix C3750 redundant power supplies
+
+-------------------------------------------------------------------
+Mon Aug  7 06:59:07 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3.0.7
+  + fix undefined thresholds in arista sensors
+
+-------------------------------------------------------------------
+Tue Jul 18 06:50:07 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3.0.6
+  + fix false positives in cisco ethernet service modules SM-ES3G-24-P
+    allow mitigation of cisco disabled catalyst power supplies
+
+-------------------------------------------------------------------
+Wed Jul 12 18:14:00 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3.0.5
+  + allow mitigation of a subLayerDown stack
+  + update GLPlugin (lcos-mib)
+
+-------------------------------------------------------------------
+Tue Jun 20 18:58:44 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3.0.3
+  + update GLPlugin (lcos-mib)
+
+-------------------------------------------------------------------
+Sat Jun 10 07:43:43 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3.0.2
+  + fix a bug in f5 member connections (Thanks Yannick Charton)
+  + skip ifIndex in interface-stack-status (makes nexus crash)
+
+-------------------------------------------------------------------
+Thu Jun  8 20:13:07 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3.0.1
+  + update glplugin
+
+-------------------------------------------------------------------
+Fri Jun  2 12:46:39 UTC 2017 - mardnh@gmx.de
+
+- update to 6.3
+  + update glplugin
+  + add Lancom
+
+-------------------------------------------------------------------
+Sat May 20 06:48:56 UTC 2017 - mardnh@gmx.de
+
+- update to 6.2.2.3
+  + workaround for ios 12.x and buggy ifstacktable
+
+-------------------------------------------------------------------
+Wed May 17 19:37:18 UTC 2017 - mardnh@gmx.de
+
+- update to 6.2.2.2
+  + and fix list-interfaces...
+  + fix --name for non-uinique indices
+- update to  6.2.2
+  + add an index to ifDescr which have no unique names
+
+-------------------------------------------------------------------
+Tue May 16 06:38:24 UTC 2017 - mardnh@gmx.de
+
+- update to 6.2.1.5
+  + GLPlugin update
+- update to 6.2.1.4
+  GLPlugin update
+
+-------------------------------------------------------------------
+Wed May 10 17:40:12 UTC 2017 - mardnh@gmx.de
+
+- update to 6.2.1.3
+  + fix a bug in interface-health
+
+-------------------------------------------------------------------
+Thu May  4 11:28:43 UTC 2017 - mardnh@gmx.de
+
+- update to 6.2.0.2
+  + fix a bug in interface-health and 10GE ports.
+
+-------------------------------------------------------------------
+Tue May  2 18:28:44 UTC 2017 - mardnh@gmx.de
+
+- update to 6.2.0.1
+  + use carrier if operstatus is unknown for linuxlocal interfaces
+  + add dummy speed to linux virtio interfaces
+
+-------------------------------------------------------------------
+Tue Apr 18 12:25:47 UTC 2017 - mardnh@gmx.de
+
+- update to 6.2.0
+  + add support for junox bgp with ipv6, thanks dupondje
+  + fix a bug in bluecoat, allow warningx now
+- update to 6.1.1
+  + support Brocade Ironport and enhance FOUNDRY-SN-AGENT-MIB
+
+-------------------------------------------------------------------
+Sun Mar 19 13:59:40 UTC 2017 - mardnh@gmx.de
+
+- update to 6.0.1.3
+  + fix uninitialized-bug
+  + special treatment for counterless StackSub interfaces
+  + Merge pull request #126 from ciscoqid/patch-1
+  + remove steelhead prettyprint
+  + cisco chassis check snmp tuning
+  + fix cisco-envmon-mib
+  + nxos hardware check snmp tuning
+  + fix cisco wlan no-ap clustercheck
+  + detect more f5 models
+  + add f5 wide ip check
+  + improve host-resource-mib
+  + speedup interface checks
+  + add interface-etherstats
+  + add ha-status for juniper vsd members
+  + customer release #12.2a
+  + add mode interface-stack-status
+  + add riverbed steelhead
+  + bugfix in f5 output message
+  + make f5 perfdata labels more consistent
+  + checkpoint multicore. Thanks Peter Hanraets
+  + fix pool checks for big-ip 12.x (thanks abzeidler)
+  + fallback to ios if cisco wlc has no cpu/mem oids
+  + bugfix in chassis-hardware-health delta of ports
+  + bugfix in chassis-hardware-health duplicate fan output
+  + fix cisco wlc ap admin status
+  + detect more cisco wireless controllers
+  + update GLPlugin (uptime)
+  + detect checkpoint gaia
+  + detect more hp procurve switches (J9624A etc. may need new
+    firmware revision RA.16.02.0012, ROM RA.15.13)
+  + /dev/md on Juniper srx is considered as procfs
+  + fix performance labels for HOSTRESOURCESMIB dev filesystems
+  + optimize uptime, no bulk for brocade sensors
+  + bluecoat disk usage can be overridden with own thresholds
+  + add JUNIPER-MIB
+  + fix in cisco asr lsmpi memory
+  + skip thresholds for dev filesystem in HOSTRESOURCESMIB
+  + detect juniper pulse secure
+  + juniper srx temperatures and leds
+  + reverse usage/free in hostresourcemib memory-usage, so the
+    samethresholds can be use for every kind of device
+  + mv juniper-mib to glplugin
+  + add etherstats
+  + fix nexus sensor perfdata, metrics without thresh. were not shown
+  + add smart-home-device-temperature, add Comet DECT
+  + fix memory-usage for Catalyst L3 (which have empty
+    CISCO-ENHANCED-MEMPOOL-MIB)
+  + add arista
+  + add cisco small business
+  + add mode count-accesspoint-clients for cisco wlc
+  + don't use | in interface-availability ascii output for notifications
+  + update ucd-diskio, cumulus
+  + update GLPlugin/Extraopts
+
+-------------------------------------------------------------------
+Tue Sep  6 14:35:57 UTC 2016 - lars@linux-schulserver.de
+
+- update to 5.7.1.3:
+  + remove trailing Nul from Bintec memories
+  + Bintec doesn't like bulk requests
+  + repair a pull request. 
+  + update GLPlugin
+
+-------------------------------------------------------------------
+Sun May 29 19:16:19 UTC 2016 - mardnh@gmx.de
+
+- update to 5.7.0.3
+ + bugfix in nortel hardware-checks.
+ + Do not check UCDMIB swap when there is no swap
+ + fix a typo in a filename
+ + add Bintec Bibo (1202)
+ + add Cisco ASA mode ha-role (including cluster-health check)
+ + fix detection of Pulse Secure Gateways
+ + more dhoffend pull requests (linux ucdmib memory, lmsensors)
+ + add vrrp-modes
+ + dhoffend pull requests (linux ucdmib, lsmpio bugfix, hsrp multiple roles)
+ + add CISCO-STACKWISE-MIB
+ + add processor index in cisco enhanced memory
+ + Use 64bit-counters from cisco-enhanced-mempool-mib if available (cisco bug CSCuu46705)
+ + Simplify interface code
+ + bugfix in –ifspeed
+ + add mode chassis-hardware-health (for cisco)
+ + update checkpoint, use new mib
+ + fallback if no cisco cpu index can be found
+ + refactor interface-usage, bugfix in list-interfaces
+ + bugfix in link-aggregation-availability thresholds
+ + fix cisco bgp prefix count if no peers were found
+ + small fix in interfaces, add flat_indices
+ + bugfix in entity-sensor-mib
+ + add glplugin submodule
+ + pr #52 cisco-alarm-mib parse octets (Thanks dhoffend)
+ + Fix IOS-XE which no longer support the ENVMON MIB. Use FRU MIB instead.
+ + introduce new units (based on 1000 instead of 1024),
+   will have an impact on interface perfdata thresholds
+ + add Huawei CloudEngine
+ + chomp Checkpoint HA state
+ + Add CheckPoint Power Supply Check
+ + detect CheckPoint IPSO (Thanks Claudio Kuenzler)
+ + fix standalone version
+ + add –mode interface-health to linux, solaris, windows
+ + find more bluecoat models
+ + add –mode interface-health
+ + merge huawei h3c from lazyfrosch-hh3c-switches
+ + output ifAlias in interface-modes (if it exists and != ifDescr)
+ + add rapid-city-mib
+ + add entity-mib for cisco asa
+
+-------------------------------------------------------------------
+Wed Dec 23 21:20:01 UTC 2015 - mardnh@gmx.de
+
+- update to 4.6.1
+ + add --mode interface-health to linux, solaris, windows
+ + find more bluecoat models
+ + add --mode interface-health
+ + merge huawei h3c from lazyfrosch-hh3c-switches
+ + output ifAlias in interface-modes (if it exists and != ifDescr)
+ + add rapid-city-mib
+ + add entity-mib for cisco asa
+
+-------------------------------------------------------------------
+Fri Sep 25 09:08:54 UTC 2015 - mardnh@gmx.de
+
+- update to 4.3.1
+ + add ha-role for Aruba
+ + add Alcatel OmniAccess (Aruba)
+ + GLPlugin update
+ + pull request #36. bugfix in cisco asyncos keys (Thanks Frank Meischner)
+ + pull request #25. cisco check-config more useful. (Thanks mhoogveld)
+ + add Nortel S5-CHASSIS-MIB, works for 4526GTX
+ + add OneAccess OneOS
+ + add Solaris local interfaces
+ + GLPlugin update
+ + add --count-bgp-prefixes for cisco
+ + --disable-standalone
+ + add --watch-bgp-peers
+ + add --reset for watch-bgp-peers
+ + bugfix in f5-pool-checks, where oids are not available during a transition"
+ + allow --name dest/cidr for mode count-routes
+ + fix a bug in f5 member connection limit noSuchInstance
+ + add mode count-routes (find mpls problems)
+ + add mode count-bgp-peers
+ + add --community2 (necessary if there are different ospf contexts)
+ + raise max-repetitions for table-bulk-requests (large number of interfaces)
+ + add LM-SENSOR-MIB
+ + bugfix in thresholds of morphed performancedata
+ + implement ospf and modes ospf-neighbor-status and list-ospf-neighbors
+ + separate discards from errors in linuxlocal
+ + combine pool-connections and pool-completion for f5
+ + finish pool-complections
+ + detect (not implement!) netgear
+ + add mode pool-connections for f5
+ + allow mitigation of admin down bgp peer
+ + add morphperfdata
+ + bugfix in GLPlugin (multiple --negate)
+ + more trailing null cleanup. (Thanks Jörg Linge)
+ + bugfix in interface-usage windows+snmp+trailing null in ifDescr. (Thanks Jörg Linge)
+ + bugfix in interface-status and snmp-table-get (no more false 64bit interfaces)
+ + shorten interface-output with report=short
+ + fix a perl-bug in F5 (was introduced in 3.4.2)
+ + fix lsmpi_io for cisco asr1000 (Thanks Andreas Schulz)
+ + fix Fritz!Box upnp control url (Thanks Bernd)
+ + use fallbacks to find fexes (cefexConfigTable may not be populated)
+ + use cefexConfigTable for mode watch-fexes
+ + bugfix in cisco nexus sensors (had undef perl warnings)
+ + bugfix in bluecoat hardware (skip perfdata of missing psus)
+ + add vpn-status for cisco asa
+ + add windowslocal
+ + unique names for cisco cpus pointing to the same physical entity
+ + remove unnecessary use statement
+ + finalize paloalto ha
+ + make list-interfaces and update-cache faster
+ + hide some debug printfs
+ + add palo alto hardware, sensors, ha
+ + make nexus cpu names unique
+ + bugfix my-modes
+ + add paloaltomib
+ + add Clavister Firewall (Thanks Dirk Goetz)
+ + fix GLPluginSNMP, all timeout-like errors are UNKNOWN
+ + allow warningx/criticalx to override cisco sensor thresholds
+ + bugfix in glplugin (tmp-file-paths wrong under epn) (Thanks Sven Nierlein)
+ + bugfix in bgp error states (Thanks Matthias Gallinger)
+ + bugfix in f5 pools (Thanks Sven Nierlein)
+ + bugfix in interface-usage/ifspeed (Thanks Matthias Gallinger)
+ + bugfix in glpluginsnmp (undef errors with loadbalacer index)
+ + bugfix in glpluginsnmp / (fritzbox cpu undef-error)
+ + bugfix in glplugin/uptime because of buggy snmpengineuptime
+ + bugfix in glplugin/uptime thresholds
+ + add a hack with --name2 which allows shortening of stupid interface names (make dmz1 from Adaptive Security Appliance 'dmz1' interface)
+ + update GLPluginSNMP (timeout handling)
+ + fix interfaces which seem to be 64bit but have no counters
+ + bugfix in offline mode
+ + update GLPlugin
+ + update GLPluginSNMP
+ + bugfix in ios memory criticalx/warningx thresholds
+ + update GLPluginSNMP
+ + improve interface-usage performance data
+ + detect more brocade models
+ + bugfix in interface-usage temp-files
+ + jetzt langts mit der ridiseignerei
+ + massive rewriting of the plugins structure and modules
+ + repair malformed data returned by Net::SNMP
+ + add interface-nat-rejects and interface-nat-session-count for IOS
+ + add hardware-health for cisco asa
+ + bugfix for old brocade devices and missing cpu/memory oids
+ + bugfix in Cisco Call Manager
+ + bugfix in IOS Memory for ASR 9000 image and reserved pool
+ + bugfix in cisco wlc status
+ + add hardware-health for cisco pix
+ + add mode supportedmibs
+ + last fallback alarm-mib for ios without envmon-mib
+ + bugfix in timeticks for hp
+ + bugfix in Nexus sensor thresholds (Thanks Marcel Fischer)
+ + bugfix in snmp-bulk-gets, more secure fallbacks to get-next
+ + bugfix in 64bit-interfaces
+ + GLPlugin update & cleanup
+ + get uptime from the FRAMEWORK-MIB to prevent rollovers
+ + add another cisco unified communication model
+ + handle a missing brocade fabric watch license in cpu-load & memory-usage
+ + add CISCO-ENHANCED-MEMPOOL-MIB
+- fix source url
+
+-------------------------------------------------------------------
+Wed Jul 30 19:19:07 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-nwc_health
+
+-------------------------------------------------------------------
+Fri Apr  4 08:28:02 UTC 2014 - mardnh@gmx.de
+
+- initial package
+
