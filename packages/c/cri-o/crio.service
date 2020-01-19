@@ -9,6 +9,7 @@ Requires=crio-wipe.service
 
 [Service]
 Type=notify
+EnvironmentFile=-/etc/sysconfig/proxy
 EnvironmentFile=-/etc/sysconfig/crio
 Environment=GOTRACEBACK=crash
 ExecStart=/usr/bin/crio $CRIO_OPTIONS

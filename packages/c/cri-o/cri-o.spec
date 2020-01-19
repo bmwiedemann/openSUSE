@@ -23,11 +23,6 @@
 
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
-%define name_source1 crio.service
-%define name_source2 sysconfig.crio
-%define name_source3 crio.conf
-%define name_source4 crio-wipe.service
-%define name_source5 crio-shutdown.service
 Name:           cri-o
 Version:        1.16.1
 Release:        0
@@ -36,13 +31,13 @@ License:        Apache-2.0
 Url:            https://github.com/cri-o/cri-o
 ExcludeArch:    i586
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name_source1}
-Source2:        %{name_source2}
-Source3:        %{name_source3}
+Source1:        crio.service
+Source2:        sysconfig.crio
+Source3:        crio.conf
 Source4:        cri-o-rpmlintrc
 Source5:        kubelet.env
-Source6:        %{name_source4}
-Source7:        %{name_source5}
+Source6:        crio-wipe.service
+Source7:        crio-shutdown.service
 Patch1:         prevent-local-loopback-teardown-rh1754154.patch
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
@@ -112,10 +107,10 @@ cd $HOME/go/src/%{project}
 make
 
 %pre
-%service_add_pre %{name_source1} %{name_source4} %{name_source5}
+%service_add_pre crio.service crio-wipe.service crio-shutdown.service
 
 %post
-%service_add_post %{name_source1} %{name_source4} %{name_source5}
+%service_add_post crio.service crio-wipe.service crio-shutdown.service
 # This is the additional directory where cri-o is going to look up for CNI
 # plugins installed by DaemonSets running on Kubernetes (i.e. Cilium).
 mkdir -p /opt/cni/bin
@@ -124,10 +119,10 @@ mkdir -p /opt/cni/bin
 %fillup_only -n kubelet
 
 %preun
-%service_del_preun %{name_source1} %{name_source4} %{name_source5}
+%service_del_preun crio.service crio-wipe.service crio-shutdown.service
 
 %postun
-%service_del_postun %{name_source1} %{name_source4} %{name_source5}
+%service_del_postun crio.service crio-wipe.service crio-shutdown.service
 
 %install
 cd $HOME/go/src/%{project}
@@ -150,13 +145,13 @@ install -d %{buildroot}/%{_mandir}/man8
 install -m 0644 docs/crio.conf.5 %{buildroot}/%{_mandir}/man5
 install -m 0644 docs/crio.8      %{buildroot}/%{_mandir}/man8
 # Configs
-install -D -m 0644 %{SOURCE3}       %{buildroot}/%{_sysconfdir}/crio/%{name_source3}
+install -D -m 0644 %{SOURCE3}       %{buildroot}/%{_sysconfdir}/crio/crio.conf
 install -D -m 0644 crio-umount.conf %{buildroot}/%{_datadir}/oci-umount/oci-umount.d/cri-umount.conf
-install -D -m 0644 %{SOURCE2}       %{buildroot}%{_fillupdir}/%{name_source2}
+install -D -m 0644 %{SOURCE2}       %{buildroot}%{_fillupdir}/sysconfig.crio
 # Systemd
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name_source1}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name_source4}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name_source5}
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/crio.service
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/crio-wipe.service
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/crio-shutdown.service
 # place kubelet.env in fillupdir
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 # Symlinks to rc files
@@ -189,15 +184,15 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 %license LICENSE
 # Configs
 %dir %{_sysconfdir}/crio
-%config(noreplace) %{_sysconfdir}/crio/%{name_source3}
+%config(noreplace) %{_sysconfdir}/crio/crio.conf
 %dir %{_datadir}/oci-umount
 %dir %{_datadir}/oci-umount/oci-umount.d
 %{_datadir}/oci-umount/oci-umount.d/cri-umount.conf
-%{_fillupdir}/%{name_source2}
+%{_fillupdir}/sysconfig.crio
 # Systemd
-%{_unitdir}/%{name_source1}
-%{_unitdir}/%{name_source4}
-%{_unitdir}/%{name_source5}
+%{_unitdir}/crio.service
+%{_unitdir}/crio-wipe.service
+%{_unitdir}/crio-shutdown.service
 %{_sbindir}/rccrio
 
 %files kubeadm-criconfig

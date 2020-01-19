@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 16 11:56:58 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Include system proxy settings in service if present (bsc#1155323)
+
+-------------------------------------------------------------------
+Thu Jan 16 11:30:27 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Removed the usage of `name_` variables to reduce the error
+  proneness
+- Fixed systemd unit install locations for crio-wipe.service and
+  crio-shutdown.service (bsc#1161056)
+
+-------------------------------------------------------------------
 Fri Jan 10 13:40:13 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add prevent-local-loopback-teardown-rh1754154.patch to stop local loopback interfaces being torndown before cluster is bootstrapped 
