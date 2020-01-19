@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qttools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,55 +16,59 @@
 #
 
 
+%define qt5_snapshot 0
+%define base_name libqt5
+%define real_version 5.14.0
+%define so_version 5.14.0
+%define tar_version qttools-everywhere-src-5.14.0
 %if 0%{?suse_version} >= 1330
 %bcond_without qdoc
 %else
 # Needs clang >= 3.9.0
 %bcond_with qdoc
 %endif
-
-%define qt5_snapshot 0
-
 Name:           libqt5-qttools
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        Qt 5 QtTools Module
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
+# Legal:
+# most src/ subfolders are GPL-3.0-only WITH Qt-GPL-exception-1.0, except:
+# qtpaths is BSD-3-Clause
+# qdoc is GPL-3.0-only WITH Qt-GPL-exception-1.0 + (LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)) == GPL-3.0-only
+# src/shared contains BSD-3-Clause and LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) files. The
+# 'GPL-3.0-only WITH Qt-GPL-exception-1.0' files in this folder are only used on Windows.
+License:        (LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-%define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qttools-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 Source11:       designer5.desktop
 Source12:       linguist5.desktop
 Source13:       assistant5.desktop
 Source14:       qdbusviewer5.desktop
 Source99:       libqt5-qttools-rpmlintrc
-BuildRequires:  fdupes
 %if %{with qdoc}
 BuildRequires:  clang-devel >= 3.9.0
 %endif
+BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-devel >= %{version}
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
 BuildRequires:  libxslt-devel
-BuildRequires:  update-desktop-files
-Recommends:     libqt5-linguist
-Recommends:     libqt5-qtdoc-qch >= %{version}
-%if %qt5_snapshot
+%if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
+BuildRequires:  update-desktop-files
 BuildRequires:  xz
+Requires:       %{name}-qhelpgenerator = %{version}
 # help files are SQLite databases, so assistant/qhelpgenerator need the SQLite plugin
 Requires:       libQt5Sql5-sqlite >= %{version}
 Requires:       libqt5-qdbus = %{version}
 Requires:       libqt5-qtpaths = %{version}
-Requires:       %{name}-qhelpgenerator = %{version}
-%requires_ge libQt5DBus5
+%requires_ge    libQt5DBus5
+Recommends:     libqt5-linguist
+Recommends:     libqt5-qtdoc-qch >= %{version}
 
 %description
 The QtTools modules contains some tools mostly useful for application development.
@@ -78,13 +82,13 @@ and several more.
 %package devel
 Summary:        Development files for the Qt5 Tools library
 Group:          Development/Libraries/X11
+Requires:       %{name}-qhelpgenerator = %{version}
 Requires:       libQt5Designer5 = %{version}
 Requires:       libQt5DesignerComponents5 = %{version}
 Requires:       libQt5Help5 = %{version}
 Requires:       libqt5-linguist-devel = %{version}
 Requires:       libxslt-devel
 Requires:       pkgconfig(Qt5Xml) >= %{so_version}
-Requires:       %{name}-qhelpgenerator = %{version}
 Recommends:     %{name} = %{version}
 Recommends:     %{name}-doc = %{version}
 
@@ -106,6 +110,7 @@ the exact Qt version.
 %package examples
 Summary:        Qt5 tools examples
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-devel
 
 %description examples
@@ -114,6 +119,7 @@ Examples for the libqt5-qttools module.
 %package example-plugins
 Summary:        Example plugins for Qt5 Designer
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Recommends:     %{name}-examples
 
 %description example-plugins
@@ -122,6 +128,7 @@ Example plugins for Qt5 Designer, e.g. a TicTacToe and a World Clock widget.
 %package -n libQt5Designer5
 Summary:        Qt 5 Designer Library
 Group:          Development/Libraries/X11
+License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 %requires_ge    libQt5Widgets5
 %requires_ge    libQt5Xml5
 
@@ -131,6 +138,7 @@ The Qt 5 Designer library.
 %package -n libQt5DesignerComponents5
 Summary:        Qt 5 Designer Components Library
 Group:          Development/Libraries/X11
+License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 Requires:       libQt5Designer5 = %{version}
 
 %description -n libQt5DesignerComponents5
@@ -158,6 +166,7 @@ Binaries for generating .qch help catalogs.
 %package -n libqt5-linguist
 Summary:        Qt 5 Linguist Tools
 Group:          Development/Libraries/X11
+License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 %requires_ge    libQt5PrintSupport5
 %requires_ge    libQt5Widgets5
 %requires_ge    libQt5Xml5
@@ -177,6 +186,7 @@ The Qt 5 Linguist Tools - development files.
 %package -n libqt5-qdbus
 Summary:        Command line client for communication over D-Bus
 Group:          Development/Libraries/X11
+License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 Conflicts:      %{name} < %{version}
 
 %description -n libqt5-qdbus
@@ -185,6 +195,7 @@ Command line client for communication over D-Bus.
 %package -n libqt5-qtpaths
 Summary:        Command line client to QStandardPaths
 Group:          Development/Libraries/X11
+License:        BSD-3-Clause
 Conflicts:      %{name} < %{version}
 
 %description -n libqt5-qtpaths
@@ -193,6 +204,7 @@ Command line client to QStandardPaths.
 %package doc
 Summary:        Qt 5 tool used by Qt Developers to generate documentation
 Group:          Development/Libraries/C and C++
+License:        GPL-3.0-only
 Provides:       libqt5-qtbase-doc = %{version}
 Obsoletes:      libqt5-qtbase-doc < %{version}
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
@@ -216,7 +228,7 @@ Qt 5 tool used by Qt Developers to generate documentation for software projects.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%if %qt5_snapshot
+%if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
@@ -294,6 +306,9 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 %{_datadir}/icons/hicolor/*/apps/qdbusviewer5.png
 %dir %{_libqt5_libdir}/qt5/plugins/designer
 %{_libqt5_libdir}/qt5/plugins/designer/libqquickwidget.so
+# CMake target for some of the binaries in this package. Own the dir to not require CMake
+%dir %{_libqt5_libdir}/cmake/
+%{_libqt5_libdir}/cmake/Qt5AttributionsScannerTools/
 
 %files -n libqt5-linguist
 %license LICENSE.*
@@ -345,6 +360,9 @@ install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{
 %license LICENSE.*
 %{_bindir}/qdoc*
 %{_libqt5_bindir}/qdoc*
+# CMake target for some of the binaries in this package. Own the dir to not require CMake
+%dir %{_libqt5_libdir}/cmake/
+%{_libqt5_libdir}/cmake/Qt5DocTools/
 %endif
 
 %files qhelpgenerator
