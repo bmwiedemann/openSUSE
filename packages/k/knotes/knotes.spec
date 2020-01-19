@@ -35,7 +35,6 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gettext-devel
 BuildRequires:  libxslt-devel
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Akonadi)
