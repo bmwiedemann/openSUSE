@@ -36,7 +36,6 @@ BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  libkleo
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5AkonadiMime)
