@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 15 20:07:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.0
+  + libmbim-glib: Message parsing logic improved to avoid reading
+    fields out of bounds, e.g. if the messages sent by the modem
+    are malformed or not in line with the specs.
+  + Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
 Sat Jan  4 17:47:58 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Only require python3-base package for building instead of

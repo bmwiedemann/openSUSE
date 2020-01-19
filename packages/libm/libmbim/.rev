@@ -237,4 +237,17 @@
     <comment></comment>
     <requestid>760917</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>adcc2a52a5b658abd240851468bf82cb</srcmd5>
+    <version>1.22.0</version>
+    <time>1579463573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0
+  + libmbim-glib: Message parsing logic improved to avoid reading
+    fields out of bounds, e.g. if the messages sent by the modem
+    are malformed or not in line with the specs.
+  + Several other minor improvements and fixes.
+</comment>
+    <requestid>764801</requestid>
+  </revision>
 </revisionlist>
