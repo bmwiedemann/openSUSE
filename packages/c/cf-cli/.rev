@@ -360,4 +360,12 @@
 </comment>
     <requestid>755509</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>70e6f236bc4ffb97e37b13e0dbb19d44</srcmd5>
+    <version>6.49.0</version>
+    <time>1579557281</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765718</requestid>
+  </revision>
 </revisionlist>

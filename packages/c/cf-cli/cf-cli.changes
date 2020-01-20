@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 13 08:30:51 UTC 2020 - thardeck@suse.com
+
+- update to version 6.49.0
+  ### Bug Fixes
+  - `--hostname` command line option now overrides random-route specified in manifest. [Story](https://www.pivotaltracker.com/story/show/170171569)
+  - Commands that modify buildpacks (`update-buildpack`, `rename-buildpack`, `delete-buildpack`) now single-quote the name of the buildpack and stack in the error message when the buildpack is not found.
+
+-------------------------------------------------------------------
 Thu Dec  5 22:54:46 UTC 2019 - thardeck@suse.com
 
 - update to version 6.48.0
