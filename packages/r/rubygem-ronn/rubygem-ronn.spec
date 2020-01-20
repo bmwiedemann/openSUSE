@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ronn
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,9 @@ BuildRequires:  update-alternatives
 Url:            http://rtomayko.github.com/ronn
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
+# MANUAL
+Patch0:  ronn-date.patch
+# /MANUAL
 Summary:        Builds manuals
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -47,6 +50,10 @@ Ronn builds manuals. It converts simple, human readable textfiles to roff
 for terminal display, and also to HTML for the web.
 
 %prep
+%gem_unpack
+%patch0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 

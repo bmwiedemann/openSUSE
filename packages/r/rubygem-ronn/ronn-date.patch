@@ -1,0 +1,29 @@
+https://github.com/kamontat/ronn/pull/3
+originally based on https://github.com/rtomayko/ronn/pull/98
+
+commit 206846900163c8a538437444dfdd67a7a81e3801
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Mon Dec 9 14:36:21 2019 +0100
+
+    Allow to override build date with SOURCE_DATE_EPOCH
+    
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good
+    and https://reproducible-builds.org/specs/source-date-epoch/
+    for the definition of this variable.
+    
+    It prioritizes the variable over mtime
+    because openSUSE's `tallow` package touched a .md file with a patch.
+
+diff --git a/lib/ronn/document.rb b/lib/ronn/document.rb
+index d42e2f9..6590c92 100644
+--- a/lib/ronn/document.rb
++++ b/lib/ronn/document.rb
+@@ -171,6 +171,7 @@ module Ronn
+     # the current time.
+     def date
+       return @date if @date
++      return Time.at(ENV['SOURCE_DATE_EPOCH'].to_i).gmtime if not ENV['SOURCE_DATE_EPOCH'].nil?
+       return File.mtime(path) if File.exist?(path)
+       Time.now
+     end
