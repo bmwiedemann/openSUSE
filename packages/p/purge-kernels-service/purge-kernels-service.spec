@@ -22,7 +22,7 @@ Release:        0
 Summary:        The service for removing old kernels when mutiversion is enabled
 License:        MIT
 Source:         purge-kernels.service
-Conflicts:      dracut < 0.49.1
+Conflicts:      dracut < 049+git118
 Requires:       zypper(purge-kernels)
 BuildRequires:  systemd-rpm-macros
 
