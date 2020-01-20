@@ -1,7 +1,7 @@
 #
 # spec file for package python-argon2-cffi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argon2-cffi
-Version:        19.1.0
+Version:        19.2.0
 Release:        0
 Summary:        The Argon2 password hashing algorithm for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hynek/argon2_cffi
-Source:         https://files.pythonhosted.org/packages/source/a/argon2_cffi/argon2_cffi-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/argon2-cffi/argon2-cffi-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
@@ -50,7 +50,7 @@ A Python module that uses CFFI to access the Argon2 password hashing
 C library.
 
 %prep
-%setup -q -n argon2_cffi-%{version}
+%setup -q -n argon2-cffi-%{version}
 
 %build
 export ARGON2_CFFI_USE_SYSTEM=1
