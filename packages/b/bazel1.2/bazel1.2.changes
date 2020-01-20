@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Dec 13 16:24:53 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Initial release
+- Add patch which fixes build on s390x:
+  * 0001-fix-build-for-s390x.patch
