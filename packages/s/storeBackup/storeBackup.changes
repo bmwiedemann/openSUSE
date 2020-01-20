@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 18:00:00 UTC 2020 - Jan Ritzerfeld <suse@bugs.jan.ritzerfeld.org>
+
+- add fix-tmp-lock-file-race-condition.patch:
+  fix CVE-2020-7040 (bsc#1156767) 
+
+-------------------------------------------------------------------
 Tue Aug 20 11:22:12 CEST 2019 - kukuk@suse.de
 
 - Package /etc/cron.daily, as this is now part of cron and we

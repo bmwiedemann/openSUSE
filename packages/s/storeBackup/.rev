@@ -256,4 +256,14 @@
     <comment></comment>
     <requestid>724783</requestid>
   </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>360fac49d29953fe8cc7664b42f35a30</srcmd5>
+    <version>3.5</version>
+    <time>1579557440</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-tmp-lock-file-race-condition.patch:
+  fix CVE-2020-7040 (bsc#1156767) 
+</comment>
+    <requestid>765898</requestid>
+  </revision>
 </revisionlist>

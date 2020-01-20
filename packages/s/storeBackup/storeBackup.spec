@@ -1,7 +1,7 @@
 #
 # spec file for package storeBackup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Patch0:         storeBackup-%{version}.diff
 Patch1:         earlier_execute_precommand.patch
 # PATCH-FIX-OPENSUSE fix-rpmlint-env-script-interpreter.patch
 Patch2:         fix-rpmlint-env-script-interpreter.patch
+# PATCH-FIX-UPSTREAM fix-tmp-lock-file-race-condition.patch CVE-2020-7040 bsc#1156767
+Patch3:         fix-tmp-lock-file-race-condition.patch
 Url:            http://storebackup.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -62,6 +64,7 @@ as a template.
 %patch0 -p 1
 %patch1 -p 0
 %patch2 -p 1
+%patch3 -p 1
 
 %build
 # make
