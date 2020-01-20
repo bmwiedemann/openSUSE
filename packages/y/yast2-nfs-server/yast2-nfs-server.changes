@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 16:28:52 UTC 2020 - Christopher Hofmann <cwh@suse.com>
+
+- Fixed outdated rpc-svcgssd service name (bsc#972488)
+- 4.2.3
+
+-------------------------------------------------------------------
 Fri Oct 25 11:38:41 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not use Builtins.regexpmatch when checking the options as the
