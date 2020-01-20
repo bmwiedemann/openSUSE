@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 17 14:54:37 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Partitioner: make it possible to directly work with devices
+  from the overview/system page (related to fate#318196).
+- 4.2.74
+
+-------------------------------------------------------------------
+Thu Jan 16 11:48:39 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Improve integration with yast2-nfs-client.
+- Related bugs: bsc#1006815, bsc#1151426.
+- 4.2.73
+
+-------------------------------------------------------------------
 Wed Jan 15 22:07:30 CET 2020 - aschnell@suse.com
 
 - treat partitions with BitLocker as Windows (related to
