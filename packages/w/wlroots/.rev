@@ -132,4 +132,12 @@
   * layer-shell: Reject requests on gone surfaces</comment>
     <requestid>726417</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2e4244b4c695ac6363cfb0f79c013968</srcmd5>
+    <version>0.9.1</version>
+    <time>1579557344</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765771</requestid>
+  </revision>
 </revisionlist>

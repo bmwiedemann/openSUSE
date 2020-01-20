@@ -1,7 +1,7 @@
 #
 # spec file for package wlroots
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 %bcond_without  xwayland
 %bcond_without  xcb_errors
 Name:           wlroots
-Version:        0.7.0
+Version:        0.9.1
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
@@ -74,16 +74,16 @@ Pluggable, composable modules for building a Wayland compositor.
 %package devel
 Summary:        Modular Wayland compositor library
 Group:          Development/Libraries/C and C++
-Requires:       libwlroots3 = %{version}
+Requires:       libwlroots4 = %{version}
 
 %description devel
 Pluggable, composable modules for building a Wayland compositor.
 
-%package -n libwlroots3
+%package -n libwlroots4
 Summary:        Modular Wayland compositor library
 Group:          System/Libraries
 
-%description -n libwlroots3
+%description -n libwlroots4
 Pluggable, composable modules for building a Wayland compositor.
 
 %prep
@@ -103,8 +103,8 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %install
 %meson_install
 
-%post   -n libwlroots3 -p /sbin/ldconfig
-%postun -n libwlroots3 -p /sbin/ldconfig
+%post   -n libwlroots4 -p /sbin/ldconfig
+%postun -n libwlroots4 -p /sbin/ldconfig
 
 %files devel
 %license LICENSE
@@ -113,7 +113,7 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %{_libdir}/pkgconfig/wlroots.pc
 %{_libdir}/libwlroots.so
 
-%files -n libwlroots3
+%files -n libwlroots4
 %{_libdir}/libwlroots.so.*
 
 %changelog
