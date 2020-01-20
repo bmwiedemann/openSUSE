@@ -386,6 +386,9 @@ Prefer: php5 php5-json
 Prefer: php5-tokenizer
 Prefer: php5-zip
 
+# man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
+Prefer: man
+
 # go exists in mutliple versions by now - we prefer the 'unversioned package'
 Prefer: go
 
