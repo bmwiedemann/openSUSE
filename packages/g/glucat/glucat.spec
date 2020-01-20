@@ -1,7 +1,7 @@
 #
 # spec file for package glucat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} <= 1500
-%global _with_pdfdoc 1
+
+# SECTION DISABLE pyclical FOR openSUSE >= 1550: DOESN'T BUILD WITH PYTHON3
+%if 0%{?suse_version} < 1550
+%bcond_without python2
 %else
-%global _with_pdfdoc 0
+%bcond_with python2
 %endif
+# /SECTION
 
 Name:           glucat
 Version:        0.8.2
@@ -29,36 +32,38 @@ License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://glucat.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM glucat-disable-pdf-doc.patch badshah400@gmail.com -- Disable building pdf documentation until issues with TeXLive 2018 are sorted.
-Patch0:         glucat-disable-pdf-doc.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
-BuildRequires:  libtool
+BuildRequires:  libboost_headers-devel
+%if %{with python2}
 BuildRequires:  python-Cython
 BuildRequires:  python-devel
 BuildRequires:  python-numpy
-BuildRequires:  libboost_headers-devel
-%if %{with pdfdoc}
+%endif
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-latex-bin
 BuildRequires:  texlive-metafont-bin
 BuildRequires:  tex(adjustbox.sty)
 BuildRequires:  tex(caption.sty)
 BuildRequires:  tex(colortbl.sty)
+BuildRequires:  tex(etoc.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(float.sty)
+BuildRequires:  tex(hanging.sty)
 BuildRequires:  tex(helvet.sty)
 BuildRequires:  tex(multirow.sty)
 BuildRequires:  tex(natbib.sty)
+BuildRequires:  tex(newunicodechar.sty)
 BuildRequires:  tex(sectsty.sty)
+BuildRequires:  tex(stackengine.sty)
 BuildRequires:  tex(tabu.sty)
 BuildRequires:  tex(tocloft.sty)
+BuildRequires:  tex(ulem.sty)
 BuildRequires:  tex(wasysym.sty)
 BuildRequires:  tex(xtab.sty)
-%endif
 
 %description
 GluCat is a library of template classes which model the universal
@@ -98,7 +103,9 @@ This package provides the documentation for %{name}.
 %package -n python-glucat
 Summary:        Library of C++ templates implementing universal Clifford algebras
 Group:          Development/Libraries/C and C++
+%if %{with python2}
 Requires:       python-base = %{py_ver}
+%endif
 Recommends:     %{name}-doc = %{version}
 
 %description -n python-glucat
@@ -112,14 +119,15 @@ This package contains the python-bindings for the package.
 
 %prep
 %setup -q
-%if ! %{with pdfdoc}
-%patch0 -p1
-%endif
 
 %build
-autoreconf -fvi
 sed -i "s|-march=native||g" configure
-%configure --prefix=%{_prefix} --docdir=%{_docdir}/%{name} --with-demo-dir=%{_docdir}/%{name}/demos
+%configure \
+  --docdir=%{_docdir}/%{name} \
+%if %{without python2}
+  --disable-pyclical \
+%endif
+  --with-demo-dir=%{_docdir}/%{name}/demos
 
 # FIX A NON-UNIX EOF ENCODING
 sed -i 's/\r$//' ./pyclical/demos/plotting_demo_mayavi.py
@@ -147,13 +155,13 @@ make %{?_smp_mflags} check
 %files doc
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/html/
-%if %{with pdfdoc}
 %{_docdir}/%{name}/pdf/
-%endif
 
+%if %{with python2}
 %files -n python-glucat
 %{python_sitearch}/*
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/demos/
+%endif
 
 %changelog
