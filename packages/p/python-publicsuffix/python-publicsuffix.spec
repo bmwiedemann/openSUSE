@@ -41,16 +41,16 @@ Get a public suffix for a domain name using the Public Suffix List.
 %setup -q -n publicsuffix-%{version}
 
 %build
-LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 %python_build
 
 %install
-LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 %pytest tests.py -k 'not test_fetch'
 
 %files %{python_files}
