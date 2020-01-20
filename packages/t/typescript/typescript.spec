@@ -1,7 +1,7 @@
 #
 # spec file for package typescript
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           typescript
-Version:        3.7.4
+Version:        3.7.5
 Release:        0
 Summary:        A language for application scale JavaScript development
 License:        Apache-2.0
