@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:16:45 CET 2020 - ro@suse.de
+
+- add a few patches from the fedora package to tackle
+  a crash in the testsuite on 32bit
+  - add patch mhash-0.9.9.9-fix-snefru-segfault.patch
+  - add patch mhash-0.9.9.9-fix-whirlpool-segfault.patch
+  - add patch mhash-0.9.9.9-fix-mem-leak.patch
+  - add patch mhash-0.9.9-no-free-before-use.patch
+
+-------------------------------------------------------------------
 Thu Feb 26 21:13:22 UTC 2015 - mpluskal@suse.com
 
 - Move part of documentation to devel package

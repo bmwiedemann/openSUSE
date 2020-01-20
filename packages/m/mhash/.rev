@@ -166,4 +166,17 @@
     <comment>1</comment>
     <requestid>288054</requestid>
   </revision>
+  <revision rev="25" vrev="30">
+    <srcmd5>a7398ce7abd22c5bd5e31ded974853a1</srcmd5>
+    <version>0.9.9.9</version>
+    <time>1579557362</time>
+    <user>dimstar_suse</user>
+    <comment>- add a few patches from the fedora package to tackle
+  a crash in the testsuite on 32bit
+  - add patch mhash-0.9.9.9-fix-snefru-segfault.patch
+  - add patch mhash-0.9.9.9-fix-whirlpool-segfault.patch
+  - add patch mhash-0.9.9.9-fix-mem-leak.patch
+  - add patch mhash-0.9.9-no-free-before-use.patch (forwarded request 765878 from oertel)</comment>
+    <requestid>765879</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,12 @@
+diff -up mhash-0.9.9.9/src/hmac_test.c.nofree mhash-0.9.9.9/src/hmac_test.c
+--- mhash-0.9.9.9/src/hmac_test.c.nofree	2019-07-29 14:44:55.856345469 -0400
++++ mhash-0.9.9.9/src/hmac_test.c	2019-07-29 14:45:11.466021935 -0400
+@@ -72,7 +72,7 @@ int main()
+ 		return(MUTILS_INVALID_RESULT);
+ 	}
+ 
+-	mutils_free(tmp);
++	/* mutils_free(tmp); */
+ 
+ 	/* Test No 2 */	
+ 	
