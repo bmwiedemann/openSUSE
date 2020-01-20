@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 20 08:18:18 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.1:
+  * Issue #108. Show menu on correct monitor in IPC mode (position_mode=ipc)
+    Before this fix, the menu would always appear on the monitor from which
+    it was first launched.
+  * Fix segfault bug in jgmenu-apps on OpenBSD.
+  * Update lithium theme to reflect introduction of apps module
+
+-------------------------------------------------------------------
 Mon Jan 13 12:14:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0:

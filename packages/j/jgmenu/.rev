@@ -224,4 +224,17 @@
   * filter.c: support case-insensitive non-ASCII search (issue #91)</comment>
     <requestid>763936</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>21e98148b2eafd2f4b2646c358514d45</srcmd5>
+    <version>4.0.1</version>
+    <time>1579557217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1:
+  * Issue #108. Show menu on correct monitor in IPC mode (position_mode=ipc)
+    Before this fix, the menu would always appear on the monitor from which
+    it was first launched.
+  * Fix segfault bug in jgmenu-apps on OpenBSD.
+  * Update lithium theme to reflect introduction of apps module</comment>
+    <requestid>765698</requestid>
+  </revision>
 </revisionlist>
