@@ -1,7 +1,7 @@
 #
 # spec file for package libgpod
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libsoname  %{name}4
 %define _udevdir %(pkg-config --variable udevdir udev)
 %bcond_with    mono
-%bcond_without python2
+%bcond_with    python2
 Name:           libgpod
 Version:        0.8.3
 Release:        0
 Summary:        Library to Manipulate Songs and Playlists Stored on an iPod
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.gtkpod.org/libgpod.html
+URL:            http://www.gtkpod.org/libgpod.html
 Source:         http://downloads.sourceforge.net/project/gtkpod/libgpod/libgpod-0.8/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libgpod-swig-3.0.patch
