@@ -1,7 +1,7 @@
 #
 # spec file for package pyenv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        1.2.13
+Version:        1.2.16
 Release:        0
 Summary:        Python Version Management
 License:        MIT
@@ -45,7 +45,7 @@ This project was forked from rbenv and ruby-build, and modified for Python.
 Summary:        Bash completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(pyenv:bash-completion)
+Supplements:    (pyenv and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -55,7 +55,7 @@ Bash command line completion support for %{name}.
 Summary:        Fish completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(pyenv:fish)
+Supplements:    (pyenv and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -65,7 +65,7 @@ Fish command line completion support for %{name}.
 Summary:        Zsh completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(pyenv:zsh)
+Supplements:    (pyenv and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
