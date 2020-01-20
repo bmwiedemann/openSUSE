@@ -1,0 +1,16 @@
+diff -Nur deadbeef-1.8.2/Makefile.am deadbeef-1.8.2-new/Makefile.am
+--- deadbeef-1.8.2/Makefile.am	2019-08-02 02:36:50.000000000 +0800
++++ deadbeef-1.8.2-new/Makefile.am	2020-01-06 23:09:09.377726700 +0800
+@@ -62,9 +62,9 @@
+ 
+ docsdir = $(docdir)
+ 
+-docs_DATA = README help.txt about.txt translators.txt ChangeLog\
+-	COPYING.GPLv2 COPYING.LGPLv2.1\
+-	translation/help.ru.txt
++#docs_DATA = README help.txt about.txt translators.txt ChangeLog\
++#	COPYING.GPLv2 COPYING.LGPLv2.1\
++#	translation/help.ru.txt
+ 
+ desktopdir = $(datadir)/applications
+ desktop_DATA = deadbeef.desktop

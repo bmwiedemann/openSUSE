@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %bcond_with restricted
+
 Name:           deadbeef
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        GTK+ audio player
 License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://deadbeef.sourceforge.io/
-Source:         %{name}_nopsf-%{version}.tar.xz
+Source:         https://github.com/DeaDBeeF-Player/deadbeef/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE deadbeef-fix_ubuntu_unity_desktop.patch i@marguerite.su -- Fix Unity-oriented desktop-file warnings.
 Patch0:         %{name}-fix_ubuntu_unity_desktop.patch
@@ -34,6 +35,10 @@ Patch1:         %{name}-compiler-warnings.patch
 Patch4:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 # PATCH-FEATURE-OPENSUSE deadbeef_disable_psf.patch aloisio@gmx.com -- Do not look for plugins/psf.
 Patch5:         deadbeef_disable_psf.patch
+# PATCH-FIX-UPSTREAM deadbeef-fix-return-type.patch hillwood@opensuse.org Fix return type
+Patch6:         deadbeef-fix-return-type.patch
+# PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org Install documents by rpmbuild
+Patch7:         deadbeef-drop-documents-installation.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -113,45 +118,37 @@ Requires:       %{name} = %{version}
 This package provides headers for DeaDBeeF plugins development.
 
 %prep
-%setup -q -n %{name}_nopsf-%{version}
+%setup -q -n %{name}-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 cp %{SOURCE1} %{name}.appdata.xml
 
 %build
-./autogen.sh
+NOCONFIGURE=1 ./autogen.sh
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-%configure \
-  --disable-static             \
-  --docdir=%{_docdir}/%{name}/
-make %{?_smp_mflags} V=1
+%configure  --disable-static
+%make_build
 
 %install
 %make_install
 install -Dpm 0644 %{name}.appdata.xml \
-  %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
+%{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 %suse_update_desktop_file %{name}
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_libdir}/%{name}/data68/Replay
 
-%if 0%{?suse_version} <= 1320
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%doc %{_docdir}/%{name}/
+%doc README README.md help.txt about.txt translators.txt CONTRIBUTING.md
+%doc AUTHORS ChangeLog translation/help.ru.txt ABOUT-NLS
+%license COPYING COPYING.GPLv2 COPYING.LGPLv2.1
 %{_bindir}/%{name}
 %dir %{_libdir}/%{name}/
 %{_libdir}/%{name}/adplug.so*

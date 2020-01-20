@@ -1,0 +1,42 @@
+diff -Nur deadbeef-1.8.2/plugins/gtkui/search.c deadbeef-1.8.2-new/plugins/gtkui/search.c
+--- deadbeef-1.8.2/plugins/gtkui/search.c	2020-01-07 16:17:52.110361067 +0800
++++ deadbeef-1.8.2-new/plugins/gtkui/search.c	2020-01-07 16:21:51.540578354 +0800
+@@ -305,7 +305,6 @@
+     if (listview) {
+         ddb_listview_list_setup(listview, 0);
+     }
+-    return FALSE;
+ }
+ 
+ int
+diff -Nur deadbeef-1.8.2/plugins/gtkui/widgets.c deadbeef-1.8.2-new/plugins/gtkui/widgets.c
+--- deadbeef-1.8.2/plugins/gtkui/widgets.c	2020-01-07 16:17:52.110361067 +0800
++++ deadbeef-1.8.2-new/plugins/gtkui/widgets.c	2020-01-07 16:20:13.650922265 +0800
+@@ -3338,7 +3338,7 @@
+ #endif
+ }
+ 
+-static void
++static int
+ w_spectrum_message (ddb_gtkui_widget_t *w, uint32_t id, uintptr_t ctx, uint32_t p1, uint32_t p2) {
+     switch (id) {
+     case DB_EV_SONGCHANGED: {
+diff -Nur deadbeef-1.8.2/plugins/pltbrowser/pltbrowser.c deadbeef-1.8.2-new/plugins/pltbrowser/pltbrowser.c
+--- deadbeef-1.8.2/plugins/pltbrowser/pltbrowser.c	2020-01-07 16:17:52.110361067 +0800
++++ deadbeef-1.8.2-new/plugins/pltbrowser/pltbrowser.c	2020-01-07 16:41:41.675064417 +0800
+@@ -745,7 +745,6 @@
+                                         gpointer user_data)
+ {
+     drag_row_active = TRUE;
+-    return FALSE;
+ }
+ 
+ static void
+@@ -757,7 +756,6 @@
+                                         gpointer user_data)
+ {
+     drag_row_active = FALSE;
+-    return FALSE;
+ }
+ 
+ static gboolean

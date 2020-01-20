@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:26:05 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.8.2
+  * Volume control from command line supports increment syntax (by
+    eauno1re@github)
+  * Fixed writing multi-value fields into FLAC tags
+  * Map ALBUMARTIST field to ALBUM ARTIST field in FLAC
+  * Fixed sound output plugin selection bug in GTK UI
+  * Fixed crash when opening files of 0 size
+  * Fixed UI freeze when nullout plugin is selected
+  * Fixed a regression in restoring the last selected folder in GTK file chooser
+- Fixed reture type, add deadbeef-fix-return-type.patch
+- Install documents by rpmbuild, add deadbeef-drop-documents-installation.patch
+
+-------------------------------------------------------------------
 Sat Jun 29 21:15:00 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.8.1:
