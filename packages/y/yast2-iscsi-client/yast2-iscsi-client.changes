@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 10:17:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- fix calling iscsiadm on interface (bsc#1158443)
+- 4.2.4
+
+-------------------------------------------------------------------
 Thu Jan  9 08:47:18 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Keep the current service state after writing the configuration by
