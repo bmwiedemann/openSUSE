@@ -363,4 +363,12 @@ If this SR looks good to you, please accept it together with:
     <comment>- Switch bazel to default version 0.29. (forwarded request 752927 from mrostecki)</comment>
     <requestid>752929</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3f703acea1f7f912603f760bf784994d</srcmd5>
+    <version>1.2</version>
+    <time>1579557056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758583</requestid>
+  </revision>
 </revisionlist>
