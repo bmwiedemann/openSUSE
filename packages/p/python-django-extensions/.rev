@@ -73,4 +73,13 @@
   * export_emails, add settings for overriding queryset fields, order_by and the full_name function</comment>
     <requestid>744146</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e7b42d4859f78466c2afd8cf9f7499c9</srcmd5>
+    <version>2.2.5</version>
+    <time>1579557276</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build in SLE-15: set en_US.UTF-8 encoding
+</comment>
+    <requestid>765870</requestid>
+  </revision>
 </revisionlist>
