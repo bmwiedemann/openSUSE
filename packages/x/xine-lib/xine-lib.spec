@@ -1,7 +1,7 @@
 #
 # spec file for package xine-lib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,23 +30,10 @@ Name:           xine-lib
 BuildRequires:  gcc
 BuildRequires:  pkgconfig(libmpeg2)
 %else
-# Leap 42.3+
-%if 0%{?leap_version} >= 420300
-BuildRequires:  cpp7
-BuildRequires:  gcc7
-#!Buildignore:  libgcc_s1
-%else
-# Leap 42.2
-BuildRequires:  gcc5
+BuildRequires:  gcc8
 %endif
-%endif
-%bcond_without ffmpeg
 %bcond_without sdl
-%bcond_with aalib
-%bcond_with esd
 %bcond_without jack
-%bcond_with gnome_vfs
-%bcond_with directfb
 #
 BuildRequires:  ImageMagick-devel
 BuildRequires:  alsa-devel
@@ -75,6 +62,11 @@ BuildRequires:  pkgconfig(dvdnav)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(liba52)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libbluray)
+BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(x11)
@@ -85,16 +77,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(xvmc)
 BuildRequires:  pkgconfig(zlib)
-%if %{with ffmpeg}
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libbluray) >= 0.2.1
-BuildRequires:  pkgconfig(libpostproc)
-%else
-BuildRequires:  libavutil-devel
-%endif
-%if !%{with distributable}
+%if %{without distributable}
 BuildRequires:  libfaad-devel
 BuildRequires:  pkgconfig(libdts)
 BuildRequires:  pkgconfig(libva)
@@ -105,21 +88,8 @@ BuildRequires:  libpulse-devel
 %if %{with sdl}
 BuildRequires:  SDL-devel
 %endif
-%if %{with aalib}
-BuildRequires:  aalib-devel
-BuildRequires:  libcaca-devel
-%endif
-%if %{with esd}
-BuildRequires:  esound-devel
-%endif
-%if %{with gnome_vfs}
-BuildRequires:  gnome-vfs2-devel
-%endif
 %if %{with jack}
 BuildRequires:  libjack-devel
-%endif
-%if %{with directfb}
-BuildRequires:  DirectFB-devel
 %endif
 BuildRequires:  libmodplug-devel
 Version:        1.2.9
@@ -136,8 +106,7 @@ Source1:        baselibs.conf
 
 Patch0:         xine-lib-libdvdread_udf.diff
 Patch1:         xine-lib-v4l-2.6.38.patch
-# PATCH allow ffmpeg in openSUSE versions that have ffmpeg and still use the crippled tar ball to build with ffmpeg3.
-Patch2:         xine-lib-without-ffmpeg.patch
+Patch2:         xine-lib-contrib.patch
 Patch3:         xine-lib-alsa.patch
 # Add theora FOURCC to libxine I found an avi container that xine wouldn't play.
 Patch4:         xine-lib-theora.patch
@@ -149,10 +118,6 @@ Patch4:         xine-lib-theora.patch
 Patch8:         xine-lib-ImageMagick7.patch
 # PATCH-FIX-UPSTREAM xine-lib-a52dec.patch davejplater@gmail.com -- Change in a52dec api.
 Patch6:         xine-lib-a52dec.patch
-%if %{with distributable}
-#PATCH-Workaround xine-lib-nukefaadetc.patch davejplater@gmail.com - supliment do_nukeentry().
-Patch7:         xine-lib-nukefaadetc.patch
-%endif
 
 %description
 <p>Great video and multimediaplayer, supports DVD, MPEG, AVI, DivX, VCD, Quicktime ...</p><p>You need a frontend for xine-lib like <a href=http://packman.links2linux.de/package/xine-ui>xine-ui</a>, <a href=http://packman.links2linux.de/package/gxine>gxine</a>, <a href=http://packman.links2linux.de/package/kaffeine>kaffeine</a> or <a href=http://packman.links2linux.de/package/totem>totem</a>.</p><p>Since 1-rc6 the package number is reduced, all you may miss, is in the base package</p><p>If you want to play css encrypted Video-DVD's, you need to install <a href=http://packman.links2linux.de/package/libdvdcss2>libdvdcss</a>.</p>
@@ -185,7 +150,7 @@ Alsa.
 %if %{with distributable}
 This version of xine may lack certain features because of legal
 requirements (potential patent violation). See also
-http://www.opensuse.org/XINE#Legal_Matters
+http://en.opensuse.org/XINE#Legal_Matters
 %endif
 
 More information about xine plug-ins can be found at
@@ -205,7 +170,7 @@ Stereosound via OSS und AC5.1 per Alsa.
 %if %{with distributable}
 Diese xine-Version lässt eventuell einige Funktione aus rechtlichen
 Gründen vermissen (mögliche Patentverletzungen). Siehe dazu
-http://www.opensuse.org/XINE#Legal_Matters
+http://en.opensuse.org/XINE#Legal_Matters
 %endif
 
 Weitere Informationen über xine Plugins finden Sie unter
@@ -244,7 +209,7 @@ using Alsa.
 %if %{with distributable}
 This version of xine may lack certain features because of legal
 requirements (potential patent violation). See also
-http://www.opensuse.org/XINE#Legal_Matters
+http://en.opensuse.org/XINE#Legal_Matters
 %endif
 
 More information about xine plug-ins can be found at
@@ -268,7 +233,7 @@ Stereosound via OSS und AC5.1 per Alsa.
 %if %{with distributable}
 Diese xine-Version lässt eventuell einige Funktione aus rechtlichen
 Gründen vermissen (mögliche Patentverletzungen). Siehe dazu
-http://www.opensuse.org/XINE#Legal_Matters
+http://en.opensuse.org/XINE#Legal_Matters
 %endif
 
 Weitere Informationen über xine Plugins finden Sie unter
@@ -330,60 +295,6 @@ Autoren:
     Guenter Bartsch <guenter@sourceforge.net>
 %endif
 
-%if %{with aalib}
-
-%package -n libxine2-aa
-Summary:        Aalib and libcaca plugin for xine
-License:        GPL-2.0-or-later AND SUSE-Public-Domain
-Group:          Productivity/Multimedia/Video/Players
-Requires:       libxine2 = %{version}
-
-%description -n libxine2-aa
-aalib and libcaca xine video-output plugin
-
-
-
-Authors:
---------
-    Guenter Bartsch <guenter@users.sourceforge.net>
-
-%description -n libxine2-aa -l de
-aalib und libcaca xine Video-Ausgabeplugin
-
-
-
-Autoren:
---------
-    Guenter Bartsch <guenter@sourceforge.net>
-%endif
-
-%if %{with esd}
-
-%package -n libxine2-esd
-Summary:        Esd plugin for xine
-License:        GPL-2.0-or-later AND SUSE-Public-Domain
-Group:          Productivity/Multimedia/Video/Players
-Requires:       libxine2 = %{version}
-
-%description -n libxine2-esd
-libxine sound output plugin for the esound soundserver
-
-
-
-Authors:
---------
-    Guenter Bartsch <guenter@users.sourceforge.net>
-
-%description -n libxine2-esd -l de
-libxine Soundausgabeplugin für den esound Soundserver
-
-
-
-Autoren:
---------
-    Guenter Bartsch <guenter@sourceforge.net>
-%endif
-
 %if %{with jack}
 
 %package -n libxine2-jack
@@ -411,49 +322,7 @@ Autoren:
     Guenter Bartsch <guenter@sourceforge.net>
 %endif
 
-%if %{with directfb}
-
-%package -n libxine2-directfb
-Summary:        Directfb plugin for xine
-License:        GPL-2.0-or-later AND SUSE-Public-Domain
-Group:          Productivity/Multimedia/Video/Players
-Requires:       libxine2 = %{version}
-
-%description -n libxine2-directfb
-Directfb xine video-output plugin
-
-
-
-Authors:
---------
-    Guenter Bartsch <guenter@users.sourceforge.net>
-
-%description -n libxine2-directfb -l de
-Directfb xine Video-Ausgabeplugin
-
-
-
-Autoren:
---------
-    Guenter Bartsch <guenter@sourceforge.net>
-%endif
-
-%if %{with gnome_vfs}
-
-%package -n libxine2-gnome-vfs
-Summary:        Gnome-vfs plugin for xine
-License:        GPL-2.0-or-later AND SUSE-Public-Domain
-Group:          Productivity/Multimedia/Video/Players
-Requires:       libxine2 = %{version}
-
-%description -n libxine2-gnome-vfs
-Input plugin which enables xine to use Gnome-vfs
-
-%description -n libxine2-gnome-vfs -l de
-Eingabeplugin welches xine ermöglicht Gnome-vfs zu benutzen
-%endif
-
-%if !%{with distributable}
+%if %{without distributable}
 
 %package -n libxine2-codecs
 # these libs are possibly illegal and may not work without libdvdcss anyway
@@ -496,32 +365,30 @@ Autoren:
 %endif
 
 %prep
-rm -rf contrib
 %if %{with distributable} && %{with onlynondistributable}
 %error need --without distributable for --with onlynondistributable
 %endif
+%autosetup -p1
+
+%build
 cat <<EOF
 +++ rpm build options +++'
 Distributable version:	%{with distributable}
-%if !%{with distributable}
+%if %{without distributable}
   Codecs package only:	%{with onlynondistributable}
 %endif
-%if %{with ffmpeg}
 External ffmpeg:	1
-%endif
 Pulseaudio:		%{with pulseaudio}
 SDL:			%{with sdl}
-aalib:			%{with aalib}
-esd:			%{with esd}
+aalib:			0
+esd:			0
 jack:			%{with jack}
-gnome_vfs:		%{with gnome_vfs}
-directfb:		%{with directfb}
+gnome_vfs:		0
+directfb:		0
 modplug:		%{with modplug}
 +++++++++++++++++++++++++'
 EOF
-%setup -q
 %if %{with distributable}
-%patch7
 # Taken from precheckin_cripple_tarball.sh
 # $1: files $2: entries $3: prefix $4: postfix
 # NOTE: the perl do_nukeentry has stopped working with the latest perl
@@ -581,47 +448,23 @@ do_remove    src/input                   "$c_input"
 do_nukeentry src/post/Makefile.am         "planar"
 #do_nukeline  src/post/planar/planar.c    "pp_init_plugin pp_special_info"
 do_remove    src/post/planar              "*"
-
+sed -i 's@libfaad@@g' contrib/Makefile.am
 %endif
-
-%patch0 -p0
-%patch1
-%if %{with distributable} && %{with ffmpeg}
-#%%patch7
-%else
-%if !%{with ffmpeg}
-%patch2
-rm -rf src/combined/ffmpeg configure
-%else
-#%%patch5
-%endif
-%endif
-%patch3 -p1
-%patch4
-%patch6
-%patch8 -p1
 
 rm -f m4/libtool15.m4
 sed -i -e 's|/tmp/vdr-xine|/var/lib/vdr-xine|g' src/vdr/input_vdr.c
 
-%build
 export CFLAGS="%{optflags} -fno-strict-aliasing -fno-force-addr `pkg-config --cflags smbclient`"
 export CCASFLAGS=-Wa,--noexecstack
-test -x "$(type -p gcc-5)" && export CC=gcc-5
-test -x "$(type -p gcc-7)" && export CC=gcc-7
-test -x "$(type -p cpp-7)" && export CPP=cpp-7
+test -x "$(type -p gcc-7)" && export CC="$_"
+test -x "$(type -p gcc-8)" && export CC="$_"
 echo 'AC_DEFUN([AC_REQUIRE_AUX_FILE])dnl' >> acinclude.m4
-#  # hack for sles10
-##  rm m4/gettext.m4 m4/intl.m4
-##  sed -i -e '/AM_GNU_GETTEXT_VERSION/s/0\.16\.1/0.14/' configure.ac
 
 if [ ! -f configure ]; then
    NO_CONFIGURE=1 ./autogen.sh
 fi
 AUTOPOINT=true autoreconf -fi
-%configure --prefix=/usr \
-	--libdir=%{_libdir} \
-	--mandir=%{_mandir} \
+%configure \
 	--disable-rpath \
 	--docdir=%{_defaultdocdir}/xine \
 	--enable-antialiasing \
@@ -629,8 +472,7 @@ AUTOPOINT=true autoreconf -fi
 	--with-freetype \
 	--enable-v4l \
 	--enable-modplug \
-	%{?with_directfb:--enable-directfb} \
-%if !%{with sdl}
+%if %{without sdl}
 	--without-sdl \
 %endif
 %if %{with distributable}
@@ -679,7 +521,7 @@ xineplug_vo_out_xcbxv
 xineplug_vo_out_raw
 xineplug_decode_mad
 xineplug_decode_a52
-%if !%{with distributable}
+%if %{without distributable}
 xineplug_vo_out_vdpau
 %endif
 xineplug_inp_dvb
@@ -693,13 +535,13 @@ xineplug_inp_pvr
 xineplug_inp_rtp
 #New in 1.2.7
 xineplug_decode_rawvideo
-%if !%{with distributable}
+%if %{without distributable}
 xineplug_decode_vdpau
 post/xineplug_post_audio_filters
 post/xineplug_post_goom
 post/xineplug_post_mosaico
 post/xineplug_post_switch
-%ifarch %ix86 x86_64 %arm
+%ifarch %ix86 x86_64 %arm aarch64
 post/xineplug_post_tvtime
 %endif
 post/xineplug_post_visualizations
@@ -750,25 +592,12 @@ vidix/unichrome_vid
 .pulse
 xineplug_ao_out_pulseaudio
 #
-.esd
-xineplug_ao_out_esd
-#
 .jack
 xineplug_ao_out_jack
-#
-.aalib
-xineplug_vo_out_aa
-xineplug_vo_out_caca
 #
 .sdl
 xineplug_vo_out_sdl
 #
-.gnome-vfs
-xineplug_inp_gnome_vfs
-#
-.directfb
-xineplug_vo_out_directfb
-xineplug_vo_out_xdirectfb
 #
 .codecs
 # libmad and MPEG related plugins
@@ -837,7 +666,7 @@ rm -rf %{buildroot}%{_mandir}/man5
 %clean
 rm -rf %{buildroot}
 
-%if !%{with onlynondistributable}
+%if %{without onlynondistributable}
 
 %post -n libxine2 -p /sbin/ldconfig
 
@@ -857,7 +686,7 @@ rm -rf %{buildroot}
 %doc %{_mandir}/man1/xine-list-*.gz
 #%%doc %%{_mandir}/man5/xine.*
 %{_defaultdocdir}/xine
-%if !%{with distributable}
+%if %{without distributable}
 %dir %{_libdir}/xine/plugins/%{abiversion}/post
 %endif
 %{_libdir}/xine/plugins/%{abiversion}/mime.types
@@ -879,33 +708,9 @@ rm -rf %{buildroot}
 %defattr(-,root,root,0755)
 %endif
 
-%if %{with esd}
-
-%files -n libxine2-esd -f files.esd
-%defattr(-,root,root,0755)
-%endif
-
 %if %{with jack}
 
 %files -n libxine2-jack -f files.jack
-%defattr(-,root,root,0755)
-%endif
-
-%if %{with aalib}
-
-%files -n libxine2-aa -f files.aalib
-%defattr(-,root,root,0755)
-%endif
-
-%if %{with directfb}
-
-%files -n libxine2-directfb -f files.directfb
-%defattr(-,root,root,0755)
-%endif
-
-%if %{with gnome_vfs}
-
-%files -n libxine2-gnome-vfs -f files.gnome-vfs
 %defattr(-,root,root,0755)
 %endif
 
@@ -921,7 +726,7 @@ rm -rf %{buildroot}
 %endif
 # onlynondistributable
 
-%if !%{with distributable}
+%if %{without distributable}
 
 %files -n libxine2-codecs -f files.codecs
 %defattr(-,root,root)

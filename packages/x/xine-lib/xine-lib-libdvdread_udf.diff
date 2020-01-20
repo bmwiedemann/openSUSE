@@ -5,10 +5,8 @@
 # Parent  07c29261ed98fdb710a241c6711dac0215b6074a
 Fix playback of DVDs with a broken UDF file system (aka DVD-Movie-Protect).
 
-Index: src/input/libdvdnav/dvd_udf.c
-===================================================================
---- src/input/libdvdnav/dvd_udf.c.orig	2017-02-21 13:13:13.000000000 +0200
-+++ src/input/libdvdnav/dvd_udf.c	2017-04-09 12:18:04.684166526 +0200
+--- a/src/input/libdvdnav/dvd_udf.c
++++ b/src/input/libdvdnav/dvd_udf.c
 @@ -38,10 +38,16 @@
  #include <sys/stat.h>
  #include <unistd.h>

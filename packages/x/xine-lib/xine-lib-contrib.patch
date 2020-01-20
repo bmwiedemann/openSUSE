@@ -1,0 +1,19 @@
+--- a/contrib/Makefile.am
++++ b/contrib/Makefile.am
+@@ -1,6 +1,13 @@
+-SUBDIRS = libmpcdec libxdg-basedir libdca nosefart gsm610 libmad a52dec \
+-	libfaad
+-
++# one line to simplify further tweaking
++SUBDIRS = \
++	a52dec \
++	gsm610 \
++	libdca \
++	libfaad \
++	libmad \
++	libmpcdec \
++	libxdg-basedir \
++	nosefart
+ 
+ if BUILD_DHA_KMOD
+ SUBDIRS += libdha

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr 13 20:02:32 UTC 2019 - olaf@aepfle.de
+
+- Package xineplug_post_tvtime also on arm64
+- Added xine-lib-contrib.patch
+- Remove disabled esd support
+- Remove disabled directfb support
+- Remove disabled aalib support
+- Remove disabled gnome_vfs support
+- Use gcc8 in SLE_12
+- Use plain configure macro
+- Fix opensuse.org XINE URL
+- Use without instead of !with distributable/onlynondistributable/ffmpeg/sdl
+- Remove disabled code for sle10
+- Remove conditional for ffmpeg because it always exists
+- Remove unused xine-lib-without-ffmpeg.patch
+- Remove unused xine-lib-nukefaadetc.patch, use sed instead
+- Adjust all patches for autosetup:
+  xine-lib-libdvdread_udf.diff
+  xine-lib-v4l-2.6.38.patch
+  xine-lib-alsa.patch
+  xine-lib-theora.patch
+  xine-lib-ImageMagick7.patch
+  xine-lib-a52dec.patch
+
+-------------------------------------------------------------------
 Tue Mar 26 07:03:44 UTC 2019 - olaf@aepfle.de
 
 - Use alsa API properly with xine-lib-alsa.patch. Consumers are

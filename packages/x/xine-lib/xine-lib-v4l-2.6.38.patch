@@ -1,8 +1,6 @@
-Index: m4/input.m4
-===================================================================
---- m4/input.m4.orig	2017-02-21 13:13:13.000000000 +0200
-+++ m4/input.m4	2017-04-09 12:27:06.317839771 +0200
-@@ -96,7 +96,7 @@ AC_DEFUN([XINE_INPUT_PLUGINS], [
+--- a/m4/input.m4
++++ b/m4/input.m4
+@@ -97,7 +97,7 @@ AC_DEFUN([XINE_INPUT_PLUGINS], [
      XINE_ARG_ENABLE([v4l], [Enable Video4Linux support])
      if test x"$enable_v4l" != x"no"; then
          have_v4l=yes
@@ -11,10 +9,8 @@ Index: m4/input.m4
          AC_CHECK_HEADERS([asm/types.h])
          if test x"$hard_enable_v4l" = x"yes" && test x"$have_v4l" != x"yes"; then
              AC_MSG_ERROR([Video4Linux support requested, but prerequisite headers not found.])
-Index: src/input/input_v4l.c
-===================================================================
---- src/input/input_v4l.c.orig	2017-02-21 13:13:13.000000000 +0200
-+++ src/input/input_v4l.c	2017-04-09 12:27:06.317839771 +0200
+--- a/src/input/input_v4l.c
++++ b/src/input/input_v4l.c
 @@ -47,7 +47,7 @@
  */
  #define _LINUX_TIME_H

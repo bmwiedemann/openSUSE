@@ -3,10 +3,8 @@ Date: 2018-01-23 14:27:22 +0200
 Subject: input: Adapt a52_init () to new a52dec api
 
 xine-lib uses wrong prototype for a52_init.
-Index: src/audio_dec/xine_a52_decoder.c
-===================================================================
---- src/audio_dec/xine_a52_decoder.c.orig	2018-01-11 14:49:47.000000000 +0200
-+++ src/audio_dec/xine_a52_decoder.c	2018-01-23 11:15:30.340612335 +0200
+--- a/src/audio_dec/xine_a52_decoder.c
++++ b/src/audio_dec/xine_a52_decoder.c
 @@ -715,7 +715,7 @@ static audio_decoder_t *open_plugin (aud
  	 capabilities themselves?
        */
