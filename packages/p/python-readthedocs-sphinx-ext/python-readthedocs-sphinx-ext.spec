@@ -1,7 +1,7 @@
 #
 # spec file for package python-readthedocs-sphinx-ext
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-readthedocs-sphinx-ext
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Sphinx extension for Read the Docs overrides
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/rtfd/readthedocs-sphinx-ext
+URL:            https://github.com/rtfd/readthedocs-sphinx-ext
 Source:         https://files.pythonhosted.org/packages/source/r/readthedocs-sphinx-ext/readthedocs-sphinx-ext-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest}
@@ -58,6 +58,7 @@ others are just code that we ship and enable during builds on Read the Docs.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/readthedocs_ext
+%{python_sitelib}/readthedocs_sphinx_ext-%{version}-py*.egg-info
 
 %changelog
