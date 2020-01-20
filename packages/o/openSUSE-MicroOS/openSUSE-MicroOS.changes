@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 08:27:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- remove lzo compression for aarch64 (temporary workaround for kernel 5.4) 
+
+-------------------------------------------------------------------
 Tue Jan 14 10:16:27 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add "quiet" to kernelcmdline
