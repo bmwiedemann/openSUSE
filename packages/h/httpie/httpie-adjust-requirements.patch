@@ -1,15 +1,15 @@
 diff --git a/setup.py b/setup.py
-index 3cb04c8..50075b3 100644
+index 4392270..2d18d38 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -35,8 +35,8 @@ tests_require = [
  
  
  install_requires = [
--    'requests>=2.21.0',
--    'Pygments>=2.3.1'
-+    'requests>=2.20.0',
-+    'Pygments>=2.2.0'
+-    'requests>=2.22.0',
+-    'Pygments>=2.5.2',
++    'requests>=2.21.0',
++    'Pygments>=2.3.1',
  ]
  
  

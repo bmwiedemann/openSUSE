@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jan 12 10:25:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  * Removed Python 2.7 support (Python 3.6+ is now required).
+  * Added --offline to allow building an HTTP request and printing
+    it but not actually sending it over the network.
+  * Replaced the old collect-all-then-process handling of HTTP
+    communication with one-by-one processing of each HTTP request
+    or response as they become available. This means that you can
+    see headers immediately, see what is being send even when the
+    request fails, etc.
+  * Removed automatic config file creation to avoid concurrency
+    issues.
+  * Removed the default 30-second connection --timeout limit.
+  * Removed Python’s default limit of 100 response headers.
+  * Added --max-headers to allow setting the max header limit.
+  * Added --compress to allow request body compression.
+  * Added --ignore-netrc to allow bypassing credentials from
+    .netrc.
+  * Added https alias command with https:// as the default scheme.
+  * Added $ALL_PROXY documentation.
+  * Added type annotations throughout the codebase.
+  * Added tests/ to the PyPi package for the convenience of
+    downstream package maintainers.
+  * Fixed an error when stdin was a closed fd.
+  * Improved --debug output formatting.
+- Update patch:
+  * httpie-adjust-requirements.patch
+
+-------------------------------------------------------------------
 Sun Dec 22 16:32:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
