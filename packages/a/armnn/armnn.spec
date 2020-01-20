@@ -1,7 +1,7 @@
 #
 # spec file for package armnn
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define target @BUILD_FLAVOR@%{nil}
 
@@ -79,6 +80,9 @@
 %bcond_with armnn_onnx
 %endif
 
+# Do not package ArmnnConverter and ArmnnQuantizer, by default
+%bcond_with armnn_tools
+
 %define version_major 19
 %define version_minor 08
 
@@ -88,7 +92,7 @@ Release:        0
 Summary:        Arm NN SDK enables machine learning workloads on power-efficient devices
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            https://developer.arm.com/products/processors/machine-learning/arm-nn
+URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/275
@@ -120,8 +124,8 @@ BuildRequires:  libboost_thread-devel >= 1.59
 %if %{with armnn_caffe}
 BuildRequires:  caffe-devel
 %endif
-BuildRequires:  cmake >= 3.0.2
 BuildRequires:  ComputeLibrary-devel >= 19.08
+BuildRequires:  cmake >= 3.0.2
 BuildRequires:  gcc-c++
 %if %{with armnn_flatbuffers}
 BuildRequires:  flatbuffers-devel
@@ -177,6 +181,7 @@ Conflicts:      armnn
 Conflicts:      armnn-opencl
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    %ix86
 
 %description
 Arm NN is an inference engine for CPUs, GPUs and NPUs. 
@@ -187,8 +192,8 @@ modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 %package devel
 Summary:        Development headers and libraries for armnn
-Group:          Development/Libraries/C and C++
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
+Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
 Conflicts:      armnn-devel
 %else
@@ -222,8 +227,8 @@ This package contains the development libraries and headers for armnn.
 %if %{with armnn_extra_tests}
 %package -n %{name}-extratests
 Summary:        Additionnal downstream tests for Arm NN
-Group:          Development/Libraries/C and C++
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
+Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
 Conflicts:      armnn-extratests
 %else
@@ -478,6 +483,12 @@ find ./build/tests -maxdepth 1 -type f -executable -exec cp $CP_ARGS {} %{buildr
 %if %{with armnn_flatbuffers}
 # Install Sample app
 cp $CP_ARGS ./build/samples/SimpleSample %{buildroot}%{_bindir}
+%if %{with armnn_tools}
+# Install ArmNNConverter
+cp $CP_ARGS ./build/ArmnnConverter %{buildroot}%{_bindir}
+# Install ArmNNQuantizer
+cp $CP_ARGS ./build/ArmnnQuantizer %{buildroot}%{_bindir}
+%endif
 %endif
 
 # openCL UnitTests are failing in OBS due to the lack of openCL device
@@ -514,7 +525,6 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %postun -n libarmnnOnnxParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
 %endif
 
-
 %files
 %defattr(-,root,root)
 %doc README.md
@@ -526,6 +536,10 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_bindir}/MultipleNetworksCifar10
 %endif
 %if %{with armnn_flatbuffers}
+%if %{with armnn_tools}
+%{_bindir}/ArmnnConverter
+%{_bindir}/ArmnnQuantizer
+%endif
 %{_bindir}/TfLite*-Armnn
 %{_bindir}/Image*Generator
 %endif
@@ -603,6 +617,5 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %if %{with armnn_onnx}
 %{_libdir}/libarmnnOnnxParser.so
 %endif
-
 
 %changelog

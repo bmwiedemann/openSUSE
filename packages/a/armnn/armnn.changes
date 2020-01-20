@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 20 15:21:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable ArmnnConverter and ArmnnQuantizer packaging by default
+  as it requires libQuantizer.so to be packaged, which is not yet
+
+-------------------------------------------------------------------
+Tue Jan 14 13:07:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package ArmnnConverter and ArmnnQuantizer
+
+-------------------------------------------------------------------
+Tue Jan 14 11:59:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- ExcludeArch %ix86: Parts of the build deps (tensorflow/bazel) are
+  not supported on ix86.
+
+-------------------------------------------------------------------
 Mon Nov 25 14:16:29 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - tensorflow-devel package now includes *.pb.* files, so 
