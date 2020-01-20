@@ -17,20 +17,19 @@
 
 
 Name:           virt-what
-Version:        1.15
+Version:        1.20
 Release:        0
 Summary:        Detect if running in a virtual machine
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Console
-Url:            http://people.redhat.com/~rjones/virt-what
-Source0:        http://people.redhat.com/~rjones/%{name}/files/%{name}-%{version}.tar.gz
-Source1:        http://people.redhat.com/~rjones/%{name}/files/%{name}-%{version}.tar.gz.sig
+URL:            https://people.redhat.com/~rjones/virt-what
+Source0:        https://people.redhat.com/~rjones/%{name}/files/%{name}-%{version}.tar.gz
+Source1:        https://people.redhat.com/~rjones/%{name}/files/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
+Requires:       util-linux
 %ifarch %{ix86} x86_64 aarch64 %arm
 Requires:       dmidecode
 %endif
-Requires:       util-linux
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # for pod2man
 %if 0%{?suse_version}
 BuildRequires:  perl
@@ -52,16 +51,16 @@ developers and people compiling from source.
 make %{?_smp_mflags}
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
 %check
 make %{?_smp_mflags} check
 
 %files
-%defattr(-,root,root)
-%doc README COPYING
+%license COPYING
+%doc README
 %{_sbindir}/virt-what
-%{_mandir}/man1/virt-what.1%{ext_man}
+%{_mandir}/man1/virt-what.1%{?ext_man}
 %{_libexecdir}/virt-what-cpuid-helper
 
 %changelog
