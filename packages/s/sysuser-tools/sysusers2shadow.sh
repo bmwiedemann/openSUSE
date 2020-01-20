@@ -17,6 +17,9 @@ do
 	    elif [ -x /usr/bin/busybox ]; then
 		echo "addgroup -S $ARGUMENTS"
 		/usr/bin/getent group "${arr[1]}" >> /dev/null || /usr/bin/busybox addgroup -S $ARGUMENTS || exit $?
+	    elif [ -x /bin/busybox ]; then
+		echo "addgroup -S $ARGUMENTS"
+		/usr/bin/getent group "${arr[1]}" >> /dev/null || /bin/busybox addgroup -S $ARGUMENTS || exit $?
 	    else
 		echo "ERROR: neither groupadd nor busybox found!"
 		exit 1
@@ -33,19 +36,34 @@ do
 	    else
 		ARGUMENTS="-d / $ARGUMENTS"
 	    fi
-	    /usr/bin/getent group ${arr[1]} >> /dev/null
-            if [ $? -eq 0 ]; then
-              	ARGUMENTS="-g ${arr[1]} $ARGUMENTS"
-	    else
-		ARGUMENTS="-U $ARGUMENTS"
-	    fi
 	    if [ -x /usr/sbin/useradd ]; then
+		# this is useradd/shadow specific
+		/usr/bin/getent group ${arr[1]} >> /dev/null
+		if [ $? -eq 0 ]; then
+              	    ARGUMENTS="-g ${arr[1]} $ARGUMENTS"
+		else
+		    ARGUMENTS="-U $ARGUMENTS"
+		fi
 		echo "useradd -r -s /sbin/nologin -c \"${arr[3]}\" $ARGUMENTS"
 		/usr/bin/getent passwd ${arr[1]} >> /dev/null || /usr/sbin/useradd -r -s /sbin/nologin -c "${arr[3]}" $ARGUMENTS || exit $?
 	    elif [ -x /usr/bin/busybox ]; then
+		/usr/bin/getent group ${arr[1]} >> /dev/null
+		if [ $? -ne 0 ]; then
+		    /usr/bin/busybox addgroup ${arr[1]}
+		fi
+              	ARGUMENTS="-G ${arr[1]} $ARGUMENTS"
 		ARGUMENTS=`echo $ARGUMENTS | sed -e 's|-d|-h|g' -e 's|-g|-G|g'`
 		echo "adduser -S -s /sbin/nologin -g \"${arr[3]}\" $ARGUMENTS"
 		/usr/bin/getent passwd ${arr[1]} >> /dev/null || /usr/bin/busybox adduser -S -s /sbin/nologin -g "${arr[3]}" $ARGUMENTS || exit $?
+	    elif [ -x /bin/busybox ]; then
+		/usr/bin/getent group ${arr[1]} >> /dev/null
+		if [ $? -ne 0 ]; then
+		    /bin/busybox addgroup ${arr[1]}
+		fi
+              	ARGUMENTS="-G ${arr[1]} $ARGUMENTS"
+		ARGUMENTS=`echo $ARGUMENTS | sed -e 's|-d|-h|g' -e 's|-g|-G|g'`
+		echo "adduser -S -s /sbin/nologin -g \"${arr[3]}\" $ARGUMENTS"
+		/usr/bin/getent passwd ${arr[1]} >> /dev/null || /bin/busybox adduser -S -s /sbin/nologin -g "${arr[3]}" $ARGUMENTS || exit $?
 	    else
 		echo "ERROR: neither useradd nor busybox found!"
 		exit 1
@@ -59,6 +77,9 @@ do
 	    elif [ -x /usr/bin/busybox ]; then
 		echo "addgroup ${arr[1]} ${arr[2]}"
 		/usr/bin/busybox addgroup ${arr[1]} ${arr[2]} || exit $?
+	    elif [ -x /bin/busybox ]; then
+		echo "addgroup ${arr[1]} ${arr[2]}"
+		/bin/busybox addgroup ${arr[1]} ${arr[2]} || exit $?
 	    else
 		echo "ERROR: neither usermod nor busybox found!"
 		exit 1

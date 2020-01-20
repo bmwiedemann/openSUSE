@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 29 19:16:13 UTC 2019 - kukuk@suse.de
+
+- Look for /bin/busybox, too
+- Add special handling for busybox and groups
+
+-------------------------------------------------------------------
 Fri Jul 26 13:28:27 CEST 2019 - kukuk@suse.de
 
 - Use suggests shadow to prefer that over busybox in normal systems
