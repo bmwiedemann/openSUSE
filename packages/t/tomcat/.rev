@@ -609,4 +609,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>765337</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>2de169bab586a53bc2393653e7b7ae5e</srcmd5>
+    <version>9.0.30</version>
+    <time>1579557369</time>
+    <user>dimstar_suse</user>
+    <comment>Restore the capacity to build with jdk 9+</comment>
+    <requestid>765850</requestid>
+  </revision>
 </revisionlist>

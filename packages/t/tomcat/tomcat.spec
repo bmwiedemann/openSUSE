@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -77,8 +77,10 @@ Patch1:         %{name}-%{major_version}.%{minor_version}-tomcat-users-webapp.pa
 Patch2:         %{name}-%{major_version}.%{minor_version}-sle.catalina.policy.patch
 # PATCH-FIX-OPENSUSE: build javadoc with the same java source level as the class files
 Patch3:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
-# PATCH-FIX-OPENSUSE: disable adding OSGi metadata to JAR files because bndtools is not avalable in SLES/OpenSUSE
-Patch4:         tomcat-9.0-disable-osgi-build.patch
+# PATCH-FIX-OPENSUSE: include all necessary aqute-bnd jars
+Patch4:         tomcat-9.0-osgi-build.patch
+# PATCH-FIX-OPENSUSE: cast ByteBuffer to Buffer in cases where there is a risk of using Java 9+ apis
+Patch5:         tomcat-9.0.30-java8compat.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -96,9 +98,8 @@ BuildRequires:  geronimo-jaxrpc-1_1-api
 BuildRequires:  geronimo-qname-1_1-api
 BuildRequires:  geronimo-saaj-1_1-api
 BuildRequires:  jakarta-taglibs-standard >= 1.1
-BuildRequires:  java-devel = 1.8.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  log4j12
 BuildRequires:  sed
@@ -256,6 +257,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch2
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
