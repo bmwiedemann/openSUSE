@@ -50,6 +50,8 @@ make %{?_smp_mflags} prefix=%{_prefix} doc
 %install
 %python3_install
 make %{?_smp_mflags} prefix=%{_prefix} mandir=%{_mandir} DESTDIR=%{buildroot} install-doc
+# avoid unreproducible pyc files https://bugs.python.org/issue34033 https://github.com/python/cpython/pull/8057
+%py3_compile %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{python3_sitelib}
 
 %files

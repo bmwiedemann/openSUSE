@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 15:17:07 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Create .pyc files reproducibly (boo#1049186)
+
+-------------------------------------------------------------------
 Mon Jan 13 14:45:32 CET 2020 - tiwai@suse.de
 
 - Revive asciidoc; will be replaced or dropped later, depending on
