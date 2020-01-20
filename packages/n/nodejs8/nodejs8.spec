@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs8
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,16 @@ Release:        0
 %endif
 
 %bcond_with    valgrind_tests
+
+%if %{node_version_number} >= 12
 %bcond_without nodejs_lto
+%else
+%bcond_with nodejs_lto
+%endif
+
+%if !0%{?with nodejs_lto}
+%define _lto_cflags %{nil}
+%endif
 
 %if 0%{?suse_version} == 1110
 %define _libexecdir %{_exec_prefix}/lib
@@ -318,6 +327,12 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %setup -q -n node-%{version}
 %endif
 
+%if %{node_version_number} == 6
+# Update NPM
+rm -r deps/npm
+tar Jxvf %{SOURCE10}
+%endif
+
 %if %{node_version_number} >= 10
 tar Jxvf %{SOURCE11}
 %endif # node_version_number
@@ -386,7 +401,7 @@ export CXX=%{?cpp_exec}
 
 ./configure \
     --prefix=%{_prefix} \
-%if 0%{?with nodejs_lto} && %{node_version_number} >= 12
+%if 0%{?with nodejs_lto}
     --enable-lto \
 %endif
 %if ! 0%{with intree_openssl}

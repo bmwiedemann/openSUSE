@@ -432,4 +432,12 @@ Previous build was broken because of boo#1056783: for some reason the compiler w
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>759683</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>c910f5b954e7506eb31226647ecc7ff8</srcmd5>
+    <version>8.17.0</version>
+    <time>1579556911</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>764404</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  7 13:20:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints for aarch64
+
+-------------------------------------------------------------------
+Tue Jan  7 13:12:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Really disable LTO when required (nodejs < 12)
+
+-------------------------------------------------------------------
 Thu Dec 19 11:30:13 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS release 8.17.0:
