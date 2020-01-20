@@ -1,7 +1,7 @@
 #
 # spec file for package python-authheaders
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/a/authheaders/aut
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} <= 1500
+BuildRequires:  %{python_module cffi}
+%endif
 Requires:       python-authres >= 1.0.1
 Requires:       python-dkimpy >= 0.7.1
 Requires:       python-dnspython
@@ -49,6 +52,7 @@ A library wrapping email authentication header verification and generation.
 %setup -q -n authheaders-%{version}
 
 %build
+export LANG=en_US.UTF-8
 %python_build
 
 %install
@@ -56,6 +60,7 @@ A library wrapping email authentication header verification and generation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
