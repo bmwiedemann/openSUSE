@@ -1,7 +1,7 @@
 #
 # spec file for package kbd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -329,6 +329,9 @@ ln -s %{_bindir}/resizecons %{buildroot}/bin
 mkdir -p %{buildroot}%{kbd}/keymaps/legacy
 mv %{buildroot}%{kbd}/keymaps/{amiga,atari,i386,include,mac,ppc,sun} %{buildroot}%{kbd}/keymaps/legacy
 
+# Make sure Perl has a locale where uc/lc works for unicode codepoints
+# see e.g. https://perldoc.perl.org/perldiag.html#Wide-character-(U%2b%25X)-in-%25s
+export LC_ALL=C.utf-8
 # Convert X keyboard layouts to console keymaps
 mkdir -p %{buildroot}%{kbd}/keymaps/xkb
 perl xml2lst.pl < %{_datadir}/X11/xkb/rules/base.xml > layouts-variants.lst
@@ -336,22 +339,24 @@ while read line; do
   XKBLAYOUT=`echo "$line" | cut -d " " -f 1`
   echo "$XKBLAYOUT" >> layouts-list.lst
   XKBVARIANT=`echo "$line" | cut -d " " -f 2`
-  ckbcomp "$XKBLAYOUT" "$XKBVARIANT" | gzip -n9 > %{buildroot}%{kbd}/keymaps/xkb/"$XKBLAYOUT"-"$XKBVARIANT".map.gz
+  ckbcomp "$XKBLAYOUT" "$XKBVARIANT" > /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
+  # skip converted layouts which cannot input ASCII (rh#1031848)
+  grep -q "U+0041" /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map && \
+    gzip -cn9 /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map > %{buildroot}%{kbd}/keymaps/xkb/"$XKBLAYOUT"-"$XKBVARIANT".map.gz
+  rm /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
 done < layouts-variants.lst
 
 # Convert X keyboard layouts (plain, no variant)
 cat layouts-list.lst | sort -u >> layouts-list-uniq.lst
 while read line; do
-  ckbcomp "$line" | gzip -n9 > %{buildroot}%{kbd}/keymaps/xkb/"$line".map.gz
+  ckbcomp "$line" > /tmp/"$line".map
+  grep -q "U+0041" /tmp/"$line".map && \
+    gzip -cn9 /tmp/"$line".map > %{buildroot}%{kbd}/keymaps/xkb/"$line".map.gz
+  rm /tmp/"$line".map
 done < layouts-list-uniq.lst
 
-# wipe converted layouts which cannot input ASCII (rh#1031848)
-zgrep -L "U+0041" %{buildroot}%{kbd}/keymaps/xkb/* | xargs rm -f
-
 # Rename the converted default fi (kotoistus) layout (rh#1117891)
-gunzip %{buildroot}%{kbd}/keymaps/xkb/fi.map.gz
-mv %{buildroot}%{kbd}/keymaps/xkb/fi.map %{buildroot}%{kbd}/keymaps/xkb/fi-kotoistus.map
-gzip -n9 %{buildroot}%{kbd}/keymaps/xkb/fi-kotoistus.map
+mv %{buildroot}%{kbd}/keymaps/xkb/fi.map.gz %{buildroot}%{kbd}/keymaps/xkb/fi-kotoistus.map.gz
 
 # Fix converted cz layout - add compose rules (rh#1181581)
 gunzip %{buildroot}%{kbd}/keymaps/xkb/cz.map.gz

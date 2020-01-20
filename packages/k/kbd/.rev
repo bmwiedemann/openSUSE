@@ -761,4 +761,12 @@ Fix version typo:
     <comment></comment>
     <requestid>760513</requestid>
   </revision>
+  <revision rev="94" vrev="12">
+    <srcmd5>0c1fcb507e435936fec962a02bf1142c</srcmd5>
+    <version>2.0.4</version>
+    <time>1579556899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764374</requestid>
+  </revision>
 </revisionlist>
