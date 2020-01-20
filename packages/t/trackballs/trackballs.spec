@@ -1,7 +1,7 @@
 #
 # spec file for package trackballs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://trackballs.github.io/
 Source0:        https://github.com/trackballs/trackballs/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  guile-devel
+BuildRequires:  guile-devel < 3.0
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_image)

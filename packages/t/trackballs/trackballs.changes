@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 18 11:31:06 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Don't use Guile 3.0 as trackballs is not yet compatible 
+
+-------------------------------------------------------------------
 Wed Nov 21 17:03:04 UTC 2018 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.3.1:
