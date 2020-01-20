@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:33:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.0
+  * Renamed package parameter to distribution_name.
+  * For better compatibility with the stdlib implementation and to 
+    avoid the same distributions being discovered by the stdlib 
+    and backport implementations, the backport now disables the 
+    stdlib DistributionFinder during initialization (import time).
+  * Project adopts semver for versioning.
+  * EntryPoints are now pickleable.
+  * Dropped support for Python 3.4.
+  * Fixed repr(EntryPoint) on PyPy.
+  * Repaired project metadata to correctly declare the python_requires directive.
+  * Through careful optimization, distribution() is 3-4x faster.
+  * When searching through sys.path, if any error occurs attempting 
+    to list a path entry, that entry is skipped, making the system 
+    much more lenient to errors.
+
+-------------------------------------------------------------------
 Wed Sep 11 14:57:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.21:

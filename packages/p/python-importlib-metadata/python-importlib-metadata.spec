@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlib-metadata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python3 1
 %endif
 Name:           python-importlib-metadata
-Version:        0.21
+Version:        1.4.0
 Release:        0
 Summary:        Tool to read metadata from Python packages
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module zipp >= 0.5}
 BuildRequires:  fdupes
 BuildRequires:  python-importlib_resources
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-configparser
+BuildRequires:  python2-configparser >= 3.5
 BuildRequires:  python2-contextlib2
 Requires:       python-zipp >= 0.5
 Provides:       python-importlib_metadata = %{version}
@@ -50,11 +50,8 @@ BuildRequires:  %{python_module pathlib2}
 %else
 BuildRequires:  python-pathlib2
 %endif
-%if %{python3_version_nodots} < 35
-Requires:       python-pathlib2
-%endif
 %ifpython2
-Requires:       python-configparser
+Requires:       python-configparser >= 3.5
 Requires:       python-contextlib2
 Requires:       python-pathlib2
 %endif
