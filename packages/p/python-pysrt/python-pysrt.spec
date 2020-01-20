@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysrt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysrt
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        SubRip (.srt) subtitle parser and writer
 License:        GPL-3.0-only
@@ -54,6 +54,7 @@ sed -e '1d' -i pysrt/commands.py
 %python_exec %{_bindir}/nosetests
 
 %files %{python_files}
+%doc README.rst
 %python3_only %{_bindir}/srt
 %{python_sitelib}/pysrt
 %{python_sitelib}/pysrt-%{version}-py%{python_version}.egg-info
