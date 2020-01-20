@@ -42,6 +42,7 @@ ECMAScript; a near feature complete fork of slimit.
 %setup -q -n calmjs.parse-%{version}
 
 %build
+export LANG=en_US.UTF-8
 %python_build
 
 %install
@@ -51,6 +52,7 @@ ECMAScript; a near feature complete fork of slimit.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
