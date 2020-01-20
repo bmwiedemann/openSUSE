@@ -1305,4 +1305,20 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   * file-5.28-btrfs-image.dif</comment>
     <requestid>758529</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>6579e97eb69cd3ffed0a0f6c222b2d18</srcmd5>
+    <version>5.38</version>
+    <time>1579556926</time>
+    <user>dimstar_suse</user>
+    <comment>- Looks like libseccomp filter stumble over decompressors like
+  xz (without liblmza) or zstd hence disable it (boo#1160649)
+- Require at build devel packages for liblzma and libbz2
+
+- file-5.38-allow-readlinkat.dif: allow readlinkat() systemcall,
+  reenable sandboxing. (bsc#1160303)
+
+- Currently file command receives SIGSYS/31 with sandboxing enabled
+  via libseccomp</comment>
+    <requestid>764572</requestid>
+  </revision>
 </revisionlist>

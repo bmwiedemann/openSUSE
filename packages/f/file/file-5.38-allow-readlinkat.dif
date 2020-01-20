@@ -1,0 +1,14 @@
+Index: file-5.38/src/seccomp.c
+===================================================================
+--- file-5.38.orig/src/seccomp.c
++++ file-5.38/src/seccomp.c
+@@ -202,6 +202,9 @@ enable_sandbox_full(void)
+ #ifdef __NR_newfstatat
+ 	ALLOW_RULE(newfstatat);
+ #endif
++#ifdef __NR_readlinkat
++	ALLOW_RULE(readlinkat);
++#endif
+ 	ALLOW_RULE(open);
+ 	ALLOW_RULE(openat);
+ 	ALLOW_RULE(pread64);

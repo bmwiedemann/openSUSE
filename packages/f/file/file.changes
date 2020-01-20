@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 15 09:17:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Looks like libseccomp filter stumble over decompressors like
+  xz (without liblmza) or zstd hence disable it (boo#1160649)
+- Require at build devel packages for liblzma and libbz2
+
+-------------------------------------------------------------------
+Wed Jan  8 13:55:46 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- file-5.38-allow-readlinkat.dif: allow readlinkat() systemcall,
+  reenable sandboxing. (bsc#1160303)
+
+-------------------------------------------------------------------
+Tue Jan  7 11:22:04 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Currently file command receives SIGSYS/31 with sandboxing enabled
+  via libseccomp
+
+-------------------------------------------------------------------
 Fri Dec 20 14:00:22 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Require pkgconfig(libseccomp) to enable the sandboxing feature

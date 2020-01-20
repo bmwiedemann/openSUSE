@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Name:           file
 BuildRequires:  bash >= 4.0
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libseccomp)
 URL:            http://www.darwinsys.com/file/
 # bug437293
@@ -64,6 +66,7 @@ Patch34:        file-5.23-endian.patch
 Patch35:        file-5.24-nitpick.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
+Patch40:        file-5.38-allow-readlinkat.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         _miscdir    %{_datadir}/misc
@@ -129,6 +132,7 @@ to develop applications that require the magic "file" interface.
 %patch35 -p0 -b .nitpick
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
+%patch40 -p1 -b .readlinkat
 %patch -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
@@ -140,7 +144,10 @@ rm -f Magdir/*,v Magdir/*~
 rm -f ltcf-c.sh ltconfig ltmain.sh
 autoreconf -fiv
 export CFLAGS="%{optflags} -DHOWMANY=69632 -fPIE $(pkg-config libseccomp --cflags)"
-%configure --disable-silent-rules --datadir=%{_miscdir} --disable-static --enable-fsect-man5
+%configure --disable-silent-rules --datadir=%{_miscdir} \
+	--disable-static \
+	--disable-libseccomp \
+	--enable-fsect-man5
 make %{?_smp_mflags} pkgdatadir='$(datadir)' LDFLAGS="-pie"
 
 %install
