@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Jan 20 18:58:57 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add copyright
+
+-------------------------------------------------------------------
+Mon Jan 20 18:42:15 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- BuildRequire at least gcc 5 for C++14 support
+
+-------------------------------------------------------------------
+Mon Jan 20 11:29:53 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Install Release notes too
+
+-------------------------------------------------------------------
+Mon Jan  6 13:23:30 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Initial package version
