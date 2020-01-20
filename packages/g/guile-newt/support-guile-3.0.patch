@@ -1,0 +1,21 @@
+commit ee02ff6b76cca76d77b8664b4d0d376e2c13e644 (HEAD -> master)
+Author: Jonathan Brielmaier <jbrielmaier@suse.de>
+Date:   Mon Jan 13 23:23:01 2020 +0100
+
+    Add support for Guile 3.0.
+    
+    * configure.ac (GUILE_PKG): Add Guile 3.0.
+
+diff --git a/configure.ac b/configure.ac
+index 473c517..a77351e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign color-tests])
+ dnl Enable silent rules by default.
+ AM_SILENT_RULES([yes])
+ 
+-GUILE_PKG([2.2 2.0])
++GUILE_PKG([3.0 2.2 2.0])
+ GUILE_PROGS
+ 
+ dnl (srfi srfi-64) appeared in Guile 2.0.11.

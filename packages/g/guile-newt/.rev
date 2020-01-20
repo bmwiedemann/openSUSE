@@ -10,4 +10,12 @@
 dependency of guix</comment>
     <requestid>698223</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9669f2b8a6fdd52b9d9676f43fd90368</srcmd5>
+    <version>0.0.1</version>
+    <time>1579557381</time>
+    <user>dimstar_suse</user>
+    <comment>make compatible with Guile 3.0</comment>
+    <requestid>765846</requestid>
+  </revision>
 </revisionlist>

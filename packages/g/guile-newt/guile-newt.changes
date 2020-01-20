@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 13 22:37:09 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Add patch:
+  * support-guile-3.0.patch: Add support for Guile 3.0. Proposed to
+    upstream.
+- Remove unrecognized configure flag.
+- Adapt guile-newt-rpmlintrc to Guile 3.0
+
+-------------------------------------------------------------------
 Fri Apr 26 12:48:15 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - add missing guile-newt-rpmlintrc as source file 
