@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Jan 17 14:42:30 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#701
+- check for existence of lvm vg before using it (bsc#1161191)
+- 4.2.56
+
+--------------------------------------------------------------------
 Thu Jan 16 08:00:25 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Finnish) (bsc#1149754)
