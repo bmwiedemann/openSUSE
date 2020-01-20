@@ -1,7 +1,7 @@
 #
 # spec file for package hdf5
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "serial"
-%undefine suffix
-%undefine mpi_flavor
 %bcond_with hpc
 %endif
 
@@ -275,7 +273,11 @@ ExclusiveArch:  do_not_build
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
 # For compatibility package names
+%if "%{flavor}" == "openmpi1" && 0%{?suse_version} <= 1500
+%define mpi_ext %{nil}
+%else
 %define mpi_ext %{?mpi_vers}
+%endif
 
 %if %{with hpc}
 %{hpc_init -c %compiler_family %{?with_mpi:-m %mpi_flavor} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
@@ -377,6 +379,10 @@ BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macr
  %endif
 %endif  # ?hpc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if "%{flavor}" == "openmpi1" && 0%{?suse_version} <= 1500
+Provides:       %{pname}-openmpi = %{version}-%{release}
+Obsoletes:      %{pname}-openmpi < %{version}-%{release}
+%endif
 
 %description
 HDF5 is a data model, library, and file format for storing and
@@ -512,6 +518,10 @@ Requires:       %{libname -l _fortran -s %{sonum_F}} = %{version}
 Requires:       %{libname -l _hl -s %{sonum_HL}} = %{version}
 Requires:       %{libname -l hl_fortran -s %{sonum_HL_F}} = %{version}
 %{?with_hpc:%hpc_requires_devel}
+%if "%{flavor}" == "openmpi1" && 0%{?suse_version} <= 1500
+Provides:       %{pname}-openmpi-devel = %{version}-%{release}
+Obsoletes:      %{pname}-openmpi-devel < %{version}-%{release}
+%endif
 
 %description devel
 HDF5 is a data model, library, and file format for storing and
@@ -701,9 +711,7 @@ EOF
 rm -rf %{buildroot}%{_prefix}/share/hdf5_examples
 %endif
 
-%if 0%{?suse_version} >= 1110
 %fdupes -s %{buildroot}/%{_datadir}
-%endif
 
 %if %{with hpc}
 %{hpc_write_pkgconfig -n hdf5 -l libhdf5}
