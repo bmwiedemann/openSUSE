@@ -1,7 +1,7 @@
 #
 # spec file for package netdata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
+%define godplugin_version 0.14.1
 Name:           netdata
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -27,12 +28,18 @@ License:        GPL-3.0-or-later AND MIT AND BSD-2-Clause AND BSD-3-Clause AND L
 Group:          System/Monitoring
 URL:            http://my-netdata.io/
 Source0:        https://github.com/netdata/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.gz
+Source1:        https://github.com/netdata/go.d.plugin/archive/v%{godplugin_version}.tar.gz#/go.d.plugin-v%{godplugin_version}.tar.gz
+Source2:        vendor.tar.gz
 Source3:        netdata-rpmlintrc
 Patch0:         netdata-logrotate-su.patch
 Patch2:         netdata-smartd-log-path.patch
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  git-core
+%if 0%{?suse_version} > 1500
+BuildRequires:  go >= 1.13
+%endif
 BuildRequires:  judy-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcap)
@@ -69,7 +76,14 @@ using interactive web dashboards.
 %patch0
 %patch2 -p1
 
+%if 0%{?suse_version} > 1500
+tar xf %{S:1}
+cd go.d.plugin-%{godplugin_version}
+tar xf %{S:2}
+%endif
+
 %build
+export GOFLAGS=-mod=vendor
 %configure \
     --docdir="%{_docdir}/%{name}-%{version}" \
     --enable-plugin-nfacct \
@@ -82,6 +96,17 @@ using interactive web dashboards.
     --with-user=%{netdata_user} \
     %{?conf}
 %make_build
+
+%if 0%{?suse_version} > 1500
+cd go.d.plugin-%{godplugin_version}
+go vet ./...
+
+go build -ldflags='-s -w' \
+%ifnarch ppc64
+    -buildmode=pie \
+%endif
+    -o bin/go.d.plugin github.com/netdata/go.d.plugin/cmd/godplugin
+%endif
 
 %install
 %make_install
@@ -101,6 +126,12 @@ sed -i 's,^#!%{_bindir}/env bash,#!/bin/bash,;s,^#!%{_bindir}/env sh,#!/bin/sh,'
 # with sending usage data to Google Analytics, whether anonymized or not.
 # Hence, disable statistics by default.
 touch %{buildroot}%{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
+
+%if 0%{?suse_version} > 1500
+cd go.d.plugin-%{godplugin_version}
+cp -r config/* %{buildroot}%{_libdir}/%{name}/conf.d
+install -m0755 -p bin/go.d.plugin %{buildroot}%{_libexecdir}/%{name}/plugins.d/go.d.plugin
+%endif
 
 %pre
 getent group %{netdata_group} >/dev/null || \

@@ -2139,4 +2139,69 @@ Improvements:
     + Increase dbengine default cache size</comment>
     <requestid>741631</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4b00eef7f5a6207c919fbd7c77820dcd</srcmd5>
+    <version>1.19.0</version>
+    <time>1579557097</time>
+    <user>dimstar_suse</user>
+    <comment>- Also package go.d.plugin (v0.14.1)
+- Update to v1.19.0
+Improvements:
+  * New collectors:
+    + AM2320 sensor collector plugin
+    + Added parsing of /proc/pagetypeinfo to provide metrics on
+      fragmentation of free memory pages
+    + The unbound collector module was completely rewritten, in Go
+  * Collector improvements:
+    + We rewrote our web log parser in Go, drastically improving
+      its flexibility and performance
+    + The Kubernetes kubelet collector now reads the service
+      account token and uses it for authorization. We also added a
+      new default job to collect metrics from
+      https://localhost:10250/metrics
+    + Added a new default job to the Kubernetes coredns collector
+      to collect metrics from
+      http://kube-dns.kube-system.svc.cluster.local:9153/metrics
+    + apps.plugin: Synced FRRouting daemons configuration with the
+      frr 7.2 release
+    + apps.plugin: Added process group for git-related processes
+    + apps.plugin: Added balena to the container-engines
+      application group
+    + web_log: Treat 401 Unauthorized requests as successful
+    + xenstat.plugin: Prepare for xen 4.13 by checking for check
+      xenstat_vbd_error presence
+    + mysql: Added galera cluster_status alarm
+  * Metrics database:
+    + Netdata generates alarms if the disk cannot keep up with
+      data collection
+  * Health:
+    + Fine tune various default alarm configurations
+    + Update SYN cookie alarm to be less aggressive
+    + Added support for IRC alarm notifications
+Bug fixes:
+  * Prevented freezes due to isolated CPUs
+  * Fixed missing streaming when slave has SSL activated
+  * Fixed error 421 in IRC notifications, by removing a line break
+    from the message
+  * proc/pagetypeinfo collection could under particular
+    circumstances cause high CPU load. As a workaround,
+    we disabled pagetypeinfo by default
+  * Fixed incorrect memory allocation in proc plugin’s
+    pagetypeinfo collector
+  * Eliminated cached responses from the postgres collector
+  * rabbitmq: Fixed &quot;disk_free&quot;: &quot;disk_free_monitoring_disabled&quot;
+    error
+  * Fixed Apache module not working with letsencrypt certificate
+    by allowing the python UrlService to skip tls_verify for http
+    scheme
+  * Fixed invalid spikes appearing in certain charts, by improving
+    the incremental counter reset/wraparound detection algorithm
+  * Fixed issue with unknown variables in alarm configuration
+    expressions always being evaluated to zero
+  * Fixed issue of automatically picking up Pi-hole stats from a
+    Pi-hole instance installed on another device by disabling the
+    default job that collects metrics from http://pi.hole
+</comment>
+    <requestid>765606</requestid>
+  </revision>
 </revisionlist>
