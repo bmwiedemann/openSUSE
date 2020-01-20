@@ -758,4 +758,13 @@
     <comment></comment>
     <requestid>756991</requestid>
   </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>187610a0872a5876f5a32a9d7d688121</srcmd5>
+    <version>3.17.4</version>
+    <time>1579557473</time>
+    <user>dimstar_suse</user>
+    <comment>Use correct patch name (obsoletes #764434).
+No changes entry, as it's just a correction of the last changes entry.</comment>
+    <requestid>765888</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:47:24 UTC 2020 - Jean Delvare <jdelvare@suse.com>
+
+- Drop add-MarkAll-to-folder-menu.patch. After discussion,
+  upstream rejected it at least in this form.
+
+-------------------------------------------------------------------
 Sat Nov 23 07:41:51 UTC 2019 - Jean Delvare <jdelvare@suse.com>
 
 - Add a test on build-time libetpan version to require the proper
