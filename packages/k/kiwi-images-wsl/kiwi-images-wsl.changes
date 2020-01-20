@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 09:25:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid disk full error seen in Tumbleweed aarch64
+
+-------------------------------------------------------------------
 Tue Nov 19 16:31:52 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - add aaa_base-wsl to fix default PATH for Windows integration (boo#1156950)
