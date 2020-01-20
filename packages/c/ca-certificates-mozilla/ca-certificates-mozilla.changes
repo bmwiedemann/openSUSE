@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 14 07:07:51 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- update to 2.40 state of the Mozilla NSS Certificate store (bsc#1160160)
+- removed:
+  - Certplus Class 2 Primary CA
+  - Deutsche Telekom Root CA 2
+  - CN=Swisscom Root CA 2
+  - UTN-USERFirst-Client Authentication and Email
+
+- added:
+  - Entrust Root Certification Authority - G4
+
+-------------------------------------------------------------------
 Wed Dec 18 10:53:59 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - make sure p11-kit with patches is installed on SLE (boo#1154871)

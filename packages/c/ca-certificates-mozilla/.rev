@@ -573,4 +573,19 @@
     <comment>- make sure p11-kit with patches is installed on SLE (boo#1154871) (forwarded request 757830 from lnussel)</comment>
     <requestid>757879</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>fdc715b4849bf6b4749f6653ead08d60</srcmd5>
+    <version>2.40</version>
+    <time>1579556857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.40 state of the Mozilla NSS Certificate store (bsc#1160160)
+- removed:
+  - Certplus Class 2 Primary CA
+  - Deutsche Telekom Root CA 2
+  - CN=Swisscom Root CA 2
+  - UTN-USERFirst-Client Authentication and Email
+- added:
+  - Entrust Root Certification Authority - G4</comment>
+    <requestid>764234</requestid>
+  </revision>
 </revisionlist>
