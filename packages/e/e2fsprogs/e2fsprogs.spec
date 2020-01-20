@@ -1,7 +1,7 @@
 #
 # spec file for package e2fsprogs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,7 @@ Conflicts:      libcom_err2-mini
 Conflicts:      libcom_err-mini-devel
 %endif
 #
-Version:        1.45.4
+Version:        1.45.5
 Release:        0
 Summary:        Utilities for the Second Extended File System
 License:        GPL-2.0-only

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  9 13:48:12 UTC 2020 - Jan Kara <jack@suse.cz>
+
+- Update to 1.45.5:
+  * Fix out of bounds write when checking maliciously corrupted filesystem
+  * Remove unnecessary sleep in e2scrub
+  * Fix spurious emails from e2scrub_all
+  * Fix crash in e2fsck when rebuilding very large directories
+  * Improve resize2fs minimum fs size estimates when the fs is mounted
+  * Fix UBSAN failures when fuzzing filesystem images
+  * Fix potential memory leak in read_bitmap() in libext2fs
+  * Speedup e2fsck on file systems with a very large number of inodes
+  * fuse2fs fixes
+
+-------------------------------------------------------------------
 Mon Sep 30 16:34:37 UTC 2019 - Jan Kara <jack@suse.cz>
 
 - Update to 1.45.4:
