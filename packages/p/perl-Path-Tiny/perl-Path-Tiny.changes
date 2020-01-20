@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 14 03:10:40 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.110
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.110     2020-01-13 13:11:38-05:00 America/New_York
+  
+      - No changes from 0.109-TRIAL.
+  
+  0.109     2020-01-02 12:24:25-05:00 America/New_York (TRIAL RELEASE)
+  
+      - Fixes tests on Windows, particularly with newer File::Spec.
+
+-------------------------------------------------------------------
 Tue Jul 31 05:49:23 UTC 2018 - coolo@suse.com
 
 - updated to 0.108
