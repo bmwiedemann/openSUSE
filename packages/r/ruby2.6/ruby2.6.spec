@@ -105,25 +105,16 @@ BuildRequires:  procps
 BuildRequires:  readline-devel
 BuildRequires:  timezone
 BuildRequires:  zlib-devel
-# this requires is needed as distros older than 11.3 have a buildignore on freetype2, without this the detection of the tk extension fails
-BuildRequires:  freetype2-devel
-%if 0%{?suse_version} > 1010
-BuildRequires:  xorg-x11-libX11-devel
-%else
-BuildRequires:  xorg-x11-devel
-%endif
 %if 0%{?use_valgrind}
-%if 0%{?suse_version} > 1021
+%if 0%{?suse_version} < 1550
 BuildRequires:  valgrind-devel
 %else
-BuildRequires:  valgrind
+BuildRequires:  valgrind-client-headers
 %endif
 %endif
 BuildRequires:  xz
 Provides:       ruby(abi) = %{rb_ver}
-%if 0%{?suse_version} > 1130
 Conflicts:      ruby(abi) = %{rb_ver}
-%endif
 Provides:       ruby26  = %{version}-%{release}
 %if 0%{?is_default_ruby}
 Provides:       ruby-default = %{version}-%{release}
@@ -225,9 +216,7 @@ Development files to link against Ruby.
 Summary:        Ruby Interactive Documentation
 Group:          Development/Languages/Ruby
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} >= 1121
 BuildArch:      noarch
-%endif
 
 %description doc-ri
 This package contains the RI docs for ruby
@@ -236,9 +225,7 @@ This package contains the RI docs for ruby
 Summary:        This package contains the HTML docs for ruby
 Group:          Development/Languages/Ruby
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} >= 1121
 BuildArch:      noarch
-%endif
 
 %description doc-html
 This package contains the HTML docs for ruby
@@ -247,9 +234,7 @@ This package contains the HTML docs for ruby
 Summary:        Example scripts for ruby
 Group:          Development/Languages/Ruby
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} >= 1121
 BuildArch:      noarch
-%endif
 
 %description examples
 Example scripts for ruby
@@ -258,9 +243,7 @@ Example scripts for ruby
 Requires:       %{name} = %{version}
 Summary:        An Interpreted Object-Oriented Scripting Language
 Group:          Development/Languages/Ruby
-%if 0%{?suse_version} >= 1121
 BuildArch:      noarch
-%endif
 
 %description test-suite
 Ruby is an interpreted scripting language for object-oriented programming.  It
@@ -291,12 +274,12 @@ tasks (as in Perl).  It is extensible.
 %setup -q -n ruby-%{pkg_version}
 #setup -q -n snapshot
 %patch -p1
-find sample -type f -print0 | xargs -r0 chmod a-x
-grep -Erl '^#! */' benchmark bootstraptest ext lib sample test \
-  | xargs -r perl -p -i -e 's|^#!\s*\S+(\s+.*)?$|#!/usr/bin/ruby%{rb_binary_suffix} $1|'
+find sample -type f -perm /a=x -ls -exec chmod a-x \{\} \+
+# replace "/usr/bin/env ruby" and "/usr/local/bin/ruby" with correct path
+grep -Erl '^#! */.*ruby' benchmark bootstraptest ext lib sample test \
+  | xargs -r perl -p -i -e 's|^#!\s*\S+\s*ruby\S*(\s+.*)?$|#!/usr/bin/ruby%{rb_binary_suffix} $1|'
 
 %build
-# iseq.c needs -fno-strict-aliasing
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -305,6 +288,7 @@ export CC="clang"
 export CXX="clang++"
 export LD="ld.gold"
 %endif
+# iseq.c needs -fno-strict-aliasing
 export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu99"
 %configure \
   %if %{with jemalloc}
@@ -320,7 +304,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu99"
   %if 0%{?use_valgrind}
   --with-valgrind \
   %endif
-  %if ! %{with build_docs}
+  %if %{without build_docs}
   --disable-install-doc  \
   --disable-install-rdoc \
   --disable-install-capi \
@@ -415,7 +399,6 @@ make check V=1 TESTOPTS="$DISABLE_TESTS" ||:
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %ghost %{_sysconfdir}/alternatives/rake*
 %ghost %{_sysconfdir}/alternatives/rdoc*
 %ghost %{_sysconfdir}/alternatives/ri*
@@ -435,12 +418,16 @@ make check V=1 TESTOPTS="$DISABLE_TESTS" ||:
 %{_mandir}/man1/ri*.1*
 %{_mandir}/man1/ruby*.1*
 %{_mandir}/man5/gemfile*.5*
-%doc ChangeLog  COPYING  COPYING.ja  GPL  KNOWNBUGS.rb  LEGAL  NEWS  README*
+%doc ChangeLog   KNOWNBUGS.rb  NEWS  README*
+%if 0%{?suse_version} < 1500
+%doc COPYING  COPYING.ja  GPL  LEGAL
+%else
+%license COPYING  COPYING.ja  GPL  LEGAL
+%endif
 %{_rpmmacrodir}/macros.suse-ruby2.6*
 
 %if %{with separate_stdlib}
 %files stdlib
-%defattr(-,root,root,-)
 %endif
 %{_libdir}/ruby/
 %exclude %{_libdir}/ruby/gems/%{api_version}/gems/*/test/
@@ -451,11 +438,9 @@ make check V=1 TESTOPTS="$DISABLE_TESTS" ||:
 %dir %rb_extarchdocdir
 
 %files -n %{libname}
-%defattr(-,root,root,-)
 %{_libdir}/libruby*.so.*
 
 %files devel -f devel-extra-excludes
-%defattr(-,root,root,-)
 %{_includedir}/ruby-%{rb_ver}
 %{_libdir}/libruby*.so
 %{_libdir}/pkgconfig/ruby-2.6.pc
@@ -464,11 +449,9 @@ make check V=1 TESTOPTS="$DISABLE_TESTS" ||:
 
 %if %{with build_docs}
 %files doc
-%defattr(-,root,root,-)
 %doc doc/* sample/
 
 %files doc-ri
-%defattr(-,root,root,-)
 %dir %{_datadir}/ri/
 %{_datadir}/ri/%{rb_ver}/
 %endif

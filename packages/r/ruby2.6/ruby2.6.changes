@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:27:11 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix mangling of shebangs, do not replace shell invocations with
+  ruby, correcly replace "/usr/bin/env ruby".
+- Cleanup spec file:
+  * Drop support for obsolete distro versions
+  * use license macro, remove defattr
+- Use valgrind-client-headers instead of full valgrind-devel package
+  where available, reducing build package footprint.
+- Remove unused libX11-devel BuildRequires.
+
+-------------------------------------------------------------------
 Tue Oct  8 09:42:13 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.6.5
