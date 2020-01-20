@@ -675,4 +675,12 @@ numbers for further reference.
   maintenance release containing numerous bugfixes</comment>
     <requestid>759909</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>00f848d859b8c7520ce3276f53e0ee3e</srcmd5>
+    <version>2.9.3</version>
+    <time>1579557077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765442</requestid>
+  </revision>
 </revisionlist>
