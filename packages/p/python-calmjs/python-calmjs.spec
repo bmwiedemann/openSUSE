@@ -34,6 +34,10 @@ Requires:       python-calmjs.types
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  nodejs-common
+# /SECTION
 %python_subpackages
 
 %description
@@ -48,9 +52,11 @@ rm src/calmjs/tests/test_npm.py
 rm src/calmjs/tests/test_yarn.py
 
 %build
+export LANG=en_US.UTF-8
 %python_build
 
 %install
+export LANG=en_US.UTF-8
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/calmjs
 %python_expand rm -r %{buildroot}%{$python_sitelib}/calmjs/testing
@@ -58,14 +64,10 @@ rm src/calmjs/tests/test_yarn.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-#export LANG=en_US.UTF8
-#%%{python_expand #first link the stuff for the weird layout
-#ln -s %{$python_sitelib}/calmjs/types src/calmjs/
-#ln -s %{$python_sitelib}/calmjs/parse src/calmjs/
-#pushd src
-#$python -m unittest calmjs.tests.make_suite -v
-#popd
-#}
+export LANG=en_US.UTF-8
+pushd src
+%pytest -k 'not (test_setup_egg_info or test_build_calmjs_artifact)'
+popd
 
 %post
 %python_install_alternative calmjs

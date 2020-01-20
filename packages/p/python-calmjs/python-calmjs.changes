@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 15:04:12 UTC 2020 - pgajdos@suse.com
+
+- fix build in SLE-15: set en_US.UTF-8 encoding
+- %check the package
+
+-------------------------------------------------------------------
 Mon Jan  6 15:32:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests as getting them to work is too much of a pain
