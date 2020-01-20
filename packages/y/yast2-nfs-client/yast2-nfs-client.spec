@@ -17,7 +17,7 @@
 
 
 Name:           yast2-nfs-client
-Version:        4.2.4
+Version:        4.2.5
 Release:        0
 Url:            https://github.com/yast/yast-nfs-client
 Summary:        YaST2 - NFS Configuration
@@ -37,8 +37,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 # path_matching (RSpec argument matcher)
 BuildRequires:  yast2-ruby-bindings >= 3.1.31
-# Y2Storage::MountPoint#active=
-BuildRequires:  yast2-storage-ng >= 4.0.180
+# Y2Storage::Filesystems::LegacyNfs#configure_from
+BuildRequires:  yast2-storage-ng >= 4.2.73
 # Unfortunately we cannot move this to macros.yast,
 # bcond within macros are ignored by osc/OBS.
 %bcond_with yast_run_ci_tests
@@ -52,9 +52,9 @@ Requires:       yast2 >= 4.0.39
 Requires:       yast2-nfs-common >= 2.24.0
 # showmount, #150382, #286300
 Recommends:     nfs-client
-# Y2Storage::MountPoint#active=
+# Y2Storage::Filesystems::LegacyNfs#configure_from
 Requires:       yast2-ruby-bindings >= 1.0.0
-Requires:       yast2-storage-ng >= 4.0.180
+Requires:       yast2-storage-ng >= 4.2.73
 
 Provides:       yast2-config-network:/usr/lib/YaST2/clients/lan_nfs_client.ycp
 Provides:       yast2-config-nfs

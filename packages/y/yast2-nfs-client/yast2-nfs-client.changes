@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 17 12:49:20 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Delegates mount/unmount actions to yast2-storage-ng.
+- Keeps mount point status for existing shares.
+- Adds an asterisk to mount point for unmounted entries.
+- Related to bsc#1006815, bsc#1151426, bsc#1060159.
+- 4.2.5
+
+-------------------------------------------------------------------
 Wed Jan  8 22:49:11 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Avoids displaying phantom NFS entries adding an action to
