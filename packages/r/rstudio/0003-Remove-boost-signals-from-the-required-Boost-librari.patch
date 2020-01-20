@@ -1,7 +1,7 @@
 From 933b8de98363f190033b78febe6c0fce0845c592 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 10:45:46 +0100
-Subject: [PATCH 3/8] Remove boost-signals from the required Boost libraries
+Subject: [PATCH 3/9] Remove boost-signals from the required Boost libraries
 
 ---
  src/cpp/CMakeLists.txt | 1 -

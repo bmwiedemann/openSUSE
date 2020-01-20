@@ -1,7 +1,7 @@
 From abe4dd26e0cbfbf0811a59b04d018c0786ea18b4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 15:05:12 +0100
-Subject: [PATCH 6/8] Use std::thread instead of QThread for Qt < 5.10 support
+Subject: [PATCH 6/9] Use std::thread instead of QThread for Qt < 5.10 support
 
 ---
  src/cpp/desktop/DesktopInfo.cpp | 12 ++++++------

@@ -1,7 +1,7 @@
 From fa95348822ab87aee7a6504fac64a707bc415493 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 15:22:35 +0100
-Subject: [PATCH 7/8] Add explicit #include <mutex> for gcc 7 to
+Subject: [PATCH 7/9] Add explicit #include <mutex> for gcc 7 to
  DesktopWebpage.cpp
 
 ---

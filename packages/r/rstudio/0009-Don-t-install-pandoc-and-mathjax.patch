@@ -1,0 +1,39 @@
+From 7a76822069916fb2f9d733fed925c46603dc3a6e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Tue, 14 Jan 2020 14:20:40 +0100
+Subject: [PATCH 9/9] Don't install pandoc and mathjax
+
+Because we use the system wide version, there's no need to waste time installing
+the files.
+---
+ src/cpp/session/CMakeLists.txt | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
+index b0a9515fb9..77ec70ab2c 100644
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -497,20 +497,10 @@ if (NOT RSTUDIO_SESSION_WIN32)
+    install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
+            DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+ 
+-   # install mathjax for local html preview
+-   install(DIRECTORY "${MATHJAX_PATH}"
+-           DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+-
+    # icons for database connections
+    install(DIRECTORY "resources/connections"
+            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
+ 
+-   # install pandoc
+-   set(PANDOC_FILES ${PANDOC_CITEPROC_BIN_LOCATION} ${PANDOC_BIN_LOCATION})
+-   install(FILES ${PANDOC_FILES}
+-           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+-           DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
+-
+    # install rmarkdown package
+    # file(GLOB RMARKDOWN_PACKAGE "${RSTUDIO_DEPENDENCIES_DIR}/common/rmarkdown*.tar.gz")
+    # install(FILES ${RMARKDOWN_PACKAGE}
+-- 
+2.24.1
+

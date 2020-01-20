@@ -1,7 +1,7 @@
 From 1fb2258dc456ecbbdecc9b366ba4a6758e4e0421 Mon Sep 17 00:00:00 2001
 From: Kevin Ushey <kevinushey@gmail.com>
 Date: Tue, 3 Sep 2019 13:23:23 -0700
-Subject: [PATCH 1/8] First pass at Boost 1.70 support
+Subject: [PATCH 1/9] First pass at Boost 1.70 support
 
 ---
  src/cpp/core/include/core/http/TcpIpAsyncConnector.hpp |  6 ++++--

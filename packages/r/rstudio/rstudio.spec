@@ -24,8 +24,14 @@
 %global bundled_mathjax_version 2.6.1
 %global bundled_mathjax_short_version 26
 
+%global rstudio_version_major 1
+%global rstudio_version_minor 2
+%global rstudio_version_patch 5033
+# commit of the tag belonging to %%{version}
+%global rstudio_git_revision_hash 330255ddec489e7a147ace3e8a9a3e4157d8d5ad
+
 Name:           rstudio
-Version:        1.2.5033
+Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
 Summary:        R-Studio Desktop
 # R-Studio: AGPL 3.0
@@ -53,11 +59,14 @@ Patch1:         0005-Use-find_program-to-find-qmake-if-it-is-not-in-the-p.patch
 Patch2:         0002-Bump-bundled-gwt-version.patch
 # Tumbleweed and Leap 15.2 only patch
 Patch3:         0001-First-pass-at-Boost-1.70-support.patch
+# main ubundling patch
 Patch4:         0004-Unbundle-mathjax-and-pandoc.patch
 # patches for Leap 15.1 & 15.0
 Patch5:         0006-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
 Patch6:         0007-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
 Patch7:         0008-Remove-PauseChanged-related-handler-from-DownloadHel.patch
+# shorten the installation time a bit by not installing mathjax
+Patch8:         0009-Don-t-install-pandoc-and-mathjax.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
@@ -143,6 +152,7 @@ debugging and managing your workspace.
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
+%patch8 -p1
 
 # TW & Leap 15.2 specific patches
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
@@ -167,6 +177,11 @@ unzip -d src/gwt/lib/gin/%{bundled_gin_version} %{SOURCE3}
 
 %build
 %limit_build -m 1500
+export RSTUDIO_VERSION_MAJOR=%{rstudio_version_major}
+export RSTUDIO_VERSION_MINOR=%{rstudio_version_minor}
+export RSTUDIO_VERSION_PATCH=%{rstudio_version_patch}
+export RSTUDIO_GIT_REVISION_HASH=%{rstudio_git_revision_hash}
+export GIT_COMMIT=%{rstudio_git_revision_hash}
 %cmake -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release -DRSTUDIO_BOOST_SIGNALS_VERSION=2 -DCMAKE_INSTALL_PREFIX=%{_libexecdir}/rstudio
 
 # dirty hack:
@@ -188,16 +203,14 @@ unzip -d src/gwt/lib/gin/%{bundled_gin_version} %{SOURCE3}
 install -d -m 0755 %{buildroot}%{_bindir}
 ln -s %{_libexecdir}/%{name}/bin/%{name} %{buildroot}%{_bindir}/%{name}
 
-# remove the "bundled" (actually our) mathjax and symlink it to
+# symlink the location where the bundled mathjax should be to
 # /usr/share/javascript/mathjax as mathjax-%%{bundled_mathjax_short_version}
-rm -rf %{buildroot}%{_libexecdir}/%{name}/resources/mathjax
-ln -s %{_datadir}/javascript/mathjax \
+ln -sf %{_datadir}/javascript/mathjax \
     %{buildroot}%{_libexecdir}/%{name}/resources/mathjax-%{bundled_mathjax_short_version}
 
 # redo the same for pandoc & pandoc-citeproc
 for pd in pandoc pandoc-citeproc; do
-    rm -rf %{buildroot}%{_libexecdir}/%{name}/bin/${pd}
-    ln -s %{_bindir}/${pd} %{buildroot}%{_libexecdir}/%{name}/bin/${pd}
+    ln -sf %{_bindir}/${pd} %{buildroot}%{_libexecdir}/%{name}/bin/${pd}
 done
 
 # cleanup
@@ -208,10 +221,11 @@ rm %{buildroot}%{_libexecdir}/%{name}/{INSTALL,COPYING,NOTICE,README.md,SOURCE}
 %fdupes -s %{buildroot}%{_libexecdir}/%{name}
 %fdupes -s %{buildroot}%{_datadir}
 
-# fix shebangs
+# fix shebangs from /usr/bin/env bash to
+BASH_PATH=$(which bash)
 for f in postback/askpass-passthrough postback/rpostback-askpass postback/rpostback-editfile postback/rpostback-gitssh postback/rpostback-pdfviewer r-ldpath rstudio-backtrace.sh; do
     full_path=%{buildroot}%{_libexecdir}/%{name}/bin/$f
-    sed -i.orig "s:^#\!/usr/bin/env\s\+bash\s\?$:#!/usr/bin/bash:" $full_path
+    sed -i.orig 's:^#\!/usr/bin/env\s\+bash\s\?$:#\!'"${BASH_PATH}"':' $full_path
     touch -r $full_path.orig $full_path
     rm $full_path.orig
 done
