@@ -1,7 +1,7 @@
 #
 # spec file for package python-asn1crypto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asn1crypto
-Version:        1.0.0
+Version:        1.3.0
 Release:        0
 Summary:        ASN.1 parser and serializer for Python
 License:        MIT
