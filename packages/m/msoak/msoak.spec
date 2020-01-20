@@ -16,7 +16,7 @@
 #
 
 Name:           msoak
-Version:        0.6
+Version:        0.8
 Release:        0
 Summary:        A utility to simultaneously subscribe to MQTT servers/topics
 License:        GPL-2.0-or-later
@@ -54,7 +54,7 @@ make %{?_smp_mflags}
 %install
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}/%{_mandir}/man1
-%make_install DESTDIR=%{buildroot} BINDIR=%{_bindir} MANDIR=%{_mandir}
+make install DESTDIR=%{buildroot} BINDIR=%{_bindir} MANDIR=%{_mandir}
 
 %files
 %license LICENSE
