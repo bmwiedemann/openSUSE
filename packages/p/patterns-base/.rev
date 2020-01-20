@@ -417,4 +417,11 @@
     <comment>- Disable purge-kernels-service dependency for now: dracut has not
   yet been updated to no longer ship the service file.</comment>
   </revision>
+  <revision rev="49" vrev="13">
+    <srcmd5>2cc0df96b508c8d84ecbb57d2049649b</srcmd5>
+    <version>20190612</version>
+    <time>1579536395</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable purge-kernels-service dependency: dracut dropped the service.</comment>
+  </revision>
 </revisionlist>

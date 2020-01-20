@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -133,7 +133,7 @@ Requires:       which
 Requires:       systemd-coredump
 %endif
 # Support multiversion(kernel) (jsc#SLE-10162, jsc#SLE-10465)
-# Requires:       purge-kernels-service
+Requires:       purge-kernels-service
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
 Recommends:     bash-completion

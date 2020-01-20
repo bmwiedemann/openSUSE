@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:06:02 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Re-enable purge-kernels-service dependency: dracut dropped the service.
+
+-------------------------------------------------------------------
 Tue Dec 24 08:21:37 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Disable purge-kernels-service dependency for now: dracut has not
