@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Fri Jan 03 11:28:38 UTC 2020 - fbergmann@suse.com
+
+- Update to version 1.25.0:
+  * v1.25.0
+  * Update CHANGELOG.md
+  * SDK: update to terraform-plugin-sdk v1.4.1 (#936)
+  * Update CHANGELOG.md
+  * Add max_retries_down to lb_monitor_v2 resource (#945)
+  * Update CHANGELOG.md
+  * Data source for openstack_blockstorage_volume_v3 (#947)
+  * Update CHANGELOG.md
+  * Add resource openstack_orchestration_stack_v1 (#944)
+  * Update CHANGELOG.md
+  * Added support for shelved compute instance to become active (#942)
+  * Update CHANGELOG.md
+  * Identivy V3: add access rules support for application credentials (#920)
+  * Update CHANGELOG.md
+  * Update clouds.yaml doc reference to openstacksdk (#943)
+  * Update CHANGELOG.md
+  * Data source for openstack_blockstorage_volume_v2 (#928)
+  * Docs: update COE V1 cluster fixed net and subnet (#934)
+  * Internal: Decouple Authentication (#930)
+  * Update CHANGELOG.md
+  * Magnum - add fixed_network/fixed_subnet support (#933)
+  * Update CHANGELOG.md
+  * Missing character (#923)
+  * Update CHANGELOG.md
+  * Networking V2: Omit empty ExternalFixedIP IPAddress for the router (#628)
+  * Auth: AllowReauth option should be exported (#921)
+  * Update CHANGELOG.md
+  * Auth: add "allow_reauth" configuration option (#918)
+  * Cleanup after v1.24.0 release
+  * v1.24.0
+  * Update CHANGELOG.md
+  * Networking V2: rename "Quotas" resource to "Quota" (#915)
+  * Compute V2: add Quotaset resource (#914)
+  * Update CHANGELOG.md
+  * Auth: reuse existing token, when scope parameters are not defined (#913)
+  * Update CHANGELOG.md
+  * Core: add external client for the JSON debug (#911)
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * SDK: update to terraform-plugin-sdk v1.1.1 (#909)
+  * Update CHANGELOG.md
+  * Update lb_pool_v2.html.markdown (#908)
+  * Update CHANGELOG.md
+  * Networking V2: add Quotas resource (#907)
+  * Update CHANGELOG.md
+  * Fixed openstack_lb_loadbalancer_v2 flavor selection. (#904)
+  * Shared filesystem V2: cleanup share access (#902)
+  * Update CHANGELOG.md
+  * LBaaSv2: Add UDP protocol support (#896)
+  * Shared filesystem V2: cleanup securityservice (#901)
+  * Update CHANGELOG.md
+  * Compute V2: add "tags", "all_tags" arguments (#899)
+  * Update CHANGELOG.md
+  * Lbaas v2: Properly handle 404 error on status checks (#883)
+  * Compute V2: Handle empty scheduler_hints lists (#885)
+  * LBaaSv2: Properly handle update TLS references (#891)
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Migrate to the new separated SDK (#880)
+  * Update CHANGELOG.md
+  * Check for the client error (#878)
+  * Cleanup after v1.23.0 release
+  * v1.23.0
+  * Update CHANGELOG.md
+  * LoadBalancer listener V2: fix Read method (#877)
+  * Update CHANGELOG.md
+  * Glance v2: Add image share resource (#872)
+  * Update CHANGELOG.md
+  * Identity V3: Add description support to the user and group data sources (#874)
+  * Update CHANGELOG.md
+  * Identity: authenticate against identity only, when it is needed (#861)
+  * Update CHANGELOG.md
+  * LoadBalancer V2: add timeout options for listener (#876)
+  * Update CHANGELOG.md
+  * Identity V3: Show domain scope info (#871)
+  * Update CHANGELOG.md
+  * Refactor formatting headers (#865)
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Add ability to control caching (#849)
+  * remove use of config pkg update to terraform v0.12.8
+  * Update CHANGELOG.md
+  * Compute V2: Read flavor's ephemeral option (#855)
+  * Identity V3: Fix not found logic detection for the role assignments (#857)
+  * Update CHANGELOG.md
+  * Compute V2: Fix not found logic for the flavor access (#856)
+  * Identity V3: Fix panic within the domain scope (#851)
+  * Cleanup after v1.22.0 release
+  * v1.22.0
+  * Update CHANGELOG.md
+  * Key manager V1: Add containers data source (#846)
+  * Update CHANGELOG.md
+  * Fixes #716 "Managing projects requires admin role" by using the users.ListProjects API entry point if not admin permission (#833)
+  * Identity V3: fix role assignment list (#845)
+  * Update CHANGELOG.md
+  * LBaaS V2: Add OpenContrail monitor workaround (#840)
+  * Networking V2: Mark dns attributes as computed (#837)
+  * Don't fallback to 'DELETE' status, when statuses are not available (#839)
+  * Update CHANGELOG.md
+  * Update compute_instance_v2.html.markdown (#834)
+  * Cleanup after v1.21.1 release
+
+-------------------------------------------------------------------
 Tue Sep 03 05:00:55 UTC 2019 - tbechtold@suse.com
 
 - Update to version 1.21.1:

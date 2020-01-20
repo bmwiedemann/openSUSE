@@ -5,7 +5,7 @@
     <param name="filename">terraform-provider-openstack</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v1.21.1</param>
+    <param name="revision">v1.25.0</param>
     <param name="exclude">.git</param>
     <param name="exclude">.gitignore</param>
     <param name="changesgenerate">enable</param>

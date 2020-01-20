@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-openstack
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Make sure that the binary is not getting stripped.
 %if 0%{?suse_version}
@@ -21,33 +22,33 @@
 %endif
 
 Name:           terraform-provider-openstack
-Version:        1.21.1
+Version:        1.25.0
 Release:        0
-License:        MPL-2.0
 Summary:        Terraform OpenStack provider
-Url:            https://github.com/terraform-providers/terraform-provider-openstack
+License:        MPL-2.0
 Group:          System/Management
+URL:            https://github.com/terraform-providers/terraform-provider-openstack
 Source:         %{name}-%{version}.tar.xz
 Source99:       terraform-provider-openstack-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?ubuntu_version}
 BuildRequires:  debhelper
 BuildRequires:  dh-golang
-BuildRequires:  xz-utils
 BuildRequires:  golang-go
-BuildRequires:  pkg-config
 BuildRequires:  libvirt-dev
+BuildRequires:  pkg-config
+BuildRequires:  xz-utils
 %else
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  golang
 %endif
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.12
 %endif
-Requires:       terraform >= 0.12.0
 Requires:       mkisofs
+Requires:       terraform >= 0.12.0
 BuildRequires:  xz
 %endif
 %if 0%{?suse_version}
@@ -100,7 +101,8 @@ cd $curr
 
 %files
 %defattr(-,root,root,-)
-%doc README.md LICENSE
+%doc README.md
+%license LICENSE
 %{_bindir}/%{name}
 
 %changelog
