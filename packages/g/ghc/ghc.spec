@@ -29,11 +29,11 @@
 %global unregisterised_archs s390 s390x riscv64
 
 Name:           ghc
-Version:        8.8.1
+Version:        8.8.2
 Release:        0
 URL:            https://www.haskell.org/ghc/
-Source:         https://downloads.haskell.org/~ghc/8.8.1/ghc-%{version}-src.tar.xz
-Source1:        https://downloads.haskell.org/~ghc/8.8.1/ghc-%{version}-src.tar.xz.sig
+Source:         https://downloads.haskell.org/~ghc/8.8.2/ghc-%{version}-src.tar.xz
+Source1:        https://downloads.haskell.org/~ghc/8.8.2/ghc-%{version}-src.tar.xz.sig
 Source2:        ghc-rpmlintrc
 Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
@@ -81,9 +81,6 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  libnuma-devel
 %endif
 
-# for patch 1
-# BuildRequires:  python3
-
 # bogus requires
 %ifarch x86_64
 BuildRequires:  ghc-bootstrap-helpers
@@ -96,14 +93,8 @@ PreReq:         update-alternatives
 Requires:       ghc-compiler = %{version}-%{release}
 Requires:       ghc-ghc-devel = %{version}-%{release}
 Requires:       ghc-libraries = %{version}-%{release}
-# PATCH-FIX-UPSTREAM 0001-Fix-check-whether-GCC-supports-__atomic_-builtins.patch ptrommler@icloud.com -- Fix __atomic_builtin detection. Patch taken from upstream commit ce3897ff.
-Patch1:         0001-Fix-check-whether-GCC-supports-__atomic_-builtins.patch
-# PATCH-FIX-UPSTREAM D5212.patch ptrommler@icloud.com -- Fix GHCi on big endiansystems. Submitted for upstream review.
-Patch2:         D5212.patch
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-# PATCH-FIX-UPSTREAM fix-build-using-unregisterized-v8.4.patch
-Patch5:         fix-build-using-unregisterized-v8.4.patch
 # PATCH-FIX-UPSTREAM fix-unregisterised-v8.4-8.6.patch
 Patch6:         fix-unregisterised-v8.4-8.6.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
@@ -172,14 +163,14 @@ To install all of GHC install package ghc.
 %endif
 
 %if %{defined ghclibdir}
-%ghc_lib_subpackage -d Cabal-3.0.0.0
+%ghc_lib_subpackage -d Cabal-3.0.1.0
 %ghc_lib_subpackage -d array-0.5.4.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.13.0.0
 %ghc_lib_subpackage -d binary-0.8.7.0
-%ghc_lib_subpackage -d bytestring-0.10.9.0
+%ghc_lib_subpackage -d bytestring-0.10.10.0
 %ghc_lib_subpackage -d containers-0.6.2.1
 %ghc_lib_subpackage -d deepseq-1.4.4.0
-%ghc_lib_subpackage -d directory-1.3.3.2
+%ghc_lib_subpackage -d directory-1.3.4.0
 %ghc_lib_subpackage -d filepath-1.4.2.1
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-%{ghc_version_override}
@@ -193,7 +184,7 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d mtl-2.2.2
 %ghc_lib_subpackage -d parsec-3.1.14.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.5.1
+%ghc_lib_subpackage -d process-1.6.7.0
 %ghc_lib_subpackage -d stm-2.5.0.0
 %ghc_lib_subpackage -d template-haskell-2.15.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.4
@@ -222,21 +213,15 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 
 %prep
 %setup -q
-#%%patch1 -p1
-#%%patch2 -p1
 %ifarch ppc64 s390 s390x
 %patch3 -p1
 %endif
-%patch5 -p1
 %patch6 -p1
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
 
 %build
-# patch 1 modifies build system, we need to recreate configure
-# ./boot
-
 cat > mk/build.mk <<EOF
 %ifarch aarch64 %{arm}
 BuildFlavour = perf-llvm

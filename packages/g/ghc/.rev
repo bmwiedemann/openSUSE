@@ -755,4 +755,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>version update</comment>
     <requestid>760279</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>fdf73bf366ddec63a4429ba54cfa80c4</srcmd5>
+    <version>8.8.2</version>
+    <time>1579557082</time>
+    <user>dimstar_suse</user>
+    <comment>fix (forwarded request 765569 from mimi_vx)</comment>
+    <requestid>765570</requestid>
+  </revision>
 </revisionlist>

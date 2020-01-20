@@ -1,8 +1,8 @@
-Index: ghc-8.8.1/includes/stg/MiscClosures.h
+Index: ghc-8.8.2/includes/stg/MiscClosures.h
 ===================================================================
---- ghc-8.8.1.orig/includes/stg/MiscClosures.h
-+++ ghc-8.8.1/includes/stg/MiscClosures.h
-@@ -400,8 +400,12 @@ RTS_FUN_DECL(stg_copySmallMutableArrayzh
+--- ghc-8.8.2.orig/includes/stg/MiscClosures.h
++++ ghc-8.8.2/includes/stg/MiscClosures.h
+@@ -390,8 +390,12 @@ RTS_FUN_DECL(stg_copySmallMutableArrayzh
  RTS_FUN_DECL(stg_casSmallArrayzh);
  
  RTS_FUN_DECL(stg_newMutVarzh);
