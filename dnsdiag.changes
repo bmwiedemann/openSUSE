@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 19 16:06:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * Add JSON export
+  * Ignore unrelated ICMP messages
+  * Fix statistics calculation
+  * -c 0 for infinite ping
+  * Flush output messages
+  * Update sample public resolver data
+
+-------------------------------------------------------------------
 Sun Jun  9 15:32:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Generalize description. Fix a few missing words.
