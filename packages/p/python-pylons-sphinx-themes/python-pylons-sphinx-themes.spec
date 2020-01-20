@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylons-sphinx-themes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pylons-sphinx-themes
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Pylons Sphinx themes for documentation styling
 License:        SUSE-Repoze
