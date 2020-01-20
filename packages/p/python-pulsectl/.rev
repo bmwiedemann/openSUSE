@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>707817</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>290f8b5781b87b4bd8aae38bb034bfac</srcmd5>
+    <version>20.1.2</version>
+    <time>1579557388</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.2
+ * add pulse.play_sample() - server-side stored sample playback
+ * Add pulse.get_peak_sample() func for getting volume peak within timespan</comment>
+    <requestid>765852</requestid>
+  </revision>
 </revisionlist>

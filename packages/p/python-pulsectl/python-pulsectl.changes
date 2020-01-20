@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:59:09 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 20.1.2
+ * add pulse.play_sample() - server-side stored sample playback
+ * Add pulse.get_peak_sample() func for getting volume peak within timespan
+
+-------------------------------------------------------------------
 Wed Jun  5 08:09:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 18.12.5
