@@ -1,7 +1,7 @@
 #
 # spec file for package notejot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           notejot
-Version:        1.5.8
+Version:        1.6.0
 Release:        0
 Summary:        A Sticky Note App
 License:        GPL-3.0-only
