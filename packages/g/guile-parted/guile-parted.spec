@@ -1,7 +1,7 @@
 #
 # spec file for package guile-parted
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Development/Libraries/Other
 URL:            https://gitlab.com/mothacehe/guile-parted
 Source0:        https://gitlab.com/mothacehe/%{name}/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        guile-parted-rpmlintrc
+# Support Guile 3.0. Patch proposed upstream in https://gitlab.com/mothacehe/guile-parted/merge_requests/1
+Patch0:         support-guile-3.0.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  guile-bytestructures
@@ -40,10 +42,11 @@ This package provides Guile bindings to GNU Parted.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ./bootstrap
-%configure --disable-static
+%configure
 make %{?_smp_mflags}
 
 %install

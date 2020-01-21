@@ -1,0 +1,39 @@
+commit 4f50322ead596bbd96f8a40286390a9ef9a23f1d (HEAD -> add-guile-3.0-support, origin/add-guile-3.0-support)
+Author: Jonathan Brielmaier <jbrielmaier@suse.de>
+Date:   Mon Jan 13 23:44:37 2020 +0100
+
+    Add support for Guile 3.0.
+    
+    * configure.ac (GUILE_PKG): Add Guile 3.0.
+    * m4/guile.m4 (GUILE_PROGS): Add proper support for Guile 3.0 beta
+      releases (2.9.x). Inspired by commit 9d7a1dd at guile-ssh.
+    
+    Signed-off-by: Jonathan Brielmaier <jbrielmaier@suse.de>
+
+diff --git a/configure.ac b/configure.ac
+index 56344c2..911a285 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign color-tests])
+ dnl Enable silent rules by default.
+ AM_SILENT_RULES([yes])
+ 
+-GUILE_PKG([2.2 2.0])
++GUILE_PKG([3.0 2.2 2.0])
+ GUILE_PROGS
+ 
+ dnl (srfi srfi-64) appeared in Guile 2.0.11.
+diff --git a/m4/guile.m4 b/m4/guile.m4
+index 9fd4f1a..31698c3 100644
+--- a/m4/guile.m4
++++ b/m4/guile.m4
+@@ -241,6 +241,9 @@ AC_DEFUN([GUILE_PROGS],
+     else
+       as_fn_error $? "Guile $_guile_required_version required, but $_guile_prog_version found" "$LINENO" 5
+     fi
++  elif test "$GUILE_EFFECTIVE_VERSION" = "$_major_version.$_minor_version" -a -z "$_micro_version"; then
++    # Allow prereleases that have the right effective version.
++    true
+   else
+     AC_MSG_ERROR([Guile $_guile_required_version required, but $_guile_prog_version found])
+   fi
