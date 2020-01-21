@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 20 12:13:34 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1579522398.2afcda12:
+  * qemu: handle armv6/7 architectures properly
+  * qemu: allow to use different soundhw option with QEMU_SOUNDHW
+
+-------------------------------------------------------------------
 Tue Jan 14 06:49:24 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1578910353.e34101c6:
