@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 20 15:46:33 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.10.0:
+  runtime:
+    - Initial support for Cloud Hypervisor
+    - HybridVsock support for cloud hypervisor and firecracker
+    - Updated Firecracker version to v0.19.1
+    - Better rootless support for firecracker
+    - This release deprecates bridged networking model
+
+-------------------------------------------------------------------
 Fri Dec 13 14:08:44 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 1.9.3:

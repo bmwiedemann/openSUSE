@@ -1,7 +1,7 @@
 #
 # spec file for package katacontainers
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,17 +32,16 @@
 %define configPath %{_datarootdir}/defaults/kata-containers/
 %define configACRN configuration-acrn.toml
 %define configFC   configuration-fc.toml
-%define configNEMU configuration-nemu.toml
 %define configQEMU configuration-qemu.toml
 %ifarch x86_64
 # Note: braces used for bash brace expansion
-%define defaultConfigFiles \{%{configACRN},%{configFC},%{configNEMU},%{configQEMU}\}
+%define defaultConfigFiles \{%{configACRN},%{configFC},%{configQEMU}\}
 %else
 %define defaultConfigFiles %{configQEMU}
 %endif
 
 Name:           katacontainers
-Version:        1.9.3
+Version:        1.10.0
 Release:        0
 Summary:        Kata Containers OCI container runtime
 License:        Apache-2.0
