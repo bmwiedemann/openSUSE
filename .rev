@@ -503,4 +503,11 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
     <comment></comment>
     <requestid>764815</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>ff218cfd1c35e9c9f2ab163acdc40dcb</srcmd5>
+    <version>2.5.0</version>
+    <time>1579623450</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to version 2.5.0 - https://bugzilla.opensuse.org/show_bug.cgi?id=1161439</comment>
+  </revision>
 </revisionlist>
