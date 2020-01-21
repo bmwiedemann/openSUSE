@@ -427,4 +427,17 @@
     acme.challenges and acme.standalone have been removed.</comment>
     <requestid>760670</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>99cb7d3e3cd03b0155572b38a8677fdb</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636907</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.0
+  * Removed the fallback introduced with 0.34.0 in acme to retry a POST-as-GET
+    request as a GET request when the targeted ACME CA server seems to not support
+    POST-as-GET requests.
+  * Support for Python 3.4 in Certbot and its ACME library is deprecated and will be
+    removed in the next release of Certbot.</comment>
+    <requestid>766003</requestid>
+  </revision>
 </revisionlist>
