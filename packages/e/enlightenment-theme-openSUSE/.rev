@@ -105,4 +105,14 @@ Lots of license issues that were noticed when submitting a new theme have been f
 - Update for e22</comment>
     <requestid>607295</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e249186a1ec1493dbe560ff2e3cdbc5</srcmd5>
+    <version>20191110</version>
+    <time>1579636750</time>
+    <user>dimstar_suse</user>
+    <comment>- 20191110 - efl 1.23  
+  * Now also ship openSUSE-e-X icon theme to match efl theme
+</comment>
+    <requestid>761076</requestid>
+  </revision>
 </revisionlist>
