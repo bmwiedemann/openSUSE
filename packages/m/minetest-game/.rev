@@ -52,4 +52,12 @@ New upstream version.</comment>
     <comment></comment>
     <requestid>738235</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>072c63b1e41d6e49f5554de31420493b</srcmd5>
+    <version>5.1.1</version>
+    <time>1579636991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766098</requestid>
+  </revision>
 </revisionlist>
