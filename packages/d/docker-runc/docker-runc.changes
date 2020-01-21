@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 03:02:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update CVE-2019-19921 patch to match upstream PR.
+  * CVE-2019-19921.patch
+
+-------------------------------------------------------------------
 Tue Jan 14 04:44:36 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Add backported fix for CVE-2019-19921. bsc#1160452
