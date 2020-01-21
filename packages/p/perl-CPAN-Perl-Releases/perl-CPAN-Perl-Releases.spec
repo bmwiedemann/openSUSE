@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Perl-Releases
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-CPAN-Perl-Releases
-Version:        5.20191220
+Version:        5.20200120
 Release:        0
 %define cpan_name CPAN-Perl-Releases
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
