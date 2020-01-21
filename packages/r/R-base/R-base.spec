@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,7 +108,7 @@ AT&T Bell Laboratories by Rick Becker, John Chambers and Allan Wilks.
 
 %prep
 %setup -n R-%{version}
-#%patch0 -p1
+#%%patch0 -p1
 
 %build
 #export R_BROWSER="xdg-open"
@@ -310,7 +310,7 @@ This package provides the core of R, i.e. all that is in base.
 %{_bindir}/*
 %{_libdir}/R/bin/
 %{_libdir}/R/etc/
-#%{_libdir}/R/lib/
+#%%{_libdir}/R/lib/
 %{_libdir}/R/modules/
 %dir %{_libdir}/R/share
 %dir %{_libdir}/R/library
@@ -457,7 +457,9 @@ This packages provides all documentation of R base. PDFs, man pages, info pages
 %if 0%{?suse_version} > 1320
 %{_infodir}/*.gz
 %endif
-%doc %{_libdir}/R/doc/
+# this directory must *not* be marked as %%doc, as rstudio _requires_ the
+# directory to be present even if rpm is invoked with --excludedocs
+%{_libdir}/R/doc/
 
 # R-core-packages
 

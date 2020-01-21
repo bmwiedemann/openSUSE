@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 20 18:30:04 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Don't mark %{_libdir}/R/doc as %doc:
+  This causes issues for rstudio, which requires the directory %{_libdir}/R/doc
+  to exist, but the directory is not present if libzypp is configured to omit
+  documentation.
+
+-------------------------------------------------------------------
 Thu Dec 12 11:37:25 UTC 2019 - Detlef Steuer <detlef.steuer@gmx.de>
 
 -  CHANGES IN R 3.6.2:

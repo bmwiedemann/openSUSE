@@ -1434,4 +1434,12 @@ CHANGES IN R 3.4.2:
       The known reason for doing so is a package which uses Fortran</comment>
     <requestid>756062</requestid>
   </revision>
+  <revision rev="71" vrev="28">
+    <srcmd5>134f5cccc32d7d782f0c0bba2d9782b7</srcmd5>
+    <version>unknown</version>
+    <time>1579636874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765989</requestid>
+  </revision>
 </revisionlist>
