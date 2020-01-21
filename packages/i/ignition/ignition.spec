@@ -47,7 +47,7 @@ applies the configuration.
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
-env VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false ' bash -x ./build
+env VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false -X github.com/coreos/ignition/v2/internal/distro.writeAuthorizedKeysFragment=false ' bash -x ./build
 
 %install
 install -d %{buildroot}%{_prefix}/lib/dracut/modules.d/30ignition

@@ -134,4 +134,13 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
 </comment>
     <requestid>764393</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>2e151d2bdc9da9f15fd86cbd01d264dc</srcmd5>
+    <version>2.1.1</version>
+    <time>1579637021</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use SSH keys fragments, those are not supported on openSUSE. [boo#1161265]
+</comment>
+    <requestid>766131</requestid>
+  </revision>
 </revisionlist>
