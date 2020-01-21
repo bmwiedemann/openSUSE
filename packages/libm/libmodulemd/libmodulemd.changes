@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:55:59 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.8.3
+  + Detect GDate autoptr when available to fix build with glib2 >= 2.63.3
+  + Correct typo in MODULEMD_REPLACE_SET()
+  + Fix modulemd_buildopts_copy() to make a deep copy of the rpm whitelist
+  + Add support for new ModulemdBuildopts arches attribute
+
+-------------------------------------------------------------------
 Sun Dec  1 15:04:32 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 2.8.2
