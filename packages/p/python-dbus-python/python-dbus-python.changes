@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan  8 01:19:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Version update to version 1.2.14: 
+  * Ensure that the numeric types from dbus.types get the same
+    str() under Python 3.8 that they did under previous versions.
+  * Disable -Winline.
+  * Add Python 3.8 to CI.
+  - Changes in version 1.2.12:
+  * Don't save and restore the exception indicator when called
+    from C code.
+  - Changes in version 1.2.10:
+  * Rewrite CONTRIBUTING.md document, based on Wayland's equivalent
+  * Add clearer license information using SPDX-License-Identifier.
+  * Improve test coverage.
+  * Don't set deprecated tp_print to NULL under Python 3.
+  * Include inherited methods and properties when documenting
+    objects, which regressed when migrating from epydoc to sphinx.
+  * Add missing variant_level member to UnixFd type, for parity
+    with the other dbus.types types (dbus-python!3.
+    - Note that this is a potentially incompatible change: unknown
+      keyword arguments were previously ignored (!) and are now an
+      error.
+  * Don't reply to method calls if they have the NO_REPLY_EXPECTED
+    flag (fd.o#32529, dbus-python#26.
+  * Silence -Wcast-function-type with gcc 8.
+  * Fix distcheck with python3.7 by deleting __pycache__ during
+    uninstall.
+  * Consistently save and restore the exception indicator when
+    called from C code.
+  * Avoid a long-standing race condition in the automated tests.
+  * Fix Qt website URL.
+- Up dbus dependency; 1.8 is now required.
+
+-------------------------------------------------------------------
 Mon Oct  1 15:05:11 UTC 2018 - Nicolas Bock <nicolas.bock@suse.com>
 
 - Add missing dependency for pkg-config files

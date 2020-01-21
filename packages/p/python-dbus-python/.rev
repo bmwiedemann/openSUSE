@@ -47,4 +47,12 @@
     <comment>- Add missing dependency for pkg-config files</comment>
     <requestid>640876</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fa52133e334e8bc249e44b63214d1e3</srcmd5>
+    <version>1.2.14</version>
+    <time>1579636718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765673</requestid>
+  </revision>
 </revisionlist>

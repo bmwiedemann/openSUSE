@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus-python
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dbus-python
-Version:        1.2.8
+Version:        1.2.14
 Release:        0
 Summary:        Python bindings for D-Bus
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(dbus-1) >= 1.6.0
+BuildRequires:  pkgconfig(dbus-1) >= 1.8.0
 BuildRequires:  pkgconfig(dbus-glib-1)
 Requires:       python-gobject
 Requires:       python-xml
