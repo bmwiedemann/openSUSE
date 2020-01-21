@@ -1058,6 +1058,7 @@ unsorted:
   - bazel0.19: [x86_64] 
   - bazel0.24: [x86_64] 
   - bazel0.29: [x86_64] 
+  - bazel1.2: [x86_64] 
   - bb 
   - bbe 
   - bbswitch 
@@ -2315,7 +2316,7 @@ unsorted:
   - digikam-plugin-gmic 
   - digikam-plugins 
   - dina-bitmap-fonts 
-  - diod: [i586] 
+  - diod 
   - dippi 
   - dippi-lang 
   - dirac 
@@ -6093,7 +6094,7 @@ unsorted:
   - jsr-305-javadoc 
   - jsr-311 
   - jsr-311-javadoc 
-  - jtc: [i586] 
+  - jtc 
   - jthread-devel 
   - jtidy 
   - jtidy-javadoc 
@@ -6846,7 +6847,7 @@ unsorted:
   - latte-dock-lang 
   - lazarus 
   - lbdb 
-  - lbreakouthd: [i586] 
+  - lbreakouthd 
   - lbzip2 
   - lcab 
   - lcdf-typetools 
@@ -8900,9 +8901,9 @@ unsorted:
   - libfreeimageplus3 
   - libfreesrp0 
   - libfreexl1 
-  - libfsapfs: [i586] 
-  - libfsapfs-devel: [i586] 
-  - libfsapfs1: [i586] 
+  - libfsapfs 
+  - libfsapfs-devel 
+  - libfsapfs1 
   - libfsm0 
   - libfsntfs-devel 
   - libfsntfs-tools 
@@ -12155,8 +12156,7 @@ unsorted:
   - libwim15 
   - libwkhtmltox0 
   - libwlc0 
-  - libwlroots3: [x86_64] 
-  - libwlroots4: [i586] 
+  - libwlroots4 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
   - libwmf-gnome 
@@ -17616,7 +17616,6 @@ unsorted:
   - python-gevent-doc 
   - python-gexiv2 
   - python-glanceclient-doc 
-  - python-glucat: [x86_64] 
   - python-gobject-common-devel 
   - python-gobject2-devel 
   - python-gr-fcdproplus 
@@ -18688,7 +18687,7 @@ unsorted:
   - python2-geojson 
   - python2-geolib 
   - python2-geolinks 
-  - python2-geomet: [i586] 
+  - python2-geomet 
   - python2-geopy 
   - python2-gevent 
   - python2-geventhttpclient 
@@ -18726,7 +18725,6 @@ unsorted:
   - python2-gpg 
   - python2-gpgme 
   - python2-gphoto2 
-  - python2-gpod: [x86_64] 
   - python2-gprof2dot 
   - python2-gps3 
   - python2-gpsd 
@@ -19895,7 +19893,6 @@ unsorted:
   - python2-treq 
   - python2-tri.struct 
   - python2-trustme 
-  - python2-tsk: [x86_64] 
   - python2-tweepy 
   - python2-twine 
   - python2-twitter.common.finagle-thrift 
@@ -21109,7 +21106,7 @@ unsorted:
   - python3-geojson 
   - python3-geolib 
   - python3-geolinks 
-  - python3-geomet: [i586] 
+  - python3-geomet 
   - python3-geopy 
   - python3-getmac 
   - python3-gexiv2 
@@ -21400,7 +21397,7 @@ unsorted:
   - python3-libdnf 
   - python3-libewf 
   - python3-libfdt 
-  - python3-libfsapfs: [i586] 
+  - python3-libfsapfs 
   - python3-libfsntfs 
   - python3-libftdi1 
   - python3-libfvde 
@@ -22914,8 +22911,6 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - radiotray: [x86_64] 
-  - radiotray-lang: [x86_64] 
   - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
@@ -23971,7 +23966,7 @@ unsorted:
   - rygel-plugin-gstreamer-renderer 
   - rygel-plugin-tracker 
   - rypper 
-  - s-tui: [i586] 
+  - s-tui 
   - s3backer 
   - s3fs 
   - sablot-devel 
