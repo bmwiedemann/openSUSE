@@ -89,4 +89,12 @@
   * Add Python 3.8 support. See issue 80.</comment>
     <requestid>745975</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0db2c118f4d67fc3d2be6bf7e3eefa92</srcmd5>
+    <version>5.5.1</version>
+    <time>1579636957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766054</requestid>
+  </revision>
 </revisionlist>
