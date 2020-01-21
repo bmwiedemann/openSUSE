@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 18 20:04:05 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 79.0.3945.130 boo#1161252:
+  * CVE-2020-6378: Use-after-free in speech recognizer
+  * CVE-2020-6379: Use-after-free in speech recognizer
+  * CVE-2020-6380: Extension message verification error
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Wed Jan  8 07:48:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 79.0.3945.117 bsc#1160337:

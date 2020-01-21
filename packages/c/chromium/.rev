@@ -2710,4 +2710,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2019-5844 CVE-2019-5845 CVE-2019-5846</comment>
     <requestid>762203</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>1713826b0b10533328aa58fd35a4cabb</srcmd5>
+    <version>79.0.3945.130</version>
+    <time>1579636637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765585</requestid>
+  </revision>
 </revisionlist>
