@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 19 13:06:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.18.1:
+  + Meson:
+    - Bump the required version to 0.50.0 to fix a
+      build-time-warning.
+    - Explicitly specify the GIR namespace and the packages GIR
+      exports.
+  + RetroGLDisplay: Scale coordinates on display for pointer inputs
+    to work in Hi-DPI.
+  + Register a GType for RetroRumbleEffect.
+
+-------------------------------------------------------------------
 Wed Sep 11 19:27:40 CDT 2019 - mgorse@suse.com
 
 - Update to version 0.18.0:

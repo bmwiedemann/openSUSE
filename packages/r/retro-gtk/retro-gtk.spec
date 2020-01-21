@@ -1,7 +1,7 @@
 #
 # spec file for package retro-gtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define namever 0_14-0
 %define libver  0.14
 Name:           retro-gtk
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        Toolkit to write Gtk+3-based frontends to libretro
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ URL:            https://git.gnome.org/browse/retro-gtk
 Source0:        https://download.gnome.org/sources/retro-gtk/0.18/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 0.6.7
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(epoxy)
