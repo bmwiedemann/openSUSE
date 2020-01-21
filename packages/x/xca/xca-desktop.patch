@@ -1,0 +1,11 @@
+Index: xca-2.1.2/misc/xca.desktop
+===================================================================
+--- xca-2.1.2.orig/misc/xca.desktop
++++ xca-2.1.2/misc/xca.desktop
+@@ -10,5 +10,5 @@ Comment[hr]=Grafičko korisničko sučel
+ Exec=xca %F
+ Icon=xca-32x32
+ Terminal=false
+-Categories=Application;Utility;Qt;
++Categories=Utility;DesktopUtility;
+ MimeType=application/x-xca-database;application/x-xca-template;application/x-x509-ca-cert;application/pkcs10;application/x-pkcs7-certificates;application/x-pkcs12;
