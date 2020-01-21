@@ -28,7 +28,7 @@
 %bcond_with postgresql
 %endif
 Name:           minetest
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0
@@ -52,6 +52,7 @@ BuildRequires:  irrlicht-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libXxf86vm-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  spatialindex-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
@@ -148,6 +149,7 @@ rm -rf src/json src/lua src/gmp
   -DENABLE_FREETYPE=ON \
   -DENABLE_SYSTEM_JSONCPP=ON \
   -DPNG_PNG_INCLUDE_DIR=$(pkg-config libpng --variable=includedir) \
+  -DENABLE_SPATIAL=ON \
 %if %{with leveldb}
   -DENABLE_LEVELDB=ON \
 %else
