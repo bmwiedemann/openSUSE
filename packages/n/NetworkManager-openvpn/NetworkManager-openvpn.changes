@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 19:08:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop recommending NetworkManager-openvpn-lang: the -lang package
+  provides relevant supplements.
+
+-------------------------------------------------------------------
 Wed May  1 19:42:24 UTC 2019 - stefan.pledl@mesutronic.de
 
 - Enable missing whirlpool HMAC authentication (boo#1132946).

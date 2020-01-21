@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openvpn
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 Requires:       NetworkManager >= 1.2.0
 Requires:       openvpn
 Recommends:     %{name}-frontend
-Recommends:     %{name}-lang
 ExcludeArch:    s390
 
 %description
