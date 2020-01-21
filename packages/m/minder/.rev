@@ -128,4 +128,12 @@
     <comment>- Update to new release (forwarded request 750850 from awissu)</comment>
     <requestid>750852</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3f69144f8afe50dee82bfceed5e2b889</srcmd5>
+    <version>1.6.0</version>
+    <time>1579636857</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765945</requestid>
+  </revision>
 </revisionlist>

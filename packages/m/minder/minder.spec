@@ -1,7 +1,7 @@
 #
 # spec file for package minder
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minder
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Mind-mapping app
 License:        GPL-3.0-or-later
@@ -36,7 +36,9 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libmarkdown)
 BuildRequires:  pkgconfig(libxml-2.0)
 Recommends:     %{name}-lang
 
@@ -47,6 +49,9 @@ A program to create, develop, visualize, organize and manage ideas.
 
 %prep
 %setup -q -n Minder-%{version}
+
+# Fix: script-without-shebang
+find -name \*.svg -exec chmod 0644 {} \+
 
 %build
 %meson
@@ -67,6 +72,7 @@ A program to create, develop, visualize, organize and manage ideas.
 %{_datadir}/icons/hicolor/*/apps/*.??g
 %{_datadir}/metainfo/com.github.phase1geo.minder.appdata.xml
 %{_datadir}/mime/packages/com.github.phase1geo.minder.xml
+%{_datadir}/gtksourceview-3.0/
 
 %files lang -f %{name}.lang
 
