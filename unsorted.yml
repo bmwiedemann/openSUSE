@@ -6659,7 +6659,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
   - krb5-mini-devel 
@@ -15133,14 +15132,11 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
-  - openafs: [i586] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client: [i586] 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default: [i586] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -17620,7 +17616,7 @@ unsorted:
   - python-gevent-doc 
   - python-gexiv2 
   - python-glanceclient-doc 
-  - python-glucat 
+  - python-glucat: [x86_64] 
   - python-gobject-common-devel 
   - python-gobject2-devel 
   - python-gr-fcdproplus 
