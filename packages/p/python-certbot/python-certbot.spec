@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0

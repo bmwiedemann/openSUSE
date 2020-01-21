@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 21 09:39:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.1.0
+  * Support for Python 3.4 in Certbot and its ACME library is deprecated and will be
+    removed in the next release of Certbot.
+
+-------------------------------------------------------------------
 Fri Jan  3 11:16:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.0.0 (boo#1160066)

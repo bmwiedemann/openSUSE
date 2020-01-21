@@ -207,4 +207,12 @@
     in non-interactive mode. Previously, the default was to not redirect all requests.</comment>
     <requestid>760673</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5eaf6bbfb75a1df7dea3d55a3c92c440</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636911</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>766006</requestid>
+  </revision>
 </revisionlist>
