@@ -39,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmock >= 1.8.0
 BuildRequires:  gtest >= 1.8.0
-BuildRequires:  guile-devel >= 2.0.0
+BuildRequires:  guile-devel < 3.0
 BuildRequires:  libboost_date_time-devel >= 1.54.0
 BuildRequires:  libboost_filesystem-devel >= 1.54.0
 BuildRequires:  libboost_headers-devel >= 1.54.0

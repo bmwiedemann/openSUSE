@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 18 10:48:24 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Don't build with Guile 3.0 as it's not supported yet. 
+
+-------------------------------------------------------------------
 Fri Jan 10 10:39:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.8b:
