@@ -1,0 +1,40 @@
+From c4ef6691606b33868b226fdd504bb081d0fcf11f Mon Sep 17 00:00:00 2001
+From: Christian Gutschow <chris.g@cern.ch>
+Date: Sat, 21 Dec 2019 23:31:32 +0100
+Subject: [PATCH] patch Py3 compatibilty for IO.pyx
+
+---
+ pyext/yoda/include/IO.pyx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: YODA-1.8.0/pyext/yoda/include/IO.pyx
+===================================================================
+--- YODA-1.8.0.orig/pyext/yoda/include/IO.pyx
++++ YODA-1.8.0/pyext/yoda/include/IO.pyx
+@@ -215,7 +215,7 @@ def writeYODA(ana_objs, file_or_filename
+     for a in aolist:
+         vec.push_back(a._AnalysisObject())
+     if type(file_or_filename) is str:
+-        c.WriterYODA_create().write_to_file(file_or_filename, vec)
++        c.WriterYODA_create().write_to_file(file_or_filename.encode('utf-8'), vec)
+     else:
+         c.WriterYODA_create().write(oss, vec)
+         _str_to_file(oss.str(), file_or_filename)
+@@ -233,7 +233,7 @@ def writeFLAT(ana_objs, file_or_filename
+     for a in aolist:
+         vec.push_back(a._AnalysisObject())
+     if type(file_or_filename) is str:
+-        c.WriterFLAT_create().write_to_file(file_or_filename, vec)
++        c.WriterFLAT_create().write_to_file(file_or_filename.encode('utf-8'), vec)
+     else:
+         c.WriterFLAT_create().write(oss, vec)
+         _str_to_file(oss.str(), file_or_filename)
+@@ -251,7 +251,7 @@ def writeAIDA(ana_objs, file_or_filename
+     for a in aolist:
+         vec.push_back(a._AnalysisObject())
+     if type(file_or_filename) is str:
+-        c.WriterAIDA_create().write_to_file(file_or_filename, vec)
++        c.WriterAIDA_create().write_to_file(file_or_filename.encode('utf-8'), vec)
+     else:
+         c.WriterAIDA_create().write(oss, vec)
+         _str_to_file(oss.str(), file_or_filename)

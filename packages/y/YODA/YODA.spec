@@ -27,11 +27,17 @@ Group:          Development/Libraries/C and C++
 URL:            http://yoda.hepforge.org/
 Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
 Patch1:         sover.diff
+# PATCH-FIX-UPSTREAM YODA-py3-compatibility-for-IO_pyx.patch badshah400@gmail.com -- Py3 compatibilty for IO.pyx; patch taken from upstream commit
+Patch2:         YODA-py3-compatibility-for-IO_pyx.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
+# SECTION For running python tests in make check
+BuildRequires:  python3-matplotlib
+BuildRequires:  python3-numpy
+# /SECTION
 BuildRequires:  pkgconfig(zlib)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -102,6 +108,18 @@ This package provides the python binidings for %{name}.
 %prep
 %setup -q
 %patch -P 1 -p1
+%patch2 -p1
+
+# USE PYTHON3 FOR HASHBANGS
+sed -Ei "1{s|/usr/bin/python|/usr/bin/python3|}" bin/*
+sed -Ei "1{s|/usr/bin/env python|/usr/bin/python3|}" bin/*
+sed -Ei "1{s|/usr/bin/env python|/usr/bin/python3|}" tests/pytest-*
+
+# FIX env BASED HASHBANGS
+sed -E -i "s|^#! /usr/bin/env bash|#! /bin/bash|" bin/yoda-config*
+
+# REMOVE AN UNNECESSARY ONE
+sed -E -i "1{s|^#! /usr/bin/env python||}" pyext/yoda/search.py
 
 %build
 export PYTHON_VERSION=%{py3_ver}
@@ -114,15 +132,8 @@ make %{?_smp_mflags}
 
 find %{buildroot}%{_libdir}/ -name "*.la" -delete
 
-# FIX env BASED HASHBANGS
-for exe in %{buildroot}%{_bindir}/*
-do
-  sed -E -i "s|^#! /usr/bin/env python|#! /usr/bin/python|" ${exe}
-done
-sed -E -i "s|^#! /usr/bin/env bash|#! /bin/bash|" %{buildroot}%{_bindir}/yoda-config
-
-# REMOVE AN UNNECESSARY ONE
-sed -E -i "1{s|^#! /usr/bin/env python||}" %{buildroot}%{python3_sitearch}/yoda/search.py
+%check
+make %{?_smp_mflags} check
 
 %post   -n %{so_name} -p /sbin/ldconfig
 %postun -n %{so_name} -p /sbin/ldconfig
@@ -135,21 +146,7 @@ sed -E -i "1{s|^#! /usr/bin/env python||}" %{buildroot}%{python3_sitearch}/yoda/
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
 %license COPYING
-%{_bindir}/aida2flat
-%{_bindir}/aida2yoda
-%{_bindir}/flat2yoda
-%{_bindir}/yoda2aida
-%{_bindir}/yoda2flat
-%{_bindir}/yoda2yoda
 %{_bindir}/yoda-config
-%{_bindir}/yodamerge
-%{_bindir}/yodacmp
-%{_bindir}/yodacnv
-%{_bindir}/yodadiff
-%{_bindir}/yodahist
-%{_bindir}/yodals
-%{_bindir}/yodaplot
-%{_bindir}/yodascale
 %{_libdir}/libYODA.so
 %{_libdir}/pkgconfig/yoda.pc
 %{_includedir}/%{name}/
@@ -160,5 +157,19 @@ sed -E -i "1{s|^#! /usr/bin/env python||}" %{buildroot}%{python3_sitearch}/yoda/
 %{python3_sitearch}/yoda/
 %{python3_sitearch}/yoda1/
 %{python3_sitearch}/yoda*.egg-info
+%{_bindir}/aida2flat
+%{_bindir}/aida2yoda
+%{_bindir}/flat2yoda
+%{_bindir}/yoda2aida
+%{_bindir}/yoda2flat
+%{_bindir}/yoda2yoda
+%{_bindir}/yodamerge
+%{_bindir}/yodacmp
+%{_bindir}/yodacnv
+%{_bindir}/yodadiff
+%{_bindir}/yodahist
+%{_bindir}/yodals
+%{_bindir}/yodaplot
+%{_bindir}/yodascale
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 18 13:47:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add YODA-py3-compatibility-for-IO_pyx.patch -- Py3 compatibilty
+  for IO.pyx; patch taken from upstream commit and modified to fix
+  further similar errors
+  (https://gitlab.com/hepcedar/yoda/issues/4).
+- Change hashbangs referring to python or `env python` to use
+  `/usr/bin/python3` consistently in source dir, rather than
+  from buildroot after installation. This allows to run the tests
+  correctly in the %check section.
+- Move binaries using the python module to python3-%{name}
+  package.
+- Run make check.
+
+-------------------------------------------------------------------
 Wed Jan  8 20:51:46 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch to python3:
