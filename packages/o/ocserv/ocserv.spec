@@ -1,7 +1,7 @@
 #
 # spec file for package ocserv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            http://www.infradead.org/ocserv
+URL:            http://www.infradead.org/ocserv
 #Source:         ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz
 # released tarball has some problem, check out same thing from git
 # git clone https://gitlab.com/ocserv/ocserv
@@ -58,7 +58,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  readline-devel
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  rubygem(ronn)
 # /usr/bin/certtool for generating certificates
 Requires:       gnutls >= 3.1.10
