@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 20 03:12:34 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 8.32
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.32  2020-01-18
+    - Changed experimental -async flag to -async_await in Mojo::Base, because of a
+      Perl quirk that Future::AsyncAwait can't handle itself.
+    - Fixed a bug where the -async_await flag in Mojo::Base would not load
+      Mojo::Promise.
+
+-------------------------------------------------------------------
 Wed Jan 15 03:11:15 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 8.31
