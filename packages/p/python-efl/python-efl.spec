@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-efl
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        Python bindings of evas
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -153,11 +153,11 @@ done
 
 %if !0%{?suse_version}
 %files -n python-efl
-%doc AUTHORS COPYING*
+%license AUTHORS COPYING*
 %{python_sitearch}/*
 
 %files -n python3-efl
-%doc AUTHORS COPYING*
+%license AUTHORS COPYING*
 %{python3_sitearch}/*
 %endif
 
