@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 14:14:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add %arm to ExcludeArch, build fails since glibc dropped outb/inb
+  support
+
+-------------------------------------------------------------------
 Thu Jul 20 14:46:33 UTC 2017 - stefan.bruens@rwth-aachen.de
 
 - Add aarch64 to ExcludeArch, build fails due to unsupported outb
