@@ -4,18 +4,11 @@ Date:   Tue Nov 29 14:51:08 2016 +1030
 
     feature-wizard-keylayout-from-sys
 
-diff --git a/src/modules/wizard/page_011.c b/src/modules/wizard/page_011.c
-index 2acaf5d..56c1b97 100644
---- a/src/modules/wizard/page_011.c
-+++ b/src/modules/wizard/page_011.c
-@@ -1,5 +1,6 @@
- /* Language chooser */
- #include "e_wizard.h"
-+#include <eina_log.h>
- 
- typedef struct _Layout Layout;
- 
-@@ -10,8 +11,9 @@ struct _Layout
+Index: enlightenment-0.23.0/src/modules/wizard/page_011.c
+===================================================================
+--- enlightenment-0.23.0.orig/src/modules/wizard/page_011.c
++++ enlightenment-0.23.0/src/modules/wizard/page_011.c
+@@ -11,8 +11,9 @@ struct _Layout
  };
  
  static const char *rules_file = NULL;
@@ -26,7 +19,7 @@ index 2acaf5d..56c1b97 100644
  
  static void
  find_rules(void)
-@@ -111,7 +113,7 @@ implement_layout(void)
+@@ -112,7 +113,7 @@ implement_layout(void)
     if (!found)
       {
          nl = E_NEW(E_Config_XKB_Layout, 1);
@@ -35,7 +28,7 @@ index 2acaf5d..56c1b97 100644
          nl->variant = eina_stringshare_add("basic");
          nl->model = eina_stringshare_add("default");
          e_config->xkb.used_layouts = eina_list_prepend(e_config->xkb.used_layouts, nl);
-@@ -168,6 +170,15 @@ _layout_select(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_U
+@@ -169,6 +170,15 @@ _layout_select(void *data, Evas_Object *
  E_API int
  wizard_page_show(E_Wizard_Page *pg EINA_UNUSED)
  {
@@ -51,7 +44,7 @@ index 2acaf5d..56c1b97 100644
     Evas_Object *of, *ob;
     Eina_List *l;
     Layout *lay;
-@@ -183,6 +194,49 @@ wizard_page_show(E_Wizard_Page *pg EINA_UNUSED)
+@@ -184,6 +194,50 @@ wizard_page_show(E_Wizard_Page *pg EINA_
        .version = ELM_GENLIST_ITEM_CLASS_VERSION
     };
  
@@ -84,7 +77,7 @@ index 2acaf5d..56c1b97 100644
 +                     layout = lay->name;
 +               }
 +          /* T4934 - Commenting out the 3 lines below should set the keyboard
-+             layout from the system without showing the screen, this fails 
++             layout from the system without showing the screen, this fails
 +             however its possible to pre select what is probably the right layout */
 +          /* implement_layout();
 +            set = EINA_TRUE;
@@ -98,10 +91,11 @@ index 2acaf5d..56c1b97 100644
 +         layout_tmp[1] = 's';
 +         layout_tmp[2] = 0;
 +      }
-    e_wizard_title_set(_("Keyboard"));
++
+    api->wizard_title_set(_("Keyboard"));
     of = elm_frame_add(e_comp->elm);
     elm_object_text_set(of, _("Select one"));
-@@ -195,9 +249,9 @@ wizard_page_show(E_Wizard_Page *pg EINA_UNUSED)
+@@ -196,9 +250,9 @@ wizard_page_show(E_Wizard_Page *pg EINA_
     EINA_LIST_FOREACH(layouts, l, lay)
       {
          void *it;
@@ -113,7 +107,7 @@ index 2acaf5d..56c1b97 100644
            sel_it = it;
       }
  
-@@ -218,7 +272,10 @@ E_API int
+@@ -219,7 +273,10 @@ E_API int
  wizard_page_hide(E_Wizard_Page *pg EINA_UNUSED)
  {
     /* special - key layout inits its stuff the moment it goes away */
@@ -125,7 +119,7 @@ index 2acaf5d..56c1b97 100644
     return 1;
  }
  
-@@ -226,7 +283,10 @@ E_API int
+@@ -227,7 +284,9 @@ E_API int
  wizard_page_apply(E_Wizard_Page *pg EINA_UNUSED)
  {
     // do this again as we want it to apply to the new profile
@@ -137,4 +131,4 @@ index 2acaf5d..56c1b97 100644
 +      }
 +      return 1;
  }
- 
+-

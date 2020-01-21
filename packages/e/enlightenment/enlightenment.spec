@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,14 @@
 
 
 %define efl_version	1.18.0
-%define systemd_present (0%{?suse_version} >= 1230 || 0%{?fedora} >= 18)
-%define enable_wayland (0%{?suse_version} > 1320)
+%define systemd_present (0%{?suse_version} >= 1230 || 0%{?fedora} >= 18 || 0%{?mageia})
+# Wayland is broken with current efl waiting for a new e release
+%define enable_wayland (0%{?suse_version} > 1520)
 %define generate_manpages 0
+# Fix this later
+%define build_doc 0
 Name:           enlightenment
-Version:        0.22.4
+Version:        0.23.1
 Release:        0
 Summary:        The window manager
 License:        BSD-2-Clause
@@ -43,12 +46,10 @@ Patch3:         feature-wizard-auto-lang.patch
 Patch4:         feature-wizard-keylayout-from-sys.patch
 Patch5:         feature-qt-apps-gtk2-theme.patch
 BuildRequires:  alsa-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  edje >= %{efl_version}
 BuildRequires:  gettext-devel
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 # configure scripts looks for Xwayland binary
@@ -98,9 +99,10 @@ Obsoletes:      e_module-notification < 0.2.1
 # older e17.3 users will update but anyone who manually installs e17.6 will stay
 Obsoletes:      e17
 Provides:       e17 > 0.17.4
+%if 0%{?suse_version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif
 %{?systemd_requires}
 %if %{enable_wayland}
 BuildRequires:  pkgconfig(ecore-wl2)
@@ -111,7 +113,7 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 %endif
 %if %{systemd_present}
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %endif
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -177,6 +179,7 @@ Conflicts:      otherproviders(enlightenment-branding)
 %description branding-upstream
 Various files for Enlightenment provided by upstream but altered by openSUSE or Petite Linux.
 
+%if %{build_doc}
 %package doc-html
 Summary:        HTML documentation of Enlightenment
 Group:          Documentation/HTML
@@ -184,6 +187,7 @@ Conflicts:      e17-doc-html
 
 %description doc-html
 Documentation of Enlightenment in form of HTML pages.
+%endif
 
 %if %{generate_manpages}
 %package doc-man
@@ -214,42 +218,40 @@ FAKE_DOCYEAR=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%Y')
 FAKE_DOCDATETIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%a %%b %%d %%Y %{T}')
 sed -i "s/\$datetime/$FAKE_DOCDATETIME/g;s/\$date/$FAKE_DOCDATE/g;s/\$year/$FAKEDOCYEAR/g" doc/*.html
 
-%configure \
+export CFLAGS="%{optflags}%{?mageia: -g}"
+%meson \
 %if %{enable_wayland}
-	   --enable-wayland \
-	   --enable-wayland-egl \
-	   --enable-xwayland \
-	   --enable-wl-desktop-shell \
-	   --enable-wl-x11 \
-	   --enable-wl-fb \
-	   --enable-wl-drm \
-	   --enable-wl-text-input \
-	   --disable-wl-weekeyboard \
+    -Dwl=true \
+    -Dwl-x11=true \
+    -Dxwayland=true
+%else
+    -Dwayland=false
 %endif
-	   --disable-static \
-	   --disable-silent-rules
-make %{?_smp_mflags}
-make %{?_smp_mflags} doc
+
+%meson_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%meson_install
 
 %if %{enable_wayland}
 %if 0%{?suse_version} >= 1550
 # gdm doesn't show 2 desktop files with the same name
-rm %{buildroot}%{_datadir}/wayland-sessions/enlightenment.desktop
+#rm %{buildroot}%{_datadir}/wayland-sessions/enlightenment.desktop
+mkdir -p %{buildroot}%{_datadir}/wayland-sessions/
 cp %{buildroot}%{_datadir}/xsessions/enlightenment.desktop \
  %{buildroot}%{_datadir}/wayland-sessions/enlightenment-wayland.desktop
+%endif
 %else
 # for now don't ship a desktop file for Leap - wayland is not stably tested
 rm %{buildroot}%{_datadir}/wayland-sessions/enlightenment.desktop
 %endif
-%endif
 
+%if %{build_doc}
 # copy documentation manually
 echo "Copying HTML documentation"
 mkdir -p %{buildroot}%{_docdir}/%{name}
 /bin/cp -vr doc/html %{buildroot}%{_docdir}/%{name}
+%endif
 
 %if %{generate_manpages}
 echo "Copying MAN pages"
@@ -299,6 +301,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
+%if 0%{?suse_version}
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/enlightenment.desktop 20
@@ -307,11 +310,14 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 if [ ! -f %{_datadir}/xsessions/enlightenment.desktop ] ; then
   %{_sbindir}/update-alternatives  --remove default-xsession.desktop %{_datadir}/xsessions/enlightenment.desktop
 fi
+%endif
 
 %files -f enlightenment.lang
 %defattr(-,root,root)
-%doc COPYING README AUTHORS
+%license COPYING README AUTHORS
+%if %{build_doc}
 %exclude %{_docdir}/%{name}/html
+%endif
 %{_datadir}/xsessions/enlightenment.desktop
 %{_datadir}/xsessions/default.desktop
 %if %{enable_wayland} && 0%{?suse_version} >= 1550
@@ -347,17 +353,10 @@ fi
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/enlightenment
 
+%if %{build_doc}
 %files doc-html
 %defattr(-, root, root)
 %{_docdir}/%{name}
-%if 0%{?centos_version} || 0%{?fedora_version} == 16
-%exclude %{_docdir}/%{name}-%{version}/COPYING
-%exclude %{_docdir}/%{name}-%{version}/README
-%exclude %{_docdir}/%{name}-%{version}/AUTHORS
-%else
-%exclude %{_docdir}/%{name}/COPYING
-%exclude %{_docdir}/%{name}/README
-%exclude %{_docdir}/%{name}/AUTHORS
 %endif
 
 %if %{generate_manpages}

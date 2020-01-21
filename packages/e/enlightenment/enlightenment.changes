@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:34:37 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Thu Sep  5 00:41:55 UTC 2019 - simon <simonf.lees@suse.com>
+
+- 0.23.1
+  * Renable wayland support
+  * Highlights
+    * New padded screenshot option
+    * Meson build now is the build system
+    *Music Control now supports rage mpris dbus protocol
+    * Add Bluez5 support with totally new and redone module and gadget
+    * Add dpms option to turn it off or on
+    * Alt-tab window switcher allows moving of windows while alt-tabbing
+    * Lots of bug fixes, compile warning fixes etc.
+    * Massive improvements to Wayland support
+
+-------------------------------------------------------------------
+Wed May 29 13:46:12 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- Disable wayland until 0.23.0 when it will build again
+- only use update alternatives on openSUSE
+- enable systemd on Mageia
+
+-------------------------------------------------------------------
 Sun Sep 30 19:47:10 UTC 2018 - sean@suspend.net
 
 - 0.22.4
