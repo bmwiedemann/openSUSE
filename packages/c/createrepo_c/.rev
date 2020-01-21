@@ -208,4 +208,19 @@
 - [boo#1125044] fix for huge rpm packages</comment>
     <requestid>754660</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>074f0c8aa1dd46725d06062c5b65470a</srcmd5>
+    <version>0.15.6</version>
+    <time>1579636631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.6
+  + Set global_exit_status on sigint so that .repodata are cleaned up
+  + Fix various issues discovered by covscans (rh#1789707)
+  + Enhance error handling when locating repositories (rh#1762697)
+  + Switch updateinfo to explicitly include bool values (rh#1772466)
+  + add --recycle-pkglist option
+  + use pkg href for cache lookup with --update
+  + Sync --excludes matching for dir-walk vs. --pkglist</comment>
+    <requestid>765581</requestid>
+  </revision>
 </revisionlist>

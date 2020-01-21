@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:36:38 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.15.6
+  + Set global_exit_status on sigint so that .repodata are cleaned up
+  + Fix various issues discovered by covscans (rh#1789707)
+  + Enhance error handling when locating repositories (rh#1762697)
+  + Switch updateinfo to explicitly include bool values (rh#1772466)
+  + add --recycle-pkglist option
+  + use pkg href for cache lookup with --update
+  + Sync --excludes matching for dir-walk vs. --pkglist
+
+-------------------------------------------------------------------
 Fri Dec  6 11:47:37 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.15.4
