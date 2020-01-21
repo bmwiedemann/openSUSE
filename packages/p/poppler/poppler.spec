@@ -1,7 +1,7 @@
 #
 # spec file for package poppler
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 %endif
 
 Name:           poppler%{?psuffix}
-Version:        0.83.0
+Version:        0.84.0
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
-%define poppler_sover 93
+%define poppler_sover 94
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1

@@ -1548,4 +1548,36 @@ New upstream release</comment>
     <comment>Lets go with last release for now</comment>
     <requestid>764588</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>1baf8da5cb17cbdd5c4c3719a614fa94</srcmd5>
+    <version>0.84.0</version>
+    <time>1579636692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.84.0:
+  + core:
+    - Fix crash when converting from Unicode to ASCII-7
+    - Splash::scaleImageYdXu: Protect against crash if srcWidth is
+      too big
+    - JBIG2Stream:
+      . Fix potential crash in malformed documents
+      . Fix leak in reset() if called several times
+    - Internal code improvements
+  + utils:
+    - pdfimages: Add error message if first page is larger then
+      number of pages
+    - pdfinfo: Improved paper size recognition
+    - pdfsig: Fix exit code when dumping signatures
+    - pdftocairo: Error out when even/odd selects 0 pages
+    - pdftohtml: Fix memory leak
+    - pdftoppm:
+      . Add an option to scale before rotate
+      . Add -hide-annotations option
+      . Error out when even/odd selects 0 pages
+    - pdftops: Improve -optimizecolorspace
+  + qt5: Code cleanups
+  + glib: Fix compiler warnings
+- Bump poppler_sover following upstream changes.
+</comment>
+    <requestid>765628</requestid>
+  </revision>
 </revisionlist>
