@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 21 06:50:09 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1579529599.e032e3659:
+  * Do not retry downloads in the cache service when there was a 4xx response
+  * Unify retry handling for all 4xx/5xx and connection errors in the cache service
+  * Dependency cron 200120
+  * Improve coding style in scheduler tests
+  * Consider assigned jobs when duplicating jobs
+  * Simplify auto_duplicate code
+  * Avoid race condition in job scheduling
+
+-------------------------------------------------------------------
 Sat Jan 18 22:49:52 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1579272112.ccebff1bd:
