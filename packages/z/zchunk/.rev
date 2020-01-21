@@ -99,4 +99,13 @@
     <comment></comment>
     <requestid>757744</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1478bb2ff0353ae827ec76ec60de78c0</srcmd5>
+    <version>1.1.5</version>
+    <time>1579636634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  + Handle write errors correctly</comment>
+    <requestid>765583</requestid>
+  </revision>
 </revisionlist>

@@ -2,7 +2,7 @@
 # spec file for package zchunk
 #
 # Copyright (c) 2019 SUSE LLC
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global devname libzck-devel
 
 Name:           zchunk
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Compressed file format that allows easy deltas
 License:        BSD-2-Clause AND MIT
