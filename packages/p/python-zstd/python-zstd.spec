@@ -1,7 +1,7 @@
 #
 # spec file for package python-zstd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zstd
-Version:        1.4.3.2
+Version:        1.4.4.0
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libzstd) >= 1.4.3
+BuildRequires:  pkgconfig(libzstd) >= 1.4.4
 %python_subpackages
 
 %description
