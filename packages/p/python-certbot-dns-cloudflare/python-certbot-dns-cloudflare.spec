@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-dns-cloudflare
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Cloudflare Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-cloudflare/certbot-dns-cloudflare-%{version}.tar.gz
 BuildRequires:  %{python_module acme >= 0.29.0}
-BuildRequires:  %{python_module certbot >= 1.0.0}
+BuildRequires:  %{python_module certbot >= 1.1.0}
 BuildRequires:  %{python_module cloudflare >= 1.5.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-acme >= 0.29.0
-Requires:       python-certbot >= 1.0.0
+Requires:       python-certbot >= 1.1.0
 Requires:       python-cloudflare >= 1.5.1
 Requires:       python-zope.interface
 BuildArch:      noarch
