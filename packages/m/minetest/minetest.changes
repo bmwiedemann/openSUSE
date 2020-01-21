@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 18 16:26:52 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- build with spatialindex-devel, this speeds up AreaStores, see
+  https://github.com/minetest/minetest#cmake-options
+
+-------------------------------------------------------------------
+Sat Jan 18 10:37:15 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.1.1
+  * See https://dev.minetest.net/Changelog#5.1.0_.E2.86.92_5.1.1
+  * Fix player-bound sound playback (SmallJoker)
+  * Fix item eat sound not played if last item (Wuzzy2)
+  * Formspecs: Reset version number on rebuild (SmallJoker)
+  * Rework packet receiving in ServerThread (sfan5)
+  * Fix core.chat_format_message crashes (ClobberXD)
+  * Fix spaces breaking formspec_version[] tag (rubenwardy)
+  * Fix find_path for newer jsoncpp installations (vilhelmgray)
+  * Update translations
+
+-------------------------------------------------------------------
 Fri Nov 22 23:19:08 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
 
 - Explicitly require libXxf86vm-devel.
