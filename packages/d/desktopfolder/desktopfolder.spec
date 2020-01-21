@@ -1,7 +1,7 @@
 #
 # spec file for package desktopfolder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           desktopfolder
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Tool for organizing the desktop with panels, notes and photos
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/spheras/desktopfolder/
 Source:         https://github.com/spheras/desktopfolder/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- Fix compilation issues with vala 0.44
-Patch0:         desktopfolder-1.1.1-vala-0.44.patch
-# PATCH-FIX-UPSTREAM -- Fix compilation issues with vala 0.46
-Patch1:         desktopfolder-1.1.1-vala-0.46.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
@@ -59,8 +55,6 @@ A program with which the desktop can be organized with panels that hold things.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %meson

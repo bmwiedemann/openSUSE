@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan 13 21:33:31 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * Merge pull request #281 from JoshStrobl/vala_compilation_fix
+  * Merge pull request #279 from UbuntuBudgie/itemviewcleanup
+  * Merge pull request #278 from UbuntuBudgie/photoopen
+  * Fix compilation against Vala 0.46
+  * Remove unnecessary separators from note menu
+  * Remove unneeded window parent from menuitemcolor
+  * Fix crash due to null parent window
+  * Fix padding for color menu item to be consistent with other
+    menu items
+  * Make FolderWindow menu consistent with other submenus
+  * Remove unnecessary separate for photo menu
+  * Recombine panel properties menu options
+  * Reorganise menu to combine actions
+  * Add double click on photo to open in default viewer #277
+  * Add popup option to open photo in default viewer
+  * Merge pull request #274 from UbuntuBudgie/autostart
+  * Let GSD handle starting/not starting desktopfolder via
+    autostart
+  * Merge branch 'master' of
+    https://github.com/spheras/desktopfolder
+  * close #272
+  * Update fr.po
+  * Merge pull request #259 from UbuntuBudgie/vala44
+  * Fix compilation issues with vala 0.44
+- Drop desktopfolder-1.1.1-vala-0.44.patch
+- Drop desktopfolder-1.1.1-vala-0.46.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 23:53:11 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Add desktopfolder-1.1.1-vala-0.46.patch
