@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:43:21 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update BUILD file content for compatibility with envoy-proxy
+  1.12.2.
+
+-------------------------------------------------------------------
 Wed Nov  6 16:39:55 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Add BUILD and WORKSPACE files to allow to build
