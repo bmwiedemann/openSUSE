@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Tue Jan 14 13:43:11 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
-- openscap 1.3.1
+- switch back to official release
+- openscap 1.3.2
   - the test suite and build scripts were improved to support Debian 10
   - offline mode has received some love with a set of dedicated tests and various fixes in OVAL probes;
   - the oscap-docker wrapper is no longer dependent on Atomic 
