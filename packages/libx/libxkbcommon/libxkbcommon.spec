@@ -1,7 +1,7 @@
 #
 # spec file for package libxkbcommon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 %endif
 
 Name:           libxkbcommon
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xkbcommon.org/
+URL:            http://xkbcommon.org/
 
 #Git-Clone:	git://github.com/xkbcommon/libxkbcommon
 Source:         https://xkbcommon.org/download/%name-%version.tar.xz

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 19 00:48:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.10.0
+  * Fix quadratic complexity in the XKB file parser.
+  * Add $XDG_CONFIG_HOME/xkb to the default search path. If
+    $XDG_CONFIG_HOME is not set, $HOME/.config/xkb is used. If
+    $HOME is not set, the path is not added. The XDG path is
+    looked up before the existing default search path $HOME/.xkb.
+  * Add support for include statements in XKB rules files.
+  * Fix bug where the merge mode only applied to the first vmod
+    in a "virtual_modifiers" statement.
+  * Reject interpret modifier predicate with more than one value.
+  * Correctly handle capitalization of the ssharp keysym.
+
+-------------------------------------------------------------------
 Mon Oct 21 08:26:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.9.1
