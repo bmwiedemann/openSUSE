@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 20 14:10:38 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- libfinal-devel needs to require ncurses-devel and gpm-devel as some header
+  files include files from those
+- install built examples so libfinal-examples can be tried directly
+- add package for the special font
+
+-------------------------------------------------------------------
 Mon Oct 17 21:29:43 UTC 2019 - Markus Gans <guru.mail@muenster.de>
 
 - 0001-arm-glibc-2.30.patch: Fixes compilation error with arm architecture with glibc >= 2.30 

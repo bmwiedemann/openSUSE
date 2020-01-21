@@ -1,5 +1,5 @@
 #
-# spec file for package finalcut.spec
+# spec file for package finalcut
 #
 # Copyright (c) 2019 by Markus Gans
 #
@@ -29,10 +29,11 @@ Patch0:         0001-arm-glibc-2.30.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  fontpackages-devel
 BuildRequires:  gcc-c++ >= 5.1
+BuildRequires:  gdb
 BuildRequires:  glib2-devel
 BuildRequires:  gpm-devel
-BuildRequires:  gdb
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 
@@ -48,12 +49,14 @@ radio buttons, input lines, list boxes, status bars and so on.
 %package -n libfinal-devel
 Summary:        Development files for the FINAL CUT text widget library
 Group:          Development/Libraries/C and C++
-Requires:       libfinal%{sover} = %{version}
 Requires:       bdftopcf
 Requires:       coreutils
 Requires:       gcc-c++ >= 5.1
+Requires:       gpm-devel
 Requires:       grep
 Requires:       gzip
+Requires:       libfinal%{sover} = %{version}
+Requires:       ncurses-devel
 Requires:       sed
 Requires:       vim
 Provides:       finalcut-devel = %{version}
@@ -72,7 +75,6 @@ radio buttons, input lines, list boxes, status bars and so on.
 %package -n libfinal-examples
 Summary:        Example files for the FINAL CUT library
 Group:          Development/Languages/C and C++
-BuildArch:      noarch
 Provides:       finalcut-examples = %{version}
 Obsoletes:      finalcut-examples < %{version}
 
@@ -98,6 +100,18 @@ The C++ class design was inspired by the Qt framework. It provides
 common controls like dialog windows, push buttons, check boxes,
 radio buttons, input lines, list boxes, status bars and so on.
 
+%package bitmap-fonts
+Summary:        Bitmap fonts for finalcut
+Group:          System/X11/Fonts
+Requires(pre):  fontconfig
+# install the fonts only if we have X11 fonts anyways
+Supplements:    packageand(libfinal%{sover}:xorg-x11-fonts-core)
+BuildArch:      noarch
+
+%description bitmap-fonts
+This package include a special font uses by the FINAL CUT text
+widget toolkit
+
 %prep
 %setup -q
 %patch0 -p1
@@ -117,16 +131,32 @@ make install libdir=%{buildroot}%{_libdir}/ \
 	     bindir=%{buildroot}%{_bindir} \
 	     docdir=%{buildroot}%{_docdir}/%{name}/ \
 	     fontdir=%{buildroot}%{_miscfontsdir}/%{name}/
-mkdir -p %{buildroot}%{_docdir}/%{name}/examples
 mkdir -p %{buildroot}%{_miscfontsdir}/%{name}/
-cp -p examples/*.cpp %{buildroot}%{_docdir}/%{name}/examples
-cp -p examples/Makefile.clang %{buildroot}%{_docdir}/%{name}/examples
-cp -p examples/Makefile.gcc %{buildroot}%{_docdir}/%{name}/examples
-rm -f %{buildroot}%{_libdir}/libfinal.la %{buildroot}%{_libdir}/%{name}/examples
+mkdir -p %{buildroot}%{_docdir}/%{name}
+mkdir -p %{buildroot}%{_libdir}/%{name}/examples
+cp -p examples/.libs/* %{buildroot}%{_libdir}/%{name}/examples
+cp -p examples/*.cpp %{buildroot}%{_libdir}/%{name}/examples
+cp -p examples/Makefile.clang %{buildroot}%{_libdir}/%{name}/examples
+cp -p examples/Makefile.gcc %{buildroot}%{_libdir}/%{name}/examples
+rm -f %{buildroot}%{_libdir}/libfinal.la
 rm %{buildroot}%{_docdir}/%{name}/ChangeLog %{buildroot}%{_docdir}/%{name}/COPYING.LESSER
+# Add config for X font path
+mkdir -p %{buildroot}%{_datadir}/X11/xorg.conf.d
+cat <<EOF > %{buildroot}%{_datadir}/X11/xorg.conf.d/80-finalcut-bitmap-fonts.conf
+Section "Files"
+    FontPath "%{_miscfontsdir}/finalcut:unscaled"
+EndSection
+EOF
+#
+# make sure we own all generated files
+for i in .fonts-config-timestamp encodings.dir fonts.dir fonts.scale; do
+    > %{buildroot}%{_miscfontsdir}/finalcut/$i
+done
 
 %post -n libfinal%{sover} -p /sbin/ldconfig
 %postun -n libfinal%{sover} -p /sbin/ldconfig
+
+%reconfigure_fonts_scriptlets -n %{name}-bitmap-fonts
 
 %files -n libfinal-devel
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1500
@@ -142,9 +172,22 @@ rm %{buildroot}%{_docdir}/%{name}/ChangeLog %{buildroot}%{_docdir}/%{name}/COPYI
 %{_includedir}/final
 
 %files -n libfinal-examples
-%{_docdir}/%{name}/examples
+%{_libdir}/%{name}
 
 %files -n libfinal%{sover}
 %{_libdir}/libfinal.so.*
+
+%files bitmap-fonts
+%dir %{_miscfontsdir}
+%dir %{_miscfontsdir}/finalcut
+%{_miscfontsdir}/finalcut/*.gz
+%{_miscfontsdir}/finalcut/fonts.alias
+%ghost %{_miscfontsdir}/finalcut/fonts.dir
+%ghost %{_miscfontsdir}/finalcut/fonts.scale
+%ghost %{_miscfontsdir}/finalcut/encodings.dir
+%ghost %{_miscfontsdir}/finalcut/.fonts-config-timestamp
+%dir %{_datadir}/X11
+%dir %{_datadir}/X11/xorg.conf.d
+%{_datadir}/X11/xorg.conf.d/80-finalcut-bitmap-fonts.conf
 
 %changelog
