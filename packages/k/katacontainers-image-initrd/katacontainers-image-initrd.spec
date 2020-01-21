@@ -1,7 +1,7 @@
 #
 # spec file for package katacontainers-image-initrd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 %endif
 
 Name:           katacontainers-image-initrd
-Version:        1.9.3
+Version:        1.10.0
 Release:        0
 Summary:        Kata Containers image (initrd) and kernel
 License:        Apache-2.0

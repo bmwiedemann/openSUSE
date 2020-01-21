@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 20 15:39:58 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.10.0:
+  agent:
+    - client.go: HybridVSockDialer: Check return size n of
+      unix.Recvfrom
+    - client.go: HybridVSockDialer: Change Read EOT to recv peek
+    - agent: get current cpuset from /sys/devices/system/cpu/online
+    - config: add option to control hotplug timeout of block
+      devices
+    - agent: firecracker: support debugging console
+    - agent: fix pause bin on musl
+    - docs: Add enable services and installation steps for TRACING.md
+    - docs: Add missing steps at TRACING.md
+    - tracing: Wrapper for tracing functions
+    - tracing: Generate an alias for opentracing.Span
+    - network: ensure parent directories exist
+    - Revert "client: remove the parameter of 'enableYamux'"
+    - client: remove the parameter of 'enableYamux'
+    - vendor: update libcontainer to 1.0.0-rc9
+  osbuilder:
+    - make: use `cd` instead of '--directory' option of `cpio`
+
+-------------------------------------------------------------------
 Fri Dec 13 14:30:18 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 1.9.3 tarballs, this is just a version bump without
