@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 20 21:11:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20200105
+  * socket: mark skbs as not on list when receiving via gro
+
+-------------------------------------------------------------------
+Mon Jan 20 21:06:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop not longer needed patches:
+  * wireguard-remove-depmod.diff
+  * wireguard-fix-systemd-service.patch
+- Mention wireguard-kmp-preamble in the sepc-file as source
+- Package split since upstream reorganized code repositories.
+  * wireguard-tools is now developed in a separate package
+
+-------------------------------------------------------------------
 Thu Dec 19 07:26:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.20191219
