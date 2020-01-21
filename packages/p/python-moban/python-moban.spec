@@ -1,7 +1,7 @@
 #
 # spec file for package python-moban
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-moban
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        Yet another jinja2 CLI for static text generation
 License:        MIT
@@ -46,11 +47,10 @@ Requires:       python-appdirs >= 1.4.3
 Requires:       python-crayons >= 0.1.0
 Requires:       python-fs >= 2.4.11
 Requires:       python-jinja2-fsloader >= 0.2.0
-Requires:       python-jinja2-time
 Requires:       python-lml >= 0.0.9
 Requires:       python-ruamel.yaml >= 0.15.98
-Recommends:     python-gitfs2 >= 0.0.1
-Recommends:     python-pypifs >= 0.0.1
+Suggests:       python-gitfs2
+Suggests:       python-pypifs
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,16 +71,17 @@ rm -r tests/integration_tests
 
 %install
 %python_install
-# tests are packaged oddly, remove it then
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_level_9 depends on package pypifs
-# test_level_10 depends on access to github.com
-# test_level_11 depends on moban-handlebars
+# test_level_9_deprecated needs pypi-mobans-pkg just for templates... too much effort
+# test_level_9 needs pypifs, which is now optional
+# test_level_10_deprecated depends on access to github.com
+# test_level_10 needs gitfs, which is optional
+# test_level_11 probably depends on moban-handlebars, which is needed only in tests
 # test_handle_targets_sequence fails on wrong arg count
-%python_exec %{_bindir}/nosetests --with-doctest --doctest-extension=.rst -e 'test_level_(9|10|11)|test_handle_targets_sequence' README.rst tests docs moban
+# test_overrides_fs_url needs gitfs2, which is optional
+%python_expand nosetests-%{$python_bin_suffix} -e 'test_level_(9|10|11)|test_handle_targets_sequence|test_overrides_fs_url'
 
 %files %{python_files}
 %{python_sitelib}/*

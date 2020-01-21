@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 20 15:16:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.7.0
+  * make gitfs2 and pypifs optional.
+  * python 2.7 support is dropped.
+  * show friendlier error when unknown protocol exception was raised.
+  * python 3.4 support is gone
+  * no verbose for error, -v for warning, -vv for warning+info, -vvv for warning+info+debug
+  * show template plugin name, i.e. 'copying' for copy instead of 'templating'
+  * support moban file inheritance
+  * support intermediate targets in moban file
+  * Command options have been grouped. --template_type became --template-type
+
+-------------------------------------------------------------------
 Tue Oct  1 14:25:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.6.3
