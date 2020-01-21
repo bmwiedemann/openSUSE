@@ -1,7 +1,7 @@
 #
 # spec file for package terminology-theme-openSUSE
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           terminology-theme-openSUSE
-Version:        20151216
+Version:        20191110
 Release:        0
 Summary:        openSUSE theme for Terminology
-License:        BSD-2-Clause and LGPL-2.1 and CC-BY-SA-3.0
+License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
 Group:          System/X11/Terminals
 Url:            https://en.opensuse.org/Portal:Enlightenment
 Source:         %{name}-%{version}.tar.xz
@@ -40,7 +40,7 @@ openSUSE theme for Terminology
 
 %build
 ./build-darkmod.sh --termpkg
-cp terminology/openSUSE-e.edj ./default.edj
+cp terminology/openSUSE.edj ./default.edj
 cp licenses-authors/* .
 
 %install

@@ -48,4 +48,13 @@ Fix previously incorrect licensing</comment>
     <comment>Rebase against latest terminology theme and fix the build scripts</comment>
     <requestid>349574</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>33ed812ea3d6bebd4d501803c0cb0b33</srcmd5>
+    <version>20191110</version>
+    <time>1579636760</time>
+    <user>dimstar_suse</user>
+    <comment>- 20191110 rebuild with lots of updates
+</comment>
+    <requestid>761082</requestid>
+  </revision>
 </revisionlist>
