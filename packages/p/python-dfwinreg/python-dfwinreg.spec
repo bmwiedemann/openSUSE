@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfwinreg
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,63 +12,47 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define timestamp 20160428
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define timestamp 20190714
+%define modname dfwinreg
 Name:           python-dfwinreg
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Digital Forensics Windows Registry
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/log2timeline/dfwinreg
-Source:         https://github.com/log2timeline/dfwinreg/releases/download/%{timestamp}/dfwinreg-%{timestamp}.tar.gz
-BuildRequires:  pkgconfig
-BuildRequires:  python-setuptools
-BuildRequires:  pkgconfig(python)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/log2timeline/dfwinreg
+Source:         https://github.com/log2timeline/%{modname}/releases/download/%{timestamp}/%{modname}-%{timestamp}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%python_subpackages
 
 %description
-dfwinreg, or Digital Forensics Windows Registry, is a Python module that provides read-only access to Windows Registry objects.
-
-%package -n python3-dfwinreg
-Summary:        Digital Forensics Date and Time (dfDateTime)
-Group:          Development/Languages/Python
-BuildRequires:  pkgconfig
-BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(python3)
-
-%description -n python3-dfwinreg
-Python3 version of dfwinreg, or Digital Forensics Windows Registry, a Python module that provides read-only access to Windows Registry objects.
+%{modname}, or Digital Forensics Windows Registry, is a Python module that provides read-only access to Windows Registry objects.
 
 %prep
-%setup -q -n dfwinreg-%{timestamp}
+%setup -q -n %{modname}-%{timestamp}
 
 %build
-python2 setup.py build
-python3 setup.py build
+%python_build
 
 %install
-python2 setup.py install -O1 --root=%{buildroot}
-python3 setup.py install -O1 --root=%{buildroot}
-#delete all precombied PYO files
-find %{buildroot} -name \*.pyc -delete
-find %{buildroot} -name \*.pyo -delete
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
 # these are installed into the wrong place
-rm -rf %{buildroot}/usr/share/doc/dfwinreg
+rm -rf %{buildroot}%{_datadir}/doc/%{modname}
 
-
-%files
-%defattr(-,root,root)
-%doc ACKNOWLEDGEMENTS AUTHORS README LICENSE
-%{_prefix}/lib/python2*/*
-
-%files -n python3-dfwinreg
-%defattr(-,root,root)
-%doc ACKNOWLEDGEMENTS AUTHORS README LICENSE
-%{_prefix}/lib/python3*/*
+%files %{python_files}
+%license LICENSE
+%doc ACKNOWLEDGEMENTS AUTHORS README
+%{python_sitelib}/%{modname}*
 
 %changelog

@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:58:16 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 20190714:
+  - Code review: 304210043: Added update dependencies script and dependen…
+    e9c30c2
+  - Code review: 306090043: Updated review script. c39895f
+  - Code review: 303600043: Split tox and requirements. 1b7d008
+  - Code review: 303280043: Changed docstrings, improved test coverage, c…
+    ad22cc4
+  - Code review: 313940043: Removed online check for new dependency versi…
+    398c6e5
+  - Code review: 313920043: Added fail unless has test file 9ea399f
+  - Code review: 305330044: Added support for non-set last written time.
+    ab55fdb
+  - Code review: 317350043: Changed AddKeyByPath to handle existing paren…
+    f5d3dab
+  - Code review: 320330043: Fix for fake tests failing on Python 3 versions
+    ef732b1
+  - Code review: 322790043: Changes to dependencies and Travis configuration
+    2b5237f
+  - Code review: 321770043: Fixes for fake tests failing on Python 3 vers…
+    0e48e05
+  - Code review: 317480043: Added GetSubkeyByIndex method. ffb4c0e
+  - Code review: 317520043: Updated utility scripts 2d2f937
+  - Code review: 320580043: Changed dependency management to use configur…
+    6e39126
+  - Code review: 324900043: Changed setup.py and dpgk files fd835d0
+  - Code review: 323020043: Added Windows Registry searcher #52 47324f2
+  - Code review: 323060043: Changes to tests for Python 3 support #54 a4591bc
+  - Code review: 327720043: Changed travis tests to use tox f676651
+  - Code review: 325890043: Moved Travis tests to edge group test machine…
+    4d2c523
+  - Code review: 325940043: Changes to handle existing virtual subkey #63
+    88b769a
+  - Code review: 323210043: Made Unicode strings the default 7037301
+  - Code review: 323960043: Replaced fnmatch.translate with custom function
+    975f71a
+  - Code review: 324030043: Moved update dependencies script to l2tdevtools
+    ee22dcb
+  - Code review: 324170043: Changes for pylint 1.7 upgrade 7728d35
+  - Code review: 329950043: Added tests to improve coverage #1 873bca0
+  - Code review: 328400043: Moved location of pylintrc 41ff919
+  - Code review: 330420043: Changed AppVeyor configuration to use TLS b84ef9a
+  - Code review: 330450043: Changed sdist to include utils/__init__.py eb7b1b1
+  - Code review: 331010043: Updated AppVeyor configuration to use l2tbina…
+    c67a994
+  - Code review: 331960043: Updated utils a23e975
+  - Code review: 336880043: Changes for Python 3.6 support on AppVeyor 04bbd5c
+  - Code review: 337080043: Removed review script in favor of l2tdevtools
+    c2accc9
+  - Code review: 328230043: Migrated from construct to dtfabric 0fde2f6
+  - Code review: 334440043: Changed AppVeyor configuration for pywin32 issue
+    e83850c
+  - Code review: 337590043: Changes to AppVeyor configuration for pywin32
+    dcf0f25
+  - Code review: 336600043: Changed shebang for Python 3 tests 3585807
+  - Code review: 340360043: Work-around for macos TLS issues on Travis e086674
+  - Code review: 340400043: Added pylint and separate non-tox tests 581211f
+  - Code review: 339360044: Changes to setup.py for bdist_rpm b1e9aaf
+  - Code review: 341840043: Updated dependency information a6a786c
+  - Code review: 341850043: Work-around pip failing to update on Windows
+    e0f5f0a
+  - Code review: 341880043: Switched from coveralls to codecov for code c…
+    344db9a
+  - Code review: 334620043: Changes to Travis configuration for Python
+    3 … 3358d1a
+  - Code review: 339410043: Fixed linter issues #91 025b639
+  - Code review: 335600043: Added deprecated decorator 224b469
+  - Code review: 340950043: Changes to Travis configuration for Python
+    3 … 88a8d56
+  - Code review: 334640043: Moved dtFabric definitions to a separate file
+    87668fc
+  - Code review: 334650043: Fixed linter issues #91 0c18d93
+  - Code review: 343800043: Changes to deployment scripts for dtFabric YA…
+    7b1a2da
+  - Code review: 357730043: Changes to prevent setup.py creating a ZIP file
+    9665832
+  - Changed REGFWinRegistryFile to not close file-like object it did not
+    … aea2b4c
+  - Removed redundant GetTestFilePath function from tests (#101) 7cc61f4
+  - Updated dependencies and added 64-bit tests (#102) 07b41c3
+  - Moved pylint to separate PPA (#104) 0aa5c05
+  - Changes for linter (#105) 44dc8f9
+  - Added test_dependencies.ini and applied updates (#106) 7b0fa13
+  - Changes to Travis CI test coverage (#107) cbf1d5b
+  - Added PyLint spelling private dictionary and fixed typos (#108) f9f08f2
+  - Changes to run CI tests with pylint 2.x and removed Trusty CI tests (#…
+    26f5c9f
+  - Applied updates and added Fedora Core CI tests (#111) a25c0f6
+  - Changes to improve test coverage (#112) d686edc
+  - Changes for running CI tests (#113) 329c0a3
+  - Migrated tox tests to Bionic on Docker (#114) dd6bac8
+  - Changes to docstring (#116) 06eaabe
+  - Added class name property to Registry key (#117) 0d5467b
+  - Added support to resolve HKEY_USERS keys (#115) 71c2a96
+  - Changes for path segment separator in virtual key path suffix (#118)
+    968d9c4
+  - Change to fix REGFWinRegistryKey has no attribute AddSubkey (#120) 0fb3765
+  - Replaced test data with that of Greendale studentpc8 (#123) 53edd69
+  - Moved pylint CI tests to Ubuntu 18.04 on Docker (#122) cce659a
+  - Added sdist_test_data support (#124) 9d488bb
+  - Added dh-python to dpkg build dependencies (#126) 373154c
+  - Moved coverage CI tests to Ubuntu 18.04 on Docker (#127) 506b9de
+  - Replaced skipUnlessHasTestFile decorator with unittest.SkipTest (#119)
+    714a042
+  - Changed AppVeyor test to use Python 3.7 (#129) 238c214
+  - Changed REG_RESOURCE_REQUIREMENT_LIST to REG_RESOURCE_REQUIREMENTS_LI…
+    488e962
+  - Changes for REG_MULTI_SZ support (#132) 8dfc001
+
+-------------------------------------------------------------------
 Fri Sep 30 09:54:19 UTC 2016 - jengelh@inai.de
 
 - Set RPM groups
