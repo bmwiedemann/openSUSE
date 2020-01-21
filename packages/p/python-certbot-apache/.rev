@@ -124,4 +124,12 @@
     have been removed.</comment>
     <requestid>760676</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c48d821953b063a958e056e9239d03fb</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636915</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>766007</requestid>
+  </revision>
 </revisionlist>

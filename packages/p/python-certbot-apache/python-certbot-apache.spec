@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-apache
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Apache plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/letsencrypt/letsencrypt
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-apache/certbot-apache-%{version}.tar.gz
 BuildRequires:  %{python_module augeas}
-BuildRequires:  %{python_module certbot >= 1.0.0}
+BuildRequires:  %{python_module certbot >= 1.1.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -37,7 +37,7 @@ Requires:       apache2
 Requires:       augeas-lenses
 Requires:       python-acme >= 0.34.0
 Requires:       python-augeas
-Requires:       python-certbot >= 1.0.0
+Requires:       python-certbot >= 1.1.0
 Requires:       python-zope.component
 Requires:       python-zope.interface
 BuildArch:      noarch
