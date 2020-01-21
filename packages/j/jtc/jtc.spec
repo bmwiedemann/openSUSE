@@ -17,7 +17,7 @@
 
 
 Name:           jtc
-Version:        1.75c
+Version:        1.75d
 Release:        0
 Summary:        JSON processing utility
 License:        MIT
