@@ -31,4 +31,24 @@
     <comment>Fix some minor branding regressions that crept in with new enlightenment version</comment>
     <requestid>437589</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>326450c22edb263aa8866900509f1a4f</srcmd5>
+    <version>20200101</version>
+    <time>1579636755</time>
+    <user>dimstar_suse</user>
+    <comment>- 20200101 - efl 1.23
+  * Now also ship openSUSE-e-X-ice icon theme to match efl theme
+- Update for e22
+- 20161028 Fixes some minor regressions
+- Update for e21 changes 20160705
+- spec cleaner run
+- 20160314 rebase on efl 1.17.0 fix factory build
+- Follow upstream in relicencing bsd theme code to lgpl2+,
+     Note the build system is still BSD
+- Fix incorrect spec file which only mentioned BSD licence SR(252158)
+- Fix Init logo
+- New light theme for openSUSE 13.2
+</comment>
+    <requestid>761079</requestid>
+  </revision>
 </revisionlist>

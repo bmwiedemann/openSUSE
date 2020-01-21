@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  1 05:49:31 UTC 2019 - Simon Lees <sflees@suse.com>
+
+- 20200101 - efl 1.23
+  * Now also ship openSUSE-e-X-ice icon theme to match efl theme
+
+-------------------------------------------------------------------
+Wed Nov 29 04:35:41 UTC 2017 - sflees@suse.de
+
+- Update for e22
+
+-------------------------------------------------------------------
 Fri Oct 28 03:23:48 UTC 2016 - sflees@suse.de
 
 - 20161028 Fixes some minor regressions
@@ -11,7 +22,7 @@ Tue Jul  5 03:37:57 UTC 2016 - sflees@suse.de
 -------------------------------------------------------------------
 Mon Mar 14 14:11:29 UTC 2016 - sflees@suse.de
 
-- spec cleaner run 
+- spec cleaner run
 
 -------------------------------------------------------------------
 Mon Mar 14 14:00:27 UTC 2016 - sflees@suse.de
@@ -21,7 +32,7 @@ Mon Mar 14 14:00:27 UTC 2016 - sflees@suse.de
 -------------------------------------------------------------------
 Sat Oct 11 00:08:20 UTC 2014 - simon@simotek.net
 
-- Follow upstream in relicencing bsd theme code to lgpl2+, 
+- Follow upstream in relicencing bsd theme code to lgpl2+,
      Note the build system is still BSD
 - Fix incorrect spec file which only mentioned BSD licence SR(252158)
 - Fix Init logo
@@ -30,4 +41,3 @@ Sat Oct 11 00:08:20 UTC 2014 - simon@simotek.net
 Wed Sep 17 11:22:37 UTC 2014 - simon@simotek.net
 
 - New light theme for openSUSE 13.2
-
