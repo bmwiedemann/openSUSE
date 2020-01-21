@@ -49,6 +49,8 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 Requires:       adwaita-qt5
 
+Supplements:    (libQt5Gui5 and gnome-session)
+
 %description
 QGnomePlatform is a Qt Platform Theme designed to use as many of the GNOME
 settings as possible in unmodified Qt applications. It allows Qt applications
