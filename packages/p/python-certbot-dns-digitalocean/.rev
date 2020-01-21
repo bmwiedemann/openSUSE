@@ -115,4 +115,12 @@
   * sync with main certbot package</comment>
     <requestid>760652</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a1bba54c98986ffb436d362743db4dbd</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636925</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>766011</requestid>
+  </revision>
 </revisionlist>
