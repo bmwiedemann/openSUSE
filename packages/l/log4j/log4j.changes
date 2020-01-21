@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Jan 21 10:55:28 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 2.13.0 [bsc#1159646, CVE-2019-17571]
+  * Bugfixes and minor enhancements:
+    - CVE-2019-17571: Remote code execution: Deserialization of untrusted
+      data in SocketServer
+    - Log4j 2 now requires Java 8 or higher to build and run.
+    - Better integration with Spring Boot by providing access to Spring
+      variables in Log4j 2 configuration files and allowing Log4j 2 system
+      properties to be defined in the Spring configuration.
+    - Support for accessing Kubernetes information via a Log4j 2 Lookup.
+    - The Gelf Layout now allows the message to be formatted using a
+      PatternLayout pattern.
+    - Due to a break in compatibility in the SLF4J binding, Log4j now
+      ships with two versions of the SLF4J to Log4j adapters.
+    - log4j-slf4j-impl should be used with SLF4J 1.7.x and earlier and
+      log4j-slf4j18-impl should be used with SLF4J 1.8.x and later.
+    - Note that the XML, JSON and YAML formats changed in the 2.11.0 release:
+      they no longer have the "timeMillis" attribute and instead have an
+      "Instant" element with "epochSecond" and "nanoOfSecond" attributes.
+    - The Log4j 2.13.0 API, as well as many core components, maintains
+      binary compatibility with previous releases.
+  * New Features
+    - Add ThreadContext.putIfNotNull method.
+    - Add a Level Patttern Selector.
+    - Add experimental support for Log4j 1 configuration files.
+    - Add the ability to lookup Kubernetes attributes in the Log4j
+      configuration. Allow Log4j properties to be retrieved from the
+      Spring environment if it is available.
+    - Allow Spring Boot application properties to be accessed in the
+      Log4j 2 configuration. Add lower and upper case Lookups.
+    - Add builder pattern to Logger interface.
+  * Fixed Bugs
+    - Prevent recursive calls to java.util.LogManager.getLogger().
+    - Added try/finally around event.execute() for RingBufferLogEventHandler
+      to clear memory correctly in case of exception/error.
+    - Wrong java version check in ThreadNameCachingStrategy.
+    - Use a less confusing name for the CompositeConfiguration source.
+    - Add setKey method to Kafka Appender Builder.
+    - ArrayIndexOutOfBoundsException could occur with MAC address longer
+      than 6 bytes.
+    - The rolling file appenders would fail to compress the file after
+      rollover if the file name matched the file pattern.
+    - @PluginValue does not support attribute names besides "value".
+    - Validation blocks definition of script in properties configuration.
+    - Set result of rename action to true if file was copied.
+    - Add automatic module names where missing.
+    - OutputStreamAppender.Builder ignores setFilter().
+    - Prevent a memory leak when async loggers throw errors.
+  * Changes
+    - Update Jackson to 2.9.10.
+    - Allow message portion of GELF layout to be formatted using a PatternLayout.
+    - Allow ThreadContext attributes to be explicitly included or excluded in the GelfLayout.
+
+-------------------------------------------------------------------
 Mon Jan  6 09:29:32 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Obsolete log4j-mini, since on systems where this package is

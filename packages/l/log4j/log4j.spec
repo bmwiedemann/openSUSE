@@ -18,12 +18,13 @@
 
 %bcond_with extras
 Name:           log4j
-Version:        2.11.1
+Version:        2.13.0
 Release:        0
 Summary:        Java logging package
 License:        Apache-2.0
 URL:            http://logging.apache.org/%{name}
 Source0:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz
+Source1:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz.asc
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
@@ -134,13 +135,14 @@ Obsoletes:      %{name}-manual < %{version}
 %pom_remove_plugin -r :maven-doap-plugin
 %pom_remove_plugin -r :maven-source-plugin
 %pom_remove_plugin -r :maven-toolchains-plugin
+%pom_remove_plugin -r :revapi-maven-plugin
 
 # remove all the stuff we'll build ourselves
 find -name "*.jar" -o -name "*.class" -delete
 rm -rf docs/api
 
-%pom_disable_module %{name}-samples
 %pom_disable_module %{name}-distribution
+%pom_disable_module %{name}-samples
 
 # Apache Flume is not in Fedora yet
 %pom_disable_module %{name}-flume-ng
@@ -201,6 +203,8 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_disable_module %{name}-couchdb
 %pom_disable_module %{name}-cassandra
 %pom_disable_module %{name}-appserver
+%pom_disable_module %{name}-spring-cloud-config
+%pom_disable_module %{name}-kubernetes
 
 %pom_remove_dep -r :jackson-dataformat-yaml
 %pom_remove_dep -r :jackson-dataformat-xml
@@ -213,7 +217,9 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/{jackson,config/yaml,parser}
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/{db,mom,nosql}
 rm log4j-core/src/main/java/org/apache/logging/log4j/core/layout/*{Csv,Jackson,Xml,Yaml,Json,Gelf}*.java
+rm log4j-1.2-api/src/main/java/org/apache/log4j/builders/layout/*Xml*.java
 rm log4j-api/src/main/java/org/apache/logging/log4j/util/Activator.java
+rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %endif
 
 %{mvn_alias} :%{name}-1.2-api %{name}:%{name}
@@ -237,7 +243,7 @@ rm log4j-api/src/main/java/org/apache/logging/log4j/util/Activator.java
 
 %build
 # missing test deps (mockejb)
-%{mvn_build} -f -- -Dsource=7
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

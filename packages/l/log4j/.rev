@@ -222,4 +222,12 @@
     <comment>Obsolete log4j-mini</comment>
     <requestid>761090</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1caeeff28c8e535db3b3ee5f9c2bcede</srcmd5>
+    <version>2.13.0</version>
+    <time>1579636951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766064</requestid>
+  </revision>
 </revisionlist>
