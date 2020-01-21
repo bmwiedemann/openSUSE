@@ -1,7 +1,7 @@
 #
 # spec file for package supertuxkart
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 #
 Name:           supertuxkart
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        A 3D kart racing game
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Amusements/Games/3D/Race
 URL:            http://supertuxkart.sourceforge.net/
-Source:         https://downloads.sourceforge.net/project/supertuxkart/SuperTuxKart/1.0/supertuxkart-1.0-src.tar.xz
+Source:         https://downloads.sourceforge.net/project/supertuxkart/SuperTuxKart/%{version}/supertuxkart-%{version}-src.tar.xz
 # Geeko kart add-on (CC-BY 3.0)
 Source1:        http://stkaddons.net/dl/14e6ba25b17f0d.zip
 Source9:        supertuxkart.6
@@ -34,6 +34,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libraqm-devel
+%if 0%{?suse_version} && 0%{?is_opensuse}
+BuildRequires:  mcpp-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -44,6 +48,7 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(ogg)
@@ -79,10 +84,15 @@ BuildArch:      noarch
 Data files for SuperTuxKart a Free 3d kart racing game.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-src
 find -name '*~' -delete -print
 find -name '.git*' -type f -delete -print
 rm -rfv ./.github
+
+# fix W: non-executable-script
+rm data/optimize_data.sh
+rm data/po/pull_from_transifex.sh
+rm data/po/update_po_authors.py
 
 %build
 mkdir build && cd build
@@ -93,12 +103,14 @@ cmake .. \
         -DCMAKE_CXX_FLAGS="%{optflags} -fno-strict-aliasing" \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
         -DBUILD_RECORDER=0 \
+        -DOpenGL_GL_PREFERENCE=GLVND \
         -DUSE_SYSTEM_WIIUSE:BOOL=ON \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
 make V=1 %{?_smp_mflags}
 
 %install
 %cmake_install
+
 mkdir -p %{buildroot}%{_datadir}/supertuxkart/data/karts/geeko/
 cd %{buildroot}%{_datadir}/supertuxkart/data/karts/geeko/
 unzip %{SOURCE1}

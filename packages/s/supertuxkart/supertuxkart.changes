@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan  5 07:58:23 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- Update to version 1.1:
+  + Improved online multiplayer play
+    + Fix network lags in various scenarios when playing online
+    + Add AI support to local networking servers
+  + UI enhancements
+  + A new arena: Pumpkin Park
+  + Mobile enhancements and iOS support (The iOS version can be tested
+    through testflight : https://testflight.apple.com/join/mbK8RjHq )
+  + Complex text layout and emoji support
+  + Story mode timer for speedrunners
+  + Generic polish and minor improvements
+  See full changes in CHANGELOG.md.
+- added CMake option OpenGL_GL_PREFERENCE=GLVND
+- use system provided libmcpp
+- use system provided libraqm
+
+-------------------------------------------------------------------
 Sun Apr 28 18:20:39 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
 
 - Update to version 1.0:
