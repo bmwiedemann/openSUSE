@@ -330,4 +330,25 @@ Also includes sleep_walkers full set of changes to build wayland support for fac
     <comment></comment>
     <requestid>712072</requestid>
   </revision>
+  <revision rev="39" vrev="17">
+    <srcmd5>cf9272b749d68a812d07662b30062ee8</srcmd5>
+    <version>unknown</version>
+    <time>1579636743</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.23 Release
+  * Again, the primary focus of this release has been stabilizing
+    the EO library as well as an extending the set of unified API
+    which is based on it. From this release onwards we also switched
+    to meson as our only build system (RIP autotools, you served us
+    well for a long time). The 2110 commits contain more changes to
+    possible list here, but you will find improved DRM support, a new
+    widget for controlling vector animations, a first step towards
+    MVVM support, general bugfixes and more.
+    Please see the NEWS file for more details.
+  * spec file cleanup
+- 1.22.4 Release - Various minor bugfixes
+- 1.22.3 Release - Various minor bugfixes
+</comment>
+    <requestid>761069</requestid>
+  </revision>
 </revisionlist>

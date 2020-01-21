@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov  8 03:45:02 UTC 2019 - Simon Lees <simonf.lees@suse.com>
+
+- 1.23 Release
+  * Again, the primary focus of this release has been stabilizing
+    the EO library as well as an extending the set of unified API
+    which is based on it. From this release onwards we also switched
+    to meson as our only build system (RIP autotools, you served us
+    well for a long time). The 2110 commits contain more changes to
+    possible list here, but you will find improved DRM support, a new
+    widget for controlling vector animations, a first step towards
+    MVVM support, general bugfixes and more.
+    Please see the NEWS file for more details.
+  * spec file cleanup
+
+-------------------------------------------------------------------
+Thu Sep  5 00:45:28 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- 1.22.4 Release - Various minor bugfixes
+
+-------------------------------------------------------------------
+Wed Sep  4 04:06:45 UTC 2019 - simon <sflees@suse.de>
+
+- 1.22.3 Release - Various minor bugfixes
+
+-------------------------------------------------------------------
 Wed Jun 12 14:25:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

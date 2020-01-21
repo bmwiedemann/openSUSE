@@ -17,8 +17,6 @@
 
 
 %define sover 1
-# git builds from X11:Enlightenment:Nightly need autoreconf
-%define _git %(tar -atf %{_sourcedir}/%{name}-*.tar.?z 2> /dev/null | grep -q -m1 'configure$' || echo 1)
 # build doc is disabled due to #897122 once the bug is resolved it can be re enabled
 %define build_doc 0
 # Build doc needs to be defined for build doc man to work
@@ -31,18 +29,9 @@
 # Currently we don't need to build any  plugins and theres none that make
 # sense to build
 %define generic_players_present 0
-%if 0%{?suse_version} == 1315
-%define xinput22_present 0
-%else
 %define xinput22_present 1
-%endif
-%if 0%{?suse_version} == 1315
-%define xinput22_present 0
-%else
-%define xinput22_present 1
-%endif
 # fedora SLEs 12 don't support xine
-%if (0%{?suse_version} == 1315 || !0%{?suse_version})
+%if !0%{?suse_version}
 %define xine_present 0
 %else
 %define xine_present 1
@@ -58,12 +47,15 @@
 %define poppler_present 0
 %endif
 %if 0%{?is_opensuse}
-# VLC is broken atm
-%define vlc_present 0
+%ifarch !aarch64
+%define vlc_present 1
 %else
 %define vlc_present 0
 %endif
-%if 0%{?suse_version} > 1320 || 0%{?fedora}
+%else
+%define vlc_present 0
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?fedora_version} > 27 || 0%{?mageia} > 6
 %define enable_wayland 1
 %endif
 # Build with an alternate package names for Mageia
@@ -73,20 +65,17 @@
 %endif
 %endif
 # If packages are targeted for anything other than openSUSE
-%{?!icon_theme_cache_create_ghost:%define icon_theme_cache_create_ghost() touch %{buildroot}%{_datadir}/icons/%1/icon-theme.cache}
+%{?!icon_theme_cache_create_ghost:%define icon_theme_cache_create_ghost() touch %{buildroot}%{_datadir}/icons/%{1}/icon-theme.cache}
 %{?!icon_theme_cache_post:%define icon_theme_cache_post() gtk-update-icon-cache %{_datadir}/icons/$1 &> /dev/null || :}
 Name:           efl
-Version:        1.22.2
+Version:        1.23.2
 Release:        0
 # TODO: split package to separate packages and specify licenses correctly
 Summary:        Enlightenment Foundation Libraries - set of libraries used (not only) by E17
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
-Group:          Development/Libraries/C and C++
-Url:            https://git.enlightenment.org/core/efl.git
+URL:            https://git.enlightenment.org/core/efl.git
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ImageMagick
-BuildRequires:  autoconf >= 2.5
-BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  giflib-devel
@@ -95,11 +84,11 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libraw-devel
 BuildRequires:  libspectre-devel
-BuildRequires:  libtool
+BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  python >= 2.5
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dri)
@@ -112,6 +101,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libpng) >= 1.2.10
@@ -120,15 +110,19 @@ BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(valgrind)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
@@ -173,7 +167,7 @@ BuildRequires:  libpoppler-devel
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
-%ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl aarch64
+%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl aarch64
 BuildRequires:  valgrind
 %endif
 %if 0%{?physics_present}
@@ -184,15 +178,6 @@ BuildRequires:  pkgconfig(libvlc)
 %endif
 %if %{xine_present}
 BuildRequires:  pkgconfig(libxine)
-%endif
-%if 0%{?luajit_present}
-BuildRequires:  pkgconfig(luajit)
-%else
-%if 0%{?suse_version} >= 1330
-BuildRequires:  pkgconfig(lua5.1)
-%else
-BuildRequires:  pkgconfig(lua) < 5.2
-%endif
 %endif
 %if 0%{?enable_wayland}
 BuildRequires:  pkgconfig(gbm)
@@ -220,7 +205,6 @@ by Enlightenment 17, Terminology, Tizen mobile platform and much more.
 %package %{?mageia:-n %{_lib}%{name}-}devel
 Summary:        Headers, pkgconfig files and other files for development with EFL
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       edje = %{version}
 Requires:       embryo = %{version}
@@ -263,6 +247,7 @@ Requires:       pkgconfig(libpulse)
 Requires:       pkgconfig(librsvg-2.0)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(libudev)
+Requires:       pkgconfig(luajit)
 Requires:       pkgconfig(openssl)
 Requires:       pkgconfig(pixman-1)
 Requires:       pkgconfig(sdl)
@@ -315,15 +300,6 @@ Obsoletes:      %{?mageia:%{_lib}}evas-generic-loaders-devel < %{version}
 %if %{xine_present}
 Requires:       pkgconfig(libxine)
 %endif
-%if 0%{?luajit_present}
-Requires:       pkgconfig(luajit)
-%else
-%if 0%{?suse_version} >= 1330
-Requires:       pkgconfig(lua5.1)
-%else
-Requires:       pkgconfig(lua) < 5.2
-%endif
-%endif
 %if %{gstreamer1_present}
 Requires:       pkgconfig(gstreamer-1.0)
 Requires:       pkgconfig(gstreamer-plugins-base-1.0)
@@ -343,7 +319,6 @@ Headers, pkgconfig files and other files needed for development with EFL.
 %package -n lib%{?mageia:%{?_bit}}ecore%{sover}
 Summary:        Ecore, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}ecore%{sover}
 Ecore is a clean and tiny event loop library with many modules to do lots of
@@ -352,7 +327,6 @@ convenient things for a programmer, to save time and effort.
 %package -n lib%{?mageia:%{?_bit}}ector%{sover}
 Summary:        Ector, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}ector%{sover}
 Ector provides a new retained rendering library that is used by Evas to
@@ -366,7 +340,6 @@ and radial gradients.
 %package -n lib%{?mageia:%{?_bit}}edje%{sover}
 Summary:        Edje, part of EFL
 License:        BSD-2-Clause AND GPL-2.0-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}edje%{sover}
 Abstract GUI layout and animation object library.
@@ -374,7 +347,6 @@ Abstract GUI layout and animation object library.
 %package -n lib%{?mageia:%{?_bit}}eldbus%{sover}
 Summary:        ELDbus, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}eldbus%{sover}
 ELDbus is a wrapper around libdbus for the Enlightenment Foundation Libraries.
@@ -382,7 +354,6 @@ ELDbus is a wrapper around libdbus for the Enlightenment Foundation Libraries.
 %package -n lib%{?mageia:%{?_bit}}eet%{sover}
 Summary:        Eet, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}eet%{sover}
 Eet is a tiny library designed to write an arbitrary set of chunks of data
@@ -400,7 +371,6 @@ architecture.
 %package -n lib%{?mageia:%{?_bit}}eeze%{sover}
 Summary:        Eeze, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}eeze%{sover}
 Eeze is a library for manipulating devices through udev with a simple and
@@ -421,7 +391,6 @@ complexity of managing devices.
 %package -n lib%{?mageia:%{?_bit}}efl%{sover}
 Summary:        EFL's general purpose library
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}efl%{sover}
 The foundation components for the Enlightenment foundation libraries.
@@ -429,7 +398,6 @@ The foundation components for the Enlightenment foundation libraries.
 %package -n lib%{?mageia:%{?_bit}}efreet%{sover}
 Summary:        Efreet, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}efreet%{sover}
 Standards handling for FreeDesktop.org standards.
@@ -437,7 +405,6 @@ Standards handling for FreeDesktop.org standards.
 %package -n lib%{?mageia:%{?_bit}}efreet_mime%{sover}
 Summary:        Efreet, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 Conflicts:      lib%{?mageia:%{?_bit}}efreet%{sover} < 1.8
 
 %description -n lib%{?mageia:%{?_bit}}efreet_mime%{sover}
@@ -446,7 +413,6 @@ Standards handling for FreeDesktop.org mime types.
 %package -n lib%{?mageia:%{?_bit}}efreet_trash%{sover}
 Summary:        Efreet, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 Conflicts:      lib%{?mageia:%{?_bit}}efreet%{sover} < 1.8
 
 %description -n lib%{?mageia:%{?_bit}}efreet_trash%{sover}
@@ -455,7 +421,6 @@ Standards handling for FreeDesktop.org trash.
 %package -n lib%{?mageia:%{?_bit}}eina%{sover}
 Summary:        Eina, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}eina%{sover}
 Eina is library handling various data types.
@@ -463,7 +428,6 @@ Eina is library handling various data types.
 %package -n lib%{?mageia:%{?_bit}}eio%{sover}
 Summary:        Eio, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}eio%{sover}
 Extension of ecore for parallel I/O operations.
@@ -471,7 +435,6 @@ Extension of ecore for parallel I/O operations.
 %package -n lib%{?mageia:%{?_bit}}elementary%{sover}
 Summary:        Elementary, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}elementary%{sover}
 The core shared library for widgets.
@@ -479,7 +442,6 @@ The core shared library for widgets.
 %package -n lib%{?mageia:%{?_bit}}elocation%{sover}
 Summary:        ELocation, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}elocation%{sover}
 A location the shared library.
@@ -488,7 +450,6 @@ A location the shared library.
 %package -n lib%{?mageia:%{?_bit}}elput%{sover}
 Summary:        Elput, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}elput%{sover}
 Elput is a library to handle input devices.
@@ -499,7 +460,6 @@ For handling wayland input.
 %package -n lib%{?mageia:%{?_bit}}elua%{sover}
 Summary:        Lua bindings for the EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}elua%{sover}
 Support for lua within the efl.
@@ -507,7 +467,6 @@ Support for lua within the efl.
 %package -n lib%{?mageia:%{?_bit}}embryo%{sover}
 Summary:        Embryo, part of EFL
 License:        BSD-2-Clause AND Zlib
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}embryo%{sover}
 Embryo is a tiny library designed to interpret limited small programs
@@ -518,7 +477,6 @@ mostly untouched.
 %package -n lib%{?mageia:%{?_bit}}emotion%{sover}
 Summary:        Emotion, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}emotion%{sover}
 Emotion is a wrapper that provides a uniform api to a number of different
@@ -529,7 +487,6 @@ Currently the supported backends for this.
 %package -n lib%{?mageia:%{?_bit}}emile%{sover}
 Summary:        Emile, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}emile%{sover}
 Emile provides a library to bring together serialization, compression and
@@ -545,7 +502,6 @@ compression.
 %package -n lib%{?mageia:%{?_bit}}eo%{sover}
 Summary:        Eo, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}eo%{sover}
 Eo is library providing basic E object in OOP way of programming.
@@ -553,7 +509,6 @@ Eo is library providing basic E object in OOP way of programming.
 %package -n lib%{?mageia:%{?_bit}}eolian%{sover}
 Summary:        Eolian, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}eolian%{sover}
 Eolian is library for binding/code generation based on Eo descriptions.
@@ -561,7 +516,6 @@ Eolian is library for binding/code generation based on Eo descriptions.
 %package -n lib%{?mageia:%{?_bit}}ethumb%{sover}
 Summary:        EThumb, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}ethumb%{sover}
 Thumbnail generation library for EFL.
@@ -570,7 +524,6 @@ Thumbnail generation library for EFL.
 %package -n lib%{?mageia:%{?_bit}}ephysics%{sover}
 Summary:        EPhysics, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}ephysics%{sover}
 EPhysics is a wrapper around bullet physics for the enlightenment
@@ -580,7 +533,6 @@ foundation libraries.
 %package -n lib%{?mageia:%{?_bit}}evas%{sover}
 Summary:        Evas, part of EFL
 License:        BSD-2-Clause
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}evas%{sover}
 Evas is a clean display canvas API that implements a scene graph, not an
@@ -591,7 +543,6 @@ sub-sampled scaled images, alpha-blend objects and much more.
 %package -n lib%{?mageia:%{?_bit}}ethumb_client%{sover}
 Summary:        EThumb Client, part of EFL
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n lib%{?mageia:%{?_bit}}ethumb_client%{sover}
 Shared library of ethumb client.
@@ -599,7 +550,6 @@ Shared library of ethumb client.
 %package -n edje
 Summary:        Abstract GUI layout and animation object library
 License:        BSD-2-Clause
-Group:          System/GUI/Other
 Requires:       efl = %{version}
 Requires:       embryo = %{version}
 Requires:       lib%{?mageia:%{?_bit}}edje%{sover} = %{version}
@@ -612,7 +562,6 @@ This part of the Enlightenment Foundation Libraries.
 %package -n elementary
 Summary:        The widget set for enlightenment
 License:        LGPL-2.1-only
-Group:          System/GUI/Other
 Requires:       edje = %{version}
 Requires:       efl = %{version}
 Requires:       enlightenment-theme-dft
@@ -625,7 +574,6 @@ Set of widgets for enlightenment focused on touch devices.
 %package -n elementary-examples
 Summary:        Elementary examples
 License:        LGPL-2.1-only
-Group:          Documentation/Other
 
 %description -n elementary-examples
 Examples of usage of Elementary library.
@@ -634,7 +582,6 @@ Examples of usage of Elementary library.
 %package -n elua
 Summary:        LuaJIT bindings for the efl
 License:        LGPL-2.1-only
-Group:          System/GUI/Other
 Requires:       efl = %{version}
 
 %description -n elua
@@ -643,7 +590,6 @@ A set of efl bindings for the LuaJIT environment.
 %package -n embryo
 Summary:        Abstract GUI layout and animation object library
 License:        BSD-2-Clause
-Group:          System/GUI/Other
 Requires:       lib%{?mageia:%{?_bit}}embryo%{sover} = %{version}
 
 %description -n embryo
@@ -657,7 +603,6 @@ This part of the Enlightenment Foundation Libraries.
 %package -n evas-generic-loaders
 Summary:        Set of generic loaders for Evas
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 
 %description -n evas-generic-loaders
 Set of generic loaders allowing to open XCF, PDF, PS, RAW,
@@ -671,7 +616,6 @@ This part of the Enlightenment Foundation Libraries.
 %package -n emotion-generic-players
 Summary:        Set of generic players for Emotion
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 
 %description -n emotion-generic-players
 Set of generic players (currently VLC is supported) allowing to open video
@@ -687,7 +631,6 @@ This part of the Enlightenment Foundation Libraries.
 %package doc-man
 Summary:        EFL reference man pages
 License:        BSD-2-Clause
-Group:          Documentation/Man
 
 %description doc-man
 Documentation in form of man pages describing EFL API.
@@ -696,7 +639,6 @@ Documentation in form of man pages describing EFL API.
 %package doc-html
 Summary:        EFL reference man pages
 License:        BSD-2-Clause
-Group:          Documentation/HTML
 
 %description doc-html
 Documentation in form of HTML pages describing EFL API.
@@ -706,7 +648,6 @@ Documentation in form of HTML pages describing EFL API.
 %package examples
 Summary:        Examples of EFL usage
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
-Group:          Documentation/Man
 
 %description examples
 Examples usage of the EFL library.
@@ -715,7 +656,6 @@ Examples usage of the EFL library.
 %package testsuite
 Summary:        EFL testsuite
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
-Group:          System/GUI/Other
 Requires:       lib%{?mageia:%{?_bit}}efreet%{sover} = %{version}
 
 %description testsuite
@@ -726,7 +666,6 @@ Version:        0.21.0
 Release:        0
 Summary:        Default Enlightenment theme
 License:        BSD-2-Clause AND LGPL-2.1-only
-Group:          System/GUI/Other
 Conflicts:      otherproviders(enlightenment-theme-dft)
 Provides:       enlightenment-theme = 0.1
 Provides:       enlightenment-theme-dft
@@ -740,7 +679,6 @@ Version:        0.21.0
 Release:        0
 Summary:        Default Enlightenment theme(Dark)
 License:        BSD-2-Clause AND LGPL-2.1-only
-Group:          System/GUI/Other
 Provides:       enlightenment-theme
 
 %description  -n enlightenment-theme-dark
@@ -751,7 +689,6 @@ Version:        0.21.0
 Release:        0
 Summary:        A freedesktop.org compatible icon theme
 License:        GPL-3.0-only
-Group:          System/GUI/Other
 
 %description -n enlightenment-x-dark-icon-theme
 Setting this icon theme as your application icon theme in enlightenment will
@@ -762,7 +699,7 @@ Icon themes to match the openSUSE Enlightenment themes are also available.
 
 %prep
 %setup -q
-
+%autopatch -p1
 # remove __DATE__ and __TIME__
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
@@ -771,73 +708,48 @@ sed -e "s/__TIME__/$FAKE_BUILDTIME/g" \
     -e "s/__DATE__/$FAKE_BUILDDATE/g" \
     -i $(grep -rl '__TIME__\|__DATE__') || :
 
-# it seems that fedora libxcb-devel package doesn't contain xcb-xprint.pc
-%if 0%{?fedora_version}
-sed -i 's/xcb-xprint//g' {configure.ac,configure} || :
-%endif
-
 %build
-%if 0%{?_git}
-NOCONFIGURE=yes ./autogen.sh
-automake --add-missing
+%if 0%{?enable_wayland}
+INCLUDEDIR="-I$(pkg-config --variable=includedir wayland-server)"
+INCLUDEDIR+=" -I$(pkg-config --variable=includedir xkbcommon)"
+INCLUDEDIR+=" -I$(pkg-config --variable=includedir libinput)"
 %endif
-
-ARGS=""
 
 # efl intentionally compares string pointers in alot of places rather then strings this stops obs complaining
-export CFLAGS="%{optflags} -g -Wno-address";
+export CFLAGS="%{optflags}%{?mageia: -g} -Wno-address %{?enable_wayland:$INCLUDEDIR}"
 
-%{!?mageia:%configure} \
-%{?mageia:%configure2_5x} \
-    --disable-static \
-    --disable-silent-rules \
-    --disable-tslib \
-%ifarch armv6hl armv6l
-    --disable-neon \
-%endif
+%meson \
 %if !0%{?physics_present}
-    --disable-physics \
-    --enable-i-really-know-what-i-am-doing-and-that-this-will-probably-break-things-and-i-will-fix-them-myself-and-send-patches-abb \
+    -Dphysics=false \
 %endif
-%if ! %{poppler_present}
-    --disable-poppler \
+%if !0%{?poppler_present}
+    -Devas-loaders-disabler=pdf,webp \
 %endif
-%if !0%{?luajit_present}
-    --enable-lua-old \
+    -Dharfbuzz=true \
+%if 0%{?xinput22_present}
+    -Dxinput22=true \
 %endif
-    --enable-harfbuzz \
-%if %{xinput22_present}
-    --enable-xinput22 \
+%if 0%{?xine_present}
+    -Demotion-loaders-disabler=gstreamer,gstreamer1,libvlc \
 %endif
-%if %{xine_present}
-    --enable-xine \
-%endif
-    --enable-systemd \
-    --enable-fb \
-%if %{build_doc}
-    --enable-doc \
-%else
-    --disable-doc \
-%endif
+    -Dsystemd=true \
+    -Dfb=true \
 %if 0%{?enable_wayland}
-    --enable-drm \
-    --enable-wayland \
-    --enable-elput \
-    --enable-egl \
-    --with-opengl=es \
+    -Ddrm=true \
+    -Dwl=true \
+    -Dopengl=es-egl \
 %endif
-    $ARGS
+%if %{build_examples}
+    -Dbuild-examples=true \
+%else
+    -Dbuild-examples=false \
+%endif
+    -Dbuild-tests=true
 
-make %{?_smp_mflags}
-%if %{build_doc}
-make %{?_smp_mflags} doc
-%endif
+%meson_build
 
 %install
-%make_install
-%if %{build_examples}
-make install-examples DESTDIR=%{buildroot}
-%endif
+%meson_install
 
 # delete binary with suid bit set :D
 rm -f "%{buildroot}/%{_bindir}/eeze_scanner"
@@ -848,6 +760,7 @@ rm -f "%{buildroot}/%{_bindir}/eeze_scanner"
 echo "Copying MAN pages"
 /bin/cp -vr doc/man %{buildroot}%{_datadir}/
 %endif #build_doc_man
+
 # fix line endings
 find doc/html -name '*.eps' | xargs sed -i 's@\r@\n@g'
 # remove duplicates
@@ -860,26 +773,26 @@ find doc/html -name '*.eps' | xargs sed -i 's@\r@\n@g'
 %endif #build_doc
 
 # fix permissions
-%if %{build_examples} || %{build_doc_man}
-find \
-%if %{build_doc_man}
-     %{buildroot}%{_mandir} \
-     doc \
-%endif
-%if %{build_examples}
-     %{buildroot}%{_datadir}/*/examples \
-%endif
-     -type d -exec chmod 0755 {} \;
-find \
-%if %{build_doc_man}
-     %{buildroot}%{_mandir} \
-     doc \
-%endif
-%if %{build_examples}
-     %{buildroot}%{_datadir}/*/examples \
-%endif
-    -type f -exec chmod 0644 {} \;
-%endif
+#%if %{build_examples} || %{build_doc_man}
+#find \
+#%if %{build_doc_man}
+#     %{buildroot}%{_mandir} \
+#     doc \
+#%endif
+#%if %{build_examples}
+#     %{buildroot}%{_datadir}/*/examples \
+#%endif
+#     -type d -exec chmod 0755 {} \;
+#find \
+#%if %{build_doc_man}
+#     %{buildroot}%{_mandir} \
+#     doc \
+#%endif
+#%if %{build_examples}
+#     %{buildroot}%{_datadir}/*/examples \
+#%endif
+#    -type f -exec chmod 0644 {} \;
+#%endif
 
 # python gdb pretty printers shouldn't have execute permissions.
 chmod 0644 %{buildroot}%{_datadir}/eo/gdb/eo_gdb.py
@@ -897,27 +810,23 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{suse_update_desktop_file \
     -N "Elementary Configuration" -G "Elementary Configuration" -r elementary_config Enlightenment Settings DesktopSettings}
 %{suse_update_desktop_file \
-    -N "Elementary Test" -G "Elementary Test" -r elementary_test Enlightenment Development IDE}
+  -N "Elementary Performance" -G "Elementary Performance" -r elementary_perf Enlightenment Development IDE}
+%{suse_update_desktop_file \
+  -N "Elementary Test" -G "Elementary Test" -r elementary_test Enlightenment Development IDE}
 %fdupes -s %{buildroot}%{_datadir}/icons/Enlightenment-X-dark
 %fdupes -s %{buildroot}%{_datadir}/%{name}/examples
 %endif
 
 %find_lang %{name}
 
+%if !0%{?mageia}
 %post
-/sbin/ldconfig
-%if !0%{?mageia}
 %systemd_user_post ethumb.service
-%endif
 
-%if !0%{?mageia}
 %preun
 %systemd_user_preun ethumb.service
-%endif
 
 %postun
-/sbin/ldconfig
-%if !0%{?mageia}
 %systemd_user_postun ethumb.service
 %endif
 
@@ -980,7 +889,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n lib%{?mageia:%{?_bit}}efreet_mime%{sover} -p /sbin/ldconfig
 %postun -n lib%{?mageia:%{?_bit}}efreet_mime%{sover} -p /sbin/ldconfig
 
-%if 0%{?suse_version} < 1320 || 0%{?mageia} 
+%if 0%{?suse_version} < 1500
 %post -n elementary
 %icon_theme_cache_post
 %desktop_database_post
@@ -1009,6 +918,7 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %exclude %{_bindir}/embryo_*
 %exclude %{_datadir}/ecore_x/checkme
 %exclude %{_datadir}/evas/checkme
+
 %if %{build_examples}
 %exclude %{_datadir}/*/examples
 %endif
@@ -1020,13 +930,10 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %endif
 
 %doc AUTHORS ChangeLog COPYING NEWS README
+%{_libdir}/ecore
 %{_libdir}/ecore_con
 %{_libdir}/ecore_evas
 %{_libdir}/ecore_imf
-%if 0%{?enable_wayland}
-%{_libdir}/ecore_wl2
-%endif
-%{_libdir}/ecore
 %{_libdir}/eeze
 %{_libdir}/efreet
 %{_libdir}/emotion
@@ -1041,6 +948,10 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_datadir}/ethumb
 %{_datadir}/evas
 %{_userunitdir}/ethumb.service
+
+%if 0%{?enable_wayland}
+%{_libdir}/ecore_wl2
+%endif
 
 %if 0%{?suse_version}
 %files lang -f %{name}.lang
@@ -1069,10 +980,8 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_libdir}/libelput.so.*
 %endif
 
-%if 0%{?luajit_present}
 %files -n lib%{?mageia:%{?_bit}}elua%{sover}
 %{_libdir}/libelua.so.*
-%endif
 
 %files -n lib%{?mageia:%{?_bit}}eet%{sover}
 %{_libdir}/libeet.so.*
@@ -1135,7 +1044,6 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_libdir}/libeo_dbg.so.*
 %{_libdir}/cmake/
 %{_includedir}/efl-1/
-%{_includedir}/efl-cxx-1/
 %if 0%{?enable_wayland}
 %{_includedir}/efl-wl-1/
 %endif
@@ -1155,9 +1063,7 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_includedir}/eldbus-1/
 %{_includedir}/elementary-1
 %{_includedir}/elocation-1/
-%if 0%{?luajit_present}
 %{_includedir}/elua-1/
-%endif
 %{_includedir}/edje-1/
 %{_includedir}/eet-1/
 %{_includedir}/eeze-1/
@@ -1170,16 +1076,17 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_includedir}/eo-1/
 %{_includedir}/eolian-1/
 # C++ headers
-%{_includedir}/ecore-cxx-1
-%{_includedir}/edje-cxx-1
-%{_includedir}/eet-cxx-1
-%{_includedir}/eina-cxx-1
-%{_includedir}/eio-cxx-1
-%{_includedir}/eldbus_cxx-1
-%{_includedir}/elementary-cxx-1
-%{_includedir}/eo-cxx-1
-%{_includedir}/eolian-cxx-1
-%{_includedir}/evas-cxx-1
+%{_includedir}/ecore-cxx-1/
+%{_includedir}/edje-cxx-1/
+%{_includedir}/eet-cxx-1/
+%{_includedir}/efl-cxx-1/
+%{_includedir}/eina-cxx-1/
+%{_includedir}/eio-cxx-1/
+%{_includedir}/eldbus-cxx-1/
+%{_includedir}/elementary-cxx-1/
+%{_includedir}/eo-cxx-1/
+%{_includedir}/eolian-cxx-1/
+%{_includedir}/evas-cxx-1/
 
 %if 0%{?physics_present}
 %{_includedir}/ephysics-1/
@@ -1214,8 +1121,8 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %exclude %{_datadir}/elementary/examples
 %endif
 %exclude %{_datadir}/elementary/themes/*
-%{_datadir}/icons/hicolor/
-%{_datadir}/applications/elementary*
+%{_datadir}/icons/hicolor/*
+%{_datadir}/applications/*.desktop
 %{_libdir}/elementary
 
 %if %{build_examples}
