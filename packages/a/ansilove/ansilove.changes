@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 19 10:09:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.7
+- Use OpenBSD style(9) for function prototypes and declarations
+- Replace EXIT_SUCCESS by zero in all SAUCE functions
+- Do not use typedef for the sauce struct
+- Set icecolors to true if defined in SAUCE record ANSiFlags
+- Add test cases for most supported formats
+- Sync the description of Retina output capabilities with reality
+
+-------------------------------------------------------------------
 Tue Dec 10 18:50:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.6
