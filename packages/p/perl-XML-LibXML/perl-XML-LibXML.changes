@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 14 03:16:35 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.0202
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0202  2020-01-13
+      - Disable loading external DTDs or external entities by default
+          - Thanks to Tim Retout
+      - Docs: Noting that HTTPS doesn't work for schema-loading either.
+          - Thanks to Jason McIntosh
+      - Allow to parse RelaxNG without accessing network
+          - Thanks to PALI
+      - Allow to parse XML Schema without accessing network
+          - Thanks to PALI
+      - Add Test-Count assertion count checking using
+        https://metacpan.org/pod/Code::TidyAll::Plugin::TestCount
+
+-------------------------------------------------------------------
 Mon Nov 18 17:54:39 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 2.0201
