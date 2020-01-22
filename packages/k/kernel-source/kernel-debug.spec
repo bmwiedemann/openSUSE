@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.4
-%define patchversion 5.4.12
+%define patchversion 5.4.13
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.4.12
+Version:        5.4.13
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7f4459b
+Release:        <RELEASE>.g5cf5394
 %else
 Release:        0
 %endif
@@ -172,10 +172,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-7f4459b392c62d09edf1eadafc4cf7d694eccce3
-Provides:       kernel-srchash-7f4459b392c62d09edf1eadafc4cf7d694eccce3
+Provides:       kernel-%build_flavor-base-srchash-5cf5394811b9a6d0d2325bd34aa811e3db842ef2
+Provides:       kernel-srchash-5cf5394811b9a6d0d2325bd34aa811e3db842ef2
 # END COMMON DEPS
-Provides:       %name-srchash-7f4459b392c62d09edf1eadafc4cf7d694eccce3
+Provides:       %name-srchash-5cf5394811b9a6d0d2325bd34aa811e3db842ef2
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -346,59 +346,6 @@ NoSource:       111
 NoSource:       113
 NoSource:       120
 NoSource:       121
-
-# The following KMPs have been integrated into the kernel package,
-# grouped by the last product that contained them.
-# Usage: obsolete_kmp <basename> <upper bound of shipped versions>
-# Note that KMPs embed the version of the kernel built against, that's why
-# the _3 suffix for 2.6.x-based KMPs
-%define obsolete_kmp() Obsoletes: %1-kmp-%build_flavor <= %2 \
-Provides: %1-kmp = %2 \
-Provides: %1-kmp-%build_flavor = %2
-# sles10 / 10.3
-%obsolete_kmp iwlwifi 1.3.27_3
-%obsolete_kmp ipw3945 1.2.2_3
-# sled10 / 11.0
-%obsolete_kmp uvcvideo r200_3
-# sle11-ga
-%obsolete_kmp enic 0.0.1_3
-%obsolete_kmp fnic 1.0.0_3
-%obsolete_kmp brocade-bfa 1.1.0.2_3
-%obsolete_kmp kvm 78.2.6.30.1_3
-%obsolete_kmp perfmon 2_3
-%obsolete_kmp iwlagn-2-6-27 1.0_3
-%obsolete_kmp msi-wmi 1.0_3
-# 11.1
-%obsolete_kmp quickcam 0.6.7
-# sle11-sp1
-%obsolete_kmp   wacom 0.8.1_3
-%obsolete_kmp   btrfs 0_3
-%obsolete_kmp   brocade-bna 2.1.0.0_3
-%obsolete_kmp   hyper-v 0_3
-%obsolete_kmp   intel-e1000e 2.2.14
-Obsoletes:      firewire <= 3.0
-Provides:       firewire = 3.0
-%obsolete_kmp   firewire 3.0
-%obsolete_kmp   iwlagn 3.0
-Obsoletes:      compat-ath9k <= 3.0
-Provides:       compat-ath9k = 3.0
-%obsolete_kmp   compat-ath9k 3.0
-%obsolete_kmp   realtek-r8192ce_pci 2.6.0005_3
-%obsolete_kmp   realtek-r8192se_pci 2.6.0019.1207.2010_3
-%obsolete_kmp   rt3090 2.4.0.4_3
-%obsolete_kmp   rt3592 2.4.1.1_3
-%obsolete_kmp   rt5390 2.4.0.4_3
-%obsolete_kmp   ath3k 1.0_3
-%obsolete_kmp	compat-wireless 3.12
-%obsolete_kmp	rts5229 1.08
-%obsolete_kmp	rts_pstor 1.11
-# sle12-sp1 / Leap 42.1
-%obsolete_kmp	xen 4.6.1
-%obsolete_kmp	compat-wireless 4.4
-# TW 4.8
-%obsolete_kmp	ftsteutates 20160601
-# SLE12-SP3 / Leap 42.3
-%obsolete_kmp   drm 4.12
 
 # Will modules not listed in supported.conf abort the kernel build (0/1)?
 %define supported_modules_check 0
