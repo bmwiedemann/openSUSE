@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:23:46 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 5.0.6
+  * Fix detecting a valid endpoint with new Python versions
+  * Fix some typo in SELECT API doc
+  * fget_object(): open temporary file on overwrite mode
+
+- Update to 5.0.5
+  * Increase presigned timeouts for functional tests
+  * Remove future depdency for python3
+  * Do not need to set max-keys, max-uploads and max-parts
+
+- Update to 5.0.4
+  * signV4: Avoid encoding ~ when found in the query part of 
+    the url
+  * FIX: AttributeError at error.message
+  * Strip port 80/443 from host
+
+-------------------------------------------------------------------
 Tue Oct  1 12:55:45 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 5.0.1
