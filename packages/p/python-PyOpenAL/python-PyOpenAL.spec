@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyOpenAL
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyOpenAL
-Version:        0.7.7a1
+Version:        0.7.11a1
 Release:        0
 Summary:        Python bindings for OpenAL
 License:        SUSE-Public-Domain
@@ -29,13 +29,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
-Requires:       config(openal-soft)
+Requires:       libopenal1
 Recommends:     python-PyOgg
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module numpy}
-# /SECTION
 %python_subpackages
 
 %description
