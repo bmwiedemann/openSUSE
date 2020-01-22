@@ -1,7 +1,7 @@
 #
 # spec file for package widelands
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,39 +21,41 @@ Version:        build20
 Release:        0
 Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Strategy/Other
-Url:            http://www.widelands.org
+URL:            https://www.widelands.org
 Source:         https://launchpad.net/%{name}/%{version}/%{version}/+download/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM properly add -lGL as library for correct argument order
 Patch1:         build20-libGL.patch
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
-BuildRequires:  SDL2_net-devel
 BuildRequires:  SDL2_ttf-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  glew-devel
 BuildRequires:  graphviz-gnome
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
-BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  lua51-devel
 BuildRequires:  ninja
 BuildRequires:  openSUSE-release
 BuildRequires:  optipng
-BuildRequires:  python-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-io)
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
 
 %description
@@ -68,7 +70,6 @@ entire map, or a certain predetermined section of it.
 
 %package data
 Summary:        Data files for Widelands
-Group:          Amusements/Games/Strategy/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -77,7 +78,6 @@ Data files for Widelands. Includes localization, maps graphics and music.
 
 %package debug
 Summary:        Debugging tools for Widelands
-Group:          Amusements/Games/Strategy/Other
 
 %description debug
 Additional debugging data for Widelands. This package is not needed for normal
@@ -88,6 +88,7 @@ operation.
 %patch1 -p1
 sed -i '/wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=uninitialized")/d' CMakeLists.txt
 sed -i 's/\(install(TARGETS ${NAME} DESTINATION \)"."\( COMPONENT ExecutableFiles)\)/\1bin\2/' cmake/WlFunctions.cmake
+find . -type f -name "*.py" -exec sed  -i 's/env python/python3/g' {} \;
 
 %build
 mkdir -p build/locale
@@ -102,7 +103,7 @@ mkdir -p build/locale
   -DBoost_USE_STATIC_LIBS=OFF \
   ..
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -111,13 +112,13 @@ for i in 16 32 48 64 128; do
   install -D -m 0644 data/images/logos/wl-ico-${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
 done
 
-install -D -m 0644 debian/org.widelands.widelands.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -D -m 0644 debian/org.%{name}.%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file %{name} -r Game StrategyGame
 desktop-file-edit --set-icon=%{name} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-install -D -m 0644 debian/widelands.6 %{buildroot}%{_mandir}/man6/widelands.6
+install -D -m 0644 debian/%{name}.6 %{buildroot}%{_mandir}/man6/%{name}.6
 
-install -D -m 0644 debian/widelands.appdata.xml %{buildroot}%{_datadir}/appdata/widelands.appdata.xml
+install -D -m 0644 debian/%{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %fdupes %{buildroot}%{_datadir}
 
@@ -127,7 +128,7 @@ rm -f %{buildroot}%{_prefix}/{COPYING,CREDITS,ChangeLog,VERSION}
 
 # No need to execute tests as they are already executed implicitly on install
 # instead do post-install test
-PATH=%{buildroot}%{_bindir}:$PATH widelands --help | grep 'This is Widelands'
+PATH=%{buildroot}%{_bindir}:$PATH %{name} --help | grep 'This is Widelands'
 
 %if 0%{?suse_version} < 1330
 %post
@@ -145,8 +146,8 @@ PATH=%{buildroot}%{_bindir}:$PATH widelands --help | grep 'This is Widelands'
 %{_bindir}/%{name}
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%{_mandir}/man6/widelands.*
-%{_datadir}/appdata/widelands.appdata.xml
+%{_mandir}/man6/%{name}.*
+%{_datadir}/appdata/%{name}.appdata.xml
 
 %files data -f %{name}.lang
 %dir %{_datadir}/%{name}
