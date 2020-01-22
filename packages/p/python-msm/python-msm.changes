@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 22 14:42:49 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Updating to 0.8.5:
+  * Fix raising of errors when install and remove fails.
+
+- Updating to 0.8.4:
+  * Add method to manually clear cache.
+  * Limit supported python versions to 3.5+
+
+-------------------------------------------------------------------
 Wed Sep 11 11:12:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.8.3:

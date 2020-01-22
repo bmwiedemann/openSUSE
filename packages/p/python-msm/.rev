@@ -93,4 +93,12 @@
   * Switches default branch to 19.08</comment>
     <requestid>730106</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bdf479f649db37922d5f3bd8684135f4</srcmd5>
+    <version>0.8.5</version>
+    <time>1579729591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766343</requestid>
+  </revision>
 </revisionlist>
