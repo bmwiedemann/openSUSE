@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:48:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to be2713bed4 (2020-01-16):
+  * firmware: master: arm_ldconfig: Support multiple initramfs files
+    See: #1318
+  * firmware: power: Make pmicrd/pmicwr available to all
+  * firmware: arm_ldconfig: Support multiple initramfs files
+    See: #1318
+  * firmware: Add support for backlight enable
+  * firmware: Revert mmal: Support 64 bit clients
+    See: raspberrypi/userland#586
+  * firmware: arm_dt/dtoverlay fixes for ARM side camera driver power control
+  * firmware: Fixup for vcgencmd display_power
+    See: #1224
+  * firmware: Add hdmi_wifi_pixel_freq_adj config option
+
+-------------------------------------------------------------------
+Mon Jan 20 17:43:04 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-thermal device tree overlay for RPi4 (bsc#1160311)
+
+-------------------------------------------------------------------
 Thu Jan  9 15:19:58 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - Disable overscan by default (bsc#1160473)

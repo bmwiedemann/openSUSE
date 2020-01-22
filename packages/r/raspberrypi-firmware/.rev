@@ -465,4 +465,13 @@
     <comment></comment>
     <requestid>762619</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b35cd6e125f9eb0a42f817cba5681d1d</srcmd5>
+    <version>2020.01.16</version>
+    <time>1579729533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to be2713bed4 (2020-01-16)
+- Add rpi4-thermal device tree overlay for RPi4 (bsc#1160311)</comment>
+    <requestid>766229</requestid>
+  </revision>
 </revisionlist>
