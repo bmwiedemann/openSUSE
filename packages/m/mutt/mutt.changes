@@ -1,4 +1,270 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:53:05 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 1.13.3 (2020-01-07):
+   * Fix crash when polling a closed ssl connection.
+   * Turn off auto-clear outside of autocrypt initialization.
+   * automatic post-release commit for mutt-1.13.2
+   * Revert "Fixes unchecked return from link() in dotlock.c"
+   * automatic post-release commit for mutt-1.13.1
+   * Fix segv in IMAP postponed menu caused by reopen_allow.
+   * Fix imap postponed mailbox use-after-free error.
+   * Rename sidebar mailbox shortcuts option and default off.
+   * Make shortpath/indent code guards explicit.
+   * Create $sidebar_relative_shortpath_indent, default unset.
+   * Fix new option order in the manual.
+   * Add $sidebar_use_mb_shortcuts to turn off shortcuts.
+   * Minor documentation fixes.
+   * automatic post-release commit for mutt-1.13.0
+   * Change "Prf Enc" to "Prf Encr".
+   * Update de.po
+   * Update copyright year
+   * Update ja.po
+   * Clarify $write_bcc documentation.
+   * Add a bit more documentation about sending.
+   * Updated Catalan translation.
+   * Updated Czech translation.
+   * Updated Russian translation.
+   * Updated Ukrainian translation.
+   * Updated Danish translation.
+   * Update de.po
+   * Fix $fcc_attach to not prompt in batch mode.
+   * Change $send_multipart_alternative to run in batch mode on ask-yes.
+   * allow autoview preview of multipart/alternative content
+   * add view-alt function, so now we have
+    + view-alt "v"
+    + view-alt-text "Esc v"
+    + view-alt-mailcap "V"
+   * Fix __attribute__((warn_unused_result)) issue in query.c
+   * Fix __attribute__((warn_unused_result)) issue in help.c
+   * Fix __attribute__((warn_unused_result)) warning in enter.c
+   * Fixes unchecked return from link() in dotlock.c
+   * Update patchlist.sh to support `guilt' patch queues
+   * Add gcc comments for fallthrough case statements.
+   * Add $count_alternatives to count attachments inside alternatives.
+   * Remove nonreentrant calls from exit_handler()
+   * Add markdown2html contrib script.
+   * Remove input buffer flush on sigwinch in index.
+   * Fix sigwinch race in the index and menu processor.
+   * Change $write_bcc to default off.
+   * Block multipart type alternatives generation.
+   * s/Mercurial/Git/ in INSTALL
+   * Ensure APP_PGP flag is enabled for autocrypt.
+   * Add ability to generate multipart/alternative using a filter script.
+   * Create multipart/mixed helpers.
+   * mutt_parse_content_type: work around annoying charset behaviour from Outlook
+   * Convert smime_decrypt_mime() to use buffer pool.
+   * Convert smime_handle_entity() to use buffers.
+   * Convert smime_verify_one() to use buffer pool.
+   * Convert smime_sign_message() to use buffer pool.
+   * Convert smime_build_smime_entity() to use buffer pool.
+   * Convert smime_invoke_import() and helpers to use buffer pool.
+   * Convert smime_verify_sender() and helpers to use buffer pool.
+   * Convert smime_get_candidates() to use buffer pool.
+   * Convert mutt_write_fcc() to use buffer pool.
+   * Convert _mutt_bounce_message to use buffer pool.
+   * Convert send_msg() $sendmail_wait to use buffer pool.
+   * Convert transform_to_7bit() to use buffer pool.
+   * Convert mutt_message_to_7bit() to use buffer.
+   * Convert fcc to a buffer.
+   * Convert send_message() to use buffer pool.
+   * Add typelen parameter to rfc1524_mailcap_lookup().
+   * Convert rfc1524_mailcap_lookup() to use buffer pool for path.
+   * Convert mutt_attach_reply() to use buffer pool.
+   * Convert attach_forward_msgs() to use buffer pool.
+   * Convert attach_forward_bodies to use buffer pool.
+   * Convert attach_fmt %f to use buffer pool.
+   * Convert mutt_num_postponed() maildir check to use buffer pool.
+   * Convert pop_fetch_message() to use buffer pool.
+   * Convert pop_read_header() to use buffer pool.
+   * Convert pgp_find_hash to use buffer pool.
+   * Convert pgp_make_key_attachment() to use buffer pool.
+   * Remove make_key_attachment parameter.
+   * Convert pgp_select_key() to use buffer pool.
+   * Convert pgp_traditional_encryptsign() to use buffer pool.
+   * Convert pgp_encrypt_message() to use buffer pool.
+   * Convert pgp_encrypted_handler() to use buffer pool.
+   * Convert pgp_decrypt_mime() to use buffer pool.
+   * Convert pgp_decrypt_part() to use buffer pool.
+   * Convert pgp_extract_keys_from_attachment() to use buffer pool.
+   * Convert pgp_verify_one() to use buffer pool.
+   * Convert pgp_check_traditional_one_body() to use buffer pool.
+   * Clean up pager change folder aborts to return to pager.
+   * Remove menu->menu hack when redirecting pager ops through index.
+   * Stable branch quick fix for pager change-mailbox push/exec bug.
+   * Convert pgp_app_handler to use buffer pool.
+   * Convert msg_search to use buffer.
+   * Convert mx_close_mailbox() to use buffer pool.
+   * Reduce line buffer size in mx_get_magic().
+   * Convert mutt_save_confirm() to use buffer pool.
+   * Removed unused mutt_expand_link()
+   * Change ssl_init to use buffer pool for rand filename.
+   * Convert mbox_sync_mailbox() to use buffer pool.
+   * Update mime fields when piping a message with $pipe_decode set.
+   * Add new browse-mailboxes function in index and pager.
+   * Convert main() to use buffers for paths.
+   * Add sticky browser behavior for sorting.
+   * Convert start_debug() to use buffer pool.
+   * Convert set/reset and source_rc to use buffers for paths.
+   * Convert parse_path_(un)list to use buffer pool for path.
+   * Change message cache id to use SHORT_STRING.
+   * Convert imap_cachepath() and callers to use buffers.
+   * Convert imap_open_new_message() to use buffer pool.
+   * Convert save-hook and fcc-hook to use buffer pool internally.
+   * Convert mutt_parse_hook() to use buffer pool.
+   * Convert shrink_histfile() tempfile to use buffer pool.
+   * Convert mutt_help() to use buffer for tempfile.
+   * Convert mutt_edit_headers() to use buffer pool.
+   * Fix built-in pager checks for help and attachments.
+   * Memcpy header cache fetch values to ensure alignment.
+   * Convert hcache delete and open calls to use buffer pool.
+   * Convert hcache fetch and store raw to use buffer pool.
+   * Convert hcache_open to use buffer pool.
+   * Convert hcache db4 lockfile to buffer.
+   * Convert run_decode_and_handler() to use buffer pool.
+   * Convert edit_one_message() to use buffer pool.
+   * Convert mutt_error_history to use buffer pool.
+   * Convert crypt_extract_keys and signed handler to use buffers.
+   * Convert crypt-gpgme to use BUFFER for tempfiles.
+   * Fix memory leak in compose write-fcc function.
+   * Convert compress setup_paths() to use buffer.
+   * Remove nonull check from _mutt_enter_fname()
+   * Convert compose menu fname variable to buffer.
+   * Convert buffer callers of mutt_get_field() to use buffer version.
+   * Create mutt_buffer_get_field().
+   * Convert compose check_attachments() to use buffer pool.
+   * Fix mutt_save_message() "enter_fname()" to use buffer version.
+   * Convert mutt_complete() to use the buffer pool.
+   * Improve sidebar indentation and shortpath behavior.
+   * Convert print_attachment_list to use buffer pool.
+   * Convert recvattach save_attachment functions to use buffer pool.
+   * Convert mutt_save_message() to use buffer pool.
+   * Convert mutt_display_message() to buffer pool.
+   * Change browser <display-filename> to show full_path.
+   * Convert remaining mutt_encode_path() call to use BUFFER.
+   * Add $browser_sticky_cursor default set.
+   * Rename browser fields to display_name and full_path.
+   * Convert bcache to use buffer pools.
+   * Fix memory leak when attaching messages.
+   * Reuse the static space_stuff function for unstuffing.
+   * Remove manual note about space-stuffing only once.
+   * Re-enable and cleanup format-flowed space stuffing.
+   * Properly revert on an autocrypt postpone failure.
+   * de.po: proper translation for term collapse
+   * Clean up the autocrypt doc a bit more.
+   * Update autocrypt keyring documentation.
+   * Fix --with-sqlite3 test for autocrypt.
+   * Add $ssl_use_tlsv1_3 config variable, default set.
+   * Add size display configuration variables.
+   * Fix LibreSSL build.
+   * Update POTFILES.in.
+   * Add checks for buffered OpenSSL or GnuTLS data when polling.
+   * Mention base64 keydata being stored in the autocrypt database.
+   * Move LIBAUTOCRYPT before MUTTLIBS to fix building issues.
+   * Add autocrypt and sqlite3 to .gitlab-ci.yml.
+   * Add L10N comment about autocrypt menu help line abbreviations.
+   * Add a note about autocrypt first-run and macros.
+   * Add autocrypt documentation about shared key and keyring strategies.
+   * Minor autocrypt manual section updates.
+   * Enabled writing protected subject with autocrypt too.
+   * Turn off macro processing during autocrypt initialization.
+   * Allow nested setting of OPTIGNOREMACROEVENTS.
+   * Add $autocrypt_reply.
+   * Automatically clear screen when popping the last menu.
+   * Add ability to create autocrypt account from an existing key.
+   * Don't try to decrypt autocrypt messages if the option is off.
+   * Manual typo fix.
+   * Add autocrypt README file
+   * Add documentation for the autocrypt feature.
+   * Add option to scan mailboxes during first run.
+   * Add more translation string comments for autocrypt.
+   * Basic autocrypt account menu.
+   * Convert peer_update to just pass the peer object.
+   * Improve gen-map-doc work on multi-word maps.
+   * Add account->enabled checks.
+   * Add prefer-encrypt prompt during account creation.
+   * Add AUTOCRYPT header to imap fetch list.
+   * Add L10N translation message comments.
+   * Add autocrypt source files to POTFILES.in
+   * Print an error message if an autocrypt key can't be found.
+   * Handle autocrypt message decryption.
+   * Slightly improve the gossip header key update.
+   * Fix process_gossip_headers() to look at the right envelope.
+   * Autocrypt outgoing emails.
+   * Postpone work:
+   + Change mutt_protect() to have a postpone parameter.  Remove the
+     manual toggling of the SIGN bit outside the call when postponing.
+   
+   + Since autocrypt doesn't set the SIGN bit, this allows us to turn off
+     signing inside mutt_protect() for both normal and autocrypt mode.
+   
+   + Set the autocrypt postpone key in AutocryptDefaultKey.
+   
+   * Write autocrypt and gossip headers in outgoing emails.
+   * Add autocrypt line to the compose menu.
+   * Add another HEADER security bit for autocrypt.
+   * Change gossip header address comparison to use normalized addresses.
+   * Change autocrypt_db normalization to return ADDRESS.
+   * Add gossip header processing.
+   * Convert to use sqllite3_prepare_v3().
+   * Process autocrypt headers.
+   * Add autocrypt header parsing to mutt_parse_rfc822_line().
+   * Convert parse_parameters() for autocrypt header usage:
+     + change to use a BUFFER to accomodate large autocrypt keydata
+       attribute values.
+     + Autocrypt header parameters are not rfc2231 compliant.  Rather
+       than rolling another very similar function, just change the
+       existing one to allow space separation.
+   * Add initial autocrypt account setup.
+   * Factor out mutt_edit_address() in send.c.
+   * Start autocrypt gpgme.
+   * Add database and schema initialization.
+   * Add autocrypt config vars.
+   * Initial autoconf and makefile setup for autocrypt.
+   * Add a comment to the OPTIGNOREMACROEVENTS km_dokey() change.
+   * Change OPTIGNOREMACROEVENTS to actuallly ignore macros instead of throwing errors on macros
+   * Added * option to unattachments command
+   * Add builds.sr.ht CI manifests
+   * Fix a reference to HeaderCachePageSize.
+   * Omit User-Agent: header by default
+   * Remove unnecessary "" checks for DT_STR and DT_PATH MuttVars.
+   * Convert $header_cache_pagesize to type DT_LNUM.
+   * Convert Commands to use the union pointer_long_t too.
+   * Fix the makedoc program to cope with the new MuttVars format.
+   * Convert MuttVars.data and .init to use a union type.
+   * Detail the documentation of %l for index_format.
+   * Add NULL checks to rfc1524_free_entry().
+   * Clean up mutt_print_attachment() cleanup.
+   * Remove mutt_rfc1524_expand_filename() return value and checks.
+   * Remove unnecessary strcmp for mutt_view_attachment().
+   * Remove NULL and 0 INITVAL declarataions.
+   * Combine DT_STR and DT_PATH in mutt_set_default().
+   * Remove UL "" initialization from init.h.
+   * Allow imap_cmd_finish() to both expunge and fetch new mail.
+   * Check for GNU Make to allow version.h FORCE target.
+   * Change --disable-doc to only skip manual generation.
+   * Remove EXTRACT_MACROS check from EXTRACT_NUMBER in regex.
+   * Rename --with-regex to --with-bundled-regex.
+   * Remove undefined left-shift on negative value from regex.c.
+   * Change mutt_addr_is_user() to no for a NULL address.
+   * Turn on $ssl_force_tls by default.
+   * make OP_HALF_{UP,DOWN} behave symmetric.
+- Post the patches
+  * aw.listreply.diff
+  * bsc907453-CVE-2014-9116-jessie.patch
+  * bug-676388-largefile.patch
+  * mutt-1.10.1-imap.patch
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+  * mutt-1.5.21-mailcap.diff
+  * mutt-1.5.23-carriage-return.path
+  * mutt-1.6.1-opennfs.dif
+  * mutt-Fix-SIGQUIT-handling.patch
+  * patch-1.5.24.vk.pgp_verbose_mime
+  * widechar.sidebar.dif
+- Port and rename patch mutt-1.12.2.dif whic is now mutt-1.13.3.dif
+
+-------------------------------------------------------------------
 Thu Nov 14 08:46:14 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to mutt 1.12.2 (2019-09-21):

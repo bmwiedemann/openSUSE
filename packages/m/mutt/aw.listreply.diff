@@ -7,24 +7,24 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
  3 files changed, 26 insertions(+)
 
 --- init.h
-+++ init.h	2019-11-13 13:32:20.528047580 +0000
-@@ -1678,6 +1678,13 @@ struct option_t MuttVars[] = {
++++ init.h	2020-01-14 13:35:13.352604037 +0000
+@@ -1745,6 +1745,13 @@ struct option_t MuttVars[] = {
    ** from your spool mailbox to your $$mbox mailbox, or as a result of
    ** a ``$mbox-hook'' command.
    */
-+  { "list_reply",	DT_QUAD, R_NONE, OPT_LISTREPLY, MUTT_NO },
++  { "list_reply",	DT_QUAD, R_NONE, {.l=OPT_LISTREPLY}, {.l=MUTT_NO} },
 +  /*
 +  ** .pp
 +  ** When set, address replies to the mailing list the original message came
 +  ** from (instead to the author only).  Setting this option to ``ask-yes'' or
 +  ** ``ask-no'' will ask if you really intended to reply to the author only.
 +  */
-   { "mail_check",	DT_NUM,  R_NONE, UL &BuffyTimeout, 5 },
+   { "mail_check",	DT_NUM,  R_NONE, {.p=&BuffyTimeout}, {.l=5} },
    /*
    ** .pp
 --- mutt.h
-+++ mutt.h	2019-11-13 13:35:09.700879253 +0000
-@@ -329,6 +329,7 @@ enum
++++ mutt.h	2020-01-14 13:32:27.595685455 +0000
+@@ -338,6 +338,7 @@ enum
  #endif
    OPT_SUBJECT,
    OPT_VERIFYSIG,      /* verify PGP signatures */
@@ -33,8 +33,8 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
    /* THIS MUST BE THE LAST VALUE. */
    OPT_MAX
 --- send.c
-+++ send.c	2019-11-13 13:37:22.658388984 +0000
-@@ -559,6 +559,7 @@ static int include_reply (CONTEXT *ctx,
++++ send.c	2020-01-14 13:32:27.599685379 +0000
+@@ -565,6 +565,7 @@ static int include_reply (CONTEXT *ctx,
  static int default_to (ADDRESS **to, ENVELOPE *env, int flags, int hmfupto)
  {
    char prompt[STRING];
@@ -42,7 +42,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
  
    if (flags && env->mail_followup_to && hmfupto == MUTT_YES)
    {
-@@ -572,6 +573,23 @@ static int default_to (ADDRESS **to, ENV
+@@ -578,6 +579,23 @@ static int default_to (ADDRESS **to, ENV
    if (flags & SENDLISTREPLY)
      return 0;
  

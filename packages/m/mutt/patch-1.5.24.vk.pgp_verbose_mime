@@ -5,8 +5,8 @@
  3 files changed, 16 insertions(+), 4 deletions(-)
 
 --- globals.h
-+++ globals.h	2019-01-02 13:23:50.937286980 +0000
-@@ -263,6 +263,8 @@ WHERE char *PgpDefaultKey;
++++ globals.h	2020-01-14 13:37:00.770606718 +0000
+@@ -270,6 +270,8 @@ WHERE char *PgpDefaultKey;
  WHERE char *PgpSignAs;
  WHERE long  PgpTimeout;
  WHERE char *PgpEntryFormat;
@@ -16,32 +16,32 @@
  WHERE char *PgpDecodeCommand;
  WHERE char *PgpVerifyCommand;
 --- init.h
-+++ init.h	2019-01-02 13:22:43.822520945 +0000
-@@ -3308,9 +3308,18 @@ struct option_t MuttVars[] = {
++++ init.h	2020-01-14 13:41:15.145875625 +0000
+@@ -3461,9 +3461,18 @@ struct option_t MuttVars[] = {
    ** a line quoted text if it also matches $$smileys. This mostly
    ** happens at the beginning of a line.
    */
 -
 -
 -
-+  { "pgp_mime_signature_filename", DT_STR, R_NONE, UL &PgpMimeSignatureFilename, UL "signature.asc"},
++  { "pgp_mime_signature_filename", DT_STR, R_NONE, {.p=&PgpMimeSignatureFilename}, {.p="signature.asc"} },
 +  /*
 +  ** .pp
 +  ** This option sets the filename used for signature parts in PGP/MIME
 +  ** signed messages.
 +  */
-+  { "pgp_mime_signature_description", DT_STR, R_NONE, UL &PgpMimeSignatureDescription, UL "Digital signature"},
++  { "pgp_mime_signature_description", DT_STR, R_NONE, {.p=&PgpMimeSignatureDescription}, {.p="Digital signature"} },
 +  /*
 +  ** .pp
 +  ** This option sets the Content-Description used for signature parts in
 +  ** PGP/MIME signed messages.
 +  */
-   { "smime_ask_cert_label",	DT_BOOL, R_NONE, OPTASKCERTLABEL, 1 },
+   { "smime_ask_cert_label",	DT_BOOL, R_NONE, {.l=OPTASKCERTLABEL}, {.l=1} },
    /*
    ** .pp
 --- pgp.c
-+++ pgp.c	2019-01-02 13:22:43.822520945 +0000
-@@ -1325,7 +1325,8 @@ BODY *pgp_sign_message (BODY *a)
++++ pgp.c	2020-01-14 13:42:29.880485319 +0000
+@@ -1360,7 +1360,8 @@ BODY *pgp_sign_message (BODY *a)
    t->disposition = DISPNONE;
    t->encoding = ENC7BIT;
    t->unlink = 1; /* ok to remove this file after sending. */
@@ -49,5 +49,5 @@
 +  mutt_set_parameter ("name", PgpMimeSignatureFilename, &t->parameter);
 +  t->description = safe_strdup (PgpMimeSignatureDescription);
  
-   return (a);
- }
+ cleanup:
+   mutt_buffer_pool_release (&sigfile);

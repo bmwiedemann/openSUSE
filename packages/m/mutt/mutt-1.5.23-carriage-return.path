@@ -8,7 +8,7 @@
 
 --- crypt-gpgme.c
 +++ crypt-gpgme.c	2019-11-13 13:46:16.512388398 +0000
-@@ -2669,7 +2669,7 @@ static void copy_clearsigned (gpgme_data
+@@ -2733,7 +2733,7 @@ static void copy_clearsigned (gpgme_data
  
      if (armor_header)
      {
@@ -19,7 +19,7 @@
      }
 --- lib.c
 +++ lib.c	2019-11-13 13:42:00.245189313 +0000
-@@ -683,6 +683,17 @@ int mutt_strcmp(const char *a, const cha
+@@ -718,6 +718,17 @@ int mutt_strcmp(const char *a, const cha
    return strcmp(NONULL(a), NONULL(b));
  }
  
@@ -39,7 +39,7 @@
    return strcasecmp(NONULL(a), NONULL(b));
 --- lib.h
 +++ lib.h	2019-11-13 13:47:17.399247662 +0000
-@@ -201,6 +201,7 @@ int mutt_copy_stream (FILE *, FILE *);
+@@ -200,6 +200,7 @@ int mutt_copy_stream (FILE *, FILE *);
  int mutt_copy_bytes (FILE *, FILE *, size_t);
  int mutt_strcasecmp (const char *, const char *);
  int mutt_strcmp (const char *, const char *);
@@ -69,7 +69,7 @@
        break;
  
      if (armor_header)
-@@ -442,14 +442,14 @@ int pgp_application_pgp_handler (BODY *m
+@@ -446,14 +446,14 @@ int pgp_application_pgp_handler (BODY *m
        could_not_decrypt = 0;
        decrypt_okay_rc = 0;
  
@@ -87,7 +87,7 @@
        {
          needpass = 0;
          pgp_keyblock = 1;
-@@ -482,10 +482,10 @@ int pgp_application_pgp_handler (BODY *m
+@@ -486,10 +486,10 @@ int pgp_application_pgp_handler (BODY *m
  
  	fputs (buf, tmpfp);
  
@@ -101,7 +101,7 @@
  	  break;
  	/* remember optional Charset: armor header as defined by RfC4880 */
  	if (mutt_strncmp ("Charset: ", buf, 9) == 0)
-@@ -740,11 +740,11 @@ static int pgp_check_traditional_one_bod
+@@ -751,11 +751,11 @@ static int pgp_check_traditional_one_bod
    {
      if (mutt_strncmp ("-----BEGIN PGP ", buf, 15) == 0)
      {
@@ -116,7 +116,7 @@
  	key = 1;
      }
    }
-@@ -1261,9 +1261,9 @@ BODY *pgp_sign_message (BODY *a)
+@@ -1297,9 +1297,9 @@ BODY *pgp_sign_message (BODY *a)
     */
    while (fgets (buffer, sizeof (buffer) - 1, pgpout) != NULL)
    {

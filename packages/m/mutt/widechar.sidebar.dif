@@ -31,7 +31,7 @@
        case TEXT :
  	switch (wc)
  	{
-@@ -878,9 +880,8 @@ static int text_enriched_handler (BODY *
+@@ -879,9 +881,8 @@ static int text_enriched_handler (BODY *
  	  enriched_flush (&stte, 1);
  	else
  	{

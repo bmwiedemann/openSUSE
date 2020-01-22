@@ -5,12 +5,12 @@ Index: init.h
  1 file changed, 1 insertion(+)
 
 --- init.h
-+++ init.h	2019-01-02 13:04:23.746719029 +0000
-@@ -4180,6 +4180,7 @@ struct option_t MuttVars[] = {
++++ init.h	2020-01-14 13:28:27.408149074 +0000
+@@ -4345,6 +4345,7 @@ struct option_t MuttVars[] = {
    ** printing, or replying to messages.
    */
-   { "wrap",             DT_NUM,  R_PAGER, UL &Wrap, 0 },
-+  { "wrapcolumn",       DT_SYN,  R_NONE, UL "wrap", 0 },
+   { "wrap",             DT_NUM,  R_PAGER, {.p=&Wrap}, {.l=0} },
++  { "wrapcolumn",       DT_SYN,  R_NONE, {.p="wrap"}, {.p=0} },
    /*
    ** .pp
    ** When set to a positive value, mutt will wrap text at $$wrap characters.

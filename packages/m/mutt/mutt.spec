@@ -1,7 +1,7 @@
 #
 # spec file for package mutt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,7 +75,7 @@ Recommends:     w3m
 Requires(post):   shared-mime-info
 Requires(postun): shared-mime-info
 %endif
-Version:        1.12.2
+Version:        1.13.3
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -89,7 +89,7 @@ Source3:        mutt.png
 Source4:        mutt.desktop
 Source5:        skel.muttrc
 Source9:        mutt.mailcap
-Patch:          %name-1.12.2.dif
+Patch0:         %name-1.13.3.dif
 # http://www.spinnaker.de/mutt/compressed/
 Patch2:         %name-1.5.9i-pgpewrap.diff
 Patch3:         %name-1.5.20-sendgroupreplyto.diff
@@ -144,7 +144,7 @@ Provides translations to the package mutt.
 
 %prep
 %setup -q -n mutt-%version
-%patch -p0 -b .p0
+%patch0 -p0 -b .p0
 %patch2 -p0 -b .pgpewrap
 %patch3 -p0 -b .sendgroupreplyto
 %patch4 -p0 -b .wrapcolumn
@@ -326,6 +326,7 @@ install -D -m 644 doc/manual.txt.gz %{buildroot}%{_docdir}/%name/
 %doc %{_docdir}/%name/samples/*.rc
 %doc %{_docdir}/%name/samples/ca-bundle.crt
 %doc %{_docdir}/%name/samples/colors.*
+%doc %{_docdir}/%name/samples/markdown2html
 %doc %{_docdir}/%name/samples/mutt_xtitle
 %doc %{_docdir}/%name/samples/sample.*
 %doc %{_docdir}/%name/samples/smime_keys_test.pl
