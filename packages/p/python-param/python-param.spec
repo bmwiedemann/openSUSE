@@ -1,7 +1,7 @@
 #
 # spec file for package python-param
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-param
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
