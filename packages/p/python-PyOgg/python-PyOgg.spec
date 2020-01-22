@@ -36,12 +36,12 @@ BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 # Automatically get so numbers
-Recommends:     %( ls %{_libdir}/libogg.so.*.*.* | sed -r 's/.*(libogg\.so\.[0-9]*)\..*/\1/g' )
-Recommends:     %( ls %{_libdir}/libopus.so.*.*.* | sed -r 's/.*(libopus\.so\.[0-9]*)\..*/\1/g' )
-Recommends:     %( ls %{_libdir}/libopusenc.so.*.*.* | sed -r 's/.*(libopusenc\.so\.[0-9]*)\..*/\1/g' )
-Recommends:     %( ls %{_libdir}/libopusfile.so.*.*.* | sed -r 's/.*(libopusfile\.so\.[0-9]*)\..*/\1/g' )
-Recommends:     %( ls %{_libdir}/libvorbisenc.so.*.*.* | sed -r 's/.*(libvorbisenc\.so\.[0-9]*)\..*/\1/g' )
-Recommends:     %( ls %{_libdir}/libvorbisfile.so.*.*.* | sed -r 's/.*(libvorbisfile\.so\.[0-9]*)\..*/\1/g' )
+Recommends:     %( ls %{_libdir}/libogg.so.*.*.* | sed -r 's/.*(libogg)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls %{_libdir}/libopus.so.*.*.* | sed -r 's/.*(libopus)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls %{_libdir}/libopusenc.so.*.*.* | sed -r 's/.*(libopusenc)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls %{_libdir}/libopusfile.so.*.*.* | sed -r 's/.*(libopusfile)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls %{_libdir}/libvorbisenc.so.*.*.* | sed -r 's/.*(libvorbisenc)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls %{_libdir}/libvorbisfile.so.*.*.* | sed -r 's/.*(libvorbisfile)\.so\.([0-9]*)\..*/\1\2/g' )
 Recommends:     libflac
 Recommends:     libvorbis
 BuildArch:      noarch

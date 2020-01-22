@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 21 16:46:25 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Recommend shared library package name rather than actual soname.
+  Depending on arch, the soname would only pull in the -32bit
+  packages.
+
+-------------------------------------------------------------------
 Wed Jan 15 12:18:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.6.12a1
