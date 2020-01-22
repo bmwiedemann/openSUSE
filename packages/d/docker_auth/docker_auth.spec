@@ -1,7 +1,7 @@
 #
 # spec file for package docker_auth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           docker_auth
-Version:        1.4.0+git20190925.6f38360
+Version:        1.5.0+git20191208.df57cca
 Release:        0
 Summary:        Authenticaton for container registry with tokens
 License:        Apache-2.0
 URL:            https://github.com/cesanta/docker_auth
 Source:         docker_auth-%{version}.tar.xz
-BuildRequires:  go1.12 >= 1.12.9
-BuildRequires:  golang(API) = 1.12
+BuildRequires:  go1.13
+BuildRequires:  golang(API) = 1.13
 %ifarch %arm aarch64
 BuildRequires:  binutils-gold
 %endif
