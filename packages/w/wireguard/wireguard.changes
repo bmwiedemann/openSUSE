@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 21 21:55:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20200121
+  * Makefile: strip prefixed v from version.h
+  * device: skb_list_walk_safe moved upstream
+  * curve25519: x86_64: replace with formally verified
+    implementation
+
+-------------------------------------------------------------------
 Mon Jan 20 21:11:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.20200105
