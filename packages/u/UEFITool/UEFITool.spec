@@ -1,7 +1,7 @@
 #
 # spec file for package UEFITool
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           UEFITool
-Version:        20191103
+Version:        20200120
 Release:        0
 Summary:        Tools to inspect and work on UEFI BIOSes
 License:        BSD-2-Clause
