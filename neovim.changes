@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 20:45:43 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add fix-buf_set_term_title.patch in order to fix build issue.
+- Set CFLAGS and CXXFLAGS in order to respect $optflags.
+
+-------------------------------------------------------------------
 Fri Dec 13 11:42:39 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Unconditionally use luajit-devle instead of sometimes
