@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 21 22:04:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200121
+  * Makefile: add standard 'all' target
+  * ipc: simplify inflatable buffer and add fuzzer
+  * fuzz: add generic command argument fuzzer
+  * fuzz: add set and setconf fuzzers
+  * netlink: make sure to clear return value when trying again
+  * Makefile: sort inputs to linker so that build is reproducible
+
+-------------------------------------------------------------------
 Mon Jan 20 21:19:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.0.20200102
