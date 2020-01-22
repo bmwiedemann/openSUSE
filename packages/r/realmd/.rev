@@ -7,4 +7,12 @@
     <comment>depends on sr#511395 for acceptance.  This will be the devel project for this.</comment>
     <requestid>511498</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>496cdf8ef3c562a7833d387d4faed1e7</srcmd5>
+    <version>0.16.3</version>
+    <time>1579729584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766324</requestid>
+  </revision>
 </revisionlist>

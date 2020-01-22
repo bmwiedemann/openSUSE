@@ -1,7 +1,7 @@
 #
 # spec file for package realmd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           realmd
 Version:        0.16.3
 Release:        0
 Summary:        AD integration detection
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-Url:            http://www.freedesktop.org/software/realmd
+URL:            http://www.freedesktop.org/software/realmd
 Source:         http://www.freedesktop.org/software/realmd/releases/%{name}-%{version}.tar.gz
 
 BuildRequires:  autoconf
@@ -30,13 +30,13 @@ BuildRequires:  automake
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel >= 2.36
 BuildRequires:  intltool
-BuildRequires:  krb5-devel
 BuildRequires:  libpackagekit-glib2-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  polkit-devel
-BuildRequires:  systemd
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(systemd)
 Recommends:     %{name}-lang
 %{?systemd_requires}
 
