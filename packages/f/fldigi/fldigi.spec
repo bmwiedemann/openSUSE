@@ -1,7 +1,7 @@
 #
 # spec file for package fldigi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fldigi
-Version:        4.1.08
+Version:        4.1.09
 Release:        0
 Summary:        Digital modem program (hamradio)
 License:        GPL-3.0-only
