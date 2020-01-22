@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Jan 22 07:55:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to properly pull in dependencies only when needed:
+  * dependencies.patch 
+
+-------------------------------------------------------------------
+Thu Jan 16 10:20:22 UTC 2020 - wnereiz@member.fsf.org
+
+- Init package at version 0.0.0 
