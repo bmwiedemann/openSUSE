@@ -3390,4 +3390,21 @@
 - adjust mono / gecko recommends / conflicts</comment>
     <requestid>763539</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>b96249649f1563b632edd40d51db76af</srcmd5>
+    <version>5.0</version>
+    <time>1579729399</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.0 release
+  - Builtin modules in PE format.
+  - Multi-monitor support.
+  - XAudio2 reimplementation.
+  - Vulkan 1.1 support.
+- update staging to 5.0 release
+
+- updated to 5.0-rc6 release candidate
+  - Bug fixes only, we are in code freeze.
+- updated staging to 5.0-rc5</comment>
+    <requestid>766212</requestid>
+  </revision>
 </revisionlist>
