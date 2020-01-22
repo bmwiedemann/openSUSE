@@ -16,11 +16,11 @@
 #
 
 
-%define containers bind dhcp-server mariadb
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-mariadb.service
+%define containers bind dhcp-server mariadb nginx
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-mariadb.service container-nginx.service
 
 Name:           containers-systemd
-Version:        0.0+git20200116.87baa97
+Version:        0.0+git20200122.8276c03
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -33,7 +33,7 @@ BuildArch:      noarch
 %description
 This package contains the configuration files and systemd units
 to run the openSUSE containers via podman managed by systemd.
-Currently supported are bind, dhcp-server and mariadb.
+Currently supported are bind, dhcp-server, mariadb and nginx.
 
 %prep
 %setup -q
@@ -97,5 +97,9 @@ done
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/mariadb-secrets/MYSQL_DATABASE
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/mariadb-secrets/MYSQL_USER
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/mariadb-secrets/MYSQL_PASSWORD
+%{_unitdir}/container-nginx.service
+%{_fillupdir}/sysconfig.container-nginx
+%{_sbindir}/rccontainer-nginx
+%ghost %dir /srv/nginx
 
 %changelog

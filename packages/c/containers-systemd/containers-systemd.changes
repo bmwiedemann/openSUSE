@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:55:04 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200122.8276c03:
+  * Add support for nginx container
+
+-------------------------------------------------------------------
 Fri Jan 17 14:31:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use new macro to prevent restart on update

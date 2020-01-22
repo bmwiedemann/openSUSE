@@ -24,4 +24,13 @@
     <comment>- Use new macro to prevent restart on update</comment>
     <requestid>765292</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87d1c8914a4b88ad540617c2a9a6dfcd</srcmd5>
+    <version>0.0+git20200122.8276c03</version>
+    <time>1579729555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200122.8276c03:
+  * Add support for nginx container</comment>
+    <requestid>766256</requestid>
+  </revision>
 </revisionlist>
