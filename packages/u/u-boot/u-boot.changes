@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:09:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package u-boot.img instead of u-boot.bin for snow and spring
+
+-------------------------------------------------------------------
 Fri Dec 20 11:08:03 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add Leap 15.2 (x86, arm and ppc) to the list of projects using

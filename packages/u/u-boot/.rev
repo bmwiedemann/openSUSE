@@ -1403,4 +1403,12 @@ boundary checks.
     <comment></comment>
     <requestid>758483</requestid>
   </revision>
+  <revision rev="120" vrev="11">
+    <srcmd5>cf2bde74f40df993bd6416ce3042b7a8</srcmd5>
+    <version>2019.10</version>
+    <time>1579729528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766223</requestid>
+  </revision>
 </revisionlist>

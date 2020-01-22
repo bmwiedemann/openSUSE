@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -134,8 +134,12 @@
 %define is_armv8 1
 %define binext .elf
 %endif
-%if "%target" == "highbank" || "%target" == "jetson-tk1" || "%target" == "merriia80optimus" || "%target" == "nanopineoair" || "%target" == "odroid" || "%target" == "odroid-xu3" || "%target" == "paz00" || "%target" == "snow" || "%target" == "socfpgade0nanosoc" || "%target" == "spring"
+%if "%target" == "highbank" || "%target" == "jetson-tk1" || "%target" == "merriia80optimus" || "%target" == "nanopineoair" || "%target" == "odroid" || "%target" == "odroid-xu3" || "%target" == "paz00" || "%target" == "socfpgade0nanosoc"
 %define is_armv7 1
+%endif
+%if "%target" == "snow" || "%target" == "spring"
+%define is_armv7 1
+%define binext .img
 %endif
 %if "%target" == "zynqzturn"
 %define is_armv7 1
