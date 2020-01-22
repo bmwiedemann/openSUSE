@@ -1,7 +1,7 @@
 #
 # spec file for package python-blessed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-blessed
-Version:        1.15.0
+Version:        1.17.0
 Release:        0
 Summary:        Wrapper around terminal styling, screen positioning, and keyboard input
 License:        MIT
@@ -27,9 +28,9 @@ URL:            https://github.com/jquast/blessed
 Source:         https://files.pythonhosted.org/packages/source/b/blessed/blessed-%{version}.tar.gz
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module wcwidth >= 0.1.4}
@@ -39,6 +40,12 @@ Requires:       python-curses
 Requires:       python-six >= 1.9.0
 Requires:       python-wcwidth >= 0.1.4
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-backports.functools_lru_cache
+%endif
+%ifpython2
+Requires:       python-backports.functools_lru_cache
+%endif
 %python_subpackages
 
 %description
@@ -79,7 +86,7 @@ Blessed **does not** provide...
 %prep
 %setup -q -n blessed-%{version}
 # disable cons25 tests as they fail in OBS
-sed -i -e 's:cons25 ::' blessed/tests/accessories.py
+sed -i -e 's:cons25 ::' tests/accessories.py
 
 %build
 %python_build
@@ -90,7 +97,7 @@ sed -i -e 's:cons25 ::' blessed/tests/accessories.py
 
 %check
 export LANG=en_US.UTF-8
-%python_expand py.test-%{$python_bin_suffix} -v blessed/tests
+%pytest tests
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:36:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.17.0
+  * 24-bit color support
+  * move_up(), move_down(), Terminal.move_left(), move_right() which 
+    are strings that move the cursor one cell in the respective 
+    direction, are now also callables for moving n cells to the 
+    given direction, such as term.move_right(9).
+  * Context Managers, fullscreen(), hidden_cursor(), and keypad() 
+    now flush the stream after writing their sequences.
+  * deprecated: superscript, subscript, shadow, and dim are no longer 
+    “compoundable” with colors. Use Unicode text or 256 or 24-bit 
+    color codes instead.
+  * more on https://blessed.readthedocs.io/en/latest/history.html
+
+-------------------------------------------------------------------
 Thu Sep  5 13:40:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Set pytest maximum version.
