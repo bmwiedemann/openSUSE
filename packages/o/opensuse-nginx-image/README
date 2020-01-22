@@ -1,0 +1,6 @@
+The command to run this container is:
+
+podman run -d --rm -v /srv/nginx:/data --name nginx -p 80:80/tcp -p 443:443/tcp registry.opensuse.org/opensuse/nginx
+
+Configuration files should be stored in /srv/nginx/etc
+Webpages should be stored in /srv/nginx/data
