@@ -169,7 +169,6 @@ unsorted:
   - Printrun-common 
   - PythonQt-devel 
   - QCSXCAD-devel 
-  - QGnomePlatform 
   - QGnomePlatform-32bit: [x86_64] 
   - QMPlay2 
   - QMPlay2-devel 
@@ -2637,7 +2636,6 @@ unsorted:
   - enlightenment-branding-openSUSE 
   - enlightenment-branding-upstream 
   - enlightenment-devel 
-  - enlightenment-doc-html 
   - enlightenment-profiles-openSUSE 
   - enlightenment-theme-cerium2 
   - enlightenment-theme-dark 
@@ -2996,6 +2994,7 @@ unsorted:
   - fillets-ng 
   - fillets-ng-data 
   - filter_audio-devel 
+  - finalcut-bitmap-fonts 
   - finch 
   - finch-devel 
   - findbugs 
@@ -4702,6 +4701,7 @@ unsorted:
   - golang-org-x-net-context 
   - golang-org-x-net-html 
   - golang-org-x-net-websocket 
+  - golang-org-x-sync 
   - golang-org-x-sys 
   - golang-org-x-tools 
   - golang-packaging 
@@ -10771,7 +10771,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler93-32bit: [x86_64] 
+  - libpoppler94-32bit: [x86_64] 
   - libportal-devel 
   - libportal0 
   - libportaudio2-32bit: [x86_64] 
@@ -15101,6 +15101,8 @@ unsorted:
   - openSUSE-appdata-extra 
   - openSUSE-appstream-process 
   - openSUSE-driverupdate 
+  - openSUSE-e-X-Ice-Icons 
+  - openSUSE-e-X-Icons 
   - openSUSE-release-appliance 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
@@ -16456,6 +16458,7 @@ unsorted:
   - perl-Mozilla-LDAP 
   - perl-Nagios-Plugin 
   - perl-Net-AMQP: [x86_64] 
+  - perl-Net-CIDR 
   - perl-Net-CIDR-Set 
   - perl-Net-DNS-Resolver-Programmable 
   - perl-Net-Domain-TLD 
@@ -16950,7 +16953,6 @@ unsorted:
   - php7-fileinfo 
   - php7-firebird 
   - php7-fpm 
-  - php7-geoip 
   - php7-gmagick 
   - php7-ice 
   - php7-imagick 
@@ -17509,6 +17511,7 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
+  - purge-kernels-service 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
@@ -17596,7 +17599,6 @@ unsorted:
   - python-designateclient-doc 
   - python-devel 
   - python-dfVFS 
-  - python-dfwinreg 
   - python-dialog 
   - python-djvulibre-doc 
   - python-doc 
@@ -18491,6 +18493,7 @@ unsorted:
   - python2-devpi-common 
   - python2-devpi-server 
   - python2-dfdatetime 
+  - python2-dfwinreg 
   - python2-dialite 
   - python2-dicttoxml 
   - python2-diff_match_patch 
@@ -18998,7 +19001,6 @@ unsorted:
   - python2-misaka 
   - python2-mistralclient 
   - python2-mistune 
-  - python2-moban 
   - python2-mock 
   - python2-mocket 
   - python2-mockito 
@@ -22153,6 +22155,7 @@ unsorted:
   - python3-python-yubico 
   - python3-python3-openid 
   - python3-python3-saml 
+  - python3-pythondialog 
   - python3-pythonfinder 
   - python3-pythonwhois 
   - python3-pythreejs 
@@ -33035,17 +33038,8 @@ unsorted:
   - vala-panel 
   - vala-panel-appmenu-lang 
   - vala-panel-devel 
-  - vala-panel-extras-battery 
-  - vala-panel-extras-gtop 
-  - vala-panel-extras-lang 
-  - vala-panel-extras-volume 
-  - vala-panel-extras-weather 
-  - vala-panel-extras-xkb 
-  - vala-panel-extras-xkb-flags 
   - vala-panel-lang 
   - vala-panel-plugin-appmenu 
-  - vala-panel-plugin-sntray 
-  - vala-panel-plugin-sntray-lang 
   - vala-panel-plugins-base 
   - vala-panel-plugins-wnck 
   - vala-panel-runner 
@@ -33085,7 +33079,6 @@ unsorted:
   - vegastrike 
   - vegastrike-data: [x86_64] 
   - vegastrike-extra: [x86_64] 
-  - vegastrike-music: [x86_64] 
   - vegastrike-speech: [x86_64] 
   - velocity 
   - velocity-demo 
@@ -33364,6 +33357,7 @@ unsorted:
   - winpr2-devel 
   - winrs 
   - wipe 
+  - wireguard 
   - wireguard-kmp-pae: [i586] 
   - wireguard-tools 
   - wireshark-devel 
@@ -33475,6 +33469,7 @@ unsorted:
   - xbrz-devel 
   - xbsql 
   - xbsql-devel 
+  - xca 
   - xcalc 
   - xcalib 
   - xcalib-profiles 
@@ -33561,7 +33556,6 @@ unsorted:
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
   - xfce4-panel-plugin-appmenu 
-  - xfce4-panel-plugin-sntray 
   - xfce4-power-manager-branding-upstream 
   - xfce4-sensors-plugin-devel 
   - xfce4-session-branding-upstream 
