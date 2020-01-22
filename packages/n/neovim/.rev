@@ -300,4 +300,13 @@
   luajit-devel and sometimes lua51-luajit-devel. (forwarded request 756815 from dimstar)</comment>
     <requestid>756816</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>723d951e1efe6381d4cfd0247896261a</srcmd5>
+    <version>0.4.3</version>
+    <time>1579729505</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-buf_set_term_title.patch in order to fix build issue.
+- Set CFLAGS and CXXFLAGS in order to respect $optflags.</comment>
+    <requestid>766157</requestid>
+  </revision>
 </revisionlist>
