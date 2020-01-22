@@ -1,7 +1,7 @@
 #
 # spec file for package unmass
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 - 2014 guru@unixtech.be
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           unmass
 Version:        0.92
 Release:        0
 Summary:        Tool to Extract Game Archives
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Archiving/Compression
-Url:            http://mirex.mypage.sk/index.php?selected=1#Unmass
+URL:            https://mirex.mypage.sk/index.php?selected=1#Unmass
 Source0:        http://mirex.mypage.sk/FILES/unmass-%{version}.tar.gz
 #Patch1:         unmass-fix_error.patch
 # PATCH-FIX-UPSTREAM unmass-no_return.patch pgajdos@suse.cz -- Add missing return.
@@ -43,22 +43,20 @@ RollCage, Swine, Unreal Tournament umods, Virtua Fighter bitmaps, MEA exe's,
 and some economy file formats.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 cd kdev_cmd
 cp ../src/* src/
-%configure --enable-static=no
-make %{?_smp_mflags}
+%configure \
+  --enable-static=no
+%make_build
 
 %install
-install -Dpm0755 kdev_cmd/src/unmass_kdev \
+install -Dpm 0755 kdev_cmd/src/unmass_kdev \
   %{buildroot}%{_bindir}/unmass
 
 %files
-%defattr(-,root,root)
 %doc kdev_cmd/AUTHORS
 %{_bindir}/unmass
 
