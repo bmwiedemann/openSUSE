@@ -1,7 +1,7 @@
 #
 # spec file for package bcc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,10 +57,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  luajit-devel
 %endif
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-base
 
 %description
 BCC is a toolkit for creating efficient kernel tracing and manipulation
@@ -82,18 +79,6 @@ Requires:       libbcc0 = %{version}
 
 %description devel
 Headers and pkg-config build descriptions for developing BCC programs.
-
-%package -n python2-bcc
-Summary:        Python2 bindings for the BPF Compiler Collection
-Group:          Development/Languages/Python
-Requires:       kernel >= 4.1.0
-Requires:       kernel-devel >= 4.1.0
-Requires:       libbcc0 = %{version}
-Provides:       python-bcc = %{version}
-Obsoletes:      python-bcc < %{version}
-
-%description -n python2-bcc
-Python 2.x bindings for the BPF Compiler Collection.
 
 %package -n python3-bcc
 Summary:        Python3 bindings for the BPF Compiler Collection
@@ -210,13 +195,6 @@ pushd build
 rm -f %{buildroot}/%{_bindir}/bps
 %endif
 
-# For python2-bcc (should be removed in the future)
-cmake -DPYTHON_CMD=python2 ..
-pushd src/python/
-make %{?_smp_mflags} VERBOSE=1
-%make_install
-popd
-
 popd
 
 %post -n libbcc0 -p /sbin/ldconfig
@@ -234,9 +212,6 @@ popd
 %license LICENSE.txt
 %{_libdir}/libbcc.so.*
 %{_libdir}/libbcc_bpf.so.*
-
-%files -n python2-bcc
-%{python_sitelib}/bcc*
 
 %files -n python3-bcc
 %{python3_sitelib}/bcc*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 12:32:51 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop python2 bindings
+- don't require python3-devel package
+
+-------------------------------------------------------------------
 Mon Dec 23 13:25:47 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Fix build when pkg_vcmp is not defined 
