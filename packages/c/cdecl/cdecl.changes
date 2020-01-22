@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 22:24:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.8.1
+  * Reset lexer start-state
+
+-------------------------------------------------------------------
 Mon Jan 13 17:04:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.8

@@ -90,4 +90,12 @@
     <comment>- Update to release 6.8</comment>
     <requestid>764101</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b43bcf0e7ba307f8abf1b9afeb1b074c</srcmd5>
+    <version>6.8.1</version>
+    <time>1579729501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.8.1</comment>
+    <requestid>766170</requestid>
+  </revision>
 </revisionlist>
