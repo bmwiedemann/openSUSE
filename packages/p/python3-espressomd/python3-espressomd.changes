@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 21 13:26:55 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- add 3427.patch to fix tests on i586
+
+-------------------------------------------------------------------
 Wed Jan 15 23:35:14 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.1.2:

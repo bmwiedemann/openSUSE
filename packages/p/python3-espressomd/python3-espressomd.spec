@@ -42,6 +42,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 3427.patch - fix test on 586 - https://github.com/espressomd/espresso/pull/3427
+Patch0:         3427.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -72,6 +74,7 @@ systems, for example DNA and lipid membranes.
 
 %prep
 %setup -q -n %{pkgname}
+%patch0 -p1
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
@@ -90,16 +93,13 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 %install
 %cmake_install
 
-#fix some permissions
-find %{buildroot}%{_prefix} -name "*.so" -exec chmod +x {} \;
-find %{buildroot}%{_prefix} -name "gen_pxiconfig" -exec chmod +x {} \;
 # no devel package
 rm -f %{buildroot}%{_libdir}/lib*.so
 
 %check
-# https://github.com/espressomd/espresso/issues/3315 & gh#espressomd/espresso#3396
+# https://github.com/espressomd/espresso/issues/3315
 %ifarch i586
-%define testargs ARGS='-E \\(matrix_vector_product\\|collision_detection\\)'
+%define testargs ARGS='-E collision_detection'
 %endif
 LD_LIBRARY_PATH='%{buildroot}/%{python3_sitearch}/espressomd::%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' make -C build check CTEST_OUTPUT_ON_FAILURE=1 %{?testargs:%{testargs}}
 
