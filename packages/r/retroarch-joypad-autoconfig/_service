@@ -1,0 +1,29 @@
+<services>
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/libretro/retroarch-joypad-autoconfig.git</param>
+    <param name="filename">retroarch-joypad-autoconfig</param>
+    <param name="versionformat">0~git%cd</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">android</param>
+    <param name="exclude">dinput</param>
+    <param name="exclude">hid</param>
+    <param name="exclude">linuxraw</param>
+    <param name="exclude">parport</param>
+    <param name="exclude">qnx</param>
+    <param name="exclude">sdl2</param>
+    <param name="exclude">x</param>
+    <param name="exclude">xinput</param>
+    <param name="exclude">.travis.yml</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">configure</param>
+    <param name="exclude">force_run</param>
+    <param name="exclude">retropad_layout.png</param>
+    <param name="exclude">verify_duplicate_profiles.rb</param>
+  </service>
+  <service name="recompress" mode="localonly">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+</services>

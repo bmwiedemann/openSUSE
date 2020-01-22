@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/retroarch-joypad-autoconfig.git</param>
+              <param name="changesrevision">ff36caf5c82ac680319dac99d4f113aa49798d5f</param></service></servicedata>
