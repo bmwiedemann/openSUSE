@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:13:34 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.7.1
+    * include README file in pypi
+
+- Update to version 0.7
+    * removed support for PUIDs and Echoprint
+    * removed the 'artists' include for work lookup
+    * allow the 'work-level-rels' include for recording lookups
+    * added support for 'target-credit' elements
+    * update valid search fields
+    * use https by default with musicbrainz.org
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:37 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
