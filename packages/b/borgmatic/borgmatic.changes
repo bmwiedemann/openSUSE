@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:33:11 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.4.2
+ * Extract files to a particular directory via "borgmatic extract --destination" flag.
+ * Rename "borgmatic extract --restore-path" flag to "--path" to reduce confusion with the separate
+   "borgmatic restore" action. Any uses of "--restore-path" will continue working.
+
+- Update to 1.4.1
+ * #229: Restore backed up PostgreSQL databases via "borgmatic restore" action. See the
+   documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/backup-your-databases/
+ * Documentation on how to develop borgmatic's documentation:
+   https://torsion.org/borgmatic/docs/how-to/develop-on-borgmatic/#documentation-development
+
+- Update to 1.4.0
+ * #225: Database dump hooks for PostgreSQL, so you can easily dump your databases before backups
+   run.
+ * #230: Rename "borgmatic list --pattern-from" flag to "--patterns-from" to match Borg.
+
+- Update to 1.3.26
+ * #224: Fix "borgmatic list --successful" with a slightly better heuristic for listing successful
+   (non-checkpoint) archives.
+
+- Update to 1.3.25
+ * #223: Dead man's switch to detect when backups start failing silently, implemented via
+   healthchecks.io hook integration. See the documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#healthchecks-hook
+ * Documentation on monitoring and alerting options for borgmatic backups:
+   https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/
+ * Automatically rewrite links when developing on documentation locally.
+
+- Update to 1.3.24
+ * #86: Add "borgmatic list --successful" flag to only list successful (non-checkpoint) archives.
+ * Add a suggestion form to all documentation pages, so users can submit ideas for improving the
+   documentation.
+ * Update documentation link to community Arch Linux borgmatic package.
+
+- Update to 1.3.23
+ * #174: More detailed error alerting via runtime context available in "on_error" hook.
+
+- Update to 1.3.22
+ * #144: When backups to one of several repositories fails, keep backing up to the other
+   repositories and report errors afterwards.
+
+- Update to 1.3.21
+ * #192: User-defined hooks for global setup or cleanup that run before/after all actions. See the
+   documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/add-preparation-and-cleanup-steps-to-backups/
+
+- Update to 1.3.20
+ * #205: More robust sample systemd service: boot delay, network dependency, lowered CPU/IO
+   priority, etc.
+ * #221: Fix "borgmatic create --progress" output so that it updates on the console in real-time.
+
+- Update to 1.3.19
+ * #219: Fix visibility of "borgmatic prune --stats" output.
+
+- Update to 1.3.18
+ * #220: Fix regression of argument parsing for default actions.
+
+- Update to 1.3.17
+ * #217: Fix error with "borgmatic check --only" command-line flag with "extract" consistency check.
+
+- Update to 1.3.16
+ * #210: Support for Borg check --verify-data flag via borgmatic "data" consistency check.
+ * #210: Override configured consistency checks via "borgmatic check --only" command-line flag.
+ * When generating sample configuration with generate-borgmatic-config, add a space after each "#"
+   comment indicator.
+
+- Update to 1.3.15
+ * #208: Fix for traceback when the "checks" option has an empty value.
+ * #209: Bypass Borg error about a moved repository via "relocated_repo_access_is_ok" option in
+   borgmatic storage configuration section.
+ * #213: Reorder arguments passed to Borg to fix duplicate directories when using Borg patterns.
+ * #214: Fix for hook erroring with exit code 1 not being interpreted as an error.
+
+-------------------------------------------------------------------
 Thu Dec 19 14:55:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

@@ -1,7 +1,7 @@
 #
 # spec file for package borgmatic
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.3.14
+Version:        1.4.2
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -51,6 +51,7 @@ BuildRequires:  python3-pykwalify
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-python-dateutil
+BuildRequires:  python3-requests
 BuildRequires:  python3-ruamel.yaml
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
@@ -59,6 +60,7 @@ BuildRequires:  pkgconfig(libsystemd)
 Requires:       borgbackup
 Requires:       python3-colorama
 Requires:       python3-pykwalify
+Requires:       python3-requests
 Requires:       python3-ruamel.yaml
 Requires:       python3-setuptools
 BuildArch:      noarch
