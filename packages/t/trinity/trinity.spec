@@ -1,7 +1,7 @@
 #
 # spec file for package trinity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%define version_unconverted 1.9+git.20191119
 Name:           trinity
-Version:        1.9+git.20191119
+Version:        1.9+git.20191230
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
-Group:          Development/Tools/Other
 URL:            http://codemonkey.org.uk/projects/trinity/
 Source0:        %{name}-%{version}.tar.xz
 
