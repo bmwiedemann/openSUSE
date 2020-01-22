@@ -1,7 +1,7 @@
 #
 # spec file for package deja-dup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           deja-dup
-Version:        40.1
+Version:        40.6
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://wiki.gnome.org/Apps/DejaDup
 Source0:        https://gitlab.gnome.org/World/deja-dup/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM deja-dup-duplicity-Mark-GPGError-extern.patch -- Fix build with new vala
-Patch0:         deja-dup-duplicity-Mark-GPGError-extern.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  dbus-1
@@ -34,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  glib2-tools
 BuildRequires:  libgpg-error-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.16.0
 BuildRequires:  yelp-tools
@@ -104,8 +102,8 @@ This package contains a plugin to integrate Déjà Dup into Nautilus.
 %meson_test
 
 %files
-%license COPYING.md
-%doc AUTHORS HACKING.md NEWS.md README.md
+%license LICENSES/GPL-3.0-or-later.md
+%doc NEWS.md README.md CONTRIBUTING.md
 %doc %{_datadir}/help/C/deja-dup/
 %{_bindir}/deja-dup
 %{_mandir}/man1/deja-dup.1%{?ext_man}
@@ -116,7 +114,6 @@ This package contains a plugin to integrate Déjà Dup into Nautilus.
 %{_libexecdir}/deja-dup/deja-dup-monitor
 %{_libexecdir}/deja-dup/duplicity
 %{_datadir}/applications/org.gnome.DejaDup.desktop
-%{_datadir}/GConf/gsettings/deja-dup.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.DejaDup.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.DejaDup*
 %dir %{_libdir}/deja-dup

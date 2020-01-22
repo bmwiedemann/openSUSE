@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 16 09:08:54 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add meson version to spec file 
+- Drop deja-dup-duplicity-Mark-GPGError-extern.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Jan 16 09:05:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 40.6:
+  + Fixes a bug that prevented backing up to Google Drive accounts
+    with unlimited quotas
+  + Fix a bug that prevented backing up to Google Drive in some
+    rare situations
+  + Fix a bug that prevented the first login to Google Drive
+  + Fix a bug that prevented resuming a full backup
+  + Fix 2038 date problems by using 64-bit dates internally
+  + Fix building against valac 0.45.2 and later
+  + Add optional dependency on libgdk-x11-3.0 (only used in flatpak
+    builds)
+  + Make libgoa-1.0 an optional dependency (still recommended for a
+    few years though)
+  + Support autostarting via the new Background portal
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep  2 20:32:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add deja-dup-duplicity-Mark-GPGError-extern.patch: Mark GPGError

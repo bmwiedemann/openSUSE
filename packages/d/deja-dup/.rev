@@ -465,4 +465,12 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>727921</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>eb938f534a72234238d70ac80b53732f</srcmd5>
+    <version>40.6</version>
+    <time>1579729387</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>766125</requestid>
+  </revision>
 </revisionlist>
