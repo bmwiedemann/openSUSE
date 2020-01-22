@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 22 11:01:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust BuildRequires to allow OBS to shortcut through -mini
+  flavors:
+  + systemd -> pkgconfig(systemd)
+  + krb5-devel -> pkgconfig(krb5)
+
+-------------------------------------------------------------------
 Wed Jul 19 22:17:10 UTC 2017 - plinnell@opensuse.org
 
 - https://bugzilla.suse.com/show_bug.cgi?id=916766  
