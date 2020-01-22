@@ -424,4 +424,10 @@
     <user>dimstar_suse</user>
     <comment>- Re-enable purge-kernels-service dependency: dracut dropped the service.</comment>
   </revision>
+  <revision rev="50" vrev="14">
+    <srcmd5>b51074641dd5d941f2c4377f8ec636ed</srcmd5>
+    <version>20190612</version>
+    <time>1579651313</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
