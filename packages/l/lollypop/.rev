@@ -1219,4 +1219,14 @@
   * Fix an issue with party mode.</comment>
     <requestid>759802</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>8fec7437a76024b0f657ee4ba6f7239e</srcmd5>
+    <version>1.2.20</version>
+    <time>1579731832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.20:
+  * New search view.
+  * Bug fixes.</comment>
+    <requestid>766409</requestid>
+  </revision>
 </revisionlist>
