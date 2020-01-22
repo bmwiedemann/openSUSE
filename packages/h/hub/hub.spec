@@ -1,7 +1,7 @@
 #
 # spec file for package hub
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define ver %{version}
 Name:           hub
-Version:        2.12.8
+Version:        2.14.1
 Release:        0
 Summary:        Command-line wrapper for git and GitHub
 License:        MIT
@@ -63,6 +63,8 @@ install -Dpm 0644 etc/hub.zsh_completion \
 # Install vim-related files to a vim runtimepath that is set per default on openSUSE
 install -d %{buildroot}%{_datadir}/vim/site
 mv %{buildroot}%{_datadir}/vim/vimfiles/* %{buildroot}%{_datadir}/vim/site
+
+rm -rf %{buildroot}%{_datadir}/doc/hub-doc/
 
 %check
 #make test

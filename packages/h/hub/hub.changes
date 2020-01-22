@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jan 22 11:19:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.1
+  Features:
+  * New command: hub issue update
+  * New command: hub issue transfer
+  * Support git flag hub version --build-options
+  * Refuse to follow HTTP 301/302 redirects for non-GET requests
+  Fixes:
+  * Ensure that grep command is being used in shell completions
+  * Consult global git config color.ui setting when --color=auto
+  Improvements:
+  * Print more user-friendly HTTP 40x errors
+  * Enable debugging file uploads via HUB_VERBOSE=1 hub release
+    create -a <file>
+  * Improve parsing malformed YAML config files
+
+- Update to version 2.13.0
+  * New command: hub gist
+  * Add git pr show --format=... flag
+  * Add hub api --obey-ratelimit flag
+  * hub help: support compressed man pages
+  * Add hub release download --include=PATTERN flag
+  * hub help: Enable hub help --web <command>
+  * hub release: Retry attaching release assets on 5xx server
+    errors
+  * hub pr checkout fixes
+    + handle case when the PR given matches the current branch
+    + avoid overriding existing branch merge config
+  * hub release: Fail fast when attempting to attach unavailable
+    files
+  * Honor HTTPS_PROXY, NO_PROXY environment variables
+  * Strip "co-authored-by" lines when populating PR body from git
+    log
+  * git compatibility: have hub <cmd> --help open the man page
+  * hub fork bash completion improvements
+  * hub pr fish completion improvements
+
+-------------------------------------------------------------------
 Sat Oct  5 20:52:32 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.8
