@@ -137,4 +137,14 @@ Add support for ppc64le.</comment>
 </comment>
     <requestid>763796</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9516fab92489b689b8592d237bfd762d</srcmd5>
+    <version>8.6.5</version>
+    <time>1579729415</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build on ix86
+- add requires tags
+  * needed for ghc-bootstrap-helpers</comment>
+    <requestid>766206</requestid>
+  </revision>
 </revisionlist>

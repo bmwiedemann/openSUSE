@@ -52,7 +52,7 @@
 %ifarch %{ix86}
 %define sysname deb9
 %endif
-%ifarch ppc64 ppc64le %{arm} aarch64 %{ix86}
+%ifarch ppc64 ppc64le %{arm} aarch64
 %define sysname unknown
 %endif
 
@@ -79,13 +79,16 @@ BuildRequires:  gmp-devel
 BuildRequires:  libncurses5
 %ifnarch %{arm} s390x
 BuildRequires:  libnuma-devel
+Requires:       libnuma-devel
 %endif
 %ifarch aarch64 %{arm}
 BuildRequires:  binutils-gold
 Requires:       binutils-gold
+Requires:       llvm6-devel
 %endif
 %ifarch s390x
 BuildRequires:  libffi-devel
+Requires:       libffi-devel
 %endif
 Requires:       gmp-devel
 Requires:       libncurses5
