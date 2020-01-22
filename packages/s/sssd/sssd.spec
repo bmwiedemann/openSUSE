@@ -56,14 +56,11 @@ BuildRequires:  nscd
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config >= 0.21
-BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  libcmocka-devel
 BuildRequires:  nss_wrapper
 BuildRequires:  uid_wrapper
 BuildRequires:  check-devel
-BuildRequires:  python
-BuildRequires:  python-xml
 BuildRequires:  pkgconfig(augeas) >= 1.0.0
 BuildRequires:  pkgconfig(collection) >= 0.5.1
 BuildRequires:  pkgconfig(dbus-1) >= 1.0.0

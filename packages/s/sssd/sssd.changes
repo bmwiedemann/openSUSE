@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 19 23:54:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove leftover python2 build dependencies
+- Remove python3-devel BuildRequires in favor of pkgconfig(python3)
+
+-------------------------------------------------------------------
 Mon Jan 13 14:40:11 UTC 2020 - David Mulder <dmulder@suse.com>
 
 - SSSD GPO host entries are ignored if computer cn does not
