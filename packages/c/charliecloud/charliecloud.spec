@@ -1,7 +1,7 @@
 #
 # spec file for package charliecloud
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,8 @@ Recommends:     docker
 Recommends:     buildah >= 1.11.2
 # Build the documentation
 %if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
-BuildRequires:  python2-Sphinx
-BuildRequires:  python2-sphinx_rtd_theme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  rsync
 %endif
 
