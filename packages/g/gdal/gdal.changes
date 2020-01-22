@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:05:11 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 3.0.3 bugfix release
+  + Fix build with poppler 0.83 boo#1161399
+  + Changelog https://github.com/OSGeo/gdal/blob/v3.0.3/gdal/NEWS
+- Remove merged upstream patch
+  0001-Replace-SWIG-Python-obj0-swig_obj-0-with-version-agn.patch
+- refresh spec file with spec-cleaner
+
+-------------------------------------------------------------------
 Wed Nov  6 12:58:46 UTC 2019 - Libor Pechacek <lpechacek@gmx.com>
 
 - update to 3.0.2
@@ -18,7 +28,7 @@ Thu Oct 10 08:26:00 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 Sun Oct  6 12:00:05 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Fix build error on TW due to boo#1153146 poppler missing boost
-  devel 
+  devel
 
 -------------------------------------------------------------------
 Thu Sep  5 18:50:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>

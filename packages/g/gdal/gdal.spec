@@ -1,7 +1,7 @@
 #
 # spec file for package gdal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with ecw5_support
 %bcond_with fgdb_support
 Name:           gdal
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        MIT AND BSD-3-Clause AND SUSE-Public-Domain
@@ -36,8 +36,6 @@ Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{ver
 Patch0:         gdal-perl.patch
 # Fix occasional parallel build failure
 Patch1:         GDALmake.opt.in.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/OSGeo/gdal/pull/1819
-Patch3:         0001-Replace-SWIG-Python-obj0-swig_obj-0-with-version-agn.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -171,6 +169,9 @@ sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
 for F in frmt_twms_srtm.xml frmt_wms_bluemarble_s3_tms.xml frmt_wms_virtualearth.xml frmt_twms_Clementine.xml;do
   find . -name "${F}" -exec dos2unix {} \;
 done
+# Fix spurious exec perm
+find . -type f -name "style_ogr_brush.png" -exec chmod 0644 {} \;
+find . -type f -name "style_ogr_sym.png" -exec chmod 0644 {} \;
 
 #Fix wrong /usr/bin/env phyton
 #Create the move to python3
