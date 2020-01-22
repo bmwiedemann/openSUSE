@@ -1,7 +1,7 @@
 #
 # spec file for package python-msk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msk
-Version:        0.3.13
+Version:        0.3.14
 Release:        0
 Summary:        Mycroft Skills Kit
 License:        Apache-2.0

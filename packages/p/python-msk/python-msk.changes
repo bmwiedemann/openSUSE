@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 22 14:34:16 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.3.14:
+  * Colorize
+  * Add License selection
+  * Fix github passwords containing "
+  * Add basic manifest
+  * generate locale dir instead of dialog/vocab dirs
+
+-------------------------------------------------------------------
 Tue Jul 23 13:59:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.13:
