@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 21 07:47:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints for aarch64
+
+-------------------------------------------------------------------
 Thu Jan 16 19:08:53 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
 
 - drop 0001-Fix-check-whether-GCC-supports-__atomic_-builtins.patch
