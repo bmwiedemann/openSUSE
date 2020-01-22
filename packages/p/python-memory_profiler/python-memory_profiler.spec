@@ -1,7 +1,7 @@
 #
 # spec file for package python-memory_profiler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-memory_profiler
-Version:        0.55.0
+Version:        0.57.0
 Release:        0
 Summary:        A module for monitoring memory usage of a python program
 License:        BSD-3-Clause
