@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 21 21:50:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  Graphical changes
+  * There are now multiple graphs presented for each source.
+    Temperature per core, usage per core etc.
+  * The summaries on the side-menu present all the information
+    in text form
+  Control options
+  * You can toggle both side-menu items and graphs on/off
+  * now stores what graphs are selected of future uses
+  * An average is display where applicable
+  * Want the old look back: Just pick only the sensors you need
+    to display one graph per sensor
+  Under the hood
+  * Everything was made to be a lot more modular, adding a new
+    source is simply implementing all the class methods.
+  Missing features
+  * Some features were removed. Part of making s-tui more modular
+    meant that some features that were specifically tailored to
+    certain systems were removed. e.g.
+    - Reading the max frequency with root for all cores
+    - Displaying the max temperature recorded was removed due to
+      lack of space. We intend to add another menu
+      showing max/min/avg measurements recorded for all sensors
+
+-------------------------------------------------------------------
 Wed Jan 15 10:04:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use latest release, version 0.8.3
