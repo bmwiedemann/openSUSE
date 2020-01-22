@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Fri Jan 03 21:21:53 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20191031:
+  * (GLUI) Add 'switch thumbnail view' icon
+  * Added new backgrounds + renamed in accordance with DATs and thumbs
+  * (GLUI) Add navigation bar icons
+  * (GLUI) Material UI icons update
+  * Updated Setting & Subsetting Icons, Retroactive Additions
+- Replace built-in fonts with Droid Sans Fallback to support Chinese
+  and Korean characters
+
+-------------------------------------------------------------------
+Sat Sep 21 22:43:11 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20190824:
+  * Fix +x permissions of scripts
+  * (Ozone) add disc.png
+  * Add disc.png
+  * New Icons for Automatic & Systematic
+  * Update Lines.cfg
+  * RGUI Theme
+  * rgui: Add Sweetie-16 RGUI theme
+  * TIC-80 Icons
+  * Remove Nintendo - DS Decrypted
+
+-------------------------------------------------------------------
+Sat Sep 21 22:41:49 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Initial version from Git
