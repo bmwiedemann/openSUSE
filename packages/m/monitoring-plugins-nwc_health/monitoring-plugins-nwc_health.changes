@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 21 18:18:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.8
+  * fix a bug in Cisco memory, for Cisco emulation mode of
+    Bel VPN Gate
+
+-------------------------------------------------------------------
+Mon Jan 20 21:48:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.1.7
+  * fix redundant argument in sprintf
+  * fix operstatus in linuxlocal
+
+-------------------------------------------------------------------
 Thu Jan 16 19:59:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.10.1.6
