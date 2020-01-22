@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 17:32:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.1
+  * Added getbuffer(), putbuffer(), COLOR32(), and colorRGB
+    (macro) for faster pixel manipulation; added showinfobox(),
+    getleftclick(), getmiddleclick(), and getrightclick();
+    documentation updates and improvements.
+
+-------------------------------------------------------------------
 Tue Aug 20 18:51:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 2.3.0

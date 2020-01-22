@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_bgi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 Name:           SDL_bgi
 %define lname	libSDL_bgi2
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with SDL backend
 License:        Zlib AND GPL-2.0-or-later
 Group:          Development/Libraries/X11
-Url:            http://libXbgi.sf.net/
+URL:            http://libXbgi.sf.net/
 
 Source:         http://downloads.sf.net/libxbgi/%name-%version.tar.gz
 Patch1:         sdlbgi-automake.diff
