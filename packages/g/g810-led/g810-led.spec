@@ -1,7 +1,7 @@
 #
 # spec file for package g810-led
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           g810-led
-Version:        0.3.7
+Version:        0.3.9
 Release:        0
 Summary:        Controller for Logitech LED keyboards
 License:        GPL-3.0-only
