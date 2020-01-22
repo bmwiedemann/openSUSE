@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 13:19:55 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add dosemu-LTO-fix.patch (bnc#1160098)
+
+-------------------------------------------------------------------
 Wed Oct 30 10:48:58 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use -flto-partition=one in order to make top-level assembly

@@ -1,0 +1,86 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: remove undefined behaviour/fix LTO build
+References: bnc#1160098
+
+The code defines two const pointers:
+  unsigned char * const mem_base;
+  char * const lowmem_base;
+
+They are set during setup.
+
+But the C standard clearly states:
+  If an attempt is made to modify an object defined with a
+  const-qualified type through use of an lvalue with non-const-qualified
+  type, the behavior is undefined.
+  
+This pretty nicely breaks when using modern gcc with LTO enabled. Gcc
+thinks the point is always NULL, as was initialized.
+
+This was fixed in dosemu2 by:
+https://github.com/stsp/dosemu2/commit/d36496646b31891ce952f3e9b63946a2ff2371b3
+https://github.com/stsp/dosemu2/commit/bb4437f93912d4d47961d2cbb0f13c737f8295c2
+---
+ src/arch/linux/mapping/mapping.c |    6 +++---
+ src/base/init/init.c             |    2 +-
+ src/include/memory.h             |    9 +++++----
+ 3 files changed, 9 insertions(+), 8 deletions(-)
+
+--- a/src/arch/linux/mapping/mapping.c
++++ b/src/arch/linux/mapping/mapping.c
+@@ -57,8 +57,8 @@ static int kmem_mappings = 0;
+ static struct mem_map_struct kmem_map[MAX_KMEM_MAPPINGS];
+  
+ static int init_done = 0;
+-unsigned char * const mem_base;
+-char * const lowmem_base;
++unsigned char *mem_base;
++char *lowmem_base;
+ #ifndef HAVE_MREMAP_FIXED
+ int have_mremap_fixed = 1;
+ #endif
+@@ -427,7 +427,7 @@ void *alloc_mapping(int cap, size_t maps
+   if (cap & MAPPING_INIT_LOWRAM) {
+     PRIV_SAVE_AREA
+     Q__printf("MAPPING: LOWRAM_INIT, cap=%s, base=%p\n", cap, addr);
+-    *(char **)(&lowmem_base) = addr;
++    lowmem_base = addr;
+     /* we may need root to mmap address 0 */
+     enter_priv_on();
+     addr = alias_mapping(MAPPING_INIT_LOWRAM, 0,
+--- a/src/base/init/init.c
++++ b/src/base/init/init.c
+@@ -310,7 +310,7 @@ void low_mem_init(void)
+ 	 "WARN: as root, or by changing the vm.mmap_min_addr setting in\n"
+ 	 "WARN: /etc/sysctl.conf or a file in /etc/sysctl.d/ to 0.\n",
+ 	    result);
+-    *(unsigned char **)&mem_base = result;
++    mem_base = result;
+ #endif
+   }
+ 
+--- a/src/include/memory.h
++++ b/src/include/memory.h
+@@ -233,7 +233,7 @@ void *lowmemp(const void *ptr);
+    restrictions it can be non-zero. Non-zero values block vm86 but at least
+    give NULL pointer protection.
+ */
+-extern unsigned char * const mem_base;
++extern unsigned char *mem_base;
+ 
+ /* lowmem_base points to a shared memory image of the area 0--1MB+64K.
+    It does not have any holes or mapping for video RAM etc.
+@@ -242,10 +242,11 @@ extern unsigned char * const mem_base;
+    simx86, NULL page protection, and removal of the VGA protected memory
+    access hack.
+ 
+-   It is set "const" to help GCC optimize accesses. In reality it is set only
+-   once, at startup
++   It is not set "const" as it is set once, at startup. Making it const
++   would violate the C standard and would cause crashes and/or weird
++   behaviour.
+ */
+-extern char * const lowmem_base;
++extern char *lowmem_base;
+ 
+ #define UNIX_READ_BYTE(addr)		(*(Bit8u *) (addr))
+ #define UNIX_WRITE_BYTE(addr, val)	(*(Bit8u *) (addr) = (val) )

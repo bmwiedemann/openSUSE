@@ -1,7 +1,7 @@
 #
 # spec file for package dosemu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,8 @@ Patch3:         dosemu-flex.patch
 Patch4:         dosemu-skip-glibc-test.patch
 # PATCH-FIX-UPSTREAM https://github.com/stsp/dosemu2/pull/386 https://github.com/stsp/dosemu2/commit/8d7ab25daf6f2d8ca09e1598fd11de2d8460255e
 Patch5:         reproducible.patch
-Url:            http://www.dosemu.org
+Patch6:         dosemu-LTO-fix.patch
+URL:            http://www.dosemu.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -102,6 +103,8 @@ users.
 %endif
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+
 %build
 %global _lto_cflags %{_lto_cflags} -flto-partition=one
 autoreconf -fiv
