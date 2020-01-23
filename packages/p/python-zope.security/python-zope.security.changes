@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 21 10:48:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 5.0
+  * Drop support for Python 3.4.
+  * Add support for Python 3.8.
+  * Properly declare dependency on zope.schema >= 4.2.0, introduced in zope.security 4.2.1.
+  * Fix dict item view iteration on PyPy3 7.x.
+
+-------------------------------------------------------------------
 Mon Apr  8 13:53:23 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.3.1
