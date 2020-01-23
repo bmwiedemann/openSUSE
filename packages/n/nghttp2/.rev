@@ -610,4 +610,12 @@
     <comment>- Conditionally remove dependecy on jemalloc for SLE-12</comment>
     <requestid>727112</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>10bc3c506f3f18c4478b75a2cb3dadc9</srcmd5>
+    <version>1.40.0</version>
+    <time>1579792088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765254</requestid>
+  </revision>
 </revisionlist>

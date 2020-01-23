@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 14 18:01:52 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.40.0
+  * lib: Add nghttp2_check_authority as public API
+  * lib: Fix the bug that stream is closed with wrong error code
+  * lib: Faster huffman encoding and decoding
+  * build: Avoid filename collision of static and dynamic lib
+  * build: Add new flag ENABLE_STATIC_CRT for Windows
+  * build: cmake: Support building nghttpx with systemd
+  * third-party: Update neverbleed to fix memory leak
+  * nghttpx: Fix bug that mruby is incorrectly shared between
+    backends
+  * nghttpx: Reconnect h1 backend if it lost connection before
+    sending headers
+  * nghttpx: Returns 408 if backend timed out before sending
+    headers
+  * nghttpx: Fix request stal
+
+-------------------------------------------------------------------
 Fri Aug 30 02:45:32 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Conditionally remove dependecy on jemalloc for SLE-12 
