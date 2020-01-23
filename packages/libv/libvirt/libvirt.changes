@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 19:27:10 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.0.0
+  - jsc#SLE-6997, jsc#SLE-6998
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    0a65cba4-news-fix.patch 07aaced4-Add-TAA-No.patch,
+    f411b7ef6-Add-TSX-CTRL.patch, 50d7465f-qemu-firmware1.patch,
+    57f9067c-qemu-firmware2.patch, 7c5264d2-qemu-firmware3.patch,
+    8e1804f9-qemu-firmware4.patch, 8fcee478-qemu-firmware5.patch
+
+-------------------------------------------------------------------
 Thu Jan  9 01:33:23 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Fix firmware auto detection

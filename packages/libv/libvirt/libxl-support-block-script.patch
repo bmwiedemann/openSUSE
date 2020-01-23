@@ -7,11 +7,11 @@ and npiv.
 
 For more details, see bsc#954872 and FATE#319810
 
-Index: libvirt-5.10.0/src/libxl/libxl_conf.c
+Index: libvirt-6.0.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-5.10.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-5.10.0/src/libxl/libxl_conf.c
-@@ -868,6 +868,25 @@ libxlDiskSetDiscard(libxl_device_disk *x
+--- libvirt-6.0.0.orig/src/libxl/libxl_conf.c
++++ libvirt-6.0.0/src/libxl/libxl_conf.c
+@@ -867,6 +867,22 @@ libxlDiskSetDiscard(libxl_device_disk *x
  #endif
  }
  
@@ -21,23 +21,20 @@ Index: libvirt-5.10.0/src/libxl/libxl_conf.c
 +    if (disk_spec == NULL)
 +        return 0;
 +
-+    if (STRPREFIX(disk_spec, "dmmd:")) {
-+        if (VIR_STRDUP(x_disk->script, "block-dmmd") < 0)
-+            return -1;
-+    } else if (STRPREFIX(disk_spec, "drbd:")) {
-+        if (VIR_STRDUP(x_disk->script, "block-drbd") < 0)
-+            return -1;
-+    } else if (STRPREFIX(disk_spec, "npiv:")) {
-+        if (VIR_STRDUP(x_disk->script, "block-npiv") < 0)
-+            return -1;
-+    }
++    if (STRPREFIX(disk_spec, "dmmd:"))
++        x_disk->script = g_strdup("block-dmmd");
++    else if (STRPREFIX(disk_spec, "drbd:"))
++        x_disk->script = g_strdup("block-drbd");
++    else if (STRPREFIX(disk_spec, "npiv:"))
++        x_disk->script = g_strdup("block-npiv");
++
 +    return 0;
 +}
 +
  static void
  libxlDiskSetCacheMode(libxl_device_disk *x_disk, int cachemode)
  {
-@@ -1008,6 +1027,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
+@@ -1007,6 +1023,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
  int
  libxlMakeDisk(virDomainDiskDefPtr l_disk, libxl_device_disk *x_disk)
  {
@@ -45,7 +42,7 @@ Index: libvirt-5.10.0/src/libxl/libxl_conf.c
      const char *driver = virDomainDiskGetDriver(l_disk);
      int format = virDomainDiskGetFormat(l_disk);
      int actual_type = virStorageSourceGetActualType(l_disk->src);
-@@ -1023,7 +1043,7 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
+@@ -1022,7 +1039,7 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
          if (libxlMakeNetworkDiskSrc(l_disk->src, &x_disk->pdev_path) < 0)
              return -1;
      } else {
@@ -54,7 +51,7 @@ Index: libvirt-5.10.0/src/libxl/libxl_conf.c
      }
  
      x_disk->vdev = g_strdup(l_disk->dst);
-@@ -1134,6 +1154,9 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
+@@ -1133,6 +1150,9 @@ libxlMakeDisk(virDomainDiskDefPtr l_disk
      if (libxlDiskSetDiscard(x_disk, l_disk->discard) < 0)
          return -1;
      libxlDiskSetCacheMode(x_disk, l_disk->cachemode);

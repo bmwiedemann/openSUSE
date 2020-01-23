@@ -1,16 +1,8 @@
-Index: libvirt-4.0.0/tools/Makefile.am
+Index: libvirt-6.0.0/tools/Makefile.am
 ===================================================================
---- libvirt-4.0.0.orig/tools/Makefile.am
-+++ libvirt-4.0.0/tools/Makefile.am
-@@ -52,6 +52,7 @@ PODFILES = \
- 	virt-sanlock-cleanup.pod \
- 	virt-xml-validate.pod \
- 	virsh.pod \
-+	virt-create-rootfs.pod \
- 	$(NULL)
- 
- MANINFILES = \
-@@ -86,7 +87,7 @@ MAINTAINERCLEANFILES =
+--- libvirt-6.0.0.orig/tools/Makefile.am
++++ libvirt-6.0.0/tools/Makefile.am
+@@ -71,7 +71,7 @@ MAINTAINERCLEANFILES =
  confdir = $(sysconfdir)/libvirt
  conf_DATA =
  
@@ -18,20 +10,11 @@ Index: libvirt-4.0.0/tools/Makefile.am
 +bin_SCRIPTS = virt-xml-validate virt-pki-validate virt-create-rootfs
  bin_PROGRAMS = virsh virt-admin
  libexec_SCRIPTS = libvirt-guests.sh
- man1_MANS = \
-@@ -112,6 +113,8 @@ bin_PROGRAMS += virt-host-validate
- man1_MANS += virt-host-validate.1
- endif WITH_HOST_VALIDATE
  
-+man1_MANS += virt-create-rootfs.1
-+
- virt-xml-validate: virt-xml-validate.in Makefile
- 	$(AM_V_GEN)sed -e 's|[@]schemadir@|$(pkgdatadir)/schemas|g' \
- 		       -e 's|[@]VERSION@|$(VERSION)|g' \
-Index: libvirt-4.0.0/tools/virt-create-rootfs
+Index: libvirt-6.0.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
-+++ libvirt-4.0.0/tools/virt-create-rootfs
++++ libvirt-6.0.0/tools/virt-create-rootfs
 @@ -0,0 +1,231 @@
 +#!/bin/sh
 +set -e
@@ -264,41 +247,66 @@ Index: libvirt-4.0.0/tools/virt-create-rootfs
 +    echo "pts/0" >> "$ROOT/etc/securetty"
 +    chroot "$ROOT" /usr/bin/passwd
 +fi
-Index: libvirt-4.0.0/tools/virt-create-rootfs.pod
+Index: libvirt-6.0.0/docs/Makefile.am
+===================================================================
+--- libvirt-6.0.0.orig/docs/Makefile.am
++++ libvirt-6.0.0/docs/Makefile.am
+@@ -209,6 +209,7 @@ manpages1_rst = \
+   manpages/virt-xml-validate.rst \
+   manpages/virt-admin.rst \
+   manpages/virsh.rst \
++  manpages/virt-create-rootfs.rst \
+   $(NULL)
+ manpages7_rst = \
+   $(KEYCODES:%=manpages/virkeycode-%.rst) \
+Index: libvirt-6.0.0/docs/manpages/virt-create-rootfs.rst
 ===================================================================
 --- /dev/null
-+++ libvirt-4.0.0/tools/virt-create-rootfs.pod
-@@ -0,0 +1,73 @@
-+=head1 NAME
++++ libvirt-6.0.0/docs/manpages/virt-create-rootfs.rst
+@@ -0,0 +1,88 @@
++==================
++virt-create-rootfs
++==================
 +
-+virt-create-rootfs - tool to create a root file system for distro containers.
++---------------------------------------------------------
++A tool to create a root file system for distro containers
++---------------------------------------------------------
 +
-+=head1 SYNOPSIS
++:Manual section: 1
++:Manual group: Virtualization Support
 +
-+B<virt-create-rootfs> [I<OPTION>]
++.. contents::
 +
-+=head1 DESCRIPTION
++SYNOPSIS
++========
 +
-+The B<virt-create-rootfs> program is a shell script setting up a root file
++
++``virt-create-rootfs`` [*OPTION*]
++
++
++DESCRIPTION
++===========
++
++The ``virt-create-rootfs`` program is a shell script setting up a root file
 +system for a distribution container.
 +
 +The basic structure of most virt-create-rootfs usage is:
 +
-+  virt-create-rootfs -r /path/to/root -d distro-name
++  ``virt-create-rootfs`` -r /path/to/root -d distro-name
 +
-+=head1 OPTIONS
 +
-+=over
++OPTIONS
++=======
 +
-+=item B<-h, --help>
++``-h``, ``--help``
 +
 +Display command line help usage then exit.
 +
-+=item B<-r, --root>
++``-r``, ``--root``
 +
 +Set the path where to create the new root file system.
 +
-+=item B<-d, --distro>
++``-d``, ``--distro``
 +
 +Set the name of distribution to use for the root file system.
 +
@@ -306,39 +314,41 @@ Index: libvirt-4.0.0/tools/virt-create-rootfs.pod
 +where I<XXX> is the version number. Note that SUSEConnect is required to
 +handle SLE distributions.
 +
-+=item B<-a, --arch>
++``-a``, ``--arch``
 +
 +Set the target architecture of the root file system to either i586 or x86_64.
 +
-+=item B<-c, --regcode>
++``-c``, ``--regcode``
 +
 +Set the registration code for the product to install in the root file system.
 +For SLE distributions, use a registration code from SUSE Customer Center.
 +
-+=item B<-u, --url>
++``-u``, ``--url``
 +
 +For SLE distributions, set the registration server to use.
 +Default: http://scc.suse.com.
 +
-+=item B<--dry-run>
++``--dry-run``
 +
 +Don't do anything, just report what would be done.
 +
-+=back
 +
-+=head1 COPYRIGHT
++COPYRIGHT
++=========
 +
 +Copyright (C) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
 +
-+=head1 LICENSE
 +
-+virt-create-rootfs is distributed under the terms of the GNU LGPL v2+.
++LICENSE
++=======
++
++``virt-create-rootfs`` is distributed under the terms of the GNU LGPL v2+.
 +This is free software; see the source for copying conditions. There
 +is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
 +PURPOSE
 +
-+=head1 SEE ALSO
 +
-+L<virsh(1)>, L<http://www.libvirt.org/>
++SEE ALSO
++========
 +
-+=cut
++virsh(1), `https://libvirt.org/ <https://libvirt.org/>`_

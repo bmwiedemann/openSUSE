@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@
 # Then the hypervisor drivers that run outside libvirtd, in libvirt.so
 %define with_openvz        0%{!?_without_openvz:1}
 %define with_vmware        0%{!?_without_vmware:1}
-%define with_phyp          0%{!?_without_phyp:0}
 %define with_esx           0%{!?_without_esx:1}
 %define with_hyperv        0%{!?_without_hyperv:0}
 
@@ -96,11 +95,6 @@
     %define with_vbox      0
     %define with_vmware    0
     %define with_hyperv    0
-%endif
-
-# Enable phyp driver for IBM Power systems
-%ifarch ppc64
-    %define with_phyp      1
 %endif
 
 # Enable firewalld support in newer code bases
@@ -191,7 +185,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        5.10.0
+Version:        6.0.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -250,6 +244,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt
 BuildRequires:  perl
 BuildRequires:  python3
+BuildRequires:  python3-docutils
 BuildRequires:  readline-devel
 # rpcgen is needed since we have a patch touching remote_protocol.x
 BuildRequires:  rpcgen
@@ -343,14 +338,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         0a65cba4-news-fix.patch
-Patch1:         07aaced4-Add-TAA-No.patch
-Patch2:         f411b7ef6-Add-TSX-CTRL.patch
-Patch3:         50d7465f-qemu-firmware1.patch
-Patch4:         57f9067c-qemu-firmware2.patch
-Patch5:         7c5264d2-qemu-firmware3.patch
-Patch6:         8e1804f9-qemu-firmware4.patch
-Patch7:         8fcee478-qemu-firmware5.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -884,14 +871,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -939,11 +918,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_vbox --with-vbox
 %else
     %define arg_vbox --without-vbox
-%endif
-%if %{with_phyp}
-    %define arg_phyp --with-phyp
-%else
-    %define arg_phyp --without-phyp
 %endif
 %if %{with_esx}
     %define arg_esx --with-esx
@@ -1061,7 +1035,6 @@ export PYTHON=%{_bindir}/python3
            --with-sasl \
            --with-polkit \
            --with-libvirtd \
-           %{?arg_phyp} \
            %{?arg_esx} \
            %{?arg_hyperv} \
            %{?arg_vmware} \
@@ -1855,7 +1828,6 @@ fi
 %{_sbindir}/rclibvirt-guests
 
 %files libs -f %{_vpath_builddir}/%{name}.lang
-%doc AUTHORS NEWS README README.md COPYING COPYING.LESSER 
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt.conf
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt-admin.conf
 %{_libdir}/libvirt.so.*
@@ -1869,8 +1841,9 @@ fi
 
 %{_datadir}/%{name}/schemas/basictypes.rng
 %{_datadir}/%{name}/schemas/capability.rng
-%{_datadir}/%{name}/schemas/domain.rng
 %{_datadir}/%{name}/schemas/cputypes.rng
+%{_datadir}/%{name}/schemas/domain.rng
+%{_datadir}/libvirt/schemas/domainbackup.rng
 %{_datadir}/%{name}/schemas/domaincaps.rng
 %{_datadir}/%{name}/schemas/domaincheckpoint.rng
 %{_datadir}/%{name}/schemas/domaincommon.rng
@@ -1920,7 +1893,8 @@ fi
 %{_datadir}/%{name}/api/libvirt-lxc-api.xml
 
 %files doc
-# Website
+%doc AUTHORS NEWS README README.md
+%license COPYING COPYING.LESSER
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/*.png
 %doc %{_docdir}/%{name}/*.html
@@ -1932,6 +1906,7 @@ fi
 %doc %{_docdir}/%{name}/logos
 %doc %{_docdir}/%{name}/fonts
 %doc %{_docdir}/%{name}/js
+%doc %{_docdir}/%{name}/manpages
 %dir %{_datadir}/doc/%{name}
 %dir %{_datadir}/doc/%{name}/examples
 %doc %{_datadir}/doc/%{name}/examples/*

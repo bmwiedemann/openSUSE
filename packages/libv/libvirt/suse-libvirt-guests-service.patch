@@ -1,9 +1,9 @@
 Adjust libvirt-guests service to conform to SUSE standards
 
-Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
+Index: libvirt-6.0.0/tools/libvirt-guests.sh.in
 ===================================================================
---- libvirt-5.10.0.orig/tools/libvirt-guests.sh.in
-+++ libvirt-5.10.0/tools/libvirt-guests.sh.in
+--- libvirt-6.0.0.orig/tools/libvirt-guests.sh.in
++++ libvirt-6.0.0/tools/libvirt-guests.sh.in
 @@ -16,14 +16,13 @@
  # License along with this library.  If not, see
  # <http://www.gnu.org/licenses/>.
@@ -22,7 +22,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
  # Source gettext library.
  # Make sure this file is recognized as having translations: _("dummy")
  . "@bindir@"/gettext.sh
-@@ -45,9 +44,11 @@ test -f "$sysconfdir"/sysconfig/libvirt-
+@@ -43,9 +42,11 @@ test -f "$sysconfdir"/sysconfig/libvirt-
      . "$sysconfdir"/sysconfig/libvirt-guests
  
  LISTFILE="$localstatedir"/lib/libvirt/libvirt-guests
@@ -37,7 +37,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
  
  # retval COMMAND ARGUMENTS...
  # run command with arguments and convert non-zero return value to 1 and set
-@@ -55,7 +56,7 @@ RETVAL=0
+@@ -53,7 +54,7 @@ RETVAL=0
  retval() {
      "$@"
      if [ $? -ne 0 ]; then
@@ -46,7 +46,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
          return 1
      else
          return 0
-@@ -84,6 +85,26 @@ run_virsh_c() {
+@@ -82,6 +83,26 @@ run_virsh_c() {
      ( export LC_ALL=C; run_virsh "$@" )
  }
  
@@ -73,7 +73,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
  # test_connect URI
  # check if URI is reachable
  test_connect()
-@@ -117,7 +138,7 @@ list_guests() {
+@@ -108,7 +129,7 @@ list_guests() {
  
      list=$(run_virsh_c "$uri" list --uuid $persistent)
      if [ $? -ne 0 ]; then
@@ -82,7 +82,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
          return 1
      fi
  
-@@ -143,7 +164,7 @@ guest_is_on() {
+@@ -134,7 +155,7 @@ guest_is_on() {
      guest_running=false
      id=$(run_virsh "$uri" domid "$uuid")
      if [ $? -ne 0 ]; then
@@ -91,7 +91,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
          return 1
      fi
  
-@@ -193,6 +214,13 @@ start() {
+@@ -184,6 +205,13 @@ start() {
  
          test_connect "$uri" || continue
  
@@ -105,7 +105,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
          eval_gettext "Resuming guests on \$uri URI..."; echo
          for guest in $list; do
              name=$(guest_name "$uri" "$guest")
-@@ -414,7 +442,7 @@ shutdown_guests_parallel()
+@@ -405,7 +433,7 @@ shutdown_guests_parallel()
              timeout=$(($timeout - 1))
              if [ $timeout -le 0 ]; then
                  eval_gettext "Timeout expired while shutting down domains"; echo
@@ -114,7 +114,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
                  return
              fi
          else
-@@ -443,7 +471,7 @@ stop() {
+@@ -434,7 +462,7 @@ stop() {
          if [ $SHUTDOWN_TIMEOUT -lt 0 ]; then
              gettext "SHUTDOWN_TIMEOUT must be equal or greater than 0"
              echo
@@ -123,7 +123,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
              return
          fi
      fi
-@@ -491,14 +519,14 @@ stop() {
+@@ -482,14 +510,14 @@ stop() {
                  if [ $? -ne 0 ]; then
                      eval_gettext "Failed to list persistent guests on \$uri"
                      echo
@@ -140,7 +140,7 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
                  set +f
                  return
              fi
-@@ -557,14 +585,13 @@ gueststatus() {
+@@ -548,14 +576,13 @@ gueststatus() {
  rh_status() {
      if [ -f "$LISTFILE" ]; then
          gettext "stopped, with saved guests"; echo
@@ -157,16 +157,16 @@ Index: libvirt-5.10.0/tools/libvirt-guests.sh.in
          fi
      fi
  }
-@@ -609,4 +636,4 @@ case "$1" in
+@@ -600,4 +627,4 @@ case "$1" in
          usage
          ;;
  esac
 -exit $RETVAL
 +rc_exit
-Index: libvirt-5.10.0/tools/libvirt-guests.sysconf
+Index: libvirt-6.0.0/tools/libvirt-guests.sysconf
 ===================================================================
---- libvirt-5.10.0.orig/tools/libvirt-guests.sysconf
-+++ libvirt-5.10.0/tools/libvirt-guests.sysconf
+--- libvirt-6.0.0.orig/tools/libvirt-guests.sysconf
++++ libvirt-6.0.0/tools/libvirt-guests.sysconf
 @@ -1,19 +1,29 @@
 +## Path: System/Virtualization/libvirt-guests
 +

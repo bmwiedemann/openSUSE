@@ -7,10 +7,10 @@ suse-qemu-conf-secdriver.patch, suse-qemu-conf-lockmgr.patch,
 etc.), but for now they are all lumped together in this
 single patch.
 
-Index: libvirt-5.10.0/src/qemu/qemu.conf
+Index: libvirt-6.0.0/src/qemu/qemu.conf
 ===================================================================
---- libvirt-5.10.0.orig/src/qemu/qemu.conf
-+++ libvirt-5.10.0/src/qemu/qemu.conf
+--- libvirt-6.0.0.orig/src/qemu/qemu.conf
++++ libvirt-6.0.0/src/qemu/qemu.conf
 @@ -420,10 +420,19 @@
  # isolation, but it cannot appear in a list of drivers.
  #
@@ -32,7 +32,7 @@ Index: libvirt-5.10.0/src/qemu/qemu.conf
  #security_default_confined = 1
  
  # If set to non-zero, then attempts to create unconfined
-@@ -670,11 +679,22 @@
+@@ -659,11 +668,22 @@
  #relaxed_acs_check = 1
  
  
@@ -60,13 +60,13 @@ Index: libvirt-5.10.0/src/qemu/qemu.conf
  #
  #lock_manager = "lockd"
  
-Index: libvirt-5.10.0/src/qemu/qemu_conf.c
+Index: libvirt-6.0.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-5.10.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-5.10.0/src/qemu/qemu_conf.c
-@@ -236,7 +236,7 @@ virQEMUDriverConfigPtr virQEMUDriverConf
- 
-     cfg->clearEmulatorCapabilities = true;
+--- libvirt-6.0.0.orig/src/qemu/qemu_conf.c
++++ libvirt-6.0.0/src/qemu/qemu_conf.c
+@@ -229,7 +229,7 @@ virQEMUDriverConfigPtr virQEMUDriverConf
+     cfg->prHelperName = g_strdup(QEMU_PR_HELPER);
+     cfg->slirpHelperName = g_strdup(QEMU_SLIRP_HELPER);
  
 -    cfg->securityDefaultConfined = true;
 +    cfg->securityDefaultConfined = false;
