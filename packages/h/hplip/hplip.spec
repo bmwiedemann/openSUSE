@@ -81,6 +81,8 @@ Patch401:       hplip-orblite-return-null.diff
 # Use a pgp server (pool.sks-keyservers.net) which doesn't throw proxy errors
 # or run into timeouts most of the time
 Patch402:       hplip-change-pgp-server.patch
+# boo#1107711
+Patch403:       Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
 BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod qt5-devel}
 BuildRequires:  %{pymod xml}
@@ -314,6 +316,7 @@ This sub-package is only required by developers.
 %patch400 -p1
 %patch401 -p1
 %patch402 -p1
+%patch403 -p1
 
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
@@ -447,6 +450,8 @@ install -d %{buildroot}%{_localstatedir}/log/hp/tmp
 # Remove the installed /etc/sane.d/dll.conf
 # because this is provided by the sane-backends package:
 rm %{buildroot}%{_sysconfdir}/sane.d/dll.conf
+mkdir %{buildroot}%{_sysconfdir}/sane.d/dll.d
+echo hpaio >%{buildroot}%{_sysconfdir}/sane.d/dll.d/hpaio
 # Remove the installed HAL fdi file because HAL is no longer used (HAL is deprecated):
 rm %{buildroot}%{_datadir}/hal/fdi/preprobe/10osvendor/20-hplip-devices.fdi
 # Remove the installed hplip-printer@.service file for systemd
@@ -578,38 +583,18 @@ install -m 644 %{SOURCE102} %{buildroot}%{_mandir}/man1/
 /sbin/ldconfig
 exit 0
 
-%triggerin -p /bin/bash -- sane-backends
-# As hplip can be used for plain printers it cannot "PreReq sane-backends".
-# Therefore if sane-backends is installed it may be installed or updated after hplip.
-# In this case trigger to add the SANE backend "hpaio" to /etc/sane.d/dll.conf if it is not there.
-# To be safe there is a test that /etc/sane.d/dll.conf is writable.
-if [ -w %{_sysconfdir}/sane.d/dll.conf ]
-then if ! grep -q 'hpaio' %{_sysconfdir}/sane.d/dll.conf
-     then echo -e '# The hpaio backend is provided by the hplip package:\n#hpaio' >>%{_sysconfdir}/sane.d/dll.conf
-     fi
-fi
-exit 0
-
 %postun -p /bin/bash
 %desktop_database_postun
 %icon_theme_cache_postun
 /sbin/ldconfig
+
+%postun sane
+# Earlier versions of hplip modified /etc/sane.d/dll.conf
+# Now we use /etc/sane.d/dll.d (multiple hpaio entries don't hurt).
 # If the package was removed (but not if it was updated)
 # then remove the hpaio lines in /etc/sane.d/dll.conf.
-# Don't remove them when the hplip package was automatically
-# replaced by the hplip17 package (via RPM obsoletes) or vice versa.
-# Because postun of the old package runs last (after triggerin -- sane-backends)
-# it is done via a special "ls" test if any libsane-hpaio.so exists
-# (e.g. there could be only 32-bit installed on 64-bit hardware).
-# If the "ls" test does not fail, some kind of HPLIP is installed.
-# The package sane-backends may not be installed (see triggerin)
-# and therefore the test that /etc/sane.d/dll.conf is writable.
-# The "exit 0" is necessary, otherwise the postun script
-# would exit with non-zero exit-code if the package was not removed.
-if [ "$1" = "0" ]
-then if ! ls %{_prefix}/lib*/sane/libsane-hpaio.so* &>/dev/null
-     then [ -w %{_sysconfdir}/sane.d/dll.conf ] && sed -i -e '/hpaio/d' %{_sysconfdir}/sane.d/dll.conf
-     fi
+if [ "$1" = "0" ] && [ -w %{_sysconfdir}/sane.d/dll.conf ]; then
+    sed -i -e '/hpaio/d' %{_sysconfdir}/sane.d/dll.conf
 fi
 exit 0
 
@@ -740,6 +725,9 @@ exit 0
 %files sane
 %dir %{_libdir}/sane
 %{_libdir}/sane/libsane-hpaio.so.*
+%dir %{_sysconfdir}/sane.d
+%dir %{_sysconfdir}/sane.d/dll.d
+%{_sysconfdir}/sane.d/dll.d/hpaio
 
 %files devel
 %{_libdir}/libhpip.so

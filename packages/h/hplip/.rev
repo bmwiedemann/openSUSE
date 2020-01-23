@@ -1098,4 +1098,18 @@
 </comment>
     <requestid>762938</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>d7c02c9b6872c0bb8feace1c304f2800</srcmd5>
+    <version>3.19.12</version>
+    <time>1579792202</time>
+    <user>dimstar_suse</user>
+    <comment>- Use /etc/sane.d/dll.d/hpaio to register SANE backend rather
+  than modifying /etc/sane/dll.conf
+- SANE backend must be configured in hplip-sane package (bsc#1160708)
+- Revert changes from 3.18.5 that break hp-setup for fax devices
+  (bsc#1107711, lp#1773320)
+  * Added patch: Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
+</comment>
+    <requestid>765845</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 13 22:01:08 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Use /etc/sane.d/dll.d/hpaio to register SANE backend rather
+  than modifying /etc/sane/dll.conf
+- SANE backend must be configured in hplip-sane package (bsc#1160708)
+
+-------------------------------------------------------------------
+Mon Jan 13 17:27:20 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Revert changes from 3.18.5 that break hp-setup for fax devices
+  (bsc#1107711, lp#1773320)
+  * Added patch: Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 13:52:53 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Fix crash if python3-reportlab is missing (bsc#1159240, lp#1859179)

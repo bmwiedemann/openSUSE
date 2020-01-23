@@ -1,0 +1,60 @@
+From af8ddd502a88f8dc0910c2c9a91471be8434af61 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 13 Jan 2020 18:20:22 +0100
+Subject: [PATCH] Revert changes from 3.18.5 that break hp-setup for fax
+ devices
+
+See bsc#1107711, lp#1773320
+https://launchpadlibrarian.net/371794274/hplip-use-binary-str.patch
+
+Credits: Eric Schirra <ecsos@schirra.net>
+---
+ base/utils.py | 5 +----
+ fax/pmlfax.py | 8 ++++----
+ 2 files changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/base/utils.py b/base/utils.py
+index f268cf8..cc77820 100644
+--- a/base/utils.py
++++ b/base/utils.py
+@@ -954,10 +954,7 @@ else:
+ 
+ 
+ def printable(s):
+-    if s:
+-        return s.translate(identity, unprintable)
+-    else:
+-        return ""
++    return s.translate(identity, unprintable)
+ 
+ 
+ def any(S,f=lambda x:x):
+diff --git a/fax/pmlfax.py b/fax/pmlfax.py
+index adcc1cb..b68ff6a 100644
+--- a/fax/pmlfax.py
++++ b/fax/pmlfax.py
+@@ -143,8 +143,8 @@ class PMLFaxDevice(FaxDevice):
+ 
+     def getPhoneNum(self):
+         if PY3:
+-            data = utils.printable(self.getPML(pml.OID_FAX_LOCAL_PHONE_NUM)[1])
+-            return data
++            data = utils.printable(self.getPML(pml.OID_FAX_LOCAL_PHONE_NUM)[1].encode('utf-8'))
++            return data.decode('utf-8')
+         else:
+             return utils.printable(self.getPML(pml.OID_FAX_LOCAL_PHONE_NUM)[1])
+     phone_num = property(getPhoneNum, setPhoneNum, doc="OID_FAX_LOCAL_PHONE_NUM")
+@@ -155,8 +155,8 @@ class PMLFaxDevice(FaxDevice):
+ 
+     def getStationName(self):
+         if PY3:
+-            data = utils.printable(self.getPML(pml.OID_FAX_STATION_NAME)[1])
+-            return data
++            data = utils.printable(self.getPML(pml.OID_FAX_STATION_NAME)[1].encode('utf-8'))
++            return data.decode('utf-8')
+         else:
+             return utils.printable(self.getPML(pml.OID_FAX_STATION_NAME)[1])
+ 
+-- 
+2.24.1
+
