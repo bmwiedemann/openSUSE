@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 21:45:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Change explicit go1.9 BuildRequires to greater or 1.9 following
+  upstreams recommendations.
+
+-------------------------------------------------------------------
 Wed Apr 17 15:01:37 UTC 2019 - dakechi@suse.com
 
 - Update to version 0.0.2+git113.7d43fb3:

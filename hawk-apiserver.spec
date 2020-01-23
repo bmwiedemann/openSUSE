@@ -30,7 +30,7 @@ BuildRequires:  libpacemaker-devel >= 1.1.16
 BuildRequires:  libqb-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  xz
-BuildRequires:  golang(API) = 1.9
+BuildRequires:  golang(API) >= 1.9
 Requires:       pacemaker >= 1.1.16
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390
