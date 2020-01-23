@@ -318,4 +318,21 @@ changes since last time:
   * For details see https://github.com/swaywm/sway/releases/tag/1.2</comment>
     <requestid>726416</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a0d8ebb8b28bfdacb5a77e968b5ad998</srcmd5>
+    <version>1.4</version>
+    <time>1579791299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Support for VNC via wayvnc. The wlroots RDP backend has been removed.
+  * Partial support for the MATE panel
+  * Configurable input latency controls, see max_render_time in
+    sway(5) and sway-output(5)
+  * Keyboard grouping (useful for certain niche keyboard designs)
+  * Support for xdg-shell v6 unstable has been removed
+  * The recommended terminal emulator in the default configuration
+    file is now alacritty.
+  * Bug fixes</comment>
+    <requestid>766503</requestid>
+  </revision>
 </revisionlist>
