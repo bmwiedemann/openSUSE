@@ -143,7 +143,12 @@ mkdir .git
 
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
+# Force-enable the JIT for 32-bit x86
+%ifarch %{ix86}
 qmake-qt5 .. -- -qml-jit
+%else
+qmake-qt5 ..
+%endif
 popd
 
 make %{?_smp_mflags} VERBOSE=1 -C %{_target_platform}
