@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:03:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.5
+  * netfilter: ipset: avoid null deref when IPSET_ATTR_LINENO
+    is present.
+  * netfilter: xt_set: Do not restrict --map-set to the
+    mangle table.
+
+-------------------------------------------------------------------
 Fri Nov  1 17:06:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.4

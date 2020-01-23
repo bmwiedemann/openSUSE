@@ -307,4 +307,12 @@
     <comment>- Update to release 7.4</comment>
     <requestid>744789</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cdd286eb1a6774eff36a696022a5dd84</srcmd5>
+    <version>7.5</version>
+    <time>1579792091</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765271</requestid>
+  </revision>
 </revisionlist>
