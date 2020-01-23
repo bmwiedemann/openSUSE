@@ -35,6 +35,8 @@ Source2:        applications.keyring
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
 Patch1:         0002-Initialize-variable.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-Bug-416369-attachments-lost-draft-message.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem

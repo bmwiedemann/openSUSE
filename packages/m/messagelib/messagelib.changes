@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 17 15:29:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to prevent attachments from being lost when
+  saving a message as a draft (kde#416369):
+  * 0001-Fix-Bug-416369-attachments-lost-draft-message.patch
+
+-------------------------------------------------------------------
 Mon Jan 13 14:33:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix display of large messages (kde#387061)

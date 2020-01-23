@@ -1,0 +1,33 @@
+From c3828a873a75ed7f54465e7d6acf88e81720d46f Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Fri, 17 Jan 2020 14:08:51 +0100
+Subject: [PATCH] Fix Bug 416369 - attachments lost draft message
+
+FIXED: 5.13.2
+BUG: 416369
+---
+ messagecomposer/src/attachment/attachmentmodel.cpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/messagecomposer/src/attachment/attachmentmodel.cpp b/messagecomposer/src/attachment/attachmentmodel.cpp
+index f75ad003..360337ab 100644
+--- a/messagecomposer/src/attachment/attachmentmodel.cpp
++++ b/messagecomposer/src/attachment/attachmentmodel.cpp
+@@ -372,9 +372,11 @@ bool AttachmentModel::setData(const QModelIndex &index, const QVariant &value, i
+ void AttachmentModel::addAttachment(const AttachmentPart::Ptr &part)
+ {
+     Q_ASSERT(!d->parts.contains(part));
+-    for (const AttachmentPart::Ptr &partElement : qAsConst(d->parts)) {
+-        if (partElement->url() == part->url()) {
+-            return;
++    if (!part->url().isEmpty()) {
++        for (const AttachmentPart::Ptr &partElement : qAsConst(d->parts)) {
++            if (partElement->url() == part->url()) {
++                return;
++            }
+         }
+     }
+ 
+-- 
+2.24.1
+
