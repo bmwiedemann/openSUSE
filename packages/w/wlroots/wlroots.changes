@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 08:42:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * The RDP backend has been removed entirely in favor of solutions
+    like wayvnc
+  * Code cleanups and bug fixes
+
+-------------------------------------------------------------------
 Mon Jan 13 12:06:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.1:

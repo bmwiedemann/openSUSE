@@ -140,4 +140,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>765771</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a95fc2d684cbf0c18290dff255440b9f</srcmd5>
+    <version>0.10.0</version>
+    <time>1579791295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * The RDP backend has been removed entirely in favor of solutions
+    like wayvnc
+  * Code cleanups and bug fixes</comment>
+    <requestid>766500</requestid>
+  </revision>
 </revisionlist>

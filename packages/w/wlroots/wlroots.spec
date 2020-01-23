@@ -23,7 +23,7 @@
 %bcond_without  xwayland
 %bcond_without  xcb_errors
 Name:           wlroots
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
@@ -74,16 +74,16 @@ Pluggable, composable modules for building a Wayland compositor.
 %package devel
 Summary:        Modular Wayland compositor library
 Group:          Development/Libraries/C and C++
-Requires:       libwlroots4 = %{version}
+Requires:       libwlroots5 = %{version}
 
 %description devel
 Pluggable, composable modules for building a Wayland compositor.
 
-%package -n libwlroots4
+%package -n libwlroots5
 Summary:        Modular Wayland compositor library
 Group:          System/Libraries
 
-%description -n libwlroots4
+%description -n libwlroots5
 Pluggable, composable modules for building a Wayland compositor.
 
 %prep
@@ -103,8 +103,8 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %install
 %meson_install
 
-%post   -n libwlroots4 -p /sbin/ldconfig
-%postun -n libwlroots4 -p /sbin/ldconfig
+%post   -n libwlroots5 -p /sbin/ldconfig
+%postun -n libwlroots5 -p /sbin/ldconfig
 
 %files devel
 %license LICENSE
@@ -113,7 +113,7 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %{_libdir}/pkgconfig/wlroots.pc
 %{_libdir}/libwlroots.so
 
-%files -n libwlroots4
+%files -n libwlroots5
 %{_libdir}/libwlroots.so.*
 
 %changelog
