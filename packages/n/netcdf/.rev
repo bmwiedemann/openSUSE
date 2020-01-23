@@ -473,4 +473,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
     <requestid>755679</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d29aa0fb719a09032bfb7c5e53c955a7</srcmd5>
+    <version>4.7.3</version>
+    <time>1579791310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766524</requestid>
+  </revision>
 </revisionlist>

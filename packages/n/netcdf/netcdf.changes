@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 22 09:49:02 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 4.7.3:
+  * Library was modified so that rewriting the same attribute happens without
+    deleting the attribute, to avoid a limit on how many times this may be
+    done in HDF5.
+  * Now testing that endianness can only be set on atomic ints and floats.
+  * Fix for subtle error involving var and unlimited dim of the same name, but
+    unrelated, in netCDF-4. See [https://github.com/Unidata/netcdf-c/issues/1496].
+  * Update for attribute documentation. See [https://github.com/Unidata/netcdf-c/issues/1512].
+  * Corrected assignment of anonymous (a.k.a. phony) dimensions in an HDF5 file.
+  * Corrected an issue where protected memory was being written to with some pointer
+    slight-of-hand.
+
+-------------------------------------------------------------------
 Sat Nov 30 14:21:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix openmpi naming for Leap 15.x

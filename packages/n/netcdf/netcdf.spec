@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 
 %define _do_check 1
 
-%define ver 4.7.1
-%define _ver 4_7_1
+%define ver 4.7.3
+%define _ver 4_7_3
 %define pname netcdf
 %define sonum   15
 
@@ -317,7 +317,7 @@ Group:          Productivity/Scientific/Other
 Version:        %ver
 Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
-Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.tar.gz#/%{pname}-%{version}.tar.gz
+Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.tar.gz
 Source1:        nc-config.1.gz
 BuildRequires:  gawk
 BuildRequires:  libtool
