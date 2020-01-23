@@ -38,6 +38,9 @@ Patch7:         Fix-GooString-not-having-getCString-anymore.patch
 Patch8:         Fix-build-with-Qt-5_13.patch
 # PATCH-FIX-UPSTREAM
 Patch9:         Guchar-to-unsigned-char.patch
+# PATCH-FIX-UPSTREAM
+Patch10:        Fix-build-with-poppler-0.82.patch
+Patch11:        Fix-build-with-poppler-0.83.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel

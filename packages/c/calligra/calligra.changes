@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:07:18 UTC 2020 - wbauer@tmo.at
+
+- Add patches to fix build with the latest poppler versions:
+  * Fix-build-with-poppler-0.82.patch
+  * Fix-build-with-poppler-0.83.patch
+
+-------------------------------------------------------------------
 Fri Aug 23 11:10:41 UTC 2019 - wbauer@tmo.at
 
 - Add Guchar-to-unsigned-char.patch to fix build with poppler 0.73

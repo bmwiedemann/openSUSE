@@ -1,0 +1,86 @@
+From bd580b5f3c935bcc4fa52e6413e714cdca9bf84f Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Mon, 20 Jan 2020 13:18:07 +0100
+Subject: [PATCH] Fix build with poppler 0.82
+
+Differential Revision: https://phabricator.kde.org/D26050
+---
+ filters/karbon/pdf/CMakeLists.txt   |  4 ++++
+ filters/karbon/pdf/SvgOutputDev.cpp | 12 +++++++++++-
+ filters/karbon/pdf/SvgOutputDev.h   |  8 ++++++++
+ 3 files changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/filters/karbon/pdf/CMakeLists.txt b/filters/karbon/pdf/CMakeLists.txt
+index 8f462b7b597..945eebbe676 100644
+--- a/filters/karbon/pdf/CMakeLists.txt
++++ b/filters/karbon/pdf/CMakeLists.txt
+@@ -6,6 +6,10 @@ if(Poppler_VERSION VERSION_LESS "0.72.0")
+     add_definitions("-DHAVE_POPPLER_PRE_0_72")
+ endif()
+ 
++if(Poppler_VERSION VERSION_LESS "0.82.0")
++    add_definitions("-DHAVE_POPPLER_PRE_0_82")
++endif()
++
+ set(pdf2svg_PART_SRCS PdfImportDebug.cpp PdfImport.cpp SvgOutputDev.cpp )
+ 
+ add_library(calligra_filter_pdf2svg MODULE ${pdf2svg_PART_SRCS})
+diff --git a/filters/karbon/pdf/SvgOutputDev.cpp b/filters/karbon/pdf/SvgOutputDev.cpp
+index 6b5fd312f1a..3ebb2281bf3 100644
+--- a/filters/karbon/pdf/SvgOutputDev.cpp
++++ b/filters/karbon/pdf/SvgOutputDev.cpp
+@@ -417,7 +417,11 @@ void SvgOutputDev::drawString(GfxState * state, const GooString * s)
+ #endif
+     int len = s->getLength();
+     CharCode code;
++#ifdef HAVE_POPPLER_PRE_0_82
+     Unicode *u = nullptr;
++#else
++    const Unicode *u = nullptr;
++#endif
+     int uLen;
+     double dx, dy, originX, originY;
+     while (len > 0) {
+@@ -494,9 +498,15 @@ void SvgOutputDev::drawString(GfxState * state, const GooString * s)
+     *d->body << "</text>" << endl;
+ }
+ 
+-void SvgOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
++#ifdef HAVE_POPPLER_PRE_0_82
++    void SvgOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
+                              int width, int height, GfxImageColorMap *colorMap,
+                              bool /*interpolate*/, int *maskColors, bool inlineImg)
++#else
++    void SvgOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
++                             int width, int height, GfxImageColorMap *colorMap,
++                             bool /*interpolate*/, const int *maskColors, bool inlineImg)
++#endif
+ {
+     ImageStream * imgStr = new ImageStream(str, width, colorMap->getNumPixelComps(), colorMap->getBits());
+     imgStr->reset();
+diff --git a/filters/karbon/pdf/SvgOutputDev.h b/filters/karbon/pdf/SvgOutputDev.h
+index 0667d9b2312..2b0ea41e30c 100644
+--- a/filters/karbon/pdf/SvgOutputDev.h
++++ b/filters/karbon/pdf/SvgOutputDev.h
+@@ -59,10 +59,18 @@ public:
+     void drawString(GfxState * state, const GooString * s) override;
+ #endif
+ 
++#ifdef HAVE_POPPLER_PRE_0_82
+     // images
+     void drawImage(GfxState *state, Object *ref, Stream *str,
+                            int width, int height, GfxImageColorMap *colorMap,
+                            bool interpolate, int *maskColors, bool inlineImg) override;
++#else
++    // images
++    void drawImage(GfxState *state, Object *ref, Stream *str,
++                           int width, int height, GfxImageColorMap *colorMap,
++                           bool interpolate, const int *maskColors, bool inlineImg) override;
++#endif
++
+ 
+     // styles
+     void updateAll(GfxState *state) override;
+-- 
+2.16.4
+

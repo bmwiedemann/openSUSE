@@ -1,0 +1,123 @@
+From 06d01dbba6f0f4779f9520d8c0f59412907aa550 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Wed, 22 Jan 2020 09:02:23 +0100
+Subject: [PATCH] Fix build with poppler 0.83
+
+---
+ filters/karbon/pdf/CMakeLists.txt    |  4 ++++
+ filters/karbon/pdf/PdfImport.cpp     | 16 ++++++++++++++++
+ filters/karbon/pdf/SvgOutputDev.cpp  |  8 ++++++++
+ filters/karbon/pdf/SvgOutputDev.h    |  4 ++++
+ 4 files changed, 32 insertions(+)
+
+diff --git a/filters/karbon/pdf/CMakeLists.txt b/filters/karbon/pdf/CMakeLists.txt
+index 945eebbe676..94d4071da3d 100644
+--- a/filters/karbon/pdf/CMakeLists.txt
++++ b/filters/karbon/pdf/CMakeLists.txt
+@@ -10,6 +10,10 @@ if(Poppler_VERSION VERSION_LESS "0.82.0")
+     add_definitions("-DHAVE_POPPLER_PRE_0_82")
+ endif()
+ 
++if(Poppler_VERSION VERSION_LESS "0.83.0")
++    add_definitions("-DHAVE_POPPLER_PRE_0_83")
++endif()
++
+ set(pdf2svg_PART_SRCS PdfImportDebug.cpp PdfImport.cpp SvgOutputDev.cpp )
+ 
+ add_library(calligra_filter_pdf2svg MODULE ${pdf2svg_PART_SRCS})
+diff --git a/filters/karbon/pdf/PdfImport.cpp b/filters/karbon/pdf/PdfImport.cpp
+index f88719d4554..e62ea64a299 100644
+--- a/filters/karbon/pdf/PdfImport.cpp
++++ b/filters/karbon/pdf/PdfImport.cpp
+@@ -61,19 +61,31 @@ KoFilter::ConversionStatus PdfImport::convert(const QByteArray& from, const QByt
+     }
+ 
+     // read config file
++#ifdef HAVE_POPPLER_PRE_0_83
+     globalParams = new GlobalParams();
++#else
++    globalParams = std::unique_ptr<GlobalParams>(new GlobalParams());
++#endif
+     if (! globalParams)
+         return KoFilter::NotImplemented;
+ 
+     GooString * fname = new GooString(QFile::encodeName(m_chain->inputFile()).data());
+     PDFDoc * pdfDoc = new PDFDoc(fname, 0, 0, 0);
+     if (! pdfDoc) {
++#ifdef HAVE_POPPLER_PRE_0_83
+         delete globalParams;
++#else
++        globalParams.reset();
++#endif
+         return KoFilter::StupidError;
+     }
+ 
+     if (! pdfDoc->isOk()) {
++#ifdef HAVE_POPPLER_PRE_0_83
+         delete globalParams;
++#else
++        globalParams.reset();
++#endif
+         delete pdfDoc;
+         return KoFilter::StupidError;
+     }
+@@ -100,8 +112,12 @@ KoFilter::ConversionStatus PdfImport::convert(const QByteArray& from, const QByt
+ 
+     delete dev;
+     delete pdfDoc;
++#ifdef HAVE_POPPLER_PRE_0_83
+     delete globalParams;
+     globalParams = 0;
++#else
++    globalParams.reset();
++#endif
+ 
+     return KoFilter::OK;
+ }
+diff --git a/filters/karbon/pdf/SvgOutputDev.cpp b/filters/karbon/pdf/SvgOutputDev.cpp
+index 3ebb2281bf3..0e3a3859e42 100644
+--- a/filters/karbon/pdf/SvgOutputDev.cpp
++++ b/filters/karbon/pdf/SvgOutputDev.cpp
+@@ -172,7 +172,11 @@ void SvgOutputDev::eoFill(GfxState *state)
+     *d->body << "/>" << endl;
+ }
+ 
++#ifdef HAVE_POPPLER_PRE_0_83
+ QString SvgOutputDev::convertPath(GfxPath *path)
++#else
++QString SvgOutputDev::convertPath(const GfxPath *path)
++#endif
+ {
+     if (! path)
+         return QString();
+@@ -180,7 +184,11 @@ QString SvgOutputDev::convertPath(GfxPath *path)
+     QString output;
+ 
+     for (int i = 0; i < path->getNumSubpaths(); ++i) {
++#ifdef HAVE_POPPLER_PRE_0_83
+         GfxSubpath * subpath = path->getSubpath(i);
++#else
++        const GfxSubpath * subpath = path->getSubpath(i);
++#endif
+         if (subpath->getNumPoints() > 0) {
+             output += QString("M%1 %2").arg(subpath->getX(0)).arg(subpath->getY(0));
+             int j = 1;
+diff --git a/filters/karbon/pdf/SvgOutputDev.h b/filters/karbon/pdf/SvgOutputDev.h
+index 2b0ea41e30c..3ae014d4433 100644
+--- a/filters/karbon/pdf/SvgOutputDev.h
++++ b/filters/karbon/pdf/SvgOutputDev.h
+@@ -86,7 +86,11 @@ public:
+     /// Dumps content to svg file
+     void dumpContent();
+ private:
++#ifdef HAVE_POPPLER_PRE_0_83
+     QString convertPath(GfxPath *path);
++#else
++    QString convertPath(const GfxPath *path);
++#endif
+     QString convertMatrix(const QMatrix &matrix);
+     QString convertMatrix(const double * matrix);
+     QString printFill();
+-- 
+2.16.4
+
