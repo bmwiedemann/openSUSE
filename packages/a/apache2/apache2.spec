@@ -292,6 +292,7 @@ Requires:       apache2-prefork
 Requires:       apr-devel
 Requires:       apr-util-devel
 Requires:       gcc
+Provides:       httpd-devel = %{version}
 
 %description devel
 This package contains header files and include files that are needed

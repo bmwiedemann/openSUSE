@@ -1629,4 +1629,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
   % apache2-ssl-global.conf</comment>
     <requestid>757900</requestid>
   </revision>
+  <revision rev="164" vrev="7">
+    <srcmd5>7c852330b17d270cdc82068e874cbf39</srcmd5>
+    <version>2.4.41</version>
+    <time>1579792166</time>
+    <user>dimstar_suse</user>
+    <comment>- apache2-devel now provides httpd-devel [bsc#1160100]</comment>
+    <requestid>765787</requestid>
+  </revision>
 </revisionlist>
