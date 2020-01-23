@@ -1,4 +1,45 @@
 --------------------------------------------------------------------
+Fri Jan 17 12:32:27 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#17
+- Introduce LDFLAGS variable in Makefiles
+- test: Link with the development version of the library
+- test: Sort tests by name
+- Add Travis CI configuration file and a badge in the README
+- Travis CI integration
+- 2.6
+
+--------------------------------------------------------------------
+Fri Jan 17 12:28:09 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#22
+- decode: Prepare for SSE support
+- ops2: Add SSE instructions
+- ops2: Add packed SSE ops
+- Minimal SSE support
+
+--------------------------------------------------------------------
+Fri Jan 17 12:26:51 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#21
+- prim_ops: Fix compiler warning
+
+--------------------------------------------------------------------
+Fri Jan 17 12:24:59 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#24
+- ops2: Add cpuid support using a new handler
+- ops2: Introduce a callback function for MSR access
+- Push cpuid msr callback
+
+--------------------------------------------------------------------
+Thu Jan 16 15:45:23 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#26
+- add '--32' option to demo program to start in 32-bit mode
+- 2.5
+
+--------------------------------------------------------------------
 Tue Aug 20 14:23:47 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/libx86emu#19
