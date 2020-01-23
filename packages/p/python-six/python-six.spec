@@ -27,7 +27,7 @@
 %bcond_with test
 %define psuffix %{nil}
 %endif
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Python 2 and 3 compatibility utilities
 License:        MIT
