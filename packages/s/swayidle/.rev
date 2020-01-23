@@ -60,4 +60,19 @@
     <comment></comment>
     <requestid>758872</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb0abddbde9728233198d92fd060da74</srcmd5>
+    <version>1.6</version>
+    <time>1579791302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6:
+  * Add logind SetIdleHint event
+  * completion: use pkg-config to get install location for bash/fish
+  * fish-completion: use the correct fallback directory
+  * Update bash and fish completions with option -w
+  * Update zsh completions
+- Add swayidle-version.patch
+  See https://github.com/swaywm/swayidle/pull/53</comment>
+    <requestid>766521</requestid>
+  </revision>
 </revisionlist>
