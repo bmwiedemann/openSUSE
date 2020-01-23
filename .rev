@@ -1466,4 +1466,15 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   * gdb-0001-remove-alloca-0-calls.patch (forwarded request 756824 from tomdevries)</comment>
     <requestid>757565</requestid>
   </revision>
+  <revision rev="136" vrev="6">
+    <srcmd5>a6af00f32464f4f2d7e2c345aee2d9f0</srcmd5>
+    <version>8.3.1</version>
+    <time>1579792196</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for official name of s390 arch13: z15.
+  Add descriptions for arch13 instructions.  Adds
+  gdb-arch13-1.diff, gdb-arch13-2.diff and gdb-arch13-3.diff.
+  [jsc#SLE-7903]</comment>
+    <requestid>765839</requestid>
+  </revision>
 </revisionlist>
