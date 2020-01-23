@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 23 08:51:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  * Add logind SetIdleHint event
+  * completion: use pkg-config to get install location for bash/fish
+  * fish-completion: use the correct fallback directory
+  * Update bash and fish completions with option -w
+  * Update zsh completions
+- Add swayidle-version.patch
+  See https://github.com/swaywm/swayidle/pull/53
+
+-------------------------------------------------------------------
 Thu Dec 19 14:48:45 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
