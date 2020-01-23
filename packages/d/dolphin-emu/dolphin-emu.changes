@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Jan 23 09:06:08 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1579717236.ea9b96370d:
+  * DiscIO: Fix CISOFileReader::GetDataSize()
+
+-------------------------------------------------------------------
+Wed Jan 22 10:47:08 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1579658152.f0669f5aa6:
+  * Initial release for build.opensuse.org
