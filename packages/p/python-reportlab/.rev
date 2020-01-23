@@ -211,4 +211,13 @@
     <comment></comment>
     <requestid>749753</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c06cf986ec8dcbe9b22b933942cd480e</srcmd5>
+    <version>3.5.34</version>
+    <time>1579792122</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python38_build.patch, because it has been included
+  upstream (forwarded request 765506 from mcepl)</comment>
+    <requestid>765507</requestid>
+  </revision>
 </revisionlist>

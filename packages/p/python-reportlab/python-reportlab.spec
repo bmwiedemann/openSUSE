@@ -1,7 +1,7 @@
 #
 # spec file for package python-reportlab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-reportlab
-Version:        3.5.32
+Version:        3.5.34
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
@@ -27,8 +27,6 @@ URL:            https://www.reportlab.com/
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
 Patch0:         reportlab-missing-includes.patch
-# https://bitbucket.org/rptlab/reportlab/pull-requests/60
-Patch1:         python38_build.patch
 BuildRequires:  %{python_module Pillow >= 4.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -60,6 +58,9 @@ sed -i "1d" src/reportlab/graphics/{widgets/table,barcode/test,testdrawings,test
 export CFLAGS="%{optflags}"
 %python_build
 
+PYTHONPATH=$(readlink -f build/lib.linux-*/) \
+    python3 docs/genAll.py
+
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -78,7 +79,7 @@ $python runAll.py
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGES.md README.txt
+%doc CHANGES.md README.txt docs/reportlab-userguide.pdf
 %{python_sitearch}/reportlab/
 %{python_sitearch}/reportlab-%{version}-py*.egg-info
 
