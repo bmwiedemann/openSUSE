@@ -69,4 +69,32 @@
   * Only translations was changed</comment>
     <requestid>680447</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2f062c3bb71a86472204fedd98b91ac</srcmd5>
+    <version>2.0.0</version>
+    <time>1579791291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Improved translations
+  * Improved user experience (less noise with command line, better
+    screen area instructions and better off-screen screenshots).
+  * Code update and clean-up, including the removal of the
+    deprecated class QDesktopWidget.
+  * Bumped screengrab version to 2.0.0
+  * Updated translations
+  * Removed Qxt
+  * Fixed typo in function name
+  * Set min. Qt version to 5.10.0
+  * Removed upload module (#183)
+  * Removed QDesktopWidget
+  * Removed (duplicated) string casts definitions
+  * Deleted useless warning fixes #174
+  * Make CMakeLists.txt a bit more strict
+  * Updated QtXdg minimum required version
+  * Use the new QtXdg XdgMimeApps class
+  * Improved Screen Area instructions (#162)
+  * Don't use automatic string conversions
+  * Avoid char raw strings literals memory allocations</comment>
+    <requestid>766495</requestid>
+  </revision>
 </revisionlist>

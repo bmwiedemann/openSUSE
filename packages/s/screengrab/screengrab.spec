@@ -1,7 +1,7 @@
 #
 # spec file for package screengrab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           screengrab
-Version:        1.101
+Version:        2.0.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        GPL-2.0-only
@@ -30,15 +30,15 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.7.1
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xdg)
+BuildRequires:  pkgconfig(Qt5Xdg) >= 3.4.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
@@ -78,6 +78,6 @@ rm -rf %{buildroot}%{_datadir}/doc
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/translations
+%{_datadir}/%{name}/translations
 
 %changelog

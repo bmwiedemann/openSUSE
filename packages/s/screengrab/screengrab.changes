@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jan 23 08:31:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  * Improved translations
+  * Improved user experience (less noise with command line, better
+    screen area instructions and better off-screen screenshots).
+  * Code update and clean-up, including the removal of the
+    deprecated class QDesktopWidget.
+  * Bumped screengrab version to 2.0.0
+  * Updated translations
+  * Removed Qxt
+  * Fixed typo in function name
+  * Set min. Qt version to 5.10.0
+  * Removed upload module (#183)
+  * Removed QDesktopWidget
+  * Removed (duplicated) string casts definitions
+  * Deleted useless warning fixes #174
+  * Make CMakeLists.txt a bit more strict
+  * Updated QtXdg minimum required version
+  * Use the new QtXdg XdgMimeApps class
+  * Improved Screen Area instructions (#162)
+  * Don't use automatic string conversions
+  * Avoid char raw strings literals memory allocations
+
+-------------------------------------------------------------------
 Fri Mar  1 10:26:56 UTC 2019 - mvetter@suse.com
 
 - Update to 1.101:
