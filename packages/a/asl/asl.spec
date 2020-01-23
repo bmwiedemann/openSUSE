@@ -1,7 +1,7 @@
 #
 # spec file for package asl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,11 @@ Version:        1.42_bld144
 Release:        0
 Summary:        Macro Assembler AS
 License:        GPL-2.0-or-later
-Url:            http://john.ccac.rwth-aachen.de:8000/as/
+URL:            http://john.ccac.rwth-aachen.de:8000/as/
 Source:         http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/asl-current-142-bld115.tar.bz2
 Patch0:         asl-buildfixes.patch
 Patch2:         asl-ppc64.patch
+Patch3:         asl-riscv64.patch
 BuildRequires:  gcc-c++
 Obsoletes:      %{name}-doc
 
@@ -38,6 +39,7 @@ workstations and PCs in the target list.
 %setup -q -n asl-current
 %patch0 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -fno-strict-aliasing"
