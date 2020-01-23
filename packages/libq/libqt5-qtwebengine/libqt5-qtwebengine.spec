@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwebengine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright © 2017 Kevin Kofler <Kevin@tigcc.ticalc.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -57,7 +57,7 @@ Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
-Url:            https://www.qt.io
+URL:            https://www.qt.io
 %define base_name libqt5
 %define real_version 5.14.0
 %define so_version 5.14.0
@@ -113,7 +113,9 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  usbutils
 BuildRequires:  util-linux
+%ifnarch %arm
 BuildRequires:  valgrind-devel
+%endif
 BuildRequires:  wdiff
 BuildRequires:  xz
 BuildRequires:  yasm
