@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 20 03:13:49 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Net-Ident/Changes
+
+  1.25 Sat Jan 18 2020
+      - Enable github actions testing
+      - Switch to README.md and point to testing status
+      - Fix spelling typo provided by Debian project
+      - Switch primary tracker to github issues
+      - Remove META.yml from source control
+
+-------------------------------------------------------------------
 Tue Apr 14 19:27:52 UTC 2015 - coolo@suse.com
 
 - updated to 1.24
