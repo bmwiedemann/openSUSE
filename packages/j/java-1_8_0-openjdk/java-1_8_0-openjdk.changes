@@ -1,4 +1,325 @@
 -------------------------------------------------------------------
+Tue Jan 21 06:40:46 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u242 (icedtea 3.15.0) (January 2020 CPU,
+  bsc#1160968)
+  * Security fixes
+    + S8225261: Better method resolutions
+    + S8224909, CVE-2020-2583: Unlink Set of LinkedHashSets
+    + S8225279: Better XRender interpolation
+    + S8226352, CVE-2020-2590: Improve Kerberos interop capabilities
+    + S8227758: More valid PKIX processing
+    + S8227816: More Colorful ICC profiles
+    + S8228548, CVE-2020-2593: Normalize normalization for all
+    + S8229951, CVE-2020-2601: Better Ticket Granting Services
+    + S8230279: Improve Pack200 file reading
+    + S8230318: Better trust store usage
+    + S8230967: Improve Registry support of clients
+    + S8231129: More glyph images
+    + S8231139: Improved keystore support
+    + S8231422, CVE-2020-2604: Better serial filter handling
+    + S8231795, CVE-2020-2659: Enhance datagram socket support
+    + S8232419: Improve Registry registration
+    + S8234037, CVE-2020-2654: Improve Object Identifier Processing
+  * Import of OpenJDK 8 u242 build 01
+    + S8010500: [parfait] Possible null pointer dereference at
+      hotspot/src/share/vm/opto/loopnode.hpp
+    + S8067429: java.lang.VerifyError: Inconsistent stackmap frames
+      at branch target
+    + S8073154: NULL-pointer dereferencing in
+      LIR_OpProfileType::print_instr
+    + S8077707: jdk9 b58 cannot run any graphical application on
+      Win 8 with JAWS running
+    + S8132249: Clean up JAB debugging code
+    + S8133951: Zero interpreter asserts in stubRoutines.cpp
+    + S8134739: compiler/loopopts/superword/
+      /TestVectorizationWithInvariant crashes in loop opts
+    + S8212071: Need to set the FreeType LCD Filter to reduce
+      fringing.
+    + S8230238: Add another regression test for JDK-8134739
+    + S8230813: Add JDK-8010500 to compiler/loopopts/superword/
+      /TestFuzzPreLoop.java bug list
+    + S8231398: Add time tracing for gc log rotation at safepoint
+      cleanup
+    + S8231988: Unexpected test result caused by C2
+      IdealLoopTree::do_remove_empty_loop
+  * Import of OpenJDK 8 u242 build 02
+    + S8057986: freetype code to get glyph outline does not handle
+      initial control point properly
+    + S8068736: Avoid synchronization on
+      Executable/Field.declaredAnnotations
+    + S8073347: javadoc of Formattable messed up by JDK-8019857
+    + S8206173: MallocSiteTable::initialize() doesn't take function
+      descriptors into account
+    + S8213568: Typo in
+      java/awt/GraphicsEnvironment/LoadLock/GE_init5.java
+    + S8218558: NMT stack traces in output should show mt component
+      for virtual memory allocations
+    + S8225101: Crash at sun.awt.X11.XlibWrapper.XkbGetUpdatedMap
+      when change keybord map
+    + S8228888: C2 compilation fails with assert "m has strange
+      control"
+    + S8229020: Failure on CPUs allowing loads reordering:
+      assert(_tasks[t] == 1) failed: What else?
+    + S8229169: False failure of GenericTaskQueue::pop_local on
+      architectures with weak memory model
+    + S8230363: C2: Let ConnectionGraph::not_global_escape(Node* n)
+      return false if n is not in the CG
+    + S8231887: ComodoCA.java fails because certificate was revoked
+  * Import of OpenJDK 8 u242 build 04
+    + S8048556: Unnecessary GCLocker-initiated young GCs
+    + S8073108: Use x86 and SPARC CPU instructions for GHASH
+      acceleration
+    + S8130341: GHASH 32bit intrinsics has AEADBadTagException
+    + S8139178: Wrong fontMetrics when printing in Landscape
+      (OpenJDK)
+    + S8146238: [macosx] Java2D Queue Flusher crash on OSX after
+      switching between user accounts
+    + S8196681: Java Access Bridge logging and debug flags
+      dynamically controlled
+    + S8204288: Matching the end of a string followed by an empty
+      greedy regex and a word boundary fails
+    + S8204290: Add check to limit number of capture groups
+    + S8219914: Change the environment variable for Java Access
+      Bridge logging to have a directory.
+    + S8225505: ctrl-F1 does not show the tooltip of a menu item
+      (JMenuItems)
+  * Import of OpenJDK 8 u242 build 05
+    + S8029629: java/lang/ProcessBuilder/Basic.java fails
+      intermittently
+    + S8055351: sun/security/provider/DSA/
+      /TestAlgParameterGenerator.java failed with interrupted!
+      (timed out?)
+    + S8131778: java disables UseAES flag when using VIS=2 on sparc
+    + S8133489: Better messaging for PKIX path validation matching
+    + S8134424: BlockDataInputStream.readUTFBody: size local
+      StringBuffer with the given length
+    + S8156028: G1YoungGenSizer _adaptive_size not correct when
+      setting NewSize and MaxNewSize to the same value
+    + S8170641: sun/net/www/protocol/https/HttpsURLConnection/
+      /PostThruProxy.sh fails with timeout
+    + S8173956: KeyStore regression due to default keystore being
+      changed to PKCS12
+    + S8185898: setRequestProperty(key, null) results in HTTP
+      header without colon in request
+    + S8189762: [TESTBUG] Create tests for JDK-8146115 container
+      awareness and resource configuration
+    + S8194653: Deadlock involving FileSystems.getDefault and
+      System.loadLibrary call
+    + S8195088: [TEST_BUG] StartManagementAgent got unexpected
+      exception
+    + S8195667: ProblemList PKCS11 tests Secmod/AddTrustedCert.java
+      and tls/TestKeyMaterial.java due to JDK-8180837
+    + S8198649: Switch AWT/Swing's default GTK version to 3
+    + S8208715: Conversion of milliseconds to nanoseconds in
+      UNIXProcess contains bug
+    + S8213119: [macos]
+      java/awt/GraphicsDevice/CheckDisplayModes.java fails
+    + S8215210: [macos] Hangul text does not shape to the
+      precomposed form on JDK8u
+    + S8216401: Allow "file:" URLs in Class-Path of local JARs
+    + S8221172: SunEC specific test is not limited to SunEC
+    + S8221246: NullPointerException within Win32ShellFolder2
+    + S8222496: [8u] Switch on GTK3 as a default GTK L&F in
+      client-libs
+    + S8223490: Optimize search algorithm for determining default
+      time zone
+    + S8225141: Better handling of classes in error state in fast
+      class initialization checks
+    + S8229420: [Redo] jstat reports incorrect values for OU for
+      CMS GC
+    + S8231124: Missing closedir call with JDK-8223490
+    + S8231584: Deadlock with ClassLoader.findLibrary and
+      System.loadLibrary call
+    + S8232984: Upgrading Joni License version to 2.1.16
+    + S8233886: TEST_BUG jdk/java/net/CookieHandler/B6791927.java
+      hit hardcoded expiration date
+    + S8234591: [11u] Build with old C compiler broken by 8223490
+    + S8236178: Debug build failed after 8236058
+  * Import of OpenJDK 8 u242 build 06
+    + S8227715: GPLv2 files missing Classpath Exception
+    + S8232019: Add LuxTrust certificate updates to the existing
+      root program
+    + S8233223: Add Amazon Root CA certificates
+    + S8235850: [TESTBUG] Remove
+      test/runtime/RedefineTests/test8178870.sh
+  * Import of OpenJDK 8 u242 build 07
+    + S8037550: Update RFC references in javadoc to RFC 5280
+    + S8039438: Some tests depend on internal API sun.misc.IOUtils
+    + S8044500: Add kinit options and krb5.conf flags that allow
+      users to obtain renewable tickets and specify ticket lifetimes
+    + S8058290: JAAS Krb5LoginModule has suspect ticket-renewal
+      logic, relies on clockskew grace
+    + S8080835: Add blocking bulk read to sun.misc.IOUtils
+    + S8138978: Examine usages of sun.misc.IOUtils
+    + S8139206: Add InputStream readNBytes(int len)
+    + S8183591: Incorrect behavior when reading DER value with
+      Integer.MAX_VALUE length
+    + S8186576: KerberosTicket does not properly handle renewable
+      tickets at the end of their lifetime
+    + S8186831: Kerberos ignores PA-DATA with a non-null s2kparams
+    + S8186884: Test native KDC, Java krb5 lib, and native krb5 lib
+      in one test
+    + S8193832: Performance of InputStream.readAllBytes() could be
+      improved
+    + S8196956: (ch) More channels cleanup
+    + S8201627: Kerberos sequence number issues
+    + S8215032: Support Kerberos cross-realm referrals (RFC 6806)
+    + S8226719: Kerberos login to Windows 2000 failed with
+      "Inappropriate type of checksum in message"
+    + S8227061: KDC.java test behaves incorrectly when AS-REQ
+      contains a PAData not PA-ENC-TS-ENC
+    + S8227381: GSS login fails with PREAUTH_FAILED
+    + S8227437: S4U2proxy cannot continue because server's TGT
+      cannot be found
+    + S8232381: add result NULL-checking to freetypeScaler.c
+    + S8233944: Make KerberosPrincipal.KRB_NT_ENTERPRISE field
+      package private
+    + S8235909: File.exists throws AccessControlException for
+      invalid paths when a SecurityManager is installed
+    + S8236983: [TESTBUG] Remove pointless catch block in
+      test/jdk/sun/security/util/DerValue/BadValue.java
+    + S8236984: Add compatibility wrapper for IOUtils.readFully
+  * Import of OpenJDK 8 u242 build 08
+    + S8031111: fix krb5 caddr
+    + S8132111: Do not request for addresses for forwarded TGT
+  * Shenandoah
+    + Add missing include in shenandoahOopClosures.cpp
+    + Avoid initializing unused SharedHeap::_workers for Shenandoah
+    + [backport] 8221435: Shenandoah should not mark through weak
+      roots
+    + [backport] 8221766: Load-reference barriers for Shenandoah
+    + [backport] 8222129: Shenandoah: Missing CompareAndSwapP/N
+      case in get_barrier_strength()
+    + [backport] 8222738: Shenandoah: assert(is_Proj()) failed when
+      running cometd benchmarks
+    + [backport] 8223448: Shenandoah disabled barriers blocks omit
+      LRB
+    + [backport] 8223450: Disable Shenandoah C2 barriers
+      verification for x86_32
+    + [backport] 8223567: Rename ShenandoahBrooksPointer to
+      ShenandoahForwarding
+    + [backport] 8224496: Shenandoah compilation fails with
+      assert(is_CountedLoopEnd()) failed: invalid node class
+    + [backport] 8224522: Shenandoah should apply barriers on
+      deoptimization
+    + [backport] 8224584: Shenandoah: Eliminate forwarding pointer
+      word
+    + [backport] 8224667: Shenandoah: Post-LRB cleanup
+    + [backport] 8224881: Shenandoah: trashing "Collection Set,
+      Pinned" region during Degenerated GC
+    + [backport] 8224932: Shenandoah: Rename ShenandoahHeapLock,
+      make it general purpose lock
+    + [backport] 8225017: [TESTBUG]
+      gc/shenandoah/oom/TestThreadFailure.java takes too long
+    + [backport] 8225046: Shenandoah metrics logs refactoring
+    + [backport] 8225048: Shenandoah x86_32 support
+    + [backport] 8225111: Make Shenandoah tests work with 32-bit VMs
+    + [backport] 8225229: Shenandoah: trim down default number of
+      GC threads
+    + [backport] 8225357: Rewire
+      ShenandoahHeap::maybe_update_with_forwarded for contending fixups
+    + [backport] 8225441: Cleanup
+      ShenandoahHeap::atomic_compare_exchange_oop
+    + [backport] 8225514: Shenandoah: ShenandoahCodeRoots should
+      inherit from AllStatic
+    + [backport] 8226757: Shenandoah: Make traversal and passive
+      modes explicit
+    + [backport] 8226957: Shenandoah: Remove obsoleted
+      ShenandoahStoreCheck option
+    + [backport] 8228775: Shenandoah: Remove useless
+      null-input-verification in Shenandoah/C2 verifier
+    + [backport] 8229002: Shenandoah: Missing node types in
+      ShenandoahLoadReferenceBarrier::needs_barrier_impl()
+    + [backport] 8229231: Shenandoah: Non-PCH builds failed after
+      JDK-8224932
+    + [backport] 8229350: Shenandoah does not need barriers before
+      CreateEx
+    + [backport] 8229416: Shenandoah: Demote or remove
+      ShenandoahOptimize*Final optimizations
+    + [backport] 8229419: Shenandoah: Cleanup LRB strength selector
+      code
+    + [backport] 8229707: [TESTBUG] Some Shenandoah tests assume
+      Server VM by default
+    + [backport] 8231197: Shenandoah: JVMTI heap walking cleanup
+      crashes with NULL forwardee
+    + [backport] 8231405: [Shenandoah] guarantee(d != NULL) failed:
+      Null dominator info
+    + [backport] 8231583: Shenandoah: Fix register clash in
+      SBSA::resolve_forwarding_pointer() borrowing
+    + [backport] 8231667: Shenandoah: Full GC should take empty
+      regions into slices for compaction
+    + [backport] 8231932: Shenandoah: conc/par GC threads
+      ergonomics overrides user settings
+    + [backport] 8231946: Remove obsolete and unused
+      ShenandoahVerifyObjectEquals flag
+    + [backport] 8231947: Shenandoah: cleanup
+      ShenandoahHumongousMoves flag treatment
+    + [backport] 8232102: Shenandoah: print everything in proper
+      units
+    + [backport] 8232176: Shenandoah: new assert in
+      ShenandoahEvacuationTask is too strong
+    + [backport] 8232534: Shenandoah: guard against reentrant
+      ShenandoahHeapLock locking
+    + [backport] 8232573: Shenandoah: cleanup and add more logging
+      for in-pause phases
+    + [backport] 8232575: Shenandoah: asynchronous object/region
+      pinning
+    + [backport] 8232702: Shenandoah:
+      gc/shenandoah/TestVerifyJCStress.java uses non-existent
+      -XX:+VerifyObjectEquals
+    + [backport] 8232729: Shenandoah: assert
+      ShenandoahHeap::cas_oop addresses are aligned
+    + [backport] 8232802: Shenandoah: transition between "cset" and
+      "pinned_cset" does not require cancelled gc
+    + [backport] LRB right after call, use is Bool
+    + Backport per-region seqnum tracking
+    + [backport] Relax Shenandoah/C2 verifier against JDK11
+      shortcomings
+    + [backport] Remove to wrong handlings of Shenandoah LRB in
+      escape analysis
+    + Backport Traversal GC
+    + Cherry-pick JDK-8231201: hs_err should print coalesced
+      safepoint operations in Events section
+    + Cleanup weak JNI refs when not doing reference processing
+    + Correct order between load, LRB and membar nodes
+    + Disable JNI tests for 32-bit platforms, due to lack of jtreg
+      support
+    + Do not enable UseCountedLoopSafepoints in Shenandoah by
+      default
+    + Fix ifdef -> if INCLUDE_ALL_GCS in Shenandoah x86_32 code
+    + Fix leftover commented out code in
+      ShenandoahRuntime::load_reference_barrier_JRT
+    + Fix lock ordering issue when calling JVMTI GetLoadedClasses
+      during marking
+    + Fix naked heap loads in HeapDumper
+    + Fix ShenandoahLoadReferenceBarrierNode::{Value, Identity}
+      signatures after LRB backport
+    + Fix Windows build after LRB backports
+    + Fix Zero build after LRB backport moves, remove other stubs
+    + Remove some obsolete Shenandoah code from C2
+    + Remove StubRoutines::_shenandoah_wb_C and related code
+    + Revert obsolete shared-code changes in runtime synchronizer
+      code
+    + Revert ShenandoahVerifyObjectEquals additions, not required
+      after LRB
+    + S8236829: JDK-8232102 backport breaks s390
+    + Save vector registers before LRB slowpath call
+    + Shenandoah: JvmtiExport::weak_oops_do should not be entered
+      by multiple threads
+    + Shenandoah SA: support live region iteration
+    + Use correct flag to guard implicit concurrent GC
+  * AArch64 port
+    + S8073108, PR3772: [AArch64] Use x86 and SPARC CPU
+      instructions for GHASH acceleration
+    + S8135018, PR3772: AARCH64: Missing memory barriers for CMS
+      collector
+    + S8209835, PR3772: Aarch64: elide barriers on all volatile
+      operations
+    + S8233839, PR3772: aarch64: missing memory barrier in
+      NewObjectArrayStub and NewTypeArrayStub
+
+-------------------------------------------------------------------
 Fri Nov 15 09:08:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u232 (icedtea 3.14.0) (October 2019 CPU,
