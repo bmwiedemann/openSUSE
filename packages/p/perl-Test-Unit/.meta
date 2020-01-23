@@ -1,5 +1,0 @@
-<package name="perl-Test-Unit" project="openSUSE:Factory">
-  <title>The PerlUnit testing framework</title>
-  <description>This framework is intended to support unit testing in an object-oriented development paradigm (with support for inheritance of tests etc.) and is derived from the JUnit testing framework for Java by Kent Beck and Erich Gamma.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Unit"/>
-</package>
