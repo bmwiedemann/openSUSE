@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Jan 21 13:06:47 UTC 2020 - Sebastian Schubert <schubert.seb@gmail.com>
+
+- Update to version 5.1.2:
+
+  + Narweb: several fixes
+  + WEBCAL: several fixes
+  + Update LDS Temple list
+  + Make GuiDestinationOption Folder Icon start in users directory
+  + Allow import file filter to accept case insensitive extensions
+  + Fix db to warn/prevent opening newer schema versions
+  + Fix Progen import dialog and progress meter for correct parent
+    window
+  + Fix Progen import to correctly handle AKA surnames
+  + Fix ExportPkg so errors are not lost, and has progress bar for
+    media
+  + Fix Export Assistant so error messages get correct parent
+    window
+  + Fix GEDCOM import when family is missing; import created a
+    missing note
+  + Fix Dashboard for adding Gramplet crash in Slovenian
+  + Update cs, ca, fr, uk, he, fi, hr, de, sv translation
+  + Update date parsing for czech locale
+  + Fix Spanish translation for dates
+  + fix private proxy tagref support. Add missing code for event,
+    repository, source, citation and place
+  + [Tree doc Tex] fix "-" char on place name "-" can lead to
+    confusion, generating text out of the box with PDF file format
+  + [Tree doc Tex] fix typo on custom size
+  + Fix duplicated "døde døde" Norwegion Translation for
+    libnarrate
+  + Fix up Event Editors Place display for bidi text with Gramps ID
+  + Fix issues with RTL languages and LAT/LONG
+  + Fix GEDCOM export to avoid translated GrampsType strings
+  + Allow Tools with Notbook tabs to expand to fill the window
+  + Limit Age Stats gramplet settings to appropriate values.
+  + Fix the Preferences 'Age display precision' value getting lost
+  + Fix Window family tree title for non-ASCII chars on Windows
+  + Fix Preferences/Genealogical Symbols when only one font is
+    present
+  + Fix various Entry fields so Undo/Redo works
+  + Fix tag colors on PedigreeView
+  + Fix Gramps -v error when Gtk is not present
+  + Fix for PedigreeView not reflecting changes to birthday or
+    death
+  + ODF DOC - Fix improper escaping in odt output for TOC/Bookmark
+    etc.
+  + Fix CLI parser to accept negative integers as valid
+  + Fix Descendant Tree report for HandleError when no parents on
+    family
+  + Fix Reorder ID tool so subsequent db additions used next
+    possible ID
+  + Upgrade export VCalendar to v2.0, so can export all utf8
+    characters
+  + Fix Preferences so PageUp/PageDn doesn't stick on Dates tab
+  + Graphs: Escape for name, dates and places in graph reports with
+    XML illegal characters
+  + Fix 'Go' menu direct object selection, goes to wrong place
+
+-------------------------------------------------------------------
 Sun Sep 15 13:25:34 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
 
 - Update to version 5.1.1:

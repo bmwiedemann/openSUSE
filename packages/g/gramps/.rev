@@ -492,4 +492,12 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
     <comment>New upstream release</comment>
     <requestid>731524</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>557cd8ec25385005dea6024c11ae95b9</srcmd5>
+    <version>5.1.2</version>
+    <time>1579791278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766512</requestid>
+  </revision>
 </revisionlist>
