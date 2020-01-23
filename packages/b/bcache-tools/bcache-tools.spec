@@ -1,7 +1,7 @@
 #
 # spec file for package bcache-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           bcache-tools
+Version:        1.1
+Release:        0
 Summary:        Configuration utilities for bcache
 License:        GPL-2.0-only
 Group:          System/Base
-Version:        1.0.8+suse5
-Release:        0
-Url:            http://bcache.evilpiepirate.org/
+URL:            http://bcache.evilpiepirate.org/
 
-#Git-Clone:	http://evilpiepirate.org/git/bcache-tools.git
 Source:         %name-%version.tar.xz
 Patch1:         1001-udev-do-not-rely-on-DRIVER-variable.patch
-BuildRequires:  libblkid-devel
-BuildRequires:  libsmartcols-devel
-BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
+BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(smartcols)
+BuildRequires:  pkgconfig(uuid)
 
 %description
 This package contains utilities for configuring the bcache Module.

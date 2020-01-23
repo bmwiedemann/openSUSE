@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 14 19:27:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 1.1
+  * add blkdiscard for cache dev
+  * add 'label' field
+  * allow users to set label for device
+
+-------------------------------------------------------------------
 Thu Aug 22 20:00:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add a _service file for the tarball from outer space.
