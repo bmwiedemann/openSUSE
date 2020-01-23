@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jirafs
-Version:        1.17.5
+Version:        2.0.7
 Release:        0
 Summary:        Library for editing JIRA issues as local text files
 License:        MIT
@@ -62,16 +62,14 @@ issues as a collection of text files using an interface inspired by
 
 %install
 %python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/tests
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # tests require running JIRA instance
 #%%python_exec -m unittest discover -v
 
 %files %{python_files}
-%python3_only %{_bindir}/jirafs
+%{_bindir}/jirafs
 %{python_sitelib}/*
 
 %changelog
