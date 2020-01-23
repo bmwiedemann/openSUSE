@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 23 08:56:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5:
+  * Add option to show indicator even if idle
+  * fish-completion: use the correct fallback directory
+  * Submit password by pressing Ctrl+m
+  * Fix indicator position
+  * Add option to adjust ring position via CLI arguments and the config file
+  * Add fixed font-size option for indicator
+  * Fix, clean up and sync docs and completions
+  * Bug fixes
+- Refresh swaylock-version.patch
+  See https://github.com/swaywm/swaylock/pull/128
+- Mark pam.d/swaylock a config file
+- Update fish path
+
+-------------------------------------------------------------------
 Thu May 23 06:07:09 UTC 2019 - mvetter@suse.com
 
 - Update to 1.4:

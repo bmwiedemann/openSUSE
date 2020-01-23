@@ -1,7 +1,7 @@
 #
 # spec file for package swaylock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           swaylock
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Screen locker for Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/swaylock
 Source0:        https://github.com/swaywm/swaylock/archive/%{version}.tar.gz
+# https://github.com/swaywm/swaylock/pull/128
 Patch0:         swaylock-version.patch
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pam-devel
@@ -84,7 +85,7 @@ export CFLAGS="%{optflags} -I/usr/include/wayland"
 
 %files
 %{_bindir}/swaylock
-%{_sysconfdir}/pam.d/swaylock
+%config %{_sysconfdir}/pam.d/swaylock
 %{_mandir}/man1/swaylock.1%{?ext_man}
 
 %files bash-completion
@@ -93,7 +94,7 @@ export CFLAGS="%{optflags} -I/usr/include/wayland"
 
 %files fish-completion
 %dir %{_datadir}/fish/
-%{_datadir}/fish/completions
+%{_datadir}/fish/vendor_completions.d/
 
 %files zsh-completion
 %dir %{_datadir}/zsh/

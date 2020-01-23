@@ -27,4 +27,24 @@
 - Update swaylock-version.patch</comment>
     <requestid>704916</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d64ec069dcbef1888865e5433606a747</srcmd5>
+    <version>1.5</version>
+    <time>1579791304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  * Add option to show indicator even if idle
+  * fish-completion: use the correct fallback directory
+  * Submit password by pressing Ctrl+m
+  * Fix indicator position
+  * Add option to adjust ring position via CLI arguments and the config file
+  * Add fixed font-size option for indicator
+  * Fix, clean up and sync docs and completions
+  * Bug fixes
+- Refresh swaylock-version.patch
+  See https://github.com/swaywm/swaylock/pull/128
+- Mark pam.d/swaylock a config file
+- Update fish path</comment>
+    <requestid>766522</requestid>
+  </revision>
 </revisionlist>
