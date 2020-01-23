@@ -1,7 +1,7 @@
 #
 # spec file for package kopano-python-services
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Kopano B.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define version_unconverted 9.0.2
 
 Name:           kopano-python-services
-Version:        9.0.2
+Version:        10.0.1
 Release:        0
 Summary:        Python services for Kopano Groupware Core
 License:        AGPL-3.0-only
@@ -32,8 +32,7 @@ Source3:        %name-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-setuptools >= 3.6
 %if 0%{?suse_version}
@@ -200,6 +199,8 @@ done
     %fdupes %buildroot/%_prefix
 %endif
 
+# use sh version
+rm -f "$b/%_sbindir/kopano-autorespond"
 # some default dirs
 mkdir -p "$b/var/lib/kopano/autorespond" "$b/var/lib/kopano/spamd/spam"
 mkdir -p "$b/%_localstatedir/log/kopano"
@@ -326,7 +327,6 @@ chown kopano:kopano /var/lib/kopano/spamd 2>/dev/null || :
 
 %files -n kopano-dagent-pytils
 %defattr(-,root,root)
-%_sbindir/kopano-autorespond
 %_sbindir/kopano-mr-accept
 %_sbindir/kopano-mr-process
 %_mandir/man*/kopano-autorespond.*

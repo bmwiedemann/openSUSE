@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 22:46:14 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0.1
+  * Sync up with kopanocore-10.0.1. No user visible changes to
+    pytils.
+  * Drop kopano-dagent-pytils:/usr/sbin/kopano-autorespond.
+    This program is already provided by the kopano-dagent package.
+
+-------------------------------------------------------------------
 Wed Dec 18 01:23:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.2

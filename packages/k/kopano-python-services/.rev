@@ -15,4 +15,12 @@
     <comment>- Update to release 9.0.2</comment>
     <requestid>757648</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c025fc0a5cb82abc933bb4fa106a4bb3</srcmd5>
+    <version>10.0.1</version>
+    <time>1579791259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.0.1</comment>
+    <requestid>766434</requestid>
+  </revision>
 </revisionlist>
