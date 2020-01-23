@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 06:30:58 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix reference from compilation unit to partial unit [swo#25398].
+  * dwz-fix-reference-from-pu-to-cu.patch
+
+-------------------------------------------------------------------
 Thu Nov 28 12:56:34 UTC 2019 - Tom de Vries <tdevries@suse.com>
 
 - Fix assertion failure 'refd != NULL' in write_die [swo#24169].

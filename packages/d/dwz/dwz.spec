@@ -1,7 +1,7 @@
 #
 # spec file for package dwz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,7 @@ Patch1:         dwz-update-version-copyright-message.patch
 Patch2:         dwz-fix-die-no-multifile-propagation.patch
 Patch3:         dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
 Patch4:         dwz-fix-refd-NULL-assertion-in-write_die.patch
+Patch5:         dwz-fix-reference-from-pu-to-cu.patch
 
 %if %{build_main}
 %description
@@ -109,6 +110,7 @@ This package contains the testsuite results from DWZ.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
