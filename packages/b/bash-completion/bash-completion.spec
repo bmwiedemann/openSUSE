@@ -147,6 +147,8 @@ then
 fi
 # shipping in devscripts now
 rm -vf %{buildroot}%{_datadir}/bash-completion/completions/bts
+# Seems to be broken (boo#1161136)
+rm -vf %{buildroot}%{_datadir}/bash-completion/completions/_adb
 %endif %build_core
 %if %build_doc
 pushd doc

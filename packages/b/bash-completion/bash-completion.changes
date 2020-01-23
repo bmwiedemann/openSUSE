@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:56:00 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Remove _adb as it seems to be broken anyway (boo#1161136) 
+
+-------------------------------------------------------------------
 Sun Jan  5 17:01:37 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update to version 2.10:

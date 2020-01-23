@@ -439,4 +439,12 @@
     <comment></comment>
     <requestid>761503</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>7410903b5ebbab1ff8396130168a17a3</srcmd5>
+    <version>2.10</version>
+    <time>1579792082</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove _adb as it seems to be broken anyway (boo#1161136)</comment>
+    <requestid>765174</requestid>
+  </revision>
 </revisionlist>
