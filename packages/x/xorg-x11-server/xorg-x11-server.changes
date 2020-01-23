@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:12:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_fno-common.patch
+  * fix build with gcc's -fno-common option (boo#1160423) 
+
+-------------------------------------------------------------------
 Tue Jan 14 12:41:02 UTC 2020 - sndirsch@suse.com
 
 - Update to version 1.20.7+0:

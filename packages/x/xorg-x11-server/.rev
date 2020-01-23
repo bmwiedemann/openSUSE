@@ -3354,4 +3354,13 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * glamor: Add a function to get the driver name via EGL_MESA_query_driver</comment>
     <requestid>764307</requestid>
   </revision>
+  <revision rev="378" vrev="2">
+    <srcmd5>ae49045fa0f13ab719c837afdb603417</srcmd5>
+    <version>1.20.7+0</version>
+    <time>1579792217</time>
+    <user>dimstar_suse</user>
+    <comment>- u_fno-common.patch
+  * fix build with gcc's -fno-common option (boo#1160423)</comment>
+    <requestid>765910</requestid>
+  </revision>
 </revisionlist>
