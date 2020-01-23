@@ -1,7 +1,7 @@
 #
 # spec file for package valgrind
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,10 @@ Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
 Patch2:         armv6-support.diff
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Add-newer-constants-for-prctl-syscall.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0002-Add-support-for-PR_CAPBSET_READ-and-_DROP-syscalls.patch
 %if "%{flavor}" == ""
 %if %{with docs}
 BuildRequires:  docbook-xsl-stylesheets
@@ -150,6 +154,8 @@ but it has been successfully used to optimize several KDE applications.
 %setup -q -n valgrind-%{version}
 %patch0 -p1
 %patch2
+%patch3 -p1
+%patch4 -p1
 
 %build
 %if "%{flavor}" == ""
