@@ -1,7 +1,7 @@
 #
 # spec file for package taglib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source0:        %{sname}-%{version}.tar.xz
 Source1:        %{sname}.desktop
 Source100:      baselibs.conf
 Patch0:         taglib-versionbump.patch
+# PATCH-FIX-UPSTREAM https://github.com/taglib/taglib/pull/935
+Patch1:         0001-Changed-libdir-includedir-variables-to-change-based-.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -114,6 +116,7 @@ This package contains the taglib API Documentation in HTML format.
 %prep
 %setup -q -n %{sname}-%{version}
 %patch0
+%patch1 -p1
 
 %build
 # The testing needs static libs too

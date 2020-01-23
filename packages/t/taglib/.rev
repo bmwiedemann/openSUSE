@@ -457,4 +457,12 @@ Please accept before clementine</comment>
   * Call fflush() before ftruncate() to drop all buffered data (#914)</comment>
     <requestid>723220</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>c731402104a896fbdb27e55acbaae719</srcmd5>
+    <version>1.11.2~git20190725.79bc9ccf</version>
+    <time>1579792213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765867</requestid>
+  </revision>
 </revisionlist>

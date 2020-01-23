@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 12:30:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to get the right directories when running taglib-config:
+  * 0001-Changed-libdir-includedir-variables-to-change-based-.patch
+
+-------------------------------------------------------------------
 Wed Aug 14 07:57:12 UTC 2019 - tchvatal@suse.com
 
 - Update to version 1.11.2~git20190725.79bc9ccf:
