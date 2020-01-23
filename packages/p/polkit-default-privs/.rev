@@ -1599,4 +1599,13 @@ for 12.3</comment>
     <comment></comment>
     <requestid>765003</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>aa346107befaa197268fc7116c46ab13</srcmd5>
+    <version>13.2+20200121.bfca858</version>
+    <time>1579792245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.2+20200121.bfca858:
+  * systemd networkd incremental polkit rules (bsc#1161328)</comment>
+    <requestid>766089</requestid>
+  </revision>
 </revisionlist>

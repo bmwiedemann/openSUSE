@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 14:24:51 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20200121.bfca858:
+  * systemd networkd incremental polkit rules (bsc#1161328)
+
+-------------------------------------------------------------------
 Thu Jan 16 14:44:04 UTC 2020 - jsegitz@suse.de
 
 - Update to version 13.2+20200116.0f7fd4b:
