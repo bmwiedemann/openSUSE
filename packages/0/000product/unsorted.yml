@@ -2641,6 +2641,7 @@ unsorted:
   - enlightenment-theme-dark 
   - enlightenment-theme-openSUSE 
   - enlightenment-theme-openSUSE-ice 
+  - enlightenment-theme-openSUSE-neon 
   - enlightenment-theme-upstream 
   - enlightenment-x-dark-icon-theme 
   - enscript 
@@ -4683,6 +4684,7 @@ unsorted:
   - golang-github-docker-libnetwork-kubic 
   - golang-github-exercism-cli 
   - golang-github-golang-glog 
+  - golang-github-golang-protobuf 
   - golang-github-jteeuwen-go-bindata 
   - golang-github-kr-pty 
   - golang-github-kr-text 
@@ -11283,6 +11285,8 @@ unsorted:
   - librest-0_7-0-32bit: [x86_64] 
   - librest-devel 
   - libretro-bsnes 
+  - libretro-core-info 
+  - libretro-database 
   - libretro-gambatte 
   - libretro-gtk-0_14-0 
   - libretro-pcsx_rearmed 
@@ -14044,10 +14048,8 @@ unsorted:
   - mycroft-core 
   - mylvmbackup 
   - myman 
-  - mypaint 
   - mypaint-brushes 
   - mypaint-brushes-devel 
-  - mypaint-lang 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -14286,7 +14288,6 @@ unsorted:
   - neovim 
   - neovim-gtk 
   - neovim-lang 
-  - nested 
   - nestopia 
   - net-snmp-devel 
   - net-snmp-devel-32bit: [x86_64] 
@@ -15103,6 +15104,7 @@ unsorted:
   - openSUSE-driverupdate 
   - openSUSE-e-X-Ice-Icons 
   - openSUSE-e-X-Icons 
+  - openSUSE-e-X-Neon-Icons 
   - openSUSE-release-appliance 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
@@ -18269,7 +18271,6 @@ unsorted:
   - python2-barbicanclient 
   - python2-baron 
   - python2-bashate 
-  - python2-bcc 
   - python2-bcolz 
   - python2-bcrypt 
   - python2-beautifulsoup4 
@@ -19642,6 +19643,7 @@ unsorted:
   - python2-rfc3986 
   - python2-rfc3987 
   - python2-rfc6266 
+  - python2-rfc6555 
   - python2-rjsmin 
   - python2-rnginline 
   - python2-rollbar 
@@ -22246,6 +22248,7 @@ unsorted:
   - python3-retrying 
   - python3-rfc3986 
   - python3-rfc3987 
+  - python3-rfc6555 
   - python3-rjsmin 
   - python3-rnginline 
   - python3-robot-detection 
@@ -23029,6 +23032,9 @@ unsorted:
   - restorecond: [i586] 
   - retext 
   - retro-gtk-devel 
+  - retroarch 
+  - retroarch-assets 
+  - retroarch-joypad-autoconfig 
   - reuse 
   - reveng 
   - rfb 
