@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.component
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,12 +27,13 @@
 %bcond_with test
 %endif
 Name:           python-zope.component%{psuffix}
-Version:        4.5
+Version:        4.6
 Release:        0
+
 Summary:        Zope Component Architecture
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-Url:            http://www.python.org/pypi/zope.component
+URL:            http://www.python.org/pypi/zope.component
 Source:         https://files.pythonhosted.org/packages/source/z/zope.component/zope.component-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
