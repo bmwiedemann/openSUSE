@@ -1,7 +1,7 @@
 #
 # spec file for package audit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           audit
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://people.redhat.com/sgrubb/audit/
+URL:            http://people.redhat.com/sgrubb/audit/
 Source0:        http://people.redhat.com/sgrubb/audit/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        README-BEFORE-ADDING-PATCHES
@@ -87,7 +87,8 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--with-libwrap \
 	--without-libcap-ng \
 	--disable-static \
-	--without-python
+	--without-python \
+	--disable-zos-remote
 make %{?_smp_mflags} -C lib
 make %{?_smp_mflags} -C auparse
 make %{?_smp_mflags} -C docs

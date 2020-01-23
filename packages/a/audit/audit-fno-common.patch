@@ -1,0 +1,24 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: Resolve errors when compiling with -fno-common
+Git-commmit: 017e6c6ab95df55f34e339d2139def83e5dada1f
+References: bsc#1160384
+Upsteam: pending
+
+Header definitios need to be external when building with -fno-common (which
+is default in GCC 10).
+
+Fixes: ff25054df7ed
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+--- a/src/ausearch-common.h
++++ b/src/ausearch-common.h
+@@ -50,7 +50,7 @@ extern pid_t event_pid;
+ extern int event_exact_match;
+ extern uid_t event_uid, event_euid, event_loginuid;
+ extern const char *event_tuid, *event_teuid, *event_tauid;
+-slist *event_node_list;
++extern slist *event_node_list;
+ extern const char *event_comm;
+ extern const char *event_filename;
+ extern const char *event_hostname;
+

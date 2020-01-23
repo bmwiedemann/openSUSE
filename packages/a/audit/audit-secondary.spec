@@ -1,7 +1,7 @@
 #
 # spec file for package audit-secondary
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,19 @@
 # The seperation is required to minimize unnecessary build cycles.
 %define 	_name audit
 Name:           audit-secondary
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://people.redhat.com/sgrubb/audit/
+URL:            http://people.redhat.com/sgrubb/audit/
 Source0:        http://people.redhat.com/sgrubb/audit/%{_name}-%{version}.tar.gz
 Patch1:         audit-plugins-path.patch
 Patch2:         audit-no-gss.patch
 Patch3:         audit-allow-manual-stop.patch
 Patch4:         audit-ausearch-do-not-require-tclass.patch
 Patch5:         audit-python3.patch
+Patch6:         audit-fno-common.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  gcc-c++
@@ -112,6 +113,7 @@ rm -rf audisp/plugins/prelude
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %if %{without python2} && %{with python3}
 # Fix python env call in tests if we only have Python3.

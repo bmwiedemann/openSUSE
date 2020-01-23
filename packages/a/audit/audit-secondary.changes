@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jan 13 17:39:03 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Update to version 2.6.5:
+  * Fix segfault on shutdown
+  * Fix hang on startup (#1587995)
+  * Add sleep to script to dump state so file is ready when needed
+  * Add auparse_normalizer support for SOFTWARE_UPDATE event
+  * Mark netlabel events as simple events so that get processed quicker
+  * When audispd is reconfiguring, only SIGHUP plugins with valid pid (#1614833)
+  * Add 30-ospp-v42.rules to meet new Common Criteria requirements
+  * Update lookup tables for the 4.18 kernel
+  * In aureport, fix segfault in file report
+  * Add auparse_normalizer support for labeled networking events
+  * Fix memory leak in audisp-remote plugin when using krb5 transport. (#1622194)
+  * Event aging is off by a second
+  * In ausearch/auparse, correct event ordering to process oldest first
+  * auparse_reset was not clearing everything it should
+  * Add support for AUDIT_MAC_CALIPSO_ADD, AUDIT_MAC_CALIPSO_DEL events
+  * In ausearch/report, lightly parse selinux portion of USER_AVC events
+  * In ausearch/report, limit record size when malformed
+  * In auditd, fix extract_type function for network originating events
+  * In auditd, calculate right size and location for network originating events
+  * Treat all network originating events as VER2 so dispatcher doesn't format it
+  * In audisp-remote do an initial connection attempt (#1625156)
+  * In auditd, allow expression of space left as a percentage (#1650670)
+  * On PPC64LE systems, only allow 64 bit rules (#1462178)
+  * Make some parts of auditd state report optional based on config
+  * Fix ausearch when checkpointing a single file (Burn Alting)
+  * Fix scripting in 31-privileged.rules wrt filecap (#1662516)
+  * In ausearch, do not checkpt if stdin is input source
+  * In libev, remove __cold__ attribute for functions to allow proper hardening
+  * Add tests to configure.ac for openldap support
+  * Make systemd support files use /run rather than /var/run (Christian Hesse)
+  * Fix minor memory leak in auditd kerberos credentials code
+  * Fix auditd regression where keep_logs is limited by rotate_logs 2 file test
+  * In ausearch/report fix --end to use midnight time instead of now (#1671338)
+
+- Fix build errors when using gcc-10 no-common default (bsc#1160384)
+  New patch: audit-fno-common.patch
+
+- Refresh audit-allow-manual-stop.patch
+
+-------------------------------------------------------------------
 Thu Mar 21 10:32:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce scriptlets' hard dependency on systemd.
