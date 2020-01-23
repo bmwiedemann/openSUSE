@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.i18nmessageid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.i18nmessageid
-Version:        4.3.1
+Version:        5.0.0
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1

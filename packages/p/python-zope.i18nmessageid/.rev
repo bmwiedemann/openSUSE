@@ -50,4 +50,12 @@ New dependecy of python-Pyramid</comment>
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738425</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54b4d46712199fc9e110c6c3562ba127</srcmd5>
+    <version>5.0.0</version>
+    <time>1579792262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766057</requestid>
+  </revision>
 </revisionlist>
