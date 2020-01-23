@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 18 17:36:51 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Fix invalid apparmor profile (bsc#1161179)
+
+-------------------------------------------------------------------
 Thu Jan 16 11:56:58 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Include system proxy settings in service if present (bsc#1155323)
