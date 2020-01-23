@@ -319,6 +319,8 @@ products:
     - x86_64
   - opensuse-mariadb-image:
     - x86_64
+  - opensuse-nginx-image:
+    - x86_64
   - opensuse-redis-image:
     - x86_64
   - opensuse-registry-image:
@@ -413,7 +415,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20200121'
 publishing: '20200121'
-testing: '20200121'
+testing: '20200122'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
