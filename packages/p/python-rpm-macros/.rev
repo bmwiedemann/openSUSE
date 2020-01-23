@@ -256,4 +256,12 @@ prerequisite for new python submission</comment>
   * Recognise the _ for the macro arguments too</comment>
     <requestid>745134</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>87702f20b5bb1d9a66f349e2494fed68</srcmd5>
+    <version>20200117.8e39013</version>
+    <time>1579792133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766078</requestid>
+  </revision>
 </revisionlist>

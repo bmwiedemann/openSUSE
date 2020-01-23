@@ -17,7 +17,7 @@
 
 
 Name:           python-rpm-macros
-Version:        20191104.08e6493
+Version:        20200117.8e39013
 Release:        0
 Summary:        RPM macros for building of Python modules
 License:        WTFPL
@@ -27,12 +27,26 @@ Source:         python-rpm-macros-%{version}.tar.bz2
 # Fedora compatibility
 Provides:       python2-rpm-macros
 Provides:       python3-rpm-macros
+# To keep user expectations reasonably sane
+Recommends:     python-rpm-generators
 BuildArch:      noarch
 
 %description
 This package contains SUSE RPM macros for Python build automation.
 You should BuildRequire this package unless you are sure that you
 are only building for distros newer than Leap 42.2
+
+%package -n python-rpm-generators
+Summary:        Dependency generator dependencies for Python RPMs
+Requires:       %{name} = %{version}-%{release}
+# Fedora compatibility
+Provides:       python3-rpm-generators
+# For the dep generator macros
+Requires:       python3-setuptools
+
+%description -n python-rpm-generators
+This package contains the dependencies for Python RPMs to generate
+dependencies automatically.
 
 %prep
 %setup -q
@@ -51,5 +65,8 @@ install -m 644 macros.python_all %{buildroot}%{_rpmconfigdir}/macros.d/
 %license LICENSE
 %doc README.md
 %{_rpmconfigdir}/macros.d/macros.python_all
+
+%files -n python-rpm-generators
+# Nothing here for now...
 
 %changelog
