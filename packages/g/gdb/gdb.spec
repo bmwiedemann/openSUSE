@@ -1,7 +1,7 @@
 #
 # spec file for package gdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 RedHat
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -248,6 +248,9 @@ Patch2009:      gdb-s390-handle-arch13.diff
 Patch2010:      gdb-fix-heap-use-after-free-in-typename-concat.patch
 Patch2011:      gdb-dwarf-reader-reject-sections-with-invalid-sizes.patch
 Patch2012:      gdb-0001-remove-alloca-0-calls.patch
+Patch2013:      gdb-arch13-1.diff
+Patch2014:      gdb-arch13-2.diff
+Patch2015:      gdb-arch13-3.diff
 
 # Proposed patch for PR symtab/24971
 Patch2500:      gdb-symtab-prefer-var-def-over-decl.patch
@@ -601,6 +604,9 @@ find -name "*.info*"|xargs rm -f
 %patch2010 -p1
 %patch2011 -p1
 %patch2012 -p1
+%patch2013 -p1
+%patch2014 -p1
+%patch2015 -p1
 
 %patch2500 -p1
 %patch2501 -p1
