@@ -68,4 +68,14 @@ seemed okay with the last submission. *fingers crossed*</comment>
     <comment></comment>
     <requestid>755961</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14aef769b919160ee442837c5df353f0</srcmd5>
+    <version>3.19</version>
+    <time>1579791265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LXD 3.19. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-19-has-been-released/6529
+  boo#1161615</comment>
+    <requestid>766444</requestid>
+  </revision>
 </revisionlist>

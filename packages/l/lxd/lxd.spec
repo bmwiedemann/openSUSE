@@ -1,7 +1,7 @@
 #
 # spec file for package lxd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        3.18
+Version:        3.19
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -44,6 +44,7 @@ BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  patchelf
 BuildRequires:  pkg-config
+BuildRequires:  rsync
 BuildRequires:  golang(API) >= 1.10
 BuildRequires:  pkgconfig(lxc) >= 3.0.0
 # Needed to build the sqlite fork and dqlite.
@@ -95,6 +96,20 @@ then
 fi
 # Move _dist/src (which is LXD's variant of vendoring) to vendor/.
 mv -v _dist/src vendor
+
+# For some reason, some vendored packages have stored their vendored sources
+# within their source tree inside the vendor tree (?!). So we need to
+# workaround this, even though it's probably a bug in LXD packaging.
+for vendor in $(find vendor/* -type d -name vendor)
+do
+	rsync -a "$vendor/" vendor/
+	rm -rf "$vendor/"
+done
+
+# Create fake "go mod"-like import paths. This is going to be really fun to
+# maintain but it's unfortunately necessary because openSUSE doesn't have nice
+# "go mod" support in OBS...
+ln -s . vendor/github.com/cpuguy83/go-md2man/v2
 
 %build
 # Make sure any leftover go build caches are gone.
@@ -179,12 +194,11 @@ for mainpkg in "${mainpkgs[@]}"
 do
 	binary="$(basename "$mainpkg")"
 	(
-		# We need to link against our dylib deps when dealing with lxd proper.
-		[ "$binary" == "lxd" ] && export \
-			BUILDTAGS="libsqlite3" \
+		# We need to link against our particular dylib deps.
+		export \
 			CGO_CFLAGS="-I $INSTALL_INCLUDEDIR" \
 			CGO_LDFLAGS="-L $INSTALL_LIBDIR" ||:
-		go build -buildmode=pie -tags "$BUILDTAGS" -o "bin/$binary" "$mainpkg"
+		go build -buildmode=pie -tags "libsqlite3" -o "bin/$binary" "$mainpkg"
 	)
 done
 
@@ -234,7 +248,7 @@ done
 # Switch to absolute DT_NEEDED for all dylibs we have as well as the main LXD
 # binary. We do this for all dylibs to make sure we don't end up with weird
 # chain-loading problems.
-for target in bin/lxd "$INSTALL_LIBDIR"/lib*.so
+for target in bin/* "$INSTALL_LIBDIR"/lib*.so
 do
 	# Drop RPATH in case it got included during builds.
 	patchelf --remove-rpath "$target"
@@ -256,6 +270,8 @@ for bin in *
 do
 	# Ensure that all our binaries are dynamic. boo#1138769
 	file "$bin" | grep 'dynamically linked'
+	# Check what they are linked against.
+	ldd "$bin"
 done
 popd
 
