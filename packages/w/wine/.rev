@@ -3407,4 +3407,12 @@
 - updated staging to 5.0-rc5</comment>
     <requestid>766212</requestid>
   </revision>
+  <revision rev="297" vrev="2">
+    <srcmd5>f77675822c1ba4e96d64856459478d37</srcmd5>
+    <version>5.0</version>
+    <time>1579791275</time>
+    <user>dimstar_suse</user>
+    <comment>- build the PE format modules with the MingW cross compiler.</comment>
+    <requestid>766494</requestid>
+  </revision>
 </revisionlist>

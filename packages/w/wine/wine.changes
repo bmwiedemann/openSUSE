@@ -7,6 +7,7 @@ Wed Jan 22 06:53:38 UTC 2020 - Marcus Meissner <meissner@suse.com>
   - XAudio2 reimplementation.
   - Vulkan 1.1 support.
 - update staging to 5.0 release
+- build the PE format modules with the MingW cross compiler.
 
 -------------------------------------------------------------------
 Sun Jan 19 10:22:06 UTC 2020 - Marcus Meissner <meissner@suse.com>

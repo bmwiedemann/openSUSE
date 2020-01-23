@@ -92,6 +92,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  sane-backends-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  valgrind-devel
+%ifarch x86_64
+BuildRequires:  mingw64-cross-gcc
+%endif
+%ifarch %ix86
+BuildRequires:  mingw32-cross-gcc
+%endif
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
@@ -271,6 +277,7 @@ echo "%name" >> %SOURCE7
 echo "  +^/usr/bin/wine\$" >> %SOURCE7
 echo "  +^/usr/bin/wine-preloader\$" >> %SOURCE7
 echo "  +^/usr/lib/wine/fakedlls" >> %SOURCE7
+echo "  +^/usr/lib/wine/*" >> %SOURCE7
 grep SONAME_ config.log
 grep SONAME_ config.log|grep -v 'so"'|sed -e 's/^.*\(".*"\).*$/ requires \1/;'|sort -u >>%SOURCE7
 echo " recommends \"libpulse0-32bit\""	>> %SOURCE7
@@ -436,6 +443,22 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/wine64-preloader
 %endif
 %{_libdir}/wine/*.so
+%{_libdir}/wine/*.acm
+%{_libdir}/wine/*.com
+%{_libdir}/wine/*.cpl
+%{_libdir}/wine/*.dll
+%ifarch %ix86
+%{_libdir}/wine/*.dll16
+%{_libdir}/wine/*.drv16
+%{_libdir}/wine/*.exe16
+%{_libdir}/wine/*.mod16
+%{_libdir}/wine/*.vxd
+%endif
+%{_libdir}/wine/*.drv
+%{_libdir}/wine/*.exe
+%{_libdir}/wine/*.ocx
+%{_libdir}/wine/*.sys
+%{_libdir}/wine/*.tlb
 %{_libdir}/lib*.so.*
 %dir %{_libdir}/wine
 %dir %{_libdir}/wine/fakedlls
