@@ -1,7 +1,7 @@
 #
 # spec file for package fillup
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Name:           fillup
 Version:        1.42
 Release:        0
 Summary:        Tool for Merging Config Files
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Base
 Url:            http://github.com/openSUSE/fillup
 Source:         fillup-%{version}.tar.bz2
@@ -35,6 +35,7 @@ Patch2:         fillup-%{version}.dif
 Patch3:         fillup-retval.dif
 Patch4:         fillup-nodate.patch
 Patch5:         fillup-1.42-cloexec.patch
+Patch6:         fillup-fno-common.patch
 Provides:       aaa_base:/bin/fillup
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -52,6 +53,7 @@ its variable name.
 %patch3
 %patch4
 %patch5
+%patch6 -p1
 
 %build
 make %{?_smp_mflags} compile COMPILE_OPTION=OPTIMIZE OPTISPLUS="%{optflags}"

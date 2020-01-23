@@ -191,4 +191,13 @@
     <comment></comment>
     <requestid>545038</requestid>
   </revision>
+  <revision rev="26" vrev="275">
+    <srcmd5>bb5eeb79bb0737398fd11457a2c4d47a</srcmd5>
+    <version>1.42</version>
+    <time>1579792056</time>
+    <user>dimstar_suse</user>
+    <comment>- fillup-fno-common.patch: fix compilation on Tumbleweed
+  (boo#1160871)</comment>
+    <requestid>764586</requestid>
+  </revision>
 </revisionlist>

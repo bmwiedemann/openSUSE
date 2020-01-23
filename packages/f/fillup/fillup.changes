@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 09:38:33 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- fillup-fno-common.patch: fix compilation on Tumbleweed
+  (boo#1160871)
+
+-------------------------------------------------------------------
 Thu Nov 23 13:39:57 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 
