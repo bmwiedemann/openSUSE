@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 10 15:01:47 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.18.1:
+  * http2: fix session memory accounting after pausing
+  * n-api: correct bug in napi_get_last_error
+  * tools: update tzdata to 2019c
+
+-------------------------------------------------------------------
+Tue Jan  7 13:12:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Really disable LTO when required (nodejs < 12)
+
+-------------------------------------------------------------------
 Fri Dec 27 14:57:23 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - node-gyp-addon-gypi.patch: Fix wrong path in gypi files (bsc#1159812)
