@@ -1,7 +1,7 @@
 #
 # spec file for package gambas3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2018 Lars Vogdt <lars@linux-schulserver.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,12 +37,12 @@
 %endif
 %endif
 Name:           gambas3
-Version:        3.14.1
+Version:        3.14.3
 Release:        0
 Summary:        BASIC interpreter under Linux
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
-Url:            http://gambas.sourceforge.net/
+URL:            http://gambas.sourceforge.net/
 Source0:        https://gitlab.com/gambas/gambas/-/archive/%{version}/gambas-%{version}.tar.bz2
 Source1:        %{name}.desktop
 Source2:        x-gambas.desktop
@@ -75,7 +75,6 @@ BuildRequires:  shared-mime-info
 BuildRequires:  unixODBC-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
-BuildRequires:  pkgconfig(ORBit-2.0)
 BuildRequires:  pkgconfig(SDL_gfx)
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)

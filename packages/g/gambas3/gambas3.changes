@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 22 19:21:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.14.3:
+  * Fix compilation with poppler >= 0.83. 
+- Changes from version 3.14.2:
+  * This release mainly includes a fix of the Message class that
+    disturbs a lot of people.
+  * INTERPRETER: Fix Find() method on Float, Single, and Long
+    arrays.
+  * GB.DB.POSTGRESQL: Compile with PostgreSQL 12.
+  * GB.GUI.BASE: Message: The ENTER key now selects the button
+    having the focus, not the default one, so that message boxes
+    behave the same with GTK+ and Qt.
+
+-------------------------------------------------------------------
+Mon Jan 20 20:29:28 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(ORBit-2.0) BuildRequires: No longer needed, nor
+  used.
+
+-------------------------------------------------------------------
 Wed Oct 30 16:23:23 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.14.1:
