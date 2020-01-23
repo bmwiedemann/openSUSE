@@ -1,7 +1,7 @@
 #
 # spec file for package autogen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch3:         installable-programs.patch
 Patch4:         sprintf-overflow.patch
 # PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/autogen/bugs/193/#5844
 Patch5:         gcc9-fix-wrestrict.patch
+# PATCH-FIX-UPSTREAM Allow building with guile 3.0
+Patch6:         guile-version.patch
 BuildRequires:  fdupes
 BuildRequires:  guile-devel
 BuildRequires:  makeinfo
@@ -89,6 +91,8 @@ well.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+touch aclocal.m4 configure Makefile.in config-h.in
 
 %build
 %configure \
