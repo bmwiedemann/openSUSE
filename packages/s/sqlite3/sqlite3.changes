@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jan 17 14:29:39 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix regression found when running python-Django/Djano1 testsuite:
+  + 7833feecfe-Prevent-SQLite-from-bad-NULL-assumption.patch
+  + 548082dfab-Improvements-to-the-LEFT-JOIN.patch
+  + 8a39167bd2-Further-improvements-to-LEFT-JOIN.patch
+- Fix check for existing dirs, triggers when running the testsuite
+  on BTRFS or XFS:
+  + fix_dir_exists_on_btrfs.patch
+- Fix truncation/bad rounding of timestamps in SQLite strftime
+  function, exposed when running testsuite on i586:
+  + sqlite3-avoid-truncation-error.patch
+
+-------------------------------------------------------------------
+Fri Oct 11 15:05:00 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- sqlite 3.30.1:
+  * fix a segfault for nested queries that use the FILTER clause
+    ib aggregate functions (introduced in 3.30.0)
+
+-------------------------------------------------------------------
+Sun Oct  6 15:43:57 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.30.0:
+  * Add support for the FILTER clause on aggregate functions
+  * Add support for the NULLS FIRST and NULLS LAST syntax in ORDER BY clauses
+  * The index_info and index_xinfo pragmas are enhanced to provide
+    information about the on-disk representation of WITHOUT ROWID tables
+  * Add the sqlite3_drop_modules() interface, allowing applications
+    to disable automatically loaded virtual tables that they do not need
+  * Improvements to the .recover dot-command in the CLI so that it
+    recovers more content from corrupt database files
+  * Enhance the RBU extension to support indexes on expressions
+  * Change the schema parser so that it will error out if any of
+    the type, name, and tbl_name columns of the sqlite_master table
+    have been corrupted and the database connection is not in
+    writable_schema mode.
+  * The PRAGMA function_list, PRAGMA module_list, and PRAGMA
+    pragma_list commands are now enabled in all builds by default
+  * Add the SQLITE_DBCONFIG_ENABLE_VIEW option for sqlite3_db_config().
+  * Added the TCL Interface config method in order to be able to
+    disable SQLITE_DBCONFIG_ENABLE_VIEW as well as control other
+    sqlite3_db_config() options from TCL.
+  * Added the SQLITE_DIRECTONLY flag for application-defined SQL
+    functions to prevent those functions from being used inside
+    triggers and views
+- drop sqlite3-CVE-2019-16168.patch, upstream
+
+-------------------------------------------------------------------
 Tue Sep 10 15:17:35 UTC 2019 - Reinhard Max <max@suse.com>
 
 - bsc#1150137, CVE-2019-16168, sqlite3-CVE-2019-16168.patch:
